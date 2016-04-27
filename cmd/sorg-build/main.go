@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -121,4 +122,20 @@ func compileStylesheets() error {
 	}
 
 	return nil
+}
+
+var errTooManyParts = fmt.Errorf("Found more parts than frontmatter and content")
+
+func splitFrontmatter(content string) (string, string, error) {
+	parts := strings.Split(content, "---")
+
+	if len(parts) > 3 || len(parts) > 1 && parts[0] != "" {
+		return "", "", errTooManyParts
+	} else if len(parts) == 2 {
+		return "", strings.TrimSpace(parts[1]), nil
+	} else if len(parts) == 3 {
+		return strings.TrimSpace(parts[1]), strings.TrimSpace(parts[2]), nil
+	}
+
+	return "", strings.TrimSpace(parts[0]), nil
 }
