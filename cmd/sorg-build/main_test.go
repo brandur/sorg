@@ -6,6 +6,11 @@ import (
 	assert "github.com/stretchr/testify/require"
 )
 
+func TestRenderMarkdown(t *testing.T) {
+	html := renderMarkdown([]byte("**hello**"))
+	assert.Equal(t, "<p><strong>hello</strong></p>\n", string(html))
+}
+
 func TestSplitFrontmatter(t *testing.T) {
 	frontmatter, content, err := splitFrontmatter(`---
 foo: bar

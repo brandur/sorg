@@ -12,6 +12,7 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
 	"github.com/joeshaw/envdecode"
+	"github.com/russross/blackfriday"
 	"github.com/yosssi/gcss"
 	"gopkg.in/yaml.v2"
 )
@@ -44,7 +45,7 @@ type FragmentInfo struct {
 	Image string `yaml:"image"`
 
 	// PublishedAt is when the fragment was published.
-	PublishedAt time.Time `yaml:"published_at"`
+	PublishedAt *time.Time `yaml:"published_at"`
 
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
@@ -102,7 +103,14 @@ func compileFragments() error {
 		if err != nil {
 			return err
 		}
-		log.Infof("Info = %+v", info)
+
+		if info.Title == "" {
+			fmt.Errorf("No title for fragment: %v", inPath)
+		}
+
+		if info.PublishedAt == nil {
+			fmt.Errorf("No publish date for fragment: %v", inPath)
+		}
 
 		outFile, err := os.Create(sorg.TargetFragmentsDir + outName)
 		if err != nil {
@@ -110,7 +118,10 @@ func compileFragments() error {
 		}
 		defer outFile.Close()
 
-		_, err = outFile.WriteString(content)
+		contentHTML := renderMarkdown([]byte(content))
+		contentHTML = append([]byte("<h1>" + info.Title + "</h1>\n\n"), contentHTML...)
+
+		_, err = outFile.Write(contentHTML)
 		if err != nil {
 			return err
 		}
@@ -149,6 +160,29 @@ func compileStylesheets() error {
 	}
 
 	return nil
+}
+
+func renderMarkdown(source []byte) []byte {
+	htmlFlags := 0
+	htmlFlags |= blackfriday.HTML_SMARTYPANTS_DASHES
+	htmlFlags |= blackfriday.HTML_SMARTYPANTS_FRACTIONS
+	htmlFlags |= blackfriday.HTML_SMARTYPANTS_LATEX_DASHES
+	htmlFlags |= blackfriday.HTML_USE_SMARTYPANTS
+	htmlFlags |= blackfriday.HTML_USE_XHTML
+
+	extensions := 0
+	extensions |= blackfriday.EXTENSION_AUTO_HEADER_IDS
+	extensions |= blackfriday.EXTENSION_AUTOLINK
+	extensions |= blackfriday.EXTENSION_FENCED_CODE
+	extensions |= blackfriday.EXTENSION_HEADER_IDS
+	extensions |= blackfriday.EXTENSION_LAX_HTML_BLOCKS
+	extensions |= blackfriday.EXTENSION_NO_INTRA_EMPHASIS
+	extensions |= blackfriday.EXTENSION_TABLES
+	extensions |= blackfriday.EXTENSION_SPACE_HEADERS
+	extensions |= blackfriday.EXTENSION_STRIKETHROUGH
+
+	renderer := blackfriday.HtmlRenderer(htmlFlags, "", "")
+	return blackfriday.Markdown(source, renderer, extensions)
 }
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
