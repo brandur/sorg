@@ -6,7 +6,7 @@ This is a work-in-progress and is nowhere near complete.
 
 ## Build
 
-Install Go 1.6.
+Install Go 1.6, then:
 
     make install
     make build
