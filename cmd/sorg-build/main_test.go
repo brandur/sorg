@@ -28,4 +28,9 @@ foo: bar
 	assert.NoError(t, err)
 	assert.Equal(t, "foo: bar", frontmatter)
 	assert.Equal(t, "", content)
+
+	frontmatter, content, err = splitFrontmatter(`foo: bar
+---
+`)
+	assert.Equal(t, errBadFrontmatter, err)
 }

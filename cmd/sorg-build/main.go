@@ -5,12 +5,15 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"strings"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
 	"github.com/joeshaw/envdecode"
 	"github.com/yosssi/gcss"
+	"gopkg.in/yaml.v2"
 )
 
 var stylesheets = []string{
@@ -33,6 +36,18 @@ var stylesheets = []string{
 type Conf struct {
 	// Verbose is whether the program will print debug output as it's running.
 	Verbose bool `env:"VERBOSE,default=false"`
+}
+
+// FragmentInfo is meta information about a fragment from its YAML frontmatter.
+type FragmentInfo struct {
+	// Image is an optional image that may be included with a fragment.
+	Image string `yaml:"image"`
+
+	// PublishedAt is when the fragment was published.
+	PublishedAt time.Time `yaml:"published_at"`
+
+	// Title is the fragment's title.
+	Title string `yaml:"title"`
 }
 
 func main() {
@@ -72,10 +87,22 @@ func compileFragments() error {
 
 		outName := strings.Replace(fragmentInfo.Name(), ".md", ".html", -1)
 
-		inFile, err := os.Open(inPath)
+		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
 			return err
 		}
+
+		frontmatter, content, err := splitFrontmatter(string(raw))
+		if err != nil {
+			return err
+		}
+
+		var info FragmentInfo
+		err = yaml.Unmarshal([]byte(frontmatter), &info)
+		if err != nil {
+			return err
+		}
+		log.Infof("Info = %+v", info)
 
 		outFile, err := os.Create(sorg.TargetFragmentsDir + outName)
 		if err != nil {
@@ -83,7 +110,7 @@ func compileFragments() error {
 		}
 		defer outFile.Close()
 
-		_, err = io.Copy(outFile, inFile)
+		_, err = outFile.WriteString(content)
 		if err != nil {
 			return err
 		}
@@ -111,7 +138,7 @@ func compileStylesheets() error {
 		if strings.HasSuffix(stylesheet, ".sass") {
 			_, err := gcss.Compile(outFile, inFile)
 			if err != nil {
-				return err
+				return fmt.Errorf("Error compiling %v: %v", inPath, err)
 			}
 		} else {
 			_, err := io.Copy(outFile, inFile)
@@ -124,13 +151,13 @@ func compileStylesheets() error {
 	return nil
 }
 
-var errTooManyParts = fmt.Errorf("Found more parts than frontmatter and content")
+var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
 func splitFrontmatter(content string) (string, string, error) {
-	parts := strings.Split(content, "---")
+	parts := regexp.MustCompile("(?m)^---").Split(content, 3)
 
-	if len(parts) > 3 || len(parts) > 1 && parts[0] != "" {
-		return "", "", errTooManyParts
+	if len(parts) > 1 && parts[0] != "" {
+		return "", "", errBadFrontmatter
 	} else if len(parts) == 2 {
 		return "", strings.TrimSpace(parts[1]), nil
 	} else if len(parts) == 3 {
