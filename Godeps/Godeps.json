@@ -1,0 +1,40 @@
+{
+	"ImportPath": "github.com/brandur/sorg",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v60",
+	"Packages": [
+		"github.com/brandur/sorg",
+		"github.com/brandur/sorg/cmd/sorg-build",
+		"github.com/brandur/sorg/cmd/sorg-serve"
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.8.3-112-g219c8cb",
+			"Rev": "219c8cb75c258c552e999735be6df753ffc7afdc"
+		},
+		{
+			"ImportPath": "github.com/joeshaw/envdecode",
+			"Rev": "573d2abb11d7ad19d922aa80d4b7870225c20911"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Comment": "v1.0-17-g089c718",
+			"Rev": "089c7181b8c728499929ff09b62d3fdd8df8adff"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/require",
+			"Comment": "v1.0-17-g089c718",
+			"Rev": "089c7181b8c728499929ff09b62d3fdd8df8adff"
+		},
+		{
+			"ImportPath": "github.com/yosssi/gcss",
+			"Comment": "v0.1.0-2-g3967759",
+			"Rev": "39677598ea4f3ec1da5568173b4d43611f307edb"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "320cb01ddbbf0473674c2585f9b6e245721de355"
+		}
+	]
+}
