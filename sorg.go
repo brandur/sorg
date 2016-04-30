@@ -20,6 +20,9 @@ const (
 	// FragmentsDir is the source directory for fragments.
 	FragmentsDir = "./org/fragments/"
 
+	// ImagesDir is the source for images.
+	ImagesDir = AssetsDir + "images/"
+
 	// JavascriptsDir is the source directory for JavaScripts.
 	JavascriptsDir = AssetsDir + "javascripts/"
 
@@ -39,7 +42,7 @@ const (
 	TargetFragmentsDir = TargetDir + "fragments/"
 
 	// ViewsDir is the source directory for views.
-	ViewsDir = "./views"
+	ViewsDir = "./views/"
 )
 
 // A list of all directories that are in the built static site.

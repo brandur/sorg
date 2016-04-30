@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -77,6 +78,11 @@ func main() {
 	}
 
 	err = compileStylesheets()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = linkImageAssets()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -183,6 +189,36 @@ func compileStylesheets() error {
 		}
 
 		outFile.WriteString("\n\n")
+	}
+
+	return nil
+}
+
+func linkImageAssets() error {
+	assets, err := ioutil.ReadDir(sorg.ImagesDir)
+	if err != nil {
+		return err
+	}
+
+	for _, asset := range assets {
+		log.Debugf("Linking image asset: %v", asset)
+
+		// we use absolute paths for source and destination because not doing
+		// so can result in some weird symbolic link inception
+		source, err := filepath.Abs(sorg.ImagesDir + asset.Name())
+		if err != nil {
+			return err
+		}
+
+		dest, err := filepath.Abs(sorg.TargetAssetsDir + asset.Name())
+		if err != nil {
+			return err
+		}
+
+		err = os.Symlink(source, dest)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
