@@ -54,4 +54,4 @@ vet:
 	go vet $(shell go list ./... | egrep -v '/org/|/vendor/')
 
 watch:
-	fswatch -o org/ | xargs -n1 -I{} make build
+	fswatch -o layouts/ org/ views/ | xargs -n1 -I{} make build

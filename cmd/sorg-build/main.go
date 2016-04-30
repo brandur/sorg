@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -13,6 +14,7 @@ import (
 	"github.com/brandur/sorg"
 	"github.com/joeshaw/envdecode"
 	"github.com/russross/blackfriday"
+	"github.com/yosssi/ace"
 	"github.com/yosssi/gcss"
 	"gopkg.in/yaml.v2"
 )
@@ -35,6 +37,9 @@ var stylesheets = []string{
 
 // Conf contains configuration information for the command.
 type Conf struct {
+	// GoogleAnalyticsID is the account identifier for Google Analytics to use.
+	GoogleAnalyticsID string `env:"GOOGLE_ANALYTICS_ID"`
+
 	// Verbose is whether the program will print debug output as it's running.
 	Verbose bool `env:"VERBOSE,default=false"`
 }
@@ -51,8 +56,9 @@ type FragmentInfo struct {
 	Title string `yaml:"title"`
 }
 
+var conf Conf
+
 func main() {
-	var conf Conf
 	err := envdecode.Decode(&conf)
 	if err != nil {
 		log.Fatal(err)
@@ -86,7 +92,7 @@ func compileFragments() error {
 		inPath := sorg.FragmentsDir + fragmentInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
 
-		outName := strings.Replace(fragmentInfo.Name(), ".md", ".html", -1)
+		outName := strings.Replace(fragmentInfo.Name(), ".md", "", -1)
 
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
@@ -105,23 +111,27 @@ func compileFragments() error {
 		}
 
 		if info.Title == "" {
-			fmt.Errorf("No title for fragment: %v", inPath)
+			return fmt.Errorf("No title for fragment: %v", inPath)
 		}
 
 		if info.PublishedAt == nil {
-			fmt.Errorf("No publish date for fragment: %v", inPath)
+			return fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
-		outFile, err := os.Create(sorg.TargetFragmentsDir + outName)
-		if err != nil {
-			return err
+		locals := map[string]string{
+			"Content":     string(renderMarkdown([]byte(content))),
+			"Image":       info.Image,
+			"PublishedAt": info.PublishedAt.Format("Jan 2, 2006"),
+			"Title":       info.Title,
+
+			"BodyClass":         "",
+			"GoogleAnalyticsID": conf.GoogleAnalyticsID,
+			"Release":           sorg.Release,
+			"ViewportWidth":     "device-width",
 		}
-		defer outFile.Close()
 
-		contentHTML := renderMarkdown([]byte(content))
-		contentHTML = append([]byte("<h1>" + info.Title + "</h1>\n\n"), contentHTML...)
-
-		_, err = outFile.Write(contentHTML)
+		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
+			sorg.TargetFragmentsDir+outName, locals)
 		if err != nil {
 			return err
 		}
@@ -183,6 +193,31 @@ func renderMarkdown(source []byte) []byte {
 
 	renderer := blackfriday.HtmlRenderer(htmlFlags, "", "")
 	return blackfriday.Markdown(source, renderer, extensions)
+}
+
+func renderView(layout, view, target string, locals map[string]string) error {
+	log.Debugf("Rendering: %v", target)
+
+	template, err := ace.Load(layout, view, nil)
+	if err != nil {
+		return err
+	}
+
+	file, err := os.Create(target)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	err = template.Execute(writer, locals)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")

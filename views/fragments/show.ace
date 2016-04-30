@@ -1,0 +1,20 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  .fragments
+    .content
+      {{if ne .Image ""}}
+        img#mood src={{.Image}}
+      {{end}}
+      #title
+        h1 {{.Title}}
+        .meta
+          {{.PublishedAt}}
+      article class="{{if eq .Image ""}}without-mood{{else}}with-mood{{end}}"
+        {{HTML .Content}}
+        .divider-short
+        .info
+          p Find an error? Please consider <a href="https://github.com/brandur/org/edit/master/fragments/{{.Slug}}.md">sending a pull request</a>.
+  = include views/_footer

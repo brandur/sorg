@@ -7,20 +7,39 @@ import (
 )
 
 const (
+	// Release is the asset version of the site. Bump when any assets are
+	// updated to blow away any browser caches.
+	Release = "1"
+)
+
+const (
+	// AssetsDir is the source directory for image, JavaScript, and stylesheet
+	// assets.
 	AssetsDir = "./org/assets/"
 
+	// FragmentsDir is the source directory for fragments.
 	FragmentsDir = "./org/fragments/"
 
+	// JavascriptsDir is the source directory for JavaScripts.
 	JavascriptsDir = AssetsDir + "javascripts/"
 
+	// LayoutsDir is the source directory for view layouts.
+	LayoutsDir = "./layouts/"
+
+	// StylesheetsDir is the source directory for stylesheets.
 	StylesheetsDir = AssetsDir + "stylesheets/"
 
-	TargetAssetsDir = TargetDir + "assets/"
+	// TargetAssetsDir is the target directory where static assets are placed.
+	TargetAssetsDir = TargetDir + "assets/" + Release + "/"
 
-	// TargetDir is the location where the site will be built to.
+	// TargetDir is the target location where the site will be built to.
 	TargetDir = "./public/"
 
+	// TargetFragmentsDir is the target directory for fragments.
 	TargetFragmentsDir = TargetDir + "fragments/"
+
+	// ViewsDir is the source directory for views.
+	ViewsDir = "./views"
 )
 
 // A list of all directories that are in the built static site.
@@ -29,7 +48,7 @@ var targetDirs = []string{
 	TargetFragmentsDir,
 }
 
-// CreateTargetDir creates TargetDir if it doesn't already exist.
+// CreateTargetDirs creates TargetDir if it doesn't already exist.
 func CreateTargetDirs() error {
 	for _, targetDir := range targetDirs {
 		err := os.MkdirAll(targetDir, 0755)
