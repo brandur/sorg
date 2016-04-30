@@ -156,6 +156,8 @@ func compileStylesheets() error {
 			return err
 		}
 
+		outFile.WriteString("/* " + stylesheet + " */\n\n")
+
 		if strings.HasSuffix(stylesheet, ".sass") {
 			_, err := gcss.Compile(outFile, inFile)
 			if err != nil {
@@ -167,6 +169,8 @@ func compileStylesheets() error {
 				return err
 			}
 		}
+
+		outFile.WriteString("\n\n")
 	}
 
 	return nil
