@@ -118,17 +118,12 @@ func compileFragments() error {
 			return fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
-		locals := map[string]string{
+		locals := getLocals(map[string]string{
 			"Content":     string(renderMarkdown([]byte(content))),
 			"Image":       info.Image,
 			"PublishedAt": info.PublishedAt.Format("Jan 2, 2006"),
 			"Title":       info.Title,
-
-			"BodyClass":         "",
-			"GoogleAnalyticsID": conf.GoogleAnalyticsID,
-			"Release":           sorg.Release,
-			"ViewportWidth":     "device-width",
-		}
+		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
 			sorg.TargetFragmentsDir+outName, locals)
@@ -138,6 +133,23 @@ func compileFragments() error {
 	}
 
 	return nil
+}
+
+// Gets a map of local values for use while rendering a template and includes
+// a few "special" values that are globally relevant to all templates.
+func getLocals(locals map[string]string) map[string]string {
+	defaults := map[string]string{
+		"BodyClass":         "",
+		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
+		"Release":           sorg.Release,
+		"ViewportWidth":     "device-width",
+	}
+
+	for k, v := range locals {
+		defaults[k] = v
+	}
+
+	return defaults
 }
 
 func compileStylesheets() error {

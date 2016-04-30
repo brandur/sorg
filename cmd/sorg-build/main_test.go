@@ -3,8 +3,18 @@ package main
 import (
 	"testing"
 
+	"github.com/brandur/sorg"
 	assert "github.com/stretchr/testify/require"
 )
+
+func TestGetLocals(t *testing.T) {
+	locals := getLocals(map[string]string{
+		"Foo": "Bar",
+	})
+
+	assert.Equal(t, "Bar", locals["Foo"])
+	assert.Equal(t, sorg.Release, locals["Release"])
+}
 
 func TestRenderMarkdown(t *testing.T) {
 	html := renderMarkdown([]byte("**hello**"))
