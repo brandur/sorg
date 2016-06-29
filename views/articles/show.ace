@@ -1,0 +1,43 @@
+= content main
+  {{if ne .Image ""}}
+    .vista style="background-image: url('{{.Image}}')"
+      .vista-inner
+    .vista-overlay
+      .vista-overlay-inner
+        #title
+          h1 {{.Title}}
+  {{else}}
+    .flag
+    .top-nav
+      = include views/_nav
+    .top-spacing
+  {{end}}
+  .signature
+    .content
+      {{if eq .Image ""}}
+        #title
+          h1 {{.Title}}
+      {{end}}
+      {{if ne .Hook ""}}
+        p.hook {{.Hook}}
+        .divider-short
+      {{end}}
+      #toc
+        {{if ne .TOC ""}}
+          h2 Table of Contents
+          {{HTML .TOC}}
+          .divider-short
+        {{end}}
+      article
+        {{HTML .Content}}
+        .divider-short
+        .info
+          p <strong>{{.Title}}</strong> was published on <strong>{{.PublishedAt}}</strong> from <strong>{{.Location}}</strong>. Find me on Twitter at <strong><a href="https://twitter.com/brandur">@brandur</a></strong>.
+          {{if ne .HNLink ""}}
+            p Please post comments and discussion to <strong><a href="{{.HNLink}}">Hacker News</a></strong>.
+          {{end}}
+          p Find an error? Please consider <a href="https://github.com/brandur/org/edit/master/articles/{{.Slug}}.md">sending a pull request</a>.
+          {{if ne .Attributions ""}}
+            p.attribution== {{HTML .Attributions}}
+          {{end}}
+    = include views/_footer

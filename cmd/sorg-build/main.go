@@ -36,6 +36,28 @@ var stylesheets = []string{
 	"twitter.sass",
 }
 
+// ArticleInfo is meta information about an article from its YAML frontmatter.
+type ArticleInfo struct {
+	// Attributions are any attributions for content that may be included in
+	// the article (like an image in the header for example).
+	Attributions string `yaml:"attributions"`
+
+	// HNLink is an optional link to comments on Hacker News.
+	HNLink string `yaml:"hn_link"`
+
+	// Hook is a leading sentence or two to succinctly introduce the article.
+	Hook string `yaml:"hook"`
+
+	// Image is an optional image that may be included with an article.
+	Image string `yaml:"image"`
+
+	// PublishedAt is when the article was published.
+	PublishedAt *time.Time `yaml:"published_at"`
+
+	// Title is the article's title.
+	Title string `yaml:"title"`
+}
+
 // Conf contains configuration information for the command.
 type Conf struct {
 	// GoogleAnalyticsID is the account identifier for Google Analytics to use.
@@ -72,6 +94,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	err = compileArticles()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	err = compileFragments()
 	if err != nil {
 		log.Fatal(err)
@@ -86,6 +113,65 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func compileArticles() error {
+	articleInfos, err := ioutil.ReadDir(sorg.ArticlesDir)
+	if err != nil {
+		return err
+	}
+
+	for _, articleInfo := range articleInfos {
+		inPath := sorg.ArticlesDir + articleInfo.Name()
+		log.Debugf("Compiling: %v", inPath)
+
+		outName := strings.Replace(articleInfo.Name(), ".md", "", -1)
+
+		raw, err := ioutil.ReadFile(inPath)
+		if err != nil {
+			return err
+		}
+
+		frontmatter, content, err := splitFrontmatter(string(raw))
+		if err != nil {
+			return err
+		}
+
+		var info ArticleInfo
+		err = yaml.Unmarshal([]byte(frontmatter), &info)
+		if err != nil {
+			return err
+		}
+
+		if info.Title == "" {
+			return fmt.Errorf("No title for article: %v", inPath)
+		}
+
+		if info.PublishedAt == nil {
+			return fmt.Errorf("No publish date for article: %v", inPath)
+		}
+
+		locals := getLocals(map[string]string{
+			"Attributions": info.Attributions,
+			"Content":      string(renderMarkdown([]byte(content))),
+			"HNLink":       info.HNLink,
+			"Hook":         info.Hook,
+			"Image":        info.Image,
+			"PublishedAt":  info.PublishedAt.Format("Jan 2, 2006"),
+			"Title":        info.Title,
+
+			// TODO: Need a TOC!
+			"TOC": "",
+		})
+
+		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
+			sorg.TargetArticlesDir+outName, locals)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func compileFragments() error {
@@ -159,7 +245,7 @@ func getLocals(locals map[string]string) map[string]string {
 }
 
 func compileStylesheets() error {
-	outFile, err := os.Create(sorg.TargetAssetsDir + "app.css")
+	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "app.css")
 	if err != nil {
 		return err
 	}
@@ -211,6 +297,11 @@ func linkImageAssets() error {
 		}
 
 		dest, err := filepath.Abs(sorg.TargetAssetsDir + asset.Name())
+		if err != nil {
+			return err
+		}
+
+		err = os.RemoveAll(dest)
 		if err != nil {
 			return err
 		}

@@ -13,6 +13,12 @@ const (
 )
 
 const (
+	// ArticlesDir is the source directory for articles.
+	ArticlesDir = "./org/articles/"
+
+	// ArticlesDraftsDir is the source directory for article drafts.
+	ArticlesDraftsDir = "./org/drafts/"
+
 	// AssetsDir is the source directory for image, JavaScript, and stylesheet
 	// assets.
 	AssetsDir = "./org/assets/"
@@ -32,8 +38,18 @@ const (
 	// StylesheetsDir is the source directory for stylesheets.
 	StylesheetsDir = AssetsDir + "stylesheets/"
 
-	// TargetAssetsDir is the target directory where static assets are placed.
-	TargetAssetsDir = TargetDir + "assets/" + Release + "/"
+	// TargetArticlesDir is the target directory for articles.
+	TargetArticlesDir = TargetDir + "articles/"
+
+	// TargetAssetsDir is the target directory where static assets are placed
+	// which should not be versioned by release number. Unversioned assets are
+	// those that probably don't need to change between releases like images.
+	TargetAssetsDir = TargetDir + "assets/"
+
+	// TargetVersionedAssetsDir is the target directory where static assets are
+	// placed which should be versioned by release number. Versioned assets are
+	// those that might need to change on release like CSS or JS files.
+	TargetVersionedAssetsDir = TargetDir + "assets/" + Release + "/"
 
 	// TargetDir is the target location where the site will be built to.
 	TargetDir = "./public/"
@@ -47,6 +63,7 @@ const (
 
 // A list of all directories that are in the built static site.
 var targetDirs = []string{
+	TargetArticlesDir,
 	TargetAssetsDir,
 	TargetFragmentsDir,
 }
