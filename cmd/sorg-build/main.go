@@ -37,8 +37,8 @@ var stylesheets = []string{
 	"twitter.sass",
 }
 
-// ArticleInfo is meta information about an article from its YAML frontmatter.
-type ArticleInfo struct {
+// Article represents an article to be rendered.
+type Article struct {
 	// Attributions are any attributions for content that may be included in
 	// the article (like an image in the header for example).
 	Attributions string `yaml:"attributions"`
@@ -78,8 +78,9 @@ type Conf struct {
 	Verbose bool `env:"VERBOSE,default=false"`
 }
 
-// FragmentInfo is meta information about a fragment from its YAML frontmatter.
-type FragmentInfo struct {
+// Fragment represents a fragment (that is, a short "stream of consciousness"
+// style article) to be rendered.
+type Fragment struct {
 	// Content is the HTML content of the fragment. It isn't included as YAML
 	// frontmatter, and is rather split out of an fragment's Markdown file,
 	// rendered, and then added separately.
@@ -153,27 +154,27 @@ func compileArticles() error {
 			return err
 		}
 
-		var info ArticleInfo
-		err = yaml.Unmarshal([]byte(frontmatter), &info)
+		var article Article
+		err = yaml.Unmarshal([]byte(frontmatter), &article)
 		if err != nil {
 			return err
 		}
 
-		if info.Title == "" {
+		if article.Title == "" {
 			return fmt.Errorf("No title for article: %v", inPath)
 		}
 
-		if info.PublishedAt == nil {
+		if article.PublishedAt == nil {
 			return fmt.Errorf("No publish date for article: %v", inPath)
 		}
 
-		info.Content = string(renderMarkdown([]byte(content)))
+		article.Content = string(renderMarkdown([]byte(content)))
 
 		// TODO: Need a TOC!
-		info.TOC = ""
+		article.TOC = ""
 
-		locals := getLocals(info.Title, map[string]interface{}{
-			"Article": info,
+		locals := getLocals(article.Title, map[string]interface{}{
+			"Article": article,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
@@ -208,24 +209,24 @@ func compileFragments() error {
 			return err
 		}
 
-		var info FragmentInfo
-		err = yaml.Unmarshal([]byte(frontmatter), &info)
+		var fragment Fragment
+		err = yaml.Unmarshal([]byte(frontmatter), &fragment)
 		if err != nil {
 			return err
 		}
 
-		if info.Title == "" {
+		if fragment.Title == "" {
 			return fmt.Errorf("No title for fragment: %v", inPath)
 		}
 
-		if info.PublishedAt == nil {
+		if fragment.PublishedAt == nil {
 			return fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
-		info.Content = string(renderMarkdown([]byte(content)))
+		fragment.Content = string(renderMarkdown([]byte(content)))
 
-		locals := getLocals(info.Title, map[string]interface{}{
-			"Fragment": info,
+		locals := getLocals(fragment.Title, map[string]interface{}{
+			"Fragment": fragment,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
