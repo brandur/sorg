@@ -5,14 +5,14 @@
   .top-spacing
   .fragments
     .content
-      {{if ne .Image ""}}
-        img#mood src={{.Image}}
+      {{if ne .Fragment.Image ""}}
+        img#mood src={{.Fragment.Image}}
       {{end}}
       #title
-        h1 {{.Title}}
+        h1 {{.Fragment.Title}}
         .meta
-          {{.PublishedAt}}
-      article class="{{if eq .Image ""}}without-mood{{else}}with-mood{{end}}"
+          {{FormatTime .Fragment.PublishedAt}}
+      article class="{{if eq .Fragment.Image ""}}without-mood{{else}}with-mood{{end}}"
         {{HTML .Content}}
         .divider-short
         .info

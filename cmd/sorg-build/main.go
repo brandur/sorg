@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"html/template"
 	"io"
 	"io/ioutil"
 	"os"
@@ -151,14 +152,9 @@ func compileArticles() error {
 			return fmt.Errorf("No publish date for article: %v", inPath)
 		}
 
-		locals := getLocals(map[string]string{
-			"Attributions": info.Attributions,
-			"Content":      string(renderMarkdown([]byte(content))),
-			"HNLink":       info.HNLink,
-			"Hook":         info.Hook,
-			"Image":        info.Image,
-			"PublishedAt":  info.PublishedAt.Format("Jan 2, 2006"),
-			"Title":        info.Title,
+		locals := getLocals(info.Title, map[string]interface{}{
+			"Article": info,
+			"Content": string(renderMarkdown([]byte(content))),
 
 			// TODO: Need a TOC!
 			"TOC": "",
@@ -210,11 +206,9 @@ func compileFragments() error {
 			return fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
-		locals := getLocals(map[string]string{
-			"Content":     string(renderMarkdown([]byte(content))),
-			"Image":       info.Image,
-			"PublishedAt": info.PublishedAt.Format("Jan 2, 2006"),
-			"Title":       info.Title,
+		locals := getLocals(info.Title, map[string]interface{}{
+			"Content":  string(renderMarkdown([]byte(content))),
+			"Fragment": info,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
@@ -229,11 +223,12 @@ func compileFragments() error {
 
 // Gets a map of local values for use while rendering a template and includes
 // a few "special" values that are globally relevant to all templates.
-func getLocals(locals map[string]string) map[string]string {
-	defaults := map[string]string{
+func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
+	defaults := map[string]interface{}{
 		"BodyClass":         "",
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"Release":           sorg.Release,
+		"Title":             title,
 		"ViewportWidth":     "device-width",
 	}
 
@@ -338,10 +333,16 @@ func renderMarkdown(source []byte) []byte {
 	return blackfriday.Markdown(source, renderer, extensions)
 }
 
-func renderView(layout, view, target string, locals map[string]string) error {
+func renderView(layout, view, target string, locals map[string]interface{}) error {
 	log.Debugf("Rendering: %v", target)
 
-	template, err := ace.Load(layout, view, nil)
+	funcMap := template.FuncMap{
+		"FormatTime": func(t *time.Time) string {
+			return t.Format("Jan 2, 2006")
+		},
+	}
+
+	template, err := ace.Load(layout, view, &ace.Options{FuncMap: funcMap})
 	if err != nil {
 		return err
 	}
