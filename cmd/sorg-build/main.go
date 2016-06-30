@@ -43,6 +43,11 @@ type ArticleInfo struct {
 	// the article (like an image in the header for example).
 	Attributions string `yaml:"attributions"`
 
+	// Content is the HTML content of the article. It isn't included as YAML
+	// frontmatter, and is rather split out of an article's Markdown file,
+	// rendered, and then added separately.
+	Content string `yaml:"-"`
+
 	// HNLink is an optional link to comments on Hacker News.
 	HNLink string `yaml:"hn_link"`
 
@@ -57,6 +62,11 @@ type ArticleInfo struct {
 
 	// Title is the article's title.
 	Title string `yaml:"title"`
+
+	// TOC is the HTML rendered table of contents of the article. It isn't
+	// included as YAML frontmatter, but rather calculated from the article's
+	// content, rendered, and then added separately.
+	TOC string `yaml:"-"`
 }
 
 // Conf contains configuration information for the command.
@@ -70,6 +80,11 @@ type Conf struct {
 
 // FragmentInfo is meta information about a fragment from its YAML frontmatter.
 type FragmentInfo struct {
+	// Content is the HTML content of the fragment. It isn't included as YAML
+	// frontmatter, and is rather split out of an fragment's Markdown file,
+	// rendered, and then added separately.
+	Content string `yaml:"-"`
+
 	// Image is an optional image that may be included with a fragment.
 	Image string `yaml:"image"`
 
@@ -152,12 +167,13 @@ func compileArticles() error {
 			return fmt.Errorf("No publish date for article: %v", inPath)
 		}
 
+		info.Content = string(renderMarkdown([]byte(content)))
+
+		// TODO: Need a TOC!
+		info.TOC = ""
+
 		locals := getLocals(info.Title, map[string]interface{}{
 			"Article": info,
-			"Content": string(renderMarkdown([]byte(content))),
-
-			// TODO: Need a TOC!
-			"TOC": "",
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
@@ -206,8 +222,9 @@ func compileFragments() error {
 			return fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
+		info.Content = string(renderMarkdown([]byte(content)))
+
 		locals := getLocals(info.Title, map[string]interface{}{
-			"Content":  string(renderMarkdown([]byte(content))),
 			"Fragment": info,
 		})
 

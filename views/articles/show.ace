@@ -23,13 +23,13 @@
         .divider-short
       {{end}}
       #toc
-        {{if ne .TOC ""}}
+        {{if ne .Article.TOC ""}}
           h2 Table of Contents
-          {{HTML .TOC}}
+          {{HTML .Article.TOC}}
           .divider-short
         {{end}}
       article
-        {{HTML .Content}}
+        {{HTML .Article.Content}}
         .divider-short
         .info
           p <strong>{{.Article.Title}}</strong> was published on <strong>{{FormatTime .Article.PublishedAt}}</strong> from <strong>{{.Location}}</strong>. Find me on Twitter at <strong><a href="https://twitter.com/brandur">@brandur</a></strong>.
