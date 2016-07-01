@@ -26,7 +26,7 @@ const (
 	// FragmentsDir is the source directory for fragments.
 	FragmentsDir = "./org/fragments/"
 
-	// FragmentsDir is the source directory for fragment drafts.
+	// FragmentsDraftsDir is the source directory for fragment drafts.
 	FragmentsDraftsDir = "./org/fragments-drafts/"
 
 	// ImagesDir is the source for images.
