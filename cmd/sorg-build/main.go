@@ -238,9 +238,8 @@ func compileArticles() error {
 		"Articles": articles,
 	})
 
-	// TODO: We need this to be at /articles :/
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/index",
-		sorg.TargetDir+"articles/index", locals)
+		sorg.TargetDir+"articles", locals)
 	if err != nil {
 		return err
 	}

@@ -8,12 +8,13 @@ import (
 )
 
 func TestGetLocals(t *testing.T) {
-	locals := getLocals(map[string]string{
+	locals := getLocals("Title", map[string]interface{}{
 		"Foo": "Bar",
 	})
 
 	assert.Equal(t, "Bar", locals["Foo"])
 	assert.Equal(t, sorg.Release, locals["Release"])
+	assert.Equal(t, "Title", locals["Title"])
 }
 
 func TestRenderMarkdown(t *testing.T) {
