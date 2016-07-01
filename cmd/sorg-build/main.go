@@ -97,6 +97,10 @@ type Conf struct {
 	// GoogleAnalyticsID is the account identifier for Google Analytics to use.
 	GoogleAnalyticsID string `env:"GOOGLE_ANALYTICS_ID"`
 
+	// IncludeDrafts will include draft articles and fragments in the built
+	// site.
+	IncludeDrafts bool `env:"DRAFTS,default=false"`
+
 	// Verbose is whether the program will print debug output as it's running.
 	Verbose bool `env:"VERBOSE,default=false"`
 }
@@ -178,58 +182,18 @@ func main() {
 }
 
 func compileArticles() error {
-	articleInfos, err := ioutil.ReadDir(sorg.ArticlesDir)
+	articles, err := compileArticlesDir(sorg.ArticlesDir)
 	if err != nil {
 		return err
 	}
 
-	var articles []*Article
-
-	for _, articleInfo := range articleInfos {
-		inPath := sorg.ArticlesDir + articleInfo.Name()
-		log.Debugf("Compiling: %v", inPath)
-
-		raw, err := ioutil.ReadFile(inPath)
+	if conf.IncludeDrafts {
+		drafts, err := compileArticlesDir(sorg.ArticlesDraftsDir)
 		if err != nil {
 			return err
 		}
 
-		frontmatter, content, err := splitFrontmatter(string(raw))
-		if err != nil {
-			return err
-		}
-
-		var article Article
-		err = yaml.Unmarshal([]byte(frontmatter), &article)
-		if err != nil {
-			return err
-		}
-
-		articles = append(articles, &article)
-
-		if article.Title == "" {
-			return fmt.Errorf("No title for article: %v", inPath)
-		}
-
-		if article.PublishedAt == nil {
-			return fmt.Errorf("No publish date for article: %v", inPath)
-		}
-
-		article.Content = string(renderMarkdown([]byte(content)))
-		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
-
-		// TODO: Need a TOC!
-		article.TOC = ""
-
-		locals := getLocals(article.Title, map[string]interface{}{
-			"Article": article,
-		})
-
-		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
-			sorg.TargetArticlesDir+article.Slug, locals)
-		if err != nil {
-			return err
-		}
+		articles = append(articles, drafts...)
 	}
 
 	sort.Sort(ArticlesByPublished(articles))
@@ -247,56 +211,82 @@ func compileArticles() error {
 	return nil
 }
 
-func compileFragments() error {
-	fragmentInfos, err := ioutil.ReadDir(sorg.FragmentsDir)
+func compileArticlesDir(dir string) ([]*Article, error) {
+	articleInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	var fragments []*Fragment
+	var articles []*Article
 
-	for _, fragmentInfo := range fragmentInfos {
-		inPath := sorg.FragmentsDir + fragmentInfo.Name()
+	for _, articleInfo := range articleInfos {
+		if isHidden(articleInfo) {
+			log.Debugf("Skipping: %v", dir+articleInfo.Name())
+			continue
+		}
+
+		inPath := dir + articleInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
 
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		frontmatter, content, err := splitFrontmatter(string(raw))
 		if err != nil {
-			return err
+			return nil, err
 		}
 
-		var fragment Fragment
-		err = yaml.Unmarshal([]byte(frontmatter), &fragment)
+		var article Article
+		err = yaml.Unmarshal([]byte(frontmatter), &article)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
-		fragments = append(fragments, &fragment)
+		articles = append(articles, &article)
 
-		if fragment.Title == "" {
-			return fmt.Errorf("No title for fragment: %v", inPath)
+		if article.Title == "" {
+			return nil, fmt.Errorf("No title for article: %v", inPath)
 		}
 
-		if fragment.PublishedAt == nil {
-			return fmt.Errorf("No publish date for fragment: %v", inPath)
+		if article.PublishedAt == nil {
+			return nil, fmt.Errorf("No publish date for article: %v", inPath)
 		}
 
-		fragment.Content = string(renderMarkdown([]byte(content)))
-		fragment.Slug = strings.Replace(fragmentInfo.Name(), ".md", "", -1)
+		article.Content = string(renderMarkdown([]byte(content)))
+		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
 
-		locals := getLocals(fragment.Title, map[string]interface{}{
-			"Fragment": fragment,
+		// TODO: Need a TOC!
+		article.TOC = ""
+
+		locals := getLocals(article.Title, map[string]interface{}{
+			"Article": article,
 		})
 
-		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
-			sorg.TargetFragmentsDir+fragment.Slug, locals)
+		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
+			sorg.TargetArticlesDir+article.Slug, locals)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return articles, nil
+}
+
+func compileFragments() error {
+	fragments, err := compileFragmentsDir(sorg.FragmentsDir)
+	if err != nil {
+		return err
+	}
+
+	if conf.IncludeDrafts {
+		drafts, err := compileFragmentsDir(sorg.FragmentsDraftsDir)
 		if err != nil {
 			return err
 		}
+
+		fragments = append(fragments, drafts...)
 	}
 
 	sort.Sort(FragmentsByPublished(fragments))
@@ -313,6 +303,66 @@ func compileFragments() error {
 	}
 
 	return nil
+}
+
+func compileFragmentsDir(dir string) ([]*Fragment, error) {
+	fragmentInfos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return nil, err
+	}
+
+	var fragments []*Fragment
+
+	for _, fragmentInfo := range fragmentInfos {
+		if isHidden(fragmentInfo) {
+			log.Debugf("Skipping: %v", dir+fragmentInfo.Name())
+			continue
+		}
+
+		inPath := dir + fragmentInfo.Name()
+		log.Debugf("Compiling: %v", inPath)
+
+		raw, err := ioutil.ReadFile(inPath)
+		if err != nil {
+			return nil, err
+		}
+
+		frontmatter, content, err := splitFrontmatter(string(raw))
+		if err != nil {
+			return nil, err
+		}
+
+		var fragment Fragment
+		err = yaml.Unmarshal([]byte(frontmatter), &fragment)
+		if err != nil {
+			return nil, err
+		}
+
+		fragments = append(fragments, &fragment)
+
+		if fragment.Title == "" {
+			return nil, fmt.Errorf("No title for fragment: %v", inPath)
+		}
+
+		if fragment.PublishedAt == nil {
+			return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
+		}
+
+		fragment.Content = string(renderMarkdown([]byte(content)))
+		fragment.Slug = strings.Replace(fragmentInfo.Name(), ".md", "", -1)
+
+		locals := getLocals(fragment.Title, map[string]interface{}{
+			"Fragment": fragment,
+		})
+
+		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
+			sorg.TargetFragmentsDir+fragment.Slug, locals)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return fragments, nil
 }
 
 // Gets a map of local values for use while rendering a template and includes
@@ -367,6 +417,12 @@ func compileStylesheets() error {
 	}
 
 	return nil
+}
+
+// Determines whether a file should be hidden by checking whether it's prefixed
+// with a dot.
+func isHidden(f os.FileInfo) bool {
+	return f.Name()[0] == '.'
 }
 
 func linkImageAssets() error {
