@@ -220,7 +220,7 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 	var articles []*Article
 
 	for _, articleInfo := range articleInfos {
-		if isHidden(articleInfo) {
+		if isHidden(articleInfo.Name()) {
 			log.Debugf("Skipping: %v", dir+articleInfo.Name())
 			continue
 		}
@@ -314,7 +314,7 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 	var fragments []*Fragment
 
 	for _, fragmentInfo := range fragmentInfos {
-		if isHidden(fragmentInfo) {
+		if isHidden(fragmentInfo.Name()) {
 			log.Debugf("Skipping: %v", dir+fragmentInfo.Name())
 			continue
 		}
@@ -421,8 +421,8 @@ func compileStylesheets() error {
 
 // Determines whether a file should be hidden by checking whether it's prefixed
 // with a dot.
-func isHidden(f os.FileInfo) bool {
-	return f.Name()[0] == '.'
+func isHidden(basename string) bool {
+	return basename[0] == '.'
 }
 
 func linkImageAssets() error {

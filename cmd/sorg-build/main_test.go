@@ -17,6 +17,11 @@ func TestGetLocals(t *testing.T) {
 	assert.Equal(t, "Title", locals["Title"])
 }
 
+func TestIsHidden(t *testing.T) {
+	assert.Equal(t, true, isHidden(".gitkeep"))
+	assert.Equal(t, false, isHidden("article"))
+}
+
 func TestRenderMarkdown(t *testing.T) {
 	html := renderMarkdown([]byte("**hello**"))
 	assert.Equal(t, "<p><strong>hello</strong></p>\n", string(html))
