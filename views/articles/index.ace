@@ -1,0 +1,23 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  .content
+    #title
+      h1 Articles
+    ul.list
+      {{range .Articles}}
+        li
+          a href="/{{.Slug}}"
+            {{.Title}}
+          span.meta
+            |  
+            {{FormatTime .PublishedAt}}
+          {{if ne .Hook ""}}
+            p.hook {{.Hook}}
+          {{end}}
+          .divider-short
+      {{end}}
+    p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
+  = include views/_footer

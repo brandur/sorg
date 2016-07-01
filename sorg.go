@@ -39,7 +39,7 @@ const (
 	StylesheetsDir = AssetsDir + "stylesheets/"
 
 	// TargetArticlesDir is the target directory for articles.
-	TargetArticlesDir = TargetDir + "articles/"
+	TargetArticlesDir = TargetDir
 
 	// TargetAssetsDir is the target directory where static assets are placed
 	// which should not be versioned by release number. Unversioned assets are
@@ -66,6 +66,7 @@ var targetDirs = []string{
 	TargetArticlesDir,
 	TargetAssetsDir,
 	TargetFragmentsDir,
+	TargetVersionedAssetsDir,
 }
 
 // CreateTargetDirs creates TargetDir if it doesn't already exist.

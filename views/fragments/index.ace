@@ -1,0 +1,19 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  .content
+    #title
+      h1 Fragments
+    p This section contains a series of short stream of consciousness style notes that don't merit a more dedicated write-up.
+    ul.list
+      {{range .Fragments}}
+        li
+          a href="/fragments/{{.Slug}}"
+            {{.Title}}
+          span.meta
+            |  
+            {{FormatTime .PublishedAt}}
+      {{end}}
+  = include views/_footer

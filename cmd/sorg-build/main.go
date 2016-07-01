@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 
@@ -60,6 +61,10 @@ type Article struct {
 	// PublishedAt is when the article was published.
 	PublishedAt *time.Time `yaml:"published_at"`
 
+	// Slug is the identifier used to reference this article in a URL. It's
+	// determined from the name of the article's Markdown file.
+	Slug string `yaml:"-"`
+
 	// Title is the article's title.
 	Title string `yaml:"title"`
 
@@ -67,6 +72,24 @@ type Article struct {
 	// included as YAML frontmatter, but rather calculated from the article's
 	// content, rendered, and then added separately.
 	TOC string `yaml:"-"`
+}
+
+// ArticlesByPublished implements time-based sorting for Article.
+type ArticlesByPublished []*Article
+
+func (a ArticlesByPublished) Len() int      { return len(a) }
+func (a ArticlesByPublished) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+
+func (a ArticlesByPublished) Less(i, j int) bool {
+	if a[i].PublishedAt == nil {
+		return true
+	}
+
+	if a[j].PublishedAt == nil {
+		return false
+	}
+
+	return a[i].PublishedAt.After(*a[j].PublishedAt)
 }
 
 // Conf contains configuration information for the command.
@@ -92,8 +115,30 @@ type Fragment struct {
 	// PublishedAt is when the fragment was published.
 	PublishedAt *time.Time `yaml:"published_at"`
 
+	// Slug is the identifier used to reference this fragment in a URL. It's
+	// determined from the name of the fragment's Markdown file.
+	Slug string `yaml:"-"`
+
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
+}
+
+// FragmentsByPublished implements time-based sorting for Article.
+type FragmentsByPublished []*Fragment
+
+func (a FragmentsByPublished) Len() int      { return len(a) }
+func (a FragmentsByPublished) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
+
+func (a FragmentsByPublished) Less(i, j int) bool {
+	if a[i].PublishedAt == nil {
+		return true
+	}
+
+	if a[j].PublishedAt == nil {
+		return false
+	}
+
+	return a[i].PublishedAt.After(*a[j].PublishedAt)
 }
 
 var conf Conf
@@ -138,11 +183,11 @@ func compileArticles() error {
 		return err
 	}
 
+	var articles []*Article
+
 	for _, articleInfo := range articleInfos {
 		inPath := sorg.ArticlesDir + articleInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
-
-		outName := strings.Replace(articleInfo.Name(), ".md", "", -1)
 
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
@@ -160,6 +205,8 @@ func compileArticles() error {
 			return err
 		}
 
+		articles = append(articles, &article)
+
 		if article.Title == "" {
 			return fmt.Errorf("No title for article: %v", inPath)
 		}
@@ -169,6 +216,7 @@ func compileArticles() error {
 		}
 
 		article.Content = string(renderMarkdown([]byte(content)))
+		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
 
 		// TODO: Need a TOC!
 		article.TOC = ""
@@ -178,10 +226,23 @@ func compileArticles() error {
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
-			sorg.TargetArticlesDir+outName, locals)
+			sorg.TargetArticlesDir+article.Slug, locals)
 		if err != nil {
 			return err
 		}
+	}
+
+	sort.Sort(ArticlesByPublished(articles))
+
+	locals := getLocals("Articles", map[string]interface{}{
+		"Articles": articles,
+	})
+
+	// TODO: We need this to be at /articles :/
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/index",
+		sorg.TargetDir+"articles/index", locals)
+	if err != nil {
+		return err
 	}
 
 	return nil
@@ -193,11 +254,11 @@ func compileFragments() error {
 		return err
 	}
 
+	var fragments []*Fragment
+
 	for _, fragmentInfo := range fragmentInfos {
 		inPath := sorg.FragmentsDir + fragmentInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
-
-		outName := strings.Replace(fragmentInfo.Name(), ".md", "", -1)
 
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
@@ -215,6 +276,8 @@ func compileFragments() error {
 			return err
 		}
 
+		fragments = append(fragments, &fragment)
+
 		if fragment.Title == "" {
 			return fmt.Errorf("No title for fragment: %v", inPath)
 		}
@@ -224,16 +287,30 @@ func compileFragments() error {
 		}
 
 		fragment.Content = string(renderMarkdown([]byte(content)))
+		fragment.Slug = strings.Replace(fragmentInfo.Name(), ".md", "", -1)
 
 		locals := getLocals(fragment.Title, map[string]interface{}{
 			"Fragment": fragment,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
-			sorg.TargetFragmentsDir+outName, locals)
+			sorg.TargetFragmentsDir+fragment.Slug, locals)
 		if err != nil {
 			return err
 		}
+	}
+
+	sort.Sort(FragmentsByPublished(fragments))
+
+	locals := getLocals("Fragments", map[string]interface{}{
+		"Fragments": fragments,
+	})
+
+	// TODO: We need this to be at /fragments :/
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/index",
+		sorg.TargetDir+"fragments/index", locals)
+	if err != nil {
+		return err
 	}
 
 	return nil
@@ -300,7 +377,7 @@ func linkImageAssets() error {
 	}
 
 	for _, asset := range assets {
-		log.Debugf("Linking image asset: %v", asset)
+		log.Debugf("Linking image asset: %v", asset.Name())
 
 		// we use absolute paths for source and destination because not doing
 		// so can result in some weird symbolic link inception
