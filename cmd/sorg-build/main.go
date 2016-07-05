@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"database/sql"
 	"fmt"
-	"html/template"
 	"io"
 	"io/ioutil"
 	"os"
@@ -15,6 +14,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
+	"github.com/brandur/sorg/templatehelpers"
 	"github.com/joeshaw/envdecode"
 	_ "github.com/lib/pq"
 	"github.com/russross/blackfriday"
@@ -107,7 +107,9 @@ type Run struct {
 
 	ElevationGain float64
 
-	LocationCity *string
+	LocationCity string
+
+	MovingTime time.Duration
 
 	OccurredAt *time.Time
 }
@@ -292,6 +294,9 @@ func compileRuns() error {
 				(metadata -> 'distance')::float,
 				(metadata -> 'total_elevation_gain')::float,
 				(metadata -> 'location_city'),
+				-- we multiply by 10e9 here because a Golang time.Duration is
+				-- an int64 represented in nanoseconds
+				(metadata -> 'moving_time')::bigint * 1000000000,
 				(metadata -> 'occurred_at_local')::timestamptz
 			FROM events
 			WHERE type = 'strava'
@@ -304,16 +309,24 @@ func compileRuns() error {
 		defer rows.Close()
 
 		for rows.Next() {
+			var locationCity *string
 			var run Run
+
 			err = rows.Scan(
 				&run.Distance,
 				&run.ElevationGain,
-				&run.LocationCity,
+				&locationCity,
+				&run.MovingTime,
 				&run.OccurredAt,
 			)
 			if err != nil {
 				return err
 			}
+
+			if locationCity != nil {
+				run.LocationCity = *locationCity
+			}
+
 			log.Infof("run = %+v", run)
 			runs = append(runs, &run)
 		}
@@ -321,6 +334,16 @@ func compileRuns() error {
 		if err != nil {
 			return err
 		}
+	}
+
+	locals := getLocals("Runs", map[string]interface{}{
+		"Runs": runs,
+	})
+
+	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
+		sorg.TargetDir+"runs", locals)
+	if err != nil {
+		return err
 	}
 
 	return nil
@@ -423,13 +446,7 @@ func renderMarkdown(source []byte) []byte {
 func renderView(layout, view, target string, locals map[string]interface{}) error {
 	log.Debugf("Rendering: %v", target)
 
-	funcMap := template.FuncMap{
-		"FormatTime": func(t *time.Time) string {
-			return t.Format("Jan 2, 2006")
-		},
-	}
-
-	template, err := ace.Load(layout, view, &ace.Options{FuncMap: funcMap})
+	template, err := ace.Load(layout, view, &ace.Options{FuncMap: templatehelpers.FuncMap})
 	if err != nil {
 		return err
 	}

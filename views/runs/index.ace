@@ -1,0 +1,24 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  #runs
+    .content
+      #title
+        h1 Runs
+      #data-distance-last-year.chart
+      #data-distance-by-year.chart
+      .runs-content
+        h2 Latest Runs
+        ul.list
+          {{range .Runs}}
+            li
+              | <span class="distance">{{InKM .Distance | Round}} km</span> <span class="elevation">({{Round .ElevationGain}} m elevation)</span> @ {{Pace .Distance .MovingTime}}/km
+              {{if ne .LocationCity ""}}
+                | , {{.LocationCity}}
+              {{end}}
+              span.meta
+                |  {{FormatTime .OccurredAt}}
+          {{end}}
+  = include views/_footer
