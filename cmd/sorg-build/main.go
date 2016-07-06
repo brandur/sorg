@@ -23,6 +23,15 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+var javascripts = []string{
+	"jquery-1.7.2.js",
+	"retina.js",
+	"highcharts.js",
+	"highcharts_theme.js",
+	"highlight.pack.js",
+	"main_sorg.js",
+}
+
 var stylesheets = []string{
 	"_reset.sass",
 	"main.sass",
@@ -135,6 +144,11 @@ func main() {
 	}
 
 	err = compileFragments()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = compileJavascripts()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -257,6 +271,37 @@ func compileFragments() error {
 		if err != nil {
 			return err
 		}
+	}
+
+	return nil
+}
+
+func compileJavascripts() error {
+	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "app.js")
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	for _, javascript := range javascripts {
+		inPath := sorg.JavascriptsDir + javascript
+		log.Debugf("Compiling: %v", inPath)
+
+		inFile, err := os.Open(inPath)
+		if err != nil {
+			return err
+		}
+
+		outFile.WriteString("/* " + javascript + " */\n\n")
+		outFile.WriteString("(function() {\n\n")
+
+		_, err = io.Copy(outFile, inFile)
+		if err != nil {
+			return err
+		}
+
+		outFile.WriteString("\n\n")
+		outFile.WriteString("}).call(this);\n\n")
 	}
 
 	return nil

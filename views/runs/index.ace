@@ -23,11 +23,11 @@
           {{end}}
   = include views/_footer
   = javascript
-    var lastYearXDays = {{MarshalJSON .LastYearXDays}}
-    var lastYearYDistances = {{MarshalJSON .LastYearYDistances}}
+    var lastYearXDays = {{.LastYearXDays}};
+    var lastYearYDistances = {{.LastYearYDistances}};
 
-    var byYearXYears = {{MarshalJSON .ByYearXYears}}
-    var byYearYDistances = {{MarshalJSON .ByYearYDistances}}
+    var byYearXYears = {{.ByYearXYears}};
+    var byYearYDistances = {{.ByYearYDistances}};
 
     (function() {
       $(function() {
@@ -45,7 +45,7 @@
             text: null
           },
           xAxis: {
-            categories: lastYearXDates,
+            categories: lastYearXDays,
             labels: {
               rotation: -45,
               align: 'right',
