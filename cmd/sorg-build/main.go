@@ -302,7 +302,8 @@ func compileRuns() error {
 			WHERE type = 'strava'
 				AND metadata -> 'type' = 'Run'
 			ORDER BY occurred_at DESC
-			LIMIT 30`)
+			LIMIT 30
+		`)
 		if err != nil {
 			return err
 		}
@@ -334,10 +335,87 @@ func compileRuns() error {
 		if err != nil {
 			return err
 		}
+
+		//
+		// runs over the last year
+		//
+
+		rows, err = db.Query(`
+			WITH runs AS (
+				SELECT *,
+					(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
+					-- convert to distance in kilometers
+					((metadata -> 'distance')::float / 1000.0) AS distance
+				FROM events
+				WHERE type = 'strava'
+					AND metadata -> 'type' = 'Run'
+			),
+
+			runs_days AS (
+				SELECT date_trunc('day', occurred_at_local) AS day,
+					SUM(distance) AS distance
+				FROM runs
+				WHERE occurred_at_local > NOW() - '180 days'::interval
+					GROUP BY day
+			),
+
+			-- generates a baseline series of every day in the last 180 days
+			-- along with a zeroed distance which we will then add against the
+			-- actual runs we extracted
+			days AS (
+				SELECT i::date AS day,
+					0::float AS distance
+				FROM generate_series(NOW() - '180 days'::interval,
+					NOW(), '1 day'::interval) i
+			)
+
+			SELECT d.day,
+				d.distance + rd.distance
+			FROM days d
+				LEFT JOIN runs_days rd ON d.day = rd.day
+			ORDER BY day ASC
+		`)
+		if err != nil {
+			return err
+		}
+		defer rows.Close()
+
+		//
+		// run distance per year
+		//
+
+		rows, err = db.Query(`
+			WITH runs AS (
+				SELECT *,
+					(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
+					-- convert to distance in kilometers
+					((metadata -> 'distance')::float / 1000.0) AS distance
+				FROM events
+				WHERE type = 'strava'
+					AND metadata -> 'type' = 'Run'
+			)
+
+			SELECT date_part('year', occurred_at_local) AS year,
+				SUM(distance)
+			FROM runs
+			GROUP BY year
+			ORDER BY year DESC
+		`)
+		if err != nil {
+			return err
+		}
+		defer rows.Close()
 	}
 
 	locals := getLocals("Runs", map[string]interface{}{
 		"Runs": runs,
+
+		// chart information
+		"LastYearXDates":     nil,
+		"LastYearYDistances": nil,
+
+		"ByYearXDistances": nil,
+		"ByYearYYears":     nil,
 	})
 
 	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
