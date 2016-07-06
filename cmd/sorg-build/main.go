@@ -148,7 +148,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileJavascripts()
+	err = compileJavascripts(javascripts)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -158,7 +158,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileStylesheets()
+	err = compileStylesheets(stylesheets)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -276,7 +276,7 @@ func compileFragments() error {
 	return nil
 }
 
-func compileJavascripts() error {
+func compileJavascripts(javascripts []string) error {
 	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "app.js")
 	if err != nil {
 		return err
@@ -372,7 +372,7 @@ func compileRuns() error {
 	return nil
 }
 
-func compileStylesheets() error {
+func compileStylesheets(stylesheets []string) error {
 	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "app.css")
 	if err != nil {
 		return err
