@@ -194,15 +194,15 @@ func TestRenderTOC(t *testing.T) {
 	content := `
 		Intro.
 
-		<h2 id="#h-a">Heading A</h2>
+		<h2 id="h-a">Heading A</h2>
 
 		Content.
 
-		<h3 id="#h-b">Heading B</h3>
+		<h3 id="h-b">Heading B</h3>
 
 		Content
 
-		<h2 id="#h-c">Heading C</h2>
+		<h2 id="h-c">Heading C</h2>
 
 		Content.
 	`
@@ -211,6 +211,12 @@ func TestRenderTOC(t *testing.T) {
 	rendered, err := RenderTOC(content)
 	assert.NoError(t, err)
 	assert.Equal(t, expected, rendered)
+}
+
+func TestRenderTOCEmpty(t *testing.T) {
+	rendered, err := RenderTOC("hello")
+	assert.NoError(t, err)
+	assert.Equal(t, "", rendered)
 }
 
 func mustRenderTree(node *html.Node) string {

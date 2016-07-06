@@ -32,10 +32,16 @@ func RenderTOC(content string) (string, error) {
 			return "", fmt.Errorf("Couldn't extract header level: %v", err.Error())
 		}
 
-		headers = append(headers, &header{level, match[2], match[3]})
+		headers = append(headers, &header{level, "#" + match[2], match[3]})
 	}
 
 	node := buildTree(headers)
+
+	// Handle an article that doesn't have any TOC.
+	if node == nil {
+		return "", nil
+	}
+
 	return renderTree(node)
 }
 

@@ -15,6 +15,7 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
 	"github.com/brandur/sorg/templatehelpers"
+	"github.com/brandur/sorg/toc"
 	"github.com/joeshaw/envdecode"
 	_ "github.com/lib/pq"
 	"github.com/russross/blackfriday"
@@ -208,7 +209,10 @@ func compileArticles() error {
 		article.Content = string(renderMarkdown([]byte(content)))
 
 		// TODO: Need a TOC!
-		article.TOC = ""
+		article.TOC, err = toc.RenderTOC(article.Content)
+		if err != nil {
+			return err
+		}
 
 		locals := getLocals(article.Title, map[string]interface{}{
 			"Article": article,
