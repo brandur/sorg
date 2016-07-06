@@ -330,7 +330,7 @@ func compileRuns() error {
 
 	// Give all these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
-	lastYearXDays := []time.Time{}
+	lastYearXDays := []string{}
 	lastYearYDistances := []float64{}
 
 	byYearXYears := []string{}
@@ -421,7 +421,7 @@ func compileRuns() error {
 					NOW(), '1 day'::interval) i
 			)
 
-			SELECT d.day,
+			SELECT to_char(d.day, 'Mon DD') AS day,
 				d.distance + COALESCE(rd.distance, 0::float)
 			FROM days d
 				LEFT JOIN runs_days rd ON d.day = rd.day
@@ -433,7 +433,7 @@ func compileRuns() error {
 		defer rows.Close()
 
 		for rows.Next() {
-			var day time.Time
+			var day string
 			var distance float64
 
 			err = rows.Scan(
