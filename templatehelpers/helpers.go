@@ -30,6 +30,9 @@ func inKM(m float64) float64 {
 	return m / 1000.0
 }
 
+// Note that I thought I needed this to encode Javascript data in HTML
+// templates, but I don't actually appear to need it so we can probably remove
+// it.
 func marshalJSON(o interface{}) string {
 	bytes, err := json.Marshal(o)
 	if err != nil {
