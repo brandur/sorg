@@ -283,6 +283,12 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 func compileRuns() error {
 	var runs []*Run
 
+	var lastYearXDays []time.Time
+	var lastYearYDistances []float64
+
+	var byYearXDistances []float64
+	var byYearYYears []string
+
 	if conf.BlackSwanDatabaseURL != "" {
 		db, err := sql.Open("postgres", conf.BlackSwanDatabaseURL)
 		if err != nil {
@@ -328,7 +334,6 @@ func compileRuns() error {
 				run.LocationCity = *locationCity
 			}
 
-			log.Infof("run = %+v", run)
 			runs = append(runs, &run)
 		}
 		err = rows.Err()
@@ -370,7 +375,7 @@ func compileRuns() error {
 			)
 
 			SELECT d.day,
-				d.distance + rd.distance
+				d.distance + COALESCE(rd.distance, 0::float)
 			FROM days d
 				LEFT JOIN runs_days rd ON d.day = rd.day
 			ORDER BY day ASC
@@ -380,42 +385,83 @@ func compileRuns() error {
 		}
 		defer rows.Close()
 
+		for rows.Next() {
+			var day time.Time
+			var distance float64
+
+			err = rows.Scan(
+				&day,
+				&distance,
+			)
+			if err != nil {
+				return err
+			}
+
+			lastYearXDays = append(lastYearXDays, day)
+			lastYearYDistances = append(lastYearYDistances, distance)
+		}
+		err = rows.Err()
+		if err != nil {
+			return err
+		}
+
 		//
 		// run distance per year
 		//
 
 		rows, err = db.Query(`
-			WITH runs AS (
-				SELECT *,
-					(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
-					-- convert to distance in kilometers
-					((metadata -> 'distance')::float / 1000.0) AS distance
-				FROM events
-				WHERE type = 'strava'
-					AND metadata -> 'type' = 'Run'
-			)
+				WITH runs AS (
+					SELECT *,
+						(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
+						-- convert to distance in kilometers
+						((metadata -> 'distance')::float / 1000.0) AS distance
+					FROM events
+					WHERE type = 'strava'
+						AND metadata -> 'type' = 'Run'
+				)
 
-			SELECT date_part('year', occurred_at_local) AS year,
-				SUM(distance)
-			FROM runs
-			GROUP BY year
-			ORDER BY year DESC
-		`)
+				SELECT date_part('year', occurred_at_local)::text AS year,
+					SUM(distance)
+				FROM runs
+				GROUP BY year
+				ORDER BY year DESC
+			`)
 		if err != nil {
 			return err
 		}
 		defer rows.Close()
+
+		for rows.Next() {
+			var distance float64
+			var year string
+
+			err = rows.Scan(
+				&year,
+				&distance,
+			)
+			if err != nil {
+				return err
+			}
+
+			byYearXDistances = append(byYearXDistances, distance)
+			byYearYYears = append(byYearYYears, year)
+		}
+		err = rows.Err()
+		if err != nil {
+			return err
+		}
 	}
 
 	locals := getLocals("Runs", map[string]interface{}{
 		"Runs": runs,
 
-		// chart information
-		"LastYearXDates":     nil,
-		"LastYearYDistances": nil,
+		// chart: runs over last year
+		"LastYearXDays":      lastYearXDays,
+		"LastYearYDistances": lastYearYDistances,
 
-		"ByYearXDistances": nil,
-		"ByYearYYears":     nil,
+		// chart: run distance by year
+		"ByYearXDistances": byYearXDistances,
+		"ByYearYYears":     byYearYYears,
 	})
 
 	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",

@@ -26,6 +26,17 @@ func TestInKM(t *testing.T) {
 	assert.Equal(t, 2.342, inKM(2342.0))
 }
 
+func TestMarshalJSON(t *testing.T) {
+	str := marshalJSON(map[string]string{})
+	assert.Equal(t, "{}", str)
+
+	str = marshalJSON(7)
+	assert.Equal(t, "7", str)
+
+	str = marshalJSON([]int{1, 2, 3})
+	assert.Equal(t, "[1,2,3]", str)
+}
+
 func TestMonthName(t *testing.T) {
 	assert.Equal(t, "July", monthName(&testTime))
 }

@@ -1,6 +1,7 @@
 package templatehelpers
 
 import (
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"time"
@@ -12,11 +13,12 @@ var FuncMap template.FuncMap
 
 func init() {
 	FuncMap = template.FuncMap{
-		"FormatTime": formatTime,
-		"InKM":       inKM,
-		"MonthName":  monthName,
-		"Pace":       pace,
-		"Round":      round,
+		"FormatTime":  formatTime,
+		"InKM":        inKM,
+		"MarshalJSON": marshalJSON,
+		"MonthName":   monthName,
+		"Pace":        pace,
+		"Round":       round,
 	}
 }
 
@@ -26,6 +28,14 @@ func formatTime(t *time.Time) string {
 
 func inKM(m float64) float64 {
 	return m / 1000.0
+}
+
+func marshalJSON(o interface{}) string {
+	bytes, err := json.Marshal(o)
+	if err != nil {
+		panic(err)
+	}
+	return string(bytes)
 }
 
 func monthName(t *time.Time) string {

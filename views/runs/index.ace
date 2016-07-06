@@ -22,3 +22,9 @@
                 |  {{FormatTime .OccurredAt}}
           {{end}}
   = include views/_footer
+  = javascript
+    var lastYearXDays = {{MarshalJSON .LastYearXDays}}
+    var lastYearYDistances = {{MarshalJSON .LastYearYDistances}}
+
+    var byYearXDistances = {{MarshalJSON .ByYearXDistances}}
+    var byYearYYears = {{MarshalJSON .ByYearYYears}}
