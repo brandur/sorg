@@ -283,11 +283,13 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 func compileRuns() error {
 	var runs []*Run
 
-	var lastYearXDays []time.Time
-	var lastYearYDistances []float64
+	// Give all these arrays 0 elements (instead of null) in case no Black Swan
+	// data gets loaded but we still need to render the page.
+	lastYearXDays := []time.Time{}
+	lastYearYDistances := []float64{}
 
-	var byYearXDistances []float64
-	var byYearYYears []string
+	byYearXYears := []string{}
+	byYearYDistances := []float64{}
 
 	if conf.BlackSwanDatabaseURL != "" {
 		db, err := sql.Open("postgres", conf.BlackSwanDatabaseURL)
@@ -410,22 +412,22 @@ func compileRuns() error {
 		//
 
 		rows, err = db.Query(`
-				WITH runs AS (
-					SELECT *,
-						(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
-						-- convert to distance in kilometers
-						((metadata -> 'distance')::float / 1000.0) AS distance
-					FROM events
-					WHERE type = 'strava'
-						AND metadata -> 'type' = 'Run'
-				)
+			WITH runs AS (
+				SELECT *,
+					(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
+					-- convert to distance in kilometers
+					((metadata -> 'distance')::float / 1000.0) AS distance
+				FROM events
+				WHERE type = 'strava'
+					AND metadata -> 'type' = 'Run'
+			)
 
-				SELECT date_part('year', occurred_at_local)::text AS year,
-					SUM(distance)
-				FROM runs
-				GROUP BY year
-				ORDER BY year DESC
-			`)
+			SELECT date_part('year', occurred_at_local)::text AS year,
+				SUM(distance)
+			FROM runs
+			GROUP BY year
+			ORDER BY year DESC
+		`)
 		if err != nil {
 			return err
 		}
@@ -443,8 +445,8 @@ func compileRuns() error {
 				return err
 			}
 
-			byYearXDistances = append(byYearXDistances, distance)
-			byYearYYears = append(byYearYYears, year)
+			byYearXYears = append(byYearXYears, year)
+			byYearYDistances = append(byYearYDistances, distance)
 		}
 		err = rows.Err()
 		if err != nil {
@@ -460,8 +462,8 @@ func compileRuns() error {
 		"LastYearYDistances": lastYearYDistances,
 
 		// chart: run distance by year
-		"ByYearXDistances": byYearXDistances,
-		"ByYearYYears":     byYearYYears,
+		"ByYearXYears":     byYearXYears,
+		"ByYearYDistances": byYearYDistances,
 	})
 
 	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
