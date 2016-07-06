@@ -326,177 +326,29 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 }
 
 func compileRuns() error {
-	var runs []*Run
-
-	// Give all these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
-	lastYearXDays := []string{}
-	lastYearYDistances := []float64{}
-
-	byYearXYears := []string{}
-	byYearYDistances := []float64{}
+	var db *sql.DB
+	var err error
 
 	if conf.BlackSwanDatabaseURL != "" {
-		db, err := sql.Open("postgres", conf.BlackSwanDatabaseURL)
+		db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
 		if err != nil {
 			log.Fatal(err)
 		}
+	}
 
-		rows, err := db.Query(`
-			SELECT
-				(metadata -> 'distance')::float,
-				(metadata -> 'total_elevation_gain')::float,
-				(metadata -> 'location_city'),
-				-- we multiply by 10e9 here because a Golang time.Duration is
-				-- an int64 represented in nanoseconds
-				(metadata -> 'moving_time')::bigint * 1000000000,
-				(metadata -> 'occurred_at_local')::timestamptz
-			FROM events
-			WHERE type = 'strava'
-				AND metadata -> 'type' = 'Run'
-			ORDER BY occurred_at DESC
-			LIMIT 30
-		`)
-		if err != nil {
-			return err
-		}
-		defer rows.Close()
+	runs, err := getRunsData(db)
+	if err != nil {
+		return err
+	}
 
-		for rows.Next() {
-			var locationCity *string
-			var run Run
+	lastYearXDays, lastYearYDistances, err := getRunsLastYearData(db)
+	if err != nil {
+		return err
+	}
 
-			err = rows.Scan(
-				&run.Distance,
-				&run.ElevationGain,
-				&locationCity,
-				&run.MovingTime,
-				&run.OccurredAt,
-			)
-			if err != nil {
-				return err
-			}
-
-			if locationCity != nil {
-				run.LocationCity = *locationCity
-			}
-
-			runs = append(runs, &run)
-		}
-		err = rows.Err()
-		if err != nil {
-			return err
-		}
-
-		//
-		// runs over the last year
-		//
-
-		rows, err = db.Query(`
-			WITH runs AS (
-				SELECT *,
-					(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
-					-- convert to distance in kilometers
-					((metadata -> 'distance')::float / 1000.0) AS distance
-				FROM events
-				WHERE type = 'strava'
-					AND metadata -> 'type' = 'Run'
-			),
-
-			runs_days AS (
-				SELECT date_trunc('day', occurred_at_local) AS day,
-					SUM(distance) AS distance
-				FROM runs
-				WHERE occurred_at_local > NOW() - '180 days'::interval
-					GROUP BY day
-			),
-
-			-- generates a baseline series of every day in the last 180 days
-			-- along with a zeroed distance which we will then add against the
-			-- actual runs we extracted
-			days AS (
-				SELECT i::date AS day,
-					0::float AS distance
-				FROM generate_series(NOW() - '180 days'::interval,
-					NOW(), '1 day'::interval) i
-			)
-
-			SELECT to_char(d.day, 'Mon DD') AS day,
-				d.distance + COALESCE(rd.distance, 0::float)
-			FROM days d
-				LEFT JOIN runs_days rd ON d.day = rd.day
-			ORDER BY day ASC
-		`)
-		if err != nil {
-			return err
-		}
-		defer rows.Close()
-
-		for rows.Next() {
-			var day string
-			var distance float64
-
-			err = rows.Scan(
-				&day,
-				&distance,
-			)
-			if err != nil {
-				return err
-			}
-
-			lastYearXDays = append(lastYearXDays, day)
-			lastYearYDistances = append(lastYearYDistances, distance)
-		}
-		err = rows.Err()
-		if err != nil {
-			return err
-		}
-
-		//
-		// run distance per year
-		//
-
-		rows, err = db.Query(`
-			WITH runs AS (
-				SELECT *,
-					(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
-					-- convert to distance in kilometers
-					((metadata -> 'distance')::float / 1000.0) AS distance
-				FROM events
-				WHERE type = 'strava'
-					AND metadata -> 'type' = 'Run'
-			)
-
-			SELECT date_part('year', occurred_at_local)::text AS year,
-				SUM(distance)
-			FROM runs
-			GROUP BY year
-			ORDER BY year DESC
-		`)
-		if err != nil {
-			return err
-		}
-		defer rows.Close()
-
-		for rows.Next() {
-			var distance float64
-			var year string
-
-			err = rows.Scan(
-				&year,
-				&distance,
-			)
-			if err != nil {
-				return err
-			}
-
-			byYearXYears = append(byYearXYears, year)
-			byYearYDistances = append(byYearYDistances, distance)
-		}
-		err = rows.Err()
-		if err != nil {
-			return err
-		}
+	byYearXYears, byYearYDistances, err := getRunsByYearData(db)
+	if err != nil {
+		return err
 	}
 
 	locals := getLocals("Runs", map[string]interface{}{
@@ -511,7 +363,7 @@ func compileRuns() error {
 		"ByYearYDistances": byYearYDistances,
 	})
 
-	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
 		sorg.TargetDir+"runs", locals)
 	if err != nil {
 		return err
@@ -554,6 +406,190 @@ func compileStylesheets() error {
 	}
 
 	return nil
+}
+
+func getRunsData(db *sql.DB) ([]*Run, error) {
+	var runs []*Run
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return runs, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT
+			(metadata -> 'distance')::float,
+			(metadata -> 'total_elevation_gain')::float,
+			(metadata -> 'location_city'),
+			-- we multiply by 10e9 here because a Golang time.Duration is
+			-- an int64 represented in nanoseconds
+			(metadata -> 'moving_time')::bigint * 1000000000,
+			(metadata -> 'occurred_at_local')::timestamptz
+		FROM events
+		WHERE type = 'strava'
+			AND metadata -> 'type' = 'Run'
+		ORDER BY occurred_at DESC
+		LIMIT 30
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var locationCity *string
+		var run Run
+
+		err = rows.Scan(
+			&run.Distance,
+			&run.ElevationGain,
+			&locationCity,
+			&run.MovingTime,
+			&run.OccurredAt,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		if locationCity != nil {
+			run.LocationCity = *locationCity
+		}
+
+		runs = append(runs, &run)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
+
+	return runs, nil
+}
+
+func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
+	// Give these arrays 0 elements (instead of null) in case no Black Swan
+	// data gets loaded but we still need to render the page.
+	byYearXYears := []string{}
+	byYearYDistances := []float64{}
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return byYearXYears, byYearYDistances, nil
+	}
+
+	rows, err := db.Query(`
+		WITH runs AS (
+			SELECT *,
+				(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
+				-- convert to distance in kilometers
+				((metadata -> 'distance')::float / 1000.0) AS distance
+			FROM events
+			WHERE type = 'strava'
+				AND metadata -> 'type' = 'Run'
+		)
+
+		SELECT date_part('year', occurred_at_local)::text AS year,
+			SUM(distance)
+		FROM runs
+		GROUP BY year
+		ORDER BY year DESC
+	`)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var distance float64
+		var year string
+
+		err = rows.Scan(
+			&year,
+			&distance,
+		)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		byYearXYears = append(byYearXYears, year)
+		byYearYDistances = append(byYearYDistances, distance)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return byYearXYears, byYearYDistances, nil
+}
+
+func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
+	// Give these arrays 0 elements (instead of null) in case no Black Swan
+	// data gets loaded but we still need to render the page.
+	lastYearXDays := []string{}
+	lastYearYDistances := []float64{}
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return lastYearXDays, lastYearYDistances, nil
+	}
+
+	rows, err := db.Query(`
+		WITH runs AS (
+			SELECT *,
+				(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
+				-- convert to distance in kilometers
+				((metadata -> 'distance')::float / 1000.0) AS distance
+			FROM events
+			WHERE type = 'strava'
+				AND metadata -> 'type' = 'Run'
+		),
+
+		runs_days AS (
+			SELECT date_trunc('day', occurred_at_local) AS day,
+				SUM(distance) AS distance
+			FROM runs
+			WHERE occurred_at_local > NOW() - '180 days'::interval
+				GROUP BY day
+		),
+
+		-- generates a baseline series of every day in the last 180 days
+		-- along with a zeroed distance which we will then add against the
+		-- actual runs we extracted
+		days AS (
+			SELECT i::date AS day,
+				0::float AS distance
+			FROM generate_series(NOW() - '180 days'::interval,
+				NOW(), '1 day'::interval) i
+		)
+
+		SELECT to_char(d.day, 'Mon DD') AS day,
+			d.distance + COALESCE(rd.distance, 0::float)
+		FROM days d
+			LEFT JOIN runs_days rd ON d.day = rd.day
+		ORDER BY day ASC
+	`)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var day string
+		var distance float64
+
+		err = rows.Scan(
+			&day,
+			&distance,
+		)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		lastYearXDays = append(lastYearXDays, day)
+		lastYearYDistances = append(lastYearYDistances, distance)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return lastYearXDays, lastYearYDistances, nil
 }
 
 func linkImageAssets() error {
