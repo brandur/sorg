@@ -39,16 +39,6 @@ func RenderTOC(content string) (string, error) {
 	return renderTree(node)
 }
 
-func renderTree(node *html.Node) (string, error) {
-	var b bytes.Buffer
-	err := html.Render(&b, node)
-	if err != nil {
-		return "", err
-	}
-
-	return b.String(), nil
-}
-
 func buildTree(headers []*header) *html.Node {
 	if len(headers) < 1 {
 		return nil
@@ -128,4 +118,14 @@ func buildTree(headers []*header) *html.Node {
 	}
 
 	return topNode
+}
+
+func renderTree(node *html.Node) (string, error) {
+	var b bytes.Buffer
+	err := html.Render(&b, node)
+	if err != nil {
+		return "", err
+	}
+
+	return b.String(), nil
 }
