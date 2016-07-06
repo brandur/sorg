@@ -6,6 +6,7 @@ import (
 	"regexp"
 	"strconv"
 
+	log "github.com/Sirupsen/logrus"
 	"golang.org/x/net/html"
 )
 
@@ -26,18 +27,21 @@ func RenderTOC(content string) (string, error) {
 
 	matches := headerRegexp.FindAllStringSubmatch(content, -1)
 	for _, match := range matches {
-		level, err := strconv.Atoi(match[0])
+		level, err := strconv.Atoi(match[1])
 		if err != nil {
 			return "", fmt.Errorf("Couldn't extract header level: %v", err.Error())
 		}
 
-		headers = append(headers, &header{level, match[1], match[2]})
+		headers = append(headers, &header{level, match[2], match[3]})
 	}
 
-	parent := buildTree(headers)
+	node := buildTree(headers)
+	return renderTree(node)
+}
 
+func renderTree(node *html.Node) (string, error) {
 	var b bytes.Buffer
-	err := html.Render(&b, parent)
+	err := html.Render(&b, node)
 	if err != nil {
 		return "", err
 	}
@@ -50,50 +54,78 @@ func buildTree(headers []*header) *html.Node {
 		return nil
 	}
 
-	parent := &html.Node{Data: "ol"}
-	node := parent
+	listNode := &html.Node{Data: "ol", Type: html.ElementNode}
+
+	// keep a reference back to the top of the list
+	topNode := listNode
+
+	listItemNode := &html.Node{Data: "li", Type: html.ElementNode}
+	listNode.AppendChild(listItemNode)
+
+	// This basically helps us track whether we've insert multiple headers on
+	// the same level in a row. If we did, we need to create a new list item
+	// for each.
+	needNewListNode := false
 
 	var level int
 	if len(headers) > 0 {
 		level = headers[0].level
+
+		log.Debugf("TOC: Starting level: %v", level)
 	}
 
 	for _, header := range headers {
 		if header.level > level {
 			// indent
 
-			listItemNode := &html.Node{Data: "li"}
-			node.AppendChild(listItemNode)
+			// for each level indented, create a new nested list
+			for i := 0; i < (header.level - level); i++ {
+				listNode = &html.Node{Data: "ol", Type: html.ElementNode}
+				listItemNode.AppendChild(listNode)
 
-			listNode := &html.Node{Data: "ol"}
-			listItemNode.AppendChild(listNode)
+				log.Debugf("TOC: --> Indenting once to level: %v", header.level)
+			}
 
-			node = listNode
+			needNewListNode = true
 
+			level = header.level
 		} else if header.level < level {
-			// outdent
+			// dedent
 
-			// move up two parents, one for list item and one for list
-			node = node.Parent
-			node = node.Parent
+			// for each level outdented, move up two parents, one for list item
+			// and one for list
+			for i := 0; i < (level - header.level); i++ {
+				listItemNode = listNode.Parent
+				listNode = listItemNode.Parent
+
+				log.Debugf("TOC: --< Dedenting once to level: %v", header.level)
+			}
+
+			level = header.level
 		}
 
-		contentNode := &html.Node{Data: header.title}
+		if needNewListNode {
+			listItemNode = &html.Node{Data: "li", Type: html.ElementNode}
+			listNode.AppendChild(listItemNode)
+			needNewListNode = false
+		}
+
+		contentNode := &html.Node{Data: header.title, Type: html.TextNode}
 
 		linkNode := &html.Node{
 			Data: "a",
 			Attr: []html.Attribute{
 				html.Attribute{"", "href", header.id},
 			},
+			Type: html.ElementNode,
 		}
 		linkNode.AppendChild(contentNode)
-
-		listItemNode := &html.Node{Data: "li"}
 		listItemNode.AppendChild(linkNode)
 
-		// Attach new content into the current list.
-		node.AppendChild(listItemNode)
+		needNewListNode = true
+
+		log.Debugf("TOC: Inserted header: %v", header.id)
 	}
 
-	return parent
+	return topNode
 }
