@@ -169,9 +169,8 @@ func transformHeaders(source string) string {
 	headers := make(map[string]int)
 
 	source = headerRE.ReplaceAllStringFunc(source, func(header string) string {
-
 		matches := headerRE.FindStringSubmatch(header)
-		fmt.Printf("MATCH! %v %+v\n", len(matches), matches)
+
 		level := len(matches[1])
 		title := matches[2]
 		id := matches[4]
