@@ -1,21 +1,24 @@
 package templatehelpers
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"strconv"
 	"time"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the
 // project.
 var FuncMap template.FuncMap = template.FuncMap{
-	"FormatTime":  formatTime,
-	"InKM":        inKM,
-	"MarshalJSON": marshalJSON,
-	"MonthName":   monthName,
-	"Pace":        pace,
-	"Round":       round,
+	"FormatTime":          formatTime,
+	"InKM":                inKM,
+	"MarshalJSON":         marshalJSON,
+	"MonthName":           monthName,
+	"NumberWithDelimiter": numberWithDelimiter,
+	"Pace":                pace,
+	"Round":               round,
 }
 
 func formatTime(t *time.Time) string {
@@ -39,6 +42,40 @@ func marshalJSON(o interface{}) string {
 
 func monthName(t *time.Time) string {
 	return t.Format("January")
+}
+
+// Changes a number to a string and uses a separator for groups of three
+// digits. For example, 1000 changes to "1,000".
+func numberWithDelimiter(n int, sep rune) string {
+	s := strconv.Itoa(n)
+
+	startOffset := 0
+	var buff bytes.Buffer
+
+	if n < 0 {
+		startOffset = 1
+		buff.WriteByte('-')
+	}
+
+	l := len(s)
+
+	commaIndex := 3 - ((l - startOffset) % 3)
+
+	if commaIndex == 3 {
+		commaIndex = 0
+	}
+
+	for i := startOffset; i < l; i++ {
+		if commaIndex == 3 {
+			buff.WriteRune(sep)
+			commaIndex = 0
+		}
+		commaIndex++
+
+		buff.WriteByte(s[i])
+	}
+
+	return buff.String()
 }
 
 // pace calculates the pace of a run in time per kilometer. This comes out as a

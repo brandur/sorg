@@ -41,6 +41,14 @@ func TestMonthName(t *testing.T) {
 	assert.Equal(t, "July", monthName(&testTime))
 }
 
+func TestNumberWithDelimiter(t *testing.T) {
+	assert.Equal(t, "123", numberWithDelimiter(123, ','))
+	assert.Equal(t, "1,234", numberWithDelimiter(1234, ','))
+	assert.Equal(t, "12,345", numberWithDelimiter(12345, ','))
+	assert.Equal(t, "123,456", numberWithDelimiter(123456, ','))
+	assert.Equal(t, "1,234,567", numberWithDelimiter(1234567, ','))
+}
+
 func TestPace(t *testing.T) {
 	d := time.Duration(60 * time.Second)
 
