@@ -16,11 +16,7 @@ type header struct {
 	title string
 }
 
-var headerRegexp *regexp.Regexp
-
-func init() {
-	headerRegexp = regexp.MustCompile(`<h([0-9]) id="(.*)">(.*)</h[0-9]>`)
-}
+var headerRegexp *regexp.Regexp = regexp.MustCompile(`<h([0-9]) id="(.*?)">(<a.*?>)?(.*?)(</a>)?</h[0-9]>`)
 
 func RenderTOC(content string) (string, error) {
 	var headers []*header
@@ -32,7 +28,7 @@ func RenderTOC(content string) (string, error) {
 			return "", fmt.Errorf("Couldn't extract header level: %v", err.Error())
 		}
 
-		headers = append(headers, &header{level, "#" + match[2], match[3]})
+		headers = append(headers, &header{level, "#" + match[2], match[4]})
 	}
 
 	node := buildTree(headers)

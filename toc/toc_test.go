@@ -202,7 +202,7 @@ func TestRenderTOC(t *testing.T) {
 
 		Content
 
-		<h2 id="h-c">Heading C</h2>
+		<h2 id="h-c"><a href="#h-c">Heading C</a></h2>
 
 		Content.
 	`
