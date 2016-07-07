@@ -30,6 +30,10 @@ func Render(source string) string {
 // Look for any whitespace between HTML tags.
 var whitespaceRE *regexp.Regexp = regexp.MustCompile(`>\s+<`)
 
+// Simply collapses certain HTML snippets by removing newlines and whitespace
+// between tags. This is mainline used to make HTML snippets readable as
+// constants, but then to make them fit a little more nicely into the rendered
+// markup.
 func collapseHTML(html string) string {
 	html = strings.Replace(html, "\n", "", -1)
 	html = whitespaceRE.ReplaceAllString(html, "><")
@@ -107,6 +111,7 @@ const footnoteReferenceHTML = `
 // wrapped it by this point).
 var footerRE *regexp.Regexp = regexp.MustCompile(`(?ms:^<p>\[\d+\].*)`)
 
+// Look for a single footnote within the footer.
 var footnoteRE *regexp.Regexp = regexp.MustCompile(`\[(\d+)\](\s+.*)`)
 
 // Note that this must be a post-transform filter. If it wasn't, our Markdown
@@ -133,7 +138,7 @@ func transformFootnotes(source string) string {
 			return collapseHTML(anchor)
 		})
 
-		// and wrap the whole footer section in a layer
+		// and wrap the whole footer section in a layer for styling
 		footer = fmt.Sprintf(footerWrapper, footer)
 		source = source + footer
 	}
