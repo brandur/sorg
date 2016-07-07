@@ -112,15 +112,24 @@ type Fragment struct {
 	Title string `yaml:"title"`
 }
 
+// Run is a run as downloaded from Strava.
 type Run struct {
+	// Distance is the distance traveled for the run in meters.
 	Distance float64
 
+	// ElevationGain is the total gain in elevation in meters.
 	ElevationGain float64
 
+	// LocationCity is the closest city to which the run occurred. It may be
+	// an empty string if Strava wasn't able to match anything.
 	LocationCity string
 
+	// MovingTime is the amount of time that the run took.
 	MovingTime time.Duration
 
+	// OccurredAt is the local time in which the run occurred. Note that we
+	// don't use UTC here so as to not make runs in other timezones look to
+	// have occurred at crazy times.
 	OccurredAt *time.Time
 }
 
