@@ -46,7 +46,7 @@ func monthName(t *time.Time) string {
 
 // Changes a number to a string and uses a separator for groups of three
 // digits. For example, 1000 changes to "1,000".
-func numberWithDelimiter(n int, sep rune) string {
+func numberWithDelimiter(sep rune, n int) string {
 	s := strconv.Itoa(n)
 
 	startOffset := 0
