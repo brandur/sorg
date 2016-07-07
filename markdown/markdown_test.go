@@ -6,6 +6,13 @@ import (
 	assert "github.com/stretchr/testify/require"
 )
 
+func TestCollapseHTML(t *testing.T) {
+	assert.Equal(t, "<p><strong>strong</strong></p>", collapseHTML(`
+<p>
+  <strong>strong</strong>
+</p>`))
+}
+
 func TestRender(t *testing.T) {
 	assert.Equal(t, "<p><strong>strong</strong></p>\n", Render("**strong**"))
 }

@@ -21,6 +21,8 @@ var renderFuncs []func(string) string = []func(string) string{
 	transformFootnotes,
 }
 
+// Render a Markdown string to HTML while applying all custom project-specific
+// filters including footnotes and stable header links.
 func Render(source string) string {
 	for _, f := range renderFuncs {
 		source = f(source)
