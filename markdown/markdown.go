@@ -3,19 +3,21 @@ package markdown
 import (
 	"fmt"
 	"regexp"
+	"strings"
 
 	"github.com/russross/blackfriday"
 )
 
 var renderFuncs []func(string) string = []func(string) string{
 	// pre-transformations
-	transformCodeWithLanguagePrefix,
+	transformFigures,
 
 	// main Markdown rendering
 	renderMarkdown,
 
 	// post-transformations
-	transformFigures,
+	transformCodeWithLanguagePrefix,
+	transformFootnotes,
 }
 
 func Render(source string) string {
@@ -23,6 +25,15 @@ func Render(source string) string {
 		source = f(source)
 	}
 	return source
+}
+
+// Look for any whitespace between HTML tags.
+var whitespaceRE *regexp.Regexp = regexp.MustCompile(`>\s+<`)
+
+func collapseHTML(html string) string {
+	html = strings.Replace(html, "\n", "", -1)
+	html = whitespaceRE.ReplaceAllString(html, "><")
+	return html
 }
 
 func renderMarkdown(source string) string {
@@ -68,4 +79,64 @@ func transformFigures(source string) string {
 		matches := figureRE.FindStringSubmatch(figure)
 		return fmt.Sprintf(figureHTML, matches[1], matches[2])
 	})
+}
+
+// A layer that we wrap the entire footer section in for styling purposes.
+const footerWrapper = `
+<div id="footnotes">
+  %s
+</div>
+`
+
+// HTML for a footnote within the document.
+const footnoteAnchorHTML = `
+<sup id="footnote-%s">
+  <a href="#footnote-%s-source">%s</a>
+</sup>
+`
+
+// HTML for a reference to a footnote within the document.
+const footnoteReferenceHTML = `
+<sup id="footnote-%s-source">
+  <a href="#footnote-%s">%s</a>
+</sup>
+`
+
+// Look for the section the section at the bottom of the page that looks like
+// <p>[1] (the paragraph tag is there because Markdown will have already
+// wrapped it by this point).
+var footerRE *regexp.Regexp = regexp.MustCompile(`(?ms:^<p>\[\d+\].*)`)
+
+var footnoteRE *regexp.Regexp = regexp.MustCompile(`\[(\d+)\](\s+.*)`)
+
+// Note that this must be a post-transform filter. If it wasn't, our Markdown
+// renderer would not render the Markdown inside the footnotes layer because it
+// would already be wrapped in HTML.
+func transformFootnotes(source string) string {
+	footer := footerRE.FindString(source)
+
+	if footer != "" {
+		// remove the footer for now
+		source = strings.Replace(source, footer, "", 1)
+
+		footer = footnoteRE.ReplaceAllStringFunc(footer, func(footnote string) string {
+			// first create a footnote with an anchor that links can target
+			matches := footnoteRE.FindStringSubmatch(footnote)
+			number := matches[1]
+			anchor := fmt.Sprintf(footnoteAnchorHTML, number, number, number) + matches[2]
+
+			// then replace all references in the body to this footnote
+			referenceRE := regexp.MustCompile(fmt.Sprintf(`\[%s\]`, number))
+			reference := fmt.Sprintf(footnoteReferenceHTML, number, number, number)
+			source = referenceRE.ReplaceAllString(source, collapseHTML(reference))
+
+			return collapseHTML(anchor)
+		})
+
+		// and wrap the whole footer section in a layer
+		footer = fmt.Sprintf(footerWrapper, footer)
+		source = source + footer
+	}
+
+	return source
 }
