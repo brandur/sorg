@@ -208,7 +208,6 @@ func compileArticles() error {
 
 		article.Content = markdown.Render(content)
 
-		// TODO: Need a TOC!
 		article.TOC, err = toc.RenderTOC(article.Content)
 		if err != nil {
 			return err
