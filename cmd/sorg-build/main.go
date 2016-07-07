@@ -133,6 +133,20 @@ type Run struct {
 	OccurredAt *time.Time
 }
 
+// Tweet is a post to Twitter.
+type Tweet struct {
+	// Content is the content of the tweet. It may contain shortened URLs and
+	// the like and so require extra rendering.
+	Content string
+
+	// OccurredAt is UTC time when the tweet was published.
+	OccurredAt *time.Time
+
+	// Slug is a unique identifier for the tweet. It can be used to link it
+	// back to the post on Twitter.
+	Slug string
+}
+
 var conf Conf
 
 func main() {
@@ -380,7 +394,7 @@ func compileRuns(db *sql.DB) error {
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
-		sorg.TargetDir+"/runs/index", locals)
+		sorg.TargetRunsDir+"/index", locals)
 	if err != nil {
 		return err
 	}
@@ -389,6 +403,21 @@ func compileRuns(db *sql.DB) error {
 }
 
 func compileTwitter(db *sql.DB) error {
+	tweets, err := getTwitterData(db)
+	if err != nil {
+		return err
+	}
+
+	locals := getLocals("Twitter", map[string]interface{}{
+		"Tweets": tweets,
+	})
+
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
+		sorg.TargetTwitterDir+"/index", locals)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -610,6 +639,49 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	}
 
 	return lastYearXDays, lastYearYDistances, nil
+}
+
+func getTwitterData(db *sql.DB) ([]*Tweet, error) {
+	var tweets []*Tweet
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return tweets, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT
+			content,
+			occurred_at,
+			slug
+		FROM events
+		WHERE type = 'twitter'
+		ORDER BY occurred_at DESC
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var tweet Tweet
+
+		err = rows.Scan(
+			&tweet.Content,
+			&tweet.OccurredAt,
+			&tweet.Slug,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		tweets = append(tweets, &tweet)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
+
+	return tweets, nil
 }
 
 func linkImageAssets() error {

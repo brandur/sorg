@@ -1,0 +1,16 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  .twitter
+    .content
+      #title
+        h1 Twitter
+      .twitter-content
+        ul.list
+          {{range .Tweets}}
+            li
+              {{.Content}}
+          {{end}}
+  = include views/_footer
