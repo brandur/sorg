@@ -141,6 +141,15 @@ func main() {
 		log.Fatal(err)
 	}
 
+	var db *sql.DB
+	if conf.BlackSwanDatabaseURL != "" {
+		var err error
+		db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	sorg.InitLog(conf.Verbose)
 
 	err = sorg.CreateTargetDirs()
@@ -163,12 +172,17 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileRuns()
+	err = compileRuns(db)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	err = compileStylesheets(stylesheets)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = compileTwitter(db)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -337,17 +351,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	return defaults
 }
 
-func compileRuns() error {
-	var db *sql.DB
-	var err error
-
-	if conf.BlackSwanDatabaseURL != "" {
-		db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-
+func compileRuns(db *sql.DB) error {
 	runs, err := getRunsData(db)
 	if err != nil {
 		return err
@@ -381,6 +385,10 @@ func compileRuns() error {
 		return err
 	}
 
+	return nil
+}
+
+func compileTwitter(db *sql.DB) error {
 	return nil
 }
 
