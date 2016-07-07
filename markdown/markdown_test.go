@@ -54,3 +54,62 @@ func TestTransformFootnotes(t *testing.T) {
 		),
 	)
 }
+
+func TestTransformHeaders(t *testing.T) {
+	assert.Equal(t, `
+<h2 id="intro"><a href="#intro">Introduction</a></h2>
+
+Intro here.
+
+<h2 id="section-1"><a href="#section-1">Body</a></h2>
+
+<h3 id="article"><a href="#article">Article</a></h3>
+
+Article one.
+
+<h3 id="sub"><a href="#sub">Subsection</a></h3>
+
+More content.
+
+<h3 id="article-1"><a href="#article-1">Article</a></h3>
+
+Article two.
+
+<h3 id="section-5"><a href="#section-5">Subsection</a></h3>
+
+More content.
+
+<h2 id="conclusion"><a href="#conclusion">Conclusion</a></h2>
+
+Conclusion.
+`,
+		transformHeaders(`
+## Introduction (#intro)
+
+Intro here.
+
+## Body
+
+### Article (#article)
+
+Article one.
+
+### Subsection (#sub)
+
+More content.
+
+### Article (#article)
+
+Article two.
+
+### Subsection
+
+More content.
+
+## Conclusion (#conclusion)
+
+Conclusion.
+`,
+		),
+	)
+}

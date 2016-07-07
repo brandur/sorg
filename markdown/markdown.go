@@ -11,6 +11,7 @@ import (
 var renderFuncs []func(string) string = []func(string) string{
 	// pre-transformations
 	transformFigures,
+	transformHeaders,
 
 	// main Markdown rendering
 	renderMarkdown,
@@ -142,6 +143,65 @@ func transformFootnotes(source string) string {
 		footer = fmt.Sprintf(footerWrapper, footer)
 		source = source + footer
 	}
+
+	return source
+}
+
+const headerHTML = `
+<h%v id="%s">
+  <a href="#%s">%s</a>
+</h%v>
+`
+
+// Matches one of the following:
+//
+//   # header
+//   # header (#header-id)
+//
+// For now, only match ## or more so as to remove code comments from
+// matches. We need a better way of doing that though.
+var headerRE *regexp.Regexp = regexp.MustCompile(`(?m:^(#{2,})\s+(.*?)(\s+\(#(.*)\))?$)`)
+
+func transformHeaders(source string) string {
+	headerNum := 0
+
+	// Tracks previously assigned headers so that we can detect duplicates.
+	headers := make(map[string]int)
+
+	source = headerRE.ReplaceAllStringFunc(source, func(header string) string {
+
+		matches := headerRE.FindStringSubmatch(header)
+		fmt.Printf("MATCH! %v %+v\n", len(matches), matches)
+		level := len(matches[1])
+		title := matches[2]
+		id := matches[4]
+
+		var newID string
+
+		if id == "" {
+			// Header with no name, assign a prefixed number.
+			newID = fmt.Sprintf("section-%v", headerNum)
+
+		} else {
+			occurrence, ok := headers[id]
+
+			if ok {
+				// Give duplicate IDs a suffix.
+				newID = fmt.Sprintf("%s-%d", id, occurrence)
+				headers[id]++
+
+			} else {
+				// Otherwise this is the first such ID we've seen.
+				newID = id
+				headers[id] = 1
+			}
+		}
+
+		headerNum++
+
+		// Replace the Markdown header with HTML equivalent.
+		return collapseHTML(fmt.Sprintf(headerHTML, level, newID, newID, title, level))
+	})
 
 	return source
 }
