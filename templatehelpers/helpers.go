@@ -9,17 +9,13 @@ import (
 
 // FuncMap is a set of helper functions to make available in templates for the
 // project.
-var FuncMap template.FuncMap
-
-func init() {
-	FuncMap = template.FuncMap{
-		"FormatTime":  formatTime,
-		"InKM":        inKM,
-		"MarshalJSON": marshalJSON,
-		"MonthName":   monthName,
-		"Pace":        pace,
-		"Round":       round,
-	}
+var FuncMap template.FuncMap = template.FuncMap{
+	"FormatTime":  formatTime,
+	"InKM":        inKM,
+	"MarshalJSON": marshalJSON,
+	"MonthName":   monthName,
+	"Pace":        pace,
+	"Round":       round,
 }
 
 func formatTime(t *time.Time) string {
