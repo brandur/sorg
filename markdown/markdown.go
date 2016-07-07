@@ -1,10 +1,29 @@
 package markdown
 
 import (
+	"regexp"
+
 	"github.com/russross/blackfriday"
 )
 
+var renderFuncs []func(string) string = []func(string) string{
+	// pre-transformations
+	transformCodeWithLanguagePrefix,
+
+	// main Markdown rendering
+	renderMarkdown,
+
+	// post-transformations
+}
+
 func Render(source string) string {
+	for _, f := range renderFuncs {
+		source = f(source)
+	}
+	return source
+}
+
+func renderMarkdown(source string) string {
 	htmlFlags := 0
 	htmlFlags |= blackfriday.HTML_SMARTYPANTS_DASHES
 	htmlFlags |= blackfriday.HTML_SMARTYPANTS_FRACTIONS
@@ -25,4 +44,10 @@ func Render(source string) string {
 
 	renderer := blackfriday.HtmlRenderer(htmlFlags, "", "")
 	return string(blackfriday.Markdown([]byte(source), renderer, extensions))
+}
+
+var codeRE *regexp.Regexp = regexp.MustCompile(`<code class="(\w+)">`)
+
+func transformCodeWithLanguagePrefix(source string) string {
+	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
 }
