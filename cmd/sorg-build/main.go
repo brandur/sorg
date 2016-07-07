@@ -403,19 +403,26 @@ func compileRuns(db *sql.DB) error {
 }
 
 func compileTwitter(db *sql.DB) error {
-	tweets, err := getTwitterData(db)
-	if err != nil {
-		return err
+	optionsMatrix := map[string]bool{
+		"/index":        false,
+		"/with_replies": true,
 	}
 
-	locals := getLocals("Twitter", map[string]interface{}{
-		"Tweets": tweets,
-	})
+	for page, withReplies := range optionsMatrix {
+		tweets, err := getTwitterData(db, withReplies)
+		if err != nil {
+			return err
+		}
 
-	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
-		sorg.TargetTwitterDir+"/index", locals)
-	if err != nil {
-		return err
+		locals := getLocals("Twitter", map[string]interface{}{
+			"Tweets": tweets,
+		})
+
+		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
+			sorg.TargetTwitterDir+page, locals)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -641,7 +648,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	return lastYearXDays, lastYearYDistances, nil
 }
 
-func getTwitterData(db *sql.DB) ([]*Tweet, error) {
+func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 	var tweets []*Tweet
 
 	if conf.BlackSwanDatabaseURL == "" {
@@ -655,8 +662,11 @@ func getTwitterData(db *sql.DB) ([]*Tweet, error) {
 			slug
 		FROM events
 		WHERE type = 'twitter'
+			-- Note that false is always an allowed value here because we
+			-- always want all non-reply tweets.
+			AND (metadata -> 'reply')::boolean IN (false, $1)
 		ORDER BY occurred_at DESC
-	`)
+	`, withReplies)
 	if err != nil {
 		return nil, err
 	}
