@@ -8,6 +8,12 @@
       #title
         h1 Twitter
       .twitter-content
+        {{if not .WithReplies}}
+          p {{len .Tweets | NumberWithDelimiter ','}} tweets, and <a href="/twitter/with-replies">{{len .Tweets | NumberWithDelimiter ','}} including replies</a>.
+        {{else}}
+          p <a href="/twitter">{{len .Tweets | NumberWithDelimiter ','}} tweets</a>, and {{len .Tweets | NumberWithDelimiter ','}} including replies.
+        {{end}}
+      #data-tweets-by-month.chart
         ul.list
           {{range .Tweets}}
             li

@@ -405,7 +405,7 @@ func compileRuns(db *sql.DB) error {
 func compileTwitter(db *sql.DB) error {
 	optionsMatrix := map[string]bool{
 		"/index":        false,
-		"/with_replies": true,
+		"/with-replies": true,
 	}
 
 	for page, withReplies := range optionsMatrix {
@@ -415,7 +415,8 @@ func compileTwitter(db *sql.DB) error {
 		}
 
 		locals := getLocals("Twitter", map[string]interface{}{
-			"Tweets": tweets,
+			"Tweets":      tweets,
+			"WithReplies": withReplies,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
