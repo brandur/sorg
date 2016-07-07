@@ -14,11 +14,11 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
+	"github.com/brandur/sorg/markdown"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
 	"github.com/joeshaw/envdecode"
 	_ "github.com/lib/pq"
-	"github.com/russross/blackfriday"
 	"github.com/yosssi/ace"
 	"github.com/yosssi/gcss"
 	"gopkg.in/yaml.v2"
@@ -206,7 +206,7 @@ func compileArticles() error {
 			return fmt.Errorf("No publish date for article: %v", inPath)
 		}
 
-		article.Content = string(renderMarkdown([]byte(content)))
+		article.Content = markdown.Render(content)
 
 		// TODO: Need a TOC!
 		article.TOC, err = toc.RenderTOC(article.Content)
@@ -264,7 +264,7 @@ func compileFragments() error {
 			return fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
-		fragment.Content = string(renderMarkdown([]byte(content)))
+		fragment.Content = markdown.Render(content)
 
 		locals := getLocals(fragment.Title, map[string]interface{}{
 			"Fragment": fragment,
@@ -629,29 +629,6 @@ func linkImageAssets() error {
 	}
 
 	return nil
-}
-
-func renderMarkdown(source []byte) []byte {
-	htmlFlags := 0
-	htmlFlags |= blackfriday.HTML_SMARTYPANTS_DASHES
-	htmlFlags |= blackfriday.HTML_SMARTYPANTS_FRACTIONS
-	htmlFlags |= blackfriday.HTML_SMARTYPANTS_LATEX_DASHES
-	htmlFlags |= blackfriday.HTML_USE_SMARTYPANTS
-	htmlFlags |= blackfriday.HTML_USE_XHTML
-
-	extensions := 0
-	extensions |= blackfriday.EXTENSION_AUTO_HEADER_IDS
-	extensions |= blackfriday.EXTENSION_AUTOLINK
-	extensions |= blackfriday.EXTENSION_FENCED_CODE
-	extensions |= blackfriday.EXTENSION_HEADER_IDS
-	extensions |= blackfriday.EXTENSION_LAX_HTML_BLOCKS
-	extensions |= blackfriday.EXTENSION_NO_INTRA_EMPHASIS
-	extensions |= blackfriday.EXTENSION_TABLES
-	extensions |= blackfriday.EXTENSION_SPACE_HEADERS
-	extensions |= blackfriday.EXTENSION_STRIKETHROUGH
-
-	renderer := blackfriday.HtmlRenderer(htmlFlags, "", "")
-	return blackfriday.Markdown(source, renderer, extensions)
 }
 
 func renderView(layout, view, target string, locals map[string]interface{}) error {
