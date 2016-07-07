@@ -376,7 +376,7 @@ func compileRuns() error {
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
-		sorg.TargetDir+"runs", locals)
+		sorg.TargetDir+"/runs/index", locals)
 	if err != nil {
 		return err
 	}

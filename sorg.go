@@ -60,6 +60,12 @@ const (
 	// TargetFragmentsDir is the target directory for fragments.
 	TargetFragmentsDir = TargetDir + "fragments/"
 
+	// TargetRunsDir is the target directory for pages about running.
+	TargetRunsDir = TargetDir + "runs/"
+
+	// TargetTwitterDir is the target directory for pages about Twitter.
+	TargetTwitterDir = TargetDir + "twitter/"
+
 	// ViewsDir is the source directory for views.
 	ViewsDir = "./views/"
 )
@@ -69,6 +75,8 @@ var targetDirs = []string{
 	TargetArticlesDir,
 	TargetAssetsDir,
 	TargetFragmentsDir,
+	TargetRunsDir,
+	TargetTwitterDir,
 	TargetVersionedAssetsDir,
 }
 
