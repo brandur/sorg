@@ -20,3 +20,15 @@ func TestTransformCodeWithLanguagePrefix(t *testing.T) {
 		transformCodeWithLanguagePrefix(`<code class="ruby">`),
 	)
 }
+
+func TestTransformFigures(t *testing.T) {
+	assert.Equal(t,
+		`
+<figure>
+  <p><img src="fig-src"></p>
+  <figcaption>fig-caption</figcaption>
+</figure>
+`,
+		transformFigures(`!fig src="fig-src" caption="fig-caption"`),
+	)
+}

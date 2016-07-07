@@ -1,6 +1,7 @@
 package markdown
 
 import (
+	"fmt"
 	"regexp"
 
 	"github.com/russross/blackfriday"
@@ -14,6 +15,7 @@ var renderFuncs []func(string) string = []func(string) string{
 	renderMarkdown,
 
 	// post-transformations
+	transformFigures,
 }
 
 func Render(source string) string {
@@ -50,4 +52,20 @@ var codeRE *regexp.Regexp = regexp.MustCompile(`<code class="(\w+)">`)
 
 func transformCodeWithLanguagePrefix(source string) string {
 	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
+}
+
+const figureHTML = `
+<figure>
+  <p><img src="%s"></p>
+  <figcaption>%s</figcaption>
+</figure>
+`
+
+var figureRE *regexp.Regexp = regexp.MustCompile(`!fig src="(.*)" caption="(.*)"`)
+
+func transformFigures(source string) string {
+	return figureRE.ReplaceAllStringFunc(source, func(figure string) string {
+		matches := figureRE.FindStringSubmatch(figure)
+		return fmt.Sprintf(figureHTML, matches[1], matches[2])
+	})
 }
