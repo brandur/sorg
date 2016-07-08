@@ -7,15 +7,24 @@
     .content
       #title
         h1 Reading
-      p {{len .Readings}} books.
+      p {{.NumReadings}} books.
       #charts
         #data-books-by-year.chart
         #data-pages-by-year.chart
         .clear
       #toc
-      #books
         ul
-          {{range .Readings}}
+          {{range .ReadingsByYear}}
             li
-              {{.Title}}
+              a href="#year-{{.Year}}" {{.Year}}
           {{end}}
+      #books
+        {{range .ReadingsByYear}}
+          div class="year" id="year-{{.Year}}"
+            h2 {{.Year}}
+            ul
+              {{range .Readings}}
+                li
+                  {{.Title}}
+              {{end}}
+        {{end}}

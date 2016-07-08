@@ -154,8 +154,17 @@ type Reading struct {
 	// OccurredAt is UTC time when the book was read.
 	OccurredAt *time.Time
 
+	// Rating is the rating that I assigned to the read book.
+	Rating float64
+
 	// Title is the title of the book.
 	Title string
+}
+
+// readingYear holds a collection of readings grouped by year.
+type readingYear struct {
+	Year     int
+	Readings []*Reading
 }
 
 // Run is a run as downloaded from Strava.
@@ -476,8 +485,11 @@ func compileReading(db *sql.DB) error {
 		return err
 	}
 
+	readingsByYear := getReadingsByYear(readings)
+
 	locals := getLocals("Reading", map[string]interface{}{
-		"Readings": readings,
+		"NumReadings":    len(readings),
+		"ReadingsByYear": readingsByYear,
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/reading/index",
@@ -524,6 +536,22 @@ func compileRuns(db *sql.DB) error {
 	}
 
 	return nil
+}
+
+func getReadingsByYear(readings []*Reading) []*readingYear {
+	var year *readingYear
+	var years []*readingYear
+
+	for _, reading := range readings {
+		if year == nil || year.Year != reading.OccurredAt.Year() {
+			year = &readingYear{reading.OccurredAt.Year(), nil}
+			years = append(years, year)
+		}
+
+		year.Readings = append(year.Readings, reading)
+	}
+
+	return years
 }
 
 func getTweetsByYearAndMonth(tweets []*Tweet) []*tweetYear {
@@ -705,6 +733,7 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 			-- not every book has a number of pages
 			(COALESCE(NULLIF(metadata -> 'num_pages', ''), '0'))::int,
 			occurred_at,
+			(metadata -> 'rating')::float,
 			metadata -> 'title'
 		FROM events
 		WHERE type = 'goodreads'
@@ -723,6 +752,7 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 			&reading.ISBN,
 			&reading.NumPages,
 			&reading.OccurredAt,
+			&reading.Rating,
 			&reading.Title,
 		)
 		if err != nil {
