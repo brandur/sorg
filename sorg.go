@@ -49,6 +49,8 @@ const (
 	// those that probably don't need to change between releases like images.
 	TargetAssetsDir = TargetDir + "assets/"
 
+	TargetPhotosAssetsDir = TargetDir + "assets/photos/"
+
 	// TargetVersionedAssetsDir is the target directory where static assets are
 	// placed which should be versioned by release number. Versioned assets are
 	// those that might need to change on release like CSS or JS files.
@@ -78,6 +80,7 @@ var targetDirs = []string{
 	TargetArticlesDir,
 	TargetAssetsDir,
 	TargetFragmentsDir,
+	TargetPhotosAssetsDir,
 	TargetPhotosDir,
 	TargetRunsDir,
 	TargetTwitterDir,

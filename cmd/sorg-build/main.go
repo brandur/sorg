@@ -14,6 +14,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
+	"github.com/brandur/sorg/assets"
 	"github.com/brandur/sorg/markdown"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
@@ -414,6 +415,23 @@ func compilePhotos(db *sql.DB) error {
 		return err
 	}
 
+	// Keep a published copy of all the photos that we need.
+	var photoAssets []assets.Asset
+	for _, photo := range photos {
+		photoAssets = append(photoAssets,
+			assets.Asset{photo.LargeImageURL,
+				sorg.TargetPhotosAssetsDir + "/" + photo.Slug + "@2x.jpg"},
+			assets.Asset{photo.MediumImageURL,
+				sorg.TargetPhotosAssetsDir + "/" + photo.Slug + ".jpg"},
+		)
+	}
+
+	log.Debugf("Fetching %d photo(s)", len(photoAssets))
+	err = assets.Fetch(photoAssets)
+	if err != nil {
+		return err
+	}
+
 	locals := getLocals("Photos", map[string]interface{}{
 		"Photos":        photos,
 		"ViewportWidth": 600,
@@ -594,7 +612,7 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 			slug
 		FROM events
 		WHERE type = 'flickr'
-			AND (metadata -> 'medium_height')::int = 500
+			AND (metadata -> 'medium_width')::int = 500
 		ORDER BY occurred_at DESC
 		LIMIT 30
 	`)
@@ -916,7 +934,7 @@ func linkImageAssets() error {
 	}
 
 	for _, asset := range assets {
-		log.Debugf("Linking image asset: %v", asset)
+		log.Debugf("Linking image asset: %v", asset.Name())
 
 		// we use absolute paths for source and destination because not doing
 		// so can result in some weird symbolic link inception
