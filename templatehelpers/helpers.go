@@ -19,6 +19,7 @@ var FuncMap template.FuncMap = template.FuncMap{
 	"DistanceOfTimeInWords":        distanceOfTimeInWords,
 	"DistanceOfTimeInWordsFromNow": distanceOfTimeInWordsFromNow,
 	"FormatTime":                   formatTime,
+	"FormatTimeWithMinute":         formatTimeWithMinute,
 	"InKM":                         inKM,
 	"MarshalJSON":                  marshalJSON,
 	"MonthName":                    monthName,
@@ -64,6 +65,10 @@ func distanceOfTimeInWordsFromNow(to time.Time) string {
 
 func formatTime(t *time.Time) string {
 	return t.Format("January 2, 2006")
+}
+
+func formatTimeWithMinute(t *time.Time) string {
+	return t.Format("January 2, 2006 15:04")
 }
 
 func inKM(m float64) float64 {

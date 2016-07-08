@@ -10,9 +10,9 @@ import (
 var testTime time.Time
 
 func init() {
-	const longForm = "2006/01/02"
+	const longForm = "2006/01/02 15:04"
 	var err error
-	testTime, err = time.Parse(longForm, "2016/07/03")
+	testTime, err = time.Parse(longForm, "2016/07/03 12:34")
 	if err != nil {
 		panic(err)
 	}
@@ -43,6 +43,10 @@ func TestDistanceOfTimeInWords(t *testing.T) {
 
 func TestFormatTime(t *testing.T) {
 	assert.Equal(t, "July 3, 2016", formatTime(&testTime))
+}
+
+func TestFormatTimeWithMinute(t *testing.T) {
+	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
 }
 
 func TestInKM(t *testing.T) {
