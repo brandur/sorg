@@ -54,26 +54,6 @@ func distanceOfTimeInWords(to, from time.Time) string {
 	return ""
 }
 
-/*
-   distance_in_minutes = (((to_time - from_time).abs)/60).round
-   distance_in_seconds = ((to_time - from_time).abs).round
-
-   case distance_in_minutes
-     when 0 then "less than 1 minute"
-     when 1..44 then "%s minutes" % distance_in_minutes
-     when 45..89          then "about 1 hour"
-     when 90..1439        then "about %s hours" %
-       (distance_in_minutes.to_f / 60.0).round
-     when 1440..2519      then "1 day"
-     when 2520..43199     then "%s days" %
-       (distance_in_minutes.to_f / 1440.0).round
-     when 43200..86399    then "about 1 month"
-     when 86400..525599   then "%s months" %
-       (distance_in_minutes.to_f / 43200.0).round
-     else nil
-   end
-*/
-
 func distanceOfTimeInWordsFromNow(to time.Time) string {
 	return distanceOfTimeInWords(to, time.Now())
 }
