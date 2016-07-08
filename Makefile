@@ -82,7 +82,6 @@ watch:
 # invocation becoems a huge unreadable wall of text that gets dumped into the
 # shell. Instead, find all our own *.go files and then just tack the vendor/
 # directory on separately (fswatch will watch it recursively).
-#GO_FILES := $(shell find . -type d \( -name vendor \) -prune -o -name "*.go" -print)
 GO_FILES := $(shell find . -type f -name "*.go" ! -path "./org/*" ! -path "./vendor/*")
 
 watch-go:
