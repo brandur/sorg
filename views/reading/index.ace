@@ -9,7 +9,7 @@
         h1 Reading
       p {{.NumReadings}} books.
       #charts
-        #data-books-by-year.chart
+        #data-readings-by-year.chart
         #data-pages-by-year.chart
         .clear
       #toc
@@ -43,3 +43,94 @@
                     {{end}}
               {{end}}
         {{end}}
+  = include views/_footer
+  = javascript
+    var byYearXYears = {{.ByYearXYears}};
+    var byYearYCounts = {{.ByYearYCounts}};
+
+    (function() {
+      $(function() {
+        return new Highcharts.Chart({
+          chart: {
+            renderTo: 'data-readings-by-year',
+            defaultSeriesType: 'bar'
+          },
+          plotOptions: {
+            series: {
+              animation: false
+            }
+          },
+          title: {
+            text: null
+          },
+          xAxis: {
+            categories: byYearXYears,
+            title: {
+              text: null
+            }
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: null
+            }
+          },
+          tooltip: {
+            formatter: function() {
+              return this.y + (this.y !== 1 ? ' books read' : ' book read') + ' in ' + this.x;
+            }
+          },
+          series: [
+            {
+              name: 'Books',
+              data: byYearYCounts,
+              color: '#333'
+             }
+          ]
+        });
+      });
+    }).call(this);
+    /*
+    (function() {
+      $(function() {
+        return new Highcharts.Chart({
+          chart: {
+            renderTo: 'data-pages-by-year',
+            defaultSeriesType: 'bar'
+          },
+          plotOptions: {
+            series: {
+              animation: false
+            }
+          },
+          title: {
+            text: null
+          },
+          xAxis: {
+            categories: pageCountByYearCategories,
+            title: {
+              text: null
+            }
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: null
+            }
+          },
+          tooltip: {
+            formatter: function() {
+              return this.y + (this.y !== 1 ? ' pages read' : ' page read') + ' in ' + this.x;
+            }
+          },
+          series: [
+            {
+              name: 'Pages',
+              data: pageCountByYearData,
+              color: '#333'
+            }
+          ]
+        });
+      });
+    }).call(this);
+    */

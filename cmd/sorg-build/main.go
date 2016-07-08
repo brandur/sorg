@@ -485,11 +485,20 @@ func compileReading(db *sql.DB) error {
 		return err
 	}
 
-	readingsByYear := getReadingsByYear(readings)
+	readingsByYear := groupReadingsByYear(readings)
+
+	byYearXYears, byYearYCounts, err := getReadingsByYearData(db)
+	if err != nil {
+		return err
+	}
 
 	locals := getLocals("Reading", map[string]interface{}{
 		"NumReadings":    len(readings),
 		"ReadingsByYear": readingsByYear,
+
+		// chart: readings by year
+		"ByYearXYears":  byYearXYears,
+		"ByYearYCounts": byYearYCounts,
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/reading/index",
@@ -538,7 +547,7 @@ func compileRuns(db *sql.DB) error {
 	return nil
 }
 
-func getReadingsByYear(readings []*Reading) []*readingYear {
+func groupReadingsByYear(readings []*Reading) []*readingYear {
 	var year *readingYear
 	var years []*readingYear
 
@@ -554,7 +563,7 @@ func getReadingsByYear(readings []*Reading) []*readingYear {
 	return years
 }
 
-func getTweetsByYearAndMonth(tweets []*Tweet) []*tweetYear {
+func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
 	var month *tweetMonth
 	var year *tweetYear
 	var years []*tweetYear
@@ -599,7 +608,7 @@ func compileTwitter(db *sql.DB) error {
 			ts = tweetsWithReplies
 		}
 
-		tweetsByYearAndMonth := getTweetsByYearAndMonth(ts)
+		tweetsByYearAndMonth := groupTwitterByYearAndMonth(ts)
 
 		tweetCountXMonths, tweetCountYCounts, err :=
 			getTwitterByMonth(db, withReplies)
@@ -767,6 +776,52 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 	}
 
 	return readings, nil
+}
+
+func getReadingsByYearData(db *sql.DB) ([]string, []int, error) {
+	// Give these arrays 0 elements (instead of null) in case no Black Swan
+	// data gets loaded but we still need to render the page.
+	byYearXYears := []string{}
+	byYearYCounts := []int{}
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return byYearXYears, byYearYCounts, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT date_part('year', occurred_at)::text AS year,
+			COUNT(*)
+		FROM events
+		WHERE type = 'goodreads'
+		GROUP BY date_part('year', occurred_at)
+		ORDER BY date_part('year', occurred_at) DESC
+	`)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var year string
+		var count int
+
+		err = rows.Scan(
+			&year,
+			&count,
+		)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		byYearXYears = append(byYearXYears, year)
+		byYearYCounts = append(byYearYCounts, count)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return byYearXYears, byYearYCounts, nil
 }
 
 func getRunsData(db *sql.DB) ([]*Run, error) {
