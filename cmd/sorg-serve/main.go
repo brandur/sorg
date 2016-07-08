@@ -38,7 +38,7 @@ func main() {
 
 func serve(port int) error {
 	log.Infof("Serving '%v' on port %v", path.Clean(sorg.TargetDir), port)
-	log.Infof("Open browser to: http://localhost:%v/index", port)
+	log.Infof("Open browser to: http://localhost:%v/", port)
 	handler := http.FileServer(http.Dir(sorg.TargetDir))
 	return http.ListenAndServe(":"+strconv.Itoa(port), handler)
 }

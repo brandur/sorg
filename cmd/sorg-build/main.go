@@ -471,7 +471,7 @@ func compilePhotos(db *sql.DB) error {
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/photos/index",
-		sorg.TargetPhotosDir+"/index", locals)
+		sorg.TargetPhotosDir+"/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -512,7 +512,7 @@ func compileReading(db *sql.DB) error {
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/reading/index",
-		sorg.TargetReadingDir+"/index", locals)
+		sorg.TargetReadingDir+"/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -549,7 +549,7 @@ func compileRuns(db *sql.DB) error {
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
-		sorg.TargetRunsDir+"/index", locals)
+		sorg.TargetRunsDir+"/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -608,7 +608,7 @@ func compileTwitter(db *sql.DB) error {
 	}
 
 	optionsMatrix := map[string]bool{
-		"/index":        false,
+		"/index.html":   false,
 		"/with-replies": true,
 	}
 
