@@ -1,0 +1,21 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  .reading
+    .content
+      #title
+        h1 Reading
+      p {{len .Readings}} books.
+      #charts
+        #data-books-by-year.chart
+        #data-pages-by-year.chart
+        .clear
+      #toc
+      #books
+        ul
+          {{range .Readings}}
+            li
+              {{.Title}}
+          {{end}}

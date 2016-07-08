@@ -139,6 +139,25 @@ type Photo struct {
 	Slug string
 }
 
+// Reading is a read book procured from Goodreads.
+type Reading struct {
+	// Author is the full name of the book's author.
+	Author string
+
+	// ISBN is the unique identifier for the book.
+	ISBN string
+
+	// NumPages are the number of pages in the book. If unavailable, this
+	// number will be zero.
+	NumPages int
+
+	// OccurredAt is UTC time when the book was read.
+	OccurredAt *time.Time
+
+	// Title is the title of the book.
+	Title string
+}
+
 // Run is a run as downloaded from Strava.
 type Run struct {
 	// Distance is the distance traveled for the run in meters.
@@ -226,6 +245,11 @@ func main() {
 	}
 
 	err = compilePhotos(db)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = compileReading(db)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -446,6 +470,25 @@ func compilePhotos(db *sql.DB) error {
 	return nil
 }
 
+func compileReading(db *sql.DB) error {
+	readings, err := getReadingsData(db)
+	if err != nil {
+		return err
+	}
+
+	locals := getLocals("Reading", map[string]interface{}{
+		"Readings": readings,
+	})
+
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/reading/index",
+		sorg.TargetReadingDir+"/index", locals)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func compileRuns(db *sql.DB) error {
 	runs, err := getRunsData(db)
 	if err != nil {
@@ -646,6 +689,54 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 	}
 
 	return photos, nil
+}
+
+func getReadingsData(db *sql.DB) ([]*Reading, error) {
+	var readings []*Reading
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return readings, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT
+			metadata -> 'author',
+			metadata -> 'isbn',
+			-- not every book has a number of pages
+			(COALESCE(NULLIF(metadata -> 'num_pages', ''), '0'))::int,
+			occurred_at,
+			metadata -> 'title'
+		FROM events
+		WHERE type = 'goodreads'
+		ORDER BY occurred_at DESC
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var reading Reading
+
+		err = rows.Scan(
+			&reading.Author,
+			&reading.ISBN,
+			&reading.NumPages,
+			&reading.OccurredAt,
+			&reading.Title,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		readings = append(readings, &reading)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
+
+	return readings, nil
 }
 
 func getRunsData(db *sql.DB) ([]*Run, error) {
