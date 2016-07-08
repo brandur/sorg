@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 
@@ -73,6 +74,10 @@ type Article struct {
 	// PublishedAt is when the article was published.
 	PublishedAt *time.Time `yaml:"published_at"`
 
+	// Slug is a unique identifier for the article that also helps determine
+	// where it's addressable by URL.
+	Slug string `yaml:"-"`
+
 	// Title is the article's title.
 	Title string `yaml:"title"`
 
@@ -81,6 +86,12 @@ type Article struct {
 	// content, rendered, and then added separately.
 	TOC string `yaml:"-"`
 }
+
+type ArticleByPublishedAt []*Article
+
+func (a ArticleByPublishedAt) Len() int           { return len(a) }
+func (a ArticleByPublishedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a ArticleByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Before(*a[j].PublishedAt) }
 
 // Conf contains configuration information for the command.
 type Conf struct {
@@ -108,6 +119,10 @@ type Fragment struct {
 
 	// PublishedAt is when the fragment was published.
 	PublishedAt *time.Time `yaml:"published_at"`
+
+	// Slug is a unique identifier for the fragment that also helps determine
+	// where it's addressable by URL.
+	Slug string `yaml:"-"`
 
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
@@ -238,7 +253,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileArticles()
+	articles, err := compileArticles()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -278,53 +293,62 @@ func main() {
 		log.Fatal(err)
 	}
 
+	err = compileHome(articles)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	err = linkImageAssets()
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func compileArticles() error {
+func compileArticles() ([]*Article, error) {
 	articleInfos, err := ioutil.ReadDir(sorg.ArticlesDir)
 	if err != nil {
-		return err
+		return nil, err
 	}
+
+	var articles []*Article
 
 	for _, articleInfo := range articleInfos {
 		inPath := sorg.ArticlesDir + articleInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
 
-		outName := strings.Replace(articleInfo.Name(), ".md", "", -1)
-
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		frontmatter, content, err := splitFrontmatter(string(raw))
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		var article Article
+		articles = append(articles, &article)
+
 		err = yaml.Unmarshal([]byte(frontmatter), &article)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
+		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
+
 		if article.Title == "" {
-			return fmt.Errorf("No title for article: %v", inPath)
+			return nil, fmt.Errorf("No title for article: %v", inPath)
 		}
 
 		if article.PublishedAt == nil {
-			return fmt.Errorf("No publish date for article: %v", inPath)
+			return nil, fmt.Errorf("No publish date for article: %v", inPath)
 		}
 
 		article.Content = markdown.Render(content)
 
 		article.TOC, err = toc.Render(article.Content)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		locals := getLocals(article.Title, map[string]interface{}{
@@ -332,13 +356,25 @@ func compileArticles() error {
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
-			sorg.TargetArticlesDir+outName, locals)
+			sorg.TargetDir+article.Slug, locals)
 		if err != nil {
-			return err
+			return nil, err
 		}
 	}
 
-	return nil
+	sort.Sort(sort.Reverse(ArticleByPublishedAt(articles)))
+
+	locals := getLocals("Articles", map[string]interface{}{
+		"Articles": articles,
+	})
+
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/index",
+		sorg.TargetArticlesDir+"/index.html", locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return articles, nil
 }
 
 func compileFragments() error {
@@ -390,6 +426,10 @@ func compileFragments() error {
 		}
 	}
 
+	return nil
+}
+
+func compileHome(articles []*Article) error {
 	return nil
 }
 

@@ -41,8 +41,9 @@ const (
 	// StylesheetsDir is the source directory for stylesheets.
 	StylesheetsDir = AssetsDir + "stylesheets/"
 
-	// TargetArticlesDir is the target directory for articles.
-	TargetArticlesDir = TargetDir
+	// TargetArticlesDir is the target directory for some article pages (note
+	// that articles themselves live in TargetDir).
+	TargetArticlesDir = TargetDir + "articles/"
 
 	// TargetAssetsDir is the target directory where static assets are placed
 	// which should not be versioned by release number. Unversioned assets are
