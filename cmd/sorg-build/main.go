@@ -147,6 +147,18 @@ type Tweet struct {
 	Slug string
 }
 
+// tweetYear holds a collection of tweetMonths grouped by year.
+type tweetYear struct {
+	Year   int
+	Months []*tweetMonth
+}
+
+// tweetMonth holds a collection of Tweets grouped by year.
+type tweetMonth struct {
+	Month  time.Month
+	Tweets []*Tweet
+}
+
 var conf Conf
 
 func main() {
@@ -402,6 +414,29 @@ func compileRuns(db *sql.DB) error {
 	return nil
 }
 
+func getTweetsByYearAndMonth(tweets []*Tweet) []*tweetYear {
+	var month *tweetMonth
+	var year *tweetYear
+	var years []*tweetYear
+
+	for _, tweet := range tweets {
+		if year == nil || year.Year != tweet.OccurredAt.Year() {
+			year = &tweetYear{tweet.OccurredAt.Year(), nil}
+			years = append(years, year)
+			month = nil
+		}
+
+		if month == nil || month.Month != tweet.OccurredAt.Month() {
+			month = &tweetMonth{tweet.OccurredAt.Month(), nil}
+			year.Months = append(year.Months, month)
+		}
+
+		month.Tweets = append(month.Tweets, tweet)
+	}
+
+	return years
+}
+
 func compileTwitter(db *sql.DB) error {
 	optionsMatrix := map[string]bool{
 		"/index":        false,
@@ -414,8 +449,11 @@ func compileTwitter(db *sql.DB) error {
 			return err
 		}
 
+		tweetsByYearAndMonth := getTweetsByYearAndMonth(tweets)
+
 		locals := getLocals("Twitter", map[string]interface{}{
-			"Tweets":      tweets,
+			"NumTweets":   len(tweets),
+			"Tweets":      tweetsByYearAndMonth,
 			"WithReplies": withReplies,
 		})
 

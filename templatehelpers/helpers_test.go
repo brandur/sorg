@@ -65,7 +65,7 @@ func TestMarshalJSON(t *testing.T) {
 }
 
 func TestMonthName(t *testing.T) {
-	assert.Equal(t, "July", monthName(&testTime))
+	assert.Equal(t, "July", monthName(time.July))
 }
 
 func TestNumberWithDelimiter(t *testing.T) {

@@ -9,22 +9,42 @@
         h1 Twitter
       .twitter-content
         {{if not .WithReplies}}
-          p {{len .Tweets | NumberWithDelimiter ','}} tweets, and <a href="/twitter/with-replies">{{len .Tweets | NumberWithDelimiter ','}} including replies</a>.
+          p {{NumberWithDelimiter ',' .NumTweets}} tweets, and <a href="/twitter/with-replies">{{NumberWithDelimiter ',' .NumTweets}} including replies</a>.
         {{else}}
-          p <a href="/twitter">{{len .Tweets | NumberWithDelimiter ','}} tweets</a>, and {{len .Tweets | NumberWithDelimiter ','}} including replies.
+          p <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweets}} including replies.
         {{end}}
       #data-tweets-by-month.chart
-        ul.list
-          {{range .Tweets}}
+      #toc
+        ul
+          {{range $year := .Tweets}}
             li
-              {{RenderTweetContent .Content | HTML}}
-              span.meta
-                a href="https://twitter.com/brandur/statuses/{{.Slug}}" rel="nofollow"
-                  {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
-                  {{if ne "" $display}}
-                    {{$display}}
-                  {{else}}
-                    {{FormatTimeWithMinute .OccurredAt}}
-                  {{end}}
+              a href="#year-{{$year.Year}}" {{$year.Year}}
+              ul
+                {{range $month := .Months}}
+                  li
+                    a href="#month-{{$year.Year}}-{{$month.Month}}" {{MonthName $month.Month}}
+                {{end}}
           {{end}}
+      .twitter-content
+        {{range $year := .Tweets}}
+          div class="year" id="year-{{$year.Year}}"
+            h2 {{$year.Year}}
+            {{range $month := .Months}}
+              div class="month" id="month-{{$year.Year}}-{{$month.Month}}"
+                h3 {{MonthName $month.Month}}
+                ul
+                  {{range $month.Tweets}}
+                    li
+                      {{RenderTweetContent .Content | HTML}}
+                      span.meta
+                        a href="https://twitter.com/brandur/statuses/{{.Slug}}" rel="nofollow"
+                          {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
+                          {{if ne "" $display}}
+                            {{$display}}
+                          {{else}}
+                            {{FormatTimeWithMinute .OccurredAt}}
+                          {{end}}
+                  {{end}}
+            {{end}}
+        {{end}}
   = include views/_footer

@@ -81,8 +81,8 @@ func marshalJSON(o interface{}) string {
 	return string(bytes)
 }
 
-func monthName(t *time.Time) string {
-	return t.Format("January")
+func monthName(m time.Month) string {
+	return m.String()
 }
 
 // Changes a number to a string and uses a separator for groups of three
