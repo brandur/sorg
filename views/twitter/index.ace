@@ -48,3 +48,51 @@
             {{end}}
         {{end}}
   = include views/_footer
+  = javascript
+    var tweetCountXMonths = {{.TweetCountXMonths}};
+    var tweetCountYCounts = {{.TweetCountYCounts}};
+
+    (function() {
+      $(function() {
+        return new Highcharts.Chart({
+          chart: {
+            renderTo: 'data-tweets-by-month',
+            defaultSeriesType: 'line'
+          },
+          plotOptions: {
+            series: {
+              animation: false
+            }
+          },
+          title: {
+            text: null
+          },
+          xAxis: {
+            categories: tweetCountXMonths,
+            labels: {
+              rotation: -45,
+              align: 'right',
+              step: 6
+            }
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: null
+            }
+          },
+          tooltip: {
+            formatter: function() {
+              return this.y + (this.y !== 1 ? ' tweets' : ' tweet') + ' in ' + this.x;
+            }
+          },
+          series: [
+            {
+              name: 'Tweets',
+              data: tweetCountYCounts,
+              color: '#333'
+            }
+          ]
+        });
+      });
+    }).call(this);

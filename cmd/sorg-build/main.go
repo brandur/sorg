@@ -461,11 +461,21 @@ func compileTwitter(db *sql.DB) error {
 
 		tweetsByYearAndMonth := getTweetsByYearAndMonth(ts)
 
+		tweetCountXMonths, tweetCountYCounts, err :=
+			getTweetsByMonth(db, withReplies)
+		if err != nil {
+			return err
+		}
+
 		locals := getLocals("Twitter", map[string]interface{}{
 			"NumTweets":            len(tweets),
 			"NumTweetsWithReplies": len(tweetsWithReplies),
 			"Tweets":               tweetsByYearAndMonth,
 			"WithReplies":          withReplies,
+
+			// chart: tweets by month
+			"TweetCountXMonths": tweetCountXMonths,
+			"TweetCountYCounts": tweetCountYCounts,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
@@ -696,6 +706,55 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	}
 
 	return lastYearXDays, lastYearYDistances, nil
+}
+
+func getTweetsByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
+	// Give these arrays 0 elements (instead of null) in case no Black Swan
+	// data gets loaded but we still need to render the page.
+	tweetCountXMonths := []string{}
+	tweetCountYCounts := []int{}
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return tweetCountXMonths, tweetCountYCounts, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT to_char(date_trunc('month', occurred_at), 'Mon ''YY'),
+			COUNT(*)
+		FROM events
+		WHERE type = 'twitter'
+			-- Note that false is always an allowed value here because we
+			-- always want all non-reply tweets.
+			AND (metadata -> 'reply')::boolean IN (false, $1)
+		GROUP BY date_trunc('month', occurred_at)
+		ORDER BY date_trunc('month', occurred_at)
+	`, withReplies)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var count int
+		var month string
+
+		err = rows.Scan(
+			&month,
+			&count,
+		)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		tweetCountXMonths = append(tweetCountXMonths, month)
+		tweetCountYCounts = append(tweetCountYCounts, count)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return tweetCountXMonths, tweetCountYCounts, nil
 }
 
 func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
