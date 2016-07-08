@@ -452,10 +452,22 @@ func compileFragments() ([]*Fragment, error) {
 }
 
 func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) error {
+	if len(articles) > 5 {
+		articles = articles[0:5]
+	}
+
+	if len(fragments) > 5 {
+		fragments = fragments[0:5]
+	}
+
+	if len(photos) > 27 {
+		photos = photos[0:27]
+	}
+
 	locals := getLocals("brandur.org", map[string]interface{}{
-		"Articles":  articles[0:5],
-		"Fragments": fragments[0:5],
-		"Photos":    photos[0:27],
+		"Articles":  articles,
+		"Fragments": fragments,
+		"Photos":    photos,
 	})
 
 	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/index",
