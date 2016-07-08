@@ -84,5 +84,7 @@ watch:
 # directory on separately (fswatch will watch it recursively).
 GO_FILES := $(shell find . -type f -name "*.go" ! -path "./org/*" ! -path "./vendor/*")
 
+# We recompile our Go source when a file changes, but we also rebuild the site
+# because a change in source may have affected the build formula.
 watch-go:
-	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install
+	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install build
