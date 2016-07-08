@@ -87,11 +87,11 @@ type Article struct {
 	TOC string `yaml:"-"`
 }
 
-type ArticleByPublishedAt []*Article
+type articleByPublishedAt []*Article
 
-func (a ArticleByPublishedAt) Len() int           { return len(a) }
-func (a ArticleByPublishedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a ArticleByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Before(*a[j].PublishedAt) }
+func (a articleByPublishedAt) Len() int           { return len(a) }
+func (a articleByPublishedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a articleByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Before(*a[j].PublishedAt) }
 
 // Conf contains configuration information for the command.
 type Conf struct {
@@ -127,6 +127,12 @@ type Fragment struct {
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
 }
+
+type fragmentByPublishedAt []*Fragment
+
+func (a fragmentByPublishedAt) Len() int           { return len(a) }
+func (a fragmentByPublishedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a fragmentByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Before(*a[j].PublishedAt) }
 
 // Photo is a photography downloaded from Flickr.
 type Photo struct {
@@ -258,7 +264,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileFragments()
+	fragments, err := compileFragments()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -293,7 +299,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileHome(articles)
+	err = compileHome(articles, fragments)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -362,7 +368,7 @@ func compileArticles() ([]*Article, error) {
 		}
 	}
 
-	sort.Sort(sort.Reverse(ArticleByPublishedAt(articles)))
+	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
 
 	locals := getLocals("Articles", map[string]interface{}{
 		"Articles": articles,
@@ -377,40 +383,44 @@ func compileArticles() ([]*Article, error) {
 	return articles, nil
 }
 
-func compileFragments() error {
+func compileFragments() ([]*Fragment, error) {
 	fragmentInfos, err := ioutil.ReadDir(sorg.FragmentsDir)
 	if err != nil {
-		return err
+		return nil, err
 	}
+
+	var fragments []*Fragment
 
 	for _, fragmentInfo := range fragmentInfos {
 		inPath := sorg.FragmentsDir + fragmentInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
 
-		outName := strings.Replace(fragmentInfo.Name(), ".md", "", -1)
-
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		frontmatter, content, err := splitFrontmatter(string(raw))
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		var fragment Fragment
+		fragments = append(fragments, &fragment)
+
 		err = yaml.Unmarshal([]byte(frontmatter), &fragment)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
+		fragment.Slug = strings.Replace(fragmentInfo.Name(), ".md", "", -1)
+
 		if fragment.Title == "" {
-			return fmt.Errorf("No title for fragment: %v", inPath)
+			return nil, fmt.Errorf("No title for fragment: %v", inPath)
 		}
 
 		if fragment.PublishedAt == nil {
-			return fmt.Errorf("No publish date for fragment: %v", inPath)
+			return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
 		}
 
 		fragment.Content = markdown.Render(content)
@@ -420,16 +430,28 @@ func compileFragments() error {
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
-			sorg.TargetFragmentsDir+outName, locals)
+			sorg.TargetFragmentsDir+fragment.Slug, locals)
 		if err != nil {
-			return err
+			return nil, err
 		}
 	}
 
-	return nil
+	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
+
+	locals := getLocals("Fragments", map[string]interface{}{
+		"Fragments": fragments,
+	})
+
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/index",
+		sorg.TargetFragmentsDir+"/index.html", locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return fragments, nil
 }
 
-func compileHome(articles []*Article) error {
+func compileHome(articles []*Article, fragment []*Fragment) error {
 	return nil
 }
 
