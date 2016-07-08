@@ -487,7 +487,13 @@ func compileReading(db *sql.DB) error {
 
 	readingsByYear := groupReadingsByYear(readings)
 
-	byYearXYears, byYearYCounts, err := getReadingsByYearData(db)
+	readingsByYearXYears, readingsByYearYCounts, err :=
+		getReadingsCountByYearData(db)
+	if err != nil {
+		return err
+	}
+
+	pagesByYearXYears, pagesByYearYCounts, err := getReadingsPagesByYearData(db)
 	if err != nil {
 		return err
 	}
@@ -497,8 +503,12 @@ func compileReading(db *sql.DB) error {
 		"ReadingsByYear": readingsByYear,
 
 		// chart: readings by year
-		"ByYearXYears":  byYearXYears,
-		"ByYearYCounts": byYearYCounts,
+		"ReadingsByYearXYears":  readingsByYearXYears,
+		"ReadingsByYearYCounts": readingsByYearYCounts,
+
+		// chart: pages by year
+		"PagesByYearXYears":  pagesByYearXYears,
+		"PagesByYearYCounts": pagesByYearYCounts,
 	})
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/reading/index",
@@ -778,7 +788,7 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 	return readings, nil
 }
 
-func getReadingsByYearData(db *sql.DB) ([]string, []int, error) {
+func getReadingsCountByYearData(db *sql.DB) ([]string, []int, error) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
 	byYearXYears := []string{}
@@ -794,7 +804,54 @@ func getReadingsByYearData(db *sql.DB) ([]string, []int, error) {
 		FROM events
 		WHERE type = 'goodreads'
 		GROUP BY date_part('year', occurred_at)
-		ORDER BY date_part('year', occurred_at) DESC
+		ORDER BY date_part('year', occurred_at)
+	`)
+	if err != nil {
+		return nil, nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var year string
+		var count int
+
+		err = rows.Scan(
+			&year,
+			&count,
+		)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		byYearXYears = append(byYearXYears, year)
+		byYearYCounts = append(byYearYCounts, count)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return byYearXYears, byYearYCounts, nil
+}
+
+func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
+	// Give these arrays 0 elements (instead of null) in case no Black Swan
+	// data gets loaded but we still need to render the page.
+	byYearXYears := []string{}
+	byYearYCounts := []int{}
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return byYearXYears, byYearYCounts, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT date_part('year', occurred_at)::text AS year,
+			sum((metadata -> 'num_pages')::int)
+		FROM events
+		WHERE type = 'goodreads'
+			AND metadata -> 'num_pages' <> ''
+		GROUP BY date_part('year', occurred_at)
+		ORDER BY date_part('year', occurred_at)
 	`)
 	if err != nil {
 		return nil, nil, err

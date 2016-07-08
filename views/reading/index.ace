@@ -45,8 +45,11 @@
         {{end}}
   = include views/_footer
   = javascript
-    var byYearXYears = {{.ByYearXYears}};
-    var byYearYCounts = {{.ByYearYCounts}};
+    var readingsByYearXYears = {{.ReadingsByYearXYears}};
+    var readingsByYearYCounts = {{.ReadingsByYearYCounts}};
+
+    var pagesByYearXYears = {{.PagesByYearXYears}};
+    var pagesByYearYCounts = {{.PagesByYearYCounts}};
 
     (function() {
       $(function() {
@@ -64,7 +67,7 @@
             text: null
           },
           xAxis: {
-            categories: byYearXYears,
+            categories: readingsByYearXYears,
             title: {
               text: null
             }
@@ -83,14 +86,13 @@
           series: [
             {
               name: 'Books',
-              data: byYearYCounts,
+              data: readingsByYearYCounts,
               color: '#333'
              }
           ]
         });
       });
     }).call(this);
-    /*
     (function() {
       $(function() {
         return new Highcharts.Chart({
@@ -107,7 +109,7 @@
             text: null
           },
           xAxis: {
-            categories: pageCountByYearCategories,
+            categories: pagesByYearXYears,
             title: {
               text: null
             }
@@ -126,11 +128,10 @@
           series: [
             {
               name: 'Pages',
-              data: pageCountByYearData,
+              data: pagesByYearYCounts,
               color: '#333'
             }
           ]
         });
       });
     }).call(this);
-    */
