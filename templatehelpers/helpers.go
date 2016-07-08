@@ -2,11 +2,14 @@ package templatehelpers
 
 import (
 	"bytes"
+	"crypto/sha1"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"math"
+	"regexp"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -21,6 +24,7 @@ var FuncMap template.FuncMap = template.FuncMap{
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
 	"Pace":                         pace,
+	"RenderTweetContent":           renderTweetContent,
 	"RoundToString":                roundToString,
 }
 
@@ -123,6 +127,59 @@ func pace(distance float64, duration time.Duration) string {
 	min := int64(speed / 60.0)
 	sec := int64(speed) % 60
 	return fmt.Sprintf("%v:%02d", min, sec)
+}
+
+// Matches links in a tweet (like protocol://link).
+var linkRE *regexp.Regexp = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*)`)
+
+// Matches tags in a tweet (like #mix11).
+var tagRE *regexp.Regexp = regexp.MustCompile(`#(\w+)`)
+
+// Matches users in a tweet (like #mix11).
+var userRE *regexp.Regexp = regexp.MustCompile(`@(\w+)`)
+
+// Renders the content of a tweet to HTML.
+func renderTweetContent(content string) string {
+	tagMap := make(map[string]string)
+
+	// links like protocol://link
+	content = linkRE.ReplaceAllStringFunc(content, func(link string) string {
+		matches := linkRE.FindStringSubmatch(link)
+
+		//fmt.Printf("matches = %+v (len %v)\n", matches, len(matches))
+
+		whitespace := matches[1]
+		href := matches[2]
+
+		display := href
+		if len(href) > 30 {
+			display = fmt.Sprintf("%s&hellip;", href[0:30])
+		}
+
+		// replace with tags so links don't interfere with subsequent rules
+		sum := sha1.Sum([]byte(href))
+		tag := string(sum[:])
+		tagMap[tag] = fmt.Sprintf(`<a href="%s" rel="nofollow">%s</a>`, href, display)
+
+		// make sure to preserve whitespace before the inserted tag
+		return whitespace + tag
+	})
+
+	// user links (like @brandur)
+	content = userRE.ReplaceAllString(content,
+		`<a href="https://www.twitter.com/$1" rel="nofollow">@$1</a>`)
+
+	// hash tag search (like #mix11) -- note like anyone would never use one of
+	// these, lol
+	content = tagRE.ReplaceAllString(content,
+		`<a href="https://search.twitter.com/search?q=$1" rel="nofollow">#$1</a>`)
+
+	// replace the stand-in tags for links generated earlier
+	for tag, link := range tagMap {
+		content = strings.Replace(content, tag, link, -1)
+	}
+
+	return content
 }
 
 // There is no "round" function built into Go :/

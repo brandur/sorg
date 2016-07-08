@@ -85,6 +85,46 @@ func TestPace(t *testing.T) {
 	assert.Equal(t, "7:31", pace(133.0, d))
 }
 
+func TestRenderTweetContent(t *testing.T) {
+	// short link
+	assert.Equal(t,
+		`<a href="https://example.com" rel="nofollow">https://example.com</a>`,
+		renderTweetContent(`https://example.com`),
+	)
+
+	// link with whitespace and newlines
+	assert.Equal(t,
+		`content
+	
+ <a href="https://example.com" rel="nofollow">https://example.com</a> 
+
+end`,
+		renderTweetContent(`content
+	
+ https://example.com 
+
+end`),
+	)
+
+	// long link
+	assert.Equal(t,
+		`<a href="https://example.com/path/to/more/great/stuff" rel="nofollow">https://example.com/path/to/mo&hellip;</a>`,
+		renderTweetContent(`https://example.com/path/to/more/great/stuff`),
+	)
+
+	// tag
+	assert.Equal(t,
+		`<a href="https://search.twitter.com/search?q=mix11" rel="nofollow">#mix11</a>`,
+		renderTweetContent(`#mix11`),
+	)
+
+	// user
+	assert.Equal(t,
+		`<a href="https://www.twitter.com/brandur" rel="nofollow">@brandur</a>`,
+		renderTweetContent(`@brandur`),
+	)
+}
+
 func TestRound(t *testing.T) {
 	assert.Equal(t, 0.0, round(0.2))
 	assert.Equal(t, 1.0, round(0.8))
