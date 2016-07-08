@@ -22,6 +22,7 @@ var FuncMap template.FuncMap = template.FuncMap{
 	"FormatTime":                   formatTime,
 	"FormatTimeWithMinute":         formatTimeWithMinute,
 	"InKM":                         inKM,
+	"IndexToColumn":                indexToColumn,
 	"MarshalJSON":                  marshalJSON,
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
@@ -71,6 +72,12 @@ func formatTimeWithMinute(t *time.Time) string {
 
 func inKM(m float64) float64 {
 	return m / 1000.0
+}
+
+// Calculates the column number that should be used for a photo at a particular
+// index so that it can be laid out on the home page.
+func indexToColumn(i int) int {
+	return int(i / 9)
 }
 
 // Note that I thought I needed this to encode Javascript data in HTML

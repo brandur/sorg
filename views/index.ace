@@ -1,0 +1,48 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing-index
+  .index
+    section.about-and-articles
+      .content
+        h1
+          a href="/about" About
+        p My name is Brandur Leach (<a href="https://twitter.com/brandur">@brandur</a>). I'm an engineer at Stripe, and am interested in service engineering, APIs, Vim, Tmux, Ruby, Go, terminal productivity, running, fixed gear riding, history, urban design, and metal.
+        .divider-short
+        h1
+          a href="/articles" Articles
+        ul
+          {{range .Articles}}
+            li
+              a href="/{{.Slug}}" data-pjax="#container" {{.Title}}
+              p {{HTML .Hook}}
+          {{end}}
+        p.older
+          em Older articles are <a href="/articles">available here</a>.
+        .divider-short
+        h1
+          a href="/fragments" Stories
+        ul
+          {{range .Fragments}}
+            li
+              a href="/fragments/{{.Slug}}" data-pjax="#container" {{.Title}}
+              p
+                | {{WordCount .Content}} words. 
+                span.meta {{FormatTime .PublishedAt}}
+          {{end}}
+        p.older
+          em Older fragments are <a href="/fragments">available here</a>.
+    section.photos
+      .content
+        h1
+          a href="/photos" Photos
+        ul
+          {{range $i, $photo := .Photos}}
+            li
+              a href="https://www.flickr.com/photos/brandurleach/{{$photo.Slug}}"
+                img src="/assets/photos/{{$photo.Slug}}.jpg" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}" class="photo-col{{IndexToColumn $i}}"
+          {{end}}
+        .clear
+  .clear
+  = include views/_footer

@@ -274,7 +274,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compilePhotos(db)
+	photos, err := compilePhotos(db)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -299,7 +299,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileHome(articles, fragments)
+	err = compileHome(articles, fragments, photos)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -451,7 +451,19 @@ func compileFragments() ([]*Fragment, error) {
 	return fragments, nil
 }
 
-func compileHome(articles []*Article, fragment []*Fragment) error {
+func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) error {
+	locals := getLocals("brandur.org", map[string]interface{}{
+		"Articles":  articles[0:5],
+		"Fragments": fragments[0:5],
+		"Photos":    photos[0:27],
+	})
+
+	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/index",
+		sorg.TargetDir+"/index.html", locals)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -504,10 +516,10 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	return defaults
 }
 
-func compilePhotos(db *sql.DB) error {
+func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	photos, err := getPhotosData(db)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	// Keep a published copy of all the photos that we need.
@@ -524,7 +536,7 @@ func compilePhotos(db *sql.DB) error {
 	log.Debugf("Fetching %d photo(s)", len(photoAssets))
 	err = assets.Fetch(photoAssets)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	locals := getLocals("Photos", map[string]interface{}{
@@ -535,10 +547,10 @@ func compilePhotos(db *sql.DB) error {
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/photos/index",
 		sorg.TargetPhotosDir+"/index.html", locals)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return photos, nil
 }
 
 func compileReading(db *sql.DB) error {
