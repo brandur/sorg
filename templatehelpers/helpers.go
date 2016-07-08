@@ -30,13 +30,8 @@ var FuncMap template.FuncMap = template.FuncMap{
 }
 
 func distanceOfTimeInWords(to, from time.Time) string {
-	fmt.Printf("to:   %+v\n", to)
-	fmt.Printf("from: %+v\n", from)
 	d := from.Sub(to)
-
 	min := int(round(d.Minutes()))
-	fmt.Printf("resulting duration: %+v\n", d)
-	fmt.Printf("resulting minutes: %+v\n", min)
 
 	if min == 0 {
 		return "less than 1 minute"
