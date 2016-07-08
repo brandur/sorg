@@ -245,7 +245,7 @@ func compileArticles() error {
 
 		article.Content = markdown.Render(content)
 
-		article.TOC, err = toc.RenderTOC(article.Content)
+		article.TOC, err = toc.Render(article.Content)
 		if err != nil {
 			return err
 		}

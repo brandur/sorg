@@ -18,7 +18,7 @@ type header struct {
 
 var headerRegexp *regexp.Regexp = regexp.MustCompile(`<h([0-9]) id="(.*?)">(<a.*?>)?(.*?)(</a>)?</h[0-9]>`)
 
-func RenderTOC(content string) (string, error) {
+func Render(content string) (string, error) {
 	var headers []*header
 
 	matches := headerRegexp.FindAllStringSubmatch(content, -1)

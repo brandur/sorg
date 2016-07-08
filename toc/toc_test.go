@@ -190,7 +190,7 @@ func TestBuildTreeComplex(t *testing.T) {
 	assert.Equal(t, `<a href="#h-i">Header I</a>`, mustRenderTree(node))
 }
 
-func TestRenderTOC(t *testing.T) {
+func TestRender(t *testing.T) {
 	content := `
 		Intro.
 
@@ -208,13 +208,13 @@ func TestRenderTOC(t *testing.T) {
 	`
 	expected := `<ol><li><a href="#h-a">Heading A</a><ol><li><a href="#h-b">Heading B</a></li></ol></li><li><a href="#h-c">Heading C</a></li></ol>`
 
-	rendered, err := RenderTOC(content)
+	rendered, err := Render(content)
 	assert.NoError(t, err)
 	assert.Equal(t, expected, rendered)
 }
 
-func TestRenderTOCEmpty(t *testing.T) {
-	rendered, err := RenderTOC("hello")
+func TestRenderEmpty(t *testing.T) {
+	rendered, err := Render("hello")
 	assert.NoError(t, err)
 	assert.Equal(t, "", rendered)
 }
