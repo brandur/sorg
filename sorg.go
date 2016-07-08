@@ -80,7 +80,8 @@ var targetDirs = []string{
 	TargetVersionedAssetsDir,
 }
 
-// CreateTargetDirs creates TargetDir if it doesn't already exist.
+// CreateTargetDirs creates TargetDir and all other necessary directories for
+// the build if they don't already exist.
 func CreateTargetDirs() error {
 	for _, targetDir := range targetDirs {
 		err := os.MkdirAll(targetDir, 0755)
