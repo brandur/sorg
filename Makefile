@@ -43,7 +43,7 @@ ifdef AWS_ACCESS_KEY_ID
 	#    directory cannot share a name.
 	# 2. The `index.html` files are useful for emulating a live server locally:
 	#    Golang's http.FileServer will respect them as indexes.
-	find ./public -name index.html | egrep -v './public/index.html' | sed "s|^\./public/||" | xargs -I {} -n 1 dirname {} | xargs -I {} -n 1 aws s3 cp ./public/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --content-type text/html
+	find ./public -name index.html | egrep -v './public/index.html' | sed "s|^\./public/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp ./public/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --content-type text/html
 else
 	# No AWS access key. Skipping deploy.
 endif
@@ -76,3 +76,14 @@ vet:
 
 watch:
 	fswatch -o layouts/ org/ views/ | xargs -n1 -I{} make build
+
+# This is designed to be compromise between being explicit and readability. We
+# can allow the find to discover everything in vendor/, but then the fswatch
+# invocation becoems a huge unreadable wall of text that gets dumped into the
+# shell. Instead, find all our own *.go files and then just tack the vendor/
+# directory on separately (fswatch will watch it recursively).
+#GO_FILES := $(shell find . -type d \( -name vendor \) -prune -o -name "*.go" -print)
+GO_FILES := $(shell find . -type f -name "*.go" ! -path "./org/*" ! -path "./vendor/*")
+
+watch-go:
+	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install
