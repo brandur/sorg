@@ -14,7 +14,7 @@ func TestFetch(t *testing.T) {
 	defer os.Remove(tempfile.Name())
 
 	assets := []Asset{
-		Asset{"http://localhost", tempfile.Name()},
+		{"http://localhost", tempfile.Name()},
 	}
 
 	// Because the temp file already exists, no fetch will be made.

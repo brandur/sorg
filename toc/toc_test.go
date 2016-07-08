@@ -31,7 +31,7 @@ func TestMain(m *testing.M) {
 
 func TestBuildTreeSimple(t *testing.T) {
 	node := buildTree([]*header{
-		&header{2, "#h-a", "Header A"},
+		{2, "#h-a", "Header A"},
 	})
 	assert.Equal(t, "ol", node.Data)
 
@@ -51,15 +51,15 @@ func TestBuildTreeComplex(t *testing.T) {
 	// Be careful with this one, and you may want to run it with `go test -v`.
 
 	node := buildTree([]*header{
-		&header{2, "#h-a", "Header A"},
-		&header{2, "#h-b", "Header B"},
-		&header{3, "#h-c", "Header C"},
-		&header{4, "#h-d", "Header D"},
-		&header{5, "#h-e", "Header E"},
-		&header{4, "#h-f", "Header F"},
-		&header{5, "#h-g", "Header G"},
-		&header{3, "#h-h", "Header H"},
-		&header{2, "#h-i", "Header I"},
+		{2, "#h-a", "Header A"},
+		{2, "#h-b", "Header B"},
+		{3, "#h-c", "Header C"},
+		{4, "#h-d", "Header D"},
+		{5, "#h-e", "Header E"},
+		{4, "#h-f", "Header F"},
+		{5, "#h-g", "Header G"},
+		{3, "#h-h", "Header H"},
+		{2, "#h-i", "Header I"},
 	})
 
 	if testing.Verbose() {
