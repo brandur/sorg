@@ -112,6 +112,32 @@ type Fragment struct {
 	Title string `yaml:"title"`
 }
 
+// Photo is a photography downloaded from Flickr.
+type Photo struct {
+	// LargeImageURL is the location where the large-sized version of the photo
+	// can be downloaded from Flickr.
+	LargeImageURL string
+
+	// LargeImageHeight and LargeImageWidth are the height and with of the
+	// large-sized version of the photo.
+	LargeImageHeight, LargeImageWidth int
+
+	// MediumImageURL is the location where the medium-sized version of the
+	// photo can be downloaded from Flickr.
+	MediumImageURL string
+
+	// MediumImageHeight and MediumImageWidth are the height and with of the
+	// medium-sized version of the photo.
+	MediumImageHeight, MediumImageWidth int
+
+	// OccurredAt is UTC time when the photo was published.
+	OccurredAt *time.Time
+
+	// Slug is a unique identifier for the photo. It can be used to link it
+	// back to the photo on Flickr.
+	Slug string
+}
+
 // Run is a run as downloaded from Strava.
 type Run struct {
 	// Distance is the distance traveled for the run in meters.
@@ -194,6 +220,11 @@ func main() {
 	}
 
 	err = compileJavascripts(javascripts)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = compilePhotos(db)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -377,6 +408,26 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	return defaults
 }
 
+func compilePhotos(db *sql.DB) error {
+	photos, err := getPhotosData(db)
+	if err != nil {
+		return err
+	}
+
+	locals := getLocals("Photos", map[string]interface{}{
+		"Photos":        photos,
+		"ViewportWidth": 600,
+	})
+
+	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/photos/index",
+		sorg.TargetPhotosDir+"/index", locals)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func compileRuns(db *sql.DB) error {
 	runs, err := getRunsData(db)
 	if err != nil {
@@ -522,6 +573,61 @@ func compileStylesheets(stylesheets []string) error {
 	}
 
 	return nil
+}
+
+func getPhotosData(db *sql.DB) ([]*Photo, error) {
+	var photos []*Photo
+
+	if conf.BlackSwanDatabaseURL == "" {
+		return photos, nil
+	}
+
+	rows, err := db.Query(`
+		SELECT
+			metadata -> 'large_image',
+			(metadata -> 'large_height')::int,
+			(metadata -> 'large_width')::int,
+			metadata -> 'medium_image',
+			(metadata -> 'medium_height')::int,
+			(metadata -> 'medium_width')::int,
+			(metadata -> 'occurred_at_local')::timestamptz,
+			slug
+		FROM events
+		WHERE type = 'flickr'
+			AND (metadata -> 'medium_height')::int = 500
+		ORDER BY occurred_at DESC
+		LIMIT 30
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var photo Photo
+
+		err = rows.Scan(
+			&photo.LargeImageURL,
+			&photo.LargeImageHeight,
+			&photo.LargeImageWidth,
+			&photo.MediumImageURL,
+			&photo.MediumImageHeight,
+			&photo.MediumImageWidth,
+			&photo.OccurredAt,
+			&photo.Slug,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		photos = append(photos, &photo)
+	}
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
+
+	return photos, nil
 }
 
 func getRunsData(db *sql.DB) ([]*Run, error) {

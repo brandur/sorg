@@ -57,6 +57,9 @@ const (
 	// TargetDir is the target location where the site will be built to.
 	TargetDir = "./public/"
 
+	// TargetPhotosDir is the target directory for photos.
+	TargetPhotosDir = TargetDir + "photos/"
+
 	// TargetFragmentsDir is the target directory for fragments.
 	TargetFragmentsDir = TargetDir + "fragments/"
 
@@ -75,6 +78,7 @@ var targetDirs = []string{
 	TargetArticlesDir,
 	TargetAssetsDir,
 	TargetFragmentsDir,
+	TargetPhotosDir,
 	TargetRunsDir,
 	TargetTwitterDir,
 	TargetVersionedAssetsDir,
