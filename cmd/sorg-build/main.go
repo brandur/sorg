@@ -155,7 +155,7 @@ type Reading struct {
 	OccurredAt *time.Time
 
 	// Rating is the rating that I assigned to the read book.
-	Rating float64
+	Rating int
 
 	// Title is the title of the book.
 	Title string
@@ -733,7 +733,7 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 			-- not every book has a number of pages
 			(COALESCE(NULLIF(metadata -> 'num_pages', ''), '0'))::int,
 			occurred_at,
-			(metadata -> 'rating')::float,
+			(metadata -> 'rating')::int,
 			metadata -> 'title'
 		FROM events
 		WHERE type = 'goodreads'

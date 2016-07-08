@@ -25,6 +25,21 @@
             ul
               {{range .Readings}}
                 li
-                  {{.Title}}
+                  em
+                    {{.Title}}
+                  |  by {{.Author}}; 
+                  {{if ne .NumPages 0}}
+                    | {{.NumPages}} pages; 
+                  {{end}}
+                  {{if ne .Rating 0}}
+                    | {{ToStars .Rating}}; 
+                  {{end}}
+                  span.meta
+                    {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
+                    {{if ne "" $display}}
+                      {{$display}}
+                    {{else}}
+                      {{FormatTime .OccurredAt}}
+                    {{end}}
               {{end}}
         {{end}}
