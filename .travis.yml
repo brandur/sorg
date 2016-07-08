@@ -4,7 +4,7 @@ install:
 - pip install --user awscli
 
 script:
-- make deploy
+- make
 
 notifications:
   email:
