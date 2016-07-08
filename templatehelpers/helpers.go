@@ -3,6 +3,7 @@ package templatehelpers
 import (
 	"bytes"
 	"crypto/sha1"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"html/template"
@@ -158,7 +159,7 @@ func renderTweetContent(content string) string {
 
 		// replace with tags so links don't interfere with subsequent rules
 		sum := sha1.Sum([]byte(href))
-		tag := string(sum[:])
+		tag := base64.URLEncoding.EncodeToString(sum[:])
 		tagMap[tag] = fmt.Sprintf(`<a href="%s" rel="nofollow">%s</a>`, href, display)
 
 		// make sure to preserve whitespace before the inserted tag
