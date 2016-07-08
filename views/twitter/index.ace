@@ -16,7 +16,7 @@
       #data-tweets-by-month.chart
       #toc
         ul
-          {{range $year := .Tweets}}
+          {{range $year := .TweetsByYearAndMonth}}
             li
               a href="#year-{{$year.Year}}" {{$year.Year}}
               ul
@@ -26,7 +26,7 @@
                 {{end}}
           {{end}}
       .twitter-content
-        {{range $year := .Tweets}}
+        {{range $year := .TweetsByYearAndMonth}}
           div class="year" id="year-{{$year.Year}}"
             h2 {{$year.Year}}
             {{range $month := .Months}}

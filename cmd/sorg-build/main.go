@@ -610,7 +610,7 @@ func compileTwitter(db *sql.DB) error {
 		locals := getLocals("Twitter", map[string]interface{}{
 			"NumTweets":            len(tweets),
 			"NumTweetsWithReplies": len(tweetsWithReplies),
-			"Tweets":               tweetsByYearAndMonth,
+			"TweetsByYearAndMonth": tweetsByYearAndMonth,
 			"WithReplies":          withReplies,
 
 			// chart: tweets by month
