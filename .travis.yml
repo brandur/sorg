@@ -1,10 +1,19 @@
+language: go
+
+go:
+  - 1.6
+
+# magic word to use faster/newer container-based architecture
 sudo: false
 
+before_install:
+  - go get -u github.com/golang/lint/golint
+
 install:
-- pip install --user awscli
+  - pip install --user awscli
 
 script:
-- make
+  - make
 
 notifications:
   email:
