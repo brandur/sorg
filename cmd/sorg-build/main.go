@@ -538,10 +538,10 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	var photoAssets []assets.Asset
 	for _, photo := range photos {
 		photoAssets = append(photoAssets,
-			assets.Asset{photo.LargeImageURL,
-				sorg.TargetPhotosAssetsDir + "/" + photo.Slug + "@2x.jpg"},
-			assets.Asset{photo.MediumImageURL,
-				sorg.TargetPhotosAssetsDir + "/" + photo.Slug + ".jpg"},
+			assets.Asset{URL: photo.LargeImageURL,
+				Target: sorg.TargetPhotosAssetsDir + "/" + photo.Slug + "@2x.jpg"},
+			assets.Asset{URL: photo.MediumImageURL,
+				Target: sorg.TargetPhotosAssetsDir + "/" + photo.Slug + ".jpg"},
 		)
 	}
 

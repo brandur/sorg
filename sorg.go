@@ -50,8 +50,11 @@ const (
 	// those that probably don't need to change between releases like images.
 	TargetAssetsDir = TargetDir + "assets/"
 
+	// TargetPhotosAssetsDir is the target directory where static assets for
+	// photographs are downloaded to.
 	TargetPhotosAssetsDir = TargetDir + "assets/photos/"
 
+	// TargetReadingDir is the target directory for reading pages.
 	TargetReadingDir = TargetDir + "reading/"
 
 	// TargetVersionedAssetsDir is the target directory where static assets are
