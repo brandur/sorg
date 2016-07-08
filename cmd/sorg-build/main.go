@@ -772,7 +772,7 @@ func compileStylesheets(stylesheets []string) error {
 func getPhotosData(db *sql.DB) ([]*Photo, error) {
 	var photos []*Photo
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return photos, nil
 	}
 
@@ -827,7 +827,7 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 func getReadingsData(db *sql.DB) ([]*Reading, error) {
 	var readings []*Reading
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return readings, nil
 	}
 
@@ -880,7 +880,7 @@ func getReadingsCountByYearData(db *sql.DB) ([]string, []int, error) {
 	byYearXYears := []string{}
 	byYearYCounts := []int{}
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return byYearXYears, byYearYCounts, nil
 	}
 
@@ -926,7 +926,7 @@ func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
 	byYearXYears := []string{}
 	byYearYCounts := []int{}
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return byYearXYears, byYearYCounts, nil
 	}
 
@@ -970,7 +970,7 @@ func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
 func getRunsData(db *sql.DB) ([]*Run, error) {
 	var runs []*Run
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return runs, nil
 	}
 
@@ -1029,7 +1029,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 	byYearXYears := []string{}
 	byYearYDistances := []float64{}
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return byYearXYears, byYearYDistances, nil
 	}
 
@@ -1084,7 +1084,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	lastYearXDays := []string{}
 	lastYearYDistances := []float64{}
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return lastYearXDays, lastYearYDistances, nil
 	}
 
@@ -1157,7 +1157,7 @@ func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
 	tweetCountXMonths := []string{}
 	tweetCountYCounts := []int{}
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return tweetCountXMonths, tweetCountYCounts, nil
 	}
 
@@ -1203,7 +1203,7 @@ func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
 func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 	var tweets []*Tweet
 
-	if conf.BlackSwanDatabaseURL == "" {
+	if db == nil {
 		return tweets, nil
 	}
 
