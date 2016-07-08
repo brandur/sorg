@@ -9,9 +9,9 @@
         h1 Twitter
       .twitter-content
         {{if not .WithReplies}}
-          p {{NumberWithDelimiter ',' .NumTweets}} tweets, and <a href="/twitter/with-replies">{{NumberWithDelimiter ',' .NumTweets}} including replies</a>.
+          p {{NumberWithDelimiter ',' .NumTweets}} tweets, and <a href="/twitter/with-replies">{{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies</a>.
         {{else}}
-          p <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweets}} including replies.
+          p <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies.
         {{end}}
       #data-tweets-by-month.chart
       #toc

@@ -438,23 +438,34 @@ func getTweetsByYearAndMonth(tweets []*Tweet) []*tweetYear {
 }
 
 func compileTwitter(db *sql.DB) error {
+	tweets, err := getTwitterData(db, false)
+	if err != nil {
+		return err
+	}
+
+	tweetsWithReplies, err := getTwitterData(db, true)
+	if err != nil {
+		return err
+	}
+
 	optionsMatrix := map[string]bool{
 		"/index":        false,
 		"/with-replies": true,
 	}
 
 	for page, withReplies := range optionsMatrix {
-		tweets, err := getTwitterData(db, withReplies)
-		if err != nil {
-			return err
+		ts := tweets
+		if withReplies {
+			ts = tweetsWithReplies
 		}
 
-		tweetsByYearAndMonth := getTweetsByYearAndMonth(tweets)
+		tweetsByYearAndMonth := getTweetsByYearAndMonth(ts)
 
 		locals := getLocals("Twitter", map[string]interface{}{
-			"NumTweets":   len(tweets),
-			"Tweets":      tweetsByYearAndMonth,
-			"WithReplies": withReplies,
+			"NumTweets":            len(tweets),
+			"NumTweetsWithReplies": len(tweetsWithReplies),
+			"Tweets":               tweetsByYearAndMonth,
+			"WithReplies":          withReplies,
 		})
 
 		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
