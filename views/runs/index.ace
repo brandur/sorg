@@ -14,7 +14,7 @@
         ul.list
           {{range .Runs}}
             li
-              | <span class="distance">{{InKM .Distance | Round}} km</span> <span class="elevation">({{Round .ElevationGain}} m elevation)</span> @ {{Pace .Distance .MovingTime}}/km
+              | <span class="distance">{{InKM .Distance | RoundToString}} km</span> <span class="elevation">({{RoundToString .ElevationGain}} m elevation)</span> @ {{Pace .Distance .MovingTime}}/km
               {{if ne .LocationCity ""}}
                 | , {{.LocationCity}}
               {{end}}

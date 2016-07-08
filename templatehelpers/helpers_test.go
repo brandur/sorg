@@ -18,6 +18,29 @@ func init() {
 	}
 }
 
+func TestDistanceOfTimeInWords(t *testing.T) {
+	to := time.Now()
+
+	assert.Equal(t, "less than 1 minute",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-1s")), to))
+	assert.Equal(t, "8 minutes",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-8m")), to))
+	assert.Equal(t, "about 1 hour",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-52m")), to))
+	assert.Equal(t, "about 3 hours",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-3h")), to))
+	assert.Equal(t, "about 1 day",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")), to))
+
+	// note that parse only handles up to "h" units
+	assert.Equal(t, "9 days",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*9), to))
+	assert.Equal(t, "about 1 month",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*30), to))
+	assert.Equal(t, "4 months",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*30*4), to))
+}
+
 func TestFormatTime(t *testing.T) {
 	assert.Equal(t, "July 3, 2016", formatTime(&testTime))
 }
@@ -63,6 +86,20 @@ func TestPace(t *testing.T) {
 }
 
 func TestRound(t *testing.T) {
-	assert.Equal(t, "1.2", round(1.234))
-	assert.Equal(t, "1.0", round(1))
+	assert.Equal(t, 0.0, round(0.2))
+	assert.Equal(t, 1.0, round(0.8))
+	assert.Equal(t, 1.0, round(0.5))
+}
+
+func TestRoundToString(t *testing.T) {
+	assert.Equal(t, "1.2", roundToString(1.234))
+	assert.Equal(t, "1.0", roundToString(1))
+}
+
+func mustParseDuration(s string) time.Duration {
+	d, err := time.ParseDuration(s)
+	if err != nil {
+		panic(err)
+	}
+	return d
 }
