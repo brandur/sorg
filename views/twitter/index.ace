@@ -17,6 +17,14 @@
         ul.list
           {{range .Tweets}}
             li
-              {{RenderTweetContent .Content}}
+              {{RenderTweetContent .Content | HTML}}
+              span.meta
+                a href="https://twitter.com/brandur/statuses/{{.Slug}}" rel="nofollow"
+                  {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
+                  {{if ne "" $display}}
+                    {{$display}}
+                  {{else}}
+                    {{FormatTimeWithMinute .OccurredAt}}
+                  {{end}}
           {{end}}
   = include views/_footer
