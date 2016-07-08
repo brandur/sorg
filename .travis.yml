@@ -13,7 +13,8 @@ install:
   - pip install --user awscli
 
 script:
-  - make
+  - VERBOSE=true make
+  - make deploy
 
 notifications:
   email:
