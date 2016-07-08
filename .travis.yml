@@ -1,0 +1,23 @@
+sudo: false
+
+install:
+- pip install --user awscli
+
+script:
+- make deploy
+
+notifications:
+  email:
+    on_success: never
+
+# Env that allows a build on the master branch to deploy the site
+# automatically.
+env:
+  global:
+    - S3_BUCKET=brandur.org
+
+    # $AWS_ACCESS_KEY_ID
+    - secure: "JGM3tmoTwYmJW4soY/N8ChYj1jiWJ9cvs1rg4Max/YxJVqe63C1R+vnPHi3r9CNHaz3a5IpFe4o2em626vY8Au8iAAiQiqVmTAh5Iszno4ZxxORD7LpEmvKF2yczccYpgiTeTjLMwYRFLZIq5e936KydZKXxJr0zRp/9LvD+SWVd+SoVYbVEqvfLJVtSwniXcQWOn9pXXXdKjOXFPN8GtXStpa/T6qv4j9N+C4gOOUe/BDDsy14ksXaQqJdLcBInAm1xptK8CRnEjUrU3B/EY9i2VqOyzDuFq2KbcEmxsW+93DvF0XHjOETlGM0TMOC8PP8S5l5qOs4gnN4sjriXl6Touhei2X1lMWMwnRvMH0L7k70jr9DoCL6U3LlcaVL7RDUFDmBxD5tGTDzBzTDkVyegpFpGjbknF21cVsc4sBYZswiljA/T4Zyc0wVJZ954qHFvu3KiVE1wliceBUXr4wWrTHGY+hWdjyrD7iX5ABh/KwnHtKiOzcsXaTwKXTDXNvG4ClqHpCTXNkg84EBOtM+kE3riNlbEPySJGR61s66ymceRaD5zgSkiJ6SMoLwvHtYBfgmRCPiQd7W3Vg5q1CmmwDvriTDUb5meGu30pa1ixOdbSQZWWqsDSNacyWQyvs5x/ljARTrHccWFoTleJ5r3oJIffiddqvrOGGOx2u0="
+
+    # $AWS_SECRET_ACCESS_KEY
+    - secure: "sQEnmt22J6e8f/5y41PZp8bkSatjKvTpMzBhYyKnLX3TbqlQ62OixS8vQrxZh0d2hPy5eMDxRngzI4btjiAaIH/Mx3iV7I0Lzxw0jDSBApucrcv3lzTTK4rGsag5dBcvMRdoUSpoGJNDxWJmj9Z+csNh74IDYI01bcIlDlqF6pieRrhJHeYRCMtUrZvD3szO2ByNCXdZDKRNufGCCU6VuNdAl8Z2fHobbXfDNi+6wIrN3RsJlXSZ6/u8l7bBaRz00h7zQvxTJqRlcZ+7H5dqfEW8cyaeMN3udIi2XuaVsoJmBwyK2bDDbL4SuQryppd2z7fo5xLq8lbScIryGWpzgDg+OD3Xyhs9Sd/LXMrSoslVt7Hcq49H0FMorBhsUAwAtKUHljNWJ6FKlI0MbojTlUDwU8w4uqiUkdb7u+qwl9CYFHJenccjF1b5590ZDwbHBtXxPzyLRqBBEc91iBHp7R2LByfdNzADJr2o0kvbTF7FHlEKChigxpEbi77S5NjG9FXJjx1yWNoksNFZvyaKqng4YlX4UAbs1dmvDfm9XJYcMZMKTvjHJWX7Fnpuyhw450d+Dpa2+ysWKl7vN3WD8Da6DJxy5KZCmI2f4zhaabZY+uPsqaMpmDVxufOTxI3yCfBBEt4cIhcQMonBL1wdPScRXDwKtVGfNsJn5mo1WWo="
