@@ -51,6 +51,14 @@ var stylesheets = []string{
 	"twitter.sass",
 }
 
+//
+// Types
+//
+// Type definitions. These are mostly models used to represent the site's
+// resources, but in some cases we have sorting and grouping helper types as
+// well.
+//
+
 // Article represents an article to be rendered.
 type Article struct {
 	// Attributions are any attributions for content that may be included in
@@ -235,7 +243,19 @@ type tweetMonth struct {
 	Tweets []*Tweet
 }
 
+//
+// Variables
+//
+
+// Left as a global for now for the sake of convenience, but it's not used in
+// very many places and can probably be refactored as a local if desired.
 var conf Conf
+
+var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
+
+//
+// Main
+//
 
 func main() {
 	err := envdecode.Decode(&conf)
@@ -309,6 +329,13 @@ func main() {
 		log.Fatal(err)
 	}
 }
+
+//
+// Compilation functions
+//
+// These functions are the main entry points for compiling the site's
+// resources.
+//
 
 func compileArticles() ([]*Article, error) {
 	articleInfos, err := ioutil.ReadDir(sorg.ArticlesDir)
@@ -510,24 +537,6 @@ func compileJavascripts(javascripts []string) error {
 	return nil
 }
 
-// Gets a map of local values for use while rendering a template and includes
-// a few "special" values that are globally relevant to all templates.
-func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
-	defaults := map[string]interface{}{
-		"BodyClass":         "",
-		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
-		"Release":           sorg.Release,
-		"Title":             title,
-		"ViewportWidth":     "device-width",
-	}
-
-	for k, v := range locals {
-		defaults[k] = v
-	}
-
-	return defaults
-}
-
 func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	photos, err := getPhotosData(db)
 	if err != nil {
@@ -643,45 +652,6 @@ func compileRuns(db *sql.DB) error {
 	return nil
 }
 
-func groupReadingsByYear(readings []*Reading) []*readingYear {
-	var year *readingYear
-	var years []*readingYear
-
-	for _, reading := range readings {
-		if year == nil || year.Year != reading.OccurredAt.Year() {
-			year = &readingYear{reading.OccurredAt.Year(), nil}
-			years = append(years, year)
-		}
-
-		year.Readings = append(year.Readings, reading)
-	}
-
-	return years
-}
-
-func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
-	var month *tweetMonth
-	var year *tweetYear
-	var years []*tweetYear
-
-	for _, tweet := range tweets {
-		if year == nil || year.Year != tweet.OccurredAt.Year() {
-			year = &tweetYear{tweet.OccurredAt.Year(), nil}
-			years = append(years, year)
-			month = nil
-		}
-
-		if month == nil || month.Month != tweet.OccurredAt.Month() {
-			month = &tweetMonth{tweet.OccurredAt.Month(), nil}
-			year.Months = append(year.Months, month)
-		}
-
-		month.Tweets = append(month.Tweets, tweet)
-	}
-
-	return years
-}
-
 func compileTwitter(db *sql.DB) error {
 	tweets, err := getTwitterData(db, false)
 	if err != nil {
@@ -767,6 +737,30 @@ func compileStylesheets(stylesheets []string) error {
 	}
 
 	return nil
+}
+
+//
+// Other functions
+//
+// Any other functions. Try to keep them alphabetized.
+//
+
+// Gets a map of local values for use while rendering a template and includes
+// a few "special" values that are globally relevant to all templates.
+func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
+	defaults := map[string]interface{}{
+		"BodyClass":         "",
+		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
+		"Release":           sorg.Release,
+		"Title":             title,
+		"ViewportWidth":     "device-width",
+	}
+
+	for k, v := range locals {
+		defaults[k] = v
+	}
+
+	return defaults
 }
 
 func getPhotosData(db *sql.DB) ([]*Photo, error) {
@@ -1246,6 +1240,45 @@ func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 	return tweets, nil
 }
 
+func groupReadingsByYear(readings []*Reading) []*readingYear {
+	var year *readingYear
+	var years []*readingYear
+
+	for _, reading := range readings {
+		if year == nil || year.Year != reading.OccurredAt.Year() {
+			year = &readingYear{reading.OccurredAt.Year(), nil}
+			years = append(years, year)
+		}
+
+		year.Readings = append(year.Readings, reading)
+	}
+
+	return years
+}
+
+func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
+	var month *tweetMonth
+	var year *tweetYear
+	var years []*tweetYear
+
+	for _, tweet := range tweets {
+		if year == nil || year.Year != tweet.OccurredAt.Year() {
+			year = &tweetYear{tweet.OccurredAt.Year(), nil}
+			years = append(years, year)
+			month = nil
+		}
+
+		if month == nil || month.Month != tweet.OccurredAt.Month() {
+			month = &tweetMonth{tweet.OccurredAt.Month(), nil}
+			year.Months = append(year.Months, month)
+		}
+
+		month.Tweets = append(month.Tweets, tweet)
+	}
+
+	return years
+}
+
 func linkImageAssets() error {
 	assets, err := ioutil.ReadDir(sorg.ImagesDir)
 	if err != nil {
@@ -1305,8 +1338,6 @@ func renderView(layout, view, target string, locals map[string]interface{}) erro
 
 	return nil
 }
-
-var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
 func splitFrontmatter(content string) (string, string, error) {
 	parts := regexp.MustCompile("(?m)^---").Split(content, 3)
