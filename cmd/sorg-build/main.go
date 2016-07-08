@@ -462,7 +462,7 @@ func compileTwitter(db *sql.DB) error {
 		tweetsByYearAndMonth := getTweetsByYearAndMonth(ts)
 
 		tweetCountXMonths, tweetCountYCounts, err :=
-			getTweetsByMonth(db, withReplies)
+			getTwitterByMonth(db, withReplies)
 		if err != nil {
 			return err
 		}
@@ -708,7 +708,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	return lastYearXDays, lastYearYDistances, nil
 }
 
-func getTweetsByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
+func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
 	tweetCountXMonths := []string{}
