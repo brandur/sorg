@@ -28,6 +28,7 @@ var FuncMap template.FuncMap = template.FuncMap{
 	"Pace":                         pace,
 	"RenderTweetContent":           renderTweetContent,
 	"RoundToString":                roundToString,
+	"ToStars":                      toStars,
 }
 
 func distanceOfTimeInWords(to, from time.Time) string {
@@ -190,4 +191,12 @@ func round(f float64) float64 {
 
 func roundToString(f float64) string {
 	return fmt.Sprintf("%.1f", f)
+}
+
+func toStars(n int) string {
+	var stars string
+	for i := 0; i < n; i += 1 {
+		stars += "★ "
+	}
+	return stars
 }

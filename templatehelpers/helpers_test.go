@@ -140,6 +140,12 @@ func TestRoundToString(t *testing.T) {
 	assert.Equal(t, "1.0", roundToString(1))
 }
 
+func TestToStars(t *testing.T) {
+	assert.Equal(t, "", toStars(0))
+	assert.Equal(t, "★ ", toStars(1))
+	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
+}
+
 func mustParseDuration(s string) time.Duration {
 	d, err := time.ParseDuration(s)
 	if err != nil {
