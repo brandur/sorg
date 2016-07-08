@@ -17,6 +17,6 @@
         ul.list
           {{range .Tweets}}
             li
-              {{.Content}}
+              {{RenderTweetContent .Content}}
           {{end}}
   = include views/_footer
