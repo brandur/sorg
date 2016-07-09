@@ -5,7 +5,8 @@
 * [ ] Fix logging: debug is currently too verbose for Travis runs, but normal
   is not verbose enough.
 * [ ] Test for the majority of functions in build's main.go.
-* [ ] Download images found in fragment frontmatter.
+* [ ] Download images found in fragment frontmatter (maybe just stored them
+  locally).
 * [ ] Smarter asset symlinking that doesn't remove and create every time.
 * [ ] Remove orphaned files between builds.
 * [ ] Speed up the build (maybe incremental?).
