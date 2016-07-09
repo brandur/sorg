@@ -1,0 +1,20 @@
+= content main
+  .flag
+  .top-nav
+    = include views/_nav
+  .top-spacing
+  .content
+    #title
+      h1 About
+    #about
+      p
+        img src="/assets/me.jpg"
+      p
+        | I'm an engineer at Stripe, and am interested in service engineering, APIs, Vim, Tmux, Ruby, Go, terminal productivity, running, fixed gear riding, history, urban design, and metal. Recently, I also spent quite some time building the Heroku platform.
+      h2 Technology
+      p
+        | This site is a <a href="https://github.com/brandur/org">Sinatra app</a> running Ruby 2.3 on <a href="http://en.wikipedia.org/wiki/Ruby_MRI">the MRI</a>. It endeavors to provide as fluid of a user experience as possible, and as such makes makes heavy use of <a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a> on the frontend and <a href="http://mutelight.org/http-caching">proper HTTP caching</a> combined with <a href="http://rtomayko.github.io/rack-cache/">rack-cache</a> on the backend.
+      h2 Design
+      p
+        | The responsive design aims to improve readability and emphasize content through typography, whitespace, and clean lines compared <a href="https://mutelight.org">to earlier incarnations of my work</a>. It wouldn't have been possible without the timeless beauty of <a href="http://en.wikipedia.org/wiki/Helvetica_(film)">Helvetica</a>.
+  = include views/_footer

@@ -38,6 +38,9 @@ const (
 	// LayoutsDir is the source directory for view layouts.
 	LayoutsDir = "./layouts/"
 
+	// PagesDir contains the sources for one-off pages.
+	PagesDir = "./pages/"
+
 	// StylesheetsDir is the source directory for stylesheets.
 	StylesheetsDir = AssetsDir + "stylesheets/"
 

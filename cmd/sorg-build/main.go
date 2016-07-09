@@ -298,6 +298,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	err = compilePages()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	photos, err := compilePhotos(db)
 	if err != nil {
 		log.Fatal(err)
@@ -455,6 +460,51 @@ func compileJavascripts(javascripts []string) error {
 
 		outFile.WriteString("\n\n")
 		outFile.WriteString("}).call(this);\n\n")
+	}
+
+	return nil
+}
+
+func compilePages() error {
+	return compilePagesDir(sorg.PagesDir)
+}
+
+func compilePagesDir(dir string) error {
+	log.Debugf("Descending into for pages: %v", dir)
+
+	fileInfos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return err
+	}
+
+	for _, fileInfo := range fileInfos {
+		if fileInfo.IsDir() {
+			err := compilePagesDir(dir + fileInfo.Name())
+			if err != nil {
+				return err
+			}
+		} else {
+			// Subtract 4 for the ".ace" extension.
+			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
+
+			// Remove the "pages/" directory, but keep the rest of the path.
+			target := sorg.TargetDir + strings.TrimPrefix(dir, sorg.PagesDir) + name
+
+			log.Debugf("Compiling page: %v to %v", dir+fileInfo.Name(), target)
+
+			locals := getLocals("Page", map[string]interface{}{})
+
+			err := os.MkdirAll(sorg.TargetDir+dir, 0755)
+			if err != nil {
+				return err
+			}
+
+			err = renderView(sorg.LayoutsDir+"main", dir+name,
+				target, locals)
+			if err != nil {
+				return err
+			}
+		}
 	}
 
 	return nil
