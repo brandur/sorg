@@ -17,12 +17,10 @@ func TestGetLocals(t *testing.T) {
 	assert.Equal(t, "Title", locals["Title"])
 }
 
-/*
 func TestIsHidden(t *testing.T) {
 	assert.Equal(t, true, isHidden(".gitkeep"))
 	assert.Equal(t, false, isHidden("article"))
 }
-*/
 
 func TestSplitFrontmatter(t *testing.T) {
 	frontmatter, content, err := splitFrontmatter(`---
