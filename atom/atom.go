@@ -60,6 +60,11 @@ func (f *Feed) Encode(w io.Writer, indent string) error {
 		f.XMLNS = "http://www.w3.org/2005/Atom"
 	}
 
+	_, err := w.Write([]byte(xml.Header))
+	if err != nil {
+		return err
+	}
+
 	enc := xml.NewEncoder(w)
 	enc.Indent("", indent)
 	return enc.Encode(f)

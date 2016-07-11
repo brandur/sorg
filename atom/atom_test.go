@@ -36,7 +36,8 @@ func TestFeed(t *testing.T) {
 	assert.NoError(t, err)
 
 	assert.Equal(t,
-		`<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">`+
+		`<?xml version="1.0" encoding="UTF-8"?>`+"\n"+
+			`<feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">`+
 			`<title>My Blog</title>`+
 			`<id>blog-unique-id</id>`+
 			`<updated>0001-01-01T00:00:00Z</updated>`+
