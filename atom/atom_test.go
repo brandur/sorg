@@ -21,7 +21,7 @@ func TestFeed(t *testing.T) {
 		Entries: []*Entry{
 			{
 				Title:   "My Entry",
-				Content: "Entry content.",
+				Content: &EntryContent{"Entry content."},
 				Link:    &Link{Href: "https://example.com"},
 				ID:      "tag:site:article-id",
 
@@ -45,7 +45,7 @@ func TestFeed(t *testing.T) {
 			`<link rel="alternate" type="application/atom+xml" href="https://example.com"></link>`+
 			`<entry>`+
 			`<title>My Entry</title>`+
-			`<content>Entry content.</content>`+
+			`<content><![CDATA[Entry content.]]></content>`+
 			`<published>0001-01-01T00:00:00Z</published>`+
 			`<updated>0001-01-01T00:00:00Z</updated>`+
 			`<link href="https://example.com"></link>`+
