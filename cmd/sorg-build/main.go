@@ -860,7 +860,7 @@ func compileArticlesFeed(articles []*Article) error {
 	for _, article := range articles {
 		entry := &atom.Entry{
 			Title:     article.Title,
-			Content:   &atom.EntryContent{article.Content},
+			Content:   &atom.EntryContent{Content: article.Content},
 			Published: *article.PublishedAt,
 			Updated:   *article.PublishedAt,
 			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
@@ -955,7 +955,7 @@ func compileFragmentsFeed(fragments []*Fragment) error {
 	for _, fragment := range fragments {
 		entry := &atom.Entry{
 			Title:     fragment.Title,
-			Content:   &atom.EntryContent{fragment.Content},
+			Content:   &atom.EntryContent{Content: fragment.Content},
 			Published: *fragment.PublishedAt,
 			Updated:   *fragment.PublishedAt,
 			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
