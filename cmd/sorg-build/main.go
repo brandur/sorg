@@ -455,9 +455,10 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 	}
 
 	locals := getLocals("brandur.org", map[string]interface{}{
-		"Articles":  articles,
-		"Fragments": fragments,
-		"Photos":    photos,
+		"Articles":      articles,
+		"Fragments":     fragments,
+		"Photos":        photos,
+		"ViewportWidth": 600,
 	})
 
 	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/index",
