@@ -16,6 +16,7 @@ import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
 	"github.com/brandur/sorg/assets"
+	"github.com/brandur/sorg/atom"
 	"github.com/brandur/sorg/markdown"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
@@ -103,6 +104,12 @@ func (a articleByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Befo
 
 // Conf contains configuration information for the command.
 type Conf struct {
+	// AtomAuthorName is the name of the author to include in Atom feeds.
+	AtomAuthorName string `env:"AUTHOR_NAME,default=Brandur Leach"`
+
+	// AtomAuthorName is the URL of the author to include in Atom feeds.
+	AtomAuthorURL string `env:"AUTHOR_URL,default=https://brandur.org"`
+
 	// BlackSwanDatabaseURL is a connection string for a database to connect to
 	// in order to extract books, tweets, runs, etc.
 	BlackSwanDatabaseURL string `env:"BLACK_SWAN_DATABASE_URL"`
@@ -113,6 +120,9 @@ type Conf struct {
 
 	// GoogleAnalyticsID is the account identifier for Google Analytics to use.
 	GoogleAnalyticsID string `env:"GOOGLE_ANALYTICS_ID"`
+
+	// SiteURL is the absolute URL where the compiled site will be hosted.
+	SiteURL string `env"SITE_URL,default=https://brandur.org"`
 
 	// Verbose is whether the program will print debug output as it's running.
 	Verbose bool `env:"VERBOSE,default=false"`
@@ -404,6 +414,11 @@ func compileArticles() ([]*Article, error) {
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/index",
 		sorg.TargetArticlesDir+"/index.html", locals)
+	if err != nil {
+		return nil, err
+	}
+
+	err = compileArticlesFeed(articles)
 	if err != nil {
 		return nil, err
 	}
@@ -824,6 +839,41 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 	}
 
 	return articles, nil
+}
+
+func compileArticlesFeed(articles []*Article) error {
+	feed := &atom.Feed{
+		Title: "Articles - brandur.org",
+		ID:    "tag:brandur.org.org,2013:/articles",
+
+		Links: []*atom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/articles.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	for _, article := range articles {
+		entry := &atom.Entry{
+			Title:     article.Title,
+			Content:   &atom.EntryContent{article.Content},
+			Published: *article.PublishedAt,
+			Updated:   *article.PublishedAt,
+			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
+			ID:        "tag:brandur.org," + article.PublishedAt.Format("2016-01-02") + ":" + article.Slug,
+
+			AuthorName: conf.AtomAuthorName,
+			AuthorURI:  conf.AtomAuthorURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(sorg.TargetDir + "/articles.atom")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return feed.Encode(f, "  ")
 }
 
 func compileFragmentsDir(dir string) ([]*Fragment, error) {
