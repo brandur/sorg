@@ -122,7 +122,7 @@ type Conf struct {
 	GoogleAnalyticsID string `env:"GOOGLE_ANALYTICS_ID"`
 
 	// SiteURL is the absolute URL where the compiled site will be hosted.
-	SiteURL string `env"SITE_URL,default=https://brandur.org"`
+	SiteURL string `env:"SITE_URL,default=https://brandur.org"`
 
 	// Verbose is whether the program will print debug output as it's running.
 	Verbose bool `env:"VERBOSE,default=false"`
@@ -449,6 +449,11 @@ func compileFragments() ([]*Fragment, error) {
 
 	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/index",
 		sorg.TargetFragmentsDir+"/index.html", locals)
+	if err != nil {
+		return nil, err
+	}
+
+	err = compileFragmentsFeed(fragments)
 	if err != nil {
 		return nil, err
 	}
@@ -859,7 +864,7 @@ func compileArticlesFeed(articles []*Article) error {
 			Published: *article.PublishedAt,
 			Updated:   *article.PublishedAt,
 			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
-			ID:        "tag:brandur.org," + article.PublishedAt.Format("2016-01-02") + ":" + article.Slug,
+			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
 
 			AuthorName: conf.AtomAuthorName,
 			AuthorURI:  conf.AtomAuthorURL,
@@ -934,6 +939,41 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 	}
 
 	return fragments, nil
+}
+
+func compileFragmentsFeed(fragments []*Fragment) error {
+	feed := &atom.Feed{
+		Title: "Fragments - brandur.org",
+		ID:    "tag:brandur.org.org,2013:/fragments",
+
+		Links: []*atom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	for _, fragment := range fragments {
+		entry := &atom.Entry{
+			Title:     fragment.Title,
+			Content:   &atom.EntryContent{fragment.Content},
+			Published: *fragment.PublishedAt,
+			Updated:   *fragment.PublishedAt,
+			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
+			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
+
+			AuthorName: conf.AtomAuthorName,
+			AuthorURI:  conf.AtomAuthorURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(sorg.TargetDir + "/fragments.atom")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return feed.Encode(f, "  ")
 }
 
 // Gets a map of local values for use while rendering a template and includes
