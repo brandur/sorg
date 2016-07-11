@@ -1,0 +1,8 @@
+= content main
+  #wrapper
+    header
+      h1 ❧ Kubla Khan ❧
+    section
+      .quote
+        p.actor1 That sunny dome! those caves of ice!
+      p.attribution &mdash; Kubla Khan, Samuel Taylor Coleridge

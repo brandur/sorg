@@ -257,6 +257,41 @@ var conf Conf
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
+// pagesVars contains meta information for static pages that are part of the
+// site. This mostly titles, but can also be body classes for custom styling.
+//
+// This isn't the best system, but was the cheapest way to accomplish what I
+// needed for the time being. It could probably use an overhaul to something
+// better at some point.
+var pagesVars = map[string]map[string]interface{}{
+	"about": {
+		"Title": "About",
+	},
+	"accidental": {
+		"Title":     "Accidental",
+		"BodyClass": "quote",
+	},
+	"crying": {
+		"Title":     "Crying",
+		"BodyClass": "quote",
+	},
+	"favors": {
+		"Title":     "Favors",
+		"BodyClass": "quote",
+	},
+	"lies": {
+		"Title":     "Lies",
+		"BodyClass": "quote",
+	},
+	"talks": {
+		"Title": "Talks",
+	},
+	"that-sunny-dome": {
+		"Title":     "That Sunny Dome",
+		"BodyClass": "quote",
+	},
+}
+
 //
 // Main
 //
@@ -488,11 +523,18 @@ func compilePagesDir(dir string) error {
 			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
 
 			// Remove the "pages/" directory, but keep the rest of the path.
-			target := sorg.TargetDir + strings.TrimPrefix(dir, sorg.PagesDir) + name
+			pagePath := strings.TrimPrefix(dir, sorg.PagesDir) + name
+
+			target := sorg.TargetDir + pagePath
 
 			log.Debugf("Compiling page: %v to %v", dir+fileInfo.Name(), target)
 
-			locals := getLocals("Page", map[string]interface{}{})
+			locals, ok := pagesVars[pagePath]
+			if !ok {
+				log.Errorf("No page meta information: %v", pagePath)
+			}
+
+			locals = getLocals("Page", locals)
 
 			err := os.MkdirAll(sorg.TargetDir+dir, 0755)
 			if err != nil {

@@ -1,0 +1,16 @@
+= content main
+  #wrapper
+    header
+      h1 ❧ Flow My Tears, the Policeman Said ❧
+    section
+      .quote
+        p.actor1
+          span.speaker I must turn a terrible tragedy into an advantage, Buckman realized. Capitalize on the accidental death of my own sister. If it <em>was</em> accidental.
+        p.actor1
+          | &ldquo;Maybe it's true,&rdquo; 
+          span.speaker he said. Possibly Marshal Holbein, for example, who hated him enormously, had arranged it.
+        p.actor2
+          | &ldquo;No,&rdquo; 
+          span.speaker Herb said. 
+          | &ldquo;It's not true. But start an inquiry. And you must find someone to pin it on; there must be a trial.&rdquo;
+      p.attribution &mdash; Philip K. Dick

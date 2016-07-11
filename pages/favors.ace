@@ -1,0 +1,14 @@
+= content main
+  #wrapper
+    header
+      h1 ❧ Catch-22 ❧
+    section
+      .quote
+        p.actor1 &ldquo;I'm talking about cooperating. Favors. You do a favor for me, I'll do one for you. Get it?&rdquo;
+        p.actor2
+          | &ldquo;Do one for me,&rdquo; 
+          span.speaker Yossarian requested.
+        p.actor1
+          | &ldquo;Not a chance,&rdquo; 
+          span.speaker Doc Daneeka answered.
+      p.attribution &mdash; Chapter 4, Catch-22, Joseph Heller

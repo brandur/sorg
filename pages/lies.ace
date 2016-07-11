@@ -1,0 +1,8 @@
+= content main
+  #wrapper
+    header
+      h1 ❧ Catch-22 ❧
+    section
+      .quote
+        p.actor1 Major Major had lied, and it was good. He was not really surprised that it was good, for he had observed that people who did lie were, on the whole, more resourceful and ambitious and successful than people who did not lie.
+      p.attribution &mdash; Chapter 9, Catch-22, Joseph Heller
