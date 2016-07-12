@@ -52,28 +52,28 @@ else
 endif
 
 install:
-	go install $(shell go list ./... | egrep -v '/org/|/vendor/')
+	go install $(shell go list ./... | egrep -v '/vendor/')
 
 lint:
 	$(GOPATH)/bin/golint -set_exit_status
 
 save:
-	godep save $(shell go list ./... | egrep -v '/org/|/vendor/')
+	godep save $(shell go list ./... | egrep -v '/vendor/')
 
 serve:
 	$(GOPATH)/bin/sorg-serve
 
 test:
-	go test $(shell go list ./... | egrep -v '/org/|/vendor/')
+	go test $(shell go list ./... | egrep -v '/vendor/')
 
 vet:
-	go vet $(shell go list ./... | egrep -v '/org/|/vendor/')
+	go vet $(shell go list ./... | egrep -v '/vendor/')
 
 # Note that we use the CONTENT_ONLY flag on the build here. We're watching for
 # changes in content directories, so don't bother rebuilding pages generated
 # from Black Swan data.
 watch:
-	fswatch -o layouts/ pages/ org/ views/ | CONTENT_ONLY=true xargs -n1 -I{} make build
+	fswatch -o articles/ assets/ drafts/ layouts/ fragments/ fragments-drafts/ pages/ org/ views/ | CONTENT_ONLY=true xargs -n1 -I{} make build
 
 # This is designed to be compromise between being explicit and readability. We
 # can allow the find to discover everything in vendor/, but then the fswatch
