@@ -79,7 +79,7 @@ vet:
 # changes in content directories, so don't bother rebuilding pages generated
 # from Black Swan data.
 watch:
-	fswatch -o articles/ assets/ drafts/ layouts/ fragments/ fragments-drafts/ pages/ org/ views/ | CONTENT_ONLY=true xargs -n1 -I{} make build
+	fswatch -o content/ layouts/ pages/ views/ | CONTENT_ONLY=true xargs -n1 -I{} make build
 
 # This is designed to be compromise between being explicit and readability. We
 # can allow the find to discover everything in vendor/, but then the fswatch
