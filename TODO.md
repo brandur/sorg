@@ -1,8 +1,6 @@
 # TODO
 
 * [ ] Rewrite about page.
-* [ ] Fix logging: debug is currently too verbose for Travis runs, but normal
-  is not verbose enough.
 * [ ] Test for the majority of functions in build's main.go.
 * [ ] Download images found in fragment frontmatter (maybe just stored them
   locally).
@@ -11,6 +9,8 @@
 
 ## Done
 
+* [x] Fix logging: debug is currently too verbose for Travis runs, but normal
+  is not verbose enough.
 * [x] Smarter asset symlinking that doesn't remove and create every time.
 * [x] Move to a leading slash system in paths.
 * [x] Don't use so many path constants ... it's not really helping.
