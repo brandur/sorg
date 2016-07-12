@@ -2,6 +2,7 @@
 
 * [ ] Make Black Swan based modules testable by pulling in a Postgres schema.
 * [ ] Test for the majority of functions in build's main.go.
+* [ ] Parallelized asset fetching.
 * [ ] Faster build by passing changes paths to program.
 
 ## Done
