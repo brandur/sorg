@@ -88,7 +88,7 @@ func TestFetch(t *testing.T) {
 	assert.Equal(t, expectedErr, err)
 
 	//
-	// New files with *all* error
+	// New files with *all* errors
 	//
 
 	dir, err = ioutil.TempDir("", "assets")
