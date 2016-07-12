@@ -308,6 +308,8 @@ var pagesVars = map[string]map[string]interface{}{
 //
 
 func main() {
+	start := time.Now()
+
 	err := envdecode.Decode(&conf)
 	if err != nil {
 		log.Fatal(err)
@@ -324,65 +326,91 @@ func main() {
 
 	sorg.InitLog(conf.Verbose)
 
+	t := time.Now()
 	err = sorg.CreateTargetDirs()
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Created target directories in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	articles, err := compileArticles()
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled articles in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	fragments, err := compileFragments()
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled fragments in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compileJavascripts(javascripts)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled script assets in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compilePages()
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled pages in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	photos, err := compilePhotos(db)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled photos in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compileReading(db)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled reading in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compileRuns(db)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled runs in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compileStylesheets(stylesheets)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled stylesheet assets in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compileTwitter(db)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled tweets in %v.", time.Now().Sub(t))
 
+	t = time.Now()
 	err = compileHome(articles, fragments, photos)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Debugf("Compiled home in %v.", time.Now().Sub(t))
 
 	err = linkImageAssets()
 	if err != nil {
 		log.Fatal(err)
 	}
+	t = time.Now()
+	log.Debugf("Linked image assets in %v.", time.Now().Sub(t))
+
+	log.Infof("Built site in %v.", time.Now().Sub(start))
 }
 
 //
