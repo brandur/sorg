@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"strconv"
 
-	log "github.com/Sirupsen/logrus"
 	"golang.org/x/net/html"
 )
 
@@ -62,8 +61,7 @@ func buildTree(headers []*header) *html.Node {
 	var level int
 	if len(headers) > 0 {
 		level = headers[0].level
-
-		log.Debugf("TOC: Starting level: %v", level)
+		//log.Debugf("TOC: Starting level: %v", level)
 	}
 
 	for _, header := range headers {
@@ -75,7 +73,7 @@ func buildTree(headers []*header) *html.Node {
 				listNode = &html.Node{Data: "ol", Type: html.ElementNode}
 				listItemNode.AppendChild(listNode)
 
-				log.Debugf("TOC: --> Indenting once to level: %v", header.level)
+				//log.Debugf("TOC: --> Indenting once to level: %v", header.level)
 			}
 
 			needNewListNode = true
@@ -90,7 +88,7 @@ func buildTree(headers []*header) *html.Node {
 				listItemNode = listNode.Parent
 				listNode = listItemNode.Parent
 
-				log.Debugf("TOC: --< Dedenting once to level: %v", header.level)
+				//log.Debugf("TOC: --< Dedenting once to level: %v", header.level)
 			}
 
 			level = header.level
@@ -116,7 +114,7 @@ func buildTree(headers []*header) *html.Node {
 
 		needNewListNode = true
 
-		log.Debugf("TOC: Inserted header: %v", header.id)
+		//log.Debugf("TOC: Inserted header: %v", header.id)
 	}
 
 	return topNode

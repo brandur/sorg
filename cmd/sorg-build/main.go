@@ -492,7 +492,10 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 }
 
 func compileJavascripts(javascripts []string) error {
-	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "/app.js")
+	outPath := sorg.TargetVersionedAssetsDir + "/app.js"
+	log.Debugf("Building: %v", outPath)
+
+	outFile, err := os.Create(outPath)
 	if err != nil {
 		return err
 	}
@@ -500,7 +503,7 @@ func compileJavascripts(javascripts []string) error {
 
 	for _, javascript := range javascripts {
 		inPath := sorg.ContentDir + "/assets/javascripts/" + javascript
-		log.Debugf("Compiling: %v", inPath)
+		log.Debugf("Including: %v", inPath)
 
 		inFile, err := os.Open(inPath)
 		if err != nil {
@@ -527,7 +530,7 @@ func compilePages() error {
 }
 
 func compilePagesDir(dir string) error {
-	log.Debugf("Descending into for pages: %v", dir)
+	log.Debugf("Descending into pages directory: %v", dir)
 
 	fileInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
@@ -742,7 +745,10 @@ func compileTwitter(db *sql.DB) error {
 }
 
 func compileStylesheets(stylesheets []string) error {
-	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "/app.css")
+	outPath := sorg.TargetVersionedAssetsDir + "/app.css"
+	log.Debugf("Building: %v", outPath)
+
+	outFile, err := os.Create(outPath)
 	if err != nil {
 		return err
 	}
@@ -750,6 +756,7 @@ func compileStylesheets(stylesheets []string) error {
 
 	for _, stylesheet := range stylesheets {
 		inPath := sorg.ContentDir + "/assets/stylesheets/" + stylesheet
+		log.Debugf("Including: %v", inPath)
 
 		inFile, err := os.Open(inPath)
 		if err != nil {
@@ -895,7 +902,6 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 		}
 
 		inPath := dir + "/" + fragmentInfo.Name()
-		log.Debugf("Compiling: %v", inPath)
 
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
