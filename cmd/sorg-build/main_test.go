@@ -32,6 +32,80 @@ func init() {
 	}
 }
 
+func TestCompilePhotos(t *testing.T) {
+	//
+	// No database
+	//
+
+	photos, err := compilePhotos(nil)
+	assert.NoError(t, err)
+	assert.Equal(t, []*Photo(nil), photos)
+
+	//
+	// With empty database
+	//
+
+	photos, err = compilePhotos(db)
+	assert.NoError(t, err)
+	assert.Equal(t, []*Photo(nil), photos)
+
+	//
+	// With results
+	//
+
+	// TODO: insert photos
+	//photos, err = compilePhotos(db)
+	//assert.NoError(t, err)
+}
+
+func TestCompileReading(t *testing.T) {
+	//
+	// No database
+	//
+
+	err := compileReading(nil)
+	assert.NoError(t, err)
+
+	//
+	// With empty database
+	//
+
+	err = compileReading(db)
+	assert.NoError(t, err)
+
+	//
+	// With results
+	//
+
+	// TODO: insert reading
+	//err = compileReading(db)
+	//assert.NoError(t, err)
+}
+
+func TestCompileRuns(t *testing.T) {
+	//
+	// No database
+	//
+
+	err := compileRuns(nil)
+	assert.NoError(t, err)
+
+	//
+	// With empty database
+	//
+
+	err = compileRuns(db)
+	assert.NoError(t, err)
+
+	//
+	// With results
+	//
+
+	// TODO: insert runs
+	//err = compileRuns(db)
+	//assert.NoError(t, err)
+}
+
 func TestCompileTwitter(t *testing.T) {
 	//
 	// No database
