@@ -36,7 +36,7 @@
           {{if ne .Article.HNLink ""}}
             p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
           {{end}}
-          p Find an error? Please consider <a href="https://github.com/brandur/org/edit/master/articles/{{.Slug}}.md">sending a pull request</a>.
+          p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/articles/{{.Slug}}.md">sending a pull request</a>.
           {{if ne .Article.Attributions ""}}
             p.attribution== {{HTML .Article.Attributions}}
           {{end}}
