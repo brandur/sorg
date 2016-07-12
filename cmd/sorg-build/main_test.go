@@ -21,6 +21,11 @@ func init() {
 		panic(err)
 	}
 
+	err = sorg.CreateTargetDirs()
+	if err != nil {
+		panic(err)
+	}
+
 	db, err = sql.Open("postgres", "postgres://localhost/sorg-test?sslmode=disable")
 	if err != nil {
 		panic(err)
