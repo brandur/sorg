@@ -1,12 +1,12 @@
 # TODO
 
 * [ ] Test for the majority of functions in build's main.go.
-* [ ] Download images found in fragment frontmatter (maybe just stored them
-  locally).
 * [ ] Faster build by passing changes paths to program.
 
 ## Done
 
+* [x] Download images found in fragment frontmatter (maybe just stored them
+  locally).
 * [x] Move org content into project.
 * [x] Update README.
 * [x] Rewrite about page.
