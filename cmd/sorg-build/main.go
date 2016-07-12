@@ -7,6 +7,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -551,8 +552,6 @@ func compilePagesDir(dir string) error {
 			// Looks something like "./public/about".
 			target := sorg.TargetDir + "/" + pagePath
 
-			log.Debugf("Compiling page: %v to %v", dir+"/"+fileInfo.Name(), target)
-
 			locals, ok := pagesVars[pagePath]
 			if !ok {
 				log.Errorf("No page meta information: %v", pagePath)
@@ -703,8 +702,8 @@ func compileTwitter(db *sql.DB) error {
 	}
 
 	optionsMatrix := map[string]bool{
-		"/index.html":   false,
-		"/with-replies": true,
+		"index.html":   false,
+		"with-replies": true,
 	}
 
 	for page, withReplies := range optionsMatrix {
@@ -751,7 +750,6 @@ func compileStylesheets(stylesheets []string) error {
 
 	for _, stylesheet := range stylesheets {
 		inPath := sorg.ContentDir + "/assets/stylesheets/" + stylesheet
-		log.Debugf("Compiling: %v", inPath)
 
 		inFile, err := os.Open(inPath)
 		if err != nil {
@@ -798,7 +796,6 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 		}
 
 		inPath := dir + "/" + articleInfo.Name()
-		log.Debugf("Compiling: %v", inPath)
 
 		raw, err := ioutil.ReadFile(inPath)
 		if err != nil {
@@ -1517,6 +1514,36 @@ func isHidden(file string) bool {
 	return strings.HasPrefix(file, ".")
 }
 
+func ensureSymbolicLink(source, dest string) error {
+	log.Debugf("Checking symbolic link (%v): %v -> %v",
+		path.Base(source), source, dest)
+
+	_, err := os.Stat(dest)
+	if os.IsNotExist(err) {
+		log.Debugf("Destination link does not exist. Creating.")
+		return os.Symlink(source, dest)
+	}
+
+	actual, err := os.Readlink(dest)
+	if err != nil {
+		return err
+	}
+
+	if actual == source {
+		log.Debugf("Link exists.")
+		return nil
+	}
+
+	log.Debugf("Destination links to wrong source. Creating.")
+
+	err = os.RemoveAll(dest)
+	if err != nil {
+		return err
+	}
+
+	return os.Symlink(source, dest)
+}
+
 func linkImageAssets() error {
 	assets, err := ioutil.ReadDir(sorg.ContentDir + "/assets/images")
 	if err != nil {
@@ -1524,8 +1551,6 @@ func linkImageAssets() error {
 	}
 
 	for _, asset := range assets {
-		log.Debugf("Linking image asset: %v", asset.Name())
-
 		// we use absolute paths for source and destination because not doing
 		// so can result in some weird symbolic link inception
 		source, err := filepath.Abs(sorg.ContentDir + "/assets/images/" + asset.Name())
@@ -1538,12 +1563,7 @@ func linkImageAssets() error {
 			return err
 		}
 
-		err = os.RemoveAll(dest)
-		if err != nil {
-			return err
-		}
-
-		err = os.Symlink(source, dest)
+		err = ensureSymbolicLink(source, dest)
 		if err != nil {
 			return err
 		}
