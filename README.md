@@ -16,6 +16,9 @@ go get -u github.com/ddollar/forego
 
 cp .env.sample
 
+# Used to run the test suite.
+createdb sorg-test
+
 # Compile Go executables.
 make install
 

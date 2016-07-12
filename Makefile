@@ -70,6 +70,7 @@ serve:
 	$(GOPATH)/bin/sorg-serve
 
 test:
+	psql postgres://localhost/sorg-test < testing/black_swan.sql > /dev/null
 	go test $(shell go list ./... | egrep -v '/vendor/')
 
 vet:
