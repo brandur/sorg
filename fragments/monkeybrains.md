@@ -1,8 +1,7 @@
 ---
 title: MonkeyBrains
 published_at: 2016-01-23T01:15:58Z
-image: https://c2.staticflickr.com/2/1590/24197211299_21c6c7413a_b.jpg
-#image: https://c2.staticflickr.com/2/1511/24456650802_996f3d74e3_b.jpg
+image: /assets/fragments/monkeybrains/vista.jpg
 ---
 
 One "worst part" of living in SOMA is the endless construction. Its latest

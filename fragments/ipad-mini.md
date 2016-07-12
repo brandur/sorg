@@ -1,7 +1,7 @@
 ---
 title: The iPad Mini
 published_at: 2016-06-12T22:26:17Z
-image: https://c2.staticflickr.com/4/3799/12502087755_26952b32cd_b.jpg
+image: /assets/fragments/ipad-mini/vista.jpg
 ---
 
 After almost three years of continuous usage and ownership, it's time for a

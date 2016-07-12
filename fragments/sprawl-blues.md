@@ -1,7 +1,7 @@
 ---
 title: The Sprawl Blues
 published_at: 2016-01-03T22:18:36Z
-image: https://c2.staticflickr.com/2/1476/23915870999_e44cc9b82f_b.jpg
+image: /assets/fragments/sprawl-blues/vista.jpg
 ---
 
 I happened to come across an article about [life in LA][los-angeles-post]
