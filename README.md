@@ -1,6 +1,11 @@
 # sorg
 
-A statically compiled version of [org][org].
+[![Build Status](https://travis-ci.org/brandur/sorg.svg?branch=master)](https://travis-ci.org/brandur/sorg)
+
+A Go-based build script that compiles my [personal website][brandur].
+
+The site deploys automatically from its CI build in Travis as changes are
+committed to the master branch.
 
 ## Build
 
@@ -38,4 +43,5 @@ make deploy
 ```
 
 [black-swan]: https://github.com/brandur/black-swan
+[brandur]: https://brandur.org
 [org]: https://github.com/brandur/org
