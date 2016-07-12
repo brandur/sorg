@@ -1,7 +1,5 @@
 # TODO
 
-* [ ] Move to a leading slash system in paths.
-* [ ] Don't use so many path constants ... it's not really helping.
 * [ ] Rewrite about page.
 * [ ] Fix logging: debug is currently too verbose for Travis runs, but normal
   is not verbose enough.
@@ -14,6 +12,8 @@
 
 ## Done
 
+* [x] Move to a leading slash system in paths.
+* [x] Don't use so many path constants ... it's not really helping.
 * [x] Atom feeds.
 * [x] Make sure that all viewport widths have been accounted for.
 * [x] Finish building out "about" and various other one-off pages.
