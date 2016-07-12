@@ -1,6 +1,5 @@
 # TODO
 
-* [ ] Rewrite about page.
 * [ ] Test for the majority of functions in build's main.go.
 * [ ] Download images found in fragment frontmatter (maybe just stored them
   locally).
@@ -9,6 +8,10 @@
 
 ## Done
 
+* [x] Move org content into project.
+* [x] Update README.
+* [x] Rewrite about page.
+* [x] Fix validation problems in Atom feed.
 * [x] Speed up the build (maybe incremental?).
 * [x] Fix logging: debug is currently too verbose for Travis runs, but normal
   is not verbose enough.
