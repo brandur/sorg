@@ -2,6 +2,7 @@ package sorg
 
 import (
 	"os"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 )
@@ -55,6 +56,11 @@ var targetDirs = []string{
 // CreateTargetDirs creates TargetDir and all other necessary directories for
 // the build if they don't already exist.
 func CreateTargetDirs() error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Created target directories in %v.", time.Now().Sub(start))
+	}()
+
 	for _, targetDir := range targetDirs {
 		err := os.MkdirAll(targetDir, 0755)
 		if err != nil {

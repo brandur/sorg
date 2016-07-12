@@ -335,89 +335,65 @@ func main() {
 
 	sorg.InitLog(conf.Verbose)
 
-	t := time.Now()
 	err = sorg.CreateTargetDirs()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Created target directories in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	articles, err := compileArticles()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled articles in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	fragments, err := compileFragments()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled fragments in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compileJavascripts(javascripts)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled script assets in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compilePages()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled pages in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	photos, err := compilePhotos(db)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled photos in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compileReading(db)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled reading in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compileRuns(db)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled runs in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compileStylesheets(stylesheets)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled stylesheet assets in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compileTwitter(db)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled tweets in %v.", time.Now().Sub(t))
 
-	t = time.Now()
 	err = compileHome(articles, fragments, photos)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Debugf("Compiled home in %v.", time.Now().Sub(t))
 
 	err = linkImageAssets()
 	if err != nil {
 		log.Fatal(err)
 	}
-	t = time.Now()
-	log.Debugf("Linked image assets in %v.", time.Now().Sub(t))
 }
 
 //
@@ -428,6 +404,11 @@ func main() {
 //
 
 func compileArticles() ([]*Article, error) {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled articles in %v.", time.Now().Sub(start))
+	}()
+
 	articles, err := compileArticlesDir(sorg.ContentDir + "/articles")
 	if err != nil {
 		return nil, err
@@ -463,6 +444,11 @@ func compileArticles() ([]*Article, error) {
 }
 
 func compileFragments() ([]*Fragment, error) {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled fragments in %v.", time.Now().Sub(start))
+	}()
+
 	fragments, err := compileFragmentsDir(sorg.ContentDir + "/fragments")
 	if err != nil {
 		return nil, err
@@ -502,6 +488,11 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 		return nil
 	}
 
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled home in %v.", time.Now().Sub(start))
+	}()
+
 	if len(articles) > 5 {
 		articles = articles[0:5]
 	}
@@ -531,6 +522,11 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 }
 
 func compileJavascripts(javascripts []string) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled script assets in %v.", time.Now().Sub(start))
+	}()
+
 	outPath := sorg.TargetVersionedAssetsDir + "/app.js"
 	log.Debugf("Building: %v", outPath)
 
@@ -565,6 +561,11 @@ func compileJavascripts(javascripts []string) error {
 }
 
 func compilePages() error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled pages in %v.", time.Now().Sub(start))
+	}()
+
 	return compilePagesDir(sorg.PagesDir)
 }
 
@@ -622,6 +623,11 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		return nil, nil
 	}
 
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled photos in %v.", time.Now().Sub(start))
+	}()
+
 	photos, err := getPhotosData(db)
 	if err != nil {
 		return nil, err
@@ -662,6 +668,11 @@ func compileReading(db *sql.DB) error {
 	if conf.ContentOnly {
 		return nil
 	}
+
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled reading in %v.", time.Now().Sub(start))
+	}()
 
 	readings, err := getReadingsData(db)
 	if err != nil {
@@ -708,6 +719,11 @@ func compileRuns(db *sql.DB) error {
 		return nil
 	}
 
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled runs in %v.", time.Now().Sub(start))
+	}()
+
 	runs, err := getRunsData(db)
 	if err != nil {
 		return err
@@ -748,6 +764,11 @@ func compileTwitter(db *sql.DB) error {
 	if conf.ContentOnly {
 		return nil
 	}
+
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled tweets in %v.", time.Now().Sub(start))
+	}()
 
 	tweets, err := getTwitterData(db, false)
 	if err != nil {
@@ -800,6 +821,11 @@ func compileTwitter(db *sql.DB) error {
 }
 
 func compileStylesheets(stylesheets []string) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled stylesheet assets in %v.", time.Now().Sub(start))
+	}()
+
 	outPath := sorg.TargetVersionedAssetsDir + "/app.css"
 	log.Debugf("Building: %v", outPath)
 
@@ -839,6 +865,11 @@ func compileStylesheets(stylesheets []string) error {
 }
 
 func linkImageAssets() error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Linked image assets in %v.", time.Now().Sub(start))
+	}()
+
 	assets, err := ioutil.ReadDir(sorg.ContentDir + "/assets/images")
 	if err != nil {
 		return err
