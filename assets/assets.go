@@ -10,11 +10,15 @@ import (
 	log "github.com/Sirupsen/logrus"
 )
 
+// Asset represents a site asset that should be fetch from a local URL and
+// stored as a local file.
 type Asset struct {
 	URL    string
 	Target string
 }
 
+// Fetch performs an HTTP fetch for each given asset and stores them to their
+// corresponding local targets.
 func Fetch(assets []Asset) error {
 	client := &http.Client{}
 

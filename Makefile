@@ -54,8 +54,14 @@ endif
 install:
 	go install $(shell go list ./... | egrep -v '/vendor/')
 
+# Note that unfortunately Golint doesn't work like other Go commands: it only
+# takes only a single argument at a time and expects that each is the name of a
+# local directory (as opposed to a package).
+#
+# The exit 255 trick ensures that xargs will actually bubble a failure back up
+# to the entire command.
 lint:
-	$(GOPATH)/bin/golint -set_exit_status
+	go list ./... | egrep -v '/vendor/' | sed "s|^github\.com/brandur/sorg|.|" | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
 
 save:
 	godep save $(shell go list ./... | egrep -v '/vendor/')

@@ -8,7 +8,7 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-var renderFuncs []func(string) string = []func(string) string{
+var renderFuncs = []func(string) string{
 	// pre-transformations
 	transformFigures,
 	transformHeaders,
@@ -31,7 +31,7 @@ func Render(source string) string {
 }
 
 // Look for any whitespace between HTML tags.
-var whitespaceRE *regexp.Regexp = regexp.MustCompile(`>\s+<`)
+var whitespaceRE = regexp.MustCompile(`>\s+<`)
 
 // Simply collapses certain HTML snippets by removing newlines and whitespace
 // between tags. This is mainline used to make HTML snippets readable as
@@ -66,7 +66,7 @@ func renderMarkdown(source string) string {
 	return string(blackfriday.Markdown([]byte(source), renderer, extensions))
 }
 
-var codeRE *regexp.Regexp = regexp.MustCompile(`<code class="(\w+)">`)
+var codeRE = regexp.MustCompile(`<code class="(\w+)">`)
 
 func transformCodeWithLanguagePrefix(source string) string {
 	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
@@ -79,7 +79,7 @@ const figureHTML = `
 </figure>
 `
 
-var figureRE *regexp.Regexp = regexp.MustCompile(`!fig src="(.*)" caption="(.*)"`)
+var figureRE = regexp.MustCompile(`!fig src="(.*)" caption="(.*)"`)
 
 func transformFigures(source string) string {
 	return figureRE.ReplaceAllStringFunc(source, func(figure string) string {
@@ -112,10 +112,10 @@ const footnoteReferenceHTML = `
 // Look for the section the section at the bottom of the page that looks like
 // <p>[1] (the paragraph tag is there because Markdown will have already
 // wrapped it by this point).
-var footerRE *regexp.Regexp = regexp.MustCompile(`(?ms:^<p>\[\d+\].*)`)
+var footerRE = regexp.MustCompile(`(?ms:^<p>\[\d+\].*)`)
 
 // Look for a single footnote within the footer.
-var footnoteRE *regexp.Regexp = regexp.MustCompile(`\[(\d+)\](\s+.*)`)
+var footnoteRE = regexp.MustCompile(`\[(\d+)\](\s+.*)`)
 
 // Note that this must be a post-transform filter. If it wasn't, our Markdown
 // renderer would not render the Markdown inside the footnotes layer because it
@@ -162,7 +162,7 @@ const headerHTML = `
 //
 // For now, only match ## or more so as to remove code comments from
 // matches. We need a better way of doing that though.
-var headerRE *regexp.Regexp = regexp.MustCompile(`(?m:^(#{2,})\s+(.*?)(\s+\(#(.*)\))?$)`)
+var headerRE = regexp.MustCompile(`(?m:^(#{2,})\s+(.*?)(\s+\(#(.*)\))?$)`)
 
 func transformHeaders(source string) string {
 	headerNum := 0

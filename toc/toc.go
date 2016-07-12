@@ -15,8 +15,9 @@ type header struct {
 	title string
 }
 
-var headerRegexp *regexp.Regexp = regexp.MustCompile(`<h([0-9]) id="(.*?)">(<a.*?>)?(.*?)(</a>)?</h[0-9]>`)
+var headerRegexp = regexp.MustCompile(`<h([0-9]) id="(.*?)">(<a.*?>)?(.*?)(</a>)?</h[0-9]>`)
 
+// Render renders the table of contents as an HTML string.
 func Render(content string) (string, error) {
 	var headers []*header
 
