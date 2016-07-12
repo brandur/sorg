@@ -13,87 +13,42 @@ const (
 )
 
 const (
-	// ArticlesDir is the source directory for articles.
-	ArticlesDir = "./org/articles/"
-
-	// ArticlesDraftsDir is the source directory for article drafts.
-	ArticlesDraftsDir = "./org/drafts/"
-
-	// AssetsDir is the source directory for image, JavaScript, and stylesheet
-	// assets.
-	AssetsDir = "./org/assets/"
-
-	// FragmentsDir is the source directory for fragments.
-	FragmentsDir = "./org/fragments/"
-
-	// FragmentsDraftsDir is the source directory for fragment drafts.
-	FragmentsDraftsDir = "./org/fragments-drafts/"
-
-	// ImagesDir is the source for images.
-	ImagesDir = AssetsDir + "images/"
-
-	// JavascriptsDir is the source directory for JavaScripts.
-	JavascriptsDir = AssetsDir + "javascripts/"
+	// ContentDir is the location of the site's content (articles, fragments,
+	// assets, etc.).
+	ContentDir = "./org"
 
 	// LayoutsDir is the source directory for view layouts.
-	LayoutsDir = "./layouts/"
+	LayoutsDir = "./layouts"
 
-	// PagesDir contains the sources for one-off pages.
-	PagesDir = "./pages/"
+	// MainLayout is the site's main layout.
+	MainLayout = LayoutsDir + "/main"
 
-	// StylesheetsDir is the source directory for stylesheets.
-	StylesheetsDir = AssetsDir + "stylesheets/"
+	// PagesDir is the source directory for one-off page content.
+	PagesDir = "./pages"
 
-	// TargetArticlesDir is the target directory for some article pages (note
-	// that articles themselves live in TargetDir).
-	TargetArticlesDir = TargetDir + "articles/"
-
-	// TargetAssetsDir is the target directory where static assets are placed
-	// which should not be versioned by release number. Unversioned assets are
-	// those that probably don't need to change between releases like images.
-	TargetAssetsDir = TargetDir + "assets/"
-
-	// TargetPhotosAssetsDir is the target directory where static assets for
-	// photographs are downloaded to.
-	TargetPhotosAssetsDir = TargetDir + "assets/photos/"
-
-	// TargetReadingDir is the target directory for reading pages.
-	TargetReadingDir = TargetDir + "reading/"
+	// TargetDir is the target location where the site will be built to.
+	TargetDir = "./public"
 
 	// TargetVersionedAssetsDir is the target directory where static assets are
 	// placed which should be versioned by release number. Versioned assets are
 	// those that might need to change on release like CSS or JS files.
-	TargetVersionedAssetsDir = TargetDir + "assets/" + Release + "/"
-
-	// TargetDir is the target location where the site will be built to.
-	TargetDir = "./public/"
-
-	// TargetPhotosDir is the target directory for photos.
-	TargetPhotosDir = TargetDir + "photos/"
-
-	// TargetFragmentsDir is the target directory for fragments.
-	TargetFragmentsDir = TargetDir + "fragments/"
-
-	// TargetRunsDir is the target directory for pages about running.
-	TargetRunsDir = TargetDir + "runs/"
-
-	// TargetTwitterDir is the target directory for pages about Twitter.
-	TargetTwitterDir = TargetDir + "twitter/"
+	TargetVersionedAssetsDir = TargetDir + "/assets/" + Release
 
 	// ViewsDir is the source directory for views.
-	ViewsDir = "./views/"
+	ViewsDir = "./views"
 )
 
 // A list of all directories that are in the built static site.
 var targetDirs = []string{
-	TargetArticlesDir,
-	TargetAssetsDir,
-	TargetFragmentsDir,
-	TargetPhotosAssetsDir,
-	TargetPhotosDir,
-	TargetReadingDir,
-	TargetRunsDir,
-	TargetTwitterDir,
+	TargetDir,
+	TargetDir + "/articles",
+	TargetDir + "/assets",
+	TargetDir + "/fragments",
+	TargetDir + "/assets/photos",
+	TargetDir + "/photos",
+	TargetDir + "/reading",
+	TargetDir + "/runs",
+	TargetDir + "/twitter",
 	TargetVersionedAssetsDir,
 }
 

@@ -392,13 +392,13 @@ func main() {
 //
 
 func compileArticles() ([]*Article, error) {
-	articles, err := compileArticlesDir(sorg.ArticlesDir)
+	articles, err := compileArticlesDir(sorg.ContentDir + "/articles")
 	if err != nil {
 		return nil, err
 	}
 
 	if conf.Drafts {
-		drafts, err := compileArticlesDir(sorg.ArticlesDraftsDir)
+		drafts, err := compileArticlesDir(sorg.ContentDir + "/drafts")
 		if err != nil {
 			return nil, err
 		}
@@ -412,8 +412,8 @@ func compileArticles() ([]*Article, error) {
 		"Articles": articles,
 	})
 
-	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/index",
-		sorg.TargetArticlesDir+"/index.html", locals)
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
+		sorg.TargetDir+"/articles/index.html", locals)
 	if err != nil {
 		return nil, err
 	}
@@ -427,13 +427,13 @@ func compileArticles() ([]*Article, error) {
 }
 
 func compileFragments() ([]*Fragment, error) {
-	fragments, err := compileFragmentsDir(sorg.FragmentsDir)
+	fragments, err := compileFragmentsDir(sorg.ContentDir + "/fragments")
 	if err != nil {
 		return nil, err
 	}
 
 	if conf.Drafts {
-		drafts, err := compileFragmentsDir(sorg.FragmentsDraftsDir)
+		drafts, err := compileFragmentsDir(sorg.ContentDir + "/fragments-drafts")
 		if err != nil {
 			return nil, err
 		}
@@ -447,8 +447,8 @@ func compileFragments() ([]*Fragment, error) {
 		"Fragments": fragments,
 	})
 
-	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/index",
-		sorg.TargetFragmentsDir+"/index.html", locals)
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/index",
+		sorg.TargetDir+"/fragments/index.html", locals)
 	if err != nil {
 		return nil, err
 	}
@@ -481,7 +481,7 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 		"ViewportWidth": 600,
 	})
 
-	err := renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/index",
+	err := renderView(sorg.MainLayout, sorg.ViewsDir+"/index",
 		sorg.TargetDir+"/index.html", locals)
 	if err != nil {
 		return err
@@ -491,14 +491,14 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 }
 
 func compileJavascripts(javascripts []string) error {
-	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "app.js")
+	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "/app.js")
 	if err != nil {
 		return err
 	}
 	defer outFile.Close()
 
 	for _, javascript := range javascripts {
-		inPath := sorg.JavascriptsDir + javascript
+		inPath := sorg.ContentDir + "/assets/javascripts/" + javascript
 		log.Debugf("Compiling: %v", inPath)
 
 		inFile, err := os.Open(inPath)
@@ -543,12 +543,15 @@ func compilePagesDir(dir string) error {
 			// Subtract 4 for the ".ace" extension.
 			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
 
-			// Remove the "pages/" directory, but keep the rest of the path.
+			// Remove the "./pages" directory, but keep the rest of the path.
+			//
+			// Looks something like "about".
 			pagePath := strings.TrimPrefix(dir, sorg.PagesDir) + name
 
-			target := sorg.TargetDir + pagePath
+			// Looks something like "./public/about".
+			target := sorg.TargetDir + "/" + pagePath
 
-			log.Debugf("Compiling page: %v to %v", dir+fileInfo.Name(), target)
+			log.Debugf("Compiling page: %v to %v", dir+"/"+fileInfo.Name(), target)
 
 			locals, ok := pagesVars[pagePath]
 			if !ok {
@@ -557,12 +560,12 @@ func compilePagesDir(dir string) error {
 
 			locals = getLocals("Page", locals)
 
-			err := os.MkdirAll(sorg.TargetDir+dir, 0755)
+			err := os.MkdirAll(sorg.TargetDir+"/"+dir, 0755)
 			if err != nil {
 				return err
 			}
 
-			err = renderView(sorg.LayoutsDir+"main", dir+name,
+			err = renderView(sorg.MainLayout, dir+"/"+name,
 				target, locals)
 			if err != nil {
 				return err
@@ -584,9 +587,9 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	for _, photo := range photos {
 		photoAssets = append(photoAssets,
 			assets.Asset{URL: photo.LargeImageURL,
-				Target: sorg.TargetPhotosAssetsDir + "/" + photo.Slug + "@2x.jpg"},
+				Target: sorg.TargetDir + "/assets/photos/" + photo.Slug + "@2x.jpg"},
 			assets.Asset{URL: photo.MediumImageURL,
-				Target: sorg.TargetPhotosAssetsDir + "/" + photo.Slug + ".jpg"},
+				Target: sorg.TargetDir + "/assets/photos/" + photo.Slug + ".jpg"},
 		)
 	}
 
@@ -601,8 +604,8 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		"ViewportWidth": 600,
 	})
 
-	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/photos/index",
-		sorg.TargetPhotosDir+"/index.html", locals)
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/photos/index",
+		sorg.TargetDir+"/photos/index.html", locals)
 	if err != nil {
 		return nil, err
 	}
@@ -642,8 +645,8 @@ func compileReading(db *sql.DB) error {
 		"PagesByYearYCounts": pagesByYearYCounts,
 	})
 
-	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/reading/index",
-		sorg.TargetReadingDir+"/index.html", locals)
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/reading/index",
+		sorg.TargetDir+"/reading/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -679,8 +682,8 @@ func compileRuns(db *sql.DB) error {
 		"ByYearYDistances": byYearYDistances,
 	})
 
-	err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/runs/index",
-		sorg.TargetRunsDir+"/index.html", locals)
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/runs/index",
+		sorg.TargetDir+"/runs/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -729,8 +732,8 @@ func compileTwitter(db *sql.DB) error {
 			"TweetCountYCounts": tweetCountYCounts,
 		})
 
-		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/twitter/index",
-			sorg.TargetTwitterDir+page, locals)
+		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/twitter/index",
+			sorg.TargetDir+"/twitter/"+page, locals)
 		if err != nil {
 			return err
 		}
@@ -740,14 +743,14 @@ func compileTwitter(db *sql.DB) error {
 }
 
 func compileStylesheets(stylesheets []string) error {
-	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "app.css")
+	outFile, err := os.Create(sorg.TargetVersionedAssetsDir + "/app.css")
 	if err != nil {
 		return err
 	}
 	defer outFile.Close()
 
 	for _, stylesheet := range stylesheets {
-		inPath := sorg.StylesheetsDir + stylesheet
+		inPath := sorg.ContentDir + "/assets/stylesheets/" + stylesheet
 		log.Debugf("Compiling: %v", inPath)
 
 		inFile, err := os.Open(inPath)
@@ -794,7 +797,7 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 			continue
 		}
 
-		inPath := dir + articleInfo.Name()
+		inPath := dir + "/" + articleInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
 
 		raw, err := ioutil.ReadFile(inPath)
@@ -836,8 +839,8 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 			"Article": article,
 		})
 
-		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/articles/show",
-			sorg.TargetDir+article.Slug, locals)
+		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
+			sorg.TargetDir+"/"+article.Slug, locals)
 		if err != nil {
 			return nil, err
 		}
@@ -894,7 +897,7 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 			continue
 		}
 
-		inPath := dir + fragmentInfo.Name()
+		inPath := dir + "/" + fragmentInfo.Name()
 		log.Debugf("Compiling: %v", inPath)
 
 		raw, err := ioutil.ReadFile(inPath)
@@ -931,8 +934,8 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 			"Fragment": fragment,
 		})
 
-		err = renderView(sorg.LayoutsDir+"main", sorg.ViewsDir+"/fragments/show",
-			sorg.TargetFragmentsDir+fragment.Slug, locals)
+		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
+			sorg.TargetDir+"/fragments/"+fragment.Slug, locals)
 		if err != nil {
 			return nil, err
 		}
@@ -1515,7 +1518,7 @@ func isHidden(file string) bool {
 }
 
 func linkImageAssets() error {
-	assets, err := ioutil.ReadDir(sorg.ImagesDir)
+	assets, err := ioutil.ReadDir(sorg.ContentDir + "/assets/images")
 	if err != nil {
 		return err
 	}
@@ -1525,12 +1528,12 @@ func linkImageAssets() error {
 
 		// we use absolute paths for source and destination because not doing
 		// so can result in some weird symbolic link inception
-		source, err := filepath.Abs(sorg.ImagesDir + asset.Name())
+		source, err := filepath.Abs(sorg.ContentDir + "/assets/images/" + asset.Name())
 		if err != nil {
 			return err
 		}
 
-		dest, err := filepath.Abs(sorg.TargetAssetsDir + asset.Name())
+		dest, err := filepath.Abs(sorg.TargetDir + "/assets/" + asset.Name())
 		if err != nil {
 			return err
 		}
