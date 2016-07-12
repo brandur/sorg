@@ -1,11 +1,62 @@
 package main
 
 import (
+	"database/sql"
+	"os"
 	"testing"
+	"time"
 
 	"github.com/brandur/sorg"
+	_ "github.com/lib/pq"
 	assert "github.com/stretchr/testify/require"
 )
+
+var db *sql.DB
+
+func init() {
+	// Move up into the project's root so that we in the right place relatively
+	// to content/view/layout/etc. directories.
+	err := os.Chdir("../../")
+	if err != nil {
+		panic(err)
+	}
+
+	db, err = sql.Open("postgres", "postgres://localhost/sorg-test?sslmode=disable")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func TestCompileTwitter(t *testing.T) {
+	//
+	// No database
+	//
+
+	err := compileTwitter(nil)
+	assert.NoError(t, err)
+
+	//
+	// With empty database
+	//
+
+	err = compileTwitter(db)
+	assert.NoError(t, err)
+
+	//
+	// With results
+	//
+
+	now := time.Now()
+	tweet := &Tweet{
+		Content:    "Hello, world!",
+		OccurredAt: &now,
+		Slug:       "1234",
+	}
+	insertTweet(t, tweet, false)
+
+	err = compileTwitter(db)
+	assert.NoError(t, err)
+}
 
 func TestGetLocals(t *testing.T) {
 	locals := getLocals("Title", map[string]interface{}{
@@ -49,4 +100,14 @@ foo: bar
 ---
 `)
 	assert.Equal(t, errBadFrontmatter, err)
+}
+
+func insertTweet(t *testing.T, tweet *Tweet, reply bool) {
+	_, err := db.Exec(`
+		INSERT INTO events
+			(content, occurred_at, metadata, slug, type)
+		VALUES
+			($1, $2, hstore('reply', $3), $4, $5)
+	`, tweet.Content, tweet.OccurredAt, reply, tweet.Slug, "twitter")
+	assert.NoError(t, err)
 }
