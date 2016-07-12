@@ -16,7 +16,7 @@ import (
 
 // FuncMap is a set of helper functions to make available in templates for the
 // project.
-var FuncMap template.FuncMap = template.FuncMap{
+var FuncMap = template.FuncMap{
 	"DistanceOfTimeInWords":        distanceOfTimeInWords,
 	"DistanceOfTimeInWordsFromNow": distanceOfTimeInWordsFromNow,
 	"FormatTime":                   formatTime,
@@ -140,13 +140,13 @@ func pace(distance float64, duration time.Duration) string {
 }
 
 // Matches links in a tweet (like protocol://link).
-var linkRE *regexp.Regexp = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*)`)
+var linkRE = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*)`)
 
 // Matches tags in a tweet (like #mix11).
-var tagRE *regexp.Regexp = regexp.MustCompile(`#(\w+)`)
+var tagRE = regexp.MustCompile(`#(\w+)`)
 
 // Matches users in a tweet (like #mix11).
-var userRE *regexp.Regexp = regexp.MustCompile(`@(\w+)`)
+var userRE = regexp.MustCompile(`@(\w+)`)
 
 // Renders the content of a tweet to HTML.
 func renderTweetContent(content string) string {
@@ -203,7 +203,7 @@ func roundToString(f float64) string {
 
 func toStars(n int) string {
 	var stars string
-	for i := 0; i < n; i += 1 {
+	for i := 0; i < n; i++ {
 		stars += "★ "
 	}
 	return stars
