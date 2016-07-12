@@ -28,6 +28,9 @@ ifdef AWS_ACCESS_KEY_ID
 	# Then move on to assets and allow S3 to detect content type.
 	aws s3 sync ./public/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --delete --follow-symlinks $(AWS_CLI_FLAGS)
 
+	# Upload Atom feed files with their proper content type.
+	find ./public -name '*.atom' | sed "s|^\./public/||" | xargs -I{} -n1 aws s3 cp ./public/{} s3://$(S3_BUCKET)/{} --acl public-read --content-type application/xml
+
 	# This one is a bit tricker to explain, but what we're doing here is
 	# uploading directory indexes as files at their directory name. So for
 	# example, 'articles/index.html` gets uploaded as `articles`.
