@@ -1,11 +1,11 @@
 # TODO
 
-* [ ] Make Black Swan based modules testable by pulling in a Postgres schema.
 * [ ] Test for the majority of functions in build's main.go.
 * [ ] Faster build by passing changes paths to program.
 
 ## Done
 
+* [x] Make Black Swan based modules testable by pulling in a Postgres schema.
 * [x] Parallelized asset fetching.
 * [x] Download images found in fragment frontmatter (maybe just stored them
   locally).
