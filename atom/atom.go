@@ -25,6 +25,7 @@ type Entry struct {
 // content in an XML CDATA tag.
 type EntryContent struct {
 	Content string `xml:",cdata"`
+	Type    string `xml:"type,attr,omitempty"`
 }
 
 // Feed represents an Atom feed that with be marshaled to XML.
