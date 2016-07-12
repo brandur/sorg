@@ -86,4 +86,22 @@ func TestFetch(t *testing.T) {
 	expectedErr := fmt.Errorf("Unexpected status code 500 while fetching: %v/error",
 		ts.URL)
 	assert.Equal(t, expectedErr, err)
+
+	//
+	// New files with *all* error
+	//
+
+	dir, err = ioutil.TempDir("", "assets")
+	assert.NoError(t, err)
+
+	for i := 0; i < numIterators; i++ {
+		asset := &Asset{
+			URL:    ts.URL + "/asset/error",
+			Target: dir + "/asset-error" + strconv.Itoa(i),
+		}
+		assets = append(assets, asset)
+	}
+
+	err = Fetch(assets)
+	assert.Equal(t, expectedErr, err)
 }

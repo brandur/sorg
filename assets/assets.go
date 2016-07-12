@@ -6,6 +6,8 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sync"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 )
@@ -19,44 +21,41 @@ type Asset struct {
 	URL    string
 	Target string
 
-	// Err is set if a problem occurred while fetching the asset.
 	Err error
 }
 
 // Fetch performs an HTTP fetch for each given asset and stores them to their
 // corresponding local targets.
 func Fetch(assets []*Asset) error {
-	var err error
-	var numWorked int
+	var wg sync.WaitGroup
+	wg.Add(len(assets))
+
 	assetsChan := make(chan *Asset, len(assets))
-	doneChan := make(chan *Asset, numWorkers)
+
+	// Signal workers to stop looping and shut down.
+	defer close(assetsChan)
 
 	for i := 0; i < numWorkers; i++ {
-		go workAssets(assetsChan, doneChan)
+		go workAssets(assetsChan, &wg)
 	}
 
 	for _, asset := range assets {
 		assetsChan <- asset
 	}
 
-	for {
-		select {
-		case asset := <-doneChan:
-			numWorked++
+	wg.Wait()
 
-			// Quit when we're done or after encountering the first error.
-			if numWorked == len(assets) || asset.Err != nil {
-				err = asset.Err
-				goto done
-			}
+	// This is not the greatest possible approach because we have to wait for
+	// all assets to be processed, but practically problems should be
+	// relatively rare. Implement fast timeouts so we can recover in
+	// degenerate cases.
+	for _, asset := range assets {
+		if asset.Err != nil {
+			return asset.Err
 		}
 	}
 
-done:
-	// Signal workers to stop working.
-	close(assetsChan)
-
-	return err
+	return nil
 }
 
 func fetchAsset(client *http.Client, asset *Asset) error {
@@ -97,8 +96,10 @@ func fetchAsset(client *http.Client, asset *Asset) error {
 	return nil
 }
 
-func workAssets(assetsChan chan *Asset, doneChan chan *Asset) {
-	client := &http.Client{}
+func workAssets(assetsChan chan *Asset, wg *sync.WaitGroup) {
+	client := &http.Client{
+		Timeout: 5 * time.Second,
+	}
 
 	// Note that this loop falls through when the channel is closed.
 	for asset := range assetsChan {
@@ -106,6 +107,6 @@ func workAssets(assetsChan chan *Asset, doneChan chan *Asset) {
 		if err != nil {
 			asset.Err = err
 		}
-		doneChan <- asset
+		wg.Done()
 	}
 }
