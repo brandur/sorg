@@ -3,7 +3,6 @@
 * [ ] Test for the majority of functions in build's main.go.
 * [ ] Download images found in fragment frontmatter (maybe just stored them
   locally).
-* [ ] Remove orphaned files between builds.
 * [ ] Faster build by passing changes paths to program.
 
 ## Done
