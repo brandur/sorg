@@ -1,0 +1,481 @@
+$sans_serif: helvetica, arial, geneva, sans-serif
+$serif: cardo, georgia, serif
+
+$primary: #333
+$secondary: #cdcdcd
+$tertiary: #dedede
+$quaternary: #efefef
+$quinary: #f5f5f5
+
+$content_width: 680px
+
+a
+  color: $primary
+  text-decoration: underline
+
+  &:hover
+    text-decoration: none
+
+blockquote
+  border-left: 40px solid $quaternary
+  color: #555
+  padding: 0 0 0 20px
+  margin: 0 0 0 20px
+
+body
+  background: #fff
+  color: $primary
+  font-family: $serif
+  line-height: 1.7em
+
+code
+  background: #efefef
+  //border: 1px solid #dedede
+  padding: 2px 4px
+
+em
+  font-style: italic
+
+h1, h2, h3, h4
+  color: #000
+  font-family: $sans_serif
+  font-weight: 400
+
+  a
+    color: #000
+    text-decoration: none
+
+h1
+  font-size: 6.25rem
+  letter-spacing: -6px
+  line-height: 1.0em
+  margin: 20px 0 30px 0
+
+h1.generic
+  font-size: 3.15rem
+
+h2
+  font-size: 1.55rem
+  margin: 30px 0 -10px 0
+
+h3
+  font-size: 1.25rem
+  margin: 30px 0 -15px 0
+
+h4
+  font-size: 1.05rem
+  margin: 30px 0 -15px 0
+
+html
+  // Root font size. All other sizes with "rem" are relative to this.
+  font-size: 16px
+
+img
+  display: block
+  height: auto
+  margin: 20px 0
+  max-width: 100%
+
+nav
+  font-family: $sans_serif
+  font-size: 0.7rem
+  font-weight: bold
+  text-transform: uppercase
+
+  a
+    color: $primary
+    text-decoration: none
+
+    &:hover
+      color: $primary
+
+  ul
+    display: inline-block
+    line-height: 1em
+    list-style-type: none
+    margin: 10px 16px
+
+    li
+      float: left
+      margin: 6px 7px
+
+p
+  hyphens: auto
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  margin: 20px 0
+
+pre
+  background: #efefef
+  font-family: Monaco, "Lucida Console", "Bitstream Vera Sans Mono", Courier, monospace
+  font-size: 0.75rem
+  line-height: 1.4em
+  overflow: auto
+  padding: 40px 0 40px 40px
+
+  code
+    background: transparent
+    display: block
+    border: 0
+    padding: 0
+
+  code.language-monodraw
+    line-height: 1em
+
+strong
+  font-weight: bold
+
+sub
+  font-size: 0.85rem
+  vertical-align: sub
+
+sup
+  font-size: 0.85rem
+  vertical-align: super
+
+table
+  border: 1px solid $tertiary
+  border-collapse: collapse
+  font-family: $sans_serif
+  font-size: 0.85rem
+  line-height: 1.4em
+  margin: 30px 0
+  width: 100%
+
+  th, td
+    border: 1px solid $tertiary
+    border-collapse: collapse
+    vertical-align: middle
+
+  th
+    background: $quinary
+    font-weight: bold
+    padding: 10px 10px
+
+  td
+    padding: 4px 10px
+
+    ul
+      margin: 0
+      padding: 0
+
+      li
+        margin: 10px 0 10px 20px
+        padding: 0
+
+ol, ul
+  margin: 20px 0
+
+.chart
+  margin: 20px 0
+
+.clear
+  clear: both
+
+.divider
+  border-bottom: 1px solid $tertiary
+  margin: 30px 0
+
+.divider-side
+  border-bottom: 10px solid #000
+  margin: 30px 0
+
+.divider-short
+  border-bottom: 1px solid $tertiary
+  margin: 30px auto
+  width: 80%
+
+.hook
+  font-size: 1.4rem
+  font-style: italic
+  line-height: 1.6em
+  margin: 30px 0
+
+.content
+  background: #fff
+  margin: 0 15%
+  max-width: $content_width
+
+.flag
+  background-image: linear-gradient(to bottom, #336699 0%, transparent 100%)
+  background-image: -moz-linear-gradient(top, #336699 0%, transparent 100%)
+  background-image: -webkit-linear-gradient(top, #336699 0%, transparent 100%)
+  float: left
+  height: 800px
+  width: 10px
+
+.side
+  display: block
+  float: left
+  margin: 0 4% 0 0
+  width: 16%
+  position: relative
+
+.list
+  a
+    color: #000
+    font-family: $sans_serif
+    font-size: 1.55rem
+    font-weight: bold
+    line-height: 1.2em
+    text-decoration: none
+
+  li
+    margin: 30px 0
+
+  p
+    line-height: 1.7em
+    margin-top: 0
+
+  .meta
+    color: $secondary
+    font-family: $sans_serif
+    font-size: 0.75rem
+    font-style: italic
+    margin: 0 0 0 10px
+
+.top-spacing
+  height: 80px
+
+.top-spacing-index
+  height: 50px
+
+.vista
+  background: #000
+  background-repeat: no-repeat
+  background-size: cover
+  margin: 0 0 30px 0
+  // assign a min-height for a longer title but shorter device width (this is
+  // okay for a title that occupies three lines)
+  min-height: 450px
+  width: 100%
+
+  .vista-inner
+    // Proportional resize trick; allows us to maintain approximate proportions
+    // for the vista image, but while still leveraging CSS background
+    // properties (instead of img). This is mostly used for larger screens as
+    // the height of the h1 text or the min-width on the parent layer will
+    // define behavior on smaller ones.
+    padding-top: 30%
+    position: relative
+    width: 100%
+
+// Not wrapped in .vista because we need to hide .vista at smaller screen sizes
+// but we'd like to keep .vista-overlay (which contains the title) visible.
+.vista-overlay
+  position: relative
+
+  .vista-overlay-inner
+    bottom: 0
+    margin: 2% 15%
+    position: absolute
+
+    h1, .hook a
+      color: #fff
+      text-shadow: 0 0 2px #000
+
+#toc
+  float: right
+  font-family: $sans_serif
+  font-size: 0.8rem
+  line-height: 1.5em
+  margin: 0 0 0 30px
+  width: 200px
+
+  h2
+    font-family: $sans_serif
+    font-size: 0.75rem
+    margin: 10px 0
+    text-transform: uppercase
+
+  ol
+    list-style-type: decimal
+    margin: 5px 0
+
+    li
+      margin-bottom: 8px
+      margin-top: 8px
+      margin-left: 16px
+      padding-left: 10px
+
+      ol
+        font-size: 0.7rem
+        list-style-type: lower-alpha
+
+        li
+          margin-bottom: 7px
+          margin-top: 7px
+
+        ol
+          list-style-type: lower-roman
+
+          ol
+            list-style-type: none
+
+#footnotes
+  border-top: 1px solid $tertiary
+  font-size: 0.85rem
+  line-height: 1.6em
+  margin: 30px auto
+  width: 90%
+
+article
+  blockquote
+    ol, ul
+      li
+        margin-left: 20px
+
+  figure
+    margin: 20px 0
+    position: relative
+
+    img
+      margin: 0
+
+    p
+      overflow: hidden
+
+    figcaption
+      font-size: 0.85rem
+      font-style: italic
+      line-height: 1.5em
+      position: absolute
+      left: -120px
+      top: 0
+      text-align: right
+      width: 100px
+
+  ol, ul
+    li
+      margin-bottom: 10px
+      margin-left: 40px
+      padding-left: 5px
+
+  ol
+    list-style-type: decimal
+
+  ul
+    list-style-type: disc
+
+  .attachment
+    text-align: center
+
+  .info
+    font-size: 0.85rem
+    font-style: italic
+    line-height: 1.5em
+    text-align: left
+
+footer
+  margin: 50px 0 0 0
+  overflow: hidden
+  width: 100%
+
+  nav
+    border-top: 1px solid $tertiary
+    padding: 25px 20px
+    text-align: center
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  .hook
+    font-size: 1.15rem
+
+  .top-nav
+    display: none
+
+  .top-spacing, .top-spacing-index
+    height: 50px
+
+  #toc
+    float: none
+    margin: 0
+    width: auto
+
+  article
+    figure
+      img
+        display: block
+        margin: 0 auto
+
+      figcaption
+        left: 0
+        margin: 20px 0 0 0
+        position: relative
+        text-align: center
+        top: 0
+        width: auto
+
+  h1, h2, h3, h4
+    hyphens: auto
+    -moz-hyphens: auto
+    -webkit-hyphens: auto
+
+  h1
+    font-size: 5rem
+
+  pre
+    overflow: auto
+
+  .attribution
+    display: none
+
+  .vista
+    display: none
+
+  .vista-overlay
+    .vista-overlay-inner
+      margin: 0 8%
+      position: relative
+      width: 84%
+
+      h1
+        color: #000
+        text-shadow: 0 0 0 #000
+
+  #container
+    max-width: 100%
+
+    .content
+      margin: 0 8%
+      width: 84%
+
+    .side
+      display: none
+
+// uncomment the below for multi-column "big" layout
+
+//@media only screen and (min-width: 1800px)
+//
+//  article
+//
+//    figure
+//
+//      // center images when going to multi-column
+//      img
+//        display: block
+//        margin: 0 auto
+//
+//      // if we active multi-column, we have to deactivate the left margin
+//      // positioning of figcaptions
+//      figcaption
+//        left: 0
+//        margin: 20px 0 0 0
+//        position: relative
+//        text-align: center
+//        top: 0
+//        width: auto
+//
+//  body
+//
+//  p
+//    // so much space! allow code content to just expand across the screen
+//    overflow: visible
+//
+//  pre
+//    // so much space! allow code content to just expand across the screen
+//    overflow: visible
+//
+//  footer
+//
+//    nav
+//      font-size: 0.75rem

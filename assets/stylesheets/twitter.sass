@@ -1,0 +1,91 @@
+$sans_serif: helvetica, arial, geneva, sans-serif
+$serif: georgia, serif
+
+$primary: #333
+$secondary: #cdcdcd
+$tertiary: #dedede
+$quaternary: #f5f5f5
+
+$content_width: 680px
+
+.twitter
+  font-size: 0.85rem
+  line-height: 1.5em
+
+  .content
+    max-width: none
+    position: relative
+
+  #data-tweets-by-month
+    height: 300px
+
+  #toc
+    margin: 0 30px 0 0
+    position: absolute
+    left: -120px
+
+    ul
+      a
+        text-decoration: none
+
+      a:hover
+        text-decoration: underline
+
+      a:visited
+        text-decoration: none
+
+      ul
+        margin: 10px
+
+        li
+          color: $secondary
+          font-family: $sans_serif
+          font-size: 0.75rem
+          //line-height: 1.5em
+
+          a
+            color: $secondary
+            text-decoration: none
+
+            &:hover
+              color: $secondary
+              text-decoration: underline
+
+            &:visited
+              color: $secondary
+
+  .twitter-content
+    max-width: $content_width
+
+    .month
+      margin: 40px 0
+
+      ul
+        li
+          margin: 10px 0
+
+          .meta
+            font-family: $sans_serif
+            font-size: 0.75rem
+            margin: 0 0 0 5px
+
+            a
+              color: $secondary
+              text-decoration: none
+
+              &:hover
+                color: $secondary
+                text-decoration: underline
+
+              &:visited
+                color: $secondary
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  .twitter
+    #toc
+      display: none
+
+@media only screen and (min-width: 1800px)
+  .twitter
+    #twitter-content
+      max-width: none

@@ -16,7 +16,7 @@ const (
 const (
 	// ContentDir is the location of the site's content (articles, fragments,
 	// assets, etc.).
-	ContentDir = "./org"
+	ContentDir = "./"
 
 	// LayoutsDir is the source directory for view layouts.
 	LayoutsDir = "./layouts"
