@@ -978,6 +978,10 @@ func compileArticlesFeed(articles []*Article) error {
 		},
 	}
 
+	if len(articles) > 0 {
+		feed.Updated = *articles[0].PublishedAt
+	}
+
 	for _, article := range articles {
 		entry := &atom.Entry{
 			Title:     article.Title,
@@ -1070,6 +1074,10 @@ func compileFragmentsFeed(fragments []*Fragment) error {
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
+	}
+
+	if len(fragments) > 0 {
+		feed.Updated = *fragments[0].PublishedAt
 	}
 
 	for _, fragment := range fragments {
