@@ -6,12 +6,12 @@
 * [ ] Test for the majority of functions in build's main.go.
 * [ ] Download images found in fragment frontmatter (maybe just stored them
   locally).
-* [ ] Smarter asset symlinking that doesn't remove and create every time.
 * [ ] Remove orphaned files between builds.
 * [ ] Speed up the build (maybe incremental?).
 
 ## Done
 
+* [x] Smarter asset symlinking that doesn't remove and create every time.
 * [x] Move to a leading slash system in paths.
 * [x] Don't use so many path constants ... it's not really helping.
 * [x] Atom feeds.
