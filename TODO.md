@@ -5,10 +5,11 @@
 * [ ] Download images found in fragment frontmatter (maybe just stored them
   locally).
 * [ ] Remove orphaned files between builds.
-* [ ] Speed up the build (maybe incremental?).
+* [ ] Faster build by passing changes paths to program.
 
 ## Done
 
+* [x] Speed up the build (maybe incremental?).
 * [x] Fix logging: debug is currently too verbose for Travis runs, but normal
   is not verbose enough.
 * [x] Smarter asset symlinking that doesn't remove and create every time.
