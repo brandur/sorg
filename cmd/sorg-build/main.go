@@ -119,6 +119,12 @@ type Conf struct {
 	// along with their published versions.
 	Drafts bool `env:"DRAFTS,default=false"`
 
+	// ContentOnly tells the build step that it should build using only files
+	// in the content directory. This means that information imported from a
+	// Black Swan database (reading, tweets, etc.) will be skipped. This is
+	// a speed optimization for use while watching for file changes.
+	ContentOnly bool `env:"CONTENT_ONLY,default=false"`
+
 	// GoogleAnalyticsID is the account identifier for Google Analytics to use.
 	GoogleAnalyticsID string `env:"GOOGLE_ANALYTICS_ID"`
 
@@ -309,6 +315,9 @@ var pagesVars = map[string]map[string]interface{}{
 
 func main() {
 	start := time.Now()
+	defer func() {
+		log.Infof("Built site in %v.", time.Now().Sub(start))
+	}()
 
 	err := envdecode.Decode(&conf)
 	if err != nil {
@@ -409,8 +418,6 @@ func main() {
 	}
 	t = time.Now()
 	log.Debugf("Linked image assets in %v.", time.Now().Sub(t))
-
-	log.Infof("Built site in %v.", time.Now().Sub(start))
 }
 
 //
@@ -491,6 +498,10 @@ func compileFragments() ([]*Fragment, error) {
 }
 
 func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) error {
+	if conf.ContentOnly {
+		return nil
+	}
+
 	if len(articles) > 5 {
 		articles = articles[0:5]
 	}
@@ -607,6 +618,10 @@ func compilePagesDir(dir string) error {
 }
 
 func compilePhotos(db *sql.DB) ([]*Photo, error) {
+	if conf.ContentOnly {
+		return nil, nil
+	}
+
 	photos, err := getPhotosData(db)
 	if err != nil {
 		return nil, err
@@ -644,6 +659,10 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 }
 
 func compileReading(db *sql.DB) error {
+	if conf.ContentOnly {
+		return nil
+	}
+
 	readings, err := getReadingsData(db)
 	if err != nil {
 		return err
@@ -685,6 +704,10 @@ func compileReading(db *sql.DB) error {
 }
 
 func compileRuns(db *sql.DB) error {
+	if conf.ContentOnly {
+		return nil
+	}
+
 	runs, err := getRunsData(db)
 	if err != nil {
 		return err
@@ -722,6 +745,10 @@ func compileRuns(db *sql.DB) error {
 }
 
 func compileTwitter(db *sql.DB) error {
+	if conf.ContentOnly {
+		return nil
+	}
+
 	tweets, err := getTwitterData(db, false)
 	if err != nil {
 		return err
@@ -806,6 +833,34 @@ func compileStylesheets(stylesheets []string) error {
 		}
 
 		outFile.WriteString("\n\n")
+	}
+
+	return nil
+}
+
+func linkImageAssets() error {
+	assets, err := ioutil.ReadDir(sorg.ContentDir + "/assets/images")
+	if err != nil {
+		return err
+	}
+
+	for _, asset := range assets {
+		// we use absolute paths for source and destination because not doing
+		// so can result in some weird symbolic link inception
+		source, err := filepath.Abs(sorg.ContentDir + "/assets/images/" + asset.Name())
+		if err != nil {
+			return err
+		}
+
+		dest, err := filepath.Abs(sorg.TargetDir + "/assets/" + asset.Name())
+		if err != nil {
+			return err
+		}
+
+		err = ensureSymbolicLink(source, dest)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -1576,34 +1631,6 @@ func ensureSymbolicLink(source, dest string) error {
 	}
 
 	return os.Symlink(source, dest)
-}
-
-func linkImageAssets() error {
-	assets, err := ioutil.ReadDir(sorg.ContentDir + "/assets/images")
-	if err != nil {
-		return err
-	}
-
-	for _, asset := range assets {
-		// we use absolute paths for source and destination because not doing
-		// so can result in some weird symbolic link inception
-		source, err := filepath.Abs(sorg.ContentDir + "/assets/images/" + asset.Name())
-		if err != nil {
-			return err
-		}
-
-		dest, err := filepath.Abs(sorg.TargetDir + "/assets/" + asset.Name())
-		if err != nil {
-			return err
-		}
-
-		err = ensureSymbolicLink(source, dest)
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
 }
 
 func renderView(layout, view, target string, locals map[string]interface{}) error {

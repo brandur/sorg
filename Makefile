@@ -66,8 +66,11 @@ test:
 vet:
 	go vet $(shell go list ./... | egrep -v '/org/|/vendor/')
 
+# Note that we use the CONTENT_ONLY flag on the build here. We're watching for
+# changes in content directories, so don't bother rebuilding pages generated
+# from Black Swan data.
 watch:
-	fswatch -o layouts/ pages/ org/ views/ | xargs -n1 -I{} make build
+	fswatch -o layouts/ pages/ org/ views/ | CONTENT_ONLY=true xargs -n1 -I{} make build
 
 # This is designed to be compromise between being explicit and readability. We
 # can allow the find to discover everything in vendor/, but then the fswatch
