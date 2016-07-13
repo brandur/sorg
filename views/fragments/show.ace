@@ -16,5 +16,5 @@
         {{HTML .Fragment.Content}}
         .divider-short
         .info
-          p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/fragments/{{.Slug}}.md">sending a pull request</a>.
+          p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
   = include views/_footer
