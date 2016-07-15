@@ -249,7 +249,7 @@ var conf Conf
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
-const javascriptsDir = sorg.ContentDir + "/assets/javascripts"
+const javascriptsDir = sorg.ContentDir + "/javascripts"
 
 var javascripts = []string{
 	javascriptsDir + "/jquery-1.7.2.js",
@@ -295,7 +295,7 @@ var pagesVars = map[string]map[string]interface{}{
 	},
 }
 
-const stylesheetsDir = sorg.ContentDir + "/assets/stylesheets"
+const stylesheetsDir = sorg.ContentDir + "/stylesheets"
 
 var stylesheets = []string{
 	stylesheetsDir + "/_reset.sass",
@@ -872,7 +872,7 @@ func linkImageAssets() error {
 		log.Debugf("Linked image assets in %v.", time.Now().Sub(start))
 	}()
 
-	assets, err := ioutil.ReadDir(sorg.ContentDir + "/assets/images")
+	assets, err := ioutil.ReadDir(sorg.ContentDir + "/images")
 	if err != nil {
 		return err
 	}
@@ -880,7 +880,7 @@ func linkImageAssets() error {
 	for _, asset := range assets {
 		// we use absolute paths for source and destination because not doing
 		// so can result in some weird symbolic link inception
-		source, err := filepath.Abs(sorg.ContentDir + "/assets/images/" + asset.Name())
+		source, err := filepath.Abs(sorg.ContentDir + "/images/" + asset.Name())
 		if err != nil {
 			return err
 		}
@@ -1648,13 +1648,26 @@ func ensureSymbolicLink(source, dest string) error {
 	log.Debugf("Checking symbolic link (%v): %v -> %v",
 		path.Base(source), source, dest)
 
+	var actual string
+
 	_, err := os.Stat(dest)
+
+	// Note that if a symlink file does exist, but points to a non-existent
+	// location, we still get an "does not exist" error back, so we fall down
+	// to the general create path so that the symlink file can be removed.
+	//
+	// The call to RemoveAll does not affect the other path of the symlink file
+	// not being present because it doesn't care whether or not the file it's
+	// trying remove is actually there.
 	if os.IsNotExist(err) {
 		log.Debugf("Destination link does not exist. Creating.")
-		return os.Symlink(source, dest)
+		goto create
+	}
+	if err != nil {
+		return err
 	}
 
-	actual, err := os.Readlink(dest)
+	actual, err = os.Readlink(dest)
 	if err != nil {
 		return err
 	}
@@ -1666,6 +1679,7 @@ func ensureSymbolicLink(source, dest string) error {
 
 	log.Debugf("Destination links to wrong source. Creating.")
 
+create:
 	err = os.RemoveAll(dest)
 	if err != nil {
 		return err
