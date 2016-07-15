@@ -28,35 +28,6 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-const javascriptsDir = sorg.ContentDir + "/assets/javascripts"
-
-var javascripts = []string{
-	javascriptsDir + "/jquery-1.7.2.js",
-	javascriptsDir + "/retina.js",
-	javascriptsDir + "/highcharts.js",
-	javascriptsDir + "/highcharts_theme.js",
-	javascriptsDir + "/highlight.pack.js",
-	javascriptsDir + "/main.js",
-}
-
-var stylesheetsDir = sorg.ContentDir + "/assets/stylesheets"
-
-var stylesheets = []string{
-	stylesheetsDir + "/_reset.sass",
-	stylesheetsDir + "/main.sass",
-	stylesheetsDir + "/about.sass",
-	stylesheetsDir + "/fragments.sass",
-	stylesheetsDir + "/index.sass",
-	stylesheetsDir + "/photos.sass",
-	stylesheetsDir + "/quotes.sass",
-	stylesheetsDir + "/reading.sass",
-	stylesheetsDir + "/runs.sass",
-	stylesheetsDir + "/signature.sass",
-	stylesheetsDir + "/solarized-light.css",
-	stylesheetsDir + "/tenets.sass",
-	stylesheetsDir + "/twitter.sass",
-}
-
 //
 // Types
 //
@@ -278,6 +249,17 @@ var conf Conf
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
+const javascriptsDir = sorg.ContentDir + "/assets/javascripts"
+
+var javascripts = []string{
+	javascriptsDir + "/jquery-1.7.2.js",
+	javascriptsDir + "/retina.js",
+	javascriptsDir + "/highcharts.js",
+	javascriptsDir + "/highcharts_theme.js",
+	javascriptsDir + "/highlight.pack.js",
+	javascriptsDir + "/main.js",
+}
+
 // pagesVars contains meta information for static pages that are part of the
 // site. This mostly titles, but can also be body classes for custom styling.
 //
@@ -311,6 +293,24 @@ var pagesVars = map[string]map[string]interface{}{
 		"Title":     "That Sunny Dome",
 		"BodyClass": "quote",
 	},
+}
+
+const stylesheetsDir = sorg.ContentDir + "/assets/stylesheets"
+
+var stylesheets = []string{
+	stylesheetsDir + "/_reset.sass",
+	stylesheetsDir + "/main.sass",
+	stylesheetsDir + "/about.sass",
+	stylesheetsDir + "/fragments.sass",
+	stylesheetsDir + "/index.sass",
+	stylesheetsDir + "/photos.sass",
+	stylesheetsDir + "/quotes.sass",
+	stylesheetsDir + "/reading.sass",
+	stylesheetsDir + "/runs.sass",
+	stylesheetsDir + "/signature.sass",
+	stylesheetsDir + "/solarized-light.css",
+	stylesheetsDir + "/tenets.sass",
+	stylesheetsDir + "/twitter.sass",
 }
 
 //
