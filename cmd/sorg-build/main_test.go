@@ -229,7 +229,7 @@ func TestCompileTwitter(t *testing.T) {
 	assert.NoError(t, err)
 }
 
-func TestEnsureSymbolicLink(t *testing.T) {
+func TestEnsureSymlink(t *testing.T) {
 	dir, err := ioutil.TempDir("", "symlink")
 	assert.NoError(t, err)
 
@@ -243,7 +243,7 @@ func TestEnsureSymbolicLink(t *testing.T) {
 	// Case 1: Symlink does not exist
 	//
 
-	err = ensureSymbolicLink(source, dest)
+	err = ensureSymlink(source, dest)
 	assert.NoError(t, err)
 
 	actual, err := os.Readlink(dest)
@@ -255,7 +255,7 @@ func TestEnsureSymbolicLink(t *testing.T) {
 	// Consists solely of re-running the previous test case.
 	//
 
-	err = ensureSymbolicLink(source, dest)
+	err = ensureSymlink(source, dest)
 	assert.NoError(t, err)
 
 	actual, err = os.Readlink(dest)
@@ -272,7 +272,7 @@ func TestEnsureSymbolicLink(t *testing.T) {
 	err = ioutil.WriteFile(source, []byte("source"), 0755)
 	assert.NoError(t, err)
 
-	err = ensureSymbolicLink(source, dest)
+	err = ensureSymlink(source, dest)
 	assert.NoError(t, err)
 
 	actual, err = os.Readlink(dest)
