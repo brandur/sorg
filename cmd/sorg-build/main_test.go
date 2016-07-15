@@ -3,11 +3,11 @@ package main
 import (
 	"database/sql"
 	"io/ioutil"
-	"os"
 	"testing"
 	"time"
 
 	"github.com/brandur/sorg"
+	_ "github.com/brandur/sorg/testing"
 	_ "github.com/lib/pq"
 	assert "github.com/stretchr/testify/require"
 )
@@ -15,14 +15,7 @@ import (
 var db *sql.DB
 
 func init() {
-	// Move up into the project's root so that we in the right place relatively
-	// to content/view/layout/etc. directories.
-	err := os.Chdir("../../")
-	if err != nil {
-		panic(err)
-	}
-
-	err = sorg.CreateTargetDirs()
+	err := sorg.CreateTargetDirs()
 	if err != nil {
 		panic(err)
 	}
