@@ -3,6 +3,8 @@ package main
 import (
 	"database/sql"
 	"io/ioutil"
+	"os"
+	"path"
 	"testing"
 	"time"
 
@@ -225,6 +227,56 @@ func TestCompileTwitter(t *testing.T) {
 
 	err = compileTwitter(db)
 	assert.NoError(t, err)
+}
+
+func TestEnsureSymbolicLink(t *testing.T) {
+	dir, err := ioutil.TempDir("", "symlink")
+	assert.NoError(t, err)
+
+	source := path.Join(dir, "source")
+	err = ioutil.WriteFile(source, []byte("source"), 0755)
+	assert.NoError(t, err)
+
+	dest := path.Join(dir, "symlink-dest")
+
+	//
+	// Case 1: Symlink does not exist
+	//
+
+	err = ensureSymbolicLink(source, dest)
+	assert.NoError(t, err)
+
+	actual, err := os.Readlink(dest)
+	assert.Equal(t, source, actual)
+
+	//
+	// Case 2: Symlink does exist
+	//
+	// Consists solely of re-running the previous test case.
+	//
+
+	err = ensureSymbolicLink(source, dest)
+	assert.NoError(t, err)
+
+	actual, err = os.Readlink(dest)
+	assert.Equal(t, source, actual)
+
+	//
+	// Case 3: Symlink file exists, but source doesn't
+	//
+
+	err = os.RemoveAll(dest)
+	assert.NoError(t, err)
+
+	source = path.Join(dir, "source")
+	err = ioutil.WriteFile(source, []byte("source"), 0755)
+	assert.NoError(t, err)
+
+	err = ensureSymbolicLink(source, dest)
+	assert.NoError(t, err)
+
+	actual, err = os.Readlink(dest)
+	assert.Equal(t, source, actual)
 }
 
 func TestGetLocals(t *testing.T) {
