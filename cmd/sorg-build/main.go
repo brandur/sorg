@@ -28,29 +28,33 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+const javascriptsDir = sorg.ContentDir + "/assets/javascripts"
+
 var javascripts = []string{
-	"jquery-1.7.2.js",
-	"retina.js",
-	"highcharts.js",
-	"highcharts_theme.js",
-	"highlight.pack.js",
-	"main_sorg.js",
+	javascriptsDir + "/jquery-1.7.2.js",
+	javascriptsDir + "/retina.js",
+	javascriptsDir + "/highcharts.js",
+	javascriptsDir + "/highcharts_theme.js",
+	javascriptsDir + "/highlight.pack.js",
+	javascriptsDir + "/main_sorg.js",
 }
 
+var stylesheetsDir = sorg.ContentDir + "/assets/stylesheets"
+
 var stylesheets = []string{
-	"_reset.sass",
-	"main.sass",
-	"about.sass",
-	"fragments.sass",
-	"index.sass",
-	"photos.sass",
-	"quotes.sass",
-	"reading.sass",
-	"runs.sass",
-	"signature.sass",
-	"solarized-light.css",
-	"tenets.sass",
-	"twitter.sass",
+	stylesheetsDir + "/_reset.sass",
+	stylesheetsDir + "/main.sass",
+	stylesheetsDir + "/about.sass",
+	stylesheetsDir + "/fragments.sass",
+	stylesheetsDir + "/index.sass",
+	stylesheetsDir + "/photos.sass",
+	stylesheetsDir + "/quotes.sass",
+	stylesheetsDir + "/reading.sass",
+	stylesheetsDir + "/runs.sass",
+	stylesheetsDir + "/signature.sass",
+	stylesheetsDir + "/solarized-light.css",
+	stylesheetsDir + "/tenets.sass",
+	stylesheetsDir + "/twitter.sass",
 }
 
 //
@@ -350,7 +354,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileJavascripts(javascripts)
+	err = compileJavascripts(javascripts,
+		sorg.TargetVersionedAssetsDir+"/app.js")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -375,7 +380,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = compileStylesheets(stylesheets)
+	err = compileStylesheets(stylesheets,
+		sorg.TargetVersionedAssetsDir+"/app.css")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -521,13 +527,12 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 	return nil
 }
 
-func compileJavascripts(javascripts []string) error {
+func compileJavascripts(javascripts []string, outPath string) error {
 	start := time.Now()
 	defer func() {
 		log.Debugf("Compiled script assets in %v.", time.Now().Sub(start))
 	}()
 
-	outPath := sorg.TargetVersionedAssetsDir + "/app.js"
 	log.Debugf("Building: %v", outPath)
 
 	outFile, err := os.Create(outPath)
@@ -537,15 +542,14 @@ func compileJavascripts(javascripts []string) error {
 	defer outFile.Close()
 
 	for _, javascript := range javascripts {
-		inPath := sorg.ContentDir + "/assets/javascripts/" + javascript
-		log.Debugf("Including: %v", inPath)
+		log.Debugf("Including: %v", path.Base(javascript))
 
-		inFile, err := os.Open(inPath)
+		inFile, err := os.Open(javascript)
 		if err != nil {
 			return err
 		}
 
-		outFile.WriteString("/* " + javascript + " */\n\n")
+		outFile.WriteString("/* " + path.Base(javascript) + " */\n\n")
 		outFile.WriteString("(function() {\n\n")
 
 		_, err = io.Copy(outFile, inFile)
@@ -820,13 +824,12 @@ func compileTwitter(db *sql.DB) error {
 	return nil
 }
 
-func compileStylesheets(stylesheets []string) error {
+func compileStylesheets(stylesheets []string, outPath string) error {
 	start := time.Now()
 	defer func() {
 		log.Debugf("Compiled stylesheet assets in %v.", time.Now().Sub(start))
 	}()
 
-	outPath := sorg.TargetVersionedAssetsDir + "/app.css"
 	log.Debugf("Building: %v", outPath)
 
 	outFile, err := os.Create(outPath)
@@ -836,20 +839,19 @@ func compileStylesheets(stylesheets []string) error {
 	defer outFile.Close()
 
 	for _, stylesheet := range stylesheets {
-		inPath := sorg.ContentDir + "/assets/stylesheets/" + stylesheet
-		log.Debugf("Including: %v", inPath)
+		log.Debugf("Including: %v", path.Base(stylesheet))
 
-		inFile, err := os.Open(inPath)
+		inFile, err := os.Open(stylesheet)
 		if err != nil {
 			return err
 		}
 
-		outFile.WriteString("/* " + stylesheet + " */\n\n")
+		outFile.WriteString("/* " + path.Base(stylesheet) + " */\n\n")
 
 		if strings.HasSuffix(stylesheet, ".sass") {
 			_, err := gcss.Compile(outFile, inFile)
 			if err != nil {
-				return fmt.Errorf("Error compiling %v: %v", inPath, err)
+				return fmt.Errorf("Error compiling %v: %v", path.Base(stylesheet), err)
 			}
 		} else {
 			_, err := io.Copy(outFile, inFile)
