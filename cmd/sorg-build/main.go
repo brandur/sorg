@@ -890,7 +890,7 @@ func linkImageAssets() error {
 			return err
 		}
 
-		err = ensureSymbolicLink(source, dest)
+		err = ensureSymlink(source, dest)
 		if err != nil {
 			return err
 		}
@@ -1644,7 +1644,7 @@ func isHidden(file string) bool {
 	return strings.HasPrefix(file, ".")
 }
 
-func ensureSymbolicLink(source, dest string) error {
+func ensureSymlink(source, dest string) error {
 	log.Debugf("Checking symbolic link (%v): %v -> %v",
 		path.Base(source), source, dest)
 
