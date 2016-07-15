@@ -36,7 +36,7 @@ var javascripts = []string{
 	javascriptsDir + "/highcharts.js",
 	javascriptsDir + "/highcharts_theme.js",
 	javascriptsDir + "/highlight.pack.js",
-	javascriptsDir + "/main_sorg.js",
+	javascriptsDir + "/main.js",
 }
 
 var stylesheetsDir = sorg.ContentDir + "/assets/stylesheets"
