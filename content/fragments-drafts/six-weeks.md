@@ -55,7 +55,7 @@ two drinks in a 24 hour period [1] is a reasonable next step.
 My last weigh in was XXX lbs., down from 176 lbs., which means that I was
 pretty close to my goal of losing 2 lbs. per week (XX lbs. compared to 12
 lbs.). More qualitatively, my clothes are looser and muscle definition
-improved, which are more important results than the numbers.
+improved, which is a more important result than the numbers.
 
 After six weeks, I have no intention of stopping food and exercise tracking,
 but given that these write-ups are starting to look very alike, I will stop
