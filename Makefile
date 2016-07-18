@@ -78,8 +78,18 @@ endif
 install:
 	go install $(shell go list ./... | egrep -v '/vendor/')
 
-# Invalidates CloudFront's entire cache.
+# Invalidates CloudFront's cache for paths specified in PATHS.
+#
+# Usage:
+#     make PATHS="/fragments /fragments/six-weeks" invalidate
 invalidate: check-cloudfront-id
+ifndef PATHS
+	$(error PATHS is required)
+endif
+	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths ${PATHS}
+
+# Invalidates CloudFront's entire cache.
+invalidate-all: check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /
 
 # Invalidates CloudFront's cached assets.
