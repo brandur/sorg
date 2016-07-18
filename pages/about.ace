@@ -13,7 +13,7 @@
         | I'm an engineer at Stripe, and am interested in service engineering, APIs, Vim, Tmux, Ruby, Go, terminal productivity, running, fixed gear riding, history, urban design, and metal. Recently, I also spent quite some time building the Heroku platform.
       h2 Technology
       p
-        | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations using CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The recipe is based on the ideas that I wrote about in <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
+        | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations by CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The recipe is based on the ideas that I wrote about in <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
       p
         | It was previously running <a href="https://github.com/brandur/org">Ruby/Sinatra stack</a>, hosted on Heroku, and using CloudFlare as a CDN.
       h2 Design
