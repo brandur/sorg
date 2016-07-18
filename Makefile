@@ -100,7 +100,9 @@ invalidate-all: check-aws-keys check-cloudfront-id
 invalidate-assets: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /assets
 
-# Invalidates CloudFront's cached index pages.
+# Invalidates CloudFront's cached index pages. This is useful, but not
+# necessarily required, when publishing articles or new data (if it's not run,
+# anything cached in CloudFront will expire naturally after SHORT_TTL).
 invalidate-indexes: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /photos /reading /runs /twitter
 
