@@ -52,9 +52,9 @@ drinking alcohol socially, and if I miss a calorie target, it's that practice
 which is almost universally responsible. Dialing it back to a hard maximum of
 two drinks in a 24 hour period [1] is a reasonable next step.
 
-My last weigh this morning was 165 lbs., down from 176 lbs., which means that I
-was pretty close to my goal of losing 2 lbs. per week (11 lbs. compared to 12
-lbs.).
+My last weigh-in this morning was 165 lbs., down from 176 lbs., which means
+that I was pretty close to my goal of losing 2 lbs. per week (11 lbs. compared
+to 12 lbs.).
 
 After six weeks, I have no immediate intention of stopping food and exercise
 tracking, but given that these write-ups are starting to look very alike, I
