@@ -10,15 +10,19 @@ clean:
 	mkdir -p public/
 	rm -f -r public/*
 
-# Requires that certain variables necessary to update a CloudFront distribution
-# (including CLOUDFRONT_ID) are in the environment.
-check-cloudfront-id:
+# Requires that variables necessary to make an AWS API call are in the
+# environment.
+check-aws-keys:
 ifndef AWS_ACCESS_KEY_ID
 	$(error AWS_ACCESS_KEY_ID is required)
 endif
 ifndef AWS_SECRET_ACCESS_KEY
 	$(error AWS_SECRET_ACCESS_KEY is required)
 endif
+
+# Requires that variables necessary to update a CloudFront distribution are in
+# the environment.
+check-cloudfront-id:
 ifndef CLOUDFRONT_ID
 	$(error CLOUDFRONT_ID is required)
 endif
@@ -82,18 +86,18 @@ install:
 #
 # Usage:
 #     make PATHS="/fragments /fragments/six-weeks" invalidate
-invalidate: check-cloudfront-id
+invalidate: check-aws-keys check-cloudfront-id
 ifndef PATHS
 	$(error PATHS is required)
 endif
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths ${PATHS}
 
 # Invalidates CloudFront's entire cache.
-invalidate-all: check-cloudfront-id
+invalidate-all: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /
 
 # Invalidates CloudFront's cached assets.
-invalidate-assets: check-cloudfront-id
+invalidate-assets: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /assets
 
 # Note that unfortunately Golint doesn't work like other Go commands: it only
