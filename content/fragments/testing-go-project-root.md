@@ -13,11 +13,11 @@ I've been using a simple trick involving Go's `runtime` package to accomplish
 this feat. Given a project package/directory hierarchy like this one:
 
 ```
-github.com/brandur/project
-  + cmd
-    + executable
+github.com/brandur/project/
+  + cmd/
+    + executable/
       - main.go
-  + testing
+  + testing/
     - testing.go
 ```
 
