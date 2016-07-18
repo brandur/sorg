@@ -41,8 +41,8 @@ Here are weeks four, five, and six:
 | July 14   | 1,424   | 1,344    | -1,120                         |
 | July 15   | 2,716   | 1,238    | +278                           |
 | July 16   | 3,274   | 2,029    | +45                            |
-| July 17   | 1,549   | 1,205    | -856                           |
-| **Total** |         |          | **-750**                       |
+| July 17   | 1,549   | 1,995    | -1,646                         |
+| **Total** |         |          | **-1,540**                     |
 
 Of note: many weeks I don't make targets. However, there's no question that the
 tracking has had a positive effect in that I've eliminated pop, juice, energy
