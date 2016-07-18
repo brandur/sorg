@@ -1,6 +1,6 @@
 ---
 title: Six Weeks
-published_at: 2016-07-17T22:37:23Z
+published_at: 2016-07-18T15:03:47Z
 ---
 
 Six weeks ago, I [started tracking my energy input and
@@ -41,8 +41,8 @@ Here are weeks four, five, and six:
 | July 14   | 1,424   | 1,344    | -1,120                         |
 | July 15   | 2,716   | 1,238    | +278                           |
 | July 16   | 3,274   | 2,029    | +45                            |
-| July 17   | 1,549   | 1,205    | -856                           |
-| **Total** |         |          | **-750**                       |
+| July 17   | 1,549   | 1,995    | -1,646                         |
+| **Total** |         |          | **-1,540**                     |
 
 Of note: many weeks I don't make targets. However, there's no question that the
 tracking has had a positive effect in that I've eliminated pop, juice, energy
@@ -52,13 +52,13 @@ drinking alcohol socially, and if I miss a calorie target, it's that practice
 which is almost universally responsible. Dialing it back to a hard maximum of
 two drinks in a 24 hour period [1] is a reasonable next step.
 
-My last weigh in was XXX lbs., down from 176 lbs., which means that I was
-pretty close to my goal of losing 2 lbs. per week (XX lbs. compared to 12
-lbs.). More qualitatively, my clothes are looser and muscle definition
-improved, which is a more important result than the numbers.
+My last weigh this morning was 165 lbs., down from 176 lbs., which means that I
+was pretty close to my goal of losing 2 lbs. per week (11 lbs. compared to 12
+lbs.).
 
-After six weeks, I have no intention of stopping food and exercise tracking,
-but given that these write-ups are starting to look very alike, I will stop
-making these periodic (and only very nominally interesting) check-ins.
+After six weeks, I have no immediate intention of stopping food and exercise
+tracking, but given that these write-ups are starting to look very alike, I
+will stop making these periodic (and only very nominally interesting)
+check-ins.
 
 [1] As recommended for men by books like Michael Pollen's _Food Rules_.
