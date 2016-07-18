@@ -10,23 +10,6 @@ clean:
 	mkdir -p public/
 	rm -f -r public/*
 
-# Requires that variables necessary to make an AWS API call are in the
-# environment.
-check-aws-keys:
-ifndef AWS_ACCESS_KEY_ID
-	$(error AWS_ACCESS_KEY_ID is required)
-endif
-ifndef AWS_SECRET_ACCESS_KEY
-	$(error AWS_SECRET_ACCESS_KEY is required)
-endif
-
-# Requires that variables necessary to update a CloudFront distribution are in
-# the environment.
-check-cloudfront-id:
-ifndef CLOUDFRONT_ID
-	$(error CLOUDFRONT_ID is required)
-endif
-
 # Long TTL (in seconds) to set on an object in S3. This is suitable for items
 # that we expect to only have to invalidate very rarely like images. Although
 # we set it for all assets, those that are expected to change more frequently
@@ -145,3 +128,24 @@ GO_FILES := $(shell find . -type f -name "*.go" ! -path "./org/*" ! -path "./ven
 # because a change in source may have affected the build formula.
 watch-go:
 	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install build
+
+#
+# Helpers
+#
+
+# Requires that variables necessary to make an AWS API call are in the
+# environment.
+check-aws-keys:
+ifndef AWS_ACCESS_KEY_ID
+	$(error AWS_ACCESS_KEY_ID is required)
+endif
+ifndef AWS_SECRET_ACCESS_KEY
+	$(error AWS_SECRET_ACCESS_KEY is required)
+endif
+
+# Requires that variables necessary to update a CloudFront distribution are in
+# the environment.
+check-cloudfront-id:
+ifndef CLOUDFRONT_ID
+	$(error CLOUDFRONT_ID is required)
+endif
