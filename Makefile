@@ -10,6 +10,30 @@ clean:
 	mkdir -p public/
 	rm -f -r public/*
 
+# Requires that certain variables necessary to update a CloudFront distribution
+# (including CLOUDFRONT_ID) are in the environment.
+check-cloudfront-id:
+ifndef AWS_ACCESS_KEY_ID
+	$(error AWS_ACCESS_KEY_ID is required)
+endif
+ifndef AWS_SECRET_ACCESS_KEY
+	$(error AWS_SECRET_ACCESS_KEY is required)
+endif
+ifndef CLOUDFRONT_ID
+	$(error CLOUDFRONT_ID is required)
+endif
+
+# Long TTL (in seconds) to set on an object in S3. This is suitable for items
+# that we expect to only have to invalidate very rarely like images. Although
+# we set it for all assets, those that are expected to change more frequently
+# like script or stylesheet files are versioned by a path that can be set at
+# build time.
+LONG_TTL := 86400
+
+# Short TTL (in seconds) to set on an object in S3. This is suitable for items
+# that are expected to change more frequently like any HTML file.
+SHORT_TTL := 3600
+
 deploy: build
 # Note that AWS_ACCESS_KEY_ID will only be set for builds on the master
 # branch because it's stored in `.travis.yml` as an encrypted variable.
@@ -23,13 +47,13 @@ ifdef AWS_ACCESS_KEY_ID
 	# Note that we don't delete because it could result in a race condition in
 	# that files that are uploaded with special directives below could be
 	# removed even while the S3 bucket is actively in-use.
-	aws s3 sync ./public/ s3://$(S3_BUCKET)/ --acl public-read --content-type text/html --exclude 'assets*' $(AWS_CLI_FLAGS)
+	aws s3 sync ./public/ s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' $(AWS_CLI_FLAGS)
 
 	# Then move on to assets and allow S3 to detect content type.
-	aws s3 sync ./public/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --delete --follow-symlinks $(AWS_CLI_FLAGS)
+	aws s3 sync ./public/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --delete --follow-symlinks $(AWS_CLI_FLAGS)
 
 	# Upload Atom feed files with their proper content type.
-	find ./public -name '*.atom' | sed "s|^\./public/||" | xargs -I{} -n1 aws s3 cp ./public/{} s3://$(S3_BUCKET)/{} --acl public-read --content-type application/xml
+	find ./public -name '*.atom' | sed "s|^\./public/||" | xargs -I{} -n1 aws s3 cp ./public/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
 
 	# This one is a bit tricker to explain, but what we're doing here is
 	# uploading directory indexes as files at their directory name. So for
@@ -46,13 +70,21 @@ ifdef AWS_ACCESS_KEY_ID
 	#    directory cannot share a name.
 	# 2. The `index.html` files are useful for emulating a live server locally:
 	#    Golang's http.FileServer will respect them as indexes.
-	find ./public -name index.html | egrep -v './public/index.html' | sed "s|^\./public/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp ./public/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --content-type text/html
+	find ./public -name index.html | egrep -v './public/index.html' | sed "s|^\./public/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp ./public/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html
 else
 	# No AWS access key. Skipping deploy.
 endif
 
 install:
 	go install $(shell go list ./... | egrep -v '/vendor/')
+
+# Invalidates CloudFront's entire cache.
+invalidate: check-cloudfront-id
+	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /
+
+# Invalidates CloudFront's cached assets.
+invalidate-assets: check-cloudfront-id
+	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /assets
 
 # Note that unfortunately Golint doesn't work like other Go commands: it only
 # takes only a single argument at a time and expects that each is the name of a
