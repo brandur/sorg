@@ -138,6 +138,12 @@ func (a fragmentByPublishedAt) Len() int           { return len(a) }
 func (a fragmentByPublishedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a fragmentByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Before(*a[j].PublishedAt) }
 
+// fragmentYear holds a collection of fragments grouped by year.
+type fragmentYear struct {
+	Year      int
+	Fragments []*Fragment
+}
+
 // Photo is a photography downloaded from Flickr.
 type Photo struct {
 	// LargeImageURL is the location where the large-sized version of the photo
@@ -471,8 +477,10 @@ func compileFragments() ([]*Fragment, error) {
 
 	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
 
+	fragmentsByYear := groupFragmentsByYear(fragments)
+
 	locals := getLocals("Fragments", map[string]interface{}{
-		"Fragments": fragments,
+		"FragmentsByYear": fragmentsByYear,
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/index",
@@ -1599,6 +1607,22 @@ func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 	}
 
 	return tweets, nil
+}
+
+func groupFragmentsByYear(fragments []*Fragment) []*fragmentYear {
+	var year *fragmentYear
+	var years []*fragmentYear
+
+	for _, fragment := range fragments {
+		if year == nil || year.Year != fragment.PublishedAt.Year() {
+			year = &fragmentYear{fragment.PublishedAt.Year(), nil}
+			years = append(years, year)
+		}
+
+		year.Fragments = append(year.Fragments, fragment)
+	}
+
+	return years
 }
 
 func groupReadingsByYear(readings []*Reading) []*readingYear {
