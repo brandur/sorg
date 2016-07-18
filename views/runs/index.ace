@@ -10,7 +10,7 @@
       #data-distance-last-year.chart
       #data-distance-by-year.chart
       .runs-content
-        h2 Latest Runs
+        h2 Latest
         ul.list
           {{range .Runs}}
             li
