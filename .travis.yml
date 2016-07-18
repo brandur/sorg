@@ -24,6 +24,7 @@ notifications:
 # automatically.
 env:
   global:
+    - GOOGLE_ANALYTICS_ID=UA-47798518-1
     - S3_BUCKET=brandur.org
 
     # $AWS_ACCESS_KEY_ID
