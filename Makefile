@@ -100,6 +100,10 @@ invalidate-all: check-aws-keys check-cloudfront-id
 invalidate-assets: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /assets
 
+# Invalidates CloudFront's cached index pages.
+invalidate-indexes: check-aws-keys check-cloudfront-id
+	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /photos /reading /runs /twitter
+
 # Note that unfortunately Golint doesn't work like other Go commands: it only
 # takes only a single argument at a time and expects that each is the name of a
 # local directory (as opposed to a package).
