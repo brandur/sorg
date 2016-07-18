@@ -19,6 +19,9 @@ $secondary: #cdcdcd
     // with more).
     max-width: 1500px
 
+    // Required to show TOC.
+    position: relative
+
     // this is a "highlight" image that may or may not be included with an
     // article
     img#mood
@@ -47,9 +50,47 @@ $secondary: #cdcdcd
     font-size: 0.75rem
     font-style: italic
 
+  .page-intro
+    font-size: 0.85rem
+
+  // Fragments list
+  #fragments
+    font-size: 0.85rem
+
+    ul
+      column-width: 280px
+      -moz-column-width: 280px
+      -webkit-column-width: 280px
+
+      li
+        margin: 0
+
+        .meta
+          color: $secondary
+          font-family: $sans_serif
+          font-size: 0.75rem
+
+  #toc
+    margin: 0 30px 0 0
+    position: absolute
+    left: -120px
+
+    ul
+      a
+        text-decoration: none
+
+        &:hover
+          text-decoration: underline
+
+        &:visited
+          text-decoration: none
+
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .fragments
     .content
       // hide image on very small screens
       img#mood
         display: none
+
+    #toc
+      display: none
