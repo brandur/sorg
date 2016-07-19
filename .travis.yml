@@ -24,6 +24,7 @@ notifications:
 # automatically.
 env:
   global:
+    - CLOUDFRONT_ID=E2D97SPIHRBCUA
     - GOOGLE_ANALYTICS_ID=UA-47798518-1
     - S3_BUCKET=brandur.org
 
