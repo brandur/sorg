@@ -27,7 +27,7 @@ About a year ago, Stripe undertook the major project of moving all its servers
 over to us-west-2 (Oregon), and completed it within the last year. The project
 had a few major objectives, getting our fleet onto VPC being one for example,
 but among them was the simple goal of anchoring into one of AWS' most modern
-data centers.
+and problem-free data centers.
 
 The project involved an incredible amount of effort on the part of many people,
 but seems to be paying off already. While my friends at places like Heroku and
