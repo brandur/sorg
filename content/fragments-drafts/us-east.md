@@ -33,26 +33,3 @@ The project involved an incredible amount of effort on the part of many people,
 but seems to be paying off already. While my friends at places like Heroku and
 Citus labored under duress waiting for AWS to come back online, the silence
 over on the west coast was deafening.
-
-> 11:27 AM PDT We are investigating increased API error rates in the US-EAST-1
-> Region.
->
-> 11:50 AM PDT We can confirm increased error rates for the EC2 APIs and are
-> currently working to resolve. We also observed isolated periods of impaired
-> network connectivity for some EC2 instances.
->
-> 12:21 PM PDT We have identified the root cause for error rates accessing the
-> EC2 APIs and EC2 Management Console and are currently working to resolve. We
-> observed isolated periods of impaired network connectivity for some EC2
-> instances, however running instances are currently operating normally.
->
-> 1:02 PM PDT We have resolved the root cause for error rates accessing the EC2
-> APIs and EC2 Management Console. We are now seeing partial recovery and are
-> working to fully resolve this issue. Running instances are currently
-> operating normally.
->
-> 1:14 PM PDT Between 11:15 AM and 1:05 PM PDT, we experienced elevated error
-> rates for the EC2 APIs and the EC2 Management Console. Between 11:15 AM and
-> 11:27 AM, we also experienced brief intervals of impaired network
-> connectivity for some EC2 instances. These issues have been resolved and the
-> service is operating normally.
