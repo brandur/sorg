@@ -6,19 +6,41 @@ location: San Francisco
 published_at: 2016-07-20T14:31:33Z
 ---
 
+_Canonical log lines_ are a lightweight pattern used within Stripe for improved
+service observability. Their greatest strength is that 
 
+If we look at a standard production system, we could say that it emits multiple
+"tiers" of analytical information:
 
-## Noisy Logging & Operational Introspection (#noisy)
+1. Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
+2. Log traces.
 
-Very useful when debugging.
+While metrics provide very fast feedback on specific and commonly-used system
+measurements, they're not very good at allowing information to be queried
+arbitrarily and ad-hoc. While perfect for answering a question that's known
+ahead of time like, _"how many requests per second is my stack doing?"_,
+they're less useful for questions that I think up on the spot and need
+immediate answers for like, _"how many requests per second is userXYZ making to
+my stack via TLS 1.0?"_
 
-Although great for debugging certain problems, makes day-to-day checks a little more challenging.
+Log traces can answer the latter question, but often make such analysis
+difficult because they tend to be noisy and have information is spread out
+across many lines, which can be difficult to correlate even with sophisticated
+logging systems like Splunk.
 
-Also, makes running certain types of analytical queries require some extreme Splunk-fu.
+Canonical log lines are "middle tier" of analytics that help to bridge the gap
+between metrics and raw traces:
+
+1. Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
+2. **Canonical log lines.**
+3. Log traces.
 
 ## The Canonical Line (#canonical-line)
 
-Some interesting things about a request that can be logged:
+Canonical log lines are simply a compilation of important information that's
+aggregate across the lifetime of a single request (or background job run, etc.)
+and emitted all onto a single line of logs. Here are some examples of
+information that we might like to include:
 
 * Basic request information like HTTP verb, host, path, source IP, and user
   agent.
@@ -36,58 +58,84 @@ Some interesting things about a request that can be logged:
 * Rate limiting information wuch as whether rate limiting occurred, what their
   total limit is, and how much of it is remaining.
 
-The Ruby code for that might look like:
+In [logfmt](/logfmt) style, this might look something like (note that I've
+added newlines and comments for clarity, but these would obviously not be
+present in a real system):
 
-``` ruby
-log.info "CANONICAL-LOG-LINE",
+```
+canonical-api-line
 
-  # basic request information
-  request.content_type: request.content_type,
-  request_ip:           extract_ip(request),
-  request_method:       request.method,
-  request_path:         request.path_info,
-  request_user_agent:   request.user_agent,
+  # service information
+  service=api release=v752 git_head=6bb8ec015a21ff7f6c3f34f6fe99357352692a72
 
-  # request IDs
-  request_id:        request_id,
-  request_parent_id: request_parent_id,
+  # request identification
+  request_id=55f10e07-ec6c-486d-8131-80f846fbe465
 
-  # response
-  response_content_type: content_type,
-  response_status:       status,
+  # request information
+  request_content_type=application/json request_ip=1.2.3.4
+  request_method=GET request_path=/users request_user_agent="Curl 1.2.3"
 
-  # errors
-  error_id:      error.id,
-  error_message: error.message,
+  # response information
+  response_content_type=application/json response_status=200
+  error_id= error_message=
 
-  # user information
-  user_email: user.email,
-  user_id:    user.id,
+  # authentication information
+  user_email=nameless@example.comkuser_id=1234
+  auth_oauth_app_id=2345 auth_oauth_scope=identity,users
 
-  # authentication
-  auth_oauth_app_id: auth.oauth_app_id,
-  auth_oauth_scope:  auth.oauth_scope,
+  # timing
+  timing_request_total=0.099 timing_database_total=0.085
 
-  # app information
-  app_git_head: config.app_git_head,
-  app_name:     config.app_name,
-  app_version:  config.app_version,
-
-  # timing information
-  timing_database_total: timing.database_total,
-  timing_request_total:  timing.request_total,
-
-  # rate limiting information
-  rate_limit_enforced:  rate_limit.enforced?,
-  rate_limit_limit:     rate_limit.limit,
-  rate_limit_remaining: rate_limit.remaining,
-  rate_limit_reset:     rate_limit.reset
+  # rate limiting
+  rate_limiting_enforced=false rate_limiting_limit=100 rate_limit_remaining=99
 ```
 
-Middleware makes a pretty good home for this pattern, where a log line is
-emitted after calling into `app.call(env)`.
+Middleware makes a pretty good home for implementation, where it generally
+lives close to the top of the middleware stack and injects an object through
+context (i.e. `env` in Rack) which then has its fields populated to the maximum
+possible extent by downstream components in the request stack.
 
-Need to pass information out through the stack.
+``` ruby
+# A type containing fields that we'd like to populate for the final canonical
+# log line and which can encode itself in logfmt format.
+class CanonicalLogLine
+  # service information
+  attr_accessor :service
+  attr_accessor :release
+  attr_accessor :git_head
+
+  # request identification
+  attr_accessor :request_id
+
+  ...
+
+  def to_logfmt
+    ...
+  end
+end
+
+# A middleware that injects a canonical log line object into a request's #
+# context and emits it to the log trace as the rest of the stack has finished
+# satisfying the request.
+class CanonicalLogLineEmitter < Middleware
+  attr_accessor :app
+
+  def initialize(app)
+    self.app = app
+  end
+
+  def call(env)
+    line = CanonicalLogLine.new
+    env["app.canonical_log_line"] = line
+    ...
+
+    app.call(env)
+
+    # Emit to logs.
+    log.info(line.to_logfmt)
+  end
+end
+```
 
 ## Logging Tiers (#log-levels)
 
