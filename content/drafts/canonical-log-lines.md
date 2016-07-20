@@ -1,9 +1,9 @@
 ---
+title: Canonical Log Lines
 hook: Using canonical log lines for powerful and succinct introspection into an online
   system.
 location: San Francisco
-published_at: 2016-04-14T17:03:10Z
-title: Canonical Log Lines
+published_at: 2016-07-20T14:31:33Z
 ---
 
 
@@ -88,6 +88,19 @@ Middleware makes a pretty good home for this pattern, where a log line is
 emitted after calling into `app.call(env)`.
 
 Need to pass information out through the stack.
+
+## Logging Tiers (#log-levels)
+
+* L2: Standard log traces (probably info-level in production).
+* L1: Canonical log lines.
+* L0: Exceptions.
+
+## Splunk Tricks (#splunk)
+
+(Note this also uses the concept of [request IDs](/request-ids) that get tagged
+onto every line of a single request's log trace.)
+
+The inverse also works.
 
 ## Warehousing (#warehousing)
 
