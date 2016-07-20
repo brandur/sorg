@@ -21,7 +21,9 @@ around during their early release:
 * Frameworks bad; libraries good.
 * Static site generators.
 
-In retrospect, I now know that many of these things aren't net positives.
+In retrospect, I now know that many of these things aren't net positives. But
+at the time, the articles and people championing them seemed incredibly
+compelling.
 
 While as an industry we seem to be great at building and driving hype trains,
 we're not so good at dismantling them when the situation calls for it.
@@ -31,7 +33,7 @@ might have some moral responsibility in helping to tip the scale back in the
 other direction if and when they discover that it's not quite as romantic as
 they'd originally portrayed. The justification is simple: starting to use a new
 technology is a lengthy commitment, and replacing it is a massive undertaking.
-If it's discovered that certain pieces of technology are bad applies, a
+If it's discovered that certain pieces of technology are bad apples, a
 well-written piece on the subject can save tens of thousands of misdirected
 engineering hours overall.
 
