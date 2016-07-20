@@ -26,8 +26,8 @@ implying that it has any sort of legitimacy.
 It's not desirable or practical to break out a debugger at every turn, but it's
 still a tool that should be kept within arm's reach. When it comes to stepping
 through and introspecting how an unfamiliar program executes at runtime, or
-squashing some of those hardest bugs, there's quite simply nothing else that's
-comparable in efficacy.
+squashing some of those hardest bugs, there's quite simply nothing else
+comparable.
 
 [do-debug]: https://twitter.com/ID_AA_Carmack/status/745638167068319744
 [dont-debug]: https://twitter.com/Code_Analysis/status/745542120379809792
