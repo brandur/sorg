@@ -15,6 +15,7 @@ around during their early release:
 * Agile methodology.
 * MongoDB.
 * EventMachine.
+* Erlang.
 * Callback-based programming paradigms.
 * Companies should be all remote with no managers.
 * Frameworks bad; libraries good.
