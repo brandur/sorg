@@ -12,17 +12,17 @@ Here are a few technologies and ideas that I remember seeing a lot of hype
 around during their early release:
 
 * Node.JS.
-* Agile methodology.
 * MongoDB.
 * EventMachine.
 * Erlang.
 * Callback-based programming paradigms.
-* Companies should be all remote with no managers.
-* Frameworks bad; libraries good.
+* Companies should be mostly remote with no managers.
+* Frameworks are bad. Libraries are good.
+* Agile methodology.
 * Static site generators.
 
 In retrospect, I now know that many of these things aren't net positives. But
-at the time, the articles and people championing them seemed incredibly
+at the time, the articles, talks, and people championing them seemed incredibly
 compelling.
 
 While as an industry we seem to be great at building and driving hype trains,
@@ -34,7 +34,7 @@ other direction if and when they discover that it's not quite as romantic as
 they'd originally portrayed. The justification is simple: starting to use a new
 technology is a lengthy commitment, and replacing it is a massive undertaking.
 If it's discovered that certain pieces of technology are bad apples, a
-well-written piece on the subject can save tens of thousands of misdirected
+well-written piece on the subject can save tens of thousands of misguided
 engineering hours overall.
 
 Not all bad things are unambiguously bad of course, but some are, and should be
