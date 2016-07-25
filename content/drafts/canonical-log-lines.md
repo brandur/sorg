@@ -37,10 +37,10 @@ between metrics and raw traces:
 
 ## The Canonical Line (#canonical-line)
 
-Canonical log lines are simply a compilation of important information that's
-aggregate across the lifetime of a single request (or background job run, etc.)
-and emitted all onto a single line of logs. Here are some examples of
-information that we might like to include:
+Canonical log lines are compilation of important information that's aggregate
+across the lifetime of a single request (or background job run, etc.) and
+emitted all onto a single line of logs. Here are some examples of information
+that we might like to include:
 
 * Basic request information like HTTP verb, host, path, source IP, and user
   agent.
@@ -59,8 +59,8 @@ information that we might like to include:
   total limit is, and how much of it is remaining.
 
 In [logfmt](/logfmt) style, this might look something like (note that I've
-added newlines and comments for clarity, but these would obviously not be
-present in a real system):
+added newlines and comments for clarity, but this would be all one big long
+line in a real system):
 
 ```
 canonical-api-line
