@@ -14,10 +14,10 @@ A few things that worked for me:
   the piece, a more amateur player can benefit a lot from removing this
   variable. _Asturias_, with its many repeating patterns and measures, is
   also particularly condusive to memorization to memorization.
-* Use the guitar tab. As far as I can tell, there is exactly one objectively
-  correct way of set of positions to use while playing the song, and the guitar
-  tab will save you from having to figure it out yourself (i.e. as opposed to
-  the version using musical notation).
+* Use the guitar tablature. As far as I can tell, there is exactly one
+  objectively correct way to do the song's fingering, and the guitar tab will
+  save you from having to figure it out yourself (i.e. as opposed to the
+  version using musical notation).
 
 Currently giving me the most trouble is the triplet section, which starts
 around [28 seconds into this John Williams rendition][triplets]. While it
