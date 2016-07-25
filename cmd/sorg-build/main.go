@@ -103,6 +103,13 @@ type Conf struct {
 	// GoogleAnalyticsID is the account identifier for Google Analytics to use.
 	GoogleAnalyticsID string `env:"GOOGLE_ANALYTICS_ID"`
 
+	// LocalFonts starts using locally downloaded versions of Google Fonts.
+	// This is not ideal for real deployment because you won't be able to
+	// leverage Google's CDN and the caching that goes with it, and may not get
+	// the font format for requesting browsers, but good for airplane rides
+	// where you otherwise wouldn't have the fonts.
+	LocalFonts bool `env:"LOCAL_FONTS,default=false"`
+
 	// SiteURL is the absolute URL where the compiled site will be hosted.
 	SiteURL string `env:"SITE_URL,default=https://brandur.org"`
 
@@ -403,6 +410,11 @@ func main() {
 	}
 
 	err = linkImageAssets()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = linkFontAssets()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -874,6 +886,25 @@ func compileStylesheets(stylesheets []string, outPath string) error {
 	return nil
 }
 
+func linkFontAssets() error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Linked font assets in %v.", time.Now().Sub(start))
+	}()
+
+	source, err := filepath.Abs(sorg.ContentDir + "/fonts")
+	if err != nil {
+		return err
+	}
+
+	dest, err := filepath.Abs(sorg.TargetDir + "/assets/fonts/")
+	if err != nil {
+		return err
+	}
+
+	return ensureSymlink(source, dest)
+}
+
 func linkImageAssets() error {
 	start := time.Now()
 	defer func() {
@@ -1120,6 +1151,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	defaults := map[string]interface{}{
 		"BodyClass":         "",
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
+		"LocalFonts":        conf.LocalFonts,
 		"Release":           sorg.Release,
 		"Title":             title,
 		"ViewportWidth":     "device-width",

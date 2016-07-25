@@ -14,7 +14,7 @@ html lang='en'
     link href="/assets/{{.Release}}/app.css" media="screen" rel="stylesheet" type="text/css"
     script src="/assets/{{.Release}}/app.js" type="text/javascript"
 
-    link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css"
+    = include views/_cardo .
 
   body class={{.BodyClass}}
     = include views/_analytics .
