@@ -1,4 +1,4 @@
-{{if ne .LocalFonts true}}
+{{if not .LocalFonts}}
 link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css"
 {{else}}
 
