@@ -81,19 +81,43 @@ modify data, and make your system irreparably slower.
 
 ### Analytics
 
+By committing to MongoDB, with its sharded nature and inscrutable querying
+syntax, you're also implicitly commiting to building out a secondary
+warehousing system and ingestion pipeline so that it's possible to run
+analytics and other types of reporting in one place with a well-known query
+language like SQL. By sticking to an RDMS, you can get this almost for free by
+simply keeping a non-production follower available for this use [1].
+
+While building a data warehouse will almost certainly be eventually appropriate
+anyway, it can be a significant advantage especially for smaller companies to
+avoid committing the engineering and maintenance effort necessary to accomplish
+this for as long as possible so that those resources can be allocated to more
+critical projects.
+
 ## Non-solutions
 
 ### The Oplog is sure cool.
 
-If you're tailing an oplog, you're communicating between components using
-private implementation details. Your entire system becomes inherently fragile
-because internal changes to how data is stored can take down everything else.
-Don't do it. Use public APIs instead.
+MongoDB offers a feature called called the oplog that's used for the primary in
+a replica set to stream change information which is then consumed by each
+secondary to stay up-to-date. The oplog is exposed via a MongoDB API so that it
+can also be read by your own services.
 
-That's the easy and highly ideal answer. Perhaps worse yet, 
+The oplog has traditionally been hailed as a feature that for which Postgres
+has no equivalent because its physical WAL is unsuitable to be consumed by
+anything but Postgres. While this may have been true before, Postgres now has
+"logical" WAL options like [pglogical][pglogical] have been introduced that
+will provide essentially the same functionality.
 
-You should not be using the oplog except in very specialized storage-related
-cases.
+That said, you almost certainly shouldn't be consuming either the oplog or a
+Postgres logical stream except under very special circumstances. Tracking
+record-level changes means that you're inherently tying yourself into a
+service's internal implementation, and any changes to the way it handles data
+will either break integrations or require very careful and time-consuming
+coordination. Don't do it.
+
+Instead, expose public representations of data through an API. If you need a
+stream, send it through systems like Kafka or Kinesis.
 
 ### But at least it's scalable right?
 
@@ -110,9 +134,9 @@ machine's resources.
 While a great idea in theory, in my experience that when easily available, it's
 vastly more likely for sharding to be abused than used appropriately.
 Enthusiastic engineers will inevitably shard prematurely and unwisely, and the
-darker sides of sharing quickly start to become apparent:
+darker sides of sharing become apparent immediately:
 
-* Cross-record ACID guarantees are gone forever.
+* Cross-record ACID guarantees and constraints are gone forever.
 * Data becomes difficult to find and cross-reference because it exists across a
   number of different systems. This makes the job of every operator more
   difficult forevermore.
@@ -203,8 +227,8 @@ _never_ the right choice.
 
 **Do you need document-style storage (i.e. nested JSON structures)?** You
 probably don't, but if you really _really_ do, you should use the `jsonb` type
-in Postgres instead of Mongo. You'll get the flexibility that you're after [2],
-but also an ACID-compliant system and the ability to introduce constraints [3].
+in Postgres instead of Mongo. You'll get the flexibility that you're after [3],
+but also an ACID-compliant system and the ability to introduce constraints [4].
 
 **Do you need incredible scalability that Postgres can't possibly provide?**
 Unless you're Google or Facebook, you probably don't, but if you really
@@ -224,17 +248,23 @@ http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mo
 Analytics failure:
 https://www.linkedin.com/pulse/mongodb-32-now-powered-postgresql-john-de-goes
 
-[1] Okay, this is embellished for dramatic effect. Sometimes a resource failure
+[1] It's worth noting that when using a Postgres follower for analytics, it's a
+    good idea to keep systems in place to look for long-running transactions to
+    avoid putting backpressure on production databases. See my article on
+    [Postgres Job Queues](/postgres-queues) for more information.
+
+[2] Okay, this is embellished for dramatic effect. Sometimes a resource failure
     will take a system down, but in my experience, these incidents are dwarfed
     by those incited by user error.
 
-[2] Although, this sort of flexibility may not be as good of an idea as you
+[3] Although, this sort of flexibility may not be as good of an idea as you
     might think.
 
-[3] In Postgres, try creating a `UNIQUE` index on a predicate that uses a JSON
+[4] In Postgres, try creating a `UNIQUE` index on a predicate that uses a JSON
     selector to query into a JSON document stored in a field. It works, and is
     incredibly cool.
 
 [aws-ha]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
 [heroku-ha]: https://devcenter.heroku.com/articles/heroku-postgres-ha
+[pglogical]: https://2ndquadrant.com/en/resources/pglogical/
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
