@@ -88,11 +88,11 @@ analytics and other types of reporting in one place with a well-known query
 language like SQL. By sticking to an RDMS, you can get this almost for free by
 simply keeping a non-production follower available for this use [1].
 
-While building a data warehouse will almost certainly be eventually appropriate
-anyway, it can be a significant advantage especially for smaller companies to
-avoid committing the engineering and maintenance effort necessary to accomplish
-this for as long as possible so that those resources can be allocated to more
-critical projects.
+While building a data warehouse will almost certainly be eventually
+appropriate, it can be a significant advantage especially for smaller companies
+to avoid committing the engineering and maintenance effort necessary to
+accomplish this for as long as possible so that those resources can be
+allocated to more critical projects.
 
 ## Non-solutions
 
@@ -117,7 +117,8 @@ will either break integrations or require very careful and time-consuming
 coordination. Don't do it.
 
 Instead, expose public representations of data through an API. If you need a
-stream, send it through systems like Kafka or Kinesis.
+stream, send that _public_ representation through a system like Kafka or
+Kinesis.
 
 ### But at least it's scalable right?
 
