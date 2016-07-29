@@ -78,6 +78,12 @@ func (a articleByPublishedAt) Len() int           { return len(a) }
 func (a articleByPublishedAt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a articleByPublishedAt) Less(i, j int) bool { return a[i].PublishedAt.Before(*a[j].PublishedAt) }
 
+// articleYear holds a collection of articles grouped by year.
+type articleYear struct {
+	Year     int
+	Articles []*Article
+}
+
 // Conf contains configuration information for the command.
 type Conf struct {
 	// AtomAuthorName is the name of the author to include in Atom feeds.
@@ -314,6 +320,7 @@ var stylesheets = []string{
 	stylesheetsDir + "/_reset.sass",
 	stylesheetsDir + "/main.sass",
 	stylesheetsDir + "/about.sass",
+	stylesheetsDir + "/articles.sass",
 	stylesheetsDir + "/fragments.sass",
 	stylesheetsDir + "/index.sass",
 	stylesheetsDir + "/photos.sass",
@@ -449,8 +456,10 @@ func compileArticles() ([]*Article, error) {
 
 	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
 
+	articlesByYear := groupArticlesByYear(articles)
+
 	locals := getLocals("Articles", map[string]interface{}{
-		"Articles": articles,
+		"ArticlesByYear": articlesByYear,
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
@@ -1639,6 +1648,22 @@ func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 	}
 
 	return tweets, nil
+}
+
+func groupArticlesByYear(articles []*Article) []*articleYear {
+	var year *articleYear
+	var years []*articleYear
+
+	for _, article := range articles {
+		if year == nil || year.Year != article.PublishedAt.Year() {
+			year = &articleYear{article.PublishedAt.Year(), nil}
+			years = append(years, year)
+		}
+
+		year.Articles = append(year.Articles, article)
+	}
+
+	return years
 }
 
 func groupFragmentsByYear(fragments []*Fragment) []*fragmentYear {
