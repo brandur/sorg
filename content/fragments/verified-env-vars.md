@@ -9,18 +9,18 @@ Possibly the worst of them is the total lack of feedback of any kind on user
 error. Can you tell which of these is right?
 
 ``` sh
-GPG_HOME=~/.gnupg/ gpg --list-secret-keys
+GPGHOME=~/.gnupg/ gpg --list-secret-keys
 
 # or
 
-GNUPG_HOME=~/.gnupg/ gpg --list-secret-keys
+GNUPGHOME=~/.gnupg/ gpg --list-secret-keys
 ```
 
 Well, the executable is called "gpg" so the first one seems to make sense, but
 the suite is named "GnuPG", so the second seems like a reasonable assumption as
 well.
 
-The answer is that `GNUPG_HOME` is right, despite the executable's naming. But
+The answer is that `GNUPGHOME` is right, despite the executable's naming. But
 far more offensive than that design is what happens when you pick the wrong
 one: GPG doesn't even acknowledge that there might be a problem and silently
 behaves as if you hadn't specified anything at all.
