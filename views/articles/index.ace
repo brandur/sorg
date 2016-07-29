@@ -3,21 +3,33 @@
   .top-nav
     = include views/_nav
   .top-spacing
-  .content
-    #title
-      h1 Articles
-    ul.list
-      {{range .Articles}}
-        li
-          a href="/{{.Slug}}"
-            {{.Title}}
-          span.meta
-            |  
-            {{FormatTime .PublishedAt}}
-          {{if ne .Hook ""}}
-            p.hook {{.Hook}}
+  .articles
+    .content
+      #title
+        h1 Articles
+      #toc
+        ul
+          {{range .ArticlesByYear}}
+            li
+              a href="#year-{{.Year}}" {{.Year}}
           {{end}}
-          .divider-short
-      {{end}}
-    p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
+      #articles
+        {{range .ArticlesByYear}}
+          div class="year" id="year-{{.Year}}"
+          h2 {{.Year}}
+          ul
+            {{range .Articles}}
+              li
+                .title
+                  a href="/{{.Slug}}"
+                    {{.Title}}
+                  span.meta
+                    |  
+                    {{FormatTime .PublishedAt}}
+                {{if ne .Hook ""}}
+                  p.hook {{.Hook}}
+                {{end}}
+            {{end}}
+        {{end}}
+      p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
   = include views/_footer
