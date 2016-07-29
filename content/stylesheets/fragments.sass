@@ -1,5 +1,4 @@
 $sans_serif: helvetica, arial, geneva, sans-serif
-
 $secondary: #cdcdcd
 
 .fragments
@@ -63,12 +62,17 @@ $secondary: #cdcdcd
       -webkit-column-width: 280px
 
       li
+        break-inside: avoid
+        page-break-inside: avoid
+        -webkit-column-break-inside: avoid
+
         margin: 0
 
         .meta
           color: $secondary
           font-family: $sans_serif
           font-size: 0.75rem
+          font-style: italic
 
   #toc
     margin: 0 30px 0 0
