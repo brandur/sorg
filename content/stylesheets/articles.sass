@@ -3,17 +3,17 @@ $secondary: #cdcdcd
 
 .articles
   .content
+    // Constrain very large screens. This pixel number should be enough to keep
+    // us pegged to a maximum of four columns (things get pretty hard to read
+    // with more).
+    max-width: 1500px
+
     // Required to show TOC.
     position: relative
 
   // Articles list
   #articles
     font-size: 0.85rem
-
-    // Constrain very large screens. This pixel number should be enough to keep
-    // us pegged to a maximum of four columns (things get pretty hard to read
-    // with more).
-    max-width: 1500px
 
     ul
       column-gap: 50px
