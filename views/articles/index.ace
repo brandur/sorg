@@ -31,5 +31,5 @@
                 {{end}}
             {{end}}
         {{end}}
-      p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
+        p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
   = include views/_footer
