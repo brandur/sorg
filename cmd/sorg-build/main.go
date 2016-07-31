@@ -116,6 +116,9 @@ type Conf struct {
 	// where you otherwise wouldn't have the fonts.
 	LocalFonts bool `env:"LOCAL_FONTS,default=false"`
 
+	// NumAtomEntries is the number of entries to put in Atom feeds.
+	NumAtomEntries int `env:"NUM_ATOM_ENTRIES,default=20"`
+
 	// SiteURL is the absolute URL where the compiled site will be hosted.
 	SiteURL string `env:"SITE_URL,default=https://brandur.org"`
 
@@ -1032,7 +1035,11 @@ func compileArticlesFeed(articles []*Article) error {
 		feed.Updated = *articles[0].PublishedAt
 	}
 
-	for _, article := range articles {
+	for i, article := range articles {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
 		entry := &atom.Entry{
 			Title:     article.Title,
 			Content:   &atom.EntryContent{Content: article.Content, Type: "html"},
@@ -1130,7 +1137,11 @@ func compileFragmentsFeed(fragments []*Fragment) error {
 		feed.Updated = *fragments[0].PublishedAt
 	}
 
-	for _, fragment := range fragments {
+	for i, fragment := range fragments {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
 		entry := &atom.Entry{
 			Title:     fragment.Title,
 			Content:   &atom.EntryContent{Content: fragment.Content, Type: "html"},
