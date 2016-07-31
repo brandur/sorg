@@ -1,6 +1,6 @@
 ---
-title: Session Expiration
-published_at: 2016-07-31T18:20:17Z
+title: Perpetual Cookies
+published_at: 2016-07-31T23:36:34Z
 ---
 
 When you pop open and start using Uber's app on your iPhone, you drop a pin,
