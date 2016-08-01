@@ -56,7 +56,7 @@ version 3, MongoDB clients now default their [`w` "write concern" to
 confirmed by a standalone MongoDB server or replica set primary, which means
 that by default, your data will largely be safe on a modern version of MongoDB.
 
-### Bad Benchmarks (#bad-benchmarks)
+### Dishonest Benchmarks (#dishonest-benchmarks)
 
 One of the early hot features of MongoDB was its speed, and particularly how
 well it performed compared to RDMS equivalents. As it turns out, these
@@ -90,8 +90,8 @@ memorable acronym coined back in the early 80s, and which you'd probably heard
 before: **ACID** (atomicity, consistency, isolation, and durability).
 
 MongoDB historially failed to comply to every letter in ACID, but as of version
-3, now only misses three out of four. Here I'll explain why the one they finally
-have (durability) is good progress, but nowhere near enough.
+3, now only misses three out of four. Here I'll explain why the one they
+finally have (durability) is good progress, but nowhere near enough.
 
 ### No Atomicity (A) (#no-atomicity)
 
