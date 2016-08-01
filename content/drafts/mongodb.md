@@ -1,8 +1,8 @@
 ---
-hook: Why MongoDB is never the right choice.
+hook: Why MongoDB is never the right choice for a new system, but probably not for the reasons that you expected.
 location: San Francisco
-published_at: 2016-07-26T17:48:35Z
-title: MongoDB
+published_at: 2016-08-01T00:23:52Z
+title: Don't Use MongoDB
 ---
 
 Operated a large Postgres installation, then moved to being a regular user of a
@@ -13,23 +13,56 @@ they don't expect is what I tell them next, "it's much worse than you think."
 
 _M:I reference?_
 
-## Non-issues
+## Non-issues (#non-issues)
 
-### Data Loss
+I'll start off by addressing some of the more typical reasons that MongoDB is
+criticized. While everything in this section is a perfectly valid concern, I'll
+argue that there are _far_ more important reasons that you should never use the
+database.
 
-I'll give them a pass; every early database has this problem.
+### Data Integrity (#data-integrity)
 
-### Bad Benchmarks
+For a very long time, MongoDB considered a write to be complete and fully
+persisted [as soon as it had been buffered in the outgoing socket buffer of the
+client host][broken-by-design]. It's hopefully needless to say, but such
+behavior doesn't even beget a partial guarantee of data integrity, and could
+easily result in your most important information being flushed down the drain.
 
-I'm willing to give them the benefit of the doubt here by applying Hanlon's
-Razor: I think it's far more likely that the botched benchmarks were the result
-of incompetence than malice.
+Although it was _years_ before this problem was ever addressed, I'm willing to
+give them a pass so as not to detract from more important matters. As of
+version 3, MongoDB clients now default their [`w` "write concern" to
+1][write-concerns], meaning that writes are not considered persisted until
+confirmed by a standalone MongoDB server or replica set primary, which means
+that by default, your data will largely be safe on a modern version of MongoDB.
 
-### Failure to Comply to CAP
+### Bad Benchmarks (#bad-benchmarks)
 
-## Problems
+One of the early hot features of MongoDB was its speed, and particularly how
+well it performed compared to RDMS equivalents. As it turns out, these
+incredible speed benchmarks had more to do with its quesionable approach to
+data integrity (as discussed above) rather than any advancement made by the
+10gen team. After version 3 was released with safer write defaults, [it quickly
+became obvious that MongoDB had lost the performance edge that it had
+originally touted][broken-by-design].
 
-### No Transactions
+Once again, I'm going to give MongoDB a pass on this one. If we apply [Hanlon's
+Razor][razor], I think it's much more likely that the original MongoDB
+developers fundamentally didn't understand that the way they were confirming
+writes was problematic. They ran some benchmarks, and believing the numbers to
+be the inherent result of their own programming genius, flouted them for the
+world to see. Later when they realized that guaranteeing data integrity was
+something that a lot of people cared about, and slowly started withdrawing
+their claims around superior performance.
+
+However, the incident does given us some insight into the MongoDB developers
+themselves, mostly notably how their inexperience with data systems could have
+had dangerously harmful results.
+
+### Failure to Comply to CAP (#cap)
+
+## Problems (#problems)
+
+### No Transactions (#no-transactions)
 
 What happens in a big MongoDB-based production system when a request that
 commits multiple documents fails halfway through? Well, it's exactly what you
@@ -56,7 +89,7 @@ reason at all.
 
 Serialization transactions are magic.
 
-### No Atomicity
+### No Atomicity (#no-atomicity)
 
 Mongo supports atomic operations at the document level. Despite what you might
 read in their documentation, in a system anchored in the real world,
@@ -77,9 +110,9 @@ and save time, you're going to build a pessimistic locking scheme. That means
 that simultaneous accesses on the same resource will block on each other to
 modify data, and make your system irreparably slower.
 
-### No Constraints
+### No Constraints (#no-constraints)
 
-### Analytics
+### Analytics (#analytics)
 
 By committing to MongoDB, with its sharded nature and inscrutable querying
 syntax, you're also implicitly commiting to building out a secondary
@@ -94,9 +127,9 @@ to avoid committing the engineering and maintenance effort necessary to
 accomplish this for as long as possible so that those resources can be
 allocated to more critical projects.
 
-## Non-solutions
+## Non-solutions (#non-solutions)
 
-### The Oplog is sure cool.
+### The Oplog is sure cool. (#oplog)
 
 MongoDB offers a feature called called the oplog that's used for the primary in
 a replica set to stream change information which is then consumed by each
@@ -120,7 +153,7 @@ Instead, expose public representations of data through an API. If you need a
 stream, send that _public_ representation through a system like Kafka or
 Kinesis.
 
-### But at least it's scalable right?
+### But at least it's scalable right? (#scalability)
 
 By using sharding, MongoDB allows a large data set to be spread across many
 different compute nodes. This by extension distributes the workloads on that
@@ -166,7 +199,7 @@ lean core with fringe data moved to scalable stores, and investing in that
 model will pay out in dividends in reduced resources and engineering burden
 over time.
 
-#### Example: Webhooks
+#### Example: Webhooks (#webhooks)
 
 A company I've worked for decided to implement WebHooks. Because sharding was
 readily available, the engineers in charge decided that it wouldn't be bad idea
@@ -188,7 +221,7 @@ going that far, and events could conceivably just be purged completely after a
 reasonable 30 or 90 day timeframe, leaving a data set small enough to run on a
 single node forever for everyone except a Google-sized system.
 
-### Well, if nothing else, at least it's HA!
+### Well, if nothing else, at least it's HA! (#high-availability)
 
 It's true that MongoDB implements a form of easy high availability (HA) by
 allowing automatic failover when the current primary becomes unavailable by
@@ -218,7 +251,7 @@ In practice, an HA data store helps you, but not as much as you'd think. I've
 seen as much or more downtime on a large Mongo system as I have on a Postgres
 system of similar scale; none of it was due to problems at the network layer.
 
-## Summary
+## Summary (#summary)
 
 If you're already on MongoDB, it may be very difficult to migrate off of and
 staying on it might be the right choice for your organization. I can relate.
@@ -249,6 +282,9 @@ http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mo
 Analytics failure:
 https://www.linkedin.com/pulse/mongodb-32-now-powered-postgresql-john-de-goes
 
+WriteConcerns and others:
+http://hackingdistributed.com/2013/01/29/mongo-ft/
+
 [1] It's worth noting that when using a Postgres follower for analytics, it's a
     good idea to keep systems in place to look for long-running transactions to
     avoid putting backpressure on production databases. See my article on
@@ -266,6 +302,9 @@ https://www.linkedin.com/pulse/mongodb-32-now-powered-postgresql-john-de-goes
     incredibly cool.
 
 [aws-ha]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
+[broken-by-design]: http://hackingdistributed.com/2013/01/29/mongo-ft/
 [heroku-ha]: https://devcenter.heroku.com/articles/heroku-postgres-ha
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
+[razor]: https://en.wikipedia.org/wiki/Hanlon's_razor
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
+[write-concerns]: https://docs.mongodb.com/manual/reference/write-concern/
