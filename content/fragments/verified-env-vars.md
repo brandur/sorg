@@ -38,7 +38,7 @@ but its env vars as well. It assumes ownership of any env var with a prefix of
 Neither problem produces an error (the first is a warning and the second a
 notice) so that the program stays backward compatible even if a new version of
 Etcd removes an env var that a user was sending a value in for. [Here's the
-code][code] that accomplishes the effect
+code][code] that accomplishes the effect.
 
 This design wouldn't directly solve the `GPG` vs. `GNUPG` problem above, but I
 would suggest that in its spirit a well-designed GPG look for `GPG`-prefixed
