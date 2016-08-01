@@ -5,13 +5,14 @@ location: San Francisco
 published_at: 2016-08-01T00:23:52Z
 ---
 
-Operated a large Postgres installation, then moved to being a regular user of a
-large MongoDB cluster.
+I spent many years operating a large Postgres installation before moving over
+to being a regular user of a large MongoDB cluster. Through various commentary
+online, I get the feeling that many developers understand that MongoDB is a
+somewhat suspect system, but can't quite articulate why despite there being
+many good reasons.
 
-They've heard the stories and imagine that using MongoDB is pretty bad. What
-they don't expect is what I tell them next, "it's much worse than you think."
-
-_M:I reference?_
+I don't think that using MongoDB is any sort of system, be it development or
+production, is _ever_ appropriate, and today I'll try to describe why.
 
 ## Non-issues (#non-issues)
 
