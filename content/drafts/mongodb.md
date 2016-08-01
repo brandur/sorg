@@ -17,8 +17,7 @@ _M:I reference?_
 
 I'll start off by addressing some of the more typical reasons that MongoDB is
 criticized. While everything in this section is a perfectly valid concern, I'll
-argue that there are _far_ more important reasons that you should never use the
-database.
+argue that there are _far_ more important reasons that it should be avoided.
 
 ### Data Integrity (#data-integrity)
 
@@ -48,21 +47,36 @@ originally touted][broken-by-design].
 Once again, I'm going to give MongoDB a pass on this one. If we apply [Hanlon's
 Razor][razor], I think it's much more likely that the original MongoDB
 developers fundamentally didn't understand that the way they were confirming
-writes was problematic. They ran some benchmarks, and believing the numbers to
-be the inherent result of their own programming genius, flouted them for the
-world to see. Later when they realized that guaranteeing data integrity was
-something that a lot of people cared about, and slowly started withdrawing
-their claims around superior performance.
+writes was problematic. They ran some benchmarks, and believing the good
+numbers to be the inherent result of their own programming brilliance, flouted
+them for the world to see. Later, they realized that guaranteeing data
+integrity was something that people cared about and which they weren't
+providing, and so slowly started withdrawing their claims around superior
+performance.
 
 However, the incident does given us some insight into the MongoDB developers
-themselves, mostly notably how their inexperience with data systems could have
+themselves, most notably how their inexperience with data systems could have
 had dangerously harmful results.
 
-### Failure to Comply to CAP (#cap)
+### Distributed Trouble (#trouble)
+
+MongoDB has performed poorly in Jepsen tests (see [inaccessible
+primary][jepsen1] and [stale reads][jepsen2]). While this is undoubtedly a
+problem, it's not what's going to cause you the most grief on a day-to-day
+basis.
 
 ## Problems (#problems)
 
-### No Transactions (#no-transactions)
+Let's talk about why MongoDB is actually bad. It's almost entirely due to the
+fact that the system fails to give you any of the basic guarantees that a data
+store is meant to give you. You've probably heard of them before because they
+have a memorable acronym: "ACID".
+
+MongoDB used to miss every letter in ACID. As of version 3, it only misses
+three out of four. Let me explain why the one they finally have ("D" for
+durability) is good progress, but nowhere near enough.
+
+### No Atomicity (A) (#no-atomicity)
 
 What happens in a big MongoDB-based production system when a request that
 commits multiple documents fails halfway through? Well, it's exactly what you
@@ -87,9 +101,49 @@ commit in every time you want guaranteed consistency between two of them is a
 recipe for multiplying your project's development time by 100x for no good
 reason at all.
 
-Serialization transactions are magic.
+#### Example: Manual Incident Clean-up
 
-### No Atomicity (#no-atomicity)
+### No Consistency (C) (#no-consistency)
+
+In a database, the consistency property guarantees that for any given
+transaction, the system will always transition from one valid state to another.
+Mechanisms like constraints, cascades, and triggers have all fired as expected
+before a new state is considered valid.
+
+In practice, that means you can do a lot of useful things:
+
+* By adding a uniqueness constraint, you can guarantee that two accounts cannot
+  be created with the same email address, even if two requests try to do so
+  simultaneously.
+* Say that any single account is owns many apps. By using a foreign key
+  constraint with `ON DELETE CASCADE`, you can guarantee that no app will ever
+  be orphaned if its parent account is deleted.
+* Say that any single account belongs to a team. By using a foreign key
+  constraint with `ON DELETE RESTRICT`, you can guarantee that a team can never
+  be deleted as long as any accounts under it are still active.
+* Say that you want to produce an auditing record every time an account is
+  deleted. By using a database trigger, you can guarantee that an audit trail
+  is produced when an account is removed.
+
+With MongoDB, you won't get a single one of these guarantees. Ever.
+
+If you want to check email uniqueness, you'll need to implement a locking
+system for new addresses, or run a background processor that looks for and
+alerts on duplicate records. To check data constraints you'll need locking
+combined with application-level conditional statements sprinkled throughout
+your codebase. To produce an audit trail, you'll need to implement your own
+two-phase commit along with checks throughout your codebase to make sure that
+it's not accessing uncommitted data.
+
+By using MongoDB, you're throwing away an invaluable tool for guaranteeing that
+no matter what happens in your database, data is _always_ valid. It's not
+impossible to do this from application-level code, but trying to do so is
+entering a world of needlessly complicated application code, buggy
+implementations, and corner cases abound.
+
+#### Example: Orphans
+
+### No Isolation (I) (#no-isolation)
 
 Mongo supports atomic operations at the document level. Despite what you might
 read in their documentation, in a system anchored in the real world,
@@ -98,8 +152,9 @@ at all_. That's because any non-trivial computation is almost certainly going
 to operate on multiple documents, and not having strong atomicity guarantees is
 going to bring you into a world of contention, failure, and pain.
 
-So how do you deal with this in a Mongo-based production system? _You implement
-locking yourself_.
+So how do you deal with the fact that a Mongo-based production system can't
+give you even nominal guarantees around isolation? _You implement locking
+yourself_.
 
 Yes, you read that right. Instead of having your mature data store take care of
 this tremendously difficult problem for you, you pull it into your own
@@ -110,7 +165,12 @@ and save time, you're going to build a pessimistic locking scheme. That means
 that simultaneous accesses on the same resource will block on each other to
 modify data, and make your system irreparably slower.
 
-### No Constraints (#no-constraints)
+Lack of isolation can lead to other types of even more subtle problems as well.
+[Meteor wrote a good post about how MongoDB can fail to return results][meteor]
+[1] that are in the process of being updated despite their data matching about
+a query's search predicates before and after the update.
+
+#### Example: Test Data Deletion
 
 ### Analytics (#analytics)
 
@@ -119,7 +179,7 @@ syntax, you're also implicitly commiting to building out a secondary
 warehousing system and ingestion pipeline so that it's possible to run
 analytics and other types of reporting in one place with a well-known query
 language like SQL. By sticking to an RDMS, you can get this almost for free by
-simply keeping a non-production follower available for this use [1].
+simply keeping a non-production follower available for this use [2].
 
 While building a data warehouse will almost certainly be eventually
 appropriate, it can be a significant advantage especially for smaller companies
@@ -174,8 +234,8 @@ darker sides of sharing become apparent immediately:
 * Data becomes difficult to find and cross-reference because it exists across a
   number of different systems. This makes the job of every operator more
   difficult forevermore.
-* Application code becomes bloated with sharding logic and slowly becomes
-  hugely complex and bloated.
+* Application code becomes riddled with sharding logic and trends towards
+  becoming bloated and hugely complex.
 * It becomes apparent that a poor sharding strategy was used (early sharding
   decisions are especially prone to this), and certain nodes start to run
   disporportionately "hot". In many situations, this problem can be nearly
@@ -183,8 +243,7 @@ darker sides of sharing become apparent immediately:
   vertical scalability.
 
 Of course I wouldn't go as far to say that sharding is _never_ appropriate, but
-it can be avoided by most companies in most situations. Some good alternatives
-are:
+it can be avoided by most companies in most situations. Some good alternatives:
 
 1. **Delete old information.** This is by far the best option if at all
    possible because it keeps systems lean and simple.
@@ -201,9 +260,9 @@ over time.
 
 #### Example: Webhooks (#webhooks)
 
-A company I've worked for decided to implement WebHooks. Because sharding was
+A company I've worked for decided to implement Webhooks. Because sharding was
 readily available, the engineers in charge decided that it wouldn't be bad idea
-to just store every WebHook notification that ever went out, and all the
+to just store every Webhook notification that ever went out, and all the
 interactions that we'd had with remote servers trying to deliver it. Worse yet,
 all of this was exposed through an API that some subset of customers started to
 depend on.
@@ -214,7 +273,7 @@ should ideally remain online to maximize backwards compatibility. This is
 hugely expensive in both computing resources and engineer time.
 
 What _should_ have happened from the beginning is that if it was very important
-to have a WebHooks paper trail going back to the beginning of time, old events
+to have a Webhooks paper trail going back to the beginning of time, old events
 should have been moved offline to an archive like S3 so that they could be
 audited at some later time. More practically, it's probably not even worth
 going that far, and events could conceivably just be purged completely after a
@@ -268,31 +327,17 @@ but also an ACID-compliant system and the ability to introduce constraints [4].
 Unless you're Google or Facebook, you probably don't, but if you really
 _really_ do, you should store your core data (users, apps, payment methods,
 servers, etc.) in Postgres, and move those data sets that need super
-scalability out into separate scalable systems _as late as you possibly can_.
-The chances are that you'll never even get to that point, and if you do, you
-may still have to deal with some of the same problems that are listed here, but
-at least you'll have a stable core.
+scalability out into separate scalable systems (or shard just those resources)
+_as late as you possibly can_. The chances are that you'll never even get to
+that point, and if you do, you may still have to deal with some of the same
+problems that are listed here, but at least you'll have a stable core.
 
-## References
+[1] [Hacker News commentary][meteor-hn] for Meteor's article.
 
-https://news.ycombinator.com/item?id=11857674
-
-http://cryto.net/~joepie91/blog/2015/07/19/why-you-should-never-ever-ever-use-mongodb/
-
-Analytics failure:
-https://www.linkedin.com/pulse/mongodb-32-now-powered-postgresql-john-de-goes
-
-WriteConcerns and others:
-http://hackingdistributed.com/2013/01/29/mongo-ft/
-
-[1] It's worth noting that when using a Postgres follower for analytics, it's a
+[2] It's worth noting that when using a Postgres follower for analytics, it's a
     good idea to keep systems in place to look for long-running transactions to
     avoid putting backpressure on production databases. See my article on
     [Postgres Job Queues](/postgres-queues) for more information.
-
-[2] Okay, this is embellished for dramatic effect. Sometimes a resource failure
-    will take a system down, but in my experience, these incidents are dwarfed
-    by those incited by user error.
 
 [3] Although, this sort of flexibility may not be as good of an idea as you
     might think.
@@ -304,6 +349,10 @@ http://hackingdistributed.com/2013/01/29/mongo-ft/
 [aws-ha]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
 [broken-by-design]: http://hackingdistributed.com/2013/01/29/mongo-ft/
 [heroku-ha]: https://devcenter.heroku.com/articles/heroku-postgres-ha
+[jepsen1]: https://aphyr.com/posts/284-call-me-maybe-mongodb
+[jepsen2]: https://aphyr.com/posts/322-call-me-maybe-mongodb-stale-reads
+[meteor]: https://engineering.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
+[meteor-hn]: https://news.ycombinator.com/item?id=11857674
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
 [razor]: https://en.wikipedia.org/wiki/Hanlon's_razor
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
