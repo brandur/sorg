@@ -24,9 +24,8 @@ correctness.
 Through various pieces of commentary online, I get the feeling that many
 developers understand that MongoDB is somewhat suspect, but not for the right
 reasons. I don't think that the use of MongoDB in any sort of system, be it
-development or production, is ever appropriate, and I'll run through the
-reasons why, but only after first addressing some of its aspects that take the
-lion's share of the criticism, but are not its most serious drawbacks.
+development or production, is ever appropriate, and here I'll enumerate the
+reasons why.
 
 Migrating between data stores is an incredibly costly project, so I write this
 with the hope that it might help some nascent projects and companies avoid
