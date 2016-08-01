@@ -14,6 +14,12 @@ install:
 
 script:
   - VERBOSE=true make
+
+  # deploy development version that includes drafts
+  - TARGET_DIR=./public-dev DRAFTS=true make build
+  - TARGET_DIR=./public-dev S3_BUCKET=brandur.org-dev make deploy
+
+  # then deploy production
   - make deploy
 
 notifications:

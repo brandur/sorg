@@ -27,42 +27,35 @@ const (
 	// PagesDir is the source directory for one-off page content.
 	PagesDir = "./pages"
 
-	// TargetDir is the target location where the site will be built to.
-	TargetDir = "./public"
-
-	// TargetVersionedAssetsDir is the target directory where static assets are
-	// placed which should be versioned by release number. Versioned assets are
-	// those that might need to change on release like CSS or JS files.
-	TargetVersionedAssetsDir = TargetDir + "/assets/" + Release
-
 	// ViewsDir is the source directory for views.
 	ViewsDir = "./views"
 )
 
 // A list of all directories that are in the built static site.
-var targetDirs = []string{
-	TargetDir,
-	TargetDir + "/articles",
-	TargetDir + "/assets",
-	TargetDir + "/assets/photos",
-	TargetDir + "/fragments",
-	TargetDir + "/photos",
-	TargetDir + "/reading",
-	TargetDir + "/runs",
-	TargetDir + "/twitter",
-	TargetVersionedAssetsDir,
+var outputDirs = []string{
+	".",
+	"articles",
+	"assets",
+	"assets/" + Release,
+	"assets/photos",
+	"fragments",
+	"photos",
+	"reading",
+	"runs",
+	"twitter",
 }
 
 // CreateTargetDirs creates TargetDir and all other necessary directories for
 // the build if they don't already exist.
-func CreateTargetDirs() error {
+func CreateOutputDirs(targetDir string) error {
 	start := time.Now()
 	defer func() {
 		log.Debugf("Created target directories in %v.", time.Now().Sub(start))
 	}()
 
-	for _, targetDir := range targetDirs {
-		err := os.MkdirAll(targetDir, 0755)
+	for _, dir := range outputDirs {
+		dir = targetDir + "/" + dir
+		err := os.MkdirAll(dir, 0755)
 		if err != nil {
 			return err
 		}
