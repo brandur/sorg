@@ -1,8 +1,8 @@
 ---
+title: Don't Use MongoDB
 hook: Why MongoDB is never the right choice for a new system, but probably not for the reasons that you expected.
 location: San Francisco
 published_at: 2016-08-01T00:23:52Z
-title: Don't Use MongoDB
 ---
 
 Operated a large Postgres installation, then moved to being a regular user of a

@@ -14,6 +14,9 @@ import (
 type Conf struct {
 	// Port is the port on which the command will serve the site over HTTP.
 	Port int `env:"PORT,default=5001"`
+
+	// TargetDir is the target location where the site was built to.
+	TargetDir string `env:"TARGET_DIR,default=./public"`
 }
 
 func main() {
@@ -25,20 +28,20 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = sorg.CreateTargetDirs()
+	err = sorg.CreateOutputDirs(conf.TargetDir)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = serve(conf.Port)
+	err = serve(conf.TargetDir, conf.Port)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func serve(port int) error {
-	log.Infof("Serving '%v' on port %v", path.Clean(sorg.TargetDir), port)
+func serve(targetDir string, port int) error {
+	log.Infof("Serving '%v' on port %v", path.Clean(targetDir), port)
 	log.Infof("Open browser to: http://localhost:%v/", port)
-	handler := http.FileServer(http.Dir(sorg.TargetDir))
+	handler := http.FileServer(http.Dir(targetDir))
 	return http.ListenAndServe(":"+strconv.Itoa(port), handler)
 }

@@ -122,6 +122,9 @@ type Conf struct {
 	// SiteURL is the absolute URL where the compiled site will be hosted.
 	SiteURL string `env:"SITE_URL,default=https://brandur.org"`
 
+	// TargetDir is the target location where the site will be built to.
+	TargetDir string `env:"TARGET_DIR,default=./public"`
+
 	// Verbose is whether the program will print debug output as it's running.
 	Verbose bool `env:"VERBOSE,default=false"`
 }
@@ -362,7 +365,7 @@ func main() {
 
 	sorg.InitLog(conf.Verbose)
 
-	err = sorg.CreateTargetDirs()
+	err = sorg.CreateOutputDirs(conf.TargetDir)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -378,7 +381,7 @@ func main() {
 	}
 
 	err = compileJavascripts(javascripts,
-		sorg.TargetVersionedAssetsDir+"/app.js")
+		conf.TargetDir+"/assets/"+sorg.Release+"/app.js")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -404,7 +407,7 @@ func main() {
 	}
 
 	err = compileStylesheets(stylesheets,
-		sorg.TargetVersionedAssetsDir+"/app.css")
+		conf.TargetDir+"/assets/"+sorg.Release+"/app.css")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -466,7 +469,7 @@ func compileArticles() ([]*Article, error) {
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
-		sorg.TargetDir+"/articles/index.html", locals)
+		conf.TargetDir+"/articles/index.html", locals)
 	if err != nil {
 		return nil, err
 	}
@@ -508,7 +511,7 @@ func compileFragments() ([]*Fragment, error) {
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/index",
-		sorg.TargetDir+"/fragments/index.html", locals)
+		conf.TargetDir+"/fragments/index.html", locals)
 	if err != nil {
 		return nil, err
 	}
@@ -551,7 +554,7 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 	})
 
 	err := renderView(sorg.MainLayout, sorg.ViewsDir+"/index",
-		sorg.TargetDir+"/index.html", locals)
+		conf.TargetDir+"/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -629,7 +632,7 @@ func compilePagesDir(dir string) error {
 			pagePath := strings.TrimPrefix(dir, sorg.PagesDir) + name
 
 			// Looks something like "./public/about".
-			target := sorg.TargetDir + "/" + pagePath
+			target := conf.TargetDir + "/" + pagePath
 
 			locals, ok := pagesVars[pagePath]
 			if !ok {
@@ -638,7 +641,7 @@ func compilePagesDir(dir string) error {
 
 			locals = getLocals("Page", locals)
 
-			err := os.MkdirAll(sorg.TargetDir+"/"+dir, 0755)
+			err := os.MkdirAll(conf.TargetDir+"/"+dir, 0755)
 			if err != nil {
 				return err
 			}
@@ -674,9 +677,9 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	for _, photo := range photos {
 		photoAssets = append(photoAssets,
 			&assets.Asset{URL: photo.LargeImageURL,
-				Target: sorg.TargetDir + "/assets/photos/" + photo.Slug + "@2x.jpg"},
+				Target: conf.TargetDir + "/assets/photos/" + photo.Slug + "@2x.jpg"},
 			&assets.Asset{URL: photo.MediumImageURL,
-				Target: sorg.TargetDir + "/assets/photos/" + photo.Slug + ".jpg"},
+				Target: conf.TargetDir + "/assets/photos/" + photo.Slug + ".jpg"},
 		)
 	}
 
@@ -692,7 +695,7 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/photos/index",
-		sorg.TargetDir+"/photos/index.html", locals)
+		conf.TargetDir+"/photos/index.html", locals)
 	if err != nil {
 		return nil, err
 	}
@@ -742,7 +745,7 @@ func compileReading(db *sql.DB) error {
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/reading/index",
-		sorg.TargetDir+"/reading/index.html", locals)
+		conf.TargetDir+"/reading/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -788,7 +791,7 @@ func compileRuns(db *sql.DB) error {
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/runs/index",
-		sorg.TargetDir+"/runs/index.html", locals)
+		conf.TargetDir+"/runs/index.html", locals)
 	if err != nil {
 		return err
 	}
@@ -847,7 +850,7 @@ func compileTwitter(db *sql.DB) error {
 		})
 
 		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/twitter/index",
-			sorg.TargetDir+"/twitter/"+page, locals)
+			conf.TargetDir+"/twitter/"+page, locals)
 		if err != nil {
 			return err
 		}
@@ -909,7 +912,7 @@ func linkFontAssets() error {
 		return err
 	}
 
-	dest, err := filepath.Abs(sorg.TargetDir + "/assets/fonts/")
+	dest, err := filepath.Abs(conf.TargetDir + "/assets/fonts/")
 	if err != nil {
 		return err
 	}
@@ -936,7 +939,7 @@ func linkImageAssets() error {
 			return err
 		}
 
-		dest, err := filepath.Abs(sorg.TargetDir + "/assets/" + asset.Name())
+		dest, err := filepath.Abs(conf.TargetDir + "/assets/" + asset.Name())
 		if err != nil {
 			return err
 		}
@@ -1011,7 +1014,7 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 		})
 
 		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
-			sorg.TargetDir+"/"+article.Slug, locals)
+			conf.TargetDir+"/"+article.Slug, locals)
 		if err != nil {
 			return nil, err
 		}
@@ -1054,7 +1057,7 @@ func compileArticlesFeed(articles []*Article) error {
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(sorg.TargetDir + "/articles.atom")
+	f, err := os.Create(conf.TargetDir + "/articles.atom")
 	if err != nil {
 		return err
 	}
@@ -1113,7 +1116,7 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 		})
 
 		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
-			sorg.TargetDir+"/fragments/"+fragment.Slug, locals)
+			conf.TargetDir+"/fragments/"+fragment.Slug, locals)
 		if err != nil {
 			return nil, err
 		}
@@ -1156,7 +1159,7 @@ func compileFragmentsFeed(fragments []*Fragment) error {
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(sorg.TargetDir + "/fragments.atom")
+	f, err := os.Create(conf.TargetDir + "/fragments.atom")
 	if err != nil {
 		return err
 	}
