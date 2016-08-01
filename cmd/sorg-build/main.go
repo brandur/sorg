@@ -365,6 +365,11 @@ func main() {
 
 	sorg.InitLog(conf.Verbose)
 
+	// This is where we stored "versioned" assets like compiled JS and CSS.
+	// These assets have a release number that we can increment and by
+	// extension quickly invalidate.
+	versionedAssetsDir := path.Join(conf.TargetDir, "assets", sorg.Release)
+
 	err = sorg.CreateOutputDirs(conf.TargetDir)
 	if err != nil {
 		log.Fatal(err)
@@ -381,7 +386,7 @@ func main() {
 	}
 
 	err = compileJavascripts(javascripts,
-		conf.TargetDir+"/assets/"+sorg.Release+"/app.js")
+		path.Join(versionedAssetsDir, "app.js"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -407,7 +412,7 @@ func main() {
 	}
 
 	err = compileStylesheets(stylesheets,
-		conf.TargetDir+"/assets/"+sorg.Release+"/app.css")
+		path.Join(versionedAssetsDir, "app.css"))
 	if err != nil {
 		log.Fatal(err)
 	}
