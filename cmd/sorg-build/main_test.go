@@ -17,7 +17,8 @@ import (
 var db *sql.DB
 
 func init() {
-	err := sorg.CreateTargetDirs()
+	conf.TargetDir = "./public"
+	err := sorg.CreateOutputDirs(conf.TargetDir)
 	if err != nil {
 		panic(err)
 	}
