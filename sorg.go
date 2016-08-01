@@ -45,8 +45,8 @@ var outputDirs = []string{
 	"twitter",
 }
 
-// CreateTargetDirs creates TargetDir and all other necessary directories for
-// the build if they don't already exist.
+// CreateOutputDirs creates a target directory for the static site and all
+// other necessary directories for the build if they don't already exist.
 func CreateOutputDirs(targetDir string) error {
 	start := time.Now()
 	defer func() {
