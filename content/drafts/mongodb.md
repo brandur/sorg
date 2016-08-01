@@ -66,18 +66,14 @@ data integrity (as discussed above) rather than any advancement made by the
 became obvious that MongoDB had lost the performance edge that it had
 originally touted][broken-by-design].
 
-Once again, I'm going to give MongoDB a pass on this one. If we apply [Hanlon's
-Razor][razor], I think it's much more likely that the original MongoDB
-developers fundamentally didn't understand that the way they were confirming
+Once again, I'm going to give MongoDB a pass on this one. The application of
+[Hanlon's Razor][hanlons-razor] suggests that it's much more likely that the
+original MongoDB developers didn't understand that the way they were confirming
 writes was problematic. They ran some benchmarks, and believing the good
-numbers to be the inherent result of their own brilliance, flouted them for the
-world to see. Later, realizing that guaranteeing data integrity was something
-that people cared about and which their system wasn't providing, and so slowly
-started withdrawing their claims around superior performance.
-
-However, the incident does given us some insight into the MongoDB developers
-themselves, most notably how their inexperience with data systems could have
-had dangerously harmful results.
+numbers to be the inherent result of the system's extraordinary engineering,
+flouted them for the world to see. Later, realizing that guaranteeing data
+integrity was something that people cared about and which they weren't
+providing, slowly started withdrawing the claims.
 
 ### Distributed Trouble (#trouble)
 
@@ -387,6 +383,7 @@ problems that are listed here, but at least you'll have a stable core.
 
 [aws-ha]: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
 [broken-by-design]: http://hackingdistributed.com/2013/01/29/mongo-ft/
+[hanlons-razor]: https://en.wikipedia.org/wiki/Hanlon's_razor
 [heroku-ha]: https://devcenter.heroku.com/articles/heroku-postgres-ha
 [jepsen1]: https://aphyr.com/posts/284-call-me-maybe-mongodb
 [jepsen2]: https://aphyr.com/posts/322-call-me-maybe-mongodb-stale-reads
@@ -394,6 +391,5 @@ problems that are listed here, but at least you'll have a stable core.
 [meteor]: https://engineering.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
 [meteor-hn]: https://news.ycombinator.com/item?id=11857674
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
-[razor]: https://en.wikipedia.org/wiki/Hanlon's_razor
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
 [write-concerns]: https://docs.mongodb.com/manual/reference/write-concern/
