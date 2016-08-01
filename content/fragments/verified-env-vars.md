@@ -28,7 +28,7 @@ behaves as if you hadn't specified anything at all.
 As I was attending Heavybit's Devguild earlier this week, Rob Szumski pointed
 out that Etcd solves this problem by verifying not just its command line flags,
 but its env vars as well. It assumes ownership of any env var with a prefix of
-`ETCD_` and notifies on the user when:
+`ETCD_` and notifies the user when:
 
 1. When an env var with a prefix of `ETCD_` has been specified, but which the
    program doesn't know about.
