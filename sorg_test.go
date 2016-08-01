@@ -8,6 +8,8 @@ import (
 	assert "github.com/stretchr/testify/require"
 )
 
+var targetDir = "./public"
+
 func TestCreateTargetDirs(t *testing.T) {
 	dir, err := ioutil.TempDir(os.TempDir(), "sorg-")
 	assert.NoError(t, err)
@@ -16,9 +18,9 @@ func TestCreateTargetDirs(t *testing.T) {
 	err = os.Chdir(dir)
 	assert.NoError(t, err)
 
-	err = CreateTargetDirs()
+	err = CreateOutputDirs(targetDir)
 	assert.NoError(t, err)
 
-	_, err = os.Stat(TargetDir)
+	_, err = os.Stat(targetDir)
 	assert.NoError(t, err)
 }

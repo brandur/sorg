@@ -21,7 +21,7 @@ LONG_TTL := 86400
 # that are expected to change more frequently like any HTML file.
 SHORT_TTL := 3600
 
-deploy: build
+deploy: build check-target-dir
 # Note that AWS_ACCESS_KEY_ID will only be set for builds on the master
 # branch because it's stored in `.travis.yml` as an encrypted variable.
 # Encrypted variables are not made available to non-master branches because
@@ -34,13 +34,13 @@ ifdef AWS_ACCESS_KEY_ID
 	# Note that we don't delete because it could result in a race condition in
 	# that files that are uploaded with special directives below could be
 	# removed even while the S3 bucket is actively in-use.
-	aws s3 sync ./public/ s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR) s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' $(AWS_CLI_FLAGS)
 
 	# Then move on to assets and allow S3 to detect content type.
-	aws s3 sync ./public/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --delete --follow-symlinks $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --delete --follow-symlinks $(AWS_CLI_FLAGS)
 
 	# Upload Atom feed files with their proper content type.
-	find ./public -name '*.atom' | sed "s|^\./public/||" | xargs -I{} -n1 aws s3 cp ./public/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
+	find $(TARGET_DIR) -name '*.atom' | sed "s|^\$(TARGET_DIR)/||" | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
 
 	# This one is a bit tricker to explain, but what we're doing here is
 	# uploading directory indexes as files at their directory name. So for
@@ -57,7 +57,7 @@ ifdef AWS_ACCESS_KEY_ID
 	#    directory cannot share a name.
 	# 2. The `index.html` files are useful for emulating a live server locally:
 	#    Golang's http.FileServer will respect them as indexes.
-	find ./public -name index.html | egrep -v './public/index.html' | sed "s|^\./public/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp ./public/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html
+	find $(TARGET_DIR) -name index.html | egrep -v '$(TARGET_DIR)/index.html' | sed "s|^$(TARGET_DIR)/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html
 else
 	# No AWS access key. Skipping deploy.
 endif
@@ -148,4 +148,9 @@ endif
 check-cloudfront-id:
 ifndef CLOUDFRONT_ID
 	$(error CLOUDFRONT_ID is required)
+endif
+
+check-target-dir:
+ifndef TARGET_DIR
+	$(error TARGET_DIR is required)
 endif
