@@ -85,16 +85,13 @@ day-to-day basis.
 ## Problems (#problems)
 
 Let's talk about why MongoDB is actually a poor choice for your new production
-system. The reasons are almost entirely due to the basic guarantees that you'd
-want to have in any database system, but which it fails to give you. These
-guarantees even have a memorable acronym that was coined all the way back in
-the early 80s (which gives you an idea how long they've been considered a good
-idea), and which you've probably heard before: **ACID** (atomicity,
-consistency, isolation, and durability).
+system. It's almost entirely to do with a set of basic guarantees that have a
+memorable acronym coined back in the early 80s, and which you'd probably heard
+before: **ACID** (atomicity, consistency, isolation, and durability).
 
-MongoDB used to miss every letter in ACID. As of version 3, it only misses
-three out of four. Here I'll explain why the one they finally have (durability)
-is good progress, but nowhere near enough.
+MongoDB historially failed to comply to every letter in ACID, but as of version
+3, now only misses three out of four. Here I'll explain why the one they finally
+have (durability) is good progress, but nowhere near enough.
 
 ### No Atomicity (A) (#no-atomicity)
 
