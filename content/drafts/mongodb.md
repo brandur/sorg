@@ -1,24 +1,46 @@
 ---
 title: Don't Use MongoDB
-hook: Why MongoDB is never the right choice for a new system, but probably not for the reasons that you expected.
+hook: Why you should almost certainly use an ACID-compliant data store, even at scale.
 location: San Francisco
 published_at: 2016-08-01T00:23:52Z
 ---
 
-I spent many years operating a large Postgres installation before moving over
-to being a regular user of a large MongoDB cluster. Through various commentary
-online, I get the feeling that many developers understand that MongoDB is a
-somewhat suspect system, but can't quite articulate why despite there being
-many good reasons.
+After its initial release in 2009, MongoDB enjoyed quite some time in the
+spotlight, and could even be credited with re-popularizing the idea of a
+document-oriented database. The team focused specifically on claims of superior
+performance compared to its RDMS cousins, and its sharding-based horizontal
+scalability. But from there it fell on harder times as its performance numbers
+were [debunked][broken-by-design], and it became more clear that scalability
+has inherent downsides (see the infamous "MongoDB is web scale" dialog). The
+system is still widely available, but most developers have a much more measured
+opinion of it compared to the peak of its glory days.
 
-I don't think that using MongoDB is any sort of system, be it development or
-production, is _ever_ appropriate, and today I'll try to describe why.
+I spent many years operating a large Postgres installation before moving over
+to being a regular user of a large MongoDB cluster. It wasn't an improvement. I
+now had access to out-of-the-box sharding, but had lost access to hundreds of
+other features that helped ease development, operations, and ensuring system
+correctness.
+
+Through various pieces of commentary online, I get the feeling that many
+developers understand that MongoDB is somewhat suspect, but not for the right
+reasons. I don't think that the use of MongoDB in any sort of system, be it
+development or production, is ever appropriate, and I'll run through the
+reasons why, but only after first addressing some of its aspects that take the
+lion's share of the criticism, but are not its most serious drawbacks.
+
+Migrating between data stores is an incredibly costly project, so I write this
+with the hope that it might help some nascent projects and companies avoid
+starting on the wrong database, only to realize their mistake much later when
+it's more difficult to do something about it. My intention isn't to be
+mean-spirited, but rather to help counterbalance some of the misled hype
+initiatives that are still ongoing to sell MongoDB to young projects (the
+["MEAN stack"][mean] for example).
 
 ## Non-issues (#non-issues)
 
-I'll start off by addressing some of the more typical reasons that MongoDB is
-criticized. While everything in this section is a perfectly valid concern, I'll
-argue that there are _far_ more important reasons that it should be avoided.
+Lets start with the MongoDB problems that tend to draw a lot of fire. While
+everything in this list is a valid critique, none of them are what makes the
+choice of MongoDB a truly costly architectural mistake over the long run.
 
 ### Data Integrity (#data-integrity)
 
@@ -49,11 +71,10 @@ Once again, I'm going to give MongoDB a pass on this one. If we apply [Hanlon's
 Razor][razor], I think it's much more likely that the original MongoDB
 developers fundamentally didn't understand that the way they were confirming
 writes was problematic. They ran some benchmarks, and believing the good
-numbers to be the inherent result of their own programming brilliance, flouted
-them for the world to see. Later, they realized that guaranteeing data
-integrity was something that people cared about and which they weren't
-providing, and so slowly started withdrawing their claims around superior
-performance.
+numbers to be the inherent result of their own brilliance, flouted them for the
+world to see. Later, realizing that guaranteeing data integrity was something
+that people cared about and which their system wasn't providing, and so slowly
+started withdrawing their claims around superior performance.
 
 However, the incident does given us some insight into the MongoDB developers
 themselves, most notably how their inexperience with data systems could have
@@ -63,19 +84,22 @@ had dangerously harmful results.
 
 MongoDB has performed poorly in Jepsen tests (see [inaccessible
 primary][jepsen1] and [stale reads][jepsen2]). While this is undoubtedly a
-problem, it's not what's going to cause you the most grief on a day-to-day
-basis.
+problem, it's not even close to what's going to cause you the most grief on a
+day-to-day basis.
 
 ## Problems (#problems)
 
-Let's talk about why MongoDB is actually bad. It's almost entirely due to the
-fact that the system fails to give you any of the basic guarantees that a data
-store is meant to give you. You've probably heard of them before because they
-have a memorable acronym: "ACID".
+Let's talk about why MongoDB is actually a poor choice for your new production
+system. The reasons are almost entirely due to the basic guarantees that you'd
+want to have in any database system, but which it fails to give you. These
+guarantees even have a memorable acronym that was coined all the way back in
+the early 80s (which gives you an idea how long they've been considered a good
+idea), and which you've probably heard before: **ACID** (atomicity,
+consistency, isolation, and durability).
 
 MongoDB used to miss every letter in ACID. As of version 3, it only misses
-three out of four. Let me explain why the one they finally have ("D" for
-durability) is good progress, but nowhere near enough.
+three out of four. Here I'll explain why the one they finally have (durability)
+is good progress, but nowhere near enough.
 
 ### No Atomicity (A) (#no-atomicity)
 
@@ -83,16 +107,19 @@ What happens in a big MongoDB-based production system when a request that
 commits multiple documents fails halfway through? Well, it's exactly what you
 would think given a few moments to think about it: Mongo only guarantees
 consistency within updates of a single document, so if you fail between
-documents, you're left with inconsistent data.
+documents, you're left with inconsistent data. ACID-compliant stores avoid this
+problem through their guarantee of _atomicity_ (the "A" in ACID) which dictates
+that any given transaction either succeeds fully or fails.
 
 In the optimal system, you have an automated process that attempts to identify
 this class of failure and clean them up by reverting data to a consistent
 state. But here in the real world, with deadlines and scarce engineering time,
 you'll almost certainly have a human operator that dives in and _manually_
-repairs that bad data. Remember that the process could have been cut off
-between _any_ two Mongo commits, so you could be left with an innumerable
-number of edge cases that are difficult to compensate for with an automated
-repair system.
+repairs that bad data as your application runs into new and unexpected edge
+cases. Remember that the process could have been cut off between _any_ two
+Mongo commits, so you could be left with innumerable combinations of mangled
+information that would have to be compensated for by any automated repair
+system.
 
 Mongo recommends that you solve this problem by [implementing two-phase commits
 in your application][two-phase]. This is certifiably _insane_. Putting your own
@@ -106,10 +133,10 @@ reason at all.
 
 ### No Consistency (C) (#no-consistency)
 
-In a database, the consistency property guarantees that for any given
-transaction, the system will always transition from one valid state to another.
-Mechanisms like constraints, cascades, and triggers have all fired as expected
-before a new state is considered valid.
+In an ACID-compliant store, the _consistency_ (the "C" in ACID) property
+guarantees that for any given transaction, the system will always transition
+from one valid state to another. Mechanisms like constraints, cascades, and
+triggers have all fired as expected before a new state is considered valid.
 
 In practice, that means you can do a lot of useful things:
 
@@ -134,33 +161,43 @@ alerts on duplicate records. To check data constraints you'll need locking
 combined with application-level conditional statements sprinkled throughout
 your codebase. To produce an audit trail, you'll need to implement your own
 two-phase commit along with checks throughout your codebase to make sure that
-it's not accessing uncommitted data.
+nothing is accessing uncommitted data (i.e. partially deleted account records
+where the audit trail has not yet been confirmed).
 
 By using MongoDB, you're throwing away an invaluable tool for guaranteeing that
 no matter what happens in your database, data is _always_ valid. It's not
 impossible to do this from application-level code, but trying to do so is
-entering a world of needlessly complicated application code, buggy
-implementations, and corner cases abound.
+entering a world of needless complication, buggy implementations, and corner
+cases abound.
 
-#### Example: Orphans
+#### Example: Orphaned Data
+
+TODO: 
 
 ### No Isolation (I) (#no-isolation)
 
 Mongo supports atomic operations at the document level. Despite what you might
 read in their documentation, in a system anchored in the real world,
-document-level atomic operations are about as useful as _no atomic operations
-at all_. That's because any non-trivial computation is almost certainly going
-to operate on multiple documents, and not having strong atomicity guarantees is
+document-level atomic operations are about as useful as no atomic operations at
+all. That's because any non-trivial computation is almost certainly going to
+operate on multiple documents, and not having strong atomicity guarantees is
 going to bring you into a world of contention, failure, and pain.
 
-So how do you deal with the fact that a Mongo-based production system can't
-give you even nominal guarantees around isolation? _You implement locking
-yourself_.
+An ACID-compliant store can guarantee that operations spanning multiple records
+are safe through _isolation_ (the "I" in ACID). Even if two transactions are
+modifying the same set of records simultaneously, the database will ensure
+their correctness by hiding their changes from one another. In the case where
+those changes end up being incompatible, only one of those transactions is
+allowed to commit.
+
+So how do you safely modify related reocrds despite MongoDB not being able to
+give you even nominal guarantees around isolation? Well, you implement your own
+application-level locking mechanism of course.
 
 Yes, you read that right. Instead of having your mature data store take care of
-this tremendously difficult problem for you, you pull it into your own
-almost-certainly-buggy application-level code. And don't think for a minute
-that you're going to build in the incredibly sophisticated optimistic locking
+this tremendously difficult problem for you, you pull it into your own complex,
+operationally heavy, and probably buggy code. And don't think for a minute that
+you're going to build in the incredibly sophisticated optimistic locking
 features you get with any modern RDMS; no, to simplify the complicated problem
 and save time, you're going to build a pessimistic locking scheme. That means
 that simultaneous accesses on the same resource will block on each other to
@@ -172,6 +209,8 @@ Lack of isolation can lead to other types of even more subtle problems as well.
 a query's search predicates before and after the update.
 
 #### Example: Test Data Deletion
+
+TODO: Data is instantaneously inconsistent as a deletion job is running through it.
 
 ### Analytics (#analytics)
 
@@ -188,7 +227,7 @@ to avoid committing the engineering and maintenance effort necessary to
 accomplish this for as long as possible so that those resources can be
 allocated to more critical projects.
 
-## Non-solutions (#non-solutions)
+## Anti-features (#anti-features)
 
 ### The Oplog is sure cool. (#oplog)
 
@@ -352,6 +391,7 @@ problems that are listed here, but at least you'll have a stable core.
 [heroku-ha]: https://devcenter.heroku.com/articles/heroku-postgres-ha
 [jepsen1]: https://aphyr.com/posts/284-call-me-maybe-mongodb
 [jepsen2]: https://aphyr.com/posts/322-call-me-maybe-mongodb-stale-reads
+[mean]: https://en.wikipedia.org/wiki/MEAN_(software_bundle)
 [meteor]: https://engineering.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
 [meteor-hn]: https://news.ycombinator.com/item?id=11857674
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
