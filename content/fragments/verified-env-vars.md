@@ -45,7 +45,7 @@ would suggest that in its spirit a well-designed GPG look for `GPG`-prefixed
 env vars as well, and show a warning when a user tries to use one.
 
 I'm a huge supporter of these minor tweaks to the "old ways" of CLI design that
-have a disproportionate impact on improving usability. More information is
-always better.
+have a disproportionately positive impact on improving usability compared to
+the effort required to implement them. More information is always better.
 
 [code]: https://github.com/coreos/etcd/blob/e2088b8073aa4f80a9d88b134ec71b749839db5b/pkg/flags/flag.go#L110,L127
