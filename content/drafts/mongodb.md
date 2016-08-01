@@ -31,9 +31,9 @@ Migrating between data stores is an incredibly costly project, so I write this
 with the hope that it might help some nascent projects and companies avoid
 starting on the wrong database, only to realize their mistake much later when
 it's more difficult to do something about it. My intention isn't to be
-mean-spirited, but rather to help counterbalance some of the misled hype
-initiatives that are still ongoing to sell MongoDB to young projects (the
-["MEAN stack"][mean] for example).
+mean-spirited, but rather to help counterbalance some of the hype initiatives
+that are still ongoing to sell MongoDB to young projects (the ["MEAN
+stack"][mean] for example).
 
 ## Non-issues (#non-issues)
 
