@@ -8,7 +8,7 @@
       {{if ne .Fragment.Image ""}}
         img#mood src={{.Fragment.Image}}
       {{end}}
-      #title
+      #title.fragments-title
         h1 {{.Fragment.Title}}
         .meta
           {{FormatTime .Fragment.PublishedAt}}
