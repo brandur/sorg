@@ -25,9 +25,9 @@ far more offensive than that design is what happens when you pick the wrong
 one: GPG doesn't even acknowledge that there might be a problem and silently
 behaves as if you hadn't specified anything at all.
 
-As I was attending Heavybit's Devguild earlier this week, someone pointed out
-that Etcd solves this problem by verifying not just its command line flags, but
-it's env vars as well. It assumes ownership of any env var with a prefix of
+As I was attending Heavybit's Devguild earlier this week, Rob Szumski pointed
+out that Etcd solves this problem by verifying not just its command line flags,
+but its env vars as well. It assumes ownership of any env var with a prefix of
 `ETCD_` and notifies on the user when:
 
 1. When an env var with a prefix of `ETCD_` has been specified, but which the
@@ -38,7 +38,7 @@ it's env vars as well. It assumes ownership of any env var with a prefix of
 Neither problem produces an error (the first is a warning and the second a
 notice) so that the program stays backward compatible even if a new version of
 Etcd removes an env var that a user was sending a value in for. [Here's the
-code][code] that accomplishes the feat.
+code][code] that accomplishes the effect
 
 This design wouldn't directly solve the `GPG` vs. `GNUPG` problem above, but I
 would suggest that in its spirit a well-designed GPG look for `GPG`-prefixed
