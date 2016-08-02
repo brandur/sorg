@@ -37,9 +37,9 @@ stack"][mean] for example).
 
 ## Non-issues (#non-issues)
 
-Lets start with the MongoDB problems that tend to draw a lot of fire. While
-everything in this list is a valid critique, none of them are what makes the
-choice of MongoDB a truly costly architectural mistake over the long run.
+Lets start with some issues that tend to draw a lot of fire. While everything
+in this list is a valid critique, none of them are what makes the choice of
+MongoDB a truly costly architectural mistake over the long run.
 
 ### Data Integrity (#data-integrity)
 
