@@ -45,16 +45,16 @@ MongoDB a truly costly architectural mistake over the long run.
 
 For a very long time, MongoDB considered a write to be complete and fully
 persisted [as soon as it had been buffered in the outgoing socket buffer of the
-client host][broken-by-design]. It's hopefully needless to say, but such
-behavior doesn't even beget a partial guarantee of data integrity, and could
-easily result in your most important information being flushed down the drain.
+client host][broken-by-design]. This behavior wasn't even a partial guarantee
+of integrity, and could easily result in data loss.
 
-Although it was _years_ before this problem was ever addressed, I'm willing to
-give them a pass so as not to detract from more important matters. As of
-version 3, MongoDB clients now default their [`w` "write concern" to
-1][write-concerns], meaning that writes are not considered persisted until
-confirmed by a standalone MongoDB server or replica set primary, which means
-that by default, your data will largely be safe on a modern version of MongoDB.
+Although it was _years_ before this problem was ever addressed satisfactorily,
+I'm willing to give them a pass so as not to detract from more important
+matters. As of version 3, MongoDB clients now default their [`w` "write
+concern" to 1][write-concerns], meaning that writes are not considered
+persisted until confirmed by a standalone server or replica set primary. This
+is a sane change, and your data will largely be safe on modern versions of
+MongoDB.
 
 ### Dishonest Benchmarks (#dishonest-benchmarks)
 
@@ -115,7 +115,7 @@ project's development time by 100x for no good reason at all.
 
 #### Example: Manual Request Clean-up
 
-TODO: This sections is not complete.
+**TODO: This section is not complete.**
 
 What happens in a big MongoDB-based production system when a request that
 commits multiple documents fails halfway through? Well, you're left with
@@ -171,7 +171,7 @@ cases abound.
 
 #### Example: Orphaned Data
 
-TODO: 
+**TODO: This section is not complete.**
 
 ### No Isolation (I) (#no-isolation)
 
@@ -209,7 +209,9 @@ a query's search predicates before and after the update.
 
 #### Example: Test Data Deletion
 
-TODO: Data is instantaneously inconsistent as a deletion job is running through it.
+**TODO: This section is not complete.**
+
+Data is instantaneously inconsistent as a deletion job is running through it.
 
 ### Analytics (#analytics)
 
