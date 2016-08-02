@@ -98,6 +98,9 @@ type Conf struct {
 
 	// Drafts is whether drafts of articles and fragments should be compiled
 	// along with their published versions.
+	//
+	// Activating drafts also prompts the creation of a robots.txt to make sure
+	// that drafts aren't inadvertently accessed by web crawlers.
 	Drafts bool `env:"DRAFTS,default=false"`
 
 	// ContentOnly tells the build step that it should build using only files
@@ -402,6 +405,11 @@ func main() {
 	}
 
 	err = compileReading(db)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = compileRobots(path.Join(conf.TargetDir, "robots.txt"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -754,6 +762,23 @@ func compileReading(db *sql.DB) error {
 	if err != nil {
 		return err
 	}
+
+	return nil
+}
+
+func compileRobots(outPath string) error {
+	if !conf.Drafts {
+		return nil
+	}
+
+	outFile, err := os.Create(outPath)
+	if err != nil {
+		return err
+	}
+	defer outFile.Close()
+
+	outFile.WriteString("User-agent: *\n" +
+		"Disallow: /")
 
 	return nil
 }

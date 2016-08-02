@@ -130,6 +130,26 @@ func TestCompileReading(t *testing.T) {
 	//assert.NoError(t, err)
 }
 
+func TestCompileRobots(t *testing.T) {
+	dir, err := ioutil.TempDir("", "target")
+	assert.NoError(t, err)
+	path := path.Join(dir, "robots.txt")
+
+	conf.Drafts = false
+	err = compileRobots(path)
+	assert.NoError(t, err)
+
+	_, err = os.Stat(path)
+	assert.True(t, os.IsNotExist(err))
+
+	conf.Drafts = true
+	err = compileRobots(path)
+	assert.NoError(t, err)
+
+	_, err = os.Stat(path)
+	assert.NoError(t, err)
+}
+
 func TestCompileRuns(t *testing.T) {
 	//
 	// No database
