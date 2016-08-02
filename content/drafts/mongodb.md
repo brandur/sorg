@@ -95,33 +95,40 @@ finally have (durability) is good progress, but nowhere near enough.
 
 ### No Atomicity (A) (#no-atomicity)
 
+In an ACID-comliant store, the _atomicity_ (the "A" in ACID) property
+guarantees all the work execute in a single transaction either suceeds entirely
+or fails, leaving the database unchanged.
+
+MongoDB guarantees atomicity for updates on a single document, but not beyond.
+That's enough if a single document contains all the data that needs to be
+changed, but any non-trivial application inevitably involves a web of relations
+involving many interacting models. MongoDB can't guarantee that changes across
+more than one of these are safe.
+
+Their documentation recommends that you solve this problem by [implementing
+two-phase commits in your application][two-phase], an idea that's as bold as it
+is completely depraved. Putting your own two-phase commit into even one place
+is time consuming and complex. A real-life product may have hundreds of
+interacting domain objects; putting two-phase commit in every time you want
+guaranteed consistency between two of them is a recipe for multiplying your
+project's development time by 100x for no good reason at all.
+
+#### Example: Manual Request Clean-up
+
+TODO: This sections is not complete.
+
 What happens in a big MongoDB-based production system when a request that
-commits multiple documents fails halfway through? Well, it's exactly what you
-would think given a few moments to think about it: Mongo only guarantees
-consistency within updates of a single document, so if you fail between
-documents, you're left with inconsistent data. ACID-compliant stores avoid this
-problem through their guarantee of _atomicity_ (the "A" in ACID) which dictates
-that any given transaction either succeeds fully or fails.
+commits multiple documents fails halfway through? Well, you're left with
+inconsistent data.
 
-In the optimal system, you have an automated process that attempts to identify
-this class of failure and clean them up by reverting data to a consistent
-state. But here in the real world, with deadlines and scarce engineering time,
-you'll almost certainly have a human operator that dives in and _manually_
-repairs that bad data as your application runs into new and unexpected edge
-cases. Remember that the process could have been cut off between _any_ two
-Mongo commits, so you could be left with innumerable combinations of mangled
-information that would have to be compensated for by any automated repair
-system.
+You can try to build an automated background system to compensate for this by
+looking for patterns in your database that are likely to be problematic, but
+the difficulty of this problem can be daunting. Failures are possible between
+_any two changes_ in the system, which creates a factorial set of possibilities
+for corruption that need to be found and addressed.
 
-Mongo recommends that you solve this problem by [implementing two-phase commits
-in your application][two-phase]. This is certifiably _insane_. Putting your own
-two-phase commit into even one place is time consuming and complex. A real-life
-product may have hundreds of interacting domain objects; putting two-phase
-commit in every time you want guaranteed consistency between two of them is a
-recipe for multiplying your project's development time by 100x for no good
-reason at all.
-
-#### Example: Manual Incident Clean-up
+More likely, it'll be an operator's job to go through and manually fix problems
+according to their human intuition.
 
 ### No Consistency (C) (#no-consistency)
 
