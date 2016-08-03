@@ -35,7 +35,7 @@ incredibly costly project, and I'll consider this writing a success if I can
 help even one nascent project or company avoid starting out on MongoDB, only to
 realize the mistake much later when it's almost impossible to fix.
 
-## Non-issues (#non-issues)
+## Lightning Rods (#lightning-rods)
 
 Lets start with some issues that tend to draw a lot of fire. While everything
 here is a valid critique, none of it is what makes the choice of MongoDB a
