@@ -3,9 +3,9 @@ title: Gh-ost
 published_at: 2016-08-03T07:59:34Z
 ---
 
-Yesterday, GitHub broadcasted a sense of self-satisfaction far and wide with
-the release of [Gh-ost][gh-ost], a tool to help makes changes to an online
-MySQL database.
+Yesterday, GitHub broadcasted an indomitable sense of self-satisfaction far and
+wide with the release of [Gh-ost][gh-ost], a tool to help makes changes to an
+online MySQL database.
 
 In MySQL, changes to a database's schema or indexes somewhat infamously require
 a full table lock which prevents other operations from running simultaneously.
