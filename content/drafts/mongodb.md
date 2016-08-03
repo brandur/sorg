@@ -368,13 +368,14 @@ in Postgres instead of Mongo. You'll get the flexibility that you're after [3],
 but also an ACID-compliant system and the ability to introduce constraints [4].
 
 **Do you need incredible scalability that Postgres can't possibly provide?**
-Unless you're Google or Facebook, you probably don't, but if you really
-_really_ do, you should store your core data (users, apps, payment methods,
-servers, etc.) in Postgres, and move those data sets that need super
-scalability out into separate scalable systems (or shard just those resources)
-_as late as you possibly can_. The chances are that you'll never even get to
-that point, and if you do, you may still have to deal with some of the same
-problems that are listed here, but at least you'll have a stable core.
+Unless you're Google, you probably don't, but if you really _really_ do, you
+should store your core data (users, apps, payment methods, servers, etc.) in
+Postgres, and move those data sets that need super scalability out into
+separate scalable systems (or shard just those resources) _as late as you
+possibly can_. The chances are that you'll never even get to that point, and if
+you do, you may still have to deal with some of the same problems that are
+listed here, but at least you'll have a stable core. If you actually are
+Google, then sure, just use Bigtable or whatever.
 
 [1] [Hacker News commentary][meteor-hn] for Meteor's article.
 
