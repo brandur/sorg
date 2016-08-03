@@ -25,5 +25,6 @@ the overwhelming entropic forces at bay.
 
 [1] That's "all" with a few exceptions; most notably, OSS projects that can
     afford to commit a disproportionate amount of time in the interest of
-    archieving the highest quality standards. But this is vanishingly rare
-    within a resource-constrained corporate environment.
+    archieving the highest quality standards. But this level of expensive
+    attention to detail is vanishingly rare within a resource-constrained
+    corporate environment.
