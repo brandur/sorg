@@ -66,7 +66,7 @@ data integrity (as discussed above) rather than any advancement made by the
 became obvious that MongoDB had lost the performance edge that it had
 originally touted][broken-by-design].
 
-Once again, I'm going to give MongoDB a pass here. The application of [Hanlon's
+Once again, I'm giving MongoDB a pass here. The application of [Hanlon's
 Razor][hanlons-razor] suggests that it's much more likely that the original
 MongoDB developers didn't understand that the way they were confirming writes
 was problematic. They ran some benchmarks, and believing the good numbers to be
