@@ -19,11 +19,11 @@ a CloudFront distribution at one of their [~40 edge locations][cloudfront] from
 around the world. Every page is static HTML so there's no dynamic rendering or
 data store access to slow anything down.
 
-Admittedly the old stack, which was dynamically rendered but buffered by
-rack-cache and using CloudFlare as a CDN, was pretty fast already. But I like
-that the new stack is all hosted by one company (AWS) rather than being
-straddled across CloudFlare and Heroku, and that I now have fine-grain control
-over the behavior of my CDN.
+The old stack, which was dynamically rendered but buffered by rack-cache and
+using CloudFlare as a CDN, was pretty fast already. But I like that the new
+stack is all hosted by one company (AWS) rather than being straddled across
+CloudFlare and Heroku, and that I now have fine-grain control over the behavior
+of my CDN.
 
 ## Static Is Resilient
 
@@ -46,12 +46,11 @@ practice to follow the currently released version of Ruby at all times lest you
 be caught with a major disparity gap when a major backwards incompatible change
 comes down the pipe in the future.
 
-Ruby's worst maintenance problem though is that every gem that needs even
-reasonable levels of performance is written in C. These native extensions are
-built as bundler installs gems, and are prone to breakage as libraries that
-they're linked against on the system are updated. I can't even count how many
-hours I've sunk into fixing eventmachine builds because something changed in
-OpenSSL.
+Ruby's worst maintenance problem is that every gem that needs even reasonable
+levels of performance is written in C. These native extensions are built as
+bundler installs gems, and are prone to breakage as libraries that they're
+linked against on the system are updated. I can't even count how many hours
+I've sunk into fixing eventmachine builds because something changed in OpenSSL.
 
 From a longevity perspective, Go is Ruby's polar opposite. The language and its
 core libraries are incredibly stable, and no release in recent memory has been
@@ -64,7 +63,7 @@ contemporary Go compiler from ten years in the future with no changes. You
 couldn't say the same about a Ruby codebase even when thinking about only two
 years down the road.
 
-But even in a future where all compilers have failed, I'm still left with the
+And even in a future where all compilers have failed, I'm still left with the
 build artifact itself in S3 which is a simple collection of HTML, CSS, and
 image files that will run anywhere, including a browser pointed at localhost.
 It's trivially simple to move them around or archive them permanently.
@@ -74,9 +73,8 @@ It's trivially simple to move them around or archive them permanently.
 Considering that I originally started publishing on the original static site
 generators like Movable Type, then went dynamic after the static site craze of
 the early 2010s and joining Heroku, it's mildly amusing to me that I'm going
-back to my roots. That said, I'm excited to be back on a platform that lets me
-make big changes more safely, and eats less of my time in ongoing maintenance,
-so it should all be worthwhile.
+back to my roots. That said, I'm happy to be back on a platform that lets me
+make big changes more safely and eats less of my time in ongoing maintenance.
 
 [cloudfront]: https://aws.amazon.com/cloudfront/details/
 [org]: https://github.com/brandur/org
