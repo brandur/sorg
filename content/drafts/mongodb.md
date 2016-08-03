@@ -205,6 +205,9 @@ a query's search predicates before and after the update.
 
 **TODO: This section is not complete.**
 
+Note: Maybe use request locking as the example here and test data deletion for
+consistency?
+
 Data is instantaneously inconsistent as a deletion job is running through it.
 
 ### Analytics (#analytics)
