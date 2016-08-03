@@ -271,7 +271,7 @@ machine's resources.
 While a great idea in theory, in my experience that when easily available, it's
 vastly more likely for sharding to be abused than used appropriately.
 Enthusiastic engineers will inevitably shard prematurely and unwisely, and the
-darker sides of sharing become apparent immediately:
+darker sides of sharding become apparent immediately:
 
 * Cross-record ACID guarantees and constraints are gone forever.
 * Data becomes difficult to find and cross-reference because it exists across a
