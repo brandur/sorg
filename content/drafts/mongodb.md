@@ -20,7 +20,7 @@ I spent many years operating a large Postgres installation before moving over
 to being a regular user of a large MongoDB cluster. Needless to say, it wasn't
 an improvement. I now had access to out-of-the-box sharding, but had lost
 access to hundreds of other features that helped ease development, operations,
-and ensuring correctness.
+and most importantly, ensuring correctness.
 
 These days many developers understand that MongoDB is somewhat suspect, but
 when prompted, they'll more often than not cite problems with its potential for
