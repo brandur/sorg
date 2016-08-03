@@ -106,12 +106,13 @@ involving many interacting models. MongoDB can't guarantee that changes between
 any two of these entities are safe.
 
 Their documentation recommends that you solve this problem by [implementing
-two-phase commits throughout your application][two-phase], a comically depraved
-idea. Putting your own two-phase commit into even one place is time consuming
-and complex. A real-life product may have hundreds of interacting domain
-objects; putting two-phase commit in every time you want guaranteed consistency
-between two of them is a recipe for multiplying your project's development time
-and error proneness by 100x for no good reason at all.
+two-phase commits throughout your application][two-phase], an idea so misguided
+that it's comically depraved. Putting your own two-phase commit into even one
+place is time consuming and complex. A real-life product may have hundreds of
+interacting domain objects; putting two-phase commit in every time you want
+guaranteed consistency between two of them is a recipe for multiplying your
+project's development time and error proneness by 100x for no good reason at
+all.
 
 #### Example: Manual Request Clean-up
 
