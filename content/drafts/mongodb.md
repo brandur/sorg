@@ -28,9 +28,9 @@ data loss. There was a time when data loss was a real concern, but by and large
 that's no longer the case. I take the position that MongoDB is _never_ an
 appropriate choice for a new project, but not for the usual reasons.
 
-I don't write this to be mean-spirited, but rather to counterbalance some of
-the hype initiatives that are still ongoing to sell MongoDB to young projects
-(the ["MEAN stack"][mean] for example). Migrating between data stores is an
+I don't write this to be mean-spirited, but rather to balance some of the hype
+initiatives that are still ongoing to sell MongoDB to young projects (the
+["MEAN stack"][mean] for example). Migrating between data stores is an
 incredibly costly project, and I'll consider this writing a success if I can
 help even one nascent project or company avoid starting out on MongoDB, only to
 realize the mistake much later when it's almost impossible to fix.
