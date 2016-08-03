@@ -15,7 +15,7 @@ take minutes or more, in practice those types of changes are avoided.
 Companies address the problem in different ways. At iStockphoto, we took the
 easiest possible route: don't introduce new indexes or drop old columns. You
 can imagine how well that worked. GitHub suggests the use of Gh-ost, a rather
-complex tool that copies a table's schema to a new "ghost" table, makes
+elaborate tool that copies a table's schema to a new "ghost" table, makes
 required schema changes, backfills, and then cuts over after the replacement is
 ready.
 
