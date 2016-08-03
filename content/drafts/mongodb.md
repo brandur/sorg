@@ -354,9 +354,9 @@ network layer.
 
 If you're already on MongoDB, it may be very difficult to migrate off of and
 staying on it might be the right choice for your organization. I can relate.
-But if you're not in that situation, and are considering using MongoDB in a new
-project, you should reconsider. MongoDB for any new system is _never_ the right
-choice.
+But if you're not in that situation, and are evaluating the use of MongoDB in a
+new project, you should reconsider. MongoDB for any new system is _never_ the
+right choice.
 
 **Do you need document-style storage (i.e. nested JSON structures)?** You
 probably don't, but if you really _really_ do, you should use the `jsonb` type
