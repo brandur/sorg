@@ -143,9 +143,9 @@ In practice, that means you can do a lot of useful things:
 * By adding a uniqueness constraint, you can guarantee that two accounts cannot
   be created with the same email address, even if two requests try to do so
   simultaneously.
-* Say that any single account is owns many apps. By using a foreign key
-  constraint with `ON DELETE CASCADE`, you can guarantee that no app will ever
-  be orphaned if its parent account is deleted.
+* Say that any single account owns many apps. By using a foreign key constraint
+  with `ON DELETE CASCADE`, you can guarantee that no app will ever be orphaned
+  if its parent account is deleted.
 * Say that any single account belongs to a team. By using a foreign key
   constraint with `ON DELETE RESTRICT`, you can guarantee that a team can never
   be deleted as long as any accounts under it are still active.
