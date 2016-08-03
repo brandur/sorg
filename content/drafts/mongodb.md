@@ -30,10 +30,10 @@ appropriate choice for a new project, but not for the usual reasons.
 
 I don't write this to be mean-spirited, but rather to balance some of the hype
 initiatives that are still ongoing to sell MongoDB to young projects (the
-["MEAN stack"][mean] for example). Migrating between data stores is an
-incredibly costly project, and I'll consider this writing a success if I can
-help even one nascent project or company avoid starting out on MongoDB, only to
-realize the mistake much later when it's almost impossible to fix.
+["MEAN stack"][mean] for example). Migrating between data stores is incredibly
+costly, and I'll consider this writing a success if I can help even one nascent
+project or company avoid starting out on MongoDB, only to realize the mistake
+much later when it's almost impossible to fix.
 
 ## Lightning Rods (#lightning-rods)
 
