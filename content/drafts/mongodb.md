@@ -276,7 +276,7 @@ darker sides of sharding become apparent immediately:
 * Cross-record ACID guarantees and constraints are gone forever.
 * Data becomes difficult to find and cross-reference because it exists across a
   number of different systems. This makes the job of every operator more
-  difficult forevermore.
+  difficult.
 * Application code becomes riddled with sharding logic and trends towards
   becoming bloated and hugely complex.
 * It becomes apparent that a poor sharding strategy was used (early sharding
