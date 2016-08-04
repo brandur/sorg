@@ -96,8 +96,8 @@ finally have (durability) is good progress, but nowhere near enough.
 ### No Atomicity (A) (#no-atomicity)
 
 In an ACID-comliant store, the _atomicity_ (the "A" in ACID) property
-guarantees all the work execute in a single transaction either suceeds entirely
-or fails, leaving the database unchanged.
+guarantees all the work execute in a single transaction either succeeds
+entirely or fails, leaving the database unchanged.
 
 MongoDB guarantees atomicity for updates on a single document, but not beyond.
 That's enough if a single document contains all the data that needs to be
