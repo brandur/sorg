@@ -46,8 +46,8 @@ entire project was built to address deficiencies in MySQL, and that there might
 be a better way if you're not already locked into a big MySQL cluster. In fact,
 they'll even go out of their way [to champion MySQL over better
 alternatives][vmg] despite being fully aware how problematic its use can be.
-There's a level of willful misdirection here that I just can't wrap my head
-around.
+There's a level of seemingly willful misdirection here that I just can't wrap
+my head around.
 
 [gh-ost]: https://github.com/github/gh-ost
 [vmg]: https://twitter.com/vmg/status/757987482478776320
