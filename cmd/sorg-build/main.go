@@ -47,6 +47,9 @@ type Article struct {
 	// rendered, and then added separately.
 	Content string `yaml:"-"`
 
+	// Draft indicates that the article is not yet published.
+	Draft bool `yaml:"-"`
+
 	// HNLink is an optional link to comments on Hacker News.
 	HNLink string `yaml:"hn_link"`
 
@@ -139,6 +142,9 @@ type Fragment struct {
 	// frontmatter, and is rather split out of an fragment's Markdown file,
 	// rendered, and then added separately.
 	Content string `yaml:"-"`
+
+	// Draft indicates that the fragment is not yet published.
+	Draft bool `yaml:"-"`
 
 	// Image is an optional image that may be included with a fragment.
 	Image string `yaml:"image"`
@@ -459,13 +465,13 @@ func compileArticles() ([]*Article, error) {
 		log.Debugf("Compiled articles in %v.", time.Now().Sub(start))
 	}()
 
-	articles, err := compileArticlesDir(sorg.ContentDir + "/articles")
+	articles, err := compileArticlesDir(sorg.ContentDir+"/articles", false)
 	if err != nil {
 		return nil, err
 	}
 
 	if conf.Drafts {
-		drafts, err := compileArticlesDir(sorg.ContentDir + "/drafts")
+		drafts, err := compileArticlesDir(sorg.ContentDir+"/drafts", true)
 		if err != nil {
 			return nil, err
 		}
@@ -501,13 +507,14 @@ func compileFragments() ([]*Fragment, error) {
 		log.Debugf("Compiled fragments in %v.", time.Now().Sub(start))
 	}()
 
-	fragments, err := compileFragmentsDir(sorg.ContentDir + "/fragments")
+	fragments, err := compileFragmentsDir(sorg.ContentDir+"/fragments", false)
 	if err != nil {
 		return nil, err
 	}
 
 	if conf.Drafts {
-		drafts, err := compileFragmentsDir(sorg.ContentDir + "/fragments-drafts")
+		drafts, err := compileFragmentsDir(sorg.ContentDir+"/fragments-drafts",
+			true)
 		if err != nil {
 			return nil, err
 		}
@@ -989,7 +996,7 @@ func linkImageAssets() error {
 // Any other functions. Try to keep them alphabetized.
 //
 
-func compileArticlesDir(dir string) ([]*Article, error) {
+func compileArticlesDir(dir string, draft bool) ([]*Article, error) {
 	articleInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
@@ -1022,6 +1029,7 @@ func compileArticlesDir(dir string) ([]*Article, error) {
 			return nil, err
 		}
 
+		article.Draft = draft
 		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
 
 		if article.Title == "" {
@@ -1096,7 +1104,7 @@ func compileArticlesFeed(articles []*Article) error {
 	return feed.Encode(f, "  ")
 }
 
-func compileFragmentsDir(dir string) ([]*Fragment, error) {
+func compileFragmentsDir(dir string, draft bool) ([]*Fragment, error) {
 	fragmentInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
@@ -1129,6 +1137,7 @@ func compileFragmentsDir(dir string) ([]*Fragment, error) {
 			return nil, err
 		}
 
+		fragment.Draft = draft
 		fragment.Slug = strings.Replace(fragmentInfo.Name(), ".md", "", -1)
 
 		if fragment.Title == "" {
