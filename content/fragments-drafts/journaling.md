@@ -1,6 +1,6 @@
 ---
 title: Journaling
-published_at: 2016-08-04T00:53:16Z
+published_at: 2016-08-04T07:35:47Z
 ---
 
 A month ago I started keeping a journal. My writing sessions last about 15
