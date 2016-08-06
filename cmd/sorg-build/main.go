@@ -99,6 +99,10 @@ type Conf struct {
 	// in order to extract books, tweets, runs, etc.
 	BlackSwanDatabaseURL string `env:"BLACK_SWAN_DATABASE_URL"`
 
+	// Concurreny is the number of build Goroutines that will be used to
+	// perform build work items.
+	Concurreny int `env:"CONCURRENCY,default=10"`
+
 	// Drafts is whether drafts of articles and fragments should be compiled
 	// along with their published versions.
 	//
