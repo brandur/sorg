@@ -119,10 +119,10 @@ watch:
 
 # This is designed to be compromise between being explicit and readability. We
 # can allow the find to discover everything in vendor/, but then the fswatch
-# invocation becoems a huge unreadable wall of text that gets dumped into the
+# invocation becomes a huge unreadable wall of text that gets dumped into the
 # shell. Instead, find all our own *.go files and then just tack the vendor/
 # directory on separately (fswatch will watch it recursively).
-GO_FILES := $(shell find . -type f -name "*.go" ! -path "./org/*" ! -path "./vendor/*")
+GO_FILES := $(shell find . -type f -name "*.go" ! -path "./vendor/*")
 
 # We recompile our Go source when a file changes, but we also rebuild the site
 # because a change in source may have affected the build formula.
