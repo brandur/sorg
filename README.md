@@ -14,7 +14,7 @@ Install Go 1.6+, set up and run [black-swan][black-swan], then:
 ``` sh
 go get -u github.com/ddollar/forego
 
-cp .env.sample
+cp .env.sample .env
 
 # Used to run the test suite.
 createdb sorg-test
