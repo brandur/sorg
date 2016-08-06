@@ -1,17 +1,17 @@
 nav
   ul
     li
-      a href="/" data-pjax="#container" Home
+      a href="/" Home
     li
-      a href="/articles" data-pjax="#container" Articles
+      a href="/articles" Articles
     li
-      a href="/fragments" data-pjax="#container" Fragments
+      a href="/fragments" Fragments
     li
-      a href="/photos" data-pjax="#container" Photos
+      a href="/photos" Photos
     li
-      a href="/runs" data-pjax="#container" Runs
+      a href="/runs" Runs
     li
-      a href="/talks" data-pjax="#container" Talks
+      a href="/talks" Talks
     li
       a href="/twitter" Twitter
     li
