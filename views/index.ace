@@ -15,7 +15,7 @@
         ul
           {{range .Articles}}
             li
-              a href="/{{.Slug}}" data-pjax="#container" {{.Title}}
+              a href="/{{.Slug}}" {{.Title}}
               p {{HTML .Hook}}
           {{end}}
         p.older
@@ -26,7 +26,7 @@
         ul
           {{range .Fragments}}
             li
-              a href="/fragments/{{.Slug}}" data-pjax="#container" {{.Title}}
+              a href="/fragments/{{.Slug}}" {{.Title}}
               p
                 | {{WordCount .Content}} words. 
                 span.meta {{FormatTime .PublishedAt}}
