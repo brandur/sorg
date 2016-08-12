@@ -51,7 +51,7 @@ influence) an article like this one will inevitably have.
 
 **Addendum &mdash;** After a conversation with the original author of the
 article on gh-ost, I feel bad about the aggressive tone that this article
-originally conveyed, and have tried to correct my hubris by amending it
+originally conveyed and have tried to correct my hubris by amending it
 accordingly. Changes are visible in its [Git history][history].
 
 [1] There are some limitations to online schema changes in Postgres, most
