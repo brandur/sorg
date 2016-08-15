@@ -100,33 +100,7 @@ costliness. If the amount of water entering the bucket is greater than the
 amount leaving through the leak, the bucket starts to fill. Actions are
 disallowed if the bucket is full.
 
-``` monodraw
-┌──────────────────┐               *                      
-│                  │░             ***      User           
-│   LEAKY BUCKET   │░         │   ***    actions          
-│                  │░         │            add            
-└──────────────────┘░         │          "water"          
- ░░░░░░░░░░░░░░░░░░░░         │                           
-                              │    *                      
-                        ═╗    ▼   ***        ╔═      ▲    
-                         ║        ***        ║       │    
-                         ║                   ║       │    
-                         ║                   ║  τ = Bucket
-                         ║                   ║   capacity 
-                         ║*******************║       │    
-                         ║*******************║       │    
-                         ║*******************║       │    
-                         ╚════════╗*╔════════╝       ▼    
-                                  ║*║                     
-                                  ║*║                     
-                                 ═╝*╚═                    
-                                   *                      
-                              │    *                      
-                              │    *    Constant          
-                              │    *    drip out          
-                              ▼    *                      
-                                   *                      
-```
+!fig src="/assets/rate-limiting/leaky-bucket.svg" caption="A visualization of the \"leaky bucket\" analog, where water is symbolic of rate-limited actions."
 
 The leaky bucket produces a very smooth rate limiting effect. A user can still
 exhaust their entire quota by filling their entire bucket nearly
@@ -178,60 +152,12 @@ representation of the timeline and various variables for successful request.
 Here we see an allowed request where t<sub>0</sub> is within the bounds of TAT
 - (τ + T) (i.e. the time of the next allowed request):
 
-``` monodraw
-┌───────────────────┐                                                    
-│                   │░                                                   
-│  ALLOWED REQUEST  │░                                                   
-│                   │░                                                   
-└───────────────────┘░                                                   
- ░░░░░░░░░░░░░░░░░░░░░                                                   
-                                                                         
-                ┌────────┐                                               
-                │allow at│               ┌───────┐     ┌───────┐         
-                │ (past) │               │  t0   │     │  tat  │         
-                └───┬────┘               └───┬───┘     └───┬───┘         
-                    │                        │             │             
-                    ▼                        ▼             ▼             
-────────────────────+──────────────────────────────────────+───────▶     
-                    │//////////////////////////////////////│        time 
-                    │//////////////////////////////////////│             
-                    └──────────────────────────────────────┘             
-                     ◀────────────────τ + T───────────────▶              
-                                                                         
-                                                                         
-┌─────────────────────────────────────┐                                  
-│T     = Emission interval            │░                                 
-│τ     = Capacity of bucket           │░                                 
-│T + τ = Delay variation tolerance    │░                                 
-│tat   = Theoretical arrival time     │░                                 
-│t0    = Actual time of request       │░                                 
-└─────────────────────────────────────┘░                                 
- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                                 
-```
+!fig src="/assets/rate-limiting/allowed-request.svg" caption="A visualization an allowed request under GCRA. A request at time t0 is successful."
 
 For a failed request, the time of the next allowed request is in the future,
 prompting us to deny the request:
 
-``` monodraw
-┌───────────────────┐                                                    
-│                   │░                                                   
-│  DENIED REQUEST   │░                                                   
-│                   │░                                                   
-└───────────────────┘░                                                   
- ░░░░░░░░░░░░░░░░░░░░░                                                   
-                                                                         
-                ┌────────┐                                               
-  ┌───────┐     │allow at│                             ┌───────┐         
-  │  t0   │     │(future)│                             │  tat  │         
-  └───┬───┘     └───┬────┘                             └───┬───┘         
-      │             │                                      │             
-      ▼             ▼                                      ▼             
-────────────────────+──────────────────────────────────────+───────▶     
-                    │//////////////////////////////////////│        time 
-                    │//////////////////////////////////////│             
-                    └──────────────────────────────────────┘             
-                     ◀────────────────τ + T───────────────▶              
-```
+!fig src="/assets/rate-limiting/denied-request.svg" caption="A visualization a denied request under GCRA. A request at time t0 is rejected."
 
 Because GCRA is so dependent on time, it's critical to have a strategy for
 making sure that the current time is consistent if rate limits are being
