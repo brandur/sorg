@@ -168,7 +168,7 @@ By using MongoDB, you're throwing away an invaluable tool for guaranteeing that
 no matter what happens in your database, data is _always_ valid. It's not
 impossible to do this from application-level code, but trying to do so is
 entering a world of needless complication, buggy implementations, and corner
-cases abound.
+cases.
 
 #### Example: Orphaned Data
 
@@ -336,9 +336,9 @@ found, promoting a follower in its place.
 More imporantly though, HA is often not as much about the technical
 sophistication of a sytem as it is about the technical processes surrounding
 it. Everyone imagines that the major dangers to the availability of a data
-store are disk failures and network partitions, and one in a while those things
-really do happen. However, in most day-to-day development, a database has many
-more existential issues problems that are vastly more likely to occur:
+store are disk failures and network partitions, and once in a while those
+things really do happen. However, in most day-to-day development, a database
+has many more existential issues problems that are vastly more likely to occur:
 
 * Operator error in which somebody accidentally mangles some piece of critical
   data and brings an online system to its knees.
