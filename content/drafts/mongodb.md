@@ -114,13 +114,15 @@ guaranteed consistency between two of them is a recipe for multiplying your
 project's development time and error propensity by 100x for no good reason at
 all.
 
-#### Example: Manual Request Clean-up
+#### Atomicity Example: Manual Request Clean-up
 
 **TODO: This section is not complete.**
 
 What happens in a big MongoDB-based production system when a request that
 commits multiple documents fails halfway through? Well, you're left with
 inconsistent data.
+
+!fig src="/assets/mongodb/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
 
 You can try to build an automated background system to compensate for this by
 looking for patterns in your database that are likely to be problematic, but
@@ -170,9 +172,13 @@ impossible to do this from application-level code, but trying to do so is
 entering a world of needless complication, buggy implementations, and corner
 cases.
 
-#### Example: Orphaned Data
+#### Consistency Example: Test Data Deletion
 
 **TODO: This section is not complete.**
+
+!fig src="/assets/mongodb/state-conflict.svg" caption="Demonstration of how state conflicts between processes are possible without consistency."
+
+Data is instantaneously inconsistent as a deletion job is running through it.
 
 ### No Isolation (I) (#no-isolation)
 
@@ -202,14 +208,11 @@ Lack of isolation can lead to other types of even more subtle problems as well.
 [1] that are in the process of being updated despite their data matching about
 a query's search predicates before and after the update.
 
-#### Example: Test Data Deletion
+#### Isolation Example: Shared Resource Access
 
 **TODO: This section is not complete.**
 
-Note: Maybe use request locking as the example here and test data deletion for
-consistency?
-
-Data is instantaneously inconsistent as a deletion job is running through it.
+!fig src="/assets/mongodb/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
 ### Analytics (#analytics)
 
