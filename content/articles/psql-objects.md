@@ -21,34 +21,7 @@ highest logical layer. The complete hierarchy looks like this:
             * **Relation:** Any other type of named Postgres object like a
               table, view, index, or function.
 
-``` monodraw
-                       DATABASE CLUSTER                         
-                                                                
-┌─────────────────────────────────────────────────────────────┐ 
-│                                                             │█
-│                                                             │█
-│                                                             │█
-│      DATABASE_A                                             │█
-│     ┌────────────────────────────────────────────────┐      │█
-│     │                                                │░     │█
-│     │    Schema_1              Schema_2              │░     │█
-│     │   ╔══════════════════╗  ╔══════════════════╗   │░     │█
-│     │   ║ ┌──────────────┐ ║  ║                  ║   │░     │█
-│     │   ║ │   Table_A    │ ║  ║                  ║   │░     │█
-│     │   ║ └──────────────┘ ║  ║                  ║   │░     │█
-│     │   ║ ┌──────────────┐ ║  ║                  ║   │░     │█
-│     │   ║ │   Table_B    │ ║  ║                  ║   │░     │█
-│     │   ║ └──────────────┘ ║  ║                  ║   │░     │█
-│     │   ╚══════════════════╝  ╚══════════════════╝   │░     │█
-│     │                                                │░     │█
-│     └────────────────────────────────────────────────┘░     │█
-│      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░     │█
-│                                                             │█
-│                                                             │█
-│                                                             │█
-└─────────────────────────────────────────────────────────────┘█
- ███████████████████████████████████████████████████████████████
-```
+!fig src="/assets/psql-objects/cluster.svg" caption="A database cluster: tables nested within a schema, nested within a database."
 
 See [the Postgres documentation][schemas-docs] for more information about each
 of these layers.
