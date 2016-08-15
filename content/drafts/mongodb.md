@@ -351,7 +351,7 @@ has many more existential issues problems that are vastly more likely to occur:
 
 In practice, an HA data store helps you, but not as much as you'd think. I've
 seen as much or more downtime on a large Mongo system as I have on a Postgres
-system of similar scale; none of had anything to do with problems at the
+system of similar scale; none of it had anything to do with problems at the
 network layer.
 
 ## Summary (#summary)
