@@ -152,12 +152,12 @@ representation of the timeline and various variables for successful request.
 Here we see an allowed request where t<sub>0</sub> is within the bounds of TAT
 - (τ + T) (i.e. the time of the next allowed request):
 
-!fig src="/assets/rate-limiting/allowed-request.svg" caption="A visualization an allowed request under GCRA. A request at time t0 is successful."
+!fig src="/assets/rate-limiting/allowed-request.svg" caption="A visualization of an allowed request under GCRA. A request at time t0 is successful."
 
 For a failed request, the time of the next allowed request is in the future,
 prompting us to deny the request:
 
-!fig src="/assets/rate-limiting/denied-request.svg" caption="A visualization a denied request under GCRA. A request at time t0 is rejected."
+!fig src="/assets/rate-limiting/denied-request.svg" caption="A visualization of a denied request under GCRA. A request at time t0 is rejected."
 
 Because GCRA is so dependent on time, it's critical to have a strategy for
 making sure that the current time is consistent if rate limits are being
