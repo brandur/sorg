@@ -84,7 +84,14 @@ var figureRE = regexp.MustCompile(`!fig src="(.*)" caption="(.*)"`)
 func transformFigures(source string) string {
 	return figureRE.ReplaceAllStringFunc(source, func(figure string) string {
 		matches := figureRE.FindStringSubmatch(figure)
-		return fmt.Sprintf(figureHTML, matches[1], matches[2])
+		src := matches[1]
+
+		// This is a really ugly hack in that it relies on the regex above
+		// being greedy about quotes, but meh, I'll make it better when there's
+		// a good reason to.
+		caption := strings.Replace(matches[2], `\"`, `"`, -1)
+
+		return fmt.Sprintf(figureHTML, src, caption)
 	})
 }
 

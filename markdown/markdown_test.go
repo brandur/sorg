@@ -37,6 +37,15 @@ func TestTransformFigures(t *testing.T) {
 `,
 		transformFigures(`!fig src="fig-src" caption="fig-caption"`),
 	)
+
+	assert.Equal(t, `
+<figure>
+  <p><img src="fig-src"></p>
+  <figcaption>Caption with " quote.</figcaption>
+</figure>
+`,
+		transformFigures(`!fig src="fig-src" caption="Caption with \" quote."`),
+	)
 }
 
 func TestTransformFootnotes(t *testing.T) {
