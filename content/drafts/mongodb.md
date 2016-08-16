@@ -86,7 +86,7 @@ basis.
 
 Let's talk about why MongoDB is actually a poor choice for your new production
 system. It's almost entirely to do with a set of basic guarantees that have a
-memorable acronym coined back in the early 80s, and which you'd probably heard
+memorable acronym coined back in the early 80s, and which you've probably heard
 before: **ACID** (atomicity, consistency, isolation, and durability).
 
 MongoDB historially failed to comply to every letter in ACID, but as of version
@@ -172,13 +172,36 @@ impossible to do this from application-level code, but trying to do so is
 entering a world of needless complication, buggy implementations, and corner
 cases.
 
-#### Consistency Example: Test Data Deletion
+#### Consistency Example: User Signup (#user-signup)
 
-**TODO: This section is not complete.**
+If we have a service that accepts user signups, a very common constraint to put
+on it is that we don't want two accounts to share the same email address. While
+MongoDB has a partial solution to this with a [unique index][unique-index],
+that mechanism breaks down as soon as a collection is sharded because indexes
+are local to each shard.
 
-!fig src="/assets/mongodb/state-conflict.svg" caption="Demonstration of how state conflicts between processes are possible without consistency."
+!fig src="/assets/mongodb/sharded-user-collection.svg" caption="A collection of split across many shards."
 
-Data is instantaneously inconsistent as a deletion job is running through it.
+Uniqueness can be enforced for shard keys, but email isn't a good one because
+shard key values are immutable, and we'd like users to be able to change their
+email. Using it as a shard key is a poor solution at any rate because there can
+only be one shard key, but there may be other characteristics that should be
+unique across an entire collection.
+
+The solution to this problem in MongoDB is to maintain a smaller, secondary
+collection that's not sharded and which contains email addresses constrained
+with a unique index along with a pointer to the record in the main collection.
+While this is functional, it's a significant about of overhead, and MongoDB's
+lack of atomicity makes it a dangerous pattern; if a failure occurs and one
+collection is updated but not the other, the system can be left with two user
+records with the same email, or an email record without a corresponding user.
+
+Admittedly this example is somewhat contrived because this problem isn't
+specific to MongoDB: any database will have a difficult time guaranteeing
+consistency after data is stored between multiple nodes. However, MongoDB at
+best provides no advantage over much better databases, and at worst could be
+said to encourage sharding prematurely and without adequate education around the
+consistency problems that will inevitably arise from that sort of decision.
 
 ### No Isolation (I) (#no-isolation)
 
@@ -207,6 +230,14 @@ Lack of isolation can lead to other types of even more subtle problems as well.
 [Meteor wrote a good post about how MongoDB can fail to return results][meteor]
 [1] that are in the process of being updated despite their data matching about
 a query's search predicates before and after the update.
+
+#### Isolation Example: Test Data Deletion
+
+**TODO: This section is not complete.**
+
+!fig src="/assets/mongodb/state-conflict.svg" caption="Demonstration of how state conflicts between processes are possible without consistency."
+
+Data is instantaneously inconsistent as a deletion job is running through it.
 
 #### Isolation Example: Shared Resource Access
 
@@ -308,23 +339,30 @@ over time.
 
 A company I've worked for decided to implement Webhooks. Because sharding was
 readily available, the engineers in charge decided that it wouldn't be bad idea
-to just store every Webhook notification that ever went out, and all the
-interactions that we'd had with remote servers trying to deliver it. Worse yet,
-all of this was exposed through an API that some subset of customers started to
-depend on.
+to just store every Webhook notification that ever went out, and every
+interactions ever conducted with a remote server trying to deliver it. Worse
+yet, all of this was exposed through an API that some subset of customers
+started to depend on.
 
-We're now stuck in a complex situation where we have to manage an online data
-set on the scale of 10s of TBs, most of which is _never_ accessed, but which
-should ideally remain online to maximize backwards compatibility. This is
-hugely expensive in both computing resources and engineer time.
+!fig src="/assets/mongodb/webhooks.svg" caption="Visualization of Webhook storage."
 
-What _should_ have happened from the beginning is that if it was very important
-to have a Webhooks paper trail going back to the beginning of time, old events
-should have been moved offline to an archive like S3 so that they could be
-audited at some later time. More practically, it's probably not even worth
-going that far, and events could conceivably just be purged completely after a
-reasonable 30 or 90 day timeframe, leaving a data set small enough to run on a
-single node forever for everyone except a Google-sized system.
+Because API access was unrestricted, some consumers became dependent on having
+unfettered access to evey Webhook ever sent, and disallowing it at this point
+would break practical backwards compatibility, even if no such compatibility
+was promised.
+
+Sharding allowed the system to scale in the beginning with relative ease, but
+consequently left a product catastrophe. Months worth of engineering time will
+be eaten up figuring out how to make 10s of TBs of nearly worthless data
+accessible without affecting production systems.
+
+What _should_ have happened from the beginning is that even if it was very
+important to have a Webhooks paper trail going back to the beginning of time,
+old events should have been moved offline to an archive like S3 so that they
+could be audited at some later time. More practically, it's probably not even
+worth going that far, and events could conceivably just be purged completely
+after a reasonable 30 or 90 day timeframe, leaving a data set small enough to
+run on a single node forever for everyone except a Google-sized system.
 
 ### Well, if nothing else, at least it's HA! (#high-availability)
 
@@ -405,4 +443,5 @@ Google, then sure, just use Bigtable or whatever.
 [meteor-hn]: https://news.ycombinator.com/item?id=11857674
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
+[unique-index]: https://docs.mongodb.com/manual/core/index-unique/
 [write-concerns]: https://docs.mongodb.com/manual/reference/write-concern/
