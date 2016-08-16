@@ -39,8 +39,8 @@ much later when it's almost impossible to fix.
 ## Lightning Rods (#lightning-rods)
 
 Lets start with some issues that tend to draw a lot of fire. While everything
-here is a valid critique, none of it is what makes the choice of MongoDB a
-truly costly architectural mistake.
+here is a valid critique, none of it is what makes MongoDB a truly costly
+mistake.
 
 ### Data Integrity (#data-integrity)
 
@@ -115,24 +115,31 @@ guaranteed consistency between two of them is a recipe for multiplying your
 project's development time and error propensity by 100x for no good reason at
 all.
 
-#### Atomicity Example: Manual Request Clean-up (#request-cleanup)
+#### Atomicity Example: Request Failure (#request-failure)
 
-**TODO: This section is not complete.**
+So now that we've established that MongoDB transactions are not atomic outside
+of a single document, let's consider what happens in the very common case
+of an application that manipulates multiple objects during the course of a
+single request.
 
-What happens in a big MongoDB-based production system when a request that
-commits multiple documents fails halfway through? Well, you're left with
-inconsistent data.
+What happens when a request to a big MongoDB-based production system fails
+halfway due to an internal error or a client disconnect? Well, the answer is
+exactly what you'd hope it's not: you're left with inconsistent data that's not
+easy to reconcile.
 
 !fig src="/assets/mongodb/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
 
-You can try to build an automated background system to compensate for this by
-looking for patterns in your database that are likely to be problematic, but
-the difficulty of this problem can be daunting. Failures are possible between
-_any two changes_ in the system, which creates a factorial set of possibilities
-for corruption that need to be found and addressed.
+There are a few techniques that can be used to try and solve the problem.
+Two-phase commits between every two objects is one of them, but unlikely.
+Another is to build an automated system that runs out of band and tries to
+repair for inconsistencies by looking for certain problematic patterns. But the
+practical implications of that can be daunting: failures are possible between
+_any two changes_ in the system, creating an innumerable set of possibilities
+for corruption that need to be identified and addressed.
 
-More likely, it'll be an operator's job to go through and manually fix problems
-according to their human intuition.
+More likely than either of these, it'll be an operator's job to go through and
+manually fix data; not exactly the level of robustness that you'd hope for in
+the modern age.
 
 ### No Consistency (C) (#no-consistency)
 
