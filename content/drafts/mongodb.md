@@ -90,7 +90,7 @@ system. It's almost entirely to do with a set of basic guarantees that have a
 memorable acronym coined back in the early 80s, and which you've probably heard
 before: **ACID** (atomicity, consistency, isolation, and durability).
 
-MongoDB historially failed to comply to every letter in ACID, but as of version
+MongoDB historically failed to comply to every letter in ACID, but as of version
 3, now only misses three out of four. Here I'll explain why the one they
 finally have (durability) is good progress, but nowhere near enough.
 
