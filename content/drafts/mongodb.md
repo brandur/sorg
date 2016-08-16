@@ -311,7 +311,16 @@ allocated to more critical projects.
 
 ### Fast Prototyping (#fast-prototyping)
 
-**TODO: This section is not complete.**
+A perceived advantage of MongoDB is that its lack of structure and constraints
+makes it advantageous for getting applications up and running quickly; no pesky
+non-nullable columns, data types, `ALTER TABLE` statements, or foreign key
+constraints to deal with here!
+
+Every hour saved by not having to worry about data structure at the dawn of a
+new project will cost 1000 hours throughout the rest of its lifetime as those
+small inconsistencies start to add up and eventually build to the point where
+the known state of any single object is not reliable. Constraints are good, and
+I'll leave it at that.
 
 ### The Oplog (#oplog)
 
