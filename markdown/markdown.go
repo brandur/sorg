@@ -74,7 +74,7 @@ func transformCodeWithLanguagePrefix(source string) string {
 
 const figureHTML = `
 <figure>
-  <p><img src="%s"></p>
+  <p><a href="%s"><img src="%s"></a></p>
   <figcaption>%s</figcaption>
 </figure>
 `
@@ -91,7 +91,7 @@ func transformFigures(source string) string {
 		// a good reason to.
 		caption := strings.Replace(matches[2], `\"`, `"`, -1)
 
-		return fmt.Sprintf(figureHTML, src, caption)
+		return fmt.Sprintf(figureHTML, src, src, caption)
 	})
 }
 
