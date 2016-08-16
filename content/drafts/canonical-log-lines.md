@@ -35,11 +35,15 @@ between metrics and raw traces:
 2. **Canonical log lines.**
 3. Log traces.
 
+!fig src="/assets/canonical-log-lines/observability-tiers.svg" caption="The tiers of observability, showing the trade-off between query flexibility and ease of reference."
+
 ## What Is It? (#what-is-it)
 
 The canonical log line's implementation is dead simple: it's one big log line
 (probably in [logfmt](/logfmt)\) style that is emitted at the end of a request
 [1] and which contains a set of information tuples describing its aspects.
+
+!fig src="/assets/canonical-log-lines/canonical-log-lines.svg" caption="Canonical log lines being emitted (and ingested) for reach request."
 
 Some examples of the type o information that a canonical line might include:
 
