@@ -269,37 +269,37 @@ magic.
 
 #### Isolation Example: HTTP Requests (#http-requests)
 
-TODO: Needs rewrite.
+The example above demonstrates how without isolation, access between processes
+to shared resources can be problematic, but it illustrates a slightly unusual
+case. There's a much more common example that most of us are very familiar with
+which can be used to show the true extent of the problem: HTTP requests.
 
-As mentioned above, MongoDB can only guarantee an atomic change at the level of
-a single document. We know that in any real-world application there's inherent
-contention for resources, so how do you guarantee safety as two processes try
-to concurrently modify related sets of records? Well, you implement your own
-application-level locking scheme of course.
-
-Instead of having your mature data store take care of this tremendously
-difficult and hugely error prone problem for you, you pull it into your own
-complex, operationally heavy, and probably buggy code. And don't think for a
-minute that you're going to build in the incredibly sophisticated optimistic
-locking features you get with any modern RDMS; no, to simplify the complicated
-problem and save time, you're going to build a pessimistic locking scheme. That
-means that simultaneous accesses on the same sets of resources will block on
-each other to modify data, and make your system irreparably slower.
+A call to a web service on `PATCH /articles/:id` might update an article itself
+along with child objects like comments, tags, or advertisements. These
+resources are all a common collection that updates on the same article would
+contend naturally for. So what do you do if two simultaneous requests to `PATCH
+/articles/mongodb` try to update one article at the same time?
 
 !fig src="/assets/mongodb/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
-HTTP requests demonstrate the problem perfectly. If we issue two calls to
-`PATCH /articles/mongodb` to update an article with new content, one blocks
-until the other finishes.
+Those concurrent requests could lead to unacceptable state conflicts, so access
+to those shared resources must be controlled. This is often accomplished in
+MongoDB by implementing an application-level locking scheme.
+
+Instead of having a mature RDMS take care of this tremendously difficult and
+hugely error prone problem, it gets pulled in complex, operationally
+burdensome, and probably buggy application code. This will of course be a
+pessimistic locking scheme as well, so each request will block the next in line
+until it's finished with its update, making the system irreparably slower.
 
 ### Analytics (#analytics)
 
-By committing to MongoDB, with its sharded nature and inscrutable querying
-syntax, you're also implicitly commiting to building out a secondary
-warehousing system and ingestion pipeline so that it's possible to run
-analytics and other types of reporting in one place with a well-known query
-language like SQL. By sticking to an RDMS, you can get this almost for free by
-simply keeping a non-production follower available for this use [2].
+By committing to MongoDB, with its sharded nature and obscure querying syntax,
+you're also implicitly commiting to building out a secondary warehousing system
+and ingestion pipeline so that it's possible to run analytics and other types
+of reporting in one place with a well-known query language like SQL. By
+sticking to an RDMS, you can get this almost for free by simply keeping a
+non-production follower available for this use [2].
 
 While building a data warehouse will almost certainly be eventually
 appropriate, it can be a significant advantage especially for smaller companies
@@ -324,8 +324,8 @@ The oplog has traditionally been hailed as a feature that for which Postgres
 has no equivalent because its physical WAL is unsuitable to be ingested by
 anything but Postgres. While this may have been true before, Postgres now has
 "logical" WAL options like [pglogical][pglogical] have been introduced that
-will provide essentially the same functionality (and which is tenatively slated
-for core inclusion by Postgres 10, which will follow 9.6).
+will provide essentially the same functionality (tentatively slated for core
+inclusion by Postgres 10, which will follow version 9.6).
 
 That said, you almost certainly shouldn't be consuming either the oplog or a
 Postgres logical stream except under very special circumstances. Tracking
