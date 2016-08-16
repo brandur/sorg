@@ -1,6 +1,8 @@
 ---
 title: Journaling
 published_at: 2016-08-04T07:35:47Z
+hook: How 30 days into journaling it's become an extension for my mind; and a
+  much more reliable one at that.
 ---
 
 A month ago I started keeping a journal. My writing sessions last about 15
