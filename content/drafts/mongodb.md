@@ -271,22 +271,23 @@ allocated to more critical projects.
 
 ## Anti-features (#anti-features)
 
-### Fast prototyping. (#fast-prototyping)
+### Fast Prototyping (#fast-prototyping)
 
 **TODO: This section is not complete.**
 
-### The Oplog is sure cool. (#oplog)
+### The Oplog (#oplog)
 
-MongoDB offers a feature called called the oplog that's used for the primary in
-a replica set to stream change information which is then consumed by each
-secondary to stay up-to-date. The oplog is exposed via a MongoDB API so that it
-can also be read by your own services.
+MongoDB offers a feature called called an oplog that's used for the primary in
+a replica set to stream change information to its secondaries. The oplog is
+exposed via a MongoDB API as JSON so that it can also be easily consumed by
+your own services.
 
 The oplog has traditionally been hailed as a feature that for which Postgres
-has no equivalent because its physical WAL is unsuitable to be consumed by
+has no equivalent because its physical WAL is unsuitable to be ingested by
 anything but Postgres. While this may have been true before, Postgres now has
 "logical" WAL options like [pglogical][pglogical] have been introduced that
-will provide essentially the same functionality.
+will provide essentially the same functionality (and which is tenatively slated
+for core inclusion by Postgres 10, which will follow 9.6).
 
 That said, you almost certainly shouldn't be consuming either the oplog or a
 Postgres logical stream except under very special circumstances. Tracking
@@ -299,7 +300,7 @@ Instead, expose public representations of data through an API. If you need a
 stream, send that _public_ representation through a system like Kafka or
 Kinesis.
 
-### But at least it's scalable right? (#scalability)
+### Scalability (#scalability)
 
 By using sharding, MongoDB allows a large data set to be spread across many
 different compute nodes. This by extension distributes the workloads on that
@@ -311,15 +312,15 @@ machine's resources.
 >
 > &mdash; Abraham Maslow, 1966
 
-While a great idea in theory, in my experience that when easily available, it's
-vastly more likely for sharding to be abused than used appropriately.
+While a great idea in theory, I've already shown above how sharding can be
+disadvantageous when it comes to ensuring consistency. Also, in my experience,
+it's vastly more likely for sharding to be abused than used appropriately.
 Enthusiastic engineers will inevitably shard prematurely and unwisely, and the
 darker sides of sharding become apparent immediately:
 
 * Cross-record ACID guarantees and constraints are gone forever.
 * Data becomes difficult to find and cross-reference because it exists across a
-  number of different systems. This makes the job of every operator more
-  difficult.
+  number of different systems. This makes the jobs of operators more difficult.
 * Application code becomes riddled with sharding logic and trends towards
   becoming bloated and hugely complex.
 * It becomes apparent that a poor sharding strategy was used (early sharding
@@ -373,22 +374,26 @@ worth going that far, and events could conceivably just be purged completely
 after a reasonable 30 or 90 day timeframe, leaving a data set small enough to
 run on a single node forever for everyone except a Google-sized system.
 
-### Well, if nothing else, at least it's HA! (#high-availability)
+### High Availability (#high-availability)
 
-It's true that MongoDB implements a form of easy high availability (HA) by
-allowing automatic failover when the current primary becomes unavailable by
-electing a secondary to primary in its place. It's worth nothing though that
-this isn't too much different from the HA schemes implemented in Postgres by
-services like [AWS][aws-ha] or [Heroku][heroku-ha], which essentially do the
-exactly the same thing as Mongo by looking for an unhealthy primary and if
-found, promoting a follower in its place.
+MongoDB implements a form of easy high availability (HA) by allowing automatic
+failover when the current primary becomes unavailable by electing a secondary
+to primary in its place.
+
+But while other MongoDB has been catching up to other databases with regards to
+durability, other databases have been catching up to MongoDB in HA. The
+secondary election schema described isn't substantially different than the HA
+schemes implemented in Postgres by services like [AWS][aws-ha] or
+[Heroku][heroku-ha], which essentially do the exactly the same thing as Mongo
+by looking for an unhealthy primary and if found, promoting a follower in its
+place.
 
 More imporantly though, HA is often not as much about the technical
 sophistication of a sytem as it is about the technical processes surrounding
 it. Everyone imagines that the major dangers to the availability of a data
 store are disk failures and network partitions, and once in a while those
 things really do happen. However, in most day-to-day development, a database
-has many more existential issues problems that are vastly more likely to occur:
+has other existential problems that are vastly more likely to occur:
 
 * Operator error in which somebody accidentally mangles some piece of critical
   data and brings an online system to its knees.
@@ -400,7 +405,7 @@ has many more existential issues problems that are vastly more likely to occur:
   resources.
 
 In practice, an HA data store helps you, but not as much as you'd think. I've
-seen as much or more downtime on a large Mongo system as I have on a Postgres
+seen as much or more downtime on a large MongoDB system as I have on a Postgres
 system of similar scale; none of it had anything to do with problems at the
 network layer.
 
@@ -425,7 +430,7 @@ separate scalable systems (or shard just those resources) _as late as you
 possibly can_. The chances are that you'll never even get to that point, and if
 you do, you may still have to deal with some of the same problems that are
 listed here, but at least you'll have a stable core. If you actually are
-Google, then sure, just use Bigtable or whatever.
+Google, then sure, just use Bigtable or Cassandra. You can afford it.
 
 [1] [Hacker News commentary][meteor-hn] for Meteor's article.
 
