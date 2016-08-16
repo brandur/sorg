@@ -24,9 +24,10 @@ and most importantly, ensuring correctness.
 
 These days many developers understand that MongoDB is somewhat suspect, but
 when prompted, they'll more often than not cite problems with its potential for
-data loss. There was a time when data loss was a real concern, but by and large
-that's no longer the case. I take the position that MongoDB is _never_ an
-appropriate choice for a new project, but not for the usual reasons.
+data loss. I'd like to set the record straight: there was a time when data loss
+was a real concern, but by and large that's no longer the case. I take the
+position that MongoDB is _never_ an appropriate choice for a new project, but
+not for the usual reasons.
 
 I don't write this to be mean-spirited, but rather to balance some of the hype
 initiatives that are still ongoing to sell MongoDB to young projects (the
@@ -114,7 +115,7 @@ guaranteed consistency between two of them is a recipe for multiplying your
 project's development time and error propensity by 100x for no good reason at
 all.
 
-#### Atomicity Example: Manual Request Clean-up
+#### Atomicity Example: Manual Request Clean-up (#request-cleanup)
 
 **TODO: This section is not complete.**
 
@@ -213,9 +214,30 @@ those changes end up being incompatible, only one of those transactions is
 allowed to commit.
 
 MongoDB of course can only guarantee an atomic change at the level of a single
-document. So how do you safely modify sets of related records despite MongoDB
-without isolation? Well, you implement your own application-level locking
-scheme of course.
+document. This introduces a variety of problems, but the most noticeable is
+that it it's not possible to safely operate on related sets of records between
+multiple processes.
+
+It can also lead to other types of even more subtle problems. [Meteor wrote a
+good post about how MongoDB can fail to return results][meteor] [1] that are in
+the process of being updated despite their data matching about a query's search
+predicates before and after the update.
+
+#### Isolation Example: Test Data Deletion (#test-data-deletion)
+
+**TODO: This section is not complete.**
+
+!fig src="/assets/mongodb/state-conflict.svg" caption="Demonstration of how state conflicts between processes are possible without consistency."
+
+Data is instantaneously inconsistent as a deletion job is running through it.
+
+#### Isolation Example: Shared Resource Access (#shared-resource-access)
+
+As mentioned above, MongoDB can only guarantee an atomic change at the level of
+a single document. We know that in any real-world application there's inherent
+contention for resources, so how do you guarantee safety as two processes try
+to concurrently modify related sets of records? Well, you implement your own
+application-level locking scheme of course.
 
 Instead of having your mature data store take care of this tremendously
 difficult and hugely error prone problem for you, you pull it into your own
@@ -226,24 +248,11 @@ problem and save time, you're going to build a pessimistic locking scheme. That
 means that simultaneous accesses on the same sets of resources will block on
 each other to modify data, and make your system irreparably slower.
 
-Lack of isolation can lead to other types of even more subtle problems as well.
-[Meteor wrote a good post about how MongoDB can fail to return results][meteor]
-[1] that are in the process of being updated despite their data matching about
-a query's search predicates before and after the update.
-
-#### Isolation Example: Test Data Deletion
-
-**TODO: This section is not complete.**
-
-!fig src="/assets/mongodb/state-conflict.svg" caption="Demonstration of how state conflicts between processes are possible without consistency."
-
-Data is instantaneously inconsistent as a deletion job is running through it.
-
-#### Isolation Example: Shared Resource Access
-
-**TODO: This section is not complete.**
-
 !fig src="/assets/mongodb/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
+
+HTTP requests demonstrate the problem perfectly. If we issue two calls to
+`PATCH /articles/mongodb` to update an article with new content, one blocks
+until the other finishes.
 
 ### Analytics (#analytics)
 
@@ -395,7 +404,7 @@ seen as much or more downtime on a large Mongo system as I have on a Postgres
 system of similar scale; none of it had anything to do with problems at the
 network layer.
 
-## Summary (#summary)
+## Summary (#tldr)
 
 If you're already on MongoDB, it may be very difficult to migrate off of and
 staying on it might be the right choice for your organization. I can relate.
