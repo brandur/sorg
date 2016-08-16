@@ -38,9 +38,8 @@ much later when it's almost impossible to fix.
 
 ## Lightning Rods (#lightning-rods)
 
-Lets start with some issues that tend to draw a lot of fire. While everything
-here is a valid critique, none of it is what makes MongoDB a truly costly
-mistake.
+Lets start with some issues that tend to draw a lot of fire. They're all valid
+critiques, but none of them is what makes MongoDB a truly costly mistake.
 
 ### Data Integrity (#data-integrity)
 
@@ -71,10 +70,10 @@ Once again, I'm giving MongoDB a pass here. The application of [Hanlon's
 Razor][hanlons-razor] suggests that it's much more likely that the original
 MongoDB developers didn't understand that the way they were confirming writes
 was problematic. They ran some benchmarks, and believing the good numbers to be
-the inherent result of the system's extraordinary engineering, flouted them for
-the world to see. Later, they realized that guaranteeing data integrity was
-something that people cared about and which they weren't providing, and over
-time curbed their bold claims.
+the inherent result of the system's extraordinary engineering, showed them to
+the world. Later, they realized that guaranteeing data integrity was something
+that people cared about and which they hadn't quite understood, and over time
+curbed their claims.
 
 ### Distributed Trouble (#trouble)
 
@@ -124,24 +123,25 @@ single request.
 
 What happens when a request to a big MongoDB-based production system fails
 halfway due to an internal error or a client disconnect? Well, the answer is
-exactly what you'd hope it's not: you're left with inconsistent data that's not
-easy to reconcile.
+exactly what you'd hope it's not: you're left with data in an inconsistent
+state.
 
 !fig src="/assets/mongodb/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
 
 There are a few techniques that can be used to try and solve the problem.
-Two-phase commits between every two objects is one of them, but unlikely.
-Another is to build an automated system that runs out of band and tries to
-repair for inconsistencies by looking for certain problematic patterns. But the
-practical implications of that can be daunting: failures are possible between
-_any two changes_ in the system, creating an innumerable set of possibilities
-for corruption that need to be identified and addressed.
+Two-phase commits between every two objects is possible, but unlikely. Another
+is to build an automated system that runs out of band and tries to repair
+inconsistencies by looking for certain problematic patterns. But the practical
+implications of that can be daunting: failures are possible between _any two
+changes_ in the system, creating an innumerable set of possibilities for
+corruption that need to be identified and addressed.
 
 More likely than either of these, it'll be an operator's job to go through and
-manually fix data; not exactly the level of robustness that you'd hope for in
-the modern age.
+manually fix data after failures occur; not exactly robust system design.
 
 ### No Consistency (C) (#no-consistency)
+
+**TODO: Find a better constraint example.**
 
 In an ACID-compliant store, the _consistency_ (the "C" in ACID) property
 guarantees that for any given transaction, the system will always transition
@@ -163,7 +163,8 @@ In practice, that means you can do a lot of useful things:
   deleted. By using a database trigger, you can guarantee that an audit trail
   is produced when an account is removed.
 
-With MongoDB, you won't get a single one of these. Ever.
+With MongoDB, you won't get access to any of these powerful tools for ensuring
+correctness.
 
 If you want to check email uniqueness, you'll need to implement a locking
 system for new addresses, or run a background processor that looks for and
@@ -188,7 +189,7 @@ MongoDB has a partial solution to this with a [unique index][unique-index],
 that mechanism breaks down as soon as a collection is sharded because indexes
 are local to each shard.
 
-!fig src="/assets/mongodb/sharded-user-collection.svg" caption="A collection of split across many shards."
+!fig src="/assets/mongodb/sharded-user-collection.svg" caption="A collection of split across many shards, each with its own local indexes."
 
 Uniqueness can be enforced for shard keys, but email isn't a good one because
 shard key values are immutable, and we'd like users to be able to change their
@@ -207,9 +208,9 @@ records with the same email, or an email record without a corresponding user.
 Admittedly this example is somewhat contrived because this problem isn't
 specific to MongoDB: any database will have a difficult time guaranteeing
 consistency after data is stored between multiple nodes. However, MongoDB at
-best provides no advantage over much better databases, and at worst could be
-said to encourage sharding prematurely and without adequate education around the
-consistency problems that will inevitably arise from that sort of decision.
+best provides no advantage over better databases, and at worst encourages
+sharding prematurely and without adequate education around the consistency
+problems that will inevitably arise from that sort of decision.
 
 ### No Isolation (I) (#no-isolation)
 
@@ -232,13 +233,43 @@ predicates before and after the update.
 
 #### Isolation Example: Test Data Deletion (#test-data-deletion)
 
-**TODO: This section is not complete.**
+Imagine you have an invoicing system that'd designed to bill customers on a
+regular schedule. It contains a **biller** process that looks through active
+subscriptions and creates invoices for them. Each invoice consists of multiple
+line items, and must have line items to be valid (a $0 invoice is meaningless).
+
+To test your system, you have a CI-based consumer that goes through and creates
+new test-mode invoices, pays them, and verifies the results. The fake invoices
+created by CI don't go away on their own though, so you have another
+**cleaner** process that periodically cycles through the system and removes
+them.
+
+The cleaner looks for valid cleaning targets, and removes them by deleting
+their line items first, then deleting the invoice itself.
+
+The problem occurs when the biller and cleaner happen to be running
+simultaneously for the same resource. The cleaner may have already removed an
+invoice's line items by the time the biller gets to it, thus leaving the biller
+with an invalid invoice (and probably a crash).
 
 !fig src="/assets/mongodb/state-conflict.svg" caption="Demonstration of how state conflicts between processes are possible without consistency."
 
-Data is instantaneously inconsistent as a deletion job is running through it.
+This can be solved in MongoDB in a number of ways: user-space locks, search
+predicates in process code that guarantees that the biller and cleaner never
+look at the same resource, or a multi-phase deletion process (the cleaner flags
+resources as deleted to hide them, and then garbage collects them at its own
+leisure), but each of these fragile, and both time-consuming and repetitive to
+implement.
 
-#### Isolation Example: Shared Resource Access (#shared-resource-access)
+In an ACID-compliant system, the isolation property would have ensured that the
+biller and cleaner never interacted because each would operate within its own
+snapshot. Conflict detection in [isolation levels][transaction-isolation] like
+`SERIALIZABLE` are so incredibly sophisticated that their guarantees feel like
+magic.
+
+#### Isolation Example: HTTP Requests (#http-requests)
+
+TODO: Needs rewrite.
 
 As mentioned above, MongoDB can only guarantee an atomic change at the level of
 a single document. We know that in any real-world application there's inherent
@@ -354,12 +385,12 @@ over time.
 
 #### Example: Webhooks (#webhooks)
 
-A company I've worked for decided to implement Webhooks. Because sharding was
-readily available, the engineers in charge decided that it wouldn't be bad idea
-to just store every Webhook notification that ever went out, and every
-interactions ever conducted with a remote server trying to deliver it. Worse
-yet, all of this was exposed through an API that some subset of customers
-started to depend on.
+A company I've worked implemented a Webhooks to notify customers of changes
+occurring in their account. Because sharding was readily available, the
+engineers in charge decided that it wouldn't be bad idea to just store every
+Webhook notification that ever went out, and every interaction ever conducted
+with a remote server trying to deliver it. Worse yet, all of this was exposed
+through an API that some subset of customers started to depend on.
 
 !fig src="/assets/mongodb/webhooks.svg" caption="Visualization of Webhook storage."
 
@@ -463,6 +494,7 @@ Google, then sure, just use Bigtable or Cassandra. You can afford it.
 [meteor]: https://engineering.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
 [meteor-hn]: https://news.ycombinator.com/item?id=11857674
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
+[transaction-isolation]: https://www.postgresql.org/docs/current/static/transaction-iso.html
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
 [unique-index]: https://docs.mongodb.com/manual/core/index-unique/
 [write-concerns]: https://docs.mongodb.com/manual/reference/write-concern/
