@@ -31,7 +31,7 @@ func TestTransformCodeWithLanguagePrefix(t *testing.T) {
 func TestTransformFigures(t *testing.T) {
 	assert.Equal(t, `
 <figure>
-  <p><img src="fig-src"></p>
+  <p><a href="fig-src"><img src="fig-src"></a></p>
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
@@ -40,7 +40,7 @@ func TestTransformFigures(t *testing.T) {
 
 	assert.Equal(t, `
 <figure>
-  <p><img src="fig-src"></p>
+  <p><a href="fig-src"><img src="fig-src"></a></p>
   <figcaption>Caption with " quote.</figcaption>
 </figure>
 `,
