@@ -141,8 +141,6 @@ manually fix data after failures occur; not exactly robust system design.
 
 ### No Consistency (C) (#no-consistency)
 
-**TODO: Find a better constraint example.**
-
 In an ACID-compliant store, the _consistency_ (the "C" in ACID) property
 guarantees that for any given transaction, the system will always transition
 from one valid state to another. Mechanisms like constraints, cascades, and
@@ -150,9 +148,9 @@ triggers have all fired as expected before a new state is considered valid.
 
 In practice, that means you can do a lot of useful things:
 
-* By adding a uniqueness constraint, you can guarantee that two accounts cannot
-  be created with the same email address, even if two requests try to do so
-  simultaneously.
+* By adding a uniqueness constraint, you can guarantee that a user's credit
+  card is never double-charged for the same purchase even if they accidentally
+  clicked the "Submit" button on the purchase form twice.
 * Say that any single account owns many apps. By using a foreign key constraint
   with `ON DELETE CASCADE`, you can guarantee that no app will ever be orphaned
   if its parent account is deleted.
@@ -166,17 +164,17 @@ In practice, that means you can do a lot of useful things:
 With MongoDB, you won't get access to any of these powerful tools for ensuring
 correctness.
 
-If you want to check email uniqueness, you'll need to implement a locking
-system for new addresses, or run a background processor that looks for and
-alerts on duplicate records. To check data constraints you'll need locking
-combined with application-level conditional statements sprinkled throughout
-your codebase. To produce an audit trail, you'll need to implement your own
-two-phase commit along with checks everywhere to make sure that nothing is
-accessing uncommitted data (i.e. partially deleted account records where the
-audit trail has not yet been confirmed).
+All problems need to be solved at the application level: if you want to check
+for doubled charges, you'll need to implement a secondary non-sharded
+collection that references the main sharded one. To check data constraints
+you'll need locking combined with application-level conditional statements
+sprinkled throughout your codebase. To produce an audit trail, you'll need to
+implement your own two-phase commit along with checks everywhere to make sure
+that nothing is accessing uncommitted data (i.e. partially deleted account
+records where the audit trail has not yet been confirmed).
 
-By using MongoDB, you're throwing away an invaluable tool for guaranteeing that
-no matter what happens in your database, data is _always_ valid. It's not
+By using MongoDB, you're throwing away an invaluable mechanic for guaranteeing
+that no matter what happens in your database, data is _always_ valid. It's not
 impossible to do this from application-level code, but trying to do so is
 entering a world of needless complication, buggy implementations, and corner
 cases.
