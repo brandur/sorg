@@ -232,6 +232,8 @@ directly from syslog (e.g. Splunk).
 
 #### Example: TLS Deprecation
 
+!fig src="/assets/canonical-log-lines/tls-requests-by-merchant.png" caption="Splunk dashboard for requests from a merchant by TLS version."
+
 One project that I'm working on right now is helping Stripe merchants who are
 using old versions of TLS (i.e 1.0 and 1.1) [upgrade their
 integrations][upgrading-tls] before hitting blackout deadlines. Using canonical
