@@ -56,6 +56,8 @@ confirmed by a standalone server or replica set primary. This is a sane change
 that's in-line with how other databases work, and it'll ensure that data will
 largely be safe on modern versions of MongoDB.
 
+!fig src="/assets/mongodb/write-concern.svg" caption="Visualization of a MongoDB client's behavior based off it's write concern \"w\" configuration."
+
 ### Dishonest Benchmarks (#dishonest-benchmarks)
 
 One of the early hot features of MongoDB was its speed, and particularly how
