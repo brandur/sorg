@@ -29,7 +29,7 @@ do.
 
 ## The Basics (#basics)
 
-### Selecting Prefix and Port
+### Selecting Prefix and Port (#prefix-and-port)
 
 It's often desirable to have a stable release of Postgres running on your
 machine for day-to-day work along with your experimental build, so you may want
