@@ -358,10 +358,10 @@ machine's resources.
 > &mdash; Abraham Maslow, 1966
 
 While a great idea in theory, I've already shown above how sharding can be
-disadvantageous when it comes to ensuring consistency. Also, in my experience,
-it's vastly more likely for sharding to be abused than used appropriately.
-Enthusiastic engineers will inevitably shard prematurely and unwisely, and the
-darker sides of sharding become apparent immediately:
+disadvantageous when it comes to ensuring consistency. Also, it's vastly more
+likely for sharding to be abused than used appropriately. Enthusiastic
+engineers will inevitably shard prematurely and unwisely, and the darker sides
+of sharding become apparent immediately:
 
 * Cross-record ACID guarantees and constraints are gone forever.
 * Data becomes difficult to find and cross-reference because it exists across a
