@@ -113,7 +113,7 @@ guaranteed consistency between two of them is a recipe for multiplying your
 project's development time and error propensity by 100x for no good reason at
 all.
 
-#### Atomicity Example: Request Failure (#request-failure)
+#### Atomicity Example #1: Request Failure (#request-failure)
 
 So now that we've established that MongoDB transactions are not atomic outside
 of a single document, let's consider what happens in the very common case
@@ -178,7 +178,7 @@ impossible to do this from application-level code, but trying to do so is
 entering a world of needless complication, buggy implementations, and corner
 cases.
 
-#### Consistency Example: User Signup (#user-signup)
+#### Consistency Example #1: User Signup (#user-signup)
 
 If we have a service that accepts user signups, a very common constraint to put
 on it is that we don't want two accounts to share the same email address. While
@@ -228,7 +228,7 @@ good post about how MongoDB can fail to return results][meteor] [1] that are in
 the process of being updated despite their data matching about a query's search
 predicates before and after the update.
 
-#### Isolation Example: Test Data Deletion (#test-data-deletion)
+#### Isolation Example #1: Test Data Deletion (#test-data-deletion)
 
 Imagine you have an invoicing system that'd designed to bill customers on a
 regular schedule. It contains a **biller** process that looks through active
@@ -264,7 +264,7 @@ snapshot. Conflict detection in [isolation levels][transaction-isolation] like
 `SERIALIZABLE` are so incredibly sophisticated that their guarantees feel like
 magic.
 
-#### Isolation Example: HTTP Requests (#http-requests)
+#### Isolation Example #2: HTTP Requests (#http-requests)
 
 The example above demonstrates how without isolation, access between processes
 to shared resources can be problematic, but it illustrates a slightly unusual
@@ -391,7 +391,7 @@ lean core with fringe data moved to scalable stores, and investing in that
 model will pay out in dividends in reduced resources and engineering burden
 over time.
 
-#### Example: Webhooks (#webhooks)
+#### Scalability Example #1: Webhooks (#webhooks)
 
 A company I've worked implemented Webhooks as a streaming API to notify
 customers of changes occurring in their account. Okay, so far so good.
