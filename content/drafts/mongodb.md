@@ -448,10 +448,11 @@ has other existential problems that are vastly more likely to occur:
   data and brings an online system to its knees.
 * Overly expensive migrations locking schema/data or eating all available
   resources.
-* Poorly vetted deploys in which new code expects a certain schema or data
-  before it's actually updated, and which cause a failure once they go out.
 * Long-lived transactions or other jobs that starve other online operations of
   resources.
+* Bungled attempts at upgrading a database.
+* Poorly vetted deploys in which new code expects a certain schema or data
+  before it's actually updated, and which cause a failure once they go out.
 
 In practice, an HA data store helps you, but not as much as you'd think. I've
 seen as much or more downtime on a large MongoDB system as I have on a Postgres
