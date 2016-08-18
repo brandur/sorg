@@ -437,7 +437,7 @@ schemes implemented in Postgres by services like [AWS][aws-ha] or
 by looking for an unhealthy primary and if found, promoting a follower in its
 place.
 
-More imporantly though, HA is often not as much about the technical
+More importantly though, HA is often not as much about the technical
 sophistication of a sytem as it is about the technical processes surrounding
 it. Everyone imagines that the major dangers to the availability of a data
 store are disk failures and network partitions, and once in a while those
