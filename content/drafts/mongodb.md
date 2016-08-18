@@ -394,12 +394,14 @@ over time.
 
 #### Example: Webhooks (#webhooks)
 
-A company I've worked implemented a Webhooks to notify customers of changes
-occurring in their account. Because sharding was readily available, the
-engineers in charge decided that it wouldn't be bad idea to just store every
-Webhook notification that ever went out, and every interaction ever conducted
-with a remote server trying to deliver it. Worse yet, all of this was exposed
-through an API that some subset of customers started to depend on.
+A company I've worked implemented Webhooks as a streaming API to notify
+customers of changes occurring in their account. Okay, so far so good.
+
+Because sharding was readily available, the engineers in charge decided that it
+wouldn't be bad idea to just store every Webhook notification that ever went
+out for any change that had ever occurred anywhere in the system. Worse yet,
+all of this was exposed through an API that some subset of customers started to
+depend on.
 
 !fig src="/assets/mongodb/webhooks.svg" caption="Visualization of Webhook storage."
 
