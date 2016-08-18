@@ -94,7 +94,7 @@ finally have (durability) is good progress, but nowhere near enough.
 
 ### No Atomicity (A) (#no-atomicity)
 
-In an ACID-comliant store, the _atomicity_ (the "A" in ACID) property
+In an ACID-compliant store, the _atomicity_ (the "A" in ACID) property
 guarantees all the work execute in a single transaction either succeeds
 entirely or fails, leaving the database unchanged.
 
