@@ -262,7 +262,7 @@ In an ACID-compliant system, the isolation property would have ensured that the
 biller and cleaner never interacted because each would operate within its own
 snapshot. Conflict detection in [isolation levels][transaction-isolation] like
 `SERIALIZABLE` are so incredibly sophisticated that their guarantees feel like
-magic.
+magic [2].
 
 #### Isolation Example #2: HTTP Requests (#http-requests)
 
@@ -296,7 +296,7 @@ you're also implicitly commiting to building out a secondary warehousing system
 and ingestion pipeline so that it's possible to run analytics and other types
 of reporting in one place with a well-known query language like SQL. By
 sticking to an RDMS, you can get this almost for free by simply keeping a
-non-production follower available for this use [2].
+non-production follower available for this use [3].
 
 While building a data warehouse will almost certainly be eventually
 appropriate, it can be a significant advantage especially for smaller companies
@@ -468,8 +468,8 @@ right choice.
 
 **Do you need document-style storage (i.e. nested JSON structures)?** You
 probably don't, but if you really _really_ do, you should use the `jsonb` type
-in Postgres instead of Mongo. You'll get the flexibility that you're after [3],
-but also an ACID-compliant system and the ability to introduce constraints [4].
+in Postgres instead of Mongo. You'll get the flexibility that you're after [4],
+but also an ACID-compliant system and the ability to introduce constraints [5].
 
 **Do you need incredible scalability that Postgres can't possibly provide?**
 Unless you're Google, you probably don't, but if you really _really_ do, you
@@ -483,15 +483,18 @@ Google, then sure, just use Bigtable or Cassandra. You can afford it.
 
 [1] [Hacker News commentary][meteor-hn] for Meteor's article.
 
-[2] It's worth noting that when using a Postgres follower for analytics, it's a
+[2] For a great `SERIALIZABLE` story, see the SSI example for ["overdraft
+    protection"][overdraft-protection].
+
+[3] It's worth noting that when using a Postgres follower for analytics, it's a
     good idea to keep systems in place to look for long-running transactions to
     avoid putting backpressure on production databases. See my article on
     [Postgres Job Queues](/postgres-queues) for more information.
 
-[3] Although, this sort of flexibility may not be as good of an idea as you
+[4] Although, this sort of flexibility may not be as good of an idea as you
     might think.
 
-[4] In Postgres, try creating a `UNIQUE` index on a predicate that uses a JSON
+[5] In Postgres, try creating a `UNIQUE` index on a predicate that uses a JSON
     selector to query into a JSON document stored in a field. It works, and is
     incredibly cool.
 
@@ -504,6 +507,7 @@ Google, then sure, just use Bigtable or Cassandra. You can afford it.
 [mean]: https://en.wikipedia.org/wiki/MEAN_(software_bundle)
 [meteor]: https://engineering.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
 [meteor-hn]: https://news.ycombinator.com/item?id=11857674
+[overdraft-protection]: https://wiki.postgresql.org/wiki/SSI#Overdraft_Protection
 [pglogical]: https://2ndquadrant.com/en/resources/pglogical/
 [transaction-isolation]: https://www.postgresql.org/docs/current/static/transaction-iso.html
 [two-phase]: https://docs.mongodb.com/manual/tutorial/perform-two-phase-commits/
