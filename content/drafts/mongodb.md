@@ -72,8 +72,7 @@ MongoDB developers didn't understand that the way they were confirming writes
 was problematic. They ran some benchmarks, and believing the good numbers to be
 the inherent result of the system's extraordinary engineering, showed them to
 the world. Later, they realized that guaranteeing data integrity was something
-that people cared about and which they hadn't quite understood, and over time
-curbed their claims.
+that most people cared about, and over time curbed their claims.
 
 ### Distributed Trouble (#trouble)
 
