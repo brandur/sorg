@@ -347,15 +347,17 @@ Kinesis.
 
 ### Scalability (#scalability)
 
-By using sharding, MongoDB allows a large data set to be spread across many
-different compute nodes. This by extension distributes the workloads on that
-data across those nodes as well, resulting in reduced stress on any one
-machine's resources.
+Okay, this sounds dubious as an anti-feature, but hear me out.
 
 > _I suppose it is tempting, if the only tool you have is a hammer, to treat
 > everything as if it were a nail._
 >
 > &mdash; Abraham Maslow, 1966
+
+By using sharding, MongoDB allows a large data set to be spread across many
+different compute nodes. This by extension distributes the workloads on that
+data across those nodes as well, resulting in reduced stress on any one
+machine's resources.
 
 While a great idea in theory, I've already shown above how sharding can be
 disadvantageous when it comes to ensuring consistency. Also, it's vastly more
