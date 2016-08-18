@@ -406,9 +406,9 @@ depend on.
 !fig src="/assets/mongodb/webhooks.svg" caption="Visualization of Webhook storage."
 
 Because API access was unrestricted, some consumers became dependent on having
-unfettered access to evey Webhook ever sent, and disallowing it at this point
-would break practical backwards compatibility, even if no such compatibility
-was promised.
+unfettered access to all of those historic Webhooks, and disallowing it at this
+point would break practical backwards compatibility, even if no such
+compatibility was promised.
 
 Sharding allowed the system to scale in the beginning with relative ease, but
 consequently left a product catastrophe. Months worth of engineering time will
