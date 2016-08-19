@@ -7,7 +7,7 @@ published_at: 2016-07-20T14:31:33Z
 ---
 
 _Canonical log lines_ are a lightweight pattern used within Stripe for improved
-service observability. Their greatest strength is that they act as a midground
+service observability. Their greatest strength is that they act as a middle ground
 between other types of analytics in that they present a good trade-off between
 ease of access and flexibility.
 
