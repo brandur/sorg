@@ -152,14 +152,16 @@ Here are counts of timeout errors over the last week by API version:
 
 ### Example: TLS Deprecation
 
-One project that I'm working on right now is helping Stripe merchants who are
-using old versions of TLS (i.e 1.0 and 1.1) [upgrade their
-integrations][upgrading-tls] before hitting blackout deadlines.
+One project that I'm working on right now is helping Stripe merchants [migrate
+to TLS 1.2 from older secure protocols][upgrading-tls]. TLS 1.2 will eventually
+be required for PCI compliance, so we're trying to identify merchants who are
+on TLS 1.0 and 1.1 and given them some warning that an upgrade will be
+required.
 
 While responding to support questions on the topic, I realized it would be
 useful to be able to quickly reference the key TLS metrics for any given
 account. I spent 10 minutes learning how to make dashboard in Splunk, and then
-another making a dashboard that's powered purely be canonical log lines:
+another 10 to create a dashboard that's powered purely be canonical log lines:
 
 !fig src="/assets/canonical-log-lines/tls-requests-by-merchant.png" caption="Splunk dashboard for requests from a merchant by TLS version."
 
