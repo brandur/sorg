@@ -1291,12 +1291,9 @@ func tasksForPagesDir(dir string) ([]*pool.Task, error) {
 			// Subtract 4 for the ".ace" extension.
 			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
 
-			task := &pool.Task{
-				Func: func() error {
-					return compilePage(dir, name)
-				},
-			}
-			tasks = append(tasks, task)
+			tasks = append(tasks, pool.NewTask(func() error {
+				return compilePage(dir, name)
+			}))
 		}
 	}
 
