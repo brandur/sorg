@@ -121,7 +121,7 @@ directly from syslog (e.g. Splunk).
 
 ## Examples
 
-### Example: 500s By Breakage
+### Example: HTTP 500s By Breakage
 
 One of the hazards of any software stack is that unexpected breakages will
 happen. For a typical web service, this often takes the form of an exception
@@ -145,7 +145,10 @@ error that was emitted for each breakage, so I join on another specialized
 
 !fig src="/assets/canonical-log-lines/top-errors.png" caption="The names of the Ruby exception classes emitted for each error, and their relative count."
 
-TODO: Tricks. The inverse also works.
+I can invert this to pull information _out_ of the canonical lines as well.
+Here are counts of timeout errors over the last week by API version:
+
+!fig src="/assets/canonical-log-lines/top-api-versions.png" caption="An inverted search. API versions pulled from the canonical log line and fetched by class of error."
 
 ### Example: TLS Deprecation
 
