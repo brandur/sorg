@@ -19,6 +19,7 @@ import (
 	"github.com/brandur/sorg/assets"
 	"github.com/brandur/sorg/atom"
 	"github.com/brandur/sorg/markdown"
+	"github.com/brandur/sorg/pool"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
 	"github.com/joeshaw/envdecode"
@@ -98,6 +99,10 @@ type Conf struct {
 	// BlackSwanDatabaseURL is a connection string for a database to connect to
 	// in order to extract books, tweets, runs, etc.
 	BlackSwanDatabaseURL string `env:"BLACK_SWAN_DATABASE_URL"`
+
+	// Concurrency is the number of build Goroutines that will be used to
+	// perform build work items.
+	Concurrency int `env:"CONCURRENCY,default=30"`
 
 	// Drafts is whether drafts of articles and fragments should be compiled
 	// along with their published versions.
@@ -384,69 +389,122 @@ func main() {
 		log.Fatal(err)
 	}
 
-	articles, err := compileArticles()
+	var tasks []*pool.Task
+
+	//
+	// Build step 0: dependency-free
+	//
+
+	tasks = nil
+
+	var articles []*Article
+	articleChan := accumulateArticles(&articles)
+
+	var fragments []*Fragment
+	fragmentChan := accumulateFragments(&fragments)
+
+	articleTasks, err := tasksForArticles(articleChan)
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, articleTasks...)
+
+	fragmentTasks, err := tasksForFragments(fragmentChan)
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, fragmentTasks...)
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileJavascripts(javascripts,
+			path.Join(versionedAssetsDir, "app.js"))
+	}))
+
+	pageTasks, err := tasksForPages()
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, pageTasks...)
+
+	var photos []*Photo
+	tasks = append(tasks, pool.NewTask(func() error {
+		var err error
+		photos, err = compilePhotos(db)
+		return err
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileReading(db)
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileRuns(db)
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileRobots(path.Join(conf.TargetDir, "robots.txt"))
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileStylesheets(stylesheets,
+			path.Join(versionedAssetsDir, "app.css"))
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileTwitter(db)
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return linkImageAssets()
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return linkFontAssets()
+	}))
+
+	p := pool.NewPool(tasks, conf.Concurrency)
+	err = p.Run()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fragments, err := compileFragments()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// Free up any Goroutines still waiting.
+	close(articleChan)
+	close(fragmentChan)
 
-	err = compileJavascripts(javascripts,
-		path.Join(versionedAssetsDir, "app.js"))
-	if err != nil {
-		log.Fatal(err)
-	}
+	//
+	// Build step 1: any tasks dependent on the results of step 0.
+	//
+	// This includes build output like index pages and RSS feeds.
+	//
 
-	err = compilePages()
-	if err != nil {
-		log.Fatal(err)
-	}
+	tasks = nil
 
-	photos, err := compilePhotos(db)
-	if err != nil {
-		log.Fatal(err)
-	}
+	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
+	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
 
-	err = compileReading(db)
-	if err != nil {
-		log.Fatal(err)
-	}
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileArticlesFeed(articles)
+	}))
 
-	err = compileRobots(path.Join(conf.TargetDir, "robots.txt"))
-	if err != nil {
-		log.Fatal(err)
-	}
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileArticlesIndex(articles)
+	}))
 
-	err = compileRuns(db)
-	if err != nil {
-		log.Fatal(err)
-	}
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileFragmentsFeed(fragments)
+	}))
 
-	err = compileStylesheets(stylesheets,
-		path.Join(versionedAssetsDir, "app.css"))
-	if err != nil {
-		log.Fatal(err)
-	}
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileFragmentsIndex(fragments)
+	}))
 
-	err = compileTwitter(db)
-	if err != nil {
-		log.Fatal(err)
-	}
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileHome(articles, fragments, photos)
+	}))
 
-	err = compileHome(articles, fragments, photos)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = linkImageAssets()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = linkFontAssets()
+	p = pool.NewPool(tasks, conf.Concurrency)
+	err = p.Run()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -455,31 +513,113 @@ func main() {
 //
 // Compilation functions
 //
-// These functions are the main entry points for compiling the site's
-// resources.
+// These functions perform the heavy-lifting in compiling the site's resources.
+// They are normally run concurrently.
 //
 
-func compileArticles() ([]*Article, error) {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled articles in %v.", time.Now().Sub(start))
-	}()
+func compileArticle(dir, name string, draft bool) (*Article, error) {
+	inPath := dir + "/" + name
 
-	articles, err := compileArticlesDir(sorg.ContentDir+"/articles", false)
+	raw, err := ioutil.ReadFile(inPath)
 	if err != nil {
 		return nil, err
 	}
 
-	if conf.Drafts {
-		drafts, err := compileArticlesDir(sorg.ContentDir+"/drafts", true)
-		if err != nil {
-			return nil, err
-		}
-
-		articles = append(articles, drafts...)
+	frontmatter, content, err := splitFrontmatter(string(raw))
+	if err != nil {
+		return nil, err
 	}
 
-	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
+	var article Article
+	err = yaml.Unmarshal([]byte(frontmatter), &article)
+	if err != nil {
+		return nil, err
+	}
+
+	article.Draft = draft
+	article.Slug = strings.Replace(name, ".md", "", -1)
+
+	if article.Title == "" {
+		return nil, fmt.Errorf("No title for article: %v", inPath)
+	}
+
+	if article.PublishedAt == nil {
+		return nil, fmt.Errorf("No publish date for article: %v", inPath)
+	}
+
+	article.Content = markdown.Render(content)
+
+	article.TOC, err = toc.Render(article.Content)
+	if err != nil {
+		return nil, err
+	}
+
+	locals := getLocals(article.Title, map[string]interface{}{
+		"Article": article,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
+		conf.TargetDir+"/"+article.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return &article, nil
+}
+
+func compileArticlesFeed(articles []*Article) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled articles feed in %v.", time.Now().Sub(start))
+	}()
+
+	feed := &atom.Feed{
+		Title: "Articles - brandur.org",
+		ID:    "tag:brandur.org.org,2013:/articles",
+
+		Links: []*atom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/articles.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(articles) > 0 {
+		feed.Updated = *articles[0].PublishedAt
+	}
+
+	for i, article := range articles {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &atom.Entry{
+			Title:     article.Title,
+			Content:   &atom.EntryContent{Content: article.Content, Type: "html"},
+			Published: *article.PublishedAt,
+			Updated:   *article.PublishedAt,
+			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
+			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
+
+			AuthorName: conf.AtomAuthorName,
+			AuthorURI:  conf.AtomAuthorURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(conf.TargetDir + "/articles.atom")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return feed.Encode(f, "  ")
+}
+
+func compileArticlesIndex(articles []*Article) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled articles index in %v.", time.Now().Sub(start))
+	}()
 
 	articlesByYear := groupArticlesByYear(articles)
 
@@ -487,42 +627,113 @@ func compileArticles() ([]*Article, error) {
 		"ArticlesByYear": articlesByYear,
 	})
 
-	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
+	err := renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
 		conf.TargetDir+"/articles/index.html", locals)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	err = compileArticlesFeed(articles)
-	if err != nil {
-		return nil, err
-	}
-
-	return articles, nil
+	return nil
 }
 
-func compileFragments() ([]*Fragment, error) {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled fragments in %v.", time.Now().Sub(start))
-	}()
+func compileFragment(dir, name string, draft bool) (*Fragment, error) {
+	inPath := dir + "/" + name
 
-	fragments, err := compileFragmentsDir(sorg.ContentDir+"/fragments", false)
+	raw, err := ioutil.ReadFile(inPath)
 	if err != nil {
 		return nil, err
 	}
 
-	if conf.Drafts {
-		drafts, err := compileFragmentsDir(sorg.ContentDir+"/fragments-drafts",
-			true)
-		if err != nil {
-			return nil, err
-		}
-
-		fragments = append(fragments, drafts...)
+	frontmatter, content, err := splitFrontmatter(string(raw))
+	if err != nil {
+		return nil, err
 	}
 
-	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
+	var fragment Fragment
+	err = yaml.Unmarshal([]byte(frontmatter), &fragment)
+	if err != nil {
+		return nil, err
+	}
+
+	fragment.Draft = draft
+	fragment.Slug = strings.Replace(name, ".md", "", -1)
+
+	if fragment.Title == "" {
+		return nil, fmt.Errorf("No title for fragment: %v", inPath)
+	}
+
+	if fragment.PublishedAt == nil {
+		return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
+	}
+
+	fragment.Content = markdown.Render(content)
+
+	locals := getLocals(fragment.Title, map[string]interface{}{
+		"Fragment": fragment,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
+		conf.TargetDir+"/fragments/"+fragment.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return &fragment, nil
+}
+
+func compileFragmentsFeed(fragments []*Fragment) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled fragments feed in %v.", time.Now().Sub(start))
+	}()
+
+	feed := &atom.Feed{
+		Title: "Fragments - brandur.org",
+		ID:    "tag:brandur.org.org,2013:/fragments",
+
+		Links: []*atom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(fragments) > 0 {
+		feed.Updated = *fragments[0].PublishedAt
+	}
+
+	for i, fragment := range fragments {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &atom.Entry{
+			Title:     fragment.Title,
+			Content:   &atom.EntryContent{Content: fragment.Content, Type: "html"},
+			Published: *fragment.PublishedAt,
+			Updated:   *fragment.PublishedAt,
+			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
+			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
+
+			AuthorName: conf.AtomAuthorName,
+			AuthorURI:  conf.AtomAuthorURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(conf.TargetDir + "/fragments.atom")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return feed.Encode(f, "  ")
+}
+
+func compileFragmentsIndex(fragments []*Fragment) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled fragments index in %v.", time.Now().Sub(start))
+	}()
 
 	fragmentsByYear := groupFragmentsByYear(fragments)
 
@@ -530,18 +741,13 @@ func compileFragments() ([]*Fragment, error) {
 		"FragmentsByYear": fragmentsByYear,
 	})
 
-	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/index",
+	err := renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/index",
 		conf.TargetDir+"/fragments/index.html", locals)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	err = compileFragmentsFeed(fragments)
-	if err != nil {
-		return nil, err
-	}
-
-	return fragments, nil
+	return nil
 }
 
 func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) error {
@@ -619,59 +825,31 @@ func compileJavascripts(javascripts []string, outPath string) error {
 	return nil
 }
 
-func compilePages() error {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled pages in %v.", time.Now().Sub(start))
-	}()
+func compilePage(dir, name string) error {
+	// Remove the "./pages" directory, but keep the rest of the path.
+	//
+	// Looks something like "about".
+	pagePath := strings.TrimPrefix(dir, sorg.PagesDir) + name
 
-	return compilePagesDir(sorg.PagesDir)
-}
+	// Looks something like "./public/about".
+	target := conf.TargetDir + "/" + pagePath
 
-func compilePagesDir(dir string) error {
-	log.Debugf("Descending into pages directory: %v", dir)
+	locals, ok := pagesVars[pagePath]
+	if !ok {
+		log.Errorf("No page meta information: %v", pagePath)
+	}
 
-	fileInfos, err := ioutil.ReadDir(dir)
+	locals = getLocals("Page", locals)
+
+	err := os.MkdirAll(conf.TargetDir+"/"+dir, 0755)
 	if err != nil {
 		return err
 	}
 
-	for _, fileInfo := range fileInfos {
-		if fileInfo.IsDir() {
-			err := compilePagesDir(dir + fileInfo.Name())
-			if err != nil {
-				return err
-			}
-		} else {
-			// Subtract 4 for the ".ace" extension.
-			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
-
-			// Remove the "./pages" directory, but keep the rest of the path.
-			//
-			// Looks something like "about".
-			pagePath := strings.TrimPrefix(dir, sorg.PagesDir) + name
-
-			// Looks something like "./public/about".
-			target := conf.TargetDir + "/" + pagePath
-
-			locals, ok := pagesVars[pagePath]
-			if !ok {
-				log.Errorf("No page meta information: %v", pagePath)
-			}
-
-			locals = getLocals("Page", locals)
-
-			err := os.MkdirAll(conf.TargetDir+"/"+dir, 0755)
-			if err != nil {
-				return err
-			}
-
-			err = renderView(sorg.MainLayout, dir+"/"+name,
-				target, locals)
-			if err != nil {
-				return err
-			}
-		}
+	err = renderView(sorg.MainLayout, dir+"/"+name,
+		target, locals)
+	if err != nil {
+		return err
 	}
 
 	return nil
@@ -991,220 +1169,161 @@ func linkImageAssets() error {
 }
 
 //
-// Other functions
+// Task generation functions
 //
-// Any other functions. Try to keep them alphabetized.
+// These functions are the main entry points for compiling the site's
+// resources.
 //
 
-func compileArticlesDir(dir string, draft bool) ([]*Article, error) {
+func tasksForArticles(articleChan chan *Article) ([]*pool.Task, error) {
+	tasks, err := tasksForArticlesDir(articleChan, sorg.ContentDir+"/articles", false)
+	if err != nil {
+		return nil, err
+	}
+
+	if conf.Drafts {
+		draftTasks, err := tasksForArticlesDir(articleChan,
+			sorg.ContentDir+"/drafts", true)
+		if err != nil {
+			return nil, err
+		}
+
+		tasks = append(tasks, draftTasks...)
+	}
+
+	return tasks, nil
+}
+
+func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*pool.Task, error) {
 	articleInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
 	}
 
-	var articles []*Article
-
+	var tasks []*pool.Task
 	for _, articleInfo := range articleInfos {
 		if isHidden(articleInfo.Name()) {
 			continue
 		}
 
-		inPath := dir + "/" + articleInfo.Name()
+		name := articleInfo.Name()
+		tasks = append(tasks, pool.NewTask(func() error {
+			article, err := compileArticle(dir, name, draft)
+			if err != nil {
+				return err
+			}
 
-		raw, err := ioutil.ReadFile(inPath)
-		if err != nil {
-			return nil, err
-		}
-
-		frontmatter, content, err := splitFrontmatter(string(raw))
-		if err != nil {
-			return nil, err
-		}
-
-		var article Article
-		articles = append(articles, &article)
-
-		err = yaml.Unmarshal([]byte(frontmatter), &article)
-		if err != nil {
-			return nil, err
-		}
-
-		article.Draft = draft
-		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
-
-		if article.Title == "" {
-			return nil, fmt.Errorf("No title for article: %v", inPath)
-		}
-
-		if article.PublishedAt == nil {
-			return nil, fmt.Errorf("No publish date for article: %v", inPath)
-		}
-
-		article.Content = markdown.Render(content)
-
-		article.TOC, err = toc.Render(article.Content)
-		if err != nil {
-			return nil, err
-		}
-
-		locals := getLocals(article.Title, map[string]interface{}{
-			"Article": article,
-		})
-
-		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
-			conf.TargetDir+"/"+article.Slug, locals)
-		if err != nil {
-			return nil, err
-		}
+			articleChan <- article
+			return nil
+		}))
 	}
 
-	return articles, nil
+	return tasks, nil
 }
 
-func compileArticlesFeed(articles []*Article) error {
-	feed := &atom.Feed{
-		Title: "Articles - brandur.org",
-		ID:    "tag:brandur.org.org,2013:/articles",
-
-		Links: []*atom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/articles.atom"},
-			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
-		},
-	}
-
-	if len(articles) > 0 {
-		feed.Updated = *articles[0].PublishedAt
-	}
-
-	for i, article := range articles {
-		if i >= conf.NumAtomEntries {
-			break
-		}
-
-		entry := &atom.Entry{
-			Title:     article.Title,
-			Content:   &atom.EntryContent{Content: article.Content, Type: "html"},
-			Published: *article.PublishedAt,
-			Updated:   *article.PublishedAt,
-			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
-			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
-
-			AuthorName: conf.AtomAuthorName,
-			AuthorURI:  conf.AtomAuthorURL,
-		}
-		feed.Entries = append(feed.Entries, entry)
-	}
-
-	f, err := os.Create(conf.TargetDir + "/articles.atom")
+func tasksForFragments(fragmentChan chan *Fragment) ([]*pool.Task, error) {
+	tasks, err := tasksForFragmentsDir(fragmentChan, sorg.ContentDir+"/fragments", false)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	defer f.Close()
 
-	return feed.Encode(f, "  ")
+	if conf.Drafts {
+		draftTasks, err := tasksForFragmentsDir(fragmentChan,
+			sorg.ContentDir+"/fragments-drafts", true)
+		if err != nil {
+			return nil, err
+		}
+
+		tasks = append(tasks, draftTasks...)
+	}
+
+	return tasks, nil
 }
 
-func compileFragmentsDir(dir string, draft bool) ([]*Fragment, error) {
+func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) ([]*pool.Task, error) {
 	fragmentInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
 	}
 
-	var fragments []*Fragment
-
+	var tasks []*pool.Task
 	for _, fragmentInfo := range fragmentInfos {
 		if isHidden(fragmentInfo.Name()) {
 			continue
 		}
 
-		inPath := dir + "/" + fragmentInfo.Name()
+		name := fragmentInfo.Name()
+		tasks = append(tasks, pool.NewTask(func() error {
+			fragment, err := compileFragment(dir, name, draft)
+			if err != nil {
+				return err
+			}
 
-		raw, err := ioutil.ReadFile(inPath)
-		if err != nil {
-			return nil, err
-		}
-
-		frontmatter, content, err := splitFrontmatter(string(raw))
-		if err != nil {
-			return nil, err
-		}
-
-		var fragment Fragment
-		fragments = append(fragments, &fragment)
-
-		err = yaml.Unmarshal([]byte(frontmatter), &fragment)
-		if err != nil {
-			return nil, err
-		}
-
-		fragment.Draft = draft
-		fragment.Slug = strings.Replace(fragmentInfo.Name(), ".md", "", -1)
-
-		if fragment.Title == "" {
-			return nil, fmt.Errorf("No title for fragment: %v", inPath)
-		}
-
-		if fragment.PublishedAt == nil {
-			return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
-		}
-
-		fragment.Content = markdown.Render(content)
-
-		locals := getLocals(fragment.Title, map[string]interface{}{
-			"Fragment": fragment,
-		})
-
-		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
-			conf.TargetDir+"/fragments/"+fragment.Slug, locals)
-		if err != nil {
-			return nil, err
-		}
+			fragmentChan <- fragment
+			return nil
+		}))
 	}
 
-	return fragments, nil
+	return tasks, nil
 }
 
-func compileFragmentsFeed(fragments []*Fragment) error {
-	feed := &atom.Feed{
-		Title: "Fragments - brandur.org",
-		ID:    "tag:brandur.org.org,2013:/fragments",
+func tasksForPages() ([]*pool.Task, error) {
+	return tasksForPagesDir(sorg.PagesDir)
+}
 
-		Links: []*atom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
-			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
-		},
-	}
+func tasksForPagesDir(dir string) ([]*pool.Task, error) {
+	log.Debugf("Descending into pages directory: %v", dir)
 
-	if len(fragments) > 0 {
-		feed.Updated = *fragments[0].PublishedAt
-	}
-
-	for i, fragment := range fragments {
-		if i >= conf.NumAtomEntries {
-			break
-		}
-
-		entry := &atom.Entry{
-			Title:     fragment.Title,
-			Content:   &atom.EntryContent{Content: fragment.Content, Type: "html"},
-			Published: *fragment.PublishedAt,
-			Updated:   *fragment.PublishedAt,
-			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
-			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
-
-			AuthorName: conf.AtomAuthorName,
-			AuthorURI:  conf.AtomAuthorURL,
-		}
-		feed.Entries = append(feed.Entries, entry)
-	}
-
-	f, err := os.Create(conf.TargetDir + "/fragments.atom")
+	fileInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	defer f.Close()
 
-	return feed.Encode(f, "  ")
+	var tasks []*pool.Task
+	for _, fileInfo := range fileInfos {
+		if fileInfo.IsDir() {
+			subtasks, err := tasksForPagesDir(dir + fileInfo.Name())
+			if err != nil {
+				return nil, err
+			}
+			tasks = append(tasks, subtasks...)
+		} else {
+			// Subtract 4 for the ".ace" extension.
+			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
+
+			tasks = append(tasks, pool.NewTask(func() error {
+				return compilePage(dir, name)
+			}))
+		}
+	}
+
+	return tasks, nil
+}
+
+//
+// Other functions
+//
+// Any other functions. Try to keep them alphabetized.
+//
+
+func accumulateArticles(articles *[]*Article) chan *Article {
+	articleChan := make(chan *Article, 100)
+	go func() {
+		for article := range articleChan {
+			*articles = append(*articles, article)
+		}
+	}()
+	return articleChan
+}
+
+func accumulateFragments(fragments *[]*Fragment) chan *Fragment {
+	fragmentChan := make(chan *Fragment, 100)
+	go func() {
+		for fragment := range fragmentChan {
+			*fragments = append(*fragments, fragment)
+		}
+	}()
+	return fragmentChan
 }
 
 // Gets a map of local values for use while rendering a template and includes
