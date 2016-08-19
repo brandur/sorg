@@ -145,10 +145,18 @@ error that was emitted for each breakage, so I join on another specialized
 
 !fig src="/assets/canonical-log-lines/top-errors.png" caption="The names of the Ruby exception classes emitted for each error, and their relative count."
 
+<!--
+[search canonical-api-line status=500 api_method=AllEventsMethod sourcetype=bapi-srv earliest=-7d | fields action_id] BREAKAGE-SPLUNKLINE | stats count by error_class | sort -count limit 10
+-->
+
 I can invert this to pull information _out_ of the canonical lines as well.
 Here are counts of timeout errors over the last week by API version:
 
 !fig src="/assets/canonical-log-lines/top-api-versions.png" caption="An inverted search. API versions pulled from the canonical log line and fetched by class of error."
+
+<!--
+[search BREAKAGE-SPLUNKLINE error_class=Chalk::ODM::OperationTimeout sourcetype=bapi-srv earliest=-7d | fields action_id] canonical-api-line | stats count by stripe_version | sort -count limit 10
+-->
 
 ### Example: TLS Deprecation
 
