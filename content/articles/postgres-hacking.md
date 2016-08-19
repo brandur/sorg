@@ -2,8 +2,7 @@
 title: Postgres Hacking
 published_at: 2016-08-17T15:59:51Z
 location: San Francisco
-hook: A recipe for how to get started with development on Postgres in as few
-  words as possible.
+hook: The missing README for how to get started with Postgres development.
 ---
 
 It's probably obvious that Postgres is my favorite database. One minor
