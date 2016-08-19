@@ -7,45 +7,42 @@ published_at: 2016-07-20T14:31:33Z
 ---
 
 _Canonical log lines_ are a lightweight pattern used within Stripe for improved
-service observability. Their greatest strength is that 
+service observability. Their greatest strength is that they act as a midground
+between other types of analytics in that they present a good trade-off between
+ease of access and flexibility.
 
 If we look at a standard production system, we could say that it emits multiple
-"tiers" of analytical information:
+"tiers" of analytical information. For example:
 
-1. Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
-2. Log traces.
+* Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
+* Log traces.
 
-While metrics provide very fast feedback on specific and commonly-used system
-measurements, they're not very good at allowing information to be queried
-arbitrarily and ad-hoc. While perfect for answering a question that's known
-ahead of time like, _"how many requests per second is my stack doing?"_,
+While **metrics** provide very fast feedback on specific and commonly-used
+system measurements, they're not very good at allowing information to be
+queried arbitrarily and ad-hoc. While perfect for answering a question that's
+known ahead of time like, _"how many requests per second is my stack doing?"_,
 they're less useful for questions that I think up on the spot and need
 immediate answers for like, _"how many requests per second is userXYZ making to
 my stack via TLS 1.0?"_
 
-Log traces can answer the latter question, but often make such analysis
-difficult because they tend to be noisy and have information is spread out
-across many lines, which can be difficult to correlate even with sophisticated
+**Log traces** can answer the latter question, but often make such analysis
+difficult because they tend to have poor signal-to-noise ratio when looking for
+specific information. They can be difficult to navigate even with sophisticated
 logging systems like Splunk.
 
-Canonical log lines are "middle tier" of analytics that help to bridge the gap
-between metrics and raw traces:
-
-1. Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
-2. **Canonical log lines.**
-3. Log traces.
+Canonical log lines are middle tier of analytics that help to bridge that gap:
 
 !fig src="/assets/canonical-log-lines/observability-tiers.svg" caption="The tiers of observability, showing the trade-off between query flexibility and ease of reference."
 
-## What Is It? (#what-is-it)
+## What Are They? (#what-are-they)
 
-The canonical log line's implementation is dead simple: it's one big log line
-(probably in [logfmt](/logfmt)\) style that is emitted at the end of a request
-[1] and which contains a set of information tuples describing its aspects.
+The concept is dead simple: canonical lines are one big log line (probably in
+[logfmt](/logfmt)\) style that is emitted at the end of a request [1] and which
+has a field for every one of its vitals.
 
 !fig src="/assets/canonical-log-lines/canonical-log-lines.svg" caption="Canonical log lines being emitted (and ingested) for reach request."
 
-Some examples of the type o information that a canonical line might include:
+Some examples of the type of information that might be included:
 
 * Basic request vitals like HTTP verb, host, path, source IP, and user agent.
 * Any [request IDs](/request-ids) that the request may have been tagged with.
@@ -62,50 +59,14 @@ Some examples of the type o information that a canonical line might include:
 * Rate limiting information: whether rate limiting occurred, what a user's
   total limit is, and how much of it is remaining.
 
-In [logfmt](/logfmt) style, this might look like (note that I've added newlines
-and comments for clarity, but this would be all one big long line in a real
-system):
+Here's an example in [logfmt](/logfmt) style (line breaks added for clarity):
 
-```
-canonical-api-line
-
-  # service information
-  service=api release=v752 git_head=6bb8ec015a21ff7f6c3f34f6fe99357352692a72
-
-  # request identification
-  request_id=55f10e07-ec6c-486d-8131-80f846fbe465
-
-  # request information
-  request_content_type=application/json request_ip=1.2.3.4
-  request_method=GET request_path=/users request_user_agent="Curl 1.2.3"
-
-  # response information
-  response_content_type=application/json response_status=200
-  error_id= error_message=
-
-  # authentication information
-  user_email=nameless@example.comkuser_id=1234
-  auth_oauth_app_id=2345 auth_oauth_scope=identity,users
-
-  # timing
-  timing_request_total=0.099 timing_database_total=0.085
-
-  # rate limiting
-  rate_limiting_enforced=false rate_limiting_limit=100 rate_limit_remaining=99
-```
+!fig src="/assets/canonical-log-lines/example-line.svg" caption="What a canonical log line looks like in raw form as it's being emitted."
 
 ## Storage (#storage)
 
-After emitting canonical lines, but the next step is to make use of them by
-ingesting them into a system that allows them to be queried in some meaningful
-way.
-
-We use a two prong approach where the lines are pushed into:
-
-1. **Splunk**, where they're available almost instantly and can be queried in a
-   very free-form way.
-2. **Redshift**, where they're stored for much longer and can be more easily
-   cross-referenced with other warehouse data.
+After emitting canonical lines, the next step is to put them somewhere so as to
+make use of them. We use a two prong approach combining Splunk and Redshift.
 
 ### Splunk (#splunk)
 
@@ -121,45 +82,29 @@ into online systems. It's great for:
 4. By tagging every line emitted to Splunk with [request IDs](/request-ids), we
    can easily cross-reference canonical lines with any other part of the raw
    trace that came from a request.
+5. Available immediately. Logs are fed directly into Splunk and can be queried
+   in near real-time.
 
 All these characteristics make Splunk ideal for operational work where we might
 be in the midst of an incident and need information immediately.
 
-The downside of Splunk is that it's very expensive to license and run, and your
+The downside of Splunk is that it's expensive to license and run, and your
 retention is generally limited by your total capacity being heavily eaten into
 by the sheer amount of raw information being pushed into the system. It's not
 an unusual sight to see our operations teams trying to prune the traces of our
 highest traffic systems to keep Splunk running under quota [2].
 
-#### Example: 500s By Breakage
-
-!fig src="/assets/canonical-log-lines/error-timechart.png" caption="Error counts for the last week on the \"list events\" endpoint."
-
-Now say I want to cross-reference this information on a per-request basis with
-some other information that was emitted to the log trace. By putting my
-original query into a Splunk subsearch, and "joining" log traces on a request
-ID, it's easy. The canonical log line is used to narrow 
-
-Continuing from the example above, I want to look for the precise class of
-error that was emitted for each breakage, so I join on another specialized
-"breakage line" that's emitted for each one:
-
-!fig src="/assets/canonical-log-lines/top-errors.png" caption="The names of the Ruby exception classes emitted for each error, and their relative count."
-
-Tricks. The inverse also works.
-
 ### Redshift (#redshift)
 
-The other system that we use to ingest canonical lines is Redshift. And
-although we've found Redshift to be a good technology choice, what I really
-mean to talk about is some kind of data warehouse, so feel free to pretend that
-this section is talking about your warehousing system of choice.
+The other system that we use to ingest canonical lines is Redshift. And really
+what's written here applies to any data warehousing system, so feel free to
+replace "Redshift" with your software of choice.
 
-Some advantages to using a warehouse are:
+Some advantages of a warehouse:
 
-1. It's scalable. Tables can be arbitrarily large and still queryable without
+1. Scalability. Tables can be arbitrarily large and still queryable without
    trouble.
-2. It's cheap. Especially compared to systems like Splunk, data can be archived
+2. Low cost. Especially compared to systems like Splunk, data can be archived
    for extended periods without price becoming an issue. We've started pruning
    canonical lines after 90 days, but they could conceivably be stored for much
    longer.
@@ -167,25 +112,61 @@ Some advantages to using a warehouse are:
    on your users from a core data store, it allows greater levels of deep
    insight by stitching together data generated from different data sources.
 
-We get data into Redshift by emitting lines over a fast queueing system (NSQ),
-archiving batches of it to S3, and then periodically running a `COPY` pointing
-to the bucket from Redshift. The implementation here doesn't matter very much,
-but it's worth nothing Redshift does best when data is ingested using bulk ETL,
-and by extension won't be updated in near real-time like a system ingesting
+We import data by emitting lines over a fast queueing system (NSQ), archiving
+batches of it to S3, and then periodically running a `COPY` pointing to the
+bucket from Redshift. The implementation here doesn't matter very much, but
+it's worth nothing Redshift does best when data is ingested using bulk ETL, and
+by extension won't be updated in near real-time like a system ingesting
 directly from syslog (e.g. Splunk).
 
-#### Example: TLS Deprecation
+## Examples
 
-!fig src="/assets/canonical-log-lines/tls-requests-by-merchant.png" caption="Splunk dashboard for requests from a merchant by TLS version."
+### Example: 500s By Breakage
+
+One of the hazards of any software stack is that unexpected breakages will
+happen. For a typical web service, this often takes the form of an exception
+raised internally and then converted to an HTTP 500 and returned to the user.
+
+While it's reasonably likely that a web service already has a dashboard in
+place for the frequency of 500s that are occurring, what if I wanted, for
+example, to drill into the errors from one particular API endpoint. By scoping
+canonical log lines down to 500 responses coming from a single API method, I
+can easily get that information from Splunk:
+
+!fig src="/assets/canonical-log-lines/error-timechart.png" caption="Error counts for the last week on the \"list events\" endpoint."
+
+Now say I want to cross-reference that result with some other information that
+was emitted into the log trace for any request. By putting my original query
+into a Splunk subsearch, and "joining" log traces on a request ID, it's easy.
+
+Continuing from the example above, I want to look for the precise class of
+error that was emitted for each breakage, so I join on another specialized
+"breakage line" that's emitted for each one:
+
+!fig src="/assets/canonical-log-lines/top-errors.png" caption="The names of the Ruby exception classes emitted for each error, and their relative count."
+
+TODO: Tricks. The inverse also works.
+
+### Example: TLS Deprecation
 
 One project that I'm working on right now is helping Stripe merchants who are
 using old versions of TLS (i.e 1.0 and 1.1) [upgrade their
-integrations][upgrading-tls] before hitting blackout deadlines. Using canonical
-lines,
+integrations][upgrading-tls] before hitting blackout deadlines.
 
-Canonical lines sent to Redshift also work very well. Here's a query to ask for
-any merchants that have made requests to our API services using pre-1.2
-versions of TLS in the last week [3]:
+While responding to support questions on the topic, I realized it would be
+useful to be able to quickly reference the key TLS metrics for any given
+account. I spent 10 minutes learning how to make dashboard in Splunk, and then
+another making a dashboard that's powered purely be canonical log lines:
+
+!fig src="/assets/canonical-log-lines/tls-requests-by-merchant.png" caption="Splunk dashboard for requests from a merchant by TLS version."
+
+Each panel performs a search for canonical log lines matching a certain
+merchant, excludes lines generated by calls from internal systems, then pulls
+some metrics and tabulates or draws a plot of the results.
+
+The same thing is also possible from Redshift. Here's a query to ask for any
+merchants that have made requests to our API services using pre-1.2 versions of
+TLS in the last week [3]:
 
 ```
 SELECT distinct(merchant_id)
@@ -195,8 +176,8 @@ WHERE created > GETDATE() - '7 days'::interval
 ORDER BY 1;
 ```
 
-That's useful already, but we can take it a step further by joining against
-other information in our warehouse. To track who's upgraded and who hasn't,
+We can take it a step further by joining against other information in our
+warehouse. To track who's upgraded their TLS implementation and who hasn't,
 we've introduced a field on every merchant that keeps track of their minimum
 TLS version (`merchants.minimum_tls_version`). To prevent merchants from
 regressing to an old TLS version after they've started using a new one, we lock
@@ -223,21 +204,24 @@ WHERE minimum_tls_version < 'TLSv1.2'
 ORDER BY 1;
 ```
 
-And as easily as that, I have a data set of all merchants who are eligible to
-have their TLS floor updated.
+And as easily as that, I have a data set of all merchants who are probably
+candidates to have their TLS floor raised.
 
 ## Implementation (#implementation)
 
-Middleware makes a good home for implementation. This middleware will generally
-live close to the top of the stack and inject an object through context (i.e.
-`env` in Rack) which is populated by downstream components before being
-finalized and emitted by the logging middleware.
+Middleware makes a good home for implementing canonical log lines. This
+middleware will generally live close to the top of the stack and inject an
+object through context (i.e. `env` in Rack) which is populated by downstream
+components before being finalized and emitted by the logging middleware.
 
 For example, the logging middleware might inject an object with a `request_id`
 field which will then be populated downstream by a "request ID" middleware
 after it extracts one from an incoming request's headers.
 
-An example of a basic implementation:
+We use Ruby as an example here, but the basic of canonical log line is
+trivially applicable to any technology stack.
+
+A basic implementation:
 
 ``` ruby
 # A type containing fields that we'd like to populate for the final canonical
@@ -279,7 +263,11 @@ class CanonicalLogLineEmitter < Middleware
     log.info(line.to_logfmt)
   end
 end
+```
 
+And the middleware stack that we install it into:
+
+``` ruby
 App = Rack::Builder.new do
   # Top of the middleware stack.
   use CanonicalLogLineEmitter
@@ -297,12 +285,12 @@ end
 
 ## Summary
 
-We've shown that canonical lines can be a powerful tool for fast and flexible
-operational introspection when using them with an appropriate data store. Maybe
-their greatest strength is how after putting a few basic ingestion pipelines in
-place, they can easily be used to emit information from any language in any
-system to produce an easy way to get succinct request information across an
-entire internal stack.
+Canonical log lines are a perfect middle tier of analytics for a production
+stack. They don't make as convenient of a reference as statsd-style metrics,
+but are infinitely more flexible. Likewise, they don't have the sheer
+information density of raw log traces, but make access to information far more
+convenient. They're also a general and simple enough idea that they can be
+readily implemented in any technology stack.
 
 [1] I refer to canonical lines being tied to "requests" because web services
     are a ubiquitous type of app that many of us are working on these days, but
