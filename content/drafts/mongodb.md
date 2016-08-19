@@ -61,7 +61,7 @@ largely be safe on modern versions of MongoDB.
 
 One of the early hot features of MongoDB was its speed, and particularly how
 well it performed compared to relational equivalents. As it turns out, these
-incredible speed benchmarks had more to do with its quesionable approach to
+incredible speed benchmarks had more to do with its questionable approach to
 data integrity (as discussed above) rather than any advancement made by the
 10gen team. After version 3 was released with safer write defaults, [it quickly
 became obvious that MongoDB had lost the performance edge that it had
