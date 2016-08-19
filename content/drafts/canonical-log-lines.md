@@ -202,6 +202,19 @@ highest traffic systems to keep Splunk running under quota [2].
 
 #### Example: 500s By Breakage
 
+!fig src="/assets/canonical-log-lines/error-timechart.png" caption="Error counts for the last week on the \"list events\" endpoint."
+
+Now say I want to cross-reference this information on a per-request basis with
+some other information that was emitted to the log trace. By putting my
+original query into a Splunk subsearch, and "joining" log traces on a request
+ID, it's easy. The canonical log line is used to narrow 
+
+Continuing from the example above, I want to look for the precise class of
+error that was emitted for each breakage, so I join on another specialized
+"breakage line" that's emitted for each one:
+
+!fig src="/assets/canonical-log-lines/top-errors.png" caption="The names of the Ruby exception classes emitted for each error, and their relative count."
+
 Tricks. The inverse also works.
 
 ### Redshift (#redshift)
@@ -237,8 +250,11 @@ directly from syslog (e.g. Splunk).
 One project that I'm working on right now is helping Stripe merchants who are
 using old versions of TLS (i.e 1.0 and 1.1) [upgrade their
 integrations][upgrading-tls] before hitting blackout deadlines. Using canonical
-lines, I can easily ask Redshift for any merchants that have made requests to
-our API services using pre-1.2 versions of TLS in the last week [3]:
+lines,
+
+Canonical lines sent to Redshift also work very well. Here's a query to ask for
+any merchants that have made requests to our API services using pre-1.2
+versions of TLS in the last week [3]:
 
 ```
 SELECT distinct(merchant_id)
@@ -248,17 +264,17 @@ WHERE created > GETDATE() - '7 days'::interval
 ORDER BY 1;
 ```
 
-That's pretty handy already, but we can take it a step further. To track who's
-upgraded and who hasn't, we've introduced a field on every merchant that keeps
-track of their minimum TLS version (`merchants.minimum_tls_version`). To
-prevent merchants from regressing to an old TLS version after they've started
-using a new one, we lock them into making TLS requests that only use their
-minimum version or newer.
+That's useful already, but we can take it a step further by joining against
+other information in our warehouse. To track who's upgraded and who hasn't,
+we've introduced a field on every merchant that keeps track of their minimum
+TLS version (`merchants.minimum_tls_version`). To prevent merchants from
+regressing to an old TLS version after they've started using a new one, we lock
+them into making TLS requests that only use their minimum version or newer.
 
 I'd like to see which merchants flagged into a pre-1.2 TLS version have since
-upgraded their integrations recently so that I can track our progress towards
-total deprecation. By joining my table of canonical lines with one containing
-merchant information, I can this from Redshift easily by asking for all
+upgraded their integrations to help track our progress towards total
+deprecation. By joining my table of canonical lines with one containing
+merchant information, I can easily get this from Redshift by asking for all
 merchants on old TLS versions who have not made a request using a pre-1.2
 version of TLS in the past week:
 
@@ -276,7 +292,8 @@ WHERE minimum_tls_version < 'TLSv1.2'
 ORDER BY 1;
 ```
 
-And thus get a set of all merchants eligible to have their TLS floor updated.
+And as easily as that, I have a data set of all merchants who are eligible to
+have their TLS floor updated.
 
 ## Summary
 
