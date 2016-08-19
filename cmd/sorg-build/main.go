@@ -517,7 +517,110 @@ func main() {
 // They are normally run concurrently.
 //
 
+func compileArticle(dir, name string, draft bool) (*Article, error) {
+	inPath := dir + "/" + name
+
+	raw, err := ioutil.ReadFile(inPath)
+	if err != nil {
+		return nil, err
+	}
+
+	frontmatter, content, err := splitFrontmatter(string(raw))
+	if err != nil {
+		return nil, err
+	}
+
+	var article Article
+	err = yaml.Unmarshal([]byte(frontmatter), &article)
+	if err != nil {
+		return nil, err
+	}
+
+	article.Draft = draft
+	article.Slug = strings.Replace(name, ".md", "", -1)
+
+	if article.Title == "" {
+		return nil, fmt.Errorf("No title for article: %v", inPath)
+	}
+
+	if article.PublishedAt == nil {
+		return nil, fmt.Errorf("No publish date for article: %v", inPath)
+	}
+
+	article.Content = markdown.Render(content)
+
+	article.TOC, err = toc.Render(article.Content)
+	if err != nil {
+		return nil, err
+	}
+
+	locals := getLocals(article.Title, map[string]interface{}{
+		"Article": article,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
+		conf.TargetDir+"/"+article.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return &article, nil
+}
+
+func compileArticlesFeed(articles []*Article) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled articles feed in %v.", time.Now().Sub(start))
+	}()
+
+	feed := &atom.Feed{
+		Title: "Articles - brandur.org",
+		ID:    "tag:brandur.org.org,2013:/articles",
+
+		Links: []*atom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/articles.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(articles) > 0 {
+		feed.Updated = *articles[0].PublishedAt
+	}
+
+	for i, article := range articles {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &atom.Entry{
+			Title:     article.Title,
+			Content:   &atom.EntryContent{Content: article.Content, Type: "html"},
+			Published: *article.PublishedAt,
+			Updated:   *article.PublishedAt,
+			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
+			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
+
+			AuthorName: conf.AtomAuthorName,
+			AuthorURI:  conf.AtomAuthorURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(conf.TargetDir + "/articles.atom")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return feed.Encode(f, "  ")
+}
+
 func compileArticlesIndex(articles []*Article) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled articles index in %v.", time.Now().Sub(start))
+	}()
+
 	articlesByYear := groupArticlesByYear(articles)
 
 	locals := getLocals("Articles", map[string]interface{}{
@@ -533,7 +636,105 @@ func compileArticlesIndex(articles []*Article) error {
 	return nil
 }
 
+func compileFragment(dir, name string, draft bool) (*Fragment, error) {
+	inPath := dir + "/" + name
+
+	raw, err := ioutil.ReadFile(inPath)
+	if err != nil {
+		return nil, err
+	}
+
+	frontmatter, content, err := splitFrontmatter(string(raw))
+	if err != nil {
+		return nil, err
+	}
+
+	var fragment Fragment
+	err = yaml.Unmarshal([]byte(frontmatter), &fragment)
+	if err != nil {
+		return nil, err
+	}
+
+	fragment.Draft = draft
+	fragment.Slug = strings.Replace(name, ".md", "", -1)
+
+	if fragment.Title == "" {
+		return nil, fmt.Errorf("No title for fragment: %v", inPath)
+	}
+
+	if fragment.PublishedAt == nil {
+		return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
+	}
+
+	fragment.Content = markdown.Render(content)
+
+	locals := getLocals(fragment.Title, map[string]interface{}{
+		"Fragment": fragment,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
+		conf.TargetDir+"/fragments/"+fragment.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return &fragment, nil
+}
+
+func compileFragmentsFeed(fragments []*Fragment) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled fragments feed in %v.", time.Now().Sub(start))
+	}()
+
+	feed := &atom.Feed{
+		Title: "Fragments - brandur.org",
+		ID:    "tag:brandur.org.org,2013:/fragments",
+
+		Links: []*atom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(fragments) > 0 {
+		feed.Updated = *fragments[0].PublishedAt
+	}
+
+	for i, fragment := range fragments {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &atom.Entry{
+			Title:     fragment.Title,
+			Content:   &atom.EntryContent{Content: fragment.Content, Type: "html"},
+			Published: *fragment.PublishedAt,
+			Updated:   *fragment.PublishedAt,
+			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
+			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
+
+			AuthorName: conf.AtomAuthorName,
+			AuthorURI:  conf.AtomAuthorURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(conf.TargetDir + "/fragments.atom")
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	return feed.Encode(f, "  ")
+}
+
 func compileFragmentsIndex(fragments []*Fragment) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled fragments index in %v.", time.Now().Sub(start))
+	}()
+
 	fragmentsByYear := groupFragmentsByYear(fragments)
 
 	locals := getLocals("Fragments", map[string]interface{}{
@@ -1126,187 +1327,6 @@ func accumulateFragments(fragments *[]*Fragment) chan *Fragment {
 		}
 	}()
 	return fragmentChan
-}
-
-func compileArticle(dir, name string, draft bool) (*Article, error) {
-	inPath := dir + "/" + name
-
-	raw, err := ioutil.ReadFile(inPath)
-	if err != nil {
-		return nil, err
-	}
-
-	frontmatter, content, err := splitFrontmatter(string(raw))
-	if err != nil {
-		return nil, err
-	}
-
-	var article Article
-	err = yaml.Unmarshal([]byte(frontmatter), &article)
-	if err != nil {
-		return nil, err
-	}
-
-	article.Draft = draft
-	article.Slug = strings.Replace(name, ".md", "", -1)
-
-	if article.Title == "" {
-		return nil, fmt.Errorf("No title for article: %v", inPath)
-	}
-
-	if article.PublishedAt == nil {
-		return nil, fmt.Errorf("No publish date for article: %v", inPath)
-	}
-
-	article.Content = markdown.Render(content)
-
-	article.TOC, err = toc.Render(article.Content)
-	if err != nil {
-		return nil, err
-	}
-
-	locals := getLocals(article.Title, map[string]interface{}{
-		"Article": article,
-	})
-
-	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
-		conf.TargetDir+"/"+article.Slug, locals)
-	if err != nil {
-		return nil, err
-	}
-
-	return &article, nil
-}
-
-func compileFragment(dir, name string, draft bool) (*Fragment, error) {
-	inPath := dir + "/" + name
-
-	raw, err := ioutil.ReadFile(inPath)
-	if err != nil {
-		return nil, err
-	}
-
-	frontmatter, content, err := splitFrontmatter(string(raw))
-	if err != nil {
-		return nil, err
-	}
-
-	var fragment Fragment
-	err = yaml.Unmarshal([]byte(frontmatter), &fragment)
-	if err != nil {
-		return nil, err
-	}
-
-	fragment.Draft = draft
-	fragment.Slug = strings.Replace(name, ".md", "", -1)
-
-	if fragment.Title == "" {
-		return nil, fmt.Errorf("No title for fragment: %v", inPath)
-	}
-
-	if fragment.PublishedAt == nil {
-		return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
-	}
-
-	fragment.Content = markdown.Render(content)
-
-	locals := getLocals(fragment.Title, map[string]interface{}{
-		"Fragment": fragment,
-	})
-
-	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
-		conf.TargetDir+"/fragments/"+fragment.Slug, locals)
-	if err != nil {
-		return nil, err
-	}
-
-	return &fragment, nil
-}
-
-func compileArticlesFeed(articles []*Article) error {
-	feed := &atom.Feed{
-		Title: "Articles - brandur.org",
-		ID:    "tag:brandur.org.org,2013:/articles",
-
-		Links: []*atom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/articles.atom"},
-			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
-		},
-	}
-
-	if len(articles) > 0 {
-		feed.Updated = *articles[0].PublishedAt
-	}
-
-	for i, article := range articles {
-		if i >= conf.NumAtomEntries {
-			break
-		}
-
-		entry := &atom.Entry{
-			Title:     article.Title,
-			Content:   &atom.EntryContent{Content: article.Content, Type: "html"},
-			Published: *article.PublishedAt,
-			Updated:   *article.PublishedAt,
-			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
-			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
-
-			AuthorName: conf.AtomAuthorName,
-			AuthorURI:  conf.AtomAuthorURL,
-		}
-		feed.Entries = append(feed.Entries, entry)
-	}
-
-	f, err := os.Create(conf.TargetDir + "/articles.atom")
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	return feed.Encode(f, "  ")
-}
-
-func compileFragmentsFeed(fragments []*Fragment) error {
-	feed := &atom.Feed{
-		Title: "Fragments - brandur.org",
-		ID:    "tag:brandur.org.org,2013:/fragments",
-
-		Links: []*atom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
-			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
-		},
-	}
-
-	if len(fragments) > 0 {
-		feed.Updated = *fragments[0].PublishedAt
-	}
-
-	for i, fragment := range fragments {
-		if i >= conf.NumAtomEntries {
-			break
-		}
-
-		entry := &atom.Entry{
-			Title:     fragment.Title,
-			Content:   &atom.EntryContent{Content: fragment.Content, Type: "html"},
-			Published: *fragment.PublishedAt,
-			Updated:   *fragment.PublishedAt,
-			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
-			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
-
-			AuthorName: conf.AtomAuthorName,
-			AuthorURI:  conf.AtomAuthorURL,
-		}
-		feed.Entries = append(feed.Entries, entry)
-	}
-
-	f, err := os.Create(conf.TargetDir + "/fragments.atom")
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	return feed.Encode(f, "  ")
 }
 
 // Gets a map of local values for use while rendering a template and includes
