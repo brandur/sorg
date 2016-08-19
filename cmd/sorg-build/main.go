@@ -397,6 +397,10 @@ func main() {
 
 	tasks = nil
 
+	// Articles, fragments, and pages are are slightly special cases in that we
+	// parallelize the creation of all of them all at once. That is, every
+	// article will have a separately entry in our work queue.
+
 	var articles []*Article
 	articleChan := accumulateArticles(&articles)
 
@@ -415,22 +419,25 @@ func main() {
 	}
 	tasks = append(tasks, fragmentTasks...)
 
-	tasks = append(tasks, pool.NewTask(func() error {
-		return compileJavascripts(javascripts,
-			path.Join(versionedAssetsDir, "app.js"))
-	}))
-
 	pageTasks, err := tasksForPages()
 	if err != nil {
 		log.Fatal(err)
 	}
 	tasks = append(tasks, pageTasks...)
 
+	// Most other types are all one-off pages or other resources and only get a
+	// single entry each in the work queue.
+
 	var photos []*Photo
 	tasks = append(tasks, pool.NewTask(func() error {
 		var err error
 		photos, err = compilePhotos(db)
 		return err
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileJavascripts(javascripts,
+			path.Join(versionedAssetsDir, "app.js"))
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
