@@ -28,7 +28,7 @@ when prompted, they'll more often than not cite problems with its potential for
 data loss. I'd like to set the record straight: there was a time when data loss
 was a real concern, but by and large that's no longer the case. I take the
 position that MongoDB is _never_ an appropriate choice for a new project, but
-not for the usual reasons.
+not for the usually cited reasons.
 
 I don't write this to be mean-spirited, but rather to balance some of the hype
 initiatives that are still ongoing to sell MongoDB to young projects (the
