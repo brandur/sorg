@@ -1,4 +1,5 @@
 public/
 public-dev/
+.DS_Store
 .env
 tags
