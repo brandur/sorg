@@ -1,6 +1,6 @@
 ---
 title: The Case For A Go Worker Pool
-published_at: 2016-08-19T18:24:38Z
+published_at: 2016-08-19T21:22:23Z
 hook: Error handling and fragility; or why a worker pool belongs in Go's
   standard library.
 location: San Francisco
