@@ -28,9 +28,9 @@ func TestWithError(t *testing.T) {
 	tasks := []*Task{
 		NewTask(func() error { return nil }),
 		NewTask(func() error { return nil }),
-		NewTask(func() error { return fmt.Errorf("error!") }),
+		NewTask(func() error { return fmt.Errorf("error") }),
 	}
 	p := NewPool(tasks, 10)
 	err := p.Run()
-	assert.Equal(t, fmt.Errorf("error!"), err)
+	assert.Equal(t, fmt.Errorf("error"), err)
 }
