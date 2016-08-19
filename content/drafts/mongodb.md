@@ -72,8 +72,8 @@ Razor][hanlons-razor] suggests that it's much more likely that the original
 MongoDB developers didn't understand that the way they were confirming writes
 was problematic. They ran some benchmarks, and believing the good numbers to be
 the inherent result of the system's extraordinary engineering, showed them to
-the world. Later, they realized that guaranteeing data integrity was something
-that most people cared about, and started to curb their claims.
+the world. Later, realizing that guaranteed data integrity was something that
+most people cared about, started curbing their claims.
 
 ### Distributed Trouble (#trouble)
 
