@@ -398,20 +398,10 @@ func main() {
 	tasks = nil
 
 	var articles []*Article
-	articleChan := make(chan *Article, 100)
-	go func() {
-		for article := range articleChan {
-			articles = append(articles, article)
-		}
-	}()
+	articleChan := accumulateArticles(&articles)
 
 	var fragments []*Fragment
-	fragmentChan := make(chan *Fragment, 100)
-	go func() {
-		for fragment := range fragmentChan {
-			fragments = append(fragments, fragment)
-		}
-	}()
+	fragmentChan := accumulateFragments(&fragments)
 
 	articleTasks, err := tasksForArticles(articleChan)
 	if err != nil {
@@ -1148,6 +1138,26 @@ func tasksForPagesDir(dir string) ([]*pool.Task, error) {
 //
 // Any other functions. Try to keep them alphabetized.
 //
+
+func accumulateArticles(articles *[]*Article) chan *Article {
+	articleChan := make(chan *Article, 100)
+	go func() {
+		for article := range articleChan {
+			*articles = append(*articles, article)
+		}
+	}()
+	return articleChan
+}
+
+func accumulateFragments(fragments *[]*Fragment) chan *Fragment {
+	fragmentChan := make(chan *Fragment, 100)
+	go func() {
+		for fragment := range fragmentChan {
+			*fragments = append(*fragments, fragment)
+		}
+	}()
+	return fragmentChan
+}
 
 func compileArticle(dir, name string, draft bool) (*Article, error) {
 	inPath := dir + "/" + name
