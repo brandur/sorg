@@ -82,7 +82,7 @@ primary][jepsen1] and [stale reads][jepsen2]). While this is undoubtedly a
 problem, it's not likely to be what's going to cause you grief on a day-to-day
 basis.
 
-## Problems (#problems)
+## The Real Problems (#problems)
 
 Let's talk about why MongoDB is actually a poor choice for your new production
 system. It's almost entirely to do with a set of basic guarantees that have a
@@ -111,8 +111,8 @@ that it's comically depraved. Putting your own two-phase commit into even one
 place is time consuming and complex. A real-life product may have hundreds of
 interacting domain objects; putting two-phase commit in every time you want
 guaranteed consistency between two of them is a recipe for multiplying your
-project's development time and error propensity by 100x for no good reason at
-all.
+project's development time and error propensity by a hundred-fold for no good
+reason.
 
 #### Atomicity Example #1: Request Failure (#request-failure)
 
