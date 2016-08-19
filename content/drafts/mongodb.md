@@ -117,14 +117,13 @@ reason.
 #### Atomicity Example #1: Request Failure (#request-failure)
 
 So now that we've established that MongoDB transactions are not atomic outside
-of a single document, let's consider what happens in the very common case
-of an application that manipulates multiple objects during the course of a
-single request.
+of a single document, now let's consider a very common case of a web service
+that manipulates multiple objects during the course of a single request.
 
-What happens when a request to a big MongoDB-based production system fails
-halfway due to an internal error or a client disconnect? Well, the answer is
-exactly what you'd hope it's not: you're left with data in an inconsistent
-state.
+Given such a system powered by MongoDB, what happens when a request fails
+midway through due to an internal error or a client disconnect? Well, the
+answer is exactly what you'd hope it's not: you're left with data in an
+inconsistent state.
 
 !fig src="/assets/mongodb/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
 
