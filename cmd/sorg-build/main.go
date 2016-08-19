@@ -981,7 +981,8 @@ func tasksForArticles(articleChan chan *Article) ([]*pool.Task, error) {
 	}
 
 	if conf.Drafts {
-		draftTasks, err := tasksForArticlesDir(articleChan, sorg.ContentDir+"/drafts", true)
+		draftTasks, err := tasksForArticlesDir(articleChan,
+			sorg.ContentDir+"/drafts", true)
 		if err != nil {
 			return nil, err
 		}
@@ -1004,18 +1005,16 @@ func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*
 			continue
 		}
 
-		task := &pool.Task{
-			Func: func() error {
-				article, err := compileArticle(dir, articleInfo.Name(), draft)
-				if err != nil {
-					return err
-				}
+		name := articleInfo.Name()
+		tasks = append(tasks, pool.NewTask(func() error {
+			article, err := compileArticle(dir, name, draft)
+			if err != nil {
+				return err
+			}
 
-				articleChan <- article
-				return nil
-			},
-		}
-		tasks = append(tasks, task)
+			articleChan <- article
+			return nil
+		}))
 	}
 
 	return tasks, nil
@@ -1028,8 +1027,8 @@ func tasksForFragments(fragmentChan chan *Fragment) ([]*pool.Task, error) {
 	}
 
 	if conf.Drafts {
-		draftTasks, err := tasksForFragmentsDir(fragmentChan, sorg.ContentDir+"/fragments-drafts",
-			true)
+		draftTasks, err := tasksForFragmentsDir(fragmentChan,
+			sorg.ContentDir+"/fragments-drafts", true)
 		if err != nil {
 			return nil, err
 		}
@@ -1052,18 +1051,16 @@ func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) (
 			continue
 		}
 
-		task := &pool.Task{
-			Func: func() error {
-				fragment, err := compileFragment(dir, fragmentInfo.Name(), draft)
-				if err != nil {
-					return err
-				}
+		name := fragmentInfo.Name()
+		tasks = append(tasks, pool.NewTask(func() error {
+			fragment, err := compileFragment(dir, name, draft)
+			if err != nil {
+				return err
+			}
 
-				fragmentChan <- fragment
-				return nil
-			},
-		}
-		tasks = append(tasks, task)
+			fragmentChan <- fragment
+			return nil
+		}))
 	}
 
 	return tasks, nil
