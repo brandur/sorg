@@ -102,7 +102,7 @@ type Conf struct {
 
 	// Concurrency is the number of build Goroutines that will be used to
 	// perform build work items.
-	Concurrency int `env:"CONCURRENCY,default=20"`
+	Concurrency int `env:"CONCURRENCY,default=30"`
 
 	// Drafts is whether drafts of articles and fragments should be compiled
 	// along with their published versions.
@@ -415,12 +415,10 @@ func main() {
 	}
 	tasks = append(tasks, fragmentTasks...)
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileJavascripts(javascripts,
-				path.Join(versionedAssetsDir, "app.js"))
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileJavascripts(javascripts,
+			path.Join(versionedAssetsDir, "app.js"))
+	}))
 
 	pageTasks, err := tasksForPages()
 	if err != nil {
@@ -429,56 +427,40 @@ func main() {
 	tasks = append(tasks, pageTasks...)
 
 	var photos []*Photo
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			var err error
-			photos, err = compilePhotos(db)
-			return err
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		var err error
+		photos, err = compilePhotos(db)
+		return err
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileReading(db)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileReading(db)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileRuns(db)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileRuns(db)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileRobots(path.Join(conf.TargetDir, "robots.txt"))
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileRobots(path.Join(conf.TargetDir, "robots.txt"))
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileStylesheets(stylesheets,
-				path.Join(versionedAssetsDir, "app.css"))
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileStylesheets(stylesheets,
+			path.Join(versionedAssetsDir, "app.css"))
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileTwitter(db)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileTwitter(db)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return linkImageAssets()
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return linkImageAssets()
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return linkFontAssets()
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return linkFontAssets()
+	}))
 
 	p := pool.NewPool(tasks, conf.Concurrency)
 	err = p.Run()
@@ -501,35 +483,25 @@ func main() {
 	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
 	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileArticlesIndex(articles)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileArticlesFeed(articles)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileArticlesFeed(articles)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileArticlesIndex(articles)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileFragmentsIndex(fragments)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileFragmentsFeed(fragments)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileFragmentsFeed(fragments)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileFragmentsIndex(fragments)
+	}))
 
-	tasks = append(tasks, &pool.Task{
-		Func: func() error {
-			return compileHome(articles, fragments, photos)
-		},
-	})
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileHome(articles, fragments, photos)
+	}))
 
 	p = pool.NewPool(tasks, conf.Concurrency)
 	err = p.Run()
