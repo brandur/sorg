@@ -19,6 +19,7 @@ import (
 	"github.com/brandur/sorg/assets"
 	"github.com/brandur/sorg/atom"
 	"github.com/brandur/sorg/markdown"
+	"github.com/brandur/sorg/pool"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
 	"github.com/joeshaw/envdecode"
@@ -99,9 +100,9 @@ type Conf struct {
 	// in order to extract books, tweets, runs, etc.
 	BlackSwanDatabaseURL string `env:"BLACK_SWAN_DATABASE_URL"`
 
-	// Concurreny is the number of build Goroutines that will be used to
+	// Concurrency is the number of build Goroutines that will be used to
 	// perform build work items.
-	Concurreny int `env:"CONCURRENCY,default=10"`
+	Concurrency int `env:"CONCURRENCY,default=10"`
 
 	// Drafts is whether drafts of articles and fragments should be compiled
 	// along with their published versions.
@@ -388,7 +389,29 @@ func main() {
 		log.Fatal(err)
 	}
 
-	articles, err := compileArticles()
+	var tasks []*pool.Task
+
+	var articles []*Article
+	articleChan := make(chan *Article, 100)
+	go func() {
+		for article := range articleChan {
+			articles = append(articles, article)
+		}
+	}()
+
+	articleTasks, err := tasksForArticles(articleChan)
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, articleTasks...)
+
+	p := pool.NewPool(tasks, conf.Concurrency)
+	p.Run()
+
+	// Free up any Goroutines still waiting.
+	close(articleChan)
+
+	err = compileArticles(articles)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -463,25 +486,29 @@ func main() {
 // resources.
 //
 
-func compileArticles() ([]*Article, error) {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled articles in %v.", time.Now().Sub(start))
-	}()
-
-	articles, err := compileArticlesDir(sorg.ContentDir+"/articles", false)
+func tasksForArticles(articleChan chan *Article) ([]*pool.Task, error) {
+	tasks, err := tasksForArticlesDir(articleChan, sorg.ContentDir+"/articles", false)
 	if err != nil {
 		return nil, err
 	}
 
 	if conf.Drafts {
-		drafts, err := compileArticlesDir(sorg.ContentDir+"/drafts", true)
+		draftTasks, err := tasksForArticlesDir(articleChan, sorg.ContentDir+"/drafts", true)
 		if err != nil {
 			return nil, err
 		}
 
-		articles = append(articles, drafts...)
+		tasks = append(tasks, draftTasks...)
 	}
+
+	return tasks, nil
+}
+
+func compileArticles(articles []*Article) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled articles in %v.", time.Now().Sub(start))
+	}()
 
 	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
 
@@ -491,18 +518,18 @@ func compileArticles() ([]*Article, error) {
 		"ArticlesByYear": articlesByYear,
 	})
 
-	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
+	err := renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/index",
 		conf.TargetDir+"/articles/index.html", locals)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	err = compileArticlesFeed(articles)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return articles, nil
+	return nil
 }
 
 func compileFragments() ([]*Fragment, error) {
@@ -1000,69 +1027,83 @@ func linkImageAssets() error {
 // Any other functions. Try to keep them alphabetized.
 //
 
-func compileArticlesDir(dir string, draft bool) ([]*Article, error) {
+func compileArticle(dir, name string, draft bool) (*Article, error) {
+	inPath := dir + "/" + name
+
+	raw, err := ioutil.ReadFile(inPath)
+	if err != nil {
+		return nil, err
+	}
+
+	frontmatter, content, err := splitFrontmatter(string(raw))
+	if err != nil {
+		return nil, err
+	}
+
+	var article Article
+	err = yaml.Unmarshal([]byte(frontmatter), &article)
+	if err != nil {
+		return nil, err
+	}
+
+	article.Draft = draft
+	article.Slug = strings.Replace(name, ".md", "", -1)
+
+	if article.Title == "" {
+		return nil, fmt.Errorf("No title for article: %v", inPath)
+	}
+
+	if article.PublishedAt == nil {
+		return nil, fmt.Errorf("No publish date for article: %v", inPath)
+	}
+
+	article.Content = markdown.Render(content)
+
+	article.TOC, err = toc.Render(article.Content)
+	if err != nil {
+		return nil, err
+	}
+
+	locals := getLocals(article.Title, map[string]interface{}{
+		"Article": article,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
+		conf.TargetDir+"/"+article.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return &article, nil
+}
+
+func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*pool.Task, error) {
 	articleInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
 	}
 
-	var articles []*Article
-
+	var tasks []*pool.Task
 	for _, articleInfo := range articleInfos {
 		if isHidden(articleInfo.Name()) {
 			continue
 		}
 
-		inPath := dir + "/" + articleInfo.Name()
+		task := &pool.Task{
+			Func: func() error {
+				article, err := compileArticle(dir, articleInfo.Name(), draft)
+				if err != nil {
+					return err
+				}
 
-		raw, err := ioutil.ReadFile(inPath)
-		if err != nil {
-			return nil, err
+				articleChan <- article
+				return nil
+			},
 		}
-
-		frontmatter, content, err := splitFrontmatter(string(raw))
-		if err != nil {
-			return nil, err
-		}
-
-		var article Article
-		articles = append(articles, &article)
-
-		err = yaml.Unmarshal([]byte(frontmatter), &article)
-		if err != nil {
-			return nil, err
-		}
-
-		article.Draft = draft
-		article.Slug = strings.Replace(articleInfo.Name(), ".md", "", -1)
-
-		if article.Title == "" {
-			return nil, fmt.Errorf("No title for article: %v", inPath)
-		}
-
-		if article.PublishedAt == nil {
-			return nil, fmt.Errorf("No publish date for article: %v", inPath)
-		}
-
-		article.Content = markdown.Render(content)
-
-		article.TOC, err = toc.Render(article.Content)
-		if err != nil {
-			return nil, err
-		}
-
-		locals := getLocals(article.Title, map[string]interface{}{
-			"Article": article,
-		})
-
-		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
-			conf.TargetDir+"/"+article.Slug, locals)
-		if err != nil {
-			return nil, err
-		}
+		tasks = append(tasks, task)
 	}
 
-	return articles, nil
+	return tasks, nil
 }
 
 func compileArticlesFeed(articles []*Article) error {
