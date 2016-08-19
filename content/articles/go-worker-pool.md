@@ -26,7 +26,7 @@ Traditionally, thread pools have been useful to ammortizing the costs of
 spinning up new threads. Goroutines are lightweight enough that that's not a
 problem in Go, but a worker pool can still be useful in controlling the number
 of concurrently running tasks, especially when those tasks are accessing
-resources that can easily be saturated like I/O or foreign APIs.
+resources that can easily be saturated like I/O or remote APIs.
 
 !fig src="/assets/go-worker-pool/worker-pool.svg" caption="A visualization of a worker pool: few workers working many work items."
 
@@ -312,16 +312,16 @@ for _, task := range p.Tasks {
 
 ## Summary
 
-Even though putting together a robust worker pool is by no means impossible,
-it's something that every project needs to handle on its own. The problem is
-also almost a little _too_ simple for an external package, as evidenced by the
-dozens (if not hundreds) of Go worker pool implementations that you can find on
-GitHub. Coming to community consensus at this point on a single preferred third
-party package would be nigh impossible.
+Even though putting together a robust worker pool isn't overly problematic,
+right now it's something that every project needs to handle on its own. The
+size of the pattern is also almost a little _too_ simple for an external
+package, as evidenced by the dozens (if not hundreds) of Go worker pool
+implementations that you can find on GitHub. Coming to community consensus at
+this point on a single preferred third party package would be nigh impossible.
 
-It seems to me that this is one easy place that the Go core team could help
-guide developers and prevent a wild amount fracturing by introducing a One True
-Path. Let's get a worker pool in core.
+It seems to me that this is one easy place that the Go maintainers team could
+help guide developers and prevent a wild amount fracturing by introducing a One
+True Path. I'd love to see a worker pool in core.
 
 [gobyexample]: https://gobyexample.com/worker-pools
 [thread-pool]: https://en.wikipedia.org/wiki/Thread_pool
