@@ -10,6 +10,10 @@ type Task struct {
 	Func func() error
 }
 
+func NewTask(f func() error) *Task {
+	return &Task{Func: f}
+}
+
 func (t *Task) Run(wg *sync.WaitGroup) {
 	t.Err = t.Func()
 	wg.Done()
