@@ -9,8 +9,10 @@ import (
 
 func TestEmptyPool(t *testing.T) {
 	p := NewPool(nil, 10)
-	err := p.Run()
-	assert.NoError(t, err)
+	p.Run()
+
+	assert.Equal(t, []error(nil), poolErrors(p))
+	assert.Equal(t, false, p.HasErrors())
 }
 
 func TestWithWork(t *testing.T) {
@@ -20,8 +22,10 @@ func TestWithWork(t *testing.T) {
 		NewTask(func() error { return nil }),
 	}
 	p := NewPool(tasks, 10)
-	err := p.Run()
-	assert.NoError(t, err)
+	p.Run()
+
+	assert.Equal(t, []error(nil), poolErrors(p))
+	assert.Equal(t, false, p.HasErrors())
 }
 
 func TestWithError(t *testing.T) {
@@ -31,6 +35,19 @@ func TestWithError(t *testing.T) {
 		NewTask(func() error { return fmt.Errorf("error") }),
 	}
 	p := NewPool(tasks, 10)
-	err := p.Run()
-	assert.Equal(t, fmt.Errorf("error"), err)
+	p.Run()
+
+	assert.Equal(t, []error{fmt.Errorf("error")}, poolErrors(p))
+	assert.Equal(t, true, p.HasErrors())
+}
+
+// Gets a list of errors from a pool.
+func poolErrors(p *Pool) []error {
+	var errs []error
+	for _, task := range p.Tasks {
+		if task.Err != nil {
+			errs = append(errs, task.Err)
+		}
+	}
+	return errs
 }

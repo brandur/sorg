@@ -469,10 +469,8 @@ func main() {
 		return linkFontAssets()
 	}))
 
-	p := pool.NewPool(tasks, conf.Concurrency)
-	err = p.Run()
-	if err != nil {
-		log.Fatal(err)
+	if !runTasks(tasks) {
+		os.Exit(1)
 	}
 
 	// Free up any Goroutines still waiting.
@@ -510,10 +508,8 @@ func main() {
 		return compileHome(articles, fragments, photos)
 	}))
 
-	p = pool.NewPool(tasks, conf.Concurrency)
-	err = p.Run()
-	if err != nil {
-		log.Fatal(err)
+	if !runTasks(tasks) {
+		os.Exit(1)
 	}
 }
 
@@ -1971,6 +1967,30 @@ func renderView(layout, view, target string, locals map[string]interface{}) erro
 	}
 
 	return nil
+}
+
+// Runs the given tasks in a pool.
+//
+// After the run, if any errors occurred, it prints the first 10. Returns true
+// if all tasks succeeded. If a false is returned, the caller should consider
+// exiting with non-zero status.
+func runTasks(tasks []*pool.Task) bool {
+	p := pool.NewPool(tasks, conf.Concurrency)
+	p.Run()
+
+	var numErrors int
+	for _, task := range p.Tasks {
+		if task.Err != nil {
+			log.Error(task.Err)
+			numErrors++
+		}
+		if numErrors >= 10 {
+			log.Error("Too many errors.")
+			break
+		}
+	}
+
+	return !p.HasErrors()
 }
 
 func splitFrontmatter(content string) (string, string, error) {

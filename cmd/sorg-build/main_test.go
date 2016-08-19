@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -9,6 +10,7 @@ import (
 	"time"
 
 	"github.com/brandur/sorg"
+	"github.com/brandur/sorg/pool"
 	_ "github.com/brandur/sorg/testing"
 	_ "github.com/lib/pq"
 	assert "github.com/stretchr/testify/require"
@@ -313,6 +315,53 @@ func TestGetLocals(t *testing.T) {
 func TestIsHidden(t *testing.T) {
 	assert.Equal(t, true, isHidden(".gitkeep"))
 	assert.Equal(t, false, isHidden("article"))
+}
+
+func TestRunTasks(t *testing.T) {
+	conf.Concurrency = 3
+
+	//
+	// Success case
+	//
+
+	tasks := []*pool.Task{
+		pool.NewTask(func() error { return nil }),
+		pool.NewTask(func() error { return nil }),
+		pool.NewTask(func() error { return nil }),
+	}
+	assert.Equal(t, true, runTasks(tasks))
+
+	//
+	// Failure case (1 error)
+	//
+
+	tasks = []*pool.Task{
+		pool.NewTask(func() error { return nil }),
+		pool.NewTask(func() error { return nil }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+	}
+	assert.Equal(t, false, runTasks(tasks))
+
+	//
+	// Failure case (11 errors)
+	//
+	// Here we'll exit with a "too many errors" message.
+	//
+
+	tasks = []*pool.Task{
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+		pool.NewTask(func() error { return fmt.Errorf("error") }),
+	}
+	assert.Equal(t, false, runTasks(tasks))
 }
 
 func TestSplitFrontmatter(t *testing.T) {
