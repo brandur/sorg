@@ -38,6 +38,26 @@ func TestTransformFigures(t *testing.T) {
 		transformFigures(`!fig src="fig-src" caption="fig-caption"`),
 	)
 
+	// .png links to "@2x" version of the source
+	assert.Equal(t, `
+<figure>
+  <p><a href="fig-src@2x.png"><img src="fig-src.png"></a></p>
+  <figcaption>fig-caption</figcaption>
+</figure>
+`,
+		transformFigures(`!fig src="fig-src.png" caption="fig-caption"`),
+	)
+
+	// .svg doesn't link to "@2x"
+	assert.Equal(t, `
+<figure>
+  <p><a href="fig-src.svg"><img src="fig-src.svg"></a></p>
+  <figcaption>fig-caption</figcaption>
+</figure>
+`,
+		transformFigures(`!fig src="fig-src.svg" caption="fig-caption"`),
+	)
+
 	assert.Equal(t, `
 <figure>
   <p><a href="fig-src"><img src="fig-src"></a></p>
