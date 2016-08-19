@@ -1,6 +1,7 @@
 package pool
 
 import (
+	log "github.com/Sirupsen/logrus"
 	"sync"
 )
 
@@ -31,6 +32,9 @@ func NewPool(tasks []*Task, concurrency int) *Pool {
 }
 
 func (p *Pool) Run() error {
+	log.Infof("Running %v task(s) at concurrency %v",
+		len(p.tasks), p.concurrency)
+
 	for i := 0; i < p.concurrency; i++ {
 		go p.work()
 	}
