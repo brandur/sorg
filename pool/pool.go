@@ -5,20 +5,25 @@ import (
 	"sync"
 )
 
+// Task encapsulates a work item that should go in the pool.
 type Task struct {
-	Err  error
-	Func func() error
+	err error
+	f   func() error
 }
 
+// NewTask initializes a new Task based on a given work function.
 func NewTask(f func() error) *Task {
-	return &Task{Func: f}
+	return &Task{f: f}
 }
 
+// Run runs a Task and does appropriate accounting via a given sync.WorkGroup.
 func (t *Task) Run(wg *sync.WaitGroup) {
-	t.Err = t.Func()
+	t.err = t.f()
 	wg.Done()
 }
 
+// Pool is a worker group that runs a number of Task instances at a configured
+// concurrency.
 type Pool struct {
 	concurrency int
 	tasks       []*Task
@@ -26,6 +31,8 @@ type Pool struct {
 	wg          *sync.WaitGroup
 }
 
+// NewPool initializes a new Pool with the given tasks and at the given
+// concurrency.
 func NewPool(tasks []*Task, concurrency int) *Pool {
 	return &Pool{
 		concurrency: concurrency,
@@ -35,6 +42,8 @@ func NewPool(tasks []*Task, concurrency int) *Pool {
 	}
 }
 
+// Run runs all work within the Pool. The first error that's detected after all
+// work is done is returned.
 func (p *Pool) Run() error {
 	log.Infof("Running %v task(s) at concurrency %v",
 		len(p.tasks), p.concurrency)
@@ -53,8 +62,8 @@ func (p *Pool) Run() error {
 	close(p.tasksChan)
 
 	for _, task := range p.tasks {
-		if task.Err != nil {
-			return task.Err
+		if task.err != nil {
+			return task.err
 		}
 	}
 
