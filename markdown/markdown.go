@@ -2,6 +2,7 @@ package markdown
 
 import (
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -86,12 +87,18 @@ func transformFigures(source string) string {
 		matches := figureRE.FindStringSubmatch(figure)
 		src := matches[1]
 
+		link := src
+		extension := filepath.Ext(link)
+		if extension != "" && extension != ".svg" {
+			link = link[0:len(src)-len(extension)] + "@2x" + extension
+		}
+
 		// This is a really ugly hack in that it relies on the regex above
 		// being greedy about quotes, but meh, I'll make it better when there's
 		// a good reason to.
 		caption := strings.Replace(matches[2], `\"`, `"`, -1)
 
-		return fmt.Sprintf(figureHTML, src, src, caption)
+		return fmt.Sprintf(figureHTML, link, src, caption)
 	})
 }
 
