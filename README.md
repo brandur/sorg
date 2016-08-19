@@ -47,6 +47,33 @@ S3_BUCKET=...
 make deploy
 ```
 
+## Development
+
+Run the entire lifecycle like in CI:
+
+``` sh
+make
+```
+
+Run the test suite:
+
+``` sh
+make test
+```
+
+Run a single package's test suite or single test:
+
+``` sh
+go test ./markdown
+go test ./markdown -run TestCollapseHTML
+```
+
+Get more verbose output while running tests:
+
+```
+go test -v ./markdown
+```
+
 [black-swan]: https://github.com/brandur/black-swan
 [brandur]: https://brandur.org
 [org]: https://github.com/brandur/org
