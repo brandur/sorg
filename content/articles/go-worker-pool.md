@@ -216,7 +216,7 @@ type Pool struct {
 
 	concurrency int
 	tasksChan   chan *Task
-	wg          *sync.WaitGroup
+	wg          sync.WaitGroup
 }
 
 // NewPool initializes a new pool with the given tasks and
@@ -226,7 +226,6 @@ func NewPool(tasks []*Task, concurrency int) *Pool {
 		Tasks:       tasks,
 		concurrency: concurrency,
 		tasksChan:   make(chan *Task),
-		wg:          new(sync.WaitGroup),
 	}
 }
 
@@ -251,7 +250,7 @@ func (p *Pool) Run() {
 // The work loop for any single goroutine.
 func (p *Pool) work() {
 	for task := range p.tasksChan {
-		task.Run(p.wg)
+		task.Run(&p.wg)
 	}
 }
 ```
