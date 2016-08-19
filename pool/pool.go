@@ -45,7 +45,7 @@ func NewPool(tasks []*Task, concurrency int) *Pool {
 // Run runs all work within the Pool. The first error that's detected after all
 // work is done is returned.
 func (p *Pool) Run() error {
-	log.Infof("Running %v task(s) at concurrency %v",
+	log.Debugf("Running %v task(s) at concurrency %v.",
 		len(p.tasks), p.concurrency)
 
 	for i := 0; i < p.concurrency; i++ {
