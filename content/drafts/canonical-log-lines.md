@@ -94,75 +94,6 @@ canonical-api-line
   rate_limiting_enforced=false rate_limiting_limit=100 rate_limit_remaining=99
 ```
 
-## Implementation (#implementation)
-
-Middleware makes a good home for implementation. This middleware will generally
-live close to the top of the stack and inject an object through context (i.e.
-`env` in Rack) which is populated by downstream components before being
-finalized and emitted by the logging middleware.
-
-For example, the logging middleware might inject an object with a `request_id`
-field which will then be populated downstream by a "request ID" middleware
-after it extracts one from an incoming request's headers.
-
-An example of a basic implementation:
-
-``` ruby
-# A type containing fields that we'd like to populate for the final canonical
-# log line and which can encode itself in logfmt format.
-class CanonicalLogLine
-  # service information
-  attr_accessor :service
-  attr_accessor :release
-  attr_accessor :git_head
-
-  # request identification
-  attr_accessor :request_id
-
-  ...
-
-  def to_logfmt
-    ...
-  end
-end
-
-# A middleware that injects a canonical log line object into a request's #
-# context and emits it to the log trace as the rest of the stack has finished
-# satisfying the request.
-class CanonicalLogLineEmitter < Middleware
-  attr_accessor :app
-
-  def initialize(app)
-    self.app = app
-  end
-
-  def call(env)
-    line = CanonicalLogLine.new
-    env["app.canonical_log_line"] = line
-    ...
-
-    app.call(env)
-
-    # Emit to logs.
-    log.info(line.to_logfmt)
-  end
-end
-
-App = Rack::Builder.new do
-  # Top of the middleware stack.
-  use CanonicalLogLineEmitter
-
-  # Other middleware.
-  use Cache
-  use Deflater
-  use ErrorHandler
-  use RequestID
-  use SSL
-
-  run Main
-end
-```
-
 ## Storage (#storage)
 
 After emitting canonical lines, but the next step is to make use of them by
@@ -294,6 +225,75 @@ ORDER BY 1;
 
 And as easily as that, I have a data set of all merchants who are eligible to
 have their TLS floor updated.
+
+## Implementation (#implementation)
+
+Middleware makes a good home for implementation. This middleware will generally
+live close to the top of the stack and inject an object through context (i.e.
+`env` in Rack) which is populated by downstream components before being
+finalized and emitted by the logging middleware.
+
+For example, the logging middleware might inject an object with a `request_id`
+field which will then be populated downstream by a "request ID" middleware
+after it extracts one from an incoming request's headers.
+
+An example of a basic implementation:
+
+``` ruby
+# A type containing fields that we'd like to populate for the final canonical
+# log line and which can encode itself in logfmt format.
+class CanonicalLogLine
+  # service information
+  attr_accessor :service
+  attr_accessor :release
+  attr_accessor :git_head
+
+  # request identification
+  attr_accessor :request_id
+
+  ...
+
+  def to_logfmt
+    ...
+  end
+end
+
+# A middleware that injects a canonical log line object into a request's #
+# context and emits it to the log trace as the rest of the stack has finished
+# satisfying the request.
+class CanonicalLogLineEmitter < Middleware
+  attr_accessor :app
+
+  def initialize(app)
+    self.app = app
+  end
+
+  def call(env)
+    line = CanonicalLogLine.new
+    env["app.canonical_log_line"] = line
+    ...
+
+    app.call(env)
+
+    # Emit to logs.
+    log.info(line.to_logfmt)
+  end
+end
+
+App = Rack::Builder.new do
+  # Top of the middleware stack.
+  use CanonicalLogLineEmitter
+
+  # Other middleware.
+  use Cache
+  use Deflater
+  use ErrorHandler
+  use RequestID
+  use SSL
+
+  run Main
+end
+```
 
 ## Summary
 
