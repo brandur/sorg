@@ -1,6 +1,7 @@
 ---
 title: Don't Use MongoDB
 hook: Why you should almost certainly use an ACID-compliant data store, even at scale.
+hook: The real story behind data integrity, why you should stay on an ACID database until the bitter end, and what high availability really means.
 location: San Francisco
 published_at: 2016-08-01T00:23:52Z
 ---
@@ -72,7 +73,7 @@ MongoDB developers didn't understand that the way they were confirming writes
 was problematic. They ran some benchmarks, and believing the good numbers to be
 the inherent result of the system's extraordinary engineering, showed them to
 the world. Later, they realized that guaranteeing data integrity was something
-that most people cared about, and over time curbed their claims.
+that most people cared about, and started to curb their claims.
 
 ### Distributed Trouble (#trouble)
 
