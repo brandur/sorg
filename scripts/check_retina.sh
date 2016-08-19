@@ -65,7 +65,7 @@ bad_images=()
 for image in $(find_images); do
     extension="${image##*.}"
     base=$(basename $image .$extension)
-    retina=${image/"$base.$extension/""$base@2x.$extension"}
+    retina=${image/"$base.$extension"/"$base@2x.$extension"}
 
     if [[ ! -f "$retina" ]]; then
         bad_images+=("$image")
