@@ -1,6 +1,6 @@
 ---
 title: The Poisoned Chalice
-hook: Why you should stay on an ACID database until the bitter end, what's really affecting your app's availability, and why you should almost certainly never use MongoDB.
+hook: On staying with an ACID database until the bitter end; the real reason your app isn't highly available; why you should almost certainly never use MongoDB.
 location: San Francisco
 published_at: 2016-08-01T00:23:52Z
 ---
