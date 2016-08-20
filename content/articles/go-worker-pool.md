@@ -73,7 +73,7 @@ In this example, 3 workers are started and 9 work items are in put onto a job
 channel. Workers have a work loop with a `time.Sleep` so that each ends up
 working 3 jobs. `close` is used on the channel after all the work's been put
 onto it, which signals to all 3 workers that they can exit their work loop by
-dropping them out of their `range`.
+dropping them out of their loop on `range`.
 
 This implementation is meant to show the classical reason that a worker pool
 doesn't need to be in Go's standard library: the language's concurrency
