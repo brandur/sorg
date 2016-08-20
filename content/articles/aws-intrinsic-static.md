@@ -346,6 +346,11 @@ so easy that within five years you'll probably have forgotten how it works. And
 despite all of this, unless you're running a _hugely_ successful site, costs
 will probably run in the low single digits of dollars a month (or less).
 
+**Addendum &mdash;** After originally writing this article, I've since
+converted this site to use the stack described here. The [source code is
+available][sorg] and I wrote some [justification](/fragments/going-static) for
+the conversion from a dynamic site to static.
+
 [aws-cli]: https://aws.amazon.com/cli/
 [aws-console]: https://aws.amazon.com/console/
 [cloudfront-console]: https://console.aws.amazon.com/cloudfront/home
@@ -353,4 +358,5 @@ will probably run in the low single digits of dollars a month (or less).
 [lambda-console]: https://console.aws.amazon.com/lambda/home
 [rebuild-script]: https://github.com/brandur/singularity/blob/master/scripts/lambda/index.js
 [singularity]: https://github.com/brandur/singularity
+[sorg]: https://github.com/brandur/sorg
 [travis-yml]: https://github.com/brandur/singularity/blob/master/.travis.yml
