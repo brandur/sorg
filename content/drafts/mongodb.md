@@ -6,7 +6,7 @@ published_at: 2016-08-01T00:23:52Z
 ---
 
 After its initial release in 2009, MongoDB enjoyed quite some time in the
-spotlight, and could be credited with re-popularizing the idea of a
+spotlight, and could easily be credited with re-popularizing the idea of a
 document-oriented database. The team focused specifically on claims of superior
 performance compared to its relational cousins, and the scalability made
 possible by its shard-based design. From there it fell on harder times as its
