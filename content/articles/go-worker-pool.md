@@ -7,13 +7,13 @@ location: San Francisco
 ---
 
 When it comes to the question of what the right constructs for concurrency that
-a langauge should expose to developers, I'm a true believer that Go's channels
+a language should expose to developers, I'm a true believer that Go's channels
 and goroutines are as good as it gets. They strike a nice balance between power
-and flexibility, while simultaneously avoiding the perpensity for deadlocks
+and flexibility, while simultaneously avoiding the propensity for deadlocks
 that you'd see in a pthread model, the maintenance hell introduced by
 callbacks, or the incredible conceptual overhead of promises.
 
-However, there's one blindspot in Go's concurrency APIs that I find myself
+However, there's one blind spot in Go's concurrency APIs that I find myself
 implementing in new Go programs time and time again: the worker pool (or
 otherwise known as a [thread pool][thread-pool]).
 
@@ -22,7 +22,7 @@ Go with goroutines) work there way through _n_ tasks in a work queue
 (implemented in Go with a channel). Work stays in a queue until a worker
 finishes up its current task and pulls a new one off.
 
-Traditionally, thread pools have been useful to ammortizing the costs of
+Traditionally, thread pools have been useful to amortizing the costs of
 spinning up new threads. Goroutines are lightweight enough that that's not a
 problem in Go, but a worker pool can still be useful in controlling the number
 of concurrently running tasks, especially when those tasks are accessing
