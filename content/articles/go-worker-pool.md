@@ -202,7 +202,7 @@ it's often made out to be.
 
 Putting together a good worker pool abstraction is pretty simple, and can even
 be done reliably with a minimal amount of code. Here's the worker pool
-implementation that builds this website for example:
+implementation that builds this website for example (or [on GitHub][github]):
 
 ``` go
 import (
@@ -323,5 +323,6 @@ It seems to me that this is one easy place that the Go maintainers team could
 help guide developers and prevent a wild amount fracturing by introducing a One
 True Path. I'd love to see a worker pool in core.
 
+[github]: https://github.com/brandur/sorg/tree/master/pool
 [gobyexample]: https://gobyexample.com/worker-pools
 [thread-pool]: https://en.wikipedia.org/wiki/Thread_pool
