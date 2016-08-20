@@ -17,10 +17,10 @@ developers have a much more measured opinion of it compared to the peak of its
 glory days.
 
 I spent many years operating a large Postgres installation before moving over
-to being a regular user of a large MongoDB cluster. Needless to say, it wasn't
-an improvement. I now had access to out-of-the-box sharding, but had lost
-access to hundreds of other features that helped ease development, operations,
-and most importantly, ensuring correctness.
+to being a regular user of a large MongoDB cluster. As you may have surmised by
+now, it wasn't an improvement. I now had access to out-of-the-box sharding, but
+had lost access to hundreds of other features that helped ease development,
+operations, and most importantly, ensuring correctness.
 
 These days many developers understand that MongoDB is somewhat suspect, but
 when prompted to explain what's wrong with it, will often cite problems with
@@ -136,10 +136,10 @@ inconsistent state.
 There are a few techniques that can be used to try and solve the problem.
 Two-phase commits between every two objects is possible, but unlikely. Another
 is to build an automated system that runs out of band and tries to repair
-inconsistencies by looking for certain problematic patterns. But the practical
-implications of that can be daunting: failures are possible between _any two
-changes_ in the system, creating an innumerable set of possibilities for
-corruption that need to be identified and addressed.
+inconsistencies by looking for certain problematic patterns. The practical
+implications of either of these are daunting: failures are possible between
+_any two changes_ in the system, creating an innumerable set of possibilities
+for corruption that need to be identified and addressed.
 
 More likely than either of these, it'll be an operator's job to go through and
 manually fix data after failures occur; not exactly robust system design.
