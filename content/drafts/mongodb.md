@@ -1,7 +1,6 @@
 ---
-title: Don't Use MongoDB
-hook: Why you should almost certainly use an ACID-compliant data store, even at scale.
-hook: The real story behind data integrity, why you should stay on an ACID database until the bitter end, and what high availability really means.
+title: In Defense of Small Data
+hook: Why you should stay on an ACID database until the bitter end, what's really affecting your app's availability, and why you should almost certainly never use MongoDB.
 location: San Francisco
 published_at: 2016-08-01T00:23:52Z
 ---
@@ -24,11 +23,11 @@ access to hundreds of other features that helped ease development, operations,
 and most importantly, ensuring correctness.
 
 These days many developers understand that MongoDB is somewhat suspect, but
-when prompted, they'll more often than not cite problems with its potential for
-data loss. I'd like to set the record straight: there was a time when data loss
-was a real concern, but by and large that's no longer the case. I take the
-position that MongoDB is _never_ an appropriate choice for a new project, but
-not for the usually cited reasons.
+when prompted to explain what's wrong with it, will often cite problems with
+its potential for data loss. I'd like to set the record straight: there was a
+time when data loss was a real concern, but by and large that's no longer the
+case. I take the position that MongoDB is _never_ an appropriate choice for a
+new project, but not for the usually cited reasons.
 
 I don't write this to be mean-spirited, but rather to balance some of the hype
 initiatives that are still ongoing to sell MongoDB to young projects (the
@@ -36,6 +35,12 @@ initiatives that are still ongoing to sell MongoDB to young projects (the
 costly, and I'll consider this writing a success if I can help even one nascent
 project or company avoid starting out on MongoDB, only to realize the mistake
 much later when it's almost impossible to fix.
+
+Lastly, many of the problems I'm about to talk about apply not only MongoDB,
+but to any database that scales out horizontally with a sharded model. I talk
+about MongoDB in particular because I've experienced its feature disparity
+first-hand, and because it's far and away the data store that I see being most
+often peddled to people who shouldn't be using it.
 
 ## Lightning Rods (#lightning-rods)
 
@@ -49,7 +54,7 @@ persisted [as soon as it had been buffered in the outgoing socket buffer of the
 client host][broken-by-design]. The behavior wasn't even a partial guarantee of
 reliable integrity, and could easily result in data loss.
 
-Although it was _years_ before the problem was ever addressed satisfactorily,
+Although it was years before the problem was ever addressed satisfactorily,
 I'm willing to give it a pass so as not to detract from more important matters.
 As of version 3, MongoDB clients now default their [`w` "write concern" to
 1][write-concerns], meaning that writes are not considered persisted until
@@ -91,7 +96,7 @@ before: **ACID** (atomicity, consistency, isolation, and durability).
 
 MongoDB historically failed to comply to every letter in ACID, but as of version
 3, now only misses three out of four. Here I'll explain why the one they
-finally have (durability) is good progress, but nowhere near enough.
+finally have (durability) is progress, but nowhere near enough.
 
 ### No Atomicity (A) (#no-atomicity)
 
@@ -101,18 +106,19 @@ entirely or fails, leaving the database unchanged.
 
 MongoDB guarantees atomicity for updates on a single document, but not beyond.
 That's enough if a single document contains all the data that needs to be
-changed, but any non-trivial application inevitably involves a web of relations
-involving many interacting models. MongoDB can't guarantee that changes between
-any two of these entities are safe.
+changed, but any non-trivial application or service inevitably involves a web
+of relations involving many interacting models, and even if it doesn't today,
+it will tomorrow. MongoDB can't guarantee that changes between any two of these
+objects are safe.
 
 Their documentation recommends that you solve this problem by [implementing
 two-phase commits throughout your application][two-phase], an idea so misguided
-that it's comically depraved. Putting your own two-phase commit into even one
-place is time consuming and complex. A real-life product may have hundreds of
-interacting domain objects; putting two-phase commit in every time you want
-guaranteed consistency between two of them is a recipe for multiplying your
-project's development time and error propensity by a hundred-fold for no good
-reason.
+that it's fair to call it depraved. Putting your own two-phase commit
+implementation into even one place is time consuming and complex. A real-life
+product may have hundreds of interacting domain objects; putting two-phase
+commit in every time you want guaranteed consistency between two of them is a
+recipe for multiplying your project's development time and error propensity by
+a hundred-fold for no good reason.
 
 #### Atomicity Example #1: Request Failure (#request-failure)
 
@@ -194,7 +200,7 @@ email. Using it as a shard key is a poor solution at any rate because there can
 only be one shard key, but there may be other characteristics that should be
 unique across an entire collection.
 
-The solution to this problem in MongoDB is to maintain a smaller, secondary
+The answer to this problem in MongoDB is the addition of a smaller, secondary
 collection that's not sharded and which contains email addresses constrained
 with a unique index along with a pointer to the record in the main collection.
 While this is functional, it's a significant about of overhead, and MongoDB's
@@ -272,7 +278,7 @@ case. There's a much more common example that most of us are very familiar with
 which can be used to show the true extent of the problem: HTTP requests.
 
 A call to a web service on `PATCH /articles/:id` might update an article itself
-along with child objects like comments, tags, or advertisements. These
+along with child objects like comments, tags, or embedded media objects. These
 resources are all a common collection that updates on the same article would
 contend naturally for. So what do you do if two simultaneous requests to `PATCH
 /articles/mongodb` try to update one article at the same time?
@@ -309,15 +315,16 @@ allocated to more critical projects.
 ### Fast Prototyping (#fast-prototyping)
 
 A perceived advantage of MongoDB is that its lack of structure and constraints
-makes it advantageous for getting applications up and running quickly; no pesky
+makes it great for getting applications up and running quickly; no pesky
 non-nullable columns, data types, `ALTER TABLE` statements, or foreign key
 constraints to deal with here!
 
 Every hour saved by not having to worry about data structure at the dawn of a
 new project will cost 1000 hours throughout the rest of its lifetime as those
-small inconsistencies start to add up and eventually build to the point where
-the known state of any single object is not reliable. Constraints are good, and
-I'll leave it at that.
+small inconsistencies add up and eventually build to the point where the known
+state of any single object is not reliable.
+
+Constraints are good. I'll leave it at that.
 
 ### The Oplog (#oplog)
 
@@ -371,7 +378,7 @@ darker sides of sharding become apparent immediately:
   becoming bloated and hugely complex.
 * It becomes apparent that a poor sharding strategy was used (early sharding
   decisions are especially prone to this), and certain nodes start to run
-  disporportionately "hot". In many situations, this problem can be nearly
+  disproportionately "hot". In many situations, this problem can be nearly
   impossible to fix, especially when a single node starts to push the limits of
   vertical scalability.
 
@@ -394,7 +401,7 @@ over time.
 #### Scalability Example #1: Webhooks (#webhooks)
 
 A company I've worked implemented Webhooks as a streaming API to notify
-customers of changes occurring in their account. Okay, so far so good.
+customers of changes occurring in their account.
 
 Because sharding was readily available, the engineers in charge decided that it
 wouldn't be bad idea to just store every Webhook notification that ever went
@@ -410,16 +417,16 @@ point would break practical backwards compatibility, even if no such
 compatibility was promised.
 
 Sharding allowed the system to scale in the beginning with relative ease, but
-consequently left a product catastrophe. Months worth of engineering time will
-be eaten up figuring out how to make 10s of TBs of nearly worthless data
-accessible without affecting production systems.
+left a product catastrophe. Months worth of engineering time will be eaten up
+figuring out how to make 10s of TBs of nearly worthless data accessible without
+affecting production systems.
 
 What _should_ have happened from the beginning is that even if it was very
 important to have a Webhooks paper trail going back to the beginning of time,
 old events should have been moved offline to an archive like S3 so that they
 could be audited at some later time. More practically, it's probably not even
 worth going that far, and events could conceivably just be purged completely
-after a reasonable 30 or 90 day timeframe, leaving a data set small enough to
+after a reasonable 30 or 90 day time frame, leaving a data set small enough to
 run on a single node forever for everyone except a Google-sized system.
 
 ### High Availability (#high-availability)
@@ -432,12 +439,12 @@ But while other MongoDB has been catching up to other databases with regards to
 durability, other databases have been catching up to MongoDB in HA. The
 secondary election schema described isn't substantially different than the HA
 schemes implemented in Postgres by services like [AWS][aws-ha] or
-[Heroku][heroku-ha], which essentially do the exactly the same thing as Mongo
+[Heroku][heroku-ha], which essentially do the exactly the same thing as MongoDB
 by looking for an unhealthy primary and if found, promoting a follower in its
 place.
 
 More importantly though, HA is often not as much about the technical
-sophistication of a sytem as it is about the technical processes surrounding
+sophistication of a system as it is about the technical processes surrounding
 it. Everyone imagines that the major dangers to the availability of a data
 store are disk failures and network partitions, and once in a while those
 things really do happen. However, in most day-to-day development, a database
