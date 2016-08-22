@@ -29,10 +29,10 @@ bad_images=$(echo "${allowed_exceptions[@]} ${bad_images[@]}" | tr ' ' '\n' | so
 
 Which produces the `A - B` set operation that I wanted [1]. It works by
 printing both sets, changing the item delimiter to a new line, sorting the
-result, and then using `uniq` with the unusual `-u` operation to produce the
-result. `-u` is the secret sauce: it changes `uniq`'s standard behavior to only
+result, and using `uniq` with the unusual `-u` operation to produce the result.
+`-u` is the secret sauce: it changes `uniq`'s standard behavior to only
 printing lines that are _not_ repeated in the input; in this case uncovering
-any filenames that weren't in both sets `A` and `B`
+any filenames that weren't in both sets `A` and `B`.
 
 The next time someone tells me that Bash represents the culmination of the
 elegance that is the Unix philosphy, hit them with this set exclusion problem.
