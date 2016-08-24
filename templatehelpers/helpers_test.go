@@ -152,11 +152,6 @@ func TestToStars(t *testing.T) {
 	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
 }
 
-func TestWordCount(t *testing.T) {
-	assert.Equal(t, 0, wordCount(""))
-	assert.Equal(t, 5, wordCount("hello there, my name is"))
-}
-
 func mustParseDuration(s string) time.Duration {
 	d, err := time.ParseDuration(s)
 	if err != nil {
