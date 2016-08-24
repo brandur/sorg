@@ -1,8 +1,8 @@
 ---
 title: Retina Check
 published_at: 2016-08-22T06:02:48Z
-hook: A CI trick for some accountability around retina assets and set exclusion
-  in Bash.
+hook: A CI trick for some accountability around retina assets. Set exclusion in
+  Bash.
 ---
 
 I try to put in retina versions of any JPGs or PNGs that I upload to this site
