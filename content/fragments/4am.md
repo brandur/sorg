@@ -24,7 +24,7 @@ calendar appointments that buzz my phone and remind me to go to sleep at 9:30
 P.M.
 
 Getting down to 4 A.M. is going to be a work in progress. Today I managed to do
-5:30 (with some difficulty), and I'll see if I can dial it back from there.
+5:30 (with some difficulty). I'll see if I can dial it back from there.
 
 [1] It's behind a paywall so I won't link it, but Googling the title will get
     you there.
