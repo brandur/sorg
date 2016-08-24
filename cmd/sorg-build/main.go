@@ -754,10 +754,6 @@ func compileFragmentsIndex(fragments []*Fragment) error {
 }
 
 func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) error {
-	if conf.ContentOnly {
-		return nil
-	}
-
 	start := time.Now()
 	defer func() {
 		log.Debugf("Compiled home in %v.", time.Now().Sub(start))
