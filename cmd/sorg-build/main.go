@@ -151,6 +151,9 @@ type Fragment struct {
 	// Draft indicates that the fragment is not yet published.
 	Draft bool `yaml:"-"`
 
+	// Hook is a leading sentence or two to succinctly introduce the fragment.
+	Hook string `yaml:"hook"`
+
 	// Image is an optional image that may be included with a fragment.
 	Image string `yaml:"image"`
 
