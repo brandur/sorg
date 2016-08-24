@@ -1683,7 +1683,8 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 				SUM(distance) AS distance
 			FROM runs
 			WHERE occurred_at_local > NOW() - '180 days'::interval
-				GROUP BY day
+			GROUP BY day
+			ORDER BY day
 		),
 
 		-- generates a baseline series of every day in the last 180 days
@@ -1696,11 +1697,10 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 				NOW(), '1 day'::interval) i
 		)
 
-		SELECT to_char(d.day, 'Mon DD') AS day,
+		SELECT to_char(d.day, 'Mon') AS day,
 			d.distance + COALESCE(rd.distance, 0::float)
 		FROM days d
 			LEFT JOIN runs_days rd ON d.day = rd.day
-		ORDER BY day ASC
 	`)
 	if err != nil {
 		return nil, nil, err
