@@ -71,9 +71,9 @@ you can restart it easily with `Ctrl+C`.
 
 Now create a database and connect to it:
 
-    createdb -p 5433 brandur-test
+    /opt/postgres/bin/createdb -p 5433 brandur-test
 
-    psql -p 5433 brandur-test
+    /opt/postgres/bin/psql -p 5433 brandur-test
 
 ### Testing (#testing)
 
