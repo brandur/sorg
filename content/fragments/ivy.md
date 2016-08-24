@@ -1,6 +1,6 @@
 ---
 title: Ivy
-published_at: 2016-08-22T06:36:11Z
+published_at: 2016-08-24T03:12:31Z
 hook: Stripe's new home in SOMA.
 image: /assets/fragments/ivy/vista.jpg
 ---
