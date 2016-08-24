@@ -51,6 +51,9 @@ Here are some examples of what might be included:
 * Any error information (if the request errored) like error ID and message.
 * Authentication information like the ID of the API key used, or the OAuth
   application and scope in use (if applicable).
+
+Operational characteristics can also be useful:
+
 * Information on the authenticating user like their human-friendly label (say
   an email) or internal identifier for quick and stable reference.
 * General information about the running app like its name, HEAD Git revision,
