@@ -33,7 +33,10 @@ env:
     - CLOUDFRONT_ID=E2D97SPIHRBCUA
     - GOOGLE_ANALYTICS_ID=UA-47798518-1
 
-    # use only a single Goroutine so that we can debug problems more easily
+    # Use only a single Goroutine so that we can debug problems that arise more
+    # easily. The build in CI is already lengthy due to system setup, and
+    # shaving a few hundred milliseconds off with more concurrency makes almost
+    # no difference at all.
     - CONCURRENCY=1
 
     # $AWS_ACCESS_KEY_ID
