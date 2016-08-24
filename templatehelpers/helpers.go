@@ -30,7 +30,6 @@ var FuncMap = template.FuncMap{
 	"RenderTweetContent":           renderTweetContent,
 	"RoundToString":                roundToString,
 	"ToStars":                      toStars,
-	"WordCount":                    wordCount,
 }
 
 func distanceOfTimeInWords(to, from time.Time) string {
@@ -207,16 +206,4 @@ func toStars(n int) string {
 		stars += "★ "
 	}
 	return stars
-}
-
-// wordCount gives an approximate number of words in an article. Newlines and
-// other things will probably mess it up, so it's not reliable.
-func wordCount(s string) int {
-	if s == "" {
-		return 0
-	}
-
-	// Add one because we're actually just counting spaces between words and so
-	// have N + 1 objects.
-	return strings.Count(s, " ") + 1
 }
