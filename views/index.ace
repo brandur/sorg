@@ -28,7 +28,7 @@
             li
               a href="/fragments/{{.Slug}}" {{.Title}}
               p
-                | {{WordCount .Content}} words. 
+                | {{HTML .Hook}} 
                 span.meta {{FormatTime .PublishedAt}}
           {{end}}
         p.older
