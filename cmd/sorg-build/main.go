@@ -1697,7 +1697,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 				NOW(), '1 day'::interval) i
 		)
 
-		SELECT to_char(d.day, 'Mon DD') AS day,
+		SELECT to_char(d.day, 'Mon') AS day,
 			d.distance + COALESCE(rd.distance, 0::float)
 		FROM days d
 			LEFT JOIN runs_days rd ON d.day = rd.day
