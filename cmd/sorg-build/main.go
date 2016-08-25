@@ -465,7 +465,7 @@ func main() {
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
-		return linkImageAssets()
+		return linkImages()
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
@@ -1137,7 +1137,7 @@ func linkFontAssets() error {
 	return ensureSymlink(source, dest)
 }
 
-func linkImageAssets() error {
+func linkImages() error {
 	start := time.Now()
 	defer func() {
 		log.Debugf("Linked image assets in %v.", time.Now().Sub(start))
