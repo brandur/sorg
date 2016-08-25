@@ -2,6 +2,7 @@ package sorg
 
 import (
 	"os"
+	"path"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
@@ -54,7 +55,7 @@ func CreateOutputDirs(targetDir string) error {
 	}()
 
 	for _, dir := range outputDirs {
-		dir = targetDir + "/" + dir
+		dir = path.Join(targetDir, dir)
 		err := os.MkdirAll(dir, 0755)
 		if err != nil {
 			return err

@@ -524,7 +524,7 @@ func main() {
 //
 
 func compileArticle(dir, name string, draft bool) (*Article, error) {
-	inPath := dir + "/" + name
+	inPath := path.Join(dir, name)
 
 	raw, err := ioutil.ReadFile(inPath)
 	if err != nil {
@@ -565,7 +565,7 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
-		conf.TargetDir+"/"+article.Slug, locals)
+		path.Join(conf.TargetDir, article.Slug), locals)
 	if err != nil {
 		return nil, err
 	}
@@ -643,7 +643,7 @@ func compileArticlesIndex(articles []*Article) error {
 }
 
 func compileFragment(dir, name string, draft bool) (*Fragment, error) {
-	inPath := dir + "/" + name
+	inPath := path.Join(dir, name)
 
 	raw, err := ioutil.ReadFile(inPath)
 	if err != nil {
@@ -834,7 +834,7 @@ func compilePage(dir, name string) error {
 	pagePath := strings.TrimPrefix(dir, sorg.PagesDir) + name
 
 	// Looks something like "./public/about".
-	target := conf.TargetDir + "/" + pagePath
+	target := path.Join(conf.TargetDir, pagePath)
 
 	locals, ok := pagesVars[pagePath]
 	if !ok {
@@ -843,12 +843,12 @@ func compilePage(dir, name string) error {
 
 	locals = getLocals("Page", locals)
 
-	err := os.MkdirAll(conf.TargetDir+"/"+dir, 0755)
+	err := os.MkdirAll(path.Join(conf.TargetDir, dir), 0755)
 	if err != nil {
 		return err
 	}
 
-	err = renderView(sorg.MainLayout, dir+"/"+name,
+	err = renderView(sorg.MainLayout, path.Join(dir, name),
 		target, locals)
 	if err != nil {
 		return err
