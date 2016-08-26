@@ -19,6 +19,8 @@ Dangers:
 
 Write tests!
 
+Use a relational database with a transaction, then verify the results.
+
 Running:
 
 * Use tmux!
