@@ -836,6 +836,13 @@ func compilePage(dir, name string) error {
 	// Looks something like "./public/about".
 	target := path.Join(conf.TargetDir, pagePath)
 
+	// Put a ".html" on if this page is an index. This will allow our local
+	// server to serve it at a directory path, and our upload script is smart
+	// enough to do the right thing with it as well.
+	if path.Base(pagePath) == "index" {
+		target += ".html"
+	}
+
 	locals, ok := pagesVars[pagePath]
 	if !ok {
 		log.Errorf("No page meta information: %v", pagePath)
