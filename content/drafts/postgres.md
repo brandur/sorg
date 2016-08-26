@@ -35,6 +35,12 @@ See Toast.
 
 Always use `JSONB` over `JSON` or `HSTORE`.
 
+### Partial Indexes
+
+``` sql
+CREATE INDEX index_users_on_email WHERE deleted_at IS NULL;
+```
+
 ## psql (#psql)
 
 ### Automatic Results Formatting (#x-auto)
