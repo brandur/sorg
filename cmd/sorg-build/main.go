@@ -469,7 +469,7 @@ func main() {
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
-		return linkFontAssets()
+		return linkFonts()
 	}))
 
 	if !runTasks(tasks) {
@@ -1118,7 +1118,7 @@ func compileStylesheets(stylesheets []string, outPath string) error {
 	return nil
 }
 
-func linkFontAssets() error {
+func linkFonts() error {
 	start := time.Now()
 	defer func() {
 		log.Debugf("Linked font assets in %v.", time.Now().Sub(start))
