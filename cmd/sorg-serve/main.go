@@ -19,10 +19,13 @@ type Conf struct {
 	TargetDir string `env:"TARGET_DIR,default=./public"`
 }
 
+// Left as a global for now for the sake of convenience, but it's not used in
+// very many places and can probably be refactored as a local if desired.
+var conf Conf
+
 func main() {
 	sorg.InitLog(false)
 
-	var conf Conf
 	err := envdecode.Decode(&conf)
 	if err != nil {
 		log.Fatal(err)
