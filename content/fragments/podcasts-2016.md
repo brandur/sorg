@@ -13,42 +13,43 @@ As of 2016, here are my favorites:
 * [Common Sense][common-sense]: Dan Carlin on the American political system.
   Dan takes the side of neither party, but comments on them from the outside in
   a very informed way. He has the incredible gift to be able to speak for hours
-  in a way that's hugely information-dense; no co-host required.
+  in a way that's hugely information-dense. No co-host required.
 * [Hardcore History][hardcore-history]: Dan Carlin's podcast on history, and
-  maybe _the_ best podcast that's out there. Dan's impassioned approach to
-  history makes every episode interesting. In particular, check on the series
-  on the fall of the Roman republic and the exploits of Genghis Khan.
+  maybe _the_ best podcast that's out there right now. Dan's impassioned
+  approach to the subject makes every episode great. In particular, check on
+  the series on the fall of the Roman republic and the exploits of Genghis
+  Khan.
 * [Road Work][road-work]: John Roderick (a musician) and Dan Benjamin (a
-  podcaster) talk about things. This doesn't sound very interesting, but
+  podcaster) talk about things. I know that doesn't sound very interesting, but
   Roderick has a way with words and is one of the world's great story tellers.
 * [Waking Up with Sam Harris][waking-up]: Sam Harris is best known for his
-  atheism, but only because that's his most controversial pursuit; he's a great
+  atheism, but only because that's his most controversial pursuit. He's a great
   thinker in general, and the most articulate person that you'll ever hear.
-  Topics on the podcast range from current events, society, or interviews with
-  various intellectuals, and as you'd expect has a healthy dose of criticism on
-  religious radicalism.
+  Topics range from current events, society, or interviews with various
+  intellectuals, and as you'd expect, a healthy dose of criticism on religious
+  radicalism.
 
 And some others that deserve mention:
 
 * [8-4 Play][8-4-play]: Focuses on recent developments in gaming, specifically
   in Japan. I don't play many video games anymore, but I still find it
   fascinating.
-* [99% Invisible][99-invisible]: A podcast about architecture and design that
+* [99% Invisible][99-invisible]: A podcast on architecture and design that
   manages to drudge up original material that's as interesting as it is
   obscure.
 * [The Bike Shed][bike-shed]: Titled with a concept that every programmer will
-  know well, this one is unsurprisingly about software. Episode quality is
-  highly variable, but there's occasionally some great content on advanced
-  topics like Rust and ORM internals.
-* [Planet Money][planet-money]: These guys really have a way of making
-  economics interesting. Its major weakness is that it never trackles a
-  subject in depth.
+  know well, this one is unsurprisingly about -- software. Episode quality is
+  variable, but there's occasionally some great content on advanced topics like
+  Rust and ORM internals.
+* [Planet Money][planet-money]: These guys really have a real knack for making
+  economics interesting. Its major weakness is that it never trackles a subject
+  in depth.
 * [Radiolab][radiolab]: Covers scientific subjects and comes with good
   interviews and some great sound editing. It's only downside is that the hosts
   have a bad habit of brushing up against the realm of pseudo-science.
 * [Roderick on the Line][roderick]: A slight variation of _Road Work_ above,
-  this one is John Roderick and Merlin Mann talk about things. Recent episodes
-  have been a little lackluster, but comb through the backlog for some
+  this one is John Roderick and Merlin Mann talking about things. Recent
+  episodes have been a little lackluster, but comb through the backlog for some
   incredible stories.
 * [Song Explorer][song-exploder]: The best edited podcast on the list; breaks
   down popular songs and has their composer talk through the thinking and
