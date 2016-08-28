@@ -1,6 +1,7 @@
 ---
 title: A Glance at Kubernetes
 published_at: 2016-04-12T04:06:32Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After unintentionally putting it off for years, I recently took a look at

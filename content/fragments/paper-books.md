@@ -1,6 +1,7 @@
 ---
 title: Paper Books
 published_at: 2015-02-15T04:23:45Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Sad news this month with the announcement of [the closure of Borderland](http://www.sfexaminer.com/sanfrancisco/borderlands-books-in-sf-announces-closure-cites-minimum-wage-increase/Content?oid=2918723), a local science-fiction and fantasy books and local community landmark. Ownership cited San Francisco's recent vote to increase minimum wage as the reason for closing, a measure voted in last November that will increase minimum wage to $15 by July 2018.

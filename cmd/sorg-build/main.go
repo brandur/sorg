@@ -553,6 +553,10 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		return nil, fmt.Errorf("No publish date for article: %v", inPath)
 	}
 
+	if article.Hook == "" {
+		return nil, fmt.Errorf("No hook for article: %v", inPath)
+	}
+
 	article.Content = markdown.Render(content)
 
 	article.TOC, err = toc.Render(article.Content)
@@ -670,6 +674,10 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 
 	if fragment.PublishedAt == nil {
 		return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
+	}
+
+	if fragment.Hook == "" {
+		return nil, fmt.Errorf("No hook for fragment: %v", inPath)
 	}
 
 	fragment.Content = markdown.Render(content)

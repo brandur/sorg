@@ -1,6 +1,7 @@
 ---
 title: 2015 Resolutions
 published_at: 2015-01-03T23:27:49Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Five basic resolutions for 2015:

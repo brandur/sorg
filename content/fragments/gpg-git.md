@@ -1,6 +1,7 @@
 ---
 title: GPG + HTTP Git
 published_at: 2014-12-11T21:48:06Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Along with a few other protocols like SSH, Git can communicate with a remote

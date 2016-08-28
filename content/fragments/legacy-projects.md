@@ -1,6 +1,7 @@
 ---
 title: Legacy Projects & the Maintainer
 published_at: 2015-08-14T05:27:58Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Code has an incredible ability to survive far beyond the expectations of its

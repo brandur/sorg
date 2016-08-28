@@ -1,6 +1,7 @@
 ---
 title: Going Static
 published_at: 2016-07-14T00:31:55Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 As of yesterday, I completed a rewrite of this site and moved it over from a

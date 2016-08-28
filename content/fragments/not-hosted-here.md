@@ -1,6 +1,7 @@
 ---
 title: Not Hosted Here
 published_at: 2016-04-27T15:23:51Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Everyone of course knows of the widspread anti-practice of [_not invented

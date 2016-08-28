@@ -1,6 +1,7 @@
 ---
 title: One Week of Nutritional Rigor
 published_at: 2016-06-13T16:02:34Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I wrote previously that as an experiment, I'm engaging in a [Calorie

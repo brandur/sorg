@@ -1,6 +1,7 @@
 ---
 title: Major Buys
 published_at: 2014-07-19T20:59:12Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I've been reading [/r/watches](http://www.reddit.com/r/Watches/) for a few

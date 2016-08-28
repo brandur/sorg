@@ -1,6 +1,7 @@
 ---
 title: iBooks & Dropbox
 published_at: 2014-09-21T17:07:10Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After recently starting the grind through David Foster Wallace's 1100 page

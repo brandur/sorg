@@ -1,6 +1,7 @@
 ---
 title: Bicycles
 published_at: 2014-06-06T07:20:15Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 It's Sausalito on a warm Saturday afternoon. The sun is shining and a stream of

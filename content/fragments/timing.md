@@ -1,6 +1,7 @@
 ---
 title: Timing the Guitar
 published_at: 2016-04-05T02:26:11Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Any guitar teacher will tell you to practice with a metronome. _Always._ Any

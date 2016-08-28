@@ -1,6 +1,7 @@
 ---
 title: Square Cash & E-mail as a Platform
 published_at: 2014-05-10T13:18:19Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I made my first Square Cash transaction yesterday, and was delighted by the

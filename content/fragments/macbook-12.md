@@ -1,6 +1,7 @@
 ---
 title: Notes on the New 12" MacBook
 published_at: 2015-05-19T13:17:50Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After a few weeks of deliberation, I decided to go through with the purchase of

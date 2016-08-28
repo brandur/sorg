@@ -1,6 +1,7 @@
 ---
 title: CloudFront Indexes
 published_at: 2016-07-18T16:34:33Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Some of us are vain enough to want to be able to use extensionless filenames

@@ -1,6 +1,7 @@
 ---
 title: Gossip From Across the World
 published_at: 2014-05-16T09:39:48Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 You wake up to a massive e-mail backlog like you'd have after a taking a

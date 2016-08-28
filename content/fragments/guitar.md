@@ -1,6 +1,7 @@
 ---
 title: The Guitar
 published_at: 2015-06-14T01:32:26Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 The first time I picked up a guitar I was 21 and out in Waterloo for an

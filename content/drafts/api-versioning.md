@@ -2,6 +2,7 @@
 hook: ''
 published_at: 2013-09-01T15:59:44Z
 title: API Versioning
+hook: Best practices for implementing an API versioning scheme.
 ---
 
 ## Web API Versioning Schemes

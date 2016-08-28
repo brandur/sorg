@@ -1,6 +1,7 @@
 ---
 title: 2015 Resolutions (Update)
 published_at: 2015-10-18T19:28:34Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 As we're nearing the end of the year, it's time for a quick revisit to my

@@ -1,6 +1,7 @@
 ---
 title: H&M Sportswear
 published_at: 2016-06-28T15:37:38Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I've been struggling to find a brand of sports shirt that I like for some time

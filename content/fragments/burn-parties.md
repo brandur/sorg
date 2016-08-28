@@ -1,6 +1,7 @@
 ---
 title: Burn Parties
 published_at: 2016-01-30T04:03:01Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Part of running a product company is shipping new features, but the other often
