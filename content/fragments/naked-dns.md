@@ -1,6 +1,7 @@
 ---
 title: Naked DNS
 published_at: 2016-01-31T19:39:33Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 A recent link from HN re-raised the discussion about whether it's a good idea

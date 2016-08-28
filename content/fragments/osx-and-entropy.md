@@ -1,6 +1,7 @@
 ---
 title: OSX and Entropy
 published_at: 2016-07-31T17:39:44Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Bertrand Serlet stopped by Stripe yesterday to do a fireside-chat style

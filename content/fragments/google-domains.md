@@ -1,6 +1,7 @@
 ---
 title: Google Domains
 published_at: 2015-05-17T03:29:55Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I just moved a few of my domains over to [Google's new Domains

@@ -1,6 +1,7 @@
 ---
 title: json_ schema
 published_at: 2014-05-24T16:17:45Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After a few primitive attempts at developing some basic [JSON

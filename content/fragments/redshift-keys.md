@@ -1,6 +1,7 @@
 ---
 title: Showing Redshift Distkey & Sortkey
 published_at: 2015-10-26T18:25:13Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 One slightly unfortunate aspect of how Postgres interacts with Redshift is that

@@ -1,6 +1,7 @@
 ---
 title: Insecurity By Instinct
 published_at: 2015-12-25T01:09:44Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After two years of good luck, I dropped my iPhone 6 on the sidewalk and the

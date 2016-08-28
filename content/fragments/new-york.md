@@ -1,6 +1,7 @@
 ---
 title: New York
 published_at: 2014-07-16T06:46:51Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Last week I made my first trip ever to New York. Although mainly a trip for work, I managed to see some local friends and relatives, and took as much opportunity as I could manage to visit the city.

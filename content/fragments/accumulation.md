@@ -1,6 +1,7 @@
 ---
 title: Accumulation
 published_at: 2016-02-23T21:06:03Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I really enjoyed [this article on "stuff"][gifts] from Derek Sivers. Every time

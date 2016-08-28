@@ -1,6 +1,7 @@
 ---
 title: GPG at Stripe
 published_at: 2015-10-18T21:02:24Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 One surprise for me when finally getting a close-up look at Stripe's internal

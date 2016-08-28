@@ -1,6 +1,7 @@
 ---
 title: Yosemite & Linux
 published_at: 2014-06-28T20:18:22Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I caught my first in-person glimpse of Apple's new OS "Yosemite" the other day.

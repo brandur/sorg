@@ -1,6 +1,7 @@
 ---
 title: Global Recovery in Go With Defer
 published_at: 2014-09-21T17:53:09Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Having spent the last few weeks trying to become literate in Golang, I can

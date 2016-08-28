@@ -1,6 +1,7 @@
 ---
 title: The Everything Store
 published_at: 2015-08-09T18:10:56Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 ★ ★ ★ ★ ★ (out of five)

@@ -1,6 +1,7 @@
 ---
 title: Spectre
 published_at: 2015-11-09T05:29:20Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 _(Caution: major spoilers below.)_

@@ -2,6 +2,7 @@
 title: The iPad Mini
 published_at: 2016-06-12T22:26:17Z
 image: /assets/fragments/ipad-mini/vista.jpg
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After almost three years of continuous usage and ownership, it's time for a

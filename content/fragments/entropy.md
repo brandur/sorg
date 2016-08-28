@@ -1,6 +1,7 @@
 ---
 title: Entropy
 published_at: 2015-09-17T19:52:50Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 A curious thing that occurs over the course of a job is the accumulation of
