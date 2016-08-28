@@ -1,6 +1,7 @@
 ---
 title: CloudFlare Universal SSL
 published_at: 2014-11-12T04:56:26Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I recently activated [CloudFlare's free Universal SSL][cloudflare] for a few of

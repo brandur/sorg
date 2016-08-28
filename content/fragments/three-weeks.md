@@ -1,6 +1,7 @@
 ---
 title: Week Three
 published_at: 2016-06-27T17:07:50Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Previously, see [week one](/fragments/one-week) and [week

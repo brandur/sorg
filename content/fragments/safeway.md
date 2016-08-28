@@ -1,6 +1,7 @@
 ---
 title: Safeway Justice
 published_at: 2015-10-18T19:51:33Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 One reality of living in San Francisco is that you get to witness every

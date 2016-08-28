@@ -1,6 +1,7 @@
 ---
 title: Heavy Complexity
 published_at: 2016-01-25T06:12:05Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 The article [_the Sad State of Web Development_][article] may hyperbolic to the

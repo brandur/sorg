@@ -1,6 +1,7 @@
 ---
 title: Google Engineering Principles
 published_at: 2016-02-03T19:37:54Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Here's a good talk on engineering principles at Google entitled [_Engineering

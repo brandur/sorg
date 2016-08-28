@@ -1,6 +1,7 @@
 ---
 title: Week Two
 published_at: 2016-06-20T16:30:25Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I previously wrote about my results after [one week](/fragments/one-week) of

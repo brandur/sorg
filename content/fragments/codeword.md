@@ -1,6 +1,7 @@
 ---
 title: Codeword
 published_at: 2016-04-07T08:44:20Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Those of you tuned into San Francisco will already know that last year jwz

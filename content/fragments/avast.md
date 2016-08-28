@@ -1,6 +1,7 @@
 ---
 title: Avast
 published_at: 2016-03-31T18:10:55Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 A user opened an issue on an open-source package that I maintain indicating

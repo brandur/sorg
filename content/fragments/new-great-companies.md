@@ -1,6 +1,7 @@
 ---
 title: Where Are All the New Great Companies?
 published_at: 2016-07-29T15:32:06Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 While listening to a few talks and panels on developer tools this week, it

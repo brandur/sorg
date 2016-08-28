@@ -1,6 +1,7 @@
 ---
 title: Cineplex Odeon
 published_at: 2015-12-24T19:11:16Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 During a recent viewing of [_The Force Awakens_][force-awakens] in my hometown

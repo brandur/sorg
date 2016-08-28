@@ -1,6 +1,7 @@
 ---
 title: Gh-ost
 published_at: 2016-08-03T07:59:34Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Yesterday, released [Gh-ost][gh-ost], a tool to help makes changes to an online

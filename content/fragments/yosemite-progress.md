@@ -1,6 +1,7 @@
 ---
 title: Yosemite & Progress Bars
 published_at: 2014-11-10T16:37:30Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I recently upgraded my system from Mavericks to Yosemite and ran into a pretty

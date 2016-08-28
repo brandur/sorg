@@ -1,6 +1,7 @@
 ---
 title: Verified Env Vars
 published_at: 2016-07-29T16:30:17Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 While passing information to command line programs with environment variables

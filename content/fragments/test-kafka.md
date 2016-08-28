@@ -1,6 +1,7 @@
 ---
 title: Testing a Kafka Connection
 published_at: 2016-02-10T17:54:12Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 It's occasionally useful to test a Kafka connection; for example in case you

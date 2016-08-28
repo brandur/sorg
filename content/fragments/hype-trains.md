@@ -1,6 +1,7 @@
 ---
 title: Hype Trains
 published_at: 2016-07-20T14:22:09Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 One thing that the tech industry does well is hype. An idea gets pitched once,

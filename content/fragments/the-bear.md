@@ -1,6 +1,7 @@
 ---
 title: The Bear
 published_at: 2016-01-30T16:02:10Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 > _Sometimes you eat the bear, and sometimes, well, he eats you._
