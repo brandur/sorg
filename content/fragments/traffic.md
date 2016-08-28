@@ -1,6 +1,7 @@
 ---
 title: Traffic
 published_at: 2016-04-19T16:35:03Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I write this after having been almost run over this morning in a crosswalk.

@@ -1,6 +1,7 @@
 ---
 title: us-east-1
 published_at: 2016-07-20T04:48:24Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I have fond memories of operating Heroku in us-east-1. Be it the electrical

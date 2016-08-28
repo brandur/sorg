@@ -1,6 +1,7 @@
 ---
 title: GPG + s3cmd
 published_at: 2014-11-10T20:27:47Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 [s3cmd](http://s3tools.org/s3cmd) is a simple tool for use with Amazon's S3 and

@@ -1,6 +1,7 @@
 ---
 title: "Star Wars VII: The Force Awakens"
 published_at: 2015-12-21T05:55:14Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 _(Caution: major spoilers below.)_

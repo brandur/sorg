@@ -1,6 +1,7 @@
 ---
 title: Inventory Ephemeralization
 published_at: 2015-01-03T22:56:24Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I was just thinking about all the types of items that I would regularly have

@@ -1,6 +1,7 @@
 ---
 title: Plex for PS4
 published_at: 2015-12-07T18:33:21Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I recently picked up a PS4 mostly due to a FOMO on certain rich gaming

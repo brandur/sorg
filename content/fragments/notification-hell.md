@@ -1,6 +1,7 @@
 ---
 title: Notification Hell
 published_at: 2016-01-10T03:18:58Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Recently _The Atlantic_ published an article titled [The Triump of

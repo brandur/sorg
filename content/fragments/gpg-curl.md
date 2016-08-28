@@ -1,6 +1,7 @@
 ---
 title: GPG + Curl
 published_at: 2014-11-10T20:14:35Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 A very convenient feature of Curl is that if invoked with `curl -n`, it will

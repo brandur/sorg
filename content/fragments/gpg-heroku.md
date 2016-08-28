@@ -1,6 +1,7 @@
 ---
 title: GPG + the Heroku CLI
 published_at: 2014-12-11T21:53:11Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Luckily, this one is easy, but I figured I'd put a placeholder here just in

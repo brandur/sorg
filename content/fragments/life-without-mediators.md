@@ -1,6 +1,7 @@
 ---
 title: Life Without Mediators
 published_at: 2016-04-27T16:11:28Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 In a small program, the permissiveness that makes Ruby and other dynamic

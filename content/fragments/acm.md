@@ -1,6 +1,7 @@
 ---
 title: AWS Certificate Manager
 published_at: 2016-01-21T20:47:11Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Yesterday Amazon shipped their best addition to the AWS toolchain in a long

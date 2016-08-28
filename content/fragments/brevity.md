@@ -1,6 +1,7 @@
 ---
 title: On Brevity
 published_at: 2016-04-28T16:22:06Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I start out writing one of these with the idea that it will be two or three

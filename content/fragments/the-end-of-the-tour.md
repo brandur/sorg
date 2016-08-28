@@ -1,6 +1,7 @@
 ---
 title: The End of the Tour
 published_at: 2015-08-17T04:36:50Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 ★ ★ ★ ★ (out of five)

@@ -1,6 +1,7 @@
 ---
 title: An AWS Static Hosting Workaround
 published_at: 2016-01-05T17:49:42Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 After writing a short article yesterday about [static hosting on AWS][first], a

@@ -1,6 +1,7 @@
 ---
 title: The Zero-sum Treadmill
 published_at: 2016-06-15T18:15:50Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Sometimes you come across comments online that are Internet gold. [Here's one

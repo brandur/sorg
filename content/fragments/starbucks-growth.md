@@ -1,6 +1,7 @@
 ---
 title: Starbucks Growth
 published_at: 2015-12-07T17:34:10Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 The NYT reports today on the continued prosperity of Starbucks which continues

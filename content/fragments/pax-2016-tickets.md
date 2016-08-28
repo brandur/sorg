@@ -1,6 +1,7 @@
 ---
 title: PAX 2016 Ticket Royale
 published_at: 2016-06-08T06:55:02Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 Some friends and decided that we wanted to get tickets to PAX West [1] this

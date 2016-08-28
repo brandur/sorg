@@ -1,6 +1,7 @@
 ---
 title: Go Relax
 published_at: 2014-06-28T20:16:22Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I've been writing a lot of Go code over the last week, and I'm finally coming

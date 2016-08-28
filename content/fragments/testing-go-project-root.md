@@ -1,6 +1,7 @@
 ---
 title: Testing Go Packages From Project Root
 published_at: 2016-07-15T16:37:30Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 By default, running `go test` executes a package's tests with the current

@@ -1,6 +1,7 @@
 ---
 title: RED & USE
 published_at: 2016-07-15T15:20:51Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 > If it’s a resource, like a queue, instrument it according to Brendan Gregg’s

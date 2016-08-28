@@ -1,6 +1,7 @@
 ---
 title: Asturias Check-in
 published_at: 2016-07-25T15:17:20Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I've been working on Issac Albeniz's guitar masterpiece _Asturias_ for a few

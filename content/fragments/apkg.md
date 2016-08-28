@@ -1,6 +1,7 @@
 ---
 title: Anki's .apkg
 published_at: 2014-10-26T16:40:00Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I was examining Anki today to get a feel for how difficult it would be to

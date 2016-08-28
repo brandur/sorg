@@ -2,6 +2,7 @@
 title: The Sprawl Blues
 published_at: 2016-01-03T22:18:36Z
 image: /assets/fragments/sprawl-blues/vista.jpg
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 I happened to come across an article about [life in LA][los-angeles-post]

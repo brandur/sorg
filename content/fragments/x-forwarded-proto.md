@@ -1,6 +1,7 @@
 ---
 title: X-Forwarded-Proto
 published_at: 2014-05-15T09:37:33Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 We use [rack-ssl](https://github.com/josh/rack-ssl) to redirect users making

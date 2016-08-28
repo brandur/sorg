@@ -1,6 +1,7 @@
 ---
 title: SF Housing and Activism
 published_at: 2015-12-30T18:07:41Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 _The Atlantic_ published a great article yesterday on [housing activism in San

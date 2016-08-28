@@ -1,6 +1,7 @@
 ---
 title: Game of Thrones Pessimism
 published_at: 2016-01-03T00:49:07Z
+hook: UNWRITTEN. This should not appear on the front page.
 ---
 
 [George R. R. Martin announced today][announcement] that _The Winds of Winter_
