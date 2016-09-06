@@ -20,6 +20,7 @@ var renderFuncs = []func(string) string{
 	// post-transformations
 	transformCodeWithLanguagePrefix,
 	transformFootnotes,
+	transformImagesToRetina,
 }
 
 // Render a Markdown string to HTML while applying all custom project-specific
@@ -219,4 +220,19 @@ func transformHeaders(source string) string {
 	})
 
 	return source
+}
+
+var imageRE = regexp.MustCompile(`<img src="(.+)"`)
+
+func transformImagesToRetina(source string) string {
+	// The basic idea here is that we give every image a `retina-rjs` tag so
+	// that Retina.JS will replace it with a retina version *except* if the
+	// image is an SVG. These are resolution agnostic and don't need replacing.
+	return imageRE.ReplaceAllStringFunc(source, func(img string) string {
+		matches := imageRE.FindStringSubmatch(img)
+		if filepath.Ext(matches[1]) == ".svg" {
+			return fmt.Sprintf(`<img src="%s"`, matches[1])
+		}
+		return fmt.Sprintf(`<img data-rjs="2" src="%s"`, matches[1])
+	})
 }
