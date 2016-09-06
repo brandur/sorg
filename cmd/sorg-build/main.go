@@ -763,8 +763,8 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 // Compiles a set of JavaScript files into a single large file by appending
 // them all to each other. Files are appended in alphabetical order so we
 // depend on the fact that there aren't too many interdependencies between
-// files. JQuery in particular is given an underscore prefix so that it gets to
-// load first.
+// files. A common requirement can be given an underscore prefix to be loaded
+// first.
 func compileJavascripts(inPath, outPath string) error {
 	start := time.Now()
 	defer func() {
