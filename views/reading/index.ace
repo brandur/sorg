@@ -52,86 +52,80 @@
     var pagesByYearYCounts = {{.PagesByYearYCounts}};
 
     (function() {
-      $(function() {
-        return new Highcharts.Chart({
-          chart: {
-            renderTo: 'data-readings-by-year',
-            defaultSeriesType: 'bar'
-          },
-          plotOptions: {
-            series: {
-              animation: false
-            }
-          },
+      new Highcharts.Chart({
+        chart: {
+          renderTo: 'data-readings-by-year',
+          defaultSeriesType: 'bar'
+        },
+        plotOptions: {
+          series: {
+            animation: false
+          }
+        },
+        title: {
+          text: null
+        },
+        xAxis: {
+          categories: readingsByYearXYears,
           title: {
             text: null
-          },
-          xAxis: {
-            categories: readingsByYearXYears,
-            title: {
-              text: null
-            }
-          },
-          yAxis: {
-            min: 0,
-            title: {
-              text: null
-            }
-          },
-          tooltip: {
-            formatter: function() {
-              return this.y + (this.y !== 1 ? ' books read' : ' book read') + ' in ' + this.x;
-            }
-          },
-          series: [
-            {
-              name: 'Books',
-              data: readingsByYearYCounts,
-              color: '#333'
-             }
-          ]
-        });
+          }
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: null
+          }
+        },
+        tooltip: {
+          formatter: function() {
+            return this.y + (this.y !== 1 ? ' books read' : ' book read') + ' in ' + this.x;
+          }
+        },
+        series: [
+          {
+            name: 'Books',
+            data: readingsByYearYCounts,
+            color: '#333'
+           }
+        ]
       });
-    }).call(this);
-    (function() {
-      $(function() {
-        return new Highcharts.Chart({
-          chart: {
-            renderTo: 'data-pages-by-year',
-            defaultSeriesType: 'bar'
-          },
-          plotOptions: {
-            series: {
-              animation: false
-            }
-          },
+      new Highcharts.Chart({
+        chart: {
+          renderTo: 'data-pages-by-year',
+          defaultSeriesType: 'bar'
+        },
+        plotOptions: {
+          series: {
+            animation: false
+          }
+        },
+        title: {
+          text: null
+        },
+        xAxis: {
+          categories: pagesByYearXYears,
           title: {
             text: null
-          },
-          xAxis: {
-            categories: pagesByYearXYears,
-            title: {
-              text: null
-            }
-          },
-          yAxis: {
-            min: 0,
-            title: {
-              text: null
-            }
-          },
-          tooltip: {
-            formatter: function() {
-              return this.y + (this.y !== 1 ? ' pages read' : ' page read') + ' in ' + this.x;
-            }
-          },
-          series: [
-            {
-              name: 'Pages',
-              data: pagesByYearYCounts,
-              color: '#333'
-            }
-          ]
-        });
+          }
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: null
+          }
+        },
+        tooltip: {
+          formatter: function() {
+            return this.y + (this.y !== 1 ? ' pages read' : ' page read') + ' in ' + this.x;
+          }
+        },
+        series: [
+          {
+            name: 'Pages',
+            data: pagesByYearYCounts,
+            color: '#333'
+          }
+        ]
       });
     }).call(this);
