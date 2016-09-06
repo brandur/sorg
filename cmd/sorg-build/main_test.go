@@ -48,7 +48,7 @@ func TestCompileJavascripts(t *testing.T) {
 	err = ioutil.WriteFile(file3, []byte(`function() { return "file3" }`), 0755)
 	assert.NoError(t, err)
 
-	err = compileJavascripts([]string{file1, file2, file3}, out)
+	err = compileJavascripts(dir, out)
 	assert.NoError(t, err)
 
 	actual, err := ioutil.ReadFile(out)
@@ -195,7 +195,7 @@ func TestCompileStylesheets(t *testing.T) {
 	err = ioutil.WriteFile(file3, []byte("p {\n  border: 10px;\n}"), 0755)
 	assert.NoError(t, err)
 
-	err = compileStylesheets([]string{file1, file2, file3}, out)
+	err = compileStylesheets(dir, out)
 	assert.NoError(t, err)
 
 	actual, err := ioutil.ReadFile(out)
