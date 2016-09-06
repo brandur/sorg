@@ -232,8 +232,7 @@ func transformImagesToRetina(source string) string {
 		matches := imageRE.FindStringSubmatch(img)
 		if filepath.Ext(matches[1]) == ".svg" {
 			return fmt.Sprintf(`<img src="%s"`, matches[1])
-		} else {
-			return fmt.Sprintf(`<img data-rjs="2" src="%s"`, matches[1])
 		}
+		return fmt.Sprintf(`<img data-rjs="2" src="%s"`, matches[1])
 	})
 }
