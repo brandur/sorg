@@ -1,7 +1,3 @@
-//
-// Note: not currently used with main site. Only with the static build.
-//
-
 var fontFamily, highchartsOptions, lightColor, mainColor;
 
 fontFamily = "Helvetica, Arial, sans-serif";
