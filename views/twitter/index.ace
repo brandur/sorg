@@ -76,6 +76,9 @@
         },
         yAxis: {
           min: 0,
+          labels: {
+            enabled: false
+          },
           title: {
             text: null
           }
