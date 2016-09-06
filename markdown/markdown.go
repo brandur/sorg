@@ -164,6 +164,12 @@ func transformFootnotes(source string) string {
 	return source
 }
 
+const headerHTML = `
+<h%v id="%s">
+  <a href="#%s">%s</a>
+</h%v>
+`
+
 // Matches one of the following:
 //
 //   # header
@@ -215,12 +221,6 @@ func transformHeaders(source string) string {
 
 	return source
 }
-
-const headerHTML = `
-<h%v id="%s">
-  <a href="#%s">%s</a>
-</h%v>
-`
 
 var imageRE = regexp.MustCompile(`<img src="(.+)"`)
 
