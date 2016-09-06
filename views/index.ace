@@ -41,7 +41,7 @@
           {{range $i, $photo := .Photos}}
             li
               a href="https://www.flickr.com/photos/brandurleach/{{$photo.Slug}}"
-                img src="/assets/photos/{{$photo.Slug}}.jpg" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}" class="photo-col{{IndexToColumn $i}}"
+                img src="/assets/photos/{{$photo.Slug}}.jpg" data-rjs="2" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}" class="photo-col{{IndexToColumn $i}}"
           {{end}}
         .clear
   .clear

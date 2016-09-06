@@ -6,7 +6,7 @@
   .fragments
     .content
       {{if ne .Fragment.Image ""}}
-        img#mood src={{.Fragment.Image}}
+        img#mood data-rjs="2" src={{.Fragment.Image}}
       {{end}}
       #title.fragments-title
         h1 {{.Fragment.Title}}
