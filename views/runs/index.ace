@@ -30,99 +30,97 @@
     var byYearYDistances = {{.ByYearYDistances}};
 
     (function() {
-      $(function() {
-        new Highcharts.Chart({
-          chart: {
-            renderTo: 'data-distance-last-year',
-            defaultSeriesType: 'column'
+      new Highcharts.Chart({
+        chart: {
+          renderTo: 'data-distance-last-year',
+          defaultSeriesType: 'column'
+        },
+        plotOptions: {
+          series: {
+            animation: false
+          }
+        },
+        title: {
+          text: null
+        },
+        xAxis: {
+          categories: lastYearXDays,
+          labels: {
+            rotation: -45,
+            align: 'right',
+            step: 30
+          }
+        },
+        yAxis: {
+          labels: {
+            formatter: function() {
+              return this.value + ' km';
+            },
+            enabled: false
           },
-          plotOptions: {
-            series: {
-              animation: false
-            }
-          },
+          min: 0,
           title: {
             text: null
-          },
-          xAxis: {
-            categories: lastYearXDays,
-            labels: {
-              rotation: -45,
-              align: 'right',
-              step: 30
-            }
-          },
-          yAxis: {
-            labels: {
-              formatter: function() {
-                return this.value + ' km';
-              },
-              enabled: false
-            },
-            min: 0,
-            title: {
-              text: null
-            }
-          },
-          tooltip: {
+          }
+        },
+        tooltip: {
+          formatter: function() {
+            return this.y.toFixed(1) + ' km ' + ' on ' + this.x;
+          }
+        },
+        series: [
+          {
+            name: 'distance',
+            data: lastYearYDistances,
+            color: '#333',
+            borderWidth: 0,
+            shadow: false
+          }
+        ]
+      });
+      new Highcharts.Chart({
+        chart: {
+          renderTo: 'data-distance-by-year',
+          defaultSeriesType: 'bar'
+        },
+        plotOptions: {
+          series: {
+            animation: false
+          }
+        },
+        title: {
+          text: null
+        },
+        xAxis: {
+          categories: byYearXYears,
+          labels: {
+            rotation: -45,
+            align: 'right',
+            step: 1
+          }
+        },
+        yAxis: {
+          labels: {
             formatter: function() {
-              return this.y.toFixed(1) + ' km ' + ' on ' + this.x;
+              return this.value + ' km';
             }
           },
-          series: [
-            {
-              name: 'distance',
-              data: lastYearYDistances,
-              color: '#333',
-              borderWidth: 0,
-              shadow: false
-            }
-          ]
-        });
-        return new Highcharts.Chart({
-          chart: {
-            renderTo: 'data-distance-by-year',
-            defaultSeriesType: 'bar'
-          },
-          plotOptions: {
-            series: {
-              animation: false
-            }
-          },
+          min: 0,
           title: {
             text: null
-          },
-          xAxis: {
-            categories: byYearXYears,
-            labels: {
-              rotation: -45,
-              align: 'right',
-              step: 1
-            }
-          },
-          yAxis: {
-            labels: {
-              formatter: function() {
-                return this.value + ' km';
-              }
-            },
-            min: 0,
-            title: {
-              text: null
-            }
-          },
-          tooltip: {
-            formatter: function() {
-              return this.y.toFixed(1) + ' km ' + ' in ' + this.x;
-            }
-          },
-          series: [
-            {
-              name: 'distance',
-              data: byYearYDistances,
-              color: '#333'
-            }
-          ]
-        });
+          }
+        },
+        tooltip: {
+          formatter: function() {
+            return this.y.toFixed(1) + ' km ' + ' in ' + this.x;
+          }
+        },
+        series: [
+          {
+            name: 'distance',
+            data: byYearYDistances,
+            color: '#333'
+          }
+        ]
       });
     }).call(this);
