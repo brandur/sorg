@@ -43,7 +43,8 @@ Highcharts.theme = {
         color: lightColor,
         fontFamily: fontFamily
       }
-    }
+    },
+    tickLength: 0,
   },
   yAxis: {
     gridLineColor: 'rgba(255, 255, 255, .1)',
