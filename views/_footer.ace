@@ -1,9 +1,5 @@
 .clear
 footer
-  / #banner
-  / #social
-    a href="https://twitter.com/brandur"
-      img src="/assets/twitter.png" alt="Twitter"
   = include views/_nav
   .clear
   / #copy

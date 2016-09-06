@@ -3,5 +3,9 @@
 //
 
 $(document).ready(function () {
-  hljs.initHighlightingOnLoad();
+    hljs.initHighlightingOnLoad();
+});
+
+window.addEventListener('load', function () {
+    retinajs();
 });

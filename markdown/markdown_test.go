@@ -149,3 +149,16 @@ Conclusion.
 		),
 	)
 }
+
+func TestTransformImagesToRetina(t *testing.T) {
+	assert.Equal(t,
+		`<img data-rjs="2" src="/assets/hello.jpg">`,
+		transformImagesToRetina(`<img src="/assets/hello.jpg">`),
+	)
+
+	// No retina data- marker is inserted for resolution agnostic SVGs.
+	assert.Equal(t,
+		`<img src="/assets/hello.svg">`,
+		transformImagesToRetina(`<img src="/assets/hello.svg">`),
+	)
+}
