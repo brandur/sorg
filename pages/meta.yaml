@@ -1,0 +1,19 @@
+about:
+  title: About
+accidental:
+  title: Accidental
+  body_class: quote
+crying:
+  title: Crying
+  body_class: quote
+favors:
+  title: Favors
+  body_class: quote
+lies:
+  title: Lies
+  body_class: quote
+talks:
+  title: Talks
+that-sunny-dome:
+  title: That Sunny Dome
+  body_class: quote
