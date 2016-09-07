@@ -34,10 +34,15 @@ func init() {
 func TestCompileJavascripts(t *testing.T) {
 	dir, err := ioutil.TempDir("", "javascripts")
 
+	file0 := dir + "/.hidden"
 	file1 := dir + "/file1.js"
 	file2 := dir + "/file2.js"
 	file3 := dir + "/file3.js"
 	out := dir + "/app.js"
+
+	// This file is hidden and doesn't show up in output.
+	err = ioutil.WriteFile(file0, []byte(`hidden`), 0755)
+	assert.NoError(t, err)
 
 	err = ioutil.WriteFile(file1, []byte(`function() { return "file1" }`), 0755)
 	assert.NoError(t, err)
@@ -179,10 +184,15 @@ func TestCompileRuns(t *testing.T) {
 func TestCompileStylesheets(t *testing.T) {
 	dir, err := ioutil.TempDir("", "stylesheets")
 
+	file0 := dir + "/.hidden"
 	file1 := dir + "/file1.sass"
 	file2 := dir + "/file2.sass"
 	file3 := dir + "/file3.css"
 	out := dir + "/app.css"
+
+	// This file is hidden and doesn't show up in output.
+	err = ioutil.WriteFile(file0, []byte("hidden"), 0755)
+	assert.NoError(t, err)
 
 	// The syntax of the first and second files is GCSS and the third is in
 	// CSS.
