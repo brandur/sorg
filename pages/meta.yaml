@@ -1,3 +1,10 @@
+#
+# Page metadata
+#
+# Contains metadata for pages like their titles and any extra CSS classes that
+# they should belong to.
+#
+
 about:
   title: About
 accidental:
