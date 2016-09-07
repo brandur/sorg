@@ -65,7 +65,7 @@
         },
         tooltip: {
           formatter: function() {
-            return this.y.toFixed(1) + ' km ' + ' on ' + this.x;
+            return this.y.toFixed(1) + ' km';
           }
         },
         series: [
@@ -112,7 +112,7 @@
         },
         tooltip: {
           formatter: function() {
-            return this.y.toFixed(1) + ' km ' + ' in ' + this.x;
+            return this.y.toFixed(1) + ' km in ' + this.x;
           }
         },
         series: [
