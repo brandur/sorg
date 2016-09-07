@@ -180,6 +180,19 @@ type fragmentYear struct {
 	Fragments []*Fragment
 }
 
+// Page is the metadata for a static HTML page generated from an ACE file.
+// Currently the layouting system of ACE doesn't allow us to pass metadata up
+// very well, so we have this instead.
+type Page struct {
+	// BodyClass is the CSS class that will be assigned to the body tag when
+	// the page is rendered.
+	BodyClass string `yaml:"body_class"`
+
+	// Title is the HTML title that will be assigned to the page when it's
+	// rendered.
+	Title string `yaml:"title"`
+}
+
 // Photo is a photography downloaded from Flickr.
 type Photo struct {
 	// LargeImageURL is the location where the large-sized version of the photo
@@ -290,41 +303,6 @@ type tweetMonth struct {
 var conf Conf
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
-
-// pagesVars contains meta information for static pages that are part of the
-// site. This mostly titles, but can also be body classes for custom styling.
-//
-// This isn't the best system, but was the cheapest way to accomplish what I
-// needed for the time being. It could probably use an overhaul to something
-// better at some point.
-var pagesVars = map[string]map[string]interface{}{
-	"about": {
-		"Title": "About",
-	},
-	"accidental": {
-		"Title":     "Accidental",
-		"BodyClass": "quote",
-	},
-	"crying": {
-		"Title":     "Crying",
-		"BodyClass": "quote",
-	},
-	"favors": {
-		"Title":     "Favors",
-		"BodyClass": "quote",
-	},
-	"lies": {
-		"Title":     "Lies",
-		"BodyClass": "quote",
-	},
-	"talks": {
-		"Title": "Talks",
-	},
-	"that-sunny-dome": {
-		"Title":     "That Sunny Dome",
-		"BodyClass": "quote",
-	},
-}
 
 //
 // Main
@@ -785,6 +763,10 @@ func compileJavascripts(inPath, outPath string) error {
 	defer outFile.Close()
 
 	for _, javascriptInfo := range javascriptInfos {
+		if isHidden(javascriptInfo.Name()) {
+			continue
+		}
+
 		log.Debugf("Including: %v", javascriptInfo.Name())
 
 		inFile, err := os.Open(path.Join(inPath, javascriptInfo.Name()))
@@ -807,7 +789,7 @@ func compileJavascripts(inPath, outPath string) error {
 	return nil
 }
 
-func compilePage(dir, name string) error {
+func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 	// Remove the "./pages" directory, but keep the rest of the path.
 	//
 	// Looks something like "about".
@@ -823,8 +805,18 @@ func compilePage(dir, name string) error {
 		target += ".html"
 	}
 
-	locals, ok := pagesVars[pagePath]
-	if !ok {
+	locals := map[string]interface{}{
+		"BodyClass": "",
+		"Title":     "Untitled Page",
+	}
+
+	pageMeta, ok := pagesMeta[pagePath]
+	if ok {
+		locals = map[string]interface{}{
+			"BodyClass": pageMeta.BodyClass,
+			"Title":     pageMeta.Title,
+		}
+	} else {
 		log.Errorf("No page meta information: %v", pagePath)
 	}
 
@@ -1091,6 +1083,10 @@ func compileStylesheets(inPath, outPath string) error {
 	defer outFile.Close()
 
 	for _, stylesheetInfo := range stylesheetInfos {
+		if isHidden(stylesheetInfo.Name()) {
+			continue
+		}
+
 		log.Debugf("Including: %v", stylesheetInfo.Name())
 
 		inFile, err := os.Open(path.Join(inPath, stylesheetInfo.Name()))
@@ -1271,10 +1267,21 @@ func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) (
 }
 
 func tasksForPages() ([]*pool.Task, error) {
-	return tasksForPagesDir(sorg.PagesDir)
+	meta, err := ioutil.ReadFile(path.Join(sorg.PagesDir, "meta.yaml"))
+	if err != nil {
+		return nil, err
+	}
+
+	var pagesMeta map[string]*Page
+	err = yaml.Unmarshal(meta, &pagesMeta)
+	if err != nil {
+		return nil, err
+	}
+
+	return tasksForPagesDir(pagesMeta, sorg.PagesDir)
 }
 
-func tasksForPagesDir(dir string) ([]*pool.Task, error) {
+func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, error) {
 	log.Debugf("Descending into pages directory: %v", dir)
 
 	fileInfos, err := ioutil.ReadDir(dir)
@@ -1285,17 +1292,25 @@ func tasksForPagesDir(dir string) ([]*pool.Task, error) {
 	var tasks []*pool.Task
 	for _, fileInfo := range fileInfos {
 		if fileInfo.IsDir() {
-			subtasks, err := tasksForPagesDir(dir + fileInfo.Name())
+			subtasks, err := tasksForPagesDir(pagesMeta, dir+fileInfo.Name())
 			if err != nil {
 				return nil, err
 			}
 			tasks = append(tasks, subtasks...)
 		} else {
+			if isHidden(fileInfo.Name()) {
+				continue
+			}
+
+			if filepath.Ext(fileInfo.Name()) != ".ace" {
+				continue
+			}
+
 			// Subtract 4 for the ".ace" extension.
 			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
 
 			tasks = append(tasks, pool.NewTask(func() error {
-				return compilePage(dir, name)
+				return compilePage(pagesMeta, dir, name)
 			}))
 		}
 	}
