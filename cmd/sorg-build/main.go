@@ -805,15 +805,22 @@ func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 		target += ".html"
 	}
 
+	locals := map[string]interface{}{
+		"BodyClass": "",
+		"Title":     "Untitled Page",
+	}
+
 	pageMeta, ok := pagesMeta[pagePath]
-	if !ok {
+	if ok {
+		locals = map[string]interface{}{
+			"BodyClass": pageMeta.BodyClass,
+			"Title":     pageMeta.Title,
+		}
+	} else {
 		log.Errorf("No page meta information: %v", pagePath)
 	}
 
-	locals := getLocals("Page", map[string]interface{}{
-		"BodyClass": pageMeta.BodyClass,
-		"Title":     pageMeta.Title,
-	})
+	locals = getLocals("Page", locals)
 
 	err := os.MkdirAll(path.Join(conf.TargetDir, dir), 0755)
 	if err != nil {
