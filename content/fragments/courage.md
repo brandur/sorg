@@ -44,4 +44,4 @@ PS/2 ports. This is selective memory. Apple's last deprecation play was the 12"
 MacBook which was stripped of MagSafe, USB, and Thunderbolt so that they could
 show the world that a single USB-C port is enough for anyone. A _year and a
 half_ after its release the computer is still awkward to use with few useful
-peripherals, and with none from Apple themselves.
+peripherals, and with none from Apple itself.
