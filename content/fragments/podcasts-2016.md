@@ -51,7 +51,7 @@ And some others that deserve mention:
   this one is John Roderick and Merlin Mann talking about things. Recent
   episodes have been a little lackluster, but comb through the backlog for some
   incredible stories.
-* [Song Explorer][song-exploder]: The best edited podcast on the list; breaks
+* [Song Exploder][song-exploder]: The best edited podcast on the list; breaks
   down popular songs and has their composer talk through the thinking and
   process that went into their creation. For best results, check the back
   catalog for songs that you like.
