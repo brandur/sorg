@@ -21,7 +21,7 @@ are a few favorites and links to their postmorterms:
 
 Today, us-east-1 experienced yet another major API outage; with the API being
 degraded or completely down completely for two hours between 1115a and 115p PT.
-True to their reptuation, Amazon was slow to update their status page, leaving
+True to their reputation, Amazon was slow to update their status page, leaving
 users struggling to understand what was going on for themselves.
 
 About a year ago, Stripe undertook the major project of moving all its servers
