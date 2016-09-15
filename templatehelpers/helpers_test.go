@@ -148,8 +148,8 @@ func TestRoundToString(t *testing.T) {
 
 func TestToStars(t *testing.T) {
 	assert.Equal(t, "", toStars(0))
-	assert.Equal(t, "★ ", toStars(1))
-	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
+	assert.Equal(t, "★ ", toStars(1))
+	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
 }
 
 func mustParseDuration(s string) time.Duration {
