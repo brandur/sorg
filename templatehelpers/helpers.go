@@ -203,7 +203,7 @@ func roundToString(f float64) string {
 func toStars(n int) string {
 	var stars string
 	for i := 0; i < n; i++ {
-		stars += "★ "
+		stars += "★ "
 	}
 	return stars
 }
