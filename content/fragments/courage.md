@@ -38,10 +38,10 @@ maddening to use and borderline untenable. Add in that you've now got a new
 battery to charge daily, and it's hard to argue that Apple hasn't just knocked
 us down two rungs on the ladder of progress.
 
-Pundits point towards Apple's great historical track record in making forward
-thinking choices; for example, the exclusion of floppy disk drives, serial, or
-PS/2 ports. This is selective memory. Apple's most recent deprecation play was
-the 12" MacBook which was stripped of MagSafe, USB, and Thunderbolt so that
-they could show the world that a single USB-C port is enough for anyone. A
-_year and a half_ after its release the computer is still awkward to use with
-few useful peripherals, and with none from Apple itself.
+Apologists point towards Apple's great historical track record in making
+forward thinking choices; for example, the exclusion of floppy disk drives,
+serial, or PS/2 ports. This is selective memory. Apple's most recent
+deprecation play was the 12" MacBook which was stripped of MagSafe, USB, and
+Thunderbolt so that they could show the world that a single USB-C port is
+enough for anyone. A _year and a half_ after its release the computer is still
+awkward to use with few useful peripherals, and with none from Apple itself.
