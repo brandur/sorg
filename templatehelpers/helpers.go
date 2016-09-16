@@ -203,6 +203,12 @@ func roundToString(f float64) string {
 func toStars(n int) string {
 	var stars string
 	for i := 0; i < n; i++ {
+		// This is a little tricky, but the whitespace after the star here is
+		// special: it's non-breaking so that a review never gets split across
+		// multiple lines (and therefore cannot be replaced with a normal
+		// space). See here for details:
+		//
+		// https://github.com/brandur/sorg/pull/60
 		stars += "★ "
 	}
 	return stars
