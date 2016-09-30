@@ -1911,6 +1911,7 @@ func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
 	return years
 }
 
+// Detects a hidden file, i.e. one that starts with a dot.
 func isHidden(file string) bool {
 	return strings.HasPrefix(file, ".")
 }
