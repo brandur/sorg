@@ -7,6 +7,9 @@
     .content
       #title
         h1 Runs
+      {{if .ByYearXYears}}
+        p {{index .ByYearYDistances 0 | RoundToString}} km run in {{index .ByYearXYears 0}}.
+      {{end}}
       #data-distance-last-year.chart
       #data-distance-by-year.chart
       .runs-content

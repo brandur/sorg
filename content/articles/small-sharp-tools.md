@@ -14,7 +14,7 @@ The best documented original source for this idea is the book [_The Art of Unix 
 2. **Rule of Composition:** Design programs to be connected to other programs.
 3. **Rule of Parsimony:** Write a big program only when it is clear by demonstration that nothing else will do.
 
-(I'm highly recommend reading the rest of the rules and the whole book in depth as well.)
+(I'd highly recommend reading the rest of the rules and the whole book in depth as well.)
 
 More background for the idea is described under a section on Unix philosophy titled _Tradeoffs between Interface and Implementation Complexity_:
 

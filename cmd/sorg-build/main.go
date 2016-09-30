@@ -88,7 +88,8 @@ type articleYear struct {
 	Articles []*Article
 }
 
-// Conf contains configuration information for the command.
+// Conf contains configuration information for the command. It's extracted from
+// environment variables.
 type Conf struct {
 	// AtomAuthorName is the name of the author to include in Atom feeds.
 	AtomAuthorName string `env:"AUTHOR_NAME,default=Brandur Leach"`
