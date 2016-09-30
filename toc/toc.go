@@ -106,7 +106,7 @@ func buildTree(headers []*header) *html.Node {
 		linkNode := &html.Node{
 			Data: "a",
 			Attr: []html.Attribute{
-				{"", "href", header.id},
+				{Namespace: "", Key: "href", Val: header.id},
 			},
 			Type: html.ElementNode,
 		}
