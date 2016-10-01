@@ -5,6 +5,9 @@ location: San Francisco
 published_at: 2016-08-01T00:23:52Z
 ---
 
+Alternate title: Mongo Delenda Est (Mongo must be destroyed, related to
+Carthage).
+
 After its initial release in 2009, MongoDB enjoyed quite some time in the
 spotlight, and could easily be credited with re-popularizing the idea of a
 document-oriented database. The team focused specifically on claims of superior
