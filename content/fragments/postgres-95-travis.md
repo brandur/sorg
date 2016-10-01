@@ -1,5 +1,5 @@
 ---
-title: Postgres 9.5 on Travis
+title: Postgres 9.5 on Travis CI
 published_at: 2016-10-01T18:38:29Z
 hook: A recipe for getting Postgres 9.5 up and running on Travis CI.
 ---
