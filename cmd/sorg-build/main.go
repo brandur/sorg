@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"database/sql"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"os"
 	"path"
@@ -16,6 +15,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
+	"github.com/brandur/sorg/assets"
 	"github.com/brandur/sorg/atom"
 	"github.com/brandur/sorg/downloader"
 	"github.com/brandur/sorg/markdown"
@@ -25,7 +25,6 @@ import (
 	"github.com/joeshaw/envdecode"
 	_ "github.com/lib/pq"
 	"github.com/yosssi/ace"
-	"github.com/yosssi/gcss"
 	"gopkg.in/yaml.v2"
 )
 
@@ -388,7 +387,8 @@ func main() {
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
-		return compileJavascripts(path.Join(sorg.ContentDir, "javascripts"),
+		return assets.CompileJavascripts(
+			path.Join(sorg.ContentDir, "javascripts"),
 			path.Join(versionedAssetsDir, "app.js"))
 	}))
 
@@ -405,7 +405,8 @@ func main() {
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
-		return compileStylesheets(path.Join(sorg.ContentDir, "stylesheets"),
+		return assets.CompileStylesheets(
+			path.Join(sorg.ContentDir, "stylesheets"),
 			path.Join(versionedAssetsDir, "app.css"))
 	}))
 
@@ -739,57 +740,6 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 	return nil
 }
 
-// Compiles a set of JavaScript files into a single large file by appending
-// them all to each other. Files are appended in alphabetical order so we
-// depend on the fact that there aren't too many interdependencies between
-// files. A common requirement can be given an underscore prefix to be loaded
-// first.
-func compileJavascripts(inPath, outPath string) error {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled script assets in %v.", time.Now().Sub(start))
-	}()
-
-	log.Debugf("Building: %v", outPath)
-
-	javascriptInfos, err := ioutil.ReadDir(inPath)
-	if err != nil {
-		return err
-	}
-
-	outFile, err := os.Create(outPath)
-	if err != nil {
-		return err
-	}
-	defer outFile.Close()
-
-	for _, javascriptInfo := range javascriptInfos {
-		if isHidden(javascriptInfo.Name()) {
-			continue
-		}
-
-		log.Debugf("Including: %v", javascriptInfo.Name())
-
-		inFile, err := os.Open(path.Join(inPath, javascriptInfo.Name()))
-		if err != nil {
-			return err
-		}
-
-		outFile.WriteString("/* " + javascriptInfo.Name() + " */\n\n")
-		outFile.WriteString("(function() {\n\n")
-
-		_, err = io.Copy(outFile, inFile)
-		if err != nil {
-			return err
-		}
-
-		outFile.WriteString("\n\n")
-		outFile.WriteString("}).call(this);\n\n")
-	}
-
-	return nil
-}
-
 func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 	// Remove the "./pages" directory, but keep the rest of the path.
 	//
@@ -1051,66 +1001,6 @@ func compileTwitter(db *sql.DB) error {
 		if err != nil {
 			return err
 		}
-	}
-
-	return nil
-}
-
-// Compiles a set of stylesheet files into a single large file by appending
-// them all to each other. Files are appended in alphabetical order so we
-// depend on the fact that there aren't too many interdependencies between
-// files. CSS reset in particular is given an underscore prefix so that it gets
-// to load first.
-//
-// If a file has a ".sass" suffix, we attempt to render it as GCSS. This isn't
-// a perfect symmetry, but works well enough for these cases.
-func compileStylesheets(inPath, outPath string) error {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled stylesheet assets in %v.", time.Now().Sub(start))
-	}()
-
-	log.Debugf("Building: %v", outPath)
-
-	stylesheetInfos, err := ioutil.ReadDir(inPath)
-	if err != nil {
-		return err
-	}
-
-	outFile, err := os.Create(outPath)
-	if err != nil {
-		return err
-	}
-	defer outFile.Close()
-
-	for _, stylesheetInfo := range stylesheetInfos {
-		if isHidden(stylesheetInfo.Name()) {
-			continue
-		}
-
-		log.Debugf("Including: %v", stylesheetInfo.Name())
-
-		inFile, err := os.Open(path.Join(inPath, stylesheetInfo.Name()))
-		if err != nil {
-			return err
-		}
-
-		outFile.WriteString("/* " + stylesheetInfo.Name() + " */\n\n")
-
-		if strings.HasSuffix(stylesheetInfo.Name(), ".sass") {
-			_, err := gcss.Compile(outFile, inFile)
-			if err != nil {
-				return fmt.Errorf("Error compiling %v: %v",
-					stylesheetInfo.Name(), err)
-			}
-		} else {
-			_, err := io.Copy(outFile, inFile)
-			if err != nil {
-				return err
-			}
-		}
-
-		outFile.WriteString("\n\n")
 	}
 
 	return nil
