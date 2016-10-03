@@ -1,107 +1,119 @@
 package assets
 
 import (
-	"fmt"
 	"io/ioutil"
-	"net/http"
-	"net/http/httptest"
-	"os"
-	"strconv"
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
 )
 
-// Number of test iterations to run while fetching assets.
-const numIterators = 50
+func TestCompileJavascripts(t *testing.T) {
+	dir, err := ioutil.TempDir("", "javascripts")
 
-func TestFetch(t *testing.T) {
-	//
-	// Existing file
-	//
+	file0 := dir + "/.hidden"
+	file1 := dir + "/file1.js"
+	file2 := dir + "/file2.js"
+	file3 := dir + "/file3.js"
+	out := dir + "/app.js"
 
-	tempfile, err := ioutil.TempFile("", "assets")
-	assert.NoError(t, err)
-	defer os.Remove(tempfile.Name())
-
-	assets := []*Asset{
-		{URL: "http://localhost", Target: tempfile.Name()},
-	}
-
-	// Because the temp file already exists, no fetch will be made.
-	err = Fetch(assets)
+	// This file is hidden and doesn't show up in output.
+	err = ioutil.WriteFile(file0, []byte(`hidden`), 0755)
 	assert.NoError(t, err)
 
-	//
-	// New files
-	//
-
-	dir, err := ioutil.TempDir("", "assets")
+	err = ioutil.WriteFile(file1, []byte(`function() { return "file1" }`), 0755)
 	assert.NoError(t, err)
 
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path == "/error" {
-			w.WriteHeader(http.StatusInternalServerError)
-		} else {
-			fmt.Fprintf(w, "test-contents")
-		}
-	}))
-	defer ts.Close()
-
-	assets = nil
-	for i := 0; i < numIterators; i++ {
-		asset := &Asset{
-			URL:    ts.URL + "/asset" + strconv.Itoa(i),
-			Target: dir + "/asset" + strconv.Itoa(i),
-		}
-		assets = append(assets, asset)
-	}
-
-	err = Fetch(assets)
+	err = ioutil.WriteFile(file2, []byte(`function() { return "file2" }`), 0755)
 	assert.NoError(t, err)
 
-	for i := 0; i < numIterators; i++ {
-		contents, err := ioutil.ReadFile(dir + "/asset" + strconv.Itoa(i))
-		assert.NoError(t, err)
-		assert.Equal(t, "test-contents", string(contents))
-	}
-
-	//
-	// New files with error
-	//
-
-	dir, err = ioutil.TempDir("", "assets")
+	err = ioutil.WriteFile(file3, []byte(`function() { return "file3" }`), 0755)
 	assert.NoError(t, err)
 
-	assets = []*Asset{{URL: ts.URL + "/error", Target: dir + "/asset-error"}}
-	for i := 0; i < numIterators; i++ {
-		asset := &Asset{
-			URL:    ts.URL + "/asset" + strconv.Itoa(i),
-			Target: dir + "/asset" + strconv.Itoa(i),
-		}
-		assets = append(assets, asset)
-	}
-
-	err = Fetch(assets)
-	expectedErr := fmt.Errorf("Unexpected status code 500 while fetching: %v/error",
-		ts.URL)
-	assert.Equal(t, expectedErr, err)
-
-	//
-	// New files with *all* errors
-	//
-
-	dir, err = ioutil.TempDir("", "assets")
+	err = CompileJavascripts(dir, out)
 	assert.NoError(t, err)
 
-	for i := 0; i < numIterators; i++ {
-		asset := &Asset{
-			URL:    ts.URL + "/asset/error",
-			Target: dir + "/asset-error" + strconv.Itoa(i),
-		}
-		assets = append(assets, asset)
-	}
+	actual, err := ioutil.ReadFile(out)
+	assert.NoError(t, err)
 
-	err = Fetch(assets)
-	assert.Equal(t, expectedErr, err)
+	expected := `/* file1.js */
+
+(function() {
+
+function() { return "file1" }
+
+}).call(this);
+
+/* file2.js */
+
+(function() {
+
+function() { return "file2" }
+
+}).call(this);
+
+/* file3.js */
+
+(function() {
+
+function() { return "file3" }
+
+}).call(this);
+
+`
+	assert.Equal(t, expected, string(actual))
+}
+
+func TestCompileStylesheets(t *testing.T) {
+	dir, err := ioutil.TempDir("", "stylesheets")
+
+	file0 := dir + "/.hidden"
+	file1 := dir + "/file1.sass"
+	file2 := dir + "/file2.sass"
+	file3 := dir + "/file3.css"
+	out := dir + "/app.css"
+
+	// This file is hidden and doesn't show up in output.
+	err = ioutil.WriteFile(file0, []byte("hidden"), 0755)
+	assert.NoError(t, err)
+
+	// The syntax of the first and second files is GCSS and the third is in
+	// CSS.
+	err = ioutil.WriteFile(file1, []byte("p\n  margin: 10px"), 0755)
+	assert.NoError(t, err)
+
+	err = ioutil.WriteFile(file2, []byte("p\n  padding: 10px"), 0755)
+	assert.NoError(t, err)
+
+	err = ioutil.WriteFile(file3, []byte("p {\n  border: 10px;\n}"), 0755)
+	assert.NoError(t, err)
+
+	err = CompileStylesheets(dir, out)
+	assert.NoError(t, err)
+
+	actual, err := ioutil.ReadFile(out)
+	assert.NoError(t, err)
+
+	// Note that the first two files have no spacing in the output because they
+	// go through the GCSS compiler.
+	expected := `/* file1.sass */
+
+p{margin:10px;}
+
+/* file2.sass */
+
+p{padding:10px;}
+
+/* file3.css */
+
+p {
+  border: 10px;
+}
+
+`
+	assert.Equal(t, expected, string(actual))
+}
+
+func TestIsHidden(t *testing.T) {
+	assert.Equal(t, true, isHidden(".gitkeep"))
+	assert.Equal(t, false, isHidden("article"))
 }
