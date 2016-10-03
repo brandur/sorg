@@ -21,8 +21,9 @@ type Config struct {
     Port      uint16 `env:"SERVER_PORT,default=8080"`
 
     AWS struct {
-        ID     string `env:"AWS_ACCESS_KEY_ID"`
-        Secret string `env:"AWS_SECRET_ACCESS_KEY,required"`
+        ID        string   `env:"AWS_ACCESS_KEY_ID"`
+        Secret    string   `env:"AWS_SECRET_ACCESS_KEY,required"`
+        SnsTopics []string `env:"AWS_SNS_TOPICS"`
     }
 
     Timeout time.Duration `env:"TIMEOUT,default=1m"`
@@ -44,6 +45,7 @@ err := envdecode.Decode(&cfg)
 ## Supported types ##
 
 * Structs (and pointer to structs)
+* Slices of below defined types, separated by semicolon
 * `bool`
 * `float32`, `float64`
 * `int`, `int8`, `int16`, `int32`, `int64`

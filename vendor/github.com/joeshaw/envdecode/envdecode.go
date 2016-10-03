@@ -29,6 +29,12 @@ var FailureFunc = func(err error) {
 	log.Fatalf("envdecode: an error was encountered while decoding: %v\n", err)
 }
 
+// Decoder is the interface implemented by an object that can decode an
+// environment variable string representation of itself.
+type Decoder interface {
+	Decode(string) error
+}
+
 // Decode environment variables into the provided target.  The target
 // must be a non-nil pointer to a struct.  Fields in the struct must
 // be exported, and tagged with an "env" struct tag with a value
@@ -46,7 +52,8 @@ var FailureFunc = func(err error) {
 // those types.  Structs and pointers to structs are decoded
 // recursively.  time.Duration is supported via the
 // time.ParseDuration() function and *url.URL is supported via the
-// url.Parse() function.
+// url.Parse() function. Slices are supported for all above mentioned
+// primitive types. Semicolon is used as delimiter in environment variables.
 func Decode(target interface{}) error {
 	nFields, err := decode(target)
 	if err != nil {
@@ -89,6 +96,11 @@ func decode(target interface{}) (int, error) {
 
 		case reflect.Struct:
 			ss := f.Addr().Interface()
+			_, custom := ss.(Decoder)
+			if custom {
+				break
+			}
+
 			n, err := decode(ss)
 			if err != nil {
 				return 0, err
@@ -131,61 +143,93 @@ func decode(target interface{}) (int, error) {
 		if env == "" {
 			env = defaultValue
 		}
-
 		if env == "" {
 			continue
 		}
 
 		setFieldCount++
 
-		switch f.Kind() {
-		case reflect.Bool:
-			v, err := strconv.ParseBool(env)
-			if err == nil {
-				f.SetBool(v)
-			}
-
-		case reflect.Float32, reflect.Float64:
-			bits := f.Type().Bits()
-			v, err := strconv.ParseFloat(env, bits)
-			if err == nil {
-				f.SetFloat(v)
-			}
-
-		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
-			if t := f.Type(); t.PkgPath() == "time" && t.Name() == "Duration" {
-				v, err := time.ParseDuration(env)
-				if err == nil {
-					f.SetInt(int64(v))
-				}
-			} else {
-				bits := f.Type().Bits()
-				v, err := strconv.ParseInt(env, 0, bits)
-				if err == nil {
-					f.SetInt(v)
-				}
-			}
-		case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-			bits := f.Type().Bits()
-			v, err := strconv.ParseUint(env, 0, bits)
-			if err == nil {
-				f.SetUint(v)
-			}
-
-		case reflect.String:
-			f.SetString(env)
-
-		case reflect.Ptr:
-			if t := f.Type().Elem(); t.Kind() == reflect.Struct && t.PkgPath() == "net/url" && t.Name() == "URL" {
-				v, err := url.Parse(env)
-				if err == nil {
-					f.Set(reflect.ValueOf(v))
-				}
-			}
+		decoder, custom := f.Addr().Interface().(Decoder)
+		if custom {
+			decoder.Decode(env)
+		} else if f.Kind() == reflect.Slice {
+			decodeSlice(&f, env)
+		} else {
+			decodePrimitiveType(&f, env)
 		}
 	}
 
 	return setFieldCount, nil
+}
+
+func decodeSlice(f *reflect.Value, env string) {
+	parts := strings.Split(env, ";")
+
+	values := parts[:0]
+	for _, x := range parts {
+		if x != "" {
+			values = append(values, strings.TrimSpace(x))
+		}
+	}
+
+	valuesCount := len(values)
+	slice := reflect.MakeSlice(f.Type(), valuesCount, valuesCount)
+	if valuesCount > 0 {
+		for i := 0; i < valuesCount; i++ {
+			e := slice.Index(i)
+			decodePrimitiveType(&e, values[i])
+		}
+	}
+
+	f.Set(slice)
+}
+
+func decodePrimitiveType(f *reflect.Value, env string) {
+	switch f.Kind() {
+	case reflect.Bool:
+		v, err := strconv.ParseBool(env)
+		if err == nil {
+			f.SetBool(v)
+		}
+
+	case reflect.Float32, reflect.Float64:
+		bits := f.Type().Bits()
+		v, err := strconv.ParseFloat(env, bits)
+		if err == nil {
+			f.SetFloat(v)
+		}
+
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		if t := f.Type(); t.PkgPath() == "time" && t.Name() == "Duration" {
+			v, err := time.ParseDuration(env)
+			if err == nil {
+				f.SetInt(int64(v))
+			}
+		} else {
+			bits := f.Type().Bits()
+			v, err := strconv.ParseInt(env, 0, bits)
+			if err == nil {
+				f.SetInt(v)
+			}
+		}
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		bits := f.Type().Bits()
+		v, err := strconv.ParseUint(env, 0, bits)
+		if err == nil {
+			f.SetUint(v)
+		}
+
+	case reflect.String:
+		f.SetString(env)
+
+	case reflect.Ptr:
+		if t := f.Type().Elem(); t.Kind() == reflect.Struct && t.PkgPath() == "net/url" && t.Name() == "URL" {
+			v, err := url.Parse(env)
+			if err == nil {
+				f.Set(reflect.ValueOf(v))
+			}
+		}
+	}
 }
 
 // MustDecode calls Decode and terminates the process if any errors
@@ -299,6 +343,9 @@ func Export(target interface{}) ([]*ConfigInfo, error) {
 
 			case reflect.String:
 				ci.Value = f.String()
+
+			case reflect.Slice:
+				ci.Value = fmt.Sprintf("%v", f.Interface())
 
 			default:
 				// Unable to determine string format for value

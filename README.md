@@ -74,6 +74,14 @@ Get more verbose output while running tests:
 go test -v ./markdown
 ```
 
+## Vendoring Dependencies
+
+Dependencies are managed with govendor. New ones can be vendored using these
+commands:
+
+    go get -u github.com/kardianos/govendor
+    govendor add +external
+
 [black-swan]: https://github.com/brandur/black-swan
 [brandur]: https://brandur.org
 [org]: https://github.com/brandur/org

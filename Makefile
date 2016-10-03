@@ -101,9 +101,6 @@ invalidate-indexes: check-aws-keys check-cloudfront-id
 lint:
 	go list ./... | egrep -v '/vendor/' | sed "s|^github\.com/brandur/sorg|.|" | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
 
-save:
-	godep save $(shell go list ./... | egrep -v '/vendor/')
-
 serve:
 	$(GOPATH)/bin/sorg-serve
 
