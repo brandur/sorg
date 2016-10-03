@@ -16,8 +16,8 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
-	"github.com/brandur/sorg/assets"
 	"github.com/brandur/sorg/atom"
+	"github.com/brandur/sorg/downloader"
 	"github.com/brandur/sorg/markdown"
 	"github.com/brandur/sorg/pool"
 	"github.com/brandur/sorg/templatehelpers"
@@ -853,18 +853,18 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	}
 
 	// Keep a published copy of all the photos that we need.
-	var photoAssets []*assets.Asset
+	var photoFiles []*downloader.File
 	for _, photo := range photos {
-		photoAssets = append(photoAssets,
-			&assets.Asset{URL: photo.LargeImageURL,
+		photoFiles = append(photoFiles,
+			&downloader.File{URL: photo.LargeImageURL,
 				Target: conf.TargetDir + "/assets/photos/" + photo.Slug + "@2x.jpg"},
-			&assets.Asset{URL: photo.MediumImageURL,
+			&downloader.File{URL: photo.MediumImageURL,
 				Target: conf.TargetDir + "/assets/photos/" + photo.Slug + ".jpg"},
 		)
 	}
 
-	log.Debugf("Fetching %d photo(s)", len(photoAssets))
-	err = assets.Fetch(photoAssets)
+	log.Debugf("Fetching %d photo(s)", len(photoFiles))
+	err = downloader.Fetch(photoFiles)
 	if err != nil {
 		return nil, err
 	}
