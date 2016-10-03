@@ -1,4 +1,4 @@
-package assets
+package downloader
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 	assert "github.com/stretchr/testify/require"
 )
 
-// Number of test iterations to run while fetching assets.
+// Number of test iterations to run while fetching files.
 const numIterators = 50
 
 func TestFetch(t *testing.T) {
@@ -20,23 +20,23 @@ func TestFetch(t *testing.T) {
 	// Existing file
 	//
 
-	tempfile, err := ioutil.TempFile("", "assets")
+	tempfile, err := ioutil.TempFile("", "files")
 	assert.NoError(t, err)
 	defer os.Remove(tempfile.Name())
 
-	assets := []*Asset{
+	files := []*File{
 		{URL: "http://localhost", Target: tempfile.Name()},
 	}
 
 	// Because the temp file already exists, no fetch will be made.
-	err = Fetch(assets)
+	err = Fetch(files)
 	assert.NoError(t, err)
 
 	//
 	// New files
 	//
 
-	dir, err := ioutil.TempDir("", "assets")
+	dir, err := ioutil.TempDir("", "files")
 	assert.NoError(t, err)
 
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -48,20 +48,20 @@ func TestFetch(t *testing.T) {
 	}))
 	defer ts.Close()
 
-	assets = nil
+	files = nil
 	for i := 0; i < numIterators; i++ {
-		asset := &Asset{
-			URL:    ts.URL + "/asset" + strconv.Itoa(i),
-			Target: dir + "/asset" + strconv.Itoa(i),
+		file := &File{
+			URL:    ts.URL + "/file" + strconv.Itoa(i),
+			Target: dir + "/file" + strconv.Itoa(i),
 		}
-		assets = append(assets, asset)
+		files = append(files, file)
 	}
 
-	err = Fetch(assets)
+	err = Fetch(files)
 	assert.NoError(t, err)
 
 	for i := 0; i < numIterators; i++ {
-		contents, err := ioutil.ReadFile(dir + "/asset" + strconv.Itoa(i))
+		contents, err := ioutil.ReadFile(dir + "/file" + strconv.Itoa(i))
 		assert.NoError(t, err)
 		assert.Equal(t, "test-contents", string(contents))
 	}
@@ -70,19 +70,19 @@ func TestFetch(t *testing.T) {
 	// New files with error
 	//
 
-	dir, err = ioutil.TempDir("", "assets")
+	dir, err = ioutil.TempDir("", "files")
 	assert.NoError(t, err)
 
-	assets = []*Asset{{URL: ts.URL + "/error", Target: dir + "/asset-error"}}
+	files = []*File{{URL: ts.URL + "/error", Target: dir + "/file-error"}}
 	for i := 0; i < numIterators; i++ {
-		asset := &Asset{
-			URL:    ts.URL + "/asset" + strconv.Itoa(i),
-			Target: dir + "/asset" + strconv.Itoa(i),
+		file := &File{
+			URL:    ts.URL + "/file" + strconv.Itoa(i),
+			Target: dir + "/file" + strconv.Itoa(i),
 		}
-		assets = append(assets, asset)
+		files = append(files, file)
 	}
 
-	err = Fetch(assets)
+	err = Fetch(files)
 	expectedErr := fmt.Errorf("Unexpected status code 500 while fetching: %v/error",
 		ts.URL)
 	assert.Equal(t, expectedErr, err)
@@ -91,17 +91,17 @@ func TestFetch(t *testing.T) {
 	// New files with *all* errors
 	//
 
-	dir, err = ioutil.TempDir("", "assets")
+	dir, err = ioutil.TempDir("", "files")
 	assert.NoError(t, err)
 
 	for i := 0; i < numIterators; i++ {
-		asset := &Asset{
-			URL:    ts.URL + "/asset/error",
-			Target: dir + "/asset-error" + strconv.Itoa(i),
+		file := &File{
+			URL:    ts.URL + "/file/error",
+			Target: dir + "/file-error" + strconv.Itoa(i),
 		}
-		assets = append(assets, asset)
+		files = append(files, file)
 	}
 
-	err = Fetch(assets)
+	err = Fetch(files)
 	assert.Equal(t, expectedErr, err)
 }
