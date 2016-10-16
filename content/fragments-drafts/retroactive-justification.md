@@ -41,9 +41,8 @@ reliable (which is true). We would of course want to omit the parts that to do
 so we've had to start maintaining our own ORM/ODM library, need to put
 incredible workarounds in place because there's no such thing as an atomic
 transaction, and have written tens of thousands of lines of add-on code to keep
-it stable and running.
-
-but doing so would be highly disingenuous.
+it stable and running. Doing so would be highly disingenuous, but I guarantee
+that we could pen a convincing essay if there was the will to do so.
 
 I would beg you to stay skeptical when reading these types of posts. Read
 between the lines; ask yourself not just what they're saying, but also what
