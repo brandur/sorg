@@ -37,10 +37,10 @@ simultaneously managing to stay quite a bit more more simple than OpenAPI. In
 the end I worked around them with some fairly undesirable hacks, but came
 through with a finished product of reasonable quality.
 
-For anyone thinking about OpenAPI adoption, my recommendation is to wait a
-little bit longer. A new version of OpenAPI (probably 3.0) is currently under
-active development and is slated to contain fixes for all my grievances with
-the current version, and will also come with quite a few other nice features.
+For anyone thinking about OpenAPI adoption, my recommendation is to wait a bit
+longer. A new version of OpenAPI (probably 3.0) is currently under active
+development and is slated to contain fixes for all my grievances with the
+current version, and will also come with quite a few other nice features.
 
 [committee]: https://github.com/interagent/committee/pull/101
 [openapi]: https://github.com/OAI/OpenAPI-Specification
