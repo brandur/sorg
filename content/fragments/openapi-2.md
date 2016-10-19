@@ -33,9 +33,10 @@ a few major difficulties:
   [Reference][parameters].
 
 Neither problem exists in Hyper-schema which manages to avoid them while
-simultaneously managing to stay quite a bit more more simple than OpenAPI. In
-the end I worked around them with some fairly undesirable hacks, but came
-through with a finished product of reasonable quality.
+simultaneously being quite a bit more more simple than the rather elaborate
+OpenAPI specification. In the end I worked around them with some fairly
+undesirable hacks, but came through with a finished product of reasonable
+quality.
 
 For anyone thinking about OpenAPI adoption, my recommendation is to wait a bit
 longer. A new version of OpenAPI (probably 3.0) is currently under active
