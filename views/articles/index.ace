@@ -7,7 +7,7 @@
     .content
       #title
         h1 Articles
-      #toc
+      .toc.toc-index
         ul
           {{range .ArticlesByYear}}
             li

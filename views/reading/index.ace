@@ -12,7 +12,7 @@
         #data-readings-by-year.chart
         #data-pages-by-year.chart
         .clear
-      #toc
+      .toc.toc-index
         ul
           {{range .ReadingsByYear}}
             li
