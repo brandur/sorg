@@ -274,7 +274,7 @@ ol, ul
       color: #fff
       text-shadow: 0 0 2px #000
 
-#toc
+.toc
   float: right
   font-family: $sans_serif
   font-size: 0.8rem
@@ -311,6 +311,45 @@ ol, ul
 
           ol
             list-style-type: none
+
+// This is a TOC that shows up on the left side of the screen for the
+// fragments, reading, twitter, etc. index pages.
+.toc-index
+  margin: 0 30px 0 0
+  position: absolute
+  left: -120px
+  width: 80px
+
+  ul
+    a
+      text-decoration: none
+
+      &:hover
+        text-decoration: underline
+
+      &:visited
+        text-decoration: none
+
+    // Sublists. Currently only used for months under years of Twitter.
+    ul
+      margin: 10px
+
+      li
+        color: $secondary
+        font-family: $sans_serif
+        font-size: 0.75rem
+        //line-height: 1.5em
+
+        a
+          color: $secondary
+          text-decoration: none
+
+          &:hover
+            color: $secondary
+            text-decoration: underline
+
+          &:visited
+            color: $secondary
 
 #footnotes
   border-top: 1px solid $tertiary
@@ -375,6 +414,13 @@ footer
     border-top: 1px solid $tertiary
     padding: 25px 20px
     text-align: center
+
+// The index TOC floats a little out to the left which requires a slightly
+// larger screen to look good. Hide it earlier than we usually react to native
+// layouts for.
+@media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
+  .toc-index
+    display: none
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .hook
