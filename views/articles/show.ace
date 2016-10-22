@@ -22,7 +22,7 @@
         p.hook {{.Article.Hook}}
         .divider-short
       {{end}}
-      #toc
+      .toc
         {{if ne .Article.TOC ""}}
           h2 Table of Contents
           {{HTML .Article.TOC}}

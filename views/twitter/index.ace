@@ -14,7 +14,7 @@
           p <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies.
         {{end}}
       #data-tweets-by-month.chart
-      #toc
+      .toc.toc-index
         ul
           {{range $year := .TweetsByYearAndMonth}}
             li
