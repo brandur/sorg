@@ -19,7 +19,7 @@ var renderFuncs = []func(string) string{
 
 	// post-transformations
 	transformCodeWithLanguagePrefix,
-	transformDivs,
+	transformSections,
 	transformFootnotes,
 	transformImagesToRetina,
 }
@@ -75,21 +75,21 @@ func transformCodeWithLanguagePrefix(source string) string {
 	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
 }
 
-const openDivHTML = `<div class="%s">`
-const closeDivHTML = `</div>`
+const openSectionHTML = `<section class="%s">`
+const closeSectionHTML = `</section>`
 
-var openDivRE = regexp.MustCompile(`(<p>)?!div class=("|&ldquo;)(.*)("|&rdquo;)(</p>)?`)
-var closeDivRE = regexp.MustCompile(`(<p>)?!/div(</p>)?`)
+var openSectionRE = regexp.MustCompile(`(<p>)?!section class=("|&ldquo;)(.*)("|&rdquo;)(</p>)?`)
+var closeSectionRE = regexp.MustCompile(`(<p>)?!/section(</p>)?`)
 
-func transformDivs(source string) string {
+func transformSections(source string) string {
 	out := source
 
-	out = openDivRE.ReplaceAllStringFunc(out, func(div string) string {
-		matches := openDivRE.FindStringSubmatch(div)
+	out = openSectionRE.ReplaceAllStringFunc(out, func(div string) string {
+		matches := openSectionRE.FindStringSubmatch(div)
 		class := matches[3]
-		return fmt.Sprintf(openDivHTML, class)
+		return fmt.Sprintf(openSectionHTML, class)
 	})
-	out = closeDivRE.ReplaceAllString(out, closeDivHTML)
+	out = closeSectionRE.ReplaceAllString(out, closeSectionHTML)
 
 	return out
 }
