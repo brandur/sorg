@@ -19,6 +19,7 @@ var renderFuncs = []func(string) string{
 
 	// post-transformations
 	transformCodeWithLanguagePrefix,
+	transformDivs,
 	transformFootnotes,
 	transformImagesToRetina,
 }
@@ -72,6 +73,25 @@ var codeRE = regexp.MustCompile(`<code class="(\w+)">`)
 
 func transformCodeWithLanguagePrefix(source string) string {
 	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
+}
+
+const openDivHTML = `<div class="%s">`
+const closeDivHTML = `</div>`
+
+var openDivRE = regexp.MustCompile(`(<p>)?!div class=("|&ldquo;)(.*)("|&rdquo;)(</p>)?`)
+var closeDivRE = regexp.MustCompile(`(<p>)?!/div(</p>)?`)
+
+func transformDivs(source string) string {
+	out := source
+
+	out = openDivRE.ReplaceAllStringFunc(out, func(div string) string {
+		matches := openDivRE.FindStringSubmatch(div)
+		class := matches[3]
+		return fmt.Sprintf(openDivHTML, class)
+	})
+	out = closeDivRE.ReplaceAllString(out, closeDivHTML)
+
+	return out
 }
 
 const figureHTML = `
