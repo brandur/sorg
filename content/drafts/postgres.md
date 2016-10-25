@@ -41,7 +41,19 @@ Always use `JSONB` over `JSON` or `HSTORE`.
 CREATE INDEX index_users_on_email WHERE deleted_at IS NULL;
 ```
 
+### TIMESTAMPTZ (#timestamptz)
+
+Always use it.
+
 ## psql (#psql)
+
+### Editor
+
+Use `$EDITOR` variable to look at queries:
+
+```
+\e
+```
 
 ### Automatic Results Formatting (#x-auto)
 
@@ -72,3 +84,38 @@ Sets a savepoint for every command, but only for interactive Psql sessions (so
 The one caveat is that you can't run concurrent operations from inside a transaction.
 
 ### Dangerous Operations
+
+## Features
+
+### Listen/Notify
+
+## SQL
+
+### Intervals
+
+``` sql
+SELECT now() - '1 month'::interval;
+```
+
+### With Clauses
+
+Names subselects
+
+PVH: You can actually share a SQL query with another human being [1].
+
+``` sql
+WITH (
+)
+```
+
+### Window Functions
+
+``` sql
+OVER PARTITION BY
+```
+
+[1] [Postgres: The Bits You Haven’t Found](https://vimeo.com/61044807) (2013).
+
+### pg_stat_activity
+
+See running processes.
