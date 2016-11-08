@@ -1,7 +1,8 @@
 ---
-hook: If you don't put a limit on it, expect abuse.
+hook: Why and how to put limits and rate limits on your web services.
+  Introducing redis-cell.
 location: San Francisco
-published_at: 2016-11-06T17:26:49Z
+published_at: 2016-11-08T17:35:34Z
 title: Service Limits
 ---
 
@@ -75,9 +76,9 @@ into meticulous details on limits for everything from the maximum number of
 DynamoDB tables that are allowed to how many VPCs a single account can have in
 a region.
 
-Spotify will serve as our bad example. Along with stringent limits in the
-first place, their [page describing rate limiting][spotify-limits] is devoid
-of any useful information with no concrete numbers in sight.
+Spotify will serve as our bad example. Along with stringent limits in the first
+place, their [page describing rate limiting][spotify-limits] is very long, but
+mostly devoid of useful information, with no concrete numbers in sight.
 
 ## Rate Limiting Algorithms (#algorithms)
 
