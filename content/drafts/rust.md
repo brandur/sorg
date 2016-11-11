@@ -15,6 +15,8 @@ title: Reflections on Rust
 
 ### Safety
 
+### Immutability
+
 ### FFI
 
 ### Macros
@@ -35,7 +37,9 @@ title: Reflections on Rust
 
 ### HTTP
 
-### Error Classes
+### Error Verbosity
+
+Defining a basic error struct hard. Defining an error enum hard.
 
 ### Defer
 
