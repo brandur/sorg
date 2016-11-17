@@ -45,6 +45,12 @@ CREATE INDEX index_users_on_email WHERE deleted_at IS NULL;
 
 Always use it.
 
+### Check Constraints
+
+Can't be changed instantly.
+
+Use to cap a `TEXT` column's length instead of a `VARCHAR`.
+
 ## psql (#psql)
 
 ### Editor
