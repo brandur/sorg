@@ -19,8 +19,8 @@ demonstrate the effect. `git_prompt_info` took so long to return that the
 latency was disruptive when typing commands in quick succession.
 
 `git_prompt_info` calls into `git status`. Along with getting the current
-branch name, it returns another piece of information -- whether the repository
-is "dirty" in that it has uncommitted changes. In the prompt line above, that
+branch name, it returns another piece of information: whether the repository is
+"dirty" in that it has uncommitted changes. In the prompt line above, that
 manifests as the `*` shown after the branch name. This dirty check is very slow
 and was single-handedly responsible for my unresponsive prompt.
 
