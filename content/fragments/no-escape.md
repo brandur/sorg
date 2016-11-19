@@ -1,6 +1,6 @@
 ---
 title: No Escape
-published_at: 2016-11-18T17:18:31Z
+published_at: 2016-11-19T04:36:05Z
 hook: Curbing the use of the Escape key in Vim.
 ---
 
