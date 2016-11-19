@@ -11,6 +11,11 @@ location: San Francisco
 
 ### BIGINT and BIGSERIAL (#bigint-and-bigserial)
 
+When adding an integer column or one that should contain a sequence, it's
+tempting to reach for the defaults of `INT` and `SERIAL`.
+
+Both of these types are 
+
 Due to the way data is aligned on a 64-bit machine, 32-bit types like `INT` and
 `SERIAL` won't actually save you any space. They can be actively destructive
 though in that if you run out of runway on these types, you'll have to an
