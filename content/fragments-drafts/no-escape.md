@@ -11,3 +11,7 @@ the Esc and function keys.
 I'll do what I can to avoid spending money on this sort of thing lest I
 inadvertently further encourage more backwards progress on Apple's part, but
 just in case they've started a trend, I've decided to hedge my bets.
+
+The use Esc in Vim has always been considered a bit of 
+
+    inoremap <esc> NO ESCAPE FOR YOU
