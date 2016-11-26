@@ -11,14 +11,14 @@ service observability. They act as a middle ground between other types of
 analytics in that they present a good trade-off between ease of access and
 flexibility.
 
-For some background, if we look at a standard production system, we could say
-that it emits multiple "tiers" of analytical information. For example:
+For some background, if we look at standard practices in production systems, we
+could say that they emit tiers of operational information. For example:
 
 * Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
 * Log traces.
 
 While **metrics** provide fast feedback on specific and commonly-used system
-measurements, they're not very good at allowing information to be queried
+measurements, they're not well suited for allowing information to be queried
 arbitrarily and ad-hoc. They're perfect for answering a question that's known
 ahead of time like, _"how many requests per second is my stack doing?"_,
 but less useful for questions that I think up on the spot and need immediate
@@ -37,31 +37,27 @@ gap:
 
 ## What Are They? (#what-are-they)
 
-The concept is dead simple: canonical lines are one big log line (probably in
+The concept is simple: canonical lines are one big log line (probably in
 [logfmt](/logfmt)\) style that is emitted at the end of a request [1] and which
 defines fields that contain all of that request's key information.
 
-!fig src="/assets/canonical-log-lines/canonical-log-lines.svg" caption="Canonical log lines being emitted (and ingested) for reach request."
+!fig src="/assets/canonical-log-lines/canonical-log-lines.svg" caption="Canonical log lines being emitted (and ingested) for each request."
 
-Here are some examples of what might be included:
+For example, we might include:
 
-* Basic request vitals like HTTP verb, host, path, source IP, and user agent.
-* Any [request IDs](/request-ids) that the request may have been tagged with.
-* Response information like status and content type.
-* Any error information (if the request errored) like error ID and message.
-* Authentication information like the ID of the API key used, or the OAuth
-  application and scope in use (if applicable).
+* HTTP verb, path
+* Source IP and user agent
+* [Request IDs](/request-ids)
+* Response status
+* Error ID and message (for a failed request)
+* ID of the API key used, OAuth application and scope
+* ID and email of an authenticated user
 
-Operational characteristics can also be useful:
+We could also include other internal information:
 
-* Information on the authenticating user like their human-friendly label (say
-  an email) or internal identifier for quick and stable reference.
-* General information about the running app like its name, HEAD Git revision,
-  and current release number.
-* Aggregate timing information like the total duration of the request, or the
-  total amount of time spent in database queries.
-* Rate limiting: whether rate limiting occurred, what a user's total limit is,
-  and how much of it is remaining.
+* Name of the service, `HEAD` Git revision, release number
+* Timing information (e.g. duration of the request, time spent in database)
+* Remaining and total rate limits
 
 Here's an example in [logfmt](/logfmt) style (line breaks added for clarity):
 
@@ -77,8 +73,7 @@ At Stripe we use a two prong approach combining Splunk and Redshift.
 Splunk is a powerful shorter-term store that's great for getting fast insight
 into online systems. It's great for:
 
-1. Powerful querying syntax that also happens to be quite terse and fast to
-   write.
+1. Powerful querying syntax that's quite terse and fast to write.
 2. Very fast: queries come back quickly, especially if they're scoped down to a
    small slice of the total data volume (i.e. like the last hour worth of logs).
 3. Ingested directly from syslog so that data is available almost as soon as
@@ -86,25 +81,22 @@ into online systems. It's great for:
 4. By tagging every line emitted to Splunk with [request IDs](/request-ids), we
    can easily cross-reference canonical lines with any other part of the raw
    trace that came from a request.
-5. Available immediately: ljgs are fed directly into Splunk and can be queried
-   in near real-time.
 
 These traits make Splunk ideal for operational work where we might be in the
 midst of an incident and need information immediately.
 
 The downside of Splunk is that it's expensive to license and run, and your
-retention is generally limited by your total capacity being heavily eaten into
-by the sheer amount of raw information being pushed into the system. It's not
-an unusual sight to see our operations teams trying to prune the traces of our
+retention is generally limited by your total capacity being eaten up by the
+reams of raw information being pushed into the system. It's not an unusual
+sight to see our operations teams at Stripe trying to prune the traces of our
 highest traffic systems to keep Splunk running under quota [2].
 
 ### Redshift (#redshift)
 
-The other system that we use to ingest canonical lines is Redshift. What's
-written here applies to any data warehousing system, so feel free to replace
-"Redshift" with your software of choice.
+The other system that we use to ingest canonical lines is Redshift. Any other
+data warehousing system would do just as well.
 
-Some advantages of a warehouse:
+Some advantages of a data warehouse:
 
 1. Scalability: tables can be arbitrarily large and still queryable without
    trouble.
@@ -112,15 +104,12 @@ Some advantages of a warehouse:
    for extended periods without price becoming an issue. We prune canonical
    lines after 90 days, but they could conceivably be stored for much longer.
 3. By importing other non-request data into the warehouse, like say information
-   on your users from a core data store, it allows greater levels of deep
+   on your users from the core data store, it allows greater levels of deep
    insight by stitching together data generated from different data sources.
 
 We import data by emitting lines over a fast queueing system (NSQ), archiving
 batches of it to S3, and then periodically running a `COPY` pointing to the
-bucket from Redshift. The implementation here doesn't matter very much, but
-it's worth nothing Redshift does best when data is ingested using bulk ETL, and
-by extension won't be updated in near real-time like a system ingesting
-directly from syslog (e.g. Splunk).
+bucket from Redshift.
 
 ## Examples
 
@@ -133,27 +122,23 @@ raised internally and then converted to an HTTP 500 and returned to the user.
 While it's reasonably likely that a web service already has a dashboard in
 place for the frequency of 500s that are occurring, what if I wanted, for
 example, to drill into the errors from one particular API endpoint. By scoping
-canonical log lines down to 500 responses coming from a single API method, I
-can easily get that information from Splunk:
+canonical log lines down to 500 responses coming from a single API method, that
+information is easily available:
 
 !fig src="/assets/canonical-log-lines/error-timechart.png" caption="Error counts for the last week on the \"list events\" endpoint."
 
 > canonical-api-line status=500 api_method=AllEventsMethod earliest=-7d | timechart count
 
-Now say I want to cross-reference that result with some other information that
-was emitted into the log trace for any request. By putting my original query
-into a Splunk subsearch, and "joining" log traces on a request ID, it's easy.
-
-Continuing from the example above, I want to look for the precise class of
-error that was emitted for each breakage, so I join on another specialized
-"breakage line" that's emitted for each one:
+By putting this query into a Splunk subsearch, I can trivially join it with
+other emitted log lines. For example, by joining on a "breakage line" (one
+where we log an exception), I can look at these errors grouped by class:
 
 !fig src="/assets/canonical-log-lines/top-errors.png" caption="The names of the Ruby exception classes emitted for each error, and their relative count."
 
 > [search canonical-api-line status=500 api_method=AllEventsMethod sourcetype=bapi-srv earliest=-7d | fields action_id] BREAKAGE-SPLUNKLINE | stats count by error_class | sort -count limit 10
 
-I can invert this to pull information _out_ of the canonical lines as well.
-Here are counts of timeout errors over the last week by API version:
+I can also invert this to pull information _out_ of the canonical lines. Here
+are counts of timeout errors over the last week by API version:
 
 !fig src="/assets/canonical-log-lines/top-api-versions.png" caption="An inverted search. API versions pulled from the canonical log line and fetched by class of error."
 
@@ -161,29 +146,28 @@ Here are counts of timeout errors over the last week by API version:
 
 ### Example: TLS Deprecation
 
-One project that I'm working on right now is helping Stripe merchants [migrate
-to TLS 1.2 from older secure protocols][upgrading-tls]. TLS 1.2 will eventually
-be required for PCI compliance, so we're trying to identify merchants who are
-on TLS 1.0 and 1.1 and given them some warning that an upgrade will be
-required.
+One project that I'm working on right now is helping Stripe users [migrate to
+TLS 1.2 from older secure protocols][upgrading-tls]. TLS 1.2 will eventually be
+required for PCI compliance, so we're trying to identify users who are on TLS
+1.0 and 1.1 and give them some warning that an upgrade will be required.
 
-While responding to support questions on the topic, I realized it would be
-useful to be able to quickly reference the key TLS metrics for any given
-account. I spent 10 minutes learning how to make dashboard in Splunk, and then
-another 10 to create a dashboard that's powered purely be canonical log lines:
+While responding to support questions on the topic, it dawned on me that I was
+running the same queries in Splunk over and over. I stopped and spent a couple
+minutes creating a Dashboard in Splunk that's powered purely by canonical log
+lines:
 
-!fig src="/assets/canonical-log-lines/tls-requests-by-merchant.png" caption="Splunk dashboard for requests from a merchant by TLS version."
+!fig src="/assets/canonical-log-lines/tls-requests-by-merchant.png" caption="Splunk dashboard for requests from a user by TLS version."
 
 Each panel performs a search for canonical log lines matching a certain
-merchant, excludes lines generated by calls from internal systems, then pulls
+user, excludes lines generated by calls from internal systems, then pulls
 some metrics and tabulates or draws a plot of the results.
 
 The same thing is also possible from Redshift. Here's a query to ask for any
-merchants that have made requests to our API services using pre-1.2 versions of
+users that have made requests to our API services using pre-1.2 versions of
 TLS in the last week [3]:
 
 ```
-SELECT distinct(merchant_id)
+SELECT distinct(user_id)
 FROM canonical_lines.api
 WHERE created > GETDATE() - '7 days'::interval
   AND tls_version < 'TLSv1.2'
@@ -192,33 +176,33 @@ ORDER BY 1;
 
 We can take it a step further by joining against other information in our
 warehouse. To track who's upgraded their TLS implementation and who hasn't,
-we've introduced a field on every merchant that keeps track of their minimum
-TLS version (`merchants.minimum_tls_version`). To prevent merchants from
+we've introduced a field on every user that keeps track of their minimum
+TLS version (`users.minimum_tls_version`). To prevent users from
 regressing to an old TLS version after they've started using a new one, we lock
 them into making TLS requests that only use their minimum version or newer.
 
-I'd like to see which merchants flagged into a pre-1.2 TLS version have since
+I'd like to see which users flagged into a pre-1.2 TLS version have since
 upgraded their integrations to help track our progress towards total
 deprecation. By joining my table of canonical lines with one containing
-merchant information, I can easily get this from Redshift by asking for all
-merchants on old TLS versions who have not made a request using a pre-1.2
+user information, I can easily get this from Redshift by asking for all
+users on old TLS versions who have not made a request using a pre-1.2
 version of TLS in the past week:
 
 ``` sql
 SELECT id
-FROM merchants m
+FROM users u
 WHERE minimum_tls_version < 'TLSv1.2'
   AND NOT EXISTS (
     SELECT 1
     FROM canonical_lines.api
-    WHERE merchant_id = m.id
+    WHERE user_id = u.id
       AND created > GETDATE() - '7 days'::interval
       AND tls_version < 'TLSv1.2'
   )
 ORDER BY 1;
 ```
 
-And as easily as that, I have a data set of all merchants who are probably
+And as easily as that, I have a data set of all users who are probably
 candidates to have their `minimum_tls_version` raised.
 
 ## Implementation (#implementation)
