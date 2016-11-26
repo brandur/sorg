@@ -1,18 +1,18 @@
 ---
 title: Canonical Log Lines
-published_at: 2016-08-24T14:38:47Z
-hook: A lightweight and stack agnostic analytical pattern for easy visibility
-  into production systems.
+published_at: 2016-11-26T01:36:49Z
+hook: A lightweight and stack agnostic operational technique for easy
+  visibility into production systems.
 location: San Francisco
 ---
 
 Over the next few weeks I want to post a few articles about some of my favorite
 operational tricks that I've seen while working at Stripe.
 
-The first, and easily my favorite, is the _canonical log line_, a lightweight
-pattern for improved visibility into our services. It acts as a middle ground
-between other types of analytics in that it's a good trade-off between ease of
-access and flexibility.
+The first, and easily my favorite, is the _canonical log line_. It's a
+lightweight pattern for improved visibility into services and acts as a middle
+ground between other types of analytics in that it's a good trade-off between
+ease of access and flexibility.
 
 We could say that many production systems (following standard industry
 practices) emit "tiers" of operation information:
