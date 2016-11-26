@@ -30,7 +30,7 @@ Between complex nesting and name collisions, using Postgres tools to navigate
 unfamiliar arrangements of these objects can be a little tricky. Luckily `psql`
 exposes some handy shortcuts for working with them.
 
-## Databases
+## Databases (#databases)
 
 We can use `\list` (`\l`) to list all the databases in a cluster:
 
@@ -40,13 +40,13 @@ A different database in the cluster can be accessed with `\connect` (`\c`):
 
     \c postgres
 
-## Schemas
+## Schemas (#schemas)
 
 We can use `\dn` to list schemas within a database:
 
     \dn
 
-## Relations
+## Relations (#relations)
 
 Relations can be listed with `\d`:
 
@@ -65,7 +65,7 @@ to get even more information):
 
     \d my_schema.my_table
 
-## Quick Reference
+## Quick Reference (#quick-reference)
 
 Now we've introduced a lot of esoteric commands here that might be hard to
 remember, but luckily there's an easy trick. Psql has a few different internal
@@ -76,7 +76,7 @@ contains a quick reference for every "backslash command":
 
 If you're going to take one thing away from this article, make it `\?`.
 
-## Search Path
+## Search Path (#search-path)
 
 One other important piece to mention is the [`search_path`
 setting][search-path-docs], which has a few important functions:

@@ -13,7 +13,7 @@ Overall, it was a good opportunity to do general housecleaning, and to write
 tests for modules that didn't previously have any, but the major impetus for
 the move was for bigger reasons. I've touched on a few of them below.
 
-## Static Is Fast
+## Static Is Fast (#fast)
 
 The site is now stored in S3 after it's built from Travis, and then served from
 a CloudFront distribution at one of their [~40 edge locations][cloudfront] from
@@ -26,7 +26,7 @@ stack is all hosted by one company (AWS) rather than being straddled across
 CloudFlare and Heroku, and that I now have fine-grain control over the behavior
 of my CDN.
 
-## Static Is Resilient
+## Static Is Resilient (#resilient)
 
 The previous site had a few dependencies in the form of a Postgres database
 used to procure tweets, books, runs, etc., and depended on Flickr in some cases
@@ -39,7 +39,7 @@ The new system still uses Postgres and Flickr as sources, but they're only
 referenced during the site's build step. Any trouble will error the build and
 cancel deployment, so no user will ever see a problem.
 
-## Static Is Future-proof
+## Static Is Future-proof (#futureproof)
 
 I've recently been concerned with just how many minor tweaks I had to make to
 old the Ruby codebase just to keep it modern and alive. For example, it's good
@@ -69,7 +69,7 @@ build artifact itself in S3 which is a simple collection of HTML, CSS, and
 image files that will run anywhere, including a browser pointed at localhost.
 It's trivially simple to move them around or archive them permanently.
 
-## There and Back Again
+## There and Back Again (#there-and-back-again)
 
 Considering that I originally started publishing on the original static site
 generators like Movable Type, then went dynamic after the static site craze of

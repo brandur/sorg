@@ -31,9 +31,9 @@ personal websites, and everything in between. Hopefully by reading this guide,
 you'll realize that there aren't any excuses for running an insecure website
 anymore, so come on, let's encrypt!
 
-## Services
+## Services (#services)
 
-### CloudFlare
+### CloudFlare (#cloudflare)
 
 **Website:** [https://www.cloudflare.com/][cloudflare]
 
@@ -72,7 +72,7 @@ for browsing. As of today, ["Can I Use ...?" estimates support at 97+%
 globally][caniuse], so an SNI-based solution is probably appropriate for you as
 long as you're running an operation that's smaller than Google.
 
-### Let's Encrypt
+### Let's Encrypt (#lets-encrypt)
 
 **Website:** [https://letsencrypt.org/][lets-encrypt]
 
@@ -104,7 +104,7 @@ The bad:
   that allows for easy automation goes a long way towards compensating for
   this.
 
-### AWS Certificate Manager
+### AWS Certificate Manager (#acm)
 
 **Website:** [https://aws.amazon.com/certificate-manager/][acm]
 
@@ -133,7 +133,7 @@ The bad:
   if you're on Amazon, there'a a pretty good chance that you're _all_ on
   Amazon, and this won't be a huge problem.
 
-### StartSSL
+### StartSSL (#startssl)
 
 **Website:** [https://www.startssl.com/][startssl]
 
@@ -162,7 +162,7 @@ The ugly:
   users will be able to understand what's going on here and get a certificate
   issued safely.
 
-## Summary
+## Summary (#summary)
 
 There's a lot of information above, so here's a simple heuristic that should do
 the trick for most people:

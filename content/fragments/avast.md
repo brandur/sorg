@@ -19,7 +19,7 @@ through hoops to correct it. They asserted that it wasn't just reasonable, but
 standard practice in the antivirus industry, then followed up with a trailing
 platitude on how user safety was their top priority.
 
-## Ghosts of the Past
+## Ghosts of the Past (#ghosts-of-the-past)
 
 As the lower bound of exploits becomes increasingly handled by ever more secure
 operating systems, and the upper bound becomes increasingly more sophisticated
