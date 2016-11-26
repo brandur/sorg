@@ -8,7 +8,7 @@ As we're nearing the end of the year, it's time for a quick revisit to my
 assembled [resolutions for 2015](/fragments/2015-resolutions). Verdict: not
 good.
 
-## Personal
+## Personal (#personal)
 
 > _Run_ 1700 km.
 
@@ -40,7 +40,7 @@ I'm writing, but nowhere close to this frequency. (0/1)
 
 Abject failure. Averaging zero times a week. (0/1)
 
-## Work
+## Work (#work)
 
 > Ship a sustainable real-time API (i.e. event stream).
 
@@ -57,13 +57,13 @@ track to take it to production. (1/1)
 
 I made it once so far. (0.5/1)
 
-## Bonus
+## Bonus (#bonus)
 
 > Get two surfing trips in and get moderately good by doing so.
 
 I didn't make it on any surfing vacations so far. (0/1)
 
-## Summary
+## Summary (#summary)
 
 **Score:** 2.5/9. Fairing _very_ poorly.
 

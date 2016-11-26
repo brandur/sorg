@@ -7,7 +7,7 @@ hook: A listing of all useful Postgres features, tricks, and advice that I've
 location: San Francisco
 ---
 
-## Schemas
+## Schemas (#schemas)
 
 ### BIGINT and BIGSERIAL (#bigint-and-bigserial)
 
@@ -73,7 +73,7 @@ into memory. `jsonb` also supports indexing.
 
 There's a simple heuristic: always pick `jsonb`.
 
-### Partial Indexes
+### Partial Indexes (#partial-indexes)
 
 Postgres allows an index to be created with a `WHERE` clause. This can save a
 lot of storage space in a large table by allowing you to only build indexes
@@ -102,7 +102,7 @@ comes to times. I managed an old database that started storing times in Pacific
 and it was such an incredible pain amount of effort to fix (there were hundreds
 of time columns in total) that even years later it never happened.
 
-### Check Constraints
+### Check Constraints (#check-constraints)
 
 SQL allows `CHECK` constraints to be defined on a table. These will verify that
 an arbitrary boolean condition is true before allowing an insert or update.
@@ -130,7 +130,7 @@ suggest becoming intimately familiar with Postgres' built-in psql tool. It's an
 incredibly efficient way to quickly get visibility into and manage a running
 database.
 
-### Editor
+### Editor (#editor)
 
 Do you ever find it awkward editing queries from a prompt? Try this:
 
@@ -220,12 +220,12 @@ the parent transaction:
 \set ON_ERROR_ROLLBACK interactive
 ```
 
-## Operations
+## Operations (#operations)
 
 So you've already got a big database. Here's some basic operational advice on
 how to manage it.
 
-### Raise and Drop Indexes Concurrently
+### Raise and Drop Indexes Concurrently (#concurrently)
 
 When adding or removing an index, use the `CONCURRENTLY` keyword to avoid a write lock on the table:
 
@@ -240,7 +240,7 @@ The one caveat is that you can't run concurrent operations from inside a
 transaction, but especially when it comes to indexes, it's a trade that's well
 worthwhile.
 
-### Dangerous Operations
+### Dangerous Operations (#dangerous-operations)
 
 A major problem with databases is that it's not obvious what DDL operations are
 safe or unsafe when it comes to running them on a high-volume installation. The
@@ -259,23 +259,23 @@ Here are a list of safe versus unsafe operations:
   </table>
 </figure>
 
-### pg_stat_activity
+### pg_stat_activity (#pg-stat-activity)
 
 See running processes.
 
-## Features
+## Features (#features)
 
-### Listen/Notify
+### Listen/Notify (#listen-notify)
 
-## SQL
+## SQL (#sql)
 
-### Intervals
+### Intervals (#intervals)
 
 ``` sql
 SELECT now() - '1 month'::interval;
 ```
 
-### With Clauses
+### With Clauses (#with-clause)
 
 Names subselects
 
@@ -285,7 +285,7 @@ PVH: You can actually share a SQL query with another human being [2].
 WITH ()
 ```
 
-### Window Functions
+### Window Functions (#window-functions)
 
 ``` sql
 OVER PARTITION BY

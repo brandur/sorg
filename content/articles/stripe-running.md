@@ -21,7 +21,7 @@ nowhere near this level of elevation gain or variation in terrain.
 
 !fig src="/assets/stripe-running/triple-peaks.png" caption="The daunting Triple Peaks run in San Francisco."
 
-## Analysis
+## Analysis (#analysis)
 
 Between the new social pressure and the new available routes, over the last
 month I've certainly _felt_ like I was running more, but it would be nice to

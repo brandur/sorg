@@ -5,9 +5,9 @@ title: API Versioning
 hook: Best practices for implementing an API versioning scheme.
 ---
 
-## Web API Versioning Schemes
+## Web API Versioning Schemes (#schemes)
 
-### Broad Versioning
+### Broad Versioning (#broad-versioning)
 
 Either prefixed or through something like an `Accept` header.
 
@@ -17,17 +17,17 @@ Twitter is still on V1. Twilio is still on "2010-04-01". Heroku is still on V3
 [1]. Stripe is still on V1 (although it its case the existence of prefix
 versioning is largely vestigial).
 
-### Implicit Versioning
+### Implicit Versioning (#implicit-versioning)
 
-### No Versioning
+### No Versioning (#no-versioning)
 
-### Hypermedia
+### Hypermedia (#hypermedia)
 
 Despite years of aggressive and sustained evangelism, it's failed to gain much
 of a foothold in any major APIs. It also has some major practical problems,
 such as the increased expense due to its chatty nature.
 
-## Stripe's Versioning Examined
+## Stripe's Versioning Examined (#stripe-versioning)
 
 Conveys major benefits, but has major downsides.
 
