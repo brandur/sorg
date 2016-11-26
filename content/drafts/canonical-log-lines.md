@@ -174,37 +174,6 @@ WHERE created > GETDATE() - '7 days'::interval
 ORDER BY 1;
 ```
 
-We can take it a step further by joining against other information in our
-warehouse. To track who's upgraded their TLS implementation and who hasn't,
-we've introduced a field on every user that keeps track of their minimum
-TLS version (`users.minimum_tls_version`). To prevent users from
-regressing to an old TLS version after they've started using a new one, we lock
-them into making TLS requests that only use their minimum version or newer.
-
-I'd like to see which users flagged into a pre-1.2 TLS version have since
-upgraded their integrations to help track our progress towards total
-deprecation. By joining my table of canonical lines with one containing
-user information, I can easily get this from Redshift by asking for all
-users on old TLS versions who have not made a request using a pre-1.2
-version of TLS in the past week:
-
-``` sql
-SELECT id
-FROM users u
-WHERE minimum_tls_version < 'TLSv1.2'
-  AND NOT EXISTS (
-    SELECT 1
-    FROM canonical_lines.api
-    WHERE user_id = u.id
-      AND created > GETDATE() - '7 days'::interval
-      AND tls_version < 'TLSv1.2'
-  )
-ORDER BY 1;
-```
-
-And as easily as that, I have a data set of all users who are probably
-candidates to have their `minimum_tls_version` raised.
-
 ## Implementation (#implementation)
 
 Middleware makes a good home for implementing canonical log lines. This
