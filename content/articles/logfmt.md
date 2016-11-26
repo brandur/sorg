@@ -116,7 +116,7 @@ The value becomes even more apparent when we consider what would be logged on an
       error_message="undefined method `serialize' for nil:NilClass"
       user=brandur@mutelight.org user_id=1234 app=mutelight app_id=1234
 
-## Implementations
+## Implementations (#implementations)
 
 A few projects from already exist to help parse logfmt in various languages:
 
