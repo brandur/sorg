@@ -189,8 +189,9 @@ Below is a basic implementation. Although Ruby code is provided here, the same
 basic concept can easily be applied to any technology stack.
 
 ``` ruby
-# A type containing fields that we'd like to populate for the final canonical
-# log line and which can encode itself in logfmt format.
+# A type containing fields that we'd like to populate for
+# the final canonical log line and which can encode itself
+# in logfmt format.
 class CanonicalLogLine
   # service information
   attr_accessor :service
@@ -207,9 +208,9 @@ class CanonicalLogLine
   end
 end
 
-# A middleware that injects a canonical log line object into a request's #
-# context and emits it to the log trace as the rest of the stack has finished
-# satisfying the request.
+# A middleware that injects a canonical log line object into
+# a request's # context and emits it to the log trace as the
+# rest of the stack has finished satisfying the request.
 class CanonicalLogLineEmitter < Middleware
   attr_accessor :app
 
