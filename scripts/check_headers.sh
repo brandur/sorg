@@ -17,7 +17,7 @@
 # the life of me I can't get it to not match newlines, which leads to a huge
 # multi-line match (even in single line mode). This sucks because I'll probably
 # have to add new characters to the class, but it's mostly okay for now.
-rx="^###?#?#? [A-Za-z0-9'\-]+(?! \(#.*\))$"
+rx="^###?#?#? [A-Za-z0-9.:'/\-_ ]+(?! \(#.*\))$"
 
 dirs="content/articles/* content/drafts/* content/fragments/* content/fragments-drafts/*"
 
