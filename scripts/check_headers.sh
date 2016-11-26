@@ -21,13 +21,15 @@ rx="^###?#?#? [A-Za-z0-9'\-]+(?! \(#.*\))$"
 
 dirs="content/articles/* content/drafts/* content/fragments/* content/fragments-drafts/*"
 
+grep --help
+
 # Use ag for Macs (where grep lacks PCRE) and fall back to gnugrep for Linux
 # systems. Macs without ag installed won't be able to run this script
 # successfully.
 if [[ $(which ag) ]]; then
     bad_headers=$(ag -C 0 "$rx" $dirs)
 # grep will exit with 1 for no match and 2 if we passed a bad option
-elif [[ $(which grep) && $(echo abc | grep --perl-regexp def 2> /dev/null) -eq 1 ]]; then
+elif [[ $(which grep) && $(echo abc | grep --perl-regexp def) -eq 1 ]]; then
     bad_headers=$(grep --perl-regexp "$rx" $dirs)
 else
     echo "no suitable matchers"
