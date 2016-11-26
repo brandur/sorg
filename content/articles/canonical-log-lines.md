@@ -113,9 +113,9 @@ We import data by emitting lines over a fast queueing system (NSQ), archiving
 batches of it to S3, and then periodically running a `COPY` pointing to the
 bucket from Redshift.
 
-## Examples
+## Examples (#examples)
 
-### Example: HTTP 500s By Breakage
+### Example: HTTP 500s By Breakage (#500s-by-breakage)
 
 One of the hazards of any software stack is that unexpected breakages will
 happen. For a typical web service, this often takes the form of an exception
@@ -146,7 +146,7 @@ are counts of timeout errors over the last week by API version:
 
 > [search breakage-splunkline error_class=Chalk::ODM::OperationTimeout sourcetype=bapi-srv earliest=-7d | fields action_id] canonical-api-line | stats count by stripe_version | sort -count limit 10
 
-### Example: TLS Deprecation
+### Example: TLS Deprecation (#tls-deprecation)
 
 One project that I'm working on right now is helping Stripe users [migrate to
 TLS 1.2 from older secure protocols][upgrading-tls]. TLS 1.2 will eventually be
@@ -251,7 +251,7 @@ App = Rack::Builder.new do
 end
 ```
 
-## Summary
+## Summary (#summary)
 
 By now I've hopefully convinced you that canonical log lines provide a pretty
 useful "middle tier" of operational visibility into a production stack. They're

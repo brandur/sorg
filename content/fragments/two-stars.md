@@ -10,7 +10,7 @@ though I'd write down a few thoughts about the experience because I may not be
 back in a while. The restaurant in question is Falco, located on the
 twenty-seventh floor of the Westin in Leipzig.
 
-## The Ambience
+## The Ambience (#ambience)
 
 Falco's official website describes itself as "closer to heaven than earth".
 Regardless of the quality of its food, it's at least an description for its
@@ -31,7 +31,7 @@ another two bussed them from the trays to the table. After the arrival of any
 dish, a member of staff would come by to present its backstory and composition.
 At all times service was never more than a glance away.
 
-## The Menu
+## The Menu (#menu)
 
 The menu was nothing short of hilarious in its raw unintelligibility. An
 eclectic mixture of random font sizes and styles, erratic whitespace and
@@ -47,7 +47,7 @@ and a mid-nineties copy of Microsoft Word.
 The menu didn't affect the experience, but there was clear irony that the one
 at the McDonalds two blocks away was better-designed.
 
-## The Food
+## The Food (#food)
 
 As expected, the food was delicious and beautifully presented. A common theme
 to the design of each dish was to have a very large plate with the food itself
@@ -59,7 +59,7 @@ which was a nice touch. We got everything from small pieces of marinated fruit
 balanced on toothpicks atop of a piece of driftwood to small balls of chocolate
 nestled in their own zen garden of sugar.
 
-## The Score
+## The Score (#score)
 
 Being someone who's happy with a 3€ doner kebab, I don't often come out of an
 expensive meal feeling like my money's been well-spent. I did enjoy my

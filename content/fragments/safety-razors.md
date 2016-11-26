@@ -14,7 +14,7 @@ try to sell the idea a bit.
 
 <a href="https://www.flickr.com/photos/brandurleach/23656853583/"><img src="/assets/fragments/safety-razors/razor.jpg"></a>
 
-## Why You Should Try It
+## Why You Should Try It (#why)
 
 The safety razor has some major advantages over your everyday supermarket
 brand:
@@ -35,7 +35,7 @@ blade once a week, so a $12 50-pack of feather blades lasts me a whole year.
 I'm getting a great shave that entire time instead of pushing my blades to the
 absolute limit because I'm afraid of the cost of refill cartridges.
 
-## Fear, Uncertainty, Doubt
+## Fear, Uncertainty, Doubt (#fud)
 
 A common misconception is that safety razors are dangerous, which probably
 stems from a confusion between a [straight razor][straight-razor] and a safety
@@ -54,7 +54,7 @@ moisturization process to avoid cuts on the sensitive skin of the lower neck
 (in my experience it's best to shave right after a shower in a humid room), but
 that's really the only catch.
 
-## Starter Kit
+## Starter Kit (#starter-kit)
 
 I have a very basic kit that includes these products:
 
