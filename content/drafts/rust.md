@@ -5,9 +5,9 @@ published_at: 2016-11-08T04:56:03Z
 title: Reflections on Rust
 ---
 
-## Good
+## Good (#good)
 
-### Error Handling
+### Error Handling (#error-handling)
 
 I believe completely that Rust has nailed error handling to a greater degree
 than any other language.
@@ -63,38 +63,38 @@ let res = try!(get_api_results());
 Rust also makes other helpers like `unwrap()` available to developers so that
 the error system is always helping you, but never getting in your way.
 
-### Eliminating Null
+### Eliminating Null (#null)
 
-### Compiler Help
+### Compiler Help (#compiler-help)
 
-### Pattern Matching
+### Pattern Matching (#pattern matching)
 
-### Safety
+### Safety (#safety)
 
-### Immutability
+### Immutability (#immutability)
 
 Amazing how little this gets in your way. Makes programs inherently safer.
 
-### FFI
+### FFI (#ffi)
 
-### Destructors
+### Destructors (#destructors)
 
-### Macros
+### Macros (#macros)
 
 The potential for abuse on these is almost unlimited, but within reason they
 can be _very_ useful.
 
-## Neutral
+## Neutral (#neutral)
 
-### Rustfmt
+### Rustfmt (#rustfmt)
 
-### Pragmas
+### Pragmas (#pragmas)
 
-### Module System
+### Module System (#modules)
 
-## Bad
+## Bad (#bad)
 
-### Batteries Not Included
+### Batteries Not Included (#batteries-not-included)
 
 Too much has been moved out of the standard library. For example:
 
@@ -106,9 +106,9 @@ library usage. Having ten different "pretty standard" HTTP libraries like in
 Ruby or twenty different package managers like in Go is an anti-pattern of the
 highest order.
 
-### Implicit Copies
+### Implicit Copies (#implicit-copies)
 
-### Concurrency
+### Concurrency (#concurrency)
 
 While I have no doubt that this will be fast, I believe that it's the wrong
 concurreny model for humans. Besides being hard to reason about, they also
@@ -120,15 +120,15 @@ force some additional runtime overhead, but it's easily worth the trade-off,
 especially for the services that would be most like to use it (i.e. Rust code
 that's running standalone and not embedded in another process).
 
-### HTTP
+### HTTP (#http)
 
-### Lifetimes
+### Lifetimes (#lifetimes)
 
-### Error Verbosity
+### Error Verbosity (#error-verbosity)
 
 Defining a basic error struct hard. Defining an error enum hard.
 
-## Summary
+## Summary (#summary)
 
 Systems but maybe too much friction for big services.
 
