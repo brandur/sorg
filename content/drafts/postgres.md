@@ -132,29 +132,89 @@ database.
 
 ### Editor
 
-Use `$EDITOR` variable to look at queries:
+Do you ever find it awkward editing queries from a prompt? Try this:
 
 ```
 \e
 ```
 
-### Automatic Results Formatting (#x-auto)
+The command will invoke your favorite `$EDITOR` to edit your last command.
+
+### Automatic Expanded Results (#x-auto)
+
+The `\x` option activates an "expanded" display mode. Setting its value to
+`auto` activates it only when values are too large to comfortably fit on the
+screen:
 
 ```
 \x auto
 ```
 
+So if we have a basic table seeded with values:
+
+``` sql
+CREATE TABLE companies (name text, location text, description text);
+INSERT INTO companies (name, location) VALUES
+    ('AirBnB', 'San Francisco'),
+    ('Stripe', 'San Francisco'),
+    ('Uber', 'San Francisco');
+```
+
+As expected, we get a nicely formatted table when selecting on it:
+
+```
+=# select * from companies;
+  name  |   location    | description
+--------+---------------+-------------
+ AirBnB | San Francisco |
+ Stripe | San Francisco |
+ Uber   | San Francisco |
+(3 rows)
+```
+
+But this formatting starts to break down when very long values are
+introduced into the table. `\x auto` ensures that in such a case, we
+get expanded view instead:
+
+```
+=# UPDATE companies SET description = 'AirBnB is an online marketplace that allows property owners or dwellers to list their lodgings for short term occupancy by other us ers on the service.' WHERE name = 'AirBnB';
+UPDATE 1
+
+=# \x auto
+Expanded display is used automatically.
+
+=# select * from companies;
+-[ RECORD 1 ]-------------------------------------------------------------------------------------------------------------------------------------------------------
+name        | Stripe
+location    | San Francisco
+description |
+-[ RECORD 2 ]-------------------------------------------------------------------------------------------------------------------------------------------------------
+name        | Uber
+location    | San Francisco
+description |
+-[ RECORD 3 ]-------------------------------------------------------------------------------------------------------------------------------------------------------
+name        | AirBnB
+location    | San Francisco
+description | AirBnB is an online marketplace that allows property owners or dwellers to list their lodgings for short term occupancy by other users on the service.
+```
+
 ### Interactive Error Rollback (#on-error-rollback-interactive)
 
 Imagine a situation where you're in a transaction, finish executing a
-long-lived command, and go to perform a minor check, make a typo, and get one
-of these:
+long-lived command like an expensive table alteration, go to perform a minor
+check, and make a typo while doing it. Postgres will give you one of these:
 
 ```
 ERROR: current transaction is aborted, commands ignored until end of transaction block
 ```
 
-Sets a savepoint for every command, but only for interactive Psql sessions (so
+Which will leave your transaction in an unusable state, destroying your
+hard-won work.
+
+The `ON_ERROR_ROLLBACK` setting set to `interactive` will prevent that by
+setting an implicit savepoint before every commanded executed from psql. When a
+command fails, we automatically roll back to the last savepoint, and thus save
+the parent transaction:
 
 ```
 \set ON_ERROR_ROLLBACK interactive
@@ -162,12 +222,46 @@ Sets a savepoint for every command, but only for interactive Psql sessions (so
 
 ## Operations
 
+So you've already got a big database. Here's some basic operational advice on
+how to manage it.
+
 ### Raise and Drop Indexes Concurrently
 
+When adding or removing an index, use the `CONCURRENTLY` keyword to avoid a write lock on the table:
+
+```
+CREATE INDEX CONCURRENTLY index_companies_name
+    ON companies (name);
+
+DROP INDEX CONCURRENTLY index_companies_name;
+```
+
 The one caveat is that you can't run concurrent operations from inside a
-transaction.
+transaction, but especially when it comes to indexes, it's a trade that's well
+worthwhile.
 
 ### Dangerous Operations
+
+A major problem with databases is that it's not obvious what DDL operations are
+safe or unsafe when it comes to running them on a high-volume installation. The
+addition or removal of a few characters might be the different between an
+operation that runs instantly and one that takes a table lock and blocks all
+inserts and updates.
+
+It's important to be somewhat cognizant of a table's size (even locking
+operations are relatively safe to run on small tales because they happen so
+quickly) and the side effects of any particular DDL command.
+
+Here are a list of safe versus unsafe operations:
+
+<figure>
+  <table>
+  </table>
+</figure>
+
+### pg_stat_activity
+
+See running processes.
 
 ## Features
 
@@ -202,10 +296,6 @@ another 32-bit type in an index, there is _some_ potential for space saving.
 
 [2] See [Postgres: The Bits You Haven’t Found](https://vimeo.com/61044807)
 (2013).
-
-### pg_stat_activity
-
-See running processes.
 
 [text]: https://www.postgresql.org/docs/current/static/datatype-character.html
 [toast]: https://www.postgresql.org/docs/current/static/storage-toast.html
