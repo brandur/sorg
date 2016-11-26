@@ -20,7 +20,7 @@ I guess.
 
 ![The 12" MacBook](/assets/macbook-12/macbook-12.jpg)
 
-## The Good
+## The Good (#good)
 
 The laptop's **retina display** is absolutely beautiful. A full screen terminal
 with anti-aliased Inconsolata is by far the most gorgeous development
@@ -47,7 +47,7 @@ work entire days without visiting a power outlet, and so far I've never come
 close to running out of juice. (That said, I keep a pretty close eye on `top -o
 cpu` for processes that are out of line.)
 
-## The Bad
+## The Bad (#bad)
 
 The **keyboard** is about as disappointing as I expected. A lot of review sites
 claim that it's something "that you'll have to get used to", and to some degree
@@ -73,7 +73,7 @@ except that its narrower profile allowed me to fit it through the mouth of my
 bag more easily. Unfortunately, I think the major gains in this area have
 already been gotten.
 
-## The Ugly
+## The Ugly (#ugly)
 
 The **peripheral ports** are unquestionably the worst thing about the new
 MacBook. At only one port I find myself constantly having to make hard
@@ -89,7 +89,7 @@ a huge selection of external devices, and everything else under the sun. The
 trouble is that many of these new displays are naturally going to ship at 4k
 resolution, a number that will be truly daunting for the underpowered MacBook.
 
-## Summary
+## Summary (#summary)
 
 I _really_ like using the new MacBook. The screen, battery life, and smaller
 power brick make a big enough difference for me that they outweigh all the new

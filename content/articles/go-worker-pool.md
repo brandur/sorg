@@ -84,7 +84,7 @@ So if primitives alone already present such an elegant solution, why would
 anyone ever argue for introducing another unneeded layer of abstraction and
 complexity?
 
-## Error Handling
+## Error Handling (#error-handling)
 
 Well, there's a simplification in the above example that you may have spotted
 already. While it's perfectly fine if the workload for our asynchronous tasks
@@ -167,7 +167,7 @@ func main() {
 
 As you can see, it's fine code, but not quite as elegant as the original.
 
-### Potential Fragility
+### Potential Fragility (#fragility)
 
 In our example above, we've accidentally introduced a fairly insidious problem
 in that if our error channel is smaller than the number of work items that will
@@ -198,7 +198,7 @@ It's quite possible to address that problem as well, but it helps to show that
 developing a useful and bug-free worker pool in Go isn't quite as simple as
 it's often made out to be.
 
-## Implementing A Robust Worker Pool
+## Implementing A Robust Worker Pool (#implementing)
 
 Putting together a good worker pool abstraction is pretty simple, and can even
 be done reliably with a minimal amount of code. Here's the worker pool
@@ -310,7 +310,7 @@ for _, task := range p.Tasks {
 }
 ```
 
-## Summary
+## Summary (#summary)
 
 Even though putting together a robust worker pool isn't overly problematic,
 right now it's something that every project needs to handle on its own. The

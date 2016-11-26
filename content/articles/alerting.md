@@ -156,8 +156,7 @@ somebody will receive eventually (like an e-mail), but which won't page outside
 of business hours. One those warning-style alerts are vetted and stable,
 promote them to production.
 
-### Don't Allow Flappy Alarms to Enter the Shared Consciousness
-(#flappy-alarms)
+### Don't Allow Flappy Alarms to Enter the Shared Consciousness (#flappy-alarms)
 
 As busy engineers, one bad habit that we're particularly susceptible to is
 applying the fastest possible fix to a problem and moving on without

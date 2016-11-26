@@ -12,7 +12,7 @@ As QE3 continues to demonstrate that its nickname of QE-Infinity is well-deserve
 
 What follows is my attempt to explain QE in the simple and pragmatic style of the technical blog posts that I've read over the years (thus "for hackers"). Keep in mind that I'm an enthusiast but not an expert, and [welcome feedback and corrections](mailto:brandur@brandur.org).
 
-## Actors
+## Actors (#actors)
 
 Lets start with the basic and talk about the basic actors involved in the process:
 
@@ -20,7 +20,7 @@ Lets start with the basic and talk about the basic actors involved in the proces
 * *Federal Reserve System* (or the **Fed**): the central banking system of the United States. It was created in 1913 as a reaction to an economic panic in 1907 (where the NYSE fell 50% compared to 1906) and tasked by Congress with the responsibilities of maximizing US employment, stabilizing prices, and moderating long-term interest rates. In response to the global financial crisis of 2007-08, it has initiated qualititative easing in an attempt to mitigate the effects of the recession on the US economy. The Fed buys and sells treasuries at auction with its primary dealers.
 * *Primary dealers*: ~20 banks permitted to trade directly with the Fed. When the Fed auctions securities, primary dealers are _required_ to participate. The vast majority of treasuries are traded through the primary dealers to other entities worldwide. [Lists of primary dealers](http://en.wikipedia.org/wiki/Primary_dealer#Current_list) are easily available and include well-known names like **BMO**, **Goldman Sachs**, and **JP Morgan**.
 
-## Fractional-reserve Banking
+## Fractional-reserve Banking (#fractional-reserve-banking)
 
 [Fractional-reserve banking](http://en.wikipedia.org/wiki/Fractional_reserve_banking) is a form of banking carried out worldwide that's important to understanding the whole story of QE. Under this system, banks retain reserves only equal to the a _fraction_ of the their total deposits, with that fraction's amount being sufficient to satisfy demand for withdrawals. The rest of the money can be invested or loaned out.
 
@@ -30,7 +30,7 @@ In the US, the Fed stipulates the reserve requirements for US banks and banks op
 
 The total reserves plus the total currency in circulation is known as the **[monetary base](http://en.wikipedia.org/wiki/Monetary_base)**.
 
-## QE. Step by Step.
+## QE. Step by Step. (#step-by-step)
 
 Now that we have the backstory in place, let's dive into how QE actually works:
 
@@ -39,7 +39,7 @@ Now that we have the backstory in place, let's dive into how QE actually works:
 1. After the transaction, the primary dealers have now traded the treasuries amongst their assets for a credit that shows up in the books they keep with the Fed.
 1. This credit usually becomes part of that bank's _required reserves_ with the Fed, so they can now proceed to lend out more money than they could before. Fractional reserve banking ensures that whatever amount the reserve increased by is effectively multiplied, and therefore its effect on the money supply has a magnified effect, _but_ the increase in reserve isn't cash itself (remember, it's just a credit on the Fed's balance sheet) so the bank has to find liquidity elsewhere if it wants to loan it out.
 
-## Example
+## Example (#example)
 
 Let's throw some numbers into this equation just to illustrate the full effect. We're going to examine the balance sheets of the Treasury, the Fed, and the imaginary primary dealer **Bank A** before and after a round of QE.
 
@@ -195,11 +195,11 @@ So in other words, the inflationary pressure here may not be that much stronger 
 
 Luckily, we do have some idea as to what's going on as [the Fed tracks the monetary base of the United States](http://www.federalreserve.gov/releases/H3/Current/). The monetary base as of January 2014 is $3,753B, almost a trillion dollars larger than the base of $2,741B in January 2013. That seems like an enormous increase, but if you compare the total reserves of January 2014 ($2,582B) to that of January 2013 ($1,637B) you'll notice that this number is also almost a trillion dollars larger, showing that the increase in reserves is almost entirely responsible for the overall increase to the monetary base. The fact that those reserves are locked up tight &mdash; no bank can lend reserves except to another bank &mdash; means that their effect on inflation is lower than one might expect.
 
-## Other Effects
+## Other Effects (#other-effects)
 
 The Fed's purchase of large numbers of treasuries is enough to push down the **yields** on all government bonds, making them a less attractive investment. This shifts the risk curve and leads investors towards assets like stocks and corporate bonds, pushing the price of those assets higher. These increased prices leads to a **[wealth effect](http://en.wikipedia.org/wiki/Wealth_effect)**, meaning that the increase in perceived wealth improves confidence and leads to more spending, thus stimulating the economy. The effectiveness of this strategy is also difficult to measure directly, but we can observe the price increases in many types of assets over the last few years.
 
-## References
+## References (#references)
 
 * [Why quantitative easing isn't printing money](http://www.cnbc.com/id/100760150)
 * [What is the purpose of QE?](http://www.ritholtz.com/blog/2012/12/what-is-the-purpose-of-qe/)
