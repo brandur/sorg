@@ -1,18 +1,21 @@
 ---
 title: Canonical Log Lines
 published_at: 2016-08-24T14:38:47Z
-hook: A lightweight and technology agnostic analytical pattern for easy
-  visibility into production systems.
+hook: A lightweight and stack agnostic analytical pattern for easy visibility
+  into production systems.
 location: San Francisco
 ---
 
-_Canonical log lines_ are a lightweight pattern used within Stripe for improved
-service observability. They act as a middle ground between other types of
-analytics in that they present a good trade-off between ease of access and
-flexibility.
+Over the next few weeks I want to post a few articles about some of my favorite
+operational tricks that I've seen while working at Stripe.
 
-For some background, if we look at standard practices in production systems, we
-could say that they emit tiers of operational information. For example:
+The first, and easily my favorite, is the _canonical log line_, a lightweight
+pattern for improved visibility into our services. It acts as a middle ground
+between other types of analytics in that it's a good trade-off between ease of
+access and flexibility.
+
+We could say that many production systems (following standard industry
+practices) emit "tiers" of operation information:
 
 * Metrics (i.e. emitted to services like statsd, Librato, Datadog, etc.).
 * Log traces.
@@ -20,10 +23,9 @@ could say that they emit tiers of operational information. For example:
 While **metrics** provide fast feedback on specific and commonly-used system
 measurements, they're not well suited for allowing information to be queried
 arbitrarily and ad-hoc. They're perfect for answering a question that's known
-ahead of time like, _"how many requests per second is my stack doing?"_,
-but less useful for questions that I think up on the spot and need immediate
-answers for like, _"how many requests per second is userXYZ making to my stack
-via TLS 1.0?"_
+ahead of time like _"how many requests per second is my stack doing?"_, but
+less useful for questions that are thought up on the spot like _"how many
+requests per second is userXYZ making to my stack via TLS 1.0?"_
 
 **Log traces** can answer the latter question, but often make such analysis
 difficult because they tend to have poor signal-to-noise ratio when looking for
@@ -37,9 +39,9 @@ gap:
 
 ## What Are They? (#what-are-they)
 
-The concept is simple: canonical lines are one big log line (probably in
-[logfmt](/logfmt)\) style that is emitted at the end of a request [1] and which
-defines fields that contain all of that request's key information.
+The concept is simple: a canonical line is a big log line (probably in
+[logfmt](/logfmt)\) that gets emitted at the end of a request [1]. It's filled
+with fields for all of that request's key information.
 
 !fig src="/assets/canonical-log-lines/canonical-log-lines.svg" caption="Canonical log lines being emitted (and ingested) for each request."
 
@@ -251,11 +253,13 @@ end
 
 ## Summary
 
-Canonical log lines are a simple middle tier of analytics that can be readily
-implemented in any production stack. They don't make as convenient of a
-reference as prebaked statsd-style metrics dashboards, but are infinitely more
-flexible. Likewise, they don't have the sheer information density of raw log
-traces, but make access to information far more convenient.
+By now I've hopefully convinced you that canonical log lines provide a pretty
+useful "middle tier" of operational visibility into a production stack. They're
+not as convenient as prebaked statsd-style metrics dashboards, but are
+infinitely more flexible. Likewise, they don't tell you everything that a raw
+log trace would, but access to information is a lot more convenient. Because
+they're emitted as a simple log line, they're easy to integrate into any tech
+stack you happen to be using.
 
 [1] I refer to canonical lines being tied to "requests" because web services
     are a ubiquitous type of app that many of us are working on these days, but
