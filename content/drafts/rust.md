@@ -5,14 +5,32 @@ published_at: 2016-11-08T04:56:03Z
 title: Reflections on Rust
 ---
 
-Going to making a lot of Go comparisons.
+I spent the last few weeks learning Rust so that I could use it to build a
+Redis module. The result was [redis-cell][redis-cell] and a lot of opinions on
+the language, which I've journaled here given that I was still looking at it
+with relatively fresh eyes.
+
+It was an interesting project because Redis provides only C APIs to interact
+with its module system with the expectation that modules will only be written
+in C. I wrote a simple bridge to the API using Rust's FFI (foreign function
+interface) module, and wrapped it with a higher level API that would was more
+pleasant to use and memory safe. This sort of embedded work is Rust's sweet
+spot, and although still relatively new, it's already better suited to it than
+any other language that I know of.
+
+I'm going to make a lot of Go comparisons throughout this document. This isn't
+because I feel any particular indignation towards the language, but rather
+because that besides Rust, it's the most recent language that I spent the time
+to learn (and [detailed that experience as well](/go)).
 
 ## The Good (#good)
 
 ### Error Handling (#error-handling)
 
-I believe completely that Rust has nailed error handling to a greater degree
-than any other language.
+Rust has nailed error handling to a greater degree than anyone else. It's not
+that its approach was innovative, but more that the right model was baked in
+right from the beginning. It's safe, ergonomic, and used uniformly throughout
+the language, standard library, and third party packages.
 
 Go introduced the nice C-style convention of moving away from exceptions in
 favor of returning errors:
@@ -24,10 +42,10 @@ if err != nil {
 }
 ```
 
-This is a good idea, but it ends up littering your code with an endless amount
-of junk boilerplate. Besides making code hard to read and slow to write, it
-also makes bugs more likely. For example, I've reversed comparisons by accident
-a few times (i.e. `==` instead of `!=`):
+This is a good idea, but ends up littering your code with an endless amount of
+junk boilerplate. Besides making code hard to read and slow to write, it also
+makes bugs more likely. For example, I've reversed comparisons by accident a
+few times by including `==` instead of `!=`:
 
 ``` go
 res, err := getAPIResults()
@@ -36,7 +54,7 @@ if err == nil {
 }
 ```
 
-The result is buggy code, and the compiler can't help you find a problem.
+The result is buggy code, and the compiler can't help you find the problem.
 
 Rust's error mechanic is conceptually identical to Go's, but dedicated
 in-language constructs make it less prone to problems, easier to read, and very
@@ -60,10 +78,15 @@ just the `?`) shorthand which boils the above to just:
 
 ``` rust
 let res = try!(get_api_results());
+
+// or the new and even more efficient syntax
+let res = get_api_results()?;
 ```
 
-Rust also makes other helpers like `unwrap()` available to developers so that
-the error system is always helping you, but never getting in your way.
+Rust also makes other helpers like `unwrap()` available in places where error
+handling is really not necessary because an error would be representative of a
+profoundly serious application bug. The result is that the error system is
+always helping you, and never getting in your way.
 
 ### Eliminating Null (#null)
 
@@ -208,6 +231,16 @@ Macros scare me because their potential for abuse is almost unlimited, but if
 their use is reasonably bounded, they can be _very_ useful. I eliminated some
 big sections of boilerplate (mostly around debug logging) by defining a couple
 simple ones.
+
+### Community (#community)
+
+Especially after saying that the Go community [is one of the worst parts about
+working with the language](/go#bad), I'd be remiss to point out that so far
+I've found the Rust community to be very pleasant to work with. They're [very
+transparent][rust-roadmap-2017] and focus on ease of adoption by new developers
+as a core value. The [Rust RFC system][rust-rfcs] is an absolute gold standard,
+with new features being discussed out in the open instead of dictated by a
+ruling despot.
 
 ## Neutral (#neutral)
 
@@ -374,16 +407,27 @@ who are very senior developers that tried to learn the language, but failed
 after the ownership model produced an amount of backpressure that they couldn't
 overcome in a reasonable amount of time. I personally feel like I know it well
 enough to be practically useful, but wouldn't for a second claim to be able to
-explain its intricacies, even after weeks of use.
+explain its more subtle intricacies, even after weeks of use.
 
 ## Summary (#summary)
 
-Systems but maybe too much friction for big services.
+I love Rust. Its huge collection of useful features combined with an eminently
+supportive and productive community is enough to make it the language that I'm
+most excited about today. I get a Haskell-like feeling with it that the
+compiler is trying to help me write bug-free code, but without having to deal
+with the artificial obscurity and accumulated language cruft of the former.
 
-Haskell for everyone (too esoteric and too unapproachable given too much accumulated garbage).
+While the complexity of its ownership model is likely to present a continued
+barrier to adoption, good progress is being made towards improving the
+situation with more helpful messages from the compiler (the difference between
+trying to learn it now versus a year ago is tangible). I still harbor some
+doubts that it's ever going to be practical in a corporate environment where
+there's a huge diversity in developer skill levels, but I'm hopeful.
 
-Rust may have a particularly hard time thriving in corporate environments where
-there are people with a variety of different skill levels building things. 
+Unrefined HTTP APIs and lack of a modern concurrency model are the last two
+missing puzzle pieces preventing me from moving to it from Go and Ruby for the
+bulk of my projects. And even without these in places, it's still suitable for
+a lot of things I do.
 
 [drop]: https://doc.rust-lang.org/nomicon/destructors.html
 [futures-rs]: https://github.com/alexcrichton/futures-rs
@@ -392,6 +436,11 @@ there are people with a variety of different skill levels building things.
 [m-n-threading]: https://mail.mozilla.org/pipermail/rust-dev/2013-November/006550.html
 [mutex-guard]: https://doc.rust-lang.org/std/sync/struct.MutexGuard.html
 [ownership]: https://doc.rust-lang.org/book/ownership.html
+[redis-cell]: https://github.com/brandur/redis-cell
 [rust-http]: https://github.com/chris-morgan/rust-http
+[rust-rfcs]: https://github.com/rust-lang/rfcs
+[rust-roadmap-2017]: https://github.com/aturon/rfcs/blob/roadmap-2017/text/0000-roadmap-2017.md
+[servo-easy]: https://github.com/servo/servo/issues?q=is:open+is:issue+label:E-easy
+[servo-less-easy]: https://github.com/servo/servo/issues?utf8=✓&q=is:open%20is:issue%20label:"E-less%20easy"%20
 [teepee]: https://github.com/teepee/teepee
 [tokio]: https://github.com/tokio-rs/tokio
