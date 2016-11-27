@@ -131,6 +131,9 @@ information is easily available:
 
 > canonical-api-line status=500 api_method=AllEventsMethod earliest=-7d | timechart count
 
+_(Note: These numbers are artificial and not actually representative of Stripe
+API traffic.)_
+
 By putting this query into a Splunk subsearch, I can trivially join it with
 other emitted log lines. For example, by joining on a "breakage line" (one
 where we log an exception), I can look at these errors grouped by class:
@@ -144,7 +147,7 @@ are counts of timeout errors over the last week by API version:
 
 !fig src="/assets/canonical-log-lines/top-api-versions.png" caption="An inverted search. API versions pulled from the canonical log line and fetched by class of error."
 
-> [search breakage-splunkline error_class=Chalk::ODM::OperationTimeout sourcetype=bapi-srv earliest=-7d | fields action_id] canonical-api-line | stats count by stripe_version | sort -count limit 10
+> [search breakage-splunkline error_class=Timeout sourcetype=bapi-srv earliest=-7d | fields action_id] canonical-api-line | stats count by stripe_version | sort -count limit 10
 
 ### Example: TLS Deprecation (#tls-deprecation)
 
