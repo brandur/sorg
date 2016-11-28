@@ -18,17 +18,11 @@ assert(expression);
 ```
 
 If not, practically everyone will be familiar with the basic idea from their
-unit testing framework.
+unit testing framework. The basic function of an assertion is to check that an
+expression evaluates to true, and to terminate the program, throw an exception,
+or fail a test if it's not.
 
-
-
-From `man assert`:
-
-```
-The assert() macro tests the given expression and if it is
-false, the calling process is terminated. A diagnostic
-message is written to stderr and the abort(3) function is
-called, effectively terminating the program.
-
-If expression is true, the assert() macro does nothing.
-```
+An assertion can be deployed to production HTTP stack, but we probably wouldn't
+want to just terminate the program like we would in a C program. Instead, we'd
+likely throw an exception and have a middleware translate it into a 500 to show
+to the end user.
