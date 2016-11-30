@@ -26,3 +26,7 @@ An assertion can be deployed to production HTTP stack, but we probably wouldn't
 want to just terminate the program like we would in a C program. Instead, we'd
 likely throw an exception and have a middleware translate it into a 500 to show
 to the end user.
+
+Exception in tests and development. Swallowed silently in production.
+
+Catches problems in edge cases that may have been forgotten in the test cycle.
