@@ -322,10 +322,11 @@ Go to the [Lambda console][lambda-console] and select **Create a Lambda
 function** (this is another one that's a little awkward from the CLI). When
 prompted to select a blueprint, click the **Skip** button at the bottom of the
 page. Give the new function a name and copy in the [script found
-here][rebuild-script]. Change the configuration section at the top to include
-your GitHub repository's name and the Travis API token acquired above. Under
-**Role** choose **Basic execution handler**. Click through to the next page and
-create the function. Use the **Test** button to make sure it works.
+here][rebuild-script]. Add environmental variables `REPOSITORY` and
+`TRAVIS_TOKEN` to include your GitHub repository's name (in the form
+`handle/repo`) and Travis API token acquired above. Under **Role** choose
+**Basic execution handler**. Click through to the next page and create the
+function. Use the **Test** button to make sure it works.
 
 Now create a scheduled event so that the script will run periodically. Click
 the **Triggers** tab and then **Add trigger**. Click the dotted grey box and
