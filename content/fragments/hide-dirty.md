@@ -14,9 +14,10 @@ This is accomplishing by invoking Oh-My-Zsh's `git_prompt_info` function. Bash
 has a similar mechanism called `__git_ps1`.
 
 This worked great for me for years until I started working in repositories with
-very large Git histories. For example, the kernel tree, Rust, or Servo will all
-demonstrate the effect. `git_prompt_info` took so long to return that the
-latency was disruptive when typing commands in quick succession.
+very large Git histories. You can see it for yourself by cloning down the Linux
+kernel tree, Rust, or Servo, which all demonstrate the effect.
+`git_prompt_info` takes so long to return that the latency becomes disruptive
+when typing commands in quick succession.
 
 `git_prompt_info` calls into `git status`. Along with getting the current
 branch name, it returns another piece of information: whether the repository is
