@@ -44,12 +44,12 @@ for the company: form over function. Specifically, these major releases:
 
 * (November 2016) The new MacBook Pro. Obviously TouchBar is the lightning rod;
   a pointless gimmick that, after the initial novelty dies off, is going to be
-  obviously not useful to anybody. But the bigger red flag for me is the that
-  they reduced battery capacity by 25% because the new components were expected
-  to make up the difference by being 25% more power efficient (they didn't).
-  Sacrificing a major practical advantage to satisy the urge to shave a few mm
-  off a computer that's already thin enough for anyone gives us a small window
-  into the very concerning thought process of today's Apple.
+  obviously useless to pretty much everyone. But the bigger red flag for me is
+  the that they reduced battery capacity by 25% because the new components were
+  expected to make up the difference by being 25% more power efficient (they
+  didn't). Sacrificing a major practical advantage to satisy the urge to shave
+  a few mm off a computer that's already thin enough for anyone gives us a
+  small window into the very concerning thought process of today's Apple.
 
 I don't know where this leaves me. I don't really want to move out of the Apple
 ecosystem, but I also don't want a TouchBar and _do want_ a headphone jack. For
