@@ -154,6 +154,7 @@ fn run_operation() -> i64 {
     ...
 
     if error_occurred {
+        // s is leaked!
         return 1;
     }
 
@@ -166,10 +167,11 @@ fn run_operation() -> i64 {
 
 The new conditional branch doesn't free the string before leaving the function,
 and so the program now has a memory leak. This is a very easy mistake to make
-in a C program.
+in C.
 
-Luckily with Rust we can guarantee the memory safety of our `RedisString` by
-implementing the `Drop` trait:
+With Rust, we can do things a little differently. By implementing the
+language's built-in `Drop` trait (think of a trait like an interface in most
+languages), we can guarantee the memory safety of `RedisString`:
 
 ``` rust
 impl Drop for RedisString {
