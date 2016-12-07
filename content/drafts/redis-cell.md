@@ -81,7 +81,7 @@ response. For example:
 Rolling your own rate limiting module is quite possible of course, but
 redis-cell aims to provide a general and widely-useful implementation that can
 be integrated into a project built with any programming language or framework,
-just as long as its stack is includes Redis.
+just as long as its stack includes Redis.
 
 ## Rust (#rust)
 
@@ -112,10 +112,10 @@ problem as long as they can get the program to compile.
 
 Let's look at a simple example of this safety in action. The Redis module API
 provides certain functions to allocate memory inside of Redis, and in the
-default mode of operation, modules are tasked with freeing any memory that
-they allocate in this way. So if `RedisModule_CreateString` is invoked to
-create a new string, a call to `RedisModule_FreeString` is expected eventually
-to free it.
+default mode of operation, modules are tasked with freeing any memory that they
+allocate in this way. So if `RedisModule_CreateString` is invoked to create a
+new string, a call to `RedisModule_FreeString` is expected to eventually free
+it.
 
 In Rust, I wrap theses string with a higher level type so that I don't have to
 work with them directly:
