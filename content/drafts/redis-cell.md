@@ -127,9 +127,9 @@ pub struct RedisString {
 }
 ```
 
-Now the trouble with manual memory management is that it can be quite
-dangerous. Say I have a function that allocates a string, performs an operation
-with it, and then frees the string before returning:
+Now the trouble with manual memory management is that it can be dangerous. Say
+I have a function that allocates a string, performs an operation with it, and
+then frees the string before returning:
 
 ``` rust
 fn run_operation() -> i64 {
