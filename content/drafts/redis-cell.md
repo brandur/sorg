@@ -112,13 +112,13 @@ problem as long as they can get the program to compile.
 
 Let's look at a simple example of this safety in action. The Redis module API
 provides certain functions to allocate memory inside of Redis, and in the
-default mode operation, modules are tasked with freeing any memory that they
-allocate in this way. So if `RedisModule_CreateString` is invoked to create a
-new string, a call to `RedisModule_FreeString` is expected eventually to free
-it.
+default mode of operation, modules are tasked with freeing any memory that
+they allocate in this way. So if `RedisModule_CreateString` is invoked to
+create a new string, a call to `RedisModule_FreeString` is expected eventually
+to free it.
 
-In Rust, I wrap such a string with a higher level type so that I don't have to
-work directly with C-level strings:
+In Rust, I wrap theses string with a higher level type so that I don't have to
+work with them directly:
 
 ``` rust
 pub struct RedisString {
