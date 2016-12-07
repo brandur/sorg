@@ -97,14 +97,14 @@ and much like C programs, have no garbage collector.
 So why bother? Well, although I could probably be considered to be nominally
 literate in C, I don't have anywhere near the expertise to be confident that I
 wouldn't write a program that contained a memory overrun or some other unsafe
-operation that would manifest as a segmentation fault. As evidenced by
-widespread issues like [Heartbleed][heartbleed], even highly competent C
-developers are not beyond this class of mistake.
+operation that would manifest as a program-killing segmentation fault. As
+evidenced by widespread issues like [Heartbleed][heartbleed], even highly
+competent C developers are not beyond this class of mistake.
 
-The rust compilers gurantees that all my memory accesses are safe, and its
+The rust compilers guarantees that all my memory accesses are safe, and its
 strong type system goes a long way towards ensuring that I'm not accidentally
 misusing code in a way that could cause a runtime problem. This is good for me,
-but even better for would-be contributors the project; even one who's never
+but even better for would-be contributors the project; even someone who's never
 written Rust before has only a miniscule chance of introducing a low-level
 problem as long as they can get the program to compile.
 
