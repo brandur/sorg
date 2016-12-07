@@ -166,8 +166,7 @@ fn run_operation() -> i64 {
 ```
 
 The new conditional branch doesn't free the string before leaving the function,
-and so the program now has a memory leak. This is a very easy mistake to make
-in C.
+so the program now has a memory leak. This is a very easy mistake to make in C.
 
 With Rust, we can do things a little differently. By implementing the
 language's built-in `Drop` trait (think of a trait like an interface in most
