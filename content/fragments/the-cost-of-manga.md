@@ -1,7 +1,7 @@
 ---
 title: The Cost of Manga
 published_at: 2016-08-08T16:17:09Z
-hook: "At retail prices, catching up on One Piece would cost $8,200, and Fairy Tail $5,500. How would you get started without a library?"
+hook: "At retail prices, catching up on One Piece would cost $820, and Fairy Tail $550. How would you get started without a library?"
 ---
 
 I recently caught up on the manga super series [One Piece][one-piece] which has
@@ -13,10 +13,10 @@ similarly astounding proportions at 55 volumes (~11,000 pages).
 After a visit yesterday to Kinokuniya, San Francisco's Japanese bookstore and
 looking at the prices on manga volumes, it got me to thinking how much it would
 actually cost to read one of these series back to front. At an average of $10 a
-volume, One Piece would cost $8,200 to read, and Fairy Tail $5,500. Prices
-will vary depeding on where you source the books from; they'll be more
-expensive at real-world stores ($11), and may be discounted on Amazon ($5 for
-more recent One Piece volumes), but they're roughly right.
+volume, One Piece would cost $820 to read, and Fairy Tail $550. Prices will
+vary depeding on where you source the books from; they'll be more expensive at
+real-world stores ($11), and may be discounted on Amazon ($5 for more recent
+One Piece volumes), but they're roughly right.
 
 Especially given that the series are aimed at younger readers without a lot of
 money, these numbers strike me as _big_. There's probably some expectation that
