@@ -263,6 +263,12 @@ Here are a list of safe versus unsafe operations:
 
 See running processes.
 
+### application_name (#application-name)
+
+``` sql
+SET application_name TO 'api-worker';
+```
+
 ## Features (#features)
 
 ### Listen/Notify (#listen-notify)
