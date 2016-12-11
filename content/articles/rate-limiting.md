@@ -115,7 +115,7 @@ and decrementing it.
 
 ### Downsides (#leaky-bucket-downsides)
 
-The naive leaky bucket's greatness weakness is its "drip" process. If it goes
+The naive leaky bucket's greatest weakness is its "drip" process. If it goes
 offline or gets to a capacity limit where it can't drip all the buckets that
 need to be dripped, then new incoming requests might be limited incorrectly.
 There are a number of strategies to help avoid this danger, but if we could
