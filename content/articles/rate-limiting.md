@@ -77,7 +77,7 @@ are through I'll be locked out for the next hour:
 
 ``` sh
 $ curl --silent --head -i -H "Authorization: token $GITHUB_TOKEN" \
-    https://api.github.com/users/brandur | grep RateLimit-Reset
+    https://api.github.com/users/brandur | grep RateLimit
 X-RateLimit-Limit: 5000
 X-RateLimit-Remaining: 0
 X-RateLimit-Reset: 1442423816
