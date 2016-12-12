@@ -77,7 +77,7 @@ are through I'll be locked out for the next hour:
 
 ``` sh
 $ curl --silent --head -i -H "Authorization: token $GITHUB_TOKEN" \
-    https://api.github.com/users/brandur | grep RateLimit-Reset
+    https://api.github.com/users/brandur | grep RateLimit
 X-RateLimit-Limit: 5000
 X-RateLimit-Remaining: 0
 X-RateLimit-Reset: 1442423816
@@ -115,7 +115,7 @@ and decrementing it.
 
 ### Downsides (#leaky-bucket-downsides)
 
-The naive leaky bucket's greatness weakness is its "drip" process. If it goes
+The naive leaky bucket's greatest weakness is its "drip" process. If it goes
 offline or gets to a capacity limit where it can't drip all the buckets that
 need to be dripped, then new incoming requests might be limited incorrectly.
 There are a number of strategies to help avoid this danger, but if we could
