@@ -30,4 +30,7 @@ I'll try to keep this post up-to-date as I'm made aware of new developments.
 
 [1] Meaning that you'll have to trade some build speed to get 9.5 support.
 
+EDIT: As of 2016-12-01, Postgres 9.5 **and** 9.6 are [available][travis-update] on _both_ container and non-container environments.  
+
 [mega-thread]: https://github.com/travis-ci/travis-ci/issues/4264
+[travis-update]: https://github.com/travis-ci/travis-ci/issues/4264#issuecomment-263550556
