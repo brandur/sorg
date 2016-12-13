@@ -6,7 +6,7 @@ hook: A Berlin spring, Zweckentfremdungsverbot, and the end of full unit AirBnB
 ---
 
 While visiting Berlin this year, some friends and I stayed in an airy apartment
-in Friedrichshain. It interior was beautifully modeled in a modest European
+in Friedrichshain. Its interior was beautifully modeled in a modest European
 style, its vantage point on the fifth floor overlooked a beautiful inner
 courtyard, and it was close to all the neighborhood's best restaurants and
 nightspots.
