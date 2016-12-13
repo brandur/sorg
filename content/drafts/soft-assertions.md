@@ -40,13 +40,13 @@ never have occurred.
 We might call this type of assertion a "hard assertion" because it must
 strictly evaluate to true for processing to continue.
 
-## Introducing the Soft Assertion
+## Introducing the Soft Assertion (#soft-assertion)
 
 Exception in tests and development. Swallowed silently in production.
 
 Catches problems in edge cases that may have been forgotten in the test cycle.
 
-## Implementation
+## Implementation (#implementation)
 
 Give it a team and even an individual name.
 
