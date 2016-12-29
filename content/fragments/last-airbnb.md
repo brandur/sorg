@@ -1,8 +1,8 @@
 ---
 title: The Last AirBnB
 published_at: 2016-12-13T16:44:54Z
-hook: A Berlin spring, Zweckentfremdungsverbot, and the end of full unit AirBnB
-  rentals.
+hook: Springtime, Zweckentfremdungsverbot, and the end of AirBnB rentals in
+  Berlin.
 ---
 
 While visiting Berlin this year, some friends and I stayed in an airy apartment
