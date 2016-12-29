@@ -18,7 +18,6 @@
 # and have been allowed as exceptions. It's not really a big deal, but try to
 # clean it up over time.
 allowed_exceptions=(
-    "./content/images/brandur.jpg"
     "./content/images/breaktime/commit.png"
     "./content/images/fragments/hm-sportswear/hm.jpg"
     "./content/images/fragments/hm-sportswear/nike.jpg"
