@@ -37,7 +37,6 @@ allowed_exceptions=(
     "./content/images/fragments/wgt-2015/vista.jpg"
     "./content/images/fragments/wgt-2015-brain-dump/jo-quail.jpg"
     "./content/images/fragments/wgt-2015-brain-dump/leaf.jpg"
-    "./content/images/me.jpg"
     "./content/images/page/economist.jpg"
     "./content/images/page/fp.png"
     "./content/images/page/rane.jpg"
