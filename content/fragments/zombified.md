@@ -18,7 +18,7 @@ telling me that it was unable to start a shell.
 
 Historically these types of failures are usually because OS X is a bad
 operating system for a headless box, so my first assumption was that some
-system-level task had kicked in and rebooted my system. Either that, or an
+system-level task had kicked in and rebooted my computer. Either that, or an
 errant web browser had eaten the entirety of its memory. The problem's timing
 was a little too suspicious though, so I inspected my (identical) locally
 running backup script to make sure that nothing was amiss.
