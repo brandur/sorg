@@ -8,12 +8,18 @@
       h1 About
     #about
       p
-        img src="/assets/me.jpg"
+        img src="/assets/me.jpg" data-rjs="2"
       p
-        | I'm an engineer at Stripe, and am interested in service engineering, APIs, Vim, Tmux, Ruby, Go, terminal productivity, running, fixed gear riding, history, urban design, and metal. Recently, I also spent quite some time building the Heroku platform.
+        | I'm an engineer at Stripe where I help run the core service that supports our API, guide the design of that API, and maintain our public facing developer tooling.
+      p
+        | I recently spent quite a few years at Heroku where I helped create our V3 API and refine and operate its central supporting services. I'm still a strong believer that developers at every product company shouldn't be spending too much time thinking about infrastructure, and have access to a deployment mechanism as easy as <code>git push heroku master</code>.
+      p
+        | Having written software professionally for many years now, I've become convinced over time that the processes and tools that we use to write it tend to produce results that are fragile by default. These days I'm especially interested in ways to improve its robustness and longevity, and reduce the number of human hours sunk into operating it. This has lead me to a strong interest in programming languages like Rust that offer strong type safety, and have exacting compilers that minimize the number of problems that need to be rooted out at runtime.
+      p
+        | My favorite movie is Sofia Coppola's <em>Lost in Translation</em>. My favorite book is Michael Crichton's <em>Rising Sun</em> (although I like <a href="/reading">a lot of others</a>). I'm also interested in running, photography, history, meditation, urban design, and metal.
       h2 Technology
       p
-        | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations by CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The recipe is based on the ideas that I wrote about in <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
+        | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations by CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The architecture is based on the idea of <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
       p
         | It was previously running <a href="https://github.com/brandur/org">Ruby/Sinatra stack</a>, hosted on Heroku, and using CloudFlare as a CDN.
       h2 Design
