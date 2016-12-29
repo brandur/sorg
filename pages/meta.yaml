@@ -24,6 +24,9 @@ lies:
   title: Lies
   body_class: quote
 
+now:
+  title: What I'm Doing Now
+
 talks:
   title: Talks
 
