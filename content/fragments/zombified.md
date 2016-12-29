@@ -23,8 +23,8 @@ errant web browser had eaten the entirety of its memory. The problem's timing
 was a little too suspicious though, so I inspected my (identical) locally
 running backup script to make sure that nothing was amiss.
 
-But something was amiss: in the few hours that it'd been running, it had
-accumulated dozens of zombified rclone child processes. This was almost
+Well, something was amiss. In the few hours that it'd been running, the program
+had accumulated dozens of zombified rclone child processes. This was almost
 certainly happening on my home machine too, and it couldn't give me a shell
 because every available file descriptor had been devoured by Ruby to
 communicate with its zombies.
