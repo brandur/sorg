@@ -17,4 +17,6 @@ nav
     li
       a href="/reading" Reading
     li
+      a href="/now" Now
+    li
       a href="/about" About
