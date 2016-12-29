@@ -1,17 +1,23 @@
 .signature
-  article
-    max-width: 550px
+  .content
+    // Specifying a larger max-width here allows the TOC to "roam" out into the
+    // margin a little bit, which subjectively looks better.
+    max-width: 680px
 
-  article > p:first-of-type:first-letter
-    float: left
-    font-size: 6.25rem
-    line-height: 0.7em
-    margin: 5px 10px 0 0
+    article
+      max-width: 550px
+
+    article > p:first-of-type:first-letter
+      float: left
+      font-size: 6.25rem
+      line-height: 0.7em
+      margin: 5px 10px 0 0
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .signature
-    article > p:first-of-type:first-letter
-      font-size: 4rem
+    .content
+      article > p:first-of-type:first-letter
+        font-size: 4rem
 
 // uncomment the below for multi-column "big" layout
 
