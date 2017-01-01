@@ -9,7 +9,7 @@
     #now
       p I'm back in my hometown of Calgary for the holidays. I'm doing some things that I can't do in San Francisco, like skiing, and enjoying the tranquility of the suburbs.
       p
-        img src="/assets/now/bow-summit.jpg" data-rjs="2"
+        img.overflowing src="/assets/now/bow-summit.jpg" data-rjs="2"
       p Here's what I'm working on:
       ul
         li Rust. This language is the most exciting thing happening in computing right now for me. Its typing and safety semantics have the potential to get us to a future where software is less buggy and generally more reliable, and its got a lot less baggage than comparable projects like Haskell. I'm working on a few new projects and OSS contributions.

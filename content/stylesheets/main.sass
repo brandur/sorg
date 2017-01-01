@@ -78,6 +78,13 @@ img
   margin: 20px 0
   max-width: 100%
 
+// Allow certain images (e.g. about and now pages) to overflow out of the
+// normal text bounds for a slightly uneven look. A max-size rule below
+// constraints max-width back to 100% when the screen gets too small.
+img.overflowing
+  overflow: visible
+  max-width: 650px
+
 nav
   font-family: $sans_serif
   font-size: 0.7rem
@@ -458,6 +465,9 @@ footer
 
   h1
     font-size: 5rem
+
+  img.overflowing
+    max-width: 100%
 
   pre
     overflow: auto
