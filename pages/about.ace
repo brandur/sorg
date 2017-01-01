@@ -8,7 +8,7 @@
       h1 About
     #about
       p
-        img src="/assets/me.jpg" data-rjs="2"
+        img.overflowing src="/assets/me.jpg" data-rjs="2"
       p
         | I'm an engineer at Stripe where I help run the core service that supports our API, guide the design of that API, and maintain our public facing developer tooling.
       p
