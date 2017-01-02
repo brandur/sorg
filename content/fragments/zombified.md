@@ -55,8 +55,7 @@ IO.popen(...) { ... }
 ```
 
 This one simple mistake means that my home server is now out of comission for
-two weeks until I can get back to San Francisco to manually reboot it. This is
-one of about a thousand different reasons as to why I'm very keen on Rust these
-days.
+two weeks until I can get back there to manually reboot it. This is one of
+about a thousand different reasons as to why I'm very keen on Rust these days.
 
 [rclone]: http://rclone.org/
