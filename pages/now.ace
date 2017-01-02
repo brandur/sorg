@@ -7,7 +7,7 @@
     #title
       h1 What I'm Doing Now
     #now
-      p I'm back in my hometown of Calgary for the holidays. I'm doing some things that I can't do in San Francisco, like skiing, and enjoying the tranquility of the suburbs.
+      p I'm back in my hometown of Calgary. I'm doing some things that I can't do in San Francisco, like skiing, and enjoying the tranquility of the suburbs.
       p
         img.overflowing src="/assets/now/bow-summit.jpg" data-rjs="2"
       p Here's what I'm working on:
