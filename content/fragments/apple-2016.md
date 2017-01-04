@@ -21,7 +21,11 @@ an easy decision.
 But more recently, Apple has evened out the equation through a combination of
 total negligence towards most of their computing lineups, and a series of highly
 impractical product and design decisions that suggest a new core value for the
-company: form over function. Specifically, these major releases:
+company: form over function. It doesn't matter how a product works as long as
+its design is a bit sleeker, its line are a little more symmetrical, or its body
+a little thinner.
+
+Specifically, these major releases come to mind:
 
 * (March 2015) The 12" MacBook was an early hint of more to come. I actually
   really like this laptop and still use it every day, but Apple's decision to
