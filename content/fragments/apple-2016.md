@@ -62,4 +62,4 @@ these holes to close over time.
 
 [courage]: /fragments/courage
 
-[1] As evidenced by the continually delayed "airpods", they're not.
+[1] As evidenced by the continually delayed "AirPods", they're not.
