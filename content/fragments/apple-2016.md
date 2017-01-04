@@ -10,7 +10,7 @@ years of  university, I became a convert after playing with OS X and seeing
 some of the beautiful hardware that they were producing at the time (the very
 first 2006 MacBook Pro running X86). The quantum leap advancement in touch
 technology culminating in the release of the first iPhone added more fuel to
-the fire, and for years I championed the company at every opportunity.
+the fire, and since then I've championed the company at every opportunity.
 
 For years I've been of the opinion that the only laptop a developer should
 own is something out of the MacBook line. I like Linux as much of the next guy,
