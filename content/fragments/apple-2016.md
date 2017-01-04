@@ -18,10 +18,10 @@ but between the far superior stability of OSX, the incredible battery life, and
 the absolute build quality of Apple's laptops, my next computer has always been
 an easy decision.
 
-But in recent years, Apple has evened out the equation through a combination of
-total negligence towards most of their computing lineups, and a series of
-highly impractical product and design decisions that suggest a new core value
-for the company: form over function. Specifically, these major releases:
+But more recently, Apple has evened out the equation through a combination of
+total negligence towards most of their computing lineups, and a series of highly
+impractical product and design decisions that suggest a new core value for the
+company: form over function. Specifically, these major releases:
 
 * (March 2015) The 12" MacBook was an early hint of more to come. I actually
   really like this laptop and still use it every day, but Apple's decision to
