@@ -59,6 +59,9 @@ type Article struct {
 	// Image is an optional image that may be included with an article.
 	Image string `yaml:"image"`
 
+	// Location is the geographical location where this article was written.
+	Location string `yaml:"location"`
+
 	// PublishedAt is when the article was published.
 	PublishedAt *time.Time `yaml:"published_at"`
 
