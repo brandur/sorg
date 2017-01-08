@@ -32,7 +32,7 @@
         {{HTML .Article.Content}}
         .divider-short
         .info
-          p <strong>{{.Article.Title}}</strong> was published on <strong>{{FormatTime .Article.PublishedAt}}</strong> from <strong>{{.Location}}</strong>. Find me on Twitter at <strong><a href="https://twitter.com/brandur">@brandur</a></strong>.
+          p <strong>{{.Article.Title}}</strong> was published on <strong>{{FormatTime .Article.PublishedAt}}</strong> from <strong>{{.Article.Location}}</strong>. Find me on Twitter at <strong><a href="https://twitter.com/brandur">@brandur</a></strong>.
           {{if ne .Article.HNLink ""}}
             p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
           {{end}}
