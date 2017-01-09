@@ -258,7 +258,7 @@ working on. It was designed to educate and inspire, and it worked.
 ### Flexible Environment (#flexible-environment)
 
 <figure>
-  <p><img src="/assets/heroku-values/agora.jpg" data-rjs="2"></p>
+  <p><img src="/assets/heroku-values/agora.jpg" data-rjs="2" class="overflowing"></p>
   <figcaption>The Agora Collective in Berlin.</figcaption>
 </figure>
 
@@ -292,7 +292,7 @@ regularly.
 ### GitHub (#github)
 
 <figure>
-  <p><img src="/assets/heroku-values/octotrophy.jpg" data-rjs="2"></p>
+  <p><img src="/assets/heroku-values/octotrophy.jpg" data-rjs="2" class="overflowing"></p>
   <figcaption>The OctoTrophy (dodgeball).</figcaption>
 </figure>
 
