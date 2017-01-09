@@ -20,7 +20,7 @@ to it.
 
 Test suites in CI. Make sure they're runnable locally.
 
-## Ruby
+## Ruby (#ruby)
 
 This is the biggest disconnect I notice between people who
 talk about writing Ruby (i.e. at conferences and the like)

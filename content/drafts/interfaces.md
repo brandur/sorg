@@ -1,11 +1,21 @@
 ---
 hook: We may have sacrificed loading time, responsiveness,
   and ability to be productive in general, but at least we've
-  got pretty animations and lots of pleasing whitespace.
+  got pretty animations and lots of whitespace.
 location: Calgary
 published_at: 2017-01-07T00:21:51Z
 title: The Future of User Interfaces
 ---
+
+Modern apps frustrate me.
+
+Somewhere around the 00s we made the decision to jump ship
+off desktop apps and start writing the lion's share of new
+software for the web. This was largely for pragmatic
+reasons; the infrastructure to talk to a remote server
+became possible for the first time, and 
+
+Perfect cosmetic control.
 
 Web apps are still being hailed as the future. Many
 companies are still developing their main products online,
@@ -15,13 +25,12 @@ considered a reasonable alternative.
 An ex-colleague who is a major JavaScript pundit recently
 called me out on Twitter for gross hyperbole after I
 claimed that Slack (an Electron-based app) regularly takes
-30+ seconds to open with three teams. I sent over a 45
-second video of opening slack and loading each of my teams
-in succession. He replied that this was obviously just
-networking code being untimely and has nothing to do with
-HTML, Node, or Electron. That may or may not be so (I
-suspect the latter), but to an end user like me, it doesn't
-matter.
+30+ seconds to open with three teams. I sent over a video
+of opening slack and loading each of my teams in
+succession. It was 45 seconds long. He replied that this
+was obviously just networking code being untimely and has
+nothing to do with HTML, Node, or Electron. That may or may
+not be so, but to an end user like me, it doesn't matter.
 
 <figure>
   <p>
@@ -29,7 +38,9 @@ matter.
       <source src="/assets/interfaces/slack-45s.mp4" type="video/mp4">
     </video>
   </p>
-  <figcaption>This is a video of me waiting for Slack configured with three teams to fully load. It's 45 seconds long.</figcaption>
+  <figcaption>This is a video of me waiting for Slack
+    configured with three teams to fully load. It's 45
+    seconds long.</figcaption>
 </figure>
 
 In 2007, after releasing the iPhone, Steve Jobs told
@@ -57,19 +68,34 @@ Bad UI animation examples:
 * OS X spaces.
 * OS X Lion fullscreen.
 * 1Password unlock.
-* iOS to home screen.
-* iOS app switching.
+* iOS to home screen (from lock screen or another app).
+* Switching between iOS apps with double home button click.
+* Switching tabs in iOS' mobile Safari.
 
-<video autoplay loop class="overflowing">
-  <source src="/assets/interfaces/1password.mp4" type="video/mp4">
-</video>
+<figure>
+  <p>
+    <video autoplay loop class="overflowing">
+      <source src="/assets/interfaces/1password.mp4" type="video/mp4">
+    </video>
+  </p>
+  <figcaption>1Password's unlock animation. The stuttering
+    isn't a problem with the video on this page; it's
+    actually how the animation looks.</figcaption>
+</figure>
 
-<video autoplay loop class="overflowing">
-  <source src="/assets/interfaces/spaces.mp4" type="video/mp4">
-</video>
+<figure>
+  <p>
+    <video autoplay loop class="overflowing">
+      <source src="/assets/interfaces/spaces.mp4" type="video/mp4">
+    </video>
+  </p>
+  <figcaption>OS X Spaces, introduced in Leopard. A
+    nominally useful feature, but the mandatory animations
+    make them slow and unwieldy.</figcaption>
+</figure>
 
 I liked every one of these the first time I saw them. The
-next thousand times were less impressive.
+next five thousand times were less impressive.
 
 I find the animation trends on OS X especially terrifying.
 In its next version, what if Apple insistent the Cmd + Tab
@@ -79,7 +105,7 @@ the power users that use this feature. Aggregated on a
 world scale, you could probably measure it 100s of millions
 of dollars.
 
-## ThemWare
+## ThemWare (#themware)
 
 <figure>
   <p>
@@ -87,7 +113,9 @@ of dollars.
       <source src="/assets/interfaces/terminal.mp4" type="video/mp4">
     </video>
   </p>
-  <figcaption>Contrary to any "modern" interfaces, a terminal is fast and responsive. There are no animations or other superfluous visual baggage.</figcaption>
+  <figcaption>Contrary to any "modern" interfaces, a
+    terminal is fast and responsive. There are no animations
+    or other superfluous visual baggage.</figcaption>
 </figure>
 
 Developers use terminals.
@@ -117,11 +145,18 @@ Here's why I like terminal apps:
   tricky proposition because of how HTML elements are
   nested.
 
-<video autoplay loop class="overflowing">
-  <source src="/assets/interfaces/uncomposable.mp4" type="video/mp4">
-</video>
+<figure>
+  <p>
+    <video autoplay loop class="overflowing">
+      <source src="/assets/interfaces/uncomposable.mp4" type="video/mp4">
+    </video>
+  </p>
+  <figcaption>Modern UIs have next to zero composability.
+    Even copying text can be a tricky proposition.
+    </figcaption>
+</figure>
 
-## The Core Tenets of Design
+## The Core Principles of Interface Design (#core-principles)
 
 If you ask a web designer about the elements of practical
 design in interfaces today (I say _practical_ to
@@ -133,7 +168,14 @@ I'd argue
 Let's dig into it by looking at the aspirational future
 interface concept from a great movie: _Minority Report_.
 
-<img src="/assets/interfaces/minority-report.jpg" data-rjs="2" class="overflowing">
+<figure>
+  <p>
+    <img src="/assets/interfaces/minority-report.jpg" data-rjs="2" class="overflowing">
+  </p>
+  <figcaption>A futuristic and unrealistic concept interface:
+    the computer waits on the human instead of the human
+    waiting on the computer.</figcaption>
+</figure>
 
 I think we can all agree that this an interface that's
 incredible and which all of us want, but if we drill into
@@ -160,7 +202,7 @@ lets us _keep moving_. Legibility and whitespace are great,
 but they're of vanishing unimportance compared to speed and
 responsiveness.
 
-## The Future
+## The Road Ahead (#the-road-ahead)
 
 Neither a terminal nor today's web apps are what the future
 should look like, but the terminal is closer.
