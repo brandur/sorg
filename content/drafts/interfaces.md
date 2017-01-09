@@ -1,10 +1,10 @@
 ---
 hook: We may have sacrificed loading time, responsiveness,
-  and accessibility, but at least we've got pretty
-  animations and lots of whitespace.
+  and ability to be productive in general, but at least we've
+  got pretty animations and lots of pleasing whitespace.
 location: Calgary
 published_at: 2017-01-07T00:21:51Z
-title: The Future of Interfaces
+title: The Future of User Interfaces
 ---
 
 Web apps are still being hailed as the future. Many
@@ -19,12 +19,18 @@ claimed that Slack (an Electron-based app) regularly takes
 second video of opening slack and loading each of my teams
 in succession. He replied that this was obviously just
 networking code being untimely and has nothing to do with
-HTML, Node, or Electron. That may or may not be so, but to
-an end user like me, it doesn't matter.
+HTML, Node, or Electron. That may or may not be so (I
+suspect the latter), but to an end user like me, it doesn't
+matter.
 
-<video autoplay loop class="overflowing">
-  <source src="/assets/interfaces/slack-45s.mp4" type="video/mp4">
-</video>
+<figure>
+  <p>
+    <video autoplay loop class="overflowing">
+      <source src="/assets/interfaces/slack-45s.mp4" type="video/mp4">
+    </video>
+  </p>
+  <figcaption>This is a video of me waiting for Slack configured with three teams to fully load. It's 45 seconds long.</figcaption>
+</figure>
 
 In 2007, after releasing the iPhone, Steve Jobs told
 developers that they could all write apps for the iPhone
@@ -54,6 +60,17 @@ Bad UI animation examples:
 * iOS to home screen.
 * iOS app switching.
 
+<video autoplay loop class="overflowing">
+  <source src="/assets/interfaces/1password.mp4" type="video/mp4">
+</video>
+
+<video autoplay loop class="overflowing">
+  <source src="/assets/interfaces/spaces.mp4" type="video/mp4">
+</video>
+
+I liked every one of these the first time I saw them. The
+next thousand times were less impressive.
+
 I find the animation trends on OS X especially terrifying.
 In its next version, what if Apple insistent the Cmd + Tab
 app switches be animated? Just imagine how much
@@ -64,20 +81,32 @@ of dollars.
 
 ## ThemWare
 
-<video autoplay loop class="overflowing">
-  <source src="/assets/interfaces/terminal.mp4" type="video/mp4">
-</video>
+<figure>
+  <p>
+    <video autoplay loop class="overflowing">
+      <source src="/assets/interfaces/terminal.mp4" type="video/mp4">
+    </video>
+  </p>
+  <figcaption>Contrary to any "modern" interfaces, a terminal is fast and responsive. There are no animations or other superfluous visual baggage.</figcaption>
+</figure>
 
 Developers use terminals.
 
 Here's why I like terminal apps:
 
 * Startup time: zero.
+
 * Screen transition time: zero (no animations or loading
   time).
 
 * Interface elements: limited, but uniform.
-* Learing curve: steep, but rewarding.
+
+* Learing curve: steep, but rewarding. Another way of
+  putting this is that they're optimized for the
+  experienced user rather than the first timer. Given that
+  successfully onboarded users may spend tens of thousands
+  of hours in the UI over the course of their lifetimes,
+  this is just good sense.
 
 * Composability: I'm not a zealot singing the praises of
   the Unix Religion, but _most_ terminal apps produce
@@ -112,17 +141,18 @@ it, what are its most amazing aspects?
 
 Years ago, I might have said that it was the wafer thin
 touch screens, but we have this now! In fact, ours are
-arguably better because they have far greater color depth
-than anything they seem to have in Philip K. Dick's
-dystopian future.
+arguably better because ours can display more than two
+colors; superior to anything they seem to have in Philip K.
+Dick's dystopian future.
 
-Today, by far the most amazing aspect is that its an
+Today, by far the most amazing aspect is that it's an
 interface that's keeping up to its user. Instead of waiting
 on the computer to think about some text completion, show
 him an animation because he's switching an app, or start up
 a program, it's keeping up with everything he tells it do
-_exactly_. Besides a terminal, we don't have any modern UI
-that is even close to being able to do this.
+_exactly_. The computer waits on the human rather than the
+other way around. Besides a terminal, we don't have any
+modern UI that is even close to being able to do this.
 
 A successful interface isn't one that looks good in a still
 screenshot, it's one that maximizes our productivity and
@@ -134,6 +164,11 @@ responsiveness.
 
 Neither a terminal nor today's web apps are what the future
 should look like, but the terminal is closer.
+
+The problem with terminals is that _they suck_. Although
+still better than the alternative in so many ways, they've
+failed to keep up with any advancements from the last
+thirty odd years.
 
 Things we can learn from modern web app design:
 
