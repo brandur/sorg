@@ -44,7 +44,7 @@ initial puff pieces. For example:
 
 <img src="/assets/microservices-and-the-monolith/monolith.jpg" data-rjs="2" class="overflowing">
 
-## The Monolith's Cracks
+## The Monolith's Cracks (#cracks)
 
 I've now had the opportunity to see both sides of the coin:
 an internal architecture that was largely service-oriented,
@@ -88,7 +88,7 @@ problems once they hit scale:
   writing anything that aren't related to how much
   whitespace there is around a curly brace.
 
-## And History Repeats
+## And History Repeats (#history-repeats)
 
 There's a familiar concept here: software doesn't have a
 silver bullet. Certain technologies, methodologies, and
