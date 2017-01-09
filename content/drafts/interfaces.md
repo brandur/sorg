@@ -88,8 +88,9 @@ Here's why I like terminal apps:
   tricky proposition because of how HTML elements are
   nested.
 
-VIDEO: Copying "you're receiving notifications" text out of
-GitHub.
+<video autoplay loop class="overflowing">
+  <source src="/assets/interfaces/uncomposable.mp4" type="video/mp4">
+</video>
 
 ## The Core Tenets of Design
 
