@@ -6,10 +6,10 @@ hook: Detect problems and inconsistencies in production without affecting
 location: San Francisco
 ---
 
-Last week I started writing about some of my favorite operational tricks at
-Stripe, beginning with [canonical log lines](/canonical-log-lines). Continuing
-in the same vein of lightweight, technology agnostic techniques, here we'll
-cover the idea of _soft assertions_.
+A few weeks ago I started writing about some of my favorite operational tricks
+at Stripe, beginning with [canonical log lines](/canonical-log-lines).
+Continuing in the same vein of lightweight, technology agnostic techniques,
+here we'll cover the idea of _soft assertions_.
 
 Many readers will probably be familiar with the concept of an assertion from C:
 
@@ -42,11 +42,28 @@ strictly evaluate to true for processing to continue.
 
 ## Introducing the Soft Assertion (#soft-assertion)
 
-Exception in tests and development. Swallowed silently in production.
+The soft assertion is similar to the hard assertion, but instead of crashing
+the program, we tell it notify us and keep running. The service's operator gets
+a detailed report with information on what went wrong and can go investigate.
+The end user whose request is being serviced never even realizes that it
+happened.
+
+In a testing environment soft assertions behave exactly like strong assertions
+and fail a test run. The idea is that with enough test coverage, a soft
+assertion that occurs on a standard path will never hit production and any that
+do fire there are under truly exceptional circumstances.
+
+While using a canary deploy, enough fires of either hard or soft assertions
+during a new deploy should take the canary out of rotation so that the new
+build can be investigated.
+
+### Example: IP Rate Limiting
 
 Catches problems in edge cases that may have been forgotten in the test cycle.
 
-## Implementation (#implementation)
+Canary.
+
+## Directed Notifications (#directed-notifications)
 
 Give it a team and even an individual name.
 
