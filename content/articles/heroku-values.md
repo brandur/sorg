@@ -258,13 +258,9 @@ working on. It was designed to educate and inspire, and it worked.
 ### Flexible Environment (#flexible-environment)
 
 <figure>
-  <p><img src="https://farm4.staticflickr.com/3685/9549450965_84f27e06b4_z.jpg"></p>
+  <p><img src="/assets/heroku-values/agora.jpg" data-rjs="2"></p>
   <figcaption>The Agora Collective in Berlin.</figcaption>
 </figure>
-
-<!--
-![Agora](https://farm6.staticflickr.com/5538/9549457229_fbd6c7c464_z.jpg)
--->
 
 Traditional organizations generally hold a strong belief that every employee
 should physically punch in at 9 AM, leave it at 5 PM, and keep that up for 5
@@ -296,7 +292,7 @@ regularly.
 ### GitHub (#github)
 
 <figure>
-  <p><img src="https://farm8.staticflickr.com/7727/16585790614_1b6a09c72e_z.jpg"></p>
+  <p><img src="/assets/heroku-values/octotrophy.jpg" data-rjs="2"></p>
   <figcaption>The OctoTrophy (dodgeball).</figcaption>
 </figure>
 
