@@ -19,7 +19,7 @@ support of the monolith is being published more frequently.
 
 Indeed building a product based off of microservices
 presents quite a few challenges that were ignored in the
-initial puff pieces. For example:
+initial puff pieces:
 
 * Major refactors across service boundaries require so much
   coordination that they're nigh impossible. Architecture
@@ -40,7 +40,8 @@ initial puff pieces. For example:
 * Tooling, alerting, visibility, and other supporting
   infrastructure need to be installed and managed for every
   service installation. Updates need to be distributed to
-  many different places.
+  many different places. In general, it's hard to gain
+  company-wide leverage by sharing work.
 
 <img src="/assets/microservices-and-the-monolith/monolith.jpg" data-rjs="2" class="overflowing">
 
@@ -52,18 +53,18 @@ and one that depends heavily on a very large monolith; both
 at medium-sized 50+ engineer companies.
 
 It's been tempting lately to glorify the monolith after
-being fed aspirational platitudes from the other side for
-so long, but we should be wary of overcompensation.
-Monolithic architectures have some incredibly serious
-problems once they hit scale:
+being fed aspirational platitudes from the microservices
+camp for so long, but we should be wary of
+overcompensation. Monolithic architectures have some
+incredibly serious problems once they hit scale:
 
 * Their test suite gets big and the edit-compile-debug gets
   very long. This has the effect of _crushing_ developer
-  productivity. I can't exaggerate how much agility gets
-  lost when you lose the ability to run a full test suite
-  locally and have to rely on hugely long iteration loops
-  in CI and clicking through glacially slow web interfaces
-  to see results.
+  productivity. It can't be exaggerated how much agility
+  gets lost when developers lose the ability to run a full
+  test suite locally and have to rely on hugely long
+  iteration loops in CI and clicking through glacially slow
+  web interfaces to see results.
 
 * Code quality falls through the floor. Despite mostly good
   intentions, a tragedy of the commons situation develops
