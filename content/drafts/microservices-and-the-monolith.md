@@ -15,7 +15,7 @@ myself](/microservices)).
 Since then, there's been a reaction in the other direction
 as people who've worked with these architectures have
 had time to see their blemishes in a stronger light.
-Complaints on Twitter are not unusual and material in
+Complaints on Twitter are not unusual, and material in
 support of the monolith is being published more frequently.
 
 Indeed building a product based off of microservices
