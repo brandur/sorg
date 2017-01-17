@@ -46,4 +46,4 @@ together and authoring an open standard (preferably one
 that's simpler than XMPP) that any phone could dial into.
 New features would be harder to add, but given that even
 twenty years later instant messaging is still just text and
-basic media, it would be an acceptable trade off.
+basic media, it's easily a worthwhile trade off.
