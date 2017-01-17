@@ -7,20 +7,48 @@ published_at: 2017-01-07T00:21:51Z
 title: The Future of User Interfaces
 ---
 
-Modern apps frustrate me.
+Modern apps and interfaces frustrate me.
 
 Somewhere around the 00s we made the decision to jump ship
 off desktop apps and start writing the lion's share of new
 software for the web. This was largely for pragmatic
-reasons; the infrastructure to talk to a remote server
-became possible for the first time, and 
+reasons: the infrastructure to talk to a remote server
+became possible for the first time, good cross platform UI
+frameworks had always been elusive beasts [1], and desktop
+development frameworks were intimidating compared to more
+approachable languages like Perl and PHP.
 
-Perfect cosmetic control.
+The other reason was aesthetic: HTML and CSS gave web
+developers perfect cosmetic control over what their
+interfaces looked like, allowing them to custom brand them
+and build experiences that were pixel-perfect according to
+what they wanted their users to see. This seemed like a big
+improvement over more limiting desktop development, but led
+to the world we have today where every interface is a
+different size and shape, and any conventions that used to
+exist (and which were a boon to usability) have disappeared
+to the wind.
 
-Web apps are still being hailed as the future. Many
-companies are still developing their main products online,
-and even when they're not, Electron-based products are
-considered a reasonable alternative.
+Today, web apps are still being hailed as the future. With
+the possible exception of mobile, most software companies
+are building their products for the web, and even when
+they're not, web technology is considered a reasonable
+alternative for the desktop. Vocal group proclaim that
+Electron-based apps convey huge benefits compared to
+traditional options.
+
+I'm not on a mission to destroy the web, and will admit
+more than willingly that the lower barrier to publishing
+HTML has done a huge amount of good for the world. But as
+the web is continually augmented with ever more unwieldy
+retrofits, there's a widening disparity between what we can
+build with it compared to the best-written native apps.
+Software we build today takes too long to load, depends too
+heavily on slow networks, overemphasizes visual gimmickry,
+and lacks the refinement that allows mastery by more
+experienced users to make huge strides in productivity.
+
+## The Worst Kept Secret (#worst-kept-secret)
 
 An ex-colleague who is a major JavaScript pundit recently
 called me out on Twitter for gross hyperbole after I
@@ -45,9 +73,10 @@ not be so, but to an end user like me, it doesn't matter.
 
 In 2007, after releasing the iPhone, Steve Jobs told
 developers that they could all write apps for the iPhone
-_today_, as long as they did it in HTML5. Within a year,
-he'd reversed his position after realizing how many
-compromises were involved in the web experience.
+_today_, as long as they did it in HTML5. To his credit
+though, he reversed his position inside a year after
+realizing how compromised the web experience was compared
+to native options.
 
 In 2012, Mark Zuckerberg ignited JavaScript developers
 everywhere after announcing that Facebook's biggest mobile
@@ -57,11 +86,16 @@ was far faster and more responsive.
 
 Everyone one of us knows that when it comes to a
 smartphone, we'd use a native app over an in-browser HTML5
-any day of the week. Yet when it comes to the desktop, we
-still consider web-based apps acceptable. At least when it
-comes to users, not necessarily for ourselves.
+any day of the week. Yet when it comes to the desktop,
+we're still using Gmail, Reddit, Trello, and JIRA.
+Computers and networks tend to be fast enough that this
+software is "good enough". Tellingly though, we tend to
+avoid this software whenever better options are available,
+like with our terminals and text editors.
 
 Bertrand
+
+## It's Not Just Technology (#not-just-technology)
 
 Bad UI animation examples:
 
@@ -97,13 +131,13 @@ Bad UI animation examples:
 I liked every one of these the first time I saw them. The
 next five thousand times were less impressive.
 
-I find the animation trends on OS X especially terrifying.
-In its next version, what if Apple insistent the Cmd + Tab
-app switches be animated? Just imagine how much
-productivity would evaporate overnight, especially amongst
-the power users that use this feature. Aggregated on a
-world scale, you could probably measure it 100s of millions
-of dollars.
+I find the animation trends on OS X terrifying. What if in
+the next version of OS X apple makes Cmd + Tab task
+switching animated? Multiply the new animation's length by
+the average number of task switches by the number of users
+of the feature by the average value of their time, and
+you'll probably find that 10s or 100s of millions of
+dollars a year in productivity has evaporated overnight.
 
 ## ThemWare (#themware)
 
@@ -237,4 +271,12 @@ good interfaces aren't just something produced by the best
 developer/designers in the world, but could be reasonably
 expected from even junior people in the industry.
 
+APIs
+
 [dieter-rams]: https://www.vitsoe.com/us/about/good-design
+
+[1] Fans of Qt (and maybe others) will vehemently disagree
+    that there's never been a good cross platform UI
+    library. I'd argue that SDKs like Qt were never quite
+    accessible enough and never produced good enough
+    results to be suitable for universal adoption.
