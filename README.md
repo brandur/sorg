@@ -30,12 +30,6 @@ forego run make build
 forego start
 ```
 
-Or an easy all-in-one:
-
-``` sh
-make install && forego run make build && forego start
-```
-
 The project can be deployed to s3 using:
 
 ``` sh
