@@ -27,7 +27,7 @@ Einstein says:
 
 > Make everything as simple as possible, but not simpler.
 
-## Minimalism In Technology
+## Minimalism In Technology (#in-technology)
 
 Technology is cool, and as engineers, we tend to want to
 use new and interesting things that appear on the scene.
@@ -53,7 +53,7 @@ isn't better, it's worse:
   problem, there's a better chance that someone will be
   able to fix it.
 
-## Examples
+## Examples (#examples)
 
 Here are some favorite examples from my time at Heroku:
 
@@ -91,7 +91,7 @@ adding them.
 
 TODO: photo of Fire.
 
-## Do More With Less
+## Do More With Less (#more-with-less)
 
 A "big idea" architectural principle at Heroku was to
 eventually have Heroku run _on Heroku_. This was obviously
