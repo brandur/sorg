@@ -46,7 +46,7 @@ See it? I'd accidentally included an `each` invocation and was passing my block
 to that instead. And just my luck, the `IO` instance returned by `popen`
 includes `Enumerable` so Ruby's duck typing makes `each` a perfectly valid
 call. After being iterated, the object was being silently discarded and its
-resources were left permanently dangling.
+resources were left dangling.
 
 The corrected invocation looks almost identical:
 
