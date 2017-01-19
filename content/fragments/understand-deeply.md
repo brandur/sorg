@@ -53,8 +53,8 @@ fighting the borrow checker in perpetuity unless you really
 understand what it's trying to do.
 
 Aim to be an engineer and not just a user. Start with the
-manual, and aim not just to understand, but to understand
-deeply.
+manual, and endeavor not just to understand, but to
+understand deeply.
 
 [1] In retrospect, this turned out to be an especially
     prevalent trait among early Heroku engineers, but I use
