@@ -40,7 +40,7 @@ worse, even if we do now have faster networks and more
 emoji.
 
 The fact that SMS still exists and that telcos can still
-gauge for its use is a testament to how broken things are.
+gouge for its use is a testament to how broken things are.
 Apple and Google would do the world a huge favor by getting
 together and authoring an open standard (preferably one
 that's simpler than XMPP) that any phone could dial into.
