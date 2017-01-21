@@ -25,9 +25,9 @@ its in-memory data structures, how it lays out information
 on disk, or describe the precise mechanics of its
 replication scheme.
 
-People at home had been users, but I'd found new colleagues
-who were true engineers; able to pop the hood and get their
-hands dirty when the situation called for it.
+Most people I'd known had been users, but I'd found new
+colleagues who were true engineers; able to pop the hood
+and get their hands dirty when the situation called for it.
 
 For day-to-day work, users and engineers function about the
 same. The value of technology products is that you _can_
