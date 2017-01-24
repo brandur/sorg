@@ -10,7 +10,7 @@
       p I'm in San Francisco concentrating on self-discipline, self-improvement, and shipping the next big thing at Stripe.
       p
         img.overflowing src="/assets/now/moma.jpg" data-rjs="2"
-      p Here's what I'm working on:
+      p These are some points of focus:
       ul
         li Rust. This language is the most exciting thing happening in computing right now for me. Its typing and safety semantics have the potential to get us to a future where software is less buggy and generally more reliable, and its got a lot less baggage than comparable projects like Haskell. I'm working on a few new projects and OSS contributions.
         li Articles on subjects like: why it's important to use an ACID data store, advice on operating Postgres, and various stack agnostic operational techniques that we use in production at Stripe.
