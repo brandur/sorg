@@ -62,4 +62,4 @@ Chrome overall.
 [marginal-security]: /fragments/marginal-security
 [tabopen-bug]: https://github.com/vimperator/vimperator-labs/issues/671
 [vimperator]: http://www.vimperator.org/
-[web-extensions]: https://developer.mozilla.org/en-US/Add-ons/WebExtensions
+[web-extensions]: http://fasezero.com/
