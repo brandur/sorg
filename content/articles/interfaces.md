@@ -330,13 +330,12 @@ anti-patterns that promote flashiness at the expense of
 efficiency.
 
 We should stop babying our users and try to raise beginners
-and less technical folks to the bar of modern day power
-users rather than produce software that's designed to be
-usable by the lowest common denominator. We need more
-applications like Vim, Emacs, and Irssi that push their
-users to improve and pay huge dividends to those who are
-willing to make the effort, and we need to train more users
-to use them.
+and the less technical to the bar of modern day power users
+rather than produce software that's designed for the lowest
+common denominator. We need more applications like Vim,
+Emacs, and Irssi that push their users to improve and pay
+huge dividends to those who are willing to make the effort,
+and we need to train people to use them.
 
 We should build networked applications that cache content
 and make network fetches asynchronously to remote APIs so
