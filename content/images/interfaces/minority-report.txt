@@ -1,2 +1,0 @@
-This is not actually a @2x image. I pulled it off the
-Internet at 600 width. Replace it with something better.
