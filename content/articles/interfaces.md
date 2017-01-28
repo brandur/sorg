@@ -1,6 +1,6 @@
 ---
 title: The Future of User Interfaces
-published_at: 2017-01-07T00:21:51Z
+published_at: 2017-01-28T13:24:00Z
 location: San Francisco
 hook: How we overvalue the wrong technology and novel
   aspects of interface design at the expense of substantial
