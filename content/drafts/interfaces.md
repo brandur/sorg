@@ -248,11 +248,14 @@ and efficiency to make their users as productive as
 possible.
 
 Let's dig into it by looking at the aspirational interface
-concept from a great movie: _Minority Report_.
+concept from a great movie: _Minority Report_. [Here's a
+video][minority-report] of it in action.
 
 <figure>
   <p>
-    <img src="/assets/interfaces/minority-report.jpg" data-rjs="2" class="overflowing">
+    <a href="https://www.youtube.com/watch?v=PJqbivkm0Ms">
+      <img src="/assets/interfaces/minority-report.jpg" data-rjs="2" class="overflowing">
+    </a>
   </p>
   <figcaption>A futuristic and unrealistic concept interface:
     the computer waits on the human instead of the human
@@ -349,3 +352,4 @@ it.
     results to be suitable for universal adoption.
 
 [dieter-rams]: https://www.vitsoe.com/us/about/good-design
+[minority-report]: https://www.youtube.com/watch?v=PJqbivkm0Ms
