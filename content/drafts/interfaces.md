@@ -8,14 +8,14 @@ hook: How we overvalue the wrong technology and novel
 ---
 
 I was recently called out on Twitter for claiming that
-Slack, with three teams configured, regularly takes 30+
-seconds to load. They claimed that I was either committing
-gross hyperbole, or the victim of some localized problem. I
-responded by sending over a video of me opening slack and
-loading each of my teams in succession. It was 45 seconds
-long. _My_ claim is that this sort of loading time isn't
-unusual at all, and it's just that we're just all used to
-it.
+Electron-based Slack, with three teams configured,
+regularly takes 30+ seconds to load. They claimed that I
+was either committing gross hyperbole, or the victim of
+some localized problem. I responded by sending over a video
+of me opening slack and loading each of my teams in
+succession. It was 45 seconds long. _My_ claim is that this
+sort of loading time isn't unusual at all. It's just that
+we're just all used to it.
 
 <figure>
   <p>
@@ -35,13 +35,13 @@ The computational capacity at our finger tips would have
 been unimaginable even to the most audacious thinkers of
 thirty years ago.
 
-These devices should be propelling our workflows forward
-with us gangly humans left barely able to keep up, and yet,
-almost without exception we wait for our computers instead
-of the other way around. We're conditioned ourselves to
-think that waiting 30+ seconds for an app to load, or
-interrupting our workflow to watch a half second animations
-a thousand times a day, are perfectly normal.
+These powerful devices should be propelling our workflows
+forward with us gangly humans left barely able to keep up,
+and yet, almost without exception we wait for our computers
+instead of the other way around. We're conditioned
+ourselves to think that waiting 30+ seconds for an app to
+load, or interrupting our workflow to watch a half second
+animations a thousand times a day, are perfectly normal.
 
 ## The Rise of the Web (#rise-of-the-web)
 
@@ -53,7 +53,7 @@ a thousand times a day, are perfectly normal.
 </figure>
 
 Somewhere around the late 90s or early 00s we made the
-decision to jump ship off desktop apps and start writing
+decision to jump ship from desktop apps and start writing
 the lion's share of new software for the web. This was
 largely for pragmatic reasons: the infrastructure to talk
 to a remote server became possible for the first time, good
@@ -61,16 +61,15 @@ cross platform UI frameworks had always been elusive beasts
 [1], and desktop development frameworks were intimidating
 compared to more approachable languages like Perl and PHP.
 
-The other reason was cosmetic: HTML and CSS gave web
-developers perfect visual control over what their
-interfaces looked like, allowing them to brand them and
-build experiences that were pixel-perfect according to
-their own ends. This seemed like a big improvement over
-more limiting desktop development, but its led us to the
-world we have today where every interface is a different
-size and shape, and the common display conventions that we
-used to have to aid with usability have become distant
-memories of the past.
+The other reason was cosmetic: HTML and CSS gave developers
+perfect visual control over what their interfaces looked
+like, allowing them to brand them and build experiences
+that were pixel-perfect according to their own ends. This
+seemed like a big improvement over more limiting desktop
+development, but its led us to the world we have today
+where every interface is a different size and shape, and
+the common display conventions that we used to have to aid
+with usability have become distant memories of the past.
 
 Today, web apps are still being hailed as the future. With
 the possible exception of mobile, most software companies
@@ -81,15 +80,15 @@ Electron-based apps convey huge benefits compared to
 traditional options in productivity and flexibility, and
 are the way forward for all desktop software.
 
-I'm not on a mission to demean the web, but as its
-technology web is continually augmented with ever more
-unwieldy retrofits, there's a widening disparity between
-what we can build with it compared to the best-written
-native apps. Software we build today takes too long to
-load, depends too heavily on synchronous calls to slow
-networks, overemphasizes visual gimmickry, and lacks the
-refinement that allows mastery by more experienced users to
-make huge strides in productivity.
+I'm not on a mission to demean this technology, but as it's
+continually augmented with ever more unwieldy retrofits,
+there's a widening disparity between what we can build with
+it compared to the best-written native apps. Software we
+build today takes too long to load, depends too heavily on
+synchronous calls to slow networks, overemphasizes visual
+gimmickry, and lacks the refinement that allows mastery by
+more experienced users to gain huge leverage for
+productivity's sake.
 
 ## The Worst Kept Secret (#worst-kept-secret)
 
@@ -150,11 +149,11 @@ Mac OS app, or switching between tabs in mobile Safari.
     make them slow and unwieldy.</figcaption>
 </figure>
 
-I liked every one of these the first time I saw them. The
-next five thousand times were less impressive. And the same
-goes for all the flourishes in this class -- they look
-great in screenshots and demos, but don't advance our
-ability to be productive; in fact, they do the opposite.
+I liked every one of them the first time. The next five
+thousand times were less impressive. And the same goes for
+all the flourishes in this class -- they look great in
+screenshots and demos, but don't advance our ability to be
+productive; in fact, they do the opposite.
 
 <figure>
   <p>
@@ -164,22 +163,21 @@ ability to be productive; in fact, they do the opposite.
     overzealous animation?</figcaption>
 </figure>
 
-I now live in constant fear that one day Apple will realize
-that they've left a gaping hole in their UX strategy and
-that task switches from Cmd + Tab should be animated.
-Multiply that animation's length by the average number of
-task switches per day by the number of users by their cost
-per second, and you'd be able to see that millions of
-dollars a year in global productivity has evaporated
-overnight.
+I live in fear that one day Apple will realize that they've
+left a gaping hole in their UX strategy and that task
+switches from Cmd + Tab should be animated. Multiply that
+animation's length by the average number of task switches
+per day by the number of users by their cost per second,
+and you'd be able to see that millions of dollars a year in
+global productivity has evaporated overnight.
 
 Animations are a particularly egregious visual gimmick, but
-there are others: whitespace so lavish that only a minute
-amount of content can fit on the screen, overly large font
-sizes, submenus where a row of links would do just as well,
-unlabeled icons that look neat but leave their users
-guessing as to what they do, fixed headers that obscure
-content, and the list goes on.
+there are others: whitespace so extravagant that only a
+minute amount of content can fit on the screen, overly
+large font sizes, submenus where a row of links would do
+just as well, unlabeled icons that look neat but leave
+their users guessing as to what they do, fixed headers that
+obscure content. The list goes on.
 
 ## ThemWare (#themware)
 
@@ -202,7 +200,7 @@ environments that aren't just fast, but come with the
 promise of incredible advancements in productivity to
 anyone willing to spend the time to master them.
 
-Here's why I like using terminal programs:
+Here's why I like using terminals and terminal programs:
 
 * Startup/loading time is negligible.
 
@@ -249,8 +247,8 @@ but the true values of a good interface should be speed
 and efficiency to make their users as productive as
 possible.
 
-Let's dig into it by looking at the aspirational future
-interface concept from a great movie: _Minority Report_.
+Let's dig into it by looking at the aspirational interface
+concept from a great movie: _Minority Report_.
 
 <figure>
   <p>
@@ -261,9 +259,9 @@ interface concept from a great movie: _Minority Report_.
     waiting on the computer.</figcaption>
 </figure>
 
-I think we can all agree that this an interface that's
-incredible and which all of us want, but if we drill into
-it, what are its most amazing aspects?
+I think we can all agree that the interface of this
+prospective future is incredible and desirable, but if we
+drill into it, what are its most amazing aspects?
 
 Years ago, I might have said that it was the wafer thin
 screens. Or the incredible touch technology. But we have
@@ -280,7 +278,7 @@ a program, it's keeping up with everything he tells it do
 in real time. The computer waits on the human rather than
 the other way around. Besides terminals and a few other
 pieces of fringe technology, modern UIs don't even come
-close to this fantastic future.
+close to a future this fantastic.
 
 A successful interface isn't one that looks good in a still
 screenshot, it's one that maximizes our productivity and
@@ -306,13 +304,14 @@ inspired by web technology:
 * Fonts. Monospace is the best family of fonts for
   programming, but are terrible for reading.
 
-* Whitespace and line-height: This does help to make UI
-  elements more distinctive and text more legibile.
+* Whitespace and line-height: used in moderation, these do
+  help make UI elements more distinctive and text more
+  legible.
 
 Terminals also need a lot of other things before they're
 ever going to a plausible interface replacement for most
-people. For example, UI elements that aren't built around
-ASCII bar characters.
+people. UI elements that aren't built around ASCII bar
+characters for example.
 
 We need a reboot. We need toolkits that produce interfaces
 that are fast, consistent, bug free, and composable _by
