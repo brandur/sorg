@@ -340,7 +340,7 @@ and we need to train people to use them.
 We should build networked applications that cache content
 and make network fetches asynchronously to remote APIs so
 that humans aren't waiting for data to come back over the
-wire to perform basic operations.
+wire while they're working.
 
 There's a future out there where our software makes
 everything from filing a bug to paying off your credit card
