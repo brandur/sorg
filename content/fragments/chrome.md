@@ -1,7 +1,7 @@
 ---
 title: Chrome
 published_at: 2017-01-27T19:39:57Z
-hook: On switching to Chrome eight years after the crowd.
+hook: On joining the party eight years late.
 ---
 
 So put this in the bucket of "things that I do five years
