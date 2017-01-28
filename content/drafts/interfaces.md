@@ -264,7 +264,7 @@ video][minority-report] of it in action.
 
 I think we can all agree that the interface of this
 prospective future is incredible and desirable, but if we
-drill into it, what are its most amazing aspects?
+drill into it, what's its most amazing aspect?
 
 Years ago, I might have said that it was the wafer thin
 screens. Or the incredible touch technology. But we have
