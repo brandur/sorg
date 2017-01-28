@@ -305,7 +305,9 @@ inspired by web technology:
   1985, but still doesn't have one.
 
 * Fonts. Monospace is the best family of fonts for
-  programming, but are terrible for reading.
+  programming, but is objectively terrible for reading. We
+  should be able to mix fonts within a single terminal
+  interface for optimal legibility.
 
 * Whitespace and line-height: used in moderation, these do
   help make UI elements more distinctive and text more
