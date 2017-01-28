@@ -43,7 +43,7 @@ catalog.
 Since the switch I've been using an equivalent in Chrome
 called Vimium, and it tends to do as good job or better
 than Vimperator for most things. Of particular note is it's
-"Vomnibar" that lets you pull up a special textbook to
+"Vomnibar" that lets you pull up a special textbox to
 search bookmarks, history, or open tabs, along with being
 able to enter a new URL. Its major downside compared to
 Vimperator is that it can't activate any shortcuts on
