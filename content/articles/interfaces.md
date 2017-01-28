@@ -83,11 +83,11 @@ are the way forward for all desktop software.
 I'm not on a mission to demean this technology, but as it's
 continually augmented with ever more unwieldy retrofits,
 there's a widening disparity between what we can build with
-it compared to the best-written native apps. Software we
-build today takes too long to load, depends too heavily on
-synchronous calls to slow networks, overemphasizes visual
-gimmickry, and lacks the refinement that allows mastery by
-more experienced users to gain huge leverage for
+it compared to the best-written native apps. Software on
+the web today takes too long to load, depends too heavily
+on synchronous calls to slow networks, overemphasizes
+visual gimmickry, and lacks the refinement that allows
+mastery by more experienced users to gain huge leverage for
 productivity's sake.
 
 ## The Worst Kept Secret (#worst-kept-secret)
