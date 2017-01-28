@@ -14,10 +14,14 @@
 # content in the DOM if appropriate for a user's device.
 #
 
-# These are images that came in before I started doing the whole retina thing
-# and have been allowed as exceptions. It's not really a big deal, but try to
-# clean it up over time.
 allowed_exceptions=(
+    # These are images that we can safely say won't ever have a good retina
+    # equivalent, so they're allowed to fail.
+    "./content/images/interfaces/yahoo-1995.jpg"
+
+    # These are images that came in before I started doing the whole retina
+    # thing and have been allowed as exceptions. It's not really a big deal,
+    # but try to clean it up over time.
     "./content/images/breaktime/commit.png"
     "./content/images/fragments/hm-sportswear/hm.jpg"
     "./content/images/fragments/hm-sportswear/nike.jpg"
