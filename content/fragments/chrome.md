@@ -55,8 +55,8 @@ practice.
 I'll miss Firefox, but am cautiously hopeful that ambitious
 projects like Servo will eventually get them their lead
 back by producing features that are harder to build within
-the frameworks of existing browsers. For now, I'm happy on
-Chrome overall.
+the frameworks of existing browsers. For now, I'm fairly
+happy on Chrome.
 
 [firefox-u2f]: https://bugzilla.mozilla.org/show_bug.cgi?id=1065729
 [marginal-security]: /fragments/marginal-security
