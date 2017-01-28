@@ -2,9 +2,9 @@
 title: The Future of User Interfaces
 published_at: 2017-01-07T00:21:51Z
 location: San Francisco
-hook: We may have sacrificed loading time, responsiveness,
-  and ability to be productive in general, but at least we've
-  got pretty animations and lots of whitespace.
+hook: How we overvalue the wrong technology and novel
+  aspects of interface design at the expense of substantial
+  gains to our productivity.
 ---
 
 I was recently called out on Twitter for claiming that
@@ -14,7 +14,8 @@ gross hyperbole, or the victim of some localized problem. I
 responded by sending over a video of me opening slack and
 loading each of my teams in succession. It was 45 seconds
 long. _My_ claim is that this sort of loading time isn't
-unusual, it's just that we're just all used to it.
+unusual at all, and it's just that we're just all used to
+it.
 
 <figure>
   <p>
@@ -65,7 +66,7 @@ developers perfect visual control over what their
 interfaces looked like, allowing them to brand them and
 build experiences that were pixel-perfect according to
 their own ends. This seemed like a big improvement over
-more limiting desktop development, but it's led us to the
+more limiting desktop development, but its led us to the
 world we have today where every interface is a different
 size and shape, and the common display conventions that we
 used to have to aid with usability have become distant
@@ -164,12 +165,13 @@ ability to be productive; in fact, they do the opposite.
 </figure>
 
 I now live in constant fear that one day Apple will realize
-that they've left a gaping hole in their interface and that
-task switches from Cmd + Tab should be animated. Multiply
-that animation's length by the average number of task
-switches per day by the number of users by their cost per
-second, and you'd be able to see that millions of dollars a
-year in global productivity has evaporated overnight.
+that they've left a gaping hole in their UX strategy and
+that task switches from Cmd + Tab should be animated.
+Multiply that animation's length by the average number of
+task switches per day by the number of users by their cost
+per second, and you'd be able to see that millions of
+dollars a year in global productivity has evaporated
+overnight.
 
 Animations are a particularly egregious visual gimmick, but
 there are others: whitespace so lavish that only a minute
