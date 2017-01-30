@@ -6,10 +6,23 @@ hook: Detect problems and inconsistencies in production without affecting
 location: San Francisco
 ---
 
-As many in people in the technology industry can tell you,
-networks are unstable features that are prone to a variety
-of problems including outages, routing problems, and other
-intermittent failures.
+Even the least technical people you can find can atest to
+the fact that networks are unreliable; every one of us has
+had trouble connecting to Wi-Fi, had a call drop from our
+cellular carrier, or lost our ISP for a few hours as they
+had trouble on their end or were performing some scheduled
+maintenance.
+
+Backend engineers who've dealt with a lot of networks can
+bear a special level of witness to this. The networks
+connecting our servers together tend to be much more
+reliable on average compared to our consumer-level last
+miles like cellular or home Internet packages, but given
+enough information moving across the wire, they're still
+inevitably going to fail in all kinds of exotic ways, even
+if those failures are statistically unusual on the whole.
+Outages, routing problems, and other intermittent failures
+are all bound to happen at some ambient background rate.
 
 Consider a call between any two nodes. There are a variety
 of failure modes that can occur:
@@ -125,43 +138,58 @@ Safely handling failure is hugely important, but beyond
 that it's also recommended that it be handled in a
 considerate way. When a client sees that a network
 operation has failed, there's a good chance that it's due
-to an intermittent failure that'll disappear the next time
-it's retried. But there's also a chance that it's a more
-serious problem that's going to be more persistent, if the
+to an intermittent failure that'll be gone by the next
+retry. However, there's also a chance that it's a more
+serious problem that's going to be more tenacious; if the
 remote service is in the middle of an incident that's
-causing hard downtime for example. Not only will subsequent
-retries of the operation not go through, but they may
-contribute to further degradation of the already troubled
-remote.
+causing hard downtime for example. Not only will retries of
+the operation not go through, but they may contribute to
+further degradation of the already troubled remote.
 
 It's usually recommended that clients follow something akin
 to an [exponential backoff][exponential-backoff] algorithm
-as they receive errors from a remote. The client blocks for
-a brief initial wait time on the first failure, but as the
-operation continues to fail, it waits proportionally to
-2^N, where _N_ is the number of failures that have
-occurred. By backing off exponentially, we can ensure that
-clients aren't hammering on a downed remote and
-contributing to the problem themselves.
+as they see errors. The client blocks for a brief initial
+wait time on the first failure, but as the operation
+continues to fail, it waits proportionally to 2^N, where
+_N_ is the number of failures that have occurred. By
+backing off exponentially, we can ensure that clients
+aren't hammering on a downed remote and contributing to the
+problem.
 
 Furthermore, it's also a good idea to add an element of
-randomness to the wait times. If a problem on the remote's
-end causes a large number of clients to fail at close to
-the same time, then even if they're backing off, the
-schedule on which they do could still be close enough to
-each other that every subsequent retry will hammer the
-downed service. This is known as [the thundering herd
+randomness to the wait times. If a problem with a remote
+causes a large number of clients to fail at close to the
+same time, then even if they're backing off, the schedule
+on which they do could still be close enough to each other
+that every subsequent retry will hammer the downed service.
+This is known as [the thundering herd
 problem][thundering-herd]. However, if we add some amount
 of random "jitter" to the wait time, then there's enough
 schedule variance between clients that they're less likely
 to be a problem.
 
-The Stripe Ruby bindings retry on failure with an
-idempotency key automatically using increasing backoff
-times and jitter. [You can refer to their implementation
-yourself][stripe-ruby].
+The Stripe Ruby bindings retry on failure automatically
+with an idempotency key using increasing backoff times and
+jitter. The implementation for that is pretty simple, and
+[you can refer to it yourself][stripe-ruby] to see exactly
+how it works.
 
 ## Wrapping Up (#wrapping-up)
+
+If you're going to take anything away from this article,
+consider the following points:
+
+1. Make sure that failures are handled. Not doing so could
+   leave data managed by a remote service in an
+   inconsistent state that will lead to later problems.
+
+2. Make sure that failures are handled _safely_ using
+   idempotency and idempotency keys.
+
+3. Make sure that failures are handled _responsibly_ by
+   using techniques like exponential backoff and random
+   jitter. Be considerate of remote services that may be
+   stuck in a degraded state.
 
 [exponential-backoff]: https://en.wikipedia.org/wiki/Exponential_backoff
 [stripe-keys]: https://stripe.com/docs/api?lang=curl#idempotent_requests
