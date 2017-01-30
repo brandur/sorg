@@ -12,7 +12,7 @@ of problems including outages, routing problems, and other
 intermittent failures.
 
 Consider a call between any two nodes. There are a variety
-of interesting failures that can occur:
+of failure modes that can occur:
 
 * The initial connection could fail as the client tries to
   connect to its remote.
@@ -23,25 +23,38 @@ of interesting failures that can occur:
 * The call could succeed, but the connection break before
   the remote can tell the client about it.
 
-This often leaves the client in an uncertain situation. It
-can sometimes intuit what happened and know whether it's
-safe to retry the operation, but from its perspective some
-cases are indistinguishable. If a connection breaks midway
-through, it has no idea whether the work it was trying to
-do completed successfully or not.
+Any one of these leaves the client that made the request in
+an uncertain situation. In some cases, the type of failure
+is definitive enough that the client can know with good
+certainty that it's safe to retry it wholesale. A total
+failure to event establish a connection to the remote for
+example. In many others though, the operation's success
+from the perspective of the client is ambiguous and it
+doesn't know whether retrying the operation is safe. A
+connection terminating midway through message exchange is
+an exampmle of this case.
 
-This problem is a classic staple of distributed systems
-that everyone running one has to deal with. Keep in mind
-too that even your integration with Stripe is a distributed
+This problem is a classic staple of distributed systems.
+And keep in mind that when I'm talking about a "distributed
+system" in this sense, the bar is low: as few as two
+computers connection via a network that are passing each
+other messages. Technically, even your servers calling out
+to the Stripe API over the Internet is a distributed
 system!
 
 ## Idempotency (#idempotency)
 
-The easiest way to solve the problem is to make remote
-endpoints idempotent, meaning that if they can be called
-any number of times with no harmful side effects. If a
-client sees any kind of error, they can converge their
-state by retrying the call until it goes through.
+The easiest way to address inconsistencies in distributed
+state caused by failures is to implement remote endpoints
+so that they're _idempotent_, which means that they can be
+called any number of times with no harmful side effects.
+
+When a client sees any kind of error, they can converge
+their state by retrying the call, and can keep trying until
+it goes through successfully. This resolves the problem of
+an ambiguous failure completely because the client knows
+that it can safely handle any failure using one simple
+technique.
 
 As an example, take the API for a basic DNS provider that
 allows us to add subdomains via `PUT
@@ -52,11 +65,16 @@ allows us to add subdomains via `PUT
 
 All the information needed to create a record is included
 in the call, and it's perfectly safe for a client to invoke
-it any number of times.
+it any number of times. If the server receives a call that
+it realizes is a duplicate because the domain already
+exists, it simply ignores the request and responds with a
+successful status code.
 
 In a RESTful API, an idempotent call normally uses the
 `PUT` verb to signify that we're _replacing_ the target
-resource as opposed to simply modifying it.
+resource as opposed to simply modifying it (in modern
+RESTful parlance, a modification would be represented by a
+`PATCH`).
 
 ## Idempotency Keys (#idempotency-keys)
 
@@ -65,16 +83,16 @@ is invoked exactly once and no more? In this case pure
 idempotency might not be suitable. An example of this type
 of operation might be to charge a customer money;
 accidentally calling such an endpoint twice would lead to
-the customer double-charged, which is obviously very bad.
+the customer double-charged, which is obviously bad.
 
-This is where **idempotency keys** come into play. The
-basic idea is that when performing a request, a client
-generates a special ID just for that operation and sends it
-up to a remote along with the normal payload. The remote
-receives the ID and correlates it with the state of the
-request on its end. If the client notices a failure, it
-retries the request with the same ID, and from there it's
-up to the remote to figure out what to do with it.
+This is where **idempotency keys** come into play. When
+performing a request, a client generates a unique ID to
+identify just that operation and sends it up to a remote
+along with the normal payload. The remote receives the ID
+and correlates it with the state of the request on its end.
+If the client notices a failure, it retries the request
+with the same ID, and from there it's up to the remote to
+figure out what to do with it.
 
 If we consider our sample network failure cases from above:
 
@@ -95,11 +113,57 @@ If we consider our sample network failure cases from above:
   the server simply replies with a cached result of the
   successful operation.
 
-The Stripe API implements idempotency keys on all endpoints
-by allowing clients to pass a unique value in with the
-special `Idempotency-Key` header, which allows us to
+The Stripe API implements idempotency keys on mutating
+endpoints (i.e. anything under `POST` in our case) by
+allowing clients to pass a unique value in with the special
+`Idempotency-Key` header, which allows a client to
 guarantee the safety of distributed operations.
+
+## Being a Good Distributed Citizen (#citizen)
+
+Safely handling failure is hugely important, but beyond
+that it's also recommended that it be handled in a
+considerate way. When a client sees that a network
+operation has failed, there's a good chance that it's due
+to an intermittent failure that'll disappear the next time
+it's retried. But there's also a chance that it's a more
+serious problem that's going to be more persistent, if the
+remote service is in the middle of an incident that's
+causing hard downtime for example. Not only will subsequent
+retries of the operation not go through, but they may
+contribute to further degradation of the already troubled
+remote.
+
+It's usually recommended that clients follow something akin
+to an [exponential backoff][exponential-backoff] algorithm
+as they receive errors from a remote. The client blocks for
+a brief initial wait time on the first failure, but as the
+operation continues to fail, it waits proportionally to
+2^N, where _N_ is the number of failures that have
+occurred. By backing off exponentially, we can ensure that
+clients aren't hammering on a downed remote and
+contributing to the problem themselves.
+
+Furthermore, it's also a good idea to add an element of
+randomness to the wait times. If a problem on the remote's
+end causes a large number of clients to fail at close to
+the same time, then even if they're backing off, the
+schedule on which they do could still be close enough to
+each other that every subsequent retry will hammer the
+downed service. This is known as [the thundering herd
+problem][thundering-herd]. However, if we add some amount
+of random "jitter" to the wait time, then there's enough
+schedule variance between clients that they're less likely
+to be a problem.
+
+The Stripe Ruby bindings retry on failure with an
+idempotency key automatically using increasing backoff
+times and jitter. [You can refer to their implementation
+yourself][stripe-ruby].
 
 ## Wrapping Up (#wrapping-up)
 
+[exponential-backoff]: https://en.wikipedia.org/wiki/Exponential_backoff
 [stripe-keys]: https://stripe.com/docs/api?lang=curl#idempotent_requests
+[stripe-ruby]: https://github.com/stripe/stripe-ruby/blob/98c42e0b69d2c9e3be64d62f13e8d7b6d44ee3e5/lib/stripe.rb#L441-L455
+[thundering-herd]: https://en.wikipedia.org/wiki/Thundering_herd_problem
