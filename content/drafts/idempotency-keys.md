@@ -6,23 +6,24 @@ hook: Detect problems and inconsistencies in production without affecting
 location: San Francisco
 ---
 
-Even the least technical people you can find can atest to
-the fact that networks are unreliable; every one of us has
-had trouble connecting to Wi-Fi, had a call drop from our
-cellular carrier, or lost our ISP for a few hours as they
-had trouble on their end or were performing some scheduled
-maintenance.
+Whether they know it or not, almost anyone you'll meet can
+atest to the fact that networks are unreliable; every one
+of us has had trouble connecting to Wi-Fi, had a call drop
+from our cellular carrier, or lost our ISP for a few hours
+as they had trouble on their end or were performing some
+scheduled maintenance.
 
 Backend engineers who've dealt with a lot of networks can
 bear a special level of witness to this. The networks
-connecting our servers together tend to be much more
-reliable on average compared to our consumer-level last
-miles like cellular or home Internet packages, but given
-enough information moving across the wire, they're still
-inevitably going to fail in all kinds of exotic ways, even
-if those failures are statistically unusual on the whole.
-Outages, routing problems, and other intermittent failures
-are all bound to happen at some ambient background rate.
+connecting our servers together are more reliable on
+average compared to our consumer-level last miles like
+cellular or home Internet packages, but given enough
+information moving across the wire, they're still going to
+fail in all kinds of exotic ways, even if those failures
+are statistically unusual on the whole. Outages, routing
+problems, and other intermittent failures are all bound to
+be happenening all the time at some ambient background
+rate.
 
 Consider a call between any two nodes. There are a variety
 of failure modes that can occur:
