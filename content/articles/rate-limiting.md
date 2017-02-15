@@ -136,7 +136,7 @@ examples like GCRA.
 GCRA works by tracking remaining limit through a time called the "theoretical
 arrival time" (TAT), which is seeded on the first request by adding a duration
 representing its cost to the current time. The cost is calculated as a
-multiplier of our "emission interval" (T), which is dervied from the rate at
+multiplier of our "emission interval" (T), which is derived from the rate at
 which we want the bucket to refill. When any subsequent request comes in, we
 take the existing TAT, subtract a fixed buffer representing the limit's total
 burst capacity from it (τ + T), and compare the result to the current time.
