@@ -62,7 +62,7 @@ cross platform UI frameworks had always been elusive beasts
 compared to more approachable languages like Perl and PHP.
 
 The other reason was cosmetic: HTML and CSS gave developers
-perfect visual control over what their interfaces looked
+total visual control over what their interfaces looked
 like, allowing them to brand them and build experiences
 that were pixel-perfect according to their own ends. This
 seemed like a big improvement over more limiting desktop
