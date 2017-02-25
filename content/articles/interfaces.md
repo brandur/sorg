@@ -12,7 +12,7 @@ Electron-based Slack, with three teams configured,
 regularly takes 30+ seconds to load. They claimed that I
 was either committing gross hyperbole, or the victim of
 some localized problem. I responded by sending over a video
-of me opening slack and loading each of my teams in
+of me opening Slack and loading each of my teams in
 succession. It was 45 seconds long. _My_ claim is that this
 sort of loading time isn't unusual at all. It's just that
 we're all used to it.
