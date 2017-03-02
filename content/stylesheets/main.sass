@@ -428,6 +428,9 @@ footer
 // larger screen to look good. Hide it earlier than we usually react to native
 // layouts for.
 @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
+  img.overflowing, video.overflowing
+    max-width: 100%
+
   .toc-index
     display: none
 
@@ -467,9 +470,6 @@ footer
 
   h1
     font-size: 5rem
-
-  img.overflowing, video.overflowing
-    max-width: 100%
 
   pre
     overflow: auto
