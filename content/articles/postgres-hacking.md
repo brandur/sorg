@@ -93,7 +93,7 @@ There's also a parallel version available to further improve speed:
 
     PGPORT=5433 make installcheck-parallel
 
-## pgindent
+## pgindent (#pgindent)
 
 Postgres has a slightly unusual tradition of code
 indentation which seems to have evolved to maximize the
