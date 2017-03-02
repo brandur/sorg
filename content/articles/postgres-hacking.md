@@ -93,6 +93,34 @@ There's also a parallel version available to further improve speed:
 
     PGPORT=5433 make installcheck-parallel
 
+## pgindent
+
+Postgres has a slightly unusual tradition of code
+indentation which seems to have evolved to maximize the
+number of bytes saved at a time when that mattered, and
+which continues through to this day. A program similar to
+Go's `gofmt` called `pgindent` ships with the Postgres
+source to help automatically reformat source files that are
+inconsistent.
+
+You may be asked to run `pgindent` if someone notices that
+your patch isn't compliant, and it's generally a good idea
+to run it on any sources files that you changed before
+producing a patch anyway.
+
+A few dependencies need to be installed before `pgindent`
+can run. The most up-to-date instructions on how to do that
+can be found in [its README][pgindent-readme].
+
+After that's done it can simply be run like so on a C file
+(where our current directory is the Postgres source root):
+
+    src/tools/pgindent/pgindent src/backend/utils/adt/mac.c
+
+Given that `pgindent` is written in brittle Perl and
+appears to have no test coverage whatsoever, I'd recommend
+committing changes before using it on any of your code.
+
 ## Patch Formatting (#patches)
 
 Changes to Postgres are submitted as patch file email attachments to the [PG
@@ -115,6 +143,7 @@ importance, so remember to squash and fix using `git rebase -i` before
 producing patch files.
 
 [pg-hackers]: https://www.postgresql.org/list/pgsql-hackers/
+[pgindent-readme]: https://github.com/postgres/postgres/blob/master/src/tools/pgindent/README
 
 [1] Note that `git format-patch` is not officially endorsed and so your mileage
     with its usage may vary.
