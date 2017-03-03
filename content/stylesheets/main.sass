@@ -79,8 +79,8 @@ img, video
   max-width: 100%
 
 // Allow certain images (e.g. about and now pages) to overflow out of the
-// normal text bounds for a slightly uneven look. A max-size rule below
-// constraints max-width back to 100% when the screen gets too small.
+// normal text bounds for a slightly uneven look. A max-width rule below
+// constrains max-width back to 100% when the screen gets too small.
 img.overflowing, video.overflowing
   overflow: visible
   max-width: 650px
@@ -119,8 +119,9 @@ pre
   font-family: Monaco, "Lucida Console", "Bitstream Vera Sans Mono", Courier, monospace
   font-size: 0.75rem
   line-height: 1.4em
-  overflow: auto
+  overflow: visible
   padding: 40px 0 40px 40px
+  width: 650px
 
   code
     background: transparent
@@ -428,8 +429,13 @@ footer
 // larger screen to look good. Hide it earlier than we usually react to native
 // layouts for.
 @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
+  pre
+    overflow: auto
+    width: auto
+
   img.overflowing, video.overflowing
     max-width: 100%
+    overflow: auto
 
   .toc-index
     display: none
@@ -470,9 +476,6 @@ footer
 
   h1
     font-size: 5rem
-
-  pre
-    overflow: auto
 
   .attribution
     display: none
