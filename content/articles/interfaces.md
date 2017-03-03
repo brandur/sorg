@@ -1,5 +1,5 @@
 ---
-title: The Future of User Interfaces
+title: Learning From Terminals to Design the Future of User Interfaces
 published_at: 2017-01-28T13:24:00Z
 location: San Francisco
 hook: How we overvalue the wrong technology and novel
