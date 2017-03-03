@@ -425,10 +425,26 @@ footer
     padding: 25px 20px
     text-align: center
 
-// The index TOC floats a little out to the left which requires a slightly
-// larger screen to look good. Hide it earlier than we usually react to native
-// layouts for.
-@media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
+// The index TOC, figure captions, and a few other things become problematic a
+// little before the width we'd normally reserve for smartphones and such, so
+// put them inline a little ahead of everything else. This is largely to
+// accommodate the iPad's display.
+@media handheld, only screen and (max-width: 1000px), only screen and
+(max-device-width: 1000px)
+  article
+    figure
+      img
+        display: block
+        margin: 0 auto
+
+      figcaption
+        left: 0
+        margin: 20px 0 0 0
+        position: relative
+        text-align: center
+        top: 0
+        width: auto
+
   pre
     overflow: auto
     width: auto
@@ -454,20 +470,6 @@ footer
     float: none
     margin: 0
     width: auto
-
-  article
-    figure
-      img
-        display: block
-        margin: 0 auto
-
-      figcaption
-        left: 0
-        margin: 20px 0 0 0
-        position: relative
-        text-align: center
-        top: 0
-        width: auto
 
   h1, h2, h3, h4
     hyphens: auto
