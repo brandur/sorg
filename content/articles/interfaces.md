@@ -67,7 +67,7 @@ total visual control over what their interfaces looked
 like, allowing them to brand them and build experiences
 that were pixel-perfect according to their own ends. This
 seemed like a big improvement over more limiting desktop
-development, but its led us to the world we have today
+development, but it led us to the world we have today
 where every interface is a different size and shape, and
 the common display conventions that we used to have to aid
 with usability have become distant memories of the past.
@@ -210,7 +210,7 @@ Here's why I like using terminals and terminal programs:
 
 * Interface elements are limited, but uniform.
 
-* The learing curve is steep, but rewarding. They're
+* The learning curve is steep, but rewarding. They're
   optimized for the experienced user rather than the first
   timer. Given that successfully onboarded users may spend
   tens of thousands of hours in the UI over the course of
