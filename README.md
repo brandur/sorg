@@ -9,7 +9,7 @@ committed to the master branch.
 
 ## Build
 
-Install Go 1.6+, set up and run [black-swan][black-swan], then:
+Install Go 1.6+, set up and run [blackswan][blackswan], then:
 
 ``` sh
 go get -u github.com/ddollar/forego
@@ -76,6 +76,6 @@ commands:
     go get -u github.com/kardianos/govendor
     govendor add +external
 
-[black-swan]: https://github.com/brandur/black-swan
+[blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
 [org]: https://github.com/brandur/org
