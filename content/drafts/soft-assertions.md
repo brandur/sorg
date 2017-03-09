@@ -115,7 +115,7 @@ def soft_assert(expression, message)
 end
 ```
 
-### Example: IP Rate Limiting (#example-ip)
+### Predicting Failure in Rate Limiting (#predicting-failure)
 
 A project I was working on recently involved putting a new
 rate limiter in the Stripe API stack. One of the dimensions
