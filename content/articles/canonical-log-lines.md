@@ -45,7 +45,7 @@ help bridge that gap:
 
 !fig src="/assets/canonical-log-lines/observability-tiers.svg" caption="The tiers of observability, showing the trade-off between query flexibility and ease of reference."
 
-## Just a Big Log Line (#what-are-they)
+## Literally, One Big Log Line (#what-are-they)
 
 The concept is simple: a canonical line is a big log line
 (probably in [logfmt](/logfmt)\) that gets emitted at the
