@@ -1,8 +1,9 @@
 ---
-title: Canonical Log Lines
+title: Using Canonical Log Lines for Online System Introspection
 published_at: 2016-11-26T01:36:49Z
-hook: A lightweight and stack agnostic operational technique for easy
-  visibility into production systems.
+hook: A lightweight and technology agnostic operational
+  technique for easy and near realtime visibility and live
+  querying into production systems.
 location: San Francisco
 ---
 
@@ -37,7 +38,7 @@ gap:
 
 !fig src="/assets/canonical-log-lines/observability-tiers.svg" caption="The tiers of observability, showing the trade-off between query flexibility and ease of reference."
 
-## What Are They? (#what-are-they)
+## Just a Big Log Line (#what-are-they)
 
 The concept is simple: a canonical line is a big log line (probably in
 [logfmt](/logfmt)\) that gets emitted at the end of a request [1]. It's filled
@@ -55,22 +56,23 @@ For example, we might include:
 * ID of the API key used, OAuth application and scope
 * ID and email of an authenticated user
 
-We could also include other internal information:
+We could also include other internal information that's not
+directly related to the user:
 
 * Name of the service, `HEAD` Git revision, release number
 * Timing information (e.g. duration of the request, time spent in database)
-* Remaining and total rate limits
+* Remaining and total [rate limits](/rate-limiting)
 
 Here's an example in [logfmt](/logfmt) style (line breaks added for clarity):
 
 !fig src="/assets/canonical-log-lines/example-line.svg" caption="What a canonical log line looks like in raw form as it's being emitted."
 
-## Storage (#storage)
+## Storing the Emitted Data (#storage)
 
 After emitting canonical lines, the next step is to put them somewhere useful.
 At Stripe we use a two prong approach combining Splunk and Redshift.
 
-### Splunk (#splunk)
+### Into a Real-time Log Aggregator (Like Splunk) (#splunk)
 
 Splunk is a powerful shorter-term store that's great for getting fast insight
 into online systems. It's great for:
@@ -93,7 +95,7 @@ reams of raw information being pushed into the system. It's not an unusual
 sight to see our operations teams at Stripe trying to prune the traces of our
 highest traffic systems to keep Splunk running under quota [2].
 
-### Redshift (#redshift)
+### Into a Data Warehouse (Like Redshift) (#redshift)
 
 The other system that we use to ingest canonical lines is Redshift. Any other
 data warehousing system would do just as well.
@@ -113,9 +115,9 @@ We import data by emitting lines over a fast queueing system (NSQ), archiving
 batches of it to S3, and then periodically running a `COPY` pointing to the
 bucket from Redshift.
 
-## Examples (#examples)
+## Some Real World Uses (#examples)
 
-### Example: HTTP 500s By Breakage (#500s-by-breakage)
+### Finding HTTP 500s By Failure Type (#500s-by-breakage)
 
 One of the hazards of any software stack is that unexpected breakages will
 happen. For a typical web service, this often takes the form of an exception
@@ -149,7 +151,7 @@ are counts of timeout errors over the last week by API version:
 
 > [search breakage-splunkline error_class=Timeout sourcetype=bapi-srv earliest=-7d | fields action_id] canonical-api-line | stats count by stripe_version | sort -count limit 10
 
-### Example: TLS Deprecation (#tls-deprecation)
+### Profiling Requests on Old TLS Versions (#tls-deprecation)
 
 One project that I'm working on right now is helping Stripe users [migrate to
 TLS 1.2 from older secure protocols][upgrading-tls]. TLS 1.2 will eventually be
@@ -179,7 +181,7 @@ WHERE created > GETDATE() - '7 days'::interval
 ORDER BY 1;
 ```
 
-## Implementation (#implementation)
+## An Easy Implementation With Rack Middleware (#implementation)
 
 Middleware makes a good home for implementing canonical log lines. This
 middleware will generally be installed close to the top of the stack and inject
@@ -254,7 +256,7 @@ App = Rack::Builder.new do
 end
 ```
 
-## Summary (#summary)
+## A Happy Compromise (#summary)
 
 By now I've hopefully convinced you that canonical log lines provide a pretty
 useful "middle tier" of operational visibility into a production stack. They're
