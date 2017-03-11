@@ -1,5 +1,5 @@
 ---
-title: Using Canonical Log Lines for Online System Introspection
+title: Using Canonical Log Lines for Online Visibility
 published_at: 2016-11-26T01:36:49Z
 hook: A lightweight and technology agnostic operational
   technique for easy and near realtime visibility and live
