@@ -133,6 +133,8 @@ ways:
    on an index) which would prevent a duplicate record from
    being inserted.
 
+### Fix It Later. Poorly. (#without-consistency)
+
 Without ACID, its up to your application code to solve the
 problem. You could implement some a locking system of sorts
 to guarantee that only one registration for any given email
@@ -156,6 +158,8 @@ and efficient.
 Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
 without isolation, how do you deal with the problem?
+
+### Just Lock Everything (#without-isolation)
 
 Well, I'm glad you asked! The most common technique is to
 implement your own pessimistic locking system that
@@ -194,13 +198,13 @@ This approach is all downsides:
    _is_ going to yield problems. It's just a question of
    magnitude.
 
-## Constraints (#constraints)
+## Constraints Are Good (#constraints)
 
 Fast prototyping.
 
-## Scaling (#scaling)
+## On Scaling (#scaling)
 
-## Substrates (#substrates)
+## Build On Solid Ground (#solid-substrates)
 
 There's a common theme to everything listed above:
 
@@ -225,7 +229,7 @@ space of your application, except _worse_.
 Your database can and should act as a foundational
 substrate that offers your application profound leverage
 for fast and correct online operation. Not only does it
-provide these excellent features, but it provides them in
-a way that's been battle-tested and empirically vetted by
+provide these excellent features, but it provides them in a
+way that's been battle-tested and empirically vetted by
 millions of hours of running some of the heaviest
 applications in the world.
