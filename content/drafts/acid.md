@@ -199,3 +199,33 @@ This approach is all downsides:
 Fast prototyping.
 
 ## Scaling (#scaling)
+
+## Substrates (#substrates)
+
+There's a common theme to everything listed above:
+
+* You can get away without atomicity, but you end up
+  hacking around it with cleanup scripts.
+
+* You can get away without consistency, but only through
+  the use of elaborate application-level schemes.
+
+* You can get away without isolation, but only by building
+  your own probably slow, probably inefficient, and
+  probably error prone locking scheme.
+
+* You can get away without constraints and schemas, but
+  only by internalizing a nihilistic understanding that
+  your production data isn't consistent.
+
+By choosing a non-ACID data store, you end up
+reimplementing everything that it does for you in the user
+space of your application, except _worse_.
+
+Your database can and should act as a foundational
+substrate that offers your application profound leverage
+for fast and correct online operation. Not only does it
+provide these excellent features, but it provides them in
+a way that's been battle-tested and empirically vetted by
+millions of hours of running some of the heaviest
+applications in the world.
