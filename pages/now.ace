@@ -21,5 +21,5 @@
       div class="divider-short"
       div class="info"
         p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Derek Sivers</a>.
-        p This page was last updated on <strong>December 29th, 2016</strong>.
+        p This page was last updated on <strong>January 23rd, 2016</strong>.
   = include views/_footer
