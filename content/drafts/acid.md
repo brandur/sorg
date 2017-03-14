@@ -202,6 +202,8 @@ This approach is all downsides:
 
 Fast prototyping.
 
+### App-level Schemas (#app-schemas)
+
 ## On Scaling (#scaling)
 
 ## Build On Solid Ground (#solid-substrates)
