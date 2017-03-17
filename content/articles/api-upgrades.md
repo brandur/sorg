@@ -18,8 +18,8 @@ somewhat unconventional][upgrades] "safety first" approach
 to API versioning. A new version is introduced every time a
 backwards incompatible change is made, and there's enough
 of them that they're named after dates like `2017-02-14`.
-We tend to ship somewhere on the order of 10s of new
-versions in a year.
+There tends to be on the order of 10s of new versions in a
+year.
 
 The first time a user account makes a request to the API,
 their account is automatically locked to the current
