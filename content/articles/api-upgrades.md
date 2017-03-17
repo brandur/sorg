@@ -32,17 +32,17 @@ potentially break an existing integration. For example,
 removing a field from a response, or changing its JSON
 type. Most day-to-day changes like adding a new API
 endpoint or a new field to an existing response are
-considered forwards compatible, and we don't cut a version
-for them.
+considered forwards compatible, and a version isn't cut for
+them.
 
 ## Most Upgrades Are Safe (#upgrade-safety)
 
-You can see by [perusing our API changelog][changelog] that
+You can see by [perusing the API changelog][changelog] that
 most changes are fairly minor. Upgrades can be painful and
 time consuming for users, so we try our hardest to get the
 design of the API right the first time. In cases that we
-don't, most of the changes we make are relatively minor.
-For example:
+don't, the changes that are made are relatively minor. For
+example:
 
 * The response on `/v1/accounts` no longer returns the
   `currencies_supported` field.
@@ -67,8 +67,7 @@ If most upgrades are safe for most users, then it stands to
 reason that we could potentially upgrade people
 automatically so that they wouldn't have to do it
 themselves. It would also make retiring older API versions
-possible, which is something that we don't do right now,
-but would like to [1].
+possible, which is desirable, but not currently done [1].
 
 In at least some cases automatic upgrades would be
 possible. We have good information around which users call
