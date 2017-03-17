@@ -1,7 +1,7 @@
 ---
 title: Why Doesn't Stripe Automatically Upgrade API Versions?
 location: San Francisco
-published_at: 2016-11-08T04:56:03Z
+published_at: 2017-03-17T15:30:50Z
 hook: Given a wide API surface area are small changes, most
   API upgrades are safe for most users. Could we upgrade
   their fixed API version automatically?
