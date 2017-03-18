@@ -30,8 +30,10 @@ They're missing the point entirely. If it's possible to
 introduce bugs of this severity just because you haven't
 divined the use of the right tool or perscribed to a
 particular development doctrine, then the language is _not
-safe_. Its users will never be perfectly educated, and this
-problem is bound to repeat itself endlessly.
+safe_. No language's users will ever be perfectly educated,
+and as a result this kind of problem is bound to repeat
+itself until the end of time wherever it's possible for it
+to happen.
 
 Consensus on values around language design is hard to come
 by, but the features that newer languages all agree on
