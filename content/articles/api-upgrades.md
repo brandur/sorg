@@ -102,7 +102,7 @@ answer for the problem.
 
 That's not to say though that there aren't other ways.
 [GraphQL][graphql] is a popular API paradigm that's seeing
-some prtty good uptake. One of the things I really
+some pretty good uptake. One of the things I really
 appreciate about it is that it requires all fields to be
 requested explicitly:
 
