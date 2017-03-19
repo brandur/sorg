@@ -78,6 +78,14 @@ type Article struct {
 	TOC string `yaml:"-"`
 }
 
+// PublishingInfo produces a brief spiel about publication which is intended to
+// go into the left sidebar when an article is shown.
+func (a *Article) PublishingInfo() string {
+	return `<p><em><strong>` + a.Title + `</strong> was published on <strong>` +
+		a.PublishedAt.Format("January 2, 2006") + `</strong> from <strong>` +
+		a.Location + `</strong>.</em></p>` + twitterInfo
+}
+
 type articleByPublishedAt []*Article
 
 func (a articleByPublishedAt) Len() int           { return len(a) }
@@ -169,6 +177,14 @@ type Fragment struct {
 
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
+}
+
+// PublishingInfo produces a brief spiel about publication which is intended to
+// go into the left sidebar when a fragment is shown.
+func (f *Fragment) PublishingInfo() string {
+	return `<p><em><strong>` + f.Title + `</strong> was published on <strong>` +
+		f.PublishedAt.Format("January 2, 2006") + `</strong>.</em></p>` +
+		twitterInfo
 }
 
 type fragmentByPublishedAt []*Fragment
@@ -296,6 +312,13 @@ type tweetMonth struct {
 	Month  time.Month
 	Tweets []*Tweet
 }
+
+//
+// Constants
+//
+
+const twitterInfo = `<p><em>Find me on Twitter at ` +
+	`<strong><a href="https://twitter.com/brandur">@brandur</a></strong>.</em></p>`
 
 //
 // Variables
@@ -514,7 +537,8 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 	}
 
 	locals := getLocals(article.Title, map[string]interface{}{
-		"Article": article,
+		"Article":        article,
+		"PublishingInfo": article.PublishingInfo(),
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
@@ -628,7 +652,8 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 	fragment.Content = markdown.Render(content)
 
 	locals := getLocals(fragment.Title, map[string]interface{}{
-		"Fragment": fragment,
+		"Fragment":       fragment,
+		"PublishingInfo": fragment.PublishingInfo(),
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
@@ -723,8 +748,8 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 		fragments = fragments[0:5]
 	}
 
-	if len(photos) > 27 {
-		photos = photos[0:27]
+	if len(photos) > 9 {
+		photos = photos[0:9]
 	}
 
 	locals := getLocals("brandur.org", map[string]interface{}{

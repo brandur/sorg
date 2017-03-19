@@ -1,28 +1,30 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .content
-    #title
-      h1 About
-    #about
-      p
-        img.overflowing src="/assets/me.jpg" data-rjs="2"
-      p
-        | I'm an engineer at Stripe where I help run the core service that supports our API, guide the design of that API, and maintain our public facing developer tooling.
-      p
-        | I recently spent quite a few years at Heroku where I helped create our V3 API and refine and operate its central supporting services. I'm still a strong believer that developers at every product company shouldn't be spending too much time thinking about infrastructure, and have access to a deployment mechanism as easy as <code>git push heroku master</code>.
-      p
-        | Having written software professionally for many years now, I'm convinced that the default result given our modern processes and tools are products with an undesirable level of fragility. Their eventual failures will be disappointing for users and expensive for maintainers. These days I'm especially interested in ways to improve software's robustness and longevity, and reduce the human hours sunk into operating it. This has led me to a strong interest in programming languages that are powerfully type-safe, and have exacting compilers that minimize the number of problems that need to be rooted out at runtime. Though still somewhat nascent today, I think that soon the most pragmatic option will be Rust.
-      p
-        | My favorite movie is Sofia Coppola's <em>Lost in Translation</em>. My favorite book is Michael Crichton's <em>Rising Sun</em> (although I like <a href="/reading">a lot of others</a>). I'm also like running, photography, history, meditation, urban design, and metal.
-      h2 Technology
-      p
-        | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations by CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The architecture is based on the idea of <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
-      p
-        | It was previously running <a href="https://github.com/brandur/org">Ruby/Sinatra stack</a>, hosted on Heroku, and using CloudFlare as a CDN.
-      h2 Design
-      p
-        | The responsive design aims to improve readability and emphasize content through typography, whitespace, and clean lines compared <a href="https://mutelight.org">to earlier incarnations of my work</a>. It wouldn't have been possible without the timeless beauty of <a href="http://en.wikipedia.org/wiki/Helvetica_(film)">Helvetica</a>.
-  = include views/_footer
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+    .content
+      .content-inner-standard
+        #title
+          h1 About
+        #about
+          p
+            img.overflowing src="/assets/me.jpg" data-rjs="2"
+          p
+            | I'm an engineer at Stripe where I help run the core service that supports our API, guide the design of that API, and maintain our public facing developer tooling.
+          p
+            | I recently spent quite a few years at Heroku where I helped create our V3 API and refine and operate its central supporting services. I'm still a strong believer that developers at every product company shouldn't be spending too much time thinking about infrastructure, and have access to a deployment mechanism as easy as <code>git push heroku master</code>.
+          p
+            | Having written software professionally for many years now, I'm convinced that the default result given our modern processes and tools are products with an undesirable level of fragility. Their eventual failures will be disappointing for users and expensive for maintainers. These days I'm especially interested in ways to improve software's robustness and longevity, and reduce the human hours sunk into operating it. This has led me to a strong interest in programming languages that are powerfully type-safe, and have exacting compilers that minimize the number of problems that need to be rooted out at runtime. Though still somewhat nascent today, I think that soon the most pragmatic option will be Rust.
+          p
+            | My favorite movie is Sofia Coppola's <em>Lost in Translation</em>. My favorite book is Michael Crichton's <em>Rising Sun</em> (although I like <a href="/reading">a lot of others</a>). I'm also like running, photography, history, meditation, urban design, and metal.
+          h2 Technology
+          p
+            | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations by CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The architecture is based on the idea of <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
+          p
+            | It was previously running <a href="https://github.com/brandur/org">Ruby/Sinatra stack</a>, hosted on Heroku, and using CloudFlare as a CDN.
+          h2 Design
+          p
+            | The responsive design aims to improve readability and emphasize content through typography, whitespace, and clean lines compared <a href="https://mutelight.org">to earlier incarnations of my work</a>. It wouldn't have been possible without the timeless beauty of <a href="http://en.wikipedia.org/wiki/Helvetica_(film)">Helvetica</a>.

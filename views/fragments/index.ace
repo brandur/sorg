@@ -1,31 +1,34 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .fragments
-    .content
-      #title
-        h1 Fragments
-      p.page-intro This section contains a series of short stream of consciousness style notes that don't merit a more dedicated write-up.
-      .toc.toc-index
-        ul
-          {{range .FragmentsByYear}}
-            li
-              a href="#year-{{.Year}}" {{.Year}}
-          {{end}}
-      #fragments
-        {{range .FragmentsByYear}}
-          div class="year" id="year-{{.Year}}"
-          h2 {{.Year}}
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+      .toc-inner
+        .toc
           ul
-            {{range .Fragments}}
+            {{range .FragmentsByYear}}
               li
-                a href="/fragments/{{.Slug}}"
-                  {{.Title}}
-                span.meta
-                  |  
-                  {{FormatTime .PublishedAt}}
+                a href="#year-{{.Year}}" {{.Year}}
             {{end}}
-        {{end}}
-  = include views/_footer
+    .content
+      .fragments
+        .fragments-content-list
+          #title
+            h1 Fragments
+          p.page-intro This section contains a series of short stream of consciousness style notes that don't merit a more dedicated write-up.
+          #fragments
+            {{range .FragmentsByYear}}
+              div class="year" id="year-{{.Year}}"
+              h2 {{.Year}}
+              ul
+                {{range .Fragments}}
+                  li
+                    a href="/fragments/{{.Slug}}"
+                      {{.Title}}
+                    span.meta
+                      |  
+                      {{FormatTime .PublishedAt}}
+                {{end}}
+            {{end}}

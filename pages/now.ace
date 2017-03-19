@@ -1,25 +1,27 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .content
-    #title
-      h1 What I'm Doing Now
-    #now
-      p I'm in San Francisco concentrating on self-discipline, self-improvement, and shipping the next big thing at Stripe.
-      p
-        img.overflowing src="/assets/now/moma.jpg" data-rjs="2"
-      p These are some points of focus:
-      ul
-        li Rust. This language is the most exciting thing happening in computing right now for me. Its typing and safety semantics have the potential to get us to a future where software is less buggy and generally more reliable, and its got a lot less baggage than comparable projects like Haskell. I'm working on a few new projects and OSS contributions.
-        li Articles on subjects like: why it's important to use an ACID data store, advice on operating Postgres, and various stack agnostic operational techniques that we use in production at Stripe.
-        li An aspirational guide for building software that's simple, robust, and stable without constant human attention.
-        li Some basic voice recording to help me get more articulate and be able to form more cohesive long form thoughts in speech.
-        li Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I try to focus on only one thing at a time and <a href="/fragments/turn-off-your-cellphone">shut off my distraction machine</a>.
-        li Improving my mental and physical health by meditating and exercising 4-5 times a week (each).
-      div class="divider-short"
-      div class="info"
-        p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Derek Sivers</a>.
-        p This page was last updated on <strong>January 23rd, 2016</strong>.
-  = include views/_footer
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+    .content
+      .content-inner-standard
+        #title
+          h1 What I'm Doing Now
+        #now
+          p I'm in San Francisco concentrating on self-discipline, self-improvement, and shipping the next big thing at Stripe.
+          p
+            img.overflowing src="/assets/now/moma.jpg" data-rjs="2"
+          p These are some points of focus:
+          ul
+            li Rust. This language is the most exciting thing happening in computing right now for me. Its typing and safety semantics have the potential to get us to a future where software is less buggy and generally more reliable, and its got a lot less baggage than comparable projects like Haskell. I'm working on a few new projects and OSS contributions.
+            li Articles on subjects like: why it's important to use an ACID data store, advice on operating Postgres, and various stack agnostic operational techniques that we use in production at Stripe.
+            li An aspirational guide for building software that's simple, robust, and stable without constant human attention.
+            li Some basic voice recording to help me get more articulate and be able to form more cohesive long form thoughts in speech.
+            li Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I try to focus on only one thing at a time and <a href="/fragments/turn-off-your-cellphone">shut off my distraction machine</a>.
+            li Improving my mental and physical health by meditating and exercising 4-5 times a week (each).
+          div class="divider-short"
+          div class="info"
+            p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Derek Sivers</a>.
+            p This page was last updated on <strong>January 23rd, 2016</strong>.

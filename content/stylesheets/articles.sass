@@ -2,32 +2,12 @@ $sans_serif: helvetica, arial, geneva, sans-serif
 $secondary: #cdcdcd
 
 .articles
-  .content
-    // Constrain very large screens. This pixel number should be enough to keep
-    // us pegged to a maximum of four columns (things get pretty hard to read
-    // with more).
-    max-width: 1500px
-
-    // Required to show TOC.
-    position: relative
-
   // Articles list
   #articles
     font-size: 0.85rem
 
     ul
-      column-gap: 50px
-      -moz-column-gap: 50px
-      -webkit-column-gap: 50px
-      column-width: 280px
-      -moz-column-width: 280px
-      -webkit-column-width: 280px
-
       li
-        break-inside: avoid
-        page-break-inside: avoid
-        -webkit-column-break-inside: avoid
-
         margin: 0 0 25px 0
 
         a

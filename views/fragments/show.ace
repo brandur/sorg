@@ -1,24 +1,30 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .fragments
-    .content
-      {{if ne .Fragment.Image ""}}
-        img#mood data-rjs="2" src={{.Fragment.Image}}
-      {{end}}
-      #title.fragments-title
-        h1 {{.Fragment.Title}}
-        .meta
-          {{FormatTime .Fragment.PublishedAt}}
-      article class="{{if eq .Fragment.Image ""}}without-mood{{else}}with-mood{{end}}"
-        {{HTML .Fragment.Content}}
-        .divider-short
-        .info
-          {{if .Fragment.Draft}}
-            p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
-          {{else}}
-            p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
-          {{end}}
-  = include views/_footer
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+        .nav-extra-content
+          .divider
+          {{HTML .PublishingInfo}}
+    .toc-index
+    .fragments
+      .content
+        {{if ne .Fragment.Image ""}}
+          img#mood data-rjs="2" src={{.Fragment.Image}}
+        {{end}}
+        #title.fragments-title
+          h1 {{.Fragment.Title}}
+          .meta
+            {{FormatTime .Fragment.PublishedAt}}
+        article
+          {{HTML .Fragment.Content}}
+          .divider-short
+          .info
+            .publishing-info-bottom
+              {{HTML .PublishingInfo}}
+            {{if .Fragment.Draft}}
+              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
+            {{else}}
+              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
+            {{end}}

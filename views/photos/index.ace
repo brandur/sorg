@@ -1,17 +1,19 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .photos
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
     .content
-      #title
-        h1 Photos
-      ul
-        {{range .Photos}}
-          li
-            a href="https://www.flickr.com/photos/brandurleach/{{.Slug}}"
-              img data-rjs="2" src="/assets/photos/{{.Slug}}.jpg" height="{{.MediumImageHeight}}" width="{{.MediumImageWidth}}"
-        {{end}}
-      p See the complete set on <a href="https://www.flickr.com/photos/brandurleach/tags/lifestream">Flickr</a>.
-  = include views/_footer
+      .photos
+        #title
+          h1 Photos
+        ul
+          {{range .Photos}}
+            li
+              a href="https://www.flickr.com/photos/brandurleach/{{.Slug}}"
+                img data-rjs="2" src="/assets/photos/{{.Slug}}.jpg" height="{{.MediumImageHeight}}" width="{{.MediumImageWidth}}"
+          {{end}}
+        .clear
+        p See the complete set on <a href="https://www.flickr.com/photos/brandurleach/tags/lifestream">Flickr</a>.
