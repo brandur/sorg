@@ -1,30 +1,34 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  #runs
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
     .content
-      #title
-        h1 Runs
-      {{if .ByYearXYears}}
-        p {{index .ByYearYDistances 0 | RoundToString}} km run in {{index .ByYearXYears 0}}.
-      {{end}}
-      #data-distance-last-year.chart
-      #data-distance-by-year.chart
-      .runs-content
-        h2 Latest
-        ul.list
-          {{range .Runs}}
-            li
-              | <span class="distance">{{InKM .Distance | RoundToString}} km</span> <span class="elevation">({{RoundToString .ElevationGain}} m elevation)</span> @ {{Pace .Distance .MovingTime}}/km
-              {{if ne .LocationCity ""}}
-                | , {{.LocationCity}}
-              {{end}}
-              span.meta
-                |  {{FormatTime .OccurredAt}}
-          {{end}}
-  = include views/_footer
+      .runs
+        #title
+          h1 Runs
+        {{if .ByYearXYears}}
+          p {{index .ByYearYDistances 0 | RoundToString}} km run in {{index .ByYearXYears 0}}.
+        {{end}}
+        #charts
+        .chart
+          #data-distance-last-year
+        .chart
+          #data-distance-by-year
+        .runs-content.content-inner-standard
+          h2 Latest
+          ul.list
+            {{range .Runs}}
+              li
+                | <span class="distance">{{InKM .Distance | RoundToString}} km</span> <span class="elevation">({{RoundToString .ElevationGain}} m elevation)</span> @ {{Pace .Distance .MovingTime}}/km
+                {{if ne .LocationCity ""}}
+                  | , {{.LocationCity}}
+                {{end}}
+                span.meta
+                  |  {{FormatTime .OccurredAt}}
+            {{end}}
   = javascript
     var lastYearXDays = {{.LastYearXDays}};
     var lastYearYDistances = {{.LastYearYDistances}};

@@ -13,34 +13,18 @@
       line-height: 0.7em
       margin: 5px 10px 0 0
 
+    // Shown in the sidebar except for small screens.
+    .publishing-info-bottom
+      display: none
+
+  .toc
+    float: right
+
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .signature
     .content
       article > p:first-of-type:first-letter
         font-size: 4rem
 
-// uncomment the below for multi-column "big" layout
-
-//@media only screen and (min-width: 1800px)
-//
-//  .signature
-//
-//    figure
-//      column-break-inside: avoid
-//      -moz-column-break-inside: avoid
-//      -webkit-column-break-inside: avoid
-//
-//    h1, h2, h3, h4
-//      column-break-after: avoid
-//      -moz-column-break-after: avoid
-//      -webkit-column-break-after: avoid
-//
-//    .content
-//      max-width: none
-//      line-height: 1.8em
-//      column-gap: 60px
-//      column-width: 600px
-//      -moz-column-gap: 60px
-//      -moz-column-width: 600px
-//      -webkit-column-gap: 60px
-//      -webkit-column-width: 600px
+      .publishing-info-bottom
+        display: initial
