@@ -1,57 +1,83 @@
 ---
-title: Production Minimalism
-published_at: 2016-11-08T04:56:03Z
+title: Practicing Minimalism In Production
+published_at: 2017-03-21T15:20:48Z
 location: San Francisco
 hook: TODO
 ---
 
-A favorite practice that I learned while at Heroku was the
-idea of production minimalism -- curbing a system's
-complexity by reducing the total number of moving parts
-that it contains. Ideally it should be distilled down to
-its simplist possible form, 
+While developing the U-2 and SR-71 Blackbird spy planes at
+the Lockheed Skunk Works, Kelly Johnson was reported to
+have coined the [KISS][kiss] principle ("keep it simple,
+stupid") which suggests that systems should be designed to
+be simple instead of complicated. While the latter is
+tempting in the pursuit of certain features, simplicity
+wins out in the long run by producing a product that's more
+maintainable, more reliable, and more flexible. In the case
+of jet fighters, that might mean a plane that can be
+repaired in the field with few tools and under the
+stressful conditions of combat.
 
-The idea stems at least in part from an old US Navy design
-principle called [KISS][kiss] ("keep it simple, stupid")
-which warns that unnecessary complexity should be avoided.
 More aspirationally, Antoine de Saint Exupéry, a French
-poet and pioneering aviator, said this about about
-minimalist:
+poet and pioneering aviator, said this about product
+minimalism:
 
 > It seems that perfection is reached not when there is
 > nothing left to add, but when there is nothing left to
-> take away
+> take away.
 
-And similarly again, a quote widely attribute to Albert
-Einstein says:
-
-> Make everything as simple as possible, but not simpler.
+<img src="/assets/minimalism/sea.jpg" data-rjs="2" class="overflowing">
 
 ## Minimalism In Technology (#in-technology)
 
 Technology is cool, and as engineers, we tend to want to
-use new and interesting things that appear on the scene.
-Over time, components tend to get added, but are rarely
-removed, so left unaddressed the default path is to
-eventually run a stack that combines just about every
+use new and interesting things that appear on the scene. In
+fact, it's easy to start favoring new technologies because
+they're the ones getting the most press. Use Mongo! No,
+Node! Wait, Go! Kafka!
+
+Over time, technologies are added, but are rarely removed,
+leading to an accumulation effect. Left unchecked, stacks that
+have been around enough tend to combine just about every
 technology under the sun.
 
 This is an instinct that needs to be suppressed to build a
 stable and maintainable production stack. More technology
-isn't better, it's worse:
+can intuitively seem better, but it's often worse:
 
 * Nothing operates flawlessly once it hits production.
-  Every component in the stack is a candidate for failure.
+  Every component in the stack is a candidate for failure,
+  and with sufficient scale, _something_ will be failing all
+  the time.
 
-* More parts means more cognitivie complexity. If a system
+* More parts means more cognitive complexity. If a system
   becomes too difficult to understand then the risk of bugs
-  increases astronomically as developers make changes for
-  which they can't grasp all the possible repercussions.
+  increases as developers make changes without
+  understanding all the possible ramifications.
 
-* People get good at operating common paths. More shared
-  technology means that when there's a particularly sticky
-  problem, there's a better chance that someone will be
-  able to fix it.
+* With more technologies engineers will tend to be come
+  jacks of all trades, but masters of none. If a
+  particularly nefarious problem comes along, it may be
+  harder to diagnose and fix because there are few
+  specialists around.
+
+Even knowing this, the instinct to use something new will
+be hard to suppress. As engineers we're used to justifying
+our design choices all the time, and we're often so good at
+it that we can even justify some misguided ones. "But we
+_need_ horizontal scalability. We _need_ a streaming
+replicated log. We _need_ an highly available key/value
+store. We _need_ DNS-based service discovery."
+
+## Practicing Minimalism (#practicing)
+
+Introduce a new technology? Retire an old one.
+
+Build common paths.
+
+Use versatile systems that have a history of reliability.
+
+* When adding new technology, migrate old products over to
+  it where possible, and try to retire 
 
 ## Examples (#examples)
 
@@ -97,6 +123,12 @@ A "big idea" architectural principle at Heroku was to
 eventually have Heroku run _on Heroku_. This was obviously
 difficult for a variety of reasons, but would be the
 ultimate manifestation of production minimalism.
+
+A favorite practice that I learned while at Heroku was the
+idea of production minimalism -- curbing a system's
+complexity by reducing the total number of moving parts
+that it contains. Ideally it should be distilled down to
+its simplist possible form, 
 
 Do more with less by embracing production minimalism. I'd
 of course recommend that production stacks should be made
