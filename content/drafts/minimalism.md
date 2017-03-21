@@ -70,6 +70,22 @@ store. We _need_ DNS-based service discovery."
 
 ## Practicing Minimalism (#practicing)
 
+Practicing minimalism in a production stack is pretty
+approachable by following generally good engineering
+guidelines:
+
+* Is a new technology being introduced? Look for
+  opportunities to retire an old one that's roughly
+  equivalent. If you're about to put Kafka in, maybe you
+  can get away with retiring NSQ.
+
+* Build common technology paths. Standardize on one
+  database, one language/runtime, one job queue, one web
+  server, one reverse proxy, etc. If not one, then
+  standardize on _as few as possible_.
+
+* 
+
 Introduce a new technology? Retire an old one.
 
 Build common paths.
