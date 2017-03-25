@@ -1,6 +1,0 @@
-.clear
-footer
-  = include views/_nav
-  .clear
-  / #copy
-    | Made by Brandur. This project is <a href="https://github.com/brandur/sorg">open source</a>.

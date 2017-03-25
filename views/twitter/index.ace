@@ -1,53 +1,57 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .twitter
-    .content
-      #title
-        h1 Twitter
-      .twitter-content
-        {{if not .WithReplies}}
-          p {{NumberWithDelimiter ',' .NumTweets}} tweets, and <a href="/twitter/with-replies">{{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies</a>.
-        {{else}}
-          p <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies.
-        {{end}}
-      #data-tweets-by-month.chart
-      .toc.toc-index
-        ul
-          {{range $year := .TweetsByYearAndMonth}}
-            li
-              a href="#year-{{$year.Year}}" {{$year.Year}}
-              ul
-                {{range $month := .Months}}
-                  li
-                    a href="#month-{{$year.Year}}-{{$month.Month}}" {{MonthName $month.Month}}
-                {{end}}
-          {{end}}
-      .twitter-content
-        {{range $year := .TweetsByYearAndMonth}}
-          div class="year" id="year-{{$year.Year}}"
-            h2 {{$year.Year}}
-            {{range $month := .Months}}
-              div class="month" id="month-{{$year.Year}}-{{$month.Month}}"
-                h3 {{MonthName $month.Month}}
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+      .toc-inner
+        .toc
+          ul
+            {{range $year := .TweetsByYearAndMonth}}
+              li
+                a href="#year-{{$year.Year}}" {{$year.Year}}
                 ul
-                  {{range $month.Tweets}}
+                  {{range $month := .Months}}
                     li
-                      {{RenderTweetContent .Content | HTML}}
-                      span.meta
-                        a href="https://twitter.com/brandur/statuses/{{.Slug}}" rel="nofollow"
-                          {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
-                          {{if ne "" $display}}
-                            {{$display}}
-                          {{else}}
-                            {{FormatTimeWithMinute .OccurredAt}}
-                          {{end}}
+                      a href="#month-{{$year.Year}}-{{$month.Month}}" {{MonthName $month.Month}}
                   {{end}}
             {{end}}
-        {{end}}
-  = include views/_footer
+    .content
+      .twitter
+        #title
+          h1 Twitter
+        .twitter-content.content-inner-standard
+          {{if not .WithReplies}}
+            p {{NumberWithDelimiter ',' .NumTweets}} tweets, and <a href="/twitter/with-replies">{{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies</a>.
+          {{else}}
+            p <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies.
+          {{end}}
+        #charts
+          .chart
+            #data-tweets-by-month
+        .twitter-content.content-inner-standard
+          {{range $year := .TweetsByYearAndMonth}}
+            div class="year" id="year-{{$year.Year}}"
+              h2 {{$year.Year}}
+              {{range $month := .Months}}
+                div class="month" id="month-{{$year.Year}}-{{$month.Month}}"
+                  h3 {{MonthName $month.Month}}
+                  ul
+                    {{range $month.Tweets}}
+                      li
+                        {{RenderTweetContent .Content | HTML}}
+                        span.meta
+                          a href="https://twitter.com/brandur/statuses/{{.Slug}}" rel="nofollow"
+                            {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
+                            {{if ne "" $display}}
+                              {{$display}}
+                            {{else}}
+                              {{FormatTimeWithMinute .OccurredAt}}
+                            {{end}}
+                    {{end}}
+              {{end}}
+          {{end}}
   = javascript
     var tweetCountXMonths = {{.TweetCountXMonths}};
     var tweetCountYCounts = {{.TweetCountYCounts}};

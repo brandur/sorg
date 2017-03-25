@@ -9,50 +9,41 @@ $secondary: #cdcdcd
       hyphens: auto
       margin: 20px 0 5px 0
 
-  article
-    h2, h3, h4
-      margin: 20px 0 -15px 0
-
-    h2
-      font-size: 1em
-
-    h3, h4
-      font-size: 0.9em
-
-    pre
-      overflow: initial
-      white-space: pre-wrap
-
   .content
-    // Constrain very large screens. This pixel number should be enough to keep
-    // us pegged to a maximum of four columns (things get pretty hard to read
-    // with more).
-    max-width: 1500px
+    padding: 30px 0 0 0
 
-    // Required to show TOC.
-    position: relative
+    // Constrain very large screens. Note that this is mainly to let a "mood"
+    // image appear large.
+    //max-width: 1500px
 
     // this is a "highlight" image that may or may not be included with an
     // article
     img#mood
-      margin-bottom: 80px
+      margin-bottom: 50px
       width: 100%
 
-    article.with-mood
-      column-width: 280px
-      -moz-column-width: 280px
-      -webkit-column-width: 280px
-      column-gap: 40px
-      -moz-column-gap: 40px
-      -webkit-column-gap: 40px
+      // This counteracts the extra padding we give to fragment content.
+      margin-top: -50px
 
-      h1
-        column-span: all
-        -moz-column-width: all
-        -webkit-column-width: all
-
-    article.without-mood
+    article
       max-width: 550px
+
+      h2, h3, h4
+        margin: 20px 0 -15px 0
+
+      h2
+        font-size: 1em
+
+      h3, h4
+        font-size: 0.9em
+
+      pre
+        overflow: initial
+        white-space: pre-wrap
+
+    // Shown in the sidebar except for small screens.
+    .publishing-info-bottom
+      display: none
 
   .meta
     color: $secondary
@@ -63,9 +54,11 @@ $secondary: #cdcdcd
   .page-intro
     font-size: 0.85rem
 
-  // Fragments list
-  #fragments
+  .fragments-content-list
     font-size: 0.85rem
+
+    // A little wider than standard to make way for some columns.
+    max-width: 700px
 
     ul
       column-width: 280px
@@ -91,3 +84,6 @@ $secondary: #cdcdcd
       // hide image on very small screens
       img#mood
         display: none
+
+      .publishing-info-bottom
+        display: initial

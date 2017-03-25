@@ -53,12 +53,6 @@ func TestInKM(t *testing.T) {
 	assert.Equal(t, 2.342, inKM(2342.0))
 }
 
-func TestIndexToColumn(t *testing.T) {
-	assert.Equal(t, 0, indexToColumn(0))
-	assert.Equal(t, 0, indexToColumn(8))
-	assert.Equal(t, 1, indexToColumn(9))
-}
-
 func TestMarshalJSON(t *testing.T) {
 	str := marshalJSON(map[string]string{})
 	assert.Equal(t, "{}", str)

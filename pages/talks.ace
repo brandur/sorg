@@ -1,22 +1,24 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .content
-    #title
-      h1 Talks
-    ul.list
-      li
-        a href="https://thousand-services.herokuapp.com"
-          | The Story of a Thousand Services
-        span.meta
-          |  May 30, 2014
-        p Talk for API Days Mediterranea 2014 in Barcelona. Covers the growth of Heroku's internal and external API ecoysystems, and introduces the basic concepts of JSON Schema and Hyper-schema.
-      li
-        a href="https://composable.herokuapp.com"
-          | Post-Rails? Composable Applications with a First-class API
-        span.meta
-          |  September 20, 2012
-        p Delivered at Frozen Rails 2012 in Helsinki. Talks about the techniques used to break down Heroku's Rails monolith into a number of composed services and how this abstraction benefited the company by producing leaner codebases, smaller teams, and better separations of concerns.
-  = include views/_footer
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+    .content
+      .content-inner-standard
+        #title
+          h1 Talks
+        ul.list
+          li
+            a href="https://thousand-services.herokuapp.com"
+              | The Story of a Thousand Services
+            span.meta
+              |  May 30, 2014
+            p Talk for API Days Mediterranea 2014 in Barcelona. Covers the growth of Heroku's internal and external API ecoysystems, and introduces the basic concepts of JSON Schema and Hyper-schema.
+          li
+            a href="https://composable.herokuapp.com"
+              | Post-Rails? Composable Applications with a First-class API
+            span.meta
+              |  September 20, 2012
+            p Delivered at Frozen Rails 2012 in Helsinki. Talks about the techniques used to break down Heroku's Rails monolith into a number of composed services and how this abstraction benefited the company by producing leaner codebases, smaller teams, and better separations of concerns.
