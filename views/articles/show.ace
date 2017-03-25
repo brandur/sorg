@@ -6,42 +6,48 @@
       .vista-overlay-inner
         #title
           h1 {{.Article.Title}}
-  {{else}}
-    .flag
-    .top-nav
-      = include views/_nav
-    .top-spacing
   {{end}}
   .signature
-    .content
+    #flexcontainer
       {{if eq .Article.Image ""}}
-        #title
-          h1 {{.Article.Title}}
+        .flag
       {{end}}
-      {{if ne .Article.Hook ""}}
-        p.hook {{.Article.Hook}}
-        .divider-short
-      {{end}}
-      .toc
-        {{if ne .Article.TOC ""}}
-          h2 Table of Contents
-          {{HTML .Article.TOC}}
+      .top-nav
+        div class="{{if eq .Article.Image ""}}nav-inner{{else}}nav-inner-unfixed{{end}}"
+          = include views/_nav
+          .nav-extra-content
+            .divider
+            {{HTML .PublishingInfo}}
+      .toc-index
+      .content
+        {{if eq .Article.Image ""}}
+          #title
+            h1 {{.Article.Title}}
+        {{end}}
+        {{if ne .Article.Hook ""}}
+          p.hook {{.Article.Hook}}
           .divider-short
         {{end}}
-      article
-        {{HTML .Article.Content}}
-        .divider-short
-        .info
-          p <strong>{{.Article.Title}}</strong> was published on <strong>{{FormatTime .Article.PublishedAt}}</strong> from <strong>{{.Article.Location}}</strong>. Find me on Twitter at <strong><a href="https://twitter.com/brandur">@brandur</a></strong>.
-          {{if ne .Article.HNLink ""}}
-            p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
+        .toc
+          {{if ne .Article.TOC ""}}
+            h2 Table of Contents
+            {{HTML .Article.TOC}}
+            .divider-short
           {{end}}
-          {{if .Article.Draft}}
-            p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/drafts/{{.Article.Slug}}.md">sending a pull request</a>.
-          {{else}}
-            p Find an error? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/articles/{{.Article.Slug}}.md">sending a pull request</a>.
-          {{end}}
-          {{if ne .Article.Attributions ""}}
-            p.attribution== {{HTML .Article.Attributions}}
-          {{end}}
-    = include views/_footer
+        article
+          {{HTML .Article.Content}}
+          .divider-short
+          .info
+            .publishing-info-bottom
+              | {{HTML .PublishingInfo}}
+            {{if ne .Article.HNLink ""}}
+              p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
+            {{end}}
+            {{if .Article.Draft}}
+              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/drafts/{{.Article.Slug}}.md">sending a pull request</a>.
+            {{else}}
+              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/articles/{{.Article.Slug}}.md">sending a pull request</a>.
+            {{end}}
+            {{if ne .Article.Attributions ""}}
+              p.attribution== {{HTML .Article.Attributions}}
+            {{end}}

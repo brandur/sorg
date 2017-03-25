@@ -2,14 +2,20 @@ div.photo
   text-align: center
 
   img
-    //border-radius: 20px
 
 div.photos
-  margin: 0 8% 0 15%
+  max-width: 1600px
 
   img
-    //border-radius: 10px
-    margin: 5px 0
+    float: left
+    margin: 5px
+    width: 500px
+
+  li
+    margin: 0 auto
+
+  .clear
+    clear: both
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .content

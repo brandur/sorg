@@ -3,11 +3,11 @@ $serif: georgia, serif
 
 $secondary: #bbb
 
-.index
-  margin: 0 8%
+.index-about-and-lists, .index-photos-list
+  margin: 30px 20px
 
   h1
-    font-size: 5rem
+    font-size: 4rem
     margin: 30px 0
 
   h2
@@ -22,14 +22,19 @@ $secondary: #bbb
       color: $secondary
       text-decoration: none
 
-  .content
-    margin: 0
-    column-gap: initial
-    column-width: initial
-    -moz-column-gap: initial
-    -moz-column-width: initial
-    -webkit-column-gap: initial
-    -webkit-column-width: initial
+  li
+    margin-bottom: 30px
+
+    a
+      color: #000
+      font-family: $sans_serif
+      font-size: 1.3rem
+      font-weight: bold
+      line-height: 1.2em
+      text-decoration: none
+
+    p
+      margin-top: 6px
 
   .meta
     color: $secondary
@@ -40,84 +45,23 @@ $secondary: #bbb
   .older
     font-size: 0.9rem
 
-  section.about-and-articles
+.index-about-and-lists
+  flex: 3 1
+  max-width: 500px
+
+  // Give a little more margin for separation from nav.
+  //margin-left: 40px
+
+.index-photos-list
+  flex: 6 1
+  max-width: 1600px
+
+  img
     float: left
-    margin: 30px 30px
-    width: 300px
+    margin: 5px
+    width: 500px
 
-    li
-      margin-bottom: 40px
-
-      a
-        color: #000
-        font-family: $sans_serif
-        font-size: 1.6rem
-        font-weight: bold
-        line-height: 1.2em
-        text-decoration: none
-
-      p
-        margin-top: 10px
-
-  section.photos
-    float: left
-    margin: 30px 30px
-
-    img
-      float: left
-      margin: 5px
-      width: 500px
-
-    .photo-col1
-      display: none
-
-    .photo-col2
-      display: none
-
-@media handheld, only screen and (max-width: 1190px), only screen and (max-device-width: 1190px)
-  .index
-    margin: 0
-
-    .content
-      margin: 0 8%
-      width: 84%
-
-    section.about-and-articles, section.photos
-      float: none
-      margin: 0
-      width: auto
-
-    section.photos
-      ul
-        text-align: center
-
-// slightly different min-width than every other page to accommodate the double
-// image columns
-@media only screen and (min-width: 1850px)
-  .index
-    section.photos
-      width: 1020px
-
-      .content
-        max-width: none
-
-      .photo-col1
-        display: inline
-
-      .photo-col2
-        display: none
-
-// and an even greater scale factor accommodate a third line of images
-@media only screen and (min-width: 2400px)
-  .index
-    section.photos
-      width: 1570px
-
-      .content
-        max-width: none
-
-      .photo-col1
-        display: inline
-
-      .photo-col2
-        display: inline
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  .index-about-and-lists
+    // Resets to the same as the other columns.
+    margin-left: 20px

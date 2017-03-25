@@ -6,29 +6,16 @@ $secondary: #cdcdcd
 $tertiary: #dedede
 $quaternary: #f5f5f5
 
-$content_width: 550px
-
 .reading
   font-size: 0.85rem
   line-height: 1.5em
-
-  .content
-    max-width: none
-
-    // Required to show TOC.
-    position: relative
-
-  #charts
-    overflow: hidden
 
   #data-readings-by-year, #data-pages-by-year
     float: left
     height: 240px
     width: 49%
 
-  #books
-    max-width: $content_width
-
+  .reading-content
     ul
       li
         margin: 10px 0
@@ -44,8 +31,3 @@ $content_width: 550px
       float: none
       margin: 0
       width: 100%
-
-@media only screen and (min-width: 1800px)
-  .reading
-    #books
-      max-width: none

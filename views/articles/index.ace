@@ -1,35 +1,38 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .articles
-    .content
-      #title
-        h1 Articles
-      .toc.toc-index
-        ul
-          {{range .ArticlesByYear}}
-            li
-              a href="#year-{{.Year}}" {{.Year}}
-          {{end}}
-      #articles
-        {{range .ArticlesByYear}}
-          div class="year" id="year-{{.Year}}"
-          h2 {{.Year}}
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+      .toc-inner
+        .toc
           ul
-            {{range .Articles}}
+            {{range .ArticlesByYear}}
               li
-                .title
-                  a href="/{{.Slug}}"
-                    {{.Title}}
-                  span.meta
-                    |  
-                    {{FormatTime .PublishedAt}}
-                {{if ne .Hook ""}}
-                  p.hook {{.Hook}}
+                a href="#year-{{.Year}}" {{.Year}}
+            {{end}}
+    .content
+      .articles
+        .content-inner-standard
+          #title
+            h1 Articles
+          #articles
+            {{range .ArticlesByYear}}
+              div class="year" id="year-{{.Year}}"
+              h2 {{.Year}}
+              ul
+                {{range .Articles}}
+                  li
+                    .title
+                      a href="/{{.Slug}}"
+                        {{.Title}}
+                      span.meta
+                        |  
+                        {{FormatTime .PublishedAt}}
+                    {{if ne .Hook ""}}
+                      p.hook {{.Hook}}
+                    {{end}}
                 {{end}}
             {{end}}
-        {{end}}
-        p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
-  = include views/_footer
+            p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.

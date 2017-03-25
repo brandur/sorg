@@ -7,7 +7,152 @@ $tertiary: #dedede
 $quaternary: #efefef
 $quinary: #f5f5f5
 
-$content_width: 550px
+//
+// Main layout
+//
+
+body
+  background: #fff
+  color: $primary
+  font-family: $serif
+  line-height: 1.7em
+  margin: 0
+
+.flag
+  background-image: linear-gradient(to bottom, #336699 0%, transparent 100%)
+  background-image: -moz-linear-gradient(top, #336699 0%, transparent 100%)
+  background-image: -webkit-linear-gradient(top, #336699 0%, transparent 100%)
+  overflow: hidden
+  width: 10px
+
+  // Set a min-width otherwise Flexbox could start collapsing some boxes if it
+  // thinks it needs more space.
+  min-width: 10px
+
+#flexcontainer
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-direction: row
+  flex-direction: row
+
+.content, .toc-index, .top-nav
+  margin-bottom: 50px
+  margin-top: 50px
+
+.toc-index, .top-nav
+  margin-left: 10px
+  margin-right: 10px
+  width: 100px
+
+  // Set a min-width otherwise Flexbox could start collapsing some boxes if it
+  // thinks it needs more space.
+  min-width: 100px
+
+.nav-inner, .nav-inner-unfixed, .toc-inner
+  width: 100px
+
+  // Looks kind of interesting, but doesn't seem to quite fit.
+  //border-top: 6px solid #000
+
+.content
+  margin-left: 50px
+  margin-right: 50px
+
+  // Fill remaining space.
+  -webkit-flex: 1
+  flex: 1
+
+  .content-inner-standard
+    max-width: 550px
+
+.top-nav
+  margin-left: 40px
+
+  .nav-inner
+    overflow: auto
+    position: fixed
+
+  nav
+    font-family: $sans_serif
+    font-size: 0.7rem
+    font-weight: bold
+    text-align: right
+    text-transform: uppercase
+
+    a
+      color: $primary
+      text-decoration: none
+
+      &:hover
+        color: $primary
+
+    ul
+      line-height: 1em
+      list-style-type: none
+      margin: 0
+
+      li
+        margin: 8px 0
+
+        &:first-child
+          margin-top: 0
+
+  .nav-extra-content
+    font-size: 0.85rem
+    line-height: 1.4em
+    text-align: right
+
+    p
+      margin: 15px 0
+
+// This is a TOC that shows up on the left side of the screen for the
+// fragments, reading, twitter, etc. index pages.
+.toc-index
+  .toc
+    text-align: right
+    // resets a width rule from the other .toc definition
+    width: auto
+
+    ul
+      margin: 0
+
+      a
+        text-decoration: none
+
+        &:hover
+          text-decoration: underline
+
+        &:visited
+          text-decoration: none
+
+      li
+        &:first-child
+          margin-top: -5px
+
+      // Sublists. Currently only used for months under years of Twitter.
+      ul
+        margin: 6px 0
+
+        li
+          color: $secondary
+          font-family: $sans_serif
+          font-size: 0.65rem
+          line-height: 1.7em
+
+          a
+            color: $secondary
+            text-decoration: none
+
+            &:hover
+              color: $secondary
+              text-decoration: underline
+
+            &:visited
+              color: $secondary
+
+//
+// Other
+//
 
 a
   color: $primary
@@ -21,12 +166,6 @@ blockquote
   color: #555
   padding: 0 0 0 20px
   margin: 0 0 0 20px
-
-body
-  background: #fff
-  color: $primary
-  font-family: $serif
-  line-height: 1.7em
 
 code
   background: #efefef
@@ -84,29 +223,6 @@ img, video
 img.overflowing, video.overflowing
   overflow: visible
   max-width: 650px
-
-nav
-  font-family: $sans_serif
-  font-size: 0.7rem
-  font-weight: bold
-  text-transform: uppercase
-
-  a
-    color: $primary
-    text-decoration: none
-
-    &:hover
-      color: $primary
-
-  ul
-    display: inline-block
-    line-height: 1em
-    list-style-type: none
-    margin: 10px 16px
-
-    li
-      float: left
-      margin: 6px 7px
 
 p
   hyphens: auto
@@ -173,12 +289,6 @@ table
 ol, ul
   margin: 20px 0
 
-.chart
-  margin: 20px 0
-
-.clear
-  clear: both
-
 .divider
   border-bottom: 1px solid $tertiary
   margin: 30px 0
@@ -197,19 +307,6 @@ ol, ul
   font-style: italic
   line-height: 1.6em
   margin: 30px 0
-
-.content
-  background: #fff
-  margin: 0 15%
-  max-width: $content_width
-
-.flag
-  background-image: linear-gradient(to bottom, #336699 0%, transparent 100%)
-  background-image: -moz-linear-gradient(top, #336699 0%, transparent 100%)
-  background-image: -webkit-linear-gradient(top, #336699 0%, transparent 100%)
-  float: left
-  height: 800px
-  width: 10px
 
 .side
   display: block
@@ -241,12 +338,6 @@ ol, ul
     font-size: 0.75rem
     font-style: italic
     margin: 0 0 0 10px
-
-.top-spacing
-  height: 80px
-
-.top-spacing-index
-  height: 50px
 
 .vista
   background: #000
@@ -283,7 +374,6 @@ ol, ul
       text-shadow: 0 0 2px #000
 
 .toc
-  float: right
   font-family: $sans_serif
   font-size: 0.8rem
   line-height: 1.5em
@@ -320,45 +410,6 @@ ol, ul
           ol
             list-style-type: none
 
-// This is a TOC that shows up on the left side of the screen for the
-// fragments, reading, twitter, etc. index pages.
-.toc-index
-  margin: 0 30px 0 0
-  position: absolute
-  left: -120px
-  width: 80px
-
-  ul
-    a
-      text-decoration: none
-
-      &:hover
-        text-decoration: underline
-
-      &:visited
-        text-decoration: none
-
-    // Sublists. Currently only used for months under years of Twitter.
-    ul
-      margin: 10px
-
-      li
-        color: $secondary
-        font-family: $sans_serif
-        font-size: 0.75rem
-        //line-height: 1.5em
-
-        a
-          color: $secondary
-          text-decoration: none
-
-          &:hover
-            color: $secondary
-            text-decoration: underline
-
-          &:visited
-            color: $secondary
-
 #footnotes
   border-top: 1px solid $tertiary
   font-size: 0.85rem
@@ -388,10 +439,19 @@ article, #now
       font-size: 0.85rem
       font-style: italic
       line-height: 1.5em
+      padding: 12px 0 0 0
       position: absolute
-      left: -120px
       top: 0
       text-align: right
+
+      // Border should be the same as left nav + TOC.
+      // Looks kind of interesting, but doesn't seem to quite fit.
+      //border-top: 6px solid #000
+
+      // Left needs to be the same as width + margin.
+      left: -120px
+
+      // Width should be the same as nav + TOC divs.
       width: 100px
 
   ol, ul
@@ -414,16 +474,6 @@ article, #now
     font-style: italic
     line-height: 1.5em
     text-align: left
-
-footer
-  margin: 50px 0 0 0
-  overflow: hidden
-  width: 100%
-
-  nav
-    border-top: 1px solid $tertiary
-    padding: 25px 20px
-    text-align: center
 
 // The index TOC, figure captions, and a few other things become problematic a
 // little before the width we'd normally reserve for smartphones and such, so
@@ -456,14 +506,31 @@ footer
     display: none
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  #flexcontainer
+    flex-direction: column
+
   .hook
     font-size: 1.15rem
 
   .top-nav
-    display: none
+    height: 100px
+    margin: 20px 8%
+    order: 4
+    width: 84%
 
-  .top-spacing, .top-spacing-index
-    height: 50px
+    .nav-inner
+      position: initial
+      text-align: center
+      width: auto
+
+      ul
+        li
+          float: left
+          line-height: 1.8em
+          margin: 0 6px
+
+    .nav-extra-content
+      display: none
 
   .toc
     float: none
@@ -498,46 +565,9 @@ footer
     max-width: 100%
 
     .content
+      // TODO: revisit
       margin: 0 8%
       width: 84%
 
     .side
       display: none
-
-// uncomment the below for multi-column "big" layout
-
-//@media only screen and (min-width: 1800px)
-//
-//  article
-//
-//    figure
-//
-//      // center images when going to multi-column
-//      img
-//        display: block
-//        margin: 0 auto
-//
-//      // if we active multi-column, we have to deactivate the left margin
-//      // positioning of figcaptions
-//      figcaption
-//        left: 0
-//        margin: 20px 0 0 0
-//        position: relative
-//        text-align: center
-//        top: 0
-//        width: auto
-//
-//  body
-//
-//  p
-//    // so much space! allow code content to just expand across the screen
-//    overflow: visible
-//
-//  pre
-//    // so much space! allow code content to just expand across the screen
-//    overflow: visible
-//
-//  footer
-//
-//    nav
-//      font-size: 0.75rem

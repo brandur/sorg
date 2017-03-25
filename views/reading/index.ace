@@ -1,131 +1,134 @@
 = content main
-  .flag
-  .top-nav
-    = include views/_nav
-  .top-spacing
-  .reading
+  #flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+      .toc-inner
+        .toc
+          ul
+            {{range .ReadingsByYear}}
+              li
+                a href="#year-{{.Year}}" {{.Year}}
+            {{end}}
     .content
-      #title
-        h1 Reading
-      p {{.NumReadings}} books.
-      #charts
-        #data-readings-by-year.chart
-        #data-pages-by-year.chart
-        .clear
-      .toc.toc-index
-        ul
+      .reading
+        #title
+          h1 Reading
+        p {{.NumReadings}} books.
+        #charts
+          .chart
+            #data-readings-by-year
+          .chart
+            #data-pages-by-year
+        .reading-content.content-inner-standard
           {{range .ReadingsByYear}}
-            li
-              a href="#year-{{.Year}}" {{.Year}}
-          {{end}}
-      #books
-        {{range .ReadingsByYear}}
-          div class="year" id="year-{{.Year}}"
-            h2 {{.Year}}
-            ul
-              {{range .Readings}}
-                li
-                  em
-                    {{.Title}}
-                  |  by {{.Author}}; 
-                  {{if ne .NumPages 0}}
-                    | {{.NumPages}} pages; 
-                  {{end}}
-                  {{if ne .Rating 0}}
-                    | {{ToStars .Rating}}; 
-                  {{end}}
-                  span.meta
-                    {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
-                    {{if ne "" $display}}
-                      {{$display}}
-                    {{else}}
-                      {{FormatTime .OccurredAt}}
+            div class="year" id="year-{{.Year}}"
+              h2 {{.Year}}
+              ul
+                {{range .Readings}}
+                  li
+                    em
+                      {{.Title}}
+                    |  by {{.Author}}; 
+                    {{if ne .NumPages 0}}
+                      | {{.NumPages}} pages; 
                     {{end}}
-              {{end}}
-        {{end}}
-  = include views/_footer
-  = javascript
-    var readingsByYearXYears = {{.ReadingsByYearXYears}};
-    var readingsByYearYCounts = {{.ReadingsByYearYCounts}};
+                    {{if ne .Rating 0}}
+                      | {{ToStars .Rating}}; 
+                    {{end}}
+                    span.meta
+                      {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
+                      {{if ne "" $display}}
+                        {{$display}}
+                      {{else}}
+                        {{FormatTime .OccurredAt}}
+                      {{end}}
+                {{end}}
+          {{end}}
+    = javascript
+      var readingsByYearXYears = {{.ReadingsByYearXYears}};
+      var readingsByYearYCounts = {{.ReadingsByYearYCounts}};
 
-    var pagesByYearXYears = {{.PagesByYearXYears}};
-    var pagesByYearYCounts = {{.PagesByYearYCounts}};
+      var pagesByYearXYears = {{.PagesByYearXYears}};
+      var pagesByYearYCounts = {{.PagesByYearYCounts}};
 
-    (function() {
-      new Highcharts.Chart({
-        chart: {
-          renderTo: 'data-readings-by-year',
-          defaultSeriesType: 'bar'
-        },
-        plotOptions: {
-          series: {
-            animation: false
-          }
-        },
-        title: {
-          text: null
-        },
-        xAxis: {
-          categories: readingsByYearXYears,
+      (function() {
+        new Highcharts.Chart({
+          chart: {
+            renderTo: 'data-readings-by-year',
+            defaultSeriesType: 'bar'
+          },
+          plotOptions: {
+            series: {
+              animation: false
+            }
+          },
           title: {
             text: null
-          }
-        },
-        yAxis: {
-          min: 0,
+          },
+          xAxis: {
+            categories: readingsByYearXYears,
+            title: {
+              text: null
+            }
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: null
+            }
+          },
+          tooltip: {
+            formatter: function() {
+              return this.y + (this.y !== 1 ? ' books read' : ' book read') + ' in ' + this.x;
+            }
+          },
+          series: [
+            {
+              name: 'Books',
+              data: readingsByYearYCounts,
+              color: '#333'
+             }
+          ]
+        });
+        new Highcharts.Chart({
+          chart: {
+            renderTo: 'data-pages-by-year',
+            defaultSeriesType: 'bar'
+          },
+          plotOptions: {
+            series: {
+              animation: false
+            }
+          },
           title: {
             text: null
-          }
-        },
-        tooltip: {
-          formatter: function() {
-            return this.y + (this.y !== 1 ? ' books read' : ' book read') + ' in ' + this.x;
-          }
-        },
-        series: [
-          {
-            name: 'Books',
-            data: readingsByYearYCounts,
-            color: '#333'
-           }
-        ]
-      });
-      new Highcharts.Chart({
-        chart: {
-          renderTo: 'data-pages-by-year',
-          defaultSeriesType: 'bar'
-        },
-        plotOptions: {
-          series: {
-            animation: false
-          }
-        },
-        title: {
-          text: null
-        },
-        xAxis: {
-          categories: pagesByYearXYears,
-          title: {
-            text: null
-          }
-        },
-        yAxis: {
-          min: 0,
-          title: {
-            text: null
-          }
-        },
-        tooltip: {
-          formatter: function() {
-            return this.y + (this.y !== 1 ? ' pages read' : ' page read') + ' in ' + this.x;
-          }
-        },
-        series: [
-          {
-            name: 'Pages',
-            data: pagesByYearYCounts,
-            color: '#333'
-          }
-        ]
-      });
-    }).call(this);
+          },
+          xAxis: {
+            categories: pagesByYearXYears,
+            title: {
+              text: null
+            }
+          },
+          yAxis: {
+            min: 0,
+            title: {
+              text: null
+            }
+          },
+          tooltip: {
+            formatter: function() {
+              return this.y + (this.y !== 1 ? ' pages read' : ' page read') + ' in ' + this.x;
+            }
+          },
+          series: [
+            {
+              name: 'Pages',
+              data: pagesByYearYCounts,
+              color: '#333'
+            }
+          ]
+        });
+      }).call(this);
