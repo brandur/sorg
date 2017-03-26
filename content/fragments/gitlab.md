@@ -1,5 +1,5 @@
 ---
-title: GitLab, and Building a Centrally Hosted Production Platform
+title: GitLab, and Centrally Hosted Platforms
 published_at: 2017-03-26T06:35:28Z
 hook: Thoughts on depending on the wrong primitive (Docker)
   and entering a very competitive space.
