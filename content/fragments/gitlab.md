@@ -62,7 +62,7 @@ leviathans like GitHub and Travis isn't a place that I'd
 want to be in personally, but as demonstrated by 9.0's
 feature list, the people at GitLab seem to have a knack for
 moving quickly on new features despite having a very mature
-codebase. Hopefully, it'll keep them alive.
+codebase. Hopefully, it'll keep them in the game.
 
 [1] Identical to the Heroku feature of the same name.
 
