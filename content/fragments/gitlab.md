@@ -51,8 +51,8 @@ in metrics, error tracking, and best practices like canary
 deployments, they could zero in on a level of
 sophistication that most users would never have built
 themselves. If done right, it could be akin to Apple's
-advantage in providing a far superior personal computing
-experience thanks to having perfect control over their
+advantage in providing a superior personal computing
+experience through total control over their product's
 entire stack.
 
 All that said, users right now are expected to bring their
