@@ -3,6 +3,18 @@ $serif: georgia, serif
 
 $secondary: #bbb
 
+#index-flexcontainer
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-direction: row
+  flex-direction: row
+  -webkit-justify-content: center
+  justify-content: center
+
+  .top-nav
+    margin-right: 40px
+    margin-top: 160px
+
 .index-about-and-lists, .index-photos-list
   margin: 30px 20px
 
@@ -47,14 +59,11 @@ $secondary: #bbb
 
 .index-about-and-lists
   flex: 3 1
-  max-width: 500px
-
-  // Give a little more margin for separation from nav.
-  //margin-left: 40px
+  max-width: 300px
 
 .index-photos-list
   flex: 6 1
-  max-width: 1600px
+  max-width: 510px
 
   img
     float: left
@@ -70,3 +79,17 @@ $secondary: #bbb
   .index-photos-list
     float: none
     margin: 5px auto
+
+@media only screen and (min-width: 1850px)
+  .index-about-and-lists
+    max-width: 400px
+
+  .index-photos-list
+    max-width: 1020px
+
+@media only screen and (min-width: 2400px)
+  .index-about-and-lists
+    max-width: 500px
+
+  .index-photos-list
+    max-width: 1530px
