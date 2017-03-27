@@ -1,10 +1,8 @@
 = content main
-  #flexcontainer
-    .flag
+  #index-flexcontainer
     .top-nav
       .nav-inner
         = include views/_nav
-    .toc-index
     .index-about-and-lists
       h1
         a href="/about" About
