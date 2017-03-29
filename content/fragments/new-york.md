@@ -27,7 +27,7 @@ After getting the subway system figured out, I approximated a solution to the tr
 A few random observations about the city:
 
 * New York's best attributes are its parks; Central Park, the High Line, and Washington Square Park would all rank amongst my top suggestions of things to see there.
-* [The High Line](http://en.wikipedia.org/wiki/High_Line_(New_York_City\)) in particular may be the greatest municipal salvage projects of all time. The only contender which I know of is Tempelhof in Berlin.
+* [The High Line](http://en.wikipedia.org/wiki/High_Line_(New_York_City)) in particular may be the greatest municipal salvage projects of all time. The only contender which I know of is Tempelhof in Berlin.
 * Central Park makes for a great inner city running track. I measured the circuit around its pedestrian-friendly road system at just over 12 km, with almost no stops.
 * Between its pay-to-play chess masters, puppeteers, jazz performers, and community ambience, [Washington Square Park](http://en.wikipedia.org/wiki/Washington_Square_Park) may be the most successful park I've ever visited. After seeing it in person, it strikes you as even more absurd at how long and hard activists like Jane Jacobs and Shirley Hayes had to fight to create this small haven from automobile traffic.
 * The New York Stock Exchange is a tourist trap on a monumental scale. I had no idea.
