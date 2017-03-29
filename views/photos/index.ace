@@ -1,5 +1,5 @@
 = content main
-  #flexcontainer
+  .flexcontainer
     .flag
     .top-nav
       .nav-inner

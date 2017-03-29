@@ -1,5 +1,5 @@
 = content main
-  #flexcontainer
+  div class="flexcontainer" id="{{if ne .Fragment.Image ""}}flexcontainer-fragments-show-mood{{end}}"
     .flag
     .top-nav
       .nav-inner
@@ -7,24 +7,27 @@
         .nav-extra-content
           .divider
           {{HTML .PublishingInfo}}
-    .toc-index
+    {{if eq .Fragment.Image ""}}
+      .toc-index
+    {{end}}
     .fragments
       .content
         {{if ne .Fragment.Image ""}}
           img#mood data-rjs="2" src={{.Fragment.Image}}
         {{end}}
-        #title.fragments-title
-          h1 {{.Fragment.Title}}
-          .meta
-            {{FormatTime .Fragment.PublishedAt}}
-        article
-          {{HTML .Fragment.Content}}
-          .divider-short
-          .info
-            .publishing-info-bottom
-              {{HTML .PublishingInfo}}
-            {{if .Fragment.Draft}}
-              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
-            {{else}}
-              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
-            {{end}}
+        div class="content-inner-fragments-show" id="{{if ne .Fragment.Image ""}}content-inner-fragments-show-mood{{end}}"
+          #title.fragments-title
+            h1 {{.Fragment.Title}}
+            .meta
+              {{FormatTime .Fragment.PublishedAt}}
+          article
+            {{HTML .Fragment.Content}}
+            .divider-short
+            .info
+              .publishing-info-bottom
+                {{HTML .PublishingInfo}}
+              {{if .Fragment.Draft}}
+                p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
+              {{else}}
+                p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
+              {{end}}

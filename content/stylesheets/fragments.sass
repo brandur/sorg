@@ -1,6 +1,30 @@
 $sans_serif: helvetica, arial, geneva, sans-serif
 $secondary: #cdcdcd
 
+#flexcontainer-fragments-show-mood
+  -webkit-flex-direction: column
+  flex-direction: column
+
+  .top-nav
+    margin: 0 auto 40px auto
+    order: 4
+    width: auto
+
+    .nav-inner
+      max-width: none
+      position: initial
+      text-align: center
+      width: 100%
+
+      ul
+        li
+          float: left
+          line-height: 1.8em
+          margin: 0 6px
+
+    .nav-extra-content
+      display: none
+
 .fragments
   .fragments-title
     h1
@@ -12,34 +36,37 @@ $secondary: #cdcdcd
   .content
     padding: 30px 0 0 0
 
-    // Constrain very large screens. Note that this is mainly to let a "mood"
-    // image appear large.
-    //max-width: 1500px
-
     // this is a "highlight" image that may or may not be included with an
     // article
     img#mood
       margin-bottom: 50px
+      margin-left: auto
+      margin-right: auto
+      max-width: 1100px
       width: 100%
 
       // This counteracts the extra padding we give to fragment content.
       margin-top: -50px
 
-    article
+    #content-inner-fragments-show-mood
+      margin: 0 auto
+
+    .content-inner-fragments-show
       max-width: 550px
 
-      h2, h3, h4
-        margin: 20px 0 -15px 0
+      article
+        h2, h3, h4
+          margin: 20px 0 -15px 0
 
-      h2
-        font-size: 1em
+        h2
+          font-size: 1em
 
-      h3, h4
-        font-size: 0.9em
+        h3, h4
+          font-size: 0.9em
 
-      pre
-        overflow: initial
-        white-space: pre-wrap
+        pre
+          overflow: initial
+          white-space: pre-wrap
 
     // Shown in the sidebar except for small screens.
     .publishing-info-bottom
