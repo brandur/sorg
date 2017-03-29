@@ -9,8 +9,8 @@ hook: I'm happy to be cheering from the bleachers as Apple
 Apple's had a bad few years. Financially, things are great,
 but product innovation has not only slowed to a crawl, but
 in cases like the Touch Bar, has actually stopped,
-reversed, and is now chugging along at full steam in _the
-wrong direction_. I'd planned to ignore the release of the
+reversed, and is now chugging along at full steam in the
+wrong direction. I'd planned to ignore the release of the
 AirPods, but some personal anecdotes from a few early
 adopters were so strong, that I caved and bought a pair.
 
