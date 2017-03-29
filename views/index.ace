@@ -1,8 +1,5 @@
 = content main
   .flexcontainer#flexcontainer-index
-    .top-nav
-      .nav-inner
-        = include views/_nav
     .index-about-and-lists
       h1
         a href="/about" About
@@ -40,3 +37,6 @@
             a href="https://www.flickr.com/photos/brandurleach/{{$photo.Slug}}"
               img src="/assets/photos/{{$photo.Slug}}.jpg" data-rjs="2" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}"
         {{end}}
+  .top-nav#top-nav-index
+    .nav-inner
+      = include views/_nav
