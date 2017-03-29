@@ -14,23 +14,24 @@ wrong direction_. I'd planned to ignore the release of the
 AirPods, but some personal anecdotes from a few early
 adopters were so strong, that I caved and bought a pair.
 
-And boy was I wrong. These things are awesome.
+And boy was I wrong. These things are awesome. Easily the
+best new product that Apple has released in recent memory.
 
 My biggest fear going in is that like the other wireless
 technologies that we know and love, they would occasionally
 just ... not work. Having a call drop is annoying, but
 earphones that can't consistently play music is a recipe
 for frustration so total that it borders on sheer agony.
-I'm happy to say that a few weeks of use in that it just
-doesn't happen; the AirPods' connection is so seamless that
+But now I'm a few weeks of use in, and that just doesn't
+seem to happen; the AirPods' connection is so seamless that
 you forget you're not attached with a wire.
 
 And speaking of wires, the future is bright. Not having
 a Gordian knot to untangle every time your take your
 earphones out of pocket, and not getting caught on anything
-you walk by that's protruding ever-so-slightly is
-incredibly freeing, and you really notice it. Getting them
-in and out of your ears is as fast and easy as you could
+you walk by that's protruding ever-so-slightly is freeing,
+and you start to appreciate it immediately. Getting them in
+and out of your ears is as fast and easy as you could
 possibly want.
 
 But it's the minor touches in usability that make the
@@ -55,7 +56,7 @@ unfulfilling experience. I would have thought that Apple
 employees using their own products would eventually push
 development in the right direction, but years of
 disappointment on this front suggest that it's not the
-case. Apparently Cupertino is a very quiet place.
+case. Cupertino must be a very quiet place.
 
 Despite that, they're still great and a pleasure to use
 every time I take them out. Apple: fewer Touch Bars and
