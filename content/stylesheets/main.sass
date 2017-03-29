@@ -29,7 +29,7 @@ body
   // thinks it needs more space.
   min-width: 10px
 
-#flexcontainer
+.flexcontainer
   display: -webkit-flex
   display: flex
   -webkit-flex-direction: row
@@ -518,7 +518,9 @@ article, #now
 
   .top-nav
     height: 100px
-    margin: 20px 8%
+    // Set as !important to keep fragments "mood" (with image) working
+    // properly at small screens.
+    margin: 20px 8% !important
     order: 4
     width: 84%
 

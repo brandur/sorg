@@ -1,5 +1,5 @@
 = content main
-  #index-flexcontainer
+  .flexcontainer#flexcontainer-index
     .top-nav
       .nav-inner
         = include views/_nav
