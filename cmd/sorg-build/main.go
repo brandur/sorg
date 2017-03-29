@@ -1303,7 +1303,7 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 		WHERE type = 'flickr'
 			AND (metadata -> 'medium_width')::int = 500
 		ORDER BY occurred_at DESC
-		LIMIT 30
+		LIMIT 90
 	`)
 	if err != nil {
 		return nil, err
