@@ -14,8 +14,9 @@ wrong direction_. I'd planned to ignore the release of the
 AirPods, but some personal anecdotes from a few early
 adopters were so strong, that I caved and bought a pair.
 
-And boy was I wrong. These things are awesome. Easily the
-best new product that Apple has released in recent memory.
+And boy was I wrong. These things are awesome. They're
+easily the best new product that Apple has released in
+recent memory.
 
 My biggest fear going in is that like the other wireless
 technologies that we know and love, they would occasionally
