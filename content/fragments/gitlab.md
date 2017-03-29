@@ -35,9 +35,9 @@ source installation of something like Kubernetes at great
 personal expense.
 
 There's still room for a platform that's _not_ self-hosted
-and still meets 90% of the needs of most users. Even after
-years of only modest advacements, Heroku is still relevant
-in this space even though the IaaS goliaths should have
+and still meets the needs of 90% of users. Even after years
+of only modest advacements, Heroku is still relevant in
+this space even though the IaaS goliaths should have
 surpassed it years ago. They still make getting from zero
 to production easy, and guarantee a low level of
 maintenance overhead once you're there. Docker-based
