@@ -51,8 +51,9 @@ they do about the technology you use.
 Fielding's original ideas around REST are elegant and now
 quite widespread, but it's worth considering that the
 paradigm's actual advantages for developers are fairly
-unremarkable. Practically speaking, REST's strongest point
-by far is simply **convention** [1]. URLs are usually
+unremarkable. Practically speaking, REST's strongest points
+are its widespread interoperability (every language has an
+HTTP client) and its **conventions** [1]. URLs are usually
 resources. Resources often have standard CRUD operations
 that are mapped to HTTP verbs like `PATCH` and `DELETE`.
 Status codes usually convey information. Commonly needed
@@ -60,8 +61,40 @@ API mechanics like authentication and content encoding are
 sometimes integrated into standard HTTP headers like
 `Authorization` and `Content-Encoding`. This is all very
 good: convention allows a developer to learn something once
-and then re-use that information to extrapolate how other
+and then re-use that information to figure out how other
 things will probably work.
+
+<figure>
+  <table class="overflowing">
+    <tr>
+      <th>Action</th>
+      <th>HTTP Verb</th>
+      <th>URL</th>
+    </tr>
+    <tr>
+      <td>Create</td>
+      <td><code>POST</code></td>
+      <td><code>/customers</code></td>
+    </tr>
+    <tr>
+      <td>Replace</td>
+      <td><code>PUT</code></td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+    <tr>
+      <td>Update</td>
+      <td><code>PATCH</code></td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+    <tr>
+      <td>Delete</td>
+      <td><code>DELETE</code></td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+  </table>
+  <figcaption>The conventions of REST. URLs are resources
+    and CRUD maps to HTTP verbs.</figcaption>
+</figure>
 
 This convention is REST is nice, but if it has one problem,
 it's that there isn't enough of it. I use words like
@@ -71,7 +104,9 @@ be followed. In real life, most APIs are REST-ish at best.
 At Stripe for example, our resource updates should use
 `PATCH` instead of `PUT`, but they don't for historical
 reasons and it's probably not worth changing at this point.
-Developers will need to read the documentation anyway.
+Developers will need to read the documentation anyway, and
+they'll find out about our ubiquitous use of the `POST`
+verb when they do.
 
 REST also has other problems. Resource payloads can be
 quite large, and in many cases they don't map well to the
@@ -96,6 +131,26 @@ least one "big API" adopting it in the form of GitHub. More
 exciting though is the organic uptake, with many smaller
 companies with a better opportunity to greenfield starting
 with it instead of REST.
+
+``` json
+{
+  person(personID: 4) {
+    name
+    gender
+    homeworld {
+      name
+    }
+    starshipConnection {
+      edges {
+        node {
+          id
+          manufacturers
+        }
+      }
+    }
+  }
+}
+```
 
 It has many advantages: built-in introspection so
 developers can use tools to navigate through an API they're
@@ -147,7 +202,7 @@ something like [GRPC][grpc] to generate libraries in a huge
 variety of languages that users can pull down and use at
 their leisure. Under GRPC, data moves around in the
 efficient protocol buffers format over HTTP2, making
-transport performance of a GRPC-based aPI good by default,
+transport performance of a GRPC-based API good by default,
 and with no effort required on the parts of either users or
 operators.
 
@@ -206,7 +261,33 @@ into REST calls, but the library could also compile each
 request into a specially crafted GraphQL query to maximize
 the network efficiency of every API call.
 
-## Summary (#summary)
+## Productivity Through Convention and Tooling (#convention-tooling)
+
+We shouldn't forget what REST-ful APIs did for us in terms
+of providing a set of conventions that helped us be more
+productive because what we knew was transferable as we
+looked at new APIs.
+
+All of these options are pretty plausible ways forward to a
+post-REST world, and whichever we choose, we shouldn't
+forget the lessons that REST taught us in that convention
+and widespread consistency are powerful things. If we do
+adopt something new, we should aim to make it as ubiquitous
+as possible so that we don't worsen developer experience by
+fracturing technologies. Unfortunately though,
+realistically that might mean just sticking to REST.
+
+Here's one final strong opinion: religious adherence to
+REST is overrated and its perceived advantages have never
+materialized as fully as its proponents claimed. Whatever
+we choose next should aim to be flexible and efficient, and
+GraphQL seems like a good candidate for that. We should
+move to GraphQL as a backend and combine it with great
+language-specific libraries that leverage good type systems
+to catch integration mistakes before the first HTTP call
+flies, and which allow developers to use their own tooling
+to auto-complete (in the sense of VS IntelliSense or Vim's
+YouCompleteMe) to success.
 
 [1] I realize that REST is designed to provide much greater
     facilities in the form of discovery and content
