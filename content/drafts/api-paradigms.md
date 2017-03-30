@@ -11,7 +11,8 @@ For a long time the API community spent a lot of effort
 evangelizing [hypermedia][hypermedia], which promised to
 make web APIs more discoverable through clients that could
 follow links like a human, and more future proof by
-re-using existing HTTP semantics like 301 redirects.
+re-using existing hypertext and HTTP semantics like `<a>`
+links and 301 redirects.
 
 But hypermedia had a very hard time building any kind of
 traction. At least some of the trouble was technical, but
@@ -34,10 +35,10 @@ practical and resilient to obsolescence; it might just be
 
 As a service provider, it might be tempting to think that
 your choice of backend technology is going to make a big
-difference to your users. In my experience, as long as you
-meet a minimum bar of non-offensiveness, this is almost
-never the case (SOAP and OAuth 1 being two examples of
-technologies that don't).
+difference to your users, but that's probably not the case.
+As long as you meet a minimum bar of non-offensiveness,
+this is almost never the case (SOAP and OAuth 1 being two
+examples of technologies that don't).
 
 As long as reasonable tools are available so that the
 developer experience (DX) in integrating is pretty good,
@@ -48,21 +49,21 @@ they do about the technology you use.
 
 ## REST is Okay (#rest)
 
-Fielding's original ideas around REST are elegant and now
-quite widespread, but it's worth considering that the
-paradigm's actual advantages for developers are fairly
-unremarkable. Practically speaking, REST's strongest points
-are its widespread interoperability (every language has an
-HTTP client) and its **conventions** [1]. URLs are usually
-resources. Resources often have standard CRUD operations
-that are mapped to HTTP verbs like `PATCH` and `DELETE`.
-Status codes usually convey information. Commonly needed
-API mechanics like authentication and content encoding are
-sometimes integrated into standard HTTP headers like
-`Authorization` and `Content-Encoding`. This is all very
-good: convention allows a developer to learn something once
-and then re-use that information to figure out how other
-things will probably work.
+Roy Fielding's original ideas around REST are elegant and
+now quite widespread, but it's worth considering that the
+paradigm's actual advantages in APIs for developers are
+fairly unremarkable. Practically speaking, REST's strongest
+points are its widespread interoperability (every language
+has an HTTP client) and its **conventions** [1]. URLs are
+usually resources. Resources often have standard CRUD
+operations that are mapped to HTTP verbs like `PATCH` and
+`DELETE`. Status codes usually convey information. Commonly
+needed API mechanics like authentication and content
+encoding are sometimes integrated into standard HTTP
+headers like `Authorization` and `Content-Encoding`. This
+is all very good; convention allows a developer to learn
+something once and then re-use that information to figure
+out how other things will probably work.
 
 <figure>
   <table class="overflowing">
@@ -96,25 +97,25 @@ things will probably work.
     and CRUD maps to HTTP verbs.</figcaption>
 </figure>
 
-This convention is REST is nice, but if it has one problem,
-it's that there isn't enough of it. I use words like
-"usually" , "often", and "sometimes" because although these
-practices are recommended by the spec, they may or may not
-be followed. In real life, most APIs are REST-ish at best.
-At Stripe for example, our resource updates should use
-`PATCH` instead of `PUT`, but they don't for historical
-reasons and it's probably not worth changing at this point.
-Developers will need to read the documentation anyway, and
-they'll find out about our ubiquitous use of the `POST`
-verb when they do.
+If convention in REST has one problem, it's that there
+isn't enough of it. I use words like _usually_ , _often_,
+and _sometimes_ above because although these practices are
+recommended by the spec, they may or may not be followed.
+In real life, most APIs are REST-ish at best. At Stripe for
+example, our resource updates should use `PATCH` instead of
+`PUT`, but for historical reasons they don't, and it's
+probably not worth changing at this point. Developers will
+need to read the documentation anyway, and they'll find out
+about our ubiquitous use of the `POST` verb when they do.
 
 REST also has other problems. Resource payloads can be
-quite large, and in many cases they don't map well to the
+quite large because they return everything instead of just
+what you need, and in many cases they don't map well to the
 kind of information that clients actually want, forcing
-them into very expensive `N + 1` query situations. This is
-especially problematic for clients on more limited networks
-like mobile, where both bandwidth and bad latency conspire
-to make REST an expensive proposition.
+expensive `N + 1` query situations. This is especially
+problematic for clients on more limited networks like
+mobile, where both bandwidth and bad latency conspire to
+make REST an expensive proposition.
 
 ## What's Next (#whats-next)
 
@@ -155,14 +156,14 @@ with it instead of REST.
 It has many advantages: built-in introspection so
 developers can use tools to navigate through an API they're
 about to use. Data can be organized in a free form way that
-doesn't necessarily tie it to heavy resources. With a
-well-organized graph, a client can potentially request the
-exact set of data they need to do their work. Imagine
-having to send only a single API request out to load a page
-instead of dozens. It's great for service operators too,
-because its [explicitness allows them get a better
-understanding of exactly what their users are trying to
-do](/api-upgrades).
+doesn't necessarily tie it to heavy resources. A
+well-organized graph can allow a client request the exact
+set of data they need to do their work, with little waste
+in number of calls or payload size. Imagine having to send
+only a single API request out to load a page instead of
+dozens. It's great for service operators too, because its
+[explicitness allows them get a better understanding of
+exactly what their users are trying to do](/api-upgrades).
 
 But GraphQL's future is still uncertain. Most notably,
 Facebook itself hasn't even adopted it for their public
@@ -181,20 +182,21 @@ still need to be looked up in a query explorer or reference
 documentation. The closest analog is probably SQL; although
 this is a technology that may of use every day, maintaining
 blobs of queries turned out to be an overall painful enough
-experience that most of us turn to ORMs to wrap them in
-most cases. The same could certainly be done for GraphQL,
-but in that case we might have to ask ourselves just how
-much it's really accomplished for us.
+experience that most of us turn to ORMs to wrap them. The
+same could certainly be done for GraphQL, but in that case
+we might have to ask ourselves just how much it's really
+accomplished for us.
 
 ### RPC (#rpc)
 
 A very strong argument could be made that if most APIs are
-REST-**ish** instead of REST-**ful**, and most of the
-conventions that we're actually using boil down to making
-URLs consistent and basic CRUD, then just maybe REST really
-isn't buying us all that much. It may be an elegant idea,
-but as a developer my foremost is ease of integration; an
-API's ideological integrity is a distant tertiary concern.
+REST-**ish** instead of REST-**ful**, and assuming that
+most of the conventions that we're actually using boil down
+to making URLs consistent and basic CRUD, then just maybe
+REST really isn't buying us all that much. It may be an
+elegant idea, but as a developer my foremost is ease of
+integration; an API's ideological integrity is a distant
+tertiary concern.
 
 One possibility for the next big paradigm in APIs is just
 to make them a set RPCs (remote procedure calls) and use
@@ -227,10 +229,10 @@ But the real world-shifting power of RPC would only become
 apparent if you could get _everyone_ to agree on it.
 Imagine if AWS, GitHub, Stripe, etc. were all on GRPC, and
 integrating with a new API was as simple as downloading a
-new set of definitions and writing code immediately because
-all your supporting infrastructure (i.e. initialization,
-libraries, configuration, ...) was already in place and
-ready to go.
+new set of protobuf definitions and writing code
+immediately because all your supporting infrastructure
+(i.e. initialization, libraries, configuration, ...) was
+already in place and ready to go.
 
 ### Bespoke Clients (#bespoke-clients)
 
@@ -263,19 +265,20 @@ the network efficiency of every API call.
 
 ## Productivity Through Convention and Tooling (#convention-tooling)
 
-We shouldn't forget what REST-ful APIs did for us in terms
-of providing a set of conventions that helped us be more
-productive because what we knew was transferable as we
-looked at new APIs.
+In the end, we shouldn't forget what REST-ful APIs did for
+us in terms of providing a set of conventions that helped
+us be more productive because what we knew was transferable
+as we looked at new APIs.
 
-All of these options are pretty plausible ways forward to a
-post-REST world, and whichever we choose, we shouldn't
-forget the lessons that REST taught us in that convention
-and widespread consistency are powerful things. If we do
-adopt something new, we should aim to make it as ubiquitous
-as possible so that we don't worsen developer experience by
-fracturing technologies. Unfortunately though,
-realistically that might mean just sticking to REST.
+GraphQL, RPC, and bespoke clients are all pretty plausible
+ways forward to a post-REST world, but whichever we choose,
+we shouldn't forget the lessons that REST taught us in that
+convention and widespread consistency are powerful things.
+If we do adopt something new, we should aim to make it as
+ubiquitous as possible so that we don't worsen developer
+experience by fracturing technologies. Unfortunately
+though, realistically that might mean just sticking to
+REST.
 
 Here's one final strong opinion: religious adherence to
 REST is overrated and its perceived advantages have never
@@ -284,7 +287,7 @@ we choose next should aim to be flexible and efficient, and
 GraphQL seems like a good candidate for that. We should
 move to GraphQL as a backend and combine it with great
 language-specific libraries that leverage good type systems
-to catch integration mistakes before the first HTTP call
+to catch integration mistakes before andthe first HTTP call
 flies, and which allow developers to use their own tooling
 to auto-complete (in the sense of VS IntelliSense or Vim's
 YouCompleteMe) to success.
