@@ -1,9 +1,10 @@
 ---
-title: What's the Next Big Paradigm for Web APIs?
+title: What's the Next Paradigm for Web APIs?
 published_at: 2017-03-29T21:00:36Z
 location: San Francisco
-hook: Musings on whether REST-ish JSON over HTTP is just
-  "good enough" to never be displaced in a signficant way.
+hook: Musings on next API technology, or whether REST-ish
+  JSON over HTTP is just "good enough" to never be displaced
+  in a signficant way.
 ---
 
 For a long time the API community spent a lot of effort
@@ -186,6 +187,8 @@ route is obviously significantly worse, but these libraries
 could be designed according to the local conventions of
 each language, and make them a pleasure to integrate with.
 
+!fig src="/assets/api-paradigms/bespoke.jpg" caption="Some tooling to help create a bespoke leather product."
+
 Strong typing in some languages could be used to make sure
 that the compiler catches as many bugs as possible without
 a round trip to the API server even needed. For example, we
@@ -211,6 +214,6 @@ the network efficiency of every API call.
     of use, which is why I normally say that convention is
     REST's strongest attribute.
 
-[grpc]: 
-[graphql]: 
-[hypermedia]: 
+[grpc]: http://www.grpc.io/
+[graphql]: http://graphql.org/
+[hypermedia]: https://en.wikipedia.org/wiki/Hypermedia
