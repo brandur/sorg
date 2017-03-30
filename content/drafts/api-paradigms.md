@@ -22,10 +22,11 @@ the extra overhead.
 
 After five years of strong evangelism at every API
 conference in the world and very little actual adoption,
-it's pretty safe to say that hypermedia is never going to
-be the next big thing. But that leads us to the question:
-what will be? Will there even be a next big thing? REST-ish
-JSON over HTTP might be a pragmatic solution that's just
+it's a pretty safe bet that hypermedia isn't going to be
+the next big thing. But that leads us to the question of
+what will be? Does the world even need a new API paradigm?
+REST-ish JSON over HTTP has proven itself to be quite
+practical and resilient to obsolescence; it might just be
 "good enough" to reign supreme for a long time to come.
 
 ## Hailing DX (#dx)
@@ -154,6 +155,8 @@ enough conventions to be competitive with what REST gives
 us (e.g. `create_charge()`, `update_customer(id:)`,
 `delete_subscription(id:)`), and as a developer be just as
 pleasant to use.
+
+!fig src="/assets/api-paradigms/rpc-vs-rest.svg" caption="By dropping a resource-based world view, we can better map endpoints to the user actions."
 
 Dropping REST's resource-based world view also has the
 advantage of letting designers better map their endpoints
