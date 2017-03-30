@@ -17,7 +17,7 @@
         em Older articles are <a href="/articles">available here</a>.
       .divider-short
       h1
-        a href="/fragments" Stories
+        a href="/fragments" Fragments
       ul
         {{range .Fragments}}
           li
