@@ -224,9 +224,12 @@ img, video
 // Allow certain images (e.g. about and now pages) to overflow out of the
 // normal text bounds for a slightly uneven look. A max-width rule below
 // constrains max-width back to 100% when the screen gets too small.
-img.overflowing, video.overflowing
+img.overflowing, table.overflowing, video.overflowing
   overflow: visible
   max-width: 650px
+
+table.overflowing
+  width: 650px
 
 p
   hyphens: auto
@@ -241,7 +244,9 @@ pre
   line-height: 1.4em
   overflow: visible
   padding: 40px 0 40px 40px
-  width: 650px
+
+  // 650 - 40 to offset the padding
+  width: 610px
 
   code
     background: transparent
@@ -502,9 +507,12 @@ article, #now
     overflow: auto
     width: auto
 
-  img.overflowing, video.overflowing
+  img.overflowing, table.overflowing, video.overflowing
     max-width: 100%
     overflow: auto
+
+  table.overflowing
+    width: 100%
 
   .toc-index
     display: none
