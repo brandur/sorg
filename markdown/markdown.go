@@ -96,7 +96,7 @@ func transformSections(source string) string {
 
 const figureHTML = `
 <figure>
-  <p><a href="%s"><img src="%s"></a></p>
+  <p><a href="%s"><img src="%s" class="overflowing"></a></p>
   <figcaption>%s</figcaption>
 </figure>
 `

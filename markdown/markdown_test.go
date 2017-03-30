@@ -62,7 +62,7 @@ hello
 func TestTransformFigures(t *testing.T) {
 	assert.Equal(t, `
 <figure>
-  <p><a href="fig-src"><img src="fig-src"></a></p>
+  <p><a href="fig-src"><img src="fig-src" class="overflowing"></a></p>
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
@@ -72,7 +72,7 @@ func TestTransformFigures(t *testing.T) {
 	// .png links to "@2x" version of the source
 	assert.Equal(t, `
 <figure>
-  <p><a href="fig-src@2x.png"><img src="fig-src.png"></a></p>
+  <p><a href="fig-src@2x.png"><img src="fig-src.png" class="overflowing"></a></p>
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
@@ -82,7 +82,7 @@ func TestTransformFigures(t *testing.T) {
 	// .svg doesn't link to "@2x"
 	assert.Equal(t, `
 <figure>
-  <p><a href="fig-src.svg"><img src="fig-src.svg"></a></p>
+  <p><a href="fig-src.svg"><img src="fig-src.svg" class="overflowing"></a></p>
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
@@ -91,7 +91,7 @@ func TestTransformFigures(t *testing.T) {
 
 	assert.Equal(t, `
 <figure>
-  <p><a href="fig-src"><img src="fig-src"></a></p>
+  <p><a href="fig-src"><img src="fig-src" class="overflowing"></a></p>
   <figcaption>Caption with " quote.</figcaption>
 </figure>
 `,
