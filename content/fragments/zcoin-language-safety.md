@@ -8,11 +8,11 @@ hook: Is it irresponsible to start projects in C/C++?
 A [recent bug in Zcoin][bug] allowed an attacker to mint
 ~550,000 new coins, the theoretical equivalent to
 USD$750,000 (and about 25% of the entire Zcoin supply). As
-is common with a C++ codebase, it turned out to be an easy
-to make and hard to spot typing problem that the permissive
-compiler had no qualms about letting happen (namely, a
-mistake of one extra character and use of a `==` equality
-operator instead of an `=` assignment operator).
+is common with a C++ codebase, it turned out to be an
+easy-to-make and hard-to-spot typing problem that the
+permissive compiler had no qualms about letting happen
+(namely, a mistake of one extra character and use of a `==`
+equality operator instead of an `=` assignment operator).
 
 One user on the HN comment thread asked the question that
 as an industry we should all be asking ourselves: "Given
