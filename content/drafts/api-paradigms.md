@@ -244,7 +244,7 @@ directly into REST requests, but the library could also
 compile each one into a specially crafted GraphQL query (or
 mutation) to maximize its network efficiency.
 
-## Productivity Through Convention and Tooling (#convention-tooling)
+## Maximizing Productivity Through Convention and Tooling (#productivity)
 
 In the end, we shouldn't forget what REST-ful APIs did for
 us in terms of providing a set of conventions that helped
