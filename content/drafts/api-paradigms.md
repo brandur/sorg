@@ -112,10 +112,10 @@ REST also has other problems. Resource payloads can be
 quite large because they return everything instead of just
 what you need, and in many cases they don't map well to the
 kind of information that clients actually want, forcing
-expensive `N + 1` query situations. This is especially
-problematic for clients on more limited networks like
-mobile, where both bandwidth and bad latency conspire to
-make REST an expensive proposition.
+expensive `N + 1` query situations. This is especially bad
+for clients on more limited networks like mobile, where
+both bandwidth and bad latency conspire to make REST an
+expensive proposition.
 
 ## What's Next (#whats-next)
 
