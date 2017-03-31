@@ -25,7 +25,7 @@ Gate Bridge to Fort Point, and it's better than anything I
 took that day.
 
 iPhone 7s are expensive, with the base model coming in $649
-USD. But if brazenly overpriced smartphones are being
+USD, but if brazenly overpriced smartphones are being
 outcompeted on that front by one other industry, it's pro
 and "prosumer" camera equipment. The latest model of my
 camera, the X100F (F = "fourth") weighs in at $1,299 USD;
