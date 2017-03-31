@@ -1,5 +1,5 @@
 ---
-title: The AirPods Reviewed
+title: AirPods, Reviewed
 published_at: 2017-03-29T14:44:33Z
 image: /assets/fragments/airpods/vista.jpg
 hook: I'm happy to be cheering from the bleachers as Apple
