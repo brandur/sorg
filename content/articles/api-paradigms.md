@@ -162,7 +162,7 @@ query blob with minimal typing and guarantees on the
 client-side. It's structured, but individual operations
 still need to be looked up in a query explorer or reference
 documentation. Its closest analog is SQL; although this is
-a technology that may of use every day, maintaining SQL
+a technology that many of use every day, maintaining SQL
 query blobs are a painful enough experience that most of us
 turn to ORMs to wrap them. The same could certainly be done
 for GraphQL, but in that case we might have to ask
