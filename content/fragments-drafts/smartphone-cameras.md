@@ -1,6 +1,6 @@
 ---
 title: The Rise of the Smartphone
-published_at: 2017-03-31T03:47:21Z
+published_at: 2017-03-31T11:39:43Z
 image: /assets/fragments/smartphone-cameras/under-the-bridge.jpg
 hook: TODO
 attributions: Photo by <a
