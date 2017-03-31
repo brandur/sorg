@@ -133,25 +133,7 @@ exciting though is the organic uptake, with many smaller
 companies with a better opportunity to greenfield starting
 with it instead of REST.
 
-``` json
-{
-  person(personID: 4) {
-    name
-    gender
-    homeworld {
-      name
-    }
-    starshipConnection {
-      edges {
-        node {
-          id
-          manufacturers
-        }
-      }
-    }
-  }
-}
-```
+!fig src="/assets/api-paradigms/graphql.jpg" caption="GraphQL produces an API that can be queried in complex ways."
 
 It has many advantages: built-in introspection so
 developers can use tools to navigate through an API they're
