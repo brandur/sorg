@@ -1,5 +1,5 @@
 ---
-title: What's the Next Paradigm for Web APIs?
+title: Is GraphQL the Next Frontier for Web APIs?
 published_at: 2017-03-29T21:00:36Z
 location: San Francisco
 hook: Musings the next API technology, and whether REST-ish
