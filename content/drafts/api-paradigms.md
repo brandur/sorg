@@ -221,28 +221,28 @@ Going back to the idea of developer experience being of
 utmost importance, it may be that the future of big APIs
 are custom-built libraries in all the major languages that
 their users care about. The maintenance overhead of this
-route is obviously significantly worse, but these libraries
-could be designed according to the local conventions of
-each language, and make them a pleasure to integrate with.
+route is obviously significantly worse for service
+providers, but these libraries could be designed according
+to the local conventions of each language, making them a
+pleasure to integrate with.
 
 !fig src="/assets/api-paradigms/bespoke.jpg" caption="Some tooling to help create a bespoke leather product."
 
-Strong typing in some languages could be used to make sure
-that the compiler catches as many bugs as possible without
-a round trip to the API server even needed. For example, we
-could make it impossible to make an API call unless an API
-key was provided, or require that an email parameter be
-provided to create a new user. Documentation could be
-provided within the language's own ecosystem (Godoc for
-example), or even inline while writing code if there's a
-good IDE.
+Strong typing could be used to make sure that the compiler
+catches as many bugs as possible without a round trip to
+the API server even needed. For example, we could make it
+impossible to make an API call unless an API key was
+provided, or require that an email parameter be provided to
+create a new user. Documentation could be provided within
+the language's own ecosystem (Godoc for example), or even
+inline while writing code if there's a good IDE.
 
 In this world, the server-side technology would be totally
 opaque to end users and purely up to the discretion of the
 library maintainers. Maybe function invocations translate
-into REST calls, but the library could also compile each
-request into a specially crafted GraphQL query to maximize
-the network efficiency of every API call.
+directly into REST requests, but the library could also
+compile each one into a specially crafted GraphQL query (or
+mutation) to maximize its network efficiency.
 
 ## Productivity Through Convention and Tooling (#convention-tooling)
 
