@@ -1,5 +1,5 @@
 ---
-title: The Death of the Dedicated Camera
+title: The Rise of the Smartphone
 published_at: 2017-03-31T03:47:21Z
 image: /assets/fragments/smartphone-cameras/under-the-bridge.jpg
 hook: TODO
