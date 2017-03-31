@@ -1,7 +1,7 @@
 ---
-title: Camera Destiny
+title: The Death of the Dedicated Camera
 published_at: 2017-03-31T03:47:21Z
-image: /assets/fragments/camera-destiny/under-the-bridge.jpg
+image: /assets/fragments/smartphone-cameras/under-the-bridge.jpg
 hook: TODO
 ---
 
