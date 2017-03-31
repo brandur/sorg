@@ -4,7 +4,7 @@ published_at: 2017-03-29T21:00:36Z
 location: San Francisco
 hook: Musings the next API technology, and whether REST-ish
   JSON over HTTP is just "good enough" to never be displaced
-  in a signficant way.
+  in a significant way.
 ---
 
 For a long time the API community spent a lot of effort
