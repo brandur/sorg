@@ -1,7 +1,7 @@
 ---
 title: The Rise of the Smartphone's Eye
 published_at: 2017-03-31T18:04:30Z
-image: /assets/fragments/smartphone-cameras/under-the-bridge.jpg
+image: /assets/fragments/smartphones-eye/under-the-bridge.jpg
 hook: Musings on the accelerating development of smartphone
   cameras.
 attributions: Photo by <a
