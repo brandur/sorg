@@ -2,7 +2,7 @@
 title: Is GraphQL the Next Frontier for Web APIs?
 published_at: 2017-03-29T21:00:36Z
 location: San Francisco
-hook: Musings the next API technology, and whether REST-ish
+hook: Musings on the next API technology, and whether REST-ish
   JSON over HTTP is just "good enough" to never be displaced
   in a significant way.
 ---
