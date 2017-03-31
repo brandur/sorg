@@ -1,8 +1,9 @@
 ---
 title: The Rise of the Smartphone
-published_at: 2017-03-31T11:39:43Z
+published_at: 2017-03-31T18:04:30Z
 image: /assets/fragments/smartphone-cameras/under-the-bridge.jpg
-hook: TODO
+hook: Musings on the accelerating development of smartphone
+  cameras.
 attributions: Photo by <a
   href="https://twitter.com/keiko713">Keik Oda</a> and
   republished with permission.
@@ -33,8 +34,9 @@ two times the price of the base iPhone 7.
 I still remember a time when phone cameras were about 50 by
 100 pixels in resolution, and so embarassingly bad that you
 wouldn't show one to your most ardent supporters. Not only
-have those times passed, but these days they're nothing
-more than a distant memory.
+have those times passed, but they're so far removed from
+today's reality that they're nothing more than a mildly
+interesting historical footnote.
 
 There are some enthusiasts like myself who will need to
 have their "real" (i.e. non-smartphone) cameras ripped from
