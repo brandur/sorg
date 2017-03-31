@@ -3,6 +3,9 @@ title: The Rise of the Smartphone
 published_at: 2017-03-31T03:47:21Z
 image: /assets/fragments/smartphone-cameras/under-the-bridge.jpg
 hook: TODO
+attributions: Photo by <a
+  href="https://twitter.com/keiko713">Keik Oda</a> and
+  republished with permission.
 ---
 
 A few months back a friend and I were doing walk around San
