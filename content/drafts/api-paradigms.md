@@ -40,9 +40,9 @@ As long as you meet a minimum bar of non-offensiveness,
 this is almost never the case (SOAP and OAuth 1 being two
 examples of technologies that don't).
 
-As long as reasonable tools are available so that the
-developer experience (DX) in integrating is pretty good,
-users tend to be flexible. Avoid anything that's too heavy,
+If there are reasonable tools available to keep the
+developer experience (DX) in integrating pretty good, users
+tend to be flexible. Avoid anything that's too heavy,
 exotic, or obnoxious, and you'll find that your users will
 care about the quality of your documentation far more than
 they do about the technology you use.
