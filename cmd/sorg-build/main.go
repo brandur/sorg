@@ -154,6 +154,10 @@ type Conf struct {
 // Fragment represents a fragment (that is, a short "stream of consciousness"
 // style article) to be rendered.
 type Fragment struct {
+	// Attributions are any attributions for content that may be included in
+	// the article (like an image in the header for example).
+	Attributions string `yaml:"attributions"`
+
 	// Content is the HTML content of the fragment. It isn't included as YAML
 	// frontmatter, and is rather split out of an fragment's Markdown file,
 	// rendered, and then added separately.

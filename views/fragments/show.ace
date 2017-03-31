@@ -31,3 +31,6 @@
               {{else}}
                 p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
               {{end}}
+              {{if ne .Fragment.Attributions ""}}
+                p.attribution== {{HTML .Fragment.Attributions}}
+              {{end}}
