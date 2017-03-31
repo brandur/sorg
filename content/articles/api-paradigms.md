@@ -263,7 +263,7 @@ REST.
 
 Here's one final strong opinion: religious adherence to
 REST is overrated and its perceived advantages have never
-materialized as fully as its proponents claimed. Whatever
+materialized as fully as its proponents hoped. Whatever
 we choose next should aim to be flexible and efficient, and
 GraphQL seems like a good candidate for that. We should
 move to GraphQL as a backend and combine it with great
