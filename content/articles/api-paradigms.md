@@ -268,7 +268,7 @@ we choose next should aim to be flexible and efficient, and
 GraphQL seems like a good candidate for that. We should
 move to GraphQL as a backend and combine it with great
 language-specific libraries that leverage good type systems
-to catch integration mistakes before andthe first HTTP call
+to catch integration mistakes before the first HTTP call
 flies, and which allow developers to use their own tooling
 to auto-complete (in the sense of VS IntelliSense or Vim's
 YouCompleteMe) to success.
