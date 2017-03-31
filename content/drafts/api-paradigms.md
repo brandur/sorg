@@ -2,7 +2,7 @@
 title: What's the Next Paradigm for Web APIs?
 published_at: 2017-03-29T21:00:36Z
 location: San Francisco
-hook: Musings on next API technology, or whether REST-ish
+hook: Musings the next API technology, and whether REST-ish
   JSON over HTTP is just "good enough" to never be displaced
   in a signficant way.
 ---
@@ -31,7 +31,7 @@ REST-ish JSON over HTTP has proven itself to be quite
 practical and resilient to obsolescence; it might just be
 "good enough" to reign supreme for a long time to come.
 
-## Hailing DX (#dx)
+## DX is Paramount (#dx)
 
 As a service provider, it might be tempting to think that
 your choice of backend technology is going to make a big
@@ -148,10 +148,10 @@ dozens. It's great for service operators too, because its
 exactly what their users are trying to do](/api-upgrades).
 
 But GraphQL's future is still uncertain. Most notably,
-Facebook itself hasn't even adopted it for their public
-API, which brings into question their commitment to the
-idea. Also, despite its strengths, it might find itself in
-a similar place as hypermedia in that its edge just isn't
+Facebook itself hasn't adopted it for their public API,
+which brings into question their commitment to the idea.
+Also, despite its strengths, it might find itself in a
+similar place as hypermedia in that its edge just isn't
 worthwhile enough to a large enough audience who are more
 than happy to keep using REST-ish JSON.
 
