@@ -6,7 +6,8 @@ image: "/assets/page/page.jpg"
 location: San Francisco
 published_at: 2014-01-26T18:56:46Z
 title: Lamenting the Death of the Page
-attributions: Header image by <strong><a href="https://www.flickr.com/photos/67499195@N00/717747166">Andreas
+attributions: Header image by
+  <strong><a href="https://www.flickr.com/photos/67499195@N00/717747166">Andreas
   Levers</a></strong>. Licensed under Creative Commons BY-NC 2.0.
 ---
 
