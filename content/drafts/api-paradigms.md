@@ -161,13 +161,12 @@ for. At the end of the day it involves writing up a big
 query blob with minimal typing and guarantees on the
 client-side. It's structured, but individual operations
 still need to be looked up in a query explorer or reference
-documentation. The closest analog is probably SQL; although
-this is a technology that may of use every day, maintaining
-blobs of queries turned out to be an overall painful enough
-experience that most of us turn to ORMs to wrap them. The
-same could certainly be done for GraphQL, but in that case
-we might have to ask ourselves just how much it's really
-accomplished for us.
+documentation. Its closest analog is SQL; although this is
+a technology that may of use every day, maintaining SQL
+query blobs are a painful enough experience that most of us
+turn to ORMs to wrap them. The same could certainly be done
+for GraphQL, but in that case we might have to ask
+ourselves just how much it's really accomplished for us.
 
 ### RPC (#rpc)
 
