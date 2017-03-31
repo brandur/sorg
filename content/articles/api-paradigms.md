@@ -58,12 +58,12 @@ has an HTTP client) and its **conventions** [1]. URLs are
 usually resources. Resources often have standard CRUD
 operations that are mapped to HTTP verbs like `PATCH` and
 `DELETE`. Status codes usually convey information. Commonly
-needed API mechanics like authentication and content
-encoding are sometimes integrated into standard HTTP
-headers like `Authorization` and `Content-Encoding`. This
-is all very good; convention allows a developer to learn
-something once and then re-use that information to figure
-out how other things will probably work.
+needed API mechanics like authentication and encoding are
+sometimes integrated into standard HTTP headers like
+`Authorization` and `Content-Encoding`. This is all very
+good; convention allows a developer to learn something once
+and then re-use that information to figure out how other
+things will probably work.
 
 <figure>
   <table class="overflowing">
