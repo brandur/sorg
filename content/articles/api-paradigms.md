@@ -145,7 +145,7 @@ set of data they need to do their work, with little waste
 in number of calls or payload size. Imagine having to send
 only a single API request out to load a page instead of
 dozens. It's great for service operators too, because its
-[explicitness allows them get a better understanding of
+[explicitness allows them to get a better understanding of
 exactly what their users are trying to do](/api-upgrades).
 
 But GraphQL's future is still uncertain. Most notably,
