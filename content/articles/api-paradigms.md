@@ -176,8 +176,8 @@ REST-**ish** instead of REST-**ful**, and assuming that
 most of the conventions that we're actually using boil down
 to making URLs consistent and basic CRUD, then just maybe
 REST really isn't buying us all that much. It may be an
-elegant idea, but as a developer my foremost is ease of
-integration; an API's ideological integrity is a distant
+elegant idea, but as a developer my foremost value is ease
+of integration; an API's ideological integrity is a distant
 tertiary concern.
 
 One possibility for the next big paradigm in APIs is just
@@ -238,12 +238,13 @@ create a new user. Documentation could be provided within
 the language's own ecosystem (Godoc for example), or even
 inline while writing code if there's a good IDE.
 
-In this world, the server-side technology would be totally
-opaque to end users and purely up to the discretion of the
-library maintainers. Maybe function invocations translate
-directly into REST requests, but the library could also
-compile each one into a specially crafted GraphQL query (or
-mutation) to maximize its network efficiency.
+In this world, the API's design (i.e. whether it's on REST,
+GraphQL, etc.) would be totally opaque to end users and
+purely up to the discretion of the library maintainers.
+Maybe function invocations translate directly into REST
+requests, but the library could also compile each one into
+a specially crafted GraphQL query (or mutation) to maximize
+its network efficiency.
 
 ## Maximizing Productivity Through Convention and Tooling (#productivity)
 
