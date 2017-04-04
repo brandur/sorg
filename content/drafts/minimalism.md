@@ -2,143 +2,178 @@
 title: Practicing Minimalism In Production
 published_at: 2017-03-21T15:20:48Z
 location: San Francisco
-hook: TODO
+hook: A few guidelines for practicing minimalism in
+  production to produce tech stacks that are stable and
+  operable.
 ---
 
-While developing the U-2 and SR-71 Blackbird spy planes at
-the Lockheed Skunk Works, Kelly Johnson was reported to
-have coined the [KISS][kiss] principle ("keep it simple,
-stupid") which suggests that systems should be designed to
-be simple instead of complicated. While the latter is
-tempting in the pursuit of certain features, simplicity
-wins out in the long run by producing a product that's more
-maintainable, more reliable, and more flexible. In the case
-of jet fighters, that might mean a plane that can be
-repaired in the field with few tools and under the
-stressful conditions of combat.
+While working at Lockheed during the cold war, Kelly
+Johnson was reported to have coined the [KISS][kiss]
+principle ("keep it simple, stupid") which suggests that
+systems should be designed to be simple instead of
+complicated. While the latter is tempting in the pursuit of
+certain features, simplicity wins out in the long run by
+producing a product that's more maintainable, more
+reliable, and more flexible. In the case of jet fighters,
+that might mean a plane that can be repaired in the field
+with few tools and under the stressful conditions of
+combat.
 
-More aspirationally, Antoine de Saint Exupéry, a French
-poet and pioneering aviator, said this about product
-minimalism:
-
-> It seems that perfection is reached not when there is
-> nothing left to add, but when there is nothing left to
-> take away.
+During his tenure, Lockheed's Skunk Works would produce
+planes like the U-2 and SR-71, so notable for their
+engineering excellence, that they've left a legacy that we
+reflect on even today.
 
 <img src="/assets/minimalism/sea.jpg" data-rjs="2" class="overflowing">
 
 ## Minimalism In Technology (#in-technology)
 
 Technology is cool, and as engineers, we tend to want to
-use new and interesting things that appear on the scene. In
-fact, it's easy to start favoring new technologies because
-they're the ones getting the most press. Use Mongo! No,
-Node! Wait, Go! Kafka!
+use new and interesting things that appear. That sort of
+intellectual curiosity is the reason we're in this industry
+in the first place! Many of us have had a colleague say
+that the company's bound to lose its competitive edge
+unless it gets an HA key/value store written in Go or a
+real-time event stream into production ASAP. Some of us
+have even been that person.
 
-Over time, technologies are added, but are rarely removed,
-leading to an accumulation effect. Left unchecked, stacks that
-have been around enough tend to combine just about every
-technology under the sun.
+Our news sources, meetups, and even conversations also bias
+towards newer technologies that are either under active
+development or being promoted. Older technology that sits
+quietly and does its job well disappears into the
+background.
 
-This is an instinct that needs to be suppressed to build a
-stable and maintainable production stack. More technology
-can intuitively seem better, but it's often worse:
+Over time, technologies have a tendency to be added, but
+are rarely removed. Left unchecked, stacks that have been
+around long enough tend to be a sprawling patchwork
+combining just about every technology under the sun. This
+effect can be dangerous:
+
+* More parts means more cognitive complexity. If a system
+  becomes too difficult to understand then the risk of bugs
+  or operational mishaps increases as developers make
+  changes without understanding all the intertwined
+  concerns.
 
 * Nothing operates flawlessly once it hits production.
   Every component in the stack is a candidate for failure,
   and with sufficient scale, _something_ will be failing all
   the time.
 
-* More parts means more cognitive complexity. If a system
-  becomes too difficult to understand then the risk of bugs
-  increases as developers make changes without
-  understanding all the possible ramifications.
-
 * With more technologies engineers will tend to be come
   jacks of all trades, but masters of none. If a
   particularly nefarious problem comes along, it may be
-  harder to diagnose and fix because there are few
-  specialists around.
+  harder to diagnose and repair because there are few
+  specialists around who are able to dig deeply.
 
-Even knowing this, the instinct to use something new will
+Even knowing this, the instinct to expand our tools might
 be hard to suppress. As engineers we're used to justifying
-our design choices all the time, and we're often so good at
-it that we can even justify some misguided ones. "But we
-_need_ horizontal scalability. We _need_ a streaming
-replicated log. We _need_ an highly available key/value
-store. We _need_ DNS-based service discovery."
+our technical decisions all the time, and we're so good at
+it that we can justify even the bad ones.
 
-## Practicing Minimalism (#practicing)
+## Minimalist Guidelines (#guidelines)
 
-Practicing minimalism in a production stack is pretty
-approachable by following generally good engineering
-guidelines:
+Practicing minimalism in production is mostly about
+recognizing that the problem exists. After that,
+mitigations that can address it effectively are pretty
+straightforward:
 
-* Is a new technology being introduced? Look for
-  opportunities to retire an old one that's roughly
-  equivalent. If you're about to put Kafka in, maybe you
-  can get away with retiring NSQ.
+* ***Retire old technology.*** Is something new being
+  introduced? Look for opportunities to retire older
+  technology that's roughly equivalent. If you're about to
+  put Kafka in, maybe you can get away with retiring Rabbit
+  or NSQ.
 
-* Build common technology paths. Standardize on one
-  database, one language/runtime, one job queue, one web
-  server, one reverse proxy, etc. If not one, then
-  standardize on _as few as possible_.
+* ***Build common paths.*** Standardize on one database, one
+  language/runtime, one job queue, one web server, one
+  reverse proxy, etc. If not one, then standardize on _as
+  few as possible_.
 
-* 
+* ***Favor simplicity.*** Try to keep the total number of
+  moving parts small to keep the system easy to understand
+  and easy to operate. In some cases this will be a
+  compromise because a technology that's slight less
+  suited to a job may have to be re-used instead of a
+  new one that's a little better introduced.
 
-Introduce a new technology? Retire an old one.
+* ***Don't use new technology the day, or even the year, that
+  it's initially released.*** Save yourself time and energy by
+  letting others vet it, find bugs, and help stabilize it.
 
-Build common paths.
+* ***Discuss new additions broadly.*** Be cognizant that some
+  FUD against new ideas will be unreasonable, but try to
+  have a cohesive long term technology strategy across the
+  entire engineering organization.
 
-Use versatile systems that have a history of reliability.
+## Some Stories From the Inside (#stories)
 
-* When adding new technology, migrate old products over to
-  it where possible, and try to retire 
+Here are some favorite examples of production minimalism in
+practice from my time operating the platform at Heroku:
 
-## Examples (#examples)
-
-Here are some favorite examples from my time at Heroku:
-
-* The core Heroku database used to be its own special
-  snowflake hosted on an AWS instance. It was eventually
+* The core database that tracked all apps, users, releases,
+  configuration, etc. used to be its own special snowflake
+  hosted on a custom-built AWS instance. It was eventually
   folded into Heroku Postgres, and became just one more
   node to be managed along with every customer DB.
 
-* Entire products were retired where possible. Dedicated
-  IP endpoints (i.e. `ssl:ip`) and shared databases (which
-  ran as a component separate to Heroku Postgres) were
-  end-of-lifed completely, leading to less ongoing
-  maintenance burden.
+* Entire products were retired where possible. For example,
+  the `ssl:ip` add-on, which used to be provisioned and run
+  on its own dedicated servers, was end-of-lifed completely
+  when a better (and cheaper) option for terminating SSL
+  was available through Amazon. With SNI support now
+  widespread, hopefully `ssl:endpoint` will soon follow
+  suit.
 
 * All non-ephemeral data was moved out of Redis so that the
-  only persistent data store connected to most internal
-  apps was Postgres. This was also nice because stacks
-  could be programmed to tolerate a downed Redis.
+  only data store handling persistent data for internal
+  apps was Postgres. This had the added advantage of stacks
+  being able to tolerate a downed Redis and stay online.
 
 * After an admittedly misguided foray into polyglotism, the
   last component written in Scala was retired. Fewer
   programming languages in use meant that the entire system
-  became easier to operate.
+  became easier to operate, and by more engineers.
 
 * The component that handled Heroku orgs was originally run
   as its own microservice. It eventually became obvious
-  that improper disciple in microservicification had been
-  applied, so it was folded back into the core API.
+  that there had been a time when our microservice
+  expansion had been a little overzealous, so to simplify
+  operation, we folded a few services back into the hub.
 
-Retired products were symbolically fed to the flame at a
-[Heroku burn party](/fragments/burn-parties) to make sure
-that there was adequate recognition of the effort that went
-into tearing down products and technology, and not just for
-adding them.
+To recognize the effort that went into tearing down or
+replacing old technology, we symbolically fed dead
+components to a flame at a [Heroku burn
+party](/fragments/burn-parties). The time and energy spent
+on some of these projects would in some cases be as great
+as it would for shipping a new product.
 
 TODO: photo of Fire.
 
-## Do More With Less (#more-with-less)
+## Nothing Left to Add, Nothing Left to Take Away (#nothing-left-to-add-or-take-away)
+
+Antoine de Saint Exupéry, a French poet and pioneering
+aviator, had this to say about perfection:
+
+> It seems that perfection is reached not when there is
+> nothing left to add, but when there is nothing left to
+> take away.
 
 A "big idea" architectural principle at Heroku was to
 eventually have Heroku run _on Heroku_. This was obviously
 difficult for a variety of reasons, but would be the
-ultimate manifestation of production minimalism.
+ultimate manifestation of production minimalism in that our
+"kernel" (the infrastructure supporting the user platform)
+would be broken away piece by piece until it was reduced to
+the smallest size necessary to keep everything running.
+
+This concept obviously won't apply to everyone, but most of
+us can benefit from a stack that's a little simpler, a
+little more cautious, and a little more directed. Only by
+concertedly building a minimal stack that's stable and
+nearly perfectly operable can we maximize our ability to
+push forward with new products and ideas.
+
+---
 
 A favorite practice that I learned while at Heroku was the
 idea of production minimalism -- curbing a system's
@@ -157,5 +192,45 @@ all costs until its had a few years to bake in someone
 else's stack, and even then, should only be brought if
 there's dire need or if it will allow a system to be
 further simplified.
+
+TODO: Make a recipe list
+
+<figure>
+  <table class="overflowing">
+    <tr>
+      <th>Tier</th>
+      <th>Technology</th>
+      <th>Comment</th>
+    </tr>
+    <tr>
+      <td>Persistent Data</td>
+      <td>Postgres</td>
+      <td><code>/customers</code></td>
+    </tr>
+    <tr>
+      <td>Ephemeral Data</td>
+      <td>Redis</td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+    <tr>
+      <td>Queue</td>
+      <td>Kafka</td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+    <tr>
+      <td>Service Programming</td>
+      <td>Go</td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+    <tr>
+      <td>Scripting</td>
+      <td>Ruby</td>
+      <td><code>/customers/:id</code></td>
+    </tr>
+  </table>
+  <figcaption>The conventions of REST. URLs are resources
+    and CRUD maps to HTTP verbs.</figcaption>
+</figure>
+
 
 [kiss]: https://en.wikipedia.org/wiki/KISS_principle
