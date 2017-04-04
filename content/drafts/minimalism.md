@@ -24,8 +24,6 @@ planes like the U-2 and SR-71, so notable for their
 engineering excellence, that they've left a legacy that we
 reflect on even today.
 
-<img src="/assets/minimalism/sea.jpg" data-rjs="2" class="overflowing">
-
 ## Minimalism In Technology (#in-technology)
 
 Technology is cool, and as engineers, we tend to want to
@@ -71,40 +69,6 @@ be hard to suppress. As engineers we're used to justifying
 our technical decisions all the time, and we're so good at
 it that we can justify even the bad ones.
 
-## Minimalist Guidelines (#guidelines)
-
-Practicing minimalism in production is mostly about
-recognizing that the problem exists. After that,
-mitigations that can address it effectively are pretty
-straightforward:
-
-* ***Retire old technology.*** Is something new being
-  introduced? Look for opportunities to retire older
-  technology that's roughly equivalent. If you're about to
-  put Kafka in, maybe you can get away with retiring Rabbit
-  or NSQ.
-
-* ***Build common paths.*** Standardize on one database, one
-  language/runtime, one job queue, one web server, one
-  reverse proxy, etc. If not one, then standardize on _as
-  few as possible_.
-
-* ***Favor simplicity.*** Try to keep the total number of
-  moving parts small to keep the system easy to understand
-  and easy to operate. In some cases this will be a
-  compromise because a technology that's slight less
-  suited to a job may have to be re-used instead of a
-  new one that's a little better introduced.
-
-* ***Don't use new technology the day, or even the year, that
-  it's initially released.*** Save yourself time and energy by
-  letting others vet it, find bugs, and help stabilize it.
-
-* ***Discuss new additions broadly.*** Be cognizant that some
-  FUD against new ideas will be unreasonable, but try to
-  have a cohesive long term technology strategy across the
-  entire engineering organization.
-
 ## Some Stories From the Inside (#stories)
 
 Here are some favorite examples of production minimalism in
@@ -149,6 +113,40 @@ as it would for shipping a new product.
 
 TODO: photo of Fire.
 
+## Minimalist Guidelines (#guidelines)
+
+Practicing minimalism in production is mostly about
+recognizing that the problem exists. After that,
+mitigations that can address it effectively are pretty
+straightforward:
+
+* ***Retire old technology.*** Is something new being
+  introduced? Look for opportunities to retire older
+  technology that's roughly equivalent. If you're about to
+  put Kafka in, maybe you can get away with retiring Rabbit
+  or NSQ.
+
+* ***Build common paths.*** Standardize on one database, one
+  language/runtime, one job queue, one web server, one
+  reverse proxy, etc. If not one, then standardize on _as
+  few as possible_.
+
+* ***Favor simplicity.*** Try to keep the total number of
+  moving parts small to keep the system easy to understand
+  and easy to operate. In some cases this will be a
+  compromise because a technology that's slight less
+  suited to a job may have to be re-used instead of a
+  new one that's a little better introduced.
+
+* ***Don't use new technology the day, or even the year, that
+  it's initially released.*** Save yourself time and energy by
+  letting others vet it, find bugs, and help stabilize it.
+
+* ***Discuss new additions broadly.*** Be cognizant that some
+  FUD against new ideas will be unreasonable, but try to
+  have a cohesive long term technology strategy across the
+  entire engineering organization.
+
 ## Nothing Left to Add, Nothing Left to Take Away (#nothing-left-to-add-or-take-away)
 
 Antoine de Saint Exupéry, a French poet and pioneering
@@ -157,6 +155,8 @@ aviator, had this to say about perfection:
 > It seems that perfection is reached not when there is
 > nothing left to add, but when there is nothing left to
 > take away.
+
+<img src="/assets/minimalism/sea.jpg" data-rjs="2" class="overflowing">
 
 A "big idea" architectural principle at Heroku was to
 eventually have Heroku run _on Heroku_. This was obviously
@@ -172,65 +172,3 @@ little more cautious, and a little more directed. Only by
 concertedly building a minimal stack that's stable and
 nearly perfectly operable can we maximize our ability to
 push forward with new products and ideas.
-
----
-
-A favorite practice that I learned while at Heroku was the
-idea of production minimalism -- curbing a system's
-complexity by reducing the total number of moving parts
-that it contains. Ideally it should be distilled down to
-its simplist possible form, 
-
-Do more with less by embracing production minimalism. I'd
-of course recommend that production stacks should be made
-up of good programming language, Postgres for persistent
-data, and Redis for everything else; all baked up top of a
-deployment stack that someone else maintains, but it's up
-to individual implementers to choose their own common
-paths. Brand new technology should generally be avoided at
-all costs until its had a few years to bake in someone
-else's stack, and even then, should only be brought if
-there's dire need or if it will allow a system to be
-further simplified.
-
-TODO: Make a recipe list
-
-<figure>
-  <table class="overflowing">
-    <tr>
-      <th>Tier</th>
-      <th>Technology</th>
-      <th>Comment</th>
-    </tr>
-    <tr>
-      <td>Persistent Data</td>
-      <td>Postgres</td>
-      <td><code>/customers</code></td>
-    </tr>
-    <tr>
-      <td>Ephemeral Data</td>
-      <td>Redis</td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-    <tr>
-      <td>Queue</td>
-      <td>Kafka</td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-    <tr>
-      <td>Service Programming</td>
-      <td>Go</td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-    <tr>
-      <td>Scripting</td>
-      <td>Ruby</td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-  </table>
-  <figcaption>The conventions of REST. URLs are resources
-    and CRUD maps to HTTP verbs.</figcaption>
-</figure>
-
-
-[kiss]: https://en.wikipedia.org/wiki/KISS_principle
