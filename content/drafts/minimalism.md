@@ -172,3 +172,5 @@ little more cautious, and a little more directed. Only by
 concertedly building a minimal stack that's stable and
 nearly perfectly operable can we maximize our ability to
 push forward with new products and ideas.
+
+[kiss]: https://en.wikipedia.org/wiki/KISS_principle
