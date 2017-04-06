@@ -24,6 +24,8 @@ planes like the U-2 and SR-71, so notable for their
 engineering excellence, that they've left a legacy that we
 reflect on even today.
 
+!fig src="/assets/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works."
+
 ## Minimalism In Technology (#in-technology)
 
 Technology is cool, and as engineers, we tend to want to
