@@ -69,7 +69,8 @@ A few takeways come to mind:
   to be able to writing it safely. Looking at some of these
   MRuby patches, the implementation's code is so obscuring
   that it introduces plenty of opportunity for error. When
-  you get one, it's often a buffer overrun.
+  you get one, it's often a buffer overrun that leads to
+  remote execution.
 
 All of that said, Shopify Scripts is a great idea. I'm glad
 to see that an approach involving a more depth-wise defense
