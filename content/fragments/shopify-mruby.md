@@ -66,7 +66,7 @@ A few takeways come to mind:
   possibilities that are difficult to protect against.
   Consider something that's not Ruby.
 * It's probably not possible to have enough experience in C
-  to be able to writing it safely. Looking at some of these
+  to be able to write it safely. Looking at some of these
   MRuby patches, the implementation's code is so obscuring
   that it introduces plenty of opportunity for error. When
   you get one, it's often a buffer overrun that leads to
