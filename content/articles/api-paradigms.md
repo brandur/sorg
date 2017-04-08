@@ -36,9 +36,9 @@ practical and resilient to obsolescence; it might just be
 
 As a service provider, it might be tempting to think that
 your choice of backend technology is going to make a big
-difference to your users, but that's probably not the case.
-As long as you meet a minimum bar of non-offensiveness,
-this is almost never the case (SOAP and OAuth 1 being two
+difference to your users, but isn't necessarily true. As
+long as you meet a minimum bar of non-offensiveness, this
+is almost never the case (SOAP and OAuth 1 being two
 examples of technologies that don't).
 
 If there are reasonable tools available to keep the
