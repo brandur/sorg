@@ -56,6 +56,10 @@ type Article struct {
 	// Hook is a leading sentence or two to succinctly introduce the article.
 	Hook string `yaml:"hook"`
 
+	// HookImage is a boolean indicating whether there's a preview image for
+	// the article that can be shown on the index page.
+	HookImage bool `yaml:"hook_image"`
+
 	// Image is an optional image that may be included with an article.
 	Image string `yaml:"image"`
 

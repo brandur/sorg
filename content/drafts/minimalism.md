@@ -5,6 +5,7 @@ location: San Francisco
 hook: A few guidelines for practicing minimalism in
   production to produce tech stacks that are stable and
   operable.
+hook_image: true
 ---
 
 While working at Lockheed during the cold war, Kelly
