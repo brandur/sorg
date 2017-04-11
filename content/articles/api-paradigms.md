@@ -116,7 +116,7 @@ what you need, and in many cases they don't map well to the
 kind of information that clients actually want, forcing
 expensive `N + 1` query situations. This is especially bad
 for clients on more limited networks like mobile, where
-both bandwidth and bad latency conspire to make REST an
+bandwidth and bad latency conspire to make REST an
 expensive proposition.
 
 ## What's Next (#whats-next)
