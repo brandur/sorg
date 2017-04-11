@@ -5,6 +5,7 @@ location: San Francisco
 hook: How we overvalue the wrong technology and novel
   aspects of interface design at the expense of substantial
   gains to our productivity.
+hook_image: true
 hn_link: https://news.ycombinator.com/item?id=13733777
 ---
 
