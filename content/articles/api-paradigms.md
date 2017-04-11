@@ -100,7 +100,7 @@ things will probably work.
 </figure>
 
 If convention in REST has one problem, it's that there
-isn't enough of it. I use words like _usually_ , _often_,
+isn't enough of it. I use words like _usually_, _often_,
 and _sometimes_ above because although these practices are
 recommended by the spec, they may or may not be followed.
 In real life, most APIs are REST-ish at best. At Stripe for
