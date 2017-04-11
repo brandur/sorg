@@ -1,8 +1,9 @@
 ---
 title: Building Robustly With ACID, or Why to Avoid MongoDB
 published_at: 2017-03-12T17:59:02Z
-hook: TODO
 location: San Francisco
+hook: TODO
+hook_image: true
 ---
 
 In the last decade we've seen the emergence of a number of
@@ -119,7 +120,7 @@ concurrently, then the above check can fail us because both
 could have validated step one successfully before moving on
 to create a duplicated record.
 
-TODO: Diagram.
+!fig src="/assets/acid/consistency.jpg" caption="Consistency."
 
 You can solve this problem on an ACID database in multiple
 ways:
