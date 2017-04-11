@@ -24,6 +24,9 @@
               ul
                 {{range .Articles}}
                   li
+                    {{if .HookImage}}
+                      img src="/assets/{{.Slug}}/hook.jpg" data-rjs="2"
+                    {{end}}
                     .title
                       a href="/{{.Slug}}"
                         {{.Title}}
@@ -33,6 +36,7 @@
                     {{if ne .Hook ""}}
                       p.hook {{.Hook}}
                     {{end}}
+                    .clear
                 {{end}}
             {{end}}
             p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
