@@ -4,6 +4,7 @@ image: "/assets/heroku-values/heroku-values.jpg"
 location: San Francisco
 published_at: 2015-11-05T06:20:16Z
 title: My Heroku Values
+hook_image: true
 ---
 
 In the spirit of [Adam Wiggins' inspiring list of Heroku

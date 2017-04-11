@@ -3,6 +3,7 @@ hook: Crunching running data with prepared statements in Postgres.
 location: San Francisco
 published_at: 2015-10-24T20:55:32Z
 title: Running at Stripe
+hook_image: true
 ---
 
 One pleasant surprise of Stripe's internal culture was the existence of a
