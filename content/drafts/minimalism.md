@@ -114,7 +114,7 @@ party](/fragments/burn-parties). The time and energy spent
 on some of these projects would in some cases be as great
 as it would for shipping a new product.
 
-TODO: photo of Fire.
+!fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology.."
 
 ## Minimalist Guidelines (#guidelines)
 
