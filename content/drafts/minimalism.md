@@ -27,7 +27,7 @@ reflect on even today.
 
 !fig src="/assets/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works."
 
-## Minimalism In Technology (#in-technology)
+## Minimalism in technology (#in-technology)
 
 Technology is cool, and as engineers, we tend to want to
 use new and interesting things that appear. That sort of
@@ -72,7 +72,7 @@ be hard to suppress. As engineers we're used to justifying
 our technical decisions all the time, and we're so good at
 it that we can justify even the bad ones.
 
-## Some Stories From the Inside (#stories)
+## Some stories from the inside (#stories)
 
 Here are some favorite examples of production minimalism in
 practice from my time operating the platform at Heroku:
@@ -116,7 +116,7 @@ as it would for shipping a new product.
 
 !fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology.."
 
-## Minimalist Guidelines (#guidelines)
+## Minimalist guidelines (#guidelines)
 
 Practicing minimalism in production is mostly about
 recognizing that the problem exists. After that,
@@ -150,7 +150,7 @@ straightforward:
   have a cohesive long term technology strategy across the
   entire engineering organization.
 
-## Nothing Left to Add, Nothing Left to Take Away (#nothing-left-to-add-or-take-away)
+## Nothing left to add, nothing left to take away (#nothing-left-to-add-or-take-away)
 
 Antoine de Saint Exupéry, a French poet and pioneering
 aviator, had this to say about perfection:
