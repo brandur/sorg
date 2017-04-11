@@ -37,7 +37,6 @@ allowed_exceptions=(
     "./content/images/fragments/paper-books/borderlands-swartz-02.jpg"
     "./content/images/fragments/safety-razors/razor.jpg"
     "./content/images/fragments/sprawl-blues/vista.jpg"
-    "./content/images/fragments/wgt-2015/vista.jpg"
     "./content/images/fragments/wgt-2015-brain-dump/jo-quail.jpg"
     "./content/images/fragments/wgt-2015-brain-dump/leaf.jpg"
     "./content/images/page/economist.jpg"
