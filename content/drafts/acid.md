@@ -7,18 +7,19 @@ location: San Francisco
 
 In the last decade we've seen the emergence of a number of
 new data stores that trade ACID away for other flashy
-features like higher availability, streaming changesets, or
-JavaScript APIs. Although these features might be desirable
-in a few situations (HA in particular), in the vast
-majority of use cases projects should prefer the use of a
-database that offers ACID guarantees to help ensure the
-scalability of their software.
+features like higher availability, streaming changesets,
+JavaScript APIs, or nestable JSON documents. Although these
+features might be desirable in a few situations (HA in
+particular), in the vast majority of use cases projects
+should prefer the use of a database that offers ACID
+guarantees to help ensure the scalability of their
+software.
 
 ACID databases are by far the most important tool in
 existence for ensuring data correctness in an online
 system.
 
-## Optimizing for the Wrong Thing (#optimizing)
+## Optimizing for the wrong thing (#optimizing)
 
 An often cited features document data stores is that they
 allow you to bootstrap quickly and get to a prototype
@@ -28,7 +29,7 @@ Keeping in mind that this claim isn't actually true -- a
 developer reasonably competent with their RDMS of choice
 and armed with an ORM and migration framework can easily
 keep up with their document store-oriented counterpart (and
-probably outpace them), but more importantly, this is
+probably outpace them), but more importantly, it's
 optimizing for exactly the wrong thing.
 
 While building a prototype quickly might be important for
@@ -36,14 +37,13 @@ the first two weeks of a system's lifespan, the next ten
 years will be about keeping it running correctly by
 minimizing bugs and data consistency problems that will
 lead to user pain and attrition. Valuing miniscule
-short-term gains over long-term maintainability is an
-incredibly pathological way of doing anything, let alone
-building software.
+short-term gains over long-term maintainability is a
+pathological way of doing anything, let alone building
+critical production software.
 
 But how does an RDMS help with maintainability? Well, it
 turns out that ACID guarantees combined with strong
-constraints are very valuable tools. Lets take a closer
-look.
+constraints are valuable tools. Lets take a closer look.
 
 ## Atomicity (#atomicity)
 
@@ -71,7 +71,7 @@ it's safe for other requests to proceed in the system.
 It's never desirable to fail requests that we expected to
 commit, but atomicity cancels the expensive fallout.
 
-### In a World Without (#without-atomicity)
+### In a world without (#without-atomicity)
 
 So what happens in a world without ACID guarantees where
 any failed request leaves invalid state behind?
@@ -133,15 +133,15 @@ ways:
    on an index) which would prevent a duplicate record from
    being inserted.
 
-### Fix It Later. Poorly. (#without-consistency)
+### Fix it later. Poorly. (#without-consistency)
 
 Without ACID, its up to your application code to solve the
 problem. You could implement some a locking system of sorts
 to guarantee that only one registration for any given email
 address can be in flight at once. Realistically, many
 providers on non-ACID databases will probably elect to just
-not solve the problem until _after_ it causes painful
-fall out.
+not solve the problem. Maybe later, _after_ it causes
+painful fall out in production.
 
 ## Isolation (#isolation)
 
@@ -159,69 +159,111 @@ Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
 without isolation, how do you deal with the problem?
 
-### Just Lock Everything (#without-isolation)
+### Just lock everything (#without-isolation)
 
-Well, I'm glad you asked! The most common technique is to
-implement your own pessimistic locking system that
-constrains access to a single operation, and forces others
-to block until it's finished. So for example, if our core
-model is a set of user accounts that own other resources,
-we'd lock the whole account when a modification request
-comes in, and only unlock it again after we've committed
-our work.
+The most common technique is to implement your own
+pessimistic locking system that constrains access to a
+single operation, and forces others to block until it's
+finished. So for example, if our core model is a set of
+user accounts that own other resources, we'd lock the whole
+account when a modification request comes in, and only
+unlock it again after we've committed our work.
 
 !fig src="/assets/mongodb/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
 This approach is all downsides:
 
-1. **It's slow.** Operations waiting on a lock may have to
-   wait for very extended periods of time for resources to
+1. ***It's slow.*** Operations waiting on a lock may have
+   to wait for very extended periods for resources to
    become available. The more concurrent access, the worse
    it is (which probably means that your large users will
    suffer the most).
 
-2. **It's inefficient.** Not every blocking operation
+2. ***It's inefficient.*** Not every blocking operation
    actually needs to wait on every other operation. Because
    the models you lock on tend to broad to reduce the
    system's complexity, many operations will block when
    they didn't necessarily have to.
 
-3. **It's a lot of work.** A basic locking system isn't too
-   hard to implement, but if you want to improve its speed
-   or efficiency then you quickly need to move to something
-   more elaborate which gets complicated fast. With an ACID
-   database, you'll get a very fast, very efficient, and
-   very correct locking system built-in for free.
+3. ***It's a lot of work.*** A basic locking system isn't
+   too hard to implement, but if you want to improve its
+   speed or efficiency then you quickly need to move to
+   something more elaborate which gets complicated fast.
+   With an ACID database, you'll get a very fast, very
+   efficient, and very correct locking system built-in for
+   free.
 
-3. **It's error prone.** Locks are hard and software
-   generally isn't reliable. Implementing your own system
-   _is_ going to yield problems. It's just a question of
-   magnitude.
+3. ***It's probably not right.*** Locks and software are
+   hard. Implementing your own system _is_ going to yield
+   problems; it's just a question of what magnitude.
 
-## Constraints Are Good (#constraints)
+## Constraints are good (#constraints)
 
-Fast prototyping.
+I talked before about how schemaless databases are often
+misinterpreted as a feature because they enable fast
+prototyping.
 
-### App-level Schemas (#app-schemas)
+Data management in a service built on schemaless data store
+will eventually become so painful that even its most
+steadfast proponents will acquiesce to allow some form of
+constraints. Life is artifically difficult when your `User`
+records aren't even guaranteed to come with an `id` or
+`email` field.
 
-## On Scaling (#scaling)
+By the time an organization hits hundreds of models and
+thousands of fields, they'll almost certainly be using some
+kind of object modeling framework in a desperate attempt to
+get a few constraints into place. By that point though,
+data is probably already inconsistent enough that it'll
+make migrations difficult in perpetuity, and application
+code twisted and complicated as its built to gracefully
+handle dozens of possible edge cases.
 
-## Build On Solid Ground (#solid-substrates)
+Prototyping is the _only_ place that should be put to use.
+For services that you want to run in production, the better
+defined your schema and the more self-consistent your data,
+the easier your life is going to be.
+
+## On scaling (#scaling)
+
+A common criticism of ACID databases is that they don't
+scale, and by extension horizontally scalable (and usually
+non-ACID) data stores are the only valid choice.
+
+First of all, despite unbounded optimism for growth, the
+vast majority will be well-served by a single vertically
+scalable node; probably forever.
+
+By offloading infrequently needed "junk" data to scalable
+alternate data stores, it's fairly reasonable to expect to
+vertically scale a service for a very long time, even if it
+has somewhere on the order of millions of users. Show me
+any databases that's on the scale of TBs or larger, and
+I'll show you the 100s of GBs that are in there when they
+don't need to be.
+
+There are a few use cases that legitimately need
+scalability, and for those you should choose a database
+that gives you as many of these guarantees as possible,
+even if it's on a per-partition scale.
+
+## Build on solid ground (#solid-substrates)
 
 There's a common theme to everything listed above:
 
-* You can get away without atomicity, but you end up
-  hacking around it with cleanup scripts.
+* You can get away ***without atomicity***, but you end up
+  hacking around it with cleanup scripts and lots of
+  expensive engineer-hours.
 
-* You can get away without consistency, but only through
-  the use of elaborate application-level schemes.
+* You can get away ***without consistency***, but only
+  through the use of elaborate application-level schemes.
 
-* You can get away without isolation, but only by building
-  your own probably slow, probably inefficient, and
-  probably error prone locking scheme.
+* You can get away ***without isolation***, but only by
+  building your own probably slow, probably inefficient,
+  and probably buggy locking scheme.
 
-* You can get away without constraints and schemas, but
-  only by internalizing a nihilistic understanding that
+* You can get away ***without constraints*** and schemas,
+  but only by internalizing a nihilistic understanding that
   your production data isn't consistent.
 
 By choosing a non-ACID data store, you end up
