@@ -1,6 +1,6 @@
 ---
 title: Practicing Minimalism In Production
-published_at: 2017-03-21T15:20:48Z
+published_at: 2017-04-11T06:37:34Z
 location: San Francisco
 hook: A few guidelines for practicing minimalism in
   production to produce tech stacks that are stable and
@@ -159,7 +159,7 @@ aviator, had this to say about perfection:
 > nothing left to add, but when there is nothing left to
 > take away.
 
-<img src="/assets/minimalism/sea.jpg" data-rjs="2" class="overflowing">
+!fig src="/assets/minimalism/sea.jpg" caption="Nothing left to take away."
 
 A "big idea" architectural principle at Heroku was to
 eventually have Heroku run _on Heroku_. This was obviously

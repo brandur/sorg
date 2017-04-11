@@ -62,17 +62,17 @@ guarantee atomicity at the document level, you're in for
 real trouble indeed.
 
 Within the context of building web applications, atomicity
-in the sense of ACID is incredibly valuable. Software is
-buggy by nature and introducing problems that
-unintentionally fail requests is inevitable. By wrapping
-requests in transactions, we can ensure that even in the
-these worst case scenarios, state is left undamaged, and
-it's safe for other requests to proceed in the system.
+is incredibly valuable. Software is buggy by nature and
+introducing problems that unintentionally fail requests is
+inevitable. By wrapping requests in transactions, we can
+ensure that even in the these worst case scenarios, state
+is left undamaged, and it's safe for other requests to
+proceed in the system.
 
 It's never desirable to fail requests that we expected to
 commit, but atomicity cancels the expensive fallout.
 
-### In a world without (#without-atomicity)
+### Manual clean-ups and fixer scripts (#without-atomicity)
 
 So what happens in a world without ACID guarantees where
 any failed request leaves invalid state behind?
@@ -92,6 +92,10 @@ happen very often. This is often combined with a
 laissez-faire philosophy that all systems have some bad
 data in them, and there's no point in agonizing too much
 over a few bad tuples.
+
+Particularly bad incidents will necessitate manual operator
+intervention, or even a specially crafted "fixer script" to
+clean up state and get everything back to normal.
 
 ## Consistency (#consistency)
 
@@ -152,9 +156,9 @@ the same information don't conflict with each other. Each
 one has access to a pristine view of the data (depending on
 isolation level) even if the other has modified it, and
 results are reconciled when the transactions are ready to
-commit. Modern RDMSes have sophisticated version control
-systems that make this possible in ways that are correct
-and efficient.
+commit. Modern RDMSes have sophisticated multiversion
+concurrency control systems that make this possible in ways
+that are correct and efficient.
 
 Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
@@ -163,12 +167,13 @@ without isolation, how do you deal with the problem?
 ### Just lock everything (#without-isolation)
 
 The most common technique is to implement your own
-pessimistic locking system that constrains access to a
-single operation, and forces others to block until it's
-finished. So for example, if our core model is a set of
-user accounts that own other resources, we'd lock the whole
-account when a modification request comes in, and only
-unlock it again after we've committed our work.
+pessimistic locking system that constrains access to some
+set of resourcs to a single operation, and forces others to
+block until it's finished. So for example, if our core
+model is a set of user accounts that own other resources,
+we'd lock the whole account when a modification request
+comes in, and only unlock it again after we've committed
+our work.
 
 !fig src="/assets/mongodb/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
@@ -212,18 +217,19 @@ records aren't even guaranteed to come with an `id` or
 `email` field.
 
 By the time an organization hits hundreds of models and
-thousands of fields, they'll almost certainly be using some
-kind of object modeling framework in a desperate attempt to
-get a few constraints into place. By that point though,
-data is probably already inconsistent enough that it'll
-make migrations difficult in perpetuity, and application
-code twisted and complicated as its built to gracefully
-handle dozens of possible edge cases.
+thousands of fields, they'll certainly be using some kind
+of object modeling framework in a desperate attempt to get
+a few constraints into place. By that point though, data is
+probably already inconsistent enough that it'll make
+migrations difficult in perpetuity, and application code
+twisted and complicated as its built to gracefully handle
+dozens of possible edge cases.
 
-Prototyping is the _only_ place that should be put to use.
-For services that you want to run in production, the better
-defined your schema and the more self-consistent your data,
-the easier your life is going to be.
+Throw away prototypes are the _only_ place that schemaless
+data stores should be put to use. For services that you
+want to run in production, the better defined your schema
+and the more self-consistent your data, the easier your
+life is going to be.
 
 ## On scaling (#scaling)
 
@@ -233,15 +239,13 @@ non-ACID) data stores are the only valid choice.
 
 First of all, despite unbounded optimism for growth, the
 vast majority will be well-served by a single vertically
-scalable node; probably forever.
-
-By offloading infrequently needed "junk" data to scalable
-alternate data stores, it's fairly reasonable to expect to
-vertically scale a service for a very long time, even if it
-has somewhere on the order of millions of users. Show me
-any databases that's on the scale of TBs or larger, and
-I'll show you the 100s of GBs that are in there when they
-don't need to be.
+scalable node; probably forever. By offloading infrequently
+needed "junk" data to scalable alternate data stores, it's
+fairly reasonable to expect to vertically scale a service
+for a very long time, even if it has somewhere on the order
+of millions of users. Show me any databases that's on the
+scale of TBs or larger, and I'll show you the 100s of GBs
+that are in there when they don't need to be.
 
 There are a few use cases that legitimately need
 scalability, and for those you should choose a database
