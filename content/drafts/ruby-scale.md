@@ -3,6 +3,7 @@ title: Ruby, and its Problems of Scale
 published_at: 2017-04-18T14:23:28Z
 location: San Francisco
 hook: TODO
+hook_image: true
 ---
 
 I decided to write this not so much in disdain for the
