@@ -1,6 +1,6 @@
 ---
-title: The Challenges of Building With Ruby at Scale
-published_at: 2017-04-07T14:49:57Z
+title: Ruby, and its Problems of Scale
+published_at: 2017-04-18T14:23:28Z
 location: San Francisco
 hook: TODO
 ---
@@ -43,6 +43,8 @@ you'll never notice the problem with a few hundred lines of
 code and a couple dependencies.
 
 ## The Gordian Knot
+
+!fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, boundaries tend to dissipate, especially within larger engineering teams."
 
 ## Other Languages
 
