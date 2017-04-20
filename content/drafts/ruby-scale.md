@@ -1,8 +1,9 @@
 ---
-title: Ruby, and its Problems of Scale
+title: Ruby, and Problems of Scale
 published_at: 2017-04-18T14:23:28Z
 location: San Francisco
-hook: TODO
+hook: The challenges of scaling and operating a big Ruby
+  codebase (that are not related to performance).
 hook_image: true
 ---
 
@@ -65,7 +66,10 @@ safety:
 * Canary deploys to help detect problems early, and contain
   the fallout in the inevitable case of a bad deploy.
 
-If Ruby code hasn't been run, it probably doesn't work.
+If Ruby code hasn't been run, it doesn't work. Even if it's
+been run, if it doesn't have 100% line coverage in testing,
+then there's probably still something in there doesn't
+work.
 
 !fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
 
@@ -133,7 +137,7 @@ be tenable. Many Ruby advocates don't know this because
 you'll never notice the problem with a few hundred lines of
 code and a couple dependencies.
 
-### Tooling
+### Tooling (#tooling)
 
 Jump to, auto-complete, etc.
 
