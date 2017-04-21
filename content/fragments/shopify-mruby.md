@@ -24,7 +24,7 @@ own design called [MRubyEngine][mruby-engine].
 Shopify quickly found out the hard way that an extremely
 permissive language combined with a nascent C codebase
 wasn't a recipe for secure code, and vulnerability reports
-started flowing in. For example:
+started flowing in. A few examples:
 
 * [Failure to do an array bound checks from MRuby, leading
   to possible remote code execution][vuln-1] (worth $20k).
@@ -35,8 +35,8 @@ started flowing in. For example:
 
 It's worth noting that as far as vulnerabilities go, these
 are all pretty run-of-the-mill bugs. Many security
-researchers work a lot harder to find bugs that are worth a
-lot less.
+researchers work a lot harder to find problems that are
+worth a lot less.
 
 Shopify did the only thing they could which was to put in
 kernel-level sandboxing around MRuby, but by then they must
