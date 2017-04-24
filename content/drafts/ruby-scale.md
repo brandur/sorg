@@ -7,6 +7,14 @@ hook: The challenges of scaling and operating a big Ruby
 hook_image: true
 ---
 
+Ruby is a beautiful language. Speaking from experience,
+it's easy to get attached to everything from its pleasantly
+readable syntax to the friendly demeanor of its creator
+Matz, who gives off the air of a trustworthy benevolent
+dictator if there ever was one.
+
+TODO
+
 I have a love/hate relationship with Ruby. I love how
 expressive the language is and how it lets me write
 programs (especially small ones) fast, but I'm also
@@ -29,16 +37,19 @@ all the language's problems come into sharp relief.
 
 ## I've already heard it's slow (#slow)
 
-Ruby _is_ slow and resource intensive, but that's not what
-we're going to talk about today. You can scale Ruby
-services to take more traffic by throwing more hardware at
-them. They may be more expensive than other solutions, but
-they're tenable.
+Ruby _is_ slow and resource intensive, but this is less of
+a problem than you'd think. Many production apps spend an
+inordinate amount of time waiting on database calls and
+other I/O, so improvements to the program's structure and
+efficiency will yield better result than rewriting in a new
+language. Capacity can also often be addressed by throwing
+more hardware at the problem; it's more expensive, but not
+unreasonable when compared to the cost of engineering time.
 
-I'm talking about problems of organizational scale; how the
-language itself starts to break down once you have a
-service that's taking a lot of traffic or one that's being
-modified by a lot of engineers.
+What I want to focus on are problems of organizational
+scale; how the language itself starts to break down once
+you have a service that's taking a lot of traffic, or one
+that's being modified by a lot of engineers.
 
 ## Beyond the shell script (#beyond-the-shell-script)
 
