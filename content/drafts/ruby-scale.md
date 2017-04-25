@@ -73,14 +73,14 @@ safety:
   point will cause a regression.
 * Heavy reliance on exception tracking services like Sentry
   and Rollbar to tell us what's happening. Errors in
-  production aren't an "if"; they're an absolute certainty.
+  production aren't an "if"; they're a "when".
 * Canary deploys to help detect problems early, and contain
   the fallout in the inevitable case of a bad deploy.
 
-If Ruby code hasn't been run, it doesn't work. Even if it's
-been run, if it doesn't have 100% line coverage in testing,
-then there's probably still something in there doesn't
-work.
+If Ruby code hasn't been run, it almost certainly doesn't
+work. Even if it's been run and everything works today,
+without total test coverage something is bound to break
+tomorrow.
 
 !fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
 
