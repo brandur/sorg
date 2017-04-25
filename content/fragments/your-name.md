@@ -8,12 +8,12 @@ hook: A short review of Makoto Shinka's latest animated
 
 ★ ★ ★ ★ ★ (out of five)
 
-_Your Name_ is Makoto Shinkai's (_Garden of Words_; _5 CM
-Per Second_) latest work, and particularly notable for its
-domestic and worldwide success, coming in as the 4th highest
-grossing movie in Japan of all time and having already
-overtaken _Spirited Away_. Shinkai is referred to as "The
-New Miyazaki."
+_Your Name_ is Makoto Shinkai's (_Garden of Words_; _5
+Centimeters Per Second_) latest work, and particularly
+notable for its domestic and worldwide success, coming in
+as the 4th highest grossing movie in Japan of all time and
+having already overtaken _Spirited Away_. Shinkai is
+referred to as "The New Miyazaki."
 
 In North America we had to wait almost a year for it to hit
 our shores, but it was worth the wait. _Your Name_ is
