@@ -150,7 +150,22 @@ code and a couple dependencies.
 
 ### Tooling (#tooling)
 
-Jump to, auto-complete, etc.
+Ruby metaprogramming constructs are well known, and though
+they may lead to pleasantly readable code, they also make
+infamously difficult to figure out what's actually going to
+be run. It's not uncommon to be trying to find a method
+that's callable from a mixin included by a base class
+that's defined in a gem opaquely required by Bundler. Even
+once you've located that source package, the definition may
+yet be another two gem indirections and six DSL/mixin
+layers deep.
+
+The invention of Pry has made this more managable in that
+all of this can be determined at runtime fairly easily, but
+the difficulty in statically analyzing Ruby continues to
+make it difficult to implement editor "jump to",
+auto-completion, and other functions that are invaluable
+for developer productivity.
 
 !fig src="/assets/ruby-scale/tooling.jpg" caption="Good tooling is sadly lacking/impossible."
 
