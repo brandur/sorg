@@ -82,8 +82,6 @@ work. Even if it's been run and everything works today,
 without total test coverage something is bound to break
 tomorrow.
 
-!fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
-
 ### Boundary bleeding (#boundary-bleeding)
 
 Symbols loaded into a Ruby runtime all end up in one big
@@ -127,10 +125,10 @@ Util.hello
 Most developers are savvy enough not to introduce
 pathologically illogical circular dependencies between
 modules where it's obvious that one should be the lower
-substrate (e.g. `Util`), but given enough code and enough
-modules, things will get hazy. A few encapsulation
-violations will start to appear and the interpreter won't
-complain.
+substrate (e.g. `Util`), but given enough code, enough
+modules, and enough developers, things will get hazy. A few
+encapsulation violations will start to appear and the
+interpreter won't complain.
 
 Eventually the violations are everywhere, and module
 hierarchy (if there ever was one) becomes indistinct. It's
@@ -138,6 +136,8 @@ no longer possible to consider just one module in isolation
 because with the exception of the most primitive
 dependencies, almost every module is tightly intertwined
 with every other.
+
+!fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
 
 ### The edit-compile-debug cycle (#edit-compile-debug)
 
