@@ -25,7 +25,7 @@ characters, and the story of their developing love.
 
 The art and animation are top tier, with an incredible
 attention to detail applied to every scene. It's a little
-strange to recognize an iPhone 6 on screen because it's
+strange to recognize an iPhone 6 on screen because its
 been drawn in such sharp relief. This more traditional art
 form and works a lot better in so many places, and we're
 all very lucky that the anime industry didn't follow in the
