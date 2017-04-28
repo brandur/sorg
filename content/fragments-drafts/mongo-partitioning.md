@@ -1,6 +1,6 @@
 ---
 title: Partitioning In MongoDB
-published_at: 2017-04-25T15:55:53Z
+published_at: 2017-04-28T22:30:13Z
 hook: A day in trench life.
 ---
 
@@ -8,7 +8,7 @@ Use MongoDB for a day, and it's a rarity not to come across
 some sort of deficiency that would have been trivially
 tractable on a different system.
 
-Yesterday, I needed a way of partitioning a data set
+A few days ago I needed a way of partitioning a data set
 (specifically, our idempotency keys) so that each segment
 could be worked independently by N workers. A common/easy
 way to do this is to simply modulo by the number of
@@ -47,8 +47,7 @@ db.idempotent_keys.
 But now that you're working in JavaScript, MongoDB can't
 use any of its indexes.
 
-With a sane database (i.e. Postgres), I'd cast right in the
-query:
+With a sane database, I'd cast right in the query:
 
 ``` sql
 --
@@ -70,10 +69,26 @@ CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
     ((('x'||substr(md5(id),1,8))::bit(32)::int % 10));
 ```
 
-Back in MongoDB world, I'm going to have to add a new
-column specifically for partitioning, modify my code to
-write to it, backfill old values, and even after all that I
-still won't have a usable index!
+That's pretty ugly though, so how about we just wrap it in
+an `IMMUTABLE` function to nicen things up?
+
+``` sql
+CREATE OR REPLACE FUNCTION text_to_integer_hash(str text) RETURNS integer AS $$
+    BEGIN
+        RETURN ('x'||substr(md5(str),1,8))::bit(32)::int;
+    END;
+$$
+LANGUAGE plpgsql
+IMMUTABLE;
+
+CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
+    ((text_to_integer_hash(random_str) % 5));
+```
+
+Back in MongoDB world, I had to add a column specifically
+for partitioning, modify my code to write to it, backfill
+old values, and even after all that I *still won't have a
+usable index!*
 
 Choose your technology carefully folks. You can spend your
 time either making mediocre databases operable, or solving
