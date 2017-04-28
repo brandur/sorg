@@ -61,8 +61,11 @@ WHERE (('x'||substr(md5(id),1,8))::bit(32)::int % 10) = 0;
 
 But hold on, that also can't use the index on `id`.
 Luckily, [Postgres supports building indexes on arbitrary
-expression][indexed-expressions]. One quick command and the
-problem is definitively solved:
+expressions][indexed-expressions], a feature that I took
+for granted for a long time, but whose utility comes into
+sharp relief after you lose it.
+
+One quick command and the problem is definitively solved:
 
 ``` sql
 CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
