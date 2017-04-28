@@ -82,7 +82,7 @@ LANGUAGE plpgsql
 IMMUTABLE;
 
 CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
-    ((text_to_integer_hash(random_str) % 5));
+    ((text_to_integer_hash(random_str) % 10));
 ```
 
 Back in MongoDB world, I had to add a column specifically
