@@ -1,5 +1,5 @@
 ---
-title: Partitioning In MongoDB
+title: Partitioning In MongoDB (Or Lack Thereof)
 published_at: 2017-04-28T22:30:13Z
 hook: A day in trench life.
 ---
