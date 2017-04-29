@@ -9,10 +9,10 @@ some sort of deficiency that would have been trivially
 tractable on a different system.
 
 A few days ago I needed a way of partitioning a data set
-(specifically, our idempotency keys) so that each segment
-could be worked independently by N workers. A common/easy
-way to do this is to simply modulo by the number of
-partitions and have each worker switch off the result:
+(specifically, our idempotency keys) so that _N_ workers
+could independenty work each segment. A common/easy way to
+do this is to simply modulo by the number of partitions and
+have each worker switch off the result:
 
 ``` ruby
 # number of partitions
@@ -29,13 +29,13 @@ work.select { |x| x.id % n == 1 }
 
 Here I didn't have an integer key that I could use, but I
 did have a suitable string key in the form of each object's
-primary key which looks like `idr_12345`. That's fine
-though, because we can still get an adequate modulo
-candidate by hashing the string value and converting some
+ID which looks like `idr_12345`. That's fine though,
+because the ID is unique enough to be an adequate modulo
+candidate by hashing its string value and converting some
 of the bytes to an integer.
 
-But wait! You can't cast in a MongoDB query. The best you
-can do is fall back to JavaScript:
+Unfortunately, you can't cast in a MongoDB query. The best
+you can do is fall back to JavaScript:
 
 ``` js
 // This doesn't actually work -- you'd need to find some
@@ -76,7 +76,7 @@ That's pretty ugly though, so how about we just wrap it in
 an `IMMUTABLE` function to nicen things up?
 
 ``` sql
-CREATE OR REPLACE FUNCTION text_to_integer_hash(str text) RETURNS integer AS $$
+CREATE FUNCTION text_to_integer_hash(str text) RETURNS integer AS $$
     BEGIN
         RETURN ('x'||substr(md5(str),1,8))::bit(32)::int;
     END;
