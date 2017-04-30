@@ -73,7 +73,8 @@ CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
 ```
 
 That's a little ugly. No problem though; we can easily use
-an `IMMUTABLE` function to nicen things up.
+an `IMMUTABLE` function to nicen things up, and call it
+from right within `CREATE INDEX`.
 
 ``` sql
 CREATE FUNCTION text_to_integer_hash(str text) RETURNS integer AS $$
