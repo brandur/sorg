@@ -212,7 +212,8 @@ prototyping.
 Data management in a service built on schemaless data store
 will eventually become so painful that even its most
 steadfast proponents will acquiesce to allow some form of
-constraints. Life is artifically difficult when your `User`
+constraints. Life is artificially difficult when your `User`
+o
 records aren't even guaranteed to come with an `id` or
 `email` field.
 
