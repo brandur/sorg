@@ -4,13 +4,12 @@ published_at: 2017-04-28T22:30:13Z
 hook: A day in trench life.
 ---
 
-Use MongoDB for a day, and it's a rarity not to come across
-some sort of deficiency that would have been trivially
-tractable on a different system.
+A day doesn't pass of using MongoDB that doesn't make you
+reminisce of time spent on a real database.
 
-A few days ago I needed a way of partitioning a data set
-(specifically, our idempotency keys) so that _N_ workers
-could independenty work each segment. A common/easy way to
+I needed a way of partitioning a data set (specifically,
+our idempotency keys) so that _N_ workers could
+independently work their own segment. A common/easy way to
 do this is to simply modulo by the number of partitions and
 have each worker switch off the result:
 
@@ -31,15 +30,17 @@ Here I didn't have an integer key that I could use, but I
 did have a suitable string key in the form of each object's
 ID which looks like `idr_12345`. That's fine though,
 because the ID is unique enough to be an adequate modulo
-candidate by hashing its string value and converting some
-of the bytes to an integer.
+candidate; all we have to do is hash its value and convert
+some of the resulting bytes to an integer that we can
+modulo on.
 
 Unfortunately, you can't cast in a MongoDB query. The best
 you can do is fall back to JavaScript:
 
 ``` js
 // This doesn't actually work -- you'd need to find some
-// hashing scheme that's available from JavaScript.
+// hashing scheme that's available from JavaScript which
+// is an adventure of its own.
 db.idempotent_keys.
     find("parseInt(md5(this.id).substring(0,8), 8) % 10 == 0")
 ```
