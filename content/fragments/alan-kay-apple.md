@@ -5,17 +5,13 @@ hook: On locking down platforms and diluting user
   interfaces to the lowest common denominator.
 ---
 
-I've never had as an easy of a time romanticizing Xerox
-PARC and the old guard as much as many others down here do,
-but this 2014 talk from Alan Kay is very thought provoking:
-["Is it Complex or Did We Just Make it
-Complicated?"][talk].
+Here's a great talk from Alan Kay: ["Is it Complex or Did
+We Just Make it Complicated?"][talk].
 
 There are a lot of good ideas in there, but my favorite
-moment is when he sets his sights on the dumbed down
-interface that is iOS. He's asked about running
-[Squeak][squeak] (a Smalltalk dialect) on the iPad, and
-responds with:
+moment is when he sets his sights on iOS. He's asked about
+running [Squeak][squeak] (a Smalltalk dialect) on the iPad,
+and responds with:
 
 > I'll tell you what does tick me off. Two things. The
 > number one thing is that yes, you can run the Etoys
@@ -57,14 +53,16 @@ everything from our iOS apps to our browser extensions
 would have been an abomination to early pioneers. So too
 would the idea of diluting interfaces so that they're
 universally accessible, but at the expense of any kind of
-productivity gain by savvy or educated users.
+productivity gain by educated users.
 
-We should be thinking about re-opening our platforms and
+We should be thinking about re-opening computation and
 [rebooting our UX design to optimize for power
 users](/interfaces). We should be using computing to push
 humanity to new levels instead of constraining it to the
-most modest possible baseline. There's still time to do so,
-but the hour grows late indeed.
+lowest possible baseline. There's still time to do so, but
+with the continued rise in popularity of locked platforms
+(iOS/Android) and the diminishing presence of the PC, the
+hour grows late indeed.
 
 [talk]: https://www.youtube.com/watch?v=ubaX1Smg6pY
 [squeak]: https://en.wikipedia.org/wiki/Squeak
