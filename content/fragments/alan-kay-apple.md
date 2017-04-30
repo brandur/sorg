@@ -11,7 +11,7 @@ We Just Make it Complicated?"][talk].
 There are a lot of good ideas in there, but my favorite
 moment is when he sets his sights on iOS. He's asked about
 running [Squeak][squeak] (a Smalltalk dialect) on the iPad,
-and responds with:
+and goes on to say:
 
 > I'll tell you what does tick me off. Two things. The
 > number one thing is that yes, you can run the Etoys
