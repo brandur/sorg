@@ -28,7 +28,7 @@ work.select { |x| x.id % n == 1 }
 
 Here I didn't have an integer key that I could use, but I
 did have a suitable string key in the form of each object's
-ID which looks like `idr_12345`. That's fine though,
+ID which looks like `idr_12345`. That's okay though,
 because the ID is unique and makes a fine modulo candidate;
 all we have to do is hash its value and convert some of the
 resulting bytes to an integer.
