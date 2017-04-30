@@ -72,8 +72,8 @@ CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
     ((('x'||substr(md5(id),1,8))::bit(32)::int % 10));
 ```
 
-That's a little pretty ugly. No problem though; we can
-easily use an `IMMUTABLE` function to nicen things up.
+That's a little ugly. No problem though; we can easily use
+an `IMMUTABLE` function to nicen things up.
 
 ``` sql
 CREATE FUNCTION text_to_integer_hash(str text) RETURNS integer AS $$
