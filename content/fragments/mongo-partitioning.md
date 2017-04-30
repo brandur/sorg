@@ -15,13 +15,13 @@ have each worker switch off the result:
 
 ``` ruby
 # number of partitions
-n = 10
+N = 10
 
 # worker 0
-work.select { |x| x.id % n == 0 }
+work.select { |x| x.id % N == 0 }
 
 # worker 1
-work.select { |x| x.id % n == 1 }
+work.select { |x| x.id % N == 1 }
 
 ...
 ```
