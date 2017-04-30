@@ -29,10 +29,9 @@ work.select { |x| x.id % n == 1 }
 Here I didn't have an integer key that I could use, but I
 did have a suitable string key in the form of each object's
 ID which looks like `idr_12345`. That's fine though,
-because the ID is unique enough to be an adequate modulo
-candidate; all we have to do is hash its value and convert
-some of the resulting bytes to an integer that we can
-modulo on.
+because the ID is unique and makes a fine modulo candidate;
+all we have to do is hash its value and convert some of the
+resulting bytes to an integer.
 
 Unfortunately, you can't cast in a MongoDB query. The best
 you can do is fall back to JavaScript:
@@ -73,8 +72,8 @@ CREATE INDEX index_idempotent_keys_on_id_partitioned ON idempotent_keys
     ((('x'||substr(md5(id),1,8))::bit(32)::int % 10));
 ```
 
-That's pretty ugly though, so how about we just wrap it in
-an `IMMUTABLE` function to nicen things up?
+That's a little pretty ugly. No problem though; we can
+easily use an `IMMUTABLE` function to nicen things up.
 
 ``` sql
 CREATE FUNCTION text_to_integer_hash(str text) RETURNS integer AS $$
