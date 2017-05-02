@@ -6,7 +6,7 @@ published_at: 2014-05-27T13:39:13Z
 title: Elegant APIs with JSON Schema
 ---
 
-We've recently [gone on record](https://blog.heroku.com/archives/2014/1/8/json_schema_for_heroku_platform_api) indicating our commitment to using JSON Schema as the format for describing our API's, then even further by [releasing a set of tools](https://blog.heroku.com/archives/2014/5/20/heroku-http-api-toolchain) to improve the process of building and working with schema-based HTTP API's. With the recent rise of great API description formats over the last few years like Swagger, Blueprint, and RAML (among others), I wanted to write a few words on what JSON Schema is, why it's a neat technology, and how it can be applied specifically to building great API's.
+We've recently [gone on record](https://blog.heroku.com/archives/2014/1/8/json_schema_for_heroku_platform_api) indicating our commitment to using JSON Schema as the format for describing our API's, then even further by [releasing a set of tools](https://blog.heroku.com/archives/2014/5/20/heroku-http-api-toolchain) to improve the process of building and working with schema-based HTTP API's. With the recent rise of great API description formats over the last few years like Swagger, Blueprint, and RAML (among others), I wanted to write a few words on what JSON Schema is, why it's a neat technology, and how it can be applied specifically to building great APIs.
 
 At any time, you can jump into more documentation [over at jsonschema.org](http://json-schema.org/documentation.html), which includes detailed draft specifications for both JSON Schema and JSON Hyper-schema.
 
