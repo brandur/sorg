@@ -7,18 +7,20 @@ hook_image: true
 ---
 
 In the last decade we've seen the emergence of a number of
-new data stores that trade ACID away for other flashy
-features like higher availability, streaming changesets,
-JavaScript APIs, or nestable JSON documents. Although these
-features might be desirable in a few situations (HA in
-particular), in the vast majority of use cases projects
-should prefer the use of a database that offers ACID
-guarantees to help ensure the scalability of their
-software.
+new data stores that give up ACID guarantees in favor of
+other flashy features like streaming changesets, JavaScript
+APIs, or nestable JSON documents. While all of these
+features are somewhat useful, trading away ACID to get them
+is a raw deal indeed.
 
-ACID databases are by far the most important tool in
-existence for ensuring data correctness in an online
-system.
+After reaching a scale on the order of Google's, there's
+some argument to be made for giving up aspects of ACID in
+return for certain kinds of partitioning and availability,
+but this applies to almost no one. ACID databases are by
+far the most important tool in existence for ensuring data
+correctness in an online system, and the vast majority of
+software engineers should take advantage of them if it's
+even remotely possible.
 
 ## Optimizing for the wrong thing (#optimizing)
 
