@@ -823,6 +823,18 @@ func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 	return nil
 }
 
+// Just a shortcut to try and cut down on Go's extreme verbosity.
+func fileExists(file string) bool {
+	_, err := os.Stat(file)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	panic(err)
+}
+
 func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	if conf.ContentOnly {
 		return nil, nil
@@ -838,15 +850,47 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		return nil, err
 	}
 
+	// Every once in a while go and copy photos into this Git repository so
+	// that the build can use them as a cached version. The Flickr dependency
+	// introduces some brittleness to the build process because they're far
+	// from perfectly reliable, and the more photos that we need to fetch, the
+	// more likely we are to fail. Ideally here we're able to use cached
+	// versions for almost everything, and fetch a relatively few number of
+	// files over the network.
+	//
+	// These can be synced from the built bucket with:
+	//
+	//     aws s3 sync s3://brandur.org/assets/photos/ content/photos/
+	//
+	cacheDir := path.Join(sorg.ContentDir, "photos")
+
 	// Keep a published copy of all the photos that we need.
 	var photoFiles []*downloader.File
 	for _, photo := range photos {
-		photoFiles = append(photoFiles,
-			&downloader.File{URL: photo.LargeImageURL,
-				Target: conf.TargetDir + "/assets/photos/" + photo.Slug + "@2x.jpg"},
-			&downloader.File{URL: photo.MediumImageURL,
-				Target: conf.TargetDir + "/assets/photos/" + photo.Slug + ".jpg"},
-		)
+		image1x := photo.Slug + ".jpg"
+		image2x := photo.Slug + "@2x.jpg"
+
+		if fileExists(path.Join(cacheDir, image1x)) &&
+			fileExists(path.Join(cacheDir, image2x)) {
+
+			log.Debugf("Using cached photos: %v / %v", image1x, image2x)
+
+			for _, image := range []string{image1x, image2x} {
+				err := ensureSymlink(
+					path.Join(cacheDir, image),
+					path.Join(conf.TargetDir, "assets", "photos", image))
+				if err != nil {
+					return nil, err
+				}
+			}
+		} else {
+			photoFiles = append(photoFiles,
+				&downloader.File{URL: photo.MediumImageURL,
+					Target: path.Join(conf.TargetDir, "assets", "photos", image1x)},
+				&downloader.File{URL: photo.LargeImageURL,
+					Target: path.Join(conf.TargetDir, "assets", "photos", image2x)},
+			)
+		}
 	}
 
 	log.Debugf("Fetching %d photo(s)", len(photoFiles))
