@@ -127,7 +127,7 @@ concurrently, then the above check can fail us because both
 could have validated step one successfully before moving on
 to create a duplicated record.
 
-!fig src="/assets/acid/consistency.jpg" caption="Consistency."
+!fig src="/assets/mongodb/consistency.svg" caption="Without guaranteed consistency, there's nothing to stop the database from transitioning to an invalid state."
 
 You can solve this problem on an ACID database in multiple
 ways:
