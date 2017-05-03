@@ -1,5 +1,5 @@
 ---
-title: Practicing Minimalism In Production
+title: In Pursuit of Production Minimalism
 published_at: 2017-04-11T06:37:34Z
 location: San Francisco
 hook: A few guidelines for practicing minimalism in
@@ -21,8 +21,8 @@ with few tools and under the stressful conditions of
 combat.
 
 During his tenure, Lockheed's Skunk Works would produce
-planes like the U-2 and SR-71, so notable for their
-engineering excellence, that they've left a legacy that we
+planes like the U-2 and SR-71; so notable for their
+engineering excellence that they've left a legacy that we
 reflect on even today.
 
 !fig src="/assets/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works."
