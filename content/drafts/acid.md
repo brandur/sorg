@@ -37,10 +37,10 @@ While building a prototype quickly might be important for
 the first two weeks of a system's lifespan, the next ten
 years will be about keeping it running correctly by
 minimizing bugs and data consistency problems that will
-lead to user pain and attrition. Valuing miniscule
-short-term gains over long-term maintainability is a
-pathological way of doing anything, let alone building
-critical production software.
+lead to user and operator pain and attrition. Valuing
+miniscule short-term gains over long-term maintainability
+is a pathological way of doing anything; it's a sin when
+building critical production software.
 
 But how does an RDMS help with maintainability? Well, it
 turns out that ACID guarantees combined with strong
@@ -57,14 +57,14 @@ It's a favorite claim of products like MongoDB and
 RethinkDB to say that transactions in their systems are
 "atomic" -- as long as you only need atomicity inside a
 single document update. This is marketing-speak for "the
-system isn't atomic at all" -- if your data store doesn't
+system isn't atomic at all". If your data store doesn't
 guarantee atomicity at the document level, you're in for
-real trouble indeed.
+a real ride.
 
 Within the context of building web applications, atomicity
 is incredibly valuable. Software is buggy by nature and
 introducing problems that unintentionally fail requests is
-inevitable. By wrapping requests in transactions, we can
+inevitable. By wrapping requests in transactions, we get to
 ensure that even in the these worst case scenarios, state
 is left undamaged, and it's safe for other requests to
 proceed in the system.
@@ -72,7 +72,7 @@ proceed in the system.
 It's never desirable to fail requests that we expected to
 commit, but atomicity cancels the expensive fallout.
 
-### Manual clean-ups and fixer scripts (#without-atomicity)
+### The janitorial team (#without-atomicity)
 
 So what happens in a world without ACID guarantees where
 any failed request leaves invalid state behind?
@@ -95,7 +95,10 @@ over a few bad tuples.
 
 Particularly bad incidents will necessitate manual operator
 intervention, or even a specially crafted "fixer script" to
-clean up state and get everything back to normal.
+clean up state and get everything back to normal. After a
+certain size, this sort of thing will be happening
+frequently, and your engineers will start to spend more and
+more of their time acting as janitors.
 
 ## Consistency (#consistency)
 
@@ -138,7 +141,7 @@ ways:
    on an index) which would prevent a duplicate record from
    being inserted.
 
-### Fix it later. Poorly. (#without-consistency)
+### Fix it later. Maybe. (#without-consistency)
 
 Without ACID, its up to your application code to solve the
 problem. You could implement some a locking system of sorts
@@ -164,11 +167,11 @@ Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
 without isolation, how do you deal with the problem?
 
-### Just lock everything (#without-isolation)
+### Just lock the shit out of everything (#without-isolation)
 
 The most common technique is to implement your own
 pessimistic locking system that constrains access to some
-set of resourcs to a single operation, and forces others to
+set of resources to a single operation, and forces others to
 block until it's finished. So for example, if our core
 model is a set of user accounts that own other resources,
 we'd lock the whole account when a modification request
@@ -207,30 +210,37 @@ This approach is all downsides:
 
 I talked before about how schemaless databases are often
 misinterpreted as a feature because they enable fast
-prototyping.
+prototyping. Rich Hickey has a great talk where he makes [a
+distinction between "simple" and "easy"][simple-made-easy],
+with ***simplicity*** being an elegant process of boxing
+powerful concepts into useful layers of abstraction,
+whereas ***ease*** is nearly the opposite, where short term
+gratification is favored to the detriment of long term
+prosperity. Schemaless databases are not simple; they're
+easy.
 
 Data management in a service built on schemaless data store
 will eventually become so painful that even its most
 steadfast proponents will acquiesce to allow some form of
-constraints. Life is artificially difficult when your `User`
-o
-records aren't even guaranteed to come with an `id` or
-`email` field.
+constraints. Life is artificially difficult when your
+`User` records aren't even guaranteed to come with an `id`
+or `email` field.
 
 By the time an organization hits hundreds of models and
 thousands of fields, they'll certainly be using some kind
 of object modeling framework in a desperate attempt to get
-a few constraints into place. By that point though, data is
-probably already inconsistent enough that it'll make
-migrations difficult in perpetuity, and application code
-twisted and complicated as its built to gracefully handle
-dozens of possible edge cases.
+a few assurances around data shape into place. By that
+point though, things are probably already inconsistent
+enough that it'll make migrations difficult in perpetuity,
+and application code twisted and complicated as its built
+to gracefully handle dozens of edge cases.
 
 Throw away prototypes are the _only_ place that schemaless
-data stores should be put to use. For services that you
-want to run in production, the better defined your schema
-and the more self-consistent your data, the easier your
-life is going to be.
+data stores should be put to use (and again, even there I'd
+question whether it's actually faster or has any measurable
+merit). For services that you want to run in production,
+the better defined your schema and the more self-consistent
+your data, the easier your life is going to be.
 
 ## On scaling (#scaling)
 
@@ -274,7 +284,7 @@ There's a common theme to everything listed above:
 
 By choosing a non-ACID data store, you end up
 reimplementing everything that it does for you in the user
-space of your application, except _worse_.
+space of your application, except far worse.
 
 Your database can and should act as a foundational
 substrate that offers your application profound leverage
@@ -283,3 +293,5 @@ provide these excellent features, but it provides them in a
 way that's been battle-tested and empirically vetted by
 millions of hours of running some of the heaviest
 applications in the world.
+
+[simple-made-easy]: https://www.infoq.com/presentations/Simple-Made-Easy
