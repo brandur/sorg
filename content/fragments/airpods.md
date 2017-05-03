@@ -32,28 +32,26 @@ a Gordian knot to untangle every time your take your
 earphones out of pocket, and not getting caught on anything
 you walk by that's protruding ever-so-slightly is freeing,
 and you start to appreciate it immediately. Getting them in
-and out of your ears is as fast and easy as you could
-possibly want.
+and out of your ears is fast and easy.
 
-But it's the minor touches in usability that make the
-AirPods a truly great product. For example, if you take one
-out of your ear playback is paused automatically, and
-resumes when you put it back in. The included charging case
-is every so slightly magnetic so that when you slide your
-AirPods into it, they're sucked in with a satisfying click.
-Both ears have a built-in microphone so it's trivial to
-throw one of them in for a phone call and have it feel as
-natural as if you were talking to the other party in
-person.
+It's the minor touches in usability that make the AirPods a
+great product. If you take one out of your ear playback is
+paused automatically, and resumes when you put it back in.
+The included charging case is every so slightly magnetic so
+that when you slide your AirPods into it, they're sucked in
+with a satisfying click. Both ears have a built-in
+microphone, and it only takes a second to throw one of them
+in for a phone call for a result that's as natural as if
+you were talking to the other party in person.
 
-Their only weakness is lack of of sound insulation. If
-you're anywhere but the most serene environments, whatever
-you're listening to will disappear into the background
-noise, which vastly diminishes their functional usefulness.
-A street with even light traffic, a gym that's playing
-background music, or even voices in a crowded room are all
-enough to make listening to anything over AirPods a very
-unfulfilling experience. I would have thought that Apple
+Their major weakness is total lack of of sound insulation.
+If you're anywhere but the most serene environments,
+whatever you're listening to will disappear into the
+background noise, which vastly diminishes their functional
+usefulness. A street with even light traffic, a gym that's
+playing background music, or even voices in a crowded room
+are all enough to make listening to anything over AirPods
+an unfulfilling experience. I would have thought that Apple
 employees using their own products would eventually push
 development in the right direction, but years of
 disappointment on this front suggest that it's not the
@@ -61,4 +59,4 @@ case. Cupertino must be a very quiet place.
 
 Despite that, they're still great and a pleasure to use
 every time I take them out. Apple: fewer Touch Bars and
-dongles please, and more of this.
+dongles please; more of this.
