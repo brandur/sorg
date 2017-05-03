@@ -77,10 +77,10 @@ safety:
 * Canary deploys to help detect problems early, and contain
   the fallout in the inevitable case of a bad deploy.
 
-If Ruby code hasn't been run, it almost certainly doesn't
-work. Even if it's been run and everything works today,
-without total test coverage something is bound to break
-tomorrow.
+If Ruby code hasn't been run, it doesn't work. Even once
+you've fixed it and it does, it's bound to break again at
+some point in the future without line coverage that's
+complete enough to ensure that every line changed is valid.
 
 ### Boundary bleeding (#boundary-bleeding)
 
