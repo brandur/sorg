@@ -263,7 +263,7 @@ scalability, and for those you should choose a database
 that gives you as many of these guarantees as possible,
 even if it's on a per-partition scale.
 
-## Build on solid ground (#solid-substrates)
+## Check your foundation (#foundation)
 
 There's a common theme to everything listed above:
 
