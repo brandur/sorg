@@ -8,15 +8,14 @@ hook: I'm happy to be cheering from the bleachers as Apple
 
 Apple's had a bad few years. Financially, things are great,
 but product innovation has not only slowed to a crawl, but
-in cases like the Touch Bar, has actually stopped,
-reversed, and is now chugging along at full steam in the
-wrong direction. I'd planned to ignore the release of the
-AirPods, but some personal anecdotes from a few early
-adopters were so strong, that I caved and bought a pair.
+in cases like the Touch Bar, has stopped, reversed, and is
+chugging along at full steam in the wrong direction. I'd
+planned to ignore the release of the AirPods, but some
+personal anecdotes from a few early adopters were so
+strong, that I caved and bought a pair.
 
-And boy was I wrong. These things are awesome. They're
-easily the best new product that Apple has released in
-recent memory.
+Boy was I wrong. The AirPods are easily the best product
+that Apple has released in recent memory.
 
 My biggest fear going in is that like the other wireless
 technologies that we know and love, they would occasionally
