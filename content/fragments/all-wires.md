@@ -22,9 +22,10 @@ A configuration that works some of the time is almost worse
 than one that works none of the time. Every time you turn
 it on is the likely start of a debugging odyssey involving
 restarting things, adjusting streaming configurations, and
-repositioning APs. All in all, there's a reasonable chance
-that I spent more time playing with it than using it to
-watch movies and TV.
+repositioning access points. All in all, there's a
+reasonable chance that I spent more time playing with it
+throughout its lifetime than using it to watch movies and
+TV.
 
 I recently tore it all down and replaced it with a new
 setup: a drive connected to an old Mac connected right into
