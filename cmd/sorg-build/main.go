@@ -1319,7 +1319,7 @@ func copyFile(src, dst string) error {
 	}
 	defer out.Close()
 
-	_, err = io.Copy(in, out)
+	_, err = io.Copy(out, in)
 	return err
 }
 
