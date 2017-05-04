@@ -9,42 +9,43 @@ hook_image: true
 
 Ruby is a beautiful language. Speaking from experience,
 it's easy to get attached to everything from its pleasantly
-readable syntax to the friendly demeanor of its creator
-Matz, who gives off the air of a trustworthy benevolent
-dictator if there ever was one.
+readable syntax, to the all encompassing range of useful
+libraries found in Rubygems, to the friendly demeanor of
+its creator Matz, who gives off the air of a trustworthy
+benevolent dictator if there ever was one.
 
-TODO
+Ruby is also a very frustrating. Its easy syntax and
+generously loose constraints let you build small programs
+with incredible speed, but the longer lived that a project
+is, the more those features become liabilities. I've worked
+on projects on the scale of hundreds of thousands of lines
+for my last two jobs now, and at that size, the language's
+problems are very obviously visible in shocking relief.
 
-I have a love/hate relationship with Ruby. I love how
-expressive the language is and how it lets me write
-programs (especially small ones) fast, but I'm also
-consistently frustrated by how poor its development
-experience is in certain areas.
-
-I know a fair number of Ruby evangelists from my time at
-Heroku who in most cases consider Ruby to be a nearly
-perfect language. The feeling isn't so much the result of
-willful ignorance, but more because Ruby's cracks don't
-appear until you're managing a sizable codebase. If the
-largest Ruby programs you write are only a few thousand
-lines, then you might never run into anything that I talk
-about here.
-
-My last two jobs have had me work in huge Ruby codebases on
-the order of hundreds of thousands of lines and dozens (if
-not hundreds) of gem dependencies. It's at this scale that
-all the language's problems come into sharp relief.
+Ruby's core team works industriously, but major changes
+tend to be aimed at solving problems of _computing_;
+building a better garbage compiler, or improving
+performance. These are useful additions, but they don't
+address Ruby's major weaknesses which are problems of
+_engineering_ that make working in large codebases
+difficult. Stepping back, the mismatch isn't surprising;
+these problems take frequent work in a large Ruby codebase
+to become visible, and the majority of Ruby's core and
+community are working primarily in C, or building modestly
+sized programs.
 
 ## I've already heard it's slow (#slow)
 
-Ruby _is_ slow and resource intensive, but this is less of
-a problem than you'd think. Many production apps spend an
-inordinate amount of time waiting on database calls and
-other I/O, so improvements to the program's structure and
-efficiency will yield better result than rewriting in a new
-language. Capacity can also often be addressed by throwing
-more hardware at the problem; it's more expensive, but not
-unreasonable when compared to the cost of engineering time.
+Ruby _is_ slow and resource intensive, but although
+considerable, it's less of a problem than you'd think. Many
+production apps spend an inordinate amount of time waiting
+on database calls and other I/O, so improvements to the
+program's structure and efficiency will generally yield
+better result than rewriting in a more performant language.
+Successful organizations can also address capacity by
+throwing more hardware at the problem; it's more expensive,
+but not unreasonable when compared to the cost of
+engineering time.
 
 What I want to focus on are problems of organizational
 scale; how the language itself starts to break down once
@@ -133,9 +134,9 @@ interpreter won't complain.
 Eventually the violations are everywhere, and module
 hierarchy (if there ever was one) becomes indistinct. It's
 no longer possible to consider just one module in isolation
-because with the exception of the most primitive
-dependencies, almost every module is tightly intertwined
-with every other.
+because with the exception of the most basic dependencies,
+almost every module is tightly intertwined with every
+other.
 
 !fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
 
@@ -167,6 +168,10 @@ make it difficult to implement editor "jump to",
 auto-completion, and other functions that are invaluable
 for developer productivity.
 
+There are options available, but they're almost entirely
+heuristically based; they might provide some gain in
+working speed, but are neither accurate or reliable.
+
 !fig src="/assets/ruby-scale/tooling.jpg" caption="Good tooling is sadly lacking/impossible."
 
 ## Other languages (#other-languages)
@@ -191,9 +196,9 @@ edit-compile-debug loops.
 
 ## Towards a brighter future (#brighter-future)
 
-Ruby does have a few advantages. Pry is probably the best
-REPL in the world, and it helps immensely while debugging
-or trying to any kind online introspection.
+Ruby does have a few advantages. Pry is the best REPL in
+the world, and it helps immensely while debugging or trying
+to any kind online introspection.
 
 ## Summary (#summary)
 
