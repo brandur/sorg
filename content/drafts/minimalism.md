@@ -6,6 +6,7 @@ hook: A few guidelines for practicing minimalism in
   production to produce tech stacks that are stable and
   operable.
 hook_image: true
+attributions: Photographs by <strong><a href="https://www.flickr.com/photos/i-am-mclovin/14601998033/">Ben Harrington</a></strong> (SR-71), <strong><a href="https://www.flickr.com/photos/learnscope/5032942270/">Robyn Jay</a></strong> (embers of a burning fire), and <a href="https://www.flickr.com/photos/alamin_bd/22969073683/">Md. Al Amin</a> (boat and sky). Licensed under Creative Commons BY-NC-ND 2.0, BY-SA 2.0, and CC BY 2.0 respectively.
 ---
 
 While working at Lockheed during the cold war, Kelly
@@ -28,7 +29,7 @@ planes like the U-2 and SR-71; so notable for their
 engineering excellence that they've left a legacy that we
 reflect on even today.
 
-!fig src="/assets/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works. Very fast even if not particularly simple.<br><br>Photograph courtesy of <a href=\"https://www.flickr.com/photos/i-am-mclovin/14601998033/\">Ben Harrington</a>."
+!fig src="/assets/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works. Very fast even if not particularly simple."
 
 ## Minimalism in technology (#in-technology)
 
@@ -122,7 +123,7 @@ party](/fragments/burn-parties). The time and energy spent
 on some of these projects would in some cases be as great,
 or even greater, as it would for shipping a new product.
 
-!fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology.<br><br>Photograph courtesy of <a href=\"https://www.flickr.com/photos/learnscope/5032942270/\">Robyn Jay</a>."
+!fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology."
 
 ## Minimalism in simple ideas (#in-simple-ideas)
 
@@ -174,7 +175,7 @@ aviator, had this to say on the subject:
 > nothing left to add, but when there is nothing left to
 > take away.
 
-!fig src="/assets/minimalism/sea.jpg" caption="Nothing left to add. Nothing left to take away.<br><br>Photograph courtesy of <a href=\"https://www.flickr.com/photos/alamin_bd/22969073683/\">Md. Al Amin</a>."
+!fig src="/assets/minimalism/sea.jpg" caption="Nothing left to add. Nothing left to take away."
 
 For a long time we had a very big and very aspirational
 goal at Heroku: by breaking up the platform's "kernel" (the
