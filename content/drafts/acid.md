@@ -83,7 +83,7 @@ The default will be that a subsequent retry won't be able
 to reconcile the broken state, and that the data will need
 to be repaired before it's usable again.
 
-!fig src="/assets/mongodb/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
+!fig src="/assets/acid/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
 
 You might hope that companies in this position would have
 automated protections in place to try and roll back bad
@@ -129,7 +129,7 @@ concurrently, then the above check can fail us because both
 could have validated step one successfully before moving on
 to create a duplicated record.
 
-!fig src="/assets/mongodb/consistency.svg" caption="Without guaranteed consistency, there's nothing to stop the database from transitioning to an invalid state."
+!fig src="/assets/acid/consistency.svg" caption="Without guaranteed consistency, there's nothing to stop the database from transitioning to an invalid state."
 
 You can solve this problem on an ACID database in multiple
 ways:
@@ -180,7 +180,7 @@ we'd lock the whole account when a modification request
 comes in, and only unlock it again after we've committed
 our work.
 
-!fig src="/assets/mongodb/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
+!fig src="/assets/acid/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
 This approach is all downsides:
 
