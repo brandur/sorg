@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"database/sql"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path"
@@ -823,18 +824,6 @@ func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 	return nil
 }
 
-// Just a shortcut to try and cut down on Go's extreme verbosity.
-func fileExists(file string) bool {
-	_, err := os.Stat(file)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	panic(err)
-}
-
 func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	if conf.ContentOnly {
 		return nil, nil
@@ -876,7 +865,7 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 			log.Debugf("Using cached photos: %v / %v", image1x, image2x)
 
 			for _, image := range []string{image1x, image2x} {
-				err := ensureSymlink(
+				err := copyFile(
 					path.Join(cacheDir, image),
 					path.Join(conf.TargetDir, "assets", "photos", image))
 				if err != nil {
@@ -1313,6 +1302,37 @@ func accumulateFragments(fragments *[]*Fragment) chan *Fragment {
 		}
 	}()
 	return fragmentChan
+}
+
+// Naturally not provided by the Go language because copying files "has tricky
+// edge cases". You just can't make this stuff up.
+func copyFile(src, dst string) error {
+	in, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer in.Close()
+
+	out, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(in, out)
+	return err
+}
+
+// Just a shortcut to try and cut down on Go's extreme verbosity.
+func fileExists(file string) bool {
+	_, err := os.Stat(file)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	panic(err)
 }
 
 // Gets a map of local values for use while rendering a template and includes
