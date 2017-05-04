@@ -9,27 +9,34 @@ hook_image: true
 In the last decade we've seen the emergence of a number of
 new data stores that give up ACID guarantees in favor of
 other flashy features like streaming changesets, JavaScript
-APIs, or nestable JSON documents. While all of these
-features are somewhat useful, trading away ACID to get them
-is a raw deal indeed.
+APIs, or nestable JSON documents.
+
+ACID databases are by far the most important tool in
+existence for ensuring maintainability and data correctness
+in an online system, and the vast majority of all engineers
+and all use cases should take advantage of them if doing so
+even remotely possible. Trading away these powerful
+features for various gimmickry is as raw of a deal as
+you'll ever see in the technical world.
 
 After reaching a scale on the order of Google's, there's
 some argument to be made for giving up aspects of ACID in
 return for certain kinds of partitioning and availability,
-but this applies to almost no one. ACID databases are by
-far the most important tool in existence for ensuring data
-correctness in an online system, and the vast majority of
-software engineers should take advantage of them if it's
-even remotely possible.
+but especially with the advent of newer databases that
+provide these guaranteees along with scalability, this
+applies to almost no one.
 
 ## Optimizing for the wrong thing (#optimizing)
 
-An often cited features document data stores is that they
-allow you to bootstrap quickly and get to a prototype
-because they don't bog you down with schema design.
+I also want to cover how an often cited features document
+data stores is that they allow you to bootstrap quickly and
+get to a prototype because they don't bog you down with
+schema design. This is a little tangential to ACID, but
+also very relevant to the theme of program correctness and
+maintainability.
 
-Keeping in mind that this claim isn't actually true -- a
-developer reasonably competent with their RDMS of choice
+The claim around faster prototyping isn't actually true --
+a developer reasonably competent with their RDMS of choice
 and armed with an ORM and migration framework can easily
 keep up with their document store-oriented counterpart (and
 probably outpace them), but more importantly, it's
@@ -42,7 +49,7 @@ minimizing bugs and data consistency problems that will
 lead to user and operator pain and attrition. Valuing
 miniscule short-term gains over long-term maintainability
 is a pathological way of doing anything; it's a sin when
-building critical production software.
+building production-critical software.
 
 But how does an RDMS help with maintainability? Well, it
 turns out that ACID guarantees combined with strong
@@ -55,13 +62,13 @@ given database transaction, the changes to be committed
 will be all or nothing. If the transaction fails partway
 through, the initial database state is left unchanged.
 
-It's a favorite claim of products like MongoDB and
-RethinkDB to say that transactions in their systems are
-"atomic" -- as long as you only need atomicity inside a
-single document update. This is marketing-speak for "the
-system isn't atomic at all". If your data store doesn't
-guarantee atomicity at the document level, you're in for
-a real ride.
+Products like MongoDB, RethinkDB, and Couchbase talk about
+how transactions in their systems are atomic -- as long as
+you consider atomicity to be at the document level. This is
+spin that can be interpreted as "the system isn't atomic".
+Document-level atomicity isn't enough for a non-trivial
+program; not meeting even that incredibly modest bar is a
+recipe for disaster.
 
 Within the context of building web applications, atomicity
 is incredibly valuable. Software is buggy by nature and
@@ -177,8 +184,8 @@ set of resources to a single operation, and forces others to
 block until it's finished. So for example, if our core
 model is a set of user accounts that own other resources,
 we'd lock the whole account when a modification request
-comes in, and only unlock it again after we've committed
-our work.
+comes in, and only unlock it again after we've finished our
+work.
 
 !fig src="/assets/acid/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
@@ -192,7 +199,7 @@ This approach is all downsides:
 
 2. ***It's inefficient.*** Not every blocking operation
    actually needs to wait on every other operation. Because
-   the models you lock on tend to broad to reduce the
+   the models you lock on tend to be broad to reduce the
    system's complexity, many operations will block when
    they didn't necessarily have to.
 
@@ -214,12 +221,11 @@ I talked before about how schemaless databases are often
 misinterpreted as a feature because they enable fast
 prototyping. Rich Hickey has a great talk where he makes [a
 distinction between "simple" and "easy"][simple-made-easy],
-with ***simplicity*** being an elegant process of boxing
-powerful concepts into useful layers of abstraction,
-whereas ***ease*** is nearly the opposite, where short term
-gratification is favored to the detriment of long term
-prosperity. Schemaless databases are not simple; they're
-easy.
+with ***simplicity*** meaning the opposite of complex, and
+***ease*** meaning "to be at hand" or "to be approachable"
+in that it may provide short term gratification, even if
+it's to the detriment of long term maintainability.
+Schemaless databases are not simple; they're easy.
 
 Data management in a service built on schemaless data store
 will eventually become so painful that even its most
@@ -263,7 +269,11 @@ that are in there when they don't need to be.
 There are a few use cases that legitimately need
 scalability, and for those you should choose a database
 that gives you as many of these guarantees as possible,
-even if it's on a per-partition scale.
+even if it's on a per-partition scale. Citus and Google
+Spanner, the former providing per-shard ACID guarantees and
+the latter providing locking read-write transactions for
+when you need them, are both interesting options in this
+space.
 
 ## Check your foundation (#foundation)
 
@@ -295,5 +305,10 @@ provide these excellent features, but it provides them in a
 way that's been battle-tested and empirically vetted by
 millions of hours of running some of the heaviest
 applications in the world.
+
+My usual advice along these lines is that there's no reason
+not to start your projects with an RDMS providing ACID and
+good features around constraints. In almost every case the
+right answer is to just use Postgres.
 
 [simple-made-easy]: https://www.infoq.com/presentations/Simple-Made-Easy
