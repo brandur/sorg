@@ -92,17 +92,32 @@ The default will be that a subsequent retry won't be able
 to reconcile the broken state, and that the data will need
 to be repaired before it's usable again.
 
+Here's an example of a simple GitHub-like service. When a
+user opens a pull request, we have a number of objects that
+we have to save in succession before finishing the request:
+a pull request modeling the created resource, a webhook to
+fire off to any listeners on the repository, a reviewer
+record mapping to whomever we've assigned review, and an
+event to store in the audit log.
+
 !fig src="/assets/acid/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
+
+A request that fails after the first two saves fails to
+create a valid set of objects, but with transactional
+atomicity can't revert the changes it did make. The result?
+An invalid pull request. A subsequent request that tries to
+look it up might error as the code tries to load state was
+only partially created.
 
 You might hope that companies in this position would have
 automated protections in place to try and roll back bad
-state where possible. While this may exist somewhere, it's
+partial transactions. While this may exist somewhere, it's
 much more likely that the overarching strategy is an
 optimistic sense of hope that these kinds of problems won't
-happen very often. This is often combined with a
-laissez-faire philosophy that all systems have some bad
-data in them, and there's no point in agonizing too much
-over a few bad tuples.
+happen very often. Code paths begin to mutate to load data
+defensively so that they handle an exponential number of
+combinations of bad state that have accumulated in the data
+store over time.
 
 Particularly bad incidents will necessitate manual operator
 intervention, or even a specially crafted "fixer script" to
