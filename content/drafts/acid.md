@@ -78,7 +78,7 @@ introducing problems that unintentionally fail requests is
 inevitable. By wrapping requests in transactions, we get to
 ensure that even in the these worst case scenarios, state
 is left undamaged, and it's safe for other requests to
-proceed in the system.
+proceed through the system.
 
 It's never desirable to fail requests that we expected to
 commit, but atomicity cancels the expensive fallout.
