@@ -2,7 +2,9 @@
 title: Building Robustly With ACID, or Why to Avoid MongoDB
 published_at: 2017-03-12T17:59:02Z
 location: San Francisco
-hook: TODO
+hook: On ensuring system integrity, operability, and
+  correctness through solid foundational components, and
+  how ACID and strong constraints work in your favor.
 hook_image: true
 ---
 
