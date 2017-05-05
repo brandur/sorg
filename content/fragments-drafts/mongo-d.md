@@ -30,7 +30,7 @@ client machine crashing, the failure of the connected
 mongod instance, or an interruption in the network
 connection that leads to a communication error.
 
-## Journaling and sync intervals
+## Writes to disk are not webscale
 
 Possibly even more egregious was that until version 1.8
 (released March 2011), MongoDB didn't have journaling.
@@ -54,8 +54,8 @@ The DBAs who joked about MongoDB losing data were right.
 For a long time it had multiple options at its disposal to
 throw your data out the window. On the plus side, they were
 great help for the benchmarks that help fuel its initial
-hype; it turns out that persistence operations are very
-fast when you don't wait to see whether they worked.
+hype; persistence operations are very fast when you don't
+wait to see whether they worked.
 
 To their credit, the company did eventually close most of
 these holes. MongoDB 1.8 brought journaling, and as of
