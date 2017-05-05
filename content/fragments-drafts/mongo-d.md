@@ -30,7 +30,7 @@ client machine crashing, the failure of the connected
 mongod instance, or an interruption in the network
 connection that leads to a communication error.
 
-## Writes to disk are not webscale (#journaling)
+## Disks are not webscale (#journaling)
 
 Possibly even more egregious was that until version 1.8
 (released March 2011), MongoDB didn't have journaling.
