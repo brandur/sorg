@@ -14,7 +14,7 @@ property states that after a transaction has committed, it
 will remain committed even in the event of power loss,
 crashes, or other errors.
 
-## Not too concerned about writes
+## Not too concerned about writes (#write-concern)
 
 MongoDB clients have a setting called `WriteConcern` which
 dictates how they handle persistence. For the first four
@@ -30,7 +30,7 @@ client machine crashing, the failure of the connected
 mongod instance, or an interruption in the network
 connection that leads to a communication error.
 
-## Writes to disk are not webscale
+## Writes to disk are not webscale (#journaling)
 
 Possibly even more egregious was that until version 1.8
 (released March 2011), MongoDB didn't have journaling.
@@ -48,7 +48,7 @@ first is named `w`) was added that lets clients specify
 that they want to wait for the journal to sync to disk
 before returning.
 
-## A more durable future
+## A more durable future (#future)
 
 The DBAs who joked about MongoDB losing data were right.
 For a long time it had multiple options at its disposal to
