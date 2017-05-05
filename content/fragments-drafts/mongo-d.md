@@ -14,6 +14,10 @@ property states that after a transaction has committed, it
 will remain committed even in the event of power loss,
 crashes, or other errors.
 
+For a long time MongoDB wasn't durable and _did_ lose data,
+but has since mostly redeemed itself. Here's the story of
+how MongoDB discovered its "D".
+
 ## Not too concerned about writes (#write-concern)
 
 MongoDB clients have a setting called `WriteConcern` which
@@ -62,7 +66,7 @@ these holes. MongoDB 1.8 brought journaling, and as of
 November 2012 its client libraries set `WriteConcern` to
 `1` by default, which tells them to only acknowledge the
 write after it's been confirmed to have propagated to a
-replica set's primary. Full durability is possible by
+replica set's primary. Real durability is possible by
 setting the `j` option, although the data store's design
 around sync intervals continues to make its use not
 performant.
