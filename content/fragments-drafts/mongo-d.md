@@ -35,9 +35,9 @@ connection that leads to a communication error.
 Possibly even more egregious was that until version 1.8
 (released March 2011), MongoDB didn't have journaling.
 Changes were committed in memory and for performace reasons
-flushed to disk about once a minute. Again, the problems
-here are obvious in that a crash would lose you a minute's
-worth of data that you'd thought was committed.
+only flushed to disk about once a minute. Again, the
+problems here are obvious in that a crash would lose you a
+minute's worth of data that you'd thought was committed.
 
 In 1.8 journaling was added, but still came with a caveat:
 it was only synced to disk on a regular "commit interval"
