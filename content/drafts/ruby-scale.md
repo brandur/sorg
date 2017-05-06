@@ -83,6 +83,8 @@ you've fixed it and it does, it's bound to break again at
 some point in the future without line coverage that's
 complete enough to ensure that every line changed is valid.
 
+!fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
+
 ### Boundary bleeding (#boundary-bleeding)
 
 Symbols loaded into a Ruby runtime all end up in one big
@@ -139,8 +141,6 @@ no longer possible to consider just one module in isolation
 because with the exception of the most basic dependencies,
 almost every module is tightly intertwined with every
 other.
-
-!fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
 
 ### The edit-compile-debug cycle (#edit-compile-debug)
 
