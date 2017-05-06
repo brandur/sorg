@@ -94,7 +94,7 @@ be preserved as code is being initially parsed, so this
 _doesn't_ work:
 
 ``` ruby
-class Foo
+class App
   # Error: Util is not yet available.
   include Util
 end
@@ -109,11 +109,11 @@ method bodies are perfectly kosher:
 ``` ruby
 module Util
   def self.hello
-    Foo.hello
+    App.hello
   end
 end
 
-class Foo
+class App
   include Util
 
   def self.hello
