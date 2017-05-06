@@ -204,7 +204,7 @@ The same thing is also possible from Redshift. Here's a
 query to ask for any users that have made requests to our
 API services using pre-1.2 versions of TLS in the last week [4]:
 
-```
+``` sql
 SELECT distinct(user_id)
 FROM canonical_lines.api
 WHERE created > GETDATE() - '7 days'::interval
