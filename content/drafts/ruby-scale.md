@@ -131,6 +131,8 @@ modules, and enough developers, things will get hazy. A few
 encapsulation violations will start to appear and the
 interpreter won't complain.
 
+!fig src="/assets/ruby-scale/modularity.svg" caption="Boundary violations grow linearly with the number of lines of Ruby produced."
+
 Eventually the violations are everywhere, and module
 hierarchy (if there ever was one) becomes indistinct. It's
 no longer possible to consider just one module in isolation
