@@ -144,7 +144,7 @@ hugely talented engineers saved my skin an untold number of times as I dealt
 number of times that as the operator of our largest internal database, I was
 their highest-maintenance customer, and it was true.
 
-### Ephmeralization (#ephemeralization)
+### Ephemeralization (#ephemeralization)
 
 One powerful idea was that of _ephemeralization_, which can be roughly
 described as "doing more with less". But aside from doing more, the act of
