@@ -3,6 +3,7 @@ title: The Long Road to Mongo's Durability
 published_at: 2017-05-07T14:53:09Z
 hook: A data store's journey from data loss to durable
   storage.
+hn_link: https://news.ycombinator.com/item?id=14285871
 ---
 
 Anyone running in database circles will probably have at

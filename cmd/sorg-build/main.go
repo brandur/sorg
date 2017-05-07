@@ -171,6 +171,9 @@ type Fragment struct {
 	// Draft indicates that the fragment is not yet published.
 	Draft bool `yaml:"-"`
 
+	// HNLink is an optional link to comments on Hacker News.
+	HNLink string `yaml:"hn_link"`
+
 	// Hook is a leading sentence or two to succinctly introduce the fragment.
 	Hook string `yaml:"hook"`
 
