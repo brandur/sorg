@@ -21,12 +21,14 @@ story of how MongoDB won its "D".
 ## Not too concerned about writes (#write-concern)
 
 MongoDB clients have a setting called `WriteConcern` that
-dictates how they handle persistence. For the first four
-years of the data store's life its default setting was `0`,
-meaning that the clients didn't wait to acknowledge
-writes. Confirming that the requests had made it to the
-outgoing socket buffer of the client host was considered
-"good enough".
+dictates the level of certainty that they should have
+before considering data they add or change to be persisted.
+For the first four years of the data store's life its
+default setting was `0`, which meant that the clients
+didn't even wait for server acknowledgement to consider a
+write successful. Confirming that the requests had made it
+to the outgoing socket buffer of the local host was "good
+enough".
 
 It doesn't take much to see the problem here. Any number of
 common real life occurrences could cause that data to be
