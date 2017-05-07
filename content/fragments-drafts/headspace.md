@@ -11,9 +11,10 @@ Being relevant to my interests, I registered and tried it
 out.
 
 I'm ten days into use now and Headspace is working -- I'm
-on my longest streak of successive days meditating ever.
-The mild gamification that it uses to give me the length of
-my current streak acts as just enough encouragement to lock
+on my longest streak of successive days meditating ever
+(although a modest achievement by most standards). The mild
+gamification that it uses to give me the length of my
+current streak acts as just enough encouragement to lock
 for 10 minutes every day. The guided meditations lessons
 don't get old because there's a new one every day, but
 they're also done of a good job of making sure that in each
@@ -60,13 +61,14 @@ Meditation is one of the places that I can spend time and
 not regret a minute that I've put toward it. It's a
 significant help in improving focus, reducing anxiety, and
 clarifying ideas. I know that I want to do more of it, and
-the only question is how to build the good habit.
+the only question is how to build the habit.
 
-The best methods I know of are to start with more modest
-goals like ten minute daily practices, and to have
-technology assist through gamification and reminders;
-normally annoying anti-patterns of the mobile age, but
-helpful when it comes to building good habits.
+The best methods I know of are to start with modest goals,
+like ten minute daily practice, and to have technology
+assist through gamification and reminders; normally
+annoying anti-patterns of the mobile age, but helpful when
+it comes to building good habits. I look forward to
+Headspace helping out here.
 
 [1] For example, Sam Harris has two guided meditation
     sessions on Sound Cloud ([9 minutes][9-min] and [26
