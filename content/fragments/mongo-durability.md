@@ -49,11 +49,11 @@ thought was committed.
 In 1.8 journaling was added, but still came with a caveat:
 it was only synced to disk on a regular "commit interval"
 of ~100 ms. Once again, a crash would cause the loss of any
-data that wasn't written during that interval. A second
-`WriteConcern` option called `j` (for "journaling"; the
-first is named `w`) was added that lets clients specify
-that they want to wait for the journal to sync to disk
-before returning.
+data that hadn't yet been written during the current
+interval. A second `WriteConcern` option called `j` (for
+"journaling"; the first is named `w`) was added that lets
+clients specify that they want to wait for the journal to
+sync to disk before returning.
 
 ## A more durable future (#future)
 
