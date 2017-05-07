@@ -144,7 +144,7 @@ hugely talented engineers saved my skin an untold number of times as I dealt
 number of times that as the operator of our largest internal database, I was
 their highest-maintenance customer, and it was true.
 
-### Ephemeralization (#ephemeralization)
+### Ephmeralization (#ephemeralization)
 
 One powerful idea was that of _ephemeralization_, which can be roughly
 described as "doing more with less". But aside from doing more, the act of
@@ -285,7 +285,7 @@ filters. The idea was that making coffee would be five to ten minute process,
 during which there would be time to interact with colleagues who happened to
 drop by the area. The system worked.
 
-I leanrt how to use both Chemex and AeroPress; both of which I continue to use
+I learnt how to use both Chemex and AeroPress; both of which I continue to use
 regularly.
 
 ## Process & Organization (#process)
