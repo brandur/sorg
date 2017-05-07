@@ -1,6 +1,6 @@
 ---
 title: The Long Road to Mongo's Durability
-published_at: 2017-05-04T23:44:24Z
+published_at: 2017-05-07T14:53:09Z
 hook: A data store's journey from data loss to durable
   storage.
 ---
