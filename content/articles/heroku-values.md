@@ -185,7 +185,7 @@ I've never had the opportunity to work with so many people who inspired me on
 such a fundamental level as those who I met at Heroku, especially in my early
 days there. The company had everything at one point: great leaders, inspiring
 thinkers, and incredibly ambitious engineers. As someone still relatively
-inexperienced and new to technological powerhouse is the Bay Area, my first few
+inexperienced and new to the technological powerhouse that is the Bay Area, my first few
 months felt like a constant assault of new ideas about everything from
 technology to organizational structure. This motivated me to want to build
 great things and made work and the learning I did there all around exciting.
