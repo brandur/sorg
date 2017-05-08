@@ -21,7 +21,7 @@ they're also done of a good job of making sure that in each
 session the material covers common ground to help lock in
 the core themes.
 
-## More mindful notifications wanted
+## More mindful notifications wanted (#notifications)
 
 I've almost hit the 365 day mark for calorie counting with
 My Fitness Pal, and I'm hoping that Headspace might be
@@ -34,7 +34,7 @@ Fitness Pal which tracks whether you've added information
 for the day, and tries to send you a lifeline later in the
 evening if it notices that you're about to miss it.
 
-## Pricing
+## Pricing (#pricing)
 
 I also couldn't help but notice the service's price. It has
 a subscription system that costs $12.95/month and which can
@@ -55,7 +55,7 @@ world how to pull out of free fall as the app economy
 crashes towards towards Earth in an accelerating race to
 the bottom.
 
-## Healthy habits
+## Healthy habits (#healthy-habits)
 
 Meditation is one of the places that I can spend time and
 not regret a minute that I've put toward it. It's a
