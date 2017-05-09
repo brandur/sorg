@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+#
+# Install to: .git/hooks/
+#
+
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" && pwd )"
+
+$ROOT_DIR/scripts/check_gofmt.sh
+$ROOT_DIR/scripts/check_headers.sh
+$ROOT_DIR/scripts/check_retina.sh
