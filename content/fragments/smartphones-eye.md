@@ -5,7 +5,7 @@ image: /assets/fragments/smartphones-eye/under-the-bridge.jpg
 hook: Musings on the accelerating development of smartphone
   cameras.
 attributions: Photo by <a
-  href="https://twitter.com/keiko713">Keik Oda</a> and
+  href="https://twitter.com/keiko713">Keiko Oda</a> and
   republished with permission.
 ---
 
