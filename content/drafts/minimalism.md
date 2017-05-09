@@ -47,7 +47,7 @@ disappear into the background.
 Over time, technologies are added, but are rarely removed.
 Left unchecked, production stacks that have been around
 long enough become sprawling patchworks combining just
-about every technology under the sun. The effect can be
+about every technology under the sun. This effect is
 dangerous:
 
 * More parts means more cognitive complexity. If a system
@@ -70,21 +70,59 @@ dangerous:
 Even knowing this, the instinct to expand our tools is hard
 to suppress. Oftentimes persuasion is a core competency of
 our jobs, and we can use that same power to convince
-ourselves and our peers that it's _critical_ to get new
-technologies into our stack. That Go-based HA key/value
-store will take our uptime and fault resilience to new
-highs. That real-time event stream will allow us to create
-an immutable ledger that will be foundational for the
-entire architecture. In many cases, if we'd taken a step
-back and considered things a little more dispassionately,
-we might have realized that we could do without them.
+ourselves and our peers that it's critical to get new
+technologies into our stack _right now_. That Go-based HA
+key/value store will take our uptime and fault resilience
+to new highs. That real-time event stream will enable
+immutable ledger that will become foundational keystone for
+the entire platform. That sexy new container orchestration
+system that will take ease of deployment and scaling to new
+highs. In many cases, a step back and a moment of
+dispassionate contemplation will reveal that their use
+could be abstained until a time when they're known to be
+well vetted, and it's well understood how they'll fit into
+the current architecture (and what they'll replace).
+
+## Ephemeralization (#ephemeralization)
+
+In his book _Nine Chains to the Moon_ (published 1938),
+science writer R. Buckminster Fuller described the idea of
+***ephemeralization***:
+
+> Do more and more with less and less until eventually you
+> can do everything with nothing.
+
+It suggests improving increasing productive output by
+continually improving the efficiency of a system even while
+keeping input the same. I project this onto technology to
+mean building a stack that scales to more users and more
+activity while the people and infrastructure supporting it
+stay fixed. This is accomplished by building systems that
+are more robust, more automatic, and less prone to problems
+because the tendency to grow in complexity that's inherent
+to them has been understood, harnessed, and reversed.
+
+For a long time we had a very big and very aspirational
+goal of ephemeralization at Heroku. The normal app platform
+that we all know was referred to as "user space" while the
+internal infrastructure that supported it was called
+"kernel space". We want to break up the kernel in the
+kernel and move it piece by piece to run inside the user
+space that it supported, in effect rebuilding Heroku so
+that it itself ran _on Heroku_. In the ultimate
+manifestation of ephemeralization, the kernel would
+diminish in size until it vanished completely. The
+specialized components that it contained would be retired,
+and we'd be left a single perfectly uniform stack.
+
+Realistic? Probably not. Useful? Probably. Even falling
+short of incredibly ambitious goal tends to leave you
+somewhere good.
 
 ## Minimalism in practice (#in-practice)
 
-During my time at Heroku, we endeavored to follow these
-ideas where we could. Here are a few examples of the types
-of things we did in pursuit of a stack that was more easily
-operable and comprehensible:
+Here are a few examples of minimalism and ephemeralization
+in practice from Heroku's history:
 
 * The core database that tracked all apps, users, releases,
   configuration, etc. used to be its own special snowflake
@@ -125,12 +163,11 @@ or even greater, as it would for shipping a new product.
 
 !fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology."
 
-## Minimalism in simple ideas (#in-simple-ideas)
+## Minimalism in ideas (#in-ideas)
 
 Practicing minimalism in production is mostly about
-recognizing that the problem exists. After that,
-mitigations that can address it effectively are pretty
-straightforward:
+recognizing that the problem exists. After achieving that,
+mitigations are straightforward:
 
 * ***Retire old technology.*** Is something new being
   introduced? Look for opportunities to retire older
@@ -138,10 +175,10 @@ straightforward:
   put Kafka in, maybe you can get away with retiring Rabbit
   or NSQ.
 
-* ***Build common paths.*** Standardize on one database, one
-  language/runtime, one job queue, one web server, one
-  reverse proxy, etc. If not one, then standardize on _as
-  few as possible_.
+* ***Build common service conventions.*** Standardize on
+  one database, one language/runtime, one job queue, one
+  web server, one reverse proxy, etc. If not one, then
+  standardize on _as few as possible_.
 
 * ***Favor simplicity and reduce moving parts.*** Try to
   keep the total number of things in a system small so that
@@ -154,7 +191,22 @@ straightforward:
 * ***Don't use new technology the day, or even the year,
   that it's initially released.*** Save yourself time and
   energy by letting others vet it, find bugs, and do the
-  work to stabilize it.
+  work to stabilize it. Avoid it permanently if it doesn't
+  pick up a significant community that will help support it
+  well into the future.
+
+* ***Avoid custom technology.*** Software that you write is
+  software that you have to maintain. Forever. Don't
+  succumb to NIH when there's a well supported public
+  solution that fits just as well (or even almost as well).
+
+* ***Use services.*** Software that you install is software
+  that you have to operate. From the moment it's activated,
+  someone will be taking regular time out of their schedule
+  to perform maintenance, troubleshoot problems, and
+  install upgrades. Don't succumb to NHH (not hosted here)
+  when there's a public service available that will do the
+  job better.
 
 * ***Discuss new additions broadly.*** Be cognizant that some
   FUD against new ideas will be unreasonable, but try to
@@ -177,22 +229,10 @@ aviator, had this to say on the subject:
 
 !fig src="/assets/minimalism/sea.jpg" caption="Nothing left to add. Nothing left to take away."
 
-For a long time we had a very big and very aspirational
-goal at Heroku: by breaking up the platform's "kernel" (the
-infrastructure powering user applications) and moving it
-piece by piece into the user space that it supported, we
-could have Heroku run _on Heroku_. In the ultimate
-manifestation of production minimalism, the kernel would
-continue to diminish in size until eventually vanishing
-completely. The specialized components that it contained
-would be retired, and we'd be left a single perfectly
-uniform stack.
-
-This concept obviously won't apply to everyone, but most of
-us can benefit from architecture that's a little simpler, a
-little more conservative, and a little more directed. Only
-by concertedly building a minimal stack that's stable and
-nearly perfectly operable can we maximize our ability to
-push forward with new products and ideas.
+Most of us can benefit from architecture that's a little
+simpler, a little more conservative, and a little more
+directed. Only by concertedly building a minimal stack
+that's stable and nearly perfectly operable can we maximize
+our ability to push forward with new products and ideas.
 
 [kiss]: https://en.wikipedia.org/wiki/KISS_principle
