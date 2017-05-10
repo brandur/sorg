@@ -8,4 +8,8 @@ ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../" && pwd )"
 
 $ROOT_DIR/scripts/check_gofmt.sh
 $ROOT_DIR/scripts/check_headers.sh
-$ROOT_DIR/scripts/check_retina.sh
+
+# This can also be enabled, but is a little slow. Forgetting retina images so
+# far hasn't been a huge problem, so having it run in CI is probably good
+# enough.
+#$ROOT_DIR/scripts/check_retina.sh
