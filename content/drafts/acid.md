@@ -254,11 +254,11 @@ or `email` field.
 By the time an organization hits hundreds of models and
 thousands of fields, they'll certainly be using some kind
 of object modeling framework in a desperate attempt to get
-a few assurances around data shape into place. By that
-point though, things are probably already inconsistent
-enough that it'll make migrations difficult in perpetuity,
-and application code twisted and complicated as its built
-to gracefully handle dozens of edge cases.
+a few assurances around data shape into place.
+Unfortunately by that point, things are probably already
+inconsistent enough that it'll make migrations difficult in
+perpetuity, and application code twisted and complicated as
+its built to gracefully handle dozens of edge cases.
 
 Throw away prototypes are the _only_ place that schemaless
 data stores should be put to use (and again, even there I'd
