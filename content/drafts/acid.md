@@ -10,6 +10,8 @@ hook: On ensuring system integrity, operability, and
 hook_image: true
 ---
 
+TODO: Start more epic. Origin of ACID?
+
 In the last decade we've seen the emergence of a number of
 new data stores that give up ACID guarantees in favor of
 other flashy features like streaming changesets, JavaScript
@@ -17,11 +19,10 @@ APIs, or nestable JSON documents.
 
 ACID databases are by far the most important tool in
 existence for ensuring maintainability and data correctness
-in an online system, and the vast majority of all engineers
-and all use cases should take advantage of them if doing so
-even remotely possible. Trading away these powerful
-features for various gimmickry is as raw of a deal as
-you'll ever see in the technical world.
+in an online system. Every decision has trade offs, but
+trading away these powerful features for a few flashy
+novelties is as raw of a deal as you'll ever see in the
+technical world.
 
 After reaching a scale on the order of Google's, there's
 some argument to be made for giving up aspects of ACID in
@@ -30,34 +31,34 @@ but especially with the advent of newer databases that
 provide these guaranteees along with scalability, this
 applies to almost no one.
 
-## Optimizing for the wrong thing (#optimizing)
+## Optimizing for saved seconds on a decade scale (#optimizing)
 
-I also want to cover how an often cited features document
-data stores is that they allow you to bootstrap quickly and
-get to a prototype because they don't bog you down with
-schema design. This is a little tangential to ACID, but
-also very relevant to the theme of program correctness and
-maintainability.
+An often cited features document data stores is that they
+allow you to bootstrap quickly and get to a prototype
+because they don't bog you down with schema design. This is
+a little tangential to ACID, but also very relevant to the
+theme of program correctness and maintainability.
 
 The claim around faster prototyping isn't actually true --
-a developer reasonably competent with their RDMS of choice
-and armed with an ORM and migration framework can easily
-keep up with their document store-oriented counterpart (and
-probably outpace them), but more importantly, it's
-optimizing for exactly the wrong thing.
+an experienced developer reasonably competent with their
+RDMS of choice and armed with an ORM and migration
+framework can keep up with their document store-oriented
+counterpart (and almost certainly outpace them), but even
+if it were true, it's optimizing for exactly the wrong
+thing.
 
 While building a prototype quickly might be important for
 the first two weeks of a system's lifespan, the next ten
 years will be about keeping it running correctly by
 minimizing bugs and data consistency problems that will
 lead to user and operator pain and attrition. Valuing
-miniscule short-term gains over long-term maintainability
-is a pathological way of doing anything; it's a sin when
-building production-critical software.
+miniscule short-term gains over long-term sustainability is
+a pathological way of doing anything; when building
+production-grade software, it's a sin.
 
-But how does an RDMS help with maintainability? Well, it
-turns out that ACID guarantees combined with strong
-constraints are valuable tools. Lets take a closer look.
+But how does an RDMS help with maintainability? ACID
+guarantees combined with strong constraints are valuable
+tools. Lets take a closer look.
 
 ## Atomicity (#atomicity)
 
@@ -68,11 +69,10 @@ through, the initial database state is left unchanged.
 
 Products like MongoDB, RethinkDB, and Couchbase talk about
 how transactions in their systems are atomic -- as long as
-you consider atomicity to be at the document level. This is
-spin that can be interpreted as "the system isn't atomic".
-Document-level atomicity isn't enough for a non-trivial
-program; not meeting even that incredibly modest bar is a
-recipe for disaster.
+you consider atomicity to be at the document level. This
+can be safely interpreted as "the system doesn't provide
+atomicity"; guarantees at only document-level aren't nearly
+enough for non-trivial programs.
 
 Within the context of building web applications, atomicity
 is incredibly valuable. Software is buggy by nature and
@@ -84,6 +84,10 @@ proceed through the system.
 
 It's never desirable to fail requests that we expected to
 commit, but atomicity cancels the expensive fallout.
+
+TODO: Diagram of multiple requests in boxes each with an
+inner box with a transaction, and each of those containing
+operations.
 
 ### The janitorial team (#without-atomicity)
 
@@ -108,8 +112,8 @@ A request that fails after the first two saves fails to
 create a valid set of objects, but with transactional
 atomicity can't revert the changes it did make. The result?
 An invalid pull request. A subsequent request that tries to
-look it up might error as the code tries to load state was
-only partially created.
+look it up might error as the code tries to load state that
+was only partially created.
 
 You might hope that companies in this position would have
 automated protections in place to try and roll back bad
@@ -121,12 +125,14 @@ defensively so that they handle an exponential number of
 combinations of bad state that have accumulated in the data
 store over time.
 
-Particularly bad incidents will necessitate manual operator
-intervention, or even a specially crafted "fixer script" to
+Bad incidents will necessitate heavy manual intervention by
+operators, or even a specially crafted "fixer script" to
 clean up state and get everything back to normal. After a
 certain size, this sort of thing will be happening
-frequently, and your engineers will start to spend more and
-more of their time acting as janitors.
+frequently, and your engineers will start to spend less
+time as engineers and more time as janitors.
+
+TODO: Picture of pillars in Berlin.
 
 ## Consistency (#consistency)
 
@@ -191,6 +197,8 @@ commit. Modern RDMSes have sophisticated multiversion
 concurrency control systems that make this possible in ways
 that are correct and efficient.
 
+TODO: Table from Postgres docs on isolation levels.
+
 Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
 without isolation, how do you deal with the problem?
@@ -208,7 +216,7 @@ work.
 
 !fig src="/assets/acid/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
-This approach is all downsides:
+This approach is _all_ downsides:
 
 1. ***It's slow.*** Operations waiting on a lock may have
    to wait for very extended periods for resources to
@@ -226,9 +234,8 @@ This approach is all downsides:
    too hard to implement, but if you want to improve its
    speed or efficiency then you quickly need to move to
    something more elaborate which gets complicated fast.
-   With an ACID database, you'll get a very fast, very
-   efficient, and very correct locking system built-in for
-   free.
+   With an ACID database, you'll get a fast, efficient, and
+   correct locking system built-in for free.
 
 3. ***It's probably not right.*** Locks and software are
    hard. Implementing your own system _is_ going to yield
@@ -260,14 +267,15 @@ a few assurances around data shape into place.
 Unfortunately by that point, things are probably already
 inconsistent enough that it'll make migrations difficult in
 perpetuity, and application code twisted and complicated as
-its built to gracefully handle dozens of edge cases.
+it's built to gracefully handle dozens of edge cases.
 
 Throw away prototypes are the _only_ place that schemaless
 data stores should be put to use (and again, even there I'd
-question whether it's actually faster or has any measurable
-merit). For services that you want to run in production,
-the better defined your schema and the more self-consistent
-your data, the easier your life is going to be.
+question whether they're actually good for iterating faster
+or have any measurable merit). For services that you want
+to run in production, the better defined your schema and
+the more self-consistent your data, the easier your life is
+going to be.
 
 ## On scaling (#scaling)
 
@@ -278,21 +286,23 @@ non-ACID) data stores are the only valid choice.
 First of all, despite unbounded optimism for growth, the
 vast majority will be well-served by a single vertically
 scalable node; probably forever. By offloading infrequently
-needed "junk" data to scalable alternate data stores, it's
-fairly reasonable to expect to vertically scale a service
-for a very long time, even if it has somewhere on the order
-of millions of users. Show me any databases that's on the
-scale of TBs or larger, and I'll show you the 100s of GBs
-that are in there when they don't need to be.
+needed "junk" to scalable alternate stores and archiving
+old data, it's reasonable to expect to vertically scale a
+service for a very long time, even if it has somewhere on
+the order of millions of users. Show me any databases
+that's on the scale of TBs or larger, and I'll show you the
+100s of GBs that are in there when they don't need to be.
 
-There are a few use cases that legitimately need
+There are some use cases that legitimately need
 scalability, and for those you should choose a database
 that gives you as many of these guarantees as possible,
-even if it's on a per-partition scale. Citus and Google
-Spanner, the former providing per-shard ACID guarantees and
-the latter providing locking read-write transactions for
-when you need them, are both interesting options in this
+even if it's on a per-partition scale. For example, Citus
+gives you per-shard ACID guarantees. Google Spanner
+provides distributed locking read-write transactions for
+when you need them. Both are interesting options in this
 space.
+
+TODO: Picture of building foundation.
 
 ## Check your foundation (#foundation)
 
@@ -311,7 +321,7 @@ There's a common theme to everything listed above:
 
 * You can get away ***without constraints*** and schemas,
   but only by internalizing a nihilistic understanding that
-  your production data isn't consistent.
+  your production data isn't cohesive.
 
 By choosing a non-ACID data store, you end up
 reimplementing everything that it does for you in the user
@@ -319,11 +329,11 @@ space of your application, except far worse.
 
 Your database can and should act as a foundational
 substrate that offers your application profound leverage
-for fast and correct online operation. Not only does it
-provide these excellent features, but it provides them in a
-way that's been battle-tested and empirically vetted by
+for fast and correct operation. Not only does it provide
+these excellent features, but it provides them in a way
+that's been battle-tested and empirically vetted by
 millions of hours of running some of the heaviest
-applications in the world.
+workloads in the world.
 
 My usual advice along these lines is that there's no reason
 not to start your projects with an RDMS providing ACID and
