@@ -29,9 +29,9 @@ APIs, or nestable JSON documents.
 ACID databases are by far the most important tool in
 existence for ensuring maintainability and data correctness
 in an online system. Every decision has trade offs, but
-trading away these powerful features for a few flashy
-novelties is as raw of a deal as you'll ever see in the
-technical world.
+trading away these powerful features for the flashy
+novelties du jour is as raw of a deal as you'll ever see in
+the technical world.
 
 After reaching a scale on the order of Google's, there's
 some argument to be made for giving up aspects of ACID in
