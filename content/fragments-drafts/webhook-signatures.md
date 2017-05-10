@@ -7,10 +7,10 @@ hook: TODO
 I'm really excited to say that last week we released
 support for signed webhooks. This has been a feature that
 users have requested for a long time, and which we've
-wanted to provide for approximately forever. We're
-certainly not doing anything new or novel by providing
-them, but signatures are an incremental improvement that
-makes the product just a little bit better.
+wanted to provide for even longer. We're certainly not
+doing anything new or novel by providing them, but
+signatures are an incremental improvement that makes the
+product just a little bit better.
 
 As a bit of background, webhooks are a very convenient
 transport mechanism for a real time update, but also
@@ -24,14 +24,16 @@ users make a request back to the Stripe API with any event
 IDs they receive. This model is perfectly secure if
 followed correctly, but there's no forcing function to
 ensure that our users are actually making that second
-request, and it also adds an undesirable second HTTP call.
+request. It also adds another round trip over the network,
+which is usually undesirable.
 
-Signed webhooks are better.
+With signed webhooks users start with a secret that's share
+with Stripe. It's used along with a cryptographic function
+to generate a signature for a received payload which can
+then be compared against the signature that we've provided
+in a header.
 
-Hopefully this won't come across too self indulgent, but I
-can promise that beyond a few code reviews, I had no hand
-in the hard work that it took to get this across the finish
-line.
+Minor DX features that I really like.
 
 ## Batteries included (#batteries-included)
 
@@ -47,7 +49,7 @@ the check was successful:
 
 ``` ruby
 event = Stripe::Webhook.construct_event(
-  payload, sig_header, endpoint_secret
+  payload, signature_header, endpoint_secret
 )
 ```
 
