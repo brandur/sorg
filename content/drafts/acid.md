@@ -14,12 +14,12 @@ In 1983, Andreas Reuter and Theo Härder coined the acronym
 ACID as shorthand for _atomicity_, _consistency_,
 _isolation_, and _durability_. They were building on
 earlier work by Jim Gray who'd proposed atomicity,
-consistency, and durability, but had left out isolation.
-It's one of those inventions of the 80s that's not only
-just still in use in the form of major database systems
-like Postgres, Oracle, and MSSQL, but which has never been
-displaced by a better idea, and which is still of paramount
-importance for buildings things.
+consistency, and durability, but had initially left out
+isolation. It's one of those inventions of the 80s that's
+not only just still in use in the form of major database
+systems like Postgres, Oracle, and MSSQL, but which has
+never been displaced by a better idea, and which is still
+of paramount importance for buildings things.
 
 In the last decade we've seen the emergence of a number of
 new data stores that give up ACID guarantees in favor of
