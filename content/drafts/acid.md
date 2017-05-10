@@ -1,10 +1,12 @@
 ---
-title: Building Robustly With ACID, or Why to Avoid MongoDB
+title: Building Robust Systems With ACID Transactions and
+  Constraints
 published_at: 2017-03-12T17:59:02Z
 location: San Francisco
 hook: On ensuring system integrity, operability, and
-  correctness through solid foundational components, and
-  how ACID and strong constraints work in your favor.
+  correctness through solid foundational databases, and
+  how ACID and strong constraints work in your favor. Why
+  you should prefer Postgres over MongoDB.
 hook_image: true
 ---
 
@@ -193,7 +195,7 @@ Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
 without isolation, how do you deal with the problem?
 
-### Just lock the shit out of everything (#without-isolation)
+### Slow, bad, and buggy custom locking schemes (#without-isolation)
 
 The most common technique is to implement your own
 pessimistic locking system that constrains access to some
