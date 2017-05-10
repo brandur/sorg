@@ -1,10 +1,10 @@
 ---
 title: In Pursuit of Production Minimalism
-published_at: 2017-04-11T06:37:34Z
+published_at: 2017-05-10T13:35:02Z
 location: San Francisco
-hook: A few guidelines for practicing minimalism in
-  production to produce tech stacks that are stable and
-  operable.
+hook: Practicing minimalism with the lofty goal of total
+  ephemeralization to build coherent, stable, and operable
+  stacks.
 hook_image: true
 attributions: Photographs by <strong><a href="https://www.flickr.com/photos/i-am-mclovin/14601998033/">Ben Harrington</a></strong> (SR-71), <strong><a href="https://www.flickr.com/photos/learnscope/5032942270/">Robyn Jay</a></strong> (embers of a burning fire), and <a href="https://www.flickr.com/photos/alamin_bd/22969073683/">Md. Al Amin</a> (boat and sky). Licensed under Creative Commons BY-NC-ND 2.0, BY-SA 2.0, and CC BY 2.0 respectively.
 ---
@@ -46,9 +46,8 @@ disappear into the background.
 
 Over time, technologies are added, but are rarely removed.
 Left unchecked, production stacks that have been around
-long enough become sprawling patchworks combining just
-about every technology under the sun. This effect is
-dangerous:
+long enough become sprawling patchworks combining
+everything under the sun. This effect is dangerous:
 
 * More parts means more cognitive complexity. If a system
   becomes too difficult to understand then the risk of bugs
@@ -211,7 +210,7 @@ mitigations are straightforward:
 * ***Discuss new additions broadly.*** Be cognizant that some
   FUD against new ideas will be unreasonable, but try to
   have a cohesive long term technology strategy across the
-  entire engineering organization.
+  engineering organization.
 
 It's not that new technology should _never_ be introduced,
 but it should be done with rational defensiveness, and with
