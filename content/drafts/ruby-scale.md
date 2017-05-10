@@ -14,7 +14,7 @@ libraries found in Rubygems, to the friendly demeanor of
 its creator Matz, who gives off the air of a trustworthy
 benevolent dictator if there ever was one.
 
-Ruby is also a very frustrating. Its easy syntax and
+But Ruby is also a very frustrating. Its easy syntax and
 generously loose constraints let you build small programs
 with incredible speed, but the longer lived that a project
 is, the more those features become liabilities. I've worked
@@ -24,28 +24,30 @@ problems are very obviously visible in shocking relief.
 
 Ruby's core team works industriously, but major changes
 tend to be aimed at solving problems of _computing_;
-building a better garbage compiler, or improving
+building a better garbage compiler, improving the way
+floating point numbers are handled, or accelerating
 performance. These are useful additions, but they don't
 address Ruby's major weaknesses which are problems of
 _engineering_ that make working in large codebases
-difficult. Stepping back, the mismatch isn't surprising;
+difficult. The discrepancy in priorities isn't surprising;
 these problems take frequent work in a large Ruby codebase
 to become visible, and the majority of Ruby's core and
-community are working primarily in C, or building modestly
-sized programs.
+community are working primarily in C (Ruby's language of
+implementation), or working on small or medium-sized
+programs.
 
 ## I've already heard it's slow (#slow)
 
 Ruby _is_ slow and resource intensive, but although
-considerable, it's less of a problem than you'd think. Many
-production apps spend an inordinate amount of time waiting
+considerable, it's less of a problem than you'd think.
+Production apps spend an inordinate amount of time waiting
 on database calls and other I/O, so improvements to the
 program's structure and efficiency will generally yield
-better result than rewriting in a more performant language.
-Successful organizations can also address capacity by
-throwing more hardware at the problem; it's more expensive,
-but not unreasonable when compared to the cost of
-engineering time.
+results that are good enough to stave off an expensive
+rewrite in a more performant language. Organizations can
+also address capacity by throwing more hardware at the
+problem; it's more expensive, but not unreasonable when
+compared to the cost of engineering time.
 
 What I want to focus on are problems of organizational
 scale; how the language itself starts to break down once
@@ -57,12 +59,12 @@ that's being modified by a lot of engineers.
 ### Zero information pre-runtime (#runtime)
 
 Aside from the most egregious syntax problems, Ruby won't
-catch anything until code actually runs. Bad variable
-references, invoking non-existent methods, uninitialized
-variables, and type mismatches are all fair game. This is
-generally fine for a disposable shell script that's just
-going to be run once or twice, but presents a much bigger
-problem for a production service.
+catch anything until code runs. Bad variable references,
+invoking non-existent methods, uninitialized variables, and
+type mismatches are all fair game. This is generally fine
+for a disposable shell script that's just going to be run
+once or twice, but presents a much bigger problem for a
+production service.
 
 The language's overpermissiveness forces operators to come
 up with all kinds of creative hacks to get slightly better
@@ -135,12 +137,11 @@ interpreter won't complain.
 
 !fig src="/assets/ruby-scale/modularity.svg" caption="Boundary violations grow linearly with the number of lines of Ruby produced."
 
-Eventually the violations are everywhere, and module
-hierarchy (if there ever was one) becomes indistinct. It's
-no longer possible to consider just one module in isolation
-because with the exception of the most basic dependencies,
-almost every module is tightly intertwined with every
-other.
+Soon the violations are everywhere, and module hierarchy
+(if there ever was one) becomes indistinct. It's no longer
+possible to consider just one module in isolation because
+with the exception of the most basic dependencies, almost
+every module is tightly intertwined with every other.
 
 ### The edit-compile-debug cycle (#edit-compile-debug)
 
@@ -170,9 +171,9 @@ make it difficult to implement editor "jump to",
 auto-completion, and other functions that are invaluable
 for developer productivity.
 
-There are options available, but they're almost entirely
-heuristically based; they might provide some gain in
-working speed, but are neither accurate or reliable.
+There are options available, but they're entirely based on
+heuristics. They might provide some gain in working speed,
+but are not accurate or reliable.
 
 !fig src="/assets/ruby-scale/tooling.jpg" caption="Good tooling is sadly lacking/impossible."
 
