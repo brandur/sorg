@@ -135,7 +135,7 @@ in practice from Heroku's history:
   dedicated servers, was end-of-lifed completely when a
   better (and cheaper) option for terminating SSL was
   available through Amazon. With SNI support now
-  widespread, `ssl:endpoint` will soon follow suit.
+  widespread, `ssl:endpoint` will eventually follow suit.
 
 * All non-ephemeral data was moved out of Redis so that the
   only data store handling persistent data for internal
