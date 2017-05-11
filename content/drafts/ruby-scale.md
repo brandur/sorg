@@ -1,5 +1,5 @@
 ---
-title: Ruby, and Problems of Scale
+title: Ruby, and Challenges of Scale
 published_at: 2017-04-18T14:23:28Z
 location: San Francisco
 hook: The challenges of scaling and operating a big Ruby
