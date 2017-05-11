@@ -14,31 +14,29 @@ In 1983, Andreas Reuter and Theo Härder coined the acronym
 ACID as shorthand for _atomicity_, _consistency_,
 _isolation_, and _durability_. They were building on
 earlier work by Jim Gray who'd proposed atomicity,
-consistency, and durability, but had initially left out
-isolation. It's one of those inventions of the 80s that's
-not only just still in use in the form of major database
+consistency, and durability, but had initially left out the
+_I_. It's one of those inventions of the 80s that's not
+only just still in use in the form of major database
 systems like Postgres, Oracle, and MSSQL, but which has
-never been displaced by a better idea, and which is still
-of paramount importance for buildings things.
+never been displaced by a better idea. ACID databases are
+one of the most important tools in existence for ensuring
+maintainability and data correctness in a production
+system.
 
 In the last decade we've seen the emergence of a number of
-new data stores that give up ACID guarantees in favor of
-other flashy features like streaming changesets, JavaScript
-APIs, or nestable JSON documents.
-
-ACID databases are by far the most important tool in
-existence for ensuring maintainability and data correctness
-in an online system. Every decision has trade offs, but
-trading away these powerful features for the flashy
+new data stores that give up ACID in favor of other flashy
+features like streaming changesets, JavaScript APIs, or
+nestable JSON documents. Every decision comes with trade
+offs, but trading away these powerful guarantees for the
 novelties du jour is as raw of a deal as you'll ever see in
 the technical world.
 
-After reaching a scale on the order of Google's, there's
-some argument to be made for giving up aspects of ACID in
-return for certain kinds of partitioning and availability,
-but especially with the advent of newer databases that
-provide these guaranteees along with scalability, this
-applies to almost no one.
+After reaching scale on the order of Google's, there's some
+argument to be made for giving up aspects of ACID in return
+for certain kinds of partitioning tolerance and
+availability, but especially with the advent of newer
+databases that provide at least some ACID guaranteees along
+with scalability, this applies to few.
 
 ## Optimizing for saved seconds on a decade scale (#optimizing)
 
