@@ -1,7 +1,7 @@
 ---
 title: Building Robust Systems With ACID Transactions and
   Constraints
-published_at: 2017-03-12T17:59:02Z
+published_at: 2017-05-11T03:24:45Z
 location: San Francisco
 hook: On ensuring system integrity, operability, and
   correctness through solid foundational databases, and
@@ -94,9 +94,7 @@ proceed through the system.
 It's never desirable to fail requests that we expected to
 commit, but atomicity cancels the expensive fallout.
 
-TODO: Diagram of multiple requests in boxes each with an
-inner box with a transaction, and each of those containing
-operations.
+!fig src="/assets/acid/transactions-in-requests.svg" caption="Some requests. Each wraps its database operations using an atomic transaction so that they either all commit, or none of them do."
 
 ### The janitorial team (#without-atomicity)
 
@@ -141,7 +139,7 @@ certain size, this sort of thing will be happening
 frequently, and your engineers will start to spend less
 time as engineers and more time as janitors.
 
-TODO: Picture of pillars in Berlin.
+!fig src="/assets/acid/pillars.jpg" caption="A grid of pillars at the Jewish Museum in Berlin. As consistently placed and built as you could ever want."
 
 ## Consistency (#consistency)
 
@@ -206,7 +204,49 @@ commit. Modern RDMSes have sophisticated multiversion
 concurrency control systems that make this possible in ways
 that are correct and efficient.
 
-TODO: Table from Postgres docs on isolation levels.
+<figure>
+  <table class="overflowing">
+    <tr>
+      <th>Isolation Level</th>
+      <th>Dirty Read</th>
+      <th>Nonrepeatable Read</th>
+      <th>Phantom Read</th>
+      <th>Serialization Anomaly</th>
+    </tr>
+    <tr>
+      <td><strong>Read uncommitted</strong></td>
+      <td>Allowed</td>
+      <td>Possible</td>
+      <td>Possible</td>
+      <td>Possible</td>
+    </tr>
+    <tr>
+      <td><strong>Read committed</strong></td>
+      <td>Not possible</td>
+      <td>Possible</td>
+      <td>Possible</td>
+      <td>Possible</td>
+    </tr>
+    <tr>
+      <td><strong>Repeatable read</strong></td>
+      <td>Not possible</td>
+      <td>Not possible</td>
+      <td>Allowed</td>
+      <td>Possible</td>
+    </tr>
+    <tr>
+      <td><strong>Serializable</strong></td>
+      <td>Not possible</td>
+      <td>Not possible</td>
+      <td>Not possible</td>
+      <td>Not possible</td>
+    </tr>
+  </table>
+  <figcaption>Transaction isolation levels and the
+    contention phenomena that they allow. See the <a
+    href="https://www.postgresql.org/docs/current/static/transaction-iso.html">Postgres
+    docs</a> if you want to learn more.</figcaption>
+</figure>
 
 Concurrent resource access is a problem that every real
 world web application is going to have to deal with. So
@@ -311,7 +351,7 @@ provides distributed locking read-write transactions for
 when you need them. Both are interesting options in this
 space.
 
-TODO: Picture of building foundation.
+!fig src="/assets/acid/foundation.jpg" caption="For best results, build your app on solid foundations."
 
 ## Check your foundation (#foundation)
 
