@@ -207,11 +207,6 @@ mitigations are straightforward:
   when there's a public service available that will do the
   job better.
 
-* ***Discuss new additions broadly.*** Be cognizant that some
-  FUD against new ideas will be unreasonable, but try to
-  have a cohesive long term technology strategy across the
-  engineering organization.
-
 It's not that new technology should _never_ be introduced,
 but it should be done with rational defensiveness, and with
 a critical eye in how it'll fit into an evolving (and
