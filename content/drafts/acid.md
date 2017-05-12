@@ -78,8 +78,9 @@ Products like MongoDB, RethinkDB, and Couchbase talk about
 how transactions in their systems are atomic -- as long as
 you consider atomicity to be at the document level. This
 can be safely interpreted as "the system doesn't provide
-atomicity"; guarantees at only document-level aren't nearly
-enough for non-trivial programs.
+atomicity"; document-level guarantees might be okay for a
+test environment that never sees a problem and where data
+is disposable, but it's not enough for production.
 
 Within the context of building web applications, atomicity
 is incredibly valuable. Software is buggy by nature and
@@ -89,7 +90,7 @@ ensure that even in the these worst case scenarios, state
 is left undamaged, and it's safe for other requests to
 proceed through the system.
 
-It's never desirable to fail requests that we expected to
+It's never desirable to fail transactions that we hoped to
 commit, but atomicity cancels the expensive fallout.
 
 !fig src="/assets/acid/transactions-in-requests.svg" caption="Some requests. Each wraps its database operations using an atomic transaction so that they either all commit, or none of them do."
@@ -135,7 +136,7 @@ operators, or even a specially crafted "fixer script" to
 clean up state and get everything back to normal. After a
 certain size, this sort of thing will be happening
 frequently, and your engineers will start to spend less
-time as engineers and more time as janitors.
+time as engineers, and more time as janitors.
 
 !fig src="/assets/acid/pillars.jpg" caption="A grid of pillars at the Jewish Museum in Berlin. As consistently placed and built as you could ever want."
 
