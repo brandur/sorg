@@ -27,16 +27,16 @@ again and again, because with the crutch to lean on, at no
 point does the user come to understand it any better.
 
 Contrast this to self-assembly. It's painful for a day or
-two, but the user sees each layer going in. Even if they
+two, but the user sees every layer go in. Even if they
 don't have a perfect understanding as they're doing it,
 they'll have some memory that will come in handy for
 troubleshooting.
 
 That's not to say that you should go out and build your own
 operating system or car. There is a point where the
-complexity is considerable and the walls of the black box
-sufficienty opaque that we should seal it off and accept
-the cost of going to see the mechanic once a year.
+complexity is considerable, and the walls of the black box
+sufficienty opaque, that we should seal it off and accept
+the cost of going to see the mechanic a few times a year.
 
 Development environments aren't like this. They're lighter
 weight for one, but also so dynamic (changes to code,
