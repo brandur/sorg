@@ -46,13 +46,14 @@ and goes on to say:
 
 Some changes since the dawn of personal computing have been
 tremendously positive, like the quantum leap in the raw
-compute power that we have available, but not all are as
-encouraging. As suggested by Alan, the walled gardens that
-we take for granted on everything from our iOS apps to our
-browser extensions would have been abominable to early
-idealists. So too would the idea of diluting interfaces so
-that they're universally accessible, but to a point where
-uisng them to be productive is hopeless.
+compute power or the vibrant displays and peripherals that
+we now have available, but not all are as encouraging. As
+suggested by Alan, the walled gardens that we take for
+granted on everything from our iOS apps to our browser
+extensions would have been abominable to early idealists.
+So too would the idea of diluting interfaces so that
+they're universally accessible, but to a point where uisng
+them to be productive is hopeless.
 
 We should be thinking about re-opening computation and
 [rebooting our UX design to optimize for power
