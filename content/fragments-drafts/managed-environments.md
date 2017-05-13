@@ -16,6 +16,8 @@ There are similar ideas with Docker: instead of setting up
 a working local environment, write a `docker-compose.yml`
 and let the pieces will slide together.
 
+## Self-help not endorsed (#self-help)
+
 In my experience, these managed systems can be fine for
 days or weeks, but eventually the user will hit a problem,
 and when they do, no self-help is possible. The combination
@@ -26,6 +28,8 @@ help from a maintainer of the scheme. This will happen
 again and again, because with the crutch to lean on, at no
 point does the user come to understand it any better.
 
+## The zen of self-assembly (#self-assembly)
+
 Contrast this to self-assembly. It's painful for a day or
 two, but the user sees every layer go in. Even if they
 don't have a perfect understanding as they're doing it,
@@ -34,12 +38,14 @@ troubleshooting.
 
 That's not to say that you should go out and build your own
 operating system or car. There is a point where the
-complexity is considerable, and the walls of the black box
-sufficienty opaque, that we should seal it off and accept
-the cost of going to see the mechanic a few times a year.
+complexity is so considerable, and the walls of the black
+box sufficienty opaque, that it's appropriate to seal it
+off and accept the cost of going to see the mechanic a few
+times a year.
 
-Development environments aren't like this. They're lighter
-weight for one, but also so dynamic (changes to code,
-runtimes, and libraries are happening on a daily basis)
-that they're more prone to problems. In their case, the
-extra pain is well worth the insight that it buys.
+Development environments don't fit in this category.
+They're lighter weight for one, but also so dynamic
+(changes to code, runtimes, and libraries are happening on
+a daily basis) that they're more prone to problems. In
+their case, the extra pain is well worth the insight that
+it buys.
