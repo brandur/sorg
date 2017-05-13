@@ -6,7 +6,7 @@ location: San Francisco
 hook: On ensuring system integrity, operability, and
   correctness through solid foundational databases, and
   how ACID and strong constraints work in your favor. Why
-  you should prefer Postgres over MongoDB.
+  to prefer Postgres over MongoDB.
 hook_image: true
 ---
 
