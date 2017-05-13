@@ -138,7 +138,7 @@ certain size, this sort of thing will be happening
 frequently, and your engineers will start to spend less
 time as engineers, and more time as janitors.
 
-!fig src="/assets/acid/pillars.jpg" caption="A grid of pillars at the Jewish Museum in Berlin. As consistently placed and built as you could ever want."
+!fig src="/assets/acid/pillars.jpg" caption="A grid of pillars at the Jewish Museum in Berlin. Real world consistency at its best."
 
 ## Consistency (#consistency)
 
@@ -289,6 +289,15 @@ This approach is _all_ downsides:
    hard. Implementing your own system _is_ going to yield
    problems; it's just a question of what magnitude.
 
+## Durability (#durability)
+
+Durability (the "D" in ACID) dictates that committed
+transactions _stay_ committed, even in the event of a crash
+or power loss. It's so important that even data stores that
+don't support the rest of ACI* tend to get it right. I
+wrote a separate article about [MongoDB's lengthy road to
+achieving durability][mongo-durability] for example.
+
 ## Constraints are good (#constraints)
 
 I talked before about how schemaless databases are often
@@ -388,4 +397,5 @@ not to start your projects with an RDMS providing ACID and
 good features around constraints. In almost every case the
 right answer is to just use Postgres.
 
+[mongo-durability]: /fragments/mongo-durability
 [simple-made-easy]: https://www.infoq.com/presentations/Simple-Made-Easy
