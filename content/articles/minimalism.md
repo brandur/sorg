@@ -76,7 +76,7 @@ to new highs. That real-time event stream will enable
 immutable ledger that will become foundational keystone for
 the entire platform. That sexy new container orchestration
 system that will take ease of deployment and scaling to new
-highs. In many cases, a step back and a moment of
+levels. In many cases, a step back and a moment of
 dispassionate contemplation will reveal that their use
 could be abstained until a time when they're known to be
 well vetted, and it's well understood how they'll fit into
@@ -85,7 +85,7 @@ the current architecture (and what they'll replace).
 ## Ephemeralization (#ephemeralization)
 
 In his book _Nine Chains to the Moon_ (published 1938),
-science writer R. Buckminster Fuller described the idea of
+inventor R. Buckminster Fuller described the idea of
 ***ephemeralization***:
 
 > Do more and more with less and less until eventually you
@@ -115,7 +115,7 @@ specialized components that it contained would be retired,
 and we'd be left a single perfectly uniform stack.
 
 Realistic? Probably not. Useful? Probably. Even falling
-short of incredibly ambitious goal tends to leave you
+short of an incredibly ambitious goal tends to leave you
 somewhere good.
 
 ## Minimalism in practice (#in-practice)
