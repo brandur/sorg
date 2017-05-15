@@ -1,6 +1,5 @@
 ---
-title: Building Robust Systems With ACID Transactions and
-  Constraints
+title: Building Robust Systems With ACID and Constraints
 published_at: 2017-05-11T03:24:45Z
 location: San Francisco
 hook: On ensuring system integrity, operability, and
