@@ -3,9 +3,9 @@ title: Building Robust Systems With ACID and Constraints
 published_at: 2017-05-11T03:24:45Z
 location: San Francisco
 hook: On ensuring system integrity, operability, and
-  correctness through solid foundational databases, and
-  how ACID and strong constraints work in your favor. Why
-  to prefer Postgres over MongoDB.
+  correctness through solid foundational databases, and how
+  ACID transactions and strong constraints work in your
+  favor. Why to prefer Postgres over MongoDB.
 hook_image: true
 ---
 
