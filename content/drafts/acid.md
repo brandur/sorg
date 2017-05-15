@@ -39,8 +39,8 @@ underutilized.
 
 I want to convince you that ACID databases are one of the
 most important tools in existence for ensuring
-maintainability and data correctness in production systems.
-Lets start by digging into each of their namesake
+maintainability and data correctness in big production
+systems. Lets start by digging into each of their namesake
 guarantees.
 
 ## Atomicity (#atomicity)
