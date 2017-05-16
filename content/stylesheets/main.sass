@@ -234,9 +234,6 @@ img.overflowing, table.overflowing, video.overflowing
   overflow: visible
   max-width: 650px
 
-table.overflowing
-  width: 650px
-
 p
   hyphens: auto
   -moz-hyphens: auto
@@ -517,8 +514,15 @@ article, #now
     max-width: 100%
     overflow: auto
 
+  // Tables don't behave very well when their width is contrained and can still
+  // be wider than their containing div. Here we use a few tricks:
+  // `table-layout: fixed` contains the table to 100% but jettisons any
+  // intelligent around layout. Word wrapping and a decreased font size
+  // minimize the damage because text is allowed to overflow cells otherwise.
   table.overflowing
-    width: 100%
+    font-size: 0.6rem
+    table-layout: fixed
+    word-wrap: break-word
 
   .toc-index
     display: none
