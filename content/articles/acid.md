@@ -1,6 +1,6 @@
 ---
 title: Building Robust Systems With ACID and Constraints
-published_at: 2017-05-11T03:24:45Z
+published_at: 2017-05-16T14:03:01Z
 location: San Francisco
 hook: On ensuring system integrity, operability, and
   correctness through a solid foundational database, and
