@@ -20,21 +20,26 @@ systems like Postgres, Oracle, and MSSQL, but which has
 never been displaced by a better idea.
 
 In the last decade we've seen the emergence of a number of
-new data stores that give up ACID in favor of flashy
+new flavors of data store that come with untraditional
 features like streaming changesets, JavaScript APIs, or
-nestable JSON documents. Every decision comes with trade
-offs, but trading away these powerful guarantees for the
-feature novelties du jour is as raw of a deal as you'll
+nestable JSON documents. Most of them assume that the need
+for horizontal partitioning is a given in this day and age
+and therefore ACID is put to the altar (this doesn't
+necessarily have to be the case, see below). Every decision
+comes with trade offs, but trading away these powerful
+guarantees for the novelties du jour or an unexamined
+assumption that horizontal scaling will very soon be a
+critically required feature is as raw of a deal as you'll
 ever see in the technical world.
 
-But why the value mismatch? Many of us have taught
-ourselves programming on frameworks like Rails, or been
-educated in environments where ACID databases were a part
-of the package that we took for granted. They've always
-been there, and we've never necessarily examined closely
-exactly what they can do for us and why they're important.
-In many cases this also leads to powerful features being
-underutilized.
+But why the mismatch in values? I think it's because many
+of us have taught ourselves programming on frameworks like
+Rails, or been educated in environments where ACID
+databases were a part of the package, and we've taken them
+for granted. They've always been there, and we've never
+necessarily considered closely exactly what they can do for
+us and why they're important. In many cases this also leads
+to their most powerful features being underutilized.
 
 I want to convince you that ACID databases are one of the
 most important tools in existence for ensuring
@@ -92,7 +97,7 @@ An invalid pull request. A subsequent request that tries to
 look it up might error as the code tries to load state that
 was only partially created.
 
-You might hope that companies in this position would have
+You might hope that projects in this position would have
 automated protections in place to try and roll back bad
 partial transactions. While this may exist somewhere, it's
 much more likely that the overarching strategy is an
@@ -316,7 +321,7 @@ over long-term sustainability is a pathological way of
 doing anything; when building production-grade software,
 it's a sin.
 
-## On scaling (#scaling)
+## Not "webscale" (#scaling)
 
 A common criticism of ACID databases is that they don't
 scale, and by extension horizontally scalable (and usually
@@ -366,7 +371,7 @@ There's a common theme to everything listed above:
 
 By choosing a non-ACID data store, you end up
 reimplementing everything that it does for you in the user
-space of your application, except far worse.
+space of your application, except worse.
 
 Your database can and should act as a foundational
 substrate that offers your application profound leverage
@@ -379,7 +384,7 @@ workloads in the world.
 My usual advice along these lines is that there's no reason
 not to start your projects with an RDMS providing ACID and
 good features around constraints. In almost every case the
-right answer is to just use Postgres.
+right answer is probably to just use Postgres.
 
 [mongo-durability]: /fragments/mongo-durability
 [simple-made-easy]: https://www.infoq.com/presentations/Simple-Made-Easy
