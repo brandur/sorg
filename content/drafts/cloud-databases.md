@@ -101,19 +101,19 @@ subtleties than I could possibly include in this article.
 
 I compared on these characteristics:
 
-* ***ACID***: Whether the database supports ACID
+* ***ACID:*** Whether the database supports ACID
   guarantees across multiple operations. ACID is a
   [powerful tool for system correctness](/acid), and until
   recently has been a long sought but illusive chimera for
   distributed databases.
 
-* ***HA***: Whether the database is highly available (HA).
+* ***HA:*** Whether the database is highly available (HA).
   I've marked every one on the list as HA, but some are
   "more HA" than others with CockroachDB, Cosmos, and
   Spanner leading the way in this respect. The others rely
   on a single node failovers.
 
-* ***Horizontal Scalable***: Whether the database can be
+* ***Horizontal Scalable:*** Whether the database can be
   scaled horizontally out to additional nodes. Everything
   on the list except Postgres is, but I've included the
   column to call out the fact that unlike the others,
@@ -133,7 +133,7 @@ I compared on these characteristics:
   unbalanced sharding where larger nodes run
   disproportionately hot.
 
-* ***Low latency***: The extra inter-node coordination
+* ***Low latency:*** The extra inter-node coordination
   overhead used by CockroachDB Cosmos, and Spanner to
   ensure consistency comes at the cost of being unsuitable
   where very low latency operations are needed (~1 ms). I
