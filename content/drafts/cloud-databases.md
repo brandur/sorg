@@ -30,7 +30,7 @@ subtleties than I could possibly include in this article.
       <th>Notes</th>
     </tr>
     <tr>
-      <td><strong>Amazon Aurora</strong></td>
+      <td><strong><a href="#aurora">Amazon Aurora</a></strong></td>
       <td>✔</td>
       <td>✔</td>
       <td>✔ Disk only</td>
@@ -39,7 +39,7 @@ subtleties than I could possibly include in this article.
       <td></td>
     </tr>
     <tr>
-      <td><strong>CitusDB</strong></td>
+      <td><strong><a href="#citusdb">CitusDB</a></strong></td>
       <td>✔</td>
       <td>✔</td>
       <td>✔</td>
@@ -48,7 +48,7 @@ subtleties than I could possibly include in this article.
       <td>ACI* is node local</td>
     </tr>
     <tr>
-      <td><strong>CockroachDB</strong></td>
+      <td><strong><a href="#cockroachdb">CockroachDB</a></strong></td>
       <td>✔</td>
       <td>✔</td>
       <td>✔</td>
@@ -57,7 +57,7 @@ subtleties than I could possibly include in this article.
       <td>Open source</td>
     </tr>
     <tr>
-      <td><strong>Google Spanner</strong></td>
+      <td><strong><a href="#spanner">Google Spanner</a></strong></td>
       <td>✔</td>
       <td>✔</td>
       <td>✔</td>
@@ -66,7 +66,7 @@ subtleties than I could possibly include in this article.
       <td></td>
     </tr>
     <tr>
-      <td><strong>Microsoft Cosmos</strong></td>
+      <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
       <td>✘ </td>
       <td>✔</td>
       <td>✔</td>
@@ -75,7 +75,7 @@ subtleties than I could possibly include in this article.
       <td></td>
     </tr>
     <tr>
-      <td><strong>MongoDB</strong></td>
+      <td><strong><a href="#mongodb">MongoDB</a></strong></td>
       <td>✘</td>
       <td>✔</td>
       <td>✔</td>
@@ -85,7 +85,7 @@ subtleties than I could possibly include in this article.
         modern alternatives</td>
     </tr>
     <tr>
-      <td><strong>Postgres</strong></td>
+      <td><strong><a href="#postgres">Postgres</a></strong></td>
       <td>✔</td>
       <td>✔</td>
       <td>✘</td>
