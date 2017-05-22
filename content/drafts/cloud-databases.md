@@ -6,15 +6,32 @@ hook: A non-exhaustive primer of some modern cloud database
   solutions (as of 2017).
 ---
 
-Here's some introductory text.
+In the last few years we've seen the emergency of some
+truly impressive cloud technology ranging from databases
+like Aurora, that are reminiscent of current RDMSes except
+with better scalability, to Google's Spanner, which appears
+to be a truly novel scalable design that takes advantage of
+advanced modern infrastructure, and which has very little in
+the way of prior art.
 
-I came up with a list of key characteristics to list in my
-comparison chart based on their importance in building and
-operating software. This is fairly subjective, and comes
-with a limitless number of caveats in what's been left
-unsaid. I provide some additional context in the sections
-below, but even there there's far more details and
-subtleties than I could possibly include in this article.
+It can be pretty hard to keep track of all these new
+entrants and how exactly they differ from one another. I've
+tried to summarize the various offerings here and how
+they compare to one another.
+
+It's hard to rate any one as a clear winner because like
+any consideration in technology, there are trade offs for
+everything, and organizations will largely have to select
+technology based on what will be valuable to them. Many of
+the characteristics on my comparison matrix below were
+selected based on their importance in building robust
+software, but I admit there's some bias there. I try to
+provide some additional context in each database section
+below, but there are more details and subtleties to each
+than I could possibly include.
+
+I offer some opinions on what databases should be chosen
+when in [Closing thoughts](#closing-thoughts).
 
 ## Comparison matrix (#matrix)
 
@@ -25,7 +42,7 @@ subtleties than I could possibly include in this article.
       <th>ACID</th>
       <th>HA</th>
       <th>Horizontally Scalable</th>
-      <th>Automatic Data Distribution</th>
+      <th>Automatic Data Sharding</th>
       <th>Low Latency</th>
       <th>Notes</th>
     </tr>
@@ -81,8 +98,8 @@ subtleties than I could possibly include in this article.
       <td>✔</td>
       <td>✘</td>
       <td>✔</td>
-      <td>Open source; see notes, but not recommended given
-        modern alternatives</td>
+      <td>Open source; not recommended given modern
+        alternatives (see notes)</td>
     </tr>
     <tr>
       <td><strong><a href="#postgres">Postgres</a></strong></td>
@@ -99,7 +116,7 @@ subtleties than I could possibly include in this article.
     databases.</figcaption>
 </figure>
 
-I compared on these characteristics:
+Here's the meaning of each column:
 
 * ***ACID:*** Whether the database supports ACID
   guarantees across multiple operations. ACID is a
@@ -121,16 +138,18 @@ I compared on these characteristics:
   it's unsuitable for use, but it has some caveats (see
   [Amazon Aurora](#aurora) below for details).
 
-* ***Automatic Data Distribution:*** Distinguishes
-  databases where data partitioning and balancing is
-  handled manually by the user versus automatically by the
-  database. As an example of a "manual" database, in
-  CitusDB you explicitly tell the database that you want a
-  table to be distributed and tell it what key should be
-  used for partitioning (e.g. `user_id`). Both options are
-  workable, but manual distribution has more operational
-  overhead and without a lot of care, can lead to
-  unbalanced sharding where larger nodes run
+* ***Automatic Data Sharding:*** Distinguishes databases
+  where data partitioning and balancing is handled manually
+  by the user versus automatically by the database. As an
+  example of a "manual" database, in CitusDB you explicitly
+  tell the database that you want a table to be distributed
+  and tell it what key should be used for partitioning
+  (e.g. `user_id`). For comparison, Spanner automatically
+  figures out how to distribute any data stored to it to
+  the nodes it has available, and rebalances as necessary.
+  Both options are workable, but manual distribution has
+  more operational overhead and without a lot of care, can
+  lead to unbalanced sharding where larger nodes run
   disproportionately hot.
 
 * ***Low latency:*** The extra inter-node coordination
@@ -148,9 +167,9 @@ The CAP theorem dictates that given _consistency_, _100%
 availability_, and _partition tolerance_, any given
 database can satisfy a maximum of two of the three.
 
-I purposely didn't include CAP in the table above. To
-explain why, I'll quote [Eric Brewer (Google VP
-Infrastructure) writing about Spanner][spanner-truetime]:
+To explain why I didn't include CAP in the table above,
+I'll quote [Eric Brewer (Google VP Infrastructure) writing
+about Spanner][spanner-truetime]:
 
 > Despite being a global distributed system, Spanner claims
 > to be consistent and highly available, which implies
@@ -185,27 +204,44 @@ still keeping availability that's incredibly good. Like
 _five or more 9s of good_. This result is so optimal that
 modern databases seem to be converging on it. Every
 database on the list above is _CP_ with varying levels of
-_A_ [1].
+_A_ (with some caveats [1]).
 
 ### Time-based consistency (#time-consistency)
+
+Sophisticated distributed systems like Spanner and
+CockroachDB tend to need a little more time to coordinate
+and verify the accuracy of results, and this makes them
+less suitable for low latency operations.
+
+Quizlet suggests that the minimum latency for a Spanner
+operation [is ~5 ms][spanner-quizlet]. The [Spanner
+paper][spanner-paper] describes the details of the
+coordination for various operations in sections 4.1. and
+4.2.
+
+The design of Microsoft's Cosmos isn't as transparent, but
+its documentation seems to suggest similar performance
+characteristics with the median time for reads and writes
+at 5 ms.
 
 ## The contenders (#contenders)
 
 ### Amazon Aurora (#aurora)
 
-Aurora is a managed relational database that has an SQL
-interface that's compatible with MySQL and Postgres. One of
-its biggest selling points is performance, and it claims to
-provide 5x the throughput of MySQL and 2x of Postgres
-running on the same hardware.
+[Aurora][aurora] is a managed relational database that has
+an SQL interface that's compatible with MySQL and Postgres.
+One of its biggest selling points is performance, and it
+claims to provide 5x the throughput of MySQL and 2x of
+Postgres running on the same hardware.
 
 Aurora is quite distinctive from any other option on this
 list because it's not horizontally scalable at the node
 level, and its clusters more resemble those of a
 traditional RDMS with a primary and read replicas. Instead,
 Amazon has devised a storage-level scaling scheme that
-allows its tables to grow to sizes larger than an RDMS (up
-to 64 TB per table).
+allows its tables to grow to sizes significantly larger
+than you'd see with a traditional RDMS; up to 64 TB per
+table.
 
 This storage-based scaling has the disadvantage that
 compute and memory resources (for writes or consistent
@@ -222,39 +258,40 @@ infinite.
 
 ### CitusDB (#citusdb)
 
-CitusDB is a distributed database build on top of Postgres
-that allows individual tables to be sharded and distributed
-across a number of different nodes. It also provides a
-clever concept called _reference tables_ to help ensure
-data locality to improve query performance.
+[CitusDB][citusdb] is a distributed database built on top
+of Postgres that allows individual tables to be sharded and
+distributed across any number of nodes. It provides clever
+concepts like _reference tables_ to help ensure data
+locality to improve query performance. ACID guarantees are
+scoped to particular nodes, which is often adequate given
+that partitioning is designed to that data is colocated.
 
-Most notably, CitusDB is open source and runs using
-Postgres' standard extension API. This reduces the risk of
-lock in, which is a considerable downside of most of the
-other options on this list. Compared to Aurora, it also
-means that you're more likely to see new features from new
+Most notably, CitusDB is open source and runs using the
+Postgres extension API. This reduces the risk of lock in,
+which is a considerable downside of most of the other
+options on this list. Compared to Aurora, it also means
+that you're more likely to see new features from new
 Postgres releases make it into your database.
 
-Downsides compared to CockroachDB and Spanner are that it
-relies on a central coordinator, which means that its HA is
-more akin to that of Aurora or Postgres, and that data is
-sharded manually, which as noted above, can lead to
+A downside compared to CockroachDB and Spanner is that it
+data is sharded manually, which as noted above, can lead to
 balancing problems. Another consideration is that it's
 built by an upstart company with a yet unproven business
 model. Generally when selecting a database, it's nice to
 have something that's going to be still around and
-well-maintained in ten years time, and you can have pretty
-good assurance of that with something made by Amazon,
-Google, or Microsoft.
+well-maintained in ten years time; you can have good
+confidence of that with something made by Amazon, Google,
+or Microsoft, but less so here.
 
 ### CockroachDB (#cockroachdb)
 
-CockroachDB is a product built out of Cockroach Labs, a
-company founded by ex-Googlers who are known to have been
-influencial in building Google File System and Google
-Reader. It's based on the same ideas as Spanner, and like
-spanner, uses a time-based mechanic to achieve consistency,
-but without the benefit of Google's GPS and atomic clocks.
+[CockroachDB][cockroach] is a product built out of
+Cockroach Labs, a company founded by ex-Googlers who are
+known to have been influencial in building Google File
+System and Google Reader. It's based on the same ideas as
+Spanner, and like spanner, uses a time-based mechanic to
+achieve consistency, but without the benefit of Google's
+GPS and atomic clocks.
 
 It provides serializable distributed transactions, foreign
 keys, and secondary indexes. It's open source and written
@@ -269,7 +306,8 @@ distributed consistency means that it's a poor choice where
 low latency operations are needed ([they admit as much
 themselves][cockroach-not-good-choice]). Like CitusDB
 above, the fact that it's built by a small company with an
-unproven business model is a con worth considering.
+unproven business model is a downside that's worth
+considering.
 
 ### Microsoft Cosmos (#cosmos)
 
@@ -305,8 +343,17 @@ other options on this list.
 
 ### MongoDB (#mongodb)
 
-I've included MongoDB on the list for purposes of
-comparison, but it's not at the same level of
+MongoDB is a NoSQL data store that stores data as
+schemaless JSON documents. It doesn't support ACID
+transactions, and if that wasn't enough, since its release
+in 2009 has had a number of valid criticisms around core
+competencies like
+[durability](/fragments/mongo-durability),
+[security][mongo-security], and
+[correctness][mongo-correctness].
+
+I've included it on the list for purposes of comparison,
+but it's safe to say that it's not at the same level of
 sophistication as other systems on this list. Most others
 have a strict superset of its functionality (albeit with
 trade offs in a few cases), but also support other
@@ -316,10 +363,10 @@ should be thinking about migrating off of it.
 
 ### Postgres (#postgres)
 
-Postgres is the trusty workhorse of traditional RDMSes. HA
-isn't built in, but is available through offerings from
-Amazon RDS, Heroku Postgres, or Azure Database (and
-hopefully Google Cloud SQL soon).
+[Postgres][postgres] is the trusty workhorse of traditional
+RDMSes. HA isn't built in, but is available through
+offerings from Amazon RDS, Heroku Postgres, or Azure
+Database (and hopefully Google Cloud SQL soon).
 
 Even though it's not a perfect fit for the rest of this
 list, I've included it anyway because it's often still the
@@ -333,7 +380,31 @@ clouds and providers. You can also easily run Postgres
 locally or in testing which is _hugely important_ for
 friction-free productivity.
 
-## Final thoughts (#final-thoughts)
+## Closing thoughts (#closing-thoughts)
+
+Opinion time: the best choice for most people will be to
+start with Postgres. It's a battle-tested database with a
+spectacular number of features and few limitations. It's
+open source and widely available so it can easily be run in
+development, CI, or migrated across every major cloud
+provider. Vertical scaling will go a long way for
+organizations who curate their data and offload lower
+fidelity information that's infrequently accessed to
+shardable data stores.
+
+After you're at the scale of AirBnB or Uber, something like
+Aurora should look interesting. It seems to have many of
+the advantages of Postgres, and yet still manages to to
+maintain data locality and scalable storage (at the costs
+of loss of dev/production parity and vendor lock in).
+Organizations at this tier who run hot and need compute and
+memory resources that are scalable beyond a single node
+might benefit from something like CitusDB instead.
+
+After you're at the scale of Google, something closer to
+Spanner is probably the right answer. Although less
+suitable for low latency operations, its scalability
+appears to be practically limitless.
 
 [1] The _CAP_ properties of Cosmos and MongoDB are
 configurable as they can both be made to be eventually
@@ -344,7 +415,15 @@ GB of memory. Although that is "only" one node, it's
 nothing to scoff at and should provide enough runway for
 the vast majority of use cases.
 
+[aurora]: https://aws.amazon.com/rds/aurora/
+[citusdb]: https://www.citusdata.com/
+[cockroach]: https://www.cockroachlabs.com/
 [cockroach-limitations]: https://www.cockroachlabs.com/docs/known-limitations.html
 [cockroach-not-good-choice]: https://www.cockroachlabs.com/docs/frequently-asked-questions.html#when-is-cockroachdb-not-a-good-choice
 [cosmos]: https://docs.microsoft.com/en-us/azure/cosmos-db/introduction
+[mongo-correctness]: https://blog.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
+[mongo-security]: https://krebsonsecurity.com/2017/01/extortionists-wipe-thousands-of-databases-victims-who-pay-up-get-stiffed/
+[postgres]: https://www.postgresql.org/
+[spanner-paper]: https://research.google.com/archive/spanner.html
+[spanner-quizlet]: https://quizlet.com/blog/quizlet-cloud-spanner
 [spanner-truetime]: https://research.google.com/pubs/pub45855.html
