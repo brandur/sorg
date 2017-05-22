@@ -1,6 +1,6 @@
 ---
-title: A Comparison of Advanced Modern Cloud Databases
-published_at: 2017-05-19T15:54:21Z
+title: A Comparison of Advanced, Modern Cloud Databases
+published_at: 2017-05-22T17:24:13Z
 location: San Francisco
 hook: A non-exhaustive primer of modern cloud database
   solutions like Aurora, Cosmos, and Spanner.
