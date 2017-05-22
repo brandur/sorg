@@ -1,5 +1,5 @@
 ---
-title: A Comparison of Modern Cloud Databases
+title: A Comparison of Advanced Modern Cloud Databases
 published_at: 2017-05-19T15:54:21Z
 location: San Francisco
 hook: A non-exhaustive primer of some modern cloud database
@@ -7,31 +7,34 @@ hook: A non-exhaustive primer of some modern cloud database
 ---
 
 In the last few years we've seen the emergency of some
-truly impressive cloud technology ranging from databases
-like Aurora, that are reminiscent of current RDMSes except
-with better scalability, to Google's Spanner, which appears
-to be a truly novel scalable design that takes advantage of
-advanced modern infrastructure, and which has very little in
-the way of prior art.
+impressive cloud technology ranging from databases like
+very reminiscent of current RDMSes except with better
+scalability (Aurora), to those with novel new designs that
+take advantage of custom hardware for the guarantees that
+they need to scale (Spanner). While unbounded data growth
+may still have a logistical problem for many organizations,
+the tools that we have today to manage it have never been
+better.
 
-It can be pretty hard to keep track of all these new
-entrants and how exactly they differ from one another. I've
-tried to summarize the various offerings here and how
+It can be a little hard to keep track of the new entrants
+and track how exactly they differ from one another, so here
+I've tried to summarize the various offerings here and how
 they compare to one another.
 
-It's hard to rate any one as a clear winner because like
-any consideration in technology, there are trade offs for
-everything, and organizations will largely have to select
-technology based on what will be valuable to them. Many of
-the characteristics on my comparison matrix below were
-selected based on their importance in building robust
-software, but I admit there's some bias there. I try to
-provide some additional context in each database section
-below, but there are more details and subtleties to each
-than I could possibly include.
+It's impossible to rate any one as a clear winner because
+like any consideration in technology, there are trade offs
+for everything, and organizations will largely have to
+select technology based on what will be valuable to them.
+Many of the characteristics in my comparison matrix below
+were selected based on their importance in building robust
+software, but I admit there's some bias there. There's also
+some bias in which technologies even show up. There are
+dozens of options and I've excluded the vast majority; the
+list is scoped down to the some of the most general
+purpose, most practical, and most interesting.
 
-I offer some opinions on what databases should be chosen
-when in [Closing thoughts](#closing-thoughts).
+I put some opinions on favorites in [Closing
+thoughts](#closing-thoughts).
 
 ## Comparison matrix (#matrix)
 
@@ -119,6 +122,7 @@ when in [Closing thoughts](#closing-thoughts).
 Here's the meaning of each column:
 
 * ***ACID:*** Whether the database supports ACID
+  (atomicity, consistency, isolation, and durability)
   guarantees across multiple operations. ACID is a
   [powerful tool for system correctness](/acid), and until
   recently has been a long sought but illusive chimera for
@@ -127,10 +131,10 @@ Here's the meaning of each column:
 * ***HA:*** Whether the database is highly available (HA).
   I've marked every one on the list as HA, but some are
   "more HA" than others with CockroachDB, Cosmos, and
-  Spanner leading the way in this respect. The others rely
-  on a single node failovers.
+  Spanner leading the way in this respect. The others tend
+  to rely on a single node failovers.
 
-* ***Horizontal Scalable:*** Whether the database can be
+* ***Horizontally Scalable:*** Whether the database can be
   scaled horizontally out to additional nodes. Everything
   on the list except Postgres is, but I've included the
   column to call out the fact that unlike the others,
@@ -141,16 +145,16 @@ Here's the meaning of each column:
 * ***Automatic Data Sharding:*** Distinguishes databases
   where data partitioning and balancing is handled manually
   by the user versus automatically by the database. As an
-  example of a "manual" database, in CitusDB you explicitly
-  tell the database that you want a table to be distributed
-  and tell it what key should be used for partitioning
-  (e.g. `user_id`). For comparison, Spanner automatically
-  figures out how to distribute any data stored to it to
-  the nodes it has available, and rebalances as necessary.
-  Both options are workable, but manual distribution has
-  more operational overhead and without a lot of care, can
-  lead to unbalanced sharding where larger nodes run
-  disproportionately hot.
+  example of a "manual" database, in CitusDB or MongoDB you
+  explicitly tell the database that you want a table to be
+  distributed and tell it what key should be used for
+  sharding (e.g. `user_id`). For comparison, Spanner
+  automatically figures out how to distribute any data
+  stored to it to the nodes it has available, and
+  rebalances as necessary. Both options are workable, but
+  manual distribution has more operational overhead and
+  without a lot of care, can lead to unbalanced sharding
+  where larger nodes run disproportionately hot.
 
 * ***Low latency:*** The extra inter-node coordination
   overhead used by CockroachDB Cosmos, and Spanner to
@@ -210,8 +214,9 @@ _A_ (with some caveats [1]).
 
 Sophisticated distributed systems like Spanner and
 CockroachDB tend to need a little more time to coordinate
-and verify the accuracy of results, and this makes them
-less suitable for low latency operations.
+and verify the accuracy of the results that will be
+returned from any given node, and this makes them less
+suitable for low latency operations.
 
 Quizlet suggests that the minimum latency for a Spanner
 operation [is ~5 ms][spanner-quizlet]. The [Spanner
@@ -251,10 +256,9 @@ is always colocated so query latency is very low. It also
 means that you can't make a mistake choosing a partition
 scheme and end up with a few hot shards that need to be
 rebalanced (which is _very_ easy to do and _very_ hard to
-fix). As such, it may be a more appropriate choice than
-solutions like CockroachDB or Spanner for users looking for
-extensive scalability, but who don't need it to be
-infinite.
+fix). It may be a more appropriate choice than solutions
+like CockroachDB or Spanner for users looking for extensive
+scalability, but who don't need it to be infinite.
 
 ### CitusDB (#citusdb)
 
@@ -276,22 +280,23 @@ Postgres releases make it into your database.
 A downside compared to CockroachDB and Spanner is that it
 data is sharded manually, which as noted above, can lead to
 balancing problems. Another consideration is that it's
-built by an upstart company with a yet unproven business
-model. Generally when selecting a database, it's nice to
-have something that's going to be still around and
-well-maintained in ten years time; you can have good
-confidence of that with something made by Amazon, Google,
-or Microsoft, but less so here.
+built by a fairly new company with a yet unproven business
+model. Generally when selecting a database, it's good for
+peace of mind to know that you're using something that's
+almost certainly going to be around and well-maintained in
+ten years time. You can be pretty confident of that when
+the product is made by a behemoth like Amazon, Google, or
+Microsoft, but less so for smaller companies.
 
 ### CockroachDB (#cockroachdb)
 
 [CockroachDB][cockroach] is a product built out of
 Cockroach Labs, a company founded by ex-Googlers who are
 known to have been influencial in building Google File
-System and Google Reader. It's based on the same ideas as
-Spanner, and like spanner, uses a time-based mechanic to
-achieve consistency, but without the benefit of Google's
-GPS and atomic clocks.
+System and Google Reader. It's based on the design laid out
+by the original Spanner paper, and like spanner, uses a
+time-based mechanic to achieve consistency, but without the
+benefit of Google's GPS and atomic clocks.
 
 It provides serializable distributed transactions, foreign
 keys, and secondary indexes. It's open source and written
@@ -306,13 +311,12 @@ distributed consistency means that it's a poor choice where
 low latency operations are needed ([they admit as much
 themselves][cockroach-not-good-choice]). Like CitusDB
 above, the fact that it's built by a small company with an
-unproven business model is a downside that's worth
-considering.
+unproven business model is a downside.
 
 ### Microsoft Cosmos (#cosmos)
 
 [Cosmos][cosmos] is Microsoft's brand-new cloud database.
-Its got a few major selling points:
+Its got a few novel features:
 
 * Fast and easy geographical distribution.
 * A configurable consistency model that allows anything
@@ -352,13 +356,13 @@ competencies like
 [security][mongo-security], and
 [correctness][mongo-correctness].
 
-I've included it on the list for purposes of comparison,
-but it's safe to say that it's not at the same level of
-sophistication as other systems on this list. Most others
-have a strict superset of its functionality (albeit with
-trade offs in a few cases), but also support other
-critically important features like ACID guarantees. New
-projects shouldn't start on MongoDB, and old projects
+I've included it for purposes of comparison and because it
+still seems to have a lot of mindshare, but it's not at the
+same level of sophistication as other systems on this list.
+Most others have a strict superset of its functionality
+(albeit with trade offs in a few cases), but also support
+other critically important features like ACID guarantees.
+New projects shouldn't start on MongoDB, and old projects
 should be thinking about migrating off of it.
 
 ### Postgres (#postgres)
@@ -370,15 +374,14 @@ Database (and hopefully Google Cloud SQL soon).
 
 Even though it's not a perfect fit for the rest of this
 list, I've included it anyway because it's often still the
-best option for most use cases. [Most organizations don't
-have data that's as big as they think it
-is](/acid#scaling), and by keeping it small through
-curation, they can get away with vertically scaled
-Postgres. This will lead to a more operable stack, and more
-options in case it's ever necessary to migrate between
-clouds and providers. You can also easily run Postgres
-locally or in testing which is _hugely important_ for
-friction-free productivity.
+best option for most use cases. Most organizations don't
+have data that's as big as they think it is, and by
+consciously restricting bloat, they can get away with
+vertically scaled Postgres. This will lead to a more
+operable stack, and more options in case it's ever
+necessary to migrate between clouds and providers. You can
+also easily run Postgres locally or in testing which is
+very important for friction-free productivity.
 
 ## Closing thoughts (#closing-thoughts)
 
@@ -388,9 +391,9 @@ spectacular number of features and few limitations. It's
 open source and widely available so it can easily be run in
 development, CI, or migrated across every major cloud
 provider. Vertical scaling will go a long way for
-organizations who curate their data and offload lower
+organizations [who curate their data and offload lower
 fidelity information that's infrequently accessed to
-shardable data stores.
+shardable data stores](/acid#scaling).
 
 After you're at the scale of AirBnB or Uber, something like
 Aurora should look interesting. It seems to have many of
@@ -405,6 +408,12 @@ After you're at the scale of Google, something closer to
 Spanner is probably the right answer. Although less
 suitable for low latency operations, its scalability
 appears to be practically limitless.
+
+The only databases I've actually seen in production are
+MongoDB and Postgres, so take these recommendations with a
+grain of salt. There's almost certainly hidden caveats to
+any of them that will only be uncovered with closer
+attention.
 
 [1] The _CAP_ properties of Cosmos and MongoDB are
 configurable as they can both be made to be eventually
