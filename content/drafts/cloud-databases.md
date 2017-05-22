@@ -51,66 +51,66 @@ thoughts](#closing-thoughts).
     </tr>
     <tr>
       <td><strong><a href="#aurora">Amazon Aurora</a></strong></td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✔ Disk only</td>
-      <td>✔</td>
-      <td>✔</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓ Disk only</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
     </tr>
     <tr>
       <td><strong><a href="#citusdb">CitusDB</a></strong></td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✘</td>
-      <td>✔</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✗</td>
+      <td>✓</td>
       <td>ACI* is node local</td>
     </tr>
     <tr>
       <td><strong><a href="#cockroachdb">CockroachDB</a></strong></td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✘</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✗</td>
       <td>Open source</td>
     </tr>
     <tr>
       <td><strong><a href="#spanner">Google Spanner</a></strong></td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✘</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✗</td>
       <td></td>
     </tr>
     <tr>
       <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
-      <td>✘ </td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✘</td>
-      <td>✘</td>
+      <td>✗ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✗</td>
+      <td>✗</td>
       <td></td>
     </tr>
     <tr>
       <td><strong><a href="#mongodb">MongoDB</a></strong></td>
-      <td>✘</td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✘</td>
-      <td>✔</td>
+      <td>✗</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✗</td>
+      <td>✓</td>
       <td>Open source; not recommended given modern
         alternatives (see notes)</td>
     </tr>
     <tr>
       <td><strong><a href="#postgres">Postgres</a></strong></td>
-      <td>✔</td>
-      <td>✔</td>
-      <td>✘</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✗</td>
       <td></td>
-      <td>✔</td>
+      <td>✓</td>
       <td>Open source; HA through Amazon RDS, Heroku
         Postgres, or Azure Database</td>
     </tr>
