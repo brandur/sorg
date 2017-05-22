@@ -2,8 +2,8 @@
 title: A Comparison of Advanced Modern Cloud Databases
 published_at: 2017-05-19T15:54:21Z
 location: San Francisco
-hook: A non-exhaustive primer of some modern cloud database
-  solutions (as of 2017).
+hook: A non-exhaustive primer of modern cloud database
+  solutions like Aurora, Cosmos, and Spanner.
 ---
 
 In the last few years we've seen the emergency of some
@@ -18,8 +18,8 @@ better.
 
 It can be a little hard to keep track of the new entrants
 and track how exactly they differ from one another, so here
-I've tried to summarize the various offerings here and how
-they compare to one another.
+I've tried to summarize various offerings and how they
+compare to one another.
 
 It's impossible to rate any one as a clear winner because
 like any consideration in technology, there are trade offs
