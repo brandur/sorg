@@ -376,11 +376,11 @@ Even though it's not a perfect fit for the rest of this
 list, I've included it anyway because it's often still the
 best option for many use cases. Most organizations don't
 have data that's as big as they think it is, and by
-consciously restricting bloat, they can get away with
-vertically scaled Postgres. This will lead to a more
+consciously restricting bloat, they can get away with a
+vertically scaled Postgres node. This will lead to a more
 operable stack, and more options in case it's ever
 necessary to migrate between clouds and providers. You can
-also easily run Postgres locally or in testing which is
+also easily run Postgres locally or in testing, which is
 very important for friction-free productivity.
 
 ## Closing thoughts (#closing-thoughts)
@@ -393,11 +393,11 @@ development, CI, or migrated across every major cloud
 provider. Vertical scaling will go a long way for
 organizations [who curate their data and offload lower
 fidelity information to less operable but more scalable
-data stores](/acid#scaling).
+stores](/acid#scaling).
 
 After you're at the scale of AirBnB or Uber, something like
 Aurora should look interesting. It seems to have many of
-the advantages of Postgres, and yet still manages to to
+the advantages of Postgres, and yet still manages to
 maintain data locality and scalable storage (at the costs
 of loss of dev/production parity and vendor lock in).
 Organizations at this tier who run hot and need compute and
