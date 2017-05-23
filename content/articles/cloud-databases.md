@@ -328,7 +328,7 @@ Its got a few novel features:
 
 Like with CockroachDB and Spanner, the distribution of
 Cosmos makes it less suitable for work requiring very low
-latency operations. Their documentation suggests a media
+latency operations. Their documentation suggests a median
 read and write latency of ~5 ms.
 
 The sales pitch for Cosmos comes on pretty strong. Here's
