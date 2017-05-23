@@ -34,7 +34,7 @@ list is scoped down to the some of the most general
 purpose, most practical, and most interesting.
 
 I put some opinions on favorites in [Closing
-thoughts](#closing-thoughts).
+thoughts](#closing-thoughts) below.
 
 ## Comparison matrix (#matrix)
 
