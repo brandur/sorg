@@ -392,8 +392,8 @@ open source and widely available so it can easily be run in
 development, CI, or migrated across every major cloud
 provider. Vertical scaling will go a long way for
 organizations [who curate their data and offload lower
-fidelity information that's infrequently accessed to
-shardable data stores](/acid#scaling).
+fidelity information to less operable but more scalable
+data stores](/acid#scaling).
 
 After you're at the scale of AirBnB or Uber, something like
 Aurora should look interesting. It seems to have many of
