@@ -409,11 +409,11 @@ Spanner is probably the right answer. Although less
 suitable for low latency operations, its scalability
 appears to be practically limitless.
 
-The only databases I've actually seen in production are
-MongoDB and Postgres, so take these recommendations with a
-grain of salt. There's almost certainly hidden caveats to
-any of them that will only be uncovered with closer
-attention.
+The only databases on the list that I've seen running in
+production are MongoDB and Postgres, so take these
+recommendations with a grain of salt. There's almost
+certainly hidden caveats to any of them that will only be
+uncovered with closer attention.
 
 [1] The _CAP_ properties of Cosmos and MongoDB are
 configurable as they can both be made to be eventually
