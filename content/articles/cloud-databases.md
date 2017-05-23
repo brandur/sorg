@@ -374,7 +374,7 @@ Database (and hopefully Google Cloud SQL soon).
 
 Even though it's not a perfect fit for the rest of this
 list, I've included it anyway because it's often still the
-best option for most use cases. Most organizations don't
+best option for many use cases. Most organizations don't
 have data that's as big as they think it is, and by
 consciously restricting bloat, they can get away with
 vertically scaled Postgres. This will lead to a more
