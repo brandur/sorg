@@ -226,8 +226,8 @@ coordination for various operations in sections 4.1. and
 
 The design of Microsoft's Cosmos isn't as transparent, but
 its documentation seems to suggest similar performance
-characteristics with the median time for reads and writes
-at 5 ms.
+characteristics with [the median time for reads and writes
+at 5 ms][cosmos-99th].
 
 ## The contenders (#contenders)
 
@@ -430,6 +430,7 @@ the vast majority of use cases.
 [cockroach-limitations]: https://www.cockroachlabs.com/docs/known-limitations.html
 [cockroach-not-good-choice]: https://www.cockroachlabs.com/docs/frequently-asked-questions.html#when-is-cockroachdb-not-a-good-choice
 [cosmos]: https://docs.microsoft.com/en-us/azure/cosmos-db/introduction
+[cosmos-99th]: https://docs.microsoft.com/en-us/azure/cosmos-db/introduction#low-latency-guarantees-at-the-99th-percentile
 [mongo-correctness]: https://blog.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
 [mongo-security]: https://krebsonsecurity.com/2017/01/extortionists-wipe-thousands-of-databases-victims-who-pay-up-get-stiffed/
 [postgres]: https://www.postgresql.org/
