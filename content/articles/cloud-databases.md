@@ -222,7 +222,9 @@ Quizlet suggests that the minimum latency for a Spanner
 operation [is ~5 ms][spanner-quizlet]. The [Spanner
 paper][spanner-paper] describes the details of the
 coordination for various operations in sections 4.1. and
-4.2.
+4.2. CockroachDB states very explicitly in their FAQ that
+[it's not as good of a choice where low latency reads and
+writes are critical][cockroach-not-good-choice].
 
 The design of Microsoft's Cosmos isn't as transparent, but
 its documentation seems to suggest similar performance
