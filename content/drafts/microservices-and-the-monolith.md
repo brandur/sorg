@@ -18,6 +18,9 @@ as people who've worked with these architectures have
 had time to see their blemishes in a stronger light.
 Complaints on Twitter are not unusual, and material in
 support of the monolith is being published more frequently.
+Edit: Love thy monolith -- who wrote that?
+
+## Fighting the sprawl (#sprawl)
 
 Indeed building a product based off of microservices
 presents quite a few challenges that were ignored in the
@@ -29,25 +32,23 @@ initial puff pieces:
 
 * Each service becomes its own [Galapagos][galapagos] of
   local conventions which makes cross-service contribution
-  difficult. The worst cast is that you end up with a true
+  difficult. The worst case is that you end up with a true
   polyglot environment where so many languages are in use
-  that few people can contribute to a sizable number of
-  internal projects.
+  that few people can contribute to all of them.
 
 * Operational visibility becomes a huge concern in that
   it's difficult to reason about what's happening during
-  the execution of a task as it crosses many service
-  boundaries.
+  the execution of a task as it crosses service boundaries.
 
 * Tooling, alerting, visibility, and other supporting
   infrastructure need to be installed and managed for every
   service installation. Updates need to be distributed to
-  many different places. In general, it's hard to gain
-  company-wide leverage by sharing work.
+  many different places. It's hard to gain company-wide
+  leverage by sharing work.
 
 <img src="/assets/microservices-and-the-monolith/monolith.jpg" data-rjs="2" class="overflowing">
 
-## The Monolith's Cracks (#cracks)
+## The monolith's cracks (#cracks)
 
 I've now had the opportunity to see both sides of the coin:
 an internal architecture that was largely service-oriented,
@@ -58,7 +59,7 @@ It's been tempting lately to glorify the monolith after
 being fed aspirational platitudes from the microservices
 camp for so long, but we should be wary of
 overcompensation. Monolithic architectures have some
-incredibly serious problems once they hit scale:
+serious problems once they hit scale:
 
 * Their test suite gets big and the edit-compile-debug gets
   very long. This has the effect of _crushing_ developer
@@ -72,8 +73,7 @@ incredibly serious problems once they hit scale:
   intentions, a tragedy of the commons situation develops
   very quickly. Knowing that the onus of maintenance will
   fall on the many rather than be an individual's
-  responsibility implicitly encourages some level of
-  sloppiness.
+  responsibility implicitly encourages sloppiness.
 
 * After a certain size of either code or organization, it's
   impossible for any one person to direct architecture due
@@ -91,7 +91,7 @@ incredibly serious problems once they hit scale:
   writing anything that aren't related to how much
   whitespace there is around a curly brace.
 
-## And History Repeats (#history-repeats)
+## And history repeats (#history-repeats)
 
 There's a familiar concept here: software doesn't have a
 silver bullet. Certain technologies, methodologies, and
