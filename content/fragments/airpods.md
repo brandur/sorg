@@ -1,5 +1,5 @@
 ---
-title: AirPods, Reviewed
+title: AirPods
 published_at: 2017-03-29T14:44:33Z
 image: /assets/fragments/airpods/vista.jpg
 hook: I'm happy to be cheering from the bleachers as Apple
@@ -21,10 +21,10 @@ My biggest fear going in is that like the other wireless
 technologies that we know and love, they would occasionally
 just ... not work. Having a call drop is annoying, but
 earphones that can't consistently play music is a recipe
-for frustration so total that it borders on sheer agony.
-But now I'm a few weeks of use in, and that just doesn't
-seem to happen; the AirPods' connection is so seamless that
-you forget you're not attached with a wire.
+for frustration so total that it borders on agony. But now
+I'm a few weeks of use in, and that just doesn't seem to
+happen; the AirPods' connection is so seamless that you
+forget you're not attached with a wire.
 
 And speaking of wires, the future is bright. Not having
 a Gordian knot to untangle every time your take your
