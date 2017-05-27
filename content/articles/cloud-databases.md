@@ -87,7 +87,7 @@ thoughts](#closing-thoughts) below.
     </tr>
     <tr>
       <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
-      <td>✗ </td>
+      <td>See notes</td>
       <td>✓</td>
       <td>✓</td>
       <td>✗</td>
@@ -318,7 +318,17 @@ unproven business model is a downside.
 ### Microsoft Cosmos (#cosmos)
 
 [Cosmos][cosmos] is Microsoft's brand-new cloud database.
-Its got a few novel features:
+Its sales pitch tends to come on a little strong. For
+example, here's an excerpt where they sell schemaless
+design, which put most generously is a well known trade
+off, and less so, an anti-feature:
+
+> Both relational and NoSQL databases force you to deal
+> with schema & index management, versioning and migration
+> [...] But don’t worry -- Cosmos DB makes this problem go
+> away!
+
+That said, it's got a pretty good set of features:
 
 * Fast and easy geographical distribution.
 * A configurable consistency model that allows anything
@@ -333,19 +343,16 @@ Cosmos makes it less suitable for work requiring very low
 latency operations. Their documentation suggests a median
 read and write latency of ~5 ms.
 
-The sales pitch for Cosmos comes on pretty strong. Here's
-an excerpt where they sell schemaless design, which put
-most generously is a well known trade off, and less so, an
-anti-feature:
-
-> Both relational and NoSQL databases force you to deal
-> with schema & index management, versioning and migration
-> [...] But don’t worry -- Cosmos DB makes this problem go
-> away!
-
-Cosmos is also unable to provide ACID transactions, which
-puts it at a distinct disadvantage compared to some of the
-other options on this list.
+Cosmos is able to provide ACID through [the use of stored
+procedures in JavaScript][cosmos-acid]. This seems to be by
+virtue of having only one JavaScript runtime running on the
+primary so that only one script is being handled at a time,
+but it's also doing some bookkeeping the ensure that any
+writes can be reverted, thereby ensuring true atomicity
+(unlike say `EVAL` in Redis). Still, this approach is not
+as sophisticated as the MVCC engines used by other
+databases on this list and limits concurrent use, so I
+didn't give it full marks.
 
 ### MongoDB (#mongodb)
 
@@ -432,6 +439,7 @@ the vast majority of use cases.
 [cockroach-limitations]: https://www.cockroachlabs.com/docs/known-limitations.html
 [cockroach-not-good-choice]: https://www.cockroachlabs.com/docs/frequently-asked-questions.html#when-is-cockroachdb-not-a-good-choice
 [cosmos]: https://docs.microsoft.com/en-us/azure/cosmos-db/introduction
+[cosmos-acid]: https://docs.microsoft.com/en-us/azure/documentdb/documentdb-programming#database-program-transactions
 [cosmos-99th]: https://docs.microsoft.com/en-us/azure/cosmos-db/introduction#low-latency-guarantees-at-the-99th-percentile
 [mongo-correctness]: https://blog.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827
 [mongo-security]: https://krebsonsecurity.com/2017/01/extortionists-wipe-thousands-of-databases-victims-who-pay-up-get-stiffed/
