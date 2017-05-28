@@ -48,10 +48,10 @@ future productivity that would have otherwise been
 sacrificed to the altar.
 
 Disastrous pitfalls, vampiric operational overhead, and
-chronic underdesign are never in the documentation, and
-often not obvious until you're already waist deep. By being
-on the inside of these things, you have access to special
-insight that other people can't get without fully investing
+chronic underdesign are never in the manual, and often not
+obvious until you're already waist deep. By being on the
+inside of these things, you have access to special insight
+that other people can't get without fully investing
 themselves at great expense.
 
 This isn't to say that we should unduly sling mud, but
