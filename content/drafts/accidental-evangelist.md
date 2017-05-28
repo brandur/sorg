@@ -14,8 +14,9 @@ seeing that the hype doesn't match reality, we don't knock
 them back down.
 
 Over the last few decades we've seen big pushes for tools
-like XML, Scala, PHP, MySQL, Erlang, Node, Rails, Mongo,
-Meteor, Ember, Angular, React, Riak, Go, and countless
+like XML, Scala, PHP, MySQL, CouchDB, Erlang, Mnesia,
+CoffeeScript, Node, Rails, Django, MongoDB, Meteor, Ember,
+Angular, React, Riak, Clojure, Cassandra, Go, and countless
 others. More recently, the industry's seen enough
 saturation that fatigue has lead to a bit more skepticism,
 but we can still see the same signs of of ongoing pushes,
