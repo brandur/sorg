@@ -49,12 +49,12 @@ you have the potential to save _millions_ of hours of
 future productivity that would have otherwise been
 sacrificed to the altar.
 
-Disastrous pitfalls, vampiric operational overhead, and
-chronic underdesign are never in the manual, and often not
-obvious until you're already waist deep. By being on the
-inside of these things, you have access to special insight
-that other people can't get without fully investing
-themselves at great expense.
+Disastrous pitfalls, vampiric operational overhead, chronic
+underdesign, or even just obsolescence are never in the
+manual, and often not obvious until you're already waist
+deep. By being on the inside of these things, you have
+access to special insight that other people can't get
+without fully investing themselves at great expense.
 
 This isn't to say that we should unduly sling mud, but
 pieces that are honest, detail-oriented, thoroughly
