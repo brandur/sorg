@@ -38,16 +38,16 @@ It's a very human thing to do to withhold criticism. There
 are humans on the other end of all this technology, and
 frequently they're even humans that we know and like. It's
 also rarely personally helpful to speak ill of systems that
-realistically speaking, you're going to married to for some
+realistically speaking, we're going to married to for some
 time to come.
 
 But we should consider ramifications of staying silent --
 by withholding information on the bad technology in our
 stacks, we're cheating people and companies who aren't
-using it yet, but may yet adopt its use. By speaking out,
-you have the potential to save _millions_ of hours of
-future productivity that would have otherwise been
-sacrificed to the altar.
+using it yet, but may yet adopt its use. By articulating
+problems and trade offs, you'll better inform decisions and
+potentially save _millions_ of hours of future productivity
+that would have otherwise been sacrificed to the altar.
 
 Disastrous pitfalls, vampiric operational overhead, chronic
 underdesign, or even just obsolescence are never in the
