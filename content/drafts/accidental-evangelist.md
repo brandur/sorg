@@ -2,7 +2,8 @@
 title: The Accidental Evangelist
 published_at: 2017-05-24T16:33:53Z
 hook: Lets talk about the bad aspects of the technology we
-  use to help better inform the next generation of
+  use as well as the good. Better information will lead to
+  better decisions in the next generation of technical
   architecture.
 ---
 
