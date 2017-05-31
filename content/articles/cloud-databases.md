@@ -65,7 +65,7 @@ thoughts](#closing-thoughts) below.
       <td>✓</td>
       <td>✗</td>
       <td>✓</td>
-      <td>ACI* is node local</td>
+      <td>Open source; ACI* is node local</td>
     </tr>
     <tr>
       <td><strong><a href="#cockroachdb">CockroachDB</a></strong></td>
