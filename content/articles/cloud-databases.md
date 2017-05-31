@@ -42,7 +42,7 @@ thoughts](#closing-thoughts) below.
   <table class="overflowing">
     <tr>
       <th>Database</th>
-      <th>ACID</th>
+      <th>Concurrent ACID</th>
       <th>HA</th>
       <th>Horizontally Scalable</th>
       <th>Automatic Data Sharding</th>
@@ -87,7 +87,7 @@ thoughts](#closing-thoughts) below.
     </tr>
     <tr>
       <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
-      <td>See notes</td>
+      <td>✗See notes</td>
       <td>✓</td>
       <td>✓</td>
       <td>✗</td>
@@ -121,12 +121,14 @@ thoughts](#closing-thoughts) below.
 
 Here's the meaning of each column:
 
-* ***ACID:*** Whether the database supports ACID
+* ***Concurrent ACID:*** Whether the database supports ACID
   (atomicity, consistency, isolation, and durability)
   guarantees across multiple operations. ACID is a
   [powerful tool for system correctness](/acid), and until
   recently has been a long sought but illusive chimera for
-  distributed databases.
+  distributed databases. I use the term "concurrent ACID"
+  because technically Cosmos guarantees ACID, but only
+  within the confines of a single operation.
 
 * ***HA:*** Whether the database is highly available (HA).
   I've marked every one on the list as HA, but some are
@@ -351,8 +353,8 @@ but it's also doing some bookkeeping the ensure that any
 writes can be reverted, thereby ensuring true atomicity
 (unlike say `EVAL` in Redis). Still, this approach is not
 as sophisticated as the MVCC engines used by other
-databases on this list and limits concurrent use, so I
-didn't give it full marks.
+databases on this list because it can't provide concurrent
+use.
 
 ### MongoDB (#mongodb)
 
