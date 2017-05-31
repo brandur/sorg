@@ -270,7 +270,7 @@ distributed across any number of nodes. It provides clever
 concepts like _reference tables_ to help ensure data
 locality to improve query performance. ACID guarantees are
 scoped to particular nodes, which is often adequate given
-that partitioning is designed to that data is colocated.
+that partitioning is designed so that data is colocated.
 
 Most notably, CitusDB is open source and runs using the
 Postgres extension API. This reduces the risk of lock in,
