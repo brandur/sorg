@@ -87,7 +87,7 @@ thoughts](#closing-thoughts) below.
     </tr>
     <tr>
       <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
-      <td>✗See notes</td>
+      <td>✗ See notes</td>
       <td>✓</td>
       <td>✓</td>
       <td>✗</td>
