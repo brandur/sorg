@@ -278,8 +278,8 @@ Most notably, CitusDB is open source and runs using the
 Postgres extension API. This reduces the risk of lock in,
 which is a considerable downside of most of the other
 options on this list. Compared to Aurora, it also means
-that you're more likely to see new features from new
-Postgres releases make it into your database.
+that you're more likely to see features from new Postgres
+releases make it into your database.
 
 A downside compared to CockroachDB and Spanner is that it
 data is sharded manually, which as noted above, can lead to
