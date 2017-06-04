@@ -71,10 +71,10 @@ commit, but atomicity cancels the expensive fallout.
 ### The janitorial team (#janitorial-team)
 
 Many products will claim "document-level atomicity" (e.g.
-MongoDB, RethinkDB, and CouchBase) which means that writing
-any one row is atomic, but nothing beyond that. What
-happens in a world like this where any failed operation
-leaves invalid state behind?
+MongoDB, RethinkDB, CouchBase, ...) which means that
+writing any one row is atomic, but nothing beyond that.
+What happens in a world like this where any failed
+operation leaves invalid state behind?
 
 The default will be that a subsequent retry won't be able
 to reconcile the broken state, and that the data will need
