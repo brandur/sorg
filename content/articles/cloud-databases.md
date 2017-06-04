@@ -33,8 +33,8 @@ dozens of options and I've excluded the vast majority; the
 list is scoped down to the some of the most general
 purpose, most practical, and most interesting.
 
-I put some opinions on favorites in [Closing
-thoughts](#closing-thoughts) below.
+I put some opinions on favorites in ["Closing
+thoughts"](#closing-thoughts) below.
 
 ## Comparison matrix (#matrix)
 
@@ -142,7 +142,7 @@ Here's the meaning of each column:
   column to call out the fact that unlike the others,
   Aurora's scalability is disk only. That's not to say that
   it's unsuitable for use, but it has some caveats (see
-  [Amazon Aurora](#aurora) below for details).
+  ["Amazon Aurora"](#aurora) below for details).
 
 * ***Automatic Data Sharding:*** Distinguishes databases
   where data partitioning and balancing is handled manually
@@ -162,8 +162,8 @@ Here's the meaning of each column:
   overhead used by CockroachDB Cosmos, and Spanner to
   ensure consistency comes at the cost of being unsuitable
   where very low latency operations are needed (~1 ms). I
-  cover this in a little more detail below in [Time-based
-  consistency](#time-consistency).
+  cover this in a little more detail below in ["Time-based
+  consistency"](#time-consistency).
 
 ## Additional considerations (#additional-considerations)
 
@@ -403,7 +403,7 @@ open source and widely available so it can easily be run in
 development, CI, or migrated across every major cloud
 provider. Vertical scaling will go a long way for
 organizations [who curate their data and offload lower
-fidelity information to less operable but more scalable
+fidelity information to more scalable
 stores](/acid#scaling).
 
 After you're at the scale of AirBnB or Uber, something like
