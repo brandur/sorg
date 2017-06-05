@@ -19,7 +19,7 @@ accessing. I thought this might be a good opportunity to talk a little about
 OAuth scoping, what the spec has to say about it, how it's implemented elsewhere
 on the web, and our own design considerations.
 
-## The Spec (#spec)
+## The spec (#spec)
 
 [RFC 6749](http://tools.ietf.org/html/rfc6749#section-3.3) describes how scope
 should be implemented according to the proposed OAuth 2 standard. I've tried to
@@ -39,7 +39,7 @@ should actually look like. This decision allows providers to define their own
 strings, and gives them enough flexibility to ensure that OAuth 2 scoping is a
 good fit for accessing a wide variety of different resources.
 
-## From Around the Web (#samples)
+## From around the web (#samples)
 
 The open-ended spec has resulted in all kinds of creative implementations
 across the web, with no two being exactly alike. I've compiled a few examples

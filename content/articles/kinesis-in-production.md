@@ -16,7 +16,7 @@ The most obvious alternative to Kinesis is [Kafka](http://kafka.apache.org/), wh
 
 Kinesis has a well-written [developer guide](http://docs.aws.amazon.com/kinesis/latest/dev/introduction.html) if you want to learn a little more about it. I've also written a few other articles on the subject. See [Guaranteeing Order with Kinesis Bulk Puts](/kinesis-order) and [Kinesis Shard Splitting & Merging by Example](/kinesis-by-example).
 
-## Performance and Stability (#performance-and-stability)
+## Performance and stability (#performance-and-stability)
 
 Probably of most paramount concern is how Kinesis performs in production. One thing to keep in mind when looking at these numbers is that Kinesis' durability characteristic is highly relevant. When injecting a record to a stream, that record is synchronously replicated to three different availability zones in the region to help guarantee that you'll get it out of the other side. There is a performance cost associated with this level of reliability, and comparing the numbers below to a single-node system like Redis (for example), would be nonsense.
 
@@ -55,7 +55,7 @@ A little more on the qualitative side of observation, we've still yet to notice 
 
 Now onto the part that may be the most important for the prospective Kinesis user: the product's limitations. I'm happy to report that I didn't find many, but those that I did find are significant.
 
-### You Get Five (Reads) (#five-reads)
+### You get five (reads) (#five-reads)
 
 Scalability is right there on the Kinesis front page as one of the core features of the product, and indeed it is scalable: by default a stream in US East can have up to 50 shards (this limit can be increased by opening a support ticket with AWS), each of which can handle 1 MB/s in and 2 MB/s out for a theoretically maximum of 50 MB/s in and 100 MB/s out. That's an incredible amount of data! However, despite being very scalable along this one dimension, it scales very poorly along another: the number of consumers that a stream can have.
 
@@ -72,7 +72,7 @@ To help illustrate the problem, here's a chart of the number of "throughput exce
   <figcaption>Number of errors encountered due to read limits on a low volume stream over 30 minutes.</figcaption>
 </figure>
 
-### Vanishing History (#vanishing-history)
+### Vanishing history (#vanishing-history)
 
 As described in my previous article [Kinesis Shard Splitting & Merging by Example](/kinesis-by-example), a Kinesis shard is immutable in the sense that if it's split or merged, the existing shard is closed and new shards are created in its place. I find this to be quite an elegant solution to the problem of consumers trying to guarantee their read order across these events. To help consumers check that they're appropriately consumed closed shards to completion, the [DescribeStream](http://docs.aws.amazon.com/kinesis/latest/APIReference/API_DescribeStream.html) API endpoint allows them to examine the ancestry of each currently open shard and the range of sequence numbers that every closed shard handled during its lifetime.
 

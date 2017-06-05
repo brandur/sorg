@@ -45,7 +45,7 @@ ourselves to think that waiting 30+ seconds for an app to
 load, or interrupting our workflow to watch a half second
 animations a thousand times a day, are perfectly normal.
 
-## The Rise of the Web (#rise-of-the-web)
+## The rise of the web (#rise-of-the-web)
 
 <figure>
   <p>
@@ -92,7 +92,7 @@ visual gimmickry, and lacks the refinement that allows
 mastery by more experienced users to gain huge leverage for
 productivity's sake.
 
-## The Worst Kept Secret (#worst-kept-secret)
+## The worst kept secret (#worst-kept-secret)
 
 In 2007, after releasing the iPhone, Steve Jobs told
 developers that they could all write apps for the iPhone
@@ -116,7 +116,7 @@ enough". Tellingly though, we tend to avoid this software
 whenever better options are available, like with our
 terminals and text editors.
 
-## Not Just Technology (#not-just-technology)
+## Not just technology (#not-just-technology)
 
 Web technology isn't conducive to fast and efficient UIs,
 but that's not the only problem we're facing. Somewhere
@@ -236,7 +236,7 @@ Here's why I like using terminals and terminal programs:
     </figcaption>
 </figure>
 
-## The Principles of Interface Design (#interface-principles)
+## The principles of interface design (#interface-principles)
 
 If you ask a web designer about the elements of practical
 design in interfaces today (I say _practical_ to
@@ -291,7 +291,7 @@ lets us _keep moving_. Legibility and whitespace are great,
 but they're of vanishing unimportance compared to speed and
 responsiveness.
 
-## The Road Ahead (#the-road-ahead)
+## The road ahead (#the-road-ahead)
 
 Neither a terminal nor today's web apps are what the future
 should look like, but the terminal is closer.

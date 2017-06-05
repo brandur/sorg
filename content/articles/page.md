@@ -32,7 +32,7 @@ With the rise of the computer, pages were adopted into the digital world, even i
 
 If you're not familiar with navigating content by page, try pressing your Space bar as soon as you've finished reading what's on your screen. Notice how the content you see gets refreshed with no overlap and no repetition.
 
-## Scan & Scroll, Hypertext, and Tablets (#scan-scroll)
+## Scan & scroll, hypertext, and tablets (#scan-scroll)
 
 As the mouse became more widespread and the computer became more established as its own medium and started to relinquish its analogs with the real world, the page lost its dominance and was replaced by today's more common practice of scanning content while simultaneously scrolling a document incrementally. While effective in its own right, this "scan and scroll" technique is more difficult to read when compared to a page as the text becomes a moving target shifting up or down the screen as the eye tries to keep pace.
 
@@ -55,7 +55,7 @@ Despite being relegated to the realm of power users, paging remained quite effec
 
 The more recent development of tablets has also sent pages spiraling toward obsolescence as they're not a native concept in platforms like Android and iOS. In the world of touch-screen portables, not even apps renowned for their well-designed content consuming experiences provide paging mechanisms, leaving users with no option but to "scan and scroll".
 
-## Tablets as Magazines (#tablets)
+## Tablets as magazines (#tablets)
 
 There's a class of tablet applications that design their experience around having the user interact with the tablet more like it was a magazine than a PC, and the biggest difference in design is whether the user interacts with the app as if it was a set of pages or a large continuous block. Apps like Flipboard and iOS's Newsstand lead the charge in this area, both of which provide pleasant and efficient interfaces that are outright fun to use.
 
@@ -64,7 +64,7 @@ There's a class of tablet applications that design their experience around havin
   <figcaption>An article from the Economist on the iPad's Newsstand app.</figcaption>
 </figure>
 
-## Slowing the Fall (#slowing-the-fall)
+## Slowing the fall (#slowing-the-fall)
 
 Barring an explosion in popularity of digital magazines through apps like Newsstand, there's a good chance that the page in its traditional form is dead (in the digital world at least). Some of its inherited usability features like constrained width may carry on forever, but its precisely fixed proportions may be gone for good.
 

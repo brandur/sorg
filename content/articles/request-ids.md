@@ -57,7 +57,7 @@ Our apps are all configured to drain their log streams to Splunk, which provides
 9d5ccdbe-6a5c-4da7-8762-8fb627a020a4
 ```
 
-## Heroku's Request IDs (#heroku)
+## Heroku's request IDs (#heroku)
 
 Heroku's routing layer can [generate a request ID](https://devcenter.heroku.com/articles/http-request-id) automatically, which allows platform-generated logging events to be tagged in as well. Rather than generating them yourself, these IDs can be accessed through an incoming header:
 
@@ -68,7 +68,7 @@ def log(action, data={})
 end
 ```
 
-## Composing Request IDs (#composition)
+## Composing request IDs (#composition)
 
 Request IDs provide a convenient mechanism for digging into a single request for any given app, but so far they're not much help when it comes to a number of composed apps that are constantly making calls to each other.
 
@@ -111,7 +111,7 @@ A Splunk query based on the top-level request ID will yield logging events from 
 
 ## Tweaks (#tweaks)
 
-### Inject Any Number of Request IDs (#multiple)
+### Inject any number of request IDs (#multiple)
 
 A minor modification to the middleware pattern above will allow any number of request IDs to be injected into a given app, so that a request can be traced across three or more composed services.
 
@@ -127,7 +127,7 @@ def call(env)
 end
 ```
 
-### Respond with Request ID (#response)
+### Respond with request ID (#response)
 
 The request ID can be returned as a response header to enable easier identification and subsequent debugging of any given request:
 
@@ -150,7 +150,7 @@ Request-ID: 9d5ccdbe-6a5c-4da7-8762-8fb627a020a4
 
 Heroku's new [V3 platform API](https://devcenter.heroku.com/articles/platform-api-reference#request-id) includes a request ID in the respones with every request.
 
-### Storing Request ID in a Request Store (#storage)
+### Storing request ID in a request store (#storage)
 
 In a larger application, producing logs from a context-sensitive method like a Sinatra helper may be architecturally difficult. In cases like this, a thread-safe request store pattern can be used instead.
 

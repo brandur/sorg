@@ -30,7 +30,7 @@ Keep in mind that although this article walks through setting up a static site
 step-by-step, you can [look at the full source code][singularity] of a sample
 project at any time to dig into how things work.
 
-## Building the Site (#building)
+## Building the site (#building)
 
 I'll leave getting a static site built as an exercise to the reader. There are
 _hundreds_ of static site frameworks out there and plenty of good choices.
@@ -48,7 +48,7 @@ standard library-based web server with **fswatch** (a small cross-plaform
 program that watches a filesystem for changes) to get a nice development
 workflow that's fast and easy.
 
-## AWS Service Setup (#aws)
+## AWS service setup (#aws)
 
 We'll be using the [AWS CLI][aws-cli]. If you're on Mac or Linux, you should be
 able to install it as simply as:
@@ -117,7 +117,7 @@ You can use the AWS credentials that you've configured AWS CLI with for now,
 but we'll want to avoid the risk of exposing them as much as possible. We'll
 address that problem momentarily.
 
-### AWS Certificate Manager (#acm)
+### AWS certificate manager (#acm)
 
 ACM is Amazon's certificate manager service. Using it we'll provision a
 certificate for your custom domain which will then be attached to CloudFront.
@@ -159,7 +159,7 @@ distribution with a name like `da48dchlilyg8.cloudfront.net`. It may take a few
 minutes for the distribution to become available. You'll need this to set up
 your DNS.
 
-### Route53 (or Any Other DNS) (#dns)
+### Route53 (or any other DNS) (#dns)
 
 Use Route53 or any other DNS provide of your choice to CNAME your custom domain
 to the domain name of your new CloudFront distribution (once again, those look
@@ -173,7 +173,7 @@ efforts!
 Now that the basic static site is working, it's time to lock down the
 deployment flow so that you're not using your root IAM credentials to deploy.
 
-#### Create User (#create-iam-user)
+#### Create user (#create-iam-user)
 
 Issue these commands to create a new IAM user:
 
@@ -183,7 +183,7 @@ Issue these commands to create a new IAM user:
 Note that the second command will produce an **access key** and a **secret
 key**. Make note of these.
 
-#### Create Policy (#create-iam-policy)
+#### Create policy (#create-iam-policy)
 
 Save the following policy snippet to a local file called `policy.json`. **Make
 sure to replace the S3 bucket name with the one you used above.**
@@ -218,7 +218,7 @@ the S3 bucket containing your static site. If the worst should happen and this
 user's credentials are leaked, an attacker may be able to take down this one
 static site, but won't be able to probe any further into your Amazon account.
 
-## Automating Contribution (#automating)
+## Automating contribution (#automating)
 
 ### Travis (#travis)
 
@@ -294,7 +294,7 @@ have a test suite run, but because configured secrets are not available on
 non-master branches, the deploy phase gets skipped, but you need only merge
 them to master to have it run.
 
-### Periodic Rebuilds With Lambda (#lambda)
+### Periodic rebuilds with lambda (#lambda)
 
 One final (and optional) step in the process is to set up an AWS lambda script
 that will be triggered by a periodic cron and which will tell Travis to rebuild

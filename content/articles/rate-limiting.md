@@ -22,7 +22,7 @@ useful for a variety of purposes, some of which might be:
 Here we'll explore a few different rate limiting algorithms and culminate at
 a sophisticated one called GCRA.
 
-## Time Bucketed (#time-bucketed)
+## Time bucketed (#time-bucketed)
 
 A very simple rate limiting implementation is to store a remaining limit in a
 bucket that will expire after a certain amount of time. We can do this by
@@ -87,7 +87,7 @@ $ RESET=1442423816 ruby -e 'puts "%.0f minute(s) before reset" % \
 51 minute(s) before reset
 ```
 
-## Leaky Bucket (#leaky-bucket)
+## Leaky bucket (#leaky-bucket)
 
 Luckily, an algorithm exists that can take care of the problem of this sort of
 jagged rate limiting called the [leaky bucket][leaky-bucket]. It's intuitive to

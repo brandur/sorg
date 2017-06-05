@@ -21,7 +21,7 @@ Even among its originators, the term doesn't seem to have a perfect definition w
 * Self-monitoring services replace unit tests, and business monitoring replaces acceptance tests.
 * The system is long-lived while its services are short-lived. Services are disposed as refinements come along to re-work the architecture.
 
-## Autonomy of Small Services (#autonomy)
+## Autonomy of small services (#autonomy)
 
 Although microservices might be SOA with a modern veneer of HTTP, JSON, and polygot, the concept of a "micro microservice" (that 200-500 LOC sweet spot) is worth considering in a bit more depth. In my own experience, not all services can fit into this size, but services that do are remarkably more stable than their counterparts --- and for anyone who's an operator as well as a developer, building a completely autonomous system is an idyllic vision well worthy of pursuit.
 
@@ -51,7 +51,7 @@ One common trait of all the services listed above is that their autonomy is rema
 
 I suspect that 500 LOC isn't enough to box in all concerns of many components, even if they are quite narrow in scope -- anecdotally, most of our more important services easily blow past this limit. I'm also not quite at the point where I'd replace my unit or acceptance tests with self- or business monitoring (also one of the assertions made above).
 
-## SOA isn't a Silver Bullet (#downsides)
+## SOA isn't a silver bullet (#downsides)
 
 SOA bestows a huge number of architectural advantages, but we probably want to be careful to keep its expectations in check. Boiled down to a fundamental level, SOA is about introducing very hard isolation between components that can result in big gains in organizational and operational effectiveness, but by extension leads to component boundaries that are more difficult to evolve.
 

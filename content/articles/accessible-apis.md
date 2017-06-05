@@ -61,7 +61,7 @@ which significantly lowers the barrier of entry to an API.
 Even Twitter, well known for its restrictive APIs [has an easy way of procuring
 an OAuth 2 access token](https://gist.github.com/brandur/5845931).
 
-### Bearer Token Authorization (#bearer-tokens)
+### Bearer token authorization (#bearer-tokens)
 
 A very simple pattern for use with OAuth 2 is allowing users to authorize with
 a bearer token via the `Authorization` header. This ensures that any client
@@ -83,7 +83,7 @@ A very simple pattern of immediately improving an API's Curlabiliity is to
 prettify JSON output for Curl clients as [I've previously
 described](https://mutelight.org/pretty-json).
 
-### In-response Scope Hints (#scope-hints)
+### In-response scope hints (#scope-hints)
 
 It can be quite helpful to return metadata about the current request and the
 current endpoint for a developer to digest while they're testing calls against
@@ -99,7 +99,7 @@ accessing, allowing them to lock down their scope before releasing an app.
     Oauth-Scope: global
     Oauth-Scope-Accepted: global identity
 
-### In-response Ordering Hints (#ordering-hints)
+### In-response ordering hints (#ordering-hints)
 
 For our [V3 platform
 API](https://devcenter.heroku.com/articles/platform-api-reference) at Heroku,
@@ -112,7 +112,7 @@ that comes back with list responses:
     Accept-Ranges: id, name
     Range: id ..
 
-### Ship a Service Stub (#service-stubs)
+### Ship a service stub (#service-stubs)
 
 I've previously talked about how Rack service stubs can be [used to improve the
 development and testing experience](https://brandur.org/service-stubs) of apps
@@ -122,7 +122,7 @@ mutate data when done in a production environment. See the [Heroku API
 stub](https://github.com/heroku/heroku-api-stub) for an example of this
 technique.
 
-### Programmatic Maps (#programmatic-maps)
+### Programmatic maps (#programmatic-maps)
 
 An interesting Hypermedia-related technique that's gaining some traction is to
 provide a set of links at an API's root that point to other available

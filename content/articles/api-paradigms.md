@@ -33,7 +33,7 @@ REST-ish JSON over HTTP has proven itself to be quite
 practical and resilient to obsolescence; it might just be
 "good enough" to reign supreme for a long time to come.
 
-## DX is Paramount (#dx)
+## DX is paramount (#dx)
 
 As a service provider, it might be tempting to think that
 your choice of backend technology is going to make a big
@@ -49,7 +49,7 @@ exotic, or obnoxious, and you'll find that your users will
 care about the quality of your documentation far more than
 they do about the technology you use.
 
-## REST is Okay (#rest)
+## REST is okay (#rest)
 
 Roy Fielding's original ideas around REST are elegant and
 now quite widespread, but it's worth considering that the
@@ -119,7 +119,7 @@ for clients on more limited networks like mobile, where
 bandwidth and bad latency conspire to make REST an
 expensive proposition.
 
-## What's Next (#whats-next)
+## What's next (#whats-next)
 
 While the world sticking to the status quo for a long time
 to come is a strong possibility, the inefficiencies of REST
@@ -217,7 +217,7 @@ immediately because all your supporting infrastructure
 (i.e. initialization, libraries, configuration, ...) was
 already in place and ready to go.
 
-### Bespoke Clients (#bespoke-clients)
+### Bespoke clients (#bespoke-clients)
 
 Going back to the idea of developer experience being of
 utmost importance, it may be that the future of big APIs
@@ -247,7 +247,7 @@ requests, but the library could also compile each one into
 a specially crafted GraphQL query (or mutation) to maximize
 its network efficiency.
 
-## Maximizing Productivity Through Convention and Tooling (#productivity)
+## Maximizing productivity through convention and tooling (#productivity)
 
 In the end, we shouldn't forget what REST-ful APIs did for
 us in terms of providing a set of conventions that helped

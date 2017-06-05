@@ -44,6 +44,6 @@ Our API responds with mainline even for API variants that it doesn't know about 
 
 In the latter case of a prototype's complete removal, some consumers may be broken just like if a major feature was removed from the mainline API, but hopefully the number of broken consumers will be fewer and the lowered stability expectations of those users will help them cope with the change. In any case, we'd still recommend announcing the deprecation at least a few weeks in advance to provide consumers with some grace time to help them react appropriately.
 
-## Internal Expectations (#internal-expectations)
+## Internal expectations (#internal-expectations)
 
 One anti-pattern that might manifest without careful consideration are prototypes in variants that are not made either generally available or deprecated appropriately, a common case for any project which is started but then loses steam and isn't finished. To help mitigate this, we're experimenting with requiring all variants to be assigned an expiry date, after which a variant may be removed liberally if the team that created it is no longer taking appropriate action to continue moving its lifecycle forward. This is modeled in part on the IETF's [guidelines for Internet drafts](http://www.ietf.org/ietf-ftp/1id-guidelines.txt) which require that an expiration date of 185 days from the date of submission is added to the first and last pages of any draft document.

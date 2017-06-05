@@ -24,13 +24,13 @@ One example of the Unix-based small, sharp tools that are being referred to here
 
 Notably, it's never claimed that this is a fundamental of value of Unix, but more one of the competing philosophies that was baked into the system in its early history.
 
-## The Web (#the-web)
+## The web (#the-web)
 
 The idea can be applied to the web in a similar way. Many modern web applications are choosing to build out their architecture as a set of services that communicate over the network layer, which has some parallels with the Unix model of programs that communicate via OS primitives.
 
 This may be especially application to today with the recent popularization of [microservices](/microservices), a philosophy that advises building web architecture as a set of services that are kept small so that they can be easily reasoned about, operated, and evolved (also known as SOA).
 
-## The Catch (#the-catch)
+## The catch (#the-catch)
 
 Unfortunately, rather than being a solution that's perfectly applicable to all problems, the trade-offs small, sharp tools are fairly well understood. In a section discussing the "compromise between the minimalism of ed and the all-singing-all-dancing comprehensiveness of Emacs", Raymond talks about how building tools that too small can result in an increased burden on their users:
 

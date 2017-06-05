@@ -17,7 +17,7 @@ At its core, logfmt is just a basic way of displaying key/value pairs in such a 
 
 Especially with a bit of practice and colorized output, it's pretty easy for a human being to see what's going on here which is of course a core value for any good logging format. At the same time, building a machine parser for the format is trivial so any of our internal components can ingest logs produced by any other component. [Splunk also recommends the same format under their best practices](http://dev.splunk.com/view/logging-best-practices/SP-CAAADP6) so we can be sure that it can be used to search and analyze all our logs in the long term.
 
-## Eliminate the Guesswork (#eliminate-guesswork)
+## Eliminate the guesswork (#eliminate-guesswork)
 
 A major advantage provided by logfmt is that it helps to eliminate any guesswork that a developer would have to make while deciding what to log. Take the following line in a more traditional logging format for example:
 
@@ -68,7 +68,7 @@ search:
     info | Performing garbage collection  tag=garbage_collection module=kafka.cleaner.GarbageCollectionManager
     info | Starting all fetchers          tag=starting_fetchers module=kafka.consumer.ConsumerFetcherManager
 
-## Building Context (#building-context)
+## Building context (#building-context)
 
 logfmt also lends itself well to building context around operations. Inside a request for example, as important information becomes available, it can be added to a request-specific context and included with every log line published by the app. This may not seem immediately useful, but it can be very helpful while debugging in production later, as only a single log line need be found to get a good idea of what's going on.
 

@@ -65,7 +65,7 @@ to get even more information):
 
     \d my_schema.my_table
 
-## Quick Reference (#quick-reference)
+## Quick reference (#quick-reference)
 
 Now we've introduced a lot of esoteric commands here that might be hard to
 remember, but luckily there's an easy trick. Psql has a few different internal
@@ -76,7 +76,7 @@ contains a quick reference for every "backslash command":
 
 If you're going to take one thing away from this article, make it `\?`.
 
-## Search Path (#search-path)
+## Search path (#search-path)
 
 One other important piece to mention is the [`search_path`
 setting][search-path-docs], which has a few important functions:
