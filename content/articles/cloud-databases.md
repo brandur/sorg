@@ -364,7 +364,7 @@ MongoDB is a NoSQL data store that stores data as
 schemaless JSON documents. It doesn't support ACID
 transactions, and if that wasn't enough, since its release
 in 2009 has had a number of valid criticisms around core
-competencies like
+database competencies like
 [durability](/fragments/mongo-durability),
 [security][mongo-security], and
 [correctness][mongo-correctness].
@@ -426,7 +426,7 @@ The only databases on the list that I've seen running in
 production are MongoDB and Postgres, so take these
 recommendations with a grain of salt. There's almost
 certainly hidden caveats to any of them that will only be
-uncovered with closer attention.
+uncovered with a lot of hands on experience.
 
 [1] The _CAP_ properties of Cosmos and MongoDB are
 configurable as they can both be made to be eventually
