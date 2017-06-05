@@ -197,22 +197,22 @@ h1, h2, h3, h4
 h1
   font-size: 6.25rem
   letter-spacing: -6px
-  line-height: 1.0em
+  line-height: 1em
   margin: 20px 0 30px 0
 
 h1.generic
   font-size: 3.15rem
 
 h2
-  font-size: 1.55rem
+  font-size: 1.35rem
   margin: 30px 0 -10px 0
 
 h3
-  font-size: 1.25rem
+  font-size: 1.2rem
   margin: 30px 0 -15px 0
 
 h4
-  font-size: 1.05rem
+  font-size: 1rem
   margin: 30px 0 -15px 0
 
 html
@@ -439,7 +439,7 @@ article, #now
         margin-left: 20px
 
   figure
-    margin: 20px 0
+    margin: 40px 0
     max-width: 100%
     overflow: visible
     position: relative
@@ -469,17 +469,19 @@ article, #now
       // Width should be the same as nav + TOC divs.
       width: 100px
 
-  ol, ul
-    li
-      margin-bottom: 10px
-      margin-left: 40px
-      padding-left: 5px
-
   ol
     list-style-type: decimal
 
   ul
     list-style-type: disc
+
+  ol, ul
+    margin: 25px 0
+
+    li
+      margin-bottom: 10px
+      margin-left: 40px
+      padding-left: 5px
 
   .attachment
     text-align: center
@@ -487,8 +489,22 @@ article, #now
   .info
     font-size: 0.85rem
     font-style: italic
-    line-height: 1.5em
+    line-height: 1.6em
     text-align: left
+
+article.big
+  blockquote
+    p
+      font-size: 1.05rem
+
+  li, p
+    font-size: 1.12rem
+    line-height: 1.55em
+
+  #footnotes, .info
+    p
+      font-size: 0.85rem
+      line-height: 1.6em
 
 // The index TOC, figure captions, and a few other things become problematic a
 // little before the width we'd normally reserve for smartphones and such, so

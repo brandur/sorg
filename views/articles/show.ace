@@ -34,7 +34,7 @@
             {{HTML .Article.TOC}}
             .divider-short
           {{end}}
-        article
+        article.big
           {{HTML .Article.Content}}
           .divider-short
           .info
