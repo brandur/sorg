@@ -35,7 +35,7 @@ endpoint or a new field to an existing response are
 considered forwards compatible, and a version isn't cut for
 them.
 
-## Most Upgrades Are Safe (#upgrade-safety)
+## Most upgrades are safe (#upgrade-safety)
 
 You can see by [perusing the API changelog][changelog] that
 most changes are fairly minor. Upgrades can be painful and
@@ -61,7 +61,7 @@ affect them. Even if they are using an affected endpoint,
 it's possible, and even likely, that they're not using any
 of the fields that changed.
 
-## Automatic Upgrades (#automatic-upgrades)
+## Automatic upgrades (#automatic-upgrades)
 
 If most upgrades are safe for most users, then it stands to
 reason that we could potentially upgrade people
@@ -90,7 +90,7 @@ Automatic upgrades are a great idea and they'd be a nice
 feature, but too many changes fall into this ambiguous
 area, so we don't.
 
-## Other Schemes (#other-schemes)
+## Other schemes (#other-schemes)
 
 Regardless of design, all RESTful APIs will be more or less
 stuck in the same place because it's so standard to respond

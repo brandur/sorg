@@ -63,7 +63,7 @@ Producers control which shards they're producing to by specifying a [partition k
 
 So back to our original question: how can we guarantee that all records are consumed in the same order in which they're produced? The answer is that we can't, but that we shouldn't let that unfortunate reality bother us too much. Once we've scaled our stream to multiple shards, there's no mechanism that we can use to guarantee that records are consumed in order across the whole stream; only within a single shard. So instead of focusing on a global guarantee of ordering, we should instead try to to leverage techniques that will get us as much throughput as possible, and fall back to techniques that allow us to control for certain subsets of records where we deem it necessary.
 
-## Sequential Puts per Partition Key; Bulk Otherwise (#per-partition)
+## Sequential puts per partition key; bulk otherwise (#per-partition)
 
 To achieve the above, we're using a simple algorithm on our producers:
 
@@ -130,7 +130,7 @@ That would be posted by itself in a second batch. The worker would then run one 
 
 By partitioning over our known key and selecting the first result ordered by the table's sequential ID, we achieve the same effect as the pseudocode algorithm above, resulting in a set of records with unique partition keys that are safe to post in bulk even if a failure ends up ordering it in a way that we didn't intend.
 
-## Partition Key Selection (#partition-key)
+## Partition key selection (#partition-key)
 
 A side effect of this approach is that the selection of a partition key that's logical for your records becomes one of the most important concerns when starting to stream a new type of record. The partition key is the only mechanism available for controlling the order in which records are streamed to consumers, and some consideration must be taken when selecting partition keys to ensure that all records in the stream will play nicely together.
 

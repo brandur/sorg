@@ -24,7 +24,7 @@ post "/apps" do
 end
 ```
 
-## Towards Stronger Constraints (#strong-constraints)
+## Towards stronger constraints (#strong-constraints)
 
 The basic stubbing technique is pretty effective just by itself because it allows an app's stack to be exercised all the way out to the HTTP calls it's making without a mess of inconsistent stubbing sprinkled throughout the codebase. The data that's returned from the stubs is low fidelity compared to what would be returned by the actual service, but in practice it's not a huge problem when running in isolation or exercising a test suite.
 

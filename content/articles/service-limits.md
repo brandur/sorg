@@ -46,7 +46,7 @@ Most of these were added reactively over time as holes in our perimeter were
 revealed. Operating large production systems tends to be this sort of game of
 cat and mouse -- a constant cycle of reinforcing the fort as new cracks appear.
 
-## Moderation and Transparency (#moderation-and-transparency)
+## Moderation and transparency (#moderation-and-transparency)
 
 Although limits are required to prevent abuse, it's worth remembering that
 they'll have an effect on legitimate users too. It can be quite a frustrating
@@ -80,7 +80,7 @@ Spotify will serve as our bad example. Along with stringent limits in the first
 place, their [page describing rate limiting][spotify-limits] is very long, but
 mostly devoid of useful information, with no concrete numbers in sight.
 
-## Rate Limiting Algorithms (#algorithms)
+## Rate limiting algorithms (#algorithms)
 
 Rate limiting is generally performed by a ["token bucket"][token-bucket]
 algorithm. I've written about it and a specific (and quite good)

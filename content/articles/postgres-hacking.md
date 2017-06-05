@@ -34,9 +34,9 @@ succinct. I don't expect most of them to change all that
 much, but I'll try to keep the document up-to-date in case
 they do.
 
-## The Basics (#basics)
+## The basics (#basics)
 
-### Selecting Prefix and Port (#prefix-and-port)
+### Selecting prefix and port (#prefix-and-port)
 
 It's often desirable to have a stable release of Postgres
 running on your machine for day-to-day work along with your

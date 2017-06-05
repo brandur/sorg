@@ -69,7 +69,7 @@ Now we're getting somewhere! Our mocks should behave reasonably during developme
 
 While this kind of stub generally works pretty well, it still leaves us with a large disparity between development and production in that two different handlers, and therefore two completely different code paths are run in the two environments. A problem caused by this gap would hopefully be caught in a high-fidelity staging environment before making it to production, but even in staging, debugging is harder and slower compared to a local production copy.
 
-## Rack Service Stubs (#rack)
+## Rack service stubs (#rack)
 
 While re-approaching the application code for our API, we started experimenting with doing away with the variety of stub handlers, and tried replacing them with actual implementations of the foreign stubs written with Rack-compliant libraries. These Rack stubs are designed to implement only the subset of the foreign API required by the calling app, and are greatly simplified to provide the bare minimum of the requirements for a correct response (and do little else).
 

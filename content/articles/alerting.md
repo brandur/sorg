@@ -45,7 +45,7 @@ putting alerts into production for various services.
 
 ## Guidelines (#guidelines)
 
-### Design for Granularity (#granularity)
+### Design for granularity (#granularity)
 
 There's nothing worse than waking up in the middle of the night and discovering
 that an alert has gone off that doesn't have an obvious remediation because it
@@ -69,7 +69,7 @@ A goal to shoot for here is to make sure that every alarm in your system has a
 than one thing has gone wrong, then there's probably room to make that alert
 more granular.
 
-### Alert at the Root Cause (#root-cause)
+### Alert at the root cause (#root-cause)
 
 Alerts should be designed to measure against the metric being emitted by the
 system which is the most directly relevant to them. This is another one that
@@ -91,7 +91,7 @@ was unrelated to oldest transaction, so we started alerting on the number of
 dead tuples in the table, which is directly correlated to lock time and an
 early warning for when the system starts degrading for any reason.
 
-### Minimize External Services (#external-services)
+### Minimize external services (#external-services)
 
 In all cases except maybe your most mission critical system, it's not worth
 waking up your operators when a third party service goes down that one of your
@@ -117,7 +117,7 @@ the other end. When the audit steamer failed, they got paged, and they
 re-raised those pages to us, resulting in a bad situation for everyone
 involved.
 
-### Safe at Rest (#safe-at-rest)
+### Safe at rest (#safe-at-rest)
 
 One tempting mistake in a well-trafficked production environment is to build an
 alarm off of the ambient load in the system. For example, given a service
@@ -132,7 +132,7 @@ Whenever possible, design alerts that don't rely on any ongoing traffic at all,
 but if that can't be avoided, then make sure that there's a built-in
 multi-environment mechanism for stimulating it artificially.
 
-### Avoid Hypotheticals (#avoid-hypotheticals)
+### Avoid hypotheticals (#avoid-hypotheticals)
 
 An overly enthusiastic engineering spinning up a new service might fall into
 the trap of guessing where all the alarms on it should be. Well-understood
@@ -146,7 +146,7 @@ that are expected proactively, but for most others it might be better to wait
 until more concrete information is available. It's always possible to add new
 alerts when new problems occur or unexpected situations are observed.
 
-### Throttle On Slowly (#throttle-slowly)
+### Throttle on slowly (#throttle-slowly)
 
 Being on the wrong end of a pager after a new product goes into production
 might lead to a harrowing week. Luckily, no product goes into production
@@ -156,7 +156,7 @@ somebody will receive eventually (like an e-mail), but which won't page outside
 of business hours. One those warning-style alerts are vetted and stable,
 promote them to production.
 
-### Don't Allow Flappy Alarms to Enter the Shared Consciousness (#flappy-alarms)
+### Don't allow flappy alarms to enter the shared consciousness (#flappy-alarms)
 
 As busy engineers, one bad habit that we're particularly susceptible to is
 applying the fastest possible fix to a problem and moving on without
@@ -193,7 +193,7 @@ and compare its current error levels to historical records before deciding how
 to proceed. It didn't take long before operators were ignoring these alarms
 completely, making them noisy and worthless.
 
-### Treat Alarms as an Evolving System (#evolve)
+### Treat alarms as an evolving system (#evolve)
 
 As an extension to the previous point, it's a good idea to always think about
 your current set of alarms as a evolving system that you can and should be
@@ -208,7 +208,7 @@ you're cargo culting by keeping alarms around just because they've always been
 there. Even if you're not the original author of a particular component, take
 control of its stack and keep it sane.
 
-### Empower Recipients to Improve the Situation (#empower-recipients)
+### Empower recipients to improve the situation (#empower-recipients)
 
 When I first started working at Heroku, we had a global pager rotation where
 for one day every few weeks, one on-call engineer would respond to any problem
@@ -226,7 +226,7 @@ engineer wasn't working on anything else besides being on-call. This would give
 them a bit of free capacity to go in and address the root problems of any pages
 that had woken them up, thus empowering them to reduce their own level of pain.
 
-### Observe Ownership (#ownership)
+### Observe ownership (#ownership)
 
 It may be tempting for an enthusiastic operator to put alarms into place that
 indeed do represent failure cases for a service that they own, but which upon

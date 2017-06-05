@@ -95,7 +95,7 @@ As another example, I've been using a similar technique for years to [archive my
 
 Just like it's more expensive enterprise cousins, this warehouse has [its own ETL process](https://github.com/brandur/blackswan/blob/master/lib/black_swan/spiders/twitter.rb) for pulling down these tweets from Twitter's API and storing them. It's written in Ruby and leverages community gems to stay concise and DRY.
 
-## A File Warehouse (#file-warehouse)
+## A file warehouse (#file-warehouse)
 
 As a final practical example, let's build a small Postgres data warehouse containing the contents of our home directories. I find myself consistently running into the problem where my disk is near full, but my operating system does a poor job of helping me to identify the best candidates for removal.
 

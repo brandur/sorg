@@ -14,7 +14,7 @@ Personally, some basic principles left me reeling. Here's an [excerpt from the G
 
 You have to fork project to change the API?! It's hard to believe how this could be considered correct in any world, and many Go articles are so apologetic that downsides of this approach are never addressed. For those who were as confused about this as I was, let's address a few of the special characteristics of Go's import and packaging system.
 
-## The Workspace (#workspace)
+## The workspace (#workspace)
 
 At the heart of Go's conventions is [the workspace](https://golang.org/doc/code.html#Workspaces). A workspace is simply any directory that your `$GOPATH` is currently referencing, and which has a basic layout like the following:
 
@@ -34,13 +34,13 @@ import (
 
 `go get` can retrieve your project's dependencies from a variety of providers and store them to your workspace for compilation.
 
-## DVCS & the Central Repository (#dcvs)
+## DVCS & the central repository (#dcvs)
 
 A common line in the community is that Go's package system is "built on top of distributed version control", which reads like it's adding some extra layer of robustness on top of a more traditional packaging system. Although nominally true, the far and away popular convention is to reference DVCS hosts like GitHub or Google Code, which are no more distributed or robust than RubyGems. The operation of `go get` isn't too radically different than a `bundle install --local`.
 
 This doesn't eliminate any central point of failure, but it does have the notable advantage of making the community less dependent on a single central repository that's quite expensive to maintain. Central repositories like RubyGems and NPM owe their continued existence and development to largely charitable sponsorship. Although this has traditionally worked quite well, this may not last forever, especially if either community loses some of the impressive public support that they currently enjoy. Go's approach allows support for the DCVS providers du jour to be added or removed as necessary; at the end of the day, the only common functionality required of a provider or source control system is to be able to check out source code to a known path.
 
-## No Relative Imports (#no-relative-imports)
+## No relative imports (#no-relative-imports)
 
 One of the most astonishing aspects of Go's import for me was that any kind of [relative import is strongly discouraged](https://groups.google.com/forum/#!topic/golang-nuts/_usbgS9LeS8) (relative import is only allowed outside a workspace). This seems reasonable when referencing external dependencies, but is pretty inconvenient when building more complex Go projects that are divided into subpackages where convention is still to fully qualify everything:
 
@@ -66,7 +66,7 @@ This technique raises questions around repository cleanliness in that a lot of e
 
 However, it does have the advantage of making builds not dependent on the availability of external services. It also avoids any dependency hell type problems where two dependencies rely on different versions of a third.
 
-## It's About Simplicity (#simplicity)
+## It's about simplicity (#simplicity)
 
 Like everything in Go, the import system is based on the same fundamental principle of simplicity that the [rest of the language encourages](http://bradgignac.com/2014/09/24/avoiding-complexity-with-go.html). Packages are resolved using he same popular version control systems that you use to store your source code. Packages are housed in the same location as your project (the `$GOPATH`). There is no versioning of any kind; the compiler ingests whatever code is on disk. Everything can be resolved and built by the Go compiler without any other special tooling.
 

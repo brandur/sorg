@@ -10,7 +10,7 @@ We've recently [gone on record](https://blog.heroku.com/archives/2014/1/8/json_s
 
 At any time, you can jump into more documentation [over at jsonschema.org](http://json-schema.org/documentation.html), which includes detailed draft specifications for both JSON Schema and JSON Hyper-schema.
 
-## The Basic Case (#basic-case)
+## The basic case (#basic-case)
 
 At its essence, JSON Schema is simply a declarative language for validating the format and structure of a JSON object. It allows you to specify a number of special primitives to describe exactly what a valid JSON object will look like, and provides a powerful nesting concept that allows you to extend these primitives to a document of any complexity. This idea hails back to the days of XML, when it was common to see XML documents linking to the [XSD's](http://en.wikipedia.org/wiki/XML_schema) (XML Schema Definition) that should be used to validate them.
 
@@ -33,7 +33,7 @@ More complex rules can be mixed into the object as well. This will validate that
 }
 ```
 
-## Nesting Schemas (#nesting)
+## Nesting schemas (#nesting)
 
 While the above lets us validate a single value, it's more interesting to validate a complex JSON object. We can build on the above by nesting our single value validation into another schema using the `properties` keyword, which describes the keys that a JSON object might have, and the schema that validates their values:
 
@@ -76,7 +76,7 @@ A very common convention in cases like this is to define subschemas under `defin
 
 The strange `$ref` keyword is a [JSON Reference](http://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03). It tells schema parsers that the definition is not a schema itself, but rather references a schema elsewhere in the document (or in a different document). The `#` denotes the root of the JSON document, and the slashes are keys that should be descended through until the appropriate value is reached.
 
-## We Need to Go Deeper (#multi-resource)
+## We need to go deeper (#multi-resource)
 
 Let's think of our schema above as the definition of a simple app, which has a name, but might later have some other properties as well. A very common scenario (especially in an API) might be to define another type of object as well, and to have these objects reference each other.
 
@@ -183,7 +183,7 @@ We've now demonstrated not only how schemas can be nested to as many levels as w
 
 Once again, discerning readers may have noticed that our top-level schema actually defines a non-sensical object that has both an app and a domain like `{"app":..., "domain":...}`. This is true, but we'll see that it's not important as we move onto building an API in the next section.
 
-## Adding Hyper-schema (#hyper-schema)
+## Adding hyper-schema (#hyper-schema)
 
 Along with the JSON Schema, a companion draft also defines JSON Hyper-schema, which builds off the original specification to define a schema that can host a collection of links. This allows us to move beyond the realm of basic JSON validation, and into the more interesting area of using schema to build APIs.
 
@@ -216,7 +216,7 @@ Let's define two simple links on our app schema for creating a new app (`POST /a
 
 Notice how these define individual HTTP endpoints: an access verb is specified in `method`, along with a URI in `href`. We've also tagged each link with some other metadata that tells us a little more about what it does and how we should describe it; this can be supremely useful for tasks like generating code and documentation.
 
-### Request Schemas (#request-schemas)
+### Request schemas (#request-schemas)
 
 The links above are useful in that we now know a little bit about how to interact with an apps resource, but they don't tell us much beyond that. For example, how do we know what parameters to send in while creating an app?
 
@@ -272,7 +272,7 @@ A declarative definition of incoming requests can be supremely useful for saniti
 
 Note that the API I'm building above is a little like the Heroku API in that it expects input as `application/json` rather than the more commonly seen `application/x-www-form-urlencoded` (e.g. `name=my-app&foo=bar`). Hyper-schema doesn't necessarily stipulate that incoming requests have to be JSON, in fact it defines an `encType` that allows a link to specify its format, but the symmetry of a request and response that are both in JSON is a clean model worthy of consideration (in my humble opinion).
 
-### Response Schemas (#response-schemas)
+### Response schemas (#response-schemas)
 
 Much like the incoming request, Hyper-schema allows us to specify a schema for the outgoing response as well with the `targetSchema` keyword. Within the confines of our simple example API above, this one is easy; given a request to create an app, let's respond with an app:
 
@@ -309,7 +309,7 @@ For the list endpoint, we'd like to describe the response as an array of apps:
 
 And we've managed to re-use our basic object definitions yet again! Knowing what responses are supposed to look like can be very handy for testing for API regressions in acceptance-level tests. Once again, [Committee](https://github.com/interagent/committee) can help with that in Ruby by providing test helpers for use with rack-test.
 
-## Let's Get Meta (#meta-schemas)
+## Let's get meta (#meta-schemas)
 
 An interesting set of products that both JSON Schema and Hyper-schema provide are their own [meta-schemas](http://json-schema.org/documentation.html). Because a schema is itself just a JSON document, a schema can be written for a schema! For example, take a look at the [JSON Hyper-schema meta-schema](http://json-schema.org/hyper-schema). Note how the special `$schema` keyword points back to its own `id`. This schema can be used to validate the format of your own Hyper-schema with a tool like [`json_schema`](https://github.com/brandur/json_schema):
 
@@ -391,7 +391,7 @@ validate-schema -d -s meta.json schema.json
 schema.json is valid.
 ```
 
-### Mixing in Hyper-schema's Meta-schema (#hyper-schema-meta)
+### Mixing in hyper-schema's meta-schema (#hyper-schema-meta)
 
 You may also notice that the [hyper-schema meta-schema](http://json-schema.org/hyper-schema) uses an `allOf` attribute to make sure that in addition to the constraints it defines, data should also validate against the JSON Schema meta-schema as well. We can do the same thing for our variant except for hyper-schema:
 
@@ -407,7 +407,7 @@ You may also notice that the [hyper-schema meta-schema](http://json-schema.org/h
 }
 ```
 
-## Schema Endpoint (#schema-endpoint)
+## Schema endpoint (#schema-endpoint)
 
 A convention that we have at Heroku is to serve the schema itself when a request is made to `GET /schema`. One neat trick is to define the `/schema` link in the schema itself and that its response should validate according to its meta-schema. Using the same mechanism that you'd use to check that a JSON response conforms to its schema, this allows the schema to validate itself against its own meta-schema from your acceptance test suite!
 
@@ -424,7 +424,7 @@ A convention that we have at Heroku is to serve the schema itself when a request
 
 All the code for the simple hyper-schema and the meta-schema that we've built here are available [on GitHub](https://github.com/brandur/simple-schema).
 
-## Schemas for Other Media Types (#other-media-types)
+## Schemas for other media types (#other-media-types)
 
 A final point worth mentioning is that even a Hyper-schema API isn't your thing, [Hyperschema.org has a set of schemas available](http://hyperschema.org/mediatypes/) for other media types, including today's popular hypermedia formats like Collection+JSON, HAL, and UBER.
 

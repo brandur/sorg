@@ -15,7 +15,7 @@ The figure below shows a simulation of the effect. With a relatively high rate o
 
 !fig src="/assets/postgres-queues/pre-queue-count.png" caption="Number of jobs in queue. One hour into a long-lived transaction, we're at 60k jobs."
 
-## Why Put a Job Queue in Postgres? (#why)
+## Why put a job queue in Postgres? (#why)
 
 Your first question may be: why put a job queue in Postgres at all? The answer is that although it may be far from the use case that databases are designed for, storing jobs in a database allows a program to take advantage of its transactional consistency; when an operation fails and rolls back, an injected job rolls back with it. Postgres transactional isolation also keeps jobs invisible to workers until their transactions commit and are ready to be worked.
 
@@ -23,7 +23,7 @@ Without that transactional consistency, having jobs that are worked before the r
 
 As we'll see below, there are very good reasons not to use your database as a job queue, but by following a few key best practices, a program can go pretty far using this pattern.
 
-## Building a Test Bench (#test-bench)
+## Building a test bench (#test-bench)
 
 We originally noticed this problem in production, but the first step for us to be able to check any potentials solutions is to be able to reliably reproduce it in a controlled environment. For this purpose, we wrote the [que-degradation-test](https://github.com/brandur/que-degradation-test), a simple program with three processes:
 
@@ -33,13 +33,13 @@ We originally noticed this problem in production, but the first step for us to b
 
 Like we hoped, the program was easily able to reproduce the problem and in a reliable way. All the charts in this article are from test data produced by it.
 
-## Slow Lock Time (#slow-lock-time)
+## Slow lock time (#slow-lock-time)
 
 The first step into figuring out exactly what's going wrong is to find out what exactly about the long running transaction is slowing the job queue down. By looking around at a few queue metrics, we quickly find a promising candidate. During stable operation, a worker locking a job to make sure that it can be worked exclusively takes on the order of < 0.01 seconds. As we can see in the figure below though, as the oldest transaction gets older, this lock time escalates quickly until it's 15x that level at times of 0.1 s and above. As the difficulty to lock a job increases, workers can lock fewer of them in the same amount of time. Left long enough, the queue will eventually reach a point where more jobs are being produced than being worked, leading to a runaway queue.
 
 !fig src="/assets/postgres-queues/pre-lock-time.png" caption="Median lock time. Normally < 0.01 s, locks are taking 15x longer than that one hour in."
 
-### Locking Algorithms (#locking-algorithms)
+### Locking algorithms (#locking-algorithms)
 
 We'd originally been using a library called [Queue Classic](https://github.com/QueueClassic/queue_classic) (QC) to run our job queue. We started to suspect that its relatively inefficient locking mechanism might be the source of our trouble, so we moved over to another package called [Que](https://github.com/chanks/que) (pronounced "kay") which is known to be faster. But to our chagrin, we found that the problem still existed, even if its better overall performance did seem to help stave it off for a little bit longer. We'll be examining Que in detail here, but it's worth nothing that both of these systems are susceptible to the same root problem.
 
@@ -98,7 +98,7 @@ Eventually one of two conditions will be met that ends the recursion:
 
 Taking a closer look at the [jobs table DDL](https://github.com/chanks/que/blob/f95aec38a48a86d1b4c82297bc5ed9c88bb600d6/lib/que/migrations/1/up.sql#L11) we see that its primary key on `(priority, run_at, job_id)` should ensure that the expression above will run efficiently. We may be able to improve that somewhat by introducing some randomness to reduce contention, but that's unlikely to help with the multiple order of magnitude performance degradation that we're seeing, so let's move on.
 
-## Dead Tuples (#dead-tuples)
+## Dead tuples (#dead-tuples)
 
 By continuing to examine test data, we quickly notice another strong correlation. As the age of the oldest transaction increases, the number of dead tuples in the jobs table grows continually. The figure below shows how by the end of our experiment, we're approaching an incredible 100,000 dead rows.
 
@@ -284,7 +284,7 @@ A job queue's access pattern is particularly susceptible to this kind of degrada
 
 ## Solutions (#solutions)
 
-### Predicate Specificity (#specificity)
+### Predicate specificity (#specificity)
 
 Stated plainly, our root problem is that the job table's index has become less useful to the point where using it isn't much faster than a full sequential scan. Even after selecting rows based on the predicates we've specified, Postgres still has to seek through thousands of dead rows before finally arriving at something that it can use.
 
@@ -341,7 +341,7 @@ And for comparison, here's what it looked like _before_ the patch:
 
 We can see above that the patched version of Que performs optimally for roughly twice as long under degraded conditions. It eventually hockeysticks as well, but only after maintaining a stable queue for a considerable amount of time[3]. We found that a database's capacity to work under degraded conditions was partly a function of database size too: the tests above were run on a `heroku-postgresql:standard-2`, but a `heroku-postgresql:standard-7` with the patched version of Que was able to maintain near zero queue for the entire duration of the experimental run, while the unpatched version degraded nearly identically to its companion on the smaller database.
 
-#### Lock Jitter (#lock-jitter)
+#### Lock jitter (#lock-jitter)
 
 An astute reader may have noticed that our proposed revision of the locking algorithm above introduces a new problem. If a worker dies or a transaction commits a job ID that's out of order, it's possible for all online workers to have moved onto `last_job_ids` that are all higher than one of the unworked jobs left in the queue, leaving that job with a low job ID in an indefinite limbo.
 
@@ -366,17 +366,17 @@ loop do
 end
 ```
 
-### Lock Multiple Jobs (#lock-multiple)
+### Lock multiple jobs (#lock-multiple)
 
 An alternative approach to solving the same problem might be to have each worker lock more than one job at a time, which distributes the cost of taking the lock. Its disadvantage is that the overall time to get a job worked may suffer because jobs can get "stuck" behind a long-running job that happened to come out ahead of them in the same batch.
 
-### Batch Jobs to Redis (#redis-batching)
+### Batch jobs to Redis (#redis-batching)
 
 Yet another approach might be to drop your Postgres-based queues completely and instead save jobs to a `pending_jobs` table in your database. A background process could then loop through and select jobs from this table en masse and feed them out to a Redis-backed job queue like Sidekiq. This would allow your project to keep the nice database-based property of transactional consistency, but the background worker selecting jobs in bulk would keep the implementation orders of magnitude more resistant to long-lived transactions than Que or Queue Classic.
 
 The extra hop required for the `pending_jobs` table may make this implementation a little slower than a Postgres-based queue operating under ideal conditions, but it could probably be optimized so as not to be too costly.
 
-## Lessons Learnt (#lessons-learnt)
+## Lessons learnt (#lessons-learnt)
 
 Given a full understanding of problems with long-lived transactions in Postgres, a tempting (but overly simplistic) takeaway might be that Postgres isn't a good fit for a job queue. This is at least partly correct, but it's worth remembering that although a job queue may be the least optimal situation, similar problems can develop for any sufficiently hot Postgres table.
 

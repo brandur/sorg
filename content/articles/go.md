@@ -16,9 +16,9 @@ opportunity to assemble a pretty serious project in the language from scratch.
 I took notes throughout the process so as not to lose my (relatively) fresh
 outlook on the language.
 
-## The Important Things (#important)
+## The important things (#important)
 
-### Simple, but Verbose (#verbose)
+### Simple, but verbose (#verbose)
 
 Building new programs requires typing **a lot**. The language is incredibly
 verbose and has few shortcuts. The upside is that once you have typed out
@@ -86,9 +86,9 @@ with `$PATH` or rbenv or anything else. Copy the executable to
 `/usr/local/bin`, inject it straight into my Crontab, and you're done.
 `killall` even works; incredible.
 
-## Other Notes (#other)
+## Other notes (#other)
 
-### The Good (#good)
+### The good (#good)
 
 There's a lot to like about Go:
 
@@ -130,7 +130,7 @@ There's a lot to like about Go:
   that examples in documentation get run with the test suite so that they don't
   fall out of date.
 
-### The Surprisingly Good (#surprisingly-good)
+### The surprisingly good (#surprisingly-good)
 
 There were a lot of facets of Go that I read or heard about before trying and
 which I was pretty sure that I wouldn't like. However, after using the language
@@ -152,7 +152,7 @@ a while I quickly started warming up to them:
   the language for certain things difficult, I was amazed after having built a
   multi-thousand LOC program to realize that I hadn't wanted for them once.
 
-### The Bad (#bad)
+### The bad (#bad)
 
 I really did make an effort, but even so, some parts of the language are hard
 to love:
@@ -194,7 +194,7 @@ to love:
   reflection. This wouldn't seem like it should be a problem, but can lead to
   surprising bottlenecks in otherwise fast programs.
 
-### The Ugly (#ugly)
+### The ugly (#ugly)
 
 There are very few parts of the language that are unapologetically bad, but
 that said:

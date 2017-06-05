@@ -72,7 +72,7 @@ for browsing. As of today, ["Can I Use ...?" estimates support at 97+%
 globally][caniuse], so an SNI-based solution is probably appropriate for you as
 long as you're running an operation that's smaller than Google.
 
-### Let's Encrypt (#lets-encrypt)
+### Let's encrypt (#lets-encrypt)
 
 **Website:** [https://letsencrypt.org/][lets-encrypt]
 
@@ -104,7 +104,7 @@ The bad:
   that allows for easy automation goes a long way towards compensating for
   this.
 
-### AWS Certificate Manager (#acm)
+### AWS certificate manager (#acm)
 
 **Website:** [https://aws.amazon.com/certificate-manager/][acm]
 

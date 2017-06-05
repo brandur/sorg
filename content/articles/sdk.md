@@ -23,25 +23,25 @@ We could wrap any SDKs to include the extra logging, but by making our own HTTP 
 
 Following the same idea as logging, we also want to emit metrics around any calls to foreign services so that we can track the quality of their operation. What's the average service time? How often does it respond with a 503? Does it ever return internal server errors? If the service is critical enough to the operation of our own app, we might even want to put alarms in place to help us keep an eye on it. Or better yet, we could have those alarms trigger for the team who manages that service in case they're not generating great metrics themselves.
 
-## Performance and Persistent Connections (#performance)
+## Performance and persistent connections (#performance)
 
 The performance of calls to foreign services that are in hot paths is concerning enough that we might want to try to optimize them by keeping pools of persistent connections around.
 
 Does an SDK handle this? Maybe. Does it handle it correctly for any given app's concurrency model? Again, maybe; every SDK has to be examined on a case-by-case basis. We can bypass the uncertainly completely by standardizing on a common pattern for connection re-use against all services that we interact with.
 
-## Error Handling, Edge Cases, and Idempotency (#error-handling)
+## Error handling, edge cases, and idempotency (#error-handling)
 
 There's huge variability in the way that SDKs handle errors and other types of less common edge cases. I've seen everything from allowing the exceptions produced by the SDK's internal HTTP library bubble back up to our code to swallowing problems completely and passing invalid data back to us. Even in the best case scenario where an SDK has identified and documented every failure scenario, we still have to consider every error and figure out what to with it. By making basic HTTP calls, we can re-use patterns across services. For example, in most cases when we get a 503 back, we'll bubble that 503 back up to the consumer of our app.
 
 Retries are also worth considering here. If it look like we just hit a basic network problem, and we know of an endpoint to be idempotent, we might want to retry the call a few times. An SDK could do this too, but we can't know its exact behavior without digging into it, and even then it might not be doing the right thing.
 
-## The Grep Test (#grep)
+## The Grep test (#grep)
 
 Especially when connection problems and errors bubble up, it's often useful to be able to identify what segment of code was trying to make a call to some HTTP endpoint. When working with basic HTTP calls, working that out is [one grep away](http://jamie-wong.com/2013/07/12/grep-test/), but with SDKs this often has to be reasoned out by comparing the host in a URL to the name of a library.
 
 You can get around this by just vendoring in all your dependencies, but that's terrible.
 
-## Just Freedom Patch! (#freedom-patch)
+## Just freedom patch! (#freedom-patch)
 
 It's true that the points above are still possible with SDKs be it through designing pluggable SDKs, monkey patching, or building sophisticated wrappers. The problem is that these SDKs are being shipped from by different companies and different people and will have wildly different conventions and capabilities throughout; all of which need to be examined and learned on a case-by-case basis, and the options above probably won't represent a big time saving compared to just wrapping the HTTP calls yourself and re-using the patterns that you already have.
 

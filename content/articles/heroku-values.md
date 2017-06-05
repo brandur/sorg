@@ -33,7 +33,7 @@ there, and not all were still in place when I left.
 
 ## Technology (#technology)
 
-### The Platform (#platform)
+### The platform (#platform)
 
 One of the greatest pleasures during work at Heroku was the Heroku product
 itself. Apps could be created and deployed in seconds, which encouraged
@@ -69,7 +69,7 @@ the same [public V3 API][heroku-api] available to customers. I can't even
 describe the number of bugs uncovered by this technique; bugs that would have
 otherwise been encountered by frustrated customers or third-party developers.
 
-### Twelve Factor (#twelve-factor)
+### Twelve factor (#twelve-factor)
 
 [Twelve-factor][twelve-factor] methodology provided a very nice set of guiding
 principles for internal apps so that an engineer could reason about them more
@@ -88,7 +88,7 @@ conventions](#service-conventions)), but the relatively straightforward set of
 twelve-factor principles got us started and would always act as a solid
 foundation that everyone agreed on.
 
-### The HTTP API Design Guide (#http-api-design)
+### The HTTP API design guide (#http-api-design)
 
 A fundamental law of the universe is that every engineer will design an HTTP
 API slightly differently, even if they're being guided by prior art. This isn't
@@ -103,7 +103,7 @@ guide][api-design-guide] based off of the decisions we'd made building the V3
 API. The result is that Heroku's API is one of the most self-consistent HTTP
 APIs that you'll find anywhere in the real world.
 
-### Service Conventions (#service-conventions)
+### Service conventions (#service-conventions)
 
 Twelve-factor offered some convention when it came to deploying new services,
 but we tried to take standardization much further with our service toolkit
@@ -169,7 +169,7 @@ A few examples:
 * Don't create internal forks of libraries (this one should be obvious, but it
   doesn't seem to be).
 
-### Use Services (#use-services)
+### Use services (#use-services)
 
 Whenever you can use hosted services instead of operating them yourself.
 Although the cost of infrastructure and bringing a new service online is
@@ -179,7 +179,7 @@ and retiring it when the time comes are rarely considered.
 
 ## Culture (#culture)
 
-### Leadership & Inspiration (#inspiration)
+### Leadership & inspiration (#inspiration)
 
 I've never had the opportunity to work with so many people who inspired me on
 such a fundamental level as those who I met at Heroku, especially in my early
@@ -201,7 +201,7 @@ someone else. If sufficient coverage is reached, this technique helps to
 prevent [constant disruption on open communication channels][slack-distractor]
 so that people have time to work.
 
-### Cross-team Contribution (#cross-contribution)
+### Cross-team contribution (#cross-contribution)
 
 Want a new feature or improvement? Send a pull request for it. There is no
 better way to demonstrate your commitment to an idea. It also had the side
@@ -212,7 +212,7 @@ maintain day to day.
 This obviously doesn't scale to infinity, but it does scale far further than
 many people would have you believe.
 
-### Shipping Cadence (#shipping)
+### Shipping cadence (#shipping)
 
 We shipped our services fast and frequently, and had framework of tooling to
 make it safe to do so. You'd more often than not see a change go out same day,
@@ -225,7 +225,7 @@ due to a weak process for getting them across the finish line. This problem was
 examined and corrected, and today products make it out the door on a regular
 basis.
 
-### Strong Engineers (#engineers)
+### Strong engineers (#engineers)
 
 At its essence, this one is pretty obvious: hire good engineering talent.
 
@@ -246,7 +246,7 @@ asynchronously except for the occasional instance where a higher bandwidth
 channel was more suitable. It was the most productive environment that I've
 ever seen.
 
-### Technical Culture (#technical-culture)
+### Technical culture (#technical-culture)
 
 Technical culture was fostered, which (I believe) led to a high degree of
 technical excellence in the products that we produced. This mostly manifested
@@ -257,7 +257,7 @@ time we also held a technical event every Friday called "Workshop" where
 engineers could show off some of the interesting projects that they were
 working on. It was designed to educate and inspire, and it worked.
 
-### Flexible Environment (#flexible-environment)
+### Flexible environment (#flexible-environment)
 
 <figure>
   <p><img src="/assets/heroku-values/agora.jpg" data-rjs="2" class="overflowing"></p>
@@ -289,7 +289,7 @@ drop by the area. The system worked.
 I learnt how to use both Chemex and AeroPress; both of which I continue to use
 regularly.
 
-## Process & Organization (#process)
+## Process & organization (#process)
 
 ### GitHub (#github)
 
@@ -308,7 +308,7 @@ turn key services like Travis, GitHub is one of those tools.
 Time that developers *don't spend* supporting custom infrastructure or fighting
 bad tooling is time that can be used to build your product.
 
-### Access to Resources (#resources)
+### Access to resources (#resources)
 
 If an engineer needed a new resource for a service being deployed, prototype,
 or even one-off experiment, they were at liberty to provision it and keep on
@@ -328,7 +328,7 @@ territorial ops people, and mountains of paperwork. Although some care needs to
 be taken to not shoot from the hip when dropping in new technology, that
 approach doesn't help anyone.
 
-### Total Ownership (#total-ownership)
+### Total ownership (#total-ownership)
 
 Our own version of "devops", total ownership was meant to convey that a team
 responsible for the development of a component was also responsible for its
@@ -345,7 +345,7 @@ the multi-week deployment schedules, I do miss the regular blocks of daily
 focus during which I would never have to stop work and deal with an
 interruption from production.
 
-### Technical Management (#management)
+### Technical management (#management)
 
 When I started at Heroku, my manager knew the codebase better than I did, knew
 Ruby better than I did, and pushed more commits in a day than I would do in a

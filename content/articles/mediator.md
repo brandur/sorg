@@ -11,7 +11,7 @@ The main difference was in appellation: we called the resulting PORO's "mediator
 
 The intent of this article is to build on what Grouper wrote by talking about some other nice patterns that we've built around the use of mediators/interactors.
 
-## Lean Endpoints (#lean-endpoints)
+## Lean endpoints (#lean-endpoints)
 
 One goal of our usage of mediators is to consolidate all the business logic that might otherwise have to reside in a combination of an API endpoint's body and methods on models. Ideally what remains in the endpoint should be a set of request checks like authentication, ACL, and parameters; a single call down to a mediator; and response logic like serialization and status.
 
@@ -109,7 +109,7 @@ describe API::Mediators::SSLEndpoints::Creator do
 end
 ```
 
-## Lean Jobs (#lean-jobs)
+## Lean jobs (#lean-jobs)
 
 Much in the same way that mediators keep our endpoints lean, they do the same for our async jobs. By encapsulating all business logic into a mediator, we leave jobs to focus only one two things:
 
@@ -164,7 +164,7 @@ end
 
 (Note that the above is a simplified example. If you were going to send a sensitive secret like an SSL key through an insecure channel, we'd want to encrypt it.)
 
-## Strong Preconditions (#strong-preconditions)
+## Strong preconditions (#strong-preconditions)
 
 From within any mediator, we assume that a few preconditions have already been met:
 
@@ -178,7 +178,7 @@ Making these strong assumptions has a number of advantages:
 * It eases testing as the boilerplate for checking parameter validation and the like can be consolidated elsewhere.
 * Allows mediators to be called more easily from outside their normal context like from a debugging/operations console session.
 
-## Mediators All the Way Down (#nesting-mediators)
+## Mediators all the way down (#nesting-mediators)
 
 One way to think about mediators is that they encapsulate a discrete piece of work that involves interaction between a set of objects; a piece of work that otherwise might have ended up in an unwieldy method on a model. Because units of work are often composable, just like those model methods would have been, it's a common pattern for mediators to make calls to other mediators.
 
@@ -204,7 +204,7 @@ module API::Mediators::Apps
 
 Of course it's important that your mediators have a clear call hierarchy so as not to develop any circular dependencies, but as long as developers don't get too overzealous with mediator creation, this is pretty safe.
 
-## Patterns Through Convention (#convention)
+## Patterns through convention (#convention)
 
 While establishing mediators as the default unit of work, it's also a convenient time to start building other useful conventions into them. For example, we build in an auditing pattern so that we're still able to produce a trail of audit events even the mediator's work is performed from unexpected places like a console:
 

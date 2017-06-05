@@ -45,7 +45,7 @@ help bridge that gap:
 
 !fig src="/assets/canonical-log-lines/observability-tiers.svg" caption="The tiers of observability, showing the trade-off between query flexibility and ease of reference."
 
-## Literally, One Big Log Line (#what-are-they)
+## Literally, one big log line (#what-are-they)
 
 The concept is simple: a canonical line is a big log line
 (probably in [logfmt](/logfmt)\) that gets emitted at the
@@ -77,13 +77,13 @@ added for clarity):
 
 !fig src="/assets/canonical-log-lines/example-line.svg" caption="What a canonical log line looks like in raw form as it's being emitted."
 
-## Storing the Emitted Data (#storage)
+## Storing the emitted data (#storage)
 
 After emitting canonical lines, the next step is to put
 them somewhere useful. At Stripe we use a two prong
 approach combining Splunk and Redshift.
 
-### Into a Real-time Log Aggregator (Like Splunk) (#splunk)
+### Into a real-time log aggregator (like splunk) (#splunk)
 
 Splunk is a powerful shorter-term store that's great for
 getting fast insight into online systems. It's great for:
@@ -112,7 +112,7 @@ unusual sight to see our operations teams at Stripe trying
 to prune the traces of our highest traffic systems to keep
 Splunk running under quota [2].
 
-### Into a Data Warehouse (Like Redshift) (#redshift)
+### Into a data warehouse (like Redshift) (#redshift)
 
 The other system that we use to ingest canonical lines is
 Redshift. Any other data warehousing system would do just
@@ -138,9 +138,9 @@ system (buffered Kafka [3]), archiving batches of it to S3,
 and then periodically running a `COPY` pointing to the
 bucket from Redshift.
 
-## Some Real World Uses (#examples)
+## Some real world uses (#examples)
 
-### Finding HTTP 500s By Failure Type (#500s-by-breakage)
+### Finding HTTP 500s by failure type (#500s-by-breakage)
 
 One of the hazards of any software stack is that unexpected
 breakages will happen. For a typical web service, this
@@ -178,7 +178,7 @@ last week by API version:
 
 > [search breakage-splunkline error_class=Timeout sourcetype=bapi-srv earliest=-7d | fields action_id] canonical-api-line | stats count by stripe_version | sort -count limit 10
 
-### Profiling Requests on Old TLS Versions (#tls-deprecation)
+### Profiling requests on old TLS versions (#tls-deprecation)
 
 One project that I'm working on right now is helping Stripe
 users [migrate to TLS 1.2 from older secure
@@ -212,7 +212,7 @@ WHERE created > GETDATE() - '7 days'::interval
 ORDER BY 1;
 ```
 
-## An Easy Implementation With Rack Middleware (#implementation)
+## An easy implementation with Rack middleware (#implementation)
 
 Middleware makes a good home for implementing canonical log
 lines. This middleware will generally be installed close to
@@ -292,7 +292,7 @@ App = Rack::Builder.new do
 end
 ```
 
-## A Happy Compromise (#summary)
+## A happy compromise (#summary)
 
 By now I've hopefully convinced you that canonical log
 lines provide a pretty useful "middle tier" of operational

@@ -47,7 +47,7 @@ module RequestStore
 end
 ```
 
-## The Anti-pattern (#the-antipattern)
+## The anti-pattern (#the-antipattern)
 
 Much like the infamous [singleton pattern](http://en.wikipedia.org/wiki/Singleton_pattern), the request store introduces global state into its application, which in turn makes it more difficult to reason about the dependencies of any given piece of code. Global state can have other side effects too, like making testing more difficult; globals that initialize themselves implicitly can be hard to set without a great stubbing framework, and will keep their value across multiple test cases, which is surprising behavior for anyone not expecting it.
 
