@@ -179,43 +179,45 @@ concurrency control systems that make this possible in ways
 that are correct and efficient.
 
 <figure>
-  <table class="overflowing">
-    <tr>
-      <th>Isolation Level</th>
-      <th>Dirty Read</th>
-      <th>Nonrepeatable Read</th>
-      <th>Phantom Read</th>
-      <th>Serialization Anomaly</th>
-    </tr>
-    <tr>
-      <td><strong>Read uncommitted</strong></td>
-      <td>Allowed</td>
-      <td>Possible</td>
-      <td>Possible</td>
-      <td>Possible</td>
-    </tr>
-    <tr>
-      <td><strong>Read committed</strong></td>
-      <td>Not possible</td>
-      <td>Possible</td>
-      <td>Possible</td>
-      <td>Possible</td>
-    </tr>
-    <tr>
-      <td><strong>Repeatable read</strong></td>
-      <td>Not possible</td>
-      <td>Not possible</td>
-      <td>Allowed</td>
-      <td>Possible</td>
-    </tr>
-    <tr>
-      <td><strong>Serializable</strong></td>
-      <td>Not possible</td>
-      <td>Not possible</td>
-      <td>Not possible</td>
-      <td>Not possible</td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table class="overflowing">
+      <tr>
+        <th>Isolation Level</th>
+        <th>Dirty Read</th>
+        <th>Nonrepeatable Read</th>
+        <th>Phantom Read</th>
+        <th>Serialization Anomaly</th>
+      </tr>
+      <tr>
+        <td><strong>Read uncommitted</strong></td>
+        <td>Allowed</td>
+        <td>Possible</td>
+        <td>Possible</td>
+        <td>Possible</td>
+      </tr>
+      <tr>
+        <td><strong>Read committed</strong></td>
+        <td>Not possible</td>
+        <td>Possible</td>
+        <td>Possible</td>
+        <td>Possible</td>
+      </tr>
+      <tr>
+        <td><strong>Repeatable read</strong></td>
+        <td>Not possible</td>
+        <td>Not possible</td>
+        <td>Allowed</td>
+        <td>Possible</td>
+      </tr>
+      <tr>
+        <td><strong>Serializable</strong></td>
+        <td>Not possible</td>
+        <td>Not possible</td>
+        <td>Not possible</td>
+        <td>Not possible</td>
+      </tr>
+    </table>
+  </div>
   <figcaption>Transaction isolation levels and the
     contention phenomena that they allow. See the <a
     href="https://www.postgresql.org/docs/current/static/transaction-iso.html">Postgres
