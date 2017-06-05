@@ -439,15 +439,13 @@ article, #now
         margin-left: 20px
 
   figure
-    margin: 40px 0
     max-width: 100%
     overflow: visible
+    margin: 40px 0
     position: relative
 
-    img, video
-      margin: 0
-
     p
+      margin: 0
       overflow: visible
 
     figcaption
@@ -468,6 +466,9 @@ article, #now
 
       // Width should be the same as nav + TOC divs.
       width: 100px
+
+    table
+      margin: 0
 
   ol
     list-style-type: decimal
@@ -513,13 +514,12 @@ article.big
 @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px)
   article
     figure
-      img
+      img, video
         display: block
         margin: 0 auto
 
       figcaption
         left: 0
-        margin: 20px 0 0 0
         position: relative
         text-align: center
         top: 0
@@ -529,20 +529,20 @@ article.big
     overflow: auto
     width: auto
 
-  img.overflowing, table.overflowing, video.overflowing
+  img.overflowing, video.overflowing
     max-width: 100%
     overflow: auto
 
-  // Tables don't behave very well when their width is contrained and can still
-  // be wider than their containing div. Here we use a few tricks:
-  // `table-layout: fixed` contains the table to 100% but jettisons any
-  // intelligent around layout. Word wrapping and a decreased font size
-  // minimize the damage because text is allowed to overflow cells otherwise.
-  table.overflowing
-    font-size: 0.6rem
-    table-layout: fixed
+  // We need this container specifically to have the table render correctly on
+  // mobile devices. Otherwise platforms like iOS will render it as 100% of
+  // the viewport and shorten everything else which makes the entire layout
+  // look really strange.
+  .table-container
+    overflow-y: auto
     width: 100%
-    word-wrap: break-word
+
+  table.overflowing
+    width: 100%
 
   .toc-index
     display: none

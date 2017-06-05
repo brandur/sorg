@@ -255,8 +255,10 @@ quickly) and the side effects of any particular DDL command.
 Here are a list of safe versus unsafe operations:
 
 <figure>
-  <table>
-  </table>
+  <div class="table-container">
+    <table class="overflowing">
+    </table>
+  </div>
 </figure>
 
 ### pg_stat_activity (#pg-stat-activity)

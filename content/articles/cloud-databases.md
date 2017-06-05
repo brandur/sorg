@@ -39,82 +39,84 @@ thoughts"](#closing-thoughts) below.
 ## Comparison matrix (#matrix)
 
 <figure>
-  <table class="overflowing">
-    <tr>
-      <th>Database</th>
-      <th>Concurrent ACID</th>
-      <th>HA</th>
-      <th>Horizontally Scalable</th>
-      <th>Automatic Data Sharding</th>
-      <th>Low Latency</th>
-      <th>Notes</th>
-    </tr>
-    <tr>
-      <td><strong><a href="#aurora">Amazon Aurora</a></strong></td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓ Disk only</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><strong><a href="#citusdb">CitusDB</a></strong></td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✗</td>
-      <td>✓</td>
-      <td>Open source; ACI* is node local</td>
-    </tr>
-    <tr>
-      <td><strong><a href="#cockroachdb">CockroachDB</a></strong></td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✗</td>
-      <td>Open source</td>
-    </tr>
-    <tr>
-      <td><strong><a href="#spanner">Google Spanner</a></strong></td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✗</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
-      <td>✗ See notes</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✗</td>
-      <td>✗</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><strong><a href="#mongodb">MongoDB</a></strong></td>
-      <td>✗</td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✗</td>
-      <td>✓</td>
-      <td>Open source; not recommended given modern
-        alternatives (see notes)</td>
-    </tr>
-    <tr>
-      <td><strong><a href="#postgres">Postgres</a></strong></td>
-      <td>✓</td>
-      <td>✓</td>
-      <td>✗</td>
-      <td></td>
-      <td>✓</td>
-      <td>Open source; HA through Amazon RDS, Heroku
-        Postgres, or Azure Database</td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table class="overflowing">
+      <tr>
+        <th>Database</th>
+        <th>Concurrent ACID</th>
+        <th>HA</th>
+        <th>Horizontally Scalable</th>
+        <th>Automatic Data Sharding</th>
+        <th>Low Latency</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td><strong><a href="#aurora">Amazon Aurora</a></strong></td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓ Disk only</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong><a href="#citusdb">CitusDB</a></strong></td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>Open source; ACI* is node local</td>
+      </tr>
+      <tr>
+        <td><strong><a href="#cockroachdb">CockroachDB</a></strong></td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✗</td>
+        <td>Open source</td>
+      </tr>
+      <tr>
+        <td><strong><a href="#spanner">Google Spanner</a></strong></td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✗</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
+        <td>✗ See notes</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✗</td>
+        <td>✗</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong><a href="#mongodb">MongoDB</a></strong></td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>Open source; not recommended given modern
+          alternatives (see notes)</td>
+      </tr>
+      <tr>
+        <td><strong><a href="#postgres">Postgres</a></strong></td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✗</td>
+        <td></td>
+        <td>✓</td>
+        <td>Open source; HA through Amazon RDS, Heroku
+          Postgres, or Azure Database</td>
+      </tr>
+    </table>
+  </div>
   <figcaption>Feature matrix and notes of cloud
     databases.</figcaption>
 </figure>

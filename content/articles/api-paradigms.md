@@ -68,33 +68,35 @@ and then re-use that information to figure out how other
 things will probably work.
 
 <figure>
-  <table class="overflowing">
-    <tr>
-      <th>Action</th>
-      <th>HTTP Verb</th>
-      <th>URL</th>
-    </tr>
-    <tr>
-      <td>Create</td>
-      <td><code>POST</code></td>
-      <td><code>/customers</code></td>
-    </tr>
-    <tr>
-      <td>Replace</td>
-      <td><code>PUT</code></td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-    <tr>
-      <td>Update</td>
-      <td><code>PATCH</code></td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-    <tr>
-      <td>Delete</td>
-      <td><code>DELETE</code></td>
-      <td><code>/customers/:id</code></td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table class="overflowing">
+      <tr>
+        <th>Action</th>
+        <th>HTTP Verb</th>
+        <th>URL</th>
+      </tr>
+      <tr>
+        <td>Create</td>
+        <td><code>POST</code></td>
+        <td><code>/customers</code></td>
+      </tr>
+      <tr>
+        <td>Replace</td>
+        <td><code>PUT</code></td>
+        <td><code>/customers/:id</code></td>
+      </tr>
+      <tr>
+        <td>Update</td>
+        <td><code>PATCH</code></td>
+        <td><code>/customers/:id</code></td>
+      </tr>
+      <tr>
+        <td>Delete</td>
+        <td><code>DELETE</code></td>
+        <td><code>/customers/:id</code></td>
+      </tr>
+    </table>
+  </div>
   <figcaption>The conventions of REST. URLs are resources
     and CRUD maps to HTTP verbs.</figcaption>
 </figure>

@@ -44,54 +44,56 @@ Now that we have the backstory in place, let's dive into how QE actually works:
 Let's throw some numbers into this equation just to illustrate the full effect. We're going to examine the balance sheets of the Treasury, the Fed, and the imaginary primary dealer **Bank A** before and after a round of QE.
 
 <figure>
-  <table>
-    <tr>
-      <th colspan="2">Treasury</th>
-      <th colspan="2">Fed</th>
-      <th colspan="2">Bank A</th>
-    </tr>
-    <tr>
-      <th>Assets</th>
-      <th>Liabilities</th>
-      <th>Assets</th>
-      <th>Liabilities</th>
-      <th>Assets</th>
-      <th>Liabilities</th>
-    </tr>
-    <tr>
-      <td>
-        <ul>
-          <li>$10B public goods</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>$10B treasuries</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>$6B treasuries</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>$6B reserves</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>$1B reserves</li>
-          <li>$5B loans</li>
-          <li>$4B treasuries</li>
-        </ul>
-      <td>
-        <ul>
-          <li>$10B deposits</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th colspan="2">Treasury</th>
+        <th colspan="2">Fed</th>
+        <th colspan="2">Bank A</th>
+      </tr>
+      <tr>
+        <th>Assets</th>
+        <th>Liabilities</th>
+        <th>Assets</th>
+        <th>Liabilities</th>
+        <th>Assets</th>
+        <th>Liabilities</th>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <li>$10B public goods</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>$10B treasuries</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>$6B treasuries</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>$6B reserves</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>$1B reserves</li>
+            <li>$5B loans</li>
+            <li>$4B treasuries</li>
+          </ul>
+        <td>
+          <ul>
+            <li>$10B deposits</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
   <figcaption>Assets and liabilities of each actor before QE.</figcaption>
 </figure>
 
@@ -101,53 +103,55 @@ Let's throw some numbers into this equation just to illustrate the full effect. 
 1. Although not available as cash, Bank A is now sitting on $4B extra worth of reserve. Before QE, it was just satisfying its reserve requirement by holding $1B for its $10B in deposits. After QE, it can now invest or loan out significantly more money if it deems that the prudent course and can get its hands on the cash to do so.
 
 <figure>
-  <table>
-    <tr>
-      <th colspan="2">Treasury</th>
-      <th colspan="2">Fed</th>
-      <th colspan="2">Bank A</th>
-    </tr>
-    <tr>
-      <th>Assets</th>
-      <th>Liabilities</th>
-      <th>Assets</th>
-      <th>Liabilities</th>
-      <th>Assets</th>
-      <th>Liabilities</th>
-    </tr>
-    <tr>
-      <td>
-        <ul>
-          <li>$10B public goods</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>$10B treasuries</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li><strong>$10B treasuries</strong></li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li><strong>$10B reserves</strong></li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li><strong>$5B reserves</strong></li>
-          <li>$5B loans</li>
-        </ul>
-      <td>
-        <ul>
-          <li>$10B deposits</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th colspan="2">Treasury</th>
+        <th colspan="2">Fed</th>
+        <th colspan="2">Bank A</th>
+      </tr>
+      <tr>
+        <th>Assets</th>
+        <th>Liabilities</th>
+        <th>Assets</th>
+        <th>Liabilities</th>
+        <th>Assets</th>
+        <th>Liabilities</th>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <li>$10B public goods</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>$10B treasuries</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><strong>$10B treasuries</strong></li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><strong>$10B reserves</strong></li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li><strong>$5B reserves</strong></li>
+            <li>$5B loans</li>
+          </ul>
+        <td>
+          <ul>
+            <li>$10B deposits</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
   <figcaption>Assets and liabilities of each actor after QE.</figcaption>
 </figure>
 
@@ -164,32 +168,34 @@ That said, the amount of reserve available to a bank is often not the deciding f
 So in other words, the inflationary pressure here may not be that much stronger than it would have otherwise been without QE.
 
 <figure>
-  <table>
-    <tr>
-      <th>Month</th>
-      <th>Total monetary base</th>
-      <th>Total reserves</th>
-      <th>Currency in curculation</th>
-    </tr>
-    <tr>
-      <td>January 2013</td>
-      <td>$2,741B</td>
-      <td>$1,637B</td>
-      <td>$1,159B</td>
-    </tr>
-    <tr>
-      <td>January 2014</td>
-      <td>$3,753B</td>
-      <td>$2,582B</td>
-      <td>$1,227B</td>
-    </tr>
-    <tr>
-      <td>January 2015</td>
-      <td>$4,017B</td>
-      <td>$2,746B</td>
-      <td>$1,333B</td>
-    </tr>
-  </table>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Month</th>
+        <th>Total monetary base</th>
+        <th>Total reserves</th>
+        <th>Currency in curculation</th>
+      </tr>
+      <tr>
+        <td>January 2013</td>
+        <td>$2,741B</td>
+        <td>$1,637B</td>
+        <td>$1,159B</td>
+      </tr>
+      <tr>
+        <td>January 2014</td>
+        <td>$3,753B</td>
+        <td>$2,582B</td>
+        <td>$1,227B</td>
+      </tr>
+      <tr>
+        <td>January 2015</td>
+        <td>$4,017B</td>
+        <td>$2,746B</td>
+        <td>$1,333B</td>
+      </tr>
+    </table>
+  </div>
   <figcaption>Monetary base, reserves, and currency in circulation as published by the Fed.</figcaption>
 </figure>
 
