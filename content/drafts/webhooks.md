@@ -65,8 +65,8 @@ step and complication that wouldn't be necessary otherwise.
 Because webhook endpoints are publicly accessible HTTP
 APIs, it's up to providers to build in a security scheme
 to ensure that an attacker can't issue malicious requests
-containing forged payloads. This is possible with a variety
-of techniques:
+containing forged payloads. There's a variety of common
+techniques:
 
 1. ***Webhook signing:*** Sign webhook payloads and send the
    signature via HTTP header so that users can verify it.
@@ -89,7 +89,24 @@ users will select weak ones.
 
 ### Testing UI (#testing)
 
-### Order (#order)
+It's relatively easy to provide a stub or live testmode for
+a synchronous API, but a little more difficult for
+webhooks because the user needs some mechanic to request
+that a test webhook be sent.
+
+At Stripe, we provide a "Send test webhook" function from
+the dashboard. This provides a reasonable developer
+experience in that at least testing an endpoint is
+possible, but it's quite manual and would be difficult to
+integrate into a CI suite for example.
+
+!fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
+
+### No ordering guarantees (#order)
+
+### Version upgrades (#versioning)
+
+!fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
 
 ## Operator downsides (#operator)
 
