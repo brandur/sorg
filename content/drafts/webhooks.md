@@ -85,9 +85,9 @@ practices). Of the three options above, only the third
 guarantees strong security; even if you provide signatures
 you can't know for sure that your users are verifying them,
 and if forced to provide HTTP basic auth credentials, many
-users will select weak ones.
+users will opt for weak ones.
 
-### Testing UI (#testing)
+### Development and testing (#development)
 
 It's relatively easy to provide a stub or live testmode for
 a synchronous API, but a little more difficult for
@@ -98,13 +98,45 @@ At Stripe, we provide a "Send test webhook" function from
 the dashboard. This provides a reasonable developer
 experience in that at least testing an endpoint is
 possible, but it's quite manual and would be difficult to
-integrate into a CI suite for example.
+integrate into a CI suite (for example).
 
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
 
 ### No ordering guarantees (#order)
 
+Transmission failures, variations in latency, and quirks in
+the provider's implementation mean that even though
+webhooks are sent to an endpoint roughly ordered, there are
+no guarantees that they'll be received that way. A lot of
+the time this isn't a big problem, but it does mean that a
+"delete" event for a resource could be received before its
+"create" event, and consumers must be able to tolerate this
+sort of inconsistency.
+
+Ideally speaking, a real time stream would be reliable
+enough that a consumer could use it as an [ordered
+append-only log][log] which could be used to manage state
+in a database. Webhooks are not this system.
+
 ### Version upgrades (#versioning)
+
+For providers that version their API like we do at Stripe,
+version upgrades can be a problem. Normally we allow users
+to explicitly request a new version with an API call so
+that they can verify that their integrations work before
+upgrading their account, but with webhooks the provider has
+to decide on the version. Often this leads to users trying
+to write code that's compatible across multiple versions,
+and then flipping the upgrade switch and praying that it
+works (often it doesn't and the upgrade has to be rolled
+back).
+
+Once again, this can be fixed with great tooling, but
+that's more infrastructure that a provider needs to
+implement for a good webhook experience. We recently added
+a feature that lets users configured the API version that
+gets sent to each of their webhook endpoints, but for a
+long time upgrades were much more awkward.
 
 !fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
 
@@ -125,3 +157,5 @@ integrate into a CI suite for example.
 ### GRPC streaming RPC (#grpc)
 
 ## The future (#future)
+
+[log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
