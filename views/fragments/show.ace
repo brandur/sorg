@@ -20,7 +20,7 @@
             h1 {{.Fragment.Title}}
             .meta
               {{FormatTime .Fragment.PublishedAt}}
-          article.big
+          article
             {{HTML .Fragment.Content}}
             .divider-short
             .info
