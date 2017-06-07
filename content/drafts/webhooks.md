@@ -77,6 +77,8 @@ techniques:
    webhook payload and force recipients to make a
    synchronous API request to get the full message.
 
+!fig src="/assets/webhooks/signing-secrets.png" caption="Endpoint signing secrets in Stripe's dashboard."
+
 Although security is possible, the fundamental problem with
 webhooks is that it's difficult as a provide to _ensure_
 that your users are following best practices (not the case
