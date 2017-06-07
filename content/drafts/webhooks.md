@@ -142,22 +142,195 @@ long time upgrades were much more awkward.
 
 !fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
 
-## Operator downsides (#operator)
+## Behind the curtain (#curtain)
+
+### Misbehavior is onerous (#misbehavior)
+
+If a consumer endpoint is very slow to respond, suddenly
+starts denying requests, or is an otherwise behaves
+pathologically, it puts pressure on the provider's
+infrastructure. If it's a big user, it might be enough to
+put significant load on servers sending webhooks and back
+up delivery queues, possibly degrading the system for
+everyone.
+
+Worse yet, there's no real incentive for recipients to fix
+the problem because the entirety of the cost falls on the
+provider. We've been stuck in positions where we have to
+email huge users with something like, "we don't want to
+disable you, but please fix your systems or we're going
+to have to" and hoping that they get back to us before
+things are totally on fire.
+
+You can put in a system where recipients have to meet
+certain uptime and latency SLAs or have their webhooks
+disabled, but that needs additional tooling and
+documentation, and your users won't like it.
 
 ### Retries (#retries)
 
-### Misbehavior is on the provider (#misbehavior)
+To ensure receipt, webhook systems need to be built with
+retry policies. A recipient could shed a single request due
+to an intermittent network problem, so you retry a few
+moments later to make sure that it eventually gets through
+to them.
+
+This is a nice feature, but is expensive and wasteful at
+the edges. Say for example that a user takes down one of
+their servers without deleting a corresponding endpoint. At
+Stripe, we'll try to redeliver every generated event 72
+times before finally giving up, which could mean tens of
+thousands wasted connections.
+
+You can mitigate this by disabling endpoints that look like
+they're dead, but again this needs to be tooled and
+documented, and it's a bit of a compromise because you have
+less tech savvy users who legitimately have a server go
+down for a day or two, and may be later surprised that
+their webhooks are no longer being delivered. You can also
+have endpoints that are only "semi-dead", say that most
+requests time out after tying up your client for 30 seconds
+or so, but enough make it through that you never fully
+disable it. These are costly to support.
 
 ### Chattiness and communication efficiency (#chattiness)
 
+Webhooks are one HTTP request for one event. You can apply a
+few tricks like keeping connections open to servers that
+you deliver to frequently to save a few round trips on
+transport construction, but they're a very chatty protocol
+at heart.
+
+We've got enough modern languages and frameworks that
+providers can build massively concurrent implementations
+with relative ease, but compared to something like
+streaming a few thousand events over a big connected
+firehose, webhooks are always going to be inefficient.
+
+### Internal security (#internal-security)
+
+The servers sending webhooks are within a provider's
+internal infrastructure, and depending on architecture, may
+be able to access other services. A common "first timer"
+webhooks provider mistake is to not insulate the senders
+from other infrastructure; allowing an attacker to probe it
+by configuring webhook endpoints with internal URLs.
+
+This is mitigable (and every big provider has measures in
+place to do so), but webhook infrastructure will be
+dangerous by default.
+
 ## A strength: load balancing (#balancing)
+
+The alternative to webhooks is some kind of "pull" API
+where a provider streams events through a connection. This
+is mostly fine, but given enough volume, eventually some
+kind of partitioning scheme is going to be needed as the
+stream grows past the capacity of any single connection
+(think like you'd see in Kafka or Kinesis). Partitioning
+works fine, but is invariably more complicated to makes
+integrating more difficult.
+
+One of the strongest features of webhooks is that scaling
+is almost entirely seamless for recipients. They just need
+to make sure that their endpoints are scaled out to handle
+the extra load, and any number of systems designed for HTTP
+(DNS, HAProxy, ELBs, ...) will make this relatively
+painless.
 
 ## What's next (#whats-next)
 
+Lately I've been talking about what [API paradigms might
+look like beyond our current world of
+REST](/api-paradigms), so it seems like a good time to look
+at some modern alternatives to webhooks as well.
+
+### The HTTP Log (#http-log)
+
 ### GraphQL subscriptions (#graphql)
+
+Along with queries and mutations, GraphQL supports a third
+type of operation called a "subscription" ([see that in the
+spec here][graphql-spec]). A provider provides an available
+subscription that describes the type of events that a
+recipient will receive:
+
+``` json
+subscription StoryLikeSubscription($input: StoryLikeSubscribeInput) {
+  storyLikeSubscribe(input: $input) {
+    story {
+      likers { count }
+      likeSentence { text }
+    }
+  }
+}
+```
+
+Along with an input type that recipients will use to
+specify the parameters of the stream:
+
+``` json
+input StoryLikeSubscribeInput {
+  storyId: string
+  clientSubscriptionId: string
+}
+```
+
+Like with a lot of GraphQL, the specifics around
+implementation for subscriptions aren't strongly defined.
+In [a blog post announcing the feature][graphql-blog], a
+Facebook engineer mentions that they receive subscription
+events over an [MQTT][mqtt] topic, but lots of options for
+pub/sub technology are available.
 
 ### GRPC streaming RPC (#grpc)
 
-## The future (#future)
+GRPC, Google's technology for APIs backed by Protobuf
+definitions, supports [streaming remote procedure
+calls][grpc] where a provider can send back any number of
+messages before the connection is finalized. This simple Go
+example demonstrates roughly how it works (and keep in mind
+that the feature is available in GRPC's impressive set of
+supported languages):
 
+``` go
+stream, err := client.ListFeatures(...)
+if err != nil {
+    ...
+}
+for {
+    feature, err := stream.Recv()
+    if err == io.EOF {
+        break
+    }
+    if err != nil {
+        ...
+    }
+    log.Println(feature)
+}
+```
+
+Bi-directional streams are also supported for back and
+forth communication over a single re-used connection.
+
+## What to do today (#today)
+
+Webhooks are a fine system for real time streaming and
+providers who already offer them and have their operational
+load figured out should probably stick with them. They work
+well and are reasonably convenient.
+
+However, between their somewhat lacking developer
+experience and considerable operational load, providers who
+are building new APIs today should probably be closely
+examining alternatives. Those who are already building
+systems on alternative paradigms like GraphQL or GRPC have
+a pretty clear path forward, and for those who aren't,
+modeling something like a log over HTTP is a decent way to
+go.
+
+[graphql-blog]: http://graphql.org/blog/subscriptions-in-graphql-and-relay/
+[graphql-spec]: https://facebook.github.io/graphql/#sec-Subscription
+[grpc]: http://www.grpc.io/docs/guides/concepts.html#server-streaming-rpc
 [log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+[mqtt]: http://mqtt.org/
