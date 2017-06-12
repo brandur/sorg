@@ -10,22 +10,37 @@ are behind a closed door in a meeting. Those that aren't
 are more often than not staring at Slack, their email, or
 their calendar.
 
-This is an effect that X X warned us about in the Mythical
-Man Month. As the size of your team increases, so does the
-coordination overhead involved in running it. There are
-more nodes in the team graph, and the communication edges
-between each of them gets exercised regularly. This
-produces a correlation that's close to exponential.
+This is an effect that Frederick P. Brooks Jr. warned us
+about in _The Mythical Man Month_. As the size of your team
+increases, so does the coordination overhead involved in
+running it. There are more nodes in the team graph, and the
+communication edges between each of them gets exercised
+regularly, which produces a quadratic correlation. From the
+book:
 
-Almost every company in recent memory has solved the
-problem by adopting the "chatty pyramid", the safest
-organizational structure known to mankind. Every 3-5
-workers along the pyramid's floor are overseen by a
-manager, and every 3-5 managers are wrapped up under a
-director. Layers of senior directors, VPs, EVPs are built
-on that all the way up to the executive level. The
-structure's center of mass is somewhere in middle
-management, and even moreso when factoring in pay grades.
+> Intercommunication is worse. If each part of the task
+> must be separately coordinated with each other part, the
+> effort increases as n(n - 1)/2. Three workers require
+> three times as much pairwise intercommunication as two;
+> four require six times as much as two. If, moreover,
+> there need to be conferences among three, four, etc.,
+> workers to resolve things jointly, matters get worse yet.
+
+50 developers give 50 · (50 – 1) / 2 = 1225 channels of communication
+
+## Structuring for modularity (#modularity)
+
+Almost every company in the world has avoided quadratic
+communication inefficiency by adopting a structure that I
+like to call "the chatty pyramid", which is the safest
+corporate organizational scheme known to man. In the
+pyramid, every 3-10 workers along the pyramid's floor are
+overseen by a manager, and every 3-5 managers are wrapped
+up under a director. Layers of senior directors, VPs, EVPs
+are built on that all the way up to the executive level.
+Communication is still quadratic within teams, but it's
+also mostly localized to teams, with inter-team affairs
+delegated upwards.
 
 The chatty pyramid's emphasis on coordination isn't
 surprising if you look at how most companies operate.
@@ -39,6 +54,11 @@ part of its inner workings. Employees start to reach out to
 each other because there's no other choice, and this builds
 to a chatty culture where each person is spending the
 lion's share of their time talking to other people.
+
+The downside of the chatty pyramid
+The
+structure's center of mass is somewhere in middle
+management, and even moreso when factoring in pay grades.
 
 Lately I've been reading and watching some old favorites
 like [Valve's employee handbook][valve] and [GitHub's talks
@@ -54,11 +74,11 @@ reasonable period of time of course), you've just saved a
 considerable portion of another person's time whom that
 first employee would have had to ask about it. Even better,
 the effect becomes multiplicative because people build
-their self-help muscles. Just like reps on a free weight,
-every time they figure something out for themselves, they
-get a little better at it. This is unlike the habit of
-leaning on others, which yields a temporary fix but little
-in the way of lasting knowledge.
+their self-help muscles. Just like reps at the gym, every
+time they figure something out for themselves, they get a
+little better at it. This is unlike the habit of leaning on
+others, which yields a temporary fix but nothing in the way
+of lasting information.
 
 It's not clear whether a perfectly self-service environment
 is possible (or even desirable), but there are relatively
