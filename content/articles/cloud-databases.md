@@ -64,7 +64,7 @@ thoughts"](#closing-thoughts) below.
         <td>✓</td>
         <td>✓</td>
         <td>✓</td>
-        <td>✗</td>
+        <td></td>
         <td>✓</td>
         <td>Open source; ACI* is node local</td>
       </tr>
@@ -74,7 +74,7 @@ thoughts"](#closing-thoughts) below.
         <td>✓</td>
         <td>✓</td>
         <td>✓</td>
-        <td>✗</td>
+        <td></td>
         <td>Open source</td>
       </tr>
       <tr>
@@ -83,24 +83,24 @@ thoughts"](#closing-thoughts) below.
         <td>✓</td>
         <td>✓</td>
         <td>✓</td>
-        <td>✗</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td><strong><a href="#cosmos">Microsoft Cosmos</a></strong></td>
-        <td>✗ See notes</td>
+        <td></td>
         <td>✓</td>
         <td>✓</td>
-        <td>✗</td>
-        <td>✗</td>
+        <td></td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td><strong><a href="#mongodb">MongoDB</a></strong></td>
-        <td>✗</td>
+        <td></td>
         <td>✓</td>
         <td>✓</td>
-        <td>✗</td>
+        <td></td>
         <td>✓</td>
         <td>Open source; not recommended given modern
           alternatives (see notes)</td>
@@ -109,8 +109,8 @@ thoughts"](#closing-thoughts) below.
         <td><strong><a href="#postgres">Postgres</a></strong></td>
         <td>✓</td>
         <td>✓</td>
-        <td>✗</td>
         <td></td>
+        <td>N/A</td>
         <td>✓</td>
         <td>Open source; HA through Amazon RDS, Heroku
           Postgres, or Azure Database</td>
