@@ -1,6 +1,7 @@
 ---
 title: The Chatty Pyramid
 published_at: 2017-05-30T17:10:46Z
+location: San Francisco
 hook: TODO
 ---
 
@@ -26,6 +27,8 @@ book:
 > there need to be conferences among three, four, etc.,
 > workers to resolve things jointly, matters get worse yet.
 
+**TODO:** Diagram of communication graph.
+
 50 developers give 50 · (50 – 1) / 2 = 1225 channels of communication
 
 ## Structuring for modularity (#modularity)
@@ -39,8 +42,11 @@ overseen by a manager, and every 3-5 managers are wrapped
 up under a director. Layers of senior directors, VPs, EVPs
 are built on that all the way up to the executive level.
 Communication is still quadratic within teams, but it's
-also mostly localized to teams, with inter-team affairs
-delegated upwards.
+localized _to_ teams, with inter-team affairs delegated
+upwards.
+
+**TODO:** Diagram of communication graphs built as a
+pyramid.
 
 The chatty pyramid's emphasis on coordination isn't
 surprising if you look at how most companies operate.
@@ -49,23 +55,35 @@ done, but is minimal in quality and with little supporting
 material like documentation, testing, or tooling.
 Oftentimes it's not even possible to figure out how to get
 a system configured and running without help from the
-original author, let alone modify a particularly complex
-part of its inner workings. Employees start to reach out to
-each other because there's no other choice, and this builds
-to a chatty culture where each person is spending the
-lion's share of their time talking to other people.
+original author, let alone add a complicated new feature or
+squash a subtle bug. Employees start to reach out to each
+other because there's no other choice, and this builds to a
+chatty culture where each person is spending the lion's
+share of their time talking to other people.
 
-The downside of the chatty pyramid
-The
-structure's center of mass is somewhere in middle
-management, and even moreso when factoring in pay grades.
+## The search for an alternative (#alternatives)
+
+The chatty pyramid is an imperfect structure. It mitigates
+the effect of communication explosion, but only by treating
+the symptoms while ignoring the cause. Intra-team
+communication still eats into big parts of an IC's total
+work week which means that per person efficiency stays
+relatively low. Keeping teams small also means more
+managers, and more managers to manage the managers, and
+more managers to manage the managers' managers, so more
+often than not the pyramid gets top heavy as an
+organization continues to grow.
 
 Lately I've been reading and watching some old favorites
 like [Valve's employee handbook][valve] and [GitHub's talks
 on structure][github]. It's not obvious that these
 structures were wildly successful for either company, but
-it's laudible that they were even experimenting with
-alternatives.
+the key is that they were experimenting! The chatty pyramid
+will continue to reign supreme unless a successful
+alternative is found, and that alternative won't be
+designed in a vacuum.
+
+## A more self-contained future (#self-contained)
 
 It seems to me that we're forgetting the value of
 self-service. If an employee can get what they need by
