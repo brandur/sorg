@@ -37,36 +37,38 @@ webhooks isn't without its own problems. None of them are
 insurmountable, but alternatives might get more things
 right more easily.
 
-### Endpoint management (#endpoints)
+### Endpoint provisioning and management (#endpoints)
 
 Getting an HTTP endpoint provisioned to receive a webhook
-isn't technically difficult, but it can be occasionally
-frustrating.
+isn't technically difficult, but it can be bureaucratically
+difficult.
 
 The classic example is the large enterprise where getting a
 new endpoint exposed to the outside world might be a
-considerable project involving negiotiations with
+considerable project involving negotiations with
 infrastructure and security teams. In the worst cases,
 webhooks might be wholly incompatible with an
 organization's security model where user data is
 uncompromisingly kept within a secured perimiter at all
-times.
+times. Expensive workarounds will be required for
+integration.
 
 **TODO:** Cartoon of perimiter security.
 
 Development is another difficult case. There's no perfectly
 fluid way of getting an endpoint from a locally running
 environment exposed for a webhook provider to access.
-Workarounds like Ngrok are the best option, but still add a
-step and complication that wouldn't be necessary otherwise.
+Programs like Ngrok are the best option, but still add a
+step and complication that wouldn't be necessary with an
+alternate scheme.
 
 ### Uncertain security (#security)
 
 Because webhook endpoints are publicly accessible HTTP
 APIs, it's up to providers to build in a security scheme
 to ensure that an attacker can't issue malicious requests
-containing forged payloads. There's a variety of common
-techniques:
+containing forged payloads. There's a variety of commonly
+seen techniques:
 
 1. ***Webhook signing:*** Sign webhook payloads and send the
    signature via HTTP header so that users can verify it.
@@ -87,7 +89,9 @@ practices). Of the three options above, only the third
 guarantees strong security; even if you provide signatures
 you can't know for sure that your users are verifying them,
 and if forced to provide HTTP basic auth credentials, many
-users will opt for weak ones.
+users will opt for weak ones, which combined with endpoints
+that are probably not rate limited, leave them vulnerable
+to brute force or dictionary attacks.
 
 ### Development and testing (#development)
 
@@ -99,8 +103,8 @@ that a test webhook be sent.
 At Stripe, we provide a "Send test webhook" function from
 the dashboard. This provides a reasonable developer
 experience in that at least testing an endpoint is
-possible, but it's quite manual and would be difficult to
-integrate into a CI suite (for example).
+possible, but it's quite manual and difficult to integrate
+into a CI suite.
 
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
 
@@ -112,13 +116,12 @@ webhooks are sent to an endpoint roughly ordered, there are
 no guarantees that they'll be received that way. A lot of
 the time this isn't a big problem, but it does mean that a
 "delete" event for a resource could be received before its
-"create" event, and consumers must be able to tolerate this
-sort of inconsistency.
+"create" event, and consumers must be tolerant.
 
-Ideally speaking, a real time stream would be reliable
-enough that a consumer could use it as an [ordered
-append-only log][log] which could be used to manage state
-in a database. Webhooks are not this system.
+Ideally, a real time stream would be reliable enough that a
+consumer could use it as an [ordered append-only log][log]
+which could be used to manage state in a database. Webhooks
+are not this system.
 
 ### Version upgrades (#versioning)
 
@@ -130,8 +133,7 @@ upgrading their account, but with webhooks the provider has
 to decide on the version. Often this leads to users trying
 to write code that's compatible across multiple versions,
 and then flipping the upgrade switch and praying that it
-works (often it doesn't and the upgrade has to be rolled
-back).
+works (when it doesn't, the upgrade must be rolled back).
 
 Once again, this can be fixed with great tooling, but
 that's more infrastructure that a provider needs to
@@ -147,33 +149,31 @@ long time upgrades were much more awkward.
 ### Misbehavior is onerous (#misbehavior)
 
 If a consumer endpoint is very slow to respond, suddenly
-starts denying requests, or is an otherwise behaves
-pathologically, it puts pressure on the provider's
-infrastructure. If it's a big user, it might be enough to
-put significant load on servers sending webhooks and back
-up delivery queues, possibly degrading the system for
-everyone.
+starts denying requests, it puts pressure on the provider's
+infrastructure. A big user might have enough webhooks going
+to them that if they go down, global queues back up, and
+the system becomes degraded for everyone.
 
 Worse yet, there's no real incentive for recipients to fix
-the problem because the entirety of the cost falls on the
-provider. We've been stuck in positions where we have to
-email huge users with something like, "we don't want to
-disable you, but please fix your systems or we're going
-to have to" and hoping that they get back to us before
-things are totally on fire.
+the problem because the entirety of the fall out lands on
+the webhook provider. We've been stuck in positions where
+we have to email huge users with something like, "we don't
+want to disable you, but please fix your systems or we're
+going to have to" and hoping that they get back to us
+before things are totally on fire.
 
 You can put in a system where recipients have to meet
 certain uptime and latency SLAs or have their webhooks
 disabled, but that needs additional tooling and
-documentation, and your users won't like it.
+documentation, and it won't make your users particularly
+happy.
 
 ### Retries (#retries)
 
 To ensure receipt, webhook systems need to be built with
 retry policies. A recipient could shed a single request due
 to an intermittent network problem, so you retry a few
-moments later to make sure that it eventually gets through
-to them.
+moments later to ensure that all messages make it through.
 
 This is a nice feature, but is expensive and wasteful at
 the edges. Say for example that a user takes down one of
@@ -184,28 +184,29 @@ thousands wasted connections.
 
 You can mitigate this by disabling endpoints that look like
 they're dead, but again this needs to be tooled and
-documented, and it's a bit of a compromise because you have
+documented. It's a bit of a compromise because you have
 less tech savvy users who legitimately have a server go
 down for a day or two, and may be later surprised that
 their webhooks are no longer being delivered. You can also
 have endpoints that are only "semi-dead", say that most
 requests time out after tying up your client for 30 seconds
 or so, but enough make it through that you never fully
-disable it. These are costly to support.
+disable it. It goes without saying that these are costly to
+support.
 
 ### Chattiness and communication efficiency (#chattiness)
 
 Webhooks are one HTTP request for one event. You can apply a
 few tricks like keeping connections open to servers that
 you deliver to frequently to save a few round trips on
-transport construction, but they're a very chatty protocol
-at heart.
+transport construction, but they're a chatty protocol at
+heart.
 
 We've got enough modern languages and frameworks that
 providers can build massively concurrent implementations
 with relative ease, but compared to something like
 streaming a few thousand events over a big connected
-firehose, webhooks are always going to be inefficient.
+firehose, webhooks are profoundly inefficient.
 
 ### Internal security (#internal-security)
 
@@ -216,11 +217,20 @@ webhooks provider mistake is to not insulate the senders
 from other infrastructure; allowing an attacker to probe it
 by configuring webhook endpoints with internal URLs.
 
+**TODO:** Cartoon of internal security.
+
 This is mitigable (and every big provider has measures in
 place to do so), but webhook infrastructure will be
 dangerous by default.
 
-## A strength: load balancing (#balancing)
+## The unbilled best feature of webhooks: load balancing (#balancing)
+
+This article deals mostly with the various downsides of
+webhooks, but they obviously have a lot of merits too. I'm
+not going to go into the majority of them, but I wanted to
+call one out that we don't think about very often: webhooks
+provide automatic load balancing and allow traffic to ramp
+up gracefully.
 
 The alternative to webhooks is some kind of "pull" API
 where a provider streams events through a connection. This
@@ -231,12 +241,12 @@ stream grows past the capacity of any single connection
 works fine, but is invariably more complicated to makes
 integrating more difficult.
 
-One of the strongest features of webhooks is that scaling
-is almost entirely seamless for recipients. They just need
-to make sure that their endpoints are scaled out to handle
-the extra load, and any number of systems designed for HTTP
-(DNS, HAProxy, ELBs, ...) will make this relatively
-painless.
+With webhooks, scaling is almost entirely seamless for
+recipients. They need to make sure that their endpoints are
+scaled out to handle the extra load, but this is a well
+understood problem. Horizontal scaling combined with an
+off-the-shelf load balancer (DNS, HAProxy, ELBs, ...) will
+make this relatively painless.
 
 ## What's next (#whats-next)
 
@@ -246,6 +256,8 @@ REST](/api-paradigms), so it seems like a good time to look
 at some modern alternatives to webhooks as well.
 
 ### The HTTP Log (#http-log)
+
+TODO
 
 ### GraphQL subscriptions (#graphql)
 
