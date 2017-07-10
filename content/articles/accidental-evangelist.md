@@ -28,7 +28,7 @@ still fine choices for a new technology stack. On the other
 hand, a good number of them are _not_. Trade offs aside,
 existential problems like a pathologic lack of runtime
 safety, a decaying ecosystem, or a design that leads to
-burdenous operation become apparent with use, and make
+burdensome operation become apparent with use, and make
 their avoidance perfectly rational. Sometimes we make
 mistakes, or the state of the art improves, and ideas that
 we originally thought to be good hit the end of their
@@ -38,10 +38,10 @@ It's a very human thing to do to withhold criticism. There
 are humans on the other end of all this technology, and
 frequently they're even humans that we know and like. It's
 also rarely personally helpful to speak ill of systems that
-realistically speaking, we're going to married to for some
+realistically speaking, we're going to be married to for some
 time to come.
 
-But we should consider ramifications of staying silent --
+But we should consider the ramifications of staying silent --
 by withholding information on the bad technology in our
 stacks, we're cheating people and companies who aren't
 using it yet, but may yet adopt its use. By articulating
