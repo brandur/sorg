@@ -6,10 +6,11 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/brandur/sorg"
 	"github.com/russross/blackfriday"
 )
 
-var renderFuncs = []func(string) string{
+var renderFuncs = []func(string, *RenderOptions) string{
 	// pre-transformations
 	transformFigures,
 	transformHeaders,
@@ -21,14 +22,28 @@ var renderFuncs = []func(string) string{
 	transformCodeWithLanguagePrefix,
 	transformSections,
 	transformFootnotes,
+	transformImagesToAbsoluteURLs,
 	transformImagesToRetina,
+}
+
+// RenderOptions describes a rendering operation to be customized.
+type RenderOptions struct {
+	// AbsoluteURLs replaces the sources of any images that pointed to relative
+	// URLs with absolute URLs.
+	AbsoluteURLs bool
+
+	// NoHeaderLinks disables automatic permalinks on headers.
+	NoHeaderLinks bool
+
+	// NoRetina disables the Retina.JS rendering attributes.
+	NoRetina bool
 }
 
 // Render a Markdown string to HTML while applying all custom project-specific
 // filters including footnotes and stable header links.
-func Render(source string) string {
+func Render(source string, options *RenderOptions) string {
 	for _, f := range renderFuncs {
-		source = f(source)
+		source = f(source, options)
 	}
 	return source
 }
@@ -46,7 +61,7 @@ func collapseHTML(html string) string {
 	return html
 }
 
-func renderMarkdown(source string) string {
+func renderMarkdown(source string, options *RenderOptions) string {
 	htmlFlags := 0
 	htmlFlags |= blackfriday.HTML_SMARTYPANTS_DASHES
 	htmlFlags |= blackfriday.HTML_SMARTYPANTS_FRACTIONS
@@ -71,7 +86,7 @@ func renderMarkdown(source string) string {
 
 var codeRE = regexp.MustCompile(`<code class="(\w+)">`)
 
-func transformCodeWithLanguagePrefix(source string) string {
+func transformCodeWithLanguagePrefix(source string, options *RenderOptions) string {
 	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
 }
 
@@ -81,7 +96,7 @@ const closeSectionHTML = `</section>`
 var openSectionRE = regexp.MustCompile(`(<p>)?!section class=("|&ldquo;)(.*)("|&rdquo;)(</p>)?`)
 var closeSectionRE = regexp.MustCompile(`(<p>)?!/section(</p>)?`)
 
-func transformSections(source string) string {
+func transformSections(source string, options *RenderOptions) string {
 	out := source
 
 	out = openSectionRE.ReplaceAllStringFunc(out, func(div string) string {
@@ -103,7 +118,7 @@ const figureHTML = `
 
 var figureRE = regexp.MustCompile(`!fig src="(.*)" caption="(.*)"`)
 
-func transformFigures(source string) string {
+func transformFigures(source string, options *RenderOptions) string {
 	return figureRE.ReplaceAllStringFunc(source, func(figure string) string {
 		matches := figureRE.FindStringSubmatch(figure)
 		src := matches[1]
@@ -155,7 +170,7 @@ var footnoteRE = regexp.MustCompile(`\[(\d+)\](\s+.*)`)
 // Note that this must be a post-transform filter. If it wasn't, our Markdown
 // renderer would not render the Markdown inside the footnotes layer because it
 // would already be wrapped in HTML.
-func transformFootnotes(source string) string {
+func transformFootnotes(source string, options *RenderOptions) string {
 	footer := footerRE.FindString(source)
 
 	if footer != "" {
@@ -190,6 +205,10 @@ const headerHTML = `
 </h%v>
 `
 
+const headerHTMLNoLink = `
+<h%v>%s</h%v>
+`
+
 // Matches one of the following:
 //
 //   # header
@@ -199,7 +218,7 @@ const headerHTML = `
 // matches. We need a better way of doing that though.
 var headerRE = regexp.MustCompile(`(?m:^(#{2,})\s+(.*?)(\s+\(#(.*)\))?$)`)
 
-func transformHeaders(source string) string {
+func transformHeaders(source string, options *RenderOptions) string {
 	headerNum := 0
 
 	// Tracks previously assigned headers so that we can detect duplicates.
@@ -236,7 +255,12 @@ func transformHeaders(source string) string {
 		headerNum++
 
 		// Replace the Markdown header with HTML equivalent.
+		if options != nil && options.NoHeaderLinks {
+			return collapseHTML(fmt.Sprintf(headerHTMLNoLink, level, title, level))
+		}
+
 		return collapseHTML(fmt.Sprintf(headerHTML, level, newID, newID, title, level))
+
 	})
 
 	return source
@@ -244,7 +268,11 @@ func transformHeaders(source string) string {
 
 var imageRE = regexp.MustCompile(`<img src="(.+)"`)
 
-func transformImagesToRetina(source string) string {
+func transformImagesToRetina(source string, options *RenderOptions) string {
+	if options != nil && options.NoRetina {
+		return source
+	}
+
 	// The basic idea here is that we give every image a `retina-rjs` tag so
 	// that Retina.JS will replace it with a retina version *except* if the
 	// image is an SVG. These are resolution agnostic and don't need replacing.
@@ -254,5 +282,17 @@ func transformImagesToRetina(source string) string {
 			return fmt.Sprintf(`<img src="%s"`, matches[1])
 		}
 		return fmt.Sprintf(`<img data-rjs="2" src="%s"`, matches[1])
+	})
+}
+
+var relativeImageRE = regexp.MustCompile(`<img src="/`)
+
+func transformImagesToAbsoluteURLs(source string, options *RenderOptions) string {
+	if options == nil || !options.AbsoluteURLs {
+		return source
+	}
+
+	return relativeImageRE.ReplaceAllStringFunc(source, func(img string) string {
+		return `<img src="` + sorg.AbsoluteURL + `/`
 	})
 }
