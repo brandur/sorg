@@ -1,14 +1,21 @@
 package sorg
 
 import (
+	"fmt"
 	"os"
 	"path"
+	"regexp"
+	"strings"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
 )
 
 const (
+	// AbsoluteURL is the site's absolute URL. It's usually preferable that
+	// it's not used, but it is when generating emails.
+	AbsoluteURL = "https://brandur.org"
+
 	// ContentDir is the location of the site's content (articles, fragments,
 	// assets, etc.).
 	ContentDir = "./content"
@@ -22,9 +29,15 @@ const (
 	// PagesDir is the source directory for one-off page content.
 	PagesDir = "./pages"
 
+	// PassageLayout is the layout for a Passages & Glass issue (an email
+	// newsletter).
+	PassageLayout = LayoutsDir + "/passages"
+
 	// ViewsDir is the source directory for views.
 	ViewsDir = "./views"
 )
+
+var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
 // A list of all directories that are in the built static site.
 var outputDirs = []string{
@@ -37,6 +50,7 @@ var outputDirs = []string{
 	"photos",
 	"reading",
 	"runs",
+	"passages",
 	"twitter",
 }
 
@@ -66,6 +80,22 @@ func InitLog(verbose bool) {
 	if verbose {
 		log.SetLevel(log.DebugLevel)
 	}
+}
+
+// SplitFrontmatter takes content that contains a combination and YAML metadata
+// and content, and splits it into its components.
+func SplitFrontmatter(content string) (string, string, error) {
+	parts := regexp.MustCompile("(?m)^---").Split(content, 3)
+
+	if len(parts) > 1 && parts[0] != "" {
+		return "", "", errBadFrontmatter
+	} else if len(parts) == 2 {
+		return "", strings.TrimSpace(parts[1]), nil
+	} else if len(parts) == 3 {
+		return strings.TrimSpace(parts[1]), strings.TrimSpace(parts[2]), nil
+	}
+
+	return "", strings.TrimSpace(parts[0]), nil
 }
 
 // plainFormatter is a logrus formatter that displays text in a much more

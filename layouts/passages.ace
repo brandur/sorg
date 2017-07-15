@@ -1,0 +1,100 @@
+= doctype html
+
+html lang='en'
+  head
+    title {{.Title}} &mdash; Brandur Leach
+
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    = css
+      blockquote {
+        border-left: 5px solid #eee;
+        font-size: 17px;
+        font-style: italic;
+        margin-left: 30px;
+        margin-right: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      body {
+        color: #4d4d4d;
+        font-family: Helvetica, sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+
+      h1, h2, h3, h4 {
+        color: black;
+      }
+
+      h1 {
+        font-size: 80px;
+        font-weight: 400;
+        letter-spacing: -5px;
+        line-height: 1;
+        margin-top: 0;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 35px;
+        letter-spacing: -1px;
+        margin: 30px 0 -10px 0;
+      }
+
+      a, a:hover, a:visited {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        margin: 20px 0;
+        max-width: 550px;
+      }
+
+      #about {
+        color: #aaa;
+        font-size: 16px;
+        margin: 70px 0 30px 0;
+        text-align: center;
+      }
+
+      #container {
+        margin: 0 auto;
+        max-width: 550px;
+        padding: 20px;
+      }
+
+      #issue {
+        font-size: 14px;
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      #passages {
+        font-size: 12px;
+        margin-top: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+  body
+    {{if not .InEmail}}
+    = include views/_analytics .
+    {{end}}
+
+    #container
+      = yield main
+      p#about
+        | Passages & Glass is a sporadically sent newsletter about travel, ideas, and software written by <a href="https://brandur.org/about">Brandur</a>. 
+        {{if .InEmail}}
+        | If you received it in error, <a href="%unsubscribe_url%">unsubscribe right here</a>.
+        {{end}}
