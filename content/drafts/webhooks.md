@@ -255,7 +255,7 @@ look like beyond our current world of
 REST](/api-paradigms), so it seems like a good time to look
 at some modern alternatives to webhooks as well.
 
-### The HTTP Log (#http-log)
+### The HTTP log (#http-log)
 
 TODO
 
