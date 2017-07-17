@@ -19,7 +19,7 @@
 # have to add new characters to the class, but it's mostly okay for now.
 rx="^###?#?#? [A-Za-z0-9.:'/\-_ ]+(?! \(#.*\))$"
 
-dirs="content/articles/* content/drafts/* content/fragments/* content/fragments-drafts/*"
+dirs="content/articles/* content/drafts/* content/fragments/* content/fragments-drafts/* content/passages/* content/passages-drafts/*"
 
 # Use ag for Macs (where grep lacks PCRE) and fall back to gnugrep for Linux
 # systems. Macs without ag installed won't be able to run this script
