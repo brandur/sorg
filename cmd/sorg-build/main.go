@@ -9,7 +9,6 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -20,6 +19,7 @@ import (
 	"github.com/brandur/sorg/atom"
 	"github.com/brandur/sorg/downloader"
 	"github.com/brandur/sorg/markdown"
+	"github.com/brandur/sorg/passages"
 	"github.com/brandur/sorg/pool"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
@@ -340,8 +340,6 @@ const twitterInfo = `<p><em>Find me on Twitter at ` +
 // very many places and can probably be refactored as a local if desired.
 var conf Conf
 
-var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
-
 //
 // Main
 //
@@ -396,6 +394,9 @@ func main() {
 	var fragments []*Fragment
 	fragmentChan := accumulateFragments(&fragments)
 
+	var passages []*passages.Passage
+	passageChan := accumulatePassages(&passages)
+
 	articleTasks, err := tasksForArticles(articleChan)
 	if err != nil {
 		log.Fatal(err)
@@ -413,6 +414,12 @@ func main() {
 		log.Fatal(err)
 	}
 	tasks = append(tasks, pageTasks...)
+
+	passageTasks, err := tasksForPassages(passageChan)
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, passageTasks...)
 
 	// Most other types are all one-off pages or other resources and only get a
 	// single entry each in the work queue.
@@ -467,6 +474,7 @@ func main() {
 	// Free up any Goroutines still waiting.
 	close(articleChan)
 	close(fragmentChan)
+	close(passageChan)
 
 	//
 	// Build step 1: any tasks dependent on the results of step 0.
@@ -519,7 +527,7 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		return nil, err
 	}
 
-	frontmatter, content, err := splitFrontmatter(string(raw))
+	frontmatter, content, err := sorg.SplitFrontmatter(string(raw))
 	if err != nil {
 		return nil, err
 	}
@@ -541,7 +549,7 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		return nil, fmt.Errorf("No publish date for article: %v", inPath)
 	}
 
-	article.Content = markdown.Render(content)
+	article.Content = markdown.Render(content, nil)
 
 	article.TOC, err = toc.Render(article.Content)
 	if err != nil {
@@ -639,7 +647,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 		return nil, err
 	}
 
-	frontmatter, content, err := splitFrontmatter(string(raw))
+	frontmatter, content, err := sorg.SplitFrontmatter(string(raw))
 	if err != nil {
 		return nil, err
 	}
@@ -661,7 +669,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 		return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
 	}
 
-	fragment.Content = markdown.Render(content)
+	fragment.Content = markdown.Render(content, nil)
 
 	locals := getLocals(fragment.Title, map[string]interface{}{
 		"Fragment":       fragment,
@@ -1018,6 +1026,26 @@ func compileRuns(db *sql.DB) error {
 	return nil
 }
 
+func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
+	passage, err := passages.Compile(dir, name, draft, false)
+	if err != nil {
+		return nil, err
+	}
+
+	locals := getLocals(passage.Title, map[string]interface{}{
+		"InEmail": false,
+		"Passage": passage,
+	})
+
+	err = renderView(sorg.PassageLayout, sorg.ViewsDir+"/passages/show",
+		conf.TargetDir+"/passages/"+passage.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return passage, nil
+}
+
 func compileTwitter(db *sql.DB) error {
 	if conf.ContentOnly {
 		return nil
@@ -1281,6 +1309,52 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 	return tasks, nil
 }
 
+func tasksForPassages(passageChan chan *passages.Passage) ([]*pool.Task, error) {
+	tasks, err := tasksForPassagesDir(passageChan, sorg.ContentDir+"/passages", false)
+	if err != nil {
+		return nil, err
+	}
+
+	if conf.Drafts {
+		draftTasks, err := tasksForPassagesDir(passageChan,
+			sorg.ContentDir+"/passages-drafts", true)
+		if err != nil {
+			return nil, err
+		}
+
+		tasks = append(tasks, draftTasks...)
+	}
+
+	return tasks, nil
+}
+
+func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft bool) ([]*pool.Task, error) {
+	passageInfos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return nil, err
+	}
+
+	var tasks []*pool.Task
+	for _, passageInfo := range passageInfos {
+		if isHidden(passageInfo.Name()) {
+			continue
+		}
+
+		name := passageInfo.Name()
+		tasks = append(tasks, pool.NewTask(func() error {
+			passage, err := compilePassage(dir, name, draft)
+			if err != nil {
+				return err
+			}
+
+			passageChan <- passage
+			return nil
+		}))
+	}
+
+	return tasks, nil
+}
+
 //
 // Other functions
 //
@@ -1305,6 +1379,16 @@ func accumulateFragments(fragments *[]*Fragment) chan *Fragment {
 		}
 	}()
 	return fragmentChan
+}
+
+func accumulatePassages(p *[]*passages.Passage) chan *passages.Passage {
+	passageChan := make(chan *passages.Passage, 100)
+	go func() {
+		for passage := range passageChan {
+			*p = append(*p, passage)
+		}
+	}()
+	return passageChan
 }
 
 // Naturally not provided by the Go language because copying files "has tricky
@@ -2001,18 +2085,4 @@ func runTasks(tasks []*pool.Task) bool {
 	}
 
 	return !p.HasErrors()
-}
-
-func splitFrontmatter(content string) (string, string, error) {
-	parts := regexp.MustCompile("(?m)^---").Split(content, 3)
-
-	if len(parts) > 1 && parts[0] != "" {
-		return "", "", errBadFrontmatter
-	} else if len(parts) == 2 {
-		return "", strings.TrimSpace(parts[1]), nil
-	} else if len(parts) == 3 {
-		return strings.TrimSpace(parts[1]), strings.TrimSpace(parts[2]), nil
-	}
-
-	return "", strings.TrimSpace(parts[0]), nil
 }

@@ -14,17 +14,17 @@ func TestCollapseHTML(t *testing.T) {
 }
 
 func TestRender(t *testing.T) {
-	assert.Equal(t, "<p><strong>strong</strong></p>\n", Render("**strong**"))
+	assert.Equal(t, "<p><strong>strong</strong></p>\n", Render("**strong**", nil))
 }
 
 func TestRenderMarkdown(t *testing.T) {
-	assert.Equal(t, "<p><strong>strong</strong></p>\n", renderMarkdown("**strong**"))
+	assert.Equal(t, "<p><strong>strong</strong></p>\n", renderMarkdown("**strong**", nil))
 }
 
 func TestTransformCodeWithLanguagePrefix(t *testing.T) {
 	assert.Equal(t,
 		`<code class="language-ruby">`,
-		transformCodeWithLanguagePrefix(`<code class="ruby">`),
+		transformCodeWithLanguagePrefix(`<code class="ruby">`, nil),
 	)
 }
 
@@ -40,7 +40,7 @@ hello
 hello
 
 !/section
-`))
+`, nil))
 
 	// Test once through the full render function as well so that we can make
 	// sure that it still works even after content has been garbled by
@@ -56,7 +56,7 @@ hello
 hello
 
 !/section
-`))
+`, nil))
 }
 
 func TestTransformFigures(t *testing.T) {
@@ -66,7 +66,7 @@ func TestTransformFigures(t *testing.T) {
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
-		transformFigures(`!fig src="fig-src" caption="fig-caption"`),
+		transformFigures(`!fig src="fig-src" caption="fig-caption"`, nil),
 	)
 
 	// .png links to "@2x" version of the source
@@ -76,7 +76,7 @@ func TestTransformFigures(t *testing.T) {
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
-		transformFigures(`!fig src="fig-src.png" caption="fig-caption"`),
+		transformFigures(`!fig src="fig-src.png" caption="fig-caption"`, nil),
 	)
 
 	// .svg doesn't link to "@2x"
@@ -86,7 +86,7 @@ func TestTransformFigures(t *testing.T) {
   <figcaption>fig-caption</figcaption>
 </figure>
 `,
-		transformFigures(`!fig src="fig-src.svg" caption="fig-caption"`),
+		transformFigures(`!fig src="fig-src.svg" caption="fig-caption"`, nil),
 	)
 
 	assert.Equal(t, `
@@ -95,7 +95,7 @@ func TestTransformFigures(t *testing.T) {
   <figcaption>Caption with " quote.</figcaption>
 </figure>
 `,
-		transformFigures(`!fig src="fig-src" caption="Caption with \" quote."`),
+		transformFigures(`!fig src="fig-src" caption="Caption with \" quote."`, nil),
 	)
 }
 
@@ -118,6 +118,7 @@ func TestTransformFootnotes(t *testing.T) {
 
 <p>[2] Footnote two.</p>
 `,
+			nil,
 		),
 	)
 }
@@ -177,6 +178,17 @@ More content.
 
 Conclusion.
 `,
+			nil,
+		),
+	)
+
+	assert.Equal(t, `
+<h2>Introduction</h2>
+`,
+		transformHeaders(`
+## Introduction (#intro)
+`,
+			&RenderOptions{NoHeaderLinks: true},
 		),
 	)
 }
@@ -184,12 +196,48 @@ Conclusion.
 func TestTransformImagesToRetina(t *testing.T) {
 	assert.Equal(t,
 		`<img data-rjs="2" src="/assets/hello.jpg">`,
-		transformImagesToRetina(`<img src="/assets/hello.jpg">`),
+		transformImagesToRetina(`<img src="/assets/hello.jpg">`, nil),
 	)
 
 	// No retina data- marker is inserted for resolution agnostic SVGs.
 	assert.Equal(t,
 		`<img src="/assets/hello.svg">`,
-		transformImagesToRetina(`<img src="/assets/hello.svg">`),
+		transformImagesToRetina(`<img src="/assets/hello.svg">`, nil),
+	)
+
+	assert.Equal(t,
+		`<img src="/assets/hello.jpg">`,
+		transformImagesToRetina(
+			`<img src="/assets/hello.jpg">`,
+			&RenderOptions{NoRetina: true},
+		),
+	)
+}
+
+func TestTransformImagesToAbsoluteURLs(t *testing.T) {
+	assert.Equal(t,
+		`<img src="https://brandur.org/assets/hello.jpg">`,
+		transformImagesToAbsoluteURLs(
+			`<img src="/assets/hello.jpg">`,
+			&RenderOptions{AbsoluteURLs: true},
+		),
+	)
+
+	// URLs that are already absolute are left alone.
+	assert.Equal(t,
+		`<img src="https://example.com/assets/hello.jpg">`,
+		transformImagesToAbsoluteURLs(
+			`<img src="https://example.com/assets/hello.jpg">`,
+			&RenderOptions{AbsoluteURLs: true},
+		),
+	)
+
+	// Should pass through if options are nil.
+	assert.Equal(t,
+		`<img src="/assets/hello.jpg">`,
+		transformImagesToAbsoluteURLs(
+			`<img src="/assets/hello.jpg">`,
+			nil,
+		),
 	)
 }

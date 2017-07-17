@@ -3,10 +3,40 @@
 	"ignore": "",
 	"package": [
 		{
+			"checksumSHA1": "wpBK0ifLm+MjOfSkZTY60cJHHqw=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "8806ada2a4ab225c06e9106f9631be80932db7ce",
+			"revisionTime": "2017-06-23T16:21:02Z"
+		},
+		{
 			"checksumSHA1": "3nARYwv3e81b6u4HftjpBMMxDWw=",
 			"path": "github.com/Sirupsen/logrus",
 			"revision": "f3cfb454f4c209e6668c95216c4744b8fddb2356",
 			"revisionTime": "2016-06-01T11:32:10Z"
+		},
+		{
+			"checksumSHA1": "tXab+HUnWLM0FXoi7aYgTzHxuu0=",
+			"path": "github.com/andybalholm/cascadia",
+			"revision": "349dd0209470eabd9514242c688c403c0926d266",
+			"revisionTime": "2016-12-24T14:14:13Z"
+		},
+		{
+			"checksumSHA1": "ew6PapbTwsXcwAymkdJx5mnsXKM=",
+			"path": "github.com/aymerick/douceur/css",
+			"revision": "7176f146738114e7386d4f915a0bbf55945e22c9",
+			"revisionTime": "2015-08-27T15:13:52Z"
+		},
+		{
+			"checksumSHA1": "E8FsRsn2yPo0G317OYmJZaZAGf4=",
+			"path": "github.com/aymerick/douceur/inliner",
+			"revision": "7176f146738114e7386d4f915a0bbf55945e22c9",
+			"revisionTime": "2015-08-27T15:13:52Z"
+		},
+		{
+			"checksumSHA1": "2L94ttFtq0PsVBRYFbkXYITxv6w=",
+			"path": "github.com/aymerick/douceur/parser",
+			"revision": "7176f146738114e7386d4f915a0bbf55945e22c9",
+			"revisionTime": "2015-08-27T15:13:52Z"
 		},
 		{
 			"checksumSHA1": "5rPfda8jFccr3A6heL+JAmi9K9g=",
@@ -14,6 +44,12 @@
 			"path": "github.com/davecgh/go-spew/spew",
 			"revision": "d77da356e56a7428ad25149ca77381849a6a5232",
 			"revisionTime": "2016-06-15T09:26:46Z"
+		},
+		{
+			"checksumSHA1": "IrjVo9UgK2+SxzvQO7xrdgsdxvs=",
+			"path": "github.com/gorilla/css/scanner",
+			"revision": "398b0b046082ecb3694c01bec6b336a06a4e530a",
+			"revisionTime": "2017-02-17T19:22:53Z"
 		},
 		{
 			"checksumSHA1": "9NULkgW5OME4BGdB8N0839+WhA8=",
@@ -32,6 +68,12 @@
 			"path": "github.com/lib/pq/oid",
 			"revision": "4dd446efc17690bc53e154025146f73203b18309",
 			"revisionTime": "2016-06-23T22:06:37Z"
+		},
+		{
+			"checksumSHA1": "RmL9wD49aRz+vCugwed0ccVTMeY=",
+			"path": "github.com/pkg/errors",
+			"revision": "c605e284fe17294bda444b34710735b29d1a9d90",
+			"revisionTime": "2017-05-05T04:36:39Z"
 		},
 		{
 			"checksumSHA1": "zKKp5SZ3d3ycKe4EKMNT0BqAWBw=",
@@ -93,6 +135,12 @@
 			"path": "golang.org/x/sys/unix",
 			"revision": "30de6d19a3bd89a5f38ae4028e23aaa5582648af",
 			"revisionTime": "2016-09-07T05:59:14Z"
+		},
+		{
+			"checksumSHA1": "W7l7uoEIedOs8zVnd+9pFKxwqg0=",
+			"path": "gopkg.in/mailgun/mailgun-go.v1",
+			"revision": "a4002e2df2e8ca2da6a6fbb4a72871b504e49f50",
+			"revisionTime": "2017-02-13T15:09:30Z"
 		},
 		{
 			"checksumSHA1": "lJHPwsxC3Xws7TIRUrB3Ki5HqkU=",
