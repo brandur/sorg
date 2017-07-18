@@ -14,8 +14,12 @@ html lang='en'
         font-style: italic;
         margin-left: 30px;
         margin-right: 30px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 1px 20px;
+      }
+
+      blockquote, p {
+        margin-bottom: 18px;
+        margin-top: 18px;
       }
 
       body {
@@ -42,7 +46,13 @@ html lang='en'
       h2 {
         font-size: 35px;
         letter-spacing: -1px;
-        margin: 30px 0 -10px 0;
+        margin: 30px 0 0 0;
+      }
+
+      h3 {
+        font-size: 23px;
+        letter-spacing: -1px;
+        margin: 20px 0 0 0;
       }
 
       a, a:hover, a:visited {
