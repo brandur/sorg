@@ -18,6 +18,8 @@ Things that don't work:
   that it creates a de facto standard of its own [1].
 * Negative margins.
 * Descendant selectors.
+* Any kind of non-trivial CSS. For some reason I initially
+  expected `rem` to work for font sizes. Not likely.
 
 Rendering wildly different from browser defaults.
 
