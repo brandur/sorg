@@ -62,7 +62,7 @@ html lang='en'
 
       #about {
         color: #aaa;
-        font-size: 16px;
+        font-size: 15px;
         margin: 70px 0 30px 0;
         text-align: center;
       }
@@ -94,7 +94,7 @@ html lang='en'
     #container
       = yield main
       p#about
-        | Passages & Glass is a sporadically sent newsletter about travel, ideas, and software written by <a href="https://brandur.org/about">Brandur</a>. 
+        | <em>Passages & Glass</em> is a sporadically sent newsletter about travel, ideas, and software written by <a href="https://brandur.org/about">Brandur</a>. 
         {{if .InEmail}}
         | If you received it in error, <a href="%unsubscribe_url%">unsubscribe right here</a>.
         {{end}}
