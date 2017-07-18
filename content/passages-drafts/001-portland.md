@@ -1,5 +1,5 @@
 ---
-title: Initial Burst and Longer Title
+title: The Inaugural Issue, Portland, and Flyknit
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -25,7 +25,7 @@ A choice quote:
 > skyrocket as they aggressively blocked high-density
 > development.
 
-<img src="/assets/passages/001/waterfall@2x.jpg">
+<img src="/assets/passages/001-portland/waterfall@2x.jpg">
 
 * This is a list.
 * And another bullet.
@@ -50,19 +50,19 @@ And on a more accurate version of the kindergarten play:
 
 ## Portland (#portland)
 
-![Portland](/assets/passages/001/L1010468@2x.jpg)
+![Portland](/assets/passages/001-portland/L1010468@2x.jpg)
 
 ### Salt & Straw
 
-![Salt & Straw](/assets/passages/001/L1010474@2x.jpg)
+![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
 
 Saw [Hideaki Itō][ito].
 
-![Brewcycle](/assets/passages/001/L1010517@2x.jpg)
+![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
 
-![Waterfall](/assets/passages/001/L1010633@2x.jpg)
+![Waterfall](/assets/passages/001-portland/L1010633@2x.jpg)
 
-![Waterfall](/assets/passages/001/L1010739@2x.jpg)
+![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
 [activism]: http://www.theatlantic.com/politics/archive/2015/12/san-francisco-is-confused-about-the-villain-thats-making-it-unaffordable/422091/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D

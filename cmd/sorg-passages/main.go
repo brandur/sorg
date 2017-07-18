@@ -85,9 +85,12 @@ func renderAndSend(path string, live bool) error {
 
 	mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
 
+	subject := fmt.Sprintf("Passages & Glass %s — %s",
+		passage.Issue, passage.Title)
+
 	message := mailgun.NewMessage(
 		fromAddress,
-		fmt.Sprintf("Passages & Glass %s — %s", passage.Slug, passage.Title),
+		subject,
 		passage.ContentRaw,
 		recipient)
 	message.SetReplyTo(replyToAddress)
