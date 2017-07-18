@@ -3,50 +3,47 @@ title: The Inaugural Issue, Portland, and Flyknit
 published_at: 2017-07-15T19:48:53Z
 ---
 
-Content from issue one!
+It struck me recently that the details of many journeys are
+lost. It's not that they're gone, but more that they don't
+come up in conversation, and unwittingly vanish as they
+become a story that's never told. Even those that do get
+transferred are eventually sacrified to our rickety
+memories. Artifacts like photos remain of course, but most
+of us are hopelessly bad at perodicaly sifting through the
+thousands of photos that we've accumulated throughout our
+lives.
 
-## Excerpts (#excerpts)
+For Christmas a few years ago, my grandmother gave me one
+of the best gifts that I've ever received. She presented my
+brother and I each with a book of memories. She'd hunted
+through her extensive photography collection and carefully
+selected a few dozen photos that in aggregate told the
+stories of our lives -- from the weeks after our births, to
+our early family vacations, and all the way through to
+proms and first cars. Each was annotated with a few witty
+words from Grandma to make them meaningful.
 
-_The Atlantic_ published a great article yesterday on
-[housing activism in San Francisco][activism]. It starts
-out talking about the usual line of the evil lords of tech
-manifested in a kindergarten play by a particularly
-enthusiastic after-school director. It goes on to point out
-some of the real culprits: backwards legislation and deeply
-entrenched property owners and longtime residents.
+These volumes are special. It's easy to casually pick one
+up and scan through a few pages looking at random pictures
+and letters. My grandmother had found the perfect
+compromise in story-telling mediums -- light enough to
+skim, but substantial enough to last.
 
-A choice quote:
+## Passages & Glass (#passages-glass)
 
-> But if the musical’s director aim was to present
-> oversimplified truths for the sake of social justice, the
-> main antagonists shouldn’t have been evil politicians and
-> tech executives—it should have been property owners
-> gleefully watching the value of their biggest assets
-> skyrocket as they aggressively blocked high-density
-> development.
+This is what I'm trying to with _Passages & Glass_ --
+short, self-indulgent stories about what I've been doing,
+and on some of my favorite things in products and software.
 
-<img src="/assets/passages/001-portland/waterfall@2x.jpg">
+_Passages & Glass_ is also my attempt to support the indy
+web. It's sent via the only universal communication medium
+that we have (email) in the most open formats available
+(plain text and HTML), and is my small way of pushing back
+against the continued centralization of our stories in
+closed platforms like Facebook and Twitter.
 
-* This is a list.
-* And another bullet.
-
-1. An ordered list.
-2. And another bullet too.
-
-## Continued (#continued)
-
-And on a more accurate version of the kindergarten play:
-
-> The homeowners see themselves as upright
-> “preservationists,” protecting the character of their
-> city even as they turn it into a time-capsule for the old
-> and rich. In my propaganda play, they’d be sympathetic
-> with the plight of the working class, but wouldn’t value
-> them nearly as much as living amidst refurbished
-> Victorians. They’d prevail by tricking economically
-> illiterate activists into allying with them after
-> sneakily tearing the supply-and-demand chapters from
-> their econ textbooks.
+At any time, if you no longer want to receive it, you can
+[easily unsubscribe](%unsubscribe_url%).
 
 ## Portland (#portland)
 
@@ -64,5 +61,4 @@ Saw [Hideaki Itō][ito].
 
 ![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
-[activism]: http://www.theatlantic.com/politics/archive/2015/12/san-francisco-is-confused-about-the-villain-thats-making-it-unaffordable/422091/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
