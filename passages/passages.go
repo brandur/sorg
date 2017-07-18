@@ -26,11 +26,16 @@ type Passage struct {
 	// Draft indicates that the passage is not yet published.
 	Draft bool `yaml:"-"`
 
+	// Issue is the issue number of the passage like "001". Notably, it's a
+	// number, but zero-padded.
+	Issue string `yaml:"-"`
+
 	// PublishedAt is when the passage was published.
 	PublishedAt *time.Time `yaml:"published_at"`
 
 	// Slug is a unique identifier for the passage that also helps determine
-	// where it's addressable by URL.
+	// where it's addressable by URL. It's a combination of an issue number
+	// (like `001` and a short identifier).
 	Slug string `yaml:"-"`
 
 	// Title is the passage's title.
@@ -64,6 +69,13 @@ func Compile(dir, name string, draft bool, email bool) (*Passage, error) {
 	passage.ContentRaw = content
 	passage.Draft = draft
 	passage.Slug = strings.Replace(name, ".md", "", -1)
+
+	slugParts := strings.Split(passage.Slug, "-")
+	if len(slugParts) < 2 {
+		return nil, fmt.Errorf("Expected passage slug to contain issue number: %v",
+			passage.Slug)
+	}
+	passage.Issue = slugParts[0]
 
 	if passage.Title == "" {
 		return nil, fmt.Errorf("No title for passage: %v", inPath)
