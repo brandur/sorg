@@ -84,8 +84,9 @@ Tiger in Calgary. We looked next to us and just a few feet
 away was [Kiefer Sutherland][kiefer], having a drink alone
 at the bar. We spent the next hour debating heatedly (and
 very quietly) whether or not it was him, and which _24_
-quote we could use in case it was, when suddenly he got up,
-and walked out of the bar.
+quote we could use in case it was, when suddenly, and
+before we could say a word, he got up, and walked out of
+the bar.
 
 I said, "I wonder if it was him." Peter replied, "You
 idiot. Of course it was him."
