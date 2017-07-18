@@ -1,5 +1,5 @@
 ---
-title: The Inaugural Issue, Portland, and Flyknit
+title: The Inaugural Issue, Portland, and Flyknit Runners
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -35,12 +35,14 @@ This is what I'm trying to with _Passages & Glass_ --
 short, self-indulgent stories about what I've been doing,
 and on some of my favorite things in products and software.
 
-_Passages & Glass_ is also my attempt to support the indy
-web. It's sent via the only universal communication medium
-that we have (email) in the most open formats available
-(plain text and HTML), and is my small way of pushing back
-against the continued centralization of our stories in
-closed platforms like Facebook and Twitter.
+![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
+
+_Passages & Glass_ is also my attempt to support the
+independent web. It's sent via the only universal
+communication medium that we have (email) in the most open
+formats available (plain text and HTML), and is my small
+way of pushing back against the continued centralization of
+our stories in closed platforms like Facebook and Twitter.
 
 At any time, if you no longer want to receive it, you can
 [easily unsubscribe](%unsubscribe_url%).
