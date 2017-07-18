@@ -7,11 +7,11 @@ It struck me recently that the details of many journeys are
 lost. It's not that they're gone, but more that they don't
 come up in conversation, and unwittingly vanish as they
 become a story that's never told. Even those that do get
-transferred are eventually sacrified to our rickety
+transferred are eventually sacrificed to our rickety
 memories. Artifacts like photos remain of course, but most
-of us are hopelessly bad at perodicaly sifting through the
-thousands of photos that we've accumulated throughout our
-lives.
+of us are hopelessly bad at periodically sifting through
+the thousands of photos that we've accumulated throughout
+our lives.
 
 For Christmas a few years ago, my grandmother gave me one
 of the best gifts that I've ever received. She presented my
@@ -40,9 +40,10 @@ and on some of my favorite things in products and software.
 _Passages & Glass_ is also my attempt to support the
 independent web. It's sent via the only universal
 communication medium that we have (email) in the most open
-formats available (plain text and HTML), and is my small
-way of pushing back against the continued centralization of
-our stories in closed platforms like Facebook and Twitter.
+formats available (plain text and HTML), and is my
+infinitesimally small way of pushing back against the
+continued centralization of our stories in closed platforms
+like Facebook and Twitter.
 
 At any time, if you no longer want to receive it, you can
 [easily unsubscribe](%unsubscribe_url%).
@@ -54,7 +55,7 @@ At any time, if you no longer want to receive it, you can
 ### Salt & Straw
 
 Salt & Straw's a hipster ice cream brand known particularly
-for quirkly flavors like "freckled woodblock chocolate",
+for quirky flavors like "freckled woodblock chocolate",
 "avocado and strawberry sherbet", and "black olive brittle
 & goat cheese". They originated in Portland and have since
 spread to Los Angeles and San Francisco. Instead of waiting
