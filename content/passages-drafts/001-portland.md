@@ -53,14 +53,55 @@ At any time, if you no longer want to receive it, you can
 
 ### Salt & Straw
 
+Salt & Straw's a hipster ice cream brand known particularly
+for quirkly flavors like "freckled woodblock chocolate",
+"avocado and strawberry sherbet", and "black olive brittle
+& goat cheese". They originated in Portland and have since
+spread to Los Angeles and San Francisco. Instead of waiting
+in the hour-long lineup back home in their new location on
+Fillmore St, we waited in the lineup in their home city --
+much more reasonable at a mere 45 minutes.
+
 ![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
 
-Saw [Hideaki Itō][ito].
+Keiko seemed a little agitated throughout our time in line.
+I assumed it was for the same reason that I was agitated,
+namely that we were spending half our day waiting for ice
+cream, but it turned out to be something else entirely. The
+man who'd been standing directly in front of us in line had
+been [Hideaki Itō][ito], a huge movie star in Japan. The
+poor guy had gathered his young family and traveled across
+the Pacific ocean for a little hard-won anonymity in
+suburban America, only to find himself in line next to one
+of the few other Japanese nationals in the city.
+
+Keiko hadn't said anything because she wasn't 100% sure it
+was him (only about 95%). This is roughly consistent to my
+experience with meeting celebrities in the wild. A few
+years back, Peter and I sat down for some cocktails at Milk
+Tiger in Calgary. We looked next to us and just a few feet
+away was [Kiefer Sutherland][kiefer], having a drink alone
+at the bar. We spent the next hour debating heatedly (and
+very quietly) whether or not it was him, and which _24_
+quote we could use in case it was, when suddenly he got up,
+and walked out of the bar.
+
+I said, "I wonder if it was him." Peter replied, "You
+idiot. Of course it was him."
+
+### The city of cycling and beer (#cycling-and-beer)
 
 ![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
+
+### The trail of ten falls (#ten-falls)
 
 ![Waterfall](/assets/passages/001-portland/L1010633@2x.jpg)
 
 ![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
+## Flyknit runners (#flyknit)
+
+## Go – love it and hate it (#go)
+
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
+[kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
