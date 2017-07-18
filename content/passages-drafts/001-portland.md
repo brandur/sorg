@@ -93,7 +93,27 @@ idiot. Of course it was him."
 
 ### The city of cycling and beer (#cycling-and-beer)
 
+Rating high on the list of things to do in Portland are
+bicycling and beer. We decided to combine the two passions
+by taking a tour one one of their local [party
+bikes][party-bike] (also known as pedibuses, cycle pubs,
+bierbikes, and megacycles). Open container laws are in
+effect in Portland, so rather than drink on the bike
+itself, we ranged around the downtown core and stopped at
+nearby breweries and bars.
+
 ![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
+
+We loaded twelve people and a driver onto the thing. I
+consider myself a reasonably strong cyclist, so in my
+mind's eyes I imagined us producing enough power to tear up
+the streets; pausing at reds only long enough to give the
+neighboring driver a sidelong look before accelerating from
+the stop and racing to the next light. Alas, I've never
+worked so far to get so little. Not only was the top speed
+of elderly citizens taking casual strolls down the street
+significantly higher than ours, but I've also moved
+stationary bicycles more quickly.
 
 ### The trail of ten falls (#ten-falls)
 
@@ -107,3 +127,4 @@ idiot. Of course it was him."
 
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
+[party-bike]: https://en.wikipedia.org/wiki/Party_bike
