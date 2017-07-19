@@ -1,5 +1,5 @@
 ---
-title: The Inaugural Issue, Portland, and Flyknit
+title: The Inaugural Issue, Portland, Flyknit, and Go
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -65,8 +65,8 @@ much more reasonable at a mere 45 minutes.
 
 ![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
 
-Keiko seemed a little agitated throughout our time in line.
-I assumed it was for the same reason that I was agitated,
+Keiko seemed a little agitated during our time in line. I
+assumed it was for the same reason that I was agitated,
 namely that we were spending half our day waiting for ice
 cream, but it turned out to be something else entirely. The
 man who'd been standing directly in front of us in line had
@@ -124,73 +124,94 @@ only moderately bad about drinking it.
 ### The trail of ten falls (#ten-falls)
 
 Before the wedding we'd done a little urban hike to see the
-Stone House and the Pittock Mansion, but nothing
-substantial. Andrée and Simon had rented a car, and invited
-us to go on a day hike with them along the [Trail of Ten
-Falls][ten-falls] in Silver Falls State Park (Oregon's
-largest).
+Stone House and the epic view of Mount Hood and downtown
+Portland from the Pittock Mansion, but nothing substantial.
+As luck would have it though, our friends Andrée and Simon,
+who had rented a car, invited us to come along with them
+for a day hike along the [Trail of Ten Falls][ten-falls] in
+Silver Falls State Park (Oregon's largest state park at
+over 9,000 acres).
 
 In terms of visible natural beauty on a per mile basis,
 this hike is one of the best that you'll ever find. The
 falls vary wildly in size, but there are ten of them, and
 the largest have a dreamy Middle-Earthian quality as they
-pour from tall cliffs into quiet mountain streams.
+pour from tall cliffs into tranquil mountain streams.
 
 ![Waterfall](/assets/passages/001-portland/L1010633@2x.jpg)
 
 After the trip, we stopped off for some much needed beers
-in Salem, Oregon's capital a little southwest of Portland
-at SAW (Salem Ale Works).
+in Salem, the capital of Oregon which is located a little
+southwest of Portland. This penultimate destination was
+called Salem Ale Works (SAW), and our Bay Area instincts
+couldn't comprehend that we were paying so little for beer
+this good. Back in Portland we did one final stop at 10
+Barrel Brewing before saying our goodbyes and going to pack
+our bags.
 
 ![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
 ## Flyknit (#flyknit)
 
 Nike's Flyknit technology is one of my favorite products of
-any kind that I've bought in the last two years. As someone
-who is too hot pretty much anytime they're moving, I'm
-always looking for ways to stay cooler. Flyknit runners are
-the most breathable that I've ever used, and the best
-looking.
+the last few years. I'm the type of person who's too hot 90
+seconds into doing anything even remotely physical
+(walking, biking, running, cleaning, etc.), and am always
+on the lookout for ways to stay cooler.
 
-An optimization that I've really liked is that I just wear
-them all the time. When I travel there's no need to pack a
-separate set of running shoes -- I just use the Flyknits
-that I'm already wearing.
+Flyknit shoes are the answer for me. Their woven fabric may
+not be very good for waterproofness, but they're unbeatable
+when it comes to breathability. With their built-in
+eclectic designs and scintillating colors, they also look
+great, and I say that as someone who's never thought that
+about a shoe before.
+
+A travel trick that I've really taken to heart is to just
+wear my Flyknit running shoes all the time. When I got
+somewhere, I don't take any footwear beyond what I have on
+my feet, and save a proportional amount of space in my
+luggage. Although not appropriate for every possible
+situation, they've got me covered for urban walking,
+running, and short to medium length hikes.
+
+(And I should probably point out at this point that no,
+Nike did not sponsor this newsletter.)
 
 ## Go – love it and hate it (#go)
 
-Like my website, this newsletter is built and sent by a
-custom [Go][go] executable (I talk a little more about the
-[technical details here][newsletter]). This might sound a
-little crazy to an experienced engineer -- software is in a
-constant state of erosion, and a program that you write
-today is likely to be a maintenance nightmare five years
-from now.
+And now a brief note on software. Like my website, this
+newsletter is built and sent by a custom [Go][go]
+executable (I talk a little more about the [technical
+details here][newsletter]). This might sound a little crazy
+to a veteran engineer -- software is in a constant state of
+erosion, and building custom single use software is a like
+building a self-imposed personal maintenance nightmare, but
+so far my results with Go have been good.
 
-Go has a lot of problems -- a deep natural aversion to
-generics and dependency management, an equally powerful
-love for void pointers (`interface{}`), and a dictator that
-considers syntax highlighting "juvenile" -- and yet I've
-still found it to be pleasurable and painless to work with.
-Compared to the dynamic languages (Ruby, Python,
-JavaScript, etc.) I like that the code I write keeps
-working, and even compared to my other favorite right now,
-[Rust][rust], I like how I'm not chasing a moving target.
-The code I write today is still best practice a year from
-now, and my dependencies don't all require the language's
-nightly channel.
+The language has a lot of problems -- a deep natural
+aversion to generics and dependency management, an equally
+powerful love for void pointers (`interface{}`), and a
+dictator that considers syntax highlighting "juvenile" --
+and yet I still find it to be pleasurable and painless to
+work with. Compared to the dynamic languages (Ruby, Python,
+JavaScript, etc.) I like that the code I write isn't so
+prone to rot, and even compared to my other favorite right
+now, [Rust][rust], it's relaxing not having to chase a
+target that never seems to stop moving. The code I write
+today is still best practice a year from now, and my
+dependencies aren't all pinned to special compiler pragmas
+and the nightly release channel.
 
 Go has by far the best (fastest and most problem-free)
-edit-compile-debug loop of any language, I'm able to find a
-native library for any task that I want to accomplish
-(everything from CSS inlining to image resizing -- it's so
-nice not to be constantly staring at C extension build
-failures like in Ruby), and the language's stability is
-amazing -- I'd bet that this project would still compile on
-the Go toolchain released ten years from now. I often say
-that I don't know what the right answer in technology is,
-but there's no doubt that Go's a good one.
+edit-compile-debug loop of any language, bar none. I'm able
+to find a native library for any task that I want to
+accomplish -- everything from CSS inlining to image
+resizing, and it's nice not having to troubleshoot build
+failures for C extensions like in Ruby. Lastly, the
+language's stability is amazing. I'd bet that this project
+will still compile on modern Go ten years from now. I often
+say that I don't know what the right answer in technology
+is, but there's no doubt that Go's a good one.
 
 [go]: https://golang.org/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
