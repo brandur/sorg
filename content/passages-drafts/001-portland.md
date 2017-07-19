@@ -1,5 +1,5 @@
 ---
-title: The Inaugural Issue, Portland, and Flyknit Runners
+title: The Inaugural Issue, Portland, and Flyknit
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -77,7 +77,7 @@ suburban America, only to find himself in line next to one
 of the few other Japanese nationals in the city.
 
 Keiko hadn't said anything because she wasn't 100% sure it
-was him (only about 95%). This is roughly consistent to my
+was him (only about 95%), which is roughly consistent to my
 experience with meeting celebrities in the wild. A few
 years back, Peter and I sat down for some cocktails at Milk
 Tiger in Calgary. We looked next to us and just a few feet
@@ -104,27 +104,98 @@ nearby breweries and bars.
 
 ![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
 
-We loaded twelve people and a driver onto the thing. I
-consider myself a reasonably strong cyclist, so in my
-mind's eyes I imagined us producing enough power to tear up
-the streets; pausing at reds only long enough to give the
-neighboring driver a sidelong look before accelerating from
-the stop and racing to the next light. Alas, I've never
-worked so far to get so little. Not only was the top speed
-of elderly citizens taking casual strolls down the street
-significantly higher than ours, but I've also moved
-stationary bicycles more quickly.
+We loaded twelve people and a driver onto the thing. I'm a
+reasonable cyclist, so in my mind's eyes I imagined us
+producing enough power to tear up the streets; pausing at
+reds only long enough to give the neighboring driver a
+sidelong look before accelerating from the stop and racing
+to the next light.
+
+Alas, I've never worked so far to move so little. Not only
+were elderly citizens taking casual strolls down the street
+outpacing us by a good margin, but I'm also pretty sure
+that I've hit a higher top speed on the stationary bicycle
+at the gym.
+
+The good news is that the beer was good, and I'd burned
+enough calories pedaling around a very heavy object to feel
+only moderately bad about drinking it.
 
 ### The trail of ten falls (#ten-falls)
 
+Before the wedding we'd done a little urban hike to see the
+Stone House and the Pittock Mansion, but nothing
+substantial. Andrée and Simon had rented a car, and invited
+us to go on a day hike with them along the [Trail of Ten
+Falls][ten-falls] in Silver Falls State Park (Oregon's
+largest).
+
+In terms of visible natural beauty on a per mile basis,
+this hike is one of the best that you'll ever find. The
+falls vary wildly in size, but there are ten of them, and
+the largest have a dreamy Middle-Earthian quality as they
+pour from tall cliffs into quiet mountain streams.
+
 ![Waterfall](/assets/passages/001-portland/L1010633@2x.jpg)
+
+After the trip, we stopped off for some much needed beers
+in Salem, Oregon's capital a little southwest of Portland
+at SAW (Salem Ale Works).
 
 ![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
-## Flyknit runners (#flyknit)
+## Flyknit (#flyknit)
+
+Nike's Flyknit technology is one of my favorite products of
+any kind that I've bought in the last two years. As someone
+who is too hot pretty much anytime they're moving, I'm
+always looking for ways to stay cooler. Flyknit runners are
+the most breathable that I've ever used, and the best
+looking.
+
+An optimization that I've really liked is that I just wear
+them all the time. When I travel there's no need to pack a
+separate set of running shoes -- I just use the Flyknits
+that I'm already wearing.
 
 ## Go – love it and hate it (#go)
 
+Like my website, this newsletter is built and sent by a
+custom [Go][go] executable (I talk a little more about the
+[technical details here][newsletter]). This might sound a
+little crazy to an experienced engineer -- software is in a
+constant state of erosion, and a program that you write
+today is likely to be a maintenance nightmare five years
+from now.
+
+Go has a lot of problems -- a deep natural aversion to
+generics and dependency management, an equally powerful
+love for void pointers (`interface{}`), and a dictator that
+considers syntax highlighting "juvenile" -- and yet I've
+still found it to be pleasurable and painless to work with.
+Compared to the dynamic languages (Ruby, Python,
+JavaScript, etc.) I like that the code I write keeps
+working, and even compared to my other favorite right now,
+[Rust][rust], I like how I'm not chasing a moving target.
+The code I write today is still best practice a year from
+now, and my dependencies don't all require the language's
+nightly channel.
+
+Go has by far the best (fastest and most problem-free)
+edit-compile-debug loop of any language, I'm able to find a
+native library for any task that I want to accomplish
+(everything from CSS inlining to image resizing -- it's so
+nice not to be constantly staring at C extension build
+failures like in Ruby), and the language's stability is
+amazing -- I'd bet that this project would still compile on
+the Go toolchain released ten years from now. I often say
+that I don't know what the right answer in technology is,
+but there's no doubt that Go's a good one.
+
+[go]: https://golang.org/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
+[newsletter]: https://brandur.org/newsletter
 [party-bike]: https://en.wikipedia.org/wiki/Party_bike
+[rust]: https://www.rust-lang.org/en-US/
+[ten-falls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
