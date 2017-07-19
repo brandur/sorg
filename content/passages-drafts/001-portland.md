@@ -37,6 +37,15 @@ and on some of my favorite things in products and software.
 
 ![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
 
+_Passages_ refers to the routes that we use to get from one
+point to another, like Hannibal's passage through the Alps,
+Magellan's strait through South America, or less
+inspirationally, my favorite walking path from
+Friedrichshain to Kreuzberg. _Glass_ is a play on a number
+of things like the glass on my favorite products like the
+iPhone, the window through which you observe the passing
+countryside by air or rail, or the lens of my camera.
+
 _Passages & Glass_ is also my attempt to support the
 independent web. It's sent via the only universal
 communication medium that we have (email) in the most open
@@ -50,7 +59,45 @@ At any time, if you no longer want to receive it, you can
 
 ## Portland (#portland)
 
+I visited Portland recently to celebrate the wedding of my
+friends Sam and Blake. The first thing that struck me about
+the town was how nice everyone was; I was reading a
+brochure on how to sue the local rail system to get from
+the airport to downtown, when a MAX employee approached me
+and proceeded to explain the whole thing and help me buy a
+ticket. In San Francisco you could stand next to a ticket
+machine all week, and not one transit employee would
+notice, let alone help you.
+
 ![Portland](/assets/passages/001-portland/L1010468@2x.jpg)
+
+The city's beautiful. Calm and well-maintained downtown
+streets spread out to become eclectic inner city suburbs
+where each house has an interesting shape and a cluster of
+wild shrubbery instead of a boring lawn. The shops and
+sights offer an amazing variety; in the first few days we
+ate at Atsuri, a ramen shop whose only other location is
+Tokyo, had espresso and Turkish delight at the top of a
+double decker bus parked next to a row of food trucks (ToV
+coffee & tea), and had the best hot wings of my life at Pok
+Pok.
+
+The wedding took place outside the city in Hillsboro atop a
+hill overlooking rows of apple trees on one side, and a
+golden field of wheat on the other (later to be set ablaze
+by the setting sun with a beautiful aura). There ceremony
+was held within a grove shaded by a group of tall trees
+(which many of us wearing jackets on the hot day were very
+thankful for). Will officiated using notes taped to the
+inside of a hardbound copy of Homer's Odyssey. Diner was
+accompanied by speeches from the fathers of the bridge and
+groom, and followed by dancing at sunset, enabled by
+special varieties of margaritas and mint julips designed by
+Sam and Blake. We were eventually handed a breakfast
+burrito and loaded back onto a bus bound for our hotel. The
+couple in the seat next to us had managed to smuggle a
+1.75L Costco size bottle of Bullitt bourbon on board, and
+it helped make the ride a blur.
 
 ### Salt & Straw
 
