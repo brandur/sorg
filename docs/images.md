@@ -29,8 +29,8 @@ as minimums.
 
 ## Resize for article images
 
-    gm convert $GM_INPUT -resize 650x -quality 85 $GM_OUTPUT/$(basename $GM_INPUT)
-    gm convert $GM_INPUT -resize 1300x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.jpg/@2x.jpg}
+    gm convert $GM_INPUT -resize 650x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/.jpg}
+    gm convert $GM_INPUT -resize 1300x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/@2x.jpg}
 
 ## Resize for fragment vistas
 
@@ -39,7 +39,7 @@ as minimums.
 
 ## Resize for Passages images
 
-    gm convert $GM_INPUT -resize 1100x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.jpg/@2x.jpg}
+    gm convert $GM_INPUT -resize 1100x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.
