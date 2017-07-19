@@ -132,13 +132,15 @@ for a day hike along the [Trail of Ten Falls][ten-falls] in
 Silver Falls State Park (Oregon's largest state park at
 over 9,000 acres).
 
-In terms of visible natural beauty on a per mile basis,
-this hike is one of the best that you'll ever find. The
-falls vary wildly in size, but there are ten of them, and
-the largest have a dreamy Middle-Earthian quality as they
-pour from tall cliffs into tranquil mountain streams.
-
 ![Waterfall](/assets/passages/001-portland/L1010633@2x.jpg)
+
+In terms of visible natural beauty on a per mile basis,
+this hike is one of the best you'll ever find. The falls
+vary wildly in size, but there are ten of them, and the
+largest have a dreamy Middle-Earthian quality as they pour
+from tall cliffs into tranquil mountain streams.
+
+![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
 After the trip, we stopped off for some much needed beers
 in Salem, the capital of Oregon which is located a little
@@ -148,8 +150,6 @@ couldn't comprehend that we were paying so little for beer
 this good. Back in Portland we did one final stop at 10
 Barrel Brewing before saying our goodbyes and going to pack
 our bags.
-
-![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
 
 ## Flyknit (#flyknit)
 
@@ -161,10 +161,10 @@ on the lookout for ways to stay cooler.
 
 Flyknit shoes are the answer for me. Their woven fabric may
 not be very good for waterproofness, but they're unbeatable
-when it comes to breathability. With their built-in
-eclectic designs and scintillating colors, they also look
-great, and I say that as someone who's never thought that
-about a shoe before.
+when it comes to breathability. With their eclectic designs
+and scintillating colors, they also look great, and I say
+that as someone who's never thought that about a shoe
+before.
 
 A travel trick that I've really taken to heart is to just
 wear my Flyknit running shoes all the time. When I got
@@ -212,6 +212,15 @@ language's stability is amazing. I'd bet that this project
 will still compile on modern Go ten years from now. I often
 say that I don't know what the right answer in technology
 is, but there's no doubt that Go's a good one.
+
+## Farewell for now ... (#farewell)
+
+This one's run a little long, so thank you for reading it!
+As you've no doubt noticed by now, I'm not particularly
+good at staying in touch with friends and family, so if
+you're doing something interesting, please drop me a line
+at [brandur@brandur.org](mailto:brandur@brandur.org) in
+case I don't get to you first.
 
 [go]: https://golang.org/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
