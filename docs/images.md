@@ -14,6 +14,11 @@ http://www.graphicsmagick.org/convert.html
     export GM_OUTPUT=.
     export GM_OUTPUT=content/images/passages/001-portland
 
+## Copying paths from finder
+
+Right-click on an image and hold `Option`. The "Copy
+<file>" option becomes "Copy <file> as Pathname".
+
 ## Resize for article hooks
 
     gm convert $GM_INPUT -resize 75x75^ -gravity center -extent 75x75 -quality 85 $GM_OUTPUT/hook.jpg
