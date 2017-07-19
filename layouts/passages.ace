@@ -44,13 +44,13 @@ html lang='en'
       }
 
       h2 {
-        font-size: 35px;
+        font-size: 30px;
         letter-spacing: -1px;
         margin: 30px 0 0 0;
       }
 
       h3 {
-        font-size: 23px;
+        font-size: 21px;
         letter-spacing: -1px;
         margin: 20px 0 0 0;
       }
@@ -96,6 +96,11 @@ html lang='en'
         text-transform: uppercase;
       }
 
+      #signature {
+        color: #aaa;
+        text-align: center;
+      }
+
   body
     {{if not .InEmail}}
     = include views/_analytics .
@@ -103,6 +108,7 @@ html lang='en'
 
     #container
       = yield main
+      p#signature – Brandur
       p#about
         | <em>Passages & Glass</em> is a sporadically sent newsletter about travel, ideas, and software written by <a href="https://brandur.org/about">Brandur</a>. 
         {{if .InEmail}}
