@@ -1,5 +1,5 @@
 ---
-title: The Inaugural Issue, Portland, Flyknit, and Go
+title: The Inaugural Issue, Portland, Waterfalls, Flyknit, and Go
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -231,9 +231,9 @@ newsletter is built and sent by a custom [Go][go]
 executable (I talk a little more about the [technical
 details here][newsletter]). This might sound a little crazy
 to a veteran engineer -- software is in a constant state of
-erosion, and building custom single use software is a like
-building a self-imposed personal maintenance nightmare, but
-so far my results with Go have been good.
+degradation, and building custom single use software is a
+like building a self-imposed personal maintenance
+nightmare, but so far my results with Go have been good.
 
 The language has a lot of problems -- a deep natural
 aversion to generics and dependency management, an equally
