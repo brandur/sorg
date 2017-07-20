@@ -1,5 +1,5 @@
 ---
-title: The Inaugural Issue, Portland, Waterfalls, Flyknit, and Go
+title: The Inaugural Issue, Portland, Flyknit, and Go
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -160,9 +160,8 @@ to the next light.
 
 Alas, I've never worked so far to move so little. Not only
 were elderly citizens taking casual strolls down the street
-outpacing us by a good margin, but I'm also pretty sure
-that I've hit a higher top speed on the stationary bicycle
-at the gym.
+outpacing us by wide margins, but I've seen stationary
+bicycles at gyms move faster.
 
 The good news is that the beer was good, and I'd burned
 enough calories pedaling around a very heavy object to feel
