@@ -39,7 +39,13 @@ as minimums.
 
 ## Resize for Passages images
 
+Landscape:
+
     gm convert $GM_INPUT -resize 1100x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/@2x.jpg}
+
+Portrait:
+
+    gm convert $GM_INPUT -resize x1100 -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.
