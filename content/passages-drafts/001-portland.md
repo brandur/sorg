@@ -220,7 +220,7 @@ somewhere, I don't take any footwear beyond what I have on
 my feet, and save a corresponding amount of space in my
 luggage. Although not appropriate for every possible
 situation, they've got me covered for urban walking,
-running, and short to medium length hikes.
+running, and all but Alberta-length length hikes.
 
 (And I should probably point out at this point that no,
 Nike did not sponsor this newsletter.)
