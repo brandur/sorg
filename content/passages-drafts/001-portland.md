@@ -4,70 +4,75 @@ published_at: 2017-07-15T19:48:53Z
 ---
 
 It struck me recently that the details of many journeys are
-lost. It's not that they're gone, but more that they don't
-come up in conversation, and unwittingly vanish as they
-become a story that's never told. Even those that do get
-transferred are eventually sacrificed to our rickety
-memories. Artifacts like photos remain of course, but most
+lost. It's nothing intentional, but more that over time
+they stop coming up as often in conversation, and
+eventually disappear as they're sacrificed to our fickle
+memories. Physical artifacts like photos remain, but most
 of us are hopelessly bad at periodically sifting through
-the thousands of photos that we've accumulated throughout
-our lives.
+the thousands of photos and souvenirs that we've
+accumulated throughout our lives.
 
 For Christmas a few years ago, my grandmother gave me one
 of the best gifts that I've ever received. She presented my
 brother and I each with a book of memories. She'd hunted
-through her extensive photography collection and carefully
-selected a few dozen photos that in aggregate told the
-stories of our lives -- from the weeks after our births, to
-our early family vacations, and all the way through to
-proms and first cars. Each was annotated with a few witty
-words from Grandma to make them meaningful.
+through her extensive collection of photos that she'd taken
+of us growing up, and carefully selected a key few dozen
+that in aggregate told the stories of our lives -- from the
+weeks after our births, to early family vacations, and all
+the way through to proms and first cars. Each was annotated
+with a few poignant words from Grandma to make them all the
+more beautiful.
 
 These volumes are special. It's easy to casually pick one
 up and scan through a few pages looking at random pictures
-and letters. My grandmother had found the perfect
-compromise in story-telling mediums -- light enough to
-skim, but substantial enough to last.
+and letters. My grandmother had produced the perfect
+story-telling medium -- light enough to skim, substantial
+enough to last.
 
 ## Passages & Glass (#passages-glass)
 
-This is what I'm trying to with _Passages & Glass_ --
-short, self-indulgent stories about what I've been doing,
-and on some of my favorite things in products and software.
+This is what I'm trying to with this newsletter, _Passages
+& Glass_. It's a curated collection for my friends and
+family of short, self-indulgent stories about what I've
+been doing, and on some of my favorite things in products
+and software.
 
 ![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
 
 _Passages_ refers to the routes that we use to get from one
 point to another, like Hannibal's passage through the Alps,
-Magellan's strait through South America, or less
-inspirationally, my favorite walking path from
-Friedrichshain to Kreuzberg. _Glass_ is a play on a number
-of things like the glass on my favorite products like the
-iPhone, the window through which you observe the passing
-countryside by air or rail, or the lens of my camera.
+Magellan's strait, or more mundanely, my favorite walking
+path from Friedrichshain to Kreuzberg. _Glass_ is a play on
+a number of things like the glass on my favorite products
+like the iPhone, the window through which you watch the
+passing countryside by air or rail, or my camera's lens.
 
-_Passages & Glass_ is also my attempt to support the
-independent web. It's sent via the only universal
-communication medium that we have (email) in the most open
-formats available (plain text and HTML), and is my
-infinitesimally small way of pushing back against the
-continued centralization of our stories in closed platforms
-like Facebook and Twitter.
+_Passages & Glass_ is also about supporting the independent
+web. It's sent via the only universal medium of
+communication that we have (email) in the most open formats
+available (plain text and HTML), and is my infinitesimally
+small way of pushing back against the continued
+centralization and confinement of our stories in closed
+platforms like Facebook and Twitter.
 
-At any time, if you no longer want to receive it, you can
-[easily unsubscribe](%unsubscribe_url%).
+I hope you'll like it, but at any if time you no longer
+want to receive it, you can easily unsubscribe by [clicking
+here][unsubscribe].
 
 ## Portland (#portland)
 
 I visited Portland recently to celebrate the wedding of my
-friends Sam and Blake. The first thing that struck me about
-the town was how nice everyone was; I was reading a
-brochure on how to sue the local rail system to get from
+friends Sam and Blake. The first thing that you notice
+about the town is how nice everyone was; I was reading a
+brochure on how to use the local rail system to get from
 the airport to downtown, when a MAX employee approached me
-and proceeded to explain the whole thing and help me buy a
-ticket. In San Francisco you could stand next to a ticket
-machine all week, and not one transit employee would
-notice, let alone help you.
+and proceeded to explain everything there was to know about
+it, and help me buy a ticket. (For comparison in San
+Francisco, you could stand next to a BART or Muni ticketing
+machine all week, and no transit employee would notice, let
+alone help.) Everywhere you go, store clerks and other
+locals strike you up for conversation. While in the back of
+rideshare, drivers tell meaningful stories about the area.
 
 ![Portland](/assets/passages/001-portland/L1010468@2x.jpg)
 
@@ -78,26 +83,25 @@ wild shrubbery instead of a boring lawn. The shops and
 sights offer an amazing variety; in the first few days we
 ate at Atsuri, a ramen shop whose only other location is
 Tokyo, had espresso and Turkish delight at the top of a
-double decker bus parked next to a row of food trucks (ToV
-coffee & tea), and had the best hot wings of my life at Pok
-Pok.
+double decker bus parked permanently parked behind a row of
+food trucks (ToV coffee & tea), and had the best hot wings
+of my life at Pok Pok.
 
 The wedding took place outside the city in Hillsboro atop a
-hill overlooking rows of apple trees on one side, and a
-golden field of wheat on the other (later to be set ablaze
-by the setting sun with a beautiful aura). There ceremony
-was held within a grove shaded by a group of tall trees
-(which many of us wearing jackets on the hot day were very
-thankful for). Will officiated using notes taped to the
-inside of a hardbound copy of Homer's Odyssey. Diner was
-accompanied by speeches from the fathers of the bridge and
-groom, and followed by dancing at sunset, enabled by
-special varieties of margaritas and mint julips designed by
-Sam and Blake. We were eventually handed a breakfast
-burrito and loaded back onto a bus bound for our hotel. The
-couple in the seat next to us had managed to smuggle a
-1.75L Costco size bottle of Bullitt bourbon on board, and
-it helped make the ride a blur.
+hill overlooking a vinyard on one side, and a golden field
+of wheat on the other (later to be set ablaze by the
+setting sun). The ceremony was held within a grove shaded
+by a group of tall trees (which many of us wearing jackets
+on the hot day were very thankful for). Will officiated,
+using notes taped to the inside of a hardbound copy of
+Homer's Odyssey. Dinner was accompanied by speeches from
+the fathers of the bridge and groom, and followed by
+dancing at sunset, enabled by special varieties of
+margaritas and mint julips designed by Sam and Blake. We
+were eventually handed a breakfast burrito and loaded back
+onto a bus bound for our hotel. The couple in the seat next
+to us had managed to smuggle a 1.75L Costco size bottle of
+Bullitt bourbon on board, and it made the ride a blur.
 
 ### Salt & Straw
 
@@ -115,25 +119,24 @@ much more reasonable at a mere 45 minutes.
 Keiko seemed a little agitated during our time in line. I
 assumed it was for the same reason that I was agitated,
 namely that we were spending half our day waiting for ice
-cream, but it turned out to be something else entirely. The
-man who'd been standing directly in front of us in line had
-been [Hideaki Itō][ito], a huge movie star in Japan. The
-poor guy had gathered his young family and traveled across
+cream, but it was something else entirely. The man who'd
+been standing directly in front of us in line had been
+[Hideaki Itō][ito], a big movie star in Japan. The unlucky
+fellow had gathered his young family and traveled across
 the Pacific ocean for a little hard-won anonymity in
 suburban America, only to find himself in line next to one
 of the few other Japanese nationals in the city.
 
 Keiko hadn't said anything because she wasn't 100% sure it
-was him (only about 95%), which is roughly consistent to my
-experience with meeting celebrities in the wild. A few
-years back, Peter and I sat down for some cocktails at Milk
-Tiger in Calgary. We looked next to us and just a few feet
-away was [Kiefer Sutherland][kiefer], having a drink alone
-at the bar. We spent the next hour debating heatedly (and
-very quietly) whether or not it was him, and which _24_
-quote we could use in case it was, when suddenly, and
-before we could say a word, he got up, and walked out of
-the bar.
+was him (only about 95%), which is roughly consistent with
+my experience seeing celebrities in the wild. A few years
+back, Peter and I sat down for some cocktails at Milk Tiger
+in Calgary. We looked next to us and just a few feet away
+was [Kiefer Sutherland][kiefer], having a drink alone at
+the bar. We spent the next hour debating heatedly (and very
+quietly) whether or not it was him, and which _24_ quote we
+could use in case it was, when suddenly, and before we
+could say a word, he got up, and walked out of the bar.
 
 I said, "I wonder if it was him." Peter replied, "You
 idiot. Of course it was him."
@@ -141,40 +144,40 @@ idiot. Of course it was him."
 ### The city of cycling and beer (#cycling-and-beer)
 
 Rating high on the list of things to do in Portland are
-bicycling and beer. We decided to combine the two passions
-by taking a tour one one of their local [party
-bikes][party-bike] (also known as pedibuses, cycle pubs,
-bierbikes, and megacycles). Open container laws are in
-effect in Portland, so rather than drink on the bike
-itself, we ranged around the downtown core and stopped at
-nearby breweries and bars.
+bicycling and beer. We combined the two passions by taking
+a tour one one of their local [party bikes][party-bike]
+(also known as pedibuses, cycle pubs, bierbikes, and
+megacycles). Open container laws are in effect in Portland,
+so rather than drink on the bike itself, we ranged around
+the downtown core and stopped at a few of its abundant
+breweries and bars.
 
 ![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
 
-We loaded twelve people and a driver onto the thing. I'm a
-reasonable cyclist, so in my mind's eyes I imagined us
-producing enough power to tear up the streets; pausing at
-reds only long enough to give the neighboring driver a
-sidelong look before accelerating from the stop and racing
-to the next light.
+We loaded twelve people and a driver onto the thing. I've
+been known to do some long rides on occasion, and in my
+mind's eye I imagined us tearing up the streets of
+Portland; pausing at intersections only long enough to give
+the neighboring driver a sidelong look before accelerating
+on the green and racing to the next light.
 
 Alas, I've never worked so far to move so little. Not only
 were elderly citizens taking casual strolls down the street
-outpacing us by wide margins, but I've seen stationary
-bicycles at gyms move faster.
+outpacing us by wide margins, but I've hit higher top
+speeds on the stationary bikes at my gym.
 
 The good news is that the beer was good, and I'd burned
-enough calories pedaling around a very heavy object to feel
-only moderately bad about drinking it.
+enough calories pedaling around an extremely heavy object
+to feel only moderately bad about drinking it.
 
 ### The trail of ten falls (#ten-falls)
 
 Before the wedding we'd done a little urban hike to see the
 Stone House and the epic view of Mount Hood and downtown
 Portland from the Pittock Mansion, but nothing substantial.
-As luck would have it though, our friends Andrée and Simon,
-who had rented a car, invited us to come along with them
-for a day hike along the [Trail of Ten Falls][ten-falls] in
+As luck would have it, our friends Andrée and Simon, who
+had rented a car, invited us to come along with them for a
+day hike along the [Trail of Ten Falls][ten-falls] in
 Silver Falls State Park (Oregon's largest state park at
 over 9,000 acres).
 
@@ -201,21 +204,20 @@ our bags.
 
 Nike's Flyknit technology is one of my favorite products of
 the last few years. I'm the type of person who's too hot 90
-seconds into doing anything even remotely physical
-(walking, biking, running, cleaning, etc.), and am always
-on the lookout for ways to stay cooler.
+seconds into any kind of moving (walking, biking, running,
+cleaning, etc.), and am always on the lookout for ways to
+stay cooler.
 
 Flyknit shoes are the answer for me. Their woven fabric may
-not be very good for waterproofness, but they're unbeatable
-when it comes to breathability. With their eclectic designs
-and scintillating colors, they also look great, and I say
-that as someone who's never thought that about a shoe
-before.
+not be very good for waterproofness, but is unbeatable when
+it comes to breathability. They also look great With their
+eclectic designs and scintillating colors, and I say that
+as someone who's never thought that about a shoe before.
 
 A travel trick that I've really taken to heart is to just
-wear my Flyknit running shoes all the time. When I got
+wear my Flyknit running shoes all the time. When I go
 somewhere, I don't take any footwear beyond what I have on
-my feet, and save a proportional amount of space in my
+my feet, and save a corresponding amount of space in my
 luggage. Although not appropriate for every possible
 situation, they've got me covered for urban walking,
 running, and short to medium length hikes.
@@ -229,49 +231,51 @@ And now a brief note on software. Like my website, this
 newsletter is built and sent by a custom [Go][go]
 executable (I talk a little more about the [technical
 details here][newsletter]). This might sound a little crazy
-to a veteran engineer -- software is in a constant state of
-degradation, and building custom single use software is a
-like building a self-imposed personal maintenance
-nightmare, but so far my results with Go have been good.
+-- software is degrading starting from the moment it's
+written, and building custom software is usually a little
+like building a self-imposed maintenance hell, but so far
+my results with Go have been good.
 
-The language has a lot of problems -- a deep natural
-aversion to generics and dependency management, an equally
-powerful love for void pointers (`interface{}`), and a
-dictator that considers syntax highlighting "juvenile" --
-and yet I still find it to be pleasurable and painless to
-work with. Compared to the dynamic languages (Ruby, Python,
+The language has a few problems -- a deep natural aversion
+to generics and dependency management, an equally powerful
+love for void pointers (`interface{}`), and a dictator that
+considers syntax highlighting "juvenile" -- and yet I still
+find it to be pleasurable and painless to work with.
+Compared to the dynamic languages (Ruby, Python,
 JavaScript, etc.) I like that the code I write isn't so
 prone to rot, and even compared to my other favorite right
 now, [Rust][rust], it's relaxing not having to chase a
-target that never seems to stop moving. The code I write
-today is still best practice a year from now, and my
-dependencies aren't all pinned to special compiler pragmas
-and the nightly release channel.
+target whose syntax and core libraries never seem to stop
+moving. The code I write today is still best practice a
+year from now, and my dependencies aren't all pinned to
+special compiler pragmas and the nightly release channel.
 
 Go has by far the best (fastest and most problem-free)
 edit-compile-debug loop of any language, bar none. I'm able
 to find a native library for any task that I want to
 accomplish -- everything from CSS inlining to image
 resizing, and it's nice not having to troubleshoot build
-failures for C extensions like in Ruby. Lastly, the
-language's stability is amazing. I'd bet that this project
-will still compile on modern Go ten years from now. I often
-say that I don't know what the right answer in technology
-is, but there's no doubt that Go's a good one.
+failures for C extensions like in Ruby and Python. Lastly,
+the language's stability is amazing. I'd bet that this
+project will still compile on the contemporary Go compiler
+of ten years from now. I don't know what the best modern
+tech stack is, but Go's is one of the good ones.
 
-## Farewell for now ... (#farewell)
+## Stay connected (#connected)
 
 This one's run a little long, so thank you for reading it!
-As you've no doubt noticed by now, I'm not particularly
-good at staying in touch with friends and family, so if
-you're doing something interesting, please drop me a line
-at [brandur@brandur.org](mailto:brandur@brandur.org) in
-case I don't get to you first.
+As many of you hace no doubt noticed by now, I'm not
+particularly good at staying in touch, so if you're doing
+something interesting, I emplore you to drop me a line at
+[brandur@brandur.org][mail] in case I don't get to you
+first.
 
 [go]: https://golang.org/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
+[mail]: mailto:brandur@brandur.org
 [newsletter]: https://brandur.org/newsletter
 [party-bike]: https://en.wikipedia.org/wiki/Party_bike
 [rust]: https://www.rust-lang.org/en-US/
 [ten-falls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
+[unsubscribe]: %unsubscribe_url%
