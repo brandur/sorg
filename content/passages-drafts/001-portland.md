@@ -228,13 +228,13 @@ Nike did not sponsor this newsletter.)
 ## Go – love it and hate it (#go)
 
 And now a brief note on software. Like my website, this
-newsletter is built and sent by a custom [Go][go]
-executable (I talk a little more about the [technical
-details here][newsletter]). This might sound a little crazy
--- software is degrading starting from the moment it's
-written, and building custom software is usually a little
-like building a self-imposed maintenance hell, but so far
-my results with Go have been good.
+newsletter is built and sent by a specially crafted
+[Go][go] executable (I talk a little more about the
+[technical details here][newsletter]). This might sound a
+little crazy -- software is degrading starting from the
+moment it's written, and building custom software is
+usually a little like building a self-imposed maintenance
+hell, but so far my results with Go have been good.
 
 The language has a few problems -- a deep natural aversion
 to generics and dependency management, an equally powerful
