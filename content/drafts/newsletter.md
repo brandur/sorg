@@ -9,9 +9,9 @@ I wanted to try sending a newsletter.
 Initially I assumed that the best way to go would be
 through one of the many newsletter services like
 TinyLetter, but in all the cases I looked at they either
-wanted to paste a branded footer on the end of all your
-messages and have you use an ugly WYSIWYG editor. I also
-wanted to archive old copies on my own domain, and it
+wanted to paste a branded footer on the end of all
+messages, have you use an ugly WYSIWYG editor, or both. I
+also wanted to archive old copies on my own domain, and it
 looked like that was going to force me to reinvent a custom
 layer of my own on top of their service.
 
@@ -74,8 +74,8 @@ renders HTML, inlines CSS, and generates an email with
 Mailgun's API. By default it sends messages to my personal
 address so that I can vet the content directly from a real
 mail client and keep an eye out for any consistencies
-compared to a web browser. An additional `-live` argument
-sends to the list.
+compared to normal web rendering. An additional `-live`
+argument sends to the list.
 
 ## List management (#list-management)
 
