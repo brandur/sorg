@@ -19,11 +19,12 @@ import (
 )
 
 const (
-	mailDomain     = "list.brandur.org"
-	fromAddress    = "Brandur <" + listAddress + ">"
-	listAddress    = "passages@" + mailDomain
-	replyToAddress = "brandur@brandur.org"
-	testAddress    = replyToAddress
+	mailDomain         = "list.brandur.org"
+	fromAddress        = "Brandur <" + listAddress + ">"
+	listAddress        = "passages@" + mailDomain
+	listStagingAddress = "passages-staging@" + mailDomain
+	replyToAddress     = "brandur@brandur.org"
+	testAddress        = replyToAddress
 )
 
 // Conf contains configuration information for the command. It's extracted from
@@ -37,7 +38,7 @@ type Conf struct {
 // very many places and can probably be refactored as a local if desired.
 var conf Conf
 
-func renderAndSend(path string, live bool) error {
+func renderAndSend(path string, live, staging bool) error {
 	dir := filepath.Dir(path)
 	name := filepath.Base(path)
 
@@ -79,6 +80,8 @@ func renderAndSend(path string, live bool) error {
 	var recipient string
 	if live {
 		recipient = listAddress
+	} else if staging {
+		recipient = listStagingAddress
 	} else {
 		recipient = testAddress
 	}
@@ -107,12 +110,15 @@ func renderAndSend(path string, live bool) error {
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: %v [-live] <source_file>\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Usage: %v [-live] [-staging] <source_file>\n", os.Args[0])
 		flag.PrintDefaults()
 		os.Exit(0)
 	}
 
-	live := flag.Bool("live", false, "Send to list (as opposed to dry run)")
+	live := flag.Bool("live", false,
+		"Send to list (as opposed to dry run)")
+	staging := flag.Bool("staging", false,
+		"Send to staging list (as opposed to dry run)")
 	flag.Parse()
 
 	if len(flag.Args()) != 1 {
@@ -124,7 +130,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = renderAndSend(flag.Arg(0), *live)
+	err = renderAndSend(flag.Arg(0), *live, *staging)
 	if err != nil {
 		log.Fatal(err)
 	}
