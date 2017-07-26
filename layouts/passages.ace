@@ -110,7 +110,7 @@ html lang='en'
       = yield main
       p#signature – Brandur
       p#about
-        | <em>Passages & Glass</em> is a sporadically sent newsletter about travel, ideas, and software written by <a href="https://brandur.org/about">Brandur</a>. 
+        | <em>Passages & Glass</em> is a sporadically sent newsletter about travel, ideas, and software written by me, <a href="https://brandur.org/about">Brandur</a>. 
         {{if .InEmail}}
         | If you received it in error, <a href="%unsubscribe_url%">unsubscribe right here</a>.
         {{end}}
