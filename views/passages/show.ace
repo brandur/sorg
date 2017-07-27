@@ -8,5 +8,5 @@
   p#about
     = include views/_passages_about .
     {{if .InEmail}}
-    | If you received it in error, you can <a href="%unsubscribe_url%">unsubscribe right here</a>.
+    | If you no longer wish to receive it, <a href="%unsubscribe_url%">this link will unsubscribe you immediately</a>.
     {{end}}
