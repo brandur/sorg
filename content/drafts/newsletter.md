@@ -1,56 +1,77 @@
 ---
-title: Pidgin CSS, and Building an HTML Newsletter
+title: "Archaic HTML and Pidgin CSS: Building HTML Newsletters"
 published_at: 2017-07-18T02:49:14Z
 hook: TODO
 ---
 
 I wanted to try sending a newsletter.
 
-Indepedent web.
+It's also about the independent web. I'm one of those
+holdouts who refuses to move to a centralized publishing
+service, or publish content exclusively a social network.
+Bloggers like me used to have a pretty powerful
+distribution channel in the form of RSS, and the technology
+still exists today, but it's been fading for years, with
+more and more people moving exclusively towards their
+favorite social platform for content discovery. Email is a
+flawed technology in many ways, but it's one of the few
+communication channels that every connected person in the
+world will reliably have, and it fully supports writing
+that's more than 140 characters long and complex media sent
+via open standards.
 
 Initially I assumed that the best way to go would be
-through one of the many newsletter services like
-TinyLetter, but in all the cases I looked at they either
+through one of the many newsletter services like MailChimp
+or TinyLetter, but in all the cases I looked at they either
 wanted to paste a branded footer on the end of all
-messages, have you use an ugly WYSIWYG editor, or both. I
-also wanted to archive old copies on my own domain, and it
-looked like that was going to force me to reinvent a custom
-layer of my own on top of their service.
+messages, have you use a horrible WYSIWYG editor, or both.
+I also wanted to archive old copies on the web somewhere,
+and it was looking like I was going to have to reinvent a
+custom layer on top of whatever service I ended up using
+anyway.
 
-After digging around a little more, I realized that Mailgun
-offered a list management service. Mailgun offers mailing
-APIs that are geared toward developers, and I've been using
-them successfully for years, first at Heroku, then at
-Stripe, and immediately knew it was the right primitive for
-me.
+I still wanted to use a service, but one that exposed the
+right primitives for me. I wanted perfect control over the
+visuals, but the last thing I wanted to do was get into
+subscription management myself. It was then that I realized
+that Mailgun offered an API for mailing lists. I've been
+using them for years at Heroku, then at Stripe, and the
+service has always been well-designed and reliable. I
+experimented by sending a few messages to myself with their
+Go SDK, and then it was off to the races.
 
-## Email CSS & HTML (#css)
+## Pidgin CSS (#css)
 
 Over the last few decades, we've had pretty good success in
 standardizing how HTML and CSS are rendered across
-browsers, and I'd naively believed that this was a problem
-that was well behind us. Even if that's true generally, it
-certainly isn't when it comes to HTML/CSS in email.
+browsers, and during the time some huge victories were won,
+including dragging even hopeless stragglers like IE up to
+spec. I'd naively believed that the war had been won, but
+this whole time there's been a neverending battle raging on
+the frontier of email HTML/CSS.
 
-The newsletter industry seems to have developed a form of
-pidgin CSS 
+The newsletter industry has developed a form of pidgin CSS
+which is made up of the lowest common denominator of what
+the world's diverse set of email clients will support.
+[This CSS support matrix][email-css] does a good job of
+showing just how divergent (and underwhelming) feature
+support is between clients. The result is that best
+practice in newsletters is to keep HTML email as basic as
+possible. Fancy CSS keywords like `float` (`flex` and
+`grid` are totally off the table) are best avoided, and
+`<table>` is still the state of art when it comes to more
+complex layouts.
 
-Email clients seem to be trending better in how they handle
-HTML/CSS, but it's still the wild west out there, and with
-some of the world's favorite clients like Google Mail being
-the most regressive. [This CSS support matrix][email-css]
-does a good job of showing just how divergent feature
-support is between mail clients.
+Email clients are trending towards better support, but it's
+going to be a long time before they hit parity with modern
+web browers, and there's a good chance they'll never get
+there. Amazingly, clients from companies that we tend to
+think of as the most advanced in the world are the most
+regressive, like Google Mail.
 
-General newsletter advice seems to be to keep HTML email as
-basic as possible, and to avoid "fancy" CSS keywords like
-`float` (`flex` and `grid` are totally off the table). For
-more complicated layouts, `<table>` seems to be the state
-of the art.
-
-I found that everything beyond the most trivially basic CSS
-usually caused problems in at least one mail client (often
-Google Mail). For example:
+My experience was that everything beyond the most trivially
+basic CSS usually caused problems in at least one mail
+client (often Google Mail). For example:
 
 * `<style>` aren't supported by Google Mail (meaning a very
   healthy fraction of all potential readers), so all CSS
@@ -60,12 +81,13 @@ Google Mail). For example:
   (`#wrapper > p`) can't be used.
 * Ergonomic niceties like `rem` are out.
 
-After a few false starts I fell back to the simplest and
-best layout that I could think of: a centered single
-column. I wrote CSS with normal `<style>` tags in my
-templates, and used [Doucer][douceur] to inline it.
+After a few false starts I fell back to a layout that
+offers a maxima in the tradeoff between simplicity and
+style: a single centered column. I wrote CSS in my
+templates with normal `<style>` tags in my templates, and
+used [Doucer][douceur] to inline it for email.
 
-## Even newsletters have architecture (#architecture)
+## The architecture of a newsletter (#architecture)
 
 In the spirit of minimizing the number of components that
 I'm running, I reused the code written for this site
@@ -98,7 +120,7 @@ very often. I chose Go for the job because it's got a
 remarkable track record for API stability and minimal
 upgrade churn.
 
-## Introducing Passages & Glass (#passages)
+## Passages & Glass (#passages)
 
 My new newsletter is called _Passages & Glass_. It's
 intended to be an digest of many topics that interest me
