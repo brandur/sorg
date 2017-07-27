@@ -4,21 +4,35 @@ published_at: 2017-07-18T02:49:14Z
 hook: TODO
 ---
 
-I wanted to try sending a newsletter.
+After a recent trip to Portland, I decided that I wanted to
+try and send a newsletter. I don't post on Facebook very
+often, and I'm horrible with staying in touch with friends
+and family to let them know what I'm doing, and a tasteful
+note sent ever so often with stories about what I'm up to
+and what I'm thinking would be a pretty good way of helping
+with the problem. I've been a subscriber to a few high
+quality newsletters for years, and have always enjoyed
+reading them.
 
 It's also about the independent web. I'm one of those
 holdouts who refuses to move to a centralized publishing
 service, or publish content exclusively a social network.
-Bloggers like me used to have a pretty powerful
-distribution channel in the form of RSS, and the technology
-still exists today, but it's been fading for years, with
-more and more people moving exclusively towards their
-favorite social platform for content discovery. Email is a
-flawed technology in many ways, but it's one of the few
+Bloggers like me used to have a powerful distribution
+channel in the form of RSS, and the technology still exists
+today, but it's been fading for years, with more and more
+people moving exclusively towards their favorite social
+platform for content discovery. Email is a flawed
+technology in many ways, but it's one of the few
 communication channels that every connected person in the
 world will reliably have, and it fully supports writing
 that's more than 140 characters long and complex media sent
 via open standards.
+
+This post won't contain anything revelatory, but describes
+a few of the building blocks I used to build a modern
+newsletter, and some of the surprises along the way.
+
+## The right size of service (#service)
 
 Initially I assumed that the best way to go would be
 through one of the many newsletter services like MailChimp
@@ -64,7 +78,7 @@ complex layouts.
 
 Email clients are trending towards better support, but it's
 going to be a long time before they hit parity with modern
-web browers, and there's a good chance they'll never get
+web browsers, and there's a good chance they'll never get
 there. Amazingly, clients from companies that we tend to
 think of as the most advanced in the world are the most
 regressive, like Google Mail.
@@ -128,7 +142,7 @@ including travel, ideas, products, and software, but a
 little more personal than what I'd normally put in a blog
 post. If this sounds like something that interests you,
 please consider [signing up to receive it][signup]. I
-promise not to bother you often!
+won't bother you often.
 
 [1] Somewhat ironically, it might even be fair to call
     Google Mail the new Internet Explorer of email
