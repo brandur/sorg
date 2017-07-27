@@ -4,3 +4,9 @@
   p#passages Passages and Glass
   h1 {{.Passage.Title}}
   {{HTML .Passage.Content}}
+  p#signature – Brandur
+  p#about
+    = include views/_passages_about .
+    {{if .InEmail}}
+    | If you received it in error, you can <a href="%unsubscribe_url%">unsubscribe right here</a>.
+    {{end}}
