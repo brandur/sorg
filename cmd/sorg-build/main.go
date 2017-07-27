@@ -504,6 +504,10 @@ func main() {
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
+		return compilePassagesIndex(passages)
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
 		return compileHome(articles, fragments, photos)
 	}))
 
@@ -828,6 +832,25 @@ func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 
 	err = renderView(sorg.MainLayout, path.Join(dir, name),
 		target, locals)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func compilePassagesIndex(passages []*passages.Passage) error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Compiled passages index in %v.", time.Now().Sub(start))
+	}()
+
+	locals := getLocals("Passages", map[string]interface{}{
+		"Passages": passages,
+	})
+
+	err := renderView(sorg.PassageLayout, sorg.ViewsDir+"/passages/index",
+		conf.TargetDir+"/passages/index.html", locals)
 	if err != nil {
 		return err
 	}
