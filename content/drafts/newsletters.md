@@ -59,6 +59,8 @@ reliable. I poked around their control panel for a while
 and experimented by sending a few messages to myself with
 their Go SDK, and it was off to the races.
 
+!fig src="/assets/newsletters/passages-001.png" caption="The first issue of Passages & Glass successfully rendering in Google Mail (after considerable pain)."
+
 ## Pidgin CSS (#css)
 
 Over the last few decades, we've had pretty good success in
