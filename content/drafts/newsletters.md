@@ -79,8 +79,8 @@ they're all uncompliant in their own exotic ways. Some
 clients are better than others, and somewhat ironically the
 companies that we tend to think of as the most advanced in
 the world are some of the most regressive, like Google. If
-you threw Acid2 at Google Mail for example, you'd be lucky
-to see a lone yellow pixel on screen.
+you threw Acid2 at Google Mail, you'd be lucky to see a
+lone yellow pixel on screen.
 
 The newsletter industry has dealt with this sad state of
 affairs by developing a form of pidgin CSS made up of the
