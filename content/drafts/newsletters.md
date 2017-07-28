@@ -111,7 +111,7 @@ After a few false starts I fell back to a layout that
 offers a maximum in the tradeoff between simplicity and
 style: a single centered column. I wrote CSS in my
 templates with normal `<style>` tags in my templates, and
-used [Doucer][douceur] to inline it for email.
+used [Douceur][douceur] to inline it for email.
 
 ## The architecture of a newsletter (#architecture)
 
