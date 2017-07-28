@@ -101,7 +101,7 @@ Google Mail). For example:
 
 * `<style>` aren't supported by Google Mail (meaning a very
   healthy fraction of all potential readers), so all CSS
-  needs to be inlined like `<p style="...">` [1].
+  needs to be inlined like `<p style="...">`.
 * Negative margins don't work.
 * Descendant selectors (`#wrapper p`) and child selectors
   (`#wrapper > p`) can't be used.
