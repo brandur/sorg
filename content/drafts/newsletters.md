@@ -26,8 +26,8 @@ favorite social platform for content discovery. Email is a
 flawed technology in many ways, but it's one of the few
 communication channels that every connected person in the
 can reliably be expected to have, and it fully supports
-content more than 140 characters long and rich media over
-open standards.
+content more than 140 characters long and sending rich
+media over open standards.
 
 This post contains nothing revelatory, but describes a few
 of the building blocks I used to build a modern newsletter,
@@ -39,35 +39,33 @@ Initially I assumed that the best way to go would be
 through one of the many newsletter services like MailChimp
 or TinyLetter. Maybe it is, but in all the cases I looked
 at they either wanted to paste a branded footer on the end
-of all messages, have you use a WYSIWYG editor, or both;
-aspects that I'm pretty allergic to. I also wanted to
-archive old copies on the web somewhere, and it was looking
-like I'd have to reinvent a custom layer on top of whatever
-service I ended up using anyway.
+of everything you send, have you use a horrible WYSIWYG
+editor, or both; I also wanted to archive old copies on the
+web somewhere, and it was looking like I'd have to reinvent
+a custom layer on top of whatever service I ended up using
+anyway.
 
 I sure wasn't about to start sending email myself, so I
 still wanted to use a service, but kept looking for one
-that exposed the right primitives for me. I wanted perfect
+that exposed the right primitives. I wanted pixel perfect
 control over the visuals, but to fully offload subscription
 management to someone else.
 
 After a little more Googling I discovered that Mailgun
 offered an API for mailing lists. I've been using them for
-sending mail for years at Heroku, then at Stripe, and have
-always found their service to be well-designed and
-reliable. I poked around their control panel for a while
-and experimented by sending a few messages to myself with
-their Go SDK, and it was off to the races.
+sending mail for years at Heroku, then at Stripe, and their
+service has been well-designed and reliable. I poked around
+their control panel for a while and experimented by sending
+a few messages to myself with their Go SDK, and it was off
+to the races.
 
 ``` go
 mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
 
-subject := fmt.Sprintf("Passages & Glass %s — %s",
-    passage.Issue, passage.Title)
-
 message := mailgun.NewMessage(
     fromAddress,
-    subject,
+    fmt.Sprintf("Passages & Glass %s — %s",
+        passage.Issue, passage.Title)
     passage.ContentRaw,
     recipient)
 message.SetReplyTo(replyToAddress)
@@ -86,11 +84,12 @@ Over the last few decades, we've had pretty good success in
 standardizing how HTML and CSS are rendered across
 browsers, and during the time some huge victories were won.
 Progressively more sophisticated tests like Acid2 and Acid3
-helped drag browsers up to spec and establish widespread
-consistency, and even hopeless stragglers like IE would
-eventually fall in line. I'd naively believed that this was
-a war that had been won, only to realize that this whole
-time there's been a battle raging on the frontier of email.
+dragged browsers up to spec and established widespread
+consistency in how they render the same code. Even hopeless
+stragglers like IE would eventually be made to fall in
+line. I'd naively believed that this was a war that had
+been won, only to realize that this whole time there's been
+a battle raging on the frontier of email.
 
 Email clients are a million miles away from rendering
 anything that's even remotely compliant with anything, and
@@ -98,8 +97,8 @@ they're all uncompliant in their own exotic ways. Some
 clients are better than others, and somewhat ironically the
 companies that we tend to think of as the most advanced in
 the world are some of the most regressive, like Google. If
-you threw Acid2 at Google Mail, you'd be lucky to see a
-lone yellow pixel on screen.
+you threw [Acid2][acid2] at Google Mail, you'd be lucky to
+see a lone yellow pixel on screen.
 
 The newsletter industry has dealt with this sad state of
 affairs by developing a form of pidgin CSS made up of the
@@ -107,23 +106,23 @@ lowest common denominator of what the world's diverse set
 of clients will handle. [This CSS support
 matrix][email-css] does a good job of showing just how
 divergent (and underwhelming) feature support is between
-clients. Best practice in newsletters is to keep HTML email
-as basic as possible. Fancy CSS keywords like `float` are
-best avoided, anything developed this decade like `flex`
-and `grid` are totally out, and `<table>` is still the
-state of art when it comes to building more complex
-layouts.
+clients. Best practice is to keep HTML email as basic as
+possible. Fancy CSS keywords like `float` are best avoided,
+anything developed this decade like `flex` and `grid` are
+totally out, and `<table>` is still the state of the art
+when it comes to building more complex layouts.
 
 I found that everything beyond the most trivially basic CSS
 usually caused problems in at least one mail client (often
 Google Mail). For example:
 
-* `<style>` aren't supported by Google Mail (meaning a very
-  healthy fraction of all potential readers), so all CSS
-  needs to be inlined like `<p style="...">`.
+* `<style>` tags aren't supported by Google Mail (meaning a
+  very healthy fraction of all potential readers), so all
+  CSS needs to be inlined like `<p style="...">`.
 * Negative margins don't work.
 * Descendant selectors (`#wrapper p`) and child selectors
-  (`#wrapper > p`) can't be used.
+  (`#wrapper > p`) can't be used (along with most other
+  types of selectors as well).
 * Ergonomic niceties like `rem` are out.
 
 After a few false starts I fell back to a layout that
@@ -138,7 +137,7 @@ used [Douceur][douceur] to inline it for email.
 
 In the spirit of minimizing the number of components that
 I'm maintaining, I reused the code written for this site
-([sorg]) to also render my newsletter's HTML and archives.
+([sorg]) to render my newsletter's HTML and archives.
 
 During development, [fswatch] feeds change events to a
 build executable so that I can quickly iterate on content
@@ -146,9 +145,9 @@ and design. When I'm satisfied, [another executable][exec]
 compiles the final HTML, inlines CSS, and generates a list
 message using Mailgun's API. By default it sends a single
 initial email to my personal address so that I can vet the
-content for a final time, and keep an eye out for any
-rendering problems that might be email-specific. An
-additional `-live` argument sends it for real.
+content a final time, and keep an eye out for any rendering
+problems that might be email-specific. An additional
+`-live` argument sends it for real.
 
 ## Subscription management (#subscription-management)
 
@@ -166,7 +165,7 @@ it should be micro enough enough that I won't have to look
 at it very often. I chose Go for the job because it's got a
 remarkable track record for API stability and minimal
 upgrade churn. I'm hopeful that in ten years it'll still be
-running as expected with minimal maintenance on my part.
+running with minimal intervention on my part.
 
 ## Passages & Glass (#passages)
 
@@ -177,6 +176,7 @@ touches compared to what I'd put in a blog post. If this
 sounds like something that interests you, consider [signing
 up to receive it][signup]. I won't bother you often.
 
+[acid2]: https://en.wikipedia.org/wiki/Acid2
 [douceur]: https://github.com/aymerick/douceur
 [email-css]: https://www.campaignmonitor.com/css/
 [exec]: https://github.com/brandur/sorg/blob/master/cmd/sorg-passages/main.go
