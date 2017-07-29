@@ -59,7 +59,26 @@ reliable. I poked around their control panel for a while
 and experimented by sending a few messages to myself with
 their Go SDK, and it was off to the races.
 
-!fig src="/assets/newsletters/passages-001.png" caption="The first issue of Passages & Glass successfully rendering in Google Mail (after considerable pain)."
+``` go
+mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
+
+subject := fmt.Sprintf("Passages & Glass %s — %s",
+    passage.Issue, passage.Title)
+
+message := mailgun.NewMessage(
+    fromAddress,
+    subject,
+    passage.ContentRaw,
+    recipient)
+message.SetReplyTo(replyToAddress)
+message.SetHtml(html)
+
+resp, _, err := mg.Send(message)
+if err != nil {
+    log.Fatal(err)
+}
+log.Printf(`Sent to: %s (response: "%s")`, recipient, resp)
+```
 
 ## Pidgin CSS (#css)
 
@@ -112,6 +131,8 @@ offers a maximum in the tradeoff between simplicity and
 style: a single centered column. I wrote CSS in my
 templates with normal `<style>` tags in my templates, and
 used [Douceur][douceur] to inline it for email.
+
+!fig src="/assets/newsletters/passages-001.png" caption="The first issue of Passages & Glass successfully rendering in Google Mail (after considerable pain)."
 
 ## The architecture of a newsletter (#architecture)
 
