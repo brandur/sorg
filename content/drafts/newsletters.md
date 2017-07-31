@@ -3,6 +3,7 @@ title: "Pseudo-HTML and Pidgin CSS: Building an Email Newsletter"
 published_at: 2017-07-28T17:35:07Z
 hook: Building a toolchain for sending an email newsletter,
   and the state of HTML and CSS in email.
+hook_image: true
 ---
 
 After a recent trip to Portland, I decided to start writing
