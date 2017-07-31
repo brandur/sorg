@@ -92,10 +92,10 @@ func TestTransformFigures(t *testing.T) {
 	assert.Equal(t, `
 <figure>
   <p><a href="fig-src"><img src="fig-src" class="overflowing"></a></p>
-  <figcaption>Caption with " quote.</figcaption>
+  <figcaption>Caption with some "" quote.</figcaption>
 </figure>
 `,
-		transformFigures(`!fig src="fig-src" caption="Caption with \" quote."`, nil),
+		transformFigures(`!fig src="fig-src" caption="Caption with some \"\" quote."`, nil),
 	)
 }
 
