@@ -1,9 +1,8 @@
 ---
 title: "Pseudo-HTML and Pidgin CSS: Building an Email Newsletter"
 published_at: 2017-07-28T17:35:07Z
-hook: Finding a backend and building a toolchain for
-  sending an email newsletter. Realizations that
-  standardization in email HTML and CSS is a distant dream.
+hook: Building a toolchain for sending an email newsletter,
+  and the state of HTML and CSS in email.
 ---
 
 After a recent trip to Portland, I decided to start writing
