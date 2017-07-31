@@ -7,31 +7,34 @@ hook: Finding a backend and building a toolchain for
 ---
 
 After a recent trip to Portland, I decided to start writing
-a newsletter. I don't post on Facebook very often and am
-not very good at staying in touch with friends and family,
-so a curated message that I could send every so often
-describing what I'm up to seemed like a good way to help
-with that problem. I've been a subscriber to a few high
-quality newsletters from other people for years, and
-reading them has always been something that I've enjoyed.
+a newsletter. I don't post on Facebook or other social very
+often very often, and don't otherwise do a good job of
+staying in touch with friends and family, so I'm always on
+the lookout for ways to develop good habits to help address
+that. I've been a subscriber to a few high quality
+newsletters from other people for years and reading them
+has always been something that I've enjoyed, so publishing
+my own newsletter seemed like a worthwhile experiment to
+the end of of doing a better job of staying connected.
 
-I also like the idea of supporting the independent web. I'm
-one of the holdouts who refuses to move to a centralized
-publishing service, or publish content exclusively a social
-network. Bloggers used to have a powerful distribution
-channel in the form of RSS, and although the technology
-still exists today, but it's been fading for years, with
-more and more people moving exclusively towards their
-favorite social platform for content discovery. Email is a
-flawed technology in many ways, but it's one of the few
-communication channels that every connected person in the
-can reliably be expected to have, and it fully supports
-content more than 140 characters long and sending rich
-media over open standards.
+As one of the seemingly few holdouts who refuses to move to
+a centralized publishing service (or publish content
+exclusively to a social network), I also like the idea of
+supporting the independent web. Bloggers used to have a
+powerful distribution channel in the form of RSS, and
+although the technology still exists today, but it's been
+fading for years, with more people moving exclusively
+towards their favorite social platform for content
+discovery. Email is a flawed technology in many ways, but
+it's one of the few communication channels that every
+connected person in the can reliably be expected to have,
+and it fully supports content more than 140 characters long
+and sending rich media over open standards.
 
-This post contains nothing revelatory, but describes a few
-of the building blocks I used to build a modern newsletter,
-and some of the surprises along the way.
+This article doesn't contain anything revelatory, but goes
+through a few of the tools and services that I used to
+build a newsletter, and a few of the things that surprised
+me along the way.
 
 ## The right shape of service (#service)
 
@@ -54,12 +57,17 @@ management to someone else.
 After a little more Googling I discovered that Mailgun
 offered an API for mailing lists. I've been using them for
 sending mail for years at Heroku, then at Stripe, and their
-service has been well-designed and reliable. I poked around
-their control panel for a while and experimented by sending
-a few messages to myself with their Go SDK, and it was off
-to the races.
+service has been well-designed and reliable. Even better,
+at the email volumes that I'll be working with I'm unlikely
+to ever leave the free tier, and even beyond that their
+prices are good. I poked around their control panel for a
+while and experimented by sending a few messages to myself
+with their Go SDK, and it was off to the races.
 
 ``` go
+// Sample code working with the Mailgun SDK -- build a
+// message, add HTML and plaintext content, and send away.
+
 mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
 
 message := mailgun.NewMessage(
@@ -85,11 +93,11 @@ standardizing how HTML and CSS are rendered across
 browsers, and during the time some huge victories were won.
 Progressively more sophisticated tests like Acid2 and Acid3
 dragged browsers up to spec and established widespread
-consistency in how they render the same code. Even hopeless
-stragglers like IE would eventually be made to fall in
-line. I'd naively believed that this was a war that had
-been won, only to realize that this whole time there's been
-a battle raging on the frontier of email.
+consistency in how they render the same code. Even
+straggers like IE that most had deemed hopeless were made
+to fall in line. I'd naively assumed that this was a war
+that had long since been won, only to realize that on the
+email front, the battle's been quagmired for years.
 
 Email clients are a million miles away from rendering
 anything that's even remotely compliant with anything, and
@@ -145,7 +153,7 @@ and design. When I'm satisfied, [another executable][exec]
 compiles the final HTML, inlines CSS, and generates a list
 message using Mailgun's API. By default it sends a single
 initial email to my personal address so that I can vet the
-content a final time, and keep an eye out for any rendering
+content a final time and keep an eye out for any rendering
 problems that might be email-specific. An additional
 `-live` argument sends it for real.
 
@@ -175,6 +183,8 @@ products, and software, but with a few more personal
 touches compared to what I'd put in a blog post. If this
 sounds like something that interests you, consider [signing
 up to receive it][signup]. I won't bother you often.
+
+!fig src="/assets/newsletters/chihuly-glass.jpg" caption="My newsletter is called \"Passages & Glass\." Here's a photo from the Chihuly Garden and Glass museum in Seattle."
 
 [acid2]: https://en.wikipedia.org/wiki/Acid2
 [douceur]: https://github.com/aymerick/douceur
