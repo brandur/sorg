@@ -184,7 +184,7 @@ touches compared to what I'd put in a blog post. If this
 sounds like something that interests you, consider [signing
 up to receive it][signup]. I won't bother you often.
 
-!fig src="/assets/newsletters/chihuly-glass.jpg" caption="My newsletter is called \"Passages & Glass\." Here's a photo from the Chihuly Garden and Glass museum in Seattle."
+!fig src="/assets/newsletters/chihuly-glass.jpg" caption="My newsletter is called \"Passages & Glass.\" Here's a photo from the Chihuly Garden and Glass museum in Seattle."
 
 [acid2]: https://en.wikipedia.org/wiki/Acid2
 [douceur]: https://github.com/aymerick/douceur
