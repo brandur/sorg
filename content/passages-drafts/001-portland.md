@@ -275,10 +275,10 @@ Robot][mr-robot] could have dreamt them up.
 
 You may have heard that Bitcoin recently forked a new
 currency called Bitcoin Cash (see [this article][cash] for
-some good background information). Bitcoin Cash (BCC) seems
-like it'll be a relatively minor fork, probably with only
-around 10% of Bitcoin's mining power at least in the
-beginning, but a larger disaster was only narrowly avoided.
+some good background information). Although this seems like
+it'll be a relatively minor fork, probably starting with
+only around 10% of Bitcoin's total mining power, a larger
+disaster was only narrowly averted.
 
 In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
 MB limit on Bitcoin's blocksize to protect the network from
