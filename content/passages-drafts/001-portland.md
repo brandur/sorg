@@ -330,23 +330,22 @@ $50M at the time). The fork reversed the theft, but
 fractured the network permanently.
 
 These days I feel similarly about cryptocurrencies as my
-colleague Patrick McKenzie, who I think puts it best ([when
+colleague Patrick M., who I think puts it best ([when
 asked][patio11] what subject he disagrees with others in
 the valley on):
 
-> In Silicon Valley? I'd go with "The fundamental
-> innovation in Bitcoin the social dynamics of the gold
-> rush phase, which distribute cryptocurrency tokens widely
-> for almost free. This creates a self-organized
-> distributed boiler room to market Bitcoin. Bitcoin needs
-> nothing else to get as big as it has; this is convenient
-> because it has nothing else. Bitcoin has no utility as a
-> means of transaction or a store of value. The blockchain
-> is the world's worst database. The long line of very
-> smart people on the other side of this bet have been
-> scammed, are scamming, or both. Bitcoin will,
-> accordingly, go to zero with the inevitability of
-> gravity."
+> I'd go with "The fundamental innovation in Bitcoin the
+> social dynamics of the gold rush phase, which distribute
+> cryptocurrency tokens widely for almost free. This
+> creates a self-organized distributed boiler room to
+> market Bitcoin. Bitcoin needs nothing else to get as big
+> as it has; this is convenient because it has nothing
+> else. Bitcoin has no utility as a means of transaction or
+> a store of value. The blockchain is the world's worst
+> database. The long line of very smart people on the other
+> side of this bet have been scammed, are scamming, or
+> both. Bitcoin will, accordingly, go to zero with the
+> inevitability of gravity."
 
 But with Bitcoin still trading at around $2800 USD, so far
 I've been wrong at every turn. Maybe these
