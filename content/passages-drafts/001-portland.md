@@ -284,14 +284,14 @@ In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
 MB limit on Bitcoin's blocksize to protect the network from
 being attacked with large fake blocks. This had the side
 effect of limiting the Bitcoin network to seven
-transactions per second (t/s) in theory, but with the real
-number closer to 2.3 t/s. As Bitcoin's popularity has
-increased, this limit has become a real problem because
-there's more demand than capacity. Whereas previously the
-fee to settle a transaction may have been only a few cents,
-its since climbed to as high as $5, and with transactions
-taking days to be confirmed. Small and timely purchases
-became effectively impossible.
+transactions per second in theory, but with the real number
+closer to 2.3 transactions. As Bitcoin's popularity has
+increased, the limit has become a serious problem because
+there's far more demand than capacity. Whereas previously
+the fee to settle a transaction may have been only a few
+cents, its since climbed to as high as $5, and with
+transactions taking days to be confirmed. Small and timely
+purchases became effectively impossible.
 
 The debate on how to solve the problem has been raging
 heatedly for years. Originally more radical solutions were
