@@ -28,8 +28,9 @@ favorite social platform for content discovery. Email is a
 flawed technology in many ways, but it's one of the few
 communication channels that every connected person in the
 can reliably be expected to have, and it fully supports
-sending rich media over open standards, and even content
-more than 140 characters long.
+sending rich media (images, links, videos, quotes, etc.)
+over open standards, and even content more than 140
+characters long.
 
 There's nothing revelatory here, but I'll through a few of
 the tools and services that I used, and some of the things
@@ -44,8 +45,7 @@ at they either wanted to paste a branded footer on the end
 of everything you send, have you use a horrible WYSIWYG
 editor, or both; I also wanted to archive old copies on the
 web somewhere, and it was looking like I'd have to reinvent
-a custom layer on top of whatever service I ended up using
-anyway.
+a custom layer on top of whatever service I ended up using.
 
 I sure wasn't about to start sending email myself, so I
 still wanted to use a service, but kept looking for one
