@@ -282,52 +282,52 @@ disaster was only narrowly averted.
 
 In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
 MB limit on Bitcoin's blocksize to protect the network from
-being attacked with large fake blocks. This had the side
-effect of limiting the Bitcoin network to seven
-transactions per second in theory, but with the real number
-closer to 2.3 transactions. As Bitcoin's popularity has
-increased, the limit has become a serious problem because
-there's far more demand than capacity. Whereas previously
-the fee to settle a transaction may have been only a few
-cents, its since climbed to as high as $5, and with
-transactions taking days to be confirmed. Small and timely
-purchases became effectively impossible.
+attackers sending large fake blocks. This had the
+unfortunate side effect of limiting the Bitcoin network to
+seven transactions per second in theory, but with the real
+number closer to 2.3 transactions. As Bitcoin's popularity
+has increased, the limit has become a serious problem
+because there's far more demand than capacity. Whereas
+previously the fee to settle a transaction may have been
+only a few cents, its since climbed to as high as $5, and
+with transactions taking days to be confirmed. Small and
+timely purchases are effectively impossible.
 
 The debate on how to solve the problem has been raging
 heatedly for years. Originally more radical solutions were
 proposed like taking the blocksize to straight 20 MB, or
 BIP101, which suggested increasing to 8MB and having it
 further increase by 40% every year to keep pace with
-Moore's Law. More recently, "Segwit" (segregated witness)
+Moore's Law. More recently, "Segwit" ("segregated witness")
 was proposed, which moved signatures into a separate
 extension block to leave more room for transactions and
 increase the effective blocksize to 1.7 MB. Buy-in for
 Segwit was low at ~35% approval with most miners preferring
-a direct increase in blocksize. To build consensus, Segwit
-was revised to Segwit2x, which still offloads signatures
-but also promised to double blocksize within three months
-of release.
+a direct increase in blocksize instead. To build consensus,
+Segwit was revised to Segwit2x, which still segregates
+signatures, but also promised to double blocksize within
+three months of release.
 
-Right up until Segwit was turned on (August 1st), new
-splinter groups were still being formed around the concept
-of "User Activated Soft Fork" (UASF), which wanted to
-implement Segwit without the blocksize increase, and "User
-Activated Hard Fork" (UAHF) which promises a hard fork if
-Segwit2x reneged on their promise to double the blocksize.
-It doesn't look like either will occur, but another project
-that wanted to solve the capacity problem through a
-straight up increase of blocksize to 8MB _did_ fork the
-network. That's Bitcoin Cash.
+Right up until Segwit was turned on (August 1st), competing
+ideological groups were still being formed around concepts
+like a "User Activated Soft Fork" (UASF), which wanted to
+implement Segwit without the blocksize increase, and a
+"User Activated Hard Fork" (UAHF) which promises a hard
+fork if Segwit2x reneged on their promise to double the
+blocksize. It doesn't look like either will occur, but
+another project that wanted to solve the capacity problem
+through a straight up increase of blocksize to 8MB _did_
+fork the network. That's Bitcoin Cash.
 
 Needless to say these sorts of close calls don't give
-everyone down here tremendous confidence in cryptocurrency.
-And even Bitcoin's problems pale in comparison to
-alternatives like Ethereum, which had to fork in 2016 after
-a hacker penetrated their libertarian decentralized
-autonomous organization, [the DAO][dao], and made off with
-3.6M Ether (a third of its total funds, ostensibly worth
-$50M at the time). The fork reversed the theft, but
-fractured the network permanently.
+everyone down here tremendous confidence in the future of
+cryptocurrency. And even Bitcoin's problems pale in
+comparison to alternatives like Ethereum, which forked in
+2016 after a hacker penetrated their very libertarian
+Decentralized Autonomous Organization ([the DAO][dao]), and
+made off with 3.6M Ether (a third of its total funds,
+ostensibly worth $50M at the time). The fork reversed the
+theft, but fractured the network forever.
 
 These days I feel similarly about cryptocurrencies as my
 colleague Patrick M., who I think puts it best ([when
