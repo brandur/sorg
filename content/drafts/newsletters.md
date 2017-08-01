@@ -8,14 +8,14 @@ hook_image: true
 
 After a recent trip to Portland, I decided to try writing a
 newsletter. I don't post on Facebook or other social very
-often very often, and don't otherwise do a good job of
-staying in touch with friends and family, so I'm always on
-the lookout for ways to develop good habits to help address
-that. I've been a subscriber to a few high quality
-newsletters from other people for years and reading them
-has always been something that I've enjoyed, so publishing
-my own newsletter seemed like a worthwhile experiment to
-the end of of doing a better job of staying connected.
+often, and don't otherwise do a good job of staying in
+touch with friends and family, so I'm always on the lookout
+for ways to develop good habits to help address that. I've
+been a subscriber to a few high quality newsletters from
+other people for years and reading them has always been
+something that I've enjoyed, so publishing my own
+newsletter seemed like a worthwhile experiment to the end
+of of doing a better job of staying connected.
 
 As one of the seemingly few holdouts who refuses to move to
 a centralized publishing service (or publish content
