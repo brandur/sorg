@@ -105,8 +105,8 @@ they're all uncompliant in their own exotic ways. Some
 clients are better than others, and somewhat ironically the
 companies that we tend to think of as the most advanced in
 the world are some of the most regressive. If you threw
-[Acid2][acid2] at Google Mail for example, you'd be lucky
-to see a lone yellow pixel on screen.
+[Acid2][acid2] at Google Mail, you'd be lucky to see a lone
+yellow pixel on screen.
 
 The newsletter industry has dealt with this less than
 optimal state of affairs by developing a form of "pidgin
