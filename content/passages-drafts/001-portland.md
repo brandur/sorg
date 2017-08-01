@@ -326,8 +326,8 @@ alternatives like Ethereum, which had to fork in 2016 after
 a hacker penetrated their libertarian decentralized
 autonomous organization, [the DAO][dao], and made off with
 3.6M Ether (a third of its total funds, ostensibly worth
-$50M at the time). The fork was initiated to reverse the
-theft.
+$50M at the time). The fork reversed the theft, but
+fractured the network permanently.
 
 These days I feel similarly about cryptocurrencies as my
 colleague Patrick McKenzie, who I think puts it best ([when
