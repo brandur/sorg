@@ -10,31 +10,30 @@ After a recent trip to Portland, I decided to try writing a
 newsletter. I don't post on Facebook or other social very
 often, and don't otherwise do a good job of staying in
 touch with friends and family, so I'm always on the lookout
-for ways to develop good habits to help address that. I've
-been a subscriber to a few high quality newsletters from
-other people for years and reading them has always been
-something that I've enjoyed, so publishing my own
-newsletter seemed like a worthwhile experiment to the end
-of of doing a better job of staying connected.
+for ways to develop better habits to help address that.
+I've been a subscriber to a few high quality newsletters
+from other people for years and reading them is something I
+really enjoy, so publishing my own seemed like a worthwhile
+experiment to the end of of doing a better job of staying
+connected.
 
-As one of the seemingly few holdouts who refuses to move to
-a centralized publishing service (or publish content
-exclusively to a social network), I also like the idea of
-supporting the independent web. Bloggers used to have a
-powerful distribution channel in the form of RSS, and
-although the technology still exists today, but it's been
-fading for years, with more people moving exclusively
-towards their favorite social platform for content
-discovery. Email is a flawed technology in many ways, but
-it's one of the few communication channels that every
-connected person in the can reliably be expected to have,
-and it fully supports content more than 140 characters long
-and sending rich media over open standards.
+As one of the holdouts who refuses to move to a centralized
+publishing service (or publish content exclusively to a
+social network), I also like the idea of supporting the
+independent web. Bloggers used to have a powerful
+distribution channel in the form of RSS, and although the
+technology still exists today, but it's been fading for
+years, with more people moving exclusively towards their
+favorite social platform for content discovery. Email is a
+flawed technology in many ways, but it's one of the few
+communication channels that every connected person in the
+can reliably be expected to have, and it fully supports
+sending rich media over open standards, and even content
+more than 140 characters long.
 
-This article doesn't contain anything revelatory, but goes
-through a few of the tools and services that I used to
-build a newsletter, and a few of the things that surprised
-me along the way.
+There's nothing revelatory here, but I'll through a few of
+the tools and services that I used, and some of the things
+that surprised me along the way.
 
 ## The right shape of service (#service)
 
@@ -97,32 +96,34 @@ consistency in how they render the same code. Even
 straggers like IE that most had deemed hopeless were made
 to fall in line. I'd naively assumed that this was a war
 that had long since been won, only to realize that on the
-email front, the battle's been quagmired for years.
+email front, the battle's still going, and has been
+quagmired for years.
 
 Email clients are a million miles away from rendering
 anything that's even remotely compliant with anything, and
 they're all uncompliant in their own exotic ways. Some
 clients are better than others, and somewhat ironically the
 companies that we tend to think of as the most advanced in
-the world are some of the most regressive, like Google. If
-you threw [Acid2][acid2] at Google Mail, you'd be lucky to
-see a lone yellow pixel on screen.
+the world are some of the most regressive. If you threw
+[Acid2][acid2] at Google Mail for example, you'd be lucky
+to see a lone yellow pixel on screen.
 
-The newsletter industry has dealt with this sad state of
-affairs by developing a form of "pidgin CSS" made up of the
-lowest common denominator of what the world's diverse set
-of clients will handle. [This CSS support
-matrix][email-css] does a good job of showing just how
-divergent (and underwhelming) feature support is between
-clients. Best practice is to keep HTML email as basic as
-possible. Fancy CSS keywords like `float` are best avoided,
-anything developed this decade like `flex` and `grid` are
-totally out, and `<table>` is still the state of the art
-when it comes to building more complex layouts.
+The newsletter industry has dealt with this less than
+optimal state of affairs by developing a form of "pidgin
+CSS" made up of the lowest common denominator of what the
+world's diverse set of clients will handle. [Campaign
+Monitor's CSS support matrix][email-css] does a good job of
+showing just how divergent (and underwhelming) feature
+support is between clients. Best practice is to keep HTML
+email as basic as possible. Fancy CSS keywords like `float`
+are best avoided, anything developed this decade like
+`flex` and `grid` are totally out, and `<table>` is still
+the state of the art when it comes to building more complex
+layouts.
 
 I found that everything beyond the most trivially basic CSS
 usually caused problems in at least one mail client (often
-Google Mail). For example:
+Google Mail):
 
 * `<style>` tags aren't supported by Google Mail (meaning a
   very healthy fraction of all potential readers), so all
@@ -168,9 +169,9 @@ host a form for you that allows users to subscribe.
 My site is static, so I built a small form that runs as a
 [Go executable][passages-signup] and provides this one
 function. It's a little painful that I need to run a
-separate service to handle this uninteresting function, but
-it should be micro enough enough that I won't have to look
-at it very often. I chose Go for the job because it's got a
+separate service to handle this very mundane job, but it
+should be micro enough enough that I won't have to look at
+it very often. I chose Go for the job because it's got a
 remarkable track record for API stability and minimal
 upgrade churn. I'm hopeful that in ten years it'll still be
 running with minimal intervention on my part.
