@@ -6,8 +6,8 @@ hook: Building a toolchain for sending an email newsletter,
 hook_image: true
 ---
 
-After a recent trip to Portland, I decided to start writing
-a newsletter. I don't post on Facebook or other social very
+After a recent trip to Portland, I decided to try writing a
+newsletter. I don't post on Facebook or other social very
 often very often, and don't otherwise do a good job of
 staying in touch with friends and family, so I'm always on
 the lookout for ways to develop good habits to help address
