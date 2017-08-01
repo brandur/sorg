@@ -109,7 +109,7 @@ you threw [Acid2][acid2] at Google Mail, you'd be lucky to
 see a lone yellow pixel on screen.
 
 The newsletter industry has dealt with this sad state of
-affairs by developing a form of pidgin CSS made up of the
+affairs by developing a form of "pidgin CSS" made up of the
 lowest common denominator of what the world's diverse set
 of clients will handle. [This CSS support
 matrix][email-css] does a good job of showing just how
@@ -130,7 +130,7 @@ Google Mail). For example:
 * Negative margins don't work.
 * Descendant selectors (`#wrapper p`) and child selectors
   (`#wrapper > p`) can't be used (along with most other
-  types of selectors as well).
+  types of selectors).
 * Ergonomic niceties like `rem` are out.
 
 After a few false starts I fell back to a layout that
