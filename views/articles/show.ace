@@ -30,7 +30,7 @@
         {{end}}
         .toc
           {{if ne .Article.TOC ""}}
-            h2 Table of Contents
+            h2 Contents
             {{HTML .Article.TOC}}
             .divider-short
           {{end}}
