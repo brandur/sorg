@@ -1,5 +1,6 @@
 ---
-title: The Inaugural Issue, Portland, Flyknit, and Go
+title: The Inaugural Issue, Portland, Flyknit, Go, and
+  Digital Tulips
 published_at: 2017-07-15T19:48:53Z
 ---
 
@@ -265,6 +266,92 @@ project will still compile on the contemporary Go compiler
 of ten years from now. I don't know what the best modern
 tech stack is, but Go's is one of the good ones.
 
+## On cryptocurrency (#cryptocurrency)
+
+Cryptocurrency is currently one of our greatest forms of
+entertainment in the valley, with plot twists so frequent
+and so dramatic that not even the best writers on [Mr.
+Robot][mr-robot] could have dreamt them up.
+
+You may have heard that Bitcoin recently forked a new
+currency called Bitcoin Cash (see [this article][cash] for
+some good background information). Bitcoin Cash (BCC) seems
+like it'll be a relatively minor fork, probably with only
+around 10% of Bitcoin's mining power at least in the
+beginning, but a larger disaster was only narrowly avoided.
+
+In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
+MB limit on Bitcoin's blocksize to protect the network from
+being attacked with large fake blocks. This had the side
+effect of limiting the Bitcoin network to seven
+transactions per second (t/s) in theory, but with the real
+number closer to 2.3 t/s. As Bitcoin's popularity has
+increased, this limit has become a real problem because
+there's more demand than capacity. Whereas previously the
+fee to settle a transaction may have been only a few cents,
+its since climbed to as high as $5, and with transactions
+taking days to be confirmed. Small and timely purchases
+became effectively impossible.
+
+The debate on how to solve the problem has been raging
+heatedly for years. Originally more radical solutions were
+proposed like taking the blocksize to straight 20 MB, or
+BIP101, which suggested increasing to 8MB and having it
+further increase by 40% every year to keep pace with
+Moore's Law. More recently, "Segwit" (segregated witness)
+was proposed, which moved signatures into a separate
+extension block to leave more room for transactions and
+increase the effective blocksize to 1.7 MB. Buy-in for
+Segwit was low at ~35% approval with most miners preferring
+a direct increase in blocksize. To build consensus, Segwit
+was revised to Segwit2x, which still offloads signatures
+but also promised to double blocksize within three months
+of release.
+
+Right up until Segwit was turned on (August 1st), new
+splinter groups were still being formed around the concept
+of "User Activated Soft Fork" (UASF), which wanted to
+implement Segwit without the blocksize increase, and "User
+Activated Hard Fork" (UAHF) which promises a hard fork if
+Segwit2x reneged on their promise to double the blocksize.
+It doesn't look like either will occur, but another project
+that wanted to solve the capacity problem through a
+straight up increase of blocksize to 8MB _did_ fork the
+network. That's Bitcoin Cash.
+
+Needless to say these sorts of close calls don't give
+everyone down here tremendous confidence in cryptocurrency.
+And even Bitcoin's problems pale in comparison to
+alternatives like Ethereum, which had to fork in 2016 after
+a hacker penetrated their libertarian decentralized
+autonomous organization, [the DAO][dao], and made off with
+3.6M Ether (a third of its total funds, ostensibly worth
+$50M at the time). The fork was initiated to reverse the
+theft.
+
+These days I feel similarly about cryptocurrencies as my
+colleague Patrick McKenzie, who I think puts it best ([when
+asked][patio11] what subject he disagrees with others in
+the valley on):
+
+> In Silicon Valley? I'd go with "The fundamental
+> innovation in Bitcoin the social dynamics of the gold
+> rush phase, which distribute cryptocurrency tokens widely
+> for almost free. This creates a self-organized
+> distributed boiler room to market Bitcoin. Bitcoin needs
+> nothing else to get as big as it has; this is convenient
+> because it has nothing else. Bitcoin has no utility as a
+> means of transaction or a store of value. The blockchain
+> is the world's worst database. The long line of very
+> smart people on the other side of this bet have been
+> scammed, are scamming, or both. Bitcoin will,
+> accordingly, go to zero with the inevitability of
+> gravity."
+
+But with Bitcoin still trading at around $2800 USD, so far
+I've been wrong at every turn. Maybe these
+[tulips][tulipmania] stay in bloom forever.
+
 ## Stay connected (#connected)
 
 This one's run a little long, so thank you for reading it!
@@ -274,12 +361,17 @@ something interesting, I emplore you to drop me a line at
 [brandur@brandur.org][mail] in case I don't get to you
 first.
 
+[cash]: https://blog.bridge21.io/before-and-after-the-great-bitcoin-fork-17d2aad5d512
+[dao]: https://en.wikipedia.org/wiki/The_DAO_(organization)
 [go]: https://golang.org/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
 [mail]: mailto:brandur@brandur.org
+[mr-robot]: https://en.wikipedia.org/wiki/Mr._Robot_(TV_series)
 [newsletter]: https://brandur.org/newsletter
 [party-bike]: https://en.wikipedia.org/wiki/Party_bike
+[patio11]: https://www.producthunt.com/live/patrick-mckenzie-patio11#comment-452743
 [rust]: https://www.rust-lang.org/en-US/
 [ten-falls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
+[tulipmania]: https://en.wikipedia.org/wiki/Tulip_mania
 [unsubscribe]: %unsubscribe_url%
