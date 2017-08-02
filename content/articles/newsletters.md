@@ -1,8 +1,8 @@
 ---
 title: "Pseudo-HTML and Pidgin CSS: Building an Email Newsletter"
-published_at: 2017-07-28T17:35:07Z
-hook: Building a toolchain for sending an email newsletter,
-  and the state of HTML and CSS in email.
+published_at: 2017-08-02T14:52:31Z
+hook: Building a toolchain for sending a newsletter, and
+  the dismal state of HTML and CSS in email.
 hook_image: true
 ---
 
@@ -53,14 +53,14 @@ control over the visuals, but to fully offload subscription
 management to someone else.
 
 After a little more Googling I discovered that Mailgun
-offered an API for mailing lists. I've been using them for
-sending mail for years at Heroku, then at Stripe, and their
-service has been well-designed and reliable. Even better,
-at the email volumes that I'll be working with I'm unlikely
-to ever leave the free tier, and even beyond that their
-prices are good. I poked around their control panel for a
-while and experimented by sending a few messages to myself
-with their Go SDK, and it was off to the races.
+offered an API for mailing lists. I've been using Mailgun
+for sending mail for years at Heroku, then at Stripe, and
+their service has been well-designed and reliable. Even
+better, at the email volumes that I'll be working with I'm
+unlikely to ever leave the free tier, and even beyond that
+their prices are good. I poked around their control panel
+for a while and experimented by sending a few messages to
+myself with their Go SDK, and it was off to the races.
 
 ``` go
 // Sample code working with the Mailgun SDK -- build a
