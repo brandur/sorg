@@ -13,7 +13,7 @@ touch with friends and family, so I'm always on the lookout
 for ways to develop better habits to help address that.
 I've been a subscriber to a few high quality newsletters
 from other people for years and reading them is something I
-really enjoy, so publishing my own seemed like a worthwhile
+really enjoy. Publishing my own seemed like a worthwhile
 experiment to the end of of doing a better job of staying
 connected.
 
