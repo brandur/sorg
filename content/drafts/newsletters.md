@@ -27,14 +27,13 @@ years, with more people moving exclusively towards their
 favorite social platform for content discovery. Email is a
 flawed technology in many ways, but it's one of the few
 communication channels that every connected person in the
-can reliably be expected to have, and it fully supports
-sending rich media (images, links, videos, quotes, etc.)
-over open standards, and even content more than 140
-characters long.
+world will reliably have, and it fully supports sending
+rich media (images, links, videos, quotes, etc.) over open
+standards, and even content more than 140 characters long.
 
-There's nothing revelatory here, but I'll through a few of
-the tools and services that I used, and some of the things
-that surprised me along the way.
+There's nothing revelatory here, but I'll go through a few
+of the tools and services that I used, and some of the
+surprises along the way.
 
 ## The right shape of service (#service)
 
