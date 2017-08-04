@@ -89,6 +89,10 @@ html lang="en"
         text-align: center;
       }
 
+      #issue a, #issue a:hover, #issue a:visited {
+        font-weight: normal;
+      }
+
       #passages {
         font-size: 12px;
         margin-top: 0;
