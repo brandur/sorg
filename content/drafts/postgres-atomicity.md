@@ -177,7 +177,15 @@ snapshot, which is performed by [`GetSnapshotData` in
 Snapshot
 GetSnapshotData(Snapshot snapshot)
 {
+    /* xmax is always latestCompletedXid + 1 */
+    xmax = ShmemVariableCache->latestCompletedXid;
+    Assert(TransactionIdIsNormal(xmax));
+    TransactionIdAdvance(xmax);
+
     ...
+
+    snapshot->xmax = xmax;
+}
 ```
 
 This function does a lot of initialization work, but like
@@ -186,13 +194,6 @@ the snapshot's `xmin`, `xmax`, and `*xip`. The easiest of
 these is `xmax`, which is retrieved from shared memory
 managed by the postmaster, which is tracking the `xid`s of
 any transactions that complete (more on this later):
-
-``` c
-/* xmax is always latestCompletedXid + 1 */
-xmax = ShmemVariableCache->latestCompletedXid;
-Assert(TransactionIdIsNormal(xmax));
-TransactionIdAdvance(xmax);
-```
 
 Notice that it's the function's responsibility to add one
 to the last `xid`. This isn't quite as trivial as
