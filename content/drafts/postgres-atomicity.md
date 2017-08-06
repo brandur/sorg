@@ -62,9 +62,9 @@ Postgres manages concurrent access with MVCC.
 Snapshots and transactions are integral ideas to MVCC, and
 we can define them more formally:
 
-* **Snapshot:** A consistent view of a database at some
+* ***Snapshot:*** A consistent view of a database at some
   moment in time.
-* **Transaction:** An ongoing operation where is being
+* ***Transaction:*** An ongoing operation where is being
   read, written, or both. It may commit its changes,
   whereupon all the data it created, modified, or removed
   becomes available at once, or be rolled back, whereupon
