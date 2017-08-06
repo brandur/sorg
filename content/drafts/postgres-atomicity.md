@@ -615,20 +615,21 @@ after it's verified one or the other from the WAL. Future
 operations will use the hint on a tuple if it's available,
 and are saved a trip to the WAL themselves.
 
-[commit]: src/backend/access/transam/xact.c:1939
-[committree]: src/backend/access/transam/transam.c:260
-[didcommit]: src/backend/access/transam/transam.c:124
-[endtransaction]: src/backend/storage/ipc/procarray.c:394
-[gettup]: src/backend/access/heap/heapam.c:478
-[getsnapshotdata]: src/backend/storage/ipc/procarray.c:1508
-[pgxact]: src/include/storage/proc.h:207
-[satisfies]: src/backend/utils/time/tqual.c:962
-[settreestatus]: src/backend/access/transam/clog.c:148
-[snapshot]: src/include/utils/snapshot.h:52
-[tuple]: src/include/access/htup_details.h:116
-[tupleheaders]: src/include/access/htup.h:62
-[xid]: src/include/c.h:397
-[xidadvance]: src/include/access/transam.h:31
+
+[commit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/xact.c#L1939
+[committree]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L259
+[didcommit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L124
+[endtransaction]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/storage/ipc/procarray.c#L394
+[gettup]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/heap/heapam.c#L478
+[getsnapshotdata]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/storage/ipc/procarray.c#L1507
+[pgxact]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/storage/proc.h#L207
+[satisfies]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/utils/time/tqual.c#L962
+[settreestatus]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L148
+[snapshot]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/utils/snapshot.h#L52
+[tuple]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/htup_details.h#L116
+[tupleheaders]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/htup.h#L62
+[xid]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/c.h#L397
+[xidadvance]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/transam.h#L31
 
 [1] Note that changes will eventually be no longer
     available in the WAL, but those will always be beyond a
