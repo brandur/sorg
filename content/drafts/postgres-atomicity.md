@@ -66,11 +66,11 @@ preprocessor magic (in [transam.h][xidadvance]):
 
 /* advance a transaction ID variable, handling wraparound correctly */
 #define TransactionIdAdvance(dest)	\
-	do { \
-		(dest)++; \
-		if ((dest) < FirstNormalTransactionId) \
-			(dest) = FirstNormalTransactionId; \
-	} while(0)
+    do { \
+        (dest)++; \
+        if ((dest) < FirstNormalTransactionId) \
+            (dest) = FirstNormalTransactionId; \
+    } while(0)
 ```
 
 Note that the first few IDs are reserved as special
@@ -123,8 +123,121 @@ running transactions when a snapshot is created.
 
 ## Committing a transaction (#commit)
 
+Transactions committed through [`CommitTransaction` (in
+`xact.c`)][commit]. This function is monstrously complex,
+but again, I'm going to simplify it and call out a couple
+of the most important parts:
+
+``` c
+static void
+CommitTransaction(void)
+{
+    ...
+
+    /*
+     * We need to mark our XIDs as committed in pg_xact.  This is where we
+     * durably commit.
+     */
+    latestXid = RecordTransactionCommit();
+
+    /*
+     * Let others know about no transaction in progress by me. Note that this
+     * must be done _before_ releasing locks we hold and _after_
+     * RecordTransactionCommit.
+     */
+    ProcArrayEndTransaction(MyProc, latestXid);
+
+    ...
+}
+```
+
+Postgres is entirely designed around the idea of
+durability, which dictates that even in extreme events like
+a crash or power loss, committed transactions should stay
+committed. Like many good systems, it uses a write-ahead
+log (WAL, or often called a "clog" or "xlog" in Postgres
+lingo) to achieve this durability. Every committed change
+is written and flushed to disk, and even in the event of
+sudden termination, Postgres can replay what it finds in
+the WAL to recover any changes didn't make it into its data
+files.
+
+`RecordTransactionCommit` from the snippet above handles
+getting a change to the WAL:
+
+``` c
+static TransactionId
+RecordTransactionCommit(void)
+{
+    bool markXidCommitted = TransactionIdIsValid(xid);
+
+    /*
+     * If we haven't been assigned an XID yet, we neither can, nor do we want
+     * to write a COMMIT record.
+     */
+    if (!markXidCommitted)
+    {
+        ...
+    } else {
+        XactLogCommitRecord(xactStopTimestamp,
+                            nchildren, children, nrels, rels,
+                            nmsgs, invalMessages,
+                            RelcacheInitFileInval, forceSyncCommit,
+                            MyXactFlags,
+                            InvalidTransactionId /* plain commit */ );
+
+        ....
+    }
+
+    if ((wrote_xlog && markXidCommitted &&
+         synchronous_commit > SYNCHRONOUS_COMMIT_OFF) ||
+        forceSyncCommit || nrels > 0)
+    {
+        XLogFlush(XactLastRecEnd);
+
+        /*
+         * Now we may update the CLOG, if we wrote a COMMIT record above
+         */
+        if (markXidCommitted)
+            TransactionIdCommitTree(xid, nchildren, children);
+    }
+
+    ...
+}
+```
+
+Another core Postgres philosophy is performance. If a
+transaction was never assigned a `xid` because it didn't
+affect the state of the database, Postgres skips writing it
+to the wAL. If a transaction was aborted, we write it to
+the WAL, but don't bother to send a flush because even
+though it's completed, it doesn't affect data so it's not
+catastrophic if we lose it.
+
+Note also that the WAL is written in two parts. We write
+the bulk of the information out in `XactLogCommitRecord`,
+and if the transaction committed, we go through in a second
+pass with `TransactionIdCommitTree` and set the status of
+each record to "committed". It's only after this operation
+completes that we can formally say that the transaction was
+durably committed.
+
+`TransactionIdCommitTree` commits a "tree" because a commit
+may have subcommits. I won't get into subcommits too much,
+but it's worth nothing that because
+`TransactionIdCommitTree` cannot be guaranteed to be
+atomic, each subcommit is recorded as committed and then
+the parent is recorded as a final step. When Postgres is
+reading the WAL on recovery, subcommits aren't considered
+to be committed even if they're marked as such until the
+parent record is read and confirmed committed. This is
+because the system could have successfully recorded every
+subcommit, but then crashed before it could write the
+parent.
+
 ## Checking visibility and hint bits (#visibility)
 
+[commit]: src/backend/access/transam/xact.c:1939
 [getsnapshotdata]: src/backend/storage/ipc/procarray.c:1508
 [xid]: src/include/c.h:397
 [xidadvance]: src/include/access/transam.h:31
