@@ -1,5 +1,5 @@
 ---
-title: A Dive Into How Postgres Makes Transactions Atomic
+title: How Postgres Makes Transactions Atomic
 published_at: 2017-08-06T17:10:18Z
 location: San Francisco
 hook: TODO
@@ -28,7 +28,7 @@ over quite a few details for the purposes of digestibility.
 If I didn't, this article would be about a thousand pages
 long.
 
-## MVCC (#mvcc)
+## Managing concurrent access (#mvcc)
 
 In a very naive database, multiple clients trying to access
 data at the same time would run into contention as one
@@ -57,7 +57,7 @@ removed periodically by a background "vacuum" process.
 
 Postgres manages concurrent access with MVCC.
 
-## Snapshots and Transactions (#snapshots-transactions)
+## Transactions, tuples, and snapshots (#snapshots-transactions)
 
 Snapshots and transactions are integral ideas to MVCC, and
 we can define them more formally:
@@ -104,6 +104,47 @@ the smallest `xid` of any transactions that are still in
 flight. It's tracked because as long as a transaction is in
 progress, a vacuum process is not allowed to remove any
 tuples that are still relevant across this `xid` boundary.
+
+### Lifetime-aware tuples (#tuples)
+
+A tuple ([from `htup.h`][tuple] [and
+`htup_details.h`][tupleheaders]):
+
+``` c
+typedef struct HeapTupleData
+{
+    uint32          t_len;         /* length of *t_data */
+    ItemPointerData t_self;        /* SelfItemPointer */
+    Oid             t_tableOid;    /* table the tuple came from */
+    HeapTupleHeader t_data;        /* -> tuple header and data */
+} HeapTupleData;
+
+/* ... which contains a header */
+struct HeapTupleHeaderData
+{
+    union
+    {
+        HeapTupleFields t_heap;
+        DatumTupleFields t_datum;
+    } t_choice;
+
+    ItemPointerData t_ctid;     /* current TID of this or newer tuple (or a
+                                 * speculative insertion token) */
+
+    ...
+}
+
+/* ... which may contain tuple fields */
+typedef struct HeapTupleFields
+{
+    TransactionId t_xmin;        /* inserting xact ID */
+    TransactionId t_xmax;        /* deleting or locking xact ID */
+
+    ...
+} HeapTupleFields;
+```
+
+### Snapshots: xmin, xmax, and xip (#snapshots)
 
 A snapshot is similar (from [snapshot.h][snapshot]):
 
@@ -271,7 +312,7 @@ for (index = 0; index < numProcs; index++)
 snapshot->xmin = xmin;
 ```
 
-`xmin`'s purpose isn't to tell us everything we need to
+`xmin`'s purpose isn't to tell us _everything_ we need to
 know about what's visible to a snapshot, but it acts as a
 useful horizon beyond which we know nothing is visible.
 Therefore it's calculated as the minimum `xid` of all
@@ -436,6 +477,13 @@ ProcArrayEndTransactionInternal(PGPROC *proc, PGXACT *pgxact,
 }
 ```
 
+Remember how when we started a transaction we created a
+snapshot and set its `xmax` to `latestCompletedXid + 1`? By
+setting `latestCompletedXid` to the `xid` of the
+transaction that just committed, we've just made its
+results visible to every new transaction that starts from
+this point forward.
+
 ## Checking visibility (#visibility)
 
 Finally, it's worth addressing how visibility is handled on
@@ -577,6 +625,8 @@ and are saved a trip to the WAL themselves.
 [satisfies]: src/backend/utils/time/tqual.c:962
 [settreestatus]: src/backend/access/transam/clog.c:148
 [snapshot]: src/include/utils/snapshot.h:52
+[tuple]: src/include/access/htup_details.h:116
+[tupleheaders]: src/include/access/htup.h:62
 [xid]: src/include/c.h:397
 [xidadvance]: src/include/access/transam.h:31
 
