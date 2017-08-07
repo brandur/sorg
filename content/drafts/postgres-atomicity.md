@@ -12,7 +12,7 @@ when performing a series of operations against the
 database, either all the changes commit, or they're all
 rolled back.
 
-Since joining a company that uses MognoDB as its primary
+Since joining a company that uses MongoDB as its primary
 data store, and witnessing first-hand the operational
 catastrophe that's the inherent result of not having an
 atomicity guarantee, I've taken a keen interest in
@@ -38,49 +38,26 @@ locking data it needs and having other clients wait on
 reads and writes until they're able to take out locks of
 their own. Most modern databases have a better way: MVCC.
 
-Under MVCC (multi-version concurrency control), instead of
-overwriting data directly, new versions of it may be
-created. The original data is still visible to other
-clients that need it, and the new data stays hidden until
-its own client is ready to commit it.
+Under MVCC (multi-version concurrency control), statements
+execute inside of a ***transaction***, and instead of
+overwriting data directly, they create new versions of it.
+The original data is still available to other clients that
+might need it, and any new data stays hidden until the
+transaction ***commits***.
 
-When a _transaction_ starts it's assigned a _snapshot_ that
+When a transaction starts it takes a ***snapshot*** that
 represents the state of a database at that moment in time.
-The database guarantees that old information is kept
-around long enough to satisfy the requirements of the
-snapshot of the oldest open transaction. For example, if a
-row is deleted it's not immediately removed, but rather
-marked in a way that makes it invisible to any snapshots
-created before the change is committed. Obsolete
-information that's no longer required by any snapshot is
-removed periodically by a background "vacuum" process.
+Databases eventually remove obsolete data by way of a
+background "vacuum" process, but they'll only do so for
+information that's no longer needed by any open snapshots.
 
-Postgres manages concurrent access with MVCC.
+Postgres manages concurrent access with MVCC. Lets take a
+look at how it works.
 
 ## Transactions, tuples, and snapshots (#snapshots-transactions)
 
-Snapshots and transactions are integral ideas to MVCC, and
-we can define them more formally:
-
-* ***Snapshot:*** A consistent view of a database at some
-  moment in time.
-* ***Transaction:*** An ongoing operation where is being
-  read, written, or both. It may commit its changes,
-  whereupon all the data it created, modified, or removed
-  becomes available at once, or be rolled back, whereupon
-  all the changes it made are discarded. A transaction
-  references a snapshot that was captured when the
-  transaction started.
-
-In Postgres, transactions may be identified by a
-transaction ID (called a `xid`), but are assigned one only
-when Postgres deems it necessary. This usually occurs after
-the transaction starts making changes, because nothing it
-did before that could impact other operations in the
-database.
-
-Lets take a look at the data structure that Postgres uses
-to represent a transaction (from [proc.c][pgxact]):
+Here's the data structure that Postgres uses to represent a
+transaction (from [proc.c][pgxact]):
 
 ``` c
 typedef struct PGXACT
@@ -98,16 +75,36 @@ typedef struct PGXACT
 } PGXACT;
 ```
 
-While `xid` may remain unassigned for some time, a
-transaction's `xmin` is assigned immediately. It's set to
-the smallest `xid` of any transactions that are still in
-flight. It's tracked because as long as a transaction is in
-progress, a vacuum process is not allowed to remove any
-tuples that are still relevant across this `xid` boundary.
+Transactions are identified with a `xid` (transaction, or
+"xact" ID), but as an optimization, Postgres will only
+assign a transaction a `xid` if other processes will need
+to care about it because it's started to modify data.
+Readonly transactions can fully execute without ever being
+assigned their own `xid`.
+
+`xmin` is always assigned immediately. It's set to the
+smallest `xid` of any transactions that are still in
+flight, and it's tracked so that a vacuum process doesn't
+remove data that the transaction still needs for its
+snapshot.
 
 ### Lifetime-aware tuples (#tuples)
 
-A tuple ([from `htup.h`][tuple] [and
+Rows of data in Postgres are often referred to as
+***tuples***. While Postgres uses common lookup structures
+like B-trees to make retrievals fast, indexes don't store a
+tuple's full set of data or any of its visibility
+information. Instead, they store a `tid` (tuple ID) that
+can be used to retrieve a row from physical storage,
+otherwise known as "the heap". The `tid` gives Postgres a
+starting point where it can start scanning the heap until
+it finds a valid tuple that satisfies the current
+snapshot's visibility.
+
+Here's the Postgres implementation for a "heap tuple" (as
+opposed to an "index tuple" which is the structure found in
+an index), along with a few other structs that represent
+its header information ([from `htup.h`][tuple] [and
 `htup_details.h`][tupleheaders]):
 
 ``` c
@@ -119,22 +116,15 @@ typedef struct HeapTupleData
     HeapTupleHeader t_data;        /* -> tuple header and data */
 } HeapTupleData;
 
-/* ... which contains a header */
+/* referenced by HeapTupleData */
 struct HeapTupleHeaderData
 {
-    union
-    {
-        HeapTupleFields t_heap;
-        DatumTupleFields t_datum;
-    } t_choice;
-
-    ItemPointerData t_ctid;     /* current TID of this or newer tuple (or a
-                                 * speculative insertion token) */
+    HeapTupleFields t_heap;
 
     ...
 }
 
-/* ... which may contain tuple fields */
+/* referenced by HeapTupleHeaderData */
 typedef struct HeapTupleFields
 {
     TransactionId t_xmin;        /* inserting xact ID */
@@ -144,9 +134,16 @@ typedef struct HeapTupleFields
 } HeapTupleFields;
 ```
 
+Like a transaction, a tuple tracks its own `xmin`, except
+in the tuple's case it's recorded to represent the first
+transaction where the tuple becomes visible (i.e. the one
+that created it). It may also track `xmax` to be the _last_
+transaction where the tuple is visible (i.e. the one that
+deleted it).
+
 ### Snapshots: xmin, xmax, and xip (#snapshots)
 
-A snapshot is similar (from [snapshot.h][snapshot]):
+Here's a snapshot ([from snapshot.h][snapshot]):
 
 ``` c
 typedef struct SnapshotData
@@ -179,24 +176,25 @@ typedef struct SnapshotData
 }
 ```
 
-Like a transaction, a snapshot defines an `xmin`, but
-although it's calculated in the same way, it's for a
-slightly different purpose. A snapshot uses its `xmin` as a
-lower boundary for data that's visible to it. Tuples that
-were deleted or outdated on a transaction with an ID less
-than `xmin` are known to be irrelevant as far as this
-snapshot is concerned.
+A snapshot's `xmin` is calculated the same way as a
+transaction's (i.e. the lowest `xid` amongst running
+transactions when the snapshot is created), but for a
+different prupose.
 
-The snapshot also defines an `xmax`, which is set to the
-last commited `xid` plus one. Like `xmin`, `xmax` is use to
-track the upper boundary of visibility. Rows that were
-created on a transaction with an ID equal or greater than
-`xmax` are invisible to the snapshot.
+A snapshot uses its `xmin` as a lower boundary for data
+visibility. Tuples data created or modified by a
+transaction with a `xid` _smaller_ than a snapshot's `xmin`
+are visible to it.
 
-Lastly, a snapshot also defines `*xip`, an array of all of
-the `xid`s of transactions that were in progress when the
+It also defines an `xmax`, which is set to the last
+commited `xid` plus one. `xmax` tracks the upper bound of
+visibility; transactions with a `xid` _greater to or equal_
+to `xmax` are invisible to the snapshot.
+
+Lastly, a snapshot defines `*xip`, an array of all of the
+`xid`s of transactions that were in progress when the
 snapshot was created. It's created because even though
-`xid`s in `*xip` will be greater than `xmin` (and might
+`xid`s in `*xip` will be smaller than `xmax` (and might
 therefore be considered visible), the snapshot knows to
 keep whatever changes they make hidden. Recall that a
 snapshot represents the state of a database at a moment in
