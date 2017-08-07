@@ -484,17 +484,10 @@ this point forward.
 
 ## Checking visibility (#visibility)
 
-Finally, it's worth addressing how visibility is handled on
-reads. While lookup structures like B-trees are used in
-Postgres to make retrievals fast, these indices don't store
-row data or visibility information. Instead, they store a
-`tid` (tuple ID) that can be used to retrieve a row from
-physical storage, otherwise known as "the heap". A `tid`
-gives Postgres a starting point to start scanning the heap
-from until it finds a valid tuple that satisfies the
-current snapshot's visibility.
-
-This is performed by `heapgettup` (in [heapam.c][gettup]):
+We covered earlier how visibility information is stored on
+heap tuples. `heapgettup` (in [heapam.c][gettup]) is the
+method responsible for scanning the heap for tuples that
+meet a snapshot's visibility criteria:
 
 ``` c
 static void
@@ -533,8 +526,9 @@ heapgettup(HeapScanDesc scan,
 ```
 
 `HeapTupleSatisfiesVisibility` is a preprocessor macro that
-will call into one of "satisfies" commands in `tqual.c`
-like `HeapTupleSatisfiesMVCC` ([`tqual.c`][satisfies]):
+will call into a "satisfies" function in `tqual.c`.
+`HeapTupleSatisfiesMVCC` ([`tqual.c`][satisfies]) is one
+such function:
 
 ``` c
 bool
@@ -562,7 +556,7 @@ And `TransactionIdDidCommit` ([from
 bool /* true if given transaction committed */
 TransactionIdDidCommit(TransactionId transactionId)
 {
-    XidStatus    xidstatus;
+    XidStatus xidstatus;
 
     xidstatus = TransactionLogFetch(transactionId);
 
@@ -578,41 +572,36 @@ TransactionIdDidCommit(TransactionId transactionId)
 
 Further exploring the implementation of
 `TransactionLogFetch` will reveal that it works as
-advertised. It calculates an LSN (log sequence number) from
-the given transaction ID and gets its commit status from
-where we wrote it in the WAL, which is then used to help
-determine visibility.
+advertised. It calculates a location in the WAL from the
+given transaction ID and reaches into the WAL to get that
+transaction's commit status. Whether or not the transaction
+committed is used to help determine the tuple's visibility.
 
-The key here is that for purposes of consistency,
-visibility is determined directly from the WAL, which is
-treated as the authoritative source for whether a tuple is
-committed or not [1]. The same visibility will be returned
-regardless of whether Postgres successfully committed the
-tuple hours ago, or a second before a crash that the server
-is just now recovering from.
+The key here is that for purposes of consistency, the WAL
+is considered the canonical source for commit status [1]
+(and by extension, visibility). The same information will
+be returned regardless of whether Postgres successfully
+committed a transaction hours ago, or seconds before a
+crash that the server is just now recovering from.
 
 ### Hint bits (#hint-bits)
 
-You may have noticed above that the function above does one
-more thing before returning from a visibility check:
+You may have noticed above that `HeapTupleSatisfiesMVCC`
+does one more thing before returning from a visibility
+check:
 
 ``` c
 SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
             HeapTupleHeaderGetRawXmin(tuple));
 ```
 
-Each tuple has an `xmin` of its own which indicates the
-transaction where it became visible (i.e. the one which is
-inserted it). Because it requires a read from disk,
-checking the WAL for every tuple to make sure that the its
-`xmin` transaction is committed is a relatively expensive
-operation, so Postgres optimizes the checks using a concept
-called "hint bits". A running operation will set a flag on
-tuple's in-memory structure to "invalid" or "committed"
-after it's verified one or the other from the WAL. Future
-operations will use the hint on a tuple if it's available,
-and are saved a trip to the WAL themselves.
-
+Checking the WAL to see whether a tuple's `xmin` or `xmax`
+transactions are committed is an expensive operation. To
+avoid having to go to the WAL every time, Postgres will set
+a special commit status flags called "hint bits" for a heap
+tuple that its scanned. Subsequent operations can check the
+tuple's hint bits and are saved a trip to the WAL
+themselves.
 
 [commit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/xact.c#L1939
 [committree]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L259
