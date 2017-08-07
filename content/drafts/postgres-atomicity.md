@@ -424,17 +424,18 @@ durably committed.
 `TransactionIdCommitTree` (in [transam.c][committree], and
 its implementation `TransactionIdSetTreeStatus` in
 [clog.c][settreestatus]) commits a "tree" because a commit
-may have subcommits. I won't get into subcommits in detail,
-but it's worth nothing that because
+may have subcommits. I won't get into subcommits at all
+here, but it's worth nothing that because
 `TransactionIdCommitTree` cannot be guaranteed to be
-atomic, each subcommit is recorded as committed and then
-the parent is recorded as a final step. When Postgres is
-reading the WAL on recovery, subcommits aren't considered
-to be committed even if they're marked as such until the
-parent record is read and confirmed committed. This is
-because the system could have successfully recorded every
-subcommit, but then crashed before it could write the
-parent.
+atomic, each subcommit is recorded as committed separately,
+and the parent is recorded as a final step. When Postgres
+is reading the WAL on recovery, subcommit records aren't
+considered to be committed (even if they're marked as such)
+until the parent record is read and confirmed committed.
+
+Once again this is in the name of atomicity; the system
+could have successfully recorded every subcommit, but then
+crashed before it could write the parent.
 
 ### Signaling completion through shared memory (#shared-memory)
 
