@@ -184,9 +184,10 @@ func transformFootnotes(source string, options *RenderOptions) string {
 			anchor := fmt.Sprintf(footnoteAnchorHTML, number, number, number) + matches[2]
 
 			// then replace all references in the body to this footnote
-			referenceRE := regexp.MustCompile(fmt.Sprintf(`\[%s\]`, number))
 			reference := fmt.Sprintf(footnoteReferenceHTML, number, number, number)
-			source = referenceRE.ReplaceAllString(source, collapseHTML(reference))
+			source = strings.Replace(source,
+				fmt.Sprintf(`[%s]`, number),
+				collapseHTML(reference), -1)
 
 			return collapseHTML(anchor)
 		})
