@@ -268,17 +268,17 @@ tech stack is, but Go's is one of the good ones.
 
 ## On cryptocurrency (#cryptocurrency)
 
-Cryptocurrency is currently one of our greatest forms of
+Bitcoin is currently one of our greatest forms of
 entertainment in the valley, with plot twists so frequent
 and so dramatic that not even the best writers on [Mr.
 Robot][mr-robot] could have dreamt them up.
 
-You may have heard that Bitcoin recently forked a new
-currency called Bitcoin Cash (see [this article][cash] for
-some good background information). Although this seems like
-it'll be a relatively minor fork, probably starting with
-only around 10% of Bitcoin's total mining power, a larger
-disaster was only narrowly averted.
+You may have heard that the preeminent digital currency
+recently forked a new currency called Bitcoin Cash (see
+[this article][cash] for some good background information).
+Although this seems like it'll be a relatively minor fork,
+probably starting with only around 10% of Bitcoin's total
+mining power, a larger disaster was only narrowly averted.
 
 In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
 MB limit on Bitcoin's blocksize to protect the network from
