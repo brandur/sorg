@@ -222,9 +222,8 @@ therefore be considered visible), the snapshot knows to
 keep whatever changes they make hidden. Recall that a
 snapshot represents the state of a database at a moment in
 time, and because these transactions were not committed at
-the moment the snapshot was created, their results will
-never be considered visible even if they commit
-successfully.
+the moment the snapshot was created, their results should
+never be visible to it.
 
 ## Beginning a transaction (#begin)
 
