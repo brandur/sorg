@@ -20,12 +20,12 @@ understanding how it works in databases that have one. This
 article will examine how exactly Postgres' atomicity works,
 and showcase some of the code that powers it.
 
-A few words of warning: Postgres is under active
-development, and these code snippets will become less
-accurate as time marches on. It's also worth noting that
-Postgres is a tremendously complex beast and I'm glossing
+A few words of warning: Postgres is a moving target under
+active development. The code snippets here are accurate
+today, but will be less so as time marches on. Also,
+Postgres is a tremendously complex machine. I'm glossing
 over quite a few details for the purposes of digestibility.
-If I didn't, this article would be about a thousand pages
+If I didn't, this article would be about a hundred pages
 long.
 
 ## Managing concurrent access (#mvcc)
@@ -76,17 +76,17 @@ typedef struct PGXACT
 ```
 
 Transactions are identified with a `xid` (transaction, or
-"xact" ID), but as an optimization, Postgres will only
-assign a transaction a `xid` if other processes will need
-to care about it because it's started to modify data.
-Readonly transactions can fully execute without ever being
-assigned their own `xid`.
+"xact" ID). As an optimization, Postgres will only assign a
+transaction a `xid` if it starts to modify data because
+it's only at that point where other processes need to start
+tracking its changes. Readonly transactions can execute
+happily without ever needing a `xid`.
 
-`xmin` is always assigned immediately. It's set to the
-smallest `xid` of any transactions that are still in
-flight, and it's tracked so that a vacuum process doesn't
-remove data that the transaction still needs for its
-snapshot.
+`xmin` is always set immediately to the smallest `xid` of
+any transactions that are still running when this one
+starts. Vacuum processes calculate the minimum boundary of
+data that they need to keep by taking the minimum of the
+`xmin`s of all active transactions 
 
 ### Lifetime-aware tuples (#tuples)
 
