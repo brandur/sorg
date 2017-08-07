@@ -20,11 +20,11 @@ cause inconvenience, it won't scramble your production
 data.
 
 Since joining a company that uses MongoDB and witnessing
-first-hand the operational catastrophe inherent to that
-equation, I've taken a keen interest in the subject of
-atomicity and data correctness. Most of us are
-uncomfortably aware of how fallible software is, so how are
-some databases able to offer such a strong guarantee?
+first-hand the operational catastrophe inherent to that,
+I've taken a keen interest in the subject of atomicity and
+data correctness. Most of us are uncomfortably aware of how
+fallible software is, so how are some databases able to
+offer such a strong guarantee?
 
 In particular, I've always appreciated Postgres's
 implementation, which offers powerful transactional
