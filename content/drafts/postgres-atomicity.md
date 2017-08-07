@@ -5,28 +5,45 @@ location: San Francisco
 hook: TODO
 ---
 
-Postgres provides strong ACID guarantees with aim of making
-data modification safe. More specifically, the "A" in
-"ACID" is for _atomicity_, and the property ensures that
-when performing a series of operations against the
-database, either all the changes commit, or they're all
-rolled back.
+For real-world code running at scale, atomicity is a
+godsend. The property states that for a series of
+operations performed against a database, either every one
+of them commits together, taking the database from one
+valid state to another, or they're all rolled back, leaving
+the database in its current (valid) state. There's no in
+between.
+
+Changes made by accidental bugs deployed to production are
+rolled back instead of leaving databases in a permanently
+invalid state. The long tail of dropped connections and
+other unexpected states resulting from handling millions of
+requests needs to be observed for the sake of keeping your
+users happy, but you can rest easy that none of them are
+going to scramble your production data.
 
 Since joining a company that uses MongoDB as its primary
-data store, and witnessing first-hand the operational
-catastrophe that's the inherent result of not having an
-atomicity guarantee, I've taken a keen interest in
-understanding how it works in databases that have one. This
-article will examine how exactly Postgres' atomicity works,
-and showcase some of the code that powers it.
+data store and witnessing first-hand the operational
+catastrophe inherent to its use, I've taken a keen interest
+in the subject of atomicity and data correctness. Most of
+us are uncomfortably aware of how fallible software is, so
+how are some databases able to offer such a strong
+guarantee?
 
-Arthur C. Clarke put it best with his third law: "Any
-sufficiently advanced technology is indistinguishable from
-magic." That's what Postgres has always felt like to me.
-Luckily its boundaries are sufficiently opaque that (for
-the most part) I was able to safely treat it as a black
-box, but how it does what it does has always been a
+In particular, I've always appreciated Postgres's
+implementation, which offers powerful transactional
+semantics with very little noticeable overhead. But while
+it's something I've used, it's never been something that I
+understood. Arthur C. Clarke put it best with his third
+law: "Any sufficiently advanced technology is
+indistinguishable from magic." Its boundaries are
+sufficiently opaque that I've been able to safely treat it
+as a black box, but how it does what it does has been a
 mystery.
+
+As anyone who's looked at it can tell you, the Postgres
+source code can be a little overwhelming. Not to be
+deterred, I emailed my friend Peter Geoghegan asking for a
+few starting points, and started digging in.
 
 A few words of warning: Postgres is a moving target under
 active development. The code snippets here are accurate
