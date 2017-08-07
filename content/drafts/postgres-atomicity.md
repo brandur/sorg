@@ -164,6 +164,8 @@ that created it). It may also track `xmax` to be the _last_
 transaction where the tuple is visible (i.e. the one that
 deleted it).
 
+!fig src="/assets/postgres-atomicity/heap-tuple-visibility.svg" caption="A heap tuple's lifetime being tracked with xmin and xmax."
+
 ### Snapshots: xmin, xmax, and xip (#snapshots)
 
 Here's a snapshot ([from snapshot.h][snapshot]):
