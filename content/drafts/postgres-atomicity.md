@@ -377,7 +377,7 @@ durability, which dictates that even in extreme events like
 a crash or power loss, committed transactions should stay
 committed. Like many good systems, it uses a write-ahead
 log (WAL, or often called a "clog", "xlog", or "transaction
-log"in Postgres lingo) to achieve this durability. Every
+log" in Postgres lingo) to achieve this durability. Every
 committed change is written and flushed to disk, and even
 in the event of sudden termination, Postgres can replay
 what it finds in the WAL to recover any changes didn't make
