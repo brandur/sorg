@@ -160,9 +160,9 @@ typedef struct HeapTupleFields
 Like a transaction, a tuple tracks its own `xmin`, except
 in the tuple's case it's recorded to represent the first
 transaction where the tuple becomes visible (i.e. the one
-that created it). It may also track `xmax` to be the _last_
+that created it). It also tracks `xmax` to be the _last_
 transaction where the tuple is visible (i.e. the one that
-deleted it).
+deleted it) [1].
 
 !fig src="/assets/postgres-atomicity/heap-tuple-visibility.svg" caption="A heap tuple's lifetime being tracked with xmin and xmax."
 
@@ -604,9 +604,9 @@ transaction's commit status. Whether or not the transaction
 committed is used to help determine the tuple's visibility.
 
 The key here is that for purposes of consistency, the WAL
-is considered the canonical source for commit status[1]
-(and by extension, visibility). The same information will
-be returned regardless of whether Postgres successfully
+is considered the canonical source for commit status (and
+by extension, visibility) [2]. The same information will be
+returned regardless of whether Postgres successfully
 committed a transaction hours ago, or seconds before a
 crash that the server is just now recovering from.
 
@@ -645,8 +645,12 @@ themselves.
 [xid]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/c.h#L397
 [xidadvance]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/transam.h#L31
 
-[1] Note that changes will eventually be no longer
-    available in the WAL, but those will always be beyond a
-    snapshot's `xmin` horizon, and therefore the visibility
-    check short circuits before having to make a check in
-    WAL.
+[1] Readers may notice that while `xmin` and `xmax` are
+fine for tracking a tuple's creation and deletion, they
+aren't to enough to handle updates. For brevity's sake, I'm
+glossing over how updates work for now.
+
+[2] Note that changes will eventually be no longer
+available in the WAL, but those will always be beyond a
+snapshot's `xmin` horizon, and therefore the visibility
+check short circuits before having to make a check in WAL.
