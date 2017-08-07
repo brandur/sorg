@@ -168,7 +168,7 @@ deleted it) [1].
 
 ### Snapshots: xmin, xmax, and xip (#snapshots)
 
-Here's a snapshot ([from snapshot.h][snapshot]):
+Here's the snapshot structure ([from snapshot.h][snapshot]):
 
 ``` c
 typedef struct SnapshotData
