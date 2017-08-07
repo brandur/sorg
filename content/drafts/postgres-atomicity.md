@@ -225,6 +225,8 @@ time, and because these transactions were not committed at
 the moment the snapshot was created, their results should
 never be visible to it.
 
+!fig src="/assets/postgres-atomicity/snapshot-creation.svg" caption="Transactions executing against a database and a snapshot capturing a moment in time."
+
 ## Beginning a transaction (#begin)
 
 TODO: Where the hell does a transaction start?! And how
@@ -462,9 +464,9 @@ crashed before it could write the parent.
 ### Signaling completion through shared memory (#shared-memory)
 
 With the transaction recorded to WAL, it's safe to signal
-its completion to the rest of the system, which is the
-second call in `CommitTransaction` above (calls into
-[procarray.c][endtransaction]):
+its completion to the rest of the system. This happens in
+the second call in `CommitTransaction` above ([into
+procarray.c][endtransaction]):
 
 ``` c
 void
@@ -549,9 +551,8 @@ heapgettup(HeapScanDesc scan,
 ```
 
 `HeapTupleSatisfiesVisibility` is a preprocessor macro that
-will call into a "satisfies" function in `tqual.c`.
-`HeapTupleSatisfiesMVCC` ([`tqual.c`][satisfies]) is one
-such function:
+will call into "satisfies" function like
+`HeapTupleSatisfiesMVCC` ([in `tqual.c`][satisfies]):
 
 ``` c
 bool
@@ -601,7 +602,7 @@ transaction's commit status. Whether or not the transaction
 committed is used to help determine the tuple's visibility.
 
 The key here is that for purposes of consistency, the WAL
-is considered the canonical source for commit status [1]
+is considered the canonical source for commit status[1]
 (and by extension, visibility). The same information will
 be returned regardless of whether Postgres successfully
 committed a transaction hours ago, or seconds before a
