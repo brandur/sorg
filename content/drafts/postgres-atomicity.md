@@ -20,12 +20,20 @@ understanding how it works in databases that have one. This
 article will examine how exactly Postgres' atomicity works,
 and showcase some of the code that powers it.
 
+Arthur C. Clarke put it best with his third law: "Any
+sufficiently advanced technology is indistinguishable from
+magic." That's what Postgres has always felt like to me.
+Luckily its boundaries are sufficiently opaque that (for
+the most part) I was able to safely treat it as a black
+box, but how it does what it does has always been a
+mystery.
+
 A few words of warning: Postgres is a moving target under
 active development. The code snippets here are accurate
-today, but will be less so as time marches on. Also,
-Postgres is a tremendously complex machine. I'm glossing
-over quite a few details for the purposes of digestibility.
-If I didn't, this article would be about a hundred pages
+today, but will be less so as time marches on. Postgres
+is also a tremendously complex machine. I'm glossing over
+quite a few details for purposes of digestibility because
+if I didn't, this piece would be about a hundred pages
 long.
 
 ## Managing concurrent access (#mvcc)
@@ -43,11 +51,11 @@ execute inside of a ***transaction***, and instead of
 overwriting data directly, they create new versions of it.
 The original data is still available to other clients that
 might need it, and any new data stays hidden until the
-transaction ***commits***.
+transaction commits.
 
-When a transaction starts it takes a ***snapshot*** that
-represents the state of a database at that moment in time.
-Databases eventually remove obsolete data by way of a
+When a transaction starts, it takes a ***snapshot*** that
+captures the state of a database at that moment in time.
+Databases will eventually remove obsolete data by way of a
 background "vacuum" process, but they'll only do so for
 information that's no longer needed by any open snapshots.
 
