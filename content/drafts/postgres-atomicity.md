@@ -661,7 +661,23 @@ tuple that its scanned. Subsequent operations can check the
 tuple's hint bits and are saved a trip to the WAL
 themselves.
 
-## Summary (#summary)
+## The box's opaque walls (#black-box)
+
+The black box. To you it just looks like:
+
+``` sql
+BEGIN;
+
+SELECT * FROM users 
+
+INSERT INTO users (email) VALUES ('brandur@example.com')
+RETURNING *;
+
+COMMIT;
+```
+
+As we've seen, in the background Postgres is doing a lot of
+work to make sure that this change is safe.
 
 [Peter
 Geoghegan][peter], and asked for a few pointers.
