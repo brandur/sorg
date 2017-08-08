@@ -21,11 +21,11 @@ inconvenience, but won't scramble your data.
 
 Having used MongoDB in production for a few years now and
 seeing first-hand the operational catastrophe inherent to
-using a non-ACID data store, I've taken a keen interest in
-the subject of data correctness. Software is fallible and
-there are a lot of things in a computer that can go wrong,
-so how are some databases able to offer such strong data
-guarantees?
+this type of non-ACID data store, I've taken a keen
+interest in the subject of data correctness. Software is
+fallible and there are a lot of things in a computer that
+can go wrong, so how are some databases able to offer such
+strong data guarantees?
 
 Postgres's implementation in particular is known to provide
 powerful transaction semantics with little overhead. And
@@ -36,16 +36,15 @@ understood. Arthur C. Clarke put it best:
 > from magic.
 
 The boundaries of Postgres are sufficiently opaque that it
-can be reliably treated as a black box, but to me, how it
-does what it does is magic. It was time to peer behind the
-curtain.
+can be reliably treated as a black box, but to a layman
+like me, how it does what it does has always been magic.
 
 This article looks into how Postgres keeps the books on its
 transactions, how they're committed atomically, and some
-high-level concepts that are key to understanding it all. A
-word of warning before we begin: the Postgres source code
-is a little overwhelming, so I've glossed over a few
-details to make reading more digestible.
+concepts that are key to understanding it all. A word of
+warning before we begin: the Postgres source code is a
+little overwhelming, so I've glossed over a few details to
+make reading more digestible.
 
 ## Managing concurrent access (#mvcc)
 
@@ -134,11 +133,11 @@ information. Instead, they store a `tid` (tuple ID) that
 can be used to retrieve a row from physical storage,
 otherwise known as "the heap". The `tid` gives Postgres a
 starting point where it can start scanning the heap until
-it finds a valid tuple that satisfies the current
+it finds a suitable tuple that satisfies the current
 snapshot's visibility.
 
-Here's the Postgres implementation for a "heap tuple" (as
-opposed to an "index tuple" which is the structure found in
+Here's the Postgres implementation for a _heap tuple_ (as
+opposed to an _index tuple_ which is the structure found in
 an index), along with a few other structs that represent
 its header information ([from `htup.h`][tuple] [and
 `htup_details.h`][tupleheaders]):
@@ -217,17 +216,14 @@ typedef struct SnapshotData
 A snapshot's `xmin` is calculated the same way as a
 transaction's (i.e. the lowest `xid` amongst running
 transactions when the snapshot is created), but for a
-different prupose.
-
-A snapshot uses its `xmin` as a lower boundary for data
-visibility. Tuples data created or modified by a
-transaction with a `xid` _smaller_ than a snapshot's `xmin`
-are visible to it.
+different prupose. This `xmin` is a lower boundary for data
+visibility. Tuples created by a transaction with `xid <
+xmin` are visible to the snapshot.
 
 It also defines an `xmax`, which is set to the last
 commited `xid` plus one. `xmax` tracks the upper bound of
-visibility; transactions with a `xid` _greater to or equal_
-to `xmax` are invisible to the snapshot.
+visibility; transactions with `xid >= xmax` are invisible
+to the snapshot.
 
 Lastly, a snapshot defines `*xip`, an array of all of the
 `xid`s of transactions that were in progress when the
