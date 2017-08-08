@@ -8,71 +8,84 @@ hook: TODO
 Atomicity (in the sense of "ACID") states that for a series
 of operations performed against a database, either every
 one of them commits together, or they're all rolled back.
-No in between states are allowed. For code running at scale
-in the messiness of the real world, it's a godsend.
+No in between states are allowed. For code that needs to be
+resilient to the messiness of the real world, it's a
+godsend.
 
-Changes made by accidental bugs deployed to production are
-reverted instead of leaving databases in a permanently
-invalid state. You can rest easy knowing that although the
-long tail of dropped connections and other unexpected
-states that results from handling millions of requests may
-cause inconvenience, it won't scramble your production
-data.
+Instead of bugs that make it to production changing data
+and then leaving it permanently corrupt, those changes are
+reverted. The long tail of connections that are dropped
+midway from intermittent problems and other unexpected
+states while handling millions of requests might cause
+inconvenience, but won't scramble your data.
 
-Since joining a company that uses MongoDB and witnessing
-first-hand the operational catastrophe inherent to that,
-I've taken a keen interest in the subject of atomicity and
-data correctness. Most of us are uncomfortably aware of how
-fallible software is, so how are some databases able to
-offer such a strong guarantee?
+Having used MongoDB in production for a few years now and
+seeing first-hand the operational catastrophe inherent to
+using a non-ACID data store, I've taken a keen interest in
+the subject of data correctness. Software is fallible and
+there are a lot of things in a computer that can go wrong,
+so how are some databases able to offer such strong data
+guarantees?
 
-In particular, I've always appreciated Postgres's
-implementation, which offers powerful transactional
-semantics with very little noticeable overhead. But while
-it's something I've used, it's never been something that I
-understood. Arthur C. Clarke put it best with his third
-law: "Any sufficiently advanced technology is
-indistinguishable from magic." Its boundaries are
-sufficiently opaque that I've been able to safely treat it
-as a black box, but how it does what it does has always
-been magic to me.
+Postgres's implementation in particular is known to provide
+powerful transaction semantics with little overhead. And
+while I've used it for years, it's not something that I've
+understood. Arthur C. Clarke put it best:
 
-As anyone who's looked at it can tell you, the Postgres
-source code can be a little overwhelming. Not to be
-deterred, I emailed my Postgres spirit guide [Peter
-Geoghegan][peter], and asked for a few pointers. I started
-to dig in.
+> Any sufficiently advanced technology is indistinguishable
+> from magic.
 
-A few words of warning: Postgres is a moving target under
-active development. The code snippets here are accurate
-today, but will be less so as time marches on. Postgres
-is also a tremendously complex machine. I'm glossing over
-quite a few details for purposes of digestibility because
-if I didn't, this piece would be about a hundred pages
-long.
+The boundaries of Postgres are sufficiently opaque that it
+can be reliably treated as a black box, but to me, how it
+does what it does is magic. It was time to peer behind the
+curtain.
+
+This article looks into how Postgres keeps the books on its
+transactions, how they're committed atomically, and some
+high-level concepts that are key to understanding it all. A
+word of warning before we begin: the Postgres source code
+is a little overwhelming, so I've glossed over a few
+details to make reading more digestible.
 
 ## Managing concurrent access (#mvcc)
 
-In a very naive database, multiple clients trying to access
-data at the same time would run into contention as one
-client modifies data while another is trying to access it.
-A naive solution to this problem might involve each client
-locking data it needs and having other clients wait on
-reads and writes until they're able to take out locks of
-their own. Most modern databases have a better way: MVCC.
+Say you build a simple database that reads and writes from
+an on-disk CSV file. When a single client comes in with a
+request, it opens the file and writes some information.
+Things are mostly working fine, but then one day you decide
+to enhance your database with a sophisticated new feature,
+multi-client support! The new implementation is immediately
+plagued by problems that are especially noticeable when two
+clients are trying to access data around the same time. One
+opens the CSV file, writes some data, and that change is
+immediately clobbered by a second client doing its own
+write.
+
+This is a problem of concurrent access and we address it by
+introducing _concurrency control_. There are plenty of
+naive solutions. We could ensure that any process takes out
+an exclusive lock on a file before reading or writing it,
+or push all operations through a single flow control point.
+Not only are these workarounds slow, but they won't scale
+up to allow us to make our database fully ACID-compliant.
+Modern databases have a better way: MVCC.
 
 Under MVCC (multi-version concurrency control), statements
 execute inside of a ***transaction***, and instead of
 overwriting data directly, they create new versions of it.
 The original data is still available to other clients that
 might need it, and any new data stays hidden until the
-transaction commits.
+transaction commits. Clients are no longer in direct
+contention, and data stays safely persisted because they're
+not overwriting each other's changes.
 
 When a transaction starts, it takes a ***snapshot*** that
-captures the state of a database at that moment in time.
-Databases will eventually remove obsolete data by way of a
-background "vacuum" process, but they'll only do so for
-information that's no longer needed by any open snapshots.
+captures the state of a database at that moment in time. To
+avoid the neverending accumulation of rows that have been
+deleted, databases will eventually remove obsolete data by
+way of a background "vacuum" process, but they'll only do
+so for information that's no longer needed by open
+snapshots.
 
 Postgres manages concurrent access with MVCC. Lets take a
 look at how it works.
@@ -518,6 +531,17 @@ transaction that just committed, we've just made its
 results visible to every new transaction that starts from
 this point forward.
 
+### Responding to the client (#client)
+
+Throughout this entire process, a client has been waiting
+synchronously for their transaction to be confirmed
+committed. Part of the atomicity guarantee is that false
+positives where the databases signals a transaction as
+committed when it hasn't been aren't possible. Failures can
+happen in many places, but if there is one, the client
+finds out about it and has a chance to retry or otherwise
+address the problem.
+
 ## Checking visibility (#visibility)
 
 We covered earlier how visibility information is stored on
@@ -621,9 +645,8 @@ crash that the server is just now recovering from.
 
 ### Hint bits (#hint-bits)
 
-You may have noticed above that `HeapTupleSatisfiesMVCC`
-does one more thing before returning from a visibility
-check:
+`HeapTupleSatisfiesMVCC` from above does one more thing
+before returning from a visibility check:
 
 ``` c
 SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
@@ -633,10 +656,15 @@ SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
 Checking the WAL to see whether a tuple's `xmin` or `xmax`
 transactions are committed is an expensive operation. To
 avoid having to go to the WAL every time, Postgres will set
-a special commit status flags called "hint bits" for a heap
+special commit status flags called "hint bits" for a heap
 tuple that its scanned. Subsequent operations can check the
 tuple's hint bits and are saved a trip to the WAL
 themselves.
+
+## Summary (#summary)
+
+[Peter
+Geoghegan][peter], and asked for a few pointers.
 
 [commit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/xact.c#L1939
 [committree]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L259
