@@ -5,11 +5,11 @@ location: San Francisco
 hook: TODO
 ---
 
-For real-world code running at scale, atomicity is a
-godsend. The property states that for a series of
-operations performed against a database, either every one
-of them commits together, or they're all rolled back.
-There's no in between.
+Atomicity (in the sense of "ACID") states that for a series
+of operations performed against a database, either every
+one of them commits together, or they're all rolled back.
+No in between states are allowed. For code running at scale
+in the messiness of the real world, it's a godsend.
 
 Changes made by accidental bugs deployed to production are
 reverted instead of leaving databases in a permanently
@@ -233,6 +233,15 @@ never be visible to it.
 
 TODO: Where the hell does a transaction start?! And how
 does that call into GetSnapshotData?!
+
+> It's called by GetTransactionSnapshot(), which is the main entry
+> point. exec_simple_query() sometimes calls it for parse analysis, and
+> there the catalog access snapshot that I mentioned already (to access
+> catalogs).
+>
+> If I had to tell you what the "main" place is that acquires a
+> snapshot, I'd say PortalStart(), which is called from
+> exec_simple_query().
 
 The meat of beginning a transaction is creating its
 snapshot, which is performed by [`GetSnapshotData` in
