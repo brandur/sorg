@@ -65,16 +65,17 @@ an exclusive lock on a file before reading or writing it,
 or push all operations through a single flow control point.
 Not only are these workarounds slow, but they won't scale
 up to allow us to make our database fully ACID-compliant.
-Modern databases have a better way: MVCC.
+Modern databases have a better way, MVCC (multi-version
+concurrency control).
 
-Under MVCC (multi-version concurrency control), statements
-execute inside of a ***transaction***, and instead of
-overwriting data directly, they create new versions of it.
-The original data is still available to other clients that
-might need it, and any new data stays hidden until the
-transaction commits. Clients are no longer in direct
-contention, and data stays safely persisted because they're
-not overwriting each other's changes.
+Under MVCC, statements execute inside of a
+***transaction***, and instead of overwriting data
+directly, they create new versions of it. The original data
+is still available to other clients that might need it, and
+any new data stays hidden until the transaction commits.
+Clients are no longer in direct contention, and data stays
+safely persisted because they're not overwriting each
+other's changes.
 
 When a transaction starts, it takes a ***snapshot*** that
 captures the state of a database at that moment in time. To
