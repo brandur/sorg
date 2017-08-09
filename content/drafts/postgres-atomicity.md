@@ -23,18 +23,18 @@ inconvenience, but won't scramble your data.
 
 Having used MongoDB in production for a few years now and
 seeing first-hand the operational catastrophe inherent to
-this type of non-ACID data store, I've taken a keen
-interest in the subject of data correctness. Software is
-fallible and there are a lot of things in a computer that
-can go wrong, so how are some databases able to offer such
-strong data guarantees?
+this type of non-ACID data store, I've taken an interest in
+the subject of data correctness. My curiosity was piqued:
+software is fallible and there are a lot of things in a
+computer that can go wrong, so how are some databases able
+to offer such strong data guarantees?
 
 Postgres's implementation in particular is known to provide
 powerful transaction semantics with little overhead. And
-while I've used it for years, it's not something that I've
-understood. Postgres works reliably enough that I've been
-able to treat it as a black box -- wonderfully useful, but
-with inner workings that are a mystery.
+while I've used it for years, it's never been something
+that I've understood. Postgres works reliably enough that
+I've been able to treat it as a black box -- wonderfully
+useful, but with inner workings that are a mystery.
 
 This article looks into how Postgres keeps the books on its
 transactions, how they're committed atomically, and some
@@ -241,14 +241,16 @@ never be visible to it.
 
 When you execute a `BEGIN`, Postgres puts some basic
 bookeeping in place, but it will defer more expensive
-operations as long as it has to. For example, the new
+operations as long as it can. For example, the new
 transaction isn't assigned a `xid` until it starts
 modifying data to reduce the expense of tracking it
 elsewhere in the system.
 
 The new transaction also won't immediately get a snapshot.
-The snapshot won't be assigned until your first query ([in
-`postgres.c`][execsimplequery]):
+One won't be assigned until the transaction's first query,
+whereupon `exec_simple_query` ([in
+`postgres.c`][execsimplequery]) will push a snapshot onto a
+stack. Even a simple `SELECT 1;` is enough to trigger it:
 
 ``` c
 static void
@@ -269,9 +271,7 @@ exec_simple_query(const char *query_string)
 }
 ```
 
-Even a simple `SELECT 1` will trigger a new snapshot.
-
-Creating the new snapshot is where the real transaction
+Creating the new snapshot is where the transaction
 machinery starts to come into effect. Here's
 `GetSnapshotData` ([in `procarray.c`][getsnapshotdata]):
 
@@ -484,8 +484,8 @@ that the transaction was durably committed.
 `TransactionIdCommitTree` (in [transam.c][committree], and
 its implementation `TransactionIdSetTreeStatus` in
 [clog.c][settreestatus]) commits a "tree" because a commit
-may have subcommits. I won't get into subcommits at all
-here, but it's worth nothing that because
+may have subcommits. I won't go into subcommits in any
+detail, but it's worth nothing that because
 `TransactionIdCommitTree` cannot be guaranteed to be
 atomic, each subcommit is recorded as committed separately,
 and the parent is recorded as a final step. When Postgres
@@ -545,13 +545,12 @@ every new snapshot that starts from this point forward.
 ### Responding to the client (#client)
 
 Throughout this entire process, a client has been waiting
-synchronously for their transaction to be confirmed
-committed. Part of the atomicity guarantee is that false
-positives where the databases signals a transaction as
-committed when it hasn't been aren't possible. Failures can
-happen in many places, but if there is one, the client
-finds out about it and has a chance to retry or otherwise
-address the problem.
+synchronously for their transaction to be confirmed. Part
+of the atomicity guarantee is that false positives where
+the databases signals a transaction as committed when it
+hasn't been aren't possible. Failures can happen in many
+places, but if there is one, the client finds out about it
+and has a chance to retry or otherwise address the problem.
 
 ## Checking visibility (#visibility)
 
@@ -687,15 +686,15 @@ RETURNING *;
 COMMIT;
 ```
 
-I don't worry about what's going on. I'm given a powerful
-high level abstraction (in the form of SQL) which I know
-will work reliably, and as we've seen, Postgres does all
-the heavy lifting under the cover. Good software is a black
-box, and Postgres is an especially dark one (although with
-pleasantly accessible internals).
+I don't really need to think about what's going on. I'm
+given a powerful high level abstraction (in the form of
+SQL) which I know will work reliably, and as we've seen,
+Postgres does all the heavy lifting under the covers. Good
+software is a black box, and Postgres is an especially dark
+one (although with pleasantly accessible internals).
 
 Thank you to [Peter Geoghegan][peter] for patiently
-answering all my layman questions about Postgres
+answering all my amateur questions about Postgres
 transactions and snapshots, and giving me some pointers for
 finding relevant code.
 
