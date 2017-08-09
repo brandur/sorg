@@ -56,7 +56,7 @@ opens the CSV file, writes some data, and that change is
 immediately clobbered by another client doing its own
 write.
 
-!fig src="/assets/postgres-atomicity/csv-database.svg" caption="Data loss from contention between two competing clients."
+!fig src="/assets/postgres-atomicity/csv-database.svg" caption="Data loss from contention between two clients."
 
 This is a problem of concurrent access and it's addressed
 by introducing _concurrency control_. There are plenty of
@@ -132,8 +132,8 @@ information. Instead, they store a `tid` (tuple ID) that
 can be used to retrieve a row from physical storage,
 otherwise known as "the heap". The `tid` gives Postgres a
 starting point where it can start scanning the heap until
-it finds a suitable tuple that satisfies the current
-snapshot's visibility.
+it finds a tuple that satisfies the current snapshot's
+visibility.
 
 Here's the Postgres implementation for a _heap tuple_ (as
 opposed to an _index tuple_ which is the structure found in
