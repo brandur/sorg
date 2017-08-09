@@ -23,11 +23,12 @@ inconvenience, but won't scramble your data.
 
 Having used MongoDB in production for a few years now and
 seeing first-hand the operational catastrophe inherent to
-this type of non-ACID data store, I've taken an interest in
-the subject of data correctness. My curiosity was piqued:
-software is fallible and there are a lot of things in a
-computer that can go wrong, so how are some databases able
-to offer such strong data guarantees?
+this type of non-ACID data store ([more detail on those
+problems](/acid)), I've taken an interest in the subject of
+data correctness. My curiosity was piqued: software is
+fallible and there are a lot of things in a computer that
+can go wrong, so how are some databases able to offer such
+strong data guarantees?
 
 Postgres's implementation in particular is known to provide
 powerful transaction semantics with little overhead. And
