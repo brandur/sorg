@@ -227,13 +227,17 @@ to the snapshot.
 Lastly, a snapshot defines `*xip`, an array of all of the
 `xid`s of transactions that were in progress when the
 snapshot was created. It's created because even though
-`xid`s in `*xip` will be smaller than `xmax` (and might
-therefore be considered visible), the snapshot knows to
-keep whatever changes they make hidden. Recall that a
-snapshot represents the state of a database at a moment in
-time, and because these transactions were not committed at
-the moment the snapshot was created, their results should
-never be visible to it.
+there's already a visibility boundary with `xmin`, there
+may still be some transactions that are already committed
+with `xid`s greater than `xmin`, but _also_ greater than a
+`xid` of an in-progress transaction (so they couldn't be
+included in `xmin`).
+
+We want the results any committed transactions with `xid >
+xmin` to be visible, but the results of any that were in
+flight hidden. `*xip` stores the list of transactions that
+were active when the snapshot was created so that we can
+tell which is which.
 
 !fig src="/assets/postgres-atomicity/snapshot-creation.svg" caption="Transactions executing against a database and a snapshot capturing a moment in time."
 
