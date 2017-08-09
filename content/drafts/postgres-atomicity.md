@@ -56,6 +56,8 @@ opens the CSV file, writes some data, and that change is
 immediately clobbered by another client doing its own
 write.
 
+!fig src="/assets/postgres-atomicity/csv-database.svg" caption="Data loss from contention between two competing clients."
+
 This is a problem of concurrent access and it's addressed
 by introducing _concurrency control_. There are plenty of
 naive solutions. We could ensure that any process takes out
