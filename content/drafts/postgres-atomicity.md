@@ -30,22 +30,13 @@ strong data guarantees?
 Postgres's implementation in particular is known to provide
 powerful transaction semantics with little overhead. And
 while I've used it for years, it's not something that I've
-understood. Arthur C. Clarke put it best:
-
-> Any sufficiently advanced technology is indistinguishable
-> from magic.
-
-The boundaries of Postgres are sufficiently opaque that it
-can be reliably treated as a black box, but to a layman
-like me, how it does what it does has always been magic.
+understood. Postgres works reliably enough that I've been
+able to treat it as a black box -- wonderfully useful, but
+with inner workings that are a complete mystery.
 
 This article looks into how Postgres keeps the books on its
 transactions, how they're committed atomically, and some
-concepts that are key to understanding it all. A word of
-warning before we begin: the Postgres source code is a
-little overwhelming, so I've glossed over a few details to
-make reading more digestible.
-
+concepts that are key to understanding it all [1].
 ## Managing concurrent access (#mvcc)
 
 Say you build a simple database that reads and writes from
@@ -174,7 +165,7 @@ in the tuple's case it's recorded to represent the first
 transaction where the tuple becomes visible (i.e. the one
 that created it). It also tracks `xmax` to be the _last_
 transaction where the tuple is visible (i.e. the one that
-deleted it) [1].
+deleted it) [2].
 
 !fig src="/assets/postgres-atomicity/heap-tuple-visibility.svg" caption="A heap tuple's lifetime being tracked with xmin and xmax."
 
@@ -634,7 +625,7 @@ committed is used to help determine the tuple's visibility.
 
 The key here is that for purposes of consistency, the WAL
 is considered the canonical source for commit status (and
-by extension, visibility) [2]. The same information will be
+by extension, visibility) [3]. The same information will be
 returned regardless of whether Postgres successfully
 committed a transaction hours ago, or seconds before a
 crash that the server is just now recovering from.
@@ -694,12 +685,18 @@ Geoghegan][peter], and asked for a few pointers.
 [xid]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/c.h#L397
 [xidadvance]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/transam.h#L31
 
-[1] Readers may notice that while `xmin` and `xmax` are
+[1]  A few words of warning: the Postgres source code is
+pretty overwhelming, so I've glossed over a few details to
+make this reading more digestible. It's also under active
+development, so the passage of time will likely render some
+of these code samples quite obsolete.
+
+[2] Readers may notice that while `xmin` and `xmax` are
 fine for tracking a tuple's creation and deletion, they
 aren't to enough to handle updates. For brevity's sake, I'm
 glossing over how updates work for now.
 
-[2] Note that changes will eventually be no longer
+[3] Note that changes will eventually be no longer
 available in the WAL, but those will always be beyond a
 snapshot's `xmin` horizon, and therefore the visibility
 check short circuits before having to make a check in WAL.
