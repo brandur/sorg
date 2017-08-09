@@ -32,11 +32,12 @@ powerful transaction semantics with little overhead. And
 while I've used it for years, it's not something that I've
 understood. Postgres works reliably enough that I've been
 able to treat it as a black box -- wonderfully useful, but
-with inner workings that are a complete mystery.
+with inner workings that are a mystery.
 
 This article looks into how Postgres keeps the books on its
 transactions, how they're committed atomically, and some
 concepts that are key to understanding it all [1].
+
 ## Managing concurrent access (#mvcc)
 
 Say you build a simple database that reads and writes from
@@ -231,21 +232,41 @@ never be visible to it.
 
 ## Beginning a transaction (#begin)
 
-TODO: Where the hell does a transaction start?! And how
-does that call into GetSnapshotData?!
+When you execute a `BEGIN`, Postgres puts some basic
+bookeeping in place, but it will defer more expensive
+operations as long as it has to. For example, the new
+transaction isn't assigned a `xid` until it starts
+modifying data to reduce the expense of tracking it
+elsewhere in the system.
 
-> It's called by GetTransactionSnapshot(), which is the main entry
-> point. exec_simple_query() sometimes calls it for parse analysis, and
-> there the catalog access snapshot that I mentioned already (to access
-> catalogs).
->
-> If I had to tell you what the "main" place is that acquires a
-> snapshot, I'd say PortalStart(), which is called from
-> exec_simple_query().
+The new transaction also won't immediately get a snapshot.
+The snapshot won't be assigned until your first query ([in
+`postgres.c`][execsimplequery]):
 
-The meat of beginning a transaction is creating its
-snapshot, which is performed by [`GetSnapshotData` in
-`procarray.c`][getsnapshotdata]:
+``` c
+static void
+exec_simple_query(const char *query_string)
+{
+    ...
+
+    /*
+     * Set up a snapshot if parse analysis/planning will need one.
+     */
+    if (analyze_requires_snapshot(parsetree))
+    {
+        PushActiveSnapshot(GetTransactionSnapshot());
+        snapshot_set = true;
+    }
+
+    ...
+}
+```
+
+Even a simple `SELECT 1` will trigger a new snapshot.
+
+Creating the new snapshot is where the real transaction
+machinery starts to come into effect. Here's
+`GetSnapshotData` ([in `procarray.c`][getsnapshotdata]):
 
 ``` c
 Snapshot
@@ -262,12 +283,14 @@ GetSnapshotData(Snapshot snapshot)
 }
 ```
 
-This function does a lot of initialization work, but like
-we talked about, some of its most important work is set to
-the snapshot's `xmin`, `xmax`, and `*xip`. The easiest of
-these is `xmax`, which is retrieved from shared memory
-managed by the postmaster, which is tracking the `xid`s of
-any transactions that complete (more on this later):
+This function does a lot of initialization, but like we
+talked about, some of its most important work is set to the
+snapshot's `xmin`, `xmax`, and `*xip`. The easiest of these
+is `xmax`, which is retrieved from shared memory managed by
+the postmaster. Every transaction that commits notifies the
+postmaster that it did, and `latestCompletedXid` will be
+updated if the `xid` is higher than what's already in there
+(more on this later).
 
 Notice that it's the function's responsibility to add one
 to the last `xid`. This isn't quite as trivial as
@@ -281,10 +304,10 @@ typedef uint32 TransactionId;
 
 Even though `xid`s are assigned only opportunistically (as
 mentioned above, reads don't need one), a system doing a
-lot of transaction throughput can easily hit the bounds of
-32 bits, so the system needs to be able to wrap to "reset"
-the `xid` sequence as necessary. This is handled by some
-preprocessor magic (in [transam.h][xidadvance]):
+lot of throughput can easily hit the bounds of 32 bits, so
+the system needs to be able to wrap to "reset" the `xid`
+sequence as necessary. This is handled by some preprocessor
+magic (in [transam.h][xidadvance]):
 
 ``` c
 #define InvalidTransactionId        ((TransactionId) 0)
@@ -307,7 +330,9 @@ Note that the first few IDs are reserved as special
 identifiers, so we always skip those and start at `3`.
 
 Back in `GetSnapshotData`, we get `xmin` and `xip` by
-iterating over all running transactions:
+iterating over all running transactions (again, see
+[Snapshots](#snapshots) above for an explanation of what
+these do):
 
 ``` c
 /*
@@ -345,18 +370,11 @@ for (index = 0; index < numProcs; index++)
 snapshot->xmin = xmin;
 ```
 
-`xmin`'s purpose isn't to tell us _everything_ we need to
-know about what's visible to a snapshot, but it acts as a
-useful horizon beyond which we know nothing is visible.
-Therefore it's calculated as the minimum `xid` of all
-running transactions when a snapshot is created.
-
 ## Committing a transaction (#commit)
 
 Transactions committed through [`CommitTransaction` (in
 `xact.c`)][commit]. This function is monstrously complex,
-but again, I'm going to simplify it and call out a couple
-of the most important parts:
+but here are a few of its important parts:
 
 ``` c
 static void
@@ -389,8 +407,8 @@ log (WAL, or often called a "clog", "xlog", or "transaction
 log" in Postgres lingo) to achieve this durability. Every
 committed change is written and flushed to disk, and even
 in the event of sudden termination, Postgres can replay
-what it finds in the WAL to recover any changes didn't make
-it into its data files.
+what it finds in the WAL to recover any changes that didn't
+make it into its data files.
 
 `RecordTransactionCommit` from the snippet above handles
 getting a change to the WAL:
@@ -436,23 +454,23 @@ RecordTransactionCommit(void)
 }
 ```
 
-Another core Postgres philosophy is performance. If a
+Another core Postgres value is performance. If a
 transaction was never assigned a `xid` because it didn't
 affect the state of the database, Postgres skips writing it
 to the WAL. If a transaction was aborted, we write it to
-the WAL, but don't bother to send a flush because even
-though it's completed, it doesn't affect data so it's not
-catastrophic if we lose it.
+the WAL, but don't bother to flush its commit status
+because even though it's completed, it doesn't affect data
+so it's not catastrophic if we lose it (any transactions
+found in the WAL without a commit status are assumed
+aborted).
 
-TODO: Confirm that the abort note above is true.
-
-Note also that the WAL is written in two parts. We write
-the bulk of the information out in `XactLogCommitRecord`,
-and if the transaction committed, we go through in a second
-pass with `TransactionIdCommitTree` and set the status of
-each record to "committed". It's only after this operation
-completes that we can formally say that the transaction was
-durably committed.
+It's also worth pointing out that the WAL is written in two
+parts. We write the bulk of the information out in
+`XactLogCommitRecord`, and if the transaction committed, we
+go through in a second pass with `TransactionIdCommitTree`
+and set the status of each record to "committed". It's only
+after this operation completes that we can formally say
+that the transaction was durably committed.
 
 ### Defensive programming (#defensive-programming)
 
@@ -511,12 +529,11 @@ ProcArrayEndTransactionInternal(PGPROC *proc, PGXACT *pgxact,
 }
 ```
 
-Remember how when we started a transaction we created a
-snapshot and set its `xmax` to `latestCompletedXid + 1`? By
-setting `latestCompletedXid` to the `xid` of the
-transaction that just committed, we've just made its
-results visible to every new transaction that starts from
-this point forward.
+Remember how when we created a snapshot we set its `xmax`
+to `latestCompletedXid + 1`? By setting
+`latestCompletedXid` to the `xid` of the transaction that
+just committed, we've just made its results visible to
+every new snapshot that starts from this point forward.
 
 ### Responding to the client (#client)
 
@@ -673,6 +690,7 @@ Geoghegan][peter], and asked for a few pointers.
 [committree]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L259
 [didcommit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L124
 [endtransaction]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/storage/ipc/procarray.c#L394
+[execsimplequery]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/tcop/postgres.c#L1010
 [gettup]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/heap/heapam.c#L478
 [getsnapshotdata]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/storage/ipc/procarray.c#L1507
 [peter]: https://twitter.com/petervgeoghegan
