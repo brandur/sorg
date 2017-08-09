@@ -2,7 +2,9 @@
 title: How Postgres Makes Transactions Atomic
 published_at: 2017-08-06T17:10:18Z
 location: San Francisco
-hook: TODO
+hook: Most of us have heard that transactions in Postgres
+  are atomic, but given the hazardous conditions of real
+  life, how does does it provide such a strong guarantee?
 ---
 
 Atomicity (in the sense of "ACID") states that for a series
@@ -45,15 +47,17 @@ an on-disk CSV file. When a single client comes in with a
 request, it opens the file and writes some information.
 Things are mostly working fine, but then one day you decide
 to enhance your database with a sophisticated new feature,
-multi-client support! The new implementation is immediately
+multi-client support!
+
+Unfortunately, the new implementation is immediately
 plagued by problems that are especially noticeable when two
 clients are trying to access data around the same time. One
 opens the CSV file, writes some data, and that change is
-immediately clobbered by a second client doing its own
+immediately clobbered by another client doing its own
 write.
 
-This is a problem of concurrent access and we address it by
-introducing _concurrency control_. There are plenty of
+This is a problem of concurrent access and it's addressed
+by introducing _concurrency control_. There are plenty of
 naive solutions. We could ensure that any process takes out
 an exclusive lock on a file before reading or writing it,
 or push all operations through a single flow control point.
@@ -667,7 +671,7 @@ themselves.
 
 ## The box's opaque walls (#black-box)
 
-The black box. To you it just looks like:
+When I run a transaction against a database:
 
 ``` sql
 BEGIN;
@@ -680,11 +684,17 @@ RETURNING *;
 COMMIT;
 ```
 
-As we've seen, in the background Postgres is doing a lot of
-work to make sure that this change is safe.
+I don't worry about what's going on. I'm given a powerful
+high level abstraction (in the form of SQL) which I know
+will work reliably, and as we've seen, Postgres does all
+the heavy lifting under the cover. Good software is a black
+box, and Postgres is an especially dark one (although with
+pleasantly accessible internals).
 
-[Peter
-Geoghegan][peter], and asked for a few pointers.
+Thank you to [Peter Geoghegan][peter] for patiently
+answering all my layman questions about Postgres
+transactions and snapshots, and giving me some pointers for
+finding relevant code.
 
 [commit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/xact.c#L1939
 [committree]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L259
