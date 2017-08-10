@@ -254,7 +254,7 @@ tell which is which.
 ## Beginning a transaction (#begin)
 
 When you execute a `BEGIN`, Postgres puts some basic
-bookeeping in place, but it will defer more expensive
+bookkeeping in place, but it will defer more expensive
 operations as long as it can. For example, the new
 transaction isn't assigned a `xid` until it starts
 modifying data to reduce the expense of tracking it
