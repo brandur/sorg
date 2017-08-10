@@ -97,14 +97,14 @@ transaction (from [proc.c][pgxact]):
 ``` c
 typedef struct PGXACT
 {
-    TransactionId xid;          /* id of top-level transaction currently being
-                                 * executed by this proc, if running and XID
-                                 * is assigned; else InvalidTransactionId */
+    TransactionId xid;   /* id of top-level transaction currently being
+                          * executed by this proc, if running and XID
+                          * is assigned; else InvalidTransactionId */
 
-    TransactionId xmin;         /* minimal running XID as it was when we were
-                                 * starting our xact, excluding LAZY VACUUM:
-                                 * vacuum must not remove tuples deleted by
-                                 * xid >= xmin ! */
+    TransactionId xmin;  /* minimal running XID as it was when we were
+                          * starting our xact, excluding LAZY VACUUM:
+                          * vacuum must not remove tuples deleted by
+                          * xid >= xmin ! */
 
     ...
 } PGXACT;
