@@ -36,17 +36,18 @@ concepts that are key to understanding it all [1].
 
 Say you build a simple database that reads and writes from
 an on-disk CSV file. When a single client comes in with a
-request, it opens the file and writes some information.
-Things are mostly working fine, but then one day you decide
-to enhance your database with a sophisticated new feature,
+request, it opens the file, reads some information, and
+writes the changes back. Things are mostly working fine,
+but then one day you decide to enhance your database with a
+sophisticated new feature,
 multi-client support!
 
 Unfortunately, the new implementation is immediately
 plagued by problems that are especially noticeable when two
 clients are trying to access data around the same time. One
-opens the CSV file, writes some data, and that change is
-immediately clobbered by another client doing its own
-write.
+opens the CSV file, reads, modifies, and writes some data,
+but that change is immediately clobbered by another client
+trying to do the same.
 
 !fig src="/assets/postgres-atomicity/csv-database.svg" caption="Data loss from contention between two clients."
 
@@ -54,10 +55,11 @@ This is a problem of concurrent access and it's addressed
 by introducing _concurrency control_. There are plenty of
 naive solutions. We could ensure that any process takes out
 an exclusive lock on a file before reading or writing it,
-or push all operations through a single flow control point.
-Not only are these workarounds slow, but they won't scale
-up to allow us to make our database fully ACID-compliant.
-Modern databases have a better way, MVCC (multi-version
+or we could push all operations through a single flow
+control point so that they only run one at a time. Not only
+are these workarounds slow, but they won't scale up to
+allow us to make our database fully ACID-compliant. Modern
+databases have a better way, MVCC (multi-version
 concurrency control).
 
 Under MVCC, statements execute inside of a
@@ -174,9 +176,9 @@ deleted it) [2].
 
 !fig src="/assets/postgres-atomicity/heap-tuple-visibility.svg" caption="A heap tuple's lifetime being tracked with xmin and xmax."
 
-`xmin` and `xmax` can be revealed as hidden columns on any
-Postgres table. They just need to be selected explicitly by
-name:
+`xmin` and `xmax` are internal concetps, but they can be
+revealed as hidden columns on any Postgres table. Just
+select them explicitly by name:
 
 ``` sql
 # select *, xmin, xmax from names;
