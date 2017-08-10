@@ -5,6 +5,16 @@ location: San Francisco
 hook: TODO
 ---
 
+My time in university coincided with Facebook's massive
+surge in popularity. I'd walk into a lab in the computer
+science building. At any given moment, about two thirds of
+them were awash with the site's signature blue.
+
+These machines have been purchased by the university with
+expectation that students would use them to push outwards
+on the frontiers of computer science. Instead, they were
+mostly used to post status updates.
+
 Walk around a modern office today and communication is the
 majority of what you see. A considerable number of people
 are behind a closed door in a meeting. Those that aren't
@@ -30,6 +40,8 @@ book:
 **TODO:** Diagram of communication graph.
 
 50 developers give 50 · (50 – 1) / 2 = 1225 channels of communication
+
+## Deep work (#deep work)
 
 ## Structuring for modularity (#modularity)
 
