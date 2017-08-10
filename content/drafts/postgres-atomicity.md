@@ -73,15 +73,17 @@ other's changes.
 
 When a transaction starts, it takes a ***snapshot*** that
 captures the state of a database at that moment in time.
-Every transaction in the database is committing or aborting
-in _serial_ order, and a snapshot is a perfect
-representation of the database's state between two of them.
+Every transaction in the database is applied in _serial_
+order, with a global lock ensuring that only one is being
+confirmed committed or aborted at a time. A snapshot is a
+perfect representation of the database's state between two
+transactions.
 
 To avoid the neverending accumulation of rows that have
-been deleted, databases will eventually remove obsolete
-data by way of a background _vacuum_ process (or in some
-cases, opportunistic "microvacuums" that happen
-synchronously), but they'll only do so for information
+been deleted and hidden, databases will eventually remove
+obsolete data by way of a _vacuum_ process (or in some
+cases, opportunistic "microvacuums" that happen in band
+with other queries), but they'll only do so for information
 that's no longer needed by open snapshots.
 
 Postgres manages concurrent access with MVCC. Lets take a
