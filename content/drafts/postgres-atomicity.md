@@ -691,7 +691,7 @@ a heap tuple that its scanned. Subsequent operations can
 check the tuple's hint bits and are saved a trip to the
 commit log themselves.
 
-## The box's opaque walls (#black-box)
+## The box's dark walls (#black-box)
 
 When I run a transaction against a database:
 
