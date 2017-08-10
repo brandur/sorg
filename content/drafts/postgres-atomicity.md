@@ -492,6 +492,27 @@ transaction's status to "committed". It's only after this
 final operation completes that we can formally say that the
 transaction was durably committed.
 
+Although the commit log is called a "log", it's really more
+of a bitmap of commit statuses split across a number of
+pages in shared memory and on disk. In an example of the
+kind of frugality rarely seen in modern programming, the
+status of a transaction can be recorded in only two bits,
+so we can store four transactions per byte, or 32,768 in a
+standard page.
+
+From [`clog.h`][clogstatuses] and [`clog.c`][clogbits]:
+
+``` c
+#define TRANSACTION_STATUS_IN_PROGRESS      0x00
+#define TRANSACTION_STATUS_COMMITTED        0x01
+#define TRANSACTION_STATUS_ABORTED          0x02
+#define TRANSACTION_STATUS_SUB_COMMITTED    0x03
+
+#define CLOG_BITS_PER_XACT  2
+#define CLOG_XACTS_PER_BYTE 4
+#define CLOG_XACTS_PER_PAGE (BLCKSZ * CLOG_XACTS_PER_BYTE)
+```
+
 And while durability is important, performance is also a
 core Postgres value. If a transaction was never assigned a
 `xid` because it didn't affect the state of the database,
@@ -520,6 +541,57 @@ until the parent record is read and confirmed committed.
 Once again this is in the name of atomicity; the system
 could have successfully recorded every subcommit, but then
 crashed before it could write the parent.
+
+Here's what that looks like [in `clog.c`][setpagestatus]:
+
+``` c
+/*
+ * Record the final state of transaction entries in the commit log for
+ * all entries on a single page.  Atomic only on this page.
+ *
+ * Otherwise API is same as TransactionIdSetTreeStatus()
+ */
+static void
+TransactionIdSetPageStatus(TransactionId xid, int nsubxids,
+                           TransactionId *subxids, XidStatus status,
+                           XLogRecPtr lsn, int pageno)
+{
+    ...
+
+    LWLockAcquire(CLogControlLock, LW_EXCLUSIVE);
+
+    /*
+     * Set the main transaction id, if any.
+     *
+     * If we update more than one xid on this page while it is being written
+     * out, we might find that some of the bits go to disk and others don't.
+     * If we are updating commits on the page with the top-level xid that
+     * could break atomicity, so we subcommit the subxids first before we mark
+     * the top-level commit.
+     */
+    if (TransactionIdIsValid(xid))
+    {
+        /* Subtransactions first, if needed ... */
+        if (status == TRANSACTION_STATUS_COMMITTED)
+        {
+            for (i = 0; i < nsubxids; i++)
+            {
+                Assert(ClogCtl->shared->page_number[slotno] == TransactionIdToPage(subxids[i]));
+                TransactionIdSetStatusBit(subxids[i],
+                                          TRANSACTION_STATUS_SUB_COMMITTED,
+                                          lsn, slotno);
+            }
+        }
+
+        /* ... then the main transaction */
+        TransactionIdSetStatusBit(xid, status, lsn, slotno);
+    }
+
+    ...
+
+    LWLockRelease(CLogControlLock);
+}
+```
 
 ### Signaling completion through shared memory (#shared-memory)
 
@@ -722,6 +794,8 @@ answering all my amateur questions about Postgres
 transactions and snapshots, and giving me some pointers for
 finding relevant code.
 
+[clogbits]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L57
+[clogstatuses]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/clog.h#L26
 [commit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/xact.c#L1939
 [committree]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L259
 [didcommit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/transam.c#L124
@@ -732,6 +806,7 @@ finding relevant code.
 [peter]: https://twitter.com/petervgeoghegan
 [pgxact]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/storage/proc.h#L207
 [satisfies]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/utils/time/tqual.c#L962
+[setpagestatus]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L254
 [settreestatus]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L148
 [snapshot]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/utils/snapshot.h#L52
 [tuple]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/htup_details.h#L116
