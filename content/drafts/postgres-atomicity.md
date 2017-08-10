@@ -73,9 +73,10 @@ When a transaction starts, it takes a ***snapshot*** that
 captures the state of a database at that moment in time. To
 avoid the neverending accumulation of rows that have been
 deleted, databases will eventually remove obsolete data by
-way of a background "vacuum" process, but they'll only do
-so for information that's no longer needed by open
-snapshots.
+way of a background "vacuum" process (or in some cases,
+opportunistic "microvacuums" that happen synchronously),
+but they'll only do so for information that's no longer
+needed by open snapshots.
 
 Postgres manages concurrent access with MVCC. Lets take a
 look at how it works.
@@ -168,6 +169,19 @@ transaction where the tuple is visible (i.e. the one that
 deleted it) [2].
 
 !fig src="/assets/postgres-atomicity/heap-tuple-visibility.svg" caption="A heap tuple's lifetime being tracked with xmin and xmax."
+
+`xmin` and `xmax` can be revealed as hidden columns on any
+Postgres table. They just need to be selected explicitly by
+name:
+
+``` sql
+# select *, xmin, xmax from names;
+ id |   name   | xmin  | xmax
+----+----------+-------+-------
+  1 | Hyperion | 27926 | 27928
+  2 | Endymion | 27927 |     0
+(2 rows)
+```
 
 ### Snapshots: xmin, xmax, and xip (#snapshots)
 
@@ -405,13 +419,12 @@ CommitTransaction(void)
 Postgres is entirely designed around the idea of
 durability, which dictates that even in extreme events like
 a crash or power loss, committed transactions should stay
-committed. Like many good systems, it uses a write-ahead
-log (WAL, or often called a "clog", "xlog", or "transaction
-log" in Postgres lingo) to achieve this durability. Every
-committed change is written and flushed to disk, and even
-in the event of sudden termination, Postgres can replay
-what it finds in the WAL to recover any changes that didn't
-make it into its data files.
+committed. Like many good systems, it uses a _write-ahead
+log_ (_WAL_, or "xlog") to achieve this durability. All
+changes are witten and flushed to disk, and even in the
+event of a sudden termination, Postgres can replay what it
+finds in the WAL to recover any changes that didn't make it
+into its data files.
 
 `RecordTransactionCommit` from the snippet above handles
 getting a change to the WAL:
@@ -457,23 +470,26 @@ RecordTransactionCommit(void)
 }
 ```
 
-Another core Postgres value is performance. If a
-transaction was never assigned a `xid` because it didn't
-affect the state of the database, Postgres skips writing it
-to the WAL. If a transaction was aborted, we write it to
-the WAL, but don't bother to flush its commit status
-because even though it's completed, it doesn't affect data
-so it's not catastrophic if we lose it (any transactions
-found in the WAL without a commit status are assumed
-aborted).
+Along with the WAL, Postgres also has a _commit log_ (or
+"clog" or "pg_xact") which summarizes every transaction and
+whether it committed or aborted. This is what
+`TransactionIdCommitTree` is doing above -- the bulk of the
+information is written out to WAL first, then
+`TransactionIdCommitTree` goes through and sets the
+transaction's status to "committed". It's only after this
+final operation completes that we can formally say that the
+transaction was durably committed.
 
-It's also worth pointing out that the WAL is written in two
-parts. We write the bulk of the information out in
-`XactLogCommitRecord`, and if the transaction committed, we
-go through in a second pass with `TransactionIdCommitTree`
-and set the status of each record to "committed". It's only
-after this operation completes that we can formally say
-that the transaction was durably committed.
+And while durability is important, performance is also a
+core Postgres value. If a transaction was never assigned a
+`xid` because it didn't affect the state of the database,
+Postgres skips writing it to the WAL and commit log. If a
+transaction was aborted, we still write its aborted status
+to the commit log, but don't bother to immediately flush
+(fsync) because even in the event of a crash, we wouldn't
+lose any information. During crash recovery, Postgres would
+notice the unadorned transactions, and assume that they
+were aborted.
 
 ### Defensive programming (#defensive-programming)
 
@@ -495,10 +511,10 @@ crashed before it could write the parent.
 
 ### Signaling completion through shared memory (#shared-memory)
 
-With the transaction recorded to WAL, it's safe to signal
-its completion to the rest of the system. This happens in
-the second call in `CommitTransaction` above ([into
-procarray.c][endtransaction]):
+With the transaction recorded to commit log, it's safe to
+signal its completion to the rest of the system. This
+happens in the second call in `CommitTransaction` above
+([into procarray.c][endtransaction]):
 
 ``` c
 void
@@ -637,17 +653,17 @@ TransactionIdDidCommit(TransactionId transactionId)
 
 Further exploring the implementation of
 `TransactionLogFetch` will reveal that it works as
-advertised. It calculates a location in the WAL from the
-given transaction ID and reaches into the WAL to get that
+advertised. It calculates a location in the commit log from
+the given transaction ID and reaches into it to get that
 transaction's commit status. Whether or not the transaction
 committed is used to help determine the tuple's visibility.
 
-The key here is that for purposes of consistency, the WAL
-is considered the canonical source for commit status (and
-by extension, visibility) [3]. The same information will be
-returned regardless of whether Postgres successfully
-committed a transaction hours ago, or seconds before a
-crash that the server is just now recovering from.
+The key here is that for purposes of consistency, the
+commit log is considered the canonical source for commit
+status (and by extension, visibility) [3]. The same
+information will be returned regardless of whether Postgres
+successfully committed a transaction hours ago, or seconds
+before a crash that the server is just now recovering from.
 
 ### Hint bits (#hint-bits)
 
@@ -659,13 +675,13 @@ SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
             HeapTupleHeaderGetRawXmin(tuple));
 ```
 
-Checking the WAL to see whether a tuple's `xmin` or `xmax`
-transactions are committed is an expensive operation. To
-avoid having to go to the WAL every time, Postgres will set
-special commit status flags called "hint bits" for a heap
-tuple that its scanned. Subsequent operations can check the
-tuple's hint bits and are saved a trip to the WAL
-themselves.
+Checking the commit log to see whether a tuple's `xmin` or
+`xmax` transactions are committed is an expensive
+operation. To avoid having to go to it every time, Postgres
+will set special commit status flags called "hint bits" for
+a heap tuple that its scanned. Subsequent operations can
+check the tuple's hint bits and are saved a trip to the
+commit log themselves.
 
 ## The box's opaque walls (#black-box)
 
