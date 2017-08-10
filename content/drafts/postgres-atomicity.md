@@ -437,7 +437,7 @@ finds in the WAL to recover any changes that didn't make it
 into its data files.
 
 `RecordTransactionCommit` from the snippet above handles
-getting a change to the WAL:
+getting a change in transaction state to the WAL:
 
 ``` c
 static TransactionId
@@ -488,9 +488,7 @@ whether it committed or aborted. This is what
 `TransactionIdCommitTree` is doing above -- the bulk of the
 information is written out to WAL first, then
 `TransactionIdCommitTree` goes through and sets the
-transaction's status to "committed". It's only after this
-final operation completes that we can formally say that the
-transaction was durably committed.
+transaction's status in the commit log to "committed".
 
 Although the commit log is called a "log", it's really more
 of a bitmap of commit statuses split across a number of
@@ -498,7 +496,7 @@ pages in shared memory and on disk. In an example of the
 kind of frugality rarely seen in modern programming, the
 status of a transaction can be recorded in only two bits,
 so we can store four transactions per byte, or 32,768 in a
-standard page.
+standard 8k page.
 
 From [`clog.h`][clogstatuses] and [`clog.c`][clogbits]:
 
@@ -513,16 +511,17 @@ From [`clog.h`][clogstatuses] and [`clog.c`][clogbits]:
 #define CLOG_XACTS_PER_PAGE (BLCKSZ * CLOG_XACTS_PER_BYTE)
 ```
 
-And while durability is important, performance is also a
-core Postgres value. If a transaction was never assigned a
-`xid` because it didn't affect the state of the database,
-Postgres skips writing it to the WAL and commit log. If a
-transaction was aborted, we still write its aborted status
-to the commit log, but don't bother to immediately flush
-(fsync) because even in the event of a crash, we wouldn't
-lose any information. During crash recovery, Postgres would
-notice the unadorned transactions, and assume that they
-were aborted.
+### All sizes of optimization (#optimization)
+
+While durability is important, performance is also a value
+that's core to the Postgres philosophy. If a transaction
+was never assigned a `xid`, Postgres skips writing it to
+the WAL and commit log. If a transaction was aborted, we
+still write its aborted status to the WAL and commit log,
+but don't bother to immediately flush (fsync) because even
+in the event of a crash, we wouldn't lose any information.
+During crash recovery, Postgres would notice the unflagged
+transactions, and assume that they were aborted.
 
 ### Defensive programming (#defensive-programming)
 
@@ -534,7 +533,7 @@ detail, but it's worth nothing that because
 `TransactionIdCommitTree` cannot be guaranteed to be
 atomic, each subcommit is recorded as committed separately,
 and the parent is recorded as a final step. When Postgres
-is reading the WAL on recovery, subcommit records aren't
+is recovering after a crash, subcommit records aren't
 considered to be committed (even if they're marked as such)
 until the parent record is read and confirmed committed.
 
