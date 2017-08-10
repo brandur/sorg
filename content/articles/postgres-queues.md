@@ -240,45 +240,11 @@ This insight along with performing some basic profiling to check it leads us to 
 
 Illustrated visually, a lock under ideal conditions searches the job queue's B-tree and immediately finds a job to lock:
 
-```
-                +-------------+
-                | B-tree root |
-                +-------------+
-                       |
-                       +-----------------+
-      SEARCH           |                 |
-    queue = ''         |                 |
-AND run_at < now()     v                 v
-                    +-----+ +-----+
-                    |     | |     |
-                    | Job | | Job |     ...
-                    |     | |     |
-                    +-----+ +-----+
-
-                     LOCK!
-```
+!fig src="/assets/postgres-queues/index.svg" caption="Que finding a job under ideal conditions."
 
 In the degenerate case, a search turns up a series of dead tuples that must be scanned through until a live job is reached:
 
-```
-                +-------------+
-                | B-tree root |
-                +-------------+
-                       |
-                       +-------------------------------------------+
-      SEARCH           |                                           |
-    queue = ''         |                                           |
-AND run_at < now()     v                                           v
-                                              +-----+ +-----+
-                                              |     | |     |
-                      DEAD  DEAD  DEAD  DEAD  | Job | | Job |     ...
-                                              |     | |     |
-                                              +-----+ +-----+
-
-                                               LOCK!
-                       ==========================>
-                         index_getnext loop/seek
-```
+!fig src="/assets/postgres-queues/index-bloated.svg" caption="Que trying to find a lock in a bloated heap."
 
 A job queue's access pattern is particularly susceptible to this kind of degradation because all this work gets thrown out between every job that's worked. To minimize the amount of time that a job sits in the queue, queueing systems tend to only grab one job at a time which leads to short waiting periods during optimal performance, but particularly pathologic behavior during the worse case scenario.
 
@@ -299,23 +265,7 @@ We know that the third field in the Que table's primary key is `job_id`; what if
 
 Illustrated visually, the locking function is able to skip the bulk of the dead rows because its B-tree search takes it to a live job right away:
 
-```
-                +-------------+
-                | B-tree root |
-                +-------------+
-                       |
-                       +-------------------------+-----------------+
-                                SEARCH           |                 |
-                              queue = ''         |                 |
-                          AND run_at < now()     v                 v
-                           AND job_id > 123   +-----+ +-----+
-                                              |     | |     |
-                      DEAD  DEAD  DEAD  DEAD  | Job | | Job |     ...
-                                              |     | |     |
-                                              +-----+ +-----+
-
-                                               LOCK!
-```
+!fig src="/assets/postgres-queues/index-corrected.svg" caption="Que finding a lock with a greater index specificity despite a bloated heap."
 
 Because Que works jobs in the order that they came into the queue, having workers re-use the identifier of the last job they worked might be a simple and effective way to accomplish this. Here's the basic pseudocode for a modified work loop:
 
