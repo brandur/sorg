@@ -70,13 +70,17 @@ safely persisted because they're not overwriting each
 other's changes.
 
 When a transaction starts, it takes a ***snapshot*** that
-captures the state of a database at that moment in time. To
-avoid the neverending accumulation of rows that have been
-deleted, databases will eventually remove obsolete data by
-way of a background "vacuum" process (or in some cases,
-opportunistic "microvacuums" that happen synchronously),
-but they'll only do so for information that's no longer
-needed by open snapshots.
+captures the state of a database at that moment in time.
+Every transaction in the database is committing or aborting
+in _serial_ order, and a snapshot is a perfect
+representation of the database's state between two of them.
+
+To avoid the neverending accumulation of rows that have
+been deleted, databases will eventually remove obsolete
+data by way of a background _vacuum_ process (or in some
+cases, opportunistic "microvacuums" that happen
+synchronously), but they'll only do so for information
+that's no longer needed by open snapshots.
 
 Postgres manages concurrent access with MVCC. Lets take a
 look at how it works.
@@ -416,6 +420,8 @@ CommitTransaction(void)
 }
 ```
 
+### Durability and the WAL (#durability)
+
 Postgres is entirely designed around the idea of
 durability, which dictates that even in extreme events like
 a crash or power loss, committed transactions should stay
@@ -469,6 +475,8 @@ RecordTransactionCommit(void)
     ...
 }
 ```
+
+### The commit log (#commit-log)
 
 Along with the WAL, Postgres also has a _commit log_ (or
 "clog" or "pg_xact") which summarizes every transaction and
