@@ -227,7 +227,7 @@ to the snapshot.
 
 Lastly, a snapshot defines `*xip`, an array of all of the
 `xid`s of transactions that were in progress when the
-snapshot was created. It's created because even though
+snapshot was created. `*xip` is needed because even though
 there's already a visibility boundary with `xmin`, there
 may still be some transactions that are already committed
 with `xid`s greater than `xmin`, but _also_ greater than a
@@ -276,9 +276,9 @@ exec_simple_query(const char *query_string)
 }
 ```
 
-Creating the new snapshot is where the transaction
-machinery starts to come into effect. Here's
-`GetSnapshotData` ([in `procarray.c`][getsnapshotdata]):
+Creating the new snapshot is where the machinery really
+starts coming to life. Here's `GetSnapshotData` ([in
+`procarray.c`][getsnapshotdata]):
 
 ``` c
 Snapshot
@@ -301,7 +301,7 @@ snapshot's `xmin`, `xmax`, and `*xip`. The easiest of these
 is `xmax`, which is retrieved from shared memory managed by
 the postmaster. Every transaction that commits notifies the
 postmaster that it did, and `latestCompletedXid` will be
-updated if the `xid` is higher than what's already in there
+updated if the `xid` is higher than what it already holds.
 (more on this later).
 
 Notice that it's the function's responsibility to add one
