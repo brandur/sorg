@@ -43,11 +43,11 @@ sophisticated new feature,
 multi-client support!
 
 Unfortunately, the new implementation is immediately
-plagued by problems that are especially noticeable when two
-clients are trying to access data around the same time. One
-opens the CSV file, reads, modifies, and writes some data,
-but that change is immediately clobbered by another client
-trying to do the same.
+plagued by problems that seem to especially apparent when
+two clients are trying to access data around the same time.
+One opens the CSV file, reads, modifies, and writes some
+data, but that change is immediately clobbered by another
+client trying to do the same.
 
 !fig src="/assets/postgres-atomicity/csv-database.svg" caption="Data loss from contention between two clients."
 
@@ -178,12 +178,12 @@ deleted it) [2].
 
 !fig src="/assets/postgres-atomicity/heap-tuple-visibility.svg" caption="A heap tuple's lifetime being tracked with xmin and xmax."
 
-`xmin` and `xmax` are internal concetps, but they can be
+`xmin` and `xmax` are internal concepts, but they can be
 revealed as hidden columns on any Postgres table. Just
 select them explicitly by name:
 
 ``` sql
-# select *, xmin, xmax from names;
+# SELECT *, xmin, xmax FROM names;
  id |   name   | xmin  | xmax
 ----+----------+-------+-------
   1 | Hyperion | 27926 | 27928
