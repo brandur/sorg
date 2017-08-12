@@ -637,6 +637,17 @@ to `latestCompletedXid + 1`? By setting
 just committed, we've just made its results visible to
 every new snapshot that starts from this point forward.
 
+Note the lock acquisition and release calls on the lines
+with `LWLockConditionalAcquire` and `LWLockRelease`. Most
+of the time, Postgres is perfectly happy to let processes
+do work in parallel, but there are a few places where locks
+need to be acquired to avoid contention, and this is one of
+them. Near the beginning of this article we touched on how
+transactions in Postgres commit or abort in serial order,
+one at a time. `ProcArrayEndTransaction` acquires an
+exclusive lock so that it can update `latestCompletedXid`
+without having its negated undone by another process.
+
 ### Responding to the client (#client)
 
 Throughout this entire process, a client has been waiting
