@@ -351,8 +351,8 @@ magic (in [transam.h][xidadvance]):
     } while(0)
 ```
 
-Note that the first few IDs are reserved as special
-identifiers, so we always skip those and start at `3`.
+The first few IDs are reserved as special identifiers, so
+we always skip those and start at `3`.
 
 Back in `GetSnapshotData`, we get `xmin` and `xip` by
 iterating over all running transactions (again, see
@@ -835,7 +835,7 @@ fine for tracking a tuple's creation and deletion, they
 aren't to enough to handle updates. For brevity's sake, I'm
 glossing over how updates work for now.
 
-[3] Note that changes will eventually be no longer
-available in the WAL, but those will always be beyond a
-snapshot's `xmin` horizon, and therefore the visibility
-check short circuits before having to make a check in WAL.
+[3] Note that the commit log will eventually be truncated,
+but only beyond the a snapshot's `xmin` horizon, and
+therefore for the visibility check short circuits before
+having to make a check in WAL.
