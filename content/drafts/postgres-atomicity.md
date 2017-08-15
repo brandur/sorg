@@ -264,10 +264,10 @@ modifying data to reduce the expense of tracking it
 elsewhere in the system.
 
 The new transaction also won't immediately get a snapshot.
-One won't be assigned until the transaction's first query,
-whereupon `exec_simple_query` ([in
-`postgres.c`][execsimplequery]) will push a snapshot onto a
-stack. Even a simple `SELECT 1;` is enough to trigger it:
+It will when it runs its first query, whereupon
+`exec_simple_query` ([in `postgres.c`][execsimplequery])
+will push one onto a stack. Even a simple `SELECT 1;` is
+enough to trigger it:
 
 ``` c
 static void
