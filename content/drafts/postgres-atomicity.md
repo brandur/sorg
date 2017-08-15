@@ -636,9 +636,9 @@ other daemon-like services, Postgres uses a a process
 forking model to handle concurrency instead of threading.
 When it accepts a new connection, the Postmaster forks a
 new backend ([in `postmaster.c`][backendstartup]). Backends
-are represented by the `PGPROC` structure, and the entire
-set of active processes is tracked in shared memory, thus
-"proc array".
+are represented by the `PGPROC` structure ([in
+`proc.h`][pgproc]), and the entire set of active processes
+is tracked in shared memory, thus "proc array".
 
 Now remember how when we created a snapshot we set its
 `xmax` to `latestCompletedXid + 1`? By setting
@@ -825,6 +825,7 @@ finding relevant code.
 [gettup]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/heap/heapam.c#L478
 [getsnapshotdata]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/storage/ipc/procarray.c#L1507
 [peter]: https://twitter.com/petervgeoghegan
+[pgproc]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/storage/proc.h#L94
 [pgxact]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/storage/proc.h#L207
 [satisfies]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/utils/time/tqual.c#L962
 [setpagestatus]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L254
