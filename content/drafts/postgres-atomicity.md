@@ -655,7 +655,7 @@ Near the beginning of this article we touched on how
 transactions in Postgres commit or abort in serial order,
 one at a time. `ProcArrayEndTransaction` acquires an
 exclusive lock so that it can update `latestCompletedXid`
-without having its negated undone by another process.
+without having its work negated by another process.
 
 ### Responding to the client (#client)
 
