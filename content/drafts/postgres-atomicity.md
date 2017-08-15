@@ -631,18 +631,28 @@ ProcArrayEndTransactionInternal(PGPROC *proc, PGXACT *pgxact,
 }
 ```
 
-Remember how when we created a snapshot we set its `xmax`
-to `latestCompletedXid + 1`? By setting
-`latestCompletedXid` to the `xid` of the transaction that
-just committed, we've just made its results visible to
-every new snapshot that starts from this point forward.
+You may be wondering what a "proc array" is. Unlike many
+other daemon-like services, Postgres uses a a process
+forking model to handle concurrency instead of threading.
+When it accepts a new connection, the Postmaster forks a
+new backend ([in `postmaster.c`][backendstartup]). Backends
+are represented by the `PGPROC` structure, and the entire
+set of active processes is tracked in shared memory, thus
+"proc array".
 
-Note the lock acquisition and release calls on the lines
-with `LWLockConditionalAcquire` and `LWLockRelease`. Most
-of the time, Postgres is perfectly happy to let processes
-do work in parallel, but there are a few places where locks
-need to be acquired to avoid contention, and this is one of
-them. Near the beginning of this article we touched on how
+Now remember how when we created a snapshot we set its
+`xmax` to `latestCompletedXid + 1`? By setting
+`latestCompletedXid` in global shared memory to the `xid`
+of the transaction that just committed, we've just made its
+results visible to every new snapshot that starts from this
+point forward on any backend.
+
+Take a lock acquisition and release calls on the lines with
+`LWLockConditionalAcquire` and `LWLockRelease`. Most of the
+time, Postgres is perfectly happy to let processes do work
+in parallel, but there are a few places where locks need to
+be acquired to avoid contention, and this is one of them.
+Near the beginning of this article we touched on how
 transactions in Postgres commit or abort in serial order,
 one at a time. `ProcArrayEndTransaction` acquires an
 exclusive lock so that it can update `latestCompletedXid`
@@ -651,12 +661,12 @@ without having its negated undone by another process.
 ### Responding to the client (#client)
 
 Throughout this entire process, a client has been waiting
-synchronously for their transaction to be confirmed. Part
-of the atomicity guarantee is that false positives where
-the databases signals a transaction as committed when it
-hasn't been aren't possible. Failures can happen in many
-places, but if there is one, the client finds out about it
-and has a chance to retry or otherwise address the problem.
+synchronously for its transaction to be confirmed. Part of
+the atomicity guarantee is that false positives where the
+databases signals a transaction as committed when it hasn't
+been aren't possible. Failures can happen in many places,
+but if there is one, the client finds out about it and has
+a chance to retry or otherwise address the problem.
 
 ## Checking visibility (#visibility)
 
@@ -804,6 +814,7 @@ answering all my amateur questions about Postgres
 transactions and snapshots, and giving me some pointers for
 finding relevant code.
 
+[backendstartup]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/postmaster/postmaster.c#L4014
 [clogbits]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L57
 [clogstatuses]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/clog.h#L26
 [commit]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/xact.c#L1939
