@@ -2,9 +2,8 @@
 title: How Postgres Makes Transactions Atomic
 published_at: 2017-08-06T17:10:18Z
 location: San Francisco
-hook: Most of us have heard that transactions in Postgres
-  are atomic, but given the hazardous conditions of real
-  life, how does does it provide such a strong guarantee?
+hook: How Postgres provides strong atomic guarantees
+  despite a chaotic world.
 ---
 
 Atomicity (in the sense of "ACID") states that for a series
