@@ -1,9 +1,11 @@
 ---
-title: How Postgres Makes Transactions Atomic
+title: "Stability in a Chaotic World: How Postgres Makes
+  Transactions Atomic"
 published_at: 2017-08-06T17:10:18Z
 location: San Francisco
-hook: How Postgres provides strong atomic guarantees
-  despite a chaotic world.
+hook: A dive into the mechanics that allow Postgres to
+  provide strong atomic guarantees with its transactions
+  despite the chaotic entropy of production.
 ---
 
 Atomicity (in the sense of "ACID") states that for a series
