@@ -6,6 +6,7 @@ location: San Francisco
 hook: A dive into the mechanics that allow Postgres to
   provide strong atomic guarantees with its transactions
   despite the chaotic entropy of production.
+hook_image: true
 ---
 
 Atomicity (in the sense of "ACID") states that for a series
