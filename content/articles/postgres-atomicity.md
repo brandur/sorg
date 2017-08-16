@@ -817,6 +817,22 @@ answering all my amateur questions about Postgres
 transactions and snapshots, and giving me some pointers for
 finding relevant code.
 
+[1] A few words of warning: the Postgres source code is
+pretty overwhelming, so I've glossed over a few details to
+make this reading more digestible. It's also under active
+development, so the passage of time will likely render some
+of these code samples quite obsolete.
+
+[2] Readers may notice that while `xmin` and `xmax` are
+fine for tracking a tuple's creation and deletion, they
+aren't to enough to handle updates. For brevity's sake, I'm
+glossing over how updates work for now.
+
+[3] Note that the commit log will eventually be truncated,
+but only beyond the a snapshot's `xmin` horizon, and
+therefore for the visibility check short circuits before
+having to make a check in WAL.
+
 [backendstartup]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/postmaster/postmaster.c#L4014
 [clogbits]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/transam/clog.c#L57
 [clogstatuses]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/clog.h#L26
@@ -838,19 +854,3 @@ finding relevant code.
 [tupleheaders]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/htup.h#L62
 [xid]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/c.h#L397
 [xidadvance]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/access/transam.h#L31
-
-[1] A few words of warning: the Postgres source code is
-pretty overwhelming, so I've glossed over a few details to
-make this reading more digestible. It's also under active
-development, so the passage of time will likely render some
-of these code samples quite obsolete.
-
-[2] Readers may notice that while `xmin` and `xmax` are
-fine for tracking a tuple's creation and deletion, they
-aren't to enough to handle updates. For brevity's sake, I'm
-glossing over how updates work for now.
-
-[3] Note that the commit log will eventually be truncated,
-but only beyond the a snapshot's `xmin` horizon, and
-therefore for the visibility check short circuits before
-having to make a check in WAL.
