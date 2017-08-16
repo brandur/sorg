@@ -399,7 +399,7 @@ snapshot->xmin = xmin;
 
 ## Committing a transaction (#commit)
 
-Transactions committed through [`CommitTransaction` (in
+Transactions are committed through [`CommitTransaction` (in
 `xact.c`)][commit]. This function is monstrously complex,
 but here are a few of its important parts:
 
