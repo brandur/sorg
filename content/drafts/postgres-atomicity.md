@@ -11,8 +11,8 @@ hook_image: true
 
 Atomicity (in the sense of "ACID") states that for a series
 of operations performed against a database, either every
-one of them commits together, or they're all rolled back.
-No in between states are allowed. For code that needs to be
+one of them commits together, or they're all rolled back;
+no in between states are allowed. For code that needs to be
 resilient to the messiness of the real world, it's a
 godsend.
 
@@ -186,11 +186,11 @@ select them explicitly by name:
 
 ``` sql
 # SELECT *, xmin, xmax FROM names;
+
  id |   name   | xmin  | xmax
 ----+----------+-------+-------
   1 | Hyperion | 27926 | 27928
   2 | Endymion | 27927 |     0
-(2 rows)
 ```
 
 ### Snapshots: xmin, xmax, and xip (#snapshots)
