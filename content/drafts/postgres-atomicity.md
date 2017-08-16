@@ -4,8 +4,8 @@ title: "Stability in a Chaotic World: How Postgres Makes
 published_at: 2017-08-06T17:10:18Z
 location: San Francisco
 hook: A dive into the mechanics that allow Postgres to
-  provide strong atomic guarantees with its transactions
-  despite the chaotic entropy of production.
+  provide strong atomic guarantees despite the chaotic
+  entropy of production.
 hook_image: true
 ---
 
