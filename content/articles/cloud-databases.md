@@ -60,7 +60,7 @@ thoughts"](#closing-thoughts) below.
         <td></td>
       </tr>
       <tr>
-        <td><strong><a href="#citusdb">CitusDB</a></strong></td>
+        <td><strong><a href="#citusdb">Citus</a></strong></td>
         <td>✓</td>
         <td>✓</td>
         <td>✓</td>
@@ -149,7 +149,7 @@ Here's the meaning of each column:
 * ***Automatic Data Sharding:*** Distinguishes databases
   where data partitioning and balancing is handled manually
   by the user versus automatically by the database. As an
-  example of a "manual" database, in CitusDB or MongoDB you
+  example of a "manual" database, in Citus or MongoDB you
   explicitly tell the database that you want a table to be
   distributed and tell it what key should be used for
   sharding (e.g. `user_id`). For comparison, Spanner
@@ -266,17 +266,17 @@ fix). It may be a more appropriate choice than solutions
 like CockroachDB or Spanner for users looking for extensive
 scalability, but who don't need it to be infinite.
 
-### CitusDB (#citusdb)
+### Citus (#citusdb)
 
-[CitusDB][citusdb] is a distributed database built on top
-of Postgres that allows individual tables to be sharded and
+[Citus][citus] is a distributed database built on top of
+Postgres that allows individual tables to be sharded and
 distributed across any number of nodes. It provides clever
 concepts like _reference tables_ to help ensure data
 locality to improve query performance. ACID guarantees are
 scoped to particular nodes, which is often adequate given
 that partitioning is designed so that data is colocated.
 
-Most notably, CitusDB is open source and runs using the
+Most notably, Citus is open source and runs using the
 Postgres extension API. This reduces the risk of lock in,
 which is a considerable downside of most of the other
 options on this list. Compared to Aurora, it also means
@@ -315,8 +315,8 @@ limitations][cockroach-limitations].
 Like Spanner, the additional overhead of guaranteeing
 distributed consistency means that it's a poor choice where
 low latency operations are needed ([they admit as much
-themselves][cockroach-not-good-choice]). Like CitusDB
-above, the fact that it's built by a small company with an
+themselves][cockroach-not-good-choice]). Like Citus above,
+the fact that it's built by a small company with an
 unproven business model is a downside.
 
 ### Microsoft Cosmos (#cosmos)
@@ -415,7 +415,7 @@ maintain data locality and scalable storage (at the costs
 of loss of dev/production parity and vendor lock in).
 Organizations at this tier who run hot and need compute and
 memory resources that are scalable beyond a single node
-might benefit from something like CitusDB instead.
+might benefit from something like Citus instead.
 
 After you're at the scale of Google, something closer to
 Spanner is probably the right answer. Although less
@@ -438,7 +438,7 @@ nothing to scoff at and should provide enough runway for
 the vast majority of use cases.
 
 [aurora]: https://aws.amazon.com/rds/aurora/
-[citusdb]: https://www.citusdata.com/
+[citus]: https://www.citusdata.com/
 [cockroach]: https://www.cockroachlabs.com/
 [cockroach-limitations]: https://www.cockroachlabs.com/docs/known-limitations.html
 [cockroach-not-good-choice]: https://www.cockroachlabs.com/docs/frequently-asked-questions.html#when-is-cockroachdb-not-a-good-choice
