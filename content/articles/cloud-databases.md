@@ -46,7 +46,7 @@ thoughts"](#closing-thoughts) below.
         <th>Concurrent ACID</th>
         <th>HA</th>
         <th>Horizontally Scalable</th>
-        <th>Automatic Data Sharding</th>
+        <th>Automatic Scalability</th>
         <th>Low Latency</th>
         <th>Notes</th>
       </tr>
@@ -146,7 +146,7 @@ Here's the meaning of each column:
   it's unsuitable for use, but it has some caveats (see
   ["Amazon Aurora"](#aurora) below for details).
 
-* ***Automatic Data Sharding:*** Distinguishes databases
+* ***Automatic Scalability:*** Distinguishes databases
   where data partitioning and balancing is handled manually
   by the user versus automatically by the database. As an
   example of a "manual" database, in Citus or MongoDB you
@@ -157,8 +157,8 @@ Here's the meaning of each column:
   stored to it to the nodes it has available, and
   rebalances as necessary. Both options are workable, but
   manual distribution has more operational overhead and
-  without a lot of care, can lead to unbalanced sharding
-  where larger nodes run disproportionately hot.
+  without care, can lead to unbalanced sharding where
+  larger nodes run disproportionately hot.
 
 * ***Low latency:*** The extra inter-node coordination
   overhead used by CockroachDB Cosmos, and Spanner to
