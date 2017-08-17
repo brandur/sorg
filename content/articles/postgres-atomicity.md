@@ -7,6 +7,7 @@ hook: A dive into the mechanics that allow Postgres to
   provide strong atomic guarantees despite the chaotic
   entropy of production.
 hook_image: true
+hn_link: https://news.ycombinator.com/item?id=15027870
 ---
 
 Atomicity (in the sense of "ACID") states that for a series
