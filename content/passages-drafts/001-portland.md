@@ -211,14 +211,14 @@ seconds into any kind of moving (walking, biking, running,
 cleaning, etc.), and am always on the lookout for ways to
 stay cooler.
 
-Flyknit shoes are the answer for me. Their woven fabric may
-not be very good for waterproofness, but is unbeatable when
-it comes to breathability. They also look great With their
+Flyknit is the answer for me. Its woven fabric may not be
+very good for waterproofness, but is unbeatable when it
+comes to breathability. It also looks great with its
 eclectic designs and scintillating colors, and I say that
 as someone who's never thought that about a shoe before. I
-just ordered another three pairs Flyknit Racers because it
-seems to be getting phased out already and I'm worried that
-I'll never find a shoe that I like this much again.
+just ordered another three pairs of Flyknit Racers because
+I'm worried that I'll never find a shoe that I like this
+much again.
 
 A travel trick that I've really taken to heart is to just
 wear my Flyknit shoes all the time. When I go somewhere, I
@@ -226,7 +226,7 @@ don't take any footwear beyond what I have on my feet, and
 save a corresponding amount of space in my luggage.
 Although not appropriate for every possible situation,
 they've got me covered for urban walking, running, and all
-but Alberta-length length hikes.
+but Alberta-length hikes.
 
 (And I should probably point out at this point that it may
 be hard to believe, but no, Nike did not sponsor this
