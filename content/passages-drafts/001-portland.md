@@ -42,11 +42,12 @@ and software.
 
 _Passages_ refers to the routes that we use to get from one
 point to another, like Hannibal's passage through the Alps,
-Magellan's strait, or more mundanely, my favorite walking
-path from Friedrichshain to Kreuzberg. _Glass_ is a play on
-a number of things like the glass on my favorite products
-like the iPhone, the window through which you watch the
-passing countryside by air or rail, or my camera's lens.
+Magellan's strait, or in the case of my far more mundane
+life, my favorite walking path from Friedrichshain to
+Kreuzberg. _Glass_ is a play on a number of things like the
+glass on my favorite products like the iPhone, the window
+through which you watch the passing countryside by air or
+rail, or my camera's lens.
 
 _Passages & Glass_ is also about supporting the independent
 web. It's sent via the only universal medium of
@@ -79,8 +80,8 @@ rideshare, drivers tell meaningful stories about the area.
 
 The city's beautiful. Calm and well-maintained downtown
 streets spread out to become eclectic inner city suburbs
-where each house has an interesting shape and a cluster of
-wild shrubbery instead of a boring lawn. The shops and
+where each house has an interesting shape and clusters of
+wild shrubbery instead of the usual lawn. The shops and
 sights offer an amazing variety; in the first few days we
 ate at Atsuri, a ramen shop whose only other location is
 Tokyo, had espresso and Turkish delight at the top of a
@@ -108,12 +109,13 @@ Bullitt bourbon on board, and it made the ride a blur.
 
 Salt & Straw's a hipster ice cream brand known particularly
 for quirky flavors like "freckled woodblock chocolate",
-"avocado and strawberry sherbet", and "black olive brittle
-& goat cheese". They originated in Portland and have since
-spread to Los Angeles and San Francisco. Instead of waiting
-in the hour-long lineup back home in their new location on
-Fillmore St, we waited in the lineup in their home city --
-much more reasonable at a mere 45 minutes.
+"avocado and strawberry sherbet", and the ever-decadent
+"black olive brittle & goat cheese". They originated in
+Portland and have since spread to Los Angeles and San
+Francisco. Instead of waiting in the hour-long lineup back
+home in their new location on Fillmore St, we waited in the
+lineup in their home city -- much more reasonable at a mere
+45 minutes.
 
 ![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
 
@@ -146,7 +148,7 @@ idiot. Of course it was him."
 
 Rating high on the list of things to do in Portland are
 bicycling and beer. We combined the two passions by taking
-a tour one one of their local [party bikes][party-bike]
+a tour one one of their local [party bikes][partybike]
 (also known as pedibuses, cycle pubs, bierbikes, and
 megacycles). Open container laws are in effect in Portland,
 so rather than drink on the bike itself, we ranged around
@@ -178,7 +180,7 @@ Stone House and the epic view of Mount Hood and downtown
 Portland from the Pittock Mansion, but nothing substantial.
 As luck would have it, our friends Andrée and Simon, who
 had rented a car, invited us to come along with them for a
-day hike along the [Trail of Ten Falls][ten-falls] in
+day hike along the [Trail of Ten Falls][tenfalls] in
 Silver Falls State Park (Oregon's largest state park at
 over 9,000 acres).
 
@@ -271,14 +273,14 @@ tech stack is, but Go's is one of the good ones.
 Bitcoin is currently one of our greatest forms of
 entertainment in the valley, with plot twists so frequent
 and so dramatic that not even the best writers on [Mr.
-Robot][mr-robot] could have dreamt them up.
+Robot][mrrobot] could have dreamt them up.
 
 You may have heard that the preeminent digital currency
 recently forked a new currency called Bitcoin Cash (see
 [this article][cash] for some good background information).
 Although this seems like it'll be a relatively minor fork,
-probably starting with only around 10% of Bitcoin's total
-mining power, a larger disaster was only narrowly averted.
+starting with only around 10% of Bitcoin's total mining
+power, a larger disaster was only narrowly averted.
 
 In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
 MB limit on Bitcoin's blocksize to protect the network from
@@ -319,18 +321,18 @@ another project that wanted to solve the capacity problem
 through a straight up increase of blocksize to 8MB _did_
 fork the network. That's Bitcoin Cash.
 
-Needless to say these sorts of close calls don't give
-everyone down here tremendous confidence in the future of
-cryptocurrency. And even Bitcoin's problems pale in
-comparison to alternatives like Ethereum, which forked in
-2016 after a hacker penetrated their very libertarian named
-"Decentralized Autonomous Organization" ([the DAO][dao]), and
-made off with 3.6M Ether (a third of its total funds,
-ostensibly worth $50M at the time). The fork reversed the
-theft, but fractured the network forever.
+These sorts of close calls don't give everyone down here
+tremendous confidence in the future of cryptocurrency. And
+even Bitcoin's problems pale in comparison to alternatives
+like Ethereum, which forked in 2016 after a hacker
+penetrated their very libertarian named "Decentralized
+Autonomous Organization" ([the DAO][dao]), and made off
+with 3.6M Ether (a third of its total funds, ostensibly
+worth $50M at the time). The fork reversed the theft, but
+fractured the network forever.
 
 These days I feel similarly about cryptocurrencies as my
-colleague Patrick M., who I think puts it best ([when
+colleague Patrick McKenzie, who I think puts it best ([when
 asked][patio11] what subject he disagrees with others in
 the valley on):
 
@@ -347,30 +349,42 @@ the valley on):
 > both. Bitcoin will, accordingly, go to zero with the
 > inevitability of gravity."
 
-But with Bitcoin still trading at around $2800 USD, so far
-I've been wrong at every turn. Maybe these
-[tulips][tulipmania] stay in bloom forever.
+But with Bitcoin still trading at around $4350 USD (up
+already from $2800 when I originally drafted this text!),
+so far I've been wrong at every turn. Maybe these
+[tulips][tulipmania] will stay in bloom forever.
+
+## Other publications (#other)
+
+If you can stomach a few more words by me, I've recently
+published an article on [how Stripe thinks about API
+versioning][apiversioning] on our engineering blog, and an
+in-depth look at [how Postgres makes its transactions
+atomic][atomicity] which digs into MVCC, snapshots, the
+WAL, and commit log.
 
 ## Stay connected (#connected)
 
 This one's run a little long, so thank you for reading it!
 As many of you hace no doubt noticed by now, I'm not
 particularly good at staying in touch, so if you're doing
-something interesting, I emplore you to drop me a line at
+something interesting, I implore you to drop me a line at
 [brandur@brandur.org][mail] in case I don't get to you
 first.
 
+[apiversioning]: https://stripe.com/blog/api-versioning
+[atomicity]: https://brandur.org/postgres-atomicity
 [cash]: https://blog.bridge21.io/before-and-after-the-great-bitcoin-fork-17d2aad5d512
 [dao]: https://en.wikipedia.org/wiki/The_DAO_(organization)
 [go]: https://golang.org/
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
 [mail]: mailto:brandur@brandur.org
-[mr-robot]: https://en.wikipedia.org/wiki/Mr._Robot_(TV_series)
+[mrrobot]: https://en.wikipedia.org/wiki/Mr._Robot_(TV_series)
 [newsletter]: https://brandur.org/newsletter
-[party-bike]: https://en.wikipedia.org/wiki/Party_bike
+[partybike]: https://en.wikipedia.org/wiki/Party_bike
 [patio11]: https://www.producthunt.com/live/patrick-mckenzie-patio11#comment-452743
 [rust]: https://www.rust-lang.org/en-US/
-[ten-falls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
+[tenfalls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
 [tulipmania]: https://en.wikipedia.org/wiki/Tulip_mania
 [unsubscribe]: %unsubscribe_url%
