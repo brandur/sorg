@@ -55,7 +55,7 @@ thoughts"](#closing-thoughts) below.
         <td>✓</td>
         <td>✓</td>
         <td>✓ Disk only</td>
-        <td>✓</td>
+        <td>✓ Single node; see notes</td>
         <td>✓</td>
         <td></td>
       </tr>
