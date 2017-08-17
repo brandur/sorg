@@ -786,7 +786,7 @@ Checking the commit log to see whether a tuple's `xmin` or
 `xmax` transactions are committed is an expensive
 operation. To avoid having to go to it every time, Postgres
 will set special commit status flags called "hint bits" for
-a heap tuple that its scanned. Subsequent operations can
+a heap tuple that is scanned. Subsequent operations can
 check the tuple's hint bits and are saved a trip to the
 commit log themselves.
 
