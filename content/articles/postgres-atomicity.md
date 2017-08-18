@@ -232,7 +232,7 @@ typedef struct SnapshotData
 A snapshot's `xmin` is calculated the same way as a
 transaction's (i.e. the lowest `xid` amongst running
 transactions when the snapshot is created), but for a
-different prupose. This `xmin` is a lower boundary for data
+different purpose. This `xmin` is a lower boundary for data
 visibility. Tuples created by a transaction with `xid <
 xmin` are visible to the snapshot.
 
