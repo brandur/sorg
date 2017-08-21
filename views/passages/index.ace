@@ -2,7 +2,7 @@
   p#passages Passages and Glass
   p
     = include views/_passages_about .
-    | If that sounds like something you might like to receive in your inbox, you can <a href="https://passages-signup.herokuapp.com">subscribe here</a>.
+    | You can <a href="https://passages-signup.herokuapp.com">subscribe right here</a>.
   ul
     {{range .Passages}}
       li
