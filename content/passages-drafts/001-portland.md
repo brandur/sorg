@@ -78,14 +78,14 @@ rideshare, drivers tell meaningful stories about the area.
 
 The city's beautiful. Calm and well-maintained downtown
 streets spread out to become eclectic inner city suburbs
-where each house has an interesting shape and clusters of
-wild shrubbery instead of the usual lawn. The shops and
-sights offer an amazing variety; in the first few days we
-ate at Atsuri, a ramen shop whose only other location is
-Tokyo, had espresso and Turkish delight at the top of a
-double decker bus parked permanently parked behind a row of
-food trucks (ToV coffee & tea), and had the best hot wings
-of my life at Pok Pok.
+where each house has an interesting shape. Clusters of wild
+shrubbery grow out front instead of the usual lawn. The
+shops and sights offer an amazing variety; in the first few
+days we ate at Atsuri, a ramen shop whose only other
+location is in Tokyo, had espresso and Turkish delight at
+the top of a double decker bus parked permanently parked
+behind a row of food trucks (ToV coffee & tea), and had the
+best hot wings of my life at Pok Pok.
 
 The wedding took place outside the city in Hillsboro atop a
 hill overlooking a vinyard on one side, and a golden field
