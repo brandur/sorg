@@ -94,7 +94,7 @@ setting sun). The ceremony was held within a grove shaded
 by a group of tall trees (which many of us wearing jackets
 on the hot day were very thankful for). Will officiated,
 using notes taped to the inside of a hardbound copy of
-Homer's Odyssey. Dinner was accompanied by speeches from
+Homer's _Odyssey_. Dinner was accompanied by speeches from
 the fathers of the bridge and groom, and followed by
 dancing at sunset, enabled by special varieties of
 margaritas and mint julips designed by Sam and Blake. We
