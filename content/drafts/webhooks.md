@@ -103,8 +103,8 @@ that a test webhook be sent.
 At Stripe, we provide a "Send test webhook" function from
 the dashboard. This provides a reasonable developer
 experience in that at least testing an endpoint is
-possible, but it's quite manual and difficult to integrate
-into a CI suite.
+possible, but it's quite manual and not especially
+conducive to being integrated into an automated test suite.
 
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
 
