@@ -4,14 +4,13 @@ title: The Inaugural Issue, Portland, Flyknit, Go, and
 published_at: 2017-07-15T19:48:53Z
 ---
 
-It struck me recently that the details of many journeys are
-lost. It's nothing intentional, but more that over time
-they stop coming up as often in conversation, and
-eventually disappear as they're sacrificed to our fickle
-memories. Physical artifacts like photos remain, but most
-of us are hopelessly bad at periodically sifting through
-the thousands of photos and souvenirs that we've
-accumulated throughout our lives.
+The details of most journeys are forgotten. It's nothing
+intentional, but given enough time they stop coming up as
+often in conversation, we reflect on them less, and they
+disappear as sacrifices to our fickle memories. Physical
+artifacts remain, but most of us are hopelessly bad at
+regularly sifting through the thousands of photos and other
+souvenirs that we've accumulated throughout our lives.
 
 For Christmas a few years ago, my grandmother gave me one
 of the best gifts that I've ever received. She presented my
@@ -21,8 +20,7 @@ of us growing up, and carefully selected a key few dozen
 that in aggregate told the stories of our lives -- from the
 weeks after our births, to early family vacations, and all
 the way through to proms and first cars. Each was annotated
-with a few poignant words from Grandma to make them all the
-more beautiful.
+with a few poignant words from Grandma for flavor.
 
 These volumes are special. It's easy to casually pick one
 up and scan through a few pages looking at random pictures
@@ -40,14 +38,14 @@ and software.
 
 ![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
 
-_Passages_ refers to the routes that we use to get from one
-point to another, like Hannibal's passage through the Alps,
+_Passages_ are the routes that we use to get from one point
+to another, like Hannibal's passage through the Alps,
 Magellan's strait, or in the case of my far more mundane
 life, my favorite walking path from Friedrichshain to
-Kreuzberg. _Glass_ is a play on a number of things like the
-glass on my favorite products like the iPhone, the window
-through which you watch the passing countryside by air or
-rail, or my camera's lens.
+Kreuzberg. _Glass_ is the material making up the face on my
+favorite products like the iPhone or Seamaster, the window
+through which to watch the passing countryside by air or
+rail, or the intricate optics of my camera's lens.
 
 _Passages & Glass_ is also about supporting the independent
 web. It's sent via the only universal medium of
@@ -58,8 +56,8 @@ centralization and confinement of our stories in closed
 platforms like Facebook and Twitter.
 
 I hope you'll like it, but at any if time you no longer
-want to receive it, you can easily unsubscribe by [clicking
-here][unsubscribe].
+want to receive it, you can unsubscribe instantly by
+[clicking here][unsubscribe].
 
 ## Portland (#portland)
 
@@ -246,16 +244,16 @@ hell, but so far my results with Go have been good.
 The language has a few problems -- a deep natural aversion
 to generics and dependency management, an equally powerful
 love for void pointers (`interface{}`), and a dictator that
-considers syntax highlighting "juvenile" -- and yet I still
-find it to be pleasurable and painless to work with.
-Compared to the dynamic languages (Ruby, Python,
-JavaScript, etc.) I like that the code I write isn't so
-prone to rot, and even compared to my other favorite right
-now, [Rust][rust], it's relaxing not having to chase a
-target whose syntax and core libraries never seem to stop
-moving. The code I write today is still best practice a
-year from now, and my dependencies aren't all pinned to
-special compiler pragmas and the nightly release channel.
+considers syntax highlighting juvenile -- yet I still find
+it to be pleasurable and painless to work with. Compared to
+the dynamic languages (Ruby, Python, JavaScript, etc.) I
+like that the code I write isn't so prone to rot, and even
+compared to my other favorite right now, [Rust][rust], it's
+relaxing not having to chase a target whose syntax and core
+libraries never seem to stop moving. The code I write today
+is still best practice a year from now, and my dependencies
+aren't all pinned to special compiler pragmas and the
+nightly release channel.
 
 Go has by far the best (fastest and most problem-free)
 edit-compile-debug loop of any language, bar none. I'm able
@@ -349,7 +347,7 @@ the valley on):
 > both. Bitcoin will, accordingly, go to zero with the
 > inevitability of gravity."
 
-But with Bitcoin still trading at around $4350 USD (up
+But with Bitcoin still trading at around $4000 USD (up
 already from $2800 when I originally drafted this text!),
 so far I've been wrong at every turn. Maybe these
 [tulips][tulipmania] will stay in bloom forever.
@@ -368,7 +366,8 @@ WAL, and commit log.
 This one's run a little long, so thank you for reading it!
 As many of you hace no doubt noticed by now, I'm not
 particularly good at staying in touch, so if you're doing
-something interesting, I implore you to drop me a line at
+something interesting, I very much encourage you to reply
+to this email or drop me a line at
 [brandur@brandur.org][mail] in case I don't get to you
 first.
 
