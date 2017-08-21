@@ -234,7 +234,7 @@ newsletter.)
 And now a brief note on software. Like my website, this
 newsletter is built and sent by a specially crafted
 [Go][go] executable (I talk a little more about the
-[technical details here][newsletter]). This might sound a
+[technical details here][newsletters]). This might sound a
 little crazy -- software is degrading starting from the
 moment it's written, and building custom software is
 usually a little like building a self-imposed maintenance
@@ -379,7 +379,7 @@ first.
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
 [mail]: mailto:brandur@brandur.org
 [mrrobot]: https://en.wikipedia.org/wiki/Mr._Robot_(TV_series)
-[newsletter]: https://brandur.org/newsletter
+[newsletters]: https://brandur.org/newsletters
 [partybike]: https://en.wikipedia.org/wiki/Party_bike
 [patio11]: https://www.producthunt.com/live/patrick-mckenzie-patio11#comment-452743
 [rust]: https://www.rust-lang.org/en-US/
