@@ -88,7 +88,7 @@ behind a row of food trucks (ToV coffee & tea), and had the
 best hot wings of my life at Pok Pok.
 
 The wedding took place outside the city in Hillsboro atop a
-hill overlooking a vinyard on one side, and a golden field
+hill overlooking a vineyard on one side, and a golden field
 of wheat on the other (later to be set ablaze by the
 setting sun). The ceremony was held within a grove shaded
 by a group of tall trees (which many of us wearing jackets
