@@ -118,9 +118,8 @@ home city -- much more reasonable at a mere 45 minutes.
 ![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
 
 Keiko seemed a little agitated during our time in line. I
-assumed it was for the same reason that I was agitated,
-namely that we were spending half our day waiting for ice
-cream, but it was something else entirely. The man who'd
+assumed this was typical ice-cream-induced anxiety, but it
+turned out to be something else entirely. The man who'd
 been standing directly in front of us in line had been
 [Hideaki Itō][ito], a big movie star in Japan. The unlucky
 fellow had gathered his young family and traveled across
@@ -137,7 +136,7 @@ was [Kiefer Sutherland][kiefer], having a drink alone at
 the bar. We spent the next hour debating heatedly (and very
 quietly) whether or not it was him, and which _24_ quote we
 could use in case it was, when suddenly, and before we
-could say a word, he got up, and walked out of the bar.
+could say a word, he got up and walked out of the bar.
 
 I said, "I wonder if it was him." Peter replied, "You
 idiot. Of course it was him."
