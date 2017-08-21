@@ -97,23 +97,23 @@ using notes taped to the inside of a hardbound copy of
 Homer's _Odyssey_. Dinner was accompanied by speeches from
 the fathers of the bridge and groom, and followed by
 dancing at sunset, enabled by special varieties of
-margaritas and mint julips designed by Sam and Blake. We
-were eventually handed a breakfast burrito and loaded back
-onto a bus bound for our hotel. The couple in the seat next
-to us had managed to smuggle a 1.75L Costco size bottle of
-Bullitt bourbon on board, and it made the ride a blur.
+margaritas and mint julips designed by the bride and groom
+themselves. We were eventually handed a breakfast burrito
+and loaded back onto a bus bound for our hotel. The couple
+in the seat next to us had managed to smuggle a 1.75L
+Costco size bottle of Bullitt bourbon on board, and it made
+the ride a blur.
 
 ### Salt & Straw
 
-Salt & Straw's a hipster ice cream brand known particularly
-for quirky flavors like "freckled woodblock chocolate",
-"avocado and strawberry sherbet", and the ever-decadent
-"black olive brittle & goat cheese". They originated in
-Portland and have since spread to Los Angeles and San
-Francisco. Instead of waiting in the hour-long lineup back
-home in their new location on Fillmore St, we waited in the
-lineup in their home city -- much more reasonable at a mere
-45 minutes.
+Salt & Straw is a hipster ice cream brand known for quirky
+flavors like "freckled woodblock chocolate", "avocado and
+strawberry sherbet", and the ever-decadent "black olive
+brittle & goat cheese". They originated in Portland and
+have since spread to Los Angeles and San Francisco. Instead
+of waiting in the hour-long lineup back home in their new
+location on Fillmore St, we waited in the lineup in their
+home city -- much more reasonable at a mere 45 minutes.
 
 ![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
 
