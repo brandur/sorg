@@ -5,12 +5,12 @@ published_at: 2017-07-15T19:48:53Z
 ---
 
 The details of most journeys are forgotten. It's nothing
-intentional, but given enough time they stop coming up as
-often in conversation, we reflect on them less, and they
-disappear as sacrifices to our fickle memories. Physical
+intentional, but given enough time they stop coming up in
+conversation, we reflect on them more rarely, and they're
+eventually swallowed by our fickle memories. Physical
 artifacts remain, but most of us are hopelessly bad at
-regularly sifting through the thousands of photos and other
-souvenirs that we've accumulated throughout our lives.
+regularly sifting through a lifetime's accumulation of
+photos and souvenirs.
 
 For Christmas a few years ago, my grandmother gave me one
 of the best gifts that I've ever received. She presented my
@@ -43,7 +43,7 @@ to another, like Hannibal's passage through the Alps,
 Magellan's strait, or in the case of my far more mundane
 life, my favorite walking path from Friedrichshain to
 Kreuzberg. _Glass_ is the material making up the face on my
-favorite products like the iPhone or Seamaster, the window
+favorite products like the iPhone or Submariner, the window
 through which to watch the passing countryside by air or
 rail, or the intricate optics of my camera's lens.
 
@@ -69,10 +69,11 @@ the airport to downtown, when a MAX employee approached me
 and proceeded to explain everything there was to know about
 it, and help me buy a ticket. (For comparison in San
 Francisco, you could stand next to a BART or Muni ticketing
-machine all week, and no transit employee would notice, let
-alone help.) Everywhere you go, store clerks and other
-locals strike you up for conversation. While in the back of
-rideshare, drivers tell meaningful stories about the area.
+machine all week and you'd be lucky to have a transit
+employee notice, let alone help.) Everywhere you go, store
+clerks and strangers strike you up for conversation. While
+in the back of rideshare, drivers tell meaningful stories
+about their lives in the area.
 
 ![Portland](/assets/passages/001-portland/L1010468@2x.jpg)
 
@@ -83,9 +84,9 @@ shrubbery grow out front instead of the usual lawn. The
 shops and sights offer an amazing variety; in the first few
 days we ate at Atsuri, a ramen shop whose only other
 location is in Tokyo, had espresso and Turkish delight at
-the top of a double decker bus parked permanently parked
-behind a row of food trucks (ToV coffee & tea), and had the
-best hot wings of my life at Pok Pok.
+the top of a double decker bus parked parked behind a row
+of food trucks (ToV coffee & tea), and had the best hot
+wings of my life at Pok Pok.
 
 The wedding took place outside the city in Hillsboro atop a
 hill overlooking a vineyard on one side, and a golden field
@@ -128,8 +129,8 @@ suburban America, only to find himself in line next to one
 of the few other Japanese nationals in the city.
 
 Keiko hadn't said anything because she wasn't 100% sure it
-was him (only about 95%), which is roughly consistent with
-my experience seeing celebrities in the wild. A few years
+was him (only 95%), which is roughly consistent with my
+experience seeing celebrities in the wild. A few years
 back, Peter and I sat down for some cocktails at Milk Tiger
 in Calgary. We looked next to us and just a few feet away
 was [Kiefer Sutherland][kiefer], having a drink alone at
@@ -163,8 +164,8 @@ on the green and racing to the next light.
 
 Alas, I've never worked so far to move so little. Not only
 were elderly citizens taking casual strolls down the street
-outpacing us by wide margins, but I've hit higher top
-speeds on the stationary bikes at my gym.
+outpacing us by wide margins, but I've seen stationary
+bikes at my gym moving faster.
 
 The good news is that the beer was good, and I'd burned
 enough calories pedaling around an extremely heavy object
