@@ -106,6 +106,10 @@ html lang="en"
         text-transform: uppercase;
       }
 
+      #issue a, #passages a {
+        border-bottom: none;
+      }
+
       #signature {
         color: #aaa;
         text-align: center;
