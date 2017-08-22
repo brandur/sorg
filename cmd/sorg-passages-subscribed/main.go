@@ -47,17 +47,23 @@ func renderAndSend(records [][]string, live bool) error {
 		body := fmt.Sprintf(`%s,
 
 One thing I've realized over the last few years is that I
-don't do a very good job of keeping in touch with people.
-On top of that, I also don't do much with social media, so
-it's not even possible to passively stay appraised of what
-I'm doing.
+don't do a very good job of keeping up with old friends and
+family. I don't really use Facebook, link only technical
+writing on on Twitter, and the new age social media
+platforms like Instagram and Snapchat are well beyond me,
+so I'm not even staying in touch in a passive sense.
 
-On a recent trip I was inspired to try and address this,
-and to that end I'm trying something new: a newsletter.
-Each issue will be a small compilation of stories and
-thoughts. The bursts will be pretty infrequent; I'll send
-out roughly as often as we get to witness a total solar
-eclipse.
+On a recent trip to Portland I was thinking about this
+problem and what I might be able to do to about it, and as
+I was walking the city's eclectic streets, I had an idea:
+an email newsletter. Each issue will be a short compilation
+of stories, photographs, and ideas. It will remind me to
+send something to you, and hopefully remind you to send
+something back.
+
+In case you have a healthy fear of inbox overload, the
+bursts will be pretty infrequent; I'll be competing with
+total solar eclipses on time scale.
 
 (This email is not the newsletter, but) I'm about to send
 its first issue, and I've added you to the list to receive
@@ -66,7 +72,7 @@ so, or wait until I send it and click the very conspicuous
 unsubscribe link (I won't get notified on an unsubscribe,
 and even if I did, I wouldn't take it personally).
 
-Thanks, and I hope you like it!
+Thanks, and take care!
 
 Brandur`,
 			name,
