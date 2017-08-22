@@ -31,6 +31,11 @@ func renderAndSend(records [][]string, live bool) error {
 	mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
 
 	for _, record := range records {
+		// skip empty lines
+		if len(record) == 0 {
+			continue
+		}
+
 		if len(record) < 2 {
 			return fmt.Errorf("Record less than 2-width: %v", record)
 		}
@@ -38,10 +43,29 @@ func renderAndSend(records [][]string, live bool) error {
 		name := record[0]
 		recipient := record[1]
 
-		subject := "I'm subscribing you to a mailing list"
-		body := fmt.Sprintf(`Hi %s,
+		subject := "I'm subscribing you to my newsletter"
+		body := fmt.Sprintf(`%s,
 
-I'm subscribing you to a mailing list.
+One thing I've realized over the last few years is that I
+don't do a very good job of keeping in touch with people.
+On top of that, I also don't do much on social media, so
+it's not even possible to passively stay appraised of what
+I'm doing.
+
+On a recent trip I was inspired to try and fix this, and to
+that end I'm trying something new: a newsletter. Each issue
+will be a small compilation of stories and thoughts. The
+bursts will be pretty infrequent; I'll send out roughly as
+often as we get to witness a total solar eclipse.
+
+(This email is not the newsletter, but) I'm about to send
+its first issue, and I've added you to the list to receive
+it. If you don't want it, either reply to me here saying
+so, or wait until I send it and click the very conspicuous
+unsubscribe link (I won't get notified on an unsubscribe,
+and even if I did, I wouldn't take it personally).
+
+Thanks, and I hope you like it!
 
 Brandur`,
 			name,
@@ -90,6 +114,7 @@ func main() {
 	}
 
 	r := csv.NewReader(f)
+	r.Comment = '#'
 
 	records, err := r.ReadAll()
 	if err != nil {
