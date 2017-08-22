@@ -156,16 +156,19 @@ breweries and bars.
 ![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
 
 We loaded twelve people and a driver onto the thing. I've
-been known to do some long rides on occasion, and in my
-mind's eye I imagined us tearing up the streets of
-Portland; pausing at intersections only long enough to give
-the neighboring driver a sidelong look before accelerating
-on the green and racing to the next light.
+been known to bike on occasion, and in my mind's eye I
+imagined us tearing up the streets of Portland; pausing at
+intersections only long enough to give the neighboring
+driver a sidelong look before accelerating on the green and
+racing to the next light.
 
 Alas, I've never worked so far to move so little. Not only
 were elderly citizens taking casual strolls down the street
 outpacing us by wide margins, but I've seen stationary
-bikes at my gym moving faster.
+bikes at my gym moving faster. Here's a [video of us taking
+the last corner][partybikevid] on the thing. I'm noticeable
+on the far side as the person who looks like they think
+they're in a race.
 
 The good news is that the beer was good, and I'd burned
 enough calories pedaling around an extremely heavy object
@@ -382,6 +385,7 @@ first.
 [mrrobot]: https://en.wikipedia.org/wiki/Mr._Robot_(TV_series)
 [newsletters]: https://brandur.org/newsletters
 [partybike]: https://en.wikipedia.org/wiki/Party_bike
+[partybikevid]: https://twitter.com/ped/status/884473125374525440
 [patio11]: https://www.producthunt.com/live/patrick-mckenzie-patio11#comment-452743
 [rust]: https://www.rust-lang.org/en-US/
 [tenfalls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
