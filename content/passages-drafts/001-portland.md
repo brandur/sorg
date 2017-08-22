@@ -102,8 +102,8 @@ margaritas and mint julips designed by the bride and groom
 themselves. We were eventually handed a breakfast burrito
 and loaded back onto a bus bound for our hotel. The couple
 in the seat next to us had managed to smuggle a 1.75L
-Costco size bottle of Bullitt bourbon on board, and it made
-the ride a blur.
+Costco size bottle of Bullitt bourbon on board. The rest of
+the ride back was a blur.
 
 ### Salt & Straw
 
@@ -167,8 +167,8 @@ were elderly citizens taking casual strolls down the street
 outpacing us by wide margins, but I've seen stationary
 bikes at my gym moving faster. Here's a [video of us taking
 the last corner][partybikevid] on the thing. I'm noticeable
-on the far side as the person who looks like they think
-they're in a race.
+on the far side as the only person who looks like they
+think they're in a race.
 
 The good news is that the beer was good, and I'd burned
 enough calories pedaling around an extremely heavy object
