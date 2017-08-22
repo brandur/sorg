@@ -1,5 +1,6 @@
 public/
 public-dev/
+*.csv
 .DS_Store
 .env
 tags
