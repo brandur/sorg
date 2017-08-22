@@ -34,6 +34,10 @@ html lang="en"
         color: black;
       }
 
+      h1 a, h2 a, h3 a, h4 a {
+        border-bottom: none;
+      }
+
       h1 {
         font-size: 80px;
         font-weight: 400;
@@ -56,13 +60,14 @@ html lang="en"
       }
 
       a, a:hover, a:visited {
+        border-bottom: 1px solid #000;
         color: black;
         font-weight: bold;
         text-decoration: none;
       }
 
       a:hover {
-        text-decoration: underline;
+        border-bottom: none;
       }
 
       img {
