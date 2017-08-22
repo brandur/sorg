@@ -326,7 +326,7 @@ These sorts of close calls don't give everyone down here
 tremendous confidence in the future of cryptocurrency. And
 even Bitcoin's problems pale in comparison to alternatives
 like Ethereum, which forked in 2016 after a hacker
-penetrated their very libertarian named "Decentralized
+penetrated their very libertarian-named "Decentralized
 Autonomous Organization" ([the DAO][dao]), and made off
 with 3.6M Ether (a third of its total funds, ostensibly
 worth $50M at the time). The fork reversed the theft, but
