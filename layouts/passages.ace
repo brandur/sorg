@@ -68,6 +68,7 @@ html lang="en"
       img {
         margin: 20px 0;
         max-width: 550px;
+        width: 100%;
       }
 
       #about {
