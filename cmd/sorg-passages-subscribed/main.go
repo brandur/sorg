@@ -48,15 +48,16 @@ func renderAndSend(records [][]string, live bool) error {
 
 One thing I've realized over the last few years is that I
 don't do a very good job of keeping in touch with people.
-On top of that, I also don't do much on social media, so
+On top of that, I also don't do much with social media, so
 it's not even possible to passively stay appraised of what
 I'm doing.
 
-On a recent trip I was inspired to try and fix this, and to
-that end I'm trying something new: a newsletter. Each issue
-will be a small compilation of stories and thoughts. The
-bursts will be pretty infrequent; I'll send out roughly as
-often as we get to witness a total solar eclipse.
+On a recent trip I was inspired to try and address this,
+and to that end I'm trying something new: a newsletter.
+Each issue will be a small compilation of stories and
+thoughts. The bursts will be pretty infrequent; I'll send
+out roughly as often as we get to witness a total solar
+eclipse.
 
 (This email is not the newsletter, but) I'm about to send
 its first issue, and I've added you to the list to receive
