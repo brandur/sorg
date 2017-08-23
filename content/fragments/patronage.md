@@ -17,12 +17,12 @@ I listen to a lot of podcasts, read a lot of blogs, and
 consume a lot of open-source software. I don't pay for any
 it. That's partly because I've grown up expecting content
 on the internet to be free, and partly because I just don't
-have to. But I'm no idiot, and for years now there's been a
-foreboding shadow in the back of my mind reminding me that
-if no one pays for the next generation of quality content,
-there won't be one. The internet will be perfectly happy to
-stay its current course and arrive at a final destination
-made of nothing but cheap tabloids and cat pictures.
+have to. But I'm not blind, and for years I've felt a
+foreboding shadow reminding me that if no one pays for the
+next generation of quality content, there won't be one. The
+internet will be perfectly happy to stay its course towards
+a final destination of nothing but cheap tabloids and cat
+pictures.
 
 Ads have been a stopgap since the beginning, but technology
 is finally killing them. A universal micropayments system
@@ -48,7 +48,7 @@ bands who are just now building a little steam but who
 otherwise exist in total obscurity that can't make gas
 money. We should focus on them first.
 
-I'd love to hear how you think about patronage. [Tweet
-me][twitter] if you've got a good answer.
+I'd love to hear how you think about patronage. Please
+[tweet me][twitter] if you've got a good answer.
 
 [twitter]: https://twitter.com/brandur
