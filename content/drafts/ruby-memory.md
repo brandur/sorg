@@ -5,7 +5,7 @@ published_at: 2017-08-24T13:39:04Z
 hook: TODO
 ---
 
-Anyone who's run Unicorn (or Puma, or Thin) will have
+Anyone who's run Unicorn (or Puma, or Einhorn) will have
 noticed a curious phenomena. Worker processes that have
 been forked from a master start with low memory usage, but
 before too long will bloat to a similar size as their
