@@ -27,7 +27,7 @@ sit in memory largely unmodified throughout its entire
 lifetime. Child processes should have no problem sharing
 that collection with their parent, but apparently they're
 not, or at least not doing it well. To get to the heart of
-the problem, we'll have to dig into how Ruby allocates
+the problem, we'll have to understand how Ruby allocates
 memory.
 
 ## Slabs and slots (#slabs-and-slots)
