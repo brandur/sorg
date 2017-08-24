@@ -26,5 +26,5 @@ collection of static objects that are initialized once, and
 sit in memory largely unmodified throughout its entire
 lifetime. Child processes should have no problem sharing
 that collection with their parent. To get to the heart of
-the problem, we'll ahve to dig into how Ruby allocates
+the problem, we'll have to dig into how Ruby allocates
 memory.
