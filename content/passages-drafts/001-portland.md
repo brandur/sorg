@@ -221,6 +221,8 @@ ordered another three pairs of Flyknit Racers because I'm
 worried that I'll never find a shoe that I like this much
 again.
 
+![Flyknit Racers](/assets/passages/001-portland/L1010970@2x.jpg)
+
 A travel trick that I've really taken to heart is to just
 wear my Flyknit shoes all the time. When I go somewhere, I
 don't take any footwear beyond what I have on my feet, and
