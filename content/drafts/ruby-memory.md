@@ -190,7 +190,7 @@ struct yields a few points of interest:
 * A string can reference another string (`VALUE shared`)
   and share the memory occupied by its contents.
 
-### VALUE: Objects and scalars (#value)
+### VALUE: A pointer or scalar (#value)
 
 Looking at the definition of `RVALUE` shows us that while
 Ruby holds many types in a slot, it doesn't hold all of
@@ -310,6 +310,8 @@ into the slot if it's short enough. Otherwise is uses
 `ALLOC_N` to allocate new space for the string and sets a
 pointer (`as.heap.ptr`) internal to the slot to reference
 it.
+
+### Initializing a slot (#slot-initialization)
 
 ## Closing the case on bloated workers (#bloated-workers)
 
