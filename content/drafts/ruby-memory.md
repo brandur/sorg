@@ -190,7 +190,7 @@ struct yields a few points of interest:
 * A string can reference another string (`VALUE shared`)
   and share the memory occupied by its contents.
 
-### VALUE: A pointer or scalar (#value)
+### VALUE: A pointer or a scalar (#value)
 
 Looking at the definition of `RVALUE` shows us that while
 Ruby holds many types in a slot, it doesn't hold all of
@@ -306,7 +306,7 @@ str_new0(VALUE klass, const char *ptr, long len, int termlen)
 
 Just like we speculated when examining the `RString` struct
 earlier, we can see that Ruby embeds the new value right
-into the slot if it's short enough. Otherwise is uses
+into the slot if it's short enough. Otherwise it uses
 `ALLOC_N` to allocate new space for the string and sets a
 pointer (`as.heap.ptr`) internal to the slot to reference
 it.
