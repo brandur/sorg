@@ -274,8 +274,10 @@ Now that we're armed with a basic understanding of the
 heap, we're getting closer to understanding why our mature
 Unicorn processes can't share anything with the parent
 (some readers may have guessed already). To fully solidify
-our understanding, lets walk through how Ruby allocates
-a new slot for a basic string.
+our understanding, lets walk through how Ruby initializes a
+slot for a basic string.
+
+The entry point is `str_new0` (from [`string.c`][strnew0]):
 
 ``` c
 static VALUE
@@ -302,6 +304,13 @@ str_new0(VALUE klass, const char *ptr, long len, int termlen)
 }
 ```
 
+Just like we speculated when examining the `RString` struct
+earlier, we can see that Ruby embeds the new value right
+into the slot if it's short enough. Otherwise is uses
+`ALLOC_N` to allocate new space for the string and sets a
+pointer (`as.heap.ptr`) internal to the slot to reference
+it.
+
 ## Closing the case on bloated workers (#bloated-workers)
 
 ## Towards compaction (#compaction)
@@ -323,4 +332,5 @@ process, this would make for an inefficient use of memory.
 [rubyconsts]: ruby.h#L405
 [rubysetup]: eval.c#L46
 [rvalue]: gc.c#L410
+[strnew0]: string.c#L702
 [value]: ruby.h#L79
