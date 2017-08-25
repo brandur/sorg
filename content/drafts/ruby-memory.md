@@ -19,7 +19,7 @@ children share the same memory space as their parent. Only
 when a child modifies shared memory does the OS intercept
 the call and copy the page for exclusive use by the child.
 
-TODO: UNICORN DIAGRAM.
+!fig src="/assets/ruby-memory/child-processes.svg" caption="Child processes transitioning from mostly shared memory to mostly copied as they mature."
 
 So what's going on here? Most programs have a sizeable
 collection of static objects that are initialized once, and
