@@ -450,7 +450,55 @@ added back to `freelist` where they can be reused.
 
 ## Closing the case on bloated workers (#bloated-workers)
 
+We've seen above that Ruby has an elaborate scheme for
+advanced memory management, but reading between the lines,
+you may also have noticed that something is missing. Ruby
+allocates expansive heap pages worth of memory, stores
+objects to them, and collects them when they're no longer
+relevant. Free slots are tracked carefully, and the runtime
+has an efficient way of finding them. But despite all of
+this sophistication, live slots never change position
+within their heap pages.
+
+After being allocated, objects stay in their initial slot
+forever. In a real program where objects are being
+allocated and deallocated all the time, pages become a mix
+of objects that are alive and dead. Ruby doesn't try to
+compact these heap pages, and practically speaking, live
+objects will be fragmented across all allocated pages quite
+quicky.
+
+Now back to the Unicorn workers. The parent process sets
+itself up, and by the time it's ready it looks like a
+typical Ruby process with objects allocated unevenly across
+the available heap pages. Then the workers fork off with a
+memory representation identical to their parent's. The
+trouble comes as soon as a child initializes or GCs even a
+single slot. At that point, its memory changes, and the
+operating system's copy-on-write mechanic intercepts the
+call and copies that OS page. It doesn't take long before
+this has happened on every OS page allocated to the
+program, and the child workers are running a completely
+divergent copy of their parent's memory. COW is available,
+but isn't practically useful.
+
 ## Towards compaction (#compaction)
+
+The Ruby team has been implementing copy-on-write
+optimizations for some time now. For example, in Ruby 2.0 a
+heap page "bitmap" was introduced. The GC performs a
+mark-and-sweep operation which "marks" live objects before
+going through and "sweeping" all the dead ones. These marks
+used to be a flag directly on a slot, which had the effect
+of just having the GC mark an object (without anything of
+substance changing) initiating a full COW of the page that
+contained. As you can probably imagine, every page was
+copied in no time at all. The change created a mark
+"bitmap" at the heap level which allowed the garbage
+collector to do its work while only initiating a copy on a
+localized part of memory.
+
+TODO
 
 [1] `malloc`'s bookkeeping is compensated for so that we
 can keep a heap page fitting nicely into a multiple of OS
