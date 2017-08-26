@@ -54,7 +54,8 @@ You might also hear a heap page referred to as a "heap"
 with one of the last two for less ambiguity, but I'm going
 to stick with ***heap page*** for a single chunk and
 ***heap*** for the collection of all heap pages because
-that's what they're called everywhere in Ruby's source.
+that's what they're called everywhere in Ruby's source,
+which we're about to get up close and personal with.
 
 A heap page consists of a header and a number of
 ***slots***. Each slot can hold an `RVALUE`, which is an
@@ -223,8 +224,8 @@ enum ruby_special_consts {
 
 A fixnum (i.e. very roughly a number that fits in 64 bits)
 is a little more complicated. One is stored by
-left-shifting a value by one bit, and then setting a flag
-in the rightmost position:
+left-shifting a value by one bit, then setting a flag in
+the rightmost position:
 
 ``` c
 enum ruby_special_consts {
@@ -308,10 +309,144 @@ Just like we speculated when examining the `RString` struct
 earlier, we can see that Ruby embeds the new value right
 into the slot if it's short enough. Otherwise it uses
 `ALLOC_N` to allocate new space for the string and sets a
-pointer (`as.heap.ptr`) internal to the slot to reference
+pointer internal to (`as.heap.ptr`) the slot to reference
 it.
 
 ### Initializing a slot (#slot-initialization)
+
+After a few layers of indirection, `str_alloc` from above
+will eventually call in `newobj_of` back [in
+`gc.c`][newobjof]:
+
+``` c
+static inline VALUE
+newobj_of(VALUE klass, VALUE flags, VALUE v1, VALUE v2, VALUE v3, int wb_protected)
+{
+    rb_objspace_t *objspace = &rb_objspace;
+    VALUE obj;
+
+    ...
+
+    if (!(during_gc ||
+          ruby_gc_stressful ||
+          gc_event_hook_available_p(objspace)) &&
+        (obj = heap_get_freeobj_head(objspace, heap_eden)) != Qfalse) {
+        return newobj_init(klass, flags, v1, v2, v3, wb_protected, objspace, obj);
+    }
+
+    ...
+}
+```
+
+Ruby asks the heap for a free slot with
+`heap_get_freeobj_head` ([in `gc.c][heapgetfreeobj]):
+
+``` c
+static inline VALUE
+heap_get_freeobj_head(rb_objspace_t *objspace, rb_heap_t *heap)
+{
+    RVALUE *p = heap->freelist;
+    if (LIKELY(p != NULL)) {
+        heap->freelist = p->as.free.next;
+    }
+    return (VALUE)p;
+}
+```
+
+Ruby has a global lock (the GIL) that ensures that Ruby
+code can only be running in one place across any number of
+threads, so it's safe to simply pull the next available
+`RVALUE` off the heap and repoint the entire heap's
+`freelist`. No finer grain locks are required.
+
+Not that we've found a free slot, `newobj_init` runs some
+generic initialization on it before it's returned to
+`str_new0` for string-specific setup (like copying in the
+actual string).
+
+### Eden, the tomb, and freelist (#eden)
+
+You may have noticed above that Ruby asked for a free slot
+from `heap_eden`. ***Eden***, named for the biblical
+garden, is the heap where Ruby knows that it can find live
+objects. It's one of two heaps tracked by the language.
+
+The other is the ***tomb***. If the garbage collector
+notices after a run that a heap page has no more live
+objects, it moves that page from eden to the tomb. If at
+some point Ruby needs to allocate a new heap page, it'll
+prefer to resurrect one from the tomb before asking the OS
+for more memory. Conversely, if heap pages in the tomb stay
+dead for long enough, Ruby may release them back to the OS
+(in practice, this probably doesn't happen very often;
+we'll get into this in just a moment, but it's another hint
+as to why Unicorn workers bloat).
+
+We talked a little about how Ruby allocates new pages
+above. After being assigned new memory by the OS, Ruby will
+go through a new page and do some basic initialization
+([from `gc.c`][heappageallocate]):
+
+``` c
+static struct heap_page *
+heap_page_allocate(rb_objspace_t *objspace)
+{
+    RVALUE *start, *end, *p;
+    int limit = HEAP_PAGE_OBJ_LIMIT;
+
+    ...
+
+    /* adjust obj_limit (object number available in this page) */
+    start = (RVALUE*)((VALUE)page_body + sizeof(struct heap_page_header));
+    if ((VALUE)start % sizeof(RVALUE) != 0) {
+        int delta = (int)(sizeof(RVALUE) - ((VALUE)start % sizeof(RVALUE)));
+        start = (RVALUE*)((VALUE)start + delta);
+        limit = (HEAP_PAGE_SIZE - (int)((VALUE)start - (VALUE)page_body))/(int)sizeof(RVALUE);
+    }
+    end = start + limit;
+
+    ...
+
+    for (p = start; p != end; p++) {
+        heap_page_add_freeobj(objspace, page, (VALUE)p);
+    }
+    page->free_slots = limit;
+
+    return page;
+}
+```
+
+The interesting part is where calculates a memory offset
+for its `start` and `end` slots, then proceeds to traverse
+from one end of the page to the other and invoke
+`heap_page_add_freeobj` ([from `gc.c`][heappageaddfreeobj])
+on each slot along the way:
+
+``` c
+static inline void
+heap_page_add_freeobj(rb_objspace_t *objspace, struct heap_page *page, VALUE obj)
+{
+    RVALUE *p = (RVALUE *)obj;
+    p->as.free.flags = 0;
+    p->as.free.next = page->freelist;
+    page->freelist = p;
+
+    ...
+}
+```
+
+The page itself tracks a single `freelist` pointer to a
+slot that it knows is free, but from there new free slots
+are found by following a `free.next` on the `RVALUE`
+itself. All known free slots are chained together by one
+huge linked list which Ruby uses when it needs one.
+
+TODO: Diagram of heap freelist, then each free RVALUE.
+
+`heap_page_add_freeobj` is called on when initializing each
+slot in a page, but it's also called by the garbage
+collector when it frees an object. In this way, slots get
+added back to `freelist` where they can be reused.
 
 ## Closing the case on bloated workers (#bloated-workers)
 
@@ -327,8 +462,12 @@ process, this would make for an inefficient use of memory.
 (24 * 408) total slots, despite requesting 10,000.
 
 [flonum]: https://bugs.ruby-lang.org/issues/6763
+[heapgetfreeobj]: gc.c#1783
+[heappageaddfreeobj]: gc.c#L1432
 [heappagealignlog]: gc.c#L660
+[heappageallocate]: gc.c#L1517
 [initheap]: gc.c#L2377
+[newobjof]: gc.c#L1953
 [rbclassof]: ruby.h#L1970
 [rstring]: ruby.h#L954
 [rubyconsts]: ruby.h#L405
