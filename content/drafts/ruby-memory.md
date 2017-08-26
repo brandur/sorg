@@ -12,8 +12,7 @@ been forked from a master start with low memory usage, but
 before too long will bloat to a similar size as their
 parent. In a big production installation, workers can be
 100s of MBs or more, and before long memory is far and away
-the constrained resource on your boxes. CPUs sit mostly
-idle.
+the constrained resource on your boxes. CPUs sit idle.
 
 Modern operating systems have virtual memory management
 systems that provide ***copy-on-write*** facilities
@@ -45,7 +44,7 @@ little unfortunate because these aren't the same thing as
 the 4k page that your OS will hand out, although Ruby does
 specifically size its heap pages so that they'll use OS
 pages efficiency by maximizing the use of a multiple of
-them (usually four 4k OS pages = one 16k heap page).
+them (usually 4x4k OS pages = 1x16k heap page).
 
 TODO: Diagram of slabs and slots
 
@@ -53,9 +52,9 @@ You might also hear a heap page referred to as a "heap"
 (plural "heaps"), "slab", or "arena". I'd prefer to work
 with one of the last two for less ambiguity, but I'm going
 to stick with ***heap page*** for a single chunk and
-***heap*** for the collection of all heap pages because
-that's what they're called everywhere in Ruby's source,
-which we're about to get up close and personal with.
+***heap*** for a collection of heap pages because that's
+what they're called everywhere in Ruby's source, which
+we're about to get up close and personal with.
 
 A heap page consists of a header and a number of
 ***slots***. Each slot can hold an `RVALUE`, which is an
@@ -392,18 +391,6 @@ static struct heap_page *
 heap_page_allocate(rb_objspace_t *objspace)
 {
     RVALUE *start, *end, *p;
-    int limit = HEAP_PAGE_OBJ_LIMIT;
-
-    ...
-
-    /* adjust obj_limit (object number available in this page) */
-    start = (RVALUE*)((VALUE)page_body + sizeof(struct heap_page_header));
-    if ((VALUE)start % sizeof(RVALUE) != 0) {
-        int delta = (int)(sizeof(RVALUE) - ((VALUE)start % sizeof(RVALUE)));
-        start = (RVALUE*)((VALUE)start + delta);
-        limit = (HEAP_PAGE_SIZE - (int)((VALUE)start - (VALUE)page_body))/(int)sizeof(RVALUE);
-    }
-    end = start + limit;
 
     ...
 
@@ -435,7 +422,7 @@ heap_page_add_freeobj(rb_objspace_t *objspace, struct heap_page *page, VALUE obj
 }
 ```
 
-The page itself tracks a single `freelist` pointer to a
+The heap itself tracks a single `freelist` pointer to a
 slot that it knows is free, but from there new free slots
 are found by following a `free.next` on the `RVALUE`
 itself. All known free slots are chained together by one
@@ -448,57 +435,85 @@ slot in a page, but it's also called by the garbage
 collector when it frees an object. In this way, slots get
 added back to `freelist` where they can be reused.
 
-## Closing the case on bloated workers (#bloated-workers)
+## Closing the case on bloated workers (#workers)
 
 We've seen above that Ruby has an elaborate scheme for
-advanced memory management, but reading between the lines,
-you may also have noticed that something is missing. Ruby
-allocates expansive heap pages worth of memory, stores
-objects to them, and collects them when they're no longer
-relevant. Free slots are tracked carefully, and the runtime
-has an efficient way of finding them. But despite all of
-this sophistication, live slots never change position
-within their heap pages.
+memory management, but reading between the lines, you may
+also have noticed that something that's not going to mesh
+well with copy-on-write. Ruby allocates expansive heap
+pages worth of memory, stores objects to them, and collects
+them when they're no longer relevant. Free slots are
+tracked carefully, and the runtime has an efficient way of
+finding them. But despite this sophistication, a live slot
+will never change position within or between heap pages.
 
-After being allocated, objects stay in their initial slot
-forever. In a real program where objects are being
-allocated and deallocated all the time, pages become a mix
-of objects that are alive and dead. Ruby doesn't try to
-compact these heap pages, and practically speaking, live
-objects will be fragmented across all allocated pages quite
-quicky.
+In a real program where objects are being allocated and
+deallocated all the time, pages become a mix of objects
+that are alive and dead; which gets us back to Unicorn. The
+parent process sets itself up, and by the time it's ready
+to fork it looks like a typical Ruby process with live
+objects fragmented across available heap pages.
 
-Now back to the Unicorn workers. The parent process sets
-itself up, and by the time it's ready it looks like a
-typical Ruby process with objects allocated unevenly across
-the available heap pages. Then the workers fork off with a
-memory representation identical to their parent's. The
-trouble comes as soon as a child initializes or GCs even a
-single slot. At that point, its memory changes, and the
-operating system's copy-on-write mechanic intercepts the
-call and copies that OS page. It doesn't take long before
-this has happened on every OS page allocated to the
-program, and the child workers are running a completely
-divergent copy of their parent's memory. COW is available,
-but isn't practically useful.
+Workers fork off with an initial memory representation
+identical to their parent's. Unfortunately, the first time
+child initializes or GCs even a single slot, the operating
+system's copy-on-write mechanism intercepts the call and
+copies that OS page. Before long this has happened on every
+OS page allocated to the program, and child workers are
+running with a copy of memory completely divergent from
+their parent's.
 
-## Towards compaction (#compaction)
+Copy-on-write is a powerful feature, but one that's not of
+much practical use to a forking Ruby process.
 
-The Ruby team has been implementing copy-on-write
-optimizations for some time now. For example, in Ruby 2.0 a
-heap page "bitmap" was introduced. The GC performs a
-mark-and-sweep operation which "marks" live objects before
-going through and "sweeping" all the dead ones. These marks
-used to be a flag directly on a slot, which had the effect
-of just having the GC mark an object (without anything of
-substance changing) initiating a full COW of the page that
-contained. As you can probably imagine, every page was
-copied in no time at all. The change created a mark
-"bitmap" at the heap level which allowed the garbage
-collector to do its work while only initiating a copy on a
-localized part of memory.
+## Copy-on-write on the mind (#copy-on-write)
 
-TODO
+The Ruby team is well-acquainted with copy-on-write, and
+has been writing optimizations for it for some time. As an
+example, Ruby 2.0 introduced heap "bitmaps". Ruby uses a
+mark-and-sweep garbage collector which traverses the
+"marks" live objects before going through and "sweeping"
+all the dead ones. Marks used to be a flag directly on each
+slot in a heap page, which had the effect of GCs on any
+fork performing a mark pass even _without having done
+anything_ causing every OS page to be fully copied.
+
+The change in Ruby 2.0 moved those mark flags up to a
+heap-level "bitmap" which is a big sequence of single bits
+that map back slots on the heap. The GC performing a pass
+on a fork would only copy the OS pages needed by bitmaps,
+allowing more memory to be shared for longer.
+
+### A compact future (#compaction)
+
+Upcoming changes are even more exciting. For some time
+Aaron Patterson has been [talking publicly about
+implementing compaction in Ruby's GC][aaroncompact], and
+has suggested that [it's spent time in production at GitHub
+with some success][aaronprod]. Practically, this would look
+like a method called `GC.compact` that's called before
+workers fork:
+
+``` ruby
+before_fork do
+  GC.compact
+end
+```
+
+The parent would get a chance to finish churning through
+its initialization, then take the objects that are still
+living and move them into slots on a minimal set of pages
+that will be stable over lengthy periods of time. Forked
+workers can share memory with their parent for longer.
+
+TODO: Diagram on heap liveness.
+
+For anyone running big Ruby installations (GitHub, Heroku,
+or like we are at Stripe), this is _really_ exciting work.
+Even deploying to high-memory instances, memory is always
+the limiting factor on the number of workers that we can
+run. GC compaction has the potential to vastly improve this
+situation.
 
 [1] `malloc`'s bookkeeping is compensated for so that we
 can keep a heap page fitting nicely into a multiple of OS
@@ -522,4 +537,7 @@ process, this would make for an inefficient use of memory.
 [rubysetup]: eval.c#L46
 [rvalue]: gc.c#L410
 [strnew0]: string.c#L702
+[aaroncompact]: https://twitter.com/tenderlove/status/801576703361355776
+[aaronprod]: https://twitter.com/tenderlove/status/844248259631566848
+
 [value]: ruby.h#L79
