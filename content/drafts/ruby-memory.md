@@ -41,12 +41,13 @@ in Ruby and then walk through some the relevant code. Ruby
 requests memory from the operating system in chunks that it
 refers to internally as ***heap pages***. The naming is a
 little unfortunate because these aren't the same thing as
-the 4k page that your OS will hand out, although Ruby does
+the 4k page that your OS will hand out (which I will refer
+to hereafter as ***OS pages***), although Ruby does
 specifically size its heap pages so that they'll use OS
 pages efficiency by maximizing the use of a multiple of
 them (usually 4x4k OS pages = 1x16k heap page).
 
-TODO: Diagram of slabs and slots
+!fig src="/assets/ruby-memory/heap-slots.svg" caption="A heap, its heap pages, and slots within each page."
 
 You might also hear a heap page referred to as a "heap"
 (plural "heaps"), "slab", or "arena". I'd prefer to work
@@ -58,7 +59,10 @@ we're about to get up close and personal with.
 
 A heap page consists of a header and a number of
 ***slots***. Each slot can hold an `RVALUE`, which is an
-in-memory Ruby object (more on this in a moment).
+in-memory Ruby object (more on this in a moment). A heap
+points to a page, and from there heap pages point to each
+other, forming a linked list that allows the entire
+collection to be iterated.
 
 ### Heap initialization (#heap)
 
@@ -338,7 +342,7 @@ newobj_of(VALUE klass, VALUE flags, VALUE v1, VALUE v2, VALUE v3, int wb_protect
 ```
 
 Ruby asks the heap for a free slot with
-`heap_get_freeobj_head` ([in `gc.c][heapgetfreeobj]):
+`heap_get_freeobj_head` ([in `gc.c`][heapgetfreeobj]):
 
 ``` c
 static inline VALUE
@@ -428,7 +432,7 @@ are found by following a `free.next` on the `RVALUE`
 itself. All known free slots are chained together by one
 huge linked list which Ruby uses when it needs one.
 
-TODO: Diagram of heap freelist, then each free RVALUE.
+!fig src="/assets/ruby-memory/freelist.svg" caption="A heap's freelist pointer to a free RVALUE, and the continuing linked list."
 
 `heap_page_add_freeobj` is called on when initializing each
 slot in a page, but it's also called by the garbage
@@ -506,7 +510,7 @@ living and move them into slots on a minimal set of pages
 that will be stable over lengthy periods of time. Forked
 workers can share memory with their parent for longer.
 
-TODO: Diagram on heap liveness.
+!fig src="/assets/ruby-memory/compaction.svg" caption="A fragmented heap before and after GC compaction."
 
 For anyone running big Ruby installations (GitHub, Heroku,
 or like we are at Stripe), this is _really_ exciting work.
