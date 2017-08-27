@@ -194,7 +194,7 @@ interests:
 * A string can reference another string (`VALUE shared` in
   the above) and share its allocated memory.
 
-### VALUE: Both a pointer or a scalar (#value)
+### VALUE: Both pointer and scalar (#value)
 
 `RVALUE` holds many of Ruby's standard types, but it
 doesn't hold all of them. Anyone who's looked at a Ruby C
