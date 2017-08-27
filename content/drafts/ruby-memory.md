@@ -230,7 +230,7 @@ enum ruby_special_consts {
 
 A fixnum (i.e. very roughly a number that fits in 64 bits)
 is a little more complicated. One is stored by
-left-shifting a value by one bit, then setting a flag in
+left-shifting a `VALUE` by one bit, then setting a flag in
 the rightmost position:
 
 ``` c
