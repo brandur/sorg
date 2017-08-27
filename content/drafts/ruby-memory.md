@@ -1,9 +1,9 @@
 ---
 title: "The Limits of Copy-on-write: How Ruby Allocates Memory"
-#title: How Ruby Allocates Memory, and the Limits of Copy-on-write
-#title: "The Curious Case of the Bloated Unicorn: How Ruby Manages Memory"
 published_at: 2017-08-24T13:39:04Z
-hook: TODO
+hook: Why Ruby's scheme for memory allocation doesn't play
+  nicely with copy-on-write, and how a compacting garbage
+  collector will help.
 ---
 
 Anyone who's run Unicorn (or Puma, or Einhorn) may have
