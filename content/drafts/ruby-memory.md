@@ -42,7 +42,7 @@ requests memory from the operating system in chunks that it
 refers to internally as ***heap pages***. The naming is a
 little unfortunate because these aren't the same thing as
 the 4k page that the OS will hand out (which I will refer
-to hereafter as ***OS pages***), but a heap paged is mapped
+to hereafter as ***OS pages***), but a heap page is mapped
 to a number of OS pages in virtual memory. Ruby sizes its
 heap pages so that they'll maximize use of OS pages by
 occupying an even multiple of them (usually 4x4k OS pages =
