@@ -6,7 +6,7 @@ published_at: 2017-08-24T13:39:04Z
 hook: TODO
 ---
 
-Anyone who's run Unicorn (or Puma, or Einhorn) will have
+Anyone who's run Unicorn (or Puma, or Einhorn) may have
 noticed a curious phenomena. Worker processes that have
 been forked from a master start with low memory usage, but
 before too long will bloat to a similar size as their
@@ -31,8 +31,8 @@ software has a sizeable collection of static objects that
 are initialized once, sit in memory unmodified throughout a
 program's entire lifetime, and would be prime candidates
 for staying shared across all workers. Apparently though,
-practically nothing is reused. To understand why, we'll
-have to unravel how Ruby allocates memory.
+practically nothing is reused, and to understand why, we'll
+have to venture into how Ruby allocates memory.
 
 ## Slabs and slots (#slabs-and-slots)
 
@@ -194,7 +194,7 @@ interests:
 * A string can reference another string (`VALUE shared` in
   the above) and share its allocated memory.
 
-### VALUE: A pointer or a scalar (#value)
+### VALUE: Both a pointer or a scalar (#value)
 
 `RVALUE` holds many of Ruby's standard types, but it
 doesn't hold all of them. Anyone who's looked at a Ruby C
