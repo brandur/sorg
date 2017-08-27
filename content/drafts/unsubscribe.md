@@ -11,7 +11,7 @@ online, I'd enter my newsletter address in the email field,
 and leave the "Yes, I'd like to receive promotions"
 checkbox ticked. I expected the send volume to be high
 enough to overpower other messages, hence the new address,
-and indeed it was. Subscriptions ramped quickly up.
+and indeed it was. Subscriptions ramped up quickly.
 
 The premise of the experiment was that oftentimes merchants
 really do have great deals, and for a few in particular you
