@@ -531,20 +531,19 @@ process, this would make for an inefficient use of memory.
 [2] Astute readers may notice that we start with only 9,792
 (24 * 408) total slots, despite requesting 10,000.
 
-[flonum]: https://bugs.ruby-lang.org/issues/6763
-[heapgetfreeobj]: gc.c#1783
-[heappageaddfreeobj]: gc.c#L1432
-[heappagealignlog]: gc.c#L660
-[heappageallocate]: gc.c#L1517
-[initheap]: gc.c#L2377
-[newobjof]: gc.c#L1953
-[rbclassof]: ruby.h#L1970
-[rstring]: ruby.h#L954
-[rubyconsts]: ruby.h#L405
-[rubysetup]: eval.c#L46
-[rvalue]: gc.c#L410
-[strnew0]: string.c#L702
 [aaroncompact]: https://twitter.com/tenderlove/status/801576703361355776
 [aaronprod]: https://twitter.com/tenderlove/status/844248259631566848
-
-[value]: ruby.h#L79
+[flonum]: https://bugs.ruby-lang.org/issues/6763
+[heapgetfreeobj]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L1783
+[heappageaddfreeobj]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L1432
+[heappagealignlog]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L660
+[heappageallocate]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L1517
+[initheap]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L2376
+[newobjof]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L1952
+[rbclassof]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/include/ruby/ruby.h#L1970
+[rstring]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/include/ruby/ruby.h#L954
+[rubyconsts]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/include/ruby/ruby.h#L405
+[rubysetup]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/eval.c#L46
+[rvalue]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L410
+[strnew0]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/string.c#L702
+[value]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/include/ruby/ruby.h#L79
