@@ -152,10 +152,10 @@ For me this is where the mystique around how Ruby can
 generically assign any type to any variable finally starts
 to fall away; we immediately see that an `RVALUE` is just a big
 list of all the possible types that Ruby might hold in
-memory. These types are all compacted with a C `union` so
-that all the possibilities can share the same memory. Only
-one can be set at a time, but the union's total size is
-only as big as the largest individual type in the list.
+memory. These types are compacted with a C `union` so that
+all the possibilities can share the same memory. Only one
+can be set at a time, but the union's total size is only as
+big as the largest individual type in the list.
 
 To help concrete our understanding of a slot, lets look at
 one of the possible types it can hold. Here's the common
@@ -189,7 +189,7 @@ interests:
   that while the contents of a string might be stored in
   the OS heap, a short string will be inlined right into an
   `RString` value. Its entire value can fit into a slot
-  without allocating any additional memory.
+  without allocating additional memory.
 
 * A string can reference another string (`VALUE shared` in
   the above) and share its allocated memory.
@@ -266,13 +266,28 @@ rb_class_of(VALUE obj)
     return RBASIC(obj)->klass;
 }
 ```
-
 Keeping certain types of values on the stack has the
 advantage that they don't need to occupy a slot in the
 heap. It's also useful for speed. "Flonum" was a relatively
 recent addition to the language, and its author [estimated
 that it sped up simple floating point calculations by
 ~2x][flonum].
+
+#### Avoiding collision (#collision)
+
+The `VALUE` scheme is clever, but how can we be sure that
+the value of a scalar will never collide with a pointer?
+This is where the cleverness gets kicked up a notch.
+Remember how we talked about how an `RVALUE` is 40 bytes in
+size? That sized combined with the use of an aligned
+`malloc` means that every address that Ruby needs to store
+will be divisible by 40.
+
+In binary, a number that's divisible by 40 will always have
+three 0s in its rightmost bits (`...xxxx x000`). All the
+scalar flags that Ruby needs to look for involve one of
+those three bits, therefore guaranteeing perfect
+exclusivity between the different types of values.
 
 ## Allocating an object (#allocating)
 
