@@ -15,7 +15,7 @@ Here's why I don't want your SDK in production.
 
 ## Instrumentation (#instrumentation)
 
-We end up investigating enough tricky problems that it's pretty important for anything that happens inside our apps to produce detailed log trails that will later empower us to analyze exactly what went on. When an error occurs, dumping absolutely everything about it might save you from having to try and expensively reproduce it by hand later on. These traces contain standard log information like the the request's resulting response code and elapsed time, but should ideally also include app-specific information like the current [request ID](/request-ids) and follow the same format conventions that are used elsewhere in the app.
+We end up investigating enough tricky problems that it's pretty important for anything that happens inside our apps to produce detailed log trails that will later empower us to analyze exactly what went on. When an error occurs, dumping absolutely everything about it might save you from having to try and expensively reproduce it by hand later on. These traces contain standard log information like the request's resulting response code and elapsed time, but should ideally also include app-specific information like the current [request ID](/request-ids) and follow the same format conventions that are used elsewhere in the app.
 
 We could wrap any SDKs to include the extra logging, but by making our own HTTP calls, we can [build a single Excon instrumentor](https://github.com/geemus/excon#instrumentation) and re-use it for every service that we call.
 
