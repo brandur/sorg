@@ -198,9 +198,10 @@ interests:
 
 `RVALUE` holds many of Ruby's standard types, but it
 doesn't hold all of them. Anyone who's looked at a Ruby C
-extension will be familiar with a similarly named type
-called a `VALUE`. Its implementation is quite a bit simpler
-than `RVALUE`'s; it's a simple pointer ([from
+extension will be familiar with the similarly named
+`VALUE`, which is the general purpose type that's used to
+pass around all Ruby values. Its implementation is quite a
+bit simpler than `RVALUE`'s; it's just a pointer ([from
 `ruby.h`][value]):
 
 ``` c
@@ -280,14 +281,15 @@ the value of a scalar will never collide with a pointer?
 This is where the cleverness gets kicked up a notch.
 Remember how we talked about how an `RVALUE` is 40 bytes in
 size? That sized combined with the use of an aligned
-`malloc` means that every address that Ruby needs to store
-will be divisible by 40.
+`malloc` means that every address for an `RVALUE` that Ruby
+needs to put into a `VALUE` will be divisible by 40.
 
 In binary, a number that's divisible by 40 will always have
 three 0s in its rightmost bits (`...xxxx x000`). All the
-scalar flags that Ruby needs to look for involve one of
-those three bits, therefore guaranteeing perfect
-exclusivity between the different types of values.
+flags that Ruby uses to identify stack-bound types like
+fixnums, flonums, or symbols involve one of those three
+bits, therefore guaranteeing perfect exclusivity between
+them and an `RVALUE` pointer.
 
 ## Allocating an object (#allocating)
 
