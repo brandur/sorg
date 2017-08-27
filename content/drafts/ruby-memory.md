@@ -383,7 +383,7 @@ generic initialization on it before it's returned to
 `str_new0` for string-specific setup (like copying in the
 actual string).
 
-### Eden, the tomb, and freelist (#eden)
+### Eden, the tomb, and the freelist (#eden)
 
 You may have noticed above that Ruby asked for a free slot
 from `heap_eden`. ***Eden***, named for the biblical
