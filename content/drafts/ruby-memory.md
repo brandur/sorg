@@ -499,6 +499,7 @@ like a method named `GC.compact` that's called before
 workers fork:
 
 ``` ruby
+# Called before a parent forks any workers
 before_fork do
   GC.compact
 end
