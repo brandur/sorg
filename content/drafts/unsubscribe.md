@@ -32,9 +32,9 @@ something vanishingly small. Eventually, I stopped reading
 it.
 
 It's not that deals weren't being sent, but that they were
-being drowned out by everything else. Whether or not they
-had anything worthwhile to say, companies would send a
-message every day, and the worst offenders up to two or
+being drowned out by everything else. Companies would send
+a message every day whether or not they had anything
+worthwhile to say, and the worst offenders up to two or
 three. The overwhelming majority were pinnacles of
 non-deals; for example the industry-wide favorite of
 apparel companies: 20% off clearance items [1].
