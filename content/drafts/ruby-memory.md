@@ -387,8 +387,8 @@ actual string).
 ### Eden, the tomb, and the freelist (#eden)
 
 You may have noticed above that Ruby asked for a free slot
-from `heap_eden`. ***Eden***, named for the biblical
-garden, is the heap where Ruby knows that it can find live
+from `heap_eden`. ***Eden***, named for the biblical garden
+[3], is the heap where Ruby knows that it can find live
 objects. It's one of two heaps tracked by the language.
 
 The other is the ***tomb***. If the garbage collector
@@ -524,19 +524,20 @@ end
 The parent would get a chance to finish churning objects as
 part of its initialization, then take the objects that are
 still living and move them into slots on a minimal set of
-pages that will likely be stable over lengthy periods of
-time. Forked workers can share memory with their parent for
-longer.
+pages that are likely to be stable for a long time. Forked
+workers can share memory with their parent for longer.
 
 !fig src="/assets/ruby-memory/compaction.svg" caption="A fragmented heap before and after GC compaction."
 
 For anyone running big Ruby installations (GitHub, Heroku,
 or like we are at Stripe), this is _really_ exciting work.
-Even deploying to high-memory instances, memory is always
-the limiting factor on the number of workers that we can
-run. GC compaction has the potential to turn this around,
-and let us run more workers per box with little in the way
-of downside.
+Even deploying to high-memory instances, memory is still
+usually the limiting resource on the number of runnable
+workers. GC compaction has the potential to shave off a big
+chunk of the memory that every worker needs. With the
+savings we can run more workers per box and fewer total
+boxes -- quite simply, the fleet is immediately cheaper to
+run.
 
 [1] `malloc`'s bookkeeping is compensated for so that we
 can keep a heap page fitting nicely into a multiple of OS
@@ -546,6 +547,10 @@ process, this would make for an inefficient use of memory.
 
 [2] Astute readers may notice that we start with only 9,792
 (24 * 408) total slots, despite requesting 10,000.
+
+[3] The naming "eden" is also a somewhat conventional in
+the world of garbage collectors. You'll find reference to
+"eden space" in Java's VM too.
 
 [aaroncompact]: https://twitter.com/tenderlove/status/801576703361355776
 [aaronprod]: https://twitter.com/tenderlove/status/844248259631566848
