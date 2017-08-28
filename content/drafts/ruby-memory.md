@@ -504,7 +504,7 @@ mapping back slots on the heap. The GC performing a pass on
 a fork would only copy the OS pages needed for bitmaps,
 allowing more memory to be shared for longer.
 
-### A compact future (#compaction)
+### The future with compaction (#compaction)
 
 Upcoming changes are even more exciting. For some time
 Aaron Patterson has been [talking publicly about
