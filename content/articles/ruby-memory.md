@@ -536,8 +536,8 @@ usually the limiting resource on the number of runnable
 workers. GC compaction has the potential to shave off a big
 chunk of the memory that every worker needs. With the
 savings we can run more workers per box and fewer total
-boxes -- quite simply, the fleet is immediately cheaper to
-run.
+boxes -- with very few caveats, the fleet is immediately
+cheaper to run.
 
 [1] `malloc`'s bookkeeping is compensated for so that we
 can keep a heap page fitting nicely into a multiple of OS
