@@ -36,17 +36,16 @@ have to venture into how Ruby allocates memory.
 
 ## Slabs and slots (#slabs-and-slots)
 
-Lets start with a very brief overview of object allocation
-in Ruby and then walk through some the relevant code. Ruby
-requests memory from the operating system in chunks that it
-refers to internally as ***heap pages***. The naming is a
-little unfortunate because these aren't the same thing as
-the 4k page that the OS will hand out (which I will refer
-to hereafter as ***OS pages***), but a heap page is mapped
-to a number of OS pages in virtual memory. Ruby sizes its
-heap pages so that they'll maximize use of OS pages by
-occupying an even multiple of them (usually 4x4k OS pages =
-1x16k heap page).
+Let's start with a very brief overview of object
+allocation. Ruby requests memory from the operating system
+in chunks that it refers to internally as ***heap pages***.
+The naming is a little unfortunate because these aren't the
+same thing as the 4k page that the OS will hand out (which
+I will refer to hereafter as ***OS pages***), but a heap
+page is mapped to a number of OS pages in virtual memory.
+Ruby sizes its heap pages so that they'll maximize use of
+OS pages by occupying an even multiple of them (usually
+4x4k OS pages = 1x16k heap page).
 
 !fig src="/assets/ruby-memory/heap-slots.svg" caption="A heap, its heap pages, and slots within each page."
 
