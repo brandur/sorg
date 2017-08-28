@@ -292,12 +292,12 @@ them and an `RVALUE` pointer.
 
 ## Allocating an object (#allocating)
 
-Now that we're armed with a basic understanding of the
-heap, we're getting closer to understanding why our mature
-Unicorn processes can't share anything with their parent
-(some readers may have guessed already). Let's get the rest
-of the way by walking through how Ruby initializes an
-object; in this case a string.
+Now that we've seen some basics of the heap, we're getting
+closer to understanding why our mature Unicorn processes
+can't share anything with their parent (some readers may
+have guessed already). Let's get the rest of the way by
+walking through how Ruby initializes an object; in this
+case a string.
 
 The entry point is `str_new0` (from [`string.c`][strnew0]):
 
