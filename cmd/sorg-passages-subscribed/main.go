@@ -43,36 +43,34 @@ func renderAndSend(records [][]string, live bool) error {
 		name := record[0]
 		recipient := record[1]
 
-		subject := "I'm subscribing you to my newsletter"
+		subject := "A newsletter"
 		body := fmt.Sprintf(`%s,
 
 One thing I've realized over the last few years is that I
 don't do a very good job of keeping up with old friends and
-family. I don't really use Facebook, link only technical
-writing on on Twitter, and the new age social media
-platforms like Instagram and Snapchat are well beyond me,
-so I'm not even staying in touch in a passive sense.
+family. I don'really use Facebook, and the new age social
+media platforms of the Instagram and Snapchat variety are
+well beyond me. Also, like any good millenial, I almost
+never pick up the phone :)
 
-On a recent trip to Portland I was thinking about this
-problem and what I might be able to do to about it, and as
-I was walking the city's eclectic streets, I had an idea:
-an email newsletter. Each issue will be a short compilation
-of stories, photographs, and ideas. It will remind me to
-send something to you, and hopefully remind you to send
-something back.
+On a recent trip I was thinking about what to do about it,
+and came up with the idea of writing a very occasional
+newsletter to people I know. The intent is for each one to
+be a short compilation of stories, photographs, and ideas.
+It'll remind me to send something to you, and hopefully
+remind you to send something back.
 
-In case you have a healthy fear of inbox overload, the
-bursts will be pretty infrequent; I'll be competing with
-total solar eclipses on time scale.
+This is just a quick note that I'm going to add you to the
+receipt list. In case you have a healthy fear of inbox
+overload, the bursts will be pretty infrequent; I'll be
+competing with total solar eclipses on time scale. If
+that's still not good enough, either reply to me here
+saying so, or wait until I send it and just click the very
+conspicuous "unsubscribe" link and you'll never get one
+again (I won't get notified on an unsubscribe, and even if
+I did, I wouldn't take it personally).
 
-(This email is not the newsletter, but) I'm about to send
-its first issue, and I've added you to the list to receive
-it. If you don't want it, either reply to me here saying
-so, or wait until I send it and click the very conspicuous
-unsubscribe link (I won't get notified on an unsubscribe,
-and even if I did, I wouldn't take it personally).
-
-Thanks, and take care!
+I hope everything is well!
 
 Brandur`,
 			name,
