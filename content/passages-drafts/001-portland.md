@@ -166,9 +166,9 @@ Alas, I've never worked so far to move so little. Not only
 were elderly citizens taking casual strolls down the street
 outpacing us by wide margins, but I've seen stationary
 bikes at my gym moving faster. Here's a [video of us taking
-the last corner][partybikevid] on the thing. I'm noticeable
-on the far side as the only person who looks like they
-think they're in a race.
+the last corner][partybikevid] on the thing. I'm
+recognizable on the far side as the only person who looks
+like they think they're in a race.
 
 The good news is that the beer was good, and I'd burned
 enough calories pedaling around an extremely heavy object
@@ -334,8 +334,7 @@ with 3.6M Ether (a third of its total funds, ostensibly
 worth $50M at the time). The fork reversed the theft, but
 fractured the network forever.
 
-These days I feel similarly about cryptocurrencies as my
-colleague Patrick McKenzie, who I think puts it best ([when
+My colleague Patrick McKenzie puts it best ([when
 asked][patio11] what subject he disagrees with others in
 the valley on):
 
@@ -352,7 +351,7 @@ the valley on):
 > both. Bitcoin will, accordingly, go to zero with the
 > inevitability of gravity."
 
-But with Bitcoin still trading at around $4000 USD (up
+But with Bitcoin still trading at around $4,400 USD (up
 already from $2800 when I originally drafted this text!),
 so far I've been wrong at every turn. Maybe these
 [tulips][tulipmania] will stay in bloom forever.
@@ -360,11 +359,14 @@ so far I've been wrong at every turn. Maybe these
 ## Other publications (#other)
 
 If you can stomach a few more words by me, I've recently
-published an article on [how Stripe thinks about API
-versioning][apiversioning] on our engineering blog, and an
+published [how Stripe thinks about API
+versioning][apiversioning] on our engineering blog; an
 in-depth look at [how Postgres makes its transactions
 atomic][atomicity] which digs into MVCC, snapshots, the
-WAL, and commit log.
+WAL, and commit log; and [how Ruby allocates
+memory][rubymemory], which talks about why Ruby's heap
+doesn't mesh well with copy-on-write, and how a compacting
+garbage collector will help.
 
 ## Stay connected (#connected)
 
@@ -389,6 +391,7 @@ first.
 [partybike]: https://en.wikipedia.org/wiki/Party_bike
 [partybikevid]: https://twitter.com/ped/status/884473125374525440
 [patio11]: https://www.producthunt.com/live/patrick-mckenzie-patio11#comment-452743
+[rubymemory]: https://brandur.org/ruby-memory
 [rust]: https://www.rust-lang.org/en-US/
 [tenfalls]: http://www.oregonhikers.org/field_guide/Trail_of_Ten_Falls_Loop_Hike
 [tulipmania]: https://en.wikipedia.org/wiki/Tulip_mania
