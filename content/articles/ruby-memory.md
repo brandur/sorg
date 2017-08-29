@@ -546,12 +546,12 @@ pages without overflowing onto another OS page. Because
 pages are the smallest unit that an OS will allocate to a
 process, this would make for an inefficient use of memory.
 
-[2] Astute readers may notice that we start with only 9,792
-(24 * 408) total slots, despite requesting 10,000.
+[2] Astute readers may notice that we start with "only"
+9,792 (24 * 408) total slots, despite requesting 10,000.
 
-[3] The naming "eden" is also a somewhat conventional in
-the world of garbage collectors. You'll find reference to
-"eden space" in Java's VM too.
+[3] The naming "eden" is also somewhat conventional in the
+world of garbage collectors. You'll find reference to "eden
+space" in Java's VM too.
 
 [aaroncompact]: https://twitter.com/tenderlove/status/801576703361355776
 [aaronprod]: https://twitter.com/tenderlove/status/844248259631566848
