@@ -291,6 +291,10 @@ fixnums, flonums, or symbols involve one of those three
 bits, therefore guaranteeing perfect exclusivity between
 them and an `RVALUE` pointer.
 
+This technique of folding extra information into pointers
+isn't specific to Ruby. These kinds of values are more
+broadly referred to as ["tagged pointers"][taggedpointer].
+
 ## Allocating an object (#allocating)
 
 Now that we've seen some basics of the heap, we're getting
@@ -568,4 +572,5 @@ space" in Java's VM too.
 [rubysetup]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/eval.c#L46
 [rvalue]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/gc.c#L410
 [strnew0]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/string.c#L702
+[taggedpointer]: https://en.wikipedia.org/wiki/Tagged_pointer
 [value]: https://github.com/ruby/ruby/blob/917beef327117cfeee4e1f455d650f08c2268d7e/include/ruby/ruby.h#L79
