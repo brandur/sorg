@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/joeshaw/envdecode"
 	"gopkg.in/mailgun/mailgun-go.v1"
@@ -40,8 +41,11 @@ func renderAndSend(records [][]string, live bool) error {
 			return fmt.Errorf("Record less than 2-width: %v", record)
 		}
 
-		name := record[0]
+		greeting := record[0]
 		recipient := record[1]
+
+		parts := strings.Split(greeting, " ")
+		name := parts[len(parts)-1]
 
 		subject := "A newsletter"
 		body := fmt.Sprintf(`%s,
@@ -73,7 +77,7 @@ I did, I wouldn't take it personally).
 I hope everything is well!
 
 Brandur`,
-			name,
+			greeting,
 		)
 
 		if live {
