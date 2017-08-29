@@ -12,7 +12,7 @@ I've kept it up far longer than I expected.
 It's been a useful experience, if not a runaway success. I
 initially got my weight down from 176 lbs. to 163 lbs. (by
 combining diet with a lot of [Triple Peaks
-runs](/stripe-running), but have since regressed to 171
+runs](/stripe-running)), but have since regressed to 171
 lbs., leaving me a little lighter than when I started, but
 not a lot.
 
