@@ -291,9 +291,9 @@ fixnums, flonums, or symbols involve one of those three
 bits, therefore guaranteeing perfect exclusivity between
 them and an `RVALUE` pointer.
 
-This technique of folding extra information into pointers
-isn't specific to Ruby. These kinds of values are more
-broadly referred to as ["tagged pointers"][taggedpointer].
+Folding extra information into pointers isn't specific t
+Ruby. More broadly, a value that uses this technique is
+called [a "tagged pointer"][taggedpointer].
 
 ## Allocating an object (#allocating)
 
