@@ -38,8 +38,8 @@ and software.
 
 ![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
 
-_Passages_ are the routes that we use to get from one point
-to another, like Hannibal's passage through the Alps,
+_Passages_ refers to the routes that we use to get from one
+point to another, like Hannibal's passage through the Alps,
 Magellan's strait, or in the case of my far more mundane
 life, my favorite walking path from Friedrichshain to
 Kreuzberg. _Glass_ is the material making up the face on my
@@ -53,7 +53,7 @@ communication that we have (email) in the most open formats
 available (plain text and HTML), and is my infinitesimally
 small way of pushing back against the continued
 centralization and confinement of our stories in closed
-platforms like Facebook and Twitter.
+platforms like Facebook.
 
 I hope you'll like it, but at any if time you no longer
 want to receive it, you can unsubscribe instantly by
@@ -72,38 +72,38 @@ Francisco, you could stand next to a BART or Muni ticketing
 machine all week and you'd be lucky to have a transit
 employee notice, let alone help.) Everywhere you go, store
 clerks and strangers strike you up for conversation. While
-in the back of rideshare, drivers tell meaningful stories
+in the back of a rideshare, drivers tell meaningful stories
 about their lives in the area.
 
 ![Portland](/assets/passages/001-portland/L1010468@2x.jpg)
 
 The city's beautiful. Calm and well-maintained downtown
 streets spread out to become eclectic inner city suburbs
-where each house has an interesting shape. Clusters of wild
+where each house has a unique shape. Clusters of wild
 shrubbery grow out front instead of the usual lawn. The
 shops and sights offer an amazing variety; in the first few
 days we ate at Atsuri, a ramen shop whose only other
-location is in Tokyo, had espresso and Turkish delight at
-the top of a double decker bus parked parked behind a row
-of food trucks (ToV coffee & tea), and had the best hot
-wings of my life at Pok Pok.
+location is in Tokyo, had espresso and Turkish delight on
+couches on top of a double-decker bus permanently parked
+behind a row of food trucks (ToV coffee & tea), and had the
+best hot wings of my life at Pok Pok.
 
 The wedding took place outside the city in Hillsboro atop a
 hill overlooking a vineyard on one side, and a golden field
 of wheat on the other (later to be set ablaze by the
 setting sun). The ceremony was held within a grove shaded
-by a group of tall trees (which many of us wearing jackets
+by a group of tall trees (which those of us wearing jackets
 on the hot day were very thankful for). Will officiated,
 using notes taped to the inside of a hardbound copy of
 Homer's _Odyssey_. Dinner was accompanied by speeches from
 the fathers of the bridge and groom, and followed by
 dancing at sunset, enabled by special varieties of
-margaritas and mint julips designed by the bride and groom
-themselves. We were eventually handed a breakfast burrito
+margaritas and mint julips specially designed by the bride
+and groom. We were eventually handed a breakfast burrito
 and loaded back onto a bus bound for our hotel. The couple
 in the seat next to us had managed to smuggle a 1.75L
 Costco size bottle of Bullitt bourbon on board. The rest of
-the ride back was a blur.
+the ride back whizzed by in a blur.
 
 ### Salt & Straw
 
@@ -171,8 +171,8 @@ recognizable on the far side as the only person who looks
 like they think they're in a race.
 
 The good news is that the beer was good, and I'd burned
-enough calories pedaling around an extremely heavy object
-to feel only moderately bad about drinking it.
+enough calories pedaling around an absurdly heavy object to
+feel only moderately bad about drinking it.
 
 ### The trail of ten falls (#ten-falls)
 
@@ -214,22 +214,20 @@ stay cooler.
 
 Flyknit is the answer. Its woven fabric may not be very
 good for waterproofness, but is unbeatable when it comes to
-breathability. It also looks great with its eclectic
-designs and scintillating colors, and I say that as someone
-who's never thought that about a shoe before. I just
-ordered another three pairs of Flyknit Racers because I'm
-worried that I'll never find a shoe that I like this much
-again.
+breathability. It also looks great with its scintillating
+colors, and I say that as someone who's never thought that
+about a shoe before. I just ordered another three pairs of
+Flyknit Racers because I'm worried that I'll never find
+footwear that I like this much again.
 
 ![Flyknit Racers](/assets/passages/001-portland/L1010970@2x.jpg)
 
-A travel trick that I've really taken to heart is to just
-wear my Flyknit shoes all the time. When I go somewhere, I
-don't take any footwear beyond what I have on my feet, and
-save a corresponding amount of space in my luggage.
-Although not appropriate for every possible situation,
-they've got me covered for urban walking, running, and all
-but Alberta-length hikes.
+It's also my secret weapon when it comes to travel. When I
+take a trip, I don't take any footwear beyond what I have
+on my feet, and save a corresponding amount of space in my
+luggage. Although not appropriate for every possible
+situation, they've got me covered for urban walking,
+running, and all but Alberta-length hikes.
 
 (And I should probably point out at this point that it may
 be hard to believe, but no, Nike did not sponsor this
@@ -249,14 +247,14 @@ hell, but so far my results with Go have been good.
 The language has a few problems -- a deep natural aversion
 to generics and dependency management, an equally powerful
 love for void pointers (`interface{}`), and a dictator that
-considers syntax highlighting juvenile -- yet I still find
-it to be pleasurable and painless to work with. Compared to
-the dynamic languages (Ruby, Python, JavaScript, etc.) I
-like that the code I write isn't so prone to rot, and even
+considers syntax highlighting juvenile -- yet it's still
+quite pleasant to work with. Compared to the family of
+dynamic languages (Ruby, Python, JavaScript, etc.) I like
+that the code I write isn't so prone to rot, and even
 compared to my other favorite right now, [Rust][rust], it's
 relaxing not having to chase a target whose syntax and core
-libraries never seem to stop moving. The code I write today
-is still best practice a year from now, and my dependencies
+libraries never stop moving. The code I write today is
+still best practice a year from now, and my dependencies
 aren't all pinned to special compiler pragmas and the
 nightly release channel.
 
@@ -287,16 +285,16 @@ power, a larger disaster was only narrowly averted.
 
 In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
 MB limit on Bitcoin's blocksize to protect the network from
-attackers sending large fake blocks. This had the
-unfortunate side effect of limiting the Bitcoin network to
-seven transactions per second in theory, but with the real
-number closer to 2.3 transactions. As Bitcoin's popularity
-has increased, the limit has become a serious problem
-because there's far more demand than capacity. Whereas
-previously the fee to settle a transaction may have been
-only a few cents, its since climbed to as high as $5, and
-with transactions taking days to be confirmed. Small and
-timely purchases are effectively impossible.
+attackers sending large fake blocks. This had the side
+effect of limiting the network to seven transactions per
+second in theory, but with the real number closer to 2.3
+transactions per second. As Bitcoin's popularity has
+increased, the limit has become a serious problem because
+there's far more demand than capacity. Whereas previously
+the fee to settle a transaction may have been only a few
+cents, its since climbed to as high as $5, and with
+transactions taking days to be confirmed. Small and timely
+purchases are effectively impossible.
 
 The debate on how to solve the problem has been raging
 heatedly for years. Originally more radical solutions were
@@ -351,7 +349,7 @@ the valley on):
 > both. Bitcoin will, accordingly, go to zero with the
 > inevitability of gravity."
 
-But with Bitcoin still trading at around $4,400 USD (up
+But with Bitcoin still trading at around $4,600 USD (up
 already from $2800 when I originally drafted this text!),
 so far I've been wrong at every turn. Maybe these
 [tulips][tulipmania] will stay in bloom forever.
@@ -373,10 +371,9 @@ garbage collector will help.
 This one's run a little long, so thank you for reading it!
 As many of you hace no doubt noticed by now, I'm not
 particularly good at staying in touch, so if you're doing
-something interesting, I very much encourage you to reply
-to this email or drop me a line at
-[brandur@brandur.org][mail] in case I don't get to you
-first.
+something interesting, I encourage you to reply to this
+email or email me at [brandur@brandur.org][mail] in case I
+don't get to you first.
 
 [apiversioning]: https://stripe.com/blog/api-versioning
 [atomicity]: https://brandur.org/postgres-atomicity
