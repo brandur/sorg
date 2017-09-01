@@ -52,7 +52,7 @@ body
   // thinks it needs more space.
   min-width: 100px
 
-.nav-inner, .nav-inner-unfixed, .toc-inner
+.nav-inner, .toc-inner
   width: 100px
 
   // Looks kind of interesting, but doesn't seem to quite fit.
@@ -71,10 +71,15 @@ body
 
 .top-nav
   margin-left: 40px
+  margin-top: 150px
 
   .nav-inner
     overflow: auto
-    position: fixed
+    position: -webkit-sticky
+    position: sticky
+
+    // Top is required for sticky
+    top: 50px
 
   nav
     font-family: $sans_serif
