@@ -69,7 +69,7 @@ else
 endif
 
 install:
-	go install $(shell go list ./... | egrep -v '/vendor/')
+	go install ./...
 
 # Invalidates CloudFront's cache for paths specified in PATHS.
 #
@@ -102,17 +102,17 @@ invalidate-indexes: check-aws-keys check-cloudfront-id
 # The exit 255 trick ensures that xargs will actually bubble a failure back up
 # to the entire command.
 lint:
-	go list ./... | egrep -v '/vendor/' | sed "s|^github\.com/brandur/sorg|.|" | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
+	go list ./... | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
 
 serve:
 	$(GOPATH)/bin/sorg-serve
 
 test:
 	psql postgres://localhost/sorg-test < testing/black_swan.sql > /dev/null
-	go test $(shell go list ./... | egrep -v '/vendor/')
+	go test ./...
 
 vet:
-	go vet $(shell go list ./... | egrep -v '/vendor/')
+	go vet ./...
 
 # Note that we use the CONTENT_ONLY flag on the build here. We're watching for
 # changes in content directories, so don't bother rebuilding pages generated
