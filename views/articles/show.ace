@@ -13,7 +13,7 @@
         .flag
       {{end}}
       .top-nav
-        div class="{{if eq .Article.Image ""}}nav-inner{{else}}nav-inner-unfixed{{end}}"
+        .nav-inner
           = include views/_nav
           .nav-extra-content
             .divider
