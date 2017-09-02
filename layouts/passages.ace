@@ -100,7 +100,9 @@ html lang="en"
       }
 
       #passages {
+        color: #000;
         font-size: 12px;
+        font-weight: bold;
         margin-top: 0;
         text-align: center;
         text-transform: uppercase;
