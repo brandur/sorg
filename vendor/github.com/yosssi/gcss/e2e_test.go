@@ -25,7 +25,6 @@ func Test_e2e(t *testing.T) {
 
 			if err != nil {
 				t.Errorf("error occurred [error: %q]", err.Error())
-				return
 			}
 
 			expectedCSSPath := strings.Replace(actualCSSPath, "actual", "expected", -1)

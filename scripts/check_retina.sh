@@ -49,7 +49,7 @@ allowed_exceptions=(
 )
 
 find_images() {
-    find . -type f \( \
+    find ./content -type f \( \
         \( \
             -not \( \
                 -iname "*@2x.*" \

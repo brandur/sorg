@@ -70,11 +70,10 @@ go test -v ./markdown
 
 ## Vendoring Dependencies
 
-Dependencies are managed with govendor. New ones can be vendored using these
-commands:
+Dependencies are managed with dep. New ones can be vendored
+using these commands:
 
-    go get -u github.com/kardianos/govendor
-    govendor add +external
+    dep ensure -add github.com/foo/bar
 
 [blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org

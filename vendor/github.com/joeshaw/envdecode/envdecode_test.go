@@ -61,6 +61,10 @@ type testConfig struct {
 	DefaultURL      *url.URL      `env:"TEST_UNSET,default=http://example.com"`
 }
 
+type testConfigNoSet struct {
+	Some string `env:"TEST_THIS_ENV_WILL_NOT_BE_SET"`
+}
+
 type testConfigRequired struct {
 	Required string `env:"TEST_REQUIRED,required"`
 }
@@ -316,13 +320,13 @@ func TestDecodeErrors(t *testing.T) {
 
 	var tnt testNoTags
 	err = Decode(&tnt)
-	if err != ErrInvalidTarget {
+	if err != ErrNoTargetFieldsAreSet {
 		t.Fatal("Should have gotten an error decoding a struct with no tags")
 	}
 
 	var tcni testNoExportedFields
 	err = Decode(&tcni)
-	if err != ErrInvalidTarget {
+	if err != ErrNoTargetFieldsAreSet {
 		t.Fatal("Should have gotten an error decoding a struct with no unexported fields")
 	}
 
@@ -331,6 +335,12 @@ func TestDecodeErrors(t *testing.T) {
 	err = Decode(&tcr)
 	if err == nil {
 		t.Fatal("An error was expected but recieved:", err)
+	}
+
+	var tcns testConfigNoSet
+	err = Decode(&tcns)
+	if err != ErrNoTargetFieldsAreSet {
+		t.Fatal("Should have gotten an error decoding when no env variables are set")
 	}
 
 	missing := false
@@ -378,7 +388,7 @@ func TestOnlyNested(t *testing.T) {
 	var o3 struct {
 		Inner noConfig
 	}
-	if err := Decode(&o3); err != ErrInvalidTarget {
+	if err := Decode(&o3); err != ErrNoTargetFieldsAreSet {
 		t.Fatal("Expected ErrInvalidTarget, got %s", err)
 	}
 }
@@ -473,6 +483,57 @@ type nestedTwiceConfig struct {
 
 type nestedConfigInner struct {
 	String string `env:"TEST_NESTED_TWICE_STRING"`
+}
+
+type testConfigStrict struct {
+	InvalidInt64Strict   int64 `env:"TEST_INVALID_INT64,strict,default=1"`
+	InvalidInt64Implicit int64 `env:"TEST_INVALID_INT64_IMPLICIT,default=1"`
+
+	Nested struct {
+		InvalidInt64Strict   int64 `env:"TEST_INVALID_INT64_NESTED,strict,required"`
+		InvalidInt64Implicit int64 `env:"TEST_INVALID_INT64_NESTED_IMPLICIT,required"`
+	}
+}
+
+func TestInvalidStrict(t *testing.T) {
+	cases := []struct {
+		decoder             func(interface{}) error
+		rootValue           string
+		nestedValue         string
+		rootValueImplicit   string
+		nestedValueImplicit string
+		pass                bool
+	}{
+		{Decode, "1", "1", "1", "1", true},
+		{Decode, "1", "1", "1", "asdf", true},
+		{Decode, "1", "1", "asdf", "1", true},
+		{Decode, "1", "1", "asdf", "asdf", true},
+		{Decode, "1", "asdf", "1", "1", false},
+		{Decode, "asdf", "1", "1", "1", false},
+		{Decode, "asdf", "asdf", "1", "1", false},
+		{StrictDecode, "1", "1", "1", "1", true},
+		{StrictDecode, "asdf", "1", "1", "1", false},
+		{StrictDecode, "1", "asdf", "1", "1", false},
+		{StrictDecode, "1", "1", "asdf", "1", false},
+		{StrictDecode, "1", "1", "1", "asdf", false},
+		{StrictDecode, "asdf", "asdf", "1", "1", false},
+		{StrictDecode, "1", "asdf", "asdf", "1", false},
+		{StrictDecode, "1", "1", "asdf", "asdf", false},
+		{StrictDecode, "1", "asdf", "asdf", "asdf", false},
+		{StrictDecode, "asdf", "asdf", "asdf", "asdf", false},
+	}
+
+	for _, test := range cases {
+		os.Setenv("TEST_INVALID_INT64", test.rootValue)
+		os.Setenv("TEST_INVALID_INT64_NESTED", test.nestedValue)
+		os.Setenv("TEST_INVALID_INT64_IMPLICIT", test.rootValueImplicit)
+		os.Setenv("TEST_INVALID_INT64_NESTED_IMPLICIT", test.nestedValueImplicit)
+
+		var tc testConfigStrict
+		if err := test.decoder(&tc); test.pass != (err == nil) {
+			t.Fatalf("Have err=%s wanted pass=%v", err, test.pass)
+		}
+	}
 }
 
 func TestExport(t *testing.T) {
@@ -572,7 +633,7 @@ func TestExport(t *testing.T) {
 		&ConfigInfo{
 			Field:  "UnsetDuration",
 			EnvVar: "TEST_UNSET_DURATION",
-			Value:  "0",
+			Value:  "0s",
 		},
 		&ConfigInfo{
 			Field:  "UnsetURL",
