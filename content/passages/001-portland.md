@@ -384,8 +384,8 @@ This one's run a little long, so thank you for reading it!
 As many of you hace no doubt noticed by now, I'm not
 particularly good at staying in touch, so if you're doing
 something interesting, I encourage you to reply to this
-email or email me at [brandur@brandur.org][mail] in case I
-don't get to you first.
+message or email me at [brandur@brandur.org][mail] in case
+I don't get to you first.
 
 [apiversioning]: https://stripe.com/blog/api-versioning
 [atomicity]: https://brandur.org/postgres-atomicity
