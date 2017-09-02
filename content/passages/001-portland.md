@@ -273,11 +273,12 @@ resizing, and it's nice not having to troubleshoot build
 failures for C extensions like in Ruby and Python. Lastly,
 the language's stability is amazing. I'd bet that this
 project will still compile on the contemporary Go compiler
-of ten years from now. I don't know what the best modern
-tech stack is, but Go's is one of the good ones.
+of ten years from now.
 
-With the [recent release of Go 1.9][go19], it's as good of
-a time as ever to look into it.
+I don't know what the best modern tech stack is, but Go's
+is one of the good ones, and with the [recent release of Go
+1.9][go19], it's as good of a time as ever to take a look
+at it.
 
 ## On cryptocurrency (#cryptocurrency)
 
