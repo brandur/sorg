@@ -79,7 +79,7 @@ html lang="en"
       #about {
         color: #aaa;
         font-size: 15px;
-        margin: 100px 0 30px 0;
+        margin: 80px 0 30px 0;
         text-align: center;
       }
 
