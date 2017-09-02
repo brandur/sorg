@@ -206,7 +206,7 @@ func (inliner *Inliner) insertRawStylesheet() {
 		styleNode := &html.Node{
 			Type: html.ElementNode,
 			Data: "style",
-			Attr: []html.Attribute{{Key: "type", Val: "text/css"}},
+			Attr: []html.Attribute{html.Attribute{Key: "type", Val: "text/css"}},
 		}
 
 		styleNode.AppendChild(cssNode)

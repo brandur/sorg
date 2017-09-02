@@ -1,21 +1,10 @@
-# goquery - a little like that j-thing, only in Go
-[![build status](https://secure.travis-ci.org/PuerkitoBio/goquery.png)](http://travis-ci.org/PuerkitoBio/goquery) [![GoDoc](https://godoc.org/github.com/PuerkitoBio/goquery?status.png)](http://godoc.org/github.com/PuerkitoBio/goquery) [![Sourcegraph Badge](https://sourcegraph.com/github.com/PuerkitoBio/goquery/-/badge.svg)](https://sourcegraph.com/github.com/PuerkitoBio/goquery?badge)
-
+# goquery - a little like that j-thing, only in Go [![build status](https://secure.travis-ci.org/PuerkitoBio/goquery.png)](http://travis-ci.org/PuerkitoBio/goquery) [![GoDoc](https://godoc.org/github.com/PuerkitoBio/goquery?status.png)](http://godoc.org/github.com/PuerkitoBio/goquery)
 
 goquery brings a syntax and a set of features similar to [jQuery][] to the [Go language][go]. It is based on Go's [net/html package][html] and the CSS Selector library [cascadia][]. Since the net/html parser returns nodes, and not a full-featured DOM tree, jQuery's stateful manipulation functions (like height(), css(), detach()) have been left off.
 
 Also, because the net/html parser requires UTF-8 encoding, so does goquery: it is the caller's responsibility to ensure that the source document provides UTF-8 encoded HTML. See the [wiki][] for various options to do this.
 
 Syntax-wise, it is as close as possible to jQuery, with the same function names when possible, and that warm and fuzzy chainable interface. jQuery being the ultra-popular library that it is, I felt that writing a similar HTML-manipulating library was better to follow its API than to start anew (in the same spirit as Go's `fmt` package), even though some of its methods are less than intuitive (looking at you, [index()][index]...).
-
-## Table of Contents
-
-* [Installation](#installation)
-* [Changelog](#changelog)
-* [API](#api)
-* [Examples](#examples)
-* [Related Projects](#related-projects)
-* [License](#license)
 
 ## Installation
 
@@ -116,12 +105,6 @@ func main() {
 }
 ```
 
-## Related Projects
-
-- [Goq][goq], an HTML deserialization and scraping library based on goquery and struct tags.
-- [andybalholm/cascadia][cascadia], the CSS selector library used by goquery.
-- [suntong/cascadia][cascadiacli], a command-line interface to the cascadia CSS selector library, useful to test selectors.
-
 ## License
 
 The [BSD 3-Clause license][bsd], the same as the [Go language][golic]. Cascadia's license is [here][caslic].
@@ -129,7 +112,6 @@ The [BSD 3-Clause license][bsd], the same as the [Go language][golic]. Cascadia'
 [jquery]: http://jquery.com/
 [go]: http://golang.org/
 [cascadia]: https://github.com/andybalholm/cascadia
-[cascadiacli]: https://github.com/suntong/cascadia
 [bsd]: http://opensource.org/licenses/BSD-3-Clause
 [golic]: http://golang.org/LICENSE
 [caslic]: https://github.com/andybalholm/cascadia/blob/master/LICENSE
@@ -140,4 +122,3 @@ The [BSD 3-Clause license][bsd], the same as the [Go language][golic]. Cascadia'
 [wiki]: https://github.com/PuerkitoBio/goquery/wiki/Tips-and-tricks
 [thatguystone]: https://github.com/thatguystone
 [piotr]: https://github.com/piotrkowalczuk
-[goq]: https://github.com/andrewstuart/goq
