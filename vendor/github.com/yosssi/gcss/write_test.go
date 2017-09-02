@@ -49,10 +49,6 @@ func Test_write_err(t *testing.T) {
 func Test_write_writeErr(t *testing.T) {
 	newBufWriterBak := newBufWriter
 
-	defer func() {
-		newBufWriter = newBufWriterBak
-	}()
-
 	newBufWriter = func(w io.Writer) writeFlusher {
 		return &writeErrBufWriter{}
 	}
@@ -72,14 +68,12 @@ func Test_write_writeErr(t *testing.T) {
 			t.Errorf("err should be %q [actual: %q]", errTest.Error(), err.Error())
 		}
 	}
+
+	newBufWriter = newBufWriterBak
 }
 
 func Test_write_flushErr(t *testing.T) {
 	newBufWriterBak := newBufWriter
-
-	defer func() {
-		newBufWriter = newBufWriterBak
-	}()
 
 	newBufWriter = func(w io.Writer) writeFlusher {
 		return &flushErrBufWriter{}
@@ -100,4 +94,6 @@ func Test_write_flushErr(t *testing.T) {
 			t.Errorf("err should be %q [actual: %q]", errTest.Error(), err.Error())
 		}
 	}
+
+	newBufWriter = newBufWriterBak
 }

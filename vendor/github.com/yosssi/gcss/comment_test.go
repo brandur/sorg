@@ -12,7 +12,6 @@ func Test_comment_WriteTo(t *testing.T) {
 
 	if _, err := c.WriteTo(ioutil.Discard); err != nil {
 		t.Errorf("error occurred [error: %q]", err.Error())
-		return
 	}
 }
 
@@ -23,6 +22,5 @@ func Test_newComment(t *testing.T) {
 
 	if c == nil || c.ln != ln {
 		t.Error("c is invalid")
-		return
 	}
 }
