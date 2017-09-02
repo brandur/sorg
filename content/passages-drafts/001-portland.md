@@ -33,19 +33,19 @@ enough to last.
 This is what I'm trying to with this newsletter, _Passages
 & Glass_. It's a curated collection for my friends and
 family of short, self-indulgent stories about what I've
-been doing, and on some of my favorite things in products
-and software.
+been doing, and some favorite things in products and
+software.
 
 ![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
 
 _Passages_ refers to the routes that we use to get from one
 point to another, like Hannibal's passage through the Alps,
-Magellan's strait, or in the case of my far more mundane
-life, my favorite walking path from Friedrichshain to
-Kreuzberg. _Glass_ is the material making up the face on my
-favorite products like the iPhone or Submariner, the window
-through which to watch the passing countryside by air or
-rail, or the intricate optics of my camera's lens.
+Magellan's famous strait, or in the case of my far more
+mundane life, a favorite walking path from Friedrichshain
+to Kreuzberg. _Glass_ is the material making up the face on
+my favorite products like the iPhone or Submariner, the
+window through which to watch the passing countryside by
+air or rail, or the intricate optics of my camera's lens.
 
 _Passages & Glass_ is also about supporting the independent
 web. It's sent via the only universal medium of
@@ -65,9 +65,9 @@ I visited Portland recently to celebrate the wedding of my
 friends Sam and Blake. The first thing that you notice
 about the town is how nice everyone was; I was reading a
 brochure on how to use the local rail system to get from
-the airport to downtown, when a MAX employee approached me
-and proceeded to explain everything there was to know about
-it, and help me buy a ticket. (For comparison in San
+the airport to downtown, when a MAX employee approached me,
+proceeded to explain everything there was to know about it,
+and helped me buy a ticket. (For comparison in San
 Francisco, you could stand next to a BART or Muni ticketing
 machine all week and you'd be lucky to have a transit
 employee notice, let alone help.) Everywhere you go, store
@@ -102,8 +102,8 @@ margaritas and mint julips specially designed by the bride
 and groom. We were eventually handed a breakfast burrito
 and loaded back onto a bus bound for our hotel. The couple
 in the seat next to us had managed to smuggle a 1.75L
-Costco size bottle of Bullitt bourbon on board. The rest of
-the ride back whizzed by in a blur.
+Costco size bottle of Bullitt (their bourbon) on board. The
+rest of the ride back whizzed by in a blur.
 
 ### Salt & Straw
 
@@ -145,13 +145,20 @@ idiot. Of course it was him."
 ### The city of cycling and beer (#cycling-and-beer)
 
 Rating high on the list of things to do in Portland are
-bicycling and beer. We combined the two passions by taking
-a tour one one of their local [party bikes][partybike]
-(also known as pedibuses, cycle pubs, bierbikes, and
-megacycles). Open container laws are in effect in Portland,
-so rather than drink on the bike itself, we ranged around
-the downtown core and stopped at a few of its abundant
-breweries and bars.
+bicycling and beer. An ambitious new city plan aims to have
+more than a quarter of all trips to be made by bicycle by
+2030, and with a strong biking culture very visible on the
+city's streets, it's believable. Craft beer is also a core
+value for many Oregonians -- just the Portland Metro Area
+sports more than 100 separate breweries.
+
+We combined the two passions by taking a tour one one of
+their local [party bikes][partybike] (also known as
+pedibuses, cycle pubs, bierbikes, and megacycles). Open
+container laws are in effect in Portland, so rather than
+drink on the bike itself, we ranged around the downtown
+core and stopped at a few of its abundant breweries and
+bars.
 
 ![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
 
@@ -162,13 +169,13 @@ intersections only long enough to give the neighboring
 driver a sidelong look before accelerating on the green and
 racing to the next light.
 
-Alas, I've never worked so far to move so little. Not only
-were elderly citizens taking casual strolls down the street
-outpacing us by wide margins, but I've seen stationary
-bikes at my gym moving faster. Here's a [video of us taking
-the last corner][partybikevid] on the thing. I'm
-recognizable on the far side as the only person who looks
-like they think they're in a race.
+Alas, I've never worked so hard to achieve so little. Not
+only were elderly citizens taking casual strolls down the
+street outpacing us by wide margins, but I've seen
+stationary bikes at my gym moving faster. Here's a [video
+of us taking the last corner][partybikevid] on the thing.
+I'm recognizable on the far side as the only person who
+looks like they think they're in a race.
 
 The good news is that the beer was good, and I'd burned
 enough calories pedaling around an absurdly heavy object to
@@ -210,9 +217,9 @@ Nike's Flyknit technology is one of my favorite products of
 the last few years. I'm the type of person who's too hot 90
 seconds into any kind of moving (walking, biking, running,
 cleaning, etc.), and am always on the lookout for ways to
-stay cooler.
+stay cool.
 
-Flyknit is the answer. Its woven fabric may not be very
+Flyknit is an answer. Its woven fabric may not be very
 good for waterproofness, but is unbeatable when it comes to
 breathability. It also looks great with its scintillating
 colors, and I say that as someone who's never thought that
@@ -240,12 +247,12 @@ newsletter is built and sent by a specially crafted
 [Go][go] executable (I talk a little more about the
 [technical details here][newsletters]). This might sound a
 little crazy -- software is degrading starting from the
-moment it's written, and building custom software is
-usually a little like building a self-imposed maintenance
-hell, but so far my results with Go have been good.
+moment it's written, and building custom software is a
+little akin to building a self-imposed maintenance hell,
+but so far my results with Go have been good.
 
-The language has a few problems -- a deep natural aversion
-to generics and dependency management, an equally powerful
+The language has a few problems -- a deep aversion to
+generics and dependency management, an equally powerful
 love for void pointers (`interface{}`), and a dictator that
 considers syntax highlighting juvenile -- yet it's still
 quite pleasant to work with. Compared to the family of
@@ -269,21 +276,25 @@ project will still compile on the contemporary Go compiler
 of ten years from now. I don't know what the best modern
 tech stack is, but Go's is one of the good ones.
 
+With the [recent release of Go 1.9][go19], it's as good of
+a time as ever to look into it.
+
 ## On cryptocurrency (#cryptocurrency)
 
-Bitcoin is currently one of our greatest forms of
-entertainment in the valley, with plot twists so frequent
-and so dramatic that not even the best writers on [Mr.
-Robot][mrrobot] could have dreamt them up.
+Bitcoin is one of our best forms of entertainment in the
+valley, with plot twists so frequent and so dramatic that
+not even the best writers on [Mr. Robot][mrrobot] could
+have dreamt them up.
 
 You may have heard that the preeminent digital currency
 recently forked a new currency called Bitcoin Cash (see
 [this article][cash] for some good background information).
 Although this seems like it'll be a relatively minor fork,
-starting with only around 10% of Bitcoin's total mining
-power, a larger disaster was only narrowly averted.
+so far staying pretty stable at around 10% of Bitcoin's
+total mining power, a larger disaster was only narrowly
+averted.
 
-In 2010 Satoshi Nakamoto, the creator of Bitcoin, added a 1
+In 2010 Satoshi Nakamoto (the creator of Bitcoin) added a 1
 MB limit on Bitcoin's blocksize to protect the network from
 attackers sending large fake blocks. This had the side
 effect of limiting the network to seven transactions per
@@ -294,7 +305,7 @@ there's far more demand than capacity. Whereas previously
 the fee to settle a transaction may have been only a few
 cents, its since climbed to as high as $5, and with
 transactions taking days to be confirmed. Small and timely
-purchases are effectively impossible.
+purchases became effectively impossible.
 
 The debate on how to solve the problem has been raging
 heatedly for years. Originally more radical solutions were
@@ -380,6 +391,7 @@ don't get to you first.
 [cash]: https://blog.bridge21.io/before-and-after-the-great-bitcoin-fork-17d2aad5d512
 [dao]: https://en.wikipedia.org/wiki/The_DAO_(organization)
 [go]: https://golang.org/
+[go19]: https://golang.org/doc/go1.9
 [ito]: https://en.wikipedia.org/wiki/Hideaki_It%C5%8D
 [kiefer]: https://en.wikipedia.org/wiki/Kiefer_Sutherland
 [mail]: mailto:brandur@brandur.org
