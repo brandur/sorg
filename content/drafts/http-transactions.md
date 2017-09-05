@@ -128,13 +128,17 @@ interleaved transactions to run their `SELECT` phase one
 concurrently and get empty results. They'd both follow up
 with an `INSERT`, thus leaving a duplicated row.
 
+TODO: two interleaved requests
+
 Luckily, the magic of the `SERIALIZABLE` isolation level
-protects us from harm here. It guarantees that all
-outstanding transactions would have been committable in
-serial order, no matter which one committed first in
-practice. In the case of such a race condition, one of the
-two outstanding transactions would fail on commit with this
-message:
+protects us from harm here (see where we invoke
+`DB.transaction(isolation: :serializable)`). It emulates
+serial transaction execution as if each outstanding
+transaction had been executed one after the other, rather
+than concurrently. In cases like the above where a race
+condition would have caused one transaction to taint the
+results of another, one of the two will fail to commit with
+a message like this one:
 
 ```
 # COMMIT;
@@ -144,9 +148,9 @@ HINT:  The transaction might succeed if retried.
 Time: 0.291 ms
 ```
 
-Even though this race condition is rare, we'd prefer to
-handle it correctly in our application code. This is
-possible by wrapping the request's core operations in a
+Even though this race should be relatively rare, we'd
+prefer to handle it correctly in our application code. This
+is possible by wrapping the request's core operations in a
 loop:
 
 ``` ruby
