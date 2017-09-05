@@ -6,38 +6,33 @@ location: San Francisco
 hook: TODO
 ---
 
-Networks fail all the time -- an ACID database can be an
-asset
+A lot of us are building applications that server requests
+over the lingua franca of today's internet -- HTTP. Many of
+those same applications are backed by a relational database
+like Postgres, and requests perform a series of operations
+against it to complete.
 
-Many ORMs like ActiveRecord or Sequel (take your pick from
-across any number of languages and frameworks) have a
-pretty simple mechanism to start transactions:
+There's a surprising symmetry between an HTTP request and a
+database's transaction. Just like the transaction, an HTTP
+request is a transactional piece of work -- it's got a
+clear beginning, end, and result. The client generally
+expects one to execute atomically (although whether it
+actually does may vary based on implementation).
 
-``` ruby
-DB.transaction do
-  ...
-end
-```
+The sharp edges encountered in the real world can lead to
+all kinds of unexpected cases during the execution of an
+HTTP request -- client disconnects, application bugs that
+fail a request midway through, and various sorts of
+timeouts will occur regularly given enough request volume.
+In these cases a relational DB's transaction can be a
+powerful tool for making sure that data stays correct even
+given these sorts of adverse conditions.
 
-But although they're easy to start, they're also easy to
-_lose_. More often than not, database operations will be
-sprinkled all over throughout thousands of lines of
-application code. Lining them up with the transaction that
-they're supposed to be executing is no easy task:
-
-``` ruby
-User.create(...)
-```
-
-We're not going to address that exact problem here, but
-it's probably worth building in safeguards that help ensure
-that all SQL calls occur within a valid transaction.
-Looking at only isolated sections of code, it's easy for a
-developer to lose track of this.
-
-Instead, I'm going to suggest that transactions be started
-at the top level of an HTTP request, and for many
-idempotent operations, be mapped 1:1.
+I'm going to suggest that for a common idempotent HTTP
+request, requests map to backend transactions at 1:1. At
+first glance requiring idempotency may sound like a
+sizeable caveat, but in a well-designed API, many
+operations can be tweaked so that they're idempotent.
 
 TODO: Diagram of HTTP request and transaction.
 
