@@ -34,7 +34,7 @@ first glance requiring idempotency may sound like a
 sizeable caveat, but in a well-designed API, many
 operations can be tweaked so that they're idempotent.
 
-!fig src="/assets/http-transactions/http-transactions.svg" caption="Transactions mapped to HTTP requests at a 1:1 ratio."
+!fig src="/assets/http-transactions/http-transactions.svg" caption="Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio."
 
 ## Let's create a user (#create-user)
 
