@@ -6,55 +6,63 @@ location: San Francisco
 hook: TODO
 ---
 
-Although the software industry as a whole contains a
-healthy diversity of a lot of developers doing a lot of
-different things, there's a healthy majority of us whose
-work can be boiled down to one thing: building CRUD apps
-that service requests over HTTP. Many of those same
-applications are backed by an ACID-compliant relational
-database like Postgres, and a successful request will
-perform a series of operations against it until they're
-complete.
+The software industry as a whole contains a lot of people
+doing a lot of different things, but for every developer
+working on new embedded firmware, there's about ten
+building the linchpin of modern software -- CRUD apps that
+serve requests over HTTP. A lot of these apps are backed by
+MVC frameworks like Ruby on Rails or ASP.NET, and backed by
+ACID-compliant relational databases like Postgres or Sequel
+Server.
+
+Sharp edges in production can lead to all kinds of
+unexpected cases during the execution of an HTTP request --
+client disconnects, application bugs that fail a request
+midway through, and timeouts are all extraordinary
+conditions that will occur regularly given enough request
+volume. Databases can protect applications against
+integrity problems with their transactions, and it's worth
+taking a little time to think about how to make best use of
+them.
 
 There's a surprising symmetry between an HTTP request and a
 database's transaction. Just like the transaction, an HTTP
-request is a transactional piece of work -- it's got a
+request is a transactional unit of work -- it's got a
 clear beginning, end, and result. The client generally
 expects a request to execute atomically and will behave as
 if it will (although that of course varies based on
-implementation).
+implementation). Here we'll look at an example service to
+see how HTTP requests and transactions apply nicely to one
+another.
 
-The sharp edges encountered of production can lead to all
-kinds of unexpected cases during the execution of an HTTP
-request -- client disconnects, application bugs that fail a
-request midway through, and timeouts are all extraordinary
-conditions that will occur regularly given enough request
-volume. Without ACID databases and transactions these would
-lead to data integrity problems that are expensive to find
-and fix, but with them we get easy access to powerful tools
-to protect us against these sorts of adverse conditions.
+## The 1:1 Model (#one-to-one)
 
 I'm going to make the case that for a common idempotent
 HTTP request, requests should map to backend transactions
-at 1:1. So for every request, all operations are committed
-or aborted as part of a single transaction within it. At
-first glance requiring idempotency may sound like a
-sizeable caveat, but in a well-designed API, many
-operations can be tweaked so that they're idempotent.
+at 1:1. For every request, all operations are committed or
+aborted as part of a single transaction within it.
 
 !fig src="/assets/http-transactions/http-transactions.svg" caption="Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio."
 
-Non-idempotent requests aren't quite as simple and need a
-little extra consideration. We'll look at those in more
-detail in a few weeks as a follow up to this article.
+At first glance requiring idempotency may sound like a
+sizeable caveat, but in many APIs operations can be made to
+be idempotent by massaging endpoint verbs and behavior, and
+moving non-idempotent operations like network calls to
+background jobs.
 
-## Let's create a user (#create-user)
+Some APIs can't be made idempotent and those will need a
+little extra consideration. We'll look at what to do about
+them in more detail later as a follow up to this article.
 
-Lets come up with a simple test scenario where we're
-building an idempotent "create user" endpoint. A client
-hits it with a single `email` parameter, and the endpoint
-responds with status `200 OK` if the user already existed, and
-status `201 Created` otherwise.
+## A simple user creation service (#create-user)
+
+Let's build a simple test service with a single "create
+user" endpoint. A client hits it with an `email` parameter,
+and the endpoint responds with status `201 Created` to
+signal that the user's been created. The endpoint is also
+idempotent so that if a client hits the endpoint again with
+the same parameter, it responds with status `200 OK` to
+signal that everything is still fine.
 
 ```
 PUT /users?email=jane@example.com
@@ -69,7 +77,14 @@ On the backend, we're going to do three things:
    audit log which comes with a reference to a user's ID,
    an action name, and a timestamp.
 
-In SQL [1]:
+We'll build our implementation with Postgres, Ruby, and an
+ORM in the style of ActiveRecord or Sequel, but these
+concepts apply beyond any specific technology.
+
+### Database schema (#database-schema)
+
+The service defines a simple Postgres schema containing
+tables for its users and user actions [1]:
 
 ``` sql
 CREATE TABLE users (
@@ -86,10 +101,12 @@ CREATE TABLE user_actions (
 );
 ```
 
+### Backend implementation (#implementation)
+
 The server route checks to see if the user exists. If so,
 it returns immediately. If not, it creates the user and
-user action, and returns. In both cases the transaction
-commits successfully:
+user action, and returns. In both cases, the transaction
+commits successfully.
 
 ``` ruby
 put "/users/:email" do |email|
@@ -141,16 +158,17 @@ duplicated row.
 !fig src="/assets/http-transactions/concurrent-race.svg" caption="A data race causing two concurrent HTTP requests to insert the same row."
 
 Luckily, in this example we've used an even more powerful
-mechanism to protect our data's correctness. Invoking our
-transaction with `DB.transaction(isolation: :serializable)`
-starts it in `SERIALIZABLE`; an isolation level so powerful
-that its guarantees might seem practically magical to the
-untrained eye.  It emulates serial transaction execution as
-if each outstanding transaction had been executed one after
-the other, rather than concurrently. In cases like the
-above where a race condition would have caused one
-transaction to taint the results of another, one of the two
-will fail to commit with a message like this one:
+mechanism than `UNIQUE` to protect our data's correctness.
+Invoking our transaction with `DB.transaction(isolation:
+:serializable)` starts it in `SERIALIZABLE`; an isolation
+level so powerful that its guarantees might seem
+practically magical.  It emulates serial transaction
+execution as if each outstanding transaction had been
+executed one after the other, rather than concurrently. In
+cases like the above where a race condition would have
+caused one transaction to taint the results of another, one
+of the two will fail to commit with a message like this
+one:
 
 ```
 ERROR:  could not serialize access due to read/write dependencies among transactions
@@ -166,8 +184,9 @@ it tries to commit.
 ### Retrying an abort (#abort-retry)
 
 Even though in our example a race should be rare, we'd
-prefer to handle it correctly in our application code. This
-is possible by wrapping the request's core operations in a
+prefer to handle it correctly in our application code so
+that it doesn't bubble up as a 500 to a client. This is
+possible by wrapping the request's core operations in a
 loop:
 
 ``` ruby
@@ -198,11 +217,11 @@ transaction mapped to the HTTP request like so:
 
 These loops will be more expensive than usual, but again,
 we're protecting ourselves against an unusual race. In
-practice, unless callers are particularly contentious, it
-should rarely occur.
+practice, unless callers are particularly contentious,
+it'll rarely occur.
 
 Gems like [Sequel][sequel] can handle this for you
-automatically (this will behave similarly to the loop
+automatically (this code will behave similarly to the loop
 above):
 
 ``` ruby
@@ -212,18 +231,18 @@ DB.transaction(isolation: :serializable,
 end
 ```
 
-### Protecting data at all levels (#multi-level)
+### Data protection in layers (#layers)
 
 I've taken the opportunity to demonstrate the power of a
 serializable transaction, but in real life you'd want to
 put in a `UNIQUE` constraint on `email` even if you
 intended to use the serializable isolation level. Although
-`SERIALIZABLE` will protect you from a duplicate insert,
-but `UNIQUE` will act as one additional check to protect
-your application against incorrectly invoked transactions
-or buggy code.
+`SERIALIZABLE` will protect you from a duplicate insert, an
+added `UNIQUE` will act as one more check to protect your
+application against incorrectly invoked transactions or
+buggy code. It's worth having it in there.
 
-## Background jobs and job staging (#background-jobs)
+## Background jobs (#background-jobs)
 
 It's a common pattern to add jobs to a background queue
 during an HTTP request so that they can be worked
@@ -233,7 +252,9 @@ an expensive operation.
 Let's add one more step to our user service above. In
 addition to creating user and user action records, we'll
 also make an API request to an external support service to
-tell it that a new account's been created:
+tell it that a new account's been created. We'll do that by
+queuing a background job because there's no reason that it
+has to happen in-band with the request.
 
 ``` ruby
 put "/users/:email" do |email|
@@ -250,9 +271,13 @@ end
 ```
 
 If we used a common job queue like Sidekiq to do this work,
-then in the case of a transaction rollback, we could end up
-with an invalid job in the queue. No matter how many times
-our job workers retried it, it would never succeed.
+then in the case of a transaction rollback (like we talked
+about above where two transactions conflict), we could end
+up with an invalid job in the queue. It's referencing data
+that no longer exists, so no matter how many times job
+workers retried it, it can never succeed.
+
+### Transaction-staged jobs (#staged-jobs)
 
 A way around this is to create a job staging table into our
 database. Instead of sending jobs to the queue directly,
@@ -307,17 +332,16 @@ Postgres][queues], this probably isn't as good of an idea.
 What we've covered here works nicely for HTTP requests that
 are idempotent. That's probably a healthy majority given a
 well-designed API, but there are always going to be some
-endpoints that are not idempotent. For example making a
-call out to an external payment gateway with credit card
-information, requesting a server to be provisioned, or
-anything that needs to make a fallible synchronous network
-request.
+endpoints that are not idempotent. Examples include calling
+out to an external payment gateway with a credit card,
+requesting a server to be provisioned, or anything else
+that needs to make a synchronous network request.
 
 For these types of requests we're going to need to build
-something like an [idempotency key][idempotency] on top of
-multi-stage transactions. This gets a little more involved
-though, so I'm going to save it for a part two of this
-article.
+something a little more sophisticated, but just like in
+this simpler case, our database has us covered. In part two
+of this series we'll look at how to implement [idempotency
+keys][idempotency] on top of multi-stage transactions.
 
 [1] Note that for the purposes of this simple example we
 could probably make this SQL more succinct, but for good
