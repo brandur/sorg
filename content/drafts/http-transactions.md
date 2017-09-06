@@ -16,25 +16,30 @@ There's a surprising symmetry between an HTTP request and a
 database's transaction. Just like the transaction, an HTTP
 request is a transactional piece of work -- it's got a
 clear beginning, end, and result. The client generally
-expects one to execute atomically (although whether it
-actually does may vary based on implementation).
+expects one to execute atomically and will behave as if it
+does (although that will vary based on implementation).
 
 The sharp edges encountered in the real world can lead to
 all kinds of unexpected cases during the execution of an
 HTTP request -- client disconnects, application bugs that
-fail a request midway through, and various sorts of
-timeouts will occur regularly given enough request volume.
-In these cases a relational DB's transaction can be a
-powerful tool for making sure that data stays correct even
-given these sorts of adverse conditions.
+fail a request midway through, and timeouts will occur
+regularly given enough request volume. A transaction can be
+a powerful tool for making sure that data stays correct
+even given these sorts of adverse conditions.
 
 I'm going to suggest that for a common idempotent HTTP
-request, requests map to backend transactions at 1:1. At
-first glance requiring idempotency may sound like a
-sizeable caveat, but in a well-designed API, many
-operations can be tweaked so that they're idempotent.
+request, requests map to backend transactions at 1:1. So
+for every request, all operations are committed or aborted
+as part of a single transaction within it. At first glance
+requiring idempotency may sound like a sizeable caveat, but
+in a well-designed API, many operations can be tweaked so
+that they're idempotent.
 
 !fig src="/assets/http-transactions/http-transactions.svg" caption="Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio."
+
+Non-idempotent requests aren't quite as simple and need a
+little extra consideration. We'll look at those in more
+detail in a few weeks as a follow up to this article.
 
 ## Let's create a user (#create-user)
 
@@ -61,15 +66,15 @@ In SQL [1]:
 
 ``` sql
 CREATE TABLE users (
-    id BIGSERIAL PRIMARY KEY,
-    email TEXT NOT NULL CHECK (char_length(email) <= 255)
+    id    BIGSERIAL PRIMARY KEY,
+    email TEXT      NOT NULL CHECK (char_length(email) <= 255)
 );
 
 -- our "user action" audit log
 CREATE TABLE user_actions (
-    id BIGSERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL REFERENCES users (id),
-    action TEXT NOT NULL CHECK (char_length(action) < 100),
+    id          BIGSERIAL   PRIMARY KEY,
+    user_id     BIGINT      NOT NULL REFERENCES users (id),
+    action      TEXT        NOT NULL CHECK (char_length(action) < 100),
     occurred_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 ```
@@ -134,11 +139,12 @@ COMMIT;
 ## Concurrency protection (#concurrency-protection)
 
 Readers with sharp eyes may have noticed a potential
-problem: our user's `email` column doesn't have a `UNIQUE`
-constraint. The lack of one could potentially allow two
-interleaved transactions to run their `SELECT` phase one
-concurrently and get empty results. They'd both follow up
-with an `INSERT`, thus leaving a duplicated row.
+problem: our `users` table doesn't have a `UNIQUE`
+constraint on its `email` column. The lack of one could
+potentially allow two interleaved transactions to run their
+`SELECT` phase one concurrently and get empty results.
+They'd both follow up with an `INSERT`, leaving a
+duplicated row.
 
 !fig src="/assets/http-transactions/concurrent-race.svg" caption="A data race causing two concurrent HTTP requests to insert the same row."
 
@@ -153,11 +159,9 @@ results of another, one of the two will fail to commit with
 a message like this one:
 
 ```
-# COMMIT;
 ERROR:  could not serialize access due to read/write dependencies among transactions
 DETAIL:  Reason code: Canceled on identification as a pivot, during commit attempt.
 HINT:  The transaction might succeed if retried.
-Time: 0.291 ms
 ```
 
 Even though this race should be relatively rare, we'd
@@ -206,22 +210,26 @@ DB.transaction(isolation: :serializable,
 end
 ```
 
-And just as short addendum, although I've taken this
-opportunity to demonstrate the power of a serializable
-transaction, in real life you'd want to put in a `UNIQUE`
-constraint on `email` even if you intended to use
-`SERIALIZABLE`. It'll be one additional check to help
-protect against incorrectly invoked transactions or buggy
-code.
+I've taken the opportunity to demonstrate the power of a
+serializable transaction, but in real life you'd want to
+put in a `UNIQUE` constraint on `email` even if you
+intended to use the serializable isolation level. Although
+`SERIALIZABLE` will protect you from a duplicate insert,
+but `UNIQUE` will act as one additional check to protect
+your application against incorrectly invoked transactions
+or buggy code.
 
 ## Background jobs and job staging (#background-jobs)
 
 It's a common pattern to add jobs to a background queue
 during an HTTP request so that they can be worked
 out-of-band and a waiting client doesn't have to block on
-an expensive operation. Say for example that in addition to
-creating our user record, we're going to tell an external
-support service that an account's been created:
+an expensive operation.
+
+Let's add one more step to our user service above. In
+addition to creating user and user action records, we'll
+also make an API request to an external support service to
+tell it that a new account's been created:
 
 ``` ruby
 put "/users/:email" do |email|
@@ -245,19 +253,19 @@ our job workers retried it, it would never succeed.
 A way around this is to create a job staging table into our
 database. Instead of sending jobs to the queue directly,
 they're send to staging table first, and an ***enqueuer***
-pulls them out in batches and sends them to the job queue.
+pulls them out in batches and puts them to the job queue.
 
 ``` sql
 CREATE TABLE staged_jobs (
-    id BIGSERIAL PRIMARY KEY,
-    job_name TEXT NOT NULL,
-    job_args jsonb NOT NULL
+    id       BIGSERIAL PRIMARY KEY,
+    job_name TEXT      NOT NULL,
+    job_args JSONB     NOT NULL
 );
 ```
 
 The enqueuer selects jobs, enqueues them, and then removes
-them from staging [2]. Its implementation looks roughly
-like this:
+them from the staging table [2]. Here's a rough
+implementation:
 
 ``` ruby
 loop do
@@ -279,7 +287,7 @@ end
 ```
 
 Because jobs are staged from within a transaction, its
-_isolation_ (ACID's "I") property guarantees that they're
+_isolation_ property (ACID's "I") guarantees that they're
 not visible until after the transaction commits. A staged
 job that's inserted from within a transaction that rolls
 back is never seen by the enqueuer, and doesn't make it to
@@ -288,7 +296,7 @@ the job queue.
 It's also possible to just put the job queue directly in
 the database itself with a library like [Que], but [because
 bloat can be potentially dangerous in systems like
-Postgres][queues], I'd generally recommend against that.
+Postgres][queues], I'd recommend against it.
 
 ## Non-idempotent requests (#non-idempotent-requests)
 
