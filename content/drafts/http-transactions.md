@@ -165,6 +165,7 @@ put "/users/:email" do |email|
 
       # Success! Leave the loop.
       break
+
     rescue Sequel::SerializationFailure
       log.error "Failed to commit serially: #{$!}"
       # Failure: fall through to the next loop.
