@@ -1,7 +1,7 @@
 ---
 title: How to Map an Atomic Transaction onto an Idempotent
   HTTP Request
-published_at: 2017-09-05T20:29:07Z
+published_at: 2017-09-06T16:00:14Z
 location: San Francisco
 hook: Getting easy data correctness by powering idempotent
   operations with the transactional mechanics provided by
