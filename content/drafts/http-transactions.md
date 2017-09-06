@@ -184,7 +184,8 @@ mind that we're only protecting against an unusual
 concurrency access race. In practice, unless callers are
 particularly contentious, it should rarely occur.
 
-Gems like Sequel can handle this for you automatically:
+Gems like [Sequel][sequel] can handle this for you
+automatically:
 
 ``` ruby
 DB.transaction(isolation: :serializable,
@@ -307,3 +308,4 @@ semantics, so the job themselves must be idempotent.
 [idempotency]: https://stripe.com/blog/idempotency
 [que]: https://github.com/chanks/que
 [queues]: /postgres-queues
+[sequel]: https://github.com/jeremyevans/sequel
