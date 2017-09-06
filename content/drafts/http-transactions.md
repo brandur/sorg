@@ -48,10 +48,14 @@ status `200` otherwise.
 PUT /users?email=jane@example.com
 ```
 
-On the backend, we want to insert a record for a new user,
-and we also want to insert a "user action", a record that
-will serve as an audit log and which comes with a reference
-to a user's ID, an action name, and a timestamp.
+On the backend, we're going to do three things:
+
+1. Check if the user already exists, and if so, break and
+   do nothing.
+2. Insert a new record for the user.
+3. Insert a new "user action" record. It'll serve as an
+   audit log which comes with a reference to a user's ID,
+   an action name, and a timestamp.
 
 In SQL [1]:
 
@@ -112,10 +116,18 @@ The SQL that's generated on the successful insertions looks
 roughly like:
 
 ``` sql
-START TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-SELECT * FROM users WHERE email = 'jane@example.com';
-INSERT INTO users (email) VALUES ('jane@example.com');
-INSERT INTO user_actions (user_id, action) VALUES (1, 'created');
+START TRANSACTION
+    ISOLATION LEVEL SERIALIZABLE;
+
+SELECT * FROM users
+    WHERE email = 'jane@example.com';
+
+INSERT INTO users (email)
+    VALUES ('jane@example.com');
+
+INSERT INTO user_actions (user_id, action)
+    VALUES (1, 'created');
+
 COMMIT;
 ```
 
