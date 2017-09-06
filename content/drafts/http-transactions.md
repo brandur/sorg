@@ -3,7 +3,9 @@ title: How to Map an Atomic Transaction onto an Idempotent
   HTTP Request
 published_at: 2017-09-05T20:29:07Z
 location: San Francisco
-hook: TODO
+hook: Getting easy data correctness by powering idempotent
+  operations with the transactional mechanics provided by
+  databases like Postgres.
 ---
 
 The software industry as a whole contains a lot of people
