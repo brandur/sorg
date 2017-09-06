@@ -1,11 +1,9 @@
 ---
-title: Mapping Atomic Transactions onto Idempotent HTTP
-  Requests
+title: Using Atomic Transactions to Power an Idempotent API
 published_at: 2017-09-06T16:00:14Z
 location: San Francisco
-hook: Getting easy data correctness by powering idempotent
-  operations with the transactional machinery of databases
-  like Postgres.
+hook: Getting easy data correctness by building idempotent
+  operations on the transactional machinery of Postgres.
 ---
 
 The software industry as a whole contains a lot of people
