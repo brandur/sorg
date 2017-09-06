@@ -6,34 +6,41 @@ location: San Francisco
 hook: TODO
 ---
 
-A lot of us are building applications that server requests
-over the lingua franca of today's internet -- HTTP. Many of
-those same applications are backed by a relational database
-like Postgres, and requests perform a series of operations
-against it to complete.
+Although the software industry as a whole contains a
+healthy diversity of a lot of developers doing a lot of
+different things, there's a healthy majority of us whose
+work can be boiled down to one thing: building CRUD apps
+that service requests over HTTP. Many of those same
+applications are backed by an ACID-compliant relational
+database like Postgres, and a successful request will
+perform a series of operations against it until they're
+complete.
 
 There's a surprising symmetry between an HTTP request and a
 database's transaction. Just like the transaction, an HTTP
 request is a transactional piece of work -- it's got a
 clear beginning, end, and result. The client generally
-expects one to execute atomically and will behave as if it
-does (although that will vary based on implementation).
+expects a request to execute atomically and will behave as
+if it will (although that of course varies based on
+implementation).
 
-The sharp edges encountered in the real world can lead to
-all kinds of unexpected cases during the execution of an
-HTTP request -- client disconnects, application bugs that
-fail a request midway through, and timeouts will occur
-regularly given enough request volume. A transaction can be
-a powerful tool for making sure that data stays correct
-even given these sorts of adverse conditions.
+The sharp edges encountered of production can lead to all
+kinds of unexpected cases during the execution of an HTTP
+request -- client disconnects, application bugs that fail a
+request midway through, and timeouts are all extraordinary
+conditions that will occur regularly given enough request
+volume. Without ACID databases and transactions these would
+lead to data integrity problems that are expensive to find
+and fix, but with them we get easy access to powerful tools
+to protect us against these sorts of adverse conditions.
 
-I'm going to suggest that for a common idempotent HTTP
-request, requests map to backend transactions at 1:1. So
-for every request, all operations are committed or aborted
-as part of a single transaction within it. At first glance
-requiring idempotency may sound like a sizeable caveat, but
-in a well-designed API, many operations can be tweaked so
-that they're idempotent.
+I'm going to make the case that for a common idempotent
+HTTP request, requests should map to backend transactions
+at 1:1. So for every request, all operations are committed
+or aborted as part of a single transaction within it. At
+first glance requiring idempotency may sound like a
+sizeable caveat, but in a well-designed API, many
+operations can be tweaked so that they're idempotent.
 
 !fig src="/assets/http-transactions/http-transactions.svg" caption="Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio."
 
@@ -46,8 +53,8 @@ detail in a few weeks as a follow up to this article.
 Lets come up with a simple test scenario where we're
 building an idempotent "create user" endpoint. A client
 hits it with a single `email` parameter, and the endpoint
-responds with status `201` if the user already existed, and
-status `200` otherwise.
+responds with status `200 OK` if the user already existed, and
+status `201 Created` otherwise.
 
 ```
 PUT /users?email=jane@example.com
@@ -90,35 +97,20 @@ put "/users/:email" do |email|
     user = User.find(email)
     halt(200, 'User exists') unless user.nil?
 
+    # create the user
     user = User.create(email: email)
+
+    # create the user action
     UserAction.create(user_id: user.id, action: 'created')
+
+    # pass back a successful response
     [201, 'User created']
   end
 end
 ```
 
-The first time we invoke the endpoint we get a `200 OK`:
-
-``` sh
-$ curl -i http://localhost/users/jane@foo.com
-HTTP/1.1 200 OK
-...
-
-User created
-```
-
-And the next time, a `201 Created`:
-
-``` sh
-$ curl -i http://localhost/users/jane@foo.com
-HTTP/1.1 201 Created
-...
-
-User exists
-```
-
-The SQL that's generated on the successful insertions looks
-roughly like:
+The SQL that's generated in the case of a successful
+insertion looks roughly like:
 
 ``` sql
 START TRANSACTION
@@ -148,15 +140,17 @@ duplicated row.
 
 !fig src="/assets/http-transactions/concurrent-race.svg" caption="A data race causing two concurrent HTTP requests to insert the same row."
 
-Luckily, the magic of the `SERIALIZABLE` isolation level
-protects us from harm here (see where we invoke
-`DB.transaction(isolation: :serializable)`). It emulates
-serial transaction execution as if each outstanding
-transaction had been executed one after the other, rather
-than concurrently. In cases like the above where a race
-condition would have caused one transaction to taint the
-results of another, one of the two will fail to commit with
-a message like this one:
+Luckily, in this example we've used an even more powerful
+mechanism to protect our data's correctness. Invoking our
+transaction with `DB.transaction(isolation: :serializable)`
+starts it in `SERIALIZABLE`; an isolation level so powerful
+that its guarantees might seem practically magical to the
+untrained eye.  It emulates serial transaction execution as
+if each outstanding transaction had been executed one after
+the other, rather than concurrently. In cases like the
+above where a race condition would have caused one
+transaction to taint the results of another, one of the two
+will fail to commit with a message like this one:
 
 ```
 ERROR:  could not serialize access due to read/write dependencies among transactions
@@ -164,7 +158,14 @@ DETAIL:  Reason code: Canceled on identification as a pivot, during commit attem
 HINT:  The transaction might succeed if retried.
 ```
 
-Even though this race should be relatively rare, we'd
+We're not going to look into how `SERIALIZABLE` works, but
+sufficed to say it may detect a number of different data
+races for us, and if it does it'll abort a transaction when
+it tries to commit.
+
+### Retrying an abort (#abort-retry)
+
+Even though in our example a race should be rare, we'd
 prefer to handle it correctly in our application code. This
 is possible by wrapping the request's core operations in a
 loop:
@@ -195,13 +196,14 @@ transaction mapped to the HTTP request like so:
 
 !fig src="/assets/http-transactions/transaction-retry.svg" caption="An aborted transaction being retried within the same request."
 
-These loops will be more expensive than usual, but keep in
-mind that we're only protecting against an unusual
-concurrency access race. In practice, unless callers are
-particularly contentious, it should rarely occur.
+These loops will be more expensive than usual, but again,
+we're protecting ourselves against an unusual race. In
+practice, unless callers are particularly contentious, it
+should rarely occur.
 
 Gems like [Sequel][sequel] can handle this for you
-automatically:
+automatically (this will behave similarly to the loop
+above):
 
 ``` ruby
 DB.transaction(isolation: :serializable,
@@ -209,6 +211,8 @@ DB.transaction(isolation: :serializable,
   ...
 end
 ```
+
+### Protecting data at all levels (#multi-level)
 
 I've taken the opportunity to demonstrate the power of a
 serializable transaction, but in real life you'd want to
@@ -252,7 +256,7 @@ our job workers retried it, it would never succeed.
 
 A way around this is to create a job staging table into our
 database. Instead of sending jobs to the queue directly,
-they're send to staging table first, and an ***enqueuer***
+they're sent to a staging table first, and an ***enqueuer***
 pulls them out in batches and puts them to the job queue.
 
 ``` sql
@@ -286,17 +290,17 @@ loop do
 end
 ```
 
-Because jobs are staged from within a transaction, its
-_isolation_ property (ACID's "I") guarantees that they're
-not visible until after the transaction commits. A staged
-job that's inserted from within a transaction that rolls
-back is never seen by the enqueuer, and doesn't make it to
-the job queue.
+Because jobs are inserted into the staging table from
+within a transaction, its _isolation_ property (ACID's "I")
+guarantees that they're not visible to any other
+transaction until after the committing transaction commits.
+A staged job that's rolled back is never seen by the
+enqueuer, and doesn't make it to the job queue.
 
 It's also possible to just put the job queue directly in
 the database itself with a library like [Que], but [because
 bloat can be potentially dangerous in systems like
-Postgres][queues], I'd recommend against it.
+Postgres][queues], this probably isn't as good of an idea.
 
 ## Non-idempotent requests (#non-idempotent-requests)
 
