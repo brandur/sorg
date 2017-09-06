@@ -162,10 +162,12 @@ put "/users/:email" do |email|
       DB.transaction(isolation: :serializable) do
         ...
       end
+
+      # Success! Leave the loop.
       break
     rescue Sequel::SerializationFailure
       log.error "Failed to commit serially: #{$!}"
-      # fall through to the next loop
+      # Failure: fall through to the next loop.
     end
   end
 end
