@@ -34,7 +34,7 @@ first glance requiring idempotency may sound like a
 sizeable caveat, but in a well-designed API, many
 operations can be tweaked so that they're idempotent.
 
-TODO: Diagram of HTTP request and transaction.
+!fig src="/assets/http-transactions/http-transactions.svg" caption="Transactions mapped to HTTP requests at a 1:1 ratio."
 
 ## Let's create a user (#create-user)
 
@@ -128,7 +128,7 @@ interleaved transactions to run their `SELECT` phase one
 concurrently and get empty results. They'd both follow up
 with an `INSERT`, thus leaving a duplicated row.
 
-TODO: two interleaved requests
+!fig src="/assets/http-transactions/concurrent-race.svg" caption="A data race causing two concurrent HTTP requests to insert the same row."
 
 Luckily, the magic of the `SERIALIZABLE` isolation level
 protects us from harm here (see where we invoke
@@ -174,7 +174,7 @@ end
 In this case, we might have more than one of the same
 transaction mapped to the HTTP request like so:
 
-TODO: Diagram of mapping.
+!fig src="/assets/http-transactions/transaction-retry.svg" caption="An aborted transaction being retried within the same request."
 
 These loops will be more expensive than usual, but keep in
 mind that we're only protecting against an unusual
