@@ -318,7 +318,7 @@ end
 Because jobs are inserted into the staging table from
 within a transaction, its _isolation_ property (ACID's "I")
 guarantees that they're not visible to any other
-transaction until after the committing transaction commits.
+transaction until after the inserting transaction commits.
 A staged job that's rolled back is never seen by the
 enqueuer, and doesn't make it to the job queue.
 
