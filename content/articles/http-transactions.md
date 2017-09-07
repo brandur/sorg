@@ -218,7 +218,7 @@ transaction mapped to the HTTP request like so:
 These loops will be more expensive than usual, but again,
 we're protecting ourselves against an unusual race. In
 practice, unless callers are particularly contentious,
-it'll rarely occur.
+they'll rarely occur.
 
 Gems like [Sequel][sequel] can handle this for you
 automatically (this code will behave similarly to the loop
