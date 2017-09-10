@@ -44,13 +44,14 @@ to lead to the leak of PII for 143 million people.
 ## Gadgets and chains (#gadgets-and-chains)
 
 Lawrence & Frohoff use the term ***gadget*** to describe a
-class that's available within in executing scope of an
-application. The exploitation strategy is to start with a
-"kick-off" gadget that's executed after deserialization and
-build a ***chain*** of instances and method invocations to
-get to a "sink" gadget that's able to execute arbitrary
-code or commands. After attackers manage to get input to a
-sink gadget, they've effectively found a way to own the box.
+class or function that's available within in executing
+scope of an application. The exploitation strategy is to
+start with a "kick-off" gadget that's executed after
+deserialization and build a ***chain*** of instances and
+method invocations to get to a "sink" gadget that's able to
+execute arbitrary code or commands. After attackers manage
+to get input to a sink gadget, they've effectively found a
+way to own the box.
 
 !fig src="/assets/fragments/gadgets-and-chains/gadgets-and-chains.svg" caption="Child processes transitioning from mostly shared memory to mostly copied as they mature."
 
