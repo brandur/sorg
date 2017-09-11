@@ -7,7 +7,7 @@ hook: Thoughts on governments protecting tenants by buying
 ---
 
 Berlin [recently announced that it was blocking the sale of
-a Friedrichshain-Kreuzberg building][buy] and instead
+a Friedrichshain-Kreuzberg tenement][buy] and instead
 buying the building itself. The action is allowed thanks to
 a right of pre-emption that came in as part of a national
 "neighborhood protection" law.
