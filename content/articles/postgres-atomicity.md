@@ -434,7 +434,7 @@ durability, which dictates that even in extreme events like
 a crash or power loss, committed transactions should stay
 committed. Like many good systems, it uses a _write-ahead
 log_ (_WAL_, or "xlog") to achieve this durability. All
-changes are witten and flushed to disk, and even in the
+changes are written and flushed to disk, and even in the
 event of a sudden termination, Postgres can replay what it
 finds in the WAL to recover any changes that didn't make it
 into its data files.
