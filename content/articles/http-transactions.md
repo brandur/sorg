@@ -13,7 +13,7 @@ working on new embedded firmware, there's about ten
 building the linchpin of modern software -- CRUD apps that
 serve requests over HTTP. A lot of these apps are backed by
 MVC frameworks like Ruby on Rails or ASP.NET, and backed by
-ACID-compliant relational databases like Postgres or Sequel
+ACID-compliant relational databases like Postgres or SQL
 Server.
 
 Sharp edges in production can lead to all kinds of
