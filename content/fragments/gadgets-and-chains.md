@@ -18,6 +18,14 @@ allowed an attacker to send a malicious XML payload that
 would be hydrated by XStream (an XML serialization library)
 to an arbitrary object.
 
+***Update:*** Contrary to what I've said above, it's beenn
+made public that the vulnerability was
+[CVE-2017-5638][strutsvuln2] which allowed arbitrary
+command execution through a maliciously constructed
+`Content-Type` header. Unlike CVE-2017-9805, its details
+_are_ disclosed. See here the [Metasploit pull
+request][metasploit] that adds a proof of concept.
+
 ## Unsafe depickling (#unsafe-depickling)
 
 The exact details of the exploit are still unknown, but the
@@ -124,7 +132,9 @@ these objects don't store anything like a class name, and
 certainly won't by default.
 
 [apacheresp]: https://blogs.apache.org/foundation/entry/apache-struts-statement-on-equifax
+[metasploit]: https://github.com/rapid7/metasploit-framework/pull/8103
 [railsvuln]: http://blog.codeclimate.com/blog/2013/01/10/rails-remote-code-execution-vulnerability-explained/
 [struts]: https://struts.apache.org/
 [strutsvuln]: https://cwiki.apache.org/confluence/display/WW/S2-052
+[strutsvuln2]: https://nvd.nist.gov/vuln/detail/CVE-2017-5638
 [talk]: https://frohoff.github.io/appseccali-marshalling-pickles/
