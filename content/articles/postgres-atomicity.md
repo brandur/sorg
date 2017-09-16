@@ -1,6 +1,5 @@
 ---
-title: "Stability in a Chaotic World: How Postgres Makes
-  Transactions Atomic"
+title: How Postgres Makes Transactions Atomic
 published_at: 2017-08-16T14:20:53Z
 location: San Francisco
 hook: A dive into the mechanics that allow Postgres to
