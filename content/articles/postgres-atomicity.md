@@ -797,10 +797,10 @@ When I run a transaction against a database:
 ``` sql
 BEGIN;
 
-SELECT * FROM users 
+SELECT * FROM users WHERE email = 'brandur@example.com';
 
 INSERT INTO users (email) VALUES ('brandur@example.com')
-RETURNING *;
+    RETURNING *;
 
 COMMIT;
 ```
