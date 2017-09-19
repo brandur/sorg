@@ -725,6 +725,8 @@ HeapTupleSatisfiesMVCC(HeapTuple htup, Snapshot snapshot,
 {
     ...
 
+    else if (XidInMVCCSnapshot(HeapTupleHeaderGetRawXmin(tuple), snapshot))
+        return false;
     else if (TransactionIdDidCommit(HeapTupleHeaderGetRawXmin(tuple)))
         SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
                     HeapTupleHeaderGetRawXmin(tuple));
@@ -737,7 +739,43 @@ HeapTupleSatisfiesMVCC(HeapTuple htup, Snapshot snapshot,
 }
 ```
 
-And `TransactionIdDidCommit` ([from
+`XidInMVCCSnapshot` does an initial check to see whether
+the tuple's `xid` is visible according to the snapshot's
+`xmin`, `xmax`, and `xip`. Here's a simplified
+implementation that shows the checks on each ([from
+`tqual.c`][insnapshot]):
+
+``` c
+static bool
+XidInMVCCSnapshot(TransactionId xid, Snapshot snapshot)
+{
+    /* Any xid < xmin is not in-progress */
+    if (TransactionIdPrecedes(xid, snapshot->xmin))
+        return false;
+    /* Any xid >= xmax is in-progress */
+    if (TransactionIdFollowsOrEquals(xid, snapshot->xmax))
+        return true;
+
+    ...
+
+    for (i = 0; i < snapshot->xcnt; i++)
+    {
+        if (TransactionIdEquals(xid, snapshot->xip[i]))
+            return true;
+    }
+
+    ...
+}
+```
+
+Note the function's return value is inverted compared to
+how you'd think about it intuitively -- a `false` means
+that the `xid` _is_ visible to the snapshot. Although
+confusing, you can follow what it's doing by comparing the
+return values to where it's invoked.
+
+After confirming that the `xid` is visible, Postgres checks
+its commit status with `TransactionIdDidCommit` ([from
 `transam.c`][didcommit]):
 
 ``` c
@@ -843,6 +881,7 @@ having to make a check in WAL.
 [execsimplequery]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/tcop/postgres.c#L1010
 [gettup]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/access/heap/heapam.c#L478
 [getsnapshotdata]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/storage/ipc/procarray.c#L1507
+[insnapshot]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/backend/utils/time/tqual.c#L1463
 [peter]: https://twitter.com/petervgeoghegan
 [pgproc]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/storage/proc.h#L94
 [pgxact]: https://github.com/postgres/postgres/blob/b35006ecccf505d05fd77ce0c820943996ad7ee9/src/include/storage/proc.h#L207
