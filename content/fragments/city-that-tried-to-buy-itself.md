@@ -12,17 +12,18 @@ buying the building itself. The action is allowed thanks to
 a right of pre-emption that came in as part of a national
 "neighborhood protection" law.
 
-It's a populist move that's not sustainable. Berlin's an
-up-and-coming city that real estate speculators in Germany
-and around the globe (this one was from Luxembourg) are
-veritably drooling over. If it tries to step in and buy
-every building whose ownership is going to turn over in the
-next decade, it'll bankrupt itself in the blink of an eye.
-These acts of charity also have consequences -- a lucky few
-tenants get access to permanently subsidized rents, but a
-municipality's budget is a zero-sum game. Everyone else
-suffers from the loss in civic services that the money
-would have otherwise paid for.
+It's a populist move that everyone involved knows isn't
+sustainable. Berlin's an up-and-coming city that real
+estate speculators in Germany and around the globe (this
+one was from Luxembourg) are veritably drooling over. If it
+tries to step in and buy every building whose ownership is
+going to turn over in the next decade, it'll bankrupt
+itself in the blink of an eye. These acts of charity also
+have consequences -- a lucky few tenants get access to
+permanently subsidized rents, but a municipality's budget
+is a zero-sum game. Everyone else suffers from the loss in
+civic services that the money would have otherwise paid
+for.
 
 And yet, the move is also indicative of a deeply-set
 problem that's engulfing every rich society on the planet.
