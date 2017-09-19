@@ -5,12 +5,11 @@ hook: Aim to be an engineer and not just a user by learning
   in depth.
 ---
 
-One of the most notable parts about my arrival in the
-Valley was the depth to which people were willing to go to
-understand the technology they worked with [1]. Back home,
-people were happy to learn the basic interfaces of the
-programming languages they used, or the web server that
-backed their production work, but wouldn't go beyond.
+One of the most notable parts about technology workers in
+Silicon Valley is the depth which they're willing to go to
+understand the technology they work with [1]. Most of the
+world is happy to know just enough to be useful, and would
+never think to venture deeper.
 
 For a database, that might look like learning some SQL and
 some basic administrative functions, but the underlying
