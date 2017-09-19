@@ -45,10 +45,16 @@ Landscape:
 
 Portrait:
 
-    gm convert $GM_INPUT -resize x1100 -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/@2x.jpg}
+    gm convert $GM_INPUT -auto-orient -resize 1100x -quality 85 $GM_OUTPUT/${$(basename $GM_INPUT)/.JPG/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.
 
 Note that some systems like Mac OS actually understanding
 the `@2x` suffix and will treat the image correctly.
+
+## Identify
+
+Look at EXIF information with:
+
+    identify -verbose <file>
