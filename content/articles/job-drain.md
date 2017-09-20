@@ -114,21 +114,32 @@ And here's what a simple enqueuer implementation that sends
 jobs through to Sidekiq:
 
 ``` ruby
-loop do
-  DB.transaction do
-    # pull jobs in large batches
-    job_batch = StagedJobs.order('id').limit(1000)
+# Only one enqueuer should be running at any given time.
+acquire_lock(:enqueuer) do
 
-    if job_batch.count > 0
-      # insert each one into the real job queue
-      job_batch.each do |job|
-        Sidekiq.enqueue(job.job_name, *job.job_args)
+  loop do
+    DB.transaction do
+      # For best efficiency, pull jobs in large batches.
+      job_batch = StagedJobs.order('id').limit(1000)
+
+      if job_batch.count > 0
+        # Insert each job into the real queue.
+        job_batch.each do |job|
+          Sidekiq.enqueue(job.job_name, *job.job_args)
+        end
+
+        # And finally, in the same transaction remove the
+        # records that made it to the queue.
+        StagedJobs.where('id <= ?', job_batch.last).delete
       end
-
-      # and in the same transaction remove these records
-      StagedJobs.where('id <= ?', job_batch.last).delete
     end
+
+    # If `staged_jobs` was empty, sleep for some time so
+    # we're not continuously hammering the database with
+    # no-ops.
+    sleep_with_exponential_backoff
   end
+
 end
 ```
 
