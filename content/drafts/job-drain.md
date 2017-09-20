@@ -2,9 +2,9 @@
 title: Transactionally Staged Job Drains in Postgres
 published_at: 2017-09-20T01:10:26Z
 location: Calgary
-hook: Leveraging transactional isolation to build robust
-  background worker architecture that never works a job too
-  early, and never drops one either.
+hook: Building a robust background worker system that
+  leverages transactional isolation to never work a job too
+  early, and transactional durabiity to never drop one.
 ---
 
 Background jobs are one of the most common patterns in web
