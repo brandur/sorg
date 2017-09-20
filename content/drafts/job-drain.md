@@ -29,8 +29,8 @@ DB.transaction do |t|
 end
 ```
 
-It's not easy to spot, but if your job queue is fast, the
-job enqueued by `queue_job()` is likely to fail. A worker
+It's not easy to spot, but if your queue is fast, the job
+enqueued by `queue_job()` is likely to fail. A worker
 starts running it before its enclosing transaction is
 committed, and it fails to access data that it expected to
 be available.
@@ -38,8 +38,8 @@ be available.
 As an easy example, imagine `db_op1()` inserts a user
 record. `queue_job()` puts a job in the queue to retrieve
 that record, and add that user's email address (along with
-a unique internal ID) to an email whitelist managed by an
-external service. A background worker dequeues the job, but
+a unique internal ID) to an email whitelist managed by
+another service. A background worker dequeues the job, but
 finds that the user record it's looking for is nowhere to
 be found in the database.
 
@@ -61,24 +61,24 @@ Sidekiq has [a FAQ on this exact subject][sidekiq]:
 
 Not to pick on Sidekiq in particular (you can find similar
 answers and implementations all over the web), but this
-is a solution that solves one problem only to introduce
-another.
+solution solves one problem only to introduce another.
 
 If you queue a job _after_ a transaction is committed, you
 run the risk of your program crashing after the commit, but
-before the job make it to the queue. Data is persisted, but
+before the job makes it to the queue. Data is persisted, but
 the background work doesn't get done. It's a problem that's
 less common than the one Sidekiq is addressing, but one
-that's far more nefarious; you probably won't notice when
-it happens.
+that's far more nefarious; you almost certainly won't
+notice when it happens.
 
 Other common solutions are equally as bad. For example,
-it's also common to allow the job's first few tries to
-fail, and rely on the queue's retry scheme to eventually
-push the work through at some point after the transaction
-has committed. The downsides of this implementation is that
-it thrashes needlessly (lots of jobs wasted work is done)
-and throws a lot of unnecessary errors.
+it's also a common pattern to allow the job's first few
+tries to fail, and rely on the queue's retry scheme to
+eventually push the work through at some point after the
+transaction has committed. The downsides of this
+implementation is that it thrashes needlessly (lots of
+wasted work is done) and throws a lot of unnecessary
+errors.
 
 ## Transactions as gates (#transactions-as-gates)
 
@@ -93,7 +93,7 @@ to be worked. A secondary ***enqueuer*** process reads the
 table and sends any jobs it finds to the job queue before
 removing their rows.
 
-Here's some sample DDL for what a job staging table might
+Here's some sample DDL for what a `staged_jobs` table might
 look like:
 
 ``` sql
@@ -149,10 +149,10 @@ mechanic to keep jobs hidden, and take it even a step
 further by having workers dequeue jobs directly from within
 the database.
 
-This is workable at modest scale, but the frantic pace at
-which workers try to lock jobs doesn't scale very well for
-a database that's experiencing considerable load. For
-Postgres in particular, [long-running
+This is workable at modest to medium scale, but the frantic
+pace at which workers try to lock jobs doesn't scale very
+well for a database that's experiencing considerable load.
+For Postgres in particular, [long-running
 transactions](/postgres-queues) greatly increase the amount
 of time it takes for workers to find a job that they can
 lock, and this can lead to the job queue spiraling out of
