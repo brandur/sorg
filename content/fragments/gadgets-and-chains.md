@@ -18,7 +18,7 @@ allowed an attacker to send a malicious XML payload that
 would be hydrated by XStream (an XML serialization library)
 to an arbitrary object.
 
-***Update:*** Contrary to what I've said above, it's beenn
+***Update:*** Contrary to what I've said above, it's been
 made public that the vulnerability was
 [CVE-2017-5638][strutsvuln2] which allowed arbitrary
 command execution through a maliciously constructed
