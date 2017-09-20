@@ -78,7 +78,7 @@ that's far more nefarious; you almost certainly won't
 notice when it happens.
 
 Other common solutions are equally as bad. For example,
-it's also a common pattern to allow the job's first few
+another well-worn pattern is to allow the job's first few
 tries to fail, and rely on the queue's retry scheme to
 eventually push the work through at some point after the
 transaction has committed. The downsides of this
