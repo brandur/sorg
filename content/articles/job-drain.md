@@ -1,6 +1,6 @@
 ---
 title: Transactionally Staged Job Drains in Postgres
-published_at: 2017-09-20T01:10:26Z
+published_at: 2017-09-20T14:58:14Z
 location: Calgary
 hook: Building a robust background worker system that
   leverages transactional isolation to never work a job too
