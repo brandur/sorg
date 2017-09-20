@@ -45,6 +45,11 @@ be found in the database.
 
 !fig src="/assets/job-drain/job-failure.svg" caption="A job failing because the data it relies on is not yet committed."
 
+A related problem are transaction rollbacks. In these cases
+data is discarded completely, and jobs inserted into the
+queue will _never_ succeed no matter how many times they're
+retried.
+
 ## For every complex problem ... (#complex-problem)
 
 Sidekiq has [a FAQ on this exact subject][sidekiq]:
@@ -132,6 +137,10 @@ been inserted into `staged_jobs` by an uncommitted
 transaction), so jobs are never worked too early.
 
 !fig src="/assets/job-drain/transaction-isolation.svg" caption="Jobs are invisible to the enqueuer until their transaction is committed."
+
+It's similarly protected against rollbacks. If a job is
+inserted within a transaction that's subsequently
+discarded, the job is discarded with it.
 
 The enqueuer is also totally resistant to job loss. Jobs
 are only removed _after_ they're successfully transmitted
