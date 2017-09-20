@@ -1,6 +1,5 @@
 ---
-title: Implementing a Stripe-like Idempotency Key System in
-  Postgres
+title: Implementing Stripe-like Idempotency Keys in Postgres
 published_at: 2017-09-20T11:46:10Z
 location: Calgary
 hook: Hardening services by identifying foreign state
