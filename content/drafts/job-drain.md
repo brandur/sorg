@@ -8,19 +8,18 @@ hook: Building a robust background worker system that
 ---
 
 Background jobs are one of the most common patterns in web
-programming, and for good reason. Heavy lifting can is
-deferred to an out-of-band worker so that a user's request
-is executed as quickly as possible. When it comes to web
+programming, and for good reason. Slow API calls and other
+heavy lifting is deferred to out-of-band workers so that a
+user's request is executed as quickly as possible. In web
 services, fast is a feature.
 
-But when it comes to background jobs that are queued within
-an ACID transaction of the likes you'd find in Postgres,
-MySQL, or SQL Server, there are a few sharp edges that
-aren't immediately obvious.
-
-To demonstrate, let's take a simple workflow that starts a
-transaction, executes a few DB operations, and queues a job
-somewhere in the middle:
+But when it comes to working with background jobs in
+conjunction with ACID transactions of the likes you'd find
+in Postgres, MySQL, or SQL Server, there are a few sharp
+edges that aren't immediately obvious. To demonstrate,
+let's take a simple workflow that starts a transaction,
+executes a few DB operations, and queues a job somewhere in
+the middle:
 
 ``` ruby
 DB.transaction do |t|
@@ -30,18 +29,19 @@ DB.transaction do |t|
 end
 ```
 
-It's not easy to spot, but if you're running a reasonably
-fast job queue, that background job is likely to fail. A
-worker starts running it before its enclosing transaction
-is committed, and it fails to access data that it assumed
-would be available.
+It's not easy to spot, but if your job queue is fast, the
+job enqueued by `queue_job()` is likely to fail. A worker
+starts running it before its enclosing transaction is
+committed, and it fails to access data that it expected to
+be available.
 
-As an easy example, imagine `db_op1` inserts a user record.
-`queue_job` puts a job in the queue to add that user's
-email address (along with a unique internal ID) to an email
-whitelist managed by an external service. A background
-worker tries to do that work, but finds that the user
-record is nowhere to be found in the database.
+As an easy example, imagine `db_op1()` inserts a user
+record. `queue_job()` puts a job in the queue to retrieve
+that record, and add that user's email address (along with
+a unique internal ID) to an email whitelist managed by an
+external service. A background worker dequeues the job, but
+finds that the user record it's looking for is nowhere to
+be found in the database.
 
 !fig src="/assets/job-drain/job-failure.svg" caption="A job failing because the data it relies on is not yet committed."
 
@@ -59,26 +59,30 @@ Sidekiq has [a FAQ on this exact subject][sidekiq]:
 > :create` hook or move the job creation outside of the
 > transaction block.
 
-Not to pick on Sidekiq in particular (your can find similar
+Not to pick on Sidekiq in particular (you can find similar
 answers and implementations all over the web), but this
-isn't a very good solution to the problem.
+is a solution that solves one problem only to introduce
+another.
 
-If you create a job _after_ a transaction is committed, you
-run the risk of your program crashing between the commit
-and when the job is enqueued. Data is persisted, but the
-background work doesn't get done. It won't happen very
-often, but you won't notice when it does.
+If you queue a job _after_ a transaction is committed, you
+run the risk of your program crashing after the commit, but
+before the job make it to the queue. Data is persisted, but
+the background work doesn't get done. It's a problem that's
+less common than the one Sidekiq is addressing, but one
+that's far more nefarious; you probably won't notice when
+it happens.
 
 Other common solutions are equally as bad. For example,
 it's also common to allow the job's first few tries to
-fail, and rely on a retry that happens sometime after the
-transaction is committed to see the work through to
-completion. This implementation thrashes needlessly and
-throws a lot of unnecessary errors.
+fail, and rely on the queue's retry scheme to eventually
+push the work through at some point after the transaction
+has committed. The downsides of this implementation is that
+it thrashes needlessly (lots of jobs wasted work is done)
+and throws a lot of unnecessary errors.
 
 ## Transactions as gates (#transactions-as-gates)
 
-We can solve this problem elegantly using a
+We can dequeue jobs gracefully by using a
 _transactionally-staged job drain_.
 
 With this pattern, jobs aren't immediately sent to the job
@@ -100,7 +104,8 @@ CREATE TABLE staged_jobs (
 );
 ```
 
-And here's what a simple enqueuer implementation:
+And here's what a simple enqueuer implementation that sends
+jobs through to Sidekiq:
 
 ``` ruby
 loop do
@@ -123,14 +128,15 @@ end
 
 Transactional isolation means that the enqueuer is unable
 to see jobs that aren't yet commmitted (even if they've
-been inserted), so jobs are never worked too early.
+been inserted into `staged_jobs` by an uncommitted
+transaction), so jobs are never worked too early.
 
 !fig src="/assets/job-drain/transaction-isolation.svg" caption="Jobs are invisible to the enqueuer until their transaction is committed."
 
 The enqueuer is also totally resistant to job loss. Jobs
 are only removed _after_ they're successfully transmitted
 to the queue, so even if the worker dies partway through,
-it will pick back up again and send any jobs that it
+it will pick back up again and send along any jobs that it
 missed. _At least once_ delivery semantics are guaranteed.
 
 !fig src="/assets/job-drain/job-drain.svg" caption="Jobs being sequestered in a staging table until and enqueued when they're ready to be worked."
@@ -138,22 +144,23 @@ missed. _At least once_ delivery semantics are guaranteed.
 ## Advantages over in-database queues (#in-database-queues)
 
 [Delayed_job][delayedjob], [que][que], and
-[queue_classic][queueclassic] use a similar transaction
-mechanism, but take it a step further by having workers
-dequeue jobs directly from within the database.
+[queue_classic][queueclassic] use a similar transactional
+mechanic to keep jobs hidden, and take it even a step
+further by having workers dequeue jobs directly from within
+the database.
 
 This is workable at modest scale, but the frantic pace at
-which workers will try to lock jobs doesn't scale very well
-for a database that's experiencing diverse sets of load.
-For Postgres in particular, [long-running
-transactions](/postgres-queues) can greatly increase the
-amount of time it takes for workers to find a visible job
-that they can lock, and this can lead to an extremely
-degenerate job queue.
+which workers try to lock jobs doesn't scale very well for
+a database that's experiencing considerable load. For
+Postgres in particular, [long-running
+transactions](/postgres-queues) greatly increase the amount
+of time it takes for workers to find a job that they can
+lock, and this can lead to the job queue spiraling out of
+control.
 
 The transactionally-staged job drain avoids this problem by
 selecting primed jobs in bulk and feeding them into another
-store like Redis that's more suited for distributing jobs
+store like Redis that's better-suited for distributing jobs
 to competing workers.
 
 [delayedjob]: https://github.com/collectiveidea/delayed_job
