@@ -5,6 +5,7 @@ location: Calgary
 hook: Building a robust background worker system that
   leverages transactional isolation to never work a job too
   early, and transactional durabiity to never let one drop.
+hn_link: https://news.ycombinator.com/item?id=15294722
 ---
 
 Background jobs are one of the most common patterns in web
