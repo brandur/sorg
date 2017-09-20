@@ -323,6 +323,9 @@ transaction until after the inserting transaction commits.
 A staged job that's rolled back is never seen by the
 enqueuer, and doesn't make it to the job queue.
 
+I call this pattern a [_transactionally-staged job
+drain_](/job-drain).
+
 It's also possible to just put the job queue directly in
 the database itself with a library like [Que], but [because
 bloat can be potentially dangerous in systems like
