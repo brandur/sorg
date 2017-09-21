@@ -141,7 +141,7 @@ background work becomes part of an atomic phase and greatly
 simplifies the operational. Work should always be offloaded
 to background queues when possible.
 
-## Building Rocket Rides for ultra-resilience (#rocket-rides-resilience)
+## Hardening Rocket Rides for interstellar travel (#interstellar)
 
 ### The idempotency key relation (#idempotency-key)
 
