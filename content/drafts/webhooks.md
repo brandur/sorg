@@ -1,7 +1,7 @@
 ---
-title: Webhooks, Operability, and the Future of Streaming APIs
-published_at: 2017-06-06T03:00:11Z
-location: San Francisco
+title: Should You Build a Webhooks API?
+published_at: 2017-09-21T14:55:22Z
+location: Calgary
 hook: TODO
 ---
 
@@ -13,8 +13,8 @@ HTTP and being symmetrical to common HTTP APIs, they were
 an elegant answer to a problem without many options at the
 time -- WebSockets wouldn't be standardized until 2011 and
 would only see practical use much later, and more
-contemporary streaming options were still a only speck on
-the horizon.
+contemporary streaming options were still only a distant
+speck on the horizon.
 
 At Stripe, webhooks may be one of the best known features
 of our API. They can used to configure multiple receivers
@@ -28,12 +28,12 @@ evangelism](/accidental-evangelist), lets briefly discuss
 whether they're a good pattern for new API providers to
 emulate.
 
-## User ergonomics (#user)
+## The virtues of user ergonomics (#user-ergonomics)
 
-While think the stronger case against webhooks can be made
-from the perspective of an operator, it's worth noting
-first of all that the user and developer experience around
-webhooks isn't without its own problems. None of them are
+While the stronger case against webhooks can be made from
+the perspective of an operator, it's worth noting first of
+all that the user and developer experience around webhooks
+isn't without its own problems. None of them are
 insurmountable, but alternatives might get more things
 right more easily.
 
@@ -46,20 +46,20 @@ difficult.
 The classic example is the large enterprise where getting a
 new endpoint exposed to the outside world might be a
 considerable project involving negotiations with
-infrastructure and security teams. In the worst cases,
-webhooks might be wholly incompatible with an
-organization's security model where user data is
-uncompromisingly kept within a secured perimiter at all
-times. Expensive workarounds will be required for
+infrastructure and security teams, and piles of paperwork.
+In the worst cases, webhooks might be wholly incompatible
+with an organization's security model where user data is
+uncompromisingly kept within a secured perimeter at all
+times. Expensive workarounds may be required for
 integration.
 
-**TODO:** Cartoon of perimiter security.
+**TODO:** Cartoon of perimeter security.
 
 Development is another difficult case. There's no perfectly
 fluid way of getting an endpoint from a locally running
 environment exposed for a webhook provider to access.
-Programs like Ngrok are the best option, but still add a
-step and complication that wouldn't be necessary with an
+Programs like Ngrok are good options, but still add a step
+and complication that wouldn't be necessary with an
 alternate scheme.
 
 ### Uncertain security (#security)
@@ -82,7 +82,7 @@ seen techniques:
 !fig src="/assets/webhooks/signing-secrets.png" caption="Endpoint signing secrets in Stripe's dashboard."
 
 Although security is possible, the fundamental problem with
-webhooks is that it's difficult as a provide to _ensure_
+webhooks is that it's difficult as a provider to _ensure_
 that your users are following best practices (not the case
 for synchronous APIs where you can mandate certain keys and
 practices). Of the three options above, only the third
@@ -91,7 +91,7 @@ you can't know for sure that your users are verifying them,
 and if forced to provide HTTP basic auth credentials, many
 users will opt for weak ones, which combined with endpoints
 that are probably not rate limited, leave them vulnerable
-to brute force or dictionary attacks.
+to brute force attacks.
 
 ### Development and testing (#development)
 
@@ -107,6 +107,12 @@ possible, but it's quite manual and not especially
 conducive to being integrated into an automated test suite.
 
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
+
+Seasoned developers will know that manual testing is never
+enough. It'll get a program working today, and it'll
+probably stay working tomorrow, but without more
+comprehensive CI something's likely to go wrong over a
+period of years.
 
 ### No ordering guarantees (#order)
 
@@ -130,43 +136,49 @@ version upgrades can be a problem. Normally we allow users
 to explicitly request a new version with an API call so
 that they can verify that their integrations work before
 upgrading their account, but with webhooks the provider has
-to decide on the version. Often this leads to users trying
-to write code that's compatible across multiple versions,
-and then flipping the upgrade switch and praying that it
-works (when it doesn't, the upgrade must be rolled back).
+to decide on the version to send. Often this leads to users
+trying to write code that's compatible across multiple
+versions, and then flipping the upgrade switch and praying
+that it works (when it doesn't, the upgrade must be rolled
+back).
 
 Once again, this can be fixed with great tooling, but
 that's more infrastructure that a provider needs to
 implement for a good webhook experience. We recently added
 a feature that lets users configured the API version that
 gets sent to each of their webhook endpoints, but for a
-long time upgrades were much more awkward.
+long time upgrades were a scary business.
 
 !fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
 
-## Behind the curtain (#curtain)
+## The toil behind the curtain (#curtain)
+
+Possibly a bigger problem than any of their user
+shortcomings is that webhooks are painful to run. Let's
+look at a few specifics.
 
 ### Misbehavior is onerous (#misbehavior)
 
-If a consumer endpoint is very slow to respond, suddenly
+If a consumer endpoint is slow to respond or suddenly
 starts denying requests, it puts pressure on the provider's
-infrastructure. A big user might have enough webhooks going
-to them that if they go down, global queues back up, and
-the system becomes degraded for everyone.
+infrastructure. A big user might have millions of outgoing
+webhooks and just them going down might be enough to start
+backing up global queues, leaing to a degraded system for
+everyone.
 
 Worse yet, there's no real incentive for recipients to fix
-the problem because the entirety of the fall out lands on
+the problem because the entirety of the fallout lands on
 the webhook provider. We've been stuck in positions where
 we have to email huge users with something like, "we don't
 want to disable you, but please fix your systems or we're
 going to have to" and hoping that they get back to us
-before things are totally on fire.
+before things are really on fire.
 
 You can put in a system where recipients have to meet
 certain uptime and latency SLAs or have their webhooks
-disabled, but that needs additional tooling and
+disabled, but once again, that needs additional tooling and
 documentation, and it won't make your users particularly
-happy.
+happy (even when it's designed to help them indirectly).
 
 ### Retries (#retries)
 
@@ -188,19 +200,18 @@ documented. It's a bit of a compromise because you have
 less tech savvy users who legitimately have a server go
 down for a day or two, and may be later surprised that
 their webhooks are no longer being delivered. You can also
-have endpoints that are only "semi-dead", say that most
-requests time out after tying up your client for 30 seconds
-or so, but enough make it through that you never fully
-disable it. It goes without saying that these are costly to
-support.
+have endpoints that are "the living dead": they time out
+most requests after typing up your clients for 30 seconds
+or so, but successfully respond often enough that they're
+never fully disabled. These are costly to support.
 
-### Chattiness and communication efficiency (#chattiness)
+### Chattiness and communication (in)efficiency (#chattiness)
 
 Webhooks are one HTTP request for one event. You can apply a
 few tricks like keeping connections open to servers that
 you deliver to frequently to save a few round trips on
-transport construction, but they're a chatty protocol at
-heart.
+transport construction, but they're a very chatty protocol
+at heart.
 
 We've got enough modern languages and frameworks that
 providers can build massively concurrent implementations
@@ -223,23 +234,27 @@ This is mitigable (and every big provider has measures in
 place to do so), but webhook infrastructure will be
 dangerous by default.
 
-## The unbilled best feature of webhooks: load balancing (#balancing)
+## What makes webhooks great (#features)
 
-This article deals mostly with the various downsides of
-webhooks, but they obviously have a lot of merits too. I'm
-not going to go into the majority of them, but I wanted to
-call one out that we don't think about very often: webhooks
-provide automatic load balancing and allow traffic to ramp
-up gracefully.
+We've talked mostly about the shortfalls of webhooks, but
+they've also got a few great features that are worth
+calling out.
+
+### Automatic load balancing (#balancing)
+
+A commonly unbilled feature of webhooks is that they
+provide automatic load balancing and allow a consumer's
+traffic to ramp up gracefully.
 
 The alternative to webhooks is some kind of "pull" API
 where a provider streams events through a connection. This
 is mostly fine, but given enough volume, eventually some
 kind of partitioning scheme is going to be needed as the
 stream grows past the capacity of any single connection
-(think like you'd see in Kafka or Kinesis). Partitioning
-works fine, but is invariably more complicated to makes
-integrating more difficult.
+(think like you'd see in [Kafka][kafka] or
+[Kinesis][kinesis]). Partitioning works fine, but is
+invariably more complicated and makes integrating more
+difficult.
 
 With webhooks, scaling is almost entirely seamless for
 recipients. They need to make sure that their endpoints are
@@ -248,7 +263,15 @@ understood problem. Horizontal scaling combined with an
 off-the-shelf load balancer (DNS, HAProxy, ELBs, ...) will
 make this relatively painless.
 
-## What's next (#whats-next)
+### Lingua franca (#http)
+
+Web servers are absolutely ubiquitous across every
+conceivable programming language and framework which means
+that everyone can receive a webhook, and without pulling
+down any unusual dependencies. Webhooks are _accessible_ in
+a way that more exotic technologies are not.
+
+## The road ahead (#road-ahead)
 
 Lately I've been talking about what [API paradigms might
 look like beyond our current world of
@@ -344,5 +367,7 @@ go.
 [graphql-blog]: http://graphql.org/blog/subscriptions-in-graphql-and-relay/
 [graphql-spec]: https://facebook.github.io/graphql/#sec-Subscription
 [grpc]: http://www.grpc.io/docs/guides/concepts.html#server-streaming-rpc
+[kafka]: https://kafka.apache.org/
+[kinesis]: http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
 [log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
 [mqtt]: http://mqtt.org/
