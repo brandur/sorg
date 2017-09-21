@@ -114,6 +114,11 @@ initiating a foreign state mutation so that if it fails,
 our local state will still contain a record of it happening
 that we can use to retry the operation.
 
+### Savepoints (#savepoints)
+
+At the last action of an atomic phase, the savepoint record
+should be updated.
+
 ## Background jobs and job staging (#background-jobs)
 
 Foreign state mutations make a request slower and more
@@ -139,6 +144,8 @@ to background queues when possible.
 ## Building Rocket Rides for ultra-resilience (#rocket-rides-resilience)
 
 ### The idempotency key relation (#idempotency-key)
+
+`locked`
 
 ### Other schema (#other-schema)
 
