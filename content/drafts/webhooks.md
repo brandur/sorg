@@ -151,7 +151,7 @@ long time upgrades were a scary business.
 
 !fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
 
-## The toil behind the curtain (#curtain)
+## The toil in the kitchen (#kitchen)
 
 Possibly a bigger problem than any of their user
 shortcomings is that webhooks are painful to run. Let's
