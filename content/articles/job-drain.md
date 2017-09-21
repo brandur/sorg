@@ -160,7 +160,7 @@ to the queue, so even if the worker dies partway through,
 it will pick back up again and send along any jobs that it
 missed. _At least once_ delivery semantics are guaranteed.
 
-!fig src="/assets/job-drain/job-drain.svg" caption="Jobs being sequestered in a staging table until and enqueued when they're ready to be worked."
+!fig src="/assets/job-drain/job-drain.svg" caption="Jobs being sequestered in a staging table and enqueued when they're ready to be worked."
 
 ## Advantages over in-database queues (#in-database-queues)
 
