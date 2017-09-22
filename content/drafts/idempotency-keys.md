@@ -248,6 +248,8 @@ will recover from failures.
 
 !fig src="/assets/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
 
+### A stateful implementation (#stateful)
+
 ### The jailbreaker (#jailbreaker)
 
 ``` sql
