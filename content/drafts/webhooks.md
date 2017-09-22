@@ -53,7 +53,7 @@ uncompromisingly kept within a secured perimeter at all
 times. Expensive workarounds may be required for
 integration.
 
-**TODO:** Cartoon of perimeter security.
+!fig src="/assets/webhooks/provisioning-woes.svg" caption="Difficulty in provisioning an HTTP endpoint that can talk to the outside world."
 
 Development is another difficult case. There's no perfectly
 fluid way of getting an endpoint from a locally running
@@ -228,7 +228,7 @@ webhooks provider mistake is to not insulate the senders
 from other infrastructure; allowing an attacker to probe it
 by configuring webhook endpoints with internal URLs.
 
-**TODO:** Cartoon of internal security.
+!fig src="/assets/webhooks/attack.svg" caption="An attacker crafting a malicious webhook to target an internal service."
 
 This is mitigable (and every big provider has measures in
 place to do so), but webhook infrastructure will be
