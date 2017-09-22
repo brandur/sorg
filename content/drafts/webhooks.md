@@ -126,6 +126,10 @@ enough timeline.
 Transmission failures, variations in latency, and quirks in
 the provider's implementation means that even though
 webhooks are sent to an endpoint roughly ordered, there are
+> I guess I'm a little confused by this.  I thought TCP ensured correct order.
+> Is the situation that many background jobs could get issued and maybe the
+> second one gets sent before the first due to waiting in a queue or something?
+> Perhaps a diagram here would be helpful?
 no guarantees that they'll be received that way. A lot of
 the time this isn't a big problem, but it does mean that a
 "delete" event for a resource could be received before its
@@ -174,6 +178,10 @@ webhooks and just them going down might be enough to start
 backing up global queues, leading to a degraded system for
 everyone.
 
+> Yeah, wow! Never thought about this.  Seems like providers need to implement
+> some sort of 'fair use' abstraction to not give priority to retries for flaky
+> consumers
+
 Worse yet, there's no real incentive for recipients to fix
 the problem because the entirety of the fallout lands on
 the webhook provider. We've been stuck in positions where
@@ -190,7 +198,7 @@ your users particularly happy.
 
 ### Retries (#retries)
 
-To ensure receipt, webhook systems need to be built with
+To ensure receipt, webhook system needs to be built with
 retry policies. A recipient could shed a single request due
 to an intermittent network problem, so you retry a few
 moments later to ensure that all messages make it through.
