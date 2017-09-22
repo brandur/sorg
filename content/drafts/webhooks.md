@@ -1,9 +1,10 @@
 ---
-title: Should You Build a Webhooks API?
+title: Should You Build a Webhooks API Today?
 published_at: 2017-09-21T14:55:22Z
 location: Calgary
-hook: When it comes to streaming APIs, there's now a number
-  of good options. Should we still be using webhooks?
+hook: When it comes to streaming APIs, there's now many
+  good options on the table. What technologies should new
+  services be using in 2017?
 ---
 
 The term "webhook" was coined back in 2007 by Jeff Lindsay
@@ -17,13 +18,14 @@ until 2011 and would only see practical use much later, and
 more contemporary streaming options were still only a
 distant speck on the horizon.
 
-At Stripe, webhooks may be one of the best known features
-of our API. They can used to configure multiple receivers
-that receive customized sets of events, and they also work
-for connected accounts, allowing platforms build on Stripe
-to tie into the activity of their users. They're useful and
-are a feature that's not going anywhere, but are also far
-from perfect, especially from an operational perspective.
+For a few very common APIs like GitHub and Stripe, the push
+stream available over webhooks might be one of the best
+known features. They're reliable, can be used to configure
+multiple receivers that receive customized sets of events,
+and they even work for accounts connected via OAuth,
+allowing platforms built on the APIs to tie into the
+activity of their users. They're useful and are a feature
+that's not going anywhere, but are also far from perfect.
 In the spirit of avoiding [accidental
 evangelism](/accidental-evangelist), lets briefly discuss
 whether they're a good pattern for new API providers to
