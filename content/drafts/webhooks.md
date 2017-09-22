@@ -2,10 +2,8 @@
 title: Should You Build a Webhooks API?
 published_at: 2017-09-21T14:55:22Z
 location: Calgary
-hook: Webhooks are the one of the most common API streaming
-  mechanisms found online, but there's some good
-  alternatives out there now. Should we still be using
-  them?
+hook: When it comes to streaming APIs, there's now a number
+  of good options. Should we still be using webhooks?
 ---
 
 The term "webhook" was coined back in 2007 by Jeff Lindsay
@@ -14,10 +12,10 @@ general purpose system to allow Internet systems to be
 composed in the same spirit as the Unix pipe. By speaking
 HTTP and being symmetrical to common HTTP APIs, they were
 an elegant answer to a problem without many options at the
-time -- WebSockets wouldn't be standardized until 2011 and
-would only see practical use much later, and more
-contemporary streaming options were still only a distant
-speck on the horizon.
+time -- [WebSockets][websockets] wouldn't be standardized
+until 2011 and would only see practical use much later, and
+more contemporary streaming options were still only a
+distant speck on the horizon.
 
 At Stripe, webhooks may be one of the best known features
 of our API. They can used to configure multiple receivers
@@ -33,12 +31,9 @@ emulate.
 
 ## The virtues of user ergonomics (#user-ergonomics)
 
-While the stronger case against webhooks can be made from
-the perspective of an operator, it's worth noting first of
-all that the user and developer experience around webhooks
-isn't without its own problems. None of them are
-insurmountable, but alternatives might get more things
-right more easily.
+Webhooks are convenient for most users, but they're a far
+shot from perfect. Let's take a look at a few common
+integration problems.
 
 ### Endpoint provisioning and management (#endpoints)
 
@@ -49,21 +44,21 @@ difficult.
 The classic example is the large enterprise where getting a
 new endpoint exposed to the outside world might be a
 considerable project involving negotiations with
-infrastructure and security teams, and piles of paperwork.
-In the worst cases, webhooks might be wholly incompatible
-with an organization's security model where user data is
+infrastructure and security teams, requisitioning new
+hardware, and piles of paperwork. In the worst cases,
+webhooks might be wholly incompatible with an
+organization's security model where user data is
 uncompromisingly kept within a secured perimeter at all
-times. Expensive workarounds may be required for
-integration.
+times.
 
 !fig src="/assets/webhooks/provisioning-woes.svg" caption="Difficulty in provisioning an HTTP endpoint that can talk to the outside world."
 
-Development is another difficult case. There's no perfectly
-fluid way of getting an endpoint from a locally running
-environment exposed for a webhook provider to access.
-Programs like Ngrok are good options, but still add a step
-and complication that wouldn't be necessary with an
-alternate scheme.
+Development and testing are also difficult cases. There's
+no perfectly fluid way of getting an endpoint from a
+locally running environment exposed for a webhook provider
+to access. Programs like [Ngrok][ngrok] are good options,
+but still add a step and complication that wouldn't be
+necessary with an alternate scheme.
 
 ### Uncertain security (#security)
 
@@ -84,17 +79,20 @@ seen techniques:
 
 !fig src="/assets/webhooks/signing-secrets.png" caption="Endpoint signing secrets in Stripe's dashboard."
 
-Although security is possible, the fundamental problem with
+Good security is possible, but a fundamental problem with
 webhooks is that it's difficult as a provider to _ensure_
-that your users are following best practices (not the case
-for synchronous APIs where you can mandate certain keys and
-practices). Of the three options above, only the third
-guarantees strong security; even if you provide signatures
-you can't know for sure that your users are verifying them,
-and if forced to provide HTTP basic auth credentials, many
-users will opt for weak ones, which combined with endpoints
-that are probably not rate limited, leave them vulnerable
-to brute force attacks.
+that your users are following best practices. Of the three
+options above, only the third guarantees strong security;
+even if you provide signatures you can't know for sure that
+your users are verifying them, and if forced to provide
+HTTP basic auth credentials, many users will opt for weak
+ones, which combined with endpoints that are probably not
+rate limited, leave them vulnerable to brute force attacks.
+
+This is in sharp contrast to synchronous APIs where a
+provider gets to choose exactly what API keys will look
+like and dictate best practices around how they're issued
+and how often they're rotated.
 
 ### Development and testing (#development)
 
@@ -111,11 +109,11 @@ conducive to being integrated into an automated test suite.
 
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
 
-Seasoned developers will know that manual testing is never
-enough. It'll get a program working today, and it'll
-probably stay working tomorrow, but without more
-comprehensive CI something's likely to go wrong over a
-period of years.
+Most developers will know that manual testing is never
+enough. It'll get a program working today, and that program
+will probably stay working tomorrow, but without more
+comprehensive CI something's likely to break given a long
+enough timeline.
 
 ### No ordering guarantees (#order)
 
@@ -125,12 +123,13 @@ webhooks are sent to an endpoint roughly ordered, there are
 no guarantees that they'll be received that way. A lot of
 the time this isn't a big problem, but it does mean that a
 "delete" event for a resource could be received before its
-"create" event, and consumers must be tolerant.
+"create" event, and consumers must be tolerant of these
+anomalies.
 
-Ideally, a real time stream would be reliable enough that a
-consumer could use it as an [ordered append-only log][log]
-which could be used to manage state in a database. Webhooks
-are not this system.
+In an ideal world, a real-time stream would be reliable
+enough that a consumer could use it as an [ordered
+append-only log][log] which could be used to manage state
+in a database. Webhooks are not this system.
 
 ### Version upgrades (#versioning)
 
@@ -157,8 +156,8 @@ long time upgrades were a scary business.
 ## The toil in the kitchens (#kitchens)
 
 Possibly a bigger problem than any of their user
-shortcomings is that webhooks are painful to run. Let's
-look at a few specifics.
+shortcomings is that webhooks are painful to run. _Really_
+painful. Let's look at the specifics.
 
 ### Misbehavior is onerous (#misbehavior)
 
@@ -180,8 +179,8 @@ before things are really on fire.
 You can put in a system where recipients have to meet
 certain uptime and latency SLAs or have their webhooks
 disabled, but once again, that needs additional tooling and
-documentation, and it won't make your users particularly
-happy (even when it's designed to help them indirectly).
+documentation, and the additional restrictions won't make
+your users particularly happy.
 
 ### Retries (#retries)
 
@@ -240,14 +239,14 @@ dangerous by default.
 ## What makes webhooks great (#features)
 
 We've talked mostly about the shortfalls of webhooks, but
-they've also got a few great features that are worth
-calling out.
+they've got some nice properties too. Here are a few
+favorites.
 
 ### Automatic load balancing (#balancing)
 
-A commonly unbilled feature of webhooks is that they
-provide automatic load balancing and allow a consumer's
-traffic to ramp up gracefully.
+A commonly unbilled but _amazing_ feature of webhooks is
+that they provide automatic load balancing and allow a
+consumer's traffic to ramp up gracefully.
 
 The alternative to webhooks is some kind of "pull" API
 where a provider streams events through a connection. This
@@ -257,7 +256,9 @@ stream grows past the capacity of any single connection
 (think like you'd see in [Kafka][kafka] or
 [Kinesis][kinesis]). Partitioning works fine, but is
 invariably more complicated and makes integrating more
-difficult.
+difficult. Getting consumers to upgrade from one to two
+partitions when the limits of a single partition are
+reached is _really_ difficult.
 
 With webhooks, scaling is almost entirely seamless for
 recipients. They need to make sure that their endpoints are
@@ -282,31 +283,32 @@ good reason to use them.
 Lately I've been talking about what [API paradigms might
 look like beyond our current world of
 REST](/api-paradigms), so it seems like a good time to look
-at some modern alternatives to webhooks as well.
+at some modern alternatives to webhooks.
 
 ### The HTTP log (#http-log)
 
 Since the inception of webhooks there's been a few
 technologies that have been standardized that are
 well-suited for streaming changes. [WebSockets][websockets]
-and [server-sent events][sse] are two examples.
+and [server-sent events][sse] (SSE) are two great examples.
 
-Consumers would negotiate a stream over HTTP, and hold onto
-it listening for new events from the server as long as they
-can. Unlike webhooks, events are easily accessible from any
-environment (that allows outgoing connections), fully
-verified, ordered, and even potentially versioned according
-to the consumer's request.
+Consumers would negotiate a stream over HTTP with the
+normal RESTish API, and hold onto it listening for new
+events from the server as long as they can. Unlike
+webhooks, events are easily accessible from any environment
+(that allows outgoing connections), fully verified,
+ordered, and even potentially versioned according to the
+consumer's request.
 
-A potential downside is that it's the consumer's
-responsibility to make requests and track where they left
-off. This is a fairly modest requirement, but it's likely
-to cause problems for at least some users as they lose
-their place in the stream, or don't fetch incoming events
-in time. Providers would undoubtedly also have to put
-limits on how far back in history users are allowed to
-request, and have an implementation that makes sending lots
-of aging event data efficient.
+A downside is that it's the consumer's responsibility to
+make requests and track where they left off. This isn't
+an overly difficult requirement, but it's likely to cause
+problems for at least some users as they lose their place
+in the stream, or don't fetch incoming events in time.
+Providers would undoubtedly also have to put limits on how
+far back in history users are allowed to request, and have
+an implementation that makes sending lots of aging event
+data efficient.
 
 ### GraphQL subscriptions (#graphql)
 
@@ -387,7 +389,8 @@ are building new APIs today should probably be examining
 alternatives. Those who are already building systems on
 non-REST paradigms like GraphQL or GRPC have a pretty clear
 path forward, and for those who aren't, modeling something
-like a log over HTTP might be a decent way to go.
+like a log over HTTP/WebSockets/SSE might be a good way to
+go.
 
 [graphql-blog]: http://graphql.org/blog/subscriptions-in-graphql-and-relay/
 [graphql-spec]: https://facebook.github.io/graphql/#sec-Subscription
@@ -396,5 +399,6 @@ like a log over HTTP might be a decent way to go.
 [kinesis]: http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
 [log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
 [mqtt]: http://mqtt.org/
+[ngrok]: https://ngrok.com/
 [sse]: https://en.wikipedia.org/wiki/Server-sent_events
 [websockets]: https://en.wikipedia.org/wiki/WebSocket
