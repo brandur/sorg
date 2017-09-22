@@ -2,7 +2,10 @@
 title: Should You Build a Webhooks API?
 published_at: 2017-09-21T14:55:22Z
 location: Calgary
-hook: TODO
+hook: Webhooks are the one of the most common API streaming
+  mechanisms found online, but there's some good
+  alternatives out there now. Should we still be using
+  them?
 ---
 
 The term "webhook" was coined back in 2007 by Jeff Lindsay
@@ -151,7 +154,7 @@ long time upgrades were a scary business.
 
 !fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
 
-## The toil in the kitchen (#kitchen)
+## The toil in the kitchens (#kitchens)
 
 Possibly a bigger problem than any of their user
 shortcomings is that webhooks are painful to run. Let's
@@ -268,8 +271,11 @@ make this relatively painless.
 Web servers are absolutely ubiquitous across every
 conceivable programming language and framework which means
 that everyone can receive a webhook, and without pulling
-down any unusual dependencies. Webhooks are _accessible_ in
-a way that more exotic technologies are not.
+down any unusual dependencies.
+
+Webhooks are _accessible_ in a way that more exotic
+technologies may never be, and that by itself is a pretty
+good reason to use them.
 
 ## The road ahead (#road-ahead)
 
@@ -280,7 +286,27 @@ at some modern alternatives to webhooks as well.
 
 ### The HTTP log (#http-log)
 
-TODO
+Since the inception of webhooks there's been a few
+technologies that have been standardized that are
+well-suited for streaming changes. [WebSockets][websockets]
+and [server-sent events][sse] are two examples.
+
+Consumers would negotiate a stream over HTTP, and hold onto
+it listening for new events from the server as long as they
+can. Unlike webhooks, events are easily accessible from any
+environment (that allows outgoing connections), fully
+verified, ordered, and even potentially versioned according
+to the consumer's request.
+
+A potential downside is that it's the consumer's
+responsibility to make requests and track where they left
+off. This is a fairly modest requirement, but it's likely
+to cause problems for at least some users as they lose
+their place in the stream, or don't fetch incoming events
+in time. Providers would undoubtedly also have to put
+limits on how far back in history users are allowed to
+request, and have an implementation that makes sending lots
+of aging event data efficient.
 
 ### GraphQL subscriptions (#graphql)
 
@@ -352,17 +378,16 @@ forth communication over a single re-used connection.
 
 Webhooks are a fine system for real time streaming and
 providers who already offer them and have their operational
-load figured out should probably stick with them. They work
-well and are reasonably convenient.
+dynamics figured out should probably stick with them. They
+work well and are widely understood.
 
 However, between their somewhat lacking developer
 experience and considerable operational load, providers who
-are building new APIs today should probably be closely
-examining alternatives. Those who are already building
-systems on alternative paradigms like GraphQL or GRPC have
-a pretty clear path forward, and for those who aren't,
-modeling something like a log over HTTP is a decent way to
-go.
+are building new APIs today should probably be examining
+alternatives. Those who are already building systems on
+non-REST paradigms like GraphQL or GRPC have a pretty clear
+path forward, and for those who aren't, modeling something
+like a log over HTTP might be a decent way to go.
 
 [graphql-blog]: http://graphql.org/blog/subscriptions-in-graphql-and-relay/
 [graphql-spec]: https://facebook.github.io/graphql/#sec-Subscription
@@ -371,3 +396,5 @@ go.
 [kinesis]: http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
 [log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
 [mqtt]: http://mqtt.org/
+[sse]: https://en.wikipedia.org/wiki/Server-sent_events
+[websockets]: https://en.wikipedia.org/wiki/WebSocket
