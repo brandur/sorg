@@ -9,7 +9,7 @@ committed to the master branch.
 
 ## Build
 
-Install Go 1.6+, set up and run [blackswan][blackswan], then:
+Install Go 1.9+, set up and run [blackswan][blackswan], then:
 
 ``` sh
 go get -u github.com/ddollar/forego
