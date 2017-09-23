@@ -19,15 +19,15 @@ more contemporary streaming options were still only a
 distant speck on the horizon.
 
 For a few very common APIs like GitHub and Stripe, the push
-stream available over webhooks might be one of the best
-known features. They're reliable, can be used to configure
+stream available over webhooks might be one of the best-known 
+features. They're reliable, can be used to configure
 multiple receivers that receive customized sets of events,
 and they even work for accounts connected via OAuth,
 allowing platforms built on the APIs to tie into the
 activity of their users. They're useful and are a feature
 that's not going anywhere, but are also far from perfect.
 In the spirit of avoiding [accidental
-evangelism](/accidental-evangelist), lets briefly discuss
+evangelism](/accidental-evangelist), let's briefly discuss
 whether they're a good pattern for new API providers to
 emulate.
 
@@ -36,6 +36,10 @@ emulate.
 Webhooks are convenient for most users, but they're a far
 shot from perfect. Let's take a look at a few common
 integration problems.
+
+> Before going into integration problems it might be useful to give some
+> concrete user cases.  Perhaps giving an example of how a
+> slack/github webhook might work with a monodraw diagram
 
 ### Endpoint provisioning and management (#endpoints)
 
@@ -112,7 +116,7 @@ conducive to being integrated into an automated test suite.
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
 
 Most developers will know that manual testing is never
-enough. It'll get a program working today, and that program
+enough. It'll get a program working today and that program
 will probably stay working tomorrow, but without more
 comprehensive CI something's likely to break given a long
 enough timeline.
@@ -120,12 +124,16 @@ enough timeline.
 ### No ordering guarantees (#order)
 
 Transmission failures, variations in latency, and quirks in
-the provider's implementation mean that even though
+the provider's implementation means that even though
 webhooks are sent to an endpoint roughly ordered, there are
+> I guess I'm a little confused by this.  I thought TCP ensured correct order.
+> Is the situation that many background jobs could get issued and maybe the
+> second one gets sent before the first due to waiting in a queue or something?
+> Perhaps a diagram here would be helpful?
 no guarantees that they'll be received that way. A lot of
 the time this isn't a big problem, but it does mean that a
 "delete" event for a resource could be received before its
-"create" event, and consumers must be tolerant of these
+"create" event and consumers must be tolerant of these
 anomalies.
 
 In an ideal world, a real-time stream would be reliable
@@ -138,7 +146,7 @@ in a database. Webhooks are not this system.
 For providers that version their API like we do at Stripe,
 version upgrades can be a problem. Normally we allow users
 to explicitly request a new version with an API call so
-that they can verify that their integrations work before
+that they can verify that their integration works before
 upgrading their account, but with webhooks the provider has
 to decide on the version to send. Often this leads to users
 trying to write code that's compatible across multiple
@@ -167,8 +175,12 @@ If a consumer endpoint is slow to respond or suddenly
 starts denying requests, it puts pressure on the provider's
 infrastructure. A big user might have millions of outgoing
 webhooks and just them going down might be enough to start
-backing up global queues, leaing to a degraded system for
+backing up global queues, leading to a degraded system for
 everyone.
+
+> Yeah, wow! Never thought about this.  Seems like providers need to implement
+> some sort of 'fair use' abstraction to not give priority to retries for flaky
+> consumers
 
 Worse yet, there's no real incentive for recipients to fix
 the problem because the entirety of the fallout lands on
@@ -186,7 +198,7 @@ your users particularly happy.
 
 ### Retries (#retries)
 
-To ensure receipt, webhook systems need to be built with
+To ensure receipt, webhook system needs to be built with
 retry policies. A recipient could shed a single request due
 to an intermittent network problem, so you retry a few
 moments later to ensure that all messages make it through.
@@ -198,16 +210,23 @@ Stripe, we'll try to redeliver every generated event 72
 times before finally giving up, which could mean tens of
 thousands wasted connections.
 
+> Why was 72 times chosen?  Seems like a lot/kind of random.  Would be
+> interesting to dig in more on how that was selected
+
 You can mitigate this by disabling endpoints that look like
 they're dead, but again this needs to be tooled and
 documented. It's a bit of a compromise because you have
 less tech savvy users who legitimately have a server go
 down for a day or two, and may be later surprised that
+> wording ^ seems a bit funky -> and may later be surprised
 their webhooks are no longer being delivered. You can also
 have endpoints that are "the living dead": they time out
-most requests after typing up your clients for 30 seconds
+most requests after tying up your clients for 30 seconds
 or so, but successfully respond often enough that they're
 never fully disabled. These are costly to support.
+
+> Seems like an email alert on taken down webhooks 
+> is a pretty straightforward solution to this problem though
 
 ### Chattiness and communication (in)efficiency (#chattiness)
 
@@ -216,6 +235,14 @@ few tricks like keeping connections open to servers that
 you deliver to frequently to save a few round trips on
 transport construction, but they're a very chatty protocol
 at heart.
+
+> I'm guessing you're talking about TCP Slow Start and SSL overhead?  It might
+> be worthwhile to link to resources/diagrams explaining why HTTP is chatty and
+> not ideal for one off calls that can't keep a connection alive
+
+> https://hpbn.co/building-blocks-of-tcp/#three-way-handshake
+> ^ might not be the perfect resource but this is the book that helped me to
+> understand these concepts
 
 We've got enough modern languages and frameworks that
 providers can build massively concurrent implementations
@@ -247,6 +274,7 @@ favorites.
 ### Automatic load balancing (#balancing)
 
 A commonly unbilled but _amazing_ feature of webhooks is
+> Not sure if 'unbilled' is being used properly here?
 that they provide automatic load balancing and allow a
 consumer's traffic to ramp up gracefully.
 
@@ -279,6 +307,9 @@ down any unusual dependencies.
 Webhooks are _accessible_ in a way that more exotic
 technologies may never be, and that by itself is a pretty
 good reason to use them.
+
+> Increased adoption when building a platform can be very important.  I think of
+> Slack's success on this front
 
 ## The road ahead (#road-ahead)
 
@@ -349,6 +380,10 @@ events over an [MQTT][mqtt] topic, but lots of options for
 pub/sub technology are available.
 
 ### GRPC streaming RPC (#grpc)
+
+> I've noticed that a lot of developers don't really know what GRPC is.. It
+> might be worthwhile to explain more or link to good resources.
+> [This video is a great overview by the guy who created ngrok](https://www.youtube.com/watch?v=7FZ6ZyzGex0&t=1440s)
 
 GRPC, Google's technology for APIs backed by Protobuf
 definitions, supports [streaming remote procedure
