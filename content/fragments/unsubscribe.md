@@ -24,12 +24,11 @@ a lot of content and took advantage of more than a few
 bargains.
 
 But somewhere along the way, the dull background noise
-crescendoed into a deafening cacophony. I was getting
-somewhere on the order of 50 messages every single day.
-Some were interesting, but the vast majority were not. The
-value proposition of combing this inbox dropped to
-something vanishingly small. Eventually, I stopped reading
-it.
+crescendoed into a deafening roar. I was getting somewhere
+on the order of 50 messages every single day. Some were
+interesting, but the vast majority were not. The value
+proposition of combing this inbox dropped to something
+vanishingly small. Eventually, I stopped reading it.
 
 It's not that deals weren't being sent, but that they were
 being drowned out by everything else. Companies would send
