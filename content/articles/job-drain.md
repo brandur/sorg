@@ -118,7 +118,7 @@ jobs through to Sidekiq:
 acquire_lock(:enqueuer) do
 
   loop do
-    DB.transaction do
+    DB.transaction(isolation: :repeatable_read) do
       # For best efficiency, pull jobs in large batches.
       job_batch = StagedJobs.order('id').limit(1000)
 
