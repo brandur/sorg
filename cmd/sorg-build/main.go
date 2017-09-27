@@ -81,6 +81,10 @@ type Article struct {
 	// included as YAML frontmatter, but rather calculated from the article's
 	// content, rendered, and then added separately.
 	TOC string `yaml:"-"`
+
+	// TwitterImage is a boolean indicating whether there's an image for
+	// the article that can be shown in a Twitter card.
+	TwitterImage bool `yaml:"twitter_image"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -189,6 +193,10 @@ type Fragment struct {
 
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
+
+	// TwitterImage is a boolean indicating whether there's an image for
+	// the article that can be shown in a Twitter card.
+	TwitterImage bool `yaml:"twitter_image"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -323,6 +331,21 @@ type tweetYear struct {
 type tweetMonth struct {
 	Month  time.Month
 	Tweets []*Tweet
+}
+
+// twitterCard represents a Twitter "card" (i.e. one of those rich media boxes
+// that sometimes appear under tweets official clients) for use in templates.
+type twitterCard struct {
+	// Description is the title to show in the card.
+	Title string
+
+	// Description is the description to show in the card.
+	Description string
+
+	// ImageURL is the URL to the image to show in the card. It should be
+	// absolute because Twitter will need to be able to fetch it from our
+	// servers. Leave blank if there is no image.
+	ImageURL string
 }
 
 //
@@ -560,9 +583,18 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		return nil, err
 	}
 
+	card := &twitterCard{
+		Title:       article.Title,
+		Description: article.Hook,
+	}
+	if article.TwitterImage {
+		card.ImageURL = sorg.AbsoluteURL + "/assets/" + article.Slug + "/twitter@2x.jpg"
+	}
+
 	locals := getLocals(article.Title, map[string]interface{}{
 		"Article":        article,
 		"PublishingInfo": article.PublishingInfo(),
+		"TwitterCard":    card,
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/articles/show",
@@ -675,9 +707,18 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 
 	fragment.Content = markdown.Render(content, nil)
 
+	card := &twitterCard{
+		Title:       fragment.Title,
+		Description: fragment.Hook,
+	}
+	if fragment.TwitterImage {
+		card.ImageURL = sorg.AbsoluteURL + "/assets/fragments/" + fragment.Slug + "/twitter@2x.jpg"
+	}
+
 	locals := getLocals(fragment.Title, map[string]interface{}{
 		"Fragment":       fragment,
 		"PublishingInfo": fragment.PublishingInfo(),
+		"TwitterCard":    card,
 	})
 
 	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/fragments/show",
@@ -1454,6 +1495,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 		"LocalFonts":        conf.LocalFonts,
 		"Release":           sorg.Release,
 		"Title":             title,
+		"TwitterCard":       nil,
 		"ViewportWidth":     "device-width",
 	}
 

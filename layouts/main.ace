@@ -15,6 +15,7 @@ html lang="en"
     script src="/assets/{{.Release}}/app.js" type="text/javascript"
 
     = include views/_cardo .
+    = include views/_twitter .
 
   body class={{.BodyClass}}
     = include views/_analytics .
