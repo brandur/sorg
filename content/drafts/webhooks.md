@@ -5,6 +5,9 @@ location: Calgary
 hook: When it comes to streaming APIs, there's now many
   good options on the table. What technologies should new
   services be using in 2017?
+attributions: Thanks to <a
+  href="https://twitter.com/spencercdixon">Spencer
+  Dixon</a> for review.
 ---
 
 The term "webhook" was coined back in 2007 by Jeff Lindsay
@@ -31,7 +34,7 @@ evangelism](/accidental-evangelist), this article will aim
 to address whether they're a good pattern for new API
 providers to emulate.
 
-## A basic use case for webhooks (#use-case)
+## A basic case for webhooks (#case)
 
 Before we start, let's take a look at why why webhooks are
 useful. While it's often appropriate to poll a provider's
