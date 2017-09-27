@@ -18,28 +18,58 @@ until 2011 and would only see practical use much later, and
 more contemporary streaming options were still only a
 distant speck on the horizon.
 
-For a few very common APIs like GitHub and Stripe, the push
-stream available over webhooks might be one of the best-known 
-features. They're reliable, can be used to configure
-multiple receivers that receive customized sets of events,
-and they even work for accounts connected via OAuth,
-allowing platforms built on the APIs to tie into the
+For a few very common APIs like GitHub, Slack, or Stripe,
+the push stream available over webhooks might be one of the
+best-known features. They're reliable, can be used to
+configure multiple receivers that receive customized sets
+of events, and they even work for accounts connected via
+OAuth, allowing platforms built on the APIs to tie into the
 activity of their users. They're useful and are a feature
 that's not going anywhere, but are also far from perfect.
 In the spirit of avoiding [accidental
-evangelism](/accidental-evangelist), let's briefly discuss
-whether they're a good pattern for new API providers to
-emulate.
+evangelism](/accidental-evangelist), this article will aim
+to address whether they're a good pattern for new API
+providers to emulate.
+
+## A basic use case for webhooks (#use-case)
+
+Before we start, let's take a look at why why webhooks are
+useful. While it's often appropriate to poll a provider's
+REST API for information, there are many cases where you
+want to have real-time updates so that you can do some work
+in a timely manner.
+
+Say you're going to write a mini-CI service that will build
+any branches that are opened via pull request on one of
+your GitHub repositories. Like Travis, we want it to be
+able to detect a pull request, and then assign it a status
+check icon that will only be resolved when the build
+completes.
+
+!fig src="/assets/webhooks/github-status-check.png" caption="Travis putting status checks on a pull request that are contingent on a successful build."
+
+GitHub has a [status API][githubstatus] that allows a
+service to assign a status to a given commit SHA. To know
+when a new pull request comes in, we could poll the list
+endpoint ever few seconds and create statuses on any that
+we don't recognize, but there's a much better way. We can
+listen on for GitHub's `pull_request` webhook, and it'll
+tell us when anything new comes in.
+
+So our CI service will listen for the `pull_request` webhook,
+creates a new status via the REST API when it sees one, and
+then updates that status when the build succeeds or fails.
+It's able to add status checks quickly, and with no
+inefficient polling involved.
+
+!fig src="/assets/webhooks/ci.svg" caption="A basic webhooks flow to build a simple CI system for GitHub."
 
 ## The virtues of user ergonomics (#user-ergonomics)
 
-Webhooks are convenient for most users, but they're a far
-shot from perfect. Let's take a look at a few common
-integration problems.
-
-> Before going into integration problems it might be useful to give some
-> concrete user cases.  Perhaps giving an example of how a
-> slack/github webhook might work with a monodraw diagram
+As we see above webhooks are convenient and work pretty
+well, but that said, they're far from perfect in a number
+of places. Let's look at a few ways that using them can be
+a little painful.
 
 ### Endpoint provisioning and management (#endpoints)
 
@@ -126,15 +156,18 @@ enough timeline.
 Transmission failures, variations in latency, and quirks in
 the provider's implementation means that even though
 webhooks are sent to an endpoint roughly ordered, there are
-> I guess I'm a little confused by this.  I thought TCP ensured correct order.
-> Is the situation that many background jobs could get issued and maybe the
-> second one gets sent before the first due to waiting in a queue or something?
-> Perhaps a diagram here would be helpful?
-no guarantees that they'll be received that way. A lot of
-the time this isn't a big problem, but it does mean that a
-"delete" event for a resource could be received before its
-"create" event and consumers must be tolerant of these
-anomalies.
+no guarantees that they'll be received that way.
+
+For example, a provider might send a `created` event for
+`resource123`, but a send failure causes it to be queued
+for retransmission. In the meantime, `resource123` is
+deleted and its `deleted` event sends correctly. Later, the
+`created` event is also sent, but by then the consumer's
+received it after its corresponding `deleted`. A lot of the
+time this isn't a big problem, but consumers must be built
+to be tolerant of these anomalies.
+
+!fig src="/assets/webhooks/out-of-order.svg" caption="A consumer receiving events out of order due to a send failure."
 
 In an ideal world, a real-time stream would be reliable
 enough that a consumer could use it as an [ordered
@@ -178,12 +211,8 @@ webhooks and just them going down might be enough to start
 backing up global queues, leading to a degraded system for
 everyone.
 
-> Yeah, wow! Never thought about this.  Seems like providers need to implement
-> some sort of 'fair use' abstraction to not give priority to retries for flaky
-> consumers
-
 Worse yet, there's no real incentive for recipients to fix
-the problem because the entirety of the fallout lands on
+the problem because the entirety of the burden lands on
 the webhook provider. We've been stuck in positions where
 we have to email huge users with something like, "we don't
 want to disable you, but please fix your systems or we're
@@ -207,26 +236,20 @@ This is a nice feature, but is expensive and wasteful at
 the edges. Say for example that a user takes down one of
 their servers without deleting a corresponding endpoint. At
 Stripe, we'll try to redeliver every generated event 72
-times before finally giving up, which could mean tens of
-thousands wasted connections.
-
-> Why was 72 times chosen?  Seems like a lot/kind of random.  Would be
-> interesting to dig in more on how that was selected
+times (once an hour for three days) before finally giving
+up, which could mean tens of thousands wasted connections.
 
 You can mitigate this by disabling endpoints that look like
-they're dead, but again this needs to be tooled and
-documented. It's a bit of a compromise because you have
-less tech savvy users who legitimately have a server go
-down for a day or two, and may be later surprised that
-> wording ^ seems a bit funky -> and may later be surprised
-their webhooks are no longer being delivered. You can also
-have endpoints that are "the living dead": they time out
-most requests after tying up your clients for 30 seconds
-or so, but successfully respond often enough that they're
-never fully disabled. These are costly to support.
-
-> Seems like an email alert on taken down webhooks 
-> is a pretty straightforward solution to this problem though
+they're dead and sending an email to notify their owner,
+but again this needs to be tooled and documented. It's a
+bit of a compromise because you have less tech savvy users
+who legitimately have a server go down for a day or two,
+and may later be surprised that their webhooks are no
+longer being delivered. You can also have endpoints that
+are "the living dead": they time out most requests after
+tying up your clients for 30 seconds or so, but
+successfully respond often enough that they're never fully
+disabled. These are costly to support.
 
 ### Chattiness and communication (in)efficiency (#chattiness)
 
@@ -236,19 +259,11 @@ you deliver to frequently to save a few round trips on
 transport construction, but they're a very chatty protocol
 at heart.
 
-> I'm guessing you're talking about TCP Slow Start and SSL overhead?  It might
-> be worthwhile to link to resources/diagrams explaining why HTTP is chatty and
-> not ideal for one off calls that can't keep a connection alive
-
-> https://hpbn.co/building-blocks-of-tcp/#three-way-handshake
-> ^ might not be the perfect resource but this is the book that helped me to
-> understand these concepts
-
 We've got enough modern languages and frameworks that
 providers can build massively concurrent implementations
 with relative ease, but compared to something like
 streaming a few thousand events over a big connected
-firehose, webhooks are profoundly inefficient.
+firehose, webhooks are very inefficient.
 
 ### Internal security (#internal-security)
 
@@ -273,8 +288,7 @@ favorites.
 
 ### Automatic load balancing (#balancing)
 
-A commonly unbilled but _amazing_ feature of webhooks is
-> Not sure if 'unbilled' is being used properly here?
+A commonly discounted but _amazing_ feature of webhooks is
 that they provide automatic load balancing and allow a
 consumer's traffic to ramp up gracefully.
 
@@ -305,11 +319,12 @@ that everyone can receive a webhook, and without pulling
 down any unusual dependencies.
 
 Webhooks are _accessible_ in a way that more exotic
-technologies may never be, and that by itself is a pretty
-good reason to use them.
-
-> Increased adoption when building a platform can be very important.  I think of
-> Slack's success on this front
+technologies may never be, and that by itself is good
+reason to use them. Accessible technologies have a greater
+pool of potential developers, and that's going to lead to
+more integrations. An easy API in the form of webhooks has
+undoubtedly helped companies like GitHub and Slack grow
+their platforms.
 
 ## The road ahead (#road-ahead)
 
@@ -347,7 +362,7 @@ data efficient.
 
 Along with queries and mutations, GraphQL supports a third
 type of operation called a "subscription" ([see that in the
-spec here][graphql-spec]). A provider provides an available
+spec here][graphqlspec]). A provider provides an available
 subscription that describes the type of events that a
 recipient will receive:
 
@@ -374,24 +389,27 @@ input StoryLikeSubscribeInput {
 
 Like with a lot of GraphQL, the specifics around
 implementation for subscriptions aren't strongly defined.
-In [a blog post announcing the feature][graphql-blog], a
+In [a blog post announcing the feature][graphqlblog], a
 Facebook engineer mentions that they receive subscription
 events over an [MQTT][mqtt] topic, but lots of options for
 pub/sub technology are available.
 
 ### GRPC streaming RPC (#grpc)
 
-> I've noticed that a lot of developers don't really know what GRPC is.. It
-> might be worthwhile to explain more or link to good resources.
-> [This video is a great overview by the guy who created ngrok](https://www.youtube.com/watch?v=7FZ6ZyzGex0&t=1440s)
+[GRPC][grpc] is a framework created by Google that enables
+easy remote procedure calls (RPC) from client to server
+across a wide variety of supported languages and platforms.
+It builds on top of protocol buffers, which is a
+well-vetted serialization technology that's been around for
+more than a decade.
 
-GRPC, Google's technology for APIs backed by Protobuf
-definitions, supports [streaming remote procedure
-calls][grpc] where a provider can send back any number of
-messages before the connection is finalized. This simple Go
-example demonstrates roughly how it works (and keep in mind
-that the feature is available in GRPC's impressive set of
-supported languages):
+Although it's largely used for one-off request/responses,
+it also supports [streaming remote procedure
+calls][grpcstreaming] where a provider can send back any
+number of messages before the connection is finalized. This
+simple Go example demonstrates roughly how it works (and
+keep in mind that the feature is available in GRPC's
+impressive set of supported languages):
 
 ``` go
 stream, err := client.ListFeatures(...)
@@ -420,18 +438,20 @@ providers who already offer them and have their operational
 dynamics figured out should probably stick with them. They
 work well and are widely understood.
 
-However, between their somewhat lacking developer
-experience and considerable operational load, providers who
-are building new APIs today should probably be examining
-alternatives. Those who are already building systems on
-non-REST paradigms like GraphQL or GRPC have a pretty clear
-path forward, and for those who aren't, modeling something
-like a log over HTTP/WebSockets/SSE might be a good way to
-go.
+However, between somewhat less-than-optimal developer
+experience and considerable operational concerns, providers
+who are building new APIs today should probably be
+considering every available option. Those who are already
+building systems on non-REST paradigms like GraphQL or GRPC
+have a pretty clear path forward, and for those who aren't,
+modeling something like a log over HTTP/WebSockets/SSE
+might be a good way to go.
 
-[graphql-blog]: http://graphql.org/blog/subscriptions-in-graphql-and-relay/
-[graphql-spec]: https://facebook.github.io/graphql/#sec-Subscription
-[grpc]: http://www.grpc.io/docs/guides/concepts.html#server-streaming-rpc
+[githubstatus]: https://developer.github.com/v3/repos/statuses/
+[graphqlblog]: http://graphql.org/blog/subscriptions-in-graphql-and-relay/
+[graphqlspec]: https://facebook.github.io/graphql/#sec-Subscription
+[grpc]: http://www.grpc.io/
+[grpcstreaming]: http://www.grpc.io/docs/guides/concepts.html#server-streaming-rpc
 [kafka]: https://kafka.apache.org/
 [kinesis]: http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html
 [log]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
