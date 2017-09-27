@@ -707,12 +707,16 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 
 	fragment.Content = markdown.Render(content, nil)
 
-	card := &twitterCard{
-		Title:       fragment.Title,
-		Description: fragment.Hook,
-	}
+	// A lot of fragments still have unwritten hooks, so only add a card where a fragment has a configured Twitter image for the time being.
+	var card *twitterCard
 	if fragment.TwitterImage {
-		card.ImageURL = sorg.AbsoluteURL + "/assets/fragments/" + fragment.Slug + "/twitter@2x.jpg"
+		card := &twitterCard{
+			Title:       fragment.Title,
+			Description: fragment.Hook,
+		}
+		if fragment.TwitterImage {
+			card.ImageURL = sorg.AbsoluteURL + "/assets/fragments/" + fragment.Slug + "/twitter@2x.jpg"
+		}
 	}
 
 	locals := getLocals(fragment.Title, map[string]interface{}{

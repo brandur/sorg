@@ -3,7 +3,7 @@ title: The iPad Mini
 published_at: 2016-06-12T22:26:17Z
 image: /assets/fragments/ipad-mini/vista.jpg
 twitter_image: true
-hook: UNWRITTEN. This should not appear on the front page.
+hook: An ode to one of my favorite Apple devices.
 ---
 
 After almost three years of continuous usage and ownership, it's time for a
