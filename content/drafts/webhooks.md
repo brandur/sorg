@@ -6,6 +6,7 @@ hook: When it comes to streaming APIs, there's now many
   good options on the table. What technologies should new
   services be using in 2017?
 hook_image: true
+twitter_image: true
 attributions: Thanks to <a
   href="https://twitter.com/spencercdixon">Spencer
   Dixon</a> for review.
