@@ -2,6 +2,7 @@
 title: Ivy
 published_at: 2016-08-24T03:12:31Z
 hook: Stripe's new home in SOMA.
+twitter_image: true
 image: /assets/fragments/ivy/vista.jpg
 ---
 
