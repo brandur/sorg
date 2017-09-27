@@ -3,7 +3,7 @@ title: MonkeyBrains
 published_at: 2016-01-23T01:15:58Z
 image: /assets/fragments/monkeybrains/vista.jpg
 twitter_image: true
-hook: UNWRITTEN. This should not appear on the front page.
+hook: A very brief review of the local San Francisco ISP.
 ---
 
 One "worst part" of living in SOMA is the endless construction. Its latest
