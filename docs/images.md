@@ -24,10 +24,6 @@ Right-click on an image and hold `Option`. The "Copy
     gm convert $GM_INPUT -resize 75x75^ -gravity center -extent 75x75 -quality 85 $GM_OUTPUT/hook.jpg
     gm convert $GM_INPUT -resize 150x150^ -gravity center -extent 150x150 -quality 85 $GM_OUTPUT/hook@2x.jpg
 
-## Resize for Twitter
-
-    gm convert $GM_INPUT -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GM_OUTPUT/twitter@2x.jpg
-
 Note the `^` on `-resize` here which treats these numbers
 as minimums.
 
@@ -40,6 +36,10 @@ as minimums.
 
     gm convert $GM_INPUT -resize 1024x -quality 85 $GM_OUTPUT/vista.jpg
     gm convert $GM_INPUT -resize 2048x -quality 85 $GM_OUTPUT/vista@2x.jpg
+
+## Resize for Twitter cards
+
+    gm convert $GM_INPUT -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GM_OUTPUT/twitter@2x.jpg
 
 ## Resize for Passages images
 
