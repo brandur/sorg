@@ -402,9 +402,9 @@ pub/sub technology are available.
 [GRPC][grpc] is a framework created by Google that enables
 easy remote procedure calls (RPC) from client to server
 across a wide variety of supported languages and platforms.
-It builds on top of protocol buffers, which is a
-well-vetted serialization technology that's been around for
-more than a decade.
+It builds on top of protocol buffers, a well-vetted
+serialization technology that's been around for more than a
+decade.
 
 Although it's largely used for one-off request/responses,
 it also supports [streaming remote procedure
