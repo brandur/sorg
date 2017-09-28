@@ -4,7 +4,7 @@ published_at: 2017-09-20T14:58:14Z
 location: Calgary
 hook: Building a robust background worker system that
   leverages transactional isolation to never work a job too
-  early, and transactional durabiity to never let one drop.
+  early, and transactional durability to never let one drop.
 hn_link: https://news.ycombinator.com/item?id=15294722
 ---
 
