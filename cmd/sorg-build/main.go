@@ -711,7 +711,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 	// a fragment has a configured Twitter image for the time being.
 	var card *twitterCard
 	if fragment.TwitterImage {
-		card := &twitterCard{
+		card = &twitterCard{
 			Title:       fragment.Title,
 			Description: fragment.Hook,
 		}
@@ -1043,8 +1043,13 @@ func compileRobots(outPath string) error {
 	}
 	defer outFile.Close()
 
-	outFile.WriteString("User-agent: *\n" +
-		"Disallow: /")
+	// Allow Twitterbot so that we can preview card images on dev.
+	outFile.WriteString(
+		"User-agent: Twitterbot\n" +
+			"Disallow:\n" +
+			"\n" +
+			"User-agent: *\n" +
+			"Disallow: /")
 
 	return nil
 }
