@@ -3,8 +3,9 @@ title: Should You Build a Webhooks API?
 published_at: 2017-09-21T14:55:22Z
 location: Calgary
 hook: When it comes to streaming APIs, there's now many
-  good options on the table. Let's examine whether webhooks
-  is still a good choice in 2017.
+  good options on the table including SSE, GraphQL
+  subscriptions, and GRPC streams. Let's examine whether
+  webhooks are still a good choice in 2017.
 hook_image: true
 twitter_image: true
 attributions: Thanks to <a
@@ -19,8 +20,8 @@ composed in the same spirit as the Unix pipe. By speaking
 HTTP and being symmetrical to common HTTP APIs, they were
 an elegant answer to a problem without many options at the
 time -- [WebSockets][websockets] wouldn't be standardized
-until 2011 and would only see practical use much later, and
-more contemporary streaming options were still only a
+until 2011 and would only see practical use much later.
+Most other contemporary streaming options were still only a
 distant speck on the horizon.
 
 For a few very common APIs like GitHub, Slack, or Stripe,
@@ -29,20 +30,20 @@ best-known features. They're reliable, can be used to
 configure multiple receivers that receive customized sets
 of events, and they even work for accounts connected via
 OAuth, allowing platforms built on the APIs to tie into the
-activity of their users. They're useful and are a feature
-that's not going anywhere, but are also far from perfect.
-In the spirit of avoiding [accidental
-evangelism](/accidental-evangelist), this article will aim
-to address whether they're a good pattern for new API
-providers to emulate.
+activity of their users. They're a great feature and
+aren't going anywhere anytime soon, but they're also far
+from perfect. In the spirit of avoiding [accidental
+evangelism](/accidental-evangelist), here we'll talk about
+whether they're a good pattern for new API providers to
+emulate.
 
 ## A basic case for webhooks (#case)
 
-Before we start, let's take a look at why webhooks are
-useful. While REST APIs commonly make up the backbone for
-accessing and manipulating information in a web platform,
-webhooks are often used as a second facet that augments it
-by streaming real-time updates.
+First, let's take a look at why webhooks are useful. While
+REST APIs commonly make up the backbone for accessing and
+manipulating information in a web platform, webhooks are
+often used as a second facet that augments it by streaming
+real-time updates.
 
 Say you're going to write a mini-CI service that will build
 any branches that are opened via pull request on one of
@@ -81,7 +82,7 @@ a little painful.
 
 Getting an HTTP endpoint provisioned to receive a webhook
 isn't technically difficult, but it can be bureaucratically
-difficult.
+so.
 
 The classic example is the large enterprise where getting a
 new endpoint exposed to the outside world might be a
@@ -117,7 +118,8 @@ seen techniques:
    receive webhooks.
 3. ***API retrieval:*** Provide only an event identifier in
    webhook payload and force recipients to make a
-   synchronous API request to get the full message.
+   synchronous API request to get the message's full
+   contents.
 
 !fig src="/assets/webhooks/signing-secrets.png" caption="Endpoint signing secrets in Stripe's dashboard."
 
@@ -146,8 +148,8 @@ that a test webhook be sent.
 At Stripe, we provide a "Send test webhook" function from
 the dashboard. This provides a reasonable developer
 experience in that at least testing an endpoint is
-possible, but it's quite manual and not especially
-conducive to being integrated into an automated test suite.
+possible, but it's manual and not especially conducive to
+being integrated into an automated test suite.
 
 !fig src="/assets/webhooks/send-test-webhook.png" caption="Sending a test webhook in Stripe's dashboard."
 
@@ -205,8 +207,8 @@ long time upgrades were a scary business.
 ## The toil in the kitchens (#kitchens)
 
 Possibly a bigger problem than any of their user
-shortcomings is that webhooks are painful to run. _Really_
-painful. Let's look at the specifics.
+shortcomings is that webhooks are painful to run. Let's
+look at the specifics.
 
 ### Misbehavior is onerous (#misbehavior)
 
@@ -218,12 +220,13 @@ backing up global queues, leading to a degraded system for
 everyone.
 
 Worse yet, there's no real incentive for recipients to fix
-the problem because the entirety of the burden lands on
-the webhook provider. We've been stuck in positions where
-we have to email huge users with something like, "we don't
-want to disable you, but please fix your systems or we're
-going to have to" and hoping that they get back to us
-before things are really on fire.
+the problem because the entirety of the burden lands on the
+webhook provider. We've been stuck in positions where we
+have to email huge users as millions of failed webhooks
+pile up in the backlog with something like, "we don't want
+to disable you, but please fix your systems or we're going
+to have to" and hoping that they get back to us before
+things are really on fire.
 
 You can put in a system where recipients have to meet
 certain uptime and latency SLAs or have their webhooks
@@ -259,11 +262,12 @@ disabled. These are costly to support.
 
 ### Chattiness and communication (in)efficiency (#chattiness)
 
-Webhooks are one HTTP request for one event. You can apply a
-few tricks like keeping connections open to servers that
+Webhooks are one HTTP request for one event. You can apply
+a few tricks like keeping connections open to servers that
 you deliver to frequently to save a few round trips on
-transport construction, but they're a very chatty protocol
-at heart.
+transport construction (for setting up a connection and
+negotiating TLS), but they're a very chatty protocol at
+heart.
 
 We've got enough modern languages and frameworks that
 providers can build massively concurrent implementations
@@ -289,12 +293,12 @@ dangerous by default.
 ## What makes webhooks great (#features)
 
 We've talked mostly about the shortfalls of webhooks, but
-they've got some nice properties too. Here are a few
-favorites.
+they've got some nice properties too. Here are a few of
+their best aspects.
 
 ### Automatic load balancing (#balancing)
 
-A commonly discounted but _amazing_ feature of webhooks is
+A commonly overlooked but _amazing_ feature of webhooks is
 that they provide automatic load balancing and allow a
 consumer's traffic to ramp up gracefully.
 
