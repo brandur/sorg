@@ -187,11 +187,11 @@ version upgrades can be a problem. Normally we allow users
 to explicitly request a new version with an API call so
 that they can verify that their integration works before
 upgrading their account, but with webhooks the provider has
-to decide on the version to send. Often this leads to users
-trying to write code that's compatible across multiple
-versions, and then flipping the upgrade switch and praying
-that it works (when it doesn't, the upgrade must be rolled
-back).
+to decide in advance what version to send. Often this leads
+to users trying to write code that's compatible across
+multiple versions, and then flipping the upgrade switch and
+praying that it works (when it doesn't, the upgrade must be
+rolled back).
 
 Once again, this can be fixed with great tooling, but
 that's more infrastructure that a provider needs to
