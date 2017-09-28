@@ -1,6 +1,6 @@
 ---
 title: Should You Build a Webhooks API?
-published_at: 2017-09-21T14:55:22Z
+published_at: 2017-09-28T15:28:56Z
 location: Calgary
 hook: When it comes to streaming APIs, there's now many
   good options on the table including SSE, GraphQL
