@@ -3,8 +3,8 @@ title: Should You Build a Webhooks API?
 published_at: 2017-09-21T14:55:22Z
 location: Calgary
 hook: When it comes to streaming APIs, there's now many
-  good options on the table. What technologies should new
-  services be using in 2017?
+  good options on the table. Let's examine whether webhooks
+  is still a good choice in 2017.
 hook_image: true
 twitter_image: true
 attributions: Thanks to <a
