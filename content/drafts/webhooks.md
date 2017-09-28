@@ -38,11 +38,11 @@ providers to emulate.
 
 ## A basic case for webhooks (#case)
 
-Before we start, let's take a look at why why webhooks are
-useful. While it's often appropriate to poll a provider's
-REST API for information, there are many cases where you
-want to have real-time updates so that you can do some work
-in a timely manner.
+Before we start, let's take a look at why webhooks are
+useful. While REST APIs commonly make up the backbone for
+accessing and manipulating information in a web platform,
+webhooks are often used as a second facet that augments it
+by streaming real-time updates.
 
 Say you're going to write a mini-CI service that will build
 any branches that are opened via pull request on one of
@@ -53,19 +53,20 @@ completes.
 
 !fig src="/assets/webhooks/github-status-check.png" caption="Travis putting status checks on a pull request that are contingent on a successful build."
 
-GitHub has a [status API][githubstatus] that allows a
-service to assign a status to a given commit SHA. To know
-when a new pull request comes in, we could poll the list
-endpoint ever few seconds and create statuses on any that
-we don't recognize, but there's a much better way. We can
-listen on for GitHub's `pull_request` webhook, and it'll
-tell us when anything new comes in.
+GitHub has a [status API][githubstatus] that can assign or
+update statuses associated with a given commit SHA. With
+just a REST API, we'd have to poll the list endpoint ever
+few seconds to know when new pull requests come in. Luckily
+though, there's much better way: we can listen on for
+GitHub's `pull_request` webhook, and it'll notify us when
+anything changes.
 
-So our CI service will listen for the `pull_request` webhook,
-creates a new status via the REST API when it sees one, and
-then updates that status when the build succeeds or fails.
-It's able to add status checks quickly, and with no
-inefficient polling involved.
+Our CI service listens for `pull_request` webhooks, creates
+a new status via the REST API when it sees one, and then
+updates that status when its corresponding build succeeds
+or fails. It's able to add status checks in a timely manner
+(ideally users see a `pending` status the moment they
+open a new pull), and with no inefficient polling involved.
 
 !fig src="/assets/webhooks/ci.svg" caption="A basic webhooks flow to build a simple CI system for GitHub."
 
