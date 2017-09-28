@@ -64,6 +64,10 @@ ifdef AWS_ACCESS_KEY_ID
 	# 2. The `index.html` files are useful for emulating a live server locally:
 	#    Golang's http.FileServer will respect them as indexes.
 	find $(TARGET_DIR) -name index.html | egrep -v '$(TARGET_DIR)/index.html' | sed "s|^$(TARGET_DIR)/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html
+
+	# Give robots.txt (if it exists) a Content-Type of text/plain. Twitter is
+	# rabid about this.
+	[ -f $(TARGET_DIR)/robots.txt ] && aws s3 cp $(TARGET_DIR)/robots.txt s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/plain --quiet $(AWS_CLI_FLAGS) || echo "no robots.txt"
 else
 	# No AWS access key. Skipping deploy.
 endif
