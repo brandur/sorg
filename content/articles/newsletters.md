@@ -4,6 +4,7 @@ published_at: 2017-08-02T14:52:31Z
 hook: Building a toolchain for sending a newsletter, and
   the dismal state of HTML and CSS in email.
 hook_image: true
+twitter_image: true
 ---
 
 After a recent trip to Portland, I decided to try writing a
