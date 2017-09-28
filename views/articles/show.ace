@@ -23,9 +23,6 @@
         {{if eq .Article.Image ""}}
           #title
             h1 {{.Article.Title}}
-        {{end}}
-        {{if ne .Article.Hook ""}}
-          p.hook {{.Article.Hook}}
           .divider-short
         {{end}}
         .toc
