@@ -5,6 +5,7 @@ location: San Francisco
 published_at: 2014-08-03T16:50:19Z
 title: A Cheap X100S Filter Ring Hack
 hook_image: true
+twitter_image: true
 ---
 
 The [official Fujifilm X100/X100S 49 mm adapter ring](http://www.amazon.com/Fujifilm-AR-X100-Adapter-Ring-49mm/dp/B004MME69S) which allows you to mount extra filters onto your lens will run you about $40, which is a little steep considering that its entire role in life is to act as an expensive spacer.
