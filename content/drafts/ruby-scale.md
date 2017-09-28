@@ -5,6 +5,7 @@ location: San Francisco
 hook: The challenges of scaling and operating a big Ruby
   codebase (that are not related to performance).
 hook_image: true
+twitter_image: true
 ---
 
 Ruby is a beautiful language. Speaking from experience,
