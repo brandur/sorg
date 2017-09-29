@@ -26,8 +26,11 @@ $sans_serif: helvetica, arial, geneva, sans-serif
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .signature
     .content
-      article > p:first-of-type:first-letter
-        font-size: 4rem
+      article
+        max-width: 100%
+
+        & > p:first-of-type:first-letter
+          font-size: 4rem
 
       .publishing-info-bottom
         display: initial
