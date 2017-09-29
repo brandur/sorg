@@ -38,6 +38,11 @@ body
   -webkit-flex-direction: row
   flex-direction: row
 
+  // Needed for the margins on divs inside of the flex container to be
+  // respected
+  & > div
+    overflow: hidden
+
 .content, .toc-index, .top-nav
   margin-bottom: 50px
   margin-top: 50px
@@ -570,6 +575,9 @@ article.big
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .flexcontainer
     flex-direction: column
+
+    & > div
+      overflow: visible
 
   .top-nav
     height: 100px
