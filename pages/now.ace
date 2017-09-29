@@ -12,7 +12,7 @@
         #now
           p I'm in Canada enjoying its exceptional natural beauty during the final days of summer, visiting family, and attending the weddings of a few of my oldest friends.
           p
-            img.overflowing src="/assets/now/panorama-ridge.jpg" data-rjs="2"
+            img.overflowing src="/assets/now/massive.jpg" data-rjs="2"
           p These are some points of focus:
           ul
             li Seeking to deeply understand some of my favorite pieces of technology like Postgres and Rust, and transforming those findings into published material.
