@@ -57,7 +57,7 @@ playgrounds of the rich and the fortunate.
 > I need the darkness, someone please cut the lights <br>
 > I need the darkness, someone please cut the lights <br>
 >
-> &mdash; _Arcade Fire_
+> — _Arcade Fire_
 
 [1] Although to be clear this only works for inhabitants of the city itself.
 People commuting in from the suburban towns of the Bay Area face commute times
