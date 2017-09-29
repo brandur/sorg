@@ -38,11 +38,6 @@ body
   -webkit-flex-direction: row
   flex-direction: row
 
-  // Needed for the margins on divs inside of the flex container to be
-  // respected
-  & > div
-    overflow: hidden
-
 .content, .toc-index, .top-nav
   margin-bottom: 50px
   margin-top: 50px
@@ -66,6 +61,9 @@ body
 .content
   margin-left: 50px
   margin-right: 50px
+
+  // This allows margin to be shown despite being in a flex box.
+  overflow: hidden
 
   // Fill remaining space.
   -webkit-flex: 1
@@ -576,9 +574,6 @@ article.big
   .flexcontainer
     flex-direction: column
 
-    & > div
-      overflow: visible
-
   .top-nav
     height: 100px
     // Set as !important to keep fragments "mood" (with image) working
@@ -640,6 +635,7 @@ article.big
 
     .content
       margin: 0 8%
+      overflow: visible
       width: 84%
 
       .content-inner-standard
