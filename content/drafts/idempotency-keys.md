@@ -248,7 +248,7 @@ CREATE TABLE idempotency_keys (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     idempotency_key TEXT        NOT NULL
         CHECK (char_length(idempotency_key) <= 100),
-    locked_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+    locked_at       TIMESTAMPTZ DEFAULT now(),
 
     -- parameters of the incoming request
     request_params  JSONB       NOT NULL,
