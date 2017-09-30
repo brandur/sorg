@@ -62,9 +62,6 @@ body
   margin-left: 50px
   margin-right: 50px
 
-  // This allows margin to be shown despite being in a flex box.
-  overflow: hidden
-
   // Fill remaining space.
   -webkit-flex: 1
   flex: 1
@@ -570,6 +567,14 @@ article.big
   .toc-index
     display: none
 
+  #container
+    .content
+      // This allows margin to be shown despite being in a flex box. We don't
+      // put it at the top level because it also prevents figcaptions from
+      // being able to range into the left margin.
+      overflow: hidden
+
+
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .flexcontainer
     flex-direction: column
@@ -635,7 +640,6 @@ article.big
 
     .content
       margin: 0 8%
-      overflow: visible
       width: 84%
 
       .content-inner-standard
