@@ -187,23 +187,24 @@ initiating any foreign state mutation. If the call fails,
 our local state will still have a record of it happening
 that we can use to retry the operation.
 
-### Savepoints (#savepoints)
+### Recovery points (#recovery-points)
 
-A ***savepoint*** is a name of a check point that we get to
-after having successfully executed any atomic phase _or_
-foreign state mutation. It's purpose is to allow a retrying
-request to jump back to the point in the lifecycle where
-the last attempt failed.
+A ***recovery point*** is a name of a check point that we
+get to after having successfully executed any atomic phase
+_or_ foreign state mutation. Its purpose is to allow a
+request that's being retried to jump back to the point in
+the lifecycle just before the last attempt failed.
 
 For convenience, we're going to store the name of the
-savepoint reached right onto idempotency key relation that
-we'll build. All requests will initially get a savepoint of
-`started`, and after any request is complete (again,
-through either a success or definitive error) it'll be
-assigned a savepoint of `finished`. When in an atomic
-phase, the transition to a new savepoint should be
-committed as part of that phase's transaction so that it's
-part of the atomic operation as well.
+recovery point reached right onto idempotency key relation
+that we'll build. All requests will initially get a
+recovery point of `started`, and after any request is
+complete (again, through either a success or definitive
+error) it'll be assigned a recovery point of `finished`.
+When in an atomic phase, the transition to a new recovery
+point should be committed as part of that phase's
+transaction so that it's part of the atomic operation as
+well.
 
 ## Background jobs and job staging (#background-jobs)
 
@@ -238,17 +239,152 @@ will recover from failures.
 
 ### The idempotency key relation (#idempotency-key)
 
-`locked_at`
-`params`
-`savepoint`
+Let's design a Postgres schema for idempotency keys in our
+app:
+
+``` sql
+CREATE TABLE idempotency_keys (
+    id              BIGSERIAL   PRIMARY KEY,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+    idempotency_key TEXT        NOT NULL
+        CHECK (char_length(idempotency_key) <= 50),
+    locked_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+    params          JSONB       NOT NULL,
+    recovery_point  TEXT        NOT NULL
+        CHECK (char_length(recovery_point) <= 50),
+    user_id         BIGINT      NOT NULL
+);
+
+CREATE UNIQUE INDEX idempotency_keys_user_id_idempotency_key
+    ON idempotency_keys (user_id, idempotency_key);
+```
+
+There are a few notable fields here:
+
+* `idempotency_key`: This is the user-specified idempotency
+  key. It's good practice to send something with good
+  randomness like a UUID, but not necessarily required. We
+  constraint the field's length so that nobody sends us
+  anything too crazy.
+
+    We've made `idempotency_key` unique, but across
+    `(user_id, idempotency_key)` so that it's possible to
+    have the same idempotency key for different requests as
+    long as it's across different accounts.
+
+* `locked_at`: A field that indicates whether this
+  idempotency key is actively being worked. The first API
+  request that creates the key will lock it automatically,
+  but subsequent retries will also set it to make sure that
+  they're the only request doing the work.
+
+* `params`: The input parameters of the request. This is
+  stored mostly so that we can error if the user sends two
+  requests with the same idempotency key but with different
+  parameters, but can also be used for our own backend to
+  push unfinished requests to completion (see [the
+  completionist](#completionist) below).
+
+* `recovery_point`: A text label for the last phase
+  completed for the idempotent request (see [recovery
+  points](#recovery-points) above). Gets an initial value
+  of `started` and is set to `finished` when the request is
+  considered to be complete.
 
 ### Other schema (#other-schema)
+
+Recall our target API lifecycle for Rocket Rides from
+above.
+
+!fig src="/assets/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
+
+Let's bring up Postgres relations for everything else we'll
+need to build this app including audit records, rides, and
+users. Given that we aim to maximize reliability, we'll try
+to follow database best practices and use `NOT NULL`,
+unique, and foreign key constraints wherever we can.
+
+``` sql
+--
+-- A relation to hold records for every user of our app.
+--
+CREATE TABLE users (
+    id               BIGSERIAL   PRIMARY KEY,
+    email            TEXT        NOT NULL
+        CHECK (char_length(email) <= 255)
+);
+
+--
+-- Now that we have a users table, add a foreign key
+-- constraint to idempotency_keys which we created above.
+--
+ALTER TABLE idempotency_keys
+    ADD CONSTRAINT idempotency_keys_user_id_fkey
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT;
+
+--
+-- A relation that hold audit records that can help us piece
+-- together exactly what happened in a request if necessary
+-- after the fact. It can also, for example, be used to
+-- drive internal security programs tasked with looking for
+-- suspicious activity.
+--
+CREATE TABLE audit_records (
+    id               BIGSERIAL   PRIMARY KEY,
+
+    -- action taken, for example "created"
+    action           TEXT        NOT NULL
+        CHECK (char_length(action) <= 50),
+
+    created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+    data             JSONB       NOT NULL,
+    origin_ip        CIDR        NOT NULL,
+
+    -- resource ID and type, for example "ride" ID 123
+    resource_id      BIGINT      NOT NULL,
+    resource_type    TEXT        NOT NULL
+        CHECK (char_length(resource_type) <= 50),
+
+    user_id          BIGINT      NOT NULL
+        REFERENCES users ON DELETE RESTRICT
+);
+
+--
+-- A relation representing a single ride by a user.
+-- Notably, it holds the ID of a successful charge to
+-- Stripe after we have one.
+--
+CREATE TABLE rides (
+    id               BIGSERIAL   PRIMARY KEY,
+    created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+
+    -- ID of Stripe charge like ch_123; null until we have one
+    stripe_charge_id TEXT        UNIQUE
+        CHECK (char_length(stripe_charge_id) <= 50),
+
+    user_id          BIGINT      NOT NULL
+        REFERENCES users ON DELETE RESTRICT
+);
+
+--
+-- A relation that holds our transactionally-staged jobs
+-- (see "Background jobs and job staging" above).
+--
+CREATE TABLE staged_jobs (
+    id               BIGSERIAL   PRIMARY KEY,
+    job_name         TEXT        NOT NULL,
+    job_args         JSONB       NOT NULL
+);
+```
 
 ### Designing atomic phases (#rocket-rides-phases)
 
 !fig src="/assets/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
 
 ### A stateful implementation (#stateful)
+
+``` ruby
+```
 
 ### The jailbreaker (#jailbreaker)
 
@@ -314,6 +450,11 @@ other systems where it performs foreign state mutations.
 This would allow distributed rollbacks, but is complex and
 time-consuming enough to implement that it's rarely seen
 with any kind of ubiquity in real software environments.
+
+## Beyond APIs (#beyond-apis)
+
+Use idempotency keys in `<input type="hidden">` to control
+multiple form submissions.
 
 [2pc]: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
 [idempotency]: https://stripe.com/blog/idempotency
