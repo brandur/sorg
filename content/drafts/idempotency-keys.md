@@ -251,7 +251,11 @@ CREATE TABLE idempotency_keys (
     locked_at       TIMESTAMPTZ DEFAULT now(),
 
     -- parameters of the incoming request
+    request_method  TEXT        NOT NULL
+        CHECK (char_length(request_method) <= 10),
     request_params  JSONB       NOT NULL,
+    request_path    TEXT        NOT NULL
+        CHECK (char_length(request_path) <= 100),
 
     -- for finished requests, stored status code and body
     response_code   INT         NULL,
