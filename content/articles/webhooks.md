@@ -293,8 +293,8 @@ dangerous by default.
 ## What makes webhooks great (#features)
 
 We've talked mostly about the shortfalls of webhooks, but
-they've got some nice properties too. Here are a few of
-their best aspects.
+they've got some nice properties too. Here are a few of the
+best.
 
 ### Automatic load balancing (#balancing)
 
