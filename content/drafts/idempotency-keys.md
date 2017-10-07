@@ -248,6 +248,7 @@ CREATE TABLE idempotency_keys (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     idempotency_key TEXT        NOT NULL
         CHECK (char_length(idempotency_key) <= 100),
+    last_run_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     locked_at       TIMESTAMPTZ DEFAULT now(),
 
     -- parameters of the incoming request
