@@ -490,17 +490,17 @@ reset or timeout will have to be marked as failed.
 This is why you should implement idempotency and/or
 idempotency keys on all your services!
 
+## Beyond APIs (#beyond-apis)
+
+Use idempotency keys in `<input type="hidden">` to control
+multiple form submissions.
+
 [1] There is one caveat that it may be possible to
 implement [two-phase commit][2pc] between a system and all
 other systems where it performs foreign state mutations.
 This would allow distributed rollbacks, but is complex and
 time-consuming enough to implement that it's rarely seen
 with any kind of ubiquity in real software environments.
-
-## Beyond APIs (#beyond-apis)
-
-Use idempotency keys in `<input type="hidden">` to control
-multiple form submissions.
 
 [2pc]: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
 [idempotency]: https://stripe.com/blog/idempotency
