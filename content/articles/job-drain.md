@@ -118,19 +118,17 @@ jobs through to Sidekiq:
 acquire_lock(:enqueuer) do
 
   loop do
-    DB.transaction(isolation: :repeatable_read) do
-      # For best efficiency, pull jobs in large batches.
-      job_batch = StagedJobs.order('id').limit(1000)
+    # Need at least repeatable read isolation level so that our DELETE after
+    # enqueueing will see the same jobs as the original SELECT.
+    DB.transaction(isolation_level: :repeatable_read) do
+      jobs = StagedJob.order(:id).limit(BATCH_SIZE)
 
-      if job_batch.count > 0
-        # Insert each job into the real queue.
-        job_batch.each do |job|
+      unless jobs.empty?
+        jobs.each do |job|
           Sidekiq.enqueue(job.job_name, *job.job_args)
         end
 
-        # And finally, in the same transaction remove the
-        # records that made it to the queue.
-        StagedJobs.where('id <= ?', job_batch.last).delete
+        StagedJob.where(Sequel.lit("id <= ?", jobs.last.id)).delete
       end
     end
 
