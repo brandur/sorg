@@ -429,20 +429,11 @@ Creating a ride and ride audit record:
 ``` ruby
 ```
 
-### The jailbreaker (#jailbreaker)
-
-``` sql
-UPDATE idempotency_keys
-SET locked_at = NULL
-WHERE savepoint != 'finished'
-  AND locked_at < now() - '2 minutes'::interval;
-```
-
 ### The reaper (#reaper)
 
 Reaps dead keys.
 
-### Stretch feature: the completionist (#completionist)
+### Stretch feature: the completer (#completer)
 
 One problem with this implementation is we're reliant on
 clients to push indeterminate requests to completion.
@@ -450,7 +441,7 @@ Usually clients are more than willing to do this, but there
 can be cases where a client starts working, never quite
 finishes, and drops forever.
 
-A stretch goal is implement a ***completionist*** worker.
+A stretch goal is implement a ***completer*** worker.
 Its only job is to find requests that look like they never
 finished to satisfaction and which it doesn't look like
 clients will be coming back for, and push them through.
