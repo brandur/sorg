@@ -18,11 +18,12 @@ can simply keep retrying a request until they get a
 definitive response.
 
 Implementing a server so that requests to it are perfectly
-idempotent isn't always easy. In endpoints that are _only_
-mutating local state within an ACID database, it's possible
-to get a robust and simple idempotency implementation by
-mapping requests to transactions. I wrote about this more
-simple case [in more detail a few weeks
+idempotent isn't always easy. In endpoints that can get
+away only mutating local state in an ACID database
+(probably most API calls in most applications), it's
+possible to get a robust and simple idempotency
+implementation by mapping requests to transactions. I wrote
+about this more simple case [in more detail a few weeks
 ago](/http-transactions) (and if you can get away with just
 that, do it).
 
@@ -237,6 +238,11 @@ together the basic schema, break the lifecycle up into
 atomic phases, and then design a simple implementation that
 will recover from failures.
 
+A working version (with testing) of all of this is
+available in the [_Atomic Rocket Rides_][atomicrides]
+repository. It might be easier to download that code and
+follow along.
+
 ### The idempotency key relation (#idempotency-key)
 
 Let's design a Postgres schema for idempotency keys in our
@@ -412,53 +418,463 @@ CREATE TABLE staged_jobs (
 
 ### Designing atomic phases (#rocket-rides-phases)
 
+Now that we've got a feel for what our data should look
+like, let's break the API request into distinct atomic
+phases. The process for this is simple: each foreign state
+mutation gets its own atomic phase and there should be one
+initial phase to insert the idempotency key. From there,
+everything between can be grouped together.
+
 !fig src="/assets/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
 
-First handle idempotency keys:
+So in our example, we have an atomic phase for inserting
+the idempotency key (`tx1`) and other for making our charge
+call to Stripe (`tx3`) and storing the result. Every other
+operation around `tx1` and `tx3` gets grouped together and
+becomes part of two more phases, `tx2` and `tx4`. `tx2`
+through `tx4` can each be reached by a recovery point
+that's set by the transaction that committed before it
+(`started`, `ride_created`, and `charge_created`).
 
-From now on we're going to build a looping construct so we
-can advance through the phases of a request:
+### An implementation for an atomic phase (#atomic-phase-implementation)
+
+Our implementation for an atomic phase will wrap everythin
+in a transaction block (note we're using Ruby, but this
+same concept is possible in any language) and give each
+phase three options for what it can return:
+
+1. A `RecoveryPoint` which sets a new recovery point within
+   the same transaction as the rest of the phase. This
+   indicates that execution should continue normally into
+   the next phase.
+2. A `Response` which sets the idempotent request's
+   recovery point to `finished` and returns a response to
+   the user. This should be used as part of the normal
+   success condition, but can also be used to return early
+   with a non-recoverable error. Say for example that a
+   user's credit card is not valid, no matter how many
+   times the request is retried, it will never go through.
+3. A `NoOp` which indicates that program flow should
+   continue, but that neither a recovery point nor response
+   should be set.
 
 ``` ruby
+def atomic_phase(key, &block)
+  error = false
+  begin
+    DB.transaction(isolation: :serializable) do
+      ret = block.call
+
+      if ret.is_a?(NoOp) || ret.is_a?(RecoveryPoint) || ret.is_a?(Response)
+        ret.call(key)
+      else
+        raise "Blocks to #atomic_phase should return one of " \
+          "NoOp, RecoveryPoint, or Response"
+      end
+    end
+  rescue Sequel::SerializationFailure
+    # you could possibly retry this error instead
+    error = true
+    halt 429, JSON.generate(wrap_error(Messages.error_retry))
+  rescue
+    error = true
+    halt 500, JSON.generate(wrap_error(Messages.error_internal))
+  ensure
+    # If we're leaving under an error condition, try to unlock the idempotency
+    # key right away so that another request can try again.
+    if error && !key.nil?
+      begin
+        key.update(locked_at: nil)
+      rescue StandardError
+        # We're already inside an error condition, so swallow any additional
+        # errors from here and just send them to logs.
+        puts "Failed to unlock key #{key.id}."
+      end
+    end
+  end
+end
+
+# Represents an action to perform a no-op. One possible option for a return
+# from an #atomic_phase block.
+class NoOp
+  def call(_key)
+    # no-op
+  end
+end
+
+# Represents an action to set a new recovery point. One possible option for a
+# return from an #atomic_phase block.
+class RecoveryPoint
+  attr_accessor :name
+
+  def initialize(name)
+    self.name = name
+  end
+
+  def call(key)
+    raise ArgumentError, "key must be provided" if key.nil?
+    key.update(recovery_point: name)
+  end
+end
+
+# Represents an action to set a new API response (which will be stored onto an
+# idempotency key). One  possible option for a return from an #atomic_phase
+# block.
+class Response
+  attr_accessor :data
+  attr_accessor :status
+
+  def initialize(status, data)
+    self.status = status
+    self.data = data
+  end
+
+  def call(key)
+    raise ArgumentError, "key must be provided" if key.nil?
+    key.update(
+      locked_at: nil,
+      recovery_point: RECOVERY_POINT_FINISHED,
+      response_code: status,
+      response_body: data
+    )
+  end
+end
+
 ```
 
-Creating a ride and ride audit record:
+In the case of a serialization error, we return a `429
+Conflict` because that almost certainly means that a
+concurrent request conflicted with what we were trying to
+do. In a real app, you probably want to just retry the
+operation right away because there's a good chance it will
+succeed this time.
 
-### A stateful implementation (#stateful)
+For other errors we return a `500 Internal Server Error`.
+For either type of error, we try to unlock the idempotency
+key before finishing so that another request has a chance
+to retry with it.
+
+### Upserting an idempotency key (#upserting-key)
+
+When a new idempotency key value comes into the API, we're
+going to create or update a corresponding row that we'll
+use to track its progress.
+
+The easiest case is if we've never seen the key before. If
+so, just insert a new row with appropriate values.
+
+If we have seen the key, lock it so that no other
+requests that might be operating concurrently also try the
+operation. If the key was already locked, return a `409
+Conflict` to indicate it.
+
+A key that's already set to `finished` is simply allowed to
+fall through and have its response return on the standard
+success path. We'll see that in just a moment.
 
 ``` ruby
+key = nil
+
+atomic_phase(key) do
+  key = IdempotencyKey.first(user_id: user.id, idempotency_key: key_val)
+
+  if key
+    # Programs sending multiple requests with different parameters but the
+    # same idempotency key is a bug.
+    if key.request_params != params
+      halt 409, JSON.generate(wrap_error(Messages.error_params_mismatch))
+    end
+
+    # Only acquire a lock if the key is unlocked or its lock as expired
+    # because it was long enough ago.
+    if key.locked_at && key.locked_at > Time.now - IDEMPOTENCY_KEY_LOCK_TIMEOUT
+      halt 409, JSON.generate(wrap_error(Messages.error_request_in_progress))
+    end
+
+    # Lock the key and update latest run unless the request is already
+    # finished.
+    if key.recovery_point != RECOVERY_POINT_FINISHED
+      key.update(last_run_at: Time.now, locked_at: Time.now)
+    end
+  else
+    key = IdempotencyKey.create(
+      idempotency_key: key_val,
+      locked_at:       Time.now,
+      recovery_point:  RECOVERY_POINT_STARTED,
+      request_method:  request.request_method,
+      request_params:  Sequel.pg_jsonb(params),
+      request_path:    request.path_info,
+      user_id:         user.id,
+    )
+  end
+
+  # no response and no need to set a recovery point
+  NoOp.new
+end
 ```
 
-### The reaper (#reaper)
+At first glance this code might not look like it's safe
+from having two concurrent requests come in in close
+succession and try to the lock the same key, but it is
+because the atomic phase is wrapped in a `SERIALIZABLE`
+transaction. If two different transactions both try to lock
+any one key, one of them will be aborted by Postgres.
 
-Reaps dead keys.
+### A state machine that's directed and acyclic (#acyclic-state-machine)
 
-### Stretch feature: the completer (#completer)
+We're going to implement the rest of the API request as a
+simple state machines whose states are a [directed acyclic
+graph (DAG)][dag], meaning that it only moves in one
+direction and never cycles back on itself.
+
+Each atomic phase will be activated from a recovery point,
+which was either read from a recovered idempotency key, or
+set by the previous atomic phase. We continue to move
+through phases phase until reaching a `finished` state,
+after which the loop is broken and a response is sent back
+to the user.
+
+An idempotency key that was already finished will enter the
+loop, break immediately, and sent back whatever response
+was stored onto it.
+
+``` ruby
+loop do
+  case key.recovery_point
+  when RECOVERY_POINT_STARTED
+    atomic_phase(key) do
+      ...
+    end
+
+  when RECOVERY_POINT_RIDE_CREATED
+    atomic_phase(key) do
+      ...
+    end
+
+  when RECOVERY_POINT_CHARGE_CREATED
+    atomic_phase(key) do
+      ....
+    end
+
+  when RECOVERY_POINT_FINISHED
+    break
+
+  else
+    raise "Bug! Unhandled recovery point '#{key.recovery_point}'."
+  end
+
+  # If we got here, allow the loop to move us onto the next phase of the
+  # request. Finished requests will break the loop.
+end
+
+[key.response_code, JSON.generate(key.response_body)]
+```
+
+### Initial bookkeeping (#initial-bookkeeping)
+
+The second phase (`tx2` in the diagram above) is simple:
+create a record for the ride in our local database, insert
+an audit record, and set a new recovery point to
+`ride_created`.
+
+``` ruby
+atomic_phase(key) do
+  ride = Ride.create(
+    idempotency_key_id: key.id,
+    origin_lat:         params["origin_lat"],
+    origin_lon:         params["origin_lon"],
+    target_lat:         params["target_lat"],
+    target_lon:         params["target_lon"],
+    stripe_charge_id:   nil, # no charge created yet
+    user_id:            user.id,
+  )
+
+  # in the same transaction insert an audit record for what happened
+  AuditRecord.insert(
+    action:        AUDIT_RIDE_CREATED,
+    data:          Sequel.pg_jsonb(params),
+    origin_ip:     request.ip,
+    resource_id:   ride.id,
+    resource_type: "ride",
+    user_id:       user.id,
+  )
+
+  RecoveryPoint.new(RECOVERY_POINT_RIDE_CREATED)
+end
+```
+
+### Foreign state mutation to Stripe (#foreign-state-stripe)
+
+Now that a few records are in place, it's time to try our
+foreign state mutation by trying to charge the customer via
+Stripe. Here we initiate a charge for $20 using a Stripe
+customer ID that was already stored to their user record.
+On success, update the ride created in the last step with
+the new Stripe charge ID and set recovery point
+`charge_created`.
+
+``` ruby
+atomic_phase(key) do
+  # retrieve a ride record if necessary (i.e. we're recovering)
+  ride = Ride.first(idempotency_key_id: key.id) if ride.nil?
+
+  # if ride is still nil by this point, we have a bug
+  raise "Bug! Should have ride for key at #{RECOVERY_POINT_RIDE_CREATED}." \
+    if ride.nil?
+
+  raise "Simulated failed with `raise_error` param." if raise_error
+
+  # Rocket Rides is still a new service, so during our prototype phase
+  # we're going to give $20 fixed-cost rides to everyone, regardless of
+  # distance. We'll implement a better algorithm later to better
+  # represent the cost in time and jetfuel on the part of our pilots.
+  begin
+    charge = Stripe::Charge.create(
+      amount:      20_00,
+      currency:    "usd",
+      customer:    user.stripe_customer_id,
+      description: "Charge for ride #{ride.id}",
+    )
+  rescue Stripe::CardError
+    # Sets the response on the key and short circuits execution by
+    # sending execution right to 'finished'.
+    Response.new(402, wrap_error(Messages.error_payment(error: $!.message)))
+  rescue Stripe::StripeError
+    Response.new(503, wrap_error(Messages.error_payment_generic))
+  else
+    ride.update(stripe_charge_id: charge.id)
+    RecoveryPoint.new(RECOVERY_POINT_CHARGE_CREATED)
+  end
+end
+```
+
+The call to Stripe produces a few possibilities for
+unrecoverable errors (i.e. no matter how many times we
+retry, the call will never succeed). If we run into one,
+set the request to `finished` and return an appropriate
+response.
+
+### Send receipt and finish the request (#send-receipt-finish)
+
+Now that our charge has been persisted, the next step is to
+send a receipt to the user. Making an external mail call
+would normally require its own foreign state mutation, but
+because we're using a transactionally-staged job drain, we
+get a guarantee that the operation commits along with the
+rest of the transaction.
+
+``` ruby
+atomic_phase(key) do
+  StagedJob.insert(
+    job_name: "send_ride_receipt",
+    job_args: Sequel.pg_jsonb({
+      amount:   20_00,
+      currency: "usd",
+      user_id:  user.id
+    })
+  )
+  Response.new(201, wrap_ok(Messages.ok))
+end
+```
+
+The last step is to set a response telling the user that
+everything worked as expected. We're done!
+
+## Other processes (#other-processes)
+
+Besides the web process running the API, a few others are
+needed to make everything work (see [_Atomic Rocket Ride_'s
+`Procfile`][atomicridesproc] for the full list and the
+corresponding implementations in the same repository).
+
+### The enqueuer (#enqueuer)
+
+There should be an ***enqueuer*** that moves jobs from
+`staged_jobs` to the job queue after their inserting
+transaction has committed. See [this article][jobdrain] for
+details on how to build one, or [the
+implementation][enqueuer] from _Atomic Rocket Rides_.
+
+### The completer (#completer)
 
 One problem with this implementation is we're reliant on
 clients to push indeterminate requests to completion.
-Usually clients are more than willing to do this, but there
-can be cases where a client starts working, never quite
+Usually clients are more than willing to do this because
+they want to see their requests go through, but there can
+be cases where a client starts working, never quite
 finishes, and drops forever.
 
 A stretch goal is implement a ***completer*** worker.
 Its only job is to find requests that look like they never
-finished to satisfaction and which it doesn't look like
-clients will be coming back for, and push them through.
+finished to satisfaction and which it looks like clients
+have dropped, and push through to completion.
 
 It doesn't even have to have special knowledge about how
 the stack is implemented. It just needs to know how to read
 idempotency keys and have an internal authentication path
 that allows it to retry anyone's request.
 
-``` ruby
-loop do
-end
-```
+See the _Atomic Rocket Rides_ repository for [a completer
+implementation][completer].
+
+### The reaper (#reaper)
+
+Idempotency keys are meant to act as a mechanism for
+guaranteeing idempotence, and not as a permanent archive of
+historical requests. After some amount of time a
+***reaper*** process should go through keys and delete
+them.
+
+I'd suggest a threshold of about 72 hours so that even if a
+bug is deployed on Friday that errors a large number of
+valid requests, an app could still keep a record of them
+throughout the weekend and onto Monday where a developer
+would have a chance to commit a fix and have the completer
+push them through to success.
+
+An ideal reaper might even notice requests that could not
+be finished successfully and try to do some cleanup on
+them. If cleanup is difficult or impossible, it should put
+them in a list somewhere so that a human can find out what
+failed.
+
+See the _Atomic Rocket Rides_ repository for [a reaper
+implementation][reaper].
 
 ## Murphy in action (#murphys-law)
 
-Now let's look at a perfectly degenerate case.
+Now that we have all the pieces in place, let's assume the
+truth of [Murphy's Law][murphyslaw] and imagine some
+scenarios that could go wrong while a client app is talking
+to the new _Atomic Rocket Rides_ backend:
+
+* *The client makes a request, but the connection breaks
+  before it reaches the backend:* The client, having used
+  an idempotency key, knows that retries are safe and so
+  retries. The next attempt succeeds.
+
+* *Two requests try to create an idempotency key at the
+  same time:* A `UNIQUE` constraint in the database
+  guarantees that only one request can succeed. One goes
+  through, and the other gets a `429 Conflict`.
+
+* *An idempotency key is created, but the database goes
+  down and it fails soon after:* The client continues to
+  retry against the API until it comes back online. Once it
+  does, the created key is recovered and the request is
+  continued.
+
+* *Stripe is down:* The atomic phase containing the Stripe
+  request fails, and the API responds with an error that
+  tells the client to retry. They continue to do so until
+  Stripe comes back online and the charge succeeds.
+
+* *The web worker dies while waiting for a response from
+  Stripe:* Luckily, the call to Stripe was also made with
+  its own idempotency key. The client retries and a new
+  worker retries with the same key. Stripe's own
+  idempotency guarantees ensure that we haven't
+  double-charged our user.
 
 ## Non-idempotent foreign state mutations (#non-idempotent)
 
@@ -495,5 +911,13 @@ time-consuming enough to implement that it's rarely seen
 with any kind of ubiquity in real software environments.
 
 [2pc]: https://en.wikipedia.org/wiki/Two-phase_commit_protocol
+[atomicrides]: https://github.com/brandur/rocket-rides-atomic
+[atomicridesproc]: https://github.com/brandur/rocket-rides-atomic/blob/master/Procfile
+[completer]: https://github.com/brandur/rocket-rides-atomic/blob/master/completer.rb
+[dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
+[enqueuer]: https://github.com/brandur/rocket-rides-atomic/blob/master/enqueuer.rb
 [idempotency]: https://stripe.com/blog/idempotency
+[jobdrain]: /job-drain
+[murphyslaw]: https://en.wikipedia.org/wiki/Murphy%27s_law
+[reaper]: https://github.com/brandur/rocket-rides-atomic/blob/master/reaper.rb
 [rocketrides]: https://github.com/stripe/stripe-connect-rocketrides
