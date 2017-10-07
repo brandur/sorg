@@ -871,10 +871,10 @@ to the new _Atomic Rocket Rides_ backend:
 
 * *The web worker dies while waiting for a response from
   Stripe:* Luckily, the call to Stripe was also made with
-  its own idempotency key. The client retries and a new
-  worker retries with the same key. Stripe's own
-  idempotency guarantees ensure that we haven't
-  double-charged our user.
+  its own idempotency key. The client retries and a
+  different worker invokes a new call to Stripe with the
+  same key. Stripe's own idempotency guarantees ensure that
+  we haven't double-charged our user.
 
 ## Non-idempotent foreign state mutations (#non-idempotent)
 
