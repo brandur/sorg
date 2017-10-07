@@ -876,6 +876,17 @@ to the new _Atomic Rocket Rides_ backend:
   same key. Stripe's own idempotency guarantees ensure that
   we haven't double-charged our user.
 
+* *A bad deploy 500s all requests midway through:*
+  Developers scramble and deploy a fix for the bug. After
+  it's out, clients retry and the original requests succeed
+  along the newly bug-free path. If the fix took so long to
+  get out that clients have long since gone away, then the
+  completer process pushes them through.
+
+Our care around implementing a failsafe design has paid off
+-- the system is safe despite a wide variety of possible
+failures.
+
 ## Non-idempotent foreign state mutations (#non-idempotent)
 
 If we know that a foreign state mutation is an idempotent
