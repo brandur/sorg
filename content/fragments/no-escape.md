@@ -26,7 +26,7 @@ problem:
 
     inoremap <esc> NO ESCAPE FOR YOU
 
-Now intead of taking you out of Insert mode, Esc will now inject an unhelpful
+Now instead of taking you out of Insert mode, Esc will now inject an unhelpful
 string of junk which must then be painstakingly erased. I've already had to do
 it about twenty times writing this article. Now it's all up to me: sink or
 swim.
