@@ -7,7 +7,7 @@ hook: Hardening services by identifying foreign state
   that can be restarted.
 ---
 
-In the world of APIs, ***idempotency*** is an important
+In the world of APIs, ***idempotency*** is a powerful
 concept. An idempotent endpoint is one that can be called
 any number of times while guaranteeing that the side
 effects will occur only once. In a messy world where
