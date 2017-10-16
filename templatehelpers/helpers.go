@@ -142,7 +142,10 @@ func pace(distance float64, duration time.Duration) string {
 }
 
 // Matches links in a tweet (like protocol://link).
-var linkRE = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*)`)
+//
+// Note that the last character isn't allowed to match a few extra characters
+// in case the link was wrapped in parenthesis, ended a sentence, or the like.
+var linkRE = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*[^ "\n\r\t<. ])`)
 
 // Matches tags in a tweet (like #mix11).
 var tagRE = regexp.MustCompile(`#(\w+)`)
