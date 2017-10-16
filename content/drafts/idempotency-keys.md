@@ -887,7 +887,9 @@ Our care around implementing a failsafe design has paid off
 -- the system is safe despite a wide variety of possible
 failures.
 
-## Non-idempotent foreign state mutations (#non-idempotent)
+## Complications (#complications)
+
+### Non-idempotent foreign state mutations (#non-idempotent)
 
 If we know that a foreign state mutation is an idempotent
 operation or it supports an idempotency key (like Stripe
@@ -908,6 +910,14 @@ reset or timeout will have to be marked as failed.
 
 This is why you should implement idempotency and/or
 idempotency keys on all your services!
+
+### Non-ACID data stores (#non-acid)
+
+This is one good reason why you should never use MongoDB --
+even though if you squint it stores information just like
+Postgres stores information, lack of atomic
+guarantees makes it hard to impossible to build default
+safety into a system.
 
 ## Beyond APIs (#beyond-apis)
 
