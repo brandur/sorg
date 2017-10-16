@@ -192,7 +192,7 @@ func renderTweetContent(content string) string {
 	}
 
 	// show newlines as line breaks
-	content = strings.Replace(content, "\n", "<br>", -1)
+	content = strings.Replace(content, "\n", `<div class="tweet-linebreak">`, -1)
 
 	return content
 }
