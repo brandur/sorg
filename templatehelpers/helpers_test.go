@@ -100,9 +100,9 @@ func TestRenderTweetContent(t *testing.T) {
 	// link with whitespace and newlines
 	assert.Equal(t,
 		`content`+
-			`<br><br>`+
+			`<div class="tweet-linebreak"><div class="tweet-linebreak">`+
 			`<a href="https://example.com" rel="nofollow">https://example.com</a>`+
-			`<br><br>`+
+			`<div class="tweet-linebreak"><div class="tweet-linebreak">`+
 			`end`,
 		renderTweetContent(`content
 
