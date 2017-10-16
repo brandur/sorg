@@ -117,6 +117,12 @@ end`),
 		renderTweetContent(`https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now`),
 	)
 
+	// long with special characters
+	assert.Equal(t,
+		`<a href="https://example.com/w/Film_(2005)" rel="nofollow">https://example.com/w/Film_(2005)</a>.`,
+		renderTweetContent(`https://example.com/w/Film_(2005).`),
+	)
+
 	// tag
 	assert.Equal(t,
 		`<a href="https://search.twitter.com/search?q=mix11" rel="nofollow">#mix11</a>`,
