@@ -42,11 +42,12 @@ func TestDistanceOfTimeInWords(t *testing.T) {
 }
 
 func TestFormatTime(t *testing.T) {
-	assert.Equal(t, "July 3, 2016", formatTime(&testTime))
+	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
+	assert.Equal(t, "July 3, 2016", formatTime(&testTime))
 }
 
 func TestFormatTimeWithMinute(t *testing.T) {
-	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
+	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
 }
 
 func TestInKM(t *testing.T) {
@@ -98,14 +99,14 @@ func TestRenderTweetContent(t *testing.T) {
 
 	// link with whitespace and newlines
 	assert.Equal(t,
-		`content
-	
- <a href="https://example.com" rel="nofollow">https://example.com</a> 
-
-end`,
+		`content`+
+			`<br><br>`+
+			`<a href="https://example.com" rel="nofollow">https://example.com</a>`+
+			`<br><br>`+
+			`end`,
 		renderTweetContent(`content
-	
- https://example.com 
+
+https://example.com
 
 end`),
 	)
