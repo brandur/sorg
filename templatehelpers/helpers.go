@@ -61,11 +61,21 @@ func distanceOfTimeInWordsFromNow(to time.Time) string {
 }
 
 func formatTime(t *time.Time) string {
-	return t.Format("January 2, 2006")
+	return toNonBreakingWhitespace(t.Format("January 2, 2006"))
 }
 
 func formatTimeWithMinute(t *time.Time) string {
-	return t.Format("January 2, 2006 15:04")
+	return toNonBreakingWhitespace(t.Format("January 2, 2006 15:04"))
+}
+
+// This is a little tricky, but converts normal spaces to non-breaking spaces
+// so that we can guarantee that certain strings will appear entirely on the
+// same line. This is useful for a star count for example, because it's easy to
+// misread a rating if it's broken up. See here for details:
+//
+// https://github.com/brandur/sorg/pull/60
+func toNonBreakingWhitespace(str string) string {
+	return strings.Replace(str, " ", " ", -1)
 }
 
 func inKM(m float64) float64 {
@@ -181,6 +191,9 @@ func renderTweetContent(content string) string {
 		content = strings.Replace(content, tag, link, -1)
 	}
 
+	// show newlines as line breaks
+	content = strings.Replace(content, "\n", "<br>", -1)
+
 	return content
 }
 
@@ -196,13 +209,7 @@ func roundToString(f float64) string {
 func toStars(n int) string {
 	var stars string
 	for i := 0; i < n; i++ {
-		// This is a little tricky, but the whitespace after the star here is
-		// special: it's non-breaking so that a review never gets split across
-		// multiple lines (and therefore cannot be replaced with a normal
-		// space). See here for details:
-		//
-		// https://github.com/brandur/sorg/pull/60
-		stars += "★ "
+		stars += "★ "
 	}
-	return stars
+	return toNonBreakingWhitespace(stars)
 }
