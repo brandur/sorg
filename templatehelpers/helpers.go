@@ -164,8 +164,8 @@ func renderTweetContent(content string) string {
 		href := matches[2]
 
 		display := href
-		if len(href) > 30 {
-			display = fmt.Sprintf("%s&hellip;", href[0:30])
+		if len(href) > 50 {
+			display = fmt.Sprintf("%s&hellip;", href[0:50])
 		}
 
 		// replace with tags so links don't interfere with subsequent rules

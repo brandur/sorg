@@ -113,8 +113,8 @@ end`),
 
 	// long link
 	assert.Equal(t,
-		`<a href="https://example.com/path/to/more/great/stuff" rel="nofollow">https://example.com/path/to/mo&hellip;</a>`,
-		renderTweetContent(`https://example.com/path/to/more/great/stuff`),
+		`<a href="https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now" rel="nofollow">https://example.com/path/to/more/great/stuff/and/t&hellip;</a>`,
+		renderTweetContent(`https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now`),
 	)
 
 	// tag
