@@ -420,12 +420,13 @@ CREATE TABLE staged_jobs (
 
 Now that we've got a feel for what our data should look
 like, let's break the API request into distinct atomic
-phases. The process for this is simple: each foreign state
-mutation gets its own atomic phase and there should be one
-initial phase to insert the idempotency key. From there,
-everything between can be grouped together.
+phases. Here's how we're going to do it:
 
-!fig src="/assets/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
+1. Upserting the idempotency key gets its own atomic phase.
+2. Every foreign state mutation gets its own atomic phase.
+3. After those phases have been identified, all other
+   operations *between* them (no matter how many) are
+   grouped into their own atomic phases.
 
 So in our example, we have an atomic phase for inserting
 the idempotency key (`tx1`) and other for making our charge
@@ -436,7 +437,9 @@ through `tx4` can each be reached by a recovery point
 that's set by the transaction that committed before it
 (`started`, `ride_created`, and `charge_created`).
 
-### An implementation for an atomic phase (#atomic-phase-implementation)
+!fig src="/assets/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
+
+### Atomic phase implementation (#atomic-phase-implementation)
 
 Our implementation for an atomic phase will wrap everythin
 in a transaction block (note we're using Ruby, but this
@@ -620,7 +623,7 @@ because the atomic phase is wrapped in a `SERIALIZABLE`
 transaction. If two different transactions both try to lock
 any one key, one of them will be aborted by Postgres.
 
-### A state machine that's directed and acyclic (#acyclic-state-machine)
+### A directed and acyclic state machine (#acyclic-state-machine)
 
 We're going to implement the rest of the API request as a
 simple state machines whose states are a [directed acyclic
