@@ -916,11 +916,23 @@ idempotency keys on all your services!
 
 ### Non-ACID data stores (#non-acid)
 
-This is one good reason why you should never use MongoDB --
-even though if you squint it stores information just like
-Postgres stores information, lack of atomic
-guarantees makes it hard to impossible to build default
-safety into a system.
+I titled this article as "Stripe-like" because while Stripe
+uses idempotency keys, our implementation is quite a bit
+more basic -- if you manage to implement something like
+what's described here you'll have something a lot more
+sophisticated.
+
+A major reason for the discrepancy is that Stripe is backed
+by MongoDB. Like other non-ACID stores, MongoDB annot
+guarantee that any two operations commit atomically --
+_every_ operation against your database becomes equivalent
+to a foreign state mutation because an atomic phase is
+impossible.
+
+This is one of the many good reasons that you should never
+use MongoDB. Superficially it looks similar to a real
+database, but its inability to provide anything resembling
+an atomic guarantee makes passive safety a fantasy.
 
 ## Beyond APIs (#beyond-apis)
 
