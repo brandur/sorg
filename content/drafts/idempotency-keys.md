@@ -207,7 +207,7 @@ point should be committed as part of that phase's
 transaction so that it's part of the atomic operation as
 well.
 
-## Background jobs and job staging (#background-jobs)
+## Background jobs and staging (#background-jobs)
 
 In-band foreign state mutations make a request slower and
 more difficult to reason about, so they should be avoided
@@ -633,12 +633,12 @@ direction and never cycles back on itself.
 Each atomic phase will be activated from a recovery point,
 which was either read from a recovered idempotency key, or
 set by the previous atomic phase. We continue to move
-through phases phase until reaching a `finished` state,
-after which the loop is broken and a response is sent back
-to the user.
+through phases until reaching a `finished` state, upon
+which the loop is broken and a response is sent back to the
+user.
 
 An idempotency key that was already finished will enter the
-loop, break immediately, and sent back whatever response
+loop, break immediately, and send back whatever response
 was stored onto it.
 
 ``` ruby
@@ -936,8 +936,34 @@ an atomic guarantee makes passive safety a fantasy.
 
 ## Beyond APIs (#beyond-apis)
 
-Use idempotency keys in `<input type="hidden">` to control
-multiple form submissions.
+This article focuses heavily on APIs, but note that this
+same technique is reusable for other software as well. A
+common problem in web apps is double form submission. A
+user clicking the "Submit" button twice in quick succession
+may initiate two separate HTTP calls, and in cases where
+submissions have non-idempotent side effects (e.g. charging
+the user) this is a problem.
+
+When rendering the form initially, we can add a `<input
+type="hidden">` to it that contains an idempotency key.
+This value will stay the same across multiple submissions,
+and the server can use it to dedup the request.
+
+## Cultivating passive safety (#passive-safety)
+
+Backends should aim to be *passively safe* -- no matter
+what kind of failures are thrown at them they'll end up in
+a stable state, and users are never left broken even in the
+most extreme cases. From there, active mechanisms can drive
+the system towards a perfectly cohesive state, but ideally
+human operators never have to intervene to fix things.
+
+[Purely idempotent transactions](/http-transactions) and
+the idempotency keys with atomic phases described here are
+two ways to move in that direction. Failures are not only
+understood to be possible, but are expected, and enough
+thought's been applied to the system's design that we know
+it'll tolerate failure cleanly no matter what happens.
 
 [1] There is one caveat that it may be possible to
 implement [two-phase commit][2pc] between a system and all
