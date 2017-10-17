@@ -554,7 +554,7 @@ For either type of error, we try to unlock the idempotency
 key before finishing so that another request has a chance
 to retry with it.
 
-### Upserting an idempotency key (#upserting-key)
+### Idempotency key upsert (#upserting-key-upsert)
 
 When a new idempotency key value comes into the API, we're
 going to create or update a corresponding row that we'll
@@ -703,7 +703,7 @@ atomic_phase(key) do
 end
 ```
 
-### Foreign state mutation to Stripe (#foreign-state-stripe)
+### Calling Stripe (#calling-stripe)
 
 Now that a few records are in place, it's time to try our
 foreign state mutation by trying to charge the customer via
@@ -754,7 +754,7 @@ retry, the call will never succeed). If we run into one,
 set the request to `finished` and return an appropriate
 response.
 
-### Send receipt and finish the request (#send-receipt-finish)
+### Send receipt and finish (#send-receipt-finish)
 
 Now that our charge has been persisted, the next step is to
 send a receipt to the user. Making an external mail call
