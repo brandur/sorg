@@ -1,8 +1,5 @@
 ---
-#title: Implementing Stripe-like Idempotency Keys and Extreme API Resilience in Postgres
-#title: Implementing Stripe-like Idempotency Keys in Postgres
-#title: Idempotency Keys and Extreme API Hardening in Postgres
-title: Stripe-like Idempotency Keys and API Hardening in Postgres
+title: Implementing Stripe-like Idempotency Keys in Postgres
 published_at: 2017-10-26T17:13:01Z
 location: San Francisco
 hook: Building resilient services by identifying foreign
