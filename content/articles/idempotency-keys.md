@@ -1,6 +1,6 @@
 ---
 title: Implementing Stripe-like Idempotency Keys in Postgres
-published_at: 2017-10-26T17:13:01Z
+published_at: 2017-10-27T13:52:12Z
 location: San Francisco
 hook: Building resilient services by identifying foreign
   state mutations and grouping local changes into
