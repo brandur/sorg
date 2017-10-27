@@ -944,22 +944,13 @@ idempotency keys on all your services!
 
 ### Non-ACID data stores (#non-acid)
 
-The idempotency keys implemented here are "Stripe-like"
-because while Stripe uses idempotency keys, our
-implementation is quite a bit more basic -- if you manage
-to implement what's described here you'll have produced
-something far more robust.
-
-The major reason for the discrepancy is that Stripe is
-backed by MongoDB. Like other non-ACID stores, MongoDB
-cannot ever guarantee that any two operations commit
-atomically -- _every_ operation against your database
-becomes equivalent to a foreign state mutation because the
-notion of an atomic phase is impossible.
-
-If the idea of robustness is even of passing interest to
-you, make sure to pick your database carefully. Don't use
-MongoDB.
+It's worth mentioning that none of this is possible on a
+non-ACID store like MongoDB. Without transactional
+semantics a database can't ever guarantee that any two
+operations commit atomically -- _every_ operation against
+your database becomes equivalent to a foreign state
+mutation because the notion of an atomic phase is
+impossible.
 
 ## Beyond APIs (#beyond-apis)
 
