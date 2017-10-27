@@ -188,8 +188,8 @@ remember that even foreign calls within your own
 infrastructure count! It's tempting to treat emitting
 records to Kafka as part of atomic operations because they
 have such a high success rate that they feels like they
-are. Unfortunately, they're absolutely not, and should be
-treated like any other fallible foreign state mutation.
+are. They're not, and should be treated like any other
+fallible foreign state mutation.
 
 ## Atomic phases (#atomic-phases)
 
