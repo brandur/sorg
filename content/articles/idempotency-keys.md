@@ -187,9 +187,9 @@ We're using an API call to Stripe as a common example, but
 remember that even foreign calls within your own
 infrastructure count! It's tempting to treat emitting
 records to Kafka as part of atomic operations because they
-have such a high success rate that they feels like they
-are. They're not, and should be treated like any other
-fallible foreign state mutation.
+have such a high success rate that they feel like they are.
+They're not, and should be treated like any other fallible
+foreign state mutation.
 
 ## Atomic phases (#atomic-phases)
 
@@ -232,7 +232,7 @@ type of work to after the request is complete by sending it
 to a background job queue.
 
 In our Rocket Rides example the charge to Stripe probably
-_can't_ be deferred to we want to know whether it succeeded
+_can't_ be deferred -- we want to know whether it succeeded
 right away so that we can deny the request if it didn't.
 Sending an email _can_ and should be sent to the
 background.
