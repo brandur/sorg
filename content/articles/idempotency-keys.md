@@ -947,7 +947,7 @@ idempotency keys on all your services!
 The idempotency keys implemented here are "Stripe-like"
 because while Stripe uses idempotency keys, our
 implementation is quite a bit more basic -- if you manage
-to implement what's described here you'll have produce
+to implement what's described here you'll have produced
 something far more robust.
 
 The major reason for the discrepancy is that Stripe is
