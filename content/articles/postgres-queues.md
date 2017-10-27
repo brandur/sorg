@@ -25,7 +25,7 @@ As we'll see below, there are very good reasons not to use your database as a jo
 
 ## Building a test bench (#test-bench)
 
-We originally noticed this problem in production, but the first step for us to be able to check any potentials solutions is to be able to reliably reproduce it in a controlled environment. For this purpose, we wrote the [que-degradation-test](https://github.com/brandur/que-degradation-test), a simple program with three processes:
+We originally noticed this problem in production, but the first step for us to be able to check any potential solutions is to be able to reliably reproduce it in a controlled environment. For this purpose, we wrote the [que-degradation-test](https://github.com/brandur/que-degradation-test), a simple program with three processes:
 
 * A job producer.
 * A job worker.
@@ -80,7 +80,7 @@ WHERE locked
 LIMIT 1
 ```
 
-This might look a little scary, but after understanding how to read a [recursive Postgres CTE](http://www.postgresql.org/docs/devel/static/queries-with.html), it an be deconstructed into a few more easily digestible components. Recursive CTEs generally take the form of `<non-recursive term> UNION [ALL] <recursive term>` where the initial non-recursive is evaluated and acts as an anchor to seed the recursive term. As noted in the Postgres documentation, the query is executed with these basic steps:
+This might look a little scary, but after understanding how to read a [recursive Postgres CTE](http://www.postgresql.org/docs/devel/static/queries-with.html), it can be deconstructed into a few more easily digestible components. Recursive CTEs generally take the form of `<non-recursive term> UNION [ALL] <recursive term>` where the initial non-recursive is evaluated and acts as an anchor to seed the recursive term. As noted in the Postgres documentation, the query is executed with these basic steps:
 
 1. Evaluate the non-recursive term. Place results into a temporary _working table_.
 2. So long as the working table is not empty, repeat these steps:
