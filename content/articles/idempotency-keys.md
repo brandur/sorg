@@ -34,7 +34,7 @@ away with it take that path.
 Implementations that need to make synchronous changes in
 foreign state (i.e. outside of a local ACID store) are
 somewhat more difficult to design. A basic example of this
-is if an app needs to make a Stripe to create a charge and
+is if an app needs to make a Stripe request to create a charge and
 needs to know in-band whether it went through so that it
 can decide whether to proffer some good or service. To
 guarantee idempotency on this type of endpoint we'll need
