@@ -757,12 +757,17 @@ atomic_phase(key) do
   # distance. We'll implement a better algorithm later to better
   # represent the cost in time and jetfuel on the part of our pilots.
   begin
-    charge = Stripe::Charge.create(
+    charge = Stripe::Charge.create({
       amount:      20_00,
       currency:    "usd",
       customer:    user.stripe_customer_id,
       description: "Charge for ride #{ride.id}",
-    )
+    }, {
+      # Pass through our own unique ID rather than the value
+      # transmitted to us so that we can guarantee uniqueness to Stripe
+      # across all Rocket Rides accounts.
+      idempotency_key: "rocket-rides-atomic-#{key.id}"
+    })
   rescue Stripe::CardError
     # Sets the response on the key and short circuits execution by
     # sending execution right to 'finished'.
