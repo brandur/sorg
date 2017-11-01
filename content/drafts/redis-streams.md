@@ -26,7 +26,17 @@ at-least-once semantics.
 Notably our example here wouldn't work without the
 transaction. With the transaction removed, if the consumer
 successfully updated `total_count` but failed to set the
-checkpoint, then the next time 
+checkpoint, then it would double-count the distance of
+those records when it retried consuming them.
+
+But if a consumer using input records to execute operations
+which are _idempotent_, then a wrapping transaction isn't
+necessarily needed. An example of this is a consumer that's
+reading a stream to add or remove information into a data
+warehouse. As long as creation records are treated as
+something like an upsert instead of `INSERT` and a deletion
+is tolerant if the target doesn't exist, then all
+operations can safely be considered to be idempotent.
 
 ### Simulating failure (#simulating-failure)
 
