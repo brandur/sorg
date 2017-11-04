@@ -155,14 +155,26 @@ information that producers that had been persisted.
 
 By default Redis is not durable; a sane configuration
 choice when it's been used for caching or rate limiting,
-but not when it's being used for a log. To make Redis
-durable, change it's `xxx` option to `xxx` as described in
-[the documentation][]:
+but not when it's being used for a log. To make Redis fully
+durable, tell it to keep an append-only file (AOF) with
+`appendonly` and instruct it to perform fsync on every
+command that's written to the AOF with `appendfsync
+always` (more details [in the Redis documentation on
+persistence][persistence]):
 
 ```
+appendonly yes
+appendfsync always
 ```
 
-TODO
+Note that there's an inherent tradeoff between durability
+and performance (ever wonder [how MongoDB performed so well
+on its early benchmarks?][mongodurability]). Redis doing
+the extra work to keep an AOL and performing more fsyncs
+will make commands slower. If you're using it for multiple
+things, it might be useful to make a distinction between
+places where ephemerality is okay and where it isn't, and
+run two separate Redis's with different configuration.
 
 ## Unified Rocket Rides (#rocket-rides-unified)
 
@@ -261,7 +273,8 @@ consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231}
 [1] The expectation currently is that streams will be
 available in the Redis 4.0 series by the end of the year.
 
-[fivereads]: /kinesis-in-production#five-reads
+[mongodurability]: /fragments/mongo-durability
+[persistence]: https://redis.io/topics/persistence
 [thelog]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
 [streams]: http://antirez.com/news/114
 [unifiedrides]: https://github.com/brandur/rocket-rides-unified
