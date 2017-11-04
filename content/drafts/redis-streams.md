@@ -5,9 +5,69 @@ location: San Francisco
 hook: TODO
 ---
 
-## At least once design (#at-least-once)
+Years ago, LinkedIn [wrote an article about the unified
+log][thelog], a useful architectural pattern for services
+in a distributed system converge state with one another. It
+was a refreshingly novel idea at the time, and still is:
+Kafka may be more prevalent in 2017, but most of us are
+still gluing components together with little more than
+patches and duct tape.
+
+In the log's design, services emit state changes into an
+ordered data structure where each new record gets a unique
+ID. Unlike a queue, a log is durable across any number of
+reads until the log is explicitly truncated.
+
+TODO: Diagram
+
+Consumers track changes in the wider system by consuming
+the log. Each one maintains the ID of the last record it
+successfully consumed and aims to consume every record at
+least once -- no records should be missed. When a consumer
+is knocked offline, it looks up the last ID that it
+consumed, and continues reading the log from there.
+
+The article above points out that this design is nothing
+new -- we've been using logs in various forms in computer
+science for decades. A common example is how a Postgres
+installation streams changes to its replicas over the WAL
+(write-ahead log). Changes in the database's physical
+structure are written as records to the WAL, and each
+replica reads records and applies them to their own state.
+Tuple `123` was added, tuple `124` was updated, tuple `125`
+was deleted. The WAL is saved in segments and in a
+production environment often uploaded to a service like S3
+for durable access and high availability.
+
+## At-least once design (#at-least-once)
+
+On systems powered by a unified log, resilience and
+correctness are the name of the game. Consumers should get
+every message that a producer sends, and to that end
+processes are built to guarantee **at-least once** delivery
+semantics. Messages are usually sent once, but in cases
+where there's uncertainty around whether the transmission
+occurred, a message will be send as many times as necessary
+to be sure.
+
+Exactly-once delivery is a panacea of distributed systems,
+but even if possible, it would be a costly guarantee to
+make in the additional overhead that would be needed in
+consumers and producers. In practice, at-least once
+semantics are fine to handle as long as consumers are built
+to handle it from the beginning.
 
 ## Redis streams (#redis-streams)
+
+Kafka is a popular system component that's a great log
+implementation. Unfortunately, Kafka is heavy software
+that's difficult to get configured and costly to run.
+Pricing on Heroku costs $100 a month, and once you factor
+in server and personnel costs, it's probably going to cost
+you more to do it yourself. There are many alternatives,
+but most of them are either also non-trivial to setup and
+maintain, obscure, or design problems that make their use
+awkward (e.g. [poor fanout in Kinesis][fivereads]).
 
 ### Configuring Redis for durability (#redis-durability)
 
@@ -15,7 +75,7 @@ hook: TODO
 
 ### The streamer (#streamer)
 
-### A transactional consumer (#consumer)
+### Consumers & checkpointing (#consumers)
 
 ### Non-transactional consumers (#non-transaction)
 
@@ -64,6 +124,11 @@ For example, here's `consumer0` and `consumer1` showing an
 identical number for ride ID `521`:
 
 ```
-consumer0.1 | Consumed record: {"id":521,"distance":539.836923415231} total_distance=257721.7m
-consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231} total_distance=257721.7m
+consumer0.1 | Consumed record: {"id":521,"distance":539.836923415231}
+              total_distance=257721.7m
+consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231}
+              total_distance=257721.7m
 ```
+
+[fivereads]: /kinesis-in-production#five-reads
+[thelog]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
