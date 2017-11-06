@@ -503,7 +503,7 @@ def atomic_phase(key, &block)
   rescue Sequel::SerializationFailure
     # you could possibly retry this error instead
     error = true
-    halt 429, JSON.generate(wrap_error(Messages.error_retry))
+    halt 409, JSON.generate(wrap_error(Messages.error_retry))
   rescue
     error = true
     halt 500, JSON.generate(wrap_error(Messages.error_internal))
@@ -570,7 +570,7 @@ end
 
 ```
 
-In the case of a serialization error, we return a `429
+In the case of a serialization error, we return a `409
 Conflict` because that almost certainly means that a
 concurrent request conflicted with what we were trying to
 do. In a real app, you probably want to just retry the
@@ -892,7 +892,7 @@ to the new _Atomic Rocket Rides_ backend:
 * *Two requests try to create an idempotency key at the
   same time:* A `UNIQUE` constraint in the database
   guarantees that only one request can succeed. One goes
-  through, and the other gets a `429 Conflict`.
+  through, and the other gets a `409 Conflict`.
 
 * *An idempotency key is created, but the database goes
   down and it fails soon after:* The client continues to
