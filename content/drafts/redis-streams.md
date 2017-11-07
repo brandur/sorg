@@ -18,14 +18,14 @@ ordered data structure where each new record gets a unique
 ID. Unlike a queue, a log is durable across any number of
 reads until it's explicitly truncated.
 
-TODO: Diagram
-
 Consumers track changes in the wider system by consuming
 the log. Each one maintains the ID of the last record it
 successfully consumed and aims to consume every record at
 least once -- no records should be missed. When a consumer
 is knocked offline, it looks up the last ID that it
 consumed, and continues reading the log from there.
+
+!fig src="/assets/redis-streams/unified-log.svg" caption="The unified log: a producer emits to the stream and consumers read from it."
 
 The article above points out that this design is nothing
 new -- we've been using logs in various forms in computer
@@ -64,30 +64,30 @@ the beginning.
 ## Redis streams (#redis-streams)
 
 I was happy to hear recently that Redis will soon [1] be
-shipping with a new data primitive that will make an
-admirable backend for unified logs: [streams][streams].
-They're distinct from Redis lists in that records in them
-are assigned with addressable IDs, and they lend themselves
-well to be being read more than once. They're a
+shipping with a new data structure that's a perfect backend
+for unified logs: [streams][streams]. Unlike a Redis list,
+records in a stream are assigned with addressable IDs and
+are indexed or sliced with these absolute IDs rather than a
+relative offset, which lends itself well to having multiple
+consumers tracking their position within one. They're a
 near-perfect analog for what we've been talking about so
 far.
 
-about so far. Records are added to one with the new `XADD`
-command:
+Records are added to a stream with the new `XADD` command:
 
 ```
 > XADD rocket-rides-log * id 123 distance 456.7
 1506871964177.0
 ```
 
-This adds a record to the `rocket-rides-log` stream with
-the fields `id = 123` and `distance = 456.7`. Redis
-responds with a unique ID for the record within the stream
-that's made up of a timestamp and a sequence number (`.0`)
-to disambiguate within the millisecond.
+This appends to the stream `rocket-rides-log` with the
+fields `id = 123` and `distance = 456.7`. Redis responds
+with a unique ID for the record within the stream that's
+made up of a timestamp and a sequence number (`.0`) to
+disambiguate within the millisecond.
 
-The other important command is `XRANGE`, which allows us to
-read records from the stream:
+The other important command is `XRANGE` which reads a
+segment from the stream:
 
 ```
 > XRANGE rocket-rides-log - + COUNT 2
@@ -192,7 +192,7 @@ consumers will read the stream and keep a running tally of
 the total distance traveled for every ride in the system
 that's ever been taken.
 
-TODO: Diagram of client -> API -> stream -> consumers
+!fig src="/assets/redis-streams/streaming-model.svg" caption="Clients sending data to the API which passes it onto the stream and is ingested by stream consumers."
 
 Both producer and consumers will be using database and
 transactions at-least once semantics to guarantee that all
