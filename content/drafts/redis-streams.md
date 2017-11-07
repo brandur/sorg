@@ -16,7 +16,7 @@ patches and duct tape.
 In the log's design, services emit state changes into an
 ordered data structure where each new record gets a unique
 ID. Unlike a queue, a log is durable across any number of
-reads until the log is explicitly truncated.
+reads until it's explicitly truncated.
 
 TODO: Diagram
 
@@ -166,14 +166,15 @@ appendonly yes
 appendfsync always
 ```
 
-Note that there's an inherent tradeoff between durability
-and performance (ever wonder [how MongoDB performed so well
-on its early benchmarks?][mongodurability]). Redis doing
-the extra work to keep an AOL and performing more fsyncs
-will make commands slower. If you're using it for multiple
-things, it might be useful to make a distinction between
-places where ephemerality is okay and where it isn't, and
-run two separate Redis's with different configuration.
+There's an inherent tradeoff between durability and
+performance (ever wonder [how MongoDB performed so well on
+its early benchmarks?][mongodurability]). Redis doing the
+extra work to keep an AOF and performing more fsyncs will
+make commands slower (although still very fast). If you're
+using it for multiple things, it might be useful to make a
+distinction between places where ephemerality is okay and
+where it isn't, and run two separate Redis's with different
+configuration.
 
 ## Unified Rocket Rides (#rocket-rides-unified)
 
@@ -247,6 +248,17 @@ due to a serialization error or other problem, no invalid
 data is left in the log. This idea is further expanded on
 in [transactionally-staged job drains](/job-drain) which
 applies the same idea to background jobs.
+
+The staged records relation in Postgres look like this:
+
+``` sql
+CREATE TABLE staged_log_records (
+    id     BIGSERIAL PRIMARY KEY,
+    action TEXT      NOT NULL,
+    data   JSONB     NOT NULL,
+    object TEXT      NOT NULL
+);
+```
 
 ### The streamer (#streamer)
 
@@ -323,10 +335,35 @@ next time a consumer restarts (due to a crash or
 otherwise), it reads its last checkpoint and starts
 consuming the log from the `id` that it contains.
 
+Checkpoints are modeled as a relation in Postgres:
+
+``` sql
+CREATE TABLE checkpoints (
+    id            BIGSERIAL PRIMARY KEY,
+    name          TEXT      NOT NULL UNIQUE,
+    last_redis_id TEXT      NOT NULL,
+    last_ride_id  BIGINT    NOT NULL
+);
+```
+
 Recall that in our simple example, consumers add up the
 `distance` of every ride created on the platform. They
 track a Redis ID so that they know their location in the
 Redis stream.
+
+Total distance is stored to a Postgres relation along with
+the name of the consumer:
+
+``` sql
+CREATE TABLE consumer_states (
+    id             BIGSERIAL        PRIMARY KEY,
+    name           TEXT             NOT NULL UNIQUE,
+    total_distance DOUBLE PRECISION NOT NULL
+);
+```
+
+The code for a consumer to iterate the stream and update
+its checkpoint and state will look a little like this:
 
 ``` ruby
 def run_once
@@ -401,7 +438,46 @@ can always be assumed to be ordered and if a consumer sees
 an ID smaller or equal to one that it knows that it
 consumes, it skips to the next record.
 
-### Non-transactional consumers (#non-transaction)
+### Simulating failure (#simulating-failure)
+
+It's well and good for me to claim that this system is
+fault-tolerant, but it's a more believable claim when we
+prove it. Operating at our small scale we're unlikely to
+see many problems in this system, so I've written the
+processes so that they simulate some. 10% of the time, the
+streamer will double-send every event in a batch. This
+models it failing midway through sending a batch and having
+to retry the operation.
+
+Likewise, each consumer will crash 10% of the time after
+handling a batch but before committing its transaction.
+
+Despite these artificial problems, because the system's
+designed to handle these edge cases and will tolerate them
+gracefully. By running the simulation for a while, we can
+improve our confidence that results will always be correct
+and consistent.
+
+Run `forego start` (after following the appropriate setup
+in `README.md`) and leave the fleet of processes running.
+Despite the occasional double sends and each consumer
+failing randomly and independently, no matter how long you
+wait, the consumers should always show the same
+`total_distance` reading for any given consumed ID.
+
+For example, here's `consumer0` and `consumer1` showing an
+identical total for ride ID `521`:
+
+```
+consumer0.1 | Consumed record: {"id":521,"distance":539.836923415231}
+              total_distance=257721.7m
+consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231}
+              total_distance=257721.7m
+```
+
+## Other considerations (#considerations)
+
+### Non-transactional consumers & idempotency (#non-transaction)
 
 Consumers don't necessarily have to be transactional as
 long as the work they do can be applied cleanly given
@@ -422,49 +498,50 @@ something like an upsert instead of `INSERT` and a deletion
 is tolerant if the target doesn't exist, then all
 operations can safely be considered to be idempotent.
 
-### Simulating failure (#simulating-failure)
+### Versus Postgres logical replication (#logical-replication)
 
-It's well and good for me to claim that this system is
-fault-tolerant, but it's a more believable claim when we
-prove it. Operating at our small scale we're unlikely to
-see many problems in this system, so I've written the
-processes so that they simulate some. 10% of the time, the
-streamer will double-send every event in a batch. This
-models it failing midway through sending a batch and having
-to retry the operation.
+Postgres aficionados might notice that what we've built
+looks pretty similar to [logical replication][logicalrepl]
+in Postgres 10, which can similarly guarantee that all
+emitted data makes it from producer to consumer.
 
-Likewise, each consumer will crash 10% of the time after
-handling a batch but before committing its transaction.
+There are a few advantages to this approach over logical
+replication:
 
-Despite these artificial problems, because the system's
-designed to handle these edge cases, the results will
-always be correct and consistent.
-
-Run `forego start` and leave the fleet of processes running
-for a while. Despite the occasional double sends and each
-consumer failing randomly and independently, no matter how
-long you wait, the consumers should always show the same
-`total_distance` reading for any given consumed ID.
-
-For example, here's `consumer0` and `consumer1` showing an
-identical total for ride ID `521`:
-
-```
-consumer0.1 | Consumed record: {"id":521,"distance":539.836923415231}
-              total_distance=257721.7m
-consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231}
-              total_distance=257721.7m
-```
-
-## Other considerations (#considerations)
-
-### Versus logical replication (#logical-replication)
+* It's possible to have multiple producers move information
+  to a single stream without sharing a database.
+* Producers can stream a public representation of data
+  instead of one tied to their internal schema. This allows
+  producers to change their internal schema without
+  breaking consumers.
+* You're less likely to leave yourself tied into fairly
+  esoteric internal features of Postgres.
 
 ### Are delivery guarantees absolute? (#absolute)
+
+Nothing in software is absolute. We've built a system based
+on powerful primitives like ACID transactions and in
+practice, it's likely to be quite robust. But not even a
+transaction can protect us against every bug, and
+eventually something's going to go wrong enough that these
+safety features won't be enough -- the code to stage stream
+records in the API might be accidentally removed for
+example. Even if it's noticed and fixed quickly, some
+inconsistency will have been introduced into the system.
+
+Consumers that require absolute precision will need a
+secondary mechanism that they can run occasionally to
+reconcile their state against canonical sources. In our
+Rocket Rides Unified example, we might run a nightly job
+that reduces distances across every known ride and emits a
+tuple of `(total_distance, last_ride_id)` that consumers
+can use to reset their state before continuing to consume
+the stream.
 
 [1] The expectation currently is that streams will be
 available in the Redis 4.0 series by the end of the year.
 
+[logicalrepl]: https://www.postgresql.org/docs/10/static/logical-replication.html
 [mongodurability]: /fragments/mongo-durability
 [persistence]: https://redis.io/topics/persistence
 [thelog]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
