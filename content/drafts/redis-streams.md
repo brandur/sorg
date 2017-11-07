@@ -290,8 +290,13 @@ BATCH_SIZE = 1000
 private_constant :BATCH_SIZE
 
 private def stream(data)
-  # XADD mystream * data <JSON-encoded blob>
-  RDB.xadd(STREAM_NAME, "*", "data", JSON.generate(data))
+  # XADD mystream MAXLEN ~ 10000  * data <JSON-encoded blob>
+  #
+  # MAXLEN ~ 10000 caps the stream at roughly that number (the "~" trades
+  # precision for speed) so that it doesn't grow in a purely unbounded way.
+  RDB.xadd(STREAM_NAME,
+    "MAXLEN", "~", STREAM_MAXLEN,
+    "*", "data", JSON.generate(data))
 end
 ```
 
