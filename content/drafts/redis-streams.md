@@ -451,6 +451,12 @@ consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231}
               total_distance=257721.7m
 ```
 
+## Other considerations (#considerations)
+
+### Versus logical replication (#logical-replication)
+
+### Are delivery guarantees absolute? (#absolute)
+
 [1] The expectation currently is that streams will be
 available in the Redis 4.0 series by the end of the year.
 
