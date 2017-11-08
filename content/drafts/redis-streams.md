@@ -479,19 +479,16 @@ would set its state and checkpoint.
 
 Despite these artificial problems, because the system's
 designed to handle these edge cases and will tolerate them
-gracefully. By running the simulation for a while, we can
-improve our confidence that results will always be correct
-and consistent.
+gracefully. Run `forego start` (after following the
+appropriate setup in `README.md`) and leave the fleet of
+processes running. Despite the double sends and each
+consumer failing randomly and independently, no matter how
+long you wait, the consumers should always stay roughly
+caught up to each other and show the same `total_distance`
+reading for any given ID.
 
-Run `forego start` (after following the appropriate setup
-in `README.md`) and leave the fleet of processes running.
-Despite the occasional double sends and each consumer
-failing randomly and independently, no matter how long you
-wait, the consumers should always show the same
-`total_distance` reading for any given consumed ID.
-
-For example, here's `consumer0` and `consumer1` showing an
-identical total for ride ID `521`:
+Here's `consumer0` and `consumer1` showing an identical
+total for ride `521`:
 
 ```
 consumer0.1 | Consumed record: {"id":521,"distance":539.836923415231}
