@@ -103,45 +103,47 @@ stream in efficient batches.
 Kafka is a popular system component that also makes a great
 backend for a unified log implementation, and once
 everything is in place, probably a better one compared to
-Redis due to its design around high availability and other
-advanced features.
+Redis thanks to its sophisticated design around high
+availability and other advanced features.
 
-What's exciting about Redis streams is that they bring an
-easy way of building a unified log in a small and/or
-inexpensive app. Kafka is infamously difficult to configure
-and get running, and is expensive to operate once you do.
-Pricing for a small Kafka cluster on Heroku costs $100 a
-month and climbs steeply from there. It's temping to think
-you can do it more cheaply yourself, but after factoring in
-server and personnel costs along with the time it takes to
-build working expertise in the system, it'll cost more.
+The most exciting feature of Redis streams isn't their
+novelty, but rather than they bring building a unified log
+architecture within reach of a small and/or inexpensive
+app. Kafka is infamously difficult to configure and get
+running, and is expensive to operate once you do. Pricing
+for a small Kafka cluster on Heroku costs $100 a month and
+climbs steeply from there. It's temping to think you can do
+it more cheaply yourself, but after factoring in server and
+personnel costs along with the time it takes to build
+working expertise in the system, it'll cost more.
 
 Redis on the other hand is probably already in your stack.
 Being the Swiss army knife of cloud persistence, it's
 useful for a multitude of things including caching, rate
-limiting, or storing user sessions. Even if you don't have
-it, you can compile it from source and get it configured in
-running in about thirty seconds, and there are dozens of
-cloud providers that will offer you a hosted version.
+limiting, storing user sessions, etc. Even if you don't
+already have it, you can compile it from source and get it
+configured and running in all of about thirty seconds.
+Dozens of cloud providers (including big ones like AWS)
+offer a hosted version.
 
-Once you're operating at serious scale, switch to Kafka. In
-the meantime, Redis streams make a great and cheap
-alternative.
+Once you're operating at serious scale, consider switching
+to Kafka. In the meantime, Redis streams make a great (and
+economic) alternative.
 
 ### Configuring Redis for durability (#redis-durability)
 
 One highly desirable property of a unified log is that it's
 ***durable***, meaning that even if its host crashes or
-something else terrible happens, it doesn't lose any
-information that producers that had been persisted.
+something terrible happens, it doesn't lose any information
+that producers think has been persisted.
 
 By default Redis is not durable; a sane configuration
 choice when it's been used for caching or rate limiting,
 but not when it's being used for a log. To make Redis fully
 durable, tell it to keep an append-only file (AOF) with
 `appendonly` and instruct it to perform fsync on every
-command that's written to the AOF with `appendfsync
-always` (more details [in the Redis documentation on
+command written to the AOF with `appendfsync always` (more
+details [in the Redis documentation on
 persistence][persistence]):
 
 ```
@@ -163,26 +165,26 @@ configuration.
 
 We're going to be returning to the Rocket Rides example
 that we talked about while implementing [idempotency
-keys](/idempotency-keys). As a quick reminder, Rocket
-Rides is a small Lyft-like app that lets its users get
-rides with pilots wearing jetpacks; a vast improvement over
-the banality of a car.
+keys](/idempotency-keys). As a quick reminder, Rocket Rides
+is a Lyft-like app that lets its users get rides with
+pilots wearing jetpacks; a vast improvement over the
+every day banality of a car.
 
-As new rides come in, the Rocket Rides API will emit a new
-record to the stream that contains the ID of the ride and
-the distance traveled. From there, a couple different
-consumers will read the stream and keep a running tally of
-the total distance traveled for every ride in the system
-that's ever been taken.
+As new rides come in, the Unified Rocket Rides API will
+emit a new record to the stream that contains the ID of the
+ride and the distance traveled. From there, a couple
+different consumers will read the stream and keep a running
+tally of the total distance traveled for every ride in the
+system that's ever been taken.
 
 !fig src="/assets/redis-streams/streaming-model.svg" caption="Clients sending data to the API which passes it onto the stream and is ingested by stream consumers."
 
-Both producer and consumers will be using database and
-transactions at-least once semantics to guarantee that all
-information is correct. No matter what kind of failures
-occur in clients, API, consumers, or elsewhere in the
-system, the totals being tracked by consumers should always
-agree with each other for any given Redis or ride ID.
+Both producer and consumers will be using database
+transactions to guarantee that all information is correct.
+No matter what kind of failures occur in clients, API,
+consumers, or elsewhere in the system, the totals being
+tracked by consumers should always agree with each other
+for any given Redis or ride ID.
 
 A working version of all this code is available in the
 [_Unified Rocket Rides_][unifiedrides] repository. It might
