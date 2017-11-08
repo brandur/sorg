@@ -12,22 +12,28 @@ Years ago an article came out of LinkedIn [about the
 unified log][thelog], a useful architectural pattern for
 services in a distributed system share state with one
 another. In the log's design, services emit state changes
-into an ordered data structure where each new record gets a
-unique ID. Unlike a queue, a log is durable across any
-number of reads until it's explicitly truncated.
+into an ordered data structure in which each new record
+gets a unique ID. Unlike a queue, a log is durable across
+any number of reads until it's explicitly truncated.
 
-Consumers track changes in the wider system by consuming
-the log. Each one maintains the ID of the last record it
-successfully consumed and aims to consume every record at
-least once -- no records should be missed. When a consumer
-is knocked offline, it looks up the last ID that it
-consumed, and continues reading the log from there.
+Consumers track changes in the wider system by reading the
+log. Each one maintains the ID of the last record it
+successfully consumed and aims to read every record at
+least once -- nothing should ever be missed. When a
+consumer is knocked offline, it restarts and looks up the
+last ID that it saw, and continues reading the log from
+there.
 
-The article is sober enough to point out that this design
-is nothing new: we've been using logs in various forms in
-computer science for decades. [Journaling file
-systems][journalfs] use the idea to protect data against
-corruption. Databases use it with ideas like the
+The log is ***unified*** because it acts as a master ledger
+of state changes in a wider system. All components that are
+making critical changes write to it, and all components
+that need to track distributed state are subscribed.
+
+LinkedIn's article is sober enough to point out that this
+design is nothing new: we've been using logs in various
+forms in computer science for decades. [Journaling file
+systems][journalfs] use them to protect data against
+corruption. Databases use them in places like the
 [write-ahead log (WAL)][wal] in Postgres as they stream
 changes to their read replicas.
 
@@ -35,25 +41,24 @@ changes to their read replicas.
 
 Even so, the unified log was a refreshingly novel idea when
 the article was written, and still is. File systems and
-databases use the structure because it's an effective
-pattern, and it lends itself just as well to distributed
-architectures. Kafka is more prevalent in 2017, but most of
-us are still gluing components together with patches and
-duct tape.
+databases use the structure because it's effective, and it
+lends itself just as well to distributed architectures.
+Kafka is more prevalent in 2017, but most of us are still
+gluing components together with patches and duct tape.
 
 Chatty services exchange high-frequency messages back and
 forth in a way that's slow (they rely on synchrony),
-inefficient (single messages are passed back and forth),
-and fragile (every message introduces some possibility of
-failure). In contrast, the log is asynchronous, its records
-are produced and consumed in batches, and its design builds
-in resilience at every turn.
+inefficient (single messages are passed around), and
+fragile (every individual message introduces some
+possibility of failure). In contrast, the log is
+asynchronous, its records are produced and consumed in
+batches, and its design builds in resilience at every turn.
 
 ## Redis streams (#redis-streams)
 
 This brings us to Redis. I was happy to hear recently that
 the project will soon [1] be shipping with a new data
-structure that's a perfect scaffold for a unified log:
+structure that's a perfect foundation for a unified log:
 [streams][streams]. Unlike a Redis list, records in a
 stream are assigned with addressable IDs and are indexed or
 sliced with those IDs instead than a relative offset (i.e.
@@ -62,7 +67,7 @@ multiple consumers reading out of a single stream and
 tracking their position within it by persisting the ID of
 the last record they read.
 
-Records are added to a stream with the new `XADD` command:
+The new `XADD` command appends to the stream:
 
 ```
 > XADD rocket-rides-log * id 123 distance 456.7
@@ -72,11 +77,11 @@ Records are added to a stream with the new `XADD` command:
 A record with `id = 123` and `distance = 456.7` is appended
 to the stream `rocket-rides-log`. Redis responds with a
 unique ID for the record that's made up of a timestamp and
-a sequence number (`.0`) to disambiguate within the
-millisecond.
+a sequence number (`.0`) to disambiguate entries created
+within the same millisecond.
 
-`XRANGE` is the counterpart of `XADD`. It reads a set of
-records from a stream:
+`XRANGE` is `XADD`'s counterpart. It reads a set of records
+from a stream:
 
 ```
 > XRANGE rocket-rides-log - + COUNT 2
@@ -104,20 +109,20 @@ stream in efficient batches.
 
 ### Versus Kafka (#kakfa)
 
-Kafka is a popular system component that also makes a great
-backend for a unified log implementation, and once
+Kafka is a popular system component that also makes a nice
+alternative for a unified log implementation; and once
 everything is in place, probably a better one compared to
 Redis thanks to its sophisticated design around high
 availability and other advanced features.
 
-The most exciting feature of Redis streams isn't their
-novelty, but rather than they bring building a unified log
-architecture within reach of a small and/or inexpensive
-app. Kafka is infamously difficult to configure and get
-running, and is expensive to operate once you do. Pricing
-for a small Kafka cluster on Heroku costs $100 a month and
-climbs steeply from there. It's temping to think you can do
-it more cheaply yourself, but after factoring in server and
+Redis streams aren't exciting for their innovativeness, but
+rather than they bring building a unified log architecture
+within reach of a small and/or inexpensive app. Kafka is
+infamously difficult to configure and get running, and is
+expensive to operate once you do. Pricing for a small Kafka
+cluster on Heroku costs $100 a month and climbs steeply
+from there. It's temping to think you can do it more
+cheaply yourself, but after factoring in server and
 personnel costs along with the time it takes to build
 working expertise in the system, it'll cost more.
 
@@ -130,16 +135,16 @@ configured and running in all of about thirty seconds.
 Dozens of cloud providers (including big ones like AWS)
 offer a hosted version.
 
-Once you're operating at serious scale, consider switching
-to Kafka. In the meantime, Redis streams make a great (and
+Once you're operating at serious scale, Kafka might be the
+right fit. In the meantime, Redis streams make a great (and
 economic) alternative.
 
 ### Configuring Redis for durability (#redis-durability)
 
 One highly desirable property of a unified log is that it's
 ***durable***, meaning that even if its host crashes or
-something terrible happens, it doesn't lose any information
-that producers think has been persisted.
+something terrible happens, it doesn't lose information
+that producers think they had persisted.
 
 By default Redis is not durable; a sane configuration
 choice when it's been used for caching or rate limiting,
@@ -171,15 +176,15 @@ We're going to be returning to the Rocket Rides example
 that we talked about while implementing [idempotency
 keys](/idempotency-keys). As a quick reminder, Rocket Rides
 is a Lyft-like app that lets its users get rides with
-pilots wearing jetpacks; a vast improvement over the
-every day banality of a car.
+pilots wearing jetpacks; a vast improvement in speed and
+adrenaline flow over the every day banality of a car.
 
-As new rides come in, the Unified Rocket Rides API will
+As new rides come in, the _Unified Rocket Rides_ API will
 emit a new record to the stream that contains the ID of the
 ride and the distance traveled. From there, a couple
 different consumers will read the stream and keep a running
 tally of the total distance traveled for every ride in the
-system that's ever been taken.
+system that's been taken.
 
 !fig src="/assets/redis-streams/streaming-model.svg" caption="Clients sending data to the API which passes it onto the stream and is ingested by stream consumers."
 
@@ -215,16 +220,17 @@ normal conditions, but may be dropped in degraded cases.
 It's also opposed by ***exactly-once delivery***; a panacea
 of distributed systems. Exactly-once delivery is a
 difficult guarantee to make, and even if possible, would
-add costly overhead to transmission. In practice, at-least
-once semantics are robust and easy to work with as long as
-systems are built to consider them from the beginning.
+add costly coordination overhead to transmission. In
+practice, at-least once semantics are robust and easy to
+work with as long as systems are built to consider them
+from the beginning.
 
 ### The API (#api)
 
-The API receives requests over HTTP for new rides from
-clients. When it does it (1) creates a ride entry in the
-local database, and (2) emits a record into the unified log
-to show that it did.
+The _Unified Rocket Rides_ API receives requests over HTTP
+for new rides from clients. When it does it (1) creates a
+ride entry in the local database, and (2) emits a record
+into the unified log to show that it did.
 
 ``` ruby
 post "/rides" do
@@ -256,9 +262,9 @@ created in Postgres. This indirection is useful so that in
 case the request's transaction rolls back due to a
 serialization error or other problem, no invalid data (i.e.
 data that was only relevant in a now-aborted transaction)
-is left in the log. This is the same idea as
-[transactionally-staged job drains](/job-drain) do the same
-thing for background work.
+is left in the log. This principle is identical to that of
+[transactionally-staged job drains](/job-drain), which do
+the same thing for background work.
 
 The staged records relation in Postgres look like:
 
@@ -275,8 +281,8 @@ CREATE TABLE staged_log_records (
 
 The streamer moves staged records into Redis once they
 become visible outside of the transaction that created
-them. It runs as a separate process and for better
-efficiency, sends records in batches.
+them. It runs as a separate process, and sends records in
+batches for improved efficiency.
 
 ``` ruby
 def run_once
@@ -324,17 +330,19 @@ end
 ```
 
 In accordance with at-least once design, the streamer only
-removes staged records once they've been confirmed in
-Redis. If part of the workflow fails then the process will
-run again and reselect the same batch of records a second
-time. Those records will be re-emitted into the stream even
-if it means that some consumers will see them twice.
+removes staged records once their receipt has been
+confirmed by Redis. If part of the workflow fails then the
+process will run again and select the same batch of records
+from `staged_log_records` a second time. They'll be
+re-emitted into the stream even if it means that some
+consumers will see them twice.
 
-Records are emitted with ascending `id`s. It's possible for
-a record with a smaller `id` to be emitted after one with a
-higher `id`, but _only_ in the case of a double-send. With
-the exception of that one manageable caveat, consumers can
-always assume that they're receiving `id`s in order.
+Records are sent to the stream with ascending ride `id`s.
+It's possible for a record with a smaller `id` to be
+present after one with a higher `id`, but _only_ in the
+case of a double-send. With the exception of that one
+caveat, consumers can always assume that they're receiving
+`id`s in order.
 
 #### Log truncation (#truncation)
 
@@ -358,15 +366,14 @@ truncate records that are no longer needed by any of them.
 
 ### Consumers & checkpointing (#consumers)
 
-Consumers pull records out of the log in batches and
-consumes them one-by-one. When a batch has been
-successfully processed, they set ***checkpoints***
-containing the IDs of the last records they consumed to.
-The next time a consumer restarts (due to a crash or
-otherwise), it reads its last checkpoint and starts
-consuming the log from the ID that it contained.
+Consumers read records out of the log in batches and
+consume them one-by-one. When a batch has been successfully
+processed, they set a ***checkpoint*** containing the ID of
+the last record consumed. The next time a consumer restarts
+(due to a crash or otherwise), it reads its last checkpoint
+and starts reading the log from the ID that it contained.
 
-Checkpoints are modeled as a relation in Postgres:
+Checkpoints are stored as a relation in Postgres:
 
 ``` sql
 CREATE TABLE checkpoints (
@@ -379,7 +386,7 @@ CREATE TABLE checkpoints (
 
 Recall that in our simple example, consumers add up the
 `distance` of every ride created on the platform. We'll
-keep this running tally in a `consumer_states` table that
+keep this running tally in a `consumer_states` table which
 has an entry for each consumer:
 
 ``` sql
@@ -468,27 +475,27 @@ consumes, it safely skips to the next record.
 
 ### Simulating failure (#simulating-failure)
 
-It's well and good for me to claim that this system is
-fault-tolerant, but it's a more believable claim when we
-prove it. Operating at our small scale we're unlikely to
-see many problems, so processes are written to simulate
-some. 10% of the time, the streamer will double-send every
-event in a batch. This models it failing midway through
-sending a batch and having to retry the entire operation.
+I've claimed this system is fault-tolerant, but it's more
+believable if I can demonstrate it. Operating at our small
+scale we're unlikely to see many problems, so processes are
+written to simulate some. 10% of the time, the streamer
+will double-send every event in a batch. This models it
+failing midway through sending a batch and having to retry
+the entire operation.
 
 Likewise, each consumer will crash 10% of the time after
 handling a batch but before committing the transaction that
 would set its state and checkpoint.
 
 The system's been designed to handle these edge cases and
-despite the artificial problems, it will manage gracefully.
-Run `forego start` (after following the appropriate setup
-in `README.md`) and leave the fleet of processes running.
-Despite the double sends and each consumer failing randomly
-and independently, no matter how long you wait, the
-consumers should always stay roughly caught up to each
-other and show the same `total_distance` reading for any
-given ID.
+despite the artificial problems, it will manage itself
+gracefully. Run `forego start` (after following the
+appropriate setup in `README.md`) and leave the fleet of
+processes running. Despite the double sends and each
+consumer failing randomly and independently, no matter how
+long you wait, the consumers should always stay roughly
+caught up to each other and show the same `total_distance`
+reading for any given ID.
 
 Here's `consumer0` and `consumer1` showing an identical
 total for ride `521`:
@@ -505,8 +512,11 @@ consumer1.1 | Consumed record: {"id":521,"distance":539.836923415231}
 ### Non-transactional consumers & idempotency (#non-transaction)
 
 Consumers don't necessarily have to be transactional as
-long as the work they do can be applied cleanly given
-at-least once semantics.
+long as the work they do while consuming records can be
+re-applied cleanly given at-least once semantics. Another
+way of saying this is that a consumer doesn't need a
+transaction as long as every operation it applies is
+***idempotent***.
 
 Notably our example here wouldn't yield correct results
 without being nested in a transaction: if it successfully
@@ -514,11 +524,10 @@ updated `total_count` but failed to set the checkpoint,
 then it would double-count the distance of those records
 the next time it tried to consume them.
 
-But if a consumer using input records to execute operations
-which are _idempotent_, a wrapping transaction isn't
-necessarily needed. An example of this is a consumer that's
-reading a stream to add or remove information into a data
-warehouse. As long as creation records are treated as
+But if all operations are idempotent, we could remove the
+transaction. An example of this is a consumer that's
+reading a stream to add, update, or remove information in a
+data warehouse. As long as creation records are treated as
 something like an upsert instead of `INSERT` and a deletion
 is tolerant if the target doesn't exist, then all
 operations can safely be considered to be idempotent.
@@ -540,28 +549,32 @@ replication:
   producers to change their internal schema without
   breaking consumers.
 * You're less likely to leave yourself tied into fairly
-  esoteric internal features of Postgres.
+  esoteric internal features of Postgres. Understanding how
+  to best configure and operate subscriptions and
+  replication slots won't be trivial.
 
 ### Are delivery guarantees absolute? (#absolute)
 
-Nothing in software is absolute. We've built a system based
-on powerful primitives like ACID transactions and in
+Nothing in software is absolute. We've built architecture
+based on powerful primitives in system design like ACID
+transactions and at-least once delivery semantics, and in
 practice, it's likely to be quite robust. But not even a
-transaction can protect us against every bug, and
-eventually something's going to go wrong enough that these
-safety features won't be enough -- the code to stage stream
-records in the API might be accidentally removed for
-example. Even if it's noticed and fixed quickly, some
-inconsistency will have been introduced into the system.
+transaction can protect us from every bug, and eventually
+something's going to go wrong enough that these safety
+features won't be enough -- for example, the code to stage
+stream records in the API might be accidentally removed
+through human error. Even if it's noticed and fixed
+quickly, some inconsistency will have been introduced into
+the system.
 
 Consumers that require absolute precision will need a
 secondary mechanism that they can run occasionally to
-reconcile their state against canonical sources. In our
-Rocket Rides Unified example, we might run a nightly job
-that reduces distances across every known ride and emits a
-tuple of `(total_distance, last_ride_id)` that consumers
-can use to reset their state before continuing to consume
-the stream.
+reconcile their state against canonical sources. In
+_Unified Rocket Rides_, we might run a nightly job that
+reduces distances across every known ride and emits a tuple
+of `(total_distance, last_ride_id)` that consumers can use
+to reset their state before continuing to consume the
+stream.
 
 ## Log-based architecture (#log-architecture)
 
