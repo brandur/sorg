@@ -2,10 +2,11 @@
 title: Redis Streams and the Unified Log
 published_at: 2017-11-08T15:15:31Z
 location: San Francisco
-twitter_image: true
 hook: Building a log-based architecture that's fast,
   efficient, and resilient on the new stream data structure
   in Redis.
+hook_image: true
+twitter_image: true
 ---
 
 Years ago an article came out of LinkedIn [about the
