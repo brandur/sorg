@@ -7,13 +7,8 @@ hook: TODO
 
 Years ago, LinkedIn [wrote an article about the unified
 log][thelog], a useful architectural pattern for services
-in a distributed system converge state with one another. It
-was a refreshingly novel idea at the time, and still is:
-Kafka may be more prevalent in 2017, but most of us are
-still gluing components together with little more than
-patches and duct tape.
-
-In the log's design, services emit state changes into an
+in a distributed system converge state with one another. In
+the log's design, services emit state changes into an
 ordered data structure where each new record gets a unique
 ID. Unlike a queue, a log is durable across any number of
 reads until it's explicitly truncated.
@@ -25,53 +20,43 @@ least once -- no records should be missed. When a consumer
 is knocked offline, it looks up the last ID that it
 consumed, and continues reading the log from there.
 
+The article is sober enough to point out that this design
+is nothing new: we've been using logs in various forms in
+computer science for decades. Journaling file systems use
+the idea for data correctness. Databases use it with ideas
+like the write-ahead log (WAL) in Postgres as they stream
+changes to their read replicas.
+
 !fig src="/assets/redis-streams/unified-log.svg" caption="The unified log: a producer emits to the stream and consumers read from it."
 
-The article above points out that this design is nothing
-new -- we've been using logs in various forms in computer
-science for decades. A common example is how a Postgres
-installation streams changes to its replicas over the WAL
-(write-ahead log). Changes in the database's physical
-structure are written as records to the WAL, and each
-replica reads records and applies them to their own state.
-Tuple `123` was added; tuple `124` was updated; tuple `125`
-was deleted. The WAL is saved in segments and in a
-production environment often uploaded to a service like S3
-for durable access and high availability.
+Even so, the unified log was a refreshingly novel idea when
+the article was written, and still is. File systems and
+databases use the structure because it's an effective
+pattern, and it lends itself just as well to distributed
+architectures. Kafka is more prevalent in 2017, but most of
+us are still gluing components together with patches and
+duct tape.
 
-## At-least once design (#at-least-once)
-
-On systems powered by a unified log, resilience and
-correctness are the name of the game. Consumers should get
-every message that a producer sends, and to that end
-processes are built to guarantee ***at-least once***
-delivery semantics. Messages are usually sent once, but in
-cases where there's uncertainty around whether the
-transmission occurred, a message will be send as many times
-as necessary to be sure.
-
-At-least once delivery is opposed to ***best-effort
-delivery*** where messages will be received once under
-normal conditions, but may be dropped in extraordinary
-cases. It's also opposed by ***exactly-once delivery***; a
-classic panacea of distributed systems. Exactly-once
-delivery is a difficult guarantee to make, and even if
-possible, would add costly overhead to transmission. In
-practice, at-least once semantics are fine to handle as
-long as consumers are built with consideration for it from
-the beginning.
+Chatty services exchange high-frequency messages back and
+forth in a way that's slow (they rely on synchrony),
+inefficient (single messages are passed back and forth),
+and fragile (every message introduces some possibility of
+failure). In contrast, the log is asynchronous, its records
+are produced and consumed in batches, and its design builds
+in resilience at every turn.
 
 ## Redis streams (#redis-streams)
 
-I was happy to hear recently that Redis will soon [1] be
-shipping with a new data structure that's a perfect backend
-for unified logs: [streams][streams]. Unlike a Redis list,
-records in a stream are assigned with addressable IDs and
-are indexed or sliced with these absolute IDs rather than a
-relative offset, which lends itself well to having multiple
-consumers tracking their position within one. They're a
-near-perfect analog for what we've been talking about so
-far.
+This brings us to Redis. I was happy to hear recently that
+the project will soon [1] be shipping with a new data
+structure that's a perfect scaffold for a unified log:
+[streams][streams]. Unlike a Redis list, records in a
+stream are assigned with addressable IDs and are indexed or
+sliced with those IDs instead than a relative offset (i.e.
+like `0` or `len() - 1`).This lends itself well to having
+multiple consumers reading out of a single stream and
+tracking their position within it by persisting the ID of
+the last record they read.
 
 Records are added to a stream with the new `XADD` command:
 
@@ -80,14 +65,14 @@ Records are added to a stream with the new `XADD` command:
 1506871964177.0
 ```
 
-This appends to the stream `rocket-rides-log` with the
-fields `id = 123` and `distance = 456.7`. Redis responds
-with a unique ID for the record within the stream that's
-made up of a timestamp and a sequence number (`.0`) to
-disambiguate within the millisecond.
+A record with `id = 123` and `distance = 456.7` is appended
+to the stream `rocket-rides-log`. Redis responds with a
+unique ID for the record that's made up of a timestamp and
+a sequence number (`.0`) to disambiguate within the
+millisecond.
 
-The other important command is `XRANGE` which reads a
-segment from the stream:
+`XRANGE` is the counterpart of `XADD`. It reads a set of
+records from a stream:
 
 ```
 > XRANGE rocket-rides-log - + COUNT 2
@@ -109,11 +94,9 @@ up to the last available record in the stream respectively.
 Either one can be replaced with an ID like
 `1506871964177.0` to read from or up to a specific record.
 Using this capability allows us to slice out just records
-that we haven't consumed yet.
-
-Streams have a variety of other useful features that I
-won't cover here, but [the original blog post covers
-everything pretty well][streams].
+that we haven't consumed yet. Specifying `COUNT 2` lets us
+bound the number of records read so that we can process the
+stream in efficient batches.
 
 ### Versus Kafka (#kakfa)
 
@@ -208,6 +191,28 @@ be easier to download that code and follow along that way:
 ``` sh
 git clone https://github.com/brandur/rocket-rides-unified.git
 ```
+
+### At-least once design (#at-least-once)
+
+On systems powered by a unified log, resilience and
+correctness are the name of the game. Consumers should get
+every message that a producer sends, and to that end
+processes are built to guarantee ***at-least once***
+delivery semantics. Messages are usually sent once, but in
+cases where there's uncertainty around whether the
+transmission occurred, a message will be send as many times
+as necessary to be sure.
+
+At-least once delivery is opposed to ***best-effort
+delivery*** where messages will be received once under
+normal conditions, but may be dropped in extraordinary
+cases. It's also opposed by ***exactly-once delivery***; a
+classic panacea of distributed systems. Exactly-once
+delivery is a difficult guarantee to make, and even if
+possible, would add costly overhead to transmission. In
+practice, at-least once semantics are fine to handle as
+long as consumers are built with consideration for it from
+the beginning.
 
 ### The API (#api)
 
