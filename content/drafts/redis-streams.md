@@ -196,32 +196,31 @@ git clone https://github.com/brandur/rocket-rides-unified.git
 
 ### At-least once design (#at-least-once)
 
-On systems powered by a unified log, resilience and
-correctness are the name of the game. Consumers should get
-every message that a producer sends, and to that end
-processes are built to guarantee ***at-least once***
-delivery semantics. Messages are usually sent once, but in
-cases where there's uncertainty around whether the
-transmission occurred, a message will be send as many times
-as necessary to be sure.
+For systems powered by a unified log, resilience and
+correctness are the name of the game. Consumers shouldn't
+just get most messages that a producer sends, they should
+get _every_ message. To that end programs are built to
+guarantee ***at-least once*** delivery semantics. Messages
+are usually sent once, but in cases where there's
+uncertainty around whether the transmission occurred, a
+message will be sent as many times as necessary to be sure.
 
 At-least once delivery is opposed to ***best-effort
 delivery*** where messages will be received once under
-normal conditions, but may be dropped in extraordinary
-cases. It's also opposed by ***exactly-once delivery***; a
-classic panacea of distributed systems. Exactly-once
-delivery is a difficult guarantee to make, and even if
-possible, would add costly overhead to transmission. In
-practice, at-least once semantics are fine to handle as
-long as consumers are built with consideration for it from
-the beginning.
+normal conditions, but may be dropped in degraded cases.
+It's also opposed by ***exactly-once delivery***; a panacea
+of distributed systems. Exactly-once delivery is a
+difficult guarantee to make, and even if possible, would
+add costly overhead to transmission. In practice, at-least
+once semantics are robust and easy to work with as long as
+systems are built to consider them from the beginning.
 
 ### The API (#api)
 
 The API receives requests over HTTP for new rides from
-clients. When it does it creates a ride entry in the local
-database, and also emits a record into the unified log to
-show that it did.
+clients. When it does it (1) creates a ride entry in the
+local database, and (2) emits a record into the unified log
+to show that it did.
 
 ``` ruby
 post "/rides" do
@@ -249,14 +248,15 @@ end
 ```
 
 Rather than emit directly to Redis, a "staged" record is
-created and add to Postgres. This small indirection is
-useful so that in case the request's transaction rolls back
-due to a serialization error or other problem, no invalid
-data is left in the log. This idea is further expanded on
-in [transactionally-staged job drains](/job-drain) which
-applies the same idea to background jobs.
+created in Postgres. This indirection is useful so that in
+case the request's transaction rolls back due to a
+serialization error or other problem, no invalid data (i.e.
+data that was only relevant in a now-aborted transaction)
+is left in the log. This is the same idea as
+[transactionally-staged job drains](/job-drain) do the same
+thing for background work.
 
-The staged records relation in Postgres look like this:
+The staged records relation in Postgres look like:
 
 ``` sql
 CREATE TABLE staged_log_records (
@@ -272,7 +272,7 @@ CREATE TABLE staged_log_records (
 The streamer moves staged records into Redis once they
 become visible outside of the transaction that created
 them. It runs as a separate process and for better
-efficiency, sends records in large batches.
+efficiency, sends records in batches.
 
 ``` ruby
 def run_once
@@ -332,15 +332,35 @@ higher `id`, but _only_ in the case of a double-send. With
 the exception of that one manageable caveat, consumers can
 always assume that they're receiving `id`s in order.
 
+#### Log truncation (#truncation)
+
+Unlike a queue, consumers don't remove records from a log,
+and without management it would be in danger of growing in
+an unbounded way. In the example above, the streamer uses
+the `MAXLEN` argument to `XADD` to tell Redis that the
+stream should have a maximum length. The tilde (`~`)
+operator is an optimization that indicates to Redis that
+the stream should be truncated to _approximately_ the
+specified length when it's possible to remove an entire
+node. This is significantly faster than trying to prune it
+to an exact number.
+
+This rough truncation will work well in most of the time,
+but lack of safety measures means that it's _possible_ that
+records might be removed which have not yet been read by a
+consumer that's fallen way behind. A more resilient system
+should track the progress of each consumer and only
+truncate records that are no longer needed by any of them.
+
 ### Consumers & checkpointing (#consumers)
 
 Consumers pull records out of the log in batches and
 consumes them one-by-one. When a batch has been
-successfully processed, they set a ***checkpoint*** that
-contains the IDs of the last record they consumed to. The
-next time a consumer restarts (due to a crash or
+successfully processed, they set ***checkpoints***
+containing the IDs of the last records they consumed to.
+The next time a consumer restarts (due to a crash or
 otherwise), it reads its last checkpoint and starts
-consuming the log from the `id` that it contains.
+consuming the log from the ID that it contained.
 
 Checkpoints are modeled as a relation in Postgres:
 
@@ -354,12 +374,9 @@ CREATE TABLE checkpoints (
 ```
 
 Recall that in our simple example, consumers add up the
-`distance` of every ride created on the platform. They
-track a Redis ID so that they know their location in the
-Redis stream.
-
-Total distance is stored to a Postgres relation along with
-the name of the consumer:
+`distance` of every ride created on the platform. We'll
+keep this running tally in a `consumer_states` table that
+has an entry for each consumer:
 
 ``` sql
 CREATE TABLE consumer_states (
@@ -443,21 +460,21 @@ last consumed ride ID. This is so consumers can handle
 records that were written to the stream more than once. IDs
 can always be assumed to be ordered and if a consumer sees
 an ID smaller or equal to one that it knows that it
-consumes, it skips to the next record.
+consumes, it safely skips to the next record.
 
 ### Simulating failure (#simulating-failure)
 
 It's well and good for me to claim that this system is
 fault-tolerant, but it's a more believable claim when we
 prove it. Operating at our small scale we're unlikely to
-see many problems in this system, so I've written the
-processes so that they simulate some. 10% of the time, the
-streamer will double-send every event in a batch. This
-models it failing midway through sending a batch and having
-to retry the operation.
+see many problems, so processes are written to simulate
+some. 10% of the time, the streamer will double-send every
+event in a batch. This models it failing midway through
+sending a batch and having to retry the entire operation.
 
 Likewise, each consumer will crash 10% of the time after
-handling a batch but before committing its transaction.
+handling a batch but before committing the transaction that
+would set its state and checkpoint.
 
 Despite these artificial problems, because the system's
 designed to handle these edge cases and will tolerate them
@@ -512,7 +529,7 @@ looks pretty similar to [logical replication][logicalrepl]
 in Postgres 10, which can similarly guarantee that all
 emitted data makes it from producer to consumer.
 
-There are a few advantages to this approach over logical
+There are a few advantages to using a stream over logical
 replication:
 
 * It's possible to have multiple producers move information
