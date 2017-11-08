@@ -1,6 +1,6 @@
 ---
 title: Redis Streams and the Unified Log
-published_at: 2017-11-01T17:24:20Z
+published_at: 2017-11-08T15:15:31Z
 location: San Francisco
 twitter_image: true
 hook: Building a log-based architecture that's fast,
