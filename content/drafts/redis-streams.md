@@ -6,13 +6,13 @@ twitter_image: true
 hook: TODO
 ---
 
-Years ago, LinkedIn [wrote an article about the unified
-log][thelog], a useful architectural pattern for services
-in a distributed system converge state with one another. In
-the log's design, services emit state changes into an
-ordered data structure where each new record gets a unique
-ID. Unlike a queue, a log is durable across any number of
-reads until it's explicitly truncated.
+Years ago an article came out of LinkedIn [about the
+unified log][thelog], a useful architectural pattern for
+services in a distributed system share state with one
+another. In the log's design, services emit state changes
+into an ordered data structure where each new record gets a
+unique ID. Unlike a queue, a log is durable across any
+number of reads until it's explicitly truncated.
 
 Consumers track changes in the wider system by consuming
 the log. Each one maintains the ID of the last record it
@@ -23,9 +23,10 @@ consumed, and continues reading the log from there.
 
 The article is sober enough to point out that this design
 is nothing new: we've been using logs in various forms in
-computer science for decades. Journaling file systems use
-the idea for data correctness. Databases use it with ideas
-like the write-ahead log (WAL) in Postgres as they stream
+computer science for decades. [Journaling file
+systems][journalfs] use the idea to protect data against
+corruption. Databases use it with ideas like the
+[write-ahead log (WAL)][wal] in Postgres as they stream
 changes to their read replicas.
 
 !fig src="/assets/redis-streams/unified-log.svg" caption="The unified log: a producer emits to the stream and consumers read from it."
@@ -159,7 +160,7 @@ extra work to keep an AOF and performing more fsyncs will
 make commands slower (although still very fast). If you're
 using it for multiple things, it might be useful to make a
 distinction between places where ephemerality is okay and
-where it isn't, and run two separate Redis's with different
+where it isn't, and run two separate Redises with different
 configuration.
 
 ## Unified Rocket Rides (#rocket-rides-unified)
@@ -477,15 +478,15 @@ Likewise, each consumer will crash 10% of the time after
 handling a batch but before committing the transaction that
 would set its state and checkpoint.
 
-Despite these artificial problems, because the system's
-designed to handle these edge cases and will tolerate them
-gracefully. Run `forego start` (after following the
-appropriate setup in `README.md`) and leave the fleet of
-processes running. Despite the double sends and each
-consumer failing randomly and independently, no matter how
-long you wait, the consumers should always stay roughly
-caught up to each other and show the same `total_distance`
-reading for any given ID.
+The system's been designed to handle these edge cases and
+despite the artificial problems, it will manage gracefully.
+Run `forego start` (after following the appropriate setup
+in `README.md`) and leave the fleet of processes running.
+Despite the double sends and each consumer failing randomly
+and independently, no matter how long you wait, the
+consumers should always stay roughly caught up to each
+other and show the same `total_distance` reading for any
+given ID.
 
 Here's `consumer0` and `consumer1` showing an identical
 total for ride `521`:
@@ -560,12 +561,25 @@ tuple of `(total_distance, last_ride_id)` that consumers
 can use to reset their state before continuing to consume
 the stream.
 
+## Log-based architecture (#log-architecture)
+
+Log-based architecture provides an effective backbone for
+distributed systems by being fast, efficient, and
+resilient. Redis streams will provide (when available at
+roughly the end of the year) a user-friendly and ubiquitous
+log implementation with which to it. Even while Kafka will
+continue to be beneficial to the largest of web platforms,
+a stack built on Redis and Postgres will serve quite well
+right up until that point.
+
 [1] The expectation currently is that streams will be
 available in the Redis 4.0 series by the end of the year.
 
+[journalfs]: https://en.wikipedia.org/wiki/Journaling_file_system
 [logicalrepl]: https://www.postgresql.org/docs/10/static/logical-replication.html
 [mongodurability]: /fragments/mongo-durability
 [persistence]: https://redis.io/topics/persistence
 [thelog]: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
 [streams]: http://antirez.com/news/114
 [unifiedrides]: https://github.com/brandur/rocket-rides-unified
+[wal]: https://www.postgresql.org/docs/current/static/wal.html
