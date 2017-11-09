@@ -85,7 +85,7 @@ mostly devoid of useful information, with no concrete numbers in sight.
 Rate limiting is generally performed by a ["token bucket"][token-bucket]
 algorithm. I've written about it and a specific (and quite good)
 implementation called GCRA (generic cell rate algorithm) [in more detail
-previously](/rate-limits).
+previously](/rate-limiting).
 
 I've recently started distributing a GCRA implementation as a Redis module as
 part of the [redis-cell][redis-cell] project. It aims to provide a robust and
