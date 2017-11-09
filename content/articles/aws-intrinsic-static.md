@@ -279,7 +279,7 @@ env:
 Note that the plaintext values of these secure keys are only available to
 builds that are happening on the master branch of your repository. If someone
 forks your repository and builds their own branch, these values will not be
-available and upload to S3 will occur.
+available and upload to S3 won't occur.
 
 [See a complete Travis configuration here][travis-yml].
 
