@@ -347,10 +347,11 @@ so easy that within five years you'll probably have forgotten how it works. And
 despite all of this, unless you're running a _hugely_ successful site, costs
 will probably run in the low single digits of dollars a month (or less).
 
-**Addendum &mdash;** After originally writing this article, I've since
-converted this site to use the stack described here. The [source code is
-available][sorg] and I wrote some [justification](/fragments/going-static) for
-the conversion from a dynamic site to static.
+**Addendum --** After originally writing this article, I've
+since converted this site to use the stack described here.
+The [source code is available][sorg] and I wrote some
+[justification](/fragments/going-static) for the conversion
+from a dynamic site to static.
 
 [aws-cli]: https://aws.amazon.com/cli/
 [aws-console]: https://aws.amazon.com/console/
