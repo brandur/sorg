@@ -164,6 +164,69 @@ Regardless of the tool you use, good commit hygiene is
 still of paramount importance, so remember to squash and
 fix using `git rebase -i` before producing patch files.
 
+## Running a local replica (#replica)
+
+If you need to test with a replica, it's pretty easy to set
+that up by running a second Postgres instance listening on
+a different port and tweaking some configuration. Here's a
+script that demonstrates how to do that:
+
+``` sh
+#!/bin/sh
+
+set -e
+
+export POSTGRES_DIR=/opt/postgres
+
+export PRIMARY_PORT=5433
+export REPLICA_PORT=5434
+
+read -p "Will delete $POSTGRES_DIR/data/{primary,replica}. Okay? [Ctrl+C cancels]" yn
+rm -rf $POSTGRES_DIR/data/primary
+rm -rf $POSTGRES_DIR/data/replica
+
+# Initialize a new data directory for the primary, then use a bit of a shortcut
+# by just copying it for use by the replica.
+$POSTGRES_DIR/bin/initdb -D $POSTGRES_DIR/data/primary/
+cp -r $POSTGRES_DIR/data/primary/ $POSTGRES_DIR/data/replica/
+
+cat <<EOT >> $POSTGRES_DIR/data/primary/postgresql.conf
+port=$PRIMARY_PORT
+EOT
+
+cat <<EOT >> $POSTGRES_DIR/data/replica/postgresql.conf
+port=$REPLICA_PORT
+shared_buffers=500MB
+hot_standby=on
+hot_standby_feedback=on
+EOT
+
+cat <<EOT >> $POSTGRES_DIR/data/replica/recovery.conf
+standby_mode=on
+primary_conninfo='host=127.0.0.1 port=$PRIMARY_PORT user=$USER'
+EOT
+
+cat <<EOT >> /dev/stdout
+READY!
+======
+
+Start primary:
+    $POSTGRES_DIR/bin/postgres -D $POSTGRES_DIR/data/primary
+
+Start replica:
+    $POSTGRES_DIR/bin/postgres -D $POSTGRES_DIR/data/replica
+
+Create a database:
+    $POSTGRES_DIR/bin/createdb -p $PRIMARY_PORT mydb
+
+Connect to primary:
+    $POSTGRES_DIR/bin/psql -p $PRIMARY_PORT mydb
+
+Connect to replica:
+    $POSTGRES_DIR/bin/psql -p $REPLICA_PORT mydb
+EOT
+```
+
 [pg-hackers]: https://www.postgresql.org/list/pgsql-hackers/
 [pgindent-readme]: https://github.com/postgres/postgres/blob/master/src/tools/pgindent/README
 
