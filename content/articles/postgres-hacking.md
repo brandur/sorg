@@ -79,9 +79,10 @@ Postgres right in your terminal. This is convenient because
 you can see any logging that it emits and you can restart
 it easily with `Ctrl+C`.
 
-    /opt/postgres/bin/initdb -D data
+    mkdir /opt/postgres/data/
+    /opt/postgres/bin/initdb -D /opt/postgres/data/primary/
 
-    /opt/postgres/bin/postgres -D data -p 5433
+    /opt/postgres/bin/postgres -D /opt/postgres/data/primary/ -p 5433
 
 Now create a database and connect to it:
 
