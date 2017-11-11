@@ -68,7 +68,7 @@ multiple consumers reading out of a single stream and
 tracking their position within it by persisting the ID of
 the last record they read.
 
-The new `XADD` command appends to the stream:
+The new `XADD` command appends to one:
 
 ```
 > XADD rocket-rides-log * id 123 distance 456.7
