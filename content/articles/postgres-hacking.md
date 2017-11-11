@@ -139,7 +139,7 @@ Given that `pgindent` is brittle Perl code and appears to
 have no test coverage whatsoever, I'd recommend committing
 changes before using it on any of your code.
 
-## Patch Formatting (#patches)
+## Patch formatting (#patches)
 
 Changes to Postgres are submitted as patch file email
 attachments to the [PG Hackers][pg-hackers] mailing list.
