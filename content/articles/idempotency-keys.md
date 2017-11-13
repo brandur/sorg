@@ -8,6 +8,7 @@ hook: Building resilient services by identifying foreign
   driven to completion.
 hook_image: true
 twitter_image: true
+hn_link: https://news.ycombinator.com/item?id=15569478
 ---
 
 In APIs ***idempotency*** is a powerful concept. An

@@ -11,6 +11,7 @@ twitter_image: true
 attributions: Thanks to <a
   href="https://twitter.com/spencercdixon">Spencer
   Dixon</a> for review.
+hn_link: https://news.ycombinator.com/item?id=15366222
 ---
 
 The term "webhook" was coined back in 2007 by Jeff Lindsay
