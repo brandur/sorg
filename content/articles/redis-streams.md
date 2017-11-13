@@ -7,6 +7,7 @@ hook: Building a log-based architecture that's fast,
   in Redis.
 hook_image: true
 twitter_image: true
+hn_link: https://news.ycombinator.com/item?id=15653544
 ---
 
 Years ago an article came out of LinkedIn [about the
