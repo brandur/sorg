@@ -429,7 +429,7 @@ implementations simple by running everything against the
 primary. Projects that need infinitely scalable storage
 (i.e. disk usage is expected to grow well beyond what a
 single node can handle) should probably look into a more
-sophisticated partitioning scheme.
+elaborate partitioning scheme [like Citus][citus].
 
 There is a sweet spot of projects that can keep their
 storage within a single node, but still want to scale out
@@ -445,6 +445,7 @@ refer to a server that's tracking changes on a primary
 include "standby", "slave", and "secondary", but I'll stick
 to "replica" for consistency.
 
+[citus]: https://www.citusdata.com/
 [createcluster]: https://github.com/brandur/rocket-rides-scalable/tree/master/scripts/create_cluster
 [gitlab]: https://about.gitlab.com/2017/10/02/scaling-the-gitlab-database/#sticky-connections
 [scalablerides]: https://github.com/brandur/rocket-rides-scalable
