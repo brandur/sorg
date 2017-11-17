@@ -189,6 +189,21 @@ git clone https://github.com/brandur/rocket-rides-scalable.git
 
 ### Bootstraping a cluster (#cluster)
 
+For demo purposes it's useful to create a small cluster
+with a primary and a number of read replicas, and the
+project [includes a small script to help do
+so][createcluster]. It initializes and starts a primary,
+and for a number of times equal to the `NUM_REPLICAS`
+environment variable performs a base backup from the
+primary and starts a replica that points to the primary and
+stays in lockstep with it by consuming WAL.
+
+Processes are started as children of the script with Ruby's
+`Process.spawn`, and all Postgres daemons will shut down
+when it's killed. The setup's designed to be ephemeral and
+any data added to the primary is removed when the cluster
+bootstraps itself again on the script's next run.
+
 ### Tracking replica locations (#replica-locations)
 
 LSN = Log sequence number
@@ -266,4 +281,5 @@ Common synonyms for the word include "standby", "slave",
 and "secondary", but I'll stick to "replica" for
 consistency.
 
+[createcluster]: https://github.com/brandur/rocket-rides-scalable/tree/master/scripts/create_cluster
 [scalablerides]: https://github.com/brandur/rocket-rides-scalable
