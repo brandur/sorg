@@ -1,5 +1,7 @@
 ---
-title: Using Postgres WAL to Eradicate Stale Reads
+title: Using Postgres WAL to Eliminate Stale Reads
+#title: Scaling With Read Replication and Using Postgres WAL to Eliminate Stale Reads
+location: Osaka
 published_at: 2017-11-11T23:54:10Z
 hook: TODO
 ---
@@ -8,9 +10,9 @@ Read replicas are a common pattern in databases to help
 scale workload without having to resort to more complex
 strategies like partitioning. Most relational databases
 like Postgres, MySQL, and SQL Server are single master
-systems, and so all writes have to go the primary. Read
-operations however can plausibly be routed to the primary
-_or_ any of its replicas [1].
+systems, and so all writes have to go a primary that's
+leading the cluster. Read operations however can plausibly
+be routed to the primary _or_ any of its replicas [1].
 
 This is useful because it allows an application to start
 distributing a considerable amount of its load amongst all
