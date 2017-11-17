@@ -1,6 +1,6 @@
 ---
-title: Using Postgres WAL to Eliminate Stale Reads
-#title: Scaling With Read Replication and Using Postgres WAL to Eliminate Stale Reads
+#title: Using Postgres WAL to Eliminate Stale Reads
+title: Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads
 location: Osaka
 published_at: 2017-11-11T23:54:10Z
 hook: TODO
@@ -12,19 +12,21 @@ hook: Scaling out using read replicas and getting all their
 
 A common technique when running applications powered by
 relational databases like Postgres, MySQL, and SQL Server
-is sending read operations to readonly replicas [1];
-helping to distribute load between more nodes while also
-reducing pressure on the primary. All of these systems are
-single master so all writes have to go to the primary
-that's leading the cluster, but reads can go to any replica
-as long as it's reasonably current.
+is offloading read operations to readonly replicas [1],
+helping to distribute load between more nodes in the
+system by re-routing queries that don't need to run on the
+primary. These databases are traditionally single master,
+so writes have to go to the primary that's leading the
+cluster, but reads can go to any replica as long as it's
+reasonably current.
 
-Spreading load across more servers is good, but the pattern
-shows itself to be especially useful when accounting for
-the fact that most write operations have predictable
-performance -- they're often inserting, updating, or
-deleting just a single record. Reads on the other hand are
-often much more elaborate, and by extension, expensive.
+Spreading load across more servers is good, and the pattern
+shows itself to be even more useful when considering that
+although write operations might be numerous, most of them
+have predictable performance -- they're often inserting,
+updating, or deleting just a single record. Reads on the
+other hand are often more elaborate, and by extension, more
+expensive.
 
 !fig src="/assets/postgres-reads/replica-reads.svg" caption="Writes on the primary and reads on its replicas."
 
@@ -32,40 +34,39 @@ Even as part of a normal application's workload (barring
 analytical queries that can be even more complex), we might
 join on two or three different tables in order to perform
 an eager load, or even just have to read out a few dozen
-rows as a user views a single page. Despite the extra
-expense, an application that's suitably configured can
-offload the lion's share of the work to read replicas while
-keeping the primary only moderately utilized.
+rows to accurately render a response. A mature application
+might execute hundreds of queries to fulfill even a single
+request, and farming these out to replicas would yield huge
+benefits in reducing pressure on the primary.
 
-## Stale reads (#stale-reads)
+## A complication: stale reads (#stale-reads)
 
-While running reads on replicas is a good high-impact and
-low-effort win for scalability, it's not without its
+Running reads on replicas is a pretty good high-impact and
+low-effort win for scalability, but it's not without its
 challenges. The technique introduces the possibility of
 ***stale reads*** that occur when an application reads from
-replica before that replica has had a chance to receive
-relevant information that's been committed to the primary.
-A user might update some key details, and then go to view
-their changes and see stale data representing the
-pre-update state.
+replica before that replica has received relevant updates
+that have been committed to the primary. A user might
+update some key details, and then go to view their changes
+and see stale data representing the pre-update state.
 
 !fig src="/assets/postgres-reads/stale-read.svg" caption="A stale read that went to a replica that hadn't yet applied changes from the primary."
 
 Stale reads are a race condition. Modern databases
-operating over low latency connections are able to keep
-replicas following their primary _very_ closely, and may
-spend most of their time less than a second out of date,
-meaning that even systems using read replicas without any
-techniques for mitigating stale reads will produce correct
-results most of the time.
+operating over low latency connections can keep replicas
+trailing their primary _very_ closely, and probably spend
+most of their time less than a second out of date. Even
+systems using read replicas without any techniques for
+mitigating stale reads will produce correct results most of
+the time.
 
-As software engineers interested in building highly robust
-systems, "most of the time" isn't good enough. We can do
-better. Let's take a look at how we can ensure that stale
-reads _never_ occur. To accomplish this, we'll use
-Postgres's understanding of its own state of replication
-and some in-application intelligence around connection
-management.
+But as software engineers interested in building
+bulletproof systems, "most of the time" isn't good enough,
+and we can do better. Let's take a look at a technique to
+make sure that stale reads _never_ occur. We'll use
+Postgres's own understanding of its replication state and
+some in-application intelligence around connection
+management to accomplish it.
 
 ## The Postgres WAL (#postgres-wal)
 
@@ -77,8 +78,8 @@ log) for durability reasons. Every change is written out as
 a new entry in the WAL and it acts the canonical reference
 as to whether any change in the system occurred --
 committed information is written to a data directory like
-you might expect, but is only considered visible if the WAL
-confirms that its associated transaction is committed (see
+you might expect, but is only considered visible to new
+transactions if the WAL confirms that it's committed (see
 [How Postgres makes transactions
 atomic](/postgres-atomicity) for more on this subject).
 
@@ -91,51 +92,55 @@ are batched in 16 MB ***WAL segments***.
 A Postgres database can dump a representation of its
 current state to a *base backup* which can be used to
 initialize replica. From there, the replica stays in
-lockstep with its primary by consuming changes that it
-finds in its emitted WAL. A base backup comes with a
-pointer to the current LSN so that when a replica starts to
-consume the WAL, it knows where to start.
+lockstep with its primary by consuming changes in its
+emitted WAL. A base backup comes with a pointer to the
+current LSN so that when a replica starts to consume the
+WAL, it knows where to start.
 
 !fig src="/assets/postgres-reads/replicas-and-wal.svg" caption="A replica being initialized from base backup and consuming its primary's WAL."
 
-There are a few methods available to a replica to consume
-WAL. One is "log shipping" where completed WAL segments are
-copied from primary to replicas and consumed as a single
-batch. This has the major advantage of efficiency, but at
-the cost of how closely any secondary can be following its
-primary (secondaries will be at least as behind as the
-current segment that's still being written). Another method
-is streaming, where WAL is emitted to replicas over an open
-connection. This has the advantage of secondaries being
-very current at the cost of some extra resource
-consumption.
+There are a few ways for a replica to consume WAL. The
+first is "log shipping": completed WAL segments (16 MB
+chunks of the WAL) are copied from primary to replicas and
+consumed as a single batch. This has the major advantage of
+efficiency (it's fast to copy files around, and has
+negligible cost to the primary), but with a tradeoff of how
+closely any secondary can be following its primary --
+secondaries will be at least as behind as the current
+segment that's still being written.
 
-Due to their respective capabilities in being ready to
-become a primary, replicas consuming WAL with log shipping
-are also known as "warm standbys" while those using
-streaming are called "hot standbys". The latter is often
-seen in production setups due to its nice property of being
-ready to take the reins at a moment's notice thanks to
-having a state that so closely follows the primary's. The
-technique we're going to discuss works better with
-streaming, but should yield at benefits with either method.
+Another common configuration for consuming WAL is
+"streaming", where WAL is emitted by the primary to
+replicas over an open connection. This has the advantage of
+secondaries being very current at the cost of some extra
+resource consumption.
+
+Based on their respective aptitude's for becoming primary
+at a moment's notice, replicas consuming WAL with log
+shipping are also known as "warm standbys" while those
+using streaming are called "hot standbys". Hot standbys are
+often seen in production setups because maintain state that
+closely matches their primary and make great targets to
+fail over to at a moment's notice. The technique we're
+going to discuss works better with streaming, but should
+yield at benefits with either method.
 
 ## Routing reads based on replica WAL position (#routing-reads)
 
 By routing read operations only to replicas that are caught
 up enough to run them accurately, we can eliminate stale
-reads. This will necessitate an easy way of determining how
-far behind a replica is, and luckily the WAL's LSN makes a
-perfect metric for this purpose.
+reads. This necessitates an easy way of measuring how far
+behind a replica is, and the WAL's LSN is perfect for this
+use.
 
 When mutating a resource in the system we'll store the
-latest LSN for the entity making the request. When
-fulfilling a read operation for that same entity, we'll
-check which replicas have consumed to that point or beyond
-it, and randomly select one from the pool. If no replicas
-are sufficiently up to date (i.e. say a read operation is
-being run very closely after the initial write), we'll fall
-back to the master. Using this technique, stale reads
+last committed LSN for the entity making the request. Then,
+when we subsequently want to fulfill a read operation for
+that same entity, we'll check which replicas have consumed
+to that point or beyond it, and randomly select one from
+the pool. If no replicas are sufficiently advanced (i.e.
+say a read operation is being run very closely after the
+initial write), we'll fall back to the master. Stale reads
 become impossible regardless of the state of any given
 replica.
 
@@ -143,26 +148,26 @@ replica.
 
 ### Scalable Rocket Rides (#rocket-rides)
 
-To build a working demonstrating of this concept we'll be
-returning to the same toy application that we used to show
-off an implementation for [idempotency
-keys](/idempotency-keys) and [the unified
+To build a working demo we'll be returning to the same toy
+application that we used to show off an implementation for
+[idempotency keys](/idempotency-keys) and [the unified
 log](/redis-streams) -- _Rocket Rides_. As a quick
-reminder, Rocket Rides is a Lyft-like app that lets its
+reminder, _Rocket Rides_ is a Lyft-like app that lets its
 users get rides with pilots wearing jetpacks; a vast
 improvement over the everyday banality of a car.
 
-_Scalable Rocket Rides_ has an `api` process that writes to
-a Postgres database. It's configured with a number of read
-replicas that receive changes with the WAL. When performing
-a read, it tries to route it to one of a random replica
-that's sufficiently caught up to fulfill the operation for
-a particular user.
+Our new _Scalable Rocket Rides_ demo has an `api` process
+that writes to a Postgres database. It's configured with a
+number of read replicas that are configured with Postgres
+replication to receive changes from the primary. When
+performing a read, the `api` tries to route it to one of a
+random replica that's sufficiently caught up to fulfill the
+operation for a particular user.
 
 We'll be using the Sequel gem, which can be configured with
-a primary and any number of different replicas which are
-assigned names (e.g. `replica0`) and address with the
-`server(...)` method:
+a primary and any number of read replicas. Replicas are
+assigned names like `replica0`, and operations are sent to
+them with the `server(...)` helper:
 
 ``` ruby
 DB = Sequel.connect("postgres://localhost:5433/rocket-rides-scalale",
@@ -183,8 +188,8 @@ DB[:users].server(:replica0).select(...)
 A working version of all this code is available in the
 [_Scalable Rocket Rides_][scalablerides] repository. We'll
 walk through the project with a number of extracted
-snippets, but it might easier to download the code and
-follow along that way:
+snippets, but if you prefer, you can download the code and
+follow along:
 
 ``` sh
 git clone https://github.com/brandur/rocket-rides-scalable.git
@@ -192,27 +197,27 @@ git clone https://github.com/brandur/rocket-rides-scalable.git
 
 ### Bootstrapping a cluster (#cluster)
 
-For demo purposes it's useful to create a small cluster
-with a primary and a number of read replicas, and the
-project [includes a small script to help do
-so][createcluster]. It initializes and starts a primary,
+For demo purposes it's useful to create a small
+locally-running cluster with a primary and some replicas.
+The project [includes a small script to help with
+that][createcluster]. It initializes and starts a primary,
 and for a number of times equal to the `NUM_REPLICAS`
-environment variable performs a base backup and starts a
+environment variable performs a base backup and boots a
 replica with it
 
-Processes are started as children of the script with Ruby's
-`Process.spawn`, and all Postgres daemons will shut down
-when it's stopped. The setup's designed to be ephemeral and
-any data added to the primary is removed when the cluster
-bootstraps itself again on the script's next run.
+Postgres daemons are started as children of the script with
+Ruby's `Process.spawn` and will all die when it's stopped.
+The setup's designed to be ephemeral and any data added to
+the primary is removed when the cluster bootstraps itself
+again on the script's next run.
 
 ### The Observer: tracking replication status (#observer)
 
 To save every `api` process from having to reach out and
-check on the status of every replica for itself, we'll have
-a single process called an `observer` that periodically
-refreshes the state of every replica and stores it to a
-Postgres table.
+check on the replication status of every replica for
+itself, we'll have a process called an `observer` that
+periodically refreshes the state of every replica and
+stores it to a Postgres table.
 
 The table contains a common `name` for each replica (e.g.
 `replica0`) and a `last_lsn` field that stores a sequence
@@ -230,11 +235,11 @@ Keep in mind that this status information could really go
 anywhere. If we have Redis available, we could put it in
 there for fast access, or have every `api` worker cache it
 in-process periodically for even faster access. Postgres is
-convenient, and as we'll see momentarily makes lookups
+convenient, and as we'll see momentarily, makes lookups
 quite elegant, but it's not necessary.
 
-The `observer` runs in a loop, and on every iteration
-executes this:
+The `observer` runs in a loop, and executes something like
+this on every iteration:
 
 ``` ruby
 # exclude :default at the zero index
@@ -255,28 +260,30 @@ end
 
 # update all replica statuses at once with upsert
 DB[:replica_statuses].
-  insert_conflict(target: :name, update: { last_lsn: Sequel[:excluded][:last_lsn] }).
+  insert_conflict(target: :name,
+    update: { last_lsn: Sequel[:excluded][:last_lsn] }).
   multi_insert(insert_tuples)
 
 $stdout.puts "Updated replica LSNs: results=#{insert_tuples}"
 ```
 
-A connection is made to every replica in sequence and
+A connection is made to every replica and
 `pg_last_wal_replay_lsn()` is used to see its current
-location in the WAL. When all statuses are available, we
-use Postgres upsert (`INSERT INTO ... ON CONFLICT ...`) to
-store the entire set to `replica_statuses`.
+location in the WAL. When all statuses have been collected,
+Postgres upsert (`INSERT INTO ... ON CONFLICT ...`) is used
+to store the entire set to `replica_statuses`.
 
 ### Saving minimum LSN (#min-lsn)
 
-Knowing the status of our replicas is half the equation,
-with the other half being knowing the minimum required
-replication progress for any given user so that they never
-see a stale read. This is determined by saving the
-primary's current LSN whenever the user performs an action.
+Knowing the status of our replicas is half of the
+implementation. The other half is knowing the minimum
+replication progress for every user that will give us the
+horizon beyond which stale reads are impossible. This is
+determined by saving the primary's current LSN whenever the
+user makes a change in the system.
 
 We'll model this as a `min_lsn` field on our `users`
-relation:
+relation (and again use the built-in `pg_lsn` data type):
 
 ``` sql
 CREATE TABLE users (
@@ -314,13 +321,12 @@ def update_user_min_lsn(user)
 end
 ```
 
-### Selecting a replica (#select-replica)
+### Selecting an eligible replica (#select-replica)
 
 Now that replication status and minimum WAL progress for
 every user is being tracked, `api` processes need a way to
 select an eligible replica candidate for read operations.
-Here's an implementation of a `select_replica` method that
-does just that:
+Here's an implementation that does just that:
 
 ``` ruby
 def select_replica(user)
@@ -383,7 +389,7 @@ it. Running the whole constellation of programs will show
 that most of the time these reads will be served from a
 replica, but occasionally from the primary (`default` in
 Sequel) as replication falls behind or the `observer`
-hasn't performed its work loop in some time:
+hasn't performed its work loop in a while:
 
 ```
 $ forego start | grep 'Reading ride'
@@ -404,18 +410,21 @@ api.1       | Reading ride 105 from server 'replica2'
 Maybe. The implementation's major downside is that each
 user's `min_lsn` needs to be updated every time an action
 that affects read results is performed. If you squint just
-a little bit, you'll notice that this problem looks a lot
-like cache invalidation: it works well until it doesn't,
-and keeping a complex codebase perfectly correct can be
-difficult.
+a little bit, you'll notice that this looks a lot like
+cache invalidation -- a technique infamous for working well
+until it doesn't. In a more complex codebase save hooks and
+update triggers can be useful in helping to ensure
+correctness, but given enough lines of code and enough
+people working on it, _perfect_ correctness can still be
+frustratingly elusive.
 
 Projects that produce only moderate database load (the
-majority of all projects) shouldn't bother, and simplify
-code by just running everything against the primary.
-Projects that need infinitely scalable storage (i.e. disk
-usage is expected to grow well beyond what a single node
-can handle) should probably probably look into a
-partitioning scheme.
+majority of all projects) shouldn't bother, and keep their
+implementations simple by running everything against the
+primary. Projects that need infinitely scalable storage
+(i.e. disk usage is expected to grow well beyond what a
+single node can handle) should probably look into a more
+sophisticated partitioning scheme.
 
 There is a sweet spot of projects that can keep their
 storage within a single node, but still want to scale out
