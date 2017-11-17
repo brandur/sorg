@@ -400,6 +400,30 @@ api.1       | Reading ride 105 from server 'replica2'
 
 ## Should I do this? (#should-i)
 
+Maybe. The implementation's major downside is that each
+user's `min_lsn` needs to be updated every time an action
+that affects read results is performed. If you squint just
+a little bit, you'll notice that this problem looks a lot
+like cache invalidation: it works well until it doesn't,
+and keeping a complex codebase perfectly correct can be
+difficult.
+
+Projects that produce only moderate database load (the
+majority of all projects) shouldn't bother, and simplify
+code by just running everything against the primary.
+Projects that need infinitely scalable storage (i.e. disk
+usage is expected to grow well beyond what a single node
+can handle) should probably probably look into a
+partitioning scheme.
+
+There is a sweet spot of projects that can keep their
+storage within a single node, but still want to scale out
+on computation. For this sort of use moving reads to
+replicas can be quite beneficial because it greatly expands
+the runway for scalability while also avoiding the
+considerable overhead and operational complexity of
+partitioning.
+
 [1] A note on terminology: I use the word "replica" to
 refer to a server that's tracking changes on a primary.
 Common synonyms for the word include "standby", "slave",
