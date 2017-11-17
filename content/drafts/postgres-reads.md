@@ -122,12 +122,11 @@ streaming, but should yield at benefits with either method.
 
 ## Routing reads based on replica WAL position (#routing-reads)
 
-We can avoid stale reads by making sure to route read
-queries only to replicas that are caught up enough to
-accurately fulfill them. To do this, we'll need a way of
-measuring how far behind a replica is, and the WAL's LSN
-makes for a very convenient metric by which to measure
-this.
+By routing read operations only to replicas that are caught
+up enough to run them accurately, we can eliminate stale
+reads. This will necessitate an easy way of determining how
+far behind a replica is, and luckily the WAL's LSN makes a
+perfect metric for this purpose.
 
 When mutating a resource in the system we'll store the
 latest LSN for the entity making the request. When
