@@ -21,7 +21,7 @@ updating, or deleting just single records, reads are often
 much more elaborate and by extension, expensive for the
 database to perform.
 
-TODO: Diagram of writes to primary and reads on replicas.
+!fig src="/assets/postgres-reads/replica-reads.svg" caption="Writes on the primary and reads on its replicas."
 
 Even as part of a normal application's workload (barring
 analytical queries that can be even more complex), we might
@@ -43,7 +43,7 @@ look like them updating some information, but then when
 trying to view what they updated seeing stale data
 representing pre-update state.
 
-TODO: Diagram of stale read.
+!fig src="/assets/postgres-reads/stale-read.svg" caption="A stale read that went to a replica that hadn't yet applied changes from the primary."
 
 Stale reads are a race condition. Modern databases
 operating over low latency connections are able to keep
@@ -425,10 +425,10 @@ considerable overhead and operational complexity of
 partitioning.
 
 [1] A note on terminology: I use the word "replica" to
-refer to a server that's tracking changes on a primary.
-Common synonyms for the word include "standby", "slave",
-and "secondary", but I'll stick to "replica" for
-consistency.
+refer to a server that's tracking changes on a primary
+(A.K.A. "leader", "master"). Common synonyms for a replica
+include "standby", "slave", and "secondary", but I'll stick
+to "replica" for consistency.
 
 [createcluster]: https://github.com/brandur/rocket-rides-scalable/tree/master/scripts/create_cluster
 [scalablerides]: https://github.com/brandur/rocket-rides-scalable
