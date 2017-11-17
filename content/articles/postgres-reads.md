@@ -149,7 +149,7 @@ The technique is inspired by [GitLab's article on scaling
 their database][gitlab], where they refer to it as "sticky
 connections". Their large Postgres installation is still
 unpartitioned, and using replicas for extra read capacity
-is key in managing their considerable load.
+is key in managing its considerable load.
 
 ### Scalable Rocket Rides (#rocket-rides)
 
