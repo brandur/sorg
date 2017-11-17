@@ -3,11 +3,10 @@
 title: Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads
 location: Osaka
 published_at: 2017-11-11T23:54:10Z
-hook: TODO
-hook: Scaling out using read replicas and getting all their
-  advantages, and then enriching the system with
-  intelligence around replication status to eliminate the
-  possibility of stale reads.
+hook: Scaling out operation with read replicas without the
+  downside of stale reads.
+hook_image: true
+twitter_image: true
 ---
 
 A common technique when running applications powered by
