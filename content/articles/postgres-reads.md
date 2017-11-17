@@ -1,10 +1,11 @@
 ---
 #title: Using Postgres WAL to Eliminate Stale Reads
-title: Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads
+title: Scaling Postgres with Read Replicas & Using WAL to
+  Counter Stale Reads
 location: Osaka
-published_at: 2017-11-11T23:54:10Z
-hook: Scaling out operation with read replicas without the
-  downside of stale reads.
+published_at: 2017-11-17T22:02:56Z
+hook: Scaling out operation with read replicas and avoiding
+  the downside of stale reads.
 hook_image: true
 twitter_image: true
 ---
