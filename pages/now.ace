@@ -10,7 +10,7 @@
         #title
           h1 What I'm Doing Now
         #now
-          p I'm in Japan, visiting its unique duality of the most beautiful natural and urban environments in the world, decompressing from the ever-turning treadmill of electronic life, writing, and visiting as many onsens as I can find.
+          p I'm in Japan, visiting its unique duality of the most beautiful natural and urban environments in the world, decompressing from the ever-turning treadmill of electronic life, writing, and visiting as many <a href="https://en.wikipedia.org/wiki/Onsen">onsens</a> as I can find.
           p
             img.overflowing src="/assets/now/japanese-shrine.jpg" data-rjs="2"
           p A few points of focus:
