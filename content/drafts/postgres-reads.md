@@ -118,7 +118,7 @@ technique we're going to discuss will be able to make
 replica reads more often when WAL is being streamed, but
 will work with either method.
 
-## Routing reads based on replica readiness (#routing-reads)
+## Routing reads based on replica WAL position (#routing-reads)
 
 We can avoid stale reads by making sure to route read
 queries only to replicas that are caught up enough to
@@ -138,6 +138,8 @@ back to the master. Using this technique, stale reads
 become impossible regardless of the state of any given
 replica.
 
+!fig src="/assets/postgres-reads/routing.svg" caption="Routing read operations based on replica progress in the WAL."
+
 ### Scalable Rocket Rides (#rocket-rides)
 
 To build a working demonstrating of this concept we'll be
@@ -149,12 +151,12 @@ reminder, Rocket Rides is a Lyft-like app that lets its
 users get rides with pilots wearing jetpacks; a vast
 improvement over the everyday banality of a car.
 
-_Scalable Rocket Rides_ has an API process that writes to a
-Postgres database. It's configured with a number of read
+_Scalable Rocket Rides_ has an `api` process that writes to
+a Postgres database. It's configured with a number of read
 replicas that receive changes with the WAL. When performing
-a read, it tries to route it to one of a random
-replica that's sufficiently caught up to fulfill the
-operation for a particular user.
+a read, it tries to route it to one of a random replica
+that's sufficiently caught up to fulfill the operation for
+a particular user.
 
 We'll be using the Sequel gem, which can be configured with
 a primary and any number of different replicas which are
@@ -179,101 +181,224 @@ DB[:users].server(:replica0).select(...)
 
 A working version of all this code is available in the
 [_Scalable Rocket Rides_][scalablerides] repository. We'll
-cover a number of snippets extracted from the project, but
-it might be easier to download that code and follow along
-that way:
+walk through the project with a number of extracted
+snippets, but it might easier to download the code and
+follow along that way:
 
 ``` sh
 git clone https://github.com/brandur/rocket-rides-scalable.git
 ```
 
-### Bootstraping a cluster (#cluster)
+### Bootstrapping a cluster (#cluster)
 
 For demo purposes it's useful to create a small cluster
 with a primary and a number of read replicas, and the
 project [includes a small script to help do
 so][createcluster]. It initializes and starts a primary,
 and for a number of times equal to the `NUM_REPLICAS`
-environment variable performs a base backup from the
-primary and starts a replica that points to the primary and
-stays in lockstep with it by consuming WAL.
+environment variable performs a base backup and starts a
+replica with it
 
 Processes are started as children of the script with Ruby's
 `Process.spawn`, and all Postgres daemons will shut down
-when it's killed. The setup's designed to be ephemeral and
+when it's stopped. The setup's designed to be ephemeral and
 any data added to the primary is removed when the cluster
 bootstraps itself again on the script's next run.
 
-### Tracking replica locations (#replica-locations)
+### The Observer: tracking replication status (#observer)
 
-LSN = Log sequence number
+To save every `api` process from having to reach out and
+check on the status of every replica for itself, we'll have
+a single process called an `observer` that periodically
+refreshes the state of every replica and stores it to a
+Postgres table.
 
-Earlier location when querying on replica:
+The table contains a common `name` for each replica (e.g.
+`replica0`) and a `last_lsn` field that stores a sequence
+number as Postgres's native `pg_lsn` data type:
 
-```
-mydb=# select pg_last_wal_replay_lsn();
- pg_last_wal_replay_lsn
-------------------------
- 0/15E88D0
-(1 row)
-```
-
-Later location:
-
-```
-mydb=# select pg_last_wal_replay_lsn();
- pg_last_wal_replay_lsn
-------------------------
- 0/160A580
-(1 row)
+``` sql
+CREATE TABLE replica_statuses (
+    id       BIGSERIAL    PRIMARY KEY,
+    last_lsn PG_LSN       NOT NULL,
+    name     VARCHAR(100) NOT NULL UNIQUE
+);
 ```
 
-On primary:
+Keep in mind that this status information could really go
+anywhere. If we have Redis available, we could put it in
+there for fast access, or have every `api` worker cache it
+in-process periodically for even faster access. Postgres is
+convenient, and as we'll see momentarily makes lookups
+quite elegant, but it's not necessary.
 
-```
-mydb=# select pg_last_wal_replay_lsn();
- pg_last_wal_replay_lsn
-------------------------
+The `observer` runs in a loop, and on every iteration
+executes this:
 
-(1 row)
-```
+``` ruby
+# exclude :default at the zero index
+replica_names = DB.servers[1..-1]
 
-Get current location on primary:
+last_lsns = replica_names.map do |name|
+  DB.with_server(name) do
+    DB[Sequel.lit(<<~eos)].first[:lsn]
+      SELECT pg_last_wal_replay_lsn() AS lsn;
+    eos
+  end
+end
 
-```
-mydb=# select pg_current_wal_lsn();
- pg_current_wal_lsn
---------------------
- 0/160A580
-(1 row)
-```
+insert_tuples = []
+replica_names.each_with_index do |name, i|
+  insert_tuples << { name: name.to_s, last_lsn: last_lsns[i] }
+end
 
-Get how far ahead or behind one location is compared to another:
+# update all replica statuses at once with upsert
+DB[:replica_statuses].
+  insert_conflict(target: :name, update: { last_lsn: Sequel[:excluded][:last_lsn] }).
+  multi_insert(insert_tuples)
 
-```
-mydb=# select pg_wal_lsn_diff('0/160A580', '0/160A580');
- pg_wal_lsn_diff
------------------
-               0
-(1 row)
-
-mydb=# select pg_wal_lsn_diff('0/160A580', '0/15E88D0');
- pg_wal_lsn_diff
------------------
-          138416
-(1 row)
-
-mydb=# select pg_wal_lsn_diff('0/15E88D0', '0/160A580');
- pg_wal_lsn_diff
------------------
-         -138416
-(1 row)
-
+$stdout.puts "Updated replica LSNs: results=#{insert_tuples}"
 ```
 
-https://www.postgresql.org/docs/current/static/wal-intro.html
-https://www.postgresql.org/docs/current/static/functions-admin.html
-http://sequel.jeremyevans.net/rdoc/files/doc/sharding_rdoc.html
+A connection is made to every replica in sequence and
+`pg_last_wal_replay_lsn()` is used to see its current
+location in the WAL. When all statuses are available, we
+use Postgres upsert (`INSERT INTO ... ON CONFLICT ...`) to
+store the entire set to `replica_statuses`.
+
+### Saving minimum LSN (#min-lsn)
+
+Knowing the status of our replicas is half the equation,
+with the other half being knowing the minimum required
+replication progress for any given user so that they never
+see a stale read. This is determined by saving the
+primary's current LSN whenever the user performs an action.
+
+We'll model this as a `min_lsn` field on our `users`
+relation:
+
+``` sql
+CREATE TABLE users (
+    id      BIGSERIAL    PRIMARY KEY,
+    email   VARCHAR(255) NOT NULL UNIQUE,
+    min_lsn PG_LSN
+);
+```
+
+For any action that will later affect reads, we touch the
+user's `min_lsn` by setting it to the value of the
+primary's `pg_current_wal_lsn()`. This is performed in
+`update_user_min_lsn` in this simple implementation:
+
+``` ruby
+post "/rides" do
+  user = authenticate_user(request)
+  params = validate_params(request)
+
+  DB.transaction(isolation: :serializable) do
+    ride = Ride.create(
+      distance: params["distance"],
+      user_id: user.id,
+    )
+    update_user_min_lsn(user)
+
+    [201, JSON.generate(serialize_ride(ride))]
+  end
+end
+
+def update_user_min_lsn(user)
+  User.
+    where(id: user.id).
+    update(Sequel.lit("min_lsn = pg_current_wal_lsn()"))
+end
+```
+
+### Selecting a replica (#select-replica)
+
+Now that replication status and minimum WAL progress for
+every user is being tracked, `api` processes need a way to
+select an eligible replica candidate for read operations.
+Here's an implementation of a `select_replica` method that
+does just that:
+
+``` ruby
+def select_replica(user)
+  # If the user's `min_lsn` is `NULL` then they haven't performed an operation
+  # yet, and we don't yet know if we can use a replica yet. Default to the
+  # primary.
+  return :default if user.min_lsn.nil?
+
+  # exclude :default at the zero index
+  replica_names = DB.servers[1..-1].map { |name| name.to_s }
+
+  res = DB[Sequel.lit(<<~eos), replica_names, user.min_lsn]
+    SELECT name
+    FROM replica_statuses
+    WHERE name IN ?
+      AND pg_wal_lsn_diff(last_lsn, ?) >= 0;
+  eos
+
+  # If no candidates are caught up enough, then go to the primary.
+  return :default if res.nil? || res.empty?
+
+  # Return a random replica name from amongst the candidates.
+  candidate_names = res.map { |res| res[:name].to_sym }
+  candidate_names.sample
+end
+```
+
+`pg_wal_lsn_diff()` returns the difference between two
+`pg_lsn` values, and we use it to compare the stored status
+of each replica in `replica_statuses` to the `min_lsn`
+value of the current user (`>= 0` means that the replica is
+ahead of the user's minimum). We take the name of a random
+replica from the returned set. If the set was empty, then
+no replica is advanced enough for our purposes, so we fall
+back to the primary.
+
+Here's `select_replica` in action on an API endpoint:
+
+``` ruby
+get "/rides/:id" do |id|
+  user = authenticate_user(request)
+
+  name = select_replica(user)
+  $stdout.puts "Reading ride #{id} from server '#{name}'"
+
+  ride = Ride.server(name).first(id: id)
+  if ride.nil?
+    halt 404, JSON.generate(wrap_error(
+      Messages.error_not_found(object: "ride", id: id)
+    ))
+  end
+
+  [200, JSON.generate(serialize_ride(ride))]
+end
+```
+
+And that's it! The repository also comes with a simulator
+that creates a new ride and then immediately tries to read
+it. Running the whole constellation of programs will show
+that most of the time these reads will be served from a
+replica, but occasionally from the primary (`default` in
+Sequel) as replication falls behind or the `observer`
+hasn't performed its work loop in some time:
+
+```
+$ forego start | grep 'Reading ride'
+api.1       | Reading ride 96 from server 'replica0'
+api.1       | Reading ride 97 from server 'replica0'
+api.1       | Reading ride 98 from server 'replica0'
+api.1       | Reading ride 99 from server 'replica1'
+api.1       | Reading ride 100 from server 'replica4'
+api.1       | Reading ride 101 from server 'replica2'
+api.1       | Reading ride 102 from server 'replica0'
+api.1       | Reading ride 103 from server 'default'
+api.1       | Reading ride 104 from server 'default'
+api.1       | Reading ride 105 from server 'replica2'
+```
+
+## Should I do this? (#should-i)
 
 [1] A note on terminology: I use the word "replica" to
 refer to a server that's tracking changes on a primary.
