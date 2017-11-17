@@ -12,6 +12,21 @@ systems, and so all writes have to go the primary. Read
 operations however can plausibly be routed to the primary
 _or_ any of its replicas.
 
+This is useful because it allows an application to start
+distributing a considerable amount of its load amongst all
+available database nodes. It's especially useful when you
+consider that while _most_ write operations have relatively
+predictable performance because they're often insert,
+updating, or deleting just single records, reads are often
+much more elaborate and by extension, expensive. Even as
+part of a normal application's workload (barring analytical
+queries that can be even more complex), we might join on
+two or three different tables in order to perform an eager
+load, or even just have to read out a few dozen rows as
+part of a normal page load.
+
+## Stale reads (#stale-reads)
+
 But reading from a replica isn't without its challenges --
 the technique introduces the possibility of ***stale
 reads*** that occur when an application reads from replica
