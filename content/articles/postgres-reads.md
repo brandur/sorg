@@ -1,5 +1,4 @@
 ---
-#title: Using Postgres WAL to Eliminate Stale Reads
 title: Scaling Postgres with Read Replicas & Using WAL to
   Counter Stale Reads
 location: Osaka
@@ -145,6 +144,12 @@ become impossible regardless of the state of any given
 replica.
 
 !fig src="/assets/postgres-reads/routing.svg" caption="Routing read operations based on replica progress in the WAL."
+
+The technique is inspired by [GitLab's article on scaling
+their database][gitlab], where they refer to it as "sticky
+connections". Their large Postgres installation is still
+unpartitioned, and using replicas for extra read capacity
+is key in managing their considerable load.
 
 ### Scalable Rocket Rides (#rocket-rides)
 
@@ -441,4 +446,5 @@ include "standby", "slave", and "secondary", but I'll stick
 to "replica" for consistency.
 
 [createcluster]: https://github.com/brandur/rocket-rides-scalable/tree/master/scripts/create_cluster
+[gitlab]: https://about.gitlab.com/2017/10/02/scaling-the-gitlab-database/#sticky-connections
 [scalablerides]: https://github.com/brandur/rocket-rides-scalable
