@@ -420,7 +420,7 @@ cache invalidation -- a technique infamous for working well
 until it doesn't. In a more complex codebase save hooks and
 update triggers can be useful in helping to ensure
 correctness, but given enough lines of code and enough
-people working on it, _perfect_ correctness can still be
+people working on it, _perfect_ correctness can be
 frustratingly elusive.
 
 Projects that produce only moderate database load (the
@@ -429,7 +429,7 @@ implementations simple by running everything against the
 primary. Projects that need infinitely scalable storage
 (i.e. disk usage is expected to grow well beyond what a
 single node can handle) should probably look into a more
-elaborate partitioning scheme [like Citus][citus].
+elaborate partitioning scheme ([like Citus][citus]).
 
 There is a sweet spot of projects that can keep their
 storage within a single node, but still want to scale out
