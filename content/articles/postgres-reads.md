@@ -7,6 +7,7 @@ hook: Scaling out operation with read replicas and avoiding
   the downside of stale reads.
 hook_image: true
 twitter_image: true
+hn_link: https://news.ycombinator.com/item?id=15726376
 ---
 
 A common technique when running applications powered by
