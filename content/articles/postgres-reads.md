@@ -442,7 +442,7 @@ considerable overhead and operational complexity of
 partitioning.
 
 [1] A note on terminology: I use the word "replica" to
-refer to a server that's tracking changes on a primary
+refer to a server that's tracking changes on a "primary"
 (A.K.A. "leader", "master"). Common synonyms for a replica
 include "standby", "slave", and "secondary", but I'll stick
 to "replica" for consistency.
