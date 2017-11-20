@@ -21,6 +21,7 @@ desire for instant gratification by finding a smaller/easier piece of work or
 entertainment, and (2) communication interrupts. The smartphone acts as the
 main delivery vector for both these things.
 
-Now it's time to disable wi-fi and turn off my phone.
+Now it's time to disable wi-fi and turn off my phone and
+get some work done.
 
 [daily-beast]: http://www.thedailybeast.com/articles/2013/03/27/how-i-write-nathan-englander.html
