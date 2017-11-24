@@ -5,8 +5,6 @@ location: San Francisco
 hook: Building a log-based architecture that's fast,
   efficient, and resilient on the new stream data structure
   in Redis.
-hook_image: true
-twitter_image: true
 hn_link: https://news.ycombinator.com/item?id=15653544
 ---
 

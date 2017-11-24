@@ -2,7 +2,6 @@
 title: MonkeyBrains
 published_at: 2016-01-23T01:15:58Z
 image: /assets/fragments/monkeybrains/vista.jpg
-twitter_image: true
 hook: A very brief review of the local San Francisco ISP.
 ---
 
