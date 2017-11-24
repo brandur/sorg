@@ -4,7 +4,6 @@ published_at: 2014-02-02T18:15:28Z
 location: San Francisco
 hook: In search of an alternative to BreakTime. The
   discovery of a very classical solution.
-hook_image: true
 ---
 
 A few years ago I took the plunge and started using

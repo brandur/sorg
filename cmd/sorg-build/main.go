@@ -57,9 +57,9 @@ type Article struct {
 	// Hook is a leading sentence or two to succinctly introduce the article.
 	Hook string `yaml:"hook"`
 
-	// HookImage is a boolean indicating whether there's a preview image for
-	// the article that can be shown on the index page.
-	HookImage bool `yaml:"hook_image"`
+	// HookImageURL is the URL for a hook image for the article (to be shown on
+	// the article index) if one was found.
+	HookImageURL string `yaml:"-"`
 
 	// Image is an optional image that may be included with an article.
 	Image string `yaml:"image"`
@@ -81,10 +81,6 @@ type Article struct {
 	// included as YAML frontmatter, but rather calculated from the article's
 	// content, rendered, and then added separately.
 	TOC string `yaml:"-"`
-
-	// TwitterImage is a boolean indicating whether there's an image for
-	// the article that can be shown in a Twitter card.
-	TwitterImage bool `yaml:"twitter_image"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -193,10 +189,6 @@ type Fragment struct {
 
 	// Title is the fragment's title.
 	Title string `yaml:"title"`
-
-	// TwitterImage is a boolean indicating whether there's an image for
-	// the article that can be shown in a Twitter card.
-	TwitterImage bool `yaml:"twitter_image"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -583,12 +575,26 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		return nil, err
 	}
 
+	format, ok := pathAsImage(
+		path.Join(sorg.ContentDir, "images", article.Slug, "hook"),
+	)
+	if ok {
+		article.HookImageURL = "/assets/" + article.Slug + "/hook." + format
+	}
+
+	if err != nil && !os.IsNotExist(err) {
+		return nil, err
+	}
+
 	card := &twitterCard{
 		Title:       article.Title,
 		Description: article.Hook,
 	}
-	if article.TwitterImage {
-		card.ImageURL = sorg.AbsoluteURL + "/assets/" + article.Slug + "/twitter@2x.jpg"
+	format, ok = pathAsImage(
+		path.Join(sorg.ContentDir, "images", article.Slug, "twitter@2x"),
+	)
+	if ok {
+		card.ImageURL = sorg.AbsoluteURL + "/assets/" + article.Slug + "/twitter@2x." + format
 	}
 
 	locals := getLocals(article.Title, map[string]interface{}{
@@ -710,13 +716,14 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 	// A lot of fragments still have unwritten hooks, so only add a card where
 	// a fragment has a configured Twitter image for the time being.
 	var card *twitterCard
-	if fragment.TwitterImage {
+	format, ok := pathAsImage(
+		path.Join(sorg.ContentDir, "fragments", fragment.Slug, "twitter@2x"),
+	)
+	if ok {
 		card = &twitterCard{
+			ImageURL:    "/assets/fragments/" + fragment.Slug + "/twitter@2x." + format,
 			Title:       fragment.Title,
 			Description: fragment.Hook,
-		}
-		if fragment.TwitterImage {
-			card.ImageURL = sorg.AbsoluteURL + "/assets/fragments/" + fragment.Slug + "/twitter@2x.jpg"
 		}
 	}
 
@@ -2111,6 +2118,25 @@ create:
 	}
 
 	return os.Symlink(source, dest)
+}
+
+// Checks if the path exists as a common image format (.jpg or .png only). If
+// so, returns the discovered extension (e.g. "jpg") and boolean true.
+// Otherwise returns an empty string and boolean false.
+func pathAsImage(extensionlessPath string) (string, bool) {
+	// extensions must be lowercased
+	formats := []string{"jpg", "png"}
+
+	for _, format := range formats {
+		_, err := os.Stat(extensionlessPath + "." + format)
+		if err != nil {
+			continue
+		}
+
+		return format, true
+	}
+
+	return "", false
 }
 
 func renderView(layout, view, target string, locals map[string]interface{}) error {

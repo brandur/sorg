@@ -6,8 +6,6 @@ hook: Building resilient services by identifying foreign
   state mutations and grouping local changes into
   restartable atomic phases so that every request can be
   driven to completion.
-hook_image: true
-twitter_image: true
 hn_link: https://news.ycombinator.com/item?id=15569478
 ---
 
