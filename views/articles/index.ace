@@ -25,9 +25,9 @@
               ul
                 {{range .Articles}}
                   li
-                    {{if .HookImage}}
+                    {{if .HookImageURL}}
                       a href="/{{.Slug}}"
-                        img src="/assets/{{.Slug}}/hook.jpg" data-rjs="2"
+                        img src="{{.HookImageURL}}" data-rjs="2"
                     {{end}}
                     .title
                       a href="/{{.Slug}}"

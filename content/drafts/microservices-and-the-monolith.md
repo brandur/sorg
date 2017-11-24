@@ -3,8 +3,6 @@ title: Microservices and the Monolith
 published_at: 2017-01-05T16:41:25Z
 hook: Microservices may be out of vogue, but we should be
   wary of overcompensation.
-hook_image: true
-twitter_image: true
 ---
 
 About three years ago, the idea of a service-oriented
