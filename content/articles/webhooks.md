@@ -6,8 +6,6 @@ hook: When it comes to streaming APIs, there's now a lot of
   great options like SSE, GraphQL subscriptions, and GRPC
   streams. Let's examine whether webhooks are still a good
   choice in 2017.
-hook_image: true
-twitter_image: true
 attributions: Thanks to <a
   href="https://twitter.com/spencercdixon">Spencer
   Dixon</a> for review.

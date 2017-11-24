@@ -6,8 +6,6 @@ published_at: 2017-11-17T22:02:56Z
 hook: Scaling out operation with read replicas and avoiding
   the downside of stale reads by observing replication
   progress.
-hook_image: true
-twitter_image: true
 hn_link: https://news.ycombinator.com/item?id=15726376
 ---
 

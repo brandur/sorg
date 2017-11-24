@@ -2,7 +2,6 @@
 title: The Sprawl Blues
 published_at: 2016-01-03T22:18:36Z
 image: /assets/fragments/sprawl-blues/vista.jpg
-twitter_image: true
 hook: On sprawl and commute times in North America.
 ---
 

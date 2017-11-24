@@ -6,8 +6,6 @@ hook: On ensuring system integrity, operability, and
   correctness through a solid foundational database, and
   how ACID transactions and strong constraints work in your
   favor. Why to prefer Postgres over MongoDB.
-hook_image: true
-twitter_image: true
 ---
 
 In 1983, Andreas Reuter and Theo Härder coined the acronym

@@ -3,8 +3,6 @@ hook: How the page almost transitioned successfully to the
   digital world, but is in decline in new media. The
   lessons that we can learn from this age-old design
   element, and why we should hope for its re-emergence.
-hook_image: true
-twitter_image: true
 image: "/assets/page/page.jpg"
 location: San Francisco
 published_at: 2014-01-26T18:56:46Z

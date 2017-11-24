@@ -5,8 +5,6 @@ location: San Francisco
 hook: Musings on the next API technology, and whether REST-ish
   JSON over HTTP is just "good enough" to never be displaced
   in a significant way.
-hook_image: true
-twitter_image: true
 hn_link: https://news.ycombinator.com/item?id=14003134
 ---
 

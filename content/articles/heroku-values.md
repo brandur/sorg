@@ -4,8 +4,6 @@ image: "/assets/heroku-values/heroku-values.jpg"
 location: San Francisco
 published_at: 2015-11-05T06:20:16Z
 title: My Heroku Values
-hook_image: true
-twitter_image: true
 hn_link: https://news.ycombinator.com/item?id=14286143
 ---
 
