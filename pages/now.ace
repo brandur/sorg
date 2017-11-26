@@ -12,7 +12,7 @@
         #now
           p I'm in Japan, visiting its unique duality of the most beautiful natural and urban environments in the world, decompressing from the ever-turning treadmill of electronic life, writing, and visiting as many <a href="https://en.wikipedia.org/wiki/Onsen">onsens</a> as I can find.
           p
-            img.overflowing src="/assets/now/japanese-shrine.jpg" data-rjs="2"
+            img.overflowing src="/assets/now/koya-cemetary.jpg" data-rjs="2"
           p A few points of focus:
           ul
             li Meditating every day.
@@ -22,4 +22,4 @@
           div class="divider-short"
           div class="info"
             p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Derek Sivers</a>.
-            p This page was last updated on <strong>November 17, 2017</strong>.
+            p This page was last updated on <strong>November 26, 2017</strong>.
