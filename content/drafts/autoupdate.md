@@ -113,6 +113,8 @@ Rust compile benchmarks.
 
 Benchmarks built-in.
 
+Firefox Quantum.
+
 ### Exercising restraint (#restraint)
 
 Maybe that third loop on that spiral animation isn't
