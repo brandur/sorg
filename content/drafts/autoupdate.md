@@ -3,7 +3,10 @@ title: "Autoupdate: Software Enhancement and Accidental
   Obsolescence"
 published_at: 2017-11-22T08:50:10Z
 location: Tokyo
-hook: TODO
+hook: Autoupdate is one of the greatest advances in
+  software in the last decade, but despite its great
+  promise, it carries the danger of accidentally reducing
+  hardware longevity.
 attributions: SNES cartridge image by
   <strong><a href="https://www.flickr.com/photos/bochalla/4753073993/">Bryan
   Ochalla</a></strong>. Licensed under Creative Commons CC BY-SA 2.0.
