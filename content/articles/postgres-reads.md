@@ -390,11 +390,11 @@ end
 
 And that's it! The repository also comes with a simulator
 that creates a new ride and then immediately tries to read
-it. Running the whole constellation of programs will show
-that most of the time these reads will be served from a
-replica, but occasionally from the primary (`default` in
-Sequel) as replication falls behind or the `observer`
-hasn't performed its work loop in a while:
+it. Running the constellation of programs will show that
+most of the time these reads will be served from a replica,
+but occasionally from the primary (`default` in Sequel) as
+replication falls behind or the `observer` hasn't performed
+its work loop in a while:
 
 ```
 $ forego start | grep 'Reading ride'
