@@ -28,6 +28,16 @@ html lang="en"
         font-size: 18px;
         font-weight: 300;
         line-height: 1.5;
+
+
+        /*
+         * text-rendering doesn't seem to do much -- I'm basically cargo
+         * culting it from a blog post, but font-smoothing makes text look
+         * *much* better (at least on Mac devices).
+         */
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       h1, h2, h3, h4 {
