@@ -19,9 +19,8 @@ edge-to-edge display with its rounded corners is beautiful.
 OLED is great -- blacks are really black and it's
 comfortable to read in even broad daylight. I was worried
 that it would be marred by the notch, but I hardly notice
-it: black levels are so good that it often invisible fades
-into an app's header, and even when it doesn't, it looks
-fine.
+it: black levels are so good that it often invisibly fades
+into dark app headers. Even when it doesn't, it looks fine.
 
 My biggest surprise is that FaceID works and I don't miss
 TouchID. I assumed that Apple was pushing through a
@@ -35,7 +34,7 @@ little moist.
 
 I don't miss the home button. Its absence looks better to
 be sure, but far more importantly, the replacement
-interactions work better too. Swiping up to go home works
+interactions are _better_. Swiping up to go home works
 perfectly, and moving left from there to access
 multi-tasking is faster than the old double-press on home.
 
