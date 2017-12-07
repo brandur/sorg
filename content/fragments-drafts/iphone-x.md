@@ -49,8 +49,8 @@ over the next couple years (and Apple's historical track
 record all but guarantees that we'll see more of them) will
 be enough to slow even its powerful processors to a crawl.
 FaceID is the scariest piece: it's just fast enough today,
-but a considerable degradation would make it pretty
-unpleasant to use. I have nightmares of a $1k phone that
+but a considerable degradation would kill everything that's
+good about the feature. I have nightmares of a $1k phone that
 takes 5-10 seconds to unlock two years into ownership.
 
 Apple's had a good year. Both [AirPods](/fragments/airpods)
