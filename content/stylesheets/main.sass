@@ -450,13 +450,6 @@ ol, ul
           ol
             list-style-type: none
 
-#footnotes
-  border-top: 1px solid $tertiary
-  font-size: 0.85rem
-  line-height: 1.6em
-  margin: 30px auto
-  width: 90%
-
 article, #now
   blockquote
     ol, ul
@@ -509,11 +502,20 @@ article, #now
       margin-left: 40px
       padding-left: 5px
 
+  #footnotes, .info
+    p
+      font-size: 0.85rem
+      line-height: 1.6em
+
+  #footnotes
+    border-top: 1px solid $tertiary
+    margin: 30px auto
+    width: 90%
+
   .attachment
     text-align: center
 
   .info
-    font-size: 0.85rem
     font-style: italic
     line-height: 1.6em
     text-align: left
@@ -639,6 +641,10 @@ article.big
     blockquote p, li, p
       font-size: 1rem
       line-height: 1.7em
+
+    #footnotes, .info
+      p
+        font-size: 0.8rem
 
   #container
     max-width: 100%
