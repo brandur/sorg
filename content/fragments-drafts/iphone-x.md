@@ -4,8 +4,8 @@ published_at: 2017-12-07T16:01:46Z
 hook: TODO
 ---
 
-I wasn't sure if I'd like the iPhone X, but the recent
-release of iOS 11 having slowed my iPhone 6 to a crawl and
+I wasn't sure if I'd like the iPhone X, but after the
+recent release of iOS 11 slowed my iPhone 6 to a crawl and
 it being the biggest jump that Apple's made in a while, I
 got one anyway.
 
