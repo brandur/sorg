@@ -26,13 +26,23 @@ Nothing will happen to you.
 
 ## Kanazawa (#kanazawa)
 
+![Kanazawa](/assets/passages/002-japan/kanazawa@2x.jpg)
+
 ### The art of bathing (#onsens)
 
-### Supported trees (#trees)
+![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
+
+### Yuki-tsuri (#yuki-tsuri)
+
+![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-1@2x.jpg)
+
+![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-2@2x.jpg)
 
 ## The macaques of Nagano (#macaques)
 
-### Onsen town (#onsen-town)
+### Shibu onsen (#shibu-onsen)
+
+![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
 ## Mount Koya (#mount-koya)
 
