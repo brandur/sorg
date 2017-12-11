@@ -5,6 +5,8 @@ published_at: 2017-11-07T05:19:48Z
 
 Crichton
 
+Nothing will happen to you.
+
 ## Surprising things about Japan (#japan)
 
 TODO: Boss photo.
@@ -17,6 +19,8 @@ TODO: Boss photo.
 * Train timing is not a myth.
     * Drivers use pointing and calling.
 * No open container, and yet no one drinks.
+* Taxi doors.
+* Lost wallet.
 
 ## Kanazawa (#kanazawa)
 
