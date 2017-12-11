@@ -9,8 +9,6 @@ Nothing will happen to you.
 
 ## Surprising things about Japan (#japan)
 
-TODO: Boss photo.
-
 * Convenience stores are the foundation of the country.
 * Vending machines. Tommy Lee Jones is on a lot of them.
     * Serve hot, serve cold. No premium.
@@ -21,6 +19,8 @@ TODO: Boss photo.
 * No open container, and yet no one drinks.
 * Taxi doors.
 * Lost wallet.
+
+![Boss](/assets/passages/002-japan/boss@2x.jpg)
 
 ## Kanazawa (#kanazawa)
 
