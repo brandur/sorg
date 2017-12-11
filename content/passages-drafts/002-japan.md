@@ -46,6 +46,8 @@ Nothing will happen to you.
 
 ## Mount Koya (#mount-koya)
 
+![Mount Koya](/assets/passages/002-japan/koya@2x.jpg)
+
 Snowy Koya
 
 Stay with monks
