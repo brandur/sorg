@@ -40,6 +40,8 @@ Nothing will happen to you.
 
 ## The macaques of Nagano (#macaques)
 
+![Macaques](/assets/passages/002-japan/macaques@2x.jpg)
+
 ### Shibu onsen (#shibu-onsen)
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
