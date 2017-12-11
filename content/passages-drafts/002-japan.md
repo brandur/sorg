@@ -3,6 +3,8 @@ title: Japan
 published_at: 2017-11-07T05:19:48Z
 ---
 
+![Osaka](/assets/passages/002-japan/osaka@2x.jpg)
+
 Crichton
 
 Nothing will happen to you.
