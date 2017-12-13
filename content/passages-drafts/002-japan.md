@@ -18,7 +18,7 @@ Nothing will happen to you.
 > said. "Because in America, you think a certain amount of
 > error is normal. You expect the plane to be late. You
 > expect the mail to be undelivered. You expect the washing
-> machine to break down. You expect tings to go wrong all
+> machine to break down. You expect things to go wrong all
 > the time.
 >
 > "But Japan is different. Everything works in Japan. In a
