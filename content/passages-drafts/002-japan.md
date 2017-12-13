@@ -43,6 +43,23 @@ the time_.
 Everyone in Japan from Shinkansen conductors, to store
 clerks, to pop stars and CEOs takes their job seriously.
 
+> Connor looked around at the high walls. "You know we have
+> more private security than police, now? Everyone's
+> building walls and hiring guards. But in Japan, you can
+> walk into a park at midnight and sit on a bench and
+> nothing will happen to you. You're completely safe, day
+> or night. You can go anywhere. You won't be robbed,
+> beaten, or killed. You're not always looking behind you,
+> not always worrying. You don't need walls or bodyguards.
+> Your safety is the safety of the whole society. You're
+> free. It's a wonderful feeling. Here, everybody has to
+> lock themselves up. Lock the door. Lock the car. People
+> who spend their whole lives locked up are in prison. It's
+> crazy. It kills the spirit. But it's been so long now
+> that Americans have forgotten what it feels like to
+> really feel _safe_. Anyway. Here's our car. Let's get
+> down to the division."
+
 ## Surprising things about Japan (#japan)
 
 * Convenience stores are the foundation of the country.
