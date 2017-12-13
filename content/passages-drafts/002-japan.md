@@ -9,6 +9,40 @@ Crichton
 
 Nothing will happen to you.
 
+> "If we knew what made Ishiguro behave as he did, we'd
+> understand this case."
+>
+> "I don't understand."
+>
+> "It's hard for an American to see him clearly," Connor
+> said. "Because in America, you think a certain amount of
+> error is normal. You expect the plane to be late. You
+> expect the mail to be undelivered. You expect the washing
+> machine to break down. You expect tings to go wrong all
+> the time.
+>
+> "But Japan is different. Everything works in Japan. In a
+> Tokyo train station, you can stand at a marked spot on
+> the platform and when the train stops, the doors open
+> right in front of you. Trains are on time. Bags are not
+> lost. Connections are not missed. Deadlines are met.
+> Things happen as planned. The Japanese are educated,
+> prepared, and motivated. They get things done. There's no
+> screwing around."
+
+It's not surprising that a fiction author engages in a
+little hyperbole for dramatic effect, but what _is_
+surprising is that despite a little exaggeration,
+everything he's written is more or less true. Everyone's
+heard that trains in Japan are on time, but what you won't
+know unless you visit is that it's literally true. It's not
+that _most_ trains are on time, it's that right up to a
+miniscule margin of error, _all_ trains are on time. _All
+the time_.
+
+Everyone in Japan from Shinkansen conductors, to store
+clerks, to pop stars and CEOs takes their job seriously.
+
 ## Surprising things about Japan (#japan)
 
 * Convenience stores are the foundation of the country.
