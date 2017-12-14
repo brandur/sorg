@@ -5,7 +5,7 @@ published_at: 2017-11-07T05:19:48Z
 
 ![Osaka](/assets/passages/002-japan/osaka@2x.jpg)
 
-In 19xx Michael Crichton wrote _Rising Sun_. At the time
+In 1992 Michael Crichton wrote _Rising Sun_. At the time
 Japan was experiencing a meteoric rise, moving from a
 post-war reconstruction project to one of the most powerful
 economic engines in the world. America may have been the
