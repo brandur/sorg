@@ -30,7 +30,7 @@ Fargate.
 !fig src="/assets/progressive-enhancement/step2.png" caption="Fargate setup step 2: define a service."
 !fig src="/assets/progressive-enhancement/step3.png" caption="Fargate setup step 3: configure a cluster."
 
-## The looming mountain ahead
+## The looming mountain ahead (#looming-mountain)
 
 Let's count the number of concepts that a new user needs to
 understand to walk through Fargate setup:
@@ -52,7 +52,7 @@ understand to walk through Fargate setup:
 Amazon's been kind of enough to provide defaults for pretty
 much everything, .
 
-## Naive education
+## Naive education (#naive-education)
 
 The argument could be made that it's better to have all the
 aspects of a product visible up front. If a user later
@@ -72,6 +72,6 @@ product, true familiarity wouldn't come until I started
 working with it really closely with it or running into
 problems.
 
-## Progressive enhancement
+## Progressive enhancement (#progressive-enhancement)
 
 [fargate]: https://aws.amazon.com/fargate/

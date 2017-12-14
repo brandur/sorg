@@ -16,6 +16,6 @@ Snowy Koya
 
 Stay with monks
 
-### An aside: The kotatsu
+### An aside: The kotatsu (#kotatsu)
 
 [unsubscribe]: %unsubscribe_url%
