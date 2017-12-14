@@ -79,11 +79,19 @@ and I'll send the second part in early 2018. As usual, you
 can unsubscribe instantly [by clicking right
 here][unsubscribe]. Thanks for reading!
 
-## Surprising things about Japan (#japan)
+## A world of wonders (#wonders)
 
 Let's start with a few facts about Japan that I think every
 westerner who has never visited will find surprising:
 
+* Many people of heard the urban legend that if you lose
+  your wallet or purse in Japan, it will be returned to
+  you. It's not a myth -- even after spending just a few
+  weeks there I met a fellow in Osaka who'd forgotten his
+  wallet on the train. JR found it and mailed it to his
+  hotel. They even called beforehand to make sure it was
+  okay to open it and remove a few hundred yen in bills to
+  pay for postage.
 * Convenience stores (largely 7/11, Family Mart, and
   Lawson) are a cornerstone of the country's society.
   Unlike almost anywhere else on Earth, they're ubiquitous
@@ -96,15 +104,20 @@ westerner who has never visited will find surprising:
   places you'll ever see -- you'd be hard pressed to find a
   piece of litter anywhere because everyone follows the
   rules.
-* Vending machines. Tommy Lee Jones is on a lot of them.
-    * Serve hot, serve cold. No premium.
-    * Link to vending machines in strange places.
-* Corndogs are called "American Dogs" and they're delicious.
-* Train timing is not a myth.
-    * Drivers use pointing and calling.
-* No open container, and yet no one drinks.
-* Taxi doors.
-* Lost wallet.
+* There vending machines are everywhere and they dispense
+  everything from hot drinks to fried food. They're priced
+  on par with local convenience stores so people actually
+  use them. Tommy Lee Jones, a figurehead for Suntory's
+  Boss brand, is depicted on many of them (see below).
+* Corndogs are called "American dogs" and sold at every
+  convenience store. They're _delicious_ and have taken a
+  spot as one of my favorite foods.
+* Train conductors motion a lot with their hands as they're
+  driving, even when they're by themselves. This is called
+  [pointing and calling][pointcall] and in studies has
+  shown to reduce mistakes by about 85%.
+* Every taxi in the country has a robotic passenger door
+  that can be opened at the push of a button by its driver.
 
 ![Boss](/assets/passages/002-japan/boss@2x.jpg)
 
@@ -142,7 +155,10 @@ Glass.
 
 ## Taking coffee seriously (#coffee)
 
+![Coffee](/assets/passages/002-japan/coffee@2x.jpg)
+
 Get a scale. Get a Chemex.
 
 [lostdecades]: https://en.wikipedia.org/wiki/Lost_Decade_(Japan)
+[pointcall]: https://en.wikipedia.org/wiki/Pointing_and_calling
 [unsubscribe]: %unsubscribe_url%
