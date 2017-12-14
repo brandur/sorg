@@ -95,8 +95,16 @@ westerner who has never visited will find surprising:
 * Convenience stores (largely 7/11, Family Mart, and
   Lawson) are a cornerstone of the country's society.
   Unlike almost anywhere else on Earth, they're ubiquitous
-  (even in rural areas) and serve food that's high-quality
+  (even in rural areas) and serve food that's high quality
   and healthy.
+* There are vending machines everywhere and they dispense
+  everything from hot drinks to fried food. They're priced
+  on par with local convenience stores so people actually
+  use them. Tommy Lee Jones, a figurehead for Suntory's
+  Boss brand, is depicted on many of them (see below).
+
+![Boss](/assets/passages/002-japan/boss@2x.jpg)
+
 * There are almost no public trash cans anywhere in Japan.
   If you have something to throw away, you'll need to pack
   it out until you get home or find a convenience store.
@@ -104,11 +112,6 @@ westerner who has never visited will find surprising:
   places you'll ever see -- you'd be hard pressed to find a
   piece of litter anywhere because everyone follows the
   rules.
-* There vending machines are everywhere and they dispense
-  everything from hot drinks to fried food. They're priced
-  on par with local convenience stores so people actually
-  use them. Tommy Lee Jones, a figurehead for Suntory's
-  Boss brand, is depicted on many of them (see below).
 * Corndogs are called "American dogs" and sold at every
   convenience store. They're _delicious_ and have taken a
   spot as one of my favorite foods.
@@ -118,8 +121,6 @@ westerner who has never visited will find surprising:
   shown to reduce mistakes by about 85%.
 * Every taxi in the country has a robotic passenger door
   that can be opened at the push of a button by its driver.
-
-![Boss](/assets/passages/002-japan/boss@2x.jpg)
 
 ## Kanazawa (#kanazawa)
 
