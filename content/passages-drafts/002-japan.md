@@ -130,7 +130,7 @@ westerner who has never visited will find surprising:
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
-## Lucky Yebisu
+## Lucky Yebisu (#lucky-yebisu)
 
 ![Lucky Yebisu](/assets/passages/002-japan/lucky-yebisu@2x.jpg)
 
