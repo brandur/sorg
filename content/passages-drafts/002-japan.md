@@ -5,9 +5,21 @@ published_at: 2017-11-07T05:19:48Z
 
 ![Osaka](/assets/passages/002-japan/osaka@2x.jpg)
 
-Crichton
+In 19xx Michael Crichton wrote _Rising Sun_. At the time
+Japan was experiencing a meteoric rise, moving from a
+post-war reconstruction project to one of the most powerful
+economic engines in the world. America may have been the
+progenitor of TV, cars, VCRs, record players, and denim, it
+was seeing its domestic market flooded with goods from
+Japan that weren't just cheaper, but superior in every way
+that mattered. America was feeling an existential fear of
+the country similar to what it feels about China today.
 
-Nothing will happen to you.
+_Rising Sun_ is premised on the murder of a young lady at
+the grand opening of a new Japanese skyscraper in Los
+Angeles, and follows the responding detective as he works
+his way through the corporate machinations that surround
+it. Here's an excerpt:
 
 > "If we knew what made Ishiguro behave as he did, we'd
 > understand this case."
@@ -30,18 +42,42 @@ Nothing will happen to you.
 > prepared, and motivated. They get things done. There's no
 > screwing around."
 
-It's not surprising that a fiction author engages in a
-little hyperbole for dramatic effect, but what _is_
-surprising is that despite a little exaggeration,
-everything he's written is more or less true. Everyone's
-heard that trains in Japan are on time, but what you won't
-know unless you visit is that it's literally true. It's not
-that _most_ trains are on time, it's that right up to a
-miniscule margin of error, _all_ trains are on time. _All
-the time_.
+The book's a little dated by today's standards. At the peak
+of Japan's run it was said that the property under the
+Imperial Palace in Tokyo was worth more than the entire
+state of California, but a collapsing asset bubble in the
+early 90s left the country's economy stagnating for twenty
+years (its so-called ["Lost Decades"][lostdecades]).
+
+Even so, while Crichton engages in a little hyperbole for
+dramatic effect, what he's stated is still more accurate
+than not. Everyone's heard that all Japanese trains are on
+time, but outside of Japan you assume that it's an
+exaggeration. You won't know until you visit that it's
+literally true -- it's not that most trains are on time,
+it's that (right up to a miniscule margin of error), _all_
+trains are on time, _all the time_. Transportation
+infrastructure like rail isn't a little better than what
+you find the US, it's two to three orders of magnitude
+better.
 
 Everyone in Japan from Shinkansen conductors, to store
-clerks, to pop stars and CEOs takes their job seriously.
+clerks, to pop stars, and CEOs practices their professional
+with an edged seriousness that's remarkable to see in
+action. Everyone is willing to help and everything gets
+done quickly and efficiently. We left one Tokyo bar only to
+realize that the owner had followed us into the hallway. As
+we got into the elevator and selected the main floor, she
+bowed deeply to us as we waited for the doors to close and
+right up until the moment when they'd hidden her from
+sight.
+
+In case it's not obvious by now, I recently had the chance
+to visit Japan -- and loved it. This one turned out to be a
+little long for a single newsletter so I've split it into
+two, and I'll send the second part in early 2018. As usual,
+you can unsubscribe instantly [by clicking right
+here][unsubscribe]. Thanks for reading!
 
 > Connor looked around at the high walls. "You know we have
 > more private security than police, now? Everyone's
@@ -110,3 +146,6 @@ Glass.
 ## Taking coffee seriously (#coffee)
 
 Get a scale. Get a Chemex.
+
+[lostdecades]: https://en.wikipedia.org/wiki/Lost_Decade_(Japan)
+[unsubscribe]: %unsubscribe_url%
