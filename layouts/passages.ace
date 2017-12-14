@@ -86,6 +86,14 @@ html lang="en"
         width: 100%;
       }
 
+      ol, ul {
+        padding: 0 0 0 30px;
+      }
+
+      ol li, ul li {
+        margin: 15px 0;
+      }
+
       #about {
         color: #aaa;
         font-size: 15px;
