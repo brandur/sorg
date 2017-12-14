@@ -79,7 +79,7 @@ clerks, to pop stars and CEOs takes their job seriously.
 
 ![Kanazawa](/assets/passages/002-japan/kanazawa@2x.jpg)
 
-### The art of bathing (#onsens)
+### Onsens & the art of bathing (#onsens)
 
 ![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
 
@@ -97,27 +97,15 @@ clerks, to pop stars and CEOs takes their job seriously.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
-## Mount Koya (#mount-koya)
+## Lucky Yebisu
 
-![Mount Koya](/assets/passages/002-japan/koya@2x.jpg)
-
-Snowy Koya
-
-Stay with monks
-
-Kotatsu
-
-## The Kumano Kodo (#kumano-kodo)
+![Lucky Yebisu](/assets/passages/002-japan/lucky-yebisu@2x.jpg)
 
 ## The iPhone X (#iphone-x)
 
 Glass.
 
 ## The Hauser (#hauser)
-
-## Twin Peaks (#twin-peaks)
-
-Operation: Get Out.
 
 ## Taking coffee seriously (#coffee)
 
