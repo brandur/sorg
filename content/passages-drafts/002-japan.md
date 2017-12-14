@@ -69,19 +69,33 @@ done quickly and efficiently. We left one Tokyo bar only to
 realize that the owner had followed us into the hallway. As
 we got into the elevator and selected the main floor, she
 bowed deeply to us as we waited for the doors to close and
-right up until the moment when they'd hidden her from
-sight.
+stayed bowed right up until the moment when they'd hidden
+her from sight.
 
 In case it's not obvious by now, I recently had the chance
 to visit Japan -- and loved it. This one turned out to be a
-little long for a single newsletter so I've split it into
-two, and I'll send the second part in early 2018. As usual,
-you can unsubscribe instantly [by clicking right
+little long for a single edition so I've split it into two,
+and I'll send the second part in early 2018. As usual, you
+can unsubscribe instantly [by clicking right
 here][unsubscribe]. Thanks for reading!
 
 ## Surprising things about Japan (#japan)
 
-* Convenience stores are the foundation of the country.
+Let's start with a few facts about Japan that I think every
+westerner who has never visited will find surprising:
+
+* Convenience stores (largely 7/11, Family Mart, and
+  Lawson) are a cornerstone of the country's society.
+  Unlike almost anywhere else on Earth, they're ubiquitous
+  (even in rural areas) and serve food that's high-quality
+  and healthy.
+* There are almost no public trash cans anywhere in Japan.
+  If you have something to throw away, you'll need to pack
+  it out until you get home or find a convenience store.
+  Even despite this, Japanese cities are the cleanest
+  places you'll ever see -- you'd be hard pressed to find a
+  piece of litter anywhere because everyone follows the
+  rules.
 * Vending machines. Tommy Lee Jones is on a lot of them.
     * Serve hot, serve cold. No premium.
     * Link to vending machines in strange places.
