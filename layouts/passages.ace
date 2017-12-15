@@ -40,6 +40,13 @@ html lang="en"
         -moz-osx-font-smoothing: grayscale;
       }
 
+      code {
+        background: #f6f6f6;
+        font-family: Monaco, "Lucida Console", "Bitstream Vera Sans Mono", Courier, monospace;
+        font-size: 14px;
+        padding: 2px 4px;
+      }
+
       h1, h2, h3, h4 {
         color: black;
       }
