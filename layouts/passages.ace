@@ -42,7 +42,7 @@ html lang="en"
 
       code {
         background: #f6f6f6;
-        font-family: Monaco, "Lucida Console", "Bitstream Vera Sans Mono", Courier, monospace;
+        font-family: Monaco, monospace;
         font-size: 14px;
         padding: 2px 4px;
       }
