@@ -18,4 +18,6 @@ Stay with monks
 
 ### An aside: The kotatsu (#kotatsu)
 
+## Wabi sabi & aged leather
+
 [unsubscribe]: %unsubscribe_url%
