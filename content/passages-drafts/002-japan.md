@@ -67,9 +67,12 @@ Everyone in Japan from Shinkansen conductors, to store
 clerks, to pop stars, and CEOs practices their professional
 with an edged seriousness that's remarkable to see in
 action. Everyone is willing to help and everything gets
-done quickly and efficiently. We left one Tokyo bar only to
-realize that the owner had followed us into the hallway. As
-we got into the elevator and punched in our floor, she
+done quickly and efficiently. We made a subway kiosk go out
+of service by using it the wrong way. We'd flagged an
+attendant who came over, returned our money, and repaired
+it -- all inside about a minute. We left one Tokyo bar only
+to realize that the owner had followed us into the hallway.
+As we got into the elevator and punched in our floor, she
 bowed deeply as we waited for the doors to close and stayed
 bowed right up until the moment when they'd hidden her from
 sight.
@@ -98,7 +101,7 @@ westerner (who's never visited) will find surprising:
   Lawson) are a cornerstone of the country's society.
   Unlike almost anywhere else on Earth, they're ubiquitous
   (even in rural areas) and serve food that's high quality
-  and healthy.
+  and healthy (well, some of it anyway).
 * There are vending machines everywhere and they dispense
   everything from hot drinks to fried food. They're priced
   on par with local convenience stores so people actually
@@ -117,46 +120,136 @@ westerner (who's never visited) will find surprising:
 * Corndogs are called "American dogs" and sold at every
   convenience store. They're _delicious_ and have taken a
   spot as one of my favorite foods.
-* Train conductors motion a lot with their hands as they're
-  driving, even when they're by themselves. This is called
-  [pointing and calling][pointcall] and in studies has
-  shown to reduce mistakes by about 85%.
+* Train conductors motion a lot with their hands and speak
+  to themselves as they're driving, even when they're by
+  themselves. This is called [pointing and
+  calling][pointcall] and in studies has shown to reduce
+  mistakes by about 85%.
 * Every taxi in the country has a robotic passenger door
   that can be opened at the push of a button by its driver.
 
 ## Kanazawa (#kanazawa)
 
+Kanazawa's a city of about half a million northwest of
+Tokyo along Japan's other coast bordering the Sea of Japan.
+After a brief layover in Tokyo to board a new plane, it was
+our first stop.
+
+Kanazawa's a great place to visit because it has all the
+beauty and history of Japan without the overwhelming
+density that you see in its major cities. Its houses were
+once taxed based on the width of their street frontage,
+which led to the development of picturesque streets packed
+with houses that are long but narrow.
+
+You can't walk more than a few blocks without running into
+a shrine, some of which are unimaginably beautiful. These
+are in place for Japan's Shinto religion, and it's common
+for even otherwise very secular people to visit them a few
+times a month for a quick two-minute prayer.
+
 ![Kanazawa](/assets/passages/002-japan/kanazawa@2x.jpg)
 
-### Onsens & the art of bathing (#onsens)
+It's a wet region, and at night we'd often find ourselves
+laying back listening to thunderstorms raging on outside.
+Like anyone who lives with regular rain, the locals hate
+it. To someone who lives in dry California, it's fantastic.
 
-![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
+![Suzuki Museum](/assets/passages/002-japan/suzuki@2x.jpg)
 
 ### Yukitsuri (#yukitsuri)
 
-> Yukitsuri (Japanese: 雪つり) is a Japanese technique for
-> preserving trees and shrubs from heavy snow. Trees are
-> given extra support by bamboo poles with ropes attached
-> to limbs; whereas, shrubs are often tied tightly around
-> the circumference. Yukitsuri is a common sight in
-> Kanazawa and Kenrokuen Garden during the winter
-> months.[1]
+One of Kanazawa's signature features is the Kenrokuen
+Garden, considered to be one of the country's three
+greatest along with sisters in Okayama and Mito. It has all
+the features that you'd expect in a Japanese garden
+including sculpted trees, tranquil ponds, and impressive
+moss-covered stone bridges and lanterns.
 
 ![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-1@2x.jpg)
+
+A common sight at Kenrokuen is "Yukitsuri", a Japanese
+technique for protecting the growth of trees from heavy
+snowfall. Ropes are hung to lend extra support for branches
+and larger ones are propped up with bamboo columns. The
+extra support keeps parts of the tree upright and growing
+laterally when they'd otherwise bow under the weight of
+heavy, wet snow.
+
+Yukitsuri enables growth that would be impossible and
+nature, is quite pretty to look at too.
 
 ![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-2@2x.jpg)
 
 ## The macaques of Nagano (#macaques)
 
+Japan has its own species of macaque, often referred to as
+a "snow monkey". With the exception of humans, no other
+primate lives further north, or in colder weather.
+
+We visited Jigokudani Snow Monkey Park in Nagano, an area
+well known for its wild monkeys, but also for its natural
+hot springs. During the cold winter the monkeys to flock to
+the hot springs, where they relax in the warm water (which
+in my opinion produces some of the world's great photos if
+you want [Google for it][macaques]).
+
 ![Macaques](/assets/passages/002-japan/macaques@2x.jpg)
 
-### Shibu onsen (#shibu-onsen)
+The macaques don't visit the human-accessible part of park
+every day, but the park's wardens helpfully post daily
+stickers on Facebook that read "monkeys!!" or "no monkeys"
+so that you can get a feel for how often they're visiting
+(they usually come).
+
+When they come, they come in droves. When I saw my first
+monkey I focused on him and crept around carefully, afraid
+that I'd scare him off. I realized later that I was missing
+the forest for the trees, and that there were about two
+hundred others like him a little further up the path. It's
+really a personal natural experience -- I had dozens run
+just a few feet from me after being there for a half hour
+or so.
+
+### Shibu Onsen (#shibu-onsen)
+
+A little down the road from Jigokudani is Shibu Onsen.
+
+> It is said that good fortune comes to those who do the entire bath house tour by visiting all nine.
+
+right off of road.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
+### Onsens & the art of bathing (#onsens)
+
+![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
+
 ## Lucky Yebisu (#lucky-yebisu)
 
+During one of our last days in Japan we stumbled across the
+Yebisu beer museum in Tokyo's Ebisu district (which is
+itself named for the beer company) and went in. Yebisu is
+named for Ebisu, the Japanese god of fishermen and luck.
+He's one of the [Seven Gods of Fortune][sevengods] that
+you'll find portrayed all around Japan. He's portrayed on
+Yebisu bottles with his fishing rod and baskets of fish.
+
 ![Lucky Yebisu](/assets/passages/002-japan/lucky-yebisu@2x.jpg)
+
+Here's a little Easter egg that we came across in the
+museum: 99%+ of Yebisu bottles look like the one on the
+right. One in every few hundred looks like the one on the
+left. Notice the difference?
+
+If you look all the way over to the very left-hand side of
+the photo, you'll see that Yebisu on the left has an extra
+fish: _both_ of his baskets are full. He has two fish while
+the Yebisu on the right only has one. These special bottles
+are called "Lucky Yebisus" and it's a detail so minute that
+almost no one will notice it and yet simultaneously spread
+throughout the world. Its sole purpose is to bring a little
+bit of delight to anyone in the know.
 
 ## The iPhone X (#iphone-x)
 
@@ -268,6 +361,8 @@ used to build log-based architecture in software (cheaply).
 [httptransactions]: https://brandur.org/http-transactions
 [idempotencykeys]: https://brandur.org/idempotency-keys
 [lostdecades]: https://en.wikipedia.org/wiki/Lost_Decade_(Japan)
+[macaques]: https://www.google.com/search?tbm=isch&q=macques+hot+spring&oq=macques+hot+spring
 [pointcall]: https://en.wikipedia.org/wiki/Pointing_and_calling
 [redisstreams]: https://brandur.org/redis-streams
+[sevengods]: https://en.wikipedia.org/wiki/Seven_Gods_of_Fortune
 [unsubscribe]: %unsubscribe_url%
