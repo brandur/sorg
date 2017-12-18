@@ -132,7 +132,15 @@ westerner (who's never visited) will find surprising:
 
 ![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
 
-### Yuki-tsuri (#yuki-tsuri)
+### Yukitsuri (#yukitsuri)
+
+> Yukitsuri (Japanese: 雪つり) is a Japanese technique for
+> preserving trees and shrubs from heavy snow. Trees are
+> given extra support by bamboo poles with ropes attached
+> to limbs; whereas, shrubs are often tied tightly around
+> the circumference. Yukitsuri is a common sight in
+> Kanazawa and Kenrokuen Garden during the winter
+> months.[1]
 
 ![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-1@2x.jpg)
 
@@ -197,28 +205,61 @@ bit of a stretch space-wise, but it worked.
 
 ## Taking coffee seriously (#coffee)
 
+I've owned a [Chemex][chemex] for years, but have always
+opted to eyeball the coffee I'm making -- putting roughly
+the right amount of beans through the grinder and filling
+the water to where I think is right.
+
+I recently invested in a couple new tools. The first is a
+kitchen scale that I can use to get all quantities exactly
+right. The second is a long-stemmed kettle with a twist: it
+has a small thermometer on the top that I can use to hit
+the target the ideal 96° C.
+
 ![Coffee](/assets/passages/002-japan/coffee@2x.jpg)
 
-Get a scale. Get a Chemex.
+I came to a few realizations really fast. I hadn't been
+using enough coffee beans, I'd been adding too much water,
+and I'd been letting the water cool for way too long (it
+turns out that boiling water left to cool on the counter
+really only takes a few seconds to fall to target
+temperature).
+
+I was impressed by the minor usability features built into
+even a $20 kitchen scale these days. My favorite is that my
+scale will "tare" (that's when you zero the scale to
+account for the weight of an empty container) automatically
+as soon as it's turned on so that as long as you put your
+container on it first, you can operate it by pressing only
+one button.
+
+Here's my Chemex process:
+
+* 42g coffee ground to the consistency of Kosher salt.
+* Bloom by pouring 150g of water over ~45s (water at 96°
+  C).
+* Finish by pouring on another 450g water for a total of
+  600g.
 
 ## Around the web (#web)
 
 If you're interested in reading a little more in-depth on
 technical subjects, since the last edition of _Passages_ I
-published two more articles on idempotency. [_Using Atomic
-Transactions to Power an Idempotent API_][httptransactions]
+published two more articles on idempotency. [Using atomic
+transactions to power an idempotent API][httptransactions]
 talks about how to implement an idempotent API whose
 correctness is guaranteed through `SERIALIZABLE`
-transactions in Postgres. [_Implementing Stripe-like
-Idempotency Keys in Postgres_][idempotencykeys] goes into
+transactions in Postgres. [Implementing Stripe-like
+idempotency keys in Postgres][idempotencykeys] goes into
 similar material, but covers the more difficult case where
 the API has to make its own mutation by calling out across
 a network to foreign services.
 
-[_Redis Streams and the Unified Log_][redisstreams]
+[Redis streams and the unified log][redisstreams]
 introduces the new streams data structure and how it can be
 used to build log-based architecture in software (cheaply).
 
+[chemex]: https://en.wikipedia.org/wiki/Chemex_Coffeemaker
 [hauser]: https://missionworkshop.com/products/the-hauser-hydration-backpack
 [hauserkumano]: https://twitter.com/brandur/status/932760090704150528
 [httptransactions]: https://brandur.org/http-transactions
