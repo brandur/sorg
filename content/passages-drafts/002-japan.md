@@ -167,6 +167,8 @@ track record I wouldn't put it past them to discard a good
 technology (TouchID) for a bad one (FaceID) just to make
 that happen.
 
+![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
+
 I'm happy to say that I was wrong. iOS 11 had made my
 trusty iPhone 6 painfully slow, so I upgraded. FaceID works
 great -- it's not perfect, but it doesn't have anymore
@@ -187,6 +189,8 @@ I can't stay away from cool bags. Recently I picked up
 Mission Workshop's [Hauser][hauser], a weatherproof pack
 that has the most striking backpack design that I've ever
 seen.
+
+![The Hauser](/assets/passages/002-japan/hauser@2x.jpg)
 
 Technically it's a hydration pack, but it's got enough
 space to fit everything you need as long as you're willing
@@ -225,13 +229,12 @@ turns out that boiling water left to cool on the counter
 really only takes a few seconds to fall to target
 temperature).
 
-I was impressed by the minor usability features built into
-even a $20 kitchen scale these days. My favorite is that my
-scale will "tare" (that's when you zero the scale to
-account for the weight of an empty container) automatically
-as soon as it's turned on so that as long as you put your
-container on it first, you can operate it by pressing only
-one button.
+I was impressed by the usability features built into even a
+$15 kitchen scale these days. My favorite is that it'll
+"tare" (that's when you zero the scale to account for the
+weight of an empty container) automatically as soon as it's
+turned on so that as long as you put your container on it
+first, you can operate it by pressing only one button.
 
 Here's my Chemex process:
 
