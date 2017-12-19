@@ -198,18 +198,18 @@ you want [Google for it][macaques]).
 
 The macaques don't visit the human-accessible part of park
 every day, but the park's wardens helpfully post daily
-stickers on Facebook that read "monkeys!!" or "no monkeys"
-so that you can get a feel for how often they're visiting
-(they usually come).
+stickers on Facebook that read "monkeys!!" or "no monkeys
+:(" so that you can get a feel for how often they're
+visiting (they usually come).
 
-When they come, they come in droves. When I saw my first
-monkey I focused on him and crept around carefully, afraid
-that I'd scare him off. I realized later that I was missing
-the forest for the trees, and that there were about two
-hundred others like him a little further up the path. It's
-really a personal natural experience -- I had dozens run
-just a few feet from me after being there for a half hour
-or so.
+And when they come, they come in droves. When I saw my
+first monkey I focused on him and crept around carefully,
+afraid that I'd scare him off. I realized later that I was
+missing the forest for the trees, and that there were about
+two hundred others like him a little further up the path.
+It's really a personal natural experience -- I had dozens
+run just a few feet from me after being there for a half
+hour or so.
 
 ### Shibu Onsen (#shibu-onsen)
 
@@ -217,17 +217,18 @@ A little down the road from Jigokudani is a town called
 Shibu Onsen. _Onsen_ (♨) is the Japanese word for a natural
 hot spring. Some towns, like Shibu Onsen, that are
 intrinsically linked to their hot springs that "onsen" is
-added to their name.
+right in their name.
 
 The town has a narrow main road with nine bath houses built
-along it that makes an amazing walk. Most of them don't
-even have reception areas; instead there are two doors
-leading to men and women's changing rooms that lead right
-off the street. Visitors get a master key from the ryokan
-they're staying at and walk up and down the street visiting
-each one clothed only in basic yukata robes and with geta
-sandals clacking against the stone. It's said to be good
-fortune to make it to all nine.
+along it. It's largely pedestrian-first and is a very
+peaceful walk and excellent embodiment of rural Japan. Most of
+the onsens don't even have reception areas; instead there
+are two doors leading to men and women's changing rooms
+that lead right off the street. Visitors get a master key
+from the ryokan they're staying at and walk up and down the
+street visiting each one clothed only in basic yukata robes
+and with geta sandals clacking against the stone. It's said
+to be good fortune to make it to all nine.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
@@ -252,9 +253,10 @@ onsens except that they run on heated tap water.
 Public baths are engrained in the cultural landscape of
 Japan. Beyond just a practical way of getting clean,
 they're also a place to go and relax, socialize, and if
-you're willing to buy into a little bit of mythos -- heal
-(onsens are often attributed with particular healing powers
-based on the mix of minerals they contain).
+you're willing to buy into a little bit of mythos -- heal.
+Onsens are often attributed with particular healing powers
+based on their own unique mix of naturally occurring
+minerals.
 
 ![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
 
@@ -268,28 +270,30 @@ who hates his job and skips work to visit local sentō
 ## Lucky Yebisu (#lucky-yebisu)
 
 During one of our last days in Japan we stumbled across the
-Yebisu beer museum in Tokyo's Ebisu district (which is
-itself named for the beer company) and went in. Yebisu is
-named for Ebisu, the Japanese god of fishermen and luck.
+Yebisu beer museum in Tokyo's vibrant Ebisu district (which
+is itself named for the beer company) and went in. Yebisu
+is named for Ebisu, the Japanese god of fishermen and luck.
 He's one of the [Seven Gods of Fortune][sevengods] that
-you'll find portrayed all around Japan. He's portrayed on
-Yebisu bottles with his fishing rod and baskets of fish.
+you'll find portrayed across every corner of Japan. He's
+portrayed on Yebisu bottles with his fishing rod and
+baskets of fish.
 
 ![Lucky Yebisu](/assets/passages/002-japan/lucky-yebisu@2x.jpg)
 
-Here's a little Easter egg that we came across in the
-museum: 99%+ of Yebisu bottles look like the one on the
-right. One in every few hundred looks like the one on the
-left. Notice the difference?
+Here's a little Easter egg: 99%+ of Yebisu bottles look
+like the one on the right. One in every few hundred looks
+like the bottle on the left. Notice the difference?
 
-If you look all the way over to the very left-hand side of
-the photo, you'll see that Yebisu on the left has an extra
-fish: _both_ of his baskets are full. He has two fish while
-the Yebisu on the right only has one. These special bottles
-are called "Lucky Yebisus" and it's a detail so minute that
-almost no one will notice it and yet simultaneously spread
-throughout the world. Its sole purpose is to bring a little
-bit of delight to anyone in the know.
+If not, you're not the only one -- it's really easy to
+miss. Look all the way over to the very left-hand side of
+the photo and you'll see that Yebisu on the left has an
+extra fish: _both_ of his baskets are full. He has two fish
+while the Yebisu on the right only has one. These special
+bottles are called "Lucky Yebisus" and it's a detail so
+minute that almost no one will notice it and yet
+simultaneously spread throughout the world. Its sole
+purpose is to bring a little bit of delight to anyone in
+the know.
 
 ## The iPhone X (#iphone-x)
 
@@ -362,12 +366,13 @@ turns out that boiling water left to cool on the counter
 really only takes a few seconds to fall to target
 temperature).
 
-I was impressed by the usability features built into even a
-$15 kitchen scale these days. My favorite is that it'll
-"tare" (that's when you zero the scale to account for the
-weight of an empty container) automatically as soon as it's
-turned on so that as long as you put your container on it
-first, you can operate it by pressing only one button.
+I was impressed by the usability features built into a $15
+kitchen scale these days. My favorite is that it'll "tare"
+(that's when you zero the scale to account for the weight
+of an empty container) automatically as soon as it's turned
+on with whatever's already on it. As long as you put a
+container on it first, it's operable by pressing only one
+button one time.
 
 Here's my Chemex process:
 
@@ -377,23 +382,31 @@ Here's my Chemex process:
 * Finish by pouring on another 450g water for a total of
   600g.
 
-## Around the web (#web)
+## A few other publications (#publications)
 
 If you're interested in reading a little more in-depth on
 technical subjects, since the last edition of _Passages_ I
-published two more articles on idempotency. [Using atomic
+published two more articles on idempotency. The article
+published [earlier this year on Stripe's
+blog][stripeidempotency] is a decent primer. [Using atomic
 transactions to power an idempotent API][httptransactions]
-talks about how to implement an idempotent API whose
-correctness is guaranteed through `SERIALIZABLE`
-transactions in Postgres. [Implementing Stripe-like
-idempotency keys in Postgres][idempotencykeys] goes into
-similar material, but covers the more difficult case where
-the API has to make its own mutation by calling out across
-a network to foreign services.
+goes a little further to talk about how to implement an
+idempotent API whose correctness is guaranteed through
+`SERIALIZABLE` transactions in Postgres. [Implementing
+Stripe-like idempotency keys in Postgres][idempotencykeys]
+covers the more difficult case where the API has to make
+its own mutation by calling out across a network to foreign
+services.
 
 [Redis streams and the unified log][redisstreams]
-introduces the new streams data structure and how it can be
-used to build log-based architecture in software (cheaply).
+introduces the new streams data structure in Redis and how
+it can be used to build log-based architecture in software.
+In many stacks streams will be a good Kafka alternative
+that's easier to install and cheaper to run.
+
+Thanks for making it this far! I hope this newsletter will
+serve as your periodic reminder to get in touch -- just hit
+"reply".
 
 [chemex]: https://en.wikipedia.org/wiki/Chemex_Coffeemaker
 [hauser]: https://missionworkshop.com/products/the-hauser-hydration-backpack
@@ -405,5 +418,6 @@ used to build log-based architecture in software (cheaply).
 [pointcall]: https://en.wikipedia.org/wiki/Pointing_and_calling
 [redisstreams]: https://brandur.org/redis-streams
 [sevengods]: https://en.wikipedia.org/wiki/Seven_Gods_of_Fortune
+[stripeidempotency]: https://stripe.com/blog/idempotency
 [sunshine]: https://www.amazon.com/Sunshine-Sento-Sake-Season-1-Subbed/dp/B01M9D7RN0
 [unsubscribe]: %unsubscribe_url%
