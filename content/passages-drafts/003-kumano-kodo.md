@@ -34,6 +34,14 @@ Greeted by Keiko's name on the side of the inn.
 
 ![Tsuboyu (Inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
 
+## Final day (#final-day)
+
+![Coins at a shrine](/assets/passages/003-kumano-kodo/coins@2x.jpg)
+
+![Painted tree](/assets/passages/003-kumano-kodo/painted-tree@2x.jpg)
+
+![Ancient forest](/assets/passages/003-kumano-kodo/ancient-forest@2x.jpg)
+
 ## Wabi sabi & aged leather
 
 [unsubscribe]: %unsubscribe_url%
