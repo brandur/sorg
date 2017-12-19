@@ -42,6 +42,8 @@ Greeted by Keiko's name on the side of the inn.
 
 ![Ancient forest](/assets/passages/003-kumano-kodo/ancient-forest@2x.jpg)
 
+![Nachi Taisha](/assets/passages/003-kumano-kodo/nachi-taisha@2x.jpg)
+
 ## Wabi sabi & aged leather
 
 [unsubscribe]: %unsubscribe_url%
