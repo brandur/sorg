@@ -214,24 +214,56 @@ or so.
 ### Shibu Onsen (#shibu-onsen)
 
 A little down the road from Jigokudani is a town called
-Shibu Onsen. "Onsen" (♨) is the Japanese word for a natural
+Shibu Onsen. _Onsen_ (♨) is the Japanese word for a natural
 hot spring. Some towns, like Shibu Onsen, that are
-intrinsically linked to the hot springs they were built for
-have the word built right into their names.
+intrinsically linked to their hot springs that "onsen" is
+added to their name.
 
 The town has a narrow main road with nine bath houses built
 along it that makes an amazing walk. Most of them don't
-even 
-
-> It is said that good fortune comes to those who do the entire bath house tour by visiting all nine.
-
-right off of road.
+even have reception areas; instead there are two doors
+leading to men and women's changing rooms that lead right
+off the street. Visitors get a master key from the ryokan
+they're staying at and walk up and down the street visiting
+each one clothed only in basic yukata robes and with geta
+sandals clacking against the stone. It's said to be good
+fortune to make it to all nine.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
+We couldn't do the usual tour because we didn't have a
+place to stay overnight, but we found a small ryokan that
+would let us in to use their onsens for a few hours. The
+place looked about two hundred years old, but the age just
+added to the character -- the history in the ancient tiles
+and wood was palpable. In some cases the mineral formations
+on pipes caused by years of carrying the Earth's raw water
+were two inches high.
+
 ### ♨ Onsens & the art of bathing (#onsens)
 
+The Japanese have taken advantage of their island's
+volcanic nature to produce thousands of onsens based around
+natural hot springs around the country. There are far more
+public baths beyond just the hot water that's naturally
+available in the form of the _sentō_ -- identical to
+onsens except that they run on heated tap water.
+
+Public baths are engrained in the cultural landscape of
+Japan. Beyond just a practical way of getting clean,
+they're also a place to go and relax, socialize, and if
+you're willing to buy into a little bit of mythos -- heal
+(onsens are often attributed with particular healing powers
+based on the mix of minerals they contain).
+
 ![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
+
+A common way for locals to escape the bustle of Tokyo is to
+make the short trip up to Hakone, known particularly for
+traditional ryokans, colorful hues in the autumn, and --
+onsens. There's even a Japanese TV series about a salaryman
+who hates his job and skips work to visit local sentō
+(_Sunshine Sento-Sake_; [available on Amazon][sunshine]).
 
 ## Lucky Yebisu (#lucky-yebisu)
 
@@ -373,4 +405,5 @@ used to build log-based architecture in software (cheaply).
 [pointcall]: https://en.wikipedia.org/wiki/Pointing_and_calling
 [redisstreams]: https://brandur.org/redis-streams
 [sevengods]: https://en.wikipedia.org/wiki/Seven_Gods_of_Fortune
+[sunshine]: https://www.amazon.com/Sunshine-Sento-Sake-Season-1-Subbed/dp/B01M9D7RN0
 [unsubscribe]: %unsubscribe_url%
