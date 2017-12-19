@@ -18,6 +18,22 @@ Stay with monks
 
 ### An aside: The kotatsu (#kotatsu)
 
+## Yunomine Onsen (#yunomine)
+
+Greeted by Keiko's name on the side of the inn.
+
+![Yunomine](/assets/passages/003-kumano-kodo/yunomine@2x.jpg)
+
+![Onsen Eggs](/assets/passages/003-kumano-kodo/eggs@2x.jpg)
+
+![Boiler](/assets/passages/003-kumano-kodo/boiler@2x.jpg)
+
+### Tsuboyu (#tsuboyu)
+
+![Tsuboyu (Outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
+
+![Tsuboyu (Inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
+
 ## Wabi sabi & aged leather
 
 [unsubscribe]: %unsubscribe_url%
