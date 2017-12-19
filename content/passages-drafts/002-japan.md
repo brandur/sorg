@@ -213,7 +213,15 @@ or so.
 
 ### Shibu Onsen (#shibu-onsen)
 
-A little down the road from Jigokudani is Shibu Onsen.
+A little down the road from Jigokudani is a town called
+Shibu Onsen. "Onsen" (♨) is the Japanese word for a natural
+hot spring. Some towns, like Shibu Onsen, that are
+intrinsically linked to the hot springs they were built for
+have the word built right into their names.
+
+The town has a narrow main road with nine bath houses built
+along it that makes an amazing walk. Most of them don't
+even 
 
 > It is said that good fortune comes to those who do the entire bath house tour by visiting all nine.
 
@@ -221,7 +229,7 @@ right off of road.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
-### Onsens & the art of bathing (#onsens)
+### ♨ Onsens & the art of bathing (#onsens)
 
 ![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
 
