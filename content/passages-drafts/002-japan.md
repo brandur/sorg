@@ -12,8 +12,8 @@ economic engine in the world. America invented TV, cars,
 film, printers, and denim, but was seeing its domestic
 market flooded with Japanese versions that weren't just
 cheaper, but better in every way that mattered. America was
-feeling an existential insecurity of its own position in
-the world like the one China elicits today.
+feeling an existential insecurity similar to the one China
+elicits today.
 
 Here's an excerpt that's always stuck with me:
 
@@ -41,11 +41,11 @@ Here's an excerpt that's always stuck with me:
 At the peak of Japan's dominance it was said that the
 property under the Imperial Palace in Tokyo was worth more
 than the entire state of California. Unfortunately, instead
-of the country's economy shooting straight to the moon, a
-collapsing asset bubble in the early 90s left it stagnating
-for twenty years (the so-called ["Lost
-Decades"][lostdecades]). With today's 20-20 insight into
-the past, _Rising Sun_ feels a little dated.
+of the country's economy shooting to the moon, a collapsing
+asset bubble in the early 90s left it stagnating for twenty
+years (the so-called ["Lost Decades"][lostdecades]). With
+today's 20-20 insight into the past, _Rising Sun_'s
+alarmist theme feels dated.
 
 Even so, I still find the passage more accurate than not.
 Everyone's heard that trains in Japan are on time, but you
@@ -54,28 +54,29 @@ only that most trains are on time, but that right up to a
 miniscule margin of error, _all_ trains are on time, _all
 the time_. Rail infrastructure and technology isn't a
 little better than what you find the states, it's two to
-three orders of magnitude better.
+three orders of magnitude better. Other industries are
+similarly efficient.
 
 Everyone in Japan from Shinkansen conductors to CEOs and
-store clerks to pop stars practice their professions with
+store clerks to sushi chefs practice their professions with
 disciplined seriousness. A subway kiosk goes out of service
 and an attendant is flagged over and has it fixed in
 minutes. You walk out of a bar and the owner follows you
-into the hallway and bows low until the elevator's doors
-finally hide her from sight. A train leaves the station 20
-seconds early [and its operator issues a formal
+into the hallway and bows deeply until the elevator's doors
+hide her from sight. A train leaves the station 20 seconds
+early [and its operator issues a formal
 apology][twentysec].
 
 ## Hello, again (#hello)
 
-Oh yeah, I went to Japan.
+Oh yeah, I went to Japan, and for my money, it's the most
+interesting country on Earth.
 
-For my money, it's one of the most interesting countries in
-the world. I had the privilege of visiting everything from
-its densest urban metropolises to its most beautiful wild
-areas. This one turned out to be a little long so I've
-split the edition into two, with the second part coming in
-early 2018.
+I had the privilege of visiting a variety of its sights --
+everything from its dense urban jungles to some of its most
+beautiful wild areas.  This one turned out to be a little
+long so I've split the edition into two, with the second
+part coming in early 2018.
 
 As usual, you can unsubscribe instantly [by clicking
 here][unsubscribe], but I hope you don't. Thanks for
@@ -86,13 +87,13 @@ reading!
 Let's start with a few facts about Japan that I think every
 westerner (who's never visited) will find surprising:
 
-* Many people have heard the urban legend that if you lose
-  your wallet in Japan, it'll be returned to you. It's
-  true. I first heard the story from a teacher in
-  elementary school who'd left her purse on a park bench.
-  She came back and retrieved it the next day. I met a guy
-  in a bar in Osaka who'd forgotten his wallet on the
-  train. JR found it and mailed it to his hotel. They even
+* Many have heard the urban legend that if you lose your
+  wallet in Japan, it'll be returned to you. It's true. I
+  first heard the story from a teacher in elementary school
+  who'd left her purse on a park bench. She came back and
+  retrieved it the next day. In a bar in Osaka, I met a guy
+  who'd forgotten his wallet on the train just the week
+  before. JR found it and mailed it to his hotel. They even
   called beforehand to make sure it was okay to open it and
   remove a few hundred yen in bills to pay for postage.
 * Convenience stores (largely 7-11, Family Mart, and
@@ -117,10 +118,12 @@ westerner (who's never visited) will find surprising:
 * Corndogs are called "American dogs" and sold at every
   convenience store along tiny condiment packets that
   dispense the perfect amount of ketchup and mustard.
-  They're _delicious_ and have taken a spot as one of my
-  favorite foods.
-* Train conductors motion with their hands and speak as
-  they're driving, even when they're alone. This is called
+  They're _delicious_, and now rank amongst my favorite
+  foods.
+* Train conductors speak and motion with their hands as
+  they're driving (gesturing symbolically to the track
+  ahead, lights they pass, their timetable, etc.). They do
+  it even when they're alone. The technique is called
   [pointing and calling][pointcall] and has been shown to
   reduce mistakes by about 85%.
 * Every taxi in the country has a robotic passenger door
@@ -135,17 +138,18 @@ first stop.
 
 Kanazawa's a great place to visit because it has the beauty
 and history of Japan without the density of its major
-cities, which can be a little overwhelming for visitors.
-Houses in the city were once taxed based on the width of their
-street frontage, which led to the development of
-picturesque streets packed with houses that are narrow in
-the front, but stretched deeply into their block.
+metropolises (which can be a little overwhelming for
+visitors). Houses in the city were once taxed based on the
+width of their street frontage, which led to the
+development of picturesque streets packed with houses that
+are narrow in the front, but which stretch deeply into
+their block.
 
-Every few minutes you stumble across a shrine, many of
-which are inconceivably beautiful (that's one depicted
-below). They're part of Japan's Shinto religion, and it's
-common for the otherwise secular locals to visit them for a
-quick few minutes of prayer.
+Every few minutes you stumble across a shrine as you're
+exploring, and most of them are inconceivably beautiful
+(there's one depicted below). They're part of Japan's
+Shinto religion, and it's common for the otherwise secular
+locals to visit them for a quick few minutes of prayer.
 
 ![Kanazawa](/assets/passages/002-japan/kanazawa@2x.jpg)
 
@@ -171,12 +175,12 @@ A common sight at Kenrokuen is "Yukitsuri", a Japanese
 technique for protecting the growth of trees from heavy
 snowfall. Ropes are hung to lend extra support for branches
 and larger ones are propped up with bamboo columns. The
-extra support keeps parts of the tree upright and growing
-laterally when they'd otherwise bow under the weight of
-heavy, wet snow.
+scaffolding keeps parts of the tree upright and growing
+laterally that would otherwise bow under the weight of
+heavy, wet snow that comes every winter.
 
-Yukitsuri unlocks growth that would be impossible in
-nature. It's pretty neat to look at too.
+Yukitsuri unlocks a form of sprawling growth that would be
+impossible in nature. It's pretty neat to look at too.
 
 ![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-2@2x.jpg)
 
@@ -190,8 +194,8 @@ We visited _Jigokudani Snow Monkey Park_ in Nagano, an area
 well known for its wild monkeys and its natural hot
 springs. During the cold winter the monkeys to flock to the
 hot springs, where they relax in the warm water. (And in my
-opinion, make some of the world's greatest photo models.
-[Google it][macaques].)
+opinion, make some of the world's greatest models. [Google
+it][macaques].)
 
 ![Macaques](/assets/passages/002-japan/macaques@2x.jpg)
 
@@ -201,13 +205,14 @@ updates to Facebook that read "monkeys!!" or "no monkeys
 :(" so that you can get a feel for how often they visit
 (they usually do).
 
-And when they come, they come in droves. When I saw my
-first macaque I crept around him carefully, afraid that I'd
-scare him off. A moment I realized later that I was missing
-the forest for the trees -- a little further up the path
-were about two hundred others like him, screaming at each
-other and running in every direction, often just inches
-from your feet. There are very few parks in the world where
+And when they come, they come in droves. When I came up the
+trail and saw my first macaque I crept around him
+carefully, afraid that I'd scare him off. A moment I
+realized later that I was missing the forest for the trees
+-- a little further up the path were about two hundred
+others like him, screaming at each other and running
+sporadically in every direction, often just inches from
+your feet. There are very few parks in the world where
 you'll get such a wild experience this personal.
 
 ### Shibu Onsen (#shibu-onsen)
@@ -220,41 +225,43 @@ to their hot springs that they have "onsen" right in the
 name.
 
 The village has a narrow main road with nine bath houses
-built along it. Most of the onsens don't have reception
-areas; instead there are two doors leading to the men's and
+built along it. Most of them don't have reception areas;
+instead there are two doors leading to the men's and
 women's baths that lead right off the street. Visitors get
 a master key from the _ryokan_ (a traditional Japanese inn)
-they're staying at and travel up and down the street
+where they're staying and travel up and down the street
 visiting each one. Most are clothed only in _yukata_ robes,
-with _geta_ sandals clacking against the stone as they
-walk. It's said to be good fortune to make it to all nine
-of the baths in one day.
+with _geta_ sandals clacking against the stone as they make
+their slow journeys. It's said to be good fortune to make
+it to all nine of the baths in one day.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
 We couldn't do the normal tour because we didn't have a
 place to stay overnight, but we found a small ryokan that
-let us in to use their onsens for a few hours. The place
-looked to be about two hundred years old, but the age just
-added to the character -- the history in every ancient tile
-and board of wood was palpable. In some cases the mineral
-formations on pipes were two inches high -- buildup caused
-by years of carrying the raw yield of the Earth.
+let us in to use their onsens (plural, there were about
+five in the building) for a few hours. The place looked to
+be about two hundred years old, but the age just added to
+the character -- the history plainly evident in every
+ancient tile and plank of wood was palpable. In some cases
+the mineral formations on pipes were two inches high -- a
+salty buildup caused by years of carrying the raw yield of
+the Earth.
 
 ### ♨ Onsens & the art of bathing (#onsens)
 
 The Japanese have taken advantage of their island's
-volcanic nature to produce thousands of onsens based around
-around the country. Onsens are just one side of the
-country's public paths though -- the other is its _sentō_,
-identical to their naturally occurring cousins but not
-restricted by geography -- they're filled with simple
-heated tap water.
+volcanic nature to produce thousands of onsens around
+around the country, and amazingly, onsens are just one of
+the types of public bath in Japan. The other is the
+_sentō_, identical to their naturally occurring cousins,
+but not restricted by geography -- they're filled with
+simple heated tap water instead of from a natural well.
 
 Public bathing is engrained in the cultural landscape of
 Japan. Beyond just a way of getting clean, it's also a way
 to go relax, socialize, and if you're willing to buy into a
-little bit of mythos -- heal. Onsens are often attributed
+little bit of folklore -- heal. Onsens are often attributed
 with certain healing powers based on their location and
 unique mix of naturally occurring minerals.
 
@@ -262,21 +269,21 @@ unique mix of naturally occurring minerals.
 
 A common way for locals to escape the bustle of Tokyo is to
 make the short trip up to Hakone, known particularly for
-traditional ryokans, colorful hues in the autumn, and of
-course -- onsens. There's even a Japanese TV series about a
-salaryman who hates his job and skips work to visit local
-sentōs (_Sunshine Sento-Sake_; [available on
-Amazon][sunshine]).
+its traditional ryokans, colorful hues in the autumn, and
+of course -- onsens. There's even a Japanese TV series
+about a salaryman who hates his job and skips work to visit
+local sentōs (_Sunshine Sento-Sake_; available to stream
+[from Amazon][sunshine]).
 
 ## Lucky Yebisu (#lucky-yebisu)
 
 During one of our last days in Japan we stumbled across the
 Yebisu beer museum in Tokyo's vibrant Ebisu district
-(itself named for the beer company). Yebisu is named for
-Ebisu, the Japanese god of fishermen and luck. He's one of
-the [Seven Gods of Fortune][sevengods] that you'll find
-portrayed in every corner of Japan. He's shown on bottles
-of Yebisu with his fishing rod and baskets of fish.
+(itself named for the beer company). "Yebisu" is derived
+from "Ebisu", the Japanese god of fishermen and luck. He's
+one of the [Seven Gods of Fortune][sevengods] that you'll
+find portrayed in every corner of Japan, and is shown on
+bottles of Yebisu with his fishing rod and baskets of fish.
 
 ![Lucky Yebisu](/assets/passages/002-japan/lucky-yebisu@2x.jpg)
 
@@ -296,7 +303,8 @@ special bottles are called "Lucky Yebisus" and their extra
 detail is totally insignificant, and yet spread across the
 world. It serves no useful purpose other than to bring a
 little bit of delight into the day of one of the handful of
-people who come across a Lucky Yebisu and know the trick.
+people who come across a Lucky Yebisu and know its secret
+(and now, you might be one of them).
 
 ## The iPhone X (#iphone-x)
 
@@ -304,14 +312,15 @@ I had my doubts about the iPhone X. Anyone paying attention
 knows that Jony Ives has wanted an end-to-end display on
 Apple phones for years, and given their recent track record
 I thought they'd finally lost it on the X -- jettisoning a
-good technology (TouchID) for a bad one (FaceID) to make
-the prettier screen happen.
+good and reliable technology (TouchID) for a bad one with
+some novelty factor (FaceID) to make the prettier screen
+happen.
 
 ![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
 
 I was wrong. iOS 11 had made my trusty iPhone 6 painfully
-slow, so I upgraded. FaceID works great -- it's not
-perfect, but it has no more problems than TouchID did
+slow, so I upgraded to the X. FaceID works great -- it's
+not perfect, but it has no more problems than TouchID did
 (which performed very poorly if your hands were wet or cold
 and didn't work at all through gloves), and that screen
 _really is_ pretty. The camera takes some amazing shots.
@@ -333,19 +342,20 @@ has the most striking design that I've ever seen.
 
 ![The Hauser](/assets/passages/002-japan/hauser@2x.jpg)
 
-Technically it's a hydration pack, but it's got enough
-space to fit everything you need as long as you're willing
-to travel light. The main compartment is narrow, but it'll
-fit a stuffable jacket, change of clothes, and water
-bottle. The back compartment is _just_ big enough to fit
-the 13" version of the latest generation of MacBook Pro.
-There's enough side compartments for all the small tools,
-cards, and Apple dongles that you need to have on you.
+Technically it's a hydration pack, but it can fit
+everything you need as long as you're willing to travel
+light. The main compartment is narrow, but it'll fit a
+stuffable jacket, change of clothes, and water bottle. The
+back compartment is _just_ big enough to fit the 13"
+version of the latest generation of MacBook Pro. There's
+enough side compartments for all the cards, small tools,
+and Apple dongles that you need to have on you.
 
 [It's the only bag that I took with me][hauserkumano] for a
 multi-day hike (albeit with nightly stops that were
-sheltered) along the Kumano Kodo in Japan. At 14L it was a
-bit of a stretch space-wise, but it worked.
+sheltered) along the Kumano Kodo in Japan (more on this to
+come in issue 003). At 14L it was a bit of a stretch
+space-wise, but it worked.
 
 ## Taking coffee seriously (#coffee)
 
@@ -356,25 +366,25 @@ to where I think is right.
 
 I recently invested in a couple new tools. The first is a
 kitchen scale that I can use to get all quantities exactly
-right. The second is a long-stemmed kettle with a twist: it
-has a small thermometer on the top that I can use to hit
-the ideal 96° C.
+right. The second is a long-stemmed coffee kettle with a
+twist: it has a small thermometer on the top that I can use
+to hit the ideal 96° C.
 
 ![Coffee](/assets/passages/002-japan/coffee@2x.jpg)
 
-They helped me to a few realizations really fast. I hadn't
-been using enough beans, I'd been adding _too much_ water,
-and I'd been letting the water cool for way too long (it
-turns out that boiling water left to cool on the counter
-really only takes a few seconds to fall to 96).
+They helped me to a few realizations fast. I hadn't been
+using enough beans, I'd been adding _too much_ water, and
+I'd been letting the water cool for way too long (it turns
+out that boiling water left to cool on the counter really
+only takes a few seconds to fall to 96).
 
 The usability features built into a $15 kitchen scale these
-days are impressive. My favorite is that it'll "tare"
-(that's when its weight reading is zeroed to account for
-the weight of an empty container) automatically when it's
-turned on. As long as there's a container on it first, it's
-fully operable by pressing only one button one time -- a
-tiny bit of gastronomic ingenuity.
+days are impressive. Mine will "tare" (that's when its
+weight reading is zeroed to account for the weight of an
+empty container) automatically when it's turned on. As long
+as there's a container on it first, it's fully operable by
+pressing only one button one time -- a tiny bit of
+ingenuity in gastronomic technology.
 
 Here's my Chemex recipe:
 
