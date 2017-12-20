@@ -24,15 +24,19 @@ Greeted by Keiko's name on the side of the inn.
 
 ![Yunomine](/assets/passages/003-kumano-kodo/yunomine@2x.jpg)
 
-![Onsen Eggs](/assets/passages/003-kumano-kodo/eggs@2x.jpg)
+![Yunomine](/assets/passages/003-kumano-kodo/yunomine-2@2x.jpg)
+
+![Yunomine](/assets/passages/003-kumano-kodo/yunomine-3@2x.jpg)
+
+![Onsen eggs](/assets/passages/003-kumano-kodo/eggs@2x.jpg)
 
 ![Boiler](/assets/passages/003-kumano-kodo/boiler@2x.jpg)
 
 ### Tsuboyu (#tsuboyu)
 
-![Tsuboyu (Outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
+![Tsuboyu (outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
 
-![Tsuboyu (Inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
+![Tsuboyu (inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
 
 ## Final day (#final-day)
 
@@ -44,6 +48,12 @@ Greeted by Keiko's name on the side of the inn.
 
 ![Nachi Taisha](/assets/passages/003-kumano-kodo/nachi-taisha@2x.jpg)
 
-## Wabi sabi & aged leather
+## Ponto-chō & beautiful alleys (#pontosho)
+
+![Ponto-chō](/assets/passages/003-kumano-kodo/pontocho@2x.jpg)
+
+## Wabi sabi & aged leather (#wabisabi)
+
+![Thousand Mile boots](/assets/passages/003-kumano-kodo/thousand-mile@2x.jpg)
 
 [unsubscribe]: %unsubscribe_url%
