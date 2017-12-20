@@ -77,7 +77,7 @@ areas. This one turned out to be a little long so I've
 split the edition into two, with the second part coming in
 early 2018.
 
-As usual, you can unsubscribe instantly [by clicking right
+As usual, you can unsubscribe instantly [by clicking
 here][unsubscribe], but I hope you don't. Thanks for
 reading!
 
