@@ -24,10 +24,6 @@ Greeted by Keiko's name on the side of the inn.
 
 ![Yunomine](/assets/passages/003-kumano-kodo/yunomine@2x.jpg)
 
-![Yunomine](/assets/passages/003-kumano-kodo/yunomine-2@2x.jpg)
-
-![Yunomine](/assets/passages/003-kumano-kodo/yunomine-3@2x.jpg)
-
 ![Onsen eggs](/assets/passages/003-kumano-kodo/eggs@2x.jpg)
 
 ![Boiler](/assets/passages/003-kumano-kodo/boiler@2x.jpg)
