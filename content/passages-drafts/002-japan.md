@@ -158,8 +158,8 @@ someone who lives in dry California, it's fantastic.
 ### Yukitsuri (#yukitsuri)
 
 One of Kanazawa's signature features is the Kenrokuen
-Garden, considered to be one of the Three Great Gardens of
-Japan along with sisters in Okayama and Mito. It has all
+Garden, considered to be one of the "Three Great Gardens of
+Japan" along with sisters in Okayama and Mito. It has all
 the hallmarks of a Japanese garden including sculpted
 trees, tranquil ponds, and moss-covered stone bridges and
 lanterns.
