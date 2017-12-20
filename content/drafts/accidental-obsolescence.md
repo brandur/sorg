@@ -12,27 +12,27 @@ Like many of you, I recently updated my phone to iOS 11.
 Although complaints about increased sluggishness are a
 common staple of any iOS upgrade, anecdotally iOS 11 seems
 to be worse, with reports of performance degradations even
-more common than the use of over-the-top superlatives
-during an Apple keynote (_Incredible_!, _Unpredecented_!,
-_Revolutionary_!).
+more common than the use of superlatives during an Apple
+keynote (_Incredible!_, _Unpredecented!_,
+_Revolutionary!_).
 
-I'm a little behind the hardware curve with a 3+ year old
-iPhone 6, and using it has become comically slow. It's not
-uncommon to experience splash screens that last ten seconds
-or longer. Even simple actions like scrolling down a page
-to be stuttering and tedious. The new version brought some
-minor quality of life improvements [1], but with a crushing
-cost.
+I was a little behind the hardware curve with a 3+ year old
+iPhone 6, but even so, using it had become comically slow.
+Splashing screens lasting ten seconds or longer weren't
+uncommon. Simple actions like scrolling down a page became
+stuttering and tedious. The new OS brought some minor
+quality of life improvements [1], but with a crushing cost.
 
-!fig src="/assets/autoupdate/ios11.png" caption="A signature feature of iOS 11: a customizable (and more useful) Control Center."
+!fig src="/assets/accidental-obsolescence/ios11.png" caption="A signature feature of iOS 11: a customizable (and more useful) Control Center."
 
 Niklaus Wirth described this phenomena in a mid-90s paper
 entitled [_A Plea for Lean Software_][leansoftware], and
-its since become an adage known as [Wirth's law][wirth]
+its since become an adage known as [Wirth's law][wirth],
 stating that software is getting slower more rapidly than
 hardware is getting faster. Unfortunately for the entire
 world, Wirth's law has shown a tireless doggedness that
-makes Moore's law look unreliable by comparison.
+makes Moore's law look ill-conceived and unreliable by
+comparison.
 
 A cynic might posit that companies are doing this on
 purpose as part of a program of [planned
@@ -46,7 +46,7 @@ happening everywhere -- developers are regularly building
 products only on pristine versions of recent hardware
 iterations, and older platforms are suffering for it.
 
-TODO: Photo of ruins
+!fig src="/assets/accidental-obsolescence/ruins.jpg" caption="Adequate performance seems destined to be lost to time."
 
 ## Longevity's in dire straits (#longevity)
 
@@ -82,7 +82,7 @@ shipped on physical media. Developers had one opportunity
 to get it right; after that master disc went out the door,
 it was too late to make changes.
 
-!fig src="/assets/autoupdate/cartridge.jpg" caption="A SNES cartridge. Software that once shipped, was set in stone."
+!fig src="/assets/accidental-obsolescence/cartridge.jpg" caption="A SNES cartridge. Software that once shipped, was set in stone."
 
 These days by comparison, you might pop a brand new game
 that you bought yesterday into your PS4, only to find that
@@ -116,6 +116,8 @@ Rust compile benchmarks.
 Benchmarks built-in.
 
 Firefox Quantum.
+
+Buy underpowered computers.
 
 ### Exercising restraint (#restraint)
 
