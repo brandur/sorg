@@ -40,11 +40,12 @@ Here's an excerpt that's always stuck with me:
 
 At the peak of Japan's dominance it was said that the
 property under the Imperial Palace in Tokyo was worth more
-than the entire state of California, but a collapsing asset
-bubble in the early 90s left the country's economy
-stagnating for twenty years (the so-called ["Lost
-Decades"][lostdecades]). These days _Rising Sun_ feels a
-little dated with our 20-20 insight into the past.
+than the entire state of California. Unfortunately, instead
+of the country's economy shooting straight to the moon, a
+collapsing asset bubble in the early 90s left it stagnating
+for twenty years (the so-called ["Lost
+Decades"][lostdecades]). With today's 20-20 insight into
+the past, _Rising Sun_ feels a little dated.
 
 Even so, I still find the passage more accurate than not.
 Everyone's heard that trains in Japan are on time, but you
