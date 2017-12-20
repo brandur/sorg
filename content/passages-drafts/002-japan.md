@@ -52,9 +52,9 @@ Everyone's heard that trains in Japan are on time, but you
 don't see until you visit that it's literally true. Not
 only that most trains are on time, but that right up to a
 miniscule margin of error, _all_ trains are on time, _all
-the time_. Rail infrastructure isn't a little better than
-what you find the states, it's two to three orders of
-magnitude better.
+the time_. Rail infrastructure and technology isn't a
+little better than what you find the states, it's two to
+three orders of magnitude better.
 
 Everyone in Japan from Shinkansen conductors to CEOs and
 store clerks to pop stars practice their professions with
