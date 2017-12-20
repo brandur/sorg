@@ -102,8 +102,8 @@ westerner (who's never visited) will find surprising:
   some of it anyway).
 * There are vending machines everywhere and they dispense
   everything from hot drinks to fried food. Prices are the
-  same as local convenience stores so there's no reason not
-  to use them. Tommy Lee Jones, a figurehead for Suntory's
+  same as local convenience stores so there's no reason to
+  avoid them. Tommy Lee Jones, a figurehead for Suntory's
   Boss brand, is depicted on them throughout the country.
 
 ![Boss](/assets/passages/002-japan/boss@2x.jpg)
