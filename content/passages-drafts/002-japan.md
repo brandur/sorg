@@ -205,7 +205,7 @@ And when they come, they come in droves. When I saw my
 first macaque I crept around him carefully, afraid that I'd
 scare him off. A moment I realized later that I was missing
 the forest for the trees -- a little further up the path
-were about two hundred others like him screaming at each
+were about two hundred others like him, screaming at each
 other and running in every direction, often just inches
 from your feet. There are very few parks in the world where
 you'll get such a wild experience this personal.
