@@ -66,6 +66,8 @@ finally hide her from sight. A train leaves the station 20
 seconds early [and its operator issues a formal
 apology][twentysec].
 
+## Hello, again (#hello)
+
 Oh yeah, I went to Japan.
 
 For my money, it's one of the most interesting countries in
@@ -76,7 +78,8 @@ split the edition into two, with the second part coming in
 early 2018.
 
 As usual, you can unsubscribe instantly [by clicking right
-here][unsubscribe]. Thanks for reading!
+here][unsubscribe], but I hope you don't. Thanks for
+reading!
 
 ## Stranger than fiction (#fiction)
 
