@@ -8,12 +8,12 @@ published_at: 2017-11-07T05:19:48Z
 In 1992 Michael Crichton wrote _Rising Sun_. At the time
 Japan was seeing a meteoric rise, moving from a post-war
 reconstruction project towards becoming the most powerful
-economic engine in the world. America may have invented
-TV, cars, film, printers, and denim, but was seeing its
-domestic market flooded with Japanese versions that weren't
-just cheaper, but better in every way that mattered.
-America was feeling an existential insecurity of its own
-position in the world like the one China elicits today.
+economic engine in the world. America invented TV, cars,
+film, printers, and denim, but was seeing its domestic
+market flooded with Japanese versions that weren't just
+cheaper, but better in every way that mattered. America was
+feeling an existential insecurity of its own position in
+the world like the one China elicits today.
 
 Here's an excerpt that's always stuck with me:
 
