@@ -304,8 +304,8 @@ I had my doubts about the iPhone X. Anyone paying attention
 knows that Jony Ives has wanted an end-to-end display on
 Apple phones for years, and given their recent track record
 I thought they'd finally lost it on the X -- jettisoning a
-good technology (TouchID) for a bad one (FaceID) just to
-make the prettier screen happen.
+good technology (TouchID) for a bad one (FaceID) to make
+the prettier screen happen.
 
 ![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
 
@@ -372,9 +372,9 @@ The usability features built into a $15 kitchen scale these
 days are impressive. My favorite is that it'll "tare"
 (that's when its weight reading is zeroed to account for
 the weight of an empty container) automatically when it's
-turned on, negating the weight of whatever's already on it.
-As long as there's a container on it first, it's operable
-by pressing only one button one time.
+turned on. As long as there's a container on it first, it's
+fully operable by pressing only one button one time -- a
+tiny bit of gastronomic ingenuity.
 
 Here's my Chemex recipe:
 
