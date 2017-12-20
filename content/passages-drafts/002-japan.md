@@ -136,15 +136,16 @@ first stop.
 Kanazawa's a great place to visit because it has the beauty
 and history of Japan without the density of its major
 cities, which can be a little overwhelming for visitors.
-Its houses were once taxed based on the width of their
+Houses in the city were once taxed based on the width of their
 street frontage, which led to the development of
-picturesque streets packed with houses that are long, but
-narrow.
+picturesque streets packed with houses that are narrow in
+the front, but stretched deeply into their block.
 
-Every few blocks you run into a shrine, most of which are
-inconceivably beautiful. They're part of Japan's Shinto
-religion, and it's common for the otherwise secular locals
-to visit them for a quick few minuet of prayer.
+Every few minutes you stumble across a shrine, many of
+which are inconceivably beautiful (that's one depicted
+below). They're part of Japan's Shinto religion, and it's
+common for the otherwise secular locals to visit them for a
+quick few minutes of prayer.
 
 ![Kanazawa](/assets/passages/002-japan/kanazawa@2x.jpg)
 
