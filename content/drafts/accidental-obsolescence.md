@@ -36,15 +36,21 @@ comparison.
 
 A cynic might posit that companies are doing this on
 purpose as part of a program of [planned
-obsolescence][planned], but the reality is that it's much
-more like ***accidental obsolescence***. Companies are
-incentivized to favor development speed, new features, and
-visual gimmickry over performance. And while Apple is the
-worst in class in selecting for new and longer genie
-animations over the usability of its software, it's
-happening everywhere -- developers are regularly building
-products only on pristine versions of recent hardware
-iterations, and older platforms are suffering for it.
+obsolescence][planned], but the reality is that the source
+of these usability losses is much more innocent than that.
+Companies are incentivized to favor development speed, new
+features, and visual gimmickry over performance. Developers
+are regularly building products only on pristine versions
+of recent hardware iterations rather than what's likely to
+be out in the field. And while Apple is worst-in-class in
+selecting for new and longer genie/fade/slide animations
+over the usability of its software, it's happening
+everywhere.
+
+Rather than being a maliciously engineered schedule of
+deprecation, the reality is much more akin to one of
+unintended consequences. It's not planned obsolescence,
+it's ***accidental obsolescence***. 
 
 !fig src="/assets/accidental-obsolescence/ruins.jpg" caption="Adequate performance seems destined to be lost to time."
 
@@ -55,8 +61,19 @@ implications that it carried with it) could be avoided by
 simply not updating -- early versions of Windows and
 Internet Explorer were still common years after they were
 obsolete because users had the option to keep running them
-and save on the considerable costs to upgrade to something
-more modern.
+and save on the considerable costs of upgrading to modern
+hardware.
+
+Some software could not be updated at all. Maybe the best
+example of this is software that shipped on physical media
+like game cartridges or the firmware of the game systems
+they ran on. Developers had one opportunity to get it
+right; after that master disc went out the door, it was too
+late to make changes. Absolutely terrible if a bug is ever
+found; but also somewhat advantageous in that performance
+could never be accidentally degraded.
+
+!fig src="/assets/accidental-obsolescence/cartridge.jpg" caption="A SNES cartridge. Software that once shipped, was set in stone."
 
 But as the security repercussions of this sort of
 stagnation become more apparent and autoupdate becomes more
@@ -77,13 +94,6 @@ moving, and we should plan for it.
 One of the greatest advances in software in the last ten
 years.
 
-Maybe the best ever example of this is software that
-shipped on physical media. Developers had one opportunity
-to get it right; after that master disc went out the door,
-it was too late to make changes.
-
-!fig src="/assets/accidental-obsolescence/cartridge.jpg" caption="A SNES cartridge. Software that once shipped, was set in stone."
-
 These days by comparison, you might pop a brand new game
 that you bought yesterday into your PS4, only to find that
 it already wants to update itself before you can play.
@@ -99,23 +109,50 @@ Good for security.
 But even better, it allows builders to move forward without
 thinking about the maintenance overhead of older systems.
 
-## Autoupdate in packages (#packages)
+## Performance as a feature (#performance-as-a-feature)
 
-### Static builds (#static-builds)
+### Techniques (#techniques)
 
-Some success: Postgres crypto.
+Cycle counting. DJB's [Ed25519 public-key signature system][djb]:
 
-## Accidental obsolescence (#accidental-obsolescencec)
+> * **Fast single-signature verification.** The software
+>   takes only 273364 cycles to verify a signature on
+>   Intel's widely deployed Nehalem/Westmere lines of CPUs.
+>   (This performance measurement is for short messages;
+>   for very long messages, verification time is dominated
+>   by hashing time.) Nehalem and Westmere include all Core
+>   i7, i5, and i3 CPUs released between 2008 and 2010, and
+>   most Xeon CPUs released in the same period.
+> * **Even faster batch verification.** The software
+>   performs a batch of 64 separate signature verifications
+>   (verifying 64 signatures of 64 messages under 64 public
+>   keys) in only 8.55 million cycles, i.e., under 134000
+>   cycles per signature. The software fits easily into L1
+>   cache, so contention between cores is negligible: a
+>   quad-core 2.4GHz Westmere verifies 71000 signatures per
+>   second, while keeping the maximum verification latency
+>   below 4 milliseconds.
+> * **Very fast signing.** The software takes only 87548
+>   cycles to sign a message. A quad-core 2.4GHz Westmere
+>   signs 109000 messages per second.
 
-### Performance as a feature (#performance)
+[Rust compiler performance data][rustperf]. Number of CPU
+instructions to compile various projects like a "hello
+world", but also real-world software like Hyper, Syn, and
+Servo.
 
-DJB cycle counting for encryption.
+Benchmarks built-in. `go test` and `cargo bench`.
 
-Rust compile benchmarks.
+```
+running 1 test
+test bench_xor_1000_ints ... bench:       131 ns/iter (+/- 3)
 
-Benchmarks built-in.
+test result: ok. 0 passed; 0 failed; 0 ignored; 1 measured
+```
 
-Firefox Quantum.
+[Firefox Quantum][quantum].
+
+> Firefox Quantum is consistently about 2X faster than Firefox was.
 
 Buy underpowered computers.
 
@@ -128,6 +165,9 @@ JavaScript and Electron.
 
 [1] TODO: quality of life iOS 11.
 
+[djb]: https://ed25519.cr.yp.to/
 [leansoftware]: http://doi.ieeecomputersociety.org/10.1109/2.348001
-[planned]: https://TODO
+[planned]: https://en.wikipedia.org/wiki/Planned_obsolescence
+[quantum]: https://blog.mozilla.org/firefox/quantum-performance-test/
+[rustperf]: https://perf.rust-lang.org/?start=2017-12-01&end=2017-12-10&absolute=true&stat=instructions%3Au
 [wirth]: https://en.wikipedia.org/wiki/Wirth%27s_law
