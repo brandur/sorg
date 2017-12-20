@@ -64,7 +64,7 @@ and an attendant is flagged over and has it fixed in
 minutes. You walk out of a bar and the owner follows you
 into the hallway and bows deeply until the elevator's doors
 hide her from sight. A train leaves the station 20 seconds
-early [and its operator issues a formal
+early and its operator [issues a formal
 apology][twentysec].
 
 ## Hello, again (#hello)
@@ -75,8 +75,8 @@ interesting country on Earth.
 I had the privilege of visiting a variety of its sights --
 everything from its dense urban jungles to some of its most
 beautiful wild areas.  This one turned out to be a little
-long so I've split the edition into two, with the second
-part coming in early 2018.
+long so I've split the edition into two, with the next one
+coming in early 2018.
 
 As usual, you can unsubscribe instantly [by clicking
 here][unsubscribe], but I hope you don't. Thanks for
