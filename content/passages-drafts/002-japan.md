@@ -87,14 +87,14 @@ Let's start with a few facts about Japan that I think every
 westerner (who's never visited) will find surprising:
 
 * Many people have heard the urban legend that if you lose
-  your wallet Japan, it will be returned to you. It's true.
-  I first heard the story from a teacher in elementary
-  school who'd left her purse on a park bench. She came
-  back and retrieved it the next day. I met a guy in a bar
-  in Osaka who'd forgotten his wallet on the train. JR
-  found it and mailed it to his hotel. They even called
-  beforehand to make sure it was okay to open it and remove
-  a few hundred yen in bills to pay for postage.
+  your wallet in Japan, it'll be returned to you. It's
+  true. I first heard the story from a teacher in
+  elementary school who'd left her purse on a park bench.
+  She came back and retrieved it the next day. I met a guy
+  in a bar in Osaka who'd forgotten his wallet on the
+  train. JR found it and mailed it to his hotel. They even
+  called beforehand to make sure it was okay to open it and
+  remove a few hundred yen in bills to pay for postage.
 * Convenience stores (largely 7-11, Family Mart, and
   Lawson) are a cornerstone of society. Unlike almost
   anywhere else on Earth, they're ubiquitous even in rural
