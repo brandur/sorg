@@ -311,11 +311,11 @@ people who come across a Lucky Yebisu and know its secret
 
 I had my doubts about the iPhone X. Anyone paying attention
 knows that Jony Ives has wanted an end-to-end display on
-Apple phones for years, and given their recent track record
-I thought they'd finally lost it on the X -- jettisoning a
-good and reliable technology (TouchID) for a bad one with
-some novelty factor (FaceID) to make the prettier screen
-happen.
+iPhones for years, and especially given the "form over
+function" maxim that Apple's adopted since Steve's death,
+he'd do whatever it takes to get one. Jettisoning a good
+and reliable technology (TouchID) for a new one with some
+novelty factor (FaceID) and a prettier screen? Of course.
 
 ![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
 

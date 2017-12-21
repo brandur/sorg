@@ -8,6 +8,8 @@ published_at: 2017-12-14T16:50:59Z
 As usual, you can unsubscribe instantly [by clicking right
 here][unsubscribe]. Thanks for reading!
 
+## Tatami units (#tatamis)
+
 ## Mount Koya (#mount-koya)
 
 ![Mount Koya](/assets/passages/003-kumano-kodo/koya@2x.jpg)
