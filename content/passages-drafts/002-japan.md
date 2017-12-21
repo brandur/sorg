@@ -232,9 +232,9 @@ women's baths that lead right off the street. Visitors are
 given a master key by the _ryokan_ (a traditional Japanese
 inn) where they're staying and travel up and down the
 street visiting each one. Most are clothed only in _yukata_
-robes, with _geta_ sandals clacking against the stone as
-they make their slow journeys. It's said to be good fortune
-to make it to all nine of the baths in one day.
+robes, and their _geta_ sandals clack loudly against the
+stone as they make their slow journeys. It's said to be
+good fortune to relax in all nine of the baths in one day.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
@@ -242,10 +242,10 @@ We couldn't do the normal tour because we didn't have a
 place to stay overnight, but we found a small ryokan that
 let us in to use their onsens (plural, there were about
 five in the building) for a few hours. The place looked to
-be about two hundred years old, but the age just added to
-the character -- the history plainly evident in every
-ancient tile and plank of wood was palpable. In some cases
-the mineral formations on pipes were two inches high -- a
+be about two hundred years old, but with age comes
+character -- the history plainly evident in every ancient
+tile and softened plank of wood was palpable. In some cases
+the mineral formations on pipes were two inches high --
 salty buildup caused by years of carrying the raw yield of
 the Earth.
 
@@ -253,7 +253,7 @@ the Earth.
 
 The Japanese have taken advantage of their island's
 volcanic nature to produce thousands of onsens around
-around the country, and amazingly, onsens are just one of
+around the country, and amazingly, they're just one of
 the types of public bath in Japan. The other is the
 _sentō_, identical to their naturally occurring cousins,
 but not restricted by geography -- they're filled with
