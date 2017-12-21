@@ -5,17 +5,18 @@ published_at: 2017-11-07T05:19:48Z
 
 ![Osaka](/assets/passages/002-japan/osaka@2x.jpg)
 
-In 1992 Michael Crichton wrote _Rising Sun_. At the time
-Japan was seeing a meteoric rise, moving from a post-war
-reconstruction project towards becoming the most powerful
-economic engine in the world. America invented TV, cars,
-film, printers, and denim, but was seeing its domestic
-market flooded with Japanese versions that weren't just
-cheaper, but better in every way that mattered. America was
-feeling an existential insecurity similar to the one China
-elicits today.
+In 1992 Michael Crichton wrote [_Rising Sun_][risingsun].
+At the time Japan was seeing a meteoric rise, moving from a
+post-war reconstruction project towards becoming the most
+powerful economic engine in the world. America invented TV,
+cars, film, printers, and denim, but was seeing its
+domestic market flooded with Japanese versions that weren't
+just cheaper, but better in every way that mattered.
+America was feeling an existential insecurity similar to
+the one China elicits today.
 
-Here's an excerpt that's always stuck with me:
+Here's an excerpt from the book that's always stuck with
+me:
 
 > "If we knew what made Ishiguro behave as he did, we'd
 > understand this case."
@@ -53,12 +54,12 @@ don't see until you visit that it's literally true. Not
 only that most trains are on time, but that right up to a
 miniscule margin of error, _all_ trains are on time, _all
 the time_. Rail infrastructure and technology isn't a
-little better than what you find the states, it's two to
-three orders of magnitude better. Other industries are
-similarly efficient.
+little better than what you find the states, it's three
+orders of magnitude better. Other industries are similarly
+efficient.
 
-Everyone in Japan from Shinkansen conductors to CEOs and
-store clerks to sushi chefs practice their professions with
+Everyone in Japan from Shinkansen conductors to sushi chefs
+and store clerks to CEOs practice their professions with
 disciplined seriousness. A subway kiosk goes out of service
 and an attendant is flagged over and has it fixed in
 minutes. You walk out of a bar and the owner follows you
@@ -74,8 +75,8 @@ interesting country on Earth.
 
 I had the privilege of visiting a variety of its sights --
 everything from its dense urban jungles to some of its most
-beautiful wild areas.  This one turned out to be a little
-long so I've split the edition into two, with the next one
+beautiful wild areas.  This edition turned out to be a
+little long so I've split it into two, with the next part
 coming in early 2018.
 
 As usual, you can unsubscribe instantly [by clicking
@@ -93,7 +94,7 @@ westerner (who's never visited) will find surprising:
   who'd left her purse on a park bench. She came back and
   retrieved it the next day. In a bar in Osaka, I met a guy
   who'd forgotten his wallet on the train just the week
-  before. JR found it and mailed it to his hotel. They even
+  before. JR found it and mailed it to his hotel. They
   called beforehand to make sure it was okay to open it and
   remove a few hundred yen in bills to pay for postage.
 * Convenience stores (largely 7-11, Family Mart, and
@@ -113,7 +114,7 @@ westerner (who's never visited) will find surprising:
   throw away, you pack it out until you get home or come
   across a convenience store. You'd think this would lead
   to runaway littering, but Japanese cities are the
-  cleanest places you'll ever see. Everyone follows the
+  cleanest places you'll ever find. Everyone follows the
   rules.
 * Corndogs are called "American dogs" and sold at every
   convenience store along tiny condiment packets that
@@ -164,10 +165,10 @@ someone who lives in dry California, it's fantastic.
 
 One of Kanazawa's signature features is the Kenrokuen
 Garden, considered to be one of the "Three Great Gardens of
-Japan" along with sisters in Okayama and Mito. It has all
-the hallmarks of a Japanese garden including sculpted
-trees, tranquil ponds, and moss-covered stone bridges and
-lanterns.
+Japan" along with its sisters in Okayama and Mito. It has
+all the hallmarks that you'd expect in a Japanese garden
+including sculpted trees, tranquil ponds, and moss-covered
+stone bridges and lanterns.
 
 ![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-1@2x.jpg)
 
@@ -179,16 +180,16 @@ scaffolding keeps parts of the tree upright and growing
 laterally that would otherwise bow under the weight of
 heavy, wet snow that comes every winter.
 
-Yukitsuri unlocks a form of sprawling growth that would be
+Yukitsuri fosters a form of sprawling growth that would be
 impossible in nature. It's pretty neat to look at too.
 
 ![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-2@2x.jpg)
 
 ## The macaques of Nagano (#macaques)
 
-Japan has its own species of macaque, often referred to as
-a "snow monkey". With the exception of humans, no other
-primate lives further north, or in colder weather.
+Japan has its own species of macaque, colloquially referred
+to as a "snow monkey". With the exception of humans, no
+other primate lives further north, or in colder weather.
 
 We visited _Jigokudani Snow Monkey Park_ in Nagano, an area
 well known for its wild monkeys and its natural hot
@@ -205,15 +206,15 @@ updates to Facebook that read "monkeys!!" or "no monkeys
 :(" so that you can get a feel for how often they visit
 (they usually do).
 
-And when they come, they come in droves. When I came up the
-trail and saw my first macaque I crept around him
-carefully, afraid that I'd scare him off. A moment I
-realized later that I was missing the forest for the trees
--- a little further up the path were about two hundred
-others like him, screaming at each other and running
-sporadically in every direction, often just inches from
-your feet. There are very few parks in the world where
-you'll get such a wild experience this personal.
+When they come, they come in droves. As I came up the trail
+and saw my first macaque, I crept around him carefully,
+afraid that I'd scare him off. A moment I realized later
+that I was missing the forest for the trees -- a little
+further up the path were about two hundred others like him,
+screaming at each other and scrambling chaotically in every
+direction, often just inches from your feet. There are very
+few parks in the world where you'll get such a wild
+experience this personal.
 
 ### Shibu Onsen (#shibu-onsen)
 
@@ -227,13 +228,13 @@ name.
 The village has a narrow main road with nine bath houses
 built along it. Most of them don't have reception areas;
 instead there are two doors leading to the men's and
-women's baths that lead right off the street. Visitors get
-a master key from the _ryokan_ (a traditional Japanese inn)
-where they're staying and travel up and down the street
-visiting each one. Most are clothed only in _yukata_ robes,
-with _geta_ sandals clacking against the stone as they make
-their slow journeys. It's said to be good fortune to make
-it to all nine of the baths in one day.
+women's baths that lead right off the street. Visitors are
+given a master key by the _ryokan_ (a traditional Japanese
+inn) where they're staying and travel up and down the
+street visiting each one. Most are clothed only in _yukata_
+robes, with _geta_ sandals clacking against the stone as
+they make their slow journeys. It's said to be good fortune
+to make it to all nine of the baths in one day.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
@@ -429,6 +430,7 @@ serve as your periodic reminder to get in touch -- just hit
 [macaques]: https://www.google.com/search?tbm=isch&q=macques+hot+spring&oq=macques+hot+spring
 [pointcall]: https://en.wikipedia.org/wiki/Pointing_and_calling
 [redisstreams]: https://brandur.org/redis-streams
+[risingsun]: https://en.wikipedia.org/wiki/Rising_Sun_(novel)
 [sevengods]: https://en.wikipedia.org/wiki/Seven_Gods_of_Fortune
 [stripeidempotency]: https://stripe.com/blog/idempotency
 [sunshine]: https://www.amazon.com/Sunshine-Sento-Sake-Season-1-Subbed/dp/B01M9D7RN0
