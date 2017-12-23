@@ -41,12 +41,12 @@ me:
 
 At the peak of Japan's dominance it was said that the
 property under the Imperial Palace in Tokyo was worth more
-than the entire state of California. Unfortunately, instead
-of the country's economy shooting to the moon, a collapsing
-asset bubble in the early 90s left it stagnating for twenty
-years (the so-called ["Lost Decades"][lostdecades]). With
-today's 20-20 insight into the past, _Rising Sun_'s
-alarmist theme feels dated.
+than the entire state of California. But instead of the
+country's economy shooting to the moon, a collapsing asset
+bubble in the early 90s left it stagnating for twenty years
+(the so-called ["Lost Decades"][lostdecades]). With today's
+20-20 insight into the past, _Rising Sun_'s alarmist theme
+feels dated.
 
 Even so, I still find the passage more accurate than not.
 Everyone's heard that trains in Japan are on time, but you
@@ -55,17 +55,16 @@ only that most trains are on time, but that right up to a
 miniscule margin of error, _all_ trains are on time, _all
 the time_. Rail infrastructure and technology isn't a
 little better than what you find the states, it's three
-orders of magnitude better. Other industries are similarly
-efficient.
+orders of magnitude better.
 
 Everyone in Japan from Shinkansen conductors to sushi chefs
 and store clerks to CEOs practice their professions with
 disciplined seriousness. A subway kiosk goes out of service
 and an attendant is flagged over and has it fixed in
 minutes. You walk out of a bar and the owner follows you
-into the hallway and bows deeply until the elevator's doors
-hide her from sight. A train leaves the station 20 seconds
-early and its operator [issues a formal
+into the hallway, and bows deeply until the elevator's
+doors hide her from sight. A train leaves the station 20
+seconds early and its operator [issues a formal
 apology][twentysec].
 
 ## Hello, again (#hello)
@@ -74,10 +73,10 @@ Oh yeah, I went to Japan, and for my money, it's the most
 interesting country on Earth.
 
 I had the privilege of visiting a variety of its sights --
-everything from its dense urban jungles to some of its most
-beautiful wild areas.  This edition turned out to be a
-little long so I've split it into two, with the next part
-coming in early 2018.
+everything from dense urban jungles to beautiful wild
+areas. This letter turned out to be a little long, so I've
+split it into two parts, with the next coming in early
+2018.
 
 As usual, you can unsubscribe instantly [by clicking
 here][unsubscribe], but I hope you don't. Thanks for
@@ -92,21 +91,24 @@ westerner (who's never visited) will find surprising:
   wallet in Japan, it'll be returned to you. It's true. I
   first heard the story from a teacher in elementary school
   who'd left her purse on a park bench. She came back and
-  retrieved it the next day. In a bar in Osaka, I met a guy
-  who'd forgotten his wallet on the train just the week
-  before. JR found it and mailed it to his hotel. They
-  called beforehand to make sure it was okay to open it and
-  remove a few hundred yen in bills to pay for postage.
+  retrieved it the next day.
+    
+    In a bar in Osaka, I met a guy who'd forgotten his
+    wallet on the train just the week before. He filed a
+    report, JR found it, and they mailed it to his hotel.
+    They called beforehand to make sure it was okay to open
+    it and remove a few hundred yen in bills to pay for
+    postage.
 * Convenience stores (largely 7-11, Family Mart, and
   Lawson) are a cornerstone of society. Unlike almost
   anywhere else on Earth, they're ubiquitous even in rural
-  areas, and serve food that's quality and healthy (well,
-  some of it anyway).
+  areas, and serve great food like onigiri and pork buns.
 * There are vending machines everywhere and they dispense
   everything from hot drinks to fried food. Prices are the
   same as local convenience stores so there's no reason to
   avoid them. Tommy Lee Jones, a figurehead for Suntory's
-  Boss brand, is depicted on them throughout the country.
+  Boss brand, stares back from many of them throughout the
+  country.
 
 ![Boss](/assets/passages/002-japan/boss@2x.jpg)
 
@@ -232,9 +234,9 @@ women's baths that lead right off the street. Visitors are
 given a master key by the _ryokan_ (a traditional Japanese
 inn) where they're staying and travel up and down the
 street visiting each one. Most are clothed only in _yukata_
-robes, and their _geta_ sandals clack loudly against the
-stone as they make their slow journeys. It's said to be
-good fortune to relax in all nine of the baths in one day.
+robes; _geta_ sandals clacking loudly against the stone as
+they make their unhurried journeys. It's said to be good
+fortune to make it to all nine of the baths in one day.
 
 ![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
 
@@ -243,11 +245,10 @@ place to stay overnight, but we found a small ryokan that
 let us in to use their onsens (plural, there were about
 five in the building) for a few hours. The place looked to
 be about two hundred years old, but with age comes
-character -- the history plainly evident in every ancient
-tile and softened plank of wood was palpable. In some cases
-the mineral formations on pipes were two inches high --
-salty buildup caused by years of carrying the raw yield of
-the Earth.
+character, and the history was palpable in every ancient
+tile and softened plank of wood. The mineral formations on
+some pipes were two inches high -- salty buildup caused by
+decades of carrying the raw yield of the Earth.
 
 ### ♨ Onsens & the art of bathing (#onsens)
 
@@ -271,10 +272,9 @@ unique mix of naturally occurring minerals.
 A common way for locals to escape the bustle of Tokyo is to
 make the short trip up to Hakone, known particularly for
 its traditional ryokans, colorful hues in the autumn, and
-of course -- onsens. There's even a Japanese TV series
+of course -- onsens. Japanese TV even carries a series
 about a salaryman who hates his job and skips work to visit
-local sentōs (_Sunshine Sento-Sake_; available to stream
-[from Amazon][sunshine]).
+local sentōs ([_Sunshine Sento-Sake_][sunshine]).
 
 ## Lucky Yebisu (#lucky-yebisu)
 
@@ -315,17 +315,17 @@ iPhones for years, and especially given the "form over
 function" maxim that Apple's adopted since Steve's death,
 he'd do whatever it takes to get one. Jettisoning a good
 and reliable technology (TouchID) for a new one with some
-novelty factor (FaceID) and a prettier screen? Of course.
+novelty factor (FaceID) and a prettier screen? Worth it.
 
 ![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
 
-I was wrong. iOS 11 had made my trusty iPhone 6 painfully
-slow, so I upgraded to the X. FaceID works great -- it's
-not perfect, but it has no more problems than TouchID did
-(which performed very poorly if your hands were wet or cold
-and didn't work at all through gloves), and that screen
-_really is_ pretty. The camera takes some amazing shots.
-The new chip is _fast_.
+But I was wrong to doubt it. iOS 11 had made my trusty
+iPhone 6 painfully slow, so I upgraded to the X. FaceID
+works great -- it's not perfect, but it has no more
+problems than TouchID did (which performed very poorly if
+your hands were wet or cold and didn't work at all through
+gloves), and that screen _really is_ pretty. The camera
+takes some amazing shots. The new chip is _fast_.
 
 Best of all, the removal of the home button isn't just an
 aesthetic win (it removed the iPhone's "chin"), but one for
