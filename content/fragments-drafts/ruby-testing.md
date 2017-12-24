@@ -9,11 +9,13 @@ parachute packed by your untrained, blind, and drunk uncle because you hopped
 off a bench a couple times down in the hangar and the weight of it felt roughly
 right.
 
-By default, productioning Ruby is never safe. Not for you, but _definitely_ not
-for that poor sap who's next in line for maintainership. Know how hard it is to
-make sense of your own code a year after you've written it? It's 10x harder for
-someone else. Tests are absolutely the only way to codify that certain
-behaviors are expected and not accidental.
+By default, productionizing Ruby is never safe. Not for
+you, but _definitely_ not for that poor sap who's next in
+line for maintainership. Know how hard it is to make sense
+of your own code a year after you've written it? It's 10x
+harder for someone else. Tests are absolutely the only way
+to codify that certain behaviors are expected and not
+accidental.
 
 Besides a few basic checks on syntax, Ruby gives you zero guarantees. Code in
 all languages needs testing, but code in dynamic/interpreted languages [1]
