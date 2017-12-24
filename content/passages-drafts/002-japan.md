@@ -70,13 +70,15 @@ apology][twentysec].
 ## Hello, again (#hello)
 
 Oh yeah, I went to Japan, and for my money, it's the most
-interesting country on Earth.
+interesting country on Earth. Not because its trains are
+fast (although you do just have to _love_ its train), but
+because of its amazing beauty, long history, unique culture
+and technology, and friendly people.
 
 I had the privilege of visiting a variety of its sights --
 everything from dense urban jungles to beautiful wild
-areas. This letter turned out to be a little long, so I've
-split it into two parts, with the next coming in early
-2018.
+areas. This letter turned out to be a little long, so it's
+coming out in two parts, with the next in early 2018.
 
 As usual, you can unsubscribe instantly [by clicking
 here][unsubscribe], but I hope you don't. Thanks for
@@ -203,7 +205,7 @@ it][macaques].)
 ![Macaques](/assets/passages/002-japan/macaques@2x.jpg)
 
 The macaques don't make it to the human-accessible part of
-park every day, but its wardens helpfully post daily status
+park every day, but its wardens helpfully post daily
 updates to Facebook that read "monkeys!!" or "no monkeys
 :(" so that you can get a feel for how often they visit
 (they usually do).
