@@ -97,9 +97,9 @@ westerner (who's never visited) will find surprising:
     
     In a bar in Osaka, I met a guy who'd forgotten his
     wallet on the train just the week before. He filed a
-    report, JR found it, and they mailed it to his hotel.
-    They called beforehand to make sure it was okay to open
-    it and remove a few hundred yen in bills to pay for
+    report, JR found it, and mailed it to his hotel. They
+    called beforehand to make sure it was okay to open it
+    and remove a few hundred yen in bills to pay for
     postage.
 * Convenience stores (largely 7-11, Family Mart, and
   Lawson) are a cornerstone of society. Unlike almost
