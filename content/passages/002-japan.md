@@ -330,7 +330,7 @@ but it has no more problems than TouchID did (which
 performed very poorly if your hands were wet or cold and
 didn't work at all through gloves), and the OLED screen
 _really is_ pretty. Its camera takes some amazing shots.
-The new chip is _fast_.
+The new A11 chip is _fast_.
 
 Best of all, the removal of the home button isn't just an
 aesthetic win (it removed the iPhone's "chin"), but one for
