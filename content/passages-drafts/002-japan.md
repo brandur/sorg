@@ -71,7 +71,7 @@ apology][twentysec].
 
 Oh yeah, I went to Japan, and for my money, it's the most
 interesting country on Earth. Not because its trains are
-fast (although you do just have to _love_ its train), but
+fast (although you do just have to _love_ the train), but
 because of its amazing beauty, long history, unique culture
 and technology, and friendly people.
 
