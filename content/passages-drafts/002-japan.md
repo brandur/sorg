@@ -45,8 +45,8 @@ than the entire state of California. But instead of the
 country's economy shooting to the moon, a collapsing asset
 bubble in the early 90s left it stagnating for twenty years
 (the so-called ["Lost Decades"][lostdecades]). With today's
-20-20 insight into the past, _Rising Sun_'s alarmist theme
-feels dated.
+20-20 insight into the past, _Rising Sun_'s cautionary
+theme feels dated.
 
 Even so, I still find the passage more accurate than not.
 Everyone's heard that trains in Japan are on time, but you
@@ -421,7 +421,7 @@ In many stacks streams will make a good Kafka alternative
 that's easier to install and cheaper to run.
 
 Thanks for making it this far! I hope this newsletter will
-serve as your periodic reminder to get in touch -- just hit
+serve as your periodic reminder to get in touch. Just hit
 "reply".
 
 [chemex]: https://en.wikipedia.org/wiki/Chemex_Coffeemaker
