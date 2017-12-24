@@ -294,8 +294,8 @@ bottles of Yebisu with his fishing rod and baskets of fish.
 
 Here's one of the most minute Easter eggs you'll ever come
 across: 99%+ of Yebisu bottles look like the one on the
-right. One in every few hundred looks like the bottle on
-the left. Notice the difference?
+right. A rare one in every few hundred looks like the
+bottle on the left. Notice the difference?
 
 If not, you're not the only one -- you practically need a
 microscope to see it.
