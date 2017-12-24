@@ -13,7 +13,7 @@ cars, film, printers, and denim, but was seeing its
 domestic market flooded with Japanese versions that weren't
 just cheaper, but better in every way that mattered.
 America was feeling an existential insecurity similar to
-the one China elicits today.
+the one China elicits in it today.
 
 Here's an excerpt from the book that's always stuck with
 me:
@@ -315,42 +315,43 @@ iPhones for years, and especially given the "form over
 function" maxim that Apple's adopted since Steve's death,
 he'd do whatever it takes to get one. Jettisoning a good
 and reliable technology (TouchID) for a new one with some
-novelty factor (FaceID) and a prettier screen? Worth it.
+novelty factor (FaceID) and a prettier screen? No problem.
 
 ![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
 
-But I was wrong to doubt it. iOS 11 had made my trusty
-iPhone 6 painfully slow, so I upgraded to the X. FaceID
-works great -- it's not perfect, but it has no more
-problems than TouchID did (which performed very poorly if
-your hands were wet or cold and didn't work at all through
-gloves), and that screen _really is_ pretty. The camera
-takes some amazing shots. The new chip is _fast_.
+But I was wrong to doubt it. iOS 11 rendered my trusty
+iPhone 6 a lame brick operating at glacial speeds, so I
+upgraded to the X. FaceID works great -- it's not perfect,
+but it has no more problems than TouchID did (which
+performed very poorly if your hands were wet or cold and
+didn't work at all through gloves), and the OLED screen
+_really is_ pretty. Its camera takes some amazing shots.
+The new chip is _fast_.
 
 Best of all, the removal of the home button isn't just an
 aesthetic win (it removed the iPhone's "chin"), but one for
 usability as well. Swiping up to go home is as fast and
-reliable as the home button was, and swiping up and to the
-left to multi-task is _faster_ than the old double-click.
-The home button was too overloaded, and the new swipe
-gestures are better.
+reliable as the home button was, but better yet, swiping up
+and to the left to multi-task is _faster_ than the old
+double-click. The home button was overloaded, and the new
+swipe gestures are a big improvement.
 
 ## The Hauser (#hauser)
 
 I can't stay away from cool bags. I picked up Mission
-Workshop's new [Hauser][hauser], a weatherproof pack that
-has the most striking design that I've ever seen.
+Workshop's new [Hauser][hauser], a weatherproof pack with a
+striking design.
 
 ![The Hauser](/assets/passages/002-japan/hauser@2x.jpg)
 
-Technically it's a hydration pack, but it can fit
-everything you need as long as you're willing to travel
-light. The main compartment is narrow, but it'll fit a
-stuffable jacket, change of clothes, and water bottle. The
-back compartment is _just_ big enough to fit the 13"
-version of the latest generation of MacBook Pro. There's
-enough side compartments for all the cards, small tools,
-and Apple dongles that you need to have on you.
+Technically it's a hydration pack, but if you travel light,
+it'll hold everything you need. The main compartment is
+narrow, but it'll fit a stuffable jacket, change of
+clothes, and water bottle. The back compartment is _just_
+big enough to fit the 13" version of the latest generation
+MacBook Pro. There's enough side compartments for all the
+cards, small tools, and Apple dongles that you need to have
+on you.
 
 [It's the only bag that I took with me][hauserkumano] for a
 multi-day hike (albeit with nightly stops that were
