@@ -361,7 +361,7 @@ sheltered) along the Kumano Kodo in Japan (more on this to
 come in issue 003). At 14L it was a bit of a stretch
 space-wise, but it worked.
 
-## Taking coffee seriously (#coffee)
+## Coffee and precision (#coffee)
 
 I've owned a [Chemex][chemex] for years, but have always
 opted to eyeball my quantities -- putting roughly the right
