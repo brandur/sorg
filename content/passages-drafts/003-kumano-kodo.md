@@ -1,6 +1,6 @@
 ---
 title: The Kumano Kodo
-published_at: 2017-12-14T16:50:59Z
+published_at: 2017-12-24T06:57:39Z
 ---
 
 ![The Kumano Kodo](/assets/passages/003-kumano-kodo/shining-light@2x.jpg)
