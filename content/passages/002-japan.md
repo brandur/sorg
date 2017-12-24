@@ -303,13 +303,13 @@ microscope to see it.
 Look all the way over to the very left-hand side of the
 photo and you'll see that Yebisu on the left has an extra
 fish. _Both_ of his baskets are full while the Yebisu on
-the right only has a fish in one of his baskets. These
-special bottles are called "Lucky Yebisus" and their extra
-detail is totally insignificant, and yet spread across the
-world. It serves no useful purpose other than to bring a
-little bit of delight into the day of one of the handful of
-people who come across a Lucky Yebisu and know its secret
-(and now, you might be one of them).
+the right has a fish in only one. These special bottles are
+called "Lucky Yebisus" and their extra detail is totally
+insignificant, and yet spread across the world. It serves
+no useful purpose other than to bring a little bit of
+delight into the day of one of the handful of people who
+come across a Lucky Yebisu and know its secret (and now,
+you might be one of them).
 
 ## The iPhone X (#iphone-x)
 
