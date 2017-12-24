@@ -11,9 +11,9 @@ post-war reconstruction project towards becoming the most
 powerful economic engine in the world. America invented TV,
 cars, film, printers, and denim, but was seeing its
 domestic market flooded with Japanese versions that weren't
-just cheaper, but better in every way that mattered.
-America was feeling an existential insecurity similar to
-the one China elicits in it today.
+just cheaper, but better in every way that mattered. At the
+time, the US was feeling an existential insecurity similar
+to the one China elicits in it today.
 
 Here's an excerpt from the book that's always stuck with
 me:
@@ -361,7 +361,7 @@ sheltered) along the Kumano Kodo in Japan (more on this to
 come in issue 003). At 14L it was a bit of a stretch
 space-wise, but it worked.
 
-## Coffee and precision (#coffee)
+## The perfect cup (#coffee)
 
 I've owned a [Chemex][chemex] for years, but have always
 opted to eyeball my quantities -- putting roughly the right
