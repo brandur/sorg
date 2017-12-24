@@ -224,6 +224,12 @@ type Page struct {
 	Title string `yaml:"title"`
 }
 
+type passageByPublishedAt []*passages.Passage
+
+func (p passageByPublishedAt) Len() int           { return len(p) }
+func (p passageByPublishedAt) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+func (p passageByPublishedAt) Less(i, j int) bool { return p[i].PublishedAt.Before(*p[j].PublishedAt) }
+
 // Photo is a photography downloaded from Flickr.
 type Photo struct {
 	// LargeImageURL is the location where the large-sized version of the photo
@@ -501,6 +507,7 @@ func main() {
 
 	sort.Sort(sort.Reverse(articleByPublishedAt(articles)))
 	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
+	sort.Sort(sort.Reverse(passageByPublishedAt(passages)))
 
 	tasks = append(tasks, pool.NewTask(func() error {
 		return compileArticlesFeed(articles)
