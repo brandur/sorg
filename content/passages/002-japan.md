@@ -132,7 +132,9 @@ westerner (who's never visited) will find surprising:
   [pointing and calling][pointcall] and has been shown to
   reduce mistakes by about 85%.
 * Every taxi in the country has a robotic passenger door
-  that can be opened at the push of a button.
+  that can be opened at the push of a button (and it's not
+  a sliding door like a minivan, but one that swings
+  outward like a normal car's).
 
 ## Kanazawa (#kanazawa)
 
