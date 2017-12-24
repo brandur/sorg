@@ -28,10 +28,10 @@ for that joke app that you built that one time.
 
 This sounds like a pointless rant. Everyone likes tests.
 "Testing is good" is the platitude of our generation.
-However, I'm constantly floored by how many people still do
-this and who should know better, even when those same
-people might have just finished espousing the importance of
-testing to someone else moments before.
+However, I'm floored every other week by how many people
+still do this and who should know better. Oftentimes those
+same people will have just finished espousing the
+importance of testing to someone else moments before.
 
 [1] Compilers are better, but not foolproof. If you're a
     JavaScript programmer that just discovered Go/a
