@@ -22,6 +22,17 @@ start the process all over again.
 
 ## Leftpad-ification of the ecosystem (#leftpadification)
 
+Three days into a simple project, I had accumulated X
+dependencies.
+
+Dependencies have a cost. Everyone one of those risks
+falling out of maintenance and into delapidation.
+
+It also introduces dependency hell problems. I had trouble
+getting a basic Iron/Juniper setup going because there'd
+been enough API changes that you had to lock to specific
+versions to get a program compiling.
+
 ## Haskell-ification of the language (#haskellification)
 
 To programming language academics, the more the better.
