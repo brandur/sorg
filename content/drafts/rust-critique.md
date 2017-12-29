@@ -18,7 +18,8 @@ right. You write some tests and eke out the problems you
 didn't find in the interpreter. You send it to production
 and redeploy a dozen times to fix all the new edge cases
 that you find there. When you introduce threading, you
-start the process all over again.
+start the process all over again. Code's never done -- it's
+just (mostly) working for today.
 
 ## Leftpad-ification of the ecosystem (#leftpadification)
 
