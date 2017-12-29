@@ -53,6 +53,15 @@ before they reach adolescence in a hostile environment of
 lifetime parameters, move semantics, and ownership
 structures.
 
+I call this "Haskellification" because while to some
+Haskell is the most beautiful language ever created, to
+most it's an arcane, unapproachable monster. Like it or
+not, it's not how you should ever want your new language to
+turn out because a barrier to entry higher than Everest is
+an absolute guarantee that history will remember it as
+intellectual curiosity used by no more than a few
+eccentrics instead of a mainstream practical tool.
+
 ## Haskell-ification of the documentation (#docs)
 
 The types are so sophisticated that you don't need any
