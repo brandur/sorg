@@ -1,5 +1,5 @@
 ---
-title: Constructive Criticism for Rust
+title: Constructive Criticism for the Rust Language
 published_at: 2017-12-29T22:17:27Z
 location: Calgary
 hook: TODO
