@@ -40,28 +40,27 @@ To programming language academics, the more the better.
 Higher order types. More powerful macro systems.
 
 A language that's powerful enough ephemeralizes the code
-you have to write until there's nothing left -- put a few
-symbols down and a chain of macros long enough to wrap the
-Earth a few times expands it into a fully runnable program.
-Perfection.
+you have to write until there's nothing left. A true type
+disciple's dream is to be able to write out one glyph and
+have it expand into a fully runnable version of Quake II
+through a long chain of macros long enough to wrap around
+the world a few times.
 
 Or is it? Complex language mechanics have a cost, and that
 cost can roughly be described as the bar that needs to be
 vaulted in order to get productive in it. If a type system
 is so elaborate and so complicated that it's hard to get a
-program to compile, people give up. Future programmers die
+program to compile, people give up. Potential developers die
 before they reach adolescence in a hostile environment of
-lifetime parameters, move semantics, and ownership
-structures.
+type parameters nested eight levels deep and inscrutable
+errors generated from bad macro invocations.
 
-I call this "Haskellification" because while to some
-Haskell is the most beautiful language ever created, to
-most it's an arcane, unapproachable monster. Like it or
-not, it's not how you should ever want your new language to
-turn out because a barrier to entry higher than Everest is
-an absolute guarantee that history will remember it as
-intellectual curiosity used by no more than a few
-eccentrics instead of a mainstream practical tool.
+Let's take a look at an example. [Diesel][diesel] is an ORM
+written for Rust. It has a multitude of great features and
+it does certain things better than any comparable system
+before it (including ActiveRecord, Sequel, etc.). One neat
+feature is that you can compose queries with its typed DSL,
+and it will catch malformed queries at compile time. 
 
 ```
 error[E0271]: type mismatch resolving `<schema::podcast_feed_locations::table as diesel::query_source::AppearsInFromClause<schema::podcast_feed_locations::table>>::Count == diesel::query_source::Never`
@@ -73,6 +72,15 @@ error[E0271]: type mismatch resolving `<schema::podcast_feed_locations::table as
    = note: expected type `diesel::query_source::Once`
               found type `diesel::query_source::Never`
 ```
+
+I call this "Haskellification" because while to some
+Haskell is the most beautiful language ever created, to
+most it's an arcane, unapproachable monster. Like it or
+not, it's not how you should ever want your new language to
+turn out because a barrier to entry higher than Everest is
+an absolute guarantee that history will remember it as
+intellectual curiosity used by no more than a few
+eccentrics instead of a mainstream practical tool.
 
 ## Concurrency (#concurrency)
 
@@ -97,3 +105,5 @@ Even if it's possible to make a Rust package that's
 theoretically faster than a Go package, it doesn't matter.
 The ergonomics of Go's approach are better for productivity
 and comprehensive by a thousand-fold.
+
+[diesel]: 

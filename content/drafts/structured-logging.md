@@ -1,5 +1,5 @@
 ---
-title: Revisiting Structure Logging
+title: Structured Logging Revisited
 published_at: 2017-12-29T21:36:51Z
 location: Calgary
 hook: TODO
@@ -7,7 +7,8 @@ hook: TODO
 
 Structured logging looks something like this:
 
-TODO: Image
+    at=info method=GET path=/ host=mutelight.org fwd="124.133.52.161"
+      dyno=web.2 connect=4ms service=8ms status=200 bytes=1653
 
 The basic idea is keep logs useful to humans, but also to
 preserve the semantic properties of data you're emitting so
