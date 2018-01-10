@@ -97,5 +97,3 @@ Even if it's possible to make a Rust package that's
 theoretically faster than a Go package, it doesn't matter.
 The ergonomics of Go's approach are better for productivity
 and comprehensive by a thousand-fold.
-
-[badtypes]: https://todo
