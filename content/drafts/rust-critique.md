@@ -63,6 +63,17 @@ an absolute guarantee that history will remember it as
 intellectual curiosity used by no more than a few
 eccentrics instead of a mainstream practical tool.
 
+```
+error[E0271]: type mismatch resolving `<schema::podcast_feed_locations::table as diesel::query_source::AppearsInFromClause<schema::podcast_feed_locations::table>>::Count == diesel::query_source::Never`
+  --> src/mediators/podcast_reingester.rs:38:18
+   |
+38 |                 .load::<Vec<(i64, String, String)>>(
+   |                  ^^^^ expected struct `diesel::query_source::Once`, found struct `diesel::query_source::Never`
+   |
+   = note: expected type `diesel::query_source::Once`
+              found type `diesel::query_source::Never`
+```
+
 ## Haskell-ification of the documentation (#docs)
 
 The types are so sophisticated that you don't need any
