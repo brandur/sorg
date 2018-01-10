@@ -74,25 +74,6 @@ error[E0271]: type mismatch resolving `<schema::podcast_feed_locations::table as
               found type `diesel::query_source::Never`
 ```
 
-## Haskell-ification of the documentation (#docs)
-
-The types are so sophisticated that you don't need any
-documentation beyond a function signature, right? Wrong.
-Absolutely, definitively, wrong.
-
-Rust has introduced some nice features like runnable code
-snippets in documentation and a built-in `examples/`
-directory, but the documentation for most of the standard
-library and most packages is still terse and unfeeling.
-
-[Staring at a page full of complex type glyphs][badtypes]
-is enough to make anyone run the other way in fear.
-
-I didn't use even one package that didn't require that I
-clone the source code and start searching through its tests
-to try and figure out how to use it. This goes for even
-headliner packages like Diesel, Juniper, and Hyper.
-
 ## Concurrency (#concurrency)
 
 In my opinion Rust's concurrency story is the number one
