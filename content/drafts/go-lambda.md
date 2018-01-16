@@ -61,6 +61,8 @@ initial availability. Given that Lambda [will be four years
 old this year][history], it seems unlikely that Amazon will
 be able to address this deficiency anytime soon.
 
+!fig src="/assets/go-lambda/mountain.jpg" caption="Go 1.x's longevity is so impressive that it feels like a part of the landscape."
+
 ## The remarkable longevity of 1.x (#longevity)
 
 That brings us back to Go. Note above that the Go runtime
@@ -149,7 +151,7 @@ binary. (This comes with the caveat that `net/rpc` package
 that [`aws-lambda-go` uses for the entrypoint][entrypoint]
 remains stable across versions. This is reasonably likely
 though given that the package has been [frozen][frozen] for
-some time.)
+more than a year.)
 
 ## Stability as a feature (#stability)
 
