@@ -158,13 +158,18 @@ more than a year.)
 It's rare to write software and not have it come back to
 haunt you in a few year's time as it needs to be fixed and
 upgraded. Go is one of the only places in the software
-world that you'll find anything akin to stability.
+world that you'll find anything akin to long-term
+stability. Although there has been some speculation as to
+[what Go 2.0 might look like][go2], there are still no
+concrete plans for any major breaking changes, and that's a
+feature.
 
 [announce]: https://aws.amazon.com/blogs/compute/announcing-go-support-for-aws-lambda/
 [dep]: https://github.com/golang/dep
 [entrypoint]: https://github.com/aws/aws-lambda-go/blob/master/lambda/entry.go
 [frozen]: https://go-review.googlesource.com/c/go/+/32112
 [go1]: https://golang.org/doc/go1compat
+[go2]: https://blog.golang.org/toward-go2
 [guide]: https://aws.amazon.com/blogs/compute/announcing-go-support-for-aws-lambda/
 [history]: https://docs.aws.amazon.com/lambda/latest/dg/history.html
 [package]: https://docs.aws.amazon.com/lambda/latest/dg/lambda-go-how-to-create-deployment-package.html
