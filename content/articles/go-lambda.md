@@ -5,6 +5,7 @@ location: San Francisco
 published_at: 2018-01-17T16:31:34Z
 hook: Why Go's stability and simple deployments is a
   particularly good fit for a serverless environment.
+hn_link: https://news.ycombinator.com/item?id=16169592
 ---
 
 A few days ago in a move foreshadowed by a hint at Amazons'
