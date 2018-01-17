@@ -166,6 +166,15 @@ More recently there has been some speculation as to [what
 Go 2.0 might look like][go2], there are still no concrete
 plans for any major breaking changes, and that's a feature.
 
+Along with the languages normal strengths -- incredible
+runtime speed, an amazing concurrency story, a great
+batteries-included standard library, and the fastest
+edit-compile-debug loop in the business -- Go's stability
+and ease of deployment is going to make it a tremendous
+addition to the Lambda platform. I'd even go so far as to
+say that you might want to consider not writing another
+serverless function in anything else.
+
 [1] This comes with the caveat that `net/rpc` package that
 [`aws-lambda-go` uses for the entrypoint][entrypoint]
 remains stable across versions. This is reasonably likely
