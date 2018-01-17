@@ -1,8 +1,10 @@
 ---
-title: "Go on Lambda: A Perfect Match For Serverless"
+title: "Speed and Stability: Why Go is a Great Fit for
+  Lambda"
 location: San Francisco
-published_at: 2018-01-16T16:57:55Z
-hook: TODO
+published_at: 2018-01-17T16:31:34Z
+hook: Why Go's stability and simple deployments is a
+  particularly good fit for a serverless environment.
 ---
 
 A few days ago in a move foreshadowed by a hint at Amazons'
