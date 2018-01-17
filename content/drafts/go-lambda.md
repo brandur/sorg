@@ -1,5 +1,5 @@
 ---
-title: "Go On Lambda: A Perfect Match For Serverless"
+title: "Go on Lambda: A Perfect Match For Serverless"
 location: San Francisco
 published_at: 2018-01-16T16:57:55Z
 hook: TODO
