@@ -21,7 +21,7 @@ a new Lambda function by selecting "Go 1.x" as a runtime.
 !fig src="/assets/go-lambda/create-function.png" caption="Prompt for creating a new function on Lambda."
 
 Go fans around the world are undoubtedly celebrating the
-move, but Gopher or not, this is a big step forward for
+addition, but Gopher or not, this is a big step forward for
 everyone. Go may have its share of problems, but it has a
 few properties that make it an absolutely ideal fit for a
 serverless environment like Lambda.
@@ -59,8 +59,8 @@ These holes tell us something else about Lambda: new
 runtimes are non-trivial to create, run, and/or maintain,
 so updated versions often lag far behind their public
 availability. Given that Lambda [will be four years old
-this year][history], it doesn't seem likely that Amazon is
-going to address this deficiency anytime soon.
+this year][history], it doesn't seem likely that Amazon
+will be able to to address this deficiency anytime soon.
 
 !fig src="/assets/go-lambda/mountain.jpg" caption="Go 1.x's longevity is so impressive that it feels like a part of the landscape."
 
@@ -106,12 +106,12 @@ should stay working for all future versions of 1.x:
 > The APIs may grow, acquiring new packages and features,
 > but not in a way that breaks existing Go 1 code.
 
-This might sound like normal [semver][semver], but semver
-only dictates what to do in the event of a breaking change.
-It doesn't say anything about frequency of change, or
-committing to not making breaking changes. Go's track
-record in this area puts it provably ahead of just about
-any other project.
+This might sound like normal [semantic versioning][semver]
+(semver), but semver only dictates what to do in the event
+of a breaking change. It doesn't say anything about
+frequency of change, or committing to not making breaking
+changes. Go's proven track record in this area puts it well
+ahead ahead of just about any other project.
 
 That brings us back to Lambda. If we look back at our list
 of runtimes, the supported versions across languages might
