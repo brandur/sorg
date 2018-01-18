@@ -163,7 +163,7 @@ of Go [1].
 
 It's rare to write software and not have it come back to
 haunt you in a few year's time as it needs to be fixed and
-upgraded. In an craft generally akin to the shifting sands
+upgraded. In a craft generally akin to the shifting sands
 in a whirling windstorm, Go is a rare oasis of stability.
 More recently there has been some speculation as to [what
 Go 2.0 might look like][go2], there are still no concrete
