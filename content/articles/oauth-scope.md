@@ -176,7 +176,7 @@ what was released yesterday:
   `read-protected` and `write`.
 * `global`: Global access encompassing all other scope.
 
-These strings map to more a much more granular set of permissions in the
+These strings map to a much more granular set of permissions in the
 backend, which will allow us to continue evolving the public interface as need
 be.
 
