@@ -104,7 +104,81 @@ hard lessons of predecessors.
 
 ## Consensus on interpreted languages (#interpreted-languages)
 
+So that brings us interpreted languages, which are still
+huge, and show no signs of shrinking. I'm going to
+generalize by putting a lot of languages like PHP, Python,
+Ruby, Perl, and JavaScript into one bucket, but many of
+them tend to share many of the same properties like dynamic
+typing, poor enforcement of modularity, poor parallelism,
+and few checks beyond the ones that you implement yourself.
+
+When it comes to whether interpreted languages are
+desirable, there's still no wide consensus. Lots of people
+still like them, while many others feel that they're too
+fundamentally unsafe (myself included). That leaves many of
+them as plausible options for industry newcomers.
+
+My theory is that the biggest reason for the contention is
+that interpreted languages really are better for tiny
+projects. I'm reasonably proficient with both Ruby and Go,
+but I can write a small program in Ruby about 10x faster
+than Go because there's less boilerplate and syntax. And as
+long as you can fit the entire program's context in your
+head, refactoring is a lot faster too.
+
+Interpreted languages don't have a problem with
+productivity or syntax, they have a problem with *scaled
+engineering*. As your LOCs increase, you eventually hit a
+point where your progress is steeply diminished because you
+can't be sure of anything anymore. Code paths become
+increasingly poorly understood, and unforeseen side effects
+become more common as modules are ever more deeply
+intertwined. Working on a large interpreted codebase starts
+to feel like a game of whack-a-mole: you strike down one
+bug only to have three more pop up from unintended side
+effects.
+
+TODO
+
+### Axioms (#axioms)
+
+1. Close to metal. No managers.
+2. Large codebase.
+3. Breadth -- need experience with different languages
+   where these problems don't exist.
+4. Honesty in diagnosing root causes.
+
+### Bad gems (#bad-gems)
+
+Gem interface problems.
+
+1. Silly of us.
+2. Silly of them.
+3. Silly of Ruby.
+
+Of these Ruby's mistake is the most unforgiveable. Better
+guide rails would save a million future mistakes.
+
 ## Technology ebbs and flows (#ebbs-and-flows)
+
+Phases:
+
+1. Lots of ideas near the beginning.
+2. Java/C# (Java '95, C# 2000).
+3. Interpreted language push (Ruby '95, Python '91, Perl
+   '87, JavaScript '95, PHP '95)
+4. Return to reason (Go 2009, Rust 2010, Swift 2014).
+
+The new generation of languages are very different, but
+there are some common themes:
+
+1. Non-dynamic types.
+2. Explicitness.
+3. A compiler.
+4. Runtime speed.
+5. Working concurrency.
+6. OO -- the good parts.
+7. Strongly enforced module boundaries.
 
 [1] I'm going to disproportionately pick on Ruby throughout
 this piece -- not because it's that much worse, but because
