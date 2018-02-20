@@ -14,8 +14,8 @@ SELECT "column", type, distkey, sortkey
 FROM pg_table_def
 WHERE schemaname = 'logs' AND
     tablename = 'bapi' 
-AND distkey = true
-    OR sortkey <> 0;
+AND (distkey = true
+    OR sortkey <> 0);
 
  column  |            type             | distkey | sortkey
 ---------+-----------------------------+---------+---------
