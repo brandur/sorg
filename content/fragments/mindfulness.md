@@ -19,7 +19,7 @@ _next time_ I'd be able to sit in an Onsen. It was hard to
 imagine a more pathological example of cognitive
 degeneracy.
 
-I'd like to say that this kind of thinking is an uncommon,
+I'd like to say that this kind of thinking is uncommon,
 but it's not. Like many people, most of the time my mind is
 a frothing cauldron of erratic thoughts -- constantly
 boiling over and rarely focused on anything useful. Some
