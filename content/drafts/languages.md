@@ -13,47 +13,44 @@ carpenter who blames his shoddy tools" attitude to
 rationalize it. It didn't matter if the new stack was PHP
 -- I'd still be productive.
 
-The catastrophe's proportions were greater than I could've
-ever imagined. Some of that was from prevalent bad coding
-practices, but a healthy part of it was PHP itself. For the
-first time I learnt that it was possible to have large
-swaths of code whose behavior _nobody_ understood. `$id` is
+The catastrophe's proportions were all-encompassing. Some
+of that was bad practice, but a healthy part of it was PHP
+itself. I learnt that it was possible to have large swaths
+of code whose behavior _nobody_ understood. `$id` is
 usually an integer, but maybe sometimes it's a string.
 Hopefully both paths are exercised by a test, but don't
-depend on it. Despite attempted hardening, production
-mistakes were a daily occurrence. Non-trivial refactoring
-was impossible. The contrast between this state of affairs
-and C#, where I used to have my IDE change thousands of
-lines for me and have the operation be problem-free _every_
-time, was sharp. I left after six months.
+depend on it. Production mistakes (and reverts) were a
+daily occurrence. Non-trivial refactoring was impossible.
+The contrast between this and C#, where I used to have my
+IDE change thousands of lines for me and have the operation
+be problem-free _every_ time, was sharp. It wasn't long
+before I left for greener pastures.
 
-To this day there's a common trope in the community that
-all programming languages are roughly equal. By moving from
-one to another, you may ditch problems associated with the
-former, but you'll end up with an equal number of new
-problems created by the new language. In the end, it's a
-wash.
+Although PHP has a special place in near-universal
+abhorrence, to this day there's a common trope in the
+community that most programming languages are more-or-less
+equal. By moving from one to another, you may ditch
+problems associated with the former, but you'll end up with
+an equal number of new problems created by the new
+language. In the end, it's a wash.
 
-Regardless of how you feel about that, try to take a step
-back and consider for a moment just how unlikely it is that
-this is true. For the last 50 years of language
+Consider how unlikely this is. Given 50 years of language
 development, all of them ended up with the same number of
 mistakes? Newer languages didn't learn anything from their
 predecessors?
 
-_Of course_ not all programming languages are equal. It's
-fair to say that there is no "best" language -- strengths
-and weaknesses are subjective so the error bars when trying
-to compare them are huge, but in at least some cases when
-all the pros and cons are tallied up, some languages excel
-over others by wide margins.
+_Of course_ programming languages aren't equal. There may
+be no "best" languages -- strengths and weaknesses are
+subjective so the error bars when trying to compare them
+are huge, but when everything's tallied up, some languages
+excel over others by wide margins.
 
 ## Language creators learn (#creators-learn)
 
-In fact, every new language has had considerable learning
-from everything that came before it. As a basic example,
-many languages realized from C that it might be a good idea
-to include higher-level, safer memory management primitives
+In fact, every new language learned considerably from
+everything that came before it. As a basic example, many
+languages realized from C that it might be a good idea to
+include higher-level, safer memory management primitives
 after it was obvious that every project was implementing
 its own memory allocation abstractions, and the use of
 `strcpy` (vs. `strncopy` or the like) on unsafe buffers was
@@ -102,29 +99,29 @@ supported and described in the [Rust book][rustbook]. None
 of this was devised in a vacuum -- it was inspired from the
 hard lessons of predecessors.
 
-## Consensus on interpreted languages (#interpreted-languages)
+## Interpreted languages (#interpreted-languages)
 
 So that brings us interpreted languages, which are still
 huge, and show no signs of shrinking. I'm going to
 generalize by putting a lot of languages like PHP, Python,
-Ruby, Perl, and JavaScript into one bucket, but many of
-them tend to share many of the same properties like dynamic
-typing, poor enforcement of modularity, poor parallelism,
-and few checks beyond the ones that you implement yourself.
+Ruby, Perl, and JavaScript in one bucket. Many of them
+share important properties like dynamic typing, poor
+enforcement of modularity, poor parallelism, and few checks
+prior to runtime.
 
 When it comes to whether interpreted languages are
-desirable, there's still no wide consensus. Lots of people
-still like them, while many others feel that they're too
-fundamentally unsafe (myself included). That leaves many of
-them as plausible options for industry newcomers.
+desirable, there's still no wide consensus. Although many
+people feel that they're fundamentally unsafe, lots of
+people still like them. That leaves many of them as
+plausible options for industry newcomers.
 
 My theory is that the biggest reason for the contention is
 that interpreted languages really are better for tiny
 projects. I'm reasonably proficient with both Ruby and Go,
 but I can write a small program in Ruby about 10x faster
-than Go because there's less boilerplate and syntax. And as
-long as you can fit the entire program's context in your
-head, refactoring is a lot faster too.
+because there's less boilerplate and syntax. As long as you
+can fit the entire program's context in your head,
+refactoring is faster too.
 
 Interpreted languages don't have a problem with
 productivity or syntax, they have a problem with *scaled
