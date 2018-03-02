@@ -41,7 +41,7 @@ encapsulation and lead to bugs. I found some of the ideas
 for middleware in Rust's web frameworks to be pretty good
 at counteracting this effect. Let's take a closer look.
 
-## A quick recap (#recap)
+## Recap: the middleware interface (#recap)
 
 A middleware is a module that gets a chance to perform some
 operation before an HTTP request and after it. Here's the
@@ -150,9 +150,9 @@ app = Rack::Builder.new do
   use RequestIDMiddleware
   run HelloWorldApp
 end
-```
 
-Rack::Server.start :app => app
+Rack::Server.start app: app
+```
 
 Running the program and making a request produces exactly
 the result that we'd expect:
@@ -252,6 +252,179 @@ only way to see dependencies is to grep for specific
 strings being set in `env`.
 
 ## Middleware modules and types in Rust (#rust)
+
+Dependencies are explicit based on the type system, and
+cross dependencies are impossible. Each middleware lives in
+a separate module, and the compiler won't allow modules to
+depend on each other.
+
+TODO
+
+``` rust
+mod middleware {
+    use actix_web;
+    use actix_web::{HttpRequest, HttpResponse};
+    use actix_web::middleware::Middleware as ActixMiddleware;
+    use actix_web::middleware::{Response, Started};
+    use common;
+    use slog::Logger;
+
+    pub mod log_initializer {
+        use middleware::*;
+
+        pub struct Middleware;
+
+        /// The extension registered by this middleware to the request to make
+        /// a `Logger `accessible.
+        pub struct Extension(pub Logger);
+
+        impl<S: common::State> ActixMiddleware<S> for Middleware {
+            fn start(
+                &self,
+                req: &mut HttpRequest<S>,
+            ) -> actix_web::Result<Started> {
+                let log = req.state().log().clone();
+                req.extensions().insert(Extension(log));
+                Ok(Started::Done)
+            }
+
+            fn response(
+                &self,
+                _req: &mut HttpRequest<S>,
+                resp: HttpResponse,
+            ) -> actix_web::Result<Response> {
+                Ok(Response::Done(resp))
+            }
+        }
+    }
+
+    pub mod request_id {
+        use middleware::*;
+        use uuid::Uuid;
+
+        pub struct Middleware;
+
+        /// The extension registered by this middleware to the request to make
+        /// a request ID accessible.
+        pub struct Extension(pub String);
+
+        impl<S: common::State> ActixMiddleware<S> for Middleware {
+            fn start(
+                &self,
+                req: &mut HttpRequest<S>,
+            ) -> actix_web::Result<Started> {
+                let request_id = Uuid::new_v4().simple().to_string();
+                req.extensions().insert(Extension(request_id.clone()));
+
+                let log = &req.extensions()
+                    .get::<log_initializer::Extension>()
+                    .unwrap()
+                    .0;
+
+                debug!(&log, "Generated request ID";
+                    "request_id" => request_id.as_str());
+
+                Ok(Started::Done)
+            }
+
+            fn response(
+                &self,
+                _req: &mut HttpRequest<S>,
+                resp: HttpResponse,
+            ) -> actix_web::Result<Response> {
+                Ok(Response::Done(resp))
+            }
+        }
+    }
+}
+```
+
+We also define a `State` trait and `StateImpl`
+implementation that will contain the program's root logger
+along with `main` which composes the application stack:
+
+``` rust
+mod common {
+    use slog::Logger;
+
+    pub trait State {
+        fn log(&self) -> &Logger;
+    }
+
+    pub struct StateImpl {
+        pub log: Logger,
+    }
+
+    impl State for StateImpl {
+        fn log(&self) -> &Logger {
+            &self.log
+        }
+    }
+}
+
+fn main() {
+    let sys = actix::System::new("middleware-rust");
+
+    let _addr = actix_web::HttpServer::new(|| {
+        actix_web::Application::with_state(common::StateImpl { log: log() })
+            .middleware(middleware::log_initializer::Middleware)
+            .middleware(middleware::request_id::Middleware)
+            .resource("/", |r| {
+                r.method(actix_web::Method::GET)
+                    .f(|_req| actix_web::httpcodes::HTTPOk)
+            })
+    }).bind("127.0.0.1:8080")
+        .expect("Can not bind to 127.0.0.1:8080")
+        .start();
+
+    println!("Starting http server: 127.0.0.1:8080");
+    let _ = sys.run();
+}
+```
+
+But what if we want to add the functionality that we did
+for Ruby above where the request ID gets included with
+every logged line of the request? To make that work we'll
+have to shift responsibilities: instead of making it the
+log middleware's job to find a request ID, we'll make it
+the request ID middleware's job to inject one. Here's a
+modified implementation of the request ID middleware:
+
+``` rust
+impl<S: common::State> ActixMiddleware<S> for Middleware {
+    fn start(
+        &self,
+        req: &mut HttpRequest<S>,
+    ) -> actix_web::Result<Started> {
+        let request_id = Uuid::new_v4().simple().to_string();
+        req.extensions().insert(Extension(request_id.clone()));
+
+        // Remove the request's original `Logger`
+        let log = req.extensions()
+            .remove::<log_initializer::Extension>()
+            .unwrap()
+            .0;
+
+        debug!(&log, "Generated request ID";
+            "request_id" => request_id.as_str());
+
+        // Insert a new `Logger` that includes the generated request ID
+        req.extensions().insert(log_initializer::Extension(log.new(
+            o!("request_id" => request_id),
+        )));
+
+        Ok(Started::Done)
+    }
+
+    fn response(
+        &self,
+        _req: &mut HttpRequest<S>,
+        resp: HttpResponse,
+    ) -> actix_web::Result<Response> {
+        Ok(Response::Done(resp))
+    }
+}
+```
 
 ## Safety-by-convention is not enough (#safety)
 
