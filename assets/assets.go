@@ -52,9 +52,12 @@ func CompileJavascripts(inPath, outPath string) error {
 		outFile.WriteString("/* " + javascriptInfo.Name() + " */\n\n")
 		outFile.WriteString("(function() {\n\n")
 
-		_, err = io.Copy(outFile, inFile)
-		if err != nil {
-			return err
+		// Ignore non-JS files in the directory (I have a README in there)
+		if strings.HasSuffix(javascriptInfo.Name(), ".js") {
+			_, err = io.Copy(outFile, inFile)
+			if err != nil {
+				return err
+			}
 		}
 
 		outFile.WriteString("\n\n")
