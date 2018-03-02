@@ -41,16 +41,220 @@ encapsulation and lead to bugs. I found some of the ideas
 for middleware in Rust's web frameworks to be pretty good
 at counteracting this effect. Let's take a closer look.
 
+## A quick recap (#recap)
+
+A middleware is a module that gets a chance to perform some
+operation before an HTTP request and after it. Here's the
+basic interface:
+
+``` ruby
+class MyMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    #
+    # request pre-processing here
+    #
+
+    status, headers, data = @app.call(env)
+
+    #
+    # request post-processing here
+    #
+
+    [status, headers, data]
+  end
+end
+```
+
+`app` is the application on which the middleware is
+installed, but it may also be a reference to an application
+that's already wrapped in another middleware. Middleware is
+nested as a stack so that any number of them can be used,
+each calling into the next component.
+
+Rack receives a request and invokes `call` on the top
+middleware of an app with the request's environment (which
+contains method, path, and headers among other things).
+Each middleware gets a chance to perform some arbitrary
+operation before it invokes `@app.call(env)`, which
+transfers control to the next middleware in the stack, and
+eventually the app itself. After the app responds, the
+middleware stack unwinds and each one gets a chance to
+modify the response before passing control back to its
+parent.
+
+A great example of a perfectly modular piece of middleware
+is [`Rack::Deflater`][deflater] which, among other things,
+will Gzip a response when a client has signaled that they
+support compression by sending an `Accept-Encoding` header.
+
+Note that we've looked at a _Ruby_ middleware interface,
+but the idea has spread to many languages and frameworks,
+and is implemented similarly elsewhere.
+
 ## The promiscuity of unchecked keys (#unchecked-keys)
 
-TODO
+A common pattern in middleware (and possibly undesirable,
+but still widespread), is to share information by injecting
+new data into a request `env`, usually under an
+application-specific key with a prefix like `app.*`. This
+is useful because it allows downstream components to use
+facilities provided by their parent middleware upstream.
 
-I work on a project that has ~50 middlewares and reordering
-them is perilous.
+For a simple example, consider these two middleware:
+
+* `LogInitializerMiddleware` that initializes a common
+  `Logger` to be used for the lifetime of a request.
+* `RequestIDMiddleware` that generates a [request
+  ID](/request-ids) to identify the request.
+
+Both store a key into `env`, and the downstream
+`RequestIDMiddleware` emits a debug log message with the
+token it's generated.
+
+``` ruby
+class LogInitializerMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    logger = Logger.new(STDOUT)
+    env['app.logger'] = logger
+    @app.call(env)
+  end
+end
+
+class RequestIDMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    request_id = SecureRandom.uuid
+    env['app.request_id'] = request_id
+    env['app.logger'].debug "Generated request ID: #{request_id}"
+    @app.call(env)
+  end
+end
+```
+
+And our composed app:
+
+``` ruby
+app = Rack::Builder.new do
+  use LogInitializerMiddleware
+  use RequestIDMiddleware
+  run HelloWorldApp
+end
+```
+
+Rack::Server.start :app => app
+
+Running the program and making a request produces exactly
+the result that we'd expect:
+
+```
+D, [2018-03-02T07:50:27.213372 #89779] DEBUG -- : Generated request ID: 0884859f-9fc2-4838-909b-6efd27e539c5
+```
+
+### Dependencies and cross dependencies (#cross-dependencies)
+
+Simple enough right? Our middlewares have dependencies, but
+the dependency graph is still directed and acyclic so that
+it's easy to reason about. Unfortunately for us though,
+dependencies have a nefarious tendency to become cross
+dependencies when there are no checks in place to ensure
+that they shouldn't.
+
+Say that we decided that we wanted to ensure that each
+request's ID gets prefixed to every log line that it
+produces, a perfectly rational thing to do. One way we
+might do this is to pass a formatter to our `Logger`:
+
+``` ruby
+class LogInitializerMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    logger = Logger.new(STDOUT)
+
+    # Make sure that request ID gets prefixed to every log line!
+    original_formatter = Logger::Formatter.new
+    logger.formatter = ->(severity, datetime, progname, msg) {
+      msg = "Request #{env['app.request_id']}: #{msg}"
+      original_formatter.call(severity, datetime, progname, msg)
+    }
+
+    env['app.logger'] = logger
+    @app.call(env)
+  end
+end
+
+class RequestIDMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    request_id = SecureRandom.uuid
+    env['app.request_id'] = request_id
+    env['app.logger'].debug "Generated request ID: #{request_id}"
+    @app.call(env)
+  end
+end
+```
+
+It might be a bit of a surprise that despite each
+middleware accessing keys that were set by the other, this
+code still works:
+
+```
+D, [2018-03-01T12:32:28.228791 #1747] DEBUG -- : Request 7bdd0e36-b667-490b-b107-b425f788ad15: Generated request ID: 7bdd0e36-b667-490b-b107-b425f788ad15
+```
+
+This is because our closure is capturing the entire `env`
+hash, so `app.request_id` is checked when a new log line is
+emitted instead of when the formatter was originally
+initialized.
+
+Even though it works, the cross-dependency still makes this
+code fragile because it's not obvious, not explicit, and
+the interpreter won't do anything to help reveal problems
+with it. Say another developer comes through and decides to
+optimize the original code a bit:
+
+``` ruby
+prefix = "Request #{env['app.request_id']}: "
+logger.formatter = ->(severity, datetime, progname, msg) {
+  msg = prefix + message
+  original_formatter.call(severity, datetime, progname, msg)
+}
+```
+
+It's now broken. `app.request_id` isn't yet available when
+the formatter is defined.
+
+If this seems overly simplistic, it's meant to be. Try to
+mentally scale up these two small and basic middleware into
+a stack of 50 big and complicated ones, each with its own
+implicit dependencies, and you'll have a better idea of
+what a real production stack looks like.
+
+This is roughly the number of middleware we're running, and
+simply reordering them has caused production incidents. The
+only way to see dependencies is to grep for specific
+strings being set in `env`.
 
 ## Middleware modules and types in Rust (#rust)
 
 ## Safety-by-convention is not enough (#safety)
 
+[deflater]: https://github.com/rack/rack/blob/master/lib/rack/deflater.rb
 [diesel]: https://github.com/diesel-rs/diesel
 [horrorshow]: https://github.com/Stebalien/horrorshow-rs
