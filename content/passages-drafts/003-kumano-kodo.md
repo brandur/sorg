@@ -44,6 +44,14 @@ Snowy Koya (first snow)
 
 ### An aside: The kotatsu (#kotatsu)
 
+> A kotatsu (炬燵) is a low, wooden table frame covered by
+> a futon, or heavy blanket, upon which a table top sits.
+> Underneath is a heat source, formerly a charcoal brazier
+> but now electric, often built into the table itself.[1]
+> Kotatsu are used almost exclusively in Japan, although
+> similar devices are used elsewhere: for example the
+> Spanish brasero or Iranian korsi.
+
 ## Yunomine Onsen (#yunomine)
 
 Greeted by Keiko's name on the side of the inn.
