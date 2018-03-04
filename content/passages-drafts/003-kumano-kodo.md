@@ -10,13 +10,37 @@ here][unsubscribe]. Thanks for reading!
 
 ## Tatami units (#tatamis)
 
+> In Japan, the size of a room is often measured by the
+> number of tatami mats (-畳 -jō), about 1.653 square
+> meters (for a standard (Nagoya) size tatami). 
+>
+> * Kyoto – within this area, tatami generally measure
+>   0.955 m by 1.91 m. Tatami of this size are referred to
+>   as Kyōma (京間) tatami.
+> * Nagoya – In this region generally measure 0.91 m by
+>   1.82 m, and are referred to as ainoma (合の間, lit.,
+>   "in-between" size) tatami.
+> * Tokyo – here tatami generally measure 0.88 m by 1.76 m.
+>   Tatami of this size are referred to as Edoma (江戸間)
+>   or Kantōma (関東間) tatami.
+>
+> Shops were traditionally designed to be ​5 1⁄2 mats,
+> and tea rooms are frequently ​4 1⁄2 mats.
+
+Small rooms. Unpack and pack bedding every morning and
+night.
+
 ## Mount Koya (#mount-koya)
+
+Normally a cable car up the mountain, but it was out of
+operation indefinitely due to damage from a recent typhoon.
+Instead, we took a bus up the mountain's winding roads.
 
 ![Mount Koya](/assets/passages/003-kumano-kodo/koya@2x.jpg)
 
-Snowy Koya
+Stay with Buddhist monks.  "Temple lodgings" (_shukubō_)
 
-Stay with monks
+Snowy Koya (first snow)
 
 ### An aside: The kotatsu (#kotatsu)
 
@@ -101,5 +125,9 @@ Greeted by Keiko's name on the side of the inn.
 > simple-looking
 
 ![Thousand Mile boots](/assets/passages/003-kumano-kodo/thousand-mile@2x.jpg)
+
+## Rust and the pursuit of reliable software (#rust)
+
+## Twin Peaks (#twin-peaks)
 
 [unsubscribe]: %unsubscribe_url%
