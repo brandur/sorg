@@ -17,8 +17,8 @@ hosts to offer low cost encryption to their users.
 In an attempt to unwind some of the mistakes that were made around security in
 the earlier ages of the Internet, browsers are starting to prod service providers
 in the right direction. For example, in the near future [Chrome will start
-shaming websites that aren't encrypted][chrome-shame] and [Firefox will start
-red flagging login forms that come in over HTTP][firefox-shame].
+shaming websites that aren't encrypted][chromeshame] and [Firefox will start
+red flagging login forms that come in over HTTP][firefoxshame].
 
 The good news is that we're now living in a golden age of secure connections.
 The price of CA-signed certificates is trending toward zero, and if you're a
@@ -74,7 +74,7 @@ long as you're running an operation that's smaller than Google.
 
 ### Let's encrypt (#lets-encrypt)
 
-**Website:** [letsencrypt.com][lets-encrypt]
+**Website:** [letsencrypt.com][letsencrypt]
 
 Let's Encrypt is free CA run by the ISRG (Internet Security Research Group)
 with the charter of providing free certificates in an open and transparent way
@@ -189,10 +189,10 @@ That's it! Now please go out and secure your web properties.
 [acm]: https://aws.amazon.com/certificate-manager/
 [acme]: https://github.com/ietf-wg-acme/acme/blob/master/draft-ietf-acme-acme.md
 [caniuse]: http://caniuse.com/#feat=sni
-[chrome-shame]: https://motherboard.vice.com/read/google-will-soon-shame-all-websites-that-are-unencrypted-chrome-https
+[chromeshame]: https://motherboard.vice.com/read/google-will-soon-shame-all-websites-that-are-unencrypted-chrome-https
 [cloudflare]: https://www.cloudflare.com/
-[firefox-shame]: https://hacks.mozilla.org/2016/01/login-forms-over-https-please/
-[lets-encrypt]: https://letsencrypt.org/
+[firefoxshame]: https://hacks.mozilla.org/2016/01/login-forms-over-https-please/
+[letsencrypt]: https://letsencrypt.org/
 [sni]: https://en.wikipedia.org/wiki/Server_Name_Indication
 [startcomwiki]: https://en.wikipedia.org/wiki/StartCom
 [startssl]: https://www.startssl.com/
