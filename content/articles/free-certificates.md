@@ -137,6 +137,13 @@ The bad:
 
 **Website:** [www.startssl.com][startssl]
 
+**Important update (2018/03/12):** I've left this section
+in place for historical reference, but StartSSL is no
+longer issuing certificates after a series of questionable
+practices led to their root certificates being revoked from
+Chrome and Firefox. You can read more about the sordid
+details [on Wikipedia][startcomwiki].
+
 Event though StartSSL is probably not what most people want to use to get
 certificates created these days, I'm still going to give them an honorable
 mention because they were _the original_ free issuer, and really helped to get
@@ -187,4 +194,5 @@ That's it! Now please go out and secure your web properties.
 [firefox-shame]: https://hacks.mozilla.org/2016/01/login-forms-over-https-please/
 [lets-encrypt]: https://letsencrypt.org/
 [sni]: https://en.wikipedia.org/wiki/Server_Name_Indication
+[startcomwiki]: https://en.wikipedia.org/wiki/StartCom
 [startssl]: https://www.startssl.com/
