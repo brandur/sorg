@@ -35,7 +35,7 @@ anymore, so come on, let's encrypt!
 
 ### CloudFlare (#cloudflare)
 
-**Website:** [https://www.cloudflare.com/][cloudflare]
+**Website:** [www.cloudflare.com][cloudflare]
 
 Although CloudFlare is largely known for being a CDN, they've been more quietly
 offering a great certificate-issuing and TLS terminating service for some time
@@ -74,7 +74,7 @@ long as you're running an operation that's smaller than Google.
 
 ### Let's encrypt (#lets-encrypt)
 
-**Website:** [https://letsencrypt.org/][lets-encrypt]
+**Website:** [letsencrypt.com][lets-encrypt]
 
 Let's Encrypt is free CA run by the ISRG (Internet Security Research Group)
 with the charter of providing free certificates in an open and transparent way
@@ -106,7 +106,7 @@ The bad:
 
 ### AWS certificate manager (#acm)
 
-**Website:** [https://aws.amazon.com/certificate-manager/][acm]
+**Website:** [aws.amazon.com/certificate-manager][acm]
 
 A brand new entrant is AWS Certificate Manager (ACM), which finally gives us
 the missing link for building secure services on Amazon. ACM is AWS-only, but
@@ -135,7 +135,7 @@ The bad:
 
 ### StartSSL (#startssl)
 
-**Website:** [https://www.startssl.com/][startssl]
+**Website:** [www.startssl.com][startssl]
 
 Event though StartSSL is probably not what most people want to use to get
 certificates created these days, I'm still going to give them an honorable
@@ -185,6 +185,6 @@ That's it! Now please go out and secure your web properties.
 [chrome-shame]: https://motherboard.vice.com/read/google-will-soon-shame-all-websites-that-are-unencrypted-chrome-https
 [cloudflare]: https://www.cloudflare.com/
 [firefox-shame]: https://hacks.mozilla.org/2016/01/login-forms-over-https-please/
-[lets-encrypt]: (https://letsencrypt.org/)
+[lets-encrypt]: https://letsencrypt.org/
 [sni]: https://en.wikipedia.org/wiki/Server_Name_Indication
 [startssl]: https://www.startssl.com/
