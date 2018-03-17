@@ -72,9 +72,11 @@ understand.
 Similarly, those will leave will find that the level of
 customization will mean that little of what they learned is
 transferable. Those unlucky enough for it to have been
-their first job out of college might find themselves with a
-poor grasp of the underlying fundamentals because they've
-been so far abstracted away from them for so long.
+their first job out of college might find themselves a
+little like the Eloi -- they're familiar with how to use
+their local tools, but have a poor grasp of the underlying
+fundamentals because they've been so far abstracted away
+from them for so long.
 
 ---
 
