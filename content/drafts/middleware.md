@@ -426,6 +426,12 @@ impl<S: common::State> ActixMiddleware<S> for Middleware {
 }
 ```
 
+If `log_initializer` wants to control how other modules
+manipulate it, it can do so by modifying the visibility of
+fields on its `Extension` type. It could restrict
+modifications totally, or mandate that they happen only
+through a set of public functions that it offers.
+
 ## Safety-by-convention is not enough (#safety)
 
 [deflater]: https://github.com/rack/rack/blob/master/lib/rack/deflater.rb
