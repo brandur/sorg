@@ -5,6 +5,14 @@ published_at: 2017-12-24T06:57:39Z
 
 ![The Kumano Kodo](/assets/passages/003-kumano-kodo/shining-light@2x.jpg)
 
+> The Kumano Kodō (熊野古道) is a series of ancient
+> pilgrimage routes that crisscross the Kii Hantō, the
+> largest Peninsula of Japan. These sacred trails were and
+> are used for the pilgrimage to the sacred site "Kumano
+> Sanzan" (熊野三山) or the Three Grand Shrines of Kumano:
+> Kumano Hongū Taisha (熊野本宮大社), Kumano Nachi Taisha
+> (熊野那智大社) and Kumano Hayatama Taisha (熊野速玉大社).
+
 As usual, you can unsubscribe instantly [by clicking right
 here][unsubscribe]. Thanks for reading!
 
@@ -53,6 +61,13 @@ Snowy Koya (first snow)
 > Spanish brasero or Iranian korsi.
 
 ## Yunomine Onsen (#yunomine)
+
+> Yunomine is a quaint little collection of inns tucked
+> into a small valley deep in the heart of the sacred
+> mountains of Kumano. The waters here are said to change
+> color seven times over the course of a day. Yunomine
+> Onsen was discovered about 1,800 years ago, and it is
+> thought to be one of the oldest hot springs in Japan.
 
 Greeted by Keiko's name on the side of the inn.
 
