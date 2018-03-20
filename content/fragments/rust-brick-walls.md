@@ -21,7 +21,7 @@ which lets you make your through. Often that discovery is a
 eureka moment -- it felt impossible only hours before.
 
 But eventually you find your way into the clear. The walls
-get smaller and you find your way passed more easily. At
+get smaller and you navigate passed them more easily. At
 some point you might gain so much mechanical dexterity that
 you find yourself in an open field -- you know the language
 and its tooling so well that there's practically nothing
