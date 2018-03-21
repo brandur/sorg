@@ -1,5 +1,5 @@
 ---
-title: Implicit Behavior
+title: Implicit behavior
 published_at: 2016-08-04T19:37:47Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: Ruby Testing
+title: Ruby testing
 published_at: 2016-10-19T01:45:15Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

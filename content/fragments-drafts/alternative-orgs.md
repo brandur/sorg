@@ -1,5 +1,5 @@
 ---
-title: Alternative Organizations
+title: Alternative organizations
 published_at: 2017-05-10T23:55:03Z
 hook: TODO
 ---

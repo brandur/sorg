@@ -1,5 +1,5 @@
 ---
-title: Stripe Webhook Signatures & DX
+title: Stripe webhook signatures & DX
 published_at: 2017-05-10T02:59:44Z
 hook: TODO
 ---

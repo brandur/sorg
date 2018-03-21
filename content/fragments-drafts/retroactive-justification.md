@@ -1,5 +1,5 @@
 ---
-title: Retroactive Justification & Skepticism
+title: Retroactive justification & skepticism
 published_at: 2016-10-16T21:33:13Z
 hook: Be wary of anyone hawking technology -- there's snake oil around every
   corner.
