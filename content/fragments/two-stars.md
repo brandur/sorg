@@ -1,5 +1,5 @@
 ---
-title: Two Stars
+title: Two stars
 published_at: 2014-06-11T15:04:13Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

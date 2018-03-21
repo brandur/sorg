@@ -1,5 +1,5 @@
 ---
-title: Calorie Counting
+title: Calorie counting
 published_at: 2016-06-07T16:06:39Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

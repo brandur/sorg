@@ -1,5 +1,5 @@
 ---
-title: Turning Points
+title: Turning points
 published_at: 2016-01-20T08:53:16Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

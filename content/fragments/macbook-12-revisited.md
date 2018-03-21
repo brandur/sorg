@@ -1,5 +1,5 @@
 ---
-title: The 12" MacBook Revisited
+title: The 12" MacBook revisited
 published_at: 2015-06-14T04:33:27Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

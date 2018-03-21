@@ -1,5 +1,5 @@
 ---
-title: Asturias Check-in
+title: Asturias check-in
 published_at: 2016-07-25T15:17:20Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

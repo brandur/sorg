@@ -1,5 +1,5 @@
 ---
-title: "Shopify Scripts, MRuby, and the $500,000 Release"
+title: "Shopify scripts, MRuby, and the $500,000 release"
 published_at: 2017-04-07T15:39:30Z
 location: San Francisco
 hook: A good story about technological optimistic and

@@ -1,5 +1,5 @@
 ---
-title: "Unsubscribe: The Noisy Death of Email Marketing"
+title: "Unsubscribe: The noisy death of email marketing"
 published_at: 2017-08-27T16:26:50Z
 hook: How increasing volume and diminishingly quality will
   lead to the irrelevance of the email marketing industry.

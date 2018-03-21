@@ -1,5 +1,5 @@
 ---
-title: "Changing a Universal Constant: How 280-character Tweets Break an API"
+title: "Changing a universal constant: how 280-character tweets break an API"
 published_at: 2017-10-17T17:10:01Z
 hook: Even changing the length of a field is a
   backwards-incompatible change if it's deeply entrenched.

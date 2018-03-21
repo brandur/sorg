@@ -1,5 +1,5 @@
 ---
-title: The City That Tried to Buy Itself
+title: The city that tried to buy itself
 published_at: 2017-09-11T05:19:56Z
 hook: Thoughts on governments protecting tenants by buying
   buildings and raging against the law of supply and

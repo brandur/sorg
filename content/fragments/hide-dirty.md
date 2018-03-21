@@ -1,5 +1,5 @@
 ---
-title: Fixing a Slow Git $PS1 Prompt
+title: Fixing a slow git $PS1 prompt
 published_at: 2016-11-17T04:42:17Z
 hook: A simple trick to measurably improve prompt performance in a large Git
   repository.

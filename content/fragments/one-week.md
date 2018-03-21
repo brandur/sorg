@@ -1,5 +1,5 @@
 ---
-title: One Week of Nutritional Rigor
+title: One week of nutritional rigor
 published_at: 2016-06-13T16:02:34Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

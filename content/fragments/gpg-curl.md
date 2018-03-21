@@ -1,5 +1,5 @@
 ---
-title: GPG + Curl
+title: GPG + cURL
 published_at: 2014-11-10T20:14:35Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

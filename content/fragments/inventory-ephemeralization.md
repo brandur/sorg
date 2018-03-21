@@ -1,5 +1,5 @@
 ---
-title: Inventory Ephemeralization
+title: Inventory ephemeralization
 published_at: 2015-01-03T22:56:24Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: Testing a Kafka Connection
+title: Testing a Kafka connection
 published_at: 2016-02-10T17:54:12Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

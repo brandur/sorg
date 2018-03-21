@@ -1,5 +1,5 @@
 ---
-title: 2015 Resolutions (Update)
+title: 2015 resolutions (update)
 published_at: 2015-10-18T19:28:34Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

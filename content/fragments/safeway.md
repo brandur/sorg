@@ -1,5 +1,5 @@
 ---
-title: Safeway Justice
+title: Safeway justice
 published_at: 2015-10-18T19:51:33Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

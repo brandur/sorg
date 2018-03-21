@@ -1,5 +1,5 @@
 ---
-title: Burn Parties
+title: Burn parties
 published_at: 2016-01-30T04:03:01Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: The Cost of Manga
+title: The cost of manga
 published_at: 2016-08-08T16:17:09Z
 hook: "At retail prices, catching up on One Piece would cost $820, and Fairy Tail $550. How would you get started without a library?"
 ---

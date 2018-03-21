@@ -1,6 +1,6 @@
 ---
-title: "Depickling, Gadgets, and Chains: The Class of
-  Exploit That Unraveled Equifax"
+title: "Depickling, gadgets, and chains: The class of
+  exploit that unraveled Equifax"
 published_at: 2017-09-10T19:42:06Z
 hook: How unsafe deserialization leads to arbitrary code
   execution.

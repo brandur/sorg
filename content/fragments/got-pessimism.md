@@ -1,5 +1,5 @@
 ---
-title: Game of Thrones Pessimism
+title: Game of Thrones pessimism
 published_at: 2016-01-03T00:49:07Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

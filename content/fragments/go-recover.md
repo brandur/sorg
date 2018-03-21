@@ -1,5 +1,5 @@
 ---
-title: Global Recovery in Go With Defer
+title: Global recovery in Go with defer
 published_at: 2014-09-21T17:53:09Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: Legacy Projects & the Maintainer
+title: Legacy projects & the maintainer
 published_at: 2015-08-14T05:27:58Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

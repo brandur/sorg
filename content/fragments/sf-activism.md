@@ -1,5 +1,5 @@
 ---
-title: SF Housing and Activism
+title: SF housing and activism
 published_at: 2015-12-30T18:07:41Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: On Brevity
+title: On brevity
 published_at: 2016-04-28T16:22:06Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: Life Without Mediators
+title: Life without mediators
 published_at: 2016-04-27T16:11:28Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

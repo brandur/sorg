@@ -1,5 +1,5 @@
 ---
-title: Journaling (Revisited)
+title: Journaling (revisited)
 published_at: 2017-01-10T17:49:20Z
 hook: Six months and 85,000 words later.
 ---

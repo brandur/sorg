@@ -1,5 +1,5 @@
 ---
-title: Sharing With iCloud Drive and iBooks
+title: Sharing with iCloud Drive and iBooks
 published_at: 2017-04-01T16:24:18Z
 hook: Using iCloud Drive and iBooks to synchronize books
   and PDFs between all your devices.

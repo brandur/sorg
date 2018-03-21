@@ -1,5 +1,5 @@
 ---
-title: The Bear
+title: The bear
 published_at: 2016-01-30T16:02:10Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

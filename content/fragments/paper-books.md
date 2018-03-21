@@ -1,5 +1,5 @@
 ---
-title: Paper Books
+title: Paper books
 published_at: 2015-02-15T04:23:45Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

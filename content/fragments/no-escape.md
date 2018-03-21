@@ -1,5 +1,5 @@
 ---
-title: No Escape
+title: No escape
 published_at: 2016-11-19T04:36:05Z
 hook: Curbing the use of the Escape key in Vim.
 ---

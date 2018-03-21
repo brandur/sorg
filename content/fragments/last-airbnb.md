@@ -1,5 +1,5 @@
 ---
-title: The Last AirBnB
+title: The last AirBnB
 published_at: 2016-12-13T16:44:54Z
 hook: Springtime, Zweckentfremdungsverbot, and the end of AirBnB rentals in
   Berlin.

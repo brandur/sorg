@@ -1,5 +1,5 @@
 ---
-title: Understand Deeply
+title: Understand deeply
 published_at: 2017-01-18T16:03:01Z
 hook: Aim to be an engineer and not just a user by learning
   in depth.

@@ -1,5 +1,5 @@
 ---
-title: Timing the Guitar
+title: Timing the guitar
 published_at: 2016-04-05T02:26:11Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: Week Three
+title: Week three
 published_at: 2016-06-27T17:07:50Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

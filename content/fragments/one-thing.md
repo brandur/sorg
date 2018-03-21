@@ -1,5 +1,5 @@
 ---
-title: Do One Thing and Do It Well?
+title: Do one thing and do it well?
 published_at: 2016-01-04T08:48:16Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

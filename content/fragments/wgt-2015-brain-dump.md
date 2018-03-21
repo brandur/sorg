@@ -1,5 +1,5 @@
 ---
-title: WGT 2015 Brain Dump
+title: WGT 2015 brain dump
 published_at: 2015-05-26T08:39:18Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

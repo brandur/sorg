@@ -1,5 +1,5 @@
 ---
-title: Heavy Complexity
+title: Heavy complexity
 published_at: 2016-01-25T06:12:05Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---
