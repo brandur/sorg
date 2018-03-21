@@ -1,5 +1,5 @@
 ---
-title: Google Engineering Principles
+title: Google engineering principles
 published_at: 2016-02-03T19:37:54Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

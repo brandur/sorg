@@ -1,5 +1,5 @@
 ---
-title: Safety Razors
+title: Safety razors
 published_at: 2016-01-10T04:59:20Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: All Wires
+title: All wires
 published_at: 2017-05-03T15:30:29Z
 hook: On removing moving parts in my home media setup.
 ---

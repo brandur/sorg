@@ -1,5 +1,5 @@
 ---
-title: Digital Natives
+title: Digital natives
 published_at: 2016-02-23T22:07:50Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

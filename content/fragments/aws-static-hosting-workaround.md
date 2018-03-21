@@ -1,5 +1,5 @@
 ---
-title: An AWS Static Hosting Workaround
+title: An AWS static hosting workaround
 published_at: 2016-01-05T17:49:42Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

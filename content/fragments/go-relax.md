@@ -1,5 +1,5 @@
 ---
-title: Go Relax
+title: Go relax
 published_at: 2014-06-28T20:16:22Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

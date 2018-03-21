@@ -1,5 +1,5 @@
 ---
-title: Not Hosted Here
+title: Not hosted here
 published_at: 2016-04-27T15:23:51Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

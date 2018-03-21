@@ -1,5 +1,5 @@
 ---
-title: OSX and Entropy
+title: OSX and entropy
 published_at: 2016-07-31T17:39:44Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

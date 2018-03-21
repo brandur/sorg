@@ -1,5 +1,5 @@
 ---
-title: Starbucks Growth
+title: Starbucks growth
 published_at: 2015-12-07T17:34:10Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

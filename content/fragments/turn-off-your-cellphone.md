@@ -1,5 +1,5 @@
 ---
-title: Turn Off Your Cellphone
+title: Turn off your cellphone
 published_at: 2016-12-06T04:49:16Z
 hook: On instant gratification, communication interrupts, and smartphones.
 ---

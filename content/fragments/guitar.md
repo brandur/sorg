@@ -1,5 +1,5 @@
 ---
-title: The Guitar
+title: The guitar
 published_at: 2015-06-14T01:32:26Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

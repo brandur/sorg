@@ -1,5 +1,5 @@
 ---
-title: _Do_ Debug
+title: _Do_ debug
 published_at: 2016-06-23T03:31:58Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

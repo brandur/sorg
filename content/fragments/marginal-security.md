@@ -1,5 +1,5 @@
 ---
-title: Marginal Security
+title: Marginal security
 published_at: 2017-01-27T17:35:36Z
 hook: Your servers are only perfectly secure when they're
   buried at the bottom of a mineshaft without network

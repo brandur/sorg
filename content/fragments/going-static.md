@@ -1,5 +1,5 @@
 ---
-title: Going Static
+title: Going static
 published_at: 2016-07-14T00:31:55Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

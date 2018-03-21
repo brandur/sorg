@@ -1,5 +1,5 @@
 ---
-title: Hype Trains
+title: Hype trains
 published_at: 2016-07-20T14:22:09Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

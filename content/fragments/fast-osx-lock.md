@@ -1,5 +1,5 @@
 ---
-title: Fast OSX Screen Lock
+title: Fast OSX screen lock
 published_at: 2016-01-22T22:28:01Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

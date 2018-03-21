@@ -1,5 +1,5 @@
 ---
-title: A Glance at Kubernetes
+title: A glance at Kubernetes
 published_at: 2016-04-12T04:06:32Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: A Year of Counting Calories
+title: A year of counting calories
 published_at: 2017-07-19T16:07:35Z
 hook: 409 days of tracking all meals and exercise.
 ---

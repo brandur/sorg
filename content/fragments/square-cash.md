@@ -1,5 +1,5 @@
 ---
-title: Square Cash & E-mail as a Platform
+title: Square cash & e-mail as a platform
 published_at: 2014-05-10T13:18:19Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

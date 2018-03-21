@@ -1,5 +1,5 @@
 ---
-title: H&M Sportswear
+title: H&M sportswear
 published_at: 2016-06-28T15:37:38Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

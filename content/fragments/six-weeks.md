@@ -1,5 +1,5 @@
 ---
-title: Six Weeks
+title: Six weeks
 published_at: 2016-07-18T15:03:47Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

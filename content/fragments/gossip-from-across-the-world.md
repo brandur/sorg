@@ -1,5 +1,5 @@
 ---
-title: Gossip From Across the World
+title: Gossip from across the world
 published_at: 2014-05-16T09:39:48Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

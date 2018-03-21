@@ -1,5 +1,5 @@
 ---
-title: Insecurity By Instinct
+title: Insecurity by instinct
 published_at: 2015-12-25T01:09:44Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

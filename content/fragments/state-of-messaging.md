@@ -1,5 +1,5 @@
 ---
-title: The State of Messaging
+title: The state of messaging
 published_at: 2017-01-17T15:33:00Z
 hook: It's 2017, and the state of instant messaging is in
   worse shape than ever before.

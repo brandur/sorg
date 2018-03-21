@@ -1,5 +1,5 @@
 ---
-title: CloudFront Indexes
+title: CloudFront indexes
 published_at: 2016-07-18T16:34:33Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Swift: Day One"
+title: "Swift: day one"
 published_at: 2014-06-03T09:51:57Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

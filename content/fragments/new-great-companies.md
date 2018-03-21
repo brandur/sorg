@@ -1,5 +1,5 @@
 ---
-title: Where Are All the New Great Companies?
+title: Where are all the new great companies?
 published_at: 2016-07-29T15:32:06Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

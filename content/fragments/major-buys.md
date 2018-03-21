@@ -1,5 +1,5 @@
 ---
-title: Major Buys
+title: Major buys
 published_at: 2014-07-19T20:59:12Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

@@ -1,5 +1,5 @@
 ---
-title: The Zero-sum Treadmill
+title: The zero-sum treadmill
 published_at: 2016-06-15T18:15:50Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

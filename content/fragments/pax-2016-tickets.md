@@ -1,5 +1,5 @@
 ---
-title: PAX 2016 Ticket Royale
+title: PAX 2016 ticket royale
 published_at: 2016-06-08T06:55:02Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

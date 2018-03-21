@@ -1,5 +1,5 @@
 ---
-title: Showing Redshift Distkey & Sortkey
+title: Showing Redshift distkey & sortkey
 published_at: 2015-10-26T18:25:13Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

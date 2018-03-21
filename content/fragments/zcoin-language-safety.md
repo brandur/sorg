@@ -1,5 +1,5 @@
 ---
-title: Learning About Language Safety From Zcoin
+title: Learning about language safety from Zcoin
 published_at: 2017-03-07T18:11:03Z
 hook: Is it irresponsible to start projects in C/C++?
   Probably, yes.

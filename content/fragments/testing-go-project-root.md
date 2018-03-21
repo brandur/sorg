@@ -1,5 +1,5 @@
 ---
-title: Testing Go Packages From Project Root
+title: Testing Go packages from project root
 published_at: 2016-07-15T16:37:30Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---

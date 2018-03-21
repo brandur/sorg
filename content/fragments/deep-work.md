@@ -1,5 +1,5 @@
 ---
-title: Deep Work & Concentration
+title: Deep work & concentration
 published_at: 2016-10-19T13:28:39Z
 hook: On the modern age's ongoing assault on our concentration and thinking
   about problems in depth.
