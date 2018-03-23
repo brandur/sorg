@@ -48,7 +48,7 @@ a working program. I like the syntax and the tooling. I
 don't like how little time I spend solving the problems
 that are interesting to me. I estimate that I spend about
 5% of my time building new domain logic, and 95% of my time
-fighting the compiler over problems that are _appallingly_
+fighting the compiler over problems that are _appalling_
 in how uninteresting they are. Even something as simple as
 abstracting a new helper function often turns into a
 veritable odyssey because getting type annotations right
