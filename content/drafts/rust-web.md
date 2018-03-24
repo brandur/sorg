@@ -69,20 +69,25 @@ bit rough, I've yet to run into a single bug.
 ### Diesel and compile-time query checking (#diesel)
 
 I've been using [`diesel`][diesel] as an ORM to talk to
-Postgres. Using `diesel` has its ups and downs, but most
-importantly it's an ORM written by someone with a lot of
-past experience with building ORMs (in this case
-`ActiveModel`), and it's quite feature complete. A lot of
-great design decisions were baked right into it from the
-start, like foregoing a specialized DSL for migrations in
-favor of raw SQL, or supporting powerful Postgres-specific
-features like upsert or `jsonb` in the core library.
+Postgres. One of the most comforting things to know about
+`diesel` is that it's an ORM written by someone with a lot
+of past experience with building ORMs, having spent
+considerable time in the trenches with `ActiveModel`. Many
+of the pitfalls that traditionally plague ORMs have been
+avoided -- for example, `diesel` doesn't try to pretend
+that SQL dialects across every major database are the same,
+it correctly excludes a specialized DSL for migrations, and
+it doesn't do automagical connection management at the
+global level. It _does_ bake powerful Postgres features
+like upsert and `jsonb` right into the core library, and
+provides powerful safety mechanics wherever possible.
 
 Most of my database queries are written using `diesel`'s
 type-safe DSL. If I misreference a field, try to insert a
 tuple into the wrong table, or even produce an impossible
 join, the compiler tells me about it. A typical operation
-looks a little like this:
+looks a little like this (this is a Postgres `INSERT INTO
+... ON CONFLICT ...`, or "upsert"):
 
 ``` rust
 time_helpers::log_timed(&log.new(o!("step" => "upsert_episodes")), |_log| {
@@ -106,10 +111,10 @@ time_helpers::log_timed(&log.new(o!("step" => "upsert_episodes")), |_log| {
 ```
 
 Some more complex SQL is difficult to represent using the
-DSL, but luckily we have a great alternative. Rust's built
-in `include_str!` macro allows us to ingest a file's
-contents during compilation, and from there we can use
-`diesel` for parameter binding and execution:
+DSL, but luckily we have a great alternative in the form of
+Rust's built-in `include_str!` macro. It ingests a file's
+contents during compilation, and we can easily hand them
+off them to `diesel` for parameter binding and execution:
 
 ``` rust
 diesel::sql_query(include_str!("../sql/cleaner_directory_search.sql"))
@@ -119,8 +124,7 @@ diesel::sql_query(include_str!("../sql/cleaner_directory_search.sql"))
     .chain_err(|| "Error deleting directory search content batch")
 ```
 
-Meanwhile, the more elaborate query lives in a separate
-`.sql` file:
+The query lives in its own `.sql` file:
 
 ``` sql
 WITH expired AS (
@@ -143,21 +147,19 @@ FROM deleted_batch;
 
 We lose compile-time SQL checking with this approach, but
 we gain direct access to the raw power of SQL's semantics,
-and great syntax highlighting in your favorite editor (as
-it detects the `.sql` extension and highlights
-appropriately).
+and great syntax highlighting in your favorite editor.
 
-## An adequate model for concurrency (#concurreny-model)
+## A fast (but not the fastest) concurrency model (#concurreny-model)
 
-`actix-web` is powered by [`tokio`][tokio], Rust's fast
-event loop library [1]. When starting an HTTP server, it
-spawns a number of workers (by default the number is equal
-to the number of logical cores on the server), each in
-their own thread, and each with their own `tokio` reactor.
+`actix-web` is powered by [`tokio`][tokio], a fast event
+loop library that's the cornerstone of Rust's concurrency
+story [1]. When starting an HTTP server, `actix-web` spawns
+a number of workers equal to the number of logical cores on
+the server, each in their own thread, and each with their
+own `tokio` reactor.
 
-HTTP handlers can be written in a variety of ways. For
-example, we might write one that returns some content
-synchronously:
+HTTP handlers can be written in a variety of ways. We might
+write one that returns content synchronously:
 
 ``` rust
 fn index(req: HttpRequest) -> Bytes {
@@ -165,15 +167,15 @@ fn index(req: HttpRequest) -> Bytes {
 }
 ```
 
-This will block the underlying `tokio` core until it's
-finished, but that's appropriate in situations where no
-other blocking calls need to be made; for example,
-rendering a static view, or returning a health check
-response.
+This will block the underlying `tokio` reactor until it's
+finished, which is appropriate in situations where no other
+blocking calls need to be made; for example, rendering a
+static view, or responding to a health check.
 
 We can also write an HTTP handler that returns a boxed
-future for operations that may need to make another
-asynchronous call:
+future. This allows us to chain together a series of
+asynchronous calls to ensure that the reactor's never
+needlessly blocked.
 
 ``` rust
 fn index(req: HttpRequest) -> Box<Future<Item=HttpResponse, Error=Error>> {
@@ -182,30 +184,30 @@ fn index(req: HttpRequest) -> Box<Future<Item=HttpResponse, Error=Error>> {
 ```
 
 Examples of this might be responding with a file that we're
-reading from disk (which is blocking, albeit minimally), or
-waiting on a response from a database operation. While
-waiting on a future's result, the underlying `tokio`
-reactor will happily perform other work.
+reading from disk (blocking on I/O, albeit minimally), or
+waiting on a response from our database. While waiting on a
+future's result, the underlying `tokio` reactor will
+happily serve other requests.
 
-!fig src="/assets/rust-web/concurrency-model.svg" caption="An example of the concurrency model with actix-web."
+!fig src="/assets/rust-web/concurrency-model.svg" caption="An example of a concurrency model with actix-web."
 
 ### Synchronous actors (#sync-actors)
 
 Support for futures in Rust is widespread, but not
 universal. Notably, `diesel` doesn't support asynchronous
-operations, so any operations you use it to make will block
-as they wait for a database operations. Running one from
-within a synchronous HTTP handler would lock up that
-thread's `tokio` reactor.
+operations, so all its operations will block. Using it from
+directly within an `actix-web` HTTP handler would lock up
+the thread's `tokio` reactor, preventing that worker from
+serving any other requests until the operation finished.
 
 Luckily, `actix` has a great solution for this problem in
 the form of _synchronous actors_. These are actors that
 expect to run their workloads synchronously, and so each is
-started in its own thread. `actix` provides the
-`SyncArbiter` abstraction to easily start a number of them.
-The cluster shares a single message queue (referenced by
-`addr` below) so that it's trivial to dispatch work into
-it:
+assigned its own dedicated OS-level thread. The
+`SyncArbiter` abstraction is provided to easily start a
+number of copies of one type of actor, each sharing a
+message queue (referenced by `addr` below) so that it's
+easy to send work to the set:
 
 ``` rust
 // Start 3 `DbExecutor` actors, each with its own database
@@ -215,73 +217,91 @@ let addr = SyncArbiter::start(3, || {
 });
 ```
 
-Although the work within a synchronous actor is blocking,
-other actors in the system don't need to wait for it --
-they get a future back that represents the message result
-so that they can keep doing other work.
+Although operations within a synchronous actor are
+blocking, other actors in the system don't need to wait for
+any of it to finish -- they get a future back that
+represents the message result so that they can do other
+work concurrently.
 
-In my web service, fast workloads like parsing parameters
-and rendering views is performed right inside a handler,
-and synchronous actors are never invoked if they don't need
-to be. When a response requires a database operation, a
-message is dispatched to a synchronous actor, and the HTTP
-worker's underlying `tokio` reactor serves other traffic
-while waiting for the future to complete.
+In my implementation, fast workloads like parsing
+parameters and rendering views is performed inside
+handlers, and synchronous actors are never invoked if they
+don't need to be. When a response requires database
+operations, a message is dispatched to a synchronous actor,
+and the HTTP worker's underlying `tokio` reactor serves
+other traffic while waiting for the future to resolve. When
+it does, it renders an HTTP response and sends it back to
+the waiting client.
 
 ### Connection management (#connection-management)
 
-At first glance, introducing synchronous actors might seem
-like purely a disadvantage because there's a limit to the
-number of parallel operations that they can handle at any
-given time.
+At first glance, introducing synchronous actors into the
+system might seem like purely a disadvantage because
+they're an upper bound on parallelism.
 
-But this limit can also be seen as a major advantage. While
+However, this limit can also be a major advantage. While
 scaling up a database like Postgres one of the first limits
 that you're likely to run into is the one around the
 maximum number of simultaneous connections. Even the
 biggest instances on Heroku or GCP max out at 500
 connections, and the smaller instances have limits that are
-_much_ lower. Specifying the number of synchronous actors
-in my service also by extension specifies the maximum
-number of connections that the service will use, which
-gives me perfect control over its connection usage.
+_much_ lower. Big applications with coarse connection
+management schemes (e.g., Rails) tend to resort to hacky
+solutions like [PgBouncer][pgbouncer] to sidestep the
+problem.
+
+Specifying the number of synchronous actors by extension
+also specifies the maximum number of connections that a
+service will use, which leads to perfect control over its
+connection usage.
 
 !fig src="/assets/rust-web/connection-management.svg" caption="Connections are held only when a synchronous actor needs one."
 
-Synchronous actors also check out individual connections
-from a connection pool ([`r2d2`][r2d2]) when starting work
-and check them back in after they're done, so when the
-service is idle, starting up, or shutting down, it uses
-zero connections. This is in sharp contrast to many web
+I've written my synchronous actors to check out individual
+connections from a connection pool ([`r2d2`][r2d2]) only
+when starting work, and check them back in after they're
+done. When the service is idle, starting up, or shutting
+down, it uses zero connections. Contrast this to many web
 frameworks where the convention is to open a database
 connection as soon as a worker starts up, and to keep it
-open as long as the worker is alive. That approach has a 2x
-connection requirement for graceful restarts because all
-workers being phased in immediately establish a connection,
-even while all workers being phased out are still holding
-onto one.
+open as long as the worker is alive. That approach has a
+~2x connection requirement for graceful restarts because
+all workers being phased in immediately establish a
+connection, even while all workers being phased out are
+still holding onto one.
 
 ### The ergonomic advantage of synchronous code (#ergonomics)
 
-There's also something to be said for synchronous
-operations and their benefits for development velocity.
-While the performance aspects of futures are nice, getting
-them properly composed together is very time consuming, and
-the compiler messages they generate when you make a mistake
-is truly the stuff of nightmares. Writing synchronous code
-is faster and easier, and I'm personally fine with a
-slight performance hit if it means I can implement my core
-domain logic more quickly.
+Synchronous operations aren't as fast as a purely
+asynchronous approach, but there's something to be said for
+their benefits around ease of use. It's nice that futures
+are very fast, but getting them properly composed is
+incredibly time consuming, and the compiler errors they
+generate if you make a mistake is truly the stuff of
+nightmares. Writing synchronous code is faster and easier,
+and I'm personally fine with slightly suboptimal code if it
+means I can implement more core domain logic, more quickly.
 
-It's also worth noting that even if the synchronous actor
-model performs poorly compared to a purely-asynchronous
-stack (i.e., futures everywhere), compared to almost any
-other framework and programming language, it's really,
-_really_ fast. At the end of the day your database is
-always going to be a bottleneck for parallelism, and this
-model supports about as much parallelism as we can expect
-to get from it, while also supporting high concurrency for
-any actions that don't need database access.
+### Slow, but only relative to "very, VERY fast" (#speed)
+
+I've been a little disparaging of this model's performance
+characteristics, but keep in mind that it's only slow
+compared to a purely-asynchronous stack (i.e., futures
+everywhere). It's still a conceptually sound concurrent
+model with real parallelism, and compared with almost any
+other framework and programming language, it's still
+really, _really_ fast. I write Ruby in my day job, and
+compared to our (relatively normal for Ruby) thread-less
+model using forking processes on a VM with a GIL and
+[without a compacting GC](/ruby-memory), we're easily
+talking multiple orders of magnitude better speed and
+resource efficiency.
+
+At the end of the day your database is going to be a
+bottleneck for parallelism, and the synchronous actor model
+supports about as much parallelism as we can expect to get
+from it, while also supporting maximum throughput for any
+actions that don't need database access.
 
 ## Error handling (#error-handling)
 
@@ -313,7 +333,7 @@ When a failure should be surfaced to a user, I make sure to
 map it to one of my user error types:
 
 ``` rust
-Params::build_from_post(log, bytes.as_ref()).map_err(|e|
+Params::build(log, &request).map_err(|e|
     ErrorKind::BadRequest(e.to_string()).into()
 )
 ```
@@ -321,11 +341,10 @@ Params::build_from_post(log, bytes.as_ref()).map_err(|e|
 After waiting on a synchronous actor and after attempting
 to construct a successful HTTP response, I handle a
 potential user error and render that as the HTTP response.
-The implementation turns out to be quite elegant (note that
-in future composition, `then` differs from `and_then` in
-that it handles a success _or_ a failure by receiving a
-`Result`, as opposed to `and_then` which only receives a
-success):
+The implementation is quite elegant (note that in future
+composition, `then` differs from `and_then` in that it
+handles a success _or_ a failure by receiving a `Result`,
+as opposed to `and_then` which only chains onto a success):
 
 ``` rust
 let message = server::Message::new(&log, params);
@@ -343,11 +362,13 @@ sync_addr
 ```
 
 Errors not intended to be seen by the user get logged and
-`actix-web` surfaces them as a `500 Internal server error`.
+`actix-web` surfaces them as a `500 Internal server error`
+(although I'll likely add a custom renderer for those too
+at some point).
 
 `transform_user_error` looks something like this (a
 `render` function is abstracted so that we can reuse this
-generically between an API that renders JSON responses and
+generically between an API that renders JSON responses, and
 a web server that renders HTML):
 
 ``` rust
@@ -368,10 +389,11 @@ where
 
 ## Middleware (#middleware)
 
-`actix-web` supports middleware as well. Here's one that
-initializes a per-request logger and installs it into the
-request's `extensions` (a collection of request state that
-will live for as long as the request does):
+Like web frameworks across many languages, `actix-web`
+supports middleware. Here's a simple one that initializes a
+per-request logger and installs it into the request's
+`extensions` (a collection of request state that will live
+for as long as the request does):
 
 ``` rust
 pub mod log_initializer {
@@ -395,39 +417,38 @@ pub mod log_initializer {
         }
     }
 
-    /// Shorthand for getting a usable `Logger` out of a request. It's also
-    /// possible to access the request's extensions directly.
+    /// Shorthand for getting a usable `Logger` out of a request.
     pub fn log<S: server::State>(req: &mut HttpRequest<S>) -> Logger {
         req.extensions().get::<Extension>().unwrap().0.clone()
     }
 }
 ```
 
-A really nice feature is that request state is keyed to a
-_type_ instead of a string that goes into a shared hash
-(e.g., Rack in Ruby). This has the benefit of type checking
+A really nice feature is that middleware state is keyed to
+a _type_ instead of a string (like you might find with Rack
+in Ruby for example). This has the benefit of type checking
 at compile-time so you can't mistype a key, but it also
-allows middleware to control their visibility. If we wanted
-to strongly encapsulate the middleware above we could
-remove the `pub` from `Extension`, thereby making it
+gives middlewares the power to control their modularity. If
+we wanted to strongly encapsulate the middleware above we
+could remove the `pub` from `Extension` so that it becomes
 private. Any other modules that tried to access its logger
-would be prevented from doing so by the visibility rules
-built into the compiler.
+would be prevented from doing so by the compiler's
+visibility checks.
 
 ### Asynchrony all the way down (#asynchrony)
 
 Like handlers, `actix-web` middleware can be asynchronous
-by returning a future instead of a `Result`. This would
-allow us to implement something like a rate limiting
-middleware that made a call out to Redis in a way that
-doesn't block anything else. Did I mention that `actix-web`
-is pretty fast?
+by returning a future instead of a `Result`. This would,
+for example, let us to implement a rate limiting middleware
+that made a call out to Redis in a way that doesn't block
+the HTTP worker. Did I mention that `actix-web` is pretty
+fast?
 
 ## HTTP testing (#testing)
 
 `actix-web` documents a few recommendations for [HTTP
-testing strategies][actixtesting]. I settled on a series of
-unit tests that use `TestServerBuilder` to compose a
+testing methodologies][actixtesting]. I settled on a series
+of unit tests that use `TestServerBuilder` to compose a
 minimal app containing a single target handler, and then
 execute a request against it. This is a nice compromise
 because despite tests being minimal, they nonetheless
@@ -461,39 +482,43 @@ fn test_handler_graphql_get() {
 }
 ```
 
-I also want to call out `serde_json`'s (the standard Rust
-JSON encoding and decoding library) `json!` macro, used on
-the last line in the code above. If you look closely,
-you'll notice that the in-line JSON is not a string --
-`json!` lets me write actual JSON notation right into my
-code that gets checked and converted to a valid Rust
-structure by the compiler. This is _by far_ the most
-elegant approach to testing HTTP JSON responses that I've
-seen across any programming language, bar none.
+I make heavy use of `serde_json`'s (the standard Rust JSON
+encoding and decoding library) `json!` macro, used on the
+last line in the code above. If you look closely, you'll
+notice that the in-line JSON is not a string -- `json!`
+lets me write actual JSON notation right into my code that
+gets checked and converted to a valid Rust structure by the
+compiler. This is _by far_ the most elegant approach to
+testing HTTP JSON responses that I've seen across any
+programming language, ever.
 
 ## Summary (#summary)
 
 It'd be fair to say that I could've written an equivalent
 service in Ruby in a tenth of the time it took me to write
 this one in Rust. Some of that is Rust's learning curve,
-but a lot of it isn't -- the language is fairly succinct to
-write, but appeasing the compiler often takes hours.
+but a lot of it isn't -- the language is succinct to write,
+but appeasing the compiler is often a long and frustrating
+process.
 
 That said, over and over I've experienced passing that
-final hurdle, running my program, and having it work
-_exactly_ as I'd intended it to. Contrast that to an
-interpreted language that only works on your 15th try, and
-even then you have no idea whether you got the edge
-conditions right. Changing things is also well-protected --
-it's not unusual for me to refactor a thousand lines at a
-time, and once again, have the program run perfectly
-afterwards. Anyone who's seen an interpreted language at
-production-scale knows that you never deploy a sizable
-refactor except in miniscule chunks -- anything beyond that
-is too risky.
+final hurdle, running my program, and experiencing a
+Haskell-esque euphoria in seeing it work _exactly_ as I'd
+intended it to. Contrast that to an interpreted language
+where you only get it running on your 15th try, and even
+then, the edge conditions are probably still wrong. Rust
+also makes big changes possible -- it's not unusual for me
+to refactor a thousand lines at a time, and once again,
+have the program run perfectly afterwards on the first try.
+Anyone who's seen a large program in an interpreted
+language at production-scale knows that you never deploy a
+sizable refactor except in miniscule chunks -- anything
+else is too risky.
 
-Should you write your next web service in Rust? I'm not
-sure yet, but the language is sure shaping up nicely.
+Should you write your next web service in Rust? I don't
+know yet, but it sure works pretty well.
+
+!fig src="/assets/rust-web/rust.jpg" caption="Your daily dose of tangentially related photography: Rust on a beam near Pier 28 in San Francisco."
 
 [1] You can think of `tokio` a little like the event loop
     core to runtimes like Node.JS, except one which isn't
@@ -504,6 +529,7 @@ sure yet, but the language is sure shaping up nicely.
 [actixweb]: https://github.com/actix/actix-web
 [diesel]: http://diesel.rs/
 [errorchain]: https://github.com/rust-lang-nursery/error-chain
+[pgbouncer]: https://pgbouncer.github.io/
 [r2d2]: https://github.com/sfackler/r2d2
 [techempower]: https://www.techempower.com/benchmarks/#section=data-r15&hw=ph&test=plaintext
 [tokio]: https://github.com/tokio-rs/tokio
