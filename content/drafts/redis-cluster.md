@@ -1,11 +1,14 @@
 ---
-title: Scaling Stripe's Rate Limiting Stack With Redis
+title: Sharding Stripe's Rate Limiting Stack With Redis
   Cluster
 location: San Francisco
 published_at: 2018-03-17T16:52:38Z
 hook: Flattening a single very hot vertical Redis node out
   out horizontally with Redis Cluster.
 ---
+
+Until recently, Stripe's rate limiting stack ran on a
+single _very_ hot instance of Redis.
 
 ## Distribution model (#distribution)
 
