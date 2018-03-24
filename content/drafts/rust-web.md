@@ -289,7 +289,7 @@ asynchronous approach, but there's something to be said for
 their benefits around ease of use. It's nice that futures
 are very fast, but getting them properly composed is
 incredibly time consuming, and the compiler errors they
-generate if you make a mistake is truly the stuff of
+generate if you make a mistake are truly the stuff of
 nightmares. Writing synchronous code is faster and easier,
 and I'm personally fine with slightly suboptimal code if it
 means I can implement more core domain logic, more quickly.
