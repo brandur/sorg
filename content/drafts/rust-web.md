@@ -4,67 +4,77 @@ published_at: 2018-03-21T16:30:04Z
 hook: TODO
 ---
 
-I'm having a crisis of faith in interpreted languages right
-now. They're fun and fast to work in at small scale, but
-when you have a project that gets big, they lose their
-veneer pretty quickly. Working with a big project in Ruby
-or JavaScript feels like a never ending game of
-whack-a-mock -- you fix one problem only to have your
-refactor cause a new one to appear somewhere else. No
-matter how many tests you write or how well-disciplined
-your team is, any new development is sure to introduce a
-stream of bugs that will only be shored up over the course
-of months or years.
+Lately, I've been having a crisis of faith in interpreted
+languages. They're fast and fun to work in at small scale,
+but when you have a project that gets big, they lose their
+veneer pretty quickly. A big Ruby or JavaScript (just to
+name a few) program in production is a never ending game of
+whack-a-mock -- you fix one problem only to see a new one
+appear somewhere else. No matter how many tests you write,
+or how well-disciplined your team is, any new development
+is sure to introduce a stream of bugs that will only be
+shored up over the course of months or years.
 
-I'm running a personal experiment right now that stems from
-the question: can we build more reliable systems with
-programming languages that provide better checks and
-stronger constraints?
+I'm running an experiment right now by posing the question:
+can we build more reliable systems with programming
+languages that provide better checks and stronger
+constraints? In search of an answer, I've skewed all the
+way to opposite end of the spectrum and have been building
+a web service in Rust, a language infamous for its
+uncompromising compiler.
 
-To that end I've skewed all the way to polar opposite end
-of the spectrum and have been building a web service in
-Rust, a language infamous for its uncompromising compiler.
-I don't know whether it's a good idea -- the language is
-still new and still deeply impractical, but it's been an
-interesting learning experience.
+The language is still new and often quite impractical. It's
+been a bit of a slog learning its strict rules around
+types, ownership, lifetimes, and later futures. Numerous
+times I've had rebuild my program or even change the way I
+think to find a way to satisfy the compiler's rigid
+constraints. Despite the difficulty, it's been a great
+learning experience throughout, and I'm a smarter person
+for it. More importantly, I now have a basic web service
+that works, and I can say already that it's proved my
+thesis at least partially correct. I run into fewer
+forgotten edge conditions, runtime errors are way down, and
+broad refactoring isn't terror-inducing.
 
-It's been a slog learning how to work with the compiler's
-strict rules around types, ownership, and lifetimes, but I
-now have a web service that works, and I can say already
-that its proved my thesis at least partially correct and
-that runtime errors are way down. I want to show off some
-of the more novel features of the language, core libraries,
-and various frameworks that I used to build it.
+Here we'll run through some of the more novel ideas and
+features of the language, core libraries, and various
+frameworks that make this possible.
 
 ## The foundation (#foundation)
 
 I built my service on [`actix-web`][actixweb], a web
-framework built on [`actix`][actix], an actor library for
-Rust similar to what you might see in a language like
-Erlang, except which makes heavy use of Rust's
-sophisticated type and concurrency systems.
+framework layered on [`actix`][actix], an actor library for
+Rust. `actix` is similar to what you might see in a
+language like Erlang, except that it adds another degree of
+robustness and speed by making heavy use of Rust's
+sophisticated type and concurrency systems. For example,
+it's not possible for an actor to receive a message that it
+can't handle because the compiler would have disallowed the
+operation at compile time.
 
-You may recognize the name because `actix-web` has made its
-way to the top of the [TechEmpower benchmarks][techempower]
-for web frameworks. Apps built for these sorts of
-benchmarks usually turn out to be a little contrived, but
-its now contrived Rust code that's sitting right up at the
-list with contrived C++ code, and _above_ contrived Java
-code. Regardless of how you feel about that, the takeaway
-is that `actix-web` is _fast_.
+There's a chance that you'll recognize the name because
+`actix-web` has made its way to the top of the [TechEmpower
+benchmarks][techempower] for web frameworks. Programs built
+for these sorts of benchmarks usually turn out to be a
+little contrived, but its now contrived Rust code that's
+sitting right up at the top of the list with contrived C++
+and Java code. Regardless of how you feel about
+benchmarking, the takeaway is that `actix-web` is _fast_.
 
 !fig src="/assets/rust-web/techempower.png" caption="Rust is consistently ranking alongside C++ and Java on TechEmpower."
 
-It appears to be one of these projects written by a prodigy
--- it's only about six months old, and not only is already
-more feature-complete and with better APIs than web
-frameworks seen in other open source languages, but more so
-than the frameworks bankrolled by large organizations.
-Niceties like HTTP/2, WebSockets, steaming responses,
-graceful shutdown, HTTPS, cookie support, static file
-serving, and good testing infrastructure are all available
-out of the box. And although the documentation is still a
-bit rough, I've yet to run into a single bug.
+As far as I can tell, the author of `actix-web` (and
+`actix`) is some kind of technical prodigy -- the project
+is only about six months old, and not only is already more
+feature-complete and with better APIs than web frameworks
+seen in other open source languages, but more so than many
+of the frameworks bankrolled by large organizations with
+huge development teams. Niceties like HTTP/2, WebSockets,
+steaming responses, graceful shutdown, HTTPS, cookie
+support, static file serving, and good testing
+infrastructure are all available out of the box. The
+documentation is still a bit rough, but I've yet to run
+into a single bug.
 
 ### Diesel and compile-time query checking (#diesel)
 
@@ -340,11 +350,11 @@ Params::build(log, &request).map_err(|e|
 
 After waiting on a synchronous actor and after attempting
 to construct a successful HTTP response, I handle a
-potential user error and render that as the HTTP response.
-The implementation is quite elegant (note that in future
-composition, `then` differs from `and_then` in that it
-handles a success _or_ a failure by receiving a `Result`,
-as opposed to `and_then` which only chains onto a success):
+potential user error and render it. The implementation is
+quite elegant (note that in future composition, `then`
+differs from `and_then` in that it handles a success _or_ a
+failure by receiving a `Result`, as opposed to `and_then`
+which only chains onto a success):
 
 ``` rust
 let message = server::Message::new(&log, params);
