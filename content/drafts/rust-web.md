@@ -305,9 +305,9 @@ other framework and programming language, it's still
 really, _really_ fast. I write Ruby in my day job, and
 compared to our (relatively normal for Ruby) thread-less
 model using forking processes on a VM with a GIL and
-[without a compacting GC](/ruby-memory), we're easily
-talking multiple orders of magnitude better speed and
-resource efficiency.
+[without a compacting GC](/ruby-memory), we're talking
+multiple orders of magnitude better speed and resource
+efficiency. Easily.
 
 At the end of the day your database is going to be a
 bottleneck for parallelism, and the synchronous actor model
