@@ -20,10 +20,11 @@ shored up over the course of months or years.
 I'm running an experiment right now by posing the question:
 can we build more reliable systems with programming
 languages that provide better checks and stronger
-constraints? In search of an answer, I've skewed all the
-way to opposite end of the spectrum and have been building
-a web service in Rust, a language infamous for its
-uncompromising compiler.
+constraints? If so, what about in languages with the
+*strongest* constraints? In search of an answer, I've
+skewed all the way to the far end of the spectrum and have
+been building a web service in Rust, a language infamous
+for its uncompromising compiler.
 
 The language is still new and often quite impractical. It's
 been a bit of a slog learning its strict rules around
@@ -351,8 +352,8 @@ Params::build(log, &request).map_err(|e|
 ```
 
 After waiting on a synchronous actor and after attempting
-to construct a successful HTTP response, I handle a
-potential user error and render it. The implementation is
+to construct a successful HTTP response, I potentially
+handle a user error and render it. The implementation is
 quite elegant (note that in future composition, `then`
 differs from `and_then` in that it handles a success _or_ a
 failure by receiving a `Result`, as opposed to `and_then`
@@ -504,7 +505,7 @@ compiler. This is _by far_ the most elegant approach to
 testing HTTP JSON responses that I've seen across any
 programming language, ever.
 
-## Summary (#summary)
+## Summary: is Rust the future for resiliency? (#summary)
 
 It'd be fair to say that I could've written an equivalent
 service in Ruby in a tenth of the time it took me to write
@@ -524,8 +525,8 @@ to refactor a thousand lines at a time, and once again,
 have the program run perfectly afterwards on the first try.
 Anyone who's seen a large program in an interpreted
 language at production-scale knows that you never deploy a
-sizable refactor except in miniscule chunks -- anything
-else is too risky.
+sizable refactor to an important service except in
+miniscule chunks -- anything else is too risky.
 
 Should you write your next web service in Rust? I don't
 know yet, but it sure works pretty well.
