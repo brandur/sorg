@@ -87,11 +87,12 @@ considerable time in the trenches with `ActiveModel`. Many
 of the pitfalls that traditionally plague ORMs have been
 avoided -- for example, `diesel` doesn't try to pretend
 that SQL dialects across every major database are the same,
-it correctly excludes a specialized DSL for migrations, and
-it doesn't do automagical connection management at the
-global level. It _does_ bake powerful Postgres features
-like upsert and `jsonb` right into the core library, and
-provides powerful safety mechanics wherever possible.
+it excludes a custom DSL for migrations (raw SQL is used
+instead), and it doesn't do automagical connection
+management at the global level. It _does_ bake powerful
+Postgres features like upsert and `jsonb` right into the
+core library, and provides powerful safety mechanics
+wherever possible.
 
 Most of my database queries are written using `diesel`'s
 type-safe DSL. If I misreference a field, try to insert a
