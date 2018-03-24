@@ -33,6 +33,8 @@ Custom parallel -> frequent master breakages
 
 * Two checkboxes in Travis.
 
+TODO: Screenshot.
+
 Frequent master breakages -> custom merge flow
 
 The Jenkins build becomes so complicated that only a
