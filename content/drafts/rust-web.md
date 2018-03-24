@@ -1,7 +1,9 @@
 ---
-title: A Tour of a Fast and Complete Web Service in Rust
+title: Touring a Fast, Safe, and Complete(ish) Web Service in Rust
 published_at: 2018-03-21T16:30:04Z
-hook: TODO
+hook: A detailed look at the frameworks, concurreny model,
+  error handling, and middleware constructs of a web
+  service written in Rust.
 ---
 
 Lately, I've been having a crisis of faith in interpreted
