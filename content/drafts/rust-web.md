@@ -232,7 +232,7 @@ Although operations within a synchronous actor are
 blocking, other actors in the system don't need to wait for
 any of it to finish -- they get a future back that
 represents the message result so that they can do other
-work concurrently.
+work.
 
 In my implementation, fast workloads like parsing
 parameters and rendering views is performed inside
