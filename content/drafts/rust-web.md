@@ -65,18 +65,17 @@ benchmarking, the takeaway is that `actix-web` is _fast_.
 
 !fig src="/assets/rust-web/techempower.png" caption="Rust is consistently ranking alongside C++ and Java on TechEmpower."
 
-As far as I can tell, the author of `actix-web` (and
-`actix`) is some kind of technical prodigy -- the project
-is only about six months old, and not only is already more
-feature-complete and with better APIs than web frameworks
-seen in other open source languages, but more so than many
-of the frameworks bankrolled by large organizations with
-huge development teams. Niceties like HTTP/2, WebSockets,
-steaming responses, graceful shutdown, HTTPS, cookie
-support, static file serving, and good testing
-infrastructure are all available out of the box. The
-documentation is still a bit rough, but I've yet to run
-into a single bug.
+The author of `actix-web` (and `actix`) commits a truly
+prodigious amount of code -- the project is only about six
+months old, and not only is already more feature-complete
+and with better APIs than web frameworks seen in other open
+source languages, but more so than many of the frameworks
+bankrolled by large organizations with huge development
+teams. Niceties like HTTP/2, WebSockets, steaming
+responses, graceful shutdown, HTTPS, cookie support, static
+file serving, and good testing infrastructure are all
+available out of the box. The documentation is still a bit
+rough, but I've yet to run into a single bug.
 
 ### Diesel and compile-time query checking (#diesel)
 
