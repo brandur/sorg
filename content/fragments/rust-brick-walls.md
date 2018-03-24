@@ -55,7 +55,7 @@ veritable odyssey because getting type annotations right
 can be so difficult (especially where a third party library
 is involved).
 
-These thoughts are intended to be comprehensive, and I'll
+These thoughts are not intended to be comprehensive, and I'll
 write a more substantial defense at some point, but I
 wanted to sketch a few feelings first. I intend to keep
 pushing forward, but if forward progress doesn't get easier
