@@ -17,8 +17,8 @@ expect it to be easy.
 Beginning anything fundamentally new feels like staring at
 a brick wall that's blocking your path. The wall is
 impassable until a point that you make a key discovery
-which lets you make your through. Often that discovery is a
-eureka moment -- it felt impossible only hours before.
+which lets you make your way through. Often that discovery
+is a eureka moment -- it felt impossible only hours before.
 
 But eventually you find your way into the clear. The walls
 get smaller and you navigate passed them more easily. At
