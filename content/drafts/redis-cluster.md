@@ -3,7 +3,8 @@ title: Scaling Stripe's Rate Limiting Stack With Redis
   Cluster
 location: San Francisco
 published_at: 2018-03-17T16:52:38Z
-hook: TODO
+hook: Flattening a single very hot vertical Redis node out
+  out horizontally with Redis Cluster.
 ---
 
 ## Distribution model (#distribution)
@@ -94,5 +95,7 @@ implementation.
 GET x
 -MOVED 3999 127.0.0.1:6381
 ```
+
+!fig src="/assets/redis-cluster/sharding.jpg" caption="Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes."
 
 [spec]: https://redis.io/topics/cluster-spec
