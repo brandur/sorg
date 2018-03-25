@@ -253,15 +253,16 @@ system might seem like purely a disadvantage because
 they're an upper bound on parallelism.
 
 However, this limit can also be a major advantage. While
-scaling up a database like Postgres one of the first limits
-that you're likely to run into is the one around the
+scaling up a database like Postgres, one of the first
+limits you're likely to run into is the one around the
 maximum number of simultaneous connections. Even the
 biggest instances on Heroku or GCP max out at 500
 connections, and the smaller instances have limits that are
 _much_ lower. Big applications with coarse connection
-management schemes (e.g., Rails) tend to resort to hacky
-solutions like [PgBouncer][pgbouncer] to sidestep the
-problem.
+management schemes (e.g., Rails, but also many others) tend
+to resort to hacky solutions like [PgBouncer][pgbouncer] (a
+connection pool for frameworks that forgot to build a
+connection pool) to sidestep the problem.
 
 Specifying the number of synchronous actors by extension
 also specifies the maximum number of connections that a
