@@ -258,11 +258,12 @@ limits you're likely to run into is the one around the
 maximum number of simultaneous connections. Even the
 biggest instances on Heroku or GCP max out at 500
 connections, and the smaller instances have limits that are
-_much_ lower. Big applications with coarse connection
-management schemes (e.g., Rails, but also many others) tend
-to resort to hacky solutions like [PgBouncer][pgbouncer] (a
-connection pool for frameworks that forgot to build a
-connection pool) to sidestep the problem.
+_much_ lower (my small GCP database limits me to 25). Big
+applications with coarse connection management schemes
+(e.g., Rails, but also many others) tend to resort to hacky
+solutions like [PgBouncer][pgbouncer] (a connection pool
+for frameworks that forgot to build a connection pool) to
+sidestep the problem.
 
 Specifying the number of synchronous actors by extension
 also specifies the maximum number of connections that a
