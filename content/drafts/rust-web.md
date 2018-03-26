@@ -99,7 +99,7 @@ Most of my database queries are written using `diesel`'s
 type-safe DSL. If I misreference a field, try to insert a
 tuple into the wrong table, or even produce an impossible
 join, the compiler tells me about it. A typical operation
-looks a little like this (this is a Postgres `INSERT INTO
+looks a little like (this is a Postgres batch `INSERT INTO
 ... ON CONFLICT ...`, or "upsert"):
 
 ``` rust
@@ -183,7 +183,7 @@ fn index(req: HttpRequest) -> Bytes {
 This will block the underlying `tokio` reactor until it's
 finished, which is appropriate in situations where no other
 blocking calls need to be made; for example, rendering a
-static view, or responding to a health check.
+static view from memory, or responding to a health check.
 
 We can also write an HTTP handler that returns a boxed
 future. This allows us to chain together a series of
