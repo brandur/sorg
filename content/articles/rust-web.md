@@ -93,7 +93,7 @@ I've been using [`diesel`][diesel] as an ORM to talk to
 Postgres. The most comforting thing about the project is
 that it's an ORM written by someone with a lot of past
 experience with building ORMs, having spent considerable
-time in the trenches with `ActiveModel`. Many of the
+time in the trenches with Active Record. Many of the
 pitfalls common to earlier generations of ORMs have been
 avoided -- for example, `diesel` doesn't try to pretend
 that SQL dialects across every major database are the same,
