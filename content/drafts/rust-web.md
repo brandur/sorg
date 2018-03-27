@@ -1,46 +1,53 @@
 ---
 title: Touring a Fast, Safe, and Complete(ish) Web Service in Rust
 published_at: 2018-03-21T16:30:04Z
-hook: A detailed look at the frameworks, concurreny model,
-  error handling, and middleware constructs of a web
-  service written in Rust.
+hook: A detailed look at the frameworks, concurrency model,
+  error handling, middleware constructs, and testing
+  strategies of a web service written in Rust.
 ---
 
-Lately, I've been having a crisis of faith in interpreted
-languages. They're fast and fun to work in at small scale,
-but when you have a project that gets big, they lose their
-veneer pretty quickly. A big Ruby or JavaScript (just to
-name a few) program in production is a never ending game of
-whack-a-mock -- you fix one problem only to see a new one
-appear somewhere else. No matter how many tests you write,
-or how well-disciplined your team is, any new development
-is sure to introduce a stream of bugs that will only be
-shored up over the course of months or years.
+For years now, I've been having a crisis of faith in
+interpreted languages. They're fast and fun to work in at
+small scale, but when you have a project that gets big,
+their attractive veneer quickly washes away. A big Ruby
+or JavaScript (just to name a few) program in production is
+a never ending game of whack-a-mock -- you fix one problem
+only to find a new one somewhere else. No matter how many
+tests you write, or how well-disciplined your team, any new
+development is sure to introduce a stream of bugs that will
+need to be shored up over the course of months or years.
 
-I'm running an experiment right now by posing the question:
-can we build more reliable systems with programming
-languages that provide better checks and stronger
-constraints? If so, what about in languages with the
-*strongest* constraints? In search of an answer, I've
-skewed all the way to the far end of the spectrum and have
-been building a web service in Rust, a language infamous
-for its uncompromising compiler.
+Central to the problem are the edges. People will reliably
+do a good job of building and testing the happy paths, but
+as humans we're _terrible_ at considering the edge
+conditions, and it's those edges and corners that cause
+trouble over the years that a program is in service.
 
-The language is still new and often quite impractical. It's
-been a bit of a slog learning its strict rules around
-types, ownership, lifetimes, and later futures. Numerous
-times I've had rebuild my program or even change the way I
-think to find a way to satisfy the compiler's rigid
-constraints. Despite the difficulty, it's been a great
-learning experience throughout, and I'm a smarter person
-for it. More importantly, I now have a basic web service
-that works, and I can say already that it's proved my
-thesis at least partially correct. I run into fewer
-forgotten edge conditions, runtime errors are way down, and
-broad refactoring isn't terror-inducing.
+Constraints like a compiler and a discerning type system
+are tools that help us to find and think about those edges.
+There's a spectrum of permissiveness across the world of
+programming languages, and my thesis right now is that more
+time spent in development satisfying a language's rules
+will lead to less time spent fixing problems online.
+
+## Rust (#rust)
+
+If it's possible to build more reliable systems with
+programming languages with stricter constraints, what about
+languages with the *strongest* constraints? I've skewed all
+the way to the far end of the spectrum and have been
+building a web service in Rust, a language infamous for its
+uncompromising compiler.
+
+The language is still new and somewhat impractical. It's
+been a slog learning its rules around types, ownership, and
+lifetimes. Despite the difficulty, it's been an interesting
+learning experience throughout, and it's working. I run
+into fewer forgotten edge conditions and runtime errors are
+way down. Broad refactoring is no longer terror-inducing.
 
 Here we'll run through some of the more novel ideas and
-features of the language, core libraries, and various
+features of Rust, its core libraries, and various
 frameworks that make this possible.
 
 ## The foundation (#foundation)
@@ -52,21 +59,22 @@ language like Erlang, except that it adds another degree of
 robustness and speed by making heavy use of Rust's
 sophisticated type and concurrency systems. For example,
 it's not possible for an actor to receive a message that it
-can't handle because the compiler would have disallowed the
-operation at compile time.
+can't handle at runtime because it would have been
+disallowed at compile-time.
 
-There's a chance that you'll recognize the name because
-`actix-web` has made its way to the top of the [TechEmpower
-benchmarks][techempower] for web frameworks. Programs built
-for these sorts of benchmarks usually turn out to be a
-little contrived, but its now contrived Rust code that's
-sitting right up at the top of the list with contrived C++
-and Java code. Regardless of how you feel about
-benchmarking, the takeaway is that `actix-web` is _fast_.
+There's a small chance that you'll recognize the name
+because `actix-web` has made its way to the top of the
+[TechEmpower benchmarks][techempower]. Programs built for
+these sorts of benchmarks often turn out to be a little
+contrived due to their optimizations, but its now contrived
+Rust code that's sitting right up at the top of the list
+with contrived C++ and Java code. But regardless of how you
+feel about the validity of benchmark programs, the takeaway
+is that `actix-web` is _fast_.
 
 !fig src="/assets/rust-web/techempower.png" caption="Rust is consistently ranking alongside C++ and Java on TechEmpower."
 
-The author of `actix-web` (and `actix`) commits a truly
+The author of `actix-web` (and `actix`) commits a
 prodigious amount of code -- the project is only about six
 months old, and not only is already more feature-complete
 and with better APIs than web frameworks seen in other open
@@ -74,18 +82,18 @@ source languages, but more so than many of the frameworks
 bankrolled by large organizations with huge development
 teams. Niceties like HTTP/2, WebSockets, steaming
 responses, graceful shutdown, HTTPS, cookie support, static
-file serving, and good testing infrastructure are all
+file serving, and good testing infrastructure are readily
 available out of the box. The documentation is still a bit
 rough, but I've yet to run into a single bug.
 
 ### Diesel and compile-time query checking (#diesel)
 
 I've been using [`diesel`][diesel] as an ORM to talk to
-Postgres. One of the most comforting things to know about
-`diesel` is that it's an ORM written by someone with a lot
-of past experience with building ORMs, having spent
-considerable time in the trenches with `ActiveModel`. Many
-of the pitfalls that traditionally plague ORMs have been
+Postgres. The most comforting thing about the project is
+that it's an ORM written by someone with a lot of past
+experience with building ORMs, having spent considerable
+time in the trenches with `ActiveModel`. Many of the
+pitfalls common to earlier generations of ORMs have been
 avoided -- for example, `diesel` doesn't try to pretend
 that SQL dialects across every major database are the same,
 it excludes a custom DSL for migrations (raw SQL is used
@@ -98,9 +106,9 @@ wherever possible.
 Most of my database queries are written using `diesel`'s
 type-safe DSL. If I misreference a field, try to insert a
 tuple into the wrong table, or even produce an impossible
-join, the compiler tells me about it. A typical operation
-looks a little like (this is a Postgres batch `INSERT INTO
-... ON CONFLICT ...`, or "upsert"):
+join, the compiler tells me about it. Here's a typical
+operation (in this case, a Postgres batch `INSERT INTO ...
+ON CONFLICT ...`, or "upsert"):
 
 ``` rust
 time_helpers::log_timed(&log.new(o!("step" => "upsert_episodes")), |_log| {
@@ -123,8 +131,8 @@ time_helpers::log_timed(&log.new(o!("step" => "upsert_episodes")), |_log| {
 })
 ```
 
-Some more complex SQL is difficult to represent using the
-DSL, but luckily we have a great alternative in the form of
+More complex SQL is difficult to represent using the DSL,
+but luckily there's a great alternative in the form of
 Rust's built-in `include_str!` macro. It ingests a file's
 contents during compilation, and we can easily hand them
 off them to `diesel` for parameter binding and execution:
@@ -168,8 +176,8 @@ and great syntax highlighting in your favorite editor.
 loop library that's the cornerstone of Rust's concurrency
 story [1]. When starting an HTTP server, `actix-web` spawns
 a number of workers equal to the number of logical cores on
-the server, each in their own thread, and each with their
-own `tokio` reactor.
+the server, each in its own thread, and each with its own
+`tokio` reactor.
 
 HTTP handlers can be written in a variety of ways. We might
 write one that returns content synchronously:
@@ -200,7 +208,7 @@ Examples of this might be responding with a file that we're
 reading from disk (blocking on I/O, albeit minimally), or
 waiting on a response from our database. While waiting on a
 future's result, the underlying `tokio` reactor will
-happily serve other requests.
+happily fulfill other requests.
 
 !fig src="/assets/rust-web/concurrency-model.svg" caption="An example of a concurrency model with actix-web."
 
@@ -210,8 +218,8 @@ Support for futures in Rust is widespread, but not
 universal. Notably, `diesel` doesn't support asynchronous
 operations, so all its operations will block. Using it from
 directly within an `actix-web` HTTP handler would lock up
-the thread's `tokio` reactor, preventing that worker from
-serving any other requests until the operation finished.
+the thread's `tokio` reactor, and prevent that worker from
+serving other requests until the operation finished.
 
 Luckily, `actix` has a great solution for this problem in
 the form of _synchronous actors_. These are actors that
@@ -219,8 +227,8 @@ expect to run their workloads synchronously, and so each is
 assigned its own dedicated OS-level thread. The
 `SyncArbiter` abstraction is provided to easily start a
 number of copies of one type of actor, each sharing a
-message queue (referenced by `addr` below) so that it's
-easy to send work to the set:
+message queue so that it's easy to send work to the set
+(referenced as `addr` below):
 
 ``` rust
 // Start 3 `DbExecutor` actors, each with its own database
@@ -231,10 +239,10 @@ let addr = SyncArbiter::start(3, || {
 ```
 
 Although operations within a synchronous actor are
-blocking, other actors in the system don't need to wait for
-any of it to finish -- they get a future back that
-represents the message result so that they can do other
-work.
+blocking, other actors in the system like HTTP workers
+don't need to wait for any of it to finish -- they get a
+future back that represents the message result so that they
+can do other work.
 
 In my implementation, fast workloads like parsing
 parameters and rendering views is performed inside
@@ -243,30 +251,27 @@ don't need to be. When a response requires database
 operations, a message is dispatched to a synchronous actor,
 and the HTTP worker's underlying `tokio` reactor serves
 other traffic while waiting for the future to resolve. When
-it does, it renders an HTTP response and sends it back to
-the waiting client.
+it does, it renders an HTTP response with the result, and
+sends it back to the waiting client.
 
 ### Connection management (#connection-management)
 
 At first glance, introducing synchronous actors into the
 system might seem like purely a disadvantage because
-they're an upper bound on parallelism.
-
-However, this limit can also be a major advantage. While
-scaling up a database like Postgres, one of the first
-limits you're likely to run into is the one around the
-maximum number of simultaneous connections. Even the
-biggest instances on Heroku or GCP max out at 500
-connections, and the smaller instances have limits that are
-_much_ lower (my small GCP database limits me to 25). Big
-applications with coarse connection management schemes
-(e.g., Rails, but also many others) tend to resort to hacky
-solutions like [PgBouncer][pgbouncer] (a connection pool
-for frameworks that forgot to build a connection pool) to
-sidestep the problem.
+they're an upper bound on parallelism. However, this limit
+can also be an advantage. One of the first scaling problems
+you're likely to run into with Postgres is its modest
+limits around the maximum number of allowed simultaneous
+connections. Even the biggest instances on Heroku or GCP
+(Google Cloud Platform) max out at 500 connections, and the
+smaller instances have limits that are _much_ lower (my
+small GCP database limits me to 25). Big applications with
+coarse connection management schemes (e.g., Rails, but also
+many others) tend to resort to solutions like
+[PgBouncer][pgbouncer] to sidestep the problem.
 
 Specifying the number of synchronous actors by extension
-also specifies the maximum number of connections that a
+also implies the maximum number of connections that a
 service will use, which leads to perfect control over its
 connection usage.
 
@@ -288,31 +293,34 @@ still holding onto one.
 ### The ergonomic advantage of synchronous code (#ergonomics)
 
 Synchronous operations aren't as fast as a purely
-asynchronous approach, but there's something to be said for
-their benefits around ease of use. It's nice that futures
-are very fast, but getting them properly composed is
-incredibly time consuming, and the compiler errors they
-generate if you make a mistake are truly the stuff of
-nightmares. Writing synchronous code is faster and easier,
-and I'm personally fine with slightly suboptimal code if it
-means I can implement more core domain logic, more quickly.
+asynchronous approach, but they have the benefit of ease of
+use. It's nice that futures are fast, but getting them
+properly composed is time consuming, and the compiler
+errors they generate if you make a mistake are truly the
+stuff of nightmares, which leads to a lot of time spent
+debugging.
+
+Writing synchronous code is faster and easier, and I'm
+personally fine with slightly suboptimal runtime speed if
+it means I can implement more core domain logic, more
+quickly.
 
 ### Slow, but only relative to "very, VERY fast" (#speed)
 
-I've been a little disparaging of this model's performance
+That might sound disparaging of this model's performance
 characteristics, but keep in mind that it's only slow
 compared to a purely-asynchronous stack (i.e., futures
 everywhere). It's still a conceptually sound concurrent
 model with real parallelism, and compared with almost any
 other framework and programming language, it's still
 really, _really_ fast. I write Ruby in my day job, and
-compared to our (relatively normal for Ruby) thread-less
-model using forking processes on a VM with a GIL and
-[without a compacting GC](/ruby-memory), we're talking
-multiple orders of magnitude better speed and resource
-efficiency. Easily.
+compared to our thread-less model (normal for Ruby because
+the GIL constrains thread performance) using forking
+processes on a VM [without a compacting GC](/ruby-memory),
+we're talking orders of magnitude better speed and memory
+efficiency, easily.
 
-At the end of the day your database is going to be a
+At the end of the day, your database is going to be a
 bottleneck for parallelism, and the synchronous actor model
 supports about as much parallelism as we can expect to get
 from it, while also supporting maximum throughput for any
@@ -321,8 +329,8 @@ actions that don't need database access.
 ## Error handling (#error-handling)
 
 Like any good Rust program, APIs almost everywhere
-throughout return the `Result` type. Futures also plumb
-through their own version of `Result` containing either a
+throughout return the `Result` type. Futures plumb through
+their own version of `Result` containing either a
 successful result or an error.
 
 I'm using [error-chain][errorchain] to define my errors.
@@ -355,11 +363,11 @@ Params::build(log, &request).map_err(|e|
 
 After waiting on a synchronous actor and after attempting
 to construct a successful HTTP response, I potentially
-handle a user error and render it. The implementation is
-quite elegant (note that in future composition, `then`
-differs from `and_then` in that it handles a success _or_ a
-failure by receiving a `Result`, as opposed to `and_then`
-which only chains onto a success):
+handle a user error and render it. The implementation turns
+out to be quite elegant (note that in future composition,
+`then` differs from `and_then` in that it handles a success
+_or_ a failure by receiving a `Result`, as opposed to
+`and_then` which only chains onto a success):
 
 ``` rust
 let message = server::Message::new(&log, params);
@@ -381,10 +389,10 @@ Errors not intended to be seen by the user get logged and
 (although I'll likely add a custom renderer for those too
 at some point).
 
-`transform_user_error` looks something like this (a
-`render` function is abstracted so that we can reuse this
-generically between an API that renders JSON responses, and
-a web server that renders HTML):
+Here's `transform_user_error`. A `render` function is
+abstracted so that we can reuse this generically between an
+API that renders JSON responses, and a web server that
+renders HTML.
 
 ``` rust
 pub fn transform_user_error<F>(res: Result<HttpResponse>, render: F) -> Result<HttpResponse>
@@ -439,16 +447,16 @@ pub mod log_initializer {
 }
 ```
 
-A really nice feature is that middleware state is keyed to
-a _type_ instead of a string (like you might find with Rack
-in Ruby for example). This has the benefit of type checking
-at compile-time so you can't mistype a key, but it also
-gives middlewares the power to control their modularity. If
-we wanted to strongly encapsulate the middleware above we
-could remove the `pub` from `Extension` so that it becomes
-private. Any other modules that tried to access its logger
-would be prevented from doing so by the compiler's
-visibility checks.
+A nice feature is that middleware state is keyed to a
+_type_ instead of a string (like you might find with Rack
+in Ruby for example). This not only has the benefit of type
+checking at compile-time so you can't mistype a key, but
+also gives middlewares the power to control their
+modularity. If we wanted to strongly encapsulate the
+middleware above we could remove the `pub` from `Extension`
+so that it becomes private. Any other modules that tried to
+access its logger would be prevented from doing so by
+visibility checks in the compiler.
 
 ### Asynchrony all the way down (#asynchrony)
 
@@ -467,8 +475,8 @@ of unit tests that use `TestServerBuilder` to compose a
 minimal app containing a single target handler, and then
 execute a request against it. This is a nice compromise
 because despite tests being minimal, they nonetheless
-exercise an end-to-end slice of the HTTP stack, and are
-therefore complete, but also fast:
+exercise an end-to-end slice of the HTTP stack, which makes
+them fast _and_ complete:
 
 ``` rust
 #[test]
@@ -520,18 +528,19 @@ That said, over and over I've experienced passing that
 final hurdle, running my program, and experiencing a
 Haskell-esque euphoria in seeing it work _exactly_ as I'd
 intended it to. Contrast that to an interpreted language
-where you only get it running on your 15th try, and even
-then, the edge conditions are probably still wrong. Rust
+where you get it running on your 15th try, and even then,
+the edge conditions are almost certainly still wrong. Rust
 also makes big changes possible -- it's not unusual for me
 to refactor a thousand lines at a time, and once again,
-have the program run perfectly afterwards on the first try.
-Anyone who's seen a large program in an interpreted
-language at production-scale knows that you never deploy a
-sizable refactor to an important service except in
-miniscule chunks -- anything else is too risky.
+have the program run perfectly afterwards. Anyone who's
+seen a large program in an interpreted language at
+production-scale knows that you never deploy a sizable
+refactor to an important service except in miniscule chunks
+-- anything else is too risky.
 
 Should you write your next web service in Rust? I don't
-know yet, but it sure works pretty well.
+know yet, but we're getting to the point now where you
+should at least consider it.
 
 !fig src="/assets/rust-web/rust.jpg" caption="Your daily dose of tangentially related photography: Rust on a beam near Pier 28 in San Francisco."
 
