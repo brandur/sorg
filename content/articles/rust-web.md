@@ -4,6 +4,7 @@ published_at: 2018-03-27T14:45:57Z
 hook: A detailed look at the frameworks, concurrency model,
   error handling, middleware constructs, and testing
   strategies of a web service written in Rust.
+hn_link: https://news.ycombinator.com/item?id=16689108
 ---
 
 For years now, I've been having a crisis of faith in

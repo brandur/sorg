@@ -3,6 +3,7 @@ title: "100 days with Rust, or, a series of brick walls"
 published_at: 2018-03-20T16:05:43Z
 hook: A few thoughts on Rust after a few months of regular
   use.
+hn_link: https://news.ycombinator.com/item?id=16659410
 ---
 
 Rust development log: day 100. Or so. It's starting to get
