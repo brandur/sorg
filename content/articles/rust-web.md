@@ -544,9 +544,9 @@ should at least consider it.
 
 !fig src="/assets/rust-web/rust.jpg" caption="Your daily dose of tangentially related photography: Rust on a beam near Pier 28 in San Francisco."
 
-[1] You can think of `tokio` a little like the event loop
-    core to runtimes like Node.JS, except one which isn't
-    limited to a single core, and with much lower overhead.
+[1] You can think of `tokio` like the event loop core to
+    runtimes like Node.JS, but one which isn't limited to a
+    single core, and with lower overhead.
 
 [actix]: https://github.com/actix/actix
 [actixtesting]: https://actix.github.io/actix-web/guide/qs_8.html
