@@ -34,10 +34,10 @@ for building online software:
 > will be eventually consistent, as long as the latter will
 > occur in a fully automated way.
 
-The consistency I'm talking about here is the one in
-[ACID][acid]. All state, be it in the local service or in
-foreign ones should be valid, even if the `500` interrupted
-a request midway between object mutations.
+The consistency I'm talking about here is the same one as
+in [ACID][acid]. All state, be it in the local service or
+in foreign ones should be valid, even if the `500`
+interrupted a request midway between object mutations.
 
 Readonly requests like `GET`s usually pass the 500 test
 automatically -- no state is modified, so it's just as
