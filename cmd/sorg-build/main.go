@@ -724,7 +724,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 	// a fragment has a configured Twitter image for the time being.
 	var card *twitterCard
 	format, ok := pathAsImage(
-		path.Join(sorg.ContentDir, "fragments", fragment.Slug, "twitter@2x"),
+		path.Join(sorg.ContentDir, "images", "fragments", fragment.Slug, "twitter@2x"),
 	)
 	if ok {
 		card = &twitterCard{
