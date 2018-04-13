@@ -11,7 +11,7 @@ It's a problem that lands squarely in the bucket of "things
 that are tractable early on, but nearly impossible to fix
 later", which in software, is a big one.
 
-In a typical online service, most of us expect expect
+In a typical online service, most of us expect
 upwards of 99.9% of the calls it processes to be fulfilled
 successfully. However, there will always be some number off
 in the tail lost to an accidental bug, a bad deploy, an
