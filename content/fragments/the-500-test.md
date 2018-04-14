@@ -3,6 +3,7 @@ title: The 500 test
 published_at: 2018-04-13T14:37:39Z
 hook: Let's build more resilient services by paying
   attention to the edges.
+hn_link: https://news.ycombinator.com/item?id=16833568
 ---
 
 I’ve been thinking about software resilience lately, and
