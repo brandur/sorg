@@ -728,7 +728,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 	)
 	if ok {
 		card = &twitterCard{
-			ImageURL:    "/assets/fragments/" + fragment.Slug + "/twitter@2x." + format,
+			ImageURL:    sorg.AbsoluteURL + "/assets/fragments/" + fragment.Slug + "/twitter@2x." + format,
 			Title:       fragment.Title,
 			Description: fragment.Hook,
 		}
