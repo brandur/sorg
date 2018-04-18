@@ -250,6 +250,8 @@ mechanics it employs (even for complex features like
 distributed sharding) are simple enough for even a
 layperson like myself to understand and reason about.
 
+!fig src="/assets/redis-cluster/errors.png" caption="Errors subsiding after a transition to Redis Cluster."
+
 !fig src="/assets/redis-cluster/sharding.jpg" caption="Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes."
 
 [1] I'll stay intentionally vague on the number, the we
