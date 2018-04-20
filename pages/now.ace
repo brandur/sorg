@@ -10,16 +10,33 @@
         #title
           h1 What I'm Doing Now
         #now
-          p I'm in Japan, visiting its unique duality of the most beautiful natural and urban environments in the world, decompressing from the ever-turning treadmill of electronic life, writing, and visiting as many <a href="https://en.wikipedia.org/wiki/Onsen">onsens</a> as I can find.
+          p I'm in San Francisco, working on technology at Stripe.
+          /
+          / November 26, 2017
+          /
+          / p I'm in Japan, visiting its unique duality of the most beautiful natural and urban environments in the world, decompressing from the ever-turning treadmill of electronic life, writing, and visiting as many <a href="https://en.wikipedia.org/wiki/Onsen">onsens</a> as I can find.
+          /
+          / September 18, 2017
+          /
+          / p I'm in Canada enjoying its exceptional natural beauty during the final days of summer, visiting family, and attending the weddings of a few of my oldest friends.
+          /
+          / January 23rd, 2016
+          /
+          / I'm in San Francisco concentrating on self-discipline, self-improvement, and shipping the next big thing at Stripe.
           p
-            img.overflowing src="/assets/now/koya-cemetary.jpg" data-rjs="2"
+            img.overflowing src="/assets/now/sutro-giants.jpg" data-rjs="2"
           p A few points of focus:
           ul
             li Meditating every day.
-            li Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I try to focus on only one thing at a time and <a href="/fragments/turn-off-your-cellphone">shut off my distraction machine</a>.
-            li Seeking to deeply understand some of my favorite pieces of technology like Postgres and Rust, and transforming those findings into published material.
-            li Writing an aspirational guide for building software that's simple, robust, and stable without constant human attention.
+            li Learning <a href="/rust-web">Rust</a>, and using it to proof out resilient services that don't need constant human attention.
+            li Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I wake up early, and try to focus on only one thing at a time.
+            /
+            / Old
+            /
+            / li Seeking to deeply understand some of my favorite pieces of technology like Postgres and Rust, and transforming those findings into published material.
+            / li Writing an aspirational guide for building software that's simple, robust, and stable without constant human attention.
+            / li Some basic voice recording to help me get more articulate and be able to form more cohesive long form thoughts in speech.
           div class="divider-short"
           div class="info"
             p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Derek Sivers</a>.
-            p This page was last updated on <strong>November 26, 2017</strong>.
+            p This page was last updated on <strong>April 20, 2018</strong>.
