@@ -221,8 +221,7 @@ complete (again, through either a success or definitive
 error) it'll be assigned a recovery point of `finished`.
 When in an atomic phase, the transition to a new recovery
 point should be committed as part of that phase's
-transaction so that it's part of the atomic operation as
-well.
+transaction.
 
 ### Background jobs and staging (#background-jobs)
 
@@ -309,7 +308,7 @@ There are a few notable fields here:
     We've made `idempotency_key` unique, but across
     `(user_id, idempotency_key)` so that it's possible to
     have the same idempotency key for different requests as
-    long as it's across different accounts.
+    long as it's across different user accounts.
 
 * `locked_at`: A field that indicates whether this
   idempotency key is actively being worked. The first API
@@ -834,11 +833,12 @@ implementation][enqueuer] from _Atomic Rocket Rides_.
 ### The completer (#completer)
 
 One problem with this implementation is we're reliant on
-clients to push indeterminate requests to completion.
-Usually clients are more than willing to do this because
-they want to see their requests go through, but there can
-be cases where a client starts working, never quite
-finishes, and drops forever.
+clients to push indeterminate requests (for example, one
+that might have appeared to be a timeout) to completion.
+Usually clients are willing to do this because they want to
+see their requests go through, but there can be cases where
+a client starts working, never quite finishes, and drops
+forever.
 
 A stretch goal is to implement a ***completer***. Its only
 job is to find requests that look like they never finished
@@ -906,12 +906,12 @@ to the new _Atomic Rocket Rides_ backend:
   tells the client to retry. They continue to do so until
   Stripe comes back online and the charge succeeds.
 
-* *The web worker dies while waiting for a response from
+* *A server process dies while waiting for a response from
   Stripe:* Luckily, the call to Stripe was also made with
-  its own idempotency key. The client retries and a
-  different worker invokes a new call to Stripe with the
-  same key. Stripe's own idempotency guarantees ensure that
-  we haven't double-charged our user.
+  its own idempotency key. The client retries and a new
+  call to Stripe is invoked with the same key. Stripe's own
+  idempotency guarantees ensure that we haven't
+  double-charged our user.
 
 * *A bad deploy 500s all requests midway through:*
   Developers scramble and deploy a fix for the bug. After
