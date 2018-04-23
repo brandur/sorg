@@ -129,8 +129,8 @@ the risk of charging them twice.
 
 ### The entropy of production (#failure)
 
-Most of the time we can expect every our Rocket Rides API
-calls to go swimmingly, and every operation will succeed
+Most of the time we can expect every one of our Rocket Rides
+API calls to go swimmingly, and every operation will succeed
 without a problem. However, when we reach the scale of
 thousands of API calls a day, we'll start to notice a few
 problems appearing here and there; requests failing due to
@@ -214,9 +214,9 @@ request that's being retried to jump back to the point in
 the lifecycle just before the last attempt failed.
 
 For convenience, we're going to store the name of the
-recovery point reached right onto idempotency key relation
-that we'll build. All requests will initially get a
-recovery point of `started`, and after any request is
+recovery point reached right onto the idempotency key
+relation that we'll build. All requests will initially get
+a recovery point of `started`, and after any request is
 complete (again, through either a success or definitive
 error) it'll be assigned a recovery point of `finished`.
 When in an atomic phase, the transition to a new recovery
@@ -737,7 +737,7 @@ end
 With basic records in place, it's time to try our foreign
 state mutation by trying to charge the customer via Stripe.
 Here we initiate a charge for $20 using a Stripe customer
-ID that was already stored to their user record. On
+ID that was already stored on their user record. On
 success, update the ride created in the last step with the
 new Stripe charge ID and set recovery point
 `charge_created`.
@@ -840,10 +840,10 @@ they want to see their requests go through, but there can
 be cases where a client starts working, never quite
 finishes, and drops forever.
 
-A stretch goal is implement a ***completer***. Its only job
-is to find requests that look like they never finished to
-satisfaction and which it looks like clients have dropped,
-and push through to completion.
+A stretch goal is to implement a ***completer***. Its only
+job is to find requests that look like they never finished
+to satisfaction and which it looks like clients have
+dropped, and push through to completion.
 
 It doesn't even have to have special knowledge about how
 the stack is implemented. It just needs to know how to read
