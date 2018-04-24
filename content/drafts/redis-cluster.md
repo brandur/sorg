@@ -11,21 +11,39 @@ Redis is the often unspoken workhorse of production. It's
 not often used as a primary data store, but it has a sweet
 spot in storing and accessing ephemeral data whose loss can
 be tolerated -- metrics, session state, caching -- and it
-does so _fast_. It's a common staple in the modern
-technology stack.
+does so _fast_, providing not only optimal performance, but
+efficient algorithms on a useful set of built-in data
+structures. It's a common staple in the modern technology
+stack.
 
-Until recently, Stripe's rate limiting stack ran on a
-single very hot instance of Redis. It had a followers in
-place that were ready to be promoted in case the primary
-failed, but at any given time, it was one node that handled
-every operation.
+Stripe's rate limiters are built on top of Redis, and until
+recently, they ran on a single _very hot_ instance of
+Redis. The server had followers in place for failover, but
+at any given time, one node was handling every operation.
 
-Not having a strategy in place for scaling horizontally
-wasn't a good thing, but it was impressive that Redis could
-even handle on the order of thousands of operations per
-second (and up [1]).
+In retrospect, it was impressive that this was even
+possible. Every rate limiting operation requires multiple
+Redis commands to run, and every API request passes
+through a series of rate limiters. One node was handling on
+the scale of tens of thousands of operations per second and
+up [1].
 
-## The single-threaded model (#single-threaded)
+The node's saturation meant that there was an ambient level
+of failures occurring. Most of the time this was okay
+because clients were specifically written to tolerate Redis
+unavailability, but the severity could escalate under
+certain conditions. We eventually migrated to a 10-node
+[Redis Cluster][rediscluster] with good success. Impact on
+performance was negligible, and we now have an easy knob to
+turn for horizontal scalability.
+
+The before and after error cliff [2]:
+
+!fig src="/assets/redis-cluster/errors.png" caption="Errors subsiding after a transition to Redis Cluster."
+
+## The limits of operation (#limits)
+
+### The single-threaded model (#single-threaded)
 
 It's made somewhat more impressive when you know that Redis
 is for all practical purposes a single-threaded system.
@@ -38,7 +56,7 @@ saturated, and the rest essentially totally idle.
 
 TODO: Diagram on Redis blocking
 
-## Intersecting failures (#intersecting-failures)
+### Intersecting failures (#intersecting-failures)
 
 This model worked well for a long time in large part
 because Redis happens to degrade quite gracefully -- as a
@@ -259,13 +277,14 @@ mechanics it employs (even for complex features like
 distributed sharding) are simple enough for even a
 layperson like myself to understand and reason about.
 
-!fig src="/assets/redis-cluster/errors.png" caption="Errors subsiding after a transition to Redis Cluster."
-
 !fig src="/assets/redis-cluster/sharding.jpg" caption="Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes."
 
-[1] I'll stay intentionally vague on the number, the we
-serve many requests and each request goes through multiple
-layers of rate limiters.
+[1] The number of operations per second is left
+    intentionally vague.
+[2] Notably, we're not error-free. There are enough
+    operations in flight that some level of intermittent
+    failure is unavoidable.
 
 [client]: TODO
+[rediscluster]: https://redis.io/topics/cluster-tutorial
 [spec]: https://redis.io/topics/cluster-spec
