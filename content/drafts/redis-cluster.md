@@ -135,7 +135,16 @@ cluster's state. A common operation is `CLUSTER NODES` to
 get a mapping of slots to nodes, the result of which is
 generally cached locally as long as it stays fresh.
 
-TODO: Mappings example (get from Splunk)
+```
+127.0.0.1:30002 master - 0 1426238316232 2 connected 5461-10922
+127.0.0.1:30003 master - 0 1426238318243 3 connected 10923-16383
+127.0.0.1:30001 myself,master - 0 0 1 connected 0-5460
+```
+
+I've simplified the output above, but the important parts
+are the host addresses in the first column and the numbers
+in the last. `5461-10922` means that this node handles the
+range of slots starting at `5461` and ending at `10922`.
 
 ### `MOVED` redirection (#moved)
 
