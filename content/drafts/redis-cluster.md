@@ -270,11 +270,17 @@ using it can get away with a simple standalone instance.
 Error rates took a nosedive, and we're confident that we've
 got a lot of runway for continued growth.
 
-This is what I really like about Redis: I've spent almost
-no time at all studying it source code, but most of the
-mechanics it employs (even for complex features like
-distributed sharding) are simple enough for even a
-layperson like myself to understand and reason about.
+More philosophically, I'm a fan of Redis Cluster's simple
+and yet powerful design. Especially when it comes to
+distributed systems, many implementations are exceedingly
+complicated, and failure to understand the specifics of
+their operation can be catastrophic when encountering a
+tricky edge in production. Redis Cluster is scalable, and
+yet with few enough moving parts that even a layperson like
+myself can mostly wrap their head around it. Its design
+docs [are comprehensive and yet approachable][spec].
+
+We need more software like this.
 
 !fig src="/assets/redis-cluster/sharding.jpg" caption="Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes."
 
