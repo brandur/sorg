@@ -7,6 +7,13 @@ hook: Flattening a single very hot vertical Redis node out
   out horizontally with Redis Cluster.
 ---
 
+Redis is the often unspoken workhorse of production. It's
+not often used as a primary data store, but it has a sweet
+spot in storing and accessing ephemeral data whose loss can
+be tolerated -- metrics, session state, caching -- and it
+does so _fast_. It's a common staple in the modern
+technology stack.
+
 Until recently, Stripe's rate limiting stack ran on a
 single very hot instance of Redis. It had a followers in
 place that were ready to be promoted in case the primary
@@ -17,6 +24,8 @@ Not having a strategy in place for scaling horizontally
 wasn't a good thing, but it was impressive that Redis could
 even handle on the order of thousands of operations per
 second (and up [1]).
+
+## The single-threaded model (#single-threaded)
 
 It's made somewhat more impressive when you know that Redis
 is for all practical purposes a single-threaded system.
