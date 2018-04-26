@@ -1,10 +1,10 @@
 ---
-title: Sharding Stripe's Rate Limiting Stack With Redis
-  Cluster
+title: Scaling a High-traffic Rate Limiting Stack With
+  Redis Cluster
 location: San Francisco
-published_at: 2018-03-17T16:52:38Z
+published_at: 2018-04-26T17:29:17Z
 hook: Flattening a single very hot vertical Redis node into
-  a horizontal Redis Cluster.
+  a horizontal Redis Cluster at Stripe.
 ---
 
 Redis is the often unspoken workhorse of production. It's
@@ -31,7 +31,7 @@ handling on the scale of tens to hundreds of thousands of
 operations per second [1].
 
 The node's total saturation was leading to us seeing an
-ambient level of failures occurring all the time. Our
+ambient level of failures happening around the clock. Our
 services were written to tolerate Redis unavailability so
 most of the time this was okay, but the severity of the
 problem would escalate under certain conditions. We
