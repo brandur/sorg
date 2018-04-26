@@ -44,7 +44,7 @@ The before and after error cliff [2]:
 ## The limits of operation (#limits)
 
 Before replacing a system, it's worth understanding the
-cause and effect that led to the only one starting to fail.
+cause and effect that led the original to fail.
 
 A property of Redis that's worth understanding is that it's
 a single threaded program. This isn't _strictly_ true
@@ -122,7 +122,7 @@ total 16,384 slots, with the exact number depending on the
 number of nodes. Nodes within the cluster communicate with
 each other to coordinate slot distribution and rebalancing.
 
-TODO: Diagram of sharding model.
+!fig src="/assets/redis-cluster/hash-slots.svg" caption="The set of hash slots spread across nodes in a cluster."
 
 A set of `CLUSTER` commands are available so that clients
 can query the cluster's state. For example, a common
@@ -150,22 +150,21 @@ range of slots starting at `5461` and ending at `10922`.
 
 If a node in a Redis Cluster receives a command for a key
 in a slot that it doesn't handle, it makes no attempt to
-forward that command to get a success, and instead tells
-the client to try again somewhere else. It sends back a
-`MOVED` response with the address of the node that can
-handle the operation:
+forward that command to get a success. Instead, the client
+is told to try again somewhere else. This comes in the form
+of a `MOVED` response with the address of the new target:
 
 ```
 GET foo
 -MOVED 3999 127.0.0.1:6381
 ```
 
-During a cluster rebalancing, slots can migrate from one
+During a cluster rebalancing, slots migrate from one
 node to another, and `MOVED` is an important signal that
 servers use to tell a client its local mappings of slots to
 nodes are stale.
 
-TODO: Diagram of `MOVED`.
+!fig src="/assets/redis-cluster/moved-redirection.svg" caption="A slot migrating from one node to another."
 
 Sending `MOVED` to a client instead of having the server
 try to transparently retrieve the result from a sibling is
@@ -175,7 +174,7 @@ server which the client is immediately talking to, and
 because on the whole slots will rarely be moving around,
 the extra coordination overhead is generally negligible.
 
-### How a client executes requests (#client)
+### How clients execute requests (#client)
 
 Redis clients need a few extra features to support Redis
 Cluster, with the most important ones being support for the
@@ -194,10 +193,10 @@ A multi-threaded client can be optimized by having it
 merely mark the mappings table dirty when receiving
 `MOVED`, and have threads executing commands follow `MOVED`
 responses with new targets while a background thread
-refreshes the master slot to node mappings asynchronously.
-In practice, even while rebalancing the likelihood is that
-most slots won't be moving, so this model allows most
-commands to continue executing with no overhead.
+refreshes the mappings asynchronously. In practice, even
+while rebalancing the likelihood is that most slots won't
+be moving, so this model allows _most_ commands to continue
+executing with no overhead.
 
 ### Localizing multi-key operations with hash tags (#hash-tags)
 
@@ -240,9 +239,9 @@ A sample invocation:
 "William Adama"
 ```
 
-This script would have trouble running on Redis Cluster if
-it didn't provide a mechanic to make it work. Luckily it
-does through the use of ***hash tags***.
+This script wouldn't run correctly if Redis Cluster didn't
+provide a way for it to do so. Luckily it does through the
+use of ***hash tags***.
 
 The Redis Cluster answer to `EVAL`s that would require
 cross-node operations is to disallow them (a choice that
@@ -295,6 +294,7 @@ We need more software like this.
 
 [1] The number of operations per second is left
     intentionally vague.
+
 [2] Notably, we're not error-free. There are enough
     operations in flight that some level of intermittent
     failure is unavoidable.
