@@ -134,8 +134,11 @@ const footnoteAnchorHTML = `
 `
 
 // HTML for a reference to a footnote within the document.
+//
+// Make sure there's a single space before the <sup> because we're replacing
+// one as part of our search.
 const footnoteReferenceHTML = `
-<sup id="footnote-%s-source">
+ <sup id="footnote-%s-source">
   <a href="#footnote-%s">%s</a>
 </sup>
 `
@@ -164,10 +167,16 @@ func transformFootnotes(source string, options *RenderOptions) string {
 			number := matches[1]
 			anchor := fmt.Sprintf(footnoteAnchorHTML, number, number, number) + matches[2]
 
-			// then replace all references in the body to this footnote
+			// Then replace all references in the body to this footnote.
+			//
+			// Note the leading space before ` [%s]`. This is a little hacky,
+			// but is there to try and ensure that we don't try to replace
+			// strings that look like footnote references, but aren't.
+			// `KEYS[1]` from `/redis-cluster` is an example of one of these
+			// strings that might be a false positive.
 			reference := fmt.Sprintf(footnoteReferenceHTML, number, number, number)
 			source = strings.Replace(source,
-				fmt.Sprintf(`[%s]`, number),
+				fmt.Sprintf(` [%s]`, number),
 				collapseHTML(reference), -1)
 
 			return collapseHTML(anchor)
