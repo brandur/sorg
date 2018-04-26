@@ -3,8 +3,8 @@ title: Sharding Stripe's Rate Limiting Stack With Redis
   Cluster
 location: San Francisco
 published_at: 2018-03-17T16:52:38Z
-hook: Flattening a single very hot vertical Redis node out
-  out horizontally with Redis Cluster.
+hook: Flattening a single very hot vertical Redis node into
+  a horizontal Redis Cluster.
 ---
 
 Redis is the often unspoken workhorse of production. It's
@@ -287,7 +287,7 @@ that contain both of them will be trouble-free. This is
 only a basic example, but the same concept maps all the way
 up to a complex rate limiter implementation.
 
-## Reliable and simple (#simple)
+## Simple and reliable (#simple)
 
 Transitioning over to Redis Cluster went remarkably
 smoothly, with the most difficult part being shoring up one
