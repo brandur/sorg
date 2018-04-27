@@ -12,12 +12,11 @@ Programming languages get easier to learn the more of them
 you know. A lot of this is just pattern matching: syntax
 changes, but there's a lot of overlap in features, and the
 similarities get more apparent. Some of my recent
-acquisitions have been very fast to learn -- with Go for
-example, I was writing functional code within hours, and
-had a solid grasp of the ecosystem and conventions within a
-few weeks.
+acquisitions have been very fast to learn -- with Go, I was
+writing functional code within hours, and had a solid grasp
+of the ecosystem and conventions within a few weeks.
 
-Rust is in its own bucket. I'm about five months into
+Rust is in its own league. I'm about five months into
 writing it on a pretty basis, and its taken this long to
 internalize a lot of its ideas. This is especially true
 when it comes to the more complicated ones like moves and
