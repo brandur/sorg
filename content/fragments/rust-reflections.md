@@ -17,7 +17,7 @@ writing functional code within hours, and had a solid grasp
 of the ecosystem and conventions within a few weeks.
 
 Rust is in its own league. I'm about five months into
-writing it on a pretty basis, and its taken this long to
+writing it on a pretty frequent basis, and its taken this long to
 internalize a lot of its ideas. This is especially true
 when it comes to the more complicated ones like moves and
 futures, but also true for simpler ones like borrows. What
