@@ -22,7 +22,7 @@ internalize a lot of its ideas. This is especially true
 when it comes to the more complicated ones like moves and
 futures, but also true for simpler ones like borrows. What
 I didn't know when I wrote about it in frustration a month
-ago is that it doesn't take a little longer longer to be
+ago is that it doesn't take a little longer to be
 effective in Rust compared to other languages, it takes 10
 to 20 times longer.
 
