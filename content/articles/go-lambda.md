@@ -112,7 +112,7 @@ This might sound like normal [semantic versioning][semver]
 of a breaking change. It doesn't say anything about
 frequency of change, or committing to not making breaking
 changes. Go's proven track record in this area puts it well
-ahead ahead of just about any other project.
+ahead of just about any other project.
 
 That brings us back to Lambda. If we look back at our list
 of runtimes, the supported versions across languages might
