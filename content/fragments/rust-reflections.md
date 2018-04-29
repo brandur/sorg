@@ -1,5 +1,5 @@
 ---
-title: Reflections on Rust, and the Sand Castle Metaphor
+title: Reflections on Rust, and the sand castle metaphor
 published_at: 2018-04-27T14:46:34Z
 hook: Some personal progress with Rust.
 ---
