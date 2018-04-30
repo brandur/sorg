@@ -309,7 +309,7 @@ wrap their head around what it's doing. Its [design
 doc][spec] is comprehensive, but also approachable.
 
 In the months since setting it up, I haven't touched it
-again even once, despite the considerable load its under
+again even once, despite the considerable load it's under
 every second of the day. This is a rare quality in
 production systems, and not found even amongst some of my
 other favorites like Postgres. We need more building blocks
