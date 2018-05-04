@@ -5,18 +5,73 @@ published_at: 2017-12-24T06:57:39Z
 
 ![The Kumano Kodo](/assets/passages/003-kumano-kodo/shining-light@2x.jpg)
 
-> The Kumano Kodō (熊野古道) is a series of ancient
-> pilgrimage routes that crisscross the Kii Hantō, the
-> largest Peninsula of Japan. These sacred trails were and
-> are used for the pilgrimage to the sacred site "Kumano
-> Sanzan" (熊野三山) or the Three Grand Shrines of Kumano:
-> Kumano Hongū Taisha (熊野本宮大社), Kumano Nachi Taisha
-> (熊野那智大社) and Kumano Hayatama Taisha (熊野速玉大社).
+Hello ... from the past. I'd intended to send this letter
+out about four months ago, but am somehow only getting
+around to it now. The truth is that I picked out the
+photography that you're about to see last December, but
+ever since the pictures brought back memories of such
+beautiful places and experiences that for the longest time,
+I didn't feel up to writing the words to fill the space
+between them.
 
-As usual, you can unsubscribe instantly [by clicking right
-here][unsubscribe]. Thanks for reading!
+Last year I wrote about a trip to Japan, but there was so
+much to say that even after a few thousand words of prose,
+I was only halfway done -- this is the missing second half.
+Last time I wrote about how the country's metropolises are
+the best in the world. That was true, but what I didn't
+talk about was how the country also has the most beautiful
+wilderness on the planet as well. Before going back to
+spend time in Tokyo, Keiko and I spent a week down south in
+the Wakayama Prefecture, making our way across the
+peninsula by way of a series of ancient pilgrimage routes
+called the Kumano Kodo.
 
-## Tatami units (#tatamis)
+![Torii at Mount Koya](/assets/passages/003-kumano-kodo/torii@2x.jpg)
+
+Walking these trails is a singular experience. We might
+think of Japan as a crowded island, but the lush greenery
+surrounding you in these quiet places is pristine. The
+stones underfoot must've been laid a thousand years ago,
+and the _torii_ arches overhead imbued with a cultural
+tradition older than that. I'm not a spiritual person, but
+I felt the ancient kami of Japan. They were with me every
+step.
+
+Fair warning that I'm about to talk about hiking, a lot,
+then software. If you're wondering how ended up in this
+hell, as usual, you can [unsubscribe instantly by clicking
+here][unsubscribe]. However, I hope you'll consider this
+the polar opposite of spam -- if my track record holds,
+you'll be getting about three of these letters a year.
+(Thanks for reading.)
+
+## Mount Koya (#mount-koya)
+
+Our journey started in Osaka and our first destination was
+Mount Koya, a tiny town at the top of a mountain that
+somehow holds 120 temples. Normally, it's possible to take
+a train and then use a cable car to get there, but the
+latter was out of operation indefinitely due to damage from
+a recent typhoon, so we took a bus up through the
+mountain's winding roads.
+
+![Mount Koya](/assets/passages/003-kumano-kodo/koya@2x.jpg)
+
+Stay with Buddhist monks.  "Temple lodgings" (_shukubō_)
+
+Snowy Koya (first snow)
+
+### An aside: The kotatsu (#kotatsu)
+
+> A kotatsu (炬燵) is a low, wooden table frame covered by
+> a futon, or heavy blanket, upon which a table top sits.
+> Underneath is a heat source, formerly a charcoal brazier
+> but now electric, often built into the table itself.[1]
+> Kotatsu are used almost exclusively in Japan, although
+> similar devices are used elsewhere: for example the
+> Spanish brasero or Iranian korsi.
+
+### Another aside: tatami units (#tatamis)
 
 > In Japan, the size of a room is often measured by the
 > number of tatami mats (-畳 -jō), about 1.653 square
@@ -37,28 +92,6 @@ here][unsubscribe]. Thanks for reading!
 
 Small rooms. Unpack and pack bedding every morning and
 night.
-
-## Mount Koya (#mount-koya)
-
-Normally a cable car up the mountain, but it was out of
-operation indefinitely due to damage from a recent typhoon.
-Instead, we took a bus up the mountain's winding roads.
-
-![Mount Koya](/assets/passages/003-kumano-kodo/koya@2x.jpg)
-
-Stay with Buddhist monks.  "Temple lodgings" (_shukubō_)
-
-Snowy Koya (first snow)
-
-### An aside: The kotatsu (#kotatsu)
-
-> A kotatsu (炬燵) is a low, wooden table frame covered by
-> a futon, or heavy blanket, upon which a table top sits.
-> Underneath is a heat source, formerly a charcoal brazier
-> but now electric, often built into the table itself.[1]
-> Kotatsu are used almost exclusively in Japan, although
-> similar devices are used elsewhere: for example the
-> Spanish brasero or Iranian korsi.
 
 ## Yunomine Onsen (#yunomine)
 
@@ -90,6 +123,14 @@ Greeted by Keiko's name on the side of the inn.
 ![Painted tree](/assets/passages/003-kumano-kodo/painted-tree@2x.jpg)
 
 ![Ancient forest](/assets/passages/003-kumano-kodo/ancient-forest@2x.jpg)
+
+> The Kumano Kodō (熊野古道) is a series of ancient
+> pilgrimage routes that crisscross the Kii Hantō, the
+> largest Peninsula of Japan. These sacred trails were and
+> are used for the pilgrimage to the sacred site "Kumano
+> Sanzan" (熊野三山) or the Three Grand Shrines of Kumano:
+> Kumano Hongū Taisha (熊野本宮大社), Kumano Nachi Taisha
+> (熊野那智大社) and Kumano Hayatama Taisha (熊野速玉大社).
 
 > Kumano Nachi Taisha is a Shinto shrine located halfway up
 > Nachi Mountain, about 350 meters above sea level. It has
