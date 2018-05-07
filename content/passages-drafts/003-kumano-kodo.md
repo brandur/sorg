@@ -7,69 +7,108 @@ published_at: 2017-12-24T06:57:39Z
 
 Hello ... from the past. I'd intended to send this letter
 out about four months ago, but am somehow only getting
-around to it now. The truth is that I picked out the
-photography that you're about to see last December, but
-ever since the pictures brought back memories of such
-beautiful places and experiences that for the longest time,
-I didn't feel up to writing the words to fill the space
-between them.
+around to it now. I picked out the photography that you're
+about to see last December, but the pictures brought back
+memories of such beautiful places that for the longest
+time, I didn't feel up to writing the words to fill the
+space between them.
 
-Last year I wrote about a trip to Japan, but there was so
-much to say that even after a few thousand words of prose,
-I was only halfway done -- this is the missing second half.
-Last time I wrote about how the country's metropolises are
-the best in the world. That was true, but what I didn't
-talk about was how the country also has the most beautiful
-wilderness on the planet as well. Before going back to
-spend time in Tokyo, Keiko and I spent a week down south in
-the Wakayama Prefecture, making our way across the
-peninsula by way of a series of ancient pilgrimage routes
-called the Kumano Kodo.
+Last year I wrote about a trip to Japan, but even after a
+few thousand words of prose, I was only halfway done --
+this is the missing second half. Last time I wrote about
+how the country's metropolises are the best in the world.
+That was true, but what I didn't talk about was how the
+country also has the most beautiful wilderness on the
+planet as well. Before going back to spend time in Tokyo,
+Keiko and I spent a week down south in the Wakayama
+Prefecture, making our way across the peninsula by way of a
+series of ancient pilgrimage routes called the Kumano Kodo.
+
+Fair warning that I'm about to talk about hiking, a lot.
+I'm holding a rough pace of 3-4 messages a year, so I hope
+you'll consider this the polar opposite of spam, but as
+always you can [unsubscribe instantly by clicking
+here][unsubscribe].
 
 ![Torii at Mount Koya](/assets/passages/003-kumano-kodo/torii@2x.jpg)
 
-Walking these trails is a singular experience. We might
+Walking the Kumano Kodo is a singular experience. We might
 think of Japan as a crowded island, but the lush greenery
-surrounding you in these quiet places is pristine. The
-stones underfoot must've been laid a thousand years ago,
-and the _torii_ arches overhead imbued with a cultural
-tradition older than that. I'm not a spiritual person, but
-I felt the ancient kami of Japan. They were with me every
-step.
-
-Fair warning that I'm about to talk about hiking, a lot,
-then software. If you're wondering how ended up in this
-hell, as usual, you can [unsubscribe instantly by clicking
-here][unsubscribe]. However, I hope you'll consider this
-the polar opposite of spam -- if my track record holds,
-you'll be getting about three of these letters a year.
-(Thanks for reading.)
+surrounding you is pristine. The stones underfoot look a
+thousand years ago, and the _torii_ arches overhead follow
+a cultural tradition older than that. I'm not a spiritual
+person, but I felt the ancient kami of Japan. They were
+with me every step.
 
 ## Mount Koya (#mount-koya)
 
 Our journey started in Osaka and our first destination was
-Mount Koya, a tiny town at the top of a mountain that
-somehow holds 120 temples. Normally, it's possible to take
-a train and then use a cable car to get there, but the
-latter was out of operation indefinitely due to damage from
-a recent typhoon, so we took a bus up through the
-mountain's winding roads.
+Mount Koya, a holy mountain paired with a tiny town that
+holds an incredible 120-odd temples. Normally, it's
+possible to take a train and then use a mountain-scaling
+[funicular] to get there, but the latter was out of
+operation indefinitely due to damage from a recent typhoon,
+so we took a bus up through the mountain's winding roads.
+
+As the bus rounds one last hairpin bend, the magnificent
+Daimon Gate appears out of the mist. It looks totally out
+of place on these remote slopes.
 
 ![Mount Koya](/assets/passages/003-kumano-kodo/koya@2x.jpg)
 
-Stay with Buddhist monks.  "Temple lodgings" (_shukubō_)
+Most of the accommodation on the mountain comes in the form
+of _shukubō_, or "temple lodgings". Monks running the local
+temples open their doors to visitors, who are fed and given
+a place to stay and bathe in return for a nightly fee.
 
-Snowy Koya (first snow)
+The temples are better run than any hotel. We walked
+through the front door of the one we'd selected (Jokiin)
+and were astonished to find a 4-by-6 grid of pairs of
+slippers, arranged in perfect symmetry. We were led down
+the hall, given a place to sit, and served tea while we
+finalized a few details on the paperwork.
 
-### An aside: The kotatsu (#kotatsu)
+We were taken down long echoing hallways to our room, off
+one wing of the temple and overlooking its immaculate
+garden. One thing to understand about accommodation in
+Japan is that it can often be quite small -- often just a
+few tatami mats in size [1], and the constraints force a
+certain creativity in the use of the space. Rooms are
+silently transformed for you while you're out in the
+evening, from a mostly empty space suitable for sitting, to
+one with an unfurled bed suitable for sleeping. In a place
+like Jokiin where your meals are served in-room, there may
+be a third transformation to prepare the space for dinner.
+We'd often find monks quietly swinging by our room hoping
+that we were out so that they could re-arrange it. By
+spending too much time in the room we'd compromise their
+careful schedules because they wouldn't get a chance.
 
-> A kotatsu (炬燵) is a low, wooden table frame covered by
-> a futon, or heavy blanket, upon which a table top sits.
-> Underneath is a heat source, formerly a charcoal brazier
-> but now electric, often built into the table itself.[1]
-> Kotatsu are used almost exclusively in Japan, although
-> similar devices are used elsewhere: for example the
-> Spanish brasero or Iranian korsi.
+### The kotatsu (#kotatsu)
+
+The monks' spartan lifestyle is that some of the luxuries
+that we might take for granted in the west -- like central
+heating -- are non-existent. This time of year the mercury
+sits close to freezing, especially later in the day, and
+even walking the temple's halls is a bone-chilling
+experience. There's an on-site onsen, and its healing
+waters will do wonders to warm you up, but afterwards
+you're left with a real challenge: getting back to your
+room.
+
+In Japan there's an ingenious device for just this
+situation called a [kotatsu]. It's a low table with
+blankets hanging off its edges, and an electric heater
+underneath -- a perfect place to spend a cold evening. The
+old line in Japan is that once you're under a kotatsu you
+can't get back out, and I found every word of it to be
+true.
+
+### A snowy morning (#snowy-morning)
+
+Snowy Koya (first snow). Ran.
+
+![First snow at Mount Koya](/assets/passages/003-kumano-kodo/first-snow@2x.jpg)
 
 ### Another aside: tatami units (#tatamis)
 
@@ -194,4 +233,8 @@ Greeted by Keiko's name on the side of the inn.
 
 ## Twin Peaks (#twin-peaks)
 
+[funicular]: https://en.wikipedia.org/wiki/Funicular
+[kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
 [unsubscribe]: %unsubscribe_url%
+
+[1] Tatami.
