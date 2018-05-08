@@ -104,33 +104,16 @@ old line in Japan is that once you're under a kotatsu you
 can't get back out, and I found every word of it to be
 true.
 
-### A snowy morning (#snowy-morning)
+### A white morning (#white-morning)
 
-Snowy Koya (first snow). Ran.
+We woke up the next morning to find a fresh layer of snow
+on the mountain's temple roofs and courtyards -- the first
+snowfall of the season. I spent the morning running up
+Mount Bentendake above Daimon, trying to be mindful not to
+slip on the newly slick paths and accidentally throw my
+camera into the underbrush.
 
 ![First snow at Mount Koya](/assets/passages/003-kumano-kodo/first-snow@2x.jpg)
-
-### Another aside: tatami units (#tatamis)
-
-> In Japan, the size of a room is often measured by the
-> number of tatami mats (-畳 -jō), about 1.653 square
-> meters (for a standard (Nagoya) size tatami). 
->
-> * Kyoto – within this area, tatami generally measure
->   0.955 m by 1.91 m. Tatami of this size are referred to
->   as Kyōma (京間) tatami.
-> * Nagoya – In this region generally measure 0.91 m by
->   1.82 m, and are referred to as ainoma (合の間, lit.,
->   "in-between" size) tatami.
-> * Tokyo – here tatami generally measure 0.88 m by 1.76 m.
->   Tatami of this size are referred to as Edoma (江戸間)
->   or Kantōma (関東間) tatami.
->
-> Shops were traditionally designed to be ​5 1⁄2 mats,
-> and tea rooms are frequently ​4 1⁄2 mats.
-
-Small rooms. Unpack and pack bedding every morning and
-night.
 
 ## Yunomine Onsen (#yunomine)
 
@@ -237,4 +220,21 @@ Greeted by Keiko's name on the side of the inn.
 [kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
 [unsubscribe]: %unsubscribe_url%
 
-[1] Tatami.
+[1] Tatami units.
+
+> In Japan, the size of a room is often measured by the
+> number of tatami mats (-畳 -jō), about 1.653 square
+> meters (for a standard (Nagoya) size tatami). 
+>
+> * Kyoto – within this area, tatami generally measure
+>   0.955 m by 1.91 m. Tatami of this size are referred to
+>   as Kyōma (京間) tatami.
+> * Nagoya – In this region generally measure 0.91 m by
+>   1.82 m, and are referred to as ainoma (合の間, lit.,
+>   "in-between" size) tatami.
+> * Tokyo – here tatami generally measure 0.88 m by 1.76 m.
+>   Tatami of this size are referred to as Edoma (江戸間)
+>   or Kantōma (関東間) tatami.
+>
+> Shops were traditionally designed to be ​5 1⁄2 mats,
+> and tea rooms are frequently ​4 1⁄2 mats.
