@@ -134,6 +134,13 @@ Greeted by Keiko's name on the side of the inn.
 
 ### Tsuboyu (#tsuboyu)
 
+> Tsuboyu is a small cabin by the creek that runs through
+> Yunomine Onsen. People can privately bath in this small
+> stone lined Onsen for up to 30 minutes. It is the one of
+> the only hot spring that you can bathe in that is
+> registered as UNESCO World Heritage. It is also very
+> popular with couples.
+
 ![Tsuboyu (outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
 
 ![Tsuboyu (inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
