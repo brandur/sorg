@@ -104,7 +104,7 @@ old line in Japan is that once you're under a kotatsu you
 can't get back out, and I found every word of it to be
 true.
 
-### A white morning (#white-morning)
+### A winter morning (#winter-morning)
 
 We woke up the next morning to find a fresh layer of snow
 on the mountain's temple roofs and courtyards -- the first
