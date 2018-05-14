@@ -36,9 +36,9 @@ Walking the Kumano Kodo is a singular experience. We might
 think of Japan as a crowded island, but the lush greenery
 surrounding you is pristine. The stones underfoot look a
 thousand years ago, and the _torii_ arches overhead follow
-a cultural tradition older than that. I'm not a spiritual
-person, but I felt the ancient kami of Japan. They were
-with me every step.
+a cultural tradition that's even older. I'm not a
+particularly spiritual person, but I felt the ancient kami
+of Japan. They were with me every step.
 
 ## Mount Koya (#mount-koya)
 
@@ -108,14 +108,24 @@ true.
 
 We woke up the next morning to find a fresh layer of snow
 on the mountain's temple roofs and courtyards -- the first
-snowfall of the season. I spent the morning running up
-Mount Bentendake above Daimon, trying to be mindful not to
-slip on the newly slick paths and accidentally throw my
-camera into the underbrush.
+snowfall of the season. I ran from Daimon Gate up nearby
+Mount Bentendake, trying to be mindful not to slip on the
+newly slick paths and accidentally throw my camera (and
+myself) into the underbrush.
 
 ![First snow at Mount Koya](/assets/passages/003-kumano-kodo/first-snow@2x.jpg)
 
 ## Yunomine Onsen (#yunomine)
+
+Koya's technically reachable along the Kumano Kodo, but
+along a leg that wasn't quite reachable with just the few
+days we had. Instead, we bused back down to a coastal town
+called Tanabe, and our real journey started the next
+morning as we set out from its local trail head. After
+another two days of hiking and an overnight in a charming
+small town called Chikatsuyu-oji, we reached Yunomine
+Onsen.
+
 
 > Yunomine is a quaint little collection of inns tucked
 > into a small valley deep in the heart of the sacred
