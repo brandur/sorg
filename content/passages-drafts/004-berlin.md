@@ -17,10 +17,10 @@ where it was, and made my way by touch to his front door
 and hit the buzzer. He made his way down the stairs bleary
 eyed and I was afraid that I'd woken him up. I had, but not
 because he's just gone to bed -- he'd been asleep all day
-after a 24-hour stint and late return from the infamous
-nightspot Berghain (billed as the best nightclub on Earth,
-and you may just be convinced of that reading [this article
-from the New Yorker][berghain]).
+after a 36-hour stint and late return from the infamous
+Berghain (billed as the best nightclub on Earth, and you
+may just be convinced of that reading [this article from
+the New Yorker][berghain]).
 
 Ah, Berlin.
 
