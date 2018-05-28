@@ -404,7 +404,7 @@ CREATE TABLE rides (
     -- already-created ride. Note that idempotency keys are not stored
     -- permanently, so make sure to SET NULL when a referenced key is being
     -- reaped.
-    idempotency_key_id BIGINT          UNIQUE
+    idempotency_key_id BIGINT
         REFERENCES idempotency_keys ON DELETE SET NULL,
 
     -- origin and destination latitudes and longitudes
@@ -418,7 +418,8 @@ CREATE TABLE rides (
         CHECK (char_length(stripe_charge_id) <= 50),
 
     user_id            BIGINT          NOT NULL
-        REFERENCES users ON DELETE RESTRICT
+        REFERENCES users ON DELETE RESTRICT,
+    CONSTRAINT rides_user_id_idempotency_key_unique UNIQUE (user_id, idempotency_key_id)
 );
 
 CREATE INDEX rides_idempotency_key_id
