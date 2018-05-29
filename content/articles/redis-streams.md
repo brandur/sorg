@@ -121,7 +121,7 @@ within reach of a small and/or inexpensive app. Kafka is
 infamously difficult to configure and get running, and is
 expensive to operate once you do. Pricing for a small Kafka
 cluster on Heroku costs $100 a month and climbs steeply
-from there. It's temping to think you can do it more
+from there. It's tempting to think you can do it more
 cheaply yourself, but after factoring in server and
 personnel costs along with the time it takes to build
 working expertise in the system, it'll cost more.
