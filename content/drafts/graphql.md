@@ -1,8 +1,10 @@
 ---
-title: The Case for GraphQL
+title: Living APIs, and the Case for GraphQL
 location: San Francisco
 published_at: 2018-06-05T13:51:26Z
-hook: TODO
+hook: Why it makes sense to model APIs as graphs, and what
+  GraphQL can do for us to help with discovery, batch
+  operations, and gradual enhancmeent.
 ---
 
 It's hard to read exactly where GraphQL stands in the API
