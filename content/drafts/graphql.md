@@ -112,7 +112,7 @@ as non-nullable by default. This additional constraint
 makes handling API responses more deterministic and less
 prone to error.
 
-!fig src="/assets/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch, but I like this photo (captured in Barcelona)."
+!fig src="/assets/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch, but I like this photo."
 
 ## The graph (#graph)
 
@@ -130,19 +130,19 @@ and relations are fetched with new HTTP requests. Making
 relationships explicit is conceptually sound, and lets
 consumers get work done with fewer API calls.
 
-Our API at Stripe has a concept called [object
+Stripe's API has a concept called [object
 expansion][expand] that lets a user tell the server that it
 would like an ID (e.g., `cus_123`) expanded into its full
 object representation by passing an `expand[]=...`
 parameter in with the request. Expansions are chainable, so
-I can use ask for `charge.customer` on a dispute to reveal
-the associated charge, and that charge's customer. The
-feature's most common effect is saving API calls -- instead
-of having to request two objects separately, just one
-request can be made for the first object with the second
-embedded. Users make extensive use of this feature -- we
-constrain expansions to three levels deep, but get regular
-requests to allow up to four levels.
+I can ask for `charge.customer` on a dispute to reveal the
+dispute's associated charge, and that charge's customer.
+The feature's most common effect is saving API calls --
+instead of having to request two objects separately, just
+one request can be made for the first object with the
+second embedded. Users make extensive use of this feature
+-- we constrain expansions to three levels deep, but get
+regular requests to allow up to four levels.
 
 ## Discovery and exploration (#discovery)
 
