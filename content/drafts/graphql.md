@@ -11,7 +11,7 @@ It's hard to read exactly where GraphQL stands in the API
 world right now. Available publicly since 2015, trends in
 APIs aren't obviously moving in its favor. Interest from
 the developer community has been steady throughout, but
-it's a far shot away from spreading like wildfire.
+it's a long way away from spreading like wildfire.
 
 Its biggest third party proponent is GitHub, who released
 the fourth version of their API as GraphQL in 2016 with an
@@ -283,10 +283,9 @@ consistency leads to leverage in the form of tools like
 GraphiQL (and many more to come) that can be shared amongst
 any of its implementations.
 
-REST's momentum may appear to unstoppable, but chronic
-underdesign and loose conventions leave a lot to be
-desired. We'd be doing ourselves a favor by keeping our
-gaze on the horizon.
+REST's momentum may appear unstoppable, but underdesign and
+loose conventions leave a lot to be desired. We'd be doing
+ourselves a favor by keeping our gaze on the horizon.
 
 [1] Common wisdom is that GraphQL at Facebook is
 sequestered to internal APIs only, although the public API
