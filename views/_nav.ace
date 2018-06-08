@@ -11,8 +11,6 @@ nav
     li
       a href="/runs" Runs
     li
-      a href="/talks" Talks
-    li
       a href="/twitter" Twitter
     li
       a href="/reading" Reading
