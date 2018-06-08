@@ -264,7 +264,7 @@ maturity incrementally in a distant perfect form.
 
 !fig src="/assets/graphql/living.jpg" caption="In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this."
 
-## Leverage and convention (#leverage)
+## Shared convention and leverage (#convention)
 
 GraphQL introduces many powerful ideas, and because it was
 written in response to extensive real-world experience, it
