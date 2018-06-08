@@ -115,7 +115,7 @@ as non-nullable by default. This additional constraint
 makes handling API responses more deterministic and less
 prone to error.
 
-!fig src="/assets/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch, but I like this photo."
+!fig src="/assets/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch (but I like this photo)."
 
 ## The graph (#graph)
 
