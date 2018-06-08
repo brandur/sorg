@@ -77,7 +77,8 @@ We'll talk about this more below.
 
 GraphQL is automatically **introspectable** online. By
 using the special `__type` operator, any client can get a
-detailed understanding of a type and all its fields:
+detailed understanding of a type and all its fields and
+documentation:
 
 ``` js
 {
