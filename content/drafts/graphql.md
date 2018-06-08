@@ -19,11 +19,11 @@ the fourth version of their API as GraphQL in 2016 with an
 [engineering post][githubpost] speaking about it very
 favorably. It also has a other vocal users in the form of
 Shopify and Yelp, both of whom offer public GraphQL APIs.
-But beyond those big three, other big providers are harder
-to find. [This repository][graphqllist] keeps a list of
-publicly available GraphQL APIs, and most well-known API
-providers are notably absent, including Facebook themselves
-[1].
+But beyond those big three, other big providers are
+somewhat harder to find. [This repository][graphqllist]
+keeps a list of publicly available GraphQL APIs, and most
+well-known API providers are notably absent, including
+Facebook themselves [1].
 
 Most publicly proffered APIs are still "REST-ish" -- with
 resources and actions offered over HTTP -- including those
