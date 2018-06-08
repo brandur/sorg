@@ -57,11 +57,11 @@ resource to get familiar with GraphQL's basic, but it has a
 few important core ideas that are worth touching upon.
 
 With GraphQL, fields and relationships must be requested
-**explicitly**. Here we ask for a customer object including
-the `currency`, `email`, and `subscriptions` fields:
+**explicitly**. Here we ask for a user object including the
+`currency`, `email`, and `subscriptions` fields:
 
 ``` js
-getCustomer(id: "cus_123") {
+getUser(id: "user_123") {
   currency,
   email,
   subscriptions
@@ -81,7 +81,7 @@ understanding of a type and all its fields:
 
 ``` js
 {
-  __type(name: "Customer") {
+  __type(name: "User") {
     name
     fields {
       name
@@ -100,8 +100,8 @@ like OpenAPI which are sometimes available and often not
 completely accurate.
 
 Finally, GraphQL is **typed**. Types often come in the form
-of complex objects (e.g., `Customer`) or JSON scalars
-(e.g., int, string), but the type system also supports more
+of complex objects (e.g., `User`) or JSON scalars (e.g.,
+int, string), but the type system also supports more
 sophisticated features like enumerations, interfaces, and
 union types. Nullability is baked right in, which works out
 incredibly well when building APIs in languages that don't
@@ -180,15 +180,15 @@ standardization for such a thing. Users adapt to each
 exotic implementation by reading a lot of documentation. In
 GraphQL, batch queries are built right in. Here's a
 document containing multiple operations on the same query
-and which uses aliases (`customerA`, `customerB`) so that
-the results can be disambiguated in the response:
+and which uses aliases (`userA`, `userB`) so that the
+results can be disambiguated in the response:
 
 ``` js
-customerA: getCustomer(id: "cus_123") {
+userA: getUser(id: "user_123") {
   email
 }
 
-customerB: getCustomer(id: "cus_456") {
+userB: getUser(id: "user_456") {
   email
 }
 ```
