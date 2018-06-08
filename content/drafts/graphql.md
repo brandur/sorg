@@ -10,17 +10,16 @@ hook: Why it makes sense to model APIs as graphs, and what
 It's hard to read exactly where GraphQL stands in the API
 world right now. Available publicly since 2015, it
 continues to generate a lot of interest in developer
-communities, but API trends aren't measurably moving in its
-favor.
+communities, but trends in APIs don't seem to be obviously
+moving in its favor.
 
-By far its biggest third-party public proponent is GitHub,
-who released the fourth version of their API as GraphQL in
-2016 with an [engineering post][githubpost] speaking about
-it very favorably (and condemning the hypermedia
-implementation of the previous version). It also has a few
-other vocal users in the form of Shopify and Yelp, both of
-whom offer GraphQL APIs, but other big providers are harder
-to find. [This repository][graphqllist] keeps a list of
+By far its biggest third party proponent is GitHub, who
+released the fourth version of their API as GraphQL in 2016
+with an [engineering post][githubpost] speaking about it
+very favorably. It also has a other vocal users in the form
+of Shopify and Yelp, both of whom offer public GraphQL
+APIs. But beyond them, other big providers are harder to
+find. [This repository][graphqllist] keeps a list of
 publicly available GraphQL APIs, and almost every
 well-known API provider is notably absent, including
 Facebook themselves [1].
@@ -32,22 +31,22 @@ Amazon, Dropbox, Google, Microsoft, Stripe, and Twilio.
 Momentum plays a huge part in that the pattern is
 widespread and developers are used to it both on the parts
 of integrators using APIs, and those who are building them.
-A few arguments are still posited that strict adherence to
-REST and hypermedia will open a wide world of automatic
-discoverability and adaptation, but total lack of real
-world precedent seems to be a strong empirical suggestion
-that these are will-o'-the-wisps.
+Some arguments are still made that strict adherence to REST
+and hypermedia will open a wide world of automatic
+discoverability and adaptation, but lack of real world
+precedent seems to be a strong empirical suggestion that
+this vision is a will-o'-the-wisp.
 
-GraphQL's biggest problem is quite possibly that although
-it's better, it's not "better enough". The bar set by a
-REST-ish API is low, but it's high enough to work, and is
-adequate for most purposes.
+GraphQL's biggest problem may be that although it's better,
+it's not "better enough". The bar set by a REST is low, but
+it's high enough to work, and is adequate for most
+purposes.
 
 I've been doing a lot of thinking about what the next
 generation of web APIs will look like (or if there will be
 one at all), and I for one, would like to see more GraphQL.
-Here I'll try to articulate a few arguments for why it's a
-good idea that go beyond the surface-level selling points
+I'll try to articulate a few arguments for why it's a good
+idea that go beyond the common surface-level selling points
 on the tin.
 
 ## The surface (#surface)
@@ -71,8 +70,8 @@ getUser(id: "user_123") {
 There's no wildcard operator like a `SELECT *` in SQL.
 Compared to REST, this has an advantage of reducing payload
 size (especially helpful for mobile), but more importantly,
-it establishes a very explicit contract between the client
-and server which allows APIs to be evolved more gracefully.
+it establishes an explicit contract between the client and
+server which allows APIs to be evolved more gracefully.
 We'll talk about this more below.
 
 GraphQL is automatically **introspectable**. By using the
@@ -93,23 +92,25 @@ understanding of a type and all its fields:
 }
 ```
 
-Every common implementation supports introspection and
-tooling can be built to rely on it being available. Unlike
-REST, there's no need to retrofit description languages
-like OpenAPI which are sometimes available and often not
-completely accurate.
+Every common implementation supports introspection (it's
+required in [the GraphQL spec][spec]) and tooling can be
+built to rely on it being available. Unlike REST, there's
+no need to retrofit description languages like OpenAPI
+which are sometimes available and often not completely
+accurate.
 
 Finally, GraphQL is **typed**. Types often come in the form
 of complex objects (e.g., `User`) or JSON scalars (e.g.,
 int, string), but the type system also supports more
 sophisticated features like enumerations, interfaces, and
-union types. Nullability is baked right in, which works out
-incredibly well when building APIs in languages that don't
-allow null (like Rust) because every field comes out as
-non-nullable by default which makes handling API responses
-much less prone to error.
+union types. Nullability is baked in, which happens to work
+out incredibly well when building APIs in languages that
+don't allow null (like Rust) because every field comes out
+as non-nullable by default. This additional constraint
+makes handling API responses more deterministic and less
+prone to error.
 
-!fig src="/assets/graphql/propeller.jpg" caption="This is a stretch. Let's call it something that looks like a graph, kind of."
+!fig src="/assets/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch, but I like this photo (captured in Barcelona)."
 
 ## The graph (#graph)
 
@@ -118,13 +119,14 @@ graph. Technically, the graph starts with a root node that
 branches into query and mutation nodes, which then descend
 into API-specific resources.
 
-GraphQL just takes existing API paradigms to a logical
+GraphQL takes existing API paradigms to a logical
 conclusion. Almost every REST-ish API that exists today is
-already a graph, with resources referencing other resources
-by IDs, or links for the APIs which most dogmatically
-adhere to the principles of REST. Making these
-relationships explicit just makes sense, but it also lets
-consumer get their work done with fewer API calls.
+already a graph, but one that's more difficult to traverse.
+Resources reference other resources by IDs (or links in
+APIs which most strongly adhere to the principles of REST),
+and relations are fetched with new HTTP requests. Making
+relationships explicit is conceptually sound, and also lets
+consumers get their work done with fewer API calls.
 
 Our API at Stripe has a concept called [object
 expansion][expand] that lets a user tell the server that it
@@ -136,23 +138,25 @@ the associated charge, and that charge's customer. The
 feature's most common effect is saving API calls -- instead
 of having to request two objects separately, just one
 request can be made for the first object with the second
-embedded. Users love this feature -- we constrain
-expansions to three levels deep, but get regular requests
-to allow up to four levels.
+embedded. Users make extensive use of this feature -- we
+constrain expansions to three levels deep, but get regular
+requests to allow up to four levels.
 
 ## Discovery and exploration (#discovery)
 
-A core challenge of every API is how to make it
-approachable to new users, and providing interactive way to
-explore them and make ad-hoc requests is a good way to
-address this problem. GraphQL provides an answer to this
-in the form of [GraphiQL][graphiql], an in-browser tool
-that lets users read documentation and build queries.
+A core challenge of every API is making it approachable to
+new users, and providing interactive way to explore them
+and make ad-hoc requests is a great way to address that.
+GraphQL provides an answer to this in the form of
+[GraphiQL][graphiql], an in-browser tool that lets users
+read documentation and build queries.
 
 I'd highly recommend taking a look at Shopify's [public
 installation][shopifygraphiql] and trying some for
 yourself. Remember to use the "Docs" link in the upper
-right to pop open and explore the documentation.
+right to pop open and explore the documentation. You should
+find yourself being able to build a query that delves 4+
+relations deep without much trouble.
 
 !fig src="/assets/graphql/graphiql.png" caption="Using GraphiQL to explore an API and graph."
 
@@ -181,7 +185,7 @@ exotic implementation by reading a lot of documentation. In
 GraphQL, batch queries are built right in. Here's a
 document containing multiple operations on the same query
 and which uses aliases (`userA`, `userB`) so that the
-results can be disambiguated in the response:
+results are disambiguated in the response:
 
 ``` js
 userA: getUser(id: "user_123") {
@@ -205,21 +209,21 @@ right fit for you), or even just one.
 ## Explicitness and graceful enhancement (#explicitness)
 
 I mentioned above how fields in GraphQL must be requested
-explicitly and that there's no SQL-like glob operator to
-get everything. This might be GraphQL's most interesting
-feature because it lends itself so well to API versioning
-and enhancement.
+explicitly and that there's no SQL-like glob operator
+(`SELECT *`) to get everything. This might be GraphQL's
+most interesting feature because it lends itself so well to
+API versioning and enhancement.
 
 In a REST API, an API provider must assume that for any
 given API resource, _every_ field is in use by every user
-because they have no insight at all into which ones
-consumers are actually using. Removing any field must be
-considered a breaking change and [an appropriate versioning
+because they have no insight at all into which ones they're
+actually using. Removing any field must be considered a
+breaking change and [an appropriate versioning
 system][versioning] will need to be installed to manage
 those changes.
 
 In GraphQL, every contract is explicit and observable.
-Provides can use something like a [canonical log
+Providers can use something like a [canonical log
 line](/canonical-log-lines) to get perfect insight into the
 fields that are in use for every request, and use that
 information to make decisions around product development,
@@ -240,20 +244,21 @@ environment that evolves much more gradually.
 
 Fields that need to be phased out can be initially hidden
 from documentation by marking them with GraphQL's built-in
-`deprecated` annotation. From there, provides may choose to
-even further restrict them by gating in users who were
-already consuming them, and disallowing use for everyone
-else, with an automatic process to remove gating as users
-stop using them organically. After some deprecation period,
-their use can be analyzed, and product teams can either
-start an active outreach campaign for retirement, or remove
-them entirely.
+`deprecated` annotation. From there, providers may choose
+to even further restrict their use by gating in users who
+were already consuming them, and disallowing everyone else,
+possibly with an automatic process to remove those gated
+exceptions as users upgrade organically over time and move
+away from those deprecated fields. After a long grace
+period, their use can be analyzed, and product teams can
+either start an active outreach campaign for total
+retirement before removing them entirely.
 
 Similarly, new fields are introduced one at a time and
 their adoption can be observed immediately. Like a living
 thing, the API changes little by little. New features are
-added and old mistakes are fixed. Its surface trends slowly
-towards perfect maturity.
+added and old mistakes are fixed. It trends towards perfect
+maturity.
 
 !fig src="/assets/graphql/living.jpg" caption="In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this."
 
@@ -261,24 +266,25 @@ towards perfect maturity.
 
 GraphQL introduces many powerful ideas, and because it was
 written in response to extensive real-world experience, it
-addresses scaling problems that most would-be API designers
-wouldn't realize were problems until it was too late.
+addresses API scaling problems that most would-be API
+designers wouldn't think about until it was too late.
 
 It comes with a [comprehensive spec][spec] to help avoid
 ambiguities. The result is that most GraphQL APIs look very
 similar and features are widespread throughout all common
 implementations. I'd personally like to see its designers
 take an even more opinionated stance on conventions like
-naming and pagination, but even without, it's still a far
-more sophisticated set of constraints than what we have
-with REST. This forced consistency leads to leverage in the
-form of tools like GraphiQL (and many more to come) that
-can be shared amongst any of its implementations.
+naming, mutation granularity, and pagination, but even
+without, it's still a far more sophisticated set of
+constraints than what we have with REST. This forced
+consistency leads to leverage in the form of tools like
+GraphiQL (and many more to come) that can be shared amongst
+any of its implementations.
 
-REST's momentum may appear to unstoppable, but its
+REST's momentum may appear to unstoppable, but chronic
 underdesign and loose conventions leave a lot to be
-desired. We'd do ourselves a favor to keep our gaze on
-the horizon.
+desired. We'd be doing ourselves a favor by keeping our
+gaze on the horizon.
 
 [1] Common wisdom is that GraphQL at Facebook is
 sequestered to internal APIs only, although the public API
