@@ -9,9 +9,10 @@ hook: Why it makes sense to model APIs as graphs, and what
 
 It's hard to read exactly where GraphQL stands in the API
 world right now. Available publicly since 2015, trends in
-APIs aren't obviously moving in its favor. Interest from
-the developer community has been steady throughout, but
-it's a long way away from spreading like wildfire.
+APIs aren't obviously moving in its favor, but not
+obviously moving against it either. Interest from the
+developer community has been steady throughout even if the
+technology isn't spreading like wildfire.
 
 Its biggest third party proponent is GitHub, who released
 the fourth version of their API as GraphQL in 2016 with an
@@ -20,9 +21,9 @@ favorably. It also has a other vocal users in the form of
 Shopify and Yelp, both of whom offer public GraphQL APIs.
 But beyond those big three, other big providers are harder
 to find. [This repository][graphqllist] keeps a list of
-publicly available GraphQL APIs, and almost every
-well-known API provider is notably absent, including
-Facebook themselves [1].
+publicly available GraphQL APIs, and most well-known API
+providers are notably absent, including Facebook themselves
+[1].
 
 Most publicly proffered APIs are still "REST-ish" -- with
 resources and actions offered over HTTP -- including those
@@ -39,12 +40,12 @@ empirical suggestion that this vision is a
 will-o'-the-wisp.
 
 GraphQL's biggest problem may be that although it's better,
-it's not "better enough". The bar set by a REST is low, but
+it's not "better enough". The bar set by REST is low, but
 it's high enough to work, and is adequate for most
 purposes.
 
-I've been doing a lot of thinking about what the next
-generation of web APIs will look like (or if there will be
+I've been doing a lot of thinking about what a new
+generation of web APIs would look like (or if there will be
 one at all), and I for one, would like to see more GraphQL.
 I'll try to articulate a few arguments for why it's a good
 idea that go beyond the common surface-level selling
@@ -97,8 +98,9 @@ documentation:
 Every common implementation supports introspection (it's
 required in [the GraphQL spec][spec]) and tooling can be
 built to rely on it being available. Unlike REST, there's
-no need to retrofit description languages like OpenAPI
-which are sometimes available and often not completely
+no need to retrofit an unstandardized description language
+like OpenAPI (or its myriad of competitors). Even today,
+these are usually not available, and often not completely
 accurate because the description isn't tied directly to the
 implementation.
 
