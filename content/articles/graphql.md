@@ -255,7 +255,7 @@ were already consuming them, and disallowing everyone else,
 possibly with an automatic process to remove those gated
 exceptions as users upgrade organically over time and move
 away from those deprecated fields. After a long grace
-period, their use can be analyzed, and product teams can sart an active outreach campaign for total
+period, their use can be analyzed, and product teams can start an active outreach campaign for total
 retirement before removing them entirely.
 
 Similarly, new fields are introduced one at a time and
