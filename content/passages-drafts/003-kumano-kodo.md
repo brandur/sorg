@@ -126,17 +126,31 @@ another two days of hiking and an overnight in a charming
 small town called Chikatsuyu-oji, we reached Yunomine
 Onsen.
 
+In [002][passages002] I talked about certain villages famed
+for their onsens might adopt the word into their name. This
+is the case for Yunomine -- a little cluster of inns tucked
+into a valley in the hart of the Kumano mountains. This was
+the one night on our hike that we'd splurged on a hotel,
+and as we climbed its steps we were greeted by Keiko's name
+drawn out in elaborate hand-written Kanji. The inn would
+draw out the complete set of names of their guests every
+morning.
 
-> Yunomine is a quaint little collection of inns tucked
-> into a small valley deep in the heart of the sacred
-> mountains of Kumano. The waters here are said to change
-> color seven times over the course of a day. Yunomine
-> Onsen was discovered about 1,800 years ago, and it is
-> thought to be one of the oldest hot springs in Japan.
-
-Greeted by Keiko's name on the side of the inn.
+Our room was large and minimally furnished in the most
+tasteful possible way, with only a single low table
+ornamenting its expansive floors. A balcony gave us an
+outlook onto the tiny village.
 
 ![Yunomine](/assets/passages/003-kumano-kodo/yunomine@2x.jpg)
+
+A common pastime for locals and visitors alike is to slow
+boil eggs in the hot spring's waters, and we found half a
+dozen people working on just that when we arrived. You can
+see some being sold for cooking below. Later in the trip
+we'd visit Ōwakudani ("Great Boiling Valley") on the slopes
+of Mount Hakone (an active volcano), where the onsen eggs
+are black, having picked up coloration from the sulfur
+springs they're cooked in.
 
 ![Onsen eggs](/assets/passages/003-kumano-kodo/eggs@2x.jpg)
 
@@ -144,18 +158,37 @@ Greeted by Keiko's name on the side of the inn.
 
 ### Tsuboyu (#tsuboyu)
 
-> Tsuboyu is a small cabin by the creek that runs through
-> Yunomine Onsen. People can privately bath in this small
-> stone lined Onsen for up to 30 minutes. It is the one of
-> the only hot spring that you can bathe in that is
-> registered as UNESCO World Heritage. It is also very
-> popular with couples.
+The hot spring at Yunomine is _old_. It's considered to be
+one of Japan's oldest, originally discovered about 1,800
+years ago. An ancient bathhouse built right on top of the
+stream running through town called Tsuboyu lets you get as
+close as possible to the spring's source, and is the only
+place in the world where you can bathe in a registered
+UNESCO World Heritage Site.
 
 ![Tsuboyu (outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
+
+It's a popular bathhouse for couples, probably because its
+pool is the coziest of quarters; even two is a tight fit.
+Getting into the bathhouse is an adventure of its own,
+involving a walk down to the other side of the village
+where you can negotiate with an old man for a placard which
+you will hang above the door as you enter. Its holds a
+sequentially-assigned number that signals to waiting groups
+roughly how long they have until it's their turn in the
+building (we were waiting on group "7" above).
 
 ![Tsuboyu (inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
 
 ## Final day (#final-day)
+
+The last day of our hike involved treeking over a
+mountain blanketed in a broad-leaf evergreen forst. Unlike
+a lot of mountain climbs you can do, this one featured
+stone-cut stairs the whole way up and down, laboriously
+dragged there over decades. It was cool and quiet. The
+number of other hikers we passed along the trail could be
+comfortably counted on one hand.
 
 ![Coins at a shrine](/assets/passages/003-kumano-kodo/coins@2x.jpg)
 
@@ -163,79 +196,73 @@ Greeted by Keiko's name on the side of the inn.
 
 ![Ancient forest](/assets/passages/003-kumano-kodo/ancient-forest@2x.jpg)
 
-> The Kumano Kodō (熊野古道) is a series of ancient
-> pilgrimage routes that crisscross the Kii Hantō, the
-> largest Peninsula of Japan. These sacred trails were and
-> are used for the pilgrimage to the sacred site "Kumano
-> Sanzan" (熊野三山) or the Three Grand Shrines of Kumano:
-> Kumano Hongū Taisha (熊野本宮大社), Kumano Nachi Taisha
-> (熊野那智大社) and Kumano Hayatama Taisha (熊野速玉大社).
+The mountain spit us out on the other side into Nachi
+Taisha, an expansive Shinto shrine built halfway up its
+face. Along with a breathtaking view out to the Pacific,
+the shrine also overlooks Nachi-no-Otaki, Japan's tallest
+waterfall at 133 meters.
 
-> Kumano Nachi Taisha is a Shinto shrine located halfway up
-> Nachi Mountain, about 350 meters above sea level. It has
-> its religious origin in the ancient nature worship of
-> Nachi-no-Otaki. This grand shrine is part of the Kumano
-> Sanzan and major pilgrimage destination.
-
-> Nachi-no-Otaki is 133 meters high and 13 meters wide, it
-> is the tallest waterfall in Japan and can been seen from
-> far out on the Pacific Ocean. Nachi-no-Otaki’s water
-> source is the surrounding broad-leaf evergreen primeval
-> forest. It is a sanctuary of Kumano Nachi Taisha and thus
-> has been protected since ancient times and is used for
-> ascetic training by mountain monks who practice Shugendo,
-> a mixed religion of foreign and indigenous beliefs.
+The end of the hike was a bittersweet moment. While our
+arching feet welcomed it, it was sad to see the trail go.
+We were only partially comfortable by the consolation prize
+of the beautiful vistas before us. We visited the foot
+of the waterfall and checked in at a local inn with an
+eccentric owner who asked for our schedule and nearly
+refused to give us a reservation because he didn't think we
+could make the last leg of our trip in time. The next
+morning we made our way out to the ocean and onward to
+Tokyo.
 
 ![Nachi-no-Otaki](/assets/passages/003-kumano-kodo/nachi-taisha@2x.jpg)
 
 ## Ponto-chō & beautiful alleys (#pontosho)
 
-> Ponto-chō (先斗町) is a Hanamachi district in Kyoto,
-> Japan, known for geiko and maiko and home to many geiko
-> houses and traditional tea houses. Like Gion, Ponto-chō
-> is famous for the preservation of forms of traditional
-> architecture and entertainment.
->
-> Ponto-chō centres around one long, narrow, cobbled alley
-> running from Shijō-dōri to Sanjō-dōri, one block west of
-> the Kamo River (Kamo-gawa). This is also the traditional
-> location of the start of kabuki, and a statue of Okuni
-> still stands on the opposite side of the river. The
-> district crest is a stylized water plover or chidori.
+Like a hundred million visitors to Japan before us, we made
+our way through Kyoto. We visited the traditional
+attractions like [Fushimi Inari-taisha][fushimiinari]
+(recognizable by its rows of hundreds of brightly painted
+_torii_) and [Nijō Castle][nijocastle], but I was most
+impressed by Kyoto's alleys. There's a famous one running
+through the Ponto-chō district parallel to the Kamo river
+that's particularly spectacular.
+
+Lined with restaurants and businesses on both sides and
+hundreds of people milling about to see them, it's
+as vibrant of a public place as you'll ever find. Small and
+human-scale, here it's people who are given priority
+instead of the screaming traffic found on most city
+streets.
 
 ![Ponto-chō](/assets/passages/003-kumano-kodo/pontocho@2x.jpg)
 
 ## Wabi-sabi & aged leather (#wabisabi)
 
-> In traditional Japanese aesthetics, Wabi-sabi (侘寂) is a
-> world view centered on the acceptance of transience and
-> imperfection.[2] The aesthetic is sometimes described as
-> one of beauty that is "imperfect, impermanent, and
-> incomplete".[3] It is a concept derived from the Buddhist
-> teaching of the three marks of existence (三法印
-> sanbōin), specifically impermanence (無常 mujō),
-> suffering (苦 ku) and emptiness or absence of self-nature
-> (空 kū).
->
-> Characteristics of the wabi-sabi aesthetic include
-> asymmetry, roughness, simplicity, economy, austerity,
-> modesty, intimacy, and appreciation of the ingenuous
-> integrity of natural objects and processes.
+The last time a sole failed on one of my boots, I did
+something unconventional. Instead of throwing it out, I
+repaired it. While not quite the point of a existential
+alarm, I've found it a little disturbing in recent years
+just how disposable everything I own is. Half of it seems
+designed with planned obsolescence in mind (I can measure
+the year by counting how many Sennheiser earphones I sent
+back for warranty), and half of it is just junk. Where
+possible, I've been making an effort to buy higher quality
+products that have some chance of longevity.
 
-> A good example of this embodiment may be seen in certain
-> styles of Japanese pottery. In the Japanese tea ceremony,
-> the pottery items used are often rustic and
-> simple-looking
+I wore these boots for the length of our hike in Japan. To
+my pleasure, the trip only made them better. The leather
+darkened, and they picked up a few more nicks and lines.
+There's something distinctly beautiful about an object
+that's aged well -- it's imperfect, and you can see history
+and obvious ephemerality in its rugged appearanced. The
+Japanese call this idea [_wabi-sabi_][wabisabi], an
+aesthetic derived from the Buddhist teachings of the three
+marks of existence.
 
 ![Thousand Mile boots](/assets/passages/003-kumano-kodo/thousand-mile@2x.jpg)
 
 ## Rust and the pursuit of reliable software (#rust)
 
 ## Twin Peaks (#twin-peaks)
-
-[funicular]: https://en.wikipedia.org/wiki/Funicular
-[kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
-[unsubscribe]: %unsubscribe_url%
 
 [1] Tatami units.
 
@@ -255,3 +282,11 @@ Greeted by Keiko's name on the side of the inn.
 >
 > Shops were traditionally designed to be ​5 1⁄2 mats,
 > and tea rooms are frequently ​4 1⁄2 mats.
+
+[funicular]: https://en.wikipedia.org/wiki/Funicular
+[fushimiinari]: https://en.wikipedia.org/wiki/Fushimi_Inari-taisha
+[kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
+[nijocastle]: https://en.wikipedia.org/wiki/Nij%C5%8D_Castle
+[passages002]: https://brandur.org/passages/002-japan
+[unsubscribe]: %unsubscribe_url%
+[wabisabi]: https://en.wikipedia.org/wiki/Wabi-sabi
