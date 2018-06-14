@@ -127,6 +127,34 @@ func TestTransformFootnotes(t *testing.T) {
 	)
 }
 
+func TestTransformFootnotes_WithoutLinks(t *testing.T) {
+	assert.Equal(t, `
+<p>This is a reference <sup><strong>1</strong></sup> to a footnote <sup><strong>2</strong></sup>.</p>
+
+<p>Not footnote: KEYS[1].</p>
+
+
+<div id="footnotes">
+  <p><sup><strong>1</strong></sup> Footnote one.</p>
+
+<p><sup><strong>2</strong></sup> Footnote two.</p>
+
+</div>
+`,
+		transformFootnotes(`
+<p>This is a reference [1] to a footnote [2].</p>
+
+<p>Not footnote: KEYS[1].</p>
+
+<p>[1] Footnote one.</p>
+
+<p>[2] Footnote two.</p>
+`,
+			&RenderOptions{NoFootnoteLinks: true},
+		),
+	)
+}
+
 func TestTransformHeaders(t *testing.T) {
 	assert.Equal(t, `
 <h2 id="intro"><a href="#intro">Introduction</a></h2>

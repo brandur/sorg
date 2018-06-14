@@ -86,9 +86,10 @@ func Compile(dir, name string, draft bool, email bool) (*Passage, error) {
 	}
 
 	passage.Content = markdown.Render(content, &markdown.RenderOptions{
-		AbsoluteURLs:  email,
-		NoHeaderLinks: email,
-		NoRetina:      true,
+		AbsoluteURLs:    email,
+		NoFootnoteLinks: email,
+		NoHeaderLinks:   email,
+		NoRetina:        true,
 	})
 
 	return &passage, nil
