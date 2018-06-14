@@ -108,6 +108,18 @@ html lang="en"
         text-align: center;
       }
 
+      #footnotes {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-botto: 30px;
+        margin-top: 30px;
+      }
+
+      #footnotes p {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
       #container {
         margin: 0 auto;
         max-width: 550px;
