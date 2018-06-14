@@ -32,6 +32,9 @@ type RenderOptions struct {
 	// URLs with absolute URLs.
 	AbsoluteURLs bool
 
+	// NoFootnoteLinks disables linking to and from footnotes.
+	NoFootnoteLinks bool
+
 	// NoHeaderLinks disables automatic permalinks on headers.
 	NoHeaderLinks bool
 
@@ -133,6 +136,10 @@ const footnoteAnchorHTML = `
 </sup>
 `
 
+// Same as footnoteAnchorHTML but without a link(this is used when sending
+// emails).
+const footnoteAnchorHTMLWithoutLink = `<sup><strong>%s</strong></sup>`
+
 // HTML for a reference to a footnote within the document.
 //
 // Make sure there's a single space before the <sup> because we're replacing
@@ -142,6 +149,13 @@ const footnoteReferenceHTML = `
   <a href="#footnote-%s">%s</a>
 </sup>
 `
+
+// Same as footnoteReferenceHTML but without a link (this is used when sending
+// emails).
+//
+// Make sure there's a single space before the <sup> because we're replacing
+// one as part of our search.
+const footnoteReferenceHTMLWithoutLink = ` <sup><strong>%s</strong></sup>`
 
 // Look for the section the section at the bottom of the page that looks like
 // <p>[1] (the paragraph tag is there because Markdown will have already
@@ -165,7 +179,13 @@ func transformFootnotes(source string, options *RenderOptions) string {
 			// first create a footnote with an anchor that links can target
 			matches := footnoteRE.FindStringSubmatch(footnote)
 			number := matches[1]
-			anchor := fmt.Sprintf(footnoteAnchorHTML, number, number, number) + matches[2]
+
+			var anchor string
+			if options != nil && options.NoFootnoteLinks {
+				anchor = fmt.Sprintf(footnoteAnchorHTMLWithoutLink, number) + matches[2]
+			} else {
+				anchor = fmt.Sprintf(footnoteAnchorHTML, number, number, number) + matches[2]
+			}
 
 			// Then replace all references in the body to this footnote.
 			//
@@ -174,7 +194,12 @@ func transformFootnotes(source string, options *RenderOptions) string {
 			// strings that look like footnote references, but aren't.
 			// `KEYS[1]` from `/redis-cluster` is an example of one of these
 			// strings that might be a false positive.
-			reference := fmt.Sprintf(footnoteReferenceHTML, number, number, number)
+			var reference string
+			if options != nil && options.NoFootnoteLinks {
+				reference = fmt.Sprintf(footnoteReferenceHTMLWithoutLink, number)
+			} else {
+				reference = fmt.Sprintf(footnoteReferenceHTML, number, number, number)
+			}
 			source = strings.Replace(source,
 				fmt.Sprintf(` [%s]`, number),
 				collapseHTML(reference), -1)
