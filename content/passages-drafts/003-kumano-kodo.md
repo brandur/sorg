@@ -5,13 +5,14 @@ published_at: 2017-12-24T06:57:39Z
 
 ![The Kumano Kodo](/assets/passages/003-kumano-kodo/shining-light@2x.jpg)
 
-Hello ... from the past. I'd intended to send this letter
-out about four months ago, but am somehow only getting
-around to it now. I picked out the photography that you're
-about to see last December, but the pictures brought back
-memories of such beautiful places that for the longest
-time, I didn't feel up to writing the words to fill the
-space between them.
+Hello ... from the past.
+
+I'd intended to write about four months ago, but am only
+getting around to it now. I'd picked out the photographs
+that I wanted to use last December, but looking at them in
+my draft brought back memories of such beautiful places
+that for the longest time, I didn't feel up to writing the
+words to fill the gaps (I still don't, but it's time).
 
 Last year I wrote about a trip to Japan, but even after a
 few thousand words of prose, I was only halfway done --
