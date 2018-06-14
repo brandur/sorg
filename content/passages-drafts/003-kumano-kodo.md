@@ -126,15 +126,19 @@ another two days of hiking and an overnight in a charming
 small town called Chikatsuyu-oji, we reached Yunomine
 Onsen.
 
-In [002][passages002] I talked about certain villages famed
-for their onsens might adopt the word into their name. This
-is the case for Yunomine -- a little cluster of inns tucked
-into a valley in the hart of the Kumano mountains. This was
-the one night on our hike that we'd splurged on a hotel,
-and as we climbed its steps we were greeted by Keiko's name
-drawn out in elaborate hand-written Kanji. The inn would
-draw out the complete set of names of their guests every
-morning.
+In [Passages 002][passages002] I talked about certain
+villages famed for their onsens might adopt the word into
+their name. This is the case for Yunomine -- a little
+cluster of inns tucked into a valley in the hart of the
+Kumano mountains. This was the one night on our hike that
+we'd splurged on a hotel, and as we climbed its steps we
+were greeted by Keiko's name drawn out in elaborate
+hand-written Kanji. Every morning, the innkeepers wake up
+and write out the names of the dozen or so guests who will
+be staying the night.
+
+The inn would draw out the complete set
+of names of their guests every morning.
 
 Our room was large and minimally furnished in the most
 tasteful possible way, with only a single low table
