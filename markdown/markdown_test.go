@@ -125,9 +125,8 @@ func TestTransformFootnotes(t *testing.T) {
 			nil,
 		),
 	)
-}
 
-func TestTransformFootnotes_WithoutLinks(t *testing.T) {
+	// Without links
 	assert.Equal(t, `
 <p>This is a reference <sup><strong>1</strong></sup> to a footnote <sup><strong>2</strong></sup>.</p>
 
