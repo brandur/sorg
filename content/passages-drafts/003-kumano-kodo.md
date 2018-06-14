@@ -15,21 +15,20 @@ that for the longest time, I didn't feel up to writing the
 words to fill the gaps (I still don't, but it's time).
 
 Last year I wrote about a trip to Japan, but even after a
-few thousand words of prose, I was only halfway done --
-this is the missing second half. Last time I wrote about
-how the country's metropolises are the best in the world.
-That was true, but what I didn't talk about was how the
-country also has the most beautiful wilderness on the
-planet as well. Before going back to spend time in Tokyo,
-Keiko and I spent a week down south in the Wakayama
-Prefecture, making our way across the peninsula by way of a
-series of ancient pilgrimage routes called the Kumano Kodo.
+few thousand words of prose I was only halfway done. I
+talked about how the country has some of those best
+metropolises in the world. This time I'll try to convince
+you that it has some of the greatest wild areas on the
+planet too. Before going to Tokyo, Keiko and I spent a week
+down south in the Wakayama Prefecture, making our way
+across the peninsula by way of a network of ancient
+pilgrimage routes called the Kumano Kodo.
 
-Fair warning that I'm about to talk about hiking, a lot.
-I'm holding a rough pace of 3-4 messages a year, so I hope
-you'll consider this the polar opposite of spam, but as
-always you can [unsubscribe instantly by clicking
-here][unsubscribe].
+I'm about to talk about hiking, a lot. I'm holding a rough
+pace of 3-4 messages a year, so I hope you'll consider this
+newsletter to be as far opposite on the continuum from spam
+as you can go, but as always, you can [click here to never
+hear from me again][unsubscribe].
 
 ![Torii at Mount Koya](/assets/passages/003-kumano-kodo/torii@2x.jpg)
 
