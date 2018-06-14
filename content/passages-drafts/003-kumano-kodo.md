@@ -266,7 +266,26 @@ marks of existence.
 
 ## Rust and the pursuit of reliable software (#rust)
 
-## Twin Peaks (#twin-peaks)
+I've been working a lot recently with [Rust][rust]. It's
+developed a bit of a reputation for its Haskell-esque (and
+some might say Kakfa-esque as well) strictness when it
+comes to compile-time checks, and at first I found working
+with it to be intolerably difficult. But after a few months
+those walls finally started to break down and I started to
+like it, a lot.
+
+Its oft-stated benefits like type safety, efficient use of
+memory, and great performance are all true, but beyond
+that there's just an element of consistency and good taste
+that pervades throughout the language's design. It's a
+pleasure to work with. Mistakes get fixed (exemplified by
+the recent release of `impl Trait` and the upcoming rebuild
+of futures and addition of native `async`/`await`. Its
+community is helpful to a fault.
+
+I wrote a piece about [building a web application in
+Rust][rustweb] and another about [overcoming its sharp
+edges][rustreflections].
 
 [1] Tatami units.
 
@@ -292,5 +311,8 @@ marks of existence.
 [kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
 [nijocastle]: https://en.wikipedia.org/wiki/Nij%C5%8D_Castle
 [passages002]: https://brandur.org/passages/002-japan
+[rust]: https://www.rust-lang.org/en-US/
+[rustreflections]: https://brandur.org/fragments/rust-reflections
+[rustweb]: https://brandur.org/rust-web
 [unsubscribe]: %unsubscribe_url%
 [wabisabi]: https://en.wikipedia.org/wiki/Wabi-sabi
