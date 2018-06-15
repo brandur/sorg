@@ -159,11 +159,11 @@ innkeepers wake up and carefully write out the names of the
 travelers who will be staying the night.
 
 Our room was large and minimally furnished in the most
-tasteful way possible, with only a single low table
-ornamenting its expansive floors (like at Koya, bedding
-would appear for us later in the night). A balcony
-surrounded by neatly-trimmed trees gave us a perfect
-vantage onto the tiny village.
+tasteful way possible, with a single low table ornamenting
+its expansive floors (like at Koya, bedding would appear
+for us later in the night). A balcony surrounded by
+neatly-trimmed trees gave us a perfect vantage onto the
+tiny village.
 
 A common pastime for locals and visitors alike is to slow
 boil eggs in the hot spring's waters, and we found half a
@@ -171,8 +171,9 @@ dozen people working on just that when we arrived -- you
 can see some being sold for cooking in the photo below.
 Later in the trip we'd visit Ōwakudani ("Great Boiling
 Valley") on the slopes of Mount Hakone (an active volcano),
-where the onsen eggs come out black, having picked up
-coloration from the sulfur springs where they're cooked.
+where the onsen eggs come out a shade of soot black, having
+picked up coloration from the sulfur springs where they're
+cooked.
 
 ![Onsen eggs](/assets/passages/003-kumano-kodo/eggs@2x.jpg)
 
@@ -191,27 +192,27 @@ registered UNESCO World Heritage Site.
 ![Tsuboyu (outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
 
 It's a popular bathhouse for couples -- probably because
-it's the coziest of quarters. As we squeezed into its
-perfectly blue waters, we realized that even just the two
-of us were going to be a tight fit. Getting into the
-bathhouse is an adventure of its own, involving a walk down
-to the other side of the village where you can negotiate
-with an elderly gentleman for a placard which you will hang
-above the door as you enter. Its sequentially-assigned
-number that signals to waiting groups roughly how long they
-have until it's their turn in the cabin (we were waiting
-on group "7" above).
+its cozy quarters won't hold much beyond. As we squeezed
+into its perfectly blue waters, we realized that even just
+the two of us were going to be a tight fit. Getting into
+the bathhouse is an adventure of its own, involving a walk
+down to the other side of the village where you can
+negotiate with an elderly gentleman for a placard which you
+will hang above the door as you enter. These placards are
+distributed sequentially and show a number that signals to
+waiting groups roughly how long they have until it's their
+turn in the cabin (we were waiting on group "7" above).
 
 ![Tsuboyu (inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
 
-## Final day (#final-day)
+## The road to Nachi Taisha (#nachi-taisha)
 
 The last day of our hike involved trekking over a mountain
 blanketed in a broadleaf evergreen forest. Unlike most
 mountains you can climb, this one features stone-cut stairs
-the whole way up and down, all of them laboriously dragged
-there over decades one by one. It was cool and quiet. The
-number of other hikers we passed along the way were counted
+the whole way up and down, each of them laboriously dragged
+into place over decades. It was cool and quiet. The number
+of other hikers we passed along the way were counted
 comfortably on one hand.
 
 ![Coins at a shrine](/assets/passages/003-kumano-kodo/coins@2x.jpg)
