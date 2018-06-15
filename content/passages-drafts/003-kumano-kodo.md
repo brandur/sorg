@@ -1,5 +1,5 @@
 ---
-title: The Kumano Kodo, Old Baths, Pedantic
+title: The Kumano Kodo, Ancient Baths, Meticulous
   Compilers
 published_at: 2017-12-24T06:57:39Z
 ---
