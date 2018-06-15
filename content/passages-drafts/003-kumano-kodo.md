@@ -20,9 +20,9 @@ talked about how the country has some of those best
 metropolises in the world. This time I'll try to convince
 you that it has some of the greatest wild areas on the
 planet too. Before going to Tokyo, Keiko and I spent a week
-down south in the Wakayama Prefecture, making our way
-across the peninsula by way of a network of ancient
-pilgrimage routes called the Kumano Kodo.
+down south in the Wakayama Prefecture, making our way from
+coast to coast by way of a network of ancient pilgrimage
+routes called the Kumano Kodo.
 
 I'm about to talk about hiking, a lot. I'm holding a rough
 pace of 3-4 messages a year, so I hope you'll consider this
@@ -32,13 +32,15 @@ hear from me again][unsubscribe].
 
 ![Torii at Mount Koya](/assets/passages/003-kumano-kodo/torii@2x.jpg)
 
-Walking the Kumano Kodo is a singular experience. We might
-think of Japan as a crowded island, but the lush greenery
-surrounding you is pristine. The stones underfoot look a
-thousand years ago, and the _torii_ arches overhead follow
-a cultural tradition that's even older. I'm not a
-particularly spiritual person, but I felt the ancient kami
-of Japan. They were with me every step.
+We in the west tend to think of Japan as a crowded island,
+but the lush greenery of its wilderness is pristine.
+Walking the Kumano Kodo is a singular experience. The
+stones underfoot look a thousand years old, and the _torii_
+arches overhead follow a cultural tradition that's even
+older. Your days are spent in perfect tranquility and your
+nights are spent in perfect relaxation at ryokan along the
+way. You feel the country's ancient [kami] with you at
+every step.
 
 ## Mount Koya (#mount-koya)
 
@@ -308,6 +310,7 @@ edges][rustreflections].
 
 [funicular]: https://en.wikipedia.org/wiki/Funicular
 [fushimiinari]: https://en.wikipedia.org/wiki/Fushimi_Inari-taisha
+[kami]: https://en.wikipedia.org/wiki/Kami
 [kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
 [nijocastle]: https://en.wikipedia.org/wiki/Nij%C5%8D_Castle
 [passages002]: https://brandur.org/passages/002-japan
