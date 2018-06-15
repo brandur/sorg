@@ -39,7 +39,7 @@ stones underfoot look a thousand years old, and the _torii_
 arches overhead follow a cultural tradition that's even
 older. Your days are spent in perfect tranquility and your
 nights are spent in perfect relaxation at ryokan along the
-way. You feel the country's ancient [kami] with you at
+way. You feel the country's ancient [_kami_] with you at
 every step.
 
 ## Mount Koya (#mount-koya)
