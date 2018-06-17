@@ -39,26 +39,26 @@ Walking the Kumano Kodo is a singular experience. The
 stones underfoot look a thousand years old, and the _torii_
 arches overhead are timeless. Days are spent in perfect
 tranquility in the fresh mountain air and nights are spent
-in perfect relaxation at ryokan along the way. The
-country's ancient [_kami_][kami] are with you at every
-step.
+in perfect relaxation at ryokan along the way. You feel the
+country's ancient [_kami_][kami] with every step.
 
 ## Mount Koya (#mount-koya)
 
 Our journey started at a busy train station in Osaka. We
 boarded a train and headed south. A few more people would
-get off at every stop, and gradually the big city crowds
-thinned out. Eventually we were far enough of town that we
-had the train largely to ourselves.
+get off at every stop along the way, and gradually the big
+city crowds thinned out. Eventually we found that we had
+the train largely to ourselves.
 
 Our first destination was Mount Koya (Kōyasan), a holy
-mountain playing host to a tiny Shinto town (Kōya-chō)
-that's built around an incredible 120-odd temples.
-Normally, it's possible to reach the town by taking a train
-and transferring onto a mountain-scaling [funicular], but
-this route was out of operation indefinitely due to damage
-from a recent typhoon. Instead, we took a bus up through
-the mountain's winding roads.
+mountain with a small Shinto town (Kōya-chō) built high on
+its slopes. First settled by monks around the year 800,
+Kōya-chō has grown to host an incredible 120-odd temples
+today. Normally, it's possible to reach the town by taking
+a train and transferring onto a mountain-scaling
+[funicular], but this route was out of operation
+indefinitely due to damage from a recent typhoon. Instead,
+we took a bus up through the mountain's winding roads.
 
 As the bus rounds one last hairpin bend, you get your first
 glance of Kōya-chō as the magnificent Daimon Gate
@@ -135,11 +135,11 @@ leaving the mountain.
 ## Yunomine Onsen (#yunomine)
 
 Koya's technically reachable along the Kumano Kodo, but
-along a leg that wasn't possible in our time budget.
+along a leg that wasn't possible in our budgeted time.
 Instead, we bused back down to a coastal town called
 Tanabe, and our real journey began the next morning as we
-set out from its local trailhead. After another two days
-of hiking and an overnight in a charming small town called
+set out from its local trailhead. After another two days of
+hiking and an overnight in a charming small town called
 Chikatsuyu-oji, we reached Yunomine Onsen.
 
 In [Passages 002][passages002] I talked about certain
@@ -154,16 +154,15 @@ boiling water bubbling out of the earth.
 This was the one night on our hike that we'd splurged on a
 hotel, and as we climbed its steps we were surprised to see
 Keiko's name drawn out in elaborate hand-written Kanji next
-to the door. It turned out that every morning the
-innkeepers wake up and carefully write out the names of the
-travelers who will be staying the night.
+to the door. Every morning the innkeepers wake up and
+carefully write out the names of all the travelers who will
+be staying the night.
 
 Our room was large and minimally furnished in the most
 tasteful way possible, with a single low table ornamenting
 its expansive floors (like at Koya, bedding would appear
-for us later in the night). A balcony surrounded by
-neatly-trimmed trees gave us a perfect vantage onto the
-tiny village.
+later in the night). A balcony surrounded by neatly-trimmed
+trees gave us a perfect vantage onto the tiny village.
 
 A common pastime for locals and visitors alike is to slow
 boil eggs in the hot spring's waters, and we found half a
@@ -192,16 +191,16 @@ registered UNESCO World Heritage Site.
 ![Tsuboyu (outside)](/assets/passages/003-kumano-kodo/tsuboyu-1@2x.jpg)
 
 It's a popular bathhouse for couples -- probably because
-its cozy quarters won't hold much beyond. As we squeezed
-into its perfectly blue waters, we realized that even just
-the two of us were going to be a tight fit. Getting into
-the bathhouse is an adventure of its own, involving a walk
-down to the other side of the village where you can
-negotiate with an elderly gentleman for a placard which you
-will hang above the door as you enter. These placards are
-distributed sequentially and show a number that signals to
-waiting groups roughly how long they have until it's their
-turn in the cabin (we were waiting on group "7" above).
+its cozy quarters won't hold much else. As we squeezed into
+its perfectly blue waters, we realized that even just the
+two of us were going to be a tight fit. Getting into the
+bathhouse is an adventure of its own, involving a walk down
+to the other side of the village where you can negotiate
+with an elderly gentleman for a placard which you will hang
+above the door as you enter. The placards are distributed
+sequentially, and show a number that signals to waiting
+groups roughly how long they have until it's their turn in
+the cabin (we were waiting on group "7" above).
 
 ![Tsuboyu (inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
 
@@ -227,15 +226,15 @@ face. Along with a breathtaking view out to the Pacific,
 the shrine also overlooks Nachi-no-Otaki, Japan's tallest
 waterfall at 133 meters.
 
-The end of the hike was a bittersweet moment. While our
-sore feet welcomed it, it was sad to see the trail go, and
-we were only partially comforted by the beautiful vistas
+The end of the hike was a bittersweet moment. Our sore feet
+welcomed it, but it was sad to see the trail go, and we
+were only partially comforted by the beautiful vistas
 before us as a consolation prize. We visited the foot of
 the waterfall and checked in at a local inn with an
-eccentric owner who'd asked for our hiking schedule and
+eccentric owner who'd asked for our hiking schedule, and
 nearly refused to give us a reservation because he didn't
-think we could make the last leg of our trip in time. The
-next morning we made our way out to the ocean and onward to
+think we'd make the last leg of our trip in time. The next
+morning we made our way out to the ocean and onward to
 Tokyo.
 
 ![Nachi-no-Otaki](/assets/passages/003-kumano-kodo/nachi-taisha@2x.jpg)
@@ -245,11 +244,11 @@ Tokyo.
 Like a hundred million visitors to Japan before us, we made
 our way through Kyoto. We visited the traditional
 attractions like [Fushimi Inari-taisha][fushimiinari]
-(recognizable by its rows of hundreds of brightly painted
-_torii_) and [Nijō Castle][nijocastle], but I was most
-impressed by Kyoto's alleys. There's a famous one running
-through the Ponto-chō district parallel to the Kamo river
-that's particularly spectacular.
+(recognizable by its rows of hundreds of _torii_ painted in
+a bright vermilion) and [Nijō Castle][nijocastle], but I
+was most impressed by Kyoto's alleys. There's a famous one
+running through the Ponto-chō district parallel to the Kamo
+river that's particularly spectacular.
 
 Lined with restaurants and businesses on both sides and
 hundreds of people milling about to see them, it's
@@ -257,7 +256,7 @@ as vibrant of a public place as you'll ever find. Small and
 human-scale, here it's people who are given priority
 instead of the screaming traffic found on most city
 streets. I found myself wondering what an entire city built
-on this premise would look like.
+like _Ponto-chō_ would look like.
 
 ![Ponto-chō](/assets/passages/003-kumano-kodo/pontocho@2x.jpg)
 
@@ -266,8 +265,8 @@ on this premise would look like.
 The last time a sole failed on one of my boots, I did
 something unconventional. Instead of throwing the pair of
 them out, I repaired the broken boot. While not quite the
-point of a existential alarm, I've found it a little
-disturbing in recent years just how disposable everything I
+point of a existential alarm, I'm more than a little
+disturbed these days by just how disposable everything I
 own is. Half of it seems designed with planned obsolescence
 in mind (I can measure the year by counting how many
 Sennheiser earphones I send back for warranty), and half of
