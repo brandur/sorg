@@ -1,0 +1,16 @@
+= content main
+  .flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+    .toc-index
+    .content
+      .content-inner-standard
+        #title
+          h1 Passages & Glass
+        #now
+          p I run a personal newsletter called <em>Passages & Glass</em> about exploration, ideas, and software. So far it's been about the world's least frequently sent newsletter, averaging about three to four times a year – I like to think that it's about as far opposite on the continuum from spam as you can go. It contains no marketing, and really is just a collection of stories and thinking in a less formal medium.
+          p You should consider signing up to get it. You can do so <a href="https://passages-signup.herokuapp.com/" rel="nofollow">right here</a>.
+          p
+            img.overflowing src="/assets/newsletter/panorama-ridge.jpg" data-rjs="2"
