@@ -318,6 +318,24 @@ edges][rustreflections].
 
 ## GraphQL & the future of web APIs (#graphql)
 
+I've been thinking about web APIs lately, specifically
+about the status quo, possibilities for the future, and
+where the industry is going from here. We reveled in our
+own ingenuity when we banished SOAP, but did we make things
+all that much better? Today's generation of REST APIs are
+widespread, but they share little with each other beyond a
+response format (JSON) and some loose conventions around
+mapping HTTP verbs to CRUD actions. The promises of
+discoverability, change resistance, and automation made by
+hypermedia never materialized.
+
+I wrote a [a recent piece on GraphQL][graphql], a
+technology which I find to have a number of interesting
+properties. It's improved queryability, built-in ability to
+self-describe, and predisposition to be gracefully evolved
+would be a vast improvement over the loose conventions of
+the world of semi-REST that we have today.
+
 [1] In Japan, it's common even today to measure the size of
 a room by the number of tatami mats that fit in it. A
 standard Nagoya-sized tatami is about 1.653 square meters,
@@ -329,6 +347,7 @@ and tea rooms 4 1/2 mats.
 
 [funicular]: https://en.wikipedia.org/wiki/Funicular
 [fushimiinari]: https://en.wikipedia.org/wiki/Fushimi_Inari-taisha
+[graphql]: https://brandur.org/graphql
 [kami]: https://en.wikipedia.org/wiki/Kami
 [kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
 [nijocastle]: https://en.wikipedia.org/wiki/Nij%C5%8D_Castle
