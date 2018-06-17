@@ -44,11 +44,11 @@ country's ancient [_kami_][kami] with every step.
 
 ## Mount Koya (#mount-koya)
 
-Our journey started at a busy train station in Osaka. We
-boarded a train and headed south. A few more people would
-get off at every stop along the way, and gradually the big
-city crowds thinned out. Eventually we found that we had
-the train largely to ourselves.
+Our journey started at the busy central station in Osaka,
+where we boarded a train and headed south. A few more
+people would get off at every stop along the way, and
+gradually the big city crowds thinned out. Eventually we
+found that we had the train largely to ourselves.
 
 Our first destination was Mount Koya (Kōyasan), a holy
 mountain with a small Shinto town (Kōya-chō) built high on
@@ -72,7 +72,7 @@ Most of the accommodation on the mountain comes in the form
 of _shukubō_, or "temple lodgings". Monks running the local
 temples open their doors to visitors, who are fed, clothed
 (with ever-practical [yukatas][yukata]), and given a place
-to stay and bathe in return for a fee.
+to stay and bathe in return for a small fee.
 
 The temples are better run than any hotel. We walked
 through the front door of the one we'd selected (Jokiin)
@@ -267,12 +267,12 @@ something unconventional. Instead of throwing the pair of
 them out, I repaired the broken boot. While not quite the
 point of a existential alarm, I'm more than a little
 disturbed these days by just how disposable everything I
-own is. Half of it seems designed with planned obsolescence
-in mind (I can measure the year by counting how many
-Sennheiser earphones I send back for warranty), and half of
-it is just junk. Where possible, I've been making an effort
-to buy higher quality products that have some chance of
-longevity.
+own tends to be. Half of it seems designed with planned
+obsolescence in mind (I can measure the year by counting
+how many Sennheiser earphones I send back for warranty),
+and half of it is just junk. Where possible, I've been
+making an effort to buy higher quality products that have
+some chance of longevity.
 
 I wore these boots for the length of our hike in Japan, and
 to my pleasure, the trip only had the effect of bringing
@@ -334,6 +334,14 @@ properties. It's improved queryability, built-in ability to
 self-describe, and predisposition to be gracefully evolved
 would be a vast improvement over the loose conventions of
 the world of semi-REST that we have today.
+
+## Until next time (#next-time)
+
+If you made it this far, you've just read 2,000+ words
+about Japan and software, which is more than I'd expect
+from anyone -- thanks for reading! I'll try not to wait
+another half year before writing again, but as usual, you
+can hear from me sooner by replying to this message.
 
 [1] In Japan, it's common even today to measure the size of
 a room by the number of tatami mats that fit in it. A
