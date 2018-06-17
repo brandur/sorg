@@ -82,20 +82,22 @@ a smiling hostess, led down the hall to an entry room,
 seated, and served tea while we finalized a few details on
 the paperwork.
 
-We were taken down long echoing hallways to our room, off
-one wing of the temple and overlooking its immaculate
-garden. Accommodation in Japan can often be quite small --
-often just a few tatami mats in size [1], and that
-constraint forces a certain creativity in the use of the
-space. Rooms are silently transformed while you're out in
-the evening, from a mostly empty space for sitting, to one
-with an unfurled bed suitable for sleeping. In a place like
-Jokiin where your meals are served in-room, there's also an
-intermediate transformation to prepare it for dinner. We'd
-often find monks quietly checking in on our room, hoping
-that we were out so that they could take the opportunity to
-rearrange it. We couldn't spend too much time in the room
-or we'd compromise their precise schedules.
+We walked down long echoing hallways to our room, off a
+wing of the temple that overlooked its immaculate garden.
+Accommodation in Japan can often be quite small -- just a
+few tatami mats in size [1], and that constraint forces a
+certain creativity in the use of the space. Rooms are
+silently transformed while you're out in the evening, from
+a mostly empty space for sitting, to one with an unfurled
+bed suitable for sleeping. In a place like Jokiin where
+your meals are served in-room, there's also an intermediate
+transformation to prepare it for dinner. We'd often find
+monks quietly checking in on our room, hoping that we were
+out so that they could take the opportunity to rearrange
+it. We couldn't spend too much time in the room or we'd
+compromise their precise schedules.
+
+![Jokiin](/assets/passages/003-kumano-kodo/jokiin@2x.jpg)
 
 ### The kotatsu (#kotatsu)
 
@@ -339,9 +341,10 @@ the world of semi-REST that we have today.
 
 If you made it this far, you've just read 2,000+ words
 about Japan and software, which is more than I'd expect
-from anyone -- thanks for reading! I'll try not to wait
-another half year before writing again, but as usual, you
-can hear from me sooner by replying to this message.
+from anyone -- thanks for reading it all the way through!
+I'll try not to wait another half year before writing
+again, but as usual, you can hear from me sooner by
+replying to this message.
 
 [1] In Japan, it's common even today to measure the size of
 a room by the number of tatami mats that fit in it. A
