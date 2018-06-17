@@ -5,6 +5,7 @@ published_at: 2018-06-08T19:26:48Z
 hook: Why it makes sense to model APIs as graphs, and what
   GraphQL can do for us to help with discovery, batch
   operations, and gradual enhancement.
+hn_link: https://news.ycombinator.com/item?id=17269028
 ---
 
 It's hard to read exactly where GraphQL stands in the API
