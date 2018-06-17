@@ -99,6 +99,8 @@ compromise their precise schedules.
 
 ![Jokiin](/assets/passages/003-kumano-kodo/jokiin@2x.jpg)
 
+![A typical in-room meal arrangement at Jokiin](/assets/passages/003-kumano-kodo/jokiin-meal@2x.jpg)
+
 ### The kotatsu (#kotatsu)
 
 The monks' spartan lifestyle is that some of the luxuries
