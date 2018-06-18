@@ -42,7 +42,7 @@ tranquility in the fresh mountain air and nights are spent
 in perfect relaxation at ryokan along the way. You feel the
 country's ancient [_kami_][kami] with every step.
 
-## Mount Koya & a magnificent gate (#mount-koya)
+## Mount Koya & an otherworldly gate (#mount-koya)
 
 Our journey started at the busy central station in Osaka,
 where we boarded a train and headed south. The dense
@@ -130,7 +130,7 @@ powder on the mountain's temple roofs and courtyards -- the
 first snowfall of the season. I ran from Daimon Gate up
 nearby Mount Bentendake, trying to be mindful not to slip
 on the newly slick paths and throw myself into the
-underbrush.
+underbrush [2].
 
 ![First snow at Mount Koya](/assets/passages/003-kumano-kodo/first-snow@2x.jpg)
 
@@ -367,6 +367,13 @@ but the size differs region to region. In Kyoto, mats are
 Tokyo, they're 0.88m by 1.76m and called _Edoma_ tatami.
 Shops were traditionally designed to be 5 1/2 mats in size,
 and tea rooms 4 1/2 mats.
+
+[2] As life would have it, I successfully managed to stay
+on the path while running the treacherously slick slopes of
+Mount Bentendake, but a few months later somehow managed to
+eject myself on a trail run in bone-dry California. I was
+fine, but unfortunately the same couldn't be said for the
+screen on my poor mint-up-to-that-moment iPhone X.
 
 [asyncawait]: https://github.com/rust-lang/rfcs/blob/master/text/2394-async_await.md
 [funicular]: https://en.wikipedia.org/wiki/Funicular
