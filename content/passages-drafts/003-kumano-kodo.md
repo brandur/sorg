@@ -136,7 +136,7 @@ underbrush [2].
 
 We spent the day exploring the spectacular [Okunoin
 cemetary][okunoin] before saying farewell to Kōya-chō and
-leaving the mountain.
+departing the mountain.
 
 ## Yunomine Onsen (#yunomine)
 
