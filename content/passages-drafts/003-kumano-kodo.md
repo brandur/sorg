@@ -217,7 +217,7 @@ blanketed in a broadleaf evergreen forest. Unlike most
 mountains you can climb, this one features stone-cut stairs
 the whole way up and down, each of them laboriously dragged
 into place over decades. It was cool and quiet. The number
-of other hikers we passed along the way were counted
+of other hikers we passed along the way could be counted
 comfortably on one hand.
 
 ![Coins at a shrine](/assets/passages/003-kumano-kodo/coins@2x.jpg)
