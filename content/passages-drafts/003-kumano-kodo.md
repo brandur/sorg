@@ -6,7 +6,7 @@ published_at: 2017-12-24T06:57:39Z
 
 ![The Kumano Kodo](/assets/passages/003-kumano-kodo/shining-light@2x.jpg)
 
-Hello ... from the past.
+Hello from the past.
 
 I'd intended to write about four months ago, but am only
 getting around to it now. I'd picked out the photographs
@@ -42,7 +42,7 @@ tranquility in the fresh mountain air and nights are spent
 in perfect relaxation at ryokan along the way. You feel the
 country's ancient [_kami_][kami] with every step.
 
-## Mount Koya (#mount-koya)
+## Mount Koya & magnificent gates (#mount-koya)
 
 Our journey started at the busy central station in Osaka,
 where we boarded a train and headed south. A few more
@@ -107,7 +107,7 @@ The monks' spartan lifestyle is that some of the luxuries
 that we might take for granted in the west -- like central
 heating -- are non-existent. This time of year the mercury
 sits close to freezing, especially in the mornings and at
-night, and simply walking the temple's halls is a
+night, and a simple walk through the temple's halls is a
 bone-chilling experience. There's an on-site onsen, and its
 healing waters will do wonders to warm you up, but
 afterwards you're left with a real challenge: getting back
@@ -293,29 +293,35 @@ existence.
 
 ## Rust & the pursuit of reliable software (#rust)
 
-I've been working a lot recently with [Rust][rust]. It's
+I've been writing a lot of [Rust][rust]. The language has
 developed a bit of a reputation for its Haskell-esque (and
-some might say Kakfa-esque as well) strictness when it
-comes to compile-time checks. At first, I found working
-with it to be intolerable. The compiler seemed to be
-written to be as pedantic as possible, and some subtle
-problem with borrowing or ownership got in my way of
-everything I tried to do. But after a few months of solid
-focus, those walls finally started to break down and I even
+some might say Kakfa-esque) strictness when it comes to
+compile-time checks, with very strict rules around
+reference counting and object movement in memory (usually
+stack-allocated by convention) specifically. At first, I
+found working with it to be intolerable. The compiler
+seemed to be written to be as pedantic as possible, and
+some subtle problem with borrowing or ownership got in my
+way of everything I tried to do, which left me stuck and
+getting little done. But after a few months of hard
+slogging and solid focus,
+the walls finally started to break down and I even
 started liking it, a lot.
 
 Its oft-stated benefits like type safety, efficient use of
 memory, and great performance are all true, but beyond that
 there's just an element of consistency and good taste that
-pervades throughout the language's design. Unlike most
-other languages, the core team doesn't try to cover up its
-mistakes, and instead they get fixed -- best exemplified
-by the recent release of `impl Trait` and the upcoming
-rebuild of futures and addition of native `async`/`await`.
-Its a pleasure to work with and its community is helpful to
-a fault.
+pervades throughout every part of the language. Unlike
+other popular languages (*cough*, Go), the core team
+doesn't cover up its mistakes, and instead even very
+fundamental design problems get fixed. This is best
+exemplified by the recent release of [`impl
+Trait`][impltrait], and the upcoming futures rebuild and
+addition of [native `async`/`await`][asyncawait]. It's a
+pleasure to work with, and it has the most helpful
+community you can possibly imagine.
 
-I wrote a piece about [building a web application in
+I wrote a piece about [architecting a web application in
 Rust][rustweb] and another about [overcoming its sharp
 edges][rustreflections].
 
@@ -357,9 +363,11 @@ Tokyo, they're 0.88m by 1.76m and called _Edoma_ tatami.
 Shops were traditionally designed to be 5 1/2 mats in size,
 and tea rooms 4 1/2 mats.
 
+[asyncawait]: https://github.com/rust-lang/rfcs/blob/master/text/2394-async_await.md
 [funicular]: https://en.wikipedia.org/wiki/Funicular
 [fushimiinari]: https://en.wikipedia.org/wiki/Fushimi_Inari-taisha
 [graphql]: https://brandur.org/graphql
+[impltrait]: https://github.com/rust-lang/rfcs/blob/master/text/1522-conservative-impl-trait.md
 [kami]: https://en.wikipedia.org/wiki/Kami
 [kotatsu]: https://en.wikipedia.org/wiki/Kotatsu
 [nijocastle]: https://en.wikipedia.org/wiki/Nij%C5%8D_Castle
