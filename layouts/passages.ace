@@ -87,6 +87,12 @@ html lang="en"
         border-bottom: none;
       }
 
+      /* Decrease bottom padding or else the code element background extends
+       * overtop of the link underline. */
+      a code {
+        padding-bottom: 0;
+      }
+
       img {
         margin: 20px 0;
         max-width: 550px;
