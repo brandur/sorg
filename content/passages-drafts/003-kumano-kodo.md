@@ -1,5 +1,5 @@
 ---
-title: The Kumano Kodo, Ancient Baths, Exacting
+title: Mount Koya, Ancient Baths, and Exacting
   Compilers
 published_at: 2018-06-18T03:24:43Z
 ---
