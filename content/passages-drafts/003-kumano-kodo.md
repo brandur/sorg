@@ -1,7 +1,7 @@
 ---
 title: The Kumano Kodo, Ancient Baths, Exacting
   Compilers
-published_at: 2017-12-24T06:57:39Z
+published_at: 2018-06-18T03:24:43Z
 ---
 
 ![The Kumano Kodo](/assets/passages/003-kumano-kodo/shining-light@2x.jpg)
