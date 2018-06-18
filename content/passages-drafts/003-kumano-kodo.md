@@ -329,30 +329,33 @@ edges][rustreflections].
 
 I've been thinking about web APIs lately, specifically
 about the status quo, possibilities for the future, and
-where the industry is going from here. We reveled in our
+where industry is likely going from here. We reveled in our
 own ingenuity when we banished SOAP, but did we make things
 all that much better? Today's generation of REST APIs are
 widespread, but they share little with each other beyond a
-response format (JSON) and some loose conventions around
-mapping HTTP verbs to CRUD actions. The promises of
+common response format (JSON) and some loose conventions
+around mapping HTTP verbs to CRUD actions. The promises of
 discoverability, change resistance, and automation made by
-hypermedia never materialized.
+REST/hypermedia have had ten years to materialize, but
+never have.
 
 I wrote a [a recent piece on GraphQL][graphql], a
-technology which I find to have a number of interesting
-properties. It's improved queryability, built-in ability to
-self-describe, and predisposition to be gracefully evolved
-would be a vast improvement over the loose conventions of
-the world of semi-REST that we have today.
+technology which I find interesting on a number of
+dimensions. Its improved queryability, well-defined
+specification, built-in capacity to self-describe, and
+predisposition to be gracefully evolved would be a vast
+improvement over the patchwork world of semi-REST that we
+have today.
 
-## Until next time (#next-time)
+## Sayonara (#sayonara)
 
 If you made it this far, you've just read 2,000+ words
-about Japan and software, which is more than I'd expect
-from anyone -- thanks for reading it all the way through!
-I'll try not to wait another half year before writing
-again, but as usual, you can hear from me sooner by
-replying to this message.
+about Japan and software, which is more than anyone should
+have to put up with from me -- thanks (and congratulations
+and condolences) for getting all the way through! I'll try
+not to wait another half year before writing again, but as
+usual, you can hear from me sooner by replying to this
+message.
 
 [1] In Japan, it's common even today to measure the size of
 a room by the number of tatami mats that fit in it. A
