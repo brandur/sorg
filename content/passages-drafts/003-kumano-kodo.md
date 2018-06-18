@@ -320,7 +320,7 @@ fundamental design problems get fixed. This is best
 exemplified by the recent release of [`impl
 Trait`][impltrait], and the upcoming futures rebuild and
 addition of [native `async`/`await`][asyncawait]. It's a
-pleasure to work with, and it has the most helpful
+pleasure to work with, and has the most helpful
 community you can possibly imagine.
 
 I wrote a piece about [architecting a web application in
