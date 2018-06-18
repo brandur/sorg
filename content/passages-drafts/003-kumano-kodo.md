@@ -8,7 +8,7 @@ published_at: 2017-12-24T06:57:39Z
 
 Hello from the past.
 
-I'd intended to write about four months ago, but am only
+I'd intended to write about six months ago, but am only
 getting around to it now. I'd picked out the photographs
 that I wanted to use last December, but looking at them in
 my draft brought back memories of such beautiful places
