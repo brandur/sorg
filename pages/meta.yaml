@@ -20,6 +20,9 @@ favors:
   title: Favors
   body_class: quote
 
+glass:
+  title: Passages & Glass
+
 lies:
   title: Lies
   body_class: quote
