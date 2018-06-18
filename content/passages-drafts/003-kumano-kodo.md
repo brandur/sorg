@@ -151,7 +151,7 @@ villages famed for their onsens might adopt the word into
 their name. This is the case for Yunomine -- a little
 cluster of inns tucked into a valley in the heart of the
 Kumano mountains, built around a natural fountain of
-boiling water bubbling out of the earth.
+searing water frothing out of the earth.
 
 ![Yunomine](/assets/passages/003-kumano-kodo/yunomine@2x.jpg)
 
@@ -185,10 +185,10 @@ cooked.
 ### Tsuboyu (#tsuboyu)
 
 The hot spring at Yunomine is _old_. It's considered to be
-one of Japan's oldest, discovered around 1,800 years ago.
-An ancient bathhouse built right on top of the stream
-running through town called Tsuboyu lets you get as close
-as possible to the spring's source, and is considered to be
+one of Japan's oldest, discovered about 1,800 years ago. An
+ancient bathhouse called Tsuboyu that's built right on top
+of the stream running through town lets you get as close as
+possible to the spring's source, and is considered to be
 the only place in the world where you can bathe in a
 registered UNESCO World Heritage Site.
 
@@ -196,15 +196,15 @@ registered UNESCO World Heritage Site.
 
 It's a popular bathhouse for couples -- probably because
 its cozy quarters won't hold much else. As we squeezed into
-its perfectly blue waters, we realized that even just the
-two of us were going to be a tight fit. Getting into the
-bathhouse is an adventure of its own, involving a walk down
-to the other side of the village where you can negotiate
-with an elderly gentleman for a placard which you will hang
-above the door as you enter. The placards are distributed
-sequentially, and show a number that signals to waiting
-groups roughly how long they have until it's their turn in
-the cabin (we were waiting on group "7" above).
+the pool's perfectly blue waters, we realized that even
+just the two of us were going to be a tight fit. Getting
+into the bathhouse is an adventure of its own, involving a
+walk down to the other side of the village where you can
+negotiate with an elderly gentleman for a placard which you
+will hang above the door of Tsuboyu as you enter. They're
+distributed sequentially, and show a number that signals to
+waiting groups roughly how long they have until it's their
+turn in the cabin (we were waiting on group "7" above).
 
 ![Tsuboyu (inside)](/assets/passages/003-kumano-kodo/tsuboyu-2@2x.jpg)
 
