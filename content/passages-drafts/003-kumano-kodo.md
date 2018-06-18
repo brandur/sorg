@@ -28,8 +28,8 @@ routes called the Kumano Kodo.
 I'm about to talk about hiking, a lot. I'm holding a rough
 pace of three to four messages a year, so I hope you'll
 consider this newsletter to be as far opposite on the
-continuum from spam as you can go, but as always, you can
-[click here to never hear from me again][unsubscribe].
+continuum from spam as you can go, but if you don't, you
+can [click here to never hear from me again][unsubscribe].
 
 ![Torii at Mount Koya](/assets/passages/003-kumano-kodo/torii@2x.jpg)
 
@@ -42,13 +42,15 @@ tranquility in the fresh mountain air and nights are spent
 in perfect relaxation at ryokan along the way. You feel the
 country's ancient [_kami_][kami] with every step.
 
-## Mount Koya & magnificent gates (#mount-koya)
+## Mount Koya & a magnificent gate (#mount-koya)
 
 Our journey started at the busy central station in Osaka,
-where we boarded a train and headed south. A few more
-people would get off at every stop along the way, and
-gradually the big city crowds thinned out. Eventually we
-found that we had the train largely to ourselves.
+where we boarded a train and headed south. The dense
+cityscape began to thin out, then disappear, and a few more
+people would get off at every stop along the way. We didn't
+notice exactly when it happened, but eventually the big
+city crowd that we'd started with was gone, and we found
+that we had the train largely to ourselves.
 
 Our first destination was Mount Koya (Kōyasan), a holy
 mountain with a small Shinto town (Kōya-chō) built high on
