@@ -11,9 +11,9 @@ Hello from the past.
 I'd intended to write about six months ago, but am only
 getting around to it now. I'd picked out the photographs
 that I wanted to use last December, but looking at them in
-my draft brought back memories of such beautiful places
-that for the longest time, I didn't feel up to writing the
-words to fill the gaps (I still don't, but it's time).
+my draft brought back such strong memories that for the
+longest time, I didn't feel up to writing the words to fill
+the gaps (I still don't, but it's time).
 
 Last year I wrote about a trip to Japan, but even after a
 few thousand words of prose I was only halfway done. I
@@ -47,7 +47,7 @@ country's ancient [_kami_][kami] with every step.
 Our journey started at the busy central station in Osaka,
 where we boarded a train and headed south. The dense
 cityscape began to thin out, then disappear, and a few more
-people would get off at every stop along the way. We didn't
+people got off at every stop along the way. We didn't
 notice exactly when it happened, but eventually the big
 city crowd that we'd started with was gone, and we found
 that we had the train largely to ourselves.
@@ -59,7 +59,7 @@ Kōya-chō has grown to host an incredible 120-odd temples
 today. Normally, it's possible to reach the town by taking
 a train and transferring onto a mountain-scaling
 [funicular], but this route was out of operation
-indefinitely due to damage from a recent typhoon. Instead,
+indefinitely after damage from a recent typhoon. Instead,
 we took a bus up through the mountain's winding roads.
 
 As the bus rounds one last hairpin bend, you get your first
@@ -76,7 +76,7 @@ temples open their doors to visitors, who are fed, clothed
 (with ever-practical [yukatas][yukata]), and given a place
 to stay and bathe in return for a small fee.
 
-The temples are better run than any hotel. We walked
+The temples are better run than any hotel. We entered
 through the front door of the one we'd selected (Jokiin)
 and were astonished to find a 4-by-6 grid of pairs of
 slippers, arranged in perfect symmetry. We were greeted by
@@ -130,7 +130,8 @@ powder on the mountain's temple roofs and courtyards -- the
 first snowfall of the season. I ran from Daimon Gate up
 nearby Mount Bentendake, trying to be mindful not to slip
 on the newly slick paths and throw myself into the
-underbrush [2].
+underbrush [2]. I found that an old shrine had been built
+on its peak.
 
 ![First snow at Mount Koya](/assets/passages/003-koya/first-snow@2x.jpg)
 
@@ -148,12 +149,12 @@ set out from its local trailhead. After another two days of
 hiking and an overnight in a charming small town called
 Chikatsuyu-oji, we reached Yunomine Onsen.
 
-In [Passages 002][passages002] I talked about certain
-villages famed for their onsens might adopt the word into
-their name. This is the case for Yunomine -- a little
-cluster of inns tucked into a valley in the heart of the
-Kumano mountains, built around a natural fountain of
-searing water frothing out of the earth.
+In [002][passages002] I talked about certain villages famed
+for their onsens might adopt the word into their name. This
+is the case for Yunomine -- a little cluster of inns tucked
+into a valley in the heart of the Kumano mountains, built
+around a natural fountain of searing water frothing out of
+the earth.
 
 ![Yunomine](/assets/passages/003-koya/yunomine@2x.jpg)
 
@@ -232,18 +233,22 @@ face. Along with a breathtaking view out to the Pacific,
 the shrine also overlooks Nachi-no-Otaki, Japan's tallest
 waterfall at 133 meters.
 
+![Nachi-no-Otaki](/assets/passages/003-koya/nachi-taisha@2x.jpg)
+
 The end of the hike was a bittersweet moment. Our sore feet
 welcomed it, but it was sad to see the trail go, and we
 were only partially comforted by the beautiful vistas
 before us as a consolation prize. We visited the foot of
 the waterfall and checked in at a local inn with an
 eccentric owner who'd asked for our hiking schedule, and
-nearly refused to give us a reservation because he didn't
-think we'd make the last leg of our trip in time. The next
-morning we made our way out to the ocean and onward to
-Tokyo.
+refused to give us a reservation because he didn't think
+we'd make the last leg of our trip in time, only
+acquiescing when we promised to call at noon on the day of
+and confirm that we were well passed the halfway point. We
+had, and he let us stay the night.
 
-![Nachi-no-Otaki](/assets/passages/003-koya/nachi-taisha@2x.jpg)
+The next morning we made our way out to the ocean and
+onward to Tokyo.
 
 ## Ponto-chō & beautiful alleys (#pontosho)
 
@@ -287,7 +292,8 @@ picked up a few more nicks and lines. There's something
 distinctly beautiful about an object that's aged well --
 it's imperfect, and you can see history and obvious
 ephemerality in its rugged appearance. The Japanese call
-this idea [_wabi-sabi_][wabisabi], an aesthetic derived
+this idea [_wabi-sabi_][wabisabi], an old aesthetic
+centered around transience and imperfection that's derived
 from the Buddhist teachings of the three marks of
 existence.
 
@@ -346,10 +352,10 @@ technology which I find interesting on a number of
 dimensions. Its improved queryability, well-defined
 specification, built-in capacity to self-describe, and
 predisposition to be gracefully evolved would be a vast
-improvement over the patchwork world of semi-REST that we
-have today.
+improvement over the irregular patchwork world of semi-REST
+that we have today.
 
-## Sayonara (#sayonara)
+## Sayonara (for now) (#sayonara)
 
 If you made it this far, you've just read 2,000+ words
 about Japan and software, which is more than anyone should
