@@ -311,10 +311,9 @@ found working with it to be intolerable. The compiler
 seemed to be written to be as pedantic as possible, and
 some subtle problem with borrowing or ownership got in my
 way of everything I tried to do, which left me stuck and
-getting little done. But after a few months of hard
-slogging and solid focus,
-the walls finally started to break down and I even
-started liking it, a lot.
+getting little done. But after a few months of hard slog
+and solid focus, the walls finally started to break down
+and I even started liking it, a lot.
 
 Its oft-stated benefits like type safety, efficient use of
 memory, and great performance are all true, but beyond that
