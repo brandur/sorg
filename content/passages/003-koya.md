@@ -239,11 +239,11 @@ The end of the hike was a bittersweet moment. Our sore feet
 welcomed it, but it was sad to see the trail go, and we
 were only partially comforted by the beautiful vistas
 before us as a consolation prize. We visited the foot of
-the waterfall and checked in at a local inn with an
+the waterfall, then checked in at a local inn with an
 eccentric owner who'd asked for our hiking schedule, and
 refused to give us a reservation because he didn't think
-we'd make the last leg of our trip in time, only
-acquiescing when we promised to call at noon on the day of
+we'd make the last leg of our trip in time. He only
+acquiesced when we promised to call at noon on the day of
 and confirm that we were well passed the halfway point. We
 had, and he let us stay the night.
 
