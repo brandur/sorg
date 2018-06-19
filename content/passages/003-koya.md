@@ -320,13 +320,13 @@ memory, and great performance are all true, but beyond that
 there's just an element of consistency and good taste that
 pervades throughout every part of the language. Unlike
 other popular languages (*cough*, Go), the core team
-doesn't cover up its mistakes, and instead even very
-fundamental design problems get fixed. This is best
+doesn't cover up or dismiss its mistakes, and instead even
+very fundamental design problems get fixed. This is best
 exemplified by the recent release of [`impl
 Trait`][impltrait], and the upcoming futures rebuild and
 addition of [native `async`/`await`][asyncawait]. It's a
-pleasure to work with, and has the most helpful
-community you can possibly imagine.
+pleasure to work with, and has the most helpful community
+you can possibly imagine.
 
 I wrote a piece about [architecting a web application in
 Rust][rustweb] and another about [overcoming its sharp
