@@ -1,29 +1,31 @@
 ---
 title: Mount Koya, Ancient Baths, and Exacting
   Compilers
-published_at: 2018-06-19T16:05:11Z
+published_at: 2018-06-22T15:34:08Z
 ---
 
 ![The Kumano Kodo](/assets/passages/003-koya/shining-light@2x.jpg)
 
-Hello from the past.
+(A much belated hello.)
 
 I'd intended to write about six months ago, but am only
 getting around to it now. I'd picked out the photographs
 that I wanted to use last December, but looking at them in
 my draft brought back such strong memories that for the
 longest time, I didn't feel up to writing the words to fill
-the gaps (I still don't, but it's time).
+the gaps. I still don't, but I'm edging right up to the
+point of sheer absurdity in writing about an old vacation,
+so it's time.
 
 Last year I wrote about a trip to Japan, but even after a
-few thousand words of prose I was only halfway done. I
-talked about how the country has some of those best
-metropolises in the world. This time I'll try to convince
-you that it has some of the greatest wild areas on the
-planet too. Before going to Tokyo, Keiko and I spent a week
-down south in the Wakayama Prefecture, making our way from
-coast to coast by way of a network of ancient pilgrimage
-routes called the Kumano Kodo.
+few thousand words I was only halfway done. I talked about
+how the country has some of those best metropolises in the
+world. This time I'll try to convince you that it has some
+of the greatest wild areas on the planet too. Before going
+to Tokyo, Keiko and I spent a week down south in the
+Wakayama Prefecture, making our way from coast to coast by
+way of a network of ancient pilgrimage routes called the
+Kumano Kodo.
 
 I'm about to talk about hiking, a lot. I'm holding a rough
 pace of three to four messages a year, so I hope you'll
@@ -39,18 +41,19 @@ Walking the Kumano Kodo is a singular experience. The
 stones underfoot look a thousand years old, and the _torii_
 arches overhead are timeless. Days are spent in perfect
 tranquility in the fresh mountain air and nights are spent
-in perfect relaxation at ryokan along the way. You feel the
-country's ancient [_kami_][kami] with every step.
+in perfect relaxation at ryokan along the way. It's a
+spiritual experience even for the non-spiritual -- you feel
+the country's ancient [_kami_][kami] with every step.
 
 ## Mount Koya & an otherworldly gate (#mount-koya)
 
 Our journey started at the busy central station in Osaka,
 where we boarded a train and headed south. The dense
 cityscape began to thin out, then disappear, and a few more
-people got off at every stop along the way. We didn't
+passengers got off at every stop along the way. We didn't
 notice exactly when it happened, but eventually the big
-city crowd that we'd started with was gone, and we found
-that we had the train largely to ourselves.
+city crowd that we'd started with was gone, and we had the
+train largely to ourselves.
 
 Our first destination was Mount Koya (Kōyasan), a holy
 mountain with a small Shinto town (Kōya-chō) built high on
@@ -108,7 +111,7 @@ their precise schedules.
 The monks' spartan lifestyle is that some of the luxuries
 that we might take for granted in the west -- like central
 heating -- are non-existent. This time of year the mercury
-sits close to freezing, especially in the mornings and at
+sits close to zero, especially in the mornings and at
 night, and a simple walk through the temple's halls is a
 bone-chilling experience. There's an on-site onsen, and its
 healing waters will do wonders to warm you up, but
@@ -120,8 +123,8 @@ Japan has an ingenious device for cold days called a
 edges, and an electric heater underneath -- a perfect place
 to take refuge during frigid evenings. It's common
 knowledge in the country that once you're under a kotatsu,
-you can't get back out (it's just too comfortable). Every
-word of it is true.
+you can't get back out (it's too comfortable). Every word
+of it is true.
 
 ### A wintery morning (#wintery-morning)
 
@@ -159,11 +162,11 @@ the earth.
 ![Yunomine](/assets/passages/003-koya/yunomine@2x.jpg)
 
 This was the one night on our hike that we'd splurged on a
-hotel, and as we climbed its steps we were surprised to see
-Keiko's name drawn out in elaborate hand-written Kanji next
-to the door. Every morning the innkeepers wake up and
-carefully write out the names of all the travelers who will
-be staying the night.
+pricier hotel, and as we climbed its steps we were
+surprised to see Keiko's name drawn out in elaborate
+hand-written Kanji next to the door. Every morning the
+innkeepers wake up and carefully write out the names of all
+the travelers who will be staying the night.
 
 Our room was large and minimally furnished in the most
 tasteful way possible, with a single low table ornamenting
@@ -359,9 +362,9 @@ that we have today.
 If you made it this far, you've just read 2,500+ words
 about Japan and software, which is more than anyone should
 have to put up with from me -- thanks (and congratulations
-and condolences) for getting all the way through! I'll try
-not to wait another half year before writing again, but as
-usual, you can hear from me sooner by replying to this
+_and_ condolences) for getting all the way through! I'll
+try not to wait another half year before writing again, but
+as usual, you can hear from me sooner by replying to this
 message.
 
 [1] In Japan, it's common even today to measure the size of
