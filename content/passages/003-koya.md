@@ -6,7 +6,7 @@ published_at: 2018-06-22T15:34:08Z
 
 ![The Kumano Kodo](/assets/passages/003-koya/shining-light@2x.jpg)
 
-(A much belated hello.)
+(A _much_ belated hello.)
 
 I'd intended to write about six months ago, but am only
 getting around to it now. I'd picked out the photographs
