@@ -91,13 +91,13 @@ few tatami mats in size [1], and that constraint forces a
 certain creativity in the use of the space. Rooms are
 silently transformed while you're out in the evening, from
 a mostly empty space for sitting, to one with an unfurled
-bed suitable for sleeping. In a place like Jokiin where
-your meals are served in-room, there's also an intermediate
-transformation to prepare it for dinner. We'd often find
-monks quietly checking in on our room, hoping that we were
-out so that they could take the opportunity to rearrange
-it. We couldn't spend too much time in the room or we'd
-compromise their precise schedules.
+bed for sleeping. In a place like Jokiin where meals are
+served in-room, there's also an intermediate transformation
+to prepare it for dinner. We'd often find monks quietly
+checking in on our room, hoping that we were out so that
+they could take the opportunity to rearrange it. We
+couldn't spend too much time in the room or we'd compromise
+their precise schedules.
 
 ![Jokiin](/assets/passages/003-koya/jokiin@2x.jpg)
 
@@ -356,7 +356,7 @@ that we have today.
 
 ## Sayonara (for now) (#sayonara)
 
-If you made it this far, you've just read 2,000+ words
+If you made it this far, you've just read 2,500+ words
 about Japan and software, which is more than anyone should
 have to put up with from me -- thanks (and congratulations
 and condolences) for getting all the way through! I'll try
