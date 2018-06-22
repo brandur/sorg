@@ -357,7 +357,7 @@ predisposition to be gracefully evolved would be a vast
 improvement over the irregular patchwork world of semi-REST
 that we have today.
 
-## Sayonara (for now) (#sayonara)
+## On long silences (#long-silences)
 
 If you made it this far, you've just read 2,500+ words
 about Japan and software, which is more than anyone should
