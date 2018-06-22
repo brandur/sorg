@@ -241,7 +241,7 @@ waterfall at 133 meters.
 The end of the hike was a bittersweet moment. Our sore feet
 welcomed it, but it was sad to see the trail go, and we
 were only partially comforted by the beautiful vistas
-before us as a consolation prize. We visited the foot of
+before us as consolation prize. We visited the foot of
 the waterfall, then checked in at a local inn with an
 eccentric owner who'd asked for our hiking schedule, and
 refused to give us a reservation because he didn't think
