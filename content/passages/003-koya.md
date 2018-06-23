@@ -55,7 +55,7 @@ notice exactly when it happened, but eventually the big
 city crowd that we'd started with was gone, and we had the
 train largely to ourselves.
 
-Our first destination was Mount Kōya (Kōyasan), a mountain
+Our first destination was Mount Kōya (Kōya-san), a mountain
 with a small Shinto town (Kōya-chō) built high on its
 slopes. First settled by monks around the year 800,
 Kōya-chō has grown to host an incredible 120-odd temples
