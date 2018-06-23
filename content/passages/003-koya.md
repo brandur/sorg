@@ -1,7 +1,7 @@
 ---
 title: Mount Kōya, Ancient Baths, and Exacting
   Compilers
-published_at: 2018-06-22T15:34:08Z
+published_at: 2018-06-23T15:31:47Z
 ---
 
 ![The Kumano Kodo](/assets/passages/003-koya/shining-light@2x.jpg)
