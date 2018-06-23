@@ -1,5 +1,5 @@
 ---
-title: Mount Koya, Ancient Baths, and Exacting
+title: Mount Kōya, Ancient Baths, and Exacting
   Compilers
 published_at: 2018-06-22T15:34:08Z
 ---
@@ -33,7 +33,7 @@ consider this newsletter to be as far opposite on the
 continuum from spam as you can go, but if you don't, you
 can [click here to never hear from me again][unsubscribe].
 
-![Torii at Mount Koya](/assets/passages/003-koya/torii@2x.jpg)
+![Torii at Mount Kōya](/assets/passages/003-koya/torii@2x.jpg)
 
 We in the west tend to think of Japan as a crowded island,
 but the lush greenery of its wilderness is pristine.
@@ -45,7 +45,7 @@ in perfect relaxation at ryokan along the way. It's a
 spiritual experience even for the non-spiritual -- you feel
 the country's ancient [_kami_][kami] with every step.
 
-## Mount Koya & an otherworldly gate (#mount-koya)
+## A holy mountain & otherworldly gate (#holy-mountain)
 
 Our journey started at the busy central station in Osaka,
 where we boarded a train and headed south. The dense
@@ -55,9 +55,9 @@ notice exactly when it happened, but eventually the big
 city crowd that we'd started with was gone, and we had the
 train largely to ourselves.
 
-Our first destination was Mount Koya (Kōyasan), a holy
-mountain with a small Shinto town (Kōya-chō) built high on
-its slopes. First settled by monks around the year 800,
+Our first destination was Mount Kōya (Kōyasan), a mountain
+with a small Shinto town (Kōya-chō) built high on its
+slopes. First settled by monks around the year 800,
 Kōya-chō has grown to host an incredible 120-odd temples
 today. Normally, it's possible to reach the town by taking
 a train and transferring onto a mountain-scaling
@@ -71,7 +71,7 @@ materializes out of the mist. It looks like an artifact
 from another world, completely out of place on these remote
 slopes.
 
-![Mount Koya](/assets/passages/003-koya/koya@2x.jpg)
+![Mount Kōya](/assets/passages/003-koya/koya@2x.jpg)
 
 Most of the accommodation on the mountain comes in the form
 of _shukubō_, or "temple lodgings". Monks running the local
@@ -136,7 +136,7 @@ on the newly slick paths and throw myself into the
 underbrush [2]. I found that an old shrine had been built
 on its peak.
 
-![First snow at Mount Koya](/assets/passages/003-koya/first-snow@2x.jpg)
+![First snow at Mount Kōya](/assets/passages/003-koya/first-snow@2x.jpg)
 
 We spent the day exploring the spectacular [Okunoin
 cemetary][okunoin] before saying farewell to Kōya-chō and
@@ -144,7 +144,7 @@ departing the mountain.
 
 ## Yunomine Onsen (#yunomine)
 
-Koya's technically reachable along the Kumano Kodo, but
+Kōya's technically reachable along the Kumano Kodo, but
 along a leg that wasn't possible in our budgeted time.
 Instead, we bused back down to a coastal town called
 Tanabe, and our real journey began the next morning as we
@@ -170,7 +170,7 @@ the travelers who will be staying the night.
 
 Our room was large and minimally furnished in the most
 tasteful way possible, with a single low table ornamenting
-its expansive floors (like at Koya, bedding would appear
+its expansive floors (like at Kōya, bedding would appear
 later in the night). A balcony surrounded by neatly-trimmed
 trees gave us a perfect vantage onto the tiny village.
 
