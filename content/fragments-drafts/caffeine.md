@@ -20,7 +20,7 @@ and reduction of fatigue just weren't working very well
 anymore.
 
 Unfortunately for me, its _negative_ effects were still
-having their full effect on me. I'd occasionally experience
+having their full effect. I'd occasionally experience
 midday crashes or have trouble concentrating. Worse yet,
 I'm an anxious person as it is, and caffeine seemed to
 further exacerbating that facet, in the worst cases even
