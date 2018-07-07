@@ -14,17 +14,18 @@ soft drinks, and the various forms of [maté][mate] energy
 drinks that I've taken a liking to in recent years.
 
 Until then, I'd been drinking the equivalent of four or
-five cups a day worth of coffee. Apparently I was drinking
+five cups worth of coffee a day. Apparently, I was drinking
 _so much_ of it that its benefits like improved alertness
 and reduction of fatigue just weren't working very well
 anymore.
 
 Unfortunately for me, its _negative_ effects were still
-exercising their full power. I'd occasionally experience a
-midday crash. Worse yet, I'm an anxious person as it is,
-and caffeine seemed to further exacerbating that facet, in
-the worst cases even adding a physical component to the
-problem in the form of jitters.
+having their full effect on me. I'd occasionally experience
+midday crashes or have trouble concentrating. Worse yet,
+I'm an anxious person as it is, and caffeine seemed to
+further exacerbating that facet, in the worst cases even
+adding a physical component to the problem in the form of
+jitters.
 
 For me personally, quitting caffeine had no obvious
 downsides, and some immediately noticeable improvements
