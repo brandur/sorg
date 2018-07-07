@@ -46,7 +46,6 @@ that send me straight to sleep if I try any of them after
 eight o'clock.
 
 Caffeine is a powerful tool, but apparently for me only
-when used in moderation. I'm trying to keep this in mind
-any time I think about having some these days.
+when used in moderation. Your mileage may vary.
 
 [mate]: https://en.wikipedia.org/wiki/Mate_(drink)
