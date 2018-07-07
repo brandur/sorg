@@ -23,7 +23,7 @@ Unfortunately for me, its _negative_ effects were still
 having their full effect. I'd occasionally experience
 midday crashes or have trouble concentrating. Worse yet,
 I'm an anxious person as it is, and caffeine seemed to
-further exacerbating that facet, in the worst cases even
+further exacerbate that facet, in the worst cases even
 adding a physical component to the problem in the form of
 jitters.
 
