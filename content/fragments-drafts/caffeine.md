@@ -39,11 +39,10 @@ positions, and don't intend to take one with caffeine
 either. I brewed some tea last night and had my first
 caffeine in almost a month. It was one most focused
 evenings I've had in a long time: I got through about a
-hundred pages of the book I'm reading, read a quarter of a
-two issues of the Economist, and managed a late night
-meditation session, all of which are normally activities
-that send me straight to sleep if I try any of them after
-eight o'clock.
+hundred pages of the book I'm reading, read through some of
+my magazine backlog, and managed a late night meditation
+session, all of which are normally activities that send me
+straight to sleep if I try any of them after eight o'clock.
 
 Caffeine is a powerful tool, but apparently for me only
 when used in moderation. Your mileage may vary.
