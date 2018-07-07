@@ -1,7 +1,8 @@
 ---
 title: Caffeine
-published_at: 2018-07-07T07:18:38Z
-hook: TODO
+published_at: 2018-07-07T17:55:13Z
+hook: A personal experiment in seriously throttling back my
+  caffeine intake for the first time in years.
 ---
 
 One morning about three weeks ago I woke up, and as
