@@ -41,36 +41,62 @@ they do.
 It's often desirable to have a stable release of Postgres
 running on your machine for day-to-day work along with your
 experimental build, so you may want to choose a
-non-standard build directory and port for development.
+non-standard install directory, data directory, and port
+for development.
 
-A **prefix** is passed during `configure`; I've chosen
-`/opt/postgres` below.
+A **prefix** is passed during `configure` to specify the
+target install directory. I use `./build` in the current
+directory and name it `$PG_BUILD_DIR`. I call my data
+directory `$PG_DATA_DIR`.
 
 A **port** can be overridden with a command line argument
 to a server or client command like `psql`. It can also be
 overridden for an entire session by setting the `PGPORT`
-environmental variable. I've chosen `5433` as my port
-below.
+environmental variable. I've chosen `5433` as my port.
+
+I use the excellent [direnv] to manage these variables. It
+reads them out of an `.envrc` in the source directory:
+
+``` sh
+export PG_BUILD_DIR="$PWD/build"
+export PG_DATA_DIR="$PWD/data/primary"
+export PGPORT=5433
+```
+
+(Be sure to `direnv allow` after saving the file.)
 
 ### Building (#building)
 
 Clone the repository:
 
-    git clone https://github.com/postgres/postgres.git
+``` sh
+git clone https://github.com/postgres/postgres.git
+```
 
 Run configure with a `prefix` pointing to your chosen
 target build directory:
 
-    ./configure --prefix /opt/postgres
+``` sh
+./configure --prefix $PG_BUILD_DIR
+```
 
 Then build it. The `-j` option gives you some parallelism
-which will probably help if you're on a modern computer.
+which will speed things up for any computer that's still
+running today.
 
-    make -j4
+``` sh
+make -j16
+```
+
+Pick a number based off how many cores you have. I'm using
+an iMac Pro with an 8 cores, each of which is
+hyper-threaded, so I use specify a parallelism of 16.
 
 Install the result to the `prefix` configured above:
 
-    make install
+``` sh
+make install
+```
 
 ### Running (#running)
 
@@ -79,16 +105,22 @@ Postgres right in your terminal. This is convenient because
 you can see any logging that it emits and you can restart
 it easily with `Ctrl+C`.
 
-    mkdir /opt/postgres/data/
-    /opt/postgres/bin/initdb -D /opt/postgres/data/primary/
+``` sh
+mkdir -p $PG_DATA_DIR
 
-    /opt/postgres/bin/postgres -D /opt/postgres/data/primary/ -p 5433
+# initialize a data directory
+/opt/postgres/bin/initdb -D $PG_DATA_DIR
+
+# start the server
+/opt/postgres/bin/postgres -D $PG_DATA_DIR -p $PGPORT
+```
 
 Now create a database and connect to it:
 
-    /opt/postgres/bin/createdb -p 5433 brandur-test
-
-    /opt/postgres/bin/psql -p 5433 brandur-test
+``` sh
+/opt/postgres/bin/createdb -p $PGPORT brandur-test
+/opt/postgres/bin/psql -p $PGPORT brandur-test
+```
 
 ### Testing (#testing)
 
@@ -96,7 +128,9 @@ Postgres doesn't have much in the way of standard unit
 testing, but instead relies heavily on a thorough
 regression suite. Run it with:
 
-    make check
+``` sh
+make check
+```
 
 The command will start a new server, set it up, run the
 suite, and then tear it down. This is a reliable way to get
@@ -104,12 +138,65 @@ consistent results, but is somewhat slow. A faster version
 is also provided which can use a server that you already
 have running elsewhere:
 
-    PGPORT=5433 make installcheck
+``` sh
+# requires $PGPORT to be set in the environment
+make installcheck
+```
 
 There's also a parallel version available to further
-improve speed:
+improve speed (you should basically always prefer this
+variant):
 
-    PGPORT=5433 make installcheck-parallel
+``` sh
+# requires $PGPORT to be set in the environment
+make installcheck-parallel
+```
+
+## Optimizations (#optimizations)
+
+Building and testing Postgres is already pretty fast (with
+parallel commands `make` takes ~30s from scratch and
+running the test suite takes 15s), but if you're going to
+be working with it heavily, you might want to take a few
+steps to make it even faster.
+
+### ccache (##ccache)
+
+[ccache] is a clever little program that pretends to be
+your compiler target and caches results so that they can be
+returned immediately the next time it's run with the same
+inputs.
+
+It's trivial to install (on Mac OS, I use a simple `brew
+install ccache`) and causes very few problems, so it's a
+pretty easy enhancement.
+
+Use it by telling `configure` that you want ccache as your
+C compiler:
+
+``` sh
+./configure --prefix $PG_BUILD_DIR --with-CC="ccache gcc"
+```
+
+After warming up ccache by building once, then doing a
+`make clean` and building again, my runtime drops from 30s
+to less than 5s. Incremental compiles are even faster. Now
+that's a nice improvement!
+
+### The gold linker
+
+If you're on Linux, you can try the [gold
+linker][goldlinker], which is faster than the GNU linker.
+Unfortunately, it only supports ELF, so it's not available
+to Mac OS users.
+
+Just export it in your `$CFLAGS` before running
+`configure`:
+
+``` sh
+export CFLAGS="-fuse-ld=gold"
+./configure ...
+```
 
 ## pgindent (#pgindent)
 
@@ -176,32 +263,32 @@ script that demonstrates how to do that:
 
 set -e
 
-export POSTGRES_DIR=/opt/postgres
+export PG_DIR="$PWD"
 
 export PRIMARY_PORT=5433
 export REPLICA_PORT=5434
 
-read -p "Will delete $POSTGRES_DIR/data/{primary,replica}. Okay? [Ctrl+C cancels]" yn
-rm -rf $POSTGRES_DIR/data/primary
-rm -rf $POSTGRES_DIR/data/replica
+read -p "Will delete $PG_DIR/data/{primary,replica}. Okay? [Ctrl+C cancels]" yn
+rm -rf $PG_DIR/data/primary
+rm -rf $PG_DIR/data/replica
 
 # Initialize a new data directory for the primary, then use a bit of a shortcut
 # by just copying it for use by the replica.
-$POSTGRES_DIR/bin/initdb -D $POSTGRES_DIR/data/primary/
-cp -r $POSTGRES_DIR/data/primary/ $POSTGRES_DIR/data/replica/
+$PG_DIR/bin/initdb -D $PG_DIR/data/primary/
+cp -r $PG_DIR/data/primary/ $PG_DIR/data/replica/
 
-cat <<EOT >> $POSTGRES_DIR/data/primary/postgresql.conf
+cat <<EOT >> $PG_DIR/data/primary/postgresql.conf
 port=$PRIMARY_PORT
 EOT
 
-cat <<EOT >> $POSTGRES_DIR/data/replica/postgresql.conf
+cat <<EOT >> $PG_DIR/data/replica/postgresql.conf
 port=$REPLICA_PORT
 shared_buffers=500MB
 hot_standby=on
 hot_standby_feedback=on
 EOT
 
-cat <<EOT >> $POSTGRES_DIR/data/replica/recovery.conf
+cat <<EOT >> $PG_DIR/data/replica/recovery.conf
 standby_mode=on
 primary_conninfo='host=127.0.0.1 port=$PRIMARY_PORT user=$USER'
 EOT
@@ -211,22 +298,25 @@ READY!
 ======
 
 Start primary:
-    $POSTGRES_DIR/bin/postgres -D $POSTGRES_DIR/data/primary
+    $PG_DIR/bin/postgres -D $PG_DIR/data/primary
 
 Start replica:
-    $POSTGRES_DIR/bin/postgres -D $POSTGRES_DIR/data/replica
+    $PG_DIR/bin/postgres -D $PG_DIR/data/replica
 
 Create a database:
-    $POSTGRES_DIR/bin/createdb -p $PRIMARY_PORT mydb
+    $PG_DIR/bin/createdb -p $PRIMARY_PORT mydb
 
 Connect to primary:
-    $POSTGRES_DIR/bin/psql -p $PRIMARY_PORT mydb
+    $PG_DIR/bin/psql -p $PRIMARY_PORT mydb
 
 Connect to replica:
-    $POSTGRES_DIR/bin/psql -p $REPLICA_PORT mydb
+    $PG_DIR/bin/psql -p $REPLICA_PORT mydb
 EOT
 ```
 
+[ccache]: https://ccache.samba.org/
+[direnv]: https://direnv.net/
+[goldlinker]: https://en.wikipedia.org/wiki/Gold_(linker)
 [pg-hackers]: https://www.postgresql.org/list/pgsql-hackers/
 [pgindent-readme]: https://github.com/postgres/postgres/blob/master/src/tools/pgindent/README
 
