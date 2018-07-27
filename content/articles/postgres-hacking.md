@@ -160,7 +160,7 @@ running the test suite takes 15s), but if you're going to
 be working with it heavily, you might want to take a few
 steps to make it even faster.
 
-### ccache (##ccache)
+### ccache (#ccache)
 
 [ccache] is a clever little program that pretends to be
 your compiler target and caches results so that they can be
@@ -183,7 +183,7 @@ After warming up ccache by building once, then doing a
 to less than 5s. Incremental compiles are even faster. Now
 that's a nice improvement!
 
-### The gold linker
+### The gold linker (#gold-linker)
 
 If you're on Linux, you can try the [gold
 linker][goldlinker], which is faster than the GNU linker.
