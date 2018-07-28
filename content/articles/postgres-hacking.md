@@ -155,9 +155,9 @@ make installcheck-parallel
 ## Optimizations (#optimizations)
 
 Building and testing Postgres is already pretty fast (with
-parallel commands `make` takes ~30s from scratch and
-running the test suite takes 15s), but if you're going to
-be working with it heavily, you might want to take a few
+parallel commands, `make` for me takes ~30s from scratch
+and running the test suite takes ~15s), but if you're going
+to be working with it heavily, you might want to take a few
 steps to make it even faster.
 
 ### ccache (#ccache)
@@ -180,8 +180,7 @@ C compiler:
 
 After warming up ccache by building once, then doing a
 `make clean` and building again, my runtime drops from 30s
-to less than 5s. Incremental compiles are even faster. Now
-that's a nice improvement!
+to less than 5s. Incremental compiles are even faster.
 
 ### The gold linker (#gold-linker)
 
