@@ -38,7 +38,7 @@ Readability isn't compromised too much, and all the developer has to do is dump 
 
 ## Human logfmt (#human)
 
-**Note &mdash;** Added after original publication (on March 30, 2016) to
+**Note --** Added after original publication (on March 30, 2016) to
 reflect changes to the recommended best practices.
 
 logfmt may be more readable than something like JSON, but it's still difficult

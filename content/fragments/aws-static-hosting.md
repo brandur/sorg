@@ -4,7 +4,7 @@ published_at: 2016-01-04T09:18:18Z
 hook: UNWRITTEN. This should not appear on the front page.
 ---
 
-**Addendum &mdash;** I've published a [second post][second] containing a
+**Addendum --** I've published a [second post][second] containing a
 workaround for the problems described in this document.
 
 While working on a tiny project today to demonstrate publishing a static

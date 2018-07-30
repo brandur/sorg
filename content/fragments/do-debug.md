@@ -8,14 +8,14 @@ From a random person on [Twitter this morning][dont-debug]:
 
 > I do not use a debugger <a href="http://lemire.me/blog/2016/06/21/i-do-not-use-a-debugger/" rel="nofollow">http://lemire.me/blog/2016/06/21/i-do-not-use-a-debugger/</a>
 >
-> &mdash; @Code\_Analysis
+> -- @Code\_Analysis
 
 And [John Carmack's response][do-debug]:
 
 > I take the contrary position -- aggressive use of a debugger gives you
 > insight you won't get by mere inspection.
 >
-> &mdash; @ID\_AA\_Carmack
+> -- @ID\_AA\_Carmack
 
 Only one of these people is right.
 
