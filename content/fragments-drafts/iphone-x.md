@@ -35,8 +35,8 @@ little moist.
 I don't miss the home button. Its absence looks better to
 be sure, but far more importantly, the replacement
 interactions are _better_. Swiping up to go home works
-perfectly, and moving left from there to access
-multi-tasking is faster than the old double-press on home.
+perfectly, and moving up and right to access multi-tasking
+is faster than the old double-press on home.
 
 It feels more grippy to me than my iPhone 6. The glass back
 looks great, and I can't wait for wireless charging. It's a
