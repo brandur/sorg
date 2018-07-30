@@ -45,7 +45,7 @@ You can get around this by just vendoring in all your dependencies, but that's t
 
 It's true that the points above are still possible with SDKs be it through designing pluggable SDKs, monkey patching, or building sophisticated wrappers. The problem is that these SDKs are being shipped from by different companies and different people and will have wildly different conventions and capabilities throughout; all of which need to be examined and learned on a case-by-case basis, and the options above probably won't represent a big time saving compared to just wrapping the HTTP calls yourself and re-using the patterns that you already have.
 
-In summary, thank-you for shipping me your SDK &mdash; I appreciate the gesture immeasurably &mdash; but I'd much rather use your well-designed web API.
+In summary, thank-you for shipping me your SDK -- I appreciate the gesture immeasurably -- but I'd much rather use your well-designed web API.
 
 ## Addendum (#addendum)
 

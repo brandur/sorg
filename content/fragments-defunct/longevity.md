@@ -5,7 +5,7 @@ published_at: 2015-12-27T18:12:33Z
 
 I've been thinking a lot lately about how to architect the tech stack of a
 simple web site like this one in a way that it's most likely to be sustainable
-over a long period &mdash; say thirty years. The existential threats over that
+over a long period -- say thirty years. The existential threats over that
 kind of time come in all shapes and sizes: code rot that leads to an app that's
 very inefficient to maintain, the obsolescence of packages the app depends on
 as they fall out of maintenance, the disappearance of core services that run

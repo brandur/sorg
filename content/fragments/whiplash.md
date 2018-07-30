@@ -44,7 +44,7 @@ sympathize with even this callous figure.
 > _There are no two words in the English language more harmful than "good
 > job"._
 >
-> &mdash; Terence Fletcher
+> -- Terence Fletcher
 
 The very open-ended finish to the movie was a nice touch. A number of questions
 of varying levels of importance are left to the viewer's imagination:
