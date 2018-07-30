@@ -14,7 +14,7 @@ work"][deep-work]. A choice re-quote:
 > To sit still and think, without succumbing to an anxious reach for a machine,
 > has become almost impossible.
 >
-> &mdash; Alain de Botton
+> -- Alain de Botton
 
 I'm always excited to read this type of article because I feel validated in
 that someone else has reached the same conclusions that I have independently.

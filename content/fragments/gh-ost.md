@@ -50,7 +50,7 @@ can be. Not ackowledging the expensive trade-offs of a MySQL/gh-ost setup
 strikes me as somewhat amiss given the number of readers (and by extension
 influence) an article like this one will inevitably have.
 
-**Addendum &mdash;** After a conversation with the original author of the
+**Addendum --** After a conversation with the original author of the
 article on gh-ost, I feel bad about the aggressive tone that this article
 originally conveyed and have tried to correct my hubris by amending it
 accordingly. Changes are visible in its [Git history][history].
