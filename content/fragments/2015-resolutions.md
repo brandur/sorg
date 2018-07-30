@@ -7,7 +7,7 @@ hook: UNWRITTEN. This should not appear on the front page.
 Five basic resolutions for 2015:
 
 * _Run_ 1700 km.
-* _Lose_ 16 lbs. (8 lbs. by the end of June) &mdash; this one's a classic.
+* _Lose_ 16 lbs. (8 lbs. by the end of June) -- this one's a classic.
 * _Play_ a rendition of [_Together We Will Live Forever_ on the
   guitar](https://www.youtube.com/watch?v=VH7pp2BXGC0) (even if it's a poor
   one).

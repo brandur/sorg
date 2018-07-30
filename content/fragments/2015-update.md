@@ -15,7 +15,7 @@ good.
 I'm back on track recently to hit roughly 1600 km, but 1700 is going to be
 tough to reach. (0/1)
 
-> _Lose_ 16 lbs. (8 lbs. by the end of June) &mdash; this one's a classic.
+> _Lose_ 16 lbs. (8 lbs. by the end of June) -- this one's a classic.
 
 I don't have easy access to a scale right now, but I'm nowhere near down 16
 lbs. Probably closer to 5 lbs. My more recent exercise trajectory combined with

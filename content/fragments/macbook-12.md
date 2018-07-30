@@ -29,7 +29,7 @@ environment that I've experienced to date.
 The **touchpad** was by far the biggest surprise. Whenever a company starts
 talking about haptic feedback, I start to worry immediately, a characteristic
 that I largely attribute to lingering memories of RIM's early trainwrecks in
-the area. I needn't have &mdash; a click on the new trackpad feels almost
+the area. I needn't have -- a click on the new trackpad feels almost
 identical to the physical versions seen in previous Apple laptops. I didn't
 even _really_ believe that there wasn't a physical mechanism until I powered
 the laptop down. But doing so did indeed confirm Apple's claims, and provided
