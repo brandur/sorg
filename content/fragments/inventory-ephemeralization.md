@@ -23,7 +23,7 @@ gleefully anticipating:
 
 * Keys -- I still need three separate keys to get into my apartment.
 * Cards (e.g. credit cards, library card) -- Apple Pay?
-* iPad Mini -- We'll need either much bigger phones are smaller tablets
+* iPad Mini -- We'll need either much bigger phones or smaller tablets
   before I stop using this device.
 
 And conversely, other things that I want to see stay around:
