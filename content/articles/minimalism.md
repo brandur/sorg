@@ -76,12 +76,12 @@ immutable ledger that will become foundational keystone for
 the entire platform. That sexy new container orchestration
 system that will take ease of deployment and scaling to new
 levels. In many cases, a step back and a moment of
-dispassionate contemplation will reveal that their use
-could be abstained until a time when they're known to be
-well vetted, and it's well understood how they'll fit into
-the current architecture (and what they'll replace).
+dispassionate thought would reveal that their use could be
+withheld until a time when they're known to be well vetted,
+and it's well understood how they'll fit into the current
+architecture (and what they'll replace).
 
-## Minimalism through ephemeralization (#ephemeralization)
+## Through ephemeralization (#ephemeralization)
 
 In his book _Nine Chains to the Moon_ (published 1938),
 inventor R. Buckminster Fuller described the idea of
@@ -117,7 +117,7 @@ Realistic? Probably not. Useful? Yes. Even falling short of
 an incredibly ambitious goal tends to leave you somewhere
 good.
 
-## Minimalism in practice (#in-practice)
+## In practice (#in-practice)
 
 Here are a few examples of minimalism and ephemeralization
 in practice from Heroku's history:
@@ -161,7 +161,7 @@ or even greater, as it would for shipping a new product.
 
 !fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology."
 
-## Minimalism in ideas (#in-ideas)
+## In ideas (#in-ideas)
 
 Practicing minimalism in production is mostly about
 recognizing that the problem exists. After achieving that,
