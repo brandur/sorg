@@ -71,7 +71,7 @@ our jobs, and we can use that same power to convince
 ourselves and our peers that it's critical to get new
 technologies into our stack _right now_. That Go-based HA
 key/value store will take our uptime and fault resilience
-to new highs. That real-time event stream will enable
+to new highs. That real-time event stream will enable an
 immutable ledger that will become foundational keystone for
 the entire platform. That sexy new container orchestration
 system that will take ease of deployment and scaling to new
