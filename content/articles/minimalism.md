@@ -59,7 +59,7 @@ everything under the sun. This effect is dangerous:
   and with sufficient scale, _something_ will be failing all
   the time.
 
-* With more technologies engineers will tend to be come
+* With more technologies engineers will tend to become
   jacks of all trades, but masters of none. If a
   particularly nefarious problem comes along, it may be
   harder to diagnose and repair because there are few
