@@ -222,7 +222,7 @@ aviator, had this to say on the subject:
 
 !fig src="/assets/minimalism/sea.jpg" caption="Nothing left to add. Nothing left to take away."
 
-Most of us can benefit from architecture that's a little
+All of us can benefit from architecture that's a little
 simpler, a little more conservative, and a little more
 directed. Only by concertedly building a minimal stack
 that's stable and nearly perfectly operable can we maximize
