@@ -20,7 +20,7 @@ we're all used to it.
 
 <figure>
   <p>
-    <video autoplay loop class="overflowing">
+    <video controls loop class="overflowing">
       <source src="/assets/interfaces/slack-45s.mp4" type="video/mp4">
     </video>
   </p>
@@ -130,7 +130,7 @@ Mac OS app, or switching between tabs in mobile Safari.
 
 <figure>
   <p>
-    <video autoplay loop class="overflowing">
+    <video controls loop class="overflowing">
       <source src="/assets/interfaces/1password.mp4" type="video/mp4">
     </video>
   </p>
@@ -141,7 +141,7 @@ Mac OS app, or switching between tabs in mobile Safari.
 
 <figure>
   <p>
-    <video autoplay loop class="overflowing">
+    <video controls loop class="overflowing">
       <source src="/assets/interfaces/spaces.mp4" type="video/mp4">
     </video>
   </p>
@@ -184,7 +184,7 @@ obscure content. The list goes on.
 
 <figure>
   <p>
-    <video autoplay loop class="overflowing">
+    <video controls loop class="overflowing">
       <source src="/assets/interfaces/terminal.mp4" type="video/mp4">
     </video>
   </p>
@@ -226,7 +226,7 @@ Here's why I like using terminals and terminal programs:
 
 <figure>
   <p>
-    <video autoplay loop class="overflowing">
+    <video controls loop class="overflowing">
       <source src="/assets/interfaces/uncomposable.mp4" type="video/mp4">
     </video>
   </p>
