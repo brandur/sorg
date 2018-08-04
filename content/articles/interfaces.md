@@ -111,9 +111,9 @@ we'd use a native app over an in-browser HTML5 any day of
 the week. Yet when it comes to the desktop, we're still
 using Gmail, Reddit, Trello, and JIRA. Computers and
 networks tend to be fast enough that this software is "good
-enough". Tellingly though, we tend to avoid this software
-whenever better options are available, like with our
-terminals and text editors.
+enough". Tellingly though, we avoid this software whenever
+better options are available, like with our terminals and
+text editors.
 
 ## Not just technology (#not-just-technology)
 
