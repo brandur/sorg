@@ -57,7 +57,13 @@ https://www.heddels.com/2011/03/the-rundown-on-selvedge-denim-what-is-it-all-abo
 
 ### Chainstitching (#chainstitching)
 
+!fig src="/assets/denim/union-special.jpg" caption="The famed Union Special sewing machine."
+
 > Different style of stitching used in premium denim's that creates a more obvious roping effect on the hem than the standard lock stitch. It isn't as strong as a lock-stitch, but roping can be desirable for aesthetic value or to emulate early 20th century style production.
+
+## Union Special (#union-special)
+
+> However in the 1960’s Japanese denim manufacturers started aquiring these machine. In 1989, when Union Special stopped manufacturing them, it created a void in the market place for the ‘classic look’. Specialty denim shops in North America began trying to buy them up but the Japanese had effectively beaten them to the punch.
 
 ## Interesting places (#places)
 
