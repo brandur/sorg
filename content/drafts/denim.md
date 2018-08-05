@@ -1,13 +1,58 @@
 ---
-title: Denim
+title: A Short and Practical Guide to Raw Denim
 published_at: 2018-08-03T03:08:39Z
 location: San Francisco
 hook: TODO
 ---
 
-## A very brief history (#history)
+I've been reading a lot about denim lately. The interest
+started when I first read W. David Marx's excellent book
+[Ametora][ametora] about the intertwining relationship
+between American and Japanese styles, and continued over
+the years I've tried to find the perfect pair of jeans.
+
+The rabbit hole of raw denim is a deep one -- there's a
+huge subculture of aficionados online who have strong
+feelings about what brands to buy, how to produce the best
+fades, and how to wash (don't go anywhere near a washing
+machine). A little like vinyl, a lot of the claimed
+benefits aren't very material, but there's still a lot to
+like about the somewhat romanticized world.
+
+While looking around I found a wealth of information, but
+no resource that did a very good job of collating the key
+ideas in one place, so I've taken a short break from my
+usual content to put this one together.
+
+## An overly brief history (#history)
+
+Jacob W. Davis invented the precursor to blue jeans that we
+know well today in Nevada in 1873. Pants weren't very
+durable at the time, and this would cause problems for
+labourers who'd put them through a lot of stress. The wife
+of a local woodworker had come in to request pants that
+were strong enough to last while her husband was chopping
+wood. In a moment of inspiration, Davis made some denim
+pants and used some copper rivets that had been lying
+around to fasten the pockets (a touch still found on the
+vast majority of jeans sold today).
+
+His invention proved quite popular -- more popular than
+what he could supply, so he broached a deal with a dry good
+wholesaler who had been supplying his denim to help ramp up
+production. The name of that wholesaler was Levi Strauss &
+Co.
+
+Blue jeans spread east across the country, beyond labourers
+and up into the middle class, and migrated across oceans.
+Today, jeans are the garment of choice throughout the
+world, with over a billion sold every year, and worn in
+every country on Earth.
 
 ### Japan (#japan)
+
+One doesn't get far into reading about denim before seeing
+Japan's unparalleled influence on the craft.
 
 Japan buying looms:
 
@@ -19,13 +64,17 @@ https://www.kaufmann-mercantile.com/field-notes/post/6030/denim
 
 > Sensing an opportunity, the Japanese bought many of the old machines from American mills in the 1980s. It probably seemed like a good idea to the American manufacturers at the time. Many of these looms were just rusting out in the fields or scrapped for parts — the old behemoths were taking up too much space in the factories.
 
-## Buying denim today (#today)
+## Denim today (#today)
 
 ### Raw (dry) denim (#raw)
 
 > These mean the same thing. The denim was not factory washed, and sometimes not singed which leaves the denim looking "hairy". The dye is generally dark and even, so that you can fade them yourself. The jeans probably contain some amount of starch that will rinse off in the wash and soften over time. This is to keep it rigid so that creases set in and make cool fades.
 
 > Sanforized jeans (most jeans) will not shrink a crazy amount in the wash. They'll lose maybe 1" or 1.5" in the waist and inseam.
+
+> Honeycombs: These are the creases behind your knees. They can get some great contrast with raw denim.
+
+> Whiskers: These are the creases the form on your lap. They're a bit tougher to get contrast in, but give jeans good character if you do.
 
 ### Washing (#washing)
 
@@ -84,3 +133,7 @@ deciding this.
 ## Interesting places (#places)
 
 ## Brands (#brands)
+
+> Pure Blue Japan has a unique production method utilizing a low tension machine, resulting in a slubby, and rough feeling denim. What is particularly special about their production is that most of their denim rolls off a single machine. A machine which has been adjusted to output fabric which features an uneven and hair
+
+[ametora]: https://www.amazon.com/Ametora-Japan-Saved-American-Style/dp/0465059732
