@@ -9,13 +9,13 @@ nav
     li
       a href="/newsletter" Newsletter
     li
-      a href="/photos" Photos
-    li
-      a href="/runs" Running
-    li
       a href="/twitter" Twitter
     li
+      a href="/photos" Photos
+    li
       a href="/reading" Reading
+    li
+      a href="/runs" Running
     li
       a href="/now" Now
     li
