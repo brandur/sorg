@@ -27,6 +27,16 @@ https://www.kaufmann-mercantile.com/field-notes/post/6030/denim
 
 > Sanforized jeans (most jeans) will not shrink a crazy amount in the wash. They'll lose maybe 1" or 1.5" in the waist and inseam.
 
+### Washing (#washing)
+
+Many wait as long as possible to maximize the contrast between indigo and fades.
+
+Wash by themselves to avoid indigo transfer.
+
+Soak for 30-45 minutes.
+
+Tubs on the street in Tokyo.
+
 ### Selvedge (#selvedge)
 
 !fig src="/assets/denim/shuttle-loom.jpg" caption="How a shuttle loom weaves warp and weft yarns together."
@@ -54,6 +64,12 @@ https://www.heddels.com/2011/03/the-rundown-on-selvedge-denim-what-is-it-all-abo
 > A 10oz jean is lightweight, and will breathe in the summer. A 21oz jean is heavy, and will not be fun to wear if it gets hot where you live.
 
 ### Right-hand versus left-hand twill (#right-left)
+
+> When you weave together cotton warp yarn and white cotton filling yarn you get a 90 degree diagonally interwoven pattern called twill.
+
+Right-hand tends to be rougher than left-hand, but other
+properties of the jean will be far more important in
+deciding this.
 
 ### Chainstitching (#chainstitching)
 
