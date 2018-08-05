@@ -52,7 +52,7 @@ every country on Earth.
 ### Japan (#japan)
 
 One doesn't get far into reading about denim before seeing
-Japan's unparalleled influence on the craft.
+Japan's outsized influence on the craft.
 
 Japan buying looms:
 
