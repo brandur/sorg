@@ -46,6 +46,11 @@ allowed_exceptions=(
     "./content/images/page/transworld-surf.jpg"
     "./content/images/page/weekend.png"
     "./content/images/request-ids/splunk-search.png"
+
+    # Images that it'll unfortunately be all but impossible to get retina
+    # versions of.
+    "./content/images/denim/shuttle-loom.jpg"
+    "./content/images/denim/union-special.jpg"
 )
 
 find_images() {
