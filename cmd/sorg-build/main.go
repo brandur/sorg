@@ -1093,7 +1093,7 @@ func compileRuns(db *sql.DB) error {
 		return err
 	}
 
-	locals := getLocals("Runs", map[string]interface{}{
+	locals := getLocals("Running", map[string]interface{}{
 		"Runs": runs,
 
 		// chart: runs over last year

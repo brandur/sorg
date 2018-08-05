@@ -8,7 +8,7 @@
     .content
       .runs
         #title
-          h1 Runs
+          h1 Running
         {{if .ByYearXYears}}
           p {{index .ByYearYDistances 0 | RoundToString}} km run in {{index .ByYearXYears 0}}.
         {{end}}
