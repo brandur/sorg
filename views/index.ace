@@ -3,7 +3,8 @@
     .index-about-and-lists
       h1
         a href="/about" About
-      p I'm <a href="https://twitter.com/brandur">@brandur</a>. I'm an engineer at Stripe and previously at Heroku. I talk mostly about bad design. And a few words on APIs, Postgres, software safety and resilience, efficient human interfaces, urban design, running, and metal.
+      p I'm <a href="https://twitter.com/brandur">@brandur</a>. I'm an engineer at Stripe (previously Heroku), and occasional writer.
+      p I most often talk about web APIs, Postgres, Rust, software safety and resilience, efficient human interfaces, and running.
       .divider-short
       h1
         a href="/articles" Articles
