@@ -65,7 +65,7 @@ step iterates a content directory called `public`, finds any files named
 
 ``` sh
 # Step 1: HTML
-aws s3 kync ./public/ s3://$S3_BUCKET/ --acl public-read --content-type text/html --delete --exclude 'assets*'
+aws s3 sync ./public/ s3://$S3_BUCKET/ --acl public-read --content-type text/html --delete --exclude 'assets*'
 
 # Step 2: Assets (CSS, images, JS)
 aws s3 sync ./public/assets/ s3://$S3_BUCKET/assets/ --acl public-read --delete
