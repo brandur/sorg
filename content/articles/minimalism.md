@@ -183,9 +183,9 @@ mitigations are straightforward:
   keep the total number of things in a system small so that
   it stays easy to understand and easy to operate. In some
   cases this will be a compromise because a technology
-  that's slight less suited to a job may have to be re-used
-  even if there's a new one that would technically be a
-  better fit.
+  that's slightly less suited to a job may have to be 
+  re-used even if there's a new one that would technically 
+  be a better fit.
 
 * ***Don't use new technology the day, or even the year,
   that it's initially released.*** Save yourself time and
