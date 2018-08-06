@@ -212,7 +212,7 @@ Here's why I like using terminals and terminal programs:
 
 * Interface elements are limited, but uniform.
 
-* The learning curve is steep, but rewarding. They're
+* The learning curve is difficult, but rewarding. They're
   optimized for the experienced user rather than the first
   timer. Given that successfully onboarded users may spend
   tens of thousands of hours in the UI over the course of
