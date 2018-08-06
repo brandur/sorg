@@ -64,7 +64,7 @@ https://www.kaufmann-mercantile.com/field-notes/post/6030/denim
 
 > Sensing an opportunity, the Japanese bought many of the old machines from American mills in the 1980s. It probably seemed like a good idea to the American manufacturers at the time. Many of these looms were just rusting out in the fields or scrapped for parts — the old behemoths were taking up too much space in the factories.
 
-## Denim today (#today)
+## The properties of denim (#properties)
 
 ### Raw (dry) denim (#raw)
 
@@ -126,14 +126,20 @@ deciding this.
 
 > Different style of stitching used in premium denim's that creates a more obvious roping effect on the hem than the standard lock stitch. It isn't as strong as a lock-stitch, but roping can be desirable for aesthetic value or to emulate early 20th century style production.
 
-## Union Special (#union-special)
+#### Union Special (#union-special)
 
 > However in the 1960’s Japanese denim manufacturers started aquiring these machine. In 1989, when Union Special stopped manufacturing them, it created a void in the market place for the ‘classic look’. Specialty denim shops in North America began trying to buy them up but the Japanese had effectively beaten them to the punch.
+
+### Slubbiness (#slubbiness)
+
+> According to thefreedictionary.com, “slub” in the textile industry is “a soft thick nub in yarn that is either an imperfection or purposely set for a desired effect“.  In terms of raw denim, it is when the denim manufacturer accidentally or intentionally causes irregularities in the yarn by means of knotting or twisting or using a mixture of different fiber lengths.  The effect is an uneven, bumpy, hairy, and rough texture; making for even raw-er denim (although many denim heads prefer the smoother and flatter alternative).
 
 ## Interesting places (#places)
 
 ## Brands (#brands)
 
-> Pure Blue Japan has a unique production method utilizing a low tension machine, resulting in a slubby, and rough feeling denim. What is particularly special about their production is that most of their denim rolls off a single machine. A machine which has been adjusted to output fabric which features an uneven and hair
+### Pure Blue Japan (#pure-blue-japan)
+
+> Pure Blue Japan has a unique production method utilizing a low tension machine, resulting in a slubby, and rough feeling denim. What is particularly special about their production is that most of their denim rolls off a single machine. A machine&nbsp;which has been adjusted to output fabric which features an uneven and&nbsp;hairy weave. This, coupled with the fact that they only produce through the oldest and finest mills in Okayama, has allowed Pure Blue Japan to&nbsp;produce some of the best quality vintage jeans for denim aficionados&nbsp;for the past fifteen years.
 
 [ametora]: https://www.amazon.com/Ametora-Japan-Saved-American-Style/dp/0465059732
