@@ -14,10 +14,10 @@ the years I've tried to find the perfect pair of jeans.
 The rabbit hole of raw denim is a deep one -- there's a
 huge subculture of aficionados online who have strong
 feelings about what brands to buy, how to produce the best
-fades, and how to wash (don't go anywhere near a washing
-machine). A little like vinyl, a lot of the claimed
-benefits aren't very material, but there's still a lot to
-like about the somewhat romanticized world.
+fades, and how to wash (infrequently, and don't go anywhere
+near a washing machine). A little like vinyl, a lot of the
+claimed benefits probably aren't material, but their
+romanticized worldview is still very interesting.
 
 While looking around I found a wealth of information, but
 no resource that did a very good job of collating the key
@@ -34,8 +34,11 @@ of a local woodworker had come in to request pants that
 were strong enough to last while her husband was chopping
 wood. In a moment of inspiration, Davis made some denim
 pants and used some copper rivets that had been lying
-around to fasten the pockets (a touch still found on the
-vast majority of jeans sold today).
+around to fasten the pockets. Those rivets might sound
+familiar because they're a touch still found on the vast
+majority of jeans sold all the way to today.
+
+TODO: Levi's logo.
 
 His invention proved quite popular -- more popular than
 what he could supply, so he broached a deal with a dry good
