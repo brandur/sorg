@@ -49,7 +49,7 @@ Co.
 Blue jeans spread east across the country, beyond labourers
 and up into the middle class, and migrated across oceans.
 Today, jeans are the garment of choice throughout the
-world, with over a billion sold every year, and worn in
+world, with over a billion sold every year, and popular in
 every country on Earth.
 
 ### Japan (#japan)
@@ -78,6 +78,8 @@ https://www.kaufmann-mercantile.com/field-notes/post/6030/denim
 > Honeycombs: These are the creases behind your knees. They can get some great contrast with raw denim.
 
 > Whiskers: These are the creases the form on your lap. They're a bit tougher to get contrast in, but give jeans good character if you do.
+
+[Blue Owl's fade museum][fademuseum]
 
 ### Washing (#washing)
 
@@ -146,3 +148,4 @@ deciding this.
 > Pure Blue Japan has a unique production method utilizing a low tension machine, resulting in a slubby, and rough feeling denim. What is particularly special about their production is that most of their denim rolls off a single machine. A machine&nbsp;which has been adjusted to output fabric which features an uneven and&nbsp;hairy weave. This, coupled with the fact that they only produce through the oldest and finest mills in Okayama, has allowed Pure Blue Japan to&nbsp;produce some of the best quality vintage jeans for denim aficionados&nbsp;for the past fifteen years.
 
 [ametora]: https://www.amazon.com/Ametora-Japan-Saved-American-Style/dp/0465059732
+[fademuseum]: https://www.blueowl.us/blogs/fade-museum
