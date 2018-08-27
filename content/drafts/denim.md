@@ -55,7 +55,19 @@ every country on Earth.
 ### Japan (#japan)
 
 One doesn't get far into reading about denim before seeing
-Japan's outsized influence on the craft.
+Japan's outsized influence on the craft. In a way, it was
+Japan that saved a dying craft, and Japan which continues
+to most excel at it today.
+
+With America's denim industry looking to produce their
+products faster and more efficiently, the 1930s saw the
+introduction of wider shuttle looms, and by the 1950s most
+production had moved from the original 36-inch shuttle
+looms to 42-inch projectile looms. The projectile looms
+were far more efficient, but no longer produced selvedge,
+which at the time 
+
+The 1930s saw the introduction of wider shuttle looms 
 
 Japan buying looms:
 
