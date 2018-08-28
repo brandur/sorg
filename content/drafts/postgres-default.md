@@ -17,9 +17,9 @@ that I've been hoping would appear roughly forever:
 Despite being buried at the bottom of a list, it's one of
 the most important operational improvements that Postgres
 has made in years, although it might not be that obvious
-why.
+why. Let's start with a little background.
 
-## Schema changes and exclusive locks (#schema)
+## Table alterations and exclusive locks (#alterations)
 
 Consider a simple statement to add a new column to a table:
 
