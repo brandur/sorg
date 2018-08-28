@@ -19,7 +19,7 @@ the most important operational improvements that Postgres
 has made in years, although it might not be that obvious
 why.
 
-## Background (#background)
+## Schema changes and exclusive locks (#schema)
 
 Consider a simple statement to add a new column to a table:
 
@@ -62,13 +62,15 @@ block every other operation until it's released -- even
 of ongoing access to the table it's not just a problem,
 it's totally unacceptable.
 
+TODO: Diagram of conflict
+
 Accidentally locking access to a table when adding a column
 was a common pitfall for new Postgres operators because
 there's nothing in the SQL to tip them off to the
 additional expense of `DEFAULT`. It takes a close reading
 of [the manual][altertable] to find out.
 
-## Too painful to bother (#too-painful-to-bother)
+## Constraints relaxed by necessity (#constraints)
 
 Because it wasn't possible to cheaply add a `DEFAULT`
 column, it also wasn't possible to add a column set to `NOT
@@ -89,7 +91,7 @@ column in any large relation meant that in practice you
 usually wouldn't bother. It was either too time consuming
 or too dangerous.
 
-## What's so great about non nullable columns anyway? (#not-null)
+## Why bother with non nullable columns anyway? (#why-bother)
 
 One of the biggest reasons to use relational databases over
 document stores and other less sophisticated storage
@@ -113,9 +115,34 @@ big step forward in addressing that.
 
 ## Appendix: How it works (#how-it-works)
 
+The [patch][commit] adds two new fields to
+[`pg_attribute`][pgattribute], a system table that tracks
+information on every column in the database. One is
+`atthasmissing` which is set to `true` when there's a
+missing `DEFAULT` value and one is `attmissingval` which
+contains its value. As scans are returning rows, they check
+these new fields and return missing values where
+appropriate. New rows inserted into the table pick up the
+default values, and there's no need to check
+`atthasmissing` when returning their contents.
+
+TODO: Diagram of table and pg_attribute
+
+The new fields are only used as long as they have to be. If
+at any point the table is rewritten, Postgres takes the
+opportunity to insert the default value for every row and
+unset `atthasmissing` and `attmissingval`.
+
+Note that due to the relative simplicity of
+`attmissingval`, this optimization only works for default
+values that are _non-volatile_ (i.e., single, constant
+values). A default value that calls `NOW()` for example,
+can't take advantage of the optimization.
+
 [altertable]: https://www.postgresql.org/docs/10/static/sql-altertable.html
 [check]: https://www.postgresql.org/docs/current/static/ddl-constraints.html#DDL-CONSTRAINTS-CHECK-CONSTRAINTS
 [commit]: https://github.com/postgres/postgres/commit/16828d5c0273b4fe5f10f42588005f16b415b2d8
 [locking]: https://www.postgresql.org/docs/current/static/explicit-locking.html
 [notes]: https://www.postgresql.org/docs/11/static/release-11.html
+[pgattribute]: https://www.postgresql.org/docs/current/static/catalog-pg-attribute.html
 [referential]: https://en.wikipedia.org/wiki/Referential_integrity
