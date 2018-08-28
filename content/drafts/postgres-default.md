@@ -1,47 +1,51 @@
 ---
 title: "A Missing Link in Postgres 11: Fast Column Creation with Defaults"
 published_at: 2018-08-27T22:16:00Z
-hook: The biggest little feature of Postgres 11.
+hook: How a seemingly minor enhancement in Postgres 11
+  fills one of the system's biggest operational holes.
 location: San Francisco
 ---
 
-Reading the release notes for the [upcoming Postgres
-11][notes], you'll find a somewhat inconspicuous feature
-tucked away at the bottom of the enhancements list:
+If you read through the release notes for [upcoming
+Postgres 11][notes], you might find a somewhat
+inconspicuous feature tucked away at the bottom of the
+enhancements list:
 
 > Many other useful performance improvements, including
 > making `ALTER TABLE .. ADD COLUMN` with a non-null column
 > default faster
 
-It's not a flagship feature of the new release, but it's
-one of the most important operational improvements that
-Postgres has made in years, even though it might not be
-that obvious why. The short version is that it's taken a
-limitation that used to make correctness in schema design
-difficult and eliminated it.
+It's not a flagship feature of the new release, but even
+so, it's one of the most important operational improvements
+that Postgres has made in years, even though it might not
+be immediately obvious why. The short version is that it's
+eliminated a limitation that used to make correctness in
+schema design difficult, but let's take a look at the
+details.
 
 ## Alterations and exclusive locks (#alterations)
 
-Consider a simple statement to add a new column to a table:
+Consider for a moment one of the simplest database
+statements possible, one that adds a new column to a table:
 
 ``` sql
 ALTER TABLE users
     ADD COLUMN credits bigint;
 ```
 
-Although we're altering the table's schema, any modern
+Although it's altering the table's schema, any modern
 database is sophisticated enough to make this operation
 practically instantaneous. Instead of rewriting the
-existing representation of the table which would force all
-existing data to be copied over at great expense,
+existing representation of the table (thereby forcing all
+existing data to be copied over at great expense),
 information on the new column is added to the system
-catalog, which is cheap. It allows new rows to be written
+catalog, which is cheap. That allows new rows to be written
 with values for the new column, and the system is smart
-enough to return a `NULL` for existing rows where it has no
-value.
+enough to return `NULL` for current rows where no value
+previously existed.
 
-But things get more complicated when we add a `DEFAULT`
-clause to the same statement:
+But things get complicated when we add a `DEFAULT` clause
+to the same statement:
 
 ``` sql
 ALTER TABLE users
@@ -53,33 +57,31 @@ where the previous operation was trivial, this one requires
 a full rewrite of the table and all its indexes. Because
 there's now a non-null value involved, the database ensures
 data integrity by going back and injecting it for every
-existing row.
+existing row, which is very expensive work.
 
-That's very expensive work, but that doesn't mean
-it can't be done efficiently. Postgres will rewrite the
-table about as quickly as it's possible to do, and on
-smaller databases it'll appear to be instantly.
+Despite that expense, Postgres is still capable of doing
+the rewrite efficiently, and on smaller databases it'll
+appear to happen instantly.
 
-It's bigger installations where the expense becomes a
-problem. Rewriting a table with a large body of existing
-data will take as long as you'd expect, and in the
-meantime, the rewrite will take an [`ACCESS EXCLUSIVE`
-lock][locking] on the table. `ACCESS EXCLUSIVE` is the
-coarsest granularity of lock possible on a table, and it'll
-block _every_ other operation until it's released; even
-simple `SELECT` statements have to wait. In any system with
-a lot of ongoing access to the table, this is a huge
-problem.
+It's bigger installations where it becomes a problem.
+Rewriting a table with a large body of existing data will
+take about as long as you'd expect, and in the meantime,
+the rewrite will take an [`ACCESS EXCLUSIVE` lock][locking]
+on the table. `ACCESS EXCLUSIVE` is the coarsest
+granularity of table lock possible, and it'll block _every_
+other operation until it's released; even simple `SELECT`
+statements have to wait. In any system with a lot of
+ongoing access to the table, that's a huge problem.
 
 !fig src="/assets/postgres-default/blocking.svg" caption="Data loss from contention between two clients."
 
 Historically, accidentally locking access to a table when
 adding a column has been a common pitfall for new Postgres
 operators because there's nothing in the SQL to tip them
-off to the additional expense of `DEFAULT`. It takes a
-close reading of [the manual][altertable] to find out, or
-the pyrrhic wisdom acquired by causing a minor operational
-incident.
+off to the additional expense of adding that `DEFAULT`
+clause. It takes a close reading of [the
+manual][altertable] to find out, or the pyrrhic wisdom
+acquired by causing a minor operational incident.
 
 ## Constraints, relaxed by necessity (#constraints)
 
@@ -156,10 +158,10 @@ value that calls `NOW()` can't take advantage of the
 optimization.
 
 There's nothing all that difficult conceptually about this
-change, but it's implementation wasn't easy. The system is
-complex enough that there's a lot of places where the new
-missing values have to be considered. See [the
-patch][commit] for full details.
+change, but its implementation wasn't easy because the
+system is complex enough that there's a lot of places where
+the new missing values have to be considered. See [the
+patch][commit] that brought it in for full details.
 
 [altertable]: https://www.postgresql.org/docs/10/static/sql-altertable.html
 [check]: https://www.postgresql.org/docs/current/static/ddl-constraints.html#DDL-CONSTRAINTS-CHECK-CONSTRAINTS
