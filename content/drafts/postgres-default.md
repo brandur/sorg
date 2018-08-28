@@ -24,7 +24,7 @@ why. Let's start with a little background.
 Consider a simple statement to add a new column to a table:
 
 ``` sql
-ALTER TABLE users ADD COLUMN credit_balance bigint;
+ALTER TABLE users ADD COLUMN credits bigint;
 ```
 
 Although we're altering the table's schema, any modern
@@ -40,7 +40,7 @@ But things change when we execute the same statement with
 an added `DEFAULT` clause:
 
 ``` sql
-ALTER TABLE users ADD COLUMN credit_balance bigint NOT NULL DEFAULT 0;
+ALTER TABLE users ADD COLUMN credits bigint NOT NULL DEFAULT 0;
 ```
 
 It looks similar, but where the previous operation was
@@ -62,7 +62,7 @@ block every other operation until it's released -- even
 of ongoing access to the table it's not just a problem,
 it's totally unacceptable.
 
-TODO: Diagram of conflict
+!fig src="/assets/postgres-default/blocking.svg" caption="Data loss from contention between two clients."
 
 Accidentally locking access to a table when adding a column
 was a common pitfall for new Postgres operators because
@@ -126,7 +126,7 @@ appropriate. New rows inserted into the table pick up the
 default values, and there's no need to check
 `atthasmissing` when returning their contents.
 
-TODO: Diagram of table and pg_attribute
+!fig src="/assets/postgres-default/implementation.svg" caption="Data loss from contention between two clients."
 
 The new fields are only used as long as they have to be. If
 at any point the table is rewritten, Postgres takes the
