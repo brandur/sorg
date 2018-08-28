@@ -1,6 +1,6 @@
 ---
 title: "A Missing Link in Postgres 11: Fast Column Creation with Defaults"
-published_at: 2018-08-27T22:16:00Z
+published_at: 2018-08-28T16:46:39Z
 hook: How a seemingly minor enhancement in Postgres 11
   fills one of the system's biggest operational holes.
 location: San Francisco
