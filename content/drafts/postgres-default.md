@@ -88,9 +88,9 @@ acquired by causing a minor operational incident.
 Because it wasn't possible to cheaply add a `DEFAULT`
 column, it also wasn't possible to add a column set to `NOT
 NULL`. By definition non-null columns need to have values
-for every row, and it's not possible to add one to a
-non-empty table without specifying what values the existing
-data should have, and that takes `DEFAULT`.
+for every row, and you can't add one to a non-empty table
+without specifying what values the existing data should
+have, and that takes `DEFAULT`.
 
 You could still get a non-nullcolumn by first adding it as
 nullable, running a migration to add values to every
@@ -119,14 +119,19 @@ With a good schema design you can rest assured that your
 data is in a high quality state because the very database
 is ensuring it. This makes querying or changing it easier,
 and prevents an entire class of application-level bugs
-caused by data existing in an unexpected state.
+caused by data existing in an unexpected state. Enthusiasts
+like me have always argued in favor of strong data
+constraints, but knew also that new non nullable fields
+often weren't possible in Postgres when it was running at
+scale.
 
-Fast default values on `ADD COLUMN` fill a gaping hole in
-Postgres' operational story. Enthusiasts like me have
-always argued in favor of strong data constraints, but knew
-also that new non nullable fields often weren't possible in
-any systems running at scale. Postgres 11 takes a big step
-forward in addressing that.
+Postgres 11 brings in a change that makes `ADD COLUMN` with
+`DEFAULT` values fast by marshaling them for existing rows
+only as necessary. The expensive table rewrite and long
+hold on `ACCESS EXCLUSIVE` are eliminated, and a gaping
+hole in Postgres' operational story is filled. It will now
+be possible to have both strong data integrity and strong
+operational guarantees.
 
 ## Appendix: How it works (#how-it-works)
 
