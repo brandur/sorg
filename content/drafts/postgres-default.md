@@ -7,16 +7,16 @@ location: San Francisco
 ---
 
 If you read through the release notes for [upcoming
-Postgres 11][notes], you might find a somewhat
-inconspicuous feature tucked away at the bottom of the
+Postgres 11][notes], you might see a somewhat
+inconspicuous addition tucked away at the bottom of the
 enhancements list:
 
 > Many other useful performance improvements, including
 > making `ALTER TABLE .. ADD COLUMN` with a non-null column
 > default faster
 
-It's not a flagship feature of the new release, but even
-so, it's one of the most important operational improvements
+It's not a flagship feature of the new release, but it's
+still one of the more important operational improvements
 that Postgres has made in years, even though it might not
 be immediately obvious why. The short version is that it's
 eliminated a limitation that used to make correctness in
@@ -53,11 +53,12 @@ ALTER TABLE users
 ```
 
 The SQL looks so similar as to be almost identical, but
-where the previous operation was trivial, this one requires
-a full rewrite of the table and all its indexes. Because
-there's now a non-null value involved, the database ensures
-data integrity by going back and injecting it for every
-existing row, which is very expensive work.
+where the previous operation was trivial, this one is
+infinitely more expensive in that it now requires a full
+rewrite of the table and all its indexes. Because there's
+now a non-null value involved, the database ensures data
+integrity by going back and injecting it into every
+existing row.
 
 Despite that expense, Postgres is still capable of doing
 the rewrite efficiently, and on smaller databases it'll
@@ -85,24 +86,24 @@ acquired by causing a minor operational incident.
 
 ## Constraints, relaxed by necessity (#constraints)
 
-Because it wasn't possible to cheaply add a `DEFAULT`
-column, it also wasn't possible to add a column set to `NOT
+Because it's not possible to cheaply add a `DEFAULT`
+column, it's also not possible to add a column set to `NOT
 NULL`. By definition non-null columns need to have values
 for every row, and you can't add one to a non-empty table
 without specifying what values the existing data should
 have, and that takes `DEFAULT`.
 
-You could still get a non-nullcolumn by first adding it as
+You can still get a non-null column by first adding it as
 nullable, running a migration to add values to every
-existing row, then altering the table with `SET NOT NULL`.
-Even that isn't perfectly safe because `SET NOT NULL`
-requires a full stable scan (as it verifies the new
-constraint across all existing data) which is also `ACCESS
-EXCLUSIVE`, but it's faster than a rewrite.
+existing row, then altering the table with `SET NOT NULL`,
+but even that's not perfectly safe because `SET NOT NULL`
+requires a full stable scan as it verifies the new
+constraint across all existing data. The scan is faster
+than a rewrite, but still needs an `ACCESS EXCLUSIVE` lock.
 
 The amount of effort involved in getting a new non-null
-column in any large relation meant that in practice you
-wouldn't bother. It was either too time consuming or too
+column into any large relation means that in practice you
+often don't bother. It's either too time consuming or too
 dangerous.
 
 ## Why bother with non-null anyway? (#why-bother)
@@ -133,7 +134,7 @@ hole in Postgres' operational story is filled. It will now
 be possible to have both strong data integrity and strong
 operational guarantees.
 
-## Appendix: How it works (#how-it-works)
+## Appendix: Under the hood (#under-the-hood)
 
 The change adds two new fields to
 [`pg_attribute`][pgattribute], a system table that tracks
