@@ -163,7 +163,7 @@ once you've located that source package, the definition may
 yet be another two gem indirections and six DSL/mixin
 layers deep.
 
-The invention of Pry has made this more managable in that
+The invention of Pry has made this more manageable in that
 all of this can be determined at runtime fairly easily, but
 the difficulty in statically analyzing Ruby continues to
 make it difficult to implement editor "jump to",

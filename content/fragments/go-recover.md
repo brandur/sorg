@@ -59,5 +59,5 @@ In this simplified example above, we use a combination of `defer` and
 `recover()` to handle any exception that might have been thrown with `panic()`,
 log some information about it, and exit the program cleanly.
 
-hk takes this a step futher by sending the error up to Rollbar so that all of
+hk takes this a step further by sending the error up to Rollbar so that all of
 its unexpected crashes can be examined in aggregate.

@@ -145,7 +145,7 @@ deciding this.
 
 #### Union Special (#union-special)
 
-> However in the 1960’s Japanese denim manufacturers started aquiring these machine. In 1989, when Union Special stopped manufacturing them, it created a void in the market place for the ‘classic look’. Specialty denim shops in North America began trying to buy them up but the Japanese had effectively beaten them to the punch.
+> However in the 1960’s Japanese denim manufacturers started acquiring these machine. In 1989, when Union Special stopped manufacturing them, it created a void in the market place for the ‘classic look’. Specialty denim shops in North America began trying to buy them up but the Japanese had effectively beaten them to the punch.
 
 ### Slubbiness (#slubbiness)
 

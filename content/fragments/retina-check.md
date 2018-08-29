@@ -35,7 +35,7 @@ printing lines that are _not_ repeated in the input; in this case uncovering
 any filenames that weren't in both sets `A` and `B`.
 
 The next time someone tells you that Bash represents the culmination of the
-elegance that is the Unix philosphy, hit them with this set exclusion problem.
+elegance that is the Unix philosophy, hit them with this set exclusion problem.
 If they can write a script without Google's help that doesn't fall back on a
 `O(n^2)` operation involving nested loops, then you're dealing with a truly
 fearful programmer indeed.

@@ -16,7 +16,7 @@ Against all odds, a very useful usability pattern emerged from the constraints o
 
 It's survived all the way to the present day in our printed mediums as an easily portable unit of text, but it provides major usability benefits as well. The edges of a page provide convenient points of reference for readers to track their position within a larger document, and often the width of pages are optimized to fit a highly readable 50 to 60 characters per line (although too wide for modern uses, even the 8.5" x 11" US Letter was well-suited in this respect back in the day of the typewriter).
 
-The page is also quite beautiful. Print designers have been assembling stunning products for decades that demonstrate emminently fluid layouts and a creative use of space that has yet to be matched in digital design (that's my opinion of course). For example, here's are a few pages from the [recent redesign of Transworld Surf](https://www.behance.net/gallery/Transworld-Surf-Redesign/13052023) and the [Italian magazine IL](http://www.behance.net/gallery/RANE/4282199):
+The page is also quite beautiful. Print designers have been assembling stunning products for decades that demonstrate eminently fluid layouts and a creative use of space that has yet to be matched in digital design (that's my opinion of course). For example, here's are a few pages from the [recent redesign of Transworld Surf](https://www.behance.net/gallery/Transworld-Surf-Redesign/13052023) and the [Italian magazine IL](http://www.behance.net/gallery/RANE/4282199):
 
 <figure>
   <p><a href="https://www.behance.net/gallery/Transworld-Surf-Redesign/13052023"><img src="/assets/page/transworld-surf.jpg"></a></p>

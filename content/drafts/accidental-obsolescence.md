@@ -13,7 +13,7 @@ Although complaints about increased sluggishness are a
 common staple of any iOS upgrade, anecdotally iOS 11 seems
 to be worse, with reports of performance degradations even
 more common than the use of superlatives during an Apple
-keynote (_Incredible!_, _Unpredecented!_,
+keynote (_Incredible!_, _Unprecedented!_,
 _Revolutionary!_).
 
 I was a little behind the hardware curve with a 3+ year old

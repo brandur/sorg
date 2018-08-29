@@ -30,7 +30,7 @@ start looking for alternatives.
 
 A separate issue is that BreakTime doesn't have a lot of
 sympathy for you or the work that you're doing. Whether
-you're in the middle of a video call, desparately handling
+you're in the middle of a video call, desperately handling
 a production incident, or cranking away at your latest
 feature while deep in the zone, it will yank you out to its
 modal; the choppy transition animation a symbol for its

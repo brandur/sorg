@@ -51,7 +51,7 @@ Specifically, these major releases come to mind:
   obviously useless to pretty much everyone. But the bigger red flag for me is
   the that they reduced battery capacity by 25% because the new components were
   expected to make up the difference by being 25% more power efficient (they
-  didn't). Sacrificing a major practical advantage to satisy the urge to shave
+  didn't). Sacrificing a major practical advantage to satisfy the urge to shave
   a few mm off a computer that's already thin enough for anyone gives us a
   small window into the very concerning thought process of today's Apple.
 

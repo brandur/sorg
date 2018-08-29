@@ -38,7 +38,7 @@ first five minutes:
   governing body come peacetime, thus allowing the Empire to regain a foothold.
 * No matter where anyone crash lands on Jakku, a big empty planet full of
   hostile desert, town is only a hop and a skip away (on foot).
-* Were the keys in the Millenium Falcon's ignition? Why is everything in this
+* Were the keys in the Millennium Falcon's ignition? Why is everything in this
   universe so easy to steal?
 * Out of all the places in the universe, Anakin's lightsaber just happens to be
   located on the same planet that Han Solo drags everyone to for a bar visit.

@@ -54,7 +54,7 @@ The corrected invocation looks almost identical:
 IO.popen(...) { ... }
 ```
 
-This one simple mistake means that my home server is now out of comission for
+This one simple mistake means that my home server is now out of commission for
 two weeks until I can get back there to manually reboot it. This is one of
 about a thousand different reasons as to why I'm very keen on Rust these days.
 
