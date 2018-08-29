@@ -113,7 +113,7 @@ end
 
 Much in the same way that mediators keep our endpoints lean, they do the same for our async jobs. By encapsulating all business logic into a mediator, we leave jobs to focus only one two things:
 
-1. **Model materialization:** Async jobs are passed through some kind of backchannel like a database table or a redis queue, and have to marshaled on the other side. It's up to the job to figure out how to find and instantiate the models that it needs to inject into its mediator. This logic may change job to job: if we have a job to create a logging channel for an app, but that app has already been deleted by the time it runs, then we should fall through the job without an error; but if we have an async job to a destroy an app, and its record is no longer avaiable, then something unexpected happen and we should raise an error.
+1. **Model materialization:** Async jobs are passed through some kind of backchannel like a database table or a redis queue, and have to marshaled on the other side. It's up to the job to figure out how to find and instantiate the models that it needs to inject into its mediator. This logic may change job to job: if we have a job to create a logging channel for an app, but that app has already been deleted by the time it runs, then we should fall through the job without an error; but if we have an async job to a destroy an app, and its record is no longer available, then something unexpected happen and we should raise an error.
 2. **Error handling:** A job's second responsibility is to rescue errors and figure out what to do with them. If we're trying to provision an SSL Endpoint and got a connection error to our downstream endpoints service, then we might want to send the job back into the work queue; but if something like a configuration error occurred, we might want to notify our error service and fail the job permanently.
 
 Let's look at what an async job might look like for the hypothetical SSL Endpoint creation mediator from above:
@@ -149,7 +149,7 @@ module API::Jobs::SSLEndpoints
       )
 
     # Something is wrong which will prevent the job from ever succeeding. Fail
-    # the job permamently and notify operators of the error.
+    # the job permanently and notify operators of the error.
     rescue API::Error::ConfigurationMissing => e
       raise API::Error::JobFailed.new(e)
 

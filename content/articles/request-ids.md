@@ -148,7 +148,7 @@ Request-ID: 9d5ccdbe-6a5c-4da7-8762-8fb627a020a4
 ...
 ```
 
-Heroku's new [V3 platform API](https://devcenter.heroku.com/articles/platform-api-reference#request-id) includes a request ID in the respones with every request.
+Heroku's new [V3 platform API](https://devcenter.heroku.com/articles/platform-api-reference#request-id) includes a request ID in the response with every request.
 
 ### Storing request ID in a request store (#storage)
 

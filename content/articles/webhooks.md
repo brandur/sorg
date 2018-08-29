@@ -201,7 +201,7 @@ a feature that lets users configured the API version that
 gets sent to each of their webhook endpoints, but for a
 long time upgrades were a scary business.
 
-!fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboad."
+!fig src="/assets/webhooks/upgrade-version.png" caption="Upgrading the API version sent to a webhook endpoint in Stripe's dashboard."
 
 ## The toil in the kitchens (#kitchens)
 

@@ -16,7 +16,7 @@ patterns like the one from _Ziggy Stardust_, but it's still very much a work in
 progress that needs regular practice.
 
 My guitar teacher gave me a pretty interesting tip the other week for
-practicing with a metronome. I can reduce it to rougly this:
+practicing with a metronome. I can reduce it to roughly this:
 
 > Run your metronome on two beats per measure.
 

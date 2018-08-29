@@ -25,5 +25,5 @@ operation, like say running a data migration.
 One thing that makes Ruby one of the most dangerous languages out there is that
 its meta-programming conventions invite abuse. Take ActiveRecord's `after_save`
 and `before_save` hooks for example. There are valid use cases for both, but
-there's going to be an irresistable background force that will make these
+there's going to be an irresistible background force that will make these
 likely to be exploited over time.

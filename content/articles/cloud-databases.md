@@ -298,7 +298,7 @@ Microsoft, but less so for smaller companies.
 
 [CockroachDB][cockroach] is a product built out of
 Cockroach Labs, a company founded by ex-Googlers who are
-known to have been influencial in building Google File
+known to have been influential in building Google File
 System and Google Reader. It's based on the design laid out
 by the original Spanner paper, and like spanner, uses a
 time-based mechanic to achieve consistency, but without the

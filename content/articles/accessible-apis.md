@@ -116,7 +116,7 @@ that comes back with list responses:
 
 I've previously talked about how Rack service stubs can be [used to improve the
 development and testing experience](https://brandur.org/service-stubs) of apps
-that are heaviliy dependent on external APIs. An API can also ship its own
+that are heavily dependent on external APIs. An API can also ship its own
 service stub, which allows developers to try API calls that might otherwise
 mutate data when done in a production environment. See the [Heroku API
 stub](https://github.com/heroku/heroku-api-stub) for an example of this
