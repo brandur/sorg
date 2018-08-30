@@ -40,7 +40,7 @@ Here are a few major weaknesses in RSS today:
   incentive to publish all their content rather than just what's the most
   relevant or highest quality. Two examples of feeds that I had to unsubscribe
   from for this reason are _Streetsblog_ and the _AWS Official Blog_, both of
-  which were ostensibily subchannels that were keyed to topics I cared about
+  which were ostensibly subchannels that were keyed to topics I cared about
   (San Francisco for the former and AWS announcements for the latter), but both
   of which had very low signal to noise ratios in reality [1] [2].
 * **Poor quality feeds:** A commonly seen problem are feeds that force readers

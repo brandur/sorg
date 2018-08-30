@@ -39,7 +39,7 @@ kerning, and deranged sectioning came together in harmony to ensure its total
 opacity. It took the four of us three separate conversations with our waitstaff
 before we could make sense of it.
 
-Its absymal design may have even been a design feature to make sure that
+Its abysmal design may have even been a design feature to make sure that
 patrons engaged with a human before ordering anything. That said, Occam's razor
 suggests that it may have been the byproduct of a night of wild absinthe abuse,
 and a mid-nineties copy of Microsoft Word.

@@ -17,7 +17,7 @@ First of all, remove the thread cover from the X100s to reveal threading suitabl
   <figcaption>Remove the thread cover from the X100S.</figcaption>
 </figure>
 
-Now we can't simply mount our new filter onto the camera because it will end up too close to the lens. Focusing on a near object will extend the lens enough to hit phyiscally hit the filter, which will shut the camera down. This is where the adapter ring comes in -- it spaces the lens out from a mounted accessory enough that it has enough room to move around.
+Now we can't simply mount our new filter onto the camera because it will end up too close to the lens. Focusing on a near object will extend the lens enough to hit physically hit the filter, which will shut the camera down. This is where the adapter ring comes in -- it spaces the lens out from a mounted accessory enough that it has enough room to move around.
 
 Luckily, we can make our own. Take your cheap UV filter and smash its glass out with a metal object of your choice. I did this inside of a plastic bag to protect myself from dangerous shards of flying glass. Be very careful to make sure that you get all the little pieces of glass from out around the filter's rim before attempting to mount it.
 

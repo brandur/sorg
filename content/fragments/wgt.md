@@ -17,7 +17,7 @@ Thematic venues open up all over the city including vast warehouses, unused
 factories, gothic ballrooms, ancient theatres, medieval stages, and the city's
 citadel. There are even a select few shows held in the crypt at the top of
 [Monument to the Battle of the Nations][monument], an enormous structure of
-pyramid scale built to commemorate the defeat of Napolean in Leipzig, and the
+pyramid scale built to commemorate the defeat of Napoleon in Leipzig, and the
 city's most well-known landmark.
 
 This year WGT unfortunately coincided with a regional heat wave, and for most

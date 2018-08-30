@@ -211,4 +211,4 @@ The Fed's purchase of large numbers of treasuries is enough to push down the **y
 * [What is the purpose of QE?](http://www.ritholtz.com/blog/2012/12/what-is-the-purpose-of-qe/)
 * [Does Chairman Bernanke Know Squat About Money](http://www.economonitor.com/lrwray/2012/04/19/does-chairman-bernanke-know-squat-about-money/)
 
-[1] When this article was orginally written I'd had Bernanke in place of Yellen as he was still the chairman of the Fed.
+[1] When this article was originally written I'd had Bernanke in place of Yellen as he was still the chairman of the Fed.

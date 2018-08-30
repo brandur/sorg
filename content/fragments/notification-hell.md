@@ -29,7 +29,7 @@ e-mail; even describing its use as literally "transformative":
 > relationship with email: The Atlantic has used Slack since 2014, and, for me,
 > it’s been transformative.)
 
-I like Slack as a product (maybe even moreso than most having endured long
+I like Slack as a product (maybe even more than most having endured long
 periods of using Campfire and HipChat), but this is where this type of glowing
 endorsements really lose me. Slack is an incredibly functional, refined, and
 feature-rich chat program -- maybe the best of its class ever written -- but

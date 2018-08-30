@@ -7,7 +7,7 @@ hook: UNWRITTEN. This should not appear on the front page.
 I just moved a few of my domains over to [Google's new Domains
 service](https://domains.google.com) to try out the new product. Until now I'd
 been using NameCheap for registration, having switched from GoDaddy a few years
-previously after my willingless to tolerate their trademark terrible UX fell
+previously after my willingness to tolerate their trademark terrible UX fell
 behind by my unwillingness to pay what other registrars were asking[1].
 
 For a .org domain, Google's sticker price of $12 is cheaper than NameCheap if

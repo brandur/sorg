@@ -20,4 +20,4 @@ successful relationship looks like, and in reality it may involve functions
 that don't have much romantic appeal like a heavy dose of daily familiarity
 compounded over an extended period of time. A relationship that's allowed to
 hobble its way to a slow demise is costly, but a false negative tripped by an
-overdeveloped internal cynic might be even moreso.
+overdeveloped internal cynic might be even more so.
