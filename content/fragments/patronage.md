@@ -5,7 +5,7 @@ hook: Thoughts on how to make the creation of high quality
   content on the internet sustainable.
 ---
 
-The world's changing, and more for independent creatives
+The world's changing, and more so for independent creatives
 than for the rest of us. If there's one thing that the
 internet's provided, it's a glut of every type of media
 imaginable. There's already far more free content out there
