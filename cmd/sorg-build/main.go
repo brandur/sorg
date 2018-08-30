@@ -21,6 +21,7 @@ import (
 	"github.com/brandur/sorg/markdown"
 	"github.com/brandur/sorg/passages"
 	"github.com/brandur/sorg/pool"
+	"github.com/brandur/sorg/resizer"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
 	"github.com/joeshaw/envdecode"
@@ -236,7 +237,7 @@ type Photo struct {
 	// can be downloaded from Flickr.
 	LargeImageURL string
 
-	// LargeImageHeight and LargeImageWidth are the height and with of the
+	// LargeImageHeight and LargeImageWidth are the height and width of the
 	// large-sized version of the photo.
 	LargeImageHeight, LargeImageWidth int
 
@@ -244,9 +245,17 @@ type Photo struct {
 	// photo can be downloaded from Flickr.
 	MediumImageURL string
 
-	// MediumImageHeight and MediumImageWidth are the height and with of the
+	// MediumImageHeight and MediumImageWidth are the height and width of the
 	// medium-sized version of the photo.
 	MediumImageHeight, MediumImageWidth int
+
+	// OriginalImageURL is the location where the original-sized version of the
+	// photo can be downloaded from Flickr.
+	OriginalImageURL string
+
+	// OriginalImageHeight and OriginalImageWidth are the height and width of
+	// the medium-sized version of the photo.
+	OriginalImageHeight, OriginalImageWidth int
 
 	// OccurredAt is UTC time when the photo was published.
 	OccurredAt *time.Time
@@ -393,6 +402,11 @@ func main() {
 	versionedAssetsDir := path.Join(conf.TargetDir, "assets", sorg.Release)
 
 	err = sorg.CreateOutputDirs(conf.TargetDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err := os.MkdirAll(conf.TempDir, 0755)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -947,14 +961,22 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	//
 	cacheDir := path.Join(sorg.ContentDir, "photos")
 
-	// Keep a published copy of all the photos that we need.
 	var photoFiles []*downloader.File
+	var resizeJobs []*resizer.ResizeJob
+
 	for _, photo := range photos {
 		image1x := photo.Slug + ".jpg"
 		image2x := photo.Slug + "@2x.jpg"
 
+		imageLarge1x := photo.Slug + "_large.jpg"
+		imageLarge2x := photo.Slug + "_large@2x.jpg"
+
+		imageOriginal := photo.Slug + "_original.jpg"
+
 		if fileExists(path.Join(cacheDir, image1x)) &&
-			fileExists(path.Join(cacheDir, image2x)) {
+			fileExists(path.Join(cacheDir, image2x)) &&
+			fileExists(path.Join(cacheDir, imageLarge1x)) &&
+			fileExists(path.Join(cacheDir, imageLarge2x)) {
 
 			log.Debugf("Using cached photos: %v / %v", image1x, image2x)
 
@@ -968,16 +990,47 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 			}
 		} else {
 			photoFiles = append(photoFiles,
-				&downloader.File{URL: photo.MediumImageURL,
-					Target: path.Join(conf.TargetDir, "assets", "photos", image1x)},
-				&downloader.File{URL: photo.LargeImageURL,
-					Target: path.Join(conf.TargetDir, "assets", "photos", image2x)},
+				&downloader.File{URL: photo.OriginalImageURL,
+					Target: path.Join(conf.TempDir, imageOriginal)},
+			)
+
+			resizeJobs = append(resizeJobs,
+				&resizer.ResizeJob{
+					SourcePath:   path.Join(conf.TempDir, imageOriginal),
+					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", image1x),
+					TargetHeight: 500,
+					TargetWidth:  333,
+				},
+				&resizer.ResizeJob{
+					SourcePath:   path.Join(conf.TempDir, imageOriginal),
+					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", image2x),
+					TargetHeight: 1000,
+					TargetWidth:  667,
+				},
+				&resizer.ResizeJob{
+					SourcePath:   path.Join(conf.TempDir, imageOriginal),
+					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", imageLarge1x),
+					TargetHeight: 1500,
+					TargetWidth:  1000,
+				},
+				&resizer.ResizeJob{
+					SourcePath:   path.Join(conf.TempDir, imageOriginal),
+					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", imageLarge2x),
+					TargetHeight: 3000,
+					TargetWidth:  2000,
+				},
 			)
 		}
 	}
 
 	log.Debugf("Fetching %d photo(s)", len(photoFiles))
 	err = downloader.Fetch(photoFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	log.Debugf("Resizing %d photo(s)", len(resizerJobs))
+	err = resizer.Resizer(resizerJobs)
 	if err != nil {
 		return nil, err
 	}
@@ -1551,7 +1604,7 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 		WHERE type = 'flickr'
 			AND (metadata -> 'medium_width')::int = 500
 		ORDER BY occurred_at DESC
-		LIMIT 90
+		LIMIT 5
 	`)
 	if err != nil {
 		return nil, err

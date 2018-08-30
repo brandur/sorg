@@ -33,6 +33,10 @@ const (
 	// newsletter).
 	PassageLayout = LayoutsDir + "/passages"
 
+	// TempDir is a temporary directory used to download images that will be
+	// processed and such.
+	TempDir = "./tmp"
+
 	// ViewsDir is the source directory for views.
 	ViewsDir = "./views"
 )
