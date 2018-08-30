@@ -11,7 +11,7 @@ cert wrangling.
 
 Although I was finally in a position where I could do a fair job managing my
 own SSL configuration using free certs signed by StartCom, I'd still
-occasionally forget to renew certs and that would result in embarassing
+occasionally forget to renew certs and that would result in embarrassing
 downtime. No more!
 
 Universal SSL combined with a Heroku app turns out to be a perfect match.

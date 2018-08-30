@@ -235,7 +235,7 @@ visibility. Tuples created by a transaction with `xid <
 xmin` are visible to the snapshot.
 
 It also defines an `xmax`, which is set to the last
-commited `xid` plus one. `xmax` tracks the upper bound of
+committed `xid` plus one. `xmax` tracks the upper bound of
 visibility; transactions with `xid >= xmax` are invisible
 to the snapshot.
 

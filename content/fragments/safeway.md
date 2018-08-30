@@ -13,7 +13,7 @@ checkout waiting for the clerk when a tall official wearing a grey turtleneck
 started to address one of the customers in the line parallel to mine. "Young
 man. Make this easy on yourself."
 
-The fellow being addressed was a man of about 30 with an unkempt apperance and
+The fellow being addressed was a man of about 30 with an unkempt appearance and
 wearing shorts and a bike messenger's bag slung over one shoulder. He was
 standing in line to check out a PBR tall boy, and I recognized him from having
 passed him in a store aisle a few minutes before.
