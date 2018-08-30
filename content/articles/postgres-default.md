@@ -103,8 +103,8 @@ than a rewrite, but still needs an `ACCESS EXCLUSIVE` lock.
 
 The amount of effort involved in getting a new non-null
 column into any large relation means that in practice you
-often don't bother. It's either too time consuming or too
-dangerous.
+often don't bother. It's either too dangerous, or too time
+consuming.
 
 ## Why bother with non-null anyway? (#why-bother)
 
@@ -152,10 +152,11 @@ they're created so that there's no need to check
 
 !fig src="/assets/postgres-default/implementation.svg" caption="Fast column creation with existing rows loading defaults from pg_attribute."
 
-The new fields are only used as long as they have to be. If
-at any point the table is rewritten, Postgres takes the
-opportunity to insert the default value for every row and
-unset `atthasmissing` and `attmissingval`.
+The `pg_attribute` fields are only used as long as they
+have to be. If at any point the table is rewritten,
+Postgres takes the opportunity to insert the default value
+for every row and unset `atthasmissing` and
+`attmissingval`.
 
 Due to the relative simplicity of `attmissingval`, this
 optimization only works for default values that are
