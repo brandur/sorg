@@ -61,7 +61,12 @@ func (p *Pool) Run() {
 	log.Debugf("Running %v task(s) at concurrency %v.",
 		len(p.Tasks), p.concurrency)
 
-	for i := 0; i < p.concurrency; i++ {
+	maxWorkers := p.concurrency
+	if len(p.Tasks) < maxWorker {
+		maxWorkers = len(p.Tasks)
+	}
+
+	for i := 0; i < maxWorkers; i++ {
 		go p.work()
 	}
 
