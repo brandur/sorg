@@ -973,15 +973,13 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 
 		imageOriginal := photo.Slug + "_original.jpg"
 
-		if fileExists(path.Join(cacheDir, image1x)) &&
-			fileExists(path.Join(cacheDir, image2x)) &&
-			fileExists(path.Join(cacheDir, imageLarge1x)) &&
-			fileExists(path.Join(cacheDir, imageLarge2x)) {
+		derivateImages := []string{image1x, image2x, imageLarge1x, imageLarge2x}
 
+		if fileExistsAll(derivateImages) {
 			log.Debugf("Using cached photos: %v / %v / %v / %v",
 				image1x, image2x, imageLarge1x, imageLarge2x)
 
-			for _, image := range []string{image1x, image2x} {
+			for _, image := range derivateImages {
 				err := copyFile(
 					path.Join(cacheDir, image),
 					path.Join(conf.TargetDir, "assets", "photos", image))
@@ -1559,6 +1557,17 @@ func fileExists(file string) bool {
 		return false
 	}
 	panic(err)
+}
+
+// And yet another one that will check multiple files.
+func fileExistsAll(files []string) bool {
+	for _, file := range files {
+		if !fileExists(file) {
+			return false
+		}
+	}
+
+	return true
 }
 
 // Gets a map of local values for use while rendering a template and includes
