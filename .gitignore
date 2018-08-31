@@ -1,5 +1,6 @@
 public/
 public-dev/
+tmp/
 *.csv
 .DS_Store
 .env
