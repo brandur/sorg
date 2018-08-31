@@ -6,8 +6,15 @@ go:
 # magic word to use faster/newer container-based architecture
 sudo: false
 
+addons:
+    apt_packages:
+        - graphicsmagick
+
+cache:
+  directories:
+    - .git/lfs
+
 before_install:
-  - apt-get install graphicsmagick
   - go get -u github.com/golang/lint/golint
 
 install:
