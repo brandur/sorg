@@ -975,7 +975,7 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 
 		derivateImages := []string{image1x, image2x, imageLarge1x, imageLarge2x}
 
-		if fileExistsAll(derivateImages) {
+		if fileExistsAll(cacheDir, derivateImages) {
 			log.Debugf("Using cached photos: %v / %v / %v / %v",
 				image1x, image2x, imageLarge1x, imageLarge2x)
 
@@ -1560,9 +1560,9 @@ func fileExists(file string) bool {
 }
 
 // And yet another one that will check multiple files.
-func fileExistsAll(files []string) bool {
+func fileExistsAll(dir string, files []string) bool {
 	for _, file := range files {
-		if !fileExists(file) {
+		if !fileExists(path.Join(dir, file)) {
 			return false
 		}
 	}
