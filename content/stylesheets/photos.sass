@@ -1,26 +1,43 @@
-div.photo
-  text-align: center
+body.photos
+  background: #000
+  color: #fff
 
-  img
+  .content-photos
+    //margin: 0 auto
+    padding: 30px 40px
 
-div.photos
-  max-width: 1600px
+    div.photo
+      margin: 30px auto
+      max-width: 1200px
 
-  img
-    float: left
-    margin: 5px
-    width: 500px
+      img
+        width: 100%
 
-  li
-    margin: 0 auto
-
-  .clear
-    clear: both
-
-@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
-  div.photos
-    margin: 0
+#flexcontainer-index
+  div.photo
+    text-align: center
 
     img
-      float: none
-      margin: 5px auto
+
+  div.photos
+    max-width: 1600px
+
+    img
+      float: left
+      margin: 5px
+      width: 500px
+
+    li
+      margin: 0 auto
+
+    .clear
+      clear: both
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  #flexcontainer-index
+    div.photos
+      margin: 0
+
+      img
+        float: none
+        margin: 5px auto

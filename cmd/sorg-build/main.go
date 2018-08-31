@@ -406,7 +406,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err := os.MkdirAll(conf.TempDir, 0755)
+	err = os.MkdirAll(sorg.TempDir, 0755)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -978,7 +978,8 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 			fileExists(path.Join(cacheDir, imageLarge1x)) &&
 			fileExists(path.Join(cacheDir, imageLarge2x)) {
 
-			log.Debugf("Using cached photos: %v / %v", image1x, image2x)
+			log.Debugf("Using cached photos: %v / %v / %v / %v",
+				image1x, image2x, imageLarge1x, imageLarge2x)
 
 			for _, image := range []string{image1x, image2x} {
 				err := copyFile(
@@ -991,33 +992,29 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		} else {
 			photoFiles = append(photoFiles,
 				&downloader.File{URL: photo.OriginalImageURL,
-					Target: path.Join(conf.TempDir, imageOriginal)},
+					Target: path.Join(sorg.TempDir, imageOriginal)},
 			)
 
 			resizeJobs = append(resizeJobs,
 				&resizer.ResizeJob{
-					SourcePath:   path.Join(conf.TempDir, imageOriginal),
-					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", image1x),
-					TargetHeight: 500,
-					TargetWidth:  333,
+					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
+					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", image1x),
+					TargetWidth: 333,
 				},
 				&resizer.ResizeJob{
-					SourcePath:   path.Join(conf.TempDir, imageOriginal),
-					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", image2x),
-					TargetHeight: 1000,
-					TargetWidth:  667,
+					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
+					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", image2x),
+					TargetWidth: 667,
 				},
 				&resizer.ResizeJob{
-					SourcePath:   path.Join(conf.TempDir, imageOriginal),
-					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", imageLarge1x),
-					TargetHeight: 1500,
-					TargetWidth:  1000,
+					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
+					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", imageLarge1x),
+					TargetWidth: 1200,
 				},
 				&resizer.ResizeJob{
-					SourcePath:   path.Join(conf.TempDir, imageOriginal),
-					TargetPath:   path.Join(conf.TargetDir, "assets", "photos", imageLarge2x),
-					TargetHeight: 3000,
-					TargetWidth:  2000,
+					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
+					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", imageLarge2x),
+					TargetWidth: 2400,
 				},
 			)
 		}
@@ -1029,13 +1026,14 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		return nil, err
 	}
 
-	log.Debugf("Resizing %d photo(s)", len(resizerJobs))
-	err = resizer.Resizer(resizerJobs)
+	log.Debugf("Resizing %d photo(s)", len(resizeJobs))
+	err = resizer.Resize(resizeJobs)
 	if err != nil {
 		return nil, err
 	}
 
 	locals := getLocals("Photos", map[string]interface{}{
+		"BodyClass":     "photos",
 		"Photos":        photos,
 		"ViewportWidth": 600,
 	})
@@ -1598,13 +1596,16 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 			metadata -> 'medium_image',
 			(metadata -> 'medium_height')::int,
 			(metadata -> 'medium_width')::int,
+			metadata -> 'original_image',
+			(metadata -> 'original_height')::int,
+			(metadata -> 'original_width')::int,
 			(metadata -> 'occurred_at_local')::timestamptz,
 			slug
 		FROM events
 		WHERE type = 'flickr'
 			AND (metadata -> 'medium_width')::int = 500
 		ORDER BY occurred_at DESC
-		LIMIT 5
+		LIMIT 90
 	`)
 	if err != nil {
 		return nil, err
@@ -1621,6 +1622,9 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 			&photo.MediumImageURL,
 			&photo.MediumImageHeight,
 			&photo.MediumImageWidth,
+			&photo.OriginalImageURL,
+			&photo.OriginalImageHeight,
+			&photo.OriginalImageWidth,
 			&photo.OccurredAt,
 			&photo.Slug,
 		)
