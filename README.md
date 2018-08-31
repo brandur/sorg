@@ -7,6 +7,21 @@ stack][org] (sorg = "static org").
 The site deploys automatically from its CI build in Travis as changes are
 committed to the master branch.
 
+## Clone
+
+Note that cached photos are tracked using [git-lfs][gitlfs], so make sure to
+install that to successfully clone the repository:
+
+``` sh
+brew install git-lfs
+```
+
+Then issue the standard checkout command:
+
+``` sh
+git clone https://github.com/brandur/sorg.git
+```
+
 ## Build
 
 Install Go 1.9+, set up and run [blackswan][blackswan], then:
@@ -77,4 +92,5 @@ using these commands:
 
 [blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
+[gitlfs]: https://git-lfs.github.com/
 [org]: https://github.com/brandur/org
