@@ -9,7 +9,9 @@ sudo: false
 addons:
     apt_packages:
         - graphicsmagick
-    postgresql: "10"
+
+services:
+  - postgresql
 
 cache:
   directories:
