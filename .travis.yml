@@ -12,7 +12,10 @@ addons:
 
 cache:
   directories:
-    - .git/lfs
+    # I'm hoping catching git-lfs works because I found it online, but I've
+    # never tested it.
+    - ./.git/lfs
+    - ./tmp/
 
 before_install:
   - go get -u github.com/golang/lint/golint
