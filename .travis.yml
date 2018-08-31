@@ -17,10 +17,20 @@ cache:
     - ./.git/lfs
     - ./tmp/
 
+# The trouble with git-lfs on Travis is that Travis will stupidly redownload
+# the entire set of files every time, which burns through the very limited
+# bandwidth that GitHub provides extremely quickly. This option causes Git to
+# skip the LFS download so that we can invoke it manually later (`git lfs pull`
+# below), and in the meantime hydrate it from Travis' cache (see the entry for
+# `.git/lfs` above).
+git:
+  lfs_skip_smudge: true
+
 before_install:
   - go get -u github.com/golang/lint/golint
 
 install:
+  - git lfs pull
   - pip install --user awscli
 
 script:
