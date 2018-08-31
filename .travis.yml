@@ -30,6 +30,10 @@ cache:
 git:
   lfs_skip_smudge: true
 
+notifications:
+  email:
+    on_success: never
+
 before_install:
   - go get -u github.com/golang/lint/golint
 
@@ -46,10 +50,6 @@ script:
 
   # then deploy production
   - TARGET_DIR=./public S3_BUCKET=brandur.org make deploy
-
-notifications:
-  email:
-    on_success: never
 
 # Env that allows a build on the master branch to deploy the site
 # automatically.
