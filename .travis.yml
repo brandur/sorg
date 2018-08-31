@@ -6,6 +6,17 @@ go:
 # magic word to use faster/newer container-based architecture
 sudo: false
 
+addons:
+    apt_packages:
+        - graphicsmagick
+
+cache:
+  directories:
+    # I'm hoping catching git-lfs works because I found it online, but I've
+    # never tested it.
+    - ./.git/lfs
+    - ./tmp/
+
 before_install:
   - go get -u github.com/golang/lint/golint
 
