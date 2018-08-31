@@ -23,6 +23,8 @@ cache:
 # skip the LFS download so that we can invoke it manually later (`git lfs pull`
 # below), and in the meantime hydrate it from Travis' cache (see the entry for
 # `.git/lfs` above).
+#
+# I found this trick in: https://github.com/travis-ci/travis-ci/issues/8787
 git:
   lfs_skip_smudge: true
 
