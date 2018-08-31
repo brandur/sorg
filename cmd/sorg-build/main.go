@@ -1009,12 +1009,12 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
 					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", imageLarge1x),
-					TargetWidth: 1200,
+					TargetWidth: 1500,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
 					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", imageLarge2x),
-					TargetWidth: 2400,
+					TargetWidth: 3000,
 				},
 			)
 		}
