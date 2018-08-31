@@ -17,6 +17,7 @@ cache:
     # never tested it.
     - ./.git/lfs
     - ./tmp/
+  pip: true
 
 # The trouble with git-lfs on Travis is that Travis will stupidly redownload
 # the entire set of files every time, which burns through the very limited
