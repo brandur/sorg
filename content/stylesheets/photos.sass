@@ -2,16 +2,55 @@ body.photos
   background: #000
   color: #fff
 
+  #top-nav-photos
+    height: auto
+    margin: 40px 40px
+    width: auto
+
+    .nav-inner
+      max-width: none
+      position: initial
+      text-align: center
+      width: 100%
+
+      ul
+        margin: 0 auto
+
+        li
+          float: left
+          line-height: 1.8em
+          margin: 0 6px
+
+          a
+            color: #fff
+
   .content-photos
-    //margin: 0 auto
-    padding: 30px 40px
+    margin: 80px auto 30px auto
+    // 1200px + margins below
+    max-width: 1280px
 
-    div.photo
-      margin: 30px auto
-      max-width: 1200px
+    .content-photos-inner
+      margin: 0 40px
 
-      img
-        width: 100%
+      h1
+        color: #fff
+
+      p#outlink
+        margin: 40px 0
+
+        a
+          border-bottom: 1px solid #fff
+          color: #fff
+
+          &:hover
+            border-bottom: 0
+
+      div.photo
+        max-width: 1200px
+
+        img
+          margin: 20px 0
+          width: 100%
 
 #flexcontainer-index
   div.photo
@@ -34,6 +73,23 @@ body.photos
       clear: both
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  body.photos
+    #top-nav-photos
+      margin: 20px 20px !important
+
+    .content-photos
+      margin: 40px auto 20px auto
+
+      .content-photos-inner
+        margin: 0 20px
+
+        p#outlink
+          margin: 20px 0
+
+        div.photo
+          img
+            margin: 10px 0
+
   #flexcontainer-index
     div.photos
       margin: 0

@@ -1,9 +1,14 @@
 = content main
+  .top-nav#top-nav-photos
+    .nav-inner
+      = include views/_nav
   .content-photos
-    {{range .Photos}}
-      div.photo
-        a href="https://www.flickr.com/photos/brandurleach/{{.Slug}}"
-          img src="/assets/photos/{{.Slug}}_large@2x.jpg"
-    {{end}}
+    .content-photos-inner
+      h1 Photos
+      {{range .Photos}}
+        div.photo id="{{.Slug}}"
+          a href="#{{.Slug}}"
+            img class="lazy" src="/assets/standin_01.jpg" data-src="/assets/photos/{{.Slug}}_large@1x.jpg" data-srcset="/assets/photos/{{.Slug}}_large@2x.jpg 2x, /assets/photos/{{.Slug}}_large@1x.jpg 1x"
+      {{end}}
+      p#outlink See the complete set on <a href="https://www.flickr.com/photos/brandurleach/tags/lifestream">Flickr</a>.
   .clear
-  p See the complete set on <a href="https://www.flickr.com/photos/brandurleach/tags/lifestream">Flickr</a>. Hello.
