@@ -31,7 +31,7 @@
         em Older fragments are <a href="/fragments">available here</a>.
     .index-photos-list
       h1
-        a href="/photos" Photos
+        a href="/photos" Photography
       ul
         {{range $i, $photo := .Photos}}
           li

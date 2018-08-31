@@ -4,7 +4,7 @@
       = include views/_nav
   .content-photos
     .content-photos-inner
-      h1 Photos
+      h1 Photography
       {{range .Photos}}
         div.photo id="{{.Slug}}"
           a href="#{{.Slug}}"
