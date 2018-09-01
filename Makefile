@@ -27,7 +27,7 @@ LONG_TTL := 86400
 # that are expected to change more frequently like any HTML file.
 SHORT_TTL := 3600
 
-deploy: build check-target-dir
+deploy: check-target-dir
 # Note that AWS_ACCESS_KEY_ID will only be set for builds on the master
 # branch because it's stored in `.travis.yml` as an encrypted variable.
 # Encrypted variables are not made available to non-master branches because
