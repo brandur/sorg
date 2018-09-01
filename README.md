@@ -9,15 +9,6 @@ committed to the master branch.
 
 ## Clone
 
-Note that cached photos are tracked using [git-lfs][gitlfs], so make sure to
-install that to successfully clone the repository:
-
-``` sh
-brew install git-lfs
-```
-
-Then issue the standard checkout command:
-
 ``` sh
 git clone https://github.com/brandur/sorg.git
 ```
@@ -90,7 +81,16 @@ using these commands:
 
     dep ensure -add github.com/foo/bar
 
+## Deployment layout
+
+S3 buckets:
+
+* `brandur.org`
+* `brandur.org-dev`
+* `brandur.org-photos`
+
+IAM keys:
+
 [blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
-[gitlfs]: https://git-lfs.github.com/
 [org]: https://github.com/brandur/org

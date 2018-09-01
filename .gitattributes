@@ -1,3 +1,0 @@
-content/photos/*.jpg filter=lfs diff=lfs merge=lfs -text
-content/images/**/*.jpg filter=lfs diff=lfs merge=lfs -text
-content/raws/ filter=lfs diff=lfs merge=lfs -text
