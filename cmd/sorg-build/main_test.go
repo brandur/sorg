@@ -91,7 +91,7 @@ func TestCompileRobots(t *testing.T) {
 	assert.NoError(t, err)
 
 	_, err = os.Stat(path)
-	assert.True(t, os.IsNotExist(err))
+	assert.NoError(t, err)
 
 	conf.Drafts = true
 	err = compileRobots(path)
