@@ -1096,23 +1096,30 @@ func compileReading(db *sql.DB) error {
 }
 
 func compileRobots(outPath string) error {
-	if !conf.Drafts {
-		return nil
+	var content string
+	if conf.Drafts {
+		// Allow Twitterbot so that we can preview card images on dev.
+		content = `User-agent: Twitterbot
+Disallow:
+
+User-agent: *
+Disallow: /
+`
+	} else {
+		// Disallow acccess to photos because the content isn't very
+		// interesting for robots and they're bandwidth heavy.
+		content = `User-agent: *
+Disallow: /assets/photos/
+Disallow: /photos
+`
 	}
 
 	outFile, err := os.Create(outPath)
 	if err != nil {
 		return err
 	}
-	defer outFile.Close()
-
-	// Allow Twitterbot so that we can preview card images on dev.
-	outFile.WriteString(
-		"User-agent: Twitterbot\n" +
-			"Disallow:\n" +
-			"\n" +
-			"User-agent: *\n" +
-			"Disallow: /")
+	outFile.WriteString(content)
+	outFile.Close()
 
 	return nil
 }
