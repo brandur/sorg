@@ -108,20 +108,22 @@ invalidate-indexes: check-aws-keys check-cloudfront-id
 lint:
 	go list ./... | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
 
-# Specific access ID/key with only readonly access to the photos cache bucket.
-PHOTOS_AWS_ACCESS_KEY_ID := "AKIAIOOEBBE4BP2BQMUA"
-PHOTOS_AWS_SECRET_ACCESS_KEY := "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"
-
 # A specialized S3 bucket used only for caching resized images.
 PHOTOS_S3_BUCKET := "brandur.org-photos"
 
 photos-download:
-	AWS_ACCESS_KEY_ID=$(PHOTOS_AWS_ACCESS_KEY_ID) AWS_SECRET_ACCESS_KEY=$(PHOTOS_AWS_SECRET_ACCESS_KEY) \
-		aws s3 sync s3://$(PHOTOS_S3_BUCKET)/ content/photos/
+ifdef AWS_ACCESS_KEY_ID
+	aws s3 sync s3://$(PHOTOS_S3_BUCKET)/ content/photos/
+else
+	# No AWS access key. Skipping photos-download.
+endif
 
 photos-download-markers:
-	AWS_ACCESS_KEY_ID=$(PHOTOS_AWS_ACCESS_KEY_ID) AWS_SECRET_ACCESS_KEY=$(PHOTOS_AWS_SECRET_ACCESS_KEY) \
-		aws s3 sync s3://$(PHOTOS_S3_BUCKET)/ content/photos/ --exclude "*" --include "*.marker"
+ifdef AWS_ACCESS_KEY_ID
+	aws s3 sync s3://$(PHOTOS_S3_BUCKET)/ content/photos/ --exclude "*" --include "*.marker"
+else
+	# No AWS access key. Skipping photos-download-markers.
+endif
 
 photos-upload:
 ifdef AWS_ACCESS_KEY_ID
