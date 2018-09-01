@@ -6,6 +6,10 @@ go:
 # magic word to use faster/newer container-based architecture
 sudo: false
 
+git:
+  # Use a shallow clone to hopefully speed up builds.
+  depth: 1
+
 addons:
   apt_packages:
     - graphicsmagick
