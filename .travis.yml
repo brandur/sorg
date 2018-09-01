@@ -31,6 +31,9 @@ before_script:
   - make photos-download-markers
 
 script:
+  # bail after a single failure
+  - set -e
+
   - VERBOSE=true make
 
   # deploy development version that includes drafts
@@ -39,6 +42,8 @@ script:
 
   # then deploy production
   - TARGET_DIR=./public S3_BUCKET=brandur.org make deploy
+
+  - set -e
 
 after_script:
   # Upload any photos that we processed during this build. This requires write
