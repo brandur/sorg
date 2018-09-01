@@ -25,13 +25,9 @@ install:
   - pip install --user awscli
 
 before_script:
-  # Download only a minimal set of photo markers. This allows us to save time
-  # by not redoing download/resize work, but also saves us build bandwidth
-  # because we don't need to download the entire set of photos (only zero byte
-  # marker files).
-  #
-  # Uses alternate readonly AWS credentials so it can work on non-master
-  # builds.
+  # Download any markers that have not yet been committed to Git to save
+  # redoing download/resize work. This requires AWS credentials and will only
+  # work on the master branch where $AWS_ACCESS_KEY_ID is available.
   - make photos-download-markers
 
 script:

@@ -954,14 +954,10 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	//
 	// See also the `photos-*` family of commands in `Makefile`.
 	//
-	// Note that this directory is in `.gitignore` and not eligible to be
-	// uploaded to the Git repository.
+	// Note that JPGs in this directory are in `.gitignore` and not eligible to
+	// be uploaded to the Git repository, but `.marker` files can and should be
+	// committed as often as possible.
 	cacheDir := path.Join(sorg.ContentDir, "photos")
-
-	err = os.MkdirAll(cacheDir, 0755)
-	if err != nil {
-		return nil, err
-	}
 
 	err = linkPhotos()
 	if err != nil {
