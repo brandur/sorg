@@ -7,8 +7,8 @@ go:
 sudo: false
 
 addons:
-    apt_packages:
-        - graphicsmagick
+  apt_packages:
+    - graphicsmagick
 
 services:
   - postgresql
@@ -20,11 +20,19 @@ notifications:
   email:
     on_success: never
 
-before_install:
-  - go get -u github.com/golang/lint/golint
-
 install:
+  - go get -u github.com/golang/lint/golint
   - pip install --user awscli
+
+before_script:
+  # Download only a minimal set of photo markers. This allows us to save time
+  # by not redoing download/resize work, but also saves us build bandwidth
+  # because we don't need to download the entire set of photos (only zero byte
+  # marker files).
+  #
+  # Uses alternate readonly AWS credentials so it can work on non-master
+  # builds.
+  - make photos-download-markers
 
 script:
   - VERBOSE=true make
@@ -35,6 +43,12 @@ script:
 
   # then deploy production
   - TARGET_DIR=./public S3_BUCKET=brandur.org make deploy
+
+after_script:
+  # Upload any photos that we processed during this build. This requires write
+  # access, so it only works on the master branch where $AWS_ACCESS_KEY_ID is
+  # available.
+  - make photos-upload
 
 # Env that allows a build on the master branch to deploy the site
 # automatically.

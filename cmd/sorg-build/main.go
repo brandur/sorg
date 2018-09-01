@@ -947,20 +947,28 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		return nil, err
 	}
 
-	// Every once in a while go and copy photos into this Git repository so
-	// that the build can use them as a cached version. The Flickr dependency
-	// introduces some brittleness to the build process because they're far
-	// from perfectly reliable, and the more photos that we need to fetch, the
-	// more likely we are to fail. Ideally here we're able to use cached
-	// versions for almost everything, and fetch a relatively few number of
-	// files over the network.
+	// Flickr is the original source for images, but to avoid doing unnecessary
+	// downloading, resizing, and uploading work for every build, we put any
+	// work we do into a "cache" which is itself put into S3. Subsequent builds
+	// can leverage the cache to avoid repeat work.
 	//
-	// These can be synced from the built bucket with:
+	// See also the `photos-*` family of commands in `Makefile`.
 	//
-	//     aws s3 sync s3://brandur.org/assets/photos/ content/photos/
-	//
+	// Note that this directory is in `.gitignore` and not eligible to be
+	// uploaded to the Git repository.
 	cacheDir := path.Join(sorg.ContentDir, "photos")
 
+	err = os.MkdirAll(cacheDir, 0755)
+	if err != nil {
+		return nil, err
+	}
+
+	err = linkPhotos()
+	if err != nil {
+		return nil, err
+	}
+
+	var markers []string
 	var photoFiles []*downloader.File
 	var resizeJobs []*resizer.ResizeJob
 
@@ -971,22 +979,19 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		imageLarge1x := photo.Slug + "_large.jpg"
 		imageLarge2x := photo.Slug + "_large@2x.jpg"
 
+		imageMarker := photo.Slug + ".marker"
 		imageOriginal := photo.Slug + "_original.jpg"
 
-		derivateImages := []string{image1x, image2x, imageLarge1x, imageLarge2x}
-
-		if fileExistsAll(cacheDir, derivateImages) {
-			log.Debugf("Using cached photos: %v / %v / %v / %v",
-				image1x, image2x, imageLarge1x, imageLarge2x)
-
-			for _, image := range derivateImages {
-				err := copyFile(
-					path.Join(cacheDir, image),
-					path.Join(conf.TargetDir, "assets", "photos", image))
-				if err != nil {
-					return nil, err
-				}
-			}
+		// We use a "marker" system so that we don't have to copy the entire
+		// set of images to and from every build.
+		//
+		// When the system creates a new set of resized images it also creates
+		// a marker file (same name as the images, but which ends in
+		// `.marker`). When initializing a new build, only marker files are
+		// copied dwon from S3. When determining which images need to be
+		// fetched and resize, we skip any that already have a marker file.
+		if fileExists(path.Join(cacheDir, imageMarker)) {
+			log.Debugf("Skipping image with marker: %v", imageMarker)
 		} else {
 			photoFiles = append(photoFiles,
 				&downloader.File{URL: photo.OriginalImageURL,
@@ -996,25 +1001,28 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 			resizeJobs = append(resizeJobs,
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", image1x),
+					TargetPath:  path.Join(cacheDir, image1x),
 					TargetWidth: 333,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", image2x),
+					TargetPath:  path.Join(cacheDir, image2x),
 					TargetWidth: 667,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", imageLarge1x),
+					TargetPath:  path.Join(cacheDir, imageLarge1x),
 					TargetWidth: 1500,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(conf.TargetDir, "assets", "photos", imageLarge2x),
+					TargetPath:  path.Join(cacheDir, imageLarge2x),
 					TargetWidth: 3000,
 				},
 			)
+
+			markers = append(markers,
+				path.Join(cacheDir, imageMarker))
 		}
 	}
 
@@ -1024,10 +1032,19 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		return nil, err
 	}
 
-	log.Debugf("Resizing %d photo(s)", len(resizeJobs))
+	log.Debugf("Running %d resize job(s)", len(resizeJobs))
 	err = resizer.Resize(resizeJobs)
 	if err != nil {
 		return nil, err
+	}
+
+	log.Debugf("Creating %d marker(s)", len(markers))
+	for _, marker := range markers {
+		file, err := os.OpenFile(marker, os.O_RDONLY|os.O_CREATE, 0755)
+		if err != nil {
+			return nil, err
+		}
+		file.Close()
 	}
 
 	locals := getLocals("Photos", map[string]interface{}{
@@ -1302,6 +1319,25 @@ func linkImages() error {
 	return nil
 }
 
+func linkPhotos() error {
+	start := time.Now()
+	defer func() {
+		log.Debugf("Linked photos in %v.", time.Now().Sub(start))
+	}()
+
+	source, err := filepath.Abs(sorg.ContentDir + "/photos")
+	if err != nil {
+		return err
+	}
+
+	dest, err := filepath.Abs(conf.TargetDir + "/assets/photos/")
+	if err != nil {
+		return err
+	}
+
+	return ensureSymlink(source, dest)
+}
+
 //
 // Task generation functions
 //
@@ -1564,17 +1600,6 @@ func fileExists(file string) bool {
 		return false
 	}
 	panic(err)
-}
-
-// And yet another one that will check multiple files.
-func fileExistsAll(dir string, files []string) bool {
-	for _, file := range files {
-		if !fileExists(path.Join(dir, file)) {
-			return false
-		}
-	}
-
-	return true
 }
 
 // Gets a map of local values for use while rendering a template and includes

@@ -49,7 +49,6 @@ var outputDirs = []string{
 	"articles",
 	"assets",
 	"assets/" + Release,
-	"assets/photos",
 	"fragments",
 	"photos",
 	"reading",
