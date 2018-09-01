@@ -122,9 +122,8 @@ is ensuring it. This makes querying or changing it easier,
 and prevents an entire class of application-level bugs
 caused by data existing in an unexpected state. Enthusiasts
 like me have always argued in favor of strong data
-constraints, but knew also that new non nullable fields
-often weren't possible in Postgres when it was running at
-scale.
+constraints, but knew also that new non-null fields often
+weren't possible in Postgres when it was running at scale.
 
 Postgres 11 brings in a change that makes `ADD COLUMN` with
 `DEFAULT` values fast by marshaling them for existing rows
