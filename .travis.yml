@@ -43,13 +43,13 @@ script:
   # deploy development version that includes drafts
   - TARGET_DIR=./public-dev DRAFTS=true make build
   - |
-    if [[ "$TRAVIS_BRANCH" -eq "master" ]]; then
+    if [[ "$TRAVIS_BRANCH" == "master" ]]; then
       TARGET_DIR=./public-dev S3_BUCKET=brandur.org-dev make deploy
     fi
 
   # then deploy production
   - |
-    if [[ "$TRAVIS_BRANCH" -eq "master" ]]; then
+    if [[ "$TRAVIS_BRANCH" == "master" ]]; then
       TARGET_DIR=./public S3_BUCKET=brandur.org make deploy
     fi
 
