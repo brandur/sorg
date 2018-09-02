@@ -48,7 +48,7 @@ ifdef AWS_ACCESS_KEY_ID
 	# Photographs are identical to assets above except without `--delete`
 	# because any given build probably doesn't have the entire set.
 	aws s3 sync $(TARGET_DIR)/photographs/ s3://$(S3_BUCKET)/photographs/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet $(AWS_CLI_FLAGS)
-s
+
 	# Upload Atom feed files with their proper content type.
 	find $(TARGET_DIR) -name '*.atom' | sed "s|^\$(TARGET_DIR)/||" | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
 
