@@ -26,6 +26,7 @@ var FuncMap = template.FuncMap{
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
 	"Pace":                         pace,
+	"PhotographStandin":            photographStandin,
 	"RenderTweetContent":           renderTweetContent,
 	"RoundToString":                roundToString,
 	"ToStars":                      toStars,
@@ -139,6 +140,10 @@ func pace(distance float64, duration time.Duration) string {
 	min := int64(speed / 60.0)
 	sec := int64(speed) % 60
 	return fmt.Sprintf("%v:%02d", min, sec)
+}
+
+func photographStandin(index int) string {
+	return fmt.Sprintf("/assets/standin_0%d.jpg", index%5)
 }
 
 // Matches links in a tweet (like protocol://link).
