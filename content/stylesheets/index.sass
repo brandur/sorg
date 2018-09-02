@@ -1,103 +1,137 @@
 $sans_serif: helvetica, arial, geneva, sans-serif
 $serif: georgia, serif
 
-$secondary: #bbb
+$background: #000
+$primary: #fff
+$meta: #9c9c9c
+$subtle: #1a1a1a
+
+body.index
+  background: $background
+  color: $primary
+
+  #container
+    min-height: 100%
+    position: relative
+
+  // TODO: Merge this with the implementation in photos.sass.
+  #top-nav-index
+    height: auto
+    margin: 40px 33px
+    width: auto
+
+    .nav-inner
+      max-width: none
+      position: initial
+      text-align: center
+      width: 100%
+
+      ul
+        margin: 0 auto
+
+        li
+          float: left
+          line-height: 1.8em
+          margin: 0 6px
+
+          a
+            color: $primary
 
 #flexcontainer-index
   -webkit-justify-content: center
   justify-content: center
 
-.index-about-and-lists, .index-photos-list
-  margin: 30px 20px
+  font-size: 1rem
+  line-height: 1.4em
+  margin: 60px auto
+  // #text + #photo + outer margins
+  max-width: 1920px
 
-  h1
-    font-size: 4rem
-    margin: 30px 0
-
-  h2
-    border-bottom: 0
-    color: $secondary
-    font-family: $sans_serif
-    font-size: 0.75rem
-    font-weight: bold
-    margin: 10px 0
-
-    a, a:visited, a:hover
-      color: $secondary
-
-  li
-    margin-bottom: 30px
+  #text
+    flex-shrink: 1
+    margin: 0 20px 0 40px
+    max-width: 300px
 
     a
-      border-bottom: 0
-      color: #000
+      border-bottom: 1px solid $primary
+      color: $primary
+
+      &:hover
+        border-bottom: 0
+        color: $primary
+
+      &:visited
+        color: $primary
+
+    h1
       font-family: $sans_serif
-      font-size: 1.3rem
+      font-size: 0.7rem
       font-weight: bold
-      line-height: 1.2em
+      letter-spacing: normal
+      margin: 15px 0
+      text-transform: uppercase
+
+      a
+        border-bottom: 0
+
+    .divider-short
+      border-bottom: 1px solid $subtle
+      margin: 15px auto
 
     p
-      margin-top: 6px
+      margin: 10px 0
 
-  .meta
-    color: $secondary
-    font-family: $sans_serif
-    font-size: 0.75rem
-    font-style: italic
+    p.hook
+      font-size: 0.85rem
+      margin: 0
 
-  .older
-    font-size: 0.9rem
+      span.date
+        color: $meta
+        font-size: 0.7rem
+        font-style: italic
+        margin: 0 3px
 
-.index-about-and-lists
-  flex: 3 1
-  max-width: 300px
+    p.older
+      color: $meta
+      font-size: 0.8rem
 
-.index-photos-list
-  flex: 6 1
-  max-width: 510px
+    p.title
+      font-family: $sans_serif
+      font-weight: bold
+      line-height: 1.2em
+      margin: 5px 0
 
-  img
-    float: left
-    margin: 5px
-    width: 500px
+      a
+        border-bottom: 1px solid $subtle
 
-#top-nav-index
-  margin-bottom: 40px
-  width: auto
+        &:hover
+          border-bottom: 0
 
-  .nav-inner
-    max-width: none
-    position: initial
-    text-align: center
-    width: 100%
-
-    ul
-      margin: 0 auto
+    ul.writing
+      margin: 10px 0 20px 0
       li
-        float: left
-        line-height: 1.8em
-        margin: 0 6px
+        margin: 0 0 20px 0
+
+  #photo
+    flex-shrink: 3
+    margin: 0 40px 0 20px
+    max-width: 1500px
+
+    img
+      width: 100%
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
-  .index-about-and-lists, .index-photos-list
-    margin: 0 8%
-    width: 84%
-    max-width: none
+  body.index
+    #top-nav-index
+      margin: 20px 13px !important
 
-  .index-photos-list
-    float: none
-    margin: 5px auto
+  #flexcontainer-index
+    margin: 20px auto
 
-@media only screen and (min-width: 1850px)
-  .index-about-and-lists
-    max-width: 400px
+    #text
+      margin: 0 20px
+      max-width: 100%
 
-  .index-photos-list
-    max-width: 1020px
-
-@media only screen and (min-width: 2400px)
-  .index-about-and-lists
-    max-width: 500px
-
-  .index-photos-list
-    max-width: 1530px
+    #photo
+      margin: 0 20px
+      max-width: 100%

@@ -1,6 +1,10 @@
 = content main
+  / Moves to the bottom of the screen when the width becomes too short.
+  #top-nav-index.top-nav.hide-small
+    .nav-inner
+      = include views/_nav
   .flexcontainer#flexcontainer-index
-    .index-about-and-lists
+    #text
       h1
         a href="/about" About
       p I'm <a href="https://twitter.com/brandur">@brandur</a>. I'm an engineer at Stripe (previously Heroku), and occasional writer.
@@ -8,36 +12,35 @@
       .divider-short
       h1
         a href="/articles" Articles
-      ul
+      ul.writing
         {{range .Articles}}
           li
-            a href="/{{.Slug}}" {{.Title}}
-            p {{HTML .Hook}}
+            p.title
+              a href="/{{.Slug}}" {{.Title}}
+            p.hook
+              | {{HTML .Hook}} 
+              span.date {{FormatTime .PublishedAt}}
         {{end}}
       p.older
-        em Older articles are <a href="/articles">available here</a>.
+        em Older articles available <a href="/articles">here</a>.
       .divider-short
       h1
         a href="/fragments" Fragments
-      ul
+      ul.writing
         {{range .Fragments}}
           li
-            a href="/fragments/{{.Slug}}" {{.Title}}
-            p
+            p.title
+              a href="/fragments/{{.Slug}}" {{.Title}}
+            p.hook
               | {{HTML .Hook}} 
-              span.meta {{FormatTime .PublishedAt}}
+              span.date {{FormatTime .PublishedAt}}
         {{end}}
       p.older
-        em Older fragments are <a href="/fragments">available here</a>.
-    .index-photos-list
-      h1
-        a href="/photos" Photography
-      ul
-        {{range $i, $photo := .Photos}}
-          li
-            a href="/photos#{{$photo.Slug}}"
-              img src="/photographs/{{$photo.Slug}}.jpg" data-rjs="2" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}"
-        {{end}}
-  .top-nav#top-nav-index
+        em Older fragments available <a href="/fragments">here</a>.
+    #photo
+      a href="/photos#{{.Photo.Slug}}"
+        img src="/photographs/{{.Photo.Slug}}_large.jpg" srcset="/photographs/{{.Photo.Slug}}_large@2x.jpg 2x, /photographs/{{.Photo.Slug}}_large.jpg 1x"
+      / img src="/assets/standin_portrait_00.jpg"
+  #top-nav-index.top-nav.hide-big
     .nav-inner
       = include views/_nav

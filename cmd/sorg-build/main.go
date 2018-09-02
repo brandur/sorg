@@ -838,22 +838,25 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 		log.Debugf("Compiled home in %v.", time.Now().Sub(start))
 	}()
 
-	if len(articles) > 5 {
-		articles = articles[0:5]
+	if len(articles) > 3 {
+		articles = articles[0:3]
 	}
 
-	if len(fragments) > 5 {
-		fragments = fragments[0:5]
+	// Try just one fragment for now to better balance the page's height.
+	if len(fragments) > 1 {
+		fragments = fragments[0:1]
 	}
 
-	if len(photos) > 9 {
-		photos = photos[0:9]
+	var photo *Photo
+	if len(photos) > 0 {
+		photo = photos[0]
 	}
 
 	locals := getLocals("brandur.org", map[string]interface{}{
 		"Articles":      articles,
+		"BodyClass":     "index",
 		"Fragments":     fragments,
-		"Photos":        photos,
+		"Photo":         photo,
 		"ViewportWidth": 600,
 	})
 
