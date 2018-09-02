@@ -47,6 +47,12 @@ export S3_BUCKET=...
 make deploy
 ```
 
+Cached photos can be fetched using:
+
+``` sh
+make photos-download
+```
+
 ## Development
 
 Run the entire lifecycle like in CI:
@@ -85,12 +91,24 @@ using these commands:
 
 S3 buckets:
 
-* `brandur.org`
-* `brandur.org-dev`
-* `brandur.org-photos`
+* `brandur.org`: Main production deployment. Connected via CloudFront to
+  [brandur.org](https://brandur.org).
+* `brandur.org-dev`: Development deployment that includes drafts.
+* `brandur.org-photos`: A cache for photos that have been downloaded from the
+  original Flickr source and resized so that we can avoid doing this work over
+  and over again. Stored outside of the Git repository for size considerations.
 
-IAM keys:
+IAM:
+
+* `brandur-org-policy` (policy): Policy that allows read/write access to the S3
+  buckets listed above.
+* `brandur-org-user` (user): User with `brandur-org-policy` attached. Owner of
+  the credentials encrypted in `.travis.yml`.
 
 [blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
 [org]: https://github.com/brandur/org
+
+<!--
+# vim: set tw=79:
+-->
