@@ -986,9 +986,7 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		// `.marker`). When initializing a new build, only marker files are
 		// copied dwon from S3. When determining which images need to be
 		// fetched and resize, we skip any that already have a marker file.
-		if fileExists(path.Join(cacheDir, imageMarker)) {
-			log.Debugf("Skipping image with marker: %v", imageMarker)
-		} else {
+		if !fileExists(path.Join(cacheDir, imageMarker)) {
 			photoFiles = append(photoFiles,
 				&downloader.File{URL: photo.OriginalImageURL,
 					Target: path.Join(sorg.TempDir, imageOriginal)},
@@ -1021,6 +1019,9 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 				path.Join(cacheDir, imageMarker))
 		}
 	}
+
+	log.Debugf("Skipping processing %d image(s) with marker(s)",
+		len(photos)-len(markers))
 
 	log.Debugf("Fetching %d photo(s)", len(photoFiles))
 	err = downloader.Fetch(photoFiles)
