@@ -30,8 +30,7 @@ install:
 
 before_script:
   # Download any markers that have not yet been committed to Git to save
-  # redoing download/resize work. This requires AWS credentials and will only
-  # work on the master branch where $AWS_ACCESS_KEY_ID is available.
+  # redoing download/resize work.
   - make photos-download-markers
 
 script:
@@ -56,9 +55,7 @@ script:
   - set -e
 
 after_script:
-  # Upload any photos that we processed during this build. This requires write
-  # access, so it only works on the master branch where $AWS_ACCESS_KEY_ID is
-  # available.
+  # Upload any photos that we processed during this build.
   - make photos-upload
 
 # Env that allows a build on the master branch to deploy the site
