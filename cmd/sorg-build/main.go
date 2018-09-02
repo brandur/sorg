@@ -957,9 +957,9 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	// Note that JPGs in this directory are in `.gitignore` and not eligible to
 	// be uploaded to the Git repository, but `.marker` files can and should be
 	// committed as often as possible.
-	cacheDir := path.Join(sorg.ContentDir, "photos")
+	cacheDir := path.Join(sorg.ContentDir, "photographs")
 
-	err = linkPhotos()
+	err = linkPhotographs()
 	if err != nil {
 		return nil, err
 	}
@@ -1123,7 +1123,7 @@ Disallow: /
 		// Disallow acccess to photos because the content isn't very
 		// interesting for robots and they're bandwidth heavy.
 		content = `User-agent: *
-Disallow: /assets/photos/
+Disallow: /photographs/
 Disallow: /photos
 `
 	}
@@ -1316,18 +1316,18 @@ func linkImages() error {
 	return nil
 }
 
-func linkPhotos() error {
+func linkPhotographs() error {
 	start := time.Now()
 	defer func() {
-		log.Debugf("Linked photos in %v.", time.Now().Sub(start))
+		log.Debugf("Linked photographs in %v.", time.Now().Sub(start))
 	}()
 
-	source, err := filepath.Abs(sorg.ContentDir + "/photos")
+	source, err := filepath.Abs(sorg.ContentDir + "/photographs/")
 	if err != nil {
 		return err
 	}
 
-	dest, err := filepath.Abs(conf.TargetDir + "/assets/photos/")
+	dest, err := filepath.Abs(conf.TargetDir + "/photographs/")
 	if err != nil {
 		return err
 	}

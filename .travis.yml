@@ -31,7 +31,7 @@ install:
 before_script:
   # Download any markers that have not yet been committed to Git to save
   # redoing download/resize work.
-  - make photos-download-markers
+  - make photographs-download-markers
 
 script:
   # bail after a single failure
@@ -55,8 +55,8 @@ script:
   - set -e
 
 after_script:
-  # Upload any photos that we processed during this build.
-  - make photos-upload
+  # Upload any photographs that we processed during this build.
+  - make photographs-upload
 
 # Env that allows a build on the master branch to deploy the site
 # automatically.

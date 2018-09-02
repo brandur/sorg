@@ -40,16 +40,15 @@ ifdef AWS_ACCESS_KEY_ID
 	# Note that we don't delete because it could result in a race condition in
 	# that files that are uploaded with special directives below could be
 	# removed even while the S3 bucket is actively in-use.
-	aws s3 sync $(TARGET_DIR) s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' --quiet $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR) s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' --exclude 'photographs*' --quiet $(AWS_CLI_FLAGS)
 
-	# Then move on to assets and allow S3 to detect content type. Exclude
-	# photos (see next comment).
-	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet --delete --exclude 'assets/photos*' $(AWS_CLI_FLAGS)
+	# Then move on to assets and allow S3 to detect content type.
+	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet --delete $(AWS_CLI_FLAGS)
 
-	# Move onto photos. Same as above but without `--delete` because we
-	# probably don't have the entire set.
-	aws s3 sync $(TARGET_DIR)/assets/photos/ s3://$(S3_BUCKET)/assets/photos/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet $(AWS_CLI_FLAGS)
-
+	# Photographs are identical to assets above except without `--delete`
+	# because any given build probably doesn't have the entire set.
+	aws s3 sync $(TARGET_DIR)/photographs/ s3://$(S3_BUCKET)/photographs/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet $(AWS_CLI_FLAGS)
+s
 	# Upload Atom feed files with their proper content type.
 	find $(TARGET_DIR) -name '*.atom' | sed "s|^\$(TARGET_DIR)/||" | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
 
@@ -113,28 +112,28 @@ invalidate-indexes: check-aws-keys check-cloudfront-id
 lint:
 	go list ./... | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
 
-# A specialized S3 bucket used only for caching resized images.
-PHOTOS_S3_BUCKET := "brandur.org-photos"
+# A specialized S3 bucket used only for caching resized photographs.
+PHOTOGRAPHS_S3_BUCKET := "brandur.org-photographs"
 
-photos-download:
+photographs-download:
 ifdef AWS_ACCESS_KEY_ID
-	aws s3 sync s3://$(PHOTOS_S3_BUCKET)/ content/photos/
+	aws s3 sync s3://$(PHOTOGRAPHS_S3_BUCKET)/ content/photographs/
 else
-	# No AWS access key. Skipping photos-download.
+	# No AWS access key. Skipping photographs-download.
 endif
 
-photos-download-markers:
+photographs-download-markers:
 ifdef AWS_ACCESS_KEY_ID
-	aws s3 sync s3://$(PHOTOS_S3_BUCKET)/ content/photos/ --exclude "*" --include "*.marker"
+	aws s3 sync s3://$(PHOTOGRAPHS_S3_BUCKET)/ content/photographs/ --exclude "*" --include "*.marker"
 else
-	# No AWS access key. Skipping photos-download-markers.
+	# No AWS access key. Skipping photographs-download-markers.
 endif
 
-photos-upload:
+photographs-upload:
 ifdef AWS_ACCESS_KEY_ID
-	aws s3 sync content/photos/ s3://$(PHOTOS_S3_BUCKET)/
+	aws s3 sync content/photographs/ s3://$(PHOTOGRAPHS_S3_BUCKET)/
 else
-	# No AWS access key. Skipping photos-upload.
+	# No AWS access key. Skipping photographs-upload.
 endif
 
 serve:

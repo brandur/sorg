@@ -36,7 +36,7 @@
         {{range $i, $photo := .Photos}}
           li
             a href="/photos#{{$photo.Slug}}"
-              img src="/assets/photos/{{$photo.Slug}}.jpg" data-rjs="2" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}"
+              img src="/photosgraphs/{{$photo.Slug}}.jpg" data-rjs="2" height="{{$photo.MediumImageHeight}}" width="{{$photo.MediumImageWidth}}"
         {{end}}
   .top-nav#top-nav-index
     .nav-inner
