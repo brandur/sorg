@@ -43,6 +43,14 @@ body
   -webkit-flex-direction: row
   flex-direction: row
 
+// Hides in the desktop/large width view.
+.hide-big
+  display: none
+
+// Hides in the mobile/short width view.
+.hide-small
+  display: block
+
 .content, .toc-index, .top-nav
   margin-bottom: 50px
   margin-top: 50px
@@ -584,6 +592,12 @@ article.big
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .flexcontainer
     flex-direction: column
+
+  .hide-big
+    display: block
+
+  .hide-small
+    display: none
 
   .top-nav
     height: 100px
