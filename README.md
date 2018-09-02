@@ -80,14 +80,14 @@ Get more verbose output while running tests:
 go test -v ./markdown
 ```
 
-## Vendoring Dependencies
+## Vendoring dependencies
 
 Dependencies are managed with dep. New ones can be vendored
 using these commands:
 
     dep ensure -add github.com/foo/bar
 
-## Deployment layout
+## Deployment
 
 S3 buckets:
 
