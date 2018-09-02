@@ -42,8 +42,13 @@ ifdef AWS_ACCESS_KEY_ID
 	# removed even while the S3 bucket is actively in-use.
 	aws s3 sync $(TARGET_DIR) s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' --quiet $(AWS_CLI_FLAGS)
 
-	# Then move on to assets and allow S3 to detect content type.
-	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --delete --follow-symlinks --quiet $(AWS_CLI_FLAGS)
+	# Then move on to assets and allow S3 to detect content type. Exclude
+	# photos (see next comment).
+	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet --delete --exclude 'assets/photos*' $(AWS_CLI_FLAGS)
+
+	# Move onto photos. Same as above but without `--delete` because we
+	# probably don't have the entire set.
+	aws s3 sync $(TARGET_DIR)/assets/photos/ s3://$(S3_BUCKET)/assets/photos/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet $(AWS_CLI_FLAGS)
 
 	# Upload Atom feed files with their proper content type.
 	find $(TARGET_DIR) -name '*.atom' | sed "s|^\$(TARGET_DIR)/||" | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
