@@ -16,7 +16,11 @@
 
 allowed_exceptions=(
     # Images that don't have a retina version by design.
+    "./content/images/standin_00.jpg"
     "./content/images/standin_01.jpg"
+    "./content/images/standin_02.jpg"
+    "./content/images/standin_03.jpg"
+    "./content/images/standin_04.jpg"
 
     # These are images that we can safely say won't ever have a good retina
     # equivalent, so they're allowed to fail.
