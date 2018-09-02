@@ -116,9 +116,10 @@ body.index
     flex-shrink: 3
     margin: 0 40px 0 20px
     max-width: 1500px
+    overflow: hidden
 
     img
-      width: 100%
+      max-width: initial
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   body.index
@@ -135,3 +136,7 @@ body.index
     #photo
       margin: 0 20px
       max-width: 100%
+      overflow: auto
+
+      img
+        width: 100%
