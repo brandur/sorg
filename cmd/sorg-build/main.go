@@ -1044,7 +1044,7 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		file.Close()
 	}
 
-	locals := getLocals("Photos", map[string]interface{}{
+	locals := getLocals("Photography", map[string]interface{}{
 		"BodyClass":     "photos",
 		"Photos":        photos,
 		"ViewportWidth": 600,
