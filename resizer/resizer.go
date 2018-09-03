@@ -56,6 +56,7 @@ func resize(job *ResizeJob) error {
 		"gm",
 		"convert",
 		job.SourcePath,
+		"-auto-orient",
 		"-resize",
 		fmt.Sprintf("%vx", job.TargetWidth),
 		"-quality",
