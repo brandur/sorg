@@ -1367,7 +1367,7 @@ func tasksForArticles(articleChan chan *Article) ([]*pool.Task, error) {
 func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*pool.Task, error) {
 	articleInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error reading articles dir: %v", err)
 	}
 
 	var tasks []*pool.Task
@@ -1413,7 +1413,7 @@ func tasksForFragments(fragmentChan chan *Fragment) ([]*pool.Task, error) {
 func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) ([]*pool.Task, error) {
 	fragmentInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error reading fragments dir: %v", err)
 	}
 
 	var tasks []*pool.Task
@@ -1440,13 +1440,13 @@ func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) (
 func tasksForPages() ([]*pool.Task, error) {
 	meta, err := ioutil.ReadFile(path.Join(sorg.PagesDir, "meta.yaml"))
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error reading pages metadata: %v", err)
 	}
 
 	var pagesMeta map[string]*Page
 	err = yaml.Unmarshal(meta, &pagesMeta)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error unmarshaling pages metadata: %v", err)
 	}
 
 	return tasksForPagesDir(pagesMeta, sorg.PagesDir)
@@ -1457,7 +1457,7 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 
 	fileInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error reading pages dir: %v", err)
 	}
 
 	var tasks []*pool.Task
@@ -1465,7 +1465,7 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 		if fileInfo.IsDir() {
 			subtasks, err := tasksForPagesDir(pagesMeta, dir+fileInfo.Name())
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("Error getting pages tasks: %v", err)
 			}
 			tasks = append(tasks, subtasks...)
 		} else {
@@ -1492,14 +1492,14 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 func tasksForPassages(passageChan chan *passages.Passage) ([]*pool.Task, error) {
 	tasks, err := tasksForPassagesDir(passageChan, sorg.ContentDir+"/passages", false)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error getting passage tasks: %v", err)
 	}
 
 	if conf.Drafts {
 		draftTasks, err := tasksForPassagesDir(passageChan,
 			sorg.ContentDir+"/passages-drafts", true)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("Error getting passage draft tasks: %v", err)
 		}
 
 		tasks = append(tasks, draftTasks...)
@@ -1576,18 +1576,22 @@ func accumulatePassages(p *[]*passages.Passage) chan *passages.Passage {
 func copyFile(src, dst string) error {
 	in, err := os.Open(src)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error opening copy source: %v", err)
 	}
 	defer in.Close()
 
 	out, err := os.Create(dst)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error creating copy target: %v", err)
 	}
 	defer out.Close()
 
 	_, err = io.Copy(out, in)
-	return err
+	if err != nil {
+		return fmt.Errorf("Error copying data: %v", err)
+	}
+
+	return nil
 }
 
 // Just a shortcut to try and cut down on Go's extreme verbosity.
@@ -1644,12 +1648,11 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 			slug
 		FROM events
 		WHERE type = 'flickr'
-			AND (metadata -> 'medium_width')::int = 500
 		ORDER BY occurred_at DESC
 		LIMIT 200
 	`)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error selecting photos: %v", err)
 	}
 	defer rows.Close()
 
@@ -1670,14 +1673,14 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 			&photo.Slug,
 		)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("Error scanning photo: %v", err)
 		}
 
 		photos = append(photos, &photo)
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error iterating photo: %v", err)
 	}
 
 	return photos, nil
@@ -1704,7 +1707,7 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 		ORDER BY occurred_at DESC
 	`)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error selecting readings: %v", err)
 	}
 	defer rows.Close()
 
@@ -1720,14 +1723,14 @@ func getReadingsData(db *sql.DB) ([]*Reading, error) {
 			&reading.Title,
 		)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("Error scanning readings: %v", err)
 		}
 
 		readings = append(readings, &reading)
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error iterating readings: %v", err)
 	}
 
 	return readings, nil
@@ -1752,7 +1755,7 @@ func getReadingsCountByYearData(db *sql.DB) ([]string, []int, error) {
 		ORDER BY date_part('year', occurred_at)
 	`)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error selecting reading count by year: %v", err)
 	}
 	defer rows.Close()
 
@@ -1765,7 +1768,7 @@ func getReadingsCountByYearData(db *sql.DB) ([]string, []int, error) {
 			&count,
 		)
 		if err != nil {
-			return nil, nil, err
+			return nil, nil, fmt.Errorf("Error scanning reading count by year: %v", err)
 		}
 
 		byYearXYears = append(byYearXYears, year)
@@ -1773,7 +1776,7 @@ func getReadingsCountByYearData(db *sql.DB) ([]string, []int, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error iterating reading count by year: %v", err)
 	}
 
 	return byYearXYears, byYearYCounts, nil
@@ -1799,7 +1802,7 @@ func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
 		ORDER BY date_part('year', occurred_at)
 	`)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error selecting reading pages by year: %v", err)
 	}
 	defer rows.Close()
 
@@ -1812,7 +1815,7 @@ func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
 			&count,
 		)
 		if err != nil {
-			return nil, nil, err
+			return nil, nil, fmt.Errorf("Error scanning reading pages by year: %v", err)
 		}
 
 		byYearXYears = append(byYearXYears, year)
@@ -1820,7 +1823,7 @@ func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error iterating reading pages by year: %v", err)
 	}
 
 	return byYearXYears, byYearYCounts, nil
@@ -1849,7 +1852,7 @@ func getRunsData(db *sql.DB) ([]*Run, error) {
 		LIMIT 30
 	`)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error selecting runs: %v", err)
 	}
 	defer rows.Close()
 
@@ -1865,7 +1868,7 @@ func getRunsData(db *sql.DB) ([]*Run, error) {
 			&run.OccurredAt,
 		)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("Error scanning runs: %v", err)
 		}
 
 		if locationCity != nil {
@@ -1876,7 +1879,7 @@ func getRunsData(db *sql.DB) ([]*Run, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error iterating runs: %v", err)
 	}
 
 	return runs, nil
@@ -1910,7 +1913,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 		ORDER BY year DESC
 	`)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error selecting runs by year: %v", err)
 	}
 	defer rows.Close()
 
@@ -1923,7 +1926,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 			&distance,
 		)
 		if err != nil {
-			return nil, nil, err
+			return nil, nil, fmt.Errorf("Error scanning runs by year: %v", err)
 		}
 
 		byYearXYears = append(byYearXYears, year)
@@ -1931,7 +1934,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error iterating runs by year: %v", err)
 	}
 
 	return byYearXYears, byYearYDistances, nil
@@ -1983,7 +1986,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 			LEFT JOIN runs_days rd ON d.day = rd.day
 	`)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error selecting last year runs: %v", err)
 	}
 	defer rows.Close()
 
@@ -1996,7 +1999,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 			&distance,
 		)
 		if err != nil {
-			return nil, nil, err
+			return nil, nil, fmt.Errorf("Error scanning last year runs: %v", err)
 		}
 
 		lastYearXDays = append(lastYearXDays, day)
@@ -2004,7 +2007,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error iterating last year runs: %v", err)
 	}
 
 	return lastYearXDays, lastYearYDistances, nil
@@ -2032,7 +2035,7 @@ func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
 		ORDER BY date_trunc('month', occurred_at)
 	`, withReplies)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error selecting tweets by month: %v", err)
 	}
 	defer rows.Close()
 
@@ -2045,7 +2048,7 @@ func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
 			&count,
 		)
 		if err != nil {
-			return nil, nil, err
+			return nil, nil, fmt.Errorf("Error scanning tweets by month: %v", err)
 		}
 
 		tweetCountXMonths = append(tweetCountXMonths, month)
@@ -2053,7 +2056,7 @@ func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, fmt.Errorf("Error iterating tweets by month: %v", err)
 	}
 
 	return tweetCountXMonths, tweetCountYCounts, nil
@@ -2079,7 +2082,7 @@ func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 		ORDER BY occurred_at DESC
 	`, withReplies)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error selecting tweets: %v", err)
 	}
 	defer rows.Close()
 
@@ -2092,14 +2095,14 @@ func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
 			&tweet.Slug,
 		)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("Error scanning tweets: %v", err)
 		}
 
 		tweets = append(tweets, &tweet)
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error iterating tweets: %v", err)
 	}
 
 	return tweets, nil
@@ -2201,12 +2204,12 @@ func ensureSymlink(source, dest string) error {
 		goto create
 	}
 	if err != nil {
-		return err
+		return fmt.Errorf("Error checking symlink: %v", err)
 	}
 
 	actual, err = os.Readlink(dest)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error reading symlink: %v", err)
 	}
 
 	if actual == source {
@@ -2219,10 +2222,15 @@ func ensureSymlink(source, dest string) error {
 create:
 	err = os.RemoveAll(dest)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error removing symlink: %v", err)
 	}
 
-	return os.Symlink(source, dest)
+	err = os.Symlink(source, dest)
+	if err != nil {
+		return fmt.Errorf("Error creating symlink: %v", err)
+	}
+
+	return nil
 }
 
 // Checks if the path exists as a common image format (.jpg or .png only). If
@@ -2254,7 +2262,7 @@ func renderView(layout, view, target string, locals map[string]interface{}) erro
 
 	file, err := os.Create(target)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error creating view file: %v", err)
 	}
 	defer file.Close()
 
@@ -2263,7 +2271,7 @@ func renderView(layout, view, target string, locals map[string]interface{}) erro
 
 	err = template.Execute(writer, locals)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error rendering view: %v", err)
 	}
 
 	return nil
