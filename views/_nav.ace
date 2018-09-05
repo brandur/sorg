@@ -1,22 +1,27 @@
 nav
   ul
+    / li
+      a href="/" △
     li
       a href="/" Home
     li
       a href="/articles" Articles
-    li
+    / li
       a href="/fragments" Fragments
-    li
+    / li
       a href="/newsletter" Newsletter
-    li
+    / li
       a href="/twitter" Twitter
     li
       a href="/photos" Photos
-    li
+    / li
       a href="/reading" Reading
-    li
+    / li
       a href="/runs" Running
     li
       a href="/now" Now
     li
       a href="/about" About
+    li
+      a href="/sitemap"
+        span title="Sitemap" ☰

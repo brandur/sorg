@@ -10,14 +10,10 @@ body.index
   background: $background
   color: $primary
 
-  #container
-    min-height: 100%
-    position: relative
-
   // TODO: Merge this with the implementation in photos.sass.
   #top-nav-index
     height: auto
-    margin: 40px 33px
+    margin: 40px
     width: auto
 
     .nav-inner
@@ -32,17 +28,20 @@ body.index
         li
           float: left
           line-height: 1.8em
-          margin: 0 6px
+          margin: 0 5px
 
           a
             color: $primary
+
+  #container
+    margin: 20px 0
 
 #flexcontainer-index
   -webkit-justify-content: center
   justify-content: center
 
   font-size: 1rem
-  line-height: 1.5em
+  line-height: 1.7em
   margin: 60px auto
   // #text + #photo + outer margins
   max-width: 1920px
@@ -76,13 +75,14 @@ body.index
 
     .divider-short
       border-bottom: 1px solid $subtle
-      margin: 15px auto
+      margin: 25px auto
 
     p
       margin: 10px 0
 
     p.hook
       font-size: 0.85rem
+      line-height: 1.7em
       margin: 0
 
       span.date
@@ -126,13 +126,31 @@ body.index
     #top-nav-index
       margin: 20px 13px !important
 
+      .nav-inner
+        margin: 0 auto
+
+        nav
+          display: inline-block
+
+    #container
+      margin: 50px 0
+
   #flexcontainer-index
-    margin: 20px auto
+    font-size: 1.2rem
     line-height: 1.9em
+    margin: 0 8%
+    width: 84%
 
     #text
       margin: 0 20px
       max-width: 100%
+
+      p.hook
+        font-size: 1.1rem
+        line-height: 1.9em
+
+        span.date
+        font-size: 0.9rem
 
     #photo
       margin: 0 20px
