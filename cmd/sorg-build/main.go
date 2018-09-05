@@ -853,11 +853,10 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 	}
 
 	locals := getLocals("brandur.org", map[string]interface{}{
-		"Articles":      articles,
-		"BodyClass":     "index",
-		"Fragments":     fragments,
-		"Photo":         photo,
-		"ViewportWidth": 600,
+		"Articles":  articles,
+		"BodyClass": "index",
+		"Fragments": fragments,
+		"Photo":     photo,
 	})
 
 	err := renderView(sorg.MainLayout, sorg.ViewsDir+"/index",
