@@ -5,12 +5,12 @@
       = include views/_nav
   .flexcontainer#flexcontainer-index
     #text
-      h1
+      h1.block
         a href="/about" About
       p I'm <a href="https://twitter.com/brandur">@brandur</a>. I'm an engineer at Stripe (previously Heroku), and occasional writer.
       p I most often talk about web APIs, Postgres, Rust, software safety and resilience, efficient human interfaces, and running.
       .divider-short
-      h1
+      h1.block
         a href="/articles" Articles
       ul.writing
         {{range .Articles}}
@@ -24,7 +24,7 @@
       p.older
         em Older articles available <a href="/articles">here</a>.
       .divider-short
-      h1
+      h1.block
         a href="/fragments" Fragments
       ul.writing
         {{range .Fragments}}

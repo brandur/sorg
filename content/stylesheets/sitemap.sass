@@ -1,0 +1,17 @@
+div#sitemap
+  display: flex
+  flex-direction: row
+
+  h2
+    margin: 0
+
+  ul
+    li
+      margin: 5px 0
+
+  .sitemap-col
+    flex-grow: 1
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  div#sitemap
+    flex-direction: column

@@ -10,31 +10,34 @@
         #title
           h1 Sitemap
         #sitemap
-          ul
-            li
-              a href="/" Home
-            li
-              a href="/newsletter" Newsletter
-            li
-              a href="/now" Now
-            li
-              a href="/about" About
-            li
-              a href="/sitemap"
-                span title="Sitemap" ☰
-          h2 Writing
-          ul
-            li
-              a href="/articles" Articles
-            li
-              a href="/fragments" Fragments
-          h2 Other
-          ul
-            li
-              a href="/photos" Photography
-            li
-              a href="/reading" Reading
-            li
-              a href="/runs" Running
-            li
-              a href="/twitter" Twitter
+          .sitemap-col
+            h2.block Core
+            ul
+              li
+                a href="/about" About
+              li
+                a href="/" Home
+              li
+                a href="/newsletter" Newsletter
+              li
+                a href="/now" Now
+              li
+                a href="/sitemap" Sitemap
+          .sitemap-col
+            h2.block Writing
+            ul
+              li
+                a href="/articles" Articles
+              li
+                a href="/fragments" Fragments
+          .sitemap-col
+            h2.block Other
+            ul
+              li
+                a href="/photos" Photography
+              li
+                a href="/reading" Reading
+              li
+                a href="/runs" Running
+              li
+                a href="/twitter" Twitter
