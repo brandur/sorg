@@ -69,6 +69,15 @@ body.index
     p
       margin: 10px 0
 
+    #writing
+       margin: 0
+
+      ul
+        margin: 10px 0 25px 0
+
+        li
+          margin: 0 0 25px 0
+
     p.hook
       font-size: 0.85rem
       line-height: 1.7em
@@ -95,11 +104,67 @@ body.index
         &:hover
           border-bottom: 0
 
-    ul.writing
-      margin: 10px 0 25px 0
+  #photo
+    flex-shrink: 3
+    margin: 0 80px 0 20px
+    max-width: 1500px
+    overflow: hidden
 
-      li
-        margin: 0 0 25px 0
+    img
+      max-width: initial
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  body.index
+    #top-nav-index
+      margin: 20px 13px !important
+
+    #container
+      margin: 50px 0
+
+  #flexcontainer-index
+    font-size: 1.2rem
+    line-height: 1.9em
+    margin: 0 8%
+    width: 84%
+
+    #text
+      margin: 0
+      max-width: 100%
+
+      #writing
+         margin: 0 6%
+
+      ul
+        margin: 10px 0 25px 0
+
+        li
+          margin: 0 0 25px 0
+
+    p.hook
+      font-size: 0.85rem
+      line-height: 1.7em
+      margin: 0
+
+      span.date
+        color: $meta
+        font-size: 0.7rem
+        font-style: italic
+        margin: 0 3px
+
+    p.older
+      color: $meta
+      font-size: 0.8rem
+
+    p.title
+      font-family: $sans_serif
+      font-weight: bold
+      margin: 10px 0
+
+      a
+        border-bottom: 1px solid $subtle
+
+        &:hover
+          border-bottom: 0
 
   #photo
     flex-shrink: 3
@@ -125,7 +190,7 @@ body.index
     width: 84%
 
     #text
-      margin: 0 20px
+      margin: 0
       max-width: 100%
 
       p.hook
@@ -136,7 +201,22 @@ body.index
         font-size: 0.9rem
 
     #photo
-      margin: 0 20px
+      margin: 0
+      max-width: 100%
+      overflow: auto
+
+      img
+        width: 100%
+
+      p.hook
+        font-size: 1.1rem
+        line-height: 1.9em
+
+        span.date
+        font-size: 0.9rem
+
+    #photo
+      margin: 0
       max-width: 100%
       overflow: auto
 

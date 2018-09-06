@@ -9,34 +9,35 @@
         a href="/about" About
       p I'm <a href="https://twitter.com/brandur">@brandur</a>. I'm an engineer at Stripe (previously Heroku), and occasional writer.
       p I most often talk about web APIs, Postgres, Rust, software safety and resilience, efficient human interfaces, and running.
-      .divider-short
-      h1.block
-        a href="/articles" Articles
-      ul.writing
-        {{range .Articles}}
-          li
-            p.title
-              a href="/{{.Slug}}" {{.Title}}
-            p.hook
-              | {{HTML .Hook}} 
-              span.date {{FormatTime .PublishedAt}}
-        {{end}}
-      p.older
-        em Older articles available <a href="/articles">here</a>.
-      .divider-short
-      h1.block
-        a href="/fragments" Fragments
-      ul.writing
-        {{range .Fragments}}
-          li
-            p.title
-              a href="/fragments/{{.Slug}}" {{.Title}}
-            p.hook
-              | {{HTML .Hook}} 
-              span.date {{FormatTime .PublishedAt}}
-        {{end}}
-      p.older
-        em Older fragments available <a href="/fragments">here</a>.
+      #writing
+        .divider-short
+        h1.block
+          a href="/articles" Articles
+        ul.writing
+          {{range .Articles}}
+            li
+              p.title
+                a href="/{{.Slug}}" {{.Title}}
+              p.hook
+                | {{HTML .Hook}} 
+                span.date {{FormatTime .PublishedAt}}
+          {{end}}
+        p.older
+          em Older articles available <a href="/articles">here</a>.
+        .divider-short
+        h1.block
+          a href="/fragments" Fragments
+        ul.writing
+          {{range .Fragments}}
+            li
+              p.title
+                a href="/fragments/{{.Slug}}" {{.Title}}
+              p.hook
+                | {{HTML .Hook}} 
+                span.date {{FormatTime .PublishedAt}}
+          {{end}}
+        p.older
+          em Older fragments available <a href="/fragments">here</a>.
     #photo
       {{if .Photo}}
         a href="/photos#{{.Photo.Slug}}"
