@@ -13,7 +13,7 @@
         .divider-short
         h1.block
           a href="/articles" Articles
-        ul.writing
+        ul
           {{range .Articles}}
             li
               p.title
@@ -27,7 +27,7 @@
         .divider-short
         h1.block
           a href="/fragments" Fragments
-        ul.writing
+        ul
           {{range .Fragments}}
             li
               p.title
