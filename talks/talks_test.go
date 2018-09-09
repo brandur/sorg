@@ -22,8 +22,10 @@ func TestCompile(t *testing.T) {
 	assert.Contains(t, publishingInfo, talk.Title)
 
 	for i, slide := range talk.Slides {
-		assert.NotEmpty(t, slide.Caption)
-		assert.NotEmpty(t, slide.CaptionRaw)
+		if slide.CaptionRaw != "" {
+			assert.NotEmpty(t, slide.Caption)
+		}
+
 		assert.Equal(t, fmt.Sprintf("%03d", i+1), slide.Number)
 	}
 }
