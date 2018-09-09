@@ -88,9 +88,9 @@ type Article struct {
 // PublishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when an article is shown.
 func (a *Article) PublishingInfo() string {
-	return `<p><em><strong>` + a.Title + `</strong> was published on <strong>` +
+	return `<p><strong>` + a.Title + `</strong> was published on <strong>` +
 		a.PublishedAt.Format("January 2, 2006") + `</strong> from <strong>` +
-		a.Location + `</strong>.</em></p>` + sorg.TwitterInfo
+		a.Location + `</strong>.</p>` + sorg.TwitterInfo
 }
 
 type articleByPublishedAt []*Article
@@ -196,8 +196,8 @@ type Fragment struct {
 // PublishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when a fragment is shown.
 func (f *Fragment) PublishingInfo() string {
-	return `<p><em><strong>` + f.Title + `</strong> was published on <strong>` +
-		f.PublishedAt.Format("January 2, 2006") + `</strong>.</em></p>` +
+	return `<p><strong>` + f.Title + `</strong> was published on <strong>` +
+		f.PublishedAt.Format("January 2, 2006") + `</strong>.</p>` +
 		sorg.TwitterInfo
 }
 

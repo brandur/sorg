@@ -43,8 +43,8 @@ const (
 
 // TwitterInfo is some HTML that includes a Twitter link which can be appended
 // to the publishing info of various content.
-const TwitterInfo = `<p><em>Find me on Twitter at ` +
-	`<strong><a href="https://twitter.com/brandur">@brandur</a></strong>.</em></p>`
+const TwitterInfo = `<p>Find me on Twitter at ` +
+	`<strong><a href="https://twitter.com/brandur">@brandur</a></strong>.</p>`
 
 var errBadFrontmatter = fmt.Errorf("Unable to split YAML frontmatter")
 
