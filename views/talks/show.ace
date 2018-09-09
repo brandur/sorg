@@ -1,0 +1,28 @@
+= content main
+  .flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+        .nav-extra-content
+          .divider
+          {{HTML .PublishingInfo}}
+    .toc-index
+    .content
+      .content-inner-standard
+        #title
+          h1 {{.Talk.Title}}
+        section#intro
+          {{HTML .Talk.Intro}}
+        .divider
+        section#slides
+          {{range .Talk.Slides}}
+            .slide
+              h2.block {{.Number}}
+              figure
+                p
+                  img src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png"
+                figcaption
+                  {{HTML .Caption}}
+            .clear
+          {{end}}

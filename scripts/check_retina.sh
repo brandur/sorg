@@ -61,6 +61,11 @@ allowed_exceptions=(
     "./content/images/denim/union-special.jpg"
 )
 
+# Don't require retina for talks because Keynote exports them at pretty high
+# quality anyway.
+extras=($(ls ./content/images/talks/**/*.png))
+allowed_exceptions=("${allowed_exceptions[@]}" "${extras[@]}")
+
 find_images() {
     find ./content -type f \( \
         \( \

@@ -22,6 +22,7 @@ import (
 	"github.com/brandur/sorg/passages"
 	"github.com/brandur/sorg/pool"
 	"github.com/brandur/sorg/resizer"
+	"github.com/brandur/sorg/talks"
 	"github.com/brandur/sorg/templatehelpers"
 	"github.com/brandur/sorg/toc"
 	"github.com/joeshaw/envdecode"
@@ -89,7 +90,7 @@ type Article struct {
 func (a *Article) PublishingInfo() string {
 	return `<p><em><strong>` + a.Title + `</strong> was published on <strong>` +
 		a.PublishedAt.Format("January 2, 2006") + `</strong> from <strong>` +
-		a.Location + `</strong>.</em></p>` + twitterInfo
+		a.Location + `</strong>.</em></p>` + sorg.TwitterInfo
 }
 
 type articleByPublishedAt []*Article
@@ -197,7 +198,7 @@ type Fragment struct {
 func (f *Fragment) PublishingInfo() string {
 	return `<p><em><strong>` + f.Title + `</strong> was published on <strong>` +
 		f.PublishedAt.Format("January 2, 2006") + `</strong>.</em></p>` +
-		twitterInfo
+		sorg.TwitterInfo
 }
 
 type fragmentByPublishedAt []*Fragment
@@ -356,13 +357,6 @@ type twitterCard struct {
 }
 
 //
-// Constants
-//
-
-const twitterInfo = `<p><em>Find me on Twitter at ` +
-	`<strong><a href="https://twitter.com/brandur">@brandur</a></strong>.</em></p>`
-
-//
 // Variables
 //
 
@@ -432,6 +426,9 @@ func main() {
 	var passages []*passages.Passage
 	passageChan := accumulatePassages(&passages)
 
+	var talks []*talks.Talk
+	talkChan := accumulateTalks(&talks)
+
 	articleTasks, err := tasksForArticles(articleChan)
 	if err != nil {
 		log.Fatal(err)
@@ -489,6 +486,12 @@ func main() {
 			path.Join(sorg.ContentDir, "stylesheets"),
 			path.Join(versionedAssetsDir, "app.css"))
 	}))
+
+	talkTasks, err := tasksForTalks(talkChan)
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, talkTasks...)
 
 	tasks = append(tasks, pool.NewTask(func() error {
 		return compileTwitter(db)
@@ -1206,6 +1209,27 @@ func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
 	return passage, nil
 }
 
+func compileTalk(dir, name string, draft bool) (*talks.Talk, error) {
+	talk, err := talks.Compile(dir, name, draft)
+	if err != nil {
+		return nil, err
+	}
+
+	locals := getLocals(talk.Title, map[string]interface{}{
+		"BodyClass":      "talk",
+		"PublishingInfo": talk.PublishingInfo(),
+		"Talk":           talk,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/talks/show",
+		conf.TargetDir+"/"+talk.Slug, locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return talk, nil
+}
+
 func compileTwitter(db *sql.DB) error {
 	if conf.ContentOnly {
 		return nil
@@ -1534,6 +1558,52 @@ func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft b
 	return tasks, nil
 }
 
+func tasksForTalks(talkChan chan *talks.Talk) ([]*pool.Task, error) {
+	tasks, err := tasksForTalksDir(talkChan, sorg.ContentDir+"/talks", false)
+	if err != nil {
+		return nil, fmt.Errorf("Error getting talk tasks: %v", err)
+	}
+
+	if conf.Drafts {
+		draftTasks, err := tasksForTalksDir(talkChan,
+			sorg.ContentDir+"/talks-drafts", true)
+		if err != nil {
+			return nil, fmt.Errorf("Error getting talk draft tasks: %v", err)
+		}
+
+		tasks = append(tasks, draftTasks...)
+	}
+
+	return tasks, nil
+}
+
+func tasksForTalksDir(talkChan chan *talks.Talk, dir string, draft bool) ([]*pool.Task, error) {
+	talkInfos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return nil, err
+	}
+
+	var tasks []*pool.Task
+	for _, talkInfo := range talkInfos {
+		if isHidden(talkInfo.Name()) {
+			continue
+		}
+
+		name := talkInfo.Name()
+		tasks = append(tasks, pool.NewTask(func() error {
+			talk, err := compileTalk(dir, name, draft)
+			if err != nil {
+				return err
+			}
+
+			talkChan <- talk
+			return nil
+		}))
+	}
+
+	return tasks, nil
+}
+
 //
 // Other functions
 //
@@ -1568,6 +1638,16 @@ func accumulatePassages(p *[]*passages.Passage) chan *passages.Passage {
 		}
 	}()
 	return passageChan
+}
+
+func accumulateTalks(p *[]*talks.Talk) chan *talks.Talk {
+	talkChan := make(chan *talks.Talk, 100)
+	go func() {
+		for talk := range talkChan {
+			*p = append(*p, talk)
+		}
+	}()
+	return talkChan
 }
 
 // Naturally not provided by the Go language because copying files "has tricky
