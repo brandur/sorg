@@ -20,13 +20,14 @@
         section#slides
           {{range .Talk.Slides}}
             .slide
-              h2.block {{.Number}}
+              a href="#{{.Number}}"
+                h2.block id="{{.Number}}" {{.Number}}
               figure
                 p
                   {{if eq .Caption ""}}
-                    img.no-caption src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png"
+                    img.lazy.no-caption src="/assets/talks/standin_00.png" data-src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png" data-srcset="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png 1x"
                   {{else}}
-                    img src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png"
+                    img.lazy src="/assets/talks/standin_00.png" data-src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png" data-srcset="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png 1x"
                   {{end}}
                 {{if ne .Caption ""}}
                   figcaption
