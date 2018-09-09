@@ -22,6 +22,7 @@ allowed_exceptions=(
     "./content/images/standin_03.jpg"
     "./content/images/standin_04.jpg"
     "./content/images/standin_portrait_00.jpg"
+    "./content/images/talks/standin_00.png"
 
     # These are images that we can safely say won't ever have a good retina
     # equivalent, so they're allowed to fail.
