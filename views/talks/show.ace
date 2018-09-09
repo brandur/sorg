@@ -12,6 +12,8 @@
       .content-inner-standard
         #title
           h1 {{.Talk.Title}}
+        #subtitle
+          {{.Talk.Subtitle}}
         section#intro
           {{HTML .Talk.Intro}}
         .divider

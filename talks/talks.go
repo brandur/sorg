@@ -52,6 +52,9 @@ type Talk struct {
 	// where it's addressable by URL.
 	Slug string `yaml:"-"`
 
+	// Subtitle is the talk's subtitle.
+	Subtitle string `yaml:"subtitle"`
+
 	// Title is the talk's title.
 	Title string `yaml:"title"`
 }
