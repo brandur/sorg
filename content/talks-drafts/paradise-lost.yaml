@@ -17,6 +17,7 @@ intro: >
   efficitur. Proin a ornare sem.
 
 slides:
+  - caption:
   - caption: >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non
       aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur

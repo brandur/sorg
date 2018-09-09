@@ -23,8 +23,14 @@
               h2.block {{.Number}}
               figure
                 p
-                  img src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png"
-                figcaption
-                  {{HTML .Caption}}
+                  {{if eq .Caption ""}}
+                    img.no-caption src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png"
+                  {{else}}
+                    img src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png"
+                  {{end}}
+                {{if ne .Caption ""}}
+                  figcaption
+                    {{HTML .Caption}}
+                {{end}}
             .clear
           {{end}}
