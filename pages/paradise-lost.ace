@@ -1,0 +1,72 @@
+= content main
+  .flexcontainer
+    .flag
+    .top-nav
+      .nav-inner
+        = include views/_nav
+        .nav-extra-content
+          .divider
+          p
+            em Tweeting for 10,000 Years: An Experiment in Autonomous Software was published on July 20, 2018 from San Francisco.
+          p
+            em Find me on Twitter at @brandur.
+          / {{HTML .PublishingInfo}}
+    .toc-index
+    .content
+      .content-inner-standard
+        #title
+          h1 Paradise Lost
+        section#intro
+          p
+            | Intro text.
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat. Ut pellentesque, nisi ultrices sodales tristique, dui velit gravida ante, sit amet sodales erat arcu a purus. Integer purus ligula, ornare vitae mollis consequat, finibus quis dolor. Praesent sit amet molestie enim. Nunc ultricies sem quis convallis efficitur. Proin a ornare sem.
+        .divider
+        section#slides
+          .slide
+            h2.block 001
+            figure
+              p
+                img src="/assets/paradise-lost/paradise-lost.001.png"
+              figcaption
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat. Ut pellentesque, nisi ultrices sodales tristique, dui velit gravida ante, sit amet sodales erat arcu a purus. Integer purus ligula, ornare vitae mollis consequat, finibus quis dolor. Praesent sit amet molestie enim. Nunc ultricies sem quis convallis efficitur. Proin a ornare sem.
+          .clear
+          .slide
+            h2.block 002
+            figure
+              p
+                img src="/assets/paradise-lost/paradise-lost.001.png"
+              figcaption
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+          .clear
+          .slide
+            h2.block 003
+            figure
+              p
+                img src="/assets/paradise-lost/paradise-lost.001.png"
+              figcaption
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat. Ut pellentesque, nisi ultrices sodales tristique, dui velit gravida ante, sit amet sodales erat arcu a purus. Integer purus ligula, ornare vitae mollis consequat, finibus quis dolor. Praesent sit amet molestie enim. Nunc ultricies sem quis convallis efficitur. Proin a ornare sem.
+          .slide
+            h2.block 004
+            figure
+              p
+                img src="/assets/paradise-lost/paradise-lost.001.png"
+              figcaption
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non aliquet urna. Fusce nisl ex, lacinia sit amet suscipit eget, consectetur sit amet nunc. Ut suscipit erat quis molestie feugiat.
+          .clear

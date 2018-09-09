@@ -1,0 +1,86 @@
+$background: #000
+$primary: #fff
+$subtle: #1a1a1a
+
+body.talk
+  background: $background
+  color: $primary
+
+  a
+    border-bottom: 1px solid $primary
+    color: $primary
+    text-decoration: none
+
+  h1, h2
+    color: $primary
+
+    a, a:visited, a:hover
+      color: $primary
+
+  h2
+    margin: 10px 0
+
+  .content
+    .content-inner-standard
+      max-width: 800px
+
+  .divider
+    border-bottom: 1px solid $subtle
+
+  .flag
+    background-image: linear-gradient(to bottom, #f3f315 0%, transparent 100%)
+
+  .top-nav
+    nav
+      a
+        border-bottom: 0
+
+        &:hover
+          color: $primary
+
+  section#intro
+
+  section#slides
+    figure
+      img
+        border-radius: 10px
+        float: right
+        margin: 0 0 20px 20px
+        width: 550px
+
+      figcaption
+        font-size: 0.85rem
+        line-height: 1.5em
+        //max-width: 550px
+
+      p
+        margin: 10px 0
+
+    .slide
+      margin: 40px 0
+
+// Note that we have a different max-width than usages elsewhere because this
+// design degrades faster.
+@media handheld, only screen and (max-width: 1100px), only screen and (max-device-width: 1100px)
+  body.talk
+    section#slides
+      figure
+        img
+          float: none
+          margin: 0
+          width: 100%
+
+        figcaption
+          font-size: 0.9rem
+          max-width: none
+          margin: 30px 25px
+
+        p
+          margin: 15px 0
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  body.talk
+    section#slides
+      figure
+        figcaption
+          margin: 20px 0
