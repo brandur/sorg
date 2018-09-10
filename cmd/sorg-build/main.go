@@ -585,6 +585,10 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 	article.Draft = draft
 	article.Slug = strings.Replace(name, ".md", "", -1)
 
+	if article.Location == "" {
+		return nil, fmt.Errorf("No location for article: %v", inPath)
+	}
+
 	if article.Title == "" {
 		return nil, fmt.Errorf("No title for article: %v", inPath)
 	}
