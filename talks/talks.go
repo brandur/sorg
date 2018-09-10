@@ -62,9 +62,11 @@ type Talk struct {
 // PublishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when a talk is shown.
 func (t *Talk) PublishingInfo() string {
-	return `<p><strong>` + t.Title + `</strong> is a talk originally given on <strong>` +
-		t.PublishedAt.Format("January 2, 2006") + `</strong> for <strong>` +
-		t.Event + `</strong> in <strong>` + t.Location + `</strong>.</p>` + sorg.TwitterInfo
+	return `<p><strong>Talk</strong><br>` + t.Title + `</p>` +
+		`<p><strong>Published</strong><br>` + t.PublishedAt.Format("January 2, 2006") + `</p>` +
+		`<p><strong>Location</strong><br>` + t.Location + `</p>` +
+		`<p><strong>Event</strong><br>` + t.Event + `</p>` +
+		sorg.TwitterInfo
 }
 
 // Compile reads a talk file and builds a Talk object from it.
