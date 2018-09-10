@@ -2,6 +2,7 @@
 title: "Time and Isolation: Divergent Ecologies in Software"
 published_at: 2017-07-31T17:47:39Z
 hook: TODO
+location: San Francisco
 ---
 
 This isn't my usual technical piece. It's more of a short

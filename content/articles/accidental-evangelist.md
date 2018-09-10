@@ -5,6 +5,7 @@ hook: Lets talk about the bad aspects of the technology we
   use as well as the good. Better information will lead to
   better decisions in the next generation of technical
   architecture.
+location: San Francisco
 ---
 
 In our industry, technological hype has a bad tendency to

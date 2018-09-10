@@ -3,6 +3,7 @@ title: Productionizing a Rust Web Stack and Deploying it to
   Kubernetes
 published_at: 2018-03-25T17:10:24Z
 hook: TODO
+location: San Francisco
 ---
 
 ## Structuring a program (#structure)
