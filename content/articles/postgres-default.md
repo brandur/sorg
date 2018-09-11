@@ -160,7 +160,7 @@ for every row and unset `atthasmissing` and
 Due to the relative simplicity of `attmissingval`, this
 optimization only works for default values that are
 _non-volatile_ (i.e., single, constant values). A default
-value that calls `NOW()` can't take advantage of the
+value that calls `clock_timestamp()` can't take advantage of the
 optimization.
 
 There's nothing all that difficult conceptually about this
