@@ -13,7 +13,7 @@
     .fragments
       .content
         {{if ne .Fragment.Image ""}}
-          img#mood data-rjs="2" src={{.Fragment.Image}}
+          img#mood src="{{.Fragment.Image}}" srcset="{{To2x .Fragment.Image}} 2x, {{.Fragment.Image}} 1x"
         {{end}}
         div class="content-inner-fragments-show" id="{{if ne .Fragment.Image ""}}content-inner-fragments-show-mood{{end}}"
           #title.fragments-title

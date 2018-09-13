@@ -29,7 +29,20 @@ var FuncMap = template.FuncMap{
 	"PhotographStandin":            photographStandin,
 	"RenderTweetContent":           renderTweetContent,
 	"RoundToString":                roundToString,
+	"To2x":                         To2x,
 	"ToStars":                      toStars,
+}
+
+func To2x(imagePath string) string {
+	parts := strings.Split(imagePath, ".")
+
+	if len(parts) < 2 {
+		return imagePath
+	}
+
+	parts[len(parts)-2] = parts[len(parts)-2] + "@2x"
+
+	return strings.Join(parts, ".")
 }
 
 func distanceOfTimeInWords(to, from time.Time) string {

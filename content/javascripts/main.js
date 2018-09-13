@@ -30,11 +30,3 @@ document.addEventListener("DOMContentLoaded", function() {
     lazyImageObserver.observe(lazyImage);
   });
 });
-
-// Highlight.js wants to be in `DOMContentLoaded` (and not `load`) while
-// Retina.js wants the opposite. I don't quite understand why this is, but I'm
-// cargo culting for now.
-window.addEventListener('load', function () {
-  // With no arguments looks for anything with a `data-rjs` tag.
-  retinajs();
-});

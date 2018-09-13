@@ -16,4 +16,4 @@
           p <em>Passages & Glass</em> is about the independent web. It’s sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), and is my infinitesimally small way of pushing back against the continued centralization and confinement of our stories in closed platforms like Facebook.
           p You should consider signing up to get it. You can do so <a href="https://passages-signup.herokuapp.com/" rel="nofollow">right here</a>.
           p
-            img.overflowing src="/assets/newsletter/panorama-ridge.jpg" data-rjs="2"
+            img.overflowing src="/assets/newsletter/panorama-ridge.jpg" srcset="/assets/newsletter/panorama-ridge@2x.jpg 2x, /assets/newsletter/panorama-ridge.jpg 1x"

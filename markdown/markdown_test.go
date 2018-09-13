@@ -226,7 +226,7 @@ Conclusion.
 
 func TestTransformImagesToRetina(t *testing.T) {
 	assert.Equal(t,
-		`<img data-rjs="2" src="/assets/hello.jpg">`,
+		`<img src="/assets/hello.jpg" srcset="/assets/hello@2x.jpg 2x, /assets/hello.jpg 1x">`,
 		transformImagesToRetina(`<img src="/assets/hello.jpg">`, nil),
 	)
 

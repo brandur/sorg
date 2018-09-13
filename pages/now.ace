@@ -24,7 +24,7 @@
           /
           / I'm in San Francisco concentrating on self-discipline, self-improvement, and shipping the next big thing at Stripe.
           p
-            img.overflowing src="/assets/now/sutro-giants.jpg" data-rjs="2"
+            img.overflowing src="/assets/now/sutro-giants.jpg" srcset="/assets/now/sutro-giants@2x.jpg 2x, /assets/now/sutro-giants.jpg 1x"
           p A few points of focus:
           ul
             li Meditating every day.

@@ -258,10 +258,7 @@ working on. It was designed to educate and inspire, and it worked.
 
 ### Flexible environment (#flexible-environment)
 
-<figure>
-  <p><img src="/assets/heroku-values/agora.jpg" data-rjs="2" class="overflowing"></p>
-  <figcaption>The Agora Collective in Berlin.</figcaption>
-</figure>
+!fig src="/assets/heroku-values/agora.jpg" caption="The Agora Collective in Berlin."
 
 Traditional organizations generally hold a strong belief that every employee
 should physically punch in at 9 AM, leave it at 5 PM, and keep that up for 5
@@ -292,10 +289,7 @@ regularly.
 
 ### GitHub (#github)
 
-<figure>
-  <p><img src="/assets/heroku-values/octotrophy.jpg" data-rjs="2" class="overflowing"></p>
-  <figcaption>The OctoTrophy (dodgeball).</figcaption>
-</figure>
+!fig src="/assets/heroku-values/octotrophy.jpg" caption="The OctoTrophy (dodgeball)."
 
 GitHub has been one of the best pieces of software on the Internet for years,
 and is the right way to organize code and projects. Companies should be using

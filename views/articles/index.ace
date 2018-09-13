@@ -27,7 +27,7 @@
                   li
                     {{if .HookImageURL}}
                       a href="/{{.Slug}}"
-                        img src="{{.HookImageURL}}" data-rjs="2"
+                        img src="{{.HookImageURL}}" srcset="{{To2x .HookImageURL}} 2x, {{.HookImageURL}} 1x"
                     {{end}}
                     .title
                       a href="/{{.Slug}}"

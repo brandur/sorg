@@ -92,7 +92,7 @@ distance as they soar free through virgin skies. Travel can
 be a little more risky than Lyft, so make sure to pack an
 extra parachute.
 
-<p><img src="/assets/idempotency-keys/rocketrides-ios-ride.png" data-rjs="2"></p>
+!fig src="/assets/idempotency-keys/rocketrides-ios-ride.png" caption="Rocket Rides the app."
 
 The [Rocket Rides repository][rocketrides] comes with a
 simple server implementation, but software tends to grow

@@ -107,7 +107,7 @@ app=id response status=200 elapsed=0.010 request_id=4edef22b...
 
 A Splunk query based on the top-level request ID will yield logging events from all composed apps. Note that although we use Splunk here, alternatives like Papertrail will do the same job.
 
-<div class="attachment"><img src="/assets/request-ids/splunk-search.png"></div>
+!fig src="/assets/request-ids/splunk-search.png" caption="Getting ready to search Splunk for a request ID."
 
 ## Tweaks (#tweaks)
 

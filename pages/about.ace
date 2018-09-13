@@ -11,7 +11,7 @@
           h1 About
         #about
           p
-            img.overflowing src="/assets/me.jpg" data-rjs="2"
+            img.overflowing src="/assets/me.jpg" srcset="/assets/me@2x.jpg 2x, /assets/me.jpg 1x"
           p
             | I'm an engineer at Stripe where I help design, build, and run our API and maintain our public-facing developer tooling.
           p

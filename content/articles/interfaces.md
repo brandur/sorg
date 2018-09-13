@@ -158,13 +158,7 @@ all the flourishes in this class -- they look great in
 screenshots and demos, but don't advance our ability to be
 productive; in fact, they do the opposite.
 
-<figure>
-  <p>
-    <img src="/assets/interfaces/cmd-tab.png" data-rjs="2" class="overflowing">
-  </p>
-  <figcaption>Will Cmd + Tab be the next victim of
-    overzealous animation?</figcaption>
-</figure>
+!fig src="/assets/interfaces/cmd-tab.png" caption="Will Cmd + Tab be the next victim of overzealous animation?"
 
 I live in fear that one day Apple will realize that they've
 left a gaping hole in their UX strategy and that task
@@ -257,7 +251,7 @@ video][minority-report] of it in action.
 <figure>
   <p>
     <a href="https://www.youtube.com/watch?v=PJqbivkm0Ms">
-      <img src="/assets/interfaces/minority-report.jpg" data-rjs="2" class="overflowing">
+      <img src="/assets/interfaces/minority-report.jpg" srcset="/assets/interfaces/minority-report@2x.jpg 2x, /assets/interfaces/minority-report.jpg 1x" class="overflowing">
     </a>
   </p>
   <figcaption>A futuristic and unrealistic concept interface:

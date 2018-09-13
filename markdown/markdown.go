@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/brandur/sorg"
+	"github.com/brandur/sorg/templatehelpers"
 	"github.com/russross/blackfriday"
 )
 
@@ -297,7 +298,11 @@ func transformImagesToRetina(source string, options *RenderOptions) string {
 		if filepath.Ext(matches[1]) == ".svg" {
 			return fmt.Sprintf(`<img src="%s"`, matches[1])
 		}
-		return fmt.Sprintf(`<img data-rjs="2" src="%s"`, matches[1])
+		return fmt.Sprintf(`<img src="%s" srcset="%s 2x, %s 1x"`,
+			matches[1],
+			templatehelpers.To2x(matches[1]),
+			matches[1],
+		)
 	})
 }
 

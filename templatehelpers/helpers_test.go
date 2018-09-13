@@ -147,6 +147,13 @@ func TestRoundToString(t *testing.T) {
 	assert.Equal(t, "1.0", roundToString(1))
 }
 
+func TestTo2x(t *testing.T) {
+	assert.Equal(t, "/path/image@2x.jpg", To2x("/path/image.jpg"))
+	assert.Equal(t, "/path/image@2x.png", To2x("/path/image.png"))
+	assert.Equal(t, "image@2x.jpg", To2x("image.jpg"))
+	assert.Equal(t, "image", To2x("image"))
+}
+
 func TestToStars(t *testing.T) {
 	assert.Equal(t, "", toStars(0))
 	assert.Equal(t, "★ ", toStars(1))
