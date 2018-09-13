@@ -33,6 +33,8 @@ var FuncMap = template.FuncMap{
 	"ToStars":                      toStars,
 }
 
+// To2x takes a 1x (standad resolution) image path and changes it to a 2x path
+// by putting `@2x` into its name right before its extension.
 func To2x(imagePath string) string {
 	parts := strings.Split(imagePath, ".")
 
