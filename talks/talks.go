@@ -76,7 +76,7 @@ func (t *Talk) PublishingInfo() string {
 }
 
 // Compile reads a talk file and builds a Talk object from it.
-func Compile(dir, name string, draft bool) (*Talk, error) {
+func Compile(contentDir, dir, name string, draft bool) (*Talk, error) {
 	inPath := path.Join(dir, name)
 
 	raw, err := ioutil.ReadFile(inPath)
@@ -115,7 +115,7 @@ func Compile(dir, name string, draft bool) (*Talk, error) {
 	}
 
 	talksAssetPath := "/assets/talks"
-	talksImageDir := path.Join(sorg.ContentDir, "images", "talks")
+	talksImageDir := path.Join(contentDir, "images", "talks")
 
 	for i, slide := range talk.Slides {
 		slide.Caption = renderMarkdown(slide.CaptionRaw)

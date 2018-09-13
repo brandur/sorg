@@ -8,7 +8,7 @@ import (
 )
 
 func TestCompile(t *testing.T) {
-	talk, err := Compile("../content/talks-drafts", "paradise-lost.yaml", true)
+	talk, err := Compile("../content", "../content/talks-drafts", "paradise-lost.yaml", true)
 	assert.NoError(t, err)
 
 	assert.Equal(t, true, talk.Draft)
