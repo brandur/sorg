@@ -26,9 +26,9 @@
               figure
                 p
                   {{if eq .Caption ""}}
-                    img.lazy.no-caption src="/assets/talks/standin_00.png" data-src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png" data-srcset="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png 1x"
+                    img.lazy.no-caption src="/assets/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2x .ImagePath}} 2x, {{.ImagePath}} 1x"
                   {{else}}
-                    img.lazy src="/assets/talks/standin_00.png" data-src="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png" data-srcset="/assets/talks/paradise-lost/paradise-lost.{{.Number}}.png 1x"
+                    img.lazy src="/assets/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2x .ImagePath}} 2x, {{.ImagePath}} 1x"
                   {{end}}
                 {{if ne .Caption ""}}
                   figcaption

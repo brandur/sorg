@@ -3,6 +3,7 @@ package talks
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path"
 	"strings"
 	"time"
@@ -19,6 +20,11 @@ type Slide struct {
 
 	// CaptionRaw is a caption for the slide, in Markdown.
 	CaptionRaw string `yaml:"caption"`
+
+	// ImagePath is the path to the image asset for this slide. It's generated
+	// from a combination of the talk's slug, slide's number, and whether the
+	// slide is detected to be in JPG or PNG.
+	ImagePath string `yaml:"-"`
 
 	// Number is the order number of the slide in string format and padded with
 	// leading zeros.
@@ -108,12 +114,40 @@ func Compile(dir, name string, draft bool) (*Talk, error) {
 		return nil, fmt.Errorf("No publish date for talk: %v", inPath)
 	}
 
+	talksAssetPath := "/assets/talks"
+	talksImageDir := path.Join(sorg.ContentDir, "images", "talks")
+
 	for i, slide := range talk.Slides {
 		slide.Caption = renderMarkdown(slide.CaptionRaw)
 		slide.Number = fmt.Sprintf("%03d", i+1)
+
+		// Try PNG then fall back to JPG. If neither exists, error.
+		pngName := fmt.Sprintf("%s.%s.png", talk.Slug, slide.Number)
+		jpgName := fmt.Sprintf("%s.%s.jpg", talk.Slug, slide.Number)
+
+		if fileExists(path.Join(talksImageDir, talk.Slug, pngName)) {
+			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, pngName)
+		} else if fileExists(path.Join(talksImageDir, talk.Slug, jpgName)) {
+			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, jpgName)
+		} else {
+			return nil, fmt.Errorf("Couldn't find any image asset for slide %s / %s at %s",
+				pngName, jpgName, path.Join(talksImageDir, talk.Slug))
+		}
 	}
 
 	return &talk, nil
+}
+
+// Just a shortcut to try and cut down on Go's extreme verbosity.
+func fileExists(file string) bool {
+	_, err := os.Stat(file)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	panic(err)
 }
 
 func renderMarkdown(content string) string {
