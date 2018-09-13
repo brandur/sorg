@@ -23,43 +23,6 @@ allowed_exceptions=(
     "./content/images/standin_04.jpg"
     "./content/images/standin_portrait_00.jpg"
     "./content/images/talks/standin_00.png"
-
-    # These are images that we can safely say won't ever have a good retina
-    # equivalent, so they're allowed to fail.
-    "./content/images/interfaces/yahoo-1995.jpg"
-
-    # These are images that came in before I started doing the whole retina
-    # thing and have been allowed as exceptions. It's not really a big deal,
-    # but try to clean it up over time.
-    "./content/images/breaktime/commit.png"
-    "./content/images/fragments/hm-sportswear/hm.jpg"
-    "./content/images/fragments/hm-sportswear/nike.jpg"
-    "./content/images/fragments/ipad-mini/vista.jpg"
-    "./content/images/fragments/monkeybrains/vista.jpg"
-    "./content/images/fragments/new-york/apple-store.jpg"
-    "./content/images/fragments/new-york/dont-block-the-box.jpg"
-    "./content/images/fragments/new-york/high-line.jpg"
-    "./content/images/fragments/new-york/met.jpg"
-    "./content/images/fragments/new-york/rockefeller.jpg"
-    "./content/images/fragments/new-york/washington-square-park.jpg"
-    "./content/images/fragments/paper-books/borderlands-swartz-01.jpg"
-    "./content/images/fragments/paper-books/borderlands-swartz-02.jpg"
-    "./content/images/fragments/safety-razors/razor.jpg"
-    "./content/images/fragments/sprawl-blues/vista.jpg"
-    "./content/images/fragments/wgt-2015-brain-dump/jo-quail.jpg"
-    "./content/images/fragments/wgt-2015-brain-dump/leaf.jpg"
-    "./content/images/page/economist.jpg"
-    "./content/images/page/fp.png"
-    "./content/images/page/rane.jpg"
-    "./content/images/page/salon.png"
-    "./content/images/page/transworld-surf.jpg"
-    "./content/images/page/weekend.png"
-    "./content/images/request-ids/splunk-search.png"
-
-    # Images that it'll unfortunately be all but impossible to get retina
-    # versions of.
-    "./content/images/denim/shuttle-loom.jpg"
-    "./content/images/denim/union-special.jpg"
 )
 
 # Don't require retina for talks because Keynote exports them at pretty high
