@@ -27,5 +27,6 @@ func TestCompile(t *testing.T) {
 		}
 
 		assert.Equal(t, fmt.Sprintf("%03d", i+1), slide.Number)
+		assert.NotEmpty(t, slide.ImagePath)
 	}
 }
