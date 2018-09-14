@@ -230,12 +230,20 @@ func TestTransformImagesToRetina(t *testing.T) {
 		transformImagesToRetina(`<img src="/assets/hello.jpg">`, nil),
 	)
 
-	// No retina data- marker is inserted for resolution agnostic SVGs.
+	// No srcset is inserted for resolution agnostic SVGs.
 	assert.Equal(t,
 		`<img src="/assets/hello.svg">`,
 		transformImagesToRetina(`<img src="/assets/hello.svg">`, nil),
 	)
 
+	// Make sure transformation works with other attributes in the <img> tag (I
+	// previously introduced a bug relating to this).
+	assert.Equal(t,
+		`<img src="/assets/hello.svg" class="overflowing">`,
+		transformImagesToRetina(`<img src="/assets/hello.svg" class="overflowing">`, nil),
+	)
+
+	// No replacement when we've explicitly requested no retina conversion
 	assert.Equal(t,
 		`<img src="/assets/hello.jpg">`,
 		transformImagesToRetina(
