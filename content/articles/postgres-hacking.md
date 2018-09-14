@@ -109,17 +109,17 @@ it easily with `Ctrl+C`.
 mkdir -p $PG_DATA_DIR
 
 # initialize a data directory
-/opt/postgres/bin/initdb -D $PG_DATA_DIR
+$PG_BUILD_DIR/bin/initdb -D $PG_DATA_DIR
 
 # start the server
-/opt/postgres/bin/postgres -D $PG_DATA_DIR -p $PGPORT
+$PG_BUILD_DIR/bin/postgres -D $PG_DATA_DIR -p $PGPORT
 ```
 
 Now create a database and connect to it:
 
 ``` sh
-/opt/postgres/bin/createdb -p $PGPORT brandur-test
-/opt/postgres/bin/psql -p $PGPORT brandur-test
+$PG_BUILD_DIR/bin/createdb -p $PGPORT brandur-test
+$PG_BUILD_DIR/bin/psql -p $PGPORT brandur-test
 ```
 
 ### Testing (#testing)
