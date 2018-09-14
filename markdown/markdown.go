@@ -283,16 +283,17 @@ func transformHeaders(source string, options *RenderOptions) string {
 	return source
 }
 
-var imageRE = regexp.MustCompile(`<img src="(.+)"`)
+var imageRE = regexp.MustCompile(`<img src="([^"]+)"`)
 
 func transformImagesToRetina(source string, options *RenderOptions) string {
 	if options != nil && options.NoRetina {
 		return source
 	}
 
-	// The basic idea here is that we give every image a `retina-rjs` tag so
-	// that Retina.JS will replace it with a retina version *except* if the
-	// image is an SVG. These are resolution agnostic and don't need replacing.
+	// The basic idea here is that we give every image a `srcset` that includes
+	// 2x so that browsers will replace it with a retina version *except* if
+	// the image is an SVG. These are resolution agnostic and don't need
+	// replacing.
 	return imageRE.ReplaceAllStringFunc(source, func(img string) string {
 		matches := imageRE.FindStringSubmatch(img)
 		if filepath.Ext(matches[1]) == ".svg" {
