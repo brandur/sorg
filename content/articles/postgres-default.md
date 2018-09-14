@@ -158,16 +158,28 @@ for every row and unset `atthasmissing` and
 `attmissingval`.
 
 Due to the relative simplicity of `attmissingval`, this
-optimization only works for default values that are
-_non-volatile_ (i.e., single, constant values). A default
-value that calls `clock_timestamp()` can't take advantage of the
-optimization.
+optimization only works for default values and function
+calls that are _non-volatile_ [1]. Using it with a volatile
+function like `random()` won't set `atthasmissing` and
+adding the default will have to rewrite the table like it
+did before. Non-volatile function calls work fine though.
+For example, adding `DEFAULT now()` will put the
+transaction's current value of `now()` into `atthasmissing`
+and all existing rows will inherit it, but any newly
+inserted rows will get a current value of `now()` as you'd
+expect.
 
 There's nothing all that difficult conceptually about this
 change, but its implementation wasn't easy because the
 system is complex enough that there's a lot of places where
 the new missing values have to be considered. See [the
 patch][commit] that brought it in for full details.
+
+[1] Some functions in Postgres are explicitly marked as
+    `VOLATILE` to indicate that their value can change
+    within a single table scan like `random()` or
+    `timeofday()`. Most functions are not volatile
+    including many time/date functions like `now()`.
 
 [altertable]: https://www.postgresql.org/docs/10/static/sql-altertable.html
 [check]: https://www.postgresql.org/docs/current/static/ddl-constraints.html#DDL-CONSTRAINTS-CHECK-CONSTRAINTS
