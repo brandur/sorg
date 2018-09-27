@@ -452,7 +452,7 @@ phases. These are the basic rules for identifying them:
    all safely belong to the same phase.
 
 So in our example, we have an atomic phase for inserting
-the idempotency key (`tx1`) and other for making our charge
+the idempotency key (`tx1`) and another for making our charge
 call to Stripe (`tx3`) and storing the result. Every other
 operation around `tx1` and `tx3` gets grouped together and
 becomes part of two more phases, `tx2` and `tx4`. `tx2`
@@ -751,7 +751,7 @@ atomic_phase(key) do
   raise "Bug! Should have ride for key at #{RECOVERY_POINT_RIDE_CREATED}." \
     if ride.nil?
 
-  raise "Simulated failed with `raise_error` param." if raise_error
+  raise "Simulated fail with `raise_error` param." if raise_error
 
   # Rocket Rides is still a new service, so during our prototype phase
   # we're going to give $20 fixed-cost rides to everyone, regardless of
