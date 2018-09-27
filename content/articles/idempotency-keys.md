@@ -614,8 +614,8 @@ atomic_phase(key) do
       halt 409, JSON.generate(wrap_error(Messages.error_params_mismatch))
     end
 
-    # Only acquire a lock if the key is unlocked or its lock as expired
-    # because it was long enough ago.
+    # Only acquire a lock if the key is unlocked or its lock has expired
+    # because the original request was long enough ago.
     if key.locked_at && key.locked_at > Time.now - IDEMPOTENCY_KEY_LOCK_TIMEOUT
       halt 409, JSON.generate(wrap_error(Messages.error_request_in_progress))
     end
