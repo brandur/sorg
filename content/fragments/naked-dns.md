@@ -31,7 +31,7 @@ Using any of these will neutralize this argument against
 using a naked domain [1]. The disapora of options is
 unfortunate, but because DNS didn't provide an adequate
 answer and because the demand existed, service providers
-adapted by building custom implementations.
+adapted by building their own.
 
 [1] Although `A` records tend to be the champion argument
 against naked DNS, there are other somewhat compelling
