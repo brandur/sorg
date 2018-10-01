@@ -23,8 +23,8 @@ The most direct limitation is memory. Postgres is designed
 around a process model where a central Postmaster accepts
 incoming connections and forks child processes to handle
 them. Each of these "backend" processes starts out at
-around 5 MB in size, but will grow depending on the data
-they're accessing.
+around 5 MB in size, but will grow to be much larger
+depending on the data they're accessing.
 
 TODO: Postmaster diagram.
 
