@@ -114,7 +114,7 @@ I [ran some informal benchmarks for it][benchmarks] and found it to be a little
 under twice as slow as invoking Redis `SET` command (very roughly 0.1 ms per
 execution, or ~10,000 operations per second, as seen from a Redis client). It's
 also written in Rust and uses the language's FFI module to interact with Redis;
-making contribution a easier, and the implementation more likely to be free of
+making contribution easier, and the implementation more likely to be free of
 bugs and the memory issues that tend to plague C programs. Alternatively,
 there's also [throttled], another implementation of GCRA in pure Go.
 
