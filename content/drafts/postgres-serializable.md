@@ -204,9 +204,31 @@ to if `READ COMMITTED` had been used.
 
 ## Strict two-phase locking (S2PL) (#strict-two-phase-locking)
 
-Strict two-phase locking (S2PL) 
+Before SSI, a common method to implement `SERIALIZABLE` was
+strict two-phase locking (S2PL). Under this system,
+transactions acquire a shared lock data before reading it,
+and an exclusive lock before writing it. Acquiring locks
+and writing data is the "first phase" suggested by the
+name. After all the necessary locks have been acquired and
+data written, they're all released atomically and the
+transaction commits. That's phase two.
+
+This is a costly implementation because transactions have
+to block on each other waiting for locks to be released. It
+also introduces the possibility of deadlocks as two
+transactions each acquire their own lock and then try to
+wait on the lock acquired by the other. This inefficiency
+was an incentive that would lead to the design of SSI.
 
 ## Serializable snapshot isolation (SSI) (#ssi)
+
+Cahill's paper builds on previous work in the field and
+defines the basic building block of an interdependency
+between transactions as an **rw-dependency**. An
+rw-dependecy occurs between `tx1` and `tx2` if `tx2` writes
+data after `tx1` has read it.
+
+### Tracking dangerous structures (#dangerous-structures)
 
 ## Implementation in Postgres (#postgres)
 

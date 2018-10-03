@@ -33,7 +33,7 @@ more subtle limitations that make bounding the maximum
 number of processes a good idea. The Postmaster and its
 backend processes use shared memory for communication and
 certain parts of that shared memory are global bottlenecks.
-For example, here's a structure that tracks every ongoing
+For example, here's the structure that tracks every ongoing
 process and transaction:
 
 ``` c
@@ -48,12 +48,30 @@ typedef struct PROC_HDR
 }
 ```
 
-Some bookkeeping operations in any backend require walking
-the entire list of processes or transactions meaning that
-within any given backend, performance is proportional to
-the total number of active backends.
+Some bookkeeping operations in any backend requires walking
+the entire list of processes or transactions. For example,
+adding a new process to the proc array:
 
-(For example.)
+``` c
+void
+ProcArrayAdd(PGPROC *proc)
+{
+    ProcArrayStruct *arrayP = procArray;
+    int            index;
+
+    LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
+
+    ...
+}
+```
+
+What that means is that within any given backend,
+performance is somewhat proportional to the number of all
+backends. Here's a simple benchmark I ran that shows the
+performance of a basic transactions degrading as we
+increase the number of active clients:
+
+TODO: Chart.
 
 The approach of the different Postgres cloud provides when
 it comes to maximum connections varies. Google's GCP and
@@ -65,7 +83,7 @@ connection limit, users are likely to start hitting
 performance bottlenecks that will force them to throttle
 back on their connection count anyway.
 
-## The connection pool (#connection-pool)
+## Connection pools (#connection-pool)
 
 ## Minimum viable checkouts (#mvc)
 
