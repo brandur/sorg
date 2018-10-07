@@ -16,19 +16,26 @@ import (
 // Slide represents a slide within a talk.
 type Slide struct {
 	// CaptionRaw is a caption for the slide, in rendered HTML.
-	Caption string `yaml:"-"`
+	Caption string
 
 	// CaptionRaw is a caption for the slide, in Markdown.
-	CaptionRaw string `yaml:"caption"`
+	CaptionRaw string
 
 	// ImagePath is the path to the image asset for this slide. It's generated
 	// from a combination of the talk's slug, slide's number, and whether the
 	// slide is detected to be in JPG or PNG.
-	ImagePath string `yaml:"-"`
+	ImagePath string
+
+	// PresenterNotesRaw are the presenter notest for the slide, in rendered
+	// HTML.
+	PresenterNotes string
+
+	// PresenterNotesRaw are the presenter notest for the slide, in Markdown.
+	PresenterNotesRaw string
 
 	// Number is the order number of the slide in string format and padded with
 	// leading zeros.
-	Number string `yaml:"-"`
+	Number string
 }
 
 // Talk represents a single talk.
@@ -43,7 +50,7 @@ type Talk struct {
 	Intro string `yaml:"-"`
 
 	// IntroRaw is an introduction for the talk, in Markdown.
-	IntroRaw string `yaml:"intro"`
+	IntroRaw string `yaml:"-"`
 
 	// Location is the city where the talk was originally given.
 	Location string `yaml:"location"`
@@ -52,7 +59,7 @@ type Talk struct {
 	PublishedAt *time.Time `yaml:"published_at"`
 
 	// Slides is the collection of slides that are part of the talk.
-	Slides []*Slide `yaml:"slides"`
+	Slides []*Slide `yaml:"-"`
 
 	// Slug is a unique identifier for the talk that also helps determine
 	// where it's addressable by URL.
@@ -84,22 +91,22 @@ func Compile(contentDir, dir, name string, draft bool) (*Talk, error) {
 		return nil, err
 	}
 
+	frontmatter, content, err := sorg.SplitFrontmatter(string(raw))
+	if err != nil {
+		return nil, err
+	}
+
 	var talk Talk
-	err = yaml.Unmarshal([]byte(raw), &talk)
+	err = yaml.Unmarshal([]byte(frontmatter), &talk)
 	if err != nil {
 		return nil, err
 	}
 
 	talk.Draft = draft
-	talk.Intro = renderMarkdown(talk.IntroRaw)
-	talk.Slug = strings.Replace(name, ".yaml", "", -1)
+	talk.Slug = strings.Replace(name, ".md", "", -1)
 
 	if talk.Event == "" {
 		return nil, fmt.Errorf("No event for talk: %v", inPath)
-	}
-
-	if talk.Intro == "" {
-		return nil, fmt.Errorf("No intro for talk: %v", inPath)
 	}
 
 	if talk.Location == "" {
@@ -114,25 +121,26 @@ func Compile(contentDir, dir, name string, draft bool) (*Talk, error) {
 		return nil, fmt.Errorf("No publish date for talk: %v", inPath)
 	}
 
-	talksAssetPath := "/assets/talks"
-	talksImageDir := path.Join(contentDir, "images", "talks")
+	talk.Slides, err = splitAndRenderSlides(contentDir, &talk, content)
+	if err != nil {
+		return nil, err
+	}
 
-	for i, slide := range talk.Slides {
-		slide.Caption = renderMarkdown(slide.CaptionRaw)
-		slide.Number = fmt.Sprintf("%03d", i+1)
+	// The preseneter notes for the first slide (the title slide) also serve as
+	// the intro for the entire talk. For convenience, set that content onto
+	// the talk's struct.
+	if len(talk.Slides) > 0 {
+		talk.Intro = talk.Slides[0].PresenterNotes
+		talk.IntroRaw = talk.Slides[0].PresenterNotesRaw
 
-		// Try PNG then fall back to JPG. If neither exists, error.
-		pngName := fmt.Sprintf("%s.%s.png", talk.Slug, slide.Number)
-		jpgName := fmt.Sprintf("%s.%s.jpg", talk.Slug, slide.Number)
+		// We also set those notes to empty so that the slide itself renders
+		// without them.
+		talk.Slides[0].PresenterNotes = ""
+		talk.Slides[0].PresenterNotesRaw = ""
+	}
 
-		if fileExists(path.Join(talksImageDir, talk.Slug, pngName)) {
-			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, pngName)
-		} else if fileExists(path.Join(talksImageDir, talk.Slug, jpgName)) {
-			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, jpgName)
-		} else {
-			return nil, fmt.Errorf("Couldn't find any image asset for slide %s / %s at %s",
-				pngName, jpgName, path.Join(talksImageDir, talk.Slug))
-		}
+	if talk.Intro == "" {
+		return nil, fmt.Errorf("No intro for talk: %v (provide one as the presenter notes of the first slide)", inPath)
 	}
 
 	return &talk, nil
@@ -156,4 +164,48 @@ func renderMarkdown(content string) string {
 		NoHeaderLinks:   true,
 		NoRetina:        true,
 	})
+}
+
+func splitAndRenderSlides(contentDir string, talk *Talk, content string) ([]*Slide, error) {
+	talksAssetPath := "/assets/talks"
+	talksImageDir := path.Join(contentDir, "images", "talks")
+
+	rawSlides := strings.Split(content, "---\n")
+	slides := make([]*Slide, len(rawSlides))
+
+	for i, rawSlide := range rawSlides {
+		slide := &Slide{}
+		slides[i] = slide
+
+		parts := strings.Split(rawSlide, "???\n")
+		rawCaption := parts[0]
+
+		var rawPresenterNotes string
+		if len(parts) > 1 {
+			rawPresenterNotes = parts[1]
+		}
+
+		slide.CaptionRaw = strings.TrimSpace(rawCaption)
+		slide.Caption = renderMarkdown(slide.CaptionRaw)
+
+		slide.PresenterNotesRaw = strings.TrimSpace(rawPresenterNotes)
+		slide.PresenterNotes = renderMarkdown(slide.PresenterNotesRaw)
+
+		slide.Number = fmt.Sprintf("%03d", i+1)
+
+		// Try PNG then fall back to JPG. If neither exists, error.
+		pngName := fmt.Sprintf("%s.%s.png", talk.Slug, slide.Number)
+		jpgName := fmt.Sprintf("%s.%s.jpg", talk.Slug, slide.Number)
+
+		if fileExists(path.Join(talksImageDir, talk.Slug, pngName)) {
+			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, pngName)
+		} else if fileExists(path.Join(talksImageDir, talk.Slug, jpgName)) {
+			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, jpgName)
+		} else {
+			return nil, fmt.Errorf("Couldn't find any image asset for slide %s / %s at %s",
+				pngName, jpgName, path.Join(talksImageDir, talk.Slug))
+		}
+	}
+
+	return slides, nil
 }

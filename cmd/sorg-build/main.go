@@ -1594,6 +1594,12 @@ func tasksForTalksDir(talkChan chan *talks.Talk, dir string, draft bool) ([]*poo
 			continue
 		}
 
+		// I may store dirty drafts and the like in here, so skip any
+		// non-Markdown files that we find.
+		if !strings.HasSuffix(talkInfo.Name(), ".md") {
+			continue
+		}
+
 		name := talkInfo.Name()
 		tasks = append(tasks, pool.NewTask(func() error {
 			talk, err := compileTalk(dir, name, draft)
