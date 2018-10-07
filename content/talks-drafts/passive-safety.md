@@ -14,6 +14,16 @@ This is a talk intro.
 
 ---
 
+Follow along: https://brandur.org/passive-safety
+
+Find me on Twitter: [@brandur](https://twitter.com/brandur)
+
+???
+
+I publish most of my work on this site or [Twitter](https://brandur.org/twitter).
+
+---
+
 # Abstractions
 
 Engineers need leverage to build reliable software more quickly.
