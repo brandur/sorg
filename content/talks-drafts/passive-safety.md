@@ -8,6 +8,8 @@ event: FakeConf
 
 # Designing Robust, Passively Safe Applications With Transactions
 
+<!-- Title slide. Content hidden. Speaker notes used as intro. -->
+
 ???
 
 This is a talk intro.

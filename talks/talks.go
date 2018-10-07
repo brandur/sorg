@@ -15,11 +15,11 @@ import (
 
 // Slide represents a slide within a talk.
 type Slide struct {
-	// CaptionRaw is a caption for the slide, in rendered HTML.
-	Caption string
+	// Content is content for the slide, in rendered HTML.
+	Content string
 
-	// CaptionRaw is a caption for the slide, in Markdown.
-	CaptionRaw string
+	// ContentRaw is content for the slide, in Markdown.
+	ContentRaw string
 
 	// ImagePath is the path to the image asset for this slide. It's generated
 	// from a combination of the talk's slug, slide's number, and whether the
@@ -178,15 +178,15 @@ func splitAndRenderSlides(contentDir string, talk *Talk, content string) ([]*Sli
 		slides[i] = slide
 
 		parts := strings.Split(rawSlide, "???\n")
-		rawCaption := parts[0]
+		rawContent := parts[0]
 
 		var rawPresenterNotes string
 		if len(parts) > 1 {
 			rawPresenterNotes = parts[1]
 		}
 
-		slide.CaptionRaw = strings.TrimSpace(rawCaption)
-		slide.Caption = renderMarkdown(slide.CaptionRaw)
+		slide.ContentRaw = strings.TrimSpace(rawContent)
+		slide.Content = renderMarkdown(slide.ContentRaw)
 
 		slide.PresenterNotesRaw = strings.TrimSpace(rawPresenterNotes)
 		slide.PresenterNotes = renderMarkdown(slide.PresenterNotesRaw)

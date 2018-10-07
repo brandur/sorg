@@ -24,16 +24,16 @@ func TestCompile(t *testing.T) {
 	for i, slide := range talk.Slides {
 		if i == 0 {
 			// The first slide should have presenter notes (i.e., content
-			// trailing an `???`) because those get used as the talk's intro.
-			assert.NotEmpty(t, slide.PresenterNotesRaw)
+			// trailing an `???`), but we'll have moved them to `talk.Intro`
+			// and emptied their contents.
+			assert.Empty(t, slide.PresenterNotesRaw)
 		} else {
-			// And every other slide should have a caption because an empty one
-			// next to the slide's photo wouldn't look very good.
-			assert.NotEmpty(t, slide.CaptionRaw)
+			// All other slides should have presenter notes.
+			assert.NotEmpty(t, slide.PresenterNotesRaw)
 		}
 
-		if slide.CaptionRaw != "" {
-			assert.NotEmpty(t, slide.Caption)
+		if slide.ContentRaw != "" {
+			assert.NotEmpty(t, slide.Content)
 		}
 
 		if slide.PresenterNotesRaw != "" {
