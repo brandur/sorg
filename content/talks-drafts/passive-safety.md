@@ -88,43 +88,33 @@ Normally these sorts of failures would lead to broken state, but not so with tra
 
 # Map transactions to work
 
-It's useful to define a **work unit**: some discrete amount of work that maps nicely to a transaction.
-
-Might be an HTTP request being served or an async job being worked.
+Map transactions onto units of work in an application like HTTP requests or asynchronous jobs.
 
 TODO: Diagram of transaction mapped to work unit.
 
+???
+
+Generally a good way to do this is to map transactions onto units of work in your application that are meant to execute atomically. For example, that might be an HTTP request in a web service where we'd begin a transaction when the request started processing and commit the transaction when we're ready to send the result back to the client. A unit of work can also be something like an synchronous executing job.
+
+The transaction guarantees safety for the duration of the work unit. If we get halfway through serving an HTTP request and realize that the client has disconnected, we abort the transaction and roll back its results. Our data's consistency is safe.
+
 ---
 
-# x
+# Foreign mutations and leaking state
 
-TODO: The transaction guarantees safety along this dimension.
+Watch for breaches in state encapsulation where a work unit manipulates state outside of the local database.
 
----
+e.g. Charging a credit card through Stripe. Provisioning a server with AWS.
 
-# Foreign mutations
-
-Watch for breaches in state encapsulation where state is manipulated that's external to your datastore.
+The database can roll back local changes, but leaves foreign state orphaned.
 
 TODO: Diagram of transaction with foreign state mutation partway.
 
----
+???
 
-# Leaking state
+The simple technique of mapping transactions to units of work works well in most cases, but it breaks down in cases where we start to manipulate non-local state that lives outside of our database. For example, during the lifetime of our HTTP request we might want to charge a user's credit card through Stripe, or provision a new server with AWS.
 
-With foreign state mutations, transactions can no longer guarantee safety.
-
-Local changes are discarded on a rollback, but foreign changes persist. State and resources are leaked.
-
-e.g. A financial transaction executed against Stripe, or server provisioned against AWS.
-
----
-
-# Design atomic phases
-
-We're not going to throw transactions out, but we do need to be more careful with them.
-
-Identify foreign mutations. Wrap operations between them in transactions. These are **atomic phases**.
+If the request fails, the transaction of course can only roll back our local changes, and any foreign state we mutated continues to exist. This is made even worse because if we did persist some information about the foreign state we changed, that information is rolled back along with the rest of the transaction. That foreign state is now orphaned, and that might mean we execute a costly operation like charging a user or provisioning a server and now know nothing about.
 
 ---
 
@@ -133,6 +123,20 @@ Identify foreign mutations. Wrap operations between them in transactions. These 
 At the end of atomic phases, checkpoint what's happened so far, and save properties of the outgoing foreign mutation.
 
 Use idempotency primitives of those foreign APIs like **idempotency keys**. These ensure that we don't do double work
+
+???
+
+The first thing we need to do to solve this problem is to introduce idempotency, which we'll want in both our own service and any foreign services that we're calling out to. With idempotency clients can make the same call any number of times and be guaranteed the same result. If we're creating a charge through Stripe, only one charge will ever be created. If we're provisioning a server, only one server will ever be provisioned.
+
+Idempotency is normally achieved through the use of an **idempotency key**, which is a random string with enough entropy to uniquely identify a request, and which we'll hand off to foreign services as we're making changes. The naming of this idea can vary. With Stripe it's called an `Idempotency-Key` and sent in via a header. With Amazon, it's called a `ClientToken` and sent via a query parameter.
+
+---
+
+# Design atomic phases
+
+We're not going to throw transactions out, but we do need to be more careful with them.
+
+Identify foreign mutations. Wrap operations between them in transactions. These are **atomic phases**.
 
 ---
 
@@ -147,3 +151,5 @@ When retrying a work unit on the server, skip what's already been done. Reuse id
 ---
 
 # Passive safety
+
+<!-- vim: set tw=9999: -->

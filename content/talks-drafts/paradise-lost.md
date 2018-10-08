@@ -84,6 +84,4 @@ erat arcu a purus. Integer purus ligula, ornare vitae mollis consequat,
 finibus quis dolor. Praesent sit amet molestie enim. Nunc ultricies sem
 quis convallis efficitur. Proin a ornare sem.
 
-<!--
-# vim: set tw=9999:
--->
+<!-- vim: set tw=9999: -->
