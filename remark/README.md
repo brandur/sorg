@@ -4,9 +4,9 @@ Allows easy prototyping of new talks using [Remark][remark].
 
 Run:
 
-    python3 -m http.server
+    python3 -m http.server 8091
 
-Then open: http://localhost:8000/
+Then open: http://localhost:8091/
 
 ## Development
 
