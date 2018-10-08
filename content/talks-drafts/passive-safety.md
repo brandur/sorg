@@ -6,6 +6,8 @@ location: San Francisco
 event: FakeConf
 ---
 
+class: middle
+
 # Designing Robust, Passively Safe Applications With Transactions
 
 <!-- Title slide. Content hidden. Speaker notes used as intro. -->
@@ -16,9 +18,13 @@ This is a talk intro.
 
 ---
 
-Follow along: https://brandur.org/passive-safety
+class: middle
 
-Find me on Twitter: [@brandur](https://twitter.com/brandur)
+Follow along:<br>
+https://brandur.org/passive-safety
+
+Find me on Twitter:<br>
+[@brandur](https://twitter.com/brandur)
 
 ???
 

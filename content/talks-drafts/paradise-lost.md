@@ -6,6 +6,8 @@ location: San Francisco
 event: FakeConf
 ---
 
+class: middle
+
 # Paradise Lost
 
 <!-- Title slide. Content hidden. Speaker notes used as intro. -->
@@ -24,12 +26,22 @@ efficitur. Proin a ornare sem.
 
 ---
 
+class: middle
+
+Follow along:<br>
+https://brandur.org/paradise-lost
+
+Find me on Twitter:<br>
+[@brandur](https://twitter.com/brandur)
+
 ???
 
 I publish most of my work on this site or
 [Twitter](https://brandur.org/twitter).
 
 ---
+
+background-image: url(./raws/talks/paradise-lost/mongo-ad-censored.jpg)
 
 ???
 
