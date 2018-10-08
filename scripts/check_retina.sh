@@ -23,6 +23,10 @@ allowed_exceptions=(
     "./content/images/standin_04.jpg"
     "./content/images/standin_portrait_00.jpg"
     "./content/images/talks/standin_00.png"
+
+    # Raws.
+    "./content/raws/talks/paradise-lost/mongo-ad-censored.jpg"
+    "./content/raws/talks/paradise-lost/mongo-ad.jpg"
 )
 
 find_images() {
