@@ -16,6 +16,8 @@ class: middle
 
 This is a talk intro.
 
+This talk was delivered as a 5-minute lightning talk and is by necessity light on detail. You can read about these ideas in greater depth in this article about [implementing Stripe-like idempotency keys in Postgres](/idempotency-keys).
+
 ---
 
 class: middle
