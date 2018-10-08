@@ -118,11 +118,13 @@ If the request fails, the transaction of course can only roll back our local cha
 
 ---
 
-# Mutate idempotently
+# Mutate foreign state idempotently
 
-At the end of atomic phases, checkpoint what's happened so far, and save properties of the outgoing foreign mutation.
+Idempotency: Execute any number of times to produce the same result.
 
-Use idempotency primitives of those foreign APIs like **idempotency keys**. These ensure that we don't do double work
+e.g. Create only one charge on Stripe. Provision only one server through AWS.
+
+An **idempotency key** uniquely identifies a request. Naming can vary: `Idempotency-Key` in Stripe, `ClientToken` in AWS.
 
 ???
 
@@ -134,22 +136,58 @@ Idempotency is normally achieved through the use of an **idempotency key**, whic
 
 # Design atomic phases
 
-We're not going to throw transactions out, but we do need to be more careful with them.
+Always use idempotency keys when executing foreign mutations.
 
-Identify foreign mutations. Wrap operations between them in transactions. These are **atomic phases**.
+Work between foreign mutations are **atomic phases** that are safe to group into transactions. Store idempotency keys and parameters of foreign mutations as part of the previous atomic phase.
+
+If the work unit subsequently fails, we roll back to where our last atomic phase committed. Foreign state is no longer orphaned.
+
+???
+
+So let's get back to ensuring safety with transactions even with foreign state mutations. When designing our units of work we need to identify any places where we're mutating foreign state, and making sure that we're sending an idempotency key out with those requests.
+
+These foreign state mutations are our transactional boundaries. We can define all work between them as **atomic phases** and any number of database operations that take place there are safe to wrap in a transaction. Before executing any foreign state change we commit any data produced in the atomic phase so far along with information about the request we're about to make including the idempotency key and any parameters.
+
+Now if that request were to fail we will not have lost track of it in our local database. We will have information on the charge that we tried to create through Stripe or the server we tried to provision through AWS. This applies for for all subsequent parts of the request as well. Our next atomic phase could fail and roll back, but we're still left with the committed results of the first one.
 
 ---
 
-# Coverge on consistency
+# Converging consistency
 
-Have clients retry requests.
+Even some committed atomic phases might leave the entire work unit only partially complete.
 
-Use a backoff schedule. First retry should be soon to protect against intermittent network problems. Last retry should be much later to hedge against hard down services or application bugs that take time to fix.
+Our own services should be idempotent, with clients retrying requests to push work to completion.
 
-When retrying a work unit on the server, skip what's already been done. Reuse idempotency keys.
+Use exponential backoff schedules. First retry should be soon in case a failure was just an intermittent network problem. Last retry should be much later in case a failure was an application bug that takes time to find and fix.
+
+???
+
+Now although introducing atomic phases has given us a little extra assurance that we won't lose track of anything, a unit of work that's left only partially completed will still leave us in an undesirable state.
+
+This is where idempotency comes into play for our own service. We should provide our own version of an idempotency key so that our own clients can continue retrying a request until it's been fully executed to satisfaction. The first try might only complete a single atomic phase before a failure, but subsequent retries will continue to push the work unit forward until all phases have completed successfully.
+
+We'd normally recommend an exponential backoff schedule to protect against many types of failure. After a failed request the first retry should come quite quickly because there's a decent likelihood that the failure was the result of an intermittent network problem. The last retry should be hours or days later in case the failure was due to an application bug that will take time for engineers to find and remediate.
+
+The same idea applies to other types of work units like background jobs as well. For a background job we'd probably want an automatic retry schedule built in.
 
 ---
 
-# Passive safety
+# Cultivate passive safety
+
+Wrap work units in transactions.
+
+For more complex operations, use transactions for spans that we know to be safe. Use idempotency keys for foreign mutations.
+
+Work towards **passive safety**: largely guaranteed consistency with little operator effort.
+
+???
+
+To recap, the database transaction is a powerful abstraction, and we like powerful abstractions.
+
+Wrap units of application work into transactions for an easy way to protect the consistency of your data.
+
+For more complex operations, use transactions along spans that we know to be safe. Use idempotency keys when talking to foreign services and make sure to commit that state before talking to one so that we don't lose track of it.
+
+These steps go a long way towards ensuring a form of **passive safety** which means that consistency is largely guaranteed with very little effort on the part of a system's maintainers, and that frees up their time so that they can do more useful things.
 
 <!-- vim: set tw=9999: -->
