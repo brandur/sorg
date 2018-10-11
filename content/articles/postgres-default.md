@@ -108,13 +108,14 @@ consuming.
 
 ## Why bother with non-null anyway? (#why-bother)
 
-One of the biggest reasons to prefer relational databases over
-document stores and other less sophisticated storage
-technology is data integrity. Columns are strongly typed
-with the likes of `INT`, `DECIMAL`, or `TIMESTAMPTZ`.
-Values are constrained with `NOT NULL`, `VARCHAR` (length),
-or [`CHECK` constraints][check]. Foreign key constraints
-guarantee [referential integrity][referential].
+One of the biggest reasons to prefer relational databases
+over document stores, key/value stores, and other less
+sophisticated storage technology is data integrity. Columns
+are strongly typed with the likes of `INT`, `DECIMAL`, or
+`TIMESTAMPTZ`. Values are constrained with `NOT NULL`,
+`VARCHAR` (length), or [`CHECK` constraints][check].
+Foreign key constraints guarantee [referential
+integrity][referential].
 
 With a good schema design you can rest assured that your
 data is in a high quality state because the very database
