@@ -25,7 +25,7 @@ notifications:
     on_success: never
 
 install:
-  - go get -u github.com/golang/lint/golint
+  - go get -u golang.org/x/lint/golint
   - pip install --user awscli
 
 before_script:
