@@ -24,6 +24,14 @@ no resource that did a very good job of collating the key
 ideas in one place, so I've taken a short break from my
 usual content to put this one together.
 
+## What is raw denim? (#raw)
+
+> These mean the same thing. The denim was not factory washed, and sometimes not singed which leaves the denim looking "hairy". The dye is generally dark and even, so that you can fade them yourself. The jeans probably contain some amount of starch that will rinse off in the wash and soften over time. This is to keep it rigid so that creases set in and make cool fades.
+
+> Sanforized jeans (most jeans) will not shrink a crazy amount in the wash. They'll lose maybe 1" or 1.5" in the waist and inseam.
+
+Many modern jeans also contain plastics.
+
 ## An overly brief history (#history)
 
 Jacob W. Davis invented the precursor to blue jeans that we
@@ -49,8 +57,8 @@ Co.
 Blue jeans spread east across the country, beyond labourers
 and up into the middle class, and migrated across oceans.
 Today, jeans are the garment of choice throughout the
-world, with over a billion sold every year, and popular in
-every country on Earth.
+world, with over a billion sold every year, and about 50%
+of humanity wearing them on any given day.
 
 ### Japan (#japan)
 
@@ -81,11 +89,7 @@ https://www.kaufmann-mercantile.com/field-notes/post/6030/denim
 
 ## The properties of denim (#properties)
 
-### Raw (dry) denim (#raw)
-
-> These mean the same thing. The denim was not factory washed, and sometimes not singed which leaves the denim looking "hairy". The dye is generally dark and even, so that you can fade them yourself. The jeans probably contain some amount of starch that will rinse off in the wash and soften over time. This is to keep it rigid so that creases set in and make cool fades.
-
-> Sanforized jeans (most jeans) will not shrink a crazy amount in the wash. They'll lose maybe 1" or 1.5" in the waist and inseam.
+### Fading (#fading)
 
 > Honeycombs: These are the creases behind your knees. They can get some great contrast with raw denim.
 
