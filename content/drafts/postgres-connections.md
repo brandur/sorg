@@ -29,7 +29,7 @@ connection limit, users are likely to start hitting
 performance bottlenecks that will force them to throttle
 back on their connection count anyway.
 
-## The limits of concurrency (#concurrency-limits)
+## The practical limits of database concurrency (#concurrency-limits)
 
 There are a number of factors that limit the number of
 active connections in Postgres. The most direct constraint,
@@ -105,14 +105,30 @@ very big machines, they're really trying to help you.
 Performance isn't reliable once a Postgres system is scaled
 up to huge numbers of connections.
 
+One you start brushing up against a big connection limit
+like 500, the right answer probably isn't to increase it --
+it's to re-evaluate how you're using connections and try to
+manage them more efficiently. Let's take a look at a few
+techniques for doing so.
+
 ## Connection pools (#connection-pool)
+
+TODO: Diagram of per-node connection pools pointing back to
+
+This is usually a bigger problem for applications that rely
+on forking process for concurrency. In Rails for example,
+Active Record bakes in the idea of a connection pool, but
+it's of course only effective within the same process so
+only a threaded server can really take advantage of it. To
+work around Ruby's properties when it comes to parallelism,
+Ruby workers are often deployed across processes using
+something like Unicorn or Puma. Each process get its own
+connection pool, and sharing becomes much less efficient.
 
 ## Minimum viable checkouts (#mvc)
 
-## In application (#applications)
-
-Use a transaction pool. Check connections out for the
-minimum amount of time needed, then check them back in.
+Check connections out for the minimum amount of time
+needed, then check them back in.
 
 TODO: Diagram of connection checkout lifetime over request.
 
@@ -122,8 +138,6 @@ rate limiting, ... After: metrics emission, serialize
 response, send response back to user (it's silly to keep a
 connection checked out while waiting on this long-lived I/O
 to complete)
-
-TODO: Diagram of per-node connection pools pointing back to
 the database.
 
 ## PgBouncer & inter-node pooling (#pgbouncer)
