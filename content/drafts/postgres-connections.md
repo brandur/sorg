@@ -1,5 +1,5 @@
 ---
-title: How to Manage Connections in Postgres (or Any Database)
+title: How to Manage Connections Efficiently in Postgres, or Any Database
 published_at: 2018-09-25T16:12:19Z
 location: San Francisco
 hook: TODO
@@ -33,12 +33,12 @@ back on their connection count anyway.
 
 There are a number of factors that limit the number of
 active connections in Postgres. The most direct constraint,
-but also probably the least important, is memory. Postgres
-is designed around a process model where a central
-Postmaster accepts incoming connections and forks child
-processes to handle them. Each of these "backend" processes
-starts out at around 5 MB in size, but will grow to be much
-larger depending on the data they're accessing.
+but also the least important, is memory. Postgres is
+designed around a process model where a central Postmaster
+accepts incoming connections and forks child processes to
+handle them. Each of these "backend" processes starts out
+at around 5 MB in size, but will grow to be much larger
+depending on the data they're accessing.
 
 TODO: Postmaster diagram.
 
