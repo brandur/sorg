@@ -38,15 +38,15 @@ I publish most of my work on this site or [Twitter](https://brandur.org/twitter)
 
 # Abstractions
 
-Engineers need leverage to build reliable software more quickly.
+**Abstractions** do something complicated and present an easy-to-use interface.
 
-Good **abstractions** are leverage -- they do something complicated while presenting an easy-to-use interface.
+Abstractions are leverage to help engineers build more reliable software more quickly.
 
 Some great abstractions: files, threads, libc memory management, TCP in your OS.
 
 ???
 
-As engineers, we should always be looking to gain leverage to help us build reliable software more quickly. One pattern for leverage are abstractions -- building blocks that do something quite complicated, and present a comparatively easy-to-use interface.
+As engineers, we should always be looking to gain leverage to help us build reliable software more quickly. One pattern for leverage are abstractions -- building blocks that do something complicated, and present a comparatively easy-to-use interface.
 
 We've all seen bad abstractions that are too complex or do too little, and end up costing more than they're worth. But if we think about the computing stack that we use every day, there are many successful abstractions that work *very* well: files, threads, libc memory management, or TCP.
 
@@ -56,7 +56,7 @@ We've all seen bad abstractions that are too complex or do too little, and end u
 
 Databases provide abstractions. **Transactions** are amongst the most powerful of them.
 
-ACID: atomic commit and rollback, definitive data consistency, isolation from concurrent operations, and guranteed persistence.
+ACID properties: atomic commit and rollback, definitive data consistency, isolation from concurrent operations, and guaranteed persistence.
 
 ``` sql
 BEGIN TRANSACTION;
@@ -78,7 +78,7 @@ Transactions give us incredibly strong guarantees for manipulating data, guarant
 
 # Application safety
 
-Process enough volume for long enough and edge cases appear: application bugs, network connectivity problems, client disconnects, process crashes, out-of-memory, etc.
+Unhappy edge cases: application bugs, network connectivity problems, client disconnects, process crashes, out-of-memory, etc.
 
 TODO: Diagram of benign failures along a transaction.
 
@@ -92,7 +92,9 @@ Without transactions these sorts of failures would lead to broken state, but wit
 
 # Map transactions to work
 
-Map transactions onto units of work in an application like HTTP requests or asynchronous jobs.
+Map transactions onto **work units** in an application.
+
+e.g. HTTP requests. Asynchronous jobs.
 
 TODO: Diagram of transaction mapped to work unit.
 
@@ -106,7 +108,7 @@ The transaction guarantees safety for the duration of the work unit. If we get h
 
 # Foreign mutations and leaking state
 
-Watch for breaches in state encapsulation where a work unit manipulates state outside of the local database.
+Watch for breaches in state encapsulation where a work unit mutates foreign state beyond the local database.
 
 e.g. Charging a credit card through Stripe. Provisioning a server with AWS.
 
@@ -130,7 +132,7 @@ Idempotency: Execute any number of times to produce the same result.
 
 e.g. Create only one charge on Stripe. Provision only one server through AWS.
 
-An **idempotency key** uniquely identifies a request. Naming can vary: `Idempotency-Key` in Stripe, `ClientToken` in AWS.
+**Idempotency key:** A client-transmitted uniquely identifies a request. Naming can vary: `Idempotency-Key` in Stripe, `ClientToken` in AWS.
 
 ???
 
@@ -146,9 +148,11 @@ The naming and implementation of this concept varies. With Stripe, these tokens 
 
 Always use idempotency keys when executing foreign mutations.
 
-Work between foreign mutations are **atomic phases** that are safe to group into transactions. Store idempotency keys and parameters of foreign mutations as part of the previous atomic phase.
+**Atomic phases:** Work between foreign mutations which is safe to wrap in transactions. Store idempotency keys and parameters of foreign mutations as part of the previous atomic phase.
 
-If the work unit subsequently fails, we roll back to where our last atomic phase committed. Foreign state is no longer orphaned.
+If work fails, roll back to where the last atomic phase committed. Foreign state is not orphaned.
+
+**TODO:** Diagram of atomic phases.
 
 ???
 
@@ -164,11 +168,11 @@ Now if the request fails, we still have a local record of it. This applies to su
 
 # Converging consistency
 
-Even some committed atomic phases might leave the entire work unit only partially complete.
+Even some committed atomic phases leaves the entirety of the work unit only partially complete.
 
-Our own services should be idempotent, with clients retrying requests to push work to completion.
+Our own services should be idempotent. Clients retry requests to push work to completion.
 
-Use exponential backoff schedules. First retry should be soon in case a failure was just an intermittent network problem. Last retry should be much later in case a failure was an application bug that takes time to find and fix.
+Use exponential backoff. First retry should be soon in case a failure was just an intermittent network problem. Last retry should be much later in case a failure was an application bug that takes time to find and fix.
 
 ???
 
@@ -184,9 +188,9 @@ Clients should use exponential backoff to protect against a variety of failure m
 
 Wrap work units in transactions.
 
-For more complex operations, use transactions for spans that we know to be safe. Use idempotency keys for foreign mutations.
+For more complex operations, use transactions around spans that we know to be safe. Use idempotency keys for foreign mutations.
 
-Work towards **passive safety**: largely guaranteed consistency with little operator effort.
+Cultivate **passive safety**: largely guaranteed consistency with little operator effort.
 
 ???
 
@@ -196,6 +200,6 @@ Wrap units of application work into transactions for an easy way to protect the 
 
 For more complex operations, use transactions along spans that we know to be safe. Use idempotency keys when talking to foreign services and make sure to commit state before doing so so that it's not lost.
 
-These steps go a long way towards ensuring **passive safety** which means that consistency is largely guaranteed with little effort on the part of a system's maintainers. That frees up their time to work on more useful things.
+These steps go a long way towards ensuring **passive safety** which means that consistency is largely guaranteed with little effort on the part of a system's operators. That frees up their time to work on more useful things.
 
 <!-- vim: set tw=9999: -->
