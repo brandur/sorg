@@ -8,7 +8,9 @@ event: FakeConf
 
 class: middle
 
-# Designing Robust, Passively Safe Applications With Transactions
+# Passive Safety
+
+## Designing robust, passively safe applications with transactions
 
 <!-- Title slide. Content hidden. Speaker notes used as intro. -->
 
@@ -174,7 +176,7 @@ Now although atomic phases give us assurance that we won't lose track of anythin
 
 This is where idempotency comes into play for our own application. We should provide our own version of idempotency so that our clients can continue retrying requests until they're fully executed to satisfaction. An initial try might fail after only a single atomic phase completed, but subsequent retries push the work unit forward until all phases are complete.
 
-Clients should use exponential backoff to protect against a variety of failure modes. The first retry should come quickly because there's a good chance the failure was the result of an intermittent problem like a network hiccup. The last retry should be hours or even days later in the case the failure was caused by an application bug that will take time to find an remediate.
+Clients should use exponential backoff to protect against a variety of failure modes. The first retry should come quickly because there's a good chance the failure was the result of an intermittent problem like a network hiccup. The last retry should be hours or even days later in the case the failure was caused by an application bug that will take time to find and remediate.
 
 ---
 
@@ -194,6 +196,6 @@ Wrap units of application work into transactions for an easy way to protect the 
 
 For more complex operations, use transactions along spans that we know to be safe. Use idempotency keys when talking to foreign services and make sure to commit state before doing so so that it's not lost.
 
-These steps go a long way towards ensuring a form of **passive safety** which means that consistency is largely guaranteed with little effort on the part of a system's maintainers. That frees up their time to work on more useful things.
+These steps go a long way towards ensuring **passive safety** which means that consistency is largely guaranteed with little effort on the part of a system's maintainers. That frees up their time to work on more useful things.
 
 <!-- vim: set tw=9999: -->
