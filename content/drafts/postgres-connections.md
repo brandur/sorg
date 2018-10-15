@@ -2,22 +2,25 @@
 title: How to Manage Connections Efficiently in Postgres, or Any Database
 published_at: 2018-09-25T16:12:19Z
 location: San Francisco
-hook: TODO
+hook: Hitting the limit for maximum allowed connections is
+  a common operational problem in Postgres. Here we look at
+  a few techniques for managing connections and making
+  efficient use of those that are available.
 ---
 
 You start building your new project. You've heard good
 things about Postgres, so you choose it as your database.
-As advertised, it proves to be a very satisfying tool and
-your progress is good. You put your first version of the
-project into production and just like you'd hoped, things
-go smoothly as it also turns out to be well-suited for
-production use.
+As advertised, it proves to be a satisfying tool and
+progress is good. You put your project into production for
+the first time and like you'd hoped, things go smoothly as
+Postgres turns out to be well-suited for production use as
+well.
 
-The first few months go great and your traffic continues to
-ramp up when suddenly a deluge of failures appears. You dig
+The first few months go well and traffic continues to ramp
+up, when suddenly a big spike of failures appears. You dig
 into the cause and see that your application is failing to
-open connections to its database. You check your logs and
-find this littered throughout:
+open database connections. You find this chilling artifact
+littered throughout your logs:
 
 ```
 FATAL: remaining connection slots are reserved for
@@ -25,27 +28,29 @@ non-replication superuser connections
 ```
 
 This is one of the first major operational problems that
-users are likely to encounter with Postgres, and one that
-might continue to be frustratingly persistent. The database
-is indicating that its total number of connection slots are
-limited, and that the limit has been by connections that
-are already open. The ceiling is controlled by the
-`max_connections` key in configuration, which defaults to
-100.
+new users are likely to encounter with Postgres, and one
+that might prove to be frustratingly persistent. Like the
+error suggests, the database is indicating that its total
+number of connection slots are limited, and that the limit
+has been reached.
 
-Almost every cloud Postgres provider like Google Cloud
-Platform or Heroku limit the number pretty carefully, with
-the largest databases topping out at 500 connections and
-the smaller ones at 20 or 25.
+The ceiling is controlled by the `max_connections` key in
+Postgres' configuration, which defaults to 100. Almost
+every cloud Postgres provider like Google Cloud Platform or
+Heroku limit the number pretty carefully, with the largest
+databases topping out at 500 connections, and the smaller
+ones at much lower numbers like 20 or 25.
 
 At first sight this might seem a little counterintuitive.
-If connection limits are a known problem, why not just
-configure the biggest number possible? It turns out that
-there are a number of factors that will limit the maximum
-number of connections that are practically possible; some
-obvious, and some more subtle. Let's take a closer look.
+If the connection limit is a known problem, why not just
+configure a huge maximum to avoid it? As with many things
+in computing, the solution isn't as simple as it might seem
+at first glance, and there are a number of factors that
+will limit the maximum number of connections that it's
+practical to have; some obvious, and some not. Let's take a
+closer look.
 
-## The practical limits of database concurrency (#concurrency-limits)
+## The practical limits of concurrency (#concurrency-limits)
 
 The most direct constraint, but also probably the least
 important, is memory. Postgres is designed around a process
@@ -57,13 +62,13 @@ they're accessing.
 
 !fig src="/assets/postgres-connections/process-model.svg" caption="A simplified view of Postgres' forking process model."
 
-But these days it's pretty easy to procure a system where
-memory is abundant, so usually memory isn't a main limiting
-factor. A more subtle one is that the Postmaster and its
-backend processes use shared memory for communication, and
-parts of that shared space are global bottlenecks. For
-example, here's the structure that tracks every ongoing
-process and transaction:
+But since these days it's pretty easy to procure a system
+where memory is abundant, the absolute memory ceiling often
+isn't a main limiting factor. A more subtle one is that the
+Postmaster and its backend processes use shared memory for
+communication, and parts of that shared space are global
+bottlenecks. For example, here's the structure that tracks
+every ongoing process and transaction:
 
 ``` c
 typedef struct PROC_HDR
@@ -75,6 +80,8 @@ typedef struct PROC_HDR
 
     ...
 }
+
+extern PGDLLIMPORT PROC_HDR *ProcGlobal;
 ```
 
 Operations that might happen in any backend requires
@@ -96,8 +103,8 @@ ProcArrayAdd(PGPROC *proc)
 ```
 
 There are a few such bottlenecks throughout Postgres, and
-this is of course in addition to the contention you'd
-expect to find around normal system resources like I/O or
+they are of course in addition to the normal contention
+you'd expect to find around system resources like I/O or
 CPU.
 
 The cumulative effect is that within any given backend,
@@ -121,64 +128,58 @@ Performance in Postgres isn't reliable when it's scaled up
 to huge numbers of connections. Once you start brushing up
 against a big connection limit like 500, the right answer
 probably isn't to increase it -- it's to re-evaluate how
-they're being used to and try to manage them more
-efficiently.
+those connections are being used to and try to manage them
+more efficiently.
 
 ## Techniques for efficient connection use (#techniques)
 
 ### Connection pools (#connection-pool)
 
-A connection pool is a cache of database connections
+A connection pool is a cache of database connections,
 usually local to a specific process. It's main advantage is
 improved performance -- there's a certain amount of
-overhead implicit to opening a new database connection both
-on the client and the server. By checking a connection back
-into a connection pool instead of discarding it after
-finishing with it, that connection can be reused the next
-time one is needed. Connection pooling is built into many
-database adapters including Go's
+overhead inherent to opening a new database connection in
+both the client and the server. After finishing with a
+connection, by checking it back into a pool instead of
+discarding it, the connection can be reused next time one
+is needed within the application. Connection pooling is
+built into many database adapters including Go's
 [`database/sql`][databasesql], Java's [JDBC][jdbc], or
 Active Record in Ruby.
 
 !fig src="/assets/postgres-connections/connection-pooling.svg" caption="A deployment with a number of nodes, each of which maintains a local pool of connections for their workers to use."
 
-Another reason to use a connection pool is to help manage
-connections more efficiently. They allow a maximum number
-of connections to be configured for any particular node
-which makes the total number of connections that you can
-expect your deployment to use deterministic. Those
-connections local to each node can also be shared by a much
-larger number of total service processes. Applications
-should be written so that they only acquire a connection
-when they're serving a request, so idle processes don't
-need to hold a connection at all.
+Connection pools also help manage connections more
+efficiently. They're configured with a maximum number of
+connections that the pool can hold which makes the total
+number of connections that you can expect a single deployed
+node to use deterministic. By writing application workers
+to only acquire a connection when they're serving a
+request, those per-node pools of connections can be shared
+between a much larger pool of workers.
 
 A limitation of connection pools is that they're usually
-only effective within a single process. Rails implements a
-connection pool in Active Record, but because Ruby isn't
-capable true parallelism it's common to use forking servers
-like Unicorn or Puma which makes a connection pool much
-less effective because each process will need to maintain
-its own [2]. Python's situation is similar.
+only effective in languages that can be deployed within a
+single process. Rails implements a connection pool in
+Active Record, but because Ruby isn't capable of real
+parallelism, it's common to use forking servers like
+Unicorn or Puma. This makes those connection pools much
+less effective because each process needs to maintain its
+own [2].
 
 ### Minimum viable checkouts (#mvc)
 
-It's possible to have a number of database connections
-shared between a much larger pool of workers by making sure
-to carefully manage the amount of time workers have a
-connection checked out.
-
 For any given span of work, very often it's possible to
-identify a critical span in the middle where domain logic
-is being run, and where a database connection needs to be
-held. To take an HTTP request for example, there's usually
-a phase at the beginning where a worker is reading a
-request's body, decoding and validating its payload, and
+identify a critical span in the middle where core domain
+logic is being run, and where a database connection needs
+to be held. To take an HTTP request for example, there's
+usually a phase at the beginning where a worker is reading
+a request's body, decoding and validating its payload, and
 performing other peripheral operations like rate limiting
 before moving on to the application's core logic. After
 that logic is executed there's a similar phase at the end
 where it's serializing and sending the response, emitting
-metrics, performing logging, etc.
+metrics, performing logging, and so on.
 
 !fig src="/assets/postgres-connections/minimum-viable-checkout.svg" caption="Workers should only hold connections as long as they're needed. There's work before and after core application logic where no connection is needed."
 
@@ -186,34 +187,50 @@ Workers should only have a connection checked out of the
 pool while that core logic is executing. This **minimum
 viable checkout** technique maximizes the efficient use of
 connections by minimizing the amount of time any given
-worker holds one.
+worker holds one, allowing a pool of connections to be
+feasibly shared amongst a much larger pool of workers. Idle
+workers don't hold any connections at all.
+
+#### Releasing connections around foreign mutations (#foreign-mutations)
+
+I've written previously about breaking units of application
+work into [atomic phases][atomicphases] around where an
+application is making requests to foreign APIs. Utilization
+can be made even more efficient by making sure to release
+connections back to the pool while that slow network I/O is
+in flight (an application should not be in a transaction
+during while mutating foreign state anyway), and reacquire
+them afterwards.
 
 ### PgBouncer & inter-node pooling (#pgbouncer)
 
-Connection pools and minimum viable checkouts will get you
-a long way, but you still may reach a point where a hammer
-is needed. When an application is scaled out to many
-different nodes, connection pools can be used to maximize
-the efficiency of connections local to any given node, but
-can't do so between nodes. In most systems work should be
-distributed between nodes roughly equally, but because it's
-normal to use randomness to do that (through something like
-HAProxy or other load balancer), an equal distribution is
-by no means guaranteed.
+Connection pools and minimum viable checkouts will go a
+long way, but you may still reach a point where a hammer is
+needed. When an application is scaled out to many nodes,
+connection pools maximize the efficient use of connections
+local to any of them, but can't do so between nodes. In
+most systems work should be distributed between nodes
+roughly equally, but because it's normal to use randomness
+to do that (through something like HAProxy or other load
+balancer), and because work durations vary, an equal
+distribution of work across the whole cluster at any given
+isn't likely.
 
 If we have _N_ nodes and _M_ maximum connections per node,
 we may have a configuration where _N_ × _M_ is greater than
 the database's `max_connections` to protect against the
 case where a single node is handling an outsized amount of
-work. Because nodes aren't coordinating, if the whole
-cluster is running close to capacity, it's possible for a
-node trying to get a new connection to go over-limit and
-get an error back from Postgres.
+work and needs more connections. Because nodes aren't
+coordinating, if the whole cluster is running close to
+capacity, it's possible for a node trying to get a new
+connection to go over-limit and get an error back from
+Postgres.
 
 In this case it's possible to install
-[PgBouncer][pgbouncer] which acts as a global connection
-pool by proxying all connections to Postgres. It can be
-configured with different modes of operation:
+[PgBouncer][pgbouncer] to act as a global pool by proxying
+all connections through it to Postgres. It functions almost
+exactly like a connection pool and has a few modes of
+operation:
 
 * **Session pooling:** A connection is assigned when a
   client opens a connection and unassigned when the client
@@ -227,9 +244,10 @@ configured with different modes of operation:
   prepared statements.
 
 * **Statement pooling:** Connections are assigned only
-  around individual statements. But this only works if an
-  application gives up transactions, at which point it's
-  losing a big advantage of using Postgres.
+  around individual statements. This only works of course
+  if an application gives up the use of transactions, at
+  which point it's losing a big advantage of using
+  Postgres in the first place.
 
 !fig src="/assets/postgres-connections/pgbouncer.svg" caption="Using PgBouncer to maintain a global connection pool to optimize connection use across all nodes."
 
@@ -238,18 +256,19 @@ that are already making effective use of a node-local
 connection pool, and will allow such an application that's
 configured with an _N_ × _M_ greater than `max_connections`
 to closely approach the maximum possible theoretical
-utilization of available connections, and also to avoid
+utilization of available connections, and to also to avoid
 connection errors caused by going over-limit (although
 delaying requests while waiting for a connection to become
 available from PgBouncer is still possible).
 
-Unfortunately, probably the more common use of PgBouncer is
-to act as a node-local connection pool for applications
-that can't do a good job of implementing their own, like a
-Rails app deployed with Unicorn. Heroku provides a
-buildpack that deploys a per-dyno PgBouncer for example.
-It's better to use a more sophisticated technique if
-possible.
+Probably the more common use of PgBouncer is to act as a
+node-local connection pool for applications that can't do a
+good job of implementing their own, like a Rails app
+deployed with Unicorn. Heroku, for example, provides and
+recommends the use of a standardized buildpack that deploys
+a per-dyno PgBouncer to accomplish this. It's a handy tool
+to cover this case, but it's advisable to use a more
+sophisticated technique if possible.
 
 ## Connections as a resource (#resource)
 
@@ -260,12 +279,26 @@ might work for a time, but in the long run anyone
 deploying a large application on Postgres will have to
 understand what's happening or they're likely to run into
 trouble. It'll usually pay to understand them earlier so
-that applications can be smartly architected to maximize
+that applications can be architected smartly to maximize
 the efficient use of a scarce resource.
 
+Developers should be aware of how many connections each
+node can use, how many connections a cluster can use by
+multiplying that number of the number of nodes, and where
+that total sits relative to Postgres' `max_connections`.
+It's common to hit limits during a deploy because a
+graceful restart spins up new workers or nodes before
+shutting down old ones, so know expected connection numbers
+during deployments as well.
 
+Finally, although we've talked mostly about Postgres here,
+there will be practical bottlenecks like the ones described
+here in any database, so these techniques for managing
+connections should be widely portable.
 
-[1] My simple benchmark is far from rigorous. While it
+[1] Each transaction leaves its target table empty to avoid
+any loss in performance that might be caused by accumulated
+data. My simple benchmark is far from rigorous. While it
 measures degradation, it makes no attempt to identify what
 the core cause of that degradation is, whether it be locks
 in Postgres or just I/O. It's mostly designed to prove that
@@ -273,8 +306,9 @@ the degradation exists.
 
 [2] Threaded deployments in Ruby are possible, but because
 of Ruby's GIL (global interpreter lock), they'll be
-fundamentally slower than using a process model.
+fundamentally slower than using a forking process model.
 
+[atomicphases]: /idempotency-keys#atomic-phases
 [benchmark]: https://github.com/brandur/connections-test
 [databasesql]: https://godoc.org/database/sql
 [jdbc]: https://en.wikipedia.org/wiki/Java_Database_Connectivity
