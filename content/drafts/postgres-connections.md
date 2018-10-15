@@ -1,6 +1,6 @@
 ---
 title: How to Manage Connections Efficiently in Postgres, or Any Database
-published_at: 2018-09-25T16:12:19Z
+published_at: 2018-10-15T15:42:51Z
 location: San Francisco
 hook: Hitting the limit for maximum allowed connections is
   a common operational problem in Postgres. Here we look at
@@ -57,18 +57,19 @@ important, is memory. Postgres is designed around a process
 model where a central Postmaster accepts incoming
 connections and forks child processes to handle them. Each
 of these "backend" processes starts out at around 5 MB in
-size, but will grow to be much larger depending on the data
+size, but may grow to be much larger depending on the data
 they're accessing.
 
 !fig src="/assets/postgres-connections/process-model.svg" caption="A simplified view of Postgres' forking process model."
 
-But since these days it's pretty easy to procure a system
-where memory is abundant, the absolute memory ceiling often
-isn't a main limiting factor. A more subtle one is that the
-Postmaster and its backend processes use shared memory for
-communication, and parts of that shared space are global
-bottlenecks. For example, here's the structure that tracks
-every ongoing process and transaction:
+Since these days it's pretty easy to procure a system where
+memory is abundant, the absolute memory ceiling often isn't
+a main limiting factor. One that's more subtle and more
+important is that the Postmaster and its backend processes
+use shared memory for communication, and parts of that
+shared space are global bottlenecks. For example, here's
+the structure that tracks every ongoing process and
+transaction:
 
 ``` c
 typedef struct PROC_HDR
@@ -102,10 +103,10 @@ ProcArrayAdd(PGPROC *proc)
 }
 ```
 
-There are a few such bottlenecks throughout Postgres, and
-they are of course in addition to the normal contention
-you'd expect to find around system resources like I/O or
-CPU.
+There are a few such bottlenecks throughout the normal
+paths that Postgres uses to work, and they are of course in
+addition to the normal contention you'd expect to find
+around system resources like I/O or CPU.
 
 The cumulative effect is that within any given backend,
 performance is proportional to the number of all active
