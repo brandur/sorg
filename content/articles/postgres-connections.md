@@ -242,7 +242,7 @@ operation:
   around them. This comes with a limitation that
   applications cannot use features that change the "global"
   state of a connection like `SET`, `LISTEN`/`NOTIFY`, or
-  prepared statements.
+  prepared statements [3].
 
 * **Statement pooling:** Connections are assigned only
   around individual statements. This only works of course
@@ -308,6 +308,12 @@ the degradation exists.
 [2] Threaded deployments in Ruby are possible, but because
 of Ruby's GIL (global interpreter lock), they'll be
 fundamentally slower than using a forking process model.
+
+[3] It may be possible to use prepared statements with
+transaction pooling depending on the driver's
+implementation. The protocol allows named and unnamed
+prepared statements, and they'll work as long as the driver
+sticks to the latter.
 
 [atomicphases]: /idempotency-keys#atomic-phases
 [benchmark]: https://github.com/brandur/connections-test
