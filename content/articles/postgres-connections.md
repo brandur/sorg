@@ -137,7 +137,7 @@ more efficiently.
 ### Connection pools (#connection-pool)
 
 A connection pool is a cache of database connections,
-usually local to a specific process. It's main advantage is
+usually local to a specific process. Its main advantage is
 improved performance -- there's a certain amount of
 overhead inherent to opening a new database connection in
 both the client and the server. After finishing with a
