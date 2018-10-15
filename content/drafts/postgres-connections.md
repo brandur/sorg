@@ -261,7 +261,7 @@ deploying a large application on Postgres will have to
 understand what's happening or they're likely to run into
 trouble. It'll usually pay to understand them earlier so
 that applications can be smartly architected to maximize
-the efficient use of this scarce resource.
+the efficient use of a scarce resource.
 
 
 
