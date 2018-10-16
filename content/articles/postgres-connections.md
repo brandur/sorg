@@ -329,7 +329,8 @@ Long-lived children eventually end up copying (in the sense
 of [COW][cow]) most of their parent's page table into their
 own memory space. Huge pages are ~500x bigger than standard
 4 kB pages so there are far fewer of them to track, making
-page tables much smaller.
+page tables much smaller (on the order of megabytes, tens
+of megabytes, or more).
 
 [2] Each transaction leaves its target table empty to avoid
 any loss in performance that might be caused by accumulated
