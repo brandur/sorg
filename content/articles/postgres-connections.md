@@ -58,7 +58,7 @@ model where a central Postmaster accepts incoming
 connections and forks child processes to handle them. Each
 of these "backend" processes starts out at around 5 MB in
 size, but may grow to be much larger depending on the data
-they're accessing.
+they're accessing [1].
 
 !fig src="/assets/postgres-connections/process-model.svg" caption="A simplified view of Postgres' forking process model."
 
@@ -139,7 +139,7 @@ backends in the wider system. I wrote a [benchmark] to
 demonstrate this effect: it spins up a cluster of parallel
 workers that each use their own connection to perform a
 transaction that inserts ten times, selects ten times, and
-deletes ten times before committing [1]. Parallelism starts
+deletes ten times before committing [2]. Parallelism starts
 at 1, ramps up to 1000, and timing is measured for every
 transaction. You can see from the results that performance
 degrades slowly but surely as more active clients are
@@ -191,7 +191,7 @@ Active Record, but because Ruby isn't capable of real
 parallelism, it's common to use forking servers like
 Unicorn or Puma. This makes those connection pools much
 less effective because each process needs to maintain its
-own [2].
+own [3].
 
 ### Minimum viable checkouts (#mvc)
 
@@ -267,7 +267,7 @@ operation:
   around them. This comes with a limitation that
   applications cannot use features that change the "global"
   state of a connection like `SET`, `LISTEN`/`NOTIFY`, or
-  prepared statements [3].
+  prepared statements [4].
 
 * **Statement pooling:** Connections are assigned only
   around individual statements. This only works of course
@@ -322,7 +322,16 @@ there will be practical bottlenecks like the ones described
 here in any database, so these techniques for managing
 connections should be widely portable.
 
-[1] Each transaction leaves its target table empty to avoid
+[1] [Andres Freund][andresfreund] notes that it's possible
+to substantially reduce per-backend memory overhead by
+making sure that [huge pages][hugepages] are enabled.
+Long-lived children eventually end up copying (in the sense
+of [COW][cow]) most of their parent's page table into their
+own memory space. Huge pages are ~500x bigger than standard
+4 kB pages so there are far fewer of them to track, making
+page tables much smaller.
+
+[2] Each transaction leaves its target table empty to avoid
 any loss in performance that might be caused by accumulated
 data. My simple benchmark is far from rigorous. While it
 measures degradation, it makes no attempt to identify what
@@ -330,18 +339,21 @@ the core cause of that degradation is, whether it be locks
 in Postgres or just I/O. It's mostly designed to prove that
 the degradation exists.
 
-[2] Threaded deployments in Ruby are possible, but because
+[3] Threaded deployments in Ruby are possible, but because
 of Ruby's GIL (global interpreter lock), they'll be
 fundamentally slower than using a forking process model.
 
-[3] It may be possible to use prepared statements with
+[4] It may be possible to use prepared statements with
 transaction pooling depending on the driver's
 implementation. The protocol allows named and unnamed
 prepared statements, and they'll work as long as the driver
 sticks to the latter.
 
+[andresfreund]: https://twitter.com/andresfreundtec
 [atomicphases]: /idempotency-keys#atomic-phases
 [benchmark]: https://github.com/brandur/connections-test
+[cow]: https://en.wikipedia.org/wiki/Copy-on-write
 [databasesql]: https://godoc.org/database/sql
+[hugepages]: https://www.postgresql.org/docs/current/static/kernel-resources.html#LINUX-HUGE-PAGES
 [jdbc]: https://en.wikipedia.org/wiki/Java_Database_Connectivity
 [pgbouncer]: https://pgbouncer.github.io/
