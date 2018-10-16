@@ -143,7 +143,7 @@ deletes ten times before committing [2]. Parallelism starts
 at 1, ramps up to 1000, and timing is measured for every
 transaction. You can see from the results that performance
 degrades slowly but surely as more active clients are
-introduced into the system:
+introduced:
 
 !fig src="/assets/postgres-connections/contention.png" caption="Performance of a simple task degrading as the number of active connections in the database increases."
 
