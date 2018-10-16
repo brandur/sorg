@@ -226,7 +226,7 @@ application is making requests to foreign APIs. Utilization
 can be made even more efficient by making sure to release
 connections back to the pool while that slow network I/O is
 in flight (an application should not be in a transaction
-during while mutating foreign state anyway), and reacquire
+while mutating foreign state anyway), and reacquire
 them afterwards.
 
 ### PgBouncer & inter-node pooling (#pgbouncer)
@@ -238,10 +238,10 @@ connection pools maximize the efficient use of connections
 local to any of them, but can't do so between nodes. In
 most systems work should be distributed between nodes
 roughly equally, but because it's normal to use randomness
-to do that (through something like HAProxy or other load
+to do that (through something like HAProxy or another load
 balancer), and because work durations vary, an equal
 distribution of work across the whole cluster at any given
-isn't likely.
+time isn't likely.
 
 If we have _N_ nodes and _M_ maximum connections per node,
 we may have a configuration where _N_ × _M_ is greater than
@@ -283,7 +283,7 @@ that are already making effective use of a node-local
 connection pool, and will allow such an application that's
 configured with an _N_ × _M_ greater than `max_connections`
 to closely approach the maximum possible theoretical
-utilization of available connections, and to also to avoid
+utilization of available connections, and to also avoid
 connection errors caused by going over-limit (although
 delaying requests while waiting for a connection to become
 available from PgBouncer is still possible).
@@ -311,7 +311,7 @@ the efficient use of a scarce resource.
 
 Developers should be aware of how many connections each
 node can use, how many connections a cluster can use by
-multiplying that number of the number of nodes, and where
+multiplying that number by the number of nodes, and where
 that total sits relative to Postgres' `max_connections`.
 It's common to hit limits during a deploy because a
 graceful restart spins up new workers or nodes before
