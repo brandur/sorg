@@ -75,9 +75,9 @@ transaction:
 typedef struct PROC_HDR
 {
     /* Array of PGPROC structures (not including dummies for prepared txns) */
-    PGPROC	   *allProcs;
+    PGPROC       *allProcs;
     /* Array of PGXACT structures (not including dummies for prepared txns) */
-    PGXACT	   *allPgXact;
+    PGXACT       *allPgXact;
 
     ...
 }
@@ -100,6 +100,31 @@ ProcArrayAdd(PGPROC *proc)
     LWLockAcquire(ProcArrayLock, LW_EXCLUSIVE);
 
     ...
+}
+```
+
+Likewise, `GetSnapshotData` is often called multiple times
+for any operation and needs to loop through every other
+process in the system:
+
+``` c
+Snapshot
+GetSnapshotData(Snapshot snapshot)
+{
+    ProcArrayStruct *arrayP = procArray;
+
+    ...
+
+    /*
+     * Spin over procArray checking xid, xmin, and subxids.  The goal is
+     * to gather all active xids, find the lowest xmin, and try to record
+     * subxids.
+     */
+    numProcs = arrayP->numProcs;
+    for (index = 0; index < numProcs; index++)
+    {
+        ...
+    }
 }
 ```
 
