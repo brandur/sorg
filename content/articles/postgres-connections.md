@@ -6,6 +6,7 @@ hook: Hitting the limit for maximum allowed connections is
   a common operational problem in Postgres. Here we look at
   a few techniques for managing connections and making
   efficient use of those that are available.
+hn_link: https://news.ycombinator.com/item?id=18220906
 ---
 
 You start building your new project. You've heard good
