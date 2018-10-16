@@ -338,8 +338,8 @@ any loss in performance that might be caused by accumulated
 data. My simple benchmark is far from rigorous. While it
 measures degradation, it makes no attempt to identify what
 the core cause of that degradation is, whether it be locks
-in Postgres or just I/O. It's mostly designed to prove that
-the degradation exists.
+in Postgres or just I/O. It's mostly designed to show that
+degradation exists.
 
 [3] Threaded deployments in Ruby are possible, but because
 of Ruby's GIL (global interpreter lock), they'll be
