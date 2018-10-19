@@ -103,14 +103,8 @@ invalidate-assets: check-aws-keys check-cloudfront-id
 invalidate-indexes: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /photos /reading /runs /twitter
 
-# Note that unfortunately Golint doesn't work like other Go commands: it only
-# takes only a single argument at a time and expects that each is the name of a
-# local directory (as opposed to a package).
-#
-# The exit 255 trick ensures that xargs will actually bubble a failure back up
-# to the entire command.
 lint:
-	go list ./... | xargs -I{} -n1 sh -c '$(GOPATH)/bin/golint -set_exit_status {} || exit 255'
+	$(GOPATH)/bin/golint -set_exit_status `go list ./... | grep -v /vendor/`
 
 # A specialized S3 bucket used only for caching resized photographs.
 PHOTOGRAPHS_S3_BUCKET := "brandur.org-photographs"
