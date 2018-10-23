@@ -5,10 +5,11 @@
       .nav-inner
         = include views/_nav
     .toc-index
-    .content
-      .content-newsletter.content-inner-standard
-        #title
-          h1 Passages & Glass
+    .content.content-newsletter
+      / Outside of .content-inner-standard so as to get a wider width.
+      #title
+        h1 Passages & Glass
+      .content-inner-standard
         form method="post" action="https://passages-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
           input type="submit" value="Sign up for newsletter"
