@@ -1,0 +1,43 @@
+.content-newsletter
+  font-family: Helvetica, sans-serif
+  font-size: 18px
+  font-weight: 300
+  line-height: 1.5
+
+  h2
+    color: #000
+    font-size: 24px
+    font-weight: bold
+    margin-bottom: 0
+
+  input[type=email]
+    border: 1px solid #4d4d4d
+    font-family: Helvetica, sans-serif
+    font-size: 18px
+    font-weight: 300
+
+    /* just so we understand that the height is meant to be the same as the
+     * submit button: constant - border - padding */
+    height: calc(40px - 2 * 1px - 2 * 3px)
+
+    line-height: 1.5
+    margin: 10px 10px 10px 0
+    padding: 3px 6px
+    vertical-align: bottom
+
+  input[type=submit]
+    background: #000
+    border: 0
+    color: #fff
+    height: 40px
+    font-size: 11px
+    letter-spacing: 0.5px
+    margin: 10px 0 10px 0
+    padding: 0 25px
+    text-align: center
+    text-transform: uppercase
+
+  .about-content
+    p
+      &:first-child
+        margin-top: 5px
