@@ -27,3 +27,7 @@
         .about-content
           p <em>Passages & Glass</em> is about the independent web. It’s sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), and is my infinitesimally small way of pushing back against the continued centralization and confinement of our stories in closed platforms like Facebook.
           p You should consider signing up to get it. You can do so using the form at the top of this page.
+        / The idea here is to request something that will start spinning up the
+        / target Heroku app so that the user doesn't have to wait so long if
+        / and when they do submit the form.
+        img src="https://passages-signup.herokuapp.com/public/tiny-preload-image.png"
