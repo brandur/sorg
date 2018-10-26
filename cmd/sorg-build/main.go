@@ -183,6 +183,9 @@ type Fragment struct {
 	// Image is an optional image that may be included with a fragment.
 	Image string `yaml:"image"`
 
+	// Location is the geographical location where this article was written.
+	Location string `yaml:"location"`
+
 	// PublishedAt is when the fragment was published.
 	PublishedAt *time.Time `yaml:"published_at"`
 
@@ -197,9 +200,15 @@ type Fragment struct {
 // PublishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when a fragment is shown.
 func (f *Fragment) PublishingInfo() string {
-	return `<p><strong>Fragment</strong><br>` + f.Title + `</p>` +
-		`<p><strong>Published</strong><br>` + f.PublishedAt.Format("January 2, 2006") + `</p> ` +
-		sorg.TwitterInfo
+	s := `<p><strong>Fragment</strong><br>` + f.Title + `</p>` +
+		`<p><strong>Published</strong><br>` + f.PublishedAt.Format("January 2, 2006") + `</p> `
+
+	if f.Location != "" {
+		s += `<p><strong>Location</strong><br>` + f.Location + `</p>`
+	}
+
+	s += sorg.TwitterInfo
+	return s
 }
 
 type fragmentByPublishedAt []*Fragment
