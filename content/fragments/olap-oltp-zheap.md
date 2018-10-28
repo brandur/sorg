@@ -1,21 +1,33 @@
 ---
 title: OLAP, OLTP, Zheap, and tradeoffs in Postgres MVCC
-published_at: 2018-10-26T18:51:39Z
+published_at: 2018-10-28T08:33:07Z
 location: Coimbra
-hook: TODO
+hook: How Zheap shifts Postgres towards optimization for
+  OLTP by making access to new row versions cheaper and old
+  row versions more expensive.
 ---
 
-A few talks at a recent Postgres conference that I attended
-gave me some ideas around the developing [Zheap storage
-engine][zheap] in Postgres [1], how to think about it with
-respect to the tradeoffs it makes, and how those fit into
-broader database design.
+One of the most exciting developments in the world of
+Postgres right now is work on the new [Zheap storage
+engine][zheap] [1]. Recently, some sessions at a Postgres
+conference helped crystallize it and the optimizations it
+aims to make. Zheap promises to be a significant
+advancement in the operational aspects of Postgres, even if
+there's likely to be a tradeoff that will impact some uses
+of the database.
 
-You may have heard database enthusiasts talk about OLAP and
-OLTP. They're wordy terms for the uninitiated, but like
-many overwrought acronyms, actually represent relatively
-simple ideas, and are useful as unambiguous names for two
-important concepts:
+You'll have to forgive the roundabout approach to talking
+about Zheap here, but I thought it'd be interesting to look
+at it in the broader of context of databases in general,
+and what we use them for.
+
+## Analytics versus production (#olap-oltp)
+
+You may have heard database administrators or enthusiasts
+talk about OLAP and OLTP. They're wordy terms for the
+uninitiated, but like many overwrought acronyms, actually
+represent relatively simple ideas, and are useful as
+unambiguous names for two important concepts:
 
 * **OLAP** is "online analytical processing" and refers to
   a workload of more complex and long-lived analytical
@@ -54,7 +66,7 @@ specialized, and do a good job of both OLAP and OLTP. Users
 can write extremely complex OLAP queries in SQL (involving
 joins, aggregations, [CTEs][cte], etc.) and rely on the
 underlying engine to find efficient ways to execute them.
-Inserts, updates, deletes, and simple (and well-indexed)
+Inserts, updates, deletes, and simple (well-indexed)
 selects are consistently fast, usually finishing in
 milliseconds, making them great for OLTP as well.
 
@@ -68,40 +80,44 @@ rows in the heap, which is the physical storage where the
 contents of tables are stored. Dead rows are eventually
 reaped by [vacuum], but only after they're no longer needed
 for any running transaction (regardless of how old) and
-vacuum gets a chance to run.
+vacuum gets a chance to run (I've previously gone into the
+details of [its inner workings here](/postgres-atomicity)).
 
-It's actually quite an elegant implementation. It's easy to
-reason about, and all row versions are readily accessible
-by the transactions that need them (I've previously gone
-into the details of [its inner workings
-here](/postgres-atomicity)). Unfortunately though, it leads
-to degenerate performance when relations become "bloated"
-because an old transaction is forcing many old versions to
-be held which greatly increases their size. Those rows are
-still visible to the old transaction and can't be cleaned
-out.
+It's an elegant implementation -- easy to reason about, and
+making all row versions readily accessible to the
+transactions that need them, but it has its downsides.
+Relations may become "bloated" when an old transaction is
+forcing many old versions to be kept around, leading to
+greatly increased table size. Bloated tables are slower to
+use because transactions need to iterate through dead rows
+to check whether they're visible or not. Those rows can't
+be cleaned out until all transactions that could
+potentially see them finish.
 
 We could say that Postgres has optimized for OLAP at the
-expense of OLTP. Long-lived transactions have easy access
-to contemporaneous row versions, but that same feature
+expense of OLTP (even if it was never a conscious
+decision). Long-lived transactions have easy access to
+contemporaneous row versions, but that same feature
 degrades the performance of current, short-lived
 transactions.
 
 ## Moving the needle: Zheap (#zheap)
 
-Zheap is one of the largest in-flight projects in Postgres
-right now. It's a new storage engine that rethinks how MVCC
-works. With Zheap, rows are often be updated in place, with
-old versions replaced by new ones. Instead of sticking
-around in the heap, old versions are moved to an "undo log"
-in the current page which acts a historical record. The
-idea is inspired by other databases that already use a
-similar technique, like Oracle.
+Zheap is a new storage engine that rethinks how MVCC in
+Postgres works. With Zheap, rows are often be updated in
+place, with old versions replaced by new ones. Instead of
+sticking around in the heap, old versions are moved to an
+"undo log" in the current page which acts a historical
+record. The idea is inspired by other databases that
+already use a similar technique, like Oracle.
 
 If a transaction aborts, old versions from the undo log are
 applied until the right version is reached. Similarly, old
 transactions that need an old version follow the undo log
-back until they find the right one.
+back until they find the right one. Like the current heap,
+old versions need only be kept as long as they're needed,
+and their space is reclaimed as old transactions come to
+an end.
 
 In essence, Zheap shifts the balance of the tradeoff made
 in Postgres' MVCC. The "old" heap put all transactions on
@@ -131,8 +147,11 @@ indexes (popularized by Uber) becomes far less severe
 because tuples are updated in place. Indexes will only need
 to be updated if there was a change in a column that they
 cover (previously all indexes needed to be updated for
-every change). See [the slides][zheapslides] from a recent
-talk on the subject at PGConf EU for complete details.
+every change). There's even talk about Zheap potentially
+eliminating the need for vacuum because of the way it could
+lazily reclaim slots in the undo log. See [the
+slides][zheapslides] from a recent talk on the new engine
+for more complete details.
 
 [1] Zheap is still under very active development and is not
 yet slated for any upcoming Postgres release.
