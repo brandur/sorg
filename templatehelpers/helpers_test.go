@@ -42,12 +42,15 @@ func TestDistanceOfTimeInWords(t *testing.T) {
 }
 
 func TestFormatTime(t *testing.T) {
-	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
 	assert.Equal(t, "July 3, 2016", formatTime(&testTime))
 }
 
 func TestFormatTimeWithMinute(t *testing.T) {
 	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
+}
+
+func TestFormatTimeYearMonth(t *testing.T) {
+	assert.Equal(t, "July 2016", formatTimeYearMonth(&testTime))
 }
 
 func TestInKM(t *testing.T) {

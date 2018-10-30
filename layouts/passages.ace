@@ -162,6 +162,13 @@ html lang="en"
         text-align: center;
       }
 
+      .published-date {
+        color: #aaa;
+        font-size: 14px;
+        font-style: italic;
+        margin-left: 8px;
+      }
+
   body
     {{if not .InEmail}}
     = include views/_analytics .

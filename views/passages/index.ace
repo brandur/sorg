@@ -7,4 +7,5 @@
     {{range .Passages}}
       li
         a href="/passages/{{.Slug}}" {{.Issue}} &mdash; {{.Title}}
+        span.published-date {{FormatTimeYearMonth .PublishedAt}}
     {{end}}
