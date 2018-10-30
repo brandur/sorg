@@ -25,9 +25,9 @@ and what we use them for.
 
 You may have heard database administrators or enthusiasts
 talk about OLAP and OLTP. They're wordy terms for the
-uninitiated, but like many overwrought acronyms, actually
-represent relatively simple ideas, and are useful as
-unambiguous names for two important concepts:
+uninitiated, but like many overwrought acronyms, represent
+relatively simple ideas, and are useful as unambiguous
+names for two important concepts:
 
 * **OLAP** is "online analytical processing" and refers to
   a workload of more complex and long-lived analytical
