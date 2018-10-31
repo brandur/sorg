@@ -25,8 +25,8 @@ notifications:
     on_success: never
 
 install:
-  - go get -u golang.org/x/lint/golint
-  - pip install --user awscli
+  - travis_retry go get -u golang.org/x/lint/golint
+  - travis_retry pip install --user awscli
 
 before_script:
   # Download any markers that have not yet been committed to Git to save
