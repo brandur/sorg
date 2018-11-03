@@ -149,7 +149,13 @@ Rule of thirds?
 
 [Heddels article on raw denim][rawdenim].
 
+If you happen to be in San Francisco, we're fortunate to
+have what's probably the world's most pre-eminent shop for
+raw denim in the [Self Edge][selfedge]. Their prices will
+make your eyes water, but it's a neat place to visit.
+
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
 [pluggable]: http://anarazel.de/talks/2018-10-25-pgconfeu-pluggable-storage/pluggable.pdf
 [rabelos]: https://en.wikipedia.org/wiki/Rabelo_boat
 [rawdenim]: https://www.heddels.com/2011/09/the-essential-raw-denim-breakdown-our-100th-article/
+[selfedge]: https://www.selfedge.com/
