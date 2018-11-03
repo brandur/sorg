@@ -1,5 +1,5 @@
 ---
-title: Simple and safe form submission with `Origin`
+title: Simple and stateless CSRF protection with the `Origin` header
 published_at: 2018-11-01T16:05:47Z
 hook: Implementing simplified CSRF protection using the
   `Origin` header.
@@ -54,8 +54,8 @@ gave us a new option. `Origin` is a little like the classic
 information to reduce the amount of user information being
 exposed to the target site. It still contains an origin
 domain, but path information is stripped. That means that
-even conscientus (TODO) web browsers can send the header liberally
-without worrying about leaking user data.
+even conscientious web browsers can send the header
+liberally without worrying about leaking user data.
 
 Applications can take advantage of this to implement
 simplified CSRF protection that checks the value of
