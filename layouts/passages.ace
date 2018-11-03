@@ -40,11 +40,18 @@ html lang="en"
         -moz-osx-font-smoothing: grayscale;
       }
 
-      code {
+      code, pre {
         background: #f6f6f6;
         font-family: Monaco, monospace;
         font-size: 14px;
+      }
+
+      code {
         padding: 2px 4px;
+      }
+
+      pre {
+        padding: 10px 8px;
       }
 
       h1, h2, h3, h4 {
