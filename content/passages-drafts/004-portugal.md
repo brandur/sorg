@@ -103,6 +103,8 @@ efficiently with connection pools.
 
 ## To Porto and back again (#porto)
 
+[Biblioteca Joanina][joanina]
+
 ![The library of Coimbra](/assets/passages/004-portugal/coimbra-library@2x.jpg)
 
 ![Porto](/assets/passages/004-portugal/porto@2x.jpg)
@@ -160,6 +162,7 @@ make your eyes water, but it's a neat place to visit.
 
 [articlesofinterest]: https://99percentinvisible.org/episode/blue-jeans-articles-of-interest-5/transcript/
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
+[joanina]: https://en.wikipedia.org/wiki/Biblioteca_Joanina
 [pluggable]: http://anarazel.de/talks/2018-10-25-pgconfeu-pluggable-storage/pluggable.pdf
 [rabelos]: https://en.wikipedia.org/wiki/Rabelo_boat
 [rawdenim]: https://www.heddels.com/2011/09/the-essential-raw-denim-breakdown-our-100th-article/
