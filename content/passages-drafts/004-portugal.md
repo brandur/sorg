@@ -95,6 +95,10 @@ efficiently with connection pools.
 
 ![The library of Coimbra](/assets/passages/004-portugal/coimbra-library@2x.jpg)
 
+![Porto](/assets/passages/004-portugal/porto@2x.jpg)
+
+![The Dom Luís in Porto](/assets/passages/004-portugal/porto-bridge@2x.jpg)
+
 ![Port barrel](/assets/passages/004-portugal/port-barrel@2x.jpg)
 
 ![Third wave coffee in Lisbon](/assets/passages/004-portugal/third-wave@2x.jpg)
