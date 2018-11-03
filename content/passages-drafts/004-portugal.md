@@ -109,6 +109,13 @@ Train strike.
 
 A lot of classics.
 
+Transported downriver in [barcos rabelos][rabelos], but the
+construction of hydroelectric damns in the 50s and 60s
+ended the practice, but some of the old boats are still on
+display in central Porto.
+
+> It is flat-bottomed, with a shallow draught, which was necessary to navigate the often shallow fast-flowing waters of the upper Douro prior to the construction of dams and locks from 1968 onwards.
+
 The number in the upper right is liters. Reduce surface
 area.
 
@@ -116,11 +123,23 @@ Rule of thirds?
 
 ## Raw denim (#raw-denim)
 
+> Raw denim (aka dry denim) is simply denim fabric that remains unwashed, untreated, and virtually untouched from when it rolls off the loom to when it is sold to you. It’s denim in its purest form.
+
+> Raw denim usually has a crispy and stiff feel and easily leaves traces of its indigo dye behind when it rubs against another surface–even your hands (this phenomenon is called crocking). Be careful what you rub up against when wearing a new pair of raw denim jeans, you might leave a bit of blue behind.
+
+> So why go through all this hassle just for a new pair of jeans? One of the biggest benefits of raw denim, and the indigo loss, is that they develop and age based on what you do in them and to them. Every mile you walk, every scrape on the concrete, every item you keep regularly in your pocket leaves its mark. The dark indigo dye slowly begins to chip away revealing the light electric blue and eventually the white cotton core of the denim yarns the more you wear them. What’s left is a wholly unique garment that was formed and faded to you and you alone.
+
+> It takes an awful lot of water to grow enough cotton for a pair of jeans, but washing and distressing them takes even more, an average of 42 liters per jean. By buying raw, none of that water needs to go to waste. It also doesn’t expose workers to the harmful chemicals often used to distress and wash denim.
+
 ![Japan Blue fade](/assets/passages/004-portugal/jeans1@2x.jpg)
 
 ![Momotaro fade](/assets/passages/004-portugal/jeans2@2x.jpg)
 
 [Blue Owl's fade museum][fademuseum].
 
+[Heddels article on raw denim][rawdenim].
+
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
 [pluggable]: http://anarazel.de/talks/2018-10-25-pgconfeu-pluggable-storage/pluggable.pdf
+[rabelos]: https://en.wikipedia.org/wiki/Rabelo_boat
+[rawdenim]: https://www.heddels.com/2011/09/the-essential-raw-denim-breakdown-our-100th-article/
