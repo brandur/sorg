@@ -62,9 +62,19 @@ The table access manager is the C equivalent of an
 interface, a struct of function pointers:
 
 ``` c
-struct AccessManager {
-    void CreateTable(...);
-}
+typedef struct TableAmRoutine
+{
+    ...
+
+    TupleInsert_function            tuple_insert;
+    TupleInsertSpeculative_function tuple_insert_speculative;
+    TupleUpdate_function            tuple_update;
+    TupleDelete_function            tuple_delete;
+    MultiInsert_function            multi_insert;
+    TupleLock_function              tuple_lock;
+
+    ...
+} TableAmRoutine;
 ```
 
 Andres gave a great talk on all of this. See his [slides
