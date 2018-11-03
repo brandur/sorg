@@ -149,11 +149,16 @@ Rule of thirds?
 
 [Heddels article on raw denim][rawdenim].
 
+If podcasts are your thing, the _99% Invisible_-adjacent
+show _Articles of Interest_ did a [great episode on the
+subject][articlesofinterest] recently.
+
 If you happen to be in San Francisco, we're fortunate to
 have what's probably the world's most pre-eminent shop for
 raw denim in the [Self Edge][selfedge]. Their prices will
 make your eyes water, but it's a neat place to visit.
 
+[articlesofinterest]: https://99percentinvisible.org/episode/blue-jeans-articles-of-interest-5/transcript/
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
 [pluggable]: http://anarazel.de/talks/2018-10-25-pgconfeu-pluggable-storage/pluggable.pdf
 [rabelos]: https://en.wikipedia.org/wiki/Rabelo_boat
