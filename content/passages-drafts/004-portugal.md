@@ -116,6 +116,11 @@ Rule of thirds?
 
 ## Raw denim (#raw-denim)
 
-Fade museum.
+![Japan Blue fade](/assets/passages/004-portugal/jeans1@2x.jpg)
 
+![Momotaro fade](/assets/passages/004-portugal/jeans2@2x.jpg)
+
+[Blue Owl's fade museum][fademuseum].
+
+[fademuseum]: https://www.blueowl.us/blogs/fade-museum
 [pluggable]: http://anarazel.de/talks/2018-10-25-pgconfeu-pluggable-storage/pluggable.pdf
