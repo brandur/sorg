@@ -16,10 +16,9 @@
           img#mood src="{{.Fragment.Image}}" srcset="{{To2x .Fragment.Image}} 2x, {{.Fragment.Image}} 1x"
         {{end}}
         div class="content-inner-fragments-show" id="{{if ne .Fragment.Image ""}}content-inner-fragments-show-mood{{end}}"
-          #title.fragments-title
-            h1 {{.Fragment.Title}}
-            .meta
-              {{FormatTime .Fragment.PublishedAt}}
+          .fragments-content-header
+            #title
+              h1 {{.Fragment.Title}}
           article
             {{HTML .Fragment.Content}}
             .divider-short

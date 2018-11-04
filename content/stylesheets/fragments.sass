@@ -26,13 +26,15 @@ $secondary: #cdcdcd
       display: none
 
 .fragments
-  .fragments-title
+  .fragments-content-header
     h1
+      border-bottom: 10px solid #000
       font-size: 4rem
       letter-spacing: -4px
       line-height: 1em
       hyphens: auto
-      margin: 20px 0 5px 0
+      margin-bottom: 50px
+      padding-bottom: 50px
 
   .content
     padding: 10px 0 0 0
@@ -73,12 +75,6 @@ $secondary: #cdcdcd
     .publishing-info-bottom
       display: none
 
-  .meta
-    color: $secondary
-    font-family: $sans_serif
-    font-size: 0.75rem
-    font-style: italic
-
   .page-intro
     font-size: 0.85rem
 
@@ -101,6 +97,12 @@ $secondary: #cdcdcd
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .fragments
+    .fragments-content-header
+      h1
+        border-bottom: 8px solid #000
+        margin-bottom: 40px
+        padding-bottom: 40px
+
     .content
       img#mood
         margin: 0 0 30px 0
