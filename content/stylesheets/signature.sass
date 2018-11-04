@@ -2,38 +2,54 @@ $sans_serif: helvetica, arial, geneva, sans-serif
 
 .signature
   .content
-    // Specifying a larger max-width here allows the TOC to "roam" out into the
-    // margin a little bit, which subjectively looks better.
-    max-width: 680px
+    .signature-content-header
+      max-width: 1000px
 
-    article
-      max-width: 550px
+      h1
+        border-bottom: 10px solid #000
+        margin-bottom: 50px
+        padding-bottom: 50px
 
-    article > p:first-of-type:first-letter
-      float: left
-      font-family: $sans_serif
-      font-size: 6.25rem
-      line-height: 0.7em
-      margin: 5px 10px 0 0
+    .signature-content
+      // Specifying a larger max-width here allows the TOC to "roam" out into the
+      // margin a little bit, which subjectively looks better.
+      max-width: 680px
 
-    // Shown in the sidebar except for small screens.
-    .publishing-info-bottom
-      display: none
+      article
+        max-width: 550px
 
-  .toc
-    float: right
+      article > p:first-of-type:first-letter
+        float: left
+        font-family: $sans_serif
+        font-size: 6.25rem
+        line-height: 0.7em
+        margin: 5px 10px 0 0
+
+      // Shown in the sidebar except for small screens.
+      .publishing-info-bottom
+        display: none
+
+    .toc
+      float: right
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   .signature
     .content
-      article
-        max-width: 100%
+      .signature-content-header
+        h1
+          border-bottom: 8px solid #000
+          margin-bottom: 40px
+          padding-bottom: 40px
 
-        & > p:first-of-type:first-letter
-          font-size: 4rem
+      .signature-content
+        article
+          max-width: 100%
 
-      .publishing-info-bottom
-        display: initial
+          & > p:first-of-type:first-letter
+            font-size: 4rem
 
-      .toc
-        float: none
+        .publishing-info-bottom
+          display: initial
+
+        .toc
+          float: none

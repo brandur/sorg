@@ -21,30 +21,31 @@
       .toc-index
       .content
         {{if eq .Article.Image ""}}
-          #title
-            h1 {{.Article.Title}}
-          .divider-short
+          .signature-content-header
+            #title
+              h1 {{.Article.Title}}
         {{end}}
-        .toc
-          {{if ne .Article.TOC ""}}
-            h2 Contents
-            {{HTML .Article.TOC}}
+        .signature-content
+          .toc
+            {{if ne .Article.TOC ""}}
+              h2 Contents
+              {{HTML .Article.TOC}}
+              .divider-short
+            {{end}}
+          article.big
+            {{HTML .Article.Content}}
             .divider-short
-          {{end}}
-        article.big
-          {{HTML .Article.Content}}
-          .divider-short
-          .info
-            .publishing-info-bottom
-              | {{HTML .PublishingInfo}}
-            {{if ne .Article.HNLink ""}}
-              p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
-            {{end}}
-            {{if .Article.Draft}}
-              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/drafts/{{.Article.Slug}}.md">sending a pull request</a>.
-            {{else}}
-              p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/articles/{{.Article.Slug}}.md">sending a pull request</a>.
-            {{end}}
-            {{if ne .Article.Attributions ""}}
-              p.attribution== {{HTML .Article.Attributions}}
-            {{end}}
+            .info
+              .publishing-info-bottom
+                | {{HTML .PublishingInfo}}
+              {{if ne .Article.HNLink ""}}
+                p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
+              {{end}}
+              {{if .Article.Draft}}
+                p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/drafts/{{.Article.Slug}}.md">sending a pull request</a>.
+              {{else}}
+                p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/articles/{{.Article.Slug}}.md">sending a pull request</a>.
+              {{end}}
+              {{if ne .Article.Attributions ""}}
+                p.attribution== {{HTML .Article.Attributions}}
+              {{end}}
