@@ -9,7 +9,7 @@ I've previously written about how much [I like static
 sites](/aws-intrinsic-static). You can't beat them for
 speed, simplicity, or scalability (during relatively rare
 peak load times this site will serve ~20k uniques/day
-without breaking a sweat, and all for a few dollars a
+without breaking a sweat, and for only a few dollars a
 month), but of course their inherent downside is that
 introducing any kind of dynamic elements to a site becomes
 hard or impossible.
