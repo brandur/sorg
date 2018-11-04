@@ -122,7 +122,7 @@ protection will provide the best possible compatibility.
 
 [2] At the cost of some false positives for users who land
 on the page and decide not to sign up. Luckily, unidling a
-small Go app is not an overly expensive operation.
+7 MB Go slug is not an overly expensive operation.
 
 [csrf]: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
 [forbidden]: https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name
