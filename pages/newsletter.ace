@@ -11,22 +11,21 @@
         h1 Passages & Glass
       .content-inner-standard
         .about-content
-          p
-            | <em>Passages & Glass</em> is my personal newsletter about exploration, ideas, and software. It's sent only rarely when something interesting comes to mind.
+          p <em>Passages & Glass</em> is my newsletter about exploration, ideas, and software. So far it's been about the world's least frequently sent newsletter, averaging about three to four times a year.
+          p You should consider signing up so that we can keep in touch.
         form method="post" action="https://passages-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
-          input type="submit" value="Sign up for newsletter"
+          input type="submit" value="Sign up for Passages & Glass"
         h2#premise The premise
         .about-content
-          p The details of most journeys are forgotten. It’s nothing intentional, but given enough time they stop coming up in conversation, we reflect on them more rarely, and they’re eventually swallowed by our fickle memory. Physical (and digital) artifacts remain, but most of us are hopelessly bad at regularly sifting through a lifetime’s accumulation of souvenirs.
-          p I run a personal newsletter called <em>Passages & Glass</em> about exploration, ideas, and software. So far it's been about the world's least frequently sent newsletter, averaging about three to four times a year – I like to think that it's about as far opposite on the continuum from spam as you can go. It contains no marketing, and really is just a collection of stories and thinking in a less formal medium.
+          p The details of most journeys are forgotten. It’s nothing intentional, but given enough time they stop coming up in conversation, we reflect on them more rarely, and they’re eventually swallowed by our fickle memory. Physical (and digital) traces remain, but most of us are hopelessly bad at regularly sifting through a lifetime’s accumulation of souvenirs.
+          p <em>Passages & Glass</em> aims to counteract this effect by pulling highlights into a permanent digital artifact. It contains no marketing, and really is just a collection of stories and thinking in a less formal medium.
         h2#name The name
         .about-content
           p <em>Passages</em> refers to the routes that we use to get from one point to another, like Hannibal’s passage through the Alps, Magellan’s famous strait, or in the case of my far more mundane life, a favorite walk from Friedrichshain to Kreuzberg. <em>Glass</em> is the material making up the face of prized possessions like my iPhone or Submariner, the window through which to watch the passing countryside by air or rail, or the intricate optics of my camera’s lens.
         h2#social The philosophy
         .about-content
-          p <em>Passages & Glass</em> is about the independent web. It’s sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), and is my infinitesimally small way of pushing back against the continued centralization and confinement of our stories in closed platforms like Facebook.
-          p You should consider signing up to get it. You can do so using the form at the top of this page.
+          p <em>Passages & Glass</em> is about the independent web. It’s sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), and is my infinitesimally small way of pushing back against the continued centralization and confinement of our content in closed platforms like Facebook.
         / The idea here is to request something that will start spinning up the
         / target Heroku app so that the user doesn't have to wait so long if
         / and when they do submit the form.
