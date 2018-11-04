@@ -19,8 +19,8 @@ now [1], and to get perfect control over email layout
 decided (most likely unwisely) to build it on [a custom
 tech stack](/newsletters). Receiving new signups and adding
 them to the list requires dynamic communication with my
-mail provider, and my main static site obviously wasn't
-able to provide that.
+mail provider, and my static site obviously wasn't able to
+provide that.
 
 So I ended up building a separate Go app and linking
 prospective users from here to there to sign up. It worked,
@@ -75,14 +75,14 @@ That's what I ended up doing for my newsletter. I wrote a
 [Go CSRF protection middleware][go] that relies only on
 `Origin` and started hosting a form directly on my static
 site's [newsletter page](/newsletter). The signup app
-whitelists the static site's URL of `https://brandur.org`
+whitelists the static site's URL `https://brandur.org`
 along with its own URL
 `https://passages-signup.herokuapp.com`, and will happily
 allow form submissions from either origin.
 
 !fig src="/assets/fragments/origin/submit.svg" caption="Submitting a form from a static site to a dynamic signup app."
 
-I also "solved" (with a hammer) the app dethaw wait by
+I also "solved" (with a hammer) the app unidle wait by
 having the static newsletter page try to load a tiny image
 from the dynamic app that it submits its form to, giving
 the app a chance to spin up while the user is entering an
@@ -116,7 +116,7 @@ protection will provide the best possible compatibility.
 [sign up](https://brandur.org/newsletter).
 
 [2] At the cost of some false positives for users who land
-on the page and decide not to sign up. Luckily, dethawing a
+on the page and decide not to sign up. Luckily, unidling a
 small Go app is not an overly expensive operation.
 
 [csrf]: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
