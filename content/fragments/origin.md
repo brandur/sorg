@@ -1,6 +1,6 @@
 ---
 title: Simple and stateless CSRF protection with the `Origin` header
-published_at: 2018-11-01T16:05:47Z
+published_at: 2018-11-04T14:59:26Z
 hook: Implementing simplified CSRF protection using the
   `Origin` header.
 ---
