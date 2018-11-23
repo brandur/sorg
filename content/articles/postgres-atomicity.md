@@ -633,7 +633,7 @@ ProcArrayEndTransactionInternal(PGPROC *proc, PGXACT *pgxact,
 ```
 
 You may be wondering what a "proc array" is. Unlike many
-other daemon-like services, Postgres uses a a process
+other daemon-like services, Postgres uses a process
 forking model to handle concurrency instead of threading.
 When it accepts a new connection, the Postmaster forks a
 new backend ([in `postmaster.c`][backendstartup]). Backends
