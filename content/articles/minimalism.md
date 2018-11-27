@@ -196,7 +196,7 @@ mitigations are straightforward:
 
 * ***Avoid custom technology.*** Software that you write is
   software that you have to maintain. Forever. Don't
-  succumb to NIH when there's a well supported public
+  succumb to NHH when there's a well supported public
   solution that fits just as well (or even almost as well).
 
 * ***Use services.*** Software that you install is software
