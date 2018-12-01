@@ -32,29 +32,9 @@ func init() {
 }
 
 func TestCompilePhotos(t *testing.T) {
-	//
-	// No database
-	//
-
 	photos, err := compilePhotos(nil)
 	assert.NoError(t, err)
-	assert.Equal(t, []*Photo(nil), photos)
-
-	//
-	// With empty database
-	//
-
-	photos, err = compilePhotos(db)
-	assert.NoError(t, err)
-	assert.Equal(t, []*Photo(nil), photos)
-
-	//
-	// With results
-	//
-
-	// TODO: insert photos
-	//photos, err = compilePhotos(db)
-	//assert.NoError(t, err)
+	assert.NotZero(t, len(photos))
 }
 
 func TestCompileReading(t *testing.T) {
