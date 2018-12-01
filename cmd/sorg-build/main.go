@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"path"
 	"path/filepath"
@@ -383,6 +384,10 @@ func main() {
 	defer func() {
 		log.Infof("Built site in %v.", time.Now().Sub(start))
 	}()
+
+	// We'll call the general random number generator in at least one place
+	// below.
+	rand.Seed(time.Now().UnixNano())
 
 	err := envdecode.Decode(&conf)
 	if err != nil {
@@ -866,7 +871,13 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 
 	var photo *Photo
 	if len(photos) > 0 {
-		photo = photos[0]
+		numRecent := 10
+		if len(photos) < numRecent {
+			numRecent = len(photos)
+		}
+
+		recentPhotos := photos[0:numRecent]
+		photo = recentPhotos[rand.Intn(len(recentPhotos))]
 	}
 
 	locals := getLocals("brandur.org", map[string]interface{}{
