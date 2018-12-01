@@ -243,22 +243,32 @@ func (p passageByPublishedAt) Len() int           { return len(p) }
 func (p passageByPublishedAt) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
 func (p passageByPublishedAt) Less(i, j int) bool { return p[i].PublishedAt.Before(*p[j].PublishedAt) }
 
-// Photo is a photography downloaded from Flickr.
+// Photo is a photograph.
 type Photo struct {
-	// OriginalImageURL is the location where the original-sized version of the
-	// photo can be downloaded from Flickr.
-	OriginalImageURL string
+	// Description is the description of the photograph.
+	Description string `yaml:"description"`
 
-	// OriginalImageHeight and OriginalImageWidth are the height and width of
-	// the medium-sized version of the photo.
-	OriginalImageHeight, OriginalImageWidth int
+	// OriginalImageURL is the location where the original-sized version of the
+	// photo can be downloaded from.
+	OriginalImageURL string `yaml:"original_image_url"`
 
 	// OccurredAt is UTC time when the photo was published.
-	OccurredAt *time.Time
+	OccurredAt *time.Time `yaml:"occurred_at"`
 
-	// Slug is a unique identifier for the photo. It can be used to link it
-	// back to the photo on Flickr.
-	Slug string
+	// Slug is a unique identifier for the photo. Originally these were
+	// generated from Flickr, but I've since just started reusing them for
+	// filenames.
+	Slug string `yaml:"slug"`
+
+	// Title is the title of the photograph.
+	Title string `yaml:"title"`
+}
+
+// PhotoWrapper is a data structure intended to represent the data structure at
+// the top level of photograph data file `photographs.yaml`.
+type PhotoWrapper struct {
+	// Photos is a collection of photos within the top-level wrapper.
+	Photos []*Photo `yaml:"photographs"`
 }
 
 // Reading is a read book procured from Goodreads.
@@ -956,12 +966,18 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		log.Debugf("Compiled photos in %v.", time.Now().Sub(start))
 	}()
 
-	photos, err := getPhotosData(db)
+	data, err := ioutil.ReadFile(path.Join(sorg.ContentDir, "photographs.yaml"))
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Error reading photographs data file: %v", err)
 	}
 
-	// Flickr is the original source for images, but to avoid doing unnecessary
+	var photosWrapper PhotoWrapper
+	err = yaml.Unmarshal(data, &photosWrapper)
+	if err != nil {
+		return nil, fmt.Errorf("Error unmarshaling photographs data: %v", err)
+	}
+
+	// Dropbox is the original source for images, but to avoid doing unnecessary
 	// downloading, resizing, and uploading work for every build, we put any
 	// work we do into a "cache" which is itself put into S3. Subsequent builds
 	// can leverage the cache to avoid repeat work.
@@ -1718,54 +1734,6 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	}
 
 	return defaults
-}
-
-func getPhotosData(db *sql.DB) ([]*Photo, error) {
-	var photos []*Photo
-
-	if db == nil {
-		return photos, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT
-			metadata -> 'original_image',
-			(metadata -> 'original_height')::int,
-			(metadata -> 'original_width')::int,
-			(metadata -> 'occurred_at_local')::timestamptz,
-			slug
-		FROM events
-		WHERE type = 'flickr'
-		ORDER BY occurred_at DESC
-		LIMIT 1000
-	`)
-	if err != nil {
-		return nil, fmt.Errorf("Error selecting photos: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var photo Photo
-
-		err = rows.Scan(
-			&photo.OriginalImageURL,
-			&photo.OriginalImageHeight,
-			&photo.OriginalImageWidth,
-			&photo.OccurredAt,
-			&photo.Slug,
-		)
-		if err != nil {
-			return nil, fmt.Errorf("Error scanning photo: %v", err)
-		}
-
-		photos = append(photos, &photo)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, fmt.Errorf("Error iterating photo: %v", err)
-	}
-
-	return photos, nil
 }
 
 func getReadingsData(db *sql.DB) ([]*Reading, error) {

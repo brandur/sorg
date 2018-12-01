@@ -1,1178 +1,1453 @@
 ---
-:photographs:
-- :slug: '931701063'
-  :occurred_at: '2006-05-07T21:27:26-07:00'
-  :title: ''
-  :description: ''
-- :slug: '1152930917'
-  :occurred_at: '2007-07-03T12:14:01-07:00'
-  :title: Icelandic Clouds
-  :description: Some particularly signature cloud cover around northern Iceland.
-- :slug: '1168687306'
-  :occurred_at: '2007-07-15T01:31:46-07:00'
-  :title: Red Lighthouse
-  :description: A red lighthouse amongst Iceland's fjords.
-- :slug: '3266011012'
-  :occurred_at: '2008-04-16T15:55:05-07:00'
-  :title: ''
-  :description: ''
-- :slug: '3274692532'
-  :occurred_at: '2008-11-30T06:56:05-08:00'
-  :title: ''
-  :description: ''
-- :slug: '3278030196'
-  :occurred_at: '2008-12-04T09:48:57-08:00'
-  :title: Leaves
-  :description: Leaves changing in the autumn of Japan.
-- :slug: '3278043146'
-  :occurred_at: '2008-12-04T09:58:35-08:00'
-  :title: ''
-  :description: ''
-- :slug: '3278081616'
-  :occurred_at: '2008-12-04T11:41:34-08:00'
-  :title: Zen Bridge
-  :description: A stone bridge in a quiet garden in Japan.
-- :slug: '3275332848'
-  :occurred_at: '2008-12-10T12:42:35-08:00'
-  :title: Untitled
-  :description: Seen at a park in Japan, I never properly investigated what these
+photographs:
+- slug: '931701063'
+  occurred_at: '2006-05-07T21:27:26-07:00'
+  title: ''
+  description: ''
+  original_image_url: https://www.dropbox.com/s/dxltxxfrbmt46om/931701063.jpg?dl=1
+- slug: '1152930917'
+  occurred_at: '2007-07-03T12:14:01-07:00'
+  title: Icelandic Clouds
+  description: Some particularly signature cloud cover around northern Iceland.
+  original_image_url: https://www.dropbox.com/s/byi7pqh60sc7eqo/1152930917.jpg?dl=1
+- slug: '1168687306'
+  occurred_at: '2007-07-15T01:31:46-07:00'
+  title: Red Lighthouse
+  description: A red lighthouse amongst Iceland's fjords.
+  original_image_url: https://www.dropbox.com/s/t9hk9loco1dfbnh/1168687306.jpg?dl=1
+- slug: '3266011012'
+  occurred_at: '2008-04-16T15:55:05-07:00'
+  title: ''
+  description: ''
+  original_image_url: https://www.dropbox.com/s/3x6n39wztfs9h0f/3266011012.jpg?dl=1
+- slug: '3274692532'
+  occurred_at: '2008-11-30T06:56:05-08:00'
+  title: ''
+  description: ''
+  original_image_url: https://www.dropbox.com/s/eykazb5b12cjl23/3274692532.jpg?dl=1
+- slug: '3278030196'
+  occurred_at: '2008-12-04T09:48:57-08:00'
+  title: Leaves
+  description: Leaves changing in the autumn of Japan.
+  original_image_url: https://www.dropbox.com/s/dgrmijw3z4d62gl/3278030196.jpg?dl=1
+- slug: '3278043146'
+  occurred_at: '2008-12-04T09:58:35-08:00'
+  title: ''
+  description: ''
+  original_image_url: https://www.dropbox.com/s/38n059espg31q0h/3278043146.jpg?dl=1
+- slug: '3278081616'
+  occurred_at: '2008-12-04T11:41:34-08:00'
+  title: Zen Bridge
+  description: A stone bridge in a quiet garden in Japan.
+  original_image_url: https://www.dropbox.com/s/gy6tp4sbj1gesvr/3278081616.jpg?dl=1
+- slug: '3275332848'
+  occurred_at: '2008-12-10T12:42:35-08:00'
+  title: Untitled
+  description: Seen at a park in Japan, I never properly investigated what these
     were.
-- :slug: '15016024692'
-  :occurred_at: '2011-01-16T12:41:31-08:00'
-  :title: Hair + wide angle
-  :description: Just before a cold photo walk with Dicky.
-- :slug: '5415803901'
-  :occurred_at: '2011-01-25T17:30:45-08:00'
-  :title: DSC_0349
-  :description: ''
-- :slug: '5415818729'
-  :occurred_at: '2011-01-26T09:52:27-08:00'
-  :title: DSC_0383
-  :description: ''
-- :slug: '14829671059'
-  :occurred_at: '2011-11-02T04:41:25-07:00'
-  :title: Quiet Day
-  :description: A couple reading in the park in Bruges.
-- :slug: '11574786356'
-  :occurred_at: '2011-11-12T06:24:08-08:00'
-  :title: DSC_0090
-  :description: ''
-- :slug: '11574594665'
-  :occurred_at: '2011-11-15T05:50:52-08:00'
-  :title: DSC_0160
-  :description: ''
-- :slug: '11574661473'
-  :occurred_at: '2011-11-18T11:06:56-08:00'
-  :title: DSC_0248
-  :description: ''
-- :slug: '11575402956'
-  :occurred_at: '2011-11-20T06:08:52-08:00'
-  :title: DSC_0299
-  :description: ''
-- :slug: '11574811724'
-  :occurred_at: '2011-11-21T00:47:32-08:00'
-  :title: DSC_0306
-  :description: ''
-- :slug: '9549478053'
-  :occurred_at: '2012-05-21T22:35:12-07:00'
-  :title: Berlin
-  :description: Up near the Circus Circus hostel in Berlin. A very typical German
+  original_image_url: https://www.dropbox.com/s/cn3v16pjg3vki4e/3275332848.jpg?dl=1
+- slug: '15016024692'
+  occurred_at: '2011-01-16T12:41:31-08:00'
+  title: Hair + wide angle
+  description: Just before a cold photo walk with Dicky.
+  original_image_url: https://www.dropbox.com/s/03fx3it2i29yn0s/15016024692.jpg?dl=1
+- slug: '5415803901'
+  occurred_at: '2011-01-25T17:30:45-08:00'
+  title: DSC_0349
+  description: ''
+  original_image_url: https://www.dropbox.com/s/20axh6dve343rpy/5415803901.jpg?dl=1
+- slug: '5415818729'
+  occurred_at: '2011-01-26T09:52:27-08:00'
+  title: DSC_0383
+  description: ''
+  original_image_url: https://www.dropbox.com/s/sk38yw1dnzgodwq/5415818729.jpg?dl=1
+- slug: '14829671059'
+  occurred_at: '2011-11-02T04:41:25-07:00'
+  title: Quiet Day
+  description: A couple reading in the park in Bruges.
+  original_image_url: https://www.dropbox.com/s/5h9uvzk2sae5t1w/14829671059.jpg?dl=1
+- slug: '11574786356'
+  occurred_at: '2011-11-12T06:24:08-08:00'
+  title: DSC_0090
+  description: ''
+  original_image_url: https://www.dropbox.com/s/4eo5kj34tu1xraj/11574786356.jpg?dl=1
+- slug: '11574594665'
+  occurred_at: '2011-11-15T05:50:52-08:00'
+  title: DSC_0160
+  description: ''
+  original_image_url: https://www.dropbox.com/s/b3pt3b063j0690v/11574594665.jpg?dl=1
+- slug: '11574661473'
+  occurred_at: '2011-11-18T11:06:56-08:00'
+  title: DSC_0248
+  description: ''
+  original_image_url: https://www.dropbox.com/s/4h7jfpjp6hsdqe6/11574661473.jpg?dl=1
+- slug: '11575402956'
+  occurred_at: '2011-11-20T06:08:52-08:00'
+  title: DSC_0299
+  description: ''
+  original_image_url: https://www.dropbox.com/s/9sr9r823dx3nba3/11575402956.jpg?dl=1
+- slug: '11574811724'
+  occurred_at: '2011-11-21T00:47:32-08:00'
+  title: DSC_0306
+  description: ''
+  original_image_url: https://www.dropbox.com/s/kqdpgf0razbmk6h/11574811724.jpg?dl=1
+- slug: '9549478053'
+  occurred_at: '2012-05-21T22:35:12-07:00'
+  title: Berlin
+  description: Up near the Circus Circus hostel in Berlin. A very typical German
     street and modes of transport.
-- :slug: '9552261080'
-  :occurred_at: '2012-05-21T23:36:04-07:00'
-  :title: Agora
-  :description: The Agora Collective; probably the most beautiful building I've ever
+  original_image_url: https://www.dropbox.com/s/ljzr9jxi2ok5dbr/9549478053.jpg?dl=1
+- slug: '9552261080'
+  occurred_at: '2012-05-21T23:36:04-07:00'
+  title: Agora
+  description: The Agora Collective; probably the most beautiful building I've ever
     seen.
-- :slug: '9552256132'
-  :occurred_at: '2012-05-21T23:37:08-07:00'
-  :title: German
-  :description: Agora's neighborhood had a great ambience to it.
-- :slug: '9549463099'
-  :occurred_at: '2012-05-21T23:38:19-07:00'
-  :title: Gateway
-  :description: The gate to the Agora Collective in Berlin. Situated along a very
+  original_image_url: https://www.dropbox.com/s/xtra1ke9qnp5qws/9552261080.jpg?dl=1
+- slug: '9552256132'
+  occurred_at: '2012-05-21T23:37:08-07:00'
+  title: German
+  description: Agora's neighborhood had a great ambience to it.
+  original_image_url: https://www.dropbox.com/s/zs9yx9n1gvbin2w/9552256132.jpg?dl=1
+- slug: '9549463099'
+  occurred_at: '2012-05-21T23:38:19-07:00'
+  title: Gateway
+  description: The gate to the Agora Collective in Berlin. Situated along a very
     typical (but beautiful) cobblestone street.
-- :slug: '9549457229'
-  :occurred_at: '2012-05-22T01:54:27-07:00'
-  :title: Workstation
-  :description: My desk at Agora in Berlin. As you can imagine, it was a struggle
+  original_image_url: https://www.dropbox.com/s/9ibgsyt893d4rji/9549463099.jpg?dl=1
+- slug: '9549457229'
+  occurred_at: '2012-05-22T01:54:27-07:00'
+  title: Workstation
+  description: My desk at Agora in Berlin. As you can imagine, it was a struggle
     coming to work every day.
-- :slug: '9549450965'
-  :occurred_at: '2012-05-22T01:54:47-07:00'
-  :title: The Cubicles
-  :description: My working floor at Agora in Berlin.
-- :slug: '9549445059'
-  :occurred_at: '2012-05-24T09:09:13-07:00'
-  :title: Tickets
-  :description: The most beautiful tickets I've ever seen for WGT in Leipzig.
-- :slug: '9549439913'
-  :occurred_at: '2012-05-28T16:46:24-07:00'
-  :title: Nightlife
-  :description: A candle-lined hallway at an afterparty following WGT in Leipzig.
+  original_image_url: https://www.dropbox.com/s/26f1e53bhatjiyt/9549457229.jpg?dl=1
+- slug: '9549450965'
+  occurred_at: '2012-05-22T01:54:47-07:00'
+  title: The Cubicles
+  description: My working floor at Agora in Berlin.
+  original_image_url: https://www.dropbox.com/s/an40sx1x9af65e1/9549450965.jpg?dl=1
+- slug: '9549445059'
+  occurred_at: '2012-05-24T09:09:13-07:00'
+  title: Tickets
+  description: The most beautiful tickets I've ever seen for WGT in Leipzig.
+  original_image_url: https://www.dropbox.com/s/grxtceisfpwrj3w/9549445059.jpg?dl=1
+- slug: '9549439913'
+  occurred_at: '2012-05-28T16:46:24-07:00'
+  title: Nightlife
+  description: A candle-lined hallway at an afterparty following WGT in Leipzig.
     The most thematic and beautiful party I've ever attended.
-- :slug: '11576399756'
-  :occurred_at: '2012-06-02T08:47:56-07:00'
-  :title: DSC_0482
-  :description: ''
-- :slug: '9549435523'
-  :occurred_at: '2012-06-10T02:37:25-07:00'
-  :title: Museum Island
-  :description: A fountain on Museum Island in Berlin.
-- :slug: '9552514026'
-  :occurred_at: '2012-11-18T11:17:30-08:00'
-  :title: Jellyfish
-  :description: At the world famous Monterey Bay Aquarium.
-- :slug: '9552506738'
-  :occurred_at: '2012-11-24T11:45:34-08:00'
-  :title: Bolinas
-  :description: A day drive up to the little surfing town that pulls down their own
+  original_image_url: https://www.dropbox.com/s/hlqi9z33a9unvaj/9549439913.jpg?dl=1
+- slug: '11576399756'
+  occurred_at: '2012-06-02T08:47:56-07:00'
+  title: DSC_0482
+  description: ''
+  original_image_url: https://www.dropbox.com/s/zqnheifp83cy8g7/11576399756.jpg?dl=1
+- slug: '9549435523'
+  occurred_at: '2012-06-10T02:37:25-07:00'
+  title: Museum Island
+  description: A fountain on Museum Island in Berlin.
+  original_image_url: https://www.dropbox.com/s/1xj80de54wqc44w/9549435523.jpg?dl=1
+- slug: '9552514026'
+  occurred_at: '2012-11-18T11:17:30-08:00'
+  title: Jellyfish
+  description: At the world famous Monterey Bay Aquarium.
+  original_image_url: https://www.dropbox.com/s/s5zi21pnf0eu2fe/9552514026.jpg?dl=1
+- slug: '9552506738'
+  occurred_at: '2012-11-24T11:45:34-08:00'
+  title: Bolinas
+  description: A day drive up to the little surfing town that pulls down their own
     city's sign to stay hidden. One of the few places in California that doesn't feel
     like California.
-- :slug: '9549714261'
-  :occurred_at: '2013-01-18T10:35:40-08:00'
-  :title: Tahoe
-  :description: A dock out onto Lake Tahoe. This is actually in the middle of winter,
+  original_image_url: https://www.dropbox.com/s/1cjs4eot0e36dbz/9552506738.jpg?dl=1
+- slug: '9549714261'
+  occurred_at: '2013-01-18T10:35:40-08:00'
+  title: Tahoe
+  description: A dock out onto Lake Tahoe. This is actually in the middle of winter,
     but it's hard to tell.
-- :slug: '9549710379'
-  :occurred_at: '2013-02-03T11:45:10-08:00'
-  :title: Ocean Beach
-  :description: "... and Max. A quick weekend bike ride out to Ocean Beach. The skies
+  original_image_url: https://www.dropbox.com/s/26fhxf19ni028br/9549714261.jpg?dl=1
+- slug: '9549710379'
+  occurred_at: '2013-02-03T11:45:10-08:00'
+  title: Ocean Beach
+  description: "... and Max. A quick weekend bike ride out to Ocean Beach. The skies
     were blue as they often are."
-- :slug: '9552217902'
-  :occurred_at: '2013-04-17T08:22:39-07:00'
-  :title: The Flag
-  :description: A flag of Heroku at nearby Heavybit.
-- :slug: '9552216694'
-  :occurred_at: '2013-04-20T23:11:10-07:00'
-  :title: Wawel
-  :description: A citadel on a hill in Kraków.
-- :slug: '9552207754'
-  :occurred_at: '2013-04-21T01:28:10-07:00'
-  :title: The Royal Road
-  :description: In Kraków.
-- :slug: '9549412975'
-  :occurred_at: '2013-04-21T08:41:51-07:00'
-  :title: The Salt Mines
-  :description: An amazing figure carved from rock salt at the Wieliczka Salt Mine.
+  original_image_url: https://www.dropbox.com/s/bw1fhynf2zt2t4u/9549710379.jpg?dl=1
+- slug: '9552217902'
+  occurred_at: '2013-04-17T08:22:39-07:00'
+  title: The Flag
+  description: A flag of Heroku at nearby Heavybit.
+  original_image_url: https://www.dropbox.com/s/oqafqqf46fflja6/9552217902.jpg?dl=1
+- slug: '9552216694'
+  occurred_at: '2013-04-20T23:11:10-07:00'
+  title: Wawel
+  description: A citadel on a hill in Kraków.
+  original_image_url: https://www.dropbox.com/s/m8akhm6y0kzic7i/9552216694.jpg?dl=1
+- slug: '9552207754'
+  occurred_at: '2013-04-21T01:28:10-07:00'
+  title: The Royal Road
+  description: In Kraków.
+  original_image_url: https://www.dropbox.com/s/x3ysqmtiq688cy4/9552207754.jpg?dl=1
+- slug: '9549412975'
+  occurred_at: '2013-04-21T08:41:51-07:00'
+  title: The Salt Mines
+  description: An amazing figure carved from rock salt at the Wieliczka Salt Mine.
     They also have an entire subterranean cathedral. One of the few tourist attractions
     that lives up to its reputation in every way.
-- :slug: '9549406985'
-  :occurred_at: '2013-04-22T03:22:46-07:00'
-  :title: Railsberry
-  :description: On stage at Railsberry. This conference builds on some great themes
+  original_image_url: https://www.dropbox.com/s/40zkc3v2str9pw5/9549412975.jpg?dl=1
+- slug: '9549406985'
+  occurred_at: '2013-04-22T03:22:46-07:00'
+  title: Railsberry
+  description: On stage at Railsberry. This conference builds on some great themes
     of wizardly and experimentation.
-- :slug: '9552191172'
-  :occurred_at: '2013-04-29T21:51:47-07:00'
-  :title: Magic
-  :description: 'No trip to Mexico would be complete without a draft of Magic: The
+  original_image_url: https://www.dropbox.com/s/6sb0ddkxhdxpg67/9549406985.jpg?dl=1
+- slug: '9552191172'
+  occurred_at: '2013-04-29T21:51:47-07:00'
+  title: Magic
+  description: 'No trip to Mexico would be complete without a draft of Magic: The
     Gathering.'
-- :slug: '9552125334'
-  :occurred_at: '2013-04-30T18:06:25-07:00'
-  :title: Sean & Vicki
-  :description: At their wedding dinner.
-- :slug: '9549400243'
-  :occurred_at: '2013-04-30T20:33:25-07:00'
-  :title: Derek
-  :description: Derek on the beach at Sean and Vicki's wedding in Puerta Vallerta.
-- :slug: '9552184718'
-  :occurred_at: '2013-07-29T12:02:20-07:00'
-  :title: True Loft
-  :description: The first thing we learnt about Detroit is that their lofts are unbelievable.
+  original_image_url: https://www.dropbox.com/s/3gqr6w4y24lp6hy/9552191172.jpg?dl=1
+- slug: '9552125334'
+  occurred_at: '2013-04-30T18:06:25-07:00'
+  title: Sean & Vicki
+  description: At their wedding dinner.
+  original_image_url: https://www.dropbox.com/s/hhv0vpuzzdwyc9e/9552125334.jpg?dl=1
+- slug: '9549400243'
+  occurred_at: '2013-04-30T20:33:25-07:00'
+  title: Derek
+  description: Derek on the beach at Sean and Vicki's wedding in Puerta Vallerta.
+  original_image_url: https://www.dropbox.com/s/eq59dtdpnagaa91/9549400243.jpg?dl=1
+- slug: '9552184718'
+  occurred_at: '2013-07-29T12:02:20-07:00'
+  title: True Loft
+  description: The first thing we learnt about Detroit is that their lofts are unbelievable.
     Like a movie, but better, and this one was about as quirky as they come.
-- :slug: '9552178404'
-  :occurred_at: '2013-07-31T17:38:31-07:00'
-  :title: Free Coffee
-  :description: Reads &quot;Free Coffee with purchase of Wurlitzer Building&quot;,
+  original_image_url: https://www.dropbox.com/s/vb6gtg0ufmi9gf3/9552184718.jpg?dl=1
+- slug: '9552178404'
+  occurred_at: '2013-07-31T17:38:31-07:00'
+  title: Free Coffee
+  description: Reads &quot;Free Coffee with purchase of Wurlitzer Building&quot;,
     this sign was erected by an adjacent cafe because the derelict skyscraper was
     dropping bricks on them. It was purchased, and the new owner got his free coffee.
     I hope they keep the sign.
-- :slug: '9552509530'
-  :occurred_at: '2013-08-01T01:06:30-07:00'
-  :title: Dan's
-  :description: Featuring Noah and Pedro, a bar in Detroit with one of the most beautiful
+  original_image_url: https://www.dropbox.com/s/d7mze15ttdo82en/9552178404.jpg?dl=1
+- slug: '9552509530'
+  occurred_at: '2013-08-01T01:06:30-07:00'
+  title: Dan's
+  description: Featuring Noah and Pedro, a bar in Detroit with one of the most beautiful
     outdoor terraces I'd ever seen. They even had a decommissioned torpedo lying on
     one of their hills.
-- :slug: '9552164314'
-  :occurred_at: '2013-08-01T12:43:24-07:00'
-  :title: Lit
-  :description: Another backyard photo from Noah's grandfather's place in St. Joseph.
-- :slug: '9552153368'
-  :occurred_at: '2013-08-02T15:48:05-07:00'
-  :title: The Mayans
-  :description: Ah exhibit at the Field Museum in Chicago.
-- :slug: '9549358771'
-  :occurred_at: '2013-08-03T10:26:50-07:00'
-  :title: Blue Bike
-  :description: At our AirBnB loft in Chicago. A very pretty bike and a very pretty
+  original_image_url: https://www.dropbox.com/s/2ykt85jl4y9xx80/9552509530.jpg?dl=1
+- slug: '9552164314'
+  occurred_at: '2013-08-01T12:43:24-07:00'
+  title: Lit
+  description: Another backyard photo from Noah's grandfather's place in St. Joseph.
+  original_image_url: https://www.dropbox.com/s/9gl2jtayx6xw9m2/9552164314.jpg?dl=1
+- slug: '9552153368'
+  occurred_at: '2013-08-02T15:48:05-07:00'
+  title: The Mayans
+  description: Ah exhibit at the Field Museum in Chicago.
+  original_image_url: https://www.dropbox.com/s/xzqq38agkpwe7oy/9552153368.jpg?dl=1
+- slug: '9549358771'
+  occurred_at: '2013-08-03T10:26:50-07:00'
+  title: Blue Bike
+  description: At our AirBnB loft in Chicago. A very pretty bike and a very pretty
     neighborhood.
-- :slug: '9549352707'
-  :occurred_at: '2013-08-03T11:38:49-07:00'
-  :title: '"The El"'
-  :description: Chicago's impressive public transport system.
-- :slug: '9552128892'
-  :occurred_at: '2013-08-03T14:15:10-07:00'
-  :title: The Adler
-  :description: One of the theaters at the Adler Planetarium. These multimedia presentations
+  original_image_url: https://www.dropbox.com/s/xvjovda13pqfgwq/9549358771.jpg?dl=1
+- slug: '9549352707'
+  occurred_at: '2013-08-03T11:38:49-07:00'
+  title: '"The El"'
+  description: Chicago's impressive public transport system.
+  original_image_url: https://www.dropbox.com/s/c55llkd5a01rqnq/9549352707.jpg?dl=1
+- slug: '9552128892'
+  occurred_at: '2013-08-03T14:15:10-07:00'
+  title: The Adler
+  description: One of the theaters at the Adler Planetarium. These multimedia presentations
     have come a long way since the laser shows of my youth.
-- :slug: '9552122996'
-  :occurred_at: '2013-08-04T10:50:42-07:00'
-  :title: The Bean
-  :description: Also known as Cloud Gate, a famous landmark of Chicago.
-- :slug: '9574273890'
-  :occurred_at: '2013-08-22T11:40:46-07:00'
-  :title: Deer Run
-  :description: The suburbs of my youth. Calgary is beautiful in the summer.
-- :slug: '9593660219'
-  :occurred_at: '2013-08-25T10:38:44-07:00'
-  :title: The Tea House
-  :description: Upon a return visit to Calgary, a quick hike up to the tea house at
+  original_image_url: https://www.dropbox.com/s/1xr6jobt2f7vwib/9552128892.jpg?dl=1
+- slug: '9552122996'
+  occurred_at: '2013-08-04T10:50:42-07:00'
+  title: The Bean
+  description: Also known as Cloud Gate, a famous landmark of Chicago.
+  original_image_url: https://www.dropbox.com/s/amp437tekaq8x1y/9552122996.jpg?dl=1
+- slug: '9574273890'
+  occurred_at: '2013-08-22T11:40:46-07:00'
+  title: Deer Run
+  description: The suburbs of my youth. Calgary is beautiful in the summer.
+  original_image_url: https://www.dropbox.com/s/a81my7hyt62h9qt/9574273890.jpg?dl=1
+- slug: '9593660219'
+  occurred_at: '2013-08-25T10:38:44-07:00'
+  title: The Tea House
+  description: Upon a return visit to Calgary, a quick hike up to the tea house at
     Lake Louise. It brought back some pretty good childhood memories.
-- :slug: '11527536713'
-  :occurred_at: '2013-08-29T21:24:03-07:00'
-  :title: Business in Greyscale
-  :description: My Heroku business card in sharp relief.
-- :slug: '11471537085'
-  :occurred_at: '2013-12-05T17:49:28-08:00'
-  :title: Centipede
-  :description: These old arcade games are unforgiving.
-- :slug: '11826254605'
-  :occurred_at: '2013-12-15T00:25:14-08:00'
-  :title: burcum-and-brandur-2-cropped
-  :description: ''
-- :slug: '11471669483'
-  :occurred_at: '2013-12-19T17:12:21-08:00'
-  :title: Ferry ride across Upper Arrow Lake
-  :description: As twilight falls.
-- :slug: '11471659536'
-  :occurred_at: '2013-12-20T14:24:22-08:00'
-  :title: Snowcat "Armada" at Retallack
-  :description: Our life up the hills and into fresh powder.
-- :slug: '11490999923'
-  :occurred_at: '2013-12-21T22:40:47-08:00'
-  :title: Drinking Games (Cat Skiing Style)
-  :description: ''
-- :slug: '11509466514'
-  :occurred_at: '2013-12-22T08:39:29-08:00'
-  :title: Havoc
-  :description: The Retallack mascot.
-- :slug: '11509541766'
-  :occurred_at: '2013-12-22T11:33:25-08:00'
-  :title: DSCF2617
-  :description: ''
-- :slug: '11527710044'
-  :occurred_at: '2013-12-24T01:11:58-08:00'
-  :title: Ridge Running
-  :description: Running on the slope before a Retallack descent.
-- :slug: '11542489006'
-  :occurred_at: '2013-12-24T18:39:09-08:00'
-  :title: The Family in 2013
-  :description: Christmas Eve skating down at Olympic Plaza in Calgary.
-- :slug: '11550773004'
-  :occurred_at: '2013-12-25T11:02:22-08:00'
-  :title: Thorin & Jack
-  :description: Jack modeling a shirt on Christmas morning.
-- :slug: '11661975255'
-  :occurred_at: '2013-12-30T23:28:50-08:00'
-  :title: Seahorse on the Tree
-  :description: A dive adventure souvenir on the Christmas tree.
-- :slug: '11671613536'
-  :occurred_at: '2013-12-31T10:27:53-08:00'
-  :title: Masks
-  :description: Tribal masks hanging on the wall at my parents' home. They always
+  original_image_url: https://www.dropbox.com/s/9poerdz1qtrdjd0/9593660219.jpg?dl=1
+- slug: '11527536713'
+  occurred_at: '2013-08-29T21:24:03-07:00'
+  title: Business in Greyscale
+  description: My Heroku business card in sharp relief.
+  original_image_url: https://www.dropbox.com/s/qspjoxs2cx0i4vx/11527536713.jpg?dl=1
+- slug: '11471537085'
+  occurred_at: '2013-12-05T17:49:28-08:00'
+  title: Centipede
+  description: These old arcade games are unforgiving.
+  original_image_url: https://www.dropbox.com/s/ciufba8md9ur99e/11471537085.jpg?dl=1
+- slug: '11826254605'
+  occurred_at: '2013-12-15T00:25:14-08:00'
+  title: burcum-and-brandur-2-cropped
+  description: ''
+  original_image_url: https://www.dropbox.com/s/paq7ryigzsguikf/11826254605.jpg?dl=1
+- slug: '11471669483'
+  occurred_at: '2013-12-19T17:12:21-08:00'
+  title: Ferry ride across Upper Arrow Lake
+  description: As twilight falls.
+  original_image_url: https://www.dropbox.com/s/rhv0mj4kw573hpc/11471669483.jpg?dl=1
+- slug: '11471659536'
+  occurred_at: '2013-12-20T14:24:22-08:00'
+  title: Snowcat "Armada" at Retallack
+  description: Our life up the hills and into fresh powder.
+  original_image_url: https://www.dropbox.com/s/scheuvp1uhas8re/11471659536.jpg?dl=1
+- slug: '11490999923'
+  occurred_at: '2013-12-21T22:40:47-08:00'
+  title: Drinking Games (Cat Skiing Style)
+  description: ''
+  original_image_url: https://www.dropbox.com/s/o304anhesnob6qc/11490999923.jpg?dl=1
+- slug: '11509466514'
+  occurred_at: '2013-12-22T08:39:29-08:00'
+  title: Havoc
+  description: The Retallack mascot.
+  original_image_url: https://www.dropbox.com/s/0isaq40s5gg02xm/11509466514.jpg?dl=1
+- slug: '11509541766'
+  occurred_at: '2013-12-22T11:33:25-08:00'
+  title: DSCF2617
+  description: ''
+  original_image_url: https://www.dropbox.com/s/9l90jfteu3bbr4o/11509541766.jpg?dl=1
+- slug: '11527710044'
+  occurred_at: '2013-12-24T01:11:58-08:00'
+  title: Ridge Running
+  description: Running on the slope before a Retallack descent.
+  original_image_url: https://www.dropbox.com/s/dh93dvgzsiz21ck/11527710044.jpg?dl=1
+- slug: '11542489006'
+  occurred_at: '2013-12-24T18:39:09-08:00'
+  title: The Family in 2013
+  description: Christmas Eve skating down at Olympic Plaza in Calgary.
+  original_image_url: https://www.dropbox.com/s/dxu3dek1wforo5f/11542489006.jpg?dl=1
+- slug: '11550773004'
+  occurred_at: '2013-12-25T11:02:22-08:00'
+  title: Thorin & Jack
+  description: Jack modeling a shirt on Christmas morning.
+  original_image_url: https://www.dropbox.com/s/kzvkes1wi4npyfy/11550773004.jpg?dl=1
+- slug: '11661975255'
+  occurred_at: '2013-12-30T23:28:50-08:00'
+  title: Seahorse on the Tree
+  description: A dive adventure souvenir on the Christmas tree.
+  original_image_url: https://www.dropbox.com/s/gbhlgnnftcted7u/11661975255.jpg?dl=1
+- slug: '11671613536'
+  occurred_at: '2013-12-31T10:27:53-08:00'
+  title: Masks
+  description: Tribal masks hanging on the wall at my parents' home. They always
     reminded me of &quot;Alien&quot;.
-- :slug: '11677008695'
-  :occurred_at: '2013-12-31T10:55:18-08:00'
-  :title: Hoarfrost
-  :description: The hoarfrost on some branches outside the house. Some trees in the
+  original_image_url: https://www.dropbox.com/s/nirjd81922ml5zm/11671613536.jpg?dl=1
+- slug: '11677008695'
+  occurred_at: '2013-12-31T10:55:18-08:00'
+  title: Hoarfrost
+  description: The hoarfrost on some branches outside the house. Some trees in the
     backyard had some more impressive build-up, but I would've had to ski in.
-- :slug: '11694603975'
-  :occurred_at: '2013-12-31T19:32:54-08:00'
-  :title: Calgary
-  :description: Downtown as viewed from Crescent Heights.
-- :slug: '11844216815'
-  :occurred_at: '2014-01-08T13:59:30-08:00'
-  :title: Black Beauty
-  :description: One of the most complete Tyrannosaurus Rex findings. Found near Crowsnest
+  original_image_url: https://www.dropbox.com/s/61ojjrqkzunlnuh/11677008695.jpg?dl=1
+- slug: '11694603975'
+  occurred_at: '2013-12-31T19:32:54-08:00'
+  title: Calgary
+  description: Downtown as viewed from Crescent Heights.
+  original_image_url: https://www.dropbox.com/s/165q6qyz03zm5cv/11694603975.jpg?dl=1
+- slug: '11844216815'
+  occurred_at: '2014-01-08T13:59:30-08:00'
+  title: Black Beauty
+  description: One of the most complete Tyrannosaurus Rex findings. Found near Crowsnest
     Pass, Alberta.\n
-- :slug: '11881287705'
-  :occurred_at: '2014-01-10T21:19:41-08:00'
-  :title: DSCF2782
-  :description: ''
-- :slug: '11894493664'
-  :occurred_at: '2014-01-10T22:31:11-08:00'
-  :title: Bamboo with Inner Light
-  :description: A lit grove of nature's most zen plant down by UCSF Mission Bay.
-- :slug: '12024106604'
-  :occurred_at: '2014-01-18T20:09:49-08:00'
-  :title: Rings
-  :description: Modern art in downtown San Francisco.\n
-- :slug: '12024172695'
-  :occurred_at: '2014-01-18T20:31:26-08:00'
-  :title: Fool's Golden Gate
-  :description: The Bay Bridge to Yerba Buena Island lit at night.
-- :slug: '12160170195'
-  :occurred_at: '2014-01-26T14:55:21-08:00'
-  :title: Meatspace Banner
-  :description: The Heroku logo beautifully rendered with wood, metal, and glass.
-- :slug: '12209202776'
-  :occurred_at: '2014-01-28T21:15:06-08:00'
-  :title: The Ferry Building
-  :description: The San Francisco landmark at night with some cloud cover rolling
+  original_image_url: https://www.dropbox.com/s/fp8yni5f2keemtv/11844216815.jpg?dl=1
+- slug: '11881287705'
+  occurred_at: '2014-01-10T21:19:41-08:00'
+  title: DSCF2782
+  description: ''
+  original_image_url: https://www.dropbox.com/s/mixknef8o2wuqeo/11881287705.jpg?dl=1
+- slug: '11894493664'
+  occurred_at: '2014-01-10T22:31:11-08:00'
+  title: Bamboo with Inner Light
+  description: A lit grove of nature's most zen plant down by UCSF Mission Bay.
+  original_image_url: https://www.dropbox.com/s/h9b7uj3ul0r8qut/11894493664.jpg?dl=1
+- slug: '12024106604'
+  occurred_at: '2014-01-18T20:09:49-08:00'
+  title: Rings
+  description: Modern art in downtown San Francisco.\n
+  original_image_url: https://www.dropbox.com/s/qicec8q2mf6d55j/12024106604.jpg?dl=1
+- slug: '12024172695'
+  occurred_at: '2014-01-18T20:31:26-08:00'
+  title: Fool's Golden Gate
+  description: The Bay Bridge to Yerba Buena Island lit at night.
+  original_image_url: https://www.dropbox.com/s/8vfxnyx4rx8za5i/12024172695.jpg?dl=1
+- slug: '12160170195'
+  occurred_at: '2014-01-26T14:55:21-08:00'
+  title: Meatspace Banner
+  description: The Heroku logo beautifully rendered with wood, metal, and glass.
+  original_image_url: https://www.dropbox.com/s/rh1kwjk1ktuwrsh/12160170195.jpg?dl=1
+- slug: '12209202776'
+  occurred_at: '2014-01-28T21:15:06-08:00'
+  title: The Ferry Building
+  description: The San Francisco landmark at night with some cloud cover rolling
     into the financial district.
-- :slug: '12208587105'
-  :occurred_at: '2014-01-28T22:02:02-08:00'
-  :title: Local Edition
-  :description: The SF staple and its renowned mixologists.
-- :slug: '12229569636'
-  :occurred_at: '2014-01-30T18:32:49-08:00'
-  :title: Hourglass
-  :description: I replaced Breaktime with a more traditional form of timer.\n
-- :slug: '12258030614'
-  :occurred_at: '2014-01-31T08:57:07-08:00'
-  :title: Sightglass
-  :description: An unofficial hub of the San Francisco start-up scene. No wi-fi.
-- :slug: '12398673305'
-  :occurred_at: '2014-02-08T19:22:53-08:00'
-  :title: North Beach
-  :description: The street on Saturday night.
-- :slug: '12454459233'
-  :occurred_at: '2014-02-08T19:51:06-08:00'
-  :title: The Pier
-  :description: It was quite a storm.
-- :slug: '12454296005'
-  :occurred_at: '2014-02-10T14:51:40-08:00'
-  :title: Work at Stable
-  :description: Leather, glass, and aluminum.
-- :slug: '12454803254'
-  :occurred_at: '2014-02-10T14:54:51-08:00'
-  :title: Succulents at Stable
-  :description: A very beautiful workspace.
-- :slug: '12454802244'
-  :occurred_at: '2014-02-11T01:22:35-08:00'
-  :title: Pedro
-  :description: The tech lead.
-- :slug: '12454801794'
-  :occurred_at: '2014-02-11T01:32:06-08:00'
-  :title: Jamu
-  :description: The boss.
-- :slug: '12454801324'
-  :occurred_at: '2014-02-11T02:27:09-08:00'
-  :title: Brain Wash
-  :description: The most interesting place in the city to do your laundry.
-- :slug: '12495773144'
-  :occurred_at: '2014-02-12T22:01:25-08:00'
-  :title: Bike Wall
-  :description: Modern art in the lobby of the Akamai building.
-- :slug: '12495412803'
-  :occurred_at: '2014-02-12T23:33:34-08:00'
-  :title: The Grove
-  :description: First cafe I visited in San Francisco. Still one of the best.
-- :slug: '12502087755'
-  :occurred_at: '2014-02-13T09:03:06-08:00'
-  :title: Academia and Coffee
-  :description: A paper.
-- :slug: '12555121605'
-  :occurred_at: '2014-02-15T21:54:30-08:00'
-  :title: Muji
-  :description: Muji in SOMA.
-- :slug: '12671551683'
-  :occurred_at: '2014-02-20T22:51:11-08:00'
-  :title: Omnium Gatherum
-  :description: Metal forks fly for the Finnish melodic metal band.\n
-- :slug: '12736104604'
-  :occurred_at: '2014-02-23T11:33:51-08:00'
-  :title: Launch Hack
-  :description: Day three of the Launch hackathon. This is crunch time. Shot at the
+  original_image_url: https://www.dropbox.com/s/22ia4pzu68dbt9b/12209202776.jpg?dl=1
+- slug: '12208587105'
+  occurred_at: '2014-01-28T22:02:02-08:00'
+  title: Local Edition
+  description: The SF staple and its renowned mixologists.
+  original_image_url: https://www.dropbox.com/s/htus409aaglhar5/12208587105.jpg?dl=1
+- slug: '12229569636'
+  occurred_at: '2014-01-30T18:32:49-08:00'
+  title: Hourglass
+  description: I replaced Breaktime with a more traditional form of timer.\n
+  original_image_url: https://www.dropbox.com/s/nqtvmz0ndoc7oid/12229569636.jpg?dl=1
+- slug: '12258030614'
+  occurred_at: '2014-01-31T08:57:07-08:00'
+  title: Sightglass
+  description: An unofficial hub of the San Francisco start-up scene. No wi-fi.
+  original_image_url: https://www.dropbox.com/s/3pzitudw9u7is2k/12258030614.jpg?dl=1
+- slug: '12398673305'
+  occurred_at: '2014-02-08T19:22:53-08:00'
+  title: North Beach
+  description: The street on Saturday night.
+  original_image_url: https://www.dropbox.com/s/m9oh8ygn9mzsa5c/12398673305.jpg?dl=1
+- slug: '12454459233'
+  occurred_at: '2014-02-08T19:51:06-08:00'
+  title: The Pier
+  description: It was quite a storm.
+  original_image_url: https://www.dropbox.com/s/35tygztr1kx5fwp/12454459233.jpg?dl=1
+- slug: '12454296005'
+  occurred_at: '2014-02-10T14:51:40-08:00'
+  title: Work at Stable
+  description: Leather, glass, and aluminum.
+  original_image_url: https://www.dropbox.com/s/dxil6syf133er3w/12454296005.jpg?dl=1
+- slug: '12454803254'
+  occurred_at: '2014-02-10T14:54:51-08:00'
+  title: Succulents at Stable
+  description: A very beautiful workspace.
+  original_image_url: https://www.dropbox.com/s/5hfwq076bmkdwyc/12454803254.jpg?dl=1
+- slug: '12454802244'
+  occurred_at: '2014-02-11T01:22:35-08:00'
+  title: Pedro
+  description: The tech lead.
+  original_image_url: https://www.dropbox.com/s/goyhzatjyaoqa5n/12454802244.jpg?dl=1
+- slug: '12454801794'
+  occurred_at: '2014-02-11T01:32:06-08:00'
+  title: Jamu
+  description: The boss.
+  original_image_url: https://www.dropbox.com/s/crgtvw8pylrhqmr/12454801794.jpg?dl=1
+- slug: '12454801324'
+  occurred_at: '2014-02-11T02:27:09-08:00'
+  title: Brain Wash
+  description: The most interesting place in the city to do your laundry.
+  original_image_url: https://www.dropbox.com/s/tema41don1zyp06/12454801324.jpg?dl=1
+- slug: '12495773144'
+  occurred_at: '2014-02-12T22:01:25-08:00'
+  title: Bike Wall
+  description: Modern art in the lobby of the Akamai building.
+  original_image_url: https://www.dropbox.com/s/3bdzahtyogogwwm/12495773144.jpg?dl=1
+- slug: '12495412803'
+  occurred_at: '2014-02-12T23:33:34-08:00'
+  title: The Grove
+  description: First cafe I visited in San Francisco. Still one of the best.
+  original_image_url: https://www.dropbox.com/s/m0grm866gicreew/12495412803.jpg?dl=1
+- slug: '12502087755'
+  occurred_at: '2014-02-13T09:03:06-08:00'
+  title: Academia and Coffee
+  description: A paper.
+  original_image_url: https://www.dropbox.com/s/10uqyeni4c2hzm2/12502087755.jpg?dl=1
+- slug: '12555121605'
+  occurred_at: '2014-02-15T21:54:30-08:00'
+  title: Muji
+  description: Muji in SOMA.
+  original_image_url: https://www.dropbox.com/s/wzcpttlk3av6mj6/12555121605.jpg?dl=1
+- slug: '12671551683'
+  occurred_at: '2014-02-20T22:51:11-08:00'
+  title: Omnium Gatherum
+  description: Metal forks fly for the Finnish melodic metal band.\n
+  original_image_url: https://www.dropbox.com/s/g30e6kq322xei6v/12671551683.jpg?dl=1
+- slug: '12736104604'
+  occurred_at: '2014-02-23T11:33:51-08:00'
+  title: Launch Hack
+  description: Day three of the Launch hackathon. This is crunch time. Shot at the
     Concourse.
-- :slug: '12984651003'
-  :occurred_at: '2014-03-06T20:54:31-08:00'
-  :title: Lights in Austin
-  :description: Apparently roads in Austin don't have sidewalks. Oh well, at least
+  original_image_url: https://www.dropbox.com/s/rf10dggwl7kt90w/12736104604.jpg?dl=1
+- slug: '12984651003'
+  occurred_at: '2014-03-06T20:54:31-08:00'
+  title: Lights in Austin
+  description: Apparently roads in Austin don't have sidewalks. Oh well, at least
     this tree looks nice.
-- :slug: '12992726535'
-  :occurred_at: '2014-03-07T10:15:56-08:00'
-  :title: Veronica Mars
-  :description: Screening at SXSW.
-- :slug: '13005179763'
-  :occurred_at: '2014-03-07T20:06:38-08:00'
-  :title: Madi Diaz @ Hangar
-  :description: Thanks to Abe for talking us into this party.
-- :slug: '13005077315'
-  :occurred_at: '2014-03-07T21:12:44-08:00'
-  :title: From the Rooftop
-  :description: Looking down at the attendees and pedicabs of SXSW.
-- :slug: '13025422614'
-  :occurred_at: '2014-03-08T19:10:06-08:00'
-  :title: 6th
-  :description: 6th St on the Saturday of SXSW.
-- :slug: '13073603254'
-  :occurred_at: '2014-03-10T15:17:14-07:00'
-  :title: The Berlin Panel
-  :description: The Berlin panel on start-ups at the German Haus during SXSW 2014.
-- :slug: '13100506493'
-  :occurred_at: '2014-03-11T16:01:20-07:00'
-  :title: Linda's Alcove
-  :description: Linda's backyard alcove in Austin.
-- :slug: '13100687934'
-  :occurred_at: '2014-03-11T23:20:49-07:00'
-  :title: Kiss
-  :description: And a little late night pizza.
-- :slug: '13142898524'
-  :occurred_at: '2014-03-13T19:25:12-07:00'
-  :title: Hypermedia
-  :description: 'Mike Amundsen talking about Hypermedia APIs at API Craft #3.'
-- :slug: '13259121454'
-  :occurred_at: '2014-03-18T21:09:22-07:00'
-  :title: Computer Lib
-  :description: Awesome large format magazine spotted at the offices of Stripe.
-- :slug: '13479138283'
-  :occurred_at: '2014-03-22T23:10:59-07:00'
-  :title: Chinatown
-  :description: In San Francisco.
-- :slug: '13479139053'
-  :occurred_at: '2014-03-25T22:27:15-07:00'
-  :title: API
-  :description: A team off-site dinner at Foreign Cinema.
-- :slug: '13970830425'
-  :occurred_at: '2014-04-06T17:13:56-07:00'
-  :title: S. / Ship of Theseus
-  :description: A very cool experiment in new media.
-- :slug: '13970842715'
-  :occurred_at: '2014-04-15T17:44:53-07:00'
-  :title: The Sausalito Sea Lion
-  :description: A fifty year old Sausalito landmark by Al Sybrian.
-- :slug: '14051556834'
-  :occurred_at: '2014-04-26T13:58:37-07:00'
-  :title: Kiting at Ocean Beach
-  :description: All the kiteboarders were out at OB this weekend.
-- :slug: '13966686808'
-  :occurred_at: '2014-05-10T07:29:57-07:00'
-  :title: Gateway
-  :description: A courtyard in Berlin.
-- :slug: '14154045364'
-  :occurred_at: '2014-05-10T07:34:23-07:00'
-  :title: Vines
-  :description: Green buildings in Berlin.
-- :slug: '13970029819'
-  :occurred_at: '2014-05-10T11:57:15-07:00'
-  :title: Place at Maybachufer
-  :description: Apartment with a view out onto its accompanying courtyard. Berlin.
-- :slug: '14156390742'
-  :occurred_at: '2014-05-11T03:10:15-07:00'
-  :title: Checkpoint Charlie
-  :description: A nice remnant from the Cold War from the checkpoint between East
+  original_image_url: https://www.dropbox.com/s/92xfl7cb1lf68ip/12984651003.jpg?dl=1
+- slug: '12992726535'
+  occurred_at: '2014-03-07T10:15:56-08:00'
+  title: Veronica Mars
+  description: Screening at SXSW.
+  original_image_url: https://www.dropbox.com/s/9bp4mvmlutezrgq/12992726535.jpg?dl=1
+- slug: '13005179763'
+  occurred_at: '2014-03-07T20:06:38-08:00'
+  title: Madi Diaz @ Hangar
+  description: Thanks to Abe for talking us into this party.
+  original_image_url: https://www.dropbox.com/s/eclzwjl9pex11xg/13005179763.jpg?dl=1
+- slug: '13005077315'
+  occurred_at: '2014-03-07T21:12:44-08:00'
+  title: From the Rooftop
+  description: Looking down at the attendees and pedicabs of SXSW.
+  original_image_url: https://www.dropbox.com/s/9zirjqqbgqw87z2/13005077315.jpg?dl=1
+- slug: '13025422614'
+  occurred_at: '2014-03-08T19:10:06-08:00'
+  title: 6th
+  description: 6th St on the Saturday of SXSW.
+  original_image_url: https://www.dropbox.com/s/htekga3eg0je007/13025422614.jpg?dl=1
+- slug: '13073603254'
+  occurred_at: '2014-03-10T15:17:14-07:00'
+  title: The Berlin Panel
+  description: The Berlin panel on start-ups at the German Haus during SXSW 2014.
+  original_image_url: https://www.dropbox.com/s/b7wf4pbxet7uvct/13073603254.jpg?dl=1
+- slug: '13100506493'
+  occurred_at: '2014-03-11T16:01:20-07:00'
+  title: Linda's Alcove
+  description: Linda's backyard alcove in Austin.
+  original_image_url: https://www.dropbox.com/s/j5tw4xxkg1gnhwi/13100506493.jpg?dl=1
+- slug: '13100687934'
+  occurred_at: '2014-03-11T23:20:49-07:00'
+  title: Kiss
+  description: And a little late night pizza.
+  original_image_url: https://www.dropbox.com/s/04qj1np1th0ctpp/13100687934.jpg?dl=1
+- slug: '13142898524'
+  occurred_at: '2014-03-13T19:25:12-07:00'
+  title: Hypermedia
+  description: 'Mike Amundsen talking about Hypermedia APIs at API Craft #3.'
+  original_image_url: https://www.dropbox.com/s/dy8cccnx2ldwypy/13142898524.jpg?dl=1
+- slug: '13259121454'
+  occurred_at: '2014-03-18T21:09:22-07:00'
+  title: Computer Lib
+  description: Awesome large format magazine spotted at the offices of Stripe.
+  original_image_url: https://www.dropbox.com/s/rsd6a7zozymoity/13259121454.jpg?dl=1
+- slug: '13479138283'
+  occurred_at: '2014-03-22T23:10:59-07:00'
+  title: Chinatown
+  description: In San Francisco.
+  original_image_url: https://www.dropbox.com/s/fz3xv754ju4by6s/13479138283.jpg?dl=1
+- slug: '13479139053'
+  occurred_at: '2014-03-25T22:27:15-07:00'
+  title: API
+  description: A team off-site dinner at Foreign Cinema.
+  original_image_url: https://www.dropbox.com/s/pv8xz4dwtsmrgt5/13479139053.jpg?dl=1
+- slug: '13970830425'
+  occurred_at: '2014-04-06T17:13:56-07:00'
+  title: S. / Ship of Theseus
+  description: A very cool experiment in new media.
+  original_image_url: https://www.dropbox.com/s/99ox652m0qproft/13970830425.jpg?dl=1
+- slug: '13970842715'
+  occurred_at: '2014-04-15T17:44:53-07:00'
+  title: The Sausalito Sea Lion
+  description: A fifty year old Sausalito landmark by Al Sybrian.
+  original_image_url: https://www.dropbox.com/s/0ngbwobn6usd65a/13970842715.jpg?dl=1
+- slug: '14051556834'
+  occurred_at: '2014-04-26T13:58:37-07:00'
+  title: Kiting at Ocean Beach
+  description: All the kiteboarders were out at OB this weekend.
+  original_image_url: https://www.dropbox.com/s/2oiyouwz975ivxm/14051556834.jpg?dl=1
+- slug: '13966686808'
+  occurred_at: '2014-05-10T07:29:57-07:00'
+  title: Gateway
+  description: A courtyard in Berlin.
+  original_image_url: https://www.dropbox.com/s/7rcj879yfy7td1i/13966686808.jpg?dl=1
+- slug: '14154045364'
+  occurred_at: '2014-05-10T07:34:23-07:00'
+  title: Vines
+  description: Green buildings in Berlin.
+  original_image_url: https://www.dropbox.com/s/qxoqcc76l73r4gr/14154045364.jpg?dl=1
+- slug: '13970029819'
+  occurred_at: '2014-05-10T11:57:15-07:00'
+  title: Place at Maybachufer
+  description: Apartment with a view out onto its accompanying courtyard. Berlin.
+  original_image_url: https://www.dropbox.com/s/ax43y1vfi91xjxm/13970029819.jpg?dl=1
+- slug: '14156390742'
+  occurred_at: '2014-05-11T03:10:15-07:00'
+  title: Checkpoint Charlie
+  description: A nice remnant from the Cold War from the checkpoint between East
     and West Berlin.\n\n
-- :slug: '13972550978'
-  :occurred_at: '2014-05-11T04:05:15-07:00'
-  :title: A Stately Building
-  :description: So many buildings in Berlin are elegant intersections between architecture,
+  original_image_url: https://www.dropbox.com/s/jjrap73ueutqt2s/14156390742.jpg?dl=1
+- slug: '13972550978'
+  occurred_at: '2014-05-11T04:05:15-07:00'
+  title: A Stately Building
+  description: So many buildings in Berlin are elegant intersections between architecture,
     history, nature, and (street) art.
-- :slug: '14202848271'
-  :occurred_at: '2014-05-17T04:09:06-07:00'
-  :title: Markthalle
-  :description: A local farmer's market in Kreuzberg (that also contains a delicious
+  original_image_url: https://www.dropbox.com/s/650h150wp3wi4ij/13972550978.jpg?dl=1
+- slug: '14202848271'
+  occurred_at: '2014-05-17T04:09:06-07:00'
+  title: Markthalle
+  description: A local farmer's market in Kreuzberg (that also contains a delicious
     BBQ place).
-- :slug: '14206154795'
-  :occurred_at: '2014-05-17T05:22:55-07:00'
-  :title: Window
-  :description: Building along Puschkinallee.
-- :slug: '14019506490'
-  :occurred_at: '2014-05-17T05:27:39-07:00'
-  :title: Twisted Alley
-  :description: Looking at a tax down Am Flutgraben.
-- :slug: '14226297863'
-  :occurred_at: '2014-05-17T05:37:53-07:00'
-  :title: Final Tour
-  :description: A half-sunken ship in the Spree near Molecule Man.
-- :slug: '14206025914'
-  :occurred_at: '2014-05-17T05:42:37-07:00'
-  :title: Molecule Man
-  :description: A sculpture in the Spree river. A sister sculpture is installed in
+  original_image_url: https://www.dropbox.com/s/7b0zm44pjfifwn1/14202848271.jpg?dl=1
+- slug: '14206154795'
+  occurred_at: '2014-05-17T05:22:55-07:00'
+  title: Window
+  description: Building along Puschkinallee.
+  original_image_url: https://www.dropbox.com/s/xzfcmdyir7fg1gw/14206154795.jpg?dl=1
+- slug: '14019506490'
+  occurred_at: '2014-05-17T05:27:39-07:00'
+  title: Twisted Alley
+  description: Looking at a tax down Am Flutgraben.
+  original_image_url: https://www.dropbox.com/s/en7l8w5735rr7am/14019506490.jpg?dl=1
+- slug: '14226297863'
+  occurred_at: '2014-05-17T05:37:53-07:00'
+  title: Final Tour
+  description: A half-sunken ship in the Spree near Molecule Man.
+  original_image_url: https://www.dropbox.com/s/ehpnb1jnkncmx9i/14226297863.jpg?dl=1
+- slug: '14206025914'
+  occurred_at: '2014-05-17T05:42:37-07:00'
+  title: Molecule Man
+  description: A sculpture in the Spree river. A sister sculpture is installed in
     Council Bluffs, Iowa.
-- :slug: '14266613992'
-  :occurred_at: '2014-05-24T03:56:04-07:00'
-  :title: Loom
-  :description: At the German Museum of Technology in Berlin.
-- :slug: '14082036448'
-  :occurred_at: '2014-05-24T05:00:11-07:00'
-  :title: Staring Down the Blade
-  :description: Up close and personal with a fighter at the German Museum of Technology
+  original_image_url: https://www.dropbox.com/s/ia16ec45jrjszle/14206025914.jpg?dl=1
+- slug: '14266613992'
+  occurred_at: '2014-05-24T03:56:04-07:00'
+  title: Loom
+  description: At the German Museum of Technology in Berlin.
+  original_image_url: https://www.dropbox.com/s/0bua0gnmcg26z8j/14266613992.jpg?dl=1
+- slug: '14082036448'
+  occurred_at: '2014-05-24T05:00:11-07:00'
+  title: Staring Down the Blade
+  description: Up close and personal with a fighter at the German Museum of Technology
     in Berlin.\n
-- :slug: '14268603055'
-  :occurred_at: '2014-05-24T06:04:03-07:00'
-  :title: Turntable
-  :description: In the outdoor grounds of the German Museum of Technology in Berlin.
-- :slug: '14081935549'
-  :occurred_at: '2014-05-25T05:29:48-07:00'
-  :title: Ancient
-  :description: An Egyptian tablet at the Neues Museum in Berlin.\n
-- :slug: '14081939868'
-  :occurred_at: '2014-05-25T05:31:19-07:00'
-  :title: Frozen in Time
-  :description: An Egyptian statue at the Neues Museum in Berlin.
-- :slug: '14288465221'
-  :occurred_at: '2014-05-28T00:04:30-07:00'
-  :title: Scooters in Neukölln
-  :description: Colored scooters in front of an AirBnB I was staying at in Neukölln.
-- :slug: '14273020986'
-  :occurred_at: '2014-05-28T12:14:22-07:00'
-  :title: DSCF3942
-  :description: ''
-- :slug: '14273018316'
-  :occurred_at: '2014-05-28T12:39:48-07:00'
-  :title: DSCF3966
-  :description: ''
-- :slug: '14310432731'
-  :occurred_at: '2014-05-29T12:28:17-07:00'
-  :title: Barcelona
-  :description: One of my favorite features of the city is the abundance of vegetation
+  original_image_url: https://www.dropbox.com/s/752xhpkjafub0ag/14082036448.jpg?dl=1
+- slug: '14268603055'
+  occurred_at: '2014-05-24T06:04:03-07:00'
+  title: Turntable
+  description: In the outdoor grounds of the German Museum of Technology in Berlin.
+  original_image_url: https://www.dropbox.com/s/26qae2obize99y1/14268603055.jpg?dl=1
+- slug: '14081935549'
+  occurred_at: '2014-05-25T05:29:48-07:00'
+  title: Ancient
+  description: An Egyptian tablet at the Neues Museum in Berlin.\n
+  original_image_url: https://www.dropbox.com/s/7t8hav2van4lo8s/14081935549.jpg?dl=1
+- slug: '14081939868'
+  occurred_at: '2014-05-25T05:31:19-07:00'
+  title: Frozen in Time
+  description: An Egyptian statue at the Neues Museum in Berlin.
+  original_image_url: https://www.dropbox.com/s/ghlo3ut7zyxji79/14081939868.jpg?dl=1
+- slug: '14288465221'
+  occurred_at: '2014-05-28T00:04:30-07:00'
+  title: Scooters in Neukölln
+  description: Colored scooters in front of an AirBnB I was staying at in Neukölln.
+  original_image_url: https://www.dropbox.com/s/medff14yf9ff4mz/14288465221.jpg?dl=1
+- slug: '14273020986'
+  occurred_at: '2014-05-28T12:14:22-07:00'
+  title: DSCF3942
+  description: ''
+  original_image_url: https://www.dropbox.com/s/5qbhktu7apsswor/14273020986.jpg?dl=1
+- slug: '14273018316'
+  occurred_at: '2014-05-28T12:39:48-07:00'
+  title: DSCF3966
+  description: ''
+  original_image_url: https://www.dropbox.com/s/z1al9zsrilfru2o/14273018316.jpg?dl=1
+- slug: '14310432731'
+  occurred_at: '2014-05-29T12:28:17-07:00'
+  title: Barcelona
+  description: One of my favorite features of the city is the abundance of vegetation
     hanging off balcony windows.
-- :slug: '14313761975'
-  :occurred_at: '2014-05-30T06:06:10-07:00'
-  :title: API Days Mediterranea
-  :description: A great two-day conference on APIs in Barcelona.
-- :slug: '14311907192'
-  :occurred_at: '2014-05-31T03:59:11-07:00'
-  :title: Estracio de Franca
-  :description: Yet another magnificent (and huge) train station in Europe.
-- :slug: '14333914403'
-  :occurred_at: '2014-05-31T05:31:21-07:00'
-  :title: Courtyard
-  :description: Yet another beautiful Barcelona streetscape.
-- :slug: '14326166054'
-  :occurred_at: '2014-06-01T02:36:26-07:00'
-  :title: Roman Inscription
-  :description: Latin carved into stone.
-- :slug: '14303694096'
-  :occurred_at: '2014-06-01T03:15:46-07:00'
-  :title: Miniature Barcelona
-  :description: A miniature model of the city. Reminds me of the intro to Game of
+  original_image_url: https://www.dropbox.com/s/gf7f1vb9q0r16af/14310432731.jpg?dl=1
+- slug: '14313761975'
+  occurred_at: '2014-05-30T06:06:10-07:00'
+  title: API Days Mediterranea
+  description: A great two-day conference on APIs in Barcelona.
+  original_image_url: https://www.dropbox.com/s/agyxqc9jfymyi4w/14313761975.jpg?dl=1
+- slug: '14311907192'
+  occurred_at: '2014-05-31T03:59:11-07:00'
+  title: Estracio de Franca
+  description: Yet another magnificent (and huge) train station in Europe.
+  original_image_url: https://www.dropbox.com/s/qm9ps94ruy1i61a/14311907192.jpg?dl=1
+- slug: '14333914403'
+  occurred_at: '2014-05-31T05:31:21-07:00'
+  title: Courtyard
+  description: Yet another beautiful Barcelona streetscape.
+  original_image_url: https://www.dropbox.com/s/z011xkpp14agbjd/14333914403.jpg?dl=1
+- slug: '14326166054'
+  occurred_at: '2014-06-01T02:36:26-07:00'
+  title: Roman Inscription
+  description: Latin carved into stone.
+  original_image_url: https://www.dropbox.com/s/xgholiddihifblw/14326166054.jpg?dl=1
+- slug: '14303694096'
+  occurred_at: '2014-06-01T03:15:46-07:00'
+  title: Miniature Barcelona
+  description: A miniature model of the city. Reminds me of the intro to Game of
     Thrones.
-- :slug: '14326139144'
-  :occurred_at: '2014-06-01T04:03:56-07:00'
-  :title: Barcelona Street
-  :description: A prototypical street in Barcelona.
-- :slug: '14140159948'
-  :occurred_at: '2014-06-01T05:57:49-07:00'
-  :title: Plaça del Mar
-  :description: Some people stand-up paddle boarding down at the beach in Barcelona.
-- :slug: '14354348741'
-  :occurred_at: '2014-06-02T01:44:07-07:00'
-  :title: Temple of Augustus
-  :description: Nestled away in the back streets of Barcelona is a two thousand year
+  original_image_url: https://www.dropbox.com/s/uj2fdhtlgshahm9/14303694096.jpg?dl=1
+- slug: '14326139144'
+  occurred_at: '2014-06-01T04:03:56-07:00'
+  title: Barcelona Street
+  description: A prototypical street in Barcelona.
+  original_image_url: https://www.dropbox.com/s/rsirshj1nprgt8u/14326139144.jpg?dl=1
+- slug: '14140159948'
+  occurred_at: '2014-06-01T05:57:49-07:00'
+  title: Plaça del Mar
+  description: Some people stand-up paddle boarding down at the beach in Barcelona.
+  original_image_url: https://www.dropbox.com/s/5xpex3z221jogas/14140159948.jpg?dl=1
+- slug: '14354348741'
+  occurred_at: '2014-06-02T01:44:07-07:00'
+  title: Temple of Augustus
+  description: Nestled away in the back streets of Barcelona is a two thousand year
     old Roman monument to the empire's first emperor.
-- :slug: '14171164567'
-  :occurred_at: '2014-06-05T03:33:06-07:00'
-  :title: Garden of Exile
-  :description: A beautiful architectural sculpture consistently of 49 tall concrete
+  original_image_url: https://www.dropbox.com/s/dj04bgauoixerud/14354348741.jpg?dl=1
+- slug: '14171164567'
+  occurred_at: '2014-06-05T03:33:06-07:00'
+  title: Garden of Exile
+  description: A beautiful architectural sculpture consistently of 49 tall concrete
     pillars.
-- :slug: '14171152457'
-  :occurred_at: '2014-06-05T05:15:07-07:00'
-  :title: Jewish Museum Berlin
-  :description: A photographic exhibit (and Clarice) at the Jewish Museum in Berlin.
-- :slug: '14389345291'
-  :occurred_at: '2014-06-10T05:39:52-07:00'
-  :title: Völkerschlachtdenkmal
-  :description: Monument to the Battle of the Nations commemorating Napolean's defeat
+  original_image_url: https://www.dropbox.com/s/zkb4si03qwp2g9j/14171164567.jpg?dl=1
+- slug: '14171152457'
+  occurred_at: '2014-06-05T05:15:07-07:00'
+  title: Jewish Museum Berlin
+  description: A photographic exhibit (and Clarice) at the Jewish Museum in Berlin.
+  original_image_url: https://www.dropbox.com/s/ezxoead3ar3ftnm/14171152457.jpg?dl=1
+- slug: '14389345291'
+  occurred_at: '2014-06-10T05:39:52-07:00'
+  title: Völkerschlachtdenkmal
+  description: Monument to the Battle of the Nations commemorating Napolean's defeat
     at Leipzig. This sheer scale of this structure is absolutely breathtaking in person.
     During WGT, a few concerts are played in the crypt at the top, which is the most
     metal thing possible.
-- :slug: '14369588396'
-  :occurred_at: '2014-06-10T06:01:19-07:00'
-  :title: Südfriedhof
-  :description: Südfriedhof or South Cemetary, a huge cemetary in Leipzig.
-- :slug: '14391308102'
-  :occurred_at: '2014-06-10T07:46:42-07:00'
-  :title: Bach
-  :description: The grave of Bach which was moved to St. Thomas Church in Leipzig
+  original_image_url: https://www.dropbox.com/s/ui25dlo397k5wuw/14389345291.jpg?dl=1
+- slug: '14369588396'
+  occurred_at: '2014-06-10T06:01:19-07:00'
+  title: Südfriedhof
+  description: Südfriedhof or South Cemetary, a huge cemetary in Leipzig.
+  original_image_url: https://www.dropbox.com/s/wnsp3lvd5xlbda1/14369588396.jpg?dl=1
+- slug: '14391308102'
+  occurred_at: '2014-06-10T07:46:42-07:00'
+  title: Bach
+  description: The grave of Bach which was moved to St. Thomas Church in Leipzig
     after the destruction of Leipzig Johanneskirche.
-- :slug: '14532382471'
-  :occurred_at: '2014-06-22T13:48:05-07:00'
-  :title: Heath Ceramics
-  :description: Local manufacturer of somewhat pricey ceramics products.
-- :slug: '14512637056'
-  :occurred_at: '2014-06-29T09:43:31-07:00'
-  :title: Atlas
-  :description: A great cafe in the Mission district of San Francisco.
-- :slug: '14453553348'
-  :occurred_at: '2014-07-10T13:33:18-07:00'
-  :title: The Javits
-  :description: The Javits Convention Center in New York.
-- :slug: '14453502200'
-  :occurred_at: '2014-07-10T19:04:46-07:00'
-  :title: Apple
-  :description: The fifth avenue Apple &quot;cube&quot; in New York.
-- :slug: '14638000204'
-  :occurred_at: '2014-07-11T10:59:38-07:00'
-  :title: Silt Gongs
-  :description: From the Oceania display at the Met.
-- :slug: '14453510490'
-  :occurred_at: '2014-07-11T11:39:35-07:00'
-  :title: Gertrude Stein
-  :description: By Picasso. At the Met.
-- :slug: '14660079123'
-  :occurred_at: '2014-07-11T12:34:37-07:00'
-  :title: The Temple of Dendur
-  :description: Located in the Egyptian section at the Met in New York.
-- :slug: '14453513100'
-  :occurred_at: '2014-07-11T20:07:46-07:00'
-  :title: New York at Night
-  :description: The view from my hotel's balcony at night.
-- :slug: '14621154316'
-  :occurred_at: '2014-07-13T04:37:49-07:00'
-  :title: Grand Central Station
-  :description: New York's famous rail station. Note the Apple logo centered at the
+  original_image_url: https://www.dropbox.com/s/3z2p4elt482tzkn/14391308102.jpg?dl=1
+- slug: '14532382471'
+  occurred_at: '2014-06-22T13:48:05-07:00'
+  title: Heath Ceramics
+  description: Local manufacturer of somewhat pricey ceramics products.
+  original_image_url: https://www.dropbox.com/s/0k2s6clliuigs1x/14532382471.jpg?dl=1
+- slug: '14512637056'
+  occurred_at: '2014-06-29T09:43:31-07:00'
+  title: Atlas
+  description: A great cafe in the Mission district of San Francisco.
+  original_image_url: https://www.dropbox.com/s/b9slndrbfp3ffbd/14512637056.jpg?dl=1
+- slug: '14453553348'
+  occurred_at: '2014-07-10T13:33:18-07:00'
+  title: The Javits
+  description: The Javits Convention Center in New York.
+  original_image_url: https://www.dropbox.com/s/owvwyjq40wrld63/14453553348.jpg?dl=1
+- slug: '14453502200'
+  occurred_at: '2014-07-10T19:04:46-07:00'
+  title: Apple
+  description: The fifth avenue Apple &quot;cube&quot; in New York.
+  original_image_url: https://www.dropbox.com/s/jry0eevtkkpuiwk/14453502200.jpg?dl=1
+- slug: '14638000204'
+  occurred_at: '2014-07-11T10:59:38-07:00'
+  title: Silt Gongs
+  description: From the Oceania display at the Met.
+  original_image_url: https://www.dropbox.com/s/d2gcj7jei9wq6f0/14638000204.jpg?dl=1
+- slug: '14453510490'
+  occurred_at: '2014-07-11T11:39:35-07:00'
+  title: Gertrude Stein
+  description: By Picasso. At the Met.
+  original_image_url: https://www.dropbox.com/s/143hd0qf4drif3p/14453510490.jpg?dl=1
+- slug: '14660079123'
+  occurred_at: '2014-07-11T12:34:37-07:00'
+  title: The Temple of Dendur
+  description: Located in the Egyptian section at the Met in New York.
+  original_image_url: https://www.dropbox.com/s/c48ity40dfxi1nv/14660079123.jpg?dl=1
+- slug: '14453513100'
+  occurred_at: '2014-07-11T20:07:46-07:00'
+  title: New York at Night
+  description: The view from my hotel's balcony at night.
+  original_image_url: https://www.dropbox.com/s/1as5o5z6926g9j8/14453513100.jpg?dl=1
+- slug: '14621154316'
+  occurred_at: '2014-07-13T04:37:49-07:00'
+  title: Grand Central Station
+  description: New York's famous rail station. Note the Apple logo centered at the
     far end of the hall.
-- :slug: '14457519079'
-  :occurred_at: '2014-07-13T05:29:18-07:00'
-  :title: The High Line
-  :description: An old elevated rail line in New York which has since been converted
+  original_image_url: https://www.dropbox.com/s/c7c32yv4b4wjshn/14621154316.jpg?dl=1
+- slug: '14457519079'
+  occurred_at: '2014-07-13T05:29:18-07:00'
+  title: The High Line
+  description: An old elevated rail line in New York which has since been converted
     to a park.
-- :slug: '14693238984'
-  :occurred_at: '2014-07-19T19:47:15-07:00'
-  :title: Alberta
-  :description: Prairies and rivers.
-- :slug: '14681068926'
-  :occurred_at: '2014-07-20T09:32:16-07:00'
-  :title: Green
-  :description: Some fauna on the way up to Healy Pass.
-- :slug: '14686081209'
-  :occurred_at: '2014-08-08T22:29:09-07:00'
-  :title: The Serpentine
-  :description: A dimly lit image of the dessert menu at the Serpentine in the Dogpatch.
-- :slug: '14849772876'
-  :occurred_at: '2014-08-09T11:32:49-07:00'
-  :title: The Bridge in the Fog
-  :description: The start of our journey to Tiburon.
-- :slug: '14953311256'
-  :occurred_at: '2014-08-19T20:14:37-07:00'
-  :title: Medium
-  :description: Reception at Medium on Market Street.
-- :slug: '14810169397'
-  :occurred_at: '2014-08-21T20:31:20-07:00'
-  :title: Heavy Rotation
-  :description: A rotor located on the wall of the Heavybit Industries.
-- :slug: '15057376126'
-  :occurred_at: '2014-08-29T22:30:58-07:00'
-  :title: Odd Fellows
-  :description: In Seattle's Capitol Hill district.
-- :slug: '14901249950'
-  :occurred_at: '2014-08-30T14:23:27-07:00'
-  :title: Glass Garden
-  :description: At Chiluly Glass and Garden in Seattle.
-- :slug: '14901306397'
-  :occurred_at: '2014-08-30T14:33:55-07:00'
-  :title: Chandelier
-  :description: A warped chandelier from glass.
-- :slug: '15499747402'
-  :occurred_at: '2014-09-04T00:12:27-07:00'
-  :title: La Taqueria
-  :description: The Mission in San Francisco.
-- :slug: '15499821822'
-  :occurred_at: '2014-10-04T16:42:07-07:00'
-  :title: The Wedding
-  :description: The wedding party walking off from a photo session, leaving the bride
+  original_image_url: https://www.dropbox.com/s/j1mv7z3qpecjgfn/14457519079.jpg?dl=1
+- slug: '14693238984'
+  occurred_at: '2014-07-19T19:47:15-07:00'
+  title: Alberta
+  description: Prairies and rivers.
+  original_image_url: https://www.dropbox.com/s/igihwdf7iwpn4vz/14693238984.jpg?dl=1
+- slug: '14681068926'
+  occurred_at: '2014-07-20T09:32:16-07:00'
+  title: Green
+  description: Some fauna on the way up to Healy Pass.
+  original_image_url: https://www.dropbox.com/s/fv32whhhg779cli/14681068926.jpg?dl=1
+- slug: '14686081209'
+  occurred_at: '2014-08-08T22:29:09-07:00'
+  title: The Serpentine
+  description: A dimly lit image of the dessert menu at the Serpentine in the Dogpatch.
+  original_image_url: https://www.dropbox.com/s/hkrz7ova4e4g7to/14686081209.jpg?dl=1
+- slug: '14849772876'
+  occurred_at: '2014-08-09T11:32:49-07:00'
+  title: The Bridge in the Fog
+  description: The start of our journey to Tiburon.
+  original_image_url: https://www.dropbox.com/s/0mpjc8jq8y5dt23/14849772876.jpg?dl=1
+- slug: '14953311256'
+  occurred_at: '2014-08-19T20:14:37-07:00'
+  title: Medium
+  description: Reception at Medium on Market Street.
+  original_image_url: https://www.dropbox.com/s/nwfigaxb4lcklmx/14953311256.jpg?dl=1
+- slug: '14810169397'
+  occurred_at: '2014-08-21T20:31:20-07:00'
+  title: Heavy Rotation
+  description: A rotor located on the wall of the Heavybit Industries.
+  original_image_url: https://www.dropbox.com/s/2l28usmd745pgcn/14810169397.jpg?dl=1
+- slug: '15057376126'
+  occurred_at: '2014-08-29T22:30:58-07:00'
+  title: Odd Fellows
+  description: In Seattle's Capitol Hill district.
+  original_image_url: https://www.dropbox.com/s/dr5awv57d81ujue/15057376126.jpg?dl=1
+- slug: '14901249950'
+  occurred_at: '2014-08-30T14:23:27-07:00'
+  title: Glass Garden
+  description: At Chiluly Glass and Garden in Seattle.
+  original_image_url: https://www.dropbox.com/s/kv6cuy8akhj0zl8/14901249950.jpg?dl=1
+- slug: '14901306397'
+  occurred_at: '2014-08-30T14:33:55-07:00'
+  title: Chandelier
+  description: A warped chandelier from glass.
+  original_image_url: https://www.dropbox.com/s/83f4qv3dhdxoysu/14901306397.jpg?dl=1
+- slug: '15499747402'
+  occurred_at: '2014-09-04T00:12:27-07:00'
+  title: La Taqueria
+  description: The Mission in San Francisco.
+  original_image_url: https://www.dropbox.com/s/e2lt0ne021stmr8/15499747402.jpg?dl=1
+- slug: '15499821822'
+  occurred_at: '2014-10-04T16:42:07-07:00'
+  title: The Wedding
+  description: The wedding party walking off from a photo session, leaving the bride
     and groom to themselves.
-- :slug: '16456709861'
-  :occurred_at: '2014-10-06T14:28:59-07:00'
-  :title: Gastown
-  :description: An intersection close to the Salesforce office in Vancouver.
-- :slug: '16457496142'
-  :occurred_at: '2014-10-06T14:46:47-07:00'
-  :title: Blocks
-  :description: Found outside of a brewery in Vancouver.
-- :slug: '15894270434'
-  :occurred_at: '2015-02-04T15:46:00-08:00'
-  :title: DSCF6064
-  :description: ''
-- :slug: '16532173258'
-  :occurred_at: '2015-02-16T15:51:18-08:00'
-  :title: The De Young
-  :description: One of the most cyclopean-looking modern buildings that I've ever
+  original_image_url: https://www.dropbox.com/s/aptbjwu7c8q1sbw/15499821822.jpg?dl=1
+- slug: '16456709861'
+  occurred_at: '2014-10-06T14:28:59-07:00'
+  title: Gastown
+  description: An intersection close to the Salesforce office in Vancouver.
+  original_image_url: https://www.dropbox.com/s/7f0v1hr6v6qmt26/16456709861.jpg?dl=1
+- slug: '16457496142'
+  occurred_at: '2014-10-06T14:46:47-07:00'
+  title: Blocks
+  description: Found outside of a brewery in Vancouver.
+  original_image_url: https://www.dropbox.com/s/sv2m2zv3ggwg3y0/16457496142.jpg?dl=1
+- slug: '15894270434'
+  occurred_at: '2015-02-04T15:46:00-08:00'
+  title: DSCF6064
+  description: ''
+  original_image_url: https://www.dropbox.com/s/ms1bjfkya29qp8j/15894270434.jpg?dl=1
+- slug: '16532173258'
+  occurred_at: '2015-02-16T15:51:18-08:00'
+  title: The De Young
+  description: One of the most cyclopean-looking modern buildings that I've ever
     seen. I love the sharp angles that are built into its architecture.
-- :slug: '16843829327'
-  :occurred_at: '2015-03-08T19:18:32-07:00'
-  :title: The Bridge
-  :description: Sailing back across the bay.
-- :slug: '17000812957'
-  :occurred_at: '2015-04-19T18:58:48-07:00'
-  :title: The Concourse in Ruin
-  :description: The site of Waza 2 after being demolished last week (new condominiums
+  original_image_url: https://www.dropbox.com/s/4oddyufxbg0ue7c/16532173258.jpg?dl=1
+- slug: '16843829327'
+  occurred_at: '2015-03-08T19:18:32-07:00'
+  title: The Bridge
+  description: Sailing back across the bay.
+  original_image_url: https://www.dropbox.com/s/qqtvc77dgv82b79/16843829327.jpg?dl=1
+- slug: '17000812957'
+  occurred_at: '2015-04-19T18:58:48-07:00'
+  title: The Concourse in Ruin
+  description: The site of Waza 2 after being demolished last week (new condominiums
     will be going up soon).
-- :slug: '16585790614'
-  :occurred_at: '2015-04-19T19:11:27-07:00'
-  :title: The Octotrophy
-  :description: Heroku victory three out of four years.
-- :slug: '17708873878'
-  :occurred_at: '2015-05-20T03:51:22-07:00'
-  :title: Hackesche Höfen Courtyards
-  :description: Berlin's answer to the mall.
-- :slug: '18031989356'
-  :occurred_at: '2015-05-22T23:31:40-07:00'
-  :title: Alte Handelsbörse
-  :description: The old stock exchange building in Leipzig. One of the venues for
+  original_image_url: https://www.dropbox.com/s/vhxbg3l62jpc0ji/17000812957.jpg?dl=1
+- slug: '16585790614'
+  occurred_at: '2015-04-19T19:11:27-07:00'
+  title: The Octotrophy
+  description: Heroku victory three out of four years.
+  original_image_url: https://www.dropbox.com/s/jrn2xw3c9fujv75/16585790614.jpg?dl=1
+- slug: '17708873878'
+  occurred_at: '2015-05-20T03:51:22-07:00'
+  title: Hackesche Höfen Courtyards
+  description: Berlin's answer to the mall.
+  original_image_url: https://www.dropbox.com/s/heag1nvqmkege7s/17708873878.jpg?dl=1
+- slug: '18031989356'
+  occurred_at: '2015-05-22T23:31:40-07:00'
+  title: Alte Handelsbörse
+  description: The old stock exchange building in Leipzig. One of the venues for
     WGT 2015.
-- :slug: '17437946353'
-  :occurred_at: '2015-05-24T09:25:01-07:00'
-  :title: Jo Quail
-  :description: Incredible cellist and so far my favorite act of WGT 2015.
-- :slug: '17637483064'
-  :occurred_at: '2015-05-29T11:13:49-07:00'
-  :title: Parliament
-  :description: The parliament building in Budapest as seen from across the Danube.
-- :slug: '18233758906'
-  :occurred_at: '2015-05-29T13:02:47-07:00'
-  :title: Budapest Eye
-  :description: The world's largest mobile ferris wheel located in Erzsébet tér.
-- :slug: '17832610154'
-  :occurred_at: '2015-06-01T19:34:31-07:00'
-  :title: The Empty Streets of Copenhagen
-  :description: Copenhagen at 5 AM.
-- :slug: '18384531804'
-  :occurred_at: '2015-06-20T14:28:42-07:00'
-  :title: Sutro Tower
-  :description: San Francisco's Sutro Tower as viewed from the top of Twin Peaks.
-- :slug: '19035860975'
-  :occurred_at: '2015-06-21T15:34:18-07:00'
-  :title: Living Wall
-  :description: A living wall inside the rainforest exhibit at the California Academy
+  original_image_url: https://www.dropbox.com/s/atvr0luj0b4tvtm/18031989356.jpg?dl=1
+- slug: '17437946353'
+  occurred_at: '2015-05-24T09:25:01-07:00'
+  title: Jo Quail
+  description: Incredible cellist and so far my favorite act of WGT 2015.
+  original_image_url: https://www.dropbox.com/s/dh2c3o2a966usa8/17437946353.jpg?dl=1
+- slug: '17637483064'
+  occurred_at: '2015-05-29T11:13:49-07:00'
+  title: Parliament
+  description: The parliament building in Budapest as seen from across the Danube.
+  original_image_url: https://www.dropbox.com/s/0myaqfekcz89pd4/17637483064.jpg?dl=1
+- slug: '18233758906'
+  occurred_at: '2015-05-29T13:02:47-07:00'
+  title: Budapest Eye
+  description: The world's largest mobile ferris wheel located in Erzsébet tér.
+  original_image_url: https://www.dropbox.com/s/26sxetslic58bv3/18233758906.jpg?dl=1
+- slug: '17832610154'
+  occurred_at: '2015-06-01T19:34:31-07:00'
+  title: The Empty Streets of Copenhagen
+  description: Copenhagen at 5 AM.
+  original_image_url: https://www.dropbox.com/s/3kx4zg8o8emcgom/17832610154.jpg?dl=1
+- slug: '18384531804'
+  occurred_at: '2015-06-20T14:28:42-07:00'
+  title: Sutro Tower
+  description: San Francisco's Sutro Tower as viewed from the top of Twin Peaks.
+  original_image_url: https://www.dropbox.com/s/lbvx6lt4m746asc/18384531804.jpg?dl=1
+- slug: '19035860975'
+  occurred_at: '2015-06-21T15:34:18-07:00'
+  title: Living Wall
+  description: A living wall inside the rainforest exhibit at the California Academy
     of Sciences.
-- :slug: '18647384474'
-  :occurred_at: '2015-06-28T01:22:21-07:00'
-  :title: Market Street
-  :description: A shot down Market Street at night. Wide angle and high contrast.
+  original_image_url: https://www.dropbox.com/s/enbk5n2gmiebso2/19035860975.jpg?dl=1
+- slug: '18647384474'
+  occurred_at: '2015-06-28T01:22:21-07:00'
+  title: Market Street
+  description: A shot down Market Street at night. Wide angle and high contrast.
     The two alcoves in the middle of the picture are are a sound project that allow
     two seated parties seated on opposite sides to hear each other speaking at a distance
     and over top of inner city noise.
-- :slug: '19362122636'
-  :occurred_at: '2015-07-03T07:03:24-07:00'
-  :title: Folsom
-  :description: The fauna of Folsom street in San Francisco.
-- :slug: '19382020682'
-  :occurred_at: '2015-07-03T10:30:10-07:00'
-  :title: The Market
-  :description: The courtyard of the Market, an upscale grocery store and eatery in
+  original_image_url: https://www.dropbox.com/s/yoixp9b8b6nz6i8/18647384474.jpg?dl=1
+- slug: '19362122636'
+  occurred_at: '2015-07-03T07:03:24-07:00'
+  title: Folsom
+  description: The fauna of Folsom street in San Francisco.
+  original_image_url: https://www.dropbox.com/s/3rrgbz4btwokowi/19362122636.jpg?dl=1
+- slug: '19382020682'
+  occurred_at: '2015-07-03T10:30:10-07:00'
+  title: The Market
+  description: The courtyard of the Market, an upscale grocery store and eatery in
     downtown San Francisco directly beneath Twitter. Blue Bottle is conveniently located
     just beyond this sign.
-- :slug: '20616481043'
-  :occurred_at: '2015-09-06T15:42:57-07:00'
-  :title: Macro
-  :description: Testing the macro capabilities of the X100S at Golden Gate Park.
-- :slug: '21189660049'
-  :occurred_at: '2015-09-06T22:15:12-07:00'
-  :title: The Bridge at Night
-  :description: A long exposure taken near the base of the Golden Gate Bridge off
+  original_image_url: https://www.dropbox.com/s/krrmg0zgnrwfvta/19382020682.jpg?dl=1
+- slug: '20616481043'
+  occurred_at: '2015-09-06T15:42:57-07:00'
+  title: Macro
+  description: Testing the macro capabilities of the X100S at Golden Gate Park.
+  original_image_url: https://www.dropbox.com/s/p73d7119e8bs6hj/20616481043.jpg?dl=1
+- slug: '21189660049'
+  occurred_at: '2015-09-06T22:15:12-07:00'
+  title: The Bridge at Night
+  description: A long exposure taken near the base of the Golden Gate Bridge off
     Fort Baker (black and white).
-- :slug: '22322833428'
-  :occurred_at: '2015-09-30T16:45:46-07:00'
-  :title: Patrick on Deck
-  :description: Patrick presenting at the ATH for Stripe's convergence event.
-- :slug: '22521645871'
-  :occurred_at: '2015-09-30T18:05:04-07:00'
-  :title: The Innovation Hangar
-  :description: At the Palace of the Fine Arts in San Francisco.
-- :slug: '22942766853'
-  :occurred_at: '2015-12-05T17:44:05-08:00'
-  :title: Tracks in Sand
-  :description: A pinecone makes its way across Mile Rock Beach.
-- :slug: '23921608136'
-  :occurred_at: '2015-12-22T14:57:28-08:00'
-  :title: Fernie
-  :description: Elk Valley and the Fernie townsite viewed from the top of the Great
+  original_image_url: https://www.dropbox.com/s/z01qeydjsiokbbq/21189660049.jpg?dl=1
+- slug: '22322833428'
+  occurred_at: '2015-09-30T16:45:46-07:00'
+  title: Patrick on Deck
+  description: Patrick presenting at the ATH for Stripe's convergence event.
+  original_image_url: https://www.dropbox.com/s/00muq27ygdjy4y5/22322833428.jpg?dl=1
+- slug: '22521645871'
+  occurred_at: '2015-09-30T18:05:04-07:00'
+  title: The Innovation Hangar
+  description: At the Palace of the Fine Arts in San Francisco.
+  original_image_url: https://www.dropbox.com/s/rsa59s0il3960jt/22521645871.jpg?dl=1
+- slug: '22942766853'
+  occurred_at: '2015-12-05T17:44:05-08:00'
+  title: Tracks in Sand
+  description: A pinecone makes its way across Mile Rock Beach.
+  original_image_url: https://www.dropbox.com/s/akbf0urb77jklw9/22942766853.jpg?dl=1
+- slug: '23921608136'
+  occurred_at: '2015-12-22T14:57:28-08:00'
+  title: Fernie
+  description: Elk Valley and the Fernie townsite viewed from the top of the Great
     Bear.
-- :slug: '23915870999'
-  :occurred_at: '2016-01-08T23:02:27-08:00'
-  :title: Deer Run
-  :description: The street where I grew up during a particularly cold night.
-- :slug: '24348319319'
-  :occurred_at: '2016-01-29T22:03:15-08:00'
-  :title: Townsend
-  :description: A San Francisco street with some old buried tracks.
-- :slug: '24689954656'
-  :occurred_at: '2016-01-30T01:07:26-08:00'
-  :title: Acrobatics at Cyberdelia
-  :description: An acrobat putting on a show at the DNA Lounge, temporarily made up
+  original_image_url: https://www.dropbox.com/s/6xhfc0wmr0m6bkf/23921608136.jpg?dl=1
+- slug: '23915870999'
+  occurred_at: '2016-01-08T23:02:27-08:00'
+  title: Deer Run
+  description: The street where I grew up during a particularly cold night.
+  original_image_url: https://www.dropbox.com/s/e4974zubbopsoks/23915870999.jpg?dl=1
+- slug: '24348319319'
+  occurred_at: '2016-01-29T22:03:15-08:00'
+  title: Townsend
+  description: A San Francisco street with some old buried tracks.
+  original_image_url: https://www.dropbox.com/s/rugkpgfz9xfys0t/24348319319.jpg?dl=1
+- slug: '24689954656'
+  occurred_at: '2016-01-30T01:07:26-08:00'
+  title: Acrobatics at Cyberdelia
+  description: An acrobat putting on a show at the DNA Lounge, temporarily made up
     to look like Cyberdelia from “Hackers”.
-- :slug: '24756294586'
-  :occurred_at: '2016-01-31T10:33:07-08:00'
-  :title: YVR
-  :description: A check-in counter at YVR. Maybe I was just lucky, but this was the
+  original_image_url: https://www.dropbox.com/s/yhrxxesxljqu6gg/24689954656.jpg?dl=1
+- slug: '24756294586'
+  occurred_at: '2016-01-31T10:33:07-08:00'
+  title: YVR
+  description: A check-in counter at YVR. Maybe I was just lucky, but this was the
     best run airport that I've ever visited.
-- :slug: '24689011471'
-  :occurred_at: '2016-02-01T11:29:11-08:00'
-  :title: Hoarfrost & Lichen
-  :description: The winter state of some of the local vegetation.
-- :slug: '24689000781'
-  :occurred_at: '2016-02-01T14:13:33-08:00'
-  :title: Spirit Bowl
-  :description: Remnants of a forest fire and cloud cover over one of the classic
+  original_image_url: https://www.dropbox.com/s/7cojgptzgqde85t/24756294586.jpg?dl=1
+- slug: '24689011471'
+  occurred_at: '2016-02-01T11:29:11-08:00'
+  title: Hoarfrost & Lichen
+  description: The winter state of some of the local vegetation.
+  original_image_url: https://www.dropbox.com/s/j5a030t7ezp08oc/24689011471.jpg?dl=1
+- slug: '24689000781'
+  occurred_at: '2016-02-01T14:13:33-08:00'
+  title: Spirit Bowl
+  description: Remnants of a forest fire and cloud cover over one of the classic
     expert runs at Silver Star.
-- :slug: '26231825310'
-  :occurred_at: '2016-04-16T14:55:35-07:00'
-  :title: GitHub's Bar
-  :description: A good measure fancier than ours at Stripe.
-- :slug: '26697125871'
-  :occurred_at: '2016-04-27T07:27:29-07:00'
-  :title: Lamp
-  :description: A covered light at Sightglass in San Francisco.
-- :slug: '28239957666'
-  :occurred_at: '2016-05-04T16:57:24-07:00'
-  :title: DSCF7902
-  :description: ''
-- :slug: '27658684384'
-  :occurred_at: '2016-05-05T14:17:03-07:00'
-  :title: DSCF7926
-  :description: ''
-- :slug: '27658878643'
-  :occurred_at: '2016-05-06T04:07:42-07:00'
-  :title: DSCF7951
-  :description: ''
-- :slug: '28274111475'
-  :occurred_at: '2016-05-06T05:40:16-07:00'
-  :title: DSCF8002
-  :description: ''
-- :slug: '28241069746'
-  :occurred_at: '2016-05-09T06:41:53-07:00'
-  :title: A Door At Potsdam
-  :description: A very picturesque door in the town of Potsdam near Berlin.
-- :slug: '27720837734'
-  :occurred_at: '2016-07-15T22:01:18-07:00'
-  :title: Oddball Films
-  :description: Sarah and Andy at Oddball Films, an archive specializing in 16 mm
+  original_image_url: https://www.dropbox.com/s/ls33ic3hrvsg314/24689000781.jpg?dl=1
+- slug: '26231825310'
+  occurred_at: '2016-04-16T14:55:35-07:00'
+  title: GitHub's Bar
+  description: A good measure fancier than ours at Stripe.
+  original_image_url: https://www.dropbox.com/s/vedfwa1oazky4fz/26231825310.jpg?dl=1
+- slug: '26697125871'
+  occurred_at: '2016-04-27T07:27:29-07:00'
+  title: Lamp
+  description: A covered light at Sightglass in San Francisco.
+  original_image_url: https://www.dropbox.com/s/1afcfhnkqugzl2m/26697125871.jpg?dl=1
+- slug: '28239957666'
+  occurred_at: '2016-05-04T16:57:24-07:00'
+  title: DSCF7902
+  description: ''
+  original_image_url: https://www.dropbox.com/s/j378tfqp8db1q4r/28239957666.jpg?dl=1
+- slug: '27658684384'
+  occurred_at: '2016-05-05T14:17:03-07:00'
+  title: DSCF7926
+  description: ''
+  original_image_url: https://www.dropbox.com/s/mo77f3gbm8uxpu5/27658684384.jpg?dl=1
+- slug: '27658878643'
+  occurred_at: '2016-05-06T04:07:42-07:00'
+  title: DSCF7951
+  description: ''
+  original_image_url: https://www.dropbox.com/s/fqjij2p5i644nl5/27658878643.jpg?dl=1
+- slug: '28274111475'
+  occurred_at: '2016-05-06T05:40:16-07:00'
+  title: DSCF8002
+  description: ''
+  original_image_url: https://www.dropbox.com/s/3xkmaro34215l8x/28274111475.jpg?dl=1
+- slug: '28241069746'
+  occurred_at: '2016-05-09T06:41:53-07:00'
+  title: A Door At Potsdam
+  description: A very picturesque door in the town of Potsdam near Berlin.
+  original_image_url: https://www.dropbox.com/s/eg1z8gm8g9tu2eb/28241069746.jpg?dl=1
+- slug: '27720837734'
+  occurred_at: '2016-07-15T22:01:18-07:00'
+  title: Oddball Films
+  description: Sarah and Andy at Oddball Films, an archive specializing in 16 mm
     film.
-- :slug: '28094672160'
-  :occurred_at: '2016-07-16T12:45:07-07:00'
-  :title: Alamere Falls
-  :description: An upper section of Alamere Falls near Point Reyes.
-- :slug: '28224319490'
-  :occurred_at: '2016-07-23T13:58:18-07:00'
-  :title: Grapes at Hall
-  :description: ''
-- :slug: '28402653362'
-  :occurred_at: '2016-07-23T21:07:12-07:00'
-  :title: Susanna Smith Quartet
-  :description: The Susanna Smith Quartet playing various Peggy Lee songs at the Sound
+  original_image_url: https://www.dropbox.com/s/0ik18a30ppk5b66/27720837734.jpg?dl=1
+- slug: '28094672160'
+  occurred_at: '2016-07-16T12:45:07-07:00'
+  title: Alamere Falls
+  description: An upper section of Alamere Falls near Point Reyes.
+  original_image_url: https://www.dropbox.com/s/ltzf6lpfyobmf3r/28094672160.jpg?dl=1
+- slug: '28224319490'
+  occurred_at: '2016-07-23T13:58:18-07:00'
+  title: Grapes at Hall
+  description: ''
+  original_image_url: https://www.dropbox.com/s/lf7rpgr2y3kttp0/28224319490.jpg?dl=1
+- slug: '28402653362'
+  occurred_at: '2016-07-23T21:07:12-07:00'
+  title: Susanna Smith Quartet
+  description: The Susanna Smith Quartet playing various Peggy Lee songs at the Sound
     Room in Oakland.
-- :slug: '28062235663'
-  :occurred_at: '2016-07-30T18:34:22-07:00'
-  :title: Delicate Fern
-  :description: Some flora at the top of Buena Vista Park in San Francisco.
-- :slug: '28062222823'
-  :occurred_at: '2016-07-30T19:54:43-07:00'
-  :title: Letter Blocks
-  :description: Metal blocks for stamping text into leather at Will Leather Goods.
-- :slug: '29049916155'
-  :occurred_at: '2016-08-15T22:29:47-07:00'
-  :title: Atlas of the World
-  :description: A table arrangement at Ivy.
-- :slug: '29070953451'
-  :occurred_at: '2016-08-20T17:05:49-07:00'
-  :title: Water and Rock
-  :description: The tide coming in at Gray Whale Cove State Beach.
-- :slug: '28861228760'
-  :occurred_at: '2016-08-20T19:16:18-07:00'
-  :title: Beach DJ Set
-  :description: Noah and Keiko.
-- :slug: '31669633432'
-  :occurred_at: '2016-12-07T11:53:58-08:00'
-  :title: The Bay Bridge
-  :description: The view from Convergence 2016.
-- :slug: '31669635332'
-  :occurred_at: '2016-12-10T14:02:37-08:00'
-  :title: Street Color
-  :description: The streets after some rainfall in San Francisco.
-- :slug: '31866826222'
-  :occurred_at: '2016-12-31T13:22:58-08:00'
-  :title: The Valley
-  :description: A view back into the valley from Bow Summit.
-- :slug: '32044839462'
-  :occurred_at: '2017-01-07T13:23:19-08:00'
-  :title: Canadian Sunbathing
-  :description: My brother doing some sunbathing while doing some backcountry near
+  original_image_url: https://www.dropbox.com/s/zzuiwgf7ot2f9px/28402653362.jpg?dl=1
+- slug: '28062235663'
+  occurred_at: '2016-07-30T18:34:22-07:00'
+  title: Delicate Fern
+  description: Some flora at the top of Buena Vista Park in San Francisco.
+  original_image_url: https://www.dropbox.com/s/mkzl3s4r83jan9j/28062235663.jpg?dl=1
+- slug: '28062222823'
+  occurred_at: '2016-07-30T19:54:43-07:00'
+  title: Letter Blocks
+  description: Metal blocks for stamping text into leather at Will Leather Goods.
+  original_image_url: https://www.dropbox.com/s/n5jf8rg0nloovke/28062222823.jpg?dl=1
+- slug: '29049916155'
+  occurred_at: '2016-08-15T22:29:47-07:00'
+  title: Atlas of the World
+  description: A table arrangement at Ivy.
+  original_image_url: https://www.dropbox.com/s/pnh6atain1kjpwo/29049916155.jpg?dl=1
+- slug: '29070953451'
+  occurred_at: '2016-08-20T17:05:49-07:00'
+  title: Water and Rock
+  description: The tide coming in at Gray Whale Cove State Beach.
+  original_image_url: https://www.dropbox.com/s/8imzp22i9652nlj/29070953451.jpg?dl=1
+- slug: '28861228760'
+  occurred_at: '2016-08-20T19:16:18-07:00'
+  title: Beach DJ Set
+  description: Noah and Keiko.
+  original_image_url: https://www.dropbox.com/s/c1mbee6t9lioma7/28861228760.jpg?dl=1
+- slug: '31669633432'
+  occurred_at: '2016-12-07T11:53:58-08:00'
+  title: The Bay Bridge
+  description: The view from Convergence 2016.
+  original_image_url: https://www.dropbox.com/s/wl9c7z963ykuqln/31669633432.jpg?dl=1
+- slug: '31669635332'
+  occurred_at: '2016-12-10T14:02:37-08:00'
+  title: Street Color
+  description: The streets after some rainfall in San Francisco.
+  original_image_url: https://www.dropbox.com/s/z3mynaavq7v2cqo/31669635332.jpg?dl=1
+- slug: '31866826222'
+  occurred_at: '2016-12-31T13:22:58-08:00'
+  title: The Valley
+  description: A view back into the valley from Bow Summit.
+  original_image_url: https://www.dropbox.com/s/x67234ndvmq1zs1/31866826222.jpg?dl=1
+- slug: '32044839462'
+  occurred_at: '2017-01-07T13:23:19-08:00'
+  title: Canadian Sunbathing
+  description: My brother doing some sunbathing while doing some backcountry near
     Hidden Lake in Alberta.
-- :slug: '32495085025'
-  :occurred_at: '2017-01-22T17:14:11-08:00'
-  :title: The MOMA
-  :description: View down into the lobby of the MOMA in San Francisco.
-- :slug: '32116566500'
-  :occurred_at: '2017-01-22T17:19:05-08:00'
-  :title: Man and Screen
-  :description: A man settled in to watch a Bruce Connor video exhibit at the MOMA.
-- :slug: '32541600226'
-  :occurred_at: '2017-01-28T17:55:56-08:00'
-  :title: Approaching the Golden Gate
-  :description: Our journey towards the base of the Golden Gate Bridge.
-- :slug: '34513390426'
-  :occurred_at: '2017-01-29T16:07:56-08:00'
-  :title: Mission Rock Resort
-  :description: Brunch looking out over the harbor.
-- :slug: '33450490102'
-  :occurred_at: '2017-03-12T16:35:08-07:00'
-  :title: Briones Regional Park
-  :description: Briones — a beautiful Bay Area park which is walkable from the Lafayette
+  original_image_url: https://www.dropbox.com/s/m8aleilfpvgkyth/32044839462.jpg?dl=1
+- slug: '32495085025'
+  occurred_at: '2017-01-22T17:14:11-08:00'
+  title: The MOMA
+  description: View down into the lobby of the MOMA in San Francisco.
+  original_image_url: https://www.dropbox.com/s/fqwunmnli9839xb/32495085025.jpg?dl=1
+- slug: '32116566500'
+  occurred_at: '2017-01-22T17:19:05-08:00'
+  title: Man and Screen
+  description: A man settled in to watch a Bruce Connor video exhibit at the MOMA.
+  original_image_url: https://www.dropbox.com/s/nqlcrdvd8cw6prf/32116566500.jpg?dl=1
+- slug: '32541600226'
+  occurred_at: '2017-01-28T17:55:56-08:00'
+  title: Approaching the Golden Gate
+  description: Our journey towards the base of the Golden Gate Bridge.
+  original_image_url: https://www.dropbox.com/s/nkvw0ktgwxurtw4/32541600226.jpg?dl=1
+- slug: '34513390426'
+  occurred_at: '2017-01-29T16:07:56-08:00'
+  title: Mission Rock Resort
+  description: Brunch looking out over the harbor.
+  original_image_url: https://www.dropbox.com/s/8gt5s2a3g0sdy1t/34513390426.jpg?dl=1
+- slug: '33450490102'
+  occurred_at: '2017-03-12T16:35:08-07:00'
+  title: Briones Regional Park
+  description: Briones — a beautiful Bay Area park which is walkable from the Lafayette
     BART station.
-- :slug: '33478069601'
-  :occurred_at: '2017-03-22T08:26:15-07:00'
-  :title: Airpods On Wood
-  :description: Apple's best product in quite a while.
-- :slug: '34554405435'
-  :occurred_at: '2017-05-06T11:08:27-07:00'
-  :title: Cones and Dirt
-  :description: An arrangment of pine cones approaching the peak of Mount Diablo.
-- :slug: '33711877404'
-  :occurred_at: '2017-05-06T17:36:27-07:00'
-  :title: Ramen Shop
-  :description: A quick stop to refuel on ramen after our climb.
-- :slug: '34447838831'
-  :occurred_at: '2017-05-10T10:06:08-07:00'
-  :title: Atrium Public Space at LinkedIn
-  :description: The Atrium Public Space on the first floor of LinkedIn's building.
+  original_image_url: https://www.dropbox.com/s/cor69q4iuwge900/33450490102.jpg?dl=1
+- slug: '33478069601'
+  occurred_at: '2017-03-22T08:26:15-07:00'
+  title: Airpods On Wood
+  description: Apple's best product in quite a while.
+  original_image_url: https://www.dropbox.com/s/no2q2h8f7w36mse/33478069601.jpg?dl=1
+- slug: '34554405435'
+  occurred_at: '2017-05-06T11:08:27-07:00'
+  title: Cones and Dirt
+  description: An arrangment of pine cones approaching the peak of Mount Diablo.
+  original_image_url: https://www.dropbox.com/s/a5ixl1ycz9shcgc/34554405435.jpg?dl=1
+- slug: '33711877404'
+  occurred_at: '2017-05-06T17:36:27-07:00'
+  title: Ramen Shop
+  description: A quick stop to refuel on ramen after our climb.
+  original_image_url: https://www.dropbox.com/s/t4cs9kopwn1mrsa/33711877404.jpg?dl=1
+- slug: '34447838831'
+  occurred_at: '2017-05-10T10:06:08-07:00'
+  title: Atrium Public Space at LinkedIn
+  description: The Atrium Public Space on the first floor of LinkedIn's building.
     An incredibly beautiful design and an airy space built for collaboration. They
     even have wall outlets!
-- :slug: '34627475551'
-  :occurred_at: '2017-05-18T14:19:21-07:00'
-  :title: Grass
-  :description: An abstract view of some local grass from a walk around the neighborhood.
-- :slug: '34967872330'
-  :occurred_at: '2017-05-20T16:33:00-07:00'
-  :title: Open Space
-  :description: A city hike out at the Mount Sutro Open Space Preserve.
-- :slug: '34512227654'
-  :occurred_at: '2017-06-01T11:44:44-07:00'
-  :title: John Keynoting
-  :description: John keynoting at Stripe Sessions 2017.
-- :slug: '35225468331'
-  :occurred_at: '2017-06-06T20:48:32-07:00'
-  :title: Marlowe
-  :description: Dining at Marlowe with Blake and Peter.
-- :slug: '35355214245'
-  :occurred_at: '2017-06-10T21:40:15-07:00'
-  :title: Sorrel
-  :description: Dining at the popup Sorrel on Valencia St in San Francisco.
-- :slug: '35355244865'
-  :occurred_at: '2017-06-11T22:03:38-07:00'
-  :title: The Rain Within
-  :description: The Rain Within opening for Mr Kitty at DNA.
-- :slug: '34918305503'
-  :occurred_at: '2017-06-25T23:01:49-07:00'
-  :title: The Pillar
-  :description: From around Twin Peaks.
-- :slug: '35341042150'
-  :occurred_at: '2017-07-02T13:12:41-07:00'
-  :title: Path to Nowhere
-  :description: A winding path along the hillsides of Briones Regional Park.
-- :slug: '35082164013'
-  :occurred_at: '2017-07-06T16:01:06-07:00'
-  :title: Death and Life
-  :description: On the road to the Pittock Mansion.
-- :slug: '35850660186'
-  :occurred_at: '2017-07-08T01:10:39-07:00'
-  :title: Will
-  :description: Drinks at a submarine bar in Portland.
-- :slug: '35891470645'
-  :occurred_at: '2017-07-10T16:23:48-07:00'
-  :title: Water and Nature
-  :description: One of the waterfalls along the Trail of Ten Falls in Silver Falls
+  original_image_url: https://www.dropbox.com/s/zh0eqhp75i5r2bg/34447838831.jpg?dl=1
+- slug: '34627475551'
+  occurred_at: '2017-05-18T14:19:21-07:00'
+  title: Grass
+  description: An abstract view of some local grass from a walk around the neighborhood.
+  original_image_url: https://www.dropbox.com/s/h1ened0z6yi73i3/34627475551.jpg?dl=1
+- slug: '34967872330'
+  occurred_at: '2017-05-20T16:33:00-07:00'
+  title: Open Space
+  description: A city hike out at the Mount Sutro Open Space Preserve.
+  original_image_url: https://www.dropbox.com/s/01n3cprbagpun84/34967872330.jpg?dl=1
+- slug: '34512227654'
+  occurred_at: '2017-06-01T11:44:44-07:00'
+  title: John Keynoting
+  description: John keynoting at Stripe Sessions 2017.
+  original_image_url: https://www.dropbox.com/s/54ofhkr9kg6jo14/34512227654.jpg?dl=1
+- slug: '35225468331'
+  occurred_at: '2017-06-06T20:48:32-07:00'
+  title: Marlowe
+  description: Dining at Marlowe with Blake and Peter.
+  original_image_url: https://www.dropbox.com/s/4dtbw96hv36qfxa/35225468331.jpg?dl=1
+- slug: '35355214245'
+  occurred_at: '2017-06-10T21:40:15-07:00'
+  title: Sorrel
+  description: Dining at the popup Sorrel on Valencia St in San Francisco.
+  original_image_url: https://www.dropbox.com/s/4qulwg4ve3rhlcu/35355214245.jpg?dl=1
+- slug: '35355244865'
+  occurred_at: '2017-06-11T22:03:38-07:00'
+  title: The Rain Within
+  description: The Rain Within opening for Mr Kitty at DNA.
+  original_image_url: https://www.dropbox.com/s/vqr3sbsgaox6frk/35355244865.jpg?dl=1
+- slug: '34918305503'
+  occurred_at: '2017-06-25T23:01:49-07:00'
+  title: The Pillar
+  description: From around Twin Peaks.
+  original_image_url: https://www.dropbox.com/s/ly9cxq5klhmc90s/34918305503.jpg?dl=1
+- slug: '35341042150'
+  occurred_at: '2017-07-02T13:12:41-07:00'
+  title: Path to Nowhere
+  description: A winding path along the hillsides of Briones Regional Park.
+  original_image_url: https://www.dropbox.com/s/6zru43okmloevj0/35341042150.jpg?dl=1
+- slug: '35082164013'
+  occurred_at: '2017-07-06T16:01:06-07:00'
+  title: Death and Life
+  description: On the road to the Pittock Mansion.
+  original_image_url: https://www.dropbox.com/s/1ldplzn34uue0ju/35082164013.jpg?dl=1
+- slug: '35850660186'
+  occurred_at: '2017-07-08T01:10:39-07:00'
+  title: Will
+  description: Drinks at a submarine bar in Portland.
+  original_image_url: https://www.dropbox.com/s/f0pcnrpg8gi2xjy/35850660186.jpg?dl=1
+- slug: '35891470645'
+  occurred_at: '2017-07-10T16:23:48-07:00'
+  title: Water and Nature
+  description: One of the waterfalls along the Trail of Ten Falls in Silver Falls
     State Park.
-- :slug: '35891458575'
-  :occurred_at: '2017-07-10T17:13:12-07:00'
-  :title: Sun On Leaves
-  :description: Light shining through the canopy along the Trail of Ten Falls in Oregon.\n
-- :slug: '36390661750'
-  :occurred_at: '2017-07-22T21:33:35-07:00'
-  :title: Van Kleef
-  :description: A night of greyhounds in Oakland.
-- :slug: '36680890590'
-  :occurred_at: '2017-09-03T17:47:43-07:00'
-  :title: Golden Grass
-  :description: Long grass turning gold as the sun sets on Mount Diablo.
-- :slug: '36466658193'
-  :occurred_at: '2017-09-16T11:27:51-07:00'
-  :title: Woodland
-  :description: Sparse forest on the way up to Panorama Ridge.
-- :slug: '36883417480'
-  :occurred_at: '2017-09-16T15:26:37-07:00'
-  :title: Dew
-  :description: Some dewy greenery found along the trail on the trip up Panorama Ridge.
-- :slug: '36656229584'
-  :occurred_at: '2017-09-26T11:25:04-07:00'
-  :title: The Next Valley
-  :description: A look over the ridge and out into the next valley. Massive Mountain
+  original_image_url: https://www.dropbox.com/s/21q0ufwqzz7b9pi/35891470645.jpg?dl=1
+- slug: '35891458575'
+  occurred_at: '2017-07-10T17:13:12-07:00'
+  title: Sun On Leaves
+  description: Light shining through the canopy along the Trail of Ten Falls in Oregon.\n
+  original_image_url: https://www.dropbox.com/s/jwydy1p2kt4jcpm/35891458575.jpg?dl=1
+- slug: '36390661750'
+  occurred_at: '2017-07-22T21:33:35-07:00'
+  title: Van Kleef
+  description: A night of greyhounds in Oakland.
+  original_image_url: https://www.dropbox.com/s/n0qnf2x8cy4bi84/36390661750.jpg?dl=1
+- slug: '36680890590'
+  occurred_at: '2017-09-03T17:47:43-07:00'
+  title: Golden Grass
+  description: Long grass turning gold as the sun sets on Mount Diablo.
+  original_image_url: https://www.dropbox.com/s/ji88i8zzaybheyo/36680890590.jpg?dl=1
+- slug: '36466658193'
+  occurred_at: '2017-09-16T11:27:51-07:00'
+  title: Woodland
+  description: Sparse forest on the way up to Panorama Ridge.
+  original_image_url: https://www.dropbox.com/s/swzhj7exhfskgty/36466658193.jpg?dl=1
+- slug: '36883417480'
+  occurred_at: '2017-09-16T15:26:37-07:00'
+  title: Dew
+  description: Some dewy greenery found along the trail on the trip up Panorama Ridge.
+  original_image_url: https://www.dropbox.com/s/k9oztpidsa5a0b6/36883417480.jpg?dl=1
+- slug: '36656229584'
+  occurred_at: '2017-09-26T11:25:04-07:00'
+  title: The Next Valley
+  description: A look over the ridge and out into the next valley. Massive Mountain
     is further to the right and out of view.
-- :slug: '23513389768'
-  :occurred_at: '2017-09-26T12:03:54-07:00'
-  :title: The Valley
-  :description: A hidden valley over the ridge from Bourgeau Lake.
-- :slug: '36656111894'
-  :occurred_at: '2017-09-26T13:15:27-07:00'
-  :title: Alpine Colors
-  :description: Some of the colors seen in the Rockies as autumn draws to a close.
-- :slug: '37467049676'
-  :occurred_at: '2017-10-04T20:23:55-07:00'
-  :title: The Fame & Glory String Band
-  :description: The Fame &amp; Glory String Band playing mandolins and fiddles at
+  original_image_url: https://www.dropbox.com/s/nqrrfz9mfvmbyhn/36656229584.jpg?dl=1
+- slug: '23513389768'
+  occurred_at: '2017-09-26T12:03:54-07:00'
+  title: The Valley
+  description: A hidden valley over the ridge from Bourgeau Lake.
+  original_image_url: https://www.dropbox.com/s/1k6h25bqxi2ytpn/23513389768.jpg?dl=1
+- slug: '36656111894'
+  occurred_at: '2017-09-26T13:15:27-07:00'
+  title: Alpine Colors
+  description: Some of the colors seen in the Rockies as autumn draws to a close.
+  original_image_url: https://www.dropbox.com/s/zh9uvzvt7q6jz5x/36656111894.jpg?dl=1
+- slug: '37467049676'
+  occurred_at: '2017-10-04T20:23:55-07:00'
+  title: The Fame & Glory String Band
+  description: The Fame &amp; Glory String Band playing mandolins and fiddles at
     The Overland in Oakland on Oct 4th.
-- :slug: '38862379162'
-  :occurred_at: '2017-10-28T11:33:56-07:00'
-  :title: Hike from Muir Beach
-  :description: Photo from a small beach on the way to Rodeo Beach from Muir. The
+  original_image_url: https://www.dropbox.com/s/4ybg6mcqp5561au/37467049676.jpg?dl=1
+- slug: '38862379162'
+  occurred_at: '2017-10-28T11:33:56-07:00'
+  title: Hike from Muir Beach
+  description: Photo from a small beach on the way to Rodeo Beach from Muir. The
     fog was beautiful.
-- :slug: '24027730727'
-  :occurred_at: '2017-11-10T00:12:07-08:00'
-  :title: Pinball
-  :description: A pinball loss at The Willows.
-- :slug: '38908435491'
-  :occurred_at: '2017-11-14T17:58:45-08:00'
-  :title: Yuki-tsuri
-  :description: A tree's branches are suspended to enable further growth. Typical
+  original_image_url: https://www.dropbox.com/s/wgt51o5i0ek5rpq/38862379162.jpg?dl=1
+- slug: '24027730727'
+  occurred_at: '2017-11-10T00:12:07-08:00'
+  title: Pinball
+  description: A pinball loss at The Willows.
+  original_image_url: https://www.dropbox.com/s/w083vo1rhaixixy/24027730727.jpg?dl=1
+- slug: '38908435491'
+  occurred_at: '2017-11-14T17:58:45-08:00'
+  title: Yuki-tsuri
+  description: A tree's branches are suspended to enable further growth. Typical
     &quot;Yuki-tsuri&quot;.
-- :slug: '38908367091'
-  :occurred_at: '2017-11-14T19:31:31-08:00'
-  :title: Changing Colors
-  :description: A little color during Japan's autumn.
-- :slug: '38908364101'
-  :occurred_at: '2017-11-14T19:57:46-08:00'
-  :title: Pond in the Rain
-  :description: A pond near a local Kanazawan shrine during a downpour.
-- :slug: '38872442132'
-  :occurred_at: '2017-11-14T20:06:57-08:00'
-  :title: Rain Chain
-  :description: A rain chain near a shrine in Kanazawa.
-- :slug: '38023513875'
-  :occurred_at: '2017-11-15T01:21:20-08:00'
-  :title: Rain Room
-  :description: A room at Kanazawa's 21st Century Museum of Contemporary Art that's
+  original_image_url: https://www.dropbox.com/s/k6q35i7057z3rm3/38908435491.jpg?dl=1
+- slug: '38908367091'
+  occurred_at: '2017-11-14T19:31:31-08:00'
+  title: Changing Colors
+  description: A little color during Japan's autumn.
+  original_image_url: https://www.dropbox.com/s/dzubggayhwh1xu3/38908367091.jpg?dl=1
+- slug: '38908364101'
+  occurred_at: '2017-11-14T19:57:46-08:00'
+  title: Pond in the Rain
+  description: A pond near a local Kanazawan shrine during a downpour.
+  original_image_url: https://www.dropbox.com/s/rok7aykxpb8z08o/38908364101.jpg?dl=1
+- slug: '38872442132'
+  occurred_at: '2017-11-14T20:06:57-08:00'
+  title: Rain Chain
+  description: A rain chain near a shrine in Kanazawa.
+  original_image_url: https://www.dropbox.com/s/79n8bavmimoop25/38872442132.jpg?dl=1
+- slug: '38023513875'
+  occurred_at: '2017-11-15T01:21:20-08:00'
+  title: Rain Room
+  description: A room at Kanazawa's 21st Century Museum of Contemporary Art that's
     open to the sky.
-- :slug: '38024506975'
-  :occurred_at: '2017-11-15T20:43:08-08:00'
-  :title: Canal
-  :description: An examination of a nearby canal on a short hike up to see the macaques
+  original_image_url: https://www.dropbox.com/s/c4m3pnrau7xfaj1/38023513875.jpg?dl=1
+- slug: '38024506975'
+  occurred_at: '2017-11-15T20:43:08-08:00'
+  title: Canal
+  description: An examination of a nearby canal on a short hike up to see the macaques
     of Nagano.
-- :slug: '38093253455'
-  :occurred_at: '2017-11-18T14:23:48-08:00'
-  :title: Osaka @ 5 AM
-  :description: Early morning in Osaka.
-- :slug: '27203005839'
-  :occurred_at: '2017-11-19T14:42:03-08:00'
-  :title: Snowy Shrines
-  :description: A fresh layer of snow covering the shrines of Mount Koya.
-- :slug: '25109039308'
-  :occurred_at: '2017-11-19T14:50:31-08:00'
-  :title: Torii
-  :description: A series of torii near Mount Koya. As viewed first thing in the morning.
-- :slug: '38286595564'
-  :occurred_at: '2017-11-19T19:41:03-08:00'
-  :title: Okunoin Cemetary
-  :description: In the thick of the Okunoin Cemetary with tens of thousands of grave
+  original_image_url: https://www.dropbox.com/s/rcfh3qslmydt0xj/38024506975.jpg?dl=1
+- slug: '38093253455'
+  occurred_at: '2017-11-18T14:23:48-08:00'
+  title: Osaka @ 5 AM
+  description: Early morning in Osaka.
+  original_image_url: https://www.dropbox.com/s/til8jej13dx8bq9/38093253455.jpg?dl=1
+- slug: '27203005839'
+  occurred_at: '2017-11-19T14:42:03-08:00'
+  title: Snowy Shrines
+  description: A fresh layer of snow covering the shrines of Mount Koya.
+  original_image_url: https://www.dropbox.com/s/91dkatvwya09450/27203005839.jpg?dl=1
+- slug: '25109039308'
+  occurred_at: '2017-11-19T14:50:31-08:00'
+  title: Torii
+  description: A series of torii near Mount Koya. As viewed first thing in the morning.
+  original_image_url: https://www.dropbox.com/s/b2pm6ns0z47z4tu/25109039308.jpg?dl=1
+- slug: '38286595564'
+  occurred_at: '2017-11-19T19:41:03-08:00'
+  title: Okunoin Cemetary
+  description: In the thick of the Okunoin Cemetary with tens of thousands of grave
     stones like these ones.
-- :slug: '38966117062'
-  :occurred_at: '2017-11-19T19:47:19-08:00'
-  :title: Moss
-  :description: Moss macro. The droplets are from the melted first snow of the season.
-- :slug: '38286186814'
-  :occurred_at: '2017-11-20T19:05:40-08:00'
-  :title: Light and Dark
-  :description: The changing leaves reflected in a pond.
-- :slug: '27224926129'
-  :occurred_at: '2017-11-20T19:17:00-08:00'
-  :title: The Trees of the Kumano
-  :description: The sun seen through the trees of the Kumano Kodo.
-- :slug: '39001656671'
-  :occurred_at: '2017-11-20T22:17:13-08:00'
-  :title: Monument
-  :description: An old monument as seen through the trees.
-- :slug: '38965579302'
-  :occurred_at: '2017-11-20T23:00:04-08:00'
-  :title: Rice Fields
-  :description: The setting sun over rice fields in Chikatsuyu.
-- :slug: '24154488037'
-  :occurred_at: '2017-11-22T14:52:31-08:00'
-  :title: Yunomine Onsen
-  :description: A town built around the oldest Onsen in Japan. Right in the middle
+  original_image_url: https://www.dropbox.com/s/ubnmvzefdnm886c/38286595564.jpg?dl=1
+- slug: '38966117062'
+  occurred_at: '2017-11-19T19:47:19-08:00'
+  title: Moss
+  description: Moss macro. The droplets are from the melted first snow of the season.
+  original_image_url: https://www.dropbox.com/s/ulp4x2i4rm5lmbw/38966117062.jpg?dl=1
+- slug: '38286186814'
+  occurred_at: '2017-11-20T19:05:40-08:00'
+  title: Light and Dark
+  description: The changing leaves reflected in a pond.
+  original_image_url: https://www.dropbox.com/s/ve1ae1jcb35bdvr/38286186814.jpg?dl=1
+- slug: '27224926129'
+  occurred_at: '2017-11-20T19:17:00-08:00'
+  title: The Trees of the Kumano
+  description: The sun seen through the trees of the Kumano Kodo.
+  original_image_url: https://www.dropbox.com/s/t8ubfgvld7ow75l/27224926129.jpg?dl=1
+- slug: '39001656671'
+  occurred_at: '2017-11-20T22:17:13-08:00'
+  title: Monument
+  description: An old monument as seen through the trees.
+  original_image_url: https://www.dropbox.com/s/jybb5fucs9e0ue7/39001656671.jpg?dl=1
+- slug: '38965579302'
+  occurred_at: '2017-11-20T23:00:04-08:00'
+  title: Rice Fields
+  description: The setting sun over rice fields in Chikatsuyu.
+  original_image_url: https://www.dropbox.com/s/veo5d5anerlttlk/38965579302.jpg?dl=1
+- slug: '24154488037'
+  occurred_at: '2017-11-22T14:52:31-08:00'
+  title: Yunomine Onsen
+  description: A town built around the oldest Onsen in Japan. Right in the middle
     of the Kumano Kodo.
-- :slug: '38303052154'
-  :occurred_at: '2017-11-22T16:47:33-08:00'
-  :title: The Kumano Kodo
-  :description: The sun seen through the trail's ancient forest as we start our final
+  original_image_url: https://www.dropbox.com/s/1folrzz21ewwiy0/24154488037.jpg?dl=1
+- slug: '38303052154'
+  occurred_at: '2017-11-22T16:47:33-08:00'
+  title: The Kumano Kodo
+  description: The sun seen through the trail's ancient forest as we start our final
     day of the walk.
-- :slug: '25147983148'
-  :occurred_at: '2017-11-22T17:34:18-08:00'
-  :title: Painted Tree
-  :description: A tree along the Kumano Kodo painted in banded colors.
-- :slug: '38982714342'
-  :occurred_at: '2017-11-22T17:39:04-08:00'
-  :title: Deviant
-  :description: A single branch winding up to the forest's heights.
-- :slug: '38302683904'
-  :occurred_at: '2017-11-22T19:27:15-08:00'
-  :title: Moss
-  :description: Some vibrant Japanese moss seen while hiking the Kumano Kodo.
-- :slug: '24158392857'
-  :occurred_at: '2017-11-28T23:47:45-08:00'
-  :title: Shopping in the Rain
-  :description: A ground floor photo taken in Osaka's Shinsaibashi shopping district.
-- :slug: '38135997665'
-  :occurred_at: '2017-11-29T01:15:33-08:00'
-  :title: Orange Street at Night
-  :description: Orange Street (home of designer clothing and brands) in Osaka.
-- :slug: '38306410614'
-  :occurred_at: '2017-11-29T08:24:25-08:00'
-  :title: Kyoto Loves Gin
-  :description: A gin cocktail in Osaka. The sign behind reads &quot;Kyoto Loves Gin&quot;.
-- :slug: '38306585354'
-  :occurred_at: '2017-11-30T03:36:02-08:00'
-  :title: Bape
-  :description: Neon tubes for one of Japan's more memorable fashion brands.
-- :slug: '25152393458'
-  :occurred_at: '2017-12-02T02:11:50-08:00'
-  :title: Is that a whisky cocktail?
-  :description: Drinks at Whisky Library Tokyo (we visited the Portland inspiration
+  original_image_url: https://www.dropbox.com/s/4bxs5919yr4vke8/38303052154.jpg?dl=1
+- slug: '25147983148'
+  occurred_at: '2017-11-22T17:34:18-08:00'
+  title: Painted Tree
+  description: A tree along the Kumano Kodo painted in banded colors.
+  original_image_url: https://www.dropbox.com/s/lklsff321voa5th/25147983148.jpg?dl=1
+- slug: '38982714342'
+  occurred_at: '2017-11-22T17:39:04-08:00'
+  title: Deviant
+  description: A single branch winding up to the forest's heights.
+  original_image_url: https://www.dropbox.com/s/qrq4jgye663vqzg/38982714342.jpg?dl=1
+- slug: '38302683904'
+  occurred_at: '2017-11-22T19:27:15-08:00'
+  title: Moss
+  description: Some vibrant Japanese moss seen while hiking the Kumano Kodo.
+  original_image_url: https://www.dropbox.com/s/hkc9pp4yl2x9niq/38302683904.jpg?dl=1
+- slug: '24158392857'
+  occurred_at: '2017-11-28T23:47:45-08:00'
+  title: Shopping in the Rain
+  description: A ground floor photo taken in Osaka's Shinsaibashi shopping district.
+  original_image_url: https://www.dropbox.com/s/qkwd1eh0bcpk90v/24158392857.jpg?dl=1
+- slug: '38135997665'
+  occurred_at: '2017-11-29T01:15:33-08:00'
+  title: Orange Street at Night
+  description: Orange Street (home of designer clothing and brands) in Osaka.
+  original_image_url: https://www.dropbox.com/s/ozh4k0md2u5sihd/38135997665.jpg?dl=1
+- slug: '38306410614'
+  occurred_at: '2017-11-29T08:24:25-08:00'
+  title: Kyoto Loves Gin
+  description: A gin cocktail in Osaka. The sign behind reads &quot;Kyoto Loves Gin&quot;.
+  original_image_url: https://www.dropbox.com/s/dl1h8r5eh761mg9/38306410614.jpg?dl=1
+- slug: '38306585354'
+  occurred_at: '2017-11-30T03:36:02-08:00'
+  title: Bape
+  description: Neon tubes for one of Japan's more memorable fashion brands.
+  original_image_url: https://www.dropbox.com/s/88hmb71tzs3w1m2/38306585354.jpg?dl=1
+- slug: '25152393458'
+  occurred_at: '2017-12-02T02:11:50-08:00'
+  title: Is that a whisky cocktail?
+  description: Drinks at Whisky Library Tokyo (we visited the Portland inspiration
     just a few months before).
-- :slug: '39023212721'
-  :occurred_at: '2017-12-02T04:19:41-08:00'
-  :title: Sasano
-  :description: An experience in Japanese cuisine (Tokyo).
-- :slug: '25963343317'
-  :occurred_at: '2018-01-27T15:52:59-08:00'
-  :title: Point Pinole
-  :description: There is just something really great about old docks.
-- :slug: '40834752681'
-  :occurred_at: '2018-03-07T16:48:46-08:00'
-  :title: Winter Sun
-  :description: At Silver Star's summit.
-- :slug: '39752159910'
-  :occurred_at: '2018-04-07T07:57:30-07:00'
-  :title: Giants
-  :description: Trees in the open space reserve.
-- :slug: '41519521802'
-  :occurred_at: '2018-04-07T08:06:34-07:00'
-  :title: Eucalyptus Bark
-  :description: Peeling bark.
-- :slug: '41519511532'
-  :occurred_at: '2018-04-07T08:09:30-07:00'
-  :title: Berries After Rainfall
-  :description: On the way up to Mount Sutro's peak.
-- :slug: '42141446484'
-  :occurred_at: '2018-05-20T13:57:39-07:00'
-  :title: The KVB
-  :description: The KVB playing at the Volkspalast in Leipzig.
-- :slug: '27990399887'
-  :occurred_at: '2018-06-10T09:30:57-07:00'
-  :title: Old Bark
-  :description: A little texture from an ancient tree at a Californian ranch.
-- :slug: '42810454332'
-  :occurred_at: '2018-06-10T09:33:10-07:00'
-  :title: Lone Tree
-  :description: A lone tree overlooking the plains.
-- :slug: '28986316738'
-  :occurred_at: '2018-06-10T10:28:28-07:00'
-  :title: Gold
-  :description: A varietal that lends color to the golden state.\n
-- :slug: '43676231312'
-  :occurred_at: '2018-07-15T19:04:45-07:00'
-  :title: Staircase
-  :description: A staircase up to Vernal falls in Yosemite.
-- :slug: '43676224302'
-  :occurred_at: '2018-07-15T19:40:50-07:00'
-  :title: Crystal Clear Water
-  :description: A creek near Halfdome Village in Yosemite.
+  original_image_url: https://www.dropbox.com/s/3i0ki68xtt9aemi/25152393458.jpg?dl=1
+- slug: '39023212721'
+  occurred_at: '2017-12-02T04:19:41-08:00'
+  title: Sasano
+  description: An experience in Japanese cuisine (Tokyo).
+  original_image_url: https://www.dropbox.com/s/j6ya8qmvprx2ix6/39023212721.jpg?dl=1
+- slug: '25963343317'
+  occurred_at: '2018-01-27T15:52:59-08:00'
+  title: Point Pinole
+  description: There is just something really great about old docks.
+  original_image_url: https://www.dropbox.com/s/dmtt0c3e34de54i/25963343317.jpg?dl=1
+- slug: '40834752681'
+  occurred_at: '2018-03-07T16:48:46-08:00'
+  title: Winter Sun
+  description: At Silver Star's summit.
+  original_image_url: https://www.dropbox.com/s/0g761c0v9c5fn7k/40834752681.jpg?dl=1
+- slug: '39752159910'
+  occurred_at: '2018-04-07T07:57:30-07:00'
+  title: Giants
+  description: Trees in the open space reserve.
+  original_image_url: https://www.dropbox.com/s/xq9qcutwqqwt4vl/39752159910.jpg?dl=1
+- slug: '41519521802'
+  occurred_at: '2018-04-07T08:06:34-07:00'
+  title: Eucalyptus Bark
+  description: Peeling bark.
+  original_image_url: https://www.dropbox.com/s/g487iu2fpyabko4/41519521802.jpg?dl=1
+- slug: '41519511532'
+  occurred_at: '2018-04-07T08:09:30-07:00'
+  title: Berries After Rainfall
+  description: On the way up to Mount Sutro's peak.
+  original_image_url: https://www.dropbox.com/s/lai4va0u33cduue/41519511532.jpg?dl=1
+- slug: '42141446484'
+  occurred_at: '2018-05-20T13:57:39-07:00'
+  title: The KVB
+  description: The KVB playing at the Volkspalast in Leipzig.
+  original_image_url: https://www.dropbox.com/s/2x34k8j1adq0vk6/42141446484.jpg?dl=1
+- slug: '27990399887'
+  occurred_at: '2018-06-10T09:30:57-07:00'
+  title: Old Bark
+  description: A little texture from an ancient tree at a Californian ranch.
+  original_image_url: https://www.dropbox.com/s/qay4c3s2p852yuy/27990399887.jpg?dl=1
+- slug: '42810454332'
+  occurred_at: '2018-06-10T09:33:10-07:00'
+  title: Lone Tree
+  description: A lone tree overlooking the plains.
+  original_image_url: https://www.dropbox.com/s/249zssiy77km3le/42810454332.jpg?dl=1
+- slug: '28986316738'
+  occurred_at: '2018-06-10T10:28:28-07:00'
+  title: Gold
+  description: A varietal that lends color to the golden state.\n
+  original_image_url: https://www.dropbox.com/s/3yp1b83geaqmmnd/28986316738.jpg?dl=1
+- slug: '43676231312'
+  occurred_at: '2018-07-15T19:04:45-07:00'
+  title: Staircase
+  description: A staircase up to Vernal falls in Yosemite.
+  original_image_url: https://www.dropbox.com/s/ac5xxjbhi2xbnxq/43676231312.jpg?dl=1
+- slug: '43676224302'
+  occurred_at: '2018-07-15T19:40:50-07:00'
+  title: Crystal Clear Water
+  description: A creek near Halfdome Village in Yosemite.
+  original_image_url: https://www.dropbox.com/s/hsqza4xtr18eqy4/43676224302.jpg?dl=1
