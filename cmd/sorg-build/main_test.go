@@ -32,7 +32,7 @@ func init() {
 }
 
 func TestCompilePhotos(t *testing.T) {
-	photos, err := compilePhotos(nil)
+	photos, err := compilePhotos(true)
 	assert.NoError(t, err)
 	assert.NotZero(t, len(photos))
 }

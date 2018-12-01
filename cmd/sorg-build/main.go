@@ -468,7 +468,7 @@ func main() {
 	var photos []*Photo
 	tasks = append(tasks, pool.NewTask(func() error {
 		var err error
-		photos, err = compilePhotos(db)
+		photos, err = compilePhotos(false)
 		return err
 	}))
 
@@ -956,7 +956,12 @@ func compilePassagesIndex(passages []*passages.Passage) error {
 	return nil
 }
 
-func compilePhotos(db *sql.DB) ([]*Photo, error) {
+// Compiles photos based on `content/photographs.yaml` by downloading any that
+// are missing and doing resizing work.
+//
+// `skipWork` initializes parallel jobs but no-ops them. This is useful for
+// testing where we don't expect these operations to succeed.
+func compilePhotos(skipWork bool) ([]*Photo, error) {
 	if conf.ContentOnly {
 		return nil, nil
 	}
@@ -1055,25 +1060,27 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 	log.Debugf("Skipping processing %d image(s) with marker(s)",
 		len(photos)-len(markers))
 
-	log.Debugf("Fetching %d photo(s)", len(photoFiles))
-	err = downloader.Fetch(photoFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	log.Debugf("Running %d resize job(s)", len(resizeJobs))
-	err = resizer.Resize(resizeJobs)
-	if err != nil {
-		return nil, err
-	}
-
-	log.Debugf("Creating %d marker(s)", len(markers))
-	for _, marker := range markers {
-		file, err := os.OpenFile(marker, os.O_RDONLY|os.O_CREATE, 0755)
+	if !skipWork {
+		log.Debugf("Fetching %d photo(s)", len(photoFiles))
+		err = downloader.Fetch(photoFiles)
 		if err != nil {
 			return nil, err
 		}
-		file.Close()
+
+		log.Debugf("Running %d resize job(s)", len(resizeJobs))
+		err = resizer.Resize(resizeJobs)
+		if err != nil {
+			return nil, err
+		}
+
+		log.Debugf("Creating %d marker(s)", len(markers))
+		for _, marker := range markers {
+			file, err := os.OpenFile(marker, os.O_RDONLY|os.O_CREATE, 0755)
+			if err != nil {
+				return nil, err
+			}
+			file.Close()
+		}
 	}
 
 	locals := getLocals("Photography", map[string]interface{}{
