@@ -245,22 +245,6 @@ func (p passageByPublishedAt) Less(i, j int) bool { return p[i].PublishedAt.Befo
 
 // Photo is a photography downloaded from Flickr.
 type Photo struct {
-	// LargeImageURL is the location where the large-sized version of the photo
-	// can be downloaded from Flickr.
-	LargeImageURL string
-
-	// LargeImageHeight and LargeImageWidth are the height and width of the
-	// large-sized version of the photo.
-	LargeImageHeight, LargeImageWidth int
-
-	// MediumImageURL is the location where the medium-sized version of the
-	// photo can be downloaded from Flickr.
-	MediumImageURL string
-
-	// MediumImageHeight and MediumImageWidth are the height and width of the
-	// medium-sized version of the photo.
-	MediumImageHeight, MediumImageWidth int
-
 	// OriginalImageURL is the location where the original-sized version of the
 	// photo can be downloaded from Flickr.
 	OriginalImageURL string
@@ -1745,12 +1729,6 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 
 	rows, err := db.Query(`
 		SELECT
-			metadata -> 'large_image',
-			(metadata -> 'large_height')::int,
-			(metadata -> 'large_width')::int,
-			metadata -> 'medium_image',
-			(metadata -> 'medium_height')::int,
-			(metadata -> 'medium_width')::int,
 			metadata -> 'original_image',
 			(metadata -> 'original_height')::int,
 			(metadata -> 'original_width')::int,
@@ -1759,7 +1737,7 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 		FROM events
 		WHERE type = 'flickr'
 		ORDER BY occurred_at DESC
-		LIMIT 200
+		LIMIT 1000
 	`)
 	if err != nil {
 		return nil, fmt.Errorf("Error selecting photos: %v", err)
@@ -1770,12 +1748,6 @@ func getPhotosData(db *sql.DB) ([]*Photo, error) {
 		var photo Photo
 
 		err = rows.Scan(
-			&photo.LargeImageURL,
-			&photo.LargeImageHeight,
-			&photo.LargeImageWidth,
-			&photo.MediumImageURL,
-			&photo.MediumImageHeight,
-			&photo.MediumImageWidth,
 			&photo.OriginalImageURL,
 			&photo.OriginalImageHeight,
 			&photo.OriginalImageWidth,
