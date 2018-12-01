@@ -977,6 +977,8 @@ func compilePhotos(db *sql.DB) ([]*Photo, error) {
 		return nil, fmt.Errorf("Error unmarshaling photographs data: %v", err)
 	}
 
+	photos := photosWrapper.Photos
+
 	// Dropbox is the original source for images, but to avoid doing unnecessary
 	// downloading, resizing, and uploading work for every build, we put any
 	// work we do into a "cache" which is itself put into S3. Subsequent builds
