@@ -30,11 +30,6 @@ photographs:
   title: Leaves
   description: Leaves changing in the autumn of Japan.
   original_image_url: https://www.dropbox.com/s/dgrmijw3z4d62gl/3278030196.jpg?dl=1
-- slug: '3278043146'
-  occurred_at: '2008-12-04T09:58:35-08:00'
-  title: ''
-  description: ''
-  original_image_url: https://www.dropbox.com/s/38n059espg31q0h/3278043146.jpg?dl=1
 - slug: '3278081616'
   occurred_at: '2008-12-04T11:41:34-08:00'
   title: Zen Bridge
@@ -66,16 +61,6 @@ photographs:
   title: Quiet Day
   description: A couple reading in the park in Bruges.
   original_image_url: https://www.dropbox.com/s/5h9uvzk2sae5t1w/14829671059.jpg?dl=1
-- slug: '11574786356'
-  occurred_at: '2011-11-12T06:24:08-08:00'
-  title: DSC_0090
-  description: ''
-  original_image_url: https://www.dropbox.com/s/4eo5kj34tu1xraj/11574786356.jpg?dl=1
-- slug: '11574594665'
-  occurred_at: '2011-11-15T05:50:52-08:00'
-  title: DSC_0160
-  description: ''
-  original_image_url: https://www.dropbox.com/s/b3pt3b063j0690v/11574594665.jpg?dl=1
 - slug: '11574661473'
   occurred_at: '2011-11-18T11:06:56-08:00'
   title: DSC_0248
@@ -114,12 +99,6 @@ photographs:
   description: The gate to the Agora Collective in Berlin. Situated along a very
     typical (but beautiful) cobblestone street.
   original_image_url: https://www.dropbox.com/s/9ibgsyt893d4rji/9549463099.jpg?dl=1
-- slug: '9549457229'
-  occurred_at: '2012-05-22T01:54:27-07:00'
-  title: Workstation
-  description: My desk at Agora in Berlin. As you can imagine, it was a struggle
-    coming to work every day.
-  original_image_url: https://www.dropbox.com/s/26f1e53bhatjiyt/9549457229.jpg?dl=1
 - slug: '9549450965'
   occurred_at: '2012-05-22T01:54:47-07:00'
   title: The Cubicles
@@ -185,35 +164,17 @@ photographs:
   title: The Royal Road
   description: In Kraków.
   original_image_url: https://www.dropbox.com/s/x3ysqmtiq688cy4/9552207754.jpg?dl=1
-- slug: '9549412975'
-  occurred_at: '2013-04-21T08:41:51-07:00'
-  title: The Salt Mines
-  description: An amazing figure carved from rock salt at the Wieliczka Salt Mine.
-    They also have an entire subterranean cathedral. One of the few tourist attractions
-    that lives up to its reputation in every way.
-  original_image_url: https://www.dropbox.com/s/40zkc3v2str9pw5/9549412975.jpg?dl=1
 - slug: '9549406985'
   occurred_at: '2013-04-22T03:22:46-07:00'
   title: Railsberry
   description: On stage at Railsberry. This conference builds on some great themes
     of wizardly and experimentation.
   original_image_url: https://www.dropbox.com/s/6sb0ddkxhdxpg67/9549406985.jpg?dl=1
-- slug: '9552191172'
-  occurred_at: '2013-04-29T21:51:47-07:00'
-  title: Magic
-  description: 'No trip to Mexico would be complete without a draft of Magic: The
-    Gathering.'
-  original_image_url: https://www.dropbox.com/s/3gqr6w4y24lp6hy/9552191172.jpg?dl=1
 - slug: '9552125334'
   occurred_at: '2013-04-30T18:06:25-07:00'
   title: Sean & Vicki
   description: At their wedding dinner.
   original_image_url: https://www.dropbox.com/s/hhv0vpuzzdwyc9e/9552125334.jpg?dl=1
-- slug: '9549400243'
-  occurred_at: '2013-04-30T20:33:25-07:00'
-  title: Derek
-  description: Derek on the beach at Sean and Vicki's wedding in Puerta Vallerta.
-  original_image_url: https://www.dropbox.com/s/eq59dtdpnagaa91/9549400243.jpg?dl=1
 - slug: '9552184718'
   occurred_at: '2013-07-29T12:02:20-07:00'
   title: True Loft
@@ -397,11 +358,6 @@ photographs:
   title: Local Edition
   description: The SF staple and its renowned mixologists.
   original_image_url: https://www.dropbox.com/s/htus409aaglhar5/12208587105.jpg?dl=1
-- slug: '12229569636'
-  occurred_at: '2014-01-30T18:32:49-08:00'
-  title: Hourglass
-  description: I replaced Breaktime with a more traditional form of timer.
-  original_image_url: https://www.dropbox.com/s/nqtvmz0ndoc7oid/12229569636.jpg?dl=1
 - slug: '12258030614'
   occurred_at: '2014-01-31T08:57:07-08:00'
   title: Sightglass
@@ -539,11 +495,6 @@ photographs:
   title: S. / Ship of Theseus
   description: A very cool experiment in new media.
   original_image_url: https://www.dropbox.com/s/99ox652m0qproft/13970830425.jpg?dl=1
-- slug: '13970842715'
-  occurred_at: '2014-04-15T17:44:53-07:00'
-  title: The Sausalito Sea Lion
-  description: A fifty year old Sausalito landmark by Al Sybrian.
-  original_image_url: https://www.dropbox.com/s/0ngbwobn6usd65a/13970842715.jpg?dl=1
 - slug: '14051556834'
   occurred_at: '2014-04-26T13:58:37-07:00'
   title: Kiting at Ocean Beach
