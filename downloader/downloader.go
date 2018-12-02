@@ -68,18 +68,18 @@ func fetchFile(client *http.Client, file *File) error {
 
 	resp, err := client.Get(file.URL)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error fetching %v: %v", file.URL, err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return fmt.Errorf("Unexpected status code %d while fetching: %v",
-			resp.StatusCode, file.URL)
+		return fmt.Errorf("Unexpected status code fetching %v: %d",
+			file.URL, resp.StatusCode)
 	}
 
 	f, err := os.Create(file.Target)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error creating %v: %v", file.Target, err)
 	}
 	defer f.Close()
 
@@ -90,7 +90,7 @@ func fetchFile(client *http.Client, file *File) error {
 
 	_, err = io.Copy(w, resp.Body)
 	if err != nil {
-		return err
+		return fmt.Errorf("Error copying to %v from HTTP response: %v", file.Target, err)
 	}
 
 	return nil
