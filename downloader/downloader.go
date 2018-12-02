@@ -59,11 +59,6 @@ func Fetch(files []*File) error {
 }
 
 func fetchFile(client *http.Client, file *File) error {
-	if _, err := os.Stat(file.Target); !os.IsNotExist(err) {
-		log.Debugf("Skipping file because local target exists: %v", file.URL)
-		return nil
-	}
-
 	log.Debugf("Fetching file: %v", file.URL)
 
 	resp, err := client.Get(file.URL)
