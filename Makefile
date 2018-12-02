@@ -1,7 +1,10 @@
-all: clean install test vet lint check-gofmt check-headers check-retina build
+all: clean install test vet lint check-dl0 check-gofmt check-headers check-retina build
 
 build:
 	$(GOPATH)/bin/sorg-build
+
+check-dl0:
+	scripts/check_dl0.sh
 
 check-gofmt:
 	scripts/check_gofmt.sh
