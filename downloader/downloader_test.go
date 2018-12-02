@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"strconv"
 	"testing"
 
@@ -16,22 +15,6 @@ import (
 const numIterators = 50
 
 func TestFetch(t *testing.T) {
-	//
-	// Existing file
-	//
-
-	tempfile, err := ioutil.TempFile("", "files")
-	assert.NoError(t, err)
-	defer os.Remove(tempfile.Name())
-
-	files := []*File{
-		{URL: "http://localhost", Target: tempfile.Name()},
-	}
-
-	// Because the temp file already exists, no fetch will be made.
-	err = Fetch(files)
-	assert.NoError(t, err)
-
 	//
 	// New files
 	//
@@ -48,7 +31,7 @@ func TestFetch(t *testing.T) {
 	}))
 	defer ts.Close()
 
-	files = nil
+	var files []*File
 	for i := 0; i < numIterators; i++ {
 		file := &File{
 			URL:    ts.URL + "/file" + strconv.Itoa(i),
@@ -83,7 +66,7 @@ func TestFetch(t *testing.T) {
 	}
 
 	err = Fetch(files)
-	expectedErr := fmt.Errorf("Unexpected status code 500 while fetching: %v/error",
+	expectedErr := fmt.Errorf("Unexpected status code fetching %v/error: 500",
 		ts.URL)
 	assert.Equal(t, expectedErr, err)
 
