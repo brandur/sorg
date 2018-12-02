@@ -11,6 +11,6 @@
 PHOTOGRAPHS_DATA="content/photographs.yaml"
 
 if grep "?dl=0" "$PHOTOGRAPHS_DATA"; then
-    echo '!!! found `?dl=0` in `$PHOTOGRAPHS_DATA`'
+    echo "!!! found '?dl=0' in '$PHOTOGRAPHS_DATA'"
     exit 1
 fi
