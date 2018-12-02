@@ -865,7 +865,7 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 
 	var photo *Photo
 	if len(photos) > 0 {
-		numRecent := 10
+		numRecent := 20
 		if len(photos) < numRecent {
 			numRecent = len(photos)
 		}
