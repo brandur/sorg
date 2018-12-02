@@ -93,6 +93,10 @@ func TestPace(t *testing.T) {
 	assert.Equal(t, "7:31", pace(133.0, d))
 }
 
+func TestQueryEscape(t *testing.T) {
+	assert.Equal(t, "a%2Bb", queryEscape("a+b"))
+}
+
 func TestRenderTweetContent(t *testing.T) {
 	// short link
 	assert.Equal(t,

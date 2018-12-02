@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"html/template"
 	"math"
+	"net/url"
 	"regexp"
 	"strconv"
 	"strings"
@@ -28,6 +29,7 @@ var FuncMap = template.FuncMap{
 	"NumberWithDelimiter":          numberWithDelimiter,
 	"Pace":                         pace,
 	"PhotographStandin":            photographStandin,
+	"QueryEscape":                  queryEscape,
 	"RenderTweetContent":           renderTweetContent,
 	"RoundToString":                roundToString,
 	"To2x":                         To2x,
@@ -164,6 +166,11 @@ func pace(distance float64, duration time.Duration) string {
 
 func photographStandin(index int) string {
 	return fmt.Sprintf("/assets/standin_0%d.jpg", index%5)
+}
+
+// Escapes a URL.
+func queryEscape(s string) string {
+	return url.QueryEscape(s)
 }
 
 // Matches links in a tweet (like protocol://link).

@@ -9,7 +9,7 @@
       {{range $i, $photo := .Photos}}
         div.photo id="{{.Slug}}"
           a href="#{{$photo.Slug}}"
-            img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/{{$photo.Slug}}_large.jpg" data-srcset="/photographs/{{$photo.Slug}}_large@2x.jpg 2x, /photographs/{{$photo.Slug}}_large.jpg 1x"
+            img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/{{QueryEscape $photo.Slug}}_large.jpg" data-srcset="/photographs/{{QueryEscape $photo.Slug}}_large@2x.jpg 2x, /photographs/{{QueryEscape $photo.Slug}}_large.jpg 1x"
       {{end}}
       p#outlink See the complete set on <a href="https://www.flickr.com/photos/brandurleach/tags/lifestream">Flickr</a>.
   #top-nav-photos.top-nav.hide-big
