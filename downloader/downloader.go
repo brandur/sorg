@@ -93,7 +93,7 @@ func fetchFile(client *http.Client, file *File) error {
 
 func workFiles(filesChan chan *File, wg *sync.WaitGroup) {
 	client := &http.Client{
-		Timeout: 5 * time.Second,
+		Timeout: 30 * time.Second,
 	}
 
 	// Note that this loop falls through when the channel is closed.
