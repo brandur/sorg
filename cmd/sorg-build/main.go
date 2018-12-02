@@ -985,7 +985,9 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 	photos := photosWrapper.Photos
 
 	// Sort reverse chronologically so newer photos are first.
-	sort.Slice(photos, func(i, j int) bool { return photos[i].OccurredAt > photos[j].OccurredAt })
+	sort.Slice(photos, func(i, j int) bool {
+		return photos[j].OccurredAt.Before(*photos[i].OccurredAt)
+	})
 
 	// Dropbox is the original source for images, but to avoid doing unnecessary
 	// downloading, resizing, and uploading work for every build, we put any
