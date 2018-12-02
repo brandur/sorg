@@ -1088,7 +1088,7 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 		}
 	}
 
-	locals := getLocals("Photography", map[string]interface{}{
+	locals := getLocals("Photos", map[string]interface{}{
 		"BodyClass":     "photos",
 		"Photos":        photos,
 		"ViewportWidth": 600,
