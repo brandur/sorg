@@ -248,6 +248,12 @@ type Photo struct {
 	// Description is the description of the photograph.
 	Description string `yaml:"description"`
 
+	// KeepInHomeRotation is a special override for photos I really like that
+	// keeps them in the home page's random rotation. The rotation then
+	// consists of either a recent photo or one of these explicitly selected
+	// old ones.
+	KeepInHomeRotation bool `yaml:"keep_in_home_rotation"`
+
 	// OriginalImageURL is the location where the original-sized version of the
 	// photo can be downloaded from.
 	OriginalImageURL string `yaml:"original_image_url"`
@@ -863,6 +869,7 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 		fragments = fragments[0:1]
 	}
 
+	// Find a random photo to put on the homepage.
 	var photo *Photo
 	if len(photos) > 0 {
 		numRecent := 20
@@ -870,8 +877,22 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 			numRecent = len(photos)
 		}
 
-		recentPhotos := photos[0:numRecent]
-		photo = recentPhotos[rand.Intn(len(recentPhotos))]
+		// All recent photos go into the random selection.
+		randomPhotos := photos[0:numRecent]
+
+		// Older photos that are good enough that I've explicitly tagged them
+		// as such also get considered for the rotation.
+		if len(photos) > numRecent {
+			olderPhotos := photos[numRecent : len(photos)-1]
+
+			for _, photo := range olderPhotos {
+				if photo.KeepInHomeRotation {
+					randomPhotos = append(randomPhotos, photo)
+				}
+			}
+		}
+
+		photo = randomPhotos[rand.Intn(len(randomPhotos))]
 	}
 
 	locals := getLocals("brandur.org", map[string]interface{}{

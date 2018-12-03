@@ -439,6 +439,7 @@ photographs:
   title: Madi Diaz @ Hangar
   description: Thanks to Abe for talking us into this party.
   original_image_url: https://www.dropbox.com/s/eclzwjl9pex11xg/13005179763.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '13005077315'
   occurred_at: '2014-03-07T21:12:44-08:00'
   title: From the Rooftop
@@ -559,6 +560,7 @@ photographs:
   description: Up close and personal with a fighter at the German Museum of Technology
     in Berlin.
   original_image_url: https://www.dropbox.com/s/752xhpkjafub0ag/14082036448.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '14268603055'
   occurred_at: '2014-05-24T06:04:03-07:00'
   title: Turntable
@@ -579,6 +581,7 @@ photographs:
   title: Scooters in Neukölln
   description: Colored scooters in front of an AirBnB I was staying at in Neukölln.
   original_image_url: https://www.dropbox.com/s/medff14yf9ff4mz/14288465221.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '14273020986'
   occurred_at: '2014-05-28T12:14:22-07:00'
   title: DSCF3942
@@ -724,11 +727,13 @@ photographs:
   title: Alberta
   description: Prairies and rivers.
   original_image_url: https://www.dropbox.com/s/igihwdf7iwpn4vz/14693238984.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '14681068926'
   occurred_at: '2014-07-20T09:32:16-07:00'
   title: Green
   description: Some fauna on the way up to Healy Pass.
   original_image_url: https://www.dropbox.com/s/fv32whhhg779cli/14681068926.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '14686081209'
   occurred_at: '2014-08-08T22:29:09-07:00'
   title: The Serpentine
@@ -759,11 +764,13 @@ photographs:
   title: Glass Garden
   description: At Chiluly Glass and Garden in Seattle.
   original_image_url: https://www.dropbox.com/s/kv6cuy8akhj0zl8/14901249950.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '14901306397'
   occurred_at: '2014-08-30T14:33:55-07:00'
   title: Chandelier
   description: A warped chandelier from glass.
   original_image_url: https://www.dropbox.com/s/83f4qv3dhdxoysu/14901306397.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '15499747402'
   occurred_at: '2014-09-04T00:12:27-07:00'
   title: La Taqueria
@@ -939,6 +946,7 @@ photographs:
   description: Remnants of a forest fire and cloud cover over one of the classic
     expert runs at Silver Star.
   original_image_url: https://www.dropbox.com/s/ls33ic3hrvsg314/24689000781.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '26231825310'
   occurred_at: '2016-04-16T14:55:35-07:00'
   title: GitHub's Bar
@@ -974,6 +982,7 @@ photographs:
   title: A Door At Potsdam
   description: A very picturesque door in the town of Potsdam near Berlin.
   original_image_url: https://www.dropbox.com/s/eg1z8gm8g9tu2eb/28241069746.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '27720837734'
   occurred_at: '2016-07-15T22:01:18-07:00'
   title: Oddball Films
@@ -1001,6 +1010,7 @@ photographs:
   title: Delicate Fern
   description: Some flora at the top of Buena Vista Park in San Francisco.
   original_image_url: https://www.dropbox.com/s/mkzl3s4r83jan9j/28062235663.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '28062222823'
   occurred_at: '2016-07-30T19:54:43-07:00'
   title: Letter Blocks
@@ -1036,12 +1046,14 @@ photographs:
   title: The Valley
   description: A view back into the valley from Bow Summit.
   original_image_url: https://www.dropbox.com/s/x67234ndvmq1zs1/31866826222.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '32044839462'
   occurred_at: '2017-01-07T13:23:19-08:00'
   title: Canadian Sunbathing
   description: My brother doing some sunbathing while doing some backcountry near
     Hidden Lake in Alberta.
   original_image_url: https://www.dropbox.com/s/m8aleilfpvgkyth/32044839462.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '32495085025'
   occurred_at: '2017-01-22T17:14:11-08:00'
   title: The MOMA
@@ -1052,6 +1064,7 @@ photographs:
   title: Man and Screen
   description: A man settled in to watch a Bruce Connor video exhibit at the MOMA.
   original_image_url: https://www.dropbox.com/s/nqlcrdvd8cw6prf/32116566500.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '32541600226'
   occurred_at: '2017-01-28T17:55:56-08:00'
   title: Approaching the Golden Gate
@@ -1095,11 +1108,13 @@ photographs:
   title: Grass
   description: An abstract view of some local grass from a walk around the neighborhood.
   original_image_url: https://www.dropbox.com/s/h1ened0z6yi73i3/34627475551.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '34967872330'
   occurred_at: '2017-05-20T16:33:00-07:00'
   title: Open Space
   description: A city hike out at the Mount Sutro Open Space Preserve.
   original_image_url: https://www.dropbox.com/s/01n3cprbagpun84/34967872330.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '34512227654'
   occurred_at: '2017-06-01T11:44:44-07:00'
   title: John Keynoting
@@ -1130,11 +1145,13 @@ photographs:
   title: Path to Nowhere
   description: A winding path along the hillsides of Briones Regional Park.
   original_image_url: https://www.dropbox.com/s/6zru43okmloevj0/35341042150.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '35082164013'
   occurred_at: '2017-07-06T16:01:06-07:00'
   title: Death and Life
   description: On the road to the Pittock Mansion.
   original_image_url: https://www.dropbox.com/s/1ldplzn34uue0ju/35082164013.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '35850660186'
   occurred_at: '2017-07-08T01:10:39-07:00'
   title: Will
@@ -1146,11 +1163,13 @@ photographs:
   description: One of the waterfalls along the Trail of Ten Falls in Silver Falls
     State Park.
   original_image_url: https://www.dropbox.com/s/21q0ufwqzz7b9pi/35891470645.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '35891458575'
   occurred_at: '2017-07-10T17:13:12-07:00'
   title: Sun On Leaves
   description: Light shining through the canopy along the Trail of Ten Falls in Oregon.
   original_image_url: https://www.dropbox.com/s/jwydy1p2kt4jcpm/35891458575.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '36390661750'
   occurred_at: '2017-07-22T21:33:35-07:00'
   title: Van Kleef
@@ -1161,32 +1180,38 @@ photographs:
   title: Golden Grass
   description: Long grass turning gold as the sun sets on Mount Diablo.
   original_image_url: https://www.dropbox.com/s/ji88i8zzaybheyo/36680890590.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '36466658193'
   occurred_at: '2017-09-16T11:27:51-07:00'
   title: Woodland
   description: Sparse forest on the way up to Panorama Ridge.
   original_image_url: https://www.dropbox.com/s/swzhj7exhfskgty/36466658193.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '36883417480'
   occurred_at: '2017-09-16T15:26:37-07:00'
   title: Dew
   description: Some dewy greenery found along the trail on the trip up Panorama Ridge.
   original_image_url: https://www.dropbox.com/s/k9oztpidsa5a0b6/36883417480.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '36656229584'
   occurred_at: '2017-09-26T11:25:04-07:00'
   title: The Next Valley
   description: A look over the ridge and out into the next valley. Massive Mountain
     is further to the right and out of view.
   original_image_url: https://www.dropbox.com/s/nqrrfz9mfvmbyhn/36656229584.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '23513389768'
   occurred_at: '2017-09-26T12:03:54-07:00'
   title: The Valley
   description: A hidden valley over the ridge from Bourgeau Lake.
   original_image_url: https://www.dropbox.com/s/1k6h25bqxi2ytpn/23513389768.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '36656111894'
   occurred_at: '2017-09-26T13:15:27-07:00'
   title: Alpine Colors
   description: Some of the colors seen in the Rockies as autumn draws to a close.
   original_image_url: https://www.dropbox.com/s/zh9uvzvt7q6jz5x/36656111894.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '37467049676'
   occurred_at: '2017-10-04T20:23:55-07:00'
   title: The Fame & Glory String Band
@@ -1210,6 +1235,7 @@ photographs:
   description: A tree's branches are suspended to enable further growth. Typical
     &quot;Yuki-tsuri&quot;.
   original_image_url: https://www.dropbox.com/s/k6q35i7057z3rm3/38908435491.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38908367091'
   occurred_at: '2017-11-14T19:31:31-08:00'
   title: Changing Colors
@@ -1220,54 +1246,64 @@ photographs:
   title: Pond in the Rain
   description: A pond near a local Kanazawan shrine during a downpour.
   original_image_url: https://www.dropbox.com/s/rok7aykxpb8z08o/38908364101.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38872442132'
   occurred_at: '2017-11-14T20:06:57-08:00'
   title: Rain Chain
   description: A rain chain near a shrine in Kanazawa.
   original_image_url: https://www.dropbox.com/s/79n8bavmimoop25/38872442132.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38023513875'
   occurred_at: '2017-11-15T01:21:20-08:00'
   title: Rain Room
   description: A room at Kanazawa's 21st Century Museum of Contemporary Art that's
     open to the sky.
   original_image_url: https://www.dropbox.com/s/c4m3pnrau7xfaj1/38023513875.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38024506975'
   occurred_at: '2017-11-15T20:43:08-08:00'
   title: Canal
   description: An examination of a nearby canal on a short hike up to see the macaques
     of Nagano.
   original_image_url: https://www.dropbox.com/s/rcfh3qslmydt0xj/38024506975.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38093253455'
   occurred_at: '2017-11-18T14:23:48-08:00'
   title: Osaka @ 5 AM
   description: Early morning in Osaka.
   original_image_url: https://www.dropbox.com/s/til8jej13dx8bq9/38093253455.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '27203005839'
   occurred_at: '2017-11-19T14:42:03-08:00'
   title: Snowy Shrines
   description: A fresh layer of snow covering the shrines of Mount Koya.
   original_image_url: https://www.dropbox.com/s/91dkatvwya09450/27203005839.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '25109039308'
   occurred_at: '2017-11-19T14:50:31-08:00'
   title: Torii
   description: A series of torii near Mount Koya. As viewed first thing in the morning.
   original_image_url: https://www.dropbox.com/s/b2pm6ns0z47z4tu/25109039308.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38286595564'
   occurred_at: '2017-11-19T19:41:03-08:00'
   title: Okunoin Cemetary
   description: In the thick of the Okunoin Cemetary with tens of thousands of grave
     stones like these ones.
   original_image_url: https://www.dropbox.com/s/ubnmvzefdnm886c/38286595564.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38966117062'
   occurred_at: '2017-11-19T19:47:19-08:00'
   title: Moss
   description: Moss macro. The droplets are from the melted first snow of the season.
   original_image_url: https://www.dropbox.com/s/ulp4x2i4rm5lmbw/38966117062.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38286186814'
   occurred_at: '2017-11-20T19:05:40-08:00'
   title: Light and Dark
   description: The changing leaves reflected in a pond.
   original_image_url: https://www.dropbox.com/s/ve1ae1jcb35bdvr/38286186814.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '27224926129'
   occurred_at: '2017-11-20T19:17:00-08:00'
   title: The Trees of the Kumano
@@ -1289,27 +1325,32 @@ photographs:
   description: A town built around the oldest Onsen in Japan. Right in the middle
     of the Kumano Kodo.
   original_image_url: https://www.dropbox.com/s/1folrzz21ewwiy0/24154488037.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38303052154'
   occurred_at: '2017-11-22T16:47:33-08:00'
   title: The Kumano Kodo
   description: The sun seen through the trail's ancient forest as we start our final
     day of the walk.
   original_image_url: https://www.dropbox.com/s/4bxs5919yr4vke8/38303052154.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '25147983148'
   occurred_at: '2017-11-22T17:34:18-08:00'
   title: Painted Tree
   description: A tree along the Kumano Kodo painted in banded colors.
   original_image_url: https://www.dropbox.com/s/lklsff321voa5th/25147983148.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38982714342'
   occurred_at: '2017-11-22T17:39:04-08:00'
   title: Deviant
   description: A single branch winding up to the forest's heights.
   original_image_url: https://www.dropbox.com/s/qrq4jgye663vqzg/38982714342.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38302683904'
   occurred_at: '2017-11-22T19:27:15-08:00'
   title: Moss
   description: Some vibrant Japanese moss seen while hiking the Kumano Kodo.
   original_image_url: https://www.dropbox.com/s/hkc9pp4yl2x9niq/38302683904.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '24158392857'
   occurred_at: '2017-11-28T23:47:45-08:00'
   title: Shopping in the Rain
@@ -1325,11 +1366,13 @@ photographs:
   title: Kyoto Loves Gin
   description: A gin cocktail in Osaka. The sign behind reads &quot;Kyoto Loves Gin&quot;.
   original_image_url: https://www.dropbox.com/s/dl1h8r5eh761mg9/38306410614.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '38306585354'
   occurred_at: '2017-11-30T03:36:02-08:00'
   title: Bape
   description: Neon tubes for one of Japan's more memorable fashion brands.
   original_image_url: https://www.dropbox.com/s/88hmb71tzs3w1m2/38306585354.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '25152393458'
   occurred_at: '2017-12-02T02:11:50-08:00'
   title: Is that a whisky cocktail?
@@ -1346,31 +1389,37 @@ photographs:
   title: Point Pinole
   description: There is just something really great about old docks.
   original_image_url: https://www.dropbox.com/s/dmtt0c3e34de54i/25963343317.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '40834752681'
   occurred_at: '2018-03-07T16:48:46-08:00'
   title: Winter Sun
   description: At Silver Star's summit.
   original_image_url: https://www.dropbox.com/s/0g761c0v9c5fn7k/40834752681.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '39752159910'
   occurred_at: '2018-04-07T07:57:30-07:00'
   title: Giants
   description: Trees in the open space reserve.
   original_image_url: https://www.dropbox.com/s/xq9qcutwqqwt4vl/39752159910.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '41519521802'
   occurred_at: '2018-04-07T08:06:34-07:00'
   title: Eucalyptus Bark
   description: Peeling bark.
   original_image_url: https://www.dropbox.com/s/g487iu2fpyabko4/41519521802.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '41519511532'
   occurred_at: '2018-04-07T08:09:30-07:00'
   title: Berries After Rainfall
   description: On the way up to Mount Sutro's peak.
   original_image_url: https://www.dropbox.com/s/lai4va0u33cduue/41519511532.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '42141446484'
   occurred_at: '2018-05-20T13:57:39-07:00'
   title: The KVB
   description: The KVB playing at the Volkspalast in Leipzig.
   original_image_url: https://www.dropbox.com/s/2x34k8j1adq0vk6/42141446484.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '27990399887'
   occurred_at: '2018-06-10T09:30:57-07:00'
   title: Old Bark
@@ -1381,11 +1430,13 @@ photographs:
   title: Lone Tree
   description: A lone tree overlooking the plains.
   original_image_url: https://www.dropbox.com/s/249zssiy77km3le/42810454332.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '28986316738'
   occurred_at: '2018-06-10T10:28:28-07:00'
   title: Gold
   description: A varietal that lends color to the golden state.
   original_image_url: https://www.dropbox.com/s/3yp1b83geaqmmnd/28986316738.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: '43676231312'
   occurred_at: '2018-07-15T19:04:45-07:00'
   title: Staircase
@@ -1396,6 +1447,7 @@ photographs:
   title: Crystal Clear Water
   description: A creek near Halfdome Village in Yosemite.
   original_image_url: https://www.dropbox.com/s/hsqza4xtr18eqy4/43676224302.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: 'L2018-09-22'
   occurred_at: '2018-09-22T16:03:00Z'
   title: September Snow
@@ -1416,6 +1468,7 @@ photographs:
   title: Portugal After Hours
   description: One of Portugal's party streets at its peak.
   original_image_url: https://www.dropbox.com/s/0wi75utof8t3irv/L2018-10-23.jpg?dl=1
+  keep_in_home_rotation: true
 - slug: 'L2018-10-23+01'
   occurred_at: '2018-10-23T16:02:00Z'
   title: After Hours Guitar
