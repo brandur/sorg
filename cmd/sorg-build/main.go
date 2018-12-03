@@ -265,7 +265,7 @@ type Photo struct {
 }
 
 // PhotoWrapper is a data structure intended to represent the data structure at
-// the top level of photograph data file `photographs.yaml`.
+// the top level of photograph data file `content/photographs/_meta.yaml`.
 type PhotoWrapper struct {
 	// Photos is a collection of photos within the top-level wrapper.
 	Photos []*Photo `yaml:"photographs"`
@@ -956,8 +956,8 @@ func compilePassagesIndex(passages []*passages.Passage) error {
 	return nil
 }
 
-// Compiles photos based on `content/photographs.yaml` by downloading any that
-// are missing and doing resizing work.
+// Compiles photos based on `content/photographs/_meta.yaml` by downloading any
+// that are missing and doing resizing work.
 //
 // `skipWork` initializes parallel jobs but no-ops them. This is useful for
 // testing where we don't expect these operations to succeed.
@@ -971,7 +971,7 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 		log.Debugf("Compiled photos in %v.", time.Now().Sub(start))
 	}()
 
-	data, err := ioutil.ReadFile(path.Join(sorg.ContentDir, "photographs.yaml"))
+	data, err := ioutil.ReadFile(path.Join(sorg.ContentDir, "photographs", "_meta.yaml"))
 	if err != nil {
 		return nil, fmt.Errorf("Error reading photographs data file: %v", err)
 	}
