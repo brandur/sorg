@@ -870,30 +870,7 @@ func compileHome(articles []*Article, fragments []*Fragment, photos []*Photo) er
 	}
 
 	// Find a random photo to put on the homepage.
-	var photo *Photo
-	if len(photos) > 0 {
-		numRecent := 20
-		if len(photos) < numRecent {
-			numRecent = len(photos)
-		}
-
-		// All recent photos go into the random selection.
-		randomPhotos := photos[0:numRecent]
-
-		// Older photos that are good enough that I've explicitly tagged them
-		// as such also get considered for the rotation.
-		if len(photos) > numRecent {
-			olderPhotos := photos[numRecent : len(photos)-1]
-
-			for _, photo := range olderPhotos {
-				if photo.KeepInHomeRotation {
-					randomPhotos = append(randomPhotos, photo)
-				}
-			}
-		}
-
-		photo = randomPhotos[rand.Intn(len(randomPhotos))]
-	}
+	photo := selectRandomPhoto(photos)
 
 	locals := getLocals("brandur.org", map[string]interface{}{
 		"Articles":  articles,
@@ -2384,4 +2361,32 @@ func runTasks(tasks []*pool.Task) bool {
 	}
 
 	return !p.HasErrors()
+}
+
+func selectRandomPhoto(photos []*Photo) *Photo {
+	if len(photos) < 1 {
+		return nil
+	}
+
+	numRecent := 20
+	if len(photos) < numRecent {
+		numRecent = len(photos)
+	}
+
+	// All recent photos go into the random selection.
+	randomPhotos := photos[0:numRecent]
+
+	// Older photos that are good enough that I've explicitly tagged them
+	// as such also get considered for the rotation.
+	if len(photos) > numRecent {
+		olderPhotos := photos[numRecent : len(photos)-1]
+
+		for _, photo := range olderPhotos {
+			if photo.KeepInHomeRotation {
+				randomPhotos = append(randomPhotos, photo)
+			}
+		}
+	}
+
+	return randomPhotos[rand.Intn(len(randomPhotos))]
 }
