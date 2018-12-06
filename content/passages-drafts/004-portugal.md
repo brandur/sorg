@@ -13,23 +13,80 @@ Writing from a train back down the coast to Lisbon.
 
 Let's take a not-so-brief interlude to talk about Postgres.
 If you want to see more photos of Portugal, you can skip
-through this and find plenty more closer to the end.
+through this and find more of that closer to the end.
 
-## PGConf EU (#pgconf)
+I was lucky enough this year to attend PGConf EU, a
+conference that rotates through Europe, and which was held
+in Portugal for 2018. I've been using and writing about
+Postgres for years now, but this was my first time
+attending a Postgres-related event bigger than a local
+meetup. Talks covered a variety of topics, but the center
+of gravity was bloat and a few of the major projects in
+flight to fight it.
 
-## Bloat (#bloat)
+## That old foe: bloat (#bloat)
 
-TODO
+Bloat is the Achilles heel of Postgres in production,
+especially where it's used for [OLTP][oltp] (many fast,
+small transactions, as opposed to OLAP, which is
+analytics). Bloat is an inherent artifact of Postgres'
+MVCC (multi-version concurrency control) implementation,
+which isolates the results of concurrent transactions from
+each other, and guarantees the ability to roll back a
+transaction when necessary.
 
-## Zheap (#zheap)
+Every row that's visible to _any_ transaction that's still
+running in the system has to be retained in the heap (the
+name for a table's physical storage), even if it's been
+subsequently deleted. When a transaction is searching the
+heap for results, it checks every row's visibility to make
+sure that it's still relevant before including it. Rows
+that are deleted but retained because they're still visible
+_somewhere_ are "bloat".
 
-One of the most exciting (and largest!) developments today
-in Postgres is the development of Zheap, a new heap
-implementation that promises to make dramatically reduce
-the impact of bloat. Zheap follows in the footsteps of
-Oracle by introducing the idea of a per-page _undo log_
+The not-uncommon degenerate scenario is for a very old
+query (often an analytical one running for hours or even
+days) to force a huge number of deleted rows to be kept
+around. They're invisible to almost everything, but the
+long-running query might still need them, so they can't be
+permanently removed. Having to visit these rows over and
+over degrades the performance of current transactions in
+the system, many of which need to be fast to keep
+applications healthy. I have [my own story about
+bloat][queues] from my time at Heroku involving a
+database-based job queue.
 
-TOOD
+## A new contender: Zheap (#zheap)
+
+One of the most exciting (and resource-wise, maybe one of
+the largest ever) developments today in Postgres is the
+development of Zheap, a new heap implementation that
+promises to dramatically reduce the impact of bloat. Zheap
+introduces an _undo log_, an idea inspired by the MVCC
+implementation of databases like MySQL and Oracle.
+
+Instead of old row versions staying in-line in the heap,
+they're replaced with the new version and moved to the undo
+log, which exists in a specially-reserved section of each
+page. When an old transaction needs an old version of the
+row, it follows history back through the undo log until it
+finds it. Likewise, when a transaction rolls back, the
+now-invalidated version in the heap is replaced by one from
+the undo log.
+
+The practical effect is that young transactions get to deal
+with mostly fresh data. Even if a heap contains a large
+quantity of history, it's kept out-of-band and most
+transactions won't have to look at it, saving themselves
+work and staying performant. There's also the possibility
+that it could eliminate (or at least vastly reduce the
+necessity of) `VACUUM`.
+
+By aiming to explain Zheap in three paragraphs I've glossed
+over about 1,000 subtleties of its implementation. Amit
+Kapila's slides (the project's development lead) on the
+subject offer [a wealth of more detailed
+information][zheap].
 
 ## Pluggable storage (#pluggable-storage)
 
@@ -40,17 +97,18 @@ lengthy testing phase, there's still a substantial risk of
 regression *somewhere* that'd be impossible to ever fully
 address. Zheap also changes the tradeoffs made by MVVC --
 while workloads requiring short-lived transactions will get
-faster, access to historical data by old transactions gets
-more costly as the system travels back in time by applying
-changes in the undo log. If the engine was changed out
-wholesale, some people's installations would slow down.
+faster, rollbacks and access to historical data by old
+transactions gets more costly as the new system has to
+travel back in time by applying changes from undo. If the
+engine was changed out wholesale, some applications would
+slow down.
 
-To mitigate the risk involved in its introduction, a new
-pluggable storage system will be introduced and Zheap will
-come in as an alternate engine that's part of it. A new
-layer of abstraction called an "table access manager" comes
-in between the executor and heap for which both Zheap and
-the traditional heap get their own implementations. The
+To mitigate the risk involved in its introduction, Postgres
+will be getting a new pluggable storage system, and Zheap
+will be its first alternative engine. A new layer of
+abstraction called an "table access manager" comes in
+between the executor and heap for which both Zheap and the
+traditional heap get their own implementations. The
 underlying storage will be selectable at table granularity
 using a new `WITH` syntax:
 
@@ -59,7 +117,8 @@ CREATE TABLE account (...) WITH zheap;
 ```
 
 The table access manager is the C equivalent of an
-interface, a struct of function pointers:
+interface, a struct of function pointers that are invoked
+for heap-related functions:
 
 ``` c
 typedef struct TableAmRoutine
@@ -77,29 +136,26 @@ typedef struct TableAmRoutine
 } TableAmRoutine;
 ```
 
-Andres gave a great talk on all of this. See his [slides
-here][pluggable].
-
-TODO: Verify all of this.
+Andres' slides on the subject [are here][pluggable].
 
 ## On the web: fast defaults and connection counts (#articles)
 
-With the release of Postgres 11 right around the corner, I
-wrote a piece on how the new version will be able to [add
-columns with default values _quickly_](/postgres-default).
-Previously an exclusive table lock needed to be held while
-a value was written for every existing row which was enough
-to tank a production system, and made adding any new `NOT
-NULL` so much effort that most of us didn't bother.
+With the release of Postgres 11, I wrote a few words on how
+the new version will be able to [add columns with default
+values _quickly_](/postgres-default). Previously an
+exclusive table lock needed to be held while a value was
+written for every existing row which was enough to sink a
+production system, and made adding any new `NOT NULL` so
+much effort that most of us didn't bother.
 
-Speaking of operational problems, I also put pen to paper
-on [managing connections](/postgres-connections). The
-relatively modest connection limits in Postgres (most cloud
+Speaking of operational problems in Postgres, I also wrote
+about [managing connections](/postgres-connections). The
+database's relatively modest connection limits (most cloud
 providers limit them to 500 even on the largest instances)
-makes running out of them one of the first major problems
-with Postgres that users encounter. The article above
-covers why connections are limited and how to manage them
-efficiently with connection pools.
+makes running out of them another frequent pitfall. This
+article talks about why connections are limited and how to
+manage them efficiently with connection pools and minimum
+viable checkouts.
 
 ## To Porto and back again (#porto)
 
@@ -163,7 +219,10 @@ make your eyes water, but it's a neat place to visit.
 [articlesofinterest]: https://99percentinvisible.org/episode/blue-jeans-articles-of-interest-5/transcript/
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
 [joanina]: https://en.wikipedia.org/wiki/Biblioteca_Joanina
+[oltp]: https://brandur.org/fragments/olap-oltp-zheap
 [pluggable]: http://anarazel.de/talks/2018-10-25-pgconfeu-pluggable-storage/pluggable.pdf
+[queues]: https://brandur.org/postgres-queues
 [rabelos]: https://en.wikipedia.org/wiki/Rabelo_boat
 [rawdenim]: https://www.heddels.com/2011/09/the-essential-raw-denim-breakdown-our-100th-article/
 [selfedge]: https://www.selfedge.com/
+[zheap]: https://www.postgresql.eu/events/pgconfeu2018/sessions/session/2104/slides/93/zheap-a-new-storage-format-postgresql.pdf
