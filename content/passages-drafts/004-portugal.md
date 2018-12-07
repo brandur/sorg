@@ -142,7 +142,7 @@ Andres' slides on the subject [are here][pluggable].
 
 With the release of Postgres 11, I wrote a few words on how
 the new version will be able to [add columns with default
-values _quickly_](/postgres-default). Previously an
+values _instantly_](/postgres-default). Previously an
 exclusive table lock needed to be held while a value was
 written for every existing row which was enough to sink a
 production system, and made adding any new `NOT NULL` so
@@ -191,30 +191,68 @@ Rule of thirds?
 
 ## Raw denim (#raw-denim)
 
-> Raw denim (aka dry denim) is simply denim fabric that remains unwashed, untreated, and virtually untouched from when it rolls off the loom to when it is sold to you. It’s denim in its purest form.
+Now for a final note that doesn't involve anything related
+to travel or technology -- sort of the opposite in fact.
+I've recently had an unhealthy (for my wallet at least)
+fixation on the world of raw denim.
 
-> Raw denim usually has a crispy and stiff feel and easily leaves traces of its indigo dye behind when it rubs against another surface–even your hands (this phenomenon is called crocking). Be careful what you rub up against when wearing a new pair of raw denim jeans, you might leave a bit of blue behind.
+What is that you might ask? Well, almost every pair of
+jeans you're likely to buy today will have been through
+some kind of [sanforization] process and pre-washed to
+shrink it or produce a distressed effect. It's also been
+increasingly more common for the very fabric of denim to be
+engineered away -- originally pure cotton, jeans are more
+likely to contain plastics like spandex with every passing
+year.
 
-> So why go through all this hassle just for a new pair of jeans? One of the biggest benefits of raw denim, and the indigo loss, is that they develop and age based on what you do in them and to them. Every mile you walk, every scrape on the concrete, every item you keep regularly in your pocket leaves its mark. The dark indigo dye slowly begins to chip away revealing the light electric blue and eventually the white cotton core of the denim yarns the more you wear them. What’s left is a wholly unique garment that was formed and faded to you and you alone.
+Raw denim foregoes all of this. It's unwashed, untreated,
+and largely untouched from the time it rolls off the
+(usually selvedge) loom to when it's sold. Compared to a
+normal pair of jeans it feels crispy and stiff, and it's up
+to the new owner to break it in.
 
-> It takes an awful lot of water to grow enough cotton for a pair of jeans, but washing and distressing them takes even more, an average of 42 liters per jean. By buying raw, none of that water needs to go to waste. It also doesn’t expose workers to the harmful chemicals often used to distress and wash denim.
+Next, you might rightly ask, why would you ever want this?
+Well there's a reasonable argument that you wouldn't, but
+raw denim's most interesting property is how it ages. Over
+time its indigo dye fades, most pronounced in places like
+where the fabric creases at the knees, or around regular
+items in pockets. Every pattern is unique to the jean and
+wearer, and often produces quite an appealing. Just take a
+look at some of the models from [Blue Owl's fade
+museum][fademuseum].
 
 ![Japan Blue fade](/assets/passages/004-portugal/jeans1@2x.jpg)
 
 ![Momotaro fade](/assets/passages/004-portugal/jeans2@2x.jpg)
 
-[Blue Owl's fade museum][fademuseum].
+There's also an argument to be made for environmentalism --
+the industrial processes used in most jeans use water
+heavily, and the plastics they contain often degrade
+microscopically and end up in our oceans. I won't pretend
+those are the main reasons enthusiasts are into raw denim
+though -- it's a little like vinyl records in that there's
+no objective advantage, but there's some inherent
+je-ne-sais-quoi appeal to the art and romance of a physical
+craft.
 
-[Heddels article on raw denim][rawdenim].
+Heddel's has [a good writeup on the subject][rawdenim]. If
+podcasts are your thing, the _99% Invisible_-adjacent show
+_Articles of Interest_ did a [great episode on
+it][articlesofinterest] as well.
 
-If podcasts are your thing, the _99% Invisible_-adjacent
-show _Articles of Interest_ did a [great episode on the
-subject][articlesofinterest] recently.
+If you're in San Francisco, we're fortunate to have the
+world's most pre-eminent shop for raw denim in the form of
+[Self Edge][selfedge]. This place really is the most
+boutique of all boutique shops. Their prices will make your
+eyes water, but it's a neat place to visit.
 
-If you happen to be in San Francisco, we're fortunate to
-have what's probably the world's most pre-eminent shop for
-raw denim in the [Self Edge][selfedge]. Their prices will
-make your eyes water, but it's a neat place to visit.
+Over the Black Friday weekend I personally bought a pair of
+Pure Blue Japan jeans. Buying jeans that were unsanforized,
+unshrunk, and with no stretch, I sized up three sizes to an
+ostensibly slim fit jean whose fit at the time could only
+be described as baggy. I got home and soaked them almost
+immediately, and putting them on three days found that
+they'd shrunk down to a near-perfect fit.
 
 [articlesofinterest]: https://99percentinvisible.org/episode/blue-jeans-articles-of-interest-5/transcript/
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
@@ -224,5 +262,6 @@ make your eyes water, but it's a neat place to visit.
 [queues]: https://brandur.org/postgres-queues
 [rabelos]: https://en.wikipedia.org/wiki/Rabelo_boat
 [rawdenim]: https://www.heddels.com/2011/09/the-essential-raw-denim-breakdown-our-100th-article/
+[sanforization]: https://en.wikipedia.org/wiki/Sanforization
 [selfedge]: https://www.selfedge.com/
 [zheap]: https://www.postgresql.eu/events/pgconfeu2018/sessions/session/2104/slides/93/zheap-a-new-storage-format-postgresql.pdf
