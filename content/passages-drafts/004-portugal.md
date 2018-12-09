@@ -159,9 +159,56 @@ viable checkouts.
 
 ## To Porto and back again (#porto)
 
-[Biblioteca Joanina][joanina]
+After the conference I jumped on a train north. My first
+stop was Coimbra, a picturesque city built onto and
+surrounding a single large hill next to the Mondago River.
+It's the same site as the ancient Roman city of Aeminium,
+and the city still has a few artifacts from that time
+including a beautifully-preserved aqueduct. 
+
+![Coimbra's aqueduct](/assets/passages/004-portugal/coimbra-aqueduct@2x.jpg)
+
+The city is well-known for its university, which is the
+oldest in the Portuguese-speaking world, founded circa
+1290. It's built on a plateau at the top of the city, and
+has the best views in town.
+
+
+
+![Coimbra's university](/assets/passages/004-portugal/coimbra-university@2x.jpg)
+
+![Looking out over Coimbra](/assets/passages/004-portugal/coimbra-view@2x.jpg)
+
+The university's centerpiece is [Biblioteca
+Joanina][joanina] which towers high above the city. It's
+famed for being a classic example of unique Baroque
+architecture, but also for its unusual techniques of pest
+control. The library is home to a small colony of
+pipistrelle bats who emerge at night to feed on the insects
+that would otherwise be harmful to preserving the
+institution's ancient books. In turn, human workers cover
+furniture with large sheets of leather before going home to
+preserve the library itself from corrosive bat guano.
+
+The resident bats are fascinating -- maybe a little *too*
+fascinating. Visitors to the library tend to get so fixated
+on this one point of interest that the locals are tired of
+talking about it. Here's a great quote from a WSJ article
+on the subject:
+
+> Catarina Freire, a Joanina guide for 16 years, said she
+> doesn’t mention bats until the end of her tours, to avoid
+> spending the whole time answering questions about them.
+>
+> “Sometimes I think to myself: Enough of the bats!” she
+> said. “They should be a detail in the midst of this
+> splendorous temple of knowledge.”
 
 ![The library of Coimbra](/assets/passages/004-portugal/coimbra-library@2x.jpg)
+
+### Porto & port (#porto)
+
+I continued north from Coimbra to Porto
 
 ![Porto](/assets/passages/004-portugal/porto@2x.jpg)
 
