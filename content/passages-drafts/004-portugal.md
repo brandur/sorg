@@ -277,10 +277,10 @@ the industrial processes used in most jeans use water
 heavily, and the plastics they contain often degrade
 microscopically and end up in our oceans. I won't pretend
 those are the main reasons enthusiasts are into raw denim
-though -- it's a little like vinyl records in that there's
-no objective advantage, but there's some inherent
-je-ne-sais-quoi appeal to the art and romance of a physical
-craft.
+though -- it's a little like vinyl records or cooking on
+cast iron -- there's no defensible objective advantage, but
+there's some inherent je-ne-sais-quoi appeal to the art and
+romance of a physical craft.
 
 Heddel's has [a good writeup on the subject][rawdenim]. If
 podcasts are your thing, the _99% Invisible_-adjacent show
