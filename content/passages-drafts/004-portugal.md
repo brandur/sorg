@@ -179,10 +179,10 @@ has the best views in town.
 
 ![Looking out over Coimbra](/assets/passages/004-portugal/coimbra-view@2x.jpg)
 
-The university's centerpiece is [Biblioteca
-Joanina][joanina] which towers high above the city. It's
+The university's centerpiece is the [Biblioteca
+Joanina][joanina], which towers high above the city. It's
 famed for being a classic example of unique Baroque
-architecture, but also for its unusual techniques of pest
+architecture ... but also for its unusual methods of pest
 control. The library is home to a small colony of
 pipistrelle bats who emerge at night to feed on the insects
 that would otherwise be harmful to preserving the
@@ -191,10 +191,9 @@ furniture with large sheets of leather before going home to
 preserve the library itself from corrosive bat guano.
 
 The resident bats are fascinating -- maybe a little *too*
-fascinating. Visitors to the library tend to get so fixated
-on this one point of interest that the locals are tired of
-talking about it. Here's a great quote from a WSJ article
-on the subject:
+fascinating. Visitors to the library tend to become so
+fixated on this one point of interest that locals are tired
+of talking about it. From a WSJ article [1] on the subject:
 
 > Catarina Freire, a Joanina guide for 16 years, said she
 > doesn’t mention bats until the end of her tours, to avoid
@@ -208,7 +207,32 @@ on the subject:
 
 ### Porto & port (#porto)
 
-I continued north from Coimbra to Porto
+I continued north from Coimbra to Porto. Portugal is
+cholk-full of picturesque cities, but this may be the most
+so. Built around the Douro River's estuary as it dumps into
+the Atlantic Ocean, Porto features Portugal's usual hilly
+landscapes and charming architecture, along with a wide
+river, stunning bridges to span it, and a tasting room for
+every brand of port you've ever heard of.
+
+And speaking of port, let's get a few facts straight around
+naming:
+
+* Porto, or _Oporto_ derives its name from _o_ ("the") +
+  _porto_ ("port, harbour"). Literally because it's a big
+  port.
+
+* Port, the fortified wine, is traditionally produced in
+  Portugal's Douro Valley, about 100 kilometers east of
+  Porto. It gets its name from Porto because that's where
+  it would brought downriver for aging and export.
+
+* Like cognac of champagne, port falls under the EU's
+  protected origin guidelines, but they allow anything out
+  of Portugal to be designated port, not just what comes
+  out of Porto or the Douro Valley. Countries like the US
+  don't recognize these guidelines, so around here you may
+  find your ports originating from anywhere.
 
 ![Porto](/assets/passages/004-portugal/porto@2x.jpg)
 
@@ -216,9 +240,9 @@ I continued north from Coimbra to Porto
 
 ![Port barrel](/assets/passages/004-portugal/port-barrel@2x.jpg)
 
-![Third wave coffee in Lisbon](/assets/passages/004-portugal/third-wave@2x.jpg)
-
 Train strike.
+
+![Third wave coffee in Lisbon](/assets/passages/004-portugal/third-wave@2x.jpg)
 
 ## Port (#port)
 
@@ -300,6 +324,11 @@ ostensibly slim fit jean whose fit at the time could only
 be described as baggy. I got home and soaked them almost
 immediately, and putting them on three days found that
 they'd shrunk down to a near-perfect fit.
+
+[1] Wall Street Journal. The bat article is behind a
+paywall, but you can get through it by clicking through to
+it from Google. Search for: _"The Bats Help Preserve Old
+Books But They Drive Librarians, Well, Batty."_
 
 [articlesofinterest]: https://99percentinvisible.org/episode/blue-jeans-articles-of-interest-5/transcript/
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
