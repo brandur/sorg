@@ -5,9 +5,40 @@ published_at: 2018-10-22T03:04:37Z
 
 ![Trams in Lisbon](/assets/passages/004-portugal/trams@2x.jpg)
 
-Writing from a train back down the coast to Lisbon.
+I put my pen to paper to write this on a train from Porto
+to Lisbon to catch a flight out of the country two days
+from now. I was supposed to be on my way to Braga, with a
+return to Lisbon tomorrow, but a last-second rail strike
+has cancelled service for the whole day, so I need to get
+back now if I'm going to catch my flight.
+
+Portugal's a beautiful country. Its architecture is
+terrific, its streets lively, and its nata delicious. It's
+reminscent of its contemporaries in Europe, but with a
+lower price tag. The weather in October was just about
+perfect -- warm, but not too hot, and with the occasional
+morning rain for refreshment.
+
+Lisbon reminded me of San Francisco because it's a city
+built on hills. To help people up them, the city's built a
+number of elevators (the most famous being the Elevador de
+Santa Justa, which has a regular lineup around the block)
+and funiculars, which reminded me of Norway and Japan. The
+city's signature image is that of a yellow streetcar making
+its way uphill along a narrow street. These are vintage
+cars tstill in regular operation (you see them running
+around _everywhere_ in the inner city), most often alon the
+famous 28 line that runs from Martim Moniz to Campo
+Ourique.
 
 ![Lisbon at night](/assets/passages/004-portugal/lisbon-night@2x.jpg)
+
+Claire and Maciek had been spending part of a well-deserved
+sabbatical living in Lisbon, and I was lucky enough to have
+them show me around the city when I arrived. Amongst other
+things, we stopped at open mic night at a bar where the
+staff knew them by name, and the most authentic Japan-style
+izakaya that I'd been to outside of Japan.
 
 ## Postgres (#postgres)
 
