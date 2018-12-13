@@ -17,7 +17,13 @@ terrific, its streets lively, and its nata delicious. It's
 reminscent of its contemporaries in Europe, but with a
 lower price tag. The weather in October was just about
 perfect -- warm, but not too hot, and with the occasional
-morning rain for refreshment.
+morning rain for to refresh its cities.
+
+As usual, if you don't want to get this newsletter anymore,
+you can [unsubscribe in one easy click][unsubscribe] to
+never get it again.
+
+## Lisbon (#lisbon)
 
 Lisbon reminded me of San Francisco because it's a city
 built on hills. To help people up them, the city's built a
@@ -386,4 +392,5 @@ Books But They Drive Librarians, Well, Batty."_
 [rawdenim]: https://www.heddels.com/2011/09/the-essential-raw-denim-breakdown-our-100th-article/
 [sanforization]: https://en.wikipedia.org/wiki/Sanforization
 [selfedge]: https://www.selfedge.com/
+[unsubscribe]: %unsubscribe_url%
 [zheap]: https://www.postgresql.eu/events/pgconfeu2018/sessions/session/2104/slides/93/zheap-a-new-storage-format-postgresql.pdf
