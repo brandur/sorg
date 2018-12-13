@@ -204,8 +204,6 @@ oldest in the Portuguese-speaking world, founded circa
 1290. It's built on a plateau at the top of the city, and
 has the best views in town.
 
-
-
 ![Coimbra's university](/assets/passages/004-portugal/coimbra-university@2x.jpg)
 
 ![Looking out over Coimbra](/assets/passages/004-portugal/coimbra-view@2x.jpg)
@@ -221,10 +219,10 @@ institution's ancient books. In turn, human workers cover
 furniture with large sheets of leather before going home to
 preserve the library itself from corrosive bat guano.
 
-The resident bats are fascinating -- maybe a little *too*
-fascinating. Visitors to the library tend to become so
-fixated on this one point of interest that locals are tired
-of talking about it. From a WSJ article [1] on the subject:
+The resident bats fascinate people -- maybe a little too
+much. Visitors to the library tend to become so fixated on
+this one point of interest that locals are tired of talking
+about it. From a WSJ article [1] on the subject:
 
 > Catarina Freire, a Joanina guide for 16 years, said she
 > doesn’t mention bats until the end of her tours, to avoid
@@ -239,19 +237,23 @@ of talking about it. From a WSJ article [1] on the subject:
 ### Porto & port (#porto)
 
 I continued north from Coimbra to Porto. Portugal is
-cholk-full of picturesque cities, but this may be the most
-so. Built around the Douro River's estuary as it dumps into
-the Atlantic Ocean, Porto features Portugal's usual hilly
-landscapes and charming architecture, along with a wide
-river, stunning bridges to span it, and a tasting room for
-every brand of port you've ever heard of.
+cholk-full of picturesque cities, but Porto takes the award
+for being the most so. Built around the Douro River's
+estuary (where it dumps into the Atlantic Ocean), Porto
+features Portugal's usual hilly landscapes and charming
+architecture. It also has a wide river bordered by high
+cliffs that provide stunning views, incredible bridges to
+span it, and a tasting room for every brand of port you've
+ever heard of.
 
-And speaking of port, let's get a few facts straight around
-naming:
+And speaking of port, I went in confused around the
+technicalities of where it comes from and what exports are
+allowed to have that name. Here are the facts in a form
+that's as easy to digest as you're likely to find:
 
-* Porto, or _Oporto_ derives its name from _o_ ("the") +
+* Porto, or _Oporto_, derives its name from _o_ ("the") +
   _porto_ ("port, harbour"). Literally because it's a big
-  port.
+  port city.
 
 * Port, the fortified wine, is traditionally produced in
   Portugal's Douro Valley, about 100 kilometers east of
@@ -265,31 +267,44 @@ naming:
   don't recognize these guidelines, so around here you may
   find your ports originating from anywhere.
 
-![Porto](/assets/passages/004-portugal/porto@2x.jpg)
-
 ![The Dom Luís in Porto](/assets/passages/004-portugal/porto-bridge@2x.jpg)
+
+The area's port estates are all clustered closely together,
+and technically in the municipality of Vila Nova de Gaia,
+but given that all it takes is walking across the famous
+Dom Luis bridge to get there to get there from Porto, it
+all feels like the same city.
+
+I was most impressed by the huge barrels used to reduce
+surface area during the aging process. The number in the
+upper right in the picture below is the number of liters
+in the batch. 32 _thousand_.
 
 ![Port barrel](/assets/passages/004-portugal/port-barrel@2x.jpg)
 
-Train strike.
+Parked all along the shore are [barcos rabelos][rabelos],
+flat-bottomed cargo ships that were used to transport port
+from the Douro Valley along the Douro River. Hydroelectric
+dams and locks built in the 50s and 60s prevent their use
+now, but they still serve as a pretty sight from another
+age.
+
+![Porto](/assets/passages/004-portugal/porto@2x.jpg)
+
+## Coffee houses (#coffee-houses)
+
+When I visited Europe for the first time a decade ago, if I
+homesick I'd stop by the local Starbucks. Wherever you
+were, the familiar menu and interior decor hailed back to
+any shop you'd find in the Americas (or elsewhere in the
+world).
+
+I'm a little amused that these days you don't even need
+Starbucks anymore -- you can do the same thing with third
+wave coffee shops. Here's Fábrica in Lisbon. It's like I
+never left San Francisco.
 
 ![Third wave coffee in Lisbon](/assets/passages/004-portugal/third-wave@2x.jpg)
-
-## Port (#port)
-
-A lot of classics.
-
-Transported downriver in [barcos rabelos][rabelos], but the
-construction of hydroelectric damns in the 50s and 60s
-ended the practice, but some of the old boats are still on
-display in central Porto.
-
-> It is flat-bottomed, with a shallow draught, which was necessary to navigate the often shallow fast-flowing waters of the upper Douro prior to the construction of dams and locks from 1968 onwards.
-
-The number in the upper right is liters. Reduce surface
-area.
-
-Rule of thirds?
 
 ## Raw denim (#raw-denim)
 
