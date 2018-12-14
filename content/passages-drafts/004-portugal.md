@@ -38,7 +38,7 @@ around _everywhere_ in the inner city), most often alon the
 famous 28 line that runs from Martim Moniz to Campo
 Ourique.
 
-![Lisbon at night](/assets/passages/004-portugal/lisbon-night@2x.jpg)
+![The Elevador de Santa Justa](/assets/passages/004-portugal/lisbon-elevador@2x.jpg)
 
 Claire and Maciek had been spending part of a well-deserved
 sabbatical living in Lisbon, and I was lucky enough to have
@@ -46,6 +46,8 @@ them show me around the city when I arrived. Amongst other
 things, we stopped at open mic night at a bar where the
 staff knew them by name, and the most authentic Japan-style
 izakaya that I'd been to outside of Japan.
+
+![Lisbon at night](/assets/passages/004-portugal/lisbon-night@2x.jpg)
 
 ## Postgres (#postgres)
 
