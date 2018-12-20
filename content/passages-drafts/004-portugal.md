@@ -26,17 +26,23 @@ never get it again.
 
 ## Lisbon (#lisbon)
 
-Lisbon reminded me of San Francisco because it's a city
-built on hills. To help people up them, the city's built a
-number of elevators (the most famous being the Elevador de
-Santa Justa, which has a regular lineup around the block)
-and funiculars, which reminded me of Norway and Japan. The
-city's signature image is that of a yellow streetcar making
-its way uphill along a narrow street. These are vintage
-cars tstill in regular operation (you see them running
-around _everywhere_ in the inner city), most often alon the
-famous 28 line that runs from Martim Moniz to Campo
-Ourique.
+Lisbon is a city of hills, and in that respect it felt like
+I hadn't left San Francisco. To help people navigate them,
+over the years the city's built a number of elevators (the
+most famous being the Elevador de Santa Justa, which has a
+regular lineup around the block) and funiculars, which
+reminded me of Norway and Japan.
+
+Lisbon's signature image is that of a yellow streetcar
+making its way uphill along a narrow street. Over the years
+you've probably seen it more than a few times in random
+photos on the wall like in this [Edelvik from IKEA][ikea],
+even if you didn't know at the time where it was taken. The
+streetcars are vintage cars are still in regular operation
+and there's no need to go look for them -- you see them
+running around _everywhere_ in the inner city. Their
+traditional line is the 28, going from Martim Moniz to
+Campo Ourique.
 
 ![The Elevador de Santa Justa](/assets/passages/004-portugal/lisbon-elevador@2x.jpg)
 
@@ -403,6 +409,7 @@ Books But They Drive Librarians, Well, Batty."_
 
 [articlesofinterest]: https://99percentinvisible.org/episode/blue-jeans-articles-of-interest-5/transcript/
 [fademuseum]: https://www.blueowl.us/blogs/fade-museum
+[ikea]: https://www.ikea.com/pt/en/catalog/products/70420984/
 [joanina]: https://en.wikipedia.org/wiki/Biblioteca_Joanina
 [nata]: https://en.wikipedia.org/wiki/Pastel_de_nata
 [oltp]: https://brandur.org/fragments/olap-oltp-zheap
