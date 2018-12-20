@@ -3,20 +3,20 @@ title: Postgres & Portugal
 published_at: 2018-10-22T03:04:37Z
 ---
 
-I put my pen to paper to write this on a train from Porto
-to Lisbon to catch a flight out of the country two days
-from now. I was supposed to be on my way to Braga, with a
-return to Lisbon tomorrow, but a last-second rail strike
-has cancelled service for the whole day, so I need to get
-back now if I'm going to catch my flight.
+I started writing this latest edition of _Passages & Glass_
+taking on a from Porto back to Lisbon to catch a flight out
+of Portugal. I was supposed to be on my way to Braga at the
+time, but a last-second rail strike was about to cancel all
+service for the next day, so I needed to get back if I
+wanted to get on my plane.
 
-Portugal's a beautiful country. Its architecture is
-terrific, its streets lively, and its [nata][nata] (an egg
-tart dusted with cinnamon), delicious. It's reminscent of
-its contemporaries in Europe, but with a lower price tag.
-The weather in October was just about perfect -- warm, but
-not too hot, and with the occasional morning rain for to
-refresh its cities.
+Portugal's a lovely country. Its architecture is
+splendorous, its streets lively, and its [nata][nata] (an
+egg tart dusted with cinnamon), delicious. It's reminscent
+of its contemporaries in Europe, but with a lower price
+tag. The weather in October was just about perfect -- warm,
+but not too hot, and with the occasional morning rain for
+to refresh its cities.
 
 As usual, if you don't want to get this newsletter anymore,
 you can [unsubscribe in one easy click][unsubscribe] to
