@@ -57,6 +57,8 @@ Now onto the part that may be the most important for the prospective Kinesis use
 
 ### You get five (reads) (#five-reads)
 
+UPDATE: Amazon has introduced [enhanced fan-out capability](https://aws.amazon.com/blogs/aws/kds-enhanced-fanout/) which allows each consumer to process 2MB/second of read throughput per shard.
+
 Scalability is right there on the Kinesis front page as one of the core features of the product, and indeed it is scalable: by default a stream in US East can have up to 50 shards (this limit can be increased by opening a support ticket with AWS), each of which can handle 1 MB/s in and 2 MB/s out for a theoretically maximum of 50 MB/s in and 100 MB/s out. That's an incredible amount of data! However, despite being very scalable along this one dimension, it scales very poorly along another: the number of consumers that a stream can have.
 
 Each shard on a stream supports a maximum limit of 5 reads per second. That number is [right on the limits page](http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html), but at no point does the documentation really spell out its repercussions (or at least nowhere that I could find). If each shard only supports 5 read operations, and each application consuming the stream must consume every shard, then you can only have a _maximum of 5 applications if you want to read the stream once per second_. If you want to have ten applications consuming the stream, then you will have to limit each so that on average it only consumes the stream once every two seconds. Each read can pull down 10 MB of data, so keeping up with the stream isn't a problem, but you can see how you'll have to sacrifice latency in order to scale up the number of consumers reading the stream.
