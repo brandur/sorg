@@ -57,7 +57,7 @@ Now onto the part that may be the most important for the prospective Kinesis use
 
 ### You get five (reads) (#five-reads)
 
-UPDATE: Amazon has introduced [enhanced fan-out capability](https://aws.amazon.com/blogs/aws/kds-enhanced-fanout/) which allows each consumer to process 2MB/second of read throughput per shard.
+__Update (2019/01/10) —__ Amazon has introduced [enhanced fan-out capability](https://aws.amazon.com/blogs/aws/kds-enhanced-fanout/) which gives each consumer a dedicated 2MB/second of read throughput per shard. Enhanced fan-out uses a streaming protocol, making it unnecessary for consumers to poll continually and use up the read limit.
 
 Scalability is right there on the Kinesis front page as one of the core features of the product, and indeed it is scalable: by default a stream in US East can have up to 50 shards (this limit can be increased by opening a support ticket with AWS), each of which can handle 1 MB/s in and 2 MB/s out for a theoretically maximum of 50 MB/s in and 100 MB/s out. That's an incredible amount of data! However, despite being very scalable along this one dimension, it scales very poorly along another: the number of consumers that a stream can have.
 
