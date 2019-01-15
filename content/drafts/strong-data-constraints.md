@@ -51,10 +51,11 @@ references in a database, a related concept is maintaining
 [referential integrity][integrity], which is the property
 that every reference in the database is valid.
 
-RDMSes provide an easy way to do this with foreign keys. A
-foreign key dictates that a column references values a in
-column in another table, and can also define what should
-happen if any of those target values are removed.
+Relational databases provide an easy way to do this with
+foreign keys. A foreign key dictates that a column
+references values a in column in another table, and can
+also define what should happen if any of those target
+values are removed.
 
 A setting that's appropriate in most cases is `ON DELETE
 RESTRICT`. With this configuration, the database won't let
@@ -95,6 +96,22 @@ Add types with constraints. e.g. `VARCHAR`
 ### Unique partial indexes (#unique-partial-indexes)
 
 ### The schema (#schema)
+
+Possibly the most important constraint is the schema
+itself. In a relational database, you define tables, and
+the fields within them. Compare that to a document-oriented
+database where there are no requirements. The equivalent of
+tables are loose collections of keys and values that may or
+may not be present.
+
+Schemas in relational databases should be treated like
+living things. Not only are new fields being added to them,
+but fields that are no longer needed should be dropped, and
+existing fields should be adjusted as appropriate to
+maximize the schema's fidelity. The more accurate the
+schema, the easier it is to write programs that access
+them, and the more bug free those programs are likely to
+be.
 
 ## Flowing safety into programming languages (#programming-languages)
 
