@@ -198,13 +198,14 @@ exclusive table lock needed to be held while a value was
 written for every existing row -- enough to sink a
 production system and cause a sizable outage. There were
 workarounds for adding new `NOT NULL` columns, but they
-were so much effort that most of us didn't bother.
+were so complicated and exhausting that most of us didn't
+bother.
 
 Speaking of operational problems in Postgres, I also wrote
 about [managing connections](/postgres-connections). The
 database's relatively modest connection limits (most cloud
 providers limit them to 500 even on the largest instances)
-makes running out of them another frequent pitfall. This
+makes running out of them another often seen pitfall. This
 writeup talks about why connections are limited and how to
 manage them efficiently with connection pools and minimum
 viable checkouts.
