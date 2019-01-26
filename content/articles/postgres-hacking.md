@@ -214,7 +214,8 @@ producing a patch anyway.
 
 A few dependencies need to be installed before `pgindent`
 can run. The most up-to-date instructions on how to do that
-can be found in [its README][pgindent-readme].
+can be found in [its README][pgindent-readme] (and hint:
+`perltidy` has a Homebrew formula).
 
 After that's done it can simply be run like so on a C file
 (where our current directory is the Postgres source root):
