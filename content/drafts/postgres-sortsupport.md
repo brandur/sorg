@@ -5,22 +5,58 @@ location: San Francisco
 hook: TODO
 ---
 
+## Sorting with abbreviated keys (#abbreviated-keys)
+
 Postgres sorts with structures called "sort tuples", which
 are by design tiny so that many of them can be held in
-memory at the same time.
+memory at the same time (from [`tuplesort.c`][sorttuple]):.
+
+``` c
+/*
+ * The objects we actually sort are SortTuple structs.  These contain
+ * a pointer to the tuple proper (might be a MinimalTuple or IndexTuple),
+ * which is a separate palloc chunk --- we assume it is just one chunk and
+ * can be freed by a simple pfree() (except during merge, when we use a
+ * simple slab allocator).  SortTuples also contain the tuple's first key
+ * column in Datum/nullflag format, and an index integer.
+ */
+typedef struct
+{
+    void       *tuple;          /* the tuple itself */
+    Datum       datum1;         /* value of first key column */
+    bool        isnull1;        /* is first key column NULL? */
+    int         tupindex;       /* see notes above */
+} SortTuple;
+```
 
 `SortTuple` holds a value of type `Datum` which is the same
 size as a pointer -- either 32 or 64 bits depending on the
-system's architecture:
+system's architecture (from [`postgres.h`][datum]):
+
+``` c
+/*
+ * A Datum contains either a value of a pass-by-value type or a pointer to a
+ * value of a pass-by-reference type.  Therefore, we require:
+ *
+ * sizeof(Datum) == sizeof(void *) == 4 or 8
+ *
+ * The macros below and the analogous macros for other types should be used to
+ * convert between a Datum and the appropriate C type.
+ */
+
+typedef uintptr_t Datum;
+
+#define SIZEOF_DATUM SIZEOF_VOID_P
+```
 
 The Postgres sorting algorithms use datums when performing
 a sort. Occasionally a datum can hold the entirety of a
-value), when dealing with a TODO for example (called
-"pass-by-value" types), but very often it can't because
-values are too large to fit in 32 or 64 bits. In these
-cases (called "pass-by-reference" types) the datum holds a
-pointer to the full value in Postgres' physical storage
-(known as _the heap_).
+value, when dealing with a boolean or integer for example
+(called "pass-by-value" types), but very often it can't
+because values are too large to fit in 32 or 64 bits. In
+these cases (called "pass-by-reference" types) the datum
+holds a pointer to the full value in Postgres' physical
+storage, known as _the heap_.
 
 Postgres is happy to go to the heap to compare values, but
 there's a cost associated with that -- it'd be much faster
@@ -51,46 +87,6 @@ type. Some are relatively simple, like `text` or `uuid`,
 while others like `numeric` need to use more exotic
 encoding schemes (we'll take a quick look at those
 implementations in the sections below).
-
-## Abbreviated B-tree comparison (#comparison)
-
-[`postgres.h`][datum]:
-
-``` c
-/*
- * A Datum contains either a value of a pass-by-value type or a pointer to a
- * value of a pass-by-reference type.  Therefore, we require:
- *
- * sizeof(Datum) == sizeof(void *) == 4 or 8
- *
- * The macros below and the analogous macros for other types should be used to
- * convert between a Datum and the appropriate C type.
- */
-
-typedef uintptr_t Datum;
-
-#define SIZEOF_DATUM SIZEOF_VOID_P
-```
-
-[`tuplesort.c`][sorttuple]
-
-``` c
-/*
- * The objects we actually sort are SortTuple structs.  These contain
- * a pointer to the tuple proper (might be a MinimalTuple or IndexTuple),
- * which is a separate palloc chunk --- we assume it is just one chunk and
- * can be freed by a simple pfree() (except during merge, when we use a
- * simple slab allocator).  SortTuples also contain the tuple's first key
- * column in Datum/nullflag format, and an index integer.
- */
-typedef struct
-{
-    void       *tuple;            /* the tuple itself */
-    Datum        datum1;            /* value of first key column */
-    bool        isnull1;        /* is first key column NULL? */
-    int            tupindex;        /* see notes above */
-} SortTuple;
-```
 
 [`itup.h`][indextuple]
 
