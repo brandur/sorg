@@ -1,5 +1,5 @@
 ---
-title: "SortSupport: Fast comparisons in the Postgres Indexes"
+title: "SortSupport: Fast Comparisons in Postgres Indexes"
 published_at: 2019-01-24T19:19:18Z
 location: San Francisco
 hook: TODO
@@ -36,15 +36,21 @@ be performed without going to the heap. It does so by
 introducing a third type of value that can be stored in a
 sort tuple's datum called an _abbreviated key_.
 
-Some data types can be represented directly in a B-tree,
-but most cannot
+Abbreviated keys act as proxies for heap values which
+Postgres can try to use on an initial sorting pass with the
+understanding that because we can't fit the entire value on
+a datum, it may have to fall back to the full value on the
+heap if the abbreviated key isn't enough to determine
+inequality. In short, they try fit as much of their value's
+entropy into a 32 or 64 bit datum as possible while still
+maintaining the invariant that sorting with them can never
+produce an inaccuracy.
 
-Full rows are in Postgres' physical storage called _the
-heap_.
-
-SortSupport 
-
-Fast comparison 
+The implementation of abbreviated keys varies based on data
+type. Some are relatively simple, like `text` or `uuid`,
+while others like `numeric` need to use more exotic
+encoding schemes (we'll take a quick look at those
+implementations in the sections below).
 
 ## Abbreviated B-tree comparison (#comparison)
 
@@ -79,10 +85,10 @@ typedef uintptr_t Datum;
  */
 typedef struct
 {
-	void	   *tuple;			/* the tuple itself */
-	Datum		datum1;			/* value of first key column */
-	bool		isnull1;		/* is first key column NULL? */
-	int			tupindex;		/* see notes above */
+    void       *tuple;            /* the tuple itself */
+    Datum        datum1;            /* value of first key column */
+    bool        isnull1;        /* is first key column NULL? */
+    int            tupindex;        /* see notes above */
 } SortTuple;
 ```
 
@@ -94,21 +100,21 @@ typedef struct
  */
 typedef struct IndexTupleData
 {
-	ItemPointerData t_tid;		/* reference TID to heap tuple */
+    ItemPointerData t_tid;        /* reference TID to heap tuple */
 
-	/* ---------------
-	 * t_info is laid out in the following fashion:
-	 *
-	 * 15th (high) bit: has nulls
-	 * 14th bit: has var-width attributes
-	 * 13th bit: AM-defined meaning
-	 * 12-0 bit: size of tuple
-	 * ---------------
-	 */
+    /* ---------------
+     * t_info is laid out in the following fashion:
+     *
+     * 15th (high) bit: has nulls
+     * 14th bit: has var-width attributes
+     * 13th bit: AM-defined meaning
+     * 12-0 bit: size of tuple
+     * ---------------
+     */
 
-	unsigned short t_info;		/* various info about tuple */
+    unsigned short t_info;        /* various info about tuple */
 
-} IndexTupleData;				/* MORE DATA FOLLOWS AT END OF STRUCT */
+} IndexTupleData;                /* MORE DATA FOLLOWS AT END OF STRUCT */
 
 typedef IndexTupleData *IndexTuple;
 ```
@@ -126,8 +132,8 @@ typedef IndexTupleData *IndexTuple;
  */
 typedef struct ItemPointerData
 {
-	BlockIdData ip_blkid;
-	OffsetNumber ip_posid;
+    BlockIdData ip_blkid;
+    OffsetNumber ip_posid;
 }
 ```
 
@@ -136,16 +142,16 @@ typedef struct ItemPointerData
 ``` c
 static int
 comparetup_index_btree(const SortTuple *a, const SortTuple *b,
-					   Tuplesortstate *state)
+                       Tuplesortstate *state)
 {
     ...
 
-	/* Compare the leading sort key */
-	compare = ApplySortComparator(a->datum1, a->isnull1,
-								  b->datum1, b->isnull1,
-								  sortKey);
-	if (compare != 0)
-		return compare;
+    /* Compare the leading sort key */
+    compare = ApplySortComparator(a->datum1, a->isnull1,
+                                  b->datum1, b->isnull1,
+                                  sortKey);
+    if (compare != 0)
+        return compare;
     ...
 
 ```
@@ -156,27 +162,23 @@ SortSupport, we go the heap and compare the full values of
 the first key in the index:
 
 ``` c
-    ...
+/* Compare additional sort keys */
+tuple1 = (IndexTuple) a->tuple;
+tuple2 = (IndexTuple) b->tuple;
+keysz = state->nKeys;
+tupDes = RelationGetDescr(state->indexRel);
 
-	/* Compare additional sort keys */
-	tuple1 = (IndexTuple) a->tuple;
-	tuple2 = (IndexTuple) b->tuple;
-	keysz = state->nKeys;
-	tupDes = RelationGetDescr(state->indexRel);
+if (sortKey->abbrev_converter)
+{
+    datum1 = index_getattr(tuple1, 1, tupDes, &isnull1);
+    datum2 = index_getattr(tuple2, 1, tupDes, &isnull2);
 
-	if (sortKey->abbrev_converter)
-	{
-		datum1 = index_getattr(tuple1, 1, tupDes, &isnull1);
-		datum2 = index_getattr(tuple2, 1, tupDes, &isnull2);
-
-		compare = ApplySortAbbrevFullComparator(datum1, isnull1,
-												datum2, isnull2,
-												sortKey);
-		if (compare != 0)
-			return compare;
-	}
-
-    ...
+    compare = ApplySortAbbrevFullComparator(datum1, isnull1,
+                                            datum2, isnull2,
+                                            sortKey);
+    if (compare != 0)
+        return compare;
+}
 ```
 
 If the comparison is still showing equal, we start to
@@ -188,28 +190,49 @@ the first key as long as values there aren't equal, but
 looks onto other keys when necessary:
 
 ``` c
-    ...
+SortSupport sortKey = state->sortKeys;
 
-	SortSupport sortKey = state->sortKeys;
+for (nkey = 2; nkey <= keysz; nkey++, sortKey++)
+{
+    datum1 = index_getattr(tuple1, nkey, tupDes, &isnull1);
+    datum2 = index_getattr(tuple2, nkey, tupDes, &isnull2);
 
-	for (nkey = 2; nkey <= keysz; nkey++, sortKey++)
-	{
-		datum1 = index_getattr(tuple1, nkey, tupDes, &isnull1);
-		datum2 = index_getattr(tuple2, nkey, tupDes, &isnull2);
-
-		compare = ApplySortComparator(datum1, isnull1,
-									  datum2, isnull2,
-									  sortKey);
-		if (compare != 0)
-			return compare;		/* done when we find unequal attributes */
-	}
-
-    ...
+    compare = ApplySortComparator(datum1, isnull1,
+                                  datum2, isnull2,
+                                  sortKey);
+    if (compare != 0)
+        return compare;        /* done when we find unequal attributes */
+}
 ```
 
 ## Implementation for UUID (#uuid)
 
-## Implementation for text (#text)
+[`uuid.c`][uuidconvert]
+
+``` c
+static Datum
+uuid_abbrev_convert(Datum original, SortSupport ssup)
+{
+    pg_uuid_t *authoritative = DatumGetUUIDP(original);
+    Datum      res;
+
+    memcpy(&res, authoritative->data, sizeof(Datum));
+
+    ...
+
+    /*
+     * Byteswap on little-endian machines.
+     *
+     * This is needed so that uuid_cmp_abbrev() (an unsigned integer 3-way
+     * comparator) works correctly on all platforms.  If we didn't do this,
+     * the comparator would have to call memcmp() with a pair of pointers to
+     * the first byte of each abbreviated key, which is slower.
+     */
+    res = DatumBigEndianToNative(res);
+
+    return res;
+}
+```
 
 ## More exotic implementations (#exotic)
 
@@ -227,3 +250,5 @@ My one and only patch to Postgres involved implementing
 [itempointer]: src/include/storage/itemptr.h:20
 [indextuple]: src/include/access/itup.h:22
 [sorttuple]: src/backend/utils/sort/tuplesort.c:138
+[uuidconvert]: src/backend/utils/adt/uuid.c:367
+[varstrconvert]: src/backend/utils/adt/varlena.c:2317

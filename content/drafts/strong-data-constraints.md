@@ -5,11 +5,26 @@ location: San Francisco
 hook: TODO
 ---
 
-Stable expectations result in more bug-free systems.
+A common source of bugs in data-backed software is when an
+assumption is made about the shape of some data that turns
+out to not be true. For example, when seeing an `email`
+field on a `user` relation, it's a pretty reasonable
+assumption that users have email available, as they do in
+many systems where you'd see such a field, and it might be
+true -- however, it could just as easily turn out not to be
+as well. What if it turned out that emails hadn't been
+collected in the system's early days for example? Most
+users would have emails and accessing the field would work
+most of the time, but once in a while it would crash the
+program with a null reference error.
 
-By offering a wide variety of constraints and types,
-relational databases excel at providing stable
-expectations.
+Relational databases help mitigate this problem by
+encouraging the design of concrete schemas that are always
+consistent according to constraints that have been
+specifically designed. Those constraints might be anything
+from a check that the field is present, to whether
+referential integrity is intact. Data that doesn't meet
+requirements is firmly rejected.
 
 ## Constraints (#constraints)
 
@@ -86,6 +101,12 @@ requirement that every tag reference an article, and every
 article reference is one that exists.
 
 ### Type system (#type-system)
+
+Type systems are all the rage right now (once again)
+through growing popularity of languages like Go, Scala, and
+even typed versions of JavaScript like TypeScript.
+
+Booleans, integers, floating-point numbers, byte arrays, date/times
 
 Select appropriate type for what you're doing.
 
