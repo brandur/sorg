@@ -5,11 +5,118 @@ location: San Francisco
 hook: TODO
 ---
 
+An interesting aspect of systems like Postgres is that
+optimizations that might not make sense in other contexts
+because of how time consuming they are to write or the
+additional complexity stemming from their implementation
+*do* make sense because of the incredible leverage
+involved. You don't just speed up a couple of
+installations -- you speed up _millions_ of them around the
+world.
+
+One optimization in this vein that I want to talk about
+today is **SortSupport**. In essence SortSupport is a
+technique for localizing the information needed to compare
+data into places where it can be accessed very quickly,
+thereby making sorting data much faster. This is useful in
+places like using an `ORDER BY`, `DISTINCT`, and building
+indexes.
+
 ## Sorting with abbreviated keys (#abbreviated-keys)
 
-Postgres sorts with structures called "sort tuples", which
-are by design tiny so that many of them can be held in
-memory at the same time (from [`tuplesort.c`][sorttuple]):.
+The basic idea is pretty simple. While sorting, Postgres
+builds a series of tiny structures that represent the data
+set being sorted. These tuples have space for a value the
+size of a native pointer (i.e., 64 bits on a 64-bit
+machine) which is enough to fit the entirety of some common
+types like booleans or integers (known as pass-by-value
+types). But for types that are larger than 64 bits or which
+can be arbitrarily large, it's not enough. In their case,
+Postgres will follow a references back to the heap when
+comparing values (called pass-by-reference types). Postgres
+is very fast, so that's still a fast operation, but it's
+obviously slower than comparing short values that are
+readily available in memory.
+
+TODO: Diagram of SortTuples lined up memory
+
+SortSupport allows pass-by-reference types to be augmented
+by bringing some information about a value right into the
+sort tuple to potentially save trips to the heap. Because
+sort tuples usually don't have the space to store the
+value's entirety, a "digest" version called an
+**abbreviated key** is stored instead. What's stored in
+abbreviated key varies by type, but the overarching goal is
+to store as much sorting-relevant information as possible
+while remaining faithful to the sorting rules of type.
+
+Abbreviated keys should obviously never produce an
+incorrect comparison, but it's okay if one can't be fully
+resolved by what's in the abbreviated key. If two
+abbreviated keys look equal, Postgres will fall back to the
+type's authoritative comparison function to make sure it
+has the right result.
+
+TODO: Diagram of abbreviated key point back to heap
+
+Implementing an abbreviated key turns out to be quite
+straightforward in many cases. UUIDs are a good example
+because at 128 bits they're always larger than the pointer
+size even on a 64-bit machine, it's pretty obvious what to
+do about that -- just pull in their first 64 bits of
+information (or 32 bits on a 32-bit machine). Especially
+for V4 UUIDs which are entirely random, the first 64 bits
+will be enough to definitively determine the order for all
+but unimaginably large data sets. Indeed the patch that
+brought in SortSupport for UUIDs reduced typical sort time
+by about 50% -- that's twice as fast! (TODO: verify this)
+
+String-like types (e.g. `text`, `varchar`) aren't too much
+harder: just pack as many characters from the front of the
+string in as possible (although made somewhat more
+complicated by locales). My only ever patch to Postgres was
+implementing SortSupport for the `macaddr` type, which was
+quite easy because although it's a pass-by-reference type,
+its values are only six bytes long [1].
+
+## A glance at the implementation (#implementation)
+
+Let's take a quick look at how SortSupport is implemented.
+For brevity I'm going to simplify and skip some things so
+just remember that the code is always canonical! Go take a
+look if you're interested.
+
+An good type to start with is `Datum`, the pointer-sized
+type (32 or 64 bits) used for sort comparisons. It stores
+entire values for pass-by-value types, and abbreviated keys
+for SortSupport. You can see it defined in
+[`postgres.h`][datum]:
+
+``` c
+/*
+ * A Datum contains either a value of a pass-by-value type or a pointer
+ * to a value of a pass-by-reference type.  Therefore, we require:
+ *
+ * sizeof(Datum) == sizeof(void *) == 4 or 8
+ *
+ * The macros below and the analogous macros for other types should be
+ * used to convert between a Datum and the appropriate C type.
+ */
+
+typedef uintptr_t Datum;
+
+#define SIZEOF_DATUM SIZEOF_VOID_P
+```
+
+`SortTuple`s are the tiny structures that Postgres sorts in
+memory. It holds a reference to the "true" tuple, a
+`Datum`, and a flag to indicate whether or not the first
+value is `NULL` (which has its own special sorting
+semantics). The latter two are named with a `1` suffix as
+`datum1` and `isnull1` because they represent only one
+field worth of information. Postgres will need to fall back
+to different values in the event of equality in a
+multi-column comparison. From [`tuplesort.c`][sorttuple]:
 
 ``` c
 /*
@@ -29,66 +136,7 @@ typedef struct
 } SortTuple;
 ```
 
-`SortTuple` holds a value of type `Datum` which is the same
-size as a pointer -- either 32 or 64 bits depending on the
-system's architecture (from [`postgres.h`][datum]):
-
-``` c
-/*
- * A Datum contains either a value of a pass-by-value type or a pointer to a
- * value of a pass-by-reference type.  Therefore, we require:
- *
- * sizeof(Datum) == sizeof(void *) == 4 or 8
- *
- * The macros below and the analogous macros for other types should be used to
- * convert between a Datum and the appropriate C type.
- */
-
-typedef uintptr_t Datum;
-
-#define SIZEOF_DATUM SIZEOF_VOID_P
-```
-
-The Postgres sorting algorithms use datums when performing
-a sort. Occasionally a datum can hold the entirety of a
-value, when dealing with a boolean or integer for example
-(called "pass-by-value" types), but very often it can't
-because values are too large to fit in 32 or 64 bits. In
-these cases (called "pass-by-reference" types) the datum
-holds a pointer to the full value in Postgres' physical
-storage, known as _the heap_.
-
-Postgres is happy to go to the heap to compare values, but
-there's a cost associated with that -- it'd be much faster
-to compare values directly in the index if possible. But as
-mentioned previously, this is troublesome because many
-types commonly stored in indexes are much too large to make
-this practical.
-
-SortSupport is a clever feature that for many cases manages
-to achieve the best of both worlds by keeping sort tuples
-small, but also allowing a great majority of comparisons to
-be performed without going to the heap. It does so by
-introducing a third type of value that can be stored in a
-sort tuple's datum called an _abbreviated key_.
-
-Abbreviated keys act as proxies for heap values which
-Postgres can try to use on an initial sorting pass with the
-understanding that because we can't fit the entire value on
-a datum, it may have to fall back to the full value on the
-heap if the abbreviated key isn't enough to determine
-inequality. In short, they try fit as much of their value's
-entropy into a 32 or 64 bit datum as possible while still
-maintaining the invariant that sorting with them can never
-produce an inaccuracy.
-
-The implementation of abbreviated keys varies based on data
-type. Some are relatively simple, like `text` or `uuid`,
-while others like `numeric` need to use more exotic
-encoding schemes (we'll take a quick look at those
-implementations in the sections below).
-
-[`itup.h`][indextuple]
+`tuple` above is often an `IndexTuple` (from [`itup.h`][indextuple]):
 
 ``` c
 /*
@@ -115,7 +163,9 @@ typedef struct IndexTupleData
 typedef IndexTupleData *IndexTuple;
 ```
 
-[`itemptr.h`][itempointer]
+And you can see the `ItemPointerData` it contains give
+Postgres the precise information it needs to find data in
+the heap (from [`itemptr.h`][itempointer]):
 
 ``` c
 /*
@@ -133,7 +183,11 @@ typedef struct ItemPointerData
 }
 ```
 
-[`tuplesort.c`][comparetup]
+### Comparison (#comparison)
+
+A good place to look at how comparisons take place while
+sorting is the comparison function used for a B-tree index
+(from [`tuplesort.c`][comparetup]):
 
 ``` c
 static int
@@ -152,10 +206,21 @@ comparetup_index_btree(const SortTuple *a, const SortTuple *b,
 
 ```
 
-If the initial comparison showed equality, we need to keep
-working. Next, if we were comparing abbreviated keys from
-SortSupport, we go the heap and compare the full values of
-the first key in the index:
+`ApplySortComparator` gets a comparison result between two
+values. It'll compare two abbreviated keys where
+appropriate (it may full back to authoritative comparison
+in cases where key abbreviation has been aborted) and
+handles `NULL` sorting semantics. Comparisons occur in the
+spirit of C's `strcmp`: when comparing `(a, b)`, `-1`
+indicates `a < b`, 0 indicates equality, and `1` indicates
+`a > b`.
+
+The algorithm returns immediately if inequality was
+detected. Otherwise, it checks to see if abbreviated keys
+were used, and if so applies the authoritative if they
+were. Because information in abbreviated keys is limited,
+two being equal doesn't necessarily indicate that the
+values that they represent are.
 
 ``` c
 /* Compare additional sort keys */
@@ -177,13 +242,9 @@ if (sortKey->abbrev_converter)
 }
 ```
 
-If the comparison is still showing equal, we start to
-compare other keys in the index. Recall that it's common to
-create indexes on multiple keys like `CREATE INDEX
-user_organization_id_email ON user (organization_id,
-email)`. When running comparisons, Postgres won't look past
-the first key as long as values there aren't equal, but
-looks onto other keys when necessary:
+Once again, the algorithm returns if inequality was
+detected. If not, it starts to look beyond the first field
+of an index:
 
 ``` c
 SortSupport sortKey = state->sortKeys;
@@ -201,7 +262,33 @@ for (nkey = 2; nkey <= keysz; nkey++, sortKey++)
 }
 ```
 
-## Implementation for UUID (#uuid)
+If two index tuples are *still* equal after that, it falls
+back to using the block and offset from `ItemPointer` which
+will always produce a non-equal comparison:
+
+``` c
+/*
+ * If key values are equal, we sort on ItemPointer.  This does not affect
+ * validity of the finished index, but it may be useful to have index
+ * scans in physical order.
+ */
+{
+    BlockNumber blk1 = ItemPointerGetBlockNumber(&tuple1->t_tid);
+    BlockNumber blk2 = ItemPointerGetBlockNumber(&tuple2->t_tid);
+
+    if (blk1 != blk2)
+        return (blk1 < blk2) ? -1 : 1;
+}
+{
+    OffsetNumber pos1 = ItemPointerGetOffsetNumber(&tuple1->t_tid);
+    OffsetNumber pos2 = ItemPointerGetOffsetNumber(&tuple2->t_tid);
+
+    if (pos1 != pos2)
+        return (pos1 < pos2) ? -1 : 1;
+}
+```
+
+### Building abbreviated keys for UUID (#uuid)
 
 [`uuid.c`][uuidconvert]
 
@@ -230,16 +317,19 @@ uuid_abbrev_convert(Datum original, SortSupport ssup)
 }
 ```
 
-## More exotic implementations (#exotic)
+### More exotic implementations (#exotic)
 
-The implementations for `uuid` and `text` are pretty easy
-to understand, but packing meaningful comparison data in 32
-or 64 bits isn't always quite so straightforward.
+The implementation for `uuid` is pretty easy to understand,
+but packing meaningful comparison data in 32 or 64 bits
+isn't always quite so straightforward.
 
 ## Summary (#summary)
 
 My one and only patch to Postgres involved implementing
 `SortSupport` for the `macaddr` data type.
+
+[1] The new type `macaddr8` was later introduced to handle
+    EUI-64 MAC addresses, which are 64 bits long.
 
 [comparetup]: src/backend/utils/sort/tuplesort.c:3953
 [datum]: src/include/postgres.h:357
