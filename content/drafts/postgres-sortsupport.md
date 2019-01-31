@@ -1,5 +1,5 @@
 ---
-title: "SortSupport: Fast Comparisons in Postgres Indexes"
+title: "SortSupport: How Postgres Sorts at Speed"
 published_at: 2019-01-24T19:19:18Z
 location: San Francisco
 hook: TODO
