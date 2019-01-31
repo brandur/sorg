@@ -108,15 +108,162 @@ typedef uintptr_t Datum;
 #define SIZEOF_DATUM SIZEOF_VOID_P
 ```
 
-`SortTuple`s are the tiny structures that Postgres sorts in
-memory. It holds a reference to the "true" tuple, a
-`Datum`, and a flag to indicate whether or not the first
-value is `NULL` (which has its own special sorting
-semantics). The latter two are named with a `1` suffix as
-`datum1` and `isnull1` because they represent only one
-field worth of information. Postgres will need to fall back
-to different values in the event of equality in a
-multi-column comparison. From [`tuplesort.c`][sorttuple]:
+### Building abbreviated keys for UUID (#uuid)
+
+Now let's look at how we build abbreviated keys for the
+`uuid` type. UUIDs on the heap are represented by
+`pg_uuid_t` (from [`uuid.h`][uuid]):
+
+``` c
+/* uuid size in bytes */
+#define UUID_LEN 16
+
+typedef struct pg_uuid_t
+{
+    unsigned char data[UUID_LEN];
+} pg_uuid_t;
+```
+
+You might be used to seeing UUIDs represented in string
+format like `123e4567-e89b-12d3-a456-426655440000`, but
+remember that this is Postgres and people like to be as
+efficient as possible! A UUID contains exactly 16 bytes
+worth of information, so `pg_uuid_t` defines an array of
+exactly 16 bytes (for those unfamiliar with C, a `char` is
+one byte).
+
+SortSupport implementations define a conversion routine
+which takes the original value and produces a datum
+containing an abbreviated key. Here's the one for UUIDs
+(from [`uuid.c`][uuidconvert]):
+
+``` c
+static Datum
+uuid_abbrev_convert(Datum original, SortSupport ssup)
+{
+    pg_uuid_t *authoritative = DatumGetUUIDP(original);
+    Datum      res;
+
+    memcpy(&res, authoritative->data, sizeof(Datum));
+
+    ...
+
+    /*
+     * Byteswap on little-endian machines.
+     *
+     * This is needed so that uuid_cmp_abbrev() (an unsigned integer 3-way
+     * comparator) works correctly on all platforms.  If we didn't do this,
+     * the comparator would have to call memcmp() with a pair of pointers to
+     * the first byte of each abbreviated key, which is slower.
+     */
+    res = DatumBigEndianToNative(res);
+
+    return res;
+}
+```
+
+The most important of the code above is the call to
+`memcpy`, which extracts a datum worth of bytes from a
+`pg_uuid_t` and places it into a result datum. We can't
+take the whole UUID, but we'll be taking its 4 or 8 most
+significant bytes which will still produce accurate
+comparisons.
+
+The next part where we call `DatumBigEndianToNative` is an
+optimization and a little more difficult to understand.
+When comparing our abbreviated keys, we could do so with
+`memcmp` which would compare each byte in the datum one at
+a time, but if we instead pretend that these 4 or 8 byte
+values are integers, we can do so much more quickly because
+CPUs an do integer operations really, *really* quickly.
+
+But this introduces some complication. Integers might be
+stored like our UUIDs with the most significant byte first,
+but only on systems which are big-endian. Little-endian
+machines store an integer's bytes in reverse order, with
+the most significant at the highest address. If we just
+left the result of `memcmp`, comparisons on little-endian
+systems would come out wrong so instead we byteswap which
+reverses byte order and corrects the integer.
+
+TODO: Diagram of endian
+
+You can see in [`pg_bswap.h`][pgbswap] that
+`DatumBigEndianToNative` is just defined as a no-op on a
+big-endian machine, and is otherwise connected to a
+byteswap routine of the appropriate size:
+
+``` c
+#ifdef WORDS_BIGENDIAN
+
+#define        DatumBigEndianToNative(x)    (x)
+
+#else                            /* !WORDS_BIGENDIAN */
+
+#if SIZEOF_DATUM == 8
+#define        DatumBigEndianToNative(x)    pg_bswap64(x)
+#else                            /* SIZEOF_DATUM != 8 */
+#define        DatumBigEndianToNative(x)    pg_bswap32(x)
+#endif                            /* SIZEOF_DATUM == 8 */
+
+#endif                            /* WORDS_BIGENDIAN */
+```
+
+#### Abbreviated key conversion abort & HyperLogLog
+
+I left out one feature of `uuid_abbrev_convert` above which
+touch upon now. In data sets with very low cardinality
+(i.e, many duplicated items) SortSupport introduces some
+danger of worsening performance. The contents of
+abbreviated keys would often show equality, which would
+fall back to the authoritative comparator. In effect, by
+adding SortSupport we would have just added an additional
+comparison that wasn't there before.
+
+To protect against this case, SortSupport has a mechanism
+for aborting abbreviated key conversion. If the data set is
+found to be below a certain cardinality threshold, Postgres
+stops abbreviating, reverts any keys that it had already
+abbreviated, and disables SortSupport for the sort.
+
+``` c
+if (uss->estimating)
+{
+    uint32        tmp;
+
+#if SIZEOF_DATUM == 8
+    tmp = (uint32) res ^ (uint32) ((uint64) res >> 32);
+#else                            /* SIZEOF_DATUM != 8 */
+    tmp = (uint32) res;
+#endif
+
+    addHyperLogLog(&uss->abbr_card, DatumGetUInt32(hash_uint32(tmp)));
+}
+```
+
+Cardinality is estimated with the help of
+[HyperLogLog][hyperloglog], an algorithm that's able to
+estimate distinct count in a very memory-efficient way
+
+It also covers aborting the case where we have some
+degenerate data set that's poorly suited to what we put in
+our abbreviated keys. For example, a million UUIDs that all
+shared a common prefix in their first eight bytes, but were
+distinct in their last eight. Realistically, this sort of
+degenerate case probably almost never happens, so
+abbreviated key conversion will rarely abort.
+
+### Tuples & sorting (#tuples)
+
+Sort tuples are the tiny structures that Postgres sorts in
+memory. They hold a reference to the "true" tuple, a datum,
+and a flag to indicate whether or not the first value is
+`NULL` (which has its own special sorting semantics). The
+latter two are named with a `1` suffix as `datum1` and
+`isnull1` because they represent only one field worth of
+information. Postgres will need to fall back to different
+values in the event of equality in a multi-column
+comparison. From [`tuplesort.c`][sorttuple]:
 
 ``` c
 /*
@@ -183,7 +330,7 @@ typedef struct ItemPointerData
 }
 ```
 
-### Comparison (#comparison)
+### Tuple comparison (#comparison)
 
 A good place to look at how comparisons take place while
 sorting is the comparison function used for a B-tree index
@@ -288,35 +435,6 @@ will always produce a non-equal comparison:
 }
 ```
 
-### Building abbreviated keys for UUID (#uuid)
-
-[`uuid.c`][uuidconvert]
-
-``` c
-static Datum
-uuid_abbrev_convert(Datum original, SortSupport ssup)
-{
-    pg_uuid_t *authoritative = DatumGetUUIDP(original);
-    Datum      res;
-
-    memcpy(&res, authoritative->data, sizeof(Datum));
-
-    ...
-
-    /*
-     * Byteswap on little-endian machines.
-     *
-     * This is needed so that uuid_cmp_abbrev() (an unsigned integer 3-way
-     * comparator) works correctly on all platforms.  If we didn't do this,
-     * the comparator would have to call memcmp() with a pair of pointers to
-     * the first byte of each abbreviated key, which is slower.
-     */
-    res = DatumBigEndianToNative(res);
-
-    return res;
-}
-```
-
 ### More exotic implementations (#exotic)
 
 The implementation for `uuid` is pretty easy to understand,
@@ -333,8 +451,11 @@ My one and only patch to Postgres involved implementing
 
 [comparetup]: src/backend/utils/sort/tuplesort.c:3953
 [datum]: src/include/postgres.h:357
+[hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
 [itempointer]: src/include/storage/itemptr.h:20
 [indextuple]: src/include/access/itup.h:22
+[pgbswap]: src/include/port/pg_bswap.h:143
 [sorttuple]: src/backend/utils/sort/tuplesort.c:138
+[uuid]: src/include/utils/uuid.h:17
 [uuidconvert]: src/backend/utils/adt/uuid.c:367
 [varstrconvert]: src/backend/utils/adt/varlena.c:2317
