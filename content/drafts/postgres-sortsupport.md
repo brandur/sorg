@@ -435,12 +435,6 @@ will always produce a non-equal comparison:
 }
 ```
 
-### More exotic implementations (#exotic)
-
-The implementation for `uuid` is pretty easy to understand,
-but packing meaningful comparison data in 32 or 64 bits
-isn't always quite so straightforward.
-
 ## Summary (#summary)
 
 My one and only patch to Postgres involved implementing
