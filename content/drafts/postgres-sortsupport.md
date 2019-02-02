@@ -283,36 +283,24 @@ typedef struct
 } SortTuple;
 ```
 
-`tuple` above is often an `IndexTuple` (from [`itup.h`][indextuple]):
+In the code we'll look at below, `SortTuple` may reference
+a `HeapTuple` (from [`htup.h`][heaptuple]):
 
 ``` c
-/*
- * Index tuple header structure
- */
-typedef struct IndexTupleData
+typedef struct HeapTupleData
 {
-    ItemPointerData t_tid;        /* reference TID to heap tuple */
-
-    /* ---------------
-     * t_info is laid out in the following fashion:
-     *
-     * 15th (high) bit: has nulls
-     * 14th bit: has var-width attributes
-     * 13th bit: AM-defined meaning
-     * 12-0 bit: size of tuple
-     * ---------------
-     */
-
-    unsigned short t_info;        /* various info about tuple */
-
-} IndexTupleData;                /* MORE DATA FOLLOWS AT END OF STRUCT */
-
-typedef IndexTupleData *IndexTuple;
+    uint32        t_len;            /* length of *t_data */
+    ItemPointerData t_self;        /* SelfItemPointer */
+    Oid            t_tableOid;        /* table the tuple came from */
+#define FIELDNO_HEAPTUPLEDATA_DATA 3
+    HeapTupleHeader t_data;        /* -> tuple header and data */
+} HeapTupleData;
 ```
 
-And you can see the `ItemPointerData` it contains give
-Postgres the precise information it needs to find data in
-the heap (from [`itemptr.h`][itempointer]):
+`HeapTuple` has a pretty complex structure which we won't
+go into, but you can see the `ItemPointerData` it contains
+give Postgres the precise information it needs to find data
+in the heap (from [`itemptr.h`][itempointer]):
 
 ``` c
 /*
@@ -338,10 +326,20 @@ sorting is the comparison function used for a B-tree index
 
 ``` c
 static int
-comparetup_index_btree(const SortTuple *a, const SortTuple *b,
-                       Tuplesortstate *state)
+comparetup_heap(const SortTuple *a, const SortTuple *b, Tuplesortstate *state)
 {
-    ...
+    SortSupport sortKey = state->sortKeys;
+    HeapTupleData ltup;
+    HeapTupleData rtup;
+    TupleDesc     tupDesc;
+    int           nkey;
+    int32         compare;
+    AttrNumber    attno;
+    Datum         datum1,
+                  datum2;
+    bool          isnull1,
+                  isnull2;
+
 
     /* Compare the leading sort key */
     compare = ApplySortComparator(a->datum1, a->isnull1,
@@ -349,8 +347,6 @@ comparetup_index_btree(const SortTuple *a, const SortTuple *b,
                                   sortKey);
     if (compare != 0)
         return compare;
-    ...
-
 ```
 
 `ApplySortComparator` gets a comparison result between two
@@ -370,16 +366,12 @@ two being equal doesn't necessarily indicate that the
 values that they represent are.
 
 ``` c
-/* Compare additional sort keys */
-tuple1 = (IndexTuple) a->tuple;
-tuple2 = (IndexTuple) b->tuple;
-keysz = state->nKeys;
-tupDes = RelationGetDescr(state->indexRel);
-
 if (sortKey->abbrev_converter)
 {
-    datum1 = index_getattr(tuple1, 1, tupDes, &isnull1);
-    datum2 = index_getattr(tuple2, 1, tupDes, &isnull2);
+    attno = sortKey->ssup_attno;
+
+    datum1 = heap_getattr(&ltup, attno, tupDesc, &isnull1);
+    datum2 = heap_getattr(&rtup, attno, tupDesc, &isnull2);
 
     compare = ApplySortAbbrevFullComparator(datum1, isnull1,
                                             datum2, isnull2,
@@ -394,44 +386,19 @@ detected. If not, it starts to look beyond the first field
 of an index:
 
 ``` c
-SortSupport sortKey = state->sortKeys;
-
-for (nkey = 2; nkey <= keysz; nkey++, sortKey++)
+sortKey++;
+for (nkey = 1; nkey < state->nKeys; nkey++, sortKey++)
 {
-    datum1 = index_getattr(tuple1, nkey, tupDes, &isnull1);
-    datum2 = index_getattr(tuple2, nkey, tupDes, &isnull2);
+    attno = sortKey->ssup_attno;
+
+    datum1 = heap_getattr(&ltup, attno, tupDesc, &isnull1);
+    datum2 = heap_getattr(&rtup, attno, tupDesc, &isnull2);
 
     compare = ApplySortComparator(datum1, isnull1,
                                   datum2, isnull2,
                                   sortKey);
     if (compare != 0)
-        return compare;        /* done when we find unequal attributes */
-}
-```
-
-If two index tuples are *still* equal after that, it falls
-back to using the block and offset from `ItemPointer` which
-will always produce a non-equal comparison:
-
-``` c
-/*
- * If key values are equal, we sort on ItemPointer.  This does not affect
- * validity of the finished index, but it may be useful to have index
- * scans in physical order.
- */
-{
-    BlockNumber blk1 = ItemPointerGetBlockNumber(&tuple1->t_tid);
-    BlockNumber blk2 = ItemPointerGetBlockNumber(&tuple2->t_tid);
-
-    if (blk1 != blk2)
-        return (blk1 < blk2) ? -1 : 1;
-}
-{
-    OffsetNumber pos1 = ItemPointerGetOffsetNumber(&tuple1->t_tid);
-    OffsetNumber pos2 = ItemPointerGetOffsetNumber(&tuple2->t_tid);
-
-    if (pos1 != pos2)
-        return (pos1 < pos2) ? -1 : 1;
+        return compare;
 }
 ```
 
@@ -443,11 +410,11 @@ My one and only patch to Postgres involved implementing
 [1] The new type `macaddr8` was later introduced to handle
     EUI-64 MAC addresses, which are 64 bits long.
 
-[comparetup]: src/backend/utils/sort/tuplesort.c:3953
+[comparetup]: src/backend/utils/sort/tuplesort.c:3909
 [datum]: src/include/postgres.h:357
+[heaptuple]: src/include/access/htup.h:62
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
 [itempointer]: src/include/storage/itemptr.h:20
-[indextuple]: src/include/access/itup.h:22
 [pgbswap]: src/include/port/pg_bswap.h:143
 [sorttuple]: src/backend/utils/sort/tuplesort.c:138
 [uuid]: src/include/utils/uuid.h:17
