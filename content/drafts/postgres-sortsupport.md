@@ -284,23 +284,31 @@ typedef struct
 ```
 
 In the code we'll look at below, `SortTuple` may reference
-a `HeapTuple` (from [`htup.h`][heaptuple]):
+a **heap tuple**, which has a variety of different struct
+representations. One used by the sort algorithm is
+`HeapTupleHeaderData` (from [`htup_details.h`][heaptuple]):
 
 ``` c
-typedef struct HeapTupleData
+struct HeapTupleHeaderData
 {
-    uint32        t_len;            /* length of *t_data */
-    ItemPointerData t_self;        /* SelfItemPointer */
-    Oid            t_tableOid;        /* table the tuple came from */
-#define FIELDNO_HEAPTUPLEDATA_DATA 3
-    HeapTupleHeader t_data;        /* -> tuple header and data */
-} HeapTupleData;
+    union
+    {
+        HeapTupleFields t_heap;
+        DatumTupleFields t_datum;
+    }            t_choice;
+
+    ItemPointerData t_ctid; /* current TID of this or newer tuple (or a
+                             * speculative insertion token) */
+
+    ...
+}
 ```
 
-`HeapTuple` has a pretty complex structure which we won't
-go into, but you can see the `ItemPointerData` it contains
-give Postgres the precise information it needs to find data
-in the heap (from [`itemptr.h`][itempointer]):
+Heap tuples have a pretty complex structure which we won't
+go into, but you can see that it contains an
+`ItemPointerData` value. This struct is what gives Postgres
+the precise information it needs to find data in the heap
+(from [`itemptr.h`][itempointer]):
 
 ``` c
 /*
@@ -320,9 +328,14 @@ typedef struct ItemPointerData
 
 ### Tuple comparison (#comparison)
 
-A good place to look at how comparisons take place while
-sorting is the comparison function used for a B-tree index
-(from [`tuplesort.c`][comparetup]):
+The algorithm to compare abbreviated keys is duplicated in
+the Postgres source in a number of places depending on the
+sort operation being carried out. We'll take a look at
+`comparetup_heap` (from [`tuplesort.c`][comparetup]) which
+is used when sorting based on the heap. This would be
+invoked for example if you ran an `ORDER BY` on a field
+that doesn't have an index on it.
+(
 
 ``` c
 static int
@@ -350,20 +363,19 @@ comparetup_heap(const SortTuple *a, const SortTuple *b, Tuplesortstate *state)
 ```
 
 `ApplySortComparator` gets a comparison result between two
-values. It'll compare two abbreviated keys where
-appropriate (it may full back to authoritative comparison
-in cases where key abbreviation has been aborted) and
-handles `NULL` sorting semantics. Comparisons occur in the
-spirit of C's `strcmp`: when comparing `(a, b)`, `-1`
-indicates `a < b`, 0 indicates equality, and `1` indicates
-`a > b`.
+datum values. It'll compare two abbreviated keys where
+appropriate and handles `NULL` sorting semantics. The
+return value of a comparison follows the spirit of C's
+`strcmp`: when comparing `(a, b)`, `-1` indicates `a < b`,
+0 indicates equality, and `1` indicates `a > b`.
 
-The algorithm returns immediately if inequality was
-detected. Otherwise, it checks to see if abbreviated keys
-were used, and if so applies the authoritative if they
-were. Because information in abbreviated keys is limited,
-two being equal doesn't necessarily indicate that the
-values that they represent are.
+The algorithm returns immediately if inequality (`!= 0`)
+was detected. Otherwise, it checks to see if abbreviated
+keys were used, and if so applies the authoritative
+comparison (comparing full values from the heap) if they
+were. Because space in abbreviated keys is limited, two
+being equal doesn't necessarily indicate that the values
+that they represent are.
 
 ``` c
 if (sortKey->abbrev_converter)
@@ -412,7 +424,7 @@ My one and only patch to Postgres involved implementing
 
 [comparetup]: src/backend/utils/sort/tuplesort.c:3909
 [datum]: src/include/postgres.h:357
-[heaptuple]: src/include/access/htup.h:62
+[heaptuple]: src/include/access/htup_details.h:152
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
 [itempointer]: src/include/storage/itemptr.h:20
 [pgbswap]: src/include/port/pg_bswap.h:143
