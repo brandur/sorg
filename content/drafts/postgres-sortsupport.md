@@ -24,52 +24,53 @@ indexes.
 
 ## Sorting with abbreviated keys (#abbreviated-keys)
 
-The basic idea is pretty simple. While sorting, Postgres
-builds a series of tiny structures that represent the data
-set being sorted. These tuples have space for a value the
-size of a native pointer (i.e., 64 bits on a 64-bit
-machine) which is enough to fit the entirety of some common
-types like booleans or integers (known as pass-by-value
-types). But for types that are larger than 64 bits or which
-can be arbitrarily large, it's not enough. In their case,
+While sorting, Postgres builds a series of tiny structures
+that represent the data set being sorted. These tuples have
+space for a value the size of a native pointer (i.e. 64
+bits on a 64-bit machine) which is enough to fit the
+entirety of some common types like booleans or integers
+(known as pass-by-value types), but not for others that are
+larger than 64 bits or arbitrarily large. In their case,
 Postgres will follow a references back to the heap when
-comparing values (called pass-by-reference types). Postgres
-is very fast, so that's still a fast operation, but it's
-obviously slower than comparing short values that are
-readily available in memory.
+comparing values (and they're therefore appropriately
+called pass-by-reference types). Postgres is very fast, so
+that's still a fast operation, but it's obviously slower
+than comparing short values that are readily available in
+memory.
 
 TODO: Diagram of SortTuples lined up memory
 
-SortSupport allows pass-by-reference types to be augmented
-by bringing some information about a value right into the
-sort tuple to potentially save trips to the heap. Because
-sort tuples usually don't have the space to store the
-value's entirety, a "digest" version called an
-**abbreviated key** is stored instead. What's stored in
-abbreviated key varies by type, but the overarching goal is
-to store as much sorting-relevant information as possible
-while remaining faithful to the sorting rules of type.
+SortSupport augments pass-by-reference types by bringing
+some information about their heap value right into the sort
+tuple to save trips to the heap. Because sort tuples
+usually don't have the space to store the entirety of the
+value, SortSupport generates a "digest" of the full value
+called an **abbreviated key**, and stores it instead. The
+contents of an abbreviated key vary by type, but they'll
+aim to store as much sorting-relevant information as
+possible while remaining faithful to the sorting rules of
+type.
 
-Abbreviated keys should obviously never produce an
-incorrect comparison, but it's okay if one can't be fully
-resolved by what's in the abbreviated key. If two
-abbreviated keys look equal, Postgres will fall back to the
-type's authoritative comparison function to make sure it
-has the right result.
+Abbreviated keys should never produce an incorrect
+comparison, but it's okay if one can't be fully resolved by
+what's in the abbreviated key. If two abbreviated keys look
+equal, Postgres will fall back to comparing their full heap
+values to make sure it gets the right result (usually
+called an "authoritative comparison").
 
 TODO: Diagram of abbreviated key point back to heap
 
 Implementing an abbreviated key turns out to be quite
-straightforward in many cases. UUIDs are a good example
-because at 128 bits they're always larger than the pointer
-size even on a 64-bit machine, it's pretty obvious what to
-do about that -- just pull in their first 64 bits of
-information (or 32 bits on a 32-bit machine). Especially
-for V4 UUIDs which are entirely random, the first 64 bits
-will be enough to definitively determine the order for all
-but unimaginably large data sets. Indeed the patch that
-brought in SortSupport for UUIDs reduced typical sort time
-by about 50% -- that's twice as fast! (TODO: verify this)
+straightforward in many cases. UUIDs are a good example: at
+128 bits they're always larger than the pointer size even
+on a 64-bit machine, but we can get a very good sample of
+their full value by just pulling in the first 64 bits (or
+32 on a 32-bit machine). Especially for V4 UUIDs which are
+entirely random, the first 64 bits will be enough to
+definitively determine the order for all but unimaginably
+large data sets. Indeed the patch that brought in
+SortSupport for UUIDs reduced typical sort time by about
+50% -- that's twice as fast! (TODO: verify this)
 
 String-like types (e.g. `text`, `varchar`) aren't too much
 harder: just pack as many characters from the front of the
@@ -77,20 +78,25 @@ string in as possible (although made somewhat more
 complicated by locales). My only ever patch to Postgres was
 implementing SortSupport for the `macaddr` type, which was
 quite easy because although it's a pass-by-reference type,
-its values are only six bytes long [1].
+its values are only six bytes long [1]. On a 64-bit machine
+we have room for all six bytes, and on 32-bits we sample
+the MAC address' first four bytes.
 
 ## A glance at the implementation (#implementation)
 
-Let's take a quick look at how SortSupport is implemented.
-For brevity I'm going to simplify and skip some things so
-just remember that the code is always canonical! Go take a
-look if you're interested.
+I'm going to try to give you a basic idea of how
+SortSupport is implemented by exposing a narrow slice of
+source code. Sorting in Postgres is extremely complex and
+involves thousands of lines of code, so fair warning that
+I'm going to simplify some things and skip *a lot*, but we
+can still upon a few interesting parts.
 
-An good type to start with is `Datum`, the pointer-sized
-type (32 or 64 bits) used for sort comparisons. It stores
-entire values for pass-by-value types, and abbreviated keys
-for SortSupport. You can see it defined in
-[`postgres.h`][datum]:
+A good type to start is `Datum`, the pointer-sized type (32
+or 64 bits, depending on the CPU's architecture) used for
+sort comparisons. It stores entire values for pass-by-value
+types, abbreviated keys for pass-by-reference types that
+implement SortSupport, and a pointer for those that don't.
+You can see it defined in [`postgres.h`][datum]:
 
 ``` c
 /*
@@ -110,9 +116,11 @@ typedef uintptr_t Datum;
 
 ### Building abbreviated keys for UUID (#uuid)
 
-Now let's look at how we build abbreviated keys for the
-`uuid` type. UUIDs on the heap are represented by
-`pg_uuid_t` (from [`uuid.h`][uuid]):
+As noted above, the format of abbreviated keys for the
+`uuid` type is probably the easiest to understand, so let's
+take a look at that. In Postgres, the struct `pg_uuid_t`
+defines how UUIDs are physically stored in the heap (from
+[`uuid.h`][uuid]):
 
 ``` c
 /* uuid size in bytes */
@@ -126,11 +134,11 @@ typedef struct pg_uuid_t
 
 You might be used to seeing UUIDs represented in string
 format like `123e4567-e89b-12d3-a456-426655440000`, but
-remember that this is Postgres and people like to be as
+remember that this is Postgres, which likes to be as
 efficient as possible! A UUID contains exactly 16 bytes
-worth of information, so `pg_uuid_t` defines an array of
-exactly 16 bytes (for those unfamiliar with C, a `char` is
-one byte).
+worth of information, so `pg_uuid_t` above defines an array
+of 16 bytes (for those unfamiliar with C, a `char` is one
+byte).
 
 SortSupport implementations define a conversion routine
 which takes the original value and produces a datum
@@ -162,69 +170,97 @@ uuid_abbrev_convert(Datum original, SortSupport ssup)
 }
 ```
 
-The most important of the code above is the call to
-`memcpy`, which extracts a datum worth of bytes from a
-`pg_uuid_t` and places it into a result datum. We can't
+`memcpy` (read "memory copy") extracts a datum worth of
+bytes from a `pg_uuid_t` and places it into `res`. We can't
 take the whole UUID, but we'll be taking its 4 or 8 most
-significant bytes which will still produce accurate
-comparisons.
+significant bytes, which will be enough information for
+most comparisons.
 
-The next part where we call `DatumBigEndianToNative` is an
+The call `DatumBigEndianToNative` helps with an
 optimization and a little more difficult to understand.
 When comparing our abbreviated keys, we could do so with
-`memcmp` which would compare each byte in the datum one at
-a time, but if we instead pretend that these 4 or 8 byte
-values are integers, we can do so much more quickly because
-CPUs an do integer operations really, *really* quickly.
+`memcmp` (read "memory compare")  which would compare each
+byte in the datum one at a time. That works of course, but
+because our datums are the same size as native integers, we
+can take advantage of the fact that CPUs can compare
+integers really, really quickly (faster even than `memcmp`)
+by arranging them in memory *like* integers. You can see
+this integer comparison taking place in the UUID
+abbreviated key comparison function:
 
-But this introduces some complication. Integers might be
-stored like our UUIDs with the most significant byte first,
-but only on systems which are big-endian. Little-endian
-machines store an integer's bytes in reverse order, with
-the most significant at the highest address. If we just
-left the result of `memcmp`, comparisons on little-endian
-systems would come out wrong so instead we byteswap which
-reverses byte order and corrects the integer.
+``` c
+static int
+uuid_cmp_abbrev(Datum x, Datum y, SortSupport ssup)
+{
+    if (x > y)
+        return 1;
+    else if (x == y)
+        return 0;
+    else
+        return -1;
+}
+```
+
+But pretending that some consecutive bytes in memory are
+integers introduces some complication. Integers might be
+stored like `data` in `pg_uuid_t` with the most significant
+byte first, but only on systems which are big-endian.
+Little-endian machines store an integer's bytes in reverse
+order, with the most significant at the highest address. If
+we just left the result of `memcpy`, integer comparisons on
+little-endian systems would come out wrong. The answer is
+to byteswap, which reverses the order of the bytes, and
+corrects the integer.
 
 TODO: Diagram of endian
 
 You can see in [`pg_bswap.h`][pgbswap] that
-`DatumBigEndianToNative` is just defined as a no-op on a
+`DatumBigEndianToNative` is defined as a no-op on a
 big-endian machine, and is otherwise connected to a
-byteswap routine of the appropriate size:
+byteswap ("bswap") routine of the appropriate size:
 
 ``` c
 #ifdef WORDS_BIGENDIAN
 
-#define        DatumBigEndianToNative(x)    (x)
+        #define        DatumBigEndianToNative(x)    (x)
 
-#else                            /* !WORDS_BIGENDIAN */
+#else
 
-#if SIZEOF_DATUM == 8
-#define        DatumBigEndianToNative(x)    pg_bswap64(x)
-#else                            /* SIZEOF_DATUM != 8 */
-#define        DatumBigEndianToNative(x)    pg_bswap32(x)
-#endif                            /* SIZEOF_DATUM == 8 */
+    #if SIZEOF_DATUM == 8
+        #define        DatumBigEndianToNative(x)    pg_bswap64(x)
+    #else
+        #define        DatumBigEndianToNative(x)    pg_bswap32(x)
+    #endif
 
-#endif                            /* WORDS_BIGENDIAN */
+#endif
 ```
 
 #### Abbreviated key conversion abort & HyperLogLog
 
-I left out one feature of `uuid_abbrev_convert` above which
-touch upon now. In data sets with very low cardinality
-(i.e, many duplicated items) SortSupport introduces some
-danger of worsening performance. The contents of
-abbreviated keys would often show equality, which would
-fall back to the authoritative comparator. In effect, by
-adding SortSupport we would have just added an additional
-comparison that wasn't there before.
+Let's touch upon one more feature of `uuid_abbrev_convert`.
+In data sets with very low cardinality (i.e, many
+duplicated items) SortSupport introduces some danger of
+worsening performance. With so many duplicates, the
+contents of abbreviated keys would often show equality, in
+which cases Postgres would often have to fall back to the
+authoritative comparator. In effect, by adding SortSupport
+we would have just added an additional comparison that
+wasn't there before.
 
-To protect against this case, SortSupport has a mechanism
-for aborting abbreviated key conversion. If the data set is
-found to be below a certain cardinality threshold, Postgres
-stops abbreviating, reverts any keys that it had already
-abbreviated, and disables SortSupport for the sort.
+To protect against the possibility of that performance
+regression, SortSupport has a mechanism for aborting
+abbreviated key conversion. If the data set is found to be
+below a certain cardinality threshold, Postgres stops
+abbreviating, reverts any keys that it had already
+abbreviated, and disables further abbreviation for the
+sort.
+
+Cardinality is estimated with the help of
+[HyperLogLog][hyperloglog], an algorithm that estimates the
+distinct count of a data set in a very memory-efficient
+way. Here you can see the conversion routine adding new
+values to the HyperLogLog if it's still considering
+aborting:
 
 ``` c
 if (uss->estimating)
@@ -233,7 +269,7 @@ if (uss->estimating)
 
 #if SIZEOF_DATUM == 8
     tmp = (uint32) res ^ (uint32) ((uint64) res >> 32);
-#else                            /* SIZEOF_DATUM != 8 */
+#else
     tmp = (uint32) res;
 #endif
 
@@ -241,29 +277,25 @@ if (uss->estimating)
 }
 ```
 
-Cardinality is estimated with the help of
-[HyperLogLog][hyperloglog], an algorithm that's able to
-estimate distinct count in a very memory-efficient way
-
 It also covers aborting the case where we have some
-degenerate data set that's poorly suited to what we put in
-our abbreviated keys. For example, a million UUIDs that all
+degenerate data set that's poorly suited to the abbreviated
+key format. For example, imagine a million UUIDs that all
 shared a common prefix in their first eight bytes, but were
-distinct in their last eight. Realistically, this sort of
-degenerate case probably almost never happens, so
-abbreviated key conversion will rarely abort.
+distinct in their last eight. Realistically this should be
+extremely unusual, so abbreviated key conversion will
+rarely abort.
 
 ### Tuples & sorting (#tuples)
 
-Sort tuples are the tiny structures that Postgres sorts in
-memory. They hold a reference to the "true" tuple, a datum,
-and a flag to indicate whether or not the first value is
-`NULL` (which has its own special sorting semantics). The
-latter two are named with a `1` suffix as `datum1` and
-`isnull1` because they represent only one field worth of
-information. Postgres will need to fall back to different
-values in the event of equality in a multi-column
-comparison. From [`tuplesort.c`][sorttuple]:
+**Sort tuples** are the tiny structures that Postgres sorts
+in memory. They hold a reference to the "true" tuple, a
+datum, and a flag to indicate whether or not the first
+value is `NULL` (which has its own special sorting
+semantics). The latter two are named with a `1` suffix as
+`datum1` and `isnull1` because they represent only one
+field worth of information. Postgres will need to fall back
+to different values in the event of equality in a
+multi-column comparison. From [`tuplesort.c`][sorttuple]:
 
 ``` c
 /*
@@ -335,7 +367,6 @@ sort operation being carried out. We'll take a look at
 is used when sorting based on the heap. This would be
 invoked for example if you ran an `ORDER BY` on a field
 that doesn't have an index on it.
-(
 
 ``` c
 static int
@@ -398,21 +429,31 @@ detected. If not, it starts to look beyond the first field
 of an index:
 
 ``` c
-sortKey++;
-for (nkey = 1; nkey < state->nKeys; nkey++, sortKey++)
-{
-    attno = sortKey->ssup_attno;
+    ...
 
-    datum1 = heap_getattr(&ltup, attno, tupDesc, &isnull1);
-    datum2 = heap_getattr(&rtup, attno, tupDesc, &isnull2);
+    sortKey++;
+    for (nkey = 1; nkey < state->nKeys; nkey++, sortKey++)
+    {
+        attno = sortKey->ssup_attno;
 
-    compare = ApplySortComparator(datum1, isnull1,
-                                  datum2, isnull2,
-                                  sortKey);
-    if (compare != 0)
-        return compare;
+        datum1 = heap_getattr(&ltup, attno, tupDesc, &isnull1);
+        datum2 = heap_getattr(&rtup, attno, tupDesc, &isnull2);
+
+        compare = ApplySortComparator(datum1, isnull1,
+                                      datum2, isnull2,
+                                      sortKey);
+        if (compare != 0)
+            return compare;
+    }
+
+    return 0;
 }
 ```
+
+After finding abbreviated keys to be equal, full values to
+be equal, and all additional sort fields to be equal, the
+last step is to `return 0`, indicating in libc-style that
+the two tuples are really, fully equal.
 
 ## Summary (#summary)
 
