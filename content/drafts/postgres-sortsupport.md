@@ -93,10 +93,11 @@ they're always larger than the pointer size even on a
 64-bit machine, but we can get a very good proxy of their
 full value just by sampling their first 64 bits (or 32 on a
 32-bit machine). Especially for V4 UUIDs which are entirely
-random, the first 64 bits will be enough to definitively
-determine the order for all but unimaginably large data
-sets. Indeed, [the patch that brought in SortSupport for
-UUIDs][uuidpatch] made sorting them about twice as fast!
+random [1], the first 64 bits will be enough to
+definitively determine the order for all but unimaginably
+large data sets. Indeed, [the patch that brought in
+SortSupport for UUIDs][uuidpatch] made sorting them about
+twice as fast!
 
 String-like types (e.g. `text`, `varchar`) aren't too much
 harder: just pack as many characters from the front of the
@@ -104,7 +105,7 @@ string in as possible (although made somewhat more
 complicated by locales). My only ever patch to Postgres was
 implementing SortSupport for the `macaddr` type, which was
 quite trivial because although it's pass-by-reference, its
-values are only six bytes long [1]. On a 64-bit machine we
+values are only six bytes long [2]. On a 64-bit machine we
 have room for all six bytes, and on 32-bit we sample the
 MAC address' first four bytes.
 
@@ -537,7 +538,11 @@ and users like myself upgrade, common operations like
 `DISTINCT`, `ORDER BY`, and `CREATE INDEX` get twice as
 fast for free.
 
-[1] The new type `macaddr8` was later introduced to handle
+[1] A note for the pedantic that V4 UUIDs usually have only
+    122 bits of randomness as four bits are used for the
+    version and two for the variant.
+
+[2] The new type `macaddr8` was later introduced to handle
     EUI-64 MAC addresses, which are 64 bits long.
 
 [comparetup]: src/backend/utils/sort/tuplesort.c:3909
