@@ -45,10 +45,11 @@ that the source code stays readable. The one that we'll
 look at today is **SortSupport**, a technique for
 localizing the information needed to compare data into
 places where it can be accessed very quickly, thereby
-making sorting data much faster. In some cases sorting gets
-twice as fast or more, which speeds up common database
-operations like `ORDER BY`, `DISTINCT`, and building
-indexes.
+making sorting data much faster. Sorting for types that
+have had Sortsupport implemented usually gets twice as fast
+or more, a speedup that transfers directly into common
+database operations like `ORDER BY`, `DISTINCT`, and
+building indexes.
 
 ## Sorting with abbreviated keys (#abbreviated-keys)
 
@@ -60,9 +61,9 @@ entirety of some common types like booleans or integers
 (known as pass-by-value types), but not for others that are
 larger than 64 bits or arbitrarily large. In their case,
 Postgres will follow a references back to the heap when
-comparing values (and they're therefore appropriately
-called pass-by-reference types). Postgres is very fast, so
-that still happens quickly, but it's obviously slower than
+comparing values (they're appropriately called
+pass-by-reference types). Postgres is very fast, so that
+still happens quickly, but it's obviously slower than
 comparing values readily available in memory.
 
 !fig src="/assets/postgres-sortsupport/sort-tuples.svg" caption="An array of sort tuples."
@@ -86,17 +87,16 @@ comparison").
 
 !fig src="/assets/postgres-sortsupport/abbreviated-keys.svg" caption="A sort tuple with an abbreviated key and pointer to the heap."
 
-Implementing an abbreviated key turns out to be quite
-straightforward in many cases. UUIDs are a good example: at
-128 bits they're always larger than the pointer size even
-on a 64-bit machine, but we can get a very good sample of
-their full value by just pulling in the first 64 bits (or
-32 on a 32-bit machine). Especially for V4 UUIDs which are
-entirely random, the first 64 bits will be enough to
-definitively determine the order for all but unimaginably
-large data sets. Indeed, [the patch that brought in
-SortSupport for UUIDs][uuidpatch] made sorting them about
-twice as fast!
+Implementing an abbreviated key is quite straightforward in
+many cases. UUIDs are a good example: at 128 bits long
+they're always larger than the pointer size even on a
+64-bit machine, but we can get a very good proxy of their
+full value just by sampling their first 64 bits (or 32 on a
+32-bit machine). Especially for V4 UUIDs which are entirely
+random, the first 64 bits will be enough to definitively
+determine the order for all but unimaginably large data
+sets. Indeed, [the patch that brought in SortSupport for
+UUIDs][uuidpatch] made sorting them about twice as fast!
 
 String-like types (e.g. `text`, `varchar`) aren't too much
 harder: just pack as many characters from the front of the
@@ -116,12 +116,11 @@ fields.
 
 ## A glance at the implementation (#implementation)
 
-I'm going to try to give you a basic idea of how
-SortSupport is implemented by exposing a narrow slice of
-source code. Sorting in Postgres is extremely complex and
-involves thousands of lines of code, so fair warning that
-I'm going to simplify some things and skip *a lot* of
-others.
+Let's try to get a basic idea of how SortSupport is
+implemented by examining a narrow slice of source code.
+Sorting in Postgres is extremely complex and involves
+thousands of lines of code, so fair warning that I'm going
+to simplify some things and skip *a lot* of others.
 
 A good place start is with `Datum`, the pointer-sized type
 (32 or 64 bits, depending on the CPU) used for sort
@@ -313,8 +312,7 @@ if (uss->estimating)
 }
 ```
 
-And where it makes an abort decision in `uuid_abbrev_abort`
-(from [`uuid.c`][uuidabort]):
+And where it makes an abort decision (from [`uuid.c`][uuidabort]):
 
 ``` c
 static bool
@@ -351,13 +349,12 @@ uuid_abbrev_abort(int memtupcount, SortSupport ssup)
 }
 ```
 
-It also covers aborting the case where we have some
-degenerate data set that's poorly suited to the abbreviated
-key format. For example, imagine a million UUIDs that all
-shared a common prefix in their first eight bytes, but were
-distinct in their last eight. Realistically this should be
-extremely unusual, so abbreviated key conversion will
-rarely abort.
+It also covers aborting the case where we have a data set
+that's poorly suited to the abbreviated key format. For
+example, imagine a million UUIDs that all shared a common
+prefix in their first eight bytes, but were distinct in
+their last eight. Realistically this will be extremely
+unusual, so abbreviated key conversion will rarely abort.
 
 ### Tuples and data types (#tuples)
 
@@ -528,10 +525,15 @@ be equal, and all additional sort fields to be equal, the
 last step is to `return 0`, indicating in libc style that
 the two tuples are really, fully equal.
 
-## Summary (#summary)
+## Leveraged software (#leverage)
 
-My one and only patch to Postgres involved implementing
-`SortSupport` for the `macaddr` data type.
+SortSupport is a good example of the type of low-level
+optimization that most of us never bother with in our
+projects, but which makes sense in an extremely leveraged
+system like a database. As implementations are added for it
+and users like myself upgrade, common operations like
+`DISTINCT`, `ORDER BY`, and `CREATE INDEX` get twice as
+fast for free.
 
 [1] The new type `macaddr8` was later introduced to handle
     EUI-64 MAC addresses, which are 64 bits long.
