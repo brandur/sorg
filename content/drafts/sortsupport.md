@@ -66,7 +66,7 @@ pass-by-reference types). Postgres is very fast, so that
 still happens quickly, but it's obviously slower than
 comparing values readily available in memory.
 
-!fig src="/assets/postgres-sortsupport/sort-tuples.svg" caption="An array of sort tuples."
+!fig src="/assets/sortsupport/sort-tuples.svg" caption="An array of sort tuples."
 
 SortSupport augments pass-by-reference types by bringing a
 representative part of their value into the sort tuple to
@@ -85,7 +85,7 @@ to comparing their full heap values to make sure it gets
 the right result (usually called an "authoritative
 comparison").
 
-!fig src="/assets/postgres-sortsupport/abbreviated-keys.svg" caption="A sort tuple with an abbreviated key and pointer to the heap."
+!fig src="/assets/sortsupport/abbreviated-keys.svg" caption="A sort tuple with an abbreviated key and pointer to the heap."
 
 Implementing an abbreviated key is quite straightforward in
 many cases. UUIDs are a good example: at 128 bits long
@@ -206,7 +206,7 @@ the whole UUID, but we'll be taking its 4 or 8 most
 significant bytes, which will be enough information for
 most comparisons.
 
-!fig src="/assets/postgres-sortsupport/uuid.svg" caption="Abbreviated key formats for the `uuid` type."
+!fig src="/assets/sortsupport/uuid.svg" caption="Abbreviated key formats for the `uuid` type."
 
 The call `DatumBigEndianToNative` is there to help with an
 optimization. When comparing our abbreviated keys, we could
@@ -250,7 +250,7 @@ on little-endian systems, the resulting integer would be
 wrong. The answer is to byteswap, which reverses the order
 of the bytes, and corrects the integer.
 
-!fig src="/assets/postgres-sortsupport/endianness.svg" caption="Example placement of integer bytes on little and big endian architectures."
+!fig src="/assets/sortsupport/endianness.svg" caption="Example placement of integer bytes on little and big endian architectures."
 
 You can see in [`pg_bswap.h`][pgbswap] that
 `DatumBigEndianToNative` is defined as a no-op on a
