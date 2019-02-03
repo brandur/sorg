@@ -26,7 +26,7 @@ little more than doubles sorting speed on them. `inet` and
 individual hosts and in either IPv4 or IPv6 (they generally
 look something like `1.2.3.0/24` or `1.2.3.4`).
 
-`inet` and `cdir` have some important subtleties in how
+`inet` and `cidr` have some important subtleties in how
 they're sorted which made designing an abbreviated key that
 would be faithful to those subtleties but still efficient,
 somewhat challenging. Because their size is limited,
@@ -63,13 +63,14 @@ IPv4 or `/128` for IPv6) specifies just a single host, and
 for display purposes the netmask size is usually omitted.
 We'd show `1.2.3.4` instead of `1.2.3.4/32`.
 
-The difference between `inet` is `cdir` is that `inet`
+The difference between `inet` is `cidr` is that `inet`
 allows a values outside of the netmasked bits. The value
 `1.2.3.4/24` is possible in `inet`, but in `cidr` only
 zeroes may appear after the network like `1.2.3.0/24`.
 They're nearly identical, with the latter being strictly
 more constraining (and when working with data, that's a
-good thing).
+good thing). Otherwise put, `cidr` values never have a
+non-zero subnet.
 
 In the Postgres source code, `inet` and `cidr` are
 represented by the same C struct. Here it is in
