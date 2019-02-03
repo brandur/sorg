@@ -1,5 +1,5 @@
 ---
-title: "SortSupport: Sorting in Postgres Postgres at Speed"
+title: "SortSupport: Sorting in Postgres at Speed"
 published_at: 2019-01-24T19:19:18Z
 location: San Francisco
 hook: TODO
@@ -19,26 +19,26 @@ easy to understand so that adding new features or fixing
 bugs stays easy.
 
 That's not the case in all domains though. I've always
-found reading game code interesting because it's one place
-where it's common practice to optimize code even at the
-cost of modularity and maintainability. One way to
-accomplish that is to inline code in certain critical
-sections even to the point of absurdity. CryEngine,
-open-sourced a few years ago, has a few good examples of
-this, with [tick functions like this one][cryengine] that
-are 800+ lines long with 14 levels of indentation in
-places.
+found game code enthralling because it's a place where
+speed is a competitive advantage, and it's common practice
+to optimize code even at the cost of modularity and
+maintainability. One technique for that is to inline code
+in certain critical sections even to the point of
+absurdity. CryEngine, open-sourced a few years ago, has a
+few examples of this, with [tick functions like this
+one][cryengine] that are 800+ lines long with 14 levels of
+indentation.
 
-Another class of software where it's common to think about
-optimizations is databases, and Postgres in particular has
-lots of interesting ones. Databases are an example of
-software that's extremely leveraged -- if you can find a
-way to make sorting rows or building indexes 10% faster, it
-won't be an improvement that affects just a couple users,
-it's one that'll energize millions of installations around
-the world. Advantageous enough that the enhancement is very
-often worth it, even at the cost of a challenging
-implementation and additional code complexity.
+Another common place to find optimizations is in databases,
+and Postgres in particular has lots of them. Databases are
+an example of software that's extremely leveraged -- if you
+can find a way to make sorting rows or building indexes 10%
+faster, it won't be an improvement that affects just a
+couple users, it's one that'll energize millions of
+installations around the world. That's enough of an
+advantage that the enhancement is very often worth it, even
+at the cost of a challenging implementation and additional
+code complexity.
 
 An optimization in Postgres that's interested me for a
 while is **SortSupport**, a technique for localizing the
@@ -65,7 +65,7 @@ that's still a fast operation, but it's obviously slower
 than comparing short values that are readily available in
 memory.
 
-TODO: Diagram of SortTuples lined up memory
+!fig src="/assets/postgres-sortsupport/sort-tuples.svg" caption="An array of sort tuples."
 
 SortSupport augments pass-by-reference types by bringing
 some information about their heap value right into the sort
@@ -85,7 +85,7 @@ equal, Postgres will fall back to comparing their full heap
 values to make sure it gets the right result (usually
 called an "authoritative comparison").
 
-TODO: Diagram of abbreviated key point back to heap
+!fig src="/assets/postgres-sortsupport/abbreviated-keys.svg" caption="A sort tuple with an abbreviated key and pointer to the heap."
 
 Implementing an abbreviated key turns out to be quite
 straightforward in many cases. UUIDs are a good example: at
@@ -108,6 +108,12 @@ quite easy because although it's a pass-by-reference type,
 its values are only six bytes long [1]. On a 64-bit machine
 we have room for all six bytes, and on 32-bits we sample
 the MAC address' first four bytes.
+
+Some abbreviated keys are more complex. The implementation
+for the `numeric` type, which allows variable scale and
+precision, involves [excess-K coding][excessk] and breaking
+available bits into multiple parts to store sort-relevant
+fields.
 
 ## A glance at the implementation (#implementation)
 
@@ -164,8 +170,7 @@ format like `123e4567-e89b-12d3-a456-426655440000`, but
 remember that this is Postgres, which likes to be as
 efficient as possible! A UUID contains exactly 16 bytes
 worth of information, so `pg_uuid_t` above defines an array
-of 16 bytes (for those unfamiliar with C, a `char` is one
-byte).
+of 16 bytes.
 
 SortSupport implementations define a conversion routine
 which takes the original value and produces a datum
@@ -239,7 +244,7 @@ little-endian systems would come out wrong. The answer is
 to byteswap, which reverses the order of the bytes, and
 corrects the integer.
 
-TODO: Diagram of endian
+!fig src="/assets/postgres-sortsupport/endianness.svg" caption="Example placement of integer bytes on little and big endian architectures."
 
 You can see in [`pg_bswap.h`][pgbswap] that
 `DatumBigEndianToNative` is defined as a no-op on a
@@ -271,16 +276,15 @@ worsening performance. With so many duplicates, the
 contents of abbreviated keys would often show equality, in
 which cases Postgres would often have to fall back to the
 authoritative comparator. In effect, by adding SortSupport
-we would have just added an additional comparison that
-wasn't there before.
+we would have just added a useless additional comparison
+that wasn't there before.
 
-To protect against the possibility of that performance
-regression, SortSupport has a mechanism for aborting
-abbreviated key conversion. If the data set is found to be
-below a certain cardinality threshold, Postgres stops
-abbreviating, reverts any keys that it had already
-abbreviated, and disables further abbreviation for the
-sort.
+To protect against performance regression, SortSupport has
+a mechanism for aborting abbreviated key conversion. If the
+data set is found to be below a certain cardinality
+threshold, Postgres stops abbreviating, reverts any keys
+that it had already abbreviated, and disables further
+abbreviation for the sort.
 
 Cardinality is estimated with the help of
 [HyperLogLog][hyperloglog], an algorithm that estimates the
@@ -424,16 +428,15 @@ comparetup_heap(const SortTuple *a, const SortTuple *b, Tuplesortstate *state)
 datum values. It'll compare two abbreviated keys where
 appropriate and handles `NULL` sorting semantics. The
 return value of a comparison follows the spirit of C's
-`strcmp`: when comparing `(a, b)`, `-1` indicates `a < b`,
-0 indicates equality, and `1` indicates `a > b`.
+`strcmp`: when comparing `(a, b)`, -1 indicates `a < b`,
+0 indicates equality, and 1 indicates `a > b`.
 
 The algorithm returns immediately if inequality (`!= 0`)
 was detected. Otherwise, it checks to see if abbreviated
 keys were used, and if so applies the authoritative
-comparison (comparing full values from the heap) if they
-were. Because space in abbreviated keys is limited, two
-being equal doesn't necessarily indicate that the values
-that they represent are.
+comparison if they were. Because space in abbreviated keys
+is limited, two being equal doesn't necessarily indicate
+that the values that they represent are.
 
 ``` c
 if (sortKey->abbrev_converter)
@@ -453,7 +456,7 @@ if (sortKey->abbrev_converter)
 
 Once again, the algorithm returns if inequality was
 detected. If not, it starts to look beyond the first field
-of an index:
+in the case of a multi-column sort:
 
 ``` c
     ...
@@ -493,6 +496,7 @@ My one and only patch to Postgres involved implementing
 [comparetup]: src/backend/utils/sort/tuplesort.c:3909
 [cryengine]: https://github.com/CRYTEK/CRYENGINE/blob/release/Code/CryEngine/CryPhysics/livingentity.cpp#L1275
 [datum]: src/include/postgres.h:357
+[excessk]: https://en.wikipedia.org/wiki/Offset_binary
 [heaptuple]: src/include/access/htup_details.h:152
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
 [itempointer]: src/include/storage/itemptr.h:20
