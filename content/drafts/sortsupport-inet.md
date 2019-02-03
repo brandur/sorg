@@ -107,20 +107,118 @@ intuitively all that obvious to a human reader. For
 example, `192.0.0.0/1` sorts *before* `128.0.0.0/2` despite
 192 being the larger number. The reason is that when
 comparing them, we start by looking at the common bits
-available in both networks which comes out to 1 (`min('/1',
-'/2')`). That bit is the same for both values (remember,
-192 = `1100 0000` and 128 = `1000 0000`), so we fall
-through to comparing network size. `/2` is the larger of
-the two, so `128.0.0.0/2` is deemed to be the larger
-address.
+available in both networks, which comes out to just one bit
+(`min(/1, /2)`). That bit is the same in the networks
+of both values (remember, 192 = `1100 0000` and 128 = `1000
+0000`), so we fall through to comparing netmask size. `/2`
+is the larger of the two, so `128.0.0.0/2` is deemed to be
+the larger value.
 
 ## Designing an abbreviated key (#designing-keys)
+
+Now that we understand the basics of `inet`/`cidr` and how
+their sorting rules work, it's time to design an
+abbreviated key for them. Remember that abbreviated keys
+need to fit into the pointer-sized Postgres datum -- either
+32 or 64 bits depending on target architecture. The goal is
+to pack in as much sorting-relevant information as possible
+while staying true to the existing sorting semantics.
+
+Because of the subtle sorting semantics for these types,
+we'll be breaking the available datum into multiple parts,
+with information that we need for higher precedence sorting
+rules occupying more significant bits so that it compares
+first.
+
+### 1 bit for family (#family)
+
+The first part is easy: all IPv4 values always appear
+before all IPv6 values. Since there's only two IP families,
+so we'll reserve the most significant bit of our key to
+represent a value's family. 0 for IPv4 and 1 for IPv6.
+
+!fig src="/assets/sortsupport-inet/ip-family.svg" caption="One bit reserved for IP family."
+
+At first glance it might seem short-sighted that we're
+assuming that only two IP families will ever exist. Luckily
+though, abbreviated keys are not persisted to disk (they're
+only generated in the memory of a running Postgres system)
+and their format is therefore non-binding. If a new IP
+family were to ever appear, we could allocate another bit
+to account for it.
+
+### As many network bits as we can pack in (#network)
+
+The next comparison that needs to be done is against a
+value's network bits, so we should include those in the
+datum.
+
+The less obvious insight is that we can *only* include
+network bits in this part. Think back to our example of
+`192.0.0.0/1` and `128.0.0.0/2`: if we included 192's full
+bits of `1100 0000`, then when comparing it to 128's `1000
+0000`, it would sort higher when it needs to come out
+lower. In order to guarantee our keys will comply with the
+rules, we have to truncate values to just what appears in
+the network.
+
+Both `192.0.0.0/1` and `128.0.0.0/2` would appear as `1000
+0000` (two of 128's bits were extracted, but it has a 0 in
+the second position) and would appear equal when
+considering this part of the abbreviated key. In cases
+where that's all the space in the key we have to work with,
+Postgres will have to fall back to authoritative comparison
+(which would be able to move on and compare netmask size)
+to break the tie.
+
+The network bits are where we need to stop for most of our
+use cases because that's all the space in the datum there
+is. An IPv6 value is 128 bits -- after reserving 1 bit in
+the datum for family, we have 31 bits left on a 32-bit
+machine and 63 bits on a 64-bit machine, which will be
+filled entirely with network. An IPv4 value is only 32
+bits, but that's still more space than we have left on a
+32-bit machine, so again, we'll pack in 31 of them.
+
+The only case with space leftover is IPv4 on a 64-bit
+machine. Even after storing all 32 possible bits of
+network, we still have 31 bits available. Let's see what we
+can use them for.
+
+### IPv4 on 64-bit: network size and a few subnet bits (#ipv4-64bit)
+
+As datums are being compared for IPv4 on a 64-bit machine,
+we can be sure that that having looked at the 33 bits that
+we've designed so far that IP family and available network
+bits are equal. That lets us think about the next
+comparison rule -- netmask size, which will fit nicely into
+our datum. The largest possible netmask size for an IPv4
+address is 32, which conveniently into only 6 bits [1] (`10
+0000`).
+
+After adding netmask size to the datum we're left with 25
+bits, which we can use for subnet. Subnets can be as large
+as 32 bits for a `/0` value, so we'll have to shift any
+that are too large to fit down to the size available. That
+will only ever happen for netmask sizes of `/6` or smaller
+-- for all commonly seen netmask sizes like `/8`, `/16`,
+or `/24` we can fit the entirety of the subnet into the
+datum.
+
+The final abbreviated key design looks like this:
 
 !fig src="/assets/sortsupport-inet/key-design.svg" caption="The design of abbreviated keys for inet and cidr."
 
 ## Bit gymnastics in C (#gymnastics)
 
 ## Summary (#summary)
+
+[1] I originally thought that by subtracting one from 32 I
+    could fit netmask size into only 5 bits (31 = `1
+    1111`), but that's not possible because 0-bit netmasks
+    are allowed and we therefore need to be able to
+    represent the entire range of 0 to 32. For example,
+    `1.2.3.4/0` is a legal value in Postgres.
 
 [inet]: src/include/utils/inet.h:23
 [patch]: TODO
