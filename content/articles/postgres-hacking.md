@@ -95,7 +95,7 @@ hyper-threaded, so I use specify a parallelism of 16.
 Install the result to the `prefix` configured above:
 
 ``` sh
-make install
+make install -j16
 ```
 
 ### Running (#running)
