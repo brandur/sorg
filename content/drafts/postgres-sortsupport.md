@@ -199,22 +199,24 @@ uuid_abbrev_convert(Datum original, SortSupport ssup)
 }
 ```
 
-`memcpy` (read "memory copy") extracts a datum worth of
-bytes from a `pg_uuid_t` and places it into `res`. We can't
-take the whole UUID, but we'll be taking its 4 or 8 most
+`memcpy` ("memory copy") extracts a datum worth of bytes
+from a `pg_uuid_t` and places it into `res`. We can't take
+the whole UUID, but we'll be taking its 4 or 8 most
 significant bytes, which will be enough information for
 most comparisons.
 
+!fig src="/assets/postgres-sortsupport/uuid.svg" caption="Abbreviated key formats for the `uuid` type."
+
 The call `DatumBigEndianToNative` is there to help with an
 optimization. When comparing our abbreviated keys, we could
-do so with `memcmp` (read "memory compare")  which would
-compare each byte in the datum one at a time. That
-perfectly functional of course, but because our datums are
-the same size as native integers, we can take advantage of
-the fact that CPUs are optimized to compare integers
-really, really quickly by arranging them in memory *like*
-integers. You can see this integer comparison taking place
-in the UUID abbreviated key comparison function:
+do so with `memcmp` ("memory compare")  which would compare
+each byte in the datum one at a time. That's perfectly
+functional of course, but because our datums are the same
+size as native integers, we can take advantage of the fact
+that CPUs are optimized to compare integers really, really
+quickly, and arrange the datums them in memory as if they
+were integers. You can see this integer comparison taking
+place in the UUID abbreviated key comparison function:
 
 ``` c
 static int
