@@ -98,8 +98,8 @@ rules:
 2. The bits in the network are compared (`1.2.3.`).
 3. Netmask size is compared (`/24`).
 4. All bits are compared. Having made it here, we know that
-   the network bits and network sizes are equal, so we're
-   in effect just comparing the subnet `.4`.
+   the network bits are equal, so we're in effect just
+   comparing the subnet `.4`.
 
 These rules combined with the fact that we're working at
 the bit level produce ordering that in cases may not be
@@ -182,7 +182,7 @@ bits, but that's still more space than we have left on a
 
 The only case with space leftover is IPv4 on a 64-bit
 machine. Even after storing all 32 possible bits of
-network, we still have 31 bits available. Let's see what we
+network, there's still 31 bits available. Let's see what we
 can use them for.
 
 ### IPv4 on 64-bit: network size and a few subnet bits (#ipv4-64bit)
