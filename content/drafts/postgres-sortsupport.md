@@ -109,7 +109,7 @@ have room for all six bytes, and on 32-bit we sample the
 MAC address' first four bytes.
 
 Some abbreviated keys are more complex. The implementation
-for the `numeric` type, which allows variable scale and
+for the `numeric` type, which allows arbitrary scale and
 precision, involves [excess-K coding][excessk] and breaking
 available bits into multiple parts to store sort-relevant
 fields.
