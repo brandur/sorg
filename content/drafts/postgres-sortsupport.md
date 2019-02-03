@@ -1,26 +1,53 @@
 ---
-title: "SortSupport: How Postgres Sorts at Speed"
+title: "SortSupport: Sorting in Postgres Postgres at Speed"
 published_at: 2019-01-24T19:19:18Z
 location: San Francisco
 hook: TODO
 ---
 
-An interesting aspect of systems like Postgres is that
-optimizations that might not make sense in other contexts
-because of how time consuming they are to write or the
-additional complexity stemming from their implementation
-*do* make sense because of the incredible leverage
-involved. You don't just speed up a couple of
-installations -- you speed up _millions_ of them around the
-world.
+Most often, there's a trade off involved in optimizing
+software. The cost of better performance is the time that
+it takes to an optimization in place, and the additional
+cost of maintenance for code that becomes more complex and
+more difficult to understand.
 
-One optimization in this vein that I want to talk about
-today is **SortSupport**. In essence SortSupport is a
-technique for localizing the information needed to compare
-data into places where it can be accessed very quickly,
-thereby making sorting data much faster. This is useful in
-places like using an `ORDER BY`, `DISTINCT`, and building
-indexes.
+Very often in the business world it's common to optimize
+for product development velocity instead of runtime speed.
+Time is generally spent building new things instead of
+making existing things faster, and code is kept simple and
+easy to understand so that adding new features or fixing
+bugs stays easy.
+
+That's not the case in all domains though. I've always
+found reading game code interesting because it's one place
+where it's common practice to optimize code even at the
+cost of modularity and maintainability. One way to
+accomplish that is to inline code in certain critical
+sections even to the point of absurdity. CryEngine,
+open-sourced a few years ago, has a few good examples of
+this, with [tick functions like this one][cryengine] that
+are 800+ lines long with 14 levels of indentation in
+places.
+
+Another class of software where it's common to think about
+optimizations is databases, and Postgres in particular has
+lots of interesting ones. Databases are an example of
+software that's extremely leveraged -- if you can find a
+way to make sorting rows or building indexes 10% faster, it
+won't be an improvement that affects just a couple users,
+it's one that'll energize millions of installations around
+the world. Advantageous enough that the enhancement is very
+often worth it, even at the cost of a challenging
+implementation and additional code complexity.
+
+An optimization in Postgres that's interested me for a
+while is **SortSupport**, a technique for localizing the
+information needed to compare data into places where it can
+be accessed very quickly, thereby making sorting data much
+faster. In some cases sorting gets as much as twice as fast
+(or more), which speeds up common database operations like
+using `ORDER BY`, `DISTINCT`, and building indexes. Let's
+take a closer look at how it works.
 
 ## Sorting with abbreviated keys (#abbreviated-keys)
 
@@ -68,9 +95,9 @@ their full value by just pulling in the first 64 bits (or
 32 on a 32-bit machine). Especially for V4 UUIDs which are
 entirely random, the first 64 bits will be enough to
 definitively determine the order for all but unimaginably
-large data sets. Indeed the patch that brought in
-SortSupport for UUIDs reduced typical sort time by about
-50% -- that's twice as fast! (TODO: verify this)
+large data sets. Indeed, [the patch that brought in
+SortSupport for UUIDs][uuidpatch] made sorting them about
+twice as fast!
 
 String-like types (e.g. `text`, `varchar`) aren't too much
 harder: just pack as many characters from the front of the
@@ -285,7 +312,7 @@ distinct in their last eight. Realistically this should be
 extremely unusual, so abbreviated key conversion will
 rarely abort.
 
-### Tuples & sorting (#tuples)
+### Tuples and data types (#tuples)
 
 **Sort tuples** are the tiny structures that Postgres sorts
 in memory. They hold a reference to the "true" tuple, a
@@ -464,6 +491,7 @@ My one and only patch to Postgres involved implementing
     EUI-64 MAC addresses, which are 64 bits long.
 
 [comparetup]: src/backend/utils/sort/tuplesort.c:3909
+[cryengine]: https://github.com/CRYTEK/CRYENGINE/blob/release/Code/CryEngine/CryPhysics/livingentity.cpp#L1275
 [datum]: src/include/postgres.h:357
 [heaptuple]: src/include/access/htup_details.h:152
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
@@ -472,4 +500,5 @@ My one and only patch to Postgres involved implementing
 [sorttuple]: src/backend/utils/sort/tuplesort.c:138
 [uuid]: src/include/utils/uuid.h:17
 [uuidconvert]: src/backend/utils/adt/uuid.c:367
+[uuidpatch]: https://www.postgresql.org/message-id/CAM3SWZR4avsTwwNVUzRNbHk8v36W-QBqpoKg%3DOGkWWy0dKtWBA%40mail.gmail.com
 [varstrconvert]: src/backend/utils/adt/varlena.c:2317
