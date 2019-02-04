@@ -66,12 +66,12 @@ We'd show `1.2.3.4` instead of `1.2.3.4/32`.
 
 The difference between `inet` is `cidr` is that `inet`
 allows a values outside of the netmasked bits. The value
-`1.2.3.4/24` is possible in `inet`, but in `cidr` only
-zeroes may appear after the network like `1.2.3.0/24`.
-They're nearly identical, with the latter being strictly
-more constraining (and when working with data, that's a
-good thing). Otherwise put, `cidr` values never have a
-non-zero subnet.
+`1.2.3.4/24` is possible in `inet`, but illegal in `cidr`
+because only zeroes may appear after the network like
+`1.2.3.0/24`. They're nearly identical, with the latter
+being strictly more constraining (and when working with
+data, that's a good thing). Otherwise put, `cidr` values
+never have a non-zero subnet.
 
 In the Postgres source code, `inet` and `cidr` are
 represented by the same C struct. Here it is in
