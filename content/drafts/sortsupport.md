@@ -49,7 +49,7 @@ making sorting data much faster. Sorting for types that
 have had Sortsupport implemented usually gets twice as fast
 or more, a speedup that transfers directly into common
 database operations like `ORDER BY`, `DISTINCT`, and
-building indexes.
+`CREATE INDEX`.
 
 ## Sorting with abbreviated keys (#abbreviated-keys)
 
