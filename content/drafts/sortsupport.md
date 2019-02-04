@@ -559,20 +559,20 @@ Gierth for a [difficult implementation][numeric] for
     realistic for variable-length string types, where users
     are storing much more free-form data.
 
-[comparetup]: src/backend/utils/sort/tuplesort.c:3909
+[comparetup]: https://github.com/postgres/postgres/blob/master/src/backend/utils/sort/tuplesort.c#L3508
 [cryengine]: https://github.com/CRYTEK/CRYENGINE/blob/release/Code/CryEngine/CryPhysics/livingentity.cpp#L1275
-[datum]: src/include/postgres.h:357
+[datum]: https://github.com/postgres/postgres/blob/master/src/include/postgres.h#L367
 [excessk]: https://en.wikipedia.org/wiki/Offset_binary
-[heaptuple]: src/include/access/htup_details.h:152
+[heaptuple]: https://github.com/postgres/postgres/blob/master/src/include/access/htup_details.h#L152
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
 [infrastructure]: https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=c6e3ac11b60ac4a8942ab964252d51c1c0bd8845
-[itempointer]: src/include/storage/itemptr.h:20
+[itempointer]: https://github.com/postgres/postgres/blob/master/src/include/storage/itemptr.h#L36
 [numeric]: https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=abd94bcac4582903765be7be959d1dbc121df0d0
-[pgbswap]: src/include/port/pg_bswap.h:143
-[sorttuple]: src/backend/utils/sort/tuplesort.c:138
+[pgbswap]: https://github.com/postgres/postgres/blob/master/src/include/port/pg_bswap.h#L143
+[sorttuple]: https://github.com/postgres/postgres/blob/master/src/backend/utils/sort/tuplesort.c#L169
 [textblog]: http://pgeoghegan.blogspot.com/2015/01/abbreviated-keys-exploiting-locality-to.html
-[uuid]: src/include/utils/uuid.h:17
-[uuidabort]: src/backend/utils/adt/uuid.c:301
-[uuidconvert]: src/backend/utils/adt/uuid.c:367
+[uuid]: https://github.com/postgres/postgres/blob/master/src/include/utils/uuid.h#L20
+[uuidabort]: https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/uuid.c#L301
+[uuidconvert]: https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/uuid.c#L367
 [uuidpatch]: https://www.postgresql.org/message-id/CAM3SWZR4avsTwwNVUzRNbHk8v36W-QBqpoKg%3DOGkWWy0dKtWBA%40mail.gmail.com
-[varstrconvert]: src/backend/utils/adt/varlena.c:2317
+[varstrconvert]: https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/varlena.c#L2373
