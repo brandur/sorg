@@ -92,8 +92,8 @@ many cases. UUIDs are a good example: at 128 bits long
 they're always larger than the pointer size even on a
 64-bit machine, but we can get a very good proxy of their
 full value just by sampling their first 64 bits (or 32 on a
-32-bit machine). Especially for V4 UUIDs which are entirely
-random [1], the first 64 bits will be enough to
+32-bit machine). Especially for V4 UUIDs which are almost
+entirely random [1], the first 64 bits will be enough to
 definitively determine the order for all but unimaginably
 large data sets. Indeed, [the patch that brought in
 SortSupport for UUIDs][uuidpatch] made sorting them about
