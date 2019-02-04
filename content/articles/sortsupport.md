@@ -39,8 +39,9 @@ select queries or building indexes 10% faster, it's not an
 improvement that affects just a couple users, it's one
 that'll potentially invigorate millions of installations
 around the world. That's enough of an advantage that the
-enhancement is very often worth it, even at the cost of a
-challenging implementation and additional code complexity.
+enhancement is very often worth it, even if the price is a
+challenging implementation or some additional code
+complexity.
 
 Postgres contains a wide breadth of optimizations, and
 happily they've been written conscientiously so that the
