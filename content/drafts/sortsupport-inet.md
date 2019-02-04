@@ -48,13 +48,14 @@ The netmask size dictates how many bits of the value belong
 to the network. This can get a little confusing because
 although it's most common to see byte-sized blocks like
 `/8`, `/16`, `/24`, and `/32`, it's allowed to be any
-number between 0 and 32. It's easy a byte-sized network out
-of a value (like `1.2.3.`) because you just stop at a byte
-boundary, but when it's not a round number you have to
-think at the binary level. For example, if I have the value
-`255.255.255.255/1`, the network is just the leading bit.
-255 in binary is `1111 1111`, so the network is the bit
-`1` and the subnet is 31 consecutive `1`s.
+number between 0 and 32. It's easy to mentally a byte-sized
+network out of a value (like `1.2.3.` out of `1.2.3.4/24`)
+because you can just stop at the appropriate byte boundary,
+but when it's not a nice byte multiple you have to think at
+the binary level. For example, if I have the value
+`255.255.255.255/1`, the network is just the leftmost bit.
+255 in binary is `1111 1111`, so the network is the bit `1`
+and the subnet is 31 consecutive `1`s.
 
 !fig src="/assets/sortsupport-inet/inet-cidr-anatomy.svg" caption="The anatomy of inet and cidr values."
 
