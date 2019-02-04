@@ -43,16 +43,15 @@ enhancement is very often worth it, even at the cost of a
 challenging implementation and additional code complexity.
 
 Postgres contains a wide breadth of optimizations, and
-happily most of the have been written conscientiously so
-that the source code stays readable. The one that we'll
-look at today is **SortSupport**, a technique for
-localizing the information needed to compare data into
-places where it can be accessed very quickly, thereby
-making sorting data much faster. Sorting for types that
-have had Sortsupport implemented usually gets twice as fast
-or more, a speedup that transfers directly into common
-database operations like `ORDER BY`, `DISTINCT`, and
-`CREATE INDEX`.
+happily they've been written conscientiously so that the
+source code stays readable. The one that we'll look at
+today is **SortSupport**, a technique for localizing the
+information needed to compare data into places where it can
+be accessed very quickly, thereby making sorting data much
+faster. Sorting for types that have had Sortsupport
+implemented usually gets twice as fast or more, a speedup
+that transfers directly into common database operations
+like `ORDER BY`, `DISTINCT`, and `CREATE INDEX`.
 
 ## Sorting with abbreviated keys (#abbreviated-keys)
 
