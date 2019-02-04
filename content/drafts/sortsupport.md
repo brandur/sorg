@@ -7,37 +7,38 @@ hook: TODO
 
 Most often, there's a trade off involved in optimizing
 software. The cost of better performance is the opportunity
-cost of the time that it took to get an optimization in
-place, and the additional cost of maintenance for code that
+cost of the time that it took to write the optimization,
+and the additional cost of maintenance for code that
 becomes more complex and more difficult to understand.
 
-Most projects choose to prioritize product development over
-improving runtime speed. Time is spent building new things
-instead of making existing things faster. Code is kept
-simpler and easier to understand so that adding new
-features and fixing bugs stays easy, even as particular
-people rotate in and out and some institutional knowledge
-is lost.
+Many projects prioritize product development over improving
+runtime speed. Time is spent building new things instead of
+making existing things faster. Code is kept simpler and
+easier to understand so that adding new features and fixing
+bugs stays easy, even as particular people rotate in and
+out and institutional knowledge is lost.
 
-That's not the case in all domains. Game code is often an
-interesting read because it comes from an industry where
-speed is a competitive advantage, and it's common practice
-to optimize liberally even at the cost of modularity and
-maintainability. One technique for that is to inline code
-in critical sections even to the point of absurdity.
-CryEngine, open-sourced a few years ago, has a few examples
-of this, with ["tick" functions like this one][cryengine]
-that are 800+ lines long with 14 levels of indentation.
+But that's certainly not the case in all domains. Game code
+is often an interesting read because it comes from an
+industry where speed is a competitive advantage, and it's
+common practice to optimize liberally even at the cost of
+modularity and maintainability. One technique for that is
+to inline code in critical sections even to the point of
+absurdity. CryEngine, open-sourced a few years ago, has a
+few examples of this, with ["tick" functions like this
+one][cryengine] that are 800+ lines long with 14 levels of
+indentation.
 
 Another common place to find optimizations is in databases.
-They're an example of software that's extremely leveraged
--- if you can find a way to make sorting rows or building
-indexes 10% faster, it's not an improvement that affects
-just a couple users, it's one that'll potentially energize
-millions of installations around the world. That's enough
-of an advantage that the enhancement is very often worth
-it, even at the cost of a challenging implementation and
-additional code complexity.
+While games optimize because they have to, databases
+optimize because they're an example of software that's
+extremely leveraged -- if there's a way to make running
+select queries or building indexes 10% faster, it's not an
+improvement that affects just a couple users, it's one
+that'll potentially invigorate millions of installations
+around the world. That's enough of an advantage that the
+enhancement is very often worth it, even at the cost of a
+challenging implementation and additional code complexity.
 
 Postgres contains a wide breadth of optimizations, and
 happily most of the have been written conscientiously so
@@ -72,23 +73,22 @@ SortSupport augments pass-by-reference types by bringing a
 representative part of their value into the sort tuple to
 save trips to the heap. Because sort tuples usually don't
 have the space to store the entirety of the value,
-SortSupport generates a "digest" of the full value called
-an **abbreviated key**, and stores it instead. The contents
-of an abbreviated key vary by type, but they'll aim to
-store as much sorting-relevant information as possible
-while remaining faithful to the sorting rules of type.
+SortSupport generates a digest of the full value called an
+**abbreviated key**, and stores it instead. The contents of
+an abbreviated key vary by type, but they'll aim to store
+as much sorting-relevant information as possible while
+remaining faithful to pre-existing sorting rules.
 
 Abbreviated keys should never produce an incorrect
 comparison, but it's okay if they can't fully resolve one.
 If two abbreviated keys look equal, Postgres will fall back
 to comparing their full heap values to make sure it gets
-the right result (usually called an "authoritative
-comparison").
+the right result (called an "authoritative comparison").
 
 !fig src="/assets/sortsupport/abbreviated-keys.svg" caption="A sort tuple with an abbreviated key and pointer to the heap."
 
-Implementing an abbreviated key is quite straightforward in
-many cases. UUIDs are a good example: at 128 bits long
+Implementing an abbreviated key is straightforward in many
+cases. UUIDs are a good example of that: at 128 bits long
 they're always larger than the pointer size even on a
 64-bit machine, but we can get a very good proxy of their
 full value just by sampling their first 64 bits (or 32 on a
@@ -104,7 +104,7 @@ harder: just pack as many characters from the front of the
 string in as possible (although made somewhat more
 complicated by locales). My only ever patch to Postgres was
 implementing SortSupport for the `macaddr` type, which was
-quite trivial because although it's pass-by-reference, its
+fairly easy because although it's pass-by-reference, its
 values are only six bytes long [2]. On a 64-bit machine we
 have room for all six bytes, and on 32-bit we sample the
 MAC address' first four bytes.
@@ -136,9 +136,6 @@ You can find it defined in [`postgres.h`][datum]:
  * to a value of a pass-by-reference type.  Therefore, we require:
  *
  * sizeof(Datum) == sizeof(void *) == 4 or 8
- *
- * The macros below and the analogous macros for other types should be
- * used to convert between a Datum and the appropriate C type.
  */
 
 typedef uintptr_t Datum;
@@ -168,7 +165,7 @@ format like `123e4567-e89b-12d3-a456-426655440000`, but
 remember that this is Postgres which likes to be as
 efficient as possible! A UUID contains 16 bytes worth of
 information, so `pg_uuid_t` above defines an array of
-exactly 16 bytes. There's no wastefulness to be found.
+exactly 16 bytes. No wastefulness to be found.
 
 SortSupport implementations define a conversion routine
 which takes the original value and produces a datum
@@ -213,11 +210,12 @@ optimization. When comparing our abbreviated keys, we could
 do so with `memcmp` ("memory compare")  which would compare
 each byte in the datum one at a time. That's perfectly
 functional of course, but because our datums are the same
-size as native integers, we can take advantage of the fact
-that CPUs are optimized to compare integers really, really
-quickly, and arrange the datums them in memory as if they
-were integers. You can see this integer comparison taking
-place in the UUID abbreviated key comparison function:
+size as native integers, we can instead choose to take
+advantage of the fact that CPUs are optimized to compare
+integers really, really quickly, and arrange the datums in
+memory as if they were integers. You can see this integer
+comparison taking place in the UUID abbreviated key
+comparison function:
 
 ``` c
 static int
@@ -232,18 +230,19 @@ uuid_cmp_abbrev(Datum x, Datum y, SortSupport ssup)
 }
 ```
 
-But pretending that some consecutive bytes in memory are
-integers introduces some complication. Integers might be
-stored like `data` in `pg_uuid_t` with the most significant
-byte first, but that depends on the architecture of the
-CPU. We call architectures that store numerical values this
-way **big-endian**. Big-endian machines exist, but the
-chances are that the CPU you're using to read this article
-stores bytes in the reverse order of their significance,
-with the most significant at the highest address. This
-layout is called **little-endian**, and is in use by
-Intel's X86, as well as being the default mode for ARM
-chips.
+However, pretending that some consecutive bytes in memory
+are integers introduces some complication. Integers might
+be stored like `data` in `pg_uuid_t` with the most
+significant byte first, but that depends on the
+architecture of the CPU. We call architectures that store
+numerical values this way **big-endian**. Big-endian
+machines exist, but the chances are that the CPU you're
+using to read this article stores bytes in the reverse
+order of their significance, with the most significant at
+the highest address. This layout is called
+**little-endian**, and is in use by Intel's X86, as well as
+being the default mode for ARM chips like the ones in
+Android and iOS devices.
 
 If we left the big-endian result of the `memcpy` unchanged
 on little-endian systems, the resulting integer would be
@@ -273,7 +272,7 @@ byteswap ("bswap") routine of the appropriate size:
 #endif
 ```
 
-#### Abbreviated key conversion abort & HyperLogLog
+#### Conversion abort & HyperLogLog (#abort)
 
 Let's touch upon one more feature of `uuid_abbrev_convert`.
 In data sets with very low cardinality (i.e, many
@@ -356,7 +355,7 @@ It also covers aborting the case where we have a data set
 that's poorly suited to the abbreviated key format. For
 example, imagine a million UUIDs that all shared a common
 prefix in their first eight bytes, but were distinct in
-their last eight. Realistically this will be extremely
+their last eight [3]. Realistically this will be extremely
 unusual, so abbreviated key conversion will rarely abort.
 
 ### Tuples and data types (#tuples)
@@ -525,8 +524,8 @@ detected. If not, it starts to look beyond the first field
 
 After finding abbreviated keys to be equal, full values to
 be equal, and all additional sort fields to be equal, the
-last step is to `return 0`, indicating in libc style that
-the two tuples are really, fully equal.
+last step is to `return 0`, indicating in classic libc
+style that the two tuples are really, fully equal.
 
 ## Leveraged software (#leverage)
 
@@ -544,6 +543,11 @@ fast for free.
 
 [2] The new type `macaddr8` was later introduced to handle
     EUI-64 MAC addresses, which are 64 bits long.
+
+[3] A data set of UUIDs with common datum-sized prefixes is
+    a pretty unlikely scenario, but it's a little more
+    realistic for variable-length string types, where users
+    are storing much more free-form data.
 
 [comparetup]: src/backend/utils/sort/tuplesort.c:3909
 [cryengine]: https://github.com/CRYTEK/CRYENGINE/blob/release/Code/CryEngine/CryPhysics/livingentity.cpp#L1275
