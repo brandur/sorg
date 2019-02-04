@@ -2,7 +2,9 @@
 title: "SortSupport: Sorting in Postgres at Speed"
 published_at: 2019-01-24T19:19:18Z
 location: San Francisco
-hook: TODO
+hook: How Postgres makes sorting really fast by comparing
+  small, memory-friendly abbreviated keys as proxies for
+  arbitrarily large values on the heap.
 ---
 
 Most often, there's a trade off involved in optimizing
