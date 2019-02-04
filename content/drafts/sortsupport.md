@@ -102,7 +102,9 @@ twice as fast!
 String-like types (e.g. `text`, `varchar`) aren't too much
 harder: just pack as many characters from the front of the
 string in as possible (although made somewhat more
-complicated by locales). My only ever patch to Postgres was
+complicated by locales). Adding SortSupport for them made
+operations like `CREATE INDEX` [about three times
+faster][textblog]. My only ever patch to Postgres was
 implementing SortSupport for the `macaddr` type, which was
 fairly easy because although it's pass-by-reference, its
 values are only six bytes long [2]. On a 64-bit machine we
@@ -527,15 +529,23 @@ be equal, and all additional sort fields to be equal, the
 last step is to `return 0`, indicating in classic libc
 style that the two tuples are really, fully equal.
 
-## Leveraged software (#leverage)
+## Fast code and leveraged software (#leverage)
 
 SortSupport is a good example of the type of low-level
-optimization that most of us never bother with in our
-projects, but which makes sense in an extremely leveraged
-system like a database. As implementations are added for it
-and users like myself upgrade, common operations like
-`DISTINCT`, `ORDER BY`, and `CREATE INDEX` get twice as
-fast for free.
+optimization that most of us probably wouldn't bother with
+in our projects, but which makes sense in an extremely
+leveraged system like a database. As implementations are
+added for it and Postgres' tens of thousands of users like
+myself upgrade, common operations like `DISTINCT`, `ORDER
+BY`, and `CREATE INDEX` get twice as fast, for free.
+
+Credit to Peter Geoghegan for some of the original
+exploration of this idea and implementations for UUID and a
+generalized system for SortSupport on variable-length
+string types, Robert Haas and Tom Lane for adding the
+[necessary infrastructure][infrastructure], and Andrew
+Gierth for a [difficult implementation][numeric] for
+`numeric`. (I hope I got all that right.)
 
 [1] A note for the pedantic that V4 UUIDs usually have only
     122 bits of randomness as four bits are used for the
@@ -555,9 +565,12 @@ fast for free.
 [excessk]: https://en.wikipedia.org/wiki/Offset_binary
 [heaptuple]: src/include/access/htup_details.h:152
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
+[infrastructure]: https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=c6e3ac11b60ac4a8942ab964252d51c1c0bd8845
 [itempointer]: src/include/storage/itemptr.h:20
+[numeric]: https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=abd94bcac4582903765be7be959d1dbc121df0d0
 [pgbswap]: src/include/port/pg_bswap.h:143
 [sorttuple]: src/backend/utils/sort/tuplesort.c:138
+[textblog]: http://pgeoghegan.blogspot.com/2015/01/abbreviated-keys-exploiting-locality-to.html
 [uuid]: src/include/utils/uuid.h:17
 [uuidabort]: src/backend/utils/adt/uuid.c:301
 [uuidconvert]: src/backend/utils/adt/uuid.c:367
