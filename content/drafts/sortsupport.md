@@ -559,20 +559,20 @@ Gierth for a [difficult implementation][numeric] for
     realistic for variable-length string types, where users
     are storing much more free-form data.
 
-[comparetup]: https://github.com/postgres/postgres/blob/master/src/backend/utils/sort/tuplesort.c#L3508
+[comparetup]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/backend/utils/sort/tuplesort.c#L3508
 [cryengine]: https://github.com/CRYTEK/CRYENGINE/blob/release/Code/CryEngine/CryPhysics/livingentity.cpp#L1275
-[datum]: https://github.com/postgres/postgres/blob/master/src/include/postgres.h#L367
+[datum]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/include/postgres.h#L367
 [excessk]: https://en.wikipedia.org/wiki/Offset_binary
-[heaptuple]: https://github.com/postgres/postgres/blob/master/src/include/access/htup_details.h#L152
+[heaptuple]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/include/access/htup_details.h#L152
 [hyperloglog]: https://en.wikipedia.org/wiki/HyperLogLog
 [infrastructure]: https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=c6e3ac11b60ac4a8942ab964252d51c1c0bd8845
-[itempointer]: https://github.com/postgres/postgres/blob/master/src/include/storage/itemptr.h#L36
+[itempointer]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/include/storage/itemptr.h#L36
 [numeric]: https://git.postgresql.org/gitweb/?p=postgresql.git;a=commit;h=abd94bcac4582903765be7be959d1dbc121df0d0
-[pgbswap]: https://github.com/postgres/postgres/blob/master/src/include/port/pg_bswap.h#L143
-[sorttuple]: https://github.com/postgres/postgres/blob/master/src/backend/utils/sort/tuplesort.c#L169
+[pgbswap]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/include/port/pg_bswap.h#L143
+[sorttuple]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/backend/utils/sort/tuplesort.c#L169
 [textblog]: http://pgeoghegan.blogspot.com/2015/01/abbreviated-keys-exploiting-locality-to.html
-[uuid]: https://github.com/postgres/postgres/blob/master/src/include/utils/uuid.h#L20
-[uuidabort]: https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/uuid.c#L301
-[uuidconvert]: https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/uuid.c#L367
+[uuid]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/include/utils/uuid.h#L20
+[uuidabort]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/backend/utils/adt/uuid.c#L301
+[uuidconvert]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/backend/utils/adt/uuid.c#L367
 [uuidpatch]: https://www.postgresql.org/message-id/CAM3SWZR4avsTwwNVUzRNbHk8v36W-QBqpoKg%3DOGkWWy0dKtWBA%40mail.gmail.com
-[varstrconvert]: https://github.com/postgres/postgres/blob/master/src/backend/utils/adt/varlena.c#L2373
+[varstrconvert]: https://github.com/postgres/postgres/blob/08ecdfe7e5e0a31efbe1d58fefbe085b53bc79ca/src/backend/utils/adt/varlena.c#L2373
