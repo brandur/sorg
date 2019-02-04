@@ -211,6 +211,139 @@ The final abbreviated key design looks like this:
 
 ## Bit gymnastics in C (#gymnastics)
 
+IP family:
+
+``` c
+static Datum
+network_abbrev_convert(Datum original, SortSupport ssup)
+{
+    ...
+
+    res = (Datum) 0;
+    if (ip_family(authoritative) == PGSQL_AF_INET6)
+    {
+        /* Shift a 1 over to the datum's most significant bit. */
+        res = ((Datum) 1) << (SIZEOF_DATUM * BITS_PER_BYTE - 1);
+    }
+```
+
+### Ingesting bytes like an integer (#integer)
+
+Ingesting 4 or 8 bytes of a value:
+
+``` c
+/*
+ * Create an integer representation of the IP address by taking its first
+ * 4 or 8 bytes. We take 8 bytes of an IPv6 address on a 64-bit machine
+ * and 4 bytes on a 32-bit. Always take all 4 bytes of an IPv4 address.
+ *
+ * We're consuming an array of char, so make sure to byteswap on little
+ * endian systems (an inet's IP array emulates big endian in that the
+ * first byte is always the most significant).
+ */
+if (ip_family(authoritative) == PGSQL_AF_INET6)
+{
+    ipaddr_datum = *((Datum *) ip_addr(authoritative));
+    ipaddr_datum = DatumBigEndianToNative(ipaddr_datum);
+}
+else
+{
+    uint32		ipaddr_datum32 = *((uint32 *) ip_addr(authoritative));
+#ifndef WORDS_BIGENDIAN
+    ipaddr_datum = pg_bswap32(ipaddr_datum32);
+#endif
+}
+```
+
+### Bit masking (#masking)
+
+Separating network and subnet bits:
+
+``` c
+/*
+ * Number of bits in subnet. e.g. An IPv4 that's /24 is 32 - 24 = 8.
+ *
+ * However, only some of the bits may have made it into the fixed sized
+ * datum, so take the smallest number between bits in the subnet and bits
+ * in the datum which are not part of the network.
+ */
+datum_subnet_size = Min(ip_maxbits(authoritative) - ip_bits(authoritative),
+                        SIZEOF_DATUM * BITS_PER_BYTE - ip_bits(authoritative));
+
+/* we may have ended up with < 0 for a large netmask size */
+if (datum_subnet_size <= 0)
+{
+    /* the network occupies the entirety `ipaddr_datum` */
+    network = ipaddr_datum;
+    subnet = (Datum) 0;
+}
+
+...
+```
+
+The else case is more interesting:
+
+``` c
+...
+
+else
+{
+    /*
+     * This shift creates a power of two like `0010 0000`, and subtracts
+     * one to create a bitmask for an IP's subnet bits like `0001 1111`.
+     *
+     * Note that `datum_subnet_mask` may be == 0, in which case we'll
+     * generate a 0 bitmask and `subnet` will also come out as 0.
+     */
+    subnet_bitmask = (((Datum) 1) << datum_subnet_size) - 1;
+
+    /* and likewise, use the mask's complement to get the netmask bits */
+    network = ipaddr_datum & ~subnet_bitmask;
+
+    /* bitwise AND the IP and bitmask to extract just the subnet bits */
+    subnet = ipaddr_datum & subnet_bitmask;
+}
+```
+
+Why are we suddenly not concerned with endianness now?
+
+### Shifting things into place (#shifting)
+
+IPv6 on 64-bit:
+
+``` c
+#if SIZEOF_DATUM == 8
+
+if (ip_family(authoritative) == PGSQL_AF_INET6)
+{
+    /*
+     * IPv6 on a 64-bit machine: keep the most significant 63 netmasked
+     * bits.
+     */
+    res |= network >> 1;
+}
+
+...
+```
+
+This looks pretty similar to IPv4 or IPv6 on 32-bit:
+
+``` c
+...
+
+#else /* SIZEOF_DATUM != 8 */
+
+/*
+ * 32-bit machine: keep the most significant 31 netmasked bits in both
+ * IPv4 and IPv6.
+ */
+res |= network >> 1;
+
+#endif
+```
+
+Refer to source for IPv4 on 64-bit.
+
 ## Summary (#summary)
 
 [1] I originally thought that by subtracting one from 32 I
