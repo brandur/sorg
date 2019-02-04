@@ -23,7 +23,7 @@ out and institutional knowledge is lost.
 But that's certainly not the case in all domains. Game code
 is often an interesting read because it comes from an
 industry where speed is a competitive advantage, and it's
-common practice to optimize liberally even at the cost of
+common practice to optimize liberally even at some cost to
 modularity and maintainability. One technique for that is
 to inline code in critical sections even to the point of
 absurdity. CryEngine, open-sourced a few years ago, has a
