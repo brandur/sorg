@@ -74,10 +74,12 @@ git clone https://github.com/postgres/postgres.git
 ```
 
 Run configure with a `prefix` pointing to your chosen
-target build directory:
+target build directory. Also, to save you some time later,
+we'll pass a few other useful options that will enable us
+to debug with tools like `gdb`:
 
 ``` sh
-./configure --prefix $PG_BUILD_DIR
+./configure --enable-cassert --enable-debug --prefix $PG_BUILD_DIR CFLAGS="-ggdb -Og -g3 -fno-omit-frame-pointer"
 ```
 
 Then build it. The `-j` option gives you some parallelism
@@ -175,7 +177,7 @@ Use it by telling `configure` that you want ccache as your
 C compiler:
 
 ``` sh
-./configure --prefix $PG_BUILD_DIR --with-CC="ccache gcc"
+./configure --enable-cassert --enable-debug --prefix $PG_BUILD_DIR --with-CC="ccache gcc" CFLAGS="-ggdb -Og -g3 -fno-omit-frame-pointer"
 ```
 
 After warming up ccache by building once, then doing a
