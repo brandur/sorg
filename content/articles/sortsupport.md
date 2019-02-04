@@ -1,6 +1,6 @@
 ---
 title: "SortSupport: Sorting in Postgres at Speed"
-published_at: 2019-01-24T19:19:18Z
+published_at: 2019-02-04T16:56:52Z
 location: San Francisco
 hook: How Postgres makes sorting really fast by comparing
   small, memory-friendly abbreviated keys as proxies for
