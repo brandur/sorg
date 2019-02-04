@@ -63,8 +63,8 @@ larger than 64 bits or arbitrarily large. In their case,
 Postgres will follow a references back to the heap when
 comparing values (they're appropriately called
 pass-by-reference types). Postgres is very fast, so that
-still happens quickly, but it's obviously slower than
-comparing values readily available in memory.
+still happens quickly, but it's slower than comparing
+values readily available in memory.
 
 !fig src="/assets/sortsupport/sort-tuples.svg" caption="An array of sort tuples."
 
