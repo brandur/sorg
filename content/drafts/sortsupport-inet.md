@@ -4,6 +4,7 @@ title: "Designing SortSupport Abbreviated Keys for
 published_at: 2019-02-03T20:27:44Z
 location: San Francisco
 hook: TODO
+tags: ["postgres"]
 ---
 
 A few weeks ago, I wrote about [how SortSupport works in

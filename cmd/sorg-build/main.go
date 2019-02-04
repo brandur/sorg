@@ -35,6 +35,16 @@ import (
 //
 // Types
 //
+
+// A set of tag constants to hopefully help ensure that this set doesn't grow
+// very much.
+const (
+	tagPostgres Tag = "postgres"
+)
+
+//
+// Types
+//
 // Type definitions. These are mostly models used to represent the site's
 // resources, but in some cases we have sorting and grouping helper types as
 // well.
@@ -77,6 +87,9 @@ type Article struct {
 	// where it's addressable by URL.
 	Slug string `yaml:"-"`
 
+	// Tags are the set of tags that the article is tagged with.
+	Tags []Tag `yaml:"tags"`
+
 	// Title is the article's title.
 	Title string `yaml:"title"`
 
@@ -93,6 +106,18 @@ func (a *Article) PublishingInfo() string {
 		`<p><strong>Published</strong><br>` + a.PublishedAt.Format("January 2, 2006") + `</p> ` +
 		`<p><strong>Location</strong><br>` + a.Location + `</p>` +
 		sorg.TwitterInfo
+}
+
+// TaggedWith returns true if the given tag is in this article's set of tags
+// and false otherwise.
+func (a *Article) TaggedWith(tag Tag) bool {
+	for _, t := range a.Tags {
+		if t == tag {
+			return true
+		}
+	}
+
+	return false
 }
 
 type articleByPublishedAt []*Article
@@ -326,6 +351,13 @@ type Run struct {
 	OccurredAt *time.Time
 }
 
+// Tag is a symbol assigned to an article to categorize it.
+//
+// This feature is not meanted to be overused. It's really just for tagging
+// a few particular things so that we can generate content-specific feeds for
+// certain aggregates (so far just Planet Postgres).
+type Tag string
+
 // Tweet is a post to Twitter.
 type Tweet struct {
 	// Content is the content of the tweet. It may contain shortened URLs and
@@ -542,7 +574,11 @@ func main() {
 	sort.Sort(sort.Reverse(passageByPublishedAt(passages)))
 
 	tasks = append(tasks, pool.NewTask(func() error {
-		return compileArticlesFeed(articles)
+		return compileArticlesFeed(articles, nil)
+	}))
+
+	tasks = append(tasks, pool.NewTask(func() error {
+		return compileArticlesFeed(articles, tagPointer(tagPostgres))
 	}))
 
 	tasks = append(tasks, pool.NewTask(func() error {
@@ -655,18 +691,33 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 	return &article, nil
 }
 
-func compileArticlesFeed(articles []*Article) error {
+func compileArticlesFeed(articles []*Article, tag *Tag) error {
 	start := time.Now()
 	defer func() {
-		log.Debugf("Compiled articles feed in %v.", time.Now().Sub(start))
+		if tag == nil {
+			log.Debugf("Compiled articles feed in %v.", time.Now().Sub(start))
+		} else {
+			log.Debugf("Compiled articles feed in %v (tag: %s).", time.Now().Sub(start), *tag)
+		}
 	}()
 
+	name := "articles"
+	if tag != nil {
+		name = fmt.Sprintf("articles-%s", *tag)
+	}
+	filename := name + ".atom"
+
+	title := "Articles - brandur.org"
+	if tag != nil {
+		title = fmt.Sprintf("Articles (%s) - brandur.org", *tag)
+	}
+
 	feed := &atom.Feed{
-		Title: "Articles - brandur.org",
-		ID:    "tag:brandur.org.org,2013:/articles",
+		Title: title,
+		ID:    "tag:brandur.org.org,2013:/" + name,
 
 		Links: []*atom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/articles.atom"},
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
 	}
@@ -676,6 +727,10 @@ func compileArticlesFeed(articles []*Article) error {
 	}
 
 	for i, article := range articles {
+		if tag != nil && !article.TaggedWith(*tag) {
+			continue
+		}
+
 		if i >= conf.NumAtomEntries {
 			break
 		}
@@ -694,7 +749,7 @@ func compileArticlesFeed(articles []*Article) error {
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(conf.TargetDir + "/articles.atom")
+	f, err := os.Create(path.Join(conf.TargetDir, filename))
 	if err != nil {
 		return err
 	}
@@ -2389,4 +2444,10 @@ func selectRandomPhoto(photos []*Photo) *Photo {
 	}
 
 	return randomPhotos[rand.Intn(len(randomPhotos))]
+}
+
+// Gets a pointer to a tag just to work around the fact that you can take the
+// address of a constant like `tagPostgres`.
+func tagPointer(tag Tag) *Tag {
+	return &tag
 }

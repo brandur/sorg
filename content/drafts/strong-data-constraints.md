@@ -3,6 +3,7 @@ title: Building Safe Systems With Strong Data Constraints
 published_at: 2019-01-14T16:25:00Z
 location: San Francisco
 hook: TODO
+tags: ["postgres"]
 ---
 
 A common source of bugs in data-backed software is when an

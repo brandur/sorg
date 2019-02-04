@@ -3,6 +3,7 @@ title: How Postgres Makes Transactions Serializable
 published_at: 2018-09-07T15:36:33Z
 location: San Francisco
 hook: TODO
+tags: ["postgres"]
 ---
 
 In my decades working with computers, `SERIALIZABLE`
