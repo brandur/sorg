@@ -5,6 +5,7 @@ hook: A listing of all useful Postgres features, tricks, and advice that I've
   accumulated over the years and which aren't easy to discover without someone
   telling you about them first.
 location: San Francisco
+tags: ["postgres"]
 ---
 
 ## Schemas (#schemas)

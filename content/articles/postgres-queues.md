@@ -4,6 +4,7 @@ hook: How Postgres' concurrency model coupled with long-lived transactions can d
 location: San Francisco
 published_at: 2015-05-18T23:13:23Z
 title: Postgres Job Queues & Failure By MVCC
+tags: ["postgres"]
 hn_link: https://news.ycombinator.com/item?id=9576864
 ---
 

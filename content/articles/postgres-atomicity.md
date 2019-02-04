@@ -5,6 +5,7 @@ location: San Francisco
 hook: A dive into the mechanics that allow Postgres to
   provide strong atomic guarantees despite the chaotic
   entropy of production.
+tags: ["postgres"]
 hn_link: https://news.ycombinator.com/item?id=15027870
 ---
 

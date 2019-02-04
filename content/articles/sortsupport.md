@@ -5,6 +5,7 @@ location: San Francisco
 hook: How Postgres makes sorting really fast by comparing
   small, memory-friendly abbreviated keys as proxies for
   arbitrarily large values on the heap.
+tags: ["postgres"]
 ---
 
 Most often, there's a trade off involved in optimizing
