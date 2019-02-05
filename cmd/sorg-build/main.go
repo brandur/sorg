@@ -691,6 +691,10 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 	return &article, nil
 }
 
+// Compiles an Atom feed for articles.
+//
+// Passing a `tag` value of `nil` includes all articles. Passing a particular
+// tag includes only articles with that tag.
 func compileArticlesFeed(articles []*Article, tag *Tag) error {
 	start := time.Now()
 	defer func() {
