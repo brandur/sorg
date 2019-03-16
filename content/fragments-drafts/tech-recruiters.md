@@ -2,7 +2,8 @@
 title: Tech recruiters, or, when software compromises
   courtesy
 published_at: 2019-03-16T20:06:34Z
-hook: TODO
+hook: A short rationale on why I stopped responding to
+  emails from technical recruiters.
 ---
 
 I used to respond to every single email from a technical
