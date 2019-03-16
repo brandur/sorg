@@ -63,7 +63,7 @@ thousands of potential candidates, at the cost of mine.
 My stance has shifted from replying to *every* recruiting
 email I received to replying to *none of them* because
 these shenanigans are so widespread that it's safe to
-assume they're in use. I've been tempted to take it even a
+assume they're in play. I've been tempted to take it even a
 step further by not even opening the emails before
 archiving them, just to avoid triggering the tracking
 pixels. I find this all a little unfortunate because it's
