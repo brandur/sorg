@@ -10,10 +10,10 @@ I used to respond to every single email from a technical
 recruiter that I ever got. Those of us in software are
 going through a lucky period right now where engineers are
 in high demand, but I still remember the times when it was
-hard to find a job. Someone interested in hiring me was
-extremely flattering, and common courtesy dictated a reply,
-even if it was one along the lines of "sorry, I'm not
-interested right now."
+hard to find a job. Someone interested in hiring me has
+always been extremely flattering, and common courtesy
+dictated a reply, even if it was one along the lines of
+"sorry, I'm not interested right now."
 
 But at some point (my estimate is about five years ago),
 the ethics of the profession took a sudden, hard turn to
