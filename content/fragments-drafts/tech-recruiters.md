@@ -16,19 +16,19 @@ even if it was one along the lines of "sorry, I'm not
 interested right now."
 
 But at some point (my estimate is about five years ago),
-the ethics of the technical recruiting profession took a
-sudden, hard turn to the south. Signs became apparent that
-emails were no longer sent by hand, but rather by automated
-mass-mailing systems. Some of them were obvious like the
-occasional failed template render (`"Hi ${firstName}! I
-noticed that you worked at ${lastCompany} and are
-interested in ${topic} ..."`). Others were less so, like
-that subsequent follow ups would have a noticeable schedule
-that could be timed to the minute (second email three days
-later, third email at one week, fourth at two weeks). Just
-like the spam that was ubiquitous before Gmail [1], there
-was never an opt in, never a disclaimer as to the automated
-nature of the message, and never an unsubscribe link.
+the ethics of the profession took a sudden, hard turn to
+the south. Signs became apparent that emails were no longer
+sent by hand, but rather by automated mass-mailing systems.
+Some of them were obvious like the occasional failed
+template render (`"Hi ${firstName}! I noticed that you
+worked at ${lastCompany} and are interested in ${topic}
+..."`). Others were less so, like that subsequent follow
+ups would have a noticeable schedule that could be timed to
+the minute (second email three days later, third email at
+one week, fourth at two weeks). Just like the spam that was
+ubiquitous before Gmail [1], there was never an opt in,
+never a disclaimer as to the automated nature of the
+message, and never an unsubscribe link.
 
 Beyond that, I started to notice that my personal
 information was being shared around in the same system(s)
