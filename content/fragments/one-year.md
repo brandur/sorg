@@ -31,5 +31,5 @@ kcal more than I expected to.
 These days I'm trying to get that back under control by
 staying close to target, but it still remains to be seen
 whether my original goal is ever really successful. It's
-some gain for very little effort though, so I have no plans
-to stop the experiment.
+some gain for only a little effort though, so I have no
+plans to stop.
