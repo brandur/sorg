@@ -296,11 +296,11 @@ sequestered to internal APIs only, although the public API
 they do offer is graph-like and could fairly be called
 proto-GraphQL.
 
-[expand]: https://stripe.com/docs/api#expanding_objects
-[githubpost]: https://githubengineering.com/the-github-graphql-api/
+[expand]: https://stripe.com/docs/api/expanding_objects
+[githubpost]: https://github.blog/2016-09-14-the-github-graphql-api/
 [graphiql]: https://github.com/graphql/graphiql
 [graphqllist]: https://github.com/APIs-guru/graphql-apis
 [intro]: https://graphql.org/learn/
-[shopifygraphiql]: https://help.shopify.com/api/custom-storefronts/storefront-api/graphql-explorer/graphiql
-[spec]: http://facebook.github.io/graphql/
+[shopifygraphiql]: https://help.shopify.com/en/api/custom-storefronts/storefront-api/graphql-explorer
+[spec]: https://graphql.github.io/graphql-spec/
 [versioning]: https://stripe.com/blog/api-versioning
