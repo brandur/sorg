@@ -21,7 +21,7 @@
           p
             | My favorite movie is Sofia Coppola's <em>Lost in Translation</em>. My favorite book is Michael Crichton's <em>Rising Sun</em> (although I like <a href="/reading">a lot of others</a>). I also like running, photography, history, meditation, urban design, and metal.
           p
-            | A few times a year I publish a newsletter called <em>Passages & Glass</em>. If you liked some of the other content here, you should <a href="https://passages-signup.herokuapp.com/">consider subscribing</a>.
+            | A few times a year I publish a newsletter called <em>Passages & Glass</em>. If you liked some of the other content here, you should <a href="/newsletter">consider subscribing</a>.
           h2 Technology
           p
             | This site is a static set of HTML, JS, CSS, and image files built using a <a href="https://github.com/brandur/sorg">custom Go executable</a>, stored on S3, and served by a number of worldwide edge locations by CloudFront to help ensure great performance around the globe. It's deployed automatically by CI as code lands in its master branch on GitHub. The architecture is based on the idea of <a href="/aws-intrinsic-static">the Intrinsic Static Site</a>.
