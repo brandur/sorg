@@ -78,29 +78,16 @@ doesn't meet these requirements is firmly rejected.
 
 ## Referential integrity (#referential-integrity)
 
-A key concept in relational database is the idea of
-[normalization][normalization], which encourages tables to
-reference the canonical sources of data to reduce
-redundancy. (So instead of duplicating data, tables
-reference where it exists in other tables.)
+Now that we've covered that strong expectations are a good
+thing, let's look at some tools to establish them. A key
+concept in relational databases is the idea of
+[normalization][normalization], which encourages relations
+to reference the canonical sources of data instead of
+duplicating it to reduce redundancy and ensure correctness.
 
-Assuming the common situation with the existence of many
-references in a database, a related concept is maintaining
-[referential integrity][integrity], which is the property
-that every reference in the database is valid.
-
-Relational databases provide an easy way to do this with
-foreign keys. A foreign key dictates that a column
-references values a in column in another table, and can
-also define what should happen if any of those target
-values are removed.
-
-A setting that's appropriate in most cases is `ON DELETE
-RESTRICT`. With this configuration, the database won't let
-values that are being referenced be deleted unless the
-referring rows are deleted first. This is the safest
-setting because it might prevent accidental data deletion
-through either bugs or human typos.
+These references can be strongly defined through the use of
+a **foreign key**. For example, a pair of tables for a blog
+could indicate that its tags always reference an article:
 
 ``` sql
 CREATE TABLE article (
@@ -110,22 +97,66 @@ CREATE TABLE article (
 
 CREATE TABLE tag (
     id bigserial PRIMARY KEY,
-    article_id bigint NOT NULL
-        REFERENCES article (id) ON DELETE RESTRICT,
+    article_id bigint
+        REFERENCES article (id),
     ...
 );
 ```
 
-In the example above, tags reference their parent articles,
-and an article can't be deleted unless all its tags are
-first deleted. Note also that we've combined foreign keys
-with `NOT NULL`, which means that we've created a strong
-requirement that every tag reference an article, and every
-article reference is one that exists.
+**[Referential integrity][integrity]** is the property that
+these relational references are always valid in that they
+reference a valid key in another table, or are `NULL`.
+Adding a foreign key ensures referential integrity.
+
+Now if some code accidentally deletes an article without
+first doing something about the tags that reference it, the
+database will block the action [1]:
+
+``` sql
+ERROR:  update or delete on table "article" violates foreign
+    key constraint "tag_article_id_fkey" on table "tag"
+
+DETAIL:  Key (id)=(1) is still referenced from table "tag".
+```
+
+This might initially seem annoying, but like with any
+constraint, some *convenience* is being sacrificed for
+*correctness*. Articles can still be deleted, but the
+developer must indicate explicitly what to do about tags
+before they are. The more mature your application, the more
+appreciative you'll be of this trade off.
+
+Foreign key constraints mesh very well with `NOT NULL`
+constraints. Foreign keys ensure that all references are
+valid, and adding `NOT NULL` provides the additional
+guarantee that all entities have a reference. In practice
+we'd raise our tags with one because it never makes sense
+to have a dangling tag that doesn't reference an article:
+
+``` sql
+CREATE TABLE tag (
+    id bigserial PRIMARY KEY,
+    article_id bigint NOT NULL -- <— the new NOT NULL
+        REFERENCES article (id),
+    ...
+);
+```
 
 ### Deleting Europe (#europe)
 
-At Heroku, 
+A favorite horror story from my time at Heroku is when we
+deleted Europe. Heroku allows apps to be deployed in one of
+multiple regions including the Americas and Europe. One day
+someone was messing around in a production console and
+deleted the row which represented that European region and
+which every European app referenced. The API instantly
+starting throwing errors for every Europe-related request.
+
+At the time we didn't have good discipline around foreign
+keys, and although one table referenced values in another,
+there wasn't a formal key between the two. Having one would
+have saved us *a lot* of trouble as the system would have
+blocked the deletion completely [2].
 
 ## Domain integrity (#domain-integrity)
 
@@ -177,6 +208,14 @@ Migrations.
 A schema should be a living thing. It's not only evolving
 with the addition of new fields, but old fields are being
 pruned and existing fields adjusted for accuracy.
+
+[1] A foreign key without an explicit `ON DELETE`
+instruction will default to `ON DELETE NO ACTION` which
+raises an error when a referenced row is deleted.
+
+[2] This is also a good reason to prefer `ON DELETE NO
+ACTION` or `ON DELETE RESTRICT` in production systems (as
+opposed to `CASCADE`, `SET DEFAULT`, `SET NULL`).
 
 [integrity]: https://en.wikipedia.org/wiki/Referential_integrity
 [normalization]: https://en.wikipedia.org/wiki/Database_normalization
