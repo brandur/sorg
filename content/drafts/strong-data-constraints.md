@@ -1,60 +1,82 @@
 ---
-title: Building Safe Systems With Strong Data Constraints
+title: Building Safe Systems With Schemas and Strong Constraints
 published_at: 2019-01-14T16:25:00Z
 location: San Francisco
 hook: TODO
 tags: ["postgres"]
 ---
 
-A common source of bugs in data-backed software is when an
-assumption is made about the shape of some data that turns
-out to not be true. For example, when seeing an `email`
-field on a `user` relation, it's a pretty reasonable
-assumption that users have email available, as they do in
-many systems where you'd see such a field, and it might be
-true -- however, it could just as easily turn out not to be
-as well. What if it turned out that emails hadn't been
-collected in the system's early days for example? Most
-users would have emails and accessing the field would work
-most of the time, but once in a while it would crash the
-program with a null reference error.
+I've talked before about how relational databases like
+Postgres provide a powerful platform to build applications
+on by offering primitives like [ACID transactions](/acid)
+and rolling out [small but important
+optimizations](/sortsupport) with new versions.
 
-Relational databases help mitigate this problem by
-encouraging the design of concrete schemas that are always
-consistent according to constraints that have been
-specifically designed. Those constraints might be anything
-from a check that the field is present, to whether
-referential integrity is intact. Data that doesn't meet
-requirements is firmly rejected.
+But of equal importance to these features in a relational
+database is the relational part. Originally based on the
+[relational model][relationalmodel] of predicate logic,
+this design encourages declaratively defining the shape of
+entity types in *relations* (A.K.A. tables), how they
+relate to each other with keys, and constraints on them
+through the definition of a domain.
 
-## Constraints (#constraints)
+Almost every developer has run a `CREATE TABLE ...` before
+and is familiar with the basics of this concept, but what
+isn't so obvious is how having the discipline to build and
+maintain a well-defined schema and strong data constraints
+on it is a hugely powerful tool for creating robust and
+reliable software.
 
-### NOT NULL (#not-null)
+## Establishing guaranteed expectations (#guaranteed-expectations)
 
-`NOT NULL` is the simplest possible constraint, but also
-one of the most powerful. It's the opposable thumb of the
-database world, and separates man from beast.
+When using a "NoSQL" data store (or even a poorly designed
+schema in a relational database), accessing any field on
+any object is a potential error. For example, if a
+developer sees an `email` attribute on a `users`
+collection, they might make the reasonable assumption that
+it's always present, and write code in such a way that
+assumes it's there:
 
-A null represents the absence of a value, and constraining
-a field to be _not null_ forces it to be present. Seeing a
-`NOT NULL` constraint in a database table tells you something
-about every row in that table -- namely that you can expect
-values to be present for that field universally. That makes
-coding against it easier in that no conditional check on
-the value is necessary, and safer in case such a check is
-forgotten.
+``` ruby
+send_password_reset(user.email) # potential bug!
+```
 
-One of the most egregious mistakes of the SQL standard is
-that nullable columns are the default rather than vice
-versa. A real-world application should aim for the
-strongest expectations by making as many fields
-non-nullable as possible (which has become easier more
-recently as raising a new non-nullable column is [a
-non-blocking operation in Postgres 11](/postgres-default).
-If in doubt, start with non-nullable and relax the
-constraint if necessary.
+Maybe every user does have an email, but it's easy to
+imagine a situation where this isn't the case. What if it
+turned out that in the early days of the system emails
+hadn't been collected? So while the code would work for the
+bulk of current users who do have emails on record and
+probably in the test suite which creates synthetic users
+with modern specifications, it would fail in production for
+a certain class of legacy user.
 
-### Foreign keys (#foreign-keys)
+!fig src="/assets/constraints/nulls.svg" caption="Nulls present in data that's mostly non-null."
+
+Even when applications are using application-level
+definitions to define a pseudo-schema (e.g. MongoEngine or
+Mongoose), it's still possible for data to be present in
+the data store that was put there before the current schema
+came in.
+
+Even if this example seems a little contrived, this class
+of problem can appear in hundreds of different shapes and
+sizes. Having worked on a large-scale Mongo-based
+application for a few years now, this is *easily* one of
+the most frequently seen bugs, and has manifested in every
+way from minor annoyance to major production incident.
+
+It's also exactly the class of problem that relational
+schemas solve. Schemas are enforced at the database-level
+so application developers get an *absolute guarantee* that
+data is in the right shape. Not only can they guarantee
+that fields like `email` are present through the
+application of `NOT NULL` constraints, they provide the
+building blocks for even tighter constraints. I could use
+them to dictate that all emails should be within a certain
+length, or that all prices should be positive. Data that
+doesn't meet these requirements is firmly rejected.
+
+## Referential integrity (#referential-integrity)
 
 A key concept in relational database is the idea of
 [normalization][normalization], which encourages tables to
@@ -101,6 +123,37 @@ with `NOT NULL`, which means that we've created a strong
 requirement that every tag reference an article, and every
 article reference is one that exists.
 
+### Deleting Europe (#europe)
+
+At Heroku, 
+
+## Domain integrity (#domain-integrity)
+
+### NOT NULL (#not-null)
+
+`NOT NULL` is the simplest possible constraint, but also
+one of the most powerful. It's the opposable thumb of the
+database world, and separates man from beast.
+
+A null represents the absence of a value, and constraining
+a field to be _not null_ forces it to be present. Seeing a
+`NOT NULL` constraint in a database table tells you something
+about every row in that table -- namely that you can expect
+values to be present for that field universally. That makes
+coding against it easier in that no conditional check on
+the value is necessary, and safer in case such a check is
+forgotten.
+
+One of the most egregious mistakes of the SQL standard is
+that nullable columns are the default rather than vice
+versa. A real-world application should aim for the
+strongest expectations by making as many fields
+non-nullable as possible (which has become easier more
+recently as raising a new non-nullable column is [a
+non-blocking operation in Postgres 11](/postgres-default).
+If in doubt, start with non-nullable and relax the
+constraint if necessary.
+
 ### Type system (#type-system)
 
 Type systems are all the rage right now (once again)
@@ -117,27 +170,9 @@ Add types with constraints. e.g. `VARCHAR`
 
 ### Unique partial indexes (#unique-partial-indexes)
 
-### The schema (#schema)
-
-Possibly the most important constraint is the schema
-itself. In a relational database, you define tables, and
-the fields within them. Compare that to a document-oriented
-database where there are no requirements. The equivalent of
-tables are loose collections of keys and values that may or
-may not be present.
-
-Schemas in relational databases should be treated like
-living things. Not only are new fields being added to them,
-but fields that are no longer needed should be dropped, and
-existing fields should be adjusted as appropriate to
-maximize the schema's fidelity. The more accurate the
-schema, the easier it is to write programs that access
-them, and the more bug free those programs are likely to
-be.
-
-## Flowing safety into programming languages (#programming-languages)
-
 ## Conclusion (#conclusion)
+
+Migrations.
 
 A schema should be a living thing. It's not only evolving
 with the addition of new fields, but old fields are being
@@ -145,3 +180,4 @@ pruned and existing fields adjusted for accuracy.
 
 [integrity]: https://en.wikipedia.org/wiki/Referential_integrity
 [normalization]: https://en.wikipedia.org/wiki/Database_normalization
+[relationalmodel]: https://en.wikipedia.org/wiki/Relational_model
