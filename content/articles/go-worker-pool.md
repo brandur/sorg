@@ -18,7 +18,7 @@ implementing in new Go programs time and time again: the worker pool (or
 otherwise known as a [thread pool][thread-pool]).
 
 Worker pools are a model in which a fixed number of _m_ workers (implemented in
-Go with goroutines) work there way through _n_ tasks in a work queue
+Go with goroutines) work their way through _n_ tasks in a work queue
 (implemented in Go with a channel). Work stays in a queue until a worker
 finishes up its current task and pulls a new one off.
 
