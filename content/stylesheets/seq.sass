@@ -1,0 +1,57 @@
+$sans_serif: helvetica, arial, geneva, sans-serif
+$serif: cardo, georgia, serif
+
+body.seq-photo
+  background: #000
+  color: #fff
+
+  h1
+    color: #fff
+    font-family: $serif
+    font-size: 1.6rem
+    letter-spacing: -1px
+    margin: 10px 0
+    text-align: center
+    //text-transform: uppercase
+
+  .seq-flex
+    align-items: center
+    display: -webkit-flex
+    display: flex
+    -webkit-flex-direction: row
+    flex-direction: row
+    margin: 20px
+
+    .seq-words
+      color: #ddd
+      //font-family: $sans_serif
+      font-size: 0.8rem
+      line-height: 1.4em
+      margin: 0 60px
+      max-width: 400px
+
+      hyphens: auto
+      -moz-hyphens: auto
+      -webkit-hyphens: auto
+
+      .seq-divider
+        border-bottom: 1px solid #333
+        margin: 15px auto
+        width: 60%
+
+    .seq-photograph
+      margin: 0 10px
+      max-width: 1500px
+
+      img
+        margin: 20px 0
+        width: 100%
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
+  body.seq-photo
+    .seq-flex
+      -webkit-flex-direction: column
+      flex-direction: column
+
+      .seq-words
+        margin: 0 auto

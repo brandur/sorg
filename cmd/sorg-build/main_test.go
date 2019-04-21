@@ -105,6 +105,11 @@ func TestCompileRuns(t *testing.T) {
 	//assert.NoError(t, err)
 }
 
+func TestCompileSeq(t *testing.T) {
+	err := compileSeq("sf", true)
+	assert.NoError(t, err)
+}
+
 func TestCompileTwitter(t *testing.T) {
 	//
 	// No database

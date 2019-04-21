@@ -59,6 +59,7 @@ var outputDirs = []string{
 	"reading",
 	"runs",
 	"passages",
+	"seq",
 	"twitter",
 }
 
