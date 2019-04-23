@@ -1,5 +1,5 @@
 content/images/talks/*.backup/
-content/photographs/*.jpg
+content/photographs/**/*.jpg
 public/
 public-dev/
 tmp/

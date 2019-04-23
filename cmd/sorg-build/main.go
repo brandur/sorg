@@ -510,6 +510,12 @@ func main() {
 		return err
 	}))
 
+	seqTasks, err := tasksForSeqs()
+	if err != nil {
+		log.Fatal(err)
+	}
+	tasks = append(tasks, seqTasks...)
+
 	tasks = append(tasks, pool.NewTask(func() error {
 		return assets.CompileJavascripts(
 			path.Join(sorg.ContentDir, "javascripts"),
@@ -1013,22 +1019,122 @@ func compilePassagesIndex(passages []*passages.Passage) error {
 	return nil
 }
 
-// Compiles photos based on `content/photographs/_meta.yaml` by downloading any
-// that are missing and doing resizing work.
-//
-// `skipWork` initializes parallel jobs but no-ops them. This is useful for
-// testing where we don't expect these operations to succeed.
+// compileSeq compiles a single "seq", which is sequence of images from a
+// single trip and little short stories about each one. Think of it like my
+// personal re-decentralize-the-web version of Instagram.
+func compileSeq(dir string, skipWork bool) error {
+	if conf.ContentOnly {
+		return nil
+	}
+
+	seqName := path.Base(dir)
+	targetDir := path.Join(conf.TargetDir, "seq", seqName)
+
+	// The subdir for this particular seq under that seq photographs dir.
+	targetPhotosDir := path.Join(sorg.ContentDir, "photographs", "seq", seqName)
+
+	for _, dir := range []string{targetDir, targetPhotosDir} {
+		err := os.MkdirAll(dir, 0755)
+		if err != nil {
+			return fmt.Errorf("Error creating seq output dir '%s': %v",
+				dir, err)
+		}
+	}
+
+	photos, err := compilePhotosDir(
+		path.Join(dir, "_meta.yaml"),
+		targetPhotosDir,
+		skipWork)
+	if err != nil {
+		return err
+	}
+
+	// TODO: Render seq index
+
+	// Render each photo page
+	for _, photo := range photos {
+		title := fmt.Sprintf("%s — %s", photo.Title, seqName)
+		description := markdown.Render(photo.Description, nil)
+
+		locals := getLocals(title, map[string]interface{}{
+			"BodyClass":     "seq-photo",
+			"Description":   description,
+			"Photo":         photo,
+			"SeqName":       seqName,
+			"ViewportWidth": 600,
+		})
+
+		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/seq/photo",
+			path.Join(targetDir, photo.Slug), locals)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// compilePhotos compiles the "main" photos collection which will appear at
+// `/photos` and which have one random entry on the main index page.
 func compilePhotos(skipWork bool) ([]*Photo, error) {
 	if conf.ContentOnly {
 		return nil, nil
 	}
 
+	err := ensureSymlink(
+		path.Join(sorg.ContentDir, "photographs"),
+		path.Join(conf.TargetDir, "photographs"),
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	photos, err := compilePhotosDir(
+		path.Join(sorg.ContentDir, "photographs", "_meta.yaml"),
+		path.Join(sorg.ContentDir, "photographs"),
+		skipWork)
+	if err != nil {
+		return nil, err
+	}
+
+	locals := getLocals("Photos", map[string]interface{}{
+		"BodyClass":     "photos",
+		"Photos":        photos,
+		"ViewportWidth": 600,
+	})
+
+	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/photos/index",
+		conf.TargetDir+"/photos/index.html", locals)
+	if err != nil {
+		return nil, err
+	}
+
+	return photos, err
+}
+
+// Compiles photos based on the `_meta.yaml` file in sourceDir by downloading
+// any that are missing and doing resizing work.
+//
+// Dropbox is the original source for photographs, but to avoid doing
+// unnecessary downloading, resizing, and uploading work for every build, we
+// put any work we do into a "cache" (targetDir) which is itself put into S3.
+// Subsequent builds can leverage the cache to avoid repeat work.
+//
+// See also the `photos-*` family of commands in `Makefile`.
+//
+// Note that JPGs in any targetDirs should be in `.gitignore` and not eligible
+// to be uploaded to the Git repository, but `.marker` files can and should be
+// committed as often as possible.
+//
+// `skipWork` initializes parallel jobs but no-ops them. This is useful for
+// testing where we don't expect these operations to succeed.
+func compilePhotosDir(sourceDir, targetDir string, skipWork bool) ([]*Photo, error) {
 	start := time.Now()
 	defer func() {
-		log.Debugf("Compiled photos in %v.", time.Now().Sub(start))
+		log.Debugf("Compiled photos dir '%s' in %v.", sourceDir, time.Now().Sub(start))
 	}()
 
-	data, err := ioutil.ReadFile(path.Join(sorg.ContentDir, "photographs", "_meta.yaml"))
+	data, err := ioutil.ReadFile(sourceDir)
 	if err != nil {
 		return nil, fmt.Errorf("Error reading photographs data file: %v", err)
 	}
@@ -1045,23 +1151,6 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 	sort.Slice(photos, func(i, j int) bool {
 		return photos[j].OccurredAt.Before(*photos[i].OccurredAt)
 	})
-
-	// Dropbox is the original source for images, but to avoid doing unnecessary
-	// downloading, resizing, and uploading work for every build, we put any
-	// work we do into a "cache" which is itself put into S3. Subsequent builds
-	// can leverage the cache to avoid repeat work.
-	//
-	// See also the `photos-*` family of commands in `Makefile`.
-	//
-	// Note that JPGs in this directory are in `.gitignore` and not eligible to
-	// be uploaded to the Git repository, but `.marker` files can and should be
-	// committed as often as possible.
-	cacheDir := path.Join(sorg.ContentDir, "photographs")
-
-	err = linkPhotographs()
-	if err != nil {
-		return nil, err
-	}
 
 	var markers []string
 	var photoFiles []*downloader.File
@@ -1085,7 +1174,7 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 		// `.marker`). When initializing a new build, only marker files are
 		// copied dwon from S3. When determining which images need to be
 		// fetched and resize, we skip any that already have a marker file.
-		if !fileExists(path.Join(cacheDir, imageMarker)) {
+		if !fileExists(path.Join(targetDir, imageMarker)) {
 			photoFiles = append(photoFiles,
 				&downloader.File{URL: photo.OriginalImageURL,
 					Target: path.Join(sorg.TempDir, imageOriginal)},
@@ -1094,28 +1183,28 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 			resizeJobs = append(resizeJobs,
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(cacheDir, image1x),
+					TargetPath:  path.Join(targetDir, image1x),
 					TargetWidth: 333,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(cacheDir, image2x),
+					TargetPath:  path.Join(targetDir, image2x),
 					TargetWidth: 667,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(cacheDir, imageLarge1x),
+					TargetPath:  path.Join(targetDir, imageLarge1x),
 					TargetWidth: 1500,
 				},
 				&resizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
-					TargetPath:  path.Join(cacheDir, imageLarge2x),
+					TargetPath:  path.Join(targetDir, imageLarge2x),
 					TargetWidth: 3000,
 				},
 			)
 
 			markers = append(markers,
-				path.Join(cacheDir, imageMarker))
+				path.Join(targetDir, imageMarker))
 		}
 	}
 
@@ -1143,18 +1232,6 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 			}
 			file.Close()
 		}
-	}
-
-	locals := getLocals("Photos", map[string]interface{}{
-		"BodyClass":     "photos",
-		"Photos":        photos,
-		"ViewportWidth": 600,
-	})
-
-	err = renderView(sorg.MainLayout, sorg.ViewsDir+"/photos/index",
-		conf.TargetDir+"/photos/index.html", locals)
-	if err != nil {
-		return nil, err
 	}
 
 	return photos, nil
@@ -1438,25 +1515,6 @@ func linkImages() error {
 	return nil
 }
 
-func linkPhotographs() error {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Linked photographs in %v.", time.Now().Sub(start))
-	}()
-
-	source, err := filepath.Abs(sorg.ContentDir + "/photographs/")
-	if err != nil {
-		return err
-	}
-
-	dest, err := filepath.Abs(conf.TargetDir + "/photographs/")
-	if err != nil {
-		return err
-	}
-
-	return ensureSymlink(source, dest)
-}
-
 //
 // Task generation functions
 //
@@ -1648,6 +1706,42 @@ func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft b
 
 			passageChan <- passage
 			return nil
+		}))
+	}
+
+	return tasks, nil
+}
+
+func tasksForSeqs() ([]*pool.Task, error) {
+	tasks, err := tasksForSeqsDir(path.Join(sorg.ContentDir, "seq"))
+	if err != nil {
+		return nil, err
+	}
+
+	if conf.Drafts {
+		draftTasks, err := tasksForSeqsDir(path.Join(sorg.ContentDir, "seq-drafts"))
+		if err != nil {
+			return nil, err
+		}
+
+		tasks = append(tasks, draftTasks...)
+	}
+
+	return tasks, nil
+}
+
+func tasksForSeqsDir(dir string) ([]*pool.Task, error) {
+	log.Debugf("Looking for seqs in directory: %v", dir)
+
+	paths, err := listDir(dir)
+	if err != nil {
+		return nil, err
+	}
+
+	var tasks []*pool.Task
+	for _, seqPath := range paths {
+		tasks = append(tasks, pool.NewTask(func() error {
+			return compileSeq(seqPath, false)
 		}))
 	}
 
@@ -2346,12 +2440,49 @@ create:
 		return fmt.Errorf("Error removing symlink: %v", err)
 	}
 
+	source, err = filepath.Abs(source)
+	if err != nil {
+		return err
+	}
+
+	dest, err = filepath.Abs(dest)
+	if err != nil {
+		return err
+	}
+
 	err = os.Symlink(source, dest)
 	if err != nil {
 		return fmt.Errorf("Error creating symlink: %v", err)
 	}
 
 	return nil
+}
+
+// listDir returns the contents of a directory as full paths, skipping any
+// hidden files that it might've contained.
+//
+// TODO: Replace all use of `ioutil.ReadDir` with this.
+func listDir(dir string) ([]string, error) {
+	infos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		return nil, fmt.Errorf("Error reading dir '%s': %v", dir, err)
+	}
+
+	var paths []string
+	for _, info := range infos {
+		if isHidden(info.Name()) {
+			continue
+		}
+
+		path, err := filepath.Abs(path.Join(dir, info.Name()))
+		if err != nil {
+			return nil, err
+		}
+
+		paths = append(paths, path)
+	}
+
+	return paths, nil
 }
 
 // Checks if the path exists as a common image format (.jpg or .png only). If
