@@ -1055,8 +1055,8 @@ func compileSeq(seqName string, skipWork bool) error {
 
 	photos, err := compilePhotosDir(
 		path.Join(sorg.ContentDir, "seq", seqName, "_meta.yaml"),
-		targetPhotosDir,	
-		skipWork)	
+		targetPhotosDir,
+		skipWork)
 	if err != nil {
 		return err
 	}
@@ -1104,7 +1104,7 @@ func compilePhotos(skipWork bool) ([]*Photo, error) {
 	photos, err := compilePhotosDir(
 		path.Join(sorg.ContentDir, "photographs", "_meta.yaml"),
 		path.Join(sorg.ContentDir, "photographs"),
-		skipWork)	
+		skipWork)
 	if err != nil {
 		return nil, err
 	}
