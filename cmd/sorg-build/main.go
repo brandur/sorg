@@ -1053,7 +1053,7 @@ func compileSeq(dir string, skipWork bool) error {
 
 	// Render each photo page
 	for _, photo := range photos {
-		title := fmt.Sprintf("Seq — %s — %s", seqName, photo.Slug)
+		title := fmt.Sprintf("%s — %s", photo.Title, seqName)
 		description := markdown.Render(photo.Description, nil)
 
 		locals := getLocals(title, map[string]interface{}{
