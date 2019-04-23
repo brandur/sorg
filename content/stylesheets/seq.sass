@@ -18,18 +18,17 @@ body.seq-photo
     align-items: center
     display: -webkit-flex
     display: flex
-    -webkit-flex-direction: row
-    flex-direction: row
+    -webkit-flex-direction: column
+    flex-direction: column
     justify-content: center
-    margin: 20px
+    margin: 40px
 
     .seq-words
       color: #ddd
       //font-family: $sans_serif
       font-size: 0.8rem
       line-height: 1.4em
-      margin: 0 60px
-      max-width: 300px
+      max-width: 450px
 
       hyphens: auto
       -moz-hyphens: auto
@@ -42,6 +41,9 @@ body.seq-photo
         border-bottom: 1px solid #333
         margin: 15px auto
         width: 60%
+
+      .seq-words-inner
+        margin: 20px 30px
 
     .seq-photograph
       margin: 0 10px
@@ -56,6 +58,3 @@ body.seq-photo
     .seq-flex
       -webkit-flex-direction: column
       flex-direction: column
-
-      .seq-words
-        margin: 0 auto
