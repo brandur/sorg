@@ -1022,28 +1022,16 @@ func compilePassagesIndex(passages []*passages.Passage) error {
 // compileSeq compiles a single "seq", which is sequence of images from a
 // single trip and little short stories about each one. Think of it like my
 // personal re-decentralize-the-web version of Instagram.
-func compileSeq(seqName string, skipWork bool) error {
+func compileSeq(dir string, skipWork bool) error {
 	if conf.ContentOnly {
 		return nil
 	}
 
+	seqName := path.Base(dir)
 	targetDir := path.Join(conf.TargetDir, "seq", seqName)
 
-	// All photographs for all sequences go into one directory together so they
-	// can be treated as a single set of static assets (easier to bulk
-	// upload/download, etc.).
-	//
-	// Ensure the symlink to that here.
-	err := ensureSymlink(
-		path.Join(sorg.ContentDir, "seq", "photographs"),
-		path.Join(conf.TargetDir, "seq", "photographs"),
-	)
-	if err != nil {
-		return err
-	}
-
-	// The subdir for this particular seq under that single assets dir.
-	targetPhotosDir := path.Join(sorg.ContentDir, "seq", "photographs", seqName)
+	// The subdir for this particular seq under that seq photographs dir.
+	targetPhotosDir := path.Join(sorg.ContentDir, "photographs", "seq", seqName)
 
 	for _, dir := range []string{targetDir, targetPhotosDir} {
 		err := os.MkdirAll(dir, 0755)
@@ -1054,7 +1042,7 @@ func compileSeq(seqName string, skipWork bool) error {
 	}
 
 	photos, err := compilePhotosDir(
-		path.Join(sorg.ContentDir, "seq", seqName, "_meta.yaml"),
+		path.Join(dir, "_meta.yaml"),
 		targetPhotosDir,
 		skipWork)
 	if err != nil {
@@ -1725,25 +1713,35 @@ func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft b
 }
 
 func tasksForSeqs() ([]*pool.Task, error) {
-	seqDir := path.Join(sorg.ContentDir, "seq")
-	log.Debugf("Looking for seqs in directory: %v", seqDir)
+	tasks, err := tasksForSeqsDir(path.Join(sorg.ContentDir, "seq"))
+	if err != nil {
+		return nil, err
+	}
 
-	paths, err := listDir(seqDir)
+	if conf.Drafts {
+		draftTasks, err := tasksForSeqsDir(path.Join(sorg.ContentDir, "seq-drafts"))
+		if err != nil {
+			return nil, err
+		}
+
+		tasks = append(tasks, draftTasks...)
+	}
+
+	return tasks, nil
+}
+
+func tasksForSeqsDir(dir string) ([]*pool.Task, error) {
+	log.Debugf("Looking for seqs in directory: %v", dir)
+
+	paths, err := listDir(dir)
 	if err != nil {
 		return nil, err
 	}
 
 	var tasks []*pool.Task
 	for _, seqPath := range paths {
-		seqName := path.Base(seqPath)
-
-		// Special assets directory that should be skipped
-		if seqName == "photographs" {
-			continue
-		}
-
 		tasks = append(tasks, pool.NewTask(func() error {
-			return compileSeq(seqName, false)
+			return compileSeq(seqPath, false)
 		}))
 	}
 

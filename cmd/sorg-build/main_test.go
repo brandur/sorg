@@ -106,7 +106,7 @@ func TestCompileRuns(t *testing.T) {
 }
 
 func TestCompileSeq(t *testing.T) {
-	err := compileSeq("sf", true)
+	err := compileSeq(path.Join(sorg.ContentDir, "seq-drafts", "life"), true)
 	assert.NoError(t, err)
 }
 
