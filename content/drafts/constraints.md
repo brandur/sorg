@@ -1,5 +1,5 @@
 ---
-title: Safe Schemas and Strong Constraints
+title: Safe Schemas, Strong Constraints
 published_at: 2019-01-14T16:25:00Z
 location: San Francisco
 hook: TODO
@@ -142,7 +142,7 @@ CREATE TABLE tag (
 );
 ```
 
-### The curious case of deleting Europe (#europe)
+### We deleted Europe once (#europe)
 
 A favorite horror story from my time at Heroku is when we
 deleted Europe. Heroku allows apps to be deployed in one of
@@ -248,7 +248,8 @@ enforce uniqueness on email addresses, but only for records
 that are still live:
 
 ``` sql
-CREATE UNIQUE INDEX index_user_email ON user (email) WHERE deleted_at IS NULL;
+CREATE UNIQUE INDEX index_user_email ON user (email)
+    WHERE deleted_at IS NULL;
 ```
 
 In practice this turns out to be a powerful tool that’s
@@ -265,7 +266,9 @@ Postgres to do nothing and return whatever nonce was
 already there to use instead:
 
 ``` sql
-INSERT INTO password_reset_link (user_id, reset_nonce) VALUES (123, ‘abc57DefZ1t’) ON CONFLICT (user_id) DO NOTHING RETURNING reset_nonce;
+INSERT INTO password_reset_link (user_id, reset_nonce)
+    VALUES (123, ‘abc57DefZ1t’)
+    ON CONFLICT (user_id) DO NOTHING RETURNING reset_nonce;
 ```
 
 ### CHECK (#check)
