@@ -3,6 +3,8 @@ all: clean install test vet lint check-dl0 check-gofmt check-headers check-retin
 build:
 	$(GOPATH)/bin/sorg-build
 
+compile: install
+
 check-dl0:
 	scripts/check_dl0.sh
 
