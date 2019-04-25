@@ -1,5 +1,5 @@
 ---
-title: Building Safe Systems With Schemas and Strong Constraints
+title: Safe Schemas and Strong Constraints
 published_at: 2019-01-14T16:25:00Z
 location: San Francisco
 hook: TODO
