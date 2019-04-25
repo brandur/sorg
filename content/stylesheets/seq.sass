@@ -8,11 +8,10 @@ body.seq-photo
   h1
     color: #fff
     font-family: $serif
-    font-size: 1.6rem
-    letter-spacing: -1px
+    font-size: 2.2rem
+    letter-spacing: -2px
     margin: 10px 0
     text-align: center
-    //text-transform: uppercase
 
   .seq-flex
     align-items: center
@@ -25,8 +24,7 @@ body.seq-photo
 
     .seq-words
       color: #ddd
-      //font-family: $sans_serif
-      font-size: 0.85rem
+      font-size: 0.95rem
       line-height: 1.4em
       max-width: 500px
       padding: 80px 30px 40px 30px
@@ -44,7 +42,6 @@ body.seq-photo
         width: 60%
 
     .seq-photograph
-      margin: 0 10px
       max-width: 1500px
       padding: 20px 0
 
@@ -53,13 +50,21 @@ body.seq-photo
         margin: 0
         width: 100%
 
+    .seq-info
+      font-family: $sans_serif
+      font-size: 0.8rem
+      padding: 20px 0
+
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   body.seq-photo
-    .seq-flex
-      //-webkit-flex-direction: column
-      //flex-direction: column
+    h1
+      font-size: 1.9rem
+      letter-spacing: -2px
 
+    .seq-flex
       .seq-words
+        font-size: 0.85rem
+        max-width: 375px
         padding: 40px 30px 20px 30px
 
       .seq-photograph
