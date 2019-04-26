@@ -1,5 +1,5 @@
 ---
-title: Karl Lagerfeld (and Dieting)
+title: Karl Lagerfeld (and dieting)
 published_at: 2019-02-20T15:02:57Z
 hook: A few notes on the passing of a fascinating cultural
   contributor and his even more fascinating approach to
