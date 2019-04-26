@@ -6,97 +6,113 @@ hook: TODO
 tags: ["postgres"]
 ---
 
-I've talked before about how relational databases like
-Postgres provide a powerful platform to build applications
-on by offering primitives like [ACID transactions](/acid)
-and rolling out [small but important
-optimizations](/sortsupport) with new versions.
+Relational databases like Postgres provide a powerful
+platform to build applications on by offering the powerful
+primitive of [ACID transactions](/acid), useful features
+like upsert or logical replication, and rolling out [small
+but important optimizations](/sortsupport) with new
+versions.
 
-But of equal importance to these features in a relational
-database is the relational part. Originally based on the
-[relational model][relationalmodel] of predicate logic,
-this design encourages declaratively defining the shape of
-entity types in *relations* (A.K.A. tables), how they
-relate to each other with keys, and constraints on them
-through the definition of a domain.
+But relational databases are named so for a reason, and
+that ***relational*** aspect is as important as any of
+these features. Originally based on the [relational
+model][relationalmodel] of predicate logic, their design
+encourages declaratively defining the shape of entity types
+in *relations* (A.K.A. tables), how those relations relate
+to each other with keys, and the constraints on them by
+defining domains.
 
-Almost every developer has run a `CREATE TABLE ...` before
-and is familiar with the basics of this concept, but what
-isn't so obvious is how having the discipline to build and
-maintain a well-defined schema and strong data constraints
-on it is a hugely powerful tool for creating robust and
-reliable software.
+Almost every developer is familiar with at least the
+concept, having run basic DDL like `CREATE TABLE ...`, but
+it's not obvious how it can be a major boon for building
+better software. The discipline to build and maintain a
+well-defined schema and detail strong data constraints is
+one of the most powerful tools available for creating
+robust software that's robust by default, even in the
+presence of bugs or mistakes made elsewhere in the system.
 
 ## Establishing guaranteed expectations (#guaranteed-expectations)
 
-When using a "NoSQL" data store (or even a poorly designed
-schema in a relational database), accessing any field on
-any object is a potential error. For example, if a
-developer sees an `email` attribute on a `users`
-collection, they might make the reasonable assumption that
-it's always present, and write code in such a way that
-assumes it's there:
+When using a poorly designed schema (or any "NoSQL" data
+store), accessing any field on any object is a potential
+error. For example, if a developer sees an `email`
+attribute on a `users` collection, they might make the
+reasonable assumption that it's always present, and write
+code in such a way that assumes it's there:
 
 ``` ruby
 send_password_reset(user.email) # potential bug!
 ```
 
-Maybe every user does have an email, but it's easy to
-imagine a situation where this isn't the case. What if it
-turned out that in the early days of the system emails
-hadn't been collected? So while the code would work for the
-bulk of current users who do have emails on record and
-probably in the test suite which creates synthetic users
-with modern specifications, it would fail in production for
-a certain class of legacy user.
+And it's quite possible that every user *does* have an
+email, and that works fine, but it's also easy to imagine a
+situation where it isn't. What if it turned out that in the
+early days of the system emails weren't collected when new
+accounts were created? Accessing `user.email` would be fine
+for the bulk of current users who have emails on record,
+and also fine in the test suite which creates idyllic
+synthetic users with modern specifications, but it'd fail
+hard in production for a certain class of legacy user.
 
 !fig src="/assets/constraints/nulls.svg" caption="Nulls present in data that's mostly non-null."
 
-Even when applications are using application-level
-definitions to define a pseudo-schema (e.g. MongoEngine or
-Mongoose), it's still possible for data to be present in
-the data store that was put there before the current schema
-came in.
+In the world of NoSQL, it's common to use application-level
+tooling to define pseudo-schemas for data (e.g. MongoEngine
+or Mongoose), but that provides no guarantee that all data
+conforms to it. Data that would now be invalid could have
+been created before the current schema came into effect.
+The underlying data store makes no guarantees.
 
-Even if this example seems a little contrived, this class
-of problem can appear in hundreds of different shapes and
-sizes. Having worked on a large-scale Mongo-based
-application for a few years now, this is *easily* one of
-the most frequently seen bugs, and has manifested in every
-way from minor annoyance to major production incident.
+This class of **schema underspecification** problem can
+appear in hundreds of shapes and sizes. Having worked on a
+large-scale Mongo-based application for years now, this is
+*easily* one of the most frequent cause of bugs, and has
+manifested in every way from minor annoyance to major
+production incident.
 
 It's also exactly the class of problem that relational
-schemas solve. Schemas are enforced at the database-level
-so application developers get an *absolute guarantee* that
-data is in the right shape. Not only can they guarantee
-that fields like `email` are present through the
-application of `NOT NULL` constraints, they provide the
-building blocks for even tighter constraints. I could use
-them to dictate that all emails should be within a certain
-length, or that all prices should be positive. Data that
-doesn't meet these requirements is firmly rejected.
+databases excel at solving. Schemas are enforced at the
+database level so application developers get an *absolute
+guarantee* that data is in the right shape, regardless of
+its age or circumstances of creation. Not only can they
+guarantee that fields like `email` are present through the
+application of `NOT NULL` constraints, but they also
+provide the building blocks for even tighter constraints:
+they could be used to dictate that all emails should be
+within a certain length and comply to a certain format.
+Data that doesn't meet these requirements is firmly
+rejected.
 
 ## Referential integrity (#referential-integrity)
 
-Now that we've covered that strong expectations are a good
-thing, let's look at some tools to establish them. A key
-concept in relational databases is the idea of
+A key concept in relational databases is the idea of
 [normalization][normalization], which encourages relations
 to reference the canonical sources of data instead of
-duplicating it to reduce redundancy and ensure correctness.
+duplicating it. This helps to reduce redundancy, but more
+importantly ensures correctness.
 
-These references can be strongly defined through the use of
-a **foreign key**. For example, a pair of tables for a blog
-could indicate that its tags always reference an article:
+As a supremely simple example, it'd be convention to make
+sure that a blog article's slug is stored in a single
+canonical `article` table rather than distributed out to
+every table that references an article. If that slug
+subsequently needs to be updated, it's easy to do so in
+exactly one place instead of going through every table.
+
+TOOD: Article slug schema example
+
+References are strongly defined through the use of a
+**foreign key**. For example, `tag.article_id` references
+its canonical sequence in `article.id`:
 
 ``` sql
 CREATE TABLE article (
-    id bigserial PRIMARY KEY,
+    id   bigserial    PRIMARY KEY,
+    slug varchar(100) NOT NULL,
     ...
 );
 
 CREATE TABLE tag (
-    id bigserial PRIMARY KEY,
+    id         bigserial PRIMARY KEY,
     article_id bigint
         REFERENCES article (id),
     ...
@@ -106,10 +122,10 @@ CREATE TABLE tag (
 **[Referential integrity][integrity]** is the property that
 these relational references are always valid in that they
 reference a valid key in another table, or are `NULL`.
-Adding a foreign key ensures referential integrity.
+Foreign keys ensure referential integrity.
 
-Now if some code accidentally deletes an article without
-first doing something about the tags that reference it, the
+If some code accidentally deletes an article without first
+doing something about the tags that reference it, the
 database will block the action [1]:
 
 ``` sql
@@ -119,65 +135,73 @@ ERROR:  update or delete on table "article" violates foreign
 DETAIL:  Key (id)=(1) is still referenced from table "tag".
 ```
 
-This might initially seem annoying, but like with any
-constraint, some *convenience* is being sacrificed for
+As with all of the constraints we'll look at, this might
+initially seem annoying, but the key with all of them is
+that we're sacrificing some *convenience* to gain
 *correctness*. Articles can still be deleted, but the
 developer must indicate explicitly what to do about tags
-before they are. The more mature your application, the more
-appreciative you'll be of this trade off.
+before they are. The more mature an application, the more
+this trade off makes sense.
 
 Foreign key constraints mesh very well with `NOT NULL`
 constraints. Foreign keys ensure that all references are
 valid, and adding `NOT NULL` provides the additional
-guarantee that all entities have a reference. In practice
-we'd raise our tags with one because it never makes sense
-to have a dangling tag that doesn't reference an article:
+guarantee that all entities in a relation have a reference.
+We'd raise the `tag` relation like this because it never
+makes sense to have a dangling tag that doesn't reference
+an article:
 
 ``` sql
 CREATE TABLE tag (
-    id bigserial PRIMARY KEY,
-    article_id bigint NOT NULL -- <— the new NOT NULL
+    id         bigserial PRIMARY KEY,
+    article_id bigint    NOT NULL     -- <— added: NOT NULL
         REFERENCES article (id),
     ...
 );
 ```
 
-### We deleted Europe once (#europe)
+### When we deleted Europe (#europe)
 
-A favorite horror story from my time at Heroku is when we
-deleted Europe. Heroku allows apps to be deployed in one of
-multiple regions including the Americas and Europe. One day
-someone was messing around in a production console and
+One day at Heroku, we deleted Europe. Heroku allows apps to
+be deployed in one of multiple regions including the
+Americas and Europe. On the fateful day, someone was
+messing around in a production console and accidentally
 deleted the row which represented that European region and
 which every European app referenced. The API instantly
 starting throwing errors for every Europe-related request.
 
-At the time we didn't have good discipline around foreign
-keys, and although one table referenced values in another,
-there wasn't a formal key between the two. Having one would
-have saved us *a lot* of trouble as the system would have
-blocked the deletion completely [2].
+Although the proximate cause of the incident was user
+error, more fundamentally, the system should have made it
+much more difficult for this to happen. At the time we
+didn't have good discipline around foreign keys, and
+although one table referenced values in another, there
+wasn't a formal contract between the two in the form of a
+foreign key. Having one would have saved us *a lot* of
+trouble as the deletion would have been blocked
+automatically [2].
 
 ## Domain integrity (#domain-integrity)
 
 While referential integrity covers the connectedness of
 relations, **domain integrity** deals with the constraints
 within them. A "domain" is the possible set of values that
-a field can contain, and databases provide various ways to
-constrain them.
+a field can contain, and databases provide various
+mechanisms to constrain them.
 
 ### NOT NULL (#not-null)
 
 `NOT NULL` is the simplest possible constraint, but also
 one of the most powerful. It's the opposable thumb of the
-database world, and separates man from beast.
+database world, and a key property that separates those
+that are worth using from those that aren't.
 
 A null represents the absence of a value, and constraining
 a field to be _not null_ forces it to be present. Seeing a
-`NOT NULL` constraint in a database table tells you something
-about every row in that table -- namely that you can expect
-values to be present for that field universally, which
-makes code written for it cleaner and safer to write.
+`NOT NULL` constraint in a database table tells you
+something about every row in that table -- namely that you
+can expect values to be present for that field universally.
+That makes code written that uses it cleaner (fewer null
+checks), and safer to write.
 
 Best practice is to make every `NOT NULL` unless you're
 sure that it shouldn't be. It's easy to drop a `NOT NULL`
@@ -187,7 +211,7 @@ One of the most egregious mistakes of the SQL standard is
 that nullable columns are the default rather than vice
 versa.
 
-### Type system (#type-system)
+### Types: also good in databases (#types)
 
 Strong type systems in programming languages are a popular
 idea right now the growing popularity of languages like Go,
@@ -271,67 +295,76 @@ INSERT INTO password_reset_link (user_id, reset_nonce)
     ON CONFLICT (user_id) DO NOTHING RETURNING reset_nonce;
 ```
 
-### CHECK (#check)
+### CHECK: the most flexible constraint (#check)
 
-`CHECK` is the most flexible constraint that Postgres
-allows, enabling an arbitrary expression for validation on
-a field or table. For example, we could use one to validate
+`CHECK` is the Swiss Army Knife of constraints, and allows
+the specification of rules that aren't easily represented
+by any other kind. It allows an arbitrary expression for
+validation on a field or table which must pass for new data
+to be allowed.
+
+As a really simple example, we could use one to validate
 that prices are greater than zero:
 
 ``` sql
 CREATE TABLE products (
-    id bigserial,
-    name varchar(500),
-    price numeric CHECK (price > 0)
+    id    bigserial,
+    name  varchar(500),
+    price numeric       CHECK (price > 0)
 );
 ```
 
-`CHECK` is a great choice for domain checks that aren't
-easily covered by one of the other types of constraints.
+And it's usefulness goes far beyond that. A few other way
+that it could be applied:
 
-## Conclusion (#conclusion)
+* Check that a string is not empty.
 
-A strong schema isn’t solely an upfront design exercise.
-New ones should be created according to the best
-specifications available, but that first pass probably wont
-be without errors, and will certainly never be sufficient
-as its companion application continues to evolve.
+TODO: Expand list.
+
+## Consistent effort, major reward (#effort-reward)
+
+A schema isn’t just an upfront design exercise. New ones
+should be created according to the best specifications
+available, but will certainly never be sufficient as its
+companion application continues to evolve.
 
 Schemas should be in a constant state of refinement to
 reflect new developments in an application’s data model and
 new constraints to which it’s beholden. This isn’t always
-easy. Migrating the schema itself isn’t trivial as is —
-often migrations like ActiveRecord’s are needed to make
+easy. Migrating the schema itself isn't that easy —
+migration frameworks like ActiveRecord’s are needed to make
 sure that the right migrations are applied and changes are
-kept in sync between systems — but migrating data to fit
-new constraints is even harder, especially where a
-non-trivial amount of it has accumulated.
+kept in sync between systems. Migrating **data** to fit new
+constraints is even harder, especially where large amounts
+of it have been accumulated, but the effort pays off.
 
 Some developers felt the rigidity of progressive schema
 evolution so confining that it led to the 00s’ wave of
-NoSQL databases. There is no schema — only documents — so
+NoSQL. There is no schema — only documents — so
 applications can write new records however they want, with
 no restrictions.
 
-And week one on such a system really is faster. Changes are
+Week one on such a system really is faster. Changes are
 deployed quickly and efficiently, and there aren’t enough
 legacy versions to cause much trouble. But that initial
 speed is eventually replaced by a pervasive uncertainty.
-Even once data mapping tooling is used to define a
+Even once a data mapping tooling is used to define a
 “current” canonical schema, it’s anybody’s guess as to the
 shapes of data that are already in there. Without
-exception, the result is that code is more difficult too
-write; bugs become more common, and practically impossible
-to suppress completely.
+exception, the results are that code is more difficult to
+write, and more difficult to read as it's littered with
+null checks. Bugs become more common, and impossible to
+suppress completely.
 
 Like doing the dishes after every meal instead of waiting
-for them to pile up at the end of the week, by which time
-they smell and are attracting flies, consistent effort in
-keeping schemas up to date doesn’t just off by making
-things easier to every day, but by avoiding entire classes
-of problems completely. Leverage the powerful tools offered
-by relational databases like foreign keys, types, and `NOT
-NULL` to build more correct, more reliable software.
+for them to pile up at the end of the week (by which time
+they smell and are attracting flies), keeping schemas up to
+date takes more consistent effort, but helps avoid entire
+classes of problems completely. Leverage the powerful tools
+offered by relational databases like foreign keys, types,
+and `NOT NULL` to build detailed schemas with strong
+constraints, and the result will be safer, more correct,
+more reliable software.
 
 [1] A foreign key without an explicit `ON DELETE`
 instruction will default to `ON DELETE NO ACTION` which
