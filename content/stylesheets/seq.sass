@@ -10,7 +10,7 @@ body.seq-photo
     color: #fff
 
     &:hover
-      border-bottom: 0
+      border-bottom: 1px solid #222
 
     &:visited
 
@@ -29,14 +29,14 @@ body.seq-photo
     -webkit-flex-direction: column
     flex-direction: column
     justify-content: center
-    margin: 0 40px
+    margin: 40px 50px
 
     .seq-words
       color: #ddd
       font-size: 0.95rem
       line-height: 1.55em
       max-width: 500px
-      padding: 80px 30px 40px 30px
+      margin: 40px 30px
 
       hyphens: auto
       -moz-hyphens: auto
@@ -46,23 +46,23 @@ body.seq-photo
         margin: 15px 0
 
       .seq-divider
-        border-bottom: 1px solid #222
-        margin: 15px auto
+        border-bottom: 1px solid #111
+        margin: 15px auto 40px auto
         width: 60%
 
     .seq-photograph
+      background: #111
       max-width: 1500px
-      padding: 20px 0
+      padding: 15px
 
       img
-        border: 8px solid #222
         margin: 0
         width: 100%
 
     .seq-info
       font-family: $sans_serif
       font-size: 0.75rem
-      padding: 20px 0
+      margin: 40px 0
 
       span.slug
         background: #fff
@@ -77,10 +77,18 @@ body.seq-photo
       letter-spacing: -2px
 
     .seq-flex
+      margin: 20px 30px
+
       .seq-words
         font-size: 0.85rem
         max-width: 375px
-        padding: 40px 30px 20px 30px
+        margin: 20px 30px
+
+        .seq-divider
+          margin: 15px auto 20px auto
 
       .seq-photograph
-        padding: 10px 0
+        padding: 10px
+
+      .seq-info
+        margin: 20px 0
