@@ -1,6 +1,6 @@
 ---
 title: Safe Schemas, Strong Constraints
-published_at: 2019-01-14T16:25:00Z
+published_at: 2019-04-26T18:45:56Z
 location: San Francisco
 hook: TODO
 tags: ["postgres"]
@@ -31,7 +31,7 @@ one of the most powerful tools available for creating
 robust software that's robust by default, even in the
 presence of bugs or mistakes made elsewhere in the system.
 
-## Establishing guaranteed expectations (#guaranteed-expectations)
+## Guaranteed expectations (#guaranteed-expectations)
 
 When using a poorly designed schema (or any "NoSQL" data
 store), accessing any field on any object is a potential
@@ -184,7 +184,7 @@ automatically [2].
 
 While referential integrity covers the connectedness of
 relations, **domain integrity** deals with the constraints
-within them. A "domain" is the possible set of values that
+within them. A **domain** is the possible set of values that
 a field can contain, and databases provide various
 mechanisms to constrain them.
 
