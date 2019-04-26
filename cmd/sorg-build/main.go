@@ -510,11 +510,11 @@ func main() {
 		return err
 	}))
 
-	seqTasks, err := tasksForSeqs()
+	sequenceTasks, err := tasksForSequences()
 	if err != nil {
 		log.Fatal(err)
 	}
-	tasks = append(tasks, seqTasks...)
+	tasks = append(tasks, sequenceTasks...)
 
 	tasks = append(tasks, pool.NewTask(func() error {
 		return assets.CompileJavascripts(
@@ -1019,24 +1019,24 @@ func compilePassagesIndex(passages []*passages.Passage) error {
 	return nil
 }
 
-// compileSeq compiles a single "seq", which is sequence of images from a
-// single trip and little short stories about each one. Think of it like my
+// compileSequence compiles a single sequence, which is a stream of images from
+// a single trip and little short stories about each one. Think of it like my
 // personal re-decentralize-the-web version of Instagram.
-func compileSeq(dir string, skipWork bool) error {
+func compileSequence(dir string, skipWork bool) error {
 	if conf.ContentOnly {
 		return nil
 	}
 
-	seqName := path.Base(dir)
-	targetDir := path.Join(conf.TargetDir, "seq", seqName)
+	sequenceName := path.Base(dir)
+	targetDir := path.Join(conf.TargetDir, "sequences", sequenceName)
 
-	// The subdir for this particular seq under that seq photographs dir.
-	targetPhotosDir := path.Join(sorg.ContentDir, "photographs", "seq", seqName)
+	// The subdir for this particular sequence under the photographs dir.
+	targetPhotosDir := path.Join(sorg.ContentDir, "photographs", "sequences", sequenceName)
 
 	for _, dir := range []string{targetDir, targetPhotosDir} {
 		err := os.MkdirAll(dir, 0755)
 		if err != nil {
-			return fmt.Errorf("Error creating seq output dir '%s': %v",
+			return fmt.Errorf("Error creating sequence output dir '%s': %v",
 				dir, err)
 		}
 	}
@@ -1049,22 +1049,22 @@ func compileSeq(dir string, skipWork bool) error {
 		return err
 	}
 
-	// TODO: Render seq index
+	// TODO: Render sequence index
 
 	// Render each photo page
 	for _, photo := range photos {
-		title := fmt.Sprintf("%s — %s", photo.Title, seqName)
+		title := fmt.Sprintf("%s — %s", photo.Title, sequenceName)
 		description := markdown.Render(photo.Description, nil)
 
 		locals := getLocals(title, map[string]interface{}{
-			"BodyClass":     "seq-photo",
+			"BodyClass":     "sequences-photo",
 			"Description":   description,
 			"Photo":         photo,
-			"SeqName":       seqName,
+			"SequenceName":  sequenceName,
 			"ViewportWidth": 600,
 		})
 
-		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/seq/photo",
+		err = renderView(sorg.MainLayout, sorg.ViewsDir+"/sequences/photo",
 			path.Join(targetDir, photo.Slug), locals)
 		if err != nil {
 			return err
@@ -1712,14 +1712,16 @@ func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft b
 	return tasks, nil
 }
 
-func tasksForSeqs() ([]*pool.Task, error) {
-	tasks, err := tasksForSeqsDir(path.Join(sorg.ContentDir, "seq"))
+func tasksForSequences() ([]*pool.Task, error) {
+	tasks, err := tasksForSequencesDir(
+		path.Join(sorg.ContentDir, "sequences"))
 	if err != nil {
 		return nil, err
 	}
 
 	if conf.Drafts {
-		draftTasks, err := tasksForSeqsDir(path.Join(sorg.ContentDir, "seq-drafts"))
+		draftTasks, err := tasksForSequencesDir(
+			path.Join(sorg.ContentDir, "sequences-drafts"))
 		if err != nil {
 			return nil, err
 		}
@@ -1730,8 +1732,8 @@ func tasksForSeqs() ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForSeqsDir(dir string) ([]*pool.Task, error) {
-	log.Debugf("Looking for seqs in directory: %v", dir)
+func tasksForSequencesDir(dir string) ([]*pool.Task, error) {
+	log.Debugf("Looking for sequences in directory: %v", dir)
 
 	paths, err := listDir(dir)
 	if err != nil {
@@ -1739,9 +1741,9 @@ func tasksForSeqsDir(dir string) ([]*pool.Task, error) {
 	}
 
 	var tasks []*pool.Task
-	for _, seqPath := range paths {
+	for _, sequencePath := range paths {
 		tasks = append(tasks, pool.NewTask(func() error {
-			return compileSeq(seqPath, false)
+			return compileSequence(sequencePath, false)
 		}))
 	}
 
