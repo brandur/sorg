@@ -1,7 +1,8 @@
 ---
-title: "False positives in UI design: Why small buttons can
-  be better than big"
+title: "False positives in UI design: why small buttons can
+  be better than big ones"
 published_at: 2019-02-14T19:38:40Z
+image: /assets/fragments/false-positives/vista.jpg
 hook: TODO
 ---
 
@@ -9,7 +10,7 @@ The iPhone X is a near perfectly designed device, but it
 has one glaring design flaw that I brush up against again
 and again: its buttons are too big.
 
-TODO: image of iPhone X buttons
+![The iPhone XR's huge buttons.](/assets/fragments/false-positives/iphone-xr.png)
 
 At first glance big buttons might strike you initially as a
 feature, and when you first start using a device, they are.
@@ -34,7 +35,7 @@ smaller and stiff. Despite all their reduced size, after
 just a few days getting used to the device, fingers learn
 to find any of them by feel.
 
-TODO: image of iPhone 4
+![The iPhone 4's small buttons.](/assets/fragments/false-positives/iphone-4.png)
 
 The HomePod is the apex of false positive design. If you
 touch it anywhere on its top surface, it'll start playing
