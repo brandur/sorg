@@ -7,29 +7,30 @@ tags: ["postgres"]
 ---
 
 Relational databases like Postgres provide a powerful
-platform to build applications on by offering the powerful
-primitive of [ACID transactions](/acid), useful features
-like upsert or logical replication, and rolling out [small
-but important optimizations](/sortsupport) with new
-versions.
+platform on which to build applications by offering the
+powerful primitive of [ACID transactions](/acid), useful
+features like upsert or logical replication, and rolling
+out [small but important optimizations](/sortsupport) with
+new versions.
 
-But relational databases are named so for a reason, and
-that ***relational*** aspect is as important as any of
-these features. Originally based on the [relational
-model][relationalmodel] of predicate logic, their design
+But they also do something more -- an old, but invaluable,
+feature that's suggested right in their name. Their
+relational nature was originally premised on the
+[relational model][relationalmodel] of predicate logic, and
 encourages declaratively defining the shape of entity types
-in *relations* (A.K.A. tables), how those relations relate
-to each other with keys, and the constraints on them by
-defining domains.
+in **relations** (better known to most of us as tables),
+how those relations relate to each other with keys, and the
+constraints on them through the declaration of **domains**.
 
-Almost every developer is familiar with at least the
-concept, having run basic DDL like `CREATE TABLE ...`, but
-it's not obvious how it can be a major boon for building
-better software. The discipline to build and maintain a
-well-defined schema and detail strong data constraints is
-one of the most powerful tools available for creating
-robust software that's robust by default, even in the
-presence of bugs or mistakes made elsewhere in the system.
+Almost every developer is familiar with at least the basics
+of the concept, having run DDL like `CREATE TABLE ...`, but
+it's not obvious how the relational model can be a major
+boon for building better software. A well-defined schema
+and strong data constraints are hugely powerful tools for
+creating robust software that's safe by default, even in
+the presence of bugs or mistakes made elsewhere in the
+system. Maintaining them takes time and discipline, but
+it's work that pays off in correctness and reliability.
 
 ## Guaranteed expectations (#guaranteed-expectations)
 
