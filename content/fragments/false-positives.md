@@ -38,8 +38,8 @@ bad. Unintentional actions start to manifest: activating
 the screen, changing the volume, taking screenshots --
 they're small problems, and only occur at a background
 ambient level, but they don't go away. The bigger buttons
-make intentional actions easier, but also introduce a rate
-of false positives way above the baseline.
+make intentional actions easier, but accidental ones easier
+too.
 
 And it's not just an iPhone problem -- the HomePod (as
 another example) is the true apex of false positive design.
