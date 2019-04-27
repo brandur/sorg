@@ -44,7 +44,7 @@ of false positives way above the baseline.
 And it's not just an iPhone problem -- the HomePod (as
 another example) is the true apex of false positive design.
 Touching its top surface will prompt it to play random
-music. I've activated this feature dozens of times, not
+music -- a feature I've activated dozens of times, and not
 once on purpose. One day I came home to find mine blaring
 away, apparently of its own volition. I was just getting my
 exorcism gear out of storage when I noticed something on
