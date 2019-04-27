@@ -52,7 +52,7 @@ top of it. A dead flower -- weighing only a few grams --
 had fallen off a nearby orchid, landed on top of the
 HomePod, and activated it (see photo above).
 
-## More challenging beginning, better lifetime experience (#lifetime)
+## Producing a better lifetime experience (#lifetime)
 
 Apple didn't always get this wrong, the iPhone 4 (and later
 SE) were a golden era as far as buttons were concerned.
