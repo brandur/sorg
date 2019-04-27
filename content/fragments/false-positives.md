@@ -23,7 +23,7 @@ resting on the phone's power button, which is so big that
 there's no way for your thumb _not_ to be resting on it.
 The screen turns off. You turn it back on and start over.
 
-![The iPhone XR's huge buttons.](/assets/fragments/false-positives/iphone-xr.png)
+![The iPhone XR's huge buttons.](/assets/fragments/false-positives/iphone-xr.jpg)
 
 At first glance big buttons might strike you as a feature,
 and when you first start using a device, they are. Bigger
@@ -63,7 +63,7 @@ little bigger, but also small and stiff. Despite the
 reduced size, after just a few days getting used to the
 device, all of them are easy to find by feel.
 
-![The iPhone 4's small buttons.](/assets/fragments/false-positives/iphone-4.png)
+![The iPhone 4's small buttons.](/assets/fragments/false-positives/iphone-4.jpg)
 
 Bigger buttons may be initially more user friendly, but
 over the lifetime of ownership, think about where on the
