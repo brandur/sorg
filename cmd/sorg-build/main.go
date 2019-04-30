@@ -1615,7 +1615,7 @@ func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) (
 }
 
 func tasksForPages() ([]*pool.Task, error) {
-	meta, err := ioutil.ReadFile(path.Join(sorg.PagesDir, "meta.yaml"))
+	meta, err := ioutil.ReadFile(path.Join(sorg.PagesDir, "_meta.yaml"))
 	if err != nil {
 		return nil, fmt.Errorf("Error reading pages metadata: %v", err)
 	}
