@@ -8,7 +8,7 @@ import (
 )
 
 func TestRender(t *testing.T) {
-	talk, err := Render("../content", "../content/talks-drafts", "paradise-lost.md", true)
+	talk, err := Render("../content", "../content/talks-drafts", "paradise-lost.md")
 	assert.NoError(t, err)
 
 	assert.Equal(t, true, talk.Draft)
