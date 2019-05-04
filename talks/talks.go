@@ -82,6 +82,26 @@ func (t *Talk) PublishingInfo() string {
 		sorg.TwitterInfo
 }
 
+func (t *Talk) validate(source string) error {
+	if t.Event == "" {
+		return fmt.Errorf("No event for talk: %v", source)
+	}
+
+	if t.Location == "" {
+		return fmt.Errorf("No location for talk: %v", source)
+	}
+
+	if t.Title == "" {
+		return fmt.Errorf("No title for talk: %v", source)
+	}
+
+	if t.PublishedAt == nil {
+		return fmt.Errorf("No publish date for talk: %v", source)
+	}
+
+	return nil
+}
+
 // Compile reads a talk file and builds a Talk object from it.
 func Compile(contentDir, dir, name string, draft bool) (*Talk, error) {
 	inPath := path.Join(dir, name)
@@ -105,20 +125,9 @@ func Compile(contentDir, dir, name string, draft bool) (*Talk, error) {
 	talk.Draft = draft
 	talk.Slug = strings.Replace(name, ".md", "", -1)
 
-	if talk.Event == "" {
-		return nil, fmt.Errorf("No event for talk: %v", inPath)
-	}
-
-	if talk.Location == "" {
-		return nil, fmt.Errorf("No location for talk: %v", inPath)
-	}
-
-	if talk.Title == "" {
-		return nil, fmt.Errorf("No title for talk: %v", inPath)
-	}
-
-	if talk.PublishedAt == nil {
-		return nil, fmt.Errorf("No publish date for talk: %v", inPath)
+	err = talk.validate(inPath)
+	if err != nil {
+		return nil, err
 	}
 
 	talk.Slides, err = splitAndRenderSlides(contentDir, &talk, content)
