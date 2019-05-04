@@ -11,15 +11,12 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-var renderFuncs = []func(string, *RenderOptions) string{
-	// pre-transformations
+var preTransformationFuncs = []func(string, *RenderOptions) string{
 	transformFigures,
 	transformHeaders,
+}
 
-	// main Markdown rendering
-	renderMarkdown,
-
-	// post-transformations
+var postTransformationFuncs = []func(string, *RenderOptions) string{
 	transformCodeWithLanguagePrefix,
 	transformSections,
 	transformFootnotes,
@@ -43,13 +40,40 @@ type RenderOptions struct {
 	NoRetina bool
 }
 
+// render is Markdown rendering function from Blackfriday that's been
+// pre-composed into our the stack of our transformation functions.
+var render func(string, *RenderOptions) string
+
+// init runs on package initialization.
+func init() {
+	render = ComposeRenderStack(func(source []byte) []byte {
+		return blackfriday.Run(source)
+	})
+}
+
+// ComposeRenderStack takes a Markdown render function and composes it into a
+// stack of functions along with sorg's "middleware" that performs various
+// duties like adding header links and footnotes..
+func ComposeRenderStack(renderF func([]byte) []byte) func(string, *RenderOptions) string {
+	return func(source string, options *RenderOptions) string {
+		for _, f := range preTransformationFuncs {
+			source = f(source, options)
+		}
+
+		source = string(renderF([]byte(source)))
+
+		for _, f := range postTransformationFuncs {
+			source = f(source, options)
+		}
+
+		return source
+	}
+}
+
 // Render a Markdown string to HTML while applying all custom project-specific
 // filters including footnotes and stable header links.
 func Render(source string, options *RenderOptions) string {
-	for _, f := range renderFuncs {
-		source = f(source, options)
-	}
-	return source
+	return render(source, options)
 }
 
 // Look for any whitespace between HTML tags.

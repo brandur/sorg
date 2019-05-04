@@ -17,10 +17,6 @@ func TestRender(t *testing.T) {
 	assert.Equal(t, "<p><strong>strong</strong></p>\n", Render("**strong**", nil))
 }
 
-func TestRenderMarkdown(t *testing.T) {
-	assert.Equal(t, "<p><strong>strong</strong></p>\n", renderMarkdown("**strong**", nil))
-}
-
 func TestTransformCodeWithLanguagePrefix(t *testing.T) {
 	assert.Equal(t,
 		`<code class="language-ruby">`,
