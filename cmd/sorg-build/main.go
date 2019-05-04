@@ -1382,8 +1382,8 @@ func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
 	return passage, nil
 }
 
-func compileTalk(dir, name string, draft bool) (*talks.Talk, error) {
-	talk, err := talks.Render(sorg.ContentDir, dir, name, draft)
+func compileTalk(dir, name string) (*talks.Talk, error) {
+	talk, err := talks.Render(sorg.ContentDir, dir, name)
 	if err != nil {
 		return nil, err
 	}
@@ -1751,14 +1751,14 @@ func tasksForSequencesDir(dir string) ([]*pool.Task, error) {
 }
 
 func tasksForTalks(talkChan chan *talks.Talk) ([]*pool.Task, error) {
-	tasks, err := tasksForTalksDir(talkChan, sorg.ContentDir+"/talks", false)
+	tasks, err := tasksForTalksDir(talkChan, sorg.ContentDir+"/talks")
 	if err != nil {
 		return nil, fmt.Errorf("Error getting talk tasks: %v", err)
 	}
 
 	if conf.Drafts {
 		draftTasks, err := tasksForTalksDir(talkChan,
-			sorg.ContentDir+"/talks-drafts", true)
+			sorg.ContentDir+"/talks-drafts")
 		if err != nil {
 			return nil, fmt.Errorf("Error getting talk draft tasks: %v", err)
 		}
@@ -1769,7 +1769,7 @@ func tasksForTalks(talkChan chan *talks.Talk) ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForTalksDir(talkChan chan *talks.Talk, dir string, draft bool) ([]*pool.Task, error) {
+func tasksForTalksDir(talkChan chan *talks.Talk, dir string) ([]*pool.Task, error) {
 	talkInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
@@ -1789,7 +1789,7 @@ func tasksForTalksDir(talkChan chan *talks.Talk, dir string, draft bool) ([]*poo
 
 		name := talkInfo.Name()
 		tasks = append(tasks, pool.NewTask(func() error {
-			talk, err := compileTalk(dir, name, draft)
+			talk, err := compileTalk(dir, name)
 			if err != nil {
 				return err
 			}

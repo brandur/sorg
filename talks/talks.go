@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -103,7 +104,7 @@ func (t *Talk) validate(source string) error {
 }
 
 // Render reads a talk file and builds a Talk object from it.
-func Render(contentDir, dir, name string, draft bool) (*Talk, error) {
+func Render(contentDir, dir, name string) (*Talk, error) {
 	inPath := path.Join(dir, name)
 
 	raw, err := ioutil.ReadFile(inPath)
@@ -122,7 +123,7 @@ func Render(contentDir, dir, name string, draft bool) (*Talk, error) {
 		return nil, err
 	}
 
-	talk.Draft = draft
+	talk.Draft = strings.Contains(filepath.Base(dir), "drafts")
 	talk.Slug = strings.Replace(name, ".md", "", -1)
 
 	err = talk.validate(inPath)
