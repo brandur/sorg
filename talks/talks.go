@@ -102,8 +102,8 @@ func (t *Talk) validate(source string) error {
 	return nil
 }
 
-// Compile reads a talk file and builds a Talk object from it.
-func Compile(contentDir, dir, name string, draft bool) (*Talk, error) {
+// Render reads a talk file and builds a Talk object from it.
+func Render(contentDir, dir, name string, draft bool) (*Talk, error) {
 	inPath := path.Join(dir, name)
 
 	raw, err := ioutil.ReadFile(inPath)

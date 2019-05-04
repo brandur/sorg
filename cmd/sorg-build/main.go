@@ -1383,7 +1383,7 @@ func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
 }
 
 func compileTalk(dir, name string, draft bool) (*talks.Talk, error) {
-	talk, err := talks.Compile(sorg.ContentDir, dir, name, draft)
+	talk, err := talks.Render(sorg.ContentDir, dir, name, draft)
 	if err != nil {
 		return nil, err
 	}

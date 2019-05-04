@@ -7,8 +7,8 @@ import (
 	assert "github.com/stretchr/testify/require"
 )
 
-func TestCompile(t *testing.T) {
-	talk, err := Compile("../content", "../content/talks-drafts", "paradise-lost.md", true)
+func TestRender(t *testing.T) {
+	talk, err := Render("../content", "../content/talks-drafts", "paradise-lost.md", true)
 	assert.NoError(t, err)
 
 	assert.Equal(t, true, talk.Draft)
