@@ -1499,12 +1499,16 @@ func linkImages() error {
 	// Also make sure to maintain a link for `passages` at the root for
 	// backwards compatibility (so that links in existing emails will still
 	// work).
-	err := ensureSymlink(sorg.ContentDir+"/images/passages",
+	err = ensureSymlink(sorg.ContentDir+"/images/passages",
 		conf.TargetDir+"/assets/passages")
 	if err != nil {
 		return err
 	}
 
+	// Older style: go and link every individual directory under
+	// `content/images` to have its own in `/assets` as well. We can probably
+	// get rid of this code eventually at the cost of breaking some hotlinking
+	// around.
 	assets, err := ioutil.ReadDir(sorg.ContentDir + "/images")
 	if err != nil {
 		return err
