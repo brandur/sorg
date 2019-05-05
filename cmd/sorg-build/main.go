@@ -1490,8 +1490,17 @@ func linkImages() error {
 
 	// This is the format we're moving to -- one directory under assets for all
 	// images, instead of a separate symlink for each article.
-	err := ensureSymlink(sorg.ContentDir + "/images",
-		conf.TargetDir + "/assets/images")
+	err := ensureSymlink(sorg.ContentDir+"/images",
+		conf.TargetDir+"/assets/images")
+	if err != nil {
+		return err
+	}
+
+	// Also make sure to maintain a link for `passages` at the root for
+	// backwards compatibility (so that links in existing emails will still
+	// work).
+	err := ensureSymlink(sorg.ContentDir+"/images/passages",
+		conf.TargetDir+"/assets/passages")
 	if err != nil {
 		return err
 	}
