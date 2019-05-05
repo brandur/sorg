@@ -1488,6 +1488,14 @@ func linkImages() error {
 		log.Debugf("Linked image assets in %v.", time.Now().Sub(start))
 	}()
 
+	// This is the format we're moving to -- one directory under assets for all
+	// images, instead of a separate symlink for each article.
+	err := ensureSymlink(sorg.ContentDir + "/images",
+		conf.TargetDir + "/assets/images")
+	if err != nil {
+		return err
+	}
+
 	assets, err := ioutil.ReadDir(sorg.ContentDir + "/images")
 	if err != nil {
 		return err
