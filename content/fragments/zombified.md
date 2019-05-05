@@ -29,7 +29,7 @@ certainly happening on my home machine too, and it couldn't give me a shell
 because every available file descriptor had been devoured by Ruby to
 communicate with its zombies.
 
-![Zombies](/assets/fragments/zombified/zombies.png)
+![Zombies](/assets/images/fragments/zombified/zombies.png)
 
 So what went wrong? I eyeballed my code and looked at the line where I was
 shelling out to rclone. I'm using Ruby's `IO.popen` to get better control over

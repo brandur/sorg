@@ -79,22 +79,22 @@ A few random observations about the city:
   exceptional cocktail bar therein.
 
 <!-- The High Line -->
-<a href="https://www.flickr.com/photos/brandurleach/14653593255/"><img src="/assets/fragments/new-york/high-line.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/14653593255/"><img src="/assets/images/fragments/new-york/high-line.jpg"></a>
 
 <!-- Washington Square Park -->
-<a href="https://www.flickr.com/photos/brandurleach/14653221392/"><img src="/assets/fragments/new-york/washington-square-park.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/14653221392/"><img src="/assets/images/fragments/new-york/washington-square-park.jpg"></a>
 
 <!-- Met -->
-<a href="https://www.flickr.com/photos/brandurleach/14466989119/"><img src="/assets/fragments/new-york/met.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/14466989119/"><img src="/assets/images/fragments/new-york/met.jpg"></a>
 
 <!-- 5th Ave Apple Cube -->
-<a href="https://www.flickr.com/photos/brandurleach/14467196207/"><img src="/assets/fragments/new-york/apple-store.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/14467196207/"><img src="/assets/images/fragments/new-york/apple-store.jpg"></a>
 
 <!-- Don't block the box -->
-<a href="https://www.flickr.com/photos/brandurleach/14673526443/"><img src="/assets/fragments/new-york/dont-block-the-box.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/14673526443/"><img src="/assets/images/fragments/new-york/dont-block-the-box.jpg"></a>
 
 <!-- Rockefeller -->
-<a href="https://www.flickr.com/photos/brandurleach/14467182087/"><img src="/assets/fragments/new-york/rockefeller.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/14467182087/"><img src="/assets/images/fragments/new-york/rockefeller.jpg"></a>
 
 [block-the-box]: http://en.wikipedia.org/wiki/Gridlock#New_York_City
 [high-line]: http://en.wikipedia.org/wiki/High_Line_(New_York_City)

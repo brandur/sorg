@@ -11,7 +11,7 @@ Using an external PC keyboard is a more tricky because it probably won't have
 either a power or eject button. To get one working, install
 [Karabiner][karabiner] and remap Pause/Break to Power:
 
-![Karabiner settings](/assets/fragments/fast-osx-lock/karabiner.png)
+![Karabiner settings](/assets/images/fragments/fast-osx-lock/karabiner.png)
 
 `Ctrl` + `Shift` + `Break` will now trigger the lock.
 

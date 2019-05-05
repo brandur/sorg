@@ -19,7 +19,7 @@ bundled up into a ["Lambda deployment package"][package]
 (as simple as a ZIP file with a binary in it), and added to
 a new Lambda function by selecting "Go 1.x" as a runtime.
 
-!fig src="/assets/go-lambda/create-function.png" caption="Prompt for creating a new function on Lambda."
+!fig src="/assets/images/go-lambda/create-function.png" caption="Prompt for creating a new function on Lambda."
 
 Go fans around the world are undoubtedly celebrating the
 addition, but Gopher or not, this is a big step forward for
@@ -63,7 +63,7 @@ availability. Given that Lambda [will be four years old
 this year][history], it doesn't seem likely that Amazon
 will be able to to address this deficiency anytime soon.
 
-!fig src="/assets/go-lambda/mountain.jpg" caption="Go 1.x's longevity is so impressive that it feels like a part of the landscape."
+!fig src="/assets/images/go-lambda/mountain.jpg" caption="Go 1.x's longevity is so impressive that it feels like a part of the landscape."
 
 ## The remarkable tenacity of 1.x (#tenacity)
 

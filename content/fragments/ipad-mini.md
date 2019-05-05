@@ -1,7 +1,7 @@
 ---
 title: The iPad Mini
 published_at: 2016-06-12T22:26:17Z
-image: /assets/fragments/ipad-mini/vista.jpg
+image: /assets/images/fragments/ipad-mini/vista.jpg
 hook: An ode to one of my favorite Apple devices.
 ---
 

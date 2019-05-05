@@ -18,7 +18,7 @@ the time, so as you can imagine, I was pleasantly surprised when I had it in my
 hands roughly three days after ordering. Better to underpromise and overdeliver
 I guess.
 
-![The 12" MacBook](/assets/macbook-12/macbook-12.jpg)
+![The 12" MacBook](/assets/images/macbook-12/macbook-12.jpg)
 
 ## The good (#good)
 

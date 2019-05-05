@@ -23,7 +23,7 @@ we're all used to it.
 <figure>
   <p>
     <video controls loop class="overflowing">
-      <source src="/assets/interfaces/slack-45s.mp4" type="video/mp4">
+      <source src="/assets/images/interfaces/slack-45s.mp4" type="video/mp4">
     </video>
   </p>
   <figcaption>This is a video of me waiting for Slack
@@ -50,7 +50,7 @@ animations a thousand times a day, are perfectly normal.
 
 <figure>
   <p>
-    <img src="/assets/interfaces/yahoo-1995.jpg" class="overflowing">
+    <img src="/assets/images/interfaces/yahoo-1995.jpg" class="overflowing">
   </p>
   <figcaption>Yahoo circa 1995.</figcaption>
 </figure>
@@ -133,7 +133,7 @@ Mac OS app, or switching between tabs in mobile Safari.
 <figure>
   <p>
     <video controls loop class="overflowing">
-      <source src="/assets/interfaces/1password.mp4" type="video/mp4">
+      <source src="/assets/images/interfaces/1password.mp4" type="video/mp4">
     </video>
   </p>
   <figcaption>1Password's unlock animation. The stuttering
@@ -144,7 +144,7 @@ Mac OS app, or switching between tabs in mobile Safari.
 <figure>
   <p>
     <video controls loop class="overflowing">
-      <source src="/assets/interfaces/spaces.mp4" type="video/mp4">
+      <source src="/assets/images/interfaces/spaces.mp4" type="video/mp4">
     </video>
   </p>
   <figcaption>OS X Spaces, introduced in Leopard. A
@@ -158,7 +158,7 @@ all the flourishes in this class -- they look great in
 screenshots and demos, but don't advance our ability to be
 productive; in fact, they do the opposite.
 
-!fig src="/assets/interfaces/cmd-tab.png" caption="Will Cmd + Tab be the next victim of overzealous animation?"
+!fig src="/assets/images/interfaces/cmd-tab.png" caption="Will Cmd + Tab be the next victim of overzealous animation?"
 
 I live in fear that one day Apple will realize that they've
 left a gaping hole in their UX strategy and that task
@@ -181,7 +181,7 @@ obscure content. The list goes on.
 <figure>
   <p>
     <video controls loop class="overflowing">
-      <source src="/assets/interfaces/terminal.mp4" type="video/mp4">
+      <source src="/assets/images/interfaces/terminal.mp4" type="video/mp4">
     </video>
   </p>
   <figcaption>Contrary to any "modern" interfaces, a
@@ -223,7 +223,7 @@ Here's why I like using terminals and terminal programs:
 <figure>
   <p>
     <video controls loop class="overflowing">
-      <source src="/assets/interfaces/uncomposable.mp4" type="video/mp4">
+      <source src="/assets/images/interfaces/uncomposable.mp4" type="video/mp4">
     </video>
   </p>
   <figcaption>Modern UIs have next to zero composability.
@@ -251,7 +251,7 @@ video][minority-report] of it in action.
 <figure>
   <p>
     <a href="https://www.youtube.com/watch?v=PJqbivkm0Ms">
-      <img src="/assets/interfaces/minority-report.jpg" srcset="/assets/interfaces/minority-report@2x.jpg 2x, /assets/interfaces/minority-report.jpg 1x" class="overflowing">
+      <img src="/assets/images/interfaces/minority-report.jpg" srcset="/assets/images/interfaces/minority-report@2x.jpg 2x, /assets/images/interfaces/minority-report.jpg 1x" class="overflowing">
     </a>
   </p>
   <figcaption>A futuristic and unrealistic concept interface:

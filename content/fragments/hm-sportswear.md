@@ -18,7 +18,7 @@ discontinued the line.
 More recently, I've been using Nike "Dri Fit" shirts that have a great cut,
 have great breathability, and dry very quickly as advertised (pictured below).
 
-![Nike sleeveless](/assets/fragments/hm-sportswear/nike.jpg)
+![Nike sleeveless](/assets/images/fragments/hm-sportswear/nike.jpg)
 
 The trouble with the Nike shirts is that they can be difficult to get (even on
 Amazon, they're available only sporadically in random combinations of colors
@@ -30,7 +30,7 @@ very similar to Nike's and is functionally identical. Even better, it has H&M's
 signature minimalism, and doesn't come with the equivalent of twenty Nike
 swooshes tattooed all over it.
 
-![H&M sleeveless](/assets/fragments/hm-sportswear/hm.jpg)
+![H&M sleeveless](/assets/images/fragments/hm-sportswear/hm.jpg)
 
 But the best part? It's priced at $12.99, $15+ or more cheaper compared to its
 Nike alternative. Considering that both shirts are manufactured in developing

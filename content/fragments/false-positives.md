@@ -2,7 +2,7 @@
 title: "False positives in UI design: when small buttons
     are better than big ones"
 published_at: 2019-04-27T16:40:42Z
-image: /assets/fragments/false-positives/vista.jpg
+image: /assets/images/fragments/false-positives/vista.jpg
 hook: Why smaller buttons on phones produce a better
   lifetime experience, even if their learning curve is a
   little more challenging.
@@ -23,7 +23,7 @@ resting on the phone's power button, which is so big that
 there's no way for your thumb _not_ to be resting on it.
 The screen turns off. You turn it back on and start over.
 
-![The iPhone XR's huge buttons.](/assets/fragments/false-positives/iphone-xr.jpg)
+![The iPhone XR's huge buttons.](/assets/images/fragments/false-positives/iphone-xr.jpg)
 
 At first glance big buttons might strike you as a feature,
 and when you first start using a device, they are. Bigger
@@ -63,7 +63,7 @@ little bigger, but also small and stiff. Despite the
 reduced size, after just a few days getting used to the
 device, all of them are easy to find by feel.
 
-![The iPhone 4's small buttons.](/assets/fragments/false-positives/iphone-4.jpg)
+![The iPhone 4's small buttons.](/assets/images/fragments/false-positives/iphone-4.jpg)
 
 Bigger buttons may be initially more user friendly, but
 over the lifetime of ownership, think about where on the

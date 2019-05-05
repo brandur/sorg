@@ -22,4 +22,4 @@ drag one end of Bedtime's big circular slider -- a huge improvement.
 Now if only it would make me enter the number sequence from _Lost_ before
 letting me to hit the snooze button.
 
-![Screenshot of Apple Bedtime](/assets/fragments/apple-bedtime/apple-bedtime.png)
+![Screenshot of Apple Bedtime](/assets/images/fragments/apple-bedtime/apple-bedtime.png)

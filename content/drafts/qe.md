@@ -1,6 +1,6 @@
 ---
 hook: Quantitative easing explained in a pragmatic way (and with an example).
-image: "/assets/qe/qe2.jpg"
+image: "/assets/images/qe/qe2.jpg"
 location: San Francisco
 published_at: 2014-01-31T06:15:17Z
 title: Quantitative Easing for Hackers

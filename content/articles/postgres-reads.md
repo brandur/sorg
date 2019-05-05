@@ -28,7 +28,7 @@ updating, or deleting just a single record. Reads on the
 other hand are often more elaborate, and by extension, more
 expensive.
 
-!fig src="/assets/postgres-reads/replica-reads.svg" caption="Writes on the primary and reads on its replicas."
+!fig src="/assets/images/postgres-reads/replica-reads.svg" caption="Writes on the primary and reads on its replicas."
 
 Even as part of a normal application's workload (barring
 analytical queries that can be even more complex), we might
@@ -50,7 +50,7 @@ that have been committed to the primary. A user might
 update some key details, and then go to view their changes
 and see stale data representing the pre-update state.
 
-!fig src="/assets/postgres-reads/stale-read.svg" caption="A stale read that went to a replica that hadn't yet applied changes from the primary."
+!fig src="/assets/images/postgres-reads/stale-read.svg" caption="A stale read that went to a replica that hadn't yet applied changes from the primary."
 
 Stale reads are a race condition. Modern databases
 operating over low latency connections can keep replicas
@@ -97,7 +97,7 @@ emitted WAL. A base backup comes with a pointer to the
 current LSN so that when a replica starts to consume the
 WAL, it knows where to start.
 
-!fig src="/assets/postgres-reads/replicas-and-wal.svg" caption="A replica being initialized from base backup and consuming its primary's WAL."
+!fig src="/assets/images/postgres-reads/replicas-and-wal.svg" caption="A replica being initialized from base backup and consuming its primary's WAL."
 
 There are a few ways for a replica to consume WAL. The
 first is "log shipping": completed WAL segments (16 MB
@@ -144,7 +144,7 @@ initial write), we'll fall back to the master. Stale reads
 become impossible regardless of the state of any given
 replica.
 
-!fig src="/assets/postgres-reads/routing.svg" caption="Routing read operations based on replica progress in the WAL."
+!fig src="/assets/images/postgres-reads/routing.svg" caption="Routing read operations based on replica progress in the WAL."
 
 The technique is inspired by [GitLab's article on scaling
 their database][gitlab], where they refer to it as "sticky

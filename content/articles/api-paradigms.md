@@ -136,7 +136,7 @@ exciting though is the organic uptake, with many smaller
 companies with a better opportunity to greenfield starting
 with it instead of REST.
 
-!fig src="/assets/api-paradigms/graphql.jpg" caption="GraphQL produces an API that can be queried in complex ways."
+!fig src="/assets/images/api-paradigms/graphql.jpg" caption="GraphQL produces an API that can be queried in complex ways."
 
 It has many advantages: built-in introspection so
 developers can use tools to navigate through an API they're
@@ -198,7 +198,7 @@ us (e.g. `create_charge()`, `update_customer(id:)`,
 `delete_subscription(id:)`), and as a developer be just as
 pleasant to use.
 
-!fig src="/assets/api-paradigms/rpc-vs-rest.svg" caption="By dropping a resource-based world view, we can better map endpoints to the user actions."
+!fig src="/assets/images/api-paradigms/rpc-vs-rest.svg" caption="By dropping a resource-based world view, we can better map endpoints to the user actions."
 
 Dropping REST's resource-based world view also has the
 advantage of letting designers better map their endpoints
@@ -229,7 +229,7 @@ providers, but these libraries could be designed according
 to the local conventions of each language, making them a
 pleasure to integrate with.
 
-!fig src="/assets/api-paradigms/bespoke.jpg" caption="Some tooling to help create a bespoke leather product."
+!fig src="/assets/images/api-paradigms/bespoke.jpg" caption="Some tooling to help create a bespoke leather product."
 
 Strong typing could be used to make sure that the compiler
 catches as many bugs as possible without a round trip to

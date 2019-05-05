@@ -19,7 +19,7 @@ Peaks before returning through the Castro and the Mission. My usual routes
 around Heroku's office in SOMA included pretty healthy total distances, but
 nowhere near this level of elevation gain or variation in terrain.
 
-!fig src="/assets/stripe-running/triple-peaks.png" caption="The daunting Triple Peaks run in San Francisco."
+!fig src="/assets/images/stripe-running/triple-peaks.png" caption="The daunting Triple Peaks run in San Francisco."
 
 ## Analysis (#analysis)
 

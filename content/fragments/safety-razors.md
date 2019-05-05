@@ -12,7 +12,7 @@ safety razors for a year now, and can confidently say that nothing is further
 from the truth. I wanted to do a write-up to correct a few misconceptions, and
 try to sell the idea a bit.
 
-<a href="https://www.flickr.com/photos/brandurleach/23656853583/"><img src="/assets/fragments/safety-razors/razor.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/23656853583/"><img src="/assets/images/fragments/safety-razors/razor.jpg"></a>
 
 ## Why you should try it (#why)
 

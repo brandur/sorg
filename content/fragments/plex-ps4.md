@@ -34,7 +34,7 @@ the bird scene from the beginning of the first episode of _Planet Earth_ and it
 did lag considerably, but I'm glad to say though that this was the only
 instance of this problem that I ran into.
 
-![Bird Scene](/assets/fragments/plex-ps4/bird-scene.jpg)
+![Bird Scene](/assets/images/fragments/plex-ps4/bird-scene.jpg)
 
 The PS4 version of Plex is far from the best client out there, but I'm now set
 up so that my PS4 handles all my videos, music (via Spotify), and gaming so I'm

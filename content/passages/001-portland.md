@@ -36,7 +36,7 @@ family of short, self-indulgent stories about what I've
 been doing, and some favorite things in products and
 software.
 
-![Glass](/assets/passages/001-portland/DSCF5479@2x.jpg)
+![Glass](/assets/images/passages/001-portland/DSCF5479@2x.jpg)
 
 _Passages_ refers to the routes that we use to get from one
 point to another, like Hannibal's passage through the Alps,
@@ -75,7 +75,7 @@ clerks and strangers strike you up for conversation. While
 in the back of a rideshare, drivers tell meaningful stories
 about their lives in the area.
 
-![Portland](/assets/passages/001-portland/L1010468@2x.jpg)
+![Portland](/assets/images/passages/001-portland/L1010468@2x.jpg)
 
 The city's beautiful. Calm and well-maintained downtown
 streets spread out to become eclectic inner city suburbs
@@ -116,7 +116,7 @@ of waiting in the hour-long lineup back home in their new
 location on Fillmore St, we waited in the lineup in their
 home city -- much more reasonable at a mere 45 minutes.
 
-![Salt & Straw](/assets/passages/001-portland/L1010474@2x.jpg)
+![Salt & Straw](/assets/images/passages/001-portland/L1010474@2x.jpg)
 
 Keiko seemed a little agitated during our time in line. I
 assumed this was typical ice-cream-induced anxiety, but it
@@ -160,7 +160,7 @@ drink on the bike itself, we ranged around the downtown
 core and stopped at a few of its abundant breweries and
 bars.
 
-![Brewcycle](/assets/passages/001-portland/L1010517@2x.jpg)
+![Brewcycle](/assets/images/passages/001-portland/L1010517@2x.jpg)
 
 We loaded twelve people and a driver onto the thing. I've
 been known to bike on occasion, and in my mind's eye I
@@ -192,7 +192,7 @@ day hike along the [Trail of Ten Falls][tenfalls] in
 Silver Falls State Park (Oregon's largest state park at
 over 9,000 acres).
 
-![Waterfall](/assets/passages/001-portland/L1010633@2x.jpg)
+![Waterfall](/assets/images/passages/001-portland/L1010633@2x.jpg)
 
 In terms of visible natural beauty on a per mile basis,
 this hike is one of the best you'll ever find. The falls
@@ -200,7 +200,7 @@ vary wildly in size, but there are ten of them, and the
 largest have a dreamy Middle-Earthian quality as they pour
 from tall cliffs into tranquil mountain streams.
 
-![Waterfall](/assets/passages/001-portland/L1010739@2x.jpg)
+![Waterfall](/assets/images/passages/001-portland/L1010739@2x.jpg)
 
 After the trip, we stopped off for some much needed beers
 in Salem, the capital of Oregon which is located a little
@@ -227,7 +227,7 @@ about a shoe before. I just ordered another three pairs of
 Flyknit Racers because I'm worried that I'll never find
 footwear that I like this much again.
 
-![Flyknit Racers](/assets/passages/001-portland/L1010970@2x.jpg)
+![Flyknit Racers](/assets/images/passages/001-portland/L1010970@2x.jpg)
 
 It's also my secret weapon when it comes to travel. When I
 take a trip, I don't take any footwear beyond what I have

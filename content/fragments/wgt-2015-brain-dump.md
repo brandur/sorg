@@ -129,7 +129,7 @@ had some incredible stage presence and worked in instruments like the harp.
 Midway through, they pulled in a guest dancer to further augment the
 performance.
 
-<a href="https://www.flickr.com/photos/brandurleach/18088159106/"><img src="/assets/fragments/wgt-2015-brain-dump/leaf.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/18088159106/"><img src="/assets/images/fragments/wgt-2015-brain-dump/leaf.jpg"></a>
 
 ### Ashes You Leave (#ashes-you-leave)
 
@@ -186,7 +186,7 @@ the kind of thing that so hypnotizes you that you feel a chill running down
 your spine as you sit enraptured by the music. You just want the moment to hold
 still forever. The perfect acoustics of the Schauspielhaus didn't hurt either.
 
-<a href="https://www.flickr.com/photos/brandurleach/17437946353/"><img src="/assets/fragments/wgt-2015-brain-dump/jo-quail.jpg"></a>
+<a href="https://www.flickr.com/photos/brandurleach/17437946353/"><img src="/assets/images/fragments/wgt-2015-brain-dump/jo-quail.jpg"></a>
 
 ### Owls (#owls)
 

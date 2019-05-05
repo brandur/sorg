@@ -21,7 +21,7 @@ the official [AWS CLI][awscli], that looks like this:
 aws s3 sync ./public/ s3://$S3_BUCKET/ --acl public-read --content-type text/html --delete --exclude 'assets*'
 
 # Assets (CSS, images, JS)
-aws s3 sync ./public/assets/ s3://$S3_BUCKET/assets/ --acl public-read --delete
+aws s3 sync ./public/assets/images/ s3://$S3_BUCKET/assets/images/ --acl public-read --delete
 ```
 
 This works because S3 remembers the content type of an object that's uploaded

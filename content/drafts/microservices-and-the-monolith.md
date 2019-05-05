@@ -46,7 +46,7 @@ initial puff pieces:
   many different places. It's hard to gain company-wide
   leverage by sharing work.
 
-!fig src="/assets/microservices-and-the-monolith/monolith.jpg" caption="Something to remind you of a monolith."
+!fig src="/assets/images/microservices-and-the-monolith/monolith.jpg" caption="Something to remind you of a monolith."
 
 ## The monolith's cracks (#cracks)
 

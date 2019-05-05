@@ -62,7 +62,7 @@ of these "backend" processes starts out at around 5 MB in
 size, but may grow to be much larger depending on the data
 they're accessing [1].
 
-!fig src="/assets/postgres-connections/process-model.svg" caption="A simplified view of Postgres' forking process model."
+!fig src="/assets/images/postgres-connections/process-model.svg" caption="A simplified view of Postgres' forking process model."
 
 Since these days it's pretty easy to procure a system where
 memory is abundant, the absolute memory ceiling often isn't
@@ -147,7 +147,7 @@ transaction. You can see from the results that performance
 degrades slowly but surely as more active clients are
 introduced:
 
-!fig src="/assets/postgres-connections/contention.png" caption="Performance of a simple task degrading as the number of active connections in the database increases."
+!fig src="/assets/images/postgres-connections/contention.png" caption="Performance of a simple task degrading as the number of active connections in the database increases."
 
 So while it might be a little irking that platforms like
 Google Cloud and Heroku limit the total connections even on
@@ -175,7 +175,7 @@ built into many database adapters including Go's
 [`database/sql`][databasesql], Java's [JDBC][jdbc], or
 Active Record in Ruby.
 
-!fig src="/assets/postgres-connections/connection-pooling.svg" caption="A deployment with a number of nodes, each of which maintains a local pool of connections for their workers to use."
+!fig src="/assets/images/postgres-connections/connection-pooling.svg" caption="A deployment with a number of nodes, each of which maintains a local pool of connections for their workers to use."
 
 Connection pools also help manage connections more
 efficiently. They're configured with a maximum number of
@@ -209,7 +209,7 @@ that logic is executed there's a similar phase at the end
 where it's serializing and sending the response, emitting
 metrics, performing logging, and so on.
 
-!fig src="/assets/postgres-connections/minimum-viable-checkout.svg" caption="Workers should only hold connections as long as they're needed. There's work before and after core application logic where no connection is needed."
+!fig src="/assets/images/postgres-connections/minimum-viable-checkout.svg" caption="Workers should only hold connections as long as they're needed. There's work before and after core application logic where no connection is needed."
 
 Workers should only have a connection checked out of the
 pool while that core logic is executing. This **minimum
@@ -277,7 +277,7 @@ operation:
   which point it's losing a big advantage of using
   Postgres in the first place.
 
-!fig src="/assets/postgres-connections/pgbouncer.svg" caption="Using PgBouncer to maintain a global connection pool to optimize connection use across all nodes."
+!fig src="/assets/images/postgres-connections/pgbouncer.svg" caption="Using PgBouncer to maintain a global connection pool to optimize connection use across all nodes."
 
 Transaction pooling is the best strategy for applications
 that are already making effective use of a node-local

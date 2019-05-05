@@ -85,7 +85,7 @@ the static site's URL `https://brandur.org` along with its
 own `https://passages-signup.herokuapp.com`, and will
 allow form submissions from either origin.
 
-!fig src="/assets/fragments/origin/submit.svg" caption="Submitting a form from a static site to a dynamic signup app."
+!fig src="/assets/images/fragments/origin/submit.svg" caption="Submitting a form from a static site to a dynamic signup app."
 
 I also "solved" (with a hammer) the app unidle wait by
 having the static newsletter page try to load a tiny image

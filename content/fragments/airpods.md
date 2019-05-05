@@ -1,7 +1,7 @@
 ---
 title: AirPods
 published_at: 2017-03-29T14:44:33Z
-image: /assets/fragments/airpods/vista.jpg
+image: /assets/images/fragments/airpods/vista.jpg
 hook: I'm happy to be cheering from the bleachers as Apple
   makes their first home run in years.
 ---

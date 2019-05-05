@@ -53,7 +53,7 @@ Here are some screenshots of what the iCloud preference
 panes should look like on Mac OS and iOS (note that iBooks
 is checked in both cases).
 
-![Mac OS](/assets/fragments/apple-sharing/icloud-macos.png)
+![Mac OS](/assets/images/fragments/apple-sharing/icloud-macos.png)
 
-![iOS](/assets/fragments/apple-sharing/icloud-ios.png)
+![iOS](/assets/images/fragments/apple-sharing/icloud-ios.png)
 

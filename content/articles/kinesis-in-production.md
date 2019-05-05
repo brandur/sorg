@@ -25,7 +25,7 @@ First off, we have put latency on the side of our producer. These metrics are ge
 As seen in the chart below, P50 manages to stay right around the 35 ms mark very consistently. P95 is usually right around 100 ms and P99 closer to 200 ms, but we don't see 300 ms broken under these metrics.
 
 <figure>
-  <p><img src="/assets/kinesis-in-production/kinesis-put-record-latency.png"></p>
+  <p><img src="/assets/images/kinesis-in-production/kinesis-put-record-latency.png"></p>
   <figcaption>P50, P95, and P99 for bulk puts (seconds). P50 hovers around 35 ms.</figcaption>
 </figure>
 
@@ -34,7 +34,7 @@ _(My apologies for these charts by the way, it seems that utilitarian things lik
 Next up: time to fetch records from a Kinesis shard. As above, these numbers are from within the same region as the Kinesis stream and are bulk operations in that the consumers will fetch as many unconsumed records as are available. Reads from a Kinesis stream seem to be a little slower than writes, and we see P50 closer to 150 ms with P95 around 1 s and P99 a little over 2 s.
 
 <figure>
-  <p><img src="/assets/kinesis-in-production/kinesis-get-record-latency.png"></p>
+  <p><img src="/assets/images/kinesis-in-production/kinesis-get-record-latency.png"></p>
   <figcaption>P50, P95, and P99 for fetching records (seconds). P50 hovers around 150 ms.</figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ Lastly, let's take a look at the total time that it takes a record to traverse t
 P50 on this total throughput time sits right around 1.5 s, with P95 and P99 sitting a little further out around 5 s.
 
 <figure>
-  <p><img src="/assets/kinesis-in-production/kinesis-throughput-latency.png"></p>
+  <p><img src="/assets/images/kinesis-in-production/kinesis-throughput-latency.png"></p>
   <figcaption>P50, P95, and P99 of time from production to consumption. P50 hovers around 1.50 s.</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ Given that each shard already has a hard limit on input/output, I don't complete
 To help illustrate the problem, here's a chart of the number of "throughput exceeded" errors stemming from the read limit that our consumers ran into just over the past 30 minutes. This is only three consumers hitting a low throughput stream once a second.
 
 <figure>
-  <p><img src="/assets/kinesis-in-production/kinesis-throughput-exceeded.png"></p>
+  <p><img src="/assets/images/kinesis-in-production/kinesis-throughput-exceeded.png"></p>
   <figcaption>Number of errors encountered due to read limits on a low volume stream over 30 minutes.</figcaption>
 </figure>
 

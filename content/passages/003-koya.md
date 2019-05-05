@@ -4,7 +4,7 @@ title: Mount Kōya, Ancient Baths, and Exacting
 published_at: 2018-06-23T15:31:47Z
 ---
 
-![The Kumano Kodo](/assets/passages/003-koya/shining-light@2x.jpg)
+![The Kumano Kodo](/assets/images/passages/003-koya/shining-light@2x.jpg)
 
 (A _much_ belated hello.)
 
@@ -33,7 +33,7 @@ consider this newsletter to be as far opposite on the
 continuum from spam as you can go, but if you don't, you
 can [click here to never hear from me again][unsubscribe].
 
-![Torii at Mount Kōya](/assets/passages/003-koya/torii@2x.jpg)
+![Torii at Mount Kōya](/assets/images/passages/003-koya/torii@2x.jpg)
 
 We in the west tend to think of Japan as a crowded island,
 but the lush greenery of its wilderness is pristine.
@@ -71,7 +71,7 @@ materializes out of the mist. It looks like an artifact
 from another world, completely out of place on these remote
 slopes.
 
-![Mount Kōya](/assets/passages/003-koya/koya@2x.jpg)
+![Mount Kōya](/assets/images/passages/003-koya/koya@2x.jpg)
 
 Most of the accommodation on the mountain comes in the form
 of _shukubō_, or "temple lodgings". Monks running the local
@@ -102,9 +102,9 @@ they could take the opportunity to rearrange it. We
 couldn't spend too much time in the room or we'd compromise
 their precise schedules.
 
-![Jokiin](/assets/passages/003-koya/jokiin@2x.jpg)
+![Jokiin](/assets/images/passages/003-koya/jokiin@2x.jpg)
 
-![A typical in-room meal arrangement at Jokiin](/assets/passages/003-koya/jokiin-meal@2x.jpg)
+![A typical in-room meal arrangement at Jokiin](/assets/images/passages/003-koya/jokiin-meal@2x.jpg)
 
 ### The kotatsu (#kotatsu)
 
@@ -136,7 +136,7 @@ on the newly slick paths and throw myself into the
 underbrush [2]. I found that an old shrine had been built
 on its peak.
 
-![First snow at Mount Kōya](/assets/passages/003-koya/first-snow@2x.jpg)
+![First snow at Mount Kōya](/assets/images/passages/003-koya/first-snow@2x.jpg)
 
 We spent the day exploring the spectacular [Okunoin
 cemetary][okunoin] before saying farewell to Kōya-chō and
@@ -159,7 +159,7 @@ into a valley in the heart of the Kumano mountains, built
 around a natural fountain of searing water frothing out of
 the earth.
 
-![Yunomine](/assets/passages/003-koya/yunomine@2x.jpg)
+![Yunomine](/assets/images/passages/003-koya/yunomine@2x.jpg)
 
 This was the one night on our hike that we'd splurged on a
 pricier hotel, and as we climbed its steps we were
@@ -184,9 +184,9 @@ where the onsen eggs come out a shade of soot black, having
 picked up coloration from the sulfur springs where they're
 cooked.
 
-![Onsen eggs](/assets/passages/003-koya/eggs@2x.jpg)
+![Onsen eggs](/assets/images/passages/003-koya/eggs@2x.jpg)
 
-![Boiler](/assets/passages/003-koya/boiler@2x.jpg)
+![Boiler](/assets/images/passages/003-koya/boiler@2x.jpg)
 
 ### Tsuboyu (#tsuboyu)
 
@@ -198,7 +198,7 @@ possible to the spring's source, and is considered to be
 the only place in the world where you can bathe in a
 registered UNESCO World Heritage Site.
 
-![Tsuboyu (outside)](/assets/passages/003-koya/tsuboyu-1@2x.jpg)
+![Tsuboyu (outside)](/assets/images/passages/003-koya/tsuboyu-1@2x.jpg)
 
 It's a popular bathhouse for couples -- probably because
 its cozy quarters won't hold much else. As we squeezed into
@@ -212,7 +212,7 @@ distributed sequentially, and show a number that signals to
 waiting groups roughly how long they have until it's their
 turn in the cabin (we were waiting on group "7" above).
 
-![Tsuboyu (inside)](/assets/passages/003-koya/tsuboyu-2@2x.jpg)
+![Tsuboyu (inside)](/assets/images/passages/003-koya/tsuboyu-2@2x.jpg)
 
 ## The road to Nachi Taisha (#nachi-taisha)
 
@@ -224,11 +224,11 @@ into place over decades. It was cool and quiet. The number
 of other hikers we passed along the way could be counted
 comfortably on one hand.
 
-![Coins at a shrine](/assets/passages/003-koya/coins@2x.jpg)
+![Coins at a shrine](/assets/images/passages/003-koya/coins@2x.jpg)
 
-![Painted tree](/assets/passages/003-koya/painted-tree@2x.jpg)
+![Painted tree](/assets/images/passages/003-koya/painted-tree@2x.jpg)
 
-![Ancient forest](/assets/passages/003-koya/ancient-forest@2x.jpg)
+![Ancient forest](/assets/images/passages/003-koya/ancient-forest@2x.jpg)
 
 The mountain spit us out on the other side into Nachi
 Taisha, an expansive Shinto shrine built halfway up its
@@ -236,7 +236,7 @@ face. Along with a breathtaking view out to the Pacific,
 the shrine also overlooks Nachi-no-Otaki, Japan's tallest
 waterfall at 133 meters.
 
-![Nachi-no-Otaki](/assets/passages/003-koya/nachi-taisha@2x.jpg)
+![Nachi-no-Otaki](/assets/images/passages/003-koya/nachi-taisha@2x.jpg)
 
 The end of the hike was a bittersweet moment. Our sore feet
 welcomed it, but it was sad to see the trail go, and we
@@ -272,7 +272,7 @@ instead of the screaming traffic found on most city
 streets. I found myself wondering what an entire city built
 like _Ponto-chō_ would look like.
 
-![Ponto-chō](/assets/passages/003-koya/pontocho@2x.jpg)
+![Ponto-chō](/assets/images/passages/003-koya/pontocho@2x.jpg)
 
 ## Wabi-sabi & aged leather (#wabisabi)
 
@@ -300,7 +300,7 @@ centered around transience and imperfection that's derived
 from the Buddhist teachings of the three marks of
 existence.
 
-![Thousand Mile boots](/assets/passages/003-koya/thousand-mile@2x.jpg)
+![Thousand Mile boots](/assets/images/passages/003-koya/thousand-mile@2x.jpg)
 
 ## Rust & the pursuit of reliable software (#rust)
 

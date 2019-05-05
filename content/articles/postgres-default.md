@@ -76,7 +76,7 @@ other operation until it's released; even simple `SELECT`
 statements have to wait. In any system with a lot of
 ongoing access to the table, that's a huge problem.
 
-!fig src="/assets/postgres-default/blocking.svg" caption="Transactions blocking during a table rewrite."
+!fig src="/assets/images/postgres-default/blocking.svg" caption="Transactions blocking during a table rewrite."
 
 Historically, accidentally locking access to a table when
 adding a column has been a common pitfall for new Postgres
@@ -152,7 +152,7 @@ inserted into the table pick up the default values as
 they're created so that there's no need to check
 `atthasmissing` when returning their contents.
 
-!fig src="/assets/postgres-default/implementation.svg" caption="Fast column creation with existing rows loading defaults from pg_attribute."
+!fig src="/assets/images/postgres-default/implementation.svg" caption="Fast column creation with existing rows loading defaults from pg_attribute."
 
 The `pg_attribute` fields are only used as long as they
 have to be. If at any point the table is rewritten,

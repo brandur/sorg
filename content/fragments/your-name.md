@@ -1,7 +1,7 @@
 ---
 title: Your Name
 published_at: 2017-04-11T01:26:59Z
-image: /assets/fragments/your-name/vista.jpg
+image: /assets/images/fragments/your-name/vista.jpg
 hook: A short review of Makoto Shinka's latest animated
   film.
 ---

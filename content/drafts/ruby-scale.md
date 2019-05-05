@@ -84,7 +84,7 @@ you've fixed it and it does, it's bound to break again at
 some point in the future without line coverage that's
 complete enough to ensure that every line changed is valid.
 
-!fig src="/assets/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
+!fig src="/assets/images/ruby-scale/knot.jpg" caption="Without constraints, code becomes a tight knot as modules bleed into each other."
 
 ### Boundary bleeding (#boundary-bleeding)
 
@@ -134,7 +134,7 @@ modules, and enough developers, things will get hazy. A few
 encapsulation violations will start to appear and the
 interpreter won't complain.
 
-!fig src="/assets/ruby-scale/modularity.svg" caption="Boundary violations grow linearly with the number of lines of Ruby produced."
+!fig src="/assets/images/ruby-scale/modularity.svg" caption="Boundary violations grow linearly with the number of lines of Ruby produced."
 
 Soon the violations are everywhere, and module hierarchy
 (if there ever was one) becomes indistinct. It's no longer
@@ -174,7 +174,7 @@ There are options available, but they're entirely based on
 heuristics. They might provide some gain in working speed,
 but are not accurate or reliable.
 
-!fig src="/assets/ruby-scale/tooling.jpg" caption="Good tooling is sadly lacking/impossible."
+!fig src="/assets/images/ruby-scale/tooling.jpg" caption="Good tooling is sadly lacking/impossible."
 
 ## Other languages (#other-languages)
 

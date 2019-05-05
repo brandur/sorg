@@ -109,7 +109,7 @@ Tubs on the street in Tokyo.
 
 ### Selvedge (#selvedge)
 
-!fig src="/assets/denim/shuttle-loom.jpg" caption="How a shuttle loom weaves warp and weft yarns together."
+!fig src="/assets/images/denim/shuttle-loom.jpg" caption="How a shuttle loom weaves warp and weft yarns together."
 
 > Up until the 1950s, almost all denim was produced on Shuttle Looms. A shuttle loom is a weaving textile loom which uses a small device called a shuttle to fill in the weft yarns by passing back and forth between both sides of the loom. This leaves one continuous yarn at all the edges so the fabric self seals without any stray yarns.
 
@@ -143,7 +143,7 @@ deciding this.
 
 ### Chainstitching (#chainstitching)
 
-!fig src="/assets/denim/union-special.jpg" caption="The famed Union Special sewing machine."
+!fig src="/assets/images/denim/union-special.jpg" caption="The famed Union Special sewing machine."
 
 > Different style of stitching used in premium denim's that creates a more obvious roping effect on the hem than the standard lock stitch. It isn't as strong as a lock-stitch, but roping can be desirable for aesthetic value or to emulate early 20th century style production.
 

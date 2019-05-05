@@ -29,7 +29,7 @@ planes like the U-2 and SR-71; so notable for their
 engineering excellence that they've left a legacy that we
 reflect on even today.
 
-!fig src="/assets/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works. Very fast even if not particularly simple."
+!fig src="/assets/images/minimalism/sr71.jpg" caption="The famous SR-71, one of the flag ships of Lockheed's Skunk Works. Very fast even if not particularly simple."
 
 ## Minimalism in technology (#in-technology)
 
@@ -160,7 +160,7 @@ party](/fragments/burn-parties). The time and energy spent
 on some of these projects would in some cases be as great,
 or even greater, as it would for shipping a new product.
 
-!fig src="/assets/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology."
+!fig src="/assets/images/minimalism/fire.jpg" caption="At Heroku, we'd hold regular \"burn parties\" to recognize the effort that went into deprecating old products and technology."
 
 ## In ideas (#in-ideas)
 
@@ -221,7 +221,7 @@ aviator, had this to say on the subject:
 > nothing left to add, but when there is nothing left to
 > take away.
 
-!fig src="/assets/minimalism/sea.jpg" caption="Nothing left to add. Nothing left to take away."
+!fig src="/assets/images/minimalism/sea.jpg" caption="Nothing left to add. Nothing left to take away."
 
 Most of us can benefit from architecture that's a little
 simpler, a little more conservative, and a little more

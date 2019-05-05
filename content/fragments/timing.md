@@ -26,7 +26,7 @@ or make a mistake, you need to wait until the metronome loops back on itself
 before you get your next chance to restart. So if you screw up on the first,
 you need to wait for three more.
 
-![4/4](/assets/fragments/timing/4-4.png)
+![4/4](/assets/images/fragments/timing/4-4.png)
 
 This doesn't make much difference for one or two measures, but given thousands
 of hours of practice, it adds up.
@@ -35,4 +35,4 @@ By comparison, practicing in 2/2 is functionally identical, but if you miss a
 note you can get right back into it on the next beat. It can also save you time
 reconfiguring your metronome as you move between songs.
 
-![2/2](/assets/fragments/timing/2-2.png)
+![2/2](/assets/images/fragments/timing/2-2.png)

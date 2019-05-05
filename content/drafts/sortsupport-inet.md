@@ -58,7 +58,7 @@ the binary level. For example, if I have the value
 255 in binary is `1111 1111`, so the network is the bit `1`
 and the subnet is 31 consecutive `1`s.
 
-!fig src="/assets/sortsupport-inet/inet-cidr-anatomy.svg" caption="The anatomy of inet and cidr values."
+!fig src="/assets/images/sortsupport-inet/inet-cidr-anatomy.svg" caption="The anatomy of inet and cidr values."
 
 An address whose entire value is in the network (`/32` for
 IPv4 or `/128` for IPv6) specifies just a single host, and
@@ -139,7 +139,7 @@ before all IPv6 values. Since there's only two IP families,
 so we'll reserve the most significant bit of our key to
 represent a value's family. 0 for IPv4 and 1 for IPv6.
 
-!fig src="/assets/sortsupport-inet/ip-family.svg" caption="One bit reserved for IP family."
+!fig src="/assets/images/sortsupport-inet/ip-family.svg" caption="One bit reserved for IP family."
 
 At first glance it might seem short-sighted that we're
 assuming that only two IP families will ever exist. Luckily
@@ -209,7 +209,7 @@ datum.
 
 The final abbreviated key design looks like this:
 
-!fig src="/assets/sortsupport-inet/key-design.svg" caption="The design of abbreviated keys for inet and cidr."
+!fig src="/assets/images/sortsupport-inet/key-design.svg" caption="The design of abbreviated keys for inet and cidr."
 
 ## Bit gymnastics in C (#gymnastics)
 

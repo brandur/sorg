@@ -116,7 +116,7 @@ as non-nullable by default. This additional constraint
 makes handling API responses more deterministic and less
 prone to error.
 
-!fig src="/assets/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch (but I like this photo)."
+!fig src="/assets/images/graphql/village.jpg" caption="The relationships between people in a town are a graph. This is a stretch (but I like this photo)."
 
 ## The graph (#graph)
 
@@ -164,7 +164,7 @@ right to pop open and explore the documentation. You should
 find yourself being able to build a query that delves 4+
 relations deep without much trouble.
 
-!fig src="/assets/graphql/graphiql.png" caption="Using GraphiQL to explore an API and graph."
+!fig src="/assets/images/graphql/graphiql.png" caption="Using GraphiQL to explore an API and graph."
 
 A vanilla installation of GraphiQL is a more powerful
 integration tool for users than what 99% of REST providers
@@ -266,7 +266,7 @@ thing, the API changes little by little. New features are
 added and old mistakes are fixed. It trends towards
 maturity incrementally in a distant perfect form.
 
-!fig src="/assets/graphql/living.jpg" caption="In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this."
+!fig src="/assets/images/graphql/living.jpg" caption="In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this."
 
 ## Shared convention and leverage (#convention)
 

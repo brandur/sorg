@@ -29,7 +29,7 @@ collect its originals and send them to you bundled up in a zip file. It's fast
 and easy; the files are even named according to your album's title so that it's
 very little effort to get them organized after they're downloaded.
 
-![Album download](/assets/fragments/exporting-flickr/album-download.png)
+![Album download](/assets/images/fragments/exporting-flickr/album-download.png)
 
 I've now got all my photos stored safely into a set of plain folders, and have
 them syncing bidirectionally between Amazon Cloud Drive and every computer I

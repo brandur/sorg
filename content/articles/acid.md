@@ -66,7 +66,7 @@ operation will start with safe initial state.
 It's never desirable to fail transactions that we hoped to
 commit, but atomicity cancels the expensive fallout.
 
-!fig src="/assets/acid/transactions-in-requests.svg" caption="Some requests. Each wraps its database operations using an atomic transaction so that they either all commit, or none of them do."
+!fig src="/assets/images/acid/transactions-in-requests.svg" caption="Some requests. Each wraps its database operations using an atomic transaction so that they either all commit, or none of them do."
 
 ### The janitorial team (#janitorial-team)
 
@@ -88,7 +88,7 @@ fire off to any listeners on the repository, a reviewer
 record mapping to whomever we've assigned review, and an
 event to store in the audit log.
 
-!fig src="/assets/acid/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
+!fig src="/assets/images/acid/request-failure.svg" caption="Demonstration of how without an atomicity guarantee, a failed request results in an invalid state of data."
 
 A request that fails after the first two saves fails to
 create a valid set of objects, but with transactional
@@ -114,7 +114,7 @@ certain size, this sort of thing will be happening
 frequently, and your engineers will start to spend less
 time as engineers, and more time as data janitors.
 
-!fig src="/assets/acid/pillars.jpg" caption="A grid of pillars at the Jewish Museum in Berlin. Real world consistency at its best."
+!fig src="/assets/images/acid/pillars.jpg" caption="A grid of pillars at the Jewish Museum in Berlin. Real world consistency at its best."
 
 ## Consistency (#consistency)
 
@@ -142,7 +142,7 @@ concurrently, then the above check can fail us because both
 could have validated step one successfully before moving on
 to create a duplicated record.
 
-!fig src="/assets/acid/consistency.svg" caption="Without guaranteed consistency, there's nothing to stop the database from transitioning to an invalid state."
+!fig src="/assets/images/acid/consistency.svg" caption="Without guaranteed consistency, there's nothing to stop the database from transitioning to an invalid state."
 
 You can solve this problem on an ACID database in multiple
 ways:
@@ -239,7 +239,7 @@ we'd lock the whole account when a modification request
 comes in, and only unlock it again after we've finished our
 work.
 
-!fig src="/assets/acid/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
+!fig src="/assets/images/acid/pessimistic-locking.svg" caption="Demonstration of pessimistic locking showing 3 requests to the same resource. Each blocks the next in line."
 
 This approach is _all_ downsides:
 
@@ -350,7 +350,7 @@ per-shard ACID guarantees. Google Spanner provides
 distributed locking read-write transactions for when you
 need them.
 
-!fig src="/assets/acid/foundation.jpg" caption="For best results, build your app on solid foundations."
+!fig src="/assets/images/acid/foundation.jpg" caption="For best results, build your app on solid foundations."
 
 ## Check your foundation (#foundation)
 

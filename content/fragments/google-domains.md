@@ -32,7 +32,7 @@ nice touch is that it wraps up the big chunk of MX records required for a
 Google Apps configuration as just "Google Apps", conveniently keeping most of
 that off your screen by default.
 
-![Google Domains import step](/assets/google-domains/google-domains-import.png)
+![Google Domains import step](/assets/images/google-domains/google-domains-import.png)
 
 I did run into a couple small bugs involving Google not being able to fetch
 information for a domain, but was able to bypass them by refreshing a few

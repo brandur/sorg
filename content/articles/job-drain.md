@@ -44,7 +44,7 @@ another service. A background worker dequeues the job, but
 finds that the user record it's looking for is nowhere to
 be found in the database.
 
-!fig src="/assets/job-drain/job-failure.svg" caption="A job failing because the data it relies on is not yet committed."
+!fig src="/assets/images/job-drain/job-failure.svg" caption="A job failing because the data it relies on is not yet committed."
 
 A related problem are transaction rollbacks. In these cases
 data is discarded completely, and jobs inserted into the
@@ -146,7 +146,7 @@ to see jobs that aren't yet commmitted (even if they've
 been inserted into `staged_jobs` by an uncommitted
 transaction), so jobs are never worked too early.
 
-!fig src="/assets/job-drain/transaction-isolation.svg" caption="Jobs are invisible to the enqueuer until their transaction is committed."
+!fig src="/assets/images/job-drain/transaction-isolation.svg" caption="Jobs are invisible to the enqueuer until their transaction is committed."
 
 It's similarly protected against rollbacks. If a job is
 inserted within a transaction that's subsequently
@@ -158,7 +158,7 @@ to the queue, so even if the worker dies partway through,
 it will pick back up again and send along any jobs that it
 missed. _At least once_ delivery semantics are guaranteed.
 
-!fig src="/assets/job-drain/job-drain.svg" caption="Jobs being sequestered in a staging table and enqueued when they're ready to be worked."
+!fig src="/assets/images/job-drain/job-drain.svg" caption="Jobs being sequestered in a staging table and enqueued when they're ready to be worked."
 
 ## Advantages over in-database queues (#in-database-queues)
 

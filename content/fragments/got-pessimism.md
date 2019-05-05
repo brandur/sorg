@@ -54,7 +54,7 @@ Personally, especially after the test of endurance that was _A Feast for
 Crows_, I'm more excited for the new TV season anyway. Season six premieres on
 April 24th.
 
-![Season 6 teaser](/assets/fragments/got-pessimism/season-6-teaser.jpg)
+![Season 6 teaser](/assets/images/fragments/got-pessimism/season-6-teaser.jpg)
 
 [1] Sanderson is famously productive and stepped in to wrap up _The Wheel of
     Time_ after Robert Jordan passed away before he could finish the series.

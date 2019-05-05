@@ -21,7 +21,7 @@ keeping both jumps fully secure. CloudFlare calls this mode "Full SSL". "Full
 SSL (Strict)" doesn't appear to be suitable because it requires that the target
 endpoint both support SNI and respond to requests for the custom domain.
 
-![CloudFlare SSL options](/assets/fragments/cloudflare-ssl/ssl-options.png)
+![CloudFlare SSL options](/assets/images/fragments/cloudflare-ssl/ssl-options.png)
 
 This may be one of the biggest steps taken to bring SSL to the masses in the
 history of the Internet. The major problem with SSL is that it just never got

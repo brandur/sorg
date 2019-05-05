@@ -39,7 +39,7 @@ submitted to the IETF, but it's more convenient and faster to use.
 
 The ACM certificate chain:
 
-![Certificate chain](/assets/fragments/acm/chain.png)
+![Certificate chain](/assets/images/fragments/acm/chain.png)
 
 [acme]: https://github.com/ietf-wg-acme/acme
 [blog]: https://aws.amazon.com/blogs/aws/new-aws-certificate-manager-deploy-ssltls-based-apps-on-aws/

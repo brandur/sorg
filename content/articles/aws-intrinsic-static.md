@@ -88,7 +88,7 @@ ifdef AWS_ACCESS_KEY_ID
         --acl public-read --delete --content-type text/html --exclude 'assets*'
 
 	# Then move on to assets and allow S3 to detect content type.
-	aws s3 sync ./public/assets/ s3://$(S3_BUCKET)/assets/ \
+	aws s3 sync ./public/assets/images/ s3://$(S3_BUCKET)/assets/images/ \
         --acl public-read --delete --follow-symlinks
 else
 	# No AWS access key. Skipping deploy.

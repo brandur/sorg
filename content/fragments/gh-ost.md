@@ -22,7 +22,7 @@ ready.
 
 An ex-colleague of mine posted this glib reaction to Gh-ost's release:
 
-[![MySQL vs. Postgres](/assets/fragments/gh-ost/vs.jpg)](/assets/fragments/gh-ost/vs@2x.jpg)
+[![MySQL vs. Postgres](/assets/images/fragments/gh-ost/vs.jpg)](/assets/images/fragments/gh-ost/vs@2x.jpg)
 
 That might look like a simplification, and it is, but not by much. Postgres
 uses clever mechanics that allow the addition or removal of either a column or

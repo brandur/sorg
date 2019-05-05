@@ -29,7 +29,7 @@ you might not even remember signing up for it. As usual, if
 you don't want to it anymore, you can [unsubscribe in one
 easy click][unsubscribe].
 
-![Trams in Lisbon](/assets/passages/004-portugal/trams@2x.jpg)
+![Trams in Lisbon](/assets/images/passages/004-portugal/trams@2x.jpg)
 
 ## Lisbon (#lisbon)
 
@@ -51,7 +51,7 @@ running around _everywhere_ in the inner city. Their
 traditional line is the 28, going from Martim Moniz to
 Campo Ourique.
 
-![The Elevador de Santa Justa](/assets/passages/004-portugal/lisbon-elevador@2x.jpg)
+![The Elevador de Santa Justa](/assets/images/passages/004-portugal/lisbon-elevador@2x.jpg)
 
 Claire and Maciek had been spending part of a well-deserved
 sabbatical living in Lisbon, and I was lucky enough to have
@@ -61,7 +61,7 @@ staff knew them by name, and a Japanese izakaya which was
 amazingly authentic given that it was on the other side of
 the world from its mother country.
 
-![Lisbon at night](/assets/passages/004-portugal/lisbon-night@2x.jpg)
+![Lisbon at night](/assets/images/passages/004-portugal/lisbon-night@2x.jpg)
 
 ## Postgres (#postgres)
 
@@ -223,7 +223,7 @@ It's the same site as the ancient Roman city of Aeminium,
 and the city still has a few artifacts from that era
 including a beautifully-preserved aqueduct.
 
-![Coimbra's aqueduct](/assets/passages/004-portugal/coimbra-aqueduct@2x.jpg)
+![Coimbra's aqueduct](/assets/images/passages/004-portugal/coimbra-aqueduct@2x.jpg)
 
 The city is well-known for its university, which is the
 oldest in the Portuguese-speaking world, founded circa
@@ -232,9 +232,9 @@ you feel like you're standing on a plateau on top of the
 world, giving you a vantage over the wider area. Not too
 many schools have the best views in town.
 
-![Coimbra's university](/assets/passages/004-portugal/coimbra-university@2x.jpg)
+![Coimbra's university](/assets/images/passages/004-portugal/coimbra-university@2x.jpg)
 
-![Looking out over Coimbra](/assets/passages/004-portugal/coimbra-view@2x.jpg)
+![Looking out over Coimbra](/assets/images/passages/004-portugal/coimbra-view@2x.jpg)
 
 The university's crown jewel is the [Biblioteca
 Joanina][joanina], which towers high above the city. It's
@@ -261,7 +261,7 @@ are tired of it. From a WSJ article [1] on the subject:
 > said. “They should be a detail in the midst of this
 > splendorous temple of knowledge.”
 
-![The library of Coimbra](/assets/passages/004-portugal/coimbra-library@2x.jpg)
+![The library of Coimbra](/assets/images/passages/004-portugal/coimbra-library@2x.jpg)
 
 ### Porto & port (#porto)
 
@@ -299,7 +299,7 @@ make them:
   mark for port, so around here you may find your ports
   originating from anywhere.
 
-![The Dom Luís in Porto](/assets/passages/004-portugal/porto-bridge@2x.jpg)
+![The Dom Luís in Porto](/assets/images/passages/004-portugal/porto-bridge@2x.jpg)
 
 The area's port estates are all clustered closely together,
 and technically in the municipality of Vila Nova de Gaia,
@@ -314,7 +314,7 @@ was half again as tall as I was.  The number in the upper
 right is the number of liters in the batch. Over thirty-two
 _thousand_.
 
-![Port barrel](/assets/passages/004-portugal/port-barrel@2x.jpg)
+![Port barrel](/assets/images/passages/004-portugal/port-barrel@2x.jpg)
 
 Parked along Vila Nova de Gaia's shores are [barcos
 rabelos][rabelos], flat-bottomed cargo ships that were in
@@ -323,7 +323,7 @@ along the Douro River. Hydroelectric dams and locks built
 in the 50s and 60s put an end to their use, but they're
 still a pretty sight from another age.
 
-![Porto](/assets/passages/004-portugal/porto@2x.jpg)
+![Porto](/assets/images/passages/004-portugal/porto@2x.jpg)
 
 ## A wave of third wave (#third-wave)
 
@@ -343,7 +343,7 @@ floors, furniture built exclusively out of reclaimed wood,
 Chemex/V60/Hario accessories decorating the walls. It's
 like I never left SOMA.
 
-![Third wave coffee in Lisbon](/assets/passages/004-portugal/third-wave@2x.jpg)
+![Third wave coffee in Lisbon](/assets/images/passages/004-portugal/third-wave@2x.jpg)
 
 ## Raw denim and romance in products (#raw-denim)
 
@@ -377,9 +377,9 @@ the jean and wearer, and often produces some beautiful
 effects. Just take a look at some of the models from [Blue
 Owl's fade museum][fademuseum].
 
-![Japan Blue fade](/assets/passages/004-portugal/jeans1@2x.jpg)
+![Japan Blue fade](/assets/images/passages/004-portugal/jeans1@2x.jpg)
 
-![Momotaro fade](/assets/passages/004-portugal/jeans2@2x.jpg)
+![Momotaro fade](/assets/images/passages/004-portugal/jeans2@2x.jpg)
 
 There's also a case to be made for environmentalism -- the
 industrial processes used in most jeans use water heavily,

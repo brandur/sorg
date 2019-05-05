@@ -68,7 +68,7 @@ step iterates a content directory called `public`, finds any files named
 aws s3 sync ./public/ s3://$S3_BUCKET/ --acl public-read --content-type text/html --delete --exclude 'assets*'
 
 # Step 2: Assets (CSS, images, JS)
-aws s3 sync ./public/assets/ s3://$S3_BUCKET/assets/ --acl public-read --delete
+aws s3 sync ./public/assets/images/ s3://$S3_BUCKET/assets/images/ --acl public-read --delete
 
 # Step 3: HTML index files
 find ./public -name index.html | egrep -v './public/index.html' | sed "s|^\./public/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp ./public/{}/index.html s3://$S3_BUCKET/{} --acl public-read --content-type text/html

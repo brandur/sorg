@@ -92,7 +92,7 @@ distance as they soar free through virgin skies. Travel can
 be a little more risky than Lyft, so make sure to pack an
 extra parachute.
 
-!fig src="/assets/idempotency-keys/rocketrides-ios-ride.png" caption="Rocket Rides the app."
+!fig src="/assets/images/idempotency-keys/rocketrides-ios-ride.png" caption="Rocket Rides the app."
 
 The [Rocket Rides repository][rocketrides] comes with a
 simple server implementation, but software tends to grow
@@ -117,7 +117,7 @@ operations:
 6. Send the user a receipt via email.
 7. Update idempotency key with results.
 
-!fig src="/assets/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
+!fig src="/assets/images/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
 
 Our backend implementation will be called from the Rocket
 Rides mobile app with an idempotency key. If a request
@@ -334,7 +334,7 @@ There are a few notable fields here:
 Recall our target API lifecycle for Rocket Rides from
 above.
 
-!fig src="/assets/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
+!fig src="/assets/images/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
 
 Let's bring up Postgres relations for everything else we'll
 need to build this app including audit records, rides, and
@@ -460,7 +460,7 @@ through `tx4` can each be reached by a recovery point
 that's set by the transaction that committed before it
 (`started`, `ride_created`, and `charge_created`).
 
-!fig src="/assets/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
+!fig src="/assets/images/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
 
 ### Atomic phase implementation (#atomic-phase-implementation)
 

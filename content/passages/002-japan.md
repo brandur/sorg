@@ -3,7 +3,7 @@ title: Japan
 published_at: 2017-12-24T06:07:33Z
 ---
 
-![Osaka](/assets/passages/002-japan/osaka@2x.jpg)
+![Osaka](/assets/images/passages/002-japan/osaka@2x.jpg)
 
 In 1992 Michael Crichton wrote [_Rising Sun_][risingsun].
 At the time Japan was seeing a meteoric rise, moving from a
@@ -112,7 +112,7 @@ westerner (who's never visited) will find surprising:
   Boss brand, stares back from many of them throughout the
   country.
 
-![Boss](/assets/passages/002-japan/boss@2x.jpg)
+![Boss](/assets/images/passages/002-japan/boss@2x.jpg)
 
 * There are no public trash cans. If you have something to
   throw away, you pack it out until you get home or come
@@ -158,14 +158,14 @@ exploring, and most of them are inconceivably beautiful
 Shinto religion, and it's common for the otherwise secular
 locals to visit them for a quick few minutes of prayer.
 
-![Kanazawa](/assets/passages/002-japan/kanazawa@2x.jpg)
+![Kanazawa](/assets/images/passages/002-japan/kanazawa@2x.jpg)
 
 It's a wet region, and at night we'd often find ourselves
 laying back listening to thunderstorms raging outside. Like
 anyone who lives with regular rain, the locals hate it. To
 someone who lives in dry California, it's fantastic.
 
-![Suzuki Museum](/assets/passages/002-japan/suzuki@2x.jpg)
+![Suzuki Museum](/assets/images/passages/002-japan/suzuki@2x.jpg)
 
 ### Yukitsuri (#yukitsuri)
 
@@ -176,7 +176,7 @@ all the hallmarks that you'd expect in a Japanese garden
 including sculpted trees, tranquil ponds, and moss-covered
 stone bridges and lanterns.
 
-![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-1@2x.jpg)
+![Yuki-tsuri](/assets/images/passages/002-japan/yuki-tsuri-1@2x.jpg)
 
 A common sight at Kenrokuen is "Yukitsuri", a Japanese
 technique for protecting the growth of trees from heavy
@@ -189,7 +189,7 @@ heavy, wet snow that comes every winter.
 Yukitsuri fosters a form of sprawling growth that would be
 impossible in nature. It's pretty neat to look at too.
 
-![Yuki-tsuri](/assets/passages/002-japan/yuki-tsuri-2@2x.jpg)
+![Yuki-tsuri](/assets/images/passages/002-japan/yuki-tsuri-2@2x.jpg)
 
 ## The macaques of Nagano (#macaques)
 
@@ -204,7 +204,7 @@ hot springs, where they relax in the warm water. (And in my
 opinion, make some of the world's greatest models. [Google
 it][macaques].)
 
-![Macaques](/assets/passages/002-japan/macaques@2x.jpg)
+![Macaques](/assets/images/passages/002-japan/macaques@2x.jpg)
 
 The macaques don't make it to the human-accessible part of
 park every day, but its wardens helpfully post daily
@@ -242,7 +242,7 @@ robes; _geta_ sandals clacking loudly against the stone as
 they make their unhurried journeys. It's said to be good
 fortune to make it to all nine of the baths in one day.
 
-![Shibu Onsen](/assets/passages/002-japan/shibu-onsen@2x.jpg)
+![Shibu Onsen](/assets/images/passages/002-japan/shibu-onsen@2x.jpg)
 
 We couldn't do the normal tour because we didn't have a
 place to stay overnight, but we found a small ryokan that
@@ -271,7 +271,7 @@ little bit of folklore -- heal. Onsens are often attributed
 with certain healing powers based on their location and
 unique mix of naturally occurring minerals.
 
-![Onsen](/assets/passages/002-japan/onsen@2x.jpg)
+![Onsen](/assets/images/passages/002-japan/onsen@2x.jpg)
 
 A common way for locals to escape the bustle of Tokyo is to
 make the short trip up to Hakone, known particularly for
@@ -290,7 +290,7 @@ one of the [Seven Gods of Fortune][sevengods] that you'll
 find portrayed in every corner of Japan, and is shown on
 bottles of Yebisu with his fishing rod and baskets of fish.
 
-![Lucky Yebisu](/assets/passages/002-japan/lucky-yebisu@2x.jpg)
+![Lucky Yebisu](/assets/images/passages/002-japan/lucky-yebisu@2x.jpg)
 
 Here's one of the most minute Easter eggs you'll ever come
 across: 99%+ of Yebisu bottles look like the one on the
@@ -321,7 +321,7 @@ he'd do whatever it takes to get one. Jettisoning a good
 and reliable technology (TouchID) for a new one with some
 novelty factor (FaceID) and a prettier screen? No problem.
 
-![iPhone X](/assets/passages/002-japan/iphone-x@2x.jpg)
+![iPhone X](/assets/images/passages/002-japan/iphone-x@2x.jpg)
 
 But I was wrong to doubt it. iOS 11 rendered my trusty
 iPhone 6 a lame brick operating at glacial speeds, so I
@@ -346,7 +346,7 @@ I can't stay away from cool bags. I picked up Mission
 Workshop's new [Hauser][hauser], a weatherproof pack with a
 striking design.
 
-![The Hauser](/assets/passages/002-japan/hauser@2x.jpg)
+![The Hauser](/assets/images/passages/002-japan/hauser@2x.jpg)
 
 Technically it's a hydration pack, but if you travel light,
 it'll hold everything you need. The main compartment is
@@ -376,7 +376,7 @@ right. The second is a long-stemmed coffee kettle with a
 twist: it has a small thermometer on the top that I can use
 to hit the ideal 96° C.
 
-![Coffee](/assets/passages/002-japan/coffee@2x.jpg)
+![Coffee](/assets/images/passages/002-japan/coffee@2x.jpg)
 
 They helped me to a few realizations fast. I hadn't been
 using enough beans, I'd been adding _too much_ water, and

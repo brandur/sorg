@@ -3,7 +3,7 @@ hook: How the page almost transitioned successfully to the
   digital world, but is in decline in new media. The
   lessons that we can learn from this age-old design
   element, and why we should hope for its re-emergence.
-image: "/assets/page/page.jpg"
+image: "/assets/images/page/page.jpg"
 location: San Francisco
 published_at: 2014-01-26T18:56:46Z
 title: Lamenting the Death of the Page
@@ -19,11 +19,11 @@ It's survived all the way to the present day in our printed mediums as an easily
 The page is also quite beautiful. Print designers have been assembling stunning products for decades that demonstrate eminently fluid layouts and a creative use of space that has yet to be matched in digital design (that's my opinion of course). For example, here's are a few pages from the [recent redesign of Transworld Surf](https://www.behance.net/gallery/Transworld-Surf-Redesign/13052023) and the [Italian magazine IL](http://www.behance.net/gallery/RANE/4282199):
 
 <figure>
-  <p><a href="https://www.behance.net/gallery/Transworld-Surf-Redesign/13052023"><img src="/assets/page/transworld-surf.jpg"></a></p>
+  <p><a href="https://www.behance.net/gallery/Transworld-Surf-Redesign/13052023"><img src="/assets/images/page/transworld-surf.jpg"></a></p>
   <figcaption>Late 2011 redesign of the Transworld Surf magazine.</figcaption>
 </figure>
 <figure>
-  <p><a href="http://www.behance.net/gallery/RANE/4282199"><img src="/assets/page/rane.jpg"></a></p>
+  <p><a href="http://www.behance.net/gallery/RANE/4282199"><img src="/assets/images/page/rane.jpg"></a></p>
   <figcaption>Redesign of the RANE, the cultural section of the Italian magazine IL.</figcaption>
 </figure>
 
@@ -40,15 +40,15 @@ As the web browser emerged, the page's convenient constraint on width that helpe
 Despite being relegated to the realm of power users, paging remained quite effective for anyone inclined to use it, but the more meteoric rise of JavaScript is finally starting to take its toll on this old usability feature. Anchored headers as depicted in the screenshots below are a common sight these days. They seem innocent enough until you realize that when paging in either direction, the header will hide its own height worth of content, rendering the paging function unusable.
 
 <figure>
-  <p><img src="/assets/page/fp.png"></p>
+  <p><img src="/assets/images/page/fp.png"></p>
   <figcaption>JS-anchored header at FP.</figcaption>
 </figure>
 <figure>
-  <p><img src="/assets/page/salon.png"></p>
+  <p><img src="/assets/images/page/salon.png"></p>
   <figcaption>JS-anchored header at Salon.</figcaption>
 </figure>
 <figure>
-  <p><img src="/assets/page/weekend.png"></p>
+  <p><img src="/assets/images/page/weekend.png"></p>
   <figcaption>JS-anchored header at Weekend.</figcaption>
 </figure>
 
@@ -59,7 +59,7 @@ The more recent development of tablets has also sent pages spiraling toward obso
 There's a class of tablet applications that design their experience around having the user interact with the tablet more like it was a magazine than a PC, and the biggest difference in design is whether the user interacts with the app as if it was a set of pages or a large continuous block. Apps like Flipboard and iOS's Newsstand lead the charge in this area, both of which provide pleasant and efficient interfaces that are outright fun to use.
 
 <figure>
-  <p><img src="/assets/page/economist.jpg"></p>
+  <p><img src="/assets/images/page/economist.jpg"></p>
   <figcaption>An article from the Economist on the iPad's Newsstand app.</figcaption>
 </figure>
 
