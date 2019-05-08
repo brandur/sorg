@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -42,15 +43,37 @@ type Passage struct {
 	Title string `yaml:"title"`
 }
 
-// Compile reads a passage file and builds a Passage object from it.
+func (p *Passage) validate(source string) error {
+	if p.Title == "" {
+		return fmt.Errorf("No title for passage: %v", source)
+	}
+
+	if p.PublishedAt == nil {
+		return fmt.Errorf("No publish date for passage: %v", source)
+	}
+
+	return nil
+}
+
+// Render reads a passage file and builds a Passage object from it.
 //
 // The email parameter specifies whether or not the passage is being rendered
 // to be sent it an email (as opposed for rendering on the web) and affects
 // things like whether images should use absolute URLs.
-func Compile(dir, name string, draft bool, email bool) (*Passage, error) {
-	inPath := path.Join(dir, name)
+func Render(dir, name string, email bool) (*Passage, error) {
+	source := path.Join(dir, name)
 
-	raw, err := ioutil.ReadFile(inPath)
+	/*
+		Code for the refactor:
+
+		var passage Passage
+		data, err := myaml.ParseFileFrontmatter(c, source, &passage)
+		if err != nil {
+			return true, err
+		}
+	*/
+
+	raw, err := ioutil.ReadFile(source)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +90,7 @@ func Compile(dir, name string, draft bool, email bool) (*Passage, error) {
 	}
 
 	passage.ContentRaw = content
-	passage.Draft = draft
+	passage.Draft = strings.Contains(filepath.Base(dir), "drafts")
 	passage.Slug = strings.Replace(name, ".md", "", -1)
 
 	slugParts := strings.Split(passage.Slug, "-")
@@ -77,12 +100,9 @@ func Compile(dir, name string, draft bool, email bool) (*Passage, error) {
 	}
 	passage.Issue = slugParts[0]
 
-	if passage.Title == "" {
-		return nil, fmt.Errorf("No title for passage: %v", inPath)
-	}
-
-	if passage.PublishedAt == nil {
-		return nil, fmt.Errorf("No publish date for passage: %v", inPath)
+	err = passage.validate(source)
+	if err != nil {
+		return nil, err
 	}
 
 	passage.Content = markdown.Render(content, &markdown.RenderOptions{

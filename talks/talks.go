@@ -105,9 +105,9 @@ func (t *Talk) validate(source string) error {
 
 // Render reads a talk file and builds a Talk object from it.
 func Render(contentDir, dir, name string) (*Talk, error) {
-	inPath := path.Join(dir, name)
+	source := path.Join(dir, name)
 
-	raw, err := ioutil.ReadFile(inPath)
+	raw, err := ioutil.ReadFile(source)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +126,7 @@ func Render(contentDir, dir, name string) (*Talk, error) {
 	talk.Draft = strings.Contains(filepath.Base(dir), "drafts")
 	talk.Slug = strings.Replace(name, ".md", "", -1)
 
-	err = talk.validate(inPath)
+	err = talk.validate(source)
 	if err != nil {
 		return nil, err
 	}
@@ -150,7 +150,7 @@ func Render(contentDir, dir, name string) (*Talk, error) {
 	}
 
 	if talk.Intro == "" {
-		return nil, fmt.Errorf("No intro for talk: %v (provide one as the presenter notes of the first slide)", inPath)
+		return nil, fmt.Errorf("No intro for talk: %v (provide one as the presenter notes of the first slide)", source)
 	}
 
 	return &talk, nil

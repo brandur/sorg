@@ -1363,7 +1363,7 @@ func compileRuns(db *sql.DB) error {
 }
 
 func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
-	passage, err := passages.Compile(dir, name, draft, false)
+	passage, err := passages.Render(dir, name, false)
 	if err != nil {
 		return nil, err
 	}

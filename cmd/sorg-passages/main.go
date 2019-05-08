@@ -42,7 +42,7 @@ func renderAndSend(path string, live, staging bool) error {
 	dir := filepath.Dir(path)
 	name := filepath.Base(path)
 
-	passage, err := passages.Compile(dir, name, false, true)
+	passage, err := passages.Render(dir, name, true)
 	if err != nil {
 		return err
 	}
