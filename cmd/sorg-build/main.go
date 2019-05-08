@@ -664,7 +664,7 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		path.Join(sorg.ContentDir, "images", article.Slug, "hook"),
 	)
 	if ok {
-		article.HookImageURL = "/assets/" + article.Slug + "/hook." + format
+		article.HookImageURL = "/assets/images/" + article.Slug + "/hook." + format
 	}
 
 	if err != nil && !os.IsNotExist(err) {
@@ -679,7 +679,7 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		path.Join(sorg.ContentDir, "images", article.Slug, "twitter@2x"),
 	)
 	if ok {
-		card.ImageURL = sorg.AbsoluteURL + "/assets/" + article.Slug + "/twitter@2x." + format
+		card.ImageURL = sorg.AbsoluteURL + "/assets/images/" + article.Slug + "/twitter@2x." + format
 	}
 
 	locals := getLocals(article.Title, map[string]interface{}{
@@ -829,7 +829,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 	)
 	if ok {
 		card = &twitterCard{
-			ImageURL:    sorg.AbsoluteURL + "/assets/fragments/" + fragment.Slug + "/twitter@2x." + format,
+			ImageURL:    sorg.AbsoluteURL + "/assets/images/fragments/" + fragment.Slug + "/twitter@2x." + format,
 			Title:       fragment.Title,
 			Description: fragment.Hook,
 		}
