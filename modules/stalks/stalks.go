@@ -2,16 +2,16 @@ package stalks
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/brandur/sorg"
+	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/myaml"
+	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/smarkdown"
-	"gopkg.in/yaml.v2"
 )
 
 // Slide represents a slide within a talk.
@@ -80,7 +80,7 @@ func (t *Talk) PublishingInfo() string {
 		`<p><strong>Published</strong><br>` + t.PublishedAt.Format("January 2, 2006") + `</p>` +
 		`<p><strong>Location</strong><br>` + t.Location + `</p>` +
 		`<p><strong>Event</strong><br>` + t.Event + `</p>` +
-		sorg.TwitterInfo
+		scommon.TwitterInfo
 }
 
 func (t *Talk) validate(source string) error {
@@ -104,26 +104,18 @@ func (t *Talk) validate(source string) error {
 }
 
 // Render reads a talk file and builds a Talk object from it.
-func Render(contentDir, dir, name string) (*Talk, error) {
+func Render(c *modulir.Context, contentDir, dir, name string) (*Talk, error) {
 	source := path.Join(dir, name)
 
-	raw, err := ioutil.ReadFile(source)
-	if err != nil {
-		return nil, err
-	}
-
-	frontmatter, content, err := sorg.SplitFrontmatter(string(raw))
-	if err != nil {
-		return nil, err
-	}
-
 	var talk Talk
-	err = yaml.Unmarshal([]byte(frontmatter), &talk)
+	data, err := myaml.ParseFileFrontmatter(c, source, &talk)
 	if err != nil {
 		return nil, err
 	}
 
 	talk.Draft = strings.Contains(filepath.Base(dir), "drafts")
+
+	// TODO: Replace with extractSlug brought into scommon
 	talk.Slug = strings.Replace(name, ".md", "", -1)
 
 	err = talk.validate(source)
@@ -131,7 +123,7 @@ func Render(contentDir, dir, name string) (*Talk, error) {
 		return nil, err
 	}
 
-	talk.Slides, err = splitAndRenderSlides(contentDir, &talk, content)
+	talk.Slides, err = splitAndRenderSlides(contentDir, &talk, string(data))
 	if err != nil {
 		return nil, err
 	}

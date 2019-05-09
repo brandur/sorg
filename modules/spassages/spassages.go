@@ -2,15 +2,14 @@ package spassages
 
 import (
 	"fmt"
-	"io/ioutil"
 	"path"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/brandur/sorg"
+	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/myaml"
 	"github.com/brandur/sorg/modules/smarkdown"
-	"gopkg.in/yaml.v2"
 )
 
 // Passage represents a single burst of the Passage & Glass newsletter to be
@@ -60,37 +59,19 @@ func (p *Passage) validate(source string) error {
 // The email parameter specifies whether or not the passage is being rendered
 // to be sent it an email (as opposed for rendering on the web) and affects
 // things like whether images should use absolute URLs.
-func Render(dir, name string, email bool) (*Passage, error) {
+func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Passage, error) {
 	source := path.Join(dir, name)
 
-	/*
-		Code for the refactor:
-
-		var passage Passage
-		data, err := myaml.ParseFileFrontmatter(c, source, &passage)
-		if err != nil {
-			return true, err
-		}
-	*/
-
-	raw, err := ioutil.ReadFile(source)
-	if err != nil {
-		return nil, err
-	}
-
-	frontmatter, content, err := sorg.SplitFrontmatter(string(raw))
-	if err != nil {
-		return nil, err
-	}
-
 	var passage Passage
-	err = yaml.Unmarshal([]byte(frontmatter), &passage)
+	data, err := myaml.ParseFileFrontmatter(c, source, &passage)
 	if err != nil {
 		return nil, err
 	}
 
-	passage.ContentRaw = content
+	passage.ContentRaw = string(data)
 	passage.Draft = strings.Contains(filepath.Base(dir), "drafts")
+
+	// TODO: Replace with extractSlug brought into scommon
 	passage.Slug = strings.Replace(name, ".md", "", -1)
 
 	slugParts := strings.Split(passage.Slug, "-")
@@ -105,8 +86,8 @@ func Render(dir, name string, email bool) (*Passage, error) {
 		return nil, err
 	}
 
-	passage.Content = smarkdown.Render(content, &smarkdown.RenderOptions{
-		AbsoluteURLs:    email,
+	passage.Content = smarkdown.Render(passage.ContentRaw, &smarkdown.RenderOptions{
+		AbsoluteURL:     absoluteURL,
 		NoFootnoteLinks: email,
 		NoHeaderLinks:   email,
 		NoRetina:        true,

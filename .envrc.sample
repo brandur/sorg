@@ -1,3 +1,7 @@
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
+export BLACK_SWAN_DATABASE_URL="postgres://localhost/black-swan-development?sslmode=disable"
+export DRAFTS=true
 export CLOUDFRONT_ID=E2D97SPIHRBCUA
+export LOCAL_FONTS=true
+export PORT=5002

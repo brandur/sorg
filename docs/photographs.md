@@ -48,7 +48,7 @@ To commit a marker:
 3. Run the build/resize process locally:
 
     ```
-    make install && CONTENT_ONLY=false make build
+    make install && make build
     ```
 
 4. Add and commit the resulting marker file (but not the

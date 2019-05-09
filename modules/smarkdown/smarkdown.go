@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/brandur/sorg"
 	"github.com/brandur/sorg/modules/stemplate"
 	"github.com/russross/blackfriday"
 )
@@ -26,9 +25,10 @@ var postTransformationFuncs = []func(string, *RenderOptions) string{
 
 // RenderOptions describes a rendering operation to be customized.
 type RenderOptions struct {
-	// AbsoluteURLs replaces the sources of any images that pointed to relative
+	// AbsoluteURL is the absolute URL of the final site. If set, the Markdown
+	// renderer replaces the sources of any images that pointed to relative
 	// URLs with absolute URLs.
-	AbsoluteURLs bool
+	AbsoluteURL string
 
 	// NoFootnoteLinks disables linking to and from footnotes.
 	NoFootnoteLinks bool
@@ -334,11 +334,11 @@ func transformImagesToRetina(source string, options *RenderOptions) string {
 var relativeImageRE = regexp.MustCompile(`<img src="/`)
 
 func transformImagesToAbsoluteURLs(source string, options *RenderOptions) string {
-	if options == nil || !options.AbsoluteURLs {
+	if options == nil || options.AbsoluteURL == "" {
 		return source
 	}
 
 	return relativeImageRE.ReplaceAllStringFunc(source, func(img string) string {
-		return `<img src="` + sorg.AbsoluteURL + `/`
+		return `<img src="` + options.AbsoluteURL + `/`
 	})
 }

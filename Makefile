@@ -1,7 +1,7 @@
 all: clean install test vet lint check-dl0 check-gofmt check-headers check-retina build
 
 build:
-	$(GOPATH)/bin/sorg-build
+	$(GOPATH)/bin/sorg build
 
 compile: install
 
@@ -108,8 +108,14 @@ invalidate-assets: check-aws-keys check-cloudfront-id
 invalidate-indexes: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /photos /reading /runs /twitter
 
+killall:
+	killall sorg
+
 lint:
 	$(GOPATH)/bin/golint -set_exit_status `go list ./... | grep -v /vendor/`
+
+loop:
+	$(GOPATH)/bin/sorg loop
 
 # A specialized S3 bucket used only for caching resized photographs.
 PHOTOGRAPHS_S3_BUCKET := "brandur.org-photographs"
@@ -135,21 +141,12 @@ else
 	# No AWS access key. Skipping photographs-upload.
 endif
 
-serve:
-	$(GOPATH)/bin/sorg-serve
-
 test:
 	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test ./...
 
 vet:
 	go vet ./...
-
-# Note that we use the CONTENT_ONLY flag on the build here. We're watching for
-# changes in content directories, so don't bother rebuilding pages generated
-# from Black Swan data.
-watch:
-	fswatch -o content/ layouts/ pages/ views/ | CONTENT_ONLY=true xargs -n1 -I{} make build
 
 # This is designed to be compromise between being explicit and readability. We
 # can allow the find to discover everything in vendor/, but then the fswatch
@@ -158,10 +155,11 @@ watch:
 # directory on separately (fswatch will watch it recursively).
 GO_FILES := $(shell find . -type f -name "*.go" ! -path "./vendor/*")
 
-# We recompile our Go source when a file changes, but we also rebuild the site
-# because a change in source may have affected the build formula.
+# Meant to be used in conjuction with `forego start -r`. When a Go file
+# changes, this watch recompiles the project, then kills the existing `sorg`
+# process which Forego will proceed to restart.
 watch-go:
-	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install build
+	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install killall
 
 #
 # Helpers

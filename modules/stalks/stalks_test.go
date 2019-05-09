@@ -4,11 +4,20 @@ import (
 	"fmt"
 	"testing"
 
+	mcontext "github.com/brandur/modulir/context"
+	mlog "github.com/brandur/modulir/log"
 	assert "github.com/stretchr/testify/require"
 )
 
 func TestRender(t *testing.T) {
-	talk, err := Render("../../content", "../../content/talks-drafts", "paradise-lost.md")
+	talk, err := Render(
+		// TODO: Find an easier way to get a context once this comes into `sorg`.
+		mcontext.NewContext(&mcontext.Args{Log: &mlog.Logger{Level: mlog.LevelInfo}}),
+
+		"../../content",
+		"../../content/talks-drafts",
+		"paradise-lost.md",
+	)
 	assert.NoError(t, err)
 
 	assert.Equal(t, true, talk.Draft)
