@@ -1,33 +1,11 @@
 package stoc
 
 import (
-	"flag"
-	"os"
 	"testing"
 
-	log "github.com/Sirupsen/logrus"
 	assert "github.com/stretchr/testify/require"
 	"golang.org/x/net/html"
 )
-
-// We override TestMain so that we can control the logging level of logrus. If
-// we did nothing it would spit out a lot of output even during a normal test
-// run. This way it's only verbose if using `go test -v`.
-func TestMain(m *testing.M) {
-	// we depend on flags so we need to call Parse explicitly (it's otherwise
-	// done implicitly inside Run)
-	flag.Parse()
-
-	log.SetFormatter(new(log.TextFormatter))
-
-	if testing.Verbose() {
-		log.SetLevel(log.DebugLevel)
-	} else {
-		log.SetLevel(log.FatalLevel)
-	}
-
-	os.Exit(m.Run())
-}
 
 func TestBuildTreeSimple(t *testing.T) {
 	node := buildTree([]*header{
@@ -61,12 +39,6 @@ func TestBuildTreeComplex(t *testing.T) {
 		{3, "#h-h", "Header H"},
 		{2, "#h-i", "Header I"},
 	})
-
-	if testing.Verbose() {
-		str, err := renderTree(node)
-		assert.NoError(t, err)
-		log.Debugf("tree = %+v", str)
-	}
 
 	assert.Equal(t, "ol", node.Data)
 
@@ -218,6 +190,10 @@ func TestRenderEmpty(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, "", rendered)
 }
+
+//
+// Private
+//
 
 func mustRenderTree(node *html.Node) string {
 	str, err := renderTree(node)

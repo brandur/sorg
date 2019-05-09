@@ -1038,6 +1038,7 @@ func compileJavascripts(c *modulir.Context, versionedAssetsDir string) (bool, er
 	}
 
 	return true, sassets.CompileJavascripts(
+		c,
 		sourceDir,
 		versionedAssetsDir+"/app.js")
 }
@@ -1056,6 +1057,7 @@ func compileStylesheets(c *modulir.Context, versionedAssetsDir string) (bool, er
 	}
 
 	return true, sassets.CompileStylesheets(
+		c,
 		sourceDir,
 		versionedAssetsDir+"/app.css")
 }

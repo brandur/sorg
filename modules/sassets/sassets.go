@@ -7,9 +7,8 @@ import (
 	"os"
 	"path"
 	"strings"
-	"time"
 
-	log "github.com/Sirupsen/logrus"
+	"github.com/brandur/modulir"
 	"github.com/yosssi/gcss"
 )
 
@@ -18,14 +17,7 @@ import (
 // so we depend on the fact that there aren't too many interdependencies
 // between files. A common requirement can be given an underscore prefix to be
 // loaded first.
-func CompileJavascripts(inPath, outPath string) error {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled script assets in %v.", time.Now().Sub(start))
-	}()
-
-	log.Debugf("Building: %v", outPath)
-
+func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 	javascriptInfos, err := ioutil.ReadDir(inPath)
 	if err != nil {
 		return err
@@ -41,8 +33,6 @@ func CompileJavascripts(inPath, outPath string) error {
 		if isHidden(javascriptInfo.Name()) {
 			continue
 		}
-
-		log.Debugf("Including: %v", javascriptInfo.Name())
 
 		inFile, err := os.Open(path.Join(inPath, javascriptInfo.Name()))
 		if err != nil {
@@ -75,14 +65,7 @@ func CompileJavascripts(inPath, outPath string) error {
 //
 // If a file has a ".sass" suffix, we attempt to render it as GCSS. This isn't
 // a perfect symmetry, but works well enough for these cases.
-func CompileStylesheets(inPath, outPath string) error {
-	start := time.Now()
-	defer func() {
-		log.Debugf("Compiled stylesheet assets in %v.", time.Now().Sub(start))
-	}()
-
-	log.Debugf("Building: %v", outPath)
-
+func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 	stylesheetInfos, err := ioutil.ReadDir(inPath)
 	if err != nil {
 		return err
@@ -98,8 +81,6 @@ func CompileStylesheets(inPath, outPath string) error {
 		if isHidden(stylesheetInfo.Name()) {
 			continue
 		}
-
-		log.Debugf("Including: %v", stylesheetInfo.Name())
 
 		inFile, err := os.Open(path.Join(inPath, stylesheetInfo.Name()))
 		if err != nil {
