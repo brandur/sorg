@@ -27,10 +27,10 @@
               figure
                 p
                   {{if eq .PresenterNotes ""}}
-                    img.lazy.no-caption src="/assets/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2x .ImagePath}} 2x, {{.ImagePath}} 1x"
+                    img.lazy.no-caption src="/assets/images/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2x .ImagePath}} 2x, {{.ImagePath}} 1x"
                   {{else}}
                     a href="{{To2x .ImagePath}}"
-                      img.lazy src="/assets/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2x .ImagePath}} 2x, {{.ImagePath}} 1x"
+                      img.lazy src="/assets/images/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2x .ImagePath}} 2x, {{.ImagePath}} 1x"
                   {{end}}
                 {{if ne .PresenterNotes ""}}
                   figcaption

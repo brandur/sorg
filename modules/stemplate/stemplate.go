@@ -165,7 +165,7 @@ func pace(distance float64, duration time.Duration) string {
 }
 
 func photographStandin(index int) string {
-	return fmt.Sprintf("/assets/standin_0%d.jpg", index%5)
+	return fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
 }
 
 // Escapes a URL.
