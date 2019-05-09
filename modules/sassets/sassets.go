@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mfile"
@@ -97,9 +96,4 @@ func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 	}
 
 	return nil
-}
-
-// Detects a hidden file, i.e. one that starts with a dot.
-func isHidden(file string) bool {
-	return strings.HasPrefix(file, ".")
 }

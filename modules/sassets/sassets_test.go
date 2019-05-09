@@ -113,8 +113,3 @@ p {
 `
 	assert.Equal(t, expected, string(actual))
 }
-
-func TestIsHidden(t *testing.T) {
-	assert.Equal(t, true, isHidden(".gitkeep"))
-	assert.Equal(t, false, isHidden("article"))
-}
