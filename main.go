@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/log"
 	"github.com/joeshaw/envdecode"
+	"github.com/Sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
@@ -145,14 +145,12 @@ type Conf struct {
 // getModulirConfig interprets Conf to produce a configuration suitable to pass
 // to a Modulir build loop.
 func getModulirConfig() *modulir.Config {
-	logLevel := log.LevelInfo
-	if conf.Verbose {
-		logLevel = log.LevelDebug
-	}
+	log := logrus.New()
+	log.SetLevel(logrus.InfoLevel)
 
 	return &modulir.Config{
 		Concurrency: conf.Concurrency,
-		Log:         &log.Logger{Level: logLevel},
+		Log:         log,
 		Port:        conf.Port,
 		SourceDir:   ".",
 		TargetDir:   conf.TargetDir,
