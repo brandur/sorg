@@ -7,7 +7,7 @@ import (
 
 	"github.com/brandur/modulir"
 	"github.com/joeshaw/envdecode"
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 

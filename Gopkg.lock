@@ -10,14 +10,6 @@
   version = "v1.1.0"
 
 [[projects]]
-  digest = "1:3ac248add5bb40a3c631c5334adcd09aa72d15af2768a5bc0274084ea7b2e5ba"
-  name = "github.com/Sirupsen/logrus"
-  packages = ["."]
-  pruneopts = ""
-  revision = "f006c2ac4710855cf0f916dd6b77acf6b048dc6e"
-  version = "v1.0.3"
-
-[[projects]]
   branch = "master"
   digest = "1:8012998ddb3eed9cc0a3b2512d1f37d0947fd604868049cc698d9dc6ea1bd46c"
   name = "github.com/andybalholm/cascadia"
@@ -96,6 +88,14 @@
   revision = "6326cbed175e32cd5183be1cc1027e0823c91edb"
 
 [[projects]]
+  digest = "1:0f51cee70b0d254dbc93c22666ea2abf211af81c1701a96d04e2284b408621db"
+  name = "github.com/konsorten/go-windows-terminal-sequences"
+  packages = ["."]
+  pruneopts = ""
+  revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
+  version = "v1.0.2"
+
+[[projects]]
   branch = "master"
   digest = "1:1559e09937fb91848d3d201213ef6e0aac0a521934d6f88166f0e381f085ef5f"
   name = "github.com/lib/pq"
@@ -137,6 +137,14 @@
   packages = ["."]
   pruneopts = ""
   revision = "541ff5ee47f1dddf6a5281af78307d921524bcb5"
+
+[[projects]]
+  digest = "1:631ea4a52a20ca54eceb1077e8c7e553a4f86a58639824825d9259374f7c362f"
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  pruneopts = ""
+  revision = "8bdbc7bcc01dcbb8ec23dc8a28e332258d25251f"
+  version = "v1.4.1"
 
 [[projects]]
   digest = "1:a1403cc8a94b8d7956ee5e9694badef0e7b051af289caad1cf668331e3ffa4f6"
@@ -183,14 +191,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:67deb33ca789e9ac4f07820a4a0f9725e66e3913af6bfd7231328eb3cad3377c"
-  name = "golang.org/x/crypto"
-  packages = ["ssh/terminal"]
-  pruneopts = ""
-  revision = "81e90905daefcd6fd217b62423c0908922eadb30"
-
-[[projects]]
-  branch = "master"
   digest = "1:ac3ee562ea184c7b47276d00d7bec2a0ac19fd87451125d57a432a934e65a6e4"
   name = "golang.org/x/net"
   packages = [
@@ -204,10 +204,7 @@
   branch = "master"
   digest = "1:19adc71218d62052cd18b83ebaab77961378876094081f4b1581ca28ef80395d"
   name = "golang.org/x/sys"
-  packages = [
-    "unix",
-    "windows",
-  ]
+  packages = ["unix"]
   pruneopts = ""
   revision = "7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce"
 
@@ -239,7 +236,6 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/Sirupsen/logrus",
     "github.com/aymerick/douceur/inliner",
     "github.com/brandur/modulir",
     "github.com/brandur/modulir/context",
@@ -253,6 +249,7 @@
     "github.com/lib/pq",
     "github.com/pkg/errors",
     "github.com/russross/blackfriday",
+    "github.com/sirupsen/logrus",
     "github.com/spf13/cobra",
     "github.com/stretchr/testify/require",
     "github.com/yosssi/ace",
