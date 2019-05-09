@@ -37,6 +37,8 @@ script:
   # bail after a single failure
   - set -e
 
+  - ls -R vendor
+
   - VERBOSE=true make
 
   # deploy development version that includes drafts
