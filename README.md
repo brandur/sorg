@@ -15,12 +15,14 @@ git clone https://github.com/brandur/sorg.git
 
 ## Build
 
-Install Go 1.9+, set up and run [blackswan][blackswan], then:
+Install Go 1.9+, [direnv][direnv] set up and run [blackswan][blackswan], then:
 
 ``` sh
 go get -u github.com/ddollar/forego
 
-cp .env.sample .env
+cp .envrc.sample .envrc
+
+direnv allow
 
 # Used to run the test suite.
 createdb sorg-test
@@ -33,7 +35,7 @@ forego run make build
 
 # Watch for changes in Go files and/or content and recompile and rebuild when
 # one occurs.
-forego start
+forego start -r
 ```
 
 The project can be deployed to s3 using:
@@ -89,6 +91,7 @@ using these commands:
 
 [blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
+[direnv]: https://direnv.net/
 [org]: https://github.com/brandur/org
 
 <!--

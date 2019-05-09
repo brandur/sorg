@@ -10,7 +10,9 @@ import (
 	"path/filepath"
 
 	"github.com/aymerick/douceur/inliner"
-	"github.com/brandur/sorg"
+	mcontext "github.com/brandur/modulir/context"
+	mlog "github.com/brandur/modulir/log"
+	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/spassages"
 	"github.com/brandur/sorg/modules/stemplate"
 	"github.com/joeshaw/envdecode"
@@ -42,7 +44,18 @@ func renderAndSend(path string, live, staging bool) error {
 	dir := filepath.Dir(path)
 	name := filepath.Base(path)
 
-	passage, err := spassages.Render(dir, name, true)
+	passage, err := spassages.Render(
+		// TODO: Find an easier way to get a context once this comes into `sorg`.
+		mcontext.NewContext(&mcontext.Args{Log: &mlog.Logger{Level: mlog.LevelInfo}}),
+
+		dir,
+		name,
+
+		// TODO: Replace with `conf.AbsoluteURL` once this comes into `sorg`.
+		"https://brandur.org",
+
+		true,
+	)
 	if err != nil {
 		return err
 	}
@@ -54,8 +67,8 @@ func renderAndSend(path string, live, staging bool) error {
 	}
 
 	template, err := ace.Load(
-		sorg.PassageLayout,
-		sorg.ViewsDir+"/passages/show",
+		scommon.PassageLayout,
+		scommon.ViewsDir+"/passages/show",
 		&ace.Options{FuncMap: stemplate.FuncMap})
 	if err != nil {
 		return err

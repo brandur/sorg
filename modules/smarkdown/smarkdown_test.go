@@ -254,7 +254,7 @@ func TestTransformImagesToAbsoluteURLs(t *testing.T) {
 		`<img src="https://brandur.org/assets/hello.jpg">`,
 		transformImagesToAbsoluteURLs(
 			`<img src="/assets/hello.jpg">`,
-			&RenderOptions{AbsoluteURLs: true},
+			&RenderOptions{AbsoluteURL: "https://brandur.org"},
 		),
 	)
 
@@ -263,7 +263,7 @@ func TestTransformImagesToAbsoluteURLs(t *testing.T) {
 		`<img src="https://example.com/assets/hello.jpg">`,
 		transformImagesToAbsoluteURLs(
 			`<img src="https://example.com/assets/hello.jpg">`,
-			&RenderOptions{AbsoluteURLs: true},
+			&RenderOptions{AbsoluteURL: "https://brandur.org"},
 		),
 	)
 
