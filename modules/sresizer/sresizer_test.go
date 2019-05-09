@@ -10,7 +10,7 @@ import (
 
 // Doesn't really matter what this is as long as its one that we can rely being
 // inside the repository.
-const testImage = "../content/images/acid/pillars.jpg"
+const testImage = "../../content/images/acid/pillars.jpg"
 
 func TestResize(t *testing.T) {
 	dir, err := ioutil.TempDir("", "photos")

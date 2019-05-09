@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/brandur/sorg"
-	"github.com/brandur/sorg/pool"
-	_ "github.com/brandur/sorg/testing"
+	"github.com/brandur/sorg/modules/spool"
+	_ "github.com/brandur/sorg/modules/stesting"
 	_ "github.com/lib/pq"
 	assert "github.com/stretchr/testify/require"
 )
@@ -214,10 +214,10 @@ func TestRunTasks(t *testing.T) {
 	// Success case
 	//
 
-	tasks := []*pool.Task{
-		pool.NewTask(func() error { return nil }),
-		pool.NewTask(func() error { return nil }),
-		pool.NewTask(func() error { return nil }),
+	tasks := []*spool.Task{
+		spool.NewTask(func() error { return nil }),
+		spool.NewTask(func() error { return nil }),
+		spool.NewTask(func() error { return nil }),
 	}
 	assert.Equal(t, true, runTasks(tasks))
 
@@ -225,10 +225,10 @@ func TestRunTasks(t *testing.T) {
 	// Failure case (1 error)
 	//
 
-	tasks = []*pool.Task{
-		pool.NewTask(func() error { return nil }),
-		pool.NewTask(func() error { return nil }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
+	tasks = []*spool.Task{
+		spool.NewTask(func() error { return nil }),
+		spool.NewTask(func() error { return nil }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
 	}
 	assert.Equal(t, false, runTasks(tasks))
 
@@ -238,18 +238,18 @@ func TestRunTasks(t *testing.T) {
 	// Here we'll exit with a "too many errors" message.
 	//
 
-	tasks = []*pool.Task{
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
-		pool.NewTask(func() error { return fmt.Errorf("error") }),
+	tasks = []*spool.Task{
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
+		spool.NewTask(func() error { return fmt.Errorf("error") }),
 	}
 	assert.Equal(t, false, runTasks(tasks))
 }
