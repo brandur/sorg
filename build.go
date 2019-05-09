@@ -116,7 +116,7 @@ func init() {
 
 func build(c *modulir.Context) error {
 	//
-	// Phase 0: Setup
+	// PHASE 0: Setup
 	//
 	// (No jobs should be enqueued here.)
 	//
