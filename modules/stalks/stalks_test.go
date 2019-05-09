@@ -9,10 +9,12 @@ import (
 )
 
 func TestRender(t *testing.T) {
+	// stesting.init changes the working directory to root, which is why these
+	// relative paths work.
 	talk, err := Render(
 		stesting.NewContext(),
-		"../../content",
-		"../../content/talks-drafts",
+		"./content",
+		"./content/talks-drafts",
 		"paradise-lost.md",
 	)
 	assert.NoError(t, err)
