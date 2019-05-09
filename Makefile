@@ -139,7 +139,7 @@ serve:
 	$(GOPATH)/bin/sorg-serve
 
 test:
-	psql postgres://localhost/sorg-test < testing/black_swan.sql > /dev/null
+	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test ./...
 
 vet:
