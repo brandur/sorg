@@ -36,7 +36,7 @@ in action at https://brandur.org.`),
 		Long: strings.TrimSpace(`
 Starts the build loop that watches for local changes and runs
 when they're detected. A webserver is started on PORT (default
-5004).`),
+5002).`),
 		Run: func(cmd *cobra.Command, args []string) {
 			modulir.Build(getModulirConfig(), build)
 		},
@@ -123,7 +123,7 @@ type Conf struct {
 	NumAtomEntries int `env:"NUM_ATOM_ENTRIES,default=20"`
 
 	// Port is the port on which to serve HTTP when looping in development.
-	Port int `env:"PORT,default=5004"`
+	Port int `env:"PORT,default=5002"`
 
 	// TargetDir is the target location where the site will be built to.
 	TargetDir string `env:"TARGET_DIR,default=./public"`
