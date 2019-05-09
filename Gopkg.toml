@@ -60,7 +60,3 @@
 [[constraint]]
   name = "gopkg.in/mailgun/mailgun-go.v1"
   version = "1.1.0"
-
-[[constraint]]
-  branch = "v2"
-  name = "gopkg.in/yaml.v2"
