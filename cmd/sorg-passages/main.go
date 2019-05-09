@@ -11,8 +11,8 @@ import (
 
 	"github.com/aymerick/douceur/inliner"
 	"github.com/brandur/sorg"
-	"github.com/brandur/sorg/passages"
-	"github.com/brandur/sorg/templatehelpers"
+	"github.com/brandur/sorg/modules/spassages"
+	"github.com/brandur/sorg/modules/stemplate"
 	"github.com/joeshaw/envdecode"
 	"github.com/yosssi/ace"
 	"gopkg.in/mailgun/mailgun-go.v1"
@@ -42,7 +42,7 @@ func renderAndSend(path string, live, staging bool) error {
 	dir := filepath.Dir(path)
 	name := filepath.Base(path)
 
-	passage, err := passages.Render(dir, name, true)
+	passage, err := spassages.Render(dir, name, true)
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func renderAndSend(path string, live, staging bool) error {
 	template, err := ace.Load(
 		sorg.PassageLayout,
 		sorg.ViewsDir+"/passages/show",
-		&ace.Options{FuncMap: templatehelpers.FuncMap})
+		&ace.Options{FuncMap: stemplate.FuncMap})
 	if err != nil {
 		return err
 	}

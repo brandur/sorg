@@ -16,16 +16,16 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/brandur/sorg"
-	"github.com/brandur/sorg/assets"
-	"github.com/brandur/sorg/atom"
-	"github.com/brandur/sorg/downloader"
-	"github.com/brandur/sorg/markdown"
-	"github.com/brandur/sorg/passages"
-	"github.com/brandur/sorg/pool"
-	"github.com/brandur/sorg/resizer"
-	"github.com/brandur/sorg/talks"
-	"github.com/brandur/sorg/templatehelpers"
-	"github.com/brandur/sorg/toc"
+	"github.com/brandur/sorg/modules/sassets"
+	"github.com/brandur/sorg/modules/satom"
+	"github.com/brandur/sorg/modules/sdownloader"
+	"github.com/brandur/sorg/modules/smarkdown"
+	"github.com/brandur/sorg/modules/spassages"
+	"github.com/brandur/sorg/modules/spool"
+	"github.com/brandur/sorg/modules/sresizer"
+	"github.com/brandur/sorg/modules/stalks"
+	"github.com/brandur/sorg/modules/stemplate"
+	"github.com/brandur/sorg/modules/stoc"
 	"github.com/joeshaw/envdecode"
 	_ "github.com/lib/pq"
 	"github.com/yosssi/ace"
@@ -262,7 +262,7 @@ type Page struct {
 	Title string `yaml:"title"`
 }
 
-type passageByPublishedAt []*passages.Passage
+type passageByPublishedAt []*spassages.Passage
 
 func (p passageByPublishedAt) Len() int           { return len(p) }
 func (p passageByPublishedAt) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
@@ -452,7 +452,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 
 	//
 	// Build step 0: dependency-free
@@ -470,10 +470,10 @@ func main() {
 	var fragments []*Fragment
 	fragmentChan := accumulateFragments(&fragments)
 
-	var passages []*passages.Passage
+	var passages []*spassages.Passage
 	passageChan := accumulatePassages(&passages)
 
-	var talks []*talks.Talk
+	var talks []*stalks.Talk
 	talkChan := accumulateTalks(&talks)
 
 	articleTasks, err := tasksForArticles(articleChan)
@@ -504,7 +504,7 @@ func main() {
 	// single entry each in the work queue.
 
 	var photos []*Photo
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		var err error
 		photos, err = compilePhotos(false)
 		return err
@@ -516,26 +516,26 @@ func main() {
 	}
 	tasks = append(tasks, sequenceTasks...)
 
-	tasks = append(tasks, pool.NewTask(func() error {
-		return assets.CompileJavascripts(
+	tasks = append(tasks, spool.NewTask(func() error {
+		return sassets.CompileJavascripts(
 			path.Join(sorg.ContentDir, "javascripts"),
 			path.Join(versionedAssetsDir, "app.js"))
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileReading(db)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileRuns(db)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileRobots(path.Join(conf.TargetDir, "robots.txt"))
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
-		return assets.CompileStylesheets(
+	tasks = append(tasks, spool.NewTask(func() error {
+		return sassets.CompileStylesheets(
 			path.Join(sorg.ContentDir, "stylesheets"),
 			path.Join(versionedAssetsDir, "app.css"))
 	}))
@@ -546,15 +546,15 @@ func main() {
 	}
 	tasks = append(tasks, talkTasks...)
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileTwitter(db)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return linkImages()
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return linkFonts()
 	}))
 
@@ -579,31 +579,31 @@ func main() {
 	sort.Sort(sort.Reverse(fragmentByPublishedAt(fragments)))
 	sort.Sort(sort.Reverse(passageByPublishedAt(passages)))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileArticlesFeed(articles, nil)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileArticlesFeed(articles, tagPointer(tagPostgres))
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileArticlesIndex(articles)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileFragmentsFeed(fragments)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileFragmentsIndex(fragments)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compilePassagesIndex(passages)
 	}))
 
-	tasks = append(tasks, pool.NewTask(func() error {
+	tasks = append(tasks, spool.NewTask(func() error {
 		return compileHome(articles, fragments, photos)
 	}))
 
@@ -653,9 +653,9 @@ func compileArticle(dir, name string, draft bool) (*Article, error) {
 		return nil, fmt.Errorf("No publish date for article: %v", inPath)
 	}
 
-	article.Content = markdown.Render(content, nil)
+	article.Content = smarkdown.Render(content, nil)
 
-	article.TOC, err = toc.Render(article.Content)
+	article.TOC, err = stoc.Render(article.Content)
 	if err != nil {
 		return nil, err
 	}
@@ -722,11 +722,11 @@ func compileArticlesFeed(articles []*Article, tag *Tag) error {
 		title = fmt.Sprintf("Articles (%s) - brandur.org", *tag)
 	}
 
-	feed := &atom.Feed{
+	feed := &satom.Feed{
 		Title: title,
 		ID:    "tag:brandur.org.org,2013:/" + name,
 
-		Links: []*atom.Link{
+		Links: []*satom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -745,12 +745,12 @@ func compileArticlesFeed(articles []*Article, tag *Tag) error {
 			break
 		}
 
-		entry := &atom.Entry{
+		entry := &satom.Entry{
 			Title:     article.Title,
-			Content:   &atom.EntryContent{Content: article.Content, Type: "html"},
+			Content:   &satom.EntryContent{Content: article.Content, Type: "html"},
 			Published: *article.PublishedAt,
 			Updated:   *article.PublishedAt,
-			Link:      &atom.Link{Href: conf.SiteURL + "/" + article.Slug},
+			Link:      &satom.Link{Href: conf.SiteURL + "/" + article.Slug},
 			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
 
 			AuthorName: conf.AtomAuthorName,
@@ -819,7 +819,7 @@ func compileFragment(dir, name string, draft bool) (*Fragment, error) {
 		return nil, fmt.Errorf("No publish date for fragment: %v", inPath)
 	}
 
-	fragment.Content = markdown.Render(content, nil)
+	fragment.Content = smarkdown.Render(content, nil)
 
 	// A lot of fragments still have unwritten hooks, so only add a card where
 	// a fragment has a configured Twitter image for the time being.
@@ -856,11 +856,11 @@ func compileFragmentsFeed(fragments []*Fragment) error {
 		log.Debugf("Compiled fragments feed in %v.", time.Now().Sub(start))
 	}()
 
-	feed := &atom.Feed{
+	feed := &satom.Feed{
 		Title: "Fragments - brandur.org",
 		ID:    "tag:brandur.org.org,2013:/fragments",
 
-		Links: []*atom.Link{
+		Links: []*satom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -875,12 +875,12 @@ func compileFragmentsFeed(fragments []*Fragment) error {
 			break
 		}
 
-		entry := &atom.Entry{
+		entry := &satom.Entry{
 			Title:     fragment.Title,
-			Content:   &atom.EntryContent{Content: fragment.Content, Type: "html"},
+			Content:   &satom.EntryContent{Content: fragment.Content, Type: "html"},
 			Published: *fragment.PublishedAt,
 			Updated:   *fragment.PublishedAt,
-			Link:      &atom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
+			Link:      &satom.Link{Href: conf.SiteURL + "/fragments/" + fragment.Slug},
 			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
 
 			AuthorName: conf.AtomAuthorName,
@@ -1000,7 +1000,7 @@ func compilePage(pagesMeta map[string]*Page, dir, name string) error {
 	return nil
 }
 
-func compilePassagesIndex(passages []*passages.Passage) error {
+func compilePassagesIndex(passages []*spassages.Passage) error {
 	start := time.Now()
 	defer func() {
 		log.Debugf("Compiled passages index in %v.", time.Now().Sub(start))
@@ -1054,7 +1054,7 @@ func compileSequence(dir string, skipWork bool) error {
 	// Render each photo page
 	for _, photo := range photos {
 		title := fmt.Sprintf("%s — %s", photo.Title, sequenceName)
-		description := markdown.Render(photo.Description, nil)
+		description := smarkdown.Render(photo.Description, nil)
 
 		locals := getLocals(title, map[string]interface{}{
 			"BodyClass":     "sequences-photo",
@@ -1153,8 +1153,8 @@ func compilePhotosDir(sourceDir, targetDir string, skipWork bool) ([]*Photo, err
 	})
 
 	var markers []string
-	var photoFiles []*downloader.File
-	var resizeJobs []*resizer.ResizeJob
+	var photoFiles []*sdownloader.File
+	var resizeJobs []*sresizer.ResizeJob
 
 	for _, photo := range photos {
 		image1x := photo.Slug + ".jpg"
@@ -1176,27 +1176,27 @@ func compilePhotosDir(sourceDir, targetDir string, skipWork bool) ([]*Photo, err
 		// fetched and resize, we skip any that already have a marker file.
 		if !fileExists(path.Join(targetDir, imageMarker)) {
 			photoFiles = append(photoFiles,
-				&downloader.File{URL: photo.OriginalImageURL,
+				&sdownloader.File{URL: photo.OriginalImageURL,
 					Target: path.Join(sorg.TempDir, imageOriginal)},
 			)
 
 			resizeJobs = append(resizeJobs,
-				&resizer.ResizeJob{
+				&sresizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
 					TargetPath:  path.Join(targetDir, image1x),
 					TargetWidth: 333,
 				},
-				&resizer.ResizeJob{
+				&sresizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
 					TargetPath:  path.Join(targetDir, image2x),
 					TargetWidth: 667,
 				},
-				&resizer.ResizeJob{
+				&sresizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
 					TargetPath:  path.Join(targetDir, imageLarge1x),
 					TargetWidth: 1500,
 				},
-				&resizer.ResizeJob{
+				&sresizer.ResizeJob{
 					SourcePath:  path.Join(sorg.TempDir, imageOriginal),
 					TargetPath:  path.Join(targetDir, imageLarge2x),
 					TargetWidth: 3000,
@@ -1213,13 +1213,13 @@ func compilePhotosDir(sourceDir, targetDir string, skipWork bool) ([]*Photo, err
 
 	if !skipWork {
 		log.Debugf("Fetching %d photo(s)", len(photoFiles))
-		err = downloader.Fetch(photoFiles)
+		err = sdownloader.Fetch(photoFiles)
 		if err != nil {
 			return nil, err
 		}
 
 		log.Debugf("Running %d resize job(s)", len(resizeJobs))
-		err = resizer.Resize(resizeJobs)
+		err = sresizer.Resize(resizeJobs)
 		if err != nil {
 			return nil, err
 		}
@@ -1362,8 +1362,8 @@ func compileRuns(db *sql.DB) error {
 	return nil
 }
 
-func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
-	passage, err := passages.Render(dir, name, false)
+func compilePassage(dir, name string, draft bool) (*spassages.Passage, error) {
+	passage, err := spassages.Render(dir, name, false)
 	if err != nil {
 		return nil, err
 	}
@@ -1382,8 +1382,8 @@ func compilePassage(dir, name string, draft bool) (*passages.Passage, error) {
 	return passage, nil
 }
 
-func compileTalk(dir, name string) (*talks.Talk, error) {
-	talk, err := talks.Render(sorg.ContentDir, dir, name)
+func compileTalk(dir, name string) (*stalks.Talk, error) {
+	talk, err := stalks.Render(sorg.ContentDir, dir, name)
 	if err != nil {
 		return nil, err
 	}
@@ -1543,7 +1543,7 @@ func linkImages() error {
 // resources.
 //
 
-func tasksForArticles(articleChan chan *Article) ([]*pool.Task, error) {
+func tasksForArticles(articleChan chan *Article) ([]*spool.Task, error) {
 	tasks, err := tasksForArticlesDir(articleChan, sorg.ContentDir+"/articles", false)
 	if err != nil {
 		return nil, err
@@ -1562,20 +1562,20 @@ func tasksForArticles(articleChan chan *Article) ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*pool.Task, error) {
+func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*spool.Task, error) {
 	articleInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, fmt.Errorf("Error reading articles dir: %v", err)
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 	for _, articleInfo := range articleInfos {
 		if isHidden(articleInfo.Name()) {
 			continue
 		}
 
 		name := articleInfo.Name()
-		tasks = append(tasks, pool.NewTask(func() error {
+		tasks = append(tasks, spool.NewTask(func() error {
 			article, err := compileArticle(dir, name, draft)
 			if err != nil {
 				return err
@@ -1589,7 +1589,7 @@ func tasksForArticlesDir(articleChan chan *Article, dir string, draft bool) ([]*
 	return tasks, nil
 }
 
-func tasksForFragments(fragmentChan chan *Fragment) ([]*pool.Task, error) {
+func tasksForFragments(fragmentChan chan *Fragment) ([]*spool.Task, error) {
 	tasks, err := tasksForFragmentsDir(fragmentChan, sorg.ContentDir+"/fragments", false)
 	if err != nil {
 		return nil, err
@@ -1608,20 +1608,20 @@ func tasksForFragments(fragmentChan chan *Fragment) ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) ([]*pool.Task, error) {
+func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) ([]*spool.Task, error) {
 	fragmentInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, fmt.Errorf("Error reading fragments dir: %v", err)
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 	for _, fragmentInfo := range fragmentInfos {
 		if isHidden(fragmentInfo.Name()) {
 			continue
 		}
 
 		name := fragmentInfo.Name()
-		tasks = append(tasks, pool.NewTask(func() error {
+		tasks = append(tasks, spool.NewTask(func() error {
 			fragment, err := compileFragment(dir, name, draft)
 			if err != nil {
 				return err
@@ -1635,7 +1635,7 @@ func tasksForFragmentsDir(fragmentChan chan *Fragment, dir string, draft bool) (
 	return tasks, nil
 }
 
-func tasksForPages() ([]*pool.Task, error) {
+func tasksForPages() ([]*spool.Task, error) {
 	meta, err := ioutil.ReadFile(path.Join(sorg.PagesDir, "_meta.yaml"))
 	if err != nil {
 		return nil, fmt.Errorf("Error reading pages metadata: %v", err)
@@ -1650,7 +1650,7 @@ func tasksForPages() ([]*pool.Task, error) {
 	return tasksForPagesDir(pagesMeta, sorg.PagesDir)
 }
 
-func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, error) {
+func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*spool.Task, error) {
 	log.Debugf("Descending into pages directory: %v", dir)
 
 	fileInfos, err := ioutil.ReadDir(dir)
@@ -1658,7 +1658,7 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 		return nil, fmt.Errorf("Error reading pages dir: %v", err)
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 	for _, fileInfo := range fileInfos {
 		if fileInfo.IsDir() {
 			subtasks, err := tasksForPagesDir(pagesMeta, dir+fileInfo.Name())
@@ -1678,7 +1678,7 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 			// Subtract 4 for the ".ace" extension.
 			name := fileInfo.Name()[0 : len(fileInfo.Name())-4]
 
-			tasks = append(tasks, pool.NewTask(func() error {
+			tasks = append(tasks, spool.NewTask(func() error {
 				return compilePage(pagesMeta, dir, name)
 			}))
 		}
@@ -1687,7 +1687,7 @@ func tasksForPagesDir(pagesMeta map[string]*Page, dir string) ([]*pool.Task, err
 	return tasks, nil
 }
 
-func tasksForPassages(passageChan chan *passages.Passage) ([]*pool.Task, error) {
+func tasksForPassages(passageChan chan *spassages.Passage) ([]*spool.Task, error) {
 	tasks, err := tasksForPassagesDir(passageChan, sorg.ContentDir+"/passages", false)
 	if err != nil {
 		return nil, fmt.Errorf("Error getting passage tasks: %v", err)
@@ -1706,20 +1706,20 @@ func tasksForPassages(passageChan chan *passages.Passage) ([]*pool.Task, error) 
 	return tasks, nil
 }
 
-func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft bool) ([]*pool.Task, error) {
+func tasksForPassagesDir(passageChan chan *spassages.Passage, dir string, draft bool) ([]*spool.Task, error) {
 	passageInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 	for _, passageInfo := range passageInfos {
 		if isHidden(passageInfo.Name()) {
 			continue
 		}
 
 		name := passageInfo.Name()
-		tasks = append(tasks, pool.NewTask(func() error {
+		tasks = append(tasks, spool.NewTask(func() error {
 			passage, err := compilePassage(dir, name, draft)
 			if err != nil {
 				return err
@@ -1733,7 +1733,7 @@ func tasksForPassagesDir(passageChan chan *passages.Passage, dir string, draft b
 	return tasks, nil
 }
 
-func tasksForSequences() ([]*pool.Task, error) {
+func tasksForSequences() ([]*spool.Task, error) {
 	tasks, err := tasksForSequencesDir(
 		path.Join(sorg.ContentDir, "sequences"))
 	if err != nil {
@@ -1753,7 +1753,7 @@ func tasksForSequences() ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForSequencesDir(dir string) ([]*pool.Task, error) {
+func tasksForSequencesDir(dir string) ([]*spool.Task, error) {
 	log.Debugf("Looking for sequences in directory: %v", dir)
 
 	paths, err := listDir(dir)
@@ -1761,9 +1761,9 @@ func tasksForSequencesDir(dir string) ([]*pool.Task, error) {
 		return nil, err
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 	for _, sequencePath := range paths {
-		tasks = append(tasks, pool.NewTask(func() error {
+		tasks = append(tasks, spool.NewTask(func() error {
 			return compileSequence(sequencePath, false)
 		}))
 	}
@@ -1771,7 +1771,7 @@ func tasksForSequencesDir(dir string) ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForTalks(talkChan chan *talks.Talk) ([]*pool.Task, error) {
+func tasksForTalks(talkChan chan *stalks.Talk) ([]*spool.Task, error) {
 	tasks, err := tasksForTalksDir(talkChan, sorg.ContentDir+"/talks")
 	if err != nil {
 		return nil, fmt.Errorf("Error getting talk tasks: %v", err)
@@ -1790,13 +1790,13 @@ func tasksForTalks(talkChan chan *talks.Talk) ([]*pool.Task, error) {
 	return tasks, nil
 }
 
-func tasksForTalksDir(talkChan chan *talks.Talk, dir string) ([]*pool.Task, error) {
+func tasksForTalksDir(talkChan chan *stalks.Talk, dir string) ([]*spool.Task, error) {
 	talkInfos, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, err
 	}
 
-	var tasks []*pool.Task
+	var tasks []*spool.Task
 	for _, talkInfo := range talkInfos {
 		if isHidden(talkInfo.Name()) {
 			continue
@@ -1809,7 +1809,7 @@ func tasksForTalksDir(talkChan chan *talks.Talk, dir string) ([]*pool.Task, erro
 		}
 
 		name := talkInfo.Name()
-		tasks = append(tasks, pool.NewTask(func() error {
+		tasks = append(tasks, spool.NewTask(func() error {
 			talk, err := compileTalk(dir, name)
 			if err != nil {
 				return err
@@ -1849,8 +1849,8 @@ func accumulateFragments(fragments *[]*Fragment) chan *Fragment {
 	return fragmentChan
 }
 
-func accumulatePassages(p *[]*passages.Passage) chan *passages.Passage {
-	passageChan := make(chan *passages.Passage, 100)
+func accumulatePassages(p *[]*spassages.Passage) chan *spassages.Passage {
+	passageChan := make(chan *spassages.Passage, 100)
 	go func() {
 		for passage := range passageChan {
 			*p = append(*p, passage)
@@ -1859,8 +1859,8 @@ func accumulatePassages(p *[]*passages.Passage) chan *passages.Passage {
 	return passageChan
 }
 
-func accumulateTalks(p *[]*talks.Talk) chan *talks.Talk {
-	talkChan := make(chan *talks.Talk, 100)
+func accumulateTalks(p *[]*stalks.Talk) chan *stalks.Talk {
+	talkChan := make(chan *stalks.Talk, 100)
 	go func() {
 		for talk := range talkChan {
 			*p = append(*p, talk)
@@ -2530,7 +2530,7 @@ func pathAsImage(extensionlessPath string) (string, bool) {
 func renderView(layout, view, target string, locals map[string]interface{}) error {
 	log.Debugf("Rendering: %v", target)
 
-	template, err := ace.Load(layout, view, &ace.Options{FuncMap: templatehelpers.FuncMap})
+	template, err := ace.Load(layout, view, &ace.Options{FuncMap: stemplate.FuncMap})
 	if err != nil {
 		return err
 	}
@@ -2552,13 +2552,13 @@ func renderView(layout, view, target string, locals map[string]interface{}) erro
 	return nil
 }
 
-// Runs the given tasks in a pool.
+// Runs the given tasks in a spool.
 //
 // After the run, if any errors occurred, it prints the first 10. Returns true
 // if all tasks succeeded. If a false is returned, the caller should consider
 // exiting with non-zero status.
-func runTasks(tasks []*pool.Task) bool {
-	p := pool.NewPool(tasks, conf.Concurrency)
+func runTasks(tasks []*spool.Task) bool {
+	p := spool.NewPool(tasks, conf.Concurrency)
 	p.Run()
 
 	var numErrors int
