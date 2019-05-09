@@ -3,12 +3,12 @@ package sassets
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 	"strings"
 
 	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/mfile"
 	"github.com/yosssi/gcss"
 )
 
@@ -18,7 +18,7 @@ import (
 // between files. A common requirement can be given an underscore prefix to be
 // loaded first.
 func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
-	javascriptInfos, err := ioutil.ReadDir(inPath)
+	sources, err := mfile.ReadDirWithMeta(c, inPath)
 	if err != nil {
 		return err
 	}
@@ -29,21 +29,17 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 	}
 	defer outFile.Close()
 
-	for _, javascriptInfo := range javascriptInfos {
-		if isHidden(javascriptInfo.Name()) {
-			continue
-		}
-
-		inFile, err := os.Open(path.Join(inPath, javascriptInfo.Name()))
+	for _, source := range sources {
+		inFile, err := os.Open(source)
 		if err != nil {
 			return err
 		}
 
-		outFile.WriteString("/* " + javascriptInfo.Name() + " */\n\n")
+		outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
 		outFile.WriteString("(function() {\n\n")
 
 		// Ignore non-JS files in the directory (I have a README in there)
-		if strings.HasSuffix(javascriptInfo.Name(), ".js") {
+		if filepath.Ext(source) == ".js" {
 			_, err = io.Copy(outFile, inFile)
 			if err != nil {
 				return err
@@ -66,7 +62,7 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 // If a file has a ".sass" suffix, we attempt to render it as GCSS. This isn't
 // a perfect symmetry, but works well enough for these cases.
 func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
-	stylesheetInfos, err := ioutil.ReadDir(inPath)
+	sources, err := mfile.ReadDirWithMeta(c, inPath)
 	if err != nil {
 		return err
 	}
@@ -77,23 +73,18 @@ func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 	}
 	defer outFile.Close()
 
-	for _, stylesheetInfo := range stylesheetInfos {
-		if isHidden(stylesheetInfo.Name()) {
-			continue
-		}
-
-		inFile, err := os.Open(path.Join(inPath, stylesheetInfo.Name()))
+	for _, source := range sources {
+		inFile, err := os.Open(source)
 		if err != nil {
 			return err
 		}
 
-		outFile.WriteString("/* " + stylesheetInfo.Name() + " */\n\n")
+		outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
 
-		if strings.HasSuffix(stylesheetInfo.Name(), ".sass") {
+		if filepath.Ext(source) == ".sass" {
 			_, err := gcss.Compile(outFile, inFile)
 			if err != nil {
-				return fmt.Errorf("Error compiling %v: %v",
-					stylesheetInfo.Name(), err)
+				return fmt.Errorf("Error compiling '%v': %v", source, err)
 			}
 		} else {
 			_, err := io.Copy(outFile, inFile)

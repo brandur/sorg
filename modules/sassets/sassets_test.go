@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"testing"
 
+	"github.com/brandur/sorg/modules/stesting"
 	assert "github.com/stretchr/testify/require"
 )
 
@@ -29,7 +30,7 @@ func TestCompileJavascripts(t *testing.T) {
 	err = ioutil.WriteFile(file3, []byte(`function() { return "file3" }`), 0755)
 	assert.NoError(t, err)
 
-	err = CompileJavascripts(dir, out)
+	err = CompileJavascripts(stesting.NewContext(), dir, out)
 	assert.NoError(t, err)
 
 	actual, err := ioutil.ReadFile(out)
@@ -87,7 +88,7 @@ func TestCompileStylesheets(t *testing.T) {
 	err = ioutil.WriteFile(file3, []byte("p {\n  border: 10px;\n}"), 0755)
 	assert.NoError(t, err)
 
-	err = CompileStylesheets(dir, out)
+	err = CompileStylesheets(stesting.NewContext(), dir, out)
 	assert.NoError(t, err)
 
 	actual, err := ioutil.ReadFile(out)

@@ -4,6 +4,10 @@ import (
 	"os"
 	"path"
 	"runtime"
+
+	"github.com/brandur/modulir"
+	mcontext "github.com/brandur/modulir/context"
+	mlog "github.com/brandur/modulir/log"
 )
 
 func init() {
@@ -53,4 +57,10 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+// NewContext is a convenience helper to create a new modulir.Context suitable
+// for use in the test suite.
+func NewContext() *modulir.Context {
+	return mcontext.NewContext(&mcontext.Args{Log: &mlog.Logger{Level: mlog.LevelInfo}})
 }
