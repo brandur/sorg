@@ -126,4 +126,4 @@ A few projects from already exist to help parse logfmt in various languages:
 * [logfmt for Python](https://pypi.python.org/pypi/logfmt/0.1)
 * [logfmt for Ruby](https://github.com/cyberdelia/logfmt-ruby)
 
-[logrus]: https://github.com/Sirupsen/logrus
+[logrus]: https://github.com/sirupsen/logrus
