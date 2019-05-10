@@ -203,10 +203,12 @@ func (c *Context) Wait() []error {
 	c.Pool.Wait()
 
 	c.Stats.JobsExecuted = append(c.Stats.JobsExecuted, c.Pool.JobsExecuted...)
-	c.Stats.NumJobs += c.Pool.NumJobs
-	c.Stats.NumJobsExecuted += c.Pool.NumJobsExecuted
+	c.Stats.NumJobs += len(c.Pool.JobsAll)
+	c.Stats.NumJobsErrored += len(c.Pool.JobsErrored)
+	c.Stats.NumJobsExecuted += len(c.Pool.JobsExecuted)
 
-	errors := c.Pool.Errors
+	// Pull errors out before starting a new round below.
+	errors := c.Pool.JobErrors()
 
 	// Then start the pool again, which also has the side effect of
 	// reinitializing anything that needs to be reinitialized.
@@ -357,12 +359,19 @@ type Stats struct {
 	LoopDuration time.Duration
 
 	// NumJobs is the total number of jobs generated for the build loop.
-	NumJobs int64
+	NumJobs int
+
+	// NumJobsErrored is the number of jobs that errored during the build loop.
+	//
+	// Note that if any errors were present, the build loop may have cancelled
+	// early as it didn't move onto its later phases, which will lead to
+	// commensurate fewer jobs.
+	NumJobsErrored int
 
 	// NumJobsExecuted is the number of jobs that did some kind of heavier
 	// lifting during the build loop. That's those that returned `true` on
 	// execution.
-	NumJobsExecuted int64
+	NumJobsExecuted int
 
 	// Start is the start time of the build loop.
 	Start time.Time
@@ -377,6 +386,7 @@ func (s *Stats) Reset() {
 	s.JobsExecuted = nil
 	s.LoopDuration = time.Duration(0)
 	s.NumJobs = 0
+	s.NumJobsErrored = 0
 	s.NumJobsExecuted = 0
 	s.Start = time.Now()
 	s.lastLoopStart = time.Now()

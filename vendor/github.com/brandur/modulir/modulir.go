@@ -154,8 +154,10 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			}
 		}
 
-		c.Log.Infof("Built site in %s (%v / %v job(s) did work; loop took %v)",
-			buildDuration, c.Stats.NumJobsExecuted, c.Stats.NumJobs, c.Stats.LoopDuration)
+		c.Log.Infof("Built site in %s (%v / %v job(s) did work; %v errored; loop took %v)",
+			buildDuration,
+			c.Stats.NumJobsExecuted, c.Stats.NumJobs, c.Stats.NumJobsErrored,
+			c.Stats.LoopDuration)
 
 		if c.FirstRun {
 			firstRunComplete <- struct{}{}

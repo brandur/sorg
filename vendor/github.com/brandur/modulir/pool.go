@@ -2,18 +2,31 @@ package modulir
 
 import (
 	"sync"
-	"sync/atomic"
 	"time"
 )
 
 // Job is a wrapper for a piece of work that should be executed by the job
 // pool.
 type Job struct {
+	// Duration is the time it took the job to run. It's set regardless of
+	// whether the job's finished state was executed, not executed, or errored.
 	Duration time.Duration
-	F        func() (bool, error)
+
+	// Error is an error that the job produced, if any.
+	Error error
+
+	// Executed is whether the job "did work", signaled by it returning true.
+	Executed bool
+
+	// F is the function which makes up the job's workload.
+	F func() (bool, error)
+
+	// Name is a name for the job which is helpful for informational and
+	// debugging purposes.
 	Name     string
 }
 
+// NewJob initializes and returns a new Job.
 func NewJob(name string, f func() (bool, error)) *Job {
 	return &Job{Name: name, F: f}
 }
@@ -21,35 +34,30 @@ func NewJob(name string, f func() (bool, error)) *Job {
 // Pool is a worker group that runs a number of jobs at a configured
 // concurrency.
 type Pool struct {
-	Errors []error
 	Jobs   chan *Job
+
+	// JobsAll is a slice of all the jobs that were fed into the pool on the
+	// last run.
+	JobsAll []*Job
+
+	// JobsErrored is a slice of jobs that errored on the last run.
+	//
+	// See also JobErrors which is a shortcut for extracting all the errors
+	// from the jobs.
+	JobsErrored []*Job
 
 	// JobsExecuted is a slice of jobs that were executed on the last run.
 	JobsExecuted []*Job
 
-	// NumJobs is the number of jobs that went through a work iteration of the
-	// pool.
-	//
-	// This number is not accurate until Wait has finished fully. It's reset
-	// when Run is called.
-	NumJobs int64
-
-	// NumJobsExecuted is the number of jobs that did some kind of heavier
-	// lifting during the build loop. That's those that returned `true` on
-	// execution.
-	//
-	// This number is not accurate until Wait has finished fully. It's reset
-	// when Run is called.
-	NumJobsExecuted int64
-
 	concurrency    int
-	errorsMu       sync.Mutex
 	jobsInternal   chan *Job
+	jobsErroredMu  sync.Mutex
 	jobsExecutedMu sync.Mutex
-	jobsFeederDone chan bool
+	jobsFeederDone chan struct{}
 	log            LoggerInterface
 	roundStarted   bool
 	runGate        chan struct{}
+	stop           chan struct{}
 	wg             sync.WaitGroup
 }
 
@@ -65,33 +73,78 @@ func NewPool(log LoggerInterface, concurrency int) *Pool {
 func (p *Pool) Init() {
 	p.log.Debugf("Initializing job pool at concurrency %v", p.concurrency)
 	p.runGate = make(chan struct{})
+	p.stop = make(chan struct{})
+
+	// Allows us to block this function until all Goroutines have successfully
+	// spun up.
+	//
+	// There's a potential race condition when StartRound is called very
+	// quickly after Init and can close runGate before the Goroutines below
+	// have a chance to start selecting on it.
+	var wg sync.WaitGroup
 
 	// Worker Goroutines
+	wg.Add(p.concurrency)
 	for i := 0; i < p.concurrency; i++ {
+		wg.Done()
 		go func() {
-			<-p.runGate
-
 			for {
+				select {
+				case <-p.runGate:
+				case <-p.stop:
+					break
+				}
+
 				p.workForRound()
 			}
 		}()
 	}
 
 	// Job feeder
+	wg.Add(1)
 	go func() {
+		wg.Done()
 		for {
-			<-p.runGate
+			select {
+			case <-p.runGate:
+			case <-p.stop:
+				break
+			}
 
 			for job := range p.Jobs {
-				atomic.AddInt64(&p.NumJobs, 1)
 				p.wg.Add(1)
 				p.jobsInternal <- job
+				p.JobsAll = append(p.JobsAll, job)
 			}
 
 			// Runs after Jobs has been closed.
-			p.jobsFeederDone <- true
+			p.jobsFeederDone <- struct{}{}
 		}
 	}()
+
+	wg.Wait()
+}
+
+// JobErrors is a shortcut from extracting all the errors out of JobsErrored,
+// the set of jobs that errored on the last round.
+func (p *Pool) JobErrors() []error {
+	if len(p.JobsErrored) < 1 {
+		return nil
+	}
+
+	errs := make([]error, len(p.JobsErrored))
+	for i, job := range p.JobsErrored {
+		errs[i] = job.Error
+	}
+	return errs
+}
+
+func (p *Pool) Stop() {
+	if p.roundStarted {
+		panic("Stop should only be called after round has ended (hint: try calling Wait)")
+	}
+
+	p.stop <- struct{}{}
 }
 
 // StartRound begins an execution round. Internal statistics and other tracking
@@ -101,12 +154,11 @@ func (p *Pool) StartRound() {
 		panic("StartRound already called (call Wait before calling it again)")
 	}
 
-	p.Errors = nil
 	p.Jobs = make(chan *Job, 500)
+	p.JobsAll = nil
+	p.JobsErrored = nil
 	p.JobsExecuted = nil
-	p.NumJobs = 0
-	p.NumJobsExecuted = 0
-	p.jobsFeederDone = make(chan bool)
+	p.jobsFeederDone = make(chan struct{})
 	p.jobsInternal = make(chan *Job, 500)
 	p.roundStarted = true
 
@@ -140,7 +192,7 @@ func (p *Pool) Wait() bool {
 	// been enqueued in jobsInternal.
 	<-p.jobsFeederDone
 
-	p.log.Debugf("pool: Waiting for %v job(s) to be done", p.NumJobs)
+	p.log.Debugf("pool: Waiting for %v job(s) to be done", len(p.JobsAll))
 
 	// Now wait for all those jobs to be done.
 	p.wg.Wait()
@@ -149,7 +201,7 @@ func (p *Pool) Wait() bool {
 	// wait on the run gate.
 	close (p.jobsInternal)
 
-	if p.Errors != nil {
+	if p.JobsErrored != nil {
 		return false
 	}
 	return true
@@ -167,13 +219,15 @@ func (p *Pool) workForRound() {
 		job.Duration = time.Now().Sub(start)
 
 		if err != nil {
-			p.errorsMu.Lock()
-			p.Errors = append(p.Errors, err)
-			p.errorsMu.Unlock()
+			job.Error = err
+
+			p.jobsErroredMu.Lock()
+			p.JobsErrored = append(p.JobsErrored, job)
+			p.jobsErroredMu.Unlock()
 		}
 
 		if executed {
-			atomic.AddInt64(&p.NumJobsExecuted, 1)
+			job.Executed = true
 
 			p.jobsExecutedMu.Lock()
 			p.JobsExecuted = append(p.JobsExecuted, job)

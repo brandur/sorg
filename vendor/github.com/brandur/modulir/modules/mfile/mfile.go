@@ -12,10 +12,6 @@ import (
 	"github.com/pkg/errors"
 )
 
-//
-// CopyFile
-//
-
 func CopyFile(c *modulir.Context, source, target string) error {
 	in, err := os.Open(source)
 	if err != nil {
@@ -42,11 +38,6 @@ func CopyFileToDir(c *modulir.Context, source, targetDir string) error {
 	return CopyFile(c, source, path.Join(targetDir, filepath.Base(source)))
 }
 
-//
-// EnsureDir
-//
-
-// TODO: Should also return a bool for executed.
 func EnsureDir(c *modulir.Context, target string) error {
 	err := os.MkdirAll(target, 0755)
 	if err != nil {
