@@ -32,6 +32,7 @@ import (
 	"github.com/brandur/sorg/modules/stalks"
 	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
+	gocache "github.com/patrickmn/go-cache"
 	"github.com/pkg/errors"
 )
 
@@ -84,6 +85,13 @@ var db *sql.DB
 // it's worth the tradeoff. This variable is a global because so many render
 // functions access it.
 var partialViews []string
+
+// An expiring cache that tracks the current state of marker files for photos.
+// Going to the filesystem on every build loop is relatively slow/expensive, so
+// this helps speed up the build loop.
+//
+// Arguments are (defaultExpiration, cleanupInterval).
+var photoMarkerCache = gocache.New(5*time.Minute, 10*time.Minute)
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -977,9 +985,20 @@ func fetchAndResizePhoto(c *modulir.Context, dir string, photo *Photo) (bool, er
 	// for every build.
 	markerPath := sourceNoExt + ".marker"
 
+	// We use an in-memory cache to store whether markers exist for some period
+	// of time because going to the filesystem to check every one of them is
+	// relatively slow/expensive.
+	if _, ok := photoMarkerCache.Get(markerPath); ok {
+		c.Log.Debugf("Skipping photo fetch + resize because marker cached: %s",
+			markerPath)
+		return false, nil
+	}
+
+	// Otherwise check the filesystem.
 	if mfile.Exists(markerPath) {
 		c.Log.Debugf("Skipping photo fetch + resize because marker exists: %s",
 			markerPath)
+		photoMarkerCache.Set(markerPath, struct{}{}, gocache.DefaultExpiration)
 		return false, nil
 	}
 
