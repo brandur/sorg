@@ -75,26 +75,15 @@ var (
 	talks     []*stalks.Talk
 )
 
+// A database connection opened to a Black Swan database if one was configured.
+var db *sql.DB
+
 // List of partial views. If any of these changes we rebuild pretty much
 // everything. Even though some of those changes will false positives, the
 // partials are used pervasively enough, and change infrequently enough, that
 // it's worth the tradeoff. This variable is a global because so many render
 // functions access it.
 var partialViews []string
-
-//////////////////////////////////////////////////////////////////////////////
-//
-//
-//
-// Init
-//
-//
-//
-//////////////////////////////////////////////////////////////////////////////
-
-// init runs on package initialization.
-func init() {
-}
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -120,14 +109,15 @@ func build(c *modulir.Context) error {
 	// extension quickly invalidate.
 	versionedAssetsDir := path.Join(c.TargetDir, "assets", Release)
 
-	var db *sql.DB
-
 	{
+		// Only open the first time
 		if conf.BlackSwanDatabaseURL != "" {
-			var err error
-			db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
-			if err != nil {
-				return err
+			if db == nil {
+				var err error
+				db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
+				if err != nil {
+					return err
+				}
 			}
 		} else {
 			c.Log.Infof("No database set; will not render database-backed views")
