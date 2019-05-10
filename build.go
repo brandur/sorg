@@ -887,47 +887,12 @@ type PhotoWrapper struct {
 	Photos []*Photo `yaml:"photographs"`
 }
 
-// Run is a run as downloaded from Strava.
-type Run struct {
-	// Distance is the distance traveled for the run in meters.
-	Distance float64
-
-	// ElevationGain is the total gain in elevation in meters.
-	ElevationGain float64
-
-	// LocationCity is the closest city to which the run occurred. It may be
-	// an empty string if Strava wasn't able to match anything.
-	LocationCity string
-
-	// MovingTime is the amount of time that the run took.
-	MovingTime time.Duration
-
-	// OccurredAt is the local time in which the run occurred. Note that we
-	// don't use UTC here so as to not make runs in other timezones look to
-	// have occurred at crazy times.
-	OccurredAt *time.Time
-}
-
 // Tag is a symbol assigned to an article to categorize it.
 //
 // This feature is not meanted to be overused. It's really just for tagging
 // a few particular things so that we can generate content-specific feeds for
 // certain aggregates (so far just Planet Postgres).
 type Tag string
-
-// Tweet is a post to Twitter.
-type Tweet struct {
-	// Content is the content of the tweet. It may contain shortened URLs and
-	// the like and so require extra rendering.
-	Content string
-
-	// OccurredAt is UTC time when the tweet was published.
-	OccurredAt *time.Time
-
-	// Slug is a unique identifier for the tweet. It can be used to link it
-	// back to the post on Twitter.
-	Slug string
-}
 
 // articleYear holds a collection of articles grouped by year.
 type articleYear struct {
@@ -939,18 +904,6 @@ type articleYear struct {
 type fragmentYear struct {
 	Year      int
 	Fragments []*Fragment
-}
-
-// tweetYear holds a collection of tweetMonths grouped by year.
-type tweetYear struct {
-	Year   int
-	Months []*tweetMonth
-}
-
-// tweetMonth holds a collection of Tweets grouped by year.
-type tweetMonth struct {
-	Month  time.Month
-	Tweets []*Tweet
 }
 
 // twitterCard represents a Twitter "card" (i.e. one of those rich media boxes
@@ -1130,285 +1083,6 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	return defaults
 }
 
-func getRunsData(db *sql.DB) ([]*Run, error) {
-	var runs []*Run
-
-	if db == nil {
-		return runs, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT
-			(metadata -> 'distance')::float,
-			(metadata -> 'total_elevation_gain')::float,
-			(metadata -> 'location_city'),
-			-- we multiply by 10e9 here because a Golang time.Duration is
-			-- an int64 represented in nanoseconds
-			(metadata -> 'moving_time')::bigint * 1000000000,
-			(metadata -> 'occurred_at_local')::timestamptz
-		FROM events
-		WHERE type = 'strava'
-			AND metadata -> 'type' = 'Run'
-		ORDER BY occurred_at DESC
-		LIMIT 30
-	`)
-	if err != nil {
-		return nil, fmt.Errorf("Error selecting runs: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var locationCity *string
-		var run Run
-
-		err = rows.Scan(
-			&run.Distance,
-			&run.ElevationGain,
-			&locationCity,
-			&run.MovingTime,
-			&run.OccurredAt,
-		)
-		if err != nil {
-			return nil, fmt.Errorf("Error scanning runs: %v", err)
-		}
-
-		if locationCity != nil {
-			run.LocationCity = *locationCity
-		}
-
-		runs = append(runs, &run)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, fmt.Errorf("Error iterating runs: %v", err)
-	}
-
-	return runs, nil
-}
-
-func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
-	// Give these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
-	byYearXYears := []string{}
-	byYearYDistances := []float64{}
-
-	if db == nil {
-		return byYearXYears, byYearYDistances, nil
-	}
-
-	rows, err := db.Query(`
-		WITH runs AS (
-			SELECT *,
-				(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
-				-- convert to distance in kilometers
-				((metadata -> 'distance')::float / 1000.0) AS distance
-			FROM events
-			WHERE type = 'strava'
-				AND metadata -> 'type' = 'Run'
-		)
-
-		SELECT date_part('year', occurred_at_local)::text AS year,
-			SUM(distance)
-		FROM runs
-		GROUP BY year
-		ORDER BY year DESC
-	`)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting runs by year: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var distance float64
-		var year string
-
-		err = rows.Scan(
-			&year,
-			&distance,
-		)
-		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning runs by year: %v", err)
-		}
-
-		byYearXYears = append(byYearXYears, year)
-		byYearYDistances = append(byYearYDistances, distance)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating runs by year: %v", err)
-	}
-
-	return byYearXYears, byYearYDistances, nil
-}
-
-func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
-	// Give these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
-	lastYearXDays := []string{}
-	lastYearYDistances := []float64{}
-
-	if db == nil {
-		return lastYearXDays, lastYearYDistances, nil
-	}
-
-	rows, err := db.Query(`
-		WITH runs AS (
-			SELECT *,
-				(metadata -> 'occurred_at_local')::timestamptz AS occurred_at_local,
-				-- convert to distance in kilometers
-				((metadata -> 'distance')::float / 1000.0) AS distance
-			FROM events
-			WHERE type = 'strava'
-				AND metadata -> 'type' = 'Run'
-		),
-
-		runs_days AS (
-			SELECT date_trunc('day', occurred_at_local) AS day,
-				SUM(distance) AS distance
-			FROM runs
-			WHERE occurred_at_local > NOW() - '180 days'::interval
-			GROUP BY day
-			ORDER BY day
-		),
-
-		-- generates a baseline series of every day in the last 180 days
-		-- along with a zeroed distance which we will then add against the
-		-- actual runs we extracted
-		days AS (
-			SELECT i::date AS day,
-				0::float AS distance
-			FROM generate_series(NOW() - '180 days'::interval,
-				NOW(), '1 day'::interval) i
-		)
-
-		SELECT to_char(d.day, 'Mon') AS day,
-			d.distance + COALESCE(rd.distance, 0::float)
-		FROM days d
-			LEFT JOIN runs_days rd ON d.day = rd.day
-	`)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting last year runs: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var day string
-		var distance float64
-
-		err = rows.Scan(
-			&day,
-			&distance,
-		)
-		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning last year runs: %v", err)
-		}
-
-		lastYearXDays = append(lastYearXDays, day)
-		lastYearYDistances = append(lastYearYDistances, distance)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating last year runs: %v", err)
-	}
-
-	return lastYearXDays, lastYearYDistances, nil
-}
-
-func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
-	// Give these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
-	tweetCountXMonths := []string{}
-	tweetCountYCounts := []int{}
-
-	if db == nil {
-		return tweetCountXMonths, tweetCountYCounts, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT to_char(date_trunc('month', occurred_at), 'Mon ''YY'),
-			COUNT(*)
-		FROM events
-		WHERE type = 'twitter'
-			-- Note that false is always an allowed value here because we
-			-- always want all non-reply tweets.
-			AND (metadata -> 'reply')::boolean IN (false, $1)
-		GROUP BY date_trunc('month', occurred_at)
-		ORDER BY date_trunc('month', occurred_at)
-	`, withReplies)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting tweets by month: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var count int
-		var month string
-
-		err = rows.Scan(
-			&month,
-			&count,
-		)
-		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning tweets by month: %v", err)
-		}
-
-		tweetCountXMonths = append(tweetCountXMonths, month)
-		tweetCountYCounts = append(tweetCountYCounts, count)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating tweets by month: %v", err)
-	}
-
-	return tweetCountXMonths, tweetCountYCounts, nil
-}
-
-func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
-	var tweets []*Tweet
-
-	if db == nil {
-		return tweets, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT
-			content,
-			occurred_at,
-			slug
-		FROM events
-		WHERE type = 'twitter'
-			-- Note that false is always an allowed value here because we
-			-- always want all non-reply tweets.
-			AND (metadata -> 'reply')::boolean IN (false, $1)
-		ORDER BY occurred_at DESC
-	`, withReplies)
-	if err != nil {
-		return nil, fmt.Errorf("Error selecting tweets: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var tweet Tweet
-
-		err = rows.Scan(
-			&tweet.Content,
-			&tweet.OccurredAt,
-			&tweet.Slug,
-		)
-		if err != nil {
-			return nil, fmt.Errorf("Error scanning tweets: %v", err)
-		}
-
-		tweets = append(tweets, &tweet)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, fmt.Errorf("Error iterating tweets: %v", err)
-	}
-
-	return tweets, nil
-}
-
 func groupArticlesByYear(articles []*Article) []*articleYear {
 	var year *articleYear
 	var years []*articleYear
@@ -1436,29 +1110,6 @@ func groupFragmentsByYear(fragments []*Fragment) []*fragmentYear {
 		}
 
 		year.Fragments = append(year.Fragments, fragment)
-	}
-
-	return years
-}
-
-func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
-	var month *tweetMonth
-	var year *tweetYear
-	var years []*tweetYear
-
-	for _, tweet := range tweets {
-		if year == nil || year.Year != tweet.OccurredAt.Year() {
-			year = &tweetYear{tweet.OccurredAt.Year(), nil}
-			years = append(years, year)
-			month = nil
-		}
-
-		if month == nil || month.Month != tweet.OccurredAt.Month() {
-			month = &tweetMonth{tweet.OccurredAt.Month(), nil}
-			year.Months = append(year.Months, month)
-		}
-
-		month.Tweets = append(month.Tweets, tweet)
 	}
 
 	return years
@@ -2070,35 +1721,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 		return false, nil
 	}
 
-	runs, err := getRunsData(db)
-	if err != nil {
-		return true, err
-	}
-
-	lastYearXDays, lastYearYDistances, err := getRunsLastYearData(db)
-	if err != nil {
-		return true, err
-	}
-
-	byYearXYears, byYearYDistances, err := getRunsByYearData(db)
-	if err != nil {
-		return true, err
-	}
-
-	locals := getLocals("Running", map[string]interface{}{
-		"Runs": runs,
-
-		// chart: runs over last year
-		"LastYearXDays":      lastYearXDays,
-		"LastYearYDistances": lastYearYDistances,
-
-		// chart: run distance by year
-		"ByYearXYears":     byYearXYears,
-		"ByYearYDistances": byYearYDistances,
-	})
-
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/runs/index.ace",
-		c.TargetDir+"/runs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+	return true, squantified.RenderRuns(c, db, viewsChanged, getLocals)
 }
 
 func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
@@ -2186,54 +1809,7 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 		return false, nil
 	}
 
-	tweets, err := getTwitterData(db, false)
-	if err != nil {
-		return true, err
-	}
-
-	tweetsWithReplies, err := getTwitterData(db, true)
-	if err != nil {
-		return true, err
-	}
-
-	optionsMatrix := map[string]bool{
-		"index.html":   false,
-		"with-replies": true,
-	}
-
-	for page, withReplies := range optionsMatrix {
-		ts := tweets
-		if withReplies {
-			ts = tweetsWithReplies
-		}
-
-		tweetsByYearAndMonth := groupTwitterByYearAndMonth(ts)
-
-		tweetCountXMonths, tweetCountYCounts, err :=
-			getTwitterByMonth(db, withReplies)
-		if err != nil {
-			return true, err
-		}
-
-		locals := getLocals("Twitter", map[string]interface{}{
-			"NumTweets":            len(tweets),
-			"NumTweetsWithReplies": len(tweetsWithReplies),
-			"TweetsByYearAndMonth": tweetsByYearAndMonth,
-			"WithReplies":          withReplies,
-
-			// chart: tweets by month
-			"TweetCountXMonths": tweetCountXMonths,
-			"TweetCountYCounts": tweetCountYCounts,
-		})
-
-		err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
-			c.TargetDir+"/twitter/"+page, stemplate.GetAceOptions(viewsChanged), locals)
-		if err != nil {
-			return true, err
-		}
-	}
-
-	return true, nil
+	return true, squantified.RenderTwitter(c, db, viewsChanged, getLocals)
 }
 
 func resizeImage(c *modulir.Context, source, target string, width int) error {
