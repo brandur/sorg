@@ -1,13 +1,11 @@
----
-title: In Pursuit of Production Minimalism
-published_at: 2017-05-10T13:35:02Z
-location: San Francisco
-hook: Practicing minimalism with the lofty goal of total
-  ephemeralization to build coherent, stable, and operable
-  stacks.
-attributions: Photographs by <strong><a href="https://www.flickr.com/photos/i-am-mclovin/14601998033/">Ben Harrington</a></strong> (SR-71), <strong><a href="https://www.flickr.com/photos/learnscope/5032942270/">Robyn Jay</a></strong> (embers of a burning fire), and <strong><a href="https://www.flickr.com/photos/alamin_bd/22969073683/">Md. Al Amin</a></strong> (boat and sky). Licensed under Creative Commons BY-NC-ND 2.0, BY-SA 2.0, and CC BY 2.0 respectively.
-hn_link: https://news.ycombinator.com/item?id=17675243
----
++++
+attributions = "Photographs by <strong><a href=\"https://www.flickr.com/photos/i-am-mclovin/14601998033/\">Ben Harrington</a></strong> (SR-71), <strong><a href=\"https://www.flickr.com/photos/learnscope/5032942270/\">Robyn Jay</a></strong> (embers of a burning fire), and <strong><a href=\"https://www.flickr.com/photos/alamin_bd/22969073683/\">Md. Al Amin</a></strong> (boat and sky). Licensed under Creative Commons BY-NC-ND 2.0, BY-SA 2.0, and CC BY 2.0 respectively."
+hn_link = "https://news.ycombinator.com/item?id=17675243"
+hook = "Practicing minimalism with the lofty goal of total ephemeralization to build coherent, stable, and operable stacks."
+location = "San Francisco"
+published_at = 2017-05-10T13:35:02Z
+title = "In Pursuit of Production Minimalism"
++++
 
 While working at Lockheed during the cold war, Kelly
 Johnson was reported to have coined [KISS][kiss] ("keep it

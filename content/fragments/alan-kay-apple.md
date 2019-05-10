@@ -1,9 +1,8 @@
----
-title: Alan Kay on Apple and iOS
-published_at: 2017-01-31T16:24:49Z
-hook: On locking down platforms and diluting user
-  interfaces to the lowest common denominator.
----
++++
+hook = "On locking down platforms and diluting user interfaces to the lowest common denominator."
+published_at = 2017-01-31T16:24:49Z
+title = "Alan Kay on Apple and iOS"
++++
 
 Here's a great talk from Alan Kay: ["Is it Complex or Did
 We Just Make it Complicated?"][talk].

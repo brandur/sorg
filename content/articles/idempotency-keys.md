@@ -1,13 +1,10 @@
----
-title: Implementing Stripe-like Idempotency Keys in Postgres
-published_at: 2017-10-27T13:52:12Z
-location: San Francisco
-hook: Building resilient services by identifying foreign
-  state mutations and grouping local changes into
-  restartable atomic phases so that every request can be
-  driven to completion.
-hn_link: https://news.ycombinator.com/item?id=15569478
----
++++
+hn_link = "https://news.ycombinator.com/item?id=15569478"
+hook = "Building resilient services by identifying foreign state mutations and grouping local changes into restartable atomic phases so that every request can be driven to completion."
+location = "San Francisco"
+published_at = 2017-10-27T13:52:12Z
+title = "Implementing Stripe-like Idempotency Keys in Postgres"
++++
 
 In APIs ***idempotency*** is a powerful concept. An
 idempotent endpoint is one that can be called any number of

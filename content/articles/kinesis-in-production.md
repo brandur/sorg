@@ -1,10 +1,9 @@
----
-hook: A short write-up on findings, limitations, and opinion on Kinesis after a month
-  in production.
-location: San Francisco
-published_at: 2015-05-03T17:35:37Z
-title: A Month of Kinesis in Production
----
++++
+hook = "A short write-up on findings, limitations, and opinion on Kinesis after a month in production."
+location = "San Francisco"
+published_at = 2015-05-03T17:35:37Z
+title = "A Month of Kinesis in Production"
++++
 
 We've been powering a production component with Kinesis for a little over a month now so it seems like as good of a time as ever to put together a few thoughts on how it's worked out. My goal here is to put together a few short objective observations on how it's performed, followed by what I perceive as the product's major limitations, and then a short opinion as to whether I'd use it again. Keep in mind though that while we're putting a bit of load on our stream, we haven't come close to pushing the product to its limits (well, except for one limit, see below), so if you're planning on pushing a cluster to the 100s of GBs or TBs scale, the findings here may not be sufficient to make an informed decision on the product.
 

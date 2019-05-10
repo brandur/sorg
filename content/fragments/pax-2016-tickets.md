@@ -1,8 +1,8 @@
----
-title: PAX 2016 ticket royale
-published_at: 2016-06-08T06:55:02Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-08T06:55:02Z
+title = "PAX 2016 ticket royale"
++++
 
 Some friends and decided that we wanted to get tickets to PAX West [1] this
 year. Knowing that the last few years have sold out quickly (within an hour),

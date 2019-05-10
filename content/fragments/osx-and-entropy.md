@@ -1,8 +1,8 @@
----
-title: OSX and entropy
-published_at: 2016-07-31T17:39:44Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-31T17:39:44Z
+title = "OSX and entropy"
++++
 
 Bertrand Serlet stopped by Stripe yesterday to do a fireside-chat style
 interview with Patrick. Bertrand's a well-traveled former SVP of Apple, veteran

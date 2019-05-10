@@ -1,8 +1,8 @@
----
-title: Legacy projects & the maintainer
-published_at: 2015-08-14T05:27:58Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-08-14T05:27:58Z
+title = "Legacy projects & the maintainer"
++++
 
 Code has an incredible ability to survive far beyond the expectations of its
 original authors. There are a multitude of reasons for this, but foremost is

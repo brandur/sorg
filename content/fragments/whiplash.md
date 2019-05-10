@@ -1,8 +1,8 @@
----
-title: Whiplash
-published_at: 2015-08-14T03:50:31Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-08-14T03:50:31Z
+title = "Whiplash"
++++
 
 _(Caution: major spoilers below.)_
 

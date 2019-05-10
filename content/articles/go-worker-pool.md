@@ -1,10 +1,9 @@
----
-title: The Case For A Go Worker Pool
-published_at: 2016-08-19T21:22:23Z
-hook: Error handling and fragility; or why a worker pool belongs in Go's
-  standard library.
-location: San Francisco
----
++++
+hook = "Error handling and fragility; or why a worker pool belongs in Go's standard library."
+location = "San Francisco"
+published_at = 2016-08-19T21:22:23Z
+title = "The Case For A Go Worker Pool"
++++
 
 When it comes to the question of what the right constructs for concurrency that
 a language should expose to developers, I'm a true believer that Go's channels

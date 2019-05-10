@@ -1,8 +1,8 @@
----
-title: The Cubano
-published_at: 2014-11-27T05:11:21Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-11-27T05:11:21Z
+title = "The Cubano"
++++
 
 I've recently been working on some cocktails that include egg white and came
 across a good one while surfing the expanses of the World Wide Web.

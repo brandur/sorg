@@ -1,8 +1,8 @@
----
-title: CloudFlare Universal SSL
-published_at: 2014-11-12T04:56:26Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-11-12T04:56:26Z
+title = "CloudFlare Universal SSL"
++++
 
 I recently activated [CloudFlare's free Universal SSL][cloudflare] for a few of
 my apps (including this one), and I'm impressed. The product works exactly as

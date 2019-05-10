@@ -1,10 +1,10 @@
----
-title: Paradise Lost
-subtitle: The trials of building software outside of an ACID and relational environment
-published_at: 2018-09-07T15:36:33Z
-location: San Francisco
-event: FakeConf
----
++++
+event = "FakeConf"
+location = "San Francisco"
+published_at = 2018-09-07T15:36:33Z
+subtitle = "The trials of building software outside of an ACID and relational environment"
+title = "Paradise Lost"
++++
 
 class: middle
 

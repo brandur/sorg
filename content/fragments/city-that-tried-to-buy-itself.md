@@ -1,10 +1,8 @@
----
-title: The city that tried to buy itself
-published_at: 2017-09-11T05:19:56Z
-hook: Thoughts on governments protecting tenants by buying
-  buildings and raging against the law of supply and
-  demand.
----
++++
+hook = "Thoughts on governments protecting tenants by buying buildings and raging against the law of supply and demand."
+published_at = 2017-09-11T05:19:56Z
+title = "The city that tried to buy itself"
++++
 
 Berlin [recently announced that it was blocking the sale of
 a Friedrichshain-Kreuzberg tenement][buy] and instead

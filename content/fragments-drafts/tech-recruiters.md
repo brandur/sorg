@@ -1,10 +1,8 @@
----
-title: Tech recruiters, or, when software compromises
-  courtesy
-published_at: 2019-03-16T20:06:34Z
-hook: A short rationale on why I stopped responding to
-  emails from technical recruiters.
----
++++
+hook = "A short rationale on why I stopped responding to emails from technical recruiters."
+published_at = 2019-03-16T20:06:34Z
+title = "Tech recruiters, or, when software compromises courtesy"
++++
 
 I used to respond to every single email from a technical
 recruiter that I ever got. Those of us in software are

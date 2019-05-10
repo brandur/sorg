@@ -1,8 +1,8 @@
----
-title: The Everything Store
-published_at: 2015-08-09T18:10:56Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-08-09T18:10:56Z
+title = "The Everything Store"
++++
 
 ★ ★ ★ ★ ★ (out of five)
 

@@ -1,10 +1,9 @@
----
-hook: Data warehouses aren't just for the enterprise! Let's examine a few of their
-  basic characteristics, and build some examples with Go/Ruby and Postgres.
-location: San Francisco
-published_at: 2014-09-05T16:25:04Z
-title: The Humble Data Warehouse
----
++++
+hook = "Data warehouses aren't just for the enterprise! Let's examine a few of their basic characteristics, and build some examples with Go/Ruby and Postgres."
+location = "San Francisco"
+published_at = 2014-09-05T16:25:04Z
+title = "The Humble Data Warehouse"
++++
 
 Data warehouse. The term immediately brings heavy enterprise into mind, complete with business intelligence, heavy XML-based ETL instructions, and "N-dimensional" data processing technology like the [OLAP hypercube](http://en.wikipedia.org/wiki/OLAP_cube).
 

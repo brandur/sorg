@@ -1,8 +1,8 @@
----
-title: Two stars
-published_at: 2014-06-11T15:04:13Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-06-11T15:04:13Z
+title = "Two stars"
++++
 
 During a recent trip to Leipzig, I had the distinctive pleasure of eating at a
 Michelin two-star restaurant for the first time. I'm not a huge foodie, but I

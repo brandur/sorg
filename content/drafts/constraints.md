@@ -1,10 +1,10 @@
----
-title: Safe Schemas, Strong Constraints
-published_at: 2019-04-26T18:45:56Z
-location: San Francisco
-hook: TODO
-tags: ["postgres"]
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2019-04-26T18:45:56Z
+tags = ["postgres"]
+title = "Safe Schemas, Strong Constraints"
++++
 
 Relational databases like Postgres provide a powerful
 platform on which to build applications by offering the

@@ -1,8 +1,8 @@
----
-title: Showing Redshift distkey & sortkey
-published_at: 2015-10-26T18:25:13Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-10-26T18:25:13Z
+title = "Showing Redshift distkey & sortkey"
++++
 
 One slightly unfortunate aspect of how Postgres interacts with Redshift is that
 standard tooling like `\d+` can't be used to inspect a table's distkey or

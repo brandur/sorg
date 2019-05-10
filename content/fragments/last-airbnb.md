@@ -1,9 +1,8 @@
----
-title: The last AirBnB
-published_at: 2016-12-13T16:44:54Z
-hook: Springtime, Zweckentfremdungsverbot, and the end of AirBnB rentals in
-  Berlin.
----
++++
+hook = "Springtime, Zweckentfremdungsverbot, and the end of AirBnB rentals in Berlin."
+published_at = 2016-12-13T16:44:54Z
+title = "The last AirBnB"
++++
 
 While visiting Berlin this year, some friends and I stayed in an airy apartment
 in Friedrichshain. Its interior was beautifully modeled in a modest European

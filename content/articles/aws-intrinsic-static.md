@@ -1,10 +1,9 @@
----
-hook: Building a static site on AWS with a global CDN, free HTTPS with automatic certificate
-  renewal, and a CI-based deployment process powered by GitHub pull requests.
-location: San Francisco
-published_at: 2016-04-09T02:11:19Z
-title: The Intrinsic Static Site
----
++++
+hook = "Building a static site on AWS with a global CDN, free HTTPS with automatic certificate renewal, and a CI-based deployment process powered by GitHub pull requests."
+location = "San Francisco"
+published_at = 2016-04-09T02:11:19Z
+title = "The Intrinsic Static Site"
++++
 
 I've written previously [about my misgivings with static sites on
 AWS](/fragments/aws-static-hosting), and while some of those points are still

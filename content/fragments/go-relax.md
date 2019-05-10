@@ -1,8 +1,8 @@
----
-title: Go relax
-published_at: 2014-06-28T20:16:22Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-06-28T20:16:22Z
+title = "Go relax"
++++
 
 I've been writing a lot of Go code over the last week, and I'm finally coming
 around. I've been previously kept at arm's length due to its lack of generics,

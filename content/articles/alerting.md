@@ -1,10 +1,9 @@
----
-hook: A set of general guidelines to consider when designing a alerts for a production
-  system.
-location: Leipzig (finished in San Francisco)
-published_at: 2015-08-18T11:28:48Z
-title: Designing Alerts
----
++++
+hook = "A set of general guidelines to consider when designing a alerts for a production system."
+location = "Leipzig (finished in San Francisco)"
+published_at = 2015-08-18T11:28:48Z
+title = "Designing Alerts"
++++
 
 Adding alerts to systems has become a widespread standard practice that helps
 engineers keep their production systems up. The basic idea of such a setup is

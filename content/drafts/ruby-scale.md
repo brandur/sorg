@@ -1,10 +1,9 @@
----
-title: Ruby, and Challenges of Scale
-published_at: 2017-04-18T14:23:28Z
-location: San Francisco
-hook: The challenges of scaling and operating a big Ruby
-  codebase (that are not related to performance).
----
++++
+hook = "The challenges of scaling and operating a big Ruby codebase (that are not related to performance)."
+location = "San Francisco"
+published_at = 2017-04-18T14:23:28Z
+title = "Ruby, and Challenges of Scale"
++++
 
 Ruby is a beautiful language. Speaking from experience,
 it's easy to get attached to everything from its pleasantly

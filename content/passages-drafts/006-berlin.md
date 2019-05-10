@@ -1,7 +1,7 @@
----
-title: Return to Berlin
-published_at: 2019-06-18T03:24:56Z
----
++++
+published_at = 2019-06-18T03:24:56Z
+title = "Return to Berlin"
++++
 
 My return to Berlin started in the most Berlin way
 imaginable. I touched down at 10 PM. I'd arranged to stay

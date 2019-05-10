@@ -1,9 +1,8 @@
----
-title: Apple Bedtime
-published_at: 2016-10-19T16:17:10Z
-hook: Apple's new addition to the iOS Clock app is a step closer to the ideal
-  alarm clock.
----
++++
+hook = "Apple's new addition to the iOS Clock app is a step closer to the ideal alarm clock."
+published_at = 2016-10-19T16:17:10Z
+title = "Apple Bedtime"
++++
 
 New iOS features from Apple tend to be gimmicks, but iOS 10 came with an
 addition to the Clock app that I've enjoying a lot: Apple Bedtime. It's a

@@ -1,8 +1,8 @@
----
-title: Chrome
-published_at: 2017-01-27T19:39:57Z
-hook: On joining the party eight years late.
----
++++
+hook = "On joining the party eight years late."
+published_at = 2017-01-27T19:39:57Z
+title = "Chrome"
++++
 
 So put this in the bucket of "things that I do five years
 behind the curve", but I recently switched my default

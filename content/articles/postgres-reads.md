@@ -1,14 +1,11 @@
----
-title: Scaling Postgres with Read Replicas & Using WAL to
-  Counter Stale Reads
-location: Osaka
-published_at: 2017-11-17T22:02:56Z
-hook: Scaling out operation with read replicas and avoiding
-  the downside of stale reads by observing replication
-  progress.
-tags: ["postgres"]
-hn_link: https://news.ycombinator.com/item?id=15726376
----
++++
+hn_link = "https://news.ycombinator.com/item?id=15726376"
+hook = "Scaling out operation with read replicas and avoiding the downside of stale reads by observing replication progress."
+location = "Osaka"
+published_at = 2017-11-17T22:02:56Z
+tags = ["postgres"]
+title = "Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads"
++++
 
 A common technique when running applications powered by
 relational databases like Postgres, MySQL, and SQL Server

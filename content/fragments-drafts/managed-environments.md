@@ -1,8 +1,8 @@
----
-title: On managed environments
-published_at: 2017-05-11T18:46:36Z
-hook: TODO
----
++++
+hook = "TODO"
+published_at = 2017-05-11T18:46:36Z
+title = "On managed environments"
++++
 
 At Stripe we distribute Puppeted laptops to every new
 developer that lets them get a running start with Ruby,

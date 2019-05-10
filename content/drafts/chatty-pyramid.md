@@ -1,9 +1,9 @@
----
-title: The Chatty Pyramid
-published_at: 2017-05-30T17:10:46Z
-location: San Francisco
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2017-05-30T17:10:46Z
+title = "The Chatty Pyramid"
++++
 
 My time in university coincided with Facebook's massive
 surge in popularity. I'd walk into a lab in the computer

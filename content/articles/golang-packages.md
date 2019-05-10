@@ -1,10 +1,9 @@
----
-hook: Understanding the benefits of Golang's restrictive (but simple) import and package
-  management system.
-location: San Francisco
-published_at: 2014-10-20T00:54:44Z
-title: Package Management in Go
----
++++
+hook = "Understanding the benefits of Golang's restrictive (but simple) import and package management system."
+location = "San Francisco"
+published_at = 2014-10-20T00:54:44Z
+title = "Package Management in Go"
++++
 
 Go's strategy for package management is a little untraditional by the standards of what most language ecosystems are setting today. Nearly every other language that's under active development today has opted for an approach to dependency management that involves central repositories accompanied by a recipe that's checked in with projects with instructions on how to rebuild the dependency tree that they need to run: Rubygems in Ruby, NPM in Node, Maven for the JVM, Cargo for Rust, etc. Go's more exotic approach can be a little harder for new entrants to understand, especially if they're coming in from other languages.
 

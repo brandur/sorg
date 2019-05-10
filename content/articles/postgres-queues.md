@@ -1,12 +1,11 @@
----
-hook: How Postgres' concurrency model coupled with long-lived transactions can degrade
-  the performance of indexes on hot tables in your database.
-location: San Francisco
-published_at: 2015-05-18T23:13:23Z
-title: Postgres Job Queues & Failure By MVCC
-tags: ["postgres"]
-hn_link: https://news.ycombinator.com/item?id=9576864
----
++++
+hn_link = "https://news.ycombinator.com/item?id=9576864"
+hook = "How Postgres' concurrency model coupled with long-lived transactions can degrade the performance of indexes on hot tables in your database."
+location = "San Francisco"
+published_at = 2015-05-18T23:13:23Z
+tags = ["postgres"]
+title = "Postgres Job Queues & Failure By MVCC"
++++
 
 An alarm goes off and open your laptop. Your job queue has spiked to 10,000 jobs and is still growing rapidly. The bloated queue means that internal components are not receiving critical updates which will eventually compromise the health of the whole system. You start to investigate. The worker processes look healthy and jobs are being worked in a timely manner. Everything else looks normal. After close to an hour feeling around the system you notice a transaction that another team has opened for analytical purposes on one of your database followers. You promptly send it a SIGINT. The queue's backlog evaporates in the blink of an eye and normalcy returns.
 

@@ -1,8 +1,8 @@
----
-title: Journaling (revisited)
-published_at: 2017-01-10T17:49:20Z
-hook: Six months and 85,000 words later.
----
++++
+hook = "Six months and 85,000 words later."
+published_at = 2017-01-10T17:49:20Z
+title = "Journaling (revisited)"
++++
 
 I touched on [journaling](/fragments/journaling) before
 briefly when I first started the practice last year.

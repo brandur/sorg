@@ -1,8 +1,8 @@
----
-title: Starbucks growth
-published_at: 2015-12-07T17:34:10Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-12-07T17:34:10Z
+title = "Starbucks growth"
++++
 
 The NYT reports today on the continued prosperity of Starbucks which continues
 to outpace the market with a year over year 50%+ stock growth. They attribute

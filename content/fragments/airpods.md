@@ -1,10 +1,9 @@
----
-title: AirPods
-published_at: 2017-03-29T14:44:33Z
-image: /assets/images/fragments/airpods/vista.jpg
-hook: I'm happy to be cheering from the bleachers as Apple
-  makes their first home run in years.
----
++++
+hook = "I'm happy to be cheering from the bleachers as Apple makes their first home run in years."
+image = "/assets/images/fragments/airpods/vista.jpg"
+published_at = 2017-03-29T14:44:33Z
+title = "AirPods"
++++
 
 Apple's had a bad few years. Financially, things are great,
 but product innovation has not only slowed to a crawl, but

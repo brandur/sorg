@@ -1,8 +1,8 @@
----
-title: Naked DNS
-published_at: 2016-01-31T19:39:33Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-31T19:39:33Z
+title = "Naked DNS"
++++
 
 A recent link from HN re-raised the discussion about
 whether it's a good idea to use "naked DNS", which means

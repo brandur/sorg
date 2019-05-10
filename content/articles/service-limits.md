@@ -1,10 +1,9 @@
----
-hook: Why and how to put limits and rate limits on your web services.
-  Introducing redis-cell.
-location: San Francisco
-published_at: 2016-11-08T17:35:34Z
-title: Service Limits
----
++++
+hook = "Why and how to put limits and rate limits on your web services. Introducing redis-cell."
+location = "San Francisco"
+published_at = 2016-11-08T17:35:34Z
+title = "Service Limits"
++++
 
 While I was working at Heroku, we stored a JSON blob in the database for each
 release of an app, the values of which were used to inject configuration

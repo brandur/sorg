@@ -1,8 +1,8 @@
----
-title: Inventory ephemeralization
-published_at: 2015-01-03T22:56:24Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-01-03T22:56:24Z
+title = "Inventory ephemeralization"
++++
 
 I was just thinking about all the types of items that I would regularly have
 around me or carry on my person during my adult life, and how many of them I no

@@ -1,8 +1,8 @@
----
-title: Apple 2016
-published_at: 2016-12-06T17:59:39Z
-hook: The higher they rise, the harder they fall.
----
++++
+hook = "The higher they rise, the harder they fall."
+published_at = 2016-12-06T17:59:39Z
+title = "Apple 2016"
++++
 
 I have a complex relationship with Apple. I started using their products in
 grade school, but was never a fan of any of their early line ups. In my later

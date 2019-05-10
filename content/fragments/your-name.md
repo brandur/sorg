@@ -1,10 +1,9 @@
----
-title: Your Name
-published_at: 2017-04-11T01:26:59Z
-image: /assets/images/fragments/your-name/vista.jpg
-hook: A short review of Makoto Shinka's latest animated
-  film.
----
++++
+hook = "A short review of Makoto Shinka's latest animated film."
+image = "/assets/images/fragments/your-name/vista.jpg"
+published_at = 2017-04-11T01:26:59Z
+title = "Your Name"
++++
 
 ★ ★ ★ ★ ★ (out of five)
 

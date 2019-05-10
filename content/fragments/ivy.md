@@ -1,9 +1,9 @@
----
-title: Ivy
-published_at: 2016-08-24T03:12:31Z
-image: /assets/images/fragments/ivy/vista.jpg
-hook: Stripe's new home in SOMA.
----
++++
+hook = "Stripe's new home in SOMA."
+image = "/assets/images/fragments/ivy/vista.jpg"
+published_at = 2016-08-24T03:12:31Z
+title = "Ivy"
++++
 
 After years of incremental office expansions in San Francisco's Mission
 district, we've got a new office (codename "Ivy") to tide us over until our

@@ -1,9 +1,8 @@
----
-title: Retroactive justification & skepticism
-published_at: 2016-10-16T21:33:13Z
-hook: Be wary of anyone hawking technology -- there's snake oil around every
-  corner.
----
++++
+hook = "Be wary of anyone hawking technology -- there's snake oil around every corner."
+published_at = 2016-10-16T21:33:13Z
+title = "Retroactive justification & skepticism"
++++
 
 Last week [Slack wrote an engineering blog post][slack-php] whose overriding
 message is that despite its dangerous type system (especially around coercion),
@@ -51,4 +50,4 @@ wide use and which have accumulated only minute amounts of valid criticism
 while having successfully withstood the test of time.
 
 [slack-php]: https://news.ycombinator.com/item?id=12703751
-[uber-mysql]: 
+[uber-mysql]:

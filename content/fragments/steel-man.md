@@ -1,8 +1,8 @@
----
-title: The steel man
-published_at: 2016-08-06T17:33:13Z
-hook: The foil of the straw man; a healthy technique for debate.
----
++++
+hook = "The foil of the straw man; a healthy technique for debate."
+published_at = 2016-08-06T17:33:13Z
+title = "The steel man"
++++
 
 While listening to Sam Harris' _Waking Up_ this morning, the debate technique
 of a ["steel man"][steel-man] came up, which was new to me.

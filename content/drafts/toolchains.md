@@ -1,9 +1,9 @@
----
-title: Building Language Toolchains with Batteries Included
-published_at: 2017-12-29T21:36:25Z
-location: Calgary
-hook: TODO
----
++++
+hook = "TODO"
+location = "Calgary"
+published_at = 2017-12-29T21:36:25Z
+title = "Building Language Toolchains with Batteries Included"
++++
 
 Imaginary language.
 

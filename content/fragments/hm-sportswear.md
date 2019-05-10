@@ -1,8 +1,8 @@
----
-title: H&M sportswear
-published_at: 2016-06-28T15:37:38Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-28T15:37:38Z
+title = "H&M sportswear"
++++
 
 I've been struggling to find a brand of sports shirt that I like for some time
 now. I'm not particularly picky, but my two requirements are that shirts are

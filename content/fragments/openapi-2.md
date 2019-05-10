@@ -1,9 +1,8 @@
----
-title: OpenAPI 2.0
-published_at: 2016-10-16T20:52:26Z
-hook: Some thoughts on OpenAPI 2.0 after putting together a definition for
-  Stripe's API.
----
++++
+hook = "Some thoughts on OpenAPI 2.0 after putting together a definition for Stripe's API."
+published_at = 2016-10-16T20:52:26Z
+title = "OpenAPI 2.0"
++++
 
 Over at Heroku I spent some time and effort [spreading the good word on JSON
 Hyper-schema](/elegant-apis) to programmatically describe APIs. I'm still a

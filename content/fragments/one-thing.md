@@ -1,8 +1,8 @@
----
-title: Do one thing and do it well?
-published_at: 2016-01-04T08:48:16Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-04T08:48:16Z
+title = "Do one thing and do it well?"
++++
 
 I came across [an old Slashdot interview with Rob Pike][pike-interview] today,
 and was amused to see that he raised some unusually pragmatic ideas on the old

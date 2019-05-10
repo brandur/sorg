@@ -1,8 +1,8 @@
----
-title: Traffic
-published_at: 2016-04-19T16:35:03Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-04-19T16:35:03Z
+title = "Traffic"
++++
 
 I write this after having been almost run over this morning in a crosswalk.
 _Again._ Inattentive motorists are a problem as old as time, but in SF we're

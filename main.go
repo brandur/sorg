@@ -186,7 +186,6 @@ func getLog() modulir.LoggerInterface {
 // getModulirConfig interprets Conf to produce a configuration suitable to pass
 // to a Modulir build loop.
 func getModulirConfig() *modulir.Config {
-
 	return &modulir.Config{
 		Concurrency: conf.Concurrency,
 		Log:         getLog(),

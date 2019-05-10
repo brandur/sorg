@@ -1,9 +1,9 @@
----
-hook: On guaranteeing order with the bulk put API of an event stream.
-location: San Francisco
-published_at: 2015-03-05T01:13:46Z
-title: Guaranteeing Order with Kinesis Bulk Puts
----
++++
+hook = "On guaranteeing order with the bulk put API of an event stream."
+location = "San Francisco"
+published_at = 2015-03-05T01:13:46Z
+title = "Guaranteeing Order with Kinesis Bulk Puts"
++++
 
 Playing with Kinesis recently, we came across a problem of how to guarantee order when posting a set of records to its bulk API. This article summarizes it and talks about how although we never directly solved the problem that we thought we had, we were able to use a slightly altered approach to have the system meet some of the characteristics that we wanted to see.
 

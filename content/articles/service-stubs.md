@@ -1,10 +1,9 @@
----
-hook: How we build minimal, platform deployable, Rack service stubs to take the pain
-  out of developing applications that depend on an extensive service-oriented architecture.
-location: San Francisco
-published_at: 2013-06-03T17:22:11Z
-title: SOA and Service Stubs
----
++++
+hook = "How we build minimal, platform deployable, Rack service stubs to take the pain out of developing applications that depend on an extensive service-oriented architecture."
+location = "San Francisco"
+published_at = 2013-06-03T17:22:11Z
+title = "SOA and Service Stubs"
++++
 
 [Service-oriented architecture](http://en.wikipedia.org/wiki/Service-oriented_architecture) (SOA) is a popular technique at a number of software development shops these days, each trying to avoid the age-old problem of the monolithic codebase. This includes us at Heroku, where the underlying kernel that supports the Heroku platform is fundamentally decomposed into a number of backend services, each of which having a well-defined set of responsibilities, and a team to operate it.
 

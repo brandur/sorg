@@ -1,8 +1,8 @@
----
-title: Infinite Jest
-published_at: 2015-02-05T03:26:42Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-02-05T03:26:42Z
+title = "Infinite Jest"
++++
 
 ![Infinite Jest on a table](https://pbs.twimg.com/media/B25yqPsIEAECykQ.jpg:medium)
 

@@ -8,38 +8,38 @@ import (
 	"time"
 
 	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/modules/myaml"
+	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/smarkdown"
 )
 
 // Passage represents a single burst of the Passage & Glass newsletter to be
 // rendered.
 type Passage struct {
-	// Content is the HTML content of the passage. It isn't included as YAML
+	// Content is the HTML content of the passage. It isn't included as TOML
 	// frontmatter, and is rather split out of an passage's Markdown file,
 	// rendered, and then added separately.
-	Content string `yaml:"-"`
+	Content string `toml:"-"`
 
 	// ContentRaw is the raw Markdown content of the passage.
-	ContentRaw string `yaml:"-"`
+	ContentRaw string `toml:"-"`
 
 	// Draft indicates that the passage is not yet published.
-	Draft bool `yaml:"-"`
+	Draft bool `toml:"-"`
 
 	// Issue is the issue number of the passage like "001". Notably, it's a
 	// number, but zero-padded.
-	Issue string `yaml:"-"`
+	Issue string `toml:"-"`
 
 	// PublishedAt is when the passage was published.
-	PublishedAt *time.Time `yaml:"published_at"`
+	PublishedAt *time.Time `toml:"published_at"`
 
 	// Slug is a unique identifier for the passage that also helps determine
 	// where it's addressable by URL. It's a combination of an issue number
 	// (like `001` and a short identifier).
-	Slug string `yaml:"-"`
+	Slug string `toml:"-"`
 
 	// Title is the passage's title.
-	Title string `yaml:"title"`
+	Title string `toml:"title"`
 }
 
 func (p *Passage) validate(source string) error {
@@ -63,7 +63,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Pas
 	source := path.Join(dir, name)
 
 	var passage Passage
-	data, err := myaml.ParseFileFrontmatter(c, source, &passage)
+	data, err := mtoml.ParseFileFrontmatter(c, source, &passage)
 	if err != nil {
 		return nil, err
 	}

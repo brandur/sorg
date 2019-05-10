@@ -1,8 +1,8 @@
----
-title: Fast OSX screen lock
-published_at: 2016-01-22T22:28:01Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-22T22:28:01Z
+title = "Fast OSX screen lock"
++++
 
 The fastest way to lock your screen a modern Mac is to use the key combination
 `Ctrl` + `Shift` + `Power` [1].

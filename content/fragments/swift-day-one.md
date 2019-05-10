@@ -1,8 +1,8 @@
----
-title: "Swift: day one"
-published_at: 2014-06-03T09:51:57Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-06-03T09:51:57Z
+title = "Swift: day one"
++++
 
 Yesterday during the WWDC keynote Apple announced [Swift][swift], a new
 programming language squarely targeted at the Apple platform. The original

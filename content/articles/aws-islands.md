@@ -1,11 +1,9 @@
----
-hook: |-
-  The case for a concerted effort to build a powerful, but streamlined, platform
-  on AWS.
-location: San Francisco
-published_at: 2016-06-15T15:24:53Z
-title: AWS Islands
----
++++
+hook = "The case for a concerted effort to build a powerful, but streamlined, platform\non AWS."
+location = "San Francisco"
+published_at = 2016-06-15T15:24:53Z
+title = "AWS Islands"
++++
 
 By commoditizing the management of servers and other resources, AWS is
 indisputably an incredible tool that provides an inordinate amount of leverage

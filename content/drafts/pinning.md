@@ -1,10 +1,9 @@
----
-title: "Living Interfaces: Why User Pinning Is Good for
-  Versioning Web APIs"
-location: San Francisco
-published_at: 2018-01-24T19:05:30Z
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2018-01-24T19:05:30Z
+title = "Living Interfaces: Why User Pinning Is Good for Versioning Web APIs"
++++
 
 ## Explicit versioning (#explicit)
 

@@ -1,8 +1,8 @@
----
-title: Anki's .apkg
-published_at: 2014-10-26T16:40:00Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-10-26T16:40:00Z
+title = "Anki's .apkg"
++++
 
 I was examining Anki today to get a feel for how difficult it would be to
 export notes from [my facts

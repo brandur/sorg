@@ -1,8 +1,8 @@
----
-title: Testing a Kafka connection
-published_at: 2016-02-10T17:54:12Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-02-10T17:54:12Z
+title = "Testing a Kafka connection"
++++
 
 It's occasionally useful to test a Kafka connection; for example in case you
 want to verify that your security groups are properly configured. Kafka speaks

@@ -1,8 +1,7 @@
----
-title: The Inaugural Issue, Portland, Flyknit, Go, and
-  Digital Tulips
-published_at: 2017-09-02T16:34:14Z
----
++++
+published_at = 2017-09-02T16:34:14Z
+title = "The Inaugural Issue, Portland, Flyknit, Go, and Digital Tulips"
++++
 
 The details of most journeys are forgotten. It's nothing
 intentional, but given enough time they stop coming up in

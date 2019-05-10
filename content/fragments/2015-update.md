@@ -1,8 +1,8 @@
----
-title: 2015 resolutions (update)
-published_at: 2015-10-18T19:28:34Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-10-18T19:28:34Z
+title = "2015 resolutions (update)"
++++
 
 As we're nearing the end of the year, it's time for a quick revisit to my
 assembled [resolutions for 2015](/fragments/2015-resolutions). Verdict: not

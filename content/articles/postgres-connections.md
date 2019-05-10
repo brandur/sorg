@@ -1,14 +1,11 @@
----
-title: How to Manage Connections Efficiently in Postgres, or Any Database
-published_at: 2018-10-15T15:42:51Z
-location: San Francisco
-hook: Hitting the limit for maximum allowed connections is
-  a common operational problem in Postgres. Here we look at
-  a few techniques for managing connections and making
-  efficient use of those that are available.
-tags: ["postgres"]
-hn_link: https://news.ycombinator.com/item?id=18220906
----
++++
+hn_link = "https://news.ycombinator.com/item?id=18220906"
+hook = "Hitting the limit for maximum allowed connections is a common operational problem in Postgres. Here we look at a few techniques for managing connections and making efficient use of those that are available."
+location = "San Francisco"
+published_at = 2018-10-15T15:42:51Z
+tags = ["postgres"]
+title = "How to Manage Connections Efficiently in Postgres, or Any Database"
++++
 
 You start building your new project. You've heard good
 things about Postgres, so you choose it as your database.

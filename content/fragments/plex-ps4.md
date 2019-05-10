@@ -1,8 +1,8 @@
----
-title: Plex for PS4
-published_at: 2015-12-07T18:33:21Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-12-07T18:33:21Z
+title = "Plex for PS4"
++++
 
 I recently picked up a PS4 mostly due to a FOMO on certain rich gaming
 experiences like _The Last of Us_ and _Journey_. An unexpected bonus to fall

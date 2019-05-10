@@ -1,16 +1,11 @@
----
-title: Should You Build a Webhooks API?
-published_at: 2017-09-28T15:28:56Z
-location: Calgary
-hook: When it comes to streaming APIs, there's now a lot of
-  great options like SSE, GraphQL subscriptions, and GRPC
-  streams. Let's examine whether webhooks are still a good
-  choice in 2017.
-attributions: Thanks to <a
-  href="https://twitter.com/spencercdixon">Spencer
-  Dixon</a> for review.
-hn_link: https://news.ycombinator.com/item?id=15366222
----
++++
+attributions = "Thanks to <a href=\"https://twitter.com/spencercdixon\">Spencer Dixon</a> for review."
+hn_link = "https://news.ycombinator.com/item?id=15366222"
+hook = "When it comes to streaming APIs, there's now a lot of great options like SSE, GraphQL subscriptions, and GRPC streams. Let's examine whether webhooks are still a good choice in 2017."
+location = "Calgary"
+published_at = 2017-09-28T15:28:56Z
+title = "Should You Build a Webhooks API?"
++++
 
 The term "webhook" was coined back in 2007 by Jeff Lindsay
 as a "hook" (or callback) for the web; meant to be a

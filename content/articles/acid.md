@@ -1,13 +1,10 @@
----
-title: Building Robust Systems With ACID and Constraints
-published_at: 2017-05-16T14:03:01Z
-location: San Francisco
-hook: On ensuring system integrity, operability, and
-  correctness through a solid foundational database, and
-  how ACID transactions and strong constraints work in your
-  favor. Why to prefer Postgres over MongoDB.
-tags: ["postgres"]
----
++++
+hook = "On ensuring system integrity, operability, and correctness through a solid foundational database, and how ACID transactions and strong constraints work in your favor. Why to prefer Postgres over MongoDB."
+location = "San Francisco"
+published_at = 2017-05-16T14:03:01Z
+tags = ["postgres"]
+title = "Building Robust Systems With ACID and Constraints"
++++
 
 In 1983, Andreas Reuter and Theo Härder coined the acronym
 ACID as shorthand for _atomicity_, _consistency_,

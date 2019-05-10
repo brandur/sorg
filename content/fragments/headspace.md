@@ -1,8 +1,8 @@
----
-title: Headspace
-published_at: 2017-05-27T19:13:04Z
-hook: A month of meditating and reclaiming head space.
----
++++
+hook = "A month of meditating and reclaiming head space."
+published_at = 2017-05-27T19:13:04Z
+title = "Headspace"
++++
 
 About a month back for an internal wellness week, Stripe
 gave all of its employees a subscription to Headspace, a

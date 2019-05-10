@@ -1,9 +1,8 @@
----
-title: GraphQL APIs and performance
-published_at: 2017-04-25T13:53:38Z
-hook: Dispelling the common misconception that GraphQL
-  APIs are inherently non-performant.
----
++++
+hook = "Dispelling the common misconception that GraphQL APIs are inherently non-performant."
+published_at = 2017-04-25T13:53:38Z
+title = "GraphQL APIs and performance"
++++
 
 I published an article on [API paradigms](/api-paradigms) a
 few weeks ago that touched fairly heavily on GraphQL.

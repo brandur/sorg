@@ -1,8 +1,8 @@
----
-title: Avast
-published_at: 2016-03-31T18:10:55Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-03-31T18:10:55Z
+title = "Avast"
++++
 
 A user opened an issue on an open-source package that I maintain indicating
 that it was being flagged by Avast (an antivirus package) as malware. I checked

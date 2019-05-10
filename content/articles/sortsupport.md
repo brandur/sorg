@@ -1,12 +1,10 @@
----
-title: "SortSupport: Sorting in Postgres at Speed"
-published_at: 2019-02-04T16:56:52Z
-location: San Francisco
-hook: How Postgres makes sorting really fast by comparing
-  small, memory-friendly abbreviated keys as proxies for
-  arbitrarily large values on the heap.
-tags: ["postgres"]
----
++++
+hook = "How Postgres makes sorting really fast by comparing small, memory-friendly abbreviated keys as proxies for arbitrarily large values on the heap."
+location = "San Francisco"
+published_at = 2019-02-04T16:56:52Z
+tags = ["postgres"]
+title = "SortSupport: Sorting in Postgres at Speed"
++++
 
 Most often, there's a trade off involved in optimizing
 software. The cost of better performance is the opportunity

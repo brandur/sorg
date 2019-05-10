@@ -1,8 +1,8 @@
----
-title: Digital natives
-published_at: 2016-02-23T22:07:50Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-02-23T22:07:50Z
+title = "Digital natives"
++++
 
 From an interview with [Douglas Rushkoff][interview] (early Internet culture
 pioneer and author of a book called _Cyberia_):

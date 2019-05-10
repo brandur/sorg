@@ -1,8 +1,8 @@
----
-title: Square cash & e-mail as a platform
-published_at: 2014-05-10T13:18:19Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-05-10T13:18:19Z
+title = "Square cash & e-mail as a platform"
++++
 
 I made my first Square Cash transaction yesterday, and was delighted by the
 fluidity of the product. The money is in my recipient's bank as of today with

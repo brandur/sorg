@@ -1,8 +1,8 @@
----
-title: Game of Thrones pessimism
-published_at: 2016-01-03T00:49:07Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-03T00:49:07Z
+title = "Game of Thrones pessimism"
++++
 
 [George R. R. Martin announced today][announcement] that _The Winds of Winter_
 will not be released before the sixth season of _A Game of Thrones_ on HBO as

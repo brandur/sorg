@@ -1,9 +1,9 @@
----
-title: Black Boxes All the Way Down
-hook: TODO
-location: San Francisco
-published_at: 2016-10-20T22:59:04Z
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2016-10-20T22:59:04Z
+title = "Black Boxes All the Way Down"
++++
 
 * Don't use low-level databases like document-oriented stores or those lacking ACID -- treat them as a black box.
 * Don't use slow language runtimes that don't really scale (like Ruby) -- treat your fast compiled language as a black box.

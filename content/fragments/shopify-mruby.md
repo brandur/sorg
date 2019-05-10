@@ -1,10 +1,9 @@
----
-title: "Shopify scripts, MRuby, and the $500,000 release"
-published_at: 2017-04-07T15:39:30Z
-location: San Francisco
-hook: A good story about technological optimistic and
-  languages that might be a little too permissive.
----
++++
+hook = "A good story about technological optimistic and languages that might be a little too permissive."
+location = "San Francisco"
+published_at = 2017-04-07T15:39:30Z
+title = "Shopify scripts, MRuby, and the $500,000 release"
++++
 
 Here's a pretty good story about being a little too
 optimistic with technological implementation, and

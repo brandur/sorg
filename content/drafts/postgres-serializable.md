@@ -1,10 +1,10 @@
----
-title: How Postgres Makes Transactions Serializable
-published_at: 2018-09-07T15:36:33Z
-location: San Francisco
-hook: TODO
-tags: ["postgres"]
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2018-09-07T15:36:33Z
+tags = ["postgres"]
+title = "How Postgres Makes Transactions Serializable"
++++
 
 In my decades working with computers, `SERIALIZABLE`
 transactions are one of the few things that have truly

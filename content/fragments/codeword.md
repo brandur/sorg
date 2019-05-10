@@ -1,8 +1,8 @@
----
-title: Codeword
-published_at: 2016-04-07T08:44:20Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-04-07T08:44:20Z
+title = "Codeword"
++++
 
 Those of you tuned into San Francisco will already know that last year jwz
 (owner of DNA Lounge and ex-Netscape hacker) opened a new venue down on 5th and

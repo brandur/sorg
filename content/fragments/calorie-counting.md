@@ -1,8 +1,8 @@
----
-title: Calorie counting
-published_at: 2016-06-07T16:06:39Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-07T16:06:39Z
+title = "Calorie counting"
++++
 
 I'm on a fitness push right now and have started running a small experiment
 with Calorie counting to try and get a rough idea of the size of my Calorie

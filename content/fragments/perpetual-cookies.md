@@ -1,8 +1,8 @@
----
-title: Perpetual cookies
-published_at: 2016-07-31T23:36:34Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-31T23:36:34Z
+title = "Perpetual cookies"
++++
 
 When you pop open and start using Uber's app on your iPhone, you drop a pin,
 hit the "request" button, and a car shows up minutes later. Furthermore, the

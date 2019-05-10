@@ -1,9 +1,8 @@
----
-title: GitLab, and centrally hosted platforms
-published_at: 2017-03-26T06:35:28Z
-hook: Thoughts on depending on the wrong primitive (Docker)
-  and entering a very competitive space.
----
++++
+hook = "Thoughts on depending on the wrong primitive (Docker) and entering a very competitive space."
+published_at = 2017-03-26T06:35:28Z
+title = "GitLab, and centrally hosted platforms"
++++
 
 I attended the release party for GitLab 9.0 last week here
 in San Francisco. It wasn't oversubscribed, so I got a

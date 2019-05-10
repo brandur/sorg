@@ -1,8 +1,8 @@
----
-title: X-Forwarded-Proto
-published_at: 2014-05-15T09:37:33Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-05-15T09:37:33Z
+title = "X-Forwarded-Proto"
++++
 
 We use [rack-ssl](https://github.com/josh/rack-ssl) to redirect users making
 requests over raw HTTP and force users onto a secure connection. We also

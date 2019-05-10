@@ -1,10 +1,9 @@
----
-title: The long road to Mongo's durability
-published_at: 2017-05-07T14:53:09Z
-hook: A data store's journey from data loss to durable
-  storage.
-hn_link: https://news.ycombinator.com/item?id=14285871
----
++++
+hn_link = "https://news.ycombinator.com/item?id=14285871"
+hook = "A data store's journey from data loss to durable storage."
+published_at = 2017-05-07T14:53:09Z
+title = "The long road to Mongo's durability"
++++
 
 Anyone running in database circles will probably have at
 some point heard someone joke about how MongoDB loses data.

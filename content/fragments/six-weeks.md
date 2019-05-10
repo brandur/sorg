@@ -1,8 +1,8 @@
----
-title: Six weeks
-published_at: 2016-07-18T15:03:47Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-18T15:03:47Z
+title = "Six weeks"
++++
 
 Six weeks ago, I [started tracking my energy input and
 output](/fragments/one-week), which I followed up [two](/fragments/two-weeks)

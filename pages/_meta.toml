@@ -1,0 +1,50 @@
+#
+# Page metadata
+#
+# Contains metadata for pages like their titles and any extra CSS classes that
+# they should belong to.
+#
+
+[about]
+  body_class = ""
+  title = "About"
+
+[accidental]
+  body_class = "quote"
+  title = "Accidental"
+
+[crying]
+  body_class = "quote"
+  title = "Crying"
+
+[favors]
+  body_class = "quote"
+  title = "Favors"
+
+[glass]
+  body_class = ""
+  title = "Passages & Glass"
+
+[lies]
+  body_class = "quote"
+  title = "Lies"
+
+[newsletter]
+  body_class = ""
+  title = "Newsletter: Passages & Glass"
+
+[now]
+  body_class = ""
+  title = "What I'm Doing Now"
+
+[sitemap]
+  body_class = ""
+  title = "Sitemap"
+
+[talks]
+  body_class = ""
+  title = "Talks"
+
+[that-sunny-dome]
+  body_class = "quote"
+  title = "That Sunny Dome"

@@ -1,8 +1,8 @@
----
-title: _Do_ debug
-published_at: 2016-06-23T03:31:58Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-23T03:31:58Z
+title = "_Do_ debug"
++++
 
 From a random person on [Twitter this morning][dont-debug]:
 

@@ -1,14 +1,10 @@
----
-title: Learning From Terminals to Design the Future of User Interfaces
-published_at: 2017-01-28T13:24:00Z
-location: San Francisco
-hook: How we overvalue the wrong technology and novel
-  aspects of interface design at the expense of substantial
-  gains to our productivity.
-hn_link: https://news.ycombinator.com/item?id=17682494
-# or, older post:
-# hn_link: https://news.ycombinator.com/item?id=13733777
----
++++
+hn_link = "https://news.ycombinator.com/item?id=17682494"
+hook = "How we overvalue the wrong technology and novel aspects of interface design at the expense of substantial gains to our productivity."
+location = "San Francisco"
+published_at = 2017-01-28T13:24:00Z
+title = "Learning From Terminals to Design the Future of User Interfaces"
++++
 
 I was recently called out on Twitter for claiming that
 Electron-based Slack, with three teams configured,

@@ -1,10 +1,10 @@
----
-title: Passive Safety
-subtitle: Designing robust applications with transactions
-published_at: 2018-10-07T21:55:22Z
-location: San Francisco
-event: FakeConf
----
++++
+event = "FakeConf"
+location = "San Francisco"
+published_at = 2018-10-07T21:55:22Z
+subtitle = "Designing robust applications with transactions"
+title = "Passive Safety"
++++
 
 class: middle
 

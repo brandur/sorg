@@ -1,9 +1,9 @@
----
-title: The iPad Mini
-published_at: 2016-06-12T22:26:17Z
-image: /assets/images/fragments/ipad-mini/vista.jpg
-hook: An ode to one of my favorite Apple devices.
----
++++
+hook = "An ode to one of my favorite Apple devices."
+image = "/assets/images/fragments/ipad-mini/vista.jpg"
+published_at = 2016-06-12T22:26:17Z
+title = "The iPad Mini"
++++
 
 After almost three years of continuous usage and ownership, it's time for a
 write-up on my one of my favorite pieces of technology ever: the iPad Mini.

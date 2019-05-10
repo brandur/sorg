@@ -1,8 +1,8 @@
----
-title: Exporting Flickr
-published_at: 2016-12-28T20:22:04Z
-hook: Moving photos from Flickr back to plain folders on disk.
----
++++
+hook = "Moving photos from Flickr back to plain folders on disk."
+published_at = 2016-12-28T20:22:04Z
+title = "Exporting Flickr"
++++
 
 I spent a few hours over the holiday break doing some consolidation of my
 backups and putting in a few improvements. One item that's been on the back

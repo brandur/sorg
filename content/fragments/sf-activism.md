@@ -1,8 +1,8 @@
----
-title: SF housing and activism
-published_at: 2015-12-30T18:07:41Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-12-30T18:07:41Z
+title = "SF housing and activism"
++++
 
 _The Atlantic_ published a great article yesterday on [housing activism in San
 Francisco][activism]. It starts out talking about the usual line of the evil

@@ -1,12 +1,11 @@
----
-title: "A Missing Link in Postgres 11: Fast Column Creation with Defaults"
-published_at: 2018-08-28T16:46:39Z
-hook: How a seemingly minor enhancement in Postgres 11
-  fills one of the system's biggest operational holes.
-location: San Francisco
-tags: ["postgres"]
-hn_link: https://news.ycombinator.com/item?id=17864837
----
++++
+hn_link = "https://news.ycombinator.com/item?id=17864837"
+hook = "How a seemingly minor enhancement in Postgres 11 fills one of the system's biggest operational holes."
+location = "San Francisco"
+published_at = 2018-08-28T16:46:39Z
+tags = ["postgres"]
+title = "A Missing Link in Postgres 11: Fast Column Creation with Defaults"
++++
 
 If you read through the release notes for [upcoming
 Postgres 11][notes], you might see a somewhat

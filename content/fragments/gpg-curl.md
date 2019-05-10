@@ -1,8 +1,8 @@
----
-title: GPG + cURL
-published_at: 2014-11-10T20:14:35Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-11-10T20:14:35Z
+title = "GPG + cURL"
++++
 
 A very convenient feature of Curl is that if invoked with `curl -n`, it will
 try to read credentials of a target service our of a local `.netrc` file, and

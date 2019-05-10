@@ -1,8 +1,8 @@
----
-title: Courage
-published_at: 2016-09-09T14:15:35Z
-hook: On 3.5 mm headphone jacks and narcissism.
----
++++
+hook = "On 3.5 mm headphone jacks and narcissism."
+published_at = 2016-09-09T14:15:35Z
+title = "Courage"
++++
 
 I was waiting on a street corner in Seattle last weekend when a man with a box
 over his shoulder walked up to me. "Hah!" he said with a motion towards a
