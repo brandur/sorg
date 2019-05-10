@@ -82,10 +82,10 @@ else
 endif
 
 install:
-	go install ./...
+	go install .
 
 # Invalidates CloudFront's cache for paths specified in PATHS.
-#
+
 # Usage:
 #     make PATHS="/fragments /fragments/six-weeks" invalidate
 invalidate: check-aws-keys check-cloudfront-id
