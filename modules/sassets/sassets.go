@@ -17,7 +17,8 @@ import (
 // between files. A common requirement can be given an underscore prefix to be
 // loaded first.
 func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
-	sources, err := mfile.ReadDirWithMeta(c, inPath)
+	sources, err := mfile.ReadDirWithOptions(c, inPath,
+		&mfile.ReadDirOptions{ShowMeta: true})
 	if err != nil {
 		return err
 	}
@@ -61,7 +62,8 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 // If a file has a ".sass" suffix, we attempt to render it as GCSS. This isn't
 // a perfect symmetry, but works well enough for these cases.
 func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
-	sources, err := mfile.ReadDirWithMeta(c, inPath)
+	sources, err := mfile.ReadDirWithOptions(c, inPath,
+		&mfile.ReadDirOptions{ShowMeta: true})
 	if err != nil {
 		return err
 	}

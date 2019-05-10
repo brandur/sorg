@@ -136,7 +136,8 @@ func build(c *modulir.Context) []error {
 	{
 		partialViews = nil
 
-		sources, err := mfile.ReadDirWithMeta(c, c.SourceDir+"/views")
+		sources, err := mfile.ReadDirWithOptions(c, c.SourceDir+"/views",
+			&mfile.ReadDirOptions{ShowMeta: true})
 		if err != nil {
 			return []error{err}
 		}
