@@ -3,6 +3,7 @@ package modulir
 import (
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 	"time"
 
@@ -141,16 +142,19 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			}
 		}
 
-		if !c.FirstRun {
-			// We can expect pretty much everything to have ran on the first
-			// run, so only print executed jobs on subsequent runs.
-			for i, job := range c.Stats.JobsExecuted {
-				c.Log.Infof("Executed job: %s (time: %v)", job.Name, job.Duration)
+		sortJobsBySlowest(c.Stats.JobsExecuted)
+		for i, job := range c.Stats.JobsExecuted {
+			// Having this in the loop ensures we don't print it if zero jobs
+			// executed
+			if i == 0 {
+				c.Log.Infof("Jobs executed (slowest first):")
+			}
 
-				if i >= 9 {
-					c.Log.Infof("... many jobs executed (scroll stopping)")
-					break
-				}
+			c.Log.Infof("    %s (time: %v)", job.Name, job.Duration)
+
+			if i >= 9 {
+				c.Log.Infof("... many jobs executed (scroll stopping)")
+				break
 			}
 		}
 
@@ -236,6 +240,11 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 	return true
 }
 
+func sortJobsBySlowest(jobs []*Job) {
+	sort.Slice(jobs, func(i, j int) bool {
+		return jobs[j].Duration < jobs[i].Duration
+	})
+}
 func watchChanges(c *Context, watcher *fsnotify.Watcher, rebuild, rebuildDone chan struct{}) {
 OUTER:
 	for {
