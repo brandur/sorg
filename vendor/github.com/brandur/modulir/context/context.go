@@ -38,6 +38,9 @@ type Context struct {
 	// Log is a logger that can be used to print information.
 	Log log.LoggerInterface
 
+	// Pool is the job pool used to build the static site.
+	Pool *parallel.Pool
+
 	// Port specifies the port on which to serve content from TargetDir over
 	// HTTP.
 	Port int
@@ -67,9 +70,6 @@ type Context struct {
 	// mu is a mutex used to synchronize access on watchedPaths.
 	mu *sync.Mutex
 
-	// pool is the job pool used to build the static site.
-	pool *parallel.Pool
-
 	// watchedPaths keeps track of what paths we're currently watching.
 	watchedPaths map[string]struct{}
 }
@@ -80,6 +80,7 @@ func NewContext(args *Args) *Context {
 		Concurrency: args.Concurrency,
 		FirstRun:    true,
 		Log:         args.Log,
+		Pool:        args.Pool,
 		Port:        args.Port,
 		SourceDir:   args.SourceDir,
 		Stats:       &Stats{},
@@ -88,7 +89,6 @@ func NewContext(args *Args) *Context {
 
 		fileModTimeCache: NewFileModTimeCache(args.Log),
 		mu:               new(sync.Mutex),
-		pool:             args.Pool,
 		watchedPaths:     make(map[string]struct{}),
 	}
 
@@ -127,12 +127,14 @@ func (c *Context) Changed(path string) bool {
 
 	if !c.exists(path) {
 		c.Log.Errorf("Path passed to Changed doesn't exist: %s", path)
-		return false
+		return true
 	}
 
-	err = c.addWatched(path)
-	if err != nil {
-		c.Log.Errorf("Error watching source: %v", err)
+	if c.Watcher != nil {
+		err = c.addWatched(path)
+		if err != nil {
+			c.Log.Errorf("Error watching source: %v", err)
+		}
 	}
 
 	return c.fileModTimeCache.changed(path)
@@ -176,9 +178,9 @@ func (c *Context) ForcedContext() *Context {
 	return forceC
 }
 
-// StartBuild signals to the Context to do the bookkeeping it needs to do for
+// ResetBuild signals to the Context to do the bookkeeping it needs to do for
 // the next build round.
-func (c *Context) StartBuild() {
+func (c *Context) ResetBuild() {
 	c.Stats.Reset()
 	c.fileModTimeCache.promote()
 }
@@ -202,22 +204,22 @@ func (c *Context) Wait() bool {
 	}()
 
 	// Wait for work to finish.
-	c.pool.Wait()
+	c.Pool.Wait()
 
-	c.Stats.JobsExecuted = append(c.Stats.JobsExecuted, c.pool.JobsExecuted...)
-	c.Stats.NumJobs += c.pool.NumJobs
-	c.Stats.NumJobsExecuted += c.pool.NumJobsExecuted
+	c.Stats.JobsExecuted = append(c.Stats.JobsExecuted, c.Pool.JobsExecuted...)
+	c.Stats.NumJobs += c.Pool.NumJobs
+	c.Stats.NumJobsExecuted += c.Pool.NumJobsExecuted
 
-	if c.pool.Errors != nil {
+	if c.Pool.Errors != nil {
 		return false
 	}
 
 	// Then start the pool again, which also has the side effect of
 	// reinitializing anything that needs to be reinitialized.
-	c.pool.Run()
+	c.Pool.Run()
 
 	// This channel is reinitialized, so make sure to pull in the new one.
-	c.Jobs = c.pool.JobsChan
+	c.Jobs = c.Pool.JobsChan
 
 	return true
 }

@@ -2,16 +2,26 @@ package modulir
 
 import (
 	"fmt"
-	"net/http"
 	"os"
-	"path"
+	"strings"
 	"time"
 
 	"github.com/brandur/modulir/context"
 	"github.com/brandur/modulir/log"
 	"github.com/brandur/modulir/parallel"
 	"github.com/fsnotify/fsnotify"
+	"github.com/pkg/errors"
 )
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Public
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
 
 // Config contains configuration.
 type Config struct {
@@ -51,72 +61,87 @@ type Context = context.Context
 // pool.
 type Job = parallel.Job
 
+// LoggerInterface is an interface that should be implemented by loggers used
+// with the library. Logger provides a basic implementation, but it's also
+// compatible with libraries such as Logrus.
+type LoggerInterface = log.LoggerInterface
+
 // Build is one of the main entry points to the program. Call this to build
 // only one time.
 func Build(config *Config, f func(*context.Context) error) {
-	build(config, f, false)
+	finish := make(chan struct{}, 1)
+	firstRunComplete := make(chan struct{}, 1)
+
+	// Signal the build loop to finish immediately
+	finish <- struct{}{}
+
+	c := initContext(config, nil)
+	success := build(c, f, finish, firstRunComplete)
+	if !success {
+		os.Exit(1)
+	}
 }
 
 // BuildLoop is one of the main entry points to the program. Call this to build
 // in a perpetual loop.
 func BuildLoop(config *Config, f func(*context.Context) error) {
-	build(config, f, true)
-}
-
-//
-// Private
-//
-
-func build(config *Config, f func(*context.Context) error, loop bool) {
-	var errors []error
-
-	if config == nil {
-		config = &Config{}
-	}
-
-	fillDefaults(config)
-
-	pool := parallel.NewPool(config.Log, config.Concurrency)
+	finish := make(chan struct{}, 1)
+	firstRunComplete := make(chan struct{}, 1)
 
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
-		config.Log.Errorf("Error starting watcher: %v", err)
+		exitWithError(errors.Wrap(err, "Error starting watcher"))
 		os.Exit(1)
 	}
 	defer watcher.Close()
 
-	c := context.NewContext(&context.Args{
-		Log:       config.Log,
-		Port:      config.Port,
-		Pool:      pool,
-		SourceDir: config.SourceDir,
-		TargetDir: config.TargetDir,
-		Watcher:   watcher,
-	})
+	c := initContext(config, watcher)
 
+	go func() {
+		<-firstRunComplete
+		if err := serveTargetDirHTTP(c); err != nil {
+			exitWithError(err)
+		}
+	}()
+
+	build(c, f, finish, firstRunComplete)
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Private
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// Runs an infinite built loop until a signal is received over the `finish`
+// channel.
+//
+// Returns true of the last build was successful and false otherwise.
+func build(c *context.Context, f func(*context.Context) error, finish, firstRunComplete chan struct{}) bool {
 	rebuild := make(chan struct{})
 	rebuildDone := make(chan struct{})
-	go watchChanges(c, watcher, rebuild, rebuildDone)
 
-	startServer := make(chan struct{})
-	go func() {
-		<-startServer
-		serveHTTP(c)
-	}()
+	if c.Watcher != nil {
+		go watchChanges(c, c.Watcher, rebuild, rebuildDone)
+	}
 
 	for {
 		c.Log.Debugf("Start loop")
-		c.StartBuild()
+		c.ResetBuild()
 
-		pool.Run()
-		c.Jobs = pool.JobsChan
+		c.Pool.Run()
+		c.Jobs = c.Pool.JobsChan
 
-		err = f(c)
+		err := f(c)
 
 		c.Wait()
 		buildDuration := time.Now().Sub(c.Stats.Start)
 
-		errors = pool.Errors
+		errors := c.Pool.Errors
 		if err != nil {
 			errors = append([]error{err}, errors...)
 		}
@@ -148,26 +173,34 @@ func build(config *Config, f func(*context.Context) error, loop bool) {
 		c.Log.Infof("Built site in %s (%v / %v job(s) did work; loop took %v)",
 			buildDuration, c.Stats.NumJobsExecuted, c.Stats.NumJobs, c.Stats.LoopDuration)
 
-		if !loop {
-			break
-		}
-
 		if c.FirstRun {
-			startServer <- struct{}{}
+			firstRunComplete <- struct{}{}
 			c.FirstRun = false
 		} else {
 			rebuildDone <- struct{}{}
 		}
 
-		<-rebuild
-	}
+		select {
+		case <-finish:
+			c.Log.Infof("Detected finish signal; stopping")
+			return len(errors) > 0
 
-	if errors != nil {
-		os.Exit(1)
+		case <-rebuild:
+			c.Log.Infof("Detected change; rebuilding")
+		}
 	}
 }
 
-func fillDefaults(config *Config) {
+func exitWithError(err error) {
+	fmt.Fprintf(os.Stderr, "error: %v\n", err)
+	os.Exit(1)
+}
+
+func initConfigDefaults(config *Config) *Config {
+	if config == nil {
+		config = &Config{}
+	}
+
 	if config.Concurrency <= 0 {
 		config.Concurrency = 10
 	}
@@ -183,20 +216,33 @@ func fillDefaults(config *Config) {
 	if config.TargetDir == "" {
 		config.TargetDir = "./public"
 	}
+
+	return config
 }
 
-func serveHTTP(c *context.Context) {
-	c.Log.Infof("Serving '%s' on port %v", path.Clean(c.TargetDir), c.Port)
-	c.Log.Infof("Open browser to: http://localhost:%v/", c.Port)
-	handler := http.FileServer(http.Dir(c.TargetDir))
-	err := http.ListenAndServe(fmt.Sprintf(":%v", c.Port), handler)
-	if err != nil {
-		c.Log.Errorf("Error starting server: %v", err)
-		os.Exit(1)
+func initContext(config *Config, watcher *fsnotify.Watcher) *context.Context {
+	config = initConfigDefaults(config)
+
+	pool := parallel.NewPool(config.Log, config.Concurrency)
+
+	c := context.NewContext(&context.Args{
+		Log:       config.Log,
+		Port:      config.Port,
+		Pool:      pool,
+		SourceDir: config.SourceDir,
+		TargetDir: config.TargetDir,
+		Watcher:   watcher,
+	})
+
+	return c
+}
+
+func shouldRebuild(path string, op fsnotify.Op) bool {
+	// A special case, but ignore creates on files that look like Vim backups.
+	if strings.HasSuffix(path, "~") && op&fsnotify.Create == fsnotify.Create {
+		return false
 	}
-}
 
-func shouldRebuild(op fsnotify.Op) bool {
 	if op&fsnotify.Chmod == fsnotify.Chmod {
 		return false
 	}
@@ -213,11 +259,11 @@ OUTER:
 				return
 			}
 
-			if !shouldRebuild(event.Op) {
+			c.Log.Debugf("Received event from watcher: %+v", event)
+
+			if !shouldRebuild(event.Name, event.Op) {
 				continue
 			}
-
-			c.Log.Infof("Detected change; rebuilding")
 
 			// Start rebuild
 			rebuild <- struct{}{}
