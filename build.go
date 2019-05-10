@@ -95,7 +95,7 @@ var partialViews []string
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func build(c *modulir.Context) error {
+func build(c *modulir.Context) []error {
 	//
 	// PHASE 0: Setup
 	//
@@ -116,7 +116,7 @@ func build(c *modulir.Context) error {
 				var err error
 				db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
 				if err != nil {
-					return err
+					return []error{err}
 				}
 			}
 		} else {
@@ -130,7 +130,7 @@ func build(c *modulir.Context) error {
 
 		sources, err := mfile.ReadDirWithMeta(c, c.SourceDir+"/views")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		for _, source := range sources {
@@ -180,7 +180,7 @@ func build(c *modulir.Context) error {
 		for _, dir := range commonDirs {
 			err := mfile.EnsureDir(c, dir)
 			if err != nil {
-				return nil
+				return []error{nil}
 			}
 		}
 	}
@@ -203,7 +203,7 @@ func build(c *modulir.Context) error {
 		for _, link := range commonSymlinks {
 			err := mfile.EnsureSymlink(c, link[0], link[1])
 			if err != nil {
-				return nil
+				return []error{nil}
 			}
 		}
 	}
@@ -218,13 +218,13 @@ func build(c *modulir.Context) error {
 	{
 		sources, err := mfile.ReadDir(c, c.SourceDir+"/content/articles")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		if conf.Drafts {
 			drafts, err := mfile.ReadDir(c, c.SourceDir+"/content/drafts")
 			if err != nil {
-				return err
+				return []error{err}
 			}
 			sources = append(sources, drafts...)
 		}
@@ -250,13 +250,13 @@ func build(c *modulir.Context) error {
 	{
 		sources, err := mfile.ReadDir(c, c.SourceDir+"/content/fragments")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		if conf.Drafts {
 			drafts, err := mfile.ReadDir(c, c.SourceDir+"/content/fragments-drafts")
 			if err != nil {
-				return err
+				return []error{err}
 			}
 			sources = append(sources, drafts...)
 		}
@@ -317,13 +317,13 @@ func build(c *modulir.Context) error {
 	{
 		sources, err := mfile.ReadDir(c, c.SourceDir+"/content/passages")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		if conf.Drafts {
 			drafts, err := mfile.ReadDir(c, c.SourceDir+"/content/passages-drafts")
 			if err != nil {
-				return err
+				return []error{err}
 			}
 			sources = append(sources, drafts...)
 		}
@@ -404,13 +404,13 @@ func build(c *modulir.Context) error {
 	{
 		sources, err := mfile.ReadDir(c, c.SourceDir+"/content/sequences")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		if conf.Drafts {
 			drafts, err := mfile.ReadDir(c, c.SourceDir+"/content/sequences-drafts")
 			if err != nil {
-				return err
+				return []error{err}
 			}
 			sources = append(sources, drafts...)
 		}
@@ -461,13 +461,13 @@ func build(c *modulir.Context) error {
 	{
 		sources, err := mfile.ReadDir(c, c.SourceDir+"/content/talks")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		if conf.Drafts {
 			drafts, err := mfile.ReadDir(c, c.SourceDir+"/content/talks-drafts")
 			if err != nil {
-				return err
+				return []error{err}
 			}
 			sources = append(sources, drafts...)
 		}
@@ -500,9 +500,9 @@ func build(c *modulir.Context) error {
 	//
 	//
 
-	if !c.Wait() {
+	if errors := c.Wait(); errors != nil {
 		c.Log.Errorf("Cancelling next phase due to build errors")
-		return nil
+		return errors
 	}
 
 	// Various sorts for anything that might need it.
@@ -580,7 +580,7 @@ func build(c *modulir.Context) error {
 	{
 		sources, err := mfile.ReadDir(c, c.SourceDir+"/pages")
 		if err != nil {
-			return err
+			return []error{err}
 		}
 
 		for _, s := range sources {
@@ -641,11 +641,11 @@ func build(c *modulir.Context) error {
 			var err error
 			err = mfile.EnsureDir(c, c.TargetDir+"/sequences/"+slug)
 			if err != nil {
-				return err
+				return []error{err}
 			}
 			err = mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+slug)
 			if err != nil {
-				return err
+				return []error{err}
 			}
 
 			for _, p := range photos {
