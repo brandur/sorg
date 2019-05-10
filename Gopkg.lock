@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:59b20ad0941b3eab983ba91d59ea2defc4ed0d8c59c3dc36f0326c68e399faea"
+  digest = "1:f78c2a493dd3ab46ed298de71ebe6828db2f7391576359a21fb13c59880f8bf2"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -45,7 +45,7 @@
     "parallel",
   ]
   pruneopts = ""
-  revision = "b938ce101198169e177b536effa7e3ab354a661d"
+  revision = "a064feb58d7218154f94f1839faa5dbbec8a44d2"
 
 [[projects]]
   digest = "1:56c130d885a4aacae1dd9c7b71cfe39912c7ebc1ff7d2b46083c8812996dc43b"
