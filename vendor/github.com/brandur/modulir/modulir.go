@@ -183,7 +183,7 @@ func build(c *context.Context, f func(*context.Context) error, finish, firstRunC
 		select {
 		case <-finish:
 			c.Log.Infof("Detected finish signal; stopping")
-			return len(errors) > 0
+			return len(errors) < 1
 
 		case <-rebuild:
 			c.Log.Infof("Detected change; rebuilding")

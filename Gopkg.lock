@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:cea19665cbbf27fa934f09adc7d6525c121fa7d172a70af6009a15c05d47c892"
+  digest = "1:d4fcbf405b4b88bbc1b39c63782e87f44f3b1b1680c8d39a999963df285e3c48"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -45,7 +45,7 @@
     "parallel",
   ]
   pruneopts = ""
-  revision = "38e353b34a01b7f1561ed21add7470957d28a8a7"
+  revision = "e5eafa3d5c0052cfd20555ac84c085c02509a6b0"
 
 [[projects]]
   digest = "1:56c130d885a4aacae1dd9c7b71cfe39912c7ebc1ff7d2b46083c8812996dc43b"
@@ -256,7 +256,6 @@
     "github.com/yosssi/gcss",
     "golang.org/x/net/html",
     "gopkg.in/mailgun/mailgun-go.v1",
-    "gopkg.in/russross/blackfriday.v2",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
