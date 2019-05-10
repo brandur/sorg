@@ -135,7 +135,7 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 				c.Log.Errorf("Build error: %v", err)
 
 				if i >= 9 {
-					c.Log.Errorf("... too many errors (scroll stopping)")
+					c.Log.Errorf("... too many errors (limit reached)")
 					break
 				}
 			}
@@ -152,7 +152,7 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			c.Log.Infof("    %s (time: %v)", job.Name, job.Duration)
 
 			if i >= 9 {
-				c.Log.Infof("... many jobs executed (scroll stopping)")
+				c.Log.Infof("... many jobs executed (limit reached)")
 				break
 			}
 		}

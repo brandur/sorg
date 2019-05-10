@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f22a329bcf1b1a83c4fc72c71726d8186e44580a971ddd46bd47b4d1fb305fdf"
+  digest = "1:111698661f65a4550ab9e9e04452422df03ac03ae501d8e851aea48139022df7"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -39,10 +39,11 @@
     "modules/mfile",
     "modules/mmarkdown",
     "modules/mtoc",
+    "modules/mtoml",
     "modules/myaml",
   ]
   pruneopts = ""
-  revision = "8995cb89ad14e7f4abae2e103d1b403eee9d470c"
+  revision = "2a277628ab71891565824ef113004f03bf49aabd"
 
 [[projects]]
   digest = "1:56c130d885a4aacae1dd9c7b71cfe39912c7ebc1ff7d2b46083c8812996dc43b"
@@ -110,6 +111,14 @@
   pruneopts = ""
   revision = "a3647f8e31d79543b2d0f0ae2fe5c379d72cedc0"
   version = "v2.1.0"
+
+[[projects]]
+  digest = "1:3d2c33720d4255686b9f4a7e4d3b94938ee36063f14705c5eb0f73347ed4c496"
+  name = "github.com/pelletier/go-toml"
+  packages = ["."]
+  pruneopts = ""
+  revision = "728039f679cbcd4f6a54e080d2219a4c4928c546"
+  version = "v1.4.0"
 
 [[projects]]
   digest = "1:7365acd48986e205ccb8652cc746f09c8b7876030d53710ea6ef7d0bd0dcd7ca"
@@ -247,10 +256,12 @@
     "github.com/brandur/modulir/modules/mfile",
     "github.com/brandur/modulir/modules/mmarkdown",
     "github.com/brandur/modulir/modules/mtoc",
+    "github.com/brandur/modulir/modules/mtoml",
     "github.com/brandur/modulir/modules/myaml",
     "github.com/joeshaw/envdecode",
     "github.com/lib/pq",
     "github.com/patrickmn/go-cache",
+    "github.com/pelletier/go-toml",
     "github.com/pkg/errors",
     "github.com/russross/blackfriday",
     "github.com/sirupsen/logrus",
