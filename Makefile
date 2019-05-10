@@ -141,6 +141,9 @@ else
 	# No AWS access key. Skipping photographs-upload.
 endif
 
+sigusr2:
+	killall -SIGUSR2 sorg
+
 test:
 	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test ./...
