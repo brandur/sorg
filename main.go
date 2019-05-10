@@ -173,7 +173,13 @@ type Conf struct {
 
 func getLog() modulir.LoggerInterface {
 	log := logrus.New()
-	log.SetLevel(logrus.InfoLevel)
+
+	if conf.Verbose {
+		log.SetLevel(logrus.DebugLevel)
+	} else {
+		log.SetLevel(logrus.InfoLevel)
+	}
+
 	return log
 }
 
