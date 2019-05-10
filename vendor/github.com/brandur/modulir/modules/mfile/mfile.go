@@ -186,6 +186,32 @@ func ReadFile(c *modulir.Context, source string) ([]byte, bool, error) {
 // returns a list of full paths (easier to plumb into other functions), and
 // sets up a watch on the listed source.
 func ReadDir(c *modulir.Context, source string) ([]string, error) {
+	return ReadDirWithOptions(c, source, nil)
+}
+
+// ReadDirOptions are options for ReadDirWithOptions.
+type ReadDirOptions struct {
+	// ShowBackup tells the function to not skip backup files like those
+	// produced by Vim. These are suffixed with a tilde '~'.
+	ShowBackup bool
+
+	// ShowHidden tells the function to not skip hidden files (prefixed with a
+	// dot '.').
+	ShowHidden bool
+
+	// ShowMeta tells the function to not skip so-called "meta" files
+	// (prefixed with an underscore '_').
+	ShowMeta bool
+}
+
+
+// ReadDirWithOptions reads files in a directory and returns a list of file
+// paths.
+//
+// Unlike ReadDir, its behavior can be tweaked.
+func ReadDirWithOptions(c *modulir.Context, source string,
+	opts *ReadDirOptions) ([]string, error) {
+
 	infos, err := ioutil.ReadDir(source)
 	if err != nil {
 		return nil, errors.Wrap(err, "Error reading directory")
@@ -195,31 +221,16 @@ func ReadDir(c *modulir.Context, source string) ([]string, error) {
 
 	for _, info := range infos {
 		base := filepath.Base(info.Name())
-		if IsBackup(base) || IsHidden(base) || IsMeta(base) {
+
+		if (opts == nil || !opts.ShowBackup) && IsBackup(base) {
+			continue
+		}
+		
+		if (opts == nil || !opts.ShowHidden) && IsHidden(base) {
 			continue
 		}
 
-		files = append(files, path.Join(source, info.Name()))
-	}
-
-	c.Log.Debugf("mfile: Read dir: %s", source)
-	return files, nil
-}
-
-// ReadDirWithMeta reads files in a directory and returns a list of file paths.
-//
-// Unlike ReadDir, it returns "meta" files (i.e. prefixed by an underscore).
-func ReadDirWithMeta(c *modulir.Context, source string) ([]string, error) {
-	infos, err := ioutil.ReadDir(source)
-	if err != nil {
-		return nil, errors.Wrap(err, "Error reading directory")
-	}
-
-	var files []string
-
-	for _, info := range infos {
-		base := filepath.Base(info.Name())
-		if IsBackup(base) || IsHidden(base) {
+		if (opts == nil || !opts.ShowMeta) && IsMeta(base) {
 			continue
 		}
 
