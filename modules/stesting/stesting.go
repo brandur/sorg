@@ -6,8 +6,6 @@ import (
 	"runtime"
 
 	"github.com/brandur/modulir"
-	mcontext "github.com/brandur/modulir/context"
-	mlog "github.com/brandur/modulir/log"
 )
 
 func init() {
@@ -62,5 +60,5 @@ func init() {
 // NewContext is a convenience helper to create a new modulir.Context suitable
 // for use in the test suite.
 func NewContext() *modulir.Context {
-	return mcontext.NewContext(&mcontext.Args{Log: &mlog.Logger{Level: mlog.LevelInfo}})
+	return modulir.NewContext(&modulir.Args{Log: &modulir.Logger{Level: modulir.LevelInfo}})
 }
