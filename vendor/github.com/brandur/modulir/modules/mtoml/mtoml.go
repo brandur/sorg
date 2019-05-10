@@ -52,7 +52,7 @@ func ParseFileFrontmatter(c *modulir.Context, source string, data interface{}) (
 
 var errBadFrontmatter = fmt.Errorf("Unable to split TOML frontmatter")
 
-var splitFrontmatterRE = regexp.MustCompile("(?m)^+++")
+var splitFrontmatterRE = regexp.MustCompile("(?m)^+{3}")
 
 func splitFrontmatter(content string) (string, string, error) {
 	parts := splitFrontmatterRE.Split(content, 3)
