@@ -1,4 +1,4 @@
-package context
+package modulir
 
 import (
 	"os"
@@ -6,16 +6,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/brandur/modulir/log"
-	"github.com/brandur/modulir/parallel"
 	"github.com/fsnotify/fsnotify"
 )
 
 // Args are the set of arguments accepted by NewContext.
 type Args struct {
 	Concurrency int
-	Log         log.LoggerInterface
-	Pool        *parallel.Pool
+	Log         LoggerInterface
+	Pool        *Pool
 	Port        int
 	SourceDir   string
 	TargetDir   string
@@ -33,13 +31,13 @@ type Context struct {
 	FirstRun bool
 
 	// Jobs is a channel over which jobs to be done are transmitted.
-	Jobs chan *parallel.Job
+	Jobs chan *Job
 
 	// Log is a logger that can be used to print information.
-	Log log.LoggerInterface
+	Log LoggerInterface
 
 	// Pool is the job pool used to build the static site.
-	Pool *parallel.Pool
+	Pool *Pool
 
 	// Port specifies the port on which to serve content from TargetDir over
 	// HTTP.
@@ -101,7 +99,7 @@ func NewContext(args *Args) *Context {
 
 // AddJob is a shortcut for adding a new job to the Jobs channel.
 func (c *Context) AddJob(name string, f func() (bool, error)) {
-	c.Jobs <- parallel.NewJob(name, f)
+	c.Jobs <- NewJob(name, f)
 }
 
 // AllowError is a helper that's useful for when an error coming back from a
@@ -278,14 +276,14 @@ func (c *Context) exists(path string) bool {
 // FileModTimeCache tracks the last modified time of files seen so a
 // determination can be made as to whether they need to be recompiled.
 type FileModTimeCache struct {
-	log                 log.LoggerInterface
+	log                 LoggerInterface
 	mu                  sync.Mutex
 	pathToModTimeMap    map[string]time.Time
 	pathToModTimeMapNew map[string]time.Time
 }
 
 // NewFileModTimeCache returns a new FileModTimeCache.
-func NewFileModTimeCache(log log.LoggerInterface) *FileModTimeCache {
+func NewFileModTimeCache(log LoggerInterface) *FileModTimeCache {
 	return &FileModTimeCache{
 		log:                 log,
 		pathToModTimeMap:    make(map[string]time.Time),
@@ -350,7 +348,7 @@ func (c *FileModTimeCache) promote() {
 // Stats tracks various statistics about the build process.
 type Stats struct {
 	// JobsExecuted is a slice of jobs that were executed on the last run.
-	JobsExecuted []*parallel.Job
+	JobsExecuted []*Job
 
 	// LoopDuration is the total amount of time spent in the user's build loop
 	// enqueuing jobs. Jobs may be running in the background during this time,

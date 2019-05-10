@@ -6,12 +6,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/brandur/modulir/context"
+	"github.com/brandur/modulir"
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 )
 
-func ParseFile(c *context.Context, source string, data interface{}) error {
+func ParseFile(c *modulir.Context, source string, data interface{}) error {
 	raw, err := ioutil.ReadFile(source)
 	if err != nil {
 		return errors.Wrap(err, "Error reading file")
@@ -26,7 +26,7 @@ func ParseFile(c *context.Context, source string, data interface{}) error {
 	return nil
 }
 
-func ParseFileFrontmatter(c *context.Context, source string, data interface{}) ([]byte, error) {
+func ParseFileFrontmatter(c *modulir.Context, source string, data interface{}) ([]byte, error) {
 	raw, err := ioutil.ReadFile(source)
 	if err != nil {
 		return nil, errors.Wrap(err, "Error reading file")

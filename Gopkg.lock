@@ -31,21 +31,18 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:66aa529e52d07b0082aadac2e5b43ce24eb57409cf513018399ccca7f7d327a8"
+  digest = "1:6095238567d850e18c20fbb28a160d6dc4ea21334fffc0f3c5621ceddf183d07"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
-    "context",
-    "log",
     "modules/mace",
     "modules/mfile",
     "modules/mmarkdown",
     "modules/mtoc",
     "modules/myaml",
-    "parallel",
   ]
   pruneopts = ""
-  revision = "bb6ecc96ff8d342bb85323323074b47440d64f5c"
+  revision = "a44b2b87d534c25b1e27aa7b41c0d6dfc7ce6170"
 
 [[projects]]
   digest = "1:56c130d885a4aacae1dd9c7b71cfe39912c7ebc1ff7d2b46083c8812996dc43b"
@@ -238,8 +235,6 @@
   input-imports = [
     "github.com/aymerick/douceur/inliner",
     "github.com/brandur/modulir",
-    "github.com/brandur/modulir/context",
-    "github.com/brandur/modulir/log",
     "github.com/brandur/modulir/modules/mace",
     "github.com/brandur/modulir/modules/mfile",
     "github.com/brandur/modulir/modules/mmarkdown",

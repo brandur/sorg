@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"path"
 
-	"github.com/brandur/modulir/context"
 	"github.com/pkg/errors"
 )
 
@@ -19,7 +18,7 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func serveTargetDirHTTP(c *context.Context) error {
+func serveTargetDirHTTP(c *Context) error {
 	c.Log.Infof("Serving '%s' to: http://localhost:%v/", path.Clean(c.TargetDir), c.Port)
 
 	handler := http.FileServer(http.Dir(c.TargetDir))

@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/brandur/modulir/context"
+	"github.com/brandur/modulir"
 	"github.com/pkg/errors"
 )
 
@@ -16,7 +16,7 @@ import (
 // CopyFile
 //
 
-func CopyFile(c *context.Context, source, target string) error {
+func CopyFile(c *modulir.Context, source, target string) error {
 	in, err := os.Open(source)
 	if err != nil {
 		return errors.Wrap(err, "Error opening copy source")
@@ -38,7 +38,7 @@ func CopyFile(c *context.Context, source, target string) error {
 	return nil
 }
 
-func CopyFileToDir(c *context.Context, source, targetDir string) error {
+func CopyFileToDir(c *modulir.Context, source, targetDir string) error {
 	return CopyFile(c, source, path.Join(targetDir, filepath.Base(source)))
 }
 
@@ -47,7 +47,7 @@ func CopyFileToDir(c *context.Context, source, targetDir string) error {
 //
 
 // TODO: Should also return a bool for executed.
-func EnsureDir(c *context.Context, target string) error {
+func EnsureDir(c *modulir.Context, target string) error {
 	err := os.MkdirAll(target, 0755)
 	if err != nil {
 		return errors.Wrap(err, "Error creating directory")
@@ -57,7 +57,7 @@ func EnsureDir(c *context.Context, target string) error {
 	return nil
 }
 
-func EnsureSymlink(c *context.Context, source, target string) error {
+func EnsureSymlink(c *modulir.Context, source, target string) error {
 	c.Log.Debugf("Checking symbolic link (%v): %v -> %v",
 		path.Base(source), source, target)
 
@@ -155,7 +155,7 @@ func MustAbs(path string) string {
 // ReadFile
 //
 
-func ReadFile(c *context.Context, source string) ([]byte, bool, error) {
+func ReadFile(c *modulir.Context, source string) ([]byte, bool, error) {
 	changed := c.Changed(source)
 	if !changed && !c.Forced() {
 		return nil, changed, nil
@@ -185,7 +185,7 @@ func ReadFile(c *context.Context, source string) ([]byte, bool, error) {
 // an underscore), and Vim backup (i.e. suffixed with a tilde) files, and
 // returns a list of full paths (easier to plumb into other functions), and
 // sets up a watch on the listed source.
-func ReadDir(c *context.Context, source string) ([]string, error) {
+func ReadDir(c *modulir.Context, source string) ([]string, error) {
 	infos, err := ioutil.ReadDir(source)
 	if err != nil {
 		return nil, errors.Wrap(err, "Error reading directory")
@@ -209,7 +209,7 @@ func ReadDir(c *context.Context, source string) ([]string, error) {
 // ReadDirWithMeta reads files in a directory and returns a list of file paths.
 //
 // Unlike ReadDir, it returns "meta" files (i.e. prefixed by an underscore).
-func ReadDirWithMeta(c *context.Context, source string) ([]string, error) {
+func ReadDirWithMeta(c *modulir.Context, source string) ([]string, error) {
 	infos, err := ioutil.ReadDir(source)
 	if err != nil {
 		return nil, errors.Wrap(err, "Error reading directory")

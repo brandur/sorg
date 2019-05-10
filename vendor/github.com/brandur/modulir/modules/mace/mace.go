@@ -7,12 +7,12 @@ import (
 	"os"
 	"strings"
 
-	"github.com/brandur/modulir/context"
+	"github.com/brandur/modulir"
 	"github.com/pkg/errors"
 	"github.com/yosssi/ace"
 )
 
-func Load(c *context.Context, basePath, innerPath string, opts *ace.Options) (*template.Template, error) {
+func Load(c *modulir.Context, basePath, innerPath string, opts *ace.Options) (*template.Template, error) {
 	if opts == nil {
 		opts = &ace.Options{}
 	}
@@ -46,7 +46,7 @@ func Load(c *context.Context, basePath, innerPath string, opts *ace.Options) (*t
 
 // Render is a shortcut for loading an Ace template and rendering it to a
 // target file.
-func Render(c *context.Context, basePath, innerPath string, writer io.Writer,
+func Render(c *modulir.Context, basePath, innerPath string, writer io.Writer,
 	opts *ace.Options, locals map[string]interface{}) error {
 
 	template, err := Load(c, basePath, innerPath, opts)
@@ -65,7 +65,7 @@ func Render(c *context.Context, basePath, innerPath string, writer io.Writer,
 
 // RenderFile is a shortcut for loading an Ace template and rendering it to a
 // target file.
-func RenderFile(c *context.Context, basePath, innerPath, target string,
+func RenderFile(c *modulir.Context, basePath, innerPath, target string,
 	opts *ace.Options, locals map[string]interface{}) error {
 
 	template, err := Load(c, basePath, innerPath, opts)

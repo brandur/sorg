@@ -6,9 +6,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brandur/modulir/context"
-	"github.com/brandur/modulir/log"
-	"github.com/brandur/modulir/parallel"
 	"github.com/fsnotify/fsnotify"
 	"github.com/pkg/errors"
 )
@@ -34,7 +31,7 @@ type Config struct {
 	// Log specifies a logger to use.
 	//
 	// Defaults to an instance of Logger running at informational level.
-	Log log.LoggerInterface
+	Log LoggerInterface
 
 	// Port specifies the port on which to serve content from TargetDir over
 	// HTTP.
@@ -53,22 +50,9 @@ type Config struct {
 	TargetDir string
 }
 
-// Context contains useful state that can be used by a user-provided build
-// function.
-type Context = context.Context
-
-// Job is a wrapper for a piece of work that should be executed by the job
-// pool.
-type Job = parallel.Job
-
-// LoggerInterface is an interface that should be implemented by loggers used
-// with the library. Logger provides a basic implementation, but it's also
-// compatible with libraries such as Logrus.
-type LoggerInterface = log.LoggerInterface
-
 // Build is one of the main entry points to the program. Call this to build
 // only one time.
-func Build(config *Config, f func(*context.Context) []error) {
+func Build(config *Config, f func(*Context) []error) {
 	finish := make(chan struct{}, 1)
 	firstRunComplete := make(chan struct{}, 1)
 
@@ -84,7 +68,7 @@ func Build(config *Config, f func(*context.Context) []error) {
 
 // BuildLoop is one of the main entry points to the program. Call this to build
 // in a perpetual loop.
-func BuildLoop(config *Config, f func(*context.Context) []error) {
+func BuildLoop(config *Config, f func(*Context) []error) {
 	finish := make(chan struct{}, 1)
 	firstRunComplete := make(chan struct{}, 1)
 
@@ -121,7 +105,7 @@ func BuildLoop(config *Config, f func(*context.Context) []error) {
 // channel.
 //
 // Returns true of the last build was successful and false otherwise.
-func build(c *context.Context, f func(*context.Context) []error, finish, firstRunComplete chan struct{}) bool {
+func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan struct{}) bool {
 	rebuild := make(chan struct{})
 	rebuildDone := make(chan struct{})
 
@@ -206,7 +190,7 @@ func initConfigDefaults(config *Config) *Config {
 	}
 
 	if config.Log == nil {
-		config.Log = &log.Logger{Level: log.LevelInfo}
+		config.Log = &Logger{Level: LevelInfo}
 	}
 
 	if config.SourceDir == "" {
@@ -220,12 +204,12 @@ func initConfigDefaults(config *Config) *Config {
 	return config
 }
 
-func initContext(config *Config, watcher *fsnotify.Watcher) *context.Context {
+func initContext(config *Config, watcher *fsnotify.Watcher) *Context {
 	config = initConfigDefaults(config)
 
-	pool := parallel.NewPool(config.Log, config.Concurrency)
+	pool := NewPool(config.Log, config.Concurrency)
 
-	c := context.NewContext(&context.Args{
+	c := NewContext(&Args{
 		Log:       config.Log,
 		Port:      config.Port,
 		Pool:      pool,
@@ -250,7 +234,7 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 	return true
 }
 
-func watchChanges(c *context.Context, watcher *fsnotify.Watcher, rebuild, rebuildDone chan struct{}) {
+func watchChanges(c *Context, watcher *fsnotify.Watcher, rebuild, rebuildDone chan struct{}) {
 OUTER:
 	for {
 		select {

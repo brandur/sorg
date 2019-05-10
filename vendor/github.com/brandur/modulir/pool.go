@@ -1,11 +1,9 @@
-package parallel
+package modulir
 
 import (
 	"sync"
 	"sync/atomic"
 	"time"
-
-	"github.com/brandur/modulir/log"
 )
 
 // Job is a wrapper for a piece of work that should be executed by the job
@@ -49,7 +47,7 @@ type Pool struct {
 	jobsInternal   chan *Job
 	jobsExecutedMu sync.Mutex
 	jobsFeederDone chan bool
-	log            log.LoggerInterface
+	log            LoggerInterface
 	roundStarted   bool
 	runGate        chan struct{}
 	wg             sync.WaitGroup
@@ -57,7 +55,7 @@ type Pool struct {
 
 // NewPool initializes a new pool with the given jobs and at the given
 // concurrency.
-func NewPool(log log.LoggerInterface, concurrency int) *Pool {
+func NewPool(log LoggerInterface, concurrency int) *Pool {
 	return &Pool{
 		concurrency: concurrency,
 		log:         log,

@@ -1,15 +1,14 @@
-package parallel
+package modulir
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/brandur/modulir/log"
 	assert "github.com/stretchr/testify/require"
 )
 
 func TestEmptyPool(t *testing.T) {
-	p := NewPool(&log.Logger{Level: log.LevelDebug}, 10)
+	p := NewPool(&Logger{Level: LevelDebug}, 10)
 	p.Run()
 
 	p.Wait()
@@ -18,7 +17,7 @@ func TestEmptyPool(t *testing.T) {
 }
 
 func TestWithWork(t *testing.T) {
-	p := NewPool(&log.Logger{Level: log.LevelDebug}, 10)
+	p := NewPool(&Logger{Level: LevelDebug}, 10)
 	p.Run()
 
 	p.JobsChan <- NewJob("job 0", func() (bool, error) { return true, nil })
@@ -32,7 +31,7 @@ func TestWithWork(t *testing.T) {
 }
 
 func TestWithError(t *testing.T) {
-	p := NewPool(&log.Logger{Level: log.LevelDebug}, 10)
+	p := NewPool(&Logger{Level: LevelDebug}, 10)
 	p.Run()
 
 	p.JobsChan <- NewJob("job 0", func() (bool, error) { return true, nil })
