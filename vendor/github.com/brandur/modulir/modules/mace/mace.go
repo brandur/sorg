@@ -3,6 +3,7 @@ package mace
 import (
 	"bufio"
 	"html/template"
+	"io"
 	"os"
 	"strings"
 
@@ -45,7 +46,26 @@ func Load(c *context.Context, basePath, innerPath string, opts *ace.Options) (*t
 
 // Render is a shortcut for loading an Ace template and rendering it to a
 // target file.
-func Render(c *context.Context, basePath, innerPath, target string,
+func Render(c *context.Context, basePath, innerPath string, writer io.Writer,
+	opts *ace.Options, locals map[string]interface{}) error {
+
+	template, err := Load(c, basePath, innerPath, opts)
+	if err != nil {
+		return errors.Wrap(err, "Error loading template")
+	}
+
+	err = template.Execute(writer, locals)
+	if err != nil {
+		return errors.Wrap(err, "Error rendering template")
+	}
+
+	c.Log.Debugf("mace: Rendered view '%s'", innerPath)
+	return nil
+}
+
+// RenderFile is a shortcut for loading an Ace template and rendering it to a
+// target file.
+func RenderFile(c *context.Context, basePath, innerPath, target string,
 	opts *ace.Options, locals map[string]interface{}) error {
 
 	template, err := Load(c, basePath, innerPath, opts)
@@ -67,8 +87,6 @@ func Render(c *context.Context, basePath, innerPath, target string,
 		return errors.Wrap(err, "Error rendering template")
 	}
 
-	c.Log.Debugf("mace: Rendered view '%s' to '%s'",
-		innerPath, target)
-
+	c.Log.Debugf("mace: Rendered view '%s' to '%s'", innerPath, target)
 	return nil
 }
