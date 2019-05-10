@@ -32,7 +32,6 @@ import (
 	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
 	"github.com/pkg/errors"
-	"gopkg.in/russross/blackfriday.v2"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -71,7 +70,7 @@ var (
 	passages  []*spassages.Passage
 	pages     map[string]*Page
 	photos    []*Photo
-	sequences map[string][]*Photo
+	sequences = make(map[string][]*Photo)
 	talks     []*stalks.Talk
 )
 
@@ -81,8 +80,6 @@ var (
 // it's worth the tradeoff. This variable is a global because so many render
 // functions access it.
 var partialViews []string
-
-var renderComplexMarkdown func(string, *smarkdown.RenderOptions) string
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -96,11 +93,6 @@ var renderComplexMarkdown func(string, *smarkdown.RenderOptions) string
 
 // init runs on package initialization.
 func init() {
-	renderComplexMarkdown = smarkdown.ComposeRenderStack(func(source []byte) []byte {
-		return blackfriday.Run(source)
-	})
-
-	sequences = make(map[string][]*Photo)
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1755,7 +1747,7 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 	article.Draft = isDraft(source)
 	article.Slug = extractSlug(source)
 
-	article.Content = renderComplexMarkdown(string(data), nil)
+	article.Content = smarkdown.Render(string(data), nil)
 
 	article.TOC, err = mtoc.RenderFromHTML(article.Content)
 	if err != nil {
@@ -1913,7 +1905,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 	fragment.Draft = isDraft(source)
 	fragment.Slug = extractSlug(source)
 
-	fragment.Content = renderComplexMarkdown(string(data), nil)
+	fragment.Content = smarkdown.Render(string(data), nil)
 
 	card := &twitterCard{
 		Title:       fragment.Title,

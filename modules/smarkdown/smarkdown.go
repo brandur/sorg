@@ -10,18 +10,15 @@ import (
 	"github.com/russross/blackfriday"
 )
 
-var preTransformationFuncs = []func(string, *RenderOptions) string{
-	transformFigures,
-	transformHeaders,
-}
-
-var postTransformationFuncs = []func(string, *RenderOptions) string{
-	transformCodeWithLanguagePrefix,
-	transformSections,
-	transformFootnotes,
-	transformImagesToAbsoluteURLs,
-	transformImagesToRetina,
-}
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Public
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
 
 // RenderOptions describes a rendering operation to be customized.
 type RenderOptions struct {
@@ -40,40 +37,44 @@ type RenderOptions struct {
 	NoRetina bool
 }
 
-// render is Markdown rendering function from Blackfriday that's been
-// pre-composed into our the stack of our transformation functions.
-var render func(string, *RenderOptions) string
-
-// init runs on package initialization.
-func init() {
-	render = ComposeRenderStack(func(source []byte) []byte {
-		return blackfriday.Run(source)
-	})
-}
-
-// ComposeRenderStack takes a Markdown render function and composes it into a
-// stack of functions along with sorg's "middleware" that performs various
-// duties like adding header links and footnotes..
-func ComposeRenderStack(renderF func([]byte) []byte) func(string, *RenderOptions) string {
-	return func(source string, options *RenderOptions) string {
-		for _, f := range preTransformationFuncs {
-			source = f(source, options)
-		}
-
-		source = string(renderF([]byte(source)))
-
-		for _, f := range postTransformationFuncs {
-			source = f(source, options)
-		}
-
-		return source
-	}
-}
-
 // Render a Markdown string to HTML while applying all custom project-specific
 // filters including footnotes and stable header links.
-func Render(source string, options *RenderOptions) string {
-	return render(source, options)
+func Render(s string, options *RenderOptions) string {
+	for _, f := range renderStack {
+		s = f(s, options)
+	}
+	return s
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Private
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// renderStack is the full set of functions that we'll run on an input string
+// to get our fully rendered Markdown. This includes the rendering itself, but
+// also a number of custom transformation options.
+var renderStack = []func(string, *RenderOptions) string{
+	// Pre-transformation functions
+	transformFigures,
+	transformHeaders,
+
+	// The actual Blackfriday rendering
+	func(source string, _ *RenderOptions) string {
+		return string(blackfriday.Run([]byte(source)))
+	},
+
+	// Post-transformation functions
+	transformCodeWithLanguagePrefix,
+	transformSections,
+	transformFootnotes,
+	transformImagesToAbsoluteURLs,
+	transformImagesToRetina,
 }
 
 // Look for any whitespace between HTML tags.
