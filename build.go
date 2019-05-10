@@ -32,7 +32,6 @@ import (
 	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
 	"github.com/pkg/errors"
-	"github.com/yosssi/ace"
 	"gopkg.in/russross/blackfriday.v2"
 )
 
@@ -1014,16 +1013,6 @@ type twitterCard struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func aceOptions(dynamicReload bool) *ace.Options {
-	options := &ace.Options{FuncMap: stemplate.FuncMap}
-
-	if dynamicReload {
-		options.DynamicReload = true
-	}
-
-	return options
-}
-
 func compileJavascripts(c *modulir.Context, versionedAssetsDir string) (bool, error) {
 	sourceDir := c.SourceDir + "/content/javascripts"
 
@@ -1799,8 +1788,8 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 
 	// Always use force context because if we made it to here we know that our
 	// sources have changed.
-	err = mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/articles/show.ace",
-		path.Join(c.TargetDir, article.Slug), aceOptions(viewsChanged), locals)
+	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/articles/show.ace",
+		path.Join(c.TargetDir, article.Slug), stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1831,8 +1820,8 @@ func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChange
 		"ArticlesByYear": articlesByYear,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/articles/index.ace",
-		c.TargetDir+"/articles/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/articles/index.ace",
+		c.TargetDir+"/articles/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, articlesChanged bool) (bool, error) {
@@ -1943,9 +1932,9 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 		"TwitterCard":    card,
 	})
 
-	err = mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/show.ace",
+	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/show.ace",
 		path.Join(c.TargetDir, "fragments", fragment.Slug),
-		aceOptions(viewsChanged), locals)
+		stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2025,8 +2014,8 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		"FragmentsByYear": fragmentsByYear,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/index.ace",
-		c.TargetDir+"/fragments/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/index.ace",
+		c.TargetDir+"/fragments/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderPassage(c *modulir.Context, source string, passages *[]*spassages.Passage, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
@@ -2054,8 +2043,8 @@ func renderPassage(c *modulir.Context, source string, passages *[]*spassages.Pas
 		"Passage": passage,
 	})
 
-	err = mace.Render(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/show.ace",
-		c.TargetDir+"/passages/"+passage.Slug, aceOptions(viewsChanged), locals)
+	err = mace.RenderFile(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/show.ace",
+		c.TargetDir+"/passages/"+passage.Slug, stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2085,8 +2074,8 @@ func renderPassagesIndex(c *modulir.Context, passages []*spassages.Passage,
 		"Passages": passages,
 	})
 
-	return true, mace.Render(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/index.ace",
-		c.TargetDir+"/passages/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/index.ace",
+		c.TargetDir+"/passages/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderHome(c *modulir.Context,
@@ -2123,8 +2112,8 @@ func renderHome(c *modulir.Context,
 		"Photo":     photo,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/index.ace",
-		c.TargetDir+"/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/index.ace",
+		c.TargetDir+"/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaChanged bool) (bool, error) {
@@ -2179,8 +2168,8 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 		return true, err
 	}
 
-	err = mace.Render(c, scommon.MainLayout, source, target,
-		aceOptions(viewsChanged), locals)
+	err = mace.RenderFile(c, scommon.MainLayout, source, target,
+		stemplate.GetAceOptions(viewsChanged), locals)
 	return true, nil
 }
 
@@ -2231,8 +2220,8 @@ func renderReading(c *modulir.Context, db *sql.DB) (bool, error) {
 		"PagesByYearYCounts": pagesByYearYCounts,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/reading/index.ace",
-		c.TargetDir+"/reading/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/reading/index.ace",
+		c.TargetDir+"/reading/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderPhotoIndex(c *modulir.Context, photos []*Photo,
@@ -2254,8 +2243,8 @@ func renderPhotoIndex(c *modulir.Context, photos []*Photo,
 		"ViewportWidth": 600,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/photos/index.ace",
-		c.TargetDir+"/photos/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/photos/index.ace",
+		c.TargetDir+"/photos/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderRobotsTxt(c *modulir.Context) (bool, error) {
@@ -2334,8 +2323,8 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 		"ByYearYDistances": byYearYDistances,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/runs/index.ace",
-		c.TargetDir+"/runs/index.html", aceOptions(viewsChanged), locals)
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/runs/index.ace",
+		c.TargetDir+"/runs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
@@ -2362,9 +2351,9 @@ func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 		"ViewportWidth": 600,
 	})
 
-	return true, mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
 		path.Join(c.TargetDir, "sequences", sequenceName, photo.Slug),
-		aceOptions(viewsChanged), locals)
+		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex) (bool, error) {
@@ -2393,8 +2382,8 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 		"Talk":           talk,
 	})
 
-	err = mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/talks/show.ace",
-		path.Join(c.TargetDir, talk.Slug), aceOptions(viewsChanged), locals)
+	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/talks/show.ace",
+		path.Join(c.TargetDir, talk.Slug), stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2463,8 +2452,8 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 			"TweetCountYCounts": tweetCountYCounts,
 		})
 
-		err = mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
-			c.TargetDir+"/twitter/"+page, aceOptions(viewsChanged), locals)
+		err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
+			c.TargetDir+"/twitter/"+page, stemplate.GetAceOptions(viewsChanged), locals)
 		if err != nil {
 			return true, err
 		}

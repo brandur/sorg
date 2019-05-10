@@ -52,6 +52,7 @@ const TwitterInfo = `<p>Find me on Twitter at ` +
 //
 //////////////////////////////////////////////////////////////////////////////
 
+// ExitWithError prints the given error to stderr and exits with a status of 1.
 func ExitWithError(err error) {
 	fmt.Fprintf(os.Stderr, "error: %v\n", err)
 	os.Exit(1)

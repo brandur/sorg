@@ -13,6 +13,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/yosssi/ace"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the
@@ -34,6 +36,18 @@ var FuncMap = template.FuncMap{
 	"RoundToString":                roundToString,
 	"To2x":                         To2x,
 	"ToStars":                      toStars,
+}
+
+// GetAceOptions gets a good set of default options for Ace template rendering
+// for the Sorg project.
+func GetAceOptions(dynamicReload bool) *ace.Options {
+	options := &ace.Options{FuncMap: FuncMap}
+
+	if dynamicReload {
+		options.DynamicReload = true
+	}
+
+	return options
 }
 
 // To2x takes a 1x (standad resolution) image path and changes it to a 2x path

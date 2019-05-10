@@ -8,10 +8,10 @@ import (
 
 	"github.com/aymerick/douceur/inliner"
 	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/spassages"
 	"github.com/brandur/sorg/modules/stemplate"
-	"github.com/yosssi/ace"
 	"gopkg.in/mailgun/mailgun-go.v1"
 )
 
@@ -70,22 +70,11 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 		"Title":   passage.Title,
 	}
 
-	template, err := ace.Load(
-		scommon.PassageLayout,
-		scommon.ViewsDir+"/passages/show",
-		&ace.Options{FuncMap: stemplate.FuncMap})
-	if err != nil {
-		return err
-	}
-
 	var b bytes.Buffer
-
 	writer := bufio.NewWriter(&b)
 
-	err = template.Execute(writer, locals)
-	if err != nil {
-		return err
-	}
+	err = mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/passages/show.ace",
+		writer, stemplate.GetAceOptions(true), locals)
 
 	writer.Flush()
 
@@ -120,7 +109,7 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	if err != nil {
 		return err
 	}
-	c.Log.Infof(`Sent to: %s (response: "%s")`, recipient, resp)
 
+	c.Log.Infof(`Sent to: %s (response: "%s")`, recipient, resp)
 	return nil
 }
