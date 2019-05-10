@@ -86,8 +86,8 @@ func (p *Pool) Init() {
 	// Worker Goroutines
 	wg.Add(p.concurrency)
 	for i := 0; i < p.concurrency; i++ {
-		wg.Done()
 		go func() {
+			wg.Done()
 			for {
 				select {
 				case <-p.runGate:
