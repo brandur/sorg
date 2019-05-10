@@ -50,6 +50,7 @@ type Pool struct {
 	JobsExecuted []*Job
 
 	concurrency    int
+	initialized    bool
 	jobsInternal   chan *Job
 	jobsErroredMu  sync.Mutex
 	jobsExecutedMu sync.Mutex
@@ -62,16 +63,27 @@ type Pool struct {
 }
 
 // NewPool initializes a new pool with the given jobs and at the given
-// concurrency.
+// concurrency. It calls Init so that the pool is fully spun up and ready to
+// start a round.
 func NewPool(log LoggerInterface, concurrency int) *Pool {
-	return &Pool{
+	pool := &Pool{
 		concurrency: concurrency,
 		log:         log,
 	}
+	pool.Init()
+	return pool
 }
 
+// Init initializes the pool by preparing state and spinning up Goroutines. It
+// should only be called once per pool.
 func (p *Pool) Init() {
+	if p.initialized {
+		panic("Init called for a pool that's already been initialized")
+	}
+
 	p.log.Debugf("Initializing job pool at concurrency %v", p.concurrency)
+
+	p.initialized = true
 	p.runGate = make(chan struct{})
 	p.stop = make(chan struct{})
 
@@ -139,17 +151,27 @@ func (p *Pool) JobErrors() []error {
 	return errs
 }
 
+// Stop disables and cleans up the pool by spinning down all Goroutines.
 func (p *Pool) Stop() {
+	if !p.initialized {
+		panic("Stop called for a pool that's not initialized")
+	}
+
 	if p.roundStarted {
 		panic("Stop should only be called after round has ended (hint: try calling Wait)")
 	}
 
+	p.initialized = false
 	p.stop <- struct{}{}
 }
 
 // StartRound begins an execution round. Internal statistics and other tracking
 // is all reset from the lsat one.
 func (p *Pool) StartRound() {
+	if !p.initialized {
+		panic("StartRound called for a pool that's not initialized (hint: call Init first)")
+	}
+
 	if p.roundStarted {
 		panic("StartRound already called (call Wait before calling it again)")
 	}

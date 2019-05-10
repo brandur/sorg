@@ -9,7 +9,6 @@ import (
 
 func TestEmptyPool(t *testing.T) {
 	p := NewPool(&Logger{Level: LevelDebug}, 10)
-	p.Init()
 	defer p.Stop()
 
 	p.StartRound()
@@ -23,8 +22,6 @@ func TestEmptyPool(t *testing.T) {
 
 func TestWithWork(t *testing.T) {
 	p := NewPool(&Logger{Level: LevelDebug}, 10)
-	fmt.Printf("init\n")
-	p.Init()
 	defer p.Stop()
 
 	p.StartRound()
@@ -53,7 +50,6 @@ func TestWithWork(t *testing.T) {
 
 func TestWithError(t *testing.T) {
 	p := NewPool(&Logger{Level: LevelDebug}, 10)
-	p.Init()
 	defer p.Stop()
 
 	p.StartRound()

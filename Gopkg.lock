@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f73b1f5050a911f163d5f3247163d0328ec232a8b86963ba6b5f711b1d3b325f"
+  digest = "1:f22a329bcf1b1a83c4fc72c71726d8186e44580a971ddd46bd47b4d1fb305fdf"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -42,7 +42,7 @@
     "modules/myaml",
   ]
   pruneopts = ""
-  revision = "b03e16b6c216211af2b8b8f05dd9db176c1217b6"
+  revision = "8995cb89ad14e7f4abae2e103d1b403eee9d470c"
 
 [[projects]]
   digest = "1:56c130d885a4aacae1dd9c7b71cfe39912c7ebc1ff7d2b46083c8812996dc43b"

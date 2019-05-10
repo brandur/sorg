@@ -114,7 +114,6 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 		go watchChanges(c, c.Watcher, rebuild, rebuildDone)
 	}
 
-	c.Pool.Init()
 	c.Pool.StartRound()
 	c.Jobs = c.Pool.Jobs
 
