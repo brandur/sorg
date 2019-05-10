@@ -1,5 +1,10 @@
 package scommon
 
+import (
+	"fmt"
+	"os"
+)
+
 //////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -36,3 +41,18 @@ const (
 // to the publishing info of various content.
 const TwitterInfo = `<p>Find me on Twitter at ` +
 	`<strong><a href="https://twitter.com/brandur">@brandur</a></strong>.</p>`
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Functions
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+func ExitWithError(err error) {
+	fmt.Fprintf(os.Stderr, "error: %v\n", err)
+	os.Exit(1)
+}

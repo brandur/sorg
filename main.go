@@ -30,7 +30,8 @@ Sorg is a static site generator for Brandur's personal
 homepage and some of its adjacent functions. See the product
 in action at https://brandur.org.`),
 	}
-	rootCmd.AddCommand(&cobra.Command{
+
+	buildCommand := &cobra.Command{
 		Use:   "build",
 		Short: "Run a single build loop",
 		Long: strings.TrimSpace(`
@@ -40,8 +41,10 @@ when they're detected. A webserver is started on PORT (default
 		Run: func(cmd *cobra.Command, args []string) {
 			modulir.Build(getModulirConfig(), build)
 		},
-	})
-	rootCmd.AddCommand(&cobra.Command{
+	}
+	rootCmd.AddCommand(buildCommand)
+
+	loopCommand := &cobra.Command{
 		Use:   "loop",
 		Short: "Start build and serve loop",
 		Long: strings.TrimSpace(`
@@ -50,7 +53,29 @@ Runs the build loop one time and places the result in TARGET_DIR
 		Run: func(cmd *cobra.Command, args []string) {
 			modulir.BuildLoop(getModulirConfig(), build)
 		},
-	})
+	}
+	rootCmd.AddCommand(loopCommand)
+
+	var live bool
+	var staging bool
+	passagesCommand := &cobra.Command{
+		Use:   "passages [source .md file]",
+		Short: "Email a Passages newsletter",
+		Long: strings.TrimSpace(`
+Emails the Passages newsletter at the location given as argument.
+Note that MAILGUN_API_KEY must be set in the environment for this
+to work as it executes against the Mailgun API.`),
+		Args: cobra.ExactArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			c := &modulir.Context{Log: getLog()}
+			sendPassages(c, args[0], live, staging)
+		},
+	}
+	passagesCommand.Flags().BoolVar(&live, "live", false,
+		"Send to list (as opposed to dry run)")
+	passagesCommand.Flags().BoolVar(&staging, "staging", false,
+		"Send to staging list (as opposed to dry run)")
+	rootCmd.AddCommand(passagesCommand)
 
 	if err := envdecode.Decode(&conf); err != nil {
 		fmt.Fprintf(os.Stderr, "Error decoding conf from env: %v", err)
@@ -119,6 +144,10 @@ type Conf struct {
 	// where you otherwise wouldn't have the fonts.
 	LocalFonts bool `env:"LOCAL_FONTS,default=false"`
 
+	// MailgunAPIKey is a key for Mailgun used to send email. It's required
+	// when using the `passages` command.
+	MailgunAPIKey string `env:"MAILGUN_API_KEY"`
+
 	// NumAtomEntries is the number of entries to put in Atom feeds.
 	NumAtomEntries int `env:"NUM_ATOM_ENTRIES,default=20"`
 
@@ -142,15 +171,19 @@ type Conf struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
+func getLog() modulir.LoggerInterface {
+	log := logrus.New()
+	log.SetLevel(logrus.InfoLevel)
+	return log
+}
+
 // getModulirConfig interprets Conf to produce a configuration suitable to pass
 // to a Modulir build loop.
 func getModulirConfig() *modulir.Config {
-	log := logrus.New()
-	log.SetLevel(logrus.InfoLevel)
 
 	return &modulir.Config{
 		Concurrency: conf.Concurrency,
-		Log:         log,
+		Log:         getLog(),
 		Port:        conf.Port,
 		SourceDir:   ".",
 		TargetDir:   conf.TargetDir,

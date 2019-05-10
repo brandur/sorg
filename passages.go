@@ -3,22 +3,43 @@ package main
 import (
 	"bufio"
 	"bytes"
-	"flag"
 	"fmt"
-	"log"
-	"os"
 	"path/filepath"
 
 	"github.com/aymerick/douceur/inliner"
-	mcontext "github.com/brandur/modulir/context"
-	mlog "github.com/brandur/modulir/log"
+	"github.com/brandur/modulir"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/spassages"
 	"github.com/brandur/sorg/modules/stemplate"
-	"github.com/joeshaw/envdecode"
 	"github.com/yosssi/ace"
 	"gopkg.in/mailgun/mailgun-go.v1"
 )
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Public
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+func sendPassages(c *modulir.Context, source string, live, staging bool) {
+	if err := renderAndSend(c, source, live, staging); err != nil {
+		scommon.ExitWithError(err)
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Private
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
 
 const (
 	mailDomain         = "list.brandur.org"
@@ -29,33 +50,16 @@ const (
 	testAddress        = replyToAddress
 )
 
-// Conf contains configuration information for the command. It's extracted from
-// environment variables.
-type Conf struct {
-	// MailgunAPIKey is a key for Mailgun used to send email.
-	MailgunAPIKey string `env:"MAILGUN_API_KEY,required"`
-}
+func renderAndSend(c *modulir.Context, source string, live, staging bool) error {
+	if conf.MailgunAPIKey == "" {
+		scommon.ExitWithError(fmt.Errorf(
+			"MAILGUN_API_KEY must be configured in the environment"))
+	}
 
-// Left as a global for now for the sake of convenience, but it's not used in
-// very many places and can probably be refactored as a local if desired.
-var conf Conf
+	dir := filepath.Dir(source)
+	name := filepath.Base(source)
 
-func renderAndSend(path string, live, staging bool) error {
-	dir := filepath.Dir(path)
-	name := filepath.Base(path)
-
-	passage, err := spassages.Render(
-		// TODO: Find an easier way to get a context once this comes into `sorg`.
-		mcontext.NewContext(&mcontext.Args{Log: &mlog.Logger{Level: mlog.LevelInfo}}),
-
-		dir,
-		name,
-
-		// TODO: Replace with `conf.AbsoluteURL` once this comes into `sorg`.
-		"https://brandur.org",
-
-		true,
-	)
+	passage, err := spassages.Render(c, dir, name, conf.AbsoluteURL, true)
 	if err != nil {
 		return err
 	}
@@ -114,37 +118,9 @@ func renderAndSend(path string, live, staging bool) error {
 
 	resp, _, err := mg.Send(message)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
-	log.Printf(`Sent to: %s (response: "%s")`, recipient, resp)
+	c.Log.Infof(`Sent to: %s (response: "%s")`, recipient, resp)
 
 	return nil
-}
-
-func main() {
-	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: %v [-live] [-staging] <source_file>\n", os.Args[0])
-		flag.PrintDefaults()
-		os.Exit(0)
-	}
-
-	live := flag.Bool("live", false,
-		"Send to list (as opposed to dry run)")
-	staging := flag.Bool("staging", false,
-		"Send to staging list (as opposed to dry run)")
-	flag.Parse()
-
-	if len(flag.Args()) != 1 {
-		flag.Usage()
-	}
-
-	err := envdecode.Decode(&conf)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = renderAndSend(flag.Arg(0), *live, *staging)
-	if err != nil {
-		log.Fatal(err)
-	}
 }
