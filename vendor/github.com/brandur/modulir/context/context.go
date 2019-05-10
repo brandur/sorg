@@ -93,7 +93,7 @@ func NewContext(args *Args) *Context {
 	}
 
 	if args.Pool != nil {
-		c.Jobs = args.Pool.JobsChan
+		c.Jobs = args.Pool.Jobs
 	}
 
 	return c
@@ -187,14 +187,12 @@ func (c *Context) ResetBuild() {
 
 // Wait waits on the job pool to execute its current round of jobs.
 //
-// Returns true if the round of jobs all executed successfully, and false
-// otherwise. In the latter case, a work function should return so that the
-// Modulir main loop can print the errors that occurred.
+// The worker pool is then primed for a new round so that more jobs can be
+// enqueued.
 //
-// If all jobs were successful, the worker pool is restarted so that more jobs
-// can be queued. If it wasn't, the jobs channel will be closed, and trying to
-// enqueue a new one will panic.
-func (c *Context) Wait() bool {
+// Returns nil if the round of jobs executed successfully, and a set of errors
+// that occurred otherwise.
+func (c *Context) Wait() []error {
 	c.Stats.LoopDuration =
 		c.Stats.LoopDuration + time.Now().Sub(c.Stats.lastLoopStart)
 
@@ -210,18 +208,16 @@ func (c *Context) Wait() bool {
 	c.Stats.NumJobs += c.Pool.NumJobs
 	c.Stats.NumJobsExecuted += c.Pool.NumJobsExecuted
 
-	if c.Pool.Errors != nil {
-		return false
-	}
+	errors := c.Pool.Errors
 
 	// Then start the pool again, which also has the side effect of
 	// reinitializing anything that needs to be reinitialized.
-	c.Pool.Run()
+	c.Pool.StartRound()
 
 	// This channel is reinitialized, so make sure to pull in the new one.
-	c.Jobs = c.Pool.JobsChan
+	c.Jobs = c.Pool.Jobs
 
-	return true
+	return errors
 }
 
 func (c *Context) addWatched(path string) error {

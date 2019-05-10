@@ -23,8 +23,8 @@ func NewJob(name string, f func() (bool, error)) *Job {
 // Pool is a worker group that runs a number of jobs at a configured
 // concurrency.
 type Pool struct {
-	Errors   []error
-	JobsChan chan *Job
+	Errors []error
+	Jobs   chan *Job
 
 	// JobsExecuted is a slice of jobs that were executed on the last run.
 	JobsExecuted []*Job
@@ -44,15 +44,15 @@ type Pool struct {
 	// when Run is called.
 	NumJobsExecuted int64
 
-	concurrency int
-
-	errorsMu         sync.Mutex
-	jobsChanInternal chan *Job
-	jobsExecutedMu   sync.Mutex
-	jobsFeederDone   chan bool
-	log              log.LoggerInterface
-	running          bool
-	wg               sync.WaitGroup
+	concurrency    int
+	errorsMu       sync.Mutex
+	jobsInternal   chan *Job
+	jobsExecutedMu sync.Mutex
+	jobsFeederDone chan bool
+	log            log.LoggerInterface
+	roundStarted   bool
+	runGate        chan struct{}
+	wg             sync.WaitGroup
 }
 
 // NewPool initializes a new pool with the given jobs and at the given
@@ -64,33 +64,57 @@ func NewPool(log log.LoggerInterface, concurrency int) *Pool {
 	}
 }
 
-// Run spings up workers starts working jobs.
-func (p *Pool) Run() {
-	p.log.Debugf("Running job pool at concurrency %v", p.concurrency)
+func (p *Pool) Init() {
+	p.log.Debugf("Initializing job pool at concurrency %v", p.concurrency)
+	p.runGate = make(chan struct{})
 
-	p.Errors = nil
-	p.JobsChan = make(chan *Job, 500)
-	p.JobsExecuted = nil
-	p.NumJobs = 0
-	p.NumJobsExecuted = 0
-	p.jobsChanInternal = make(chan *Job, 500)
-	p.jobsFeederDone = make(chan bool)
-	p.running = true
-
+	// Worker Goroutines
 	for i := 0; i < p.concurrency; i++ {
-		go p.work()
+		go func() {
+			<-p.runGate
+
+			for {
+				p.workForRound()
+			}
+		}()
 	}
 
 	// Job feeder
 	go func() {
-		for job := range p.JobsChan {
-			p.wg.Add(1)
-			p.jobsChanInternal <- job
-		}
+		for {
+			<-p.runGate
 
-		// Runs after JobsChan has been closed.
-		p.jobsFeederDone <- true
+			for job := range p.Jobs {
+				atomic.AddInt64(&p.NumJobs, 1)
+				p.wg.Add(1)
+				p.jobsInternal <- job
+			}
+
+			// Runs after Jobs has been closed.
+			p.jobsFeederDone <- true
+		}
 	}()
+}
+
+// StartRound begins an execution round. Internal statistics and other tracking
+// is all reset from the lsat one.
+func (p *Pool) StartRound() {
+	if p.roundStarted {
+		panic("StartRound already called (call Wait before calling it again)")
+	}
+
+	p.Errors = nil
+	p.Jobs = make(chan *Job, 500)
+	p.JobsExecuted = nil
+	p.NumJobs = 0
+	p.NumJobsExecuted = 0
+	p.jobsFeederDone = make(chan bool)
+	p.jobsInternal = make(chan *Job, 500)
+	p.roundStarted = true
+
+	// Close the run gate to signal to the workers and job feeder that they can
+	// start this round.
+	close(p.runGate)
 }
 
 // Wait waits until all jobs are finished and stops the pool.
@@ -102,17 +126,20 @@ func (p *Pool) Run() {
 // If the pool isn't running, it falls through without doing anything so it's
 // safe to call Wait multiple times.
 func (p *Pool) Wait() bool {
-	if !p.running {
-		return true
+	if !p.roundStarted {
+		panic("Can't wait on a job pool that's not primed (call StartRound first)")
 	}
 
-	p.running = false
+	// Create a new run gate which Goroutines will wait on for the next round.
+	p.runGate = make(chan struct{})
+
+	p.roundStarted = false
 
 	// First signal over the jobs chan that all work has been enqueued).
-	close(p.JobsChan)
+	close(p.Jobs)
 
 	// Now wait for the job feeder to be finished so that we know all jobs have
-	// been enqueued in jobsChanInternal.
+	// been enqueued in jobsInternal.
 	<-p.jobsFeederDone
 
 	p.log.Debugf("pool: Waiting for %v job(s) to be done", p.NumJobs)
@@ -120,8 +147,9 @@ func (p *Pool) Wait() bool {
 	// Now wait for all those jobs to be done.
 	p.wg.Wait()
 
-	// close channel to stop workers
-	close(p.jobsChanInternal)
+	// Drops workers out of their current round of work. They'll once again
+	// wait on the run gate.
+	close (p.jobsInternal)
 
 	if p.Errors != nil {
 		return false
@@ -129,9 +157,9 @@ func (p *Pool) Wait() bool {
 	return true
 }
 
-// The work loop for any single goroutine.
-func (p *Pool) work() {
-	for j := range p.jobsChanInternal {
+// The work loop for a single round within a single worker Goroutine.
+func (p *Pool) workForRound() {
+	for j := range p.jobsInternal {
 		// Required so that we have a stable pointer that we can keep past the
 		// lifetime of the loop. Don't change this.
 		job := j
@@ -146,7 +174,6 @@ func (p *Pool) work() {
 			p.errorsMu.Unlock()
 		}
 
-		atomic.AddInt64(&p.NumJobs, 1)
 		if executed {
 			atomic.AddInt64(&p.NumJobsExecuted, 1)
 
