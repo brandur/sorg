@@ -55,6 +55,8 @@ type Context struct {
 	// file system checks that Changed makes will be bypassed to enable a
 	// faster build loop.
 	//
+	// Make sure that all paths added here are normalized with filepath.Clean.
+	//
 	// Make sure to unset it after your build run is finished.
 	QuickPaths map[string]struct{}
 
@@ -129,6 +131,13 @@ func (c *Context) Changed(path string) bool {
 		return true
 	}
 
+	// Make sure we're always operating against a normalized path.
+	//
+	// Note that fsnotify sends us cleaned paths which are what gets added to
+	// QuickPaths below, so cleaning here ensures that we're always comparing
+	// against the right thing.
+	path = filepath.Clean(path)
+
 	// Short circuit quickly if the context is in "quick rebuild mode".
 	if c.QuickPaths != nil {
 		_, ok := c.QuickPaths[path]
@@ -142,17 +151,6 @@ func (c *Context) Changed(path string) bool {
 		}
 		return true
 	}
-
-	// Commented out for now because it's not fast (at least a few ms) and we
-	// don't seem to really need an absolute path
-	/*
-		// Normalize the path (Abs also calls Clean).
-		path, err := filepath.Abs(path)
-		if err != nil {
-			c.Log.Errorf("Error normalizing path: %v", err)
-		}
-		}
-	*/
 
 	changed, ok := c.fileModTimeCache.isFileUpdated(fileInfo, path)
 
