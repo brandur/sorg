@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:ecde61a897dd334475256717380e5626b010bc3947b7771b7c0393c88459a987"
+  digest = "1:3d0e1de68bba3802cb39a2d6df1be72e2d5e1a73e4d44a604049bb75b6e7be34"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -42,7 +42,7 @@
     "modules/mtoml",
   ]
   pruneopts = ""
-  revision = "9ff8ad086a900c336afc2889908791273bd40861"
+  revision = "ac01293eaead2e7ca9ed52cbb474e2028d1d07ea"
 
 [[projects]]
   digest = "1:56c130d885a4aacae1dd9c7b71cfe39912c7ebc1ff7d2b46083c8812996dc43b"

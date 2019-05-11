@@ -188,7 +188,7 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			return len(errors) < 1
 
 		case lastChangedPath =<-rebuild:
-			c.Log.Infof("Detected change; rebuilding")
+			c.Log.Infof("Detected change on '%s'; rebuilding", lastChangedPath)
 		}
 	}
 }

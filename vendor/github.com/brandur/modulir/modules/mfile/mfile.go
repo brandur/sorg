@@ -143,30 +143,6 @@ func MustAbs(path string) string {
 }
 
 //
-// ReadFile
-//
-
-func ReadFile(c *modulir.Context, source string) ([]byte, bool, error) {
-	changed := c.Changed(source)
-	if !changed && !c.Forced() {
-		return nil, changed, nil
-	}
-
-	in, err := os.Open(source)
-	if err != nil {
-		return nil, changed, errors.Wrap(err, "Error opening read source")
-	}
-
-	data, err := ioutil.ReadAll(in)
-	if err != nil {
-		return nil, changed, errors.Wrap(err, "Error reading source")
-	}
-
-	c.Log.Debugf("mfile: Read file: %s", source)
-	return data, changed, nil
-}
-
-//
 // ReadDir
 //
 

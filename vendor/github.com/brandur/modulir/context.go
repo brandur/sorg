@@ -30,6 +30,13 @@ type Context struct {
 	// FirstRun indicates whether this is the first run of the build loop.
 	FirstRun bool
 
+	// Forced causes the Changed function to always return true regardless of
+	// the path it's invoked on, thereby prompting all jobs that use it to
+	// execute.
+	//
+	// Make sure to unset it after your build run is finished.
+	Forced bool
+
 	// Jobs is a channel over which jobs to be done are transmitted.
 	Jobs chan *Job
 
@@ -69,9 +76,6 @@ type Context struct {
 
 	// fileModTimeCache remembers the last modified times of files.
 	fileModTimeCache *FileModTimeCache
-
-	// forced indicates whether change checking should be bypassed.
-	forced bool
 }
 
 // NewContext initializes and returns a new Context.
@@ -120,6 +124,11 @@ func (c *Context) AllowError(executed bool, err error) bool {
 // fairly carefully for both speed and lack of contention when running
 // concurrently with other jobs.
 func (c *Context) Changed(path string) bool {
+	// Always return immediately if the context has been forced.
+	if c.Forced {
+		return true
+	}
+
 	// Short circuit quickly if the context is in "quick rebuild mode".
 	if c.QuickPaths != nil {
 		_, ok := c.QuickPaths[path]
@@ -180,16 +189,6 @@ func (c *Context) ChangedAny(paths ...string) bool {
 	return changed
 }
 
-// Forced returns whether change checking is disabled in the current context.
-//
-// Functions using a forced context still return the right value for their
-// unchanged return, but execute all their work.
-//
-// TODO: Rename to IsForced to match IsUnchanged.
-func (c *Context) Forced() bool {
-	return c.forced
-}
-
 // ResetBuild signals to the Context to do the bookkeeping it needs to do for
 // the next build round.
 func (c *Context) ResetBuild() {
@@ -234,23 +233,6 @@ func (c *Context) Wait() []error {
 	return errors
 }
 
-// ForcedContext returns a copy of the current Context for which change
-// checking is disabled.
-//
-// Functions using a forced context still return the right value for their
-// unchanged return, but execute all their work.
-//
-// TODO: Get rid of in favor of Forced property.
-func (c *Context) ForcedContext() *Context {
-	if c.QuickPaths != nil {
-		panic("Don't call ForcedContext on a quick context")
-	}
-
-	forceC := c.clone()
-	forceC.forced = true
-	return forceC
-}
-
 func (c *Context) addWatched(fileInfo os.FileInfo, absolutePath string) error {
 	// Watch the parent directory unless the file is a directory itself. This
 	// will hopefully mean fewer individual entries in the notifier.
@@ -259,22 +241,6 @@ func (c *Context) addWatched(fileInfo os.FileInfo, absolutePath string) error {
 	}
 
 	return c.Watcher.Add(absolutePath)
-}
-
-// clone clones the current Context.
-func (c *Context) clone() *Context {
-	return &Context{
-		Concurrency: c.Concurrency,
-		Log:         c.Log,
-		QuickPaths:  c.QuickPaths,
-		SourceDir:   c.SourceDir,
-		Stats:       c.Stats,
-		TargetDir:   c.TargetDir,
-		Watcher:     c.Watcher,
-
-		fileModTimeCache: c.fileModTimeCache,
-		forced:           c.forced,
-	}
 }
 
 // FileModTimeCache tracks the last modified time of files seen so a
