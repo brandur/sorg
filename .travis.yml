@@ -65,12 +65,6 @@ env:
     - CLOUDFRONT_ID=E2D97SPIHRBCUA
     - GOOGLE_ANALYTICS_ID=UA-47798518-1
 
-    # Use only a single Goroutine so that we can debug problems that arise more
-    # easily. The build in CI is already lengthy due to system setup, and
-    # shaving a few hundred milliseconds off with more concurrency makes almost
-    # no difference at all.
-    - CONCURRENCY=1
-
     # $AWS_ACCESS_KEY_ID
     - secure: "RKoQ3MHHaL8Bzw51DGnTbQitO3C1KIPdjBr4NVq7Pn58AT3mJJ/x6iR0IN9XzATjo3enN1SdtaRTKST6Dai597kzEo2sp7q/i0KkglQ/2Pj67TMwQewBED92ArrvTxCzNvIiO02z78V8DA2ZBSE8F95EhWQ0xYoUjzuiHu2uk91RZ+pnlHsFY6sn6W1OD3uv6VwCn3P31a5vrBPmvv1YlXMP4dpcECIrVzO4G2M6FS8s+7B+Egp5tX0C+6p5wnLJAOHDeU3ydIB1o8e9OXK1squ9C8juRIG+2RQN5xiEx9mV3CF0+N1iBLVk4LCQV+237dU5HLhlD1Vc6TBa6K5YbCH6N0/6LMWZnNEB3tDfR9sskp2KDAlsrYaDDzfkq//uygK+QPloCVWrNOuURWuUwbFqkWeyhlC9Fxl7Zan1V66BU1+RGYNDQHfMwIxr1bGsuwnvFKQ+9QNmMLcRvqz9qAE5g8e0gRLDh97nUjeWs2d8YgpKoWCzPpga51ykMNA+Grn9hZVtPFsVdzJ1fVEQUQuBXoa4hYxvT33KpuYTDXszT5e7fPo1h7Tw9dhqOGpQElb722PjvZt76zYrO5Yv5a2AVuStOoqhCz88NM82CddwiE0fPLEphEWR0/lKr2hrOMgeBNR56kEeYnIPDHthpKcpJ+TLPPAgoRlksOGb74I="
 
