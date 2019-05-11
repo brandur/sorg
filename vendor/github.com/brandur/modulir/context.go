@@ -228,6 +228,10 @@ func (c *Context) Wait() []error {
 	// This channel is reinitialized, so make sure to pull in the new one.
 	c.Jobs = c.Pool.Jobs
 
+	if erroredJobs == nil {
+		return nil
+	}
+
 	// Unfortunately required to coerce into `[]error` despite Job implementing
 	// the error interface.
 	errors := make([]error, len(erroredJobs))
