@@ -1,4 +1,4 @@
-package myaml
+package mtoml
 
 import (
 	"os"
@@ -16,9 +16,9 @@ func TestSplitFrontmatter(t *testing.T) {
 	c := mtesting.NewContext()
 
 	{
-		path := mtesting.WriteTempFile(t, []byte(`---
-foo: bar
----
+		path := mtesting.WriteTempFile(t, []byte(`+++
+foo = "bar"
++++
 
 other`))
 		defer os.Remove(path)
@@ -42,9 +42,9 @@ other`))
 	}
 
 	{
-		path := mtesting.WriteTempFile(t, []byte(`---
-foo: bar
----
+		path := mtesting.WriteTempFile(t, []byte(`+++
+foo = "bar"
++++
 `))
 		defer os.Remove(path)
 
@@ -57,8 +57,8 @@ foo: bar
 
 	{
 		path := mtesting.WriteTempFile(t, []byte(`foo = "bar"
-foo: bar
----
+foo = "bar"
++++
 `))
 		defer os.Remove(path)
 
