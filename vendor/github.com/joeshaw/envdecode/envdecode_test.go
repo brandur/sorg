@@ -9,6 +9,7 @@ import (
 	"reflect"
 	"sort"
 	"strconv"
+	"sync"
 	"testing"
 	"time"
 )
@@ -59,6 +60,8 @@ type testConfig struct {
 	DefaultSliceInt []int         `env:"TEST_UNSET,asdf=asdf,default=1;2;3"`
 	DefaultDuration time.Duration `env:"TEST_UNSET,asdf=asdf,default=24h"`
 	DefaultURL      *url.URL      `env:"TEST_UNSET,default=http://example.com"`
+
+	cantInterfaceField sync.Mutex
 }
 
 type testConfigNoSet struct {
@@ -177,22 +180,22 @@ func TestDecode(t *testing.T) {
 
 	expectedInt64Slice := []int64{int64Val, int64Val}
 	if !reflect.DeepEqual(tc.Int64Slice, expectedInt64Slice) {
-		t.Fatalf("Expected %s, got %s", expectedInt64Slice, tc.Int64Slice)
+		t.Fatalf("Expected %#v, got %#v", expectedInt64Slice, tc.Int64Slice)
 	}
 
 	expectedUint16Slice := []uint16{60000, 50000}
 	if !reflect.DeepEqual(tc.Uint16Slice, expectedUint16Slice) {
-		t.Fatalf("Expected %s, got %s", expectedUint16Slice, tc.Uint16Slice)
+		t.Fatalf("Expected %#v, got %#v", expectedUint16Slice, tc.Uint16Slice)
 	}
 
 	expectedFloat64Slice := []float64{math.Pi, math.Pi}
 	if !reflect.DeepEqual(tc.Float64Slice, expectedFloat64Slice) {
-		t.Fatalf("Expected %s, got %s", expectedFloat64Slice, tc.Float64Slice)
+		t.Fatalf("Expected %#v, got %#v", expectedFloat64Slice, tc.Float64Slice)
 	}
 
 	expectedBoolSlice := []bool{true, false, true}
 	if !reflect.DeepEqual(tc.BoolSlice, expectedBoolSlice) {
-		t.Fatalf("Expected %s, got %s", expectedBoolSlice, tc.BoolSlice)
+		t.Fatalf("Expected %#v, got %#v", expectedBoolSlice, tc.BoolSlice)
 	}
 
 	duration2, _ := time.ParseDuration("20m")
@@ -389,7 +392,7 @@ func TestOnlyNested(t *testing.T) {
 		Inner noConfig
 	}
 	if err := Decode(&o3); err != ErrNoTargetFieldsAreSet {
-		t.Fatal("Expected ErrInvalidTarget, got %s", err)
+		t.Fatalf("Expected ErrInvalidTarget, got %s", err)
 	}
 }
 

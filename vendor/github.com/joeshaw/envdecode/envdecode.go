@@ -118,6 +118,10 @@ func decode(target interface{}, strict bool) (int, error) {
 			fallthrough
 
 		case reflect.Struct:
+			if !f.Addr().CanInterface() {
+				continue
+			}
+
 			ss := f.Addr().Interface()
 			_, custom := ss.(Decoder)
 			if custom {
