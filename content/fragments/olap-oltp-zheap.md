@@ -1,11 +1,9 @@
----
-title: OLAP, OLTP, Zheap, and tradeoffs in Postgres MVCC
-published_at: 2018-10-28T08:33:07Z
-location: Coimbra
-hook: How Zheap shifts Postgres towards optimization for
-  OLTP by making access to new row versions cheaper and old
-  row versions more expensive.
----
++++
+hook = "How Zheap shifts Postgres towards optimization for OLTP by making access to new row versions cheaper and old row versions more expensive."
+location = "Coimbra"
+published_at = 2018-10-28T08:33:07Z
+title = "OLAP, OLTP, Zheap, and tradeoffs in Postgres MVCC"
++++
 
 One of the most exciting developments in the world of
 Postgres right now is work on the new [Zheap storage

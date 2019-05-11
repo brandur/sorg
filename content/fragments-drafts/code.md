@@ -1,8 +1,8 @@
----
-title: Who wrote that shitty code?
-published_at: 2018-07-19T15:32:08Z
-hook: TODO
----
++++
+hook = "TODO"
+published_at = 2018-07-19T15:32:08Z
+title = "Who wrote that shitty code?"
++++
 
 ## Redux (#redux)
 

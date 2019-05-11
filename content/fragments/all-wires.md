@@ -1,8 +1,8 @@
----
-title: All wires
-published_at: 2017-05-03T15:30:29Z
-hook: On removing moving parts in my home media setup.
----
++++
+hook = "On removing moving parts in my home media setup."
+published_at = 2017-05-03T15:30:29Z
+title = "All wires"
++++
 
 I have a new policy in my home network and media center:
 more wires. My media set up used to be a Plex client on my

@@ -1,8 +1,8 @@
----
-title: Verified env vars
-published_at: 2016-07-29T16:30:17Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-29T16:30:17Z
+title = "Verified env vars"
++++
 
 While passing information to command line programs with environment variables
 is a model that's both powerful and elegant, it's not without its problems.

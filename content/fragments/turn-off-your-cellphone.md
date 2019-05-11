@@ -1,8 +1,8 @@
----
-title: Turn off your cellphone
-published_at: 2016-12-06T04:49:16Z
-hook: On instant gratification, communication interrupts, and smartphones.
----
++++
+hook = "On instant gratification, communication interrupts, and smartphones."
+published_at = 2016-12-06T04:49:16Z
+title = "Turn off your cellphone"
++++
 
 I've been having trouble writing lately. Even when I carve
 out some time to do it, small distractions to start to

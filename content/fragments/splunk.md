@@ -1,8 +1,8 @@
----
-title: Splunk
-published_at: 2016-08-28T18:51:50Z
-hook: On superior operational visibility and data rationing.
----
++++
+hook = "On superior operational visibility and data rationing."
+published_at = 2016-08-28T18:51:50Z
+title = "Splunk"
++++
 
 I've been using Splunk through my last two jobs, and consider it an absolutely
 invaluable tool. Its capacity to run ad-hoc queries against huge volumes of

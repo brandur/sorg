@@ -1,8 +1,8 @@
----
-title: The guitar
-published_at: 2015-06-14T01:32:26Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-06-14T01:32:26Z
+title = "The guitar"
++++
 
 The first time I picked up a guitar I was 21 and out in Waterloo for an
 internship. I remember thinking at the time that I was pretty much too old by

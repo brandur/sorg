@@ -8,7 +8,7 @@ process.
 The process works like this:
 
 1. Make sure that photo is uploaded to Dropbox.
-2. Append an entry to `content/photographs/_meta.yaml`
+2. Append an entry to `content/photographs/_meta.toml`
    which includes a title, description, and Dropbox share
    URL.
     * It's easy to obtain a share URL by right clicking in

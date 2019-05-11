@@ -1,9 +1,9 @@
----
-title: The sprawl blues
-published_at: 2016-01-03T22:18:36Z
-image: /assets/images/fragments/sprawl-blues/vista.jpg
-hook: On sprawl and commute times in North America.
----
++++
+hook = "On sprawl and commute times in North America."
+image = "/assets/images/fragments/sprawl-blues/vista.jpg"
+published_at = 2016-01-03T22:18:36Z
+title = "The sprawl blues"
++++
 
 I happened to come across an article about [life in LA][los-angeles-post]
 written by someone who's lived in the large cities of Japan and China. She

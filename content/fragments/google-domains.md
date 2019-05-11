@@ -1,8 +1,8 @@
----
-title: Google Domains
-published_at: 2015-05-17T03:29:55Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-05-17T03:29:55Z
+title = "Google Domains"
++++
 
 I just moved a few of my domains over to [Google's new Domains
 service](https://domains.google.com) to try out the new product. Until now I'd

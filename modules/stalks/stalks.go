@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/modules/myaml"
+	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/smarkdown"
 )
@@ -42,35 +42,35 @@ type Slide struct {
 // Talk represents a single talk.
 type Talk struct {
 	// Draft indicates that the talk is not yet published.
-	Draft bool `yaml:"-"`
+	Draft bool `toml:"-"`
 
 	// Event is the event for which the talk was originally given.
-	Event string `yaml:"event"`
+	Event string `toml:"event"`
 
 	// Intro is an introduction for the talk, in HTML.
-	Intro string `yaml:"-"`
+	Intro string `toml:"-"`
 
 	// IntroRaw is an introduction for the talk, in Markdown.
-	IntroRaw string `yaml:"-"`
+	IntroRaw string `toml:"-"`
 
 	// Location is the city where the talk was originally given.
-	Location string `yaml:"location"`
+	Location string `toml:"location"`
 
 	// PublishedAt is when the talk was published.
-	PublishedAt *time.Time `yaml:"published_at"`
+	PublishedAt *time.Time `toml:"published_at"`
 
 	// Slides is the collection of slides that are part of the talk.
-	Slides []*Slide `yaml:"-"`
+	Slides []*Slide `toml:"-"`
 
 	// Slug is a unique identifier for the talk that also helps determine
 	// where it's addressable by URL.
-	Slug string `yaml:"-"`
+	Slug string `toml:"-"`
 
 	// Subtitle is the talk's subtitle.
-	Subtitle string `yaml:"subtitle"`
+	Subtitle string `toml:"subtitle,omitempty"`
 
 	// Title is the talk's title.
-	Title string `yaml:"title"`
+	Title string `toml:"title"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -108,7 +108,7 @@ func Render(c *modulir.Context, contentDir, dir, name string) (*Talk, error) {
 	source := path.Join(dir, name)
 
 	var talk Talk
-	data, err := myaml.ParseFileFrontmatter(c, source, &talk)
+	data, err := mtoml.ParseFileFrontmatter(c, source, &talk)
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +169,7 @@ func renderMarkdown(content string) string {
 }
 
 func splitAndRenderSlides(contentDir string, talk *Talk, content string) ([]*Slide, error) {
-	talksAssetPath := "/assets/talks"
+	talksAssetPath := "/assets/images/talks"
 	talksImageDir := path.Join(contentDir, "images", "talks")
 
 	rawSlides := strings.Split(content, "---\n")

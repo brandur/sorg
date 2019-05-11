@@ -1,8 +1,8 @@
----
-title: Amazon Prime
-published_at: 2017-01-03T17:21:35Z
-hook: Is Prime worth it? Lets take a closer look.
----
++++
+hook = "Is Prime worth it? Lets take a closer look."
+published_at = 2017-01-03T17:21:35Z
+title = "Amazon Prime"
++++
 
 After a [runaway script crippled my Plex box](/amazon-prime), I started
 searching around for video alternatives that I could use. I'm a Prime member at

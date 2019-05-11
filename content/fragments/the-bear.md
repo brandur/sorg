@@ -1,8 +1,8 @@
----
-title: The bear
-published_at: 2016-01-30T16:02:10Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-30T16:02:10Z
+title = "The bear"
++++
 
 > _Sometimes you eat the bear, and sometimes, well, he eats you._
 >

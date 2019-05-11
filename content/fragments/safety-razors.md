@@ -1,8 +1,8 @@
----
-title: Safety razors
-published_at: 2016-01-10T04:59:20Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-10T04:59:20Z
+title = "Safety razors"
++++
 
 The subject of safety razors recently came up with a friend, and I was amazed
 by how negatively they seem to be viewed in some circles. He saw them as the

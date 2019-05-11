@@ -1,8 +1,8 @@
----
-title: One week of nutritional rigor
-published_at: 2016-06-13T16:02:34Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-13T16:02:34Z
+title = "One week of nutritional rigor"
++++
 
 I wrote previously that as an experiment, I'm engaging in a [Calorie
 counting](/fragments/calorie-counting) exercise. Here's my one week update.

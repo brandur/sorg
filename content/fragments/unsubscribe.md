@@ -1,9 +1,8 @@
----
-title: "Unsubscribe: The noisy death of email marketing"
-published_at: 2017-08-27T16:26:50Z
-hook: How increasing volume and diminishingly quality will
-  lead to the irrelevance of the email marketing industry.
----
++++
+hook = "How increasing volume and diminishingly quality will lead to the irrelevance of the email marketing industry."
+published_at = 2017-08-27T16:26:50Z
+title = "Unsubscribe: The noisy death of email marketing"
++++
 
 A few years ago I created an address specifically to
 receive offers by email. Whenever I bought something

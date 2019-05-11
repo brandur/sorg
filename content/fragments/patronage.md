@@ -1,9 +1,8 @@
----
-title: Patronage in the age of free
-published_at: 2017-08-23T08:06:16Z
-hook: Thoughts on how to make the creation of high quality
-  content on the internet sustainable.
----
++++
+hook = "Thoughts on how to make the creation of high quality content on the internet sustainable."
+published_at = 2017-08-23T08:06:16Z
+title = "Patronage in the age of free"
++++
 
 The world's changing, and more so for independent creatives
 than for the rest of us. If there's one thing that the

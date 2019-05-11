@@ -1,8 +1,8 @@
----
-title: An AWS static hosting workaround
-published_at: 2016-01-05T17:49:42Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-05T17:49:42Z
+title = "An AWS static hosting workaround"
++++
 
 After writing a short article yesterday about [static hosting on AWS][first], a
 couple people [1] tipped me off that a workaround for the lack of index documents

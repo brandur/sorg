@@ -1,12 +1,11 @@
----
-hook: Quantitative easing explained in a pragmatic way (and with an example).
-image: "/assets/images/qe/qe2.jpg"
-location: San Francisco
-published_at: 2014-01-31T06:15:17Z
-title: Quantitative Easing for Hackers
-attributions: Header image by <strong><a href="http://www.flickr.com/photos/gammaman/6242455757/">Eli
-  Christman</a></strong>. Licensed under Creative Commons BY 2.0.
----
++++
+attributions = "Header image by <strong><a href=\"http://www.flickr.com/photos/gammaman/6242455757/\">Eli Christman</a></strong>. Licensed under Creative Commons BY 2.0."
+hook = "Quantitative easing explained in a pragmatic way (and with an example)."
+image = "/assets/images/qe/qe2.jpg"
+location = "San Francisco"
+published_at = 2014-01-31T06:15:17Z
+title = "Quantitative Easing for Hackers"
++++
 
 As QE3 continues to demonstrate that its nickname of QE-Infinity is well-deserved, it's increasingly important that the general public understands how it works and is able to grasp its long term consequences on the financial system. Is Yellen actually printing $85 billion a month [1]? Does that mean I'll be paying $100 for a loaf of bread by 2020? Looking around the web, I was abhored by just how difficult it was to find an explanation of the precise mechanics of QE; even the Fed itself [assures us that it's not printing](http://www.federalreserve.gov/faqs/money_12853.htm), but then proceeds to gloss over the details.
 

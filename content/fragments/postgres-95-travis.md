@@ -1,8 +1,8 @@
----
-title: Postgres 9.5 on Travis CI
-published_at: 2016-10-01T18:38:29Z
-hook: A recipe for getting Postgres 9.5 up and running on Travis CI.
----
++++
+hook = "A recipe for getting Postgres 9.5 up and running on Travis CI."
+published_at = 2016-10-01T18:38:29Z
+title = "Postgres 9.5 on Travis CI"
++++
 
 **Update:** As of December 1, 2016, [Travis has made both 9.5 and 9.6 available
 on Trusty containers][travis-update] so most of what's said in this article is

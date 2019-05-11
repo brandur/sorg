@@ -1,9 +1,8 @@
----
-title: Fixing a slow git $PS1 prompt
-published_at: 2016-11-17T04:42:17Z
-hook: A simple trick to measurably improve prompt performance in a large Git
-  repository.
----
++++
+hook = "A simple trick to measurably improve prompt performance in a large Git repository."
+published_at = 2016-11-17T04:42:17Z
+title = "Fixing a slow git $PS1 prompt"
++++
 
 Like many other developers, I've configured my prompt's `$PS1` to display my
 current branch in Git:

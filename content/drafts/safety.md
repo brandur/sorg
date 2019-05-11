@@ -1,9 +1,9 @@
----
-title: Active Versus Passive Safety in Production Systems
-published_at: 2017-10-13T15:08:44Z
-location: San Francisco
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2017-10-13T15:08:44Z
+title = "Active Versus Passive Safety in Production Systems"
++++
 
 Safety.
 

@@ -1,9 +1,8 @@
----
-title: Caffeine
-published_at: 2018-07-07T17:55:13Z
-hook: A personal experiment in seriously throttling back my
-  caffeine intake for the first time in years.
----
++++
+hook = "A personal experiment in seriously throttling back my caffeine intake for the first time in years."
+published_at = 2018-07-07T17:55:13Z
+title = "Caffeine"
++++
 
 One morning about three weeks ago I woke up, and as
 circumstances would have it, had to skip my morning coffee.

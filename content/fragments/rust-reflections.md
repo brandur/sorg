@@ -1,8 +1,8 @@
----
-title: Reflections on Rust, and the sand castle metaphor
-published_at: 2018-04-27T14:46:34Z
-hook: Some personal progress with Rust.
----
++++
+hook = "Some personal progress with Rust."
+published_at = 2018-04-27T14:46:34Z
+title = "Reflections on Rust, and the sand castle metaphor"
++++
 
 A month ago, I wrote about [how I was frustrated with my
 progress in Rust][walls]. These days, I'm still no expert,

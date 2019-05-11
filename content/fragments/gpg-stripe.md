@@ -1,8 +1,8 @@
----
-title: GPG at Stripe
-published_at: 2015-10-18T21:02:24Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-10-18T21:02:24Z
+title = "GPG at Stripe"
++++
 
 One surprise for me when finally getting a close-up look at Stripe's internal
 architecture was a pleasant one (I started work there about a month ago): GPG

@@ -1,8 +1,8 @@
----
-title: The zero-sum treadmill
-published_at: 2016-06-15T18:15:50Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-15T18:15:50Z
+title = "The zero-sum treadmill"
++++
 
 Sometimes you come across comments online that are Internet gold. [Here's one
 from a discussion on Hacker News][comment] the other day that provides the

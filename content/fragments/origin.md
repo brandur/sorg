@@ -1,9 +1,8 @@
----
-title: Simple and stateless CSRF protection with the `Origin` header
-published_at: 2018-11-04T14:59:26Z
-hook: Implementing simplified CSRF protection using the
-  `Origin` header.
----
++++
+hook = "Implementing simplified CSRF protection using the `Origin` header."
+published_at = 2018-11-04T14:59:26Z
+title = "Simple and stateless CSRF protection with the `Origin` header"
++++
 
 I've previously written about how much [I like static
 sites](/aws-intrinsic-static). You can't beat them for

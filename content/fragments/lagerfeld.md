@@ -1,10 +1,8 @@
----
-title: Karl Lagerfeld (and dieting)
-published_at: 2019-02-20T15:02:57Z
-hook: A few notes on the passing of a fascinating cultural
-  contributor and his even more fascinating approach to
-  weight loss.
----
++++
+hook = "A few notes on the passing of a fascinating cultural contributor and his even more fascinating approach to weight loss."
+published_at = 2019-02-20T15:02:57Z
+title = "Karl Lagerfeld (and dieting)"
++++
 
 [Karl Lagerfeld][wiki] passed away yesterday, a designer
 best known for his long-held position of creative director

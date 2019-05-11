@@ -1,9 +1,9 @@
----
-title: A Short and Practical Guide to Raw Denim
-published_at: 2018-08-03T03:08:39Z
-location: San Francisco
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2018-08-03T03:08:39Z
+title = "A Short and Practical Guide to Raw Denim"
++++
 
 I've been reading a lot about denim lately. The interest
 started when I first read W. David Marx's excellent book

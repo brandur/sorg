@@ -1,8 +1,8 @@
----
-title: Global recovery in Go with defer
-published_at: 2014-09-21T17:53:09Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-09-21T17:53:09Z
+title = "Global recovery in Go with defer"
++++
 
 Having spent the last few weeks trying to become literate in Golang, I can
 confidently say that all of my favorite tricks in the language [involved the

@@ -1,12 +1,10 @@
----
-title: "Postgres: Useful and Non-obvious Features"
-published_at: 2016-08-25T18:58:54Z
-hook: A listing of all useful Postgres features, tricks, and advice that I've
-  accumulated over the years and which aren't easy to discover without someone
-  telling you about them first.
-location: San Francisco
-tags: ["postgres"]
----
++++
+hook = "A listing of all useful Postgres features, tricks, and advice that I've accumulated over the years and which aren't easy to discover without someone telling you about them first."
+location = "San Francisco"
+published_at = 2016-08-25T18:58:54Z
+tags = ["postgres"]
+title = "Postgres: Useful and Non-obvious Features"
++++
 
 ## Schemas (#schemas)
 

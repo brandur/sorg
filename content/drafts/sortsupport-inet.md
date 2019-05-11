@@ -1,11 +1,10 @@
----
-title: "Designing SortSupport Abbreviated Keys for
-  inet/cidr"
-published_at: 2019-02-03T20:27:44Z
-location: San Francisco
-hook: TODO
-tags: ["postgres"]
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2019-02-03T20:27:44Z
+tags = ["postgres"]
+title = "Designing SortSupport Abbreviated Keys for inet/cidr"
++++
 
 A few weeks ago, I wrote about [how SortSupport works in
 Postgres](/sortsupport) to vastly speed up sorting on

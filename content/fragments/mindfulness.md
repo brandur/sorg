@@ -1,9 +1,8 @@
----
-title: Mindfulness
-published_at: 2017-11-24T00:54:13Z
-hook: On the importance of slowing down in the age of
-  Slack and social media.
----
++++
+hook = "On the importance of slowing down in the age of Slack and social media."
+published_at = 2017-11-24T00:54:13Z
+title = "Mindfulness"
++++
 
 While relaxing in an Onsen the other day, my mind wandered
 to what I wanted to do later in the day. I'd leave the

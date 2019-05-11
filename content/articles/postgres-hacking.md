@@ -1,11 +1,9 @@
----
-title: The Missing Manual for Hacking Postgres
-published_at: 2016-08-17T15:59:51Z
-location: San Francisco
-hook: "The basics of Postgres development: how to build the
-  project, run the test suite, and format a patch for
-  submission."
----
++++
+hook = "The basics of Postgres development: how to build the project, run the test suite, and format a patch for submission."
+location = "San Francisco"
+published_at = 2016-08-17T15:59:51Z
+title = "The Missing Manual for Hacking Postgres"
++++
 
 It's probably obvious that Postgres is my favorite
 database. One minor grievance that I have with the project

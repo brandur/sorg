@@ -1,8 +1,8 @@
----
-title: A year of counting Calories
-published_at: 2017-07-19T16:07:35Z
-hook: 409 days of tracking all meals and exercise.
----
++++
+hook = "409 days of tracking all meals and exercise."
+published_at = 2017-07-19T16:07:35Z
+title = "A year of counting Calories"
++++
 
 A year ago, I started [counting
 calories](/fragments/calorie-counting) with the goal of

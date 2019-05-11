@@ -1,8 +1,8 @@
----
-title: Going static
-published_at: 2016-07-14T00:31:55Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-14T00:31:55Z
+title = "Going static"
++++
 
 As of yesterday, I completed a rewrite of this site and moved it over from a
 [Ruby/Sinatra stack][org] to a [static site built by a custom Go

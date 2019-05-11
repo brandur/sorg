@@ -1,9 +1,9 @@
----
-hook: An exercise of discovery around how to extend the shell's API.
-location: San Francisco
-published_at: 2014-09-28T00:50:23Z
-title: Command Exit Status
----
++++
+hook = "An exercise of discovery around how to extend the shell's API."
+location = "San Francisco"
+published_at = 2014-09-28T00:50:23Z
+title = "Command Exit Status"
++++
 
 During a [recent discussion on two factor authentication](https://github.com/heroku/hk/issues/171), the topic of command exit statuses came up. For the shell-uninitiated, an exit status is an integer between 0 and 255 returned when a program exits, usually readable by running `echo $?`. This is in effect one of the key pieces of the API which shells use to communicate with the programs that they run.
 

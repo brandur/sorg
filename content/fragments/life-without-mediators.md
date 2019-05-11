@@ -1,8 +1,8 @@
----
-title: Life without mediators
-published_at: 2016-04-27T16:11:28Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-04-27T16:11:28Z
+title = "Life without mediators"
++++
 
 In a small program, the permissiveness that makes Ruby and other dynamic
 languages famous acts as a catalyst that hugely accelerates its development,

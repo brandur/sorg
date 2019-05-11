@@ -22,7 +22,7 @@ import (
 	"github.com/brandur/modulir/modules/mfile"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mtoc"
-	"github.com/brandur/modulir/modules/myaml"
+	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/sassets"
 	"github.com/brandur/sorg/modules/satom"
 	"github.com/brandur/sorg/modules/scommon"
@@ -299,21 +299,21 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Pages (read `_meta.yaml`)
+	// Pages (read `_meta.toml`)
 	//
 
 	var pagesChanged bool
 
 	{
-		c.AddJob("pages _meta.yaml", func() (bool, error) {
-			source := c.SourceDir + "/pages/_meta.yaml"
+		c.AddJob("pages _meta.toml", func() (bool, error) {
+			source := c.SourceDir + "/pages/_meta.toml"
 
 			if !c.Changed(source) && !c.Forced() {
 				return false, nil
 			}
 
-			err := myaml.ParseFile(
-				c, c.SourceDir+"/pages/_meta.yaml", &pages)
+			err := mtoml.ParseFile(
+				c, c.SourceDir+"/pages/_meta.toml", &pages)
 			if err != nil {
 				return true, err
 			}
@@ -356,21 +356,21 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Photos (read `_meta.yaml`)
+	// Photos (read `_meta.toml`)
 	//
 
 	var photosChanged bool
 
 	{
-		c.AddJob("photos _meta.yaml", func() (bool, error) {
-			source := c.SourceDir + "/content/photographs/_meta.yaml"
+		c.AddJob("photos _meta.toml", func() (bool, error) {
+			source := c.SourceDir + "/content/photographs/_meta.toml"
 
 			if !c.Changed(source) && !c.Forced() {
 				return false, nil
 			}
 
 			var photosWrapper PhotoWrapper
-			err := myaml.ParseFile(c, source, &photosWrapper)
+			err := mtoml.ParseFile(c, source, &photosWrapper)
 			if err != nil {
 				return true, err
 			}
@@ -412,7 +412,7 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Sequences (read `_meta.yaml`)
+	// Sequences (read `_meta.toml`)
 	//
 
 	sequencesChanged := make(map[string]bool)
@@ -434,9 +434,9 @@ func build(c *modulir.Context) []error {
 		for _, s := range sources {
 			sequencePath := s
 
-			name := fmt.Sprintf("sequence %s _meta.yaml", filepath.Base(sequencePath))
+			name := fmt.Sprintf("sequence %s _meta.toml", filepath.Base(sequencePath))
 			c.AddJob(name, func() (bool, error) {
-				source := sequencePath + "/_meta.yaml"
+				source := sequencePath + "/_meta.toml"
 
 				if !c.Changed(source) && !c.Forced() {
 					return false, nil
@@ -445,7 +445,7 @@ func build(c *modulir.Context) []error {
 				slug := path.Base(sequencePath)
 
 				var photosWrapper PhotoWrapper
-				err = myaml.ParseFile(c, source, &photosWrapper)
+				err = mtoml.ParseFile(c, source, &photosWrapper)
 				if err != nil {
 					return true, err
 				}
@@ -700,49 +700,49 @@ func build(c *modulir.Context) []error {
 type Article struct {
 	// Attributions are any attributions for content that may be included in
 	// the article (like an image in the header for example).
-	Attributions string `yaml:"attributions"`
+	Attributions string `toml:"attributions,omitempty"`
 
-	// Content is the HTML content of the article. It isn't included as YAML
+	// Content is the HTML content of the article. It isn't included as TOML
 	// frontmatter, and is rather split out of an article's Markdown file,
 	// rendered, and then added separately.
-	Content string `yaml:"-"`
+	Content string `toml:"-"`
 
 	// Draft indicates that the article is not yet published.
-	Draft bool `yaml:"-"`
+	Draft bool `toml:"-"`
 
 	// HNLink is an optional link to comments on Hacker News.
-	HNLink string `yaml:"hn_link"`
+	HNLink string `toml:"hn_link,omitempty"`
 
 	// Hook is a leading sentence or two to succinctly introduce the article.
-	Hook string `yaml:"hook"`
+	Hook string `toml:"hook"`
 
 	// HookImageURL is the URL for a hook image for the article (to be shown on
 	// the article index) if one was found.
-	HookImageURL string `yaml:"-"`
+	HookImageURL string `toml:"-"`
 
 	// Image is an optional image that may be included with an article.
-	Image string `yaml:"image"`
+	Image string `toml:"image,omitempty"`
 
 	// Location is the geographical location where this article was written.
-	Location string `yaml:"location"`
+	Location string `toml:"location,omitempty"`
 
 	// PublishedAt is when the article was published.
-	PublishedAt *time.Time `yaml:"published_at"`
+	PublishedAt *time.Time `toml:"published_at"`
 
 	// Slug is a unique identifier for the article that also helps determine
 	// where it's addressable by URL.
-	Slug string `yaml:"-"`
+	Slug string `toml:"-"`
 
 	// Tags are the set of tags that the article is tagged with.
-	Tags []Tag `yaml:"tags"`
+	Tags []Tag `toml:"tags,omitempty"`
 
 	// Title is the article's title.
-	Title string `yaml:"title"`
+	Title string `toml:"title"`
 
 	// TOC is the HTML rendered table of contents of the article. It isn't
-	// included as YAML frontmatter, but rather calculated from the article's
+	// included as TOML frontmatter, but rather calculated from the article's
 	// content, rendered, and then added separately.
-	TOC string `yaml:"-"`
+	TOC string `toml:"-"`
 }
 
 // publishingInfo produces a brief spiel about publication which is intended to
@@ -787,37 +787,37 @@ func (a *Article) validate(source string) error {
 type Fragment struct {
 	// Attributions are any attributions for content that may be included in
 	// the article (like an image in the header for example).
-	Attributions string `yaml:"attributions"`
+	Attributions string `toml:"attributions,omitempty"`
 
-	// Content is the HTML content of the fragment. It isn't included as YAML
+	// Content is the HTML content of the fragment. It isn't included as TOML
 	// frontmatter, and is rather split out of an fragment's Markdown file,
 	// rendered, and then added separately.
-	Content string `yaml:"-"`
+	Content string `toml:"-"`
 
 	// Draft indicates that the fragment is not yet published.
-	Draft bool `yaml:"-"`
+	Draft bool `toml:"-"`
 
 	// HNLink is an optional link to comments on Hacker News.
-	HNLink string `yaml:"hn_link"`
+	HNLink string `toml:"hn_link,omitempty"`
 
 	// Hook is a leading sentence or two to succinctly introduce the fragment.
-	Hook string `yaml:"hook"`
+	Hook string `toml:"hook"`
 
 	// Image is an optional image that may be included with a fragment.
-	Image string `yaml:"image"`
+	Image string `toml:"image,omitempty"`
 
 	// Location is the geographical location where this article was written.
-	Location string `yaml:"location"`
+	Location string `toml:"location,omitempty"`
 
 	// PublishedAt is when the fragment was published.
-	PublishedAt *time.Time `yaml:"published_at"`
+	PublishedAt *time.Time `toml:"published_at"`
 
 	// Slug is a unique identifier for the fragment that also helps determine
 	// where it's addressable by URL.
-	Slug string `yaml:"-"`
+	Slug string `toml:"-"`
 
 	// Title is the fragment's title.
-	Title string `yaml:"title"`
+	Title string `toml:"title"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -852,45 +852,45 @@ func (f *Fragment) validate(source string) error {
 type Page struct {
 	// BodyClass is the CSS class that will be assigned to the body tag when
 	// the page is rendered.
-	BodyClass string `yaml:"body_class"`
+	BodyClass string `toml:"body_class"`
 
 	// Title is the HTML title that will be assigned to the page when it's
 	// rendered.
-	Title string `yaml:"title"`
+	Title string `toml:"title"`
 }
 
 // Photo is a photograph.
 type Photo struct {
 	// Description is the description of the photograph.
-	Description string `yaml:"description"`
+	Description string `toml:"description"`
 
 	// KeepInHomeRotation is a special override for photos I really like that
 	// keeps them in the home page's random rotation. The rotation then
 	// consists of either a recent photo or one of these explicitly selected
 	// old ones.
-	KeepInHomeRotation bool `yaml:"keep_in_home_rotation"`
+	KeepInHomeRotation bool `toml:"keep_in_home_rotation"`
 
 	// OriginalImageURL is the location where the original-sized version of the
 	// photo can be downloaded from.
-	OriginalImageURL string `yaml:"original_image_url"`
+	OriginalImageURL string `toml:"original_image_url"`
 
 	// OccurredAt is UTC time when the photo was published.
-	OccurredAt *time.Time `yaml:"occurred_at"`
+	OccurredAt *time.Time `toml:"ocurred_at"`
 
 	// Slug is a unique identifier for the photo. Originally these were
 	// generated from Flickr, but I've since just started reusing them for
 	// filenames.
-	Slug string `yaml:"slug"`
+	Slug string `toml:"slug"`
 
 	// Title is the title of the photograph.
-	Title string `yaml:"title"`
+	Title string `toml:"title"`
 }
 
 // PhotoWrapper is a data structure intended to represent the data structure at
-// the top level of photograph data file `content/photographs/_meta.yaml`.
+// the top level of photograph data file `content/photographs/_meta.toml`.
 type PhotoWrapper struct {
 	// Photos is a collection of photos within the top-level wrapper.
-	Photos []*Photo `yaml:"photographs"`
+	Photos []*Photo `toml:"photographs"`
 }
 
 // Tag is a symbol assigned to an article to categorize it.
@@ -1242,7 +1242,7 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 	}
 
 	var article Article
-	data, err := myaml.ParseFileFrontmatter(c, source, &article)
+	data, err := mtoml.ParseFileFrontmatter(c, source, &article)
 	if err != nil {
 		return true, err
 	}
@@ -1400,7 +1400,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 	}
 
 	var fragment Fragment
-	data, err := myaml.ParseFileFrontmatter(c, source, &fragment)
+	data, err := mtoml.ParseFileFrontmatter(c, source, &fragment)
 	if err != nil {
 		return true, err
 	}

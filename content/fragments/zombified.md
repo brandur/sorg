@@ -1,9 +1,8 @@
----
-title: Zombified
-published_at: 2016-12-29T05:10:25Z
-hook: On duck typing, zombie processes, and language APIs that are unsafe by
-  default.
----
++++
+hook = "On duck typing, zombie processes, and language APIs that are unsafe by default."
+published_at = 2016-12-29T05:10:25Z
+title = "Zombified"
++++
 
 I recently moved my media backups over to a Ruby script that wraps [rclone]'s
 sync command. The script partitions rclone invocations onto different threads

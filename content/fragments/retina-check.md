@@ -1,9 +1,8 @@
----
-title: Retina check
-published_at: 2016-08-22T06:02:48Z
-hook: A CI trick for some accountability around retina assets. Set exclusion in
-  Bash.
----
++++
+hook = "A CI trick for some accountability around retina assets. Set exclusion in Bash."
+published_at = 2016-08-22T06:02:48Z
+title = "Retina check"
++++
 
 I try to put in retina versions of any JPGs or PNGs that I upload to this site
 for higher definition screens. These high resolution assets are given a

@@ -1,9 +1,9 @@
----
-title: Your Programming Language Does Matter
-location: San Francisco
-published_at: 2018-01-28T18:52:56Z
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2018-01-28T18:52:56Z
+title = "Your Programming Language Does Matter"
++++
 
 Years ago, I transitioned from a job of three years where
 I'd worked on C# to one where I'd be working with PHP full

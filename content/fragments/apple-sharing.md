@@ -1,9 +1,8 @@
----
-title: Sharing with iCloud Drive and iBooks
-published_at: 2017-04-01T16:24:18Z
-hook: Using iCloud Drive and iBooks to synchronize books
-  and PDFs between all your devices.
----
++++
+hook = "Using iCloud Drive and iBooks to synchronize books and PDFs between all your devices."
+published_at = 2017-04-01T16:24:18Z
+title = "Sharing with iCloud Drive and iBooks"
++++
 
 A chore that I often find myself doing is moving PDFs from
 a computer to my iPad. It sounds like it should be simple,
@@ -56,4 +55,3 @@ is checked in both cases).
 ![Mac OS](/assets/images/fragments/apple-sharing/icloud-macos.png)
 
 ![iOS](/assets/images/fragments/apple-sharing/icloud-ios.png)
-

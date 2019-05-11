@@ -1,7 +1,7 @@
----
-title: Japan
-published_at: 2017-12-24T06:07:33Z
----
++++
+published_at = 2017-12-24T06:07:33Z
+title = "Japan"
++++
 
 ![Osaka](/assets/images/passages/002-japan/osaka@2x.jpg)
 

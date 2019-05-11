@@ -1,11 +1,9 @@
----
-title: Using Canonical Log Lines for Online Visibility
-published_at: 2016-11-26T01:36:49Z
-hook: A lightweight and technology agnostic operational
-  technique for easy and near realtime visibility and live
-  querying into production systems.
-location: San Francisco
----
++++
+hook = "A lightweight and technology agnostic operational technique for easy and near realtime visibility and live querying into production systems."
+location = "San Francisco"
+published_at = 2016-11-26T01:36:49Z
+title = "Using Canonical Log Lines for Online Visibility"
++++
 
 Over the next few weeks I want to post a few articles about
 some of my favorite operational tricks that I've seen while

@@ -1,8 +1,8 @@
----
-title: Week three
-published_at: 2016-06-27T17:07:50Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-27T17:07:50Z
+title = "Week three"
++++
 
 Previously, see [week one](/fragments/one-week) and [week
 two](/fragments/two-weeks) of my "drink less beer, get more exercise, eat more

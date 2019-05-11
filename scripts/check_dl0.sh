@@ -8,7 +8,7 @@
 # part of a pre-commit hook to help prevent errors. (See `scripts/pre-commit`.)
 #
 
-PHOTOGRAPHS_DATA="content/photographs/_meta.yaml"
+PHOTOGRAPHS_DATA="content/photographs/_meta.toml"
 
 if grep "?dl=0" "$PHOTOGRAPHS_DATA"; then
     echo "!!! found '?dl=0' in '$PHOTOGRAPHS_DATA'"

@@ -1,9 +1,9 @@
----
-hook: When the use of an anti-pattern is considered beneficial.
-location: San Francisco
-published_at: 2014-02-06T15:31:37Z
-title: Healthy Anti-patterns
----
++++
+hook = "When the use of an anti-pattern is considered beneficial."
+location = "San Francisco"
+published_at = 2014-02-06T15:31:37Z
+title = "Healthy Anti-patterns"
++++
 
 In [Tracing Request IDs](/request-ids), I briefly talked about the possibility of making a request ID easily available from anywhere in an app through a pattern called the [_request store_](https://github.com/steveklabnik/request_store). It's a simple construct that stores data into Ruby's thread-local context:
 

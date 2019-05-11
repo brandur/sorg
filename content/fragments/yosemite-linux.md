@@ -1,8 +1,8 @@
----
-title: Yosemite & Linux
-published_at: 2014-06-28T20:18:22Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-06-28T20:18:22Z
+title = "Yosemite & Linux"
++++
 
 I caught my first in-person glimpse of Apple's new OS "Yosemite" the other day.
 As expected for some time now and confirmed during the latest WWDC keynote,

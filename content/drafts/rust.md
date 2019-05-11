@@ -1,9 +1,9 @@
----
-hook: Notes on Rust after spending a few weeks with it.
-location: San Francisco
-published_at: 2016-11-08T04:56:03Z
-title: Reflections on Rust
----
++++
+hook = "Notes on Rust after spending a few weeks with it."
+location = "San Francisco"
+published_at = 2016-11-08T04:56:03Z
+title = "Reflections on Rust"
++++
 
 I spent the last few weeks learning Rust so that I could use it to build a
 Redis module. The result was [redis-cell][redis-cell] and a lot of opinions on

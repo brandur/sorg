@@ -1,8 +1,8 @@
----
-title: AWS Certificate Manager
-published_at: 2016-01-21T20:47:11Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-21T20:47:11Z
+title = "AWS Certificate Manager"
++++
 
 Yesterday Amazon shipped their best addition to the AWS toolchain in a long
 time in form of the [AWS Certificate Manager][blog]. The service issues TLS/SSL

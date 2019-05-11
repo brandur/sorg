@@ -1,9 +1,8 @@
----
-title: The subtleties of API contracts, or how enabling HTTP/2 broke Go clients
-published_at: 2018-08-10T13:46:56Z
-hook: A lesson in how API contracts can extend beyond
-  function signatures.
----
++++
+hook = "A lesson in how API contracts can extend beyond function signatures."
+published_at = 2018-08-10T13:46:56Z
+title = "The subtleties of API contracts, or how enabling HTTP/2 broke Go clients"
++++
 
 A few weeks ago, having finally retired some old crypto
 needed to support pre-1.2 TLS, we realized we had an

@@ -1,10 +1,9 @@
----
-hook: A few words on the Unix philosophy of building small programs that do one thing
-  well, and compose for comprehensive functionality.
-location: San Francisco
-published_at: 2014-12-12T17:20:30Z
-title: Small, Sharp Tools
----
++++
+hook = "A few words on the Unix philosophy of building small programs that do one thing well, and compose for comprehensive functionality."
+location = "San Francisco"
+published_at = 2014-12-12T17:20:30Z
+title = "Small, Sharp Tools"
++++
 
 Upon joining Heroku a few years back, one of the maxims that I heard cited frequently was that of building _small, sharp tools_, the idea of building minimalist, composable programs that worked in concert to a degree of effectiveness that was more than the sum of their parts. The classic example of such a system was the Unix shell, which contains a set of small utilities that provide a highly effective operating environment. Despite its origin in Unix, a number of people at Heroku including a founder and a few lead engineers had found that it lent itself quite naturally to building modern web platforms.
 

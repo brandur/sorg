@@ -1,8 +1,8 @@
----
-title: Safeway justice
-published_at: 2015-10-18T19:51:33Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-10-18T19:51:33Z
+title = "Safeway justice"
++++
 
 One reality of living in San Francisco is that you get to witness every
 possible form of anti-social behavior that you can imagine; often on a daily

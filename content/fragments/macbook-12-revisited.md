@@ -1,8 +1,8 @@
----
-title: The 12" MacBook revisited
-published_at: 2015-06-14T04:33:27Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-06-14T04:33:27Z
+title = "The 12\" MacBook revisited"
++++
 
 I recently visited Europe for two weeks, and I used my 12" MacBook for the
 entirety of the trip. When I returned and picked up the MacBook Air that I use

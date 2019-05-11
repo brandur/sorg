@@ -1,9 +1,9 @@
----
-title: Structured Logging Revisited
-published_at: 2017-12-29T21:36:51Z
-location: Calgary
-hook: TODO
----
++++
+hook = "TODO"
+location = "Calgary"
+published_at = 2017-12-29T21:36:51Z
+title = "Structured Logging Revisited"
++++
 
 Structured logging looks something like this:
 

@@ -1,8 +1,8 @@
----
-title: WGT
-published_at: 2014-06-29T20:01:27Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-06-29T20:01:27Z
+title = "WGT"
++++
 
 The Wave-Gotik-Treffen is a festival that's been happening in Leipzig, Germany
 for the last 23 years. It's a celebration of goth culture, and along with its

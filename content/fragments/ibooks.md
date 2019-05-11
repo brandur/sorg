@@ -1,8 +1,8 @@
----
-title: iBooks & Dropbox
-published_at: 2014-09-21T17:07:10Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-09-21T17:07:10Z
+title = "iBooks & Dropbox"
++++
 
 After recently starting the grind through David Foster Wallace's 1100 page
 magnum opus _Infinite Jest_ and a new ritual of trying to make it through every

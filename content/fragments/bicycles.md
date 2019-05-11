@@ -1,8 +1,8 @@
----
-title: Bicycles
-published_at: 2014-06-06T07:20:15Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-06-06T07:20:15Z
+title = "Bicycles"
++++
 
 It's Sausalito on a warm Saturday afternoon. The sun is shining and a stream of
 bicyclists coasts down the hill into town along the bay-side road. Each cranes

@@ -1,9 +1,8 @@
----
-title: Deep work & concentration
-published_at: 2016-10-19T13:28:39Z
-hook: On the modern age's ongoing assault on our concentration and thinking
-  about problems in depth.
----
++++
+hook = "On the modern age's ongoing assault on our concentration and thinking about problems in depth."
+published_at = 2016-10-19T13:28:39Z
+title = "Deep work & concentration"
++++
 
 I good article came up on HN yesterday on the [subject of distraction and "deep
 work"][deep-work]. A choice re-quote:

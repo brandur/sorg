@@ -1,11 +1,10 @@
----
-hook: When building an app against a web API, do you pull in their SDK or just make
-  raw HTTP calls? Here are a few reasons that I avoid SDKs when I can.
-location: San Francisco
-published_at: 2014-02-03T14:46:52Z
-title: Why I Don't Want Your SDK in Production
-hn_link: https://news.ycombinator.com/item?id=7177887
----
++++
+hn_link = "https://news.ycombinator.com/item?id=7177887"
+hook = "When building an app against a web API, do you pull in their SDK or just make raw HTTP calls? Here are a few reasons that I avoid SDKs when I can."
+location = "San Francisco"
+published_at = 2014-02-03T14:46:52Z
+title = "Why I Don't Want Your SDK in Production"
++++
 
 Recently the topic of whether it was better practice to use an SDK or basic HTTP calls when interacting with the API of a foreign service came up on [Programmable Web](http://blog.programmableweb.com/2013/10/04/when-sdks-are-better-than-apis/) and on [Traffic and Weather](http://trafficandweather.io/posts/2013/12/27/episode-20-im-going-to-punch-a-wall). The question mostly depends on the premise that many services provide modern RESTful APIs whose endpoints do a good job of encapsuling basic actions that users are interested in, and very little specialized logic needs to be implemented client-side, keeping even direct HTTP calls relatively simple. The trade-off then ends up being taking on an extra dependency in return for an abstraction layer in the language of your choice.
 

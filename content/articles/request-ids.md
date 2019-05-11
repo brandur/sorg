@@ -1,10 +1,9 @@
----
-hook: A simple pattern for tracing requests across a service-oriented architecture
-  by injecting a UUID into the events that they produce.
-location: San Francisco
-published_at: 2013-06-02T17:21:43Z
-title: Tracing Request IDs
----
++++
+hook = "A simple pattern for tracing requests across a service-oriented architecture by injecting a UUID into the events that they produce."
+location = "San Francisco"
+published_at = 2013-06-02T17:21:43Z
+title = "Tracing Request IDs"
++++
 
 Log into Heroku's [Dashboard](https://dashboard.heroku.com) and you'll hit three different components that work together to usher you in and show you an app list, run a `git push heroku master` and that number is more like six. These kinds of service-oriented patterns produce all kinds of logistical benefits, but debugging such a system at production scale can get messy.
 

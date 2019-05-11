@@ -1,8 +1,8 @@
----
-title: Stripe webhook signatures & DX
-published_at: 2017-05-10T02:59:44Z
-hook: TODO
----
++++
+hook = "TODO"
+published_at = 2017-05-10T02:59:44Z
+title = "Stripe webhook signatures & DX"
++++
 
 I'm really excited to say that last week we released
 support for signed webhooks. This has been a feature that

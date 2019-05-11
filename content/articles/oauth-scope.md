@@ -1,10 +1,9 @@
----
-hook: Designing scope for Heroku OAuth, and a brief tour of other implementations
-  on the web.
-location: San Francisco
-published_at: 2013-07-23T14:54:44Z
-title: Scoping and OAuth 2
----
++++
+hook = "Designing scope for Heroku OAuth, and a brief tour of other implementations on the web."
+location = "San Francisco"
+published_at = 2013-07-23T14:54:44Z
+title = "Scoping and OAuth 2"
++++
 
 Yesterday marked the beta release of [OAuth for the Heroku Platform
 API](https://blog.heroku.com/archives/2013/7/22/oauth-for-platform-api-in-public-beta),

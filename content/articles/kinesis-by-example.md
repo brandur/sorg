@@ -1,9 +1,9 @@
----
-hook: Splitting and merging in action.
-location: San Francisco
-published_at: 2015-03-19T07:27:45Z
-title: Kinesis Shard Splitting & Merging by Example
----
++++
+hook = "Splitting and merging in action."
+location = "San Francisco"
+published_at = 2015-03-19T07:27:45Z
+title = "Kinesis Shard Splitting & Merging by Example"
++++
 
 The Kinesis developer guide covers shard [splitting and merging from a high-level](http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-resharding.html), but I find that it's occasionally helpful to help solidify these types of advanced topics with examples. Here we'll walk through what the most basic splitting and merging operations look like on a Kinesis stream to get a better feel for the concepts.
 

@@ -1,11 +1,11 @@
----
-hook: Some of my favorite practices and ideas from almost four years at Heroku.
-image: "/assets/images/heroku-values/heroku-values.jpg"
-location: San Francisco
-published_at: 2015-11-05T06:20:16Z
-title: My Heroku Values
-hn_link: https://news.ycombinator.com/item?id=14286143
----
++++
+hn_link = "https://news.ycombinator.com/item?id=14286143"
+hook = "Some of my favorite practices and ideas from almost four years at Heroku."
+image = "/assets/images/heroku-values/heroku-values.jpg"
+location = "San Francisco"
+published_at = 2015-11-05T06:20:16Z
+title = "My Heroku Values"
++++
 
 In the spirit of [Adam Wiggins' inspiring list of Heroku
 values][wiggins-values] which was published when he left the company that he

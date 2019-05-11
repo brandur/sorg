@@ -1,8 +1,8 @@
----
-title: Week two
-published_at: 2016-06-20T16:30:25Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-06-20T16:30:25Z
+title = "Week two"
++++
 
 I previously wrote about my results after [one week](/fragments/one-week) of
 above average exercise and paying a closer eye to nutrition. Here's week two:

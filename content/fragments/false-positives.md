@@ -1,12 +1,9 @@
----
-title: "False positives in UI design: when small buttons
-    are better than big ones"
-published_at: 2019-04-27T16:40:42Z
-image: /assets/images/fragments/false-positives/vista.jpg
-hook: Why smaller buttons on phones produce a better
-  lifetime experience, even if their learning curve is a
-  little more challenging.
----
++++
+hook = "Why smaller buttons on phones produce a better lifetime experience, even if their learning curve is a little more challenging."
+image = "/assets/images/fragments/false-positives/vista.jpg"
+published_at = 2019-04-27T16:40:42Z
+title = "False positives in UI design: when small buttons are better than big ones"
++++
 
 The iPhone X is a near perfectly designed device. I've
 owned mine a year and a half now, and I'd be hard pressed

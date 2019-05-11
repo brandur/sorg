@@ -1,9 +1,8 @@
----
-title: Learning about language safety from Zcoin
-published_at: 2017-03-07T18:11:03Z
-hook: Is it irresponsible to start projects in C/C++?
-  Probably, yes.
----
++++
+hook = "Is it irresponsible to start projects in C/C++? Probably, yes."
+published_at = 2017-03-07T18:11:03Z
+title = "Learning about language safety from Zcoin"
++++
 
 A [recent bug in Zcoin][bug] allowed an attacker to mint
 ~550,000 new coins, the theoretical equivalent to

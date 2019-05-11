@@ -1,16 +1,11 @@
----
-hook: How the page almost transitioned successfully to the
-  digital world, but is in decline in new media. The
-  lessons that we can learn from this age-old design
-  element, and why we should hope for its re-emergence.
-image: "/assets/images/page/page.jpg"
-location: San Francisco
-published_at: 2014-01-26T18:56:46Z
-title: Lamenting the Death of the Page
-attributions: Header image by
-  <strong><a href="https://www.flickr.com/photos/67499195@N00/717747166">Andreas
-  Levers</a></strong>. Licensed under Creative Commons BY-NC 2.0.
----
++++
+attributions = "Header image by <strong><a href=\"https://www.flickr.com/photos/67499195@N00/717747166\">Andreas Levers</a></strong>. Licensed under Creative Commons BY-NC 2.0."
+hook = "How the page almost transitioned successfully to the digital world, but is in decline in new media. The lessons that we can learn from this age-old design element, and why we should hope for its re-emergence."
+image = "/assets/images/page/page.jpg"
+location = "San Francisco"
+published_at = 2014-01-26T18:56:46Z
+title = "Lamenting the Death of the Page"
++++
 
 Against all odds, a very useful usability pattern emerged from the constraints of the physical world around the time when written language was just taking shape: the page. Its size and form have changed throughout history to arrive at common formats that that we'd recognize today: US Letter measuring 8.5" x 11", or the 4.25" x 6.75" size typically used for mass market paperbacks.
 

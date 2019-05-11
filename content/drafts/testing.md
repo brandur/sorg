@@ -1,9 +1,9 @@
----
-title: Building a Great Test Suite
-published_at: 2018-12-22T15:17:40Z
-location: Calgary
-hook: TODO
----
++++
+hook = "TODO"
+location = "Calgary"
+published_at = 2018-12-22T15:17:40Z
+title = "Building a Great Test Suite"
++++
 
 I've always had opinions on how to write good test tests
 for software, but I never expected to care about it quite

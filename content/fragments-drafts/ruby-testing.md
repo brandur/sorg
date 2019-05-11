@@ -1,8 +1,8 @@
----
-title: Ruby testing
-published_at: 2016-10-19T01:45:15Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-10-19T01:45:15Z
+title = "Ruby testing"
++++
 
 Writing Ruby code with no tests is as safe as jumping out
 an airplane with a parachute packed by your untrained,

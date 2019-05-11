@@ -1,10 +1,9 @@
----
-title: "Pseudo-HTML and Pidgin CSS: Building an Email Newsletter"
-published_at: 2017-08-02T14:52:31Z
-hook: Building a toolchain for sending a newsletter, and
-  the dismal state of HTML and CSS in email.
-location: San Francisco
----
++++
+hook = "Building a toolchain for sending a newsletter, and the dismal state of HTML and CSS in email."
+location = "San Francisco"
+published_at = 2017-08-02T14:52:31Z
+title = "Pseudo-HTML and Pidgin CSS: Building an Email Newsletter"
++++
 
 After a recent trip to Portland, I decided to try writing a
 newsletter. I don't post on Facebook or other social very

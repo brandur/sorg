@@ -1,8 +1,8 @@
----
-title: Turning points
-published_at: 2016-01-20T08:53:16Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-20T08:53:16Z
+title = "Turning points"
++++
 
 Dating in your 30s is a contact sport. The incentive for both parties lies in
 the early detection of a relationship that doesn't have long-term viability,

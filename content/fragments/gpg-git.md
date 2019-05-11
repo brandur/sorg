@@ -1,8 +1,8 @@
----
-title: GPG + HTTP git
-published_at: 2014-12-11T21:48:06Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-12-11T21:48:06Z
+title = "GPG + HTTP git"
++++
 
 Along with a few other protocols like SSH, Git can communicate with a remote
 over HTTP. Git's HTTP transport uses basic authentication to identify a user,

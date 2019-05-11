@@ -1,8 +1,8 @@
----
-title: Where are all the new great companies?
-published_at: 2016-07-29T15:32:06Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-29T15:32:06Z
+title = "Where are all the new great companies?"
++++
 
 While listening to a few talks and panels on developer tools this week, it
 struck me that despite quickly closing in on 2017, when it comes to companies

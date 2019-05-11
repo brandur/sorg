@@ -1,12 +1,10 @@
----
-title: "Speed and Stability: Why Go is a Great Fit for
-  Lambda"
-location: San Francisco
-published_at: 2018-01-17T16:31:34Z
-hook: Why Go's stability and simple deployments is a
-  good fit for a serverless environment.
-hn_link: https://news.ycombinator.com/item?id=16169592
----
++++
+hn_link = "https://news.ycombinator.com/item?id=16169592"
+hook = "Why Go's stability and simple deployments is a good fit for a serverless environment."
+location = "San Francisco"
+published_at = 2018-01-17T16:31:34Z
+title = "Speed and Stability: Why Go is a Great Fit for Lambda"
++++
 
 A few days ago in a move foreshadowed by a hint at Amazons'
 re:Invent conference late last year, [AWS released support

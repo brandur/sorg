@@ -1,9 +1,9 @@
----
-title: "Time and Isolation: Divergent Ecologies in Software"
-published_at: 2017-07-31T17:47:39Z
-hook: TODO
-location: San Francisco
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2017-07-31T17:47:39Z
+title = "Time and Isolation: Divergent Ecologies in Software"
++++
 
 This isn't my usual technical piece. It's more of a short
 parable and a few opinions that I've developed after having

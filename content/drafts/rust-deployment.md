@@ -1,10 +1,9 @@
----
-title: Productionizing a Rust Web Stack and Deploying it to
-  Kubernetes
-published_at: 2018-03-25T17:10:24Z
-hook: TODO
-location: San Francisco
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2018-03-25T17:10:24Z
+title = "Productionizing a Rust Web Stack and Deploying it to Kubernetes"
++++
 
 ## Structuring a program (#structure)
 
@@ -279,4 +278,4 @@ spec:
 [musl]: https://en.wikipedia.org/wiki/Musl
 [rust-musl-builder]: https://github.com/emk/rust-musl-builder
 [rustls]: https://github.com/ctz/rustls
-[slog]: 
+[slog]:

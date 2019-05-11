@@ -1,8 +1,8 @@
----
-title: The iPhone X
-published_at: 2017-12-07T16:01:46Z
-hook: TODO
----
++++
+hook = "TODO"
+published_at = 2017-12-07T16:01:46Z
+title = "The iPhone X"
++++
 
 I wasn't sure if I'd like the iPhone X, but after the
 recent release of iOS 11 slowed my iPhone 6 to a crawl and

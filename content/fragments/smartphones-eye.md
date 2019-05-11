@@ -1,13 +1,10 @@
----
-title: The rise of the smartphone's eye
-published_at: 2017-03-31T18:04:30Z
-image: /assets/images/fragments/smartphones-eye/under-the-bridge.jpg
-hook: Musings on the accelerating development of smartphone
-  cameras.
-attributions: Photo by <a
-  href="https://twitter.com/keiko713">Keiko Oda</a> and
-  republished with permission.
----
++++
+attributions = "Photo by <a href=\"https://twitter.com/keiko713\">Keiko Oda</a> and republished with permission."
+hook = "Musings on the accelerating development of smartphone cameras."
+image = "/assets/images/fragments/smartphones-eye/under-the-bridge.jpg"
+published_at = 2017-03-31T18:04:30Z
+title = "The rise of the smartphone's eye"
++++
 
 A few months back a friend and I were doing walk around San
 Francisco, and ended up walking the whole coastline from

@@ -1,9 +1,8 @@
----
-title: Understand deeply
-published_at: 2017-01-18T16:03:01Z
-hook: Aim to be an engineer and not just a user by learning
-  in depth.
----
++++
+hook = "Aim to be an engineer and not just a user by learning in depth."
+published_at = 2017-01-18T16:03:01Z
+title = "Understand deeply"
++++
 
 One of the most notable parts about technology workers in
 Silicon Valley is the depth which they're willing to go to

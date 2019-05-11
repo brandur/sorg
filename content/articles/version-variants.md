@@ -1,10 +1,9 @@
----
-hook: A simple mechanism for managing changes to a web API and to help cheapen the
-  disposal of prototypes.
-location: San Francisco
-published_at: 2015-02-17T22:13:48Z
-title: Version Variants
----
++++
+hook = "A simple mechanism for managing changes to a web API and to help cheapen the disposal of prototypes."
+location = "San Francisco"
+published_at = 2015-02-17T22:13:48Z
+title = "Version Variants"
++++
 
 An old problem with APIs of all kinds is that they're difficult to change. Although an API can be expanded without too much trouble, it becomes costly to remove any fields that may have been present previously in case some consumer has come to be dependent on them. As companies like Twitter found out, breaking API consumers on a consistent basis is the fastest way to foster a disparaging development community and a long-lasting infamy as an unreliable provider.
 

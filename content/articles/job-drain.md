@@ -1,12 +1,10 @@
----
-title: Transactionally Staged Job Drains in Postgres
-published_at: 2017-09-20T14:58:14Z
-location: Calgary
-hook: Building a robust background worker system that
-  leverages transactional isolation to never work a job too
-  early, and transactional durability to never let one drop.
-hn_link: https://news.ycombinator.com/item?id=15294722
----
++++
+hn_link = "https://news.ycombinator.com/item?id=15294722"
+hook = "Building a robust background worker system that leverages transactional isolation to never work a job too early, and transactional durability to never let one drop."
+location = "Calgary"
+published_at = 2017-09-20T14:58:14Z
+title = "Transactionally Staged Job Drains in Postgres"
++++
 
 Background jobs are one of the most common patterns in web
 programming, and for good reason. Slow API calls and other

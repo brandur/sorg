@@ -1,8 +1,8 @@
----
-title: Accumulation
-published_at: 2016-02-23T21:06:03Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-02-23T21:06:03Z
+title = "Accumulation"
++++
 
 I really enjoyed [this article on "stuff"][gifts] from Derek Sivers. Every time
 I look around my apartment with a critical eye, I'm absolutely floored by the

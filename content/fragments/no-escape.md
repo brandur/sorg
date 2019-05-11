@@ -1,8 +1,8 @@
----
-title: No escape
-published_at: 2016-11-19T04:36:05Z
-hook: Curbing the use of the Escape key in Vim.
----
++++
+hook = "Curbing the use of the Escape key in Vim."
+published_at = 2016-11-19T04:36:05Z
+title = "No escape"
++++
 
 A few weeks ago Apple announced their new MacBook Pro. To make way for their
 latest gimmick (the TouchBar) they removed the row of the keyboard that

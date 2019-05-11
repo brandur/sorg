@@ -1,9 +1,9 @@
----
-title: Progressive Enhancement in Product Design
-published_at: 2017-12-13T16:37:21Z
-location: San Francisco
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2017-12-13T16:37:21Z
+title = "Progressive Enhancement in Product Design"
++++
 
 At re:Invent this year, Amazon announced the release of
 [Fargate][fargate], a product that aims for the panacea of

@@ -1,8 +1,8 @@
----
-title: us-east-1
-published_at: 2016-07-20T04:48:24Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-20T04:48:24Z
+title = "us-east-1"
++++
 
 I have fond memories of operating Heroku in us-east-1. Be it the electrical
 storm of 2012, or the ELB failures of Christmas Eve, the region is plagued by

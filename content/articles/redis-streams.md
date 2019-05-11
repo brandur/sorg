@@ -1,12 +1,10 @@
----
-title: Redis Streams and the Unified Log
-published_at: 2017-11-08T15:15:31Z
-location: San Francisco
-hook: Building a log-based architecture that's fast,
-  efficient, and resilient on the new stream data structure
-  in Redis.
-hn_link: https://news.ycombinator.com/item?id=15653544
----
++++
+hn_link = "https://news.ycombinator.com/item?id=15653544"
+hook = "Building a log-based architecture that's fast, efficient, and resilient on the new stream data structure in Redis."
+location = "San Francisco"
+published_at = 2017-11-08T15:15:31Z
+title = "Redis Streams and the Unified Log"
++++
 
 Years ago an article came out of LinkedIn [about the
 unified log][thelog], a useful architectural pattern for

@@ -1,8 +1,8 @@
----
-title: CloudFront indexes
-published_at: 2016-07-18T16:34:33Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-18T16:34:33Z
+title = "CloudFront indexes"
++++
 
 Some of us are vain enough to want to be able to use extensionless filenames
 when hosting a static site through CloudFront. I previously wrote about [a

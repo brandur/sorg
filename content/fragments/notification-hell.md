@@ -1,8 +1,8 @@
----
-title: Notification hell
-published_at: 2016-01-10T03:18:58Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-10T03:18:58Z
+title = "Notification hell"
++++
 
 Recently _The Atlantic_ published an article titled [The Triump of
 Email][atlantic]. It starts with a good history of e-mail and then goes on to

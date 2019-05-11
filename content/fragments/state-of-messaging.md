@@ -1,9 +1,8 @@
----
-title: The state of messaging
-published_at: 2017-01-17T15:33:00Z
-hook: It's 2017, and the state of instant messaging is in
-  worse shape than ever before.
----
++++
+hook = "It's 2017, and the state of instant messaging is in worse shape than ever before."
+published_at = 2017-01-17T15:33:00Z
+title = "The state of messaging"
++++
 
 I recently had a friend switch from iPhone to Android, and
 it was an unpleasant wakeup call to see just how subdivided

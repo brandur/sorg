@@ -1,9 +1,8 @@
----
-title: "Changing a universal constant: How 280-character tweets break an API"
-published_at: 2017-10-17T17:10:01Z
-hook: Even changing the length of a field is a
-  backwards-incompatible change if it's deeply entrenched.
----
++++
+hook = "Even changing the length of a field is a backwards-incompatible change if it's deeply entrenched."
+published_at = 2017-10-17T17:10:01Z
+title = "Changing a universal constant: How 280-character tweets break an API"
++++
 
 Recently Twitter announced that they're [rolling out
 support for 280-character tweets][ann]; up from the

@@ -1,12 +1,10 @@
----
-title: Software Enhancement and Accidental Obsolescence
-published_at: 2017-11-22T08:50:10Z
-location: Tokyo
-hook: TODO
-attributions: SNES cartridge image by
-  <strong><a href="https://www.flickr.com/photos/bochalla/4753073993/">Bryan
-  Ochalla</a></strong>. Licensed under Creative Commons CC BY-SA 2.0.
----
++++
+attributions = "SNES cartridge image by <strong><a href=\"https://www.flickr.com/photos/bochalla/4753073993/\">Bryan Ochalla</a></strong>. Licensed under Creative Commons CC BY-SA 2.0."
+hook = "TODO"
+location = "Tokyo"
+published_at = 2017-11-22T08:50:10Z
+title = "Software Enhancement and Accidental Obsolescence"
++++
 
 Like many of you, I recently updated my phone to iOS 11.
 Although complaints about increased sluggishness are a

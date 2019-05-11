@@ -1,10 +1,8 @@
----
-title: "Depickling, gadgets, and chains: The class of
-  exploit that unraveled Equifax"
-published_at: 2017-09-10T19:42:06Z
-hook: How unsafe deserialization leads to arbitrary code
-  execution.
----
++++
+hook = "How unsafe deserialization leads to arbitrary code execution."
+published_at = 2017-09-10T19:42:06Z
+title = "Depickling, gadgets, and chains: The class of exploit that unraveled Equifax"
++++
 
 Anyone with an internet connection is probably aware that
 Equifax recently leaked information on 143 million people

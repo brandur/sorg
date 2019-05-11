@@ -1,11 +1,9 @@
----
-title: Scaling a High-traffic Rate Limiting Stack With
-  Redis Cluster
-location: San Francisco
-published_at: 2018-04-26T17:29:17Z
-hook: Flattening a single very hot vertical Redis node into
-  a horizontal Redis Cluster at Stripe.
----
++++
+hook = "Flattening a single very hot vertical Redis node into a horizontal Redis Cluster at Stripe."
+location = "San Francisco"
+published_at = 2018-04-26T17:29:17Z
+title = "Scaling a High-traffic Rate Limiting Stack With Redis Cluster"
++++
 
 Redis is the often unspoken workhorse of production. It's
 not often used as a primary data store, but it has a sweet

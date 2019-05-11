@@ -1,8 +1,8 @@
----
-title: Yosemite & progress bars
-published_at: 2014-11-10T16:37:30Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-11-10T16:37:30Z
+title = "Yosemite & progress bars"
++++
 
 I recently upgraded my system from Mavericks to Yosemite and ran into a pretty
 scary situation resulting from poor installer UX. For anyone with a non-trivial

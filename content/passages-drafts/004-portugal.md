@@ -1,7 +1,7 @@
----
-title: Postgres & Portugal
-published_at: 2018-10-22T03:04:37Z
----
++++
+published_at = 2018-10-22T03:04:37Z
+title = "Postgres & Portugal"
++++
 
 I started writing this edition of _Passages & Glass_ on the
 way back to Lisbon from Porto, right after a failed attempt

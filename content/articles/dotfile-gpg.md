@@ -1,10 +1,9 @@
----
-hook: Learn how to start encrypting dotfile secrets with GPG, and some techniques
-  for getting those encrypted files integrated with your toolchain.
-location: San Francisco
-published_at: 2014-11-10T23:46:34Z
-title: Dotfile Secrets and GPG
----
++++
+hook = "Learn how to start encrypting dotfile secrets with GPG, and some techniques for getting those encrypted files integrated with your toolchain."
+location = "San Francisco"
+published_at = 2014-11-10T23:46:34Z
+title = "Dotfile Secrets and GPG"
++++
 
 A recent [scare installing Yosemite](/fragments/yosemite-progress), was a nice reminder to check the state of affairs of my backups. I do a decent job for most of my important data, but one weak point were my dot files, which I'd traditionally spread around as little as possible because the standard usage of so many programs had led me to storing a lot of plain text passwords and keys spread out all over the place.
 

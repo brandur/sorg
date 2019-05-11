@@ -1,10 +1,9 @@
----
-title: BreakTime Classic
-published_at: 2014-02-02T18:15:28Z
-location: San Francisco
-hook: In search of an alternative to BreakTime. The
-  discovery of a very classical solution.
----
++++
+hook = "In search of an alternative to BreakTime. The discovery of a very classical solution."
+location = "San Francisco"
+published_at = 2014-02-02T18:15:28Z
+title = "BreakTime Classic"
++++
 
 A few years ago I took the plunge and started using
 BreakTime.app. For those not familiar with it, BreakTime is

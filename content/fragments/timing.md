@@ -1,8 +1,8 @@
----
-title: Timing the guitar
-published_at: 2016-04-05T02:26:11Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-04-05T02:26:11Z
+title = "Timing the guitar"
++++
 
 Any guitar teacher will tell you to practice with a metronome. _Always._ Any
 guitar novice will tell you that worrying about timing while trying to figure

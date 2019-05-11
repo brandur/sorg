@@ -1,8 +1,8 @@
----
-title: Asturias check-in
-published_at: 2016-07-25T15:17:20Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-25T15:17:20Z
+title = "Asturias check-in"
++++
 
 I've been working on Issac Albeniz's guitar masterpiece _Asturias_ for a few
 weeks now. It's been going better than expected, but it's always a little

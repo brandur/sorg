@@ -1,9 +1,9 @@
----
-title: A Hundred Little Things to Like About Rust
-location: San Francisco
-published_at: 2018-03-07T16:02:00Z
-hook: TODO
----
++++
+hook = "TODO"
+location = "San Francisco"
+published_at = 2018-03-07T16:02:00Z
+title = "A Hundred Little Things to Like About Rust"
++++
 
 * **Rustup**: 
 

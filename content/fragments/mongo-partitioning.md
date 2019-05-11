@@ -1,8 +1,8 @@
----
-title: Partitioning in MongoDB (or lack thereof)
-published_at: 2017-04-28T22:30:13Z
-hook: A day in trench life.
----
++++
+hook = "A day in trench life."
+published_at = 2017-04-28T22:30:13Z
+title = "Partitioning in MongoDB (or lack thereof)"
++++
 
 A day doesn't pass of using MongoDB that doesn't make you
 reminisce of time spent on a real database.

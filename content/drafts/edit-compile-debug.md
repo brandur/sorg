@@ -1,11 +1,9 @@
----
-hook: How a fast edit-compile-debug cycle is the most
-  important in a high quality developer experience and in
-  maintaining high levels of productivity.
-location: Calgary
-published_at: 2017-01-05T17:18:18Z
-title: Edit-Compile-Debug
----
++++
+hook = "How a fast edit-compile-debug cycle is the most important in a high quality developer experience and in maintaining high levels of productivity."
+location = "Calgary"
+published_at = 2017-01-05T17:18:18Z
+title = "Edit-Compile-Debug"
++++
 
 You lose the ability to be productive when making changes
 to your own product.

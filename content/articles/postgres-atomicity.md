@@ -1,13 +1,11 @@
----
-title: How Postgres Makes Transactions Atomic
-published_at: 2017-08-16T14:20:53Z
-location: San Francisco
-hook: A dive into the mechanics that allow Postgres to
-  provide strong atomic guarantees despite the chaotic
-  entropy of production.
-tags: ["postgres"]
-hn_link: https://news.ycombinator.com/item?id=15027870
----
++++
+hn_link = "https://news.ycombinator.com/item?id=15027870"
+hook = "A dive into the mechanics that allow Postgres to provide strong atomic guarantees despite the chaotic entropy of production."
+location = "San Francisco"
+published_at = 2017-08-16T14:20:53Z
+tags = ["postgres"]
+title = "How Postgres Makes Transactions Atomic"
++++
 
 Atomicity (in the sense of "ACID") states that for a series
 of operations performed against a database, either every

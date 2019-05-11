@@ -1,8 +1,8 @@
----
-title: AWS static hosting
-published_at: 2016-01-04T09:18:18Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-04T09:18:18Z
+title = "AWS static hosting"
++++
 
 **Addendum --** I've published a [second post][second] containing a
 workaround for the problems described in this document.

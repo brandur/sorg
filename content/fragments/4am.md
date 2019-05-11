@@ -1,8 +1,8 @@
----
-title: 4 A.M.
-published_at: 2016-08-24T13:36:55Z
-hook: On chasing the day's most productive hours.
----
++++
+hook = "On chasing the day's most productive hours."
+published_at = 2016-08-24T13:36:55Z
+title = "4 A.M."
++++
 
 The Wall Street Journal ran an opinion article yesterday called "Why 4 a.m. Is
 the Most Productive Hour" [1] in which they made the case through various

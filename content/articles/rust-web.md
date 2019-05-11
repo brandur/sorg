@@ -1,12 +1,10 @@
----
-title: Touring a Fast, Safe, and Complete(ish) Web Service in Rust
-published_at: 2018-03-27T14:45:57Z
-hook: A detailed look at the frameworks, concurrency model,
-  error handling, middleware constructs, and testing
-  strategies of a web service written in Rust.
-location: San Francisco
-hn_link: https://news.ycombinator.com/item?id=16689108
----
++++
+hn_link = "https://news.ycombinator.com/item?id=16689108"
+hook = "A detailed look at the frameworks, concurrency model, error handling, middleware constructs, and testing strategies of a web service written in Rust."
+location = "San Francisco"
+published_at = 2018-03-27T14:45:57Z
+title = "Touring a Fast, Safe, and Complete(ish) Web Service in Rust"
++++
 
 For years now, I've been having a crisis of faith in
 interpreted languages. They're fast and fun to work in at

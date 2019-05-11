@@ -1,8 +1,8 @@
----
-title: 2015 resolutions
-published_at: 2015-01-03T23:27:49Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2015-01-03T23:27:49Z
+title = "2015 resolutions"
++++
 
 Five basic resolutions for 2015:
 

@@ -1,11 +1,8 @@
----
-title: Marginal security
-published_at: 2017-01-27T17:35:36Z
-hook: Your servers are only perfectly secure when they're
-  buried at the bottom of a mineshaft without network
-  connections. Security is about trade offs, and must be
-  designed rationally.
----
++++
+hook = "Your servers are only perfectly secure when they're buried at the bottom of a mineshaft without network connections. Security is about trade offs, and must be designed rationally."
+published_at = 2017-01-27T17:35:36Z
+title = "Marginal security"
++++
 
 Some days I think that security, especially as it's applied
 at big companies, is a race to see who can be the first to

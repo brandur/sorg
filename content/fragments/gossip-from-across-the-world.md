@@ -1,8 +1,8 @@
----
-title: Gossip from across the world
-published_at: 2014-05-16T09:39:48Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2014-05-16T09:39:48Z
+title = "Gossip from across the world"
++++
 
 You wake up to a massive e-mail backlog like you'd have after a taking a
 vacation, you prioritize and respond to it, and you're done. You can reasonably

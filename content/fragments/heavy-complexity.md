@@ -1,8 +1,8 @@
----
-title: Heavy complexity
-published_at: 2016-01-25T06:12:05Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-01-25T06:12:05Z
+title = "Heavy complexity"
++++
 
 The article [_the Sad State of Web Development_][article] may hyperbolic to the
 point of excess, but it's more right than it is wrong. It's all too often these

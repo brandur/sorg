@@ -1,8 +1,8 @@
----
-title: Testing Go packages from project root
-published_at: 2016-07-15T16:37:30Z
-hook: UNWRITTEN. This should not appear on the front page.
----
++++
+hook = "UNWRITTEN. This should not appear on the front page."
+published_at = 2016-07-15T16:37:30Z
+title = "Testing Go packages from project root"
++++
 
 By default, running `go test` executes a package's tests with the current
 working directory set to that package's path. This is fine for single-package
