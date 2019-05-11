@@ -308,7 +308,7 @@ func build(c *modulir.Context) []error {
 		c.AddJob("pages _meta.toml", func() (bool, error) {
 			source := c.SourceDir + "/pages/_meta.toml"
 
-			if !c.Changed(source) && !c.Forced() {
+			if !c.Changed(source) {
 				return false, nil
 			}
 
@@ -365,7 +365,7 @@ func build(c *modulir.Context) []error {
 		c.AddJob("photos _meta.toml", func() (bool, error) {
 			source := c.SourceDir + "/content/photographs/_meta.toml"
 
-			if !c.Changed(source) && !c.Forced() {
+			if !c.Changed(source) {
 				return false, nil
 			}
 
@@ -438,7 +438,7 @@ func build(c *modulir.Context) []error {
 			c.AddJob(name, func() (bool, error) {
 				source := sequencePath + "/_meta.toml"
 
-				if !c.Changed(source) && !c.Forced() {
+				if !c.Changed(source) {
 					return false, nil
 				}
 
@@ -946,7 +946,7 @@ func compileJavascripts(c *modulir.Context, versionedAssetsDir string) (bool, er
 	}
 
 	sourcesChanged := c.ChangedAny(sources...)
-	if !sourcesChanged && !c.Forced() {
+	if !sourcesChanged {
 		return false, nil
 	}
 
@@ -965,7 +965,7 @@ func compileStylesheets(c *modulir.Context, versionedAssetsDir string) (bool, er
 	}
 
 	sourcesChanged := c.ChangedAny(sources...)
-	if !sourcesChanged && !c.Forced() {
+	if !sourcesChanged {
 		return false, nil
 	}
 
@@ -1237,7 +1237,7 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 		},
 		partialViews...,
 	)...)
-	if !sourceChanged && !viewsChanged && !c.Forced() {
+	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1310,7 +1310,7 @@ func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChange
 		},
 		partialViews...,
 	)...)
-	if !articlesChanged && !viewsChanged && !c.Forced() {
+	if !articlesChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1325,7 +1325,7 @@ func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChange
 }
 
 func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, articlesChanged bool) (bool, error) {
-	if !articlesChanged && !c.Forced() {
+	if !articlesChanged {
 		return false, nil
 	}
 
@@ -1395,7 +1395,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 		},
 		partialViews...,
 	)...)
-	if !sourceChanged && !viewsChanged && !c.Forced() {
+	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1449,7 +1449,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 
 func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 	fragmentsChanged bool) (bool, error) {
-	if !fragmentsChanged && !c.Forced() {
+	if !fragmentsChanged {
 		return false, nil
 	}
 
@@ -1504,7 +1504,7 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		},
 		partialViews...,
 	)...)
-	if !fragmentsChanged && !viewsChanged && !c.Forced() {
+	if !fragmentsChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1527,11 +1527,10 @@ func renderPassage(c *modulir.Context, source string, passages *[]*spassages.Pas
 		},
 		partialViews...,
 	)...)
-	if !sourceChanged && !viewsChanged && !c.Forced() {
+	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
 
-	// TODO: modulir-ize this package
 	passage, err := spassages.Render(c, filepath.Dir(source), filepath.Base(source),
 		conf.AbsoluteURL, false)
 	if err != nil {
@@ -1566,7 +1565,7 @@ func renderPassagesIndex(c *modulir.Context, passages []*spassages.Passage,
 		},
 		partialViews...,
 	)...)
-	if !passagesChanged && !viewsChanged && !c.Forced() {
+	if !passagesChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1589,7 +1588,7 @@ func renderHome(c *modulir.Context,
 		},
 		partialViews...,
 	)...)
-	if !articlesChanged && !fragmentsChanged && !photosChanged && !viewsChanged && !c.Forced() {
+	if !articlesChanged && !fragmentsChanged && !photosChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1624,7 +1623,7 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 		},
 		partialViews...,
 	)...)
-	if !metaChanged && !viewsChanged && !c.Forced() {
+	if !metaChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1685,7 +1684,7 @@ func renderReading(c *modulir.Context, db *sql.DB) (bool, error) {
 		},
 		partialViews...,
 	)...)
-	if !c.FirstRun && !viewsChanged && !c.Forced() {
+	if !c.FirstRun && !viewsChanged {
 		return false, nil
 	}
 
@@ -1701,7 +1700,7 @@ func renderPhotoIndex(c *modulir.Context, photos []*Photo,
 		},
 		partialViews...,
 	)...)
-	if !photosChanged && !viewsChanged && !c.Forced() {
+	if !photosChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1716,7 +1715,7 @@ func renderPhotoIndex(c *modulir.Context, photos []*Photo,
 }
 
 func renderRobotsTxt(c *modulir.Context) (bool, error) {
-	if !c.FirstRun && !c.Forced() {
+	if !c.FirstRun && !c.Forced {
 		return false, nil
 	}
 
@@ -1760,7 +1759,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 		},
 		partialViews...,
 	)...)
-	if !c.FirstRun && !viewsChanged && !c.Forced() {
+	if !c.FirstRun && !viewsChanged {
 		return false, nil
 	}
 
@@ -1776,7 +1775,7 @@ func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 		},
 		partialViews...,
 	)...)
-	if !sequenceChanged && !viewsChanged && !c.Forced() {
+	if !sequenceChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1805,7 +1804,7 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 		},
 		partialViews...,
 	)...)
-	if !sourceChanged && !viewsChanged && !c.Forced() {
+	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -1848,7 +1847,7 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 		},
 		partialViews...,
 	)...)
-	if !c.FirstRun && !viewsChanged && !c.Forced() {
+	if !c.FirstRun && !viewsChanged {
 		return false, nil
 	}
 
