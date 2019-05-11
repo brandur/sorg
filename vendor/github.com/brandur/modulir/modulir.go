@@ -155,11 +155,11 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 
 		errors := f(c)
 
-		otherErrors := c.Wait()
+		lastRoundErrors := c.Wait()
 		buildDuration := time.Now().Sub(c.Stats.Start)
 
-		if otherErrors != nil {
-			errors = append(errors, otherErrors...)
+		if lastRoundErrors != nil {
+			errors = append(errors, lastRoundErrors...)
 		}
 
 		logErrors(c, errors)
@@ -243,7 +243,17 @@ func logErrors(c *Context, errors []error) {
 	}
 
 	for i, err := range errors {
-		c.Log.Errorf("Build error: %v", err)
+		// When dealing with an errored job (in practice, this is going to be
+		// the common case), we can provide a little more detail on what went
+		// wrong.
+		job, ok := err.(*Job)
+
+		if ok {
+			c.Log.Errorf("Job error: %v (job: '%s', time: %v)",
+				job.Err, job.Name, job.Duration)
+		} else {
+			c.Log.Errorf("Build error: %v", err)
+		}
 
 		if i >= maxMessages-1 {
 			c.Log.Errorf("... too many errors (limit reached)")

@@ -219,7 +219,7 @@ func (c *Context) Wait() []error {
 	c.Stats.NumJobsExecuted += len(c.Pool.JobsExecuted)
 
 	// Pull errors out before starting a new round below.
-	errors := c.Pool.JobErrors()
+	erroredJobs := c.Pool.JobsErrored
 
 	// Then start the pool again, which also has the side effect of
 	// reinitializing anything that needs to be reinitialized.
@@ -227,6 +227,13 @@ func (c *Context) Wait() []error {
 
 	// This channel is reinitialized, so make sure to pull in the new one.
 	c.Jobs = c.Pool.Jobs
+
+	// Unfortunately required to coerce into `[]error` despite Job implementing
+	// the error interface.
+	errors := make([]error, len(erroredJobs))
+	for i, job := range erroredJobs {
+		errors[i] = job
+	}
 
 	return errors
 }

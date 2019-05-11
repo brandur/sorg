@@ -12,8 +12,8 @@ type Job struct {
 	// whether the job's finished state was executed, not executed, or errored.
 	Duration time.Duration
 
-	// Error is an error that the job produced, if any.
-	Error error
+	// Err is an error that the job produced, if any.
+	Err error
 
 	// Executed is whether the job "did work", signaled by it returning true.
 	Executed bool
@@ -24,6 +24,21 @@ type Job struct {
 	// Name is a name for the job which is helpful for informational and
 	// debugging purposes.
 	Name     string
+}
+
+// Error returns the error message of the error wrapped in the job if this was
+// an errored job. Job implements the error interface so that it can return
+// itself in situations where error handling is being done but job errors may
+// be mixed in with other sorts of errors.
+//
+// It panics if the job wasn't errored, so be careful to only use this when
+// iterating across something like Pool.JobsErrored.
+func (j *Job) Error() string {
+	if j.Err == nil {
+		panic("Error called on a non-errored Job")
+	}
+
+	return j.Err.Error()
 }
 
 // NewJob initializes and returns a new Job.
@@ -146,7 +161,7 @@ func (p *Pool) JobErrors() []error {
 
 	errs := make([]error, len(p.JobsErrored))
 	for i, job := range p.JobsErrored {
-		errs[i] = job.Error
+		errs[i] = job.Err
 	}
 	return errs
 }
@@ -241,7 +256,7 @@ func (p *Pool) workForRound() {
 		job.Duration = time.Now().Sub(start)
 
 		if err != nil {
-			job.Error = err
+			job.Err = err
 
 			p.jobsErroredMu.Lock()
 			p.JobsErrored = append(p.JobsErrored, job)
