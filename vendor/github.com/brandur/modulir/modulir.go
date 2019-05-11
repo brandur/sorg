@@ -1,10 +1,14 @@
 package modulir
 
 import (
+	"context"
 	"fmt"
+	"net/http"
 	"os"
+	"os/signal"
 	"sort"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/fsnotify/fsnotify"
@@ -82,14 +86,26 @@ func BuildLoop(config *Config, f func(*Context) []error) {
 
 	c := initContext(config, watcher)
 
+	// Serve HTTP
+	var server *http.Server
 	go func() {
 		<-firstRunComplete
-		if err := serveTargetDirHTTP(c); err != nil {
-			exitWithError(err)
-		}
+		server = startServingTargetDirHTTP(c)
 	}()
 
-	build(c, f, finish, firstRunComplete)
+	// Run the build loop. Loops forever until receiving on finish.
+	go build(c, f, finish, firstRunComplete)
+
+	// Listen for signals
+	signals := make(chan os.Signal, 1024)
+	signal.Notify(signals, syscall.SIGUSR2)
+	for {
+		s := <-signals
+		switch s {
+			case syscall.SIGUSR2:
+				shutdownAndExec(c, finish, watcher, server)
+		}
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -258,7 +274,7 @@ func logSlowestJobs(c *Context) {
 // properties from fsnotify.
 func shouldRebuild(path string, op fsnotify.Op) bool {
 	// A special case, but ignore creates on files that look like Vim backups.
-	if strings.HasSuffix(path, "~") && op&fsnotify.Create == fsnotify.Create {
+	if strings.HasSuffix(path, "~") {
 		return false
 	}
 
@@ -267,6 +283,43 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 	}
 
 	return true
+}
+
+func shutdownAndExec(c *Context, finish chan struct{},
+	watcher *fsnotify.Watcher, server *http.Server) {
+
+	// Tell the build loop to finish up
+	finish <- struct{}{}
+
+	// DANGER: Defers don't seem to get called on the re-exec, so even though
+	// we have a defer which closes our watcher, it won't close, leading to
+	// file descriptor leaking. Close it manually here instead.
+	watcher.Close()
+
+	// A context that will act as a timeout for connections
+	// that are still running as we try and shut down the HTTP
+	// server.
+	timeoutCtx, cancel := context.WithTimeout(
+		context.Background(),
+		5*time.Second,
+	)
+	defer cancel()
+
+	c.Log.Infof("Shutting down HTTP server")
+	if err := server.Shutdown(timeoutCtx); err != nil {
+		exitWithError(err)
+	}
+
+	// Returns an absolute path.
+	execPath, err := os.Executable()
+	if err != nil {
+		exitWithError(err)
+	}
+
+	c.Log.Infof("Execing process '%s' with args %+v\n", execPath, os.Args)
+	if err := syscall.Exec(execPath, os.Args, os.Environ()); err != nil {
+		exitWithError(err)
+	}
 }
 
 // Sorts a slice of jobs with the slowest on top.

@@ -18,15 +18,25 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func serveTargetDirHTTP(c *Context) error {
+func startServingTargetDirHTTP(c *Context) *http.Server {
 	c.Log.Infof("Serving '%s' to: http://localhost:%v/", path.Clean(c.TargetDir), c.Port)
 
 	handler := http.FileServer(http.Dir(c.TargetDir))
 
-	err := http.ListenAndServe(fmt.Sprintf(":%v", c.Port), handler)
-	if err != nil {
-		return errors.Wrap(err, "Error starting HTTP server")
+	server := &http.Server{
+		Addr: fmt.Sprintf(":%v", c.Port),
+		Handler: handler,
 	}
-	return nil
+
+	go func() {
+		err := server.ListenAndServe()
+
+		// ListenAndServe always returns a non-nil error
+		if err != http.ErrServerClosed {
+			exitWithError(errors.Wrap(err, "Error starting HTTP server"))
+		}
+	}()
+
+	return server
 }
 
