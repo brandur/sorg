@@ -43,6 +43,14 @@ type Context struct {
 	// HTTP.
 	Port int
 
+	// QuickPaths are a set of paths for which Changed will return true when
+	// the context is in "quick rebuild mode". During this time all the normal
+	// file system checks that Changed makes will be bypassed to enable a
+	// faster build loop.
+	//
+	// Make sure to unset it after your build run is finished.
+	QuickPaths map[string]struct{}
+
 	// SourceDir is the directory containing source files.
 	SourceDir string
 
@@ -64,12 +72,6 @@ type Context struct {
 
 	// forced indicates whether change checking should be bypassed.
 	forced bool
-
-	// mu is a mutex used to synchronize access on watchedPaths.
-	mu *sync.Mutex
-
-	// watchedPaths keeps track of what paths we're currently watching.
-	watchedPaths map[string]struct{}
 }
 
 // NewContext initializes and returns a new Context.
@@ -86,8 +88,6 @@ func NewContext(args *Args) *Context {
 		Watcher:     args.Watcher,
 
 		fileModTimeCache: NewFileModTimeCache(args.Log),
-		mu:               new(sync.Mutex),
-		watchedPaths:     make(map[string]struct{}),
 	}
 
 	if args.Pool != nil {
@@ -115,27 +115,52 @@ func (c *Context) AllowError(executed bool, err error) bool {
 // the last time it was checked. It also saves the last modified time for
 // future checks.
 //
-// TODO: It also makes sure the root path is being watched.
+// This function is very hot in that it gets checked many times, and probably
+// many times for every single job in a build loop. It needs to be optimized
+// fairly carefully for both speed and lack of contention when running
+// concurrently with other jobs.
 func (c *Context) Changed(path string) bool {
-	// Normalize the path (Abs also calls Clean).
-	path, err := filepath.Abs(path)
-	if err != nil {
-		c.Log.Errorf("Error normalizing path: %v", err)
+	// Short circuit quickly if the context is in "quick rebuild mode".
+	if c.QuickPaths != nil {
+		_, ok := c.QuickPaths[path]
+		return ok
 	}
 
-	if !c.exists(path) {
-		c.Log.Errorf("Path passed to Changed doesn't exist: %s", path)
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		if !os.IsNotExist(err) {
+			c.Log.Errorf("Path passed to Changed doesn't exist: %s", path)
+		}
 		return true
 	}
 
+	// Commented out for now because it's not fast (at least a few ms) and we
+	// don't seem to really need an absolute path
+	/*
+		// Normalize the path (Abs also calls Clean).
+		path, err := filepath.Abs(path)
+		if err != nil {
+			c.Log.Errorf("Error normalizing path: %v", err)
+		}
+		}
+	*/
+
+	changed, ok := c.fileModTimeCache.isFileUpdated(fileInfo, path)
+
+	// If we got ok back, then we know the file was in the cache and also
+	// therefore would've been already watched. Return as early as possible.
+	if ok {
+		return changed
+	}
+
 	if c.Watcher != nil {
-		err = c.addWatched(path)
+		err := c.addWatched(fileInfo, path)
 		if err != nil {
 			c.Log.Errorf("Error watching source: %v", err)
 		}
 	}
 
-	return c.fileModTimeCache.changed(path)
+	return true
 }
 
 // ChangedAny is the same as Changed except it returns true if any of the given
@@ -163,17 +188,6 @@ func (c *Context) ChangedAny(paths ...string) bool {
 // TODO: Rename to IsForced to match IsUnchanged.
 func (c *Context) Forced() bool {
 	return c.forced
-}
-
-// ForcedContext returns a copy of the current Context for which change
-// checking is disabled.
-//
-// Functions using a forced context still return the right value for their
-// unchanged return, but execute all their work.
-func (c *Context) ForcedContext() *Context {
-	forceC := c.clone()
-	forceC.forced = true
-	return forceC
 }
 
 // ResetBuild signals to the Context to do the bookkeeping it needs to do for
@@ -220,28 +234,31 @@ func (c *Context) Wait() []error {
 	return errors
 }
 
-func (c *Context) addWatched(path string) error {
-	info, err := os.Stat(path)
-	if err != nil {
-		return err
+// ForcedContext returns a copy of the current Context for which change
+// checking is disabled.
+//
+// Functions using a forced context still return the right value for their
+// unchanged return, but execute all their work.
+//
+// TODO: Get rid of in favor of Forced property.
+func (c *Context) ForcedContext() *Context {
+	if c.QuickPaths != nil {
+		panic("Don't call ForcedContext on a quick context")
 	}
 
+	forceC := c.clone()
+	forceC.forced = true
+	return forceC
+}
+
+func (c *Context) addWatched(fileInfo os.FileInfo, absolutePath string) error {
 	// Watch the parent directory unless the file is a directory itself. This
 	// will hopefully mean fewer individual entries in the notifier.
-	if !info.IsDir() {
-		path = filepath.Dir(path)
+	if !fileInfo.IsDir() {
+		absolutePath = filepath.Dir(absolutePath)
 	}
 
-	// Do nothing if we're already watching the path.
-	_, ok := c.watchedPaths[path]
-	if ok {
-		return nil
-	}
-
-	c.mu.Lock()
-	defer c.mu.Unlock()
-
-	return c.Watcher.Add(path)
+	return c.Watcher.Add(absolutePath)
 }
 
 // clone clones the current Context.
@@ -249,6 +266,7 @@ func (c *Context) clone() *Context {
 	return &Context{
 		Concurrency: c.Concurrency,
 		Log:         c.Log,
+		QuickPaths:  c.QuickPaths,
 		SourceDir:   c.SourceDir,
 		Stats:       c.Stats,
 		TargetDir:   c.TargetDir,
@@ -256,23 +274,7 @@ func (c *Context) clone() *Context {
 
 		fileModTimeCache: c.fileModTimeCache,
 		forced:           c.forced,
-		mu:               c.mu,
-		watchedPaths:     c.watchedPaths,
 	}
-}
-
-func (c *Context) exists(path string) bool {
-	_, err := os.Stat(path)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	if err != nil {
-		c.Log.Errorf("Error checking file existence: %v", err)
-	}
-	return false
 }
 
 // FileModTimeCache tracks the last modified time of files seen so a
@@ -295,41 +297,26 @@ func NewFileModTimeCache(log LoggerInterface) *FileModTimeCache {
 
 // changed returns whether the target path's modified time has changed since
 // the last time it was checked. It also saves the last modified time for
-// future checks.
-func (c *FileModTimeCache) changed(path string) bool {
-	stat, err := os.Stat(path)
-	if err != nil {
-		if !os.IsNotExist(err) {
-			c.log.Errorf("Error stat'ing file: %v", err)
+// future checks. The second return value is whether or not the record was
+// already in the cache.
+func (c *FileModTimeCache) isFileUpdated(fileInfo os.FileInfo, absolutePath string) (bool, bool) {
+	modTime := fileInfo.ModTime()
+
+	lastModTime, ok := c.pathToModTimeMap[absolutePath]
+
+	if ok {
+		changed := lastModTime.Before(modTime)
+		if !changed {
+			return false, ok
 		}
-		return true
 	}
-
-	modTime := stat.ModTime()
-
-	lastModTime, ok := c.pathToModTimeMap[path]
 
 	// Store to the new map for eventual promotion.
 	c.mu.Lock()
-	c.pathToModTimeMapNew[path] = modTime
+	c.pathToModTimeMapNew[absolutePath] = modTime
 	c.mu.Unlock()
 
-	if !ok {
-		return true
-	}
-
-	changed := lastModTime.Before(modTime)
-	if !changed {
-		// Debug help if needed.
-		//c.log.Debugf("context: No changes to source: %s", path)
-		return false
-	}
-
-	// Debug help if needed.
-	//c.log.Infof("context: File did change: %s (last mod time = %v, mod time = %v)",
-	//	path, lastModTime, modTime)
-
-	return true
+	return true, ok
 }
 
 // promote takes all the new modification times collected during this round

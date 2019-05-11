@@ -107,7 +107,7 @@ func BuildLoop(config *Config, f func(*Context) []error) {
 //
 // Returns true of the last build was successful and false otherwise.
 func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan struct{}) bool {
-	rebuild := make(chan struct{})
+	rebuild := make(chan string)
 	rebuildDone := make(chan struct{})
 
 	if c.Watcher != nil {
@@ -117,9 +117,19 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 	c.Pool.StartRound()
 	c.Jobs = c.Pool.Jobs
 
+	// A path that changed on the last loop (as discovered via fsnotify). If
+	// set, we go into quick build mode with only this path activated, and
+	// unset it afterwards. This saves us doing lots of checks on the
+	// filesystem and makes jobs much faster to run.
+	var lastChangedPath string
+
 	for {
 		c.Log.Debugf("Start loop")
 		c.ResetBuild()
+
+		if lastChangedPath != "" {
+			c.QuickPaths = map[string]struct{}{lastChangedPath: struct{}{}}
+		}
 
 		errors := f(c)
 
@@ -169,12 +179,15 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			rebuildDone <- struct{}{}
 		}
 
+		lastChangedPath = ""
+		c.QuickPaths = nil
+
 		select {
 		case <-finish:
 			c.Log.Infof("Detected finish signal; stopping")
 			return len(errors) < 1
 
-		case <-rebuild:
+		case lastChangedPath =<-rebuild:
 			c.Log.Infof("Detected change; rebuilding")
 		}
 	}
@@ -244,7 +257,8 @@ func sortJobsBySlowest(jobs []*Job) {
 		return jobs[j].Duration < jobs[i].Duration
 	})
 }
-func watchChanges(c *Context, watcher *fsnotify.Watcher, rebuild, rebuildDone chan struct{}) {
+func watchChanges(c *Context, watcher *fsnotify.Watcher,
+	rebuild chan string, rebuildDone chan struct{}) {
 OUTER:
 	for {
 		select {
@@ -260,7 +274,7 @@ OUTER:
 			}
 
 			// Start rebuild
-			rebuild <- struct{}{}
+			rebuild <- event.Name
 
 			// Wait until rebuild is finished. In the meantime, drain any
 			// new events that come in on the watcher's channel.
