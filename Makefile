@@ -158,11 +158,11 @@ vet:
 # directory on separately (fswatch will watch it recursively).
 GO_FILES := $(shell find . -type f -name "*.go" ! -path "./vendor/*")
 
-# Meant to be used in conjuction with `forego start -r`. When a Go file
-# changes, this watch recompiles the project, then kills the existing `sorg`
-# process which Forego will proceed to restart.
+# Meant to be used in conjuction with `forego start`. When a Go file changes,
+# this watch recompiles the project, then sends USR2 to the process which
+# prompts Modulir to re-exec it.
 watch-go:
-	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install killall
+	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install sigusr2
 
 #
 # Helpers

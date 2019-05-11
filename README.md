@@ -35,7 +35,7 @@ forego run make build
 
 # Watch for changes in Go files and/or content and recompile and rebuild when
 # one occurs.
-forego start -r
+forego start
 ```
 
 The project can be deployed to s3 using:
