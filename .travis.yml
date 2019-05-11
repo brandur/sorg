@@ -37,7 +37,7 @@ script:
   # bail after a single failure
   - set -e
 
-  - VERBOSE=true make
+  - make
 
   # deploy development version that includes drafts
   - TARGET_DIR=./public-dev DRAFTS=true make build
