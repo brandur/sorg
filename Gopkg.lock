@@ -40,7 +40,6 @@
     "modules/mmarkdown",
     "modules/mtoc",
     "modules/mtoml",
-    "modules/myaml",
   ]
   pruneopts = ""
   revision = "e1f740a19aa3729504f5ecadecea7d21fbdebdbc"
@@ -238,14 +237,6 @@
   revision = "d3b5b032dc8e8927d31a5071b56e14c89f045135"
   version = "v2.0.1"
 
-[[projects]]
-  branch = "v2"
-  digest = "1:81314a486195626940617e43740b4fa073f265b0715c9f54ce2027fee1cb5f61"
-  name = "gopkg.in/yaml.v2"
-  packages = ["."]
-  pruneopts = ""
-  revision = "eb3733d160e74a9c7e442f435eb3bea458e1d19f"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -257,11 +248,9 @@
     "github.com/brandur/modulir/modules/mmarkdown",
     "github.com/brandur/modulir/modules/mtoc",
     "github.com/brandur/modulir/modules/mtoml",
-    "github.com/brandur/modulir/modules/myaml",
     "github.com/joeshaw/envdecode",
     "github.com/lib/pq",
     "github.com/patrickmn/go-cache",
-    "github.com/pelletier/go-toml",
     "github.com/pkg/errors",
     "github.com/russross/blackfriday",
     "github.com/sirupsen/logrus",
