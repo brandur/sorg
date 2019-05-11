@@ -102,6 +102,11 @@ func BuildLoop(config *Config, f func(*Context) []error) {
 //
 //////////////////////////////////////////////////////////////////////////////
 
+const (
+	// Maximum number of errors or jobs to print on screen after a build loop.
+	maxMessages = 10
+)
+
 // Runs an infinite built loop until a signal is received over the `finish`
 // channel.
 //
@@ -140,32 +145,8 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			errors = append(errors, otherErrors...)
 		}
 
-		if errors != nil {
-			for i, err := range errors {
-				c.Log.Errorf("Build error: %v", err)
-
-				if i >= 9 {
-					c.Log.Errorf("... too many errors (limit reached)")
-					break
-				}
-			}
-		}
-
-		sortJobsBySlowest(c.Stats.JobsExecuted)
-		for i, job := range c.Stats.JobsExecuted {
-			// Having this in the loop ensures we don't print it if zero jobs
-			// executed
-			if i == 0 {
-				c.Log.Infof("Jobs executed (slowest first):")
-			}
-
-			c.Log.Infof("    %s (time: %v)", job.Name, job.Duration)
-
-			if i >= 9 {
-				c.Log.Infof("... many jobs executed (limit reached)")
-				break
-			}
-		}
+		logErrors(c, errors)
+		logSlowestJobs(c)
 
 		c.Log.Infof("Built site in %s (%v / %v job(s) did work; %v errored; loop took %v)",
 			buildDuration,
@@ -193,18 +174,21 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 	}
 }
 
+// Exits with status 1 after printing the given error to stderr.
 func exitWithError(err error) {
 	fmt.Fprintf(os.Stderr, "error: %v\n", err)
 	os.Exit(1)
 }
 
+// Takes a Modulir configuration and initializes it with defaults for any
+// properties that weren't expressly filled in.
 func initConfigDefaults(config *Config) *Config {
 	if config == nil {
 		config = &Config{}
 	}
 
 	if config.Concurrency <= 0 {
-		config.Concurrency = 10
+		config.Concurrency = 50
 	}
 
 	if config.Log == nil {
@@ -222,23 +206,56 @@ func initConfigDefaults(config *Config) *Config {
 	return config
 }
 
+// Initializes a new Modulir context from the given configuration.
 func initContext(config *Config, watcher *fsnotify.Watcher) *Context {
 	config = initConfigDefaults(config)
 
-	pool := NewPool(config.Log, config.Concurrency)
-
-	c := NewContext(&Args{
+	return NewContext(&Args{
 		Log:       config.Log,
 		Port:      config.Port,
-		Pool:      pool,
+		Pool:      NewPool(config.Log, config.Concurrency),
 		SourceDir: config.SourceDir,
 		TargetDir: config.TargetDir,
 		Watcher:   watcher,
 	})
-
-	return c
 }
 
+func logErrors(c *Context, errors []error) {
+	if errors == nil {
+		return
+	}
+
+	for i, err := range errors {
+		c.Log.Errorf("Build error: %v", err)
+
+		if i >= maxMessages - 1 {
+			c.Log.Errorf("... too many errors (limit reached)")
+			break
+		}
+	}
+}
+
+func logSlowestJobs(c *Context) {
+	sortJobsBySlowest(c.Stats.JobsExecuted)
+
+	for i, job := range c.Stats.JobsExecuted {
+		// Having this in the loop ensures we don't print it if zero jobs
+		// executed
+		if i == 0 {
+			c.Log.Infof("Jobs executed (slowest first):")
+		}
+
+		c.Log.Infof("    %s (time: %v)", job.Name, job.Duration)
+
+		if i >= maxMessages - 1 {
+			c.Log.Infof("... many jobs executed (limit reached)")
+			break
+		}
+	}
+}
+
+// Decides whether a rebuild should be triggered given some input event
+// properties from fsnotify.
 func shouldRebuild(path string, op fsnotify.Op) bool {
 	// A special case, but ignore creates on files that look like Vim backups.
 	if strings.HasSuffix(path, "~") && op&fsnotify.Create == fsnotify.Create {
@@ -252,11 +269,19 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 	return true
 }
 
+// Sorts a slice of jobs with the slowest on top.
 func sortJobsBySlowest(jobs []*Job) {
 	sort.Slice(jobs, func(i, j int) bool {
 		return jobs[j].Duration < jobs[i].Duration
 	})
 }
+
+// Listens for file system changes from fsnotify and pushes relevant ones back
+// out over the rebuild channel.
+//
+// It doesn't start listening to fsnotify again until the main loop has
+// signaled rebuildDone, so there is a possibility that in the case of very
+// fast consecutive changes the build might not be perfectly up to date.
 func watchChanges(c *Context, watcher *fsnotify.Watcher,
 	rebuild chan string, rebuildDone chan struct{}) {
 OUTER:
