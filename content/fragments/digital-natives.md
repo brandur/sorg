@@ -47,7 +47,7 @@ frontier. In reality, most people far prefer their cities that safely keep them
 insulated from the outside: messaging inside Facebook's blue enclosure,
 blogging within the confines of Tumblr, posting photography with the
 comfortable filters of Instagram, network play on the hosted servers of
-Battle.net, or buying an ready made MacBook. As soon as these easy environments
+Battle.net, or buying a ready made MacBook. As soon as these easy environments
 became available, the majority of the population migrated to them in droves.
 
 [interview]: http://www.theguardian.com/technology/2016/feb/12/digital-capitalism-douglas-rushkoff
