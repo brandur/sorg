@@ -154,6 +154,10 @@ type Conf struct {
 	// Port is the port on which to serve HTTP when looping in development.
 	Port int `env:"PORT,default=5002"`
 
+	// SorgEnv is the environment to run the app with. Use "development" to
+	// activate development features.
+	SorgEnv string `env:"SORG_ENV,default=production"`
+
 	// TargetDir is the target location where the site will be built to.
 	TargetDir string `env:"TARGET_DIR,default=./public"`
 
@@ -171,6 +175,10 @@ type Conf struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
+const (
+	sorgEnvDevelopment = "development"
+)
+
 func getLog() modulir.LoggerInterface {
 	log := logrus.New()
 
@@ -187,10 +195,11 @@ func getLog() modulir.LoggerInterface {
 // to a Modulir build loop.
 func getModulirConfig() *modulir.Config {
 	return &modulir.Config{
-		Concurrency: conf.Concurrency,
-		Log:         getLog(),
-		Port:        conf.Port,
-		SourceDir:   ".",
-		TargetDir:   conf.TargetDir,
+		Concurrency:    conf.Concurrency,
+		Log:            getLog(),
+		Port:           conf.Port,
+		SourceDir:      ".",
+		TargetDir:      conf.TargetDir,
+		StartWebsocket: conf.SorgEnv == sorgEnvDevelopment,
 	}
 }

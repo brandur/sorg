@@ -294,7 +294,9 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("javascripts", func() (bool, error) {
-			return compileJavascripts(c, versionedAssetsDir)
+			return compileJavascripts(c,
+				c.SourceDir+"/content/javascripts",
+				versionedAssetsDir+"/app.js")
 		})
 	}
 
@@ -463,7 +465,9 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("stylesheets", func() (bool, error) {
-			return compileStylesheets(c, versionedAssetsDir)
+			return compileStylesheets(c,
+				c.SourceDir+"/content/stylesheets",
+				versionedAssetsDir+"/app.css")
 		})
 	}
 
@@ -937,9 +941,7 @@ type twitterCard struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func compileJavascripts(c *modulir.Context, versionedAssetsDir string) (bool, error) {
-	sourceDir := c.SourceDir + "/content/javascripts"
-
+func compileJavascripts(c *modulir.Context, sourceDir, target string) (bool, error) {
 	sources, err := readDirCached(c, sourceDir, nil)
 	if err != nil {
 		return false, err
@@ -950,15 +952,10 @@ func compileJavascripts(c *modulir.Context, versionedAssetsDir string) (bool, er
 		return false, nil
 	}
 
-	return true, sassets.CompileJavascripts(
-		c,
-		sourceDir,
-		versionedAssetsDir+"/app.js")
+	return true, sassets.CompileJavascripts(c, sourceDir, target)
 }
 
-func compileStylesheets(c *modulir.Context, versionedAssetsDir string) (bool, error) {
-	sourceDir := c.SourceDir + "/content/stylesheets"
-
+func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, error) {
 	sources, err := readDirCached(c, sourceDir, nil)
 	if err != nil {
 		return false, err
@@ -969,10 +966,7 @@ func compileStylesheets(c *modulir.Context, versionedAssetsDir string) (bool, er
 		return false, nil
 	}
 
-	return true, sassets.CompileStylesheets(
-		c,
-		sourceDir,
-		versionedAssetsDir+"/app.css")
+	return true, sassets.CompileStylesheets(c, sourceDir, target)
 }
 
 // extractSlug gets a slug for the given filename by using its basename
@@ -1088,6 +1082,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"LocalFonts":        conf.LocalFonts,
 		"Release":           Release,
+		"SorgEnv":           conf.SorgEnv,
 		"Title":             title,
 		"TwitterCard":       nil,
 		"ViewportWidth":     "device-width",

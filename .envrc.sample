@@ -5,3 +5,4 @@ export DRAFTS=true
 export CLOUDFRONT_ID=E2D97SPIHRBCUA
 export LOCAL_FONTS=true
 export PORT=5002
+export SORG_ENV=development

@@ -6,7 +6,7 @@ tags = ["postgres"]
 title = "Safe Schemas, Strong Constraints"
 +++
 
-Relational databases like Postgres provide a powerful
+Relational 14 databases like Postgres provide a powerful
 platform on which to build applications by offering the
 powerful primitive of [ACID transactions](/acid), useful
 features like upsert or logical replication, and rolling
