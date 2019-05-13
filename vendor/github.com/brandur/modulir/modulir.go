@@ -8,10 +8,13 @@ import (
 	"os/signal"
 	"path"
 	"sort"
+	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 	"golang.org/x/sys/unix"
 )
@@ -50,6 +53,12 @@ type Config struct {
 	// Defaults to ".".
 	SourceDir string
 
+	// StartWebsocket indicates that Modulir should be started in development
+	// mode.
+	//
+	// Defaults to false.
+	StartWebsocket bool
+
 	// TargetDir is the directory where the site will be built to.
 	//
 	// Defaults to "./public".
@@ -59,14 +68,15 @@ type Config struct {
 // Build is one of the main entry points to the program. Call this to build
 // only one time.
 func Build(config *Config, f func(*Context) []error) {
+	var buildCompleteMu sync.Mutex
+	buildComplete := sync.NewCond(&buildCompleteMu)
 	finish := make(chan struct{}, 1)
-	firstRunComplete := make(chan struct{}, 1)
 
 	// Signal the build loop to finish immediately
 	finish <- struct{}{}
 
 	c := initContext(config, nil)
-	success := build(c, f, finish, firstRunComplete)
+	success := build(c, f, finish, buildComplete)
 	if !success {
 		os.Exit(1)
 	}
@@ -75,8 +85,9 @@ func Build(config *Config, f func(*Context) []error) {
 // BuildLoop is one of the main entry points to the program. Call this to build
 // in a perpetual loop.
 func BuildLoop(config *Config, f func(*Context) []error) {
+	var buildCompleteMu sync.Mutex
+	buildComplete := sync.NewCond(&buildCompleteMu)
 	finish := make(chan struct{}, 1)
-	firstRunComplete := make(chan struct{}, 1)
 
 	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
@@ -90,12 +101,20 @@ func BuildLoop(config *Config, f func(*Context) []error) {
 	// Serve HTTP
 	var server *http.Server
 	go func() {
-		<-firstRunComplete
-		server = startServingTargetDirHTTP(c)
+		// Wait for the first build to complete before serving anything.
+		//
+		// Note: this is probably only the right move if the target directory
+		// doesn't exist yet. Otherwise it doesn't really matter. TODO: Look
+		// into that more.
+		buildComplete.L.Lock()
+		buildComplete.Wait()
+		buildComplete.L.Unlock()
+
+		server = startServingTargetDirHTTP(c, buildComplete)
 	}()
 
 	// Run the build loop. Loops forever until receiving on finish.
-	go build(c, f, finish, firstRunComplete)
+	go build(c, f, finish, buildComplete)
 
 	// Listen for signals
 	signals := make(chan os.Signal, 1024)
@@ -128,7 +147,9 @@ const (
 // channel.
 //
 // Returns true of the last build was successful and false otherwise.
-func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan struct{}) bool {
+func build(c *Context, f func(*Context) []error,
+	finish chan struct{}, buildComplete *sync.Cond) bool {
+
 	rebuild := make(chan string)
 	rebuildDone := make(chan struct{})
 
@@ -170,15 +191,16 @@ func build(c *Context, f func(*Context) []error, finish, firstRunComplete chan s
 			c.Stats.NumJobsExecuted, c.Stats.NumJobs, c.Stats.NumJobsErrored,
 			c.Stats.LoopDuration)
 
+		lastChangedPath = ""
+		c.QuickPaths = nil
+
+		buildComplete.Broadcast()
+
 		if c.FirstRun {
-			firstRunComplete <- struct{}{}
 			c.FirstRun = false
 		} else {
 			rebuildDone <- struct{}{}
 		}
-
-		lastChangedPath = ""
-		c.QuickPaths = nil
 
 		select {
 		case <-finish:
@@ -228,15 +250,17 @@ func initContext(config *Config, watcher *fsnotify.Watcher) *Context {
 	config = initConfigDefaults(config)
 
 	return NewContext(&Args{
-		Log:       config.Log,
-		Port:      config.Port,
-		Pool:      NewPool(config.Log, config.Concurrency),
-		SourceDir: config.SourceDir,
-		TargetDir: config.TargetDir,
-		Watcher:   watcher,
+		Log:            config.Log,
+		Port:           config.Port,
+		Pool:           NewPool(config.Log, config.Concurrency),
+		SourceDir:      config.SourceDir,
+		StartWebsocket: config.StartWebsocket,
+		TargetDir:      config.TargetDir,
+		Watcher:        watcher,
 	})
 }
 
+// Log a limited set of errors that occurred during a build.
 func logErrors(c *Context, errors []error) {
 	if errors == nil {
 		return
@@ -262,6 +286,7 @@ func logErrors(c *Context, errors []error) {
 	}
 }
 
+// Log a limited set of executed jobs from the last build.
 func logSlowestJobs(c *Context) {
 	sortJobsBySlowest(c.Stats.JobsExecuted)
 
@@ -296,6 +321,13 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 	return true
 }
 
+// Replaces the current process with a fresh one by invoking the same
+// executable with the operating system's exec syscall. This is prompted by the
+// USR2 signal and is intended to allow the process to refresh itself in the
+// case where it's source files changed and it was recompiled.
+//
+// The fsnotify watcher and HTTP server are shut down as gracefully as possible
+// before the replacement occurs.
 func shutdownAndExec(c *Context, finish chan struct{},
 	watcher *fsnotify.Watcher, server *http.Server) {
 
@@ -340,14 +372,119 @@ func sortJobsBySlowest(jobs []*Job) {
 	})
 }
 
-func startServingTargetDirHTTP(c *Context) *http.Server {
+var websocketUpgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+}
+
+func getWebsocketHandler(c *Context, buildComplete *sync.Cond) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		conn, err := websocketUpgrader.Upgrade(w, r, nil)
+		if err != nil {
+			c.Log.Errorf("Error upgrading websocket connection: %v", err)
+			return
+		}
+
+		go websocketReadPump(c, conn, buildComplete)
+	}
+}
+
+func getWebsocketJSHandler(c *Context) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		_, err := w.Write([]byte(`
+// TODO: Reconnect a closed connection.
+console.log("Connecting to Modulir /websocket");
+var socket = new WebSocket("ws://localhost:` + strconv.Itoa(c.Port) + `/websocket");
+
+socket.onclose = function(event) {
+  console.log("Lost webhook connection");
+}
+
+socket.onmessage = function (event) {
+  console.log(` + "`Received event of type '${event.type}' data: ${event.data}`" + `);
+
+  var data = JSON.parse(event.data);
+
+  switch(data.type) {
+    case "build_complete":
+      console.log("Reloading page");
+      location.reload(true);
+      break;
+    default:
+      console.log(` + "`Don't know how to handle type '${data.type}'`" + `);
+  }
+}
+		`))
+		if err != nil {
+			c.Log.Errorf("Error writing websocket JS: %v", err)
+			return
+		}
+	}
+}
+
+type websocketEvent struct {
+	Type string `json:"type"`
+}
+
+const websocketPingPeriod = 30 * time.Second
+
+func websocketReadPump(c *Context, conn *websocket.Conn, buildComplete *sync.Cond) {
+	ticker := time.NewTicker(websocketPingPeriod)
+	defer func() {
+		ticker.Stop()
+		conn.Close()
+	}()
+
+	// This is a hack because of course there's no way to select on a
+	// conditional variable.
+	buildCompleteChan := make(chan struct{})
+	go func() {
+		for {
+			buildComplete.L.Lock()
+			buildComplete.Wait()
+			buildCompleteChan <- struct{}{}
+			buildComplete.L.Unlock()
+		}
+	}()
+
+	var err error
+
+	for {
+		select {
+		case <-buildCompleteChan:
+			if err = conn.WriteJSON(websocketEvent{Type: "build_complete"}); err != nil {
+				goto errored
+			}
+		case <-ticker.C:
+			if err = conn.WriteMessage(websocket.PingMessage, nil); err != nil {
+				goto errored
+			}
+		}
+	}
+errored:
+	c.Log.Errorf("Error writing to websocket: %v", err)
+
+	if err := conn.Close(); err != nil {
+		c.Log.Errorf("Error closing websocket: %v", err)
+	}
+}
+
+// Starts serving the built site over HTTP on the configured port. A server
+// instance is returned so that it can be shut down gracefully.
+func startServingTargetDirHTTP(c *Context, buildComplete *sync.Cond) *http.Server {
 	c.Log.Infof("Serving '%s' to: http://localhost:%v/", path.Clean(c.TargetDir), c.Port)
 
-	handler := http.FileServer(http.Dir(c.TargetDir))
+	mux := http.NewServeMux()
+	mux.Handle("/", http.FileServer(http.Dir(c.TargetDir)))
+
+	if c.StartWebsocket {
+		mux.HandleFunc("/websocket.js", getWebsocketJSHandler(c))
+		mux.HandleFunc("/websocket", getWebsocketHandler(c, buildComplete))
+	}
 
 	server := &http.Server{
 		Addr:    fmt.Sprintf(":%v", c.Port),
-		Handler: handler,
+		Handler: mux,
 	}
 
 	go func() {

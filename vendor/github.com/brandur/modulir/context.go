@@ -9,6 +9,16 @@ import (
 	"github.com/fsnotify/fsnotify"
 )
 
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Public
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
 // Args are the set of arguments accepted by NewContext.
 type Args struct {
 	Concurrency int
@@ -16,6 +26,7 @@ type Args struct {
 	Pool        *Pool
 	Port        int
 	SourceDir   string
+	StartWebsocket bool
 	TargetDir   string
 	Watcher     *fsnotify.Watcher
 }
@@ -63,6 +74,13 @@ type Context struct {
 	// SourceDir is the directory containing source files.
 	SourceDir string
 
+	// StartWebsocket indicates that Modulir should start a websocket
+	// connection that allows clients to automatically refresh upon the
+	// completion of a build loop.
+	//
+	// Defaults to false.
+	StartWebsocket bool
+
 	// Stats tracks various statistics about the build process.
 	//
 	// Statistics are reset between build loops, but are cumulative between
@@ -77,7 +95,7 @@ type Context struct {
 	Watcher *fsnotify.Watcher
 
 	// fileModTimeCache remembers the last modified times of files.
-	fileModTimeCache *FileModTimeCache
+	fileModTimeCache *fileModTimeCache
 }
 
 // NewContext initializes and returns a new Context.
@@ -89,6 +107,7 @@ func NewContext(args *Args) *Context {
 		Pool:        args.Pool,
 		Port:        args.Port,
 		SourceDir:   args.SourceDir,
+		StartWebsocket: args.StartWebsocket,
 		Stats:       &Stats{},
 		TargetDir:   args.TargetDir,
 		Watcher:     args.Watcher,
@@ -252,64 +271,6 @@ func (c *Context) addWatched(fileInfo os.FileInfo, absolutePath string) error {
 	return c.Watcher.Add(absolutePath)
 }
 
-// FileModTimeCache tracks the last modified time of files seen so a
-// determination can be made as to whether they need to be recompiled.
-type FileModTimeCache struct {
-	log                 LoggerInterface
-	mu                  sync.Mutex
-	pathToModTimeMap    map[string]time.Time
-	pathToModTimeMapNew map[string]time.Time
-}
-
-// NewFileModTimeCache returns a new FileModTimeCache.
-func NewFileModTimeCache(log LoggerInterface) *FileModTimeCache {
-	return &FileModTimeCache{
-		log:                 log,
-		pathToModTimeMap:    make(map[string]time.Time),
-		pathToModTimeMapNew: make(map[string]time.Time),
-	}
-}
-
-// changed returns whether the target path's modified time has changed since
-// the last time it was checked. It also saves the last modified time for
-// future checks. The second return value is whether or not the record was
-// already in the cache.
-func (c *FileModTimeCache) isFileUpdated(fileInfo os.FileInfo, absolutePath string) (bool, bool) {
-	modTime := fileInfo.ModTime()
-
-	lastModTime, ok := c.pathToModTimeMap[absolutePath]
-
-	if ok {
-		changed := lastModTime.Before(modTime)
-		if !changed {
-			return false, ok
-		}
-	}
-
-	// Store to the new map for eventual promotion.
-	c.mu.Lock()
-	c.pathToModTimeMapNew[absolutePath] = modTime
-	c.mu.Unlock()
-
-	return true, ok
-}
-
-// promote takes all the new modification times collected during this round
-// (i.e. a build phase) and promotes them into the main map so that they're
-// available for the next one.
-func (c *FileModTimeCache) promote() {
-	c.mu.Lock()
-	defer c.mu.Unlock()
-
-	// Promote all new values to the current map.
-	for path, modTime := range c.pathToModTimeMapNew {
-		c.pathToModTimeMap[path] = modTime
-	}
-
-	// Clear the new map for the next round.
-	c.pathToModTimeMapNew = make(map[string]time.Time)
-}
-
 // Stats tracks various statistics about the build process.
 type Stats struct {
 	// JobsExecuted is a slice of jobs that were executed on the last run.
@@ -353,3 +314,72 @@ func (s *Stats) Reset() {
 	s.Start = time.Now()
 	s.lastLoopStart = time.Now()
 }
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Private
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// FileModTimeCache tracks the last modified time of files seen so a
+// determination can be made as to whether they need to be recompiled.
+type fileModTimeCache struct {
+	log                 LoggerInterface
+	mu                  sync.Mutex
+	pathToModTimeMap    map[string]time.Time
+	pathToModTimeMapNew map[string]time.Time
+}
+
+// NewFileModTimeCache returns a new fileModTimeCache.
+func NewFileModTimeCache(log LoggerInterface) *fileModTimeCache {
+	return &fileModTimeCache{
+		log:                 log,
+		pathToModTimeMap:    make(map[string]time.Time),
+		pathToModTimeMapNew: make(map[string]time.Time),
+	}
+}
+
+// changed returns whether the target path's modified time has changed since
+// the last time it was checked. It also saves the last modified time for
+// future checks. The second return value is whether or not the record was
+// already in the cache.
+func (c *fileModTimeCache) isFileUpdated(fileInfo os.FileInfo, absolutePath string) (bool, bool) {
+	modTime := fileInfo.ModTime()
+
+	lastModTime, ok := c.pathToModTimeMap[absolutePath]
+
+	if ok {
+		changed := lastModTime.Before(modTime)
+		if !changed {
+			return false, ok
+		}
+	}
+
+	// Store to the new map for eventual promotion.
+	c.mu.Lock()
+	c.pathToModTimeMapNew[absolutePath] = modTime
+	c.mu.Unlock()
+
+	return true, ok
+}
+
+// promote takes all the new modification times collected during this round
+// (i.e. a build phase) and promotes them into the main map so that they're
+// available for the next one.
+func (c *fileModTimeCache) promote() {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
+	// Promote all new values to the current map.
+	for path, modTime := range c.pathToModTimeMapNew {
+		c.pathToModTimeMap[path] = modTime
+	}
+
+	// Clear the new map for the next round.
+	c.pathToModTimeMapNew = make(map[string]time.Time)
+}
+

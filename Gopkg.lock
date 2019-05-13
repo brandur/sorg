@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:2eee7d884711aaa1c77cdac2d1e5d1dcfd62621c235c195b187219d8231b6825"
+  digest = "1:9f7a16f01bb7babd8392a10f2fa631b37746b421cec94ee4a75f402b089c6872"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -42,7 +42,7 @@
     "modules/mtoml",
   ]
   pruneopts = ""
-  revision = "d9419a482e3116fcd3155d9da1426cb12aa3d837"
+  revision = "caabb028e61cd28f96ecababe40f9aca254c6883"
 
 [[projects]]
   digest = "1:0deddd908b6b4b768cfc272c16ee61e7088a60f7fe2f06c547bd3d8e1f8b8e77"
@@ -67,6 +67,14 @@
   pruneopts = ""
   revision = "398b0b046082ecb3694c01bec6b336a06a4e530a"
   version = "v1.0.0"
+
+[[projects]]
+  digest = "1:09aa5dd1332b93c96bde671bafb053249dc813febf7d5ca84e8f382ba255d67d"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
+  pruneopts = ""
+  revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
+  version = "v1.4.0"
 
 [[projects]]
   digest = "1:870d441fe217b8e689d7949fef6e43efbc787e50f200cb1e70dbca9204a1d6be"

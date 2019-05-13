@@ -162,6 +162,9 @@ type ReadDirOptions struct {
 	// produced by Vim. These are suffixed with a tilde '~'.
 	ShowBackup bool
 
+	// ShowDirs tell the function not to skip directories.
+	ShowDirs bool
+
 	// ShowHidden tells the function to not skip hidden files (prefixed with a
 	// dot '.').
 	ShowHidden bool
@@ -193,6 +196,10 @@ func ReadDirWithOptions(c *modulir.Context, source string,
 			continue
 		}
 		
+		if (opts == nil || !opts.ShowDirs) && info.IsDir() {
+			continue
+		}
+
 		if (opts == nil || !opts.ShowHidden) && IsHidden(base) {
 			continue
 		}
