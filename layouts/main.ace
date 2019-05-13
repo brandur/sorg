@@ -15,7 +15,7 @@ html lang="en"
     script src="/assets/{{.Release}}/app.js" type="text/javascript"
 
     {{if eq .SorgEnv "development"}}
-      / Served by Modulir itself (but only if webscokets are enabled).
+      / Served by Modulir itself (but only if websockets are enabled).
       script src="/websocket.js" type="text/javascript"
     {{end}}
 
