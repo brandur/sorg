@@ -51,16 +51,16 @@ type Config struct {
 	// Defaults to ".".
 	SourceDir string
 
-	// StartWebsocket indicates that Modulir should be started in development
-	// mode.
-	//
-	// Defaults to false.
-	StartWebsocket bool
-
 	// TargetDir is the directory where the site will be built to.
 	//
 	// Defaults to "./public".
 	TargetDir string
+
+	// Websocket indicates that Modulir should be started in development
+	// mode with a websocket that provides features like live reload.
+	//
+	// Defaults to false.
+	Websocket bool
 }
 
 // Build is one of the main entry points to the program. Call this to build
@@ -248,13 +248,13 @@ func initContext(config *Config, watcher *fsnotify.Watcher) *Context {
 	config = initConfigDefaults(config)
 
 	return NewContext(&Args{
-		Log:            config.Log,
-		Port:           config.Port,
-		Pool:           NewPool(config.Log, config.Concurrency),
-		SourceDir:      config.SourceDir,
-		StartWebsocket: config.StartWebsocket,
-		TargetDir:      config.TargetDir,
-		Watcher:        watcher,
+		Log:       config.Log,
+		Port:      config.Port,
+		Pool:      NewPool(config.Log, config.Concurrency),
+		SourceDir: config.SourceDir,
+		TargetDir: config.TargetDir,
+		Watcher:   watcher,
+		Websocket: config.Websocket,
 	})
 }
 

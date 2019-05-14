@@ -32,7 +32,7 @@ func startServingTargetDirHTTP(c *Context, buildComplete *sync.Cond) *http.Serve
 	mux := http.NewServeMux()
 	mux.Handle("/", http.FileServer(http.Dir(c.TargetDir)))
 
-	if c.StartWebsocket {
+	if c.Websocket {
 		mux.HandleFunc("/websocket.js", getWebsocketJSHandler(c))
 		mux.HandleFunc("/websocket", getWebsocketHandler(c, buildComplete))
 	}

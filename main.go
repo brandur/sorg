@@ -200,6 +200,6 @@ func getModulirConfig() *modulir.Config {
 		Port:           conf.Port,
 		SourceDir:      ".",
 		TargetDir:      conf.TargetDir,
-		StartWebsocket: conf.SorgEnv == sorgEnvDevelopment,
+		Websocket:      conf.SorgEnv == sorgEnvDevelopment,
 	}
 }
