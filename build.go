@@ -420,18 +420,21 @@ func build(c *modulir.Context) []error {
 	sequencesChanged := make(map[string]bool)
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/sequences", nil)
+		sources, err := readDirCached(c, c.SourceDir+"/content/sequences",
+			&mfile.ReadDirOptions{ShowDirs: true})
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/sequences-drafts", nil)
+			drafts, err := readDirCached(c, c.SourceDir+"/content/sequences-drafts",
+				&mfile.ReadDirOptions{ShowDirs: true})
 			if err != nil {
 				return []error{err}
 			}
 			sources = append(sources, drafts...)
 		}
+
 
 		for _, s := range sources {
 			sequencePath := s
@@ -1774,7 +1777,7 @@ func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 		return false, nil
 	}
 
-	title := fmt.Sprintf("%s — %s", photo.Title, sequenceName)
+	title := fmt.Sprintf("%s — %s %s", photo.Title, sequenceName, photo.Slug)
 	description := string(mmarkdown.Render(c, []byte(photo.Description)))
 
 	locals := getLocals(title, map[string]interface{}{
