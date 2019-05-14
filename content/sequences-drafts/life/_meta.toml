@@ -1,12 +1,109 @@
 [[photographs]]
-  slug = "001"
-
   ocurred_at = 2018-09-22T16:12:00Z
   original_image_url = "https://www.dropbox.com/s/lw8djlr7jl516sh/L2018-09-22%2B01.jpg?dl=1"
-  title = "Snowy Trail"
+  slug = "001"
 
   description = """\
-A path through green trees covered by the season's <a href=\"\">first snow</a>.
+A path through green trees covered by the season's first snow.
 
-In practice, this text needs to be a bit longer to be more representative of what we can expect out of a real story. And let's add even a few more words on here just to make sure that it's fleshed out in a way that we might really reasonably expect because I tend to be a wordy writer.\
+And here is another paragraph. In practice, this text needs to be a bit longer to be more representative of what we can expect out of a real story. And let's add even a few more words on here just to make sure that it's fleshed out in a way that we might really reasonably expect because I tend to be a wordy writer.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-10-22T23:43:00Z
+  original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
+  slug = "002"
+
+  description = """\
+A walk down some of Portugal's famous streets before the sun comes cup.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-10-23T12:59:00Z
+  original_image_url = "https://www.dropbox.com/s/0wi75utof8t3irv/L2018-10-23.jpg?dl=1"
+  slug = "003"
+
+  description = """\
+One of Portugal's party streets at its peak.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-10-23T16:02:00Z
+  original_image_url = "https://www.dropbox.com/s/6yv6qpfasr1jx07/L2018-10-23%2B01.jpg?dl=1"
+  slug = "004"
+
+  description = """\
+One of the final acts at open mic night as the show winds down.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-10-29T04:17:00Z
+  original_image_url = "https://www.dropbox.com/s/iiiu8ik9rn4ccjh/L2018-10-29%2B01.jpg?dl=1"
+  slug = "005"
+
+  description = """\
+Boats that used to transport port downriver from the Douro region to Porto.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-10-29T05:24:00Z
+  original_image_url = "https://www.dropbox.com/s/jqmujy3klsf7rrn/L2018-10-29.jpg?dl=1"
+  slug = "006"
+
+  description = """\
+Barrels of port at a cellar in Porto.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-11-27T07:54:00Z
+  original_image_url = "https://www.dropbox.com/s/ipluthmq96zxaow/L2018-11-27.jpg?dl=1"
+  slug = "007"
+
+  description = """\
+The \"slubby\" texture of the famous brand of Japanese denim.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-12-08T12:20:00Z
+  original_image_url = "https://www.dropbox.com/s/b22mhevedfzxvmn/L2018-12-08.JPG?dl=1"
+  slug = "008"
+
+  description = """\
+Captured at San Francisco's Botanical Garden.\
+"""
+
+[[photographs]]
+  ocurred_at = 2018-12-26T16:45:00Z
+  original_image_url = "https://www.dropbox.com/s/nnmv84hyb1vwqir/L1070002.JPG?dl=1"
+  slug = "009"
+
+  description = """\
+The empty streets of downtown Calgary on Christmas week taken from high above.\
+"""
+
+[[photographs]]
+  ocurred_at = 2019-01-01T00:00:45Z
+  original_image_url = "https://www.dropbox.com/s/ucvm4oad3af3pgl/L1070043.JPG?dl=1"
+  slug = "010"
+
+  description = """\
+Fireworks launched over the Calgary Tower for New Year's festivities.\
+"""
+
+[[photographs]]
+  ocurred_at = 2019-02-24T14:18:45Z
+  original_image_url = "https://www.dropbox.com/s/adw9z5yzrpb08qq/L1070210.JPG?dl=1"
+  slug = "011"
+
+  description = """\
+A shot off the ski track at Silver Star with the sun high in the sky.\
+"""
+
+[[photographs]]
+  ocurred_at = 2019-02-28T12:14:45Z
+  original_image_url = "https://www.dropbox.com/s/h7wpttreem9e6yd/L1070242-dead-tree-moss.JPG?dl=1"
+  slug = "012"
+
+  description = """\
+Life resurfacing on the surface of a dead tree along Silver Star's Spirit Bowl.\
 """
