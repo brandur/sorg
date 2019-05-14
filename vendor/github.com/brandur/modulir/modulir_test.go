@@ -15,5 +15,6 @@ func TestShouldRebuild(t *testing.T) {
 
 	// With just a few special cases that don't
 	assert.Equal(t, false, shouldRebuild("a/path", fsnotify.Chmod))
+	assert.Equal(t, false, shouldRebuild("a/path", fsnotify.Rename))
 	assert.Equal(t, false, shouldRebuild("a/path~", fsnotify.Create))
 }

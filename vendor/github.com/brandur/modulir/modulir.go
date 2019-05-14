@@ -6,15 +6,12 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"path"
 	"sort"
-	"strconv"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 	"golang.org/x/sys/unix"
 )
@@ -314,11 +311,28 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 		return false
 	}
 
-	if op&fsnotify.Chmod == fsnotify.Chmod {
-		return false
+	if op&fsnotify.Create != 0 {
+		return true
 	}
 
-	return true
+	if op&fsnotify.Remove != 0 {
+		return true
+	}
+
+	if op&fsnotify.Write != 0 {
+		return true
+	}
+
+	// Ignore everything else. Rationale:
+	//
+	//   * chmod: We don't really care about these as they won't affect build
+	//     output. (Unless potentially we no longer can read the file, but
+	//     we'll go down that path if it ever becomes a problem.)
+	//
+	//   * rename: Will produce a following create event as well, so just
+	//     listen for that instead.
+	//
+	return false
 }
 
 // Replaces the current process with a fresh one by invoking the same
@@ -370,133 +384,6 @@ func sortJobsBySlowest(jobs []*Job) {
 	sort.Slice(jobs, func(i, j int) bool {
 		return jobs[j].Duration < jobs[i].Duration
 	})
-}
-
-var websocketUpgrader = websocket.Upgrader{
-	ReadBufferSize:  1024,
-	WriteBufferSize: 1024,
-}
-
-func getWebsocketHandler(c *Context, buildComplete *sync.Cond) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		conn, err := websocketUpgrader.Upgrade(w, r, nil)
-		if err != nil {
-			c.Log.Errorf("Error upgrading websocket connection: %v", err)
-			return
-		}
-
-		go websocketReadPump(c, conn, buildComplete)
-	}
-}
-
-func getWebsocketJSHandler(c *Context) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte(`
-// TODO: Reconnect a closed connection.
-console.log("Connecting to Modulir /websocket");
-var socket = new WebSocket("ws://localhost:` + strconv.Itoa(c.Port) + `/websocket");
-
-socket.onclose = function(event) {
-  console.log("Lost webhook connection");
-}
-
-socket.onmessage = function (event) {
-  console.log(` + "`Received event of type '${event.type}' data: ${event.data}`" + `);
-
-  var data = JSON.parse(event.data);
-
-  switch(data.type) {
-    case "build_complete":
-      console.log("Reloading page");
-      location.reload(true);
-      break;
-    default:
-      console.log(` + "`Don't know how to handle type '${data.type}'`" + `);
-  }
-}
-		`))
-		if err != nil {
-			c.Log.Errorf("Error writing websocket JS: %v", err)
-			return
-		}
-	}
-}
-
-type websocketEvent struct {
-	Type string `json:"type"`
-}
-
-const websocketPingPeriod = 30 * time.Second
-
-func websocketReadPump(c *Context, conn *websocket.Conn, buildComplete *sync.Cond) {
-	ticker := time.NewTicker(websocketPingPeriod)
-	defer func() {
-		ticker.Stop()
-		conn.Close()
-	}()
-
-	// This is a hack because of course there's no way to select on a
-	// conditional variable.
-	buildCompleteChan := make(chan struct{})
-	go func() {
-		for {
-			buildComplete.L.Lock()
-			buildComplete.Wait()
-			buildCompleteChan <- struct{}{}
-			buildComplete.L.Unlock()
-		}
-	}()
-
-	var err error
-
-	for {
-		select {
-		case <-buildCompleteChan:
-			if err = conn.WriteJSON(websocketEvent{Type: "build_complete"}); err != nil {
-				goto errored
-			}
-		case <-ticker.C:
-			if err = conn.WriteMessage(websocket.PingMessage, nil); err != nil {
-				goto errored
-			}
-		}
-	}
-errored:
-	c.Log.Errorf("Error writing to websocket: %v", err)
-
-	if err := conn.Close(); err != nil {
-		c.Log.Errorf("Error closing websocket: %v", err)
-	}
-}
-
-// Starts serving the built site over HTTP on the configured port. A server
-// instance is returned so that it can be shut down gracefully.
-func startServingTargetDirHTTP(c *Context, buildComplete *sync.Cond) *http.Server {
-	c.Log.Infof("Serving '%s' to: http://localhost:%v/", path.Clean(c.TargetDir), c.Port)
-
-	mux := http.NewServeMux()
-	mux.Handle("/", http.FileServer(http.Dir(c.TargetDir)))
-
-	if c.StartWebsocket {
-		mux.HandleFunc("/websocket.js", getWebsocketJSHandler(c))
-		mux.HandleFunc("/websocket", getWebsocketHandler(c, buildComplete))
-	}
-
-	server := &http.Server{
-		Addr:    fmt.Sprintf(":%v", c.Port),
-		Handler: mux,
-	}
-
-	go func() {
-		err := server.ListenAndServe()
-
-		// ListenAndServe always returns a non-nil error
-		if err != http.ErrServerClosed {
-			exitWithError(errors.Wrap(err, "Error starting HTTP server"))
-		}
-	}()
-
-	return server
 }
 
 // Listens for file system changes from fsnotify and pushes relevant ones back
