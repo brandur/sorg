@@ -195,11 +195,11 @@ func getLog() modulir.LoggerInterface {
 // to a Modulir build loop.
 func getModulirConfig() *modulir.Config {
 	return &modulir.Config{
-		Concurrency:    conf.Concurrency,
-		Log:            getLog(),
-		Port:           conf.Port,
-		SourceDir:      ".",
-		TargetDir:      conf.TargetDir,
-		Websocket:      conf.SorgEnv == sorgEnvDevelopment,
+		Concurrency: conf.Concurrency,
+		Log:         getLog(),
+		Port:        conf.Port,
+		SourceDir:   ".",
+		TargetDir:   conf.TargetDir,
+		Websocket:   conf.SorgEnv == sorgEnvDevelopment,
 	}
 }

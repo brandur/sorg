@@ -1816,8 +1816,8 @@ func renderSequenceIndex(c *modulir.Context, sequenceName string,
 
 	title := fmt.Sprintf("Sequence: %s", sequenceName)
 	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":     "sequences-index",
-		"SequenceName":  sequenceName,
+		"BodyClass":    "sequences-index",
+		"SequenceName": sequenceName,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
