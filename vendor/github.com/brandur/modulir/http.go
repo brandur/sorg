@@ -218,7 +218,14 @@ func websocketWritePump(c *Context, conn *websocket.Conn,
 		case <-buildCompleteChan:
 			conn.SetWriteDeadline(time.Now().Add(websocketWriteWait))
 			writeErr = conn.WriteJSON(websocketEvent{Type: "build_complete"})
-			sendComplete <- struct{}{}
+
+			// Send shouldn't strictly need to be non-blocking, but we do one
+			// anyway just to hedge against future or unexpected problems so as
+			// not to accidentally stall out this loop.
+			select {
+			case sendComplete <- struct{}{}:
+			default:
+			}
 
 		case <-connClosed:
 			done = true

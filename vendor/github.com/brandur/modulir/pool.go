@@ -33,7 +33,7 @@ type Job struct {
 
 	// Name is a name for the job which is helpful for informational and
 	// debugging purposes.
-	Name     string
+	Name string
 }
 
 // Error returns the error message of the error wrapped in the job if this was
@@ -59,7 +59,7 @@ func NewJob(name string, f func() (bool, error)) *Job {
 // Pool is a worker group that runs a number of jobs at a configured
 // concurrency.
 type Pool struct {
-	Jobs   chan *Job
+	Jobs chan *Job
 
 	// JobsAll is a slice of all the jobs that were fed into the pool on the
 	// last run.
@@ -246,7 +246,7 @@ func (p *Pool) Wait() bool {
 
 	// Drops workers out of their current round of work. They'll once again
 	// wait on the run gate.
-	close (p.jobsInternal)
+	close(p.jobsInternal)
 
 	if p.JobsErrored != nil {
 		return false
@@ -261,9 +261,26 @@ func (p *Pool) workForRound() {
 		// lifetime of the loop. Don't change this.
 		job := j
 
+		// Start a Goroutine to track the time taken to do this work.
+		// Unfortunately, we can't actually kill a timed out Goroutine because
+		// Go (and we rely on the user to make sure these get fixed instead),
+		// but we can at least raise on the interface which job is problematic
+		// to help identify what needs to be fixed.
+		done := make(chan struct{}, 1)
+		go func() {
+			select {
+			case <-time.After(jobSoftTimeout):
+				p.log.Errorf("Job soft timeout (job: '%s')", job.Name)
+			case <-done:
+			}
+		}()
+
 		start := time.Now()
 		executed, err := job.F()
 		job.Duration = time.Now().Sub(start)
+
+		// Kill the timeout Goroutine.
+		done <- struct{}{}
 
 		if err != nil {
 			job.Err = err
@@ -284,3 +301,19 @@ func (p *Pool) workForRound() {
 		p.wg.Done()
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Private
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+const (
+	// When to report that a job is probably timed out. We call it a "soft"
+	// timeout because we can't actually kill jobs.
+	jobSoftTimeout = 15 * time.Second
+)
