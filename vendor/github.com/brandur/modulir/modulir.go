@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -306,8 +307,21 @@ func logSlowestJobs(c *Context) {
 // Decides whether a rebuild should be triggered given some input event
 // properties from fsnotify.
 func shouldRebuild(path string, op fsnotify.Op) bool {
+	base := filepath.Base(path)
+
+	// Mac OS' worst mistake.
+	if base == ".DS_Store" {
+		return false
+	}
+
+	// I don't really understand what this is, but the file appears every so
+	// often, and Hugo exempted it too. Maybe some quirk of Mac OS or fsnotify.
+	if base == "4913" {
+		return false
+	}
+
 	// A special case, but ignore creates on files that look like Vim backups.
-	if strings.HasSuffix(path, "~") {
+	if strings.HasSuffix(base, "~") {
 		return false
 	}
 
