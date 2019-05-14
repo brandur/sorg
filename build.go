@@ -657,33 +657,40 @@ func build(c *modulir.Context) []error {
 
 	{
 		for s, p := range sequences {
-			slug := s
+			sequenceSlug := s
 			photos := p
 
 			var err error
-			err = mfile.EnsureDir(c, c.TargetDir+"/sequences/"+slug)
+			err = mfile.EnsureDir(c, c.TargetDir+"/sequences/"+sequenceSlug)
 			if err != nil {
 				return []error{err}
 			}
-			err = mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+slug)
+			err = mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+sequenceSlug)
 			if err != nil {
 				return []error{err}
 			}
+
+			// Sequence index
+			name := fmt.Sprintf("sequence %s: index", sequenceSlug)
+			c.AddJob(name, func() (bool, error) {
+				return renderSequenceIndex(c, sequenceSlug, sequencesChanged[sequenceSlug])
+			})
 
 			for _, p := range photos {
 				photo := p
 
 				// Sequence page
-				name := fmt.Sprintf("sequence %s: %s", slug, photo.Slug)
+				name := fmt.Sprintf("sequence %s: %s", sequenceSlug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, slug, photo,
-						sequencesChanged[slug])
+					return renderSequence(c, sequenceSlug, photo,
+						sequencesChanged[sequenceSlug])
 				})
 
 				// Sequence fetch + resize
-				name = fmt.Sprintf("sequence %s photo: %s", slug, photo.Slug)
+				name = fmt.Sprintf("sequence %s photo: %s", sequenceSlug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return fetchAndResizePhoto(c, c.SourceDir+"/content/photographs/sequences/"+slug, photo)
+					return fetchAndResizePhoto(c,
+						c.SourceDir+"/content/photographs/sequences/"+sequenceSlug, photo)
 				})
 			}
 		}
@@ -1765,6 +1772,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 
 func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 	sequenceChanged bool) (bool, error) {
+
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -1789,6 +1797,31 @@ func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
 		path.Join(c.TargetDir, "sequences", sequenceName, photo.Slug),
+		stemplate.GetAceOptions(viewsChanged), locals)
+}
+
+func renderSequenceIndex(c *modulir.Context, sequenceName string,
+	sequenceChanged bool) (bool, error) {
+
+	viewsChanged := c.ChangedAny(append(
+		[]string{
+			scommon.MainLayout,
+			scommon.ViewsDir + "/sequences/index.ace",
+		},
+		partialViews...,
+	)...)
+	if !sequenceChanged && !viewsChanged {
+		return false, nil
+	}
+
+	title := fmt.Sprintf("Sequence: %s", sequenceName)
+	locals := getLocals(title, map[string]interface{}{
+		"BodyClass":     "sequences-index",
+		"SequenceName":  sequenceName,
+	})
+
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
+		path.Join(c.TargetDir, "sequences", sequenceName, "index.html"),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
