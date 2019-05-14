@@ -7,6 +7,13 @@ html lang="en"
     meta content="text/html; charset=utf-8" http-equiv="Content-Type"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
+    {{if not .InEmail}}
+      {{if eq .SorgEnv "development"}}
+        / Served by Modulir itself (but only if websockets are enabled).
+        script src="/websocket.js" type="text/javascript"
+      {{end}}
+    {{end}}
+
     = css
       blockquote {
         border-left: 5px solid #eee;
