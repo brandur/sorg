@@ -16,7 +16,6 @@ package blackfriday
 import "testing"
 
 func TestDocument(t *testing.T) {
-	t.Parallel()
 	var tests = []string{
 		// Empty document.
 		"",

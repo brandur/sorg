@@ -20,7 +20,6 @@ import (
 )
 
 func TestReference(t *testing.T) {
-	t.Parallel()
 	files := []string{
 		"Amps and angle encoding",
 		"Auto links",
@@ -49,7 +48,6 @@ func TestReference(t *testing.T) {
 }
 
 func TestReference_EXTENSION_NO_EMPTY_LINE_BEFORE_BLOCK(t *testing.T) {
-	t.Parallel()
 	files := []string{
 		"Amps and angle encoding",
 		"Auto links",

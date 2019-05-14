@@ -2,273 +2,176 @@
 
 
 [[projects]]
-  digest = "1:439bfb51db599cd80766736b93b3d10e9314361197ada0b1209a51627a00ccd5"
   name = "github.com/PuerkitoBio/goquery"
   packages = ["."]
-  pruneopts = ""
   revision = "2d2796f41742ece03e8086188fa4db16a3a0b458"
   version = "v1.5.0"
 
 [[projects]]
-  digest = "1:e3726ad6f38f710e84c8dcd0e830014de6eaeea81f28d91ae898afecc078479a"
   name = "github.com/andybalholm/cascadia"
   packages = ["."]
-  pruneopts = ""
   revision = "901648c87902174f774fac311d7f176f8647bdaa"
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:0b1d07f6cd3aa6c84f5684cc0acc10aaf35e75b9d6da703f77bb67d62e629c93"
   name = "github.com/aymerick/douceur"
-  packages = [
-    "css",
-    "inliner",
-    "parser",
-  ]
-  pruneopts = ""
+  packages = ["css","inliner","parser"]
   revision = "c5c95ec357c8235fbd7f34e8c843d36783f3fad9"
   version = "v0.2.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:1f890b75f844904ca9f4d1abd9342f5f948e97359304560a6d266a318b2901b8"
   name = "github.com/brandur/modulir"
-  packages = [
-    ".",
-    "modules/mace",
-    "modules/mfile",
-    "modules/mmarkdown",
-    "modules/mtoc",
-    "modules/mtoml",
-  ]
-  pruneopts = ""
+  packages = [".","modules/mace","modules/mfile","modules/mmarkdown","modules/mtoc","modules/mtoml"]
   revision = "10726fad61205b0b9b487197c9ed4a79f7356424"
 
 [[projects]]
-  digest = "1:0deddd908b6b4b768cfc272c16ee61e7088a60f7fe2f06c547bd3d8e1f8b8e77"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
-  pruneopts = ""
   revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
   version = "v1.1.1"
 
 [[projects]]
-  digest = "1:eb53021a8aa3f599d29c7102e65026242bdedce998a54837dc67f14b6a97c5fd"
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
-  pruneopts = ""
   revision = "c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9"
   version = "v1.4.7"
 
 [[projects]]
-  digest = "1:0fa74e2fa9e562bc1ba6636ba557b8017f9b545c7cde50acff4e0b77519dd137"
   name = "github.com/gorilla/css"
   packages = ["scanner"]
-  pruneopts = ""
   revision = "398b0b046082ecb3694c01bec6b336a06a4e530a"
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:09aa5dd1332b93c96bde671bafb053249dc813febf7d5ca84e8f382ba255d67d"
   name = "github.com/gorilla/websocket"
   packages = ["."]
-  pruneopts = ""
   revision = "66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d"
   version = "v1.4.0"
 
 [[projects]]
-  digest = "1:870d441fe217b8e689d7949fef6e43efbc787e50f200cb1e70dbca9204a1d6be"
   name = "github.com/inconshreveable/mousetrap"
   packages = ["."]
-  pruneopts = ""
   revision = "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
   version = "v1.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:c8c9681aab7b784511c929a13b5b8a2fa5719740e7130bef045f223bce1b3442"
   name = "github.com/joeshaw/envdecode"
   packages = ["."]
-  pruneopts = ""
   revision = "c9e0158544672841c3ebf49308f536d918f2e525"
 
 [[projects]]
-  digest = "1:0f51cee70b0d254dbc93c22666ea2abf211af81c1701a96d04e2284b408621db"
   name = "github.com/konsorten/go-windows-terminal-sequences"
   packages = ["."]
-  pruneopts = ""
   revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
   version = "v1.0.2"
 
 [[projects]]
   branch = "master"
-  digest = "1:4baf03221e12922dc224a470f9e1a36d8c7564af81fd6427924383232d92b20c"
   name = "github.com/lib/pq"
-  packages = [
-    ".",
-    "oid",
-    "scram",
-  ]
-  pruneopts = ""
+  packages = [".","oid","scram"]
   revision = "2ff3cb3adc01768e0a552b3a02575a6df38a9bea"
 
 [[projects]]
-  digest = "1:4c0404dc03d974acd5fcd8b8d3ce687b13bd169db032b89275e8b9d77b98ce8c"
   name = "github.com/patrickmn/go-cache"
   packages = ["."]
-  pruneopts = ""
   revision = "a3647f8e31d79543b2d0f0ae2fe5c379d72cedc0"
   version = "v2.1.0"
 
 [[projects]]
-  digest = "1:3d2c33720d4255686b9f4a7e4d3b94938ee36063f14705c5eb0f73347ed4c496"
   name = "github.com/pelletier/go-toml"
   packages = ["."]
-  pruneopts = ""
   revision = "728039f679cbcd4f6a54e080d2219a4c4928c546"
   version = "v1.4.0"
 
 [[projects]]
-  digest = "1:1d7e1867c49a6dd9856598ef7c3123604ea3daabf5b83f303ff457bcbc410b1d"
   name = "github.com/pkg/errors"
   packages = ["."]
-  pruneopts = ""
   revision = "ba968bfe8b2f7e042a574c888954fccecfa385b4"
   version = "v0.8.1"
 
 [[projects]]
-  digest = "1:256484dbbcd271f9ecebc6795b2df8cad4c458dd0f5fd82a8c2fa0c29f233411"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
-  pruneopts = ""
   revision = "792786c7400a136282c1664665ae0a8db921c6c2"
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:87dffed114a34c714199c74e15c04ecb1c332c669f63f722220a5e4e6eb2ef52"
   name = "github.com/russross/blackfriday"
   packages = ["."]
-  pruneopts = ""
   revision = "d3b5b032dc8e8927d31a5071b56e14c89f045135"
   version = "v2.0.1"
 
 [[projects]]
-  digest = "1:42a59e0ee70c485f96de4a30f86f88266d50b50f918053dec798f0cb2b4b7a88"
   name = "github.com/shurcooL/sanitized_anchor_name"
   packages = ["."]
-  pruneopts = ""
   revision = "7bfe4c7ecddb3666a94b053b422cdd8f5aaa3615"
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:631ea4a52a20ca54eceb1077e8c7e553a4f86a58639824825d9259374f7c362f"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
-  pruneopts = ""
   revision = "8bdbc7bcc01dcbb8ec23dc8a28e332258d25251f"
   version = "v1.4.1"
 
 [[projects]]
-  digest = "1:a1403cc8a94b8d7956ee5e9694badef0e7b051af289caad1cf668331e3ffa4f6"
   name = "github.com/spf13/cobra"
   packages = ["."]
-  pruneopts = ""
   revision = "ef82de70bb3f60c65fb8eebacbb2d122ef517385"
   version = "v0.0.3"
 
 [[projects]]
-  digest = "1:cbaf13cdbfef0e4734ed8a7504f57fe893d471d62a35b982bf6fb3f036449a66"
   name = "github.com/spf13/pflag"
   packages = ["."]
-  pruneopts = ""
   revision = "298182f68c66c05229eb03ac171abe6e309ee79a"
   version = "v1.0.3"
 
 [[projects]]
-  digest = "1:381bcbeb112a51493d9d998bbba207a529c73dbb49b3fd789e48c63fac1f192c"
   name = "github.com/stretchr/testify"
-  packages = [
-    "assert",
-    "require",
-  ]
-  pruneopts = ""
+  packages = ["assert","require"]
   revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
   version = "v1.3.0"
 
 [[projects]]
-  digest = "1:bf83d7fb8e87f39806ce3550657a8a31bbeb96a35eb105bd98e7362559fba27f"
   name = "github.com/yosssi/ace"
   packages = ["."]
-  pruneopts = ""
   revision = "ea038f4770b6746c3f8f84f14fa60d9fe1205b56"
   version = "v0.0.5"
 
 [[projects]]
-  digest = "1:15fe776f1ca23f89e7d7b8258c976e3d3023abf223916f1bc963cae5bfae694a"
   name = "github.com/yosssi/gcss"
   packages = ["."]
-  pruneopts = ""
   revision = "4dc500a9960c4bc1224c28c9695f6447b1d14d99"
   version = "v0.1.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:ccd51599eb31c3ee139de1b1fca3f5d3ddaa5ab37f3a1704a2a8426c0abd1e5b"
   name = "golang.org/x/net"
-  packages = [
-    "html",
-    "html/atom",
-  ]
-  pruneopts = ""
+  packages = ["html","html/atom"]
   revision = "a4d6f7feada510cc50e69a37b484cb0fdc6b7876"
 
 [[projects]]
   branch = "master"
-  digest = "1:8f9263a1e1d886efe08142f5e47c16520d614e3640f10f4e09f98949742d5818"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  pruneopts = ""
   revision = "a5b02f93d862f065920dd6a40dddc66b60d0dec4"
 
 [[projects]]
-  digest = "1:d2eb436da33c2337493d5b9dc8d82803442c24a8f913694ff21e72ac29a02e4d"
   name = "gopkg.in/mailgun/mailgun-go.v1"
   packages = ["."]
-  pruneopts = ""
   revision = "28c45085c063854b83107df6cf37ad8f88462105"
   version = "v1.1.1"
 
 [[projects]]
-  digest = "1:87dffed114a34c714199c74e15c04ecb1c332c669f63f722220a5e4e6eb2ef52"
   name = "gopkg.in/russross/blackfriday.v2"
   packages = ["."]
-  pruneopts = ""
-  revision = "d3b5b032dc8e8927d31a5071b56e14c89f045135"
-  version = "v2.0.1"
+  revision = "cadec560ec52d93835bf2f15bd794700d3a2473b"
+  version = "v2.0.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = [
-    "github.com/aymerick/douceur/inliner",
-    "github.com/brandur/modulir",
-    "github.com/brandur/modulir/modules/mace",
-    "github.com/brandur/modulir/modules/mfile",
-    "github.com/brandur/modulir/modules/mmarkdown",
-    "github.com/brandur/modulir/modules/mtoc",
-    "github.com/brandur/modulir/modules/mtoml",
-    "github.com/joeshaw/envdecode",
-    "github.com/lib/pq",
-    "github.com/patrickmn/go-cache",
-    "github.com/pkg/errors",
-    "github.com/russross/blackfriday",
-    "github.com/sirupsen/logrus",
-    "github.com/spf13/cobra",
-    "github.com/stretchr/testify/require",
-    "github.com/yosssi/ace",
-    "github.com/yosssi/gcss",
-    "golang.org/x/net/html",
-    "gopkg.in/mailgun/mailgun-go.v1",
-  ]
+  inputs-digest = "26ce5152cbb264b3989d3fe88114390cedd38dc788da76a37d74666125ddef77"
   solver-name = "gps-cdcl"
   solver-version = 1
