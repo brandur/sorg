@@ -23,7 +23,7 @@
   branch = "master"
   name = "github.com/brandur/modulir"
   packages = [".","modules/mace","modules/mfile","modules/mmarkdown","modules/mtoc","modules/mtoml"]
-  revision = "10726fad61205b0b9b487197c9ed4a79f7356424"
+  revision = "3c9711fa3f7f62e964d0843276d0927267af443d"
 
 [[projects]]
   name = "github.com/davecgh/go-spew"
