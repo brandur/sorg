@@ -435,7 +435,6 @@ func build(c *modulir.Context) []error {
 			sources = append(sources, drafts...)
 		}
 
-
 		for _, s := range sources {
 			sequencePath := s
 
