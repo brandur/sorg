@@ -9,11 +9,11 @@ $lowlight: #181818
 body.sequences-index
   background: $background
 
-  .sequences-index-description
+  .sequences-index-words
     background: #fff
     padding: 50px 120px
 
-    .sequences-index-description-inner
+    .sequences-index-words-inner
       max-width: 550px
 
   .sequences-index-gallery
@@ -28,7 +28,7 @@ body.sequences-index
     justify-content: center
     -webkit-justify-content: center
 
-    .sequences-index-photo
+    .sequences-index-photograph
       margin: 20px 40px
 
       // Grow images according to window size. Looks good, but I like it
@@ -63,7 +63,7 @@ body.sequences-photo
     margin: 10px 0
     text-align: center
 
-  .sequences-flex
+  .sequences-photo-flex
     align-items: center
     display: -webkit-flex
     display: flex
@@ -72,7 +72,7 @@ body.sequences-photo
     justify-content: center
     margin: 40px 50px
 
-    .sequences-words
+    .sequences-photo-words
       color: $secondary
       font-size: 0.95rem
       line-height: 1.55em
@@ -86,12 +86,12 @@ body.sequences-photo
       p
         margin: 15px 0
 
-      .sequences-divider
+      .sequences-photo-divider
         border-bottom: 1px solid $lowlight
         margin: 15px auto 40px auto
         width: 60%
 
-    .sequences-photograph
+    .sequences-photo-photograph
       background: $lowlight
       max-width: 1500px
       padding: 15px
@@ -100,7 +100,7 @@ body.sequences-photo
         margin: 0
         width: 100%
 
-    .sequences-info
+    .sequences-photo-info
       color: $secondary
       font-family: $sans_serif
       font-size: 0.75rem
@@ -114,16 +114,16 @@ body.sequences-photo
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   body.sequences-index
-    .sequences-index-description
+    .sequences-index-words
       padding: 30px 60px
 
-      .sequences-index-description-inner
+      .sequences-index-words-inner
         max-width: none
 
     .sequences-index-gallery
       padding: 30px 0
 
-      .sequences-index-photo
+      .sequences-index-photograph
         margin: 0 60px
         flex-grow: 1
 
@@ -132,19 +132,19 @@ body.sequences-photo
       font-size: 1.9rem
       letter-spacing: -2px
 
-    .sequences-flex
+    .sequences-photo-flex
       margin: 20px 30px
 
-      .sequences-words
+      .sequences-photo-words
         font-size: 0.85rem
         max-width: 375px
         margin: 20px 30px
 
-        .sequences-divider
+        .sequences-photo-divider
           margin: 15px auto 20px auto
 
-      .sequences-photograph
+      .sequences-photo-photograph
         padding: 10px
 
-      .sequences-info
+      .sequences-photo-info
         margin: 20px 0

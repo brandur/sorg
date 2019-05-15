@@ -1,11 +1,11 @@
 = content main
-  .sequences-index-description
-    .sequences-index-description-inner
+  .sequences-index-words
+    .sequences-index-words-inner
       h1 {{.Sequence.Title}}
       p {{HTML .Description}}
   .sequences-index-gallery
     {{range .Sequence.Photos}}
-      .sequences-index-photo
+      .sequences-index-photograph
         a href="/sequences/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}"
           img src="/photographs/sequences/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}.jpg" srcset="/photographs/sequences/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}@2x.jpg 2x, /photographs/sequence/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}.jpg 1x"
     {{end}}
