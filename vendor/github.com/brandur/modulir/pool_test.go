@@ -48,6 +48,30 @@ func TestWithWork(t *testing.T) {
 	assert.Equal(t, nil, j2.Err)
 }
 
+// Tests the pool with lots of fast jobs that do nothing across multiple
+// rounds. Originally written to try to suss out a race condition.
+func TestWithLargeNonWork(t *testing.T) {
+	p := NewPool(&Logger{Level: LevelDebug}, 30)
+	defer p.Stop()
+
+	numJobs := 300
+	numRounds := 5
+
+	for i := 0; i < numRounds; i++ {
+		p.StartRound()
+		for j := 0; j < numJobs; j++ {
+			p.Jobs <- NewJob("job", func() (bool, error) { return false, nil })
+		}
+		p.Wait()
+
+		// Check state on the pool
+		assert.Equal(t, numJobs, len(p.JobsAll))
+		assert.Equal(t, 0, len(p.JobsErrored))
+		assert.Equal(t, 0, len(p.JobsExecuted)) // Number of `return true` above
+		assert.Equal(t, []error(nil), p.JobErrors())
+	}
+}
+
 func TestWithError(t *testing.T) {
 	p := NewPool(&Logger{Level: LevelDebug}, 10)
 	defer p.Stop()
