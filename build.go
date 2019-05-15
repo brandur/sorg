@@ -890,7 +890,7 @@ type Photo struct {
 	OriginalImageURL string `toml:"original_image_url"`
 
 	// OccurredAt is UTC time when the photo was published.
-	OccurredAt *time.Time `toml:"ocurred_at"`
+	OccurredAt *time.Time `toml:"occurred_at"`
 
 	// Slug is a unique identifier for the photo. Originally these were
 	// generated from Flickr, but I've since just started reusing them for
