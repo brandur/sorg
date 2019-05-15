@@ -36,11 +36,14 @@ body.sequences-index
       //flex-grow: 1
 
       img
+        //border: 5px solid $background
         transition: transform 0.1s
         width: 100%
 
-      img:hover
-        transform: scale(1.05)
+        &:hover
+          //border: 5px solid $lowlight
+          border-radius: 10px
+          transform: scale(1.05)
 
 body.sequences-photo
   background: $background
