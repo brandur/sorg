@@ -67,10 +67,12 @@ body.sequences-photo
     align-items: center
     display: -webkit-flex
     display: flex
+    margin: 40px 50px
+
     -webkit-flex-direction: column
     flex-direction: column
+    -webkit-justify-content: center
     justify-content: center
-    margin: 40px 50px
 
     .sequences-photo-words
       color: $secondary
@@ -93,7 +95,6 @@ body.sequences-photo
 
     .sequences-photo-photograph
       background: $lowlight
-      max-width: 1500px
       padding: 15px
 
       img
@@ -110,7 +111,8 @@ body.sequences-photo
         background: $primary
         border-radius: 2px
         color: $background
-        padding: 3px 5px
+        margin: 0 3px
+        padding: 3px 4px
 
 @media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px)
   body.sequences-index
