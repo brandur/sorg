@@ -7,27 +7,27 @@
     .sequences-photo-photograph
       img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}_large.jpg 1x"
     .sequences-photo-carousel
-      {{if .PhotoPrevPrev}}
-        .sequences-photo-carousel-photograph
+      .sequences-photo-carousel-photograph
+        {{if .PhotoPrevPrev}}
           a href="/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrevPrev.Slug}}"
             img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrevPrev.Slug}}.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrevPrev.Slug}}@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrevPrev.Slug}}.jpg 1x"
-      {{end}}
-      {{if .PhotoPrev}}
-        .sequences-photo-carousel-photograph
+        {{end}}
+      .sequences-photo-carousel-photograph
+        {{if .PhotoPrev}}
           a href="/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrev.Slug}}"
             img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrev.Slug}}.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrev.Slug}}@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .PhotoPrev.Slug}}.jpg 1x"
-      {{end}}
+        {{end}}
       .sequences-photo-carousel-photograph-current
         img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}.jpg 1x"
-      {{if .PhotoNext}}
-        .sequences-photo-carousel-photograph
+      .sequences-photo-carousel-photograph
+        {{if .PhotoNext}}
           a href="/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoNext.Slug}}"
             img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoNext.Slug}}.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoNext.Slug}}@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .PhotoNext.Slug}}.jpg 1x"
-      {{end}}
-      {{if .PhotoNextNext}}
-        .sequences-photo-carousel-photograph
+        {{end}}
+      .sequences-photo-carousel-photograph
+        {{if .PhotoNextNext}}
           a href="/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoNextNext.Slug}}"
             img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoNextNext.Slug}}.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .PhotoNextNext.Slug}}@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .PhotoNextNext.Slug}}.jpg 1x"
-      {{end}}
+        {{end}}
     .sequences-photo-info
       | Image <span class="slug">{{.Photo.Slug}}</span> of the <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Slug}} sequence</a>.
