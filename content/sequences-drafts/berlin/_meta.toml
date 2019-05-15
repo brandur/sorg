@@ -1,0 +1,14 @@
+title = "Berlin"
+description = """\
+Hello.\
+"""
+
+[[photographs]]
+  ocurred_at = 2016-05-09T06:41:53-07:00
+  original_image_url = "https://www.dropbox.com/s/eg1z8gm8g9tu2eb/28241069746.jpg?dl=1"
+  slug = "001"
+  title = "A spring door"
+
+  description = """\
+A door in Potsdam.\
+"""
