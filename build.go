@@ -673,7 +673,7 @@ func build(c *modulir.Context) []error {
 			// Sequence index
 			name := fmt.Sprintf("sequence %s: index", sequence.Slug)
 			c.AddJob(name, func() (bool, error) {
-				return renderSequenceIndex(c, sequence, photos,
+				return renderSequence(c, sequence, photos,
 					sequencesChanged[sequence.Slug])
 			})
 
@@ -684,7 +684,7 @@ func build(c *modulir.Context) []error {
 				// Sequence page
 				name := fmt.Sprintf("sequence %s: %s", sequence.Slug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, sequence, photo, photoIndex,
+					return renderSequencePhoto(c, sequence, photo, photoIndex,
 						sequencesChanged[sequence.Slug])
 				})
 
@@ -1789,7 +1789,36 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 	return true, squantified.RenderRuns(c, db, viewsChanged, getLocals)
 }
 
-func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo, photoIndex int,
+func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
+	sequenceChanged bool) (bool, error) {
+
+	viewsChanged := c.ChangedAny(append(
+		[]string{
+			scommon.MainLayout,
+			scommon.ViewsDir + "/sequences/show.ace",
+		},
+		partialViews...,
+	)...)
+	if !sequenceChanged && !viewsChanged {
+		return false, nil
+	}
+
+	title := fmt.Sprintf("Sequence: %s", sequence.Title)
+	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
+
+	locals := getLocals(title, map[string]interface{}{
+		"BodyClass":   "sequences-index",
+		"Description": description,
+		"Photos":      photos,
+		"Sequence":    sequence,
+	})
+
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/show.ace",
+		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
+		stemplate.GetAceOptions(viewsChanged), locals)
+}
+
+func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, photoIndex int,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
@@ -1803,7 +1832,9 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo, photoI
 		return false, nil
 	}
 
-	var photoPrevPrev, photoPrev, photoNext, photoNextNext *Photo
+	// A set of previous and next photos for the carousel.
+	var photoPrev, photoPrevPrev *Photo
+	var photoNext, photoNextNext *Photo
 	if photoIndex-2 >= 0 {
 		photoPrevPrev = sequence.Photos[photoIndex-2]
 	}
@@ -1834,35 +1865,6 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo, photoI
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
 		path.Join(c.TargetDir, "sequences", sequence.Slug, photo.Slug),
-		stemplate.GetAceOptions(viewsChanged), locals)
-}
-
-func renderSequenceIndex(c *modulir.Context, sequence *Sequence, photos []*Photo,
-	sequenceChanged bool) (bool, error) {
-
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/sequences/index.ace",
-		},
-		partialViews...,
-	)...)
-	if !sequenceChanged && !viewsChanged {
-		return false, nil
-	}
-
-	title := fmt.Sprintf("Sequence: %s", sequence.Title)
-	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
-
-	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":   "sequences-index",
-		"Description": description,
-		"Photos":      photos,
-		"Sequence":    sequence,
-	})
-
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
-		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
