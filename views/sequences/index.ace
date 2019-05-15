@@ -1,7 +1,8 @@
 = content main
   .sequences-index-description
-    h1 {{.Sequence.Title}}
-    p {{HTML .Description}}
+    .sequences-index-description-inner
+      h1 {{.Sequence.Title}}
+      p {{HTML .Description}}
   .sequences-index-gallery
     {{range .Sequence.Photos}}
       .sequences-index-photo
