@@ -673,7 +673,8 @@ func build(c *modulir.Context) []error {
 			// Sequence index
 			name := fmt.Sprintf("sequence %s: index", sequenceSlug)
 			c.AddJob(name, func() (bool, error) {
-				return renderSequenceIndex(c, sequenceSlug, sequencesChanged[sequenceSlug])
+				return renderSequenceIndex(c, sequenceSlug, photos,
+					sequencesChanged[sequenceSlug])
 			})
 
 			for _, p := range photos {
@@ -1800,7 +1801,7 @@ func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-func renderSequenceIndex(c *modulir.Context, sequenceName string,
+func renderSequenceIndex(c *modulir.Context, sequenceName string, photos []*Photo,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
@@ -1817,6 +1818,7 @@ func renderSequenceIndex(c *modulir.Context, sequenceName string,
 	title := fmt.Sprintf("Sequence: %s", sequenceName)
 	locals := getLocals(title, map[string]interface{}{
 		"BodyClass":    "sequences-index",
+		"Photos":       photos,
 		"SequenceName": sequenceName,
 	})
 

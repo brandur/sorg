@@ -1,2 +1,10 @@
 = content main
-  .sequences-index-flex
+  .sequences-index-description
+    h1 Life
+    p This is some description about that.
+  .sequences-index-gallery
+    {{range .Photos}}
+      .sequences-index-photo
+        a href="/sequences/{{$.SequenceName}}/{{QueryEscape .Slug}}"
+          img src="/photographs/sequences/{{$.SequenceName}}/{{QueryEscape .Slug}}.jpg" srcset="/photographs/sequences/{{$.SequenceName}}/{{QueryEscape .Slug}}@2x.jpg 2x, /photographs/sequence/{{$.SequenceName}}/{{QueryEscape .Slug}}.jpg 1x"
+    {{end}}

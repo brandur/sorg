@@ -6,6 +6,37 @@ $primary: #fff
 $secondary: #ddd
 $lowlight: #181818
 
+body.sequences-index
+  background: $background
+
+  .sequences-index-description
+    background: #fff
+    padding: 40px 80px
+
+  .sequences-index-gallery
+    display: -webkit-flex
+    display: flex
+    -webkit-flex-direction: row
+    flex-direction: row
+    -webkit-wrap: wrap
+    flex-wrap: wrap
+    justify-content: center
+    padding: 30px 0
+
+    .sequences-index-photo
+      margin: 20px 50px
+
+      // Grow images according to window size. Looks good, but I like it
+      // without a little better.
+      //flex-grow: 1
+
+      img
+        transition: transform 0.1s
+        width: 100%
+
+      img:hover
+        transform: scale(1.05)
+
 body.sequences-photo
   background: $background
   color: $primary
