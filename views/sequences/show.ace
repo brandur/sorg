@@ -7,5 +7,5 @@
     {{range .Sequence.Photos}}
       .sequences-index-photograph
         a href="/sequences/{{$.Sequence.Slug}}/{{.Slug}}"
-          {{printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .Slug | RetinaImage | HTML}}
+          {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .Slug) .Title | HTML}}
     {{end}}

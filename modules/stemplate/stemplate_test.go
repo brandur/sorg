@@ -157,6 +157,20 @@ func TestRenderRetinaImage(t *testing.T) {
 	)
 }
 
+func TestRenderRetinaImageTitle(t *testing.T) {
+	assert.Equal(t,
+
+		`<img src="/assets/link/image.jpg" srcset="/assets/link/image@2x.jpg 2x, /assets/link/image.jpg 1x" title="my image">`,
+		retinaImageTitle(`/assets/link/image.jpg`, "my image"),
+	)
+
+	assert.Equal(t,
+
+		`<img src="/assets/link/image.png" srcset="/assets/link/image@2x.png 2x, /assets/link/image.png 1x" title="my image">`,
+		retinaImageTitle(`/assets/link/image.png`, "my image"),
+	)
+}
+
 func TestRound(t *testing.T) {
 	assert.Equal(t, 0.0, round(0.2))
 	assert.Equal(t, 1.0, round(0.8))

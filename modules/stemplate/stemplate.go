@@ -35,6 +35,7 @@ var FuncMap = template.FuncMap{
 	"QueryEscape":                  queryEscape,
 	"RenderTweetContent":           renderTweetContent,
 	"RetinaImage":                  retinaImage,
+	"RetinaImageTitle":             retinaImageTitle,
 	"RoundToString":                roundToString,
 	"To2x":                         To2x,
 	"ToStars":                      toStars,
@@ -253,6 +254,13 @@ func retinaImage(source string) string {
 	retinaSource := strings.TrimSuffix(source, ext) + "@2x" + ext
 	return fmt.Sprintf(`<img src="%s" srcset="%s 2x, %s 1x">`,
 		source, retinaSource, source)
+}
+
+func retinaImageTitle(source, alt string) string {
+	ext := filepath.Ext(source)
+	retinaSource := strings.TrimSuffix(source, ext) + "@2x" + ext
+	return fmt.Sprintf(`<img src="%s" srcset="%s 2x, %s 1x" title="%s">`,
+		source, retinaSource, source, strings.ReplaceAll(alt, `"`, `\"`))
 }
 
 // There is no "round" function built into Go :/

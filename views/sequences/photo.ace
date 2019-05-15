@@ -10,24 +10,24 @@
       .sequences-photo-carousel-photograph
         {{if .PhotoPrevPrev}}
           a href="/sequences/{{.Sequence.Slug}}/{{.PhotoPrevPrev.Slug}}"
-            {{printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoPrevPrev.Slug | RetinaImage | HTML}}
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoPrevPrev.Slug) .PhotoPrevPrev.Title | HTML}}
         {{end}}
       .sequences-photo-carousel-photograph
         {{if .PhotoPrev}}
           a href="/sequences/{{.Sequence.Slug}}/{{.PhotoPrev.Slug}}"
-            {{printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoPrev.Slug | RetinaImage | HTML}}
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoPrev.Slug) .PhotoPrev.Title | HTML}}
         {{end}}
       .sequences-photo-carousel-photograph-current
-        {{printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .Photo.Slug | RetinaImage | HTML}}
+        {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .Photo.Slug) .Photo.Title | HTML}}
       .sequences-photo-carousel-photograph
         {{if .PhotoNext}}
           a href="/sequences/{{.Sequence.Slug}}/{{.PhotoNext.Slug}}"
-            {{printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoNext.Slug | RetinaImage | HTML}}
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoNext.Slug) .PhotoNext.Title | HTML}}
         {{end}}
       .sequences-photo-carousel-photograph
         {{if .PhotoNextNext}}
           a href="/sequences/{{.Sequence.Slug}}/{{.PhotoNextNext.Slug}}"
-            {{printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoNextNext.Slug | RetinaImage | HTML}}
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoNextNext.Slug) .PhotoNextNext.Title | HTML}}
         {{end}}
     .sequences-photo-info
       | Image <span class="slug">{{.Photo.Slug}}</span> of the <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Slug}} sequence</a>.
