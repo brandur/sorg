@@ -205,7 +205,7 @@ func build(c *Context, f func(*Context) []error,
 			return len(errors) < 1
 
 		case lastChangedSources = <-rebuild:
-			c.Log.Infof("Build loopo detected change on %v; rebuilding",
+			c.Log.Infof("Build loop detected change on %v; rebuilding",
 				mapKeys(lastChangedSources))
 		}
 	}
