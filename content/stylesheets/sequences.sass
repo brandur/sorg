@@ -68,10 +68,10 @@ body.sequences-photo
 
   .sequences-photo-flex
     align-items: center
-    display: -webkit-flex
-    display: flex
     margin: 40px 50px
 
+    display: -webkit-flex
+    display: flex
     -webkit-flex-direction: column
     flex-direction: column
     -webkit-justify-content: center
@@ -105,11 +105,37 @@ body.sequences-photo
         margin: 0
         width: 100%
 
+    .sequences-photo-carousel
+      margin: 40px 0 10px 0
+      max-width: 700px
+      width: 100%
+
+      display: -webkit-flex
+      display: flex
+      -webkit-align-items: center
+      align-items: center
+      -webkit-flex-direction: row
+      flex-direction: row
+      -webkit-justify-content: space-around
+      justify-content: space-around
+
+      .sequences-photo-carousel-photograph, .sequences-photo-carousel-photograph-current
+        margin: 5px
+
+      .sequences-photo-carousel-photograph
+        img
+          width: 70px
+
+      .sequences-photo-carousel-photograph-current
+        img
+          border-radius: 5px
+          width: 90px
+
     .sequences-photo-info
       color: $secondary
       font-family: $sans_serif
       font-size: 0.75rem
-      margin: 40px 0
+      margin: 10px 0 40px 0
 
       span.slug
         background: $primary
@@ -139,12 +165,12 @@ body.sequences-photo
       letter-spacing: -2px
 
     .sequences-photo-flex
-      margin: 20px 30px
+      margin: 20px 40px
 
       .sequences-photo-words
         font-size: 0.85rem
-        max-width: 375px
-        margin: 20px 30px
+        max-width: none
+        margin: 20px 0
 
         .sequences-photo-divider
           margin: 15px auto 20px auto
@@ -155,5 +181,8 @@ body.sequences-photo
         img
           border-radius: 10px
 
+      .sequences-photo-carousel
+        margin: 20px 0 10px 0
+
       .sequences-photo-info
-        margin: 20px 0
+        margin: 10px 0 20px 0

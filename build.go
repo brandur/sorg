@@ -677,13 +677,14 @@ func build(c *modulir.Context) []error {
 					sequencesChanged[sequence.Slug])
 			})
 
-			for _, p := range sequence.Photos {
+			for i, p := range sequence.Photos {
+				photoIndex := i
 				photo := p
 
 				// Sequence page
 				name := fmt.Sprintf("sequence %s: %s", sequence.Slug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, sequence, photo,
+					return renderSequence(c, sequence, photo, photoIndex,
 						sequencesChanged[sequence.Slug])
 				})
 
@@ -1788,7 +1789,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 	return true, squantified.RenderRuns(c, db, viewsChanged, getLocals)
 }
 
-func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo,
+func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo, photoIndex int,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
@@ -1802,6 +1803,20 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo,
 		return false, nil
 	}
 
+	var photoPrevPrev, photoPrev, photoNext, photoNextNext *Photo
+	if photoIndex-2 >= 0 {
+		photoPrevPrev = sequence.Photos[photoIndex-2]
+	}
+	if photoIndex-1 >= 0 {
+		photoPrev = sequence.Photos[photoIndex-1]
+	}
+	if photoIndex+1 < len(sequence.Photos) {
+		photoNext = sequence.Photos[photoIndex+1]
+	}
+	if photoIndex+2 < len(sequence.Photos) {
+		photoNextNext = sequence.Photos[photoIndex+2]
+	}
+
 	title := fmt.Sprintf("%s — %s %s", photo.Title, sequence.Title, photo.Slug)
 	description := string(mmarkdown.Render(c, []byte(photo.Description)))
 
@@ -1809,6 +1824,10 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo,
 		"BodyClass":     "sequences-photo",
 		"Description":   description,
 		"Photo":         photo,
+		"PhotoNext":     photoNext,
+		"PhotoNextNext": photoNextNext,
+		"PhotoPrev":     photoPrev,
+		"PhotoPrevPrev": photoPrevPrev,
 		"Sequence":      sequence,
 		"ViewportWidth": 600,
 	})
