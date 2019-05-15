@@ -72,7 +72,7 @@ var (
 	passages  []*spassages.Passage
 	pages     map[string]*Page
 	photos    []*Photo
-	sequences = make(map[string][]*Photo)
+	sequences = make(map[string]*Sequence)
 	talks     []*stalks.Talk
 )
 
@@ -448,13 +448,14 @@ func build(c *modulir.Context) []error {
 
 				slug := path.Base(sequencePath)
 
-				var photosWrapper PhotoWrapper
-				err = mtoml.ParseFile(c, source, &photosWrapper)
+				var sequence Sequence
+				err = mtoml.ParseFile(c, source, &sequence)
 				if err != nil {
 					return true, err
 				}
+				sequence.Slug = slug
 
-				sequences[slug] = photosWrapper.Photos
+				sequences[slug] = &sequence
 				sequencesChanged[slug] = true
 				return true, nil
 			})
@@ -656,42 +657,41 @@ func build(c *modulir.Context) []error {
 	//
 
 	{
-		for s, p := range sequences {
-			sequenceSlug := s
-			photos := p
+		for _, s := range sequences {
+			sequence := s
 
 			var err error
-			err = mfile.EnsureDir(c, c.TargetDir+"/sequences/"+sequenceSlug)
+			err = mfile.EnsureDir(c, c.TargetDir+"/sequences/"+sequence.Slug)
 			if err != nil {
 				return []error{err}
 			}
-			err = mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+sequenceSlug)
+			err = mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+sequence.Slug)
 			if err != nil {
 				return []error{err}
 			}
 
 			// Sequence index
-			name := fmt.Sprintf("sequence %s: index", sequenceSlug)
+			name := fmt.Sprintf("sequence %s: index", sequence.Slug)
 			c.AddJob(name, func() (bool, error) {
-				return renderSequenceIndex(c, sequenceSlug, photos,
-					sequencesChanged[sequenceSlug])
+				return renderSequenceIndex(c, sequence, photos,
+					sequencesChanged[sequence.Slug])
 			})
 
-			for _, p := range photos {
+			for _, p := range sequence.Photos {
 				photo := p
 
 				// Sequence page
-				name := fmt.Sprintf("sequence %s: %s", sequenceSlug, photo.Slug)
+				name := fmt.Sprintf("sequence %s: %s", sequence.Slug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, sequenceSlug, photo,
-						sequencesChanged[sequenceSlug])
+					return renderSequence(c, sequence, photo,
+						sequencesChanged[sequence.Slug])
 				})
 
 				// Sequence fetch + resize
-				name = fmt.Sprintf("sequence %s photo: %s", sequenceSlug, photo.Slug)
+				name = fmt.Sprintf("sequence %s photo: %s", sequence.Slug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
 					return fetchAndResizePhoto(c,
-						c.SourceDir+"/content/photographs/sequences/"+sequenceSlug, photo)
+						c.SourceDir+"/content/photographs/sequences/"+sequence.Slug, photo)
 				})
 			}
 		}
@@ -905,6 +905,23 @@ type Photo struct {
 type PhotoWrapper struct {
 	// Photos is a collection of photos within the top-level wrapper.
 	Photos []*Photo `toml:"photographs"`
+}
+
+// Sequence is a sequence -- a series of photos that represent some kind of
+// journey.
+type Sequence struct {
+	// Description is the description of the photograph.
+	Description string `toml:"description"`
+
+	// Photos is a collection of photos within the top-level wrapper.
+	Photos []*Photo `toml:"photographs"`
+
+	// Slug is a unique identifier for the sequence. It's interpreted from the
+	// sequence's path.
+	Slug string `toml:"-"`
+
+	// Title is the title of the sequence.
+	Title string `toml:"title"`
 }
 
 // Tag is a symbol assigned to an article to categorize it.
@@ -1771,7 +1788,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 	return true, squantified.RenderRuns(c, db, viewsChanged, getLocals)
 }
 
-func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
+func renderSequence(c *modulir.Context, sequence *Sequence, photo *Photo,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
@@ -1785,23 +1802,23 @@ func renderSequence(c *modulir.Context, sequenceName string, photo *Photo,
 		return false, nil
 	}
 
-	title := fmt.Sprintf("%s — %s %s", photo.Title, sequenceName, photo.Slug)
+	title := fmt.Sprintf("%s — %s %s", photo.Title, sequence.Title, photo.Slug)
 	description := string(mmarkdown.Render(c, []byte(photo.Description)))
 
 	locals := getLocals(title, map[string]interface{}{
 		"BodyClass":     "sequences-photo",
 		"Description":   description,
 		"Photo":         photo,
-		"SequenceName":  sequenceName,
+		"Sequence":      sequence,
 		"ViewportWidth": 600,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
-		path.Join(c.TargetDir, "sequences", sequenceName, photo.Slug),
+		path.Join(c.TargetDir, "sequences", sequence.Slug, photo.Slug),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-func renderSequenceIndex(c *modulir.Context, sequenceName string, photos []*Photo,
+func renderSequenceIndex(c *modulir.Context, sequence *Sequence, photos []*Photo,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
@@ -1815,15 +1832,18 @@ func renderSequenceIndex(c *modulir.Context, sequenceName string, photos []*Phot
 		return false, nil
 	}
 
-	title := fmt.Sprintf("Sequence: %s", sequenceName)
+	title := fmt.Sprintf("Sequence: %s", sequence.Title)
+	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
+
 	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":    "sequences-index",
-		"Photos":       photos,
-		"SequenceName": sequenceName,
+		"BodyClass":   "sequences-index",
+		"Description": description,
+		"Photos":      photos,
+		"Sequence":    sequence,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
-		path.Join(c.TargetDir, "sequences", sequenceName, "index.html"),
+		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 

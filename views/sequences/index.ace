@@ -1,10 +1,10 @@
 = content main
   .sequences-index-description
-    h1 Life
-    p This is some description about that.
+    h1 {{.Sequence.Title}}
+    p {{HTML .Description}}
   .sequences-index-gallery
-    {{range .Photos}}
+    {{range .Sequence.Photos}}
       .sequences-index-photo
-        a href="/sequences/{{$.SequenceName}}/{{QueryEscape .Slug}}"
-          img src="/photographs/sequences/{{$.SequenceName}}/{{QueryEscape .Slug}}.jpg" srcset="/photographs/sequences/{{$.SequenceName}}/{{QueryEscape .Slug}}@2x.jpg 2x, /photographs/sequence/{{$.SequenceName}}/{{QueryEscape .Slug}}.jpg 1x"
+        a href="/sequences/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}"
+          img src="/photographs/sequences/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}.jpg" srcset="/photographs/sequences/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}@2x.jpg 2x, /photographs/sequence/{{$.Sequence.Slug}}/{{QueryEscape .Slug}}.jpg 1x"
     {{end}}

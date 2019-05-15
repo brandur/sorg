@@ -5,6 +5,6 @@
       .sequences-divider
       {{HTML .Description}}
     .sequences-photograph
-      img src="/photographs/sequences/{{.SequenceName}}/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/sequences/{{.SequenceName}}/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.SequenceName}}/{{QueryEscape .Photo.Slug}}_large.jpg 1x"
+      img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .Photo.Slug}}_large.jpg 1x"
     .sequences-info
-      | Image <span class="slug">{{.Photo.Slug}}</span> of the <a href="/sequences/{{.SequenceName}}">{{.SequenceName}} sequence</a>.
+      | Image <span class="slug">{{.Photo.Slug}}</span> of the <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Slug}} sequence</a>.
