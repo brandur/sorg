@@ -72,6 +72,8 @@ func Build(config *Config, f func(*Context) []error) {
 	finish <- struct{}{}
 
 	c := initContext(config, nil)
+	ensureTargetDir(c)
+
 	success := build(c, f, finish, buildComplete)
 	if !success {
 		os.Exit(1)
@@ -92,19 +94,11 @@ func BuildLoop(config *Config, f func(*Context) []error) {
 	defer watcher.Close()
 
 	c := initContext(config, watcher)
+	ensureTargetDir(c)
 
 	// Serve HTTP
 	var server *http.Server
 	go func() {
-		// Wait for the first build to complete before serving anything.
-		//
-		// Note: this is probably only the right move if the target directory
-		// doesn't exist yet. Otherwise it doesn't really matter. TODO: Look
-		// into that more.
-		buildComplete.L.Lock()
-		buildComplete.Wait()
-		buildComplete.L.Unlock()
-
 		server = startServingTargetDirHTTP(c, buildComplete)
 	}()
 
@@ -208,6 +202,15 @@ func build(c *Context, f func(*Context) []error,
 			c.Log.Infof("Build loop detected change on %v; rebuilding",
 				mapKeys(lastChangedSources))
 		}
+	}
+}
+
+// Ensures that the configured TargetDir exists. We want to do this early (i.e.
+// before the build loop) so that we can start the HTTP server right away
+// instead of waiting for a build.
+func ensureTargetDir(c *Context) {
+	if err := os.MkdirAll(c.TargetDir, 0755); err != nil {
+		exitWithError(fmt.Errorf("Error creating target directory: %v", err))
 	}
 }
 
