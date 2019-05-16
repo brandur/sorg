@@ -339,12 +339,13 @@ func shutdownAndExec(c *Context, finish chan struct{},
 		context.Background(),
 		5*time.Second,
 	)
-	defer cancel()
 
 	c.Log.Infof("Shutting down HTTP server")
 	if err := server.Shutdown(timeoutCtx); err != nil {
 		exitWithError(err)
 	}
+
+	cancel()
 
 	// Returns an absolute path.
 	execPath, err := os.Executable()
