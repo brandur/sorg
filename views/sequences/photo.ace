@@ -32,4 +32,4 @@
             {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .PhotoNextNext.Slug) .PhotoNextNext.Title | HTML}}
         {{end}}
     .sequences-photo-info
-      | Image <span class="slug">{{.Photo.Slug}}</span> of the <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Title}} sequence</a>.
+      | Image <span class="slug">{{.Photo.Slug}}</span> of the sequence <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Title}}</a>.
