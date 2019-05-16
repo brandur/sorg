@@ -24,14 +24,10 @@ import (
 // signaled rebuildDone, so there is a possibility that in the case of very
 // fast consecutive changes the build might not be perfectly up to date.
 func watchChanges(c *Context, watchEvents chan fsnotify.Event, watchErrors chan error,
-	finish chan struct{}, rebuild chan map[string]struct{}, rebuildDone chan struct{}) {
+	rebuild chan map[string]struct{}, rebuildDone chan struct{}) {
 
 	for {
 		select {
-		case <-finish:
-			c.Log.Infof("Watcher detected finish signal; stopping")
-			return
-
 		case event, ok := <-watchEvents:
 			if !ok {
 				c.Log.Infof("Watcher detected closed channel; stopping")

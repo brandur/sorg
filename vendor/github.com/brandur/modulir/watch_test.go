@@ -25,12 +25,11 @@ func TestShouldRebuild(t *testing.T) {
 func TestWatchChanges(t *testing.T) {
 	watchEvents := make(chan fsnotify.Event, 1)
 	watchErrors := make(chan error, 1)
-	finish := make(chan struct{}, 1)
 	rebuild := make(chan map[string]struct{}, 1)
 	rebuildDone := make(chan struct{}, 1)
 
 	go watchChanges(newContext(), watchEvents, watchErrors,
-		finish, rebuild, rebuildDone)
+		rebuild, rebuildDone)
 	
 	{
 		// An ineligible even that will be ignored.
@@ -78,8 +77,8 @@ func TestWatchChanges(t *testing.T) {
 		rebuildDone <- struct{}{}
 	}
 
-	// Finish up
-	finish <- struct{}{}
+	// Finish up by closing the channel to stop the loop
+	close(watchEvents)
 }
 
 // Helper to easily create a new Modulir context.
