@@ -182,7 +182,6 @@ func build(c *modulir.Context) []error {
 
 	{
 		commonDirs := []string{
-			c.TargetDir,
 			c.TargetDir + "/articles",
 			c.TargetDir + "/fragments",
 			c.TargetDir + "/passages",
