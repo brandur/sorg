@@ -46,6 +46,11 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
+const (
+	// Special expression for viewport width that says to use the device width.
+	viewportWidthDeviceWidth = "device-width"
+)
+
 // A set of tag constants to hopefully help ensure that this set doesn't grow
 // very much.
 const (
@@ -1171,7 +1176,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 		"SorgEnv":           conf.SorgEnv,
 		"Title":             title,
 		"TwitterCard":       nil,
-		"ViewportWidth":     "device-width",
+		"ViewportWidth":     viewportWidthDeviceWidth,
 	}
 
 	for k, v := range locals {
@@ -1992,7 +1997,7 @@ func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, p
 		"PhotoPrev":     photoPrev,
 		"PhotoPrevPrev": photoPrevPrev,
 		"Sequence":      sequence,
-		"ViewportWidth": 600,
+		"ViewportWidth": viewportWidthDeviceWidth,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
