@@ -5,7 +5,7 @@
       h1 {{.Sequence.Title}}
       p {{HTML .Description}}
       .divider
-      p.atom Follow the <a href="/sequences/{{.Sequence.Slug}}.atom" class="feed">Atom feed for this sequence</a>, or a combined one <a href="/sequences.atom" class="feed">for all sequences</a>.
+      p.atom Follow the <a href="/sequences/{{.Sequence.Slug}}.atom" class="feed">Atom feed for this sequence</a>, or a <a href="/sequences.atom" class="feed">combined one of all sequences</a>.
       p.atom I also <a href="https://twitter.com/brandur" class="twitter">tweet</a> all new photos.
   .sequences-index-gallery
     {{range .Sequence.Photos}}
