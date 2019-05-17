@@ -10,6 +10,10 @@ html lang="en"
 
     link href="/articles.atom" rel="alternate" title="Articles - brandur.org" type="application/atom+xml"
     link href="/fragments.atom" rel="alternate" title="Fragments - brandur.org" type="application/atom+xml"
+    link href="/sequences.atom" rel="alternate" title="Sequences - brandur.org" type="application/atom+xml"
+    {{if .Sequence}}
+      link href="/sequences/{{.Sequence.Slug}}.atom" rel="alternate" title="Sequences - {{.Sequence.Title}} - brandur.org" type="application/atom+xml"
+    {{end}}
 
     link href="/assets/{{.Release}}/app.css" media="screen" rel="stylesheet" type="text/css"
     script src="/assets/{{.Release}}/app.js" type="text/javascript"
