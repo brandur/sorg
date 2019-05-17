@@ -188,6 +188,7 @@ func build(c *modulir.Context) []error {
 			c.TargetDir + "/photos",
 			c.TargetDir + "/reading",
 			c.TargetDir + "/runs",
+			c.TargetDir + "/sequences",
 			c.TargetDir + "/twitter",
 			scommon.TempDir,
 			versionedAssetsDir,
@@ -454,6 +455,14 @@ func build(c *modulir.Context) []error {
 				}
 				sequence.Slug = slug
 
+				// Do a little post-processing on all the photos found in the
+				// sequence.
+				for _, photo := range sequence.Photos {
+					photo.DescriptionHTML =
+						string(mmarkdown.Render(c, []byte(photo.Description)))
+					photo.Sequence = &sequence
+				}
+
 				sequences[slug] = &sequence
 				sequencesChanged[slug] = true
 				return true, nil
@@ -534,6 +543,10 @@ func build(c *modulir.Context) []error {
 		sortPassages(passages)
 		sortPhotos(photos)
 		sortTalks(talks)
+
+		for _, sequence := range sequences {
+			sortPhotos(sequence.Photos)
+		}
 	}
 
 	//
@@ -655,26 +668,63 @@ func build(c *modulir.Context) []error {
 	// Sequences (index / fetch + resize)
 	//
 
+	// Sequence master feed
+	{
+		c.AddJob("sequences: feed", func() (bool, error) {
+			var allSequencePhotos []*Photo
+			for _, sequence := range sequences {
+				allSequencePhotos = append(allSequencePhotos, sequence.Photos...)
+			}
+			sortPhotos(allSequencePhotos)
+
+			var anySequenceChanged bool
+			for _, changed := range sequencesChanged {
+				if changed {
+					anySequenceChanged = true
+					break
+				}
+			}
+
+			return renderSequenceFeed(c, nil, allSequencePhotos, anySequenceChanged)
+		})
+	}
+
+	// Each sequence
 	{
 		for _, s := range sequences {
 			sequence := s
 
-			var err error
-			err = mfile.EnsureDir(c, c.TargetDir+"/sequences/"+sequence.Slug)
-			if err != nil {
-				return []error{err}
+			{
+				err := mfile.EnsureDir(c, c.TargetDir+"/sequences/"+sequence.Slug)
+				if err != nil {
+					return []error{err}
+				}
 			}
-			err = mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+sequence.Slug)
-			if err != nil {
-				return []error{err}
+
+			{
+				err := mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+sequence.Slug)
+				if err != nil {
+					return []error{err}
+				}
 			}
 
 			// Sequence index
-			name := fmt.Sprintf("sequence %s: index", sequence.Slug)
-			c.AddJob(name, func() (bool, error) {
-				return renderSequence(c, sequence, photos,
-					sequencesChanged[sequence.Slug])
-			})
+			{
+				name := fmt.Sprintf("sequence %s: index", sequence.Slug)
+				c.AddJob(name, func() (bool, error) {
+					return renderSequence(c, sequence, photos,
+						sequencesChanged[sequence.Slug])
+				})
+			}
+
+			// Sequence feed
+			{
+				name := fmt.Sprintf("sequence %s: feed", sequence.Slug)
+				c.AddJob(name, func() (bool, error) {
+					return renderSequenceFeed(c, sequence, sequence.Photos,
+						sequencesChanged[sequence.Slug])
+				})
+			}
 
 			for i, p := range sequence.Photos {
 				photoIndex := i
@@ -878,6 +928,11 @@ type Photo struct {
 	// Description is the description of the photograph.
 	Description string `toml:"description"`
 
+	// DescriptionHTML is the description rendered to HTML. This is only set
+	// for sequence photos where we assume that the input description is in
+	// Markdown.
+	DescriptionHTML string `toml:"-"`
+
 	// KeepInHomeRotation is a special override for photos I really like that
 	// keeps them in the home page's random rotation. The rotation then
 	// consists of either a recent photo or one of these explicitly selected
@@ -890,6 +945,10 @@ type Photo struct {
 
 	// OccurredAt is UTC time when the photo was published.
 	OccurredAt *time.Time `toml:"occurred_at"`
+
+	// Sequence links back to the photo's parent sequence. Only set if the
+	// photo is part of a sequence.
+	Sequence *Sequence `toml:"-"`
 
 	// Slug is a unique identifier for the photo. Originally these were
 	// generated from Flickr, but I've since just started reusing them for
@@ -1817,6 +1876,77 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
+// Renders at Atom feed for a sequence. The photos slice is assumed to be
+// pre-sorted.
+//
+// The one non-obvious mechanism worth mentioning is that it can also render a
+// general Atom feed for all sequence photos mixed together by specifying
+// `sequence` as `nil` and photos as a master list of all sequence photos
+// combined.
+func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
+	sequenceChanged bool) (bool, error) {
+
+	if !sequenceChanged {
+		return false, nil
+	}
+
+	feedIDSuffix := "sequences"
+	if sequence != nil {
+		feedIDSuffix = fmt.Sprintf("sequences-%s", sequence.Slug)
+	}
+
+	filename := "sequences.atom"
+	if sequence != nil {
+		filename = path.Join("sequences", sequence.Slug+".atom")
+	}
+
+	title := "Sequences - brandur.org"
+	if sequence != nil {
+		title = fmt.Sprintf("Sequences (%s) - brandur.org", sequence.Slug)
+	}
+
+	feed := &satom.Feed{
+		Title: title,
+		ID:    "tag:brandur.org.org,2013:/" + feedIDSuffix,
+
+		Links: []*satom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(photos) > 0 {
+		feed.Updated = *photos[0].OccurredAt
+	}
+
+	for i, photo := range photos {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &satom.Entry{
+			Title:     photo.Title,
+			Content:   &satom.EntryContent{Content: photo.DescriptionHTML, Type: "html"},
+			Published: *photo.OccurredAt,
+			Updated:   *photo.OccurredAt,
+			Link:      &satom.Link{Href: conf.AbsoluteURL + "/sequences/" + photo.Sequence.Slug + "/" + photo.Slug},
+			ID:        "tag:brandur.org," + photo.OccurredAt.Format("2006-01-02") + ":" + photo.Sequence.Slug + ":" + photo.Slug,
+
+			AuthorName: scommon.AtomAuthorName,
+			AuthorURI:  conf.AbsoluteURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	if err != nil {
+		return true, err
+	}
+	defer f.Close()
+
+	return true, feed.Encode(f, "  ")
+}
+
 func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, photoIndex int,
 	sequenceChanged bool) (bool, error) {
 
@@ -1832,27 +1962,30 @@ func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, p
 	}
 
 	// A set of previous and next photos for the carousel.
+	//
+	// Note that the subtraction/addition operations may appear to be
+	// "backwards" and that's because they are. This is because by the time the
+	// code gets here, the photos list has already been sorted in _reverse_
+	// chronological order.
 	var photoPrev, photoPrevPrev *Photo
 	var photoNext, photoNextNext *Photo
-	if photoIndex-2 >= 0 {
-		photoPrevPrev = sequence.Photos[photoIndex-2]
-	}
-	if photoIndex-1 >= 0 {
-		photoPrev = sequence.Photos[photoIndex-1]
+	if photoIndex+2 < len(sequence.Photos) {
+		photoPrevPrev = sequence.Photos[photoIndex+2]
 	}
 	if photoIndex+1 < len(sequence.Photos) {
-		photoNext = sequence.Photos[photoIndex+1]
+		photoPrev = sequence.Photos[photoIndex+1]
 	}
-	if photoIndex+2 < len(sequence.Photos) {
-		photoNextNext = sequence.Photos[photoIndex+2]
+	if photoIndex-1 >= 0 {
+		photoNext = sequence.Photos[photoIndex-1]
+	}
+	if photoIndex-2 >= 0 {
+		photoNextNext = sequence.Photos[photoIndex-2]
 	}
 
 	title := fmt.Sprintf("%s — %s %s", photo.Title, sequence.Title, photo.Slug)
-	description := string(mmarkdown.Render(c, []byte(photo.Description)))
 
 	locals := getLocals(title, map[string]interface{}{
 		"BodyClass":     "sequences-photo",
-		"Description":   description,
 		"Photo":         photo,
 		"PhotoNext":     photoNext,
 		"PhotoNextNext": photoNextNext,
