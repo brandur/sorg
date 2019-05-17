@@ -1892,7 +1892,7 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 
 	feedIDSuffix := "sequences"
 	if sequence != nil {
-		feedIDSuffix = fmt.Sprintf("sequences-%s", sequence.Slug)
+		feedIDSuffix += ":" + sequence.Slug
 	}
 
 	filename := "sequences.atom"
@@ -1907,7 +1907,7 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 
 	feed := &satom.Feed{
 		Title: title,
-		ID:    "tag:brandur.org.org,2013:/" + feedIDSuffix,
+		ID:    "tag:brandur.org.org,2019:" + feedIDSuffix,
 
 		Links: []*satom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
@@ -1930,7 +1930,7 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 			Published: *photo.OccurredAt,
 			Updated:   *photo.OccurredAt,
 			Link:      &satom.Link{Href: conf.AbsoluteURL + "/sequences/" + photo.Sequence.Slug + "/" + photo.Slug},
-			ID:        "tag:brandur.org," + photo.OccurredAt.Format("2006-01-02") + ":" + photo.Sequence.Slug + ":" + photo.Slug,
+			ID:        "tag:brandur.org," + photo.OccurredAt.Format("2006-01-02") + ":sequences:" + photo.Sequence.Slug + ":" + photo.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
