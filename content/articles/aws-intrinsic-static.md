@@ -297,7 +297,7 @@ them to master to have it run.
 
 **Update:** While the use of Lambda is still possible (and
 is still the most flexible option), Travis now allows you
-to configure cron jobs. This option is functionally the
+to easily configure cron jobs. They're functionally the
 same as rebuilds via Lambda, but will take much less time
 to set up. From the project's page in the Travis web
 interface, navigate to **Settings**, scroll down, and
