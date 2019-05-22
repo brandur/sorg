@@ -295,6 +295,15 @@ them to master to have it run.
 
 ### Periodic rebuilds with lambda (#lambda)
 
+**Update:** While the use of Lambda is still possible (and
+is still the most flexible option), Travis now allows you
+to configure cron jobs. This option is functionally the
+same as rebuilds via Lambda, but will take much less time
+to set up. From the project's page in the Travis web
+interface, navigate to **Settings**, scroll down, and
+create a cron job for the **master** branch with an
+interval like **daily**.
+
 One final (and optional) step in the process is to set up an AWS lambda script
 that will be triggered by a periodic cron and which will tell Travis to rebuild
 your repository. If you tell Travis to notify you on build failures in
