@@ -236,9 +236,6 @@ into `.travis.yml`:
 ``` yml
 # travis.yml
 
-# magic word to use faster/newer container-based architecture
-sudo: false
-
 install:
   - pip install --user awscli
 
