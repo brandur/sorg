@@ -148,6 +148,10 @@ test:
 	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test ./...
 
+test-nocache:
+	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
+	go test -count=1 ./...
+
 vet:
 	go vet ./...
 
