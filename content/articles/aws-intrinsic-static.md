@@ -152,6 +152,8 @@ default, but you should make a few changes:
   host.
 * Under **SSL Certificate** choose **Custom SSL Certificate** and then in the
   dropdown find the certificate that was issued by ACM above.
+* Under **Default Root Object** enter the S3 path to use for your domain if
+  accessed without a path in the URL (e.g. `index.html`).
 
 After it's created, you'll get a domain name for your new CloudFront
 distribution with a name like `da48dchlilyg8.cloudfront.net`. It may take a few
