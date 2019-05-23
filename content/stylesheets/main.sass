@@ -131,6 +131,16 @@ body
     // italics from being clipped at its edge.
     margin-right: 2px
 
+    a.twitter-icon-nav::before
+      background-image: url('/assets/images/icons/twitter.svg')
+      background-position: 2px 1px
+      background-repeat: no-repeat
+      background-size: 10px 12px
+      content: ""
+      display: inline-block
+      height: 11px
+      width: 14px
+
     p
       hyphens: none
       -ms-hyphens: none
@@ -193,6 +203,26 @@ a
 
   &:hover
     border-bottom: 0
+
+  &.feed-icon::after
+    background-image: url('/assets/images/icons/rss.svg')
+    background-position: 4px 0
+    background-repeat: no-repeat
+    background-size: 10px 20px
+    content: ""
+    display: inline-block
+    height: 15px
+    width: 15px
+
+  &.twitter-icon::after
+    background-image: url('/assets/images/icons/twitter.svg')
+    background-position: 4px 0
+    background-repeat: no-repeat
+    background-size: 12px 20px
+    content: ""
+    display: inline-block
+    height: 15px
+    width: 17px
 
 blockquote
   border-left: 40px solid $quaternary

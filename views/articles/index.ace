@@ -17,7 +17,7 @@
         .content-inner-standard
           #title
             h1 Articles
-          p <a href="/articles.atom">Atom feed</a>.
+          p <a href="/articles.atom" class="feed-icon">Atom feed</a>.
           #articles
             {{range .ArticlesByYear}}
               div class="year" id="year-{{.Year}}"

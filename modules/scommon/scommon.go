@@ -40,7 +40,7 @@ const (
 // TwitterInfo is some HTML that includes a Twitter link which can be appended
 // to the publishing info of various content.
 const TwitterInfo = `<p>Find me on Twitter at ` +
-	`<strong><a href="https://twitter.com/brandur">@brandur</a></strong>.</p>`
+	`<strong><a href="https://twitter.com/brandur" class="twitter-icon-nav">@brandur</a></strong>.</p>`
 
 //////////////////////////////////////////////////////////////////////////////
 //

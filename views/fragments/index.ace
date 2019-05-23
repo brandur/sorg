@@ -17,7 +17,8 @@
         .fragments-content-list
           #title
             h1 Fragments
-          p.page-intro These are stream of consciousness notes that don't merit a more dedicated write-up. <a href="/fragments.atom">Atom feed</a>.
+          p.page-intro These are stream of consciousness notes that don't merit a more dedicated write-up.
+          p <a href="/fragments.atom" class="feed-icon">Atom feed</a>.
           #fragments
             {{range .FragmentsByYear}}
               div class="year" id="year-{{.Year}}"
