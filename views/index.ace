@@ -7,7 +7,7 @@
     #text
       h1.block
         a href="/about" About
-      p I'm <a href="https://twitter.com/brandur">@brandur</a>, an occasional writer, and engineer at Stripe and previously Heroku.
+      p I'm <a href="https://twitter.com/brandur" rel="me">@brandur</a>, an occasional writer, and engineer at Stripe and previously Heroku.
       p I most often talk about web APIs, Postgres, Rust, software safety and resilience, efficient human interfaces, and running.
       #writing
         .divider-short
