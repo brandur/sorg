@@ -43,6 +43,16 @@ Here's a short tour of the final design.
 
 ### Saving files in Vim (#vim)
 
+```
+2019/05/21 11:49:32 event: "../content/4913": CREATE
+2019/05/21 11:49:32 event: "../content/hello.md~": CREATE
+2019/05/21 11:49:32 event: "../content/hello.md": RENAME
+2019/05/21 11:49:32 event: "../content/hello.md": CREATE
+2019/05/21 11:49:32 event: "../content/hello.md": CHMOD
+2019/05/21 11:49:32 event: "../content/hello.md~": REMOVE
+2019/05/21 11:49:33 event: "../content/hello.md": CHMOD
+```
+
 ## Emitting changes via WebSocket (#websocket)
 
 ### Keeping connections alive (#alive)
@@ -62,26 +72,26 @@ even if it was down for hours.
 For me, building live reload reminded me of the important
 of good implementations that are well-abstracted. Fsnotify
 connects into one of three different OS-level APIs
-depending on the operating system (inotify, kqueue, or
-ReadDirectoryChangesW), but hides all that legwork behind
-what boils down to one function and two channels:
+depending on the operating system (`inotify`, `kqueue`, or
+`ReadDirectoryChangesW`), but hides all that legwork behind
+what amounts to one function and two channels:
 
 ``` go
 watcher, err := fsnotify.NewWatcher()
 ...
 
+err = watcher.Add("/tmp/foo")
+...
+
 for {
     select {
-        case event, ok := <-watcher.Events:
+        case event := <-watcher.Events:
             ...
 
-        case err, ok := <-watcher.Errors:
+        case err := <-watcher.Errors:
             ...
     }
 }
-
-err = watcher.Add("/tmp/foo")
-...
 ```
 
 Likewise with WebSockets, the most basic implementation of
