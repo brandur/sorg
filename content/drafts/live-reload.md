@@ -41,16 +41,48 @@ Here's a short tour of the final design.
 
 ## Watching changes with fsnotify (#fsnotify)
 
-### Saving files in Vim (#vim)
+The first piece of the puzzle is knowing when source files
+change so that we can signal a reload. Luckily Go has a
+great utility for this in [fsnotify][fsnotify] which hooks
+into operating system primitives and notifies a program
+over a channel when a change is detected. Basic usage looks
+like this:
+
+``` go
+watcher, err := fsnotify.NewWatcher()
+...
+
+err = watcher.Add("./content")
+...
+
+for {
+    select {
+        case event := <-watcher.Events:
+            log.Println("event:", event)
+    }
+}
+```
+
+When something in the `content` directory changes, a
+message like this one is emitted:
 
 ```
-2019/05/21 11:49:32 event: "../content/4913": CREATE
-2019/05/21 11:49:32 event: "../content/hello.md~": CREATE
-2019/05/21 11:49:32 event: "../content/hello.md": RENAME
-2019/05/21 11:49:32 event: "../content/hello.md": CREATE
-2019/05/21 11:49:32 event: "../content/hello.md": CHMOD
-2019/05/21 11:49:32 event: "../content/hello.md~": REMOVE
-2019/05/21 11:49:33 event: "../content/hello.md": CHMOD
+2019/05/21 11:49:32 event: "./content/hello.md": CREATE
+```
+
+### Saving files in Vim (#vim)
+
+Now things are _almost_ that easy, but a few practical
+considerations complicate things somewhat.
+
+```
+2019/05/21 11:49:32 event: "./content/4913": CREATE
+2019/05/21 11:49:32 event: "./content/hello.md~": CREATE
+2019/05/21 11:49:32 event: "./content/hello.md": RENAME
+2019/05/21 11:49:32 event: "./content/hello.md": CREATE
+2019/05/21 11:49:32 event: "./content/hello.md": CHMOD
+2019/05/21 11:49:32 event: "./content/hello.md~": REMOVE
+2019/05/21 11:49:33 event: "./content/hello.md": CHMOD
 ```
 
 ## Emitting changes via WebSocket (#websocket)
@@ -99,5 +131,6 @@ live reload is only five lines of code, despite the work
 involved in getting a WebSocket open and connected. Making
 that more robust is only a few dozen more lines.
 
+[fsnotify]: https://github.com/fsnotify/fsnotify
 [hugo]: https://gohugo.io/
 [intrinsic]: /aws-intrinsic-static
