@@ -175,7 +175,7 @@ func build(c *modulir.Context) []error {
 	//
 	// The general rule is to make sure that work is done as early as it
 	// possibly can be. e.g. Jobs with no dependencies should always run in
-	// phase 1. Try to make sure that as few phases as necessary
+	// phase 1. Try to make sure that as few phases as necessary.
 	//
 
 	//
