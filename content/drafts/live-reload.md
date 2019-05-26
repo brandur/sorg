@@ -229,17 +229,145 @@ for {
 
 ## Emitting changes via WebSocket (#websocket)
 
+To get WebSocket support in the backend we'll use the
+[Gorilla WebSocket][gorilla] package, another off-the-shelf
+library that abstracts away all the hard work. Creating a
+WebSocket connection is as simple as a single invocation on
+an `Upgrader` object from the library:
+
+``` go
+var upgrader = websocket.Upgrader{
+    ReadBufferSize:  1024,
+    WriteBufferSize: 1024,
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    conn, err := upgrader.Upgrade(w, r, nil)
+    if err != nil {
+        log.Println(err)
+        return
+    }
+    ... Use conn to send and receive messages.
+}
+```
+
+There's a little plumbing involved in the HTTP backend that
+we'll skip over, but the important part is that the build
+goroutine will use a [conditional variable][cond] to signal
+the goroutines serving open WebSockets when a build
+completes:
+
+``` go
+var buildCompleteMu sync.Mutex
+buildComplete := sync.NewCond(&buildCompleteMu)
+
+// Signals all open WebSockets upon the completion of a
+// successful build
+buildComplete.Broadcast()
+```
+
+Those goroutines will in turn pass the message along to
+their clients as a JSON-serialized payload:
+
+``` go
+// A type representing the extremely basic messages that
+// we'll be serializing and sending back over a websocket.
+type websocketEvent struct {
+    Type string `json:"type"`
+}
+
+for {
+    select {
+    case <-buildCompleteChan:
+        err := conn.WriteJSON(websocketEvent{Type: "build_complete"})
+        if err != nil {
+            c.Log.Errorf("<Websocket %v> Error writing: %v",
+                conn.RemoteAddr(), writeErr)
+        }
+
+    ...
+}
+```
+
+!fig src="/assets/images/live-reload/signaling-rebuilds.svg" caption="The build goroutine broadcasting a completed rebuild to WebSocket goroutines that will message their clients."
+
+### Client-side JavaScript (#client)
+
+The browser API for WebSockets is dead simple -- involving
+a `WebSocket` object and a single callback. Upon receiving
+`build_complete` message from the server, we'll close the
+WebSocket connection and reload the page.
+
+Here's the simplest possible implementation:
+
+``` js
+var socket = new WebSocket("ws://localhost:5002/websocket");
+
+socket.onmessage = function(event) {
+  var data = JSON.parse(event.data);
+  switch(data.type) {
+    case "build_complete":
+      // 1000 = "Normal closure" and the second parameter is a
+      // human-readable reason.
+      socket.close(1000, "Reloading page after receiving build_complete");
+
+      console.log("Reloading page after receiving build_complete");
+      location.reload(true);
+
+      break;
+
+    default:
+      console.log(`Don't know how to handle type '${data.type}'`);
+  }
+}
+```
+
 ### Keeping connections alive (#alive)
 
-XX
+We want to keep the amount of JavaScript we write to a
+minimum, but it'd be nice to make sure that client
+connections are as robust as possible. In the event that a
+WebSocket terminates unexpectedly, or the build server
+restarts, they should try and reconnect so that the live
+reload feature stays alive.
+
+Here we use a WebSocket's `onclose` callback to set a
+timeout that tries to reconnect after five seconds.
+`onclose` is called even in the event of a connection
+failure, so this code will continually try to connect until
+it's successful.
+
+``` js
+function connect() {
+  var socket = new WebSocket("ws://localhost:5002/websocket");
+
+  socket.onclose = function(event) {
+    console.log("Websocket connection closed or unable to connect; " +
+      "starting reconnect timeout");
+
+    // Allow the last socket to be cleaned up.
+    socket = null;
+
+    // Set an interval to continue trying to reconnect
+    // periodically until we succeed.
+    setTimeout(function() {
+      connect();
+    }, 5000)
+  }
+
+  ...
+}
+
+connect();
+```
 
 This implementation, although not particularly complicated,
-ends up working out incredibly well. It's common for me to
-shut down my build server with some frequency, and with
-this code, the next time I restart it all background tabs
-that I might've had open immediately find the new server
-and start listening for changes again almost immediately,
-even if it was down for hours.
+ends up working very reliably. It's common for me to shut
+down my build server with some frequency, and with this
+code, the next time I restart it all background tabs that I
+might've had open immediately find the new server and start
+listening for changes again almost immediately, even if it
+was down for hours.
 
 ## Black boxes (#black-boxes)
 
@@ -247,8 +375,10 @@ For me, building live reload reminded me of the important
 of good implementations that are well-abstracted. Fsnotify
 connects into one of three different OS-level APIs
 depending on the operating system (`inotify`, `kqueue`, or
-`ReadDirectoryChangesW`), but hides all that legwork behind
-what amounts to one function and two channels:
+`ReadDirectoryChangesW`), and if you look at its
+implementation, does quite a lot of legwork to make that
+possible. But for us as the end user, it's all hidden
+behind a couple function calls and two channels:
 
 ``` go
 watcher, err := fsnotify.NewWatcher()
@@ -268,15 +398,18 @@ for {
 }
 ```
 
-Likewise with WebSockets, the most basic implementation of
-live reload is only five lines of code, despite the work
-involved in getting a WebSocket open and connected. Making
-that more robust is only a few dozen more lines.
+Likewise with WebSockets, the most basic client
+implementation of live reload is about five lines of code,
+despite the work involved in getting a WebSocket open and
+connected. Making that more robust is only a few dozen more
+lines.
 
 [1] Vim's behavior with respect to backup files can be
 tweaked with various settings like `backup` and
 `writebackup`.
 
+[cond]: https://golang.org/pkg/sync/#Cond
 [fsnotify]: https://github.com/fsnotify/fsnotify
+[gorilla]: https://github.com/gorilla/websocket
 [hugo]: https://gohugo.io/
 [intrinsic]: /aws-intrinsic-static
