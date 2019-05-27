@@ -2,7 +2,7 @@
 hook = "TODO."
 location = "San Francisco"
 published_at = 2019-05-15T16:54:25Z
-title = "Building a Robust Live Reloader with Websockets and Go"
+title = "Building a Robust Live Reloader with WebSockets and Go"
 +++
 
 For the last couple weeks I've been making a few upgrades
@@ -16,7 +16,16 @@ is triggered, an open web browser is notified of the
 connection and triggers a reload on the page. Here's a
 video of it in action:
 
-TODO: Video
+<figure>
+  <p>
+    <video controls class="overflowing">
+      <source src="/assets/images/live-reload/live-reload.h264.mp4" type="video/mp4">
+    </video>
+  </p>
+  <figcaption>A short video of the live reload feature in
+    action: changes saved in the editor show up immediately 
+    in the browser.</figcaption>
+</figure>
 
 I was never convinced just reading about it -- it doesn't
 seem like a big deal to just ⌘-`Tab` over to the browser
