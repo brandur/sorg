@@ -8,6 +8,8 @@ html lang="en"
 
     meta name="viewport" content="width={{.ViewportWidth}}"
 
+    link rel="shortcut icon" sizes="152x152" href="/assets/images/favicon/favicon-152.png"
+
     link href="/articles.atom" rel="alternate" title="Articles - brandur.org" type="application/atom+xml"
     link href="/fragments.atom" rel="alternate" title="Fragments - brandur.org" type="application/atom+xml"
     link href="/sequences.atom" rel="alternate" title="Sequences - brandur.org" type="application/atom+xml"
