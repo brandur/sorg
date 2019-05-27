@@ -23,10 +23,14 @@ And here is another paragraph. In practice, this text needs to be a bit longer t
   occurred_at = 2018-10-22T23:43:00Z
   original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
   slug = "002"
-  title = "Portugal before daylight"
+  title = "Portugal before daybreak"
 
   description = """\
-A walk down some of Portugal's famous streets before the sun comes cup.\
+My first 24 hours in Lisbon -- my internal clock is so wildly askew that that I wake up around 4 AM and have trouble getting back to sleep.
+
+Trying to make the best of a bad situation, I unpack my camera, and start walking down the hill towards the center of the city. Here we see the entrace to Lisbon's famous **Rua Augusta**, a wide pedestrian avenue and one of the most beautiful streets in the city.
+
+If you walk further along it in the direction of the ocean, you'll arrive at the [Rua Augusta Arch](https://en.wikipedia.org/wiki/Rua_Augusta_Arch). Already impressive, it's made even more so by its history -- it was built to commemorate the city's [1755 earthquake](https://en.wikipedia.org/wiki/1755_Lisbon_earthquake), a monster up in the 8.5-9.0 range that flattened the city, and is still one of the deadliest in human history.\
 """
 
 [[photographs]]
