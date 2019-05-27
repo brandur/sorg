@@ -7,14 +7,18 @@ title = "Building a Robust Live Reloader with WebSockets and Go"
 
 For the last couple weeks I've been making a few upgrades
 to the backend that generates this site
-([previously][intrinsic], with an aim on rebuilding it to
-be faster, more stable, and more efficient. Over the years
-I've used [Hugo][hugo] for a few projects, and one of its
-features that I fell in love with is its live reloading. If
-you haven't seen this before, as a file changes and a build
-is triggered, an open web browser is notified of the
-connection and triggers a reload on the page. Here's a
-video of it in action:
+([previously][intrinsic]), with an aim on rebuilding it to
+be faster, more stable, and more efficient. The source is
+custom, and it'd accumulated enough cruft over the years
+through incremental augmentations to justify a facelift.
+
+I'd recently used I've used [Hugo][hugo] for a few
+projects, another static site generate well-known for being
+one of the first written in Go, and fell in love with one
+of its features: live reloading. If you haven't seen it
+before, as a file changes in development mode and a build
+is triggered, live reload signals any web browsers open to
+the site to reload.  Here's a video of it in action:
 
 <figure>
   <p>
@@ -27,35 +31,37 @@ video of it in action:
     in the browser.</figcaption>
 </figure>
 
-I was never convinced just reading about it -- it doesn't
-seem like a big deal to just ⌘-`Tab` over to the browser
-and ⌘-`R` for a refresh -- but the first time you really
-_try_ it it's hard not to get addicted. Its a minor quality
-of life improvement, but it makes the writing experience
-much more fluid. And where it's good for writing, it's
-_wonderful_ for design, where it's common to tweak
-properties one at a time by the hundreds to get everything
-perfectly lined up.
+It's hard to be convinced just reading about it -- it
+doesn't seem like a big deal to just ⌘-`Tab` over to the
+browser and ⌘-`R` for a refresh -- but the first time you
+try it, it's hard not to get addicted. Its a tiny quality
+of life improvement, but one that makes the writing
+experience much more fluid. And where it's good for
+writing, it's _wonderful_ for design where it's common to
+make minor tweaks to CSS properties one at a time by the
+_hundreds_ to get everything looking exactly right.
 
-I decided to try and implement the feature and was
-pleasantly surprised by how easy it turned out to be -- the
-libraries available for Go for the task turned out to be
-robust, and were exposing encapsulating complicated
-implementations as simple APIs. Browser-level technologies
-like WebSockets are now reliable and ubiquitous enough to
-lend themselves to an easy implementation with minimal fuss
--- just basic JavaScript without a heavy build pipeline.
+I decided to write my own implementation of the feature and
+was pleasantly surprised by how easy it turned out to be.
+The libraries available for Go to use as primitives were
+robust, and nicely encapsulated complicated implementations
+into simple APIs. Browser-level technologies like
+WebSockets are now reliable and ubiquitous enough to lend
+themselves to an easy implementation with minimal fuss --
+just a few lines of basic JavaScript. No transpiling, no
+polyfills, no heavy build pipeline, no mess.
 
-Here's a short tour of the final design.
+Here's a short tour of the design.
 
-## Watching changes with fsnotify (#fsnotify)
+## Watching for changes with fsnotify (#fsnotify)
 
 The first piece of the puzzle is knowing when source files
 change so that we can signal a reload. Luckily Go has a
-great utility for this in [fsnotify][fsnotify] which hooks
-into operating system primitives and notifies a program
-over a channel when a change is detected. Basic usage looks
-like this:
+great library for this in [fsnotify][fsnotify], which hooks
+into operating system monitoring primitives and notifies a
+program over a channel when a change is detected. Basic
+usage is as simple as adding directories to a watcher and
+listening on a channel:
 
 ``` go
 watcher, err := fsnotify.NewWatcher()
@@ -72,8 +78,8 @@ for {
 }
 ```
 
-When something in the `content` directory changes, a
-message like this one is emitted:
+When something in the `content` directory changes, the
+program emits a message like this one:
 
 ```
 2019/05/21 11:49:32 event: "./content/hello.md": WRITE
@@ -82,11 +88,12 @@ message like this one is emitted:
 ### Saving files in Vim, and the curious case of 4913 (#vim)
 
 Now things are _almost_ that easy, but a few practical
-considerations complicate things.
+considerations complicate things a little.
 
-While saving a file in Vim, instead of an ideal single
-write event being emitted, instead we see a long stream of
-events like this:
+While saving a file in Vim (for example, but other editors
+may behave similarly), instead of an ideal single write
+event being emitted, instead we see a long stream of events
+like this:
 
 ```
 2019/05/21 11:49:32 event: "./content/4913": CREATE
@@ -98,12 +105,13 @@ events like this:
 2019/05/21 11:49:33 event: "./content/hello.md": CHMOD
 ```
 
-And all of this for one save! What's going on here? Various
-editors perform somewhat non-intuitive procedures to help
-protect against various problems. Vim for example has a
-concept called "backup" file that's created in case writing
-a file fails midway and leaves a user with lost data [1].
-Here's the full procedure involved in saving a file:
+And all of this for one save! What could possibly be going
+on here? Well, various editors perform some non-intuitive
+gymnastics to help protect against edge failures. What
+we're seeing here is a Vim concept called a "backup file"
+that's created to protect against the possibility that
+writing a change fails midway and leaves a user with lost
+data [1]. Here's Vim's full procedure in saving a file:
 
 1. Test to see if the editor is allowed to create files in
    the target directory by creating a file named
@@ -122,10 +130,9 @@ Here's the full procedure involved in saving a file:
 
 It's good to know that Vim has our back in preventing
 corruption, but all these changes aren't particularly
-friendly to our build loop because they'll likely to
-trigger rebuilds for false positives that won't affect the
-built result. I solved this ignoring certain filenames in
-incoming events:
+friendly to our build loop because they'll trigger rebuilds
+for changes that won't affect the built result. I solved
+this ignoring certain filenames in incoming events:
 
 ``` go
 // Decides whether a rebuild should be triggered given some input
@@ -155,37 +162,45 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 }
 ```
 
+Special-casing byproducts of known editors isn't the most
+elegant possible solution, but it's pragmatic choice. The
+build would still work fine without the special cases, but
+it'd be a little less efficient. Also, the pace of newly
+created editors isn't _so_ frantic so we won't be able to
+keep up with them.
+
 ### Hardening the build loop (#build-loop)
 
 It's a nice feature to trigger a page reload as soon as
-possible after a build finishes, so we'll trigger a build
-immediately a non-ignored file changes. This presents a bit
-of a problem though in that there may be additional changes
-that arrive in close succession after the first one *while*
-the build is still running. Time-to-reload is an important
-feature, but we can't let it supersede correctness -- every
-change needs to be captured to ensure that the final result
-is correct according the current state of the source.
+possible after a build finishes, so the build loop will
+start immediately on changes to non-ignored files. This
+introduces a bit of a problem in that there may be
+additional changes that arrive in close succession after
+the first one *while* the build is still running.
+Time-to-reload is an important feature, but we can't let it
+supersede correctness -- every change needs to be captured
+to ensure that the final result is correct according the
+current state of the source.
 
-We'll cover this case by having two goroutines coordinate.
+We'll cover that case by having two goroutines coordinate.
 A ***watch*** goroutine watches for file system changes and
 sends a signal to a ***build*** goroutine upon receiving
 one. If however, the build is still ongoing when a new
 change comes in, it will accumulate new events until being
 signaled that the build completed, at which point it will
-trigger a new one with the accumulated changes.
+trigger a new one with the sum of the accumulated changes.
 
 !fig src="/assets/images/live-reload/build-loop.svg" caption="Goroutines coordinating builds even across changes that occur during an active build."
 
 Builds are fast (especially when they're incremental), so
 usually only one change we're interested will come in at a
 time, but in case many do, we'll rebuild until they've all
-been accounted for. Multiple changes can be accumulate and
-be pushed into a single build, so we'll also rebuild only
-as many times as necessary instead of doing one per change.
+been accounted for. Multiple accumulated changes can be
+pushed into a single build, so we'll also rebuild as many
+times as possible instead of once per change.
 
-The code to do that looks something like this (simplified
-slightly for brevity):
+The watcher code with an accumulating inner loop looks
+something like this (simplified slightly for brevity):
 
 ``` go
 for {
@@ -236,13 +251,13 @@ for {
 }
 ```
 
-## Emitting changes via WebSocket (#websocket)
+## Signaling with WebSockets (#websockets)
 
 To get WebSocket support in the backend we'll use the
 [Gorilla WebSocket][gorilla] package, another off-the-shelf
-library that abstracts away all the hard work. Creating a
-WebSocket connection is as simple as a single invocation on
-an `Upgrader` object from the library:
+library that abstracts away a lot of gritty details.
+Creating a WebSocket connection is as simple as a single
+invocation on an `Upgrader` object from the library:
 
 ``` go
 var upgrader = websocket.Upgrader{
@@ -256,6 +271,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
         log.Println(err)
         return
     }
+
     ... Use conn to send and receive messages.
 }
 ```
@@ -264,7 +280,9 @@ There's a little plumbing involved in the HTTP backend that
 we'll skip over, but the important part is that the build
 goroutine will use a [conditional variable][cond] to signal
 the goroutines serving open WebSockets when a build
-completes:
+completes. Unlike the much more common channel primitive, a
+conditional variable allows a single controller to signal
+any number of waiting consumers that a change occurred.
 
 ``` go
 var buildCompleteMu sync.Mutex
@@ -275,8 +293,8 @@ buildComplete := sync.NewCond(&buildCompleteMu)
 buildComplete.Broadcast()
 ```
 
-Those goroutines will in turn pass the message along to
-their clients as a JSON-serialized payload:
+Those goroutines will in turn pass the signal along to
+their clients as a JSON-serialized message:
 
 ``` go
 // A type representing the extremely basic messages that
@@ -302,12 +320,12 @@ for {
 
 ### Client-side JavaScript (#client)
 
-The browser API for WebSockets is dead simple -- involving
-a `WebSocket` object and a single callback. Upon receiving
+The browser API for WebSockets is dead simple -- a
+`WebSocket` object and a single callback. Upon receiving
 `build_complete` message from the server, we'll close the
 WebSocket connection and reload the page.
 
-Here's the simplest possible implementation:
+Here's the minimum viable implementation:
 
 ``` js
 var socket = new WebSocket("ws://localhost:5002/websocket");
@@ -343,8 +361,8 @@ reload feature stays alive.
 Here we use a WebSocket's `onclose` callback to set a
 timeout that tries to reconnect after five seconds.
 `onclose` is called even in the event of a connection
-failure, so this code will continually try to connect until
-it's successful.
+failure, so this code will continually try to reconnect
+until either its tab is closed, or it's successful.
 
 ``` js
 function connect() {
@@ -364,29 +382,32 @@ function connect() {
     }, 5000)
   }
 
-  ...
+  socket.onmessage = function(event) {
+    ...
+  }
 }
 
 connect();
 ```
 
-This implementation, although not particularly complicated,
-ends up working very reliably. It's common for me to shut
-down my build server with some frequency, and with this
-code, the next time I restart it all background tabs that I
-might've had open immediately find the new server and start
-listening for changes again almost immediately, even if it
-was down for hours.
+This implementation, although still quite simple, ends up
+working very reliably. It's common for me to shut down my
+build server as I'm changing Go code in the backend, and
+with these few extra lines for resilience, the next time I
+restart it all background tabs that I had open immediately
+find the new server and start listening again almost
+immediately. The server could've been down for hours (or
+days!) and it still works just fine.
 
-## Black boxes (#black-boxes)
+## Black boxes and solid foundations (#black-boxes)
 
-For me, building live reload reminded me of the important
-of good implementations that are well-abstracted. Fsnotify
-connects into one of three different OS-level APIs
-depending on the operating system (`inotify`, `kqueue`, or
-`ReadDirectoryChangesW`), and if you look at its
-implementation, does quite a lot of legwork to make that
-possible. But for us as the end user, it's all hidden
+Building live reloading reminded me of the importance of
+good foundational layers that are well-abstracted. Fsnotify
+connects into one of three different OS-level monitoring
+APIs depending on the operating system (`inotify`,
+`kqueue`, or `ReadDirectoryChangesW`), and if you look at
+its implementation, does quite a lot of legwork to make
+that possible. But for us as the end user, it's all hidden
 behind a couple function calls and two channels:
 
 ``` go
@@ -407,11 +428,17 @@ for {
 }
 ```
 
+None of the package's underlying complexity leaks into my
+program, which leaves me with a lot less to worry about.
+
 Likewise with WebSockets, the most basic client
 implementation of live reload is about five lines of code,
-despite the work involved in getting a WebSocket open and
-connected. Making that more robust is only a few dozen more
-lines.
+despite the behind-the-scenes work involved in getting a
+WebSocket open and connected. This is exactly what the road
+to reliable software looks like: layering on top of **black
+boxes** that expose a minimal API and whose walls are
+opaque -- they can be expected to "just" work, so there's
+no need to think too hard about what's inside them.
 
 [1] Vim's behavior with respect to backup files can be
 tweaked with various settings like `backup` and
