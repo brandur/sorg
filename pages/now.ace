@@ -15,7 +15,7 @@
           /
           p I'm in San Francisco, working on developer products, and thinking about creative ones.
           p
-            img.overflowing src="/assets/images/now/spirit-bowl.jpg" srcset="/assets/images/now/spirit-bowl@2x.jpg 2x, /assets/now/spirit-bowl.jpg 1x"
+            img.overflowing src="/assets/images/now/twin-peaks-stairs.jpg" srcset="/assets/images/now/twin-peaks-stairs@2x.jpg 2x, /assets/now/twin-peaks-stairs.jpg 1x"
           p A few points of focus:
           ul
             li A photography project called <strong><em>Sequences</em></strong> for an upcoming trip to Berlin as an experiment to promote the independent web.
