@@ -10,15 +10,16 @@ to the backend that generates this site
 ([previously][intrinsic]), with an aim on rebuilding it to
 be faster, more stable, and more efficient. The source is
 custom, and it'd accumulated enough cruft over the years
-through incremental augmentations to justify a facelift.
+through a hundred incremental augmentations to justify a
+little love.
 
 I'd recently used I've used [Hugo][hugo] for a few
 projects, another static site generate well-known for being
 one of the first written in Go, and fell in love with one
-of its features: live reloading. If you haven't seen it
-before, as a file changes in development mode and a build
-is triggered, live reload signals any web browsers open to
-the site to reload.  Here's a video of it in action:
+of its features: live reloading. As a file changes in the
+generator's development mode and a build is triggered, live
+reloading signals any web browsers open to the site to
+reload their content. Here's a video of it in action:
 
 <figure>
   <p>
@@ -34,21 +35,21 @@ the site to reload.  Here's a video of it in action:
 It's hard to be convinced just reading about it -- it
 doesn't seem like a big deal to just ⌘-`Tab` over to the
 browser and ⌘-`R` for a refresh -- but the first time you
-try it, it's hard not to get addicted. Its a tiny quality
-of life improvement, but one that makes the writing
-experience much more fluid. And where it's good for
-writing, it's _wonderful_ for design where it's common to
+try it, it's hard not to get addicted. Although only a tiny
+quality of life improvement, it's one that makes the
+writing experience much more fluid. And where it's good for
+writing, it's _wonderful_ for design, where it's common to
 make minor tweaks to CSS properties one at a time by the
-_hundreds_ to get everything looking exactly right.
+hundreds to get everything looking exactly right.
 
-I decided to write my own implementation of the feature and
+I decided to write my own live reloading implementation and
 was pleasantly surprised by how easy it turned out to be.
 The libraries available for Go to use as primitives were
-robust, and nicely encapsulated complicated implementations
-into simple APIs. Browser-level technologies like
-WebSockets are now reliable and ubiquitous enough to lend
-themselves to an easy implementation with minimal fuss --
-just a few lines of basic JavaScript. No transpiling, no
+robust, and nicely encapsulated complicated concerns into
+simple APIs. Browser-level technologies like WebSockets are
+now reliable and ubiquitous enough to lend themselves to an
+easy client-side implementation with minimal fuss -- just a
+few lines of basic JavaScript. No transpiling, no
 polyfills, no heavy build pipeline, no mess.
 
 Here's a short tour of the design.
@@ -79,7 +80,7 @@ for {
 ```
 
 When something in the `content` directory changes, the
-program emits a message like this one:
+program above emits a message like this one:
 
 ```
 2019/05/21 11:49:32 event: "./content/hello.md": WRITE
@@ -106,16 +107,17 @@ like this:
 ```
 
 And all of this for one save! What could possibly be going
-on here? Well, various editors perform some non-intuitive
+on? Well, various editors perform some non-intuitive
 gymnastics to help protect against edge failures. What
 we're seeing here is a Vim concept called a "backup file"
-that's created to protect against the possibility that
-writing a change fails midway and leaves a user with lost
+that exists to protect against the possibility that writing
+a change to a file fails midway and leaves a user with lost
 data [1]. Here's Vim's full procedure in saving a file:
 
 1. Test to see if the editor is allowed to create files in
-   the target directory by creating a file named
-   (somewhat arbitrarily) `4913`.
+   the target directory by creating a file named `4913`.
+   The naming was chosen arbitrarily, but also to minimize
+   the likelihood of a collision with a real file.
 
 2. Move the original file (`hello.md`) to the backup file,
    suffixed by a tilde (`hello.md~`).
@@ -192,12 +194,13 @@ trigger a new one with the sum of the accumulated changes.
 
 !fig src="/assets/images/live-reload/build-loop.svg" caption="Goroutines coordinating builds even across changes that occur during an active build."
 
-Builds are fast (especially when they're incremental), so
-usually only one change we're interested will come in at a
-time, but in case many do, we'll rebuild until they've all
-been accounted for. Multiple accumulated changes can be
-pushed into a single build, so we'll also rebuild as many
-times as possible instead of once per change.
+Builds are fast (we send just the names of files that
+changed to make them incremental), so usually only one
+change we're interested will come in at a time, but in case
+many do, we'll rebuild until they've all been accounted
+for. Multiple accumulated changes can be pushed into a
+single build, so we'll also rebuild as many times as
+possible instead of once per change.
 
 The watcher code with an accumulating inner loop looks
 something like this (simplified slightly for brevity):
