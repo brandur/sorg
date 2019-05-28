@@ -2,7 +2,7 @@
 hook = "TODO"
 location = "San Francisco"
 published_at = 2019-05-27T21:40:12Z
-title = "Sequences in the Independent Web"
+title = "Sequences: A Project for the Independent Web"
 +++
 
 I'm visiting Berlin in a few weeks, and am booting a side
@@ -13,21 +13,22 @@ continued centralization of the web. Although we've seen a
 little bit of a backlash more recently, the overwhelming
 trend for years now has been for content to gravitate
 towards the Great Walled Gardens of the web -- Facebook,
-YouTube, Twitter, and the like. As time marches on, not
-only are those gardens getting bigger, but their walls
-appear to be getting higher. In the past at least some
-motions were made towards attempted interoperability (see
-XMPP on Google Hangouts or Facebook Messenger for example),
-these days openness on the part of a major player is a
+YouTube, Medium, and the like. As time marches on, not only
+are those gardens getting bigger, but their walls grow
+higher. In the past at least some motions were made towards
+attempted interoperability (see XMPP on Google Hangouts or
+Facebook Messenger for example), these days openness on the
+part of a major player is a
 quixotic dream of a more idealistic past.
 
 Maybe the even darker element in play is that you can't
-just blame the walled gardens -- this seems to be a
-direction that most people are happy to go. There's good
-evidence that these companies employee dark patterns in
-various forms to encourage more engagement and to keep
-users on their sites longer, but given the choice between a
-turnkey solution from a billion dollar leviathan, or the
+just blame the walled gardens -- they may be taking us in
+the wrong direction, but it seems to be a bad direction
+that most people are happy to take. There's good evidence
+that these companies employee dark patterns in various
+forms to encourage more engagement and to keep users on
+their sites longer, but given the choice between a turnkey
+solution from a billion dollar leviathan, or the
 (admittedly) somewhat bumpy path of the independent web,
 most people will opt for the former every time. Not only is
 is easier, but its network effects provide tremendous
