@@ -64,11 +64,11 @@ video.
 
 From what I can tell, the right compromise is to use
 `libx265` for any videos that you want to keep around, but
-for anything that you want to encode quickly and will
+or videos that you'd prefer encoded quickly and will
 probably delete (say you want them for a single trip),
-`hevc_videotoolbox` is perfectly fine. The output videos
-are still small enough, and the significantly faster
-encoding speeds mean that FFmpeg finishes far more quickly.
+`hevc_videotoolbox` is perfectly fine. Output videos are
+still small enough, and the significantly faster encoding
+speeds mean that FFmpeg finishes far more quickly.
 
 ### Audio and Dolby Digital Plus (#audio)
 
