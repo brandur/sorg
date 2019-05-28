@@ -31,8 +31,7 @@ turnkey solution from a billion dollar leviathan, or the
 (admittedly) somewhat bumpy path of the independent web,
 most people will opt for the former every time. Not only is
 is easier, but its network effects provide tremendous
-value, and it's difficult to fault anyone for wanting to
-take advantage of them.
+value.
 
 ## Sequences (#sequences)
 
@@ -41,7 +40,7 @@ and Angelfire, it's a little unsatisfying. There was a time
 when it felt like the online community was in a constant
 state of pushing the boundaries of what could be expected
 online, and was willing to work to do so. That meant
-learning technical skills -- HTML, CSS, system
+learning technical skills -- HTML, CSS, basic system
 administration, Flash (not every idea was a good one), but
 also non-technical ones -- like how to string together more
 than a few hundred characters of prose to try and build a
