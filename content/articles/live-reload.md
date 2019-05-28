@@ -13,7 +13,7 @@ custom, and it'd accumulated enough cruft over the years
 through a hundred incremental augmentations to justify a
 little love.
 
-I'd recently used I've used [Hugo][hugo] for a few
+I recently used [Hugo][hugo] for a few
 projects, another static site generate well-known for being
 one of the first written in Go, and fell in love with one
 of its features: live reloading. As a file changes in the
