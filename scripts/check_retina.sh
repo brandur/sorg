@@ -27,6 +27,7 @@ allowed_exceptions=(
     "./content/images/talks/standin_00.png"
 
     # Raws.
+    "./content/images/sequences-project/sample-huge.png"
     "./content/raws/talks/paradise-lost/mongo-ad-censored.jpg"
     "./content/raws/talks/paradise-lost/mongo-ad.jpg"
 )
