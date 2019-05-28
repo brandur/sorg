@@ -1,7 +1,7 @@
 +++
 hook = "A walkthrough of the design of a live reload feature for the static site generator that builds this site, touching on fsnotify, WebSockets, and the curious case of file 4913."
 location = "San Francisco"
-published_at = 2019-05-15T16:54:25Z
+published_at = 2019-05-28T13:57:17Z
 title = "Building a Robust Live Reloader with WebSockets and Go"
 +++
 
