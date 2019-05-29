@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/brandur/modulir"
 	"github.com/joeshaw/envdecode"
@@ -76,6 +78,8 @@ to work as it executes against the Mailgun API.`),
 	passagesCommand.Flags().BoolVar(&staging, "staging", false,
 		"Send to staging list (as opposed to dry run)")
 	rootCmd.AddCommand(passagesCommand)
+
+	rand.Seed(time.Now().UnixNano())
 
 	if err := envdecode.Decode(&conf); err != nil {
 		fmt.Fprintf(os.Stderr, "Error decoding conf from env: %v", err)
