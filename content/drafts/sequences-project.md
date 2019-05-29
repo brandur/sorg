@@ -18,21 +18,20 @@ are those gardens getting bigger, but their walls grow
 higher. In the past at least some motions were made towards
 attempted interoperability (see XMPP on Google Hangouts or
 Facebook Messenger for example), these days openness on the
-part of a major player is a
-quixotic dream of a more idealistic past.
+part of a major player is a quixotic dream of a more
+idealistic past.
 
 Maybe the even darker element in play is that you can't
 just blame the walled gardens -- they may be taking us in
-the wrong direction, but it seems to be a bad direction
-that most people are happy to take. There's good evidence
-that these companies employee dark patterns in various
-forms to encourage more engagement and to keep users on
-their sites longer, but given the choice between a turnkey
-solution from a billion dollar leviathan, or the
-(admittedly) somewhat bumpy path of the independent web,
-most people will opt for the former every time. Not only is
-is easier, but its network effects provide tremendous
-value.
+the wrong direction, but it's a bad direction that most
+people are happy to take. There's good evidence that these
+companies employee dark patterns in various forms to
+encourage more engagement and to keep users on their sites
+longer, but given the choice between a turnkey solution
+from a billion dollar leviathan, or the (admittedly)
+somewhat bumpy path of the independent web, most people
+will opt for the former every time. Not only is is easier,
+but its network effects provide tremendous value.
 
 ## Sequences (#sequences)
 
