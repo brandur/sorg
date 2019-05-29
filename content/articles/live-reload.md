@@ -281,10 +281,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 There's a little plumbing involved in the HTTP backend that
 we'll skip over, but the important part is that the build
-goroutine will use a [conditional variable][cond] to signal
+goroutine will use a [condition variable][cond] to signal
 the goroutines serving open WebSockets when a build
 completes. Unlike the much more common channel primitive, a
-conditional variable allows a single controller to signal
+condition variable allows a single controller to signal
 any number of waiting consumers that a change occurred.
 
 ``` go
