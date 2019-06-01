@@ -1,5 +1,5 @@
 +++
-hook = "TODO"
+hook = "It's important to keep producing independent content. Kicking off a two-week photography and writing project in Berlin called <em>Sequences</em>."
 location = "San Francisco"
 published_at = 2019-05-27T21:40:12Z
 title = "Sequences & the Independent Web"
