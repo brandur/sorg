@@ -36,7 +36,7 @@
                         |  
                         {{FormatTime .PublishedAt}}
                     {{if ne .Hook ""}}
-                      p.hook {{.Hook}}
+                      p.hook {{HTML .Hook}}
                     {{end}}
                     .clear
                 {{end}}
