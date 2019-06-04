@@ -242,13 +242,13 @@ func (c *Context) Wait() []error {
 	// Wait for work to finish.
 	c.Pool.Wait()
 
+	// Note use of append even though we always expect the current set to be
+	// empty so that the slice is duplicated and not affect by it source being
+	// reset by `StartRound` below.
+	c.Stats.JobsErrored = append(c.Stats.JobsErrored, c.Pool.JobsErrored...)
+
 	c.Stats.JobsExecuted = append(c.Stats.JobsExecuted, c.Pool.JobsExecuted...)
 	c.Stats.NumJobs += len(c.Pool.JobsAll)
-	c.Stats.NumJobsErrored += len(c.Pool.JobsErrored)
-	c.Stats.NumJobsExecuted += len(c.Pool.JobsExecuted)
-
-	// Pull errors out before starting a new round below.
-	erroredJobs := c.Pool.JobsErrored
 
 	// Then start the pool again, which also has the side effect of
 	// reinitializing anything that needs to be reinitialized.
@@ -257,14 +257,14 @@ func (c *Context) Wait() []error {
 	// This channel is reinitialized, so make sure to pull in the new one.
 	c.Jobs = c.Pool.Jobs
 
-	if erroredJobs == nil {
+	if c.Stats.JobsErrored == nil {
 		return nil
 	}
 
 	// Unfortunately required to coerce into `[]error` despite Job implementing
 	// the error interface.
-	errors := make([]error, len(erroredJobs))
-	for i, job := range erroredJobs {
+	errors := make([]error, len(c.Stats.JobsErrored))
+	for i, job := range c.Stats.JobsErrored {
 		errors[i] = job
 	}
 
@@ -283,7 +283,14 @@ func (c *Context) addWatched(fileInfo os.FileInfo, absolutePath string) error {
 
 // Stats tracks various statistics about the build process.
 type Stats struct {
-	// JobsExecuted is a slice of jobs that were executed on the last run.
+	// JobsErrored is a slice of jobs that errored on the last run.
+	//
+	// Differs from JobsExecuted somewhat in that only one run of errors are
+	// tracked because the build loop fails through after a single unsuccessful
+	// run.
+	JobsErrored []*Job
+
+	// JobsExecuted is a slice of jobs that were executed across all runs.
 	JobsExecuted []*Job
 
 	// LoopDuration is the total amount of time spent in the user's build loop
@@ -293,18 +300,6 @@ type Stats struct {
 
 	// NumJobs is the total number of jobs generated for the build loop.
 	NumJobs int
-
-	// NumJobsErrored is the number of jobs that errored during the build loop.
-	//
-	// Note that if any errors were present, the build loop may have cancelled
-	// early as it didn't move onto its later phases, which will lead to
-	// commensurate fewer jobs.
-	NumJobsErrored int
-
-	// NumJobsExecuted is the number of jobs that did some kind of heavier
-	// lifting during the build loop. That's those that returned `true` on
-	// execution.
-	NumJobsExecuted int
 
 	// Start is the start time of the build loop.
 	Start time.Time
@@ -319,8 +314,6 @@ func (s *Stats) Reset() {
 	s.JobsExecuted = nil
 	s.LoopDuration = time.Duration(0)
 	s.NumJobs = 0
-	s.NumJobsErrored = 0
-	s.NumJobsExecuted = 0
 	s.Start = time.Now()
 	s.lastLoopStart = time.Now()
 }

@@ -177,12 +177,20 @@ func build(c *Context, f func(*Context) []error,
 		c.Pool.LogErrorsSlice(errors)
 		c.Pool.LogSlowestSlice(c.Stats.JobsExecuted)
 
+		success := len(c.Stats.JobsErrored) == 0
+
 		c.Log.Infof(
-			c.colorizer.Bold(c.colorizer.Green("Built site in %s")).String()+
-				" (%v / %v job(s) did work; %v errored; loop took %v)",
+			c.colorizer.Bold(colorByStatus(c, "Built site in %s", success)).String()+
+				" (loop took %v; total non-parallel time %v)",
 			buildDuration.Truncate(100*time.Microsecond),
-			c.Stats.NumJobsExecuted, c.Stats.NumJobs, c.Stats.NumJobsErrored,
-			c.Stats.LoopDuration.Truncate(100*time.Microsecond))
+			c.Stats.LoopDuration.Truncate(100*time.Microsecond),
+			calculateTotalDuration(c.Stats.JobsExecuted).Truncate(100*time.Microsecond),
+		)
+		c.Log.Infof(
+			"%v of %v job(s) did work; "+
+				c.colorizer.Bold(colorByStatus(c, "%v errored", success)).String(),
+			len(c.Stats.JobsExecuted), c.Stats.NumJobs, len(c.Stats.JobsErrored),
+		)
 
 		lastChangedSources = nil
 		c.QuickPaths = nil
@@ -205,6 +213,23 @@ func build(c *Context, f func(*Context) []error,
 				mapKeys(lastChangedSources))
 		}
 	}
+}
+
+func colorByStatus(c *Context, s string, success bool) string {
+	if success {
+		return c.colorizer.Green(s).String()
+	}
+
+	return c.colorizer.Red(s).String()
+}
+
+// Calculates the total duration given a set of jobs.
+func calculateTotalDuration(jobs []*Job) time.Duration {
+	var totalTime time.Duration
+	for _, job := range jobs {
+		totalTime = totalTime + job.Duration
+	}
+	return totalTime
 }
 
 // Ensures that the configured TargetDir exists. We want to do this early (i.e.

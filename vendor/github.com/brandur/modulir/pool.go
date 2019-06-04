@@ -201,7 +201,7 @@ func (p *Pool) LogErrorsSlice(errors []error) {
 		if ok {
 			p.log.Errorf(
 				p.colorizer.Bold(p.colorizer.Red("Job error:")).String() +
-					"%v (job: '%s', time: %v)",
+					" %v (job: '%s', time: %v)",
 				job.Err, job.Name, job.Duration.Truncate(100 * time.Microsecond))
 		} else {
 			p.log.Errorf(
