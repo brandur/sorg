@@ -1,7 +1,7 @@
 +++
 hook = "In the spirit of the continued production of independent content, I'm kicking off a two-week photography and writing project in Berlin called <em>Sequences</em>."
 location = "San Francisco"
-published_at = 2019-05-27T21:40:12Z
+published_at = 2019-06-04T21:54:26Z
 title = "Sequences: A Modest, Contra-garden Travel Project"
 +++
 
