@@ -13,7 +13,7 @@ function connect() {
     // Set an interval to continue trying to reconnect periodically until we
     // succeed.
     setTimeout(function() {
-        connect();
+      connect();
     }, 5000)
   }
 

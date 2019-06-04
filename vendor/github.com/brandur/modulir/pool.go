@@ -1,6 +1,7 @@
 package modulir
 
 import (
+	"sort"
 	"sync"
 	"time"
 )
@@ -74,6 +75,7 @@ type Pool struct {
 	// JobsExecuted is a slice of jobs that were executed on the last run.
 	JobsExecuted []*Job
 
+	colorizer      *colorizer
 	concurrency    int
 	initialized    bool
 	jobsInternal   chan *Job
@@ -91,7 +93,10 @@ type Pool struct {
 // concurrency. It calls Init so that the pool is fully spun up and ready to
 // start a round.
 func NewPool(log LoggerInterface, concurrency int) *Pool {
+	// By default a pool gets a no-op colorizer. NewContext may set one
+	// separately for pools created within the package.
 	pool := &Pool{
+		colorizer:   &colorizer{LogColor: false},
 		concurrency: concurrency,
 		log:         log,
 	}
@@ -174,6 +179,71 @@ func (p *Pool) JobErrors() []error {
 		errs[i] = job.Err
 	}
 	return errs
+}
+
+// LogErrors logs a limited set of errors that occurred during a build.
+func (p *Pool) LogErrors() {
+	p.LogErrorsSlice(p.JobErrors())
+}
+
+// LogErrorsSlice logs a limited set of errors from the given slice.
+func (p *Pool) LogErrorsSlice(errors []error) {
+	if errors == nil {
+		return
+	}
+
+	for i, err := range errors {
+		// When dealing with an errored job (in practice, this is going to be
+		// the common case), we can provide a little more detail on what went
+		// wrong.
+		job, ok := err.(*Job)
+
+		if ok {
+			p.log.Errorf(
+				p.colorizer.Bold(p.colorizer.Red("Job error:")).String() +
+					"%v (job: '%s', time: %v)",
+				job.Err, job.Name, job.Duration.Truncate(100 * time.Microsecond))
+		} else {
+			p.log.Errorf(
+				p.colorizer.Bold(p.colorizer.Red("Build error:")).String() +
+					"%v",
+				err)
+		}
+
+		if i >= maxMessages-1 {
+			p.log.Errorf("... too many errors (limit reached)")
+			break
+		}
+	}
+}
+
+// LogSlowest logs a limited set of executed jobs from the last build starting
+// with the slowest jobs on top.
+func (p *Pool) LogSlowest() {
+	p.LogSlowestSlice(p.JobsExecuted)
+}
+
+// LogSlowestSlice logs a limited set of executed jobs from the given slice.
+func (p *Pool) LogSlowestSlice(jobs []*Job) {
+	sortJobsBySlowest(jobs)
+
+	for i, job := range jobs {
+		// Having this in the loop ensures we don't print it if zero jobs
+		// executed
+		if i == 0 {
+			p.log.Infof("Jobs executed (slowest first):")
+		}
+
+		p.log.Infof(
+			p.colorizer.Bold(p.colorizer.Cyan("    %s")).String()+
+				" (time: %v)",
+			job.Name, job.Duration.Truncate(100 * time.Microsecond))
+
+		if i >= maxMessages-1 {
+			p.log.Infof("... many jobs executed (limit reached)")
+			break
+		}
+	}
 }
 
 // Stop disables and cleans up the pool by spinning down all Goroutines.
@@ -316,4 +386,14 @@ const (
 	// When to report that a job is probably timed out. We call it a "soft"
 	// timeout because we can't actually kill jobs.
 	jobSoftTimeout = 15 * time.Second
+
+	// Maximum number of errors or jobs to print on screen after a build loop.
+	maxMessages = 10
 )
+
+// Sorts a slice of jobs with the slowest on top.
+func sortJobsBySlowest(jobs []*Job) {
+	sort.Slice(jobs, func(i, j int) bool {
+		return jobs[j].Duration < jobs[i].Duration
+	})
+}

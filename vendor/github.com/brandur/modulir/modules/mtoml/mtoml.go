@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 
 	"github.com/brandur/modulir"
-	"github.com/pkg/errors"
 	"github.com/pelletier/go-toml"
+	"github.com/pkg/errors"
 )
 
 func ParseFile(c *modulir.Context, source string, v interface{}) error {

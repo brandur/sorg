@@ -31,7 +31,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:979a784780848aac99c0569b3701c4e1cd264618ee7f248ed2d71a8032b98d81"
+  digest = "1:c8ef85107c7ac7b033d3c61d71c5e7c2ed819b9741a4d63ff58c5789bab95e67"
   name = "github.com/brandur/modulir"
   packages = [
     ".",
@@ -42,7 +42,7 @@
     "modules/mtoml",
   ]
   pruneopts = ""
-  revision = "5cdc38149f0206e2a542d508884421ffa697ef31"
+  revision = "5b51d92dd436031ad0e4499339cc15e320557f4e"
 
 [[projects]]
   digest = "1:0deddd908b6b4b768cfc272c16ee61e7088a60f7fe2f06c547bd3d8e1f8b8e77"
@@ -111,6 +111,14 @@
   ]
   pruneopts = ""
   revision = "2ff3cb3adc01768e0a552b3a02575a6df38a9bea"
+
+[[projects]]
+  digest = "1:7b43eccd14e0c1b304a63ce06197934af9f696f89eb2f60834150160317b0651"
+  name = "github.com/logrusorgru/aurora"
+  packages = ["."]
+  pruneopts = ""
+  revision = "21d75270181e0436fee7bd58b991c212cf309068"
+  version = "v2.0"
 
 [[projects]]
   digest = "1:4c0404dc03d974acd5fcd8b8d3ce687b13bd169db032b89275e8b9d77b98ce8c"

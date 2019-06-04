@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	assert "github.com/stretchr/testify/require"
 	"github.com/fsnotify/fsnotify"
+	assert "github.com/stretchr/testify/require"
 )
 
 func TestShouldRebuild(t *testing.T) {
@@ -30,15 +30,15 @@ func TestWatchChanges(t *testing.T) {
 
 	go watchChanges(newContext(), watchEvents, watchErrors,
 		rebuild, rebuildDone)
-	
+
 	{
 		// An ineligible even that will be ignored.
 		watchEvents <- fsnotify.Event{Name: "a/path~", Op: fsnotify.Create}
 
 		select {
-		case <- rebuild:
+		case <-rebuild:
 			assert.Fail(t, "Should not have received rebuild on ineligible event")
-		case <- time.After(50 * time.Millisecond):
+		case <-time.After(50 * time.Millisecond):
 		}
 	}
 
@@ -47,9 +47,9 @@ func TestWatchChanges(t *testing.T) {
 		watchEvents <- fsnotify.Event{Name: "a/path", Op: fsnotify.Create}
 
 		select {
-		case sources := <- rebuild:
-			assert.Equal(t, map[string]struct{}{"a/path": struct{}{}}, sources)
-		case <- time.After(50 * time.Millisecond):
+		case sources := <-rebuild:
+			assert.Equal(t, map[string]struct{}{"a/path": {}}, sources)
+		case <-time.After(50 * time.Millisecond):
 			assert.Fail(t, "Should have received a rebuild signal")
 		}
 
@@ -64,12 +64,12 @@ func TestWatchChanges(t *testing.T) {
 
 		// Now verify that we got the accumulated changes.
 		select {
-		case sources := <- rebuild:
+		case sources := <-rebuild:
 			assert.Equal(t, map[string]struct{}{
-				"a/path1": struct{}{},
-				"a/path2": struct{}{},
+				"a/path1": {},
+				"a/path2": {},
 			}, sources)
-		case <- time.After(50 * time.Millisecond):
+		case <-time.After(50 * time.Millisecond):
 			assert.Fail(t, "Should have received a rebuild signal")
 		}
 

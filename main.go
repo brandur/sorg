@@ -201,6 +201,7 @@ func getModulirConfig() *modulir.Config {
 	return &modulir.Config{
 		Concurrency: conf.Concurrency,
 		Log:         getLog(),
+		LogColor:    true,
 		Port:        conf.Port,
 		SourceDir:   ".",
 		TargetDir:   conf.TargetDir,

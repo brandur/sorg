@@ -111,7 +111,7 @@ func getWebsocketHandler(c *Context, buildComplete *sync.Cond) func(w http.Respo
 
 		go websocketReadPump(c, conn, connClosed)
 		go websocketWritePump(c, conn, connClosed, buildComplete)
-		c.Log.Infof("<Websocket %v> Opened", conn.RemoteAddr())
+		c.Log.Infof(logPrefix(c, conn) + "Opened")
 	}
 }
 
@@ -129,6 +129,13 @@ func getWebsocketJSHandler(c *Context) func(w http.ResponseWriter, r *http.Reque
 	}
 }
 
+// Produces a log prefix like `<WebSocket [::1]:53555>` which is colored if
+// appropriate.
+func logPrefix(c *Context, conn *websocket.Conn) string {
+	return fmt.Sprintf(c.colorizer.Bold("<WebSocket %v> ").String(),
+		conn.RemoteAddr())
+}
+
 func websocketReadPump(c *Context, conn *websocket.Conn, connClosed chan struct{}) {
 	defer func() {
 		conn.Close()
@@ -139,7 +146,7 @@ func websocketReadPump(c *Context, conn *websocket.Conn, connClosed chan struct{
 
 	conn.SetReadDeadline(time.Now().Add(websocketPongWait))
 	conn.SetPongHandler(func(string) error {
-		c.Log.Debugf("<Websocket %v> Received pong", conn.RemoteAddr())
+		c.Log.Debugf(logPrefix(c, conn) + "Received pong")
 		conn.SetReadDeadline(time.Now().Add(websocketPongWait))
 		return nil
 	})
@@ -148,10 +155,10 @@ func websocketReadPump(c *Context, conn *websocket.Conn, connClosed chan struct{
 		_, _, err := conn.ReadMessage()
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err) {
-				c.Log.Infof("<Websocket %v> Closed: %v", conn.RemoteAddr(), err)
+				c.Log.Infof(logPrefix(c, conn) + "Closed: %v", err)
 			} else {
-				c.Log.Errorf("<Websocket %v> Error reading message: %v",
-					conn.RemoteAddr(), err)
+				c.Log.Errorf(logPrefix(c, conn) + "Error reading message: %v",
+					err)
 			}
 			break
 		}
@@ -160,7 +167,7 @@ func websocketReadPump(c *Context, conn *websocket.Conn, connClosed chan struct{
 		// incoming messages.
 	}
 
-	c.Log.Debugf("<Websocket %v> Read pump ending", conn.RemoteAddr())
+	c.Log.Debugf(logPrefix(c, conn) + "Read pump ending")
 }
 
 func websocketWritePump(c *Context, conn *websocket.Conn,
@@ -210,7 +217,7 @@ func websocketWritePump(c *Context, conn *websocket.Conn,
 			}
 		}
 
-		c.Log.Debugf("<Websocket %v> Build complete feeder ending", conn.RemoteAddr())
+		c.Log.Debugf(logPrefix(c, conn) + "Build complete feeder ending")
 	}()
 
 	for {
@@ -231,14 +238,14 @@ func websocketWritePump(c *Context, conn *websocket.Conn,
 			done = true
 
 		case <-ticker.C:
-			c.Log.Debugf("<Websocket %v> Sending ping", conn.RemoteAddr())
+			c.Log.Debugf(logPrefix(c, conn) + "Sending ping")
 			conn.SetWriteDeadline(time.Now().Add(websocketWriteWait))
 			writeErr = conn.WriteMessage(websocket.PingMessage, nil)
 		}
 
 		if writeErr != nil {
-			c.Log.Errorf("<Websocket %v> Error writing: %v",
-				conn.RemoteAddr(), writeErr)
+			c.Log.Errorf(logPrefix(c, conn) + "Error writing: %v",
+				writeErr)
 			done = true
 		}
 
@@ -247,5 +254,5 @@ func websocketWritePump(c *Context, conn *websocket.Conn,
 		}
 	}
 
-	c.Log.Debugf("<Websocket %v> Write pump ending", conn.RemoteAddr())
+	c.Log.Debugf(logPrefix(c, conn) + "Write pump ending")
 }

@@ -71,7 +71,7 @@ func watchChanges(c *Context, watchEvents chan fsnotify.Event, watchErrors chan 
 
 				// Wait until rebuild is finished. In the meantime, accumulate
 				// new events that come in on the watcher's channel and prepare
-				// for the next loop..
+				// for the next loop.
 			INNER_LOOP:
 				for {
 					select {
@@ -79,14 +79,28 @@ func watchChanges(c *Context, watchEvents chan fsnotify.Event, watchErrors chan 
 						// Break and start next outer loop
 						break INNER_LOOP
 
-					case event := <-watchEvents:
-						if shouldRebuild(event.Name, event.Op) {
-							if lastChangedSources == nil {
-								lastChangedSources = make(map[string]struct{})
-							}
-
-							lastChangedSources[event.Name] = struct{}{}
+					case event, ok := <-watchEvents:
+						if !ok {
+							c.Log.Infof("Watcher detected closed channel; stopping")
+							return
 						}
+
+						if !shouldRebuild(event.Name, event.Op) {
+							continue
+						}
+
+						if lastChangedSources == nil {
+							lastChangedSources = make(map[string]struct{})
+						}
+
+						lastChangedSources[event.Name] = struct{}{}
+
+					case err, ok := <-watchErrors:
+						if !ok {
+							c.Log.Infof("Watcher detected closed channel; stopping")
+							return
+						}
+						c.Log.Errorf("Error from watcher:", err)
 					}
 				}
 			}

@@ -23,6 +23,7 @@ import (
 type Args struct {
 	Concurrency int
 	Log         LoggerInterface
+	LogColor    bool
 	Pool        *Pool
 	Port        int
 	SourceDir   string
@@ -53,6 +54,10 @@ type Context struct {
 
 	// Log is a logger that can be used to print information.
 	Log LoggerInterface
+
+	// LogColor specifies whether messages sent to Log should be color. You may
+	// want to set to true if you know output is going to a terminal.
+	LogColor bool
 
 	// Pool is the job pool used to build the static site.
 	Pool *Pool
@@ -93,6 +98,9 @@ type Context struct {
 	// Defaults to false.
 	Websocket bool
 
+	// Helper for producing rich colors and styles to the log.
+	colorizer *colorizer
+
 	// fileModTimeCache remembers the last modified times of files.
 	fileModTimeCache *fileModTimeCache
 }
@@ -103,6 +111,7 @@ func NewContext(args *Args) *Context {
 		Concurrency: args.Concurrency,
 		FirstRun:    true,
 		Log:         args.Log,
+		LogColor:    args.LogColor,
 		Pool:        args.Pool,
 		Port:        args.Port,
 		SourceDir:   args.SourceDir,
@@ -111,10 +120,12 @@ func NewContext(args *Args) *Context {
 		Watcher:     args.Watcher,
 		Websocket:   args.Websocket,
 
+		colorizer:        &colorizer{LogColor: args.LogColor},
 		fileModTimeCache: NewFileModTimeCache(args.Log),
 	}
 
 	if args.Pool != nil {
+		args.Pool.colorizer = c.colorizer
 		c.Jobs = args.Pool.Jobs
 	}
 
@@ -130,7 +141,7 @@ func (c *Context) AddJob(name string, f func() (bool, error)) {
 // job should be logged, but shouldn't fail the build.
 func (c *Context) AllowError(executed bool, err error) bool {
 	if err != nil {
-		c.Log.Errorf("Error allowed: %v", err)
+		c.Log.Errorf("%s %v", c.colorizer.Bold(c.colorizer.Yellow("Error allowed:")), err)
 	}
 	return executed
 }
@@ -381,4 +392,3 @@ func (c *fileModTimeCache) promote() {
 	// Clear the new map for the next round.
 	c.pathToModTimeMapNew = make(map[string]time.Time)
 }
-

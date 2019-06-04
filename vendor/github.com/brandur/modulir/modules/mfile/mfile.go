@@ -174,7 +174,6 @@ type ReadDirOptions struct {
 	ShowMeta bool
 }
 
-
 // ReadDirWithOptions reads files in a directory and returns a list of file
 // paths.
 //
@@ -195,7 +194,7 @@ func ReadDirWithOptions(c *modulir.Context, source string,
 		if (opts == nil || !opts.ShowBackup) && IsBackup(base) {
 			continue
 		}
-		
+
 		if (opts == nil || !opts.ShowDirs) && info.IsDir() {
 			continue
 		}

@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"github.com/logrusorgru/aurora"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -112,4 +114,67 @@ type LoggerInterface interface {
 
 	// Warnf logs a warning message using Printf conventions.
 	Warnf(format string, v ...interface{})
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Package private
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+type colorizer struct {
+	LogColor bool
+}
+
+func (c *colorizer) Blue(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.Blue(arg)
+}
+
+func (c *colorizer) Bold(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.Bold(arg)
+}
+
+func (c *colorizer) BrightBlue(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.BrightBlue(arg)
+}
+
+func (c *colorizer) Cyan(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.Cyan(arg)
+}
+
+func (c *colorizer) Green(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.Green(arg)
+}
+
+func (c *colorizer) Red(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.Red(arg)
+}
+
+func (c *colorizer) Yellow(arg interface{}) aurora.Value {
+	if !c.LogColor {
+		return aurora.Reset(arg)
+	}
+	return aurora.Yellow(arg)
 }
