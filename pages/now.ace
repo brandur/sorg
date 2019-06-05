@@ -11,22 +11,22 @@
           h1 What I'm Doing Now
         #now
           /
-          / May 26, 2019
+          / June 5, 2019
           /
-          p I'm in San Francisco, working on developer products, and thinking about creative ones.
+          p I'm in Berlin.
           p
-            img.overflowing src="/assets/images/now/twin-peaks-stairs.jpg" srcset="/assets/images/now/twin-peaks-stairs@2x.jpg 2x, /assets/now/twin-peaks-stairs.jpg 1x"
+            img.overflowing src="/assets/images/now/molecule-man.jpg" srcset="/assets/images/now/molecule-man@2x.jpg 2x, /assets/now/molecule-man.jpg 1x"
           p A few points of focus:
           ul
-            li A photography project called <strong><em>Sequences</em></strong> for an upcoming trip to Berlin as an experiment to promote the independent web.
+            li <A href="/sequences-project">A photography project called <strong><em>Sequences</em></strong></a> as an experiment to promote the independent web.
             li A tiny static site framework that encourages stability through writing build recipes in a compiled language instead of in untyped templates, or having them implied through file organization.
             li Writing on topics like <del>WebSockets</del> (<a href="/live-reload">done</a>), operable databases, and stability through data constraints.
             li Nutrition and fitness: Leaner diet, run 1000 miles in 2019. Targeting <150 lbs. and ~10% body fat.
 
           div class="divider-short"
           div class="info"
-            p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Derek Sivers</a>.
-            p This page was last updated on <strong>May 28, 2019</strong>.
+            p This is a "now page" which itemizes the work and other priorities that I'm concentrating on right now. It's built in the style pioneered by <a href="https://sivers.org/now" rel="nofollow">Sivers</a>.
+            p This page was last updated on <strong>June 5, 2019</strong>.
 
 / ---------------------------------------------------------------------------- 
 / OLD
