@@ -21,35 +21,35 @@ Right-click on an image and hold `Option`. The "Copy
 
 ## Resize for article hooks
 
-    gm convert $GMI -resize 75x75^ -gravity center -extent 75x75 -quality 85 $GMO/hook.jpg
-    gm convert $GMI -resize 150x150^ -gravity center -extent 150x150 -quality 85 $GMO/hook@2x.jpg
+    magick convert $GMI -resize 75x75^ -gravity center -extent 75x75 -quality 85 $GMO/hook.jpg
+    magick convert $GMI -resize 150x150^ -gravity center -extent 150x150 -quality 85 $GMO/hook@2x.jpg
 
 Note the `^` on `-resize` here which treats these numbers
 as minimums.
 
 ## Resize for article images
 
-    gm convert $GMI -resize 650x -quality 85 $GMO/${$(basename $GMI)/.JPG/.jpg}
-    gm convert $GMI -resize 1300x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
+    magick convert $GMI -resize 650x -quality 85 $GMO/${$(basename $GMI)/.JPG/.jpg}
+    magick convert $GMI -resize 1300x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
 
 ## Resize for fragment vistas
 
-    gm convert $GMI -resize 1024x -quality 85 $GMO/vista.jpg
-    gm convert $GMI -resize 2048x -quality 85 $GMO/vista@2x.jpg
+    magick convert $GMI -resize 1024x -quality 85 $GMO/vista.jpg
+    magick convert $GMI -resize 2048x -quality 85 $GMO/vista@2x.jpg
 
 ## Resize for Twitter cards
 
-    gm convert $GMI -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GMO/twitter@2x.jpg
+    magick convert $GMI -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GMO/twitter@2x.jpg
 
 ## Resize for Passages images
 
 Landscape:
 
-    gm convert $GMI -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
+    magick convert $GMI -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
 
 Portrait:
 
-    gm convert $GMI -auto-orient -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
+    magick convert $GMI -auto-orient -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.
