@@ -4,11 +4,19 @@ Hello.\
 """
 
 [[photographs]]
-  occurred_at = 2016-05-09T06:41:53-07:00
-  original_image_url = "https://www.dropbox.com/s/eg1z8gm8g9tu2eb/28241069746.jpg?dl=1"
+  occurred_at = 2019-06-05T21:11:06Z
+  original_image_url = "https://www.dropbox.com/s/xyo86uxb0nie7oj/L1070488-wall.JPG?dl=1"
   slug = "001"
-  title = "A spring door"
+  title = "Grenzmauer 75"
 
   description = """\
-A door in Potsdam.\
+The first few days of my stay are spent in Friedrichshain along the Spree. I take a walk at 5 AM and realize that I'm adjacent to Berlin's "East Side Gallery", the longest continuous section of the [Berlin Wall](https://en.wikipedia.org/wiki/Berlin_Wall) left in existence.
+
+The wall, or officially the "Anti-Fascist Protection Rampart" by East Germany's GDR, wasn't built to repel invasion as the name suggests, but as a last ditch effort to keep East Germans in. Emigration to the west was proving so bad that it was compromising the country's economy, with departees disproportionately of working age and professionally skilled.
+
+Khrushchev and Ulbricht conspired to close the border in August 1961 despite the damage it would do to communism's PR. The wall started life as barbed wire entanglements on August 13th ("Barbed Wire Sunday") and a few iterations later would became the _Grenzmauer 75_ (Border Wall 1975) of 45,000 prefab concrete blocks that we recognize today.
+
+At the begining of 1989, GDR leader Erich Honecker predicted that the wall would stand stand strong for 50 or 100 more years, but later that year, a refugee crisis pressured the East German government to revise crossing regulations with a provision for private round trips. A miscommunication in the party's hierarchy caused a spokesman to suggest that the new rules would come into effect immediately, when they were supposed to activate the following day so that border guards could be briefed. Televised broadcasts prompted huge gatherings at the wall's six checkpoints demanding to cross. The vastly outnumbered soldiers would eventually allow it as no one was willing to authorize the use of lethal force.
+
+Since then, sections of the wall have been exported around the world and can be found [everywhere](https://en.wikipedia.org/wiki/List_of_Berlin_Wall_segments#Indonesia) from Manitoba to Indonesia to Estonia. Graffiti had been a common fixture on the west side of the wall for some time, but graffiti on its _east_ side like that pictured below is all new, appearing only after the '89 collapse.\
 """
