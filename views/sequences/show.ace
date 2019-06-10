@@ -8,7 +8,7 @@
       p.atom Follow the <a href="/sequences/{{.Sequence.Slug}}.atom" class="feed-icon">Atom feed for this sequence</a>, or a <a href="/sequences.atom" class="feed-icon">combined one of all sequences</a>.
       p.atom I also <a href="https://twitter.com/brandur" class="twitter-icon">tweet</a> all new photos.
   .sequences-index-gallery
-    {{range .Sequence.Photos}}
+    {{range .Photos}}
       .sequences-index-photograph
         a href="/sequences/{{$.Sequence.Slug}}/{{.Slug}}"
           {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .Slug) .Title | HTML}}

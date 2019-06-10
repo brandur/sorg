@@ -717,7 +717,7 @@ func build(c *modulir.Context) []error {
 			{
 				name := fmt.Sprintf("sequence %s: index", sequence.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, sequence, photos,
+					return renderSequence(c, sequence, sequence.Photos,
 						sequencesChanged[sequence.Slug])
 				})
 			}
@@ -1869,10 +1869,17 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
 	title := fmt.Sprintf("Sequence: %s", sequence.Title)
 	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
 
+	// Most of the time we want photos with the most recent first, but we want
+	// them with the oldest first on the index page.
+	photosReversed := make([]*Photo, len(photos))
+	for i, photo := range photos {
+		photosReversed[len(photos)-i-1] = photo
+	}
+
 	locals := getLocals(title, map[string]interface{}{
 		"BodyClass":   "sequences-index",
 		"Description": description,
-		"Photos":      photos,
+		"Photos":      photosReversed,
 		"Sequence":    sequence,
 	})
 
