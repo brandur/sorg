@@ -164,12 +164,12 @@ func shouldRebuild(path string, op fsnotify.Op) bool {
 }
 ```
 
-Special-casing byproducts of known editors isn't the most
-elegant possible solution, but it's pragmatic choice. The
-build would still work fine without the special cases, but
-it'd be a little less efficient. Also, the pace of newly
-created editors isn't _so_ frantic so we won't be able to
-keep up with them.
+Special-casing byproducts of known editors isn't incredibly
+elegant, but it's pragmatic choice. The build would still
+work fine without the special cases, but it'd be less
+efficient. The pace of newly created editors isn't _so_
+frantic so we won't be able to keep up with the new styles
+of backup files and the like that they come up with.
 
 ### Hardening the build loop (#build-loop)
 
