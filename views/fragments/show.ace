@@ -26,7 +26,7 @@
               .publishing-info-bottom
                 {{HTML .PublishingInfo}}
               {{if ne .Fragment.HNLink ""}}
-                p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
+                p Please post comments and discussion to <strong><a href="{{.Fragment.HNLink}}">Hacker News</a></strong>.
               {{end}}
               {{if .Fragment.Draft}}
                 p Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
