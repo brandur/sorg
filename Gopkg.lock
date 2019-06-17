@@ -221,6 +221,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:a688b7859ee696f20cc5823f4685da54850e388fe9e7288f5d1653de48162c55"
+  name = "golang.org/x/crypto"
+  packages = ["ssh/terminal"]
+  pruneopts = ""
+  revision = "5c40567a22f818bd14a1ea7245dad9f8ef0691aa"
+
+[[projects]]
+  branch = "master"
   digest = "1:ccd51599eb31c3ee139de1b1fca3f5d3ddaa5ab37f3a1704a2a8426c0abd1e5b"
   name = "golang.org/x/net"
   packages = [
@@ -234,7 +242,10 @@
   branch = "master"
   digest = "1:8f9263a1e1d886efe08142f5e47c16520d614e3640f10f4e09f98949742d5818"
   name = "golang.org/x/sys"
-  packages = ["unix"]
+  packages = [
+    "unix",
+    "windows",
+  ]
   pruneopts = ""
   revision = "a5b02f93d862f065920dd6a40dddc66b60d0dec4"
 
@@ -275,6 +286,7 @@
     "github.com/stretchr/testify/require",
     "github.com/yosssi/ace",
     "github.com/yosssi/gcss",
+    "golang.org/x/crypto/ssh/terminal",
     "golang.org/x/net/html",
     "gopkg.in/mailgun/mailgun-go.v1",
   ]
