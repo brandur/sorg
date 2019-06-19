@@ -1936,9 +1936,13 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 			break
 		}
 
+		htmlContent := photo.DescriptionHTML +
+			fmt.Sprintf(`\n\n<p><img src="/photographs/sequences/%s/%s_large@2x.jpg"></p>`,
+				sequence.Slug, photo.Slug)
+
 		entry := &satom.Entry{
 			Title:     photo.Title,
-			Content:   &satom.EntryContent{Content: photo.DescriptionHTML, Type: "html"},
+			Content:   &satom.EntryContent{Content: htmlContent, Type: "html"},
 			Published: *photo.OccurredAt,
 			Updated:   *photo.OccurredAt,
 			Link:      &satom.Link{Href: conf.AbsoluteURL + "/sequences/" + photo.Sequence.Slug + "/" + photo.Slug},
