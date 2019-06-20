@@ -1937,7 +1937,7 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 		}
 
 		htmlContent := photo.DescriptionHTML +
-			fmt.Sprintf(`\n\n<p><img src="/photographs/sequences/%s/%s_large@2x.jpg"></p>`,
+			fmt.Sprintf(`<p><img src="/photographs/sequences/%s/%s_large@2x.jpg"></p>`,
 				photo.Sequence.Slug, photo.Slug)
 
 		entry := &satom.Entry{
