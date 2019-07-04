@@ -3,6 +3,8 @@ package scommon
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -60,4 +62,17 @@ const TwitterInfo = `<p>Find me on Twitter at ` +
 func ExitWithError(err error) {
 	fmt.Fprintf(os.Stderr, "error: %v\n", err)
 	os.Exit(1)
+}
+
+// ExtractSlug gets a slug for the given filename by using its basename
+// stripped of file extension.
+func ExtractSlug(source string) string {
+	return strings.TrimSuffix(filepath.Base(source), filepath.Ext(source))
+}
+
+// IsDraft does really simplistic detection on whether the given source is a
+// draft by looking whether the name "drafts" is in its parent directory's
+// name.
+func IsDraft(source string) bool {
+	return strings.Contains(filepath.Base(filepath.Dir(source)), "drafts")
 }

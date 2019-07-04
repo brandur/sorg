@@ -3,12 +3,12 @@ package snewsletter
 import (
 	"fmt"
 	"path"
-	"path/filepath"
 	"strings"
 	"time"
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mtoml"
+	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/smarkdown"
 )
 
@@ -69,10 +69,8 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 	}
 
 	issue.ContentRaw = string(data)
-	issue.Draft = strings.Contains(filepath.Base(dir), "drafts")
-
-	// TODO: Replace with extractSlug brought into scommon
-	issue.Slug = strings.Replace(name, ".md", "", -1)
+	issue.Draft = scommon.IsDraft(name)
+	issue.Slug = scommon.ExtractSlug(name)
 
 	slugParts := strings.Split(issue.Slug, "-")
 	if len(slugParts) < 2 {

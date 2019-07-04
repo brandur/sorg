@@ -1106,12 +1106,6 @@ func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, err
 	return true, sassets.CompileStylesheets(c, sourceDir, target)
 }
 
-// extractSlug gets a slug for the given filename by using its basename
-// stripped of file extension.
-func extractSlug(source string) string {
-	return strings.TrimSuffix(filepath.Base(source), filepath.Ext(source))
-}
-
 func fetchAndResizePhoto(c *modulir.Context, dir string, photo *Photo) (bool, error) {
 	// source without an extension, e.g. `content/photographs/123`
 	sourceNoExt := filepath.Join(dir, photo.Slug)
@@ -1308,13 +1302,6 @@ func insertOrReplaceTalk(talks *[]*stalks.Talk, talk *stalks.Talk) {
 	*talks = append(*talks, talk)
 }
 
-// isDraft does really simplistic detection on whether the given source is a
-// draft by looking whether the name "drafts" is in its parent directory's
-// name.
-func isDraft(source string) bool {
-	return strings.Contains(filepath.Base(filepath.Dir(source)), "drafts")
-}
-
 // Checks if the path exists as a common image format (.jpg or .png only). If
 // so, returns the discovered extension (e.g. "jpg") and boolean true.
 // Otherwise returns an empty string and boolean false.
@@ -1384,8 +1371,8 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 		return true, err
 	}
 
-	article.Draft = isDraft(source)
-	article.Slug = extractSlug(source)
+	article.Draft = scommon.IsDraft(source)
+	article.Slug = scommon.ExtractSlug(source)
 
 	article.Content = smarkdown.Render(string(data), nil)
 
@@ -1542,8 +1529,8 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 		return true, err
 	}
 
-	fragment.Draft = isDraft(source)
-	fragment.Slug = extractSlug(source)
+	fragment.Draft = scommon.IsDraft(source)
+	fragment.Slug = scommon.ExtractSlug(source)
 
 	fragment.Content = smarkdown.Render(string(data), nil)
 
