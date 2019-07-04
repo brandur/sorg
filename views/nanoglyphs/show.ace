@@ -1,11 +1,11 @@
 = content main
   p#issue
     a href="https://brandur.org/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
-  p#passages
+  p#nanoglyph
     a href="https://brandur.org/nanoglyphs" Nanoglyph
   h1 {{.Issue.Title}}
   {{HTML .Issue.Content}}
-  p#signature – Brandur
+  / p#signature – Brandur
   p#about
     = include views/_nanoglyphs_about .
     {{if .InEmail}}

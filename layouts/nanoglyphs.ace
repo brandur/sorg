@@ -156,16 +156,17 @@ html lang="en"
         font-weight: normal;
       }
 
-      #passages {
+      #nanoglyph {
         color: #000;
+        font-family: Monaco, monospace;
         font-size: 12px;
         font-weight: bold;
         margin-top: 0;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: lowercase;
       }
 
-      #issue a, #passages a {
+      #issue a, #nanoglyph a {
         border-bottom: none;
       }
 

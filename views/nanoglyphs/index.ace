@@ -1,5 +1,5 @@
 = content main
-  p#passages Passages and Glass
+  p#nanoglyph Nanoglyph
   p
     = include views/_nanoglyphs_about .
     | You can <a href="https://brandur.org/newsletter">subscribe here</a>.

@@ -1,6 +1,6 @@
 +++
 published_at = 2050-09-02T16:34:14Z
-title = "A Mighty Placeholder"
+title = "The End is the Beginning is the End"
 +++
 
 I have a few precommit hooks that do globs on directories
