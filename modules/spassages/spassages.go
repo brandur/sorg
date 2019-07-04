@@ -44,11 +44,11 @@ type Passage struct {
 
 func (p *Passage) validate(source string) error {
 	if p.Title == "" {
-		return fmt.Errorf("No title for passage: %v", source)
+		return fmt.Errorf("No title for Passage issue: %v", source)
 	}
 
 	if p.PublishedAt == nil {
-		return fmt.Errorf("No publish date for passage: %v", source)
+		return fmt.Errorf("No publish date for Passage issue: %v", source)
 	}
 
 	return nil

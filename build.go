@@ -27,6 +27,7 @@ import (
 	"github.com/brandur/sorg/modules/satom"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/smarkdown"
+	"github.com/brandur/sorg/modules/snanoglyphs"
 	"github.com/brandur/sorg/modules/spassages"
 	"github.com/brandur/sorg/modules/squantified"
 	"github.com/brandur/sorg/modules/stalks"
@@ -72,13 +73,14 @@ const (
 // reparsing all the source material. In each case we try to only reparse the
 // sources if those source files actually changed.
 var (
-	articles  []*Article
-	fragments []*Fragment
-	passages  []*spassages.Passage
-	pages     map[string]*Page
-	photos    []*Photo
-	sequences = make(map[string]*Sequence)
-	talks     []*stalks.Talk
+	articles   []*Article
+	fragments  []*Fragment
+	nanoglyphs []*snanoglyphs.Issue
+	passages   []*spassages.Passage
+	pages      map[string]*Page
+	photos     []*Photo
+	sequences  = make(map[string]*Sequence)
+	talks      []*stalks.Talk
 )
 
 // A database connection opened to a Black Swan database if one was configured.
@@ -189,6 +191,7 @@ func build(c *modulir.Context) []error {
 		commonDirs := []string{
 			c.TargetDir + "/articles",
 			c.TargetDir + "/fragments",
+			c.TargetDir + "/nanoglyphs",
 			c.TargetDir + "/passages",
 			c.TargetDir + "/photos",
 			c.TargetDir + "/reading",
@@ -303,6 +306,38 @@ func build(c *modulir.Context) []error {
 				c.SourceDir+"/content/javascripts",
 				versionedAssetsDir+"/app.js")
 		})
+	}
+
+	//
+	// Nanoglyphs
+	//
+
+	var nanoglyphsChanged bool
+	var nanoglyphsMu sync.Mutex
+
+	{
+		sources, err := readDirCached(c, c.SourceDir+"/content/nanoglyphs", nil)
+		if err != nil {
+			return []error{err}
+		}
+
+		if conf.Drafts {
+			drafts, err := readDirCached(c, c.SourceDir+"/content/nanoglyphs-drafts", nil)
+			if err != nil {
+				return []error{err}
+			}
+			sources = append(sources, drafts...)
+		}
+
+		for _, s := range sources {
+			source := s
+
+			name := fmt.Sprintf("nanoglyph: %s", filepath.Base(source))
+			c.AddJob(name, func() (bool, error) {
+				return renderNanoglyph(c, source,
+					&nanoglyphs, &nanoglyphsChanged, &nanoglyphsMu)
+			})
+		}
 	}
 
 	//
@@ -610,6 +645,17 @@ func build(c *modulir.Context) []error {
 		c.AddJob("home", func() (bool, error) {
 			return renderHome(c, articles, fragments, photos,
 				articlesChanged, fragmentsChanged, photosChanged)
+		})
+	}
+
+	//
+	// Nanoglyphs
+	//
+
+	{
+		c.AddJob("nanoglyphs index", func() (bool, error) {
+			return renderNanoglyphsIndex(c, nanoglyphs,
+				nanoglyphsChanged)
 		})
 	}
 
@@ -1240,6 +1286,17 @@ func insertOrReplaceFragment(fragments *[]*Fragment, fragment *Fragment) {
 	*fragments = append(*fragments, fragment)
 }
 
+func insertOrReplaceNanoglyph(issues *[]*snanoglyphs.Issue, issue *snanoglyphs.Issue) {
+	for i, s := range *issues {
+		if issue.Slug == s.Slug {
+			(*issues)[i] = issue
+			return
+		}
+	}
+
+	*issues = append(*issues, issue)
+}
+
 func insertOrReplacePassage(passages *[]*spassages.Passage, passage *spassages.Passage) {
 	for i, p := range *passages {
 		if passage.Slug == p.Slug {
@@ -1602,6 +1659,65 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/index.ace",
 		c.TargetDir+"/fragments/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+}
+
+func renderNanoglyph(c *modulir.Context, source string, issues *[]*snanoglyphs.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
+	sourceChanged := c.Changed(source)
+	viewsChanged := c.ChangedAny(append(
+		[]string{
+			scommon.NanoglyphLayout,
+			scommon.ViewsDir + "/nanoglyphs/show.ace",
+		},
+		partialViews...,
+	)...)
+	if !sourceChanged && !viewsChanged {
+		return false, nil
+	}
+
+	issue, err := snanoglyphs.Render(c, filepath.Dir(source), filepath.Base(source),
+		conf.AbsoluteURL, false)
+	if err != nil {
+		return true, err
+	}
+
+	locals := getLocals(issue.Title, map[string]interface{}{
+		"InEmail": false,
+		"Issue":   issue,
+	})
+
+	err = mace.RenderFile(c, scommon.NanoglyphLayout, scommon.ViewsDir+"/nanoglyphs/show.ace",
+		c.TargetDir+"/nanoglyphs/"+issue.Slug, stemplate.GetAceOptions(viewsChanged), locals)
+	if err != nil {
+		return true, err
+	}
+
+	mu.Lock()
+	insertOrReplaceNanoglyph(issues, issue)
+	*nanoglyphsChanged = true
+	mu.Unlock()
+
+	return true, nil
+}
+
+func renderNanoglyphsIndex(c *modulir.Context, issues []*snanoglyphs.Issue,
+	nanoglyphsChanged bool) (bool, error) {
+	viewsChanged := c.ChangedAny(append(
+		[]string{
+			scommon.NanoglyphLayout,
+			scommon.ViewsDir + "/nanoglyphs/index.ace",
+		},
+		partialViews...,
+	)...)
+	if !nanoglyphsChanged && !viewsChanged {
+		return false, nil
+	}
+
+	locals := getLocals("Nanoglyphs", map[string]interface{}{
+		"Issues": issues,
+	})
+
+	return true, mace.RenderFile(c, scommon.NanoglyphLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
+		c.TargetDir+"/nanoglyphs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
 func renderPassage(c *modulir.Context, source string, passages *[]*spassages.Passage, passagesChanged *bool, mu *sync.Mutex) (bool, error) {

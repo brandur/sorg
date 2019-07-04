@@ -25,6 +25,10 @@ const (
 	// MainLayout is the site's main layout.
 	MainLayout = LayoutsDir + "/main.ace"
 
+	// NanoglyphLayout is the layout for a Nanoglyph issue (an email
+	// newsletter).
+	NanoglyphLayout = LayoutsDir + "/nanoglyphs.ace"
+
 	// PassageLayout is the layout for a Passages & Glass issue (an email
 	// newsletter).
 	PassageLayout = LayoutsDir + "/passages.ace"

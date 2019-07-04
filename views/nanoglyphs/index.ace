@@ -1,0 +1,11 @@
+= content main
+  p#passages Passages and Glass
+  p
+    = include views/_nanoglyphs_about .
+    | You can <a href="https://brandur.org/newsletter">subscribe here</a>.
+  ul
+    {{range .Issues}}
+      li
+        a href="/nanoglyphs/{{.Slug}}" {{.Number}} &mdash; {{.Title}}
+        span.published-date {{FormatTimeYearMonth .PublishedAt}}
+    {{end}}

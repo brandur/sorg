@@ -18,7 +18,7 @@ I’m going to refer to the collection of this sort of tooling as a ***database 
 
 ### Slow query killer (#slow-query-killer)
 
-A common operational problem is for long-running queries to cause trouble of various sorts in production ([for example](/Postgres-queues)) as the extra accounting the system has to do to support them affects current work. Databases like Postgres offer mechanisms that try to remediate this like `statement_timeout`, but they’re rarely sufficient — it’s still too easy for rogue users or services to omit, adjust, or disable their own timeouts.
+A common operational problem is for long-running queries to cause trouble of various sorts in production ([for example](/postgres-queues)) as the extra accounting the system has to do to support them affects current work. Databases like Postgres offer mechanisms that try to remediate this like `statement_timeout`, but they’re rarely sufficient — it’s still too easy for rogue users or services to omit, adjust, or disable their own timeouts.
 
 The common remediation is to build a supervisor that monitors query runtime and kills any that have been going too long. It’s not that hard of a thing to do, but it’s so pervasive of a pattern that it’d be nice if databases provided it out of the box.
 
