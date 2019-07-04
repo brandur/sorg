@@ -1,10 +1,10 @@
 = content main
   p#issue
-    a href="https://brandur.org/passages/{{.Passage.Slug}}" {{.Passage.Issue}}
+    a href="https://brandur.org/passages/{{.Issue.Slug}}" {{.Issue.Number}}
   p#passages
     a href="https://brandur.org/passages" Passages and Glass
-  h1 {{.Passage.Title}}
-  {{HTML .Passage.Content}}
+  h1 {{.Issue.Title}}
+  {{HTML .Issue.Content}}
   p#signature – Brandur
   p#about
     = include views/_passages_about .

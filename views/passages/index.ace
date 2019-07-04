@@ -4,8 +4,8 @@
     = include views/_passages_about .
     | You can <a href="https://brandur.org/newsletter">subscribe here</a>.
   ul
-    {{range .Passages}}
+    {{range .Issues}}
       li
-        a href="/passages/{{.Slug}}" {{.Issue}} &mdash; {{.Title}}
+        a href="/passages/{{.Slug}}" {{.Number}} &mdash; {{.Title}}
         span.published-date {{FormatTimeYearMonth .PublishedAt}}
     {{end}}

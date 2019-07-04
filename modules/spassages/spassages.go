@@ -26,9 +26,9 @@ type Passage struct {
 	// Draft indicates that the passage is not yet published.
 	Draft bool `toml:"-"`
 
-	// Issue is the issue number of the passage like "001". Notably, it's a
-	// number, but zero-padded.
-	Issue string `toml:"-"`
+	// Number is the number of the issue like "001". Notably, it's a number,
+	// but zero-padded.
+	Number string `toml:"-"`
 
 	// PublishedAt is when the passage was published.
 	PublishedAt *time.Time `toml:"published_at"`
@@ -79,7 +79,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Pas
 		return nil, fmt.Errorf("Expected passage slug to contain issue number: %v",
 			passage.Slug)
 	}
-	passage.Issue = slugParts[0]
+	passage.Number = slugParts[0]
 
 	err = passage.validate(source)
 	if err != nil {

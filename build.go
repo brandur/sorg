@@ -1297,15 +1297,15 @@ func insertOrReplaceNanoglyph(issues *[]*snanoglyphs.Issue, issue *snanoglyphs.I
 	*issues = append(*issues, issue)
 }
 
-func insertOrReplacePassage(passages *[]*spassages.Passage, passage *spassages.Passage) {
-	for i, p := range *passages {
-		if passage.Slug == p.Slug {
-			(*passages)[i] = passage
+func insertOrReplacePassage(issues *[]*spassages.Passage, issue *spassages.Passage) {
+	for i, s := range *issues {
+		if issue.Slug == s.Slug {
+			(*issues)[i] = issue
 			return
 		}
 	}
 
-	*passages = append(*passages, passage)
+	*issues = append(*issues, issue)
 }
 
 func insertOrReplaceTalk(talks *[]*stalks.Talk, talk *stalks.Talk) {
@@ -1720,7 +1720,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snanoglyphs.Issue,
 		c.TargetDir+"/nanoglyphs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-func renderPassage(c *modulir.Context, source string, passages *[]*spassages.Passage, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderPassage(c *modulir.Context, source string, issues *[]*spassages.Passage, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1733,32 +1733,32 @@ func renderPassage(c *modulir.Context, source string, passages *[]*spassages.Pas
 		return false, nil
 	}
 
-	passage, err := spassages.Render(c, filepath.Dir(source), filepath.Base(source),
+	issue, err := spassages.Render(c, filepath.Dir(source), filepath.Base(source),
 		conf.AbsoluteURL, false)
 	if err != nil {
 		return true, err
 	}
 
-	locals := getLocals(passage.Title, map[string]interface{}{
+	locals := getLocals(issue.Title, map[string]interface{}{
 		"InEmail": false,
-		"Passage": passage,
+		"Issue":   issue,
 	})
 
 	err = mace.RenderFile(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/show.ace",
-		c.TargetDir+"/passages/"+passage.Slug, stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/passages/"+issue.Slug, stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
 
 	mu.Lock()
-	insertOrReplacePassage(passages, passage)
+	insertOrReplacePassage(issues, issue)
 	*passagesChanged = true
 	mu.Unlock()
 
 	return true, nil
 }
 
-func renderPassagesIndex(c *modulir.Context, passages []*spassages.Passage,
+func renderPassagesIndex(c *modulir.Context, issues []*spassages.Passage,
 	passagesChanged bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1772,7 +1772,7 @@ func renderPassagesIndex(c *modulir.Context, passages []*spassages.Passage,
 	}
 
 	locals := getLocals("Passages", map[string]interface{}{
-		"Passages": passages,
+		"Issues": issues,
 	})
 
 	return true, mace.RenderFile(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/index.ace",

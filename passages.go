@@ -59,15 +59,15 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	dir := filepath.Dir(source)
 	name := filepath.Base(source)
 
-	passage, err := spassages.Render(c, dir, name, conf.AbsoluteURL, true)
+	issue, err := spassages.Render(c, dir, name, conf.AbsoluteURL, true)
 	if err != nil {
 		return err
 	}
 
 	locals := map[string]interface{}{
 		"InEmail": true,
-		"Passage": passage,
-		"Title":   passage.Title,
+		"Issue":   issue,
+		"Title":   issue.Title,
 	}
 
 	var b bytes.Buffer
@@ -95,12 +95,12 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
 
 	subject := fmt.Sprintf("Passages & Glass %s — %s",
-		passage.Issue, passage.Title)
+		issue.Number, issue.Title)
 
 	message := mailgun.NewMessage(
 		fromAddress,
 		subject,
-		passage.ContentRaw,
+		issue.ContentRaw,
 		recipient)
 	message.SetReplyTo(replyToAddress)
 	message.SetHtml(html)
