@@ -1,4 +1,4 @@
-package snanoglyphs
+package snewsletter
 
 import (
 	"fmt"
@@ -12,8 +12,8 @@ import (
 	"github.com/brandur/sorg/modules/smarkdown"
 )
 
-// Issue represents a single burst of the Nanoglyph newsletter to be
-// rendered.
+// Issue represents a single burst of the Nanoglyph or Passages & Glass
+// newsletters to be rendered.
 type Issue struct {
 	// Content is the HTML content of the issue. It isn't included as TOML
 	// frontmatter, and is rather split out of an issue's Markdown file,
@@ -44,17 +44,17 @@ type Issue struct {
 
 func (p *Issue) validate(source string) error {
 	if p.Title == "" {
-		return fmt.Errorf("No title for Nanoglyph issue: %v", source)
+		return fmt.Errorf("No title for issue: %v", source)
 	}
 
 	if p.PublishedAt == nil {
-		return fmt.Errorf("No publish date for Nanoglyph issue: %v", source)
+		return fmt.Errorf("No publish date for issue: %v", source)
 	}
 
 	return nil
 }
 
-// Render reads a Nanoglyph file and builds an Issue object from it.
+// Render reads a newsletter file and builds an Issue object from it.
 //
 // The email parameter specifies whether or not the issue is being rendered
 // to be sent it an email (as opposed for rendering on the web) and affects

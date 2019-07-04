@@ -10,7 +10,7 @@ import (
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/brandur/sorg/modules/spassages"
+	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/stemplate"
 	"gopkg.in/mailgun/mailgun-go.v1"
 )
@@ -59,7 +59,7 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	dir := filepath.Dir(source)
 	name := filepath.Base(source)
 
-	issue, err := spassages.Render(c, dir, name, conf.AbsoluteURL, true)
+	issue, err := snewsletter.Render(c, dir, name, conf.AbsoluteURL, true)
 	if err != nil {
 		return err
 	}

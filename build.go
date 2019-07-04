@@ -27,8 +27,7 @@ import (
 	"github.com/brandur/sorg/modules/satom"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/smarkdown"
-	"github.com/brandur/sorg/modules/snanoglyphs"
-	"github.com/brandur/sorg/modules/spassages"
+	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/squantified"
 	"github.com/brandur/sorg/modules/stalks"
 	"github.com/brandur/sorg/modules/stemplate"
@@ -75,8 +74,8 @@ const (
 var (
 	articles   []*Article
 	fragments  []*Fragment
-	nanoglyphs []*snanoglyphs.Issue
-	passages   []*spassages.Passage
+	nanoglyphs []*snewsletter.Issue
+	passages   []*snewsletter.Issue
 	pages      map[string]*Page
 	photos     []*Photo
 	sequences  = make(map[string]*Sequence)
@@ -580,7 +579,8 @@ func build(c *modulir.Context) []error {
 	{
 		sortArticles(articles)
 		sortFragments(fragments)
-		sortPassages(passages)
+		sortNewsletters(nanoglyphs)
+		sortNewsletters(passages)
 		sortPhotos(photos)
 		sortTalks(talks)
 
@@ -1286,18 +1286,7 @@ func insertOrReplaceFragment(fragments *[]*Fragment, fragment *Fragment) {
 	*fragments = append(*fragments, fragment)
 }
 
-func insertOrReplaceNanoglyph(issues *[]*snanoglyphs.Issue, issue *snanoglyphs.Issue) {
-	for i, s := range *issues {
-		if issue.Slug == s.Slug {
-			(*issues)[i] = issue
-			return
-		}
-	}
-
-	*issues = append(*issues, issue)
-}
-
-func insertOrReplacePassage(issues *[]*spassages.Passage, issue *spassages.Passage) {
+func insertOrReplaceNewsletter(issues *[]*snewsletter.Issue, issue *snewsletter.Issue) {
 	for i, s := range *issues {
 		if issue.Slug == s.Slug {
 			(*issues)[i] = issue
@@ -1661,7 +1650,7 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		c.TargetDir+"/fragments/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-func renderNanoglyph(c *modulir.Context, source string, issues *[]*snanoglyphs.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1674,7 +1663,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snanoglyphs.I
 		return false, nil
 	}
 
-	issue, err := snanoglyphs.Render(c, filepath.Dir(source), filepath.Base(source),
+	issue, err := snewsletter.Render(c, filepath.Dir(source), filepath.Base(source),
 		conf.AbsoluteURL, false)
 	if err != nil {
 		return true, err
@@ -1692,14 +1681,14 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snanoglyphs.I
 	}
 
 	mu.Lock()
-	insertOrReplaceNanoglyph(issues, issue)
+	insertOrReplaceNewsletter(issues, issue)
 	*nanoglyphsChanged = true
 	mu.Unlock()
 
 	return true, nil
 }
 
-func renderNanoglyphsIndex(c *modulir.Context, issues []*snanoglyphs.Issue,
+func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	nanoglyphsChanged bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1720,7 +1709,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snanoglyphs.Issue,
 		c.TargetDir+"/nanoglyphs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-func renderPassage(c *modulir.Context, source string, issues *[]*spassages.Passage, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1733,7 +1722,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*spassages.Passa
 		return false, nil
 	}
 
-	issue, err := spassages.Render(c, filepath.Dir(source), filepath.Base(source),
+	issue, err := snewsletter.Render(c, filepath.Dir(source), filepath.Base(source),
 		conf.AbsoluteURL, false)
 	if err != nil {
 		return true, err
@@ -1751,14 +1740,14 @@ func renderPassage(c *modulir.Context, source string, issues *[]*spassages.Passa
 	}
 
 	mu.Lock()
-	insertOrReplacePassage(issues, issue)
+	insertOrReplaceNewsletter(issues, issue)
 	*passagesChanged = true
 	mu.Unlock()
 
 	return true, nil
 }
 
-func renderPassagesIndex(c *modulir.Context, issues []*spassages.Passage,
+func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	passagesChanged bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -2255,9 +2244,9 @@ func sortFragments(fragments []*Fragment) {
 	})
 }
 
-func sortPassages(passages []*spassages.Passage) {
-	sort.Slice(passages, func(i, j int) bool {
-		return passages[j].PublishedAt.Before(*passages[i].PublishedAt)
+func sortNewsletters(issues []*snewsletter.Issue) {
+	sort.Slice(issues, func(i, j int) bool {
+		return issues[j].PublishedAt.Before(*issues[i].PublishedAt)
 	})
 }
 
