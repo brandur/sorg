@@ -107,6 +107,13 @@ html lang="en"
         padding-bottom: 0;
       }
 
+      hr {
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 30px auto;
+        width: 80%;
+      }
+
       img {
         margin: 20px 0;
         max-width: 550px;
