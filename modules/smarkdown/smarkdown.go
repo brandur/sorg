@@ -23,8 +23,8 @@ import (
 // RenderOptions describes a rendering operation to be customized.
 type RenderOptions struct {
 	// AbsoluteURL is the absolute URL of the final site. If set, the Markdown
-	// renderer replaces the sources of any images that pointed to relative
-	// URLs with absolute URLs.
+	// renderer replaces the sources of any images or links that pointed to
+	// relative URLs with absolute URLs.
 	AbsoluteURL string
 
 	// NoFollow adds `rel="nofollow"` to any external links.
@@ -63,8 +63,11 @@ func Render(s string, options *RenderOptions) string {
 // to get our fully rendered Markdown. This includes the rendering itself, but
 // also a number of custom transformation options.
 var renderStack = []func(string, *RenderOptions) string{
+	//
 	// Pre-transformation functions
+	//
 	transformFigures,
+
 	transformHeaders,
 
 	// The actual Blackfriday rendering
@@ -72,13 +75,21 @@ var renderStack = []func(string, *RenderOptions) string{
 		return string(blackfriday.Run([]byte(source)))
 	},
 
+	//
 	// Post-transformation functions
+	//
+
 	transformCodeWithLanguagePrefix,
 	transformSections,
 	transformFootnotes,
-	transformImagesToAbsoluteURLs,
-	transformImagesToRetina,
+
+	// Should come before `transformImagesAndLinksToAbsoluteURLs` so that
+	// relative links that are later converted to absolute aren't tagged with
+	// `rel="nofollow"`.
 	transformLinksToNoFollow,
+
+	transformImagesAndLinksToAbsoluteURLs,
+	transformImagesToRetina,
 }
 
 // Look for any whitespace between HTML tags.
@@ -338,24 +349,32 @@ func transformImagesToRetina(source string, options *RenderOptions) string {
 
 var relativeImageRE = regexp.MustCompile(`<img src="/`)
 
-func transformImagesToAbsoluteURLs(source string, options *RenderOptions) string {
+var relativeLinkRE = regexp.MustCompile(`<a href="/`)
+
+func transformImagesAndLinksToAbsoluteURLs(source string, options *RenderOptions) string {
 	if options == nil || options.AbsoluteURL == "" {
 		return source
 	}
 
-	return relativeImageRE.ReplaceAllStringFunc(source, func(img string) string {
+	source = relativeImageRE.ReplaceAllStringFunc(source, func(img string) string {
 		return `<img src="` + options.AbsoluteURL + `/`
 	})
+
+	source = relativeLinkRE.ReplaceAllStringFunc(source, func(img string) string {
+		return `<a href="` + options.AbsoluteURL + `/`
+	})
+
+	return source
 }
 
-var relativeLinkRE = regexp.MustCompile(`<a href="(http[^"]+)"`)
+var absoluteLinkRE = regexp.MustCompile(`<a href="http[^"]+"`)
 
 func transformLinksToNoFollow(source string, options *RenderOptions) string {
 	if options == nil || !options.NoFollow {
 		return source
 	}
 
-	return relativeLinkRE.ReplaceAllStringFunc(source, func(link string) string {
+	return absoluteLinkRE.ReplaceAllStringFunc(source, func(link string) string {
 		return fmt.Sprintf(`%s rel="nofollow"`, link)
 	})
 }

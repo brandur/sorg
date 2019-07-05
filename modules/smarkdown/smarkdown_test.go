@@ -250,10 +250,20 @@ func TestTransformImagesToRetina(t *testing.T) {
 }
 
 func TestTransformImagesToAbsoluteURLs(t *testing.T) {
+	// An image
 	assert.Equal(t,
 		`<img src="https://brandur.org/assets/hello.jpg">`,
-		transformImagesToAbsoluteURLs(
+		transformImagesAndLinksToAbsoluteURLs(
 			`<img src="/assets/hello.jpg">`,
+			&RenderOptions{AbsoluteURL: "https://brandur.org"},
+		),
+	)
+
+	// A link
+	assert.Equal(t,
+		`<a href="https://brandur.org/relative">Relative</a>`,
+		transformImagesAndLinksToAbsoluteURLs(
+			`<a href="/relative">Relative</a>`,
 			&RenderOptions{AbsoluteURL: "https://brandur.org"},
 		),
 	)
@@ -261,7 +271,7 @@ func TestTransformImagesToAbsoluteURLs(t *testing.T) {
 	// URLs that are already absolute are left alone.
 	assert.Equal(t,
 		`<img src="https://example.com/assets/hello.jpg">`,
-		transformImagesToAbsoluteURLs(
+		transformImagesAndLinksToAbsoluteURLs(
 			`<img src="https://example.com/assets/hello.jpg">`,
 			&RenderOptions{AbsoluteURL: "https://brandur.org"},
 		),
@@ -270,7 +280,7 @@ func TestTransformImagesToAbsoluteURLs(t *testing.T) {
 	// Should pass through if options are nil.
 	assert.Equal(t,
 		`<img src="/assets/hello.jpg">`,
-		transformImagesToAbsoluteURLs(
+		transformImagesAndLinksToAbsoluteURLs(
 			`<img src="/assets/hello.jpg">`,
 			nil,
 		),
@@ -291,7 +301,7 @@ func TestTransformLinksToNoFollow(t *testing.T) {
 	// URLs that are relative should be left alone.
 	assert.Equal(t,
 		`<a href="/relative">Relative link</a>`,
-		transformImagesToAbsoluteURLs(
+		transformLinksToNoFollow(
 			`<a href="/relative">Relative link</a>`,
 			&RenderOptions{NoFollow: true},
 		),
@@ -300,7 +310,7 @@ func TestTransformLinksToNoFollow(t *testing.T) {
 	// Should pass through if options are nil.
 	assert.Equal(t,
 		`<a href="https://example.com">Example</a>`,
-		transformImagesToAbsoluteURLs(
+		transformLinksToNoFollow(
 			`<a href="https://example.com">Example</a>`,
 			nil,
 		),
