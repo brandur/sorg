@@ -87,6 +87,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 	issue.Content = smarkdown.Render(issue.ContentRaw, &smarkdown.RenderOptions{
 		AbsoluteURL:     absoluteURL,
 		NoFootnoteLinks: email,
+		NoFollow:        true,
 		NoHeaderLinks:   email,
 		NoRetina:        true,
 	})

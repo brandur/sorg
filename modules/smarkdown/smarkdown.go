@@ -27,6 +27,9 @@ type RenderOptions struct {
 	// URLs with absolute URLs.
 	AbsoluteURL string
 
+	// NoFollow adds `rel="nofollow"` to any external links.
+	NoFollow bool
+
 	// NoFootnoteLinks disables linking to and from footnotes.
 	NoFootnoteLinks bool
 
@@ -75,6 +78,7 @@ var renderStack = []func(string, *RenderOptions) string{
 	transformFootnotes,
 	transformImagesToAbsoluteURLs,
 	transformImagesToRetina,
+	transformLinksToNoFollow,
 }
 
 // Look for any whitespace between HTML tags.
@@ -341,5 +345,17 @@ func transformImagesToAbsoluteURLs(source string, options *RenderOptions) string
 
 	return relativeImageRE.ReplaceAllStringFunc(source, func(img string) string {
 		return `<img src="` + options.AbsoluteURL + `/`
+	})
+}
+
+var relativeLinkRE = regexp.MustCompile(`<a href="(http[^"]+)"`)
+
+func transformLinksToNoFollow(source string, options *RenderOptions) string {
+	if options == nil || !options.NoFollow {
+		return source
+	}
+
+	return relativeLinkRE.ReplaceAllStringFunc(source, func(link string) string {
+		return fmt.Sprintf(`%s rel="nofollow"`, link)
 	})
 }
