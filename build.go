@@ -1651,7 +1651,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	}
 
 	issue, err := snewsletter.Render(c, filepath.Dir(source), filepath.Base(source),
-		conf.AbsoluteURL, false)
+		"", false)
 	if err != nil {
 		return true, err
 	}
@@ -1710,7 +1710,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 	}
 
 	issue, err := snewsletter.Render(c, filepath.Dir(source), filepath.Base(source),
-		conf.AbsoluteURL, false)
+		"", false)
 	if err != nil {
 		return true, err
 	}
