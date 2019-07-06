@@ -95,7 +95,7 @@ sometimes don't fire][mysqltriggers] that's been open for
 so long that it'll be old enough to drive in the next few
 years, and still has some surprising transaction semantics.
 
-## Boring technology (#boring technology)
+## Boring technology (#boring-technology)
 
 A link to the excellent talk [Choose Boring
 Technology][boring] resurfaced this week. I hadn't fully
