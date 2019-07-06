@@ -70,9 +70,9 @@ html lang="en"
       }
 
       h1 {
-        font-size: 60px;
+        font-size: 50px;
         font-weight: 400;
-        letter-spacing: -5px;
+        letter-spacing: -4px;
         line-height: 1;
         margin-top: 0;
         text-align: center;
