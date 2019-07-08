@@ -1,12 +1,8 @@
 # Images
 
-Homebrew:
+Install Image Magick via Homebrew:
 
-    brew install graphicsmagick
-
-Documentation:
-
-http://www.graphicsmagick.org/convert.html
+    brew install imagemagick
 
 ## Export input and output paths
 
