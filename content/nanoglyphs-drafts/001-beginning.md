@@ -28,13 +28,13 @@ since 1997 and only missed a few dozen weeks since. He
 didn't miss a week until year four, and even then, only one [1].
 
 For me, an immaculate track record like that is never going
-to happen, but we'll see how it goes. I'm not even send the
-first ten issues just to make sure that getting into a
-weekly cadence is semi-realistic. Writing [_Passages &
-Glass_](/newsletter) was one of my more rewarding personal
-projects of the last couple of years, so I figure that the
-worst case scenario is another semi-defunct writing
-project.
+to happen, but we'll see how it goes. I'm not intending to
+send the first five issues just to make sure that getting
+into a weekly cadence is semi-realistic. Writing [_Passages
+& Glass_](/newsletter) was one of my more rewarding
+personal projects of the last couple of years, so I figure
+that the worst case scenario is another semi-defunct
+writing project.
 
 Welcome to _Nanoglyph_.
 
@@ -42,11 +42,11 @@ Welcome to _Nanoglyph_.
 
 My plan right now is to send out roughly three links a
 week, but because _just_ links are boring, they'll be
-flavored with my own opinionated editorial. Topics will be
-largely software-focused and include my usual areas of
-interest like databases, cloud services, and programming
-languages, and with a philosophical skew towards building a
-better software future that's simpler, safer, and more
+flavored with opinionated editorial. Topics will be largely
+software-focused and include my usual areas of interest
+like databases, cloud services, and programming languages,
+and with a philosophical skew towards building a better
+software future that's simpler, safer, and more
 sustainable.
 
 I'd love to eventually include a "mail" column with content
@@ -98,15 +98,51 @@ years, and still has some surprising transaction semantics.
 ## Boring technology (#boring-technology)
 
 A link to the excellent talk [Choose Boring
-Technology][boring] resurfaced this week. I hadn't fully
-read this one before, but found myself nodding throughout.
-New technology is expensive -- in the short-term to get up
-and successfully running on it
+Technology][boring] resurfaced this week. I found myself
+nodding throughout as I read it. New technology is
+expensive -- in the short-term to get up and successfully
+running on it, and in the longer term experiencing its
+bumpy road to maturity.
 
-I often wonder about how history would've been different if
-boring technology had been more en vogue at the time the
-company I work at today had been making tech stack
-decisions. 
+More boring technology choices would've saved my current
+company countless dollars and engineering hours that have
+been sunk into working around the deficiencies of our
+non-boring technology. Maybe there's something to be said
+for living an adrenaline-fueled life in the fast lane --
+non-boring technology advocates are the BASE jumpers of the
+software world -- but these days I'm a boring technology
+engineer through and through.
+
+## Rust ascending (#vector)
+
+This week Timber released [Vector][vector], a router for
+observability data like metrics and logs. It's common in
+industry to have a daemon (and often more than one) running
+on each server node that's responsible for forwarding logs
+and metrics to central aggregators for processing. At
+Stripe for example, we have locals daemons that forwards
+logs off to Splunk, and our custom [Veneur][veneur] that
+collects and forwards metrics to SignalFx. Vector tries to
+be a consolidated solution by handling metrics and logs,
+supporting a number of backends that can be forwarded to,
+and offering a number of configurable transformations which
+allow basic filtering all the way up to custom Lua scripts.
+
+Notably, it's written in [Rust][rust] which conveys a
+number of benefits -- easy deployment by just shipping a
+single static binary out to servers, more efficient and
+more predictable use of memory as there's no garbage
+collector involved, and likely fewer bugs as the they're
+ferreted out by the language's compiler and type system
+well before release.
+
+Normally, I'd say that the less software in the world the
+better, and that it'd be better to use the multitude of
+existing products with similar features, but between
+Vector's promise to consolidate many services into a
+single, more flexible daemon, and the leverage it's going
+to pick up by being written in Rust, I'm really hoping to
+see the project succeed.
 
 [1] Someone on Reddit made [a chart of One Piece chapters
 by week][onepiecechart]. It's an impressive sight.
@@ -124,3 +160,6 @@ limitation at iStock was to never drop columns.
 [onepiece]: https://en.wikipedia.org/wiki/One_Piece
 [onepiecechart]: https://i.redd.it/l7leyqae5hy01.png
 [partial]: https://www.postgresql.org/docs/current/indexes-partial.html
+[rust]: https://www.rust-lang.org/
+[vector]: https://github.com/timberio/vector
+[veneur]: https://github.com/stripe/veneur
