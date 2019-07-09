@@ -3,7 +3,7 @@ published_at = 2019-07-05T23:08:03Z
 title = "Initialize"
 +++
 
-![Steps from Baker Beach](/assets/images/nanoglyphs/001-beginning/steps@2x.jpg)
+![Steps from Baker Beach](/assets/images/nanoglyphs/001-initialize/steps@2x.jpg)
 
 You've heard the old aphorism that perfect is the enemy of
 good. I (and many others) get good mileage out of it
