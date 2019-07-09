@@ -1,6 +1,6 @@
 +++
 published_at = 2019-07-05T23:08:03Z
-title = "The Beginning is the Beginning is the Beginning"
+title = "Initialize"
 +++
 
 ![Steps from Baker Beach](/assets/images/nanoglyphs/001-beginning/steps@2x.jpg)
@@ -8,12 +8,12 @@ title = "The Beginning is the Beginning is the Beginning"
 You've heard the old aphorism that perfect is the enemy of
 good. I (and many others) get good mileage out of it
 because it's so widely appropriate, and true for so many
-things in life. When I'm writing, it's _really_ true. Every
-bone in my body wants to find the perfect word for every
-position and be so exhaustive that four paragraphs swells
-to become a multi-chapter behemoth. Everything takes a long
-time. Worse yet, the product is often worse for it -- too
-long, too dry.
+things in life. When it comes to writing, it's _really_
+true. Every bone in my body wants to find the perfect word
+for every position on the page and be so exhaustive that a
+four paragraph sketch swells to become a volume. Everything
+takes a long time. Worse yet, the product is often worse
+for it -- too long, too dry.
 
 I've been thinking about ways to fight the effect, and one
 that I wanted to try is a weekly newsletter. A time
@@ -21,11 +21,11 @@ constraint can be a powerful thing -- as many of us know
 from software planning it's easy to produce some that are
 too optimistic, or even punitively ambitious (see the games
 industry), but deployed realistically, they can force good
-results in a timely manner. I've always been impressed by
-Eiichiro Oda's work on [One Piece][onepiece] (a manga about
-pirates) -- he's been writing/drawing a chapter a week
-since 1997 and only missed a few dozen weeks since. He
-didn't miss a week until year four, and even then, only one [1].
+results in a timely manner. Eiichiro Oda has been
+writing/drawing a chapter a week of [One Piece][onepiece]
+(a possibly endless manga about pirates) since 1997 and
+only missed a few dozen weeks since. He didn't miss a week
+until year four, and even then, only one [1].
 
 For me, an immaculate track record like that is never going
 to happen, but we'll see how it goes. I'm not intending to
@@ -40,13 +40,13 @@ Welcome to _Nanoglyph_.
 
 ---
 
-My plan right now is to send out roughly three links a
-week, but because _just_ links are boring, they'll be
-flavored with opinionated editorial. Topics will be largely
-software-focused and include my usual areas of interest
-like databases, cloud services, and programming languages,
-and with a philosophical skew towards building a better
-software future that's simpler, safer, and more
+_Nanoglyph_'s format will be a message containing roughly
+three links a week. But because _just_ links are boring,
+they'll be flavored with opinionated editorial. Topics will
+be largely software-focused and include my usual areas of
+interest like databases, cloud services, and programming
+languages, and with a philosophical skew towards building a
+better software future that's simpler, safer, and more
 sustainable.
 
 I'd love to eventually include a "mail" column with content
@@ -144,14 +144,46 @@ single, more flexible daemon, and the leverage it's going
 to pick up by being written in Rust, I'm really hoping to
 see the project succeed.
 
+---
+
+This is at best technology-adjacent, but I enjoyed [Why
+Being Bored Is Good][boredisgood] by the Walrus. Quote:
+
+> I can’t settle on any one thing, let alone walk away from
+> the light cast by the screens and into a different
+> reality. I am troubled, restless, overstimulated. I am
+> consuming myself as a function of the attention I bestow.
+> I am a zombie self, a spectre, suspended in a vast
+> framework of technology and capital allegedly meant for
+> my comfort and entertainment. And yet, and yet…I cannot
+> find myself here.
+
+These days I feel lucky to have been brought up in an
+environment where boredom was still possible, which I
+suspect isn't something kids get anymore. I still remember
+those long camping trips where you often had little enough
+to do that you had to be creative and make your own fun.
+Today, if my mind isn't occupied for ten seconds, there's
+always a dozen distractions to reach for.
+
+Even trying to be mindful about a very human tendency to
+romanticize the past which often wasn't as good as we
+remember, I still feel like there was a lot of value in
+those empty moments.
+
+See you next week.
+
 [1] Someone on Reddit made [a chart of One Piece chapters
-by week][onepiecechart]. It's an impressive sight.
+by week][onepiecechart] over 20+ years. I can't even claim
+to brush my teeth with that level of consistency. Just
+incredible.
 
 [2] For a long time it wasn't possible to drop a column
 without taking an exclusive lock on the table for the
 duration of the rewrite. Our DBA-approved solution for this
 limitation at iStock was to never drop columns.
 
+[boredisgood]: https://thewalrus.ca/why-being-bored-is-good/
 [boring]: http://boringtechnology.club/
 [gitlabmysql]: https://about.gitlab.com/2019/06/27/removing-mysql-support/
 [mysqlcomment]: https://news.ycombinator.com/item?id=20345204
