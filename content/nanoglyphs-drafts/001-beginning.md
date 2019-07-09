@@ -23,7 +23,7 @@ too optimistic, or even punitively ambitious (see the games
 industry), but deployed realistically, they can force good
 results in a timely manner. Eiichiro Oda has been
 writing/drawing a chapter a week of [One Piece][onepiece]
-(a possibly endless manga about pirates) since 1997 and
+(a manga about pirates, possibly without end) since 1997 and
 only missed a few dozen weeks since. He didn't miss a week
 until year four, and even then, only one [1].
 
