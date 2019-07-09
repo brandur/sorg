@@ -62,6 +62,8 @@ Okay, with all that said, onto this week's content.
 
 ---
 
+## A history of slapdashery (#gitlab-mysql)
+
 GitLab [announced that they were ending support for
 MySQL][gitlabmysql], meaning where before it was possible
 to run GitLab installations on either MySQL or Postgres,
@@ -95,7 +97,7 @@ sometimes don't fire][mysqltriggers] that's been open for
 so long that it'll be old enough to drive in the next few
 years, and still has some surprising transaction semantics.
 
-## Boring technology (#boring-technology)
+## Boring technology, best technology (#boring-technology)
 
 A link to the excellent talk [Choose Boring
 Technology][boring] resurfaced this week. I found myself
