@@ -23,9 +23,10 @@ too optimistic, or even punitively ambitious (see the games
 industry), but deployed realistically, they can force good
 results in a timely manner. Eiichiro Oda has been
 writing/drawing a chapter a week of [One Piece][onepiece]
-(a manga about pirates, possibly without end) since 1997 and
-only missed a few dozen weeks since. He didn't miss a week
-until year four, and even then, only one [1].
+(a manga about pirates; currently 900+ issues long and
+showing no signs of stopping) since 1997 and only missed a
+few dozen weeks since. He didn't miss a week until year
+four, and even then, only one [1].
 
 For me, an immaculate track record like that is never going
 to happen, but we'll see how it goes. I'm not intending to
@@ -68,21 +69,22 @@ GitLab [announced that they were ending support for
 MySQL][gitlabmysql], meaning where before it was possible
 to run GitLab installations on either MySQL or Postgres,
 now only Postgres will be supported. Supporting multiple
-databases is a game of lowest common denominator --
-juggling the features common to both, papering over
-inconsistencies, and never being able to leverage the
-strengths of either.
+databases is one of those ideas that seems really good at
+first glance, but which quickly becomes an exercise of
+lowest common denominator -- juggling the features common
+to both, papering over inconsistencies, and never being
+able to leverage the strengths of either.
 
 Distant observers like myself were surprised to find that
 they supported MySQL in the first place, because that meant
 they'd been getting away all these years without features
 like [partial indexes][partial], which are useful all the
 time, but _especially_ useful for massive database
-installations where they can vastly reduce the required
-space for indexes on large tables. GitLab is a massive
-database installation.
+installations where they vastly reduce the required space
+for indexes on large tables. GitLab is a massive database
+installation.
 
-The announcement routed a horde of MySQL advocates from the
+The announcement routed vocal MySQL advocates from the
 woodwork who protested that GitLab's complaints about the
 technology weren't real limitations, and that what the move
 really showed was a lack of MySQL expertise on the GitLab
@@ -92,10 +94,10 @@ history of underdesign that still dogs it today. It's
 finally possible to drop columns in production [2] and
 finally possible to get [real unicode
 support][mysqlunicode] (just make sure to use `utf8mb4`
-instead of `utf8`), but still faces a bug where [triggers
-sometimes don't fire][mysqltriggers] that's been open for
-so long that it'll be old enough to drive in the next few
-years, and still has some surprising transaction semantics.
+instead of `utf8`), but even today [triggers don't always
+fire][mysqltriggers] (a bug open so long that it'll be old
+enough to drive in the next few years), and it still has
+some surprising transaction semantics.
 
 ## Boring technology, best technology (#boring-technology)
 
@@ -115,9 +117,9 @@ non-boring technology advocates are the BASE jumpers of the
 software world -- but these days I'm a boring technology
 engineer through and through.
 
-## Rust ascending (#vector)
+## Rust vectoring skyward (#vector)
 
-This week Timber released [Vector][vector], a router for
+Timber released [Vector][vector], a router for
 observability data like metrics and logs. It's common in
 industry to have a daemon (and often more than one) running
 on each server node that's responsible for forwarding logs
@@ -149,7 +151,7 @@ see the project succeed.
 ---
 
 This is at best technology-adjacent, but I enjoyed [Why
-Being Bored Is Good][boredisgood] by the Walrus. Quote:
+Being Bored Is Good][boredisgood] by The Walrus. Quote:
 
 > I can’t settle on any one thing, let alone walk away from
 > the light cast by the screens and into a different
@@ -171,9 +173,13 @@ always a dozen distractions to reach for.
 Even trying to be mindful about a very human tendency to
 romanticize the past which often wasn't as good as we
 remember, I still feel like there was a lot of value in
-those empty moments.
+those empty moments. They may even have been my best faucet
+for creative original thinking. I'm trying to find ways to
+get back to having stretches of distraction-free open time,
+but with technological sirens calling from every corner of
+the room, it's not that easy.
 
-See you next week.
+See you next week!
 
 [1] Someone on Reddit made [a chart of One Piece chapters
 by week][onepiecechart] over 20+ years. I can't even claim
