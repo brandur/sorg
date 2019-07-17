@@ -159,12 +159,12 @@ Being Bored Is Good][boredisgood] by The Walrus. Quote:
 > my comfort and entertainment. And yet, and yet…I cannot
 > find myself here.
 
-These days I feel lucky to have been brought up in an age
-where boredom was possible -- not something kids get
-anymore. I still remember long camping trips with so little
-to do that you had to be creative and make your own fun.
-Today, if my mind isn't occupied for ten seconds, there's
-always a dozen distractions to reach for.
+I'm lucky to have been brought up in an age where boredom
+was possible -- not something kids get anymore. I still
+remember long camping trips with so little to do that you
+had to be creative and make your own fun. Today, if my mind
+isn't occupied for ten seconds, there's always a dozen
+distractions to reach for.
 
 Even trying to be mindful about a very human tendency to
 romanticize the past (never as good as we remember), there
