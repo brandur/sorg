@@ -27,13 +27,13 @@ const (
 	// MainLayout is the site's main layout.
 	MainLayout = LayoutsDir + "/main.ace"
 
-	// NanoglyphLayout is the layout for a Nanoglyph issue (an email
+	// NanoglyphsLayout is the layout for a Nanoglyph issue (an email
 	// newsletter).
-	NanoglyphLayout = LayoutsDir + "/nanoglyphs.ace"
+	NanoglyphsLayout = LayoutsDir + "/nanoglyphs.ace"
 
-	// PassageLayout is the layout for a Passages & Glass issue (an email
+	// PassagesLayout is the layout for a Passages & Glass issue (an email
 	// newsletter).
-	PassageLayout = LayoutsDir + "/passages.ace"
+	PassagesLayout = LayoutsDir + "/passages.ace"
 
 	// TempDir is a temporary directory used to download images that will be
 	// processed and such.

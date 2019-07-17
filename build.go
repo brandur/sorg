@@ -1641,7 +1641,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
-			scommon.NanoglyphLayout,
+			scommon.NanoglyphsLayout,
 			scommon.ViewsDir + "/nanoglyphs/show.ace",
 		},
 		partialViews...,
@@ -1661,7 +1661,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 		"Issue":   issue,
 	})
 
-	err = mace.RenderFile(c, scommon.NanoglyphLayout, scommon.ViewsDir+"/nanoglyphs/show.ace",
+	err = mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/show.ace",
 		c.TargetDir+"/nanoglyphs/"+issue.Slug, stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
@@ -1679,7 +1679,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	nanoglyphsChanged bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
-			scommon.NanoglyphLayout,
+			scommon.NanoglyphsLayout,
 			scommon.ViewsDir + "/nanoglyphs/index.ace",
 		},
 		partialViews...,
@@ -1692,7 +1692,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 		"Issues": issues,
 	})
 
-	return true, mace.RenderFile(c, scommon.NanoglyphLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
+	return true, mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
 		c.TargetDir+"/nanoglyphs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
@@ -1700,7 +1700,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
-			scommon.PassageLayout,
+			scommon.PassagesLayout,
 			scommon.ViewsDir + "/passages/show.ace",
 		},
 		partialViews...,
@@ -1720,7 +1720,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 		"Issue":   issue,
 	})
 
-	err = mace.RenderFile(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/show.ace",
+	err = mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/show.ace",
 		c.TargetDir+"/passages/"+issue.Slug, stemplate.GetAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
@@ -1738,7 +1738,7 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	passagesChanged bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
-			scommon.PassageLayout,
+			scommon.PassagesLayout,
 			scommon.ViewsDir + "/passages/index.ace",
 		},
 		partialViews...,
@@ -1751,7 +1751,7 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 		"Issues": issues,
 	})
 
-	return true, mace.RenderFile(c, scommon.PassageLayout, scommon.ViewsDir+"/passages/index.ace",
+	return true, mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/index.ace",
 		c.TargetDir+"/passages/index.html", stemplate.GetAceOptions(viewsChanged), locals)
 }
 
