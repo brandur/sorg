@@ -6,14 +6,14 @@ title = "Initialize"
 ![Steps from Baker Beach](/assets/images/nanoglyphs/001-initialize/steps@2x.jpg)
 
 You've heard the aphorism that perfect is the enemy of
-good. I (along with many others) get good mileage out of it
-because it's so widely appropriate, and true for so many
-things in life. When it comes to writing, it's _really_
-true. Every bone in my body wants to find a perfect word
-for every slot on the page and be so exhaustive that a four
-paragraph sketch swells to a volume. Everything takes a
-long time. Worse yet, the product is worse for it -- too
-long, too dry.
+good. I (along with many others) get phenomenal mileage out
+of it because it's so widely appropriate, and true for so
+many things in life. When it comes to writing, it's
+_really_ true. Every bone in my body wants to find a
+perfect word for every slot on the page, and be so
+exhaustive that a four-paragraph sketch swells to a volume.
+It takes a long time. Worse yet, the product is worse for
+it -- too long, too dry.
 
 I've been thinking about ways to fight the effect, and one
 that I wanted to try is a weekly newsletter. A time
@@ -28,22 +28,22 @@ showing no signs of stopping) since 1997 and only missed a
 few dozen weeks since. He didn't miss a week until year
 four, and even then, only one [1].
 
-That sort of immaculate track record is an impossibility
-for me, but we'll see how it goes. I'm not sending the
-first five issues just to make sure that getting into a
-weekly cadence is semi-realistic. Writing [_Passages &
-Glass_](/newsletter) was one of my more rewarding personal
-projects of the last couple of years, so I figure that the
-worst case scenario is a semi-defunct writing project.
+That immaculate track record is an impossibility for me,
+but we'll see how it goes. I'm not sending the first five
+issues just to make sure that getting into a weekly cadence
+is semi-realistic. Writing [_Passages &
+Glass_](/newsletter) was one of my more rewarding projects
+of the last couple of years, so the worst case scenario is
+a semi-defunct writing project.
 
 Welcome to _Nanoglyph_.
 
 ---
 
-_Nanoglyph_'s format will be a message containing roughly
-three links a week. But because _just_ links are boring,
-they'll be flavored with opinionated editorial. Topics will
-be largely software-focused and include usual areas of
+_Nanoglyph_'s format is a message containing roughly three
+links a week. But because _just_ links are boring, they'll
+be flavored with opinionated editorial. Topics will be
+largely software-focused and include usual areas of
 interest like databases, cloud services, and programming
 languages, and with a philosophical skew towards building a
 better software future that's simpler, safer, and more
@@ -56,7 +56,8 @@ edited for brevity, and which don't necessarily agree with
 the original material. Strong opinions should be met with
 strong opinions after all. This of course depends on (1)
 the project getting off the ground, and (2) having enough
-readers that there are replies to include.
+readers that there are replies to include. (So please send
+mail.)
 
 ---
 
