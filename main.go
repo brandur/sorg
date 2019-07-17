@@ -81,6 +81,8 @@ API.`),
 		"Send to staging list (as opposed to dry run)")
 	rootCmd.AddCommand(passagesCommand)
 
+	// Make sure to seed the random number generator or else we'll end up with
+	// the same random results for every build.
 	rand.Seed(time.Now().UnixNano())
 
 	if err := envdecode.Decode(&conf); err != nil {
