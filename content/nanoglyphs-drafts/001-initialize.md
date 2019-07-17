@@ -114,7 +114,7 @@ an adrenaline-fueled life in the fast lane -- like BASE
 jumping in the software world -- but these days I'm a
 boring technology engineer through and through.
 
-## Rust vectoring skyward (#vector)
+## Vectoring skyward (#vector)
 
 Timber released [Vector][vector], a router for
 observability data like metrics and logs. It's common in
