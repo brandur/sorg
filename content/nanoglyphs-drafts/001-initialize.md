@@ -83,19 +83,18 @@ for indexes on large tables. GitLab is a massive database
 installation.
 
 The announcement routed vocal MySQL advocates from the
-woodwork who protested that GitLab's complaints about the
+woodwork, who protested that GitLab's complaints about the
 technology weren't real limitations, and that what the move
 really showed was a lack of MySQL expertise on the GitLab
-team. But reason [seemed to win out in the
-end][mysqlcomment] as people _with_ MySQL expertise cited a
-history of underdesign that still dogs it today. It's
-finally possible to drop columns in production [2] and
-finally possible to get [real unicode
-support][mysqlunicode] (just make sure to use `utf8mb4`
-instead of `utf8`), but even today, [triggers don't
-necessarily fire][mysqltriggers] (a bug open so long that
-it'll be old enough to drive in the next few years), and it
-still has surprising transaction semantics.
+team. But reason [won out in the end][mysqlcomment] as
+people _with_ MySQL expertise cited a history of
+underdesign that still dogs it today. It's finally possible
+to drop columns in production [2] and finally possible to
+get [real unicode support][mysqlunicode] (just make sure to
+use `utf8mb4` instead of `utf8`), but even today, [triggers
+don't necessarily fire][mysqltriggers] (a bug open so long
+that it'll be old enough to drive in the next few years),
+and it still has surprising transaction semantics.
 
 ## Boring technology, best technology (#boring-technology)
 
