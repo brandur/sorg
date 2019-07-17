@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/aymerick/douceur/inliner"
 	"github.com/brandur/modulir"
@@ -25,10 +26,30 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func sendPassages(c *modulir.Context, source string, live, staging bool) {
+func sendNewsletter(c *modulir.Context, source string, live, staging bool) {
 	if err := renderAndSend(c, source, live, staging); err != nil {
 		scommon.ExitWithError(err)
 	}
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Types
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// Contains some data for a newsletter around email addresses, paths, etc.
+type newsletterInfo struct {
+	ContentDir         string
+	ContentDirDrafts   string
+	MailAddress        string
+	MailAddressStaging string
+	TitleFormat        string
+	View               string
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -42,18 +63,75 @@ func sendPassages(c *modulir.Context, source string, live, staging bool) {
 //////////////////////////////////////////////////////////////////////////////
 
 const (
-	mailDomain         = "list.brandur.org"
-	fromAddress        = "Brandur <" + listAddress + ">"
-	listAddress        = "passages@" + mailDomain
-	listStagingAddress = "passages-staging@" + mailDomain
-	replyToAddress     = "brandur@brandur.org"
-	testAddress        = replyToAddress
+	mailDomain     = "list.brandur.org"
+	replyToAddress = "brandur@brandur.org"
+	testAddress    = replyToAddress
 )
+
+var (
+	newsletterInfoNanoglyphs = &newsletterInfo{
+		ContentDir:         "./content/nanoglyphs",
+		ContentDirDrafts:   "./content/nanoglyphs-drafts",
+		MailAddress:        "nanoglyph@" + mailDomain,
+		MailAddressStaging: "nanoglyph-staging@" + mailDomain,
+		TitleFormat:        "Nanoglyph %s — %s",
+		View:               scommon.ViewsDir + "/nanoglyphs/show.ace",
+	}
+
+	newsletterInfoPassages = &newsletterInfo{
+		ContentDir:         "./content/passages",
+		ContentDirDrafts:   "./content/passages-drafts",
+		MailAddress:        "passages@" + mailDomain,
+		MailAddressStaging: "passages-staging@" + mailDomain,
+		TitleFormat:        "Passages & Glass %s — %s",
+		View:               scommon.ViewsDir + "/passages/show.ace",
+	}
+
+	// All infos combined into a slice.
+	newsletterInfos = []*newsletterInfo{
+		newsletterInfoNanoglyphs,
+		newsletterInfoPassages,
+	}
+)
+
+// Matches a known newsletter based on the path to the source file. The second
+// return argument is true if the source is a draft.
+func matchNewsletter(source string) (*newsletterInfo, bool) {
+	source = filepath.Clean(source)
+
+	for _, info := range newsletterInfos {
+		{
+			dir := filepath.Clean(info.ContentDirDrafts)
+			if strings.HasPrefix(source, dir) {
+				fmt.Printf("does have prefix\n")
+				return info, true
+			}
+		}
+
+		{
+			dir := filepath.Clean(info.ContentDir)
+			if strings.HasPrefix(source, dir) {
+				return info, false
+			}
+		}
+	}
+	return nil, false
+}
 
 func renderAndSend(c *modulir.Context, source string, live, staging bool) error {
 	if conf.MailgunAPIKey == "" {
-		scommon.ExitWithError(fmt.Errorf(
-			"MAILGUN_API_KEY must be configured in the environment"))
+		return fmt.Errorf(
+			"MAILGUN_API_KEY must be configured in the environment")
+	}
+
+	newsletterInfo, draft := matchNewsletter(source)
+	if newsletterInfo == nil {
+		return fmt.Errorf("'%s' does not appear to be a known newsletter (check its path)",
+			source)
+	}
+
+	if live && draft {
+		return fmt.Errorf("refusing to send a draft newsletter to a live list")
 	}
 
 	dir := filepath.Dir(source)
@@ -73,7 +151,7 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	var b bytes.Buffer
 	writer := bufio.NewWriter(&b)
 
-	err = mace.Render(c, scommon.MainLayout, scommon.ViewsDir+"/passages/show.ace",
+	err = mace.Render(c, scommon.MainLayout, newsletterInfo.View,
 		writer, stemplate.GetAceOptions(true), locals)
 
 	writer.Flush()
@@ -85,16 +163,17 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 
 	var recipient string
 	if live {
-		recipient = listAddress
+		recipient = newsletterInfo.MailAddress
 	} else if staging {
-		recipient = listStagingAddress
+		recipient = newsletterInfo.MailAddressStaging
 	} else {
 		recipient = testAddress
 	}
 
 	mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
 
-	subject := fmt.Sprintf("Passages & Glass %s — %s",
+	fromAddress := "Brandur <" + newsletterInfo.MailAddress + ">"
+	subject := fmt.Sprintf(newsletterInfo.TitleFormat,
 		issue.Number, issue.Title)
 
 	message := mailgun.NewMessage(
