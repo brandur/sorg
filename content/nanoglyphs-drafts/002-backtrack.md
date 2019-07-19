@@ -1,5 +1,5 @@
 +++
-published_at = 2019-07-17T22:29:45Z
+published_at = 2019-07-19T16:57:21Z
 title = "Backtrack Collapse"
 +++
 
