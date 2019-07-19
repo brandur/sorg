@@ -24,7 +24,7 @@ just lost, I'd been _demolished_, and by just about every
 other racer. Not only that, but the winner had taken the
 gold using pen & paper.
 
-![Iceland](/assets/images/nanoglyphs/002-backtracking/iceland@2x.jpg)
+![Iceland](/assets/images/nanoglyphs/002-backtrack/iceland@2x.jpg)
 
 Today's photo is one that I took in Iceland in 2007. At the
 time I was shooting with a tiny handheld Casio EX-S600,
