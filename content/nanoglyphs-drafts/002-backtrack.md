@@ -4,10 +4,11 @@ title = "Backtrack Collapse"
 +++
 
 Okay, week two. As planned, the dark launch of week one was
-entirely unremarkable. Despite all the pondering on time
-constraints , I still wound up spending way too much time
-writing it. Writing is a skill, but writing _fluently_ to
-just get words down on paper is a step beyond that.
+entirely unremarkable in every way. Despite all the
+pontificating at length on time constraints, I still wound
+up blowing through all the ones I'd set for myself to write
+it. Writing is a skill, but writing _fluently_ to just get
+words down on paper is a step beyond that.
 
 I've attended a few [NaNoWriMo][nanowrimo] meetups where
 common a activity is a "word race". Participants "sprint"
