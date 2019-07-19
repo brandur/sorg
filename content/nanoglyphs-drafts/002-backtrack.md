@@ -21,7 +21,7 @@ I came out proudly announcing my number, only to have that
 confidence turn to disbelief and then to despair. I hadn't
 just lost, I'd been _demolished_, and by just about every
 other racer. Not only that, but the winner had taken the
-gold using _pen & paper_.
+gold using pen & paper.
 
 ![Iceland](/assets/images/nanoglyphs/002-backtracking/iceland@2x.jpg)
 
@@ -64,12 +64,12 @@ animated visualization.
 
 The solution is complicated if you're developing a regex
 engine, but luckily simple for most of us. Some engines
-like [RE2][re2] or [Rust's][rustregex] are designed for
-speed and security, and guarantee execution in linear time
-with respect to expression and inpput size by avoiding
-backtracking. Regex constructs that require backtracking
-like backreferences or look-around assertions are
-explicitly not supported.
+like [RE2][re2] or [Rust's `regex`][rustregex] jettison a
+few features to optimize for speed and security, and
+guarantee execution in linear time with respect to
+expression and input size by avoiding backtracking. Regex
+constructs that require backtracking like backreferences or
+look-around assertions are explicitly not supported.
 
 ## Serverless Postgres (#serverless-postgres)
 
@@ -108,10 +108,20 @@ one should be starting new projects on it, but it was
 unquestionably a source of a lot of good ideas, and some
 pieces of it like [OTP][otp] (blocks for building robust
 applications easily available as part of the language
-itself) are good ideas that other languages should still be
-learning from today.
+itself) were _so_ good that other languages should still be
+learning from them today.
 
 ---
+
+Hopefully you're finding these somewhat useful. I'm
+certainly finding just distilling information to be a
+useful learning exercise -- normally when reading a
+technical piece it's easy to have information flow into one
+side of the head and out the other. Remember to hit the
+"reply" button if you have any feedback or ideas on what's
+here.
+
+Otherwise, until next time.
 
 [aurorapostgres]: https://aws.amazon.com/blogs/aws/amazon-aurora-postgresql-serverless-now-generally-available/
 [cloudflare]: https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/
