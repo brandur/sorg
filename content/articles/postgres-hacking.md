@@ -232,8 +232,8 @@ After that's done it can simply be run like so on a C file
     src/tools/pgindent/pgindent src/backend/utils/adt/mac.c
 
 Given that `pgindent` is brittle Perl code and appears to
-have no test coverage whatsoever, I'd recommend committing
-changes before using it on any of your code.
+have no test coverage, I'd recommend committing changes
+before using it on any of your code.
 
 ## Patch formatting (#patches)
 
