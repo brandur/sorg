@@ -85,17 +85,25 @@ which will speed things up for any computer that's still
 running today.
 
 ``` sh
-make -j16
+make -j16 -s
 ```
 
-Pick a number based off how many cores you have. I'm using
-an iMac Pro with an 8 cores, each of which is
-hyper-threaded, so I use specify a parallelism of 16.
+The options passed are:
+
+* `-j`: Build in parallel. Pick a number based off the
+  number of cores your computer has. I'm using an iMac Pro
+  with 8 cores, each of which is hyper-threaded, so I
+  specify a parallelism of 16.
+
+* `-s`: Build quietly. Normally build commands produce a
+  lot of output which can obscure warnings emitted higher
+  up in the trace. Using `-s` prevents this and produces
+  cleaner output.
 
 Install the result to the `prefix` configured above:
 
 ``` sh
-make install -j16
+make install -j16 -s
 ```
 
 ### Running (#running)
@@ -179,8 +187,9 @@ C compiler:
 ```
 
 After warming up ccache by building once, then doing a
-`make clean` and building again, my runtime drops from 30s
-to less than 5s. Incremental compiles are even faster.
+`make clean -j16 -s` and building again, my runtime drops
+from 30s to less than 5s. Incremental compiles are even
+faster.
 
 ### The gold linker (#gold-linker)
 
