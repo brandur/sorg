@@ -3,28 +3,29 @@ hook = "TODO"
 location = "San Francisco"
 published_at = 2019-02-03T20:27:44Z
 tags = ["postgres"]
-title = "Designing SortSupport Abbreviated Keys for inet/cidr"
+title = "Network Types in Postgres and Designing Abbreviated Keys"
 +++
 
-A few weeks ago, I wrote about [how SortSupport works in
+A few months ago, I wrote about [how SortSupport works in
 Postgres](/sortsupport) to vastly speed up sorting on
-pass-by-reference types like `numeric`, `text`, `uuid`, and
-`varchar`. It works by generating abbreviated keys for
-larger heap values that are representative of them for
-purposes of sorting, but which fit nicely into the
-pointer-sized value (called a "datum") in memory that
-Postgres uses for sorting. Many values can be sorted just
-based on their abbreviated key, saving trips to the heap
-and increasing sorting throughput. Faster sorting leads to
-faster operations like `DISTINCT`, `ORDER BY`, and `CREATE
+large data types [1] like `numeric` or `text`, and
+`varchar`. It works by generating **abbreviated keys** for
+values that are representative of them for purposes of
+sorting, but which fit nicely into the pointer-sized value
+(called a "**datum**") in memory that Postgres uses for
+sorting. Most values can be sorted just based on their
+abbreviated key, saving trips to the heap and increasing
+sorting throughput. Faster sorting leads to speedup on
+common operations like `DISTINCT`, `ORDER BY`, and `CREATE
 INDEX`.
 
-I recently [posted a patch][patch] to add SortSupport for
-the `inet` and `cidr` types, which by my measurement, a
-little more than doubles sorting speed on them. `inet` and
-`cidr` are the types used to store network addresses or
-individual hosts and in either IPv4 or IPv6 (they generally
-look something like `1.2.3.0/24` or `1.2.3.4`).
+A [patch][patch] of mine was recently committed to add
+SortSupport for the `inet` and `cidr` types, which by my
+measurement, a little more than doubles sorting speed on
+them. `inet` and `cidr` are the types used to store network
+addresses or individual hosts and in either IPv4 or IPv6
+(they generally look something like `1.2.3.0/24` or
+`1.2.3.4`).
 
 `inet` and `cidr` have some important subtleties in how
 they're sorted which made designing an abbreviated key that
@@ -33,16 +34,16 @@ somewhat challenging. Because their size is limited,
 abbreviated keys are allowed to show equality even for
 values that aren't equal (Postgres will fall back to
 authoritative comparison to confirm equality or tiebreak),
-but they should never falsely indicate *inequality*.
+but they should never falsely indicate inequality.
 
-## The anatomy and differences of inet and cidr (#inet-cidr)
+## Anatomy, and inet vs. cidr (#inet-cidr)
 
 `inet` and `cidr` values have three components (and take
 for example the value `1.2.3.4/24`):
 
-1. A network, or bits in the netmask (`1.2.3.`).
-2. A netmask size (`/24` which is 24 bits).
-3. A subnet, or bits outside of the netmask (`.4`).
+1. A **network**, or bits in the netmask (`1.2.3.`).
+2. A **netmask size** (`/24` which is 24 bits).
+3. A **subnet**, or bits outside of the netmask (`.4`).
 
 The netmask size dictates how many bits of the value belong
 to the network. This can get a little confusing because
@@ -100,7 +101,7 @@ rules:
 3. Netmask size is compared (`/24`).
 4. All bits are compared. Having made it here, we know that
    the network bits are equal, so we're in effect just
-   comparing the subnet `.4`.
+   comparing the subnet (`.4`).
 
 These rules combined with the fact that we're working at
 the bit level produce ordering that in cases may not be
@@ -140,13 +141,13 @@ represent a value's family. 0 for IPv4 and 1 for IPv6.
 
 !fig src="/assets/images/sortsupport-inet/ip-family.svg" caption="One bit reserved for IP family."
 
-At first glance it might seem short-sighted that we're
-assuming that only two IP families will ever exist. Luckily
-though, abbreviated keys are not persisted to disk (they're
-only generated in the memory of a running Postgres system)
-and their format is therefore non-binding. If a new IP
-family were to ever appear, we could allocate another bit
-to account for it.
+It might seem short-sighted that we're assuming that only
+two IP families will ever exist. Luckily though,
+abbreviated keys are not persisted to disk (they're only
+generated in the memory of a running Postgres system) and
+their format is therefore non-binding. If a new IP family
+were to ever appear, we could allocate another bit to
+account for it.
 
 ### As many network bits as we can pack in (#network)
 
@@ -194,7 +195,7 @@ we've designed so far that IP family and available network
 bits are equal. That lets us think about the next
 comparison rule -- netmask size, which will fit nicely into
 our datum. The largest possible netmask size for an IPv4
-address is 32, which conveniently into only 6 bits [1] (`10
+address is 32, which conveniently into only 6 bits [2] (`10
 0000`).
 
 After adding netmask size to the datum we're left with 25
@@ -347,7 +348,9 @@ Refer to source for IPv4 on 64-bit.
 
 ## Summary (#summary)
 
-[1] I originally thought that by subtracting one from 32 I
+[1] Technically, pass-by-reference types. Generally those
+    that can't fit their entire value in a datum.
+[2] I originally thought that by subtracting one from 32 I
     could fit netmask size into only 5 bits (31 = `1
     1111`), but that's not possible because 0-bit netmasks
     are allowed and we therefore need to be able to
