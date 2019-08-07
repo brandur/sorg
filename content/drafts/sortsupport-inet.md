@@ -49,12 +49,12 @@ size. For example:
   exactly one address: `1.2.3.4`. `/128` would work
   similarly for IPv6.
 
-* `1.2.3.0/24` specifies a 24-bit netmask. It targets the
-  network at `1.2.3.*`. The last byte may be anywhere in
-  the range of 0 to 255.
+* `1.2.3.0/24` specifies a 24-bit netmask. It identifies
+  the network at `1.2.3.*`. The last byte may be anywhere
+  in the range of 0 to 255.
 
 * Similarly, `1.0.0.0/8` specifies an 8-bit netmask. It
-  targets the much larger possible network at `1.*`.
+  identifies the much larger possible network at `1.*`.
 
 We'll establish the following common vocabulary for each
 component of an address (and take for example the value
@@ -64,6 +64,9 @@ component of an address (and take for example the value
 2. A **netmask size** (`/24` which is 24 bits). Dictates
    the number of bits in the network.
 3. A **subnet**, or bits outside of the netmask (`.4`).
+   Only `inet` carries non-zero bits here, and combined
+   with the network, they identify a single **host**
+   (`1.2.3.4`).
 
 The netmask size is a little more complex than commonly
 understood because while it's most common to see byte-sized
@@ -135,17 +138,16 @@ them. Remember that abbreviated keys need to fit into the
 pointer-sized Postgres datum -- either 32 or 64 bits
 depending on target architecture. The goal is to pack in as
 much sorting-relevant information as possible while staying
-true to existing sorting semantics.
+true to existing semantics.
 
-Because of the subtle sorting semantics for these types,
-we'll be breaking the available datum into multiple parts,
+We'll be breaking the available datum into multiple parts,
 with information that we need for higher precedence sorting
 rules occupying more significant bits so that it compares
-first. This will allow us to compare any two keys as
-integers, which is a very fast operation for CPUs (faster
-even than comparing memory byte-by-byte), and also a common
-technique in other abbreviated key implementations like the
-one for [UUIDs][uuid].
+first. This allows us to compare any two keys as integers
+-- a very fast operation for CPUs (faster even than
+comparing memory byte-by-byte), and also a common technique
+in other abbreviated key implementations like the one for
+[UUIDs][uuid].
 
 ### 1 bit for family (#family)
 
@@ -275,7 +277,7 @@ memcpy(&ipaddr_datum, ip_addr(authoritative), sizeof(Datum));
 will be fine when representing an integer on a big-endian
 machine, but no good on one that's little-endian (like most
 of our Intel processors), so do a byte-wise position swap
-to reform it (more detail on this talking about [`uuid`'s
+to re-form it (more detail on this talking about [`uuid`'s
 abbreviated key implementation][uuid]:
 
 ``` c
@@ -339,10 +341,10 @@ size, then subtracting one to get 1s in all positions that
 were right of it:
 
 ```
-  0000 0001 0000 0000
--                   1
+  0000 0001 0000 0000       (1 << 8)
+-                   1       (minus one)
   -------------------
-  0000 0000 1111 1111
+  0000 0000 1111 1111       (8-bit mask)
 ```
 
 Getting the network's value then involves ANDing the IP's
@@ -453,7 +455,7 @@ family, then OR with `res` for the final result:
     }
 ```
 
-## Speed versus sustainability (#speed-vs-sustainability)
+## Speed vs. sustainability (#speed-vs-sustainability)
 
 The abbreviated key implementation here is complex enough
 that in most contexts I'd probably consider it a poor trade
@@ -461,15 +463,21 @@ off -- added speed is nice to have, but there is a cost in
 the ongoing maintenance burden of the new code and its
 understandability by future contributors.
 
-However, because Postgres is a highly leveraged piece of
-software. This patch makes sorting and creating indexes on
-network types _over twice as fast_, and that improvement
-will trickle down automatically to hundreds of thousands of
-Postgres installations around the world as they're upgraded
-to the next major version. So in this case, the added
-complexity is probably worth it, and we've made sure to
-bring in extensive comments and test cases to make future
-changes to the code easier.
+However, Postgres is a highly leveraged piece of software.
+This patch makes sorting and creating indexes on network
+types _~twice as fast_, and that improvement will trickle
+down automatically to hundreds of thousands of Postgres
+installations around the world as they're upgraded to the
+next major version. If there's one place where trading some
+more complexity for speed is worth it, it's cases like this
+one where only very few have to understand the code, but
+very many will reap its benefits. We've also made sure to
+add extensive comments and test cases to keep future code
+changes as easy as they can be.
+
+Thanks to Peter Geoghegan for seeding the idea for this
+patch, as well as for advice and very thorough
+testing/review, and Edmund Horner for review.
 
 [1] Technically, pass-by-reference types. Generally those
     that can't fit their entire value in a datum.
