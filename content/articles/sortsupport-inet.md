@@ -83,7 +83,7 @@ consecutive `1`s.
 
 !fig src="/assets/images/sortsupport-inet/inet-cidr-anatomy.svg" caption="The anatomy of inet and cidr values."
 
-The difference between `inet` is `cidr` is that `inet`
+The difference between `inet` and `cidr` is that `inet`
 allows a values outside of the netmasked bits. The value
 `1.2.3.4/24` is possible in `inet`, but illegal in `cidr`
 because only zeroes may appear after the network like
