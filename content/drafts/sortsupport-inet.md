@@ -3,7 +3,7 @@ hook = "TODO"
 location = "San Francisco"
 published_at = 2019-02-03T20:27:44Z
 tags = ["postgres"]
-title = "Network Types in Postgres and Designing Abbreviated Keys"
+title = "Designing Abbreviated Keys for the Network Types of Postgres"
 +++
 
 A few months ago, I wrote about [how SortSupport works in
@@ -30,49 +30,62 @@ addresses or individual hosts and in either IPv4 or IPv6
 `inet` and `cidr` have some important subtleties in how
 they're sorted which made designing an abbreviated key that
 would be faithful to those subtleties but still efficient,
-somewhat challenging. Because their size is limited,
+a non-trivial problem. Because their size is limited,
 abbreviated keys are allowed to show equality even for
 values that aren't equal (Postgres will fall back to
 authoritative comparison to confirm equality or tiebreak),
 but they should never falsely indicate inequality.
 
-## Anatomy, and inet vs. cidr (#inet-cidr)
+## Network type anatomy, and inet vs. cidr (#inet-cidr)
 
-`inet` and `cidr` values have three components (and take
-for example the value `1.2.3.4/24`):
+A property that's not necessarily obvious to anyone
+unfamiliar with them is that network types (`inet` or
+`cidr`) can either address a single host (what most people
+are used to seeing) or an entire subnetwork of arbitrary
+size. For example:
+
+* `1.2.3.4/32` specifies a 32-bit netmask on an IPv4 value,
+  which is 32 bits wide, which means that it defines
+  exactly one address: `1.2.3.4`. `/128` would work
+  similarly for IPv6.
+
+* `1.2.3.0/24` specifies a 24-bit netmask. It targets the
+  network at `1.2.3.*`. The last byte may be anywhere in
+  the range of 0 to 255.
+
+* Similarly, `1.0.0.0/8` specifies an 8-bit netmask. It
+  targets the much larger possible network at `1.*`.
+
+We'll establish the following common vocabulary for each
+component of an address (and take for example the value
+`1.2.3.4/24`):
 
 1. A **network**, or bits in the netmask (`1.2.3.`).
-2. A **netmask size** (`/24` which is 24 bits).
+2. A **netmask size** (`/24` which is 24 bits). Dictates
+   the number of bits in the network.
 3. A **subnet**, or bits outside of the netmask (`.4`).
 
-The netmask size dictates how many bits of the value belong
-to the network. This can get a little confusing because
-although it's most common to see byte-sized blocks like
-`/8`, `/16`, `/24`, and `/32`, it's allowed to be any
-number between 0 and 32. It's easy to mentally a byte-sized
-network out of a value (like `1.2.3.` out of `1.2.3.4/24`)
-because you can just stop at the appropriate byte boundary,
-but when it's not a nice byte multiple you have to think at
-the binary level. For example, if I have the value
-`255.255.255.255/1`, the network is just the leftmost bit.
-255 in binary is `1111 1111`, so the network is the bit `1`
-and the subnet is 31 consecutive `1`s.
+The netmask size is a little more complex than commonly
+understood because while it's most common to see byte-sized
+blocks like `/8`, `/16`, `/24`, and `/32`, it's allowed to
+be any number between 0 and 32. It's easy to mentally
+extract a byte-sized network out of a value (like `1.2.3.`
+out of `1.2.3.4/24`) because you can just stop at the
+appropriate byte boundary, but when it's not a nice byte
+multiple you have to think at the binary level. For
+example, if I have the value `255.255.255.255/1`, the
+network is just the leftmost bit. 255 in binary is `1111
+1111`, so the network is the bit `1` and the subnet is 31
+consecutive `1`s.
 
 !fig src="/assets/images/sortsupport-inet/inet-cidr-anatomy.svg" caption="The anatomy of inet and cidr values."
-
-An address whose entire value is in the network (`/32` for
-IPv4 or `/128` for IPv6) specifies just a single host, and
-for display purposes the netmask size is usually omitted.
-We'd show `1.2.3.4` instead of `1.2.3.4/32`.
 
 The difference between `inet` is `cidr` is that `inet`
 allows a values outside of the netmasked bits. The value
 `1.2.3.4/24` is possible in `inet`, but illegal in `cidr`
 because only zeroes may appear after the network like
 `1.2.3.0/24`. They're nearly identical, with the latter
-being strictly more constraining (and when working with
-data, that's a good thing). Otherwise put, `cidr` values
-never have a non-zero subnet.
+being more strict.
 
 In the Postgres source code, `inet` and `cidr` are
 represented by the same C struct. Here it is in
@@ -93,8 +106,7 @@ typedef struct
 
 ## Sorting rules (#sorting-rules)
 
-In Postgres, `inet`/`cidr` sort with a specific set of
-rules:
+In Postgres, `inet`/`cidr` sort according to these rules:
 
 1. IPv4 always appears before IPv6.
 2. The bits in the network are compared (`1.2.3.`).
@@ -105,32 +117,35 @@ rules:
 
 These rules combined with the fact that we're working at
 the bit level produce ordering that in cases may not be
-intuitively all that obvious to a human reader. For
-example, `192.0.0.0/1` sorts *before* `128.0.0.0/2` despite
-192 being the larger number. The reason is that when
+intuitively. For example, `192.0.0.0/1` sorts *before*
+`128.0.0.0/2` despite 192 being the larger number -- when
 comparing them, we start by looking at the common bits
 available in both networks, which comes out to just one bit
-(`min(/1, /2)`). That bit is the same in the networks
-of both values (remember, 192 = `1100 0000` and 128 = `1000
+(`min(/1, /2)`). That bit is the same in the networks of
+both values (remember, 192 = `1100 0000` and 128 = `1000
 0000`), so we fall through to comparing netmask size. `/2`
-is the larger of the two, so `128.0.0.0/2` is deemed to be
-the larger value.
+is the larger of the two, so `128.0.0.0/2` is the larger
+value.
 
 ## Designing an abbreviated key (#designing-keys)
 
-Now that we understand the basics of `inet`/`cidr` and how
-their sorting rules work, it's time to design an
-abbreviated key for them. Remember that abbreviated keys
-need to fit into the pointer-sized Postgres datum -- either
-32 or 64 bits depending on target architecture. The goal is
-to pack in as much sorting-relevant information as possible
-while staying true to the existing sorting semantics.
+Armed with the structure of `inet`/`cidr` and how their
+sorting works, we can now design an abbreviated key for
+them. Remember that abbreviated keys need to fit into the
+pointer-sized Postgres datum -- either 32 or 64 bits
+depending on target architecture. The goal is to pack in as
+much sorting-relevant information as possible while staying
+true to existing sorting semantics.
 
 Because of the subtle sorting semantics for these types,
 we'll be breaking the available datum into multiple parts,
 with information that we need for higher precedence sorting
 rules occupying more significant bits so that it compares
-first.
+first. This will allow us to compare any two keys as
+integers, which is a very fast operation for CPUs (faster
+even than comparing memory byte-by-byte), and also a common
+technique in other abbreviated key implementations like the
+one for [UUIDs][uuid].
 
 ### 1 bit for family (#family)
 
@@ -142,12 +157,11 @@ represent a value's family. 0 for IPv4 and 1 for IPv6.
 !fig src="/assets/images/sortsupport-inet/ip-family.svg" caption="One bit reserved for IP family."
 
 It might seem short-sighted that we're assuming that only
-two IP families will ever exist. Luckily though,
-abbreviated keys are not persisted to disk (they're only
-generated in the memory of a running Postgres system) and
-their format is therefore non-binding. If a new IP family
-were to ever appear, we could allocate another bit to
-account for it.
+two IP families will ever exist, but luckily abbreviated
+keys are not persisted to disk (only in the memory of a
+running Postgres system) and their format is therefore
+non-binding. If a new IP family were to ever appear, we
+could allocate another bit to account for it.
 
 ### As many network bits as we can pack in (#network)
 
@@ -182,174 +196,284 @@ filled entirely with network. An IPv4 value is only 32
 bits, but that's still more space than we have left on a
 32-bit machine, so again, we'll pack in 31 of them.
 
-The only case with space leftover is IPv4 on a 64-bit
-machine. Even after storing all 32 possible bits of
-network, there's still 31 bits available. Let's see what we
-can use them for.
+!fig src="/assets/images/sortsupport-inet/network-bits.svg" caption="Number of bits available to store network per datum size and IP family."
+
+But there is one case where we have some space left over:
+IPv4 on a 64-bit machine. Even after storing all 32
+possible bits of network, there's still 31 bits available.
+Let's see what we can use them for.
 
 ### IPv4 on 64-bit: network size and a few subnet bits (#ipv4-64bit)
 
 As datums are being compared for IPv4 on a 64-bit machine,
-we can be sure that that having looked at the 33 bits that
-we've designed so far that IP family and available network
-bits are equal. That lets us think about the next
-comparison rule -- netmask size, which will fit nicely into
-our datum. The largest possible netmask size for an IPv4
-address is 32, which conveniently into only 6 bits [2] (`10
-0000`).
+we can be sure that having looked at the 33 bits that
+we've designed so far -- IP family (1 bit) and 
+network (32 bits) -- are equal. That leaves us with 31
+bits (64 - 33) left to work with, and lets us move onto
+the next comparison rule -- netmask size. The largest
+possible netmask size for an IPv4 address is 32, which
+conveniently fits into only 6 bits (`32 = 10 0000`) [2].
 
 After adding netmask size to the datum we're left with 25
-bits, which we can use for subnet. Subnets can be as large
-as 32 bits for a `/0` value, so we'll have to shift any
-that are too large to fit down to the size available. That
-will only ever happen for netmask sizes of `/6` or smaller
--- for all commonly seen netmask sizes like `/8`, `/16`,
-or `/24` we can fit the entirety of the subnet into the
-datum.
+bits (31 - 6), which we can use for the next sorting rule
+-- subnet. Subnets can be as large as 32 bits for a `/0`
+value, so we'll have to shift any that are too large to fit
+down to the size available. That will only ever happen for
+netmask sizes of `/6` or smaller -- for all commonly seen
+netmask sizes like `/8`, `/16`, or `/24` we can fit the
+entirety of the subnet into the datum.
 
-The final abbreviated key design looks like this:
+With subnet covered, we've used up all the available key
+bits, but also managed to cover every sorting rule -- with
+most [3] real-world data, Postgres should be able to sort
+almost entirely with abbreviated keys without falling back
+to authoritative comparison. The final key design looks
+like this:
 
 !fig src="/assets/images/sortsupport-inet/key-design.svg" caption="The design of abbreviated keys for inet and cidr."
 
 ## Bit gymnastics in C (#gymnastics)
 
-IP family:
+Now that we have an encoding scheme for each different
+case, we can build an implementation that puts everything
+into place. This involves the use of many bitwise
+operations that are common in C, but which many of us who
+program in high-level languages day-to-day aren't as used
+to.
+
+I'll go through this implementation step-by-step, but you
+may prefer to refer to the completed version in the
+[Postgres source][source], which we've made an effort to
+comment comprehensively.
+
+### Ingesting bytes as an integer (#integer)
+
+Recall that an IP component is stored as a 16-byte
+`unsigned char` array in the backing network type:
 
 ``` c
-static Datum
-network_abbrev_convert(Datum original, SortSupport ssup)
+typedef struct
 {
     ...
-
-    res = (Datum) 0;
-    if (ip_family(authoritative) == PGSQL_AF_INET6)
-    {
-        /* Shift a 1 over to the datum's most significant bit. */
-        res = ((Datum) 1) << (SIZEOF_DATUM * BITS_PER_BYTE - 1);
-    }
+    unsigned char ipaddr[16];  /* up to 128 bits of address */
+} inet_struct;
 ```
 
-### Ingesting bytes like an integer (#integer)
-
-Ingesting 4 or 8 bytes of a value:
+Our abbreviated keys will be compared as if they were
+integers (one of the reasons that they're so fast), so the
+first step is to extract a datum's worth of bytes from
+`ipaddr` into an intermediate representation that'll be
+used to more easily separate out the final components.
+We'll use `memcpy` to copy it out byte-by-byte:
 
 ``` c
-/*
- * Create an integer representation of the IP address by taking its first
- * 4 or 8 bytes. We take 8 bytes of an IPv6 address on a 64-bit machine
- * and 4 bytes on a 32-bit. Always take all 4 bytes of an IPv4 address.
- *
- * We're consuming an array of char, so make sure to byteswap on little
- * endian systems (an inet's IP array emulates big endian in that the
- * first byte is always the most significant).
- */
-if (ip_family(authoritative) == PGSQL_AF_INET6)
+Datum ipaddr_datum;
+memcpy(&ipaddr_datum, ip_addr(authoritative), sizeof(Datum));
+```
+
+`ipaddr` is laid out most significant byte first, which
+will be fine when representing an integer on a big-endian
+machine, but no good on one that's little-endian (like most
+of our Intel processors), so do a byte-wise position swap
+to reform it (more detail on this talking about [`uuid`'s
+abbreviated key implementation][uuid]:
+
+``` c
+/* Must byteswap on little-endian machines */
+ipaddr_datum = DatumBigEndianToNative(ipaddr_datum);
+```
+
+And for IPv6, make sure to shift a 1 bit into the leftmost
+position so that it sorts after all IPv4 values:
+
+```
+Datum res;
+res = ((Datum) 1) << (SIZEOF_DATUM * BITS_PER_BYTE - 1);
+```
+
+### Extracting network via bitmask (#network-bitmask)
+
+Next we'll extract the leading **network** component using a
+technique called bitmasking. This common technique involves
+using a bitwise-AND to extract a desired range of bits:
+
+```
+  1010 1010 1010 1010       (original value)
+& 0000 1111 1111 0000       (bitmask)
+  -------------------
+  0000 1010 1010 0000       (final result)
+```
+
+We're going to create a bitmask for the **subnet** portion
+of the value (reminder: that's the last part _after_ the
+network), and it's size depends on how many subnet bits we
+expect to see in `ipaddr_datum`. For example, if the
+network component occupies bits equal or greater to the
+datum's size, then the subnet bitmask will be zero.
+
+The code's broken into three separate conditionals. This
+first section handles the case of no bits in the network
+components. The subnet bitmask should be all ones, which we
+get by starting with 0, subtracting 1, and allowing the
+value to roll over to its maximum value:
+
+``` c
+Datum subnet_bitmask,
+      network;
+
+subnet_size = ip_maxbits(authoritative) - ip_bits(authoritative);
+Assert(subnet_size >= 0);
+
+if (ip_bits(authoritative) == 0)
 {
-    ipaddr_datum = *((Datum *) ip_addr(authoritative));
-    ipaddr_datum = DatumBigEndianToNative(ipaddr_datum);
-}
-else
-{
-    uint32		ipaddr_datum32 = *((uint32 *) ip_addr(authoritative));
-#ifndef WORDS_BIGENDIAN
-    ipaddr_datum = pg_bswap32(ipaddr_datum32);
-#endif
+    /* Fit as many ipaddr bits as possible into subnet */
+    subnet_bitmask = ((Datum) 0) - 1;
+    network = 0;
 }
 ```
 
-### Bit masking (#masking)
+The next section is the case where there are some bits for
+both the network and subnet. We use a trick to get the
+bitmask which involves shifting a 1 left out by the subnet
+size, then subtracting one to get 1s in all positions that
+were right of it:
 
-Separating network and subnet bits:
-
-``` c
-/*
- * Number of bits in subnet. e.g. An IPv4 that's /24 is 32 - 24 = 8.
- *
- * However, only some of the bits may have made it into the fixed sized
- * datum, so take the smallest number between bits in the subnet and bits
- * in the datum which are not part of the network.
- */
-datum_subnet_size = Min(ip_maxbits(authoritative) - ip_bits(authoritative),
-                        SIZEOF_DATUM * BITS_PER_BYTE - ip_bits(authoritative));
-
-/* we may have ended up with < 0 for a large netmask size */
-if (datum_subnet_size <= 0)
-{
-    /* the network occupies the entirety `ipaddr_datum` */
-    network = ipaddr_datum;
-    subnet = (Datum) 0;
-}
-
-...
+```
+  0000 0001 0000 0000
+-                   1
+  -------------------
+  0000 0000 1111 1111
 ```
 
-The else case is more interesting:
+Getting the network's value then involves ANDing the IP's
+datum and the _negated_ form of the subnet bitmask
+(`ipaddr_datum & ~subnet_bitmask`):
 
 ``` c
-...
-
-else
+else if (ip_bits(authoritative) < SIZEOF_DATUM * BITS_PER_BYTE)
 {
-    /*
-     * This shift creates a power of two like `0010 0000`, and subtracts
-     * one to create a bitmask for an IP's subnet bits like `0001 1111`.
-     *
-     * Note that `datum_subnet_mask` may be == 0, in which case we'll
-     * generate a 0 bitmask and `subnet` will also come out as 0.
-     */
-    subnet_bitmask = (((Datum) 1) << datum_subnet_size) - 1;
-
-    /* and likewise, use the mask's complement to get the netmask bits */
+    /* Split ipaddr bits between network and subnet */
+    subnet_bitmask = (((Datum) 1) << subnet_size) - 1;
     network = ipaddr_datum & ~subnet_bitmask;
-
-    /* bitwise AND the IP and bitmask to extract just the subnet bits */
-    subnet = ipaddr_datum & subnet_bitmask;
 }
 ```
 
-Why are we suddenly not concerned with endianness now?
+The final case represents no bits in the subnet. Set
+`network` to the full value of `ipaddr_datum`:
 
-### Shifting things into place (#shifting)
+``` c
+else
+{
+    /* Fit as many ipaddr bits as possible into network */
+    subnet_bitmask = 0;        /* Unused, but be tidy */
+    network = ipaddr_datum;
+}
+```
 
-IPv6 on 64-bit:
+### Shifting things into place for IPv4 on 64-bit (#shifting)
+
+Recall that IPv4 on a 64-bit architecture is by far the
+most complex case because we have room to fit a lot more
+information. This next section involves taking the network
+and subnet bitmask that we resolved above and shifting it
+all into place.
+
+The order of operations is:
+
+1. `network`: Shift the network left 31 bits to make room
+   for netmask size and 25 bits worth of subnet.
+2. `network_size`: Shift the network size left 25 bits to
+   make room for the subnet.
+3. `subnet`: Extract a subnet using the bitmask calculated
+   above.
+4. `subnet`: If the subnet is longer than 25 bits, shift it
+   down to just occupy 25 bits.
+5. `res`: Get a final result by ORing the values from (1),
+   (2), and (4) above.
 
 ``` c
 #if SIZEOF_DATUM == 8
+    if (ip_family(authoritative) == PGSQL_AF_INET)
+    {
+        /*
+         * IPv4 with 8 byte datums: keep all 32 netmasked bits, netmask size,
+         * and most significant 25 subnet bits
+         */
+        Datum        netmask_size = (Datum) ip_bits(authoritative);
+        Datum        subnet;
 
-if (ip_family(authoritative) == PGSQL_AF_INET6)
-{
-    /*
-     * IPv6 on a 64-bit machine: keep the most significant 63 netmasked
-     * bits.
-     */
-    res |= network >> 1;
-}
+        /* Shift left 31 bits: 6 bits netmask size + 25 subnet bits */
+        network <<= (ABBREV_BITS_INET4_NETMASK_SIZE +
+                     ABBREV_BITS_INET4_SUBNET);
 
-...
-```
+        /* Shift size to make room for subnet bits at the end */
+        netmask_size <<= ABBREV_BITS_INET4_SUBNET;
 
-This looks pretty similar to IPv4 or IPv6 on 32-bit:
+        /* Extract subnet bits without shifting them */
+        subnet = ipaddr_datum & subnet_bitmask;
 
-``` c
-...
+        /*
+         * If we have more than 25 subnet bits, we can't fit everything. Shift
+         * subnet down to avoid clobbering bits that are only supposed to be
+         * used for netmask_size.
+         *
+         * Discarding the least significant subnet bits like this is correct
+         * because abbreviated comparisons that are resolved at the subnet
+         * level must have had equal subnet sizes in order to get that far.
+         */
+        if (subnet_size > ABBREV_BITS_INET4_SUBNET)
+            subnet >>= subnet_size - ABBREV_BITS_INET4_SUBNET;
 
-#else /* SIZEOF_DATUM != 8 */
-
-/*
- * 32-bit machine: keep the most significant 31 netmasked bits in both
- * IPv4 and IPv6.
- */
-res |= network >> 1;
-
+        /*
+         * Assemble the final abbreviated key without clobbering the ipfamily
+         * bit that must remain a zero.
+         */
+        res |= network | netmask_size | subnet;
+    }
+    else
 #endif
 ```
 
-Refer to source for IPv4 on 64-bit.
+### Everything else (#everything-else)
 
-## Summary (#summary)
+The three other cases (refer to the figure above) are much
+simpler because we only have room for network bits. Shift
+them right by 1 bit to not clobber our previously set IP
+family, then OR with `res` for the final result:
+
+``` c
+#endif
+    {
+        /*
+         * 4 byte datums, or IPv6 with 8 byte datums: Use as many of the
+         * netmasked bits as will fit in final abbreviated key. Avoid
+         * clobbering the ipfamily bit that was set earlier.
+         */
+        res |= network >> 1;
+    }
+```
+
+## Speed versus sustainability (#speed-vs-sustainability)
+
+The abbreviated key implementation here is complex enough
+that in most contexts I'd probably consider it a poor trade
+off -- added speed is nice to have, but there is a cost in
+the ongoing maintenance burden of the new code and its
+understandability by future contributors.
+
+However, because Postgres is a highly leveraged piece of
+software. This patch makes sorting and creating indexes on
+network types _over twice as fast_, and that improvement
+will trickle down automatically to hundreds of thousands of
+Postgres installations around the world as they're upgraded
+to the next major version. So in this case, the added
+complexity is probably worth it, and we've made sure to
+bring in extensive comments and test cases to make future
+changes to the code easier.
 
 [1] Technically, pass-by-reference types. Generally those
     that can't fit their entire value in a datum.
+
 [2] I originally thought that by subtracting one from 32 I
     could fit netmask size into only 5 bits (31 = `1
     1111`), but that's not possible because 0-bit netmasks
@@ -357,5 +481,11 @@ Refer to source for IPv4 on 64-bit.
     represent the entire range of 0 to 32. For example,
     `1.2.3.4/0` is a legal value in Postgres.
 
+[3] Authoritative comparison will still be needed in the
+    case of equal network values and values with short
+    networks (`/6` or less) that share many leading bits.
+
 [inet]: src/include/utils/inet.h:23
 [patch]: TODO
+[source]: TODO
+[uuid]: /sortsupport#uuid
