@@ -1,9 +1,9 @@
 +++
-hook = "TODO"
-location = "San Francisco"
-published_at = 2019-02-03T20:27:44Z
+hook = "Making the sorting speed of network types in Postgres twice as fast by designing SortSupport abbreviated keys compatible with their existing sort semantics."
+location = "Vancouver"
+published_at = 2019-08-07T16:50:44Z
 tags = ["postgres"]
-title = "Designing Abbreviated Keys for the Network Types of Postgres"
+title = "Doubling the Sorting Speed of Postgres Network Types with Abbreviated Keys"
 +++
 
 A few months ago, I wrote about [how SortSupport works in
