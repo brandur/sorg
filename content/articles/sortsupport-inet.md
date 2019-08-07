@@ -493,7 +493,7 @@ testing/review, and Edmund Horner for review.
     case of equal network values and values with short
     networks (`/6` or less) that share many leading bits.
 
-[inet]: src/include/utils/inet.h:23
+[inet]: https://github.com/postgres/postgres/blob/12afc7145c03c212f26fea3a99e016da6a1c919c/src/include/utils/inet.h:23
 [patch]: https://www.postgresql.org/message-id/CABR_9B-PQ8o2MZNJ88wo6r-NxW2EFG70M96Wmcgf99G6HUQ3sw%40mail.gmail.com
 [source]: https://github.com/postgres/postgres/blob/12afc7145c03c212f26fea3a99e016da6a1c919c/src/backend/utils/adt/network.c#L561
 [uuid]: /sortsupport#uuid
