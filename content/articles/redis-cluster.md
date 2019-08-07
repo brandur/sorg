@@ -2,7 +2,7 @@
 hook = "Flattening a single very hot vertical Redis node into a horizontal Redis Cluster at Stripe."
 location = "San Francisco"
 published_at = 2018-04-26T17:29:17Z
-title = "Scaling a High-traffic Rate Limiting Stack With Redis Cluster"
+title = "Scaling a High-traffic Rate Limiting Stack with Redis Cluster"
 +++
 
 Redis is the often unspoken workhorse of production. It's

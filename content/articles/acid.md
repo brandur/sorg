@@ -3,7 +3,7 @@ hook = "On ensuring system integrity, operability, and correctness through a sol
 location = "San Francisco"
 published_at = 2017-05-16T14:03:01Z
 tags = ["postgres"]
-title = "Building Robust Systems With ACID and Constraints"
+title = "Building Robust Systems with ACID and Constraints"
 +++
 
 In 1983, Andreas Reuter and Theo Härder coined the acronym
