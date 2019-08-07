@@ -61,15 +61,17 @@ A few takeways come to mind:
 * Writing your own compiler from scratch might not be a
   good idea anymore, even if you've got 30 years of
   experience doing it (put another way, use LLVM).
+
 * Overly permissive languages introduce a lot of scary
   possibilities that are difficult to protect against.
   Consider something that's not Ruby.
-* It's probably not possible to have enough experience in C
-  to be able to write it safely. Looking at some of these
-  MRuby patches, the implementation's code is so obscuring
-  that it introduces plenty of opportunity for error. When
-  you get one, it's often a buffer overrun that leads to
-  remote execution.
+
+* It's not possible to have enough experience in C to be
+  able to write it safely. Looking at some of these MRuby
+  patches, the implementation's code is so obscuring that
+  it introduces plenty of opportunity for error. When you
+  get one, it's often a buffer overrun that leads to remote
+  execution.
 
 All of that said, Shopify Scripts is a great idea. I'm glad
 to see that an approach involving a more depth-wise defense
