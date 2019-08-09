@@ -119,8 +119,8 @@ In Postgres, `inet`/`cidr` sort according to these rules:
    comparing the subnet (`.4`).
 
 These rules combined with the fact that we're working at
-the bit level produce ordering that in cases may not be
-intuitively. For example, `192.0.0.0/1` sorts *before*
+the bit level produces ordering that in cases may not be
+intuitive. For example, `192.0.0.0/1` sorts *before*
 `128.0.0.0/2` despite 192 being the larger number -- when
 comparing them, we start by looking at the common bits
 available in both networks, which comes out to just one bit
