@@ -37,7 +37,7 @@ forego run make build
 # large enough that we bypass Mac OS' per-process limit for file descriptors,
 # so that needs to be increased before the command below becomes runnable. This
 # line can be put in an RC file:
-ulimit -n 2048
+ulimit -n 4096
 
 # Watch for changes in Go files and/or content and recompile and rebuild when
 # one occurs.
