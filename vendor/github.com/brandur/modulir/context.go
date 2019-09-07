@@ -103,6 +103,15 @@ type Context struct {
 
 	// fileModTimeCache remembers the last modified times of files.
 	fileModTimeCache *fileModTimeCache
+
+	// watchedPaths are the set of paths that we're currently watching. This
+	// information is tracked internally by fsnotify as well, but we track it here
+	// as well to help with debugging (for "too many open files" problems and the
+	// like).
+	watchedPaths map[string]struct{}
+
+	// watchedPathsMu synchronizes concurrent access to watchedPaths.
+	watchedPathsMu sync.RWMutex
 }
 
 // NewContext initializes and returns a new Context.
@@ -122,6 +131,7 @@ func NewContext(args *Args) *Context {
 
 		colorizer:        &colorizer{LogColor: args.LogColor},
 		fileModTimeCache: NewFileModTimeCache(args.Log),
+		watchedPaths:     make(map[string]struct{}),
 	}
 
 	if args.Pool != nil {
@@ -192,7 +202,11 @@ func (c *Context) Changed(path string) bool {
 	if c.Watcher != nil {
 		err := c.addWatched(fileInfo, path)
 		if err != nil {
-			c.Log.Errorf("Error watching source: %v", err)
+			// Unfortunately the number shown here is misleading because
+			// fsnotify may have recursively added a bunch of file watches
+			// under a directory.
+			c.Log.Errorf("Error watching source: %v (num watches is %v)",
+				err, len(c.watchedPaths))
 		}
 	}
 
@@ -278,7 +292,25 @@ func (c *Context) addWatched(fileInfo os.FileInfo, absolutePath string) error {
 		absolutePath = filepath.Dir(absolutePath)
 	}
 
-	return c.Watcher.Add(absolutePath)
+	absolutePath = filepath.Clean(absolutePath)
+
+	c.watchedPathsMu.RLock()
+	_, ok := c.watchedPaths[absolutePath]
+	c.watchedPathsMu.RUnlock()
+	if ok {
+		return nil
+	}
+
+	err := c.Watcher.Add(absolutePath)
+	if err != nil {
+		return err
+	}
+
+	c.watchedPathsMu.Lock()
+	c.watchedPaths[absolutePath] = struct{}{}
+	c.watchedPathsMu.Unlock()
+
+	return nil
 }
 
 // Stats tracks various statistics about the build process.

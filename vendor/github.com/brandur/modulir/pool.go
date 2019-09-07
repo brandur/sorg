@@ -200,13 +200,13 @@ func (p *Pool) LogErrorsSlice(errors []error) {
 
 		if ok {
 			p.log.Errorf(
-				p.colorizer.Bold(p.colorizer.Red("Job error:")).String() +
+				p.colorizer.Bold(p.colorizer.Red("Job error:")).String()+
 					" %v (job: '%s', time: %v)",
-				job.Err, job.Name, job.Duration.Truncate(100 * time.Microsecond))
+				job.Err, job.Name, job.Duration.Truncate(100*time.Microsecond))
 		} else {
 			p.log.Errorf(
-				p.colorizer.Bold(p.colorizer.Red("Build error:")).String() +
-					"%v",
+				p.colorizer.Bold(p.colorizer.Red("Build error:")).String()+
+					" %v",
 				err)
 		}
 
@@ -237,7 +237,7 @@ func (p *Pool) LogSlowestSlice(jobs []*Job) {
 		p.log.Infof(
 			p.colorizer.Bold(p.colorizer.Cyan("    %s")).String()+
 				" (time: %v)",
-			job.Name, job.Duration.Truncate(100 * time.Microsecond))
+			job.Name, job.Duration.Truncate(100*time.Microsecond))
 
 		if i >= maxMessages-1 {
 			p.log.Infof("... many jobs executed (limit reached)")
