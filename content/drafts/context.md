@@ -45,15 +45,69 @@ into code so that it happens quite generally without developers working on
 individual features having to think about it all the time. To that end, a
 couple of good places to put checks for it are:
 
-1. Before the main body of a service request starts. 2. Before performing a
-   database operation. 3. Before performing an external service request.
+1. Before the main body of a service request starts.
+2. Before performing a database operation.
+3. Before performing an external service request.
 
-## The Context struct (#context)
+## The Context struct and basic concepts (#context)
+
+First off, let's take a quick peek at Go's [`Context` struct][gocontext]:
+
+```go
+type Context interface {
+    // The time left before this context should be cancelled. Returns
+    // `ok==false` if no deadline is set.
+    Deadline() (deadline time.Time, ok bool)
+
+    // Returns a channel that's closed when work done on behalf of this context
+    // should be cancelled.
+    Done() <-chan struct{}
+
+    // If Done is closed returns nil. Otherwise, returns a non-nil error
+    // explaining why.
+    Err() error
+
+    ...
+}
+```
+
+Contexts can be cancelled by either an explicit signal to a cancellation
+channel, or may become cancelled if they time out. A context provides
+`Deadline` which returns its time left before cancellation if a timeout has
+been set. `Done` returns a channel that's invoked if the context is cancelled
+so that a caller can abandon work. `Err` provides an error explaining why a
+context may have been cancelled like `DeadlineExceeded`.
+
+New contexts are created based on a parent context so that a parent can
+cancel its entire tree of descendants if it itself is cancelled. User code
+starts by initializing based on the "background" context from
+`context.Background`:
 
 ```go
 ctx, cancel = context.WithCancel(context.Background())
 ```
 
+And from there makes new ones based on previously created contexts:
+
+```go
+childCtx, cancel = context.WithCancel(ctx)
+```
+
+`WithCancel` returns a context that must be cancelled explicitly through a
+channel, but the similar `WithTimeout` creates one that can be cancelled
+either explicitly, or implicitly via a specified deadline:
+
+```go
+timeoutCtx, cancel := context.WithTimeout(ctx, 50*time.Millisecond)
+```
+
+Note that the `cancel` channel is made available as a second return value
+rather than part of the `Context` struct itself. This design is meant to
+encourage proper layering of contexts, with only parent layers able to cancel
+child contexts rather than children able to cancel themselves.
+
 ## Sample application & building blocks (#sample-app)
 
 ## Powerful built-ins (#built-ins)
+
+[gocontext]: https://golang.org/pkg/context/
