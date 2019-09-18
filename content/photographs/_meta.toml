@@ -2004,3 +2004,17 @@
   original_image_url = "https://www.dropbox.com/s/xc8g0a04cjo9ynk/L1070300.JPG?dl=1"
   slug = "L2019-03-17"
   title = "Crowd"
+
+[[photographs]]
+  description = "Crocus flowers opening along the \"Entrance Ridges\" in Alberta on a hike with the Ramblers."
+  occurred_at = 2019-04-07T15:47:00Z
+  original_image_url = "https://www.dropbox.com/s/k4ebiucrecdgvhl/IMG_0919.JPG?dl=1"
+  slug = "2019-new-crocus"
+  title = "New Crocus"
+
+[[photographs]]
+  description = "Markethalle Neun, an indoor market in Berlin's Kreuzberg."
+  occurred_at = 2019-06-12T08:17:00Z
+  original_image_url = "https://www.dropbox.com/s/fhj6lsa7lwory5j/L1070594-market.jpg?dl=1"
+  slug = "2019-markthalle-neun"
+  title = "Markthalle Neun"
