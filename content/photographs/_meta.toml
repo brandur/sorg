@@ -2018,3 +2018,17 @@
   original_image_url = "https://www.dropbox.com/s/fhj6lsa7lwory5j/L1070594-market.jpg?dl=1"
   slug = "2019-markthalle-neun"
   title = "Markthalle Neun"
+
+[[photographs]]
+  description = "Some Berlin-quality graffiti seen while exploring the overgrown Teufelsberg area."
+  occurred_at = 2019-06-19T02:34:00Z
+  original_image_url = "https://www.dropbox.com/s/eefl8ljfymrb8ex/L1070783.JPG?dl=1"
+  slug = "2019-guerilla"
+  title = "Guerilla"
+
+[[photographs]]
+  description = "A walk around the perimeter fence at Teufelsberg in Berlin."
+  occurred_at = 2019-06-19T02:59:00Z
+  original_image_url = "https://www.dropbox.com/s/t98531pygz601cp/L1070799.JPG?dl=1"
+  slug = "2019-perimeter"
+  title = "Exploring the Perimeter"
