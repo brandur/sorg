@@ -144,7 +144,7 @@ Let's look at a few examples of things that can go wrong:
   due to a constraint violation or a database connectivity
   problem.
 * Our call to Stripe could time out, leaving it unclear
-  whether our charge when through or not.
+  whether our charge went through or not.
 * Contacting Mailgun to send the receipt could fail,
   leaving the user with a credit card charge but no formal
   notification of the transaction.
