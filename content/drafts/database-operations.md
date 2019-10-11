@@ -3,42 +3,42 @@ hook = "TODO"
 location = "San Francisco"
 published_at = 2019-03-26T17:00:18Z
 tags = ["postgres"]
-title = "Database Scaffolds: Ideas for more operable databases"
+title = "Ideas for more operable databases"
 +++
 
-There are two phases in starting to use a new database. The first phase is learning it, writing code that will use it, and getting that initial deployment out into production. It lasts somewhere on the order of weeks to months.
+The first phase in getting up to speed on a new database is learning it, writing code that uses it, and getting an initial deployment out to production. It lasts weeks to months.
 
-The next phase is much more difficult. It involves learning to operate the database as use and load continues to ramp up. Mistakes are made early on, and engineers learn from them. Principles of operation that aren’t obvious from reading documentation start to crystallize. Hard operational maneuvers that aren’t necessary in development are undertaken, like upgrading across major versions or recovering from major failures. Undocumented quirks are discovered. This phase lasts the rest of the organization’s lifetime.
+The _second_ phase is learning how to operate it. Usage patterns and load increases steadily, and engineers discover the hard parts like how to upgrade online, recover from disaster, and underdocumented quirks. It lasts the rest of the organization's lifetime.
 
-As they scale, organizations end up building many tools to help with the above. For example, managing incremental changes to a database’s schema is such a common problem that practically every ORM in existence has a migration framework to help with it. But the relative ubiquity of high quality migrations are an unusual success case — because these facilities generally aren’t available within databases themselves and high quality open source solutions are often not available, they much more usually end up as rough, internal projects that get the job done, but not particularly well.
+As they scale, organizations adopt tools to help with operation. Managing incremental changes to a database’s schema is such a common problem that practically every ORM in existence has a migration framework to help with it. But the ubiquity of high quality migration frameworks is an unusual success case — when no high quality open source tooling exists, organizations build it themselves. Tooling that gets the job done, but the quality bar for this sort of internal project generally leaves a lot to be desired.
 
-I’m going to refer to the collection of this sort of tooling as a ***database bolts*** — features that are not built into databases, but could be. Personally, I’d love to see more of them migrate down into databases so that all of us can benefit from shared tools of higher quality instead of duplicating work on low quality ones everywhere. This article is a list of some that come to mind.
+There's a whole class of tooling that's key to operating well, but which doesn't tend to be included along with its core. Having some of these features migrate from the periphery into the core would be hugely beneficial to in getting everybody onto shared tools of higher quality instead of duplicating lowwer quality ones everywhere. Here's a list of ideas for that class of tooling based on what I've seen inside my last few jobs.
 
-## Queries (#queries)
+## Queries and analytics (#queries)
 
 ### Slow query killer (#slow-query-killer)
 
-A common operational problem is for long-running queries to cause trouble of various sorts in production ([for example](/postgres-queues)) as the extra accounting the system has to do to support them affects current work. Databases like Postgres offer mechanisms that try to remediate this like `statement_timeout`, but they’re rarely sufficient — it’s still too easy for rogue users or services to omit, adjust, or disable their own timeouts.
+A common operational problem is for [long-running queries to cause headaches in production](/postgres-queues) as the extra accounting the system has to do to support them affects other work. Databases like Postgres offer mechanisms that try to remediate this like `statement_timeout`, but they’re rarely sufficient — it’s still too easy for rogue users or services to omit, adjust, or disable their own timeouts.
 
-The common remediation is to build a supervisor that monitors query runtime and kills any that have been going too long. It’s not that hard of a thing to do, but it’s so pervasive of a pattern that it’d be nice if databases provided it out of the box.
+The common mitigation is to build a supervisor that monitors query runtime and kills any that have been going too long. It’s not hard to do, but it’s so pervasive of a pattern that it’d be nice if more databases provided it out of the box.
 
 ### Non-destructive analytics (#analytics)
 
-Common OLTP operations are usually very fast, but analytics tend to be slow. Still, they’re so important that people want to do them anyway.
+Common [OLTP](/fragments/olap-oltp-zheap) operations are usually very fast, but analytics tend to be slow. Still, they’re so important that people want to do them anyway.
 
-Because long-running queries can be so harmful to operational health, organizations often resort to exporting data from their main database into a separate data warehouse, which is expensive and inefficient (for a smaller organization at least).
+Because long-running queries can be so harmful to operational health, organizations often resort to exporting data from their main database into a separate data warehouse, which is expensive and inefficient.
 
 A useful feature that a database could provide is a way to run queries that would be guaranteed not to affect production operations either because the same level of bookkeeping isn’t performed or them, they’re deniced to the point that they’re paused given too much load, or through some other facility — like a follower node that won’t affect the operation of its primary (as is common through the use of `hot_standby_feedback` in Postgres for example), even if it would mean falling behind in replication and having to self-sacrifice by detaching from the log.
 
 ### Query statistics (#query-statistics)
 
-A long-standing dream of mine would be for queries to return statistics like their overall efficiency, whether they were able to take advantage of an index, and how much in-memory work they had too do in-band to the calling application alongside their results.
+A long-standing dream of mine would be for queries to return statistics like their overall efficiency _as they run_: whether they're able to use use an index, and how much in-memory work they had too do in-band to the calling application.
 
-Today, applications generally have to resort to an out-of-band slow query log to find queries that perform poorly, but imagine if they were instead able to get immediate feedback on that and fix problems sooner. An application running in the test suite could detect an inefficient query,. and immediately fail without the underperforming query ever reaching production and putting its service at risk.
+Today, applications generally have to resort to an out-of-band slow query log or examining queries case-by-case with `EXPLAIN ANALYZE`to find queries that perform poorly, but imagine if they were instead able to get immediate feedback on that and fix problems sooner. An application being exercised in CI could detect an inefficient query and immediately fail without the underperforming query ever reaching production.
 
 #### Locking (#locking)
 
-In-band query statistics could be expanded further to include information on what kind of locks a query had to acquire during the course of an operation. It’s often not obvious by reading SQL when a query needs a full table lock versus when it doesn’t (information that’s normally acquired either through reading documentation, or burning your hand on the stove), and the database flagging problematic locks to applications talking to them would be a huge advancement.
+That idea could be expanded further to include information on what kind of locks a query had to acquire. It’s often not obvious by reading SQL when a query needs a full table lock versus when it doesn’t (information that’s normally acquired either through reading documentation, or burning your hand on the stove), and the database flagging problematic locks to applications talking to them would be a huge advancement.
 
 ### Syntax analyzer and banhammer (#syntax-analyzer)
 
