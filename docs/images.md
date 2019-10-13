@@ -41,11 +41,11 @@ as minimums.
 
 Landscape:
 
-    magick convert $GMI -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
+    magick convert $GMI -gravity center -crop 3:2 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.HEIC/@2x.jpg}
 
 Portrait:
 
-    magick convert $GMI -auto-orient -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
+    magick convert $GMI -auto-orient -gravity center -crop 2:3 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.HEIC/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.
