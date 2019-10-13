@@ -43,11 +43,11 @@ Even in their home part of the world, lionfish have astonishingly few predators.
 
 I picked up an iPhone 11 on its first day of available about 14 hours before my flight, so for a time I can probably claim to have had the only one in Honduras. It’s largely the same as the iPhone X launched two years ago, with the notable exception of the new camera system.
 
-Apple has introduced a new 0.5x wide angle lens. At first glance I assumed it was going to be a gimmick, but I was dead wrong. After deploying the phone's camera for a few days, I realized that 0.5x was more often than not the field of view that I wanted. Like any wide angle lens it distorts things, but it lets you capture a field of view that gives the viewer a much better feeling of what it's like to actually be there.
+Apple has introduced a new 0.5x wide angle lens to make the phone's visual array a triplet. At first glance I assumed it was a gimmick, but I was wrong. After deploying the phone's camera for a few days, I realized that 0.5x was more often than not the field of view that I wanted. Like any wide angle lens it distorts things, but it lets you capture a field of view that gives the viewer a much better feeling of what it's like to actually be there.
 
 ![Sunset over the Seagrape](/assets/images/passages/004-roatan/sunset@2x.jpg)
 
-I like the camera so much that when I was carrying just my phone, I didn't feel the normal FOMO of not having a real camera system with me. People say that with every new iPhone release, but it really is becoming more true with every one. We’ve long since passed the point where most people’s phone is their camera, but more hobbyist photographers who tend to invest in more traditional equipment are going to be attriting to just smartphones too. That will likely eventually include yours truly -- notably, every photo in this newsletter was taken on an iPhone.
+I like the camera so much that when I was carrying just my phone, I didn't feel the normal FOMO of not having a real camera system with me. People say that with every new iPhone release, but it really is more true with every one. We’ve long since passed the point where most people’s phone is their camera, but more hobbyist photographers who tend to invest in more traditional equipment are going to be attriting to just smartphones too. That will likely eventually include yours truly -- notably, every photo in this edition was taken on an iPhone.
 
 ## Postgres 12 (#postgres-12)
 
