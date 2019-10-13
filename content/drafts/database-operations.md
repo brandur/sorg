@@ -3,7 +3,7 @@ hook = "TODO"
 location = "San Francisco"
 published_at = 2019-03-26T17:00:18Z
 tags = ["postgres"]
-title = "Ideas for more operable databases"
+title = "Ideas for More Operable Databases"
 +++
 
 The first phase in getting up to speed on a new database is learning it, writing code that uses it, and getting an initial deployment out to production. It lasts weeks to months.
