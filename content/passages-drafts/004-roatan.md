@@ -9,7 +9,7 @@ hello
 
 ## Roatan (#roatan)
 
-I had a bit of a Grand Budapest hotel experience (“quote TODO”), which up until then, was something that I didn’t think happened in real life. It was low season, and aside from me, the hotel and grounds were almost empty. I’d show up in the morning for dive expeditions, and I’d be the sole passenger in the sole boat that went out for the day (out of a fleet of ~nine. A great recipe for seeing marine life (divemasters have little else to do except keep an eye out), and also weird in some ways — with no one else to pay attention to, our boat's deck hand would assemble every piece of my equipment, proceed to put that equipment _onto me_, and then led me over the side of the boat like a show pony. Convenient, but in the way that being a doted on five-year old is convenient.
+I had a bit of a _Grand Budapest Hotel_ experience [1], which up until then, was something that I didn’t think happened in real life. It was low season, and aside from me, the hotel and grounds were almost empty. I’d show up in the morning for dive expeditions, and I’d be the sole passenger in the sole boat that went out for the day (out of a fleet of ~nine. A great recipe for seeing marine life (divemasters have little else to do except keep an eye out), and also weird in some ways — with no one else to pay attention to, our boat's deck hand would assemble every piece of my equipment, proceed to put that equipment _onto me_, and then led me over the side of the boat like a show pony. Convenient, but in the way that being a doted on five-year old is convenient.
 
 ![The Seagrape's dock](/assets/images/passages/004-roatan/dock@2x.jpg)
 
@@ -50,5 +50,7 @@ Apple has introduced a new 0.5x wide angle lens. At first glance I assumed it wa
 I like the camera so much that when I was carrying just my phone, I didn't feel the normal FOMO of not having a real camera system with me. People say that with every new iPhone release, but it really is becoming more true with every one. We’ve long since passed the point where most people’s phone is their camera, but more hobbyist photographers who tend to invest in more traditional equipment are going to be attriting to just smartphones too. That will likely eventually include yours truly -- notably, every photo in this newsletter was taken on an iPhone.
 
 ## Postgres 12 (#postgres-12)
+
+[1] “What few guests we were had quickly come to recognize each other by sight as the only living souls residing in the vast establishment. We were a very reserved group it seemed, and without exception, solitary.” -- _The Grand Budapest Hotel_
 
 [xkcd]: http://TODO
