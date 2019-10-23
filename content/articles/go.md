@@ -96,7 +96,7 @@ There's a lot to like about Go:
   not notice), it's far less cluttering.
 * **Import:** I'm firmly convinced now that importing packages with a short
   canonical identifier (e.g. `fmt` or `http` from "net/http") and then having
-  only have one option for referencing that package in code is the One True
+  only one option for referencing that package in code is the One True
   Way. No more symbols with unknown and dubious origin (Haskell) or artisanal
   blends of qualified and non-qualified names (C#/Java/other).
 * **Select:** Although decisions like using `default:` to make a `select`
