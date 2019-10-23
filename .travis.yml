@@ -12,7 +12,7 @@ git:
 
 addons:
   apt_packages:
-    - graphicsmagick
+    - imagemagick
 
 services:
   - postgresql
