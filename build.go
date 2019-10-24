@@ -2169,7 +2169,7 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 
 func resizeImage(c *modulir.Context, source, target string, width int) error {
 	cmd := exec.Command(
-		"magick",
+		"gm",
 		"convert",
 		source,
 		"-auto-orient",
