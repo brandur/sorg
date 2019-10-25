@@ -25,8 +25,8 @@ as minimums.
 
 ## Resize for article images
 
-    magick convert $GMI -resize 650x -quality 85 $GMO/${$(basename $GMI)/.JPG/.jpg}
-    magick convert $GMI -resize 1300x -quality 85 $GMO/${$(basename $GMI)/.JPG/@2x.jpg}
+    magick convert $GMI -resize 650x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
+    magick convert $GMI -resize 1300x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
 ## Resize for fragment vistas
 
@@ -41,11 +41,11 @@ as minimums.
 
 Landscape:
 
-    magick convert $GMI -gravity center -crop 3:2 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.HEIC/@2x.jpg}
+    magick convert $GMI -gravity center -crop 3:2 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
 Portrait:
 
-    magick convert $GMI -auto-orient -gravity center -crop 2:3 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.HEIC/@2x.jpg}
+    magick convert $GMI -auto-orient -gravity center -crop 2:3 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.
