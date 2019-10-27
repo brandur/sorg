@@ -85,13 +85,6 @@ var (
 // A database connection opened to a Black Swan database if one was configured.
 var db *sql.DB
 
-// List of partial views. If any of these changes we rebuild pretty much
-// everything. Even though some of those changes will false positives, the
-// partials are used pervasively enough, and change infrequently enough, that
-// it's worth the tradeoff. This variable is a global because so many render
-// functions access it.
-var partialViews []string
-
 // An expiring cache that tracks the current state of marker files for photos.
 // Going to the filesystem on every build loop is relatively slow/expensive, so
 // this helps speed up the build loop.
@@ -105,6 +98,14 @@ var photoMarkerCache = gocache.New(5*time.Minute, 10*time.Minute)
 //
 // Arguments are (defaultExpiration, cleanupInterval).
 var readDirCache = gocache.New(5*time.Minute, 10*time.Minute)
+
+// List of common build dependencies, a change in any of which will trigger a
+// rebuild on everything: partial views, JavaScripts, and stylesheets. Even
+// though some of those changes will false positives, these sources are
+// pervasive enough, and changes infrequently enough, that it's worth the
+// tradeoff. This variable is a global because so many render functions access
+// it.
+var universalSources []string
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -145,21 +146,48 @@ func build(c *modulir.Context) []error {
 		}
 	}
 
-	// Generate a list of partial views.
-	{
-		partialViews = nil
+	// A set of source paths that rebuild everything when any one of them
+	// changes. These are dependencies that are included in more or less
+	// everything: common partial views, JavaScript sources, and stylesheet
+	// sources.
+	universalSources = nil
 
+	// Generate a set of JavaScript sources to add to univeral sources.
+	{
+		javaScriptSources, err := readDirCached(c, c.SourceDir+"/content/javascripts",
+			&mfile.ReadDirOptions{ShowMeta: true})
+		if err != nil {
+			return []error{err}
+		}
+		universalSources = append(universalSources, javaScriptSources...)
+	}
+
+	// Generate a list of partial views to add to universal sources.
+	{
 		sources, err := readDirCached(c, c.SourceDir+"/views",
 			&mfile.ReadDirOptions{ShowMeta: true})
 		if err != nil {
 			return []error{err}
 		}
 
+		var partialViews []string
 		for _, source := range sources {
 			if strings.HasPrefix(filepath.Base(source), "_") {
 				partialViews = append(partialViews, source)
 			}
 		}
+
+		universalSources = append(universalSources, partialViews...)
+	}
+
+	// Generate a set of stylesheet sources to add to universal sources.
+	{
+		stylesheetSources, err := readDirCached(c, c.SourceDir+"/content/stylesheets",
+			&mfile.ReadDirOptions{ShowMeta: true})
+		if err != nil {
+			return []error{err}
+		}
+		universalSources = append(universalSources, stylesheetSources...)
 	}
 
 	//
@@ -1354,7 +1382,7 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 			scommon.MainLayout,
 			scommon.ViewsDir + "/articles/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
@@ -1427,7 +1455,7 @@ func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChange
 			scommon.MainLayout,
 			scommon.ViewsDir + "/articles/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !articlesChanged && !viewsChanged {
 		return false, nil
@@ -1512,7 +1540,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 			scommon.MainLayout,
 			scommon.ViewsDir + "/fragments/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
@@ -1621,7 +1649,7 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 			scommon.MainLayout,
 			scommon.ViewsDir + "/fragments/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !fragmentsChanged && !viewsChanged {
 		return false, nil
@@ -1644,7 +1672,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 			scommon.NanoglyphsLayout,
 			scommon.ViewsDir + "/nanoglyphs/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
@@ -1682,7 +1710,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 			scommon.NanoglyphsLayout,
 			scommon.ViewsDir + "/nanoglyphs/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !nanoglyphsChanged && !viewsChanged {
 		return false, nil
@@ -1703,7 +1731,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 			scommon.PassagesLayout,
 			scommon.ViewsDir + "/passages/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
@@ -1741,7 +1769,7 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 			scommon.PassagesLayout,
 			scommon.ViewsDir + "/passages/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !passagesChanged && !viewsChanged {
 		return false, nil
@@ -1764,7 +1792,7 @@ func renderHome(c *modulir.Context,
 			scommon.MainLayout,
 			scommon.ViewsDir + "/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !articlesChanged && !fragmentsChanged && !photosChanged && !viewsChanged {
 		return false, nil
@@ -1799,7 +1827,7 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 			scommon.MainLayout,
 			source,
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !metaChanged && !viewsChanged {
 		return false, nil
@@ -1860,7 +1888,7 @@ func renderReading(c *modulir.Context, db *sql.DB) (bool, error) {
 			scommon.MainLayout,
 			scommon.ViewsDir + "/reading/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !c.FirstRun && !viewsChanged {
 		return false, nil
@@ -1876,7 +1904,7 @@ func renderPhotoIndex(c *modulir.Context, photos []*Photo,
 			scommon.MainLayout,
 			scommon.ViewsDir + "/photos/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !photosChanged && !viewsChanged {
 		return false, nil
@@ -1935,7 +1963,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 			scommon.MainLayout,
 			scommon.ViewsDir + "/runs/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !c.FirstRun && !viewsChanged {
 		return false, nil
@@ -1952,7 +1980,7 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
 			scommon.MainLayout,
 			scommon.ViewsDir + "/sequences/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sequenceChanged && !viewsChanged {
 		return false, nil
@@ -2063,7 +2091,7 @@ func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, p
 			scommon.MainLayout,
 			scommon.ViewsDir + "/sequences/photo.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sequenceChanged && !viewsChanged {
 		return false, nil
@@ -2115,7 +2143,7 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 			scommon.MainLayout,
 			scommon.ViewsDir + "/talks/show.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
@@ -2158,7 +2186,7 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 			scommon.MainLayout,
 			scommon.ViewsDir + "/twitter/index.ace",
 		},
-		partialViews...,
+		universalSources...,
 	)...)
 	if !c.FirstRun && !viewsChanged {
 		return false, nil
