@@ -102,7 +102,7 @@ var readDirCache = gocache.New(5*time.Minute, 10*time.Minute)
 // List of common build dependencies, a change in any of which will trigger a
 // rebuild on everything: partial views, JavaScripts, and stylesheets. Even
 // though some of those changes will false positives, these sources are
-// pervasive enough, and changes infrequently enough, that it's worth the
+// pervasive enough, and changes infrequent enough, that it's worth the
 // tradeoff. This variable is a global because so many render functions access
 // it.
 var universalSources []string
