@@ -5,7 +5,13 @@ title = "Diving Roatan, 11s, 12s"
 
 ![On the way to West Bay](/assets/images/passages/004-roatan/beach@2x.jpg)
 
-hello
+Hi everyone --
+
+Long time readers may recall that in [the last edition of Passsages]() I promised to send these bursts a little more often after a longtime hiatus. Well, obviously that didn’t work out. You can consider me sufficiently chagrined through self-flagellation, or not — feel free to reply and give me a hard time about it.
+
+If you don’t know why you’re getting this email, it’s probably because you signed up for my newsletter on my website [brandur.org](https://brandur.org/newsletter) at some point, but they’re sent so infrequently that it may have been in the distant past. If you never want to see another one, all it takes to permanently exorcise them from your inbox is a single click to [this unsubscribe link][unsubscribe].
+
+Otherwise, here we go. In this edition I’ll say a few words about a recent trip to Honduras, the iPhone 11, and Postgres 12.
 
 ## Roatan (#roatan)
 
@@ -77,6 +83,14 @@ The new `REINDEX CONCURRENTLY` command has been introduced to supplement `CREATE
 
 Lastly I'll call out that some incremental performance improvements to partitioned tables came in including better query performance on tables with thousands of partitions, faster `INSERT`s, and non-blocking `ATTACH PARTITION`. Continued work on making partitioning better is some of the most important progress that the Postgres project can make because degenerate performance on large tables is an operational problem that every user with a non-trivial use case is likely to run into, so it's great to see this progress happening.
 
+---
+
+With every new release I wonder when Postgres will be “done”. Surely at some point all the most interesting features for a database will be under the bridge and the project will move onto much more incremental progress. And yet, every time there’s something interesting to talk about. Here’s to hoping that never changes.
+
+Well, that’s it for now. I’ve got some ideas for another couule of these queued up, so I’ll give you the usual refrain about how it shouldn’t be so long before the next one, but I’ll be the first to admit that my track record doesn’t inspire confidence.
+
+Until next time,
+
 [1] “What few guests we were had quickly come to recognize each other by sight as the only living souls residing in the vast establishment. We were a very reserved group it seemed, and without exception, solitary.” -- _The Grand Budapest Hotel_
 
 [2] Except that of the lionfish, although let's hope that iPhone waterproofing continues its admirable trend towards allowing that one day.
@@ -86,3 +100,4 @@ Lastly I'll call out that some incremental performance improvements to partition
 [nudibranch]: https://en.wikipedia.org/wiki/Nudibranch
 [oatmeal]: https://theoatmeal.com/comics/mantis_shrimp
 [postgres12]: https://www.postgresql.org/docs/release/12.0/
+[unsubscribe]: %unsubscribe_url%
