@@ -30,8 +30,8 @@ as minimums.
 
 ## Resize for fragment vistas
 
-    magick convert $GMI -resize 1024x -quality 85 $GMO/vista.jpg
-    magick convert $GMI -resize 2048x -quality 85 $GMO/vista@2x.jpg
+    magick convert $GMI -gravity center -crop 3:2 -resize 1024x -quality 85 $GMO/vista.jpg
+    magick convert $GMI -gravity center -crop 3:2 -resize 2048x -quality 85 $GMO/vista@2x.jpg
 
 ## Resize for Twitter cards
 
