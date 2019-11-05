@@ -27,7 +27,7 @@ The solution is complicated if you're developing a regex engine, but simple for 
 
 ## Serverless Postgres (#serverless-postgres)
 
-Amazoned [GAed their serverless version of Postgres][aurorapostgres]. We've known for some time that Aurora's secret sauce is being able to plug a scalable storage layer into popular databases like MySQL and Postgres (up to 64 TB -- just try that on vanilla Postgres and watch it catch fire). What I hadn't realized is that they're apparently able to plug a specific user's store into a generically provisioned database server, and very quickly.
+Amazon [GAed their serverless version of Postgres][aurorapostgres]. We've known for some time that Aurora's secret sauce is being able to plug a scalable storage layer into popular databases like MySQL and Postgres (up to 64 TB -- just try that on vanilla Postgres and watch it catch fire). What I hadn't realized is that they're apparently able to plug a specific user's store into a generically provisioned database server, and very quickly.
 
 The announcement describes how serverless Aurora is fast enough to handle immediate workloads by maintaining a warm pool of standby servers provisioned and ready to go. When a request comes in for a database that's not running, they pull a server out of the standby fleet, plug in the database's storage, and it's ready to go. I'll withhold final judgements before trying it, but from a distance -- that's impressive.
 
