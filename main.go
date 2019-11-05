@@ -61,7 +61,7 @@ Runs the build loop one time and places the result in TARGET_DIR
 
 	var live bool
 	var staging bool
-	passagesCommand := &cobra.Command{
+	sendCommand := &cobra.Command{
 		Use:   "send [source newsletter .md file]",
 		Short: "Email a Nanoglyph or Passages newsletter",
 		Long: strings.TrimSpace(`
@@ -75,11 +75,11 @@ API.`),
 			sendNewsletter(c, args[0], live, staging)
 		},
 	}
-	passagesCommand.Flags().BoolVar(&live, "live", false,
+	sendCommand.Flags().BoolVar(&live, "live", false,
 		"Send to list (as opposed to dry run)")
-	passagesCommand.Flags().BoolVar(&staging, "staging", false,
+	sendCommand.Flags().BoolVar(&staging, "staging", false,
 		"Send to staging list (as opposed to dry run)")
-	rootCmd.AddCommand(passagesCommand)
+	rootCmd.AddCommand(sendCommand)
 
 	// Make sure to seed the random number generator or else we'll end up with
 	// the same random results for every build.
