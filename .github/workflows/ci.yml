@@ -41,7 +41,7 @@ jobs:
       - name: Install tooling from Apt
         # Postgres runs in a container, but we also need the client-side
         # tooling.
-        run: sudo apt-get install awscli imagemagick graphicsmagick postgresql
+        run: sudo apt-get install awscli imagemagick postgresql
 
       - uses: actions/checkout@v1
         with:
@@ -56,6 +56,8 @@ jobs:
           echo "GITHUB_WORKSPACE=${GITHUB_WORKSPACE}"
           echo "GOPATH=${GOPATH}"
           echo "GOROOT=${GOROOT}"
+          echo ""
+          convert --version
 
       - name: Clean
         run: make clean
