@@ -50,6 +50,7 @@ jobs:
 
       - name: Debug
         run: |
+          echo "github.ref=${{ github.ref }}"
           echo "pwd=$(pwd)"
           echo "HOME=${HOME}"
           echo "GITHUB_WORKSPACE=${GITHUB_WORKSPACE}"
