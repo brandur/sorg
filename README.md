@@ -4,8 +4,8 @@ A Go-based build script that compiles my [personal website][brandur]. This is
 the site's second incarnation, with the original being [a Ruby/Sintra
 stack][org] (sorg = "static org").
 
-The site deploys automatically from its CI build in Travis as changes are
-committed to the master branch.
+The site deploys automatically from its CI build with GitHub Actions as changes
+are committed to the master branch.
 
 ## Clone
 
