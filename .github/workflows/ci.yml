@@ -99,7 +99,7 @@ jobs:
         run: make photographs-download-markers
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
         if: github.ref == 'refs/heads/master'
 
       - name: "Build: Development"
@@ -118,7 +118,7 @@ jobs:
         run: make deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
           S3_BUCKET: brandur.org-dev
           TARGET_DIR: ./public-dev
         if: github.ref == 'refs/heads/master'
@@ -127,7 +127,7 @@ jobs:
         run: make deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
           S3_BUCKET: brandur.org
           TARGET_DIR: ./public
         if: github.ref == 'refs/heads/master'
@@ -136,5 +136,5 @@ jobs:
         run: make photographs-upload
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
         if: github.ref == 'refs/heads/master'
