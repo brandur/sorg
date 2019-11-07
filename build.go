@@ -2197,7 +2197,10 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 
 func resizeImage(c *modulir.Context, source, target string, width int) error {
 	cmd := exec.Command(
-		"gm",
+		// Better to use the less-generic `convert` leader, but need
+		// Imagemagick 7.0 for this. Wait a little longer, and then upgrade.
+		//
+		// "magick",
 		"convert",
 		source,
 		"-auto-orient",
