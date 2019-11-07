@@ -100,7 +100,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
-        if: github.ref == 'master'
+        if: github.ref == 'refs/heads/master'
 
       - name: "Build: Development"
         run: make build
@@ -121,7 +121,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
           S3_BUCKET: brandur.org-dev
           TARGET_DIR: ./public-dev
-        if: github.ref == 'master'
+        if: github.ref == 'refs/heads/master'
 
       - name: "Deploy: Production"
         run: make deploy
@@ -130,11 +130,11 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
           S3_BUCKET: brandur.org
           TARGET_DIR: ./public
-        if: github.ref == 'master'
+        if: github.ref == 'refs/heads/master'
 
       - name: Upload photos
         run: make photographs-upload
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSAccessSecretKey }}
-        if: github.ref == 'master'
+        if: github.ref == 'refs/heads/master'
