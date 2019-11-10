@@ -81,6 +81,7 @@ type Pool struct {
 	jobsInternal   chan *Job
 	jobsErroredMu  sync.Mutex
 	jobsExecutedMu sync.Mutex
+	jobsExecuting  []*Job
 	jobsFeederDone chan struct{}
 	log            LoggerInterface
 	roundStarted   bool
@@ -114,6 +115,7 @@ func (p *Pool) Init() {
 	p.log.Debugf("Initializing job pool at concurrency %v", p.concurrency)
 
 	p.initialized = true
+	p.jobsExecuting = make([]*Job, p.concurrency)
 	p.runGate = make(chan struct{})
 	p.stop = make(chan struct{})
 
@@ -128,6 +130,7 @@ func (p *Pool) Init() {
 	// Worker Goroutines
 	wg.Add(p.concurrency)
 	for i := 0; i < p.concurrency; i++ {
+		workerNum := i
 		go func() {
 			wg.Done()
 			for {
@@ -137,7 +140,7 @@ func (p *Pool) Init() {
 					break
 				}
 
-				p.workForRound()
+				p.workForRound(workerNum)
 			}
 		}()
 	}
@@ -309,10 +312,24 @@ func (p *Pool) Wait() bool {
 	// been enqueued in jobsInternal.
 	<-p.jobsFeederDone
 
+	// Prints some debug information to help us in case we run into stalling
+	// problems in the main job loop.
+	done := make(chan struct{}, 1)
+	go func() {
+		select {
+		case <-time.After(waitSoftTimeout):
+			p.printWaitTimeoutInfo()
+		case <-done:
+		}
+	}()
+
 	p.log.Debugf("pool: Waiting for %v job(s) to be done", len(p.JobsAll))
 
 	// Now wait for all those jobs to be done.
 	p.wg.Wait()
+
+	// Kill the timeout Goroutine.
+	done <- struct{}{}
 
 	// Drops workers out of their current round of work. They'll once again
 	// wait on the run gate.
@@ -324,12 +341,25 @@ func (p *Pool) Wait() bool {
 	return true
 }
 
+func (p *Pool) printWaitTimeoutInfo() {
+	p.log.Errorf("Wait soft timeout (jobs left: %v)", len(p.jobsInternal))
+	for i, job := range p.jobsExecuting {
+		jobName := "<none>"
+		if job != nil {
+			jobName = job.Name
+		}
+		p.log.Errorf("    Job executing on worker %v: %v", i, jobName)
+	}
+}
+
 // The work loop for a single round within a single worker Goroutine.
-func (p *Pool) workForRound() {
+func (p *Pool) workForRound(workerNum int) {
 	for j := range p.jobsInternal {
 		// Required so that we have a stable pointer that we can keep past the
 		// lifetime of the loop. Don't change this.
 		job := j
+
+		p.jobsExecuting[workerNum] = job
 
 		// Start a Goroutine to track the time taken to do this work.
 		// Unfortunately, we can't actually kill a timed out Goroutine because
@@ -369,6 +399,9 @@ func (p *Pool) workForRound() {
 		}
 
 		p.wg.Done()
+
+		// Unset active job
+		p.jobsExecuting[workerNum] = nil
 	}
 }
 
@@ -389,6 +422,11 @@ const (
 
 	// Maximum number of errors or jobs to print on screen after a build loop.
 	maxMessages = 10
+
+	// When to report that a wait round is probably timed out. We call it a
+	// "soft" timeout because no jobs are killed -- it's just for reporting and
+	// debugging purposes.
+	waitSoftTimeout = 60 * time.Second
 )
 
 // Sorts a slice of jobs with the slowest on top.
