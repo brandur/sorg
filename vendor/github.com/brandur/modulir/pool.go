@@ -354,7 +354,8 @@ func (p *Pool) Wait() bool {
 
 func (p *Pool) printWaitTimeoutInfo() {
 	p.log.Errorf(
-		"Wait soft timeout (jobs executed: %v, errored: %v, left: %v)",
+		"Wait soft timeout (jobs total: %v, executed: %v, errored: %v, left: %v)",
+		len(p.JobsAll),
 		len(p.JobsExecuted),
 		len(p.JobsErrored),
 		len(p.jobsInternal),
