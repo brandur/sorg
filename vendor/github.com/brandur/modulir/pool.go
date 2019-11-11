@@ -81,13 +81,16 @@ type Pool struct {
 	jobsInternal   chan *Job
 	jobsErroredMu  sync.Mutex
 	jobsExecutedMu sync.Mutex
-	jobsExecuting  []*Job
 	jobsFeederDone chan struct{}
 	log            LoggerInterface
 	roundStarted   bool
 	runGate        chan struct{}
 	stop           chan struct{}
 	wg             sync.WaitGroup
+
+	// Current state of workers. Used for debugging.
+	workerJobs   []*Job
+	workerStates []workerState
 }
 
 // NewPool initializes a new pool with the given jobs and at the given
@@ -115,9 +118,11 @@ func (p *Pool) Init() {
 	p.log.Debugf("Initializing job pool at concurrency %v", p.concurrency)
 
 	p.initialized = true
-	p.jobsExecuting = make([]*Job, p.concurrency)
 	p.runGate = make(chan struct{})
 	p.stop = make(chan struct{})
+
+	p.workerJobs = make([]*Job, p.concurrency)
+	p.workerStates = make([]workerState, p.concurrency)
 
 	// Allows us to block this function until all Goroutines have successfully
 	// spun up.
@@ -133,6 +138,9 @@ func (p *Pool) Init() {
 		workerNum := i
 		go func() {
 			wg.Done()
+
+			p.setWorkerState(workerNum, workerStateWaitingOnRunOrStop, nil)
+
 			for {
 				select {
 				case <-p.runGate:
@@ -142,6 +150,8 @@ func (p *Pool) Init() {
 
 				p.workForRound(workerNum)
 			}
+
+			p.setWorkerState(workerNum, workerStateFinished, nil)
 		}()
 	}
 
@@ -342,14 +352,28 @@ func (p *Pool) Wait() bool {
 }
 
 func (p *Pool) printWaitTimeoutInfo() {
-	p.log.Errorf("Wait soft timeout (jobs left: %v)", len(p.jobsInternal))
-	for i, job := range p.jobsExecuting {
-		jobName := "<none>"
-		if job != nil {
-			jobName = job.Name
+	p.log.Errorf(
+		"Wait soft timeout (jobs executed: %v, errored: %v, left: %v)",
+		len(p.JobsExecuted),
+		len(p.JobsErrored),
+		len(p.jobsInternal),
+	)
+	for i := 0; i < p.concurrency; i++ {
+		workerJob := "<none>"
+		if p.workerJobs[i] != nil {
+			workerJob = p.workerJobs[i].Name
 		}
-		p.log.Errorf("    Job executing on worker %v: %v", i, jobName)
+
+		workerState := p.workerStates[i]
+
+		p.log.Errorf("    Worker %v state: %v, job: %v",
+			i, workerState, workerJob)
 	}
+}
+
+func (p *Pool) setWorkerState(workerNum int, state workerState, job *Job) {
+	p.workerJobs[workerNum] = job
+	p.workerStates[workerNum] = state
 }
 
 // The work loop for a single round within a single worker Goroutine.
@@ -359,7 +383,7 @@ func (p *Pool) workForRound(workerNum int) {
 		// lifetime of the loop. Don't change this.
 		job := j
 
-		p.jobsExecuting[workerNum] = job
+		p.setWorkerState(workerNum, workerStateJobExecuting, job)
 
 		// Start a Goroutine to track the time taken to do this work.
 		// Unfortunately, we can't actually kill a timed out Goroutine because
@@ -401,7 +425,7 @@ func (p *Pool) workForRound(workerNum int) {
 		p.wg.Done()
 
 		// Unset active job
-		p.jobsExecuting[workerNum] = nil
+		p.setWorkerState(workerNum, workerStateJobFinished, nil)
 	}
 }
 
@@ -427,6 +451,18 @@ const (
 	// "soft" timeout because no jobs are killed -- it's just for reporting and
 	// debugging purposes.
 	waitSoftTimeout = 60 * time.Second
+)
+
+// Keeps track of the state of a worker. Used for debugging purposes only.
+type workerState string
+
+// The possible states that a worker can be in. Used for debugging purposes
+// only.
+const (
+	workerStateFinished           workerState = "worker_finished"
+	workerStateJobExecuting       workerState = "job_executing"
+	workerStateJobFinished        workerState = "job_finished"
+	workerStateWaitingOnRunOrStop workerState = "waiting_on_run_or_stop"
 )
 
 // Sorts a slice of jobs with the slowest on top.
