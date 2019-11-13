@@ -23,8 +23,10 @@ The active noise cancellation (ANC) is unbelievable. I audibly gasped the first 
 
 Taps have been replaced by presses. Once for play/pause, twice for forward, and three times for backwards. A long press to toggle between ANC and "transparency" mode (which passes through outside sound). Unlike the taps, it feels good and is quite functional.
 
-## Bigger case, but also, the same (#case)
+## Bigger case, smaller pods (#case)
 
 At first the Pros' fit into their charging case feels a little more awkward than the originals because the big silicon buds can't provide as perfect of a fit, but you quickly get used to it. The subtle magnetic suction is still there. The charge light is improved -- tap the case while it's on a charge mat and it'll show amber for charging and green for charged. The case is a little bigger than the last generation, but it feels about the same.
 
-With the non-Pro AirPods I always kept a pair of wired earphones with good sound insulation close at hand for use in environments that weren't perfectly quiet. The Pros will end that practice, with the only advantage of wired at this point being battery life in cases where you want to listen for really extended periods. These may be the perfect earphones -- another welcome home run from Apple.
+The larger case is offset by smaller AirPods. Specifically, their stems are noticeably shorter. You know that trick your brain plays on you when you upgrade to a phone with a larger screen, use it for a few weeks, then go back to look at your old phone -- the same phone that you used for _years_ -- and it looks absurdly, impossibly small? I'm getting it after using the AirPod Pros for only a few days -- the stems on traditional AirPods now look comically long.
+
+With the non-Pro AirPods I always kept a pair of wired earphones with good sound insulation close at hand for use in environments that weren't perfectly quiet. The Pros will end that practice, with the only advantage of wired at this point being battery life in cases where you want to listen for really extended periods. These may be the perfect earphones. Another welcome home run from Apple.
