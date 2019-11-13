@@ -13,11 +13,11 @@ The focus works, but the keyboard doesn't. It’s got a solid feel and the world
 
 ## 12 factor ascendant (#12-factor)
 
-Google put together a guide for how to apply [12-factor to its cloud platform](https://cloud.google.com/solutions/twelve-factor-app-development-on-gcp), showing that despite its age (ancient by the standards of fast moving computing), it’s proven itself to be one of the most sticky ideas in the age of cloud computing.
+Google put together a guide for how to apply [12-factor to its cloud platform](https://cloud.google.com/solutions/twelve-factor-app-development-on-gcp), showing that despite its age (ancient by the standards of the fast moving discipline of computing), it’s proven itself to be one of the most sticky ideas in the age of cloud technology.
 
-The guide suggests the use of many Google-specific technologies as answers to each factor, but that's okay given that the glue keeping everything together is open. For example, although a Kubernetes ConfigMap is recommended for configuration, it still injects environmental variables, and that means that reuse or migration between Google’s managed Kubernetes and something else is still possible.
+The guide suggests the use of many Google-specific products as answers to each factor, but that's okay given that the glue keeping everything together is open. For example, although a Kubernetes ConfigMap is recommended for configuration, it still injects environmental variables, and that means that reuse or migration between Google’s managed Kubernetes and something else is not only possible, but quite approachable.
 
-It’s easy to undervalue that. At Stripe we’re close to the opposite end of the spectrum in terms of generality, and everything from configuration to logging to booting a server requires infrastructure that’s been customized to the maximum possible degree. It works, but any kind of significant change turns into thousands of hours of engineering work.
+It’s easy to undervalue that. At Stripe we’re close to the opposite end of the spectrum in terms of generality, and everything from configuration to logging to booting a server requires infrastructure that’s been so heavily customized that it'd be absolutely useless outside of our unique, highly specialized environment. It works, but any kind of significant change _starts_ at thousands of hours of engineering work, and goes up by full orders of magnitude from there.
 
 ## Spooky effects at a distance (#getrandom)
 
@@ -27,15 +27,15 @@ It worked well until a bug was reported whereby computers hang on boot which tur
 
 ## The jitter fix (#getrandom-jitter)
 
-A [follow up of the last article](https://lwn.net/Articles/802360/) ("_Really_ fixing `getrandom()`") goes into how the problem was eventually patched. A number of solutions were put forward, like making `getrandom()` block until it was able to return sufficient entropy, and/or having it return an error in case it couldn’t. There were major concerns about both approaches though — Linus felt that blocking by default is wrong, and returning an error was akin to punting the problem downstream, where it wasn't likely to be handled well.
+A [follow up of the last article](https://lwn.net/Articles/802360/) ("_Really_ fixing `getrandom()`") goes into how the problem was eventually patched. A number of solutions were put forward, like making `getrandom()` block until it was able to return sufficient entropy, and/or having it return an error in case it couldn’t. There were major concerns about both approaches. Linus felt that blocking by default is wrong, and returning an error was akin to punting the problem downstream, where it wasn't likely to be handled well.
 
-The fix that was eventually committed falls back to "jitter" entropy in cases where not enough “normal” entropy is available. Jitter entropy relies on the fact that executing instructions on a modern CPU is sufficiently complex that the precise time takes to do so is inherently unpredictable. Although not considered a particularly good form of entropy, its assumptions don’t have any known flaws either, so it was enough as a fallback option for the kernel. It has a major advantage of staying quite fast, so even in case a program has to block while jitter entropy is being generated, it won’t have to block for long (~1s for 128 bits on a system with a 100 Hz tick).
+The fix that was eventually committed falls back to "jitter" entropy in cases where not enough “normal” entropy is available. Jitter entropy relies on the fact that executing instructions on a modern CPU is sufficiently complex that the precise time takes to do so is inherently unpredictable. Although not considered particularly good entropy, it doesn't have any known flaws either, so it was enough as a fallback option for the kernel. It has a major advantage of being quite fast, so even in case a program has to block while jitter entropy is being generated, it won’t have to do so for long (~1s for 128 bits on a system with a 100 Hz tick).
 
 ---
 
 I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpods-pro). Usually, I can’t decide these days whether Apple’s direction these days is good or bad. The Touch Bar indicates a pretty clear "bad", but some decisions, like their apparent reversal in position on the failure-prone butterfly key mechanism, are more positive. Most of what they do is grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-kind-of-great 12” MacBook, a [new pro computer and monitor](https://www.apple.com/mac-pro/), but priced so far into the stratosphere [1] that you want eight figures of net worth before thinking about one.
 
-AirPods are their one product line that’s nothing but a shining light. Like the original iPhone, they were technology so refined that it wasn’t clear it was even within human reach until the day they were released. The originals were close to perfect but for poor sound isolation (useless on the street, public transport, etc.) and underwhelming "tap" interface. The Pros fix both those problems, and for my money, there’s never been a better pair of earphones.
+AirPods are their one product line that’s been nothing but a shining light. Like the original iPhone, they were technology so refined that it wasn’t clear it was even within human reach until the day they were released. The originals were close to perfect but for poor sound isolation (useless on the street, public transport, etc.) and underwhelming "tap" interface. The Pros fix both those problems, and for my money, there’s never been a better pair of earphones.
 
 ---
 
