@@ -17,7 +17,7 @@ Google put together a guide for how to apply [12-factor to its cloud platform](h
 
 The guide suggests the use of many Google-specific products as answers to each factor, but that's okay given that the glue keeping everything together is open. For example, although a Kubernetes ConfigMap is recommended for configuration, it still injects environmental variables, and that means that reuse or migration between Google’s managed Kubernetes and something else is not only possible, but quite approachable.
 
-It’s easy to undervalue that. At Stripe we’re close to the opposite end of the spectrum in terms of generality, and everything from configuration to logging to booting a server requires infrastructure that’s been so heavily customized that it'd be useless outside of our unique [Galapagos environment](/aws-islands). It works, but any kind of significant change _starts_ at thousands of hours of engineering work, and goes up by orders of magnitude from there.
+It’s easy to undervalue that. At Stripe we’re close to the opposite end of the spectrum in terms of generality, and everything from configuration to logging to booting a server requires infrastructure that’s been so heavily customized that it'd be useless outside of our unique [Galapagos environment](/aws-islands). It works, but any significant change _starts_ at thousands of hours of engineering work, and goes up by orders of magnitude from there.
 
 ## Spooky effects at a distance (#getrandom)
 
