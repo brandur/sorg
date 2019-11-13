@@ -7,7 +7,9 @@ title = "12 Factors and Entropy"
 
 Well, my weekly newsletter has become more like a monthly, but I’m not ready to give up on it quite yet.
 
-My writing habits have been frozen recently, and I’m experimenting with a few radical techniques to thaw them. I’m writing this text on an iPhone and a folding Bluetooth keyboard with the theory that the glacial interaction speed of iOS will actually be an advantage when trying to achieve some multitasking-free focus. That part’s turning out to be true, but the keyboard needs work. It’s got a solid feel and the world's slickest folding mechanism, but between cramped keys, a random 10% chance a depressed key doesn’t do anything, and occasional repeats, I’m retyping every second word. Navigating text takes so long that I’ve stopped fixing typos — write fast and fix later. I’ll get them on an edit pass. I look completely ridiculous, but it’s working.
+My writing habits have been frozen recently, and I’m experimenting with a few radical techniques to thaw them. I’m writing this text on an iPhone and a folding Bluetooth keyboard (pictured above) under the theory that the glacial interaction speed of iOS will actually be an advantage when trying to achieve some multitasking-free focus.
+
+That part’s turning out to be true, but the keyboard needs work. It’s got a solid feel and the world's slickest folding mechanism, but between cramped keys, a random 10% chance a depressed key doesn’t do anything, and occasional repeats, I’m retyping every second word. Navigating text takes so long that I’ve stopped fixing typos — write fast and fix later. I’ll get them on an edit pass. I look completely ridiculous, but it’s working.
 
 TODO: Pictured above.
 
@@ -33,7 +35,7 @@ The fix that was eventually committed falls back to "jitter" entropy in cases wh
 
 ---
 
-I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpod-pros). I can’t decide these days whether Apple’s direction is good or bad. The Touch Bar seems to indicate a pretty clear no, but some decisions, like their apparent reversal in position on the failure-prone butterfly key mechanism, are more positive. Most of what they do is in the grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-ultra-streamlined 12” MacBook, a new pro computer and monitor, but priced so far into the stratosphere that you want eight figures of net worth before considering one.
+I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpods-pro). I can’t decide these days whether Apple’s direction is good or bad. The Touch Bar seems to indicate a pretty clear no, but some decisions, like their apparent reversal in position on the failure-prone butterfly key mechanism, are more positive. Most of what they do is in the grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-ultra-streamlined 12” MacBook, a new pro computer and monitor, but priced so far into the stratosphere that you want eight figures of net worth before considering one.
 
 AirPods are their one product line that’s nothing but a shining light. Like the original iPhone, they were technology so refined that it wasn’t clear that it was even within human reach until the day they were released. The originals were close to perfect except for their poor sound isolation (useless on the street, public transport, etc.) and “tap” interface. The Pros fix both those problems, and for my money, there’s never been a better pair of earphones.
 
