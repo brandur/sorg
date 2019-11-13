@@ -17,7 +17,7 @@ TODO: Pictured above.
 
 Google put together a guide for how to apply [12-factor to its cloud platform](https://cloud.google.com/solutions/twelve-factor-app-development-on-gcp), showing that despite its age (ancient by the standards of fast moving computing), it’s proven itself to be one of the most sticky ideas in the age of cloud computing.
 
-The guide suggests the use of many Google-specific technoologies as answers to each factor, but that's okay given that the glue keeping everything together is open. For example, although a Kubernetes ConfigMap is recommended for configuration, it still injects environnmental variables, and that means that reuse or migration between Google’s managed Kubernetes and something else is still possible.
+The guide suggests the use of many Google-specific technologies as answers to each factor, but that's okay given that the glue keeping everything together is open. For example, although a Kubernetes ConfigMap is recommended for configuration, it still injects environmental variables, and that means that reuse or migration between Google’s managed Kubernetes and something else is still possible.
 
 It’s easy to undervalue that. At Stripe we’re close to the opposite end of the spectrum in terms of generality, and everything from configuration to logging to booting a server requires infrastructure that’s been customized to the maximum possible degree. It works, but any kind of significant change turns into thousands of hours of engineering work.
 
