@@ -1,7 +1,7 @@
 +++
-hook = "A better form of AirPods with all previous defects addressed."
+hook = "A few steps closer to perfection."
 image = "/assets/images/fragments/airpods-pro/vista.jpg"
-published_at = 2019-11-13T17:29:54Z
+published_at = 2019-11-03T00:38:13Z
 title = "AirPods Pro"
 +++
 
