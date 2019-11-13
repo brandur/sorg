@@ -1,5 +1,5 @@
 +++
-hook = "I'm happy to be cheering from the bleachers as Apple makes their first home run in years."
+hook = "A few steps closer to perfection."
 image = "/assets/images/fragments/airpods-pro/vista.jpg"
 published_at = 2019-11-03T00:38:13Z
 title = "The AirPods Pro"
@@ -25,6 +25,6 @@ Taps have been replaced by presses. Once for play/pause, twice for forward, and 
 
 ## Flatter, better (#flatter)
 
-At first the Pros' fit into their charging case feels a little more awkward than the originals because the big silicon buds aren't as clean of a fit, but you quickly get used to it. The subtle magnetic suction and charge light are still there. Overall, the case is a little bigger than the last generation, but I haven't found it to be a problem.
+At first the Pros' fit into their charging case feels a little more awkward than the originals because the big silicon buds can't provide as perfect of a fit, but you quickly get used to it. The subtle magnetic suction is still there. The charge light is improved -- tap the case while it's on a charge mat and it'll show amber for charging and green for charged. The case is a little bigger than the last generation, but it feels about the same.
 
 With the non-Pro AirPods I always kept a pair of wired earphones with good sound insulation close at hand for use in environments that weren't perfectly quiet. The Pros will end that practice, with the only advantage of wired at this point being battery life in cases where you want to listen for really extended periods. These may be the perfect earphones -- another welcome home run from Apple.
