@@ -9,7 +9,7 @@ Well, my weekly newsletter has become more like a monthly, but I’m not ready t
 
 My writing habits have been frozen recently, and I’m experimenting with a few radical techniques to thaw them. I’m writing this text on an iPhone and a folding Bluetooth keyboard (pictured above) under the theory that the glacial interaction speed of iOS will actually be an advantage when trying to achieve some multitasking-free focus. When slow input (touch) and long animation makes transitioning between apps is a 1-2 second operation, the platform, intentionally or not, actively discourages the habit.
 
-The focus works, but the keyboard doesn't. It’s got a solid feel and the world's most satisfying folding mechanism, but between cramped keys, a random 10% a button doesn’t do anything, and occasional repeats, I found myself retyping every second word. Navigating text takes so long that I’ve stopped fixing typos — write fast and fix later. I’ll get them on an edit pass. I look completely ridiculous, but it’s working.
+The focus works, but the keyboard doesn't. It’s got a solid feel and the world's most satisfying folding mechanism, but between cramped keys, a random 10% a button doesn’t do anything, and occasional repeats, every second word needs retyping. Navigating text takes so long that I’ve stopped fixing typos — write fast and fix later. I’ll get them on an edit pass. I look completely ridiculous, but it’s working.
 
 ## 12 factor ascendant (#12-factor)
 
