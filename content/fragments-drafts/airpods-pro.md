@@ -2,7 +2,7 @@
 hook = "A few steps closer to perfection."
 image = "/assets/images/fragments/airpods-pro/vista.jpg"
 published_at = 2019-11-03T00:38:13Z
-title = "The AirPods Pro"
+title = "AirPods Pro"
 +++
 
 I've previously written about the first generation of [AirPods](/fragments/airpods), which I consider Apple's best product release in years. I'd skewed all the way from not planning to buy them at all, to using them far beyond what I'd expected -- in all kinds of day-to-day situations from cooking to running.
