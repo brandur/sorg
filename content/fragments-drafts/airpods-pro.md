@@ -29,4 +29,6 @@ At first the Pros' fit into their charging case feels a little more awkward than
 
 The larger case is offset by smaller AirPods. Specifically, their stems are noticeably shorter. You know that trick your brain plays on you when you upgrade to a phone with a larger screen, use it for a few weeks, then go back to look at your old phone -- the same phone that you used for _years_ -- and it looks absurdly, impossibly small? I'm getting it after using the AirPod Pros for only a few days -- the stems on traditional AirPods now look comically long.
 
-With the non-Pro AirPods I always kept a pair of wired earphones with good sound insulation close at hand for use in environments that weren't perfectly quiet. The Pros will end that practice, with the only advantage of wired at this point being battery life in cases where you want to listen for really extended periods. These may be the perfect earphones. Another welcome home run from Apple.
+With the non-Pro AirPods I always kept a pair of wired earphones with good sound insulation close at hand for use in environments that weren't perfectly quiet. The Pros will end that practice, with the only advantage of wired at this point being battery life in cases where you want to listen for really extended periods.
+
+These may be the perfect earphones. Another welcome home run from Apple.
