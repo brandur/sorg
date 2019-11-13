@@ -33,4 +33,4 @@ The larger case is offset by smaller AirPods. Specifically, their stems are noti
 
 With the non-Pro AirPods I always kept a pair of wired earphones with good sound insulation close at hand for use in environments that weren't perfectly quiet. The Pros will end that practice, with the only advantage of wired at this point being battery life in cases where you want to listen for really extended periods.
 
-These may be the perfect earphones. Another welcome home run from Apple.
+These may be the perfect earphones. Another welcome home run for this product line.
