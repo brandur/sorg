@@ -33,13 +33,13 @@ The fix that was eventually committed falls back to "jitter" entropy in cases wh
 
 ---
 
-I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpods-pro). Usually, I can’t decide these days whether Apple’s direction these days is good or bad. The Touch Bar indicates a pretty clear "bad", but some decisions, like their apparent reversal in position on the failure-prone butterfly key mechanism, are more positive. Most of what they do is grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-kind-of-great 12” MacBook, a [new pro computer and monitor](https://www.apple.com/mac-pro/), but priced so far into the stratosphere [1] that you want eight figures of net worth before thinking about one.
+I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpods-pro). Usually, I can’t decide these days whether Apple’s direction these days is good or bad. The Touch Bar spells a clear "bad", but some decisions, like the apparent reversal in position on the failure-prone butterfly key mechanism, are more positive. Most of what they do is grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-kind-of-great 12” MacBook, a [new pro computer and monitor](https://www.apple.com/mac-pro/), but priced so far into the stratosphere [1] that you want eight figures of net worth before thinking about one.
 
-AirPods are their one product line that’s been nothing but a shining light. Like the original iPhone, they were technology so refined that it wasn’t clear it was even within human reach until the day they were released. The originals were close to perfect but for poor sound isolation (useless on the street, public transport, etc.) and underwhelming "tap" interface. The Pros fix both those problems, and for my money, there’s never been a better pair of earphones.
+AirPods are the one product line that’s been nothing but a shining light. Like the original iPhone, they were technology so refined that it wasn’t clear it was even within human reach until the day they were released. The first iteration was close to perfect but for poor sound isolation (useless on the street, public transport, etc.) and underwhelming "tap" interface. The Pros fix both those problems, and for my money, there’s never been a better pair of earphones.
 
 ---
 
-I still haven’t advertised this newsletter broadly, and while I’m experimenting with it, it has a circulation of roughly one person (me), but if you like prototypes, you can sign up for it early [here](http://nanoglyph-signup.herokuapp.com). If I keep going you’ll keep getting them, there shouldn't be any other ill effects.
+I haven’t advertised this newsletter broadly, and while I’m experimenting with it, it has a circulation of roughly one person (me), but if you like prototypes, you can sign up for it early [here](http://nanoglyph-signup.herokuapp.com). If I keep going, you’ll keep getting them. If I don't, there shouldn't be any ill effects.
 
 See you next week.
 
