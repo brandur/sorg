@@ -3,13 +3,13 @@ published_at = 2019-11-05T23:00:26Z
 title = "12 Factors and Entropy"
 +++
 
-![Seagrape](/assets/images/nanoglyphs/003-12-factors/seagrape@2x.jpg)
+![Folding keyboard](/assets/images/nanoglyphs/003-12-factors/folding-keyboard@2x.jpg)
 
 Well, my weekly newsletter has become more like a monthly, but I’m not ready to give up on it quite yet.
 
 My writing habits have been frozen recently, and I’m experimenting with a few radical techniques to thaw them. I’m writing this text on an iPhone and a folding Bluetooth keyboard with the theory that the glacial interaction speed of iOS will actually be an advantage when trying to achieve some multitasking-free focus. That part’s turning out to be true, but the keyboard needs work. It’s got a solid feel and the world's slickest folding mechanism, but between cramped keys, a random 10% chance a depressed key doesn’t do anything, and occasional repeats, I’m retyping every second word. Navigating text takes so long that I’ve stopped fixing typos — write fast and fix later. I’ll get them on an edit pass. I look completely ridiculous, but it’s working.
 
-Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-come edition of [_Passages & Glass_](https://brandur.org/newsletter) (my other, less software oriented newsletter) if you’re interested in hearing more.
+TODO: Pictured above.
 
 ## 12 factor ascendant (#12-factor)
 
