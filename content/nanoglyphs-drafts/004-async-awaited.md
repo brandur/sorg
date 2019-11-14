@@ -9,7 +9,7 @@ The folding keyboard [from last week’s](/nanoglyphs/003-12-factors) been scrap
 
 Welcome to Nanoglyph, a software weekly, issue number four.
 
-Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-come edition of [_Passages & Glass_](https://brandur.org/newsletter) (my other, less software oriented newsletter) if you’re interested in hearing more.
+Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-come edition of [_Passages & Glass_](/newsletter) (my other, less software oriented, much less frequent newsletter) if you’re interested in hearing more.
 
 ---
 
