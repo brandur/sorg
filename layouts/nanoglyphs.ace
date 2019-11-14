@@ -50,7 +50,7 @@ html lang="en"
       code, pre {
         background: #f6f6f6;
         font-family: Monaco, monospace;
-        font-size: 14px;
+        font-size: 13px;
       }
 
       code {
