@@ -33,7 +33,7 @@ The fix that was eventually committed falls back to "jitter" entropy in cases wh
 
 ---
 
-I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpods-pro). Usually, I can’t decide these days whether Apple’s direction these days is good or bad. The Touch Bar spells a clear "bad", but some decisions, like their return to a scissor keyboard mechanism in the new 16-inch MacBook Pro, are more positive. Most of what they do is grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-kind-of-great 12” MacBook, a [new pro computer and monitor](https://www.apple.com/mac-pro/), but priced so far into the stratosphere [1] that you want eight figures of net worth before thinking about one.
+I don’t review many things, but this week I wrote one for Apple’s new [AirPods Pro](/fragments/airpods-pro). Usually, I can’t decide whether Apple’s direction these days is good or bad. The Touch Bar spells a clear "bad", but some decisions, like their return to a scissor keyboard mechanism [1] in the new 16-inch MacBook Pro, are more positive. Most of what they do is grey: a welcome-until-you-see-the-price MacBook Air refresh, discontinuation of the single-port-but-kind-of-great 12” MacBook, a [new pro computer and monitor](https://www.apple.com/mac-pro/), but priced so far into the stratosphere [2] that you want eight figures of net worth before thinking about one.
 
 AirPods are the one product line that’s been nothing but a shining light. Like the original iPhone, they were technology so refined that it wasn’t clear it was even within human reach until the day they were released. The first iteration was close to perfect but for poor sound isolation (useless on the street, public transport, etc.) and underwhelming "tap" interface. The Pros fix both those problems, and for my money, there’s never been a better pair of earphones.
 
@@ -43,4 +43,6 @@ I haven’t advertised this newsletter broadly, and while I’m experimenting wi
 
 See you next week.
 
-[1] Starting at $6k and $5k for computer and monitor respectively, but for the bottom of the range configurations that no one is actually supposed to order, so expect to spend far more.
+[1] And physical escape key! And T-shaped arrow keys! Apple's been spoiling us recently with the reintroduction of 50 year old keyboard technology.
+
+[2] Starting at $6k and $5k for computer and monitor respectively, but for the bottom of the range configurations that no one is actually supposed to order, so expect to spend far more.
