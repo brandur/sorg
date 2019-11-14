@@ -25,6 +25,8 @@ The area's fauna is impressive. Eagle rays were the signature macro life, one we
 
 I got into a comfortable routine: wake up early. Eat. Dive. Boat to shore. Wait 20 minutes. Boat to sea. Dive again. Rinse equipment. Finish with the ocean by 11 o'clock. Read in hammock or go look around the island.
 
+I did my first real wreck dive: _El Aguila_, a pretty deep one at about 100 feet. It's quite a sight descending and seeing its destroyed superstructure, surrounded by hundreds of [garden eels][gardeneel] planted firmly all around it, materialize out of the murk. Diving through its corridors is a little mind bending because the deck, roof, and equipment that you normally expect to be level are all warped at sharp angles.
+
 ### Rustic living (#rustic-living)
 
 With Yelp not-a-thing and few other people around to telegraph good restaurants through business, I found places to eat the _really_ old-fashioned way — word of mouth, and walking around town peering into patios and looking at menus. Sometimes you got a good one; often you didn’t; but it was mechanically satisfying in the same way as making pour-over coffee or reading a paperback. Occasionally I'd find a really treasure, like the _Cafe de Palo_ below, and the serendipity would produce a little turbocharge of unbridled excitement.
@@ -96,6 +98,7 @@ Until next time.
 [2] Except that of the lionfish, although let's hope that iPhone waterproofing continues its admirable trend towards allowing that one day.
 
 [cte]: https://www.postgresql.org/docs/current/queries-with.html
+[gardeneel]: https://en.wikipedia.org/wiki/Heterocongrinae
 [halide]: https://blog.halide.cam/inside-the-iphone-11-camera-part-1-a-completely-new-camera-28ea5d091071
 [nudibranch]: https://en.wikipedia.org/wiki/Nudibranch
 [oatmeal]: https://theoatmeal.com/comics/mantis_shrimp
