@@ -9,7 +9,7 @@ Hi everyone --
 
 Long time readers may recall that in [the last edition of Passsages](/passages/003-koya) I promised to send these bursts a little more often after a longtime hiatus. Well, obviously that didn’t work out. You can consider me sufficiently chagrined through self-flagellation, or not — feel free to reply and give me a hard time about it.
 
-If you don’t know why you’re getting this email, it’s probably because you signed up for my newsletter on my website [brandur.org](https://brandur.org/newsletter) at some point, but they’re sent so infrequently that it may well have been in the distant past. If you never want to see another one, all it takes to permanently exorcise your inbox is a single click to [this unsubscribe link][unsubscribe].
+If you don’t know why you’re getting this email, it’s probably because you signed up for my newsletter on my website [brandur.org](https://brandur.org/newsletter) at some point, but they’re sent so infrequently that it may well have been in the distant past. If you never want to see another one, all it takes to permanently exorcise your inbox in a single click to [this unsubscribe link][unsubscribe].
 
 Otherwise, here we go. In this edition I’ll say a few words about a recent trip to Honduras, the iPhone 11, and Postgres 12.
 
