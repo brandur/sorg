@@ -5,9 +5,9 @@ title = "12 Factors and Entropy"
 
 ![Folding keyboard](/assets/images/nanoglyphs/003-12-factors/folding-keyboard@2x.jpg)
 
-Well, my weekly newsletter has become more like a monthly, but I’m not ready to give up on it quite yet. As a reminder, this is _Nanoglyph_, a (supposedly) weekly newsletter on software.
+Well, my weekly newsletter has become more like a monthly, but I’m not ready to give up on it quite yet. As a reminder, this is _Nanoglyph_, a (more or less) weekly newsletter on software.
 
-My writing habits have been somewhat frozen recently -- not so much a writer's block, but a problem whereby every attempt at a directed task on a computer morphs into something else -- email, code review, YouTube. To thaw them, I’ve gone radical. I’m writing this from an iPhone and folding Bluetooth keyboard (pictured above) under the theory that the glacial interaction speed of iOS will be conducive for some multitasking-free focus. When slow input (touch) and long animation makes transitioning between apps is a 1-2 second operation, the platform, intentionally or not, inherently discourages the habit.
+My writing habits have been somewhat frozen recently -- not so much a writer's block, but a problem whereby every attempt at a directed task on a computer morphs into something else -- email, code review, YouTube. To thaw them, I’ve gone radical. I’m writing this from an iPhone and folding Bluetooth keyboard (pictured above) under the theory that the glacial interaction speed of iOS will be conducive for some multitasking-free focus. When slow input (touch) and long animation makes the mobile equivalent of ⌘-Tab a 1-2 second operation, the platform, intentionally or not, inherently discourages the habit.
 
 The keyboard has a solid feel and the world's most satisfying folding mechanism, but between cramped keys, a random 10% a depressed button does nothing, and occasional repeats, every second word needs retyping. Navigating text takes so long that I stopped fixing typos. Write fast, fix later -- I’ll get them on an edit pass, which is a good habit anyway. It has a few problems, and using it in public looks completely ridiculous, but the improved focus is working.
 
@@ -21,7 +21,7 @@ It’s easy to undervalue that. At Stripe we’re close to the opposite end of t
 
 ## Spooky effects at a distance (#getrandom)
 
-[Fixing `getrandom()`](https://lwn.net/Articles/800509/) is a great piece that opens a tiny window onto the world of kernel development, and what's inside is fascinating. The saga starts with the addition of `getrandom()` to the kernel after the LibreSSL project successfully advocated that it was too difficult to reliably get secure entropy (when good security practice is difficult, insecurity is likely).
+[Fixing `getrandom()`](https://lwn.net/Articles/800509/) is a great piece that opens a tiny window onto the world of kernel development, and what's inside is fascinating. The saga starts with the addition of `getrandom()` to the kernel after the LibreSSL project successfully advocated that it was too difficult to correctly procure secure entropy (where good security practice is difficult, insecurity is likely).
 
 It worked well until a bug was reported whereby computers hang on boot which turned out to be caused by the X Window System blocking on a call to `getrandom()` because not enough entropy was available. That reduction turned out to be caused by an [optimization in ext4](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b03755ad6f33b7b8cd7312a3596a2dbf496de6e7) that minimized disk I/O on startup. Breaking changes don’t get much more roundabout than this — a bug-free optimization to a file system had the downstream effect of breaking boot for a graphical UI. You can’t help admire the intrepid bug hunter who figured that out.
 
