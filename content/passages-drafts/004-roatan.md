@@ -21,7 +21,7 @@ I’d show up in the morning for dive expeditions, and be the sole passenger on 
 
 ![The Seagrape's dock](/assets/images/passages/004-roatan/dock@2x.jpg)
 
-The area's fauna is impressive. Eagle rays were the signature macro life, one hitting about seven feet wide, and with its long tail trailing behind it. We saw sea turtles nearly every dive, the biggest a full meter in length. I saw my first [mantis shrimp][oatmeal], and was duly amazed by the loud clacks of its snapping claws -- fully audible underwater despite the animal being a few inches long (the shrimp strikes so quickly that it produces vapor-filled bubbles between its appendages and target called "cavitation bubbles", the collapse of which causes a small shock wave). Aside from those: seahorses, [nudibranchs][nudibranch], neck crab, morays.
+The area's fauna is impressive. Eagle rays were the signature macro life, one we saw spanning about seven feet wide, and with its long tail trailing far behind it. We saw sea turtles nearly every dive, the biggest a full meter in length. I saw my first [mantis shrimp][oatmeal], and was duly amazed by the loud clacks of its snapping claws -- fully audible underwater despite the animal being a few inches long (the shrimp strikes so quickly that it produces vapor-filled bubbles between its appendages and target called "cavitation bubbles", the collapse of which causes a small shock wave). Aside from those: seahorses, [nudibranchs][nudibranch], neck crab, morays.
 
 I got into a comfortable routine: wake up early. Eat. Dive. Boat to shore. Wait 20 minutes. Boat to sea. Dive again. Rinse equipment. Finish with the ocean by 11 o'clock. Read in hammock or go look around the island.
 
