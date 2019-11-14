@@ -15,7 +15,7 @@ Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-
 
 ## The beginning at long last (#beginning)
 
-Last week, async-await stabilized in Rust. It was a long road to get there. There were some early forays into alternative concurrency techniques like green threads that were eventually deliberated out. Then came a misadventure in building async-await as user-space abstractions with macros. The result was [pure pain](/fragments/rust-brick-walls). Then perhaps the longest phase: today’s idea was pitched, developed, and travelled through a lengthy vetting process before getting to where it is today. It’s been almost two years since the [original RFC](https://github.com/rust-lang/rfcs/pull/2394).
+Last week, async-await stabilized in Rust. It was a long road to get there. There were some early forays into alternative concurrency models like green threads that were eventually deliberated out. Then came a terrible misadventure in building async-await as user-space abstractions on top of macros. The result was [pure agony](/fragments/rust-brick-walls). Then, perhaps the longest phase: today’s idea was pitched, implemented, and travelled through a lengthy vetting process before getting to where it is today. It’s been almost two years since the [original RFC](https://github.com/rust-lang/rfcs/pull/2394).
 
 Plausible concurrency is such an important aspect for a modern programming language that in a big way, this is really Rust’s beginning. From here, the higher level constructs can come in on top of the async-await primitives, starting with a release of Tokio this month, and culminating with refined (and very fast and very low resource) web frameworks. There are some exciting times for this language ahead. 
 
