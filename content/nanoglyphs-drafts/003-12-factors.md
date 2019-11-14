@@ -1,13 +1,13 @@
 +++
-published_at = 2019-11-05T23:00:26Z
+published_at = 2019-11-14T15:33:03Z
 title = "12 Factors and Entropy"
 +++
 
 ![Folding keyboard](/assets/images/nanoglyphs/003-12-factors/folding-keyboard@2x.jpg)
 
-Well, my weekly newsletter has become more like a monthly, but I’m not ready to give up on it quite yet. As a reminder, this is _Nanoglyph_, a (more or less) weekly newsletter on software.
+Well, my weekly newsletter has become more like a monthly, but I’m not ready to give up on it quite yet. As a reminder, this is _Nanoglyph_, an (allegedly) weekly newsletter on software.
 
-My writing habits have been somewhat frozen recently -- not so much a writer's block, but a problem whereby every attempt at a directed task on a computer morphs into something else -- email, code review, Hacker News, YouTube. To thaw them, I’ve gone radical. I’m writing this from an iPhone and folding Bluetooth keyboard (pictured above) under the theory that the glacial interaction speed of iOS will be conducive for some multitasking-free focus. When slow input (touch) and long animation makes the mobile equivalent of ⌘-Tab a 1-2 second operation, the platform, intentionally or not, inherently discourages the habit.
+My writing habits have been somewhat frozen recently -- not so much a writer's block, but a problem whereby every attempt at a directed task on a computer morphs into something else -- email, code review, Hacker News, YouTube. To thaw them, I’ve gone radical. I’m writing from an iPhone and folding Bluetooth keyboard (pictured above) under the theory that the glacial interaction speed of iOS will be conducive for some multitasking-free focus. When slow input (touch) and long animation makes the mobile equivalent of ⌘-Tab a 1-2 second operation, the platform, intentionally or not, inherently discourages the habit.
 
 The keyboard has a solid feel and the world's most satisfying folding mechanism, but between cramped keys, a random 10% a depressed button does nothing, and occasional repeats, every second word needs retyping. Navigating text takes so long that I stopped fixing typos. Write fast, fix later -- I’ll get them on an edit pass, which is a good habit anyway. It has a few problems, and using it in public looks completely ridiculous, but most importantly: the improved focus is working.
 
