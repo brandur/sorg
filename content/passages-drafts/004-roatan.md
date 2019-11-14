@@ -77,7 +77,7 @@ It's relatively obvious to a human that this simple query should be quite easy f
 
 ### More `CONCURRENTLY` (#reindex-concurrently)
 
-The new `REINDEX CONCURRENTLY` command has been introduced to supplement `CREATE INDEX CONCURRENTLY` and `DROP INDEX CONCURRENTLY`. As with the latter two, this has the effect of making things fundamentally better and fundamentally safer. Postgres 12 also introduces some space utilization and read/write performance improvements to B-tree indexes, so rebuilding some of your indexes is an easy way to make your database a little smaller and faster.
+The new `REINDEX CONCURRENTLY` command has been introduced to supplement `CREATE INDEX CONCURRENTLY` and `DROP INDEX CONCURRENTLY`. As with the latter two, this has the effect of making things fundamentally better and fundamentally safer. Postgres 12 also introduces some space utilization and read/write performance improvements to B-tree indexes, so rebuilding some of your indexes is an easy way to make your database a little smaller, and a little faster.
 
 ### Even better partitioning (#partitioning)
 
@@ -89,7 +89,7 @@ With every new release I wonder when Postgres will be “done”. Surely at some
 
 Well, that’s it for now. I’ve got some ideas for another couule of these queued up, so I’ll give you the usual refrain about how it shouldn’t be so long before the next one, but I’ll be the first to admit that my track record doesn’t inspire confidence.
 
-Until next time,
+Until next time.
 
 [1] “What few guests we were had quickly come to recognize each other by sight as the only living souls residing in the vast establishment. We were a very reserved group it seemed, and without exception, solitary.” -- _The Grand Budapest Hotel_
 
