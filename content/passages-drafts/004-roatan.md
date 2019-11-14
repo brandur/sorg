@@ -7,9 +7,9 @@ title = "Diving Roatan, 11s, 12s"
 
 Hi everyone --
 
-Long time readers may recall that in [the last edition of Passsages]() I promised to send these bursts a little more often after a longtime hiatus. Well, obviously that didn’t work out. You can consider me sufficiently chagrined through self-flagellation, or not — feel free to reply and give me a hard time about it.
+Long time readers may recall that in [the last edition of Passsages](/passages/003-koya) I promised to send these bursts a little more often after a longtime hiatus. Well, obviously that didn’t work out. You can consider me sufficiently chagrined through self-flagellation, or not — feel free to reply and give me a hard time about it.
 
-If you don’t know why you’re getting this email, it’s probably because you signed up for my newsletter on my website [brandur.org](https://brandur.org/newsletter) at some point, but they’re sent so infrequently that it may have been in the distant past. If you never want to see another one, all it takes to permanently exorcise them from your inbox is a single click to [this unsubscribe link][unsubscribe].
+If you don’t know why you’re getting this email, it’s probably because you signed up for my newsletter on my website [brandur.org](https://brandur.org/newsletter) at some point, but they’re sent so infrequently that it may well have been in the distant past. If you never want to see another one, all it takes to permanently exorcise your inbox is a single click to [this unsubscribe link][unsubscribe].
 
 Otherwise, here we go. In this edition I’ll say a few words about a recent trip to Honduras, the iPhone 11, and Postgres 12.
 
@@ -17,7 +17,7 @@ Otherwise, here we go. In this edition I’ll say a few words about a recent tri
 
 I had a bit of a _Grand Budapest Hotel_ experience [1], which up until then, was something that I didn’t think happened in real life. It was low season thanks to an upcoming rainy season, and aside from me, the hotel and grounds were almost empty.
 
-I’d show up in the morning for dive expeditions, and be the sole passenger on the sole boat that went out for the day (of a fleet of ~nine). It was a great recipe for seeing marine life (divemasters have little else to do except keep an eye out), and a little weird — with no one else to pay attention to, our boat's deck hand would assemble every piece of my equipment up to and including defogging my goggles, proceed to mount that equipment _onto me_, and lead me over the side of the boat like a show pony. Highly convenient, but in the way that being a doted on five-year old is highly convenient.
+I’d show up in the morning for dive expeditions, and be the sole passenger on the sole boat that went out for the day (of a fleet of ~nine). It was a great recipe for seeing marine life (divemasters have little else to do except keep an eye out), and a little weird — with no one else to pay attention to, our boat's deck hand would assemble every piece of my equipment up to and including defogging my goggles, proceed to mount that equipment _onto me_, and lead me over the side of the boat like a show pony. Highly convenient, but in the way that being a doted on five year old is highly convenient.
 
 ![The Seagrape's dock](/assets/images/passages/004-roatan/dock@2x.jpg)
 
