@@ -19,7 +19,7 @@ compatible, which means complying with Apple's very
 [specific rules][applerules] around encoding. It might seem
 crazy to want to do this, but I still find that QuickTime
 is in the unique position of being simultaneously the best
-_and_ worst video player ever made. While it's narrow
+_and_ worst video player ever made. While its narrow
 versatility makes it incredibly frustrating to work with,
 there's never been another video player in history that
 scrubs as well, or uses laptop CPU/battery as efficiently.
