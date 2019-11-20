@@ -13,7 +13,7 @@ Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-
 
 ---
 
-## The beginning at long last (#beginning)
+## The beginning at last (#beginning)
 
 Last week, async-await stabilized in Rust. It was a long road to get there. There were some early forays into alternative concurrency models like green threads that were eventually deliberated out. Then came a terrible misadventure in building async-await as user-space abstractions on top of macros. The result was [pure agony](/fragments/rust-brick-walls). Then, perhaps the longest phase: today’s idea was pitched, implemented, and travelled through a lengthy vetting process before getting to where it is today. It’s been almost two years since the [original RFC](https://github.com/rust-lang/rfcs/pull/2394).
 
@@ -34,20 +34,36 @@ One point of interest is that he mentioned that Go is experimenting with includi
 
 ## Static trees (#static-trees)
 
-A view tree is re-rendered as state changes, but the types within that tree are invariant.
+One of the most exciting software developments in Apple’s world recently was [SwiftUI](https://developer.apple.com/xcode/swiftui/), their take on a React-like system for building modular UIs, but allowing you to try write them in a nice modern language like Swift instead of untyped JSX templates. By most reports it's [pretty rough right now](https://inessential.com/2019/10/21/swiftui_is_still_the_future), but it looks promising.
 
-In similar architectures like React or Elm, the tree model is common, but there’s a step during a re-render where the old and new trees need to be compared to check if any new elements were added or old ones removed.
-
-SwiftUI’s static types guarantee that the elements between renders are the same, and it’s just the state that may need to be modified.
-
-There are more complex cases like where an `if` conditional is introduced in view rendering logic:
+[Static types in SwiftUI](https://www.objc.io/blog/2019/11/05/static-types-in-swiftui/) describes how Swift infers complex types based on views built in the framework. So something like this:
 
 ``` swift
+let stack = VStack {
+    Text("Hello")
+    Rectangle()
+        .fill(myState ? Color.red : Color.green)
+        .frame(width: 100, height: 100)
+}
+```
+
+Translates to the nested, parameterized type `VStack<TupleView<(Text, ModifiedContent<_ShapeView<Rectangle, Color>, _FrameLayout>)>>`.
+
+These React-like frameworks re-render view trees as the state they’re encapsulating changes. In React or Elm, re-renders typically involve a diff step, where the old and new view trees are compared so that the framework can determine if new elements need to be added or old ones removed. Having a static type to describe each view will often allow SwiftUI to skip or minimize the work done during this step — it knows in advance that the elements can remain constant, and it’s just their internal state that needs to be updated.
+
+A more complex view include a conditional that could make the typing system more complex:
+
+```
 if myState {
 	Text(“Hello”)
 }
 ```
 
-SwiftUI can handle this case as well by replacing a previously required `Text` field with an optional `Text?` in the final type. It also has scheme for handling conditional branches like with `if ... else ...` and in cases where the logic becomes too complex to encode in types, can fall back to a type-erased `AnyView` to represent anything.
+SwiftUI handles this case by replacing a previously required `Text` field with an optional `Text?` in the static type, so it can still benefit from the typing by only diffing in places like this where it’s possible for elements to change. It also has a scheme for handling conditional branches like with `if ... else ...` (they become `_ConditionalContent`) and in cases where the logic becomes too complex to encode in types, can fall back to a type-erased `AnyView` to represent anything.
 
-## GitHub Actions (#github-actions)
+## Migrating to Actions (#github-actions)
+
+Ever since Travis untimely [acquisition by a holding company](https://news.ycombinator.com/item?id=18978251) and the departure of a large number of its engineering staff, a number of us have been keeping an eye out for what to use next. For the time being Travis is still running, but the clock’s likely inching closer to midnight.
+
+[GitHub Actions](https://github.com/features/actions) were an extremely timely addition to the company’s product surface. Although described in most places in such grandiose vernacular so as to obfuscate what it actually does, to put it simply, it allows you describe jobs that will run on certain repository events like a push, opened pull request, or cron — perfect for CI. It’s major differentiating feature is that the steps of a job can be defined as similar shell commands, they can also defined a Docker container to run. This makes the whole system modular — units of work of arbitrary size can live in their own project, providing good encapsulation and easy updates.
+
