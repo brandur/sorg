@@ -7,13 +7,13 @@ title = "Async, Awaited"
 
 The folding keyboard [from last week’s](/nanoglyphs/003-12-factors) been scrapped, and I’m now using a similar mobile setup involving Apple’s Magic Keyboard. Not designed at all to be carried around, but surprisingly mobile. So far it's been a rare holdout in a company with the single overarching value of thinner products at any cost, even if that means eviscerating usability. Its battery life is good. No butterfly keys. The only downside is that I have to keep it in a Ziplock bag when it goes into my backpack. Otherwise, its sheen of the purest white becomes a muddied black faster than you say "reality distortion".
 
-Welcome to Nanoglyph, a software weekly, issue no. four. One point of interest is that I migrated the system that handles this newsletter’s testing and deployment from Travis to GitHub Actions, which was a fun mini-project. See a few of my notes on that at the end of this newsletter.
+Welcome to Nanoglyph, a software weekly, issue no. four.
 
 Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-come edition of [_Passages & Glass_](/newsletter) (my other, less software oriented, much less frequent newsletter) if you’re interested in hearing more.
 
 ---
 
-## The beginning at last (#beginning)
+## At last, the beginning (#beginning)
 
 Last week, async-await stabilized in Rust. It was a long road to get there. There were some early forays into alternative concurrency models like green threads that were eventually deliberated out. Then came a terrible misadventure in building async-await as user-space abstractions on top of macros. The result was [pure agony](/fragments/rust-brick-walls). Then, perhaps the longest phase: today’s idea was pitched, implemented, and travelled through a lengthy vetting process before getting to where it is today. It’s been almost two years since the [original RFC](https://github.com/rust-lang/rfcs/pull/2394).
 
@@ -61,9 +61,6 @@ if myState {
 
 SwiftUI handles this case by replacing a previously required `Text` field with an optional `Text?` in the static type, so it can still benefit from the typing by only diffing in places like this where it’s possible for elements to change. It also has a scheme for handling conditional branches like with `if ... else ...` (they become `_ConditionalContent`) and in cases where the logic becomes too complex to encode in types, can fall back to a type-erased `AnyView` to represent anything.
 
-## Migrating to Actions (#github-actions)
+---
 
-Ever since Travis untimely [acquisition by a holding company](https://news.ycombinator.com/item?id=18978251) and the departure of a large number of its engineering staff, a number of us have been keeping an eye out for what to use next. For the time being Travis is still running, but the clock’s likely inching closer to midnight.
-
-[GitHub Actions](https://github.com/features/actions) were an extremely timely addition to the company’s product surface. Although described in most places in such grandiose vernacular so as to obfuscate what it actually does, to put it simply, it allows you describe jobs that will run on certain repository events like a push, opened pull request, or cron — perfect for CI. It’s major differentiating feature is that the steps of a job can be defined as similar shell commands, they can also defined a Docker container to run. This makes the whole system modular — units of work of arbitrary size can live in their own project, providing good encapsulation and easy updates.
-
+Goodbye.
