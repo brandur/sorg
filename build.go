@@ -1716,7 +1716,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 		return false, nil
 	}
 
-	locals := getLocals("Nanoglyphs", map[string]interface{}{
+	locals := getLocals("Nanoglyph", map[string]interface{}{
 		"Issues": issues,
 	})
 
