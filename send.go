@@ -77,7 +77,7 @@ var (
 		Layout:             scommon.NanoglyphsLayout,
 		MailAddress:        "nanoglyph@" + mailDomain,
 		MailAddressStaging: "nanoglyph-staging@" + mailDomain,
-		TitleFormat:        "Nanoglyph %s — %s",
+		TitleFormat:        "ⓝ Nanoglyph %s — %s",
 		View:               scommon.ViewsDir + "/nanoglyphs/show.ace",
 	}
 
