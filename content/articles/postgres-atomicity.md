@@ -529,7 +529,7 @@ transactions, and assume that they were aborted.
 its implementation `TransactionIdSetTreeStatus` in
 [clog.c][settreestatus]) commits a "tree" because a commit
 may have subcommits. I won't go into subcommits in any
-detail, but it's worth nothing that because
+detail, but it's worth noting that because
 `TransactionIdCommitTree` cannot be guaranteed to be
 atomic, each subcommit is recorded as committed separately,
 and the parent is recorded as a final step. When Postgres
