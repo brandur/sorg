@@ -148,6 +148,10 @@ html lang="en"
         line-height: 1.6;
       }
 
+      #footnotes sup {
+        margin-right: 3px;
+      }
+
       #container {
         margin: 0 auto;
         max-width: 550px;
