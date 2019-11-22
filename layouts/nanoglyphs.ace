@@ -129,6 +129,12 @@ html lang="en"
         margin: 15px 0;
       }
 
+      p {
+        hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+      }
+
       #about {
         color: #aaa;
         font-size: 14px;
