@@ -33,6 +33,11 @@ as minimums.
     magick convert $GMI -gravity center -crop 3:2 -resize 1024x -quality 85 $GMO/vista.jpg
     magick convert $GMI -gravity center -crop 3:2 -resize 2048x -quality 85 $GMO/vista@2x.jpg
 
+# Resize for fragment images
+
+    magick convert $GMI -resize 500x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
+    magick convert $GMI -resize 1000x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
+
 ## Resize for Twitter cards
 
     magick convert $GMI -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GMO/twitter@2x.jpg
