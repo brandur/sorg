@@ -68,7 +68,7 @@ When competing technologies are vetted in the field for years, there’s often n
 
 React’s in this bucket. It took decades to find a good pattern for building UIs sustainably. Event handlers on UI elements and data binding were the gold standard for desktop development for most of that time. Later, patterns like MVP [1] were recommended. On the web, the right answer was piecemeal JavaScript with assists from jQuery before heavier frameworks like Angular, Amber, and React started to appear. 
 
-Time has shown that React’s particular brand of declarative syntax and decoupled state management is an excellent way to build sustainable UIs which are modular enough to scale well to even the largest development teams. It’s already adopted very widely, and still picking up steam. Even more importantly, its premise is being reused by the likes of Elm and SwiftUI, projects that could very plausibly have gone the other way and re-invented their own — that’s the closest you’re likely to get to definitive proof that React sparked something enduring.
+Time has shown that React’s particular brand of declarative syntax and decoupled state management is an excellent way to build sustainable UIs which are modular enough to scale well to even the largest development teams. It’s already adopted very widely, and still picking up steam. Even more importantly, its core premise is being reused by the likes of Elm and SwiftUI, projects that could very plausibly have gone the other way and invented their own — that’s the closest you’re likely to get to definitive proof that React sparked something enduring.
 
 Until next week.
 
