@@ -96,6 +96,11 @@ var photoMarkerCache = gocache.New(5*time.Minute, 10*time.Minute)
 // directory) for some period of time. It turns out these calls are relatively
 // slow and this helps speed up the build loop.
 //
+// The downside is that new files are not discovered right away, and often
+// necessitate a server restart. A future improvement might be to have Modulir
+// provide a simplified events channel that we can listen to in order to expire
+// entries from the cache.
+//
 // Arguments are (defaultExpiration, cleanupInterval).
 var readDirCache = gocache.New(5*time.Minute, 10*time.Minute)
 
