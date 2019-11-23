@@ -5,7 +5,9 @@ title = "Async, Awaited"
 
 ![Seagrape](/assets/images/nanoglyphs/004-async-awaited/seagrape@2x.jpg)
 
-The folding keyboard [from last week's](/nanoglyphs/003-12-factors) been scrapped, but I'm still writing on mobile platforms; this week with a less exotic Apple Magic Keyboard. These weren't designed with mobility in mind, but are surprisingly good at it: compact, good battery life, no butterfly keys. Their downside is that they need to be stored in a Ziplock bag lest their veneer of pure white become a muddied black faster than you say "One Infinite Loop".
+The folding keyboard [from last week's](/nanoglyphs/003-12-factors) been scrapped, but I'm still writing on mobile platforms; this week with a less-exotic-but-more-expensive Apple Magic Keyboard. These weren't designed with mobility in mind, but are surprisingly good at it: compact, good battery life, no butterfly keys. Their Achilles' heel is that they need to be stored in a Ziplock bag lest their veneer of pure white become a muddied black faster than you say "One Infinite Loop".
+
+---
 
 This is Nanoglyph, a software weekly, issue four. It's an in-progress experiment in disciplined writing, email-based publishing, and independent communication less prone to the heavy gravity wells of social media. I’m not slinging it widely, but if you want to help with the prototype, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
 
