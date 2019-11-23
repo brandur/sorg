@@ -13,7 +13,7 @@ Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-
 
 ---
 
-## At last, the beginning (#beginning)
+## The beginning, at last (#beginning)
 
 Last week, async-await stabilized in Rust. It was a long road to get there. It started early exploration into a variety of concurrency models, including Go-like green threads that were deliberated out in preference of an ultra-minimal runtime. Then came a terrible misadventure in using macros to build async-await as user-space abstractions. The result was [pure agony](/fragments/rust-brick-walls). Then, perhaps the longest phase: today’s idea was proposed, implemented, and went through a lengthy vetting process before arriving at where it is today. It’s been almost two years since the [original RFC](https://github.com/rust-lang/rfcs/pull/2394).
 
