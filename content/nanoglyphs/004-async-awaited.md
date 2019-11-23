@@ -5,7 +5,7 @@ title = "Async, Awaited"
 
 ![Seagrape](/assets/images/nanoglyphs/004-async-awaited/seagrape@2x.jpg)
 
-The folding keyboard [from last week's](/nanoglyphs/003-12-factors) been scrapped, but I'm still writing on mobile platforms; this week with a less-exotic-but-more-expensive Apple Magic Keyboard. These weren't designed with mobility in mind, but are surprisingly good at it: compact, good battery life, no butterfly keys. Their Achilles' heel is that they need to be stored in a Ziplock bag lest their veneer of purest white become a muddied black faster than you say "One Infinite Loop".
+The folding keyboard [from last week's](/nanoglyphs/003-12-factors) been scrapped, but I'm still writing on mobile platforms; this week from a less-exotic-but-more-expensive Apple Magic Keyboard. These weren't designed with mobility in mind, but are surprisingly good at it: compact, good battery life, no butterfly keys. Their Achilles' heel is that they need to be stored in a Ziplock bag lest their veneer of purest white become a muddied black faster than you say "One Infinite Loop".
 
 ---
 
@@ -35,7 +35,7 @@ A point of interest is that Go is experimenting with including dependency versio
 
 ## Static trees (#static-trees)
 
-An exciting development in Apple's toolchain was the introduction of [SwiftUI](https://developer.apple.com/xcode/swiftui/), their take on a React-like system for building declarative, modular UIs. And unlike React, allowing you to do so in a modern language like Swift instead of untyped JSX syntactic sugar. By most reports using it today is [rough going](https://inessential.com/2019/10/21/swiftui_is_still_the_future), but it looks promising.
+An exciting development in Apple's toolchain was the introduction of [SwiftUI](https://developer.apple.com/xcode/swiftui/), their take on a React-like system for building declarative, modular UIs. And unlike React, allowing you to do so in the elegance of Swift instead of free form JSX syntactic sugar. By most reports using it today is [rough going](https://inessential.com/2019/10/21/swiftui_is_still_the_future), but it looks promising.
 
 [Static types in SwiftUI](https://www.objc.io/blog/2019/11/05/static-types-in-swiftui/) describes how Swift infers complex types based on views built with the framework. So something like:
 
