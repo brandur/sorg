@@ -42,7 +42,7 @@ as minimums.
 
     magick convert $GMI -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GMO/twitter@2x.jpg
 
-## Resize for Passages images
+## Resize for Passages/Nanoglyphs images
 
 Landscape:
 
