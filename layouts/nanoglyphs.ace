@@ -17,7 +17,7 @@ html lang="en"
     = css
       blockquote {
         border-left: 5px solid #eee;
-        font-size: 15px;
+        font-size: 14px;
         font-style: italic;
         margin-left: 20px;
         margin-right: 20px;
@@ -32,7 +32,7 @@ html lang="en"
       body {
         color: #3d3d3d;
         font-family: Helvetica, sans-serif;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 300;
         line-height: 1.5;
 
@@ -50,7 +50,7 @@ html lang="en"
       code, pre {
         background: #f6f6f6;
         font-family: Monaco, monospace;
-        font-size: 13px;
+        font-size: 12px;
       }
 
       code {
@@ -79,14 +79,14 @@ html lang="en"
       }
 
       h2 {
-        font-size: 14px;
+        font-size: 13px;
         letter-spacing: -1px;
         margin: 30px 0 0 0;
         /* text-transform: uppercase; */
       }
 
       h3 {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: -1px;
         margin: 20px 0 0 0;
       }
@@ -137,7 +137,7 @@ html lang="en"
 
       #about {
         color: #aaa;
-        font-size: 14px;
+        font-size: 13px;
         margin: 80px 0 30px 0;
         text-align: center;
       }
@@ -160,12 +160,12 @@ html lang="en"
 
       #container {
         margin: 0 auto;
-        max-width: 550px;
+        max-width: 500px;
         padding: 20px;
       }
 
       #issue {
-        font-size: 14px;
+        font-size: 11px;
         margin-bottom: 0;
         text-align: center;
       }
@@ -197,7 +197,7 @@ html lang="en"
 
       .published-date {
         color: #aaa;
-        font-size: 14px;
+        font-size: 12px;
         font-style: italic;
         margin-left: 8px;
       }
