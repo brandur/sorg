@@ -3,6 +3,8 @@ published_at = 2019-11-22T19:30:13Z
 title = "Actions"
 +++
 
+![Sumo strong eggnog](/assets/images/nanoglyphs/005-actions/eggnog@2x.jpg)
+
 Hello.
 
 ---
