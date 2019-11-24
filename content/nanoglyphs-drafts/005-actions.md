@@ -58,6 +58,16 @@ And steps can also reference Docker Hub with the magic `docker://` prefix:
   uses: docker://alpine:3.8
 ```
 
+### Container as unit of modularity (#container-modularity)
+
+This leads into what I believe to be Actions’ most important innovation: the container as a unit of workflow modularity.
+
+Containers have always been modular in that containers reference other containers during builds, but Actions takes it a step further in making containers the convention for encapsulating reusable code — whether it’s checking out code, setting up a Go environment, or deploying to a specific service like AWS, Actions allow complex functionality to be reused easily in a generic workflow.
+
+This is interesting because despite the popularity of containers, many services have been pushing in a much different direction — JavaScript. If you use AWS Lambda or Twilio Functions, workflows should be written in JavaScript and the unit of reuse is the Node package.
+
+As someone who believes that JavaScript is one of the biggest mistakes in the history of computation, this is hugely exciting. If I want to write a package for use with GitHub actions I can do so using the widely understood convention of containers, and I can do so in a language that isn’t terrible.
+
 ### What Actions gets right (#right)
 
 Containers are a nice touch. In Travis, you could get some code reuse by manually pulling down scripts and running them, but it was an overly difficult and haphazard process. A single, prescribed system that provides easy built-in modularity is a huge step forward.
@@ -73,8 +83,9 @@ steps:
 
 Travis differentiated phases with `install`, `script`, `before_script`, `after_success`. It was a leaky abstraction in two ways:
 
-Even with the plethora of phases, you’d eventually have to start chaining commands within one of them (usually `script`). Travis allowed separate steps with a YAML array, but made no qualms if any of the failed, so users have to either `set -e` or chain commands with `&&` to get the behavior they wanted.
-The ordering of phases wasn’t that intuitive, so you’d have to look it up.
+* Even with the plethora of phases, you’d eventually have to start chaining commands within one of them (usually `script`). Travis allowed separate steps with a YAML array, but made no qualms if any of the failed, so users have to either `set -e` or chain commands with `&&` to get the behavior they wanted.
+
+* The ordering of phases wasn’t that intuitive, so you’d have to look it up.
 
 Steps can be configured individually using `with` to specify options for containers or `env` to specify step-specific variables. I like this because it lets you see which particular steps need specific variables instead of mixing everything into a global env. Explicit usually beats implicit.
 
@@ -90,9 +101,5 @@ Steps can be configured individually using `with` to specify options for contain
 ```
 
 ### What Actions continues to get wrong (#wrong)
-
-### Container as unit of modularity (#container-modularity)
-
-This makes the system modular — units of work of arbitrary size can live in their own project, providing good encapsulation and easy updates.
 
 ---
