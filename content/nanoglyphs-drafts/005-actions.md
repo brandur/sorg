@@ -60,6 +60,35 @@ And steps can also reference Docker Hub with the magic `docker://` prefix:
 
 ### What Actions gets right (#right)
 
+Containers are a nice touch. In Travis, you could get some code reuse by manually pulling down scripts and running them, but it was an overly difficult and haphazard process. A single, prescribed system that provides easy built-in modularity is a huge step forward.
+
+Also, acknowledging that builds are really just a series of steps, and that it’s not hugely advantageous to differentiate the category of step like setup vs. build, is a simplification that works:
+
+``` yml
+steps:
+  - name: Step 1
+  - name: Step 2
+  - name: Step 3
+```
+
+Travis differentiated phases with `install`, `script`, `before_script`, `after_success`. It was a leaky abstraction in two ways:
+
+Even with the plethora of phases, you’d eventually have to start chaining commands within one of them (usually `script`). Travis allowed separate steps with a YAML array, but made no qualms if any of the failed, so users have to either `set -e` or chain commands with `&&` to get the behavior they wanted.
+The ordering of phases wasn’t that intuitive, so you’d have to look it up.
+
+Steps can be configured individually using `with` to specify options for containers or `env` to specify step-specific variables. I like this because it lets you see which particular steps need specific variables instead of mixing everything into a global env. Explicit usually beats implicit.
+
+``` yml
+- name: "Create database: sorg-test"
+  run: createdb sorg-test
+  env:
+    PGHOST: localhost
+    PGPORT: ${{ job.services.postgres.ports[5432] }}
+    PGUSER: postgres
+    PGPASSWORD: postgres
+    PGDATABASE: postgres
+```
+
 ### What Actions continues to get wrong (#wrong)
 
 ### Container as unit of modularity (#container-modularity)
