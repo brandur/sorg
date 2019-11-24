@@ -86,7 +86,7 @@ html lang="en"
       }
 
       h3 {
-        font-size: 11px;
+        font-size: 12px;
         letter-spacing: -1px;
         margin: 20px 0 0 0;
       }
