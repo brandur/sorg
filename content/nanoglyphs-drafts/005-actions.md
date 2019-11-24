@@ -5,7 +5,11 @@ title = "Actions"
 
 ![Sumo strong eggnog](/assets/images/nanoglyphs/005-actions/eggnog@2x.jpg)
 
-Hello.
+Welcome to Nanoglyph, a newsletter about software. It ships weekly, though like most software projects, deadlines are not always met.
+
+This week involved the fulfillment of an old Heroku tradition by making a batch of [sumo strong eggnog](https://github.com/seaofclouds/sumostrong/blob/master/views/eggnog.md). The recipe’s convenient in that you can buy the heavy cream and whole milk involved in cartons of exactly the right size so there’s none leftover. It makes enough to nearly fill three [Kilner clip top bottles](https://www.amazon.com/Kilner-Square-Clip-Bottle-34-Fl/dp/B005N984I8/). If the idea of strong eggnog is even remotely appealing, it’s very much recommended.
+
+The usual format is three links from the week with some commentary, but to keep things dynamic, I’m playing with the format to instead talk about a mini-project in a little more length — like a push version of a blog post.
 
 ---
 
