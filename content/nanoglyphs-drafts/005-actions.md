@@ -7,7 +7,7 @@ title = "Actions"
 
 Welcome to Nanoglyph, a newsletter about software. It ships weekly, though like most software projects, deadlines are not always met.
 
-This week involved the fulfillment of an old Heroku tradition by making a batch of [sumo strong eggnog](https://github.com/seaofclouds/sumostrong/blob/master/views/eggnog.md). The recipe’s convenient in that you can buy the heavy cream and whole milk involved in cartons of exactly the right size so there’s none leftover. It makes enough to nearly fill three [Kilner clip top bottles](https://www.amazon.com/Kilner-Square-Clip-Bottle-34-Fl/dp/B005N984I8/). If the idea of strong eggnog is even remotely appealing, it’s very much recommended.
+This week involved the fulfillment of an old Heroku tradition by making a batch of [sumo strong eggnog](https://github.com/seaofclouds/sumostrong/blob/master/views/eggnog.md). The recipe’s convenient in that you can buy the heavy cream and whole milk involved in cartons of exactly the right size so there’s none leftover. It makes enough to nearly fill three [Kilner clip top bottles](https://www.amazon.com/Kilner-Square-Clip-Bottle-34-Fl/dp/B005N984I8/). If the idea of strong eggnog is even remotely appealing, consider it very much recommended.
 
 The usual format is three links from the week with some commentary, but to keep things dynamic, I’m playing with the format to instead talk about a mini-project in a little more length — like a push version of a blog post.
 
@@ -15,17 +15,19 @@ The usual format is three links from the week with some commentary, but to keep 
 
 ## Migrating to Actions (#github-actions)
 
-A few weeks ago I spent some time migrating the program that generates my blog and these emails over to use [GitHub Actions](https://github.com/features/actions). Its CI goes a little beyond running a test suite by [running the actual deployment](/aws-intrinsic-static) that puts it onto AWS.
+A few weeks ago I spent some time migrating the program that generates my blog and these emails over to use [GitHub Actions](https://github.com/features/actions). Its CI goes a little beyond running a test suite by [running the actual deployment](/aws-intrinsic-static) that puts it onto S3.
 
-It’s automated to the degree that making changes are as easy as merging pull requests, which has been a huge advantage over the years as I’ve had [almost 50 people](https://github.com/brandur/sorg/graphs/contributors) send me PRs to fix typos and grammar. Wherever I am -- in a meeting, on a run, or on a beach in Indonesia -- I hit the "Merge" button from my phone and it's done.
+It’s automated to the degree that making changes are as easy as merging pull requests, which has been a huge advantage over the years as I’ve had [almost 50 people](https://github.com/brandur/sorg/graphs/contributors) send me PRs to fix typos and inaccuracies. Wherever I am -- in a meeting, on a run, or on a beach in Indonesia -- I hit the "Merge" button from my phone and it's done.
 
-### Commodifying CI (#commodifying)
+### Commodifying CI (#commodifying-ci)
 
-Travis is one of the most important service innovations of the decade. With a little help from GitHub, they made setting up CI _so_ easy that it rarely made sense not to do it. Even pushing a repo with 50 lines of code that you never intend to look at again, you may as well put a few lines into `.travis.yml` and get CI running just as a little bit of assistance in case future you who wants to make a change and has forgotten most of everything about the program. Even if the CI doesn’t do anything useful, it still serves as a codified reference for how to build it and run the test suite.
+Travis is one of the most important service innovations of the decade. With a little help from GitHub, they made setting up CI _so_ easy that it rarely made sense not to do it. Even pushing a repo with 50 lines of code that you never intend to look at again, you may as well put a few lines into `.travis.yml` and get CI running just as a little bit of assistance in case future you who wants to make a change and has forgotten most of everything about the program. Even if the CI doesn’t do anything overly, a `.travis.yml` still serves as a codified reference for how to build it and run the test suite.
 
-Unfortunately, Travis [was acquired](https://news.ycombinator.com/item?id=18978251), and based off the buyer and the subsequent attrition of much of its engineering staff, it’s hard to imagine that the terms were favorable. Things are still running more or less the same as they always were, but given the sheer expense that must be involved in doing free builds for a sizable part of the world’s open source software, some of us have been looking for alternatives.
+More recently, Travis [was acquired](https://news.ycombinator.com/item?id=18978251), and based off the buyer and the subsequent attrition of much of its engineering staff, it’s hard to imagine that the terms were favorable. Things are still running more or less the same, but given the sheer expense that must be involved in doing free builds for a sizable part of the world’s open source software, some of us have been looking for alternatives.
 
-GitHub’s Actions were a timely arrival. Although described in most of their docs in such grandiose terms so as to obfuscate what they actually do, to put it simply, they describe jobs that will run on certain repository events like a push, opened pull request, or cron — perfect for CI, though they unlock other uses as well. Their major differentiating feature is that the steps of a job can be defined as similar shell commands, they can also defined a Docker container to run. In my own recipe I have shell steps like:
+GitHub’s Actions were a timely arrival. Although described in most of their docs in terms so grandiose that it's not immediately obvious what they do, they can be appropriately thought of as CI with containers mixed in. Actions describe jobs that will run on repository events like a push, opened pull request, or cron — perfect for CI, but useful beyond that too.
+
+Their major differentiating feature is that the steps of a job can be defined as similar shell commands, they can also defined a Docker container to run. In my own recipe I have shell steps like:
 
 ``` yml
 - name: Install
@@ -101,5 +103,13 @@ Steps can be configured individually using `with` to specify options for contain
 ```
 
 ### What Actions continues to get wrong (#wrong)
+
+While containers seem to be an elegant idea, interacting with them isn’t always straightforward. For example, GitHub provides a straightforward recipe for getting containerized Postgres up and running as a service in the background. But once you have a Postgres server going, you want to interact with it, and that necessitates command line tooling like `createdb` and `psql`. Those utilities are probably happily installed inside the container, but not as easily available to your Actions recipe outside of it.
+
+The easiest thing to do is to fall back to the versions available with `apt-get`, just like Travis. And given that builds leverage Ubuntu LTS releases, the versions available are almost always tragically out of date — and not just by months, by years.
+
+And the same goes for any command line utility. I wanted ImageMagick to do some image resizing. You can get a container version of it, but passing arguments and files into that is awkward, and invoking it once per operation isn’t efficient. I fell back to the one in `apt-get`, and while it worked well enough, it was ancient to the degree that CLI usage has since changed and more modern formats like <acronym title="High Efficiency Image Coding">HEIC</acronym> were not supported.
+
+It’s not easy to see how GitHub would go about solving this one, but doing so would give them a huge leg up over what Travis was ever able to do. Imagine for a moment a GitHub-run package manager agnostic to the underlying OS which provided recent versions for a wide range of key utilities.
 
 ---
