@@ -15,6 +15,11 @@ html lang="en"
     {{end}}
 
     = css
+      acronym {
+        text-decoration: none;
+        border-bottom: 1px dotted #aaa;
+      }
+
       blockquote {
         border-left: 5px solid #eee;
         font-size: 14px;
