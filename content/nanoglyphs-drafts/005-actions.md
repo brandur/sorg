@@ -1,11 +1,13 @@
 +++
 published_at = 2019-11-23T02:57:46Z
-title = "Actions"
+title = "Exploring Actions"
 +++
 
 ![Sumo strong eggnog](/assets/images/nanoglyphs/005-actions/eggnog@2x.jpg)
 
-Welcome to Nanoglyph, a newsletter about software. It ships weekly, though like most software projects, deadlines are not always met.
+Welcome to Nanoglyph, a newsletter about software. It ships weekly, though like most software projects, deadlines are not always met. It's still an experiment, but if you want to participate, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
+
+---
 
 This week involved the fulfillment of an old Heroku tradition by making a batch of [sumo strong eggnog](https://github.com/seaofclouds/sumostrong/blob/master/views/eggnog.md). The recipe’s convenient in that you can buy the heavy cream and whole milk involved in cartons of exactly the right size so there’s none leftover. It makes enough to nearly fill three [Kilner clip top bottles](https://www.amazon.com/Kilner-Square-Clip-Bottle-34-Fl/dp/B005N984I8/). If the idea of strong eggnog is even remotely appealing, consider it very much recommended.
 
@@ -43,7 +45,7 @@ Intermingled with containers like:
     go-version: 1.13.x
 ```
 
-The path in `uses` refers to a GitHub repository, so the code above refers to the [actions](https://github.com/actions) organization which contains a number of core containers. Versioning is possible in a number of ways:
+The path in `uses` refers to a GitHub repository, so the code above refers to the [actions](https://github.com/actions) organization in GitHub which contains a number of common containers. Versioning is possible in a number of familiar Git mechanisms:
 
 ``` yml
 steps:    
@@ -53,28 +55,32 @@ steps:
   - uses: actions/setup-node@master
 ```
 
-And steps can also reference Docker Hub with the magic `docker://` prefix:
+Steps can also reference Docker Hub with the magic `docker://` prefix:
 
 ``` yml
 - name: My first step
   uses: docker://alpine:3.8
 ```
 
+---
+
 ### Container as unit of modularity (#container-modularity)
 
-This leads into what I believe to be Actions’ most important innovation: the container as a unit of workflow modularity.
+This leads into what I believe to be Actions’ most important innovation: the container as a unit of workflow modularity. (That sounds dangerously platitudinous, but hear me out.)
 
-Containers have always been modular in that containers reference other containers during builds, but Actions takes it a step further in making containers the convention for encapsulating reusable code — whether it’s checking out code, setting up a Go environment, or deploying to a specific service like AWS, Actions allow complex functionality to be reused easily in a generic workflow.
+Containers have always been modular in that containers reference other containers during builds, and indeed that's been one of their selling points since Docker's first release. Actions take it a step further in making containers the convention for encapsulating reusable code — whether it’s checking out code, setting up a Go environment, or deploying to a specific service like AWS, the Actions container allows complex functionality to be reused easily in a generic workflow.
 
-This is interesting because despite the popularity of containers, many services have been pushing in a much different direction — JavaScript. If you use AWS Lambda or Twilio Functions, workflows should be written in JavaScript and the unit of reuse is the Node package.
+This is interesting because despite the popularity of containers, many services have been pushing in a much different direction: JavaScript. If you use AWS Lambda, Twilio Functions, or any of other clone, workflows are written in JavaScript and the unit of reuse is the Node package.
 
-As someone who believes that JavaScript is one of the biggest mistakes in the history of computation, this is hugely exciting. If I want to write a package for use with GitHub actions I can do so using the widely understood convention of containers, and I can do so in a language that isn’t terrible.
+As someone who believes that JavaScript is one of the worst mistakes in the history of computation, this is hugely exciting. If I want to write a package for use with GitHub actions I can do so using the widely understood convention of containers, and I can do so in a language that's well-designed and safe.
+
+---
 
 ### What Actions gets right (#right)
 
-Containers are a nice touch. In Travis, you could get some code reuse by manually pulling down scripts and running them, but it was an overly difficult and haphazard process. A single, prescribed system that provides easy built-in modularity is a huge step forward.
+Containers are a nice touch. In Travis, you could get some code reuse by manually pulling down scripts and running them, but it was an overly difficult and haphazard process. A single, prescribed system that provides built-in modularity is a huge step forward.
 
-Also, acknowledging that builds are really just a series of steps, and that it’s not hugely advantageous to differentiate the category of step like setup vs. build, is a simplification that works:
+Also, acknowledging that builds are really just a series of steps, and that it’s not necessary to differentiate the category of step like setup vs. build, is a simplification that works. Jobs in Actions look like this:
 
 ``` yml
 steps:
@@ -83,13 +89,17 @@ steps:
   - name: Step 3
 ```
 
-Travis differentiated phases with `install`, `script`, `before_script`, `after_success`. It was a leaky abstraction in two ways:
+Travis differentiated phases with `install`, `script`, `before_script`, `after_success`. It wasn't a robust abstraction:
+
+* The ordering of phases wasn’t that intuitive, so you’d have to look up the job lifecycle every time.
 
 * Even with the plethora of phases, you’d eventually have to start chaining commands within one of them (usually `script`). Travis allowed separate steps with a YAML array, but made no qualms if any of the failed, so users have to either `set -e` or chain commands with `&&` to get the behavior they wanted.
 
-* The ordering of phases wasn’t that intuitive, so you’d have to look it up.
+Avoiding &&-chaining allows the UI to be improved considerably. Steps have names, and success/failure status, run time, and build output is cleanly assigned to each one. Troubleshooting failed builds becomes much faster.
 
-Steps can be configured individually using `with` to specify options for containers or `env` to specify step-specific variables. I like this because it lets you see which particular steps need specific variables instead of mixing everything into a global env. Explicit usually beats implicit.
+![Steps in GitHub Actions](/assets/images/nanoglyphs/005-actions/steps@2x.png)
+
+Steps can be configured individually using `with` to specify options for containers or `env` to specify step-specific variables. I like this because it lets you see which particular steps need specific variables instead of mixing everything into a global env. Explicit always beats implicit.
 
 ``` yml
 - name: "Create database: sorg-test"
@@ -102,14 +112,30 @@ Steps can be configured individually using `with` to specify options for contain
     PGDATABASE: postgres
 ```
 
-### What Actions continues to get wrong (#wrong)
+---
 
-While containers seem to be an elegant idea, interacting with them isn’t always straightforward. For example, GitHub provides a straightforward recipe for getting containerized Postgres up and running as a service in the background. But once you have a Postgres server going, you want to interact with it, and that necessitates command line tooling like `createdb` and `psql`. Those utilities are probably happily installed inside the container, but not as easily available to your Actions recipe outside of it.
+### Where Actions are the same (#wrong)
 
-The easiest thing to do is to fall back to the versions available with `apt-get`, just like Travis. And given that builds leverage Ubuntu LTS releases, the versions available are almost always tragically out of date — and not just by months, by years.
+While containers seem to be an elegant idea, interacting with them isn’t always straightforward. e.g. GitHub provides a straightforward recipe for getting containerized Postgres up and running as a service in the background. But once you have a Postgres server going, you generally want to interact with it, and that necessitates command line tooling like `createdb` and `psql`. Those utilities are happily installed inside the container, but that's not much use to the Actions recipe running outside it.
 
-And the same goes for any command line utility. I wanted ImageMagick to do some image resizing. You can get a container version of it, but passing arguments and files into that is awkward, and invoking it once per operation isn’t efficient. I fell back to the one in `apt-get`, and while it worked well enough, it was ancient to the degree that CLI usage has since changed and more modern formats like <acronym title="High Efficiency Image Coding">HEIC</acronym> were not supported.
+The easiest thing to do is to fall back to the versions available with `apt-get`, just like Travis. That's easy to do, but given that builds leverage Ubuntu LTS releases, versions available are always tragically out of date — not by months, by years.
 
-It’s not easy to see how GitHub would go about solving this one, but doing so would give them a huge leg up over what Travis was ever able to do. Imagine for a moment a GitHub-run package manager agnostic to the underlying OS which provided recent versions for a wide range of key utilities.
+And the same goes for any command line utility. I use ImageMagick for image resizing. You can get a container version of it, but passing arguments and files into that is awkward, and invoking it once per operation isn’t efficient. I fell back to the one in `apt-get`, and while it worked well enough, it was ancient to the degree that CLI usage has since changed and more modern formats like <acronym title="High Efficiency Image Coding">HEIC</acronym> were not supported.
+
+It’s not easy to see how GitHub would go about solving this one, but doing so would give them a huge leg up over what Travis was ever able to do. Imagine for a moment a GitHub-run package manager agnostic to the underlying OS (say in the spirit of Homebrew) which provided recent versions for a wide range of key utilities.
 
 ---
+
+While technology is moving so quickly that we have new products and services announced weekly, it's not that often that we see one that's novel and broadly useful, so Actions is a pretty exciting ship for most of us. Hopefully this alternative deep (or medium?) dive into one topic was somewhat interesting.
+
+As usual, you can [sign up here](https://nanoglyph-signup.herokuapp.com) to get next week's edition send to your mailbox.
+
+---
+
+At work (a large internet payment processor) we've survived another Black Friday to Cyber Monday weekend with no major hiccups. More impressively, we did so without any blanket moratoriums on changes/deployments, even if a healthy dose of caution was encouraged. The aspect of this that I find interesting is that the tech stack really doesn't look that different from the days where major outages were a much more likely problem.
+
+In a way, the last few years have been an exercise in adding the small refinements that make services a little safer, a little more stable, a little less likely to fail. All good things, but there's unquestionably been a trade off in development speed caused by the additional complexity -- both in more lines of code, and a more expansive operational stack, and that's something being felt by every growing organization, whether they admit it or not. The usual solution: throw more people at the problem.
+
+As we hurtle further into a software-centric future, the trillion dollar question will be how to amplify the positive aspects of this equation, while mitigating the negative. If we're able to figure it out, the answers will likely come in the form of better tools, better programming languages, and better (and higher-level) deployment platforms.
+
+See you next week.
