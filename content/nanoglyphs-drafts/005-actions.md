@@ -114,7 +114,7 @@ Steps can be configured individually using `with` to specify options for contain
 
 ---
 
-### Where Actions are the same (#wrong)
+### Where Actions is the same (#same)
 
 While containers seem to be an elegant idea, interacting with them isn’t always straightforward. e.g. GitHub provides a straightforward recipe for getting containerized Postgres up and running as a service in the background. But once you have a Postgres server going, you generally want to interact with it, and that necessitates command line tooling like `createdb` and `psql`. Those utilities are happily installed inside the container, but that's not much use to the Actions recipe running outside it.
 
