@@ -128,14 +128,14 @@ It’s not easy to see how GitHub would go about solving this one, but doing so 
 
 While technology is moving so quickly that we get new products and services around the clock, it's not that often that we see one that's novel and broadly useful.
 
-As usual, you can [sign up here](https://nanoglyph-signup.herokuapp.com) to get next week's edition send to your mailbox. And feel free to hit the reply button to tell me whether this deep dive (medium dive?) format was interesting or not.
+As usual, you can [sign up here](https://nanoglyph-signup.herokuapp.com) to get next week's edition send to your mailbox. And feel free to hit the reply button to tell me whether this deep dive (medium dive?) did anything for you.
 
 ---
 
-At work (a large internet payment processor) we've survived another year of Black Friday/Cyber Monday shopping bonanza  with no major hiccups. More impressively, we did so without any blanket moratoriums on changes/deployments, even if a healthy dose of caution was encouraged. A factor that's somewhat unintuitive is that this is despite our tech stack really not being that different from the days where major outages were more likely.
+Back at work (a large internet payment processor) we've survived another year of Black Friday/Cyber Monday shopping bonanza  with no major hiccups. More impressively, we did so without a blanket moratorium on changes/deployments (even if a healthy dose of caution was encouraged). Given the considerable scaling out of our engineering team, that might not sound surprising, but given the tech stack is 90% unchanged since those early days when outages were far more likely, it's somewhat unintuitive.
 
-In a way, the last few years have been an exercise in adding the small refinements that make services a little safer, a little more stable, a little less likely to fail. All good things, but there's unquestionably been a trade off in development speed caused by the additional complexity -- both in more lines of code, and a more expansive operational stack, and that's something being felt by every growing organization, whether they admit it or not. The usual solution: throw more human-hours at the problem.
+The last few years have been an odyssey of small refinements that make services a little safer, a little more stable, a little less likely to fail. All good things, even the addition of small mechanics grows the system's complexity, and there's been an inherent trade off in development speed. We have more lines of code and a more expansive operational stack than ever before. It's a problem felt by every growing organization -- whether they admit it or not -- and the accepted solution is to throw more human-hours at the problem.
 
-As we hurtle further into a software-centric future, the trillion dollar question will be how to amplify the positive aspects of this equation and mitigate the negative. If we're able to figure it out, the answers will likely come in the form of better tools, better programming languages, and better (and higher-level) deployment platforms.
+As we hurtle further into a software-centric future, the trillion dollar question is how to amplify the positive aspects of this equation and mitigate the negative. The potential rewards are huge: faster development and product iteration with smaller teams. If we're able to figure it out, the answers will likely come in the form of better tools, better programming languages, and better (and higher-level) deployment platforms. But it's a big "if" -- most organizations are happy to spend the people-hours even if it's not efficient; they can afford it, and it works well enough.
 
 See you next week.
