@@ -5,7 +5,7 @@ title = "Exploring Actions"
 
 ![Sumo strong eggnog](/assets/images/nanoglyphs/005-actions/eggnog@2x.jpg)
 
-Welcome to Nanoglyph, a newsletter about software. It ships weekly, though like many software projects, its release date has been known to slip. It's still very much an experiment. If you'd like to get it in your inbox, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
+Welcome to Nanoglyph, a newsletter about sustainable software. It ships weekly, though like many software projects, its release date has been known to slip. It's still very much in alpha. If you'd like to get it in your inbox, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
 
 ---
 
@@ -116,7 +116,7 @@ Steps can be configured individually using `with` to specify parameters for cont
 
 ### Where Actions is the same (#same)
 
-While containers seem to be an elegant idea, interacting with them isn’t always straightforward. e.g. GitHub provides a straightforward recipe for getting containerized Postgres up and running as a service in the background. But once you have a Postgres server going, you generally want to interact with it, and that necessitates command line tooling like `createdb` and `psql`. Those utilities are happily installed inside the container, but that's not much use to the Actions recipe running outside it.
+While containers _seem_ to be an elegant idea, interacting with them isn't always straightforward. e.g. GitHub provides a straightforward recipe for getting containerized Postgres up and running as a service in the background. But once you have a Postgres server going, you generally want to interact with it, and that necessitates command line tooling like `createdb` and `psql`. Those utilities are happily installed inside the container, but that's not much use to the Actions recipe running outside it.
 
 The easiest thing to do is to fall back to the versions available with `apt-get`, just like with Travis. That's easy to do, but given that builds leverage Ubuntu LTS releases, versions available tend to be tragically out of date — and not by months, by years.
 
@@ -126,15 +126,15 @@ It’s not easy to see how GitHub would go about solving this one, but doing so 
 
 ---
 
-While technology is moving so quickly that we get new products and services around the clock, it's not that often that we see one that's novel and broadly useful.
+While technology is moving so quickly that we get new products and services around the clock, it's not that often that we see one that's novel and useful to a very broad audience. GitHub Actions is both, and to a greater degree than we've seen from anything else in years.
 
 As usual, you can [sign up here](https://nanoglyph-signup.herokuapp.com) to get next week's edition send to your mailbox. And feel free to hit the reply button to tell me whether this deep dive (medium dive?) did anything for you.
 
 ---
 
-Back at work (a large internet payment processor) we've survived another year of Black Friday/Cyber Monday shopping bonanza  with no major hiccups. More impressively, we did so without a blanket moratorium on changes/deployments (even if a healthy dose of caution was encouraged). Given the considerable scaling out of our engineering team, that might not sound surprising, but given the tech stack is 90% unchanged since those early days when outages were far more likely, it's somewhat unintuitive.
+Back at work (a large internet payment processor) we've survived another year of Black Friday/Cyber Monday shopping bonanza  with no major hiccups. More impressively, we did so without a blanket moratorium on changes/deployments (even if a healthy dose of caution was encouraged). Given the considerable scaling out of our engineering team, that might not sound surprising, but consider that our tech stack is 90% the same since those early outage-likely days, and it's somewhat unintuitive.
 
-The last few years have been an odyssey of small refinements that make services a little safer, a little more stable, a little less likely to fail. All good things, even the addition of small mechanics grows the system's complexity, and there's been an inherent trade off in development speed. We have more lines of code and a more expansive operational stack than ever before. It's a problem felt by every growing organization -- whether they admit it or not -- and the accepted solution is to throw more human-hours at the problem.
+The last few years have been a journey in small refinements that make services a little safer, a little more stable, a little less likely to fail. All good things, even the addition of small mechanics grows the system's complexity, and there's been an inherent trade off in development speed. We have more lines of code and a more expansive operational stack than ever before. It's a problem felt by every growing organization -- whether they admit it or not -- and the accepted solution is to throw more human-hours at the problem.
 
 As we hurtle further into a software-centric future, the trillion dollar question is how to amplify the positive aspects of this equation and mitigate the negative. The potential rewards are huge: faster development and product iteration with smaller teams. If we're able to figure it out, the answers will likely come in the form of better tools, better programming languages, and better (and higher-level) deployment platforms. But it's a big "if" -- most organizations are happy to spend the people-hours even if it's not efficient; they can afford it, and it works well enough.
 
