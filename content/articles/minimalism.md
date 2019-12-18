@@ -201,7 +201,7 @@ mitigations are straightforward:
   that you have to operate. From the moment it's activated,
   someone will be taking regular time out of their schedule
   to perform maintenance, troubleshoot problems, and
-  install upgrades. Don't succumb to NHH (not hosted here)
+  install upgrades. Don't succumb to [NHH (not hosted here)](/fragments/not-hosted-here)
   when there's a public service available that will do the
   job better.
 
