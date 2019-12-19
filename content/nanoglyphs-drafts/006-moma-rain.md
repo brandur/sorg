@@ -3,7 +3,7 @@ published_at = 2019-12-11T01:27:50Z
 title = "MOMA & the Rain"
 +++
 
-![The San Francisco MOMA](/assets/images/nanoglyphs/006-moma/moma@2x.jpg)
+![The San Francisco MOMA](/assets/images/nanoglyphs/006-moma-rain/moma@2x.jpg)
 
 It’s been a catastrophic few weeks of weather in the Bay: almost, kind-of rain. The cloud cover never goes away, and most of the time it feels like it might be so presumptuous as to start to drizzle. A few times it’s even gone as far as to openly rain for a little while in clear violation of the California weather contract. Winter jackets, toques, and scarves are everywhere (although it’s still 10C+).
 
@@ -18,7 +18,7 @@ Many of the exhibits at the MOMA fit the stereotype of modern art perfectly: sim
 
 There’s a large format exhibit available free to the public through the entrance off Natoma St. These days, it’s the huge moving display of the people of San Francisco pictured above. Maybe the closest thing to a [_Daily Prophet_](https://harrypotter.fandom.com/wiki/Daily_Prophet) you can get in real life.
 
-![Sequences at the MOMA](/assets/images/nanoglyphs/006-moma/sequences@2x.jpg)
+![Sequences at the MOMA](/assets/images/nanoglyphs/006-moma-rain/sequences@2x.jpg)
 
 Previously, the space was used by a piece called _Sequences_ -- a labyrinth of sorts where you’d go in one end following the wall and feel like you’re walking in circles for an unlikely amount of time before getting spit back out the other end, all the while never encountering an intersection or crossing over another tunnel. It’s since been relocated back to its home at Stanford.
 
