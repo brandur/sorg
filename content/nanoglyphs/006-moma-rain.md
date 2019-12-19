@@ -1,6 +1,6 @@
 +++
 published_at = 2019-12-19T20:48:59Z
-title = "MOMA & the Rain"
+title = "MOMA & the City in Rain"
 +++
 
 ![The San Francisco MOMA](/assets/images/nanoglyphs/006-moma-rain/moma@2x.jpg)
