@@ -18,7 +18,7 @@ It was an indoor type of weekend, so I visited San Francisco’s <acronym title=
 
 Many of the exhibits at the MOMA fit the stereotype of modern art perfectly: simple geometric shapes and canvases made up of a solid colour. One tip for visitors who aren’t committed to a full ticket: so far it’s held true that the best piece of art at the MOMA is free to see.
 
-There’s a large format exhibit available free to the public through the entrance off Natoma St. These days, it’s the huge moving display of the people of San Francisco pictured above. Maybe the closest thing to a [_Daily Prophet_](https://harrypotter.fandom.com/wiki/Daily_Prophet) you can get in real life.
+There’s a large format exhibit available free to the public through the entrance off Natoma St. These days, it’s the huge moving display of the people of San Francisco pictured up top. Maybe the closest thing to a [_Daily Prophet_](https://harrypotter.fandom.com/wiki/Daily_Prophet) you can get in real life.
 
 ![Sequences at the MOMA](/assets/images/nanoglyphs/006-moma-rain/sequences@2x.jpg)
 
