@@ -12,7 +12,9 @@ Having dinner out Sunday night, the restaurant we were in (along with the entire
 ---
 
 
-Being an indoor type of weekend, I visited San Francisco’s MOMA. The exhibit I went to see was a display of space-faring art from the golden age of space 70s space optimism (called _Far Out_). Given the quality and quantity of the source material, it had huge potential, and even though it didn't quite live up to it (the number of included pieces was relatively small), it's still worth a visit.
+Being an indoor type of weekend, I visited San Francisco’s MOMA. The exhibit I went to see was a display of space-faring art from the golden age of space 70s space optimism (called _Far Out_). Given the quality and quantity of the source material, it had huge potential, and even though it didn't quite live up to it (the number of included pieces was relatively small), it's still worth a visit. You can get a good feel for the project from [NASA's space colony art](https://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html).
+
+![Toroidal Colonies by Rick Guidice](/assets/images/nanoglyphs/006-moma-rain/rick-giudice-toroidal-colonies@2x.jpg)
 
 Many of the exhibits at the MOMA fit the stereotype of modern art perfectly: simple geometric shapes and canvases made up of a solid colour. One tip for visitors who aren’t committed to a full ticket: so far it’s held true that the best piece of art at the MOMA is free to see.
 
@@ -26,7 +28,7 @@ Previously, the space was used by a piece called _Sequences_ -- a labyrinth of s
 
 ## Next generation mainframes (#mainframes)
 
-I _love_ that IBM is still making mainframes. For many of us the mainframe occupies a special place of veneration in our hearts and minds — having never worked with one, we don’t really understand them, but have heard stories over the decades about their prominent role in critical infrastructure; e.g. banking. Almost everyone would be better served by a fleet of commodity servers — better scalability, more flexible, better geographic distribution, cheaper — but sometimes you just want a behemoth in a box.
+I _love_ that IBM is still making mainframes. For many of us, the mainframe occupies a special place of veneration in our hearts and minds — having never worked with one, we don’t really understand them, but have heard stories over the decades about their prominent role in critical infrastructure like banking and telecommunications. Almost everyone would be better served by a fleet of commodity servers — better scalability, more flexible, better geographic distribution, cheaper — but sometimes you just want a behemoth in a box.
 
 WikiCheap dives into the [technical details of the Z15](https://fuse.wikichip.org/news/2659/ibm-introduces-next-gen-z-mainframe-the-z15-wider-cores-more-cores-more-cache-still-5-2-ghz/), successor to the Z14. Processors in a mainframe are organized into “drawers” for in-machine redundancy, with each drawer connected to every other drawer by way of an “A-Bus”. Although drawers in the Z15 have two fewer processors compared to the Z14 (from six down to four), they have two more cores (from 10 to 12 cores), and the machine as a whole supports an additional drawer. Clock speed is the same at 5.2 GHz, but L2 and L3 cache capacities have doubled (from 2 to 4 MB and 128 to 256 MB respectively).
 
@@ -34,9 +36,9 @@ WikiCheap dives into the [technical details of the Z15](https://fuse.wikichip.or
 
 Cockroach Labs writes about [builiding a vectorized SQL engine](https://www.cockroachlabs.com/blog/how-we-built-a-vectorized-sql-engine/#) which resulted in a 70x speed up in their microbenchmarks and a 4x speed up in the more general [TPC-H benchmark](http://www.tpc.org/tpch/). In a nutshell, the improvements mainly come from (1) rebuilding their datum representation so that Go type conversions are necessary because data is already available in the required type, and (2) making sure that type operations (a multiplication in this example) occur in a tight loop so that the CPU can make better use of pipelining and necessary data packed densely into low-level caches. The latter is why the new engine is considered to be "[vectorized](https://en.wikipedia.org/wiki/Array_programming)".
 
-Nice examples of profiling in Go.
+The post is incredibly detailed and although nominally about vectorization, it does a great job of demonstrating how to optimize in Go more generally. Write an ideal "speed of light" case to understand the maximum speed up possible, then use a profiler to drill in and remove bottlenecks, starting with the most expensive. This is often possible by using `pprof` to look at lines at Go code, but occasionally requires dropping into assembly, which the tooling makes easy.
 
-Go templates.
+There's some metacommentary to be made on Go's adversion to generics. At one point the Cockroach team resorts to using Go templates to generate code suited to each primitive so as to avoid type conversions. It works, but a critical reader will notice that it's a leaky solution to solve a problem which is Go-created.
 
 ## Incentivizing speed (#incentivizing-speed)
 
