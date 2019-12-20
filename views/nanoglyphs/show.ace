@@ -9,5 +9,5 @@
   p#about
     = include views/_nanoglyphs_about .
     {{if .InEmail}}
-    | If you don't want to get it anymore, <a href="%unsubscribe_url%">unsubscribe right here</a>.
+    | Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
     {{end}}
