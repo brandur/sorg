@@ -25,7 +25,7 @@ There’s a large format exhibit available free to the public through the entran
 
 ![Sequences at the MOMA](/assets/images/nanoglyphs/006-moma-rain/sequences@2x.jpg)
 
-Previously, the space was used by _Sequences_ -- a labyrinth of sorts where you’d go in one end following the wall and feel like you’re walking in circles for an unlikely amount of time before getting spit back out the other end, all the while never encountering an intersection or crossing over another tunnel (walking it is really, _really_ cool). It’s since been relocated back to its home at Stanford.
+Previously, the space was used by _Sequences_ -- a labyrinth of sorts where you’d go in one end following the wall, seemingly walk in circles for an unlikely amount of time, then somehow get spit out the other end, all while never encountering an intersection or crossing over another tunnel (walking it is really, _really_ cool). It’s since been relocated back to its home at Stanford.
 
 ---
 
