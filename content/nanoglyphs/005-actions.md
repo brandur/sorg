@@ -5,7 +5,7 @@ title = "Exploring Actions"
 
 ![Sumo strong eggnog](/assets/images/nanoglyphs/005-actions/eggnog@2x.jpg)
 
-This is Nanoglyph, a newsletter about sustainable software. It ships weekly, though like many software projects, its release date has been known to slip. It's still very much in alpha. If you'd like to get it in your inbox, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
+This is _Nanoglyph_, a newsletter about sustainable software. It ships weekly, though like many software projects, its release date has been known to slip. It's still very much in alpha. If you'd like to get it in your inbox, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
 
 ---
 
