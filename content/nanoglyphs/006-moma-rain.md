@@ -5,7 +5,7 @@ title = "MOMA & the City in Rain"
 
 ![The San Francisco MOMA](/assets/images/nanoglyphs/006-moma-rain/moma@2x.jpg)
 
-It’s been a catastrophic few weeks of weather in the Bay: almost, kind-of rain. The cloud cover never goes away, and most of the time it feels like it might be so presumptuous as to start to drizzle. A few times it’s even gone as far as to openly rain for a little while, in clear violation of the California weather contract. Winter jackets, toques, and scarves are everywhere (although it’s still 10C+).
+It’s been a catastrophic few weeks of weather in the Bay: almost, kind-of rain. The cloud cover never goes away, and most of the time it feels like it might be so presumptuous as to start to drizzle. A few times it’s even gone as far as to openly rain for a little while, in clear violation of the California weather contract. Winter jackets, toques [1], and scarves are everywhere (although it’s still 10C+).
 
 Having dinner out Sunday night, the restaurant we were in (along with the entirety of the Cole Valley neighborhood) suddenly went black. The power never came back on, and the staff requested payment in cash before closing up shop. Most cities lose power after feet of snow and sheets of ice push an overexerted system past its limit. In fair-weather San Francisco, we're done in by a few millimeters of rain.
 
@@ -64,3 +64,5 @@ Later in his life he started calling himself "Gakyo Rojin", translating to "Old 
 !["Under the Wave off Kanagawa" (The Great Wave) by Katsushika Hokusai](/assets/images/nanoglyphs/006-moma-rain/great-wave@2x.jpg)
 
 See you next week.
+
+[1] A toque is [a warm hat](https://en.wikipedia.org/wiki/Toque#Canadian). "Beanie" for Americans.
