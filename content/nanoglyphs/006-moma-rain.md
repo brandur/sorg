@@ -15,7 +15,7 @@ This is _Nanoglyph_, an experimental newsletter on software. Its typical format 
 
 ---
 
-It was an indoor type of weekend, so I visited San Francisco’s <acronym title="Museum of Modern Art">MOMA</acronym>. The exhibit I went to see was a display of space-faring art from the golden age of space 70s space optimism (called _Far Out_). Given the quality and quantity of the source material, it had huge potential, and even though it didn't quite live up to it (the number of included pieces was relatively small), it was still a worthwhile visit. You can get a good feel for the project from NASA's [archive of space colony art](https://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html).
+It was an indoor type of weekend, so I visited San Francisco’s <acronym title="Museum of Modern Art">MOMA</acronym>. The exhibit I went to see was a display of space-faring art from the golden age of space 70s space optimism (called _Far Out_, an appropriate name in multiple senses). Given the quality and quantity of the source material, it had huge potential, and even though it didn't quite live up to it (the number of included pieces was relatively small), it was still a worthwhile visit. You can get a good feel for the project from NASA's [archive of space colony art](https://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html).
 
 ![Toroidal Colonies by Rick Guidice](/assets/images/nanoglyphs/006-moma-rain/rick-giudice-toroidal-colonies@2x.jpg)
 
