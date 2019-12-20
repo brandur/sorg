@@ -11,6 +11,9 @@ Having dinner out Sunday night, the restaurant we were in (along with the entire
 
 ---
 
+This is _Nanoglyph_, an experimental newsletter on software. Its typical format is a few links that I've had kicking around from the week, and with the occasional deviation if something more interesting comes up. _(If you're subscribed already -- thanks! If you're viewing it on the web, you can subscribe [right here](https://nanoglyph-signup.herokuapp.com).)_
+
+---
 
 It was an indoor type of weekend, so I visited San Francisco’s <acronym title="Museum of Modern Art">MOMA</acronym>. The exhibit I went to see was a display of space-faring art from the golden age of space 70s space optimism (called _Far Out_). Given the quality and quantity of the source material, it had huge potential, and even though it didn't quite live up to it (the number of included pieces was relatively small), it was still a worthwhile visit. You can get a good feel for the project from [NASA's space colony art](https://settlement.arc.nasa.gov/70sArtHiRes/70sArt/art.html).
 
@@ -34,7 +37,7 @@ WikiCheap dives into the [technical details of the Z15](https://fuse.wikichip.or
 
 ## Vectorizing SQL execution (#vectorizing-sql)
 
-Cockroach Labs writes about [builiding a vectorized SQL engine](https://www.cockroachlabs.com/blog/how-we-built-a-vectorized-sql-engine/#) which resulted in a 70x speed up in their microbenchmarks and a 4x speed up in the more general [TPC-H benchmark](http://www.tpc.org/tpch/). In a nutshell, the improvements mainly come from (1) rebuilding their datum representation so that Go type conversions are necessary because data is already available in the required type, and (2) making sure that type operations (a multiplication in this example) occur in a tight loop so that the CPU can make better use of pipelining and necessary data packed densely into low-level caches. The latter is why the new engine is considered to be "[vectorized](https://en.wikipedia.org/wiki/Array_programming)".
+Cockroach Labs writes about [building a vectorized SQL engine](https://www.cockroachlabs.com/blog/how-we-built-a-vectorized-sql-engine/#) which resulted in a 70x speed up in their microbenchmarks and a 4x speed up in the more general [TPC-H benchmark](http://www.tpc.org/tpch/). In a nutshell, the improvements mainly come from (1) rebuilding their datum representation so that Go type conversions are necessary because data is already available in the required type, and (2) making sure that type operations (a multiplication in this example) occur in a tight loop so that the CPU can make better use of pipelining and necessary data packed densely into low-level caches. The latter is why the new engine is considered to be "[vectorized](https://en.wikipedia.org/wiki/Array_programming)".
 
 The post is incredibly detailed and although nominally about vectorization, it does a great job of demonstrating how to optimize in Go more generally. Write an ideal "speed of light" case to understand the maximum speed up possible, then use a profiler to drill in and remove bottlenecks, starting with the most expensive. This is often possible by using `pprof` to look at lines at Go code, but occasionally requires dropping into assembly, which the tooling makes easy.
 
@@ -54,7 +57,9 @@ In the pioneering days of the internet speed was a distant secondary concern com
 
 I'll leave you with an article from the 1843 magazine, [Hokusai: old man, crazy to paint](https://www.1843magazine.com/culture/look-closer/hokusai-old-man-crazy-to-paint). It's a short digest of the work of the Japanese artist Katsushika Hokusai, best known for _The Great Wave_ (or more formally, _Under the Wave off Kanagawa_).
 
-Hokusai aimed to improve his art with every passing year, and wanted to live beyond the age of 100 so that he could achieve a dominating level of mastery. He was on record as saying that nothing he'd created before of the age of 70 was worthy of notice (both pieces of art depicted here were produced at 71). Later in his life he started calling himself "Gakyo Rojin", translating to "Old Man Crazy to Paint". Having produced what is perhaps the most iconic piece of Japenese art in history, maybe he was onto something, and maybe his was a philosophy that we could all learn from.
+Hokusai aimed to improve his art with every passing year, and wanted to live beyond the age of 100 to achieve a dominating level of mastery. He was on record as saying that nothing he'd created before of the age of 70 was worthy of notice (both pieces of art depicted here were produced at 71).
+
+Later in his life he started calling himself "Gakyo Rojin", translating to "Old Man Crazy to Paint". Having produced what is perhaps the most iconic piece of Japenese art in history, maybe he was onto something, and maybe his was a philosophy that we could all learn from.
 
 !["Under the Wave off Kanagawa" (The Great Wave) by Katsushika Hokusai](/assets/images/nanoglyphs/006-moma-rain/great-wave@2x.jpg)
 
