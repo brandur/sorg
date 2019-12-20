@@ -65,4 +65,4 @@ Later in his life he started calling himself "Gakyo Rojin", translating to "Old 
 
 See you next week.
 
-[1] A toque is [a warm hat](https://en.wikipedia.org/wiki/Toque#Canadian). "Beanie" for Americans.
+[1] A toque is [a warm hat](https://en.wikipedia.org/wiki/Toque#Canadian). "Beanie" for American readers.
