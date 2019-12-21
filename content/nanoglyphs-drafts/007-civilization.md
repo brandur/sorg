@@ -5,13 +5,15 @@ title = "Preventing the Collapse of Civilization"
 
 ![Palace of the Fine Arts in 2015](/assets/images/nanoglyphs/007-civilization/palace@2x.jpg)
 
-We held our annual internal conference last week, with our out of town employees all converging on San Francisco for the largest simultaneous gathering all year. Like this year, the first of these I went to years ago was held at the Palace of the Fine Arts, an event space over near the Marina. But while in that first year we occupied only a tiny corner of the building, this year the massive event space felt positively crowded as the company’s 10x’ed in size compared to then — quite a turnaround.
+We held our annual internal conference last week, with our out of town employees all converging on San Francisco for the largest simultaneous gathering all year. Like this year, the first of these I went to years ago was held at the Palace of the Fine Arts, an event space in the Marina. But while in that first year we occupied only a tiny corner of the building, this year the massive event space felt positively crowded as the company’s 10x’ed in size compared to then — quite a turnaround.
 
 Most of the event was superlative-Bingo troop rallying of the kind you might expect from a large company, but I was pleasantly surprised by the external talks that’d been lined up, including one from Jonathan Blow,  best known as the creator of _Braid_ and _The Witness_. Beyond games, Jonathan’s well known to have strong opinions on software development, and has gone so far as to build his own programming language — the yet unreleased JAI.
 
-No slides were posted from the talk he gave for Stripe, but much of the same philosophy is conveyed in the excellent [_Preventing the Collapse of Civilization_](https://www.youtube.com/watch?v=pW-SOdj4Kkk). To try and sum it up in as few words as possible: programmers are taught early to build layers of abstraction, with the premise being that each new layer brings more safety and more productivity. Jonathan’s contention is that the model’s core assumption — that abstraction is free — is wrong. Layers have weight, and moving up an ever deepening stack yields inefficiencies that end up requiring huge teams of engineers to make modest advances.
+No slides were posted for this talk, but much of the same philosophy is conveyed in the excellent [_Preventing the Collapse of Civilization_](https://www.youtube.com/watch?v=pW-SOdj4Kkk). To sum it up in as few words as possible (and do it some injustice by doing so): programmers are taught early to build layers of abstraction, with the premise being that each new layer brings more safety and more productivity. Jonathan’s contention is that the model’s core assumption — that abstraction is free — is wrong. Layers have weight, and moving up an ever deepening stack compromises robustness and productivity. We've internalized this truth by not expecting software to work properly -- no one is surprised to encounter minor bugs in almost every program or web app we use, and we all do so on a daily basis.
 
-I’ve previously called _Preventing the Collapse of Civilization_ the most important talk for the future of the field of software engineering, period. Admittedly, I’m a fan, and proponents of JavaScript and its elaborate constructs of dependencies, frameworks, and build/transpilation pipelines aren’t going to enjoy the implications as much, but it’s worth an hour of anyone’s time.
+I’ve previously called _Preventing the Collapse of Civilization_ the most important talk for the future of the field of software engineering, period. If we're going to make major advances 
+
+Admittedly, I’m a fan, and proponents of elaborate constructs of dependencies, deep frameworks, and heavy build/transpilation pipelines aren’t going to enjoy the implications as much, but it’s worth an hour of anyone’s time.
 
 ---
 
@@ -41,6 +43,6 @@ Cockroach benchmarks using the realistic [TPC-C](http://www.tpc.org/tpcc/) which
 
 Again, the differences are minor enough to the point where they’re not all that important, but the big takeaway here should be that for a realistic workload, there isn’t that much difference between the big three anymore.
 
-—-
+---
 
 LOLWUT
