@@ -49,4 +49,6 @@ Again, the differences are minor enough to the point where they’re not all tha
 
 I'm finishing this up on my way back to Canada for a welcome holiday break. Nature's delivered us a picturesque winter this year, with lots of snow on the ground but temperatures only a few degrees below zero. It's a welcome surprise because December on the prairie can be cruel — I’m still reeling from a visit a few years ago where every day of my stay hovered around -30C (and sometimes dipped worse). Our rivers steamed as the air above them couldn’t absorb evaporating moisture due to its subfreezing temperatures.
 
+![Fish Creek in Calgary](/assets/images/nanoglyphs/007-civilization/fish-creek@2x.jpg)
+
 Hopefully everyone's got a few relaxation goals (hopes?) for the break if they're taking one. Personally, I'm hoping to eat and drink plenty, and with any luck recoup a little creative energy. Happy holidays!
