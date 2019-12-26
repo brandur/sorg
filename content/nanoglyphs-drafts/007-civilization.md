@@ -1,5 +1,5 @@
 +++
-published_at = 2019-12-20T03:19:40Z
+published_at = 2019-12-26T23:19:29Z
 title = "Preventing the Collapse of Civilization"
 +++
 
