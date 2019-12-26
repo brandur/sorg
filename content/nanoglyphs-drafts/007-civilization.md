@@ -5,9 +5,9 @@ title = "Preventing the Collapse of Civilization"
 
 ![Palace of the Fine Arts in 2015](/assets/images/nanoglyphs/007-civilization/palace@2x.jpg)
 
-Happy holidays! From my vantage point, they get a little closer together every year, but that malaise is offset by how much I look forward to them. It's already been an amazing few days of rich food and decadent desserts.
+Happy holidays! From my vantage point, they get a little closer together every year, but that existential malaise is mitigated by how much I look forward to them. It's already been an amazing few days of rich food and decadent desserts, and I hope everyone's break has gone just as well.
 
-You're reading 2019's last edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](https://nanoglyph-signup.herokuapp.com) to start getting it in the new decade. Personally, I can't wait to talk about how I lived through the 20s.
+You're reading 2019's final edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](https://nanoglyph-signup.herokuapp.com) to get it in the new decade. Personally, I can't wait to talk about how I lived through the 20s.
 
 ---
 
@@ -51,8 +51,8 @@ Again, the differences are minor enough to the point where they’re not all tha
 
 ---
 
-I'm finishing this edition on my way back to Canada for a welcome holiday break. Nature's delivered us a picturesque winter this year, with lots of snow on the ground but temperatures only a few degrees below zero. (A welcome surprise because December on the prairie can be cruel — I’m still reeling from a visit a few years ago where every day of my stay hovered at or below -30C.)
+I'm back in Calgary for the break, and nature's delivered us a picturesque winter with lots of snow on the ground, but temperatures only a few degrees below zero. (A welcome surprise because December on the prairie can be cruel — I’m still reeling from a visit a few years ago where every day of my stay hovered at or below -30C.)
 
 ![Fish Creek in Calgary](/assets/images/nanoglyphs/007-civilization/fish-creek@2x.jpg)
 
-Hopefully everyone's got a few relaxation goals (hopes?) for the break if they're taking one. Personally, I'm hoping to eat and drink plenty, and with any luck recoup a little creative energy. Happy holidays!
+Hopefully everyone's got a few relaxation goals (wishes?) for their time off. Personally, I'm hoping to eat and drink plenty, and with any luck recoup a little creative energy. Happy holidays, and see you in 2020.
