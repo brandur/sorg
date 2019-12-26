@@ -5,15 +5,19 @@ title = "Preventing the Collapse of Civilization"
 
 ![Palace of the Fine Arts in 2015](/assets/images/nanoglyphs/007-civilization/palace@2x.jpg)
 
-The holidays are on us.
+Another year of holidays is upon us already. From my vantage point, they get a little closer together every year.
+
+You're reading 2019's last edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](https://nanoglyph-signup.herokuapp.com) to start getting new ones in the new decade. (Personally, I can't wait to talk about how I lived through the 20s.)
 
 ---
 
-We recently held our annual internal conference, with out of town employees converging on San Francisco for the company's largest gathering all year. As it was this year, the first of these I went to years ago was held at the Palace of the Fine Arts, an event space in the Marina. The venue's interior is a one giant room of contiguous space, and that first year we occupied only a tiny corner of it, with the rest only echoing emptiness. This year, not only had the whole building been terraformed for our occupancy, but the event space felt positively crowded -- quite a turnaround.
+We recently held an annual internal conference, with out of town employees converging on San Francisco for the company's largest gathering all year. As it was this year, the first of these I went to years ago was held at the Palace of the Fine Arts, an event space in the Marina. The venue's interior is a one giant room of contiguous space. That first year we occupied only a tiny corner of it, with the rest consisting of nothing but echoing emptiness. This year, not only had the whole building been repurposed for our occupancy, but the event space felt positively crowded -- a bewildering turnaround to say the least.
 
-Most of the event was superlative-heavy troop rallying of the kind you might expect from a large company, but the organizers had managed to secure some great external talks including one from Jonathan Blow, best known as the creator of _Braid_ and _The Witness_. Beyond games, Jonathan’s well known to have strong opinions on software development, and has gone so far as to work his own programming language -- the yet unreleased JAI.
+Much of the event was the troop rallying you'd expect of a corporate conference, but the organizers secured some very interesting external talks including one from Jonathan Blow, best known as the creator of _Braid_ and _The Witness_. Beyond games, Jonathan’s well known to have strong opinions on software development, and has gone so far as to work his own programming language oriented towards performance and loading data (an important consideration for games) -- the yet unreleased JAI.
 
-No slides were posted for this talk, but much of the same philosophy is conveyed in the excellent [_Preventing the Collapse of Civilization_](https://www.youtube.com/watch?v=pW-SOdj4Kkk). To sum it up in as few words as possible (and do it some injustice by doing so): programmers are taught early to build layers of abstraction, with the premise being that each new layer brings more safety and more productivity. Jonathan’s contention is that the model’s core assumption -- that abstraction is free -- is wrong. Layers have weight, and moving up an ever deepening stack compromises robustness and productivity as complicated increases. We've all internalized this truth without knowing it -- no one really expects software to work properly, and we're never surprised by the minor bugs we encounter in almost every program of web app we use on a daily basis.
+No slides were posted for this talk, but much of the same philosophy is conveyed in the excellent [_Preventing the Collapse of Civilization_](https://www.youtube.com/watch?v=pW-SOdj4Kkk). To sum it up in as few words as possible (and do it some injustice by doing so): programmers are taught early to build layers of abstraction, with the premise being that each new layer brings more safety and more productivity.
+
+Jonathan’s contention is that the model’s core assumption -- that abstraction is free -- is wrong. Layers have weight, and moving up an ever deepening stack compromises robustness and productivity as complicated increases. We've all internalized this truth without knowing it -- no one really expects software to work properly, and we're never surprised by the minor bugs we encounter in almost every program of web app we use on a daily basis.
 
 I’ve previously called _Preventing the Collapse of Civilization_ the most important talk for the future of the field of software engineering, period. We can do better than the crystalline constructs of dependencies, unwieldy frameworks, and sluggish build/transpilation pipelines that many of us are used to using today. The emergence of newer generations of tooling like Go and React and steps in the right direction, but even there they probably don't sufficiently compact the existing stack, and we'll need to do better. Admittedly, I'm predisposed to liking Jonathan's ideas, but the talk is worth an hour of anyone's time.
 
@@ -47,7 +51,7 @@ Again, the differences are minor enough to the point where they’re not all tha
 
 ---
 
-I'm finishing this up on my way back to Canada for a welcome holiday break. Nature's delivered us a picturesque winter this year, with lots of snow on the ground but temperatures only a few degrees below zero. It's a welcome surprise because December on the prairie can be cruel — I’m still reeling from a visit a few years ago where every day of my stay hovered around -30C (and sometimes dipped worse). Our rivers steamed as the air above them couldn’t absorb evaporating moisture due to its subfreezing temperatures.
+I'm finishing this edition on my way back to Canada for a welcome holiday break. Nature's delivered us a picturesque winter this year, with lots of snow on the ground but temperatures only a few degrees below zero. (A welcome surprise because December on the prairie can be cruel — I’m still reeling from a visit a few years ago where every day of my stay hovered at or below -30C.)
 
 ![Fish Creek in Calgary](/assets/images/nanoglyphs/007-civilization/fish-creek@2x.jpg)
 
