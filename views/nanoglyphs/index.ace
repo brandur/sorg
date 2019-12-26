@@ -7,5 +7,5 @@
     {{range .Issues}}
       li
         a href="/nanoglyphs/{{.Slug}}" {{.Number}} &mdash; {{.Title}}
-        span.published-date {{FormatTimeYearMonth .PublishedAt}}
+        span.published-date {{FormatTime .PublishedAt}}
     {{end}}
