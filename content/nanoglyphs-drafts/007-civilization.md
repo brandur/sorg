@@ -5,9 +5,9 @@ title = "Preventing the Collapse of Civilization"
 
 ![Palace of the Fine Arts in 2015](/assets/images/nanoglyphs/007-civilization/palace@2x.jpg)
 
-Another year of holidays is upon us already. From my vantage point, they get a little closer together every year.
+Happy holidays! From my vantage point, they get a little closer together every year, but that malaise is offset by how much I look forward to them. It's already been an amazing few days of rich food and decadent desserts.
 
-You're reading 2019's last edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](https://nanoglyph-signup.herokuapp.com) to start getting new ones in the new decade. (Personally, I can't wait to talk about how I lived through the 20s.)
+You're reading 2019's last edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](https://nanoglyph-signup.herokuapp.com) to start getting it in the new decade. Personally, I can't wait to talk about how I lived through the 20s.
 
 ---
 
