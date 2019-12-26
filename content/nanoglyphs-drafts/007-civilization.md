@@ -51,7 +51,7 @@ Again, the differences are minor enough to the point where they’re not all tha
 
 ---
 
-I'm back in Calgary for the break, and nature's delivered us a picturesque winter with lots of snow on the ground, but temperatures only a few degrees below zero. (A welcome surprise because December on the prairie can be cruel — I’m still reeling from a visit a few years ago where every day of my stay hovered at or below -30C.)
+I'm back in Calgary for the break, and nature's delivered us a picturesque winter -- lots of snow on the ground, but temperatures only a few degrees below zero. (A welcome surprise because December on the prairie can be cruel. I’m still reeling from a visit a few years ago where every day of my stay hovered at or below -30C.)
 
 ![Fish Creek in Calgary](/assets/images/nanoglyphs/007-civilization/fish-creek@2x.jpg)
 
