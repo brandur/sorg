@@ -16,3 +16,6 @@ But although these benchmark games don't tell us everything, they do tell us _so
 > In this test, the framework's ORM is used to fetch all rows from a database table containing an unknown number of Unix fortune cookie messages (the table has 12 rows, but the code cannot have foreknowledge of the table's size). An additional fortune cookie message is inserted into the list at runtime and then the list is sorted by the message text. Finally, the list is delivered to the client using a server-side HTML template. The message text must be considered untrusted and properly escaped and the UTF-8 fortune messages must be rendered properly.
 
 Fortunes might be the most interesting of the TechEmpower benchmarks because it does a fair bit of work. There are other benchmarks for sending with a simple JSON or plaintext response, but the trouble with them is that the workload is so simple that more than a dozen frameworks perform almost identically to each other.
+
+![Fortunes results](/assets/images/nanoglyphs/008-actix/fortunes@2x.jpg)
+
