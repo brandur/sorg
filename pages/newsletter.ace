@@ -8,25 +8,30 @@
     .content.content-newsletter
       / Outside of .content-inner-standard so as to get a wider width.
       #title
-        h1 Passages & Glass
+        h1 Newsletters
       .content-inner-standard
         .about-content
-          p <em>Passages & Glass</em> is my newsletter about exploration, ideas, and software. So far it's been about the world's least frequently sent newsletter, averaging about three to four times a year.
-          p You should consider signing up so that we can keep in touch.
+          p I write two newsletters: a weekly on software called <em>Nanoglyph</em>, and one that's less frequently sent on a wider variety of topics called <em>Passages & Glass</em>.
+          p They're a small contribution to the independent web. Sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), they're a tiny resistance to the continued centralization and confinement of content in closed platforms like Instagram and Facebook.
+        h2#nanoglyph Nanoglyph
+        .about-content
+        form method="post" action="https://nanoglyph-signup.herokuapp.com/submit"
+          input type="email" name="email" placeholder="Email"
+          input type="submit" value="Subscribe to Nanoglyph"
+        .about-content
+          p <em>Nanoglyph</em> is a weekly newsletter about software, with a focus on simplicity and sustainability. It usually consists of a few links with editorial.
+          p It's experimental and not widely distributed. The format is still very much malleable – consider subscribing and hitting <em>reply</em> to let me know what you think about it.
+        h2#passages Passages & Glass
         form method="post" action="https://passages-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
-          input type="submit" value="Sign up for Passages & Glass"
-        h2#premise The premise
+          input type="submit" value="Subscribe to Passages & Glass"
         .about-content
           p The details of most journeys are forgotten. It’s nothing intentional, but given enough time they stop coming up in conversation, we reflect on them more rarely, and they’re eventually swallowed by our fickle memory. Physical (and digital) traces remain, but most of us are hopelessly bad at regularly sifting through a lifetime’s accumulation of souvenirs.
-          p <em>Passages & Glass</em> aims to counteract this effect by pulling highlights into a permanent digital artifact. It contains no marketing, and really is just a collection of stories and thinking in a less formal medium.
-        h2#name The name
-        .about-content
-          p <em>Passages</em> refers to the routes that we use to get from one point to another, like Hannibal’s passage through the Alps, Magellan’s famous strait, or in the case of my far more mundane life, a favorite walk from Friedrichshain to Kreuzberg. <em>Glass</em> is the material making up the face of prized possessions like my iPhone or Submariner, the window through which to watch the passing countryside by air or rail, or the intricate optics of my camera’s lens.
-        h2#social The philosophy
-        .about-content
-          p <em>Passages & Glass</em> is about the independent web. It’s sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), and is my infinitesimally small way of pushing back against the continued centralization and confinement of our content in closed platforms like Facebook.
+          p <em>Passages & Glass</em> aims to counteract this effect by pulling highlights into a permanent digital artifact. A collection of stories in an informal medium, with a healthy dose of software philosophy.
+          p So far it's been the world's least frequently sent newsletter, averaging about three to four times a year. Consider signing up to keep in touch.
+        / p <em>Passages</em> refers to the routes that we use to get from one point to another, like Hannibal’s passage through the Alps, Magellan’s famous strait, or in the case of my far more mundane life, a favorite walk from Friedrichshain to Kreuzberg. <em>Glass</em> is the material making up the face of prized possessions like my iPhone or Submariner, the window through which to watch the passing countryside by air or rail, or the intricate optics of my camera’s lens.
         / The idea here is to request something that will start spinning up the
-        / target Heroku app so that the user doesn't have to wait so long if
+        / target Heroku apps so that the user doesn't have to wait so long if
         / and when they do submit the form.
+        img src="https://nanoglyph-signup.herokuapp.com/public/tiny-preload-image.png"
         img src="https://passages-signup.herokuapp.com/public/tiny-preload-image.png"
