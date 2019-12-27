@@ -3,6 +3,8 @@ published_at = 2019-12-27T06:29:34Z
 title = "Optimizing Amongst Optimizers"
 +++
 
+![Rust](/assets/images/nanoglyphs/008-actix/rust@2x.jpg)
+
 ---
 
 Benchmarks of this nature tend to draw a lot of fire because although the results seem to be presented definitely, they can be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull ahead of its mate. The results tend to get more accurate over time as the benchmark grows in popularity and receives more contributions, but they should be considered critically.
