@@ -11,7 +11,7 @@ Having dinner out Sunday night, the restaurant we were in (along with the entire
 
 ---
 
-This is _Nanoglyph_, an experimental newsletter on software. Its typical format is a few links that I've had kicking around from the week, and with the occasional deviation if something more interesting comes up. _(If you're subscribed already -- thanks! If you're viewing it on the web, you can subscribe [right here](https://nanoglyph-signup.herokuapp.com).)_
+This is _Nanoglyph_, an experimental newsletter on software. Its typical format is a few links that I've had kicking around from the week, and with the occasional deviation if something more interesting comes up. _(If you're subscribed already -- thanks! If you're viewing it on the web, you can subscribe [right here](/newsletter).)_
 
 ---
 
