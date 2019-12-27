@@ -7,7 +7,7 @@ title = "Preventing the Collapse of Civilization"
 
 Happy holidays! From my vantage point, they get a little closer together every year, but that existential malaise is mitigated by how much I look forward to them. It's already been an amazing few days of rich food and decadent desserts, and I hope everyone's break has gone just as well.
 
-You're reading 2019's final edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](https://nanoglyph-signup.herokuapp.com) to get it in the new decade. Personally, I can't wait to talk about how I lived through the 20s.
+You're reading 2019's final edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](/newsletter) to get it in the new decade. Personally, I can't wait to talk about how I lived through the 20s.
 
 ---
 
