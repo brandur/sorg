@@ -21,7 +21,7 @@
           input type="submit" value="Subscribe to Nanoglyph"
         .about-content
           p <em>Nanoglyph</em> is a weekly newsletter about software, with a focus on simplicity and sustainability. It usually consists of a few links with editorial.
-          p It's experimental and not widely distributed. The format is still very much malleable – consider subscribing and hitting <em>reply</em> to let me know what you think about it.
+          p It's experimental and not widely distributed. The format is still very much malleable – consider subscribing and hitting <em>reply</em> to let me know what you think about it so that I'll know what to do.
           p See an <a href="/nanoglyphs/006-moma-rain">example edition</a> of <em>Nanoglyph</em>.
         .divider
         h2#passages Passages & Glass
