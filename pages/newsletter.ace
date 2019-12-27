@@ -14,7 +14,8 @@
           p I write two newsletters: a weekly on software called <em>Nanoglyph</em>, and one that's less frequently sent on a wider variety of topics called <em>Passages & Glass</em>.
           p They're a small contribution to the independent web. Sent via the only universal medium of communication that we have (email) in the most open formats available (plain text and HTML), they're a tiny resistance to the continued centralization and confinement of content in closed platforms like Instagram and Facebook.
         .divider
-        h2#nanoglyph Nanoglyph
+        h2#nanoglyph
+          a href="#nanoglyph" Nanoglyph
         .about-content
         form method="post" action="https://nanoglyph-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
@@ -24,7 +25,8 @@
           p It's experimental and not widely distributed. The format is still very much malleable – consider subscribing and hitting <em>reply</em> to let me know what you think about it so that I'll know what to do.
           p See an <a href="/nanoglyphs/006-moma-rain">example edition</a> of <em>Nanoglyph</em>.
         .divider
-        h2#passages Passages & Glass
+        h2#passages
+          a href="#passages" Passages & Glass
         form method="post" action="https://passages-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
           input type="submit" value="Subscribe to Passages & Glass"
