@@ -2,7 +2,7 @@
   p#passages Passages and Glass
   p
     = include views/_passages_about .
-    | You can <a href="https://brandur.org/newsletter">subscribe here</a>.
+    | You can <a href="/newsletter#passages">subscribe here</a>.
   ul
     {{range .Issues}}
       li

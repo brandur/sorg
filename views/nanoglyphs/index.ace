@@ -2,7 +2,7 @@
   p#nanoglyph Nanoglyph
   p
     = include views/_nanoglyphs_about .
-    | You can <a href="https://nanoglyph-signup.herokuapp.com">subscribe here</a>.
+    | You can <a href="/newsletter#nanoglyph">subscribe here</a>.
   ul
     {{range .Issues}}
       li
