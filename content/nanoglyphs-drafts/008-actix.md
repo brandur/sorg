@@ -5,6 +5,10 @@ title = "Actix Web: Optimizing Amongst Optimizations"
 
 ![Rust](/assets/images/nanoglyphs/008-actix/rust@2x.jpg)
 
+You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](/newsletter).
+
+TODO
+
 ---
 
 Many in the web development community will already be familiar with the TechEmpower [web framework benchmarks](https://www.techempower.com/benchmarks/) which pit various web frameworks in various languages against each other.
@@ -130,3 +134,5 @@ fn main() -> std::io::Result<()> {
 > also it uses high performance hash map, based on google's swisstable
 
 ---
+
+TOOD
