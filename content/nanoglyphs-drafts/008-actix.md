@@ -76,7 +76,7 @@ fn new_service(&self, _: ()) -> Self::Future {
 }
 ```
 
-### High performance escaping (#simd-escaping)
+### High octane escape (#simd-escape)
 
 > fortunes template uses simd instructions for html escaping
 
