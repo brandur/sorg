@@ -67,7 +67,8 @@ fn new_service(&self, _: ()) -> Self::Future {
     const DB_URL: &str = "postgres://...";
 
     Box::pin(async move {
-        let db = PgConnection::connect(DB_URL).await;
+        let db = PgConnection::connect(DB_URL)
+            .await;
         Ok(App {
             db,
             ...
