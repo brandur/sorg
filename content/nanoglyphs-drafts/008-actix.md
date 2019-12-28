@@ -3,7 +3,7 @@ published_at = 2019-12-27T06:29:34Z
 title = "Actix Web: Optimizing Amongst Optimizations"
 +++
 
-![Rust](/assets/images/nanoglyphs/008-actix/rust@2x.jpg)
+![Rust](/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg)
 
 You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](/newsletter).
 
@@ -133,6 +133,8 @@ fn main() -> std::io::Result<()> {
 ### Swisstable (#swisstable)
 
 > also it uses high performance hash map, based on google's swisstable
+
+https://github.com/cbreeden/fxhash
 
 ---
 
