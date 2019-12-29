@@ -5,17 +5,21 @@ title = "Actix Web: Optimizing in a Land of Optimizations"
 
 ![Rust](/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg)
 
-You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software. If you're viewing it on the web, as usual you can subscribe [here](/newsletter).
+Hello from the new decade! Hopefully everyone got some serious relaxation done during the end of the last one, either set or didn't set resolutions (depending on preference), and is ready to see what comes next.
 
-TODO
+---
+
+You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software, sent weekly. Theoretically you signed up for this, and probably did so in the last week or two -- but if you're looking to shore up your mail subscriptions in the new year already, there's an easy one-click unsubscribe in the footer. If you're viewing it on the web, as usual you can opt to get a few more sent to you in the future by [subscribing here](/newsletter).
+
+I'm playing with the usual format to do a medium dive into an active frontier in software: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it for serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are set, ready to bear load.
 
 ---
 
 Many in the web development community will already be familiar with the TechEmpower [web framework benchmarks](https://www.techempower.com/benchmarks/) which pit various web frameworks in various languages against each other.
 
-Benchmarks like this draw fire because although results are presented definitely, they can occasionally be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull disproportionately ahead of its comrade. It tends to be less of an issue over time as benchmarks mature and all implementations get more optimized, but it's a good idea to consider all benchmarks with a skeptic's eye.
+Benchmarks like this draw fire because although results are presented definitely, they can occasionally be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull disproportionately ahead of its comrade. It tends to be less of an issue over time as benchmarks mature and all implementations get more optimized, but it's a good idea to consider all benchmarks with a skeptic's critical mind.
 
-That said, even if benchmark games don't tell us everything, they do tell us _something_. For example, no matter how heavily one of the Ruby implementations is optimized, it'll never beat PHP, let alone a fast language like C++, Go, or Java -- the inherent performance disparity is too great. Results aren't perfect, but they do give us a rough idea of relative performance.
+That said, even if benchmark games don't tell us everything, they do tell us _something_. For example, no matter how heavily one of the Ruby implementations is optimized, it'll never beat PHP, let alone a fast language like C++, Go, or Java -- the inherent performance disparity is too great. Results aren't perfect, but they give us a rough idea of relative performance.
 
 ## Round 18 (#round-18)
 
@@ -27,13 +31,13 @@ TechEmpower runs a few different benchmarks, and this is specifically _Fortunes_
 
 > In this test, the framework's ORM is used to fetch all rows from a database table containing an unknown number of Unix fortune cookie messages (the table has 12 rows, but the code cannot have foreknowledge of the table's size). An additional fortune cookie message is inserted into the list at runtime and then the list is sorted by the message text. Finally, the list is delivered to the client using a server-side HTML template. The message text must be considered untrusted and properly escaped and the UTF-8 fortune messages must be rendered properly.
 
-Fortunes is the most interesting of TechEmpower's series of benchmarks because it does more. Those that do something more simplistic like send a canned JSON or plaintext response have more than a dozen frameworks that perform almost identically to each other because they've all done a good job in ensuring that one piece of the pipeline is well optimized.
+_Fortunes_ is the most interesting of TechEmpower's series of benchmarks because it does more. Those that do something more simplistic like send a canned JSON or plaintext response have more than a dozen frameworks that perform almost identically to each other because they've all done a good job in ensuring that one piece of the pipeline is well optimized.
 
 ## Actix web (#actix)
 
-Actix web is a light framework written in Rust. I wrote about using it for a project [a year and a half ago](/rust-web), and I'm very happy to say that unlike some of Rust's other web frameworks, Actix web has been consistently well-maintained during that entire time and stayed up-to-date with new language features and conventions. Notably, it's 2.0 release which integrates Rust's newly stable standard library futures [shipped this week](https://github.com/actix/actix-web/releases/tag/web-v2.0.0).
+Actix web is a light framework written in Rust. I wrote about using it for a project [a year and a half ago](/rust-web), and I'm very happy to say that unlike some of Rust's other web frameworks, Actix web has been consistently well-maintained during that entire time and stayed up-to-date with new language features and conventions. Notably, its 2.0 release which integrates Rust's newly stable standard library futures, [shipped this week](https://github.com/actix/actix-web/releases/tag/web-v2.0.0).
 
-When asked about Actix's new lead, Nikolay ([@fafhrd91](https://github.com/fafhrd91)), Actix's creator and stalwart steward, described the improvements that led to it in his usual laconic style:
+When asked about Actix's new lead, Nikolay ([@fafhrd91](https://github.com/fafhrd91)), Actix's creator and stalwart steward, described the improvements that led to it in his typical laconic style:
 
 ![Actix results explanation](/assets/images/nanoglyphs/008-actix/actix-explanation@2x.jpg)
 
@@ -144,7 +148,7 @@ fn main() -> std::io::Result<()> {
 
 Quite a simple optimization compared to the others: Actix pre-allocates a pool of 128 basic request and response objects. As a request is being handled an object from the pool is used if available, otherwise a new one is allocated.
 
-This seems to be an optimization largely designed to help protect against slow starts, but I didn't check how much of an edge it actually provides.
+This optimization seems largely designed to help protect against slow starts as the pools are never refilled. I didn't check how much of an improvement they actually provide.
 
 ### Fast hashing (#fast-hashing)
 
