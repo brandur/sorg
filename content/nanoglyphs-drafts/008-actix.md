@@ -1,6 +1,6 @@
 +++
 published_at = 2019-12-27T06:29:34Z
-title = "Actix Web: Optimizing Amongst Optimizations"
+title = "Actix Web: Optimizing in a Land of Optimizations"
 +++
 
 ![Rust](/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg)
@@ -13,9 +13,9 @@ TODO
 
 Many in the web development community will already be familiar with the TechEmpower [web framework benchmarks](https://www.techempower.com/benchmarks/) which pit various web frameworks in various languages against each other.
 
-Benchmarks like this tend to draw fire because although results are presented definitely, they can be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull ahead of its mate. This tends to be less of an issue over time as benchmarks mature and every implementation gets more optimized, but they should be taken with some grain of salt.
+Benchmarks like this draw fire because although results are presented definitely, they can occasionally be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull disproportionately ahead of its comrade. It tends to be less of an issue over time as benchmarks mature and all implementations get more optimized, but it's a good idea to consider all benchmarks with a skeptic's eye.
 
-That said, even if benchmark games don't tell us everything, they do tell us _something_. For example, no matter how heavily one of the Ruby implementations is optimized, it'll never beat PHP, let alone a fast language like C++, Go, or Java -- the inherent performance disparity is too great. Results might not be perfect, but they do give us a rough idea of relative performance.
+That said, even if benchmark games don't tell us everything, they do tell us _something_. For example, no matter how heavily one of the Ruby implementations is optimized, it'll never beat PHP, let alone a fast language like C++, Go, or Java -- the inherent performance disparity is too great. Results aren't perfect, but they do give us a rough idea of relative performance.
 
 ## Round 18 (#round-18)
 
@@ -23,7 +23,7 @@ An upset during the latest round ([no. 18](https://www.techempower.com/benchmark
 
 ![Fortunes round 18 results](/assets/images/nanoglyphs/008-actix/fortunes@2x.jpg)
 
-TechEmpower runs a few different benchmarks, and this is specifically_Fortunes_ where implementations are tasked with a simple but realistic workload that exercises a number of facets like database communication, HTML rendering, and unicode handling. Here's the official description:
+TechEmpower runs a few different benchmarks, and this is specifically _Fortunes_ where implementations are tasked with a simple but realistic workload that exercises a number of facets like database communication, HTML rendering, and unicode handling. Here's the official description:
 
 > In this test, the framework's ORM is used to fetch all rows from a database table containing an unknown number of Unix fortune cookie messages (the table has 12 rows, but the code cannot have foreknowledge of the table's size). An additional fortune cookie message is inserted into the list at runtime and then the list is sorted by the message text. Finally, the list is delivered to the client using a server-side HTML template. The message text must be considered untrusted and properly escaped and the UTF-8 fortune messages must be rendered properly.
 
@@ -33,11 +33,11 @@ Fortunes is the most interesting of TechEmpower's series of benchmarks because i
 
 Actix web is a light framework written in Rust. I wrote about using it for a project [a year and a half ago](/rust-web), and I'm very happy to say that unlike some of Rust's other web frameworks, Actix web has been consistently well-maintained during that entire time and stayed up-to-date with new language features and conventions. Notably, it's 2.0 release which integrates Rust's newly stable standard library futures [shipped this week](https://github.com/actix/actix-web/releases/tag/web-v2.0.0).
 
-When asked about Actix's new lead, Nikolay ([@fafhrd91](https://github.com/fafhrd91)), Actix's creator and stalwart stewards, described the improvements that lead to it in his usual laconic style:
+When asked about Actix's new lead, Nikolay ([@fafhrd91](https://github.com/fafhrd91)), Actix's creator and stalwart steward, described the improvements that led to it in his usual laconic style:
 
 ![Actix results explanation](/assets/images/nanoglyphs/008-actix/actix-explanation@2x.jpg)
 
-Personally, I found this information fascinating, and the rest of this edition is dedicated to digging into each of these points in a little more depth. There are a variety of competing Actix implementations (`actix-diesel`, `actix-pg`, etc.) that vary in their components -- I'll be looking specifically at `actix-core`, the current top performer.
+I found this information fascinating, and the rest of this edition is dedicated to digging into each of these points in a little more depth. There are a variety of competing Actix implementations (`actix-diesel`, `actix-pg`, etc.) in the benchmark that vary in their makeup and composition -- I'll be looking specifically at `actix-core`, the current top performer.
 
 ---
 
@@ -53,7 +53,7 @@ Its asynchronous nature allows pauses on I/O to be optimized away by having othe
 
 > actix is single threaded, it runs in multiple threads but each thread is independent, so no synchronization is needed
 
-To maximize performance, Actix leverages a combination of threading for true parallelism _and_ an asynchronous runtime for in-thread concurrency. Starting an Actix web server spins up a number of worker threads (by default [equal to the number of logical CPUs](https://actix.rs/docs/server/#multi-threading) on the system) and creates a tokio runtime for async/await handling inside each one.
+To maximize performance, Actix uses a combination of threading for true parallelism _and_ an asynchronous runtime for in-thread concurrency. Starting an Actix web server spins up a number of worker threads (by default equal to the number of logical CPUs on the system) and creates a `tokio` runtime for async/await handling inside each one.
 
 No state is shared between threads by default, although users can use various Rust primitives to synchronize access to some shared state if they'd like to. In the case of `actix-core`, each thread spawned get its own local Postgres connection, so no thread waits on any other as it's serving requests.
 
@@ -96,6 +96,7 @@ Actix uses generics essentially wherever it's possible to use them, which means 
 For example, an Actix server is built by specifying a `ServiceFactory` whose job it is to instantiate a `Service`, each of which is a trait implemented by a user-defined type (code from `actix-core`):
 
 ``` rust
+// Per-thread user-defined "service" structure.
 struct App {
     db: PgConnection,
     ...
@@ -105,13 +106,24 @@ impl actix_service::Service for App {
     ...
 }
 
+//
+// ---------------------------------------------
+//
+
+// A factory for Actix to use to produce services.
 #[derive(Clone)]
 struct AppFactory;
 
 impl actix_service::ServiceFactory for AppFactory {
     type Service = App;
+    ...
 }
 
+//
+// ---------------------------------------------
+//
+
+// Program entry point specifying typed factory.
 fn main() -> std::io::Result<()> {
     Server::build()
         .backlog(1024)
@@ -130,11 +142,21 @@ fn main() -> std::io::Result<()> {
 
 > actix uses object pools for requests and responses
 
-### Swisstable (#swisstable)
+Quite a simple optimization compared to the others: Actix pre-allocates a pool of 128 basic request and response objects. As a request is being handled an object from the pool is used if available, otherwise a new one is allocated.
+
+This seems to be an optimization largely designed to help protect against slow starts, but I didn't check how much of an edge it actually provides.
+
+### Fast hashing (#fast-hashing)
 
 > also it uses high performance hash map, based on google's swisstable
 
-https://github.com/cbreeden/fxhash
+I believe what Nicolay meant here is that Actix uses [`fxhash`](https://github.com/cbreeden/fxhash) instead of Rust's built in `HashMap` in a number of places like routing, mapping HTTP headers, and tracking error handlers. `fxhash` uses a hashing algorithm that's not cryptographically secure (and therefore not recommended anywhere user-provided data is being used as key input), but which is very fast, hashing 8 bytes at a time on a 64-bit platform.
+
+Its benchmark show a very noticeable edge over other hashing algorithms commonly found in the Rust ecosystem like SipHash (`HashMap`'s default algorithm), [FNV](https://github.com/servo/rust-fnv) (Fowler-Noll-Vo), and [SeaHash](https://docs.rs/seahash/3.0.6/seahash/) for keys greater or equal to 5 bytes in length.
+
+---
+
+https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04
 
 ---
 
