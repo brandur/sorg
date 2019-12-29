@@ -1243,6 +1243,7 @@ func fetchURL(c *modulir.Context, source, target string) error {
 func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
 	defaults := map[string]interface{}{
 		"BodyClass":         "",
+		"FavIcon":           "favicon-152.png",
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"LocalFonts":        conf.LocalFonts,
 		"Release":           Release,
@@ -1690,6 +1691,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{
+		"FavIcon": "nanoglyph-152.png",
 		"InEmail": false,
 		"Issue":   issue,
 	})
@@ -1722,7 +1724,8 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	}
 
 	locals := getLocals("Nanoglyph", map[string]interface{}{
-		"Issues": issues,
+		"FavIcon": "nanoglyph-152.png",
+		"Issues":  issues,
 	})
 
 	return true, mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
