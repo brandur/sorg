@@ -18,6 +18,7 @@ allowed_exceptions=(
     # Images that don't have a retina version by design.
     "./content/images/favicon/favicon-152.png"
     "./content/images/favicon/favicon-260.png"
+    "./content/images/favicon/nanoglyph-152.png"
     "./content/images/standin_00.jpg"
     "./content/images/standin_01.jpg"
     "./content/images/standin_02.jpg"
