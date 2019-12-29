@@ -57,15 +57,21 @@ html lang="en"
       code, pre {
         background: #f6f6f6;
         font-family: Monaco, monospace;
-        font-size: 12px;
       }
 
       code {
+        font-size: 12px;
         padding: 2px 4px;
       }
 
       pre {
-        padding: 10px 8px;
+        line-height: 1;
+        padding: 10px 18px;
+      }
+
+      pre code {
+        font-size: 11px;
+        padding: 0;
       }
 
       h1, h2, h3, h4 {
