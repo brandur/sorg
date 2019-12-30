@@ -1726,8 +1726,10 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	}
 
 	locals := getLocals("Nanoglyph", map[string]interface{}{
-		"FavIcon": "nanoglyph-152.png",
-		"Issues":  issues,
+		"BodyClass": "web-only", // For web-specific CSS rules
+		"FavIcon":   "nanoglyph-152.png",
+		"Issues":    issues,
+		"URLPrefix": "", // Relative prefix for the web version
 	})
 
 	return true, mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
@@ -1754,8 +1756,10 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{
-		"InEmail": false,
-		"Issue":   issue,
+		"BodyClass": "web-only", // For web-specific CSS rules
+		"InEmail":   false,
+		"Issue":     issue,
+		"URLPrefix": "", // Relative prefix for the web version
 	})
 
 	err = mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/show.ace",
@@ -1786,7 +1790,9 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	}
 
 	locals := getLocals("Passages", map[string]interface{}{
-		"Issues": issues,
+		"BodyClass": "web-only", // For web-specific CSS rules
+		"Issues":    issues,
+		"URLPrefix": "", // Relative prefix for the web version
 	})
 
 	return true, mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/index.ace",

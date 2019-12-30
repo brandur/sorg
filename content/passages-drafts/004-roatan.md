@@ -1,9 +1,9 @@
 +++
+image_alt = "On the way to West Bay"
+image_url = "/assets/images/passages/004-roatan/beach@2x.jpg"
 published_at = 2019-10-03T15:05:23Z
 title = "Diving Roatan, 11s, 12s"
 +++
-
-![On the way to West Bay](/assets/images/passages/004-roatan/beach@2x.jpg)
 
 Hi everyone --
 

@@ -6,6 +6,10 @@
       p#passages
         a href="{{.URLPrefix}}/passages" Passages and Glass
     h1 {{.Issue.Title}}
+  {{if .Issue.ImageURL}}
+    .container-highlight
+      img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
+  {{end}}
   .container
     {{HTML .Issue.Content}}
     p#signature – Brandur
