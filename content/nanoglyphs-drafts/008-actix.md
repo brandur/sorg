@@ -2,7 +2,7 @@
 image_alt = "Rust"
 image_url = "/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg"
 published_at = 2019-12-27T06:29:34Z
-title = "Actix Web: Optimizing in a Land of Optimizations"
+title = "Actix Web: Optimizing Amongst Optimizations"
 +++
 
 Hello from the new decade! Hopefully everyone got some serious relaxation done during the end of the last one, either set or didn't set resolutions (depending on preference), and is ready to see what comes next.
@@ -11,7 +11,7 @@ Hello from the new decade! Hopefully everyone got some serious relaxation done d
 
 You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software, sent weekly. Theoretically you signed up for this, and probably did so in the last week or two -- but if you're looking to shore up your mail subscriptions in the new year already, there's an easy one-click unsubscribe in the footer. If you're viewing it on the web, as usual you can opt to get a few more sent to you in the future by [subscribing here](/newsletter).
 
-I'm playing with the usual format to do a medium dive into an active frontier in software: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it in serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are set, ready to bear load.
+I'm playing with the usual format to do a medium dive into an active frontier: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it in serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are set, ready to bear load.
 
 ---
 
