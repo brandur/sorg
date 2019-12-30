@@ -1,9 +1,9 @@
 +++
+image_alt = "Steps from Baker Beach"
+image_url = "/assets/images/nanoglyphs/001-initialize/steps@2x.jpg"
 published_at = 2019-07-05T23:08:03Z
 title = "Initialize"
 +++
-
-![Steps from Baker Beach](/assets/images/nanoglyphs/001-initialize/steps@2x.jpg#_wide)
 
 You've heard the aphorism that perfect is the enemy of
 good. I (along with many others) get phenomenal mileage out

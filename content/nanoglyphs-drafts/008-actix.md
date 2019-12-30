@@ -1,9 +1,9 @@
 +++
+image_alt = "Rust"
+image_url = "/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg"
 published_at = 2019-12-27T06:29:34Z
 title = "Actix Web: Optimizing in a Land of Optimizations"
 +++
-
-![Rust](/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg#_wide)
 
 Hello from the new decade! Hopefully everyone got some serious relaxation done during the end of the last one, either set or didn't set resolutions (depending on preference), and is ready to see what comes next.
 

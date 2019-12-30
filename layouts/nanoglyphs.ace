@@ -65,7 +65,7 @@ html lang="en"
         font-size: 15px;
         font-weight: 300;
         line-height: 1.5;
-
+        margin: 0;
 
         /*
          * text-rendering doesn't seem to do much -- I'm basically cargo
@@ -110,7 +110,7 @@ html lang="en"
         font-weight: 400;
         letter-spacing: -4px;
         line-height: 1;
-        margin-top: 0;
+        margin: 0 0 30px 0;
         text-align: center;
       }
 
@@ -177,12 +177,6 @@ html lang="en"
         margin-right: 3px;
       }
 
-      #container {
-        margin: 0 auto;
-        max-width: 500px;
-        padding: 20px;
-      }
-
       #issue {
         font-size: 11px;
         margin-bottom: 0;
@@ -214,6 +208,22 @@ html lang="en"
         text-align: center;
       }
 
+      .container {
+        margin: 20px auto;
+        max-width: 500px;
+        padding: 0 20px;
+      }
+
+      .container-highlight {
+        margin: 30px auto;
+        max-width: 700px;
+      }
+
+      .container-highlight img {
+        margin: 0;
+        max-width: 100%;
+      }
+
       .published-date {
         color: #aaa;
         font-size: 12px;
@@ -221,43 +231,9 @@ html lang="en"
         margin-left: 8px;
       }
 
-    {{if not .InEmail}}
-      = css
-        img[src$="#_wide"] {
-          left: calc(-350px + 50%);
-          max-width: none;
-          position: relative;
-          width: 700px;
-        }
-
-        img[src$="#_wide_portrait"] {
-          left: calc(-300px + 50%);
-          max-width: none;
-          position: relative;
-          width: 600px;
-        }
-
-        @media handheld, only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
-          img[src$="#_wide"] {
-            left: auto;
-            max-width: 100%;
-            width: auto;
-          }
-        }
-
-        @media handheld, only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
-          img[src$="#_wide_portrait"] {
-            left: auto;
-            max-width: 100%;
-            width: auto;
-          }
-        }
-    {{end}}
-
   body
     {{if not .InEmail}}
     = include views/_analytics .
     {{end}}
 
-    #container
-      = yield main
+    = yield main

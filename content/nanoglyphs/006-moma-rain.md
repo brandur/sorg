@@ -1,9 +1,9 @@
 +++
+image_alt = "The San Francisco MOMA"
+image_url = "/assets/images/nanoglyphs/006-moma-rain/moma@2x.jpg"
 published_at = 2019-12-19T20:48:59Z
 title = "MOMA & the City in Rain"
 +++
-
-![The San Francisco MOMA](/assets/images/nanoglyphs/006-moma-rain/moma@2x.jpg#_wide)
 
 It’s been a catastrophic few weeks of weather in the Bay: almost, kind-of rain. The cloud cover never goes away, and most of the time it feels like it might be so presumptuous as to start to drizzle. A few times it’s even gone as far as to openly rain for a little while, in clear violation of the California weather contract. Winter jackets, toques [1], and scarves are everywhere (although it’s still 10C+).
 

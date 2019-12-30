@@ -1,9 +1,9 @@
 +++
+image_alt = "Palace of the Fine Arts in 2015"
+image_url = "/assets/images/nanoglyphs/007-civilization/palace@2x.jpg"
 published_at = 2019-12-26T23:19:29Z
 title = "Preventing the Collapse of Civilization"
 +++
-
-![Palace of the Fine Arts in 2015](/assets/images/nanoglyphs/007-civilization/palace@2x.jpg#_wide)
 
 Happy holidays! From my vantage point in life, they get a little closer together every year, but that existential malaise is mitigated by how much they hold to look forward to. It's already been an amazing few days of overindulgence in the form of extravagant decorations, rich food, and decadent desserts. I hope everyone's break is going (or went) well.
 
@@ -53,6 +53,6 @@ Again, the differences are minor enough to the point where they’re not all tha
 
 I'm back in Calgary for the break, and nature's delivered us a picturesque winter -- lots of snow on the ground, but temperatures only a few degrees below zero. (A welcome surprise because December on the prairie can be cruel. I’m still reeling from a visit a few years ago where every day of my stay hovered at or below -30C.)
 
-![Fish Creek in Calgary](/assets/images/nanoglyphs/007-civilization/fish-creek@2x.jpg#_wide)
+![Fish Creek in Calgary](/assets/images/nanoglyphs/007-civilization/fish-creek@2x.jpg)
 
 Hopefully everyone's got a few relaxation goals (wishes?) for their time off. Personally, I'm hoping to eat and drink plenty, and with any luck recoup a little creative energy. Happy holidays, and see you in 2020.

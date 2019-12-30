@@ -1,21 +1,32 @@
 = content main
-  p#issue
+  .container
+    p#issue
+      {{if .InEmail}}
+        a href="https://brandur.org/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
+      {{else}}
+        a href="/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
+      {{end}}
+    p#nanoglyph
+      {{if .InEmail}}
+        a href="https://brandur.org/nanoglyphs" Nanoglyph
+      {{else}}
+        a href="/nanoglyphs" Nanoglyph
+      {{end}}
+    h1 {{.Issue.Title}}
+  {{if .Issue.ImageURL}}
     {{if .InEmail}}
-      a href="https://brandur.org/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
+      .container
+        img src="{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
     {{else}}
-      a href="/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
+      .container-highlight
+        img src="{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
     {{end}}
-  p#nanoglyph
-    {{if .InEmail}}
-      a href="https://brandur.org/nanoglyphs" Nanoglyph
-    {{else}}
-      a href="/nanoglyphs" Nanoglyph
-    {{end}}
-  h1 {{.Issue.Title}}
-  {{HTML .Issue.Content}}
-  / p#signature – Brandur
-  p#about
-    = include views/_nanoglyphs_about .
-    {{if .InEmail}}
-    | Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
-    {{end}}
+  {{end}}
+  .container
+    {{HTML .Issue.Content}}
+    / p#signature – Brandur
+    p#about
+      = include views/_nanoglyphs_about .
+      {{if .InEmail}}
+      | Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
+      {{end}}

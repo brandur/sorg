@@ -26,6 +26,16 @@ type Issue struct {
 	// Draft indicates that the issue is not yet published.
 	Draft bool `toml:"-"`
 
+	// ImageAlt is the alternate description text for the issue's main image.
+	//
+	// Currently not used by Passages.
+	ImageAlt string `toml:"image_alt"`
+
+	// ImageURL is the source URL for the issue's main image.
+	//
+	// Currently not used by Passages.
+	ImageURL string `toml:"image_url"`
+
 	// Number is the number of the issue like "001". Notably, it's a number,
 	// but zero-padded.
 	Number string `toml:"-"`
