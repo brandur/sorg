@@ -11,7 +11,7 @@ Hello from the new decade! Hopefully everyone got some serious relaxation done d
 
 You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software, sent weekly. Theoretically you signed up for this, and probably did so in the last week or two -- but if you're looking to shore up your mail subscriptions in the new year already, there's an easy one-click unsubscribe in the footer. If you're viewing it on the web, as usual you can opt to get a few more sent to you in the future by [subscribing here](/newsletter).
 
-I'm playing with the usual format to do a medium dive into an active frontier in software: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it for serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are set, ready to bear load.
+I'm playing with the usual format to do a medium dive into an active frontier in software: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it in serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are set, ready to bear load.
 
 ---
 
