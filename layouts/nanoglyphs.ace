@@ -17,6 +17,23 @@ html lang="en"
     {{end}}
 
     = css
+      a, a:hover, a:visited {
+        border-bottom: 1px solid #000;
+        color: black;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      a:hover {
+        border-bottom: none;
+      }
+
+      /* Decrease bottom padding or else the code element background extends
+       * overtop of the link underline. */
+      a code {
+        padding-bottom: 0;
+      }
+
       acronym {
         text-decoration: none;
         border-bottom: 1px dotted #aaa;
@@ -38,6 +55,12 @@ html lang="en"
 
       body {
         color: #3d3d3d;
+        /*
+          TODO: This is probably a better font, but Mac only.
+
+          font-family: "Helvetica Neue", Helvetica, sans-serif;
+          font-weight: 400;
+        */
         font-family: Helvetica, sans-serif;
         font-size: 15px;
         font-weight: 300;
@@ -102,23 +125,6 @@ html lang="en"
         font-size: 12px;
         letter-spacing: -1px;
         margin: 20px 0 0 0;
-      }
-
-      a, a:hover, a:visited {
-        border-bottom: 1px solid #000;
-        color: black;
-        font-weight: bold;
-        text-decoration: none;
-      }
-
-      a:hover {
-        border-bottom: none;
-      }
-
-      /* Decrease bottom padding or else the code element background extends
-       * overtop of the link underline. */
-      a code {
-        padding-bottom: 0;
       }
 
       hr {
@@ -214,6 +220,39 @@ html lang="en"
         font-style: italic;
         margin-left: 8px;
       }
+
+    {{if not .InEmail}}
+      = css
+        img[src$="#_wide"] {
+          left: calc(-350px + 50%);
+          max-width: none;
+          position: relative;
+          width: 700px;
+        }
+
+        img[src$="#_wide_portrait"] {
+          left: calc(-300px + 50%);
+          max-width: none;
+          position: relative;
+          width: 600px;
+        }
+
+        @media handheld, only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
+          img[src$="#_wide"] {
+            left: auto;
+            max-width: 100%;
+            width: auto;
+          }
+        }
+
+        @media handheld, only screen and (max-width: 550px), only screen and (max-device-width: 550px) {
+          img[src$="#_wide_portrait"] {
+            left: auto;
+            max-width: 100%;
+            width: auto;
+          }
+        }
+    {{end}}
 
   body
     {{if not .InEmail}}

@@ -48,9 +48,17 @@ Landscape:
 
     magick convert $GMI -gravity center -crop 3:2 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
+Landscape wide:
+
+    magick convert $GMI -gravity center -crop 3:2 -resize 1400x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
+
 Portrait:
 
     magick convert $GMI -auto-orient -gravity center -crop 2:3 -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
+
+Portrait wide:
+
+    magick convert $GMI -auto-orient -gravity center -crop 2:3 -resize 1200x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
 Note we don't bother with a non-retina version because we
 can't run Retina.JS.

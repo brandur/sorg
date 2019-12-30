@@ -3,7 +3,7 @@ published_at = 2019-11-23T02:31:54Z
 title = "Async, Awaited"
 +++
 
-![Seagrape](/assets/images/nanoglyphs/004-async-awaited/seagrape@2x.jpg)
+![Seagrape](/assets/images/nanoglyphs/004-async-awaited/seagrape@2x.jpg#_wide_portrait)
 
 The folding keyboard [from last week's](/nanoglyphs/003-12-factors) been scrapped, but I'm still writing on mobile platforms; this week from a less-exotic-but-more-expensive Apple Magic Keyboard. These weren't designed with mobility in mind, but are surprisingly good at it: compact, good battery life, no butterfly keys. Their Achilles' heel is that they need to be stored in a Ziplock bag lest their veneer of purest white become a muddied black faster than you say "One Infinite Loop".
 
