@@ -224,7 +224,7 @@ html lang="en"
       }
 
       .web-only .container-highlight {
-        margin: 30px auto;
+        margin: 40px auto;
         max-width: 700px;
         padding: 0;
       }
