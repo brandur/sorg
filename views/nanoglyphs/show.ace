@@ -1,9 +1,10 @@
 = content main
   .container
-    p#issue
-      a href="{{.URLPrefix}}/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
-    p#nanoglyph
-      a href="{{.URLPrefix}}/nanoglyphs" Nanoglyph
+    #header
+      p#issue
+        a href="{{.URLPrefix}}/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
+      p#nanoglyph
+        a href="{{.URLPrefix}}/nanoglyphs" Nanoglyph
     h1 {{.Issue.Title}}
   {{if .Issue.ImageURL}}
     .container-highlight
@@ -12,8 +13,9 @@
   .container
     {{HTML .Issue.Content}}
     / p#signature – Brandur
-    p#about
-      = include views/_nanoglyphs_about .
-      {{if .InEmail}}
-      | Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
-      {{end}}
+    #footer
+      p#about
+        = include views/_nanoglyphs_about .
+        {{if .InEmail}}
+        | Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
+        {{end}}

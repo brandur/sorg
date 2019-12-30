@@ -1,12 +1,14 @@
 = content main
   .container
-    p#nanoglyph Nanoglyph
-    p
-      = include views/_nanoglyphs_about .
-      | You can <a href="/newsletter#nanoglyph">subscribe here</a>.
+    #header
+      p#nanoglyph Nanoglyph
+      p
+        = include views/_nanoglyphs_about .
+        | You can <a href="/newsletter#nanoglyph">subscribe here</a>.
     ul
       {{range .Issues}}
         li
           a href="/nanoglyphs/{{.Slug}}" {{.Number}} &mdash; {{.Title}}
           span.published-date {{FormatTime .PublishedAt}}
       {{end}}
+    #footer
