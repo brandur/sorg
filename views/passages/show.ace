@@ -1,21 +1,23 @@
 = content main
-  p#issue
-    {{if .InEmail}}
-      a href="https://brandur.org/passages/{{.Issue.Slug}}" {{.Issue.Number}}
-    {{else}}
-      a href="/passages/{{.Issue.Slug}}" {{.Issue.Number}}
-    {{end}}
-  p#passages
-    {{if .InEmail}}
-      a href="https://brandur.org/passages" Passages and Glass
-    {{else}}
-      a href="/passages" Passages and Glass
-    {{end}}
+  #header
+    p#issue
+      {{if .InEmail}}
+        a href="https://brandur.org/passages/{{.Issue.Slug}}" {{.Issue.Number}}
+      {{else}}
+        a href="/passages/{{.Issue.Slug}}" {{.Issue.Number}}
+      {{end}}
+    p#passages
+      {{if .InEmail}}
+        a href="https://brandur.org/passages" Passages and Glass
+      {{else}}
+        a href="/passages" Passages and Glass
+      {{end}}
   h1 {{.Issue.Title}}
   {{HTML .Issue.Content}}
   p#signature – Brandur
-  p#about
-    = include views/_passages_about .
-    {{if .InEmail}}
-    | If you don't want to get it anymore, <a href="%unsubscribe_url%">unsubscribe right here</a>.
-    {{end}}
+  #footer
+    p#about
+      = include views/_passages_about .
+      {{if .InEmail}}
+      | If you don't want to get it anymore, <a href="%unsubscribe_url%">unsubscribe right here</a>.
+      {{end}}

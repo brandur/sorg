@@ -4,7 +4,10 @@
       p#nanoglyph Nanoglyph
       p
         = include views/_nanoglyphs_about .
-        | You can <a href="/newsletter#nanoglyph">subscribe here</a>.
+      #subscribe
+        form method="post" action="https://nanoglyph-signup.herokuapp.com/submit"
+          input type="email" name="email" placeholder="Email"
+          input type="submit" value="Subscribe to Nanoglyph"
     ul
       {{range .Issues}}
         li
@@ -12,3 +15,4 @@
           span.published-date {{FormatTime .PublishedAt}}
       {{end}}
     #footer
+      img src="https://nanoglyph-signup.herokuapp.com/public/tiny-preload-image.png"

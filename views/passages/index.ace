@@ -1,11 +1,17 @@
 = content main
-  p#passages Passages and Glass
-  p
-    = include views/_passages_about .
-    | You can <a href="/newsletter#passages">subscribe here</a>.
+  #header
+    p#passages Passages and Glass
+    p
+      = include views/_passages_about .
+      #subscribe
+        form method="post" action="https://passages-signup.herokuapp.com/submit"
+          input type="email" name="email" placeholder="Email"
+          input type="submit" value="Subscribe to Passages & Glass"
   ul
     {{range .Issues}}
       li
         a href="/passages/{{.Slug}}" {{.Number}} &mdash; {{.Title}}
         span.published-date {{FormatTimeYearMonth .PublishedAt}}
     {{end}}
+  #footer
+    img src="https://passages-signup.herokuapp.com/public/tiny-preload-image.png"

@@ -218,6 +218,40 @@ html lang="en"
         text-align: center;
       }
 
+      #subscribe {
+        display: table;
+        margin: 0 auto;
+      }
+
+      #subscribe input[type=email] {
+        border: 1px solid #4d4d4d;
+        font-family: Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 300;
+
+        /* just so we understand that the height is meant to be the same as the
+         * submit button: constant - border - padding */
+        height: calc(32px - 2 * 1px - 2 * 2px);
+
+        line-height: 1.5em;
+        margin: 10px 10px 10px 0;
+        padding: 2px 6px;
+        vertical-align: bottom;
+      }
+
+      #subscribe input[type=submit] {
+        background: #000;
+        border: 0;
+        color: #fff;
+        font-size: 9px;
+        height: 32px;
+        letter-spacing: 0.5px;
+        margin: 10px 0 10px 0;
+        padding: 0 25px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
       /* both container types are equivalent in email version; see web-only
        * below */
       .container, .container-highlight {
