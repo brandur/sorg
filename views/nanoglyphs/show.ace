@@ -6,13 +6,8 @@
       a href="{{.URLPrefix}}/nanoglyphs" Nanoglyph
     h1 {{.Issue.Title}}
   {{if .Issue.ImageURL}}
-    {{if .InEmail}}
-      .container
-        img src="{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
-    {{else}}
-      .container-highlight
-        img src="{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
-    {{end}}
+    .container-highlight
+      img src="{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
   {{end}}
   .container
     {{HTML .Issue.Content}}

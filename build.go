@@ -1691,6 +1691,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{
+		"BodyClass": "web-only", // For web-specific CSS rules
 		"FavIcon":   "nanoglyph-152.png",
 		"InEmail":   false,
 		"Issue":     issue,
