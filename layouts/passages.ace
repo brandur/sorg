@@ -165,12 +165,6 @@ html lang="en"
         margin-right: 3px;
       }
 
-      #container {
-        margin: 20px auto;
-        max-width: 550px;
-        padding: 0 20px;
-      }
-
       #footer {
         margin-bottom: 40px;
         margin-top: 80px;
@@ -245,6 +239,12 @@ html lang="en"
         text-transform: uppercase;
       }
 
+      .container {
+        margin: 20px auto;
+        max-width: 550px;
+        padding: 0 20px;
+      }
+
       .published-date {
         color: #aaa;
         font-size: 14px;
@@ -257,5 +257,4 @@ html lang="en"
     = include views/_analytics .
     {{end}}
 
-    #container
-      = yield main
+    = yield main

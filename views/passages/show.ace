@@ -1,15 +1,17 @@
 = content main
-  #header
-    p#issue
-      a href="{{.URLPrefix}}/passages/{{.Issue.Slug}}" {{.Issue.Number}}
-    p#passages
-      a href="{{.URLPrefix}}/passages" Passages and Glass
-  h1 {{.Issue.Title}}
-  {{HTML .Issue.Content}}
-  p#signature – Brandur
-  #footer
-    p#about
-      = include views/_passages_about .
-      {{if .InEmail}}
-      | If you don't want to get it anymore, <a href="%unsubscribe_url%">unsubscribe right here</a>.
-      {{end}}
+  .container
+    #header
+      p#issue
+        a href="{{.URLPrefix}}/passages/{{.Issue.Slug}}" {{.Issue.Number}}
+      p#passages
+        a href="{{.URLPrefix}}/passages" Passages and Glass
+    h1 {{.Issue.Title}}
+  .container
+    {{HTML .Issue.Content}}
+    p#signature – Brandur
+    #footer
+      p#about
+        = include views/_passages_about .
+        {{if .InEmail}}
+        | If you don't want to get it anymore, <a href="%unsubscribe_url%">unsubscribe right here</a>.
+        {{end}}
