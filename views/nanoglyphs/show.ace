@@ -7,7 +7,7 @@
     h1 {{.Issue.Title}}
   {{if .Issue.ImageURL}}
     .container-highlight
-      img src="{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
+      img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
   {{end}}
   .container
     {{HTML .Issue.Content}}
