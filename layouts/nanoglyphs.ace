@@ -217,6 +217,7 @@ html lang="en"
       .container-highlight {
         margin: 30px auto;
         max-width: 700px;
+        padding: 0;
       }
 
       .container-highlight img {

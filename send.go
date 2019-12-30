@@ -147,9 +147,10 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	}
 
 	locals := map[string]interface{}{
-		"InEmail": true,
-		"Issue":   issue,
-		"Title":   issue.Title,
+		"InEmail":   true,
+		"Issue":     issue,
+		"Title":     issue.Title,
+		"URLPrefix": conf.AbsoluteURL,
 	}
 
 	var b bytes.Buffer

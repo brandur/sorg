@@ -1691,9 +1691,10 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{
-		"FavIcon": "nanoglyph-152.png",
-		"InEmail": false,
-		"Issue":   issue,
+		"FavIcon":   "nanoglyph-152.png",
+		"InEmail":   false,
+		"Issue":     issue,
+		"URLPrefix": "", // Relative prefix for the web version
 	})
 
 	err = mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/show.ace",

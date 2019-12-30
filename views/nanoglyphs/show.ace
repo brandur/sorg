@@ -1,17 +1,9 @@
 = content main
   .container
     p#issue
-      {{if .InEmail}}
-        a href="https://brandur.org/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
-      {{else}}
-        a href="/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
-      {{end}}
+      a href="{{.URLPrefix}}/nanoglyphs/{{.Issue.Slug}}" {{.Issue.Number}}
     p#nanoglyph
-      {{if .InEmail}}
-        a href="https://brandur.org/nanoglyphs" Nanoglyph
-      {{else}}
-        a href="/nanoglyphs" Nanoglyph
-      {{end}}
+      a href="{{.URLPrefix}}/nanoglyphs" Nanoglyph
     h1 {{.Issue.Title}}
   {{if .Issue.ImageURL}}
     {{if .InEmail}}
