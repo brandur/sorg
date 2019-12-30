@@ -1,17 +1,9 @@
 = content main
   #header
     p#issue
-      {{if .InEmail}}
-        a href="https://brandur.org/passages/{{.Issue.Slug}}" {{.Issue.Number}}
-      {{else}}
-        a href="/passages/{{.Issue.Slug}}" {{.Issue.Number}}
-      {{end}}
+      a href="{{.URLPrefix}}/passages/{{.Issue.Slug}}" {{.Issue.Number}}
     p#passages
-      {{if .InEmail}}
-        a href="https://brandur.org/passages" Passages and Glass
-      {{else}}
-        a href="/passages" Passages and Glass
-      {{end}}
+      a href="{{.URLPrefix}}/passages" Passages and Glass
   h1 {{.Issue.Title}}
   {{HTML .Issue.Content}}
   p#signature – Brandur
