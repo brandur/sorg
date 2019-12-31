@@ -239,9 +239,9 @@ html lang="en"
         text-transform: uppercase;
       }
 
-      /* both container types are equivalent in email version; see web-only
+      /* all container types are equivalent in email version; see web-only
        * below */
-      .container, .container-highlight {
+      .container, .container-highlight, .container-highlight-portrait {
         margin: 20px auto;
         max-width: 550px;
         padding: 0 20px;
@@ -254,13 +254,20 @@ html lang="en"
         margin-left: 8px;
       }
 
-      .web-only .container-highlight {
+      .web-only .container-highlight, .web-only .container-highlight-portrait {
         margin: 40px auto;
-        max-width: 700px;
         padding: 0;
       }
 
-      .web-only .container-highlight img {
+      .web-only .container-highlight {
+        max-width: 700px;
+      }
+
+      .web-only .container-highlight-portrait {
+        max-width: 600px;
+      }
+
+      .web-only .container-highlight img, .web-only .container-highlight-portrait img {
         margin: 0;
         max-width: 100%;
       }

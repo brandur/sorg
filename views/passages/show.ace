@@ -7,8 +7,13 @@
         a href="{{.URLPrefix}}/passages" Passages and Glass
     h1 {{.Issue.Title}}
   {{if .Issue.ImageURL}}
-    .container-highlight
-      img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
+    {{if eq .Issue.ImageOrientation "landscape"}}
+      .container-highlight
+        img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
+    {{else}}
+      .container-highlight-portrait
+        img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}"
+    {{end}}
   {{end}}
   .container
     {{HTML .Issue.Content}}
