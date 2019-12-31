@@ -146,15 +146,31 @@ fn main() -> std::io::Result<()> {
 
 > actix uses object pools for requests and responses
 
-Quite a simple optimization compared to the others: Actix pre-allocates a pool of 128 basic request and response objects. As a request is being handled an object from the pool is used if available, otherwise a new one is allocated.
+A peripheral benefit of a language that doesn't use a garbage collector is that it can provide a hook that gets run immediately and definitively [1] when an object goes out of scope, a feature that most of us haven't had access to since destructors in C++. In Rust, the equivalent is called the [`Drop` trait](https://doc.rust-lang.org/std/ops/trait.Drop.html).
 
-This optimization seems largely designed to help protect against slow starts as the pools are never refilled. I didn't check how much of an improvement they actually provide.
+Actix leverages `Drop` to implement request and response pools. On startup, 128 request and response objects are pre-allocated per thread pools. As a request comes in, one of those is checked out of the pool, populated, and handed off to user code. When that code finishes with it and the object is going out of scope, `Drop` kicks in and checks it back into the pool for reuse. New objects are allocated only when pools are exhausted, thereby saving many needless memory allocations and deallocations.
+
+``` rust
+impl Drop for HttpRequest {
+    fn drop(&mut self) {
+        if Rc::strong_count(&self.0) == 1 {
+            let v = &mut self.0.pool.0.borrow_mut();
+            if v.len() < 128 {
+                self.extensions_mut().clear();
+                v.push(self.0.clone());
+            }
+        }
+    }
+}
+```
 
 ### Fast hashing (#fast-hashing)
 
 > also it uses high performance hash map, based on google's swisstable
 
-I believe what Nicolay meant here is that Actix uses [`fxhash`](https://github.com/cbreeden/fxhash) instead of Rust's built in `HashMap` in a number of places like routing, mapping HTTP headers, and tracking error handlers. `fxhash` uses a hashing algorithm that's not cryptographically secure (and therefore not recommended anywhere user-provided data is being used as key input), but which is very fast, hashing 8 bytes at a time on a 64-bit platform.
+This point has become dated in just the six months since Nikolay wrote it. At the time, Actix was using the [`hashbrown` crate](https://github.com/rust-lang/hashbrown), which provided a Rust implementation of Google's highly performant "SwissTable" hash map. Since then, `hashbrown` migrated into the standard library to become the default `HashMap` implementation for all of Rust.
+
+A related development is that Actix now uses [`fxhash`](https://github.com/cbreeden/fxhash) instead of Rust's built in `HashMap` in a number of places like routing, mapping HTTP headers, and tracking error handlers. `fxhash` doesn't reimplement `HashMap` completely, but uses a hashing algorithm that's very fast, even if not cryptographically secure (and therefore not recommended anywhere user-provided data is being used as input). It hashes 8 bytes at a time on a 64-bit platform, compared to the one byte of alternatives.
 
 Its benchmark show a very noticeable edge over other hashing algorithms commonly found in the Rust ecosystem like SipHash (`HashMap`'s default algorithm), [FNV](https://github.com/servo/rust-fnv) (Fowler-Noll-Vo), and [SeaHash](https://docs.rs/seahash/3.0.6/seahash/) for keys greater or equal to 5 bytes in length.
 
@@ -165,3 +181,5 @@ https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04
 ---
 
 TOOD
+
+[1] A C++ destructor or Rust `Drop` implementation differs from something like a C# finalizer in that while the runtime does guarantee that the latter will eventually be called, it gives no guarantee as to _when_.
