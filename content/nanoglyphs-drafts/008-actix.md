@@ -180,6 +180,10 @@ https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04
 
 ---
 
-TOOD
+I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Writing them is undoubtedly a time sink, but yields a few major benefits. Having to dig into a subject to explain it to somebody else is valuable for learning it myself, similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/). I write slowly because of an undesirable tendency to agonize over the selection of every word (which even more unfortunately, doesn’t lead to a better result) and in the spirit of knocking that over, am also trying to develop the discipline to get words down on paper _quickly_. It’s not a habit that can be willed into existence -- like most good habits it just takes a lot of practice.
+
+I could use some help with how to evolve the format. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but could use some feedback on what content you’ve found useful so far or suggestions on what you’d like to see. If you have any ideas along those lines and wouldn’t mind -- hit the “Reply” button and send the my way.
+
+Happy new year and thanks for reading! Until next week.
 
 [1] A C++ destructor or Rust `Drop` implementation differs from something like a C# finalizer in that while the runtime does guarantee that the latter will eventually be called, it gives no guarantee as to _when_.
