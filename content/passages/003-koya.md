@@ -1,9 +1,10 @@
 +++
+image_alt = "The Kumano Kodo"
+image_orientation = "portrait"
+image_url = "/assets/images/passages/003-koya/shining-light@2x.jpg"
 published_at = 2018-06-23T15:31:47Z
 title = "Mount Kōya, Ancient Baths, and Exacting Compilers"
 +++
-
-![The Kumano Kodo](/assets/images/passages/003-koya/shining-light@2x.jpg)
 
 (A _much_ belated hello.)
 

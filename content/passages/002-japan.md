@@ -1,9 +1,9 @@
 +++
+image_alt = "Osaka"
+image_url = "/assets/images/passages/002-japan/osaka@2x.jpg"
 published_at = 2017-12-24T06:07:33Z
 title = "Japan"
 +++
-
-![Osaka](/assets/images/passages/002-japan/osaka@2x.jpg)
 
 In 1992 Michael Crichton wrote [_Rising Sun_][risingsun].
 At the time Japan was seeing a meteoric rise, moving from a
