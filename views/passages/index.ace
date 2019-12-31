@@ -7,7 +7,7 @@
       #subscribe
         form method="post" action="https://passages-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
-          input type="submit" value="Subscribe to Passages & Glass"
+          input type="submit" value="Subscribe to Passages"
     ul
       {{range .Issues}}
         li

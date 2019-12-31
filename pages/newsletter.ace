@@ -29,7 +29,7 @@
           a href="#passages" Passages & Glass
         form method="post" action="https://passages-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
-          input type="submit" value="Subscribe to Passages & Glass"
+          input type="submit" value="Subscribe to Passages"
         .about-content
           p The details of most journeys are forgotten. It’s nothing intentional, but given enough time they stop coming up in conversation, we reflect on them more rarely, and they’re eventually swallowed by fickle memory. Physical (and digital) traces remain, but most of us are hopelessly bad at regularly sifting through a lifetime’s accumulation of souvenirs.
           p <em>Passages & Glass</em> aims to counteract this effect by pulling highlights into a permanent digital artifact. A collection of stories in an informal medium, with a healthy dose of software philosophy.
