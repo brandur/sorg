@@ -12,6 +12,12 @@ import (
 	"github.com/brandur/sorg/modules/smarkdown"
 )
 
+// Possible orientations for a newsletter's main image.
+const (
+	ImageOrientationLandscape = "landscape"
+	ImageOrientationPortrait  = "portrait"
+)
+
 // Issue represents a single burst of the Nanoglyph or Passages & Glass
 // newsletters to be rendered.
 type Issue struct {
@@ -30,6 +36,12 @@ type Issue struct {
 	//
 	// Currently not used by Passages.
 	ImageAlt string `toml:"image_alt"`
+
+	// ImageOrientation is the orientation of the main image (either landscape
+	// or portrait).
+	//
+	// Currently not used by Passages.
+	ImageOrientation string `toml:"image_orientation"`
 
 	// ImageURL is the source URL for the issue's main image.
 	//
@@ -53,6 +65,17 @@ type Issue struct {
 }
 
 func (p *Issue) validate(source string) error {
+	// Unfortunately, no default values with TOML.
+	if p.ImageOrientation == "" {
+		p.ImageOrientation = ImageOrientationLandscape
+	}
+	if p.ImageOrientation != ImageOrientationLandscape && p.ImageOrientation != ImageOrientationPortrait {
+		return fmt.Errorf("Unsupported image orientation for issue: %v (must be '%v' or '%v')",
+			source,
+			ImageOrientationLandscape,
+			ImageOrientationPortrait)
+	}
+
 	if p.Title == "" {
 		return fmt.Errorf("No title for issue: %v", source)
 	}

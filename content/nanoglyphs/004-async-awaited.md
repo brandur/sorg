@@ -1,5 +1,6 @@
 +++
 image_alt = "The Seagrape in Roatan"
+image_orientation = "portrait"
 image_url = "/assets/images/nanoglyphs/004-async-awaited/seagrape@2x.jpg"
 published_at = 2019-11-23T02:31:54Z
 title = "Async, Awaited"
