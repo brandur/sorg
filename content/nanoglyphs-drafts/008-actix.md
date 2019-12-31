@@ -142,7 +142,7 @@ fn main() -> std::io::Result<()> {
 }
 ```
 
-### Request and response pools (#pools)
+### Recycling requests and responses (#recycling)
 
 > actix uses object pools for requests and responses
 
@@ -164,7 +164,7 @@ impl Drop for HttpRequest {
 }
 ```
 
-### Fast hashing (#fast-hashing)
+### Swiss tables and beyond (#swiss-tables)
 
 > also it uses high performance hash map, based on google's swisstable
 
@@ -180,10 +180,10 @@ https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04
 
 ---
 
-I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Writing them is undoubtedly a time sink, but yields a few major benefits. Having to dig into a subject to explain it to somebody else is valuable for learning it myself, similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/). I write slowly because of an undesirable tendency to agonize over the selection of every word (which even more unfortunately, doesn’t lead to a better result) and in the spirit of knocking that over, am also trying to develop the discipline to get words down on paper _quickly_. It’s not a habit that can be willed into existence -- like most good habits it just takes a lot of practice.
+I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Its a time sink, but worth it. Similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/), having to dig into a subject to explain it to someone else is one of the best ways to solidify one's own understanding. The weekly cadence is good exercise in getting words on paper _quickly_ -- I have a bad habit of writing slowly as I agonize over the choice of every word (a technique that devours time indiscriminately, but doesn't produce better results), and I'm trying to knock that over in the new year.
 
-I could use some help with how to evolve the format. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but could use some feedback on what content you’ve found useful so far or suggestions on what you’d like to see. If you have any ideas along those lines and wouldn’t mind -- hit the “Reply” button and send the my way.
+I'm all ears when it comes to ideas on how to evolve the format. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but could use some feedback on what content you’ve found useful so far or suggestions on what you’d like to see. If you have any ideas along those lines and can spare a minute -- hit the “Reply” button and send them my way.
 
-Happy new year and thanks for reading! Until next week.
+Happy new year! Until next week.
 
 [1] A C++ destructor or Rust `Drop` implementation differs from something like a C# finalizer in that while the runtime does guarantee that the latter will eventually be called, it gives no guarantee as to _when_.
