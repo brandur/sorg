@@ -180,9 +180,9 @@ https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04
 
 ---
 
-I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Its a time sink, but worth it. Similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/), having to dig into a subject to explain it to someone else is one of the best ways to solidify one's own understanding. The weekly cadence is good exercise in getting words on paper _quickly_ -- I have a bad habit of writing slowly as I agonize over the choice of every word (a technique that devours time indiscriminately, but doesn't produce better results), and I'm trying to knock that over in the new year.
+I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Its a time sink, but worth it. Similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/), having to dig into a subject to explain it to someone else is one of the best ways to solidify one's own understanding. The weekly cadence is good exercise in getting words on paper _quickly_ -- I have a bad habit of writing at a snail's pace as I agonize over the choice of every word (a technique that devours time indiscriminately, but doesn't produce better results), and I'm trying to knock that over in the new year.
 
-I'm all ears when it comes to ideas on how to evolve the format. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but could use some feedback on what content you’ve found useful so far or suggestions on what you’d like to see. If you have any ideas along those lines and can spare a minute -- hit the “Reply” button and send them my way.
+I'm all ears when it comes to ideas on how to evolve the format. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but given that it's easy to lose objectivity on something you've been staring at for this long, could use some feedback on what content you’ve found useful so far, or suggestions on what you’d like to see. If you have any ideas along those lines and can spare a minute -- hit the “Reply” button and send them my way.
 
 Happy new year! Until next week.
 
