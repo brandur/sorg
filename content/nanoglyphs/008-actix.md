@@ -23,7 +23,7 @@ Benchmarks like this draw fire because although results are presented definitely
 
 That said, even if benchmark games don't tell us everything, they do tell us _something_. For example, no matter how heavily one of the Ruby implementations is optimized, it'll never beat PHP, let alone a fast language like C++, Go, or Java -- the inherent performance disparity is too great. Results aren't perfect, but they give us a rough idea of relative performance.
 
-## Round 18, Fortunes (#round-18-fortunes)
+## Round 18 + Fortunes (#round-18-fortunes)
 
 An upset during the latest round ([no. 18](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=fortune), run last July) was [Actix Web](https://github.com/actix/actix-web) pulling ahead of the rest of the pack by a respectable margin:
 
