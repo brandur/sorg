@@ -1,7 +1,7 @@
 +++
 image_alt = "Rust"
 image_url = "/assets/images/nanoglyphs/008-actix/rust-a@2x.jpg"
-published_at = 2019-12-27T06:29:34Z
+published_at = 2020-01-01T20:12:48Z
 title = "Actix Web: Optimization Amongst Optimizations"
 +++
 
