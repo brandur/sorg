@@ -31,7 +31,7 @@ Projects in TechEmpower provide implementations for six different "test types" t
 
 > In this test, the framework's ORM is used to fetch all rows from a database table containing an unknown number of Unix fortune cookie messages (the table has 12 rows, but the code cannot have foreknowledge of the table's size). An additional fortune cookie message is inserted into the list at runtime and then the list is sorted by the message text. Finally, the list is delivered to the client using a server-side HTML template. The message text must be considered untrusted and properly escaped and the UTF-8 fortune messages must be rendered properly.
 
-_Fortunes_ is the most interesting of TechEmpower's tests because it does more. Those that do something simplistic like send a canned JSON response have more than a dozen frameworks that perform almost identically because they've all excelled at ensuring that one short piece of the pipeline is well optimized. _Fortunes_ requires a greater range of important real-world functions to all perform well.
+_Fortunes_ is the most interesting of TechEmpower's tests because it does more. The trouble with the simpler tests that do something like send a canned JSON response is that they have more than a dozen frameworks that perform almost identically -- they've all excelled at ensuring that one short piece of the pipeline is well optimized. _Fortunes_ requires a greater range of important real-world functions to all perform well.
 
 ## Actix Web (#actix-wegb)
 
