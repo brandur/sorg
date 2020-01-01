@@ -5,7 +5,9 @@ published_at = 2019-12-27T06:29:34Z
 title = "Actix Web: Optimization Amongst Optimizations"
 +++
 
-Hello from the new decade! Hopefully everyone got some serious relaxation done during the end of the last one, either set or didn't set resolutions (depending on preference), and is ready to see what comes next.
+Hello from a new decade!
+
+It's already been a great reading day for retrospectives on the last ten years / predictions for the next. Here's to hoping that everyone had a good break (or at least a few days off), set or didn't set resolutions, and is ready to see what comes next.
 
 ---
 
