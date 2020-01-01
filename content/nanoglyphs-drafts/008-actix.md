@@ -9,39 +9,39 @@ Hello from the new decade! Hopefully everyone got some serious relaxation done d
 
 ---
 
-You're reading the first 2020 edition of _Nanoglyph_, an experimental newsletter on software, sent weekly. Theoretically you signed up for this, and probably did so in the last week or two -- but if you're looking to shore up your mail subscriptions in the new year already, there's an easy one-click unsubscribe in the footer. If you're viewing it on the web, as usual you can opt to get a few more sent to you in the future by [subscribing here](/newsletter).
+You're reading the first 2020 edition of _Nanoglyph_, a fledgling newsletter on software, sent weekly. Theoretically you signed up for this, and probably did so in the last week or two -- but if you're looking to shore up your mail subscriptions in the new year already, there's an easy one-click unsubscribe in the footer. If you're viewing it on the web, as usual you can opt to receive a few more in the future by [subscribing here](/newsletter).
 
-I'm playing with the usual format to do a medium dive into an active frontier: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it in serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are set, ready to bear load.
+I'm playing with the usual format to do a medium dive into an active frontier: web technology in Rust. The language and its ecosystem have seen a lot of change over the last few years and I would have advocated against it in serious projects for its evanescent APIs alone. But there's good reason to be optimistic about the state of Rust coming into 2020 -- critical features and APIs have stabilized, substrate libraries are ready and available, tooling is polished to the point of outshining everything else. The keystones are finally set, ready to bear load.
 
 ---
 
 Many in the web development community will already be familiar with the TechEmpower [web framework benchmarks](https://www.techempower.com/benchmarks/) which pit various web frameworks in various languages against each other.
 
-Benchmarks like this draw fire because although results are presented definitely, they can occasionally be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull disproportionately ahead of its comrade. It tends to be less of an issue over time as benchmarks mature and all implementations get more optimized, but it's a good idea to consider all benchmarks with a skeptic's critical mind.
+Benchmarks like this draw fire because although results are presented definitely, they can occasionally be misleading. Two languages/frameworks may have similar performance properties, but one of the two has sunk a lot more time into optimizing their benchmark implementation, allowing it to pull disproportionately ahead of its comrade. It tends to be less of an issue in the long run as benchmarks mature and all implementations get more optimized, but it's a good idea to consider all benchmarks with a skeptic's critical mind.
 
 That said, even if benchmark games don't tell us everything, they do tell us _something_. For example, no matter how heavily one of the Ruby implementations is optimized, it'll never beat PHP, let alone a fast language like C++, Go, or Java -- the inherent performance disparity is too great. Results aren't perfect, but they give us a rough idea of relative performance.
 
-## Round 18 (#round-18)
+## Round 18, Fortunes (#round-18-fortunes)
 
-An upset during the latest round ([no. 18](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=fortune), run last July) was [Actix web](https://github.com/actix/actix-web) pulling ahead of the rest of the pack by a respectable margin:
+An upset during the latest round ([no. 18](https://www.techempower.com/benchmarks/#section=data-r18&hw=ph&test=fortune), run last July) was [Actix Web](https://github.com/actix/actix-web) pulling ahead of the rest of the pack by a respectable margin:
 
 ![Fortunes round 18 results](/assets/images/nanoglyphs/008-actix/fortunes@2x.jpg)
 
-TechEmpower runs a few different benchmarks, and this is specifically _Fortunes_ where implementations are tasked with a simple but realistic workload that exercises a number of facets like database communication, HTML rendering, and unicode handling. Here's the official description:
+Projects in TechEmpower provide implementations for six different "test types" that vary in requirement from sending a simple plaintext response to more complex workloads involving databases. These are the results from the _Fortunes_ test type, which tasks implementations with a simple but realistic workload exercising HTML rendering, DB communication, and unicode handling. Here's the official description:
 
 > In this test, the framework's ORM is used to fetch all rows from a database table containing an unknown number of Unix fortune cookie messages (the table has 12 rows, but the code cannot have foreknowledge of the table's size). An additional fortune cookie message is inserted into the list at runtime and then the list is sorted by the message text. Finally, the list is delivered to the client using a server-side HTML template. The message text must be considered untrusted and properly escaped and the UTF-8 fortune messages must be rendered properly.
 
-_Fortunes_ is the most interesting of TechEmpower's series of benchmarks because it does more. Those that do something more simplistic like send a canned JSON or plaintext response have more than a dozen frameworks that perform almost identically to each other because they've all done a good job in ensuring that one piece of the pipeline is well optimized.
+_Fortunes_ is the most interesting of TechEmpower's tests because it does more. Those that do something simplistic like send a canned JSON response have more than a dozen frameworks that perform almost identically because they've all excelled at ensuring that one short piece of the pipeline is well optimized. _Fortunes_ requires a greater range of important real-world functions to all perform well.
 
-## Actix web (#actix)
+## Actix Web (#actix-wegb)
 
-Actix web is a light framework written in Rust. I wrote about using it for a project [a year and a half ago](/rust-web), and I'm very happy to say that unlike some of Rust's other web frameworks, Actix web has been consistently well-maintained during that entire time and stayed up-to-date with new language features and conventions. Notably, its 2.0 release which integrates Rust's newly stable standard library futures, [shipped this week](https://github.com/actix/actix-web/releases/tag/web-v2.0.0).
+Actix Web is a light framework written in Rust. I first wrote about using it for a project [a year and a half ago](/rust-web), and am happy to report that unlike some of Rust's other web frameworks, Actix Web has been consistently well-maintained throughout that entire period and stayed up-to-date with new language features and conventions. Notably, its 2.0 release which integrates Rust's newly stable standard library futures, [shipped this week](https://github.com/actix/actix-web/releases/tag/web-v2.0.0).
 
-When asked about Actix's new lead, Nikolay ([@fafhrd91](https://github.com/fafhrd91)), Actix's creator and stalwart steward, described the improvements that led to it in his typical laconic style:
+When asked about Actix's new lead, Nikolay ([@fafhrd91](https://github.com/fafhrd91)), Actix's creator and stalwart steward, [described the improvements](https://github.com/TechEmpower/FrameworkBenchmarks/issues/4834#issuecomment-499429995) that led to it in his typical laconic style:
 
 ![Actix results explanation](/assets/images/nanoglyphs/008-actix/actix-explanation@2x.jpg)
 
-I found this information fascinating, and the rest of this edition is dedicated to digging into each of these points in a little more depth. There are a variety of competing Actix implementations (`actix-diesel`, `actix-pg`, etc.) in the benchmark that vary in their makeup and composition -- I'll be looking specifically at `actix-core`, the current top performer.
+I found this information fascinating, and the rest of this edition is dedicated to digging into these points in more depth. There are a variety of competing Actix implementations (`actix-diesel`, `actix-pg`, etc.) in the benchmark that vary in their makeup and composition -- I'll be looking specifically at `actix-core`, the current top performer.
 
 ---
 
@@ -49,9 +49,9 @@ I found this information fascinating, and the rest of this edition is dedicated 
 
 > new async rust postgres driver. it is rust implementation of psql protocol
 
-Rust has had a [natively-implemented Postgres driver](https://github.com/sfackler/rust-postgres) for quite some time now, but more recently it also has an _asynchronous_ natively-implemented Postgres driver (`tokio-postgres`, a new crate but part of the same project). It plays nicely with Rust's [newly stable](https://blog.rust-lang.org/2019/11/07/Async-await-stable.html) async-await syntax, standard library `Future` trait, and `tokio` 0.2, a new version of `tokio` providing a revamped runtime.
+Rust has had a [natively-implemented Postgres driver](https://github.com/sfackler/rust-postgres) for quite some time, but more recently it also has an _asynchronous_ natively-implemented Postgres driver (`tokio-postgres`, a new crate but part of the same project). It plays nicely with Rust's [newly stable](https://blog.rust-lang.org/2019/11/07/Async-await-stable.html) async-await syntax, standard library `Future` trait, and `tokio` 0.2, a new version of `tokio` with a totally revamped runtime.
 
-Its asynchronous nature allows pauses on I/O to be optimized away by having other tasks in the runtime be worked during the wait. It also supports [pipelining](https://docs.rs/tokio-postgres/0.5.1/tokio_postgres/#pipelining) which allows the client to be waiting on the responses of many concurrently-issued queries, and which activates automatically whenever multiple query futures are polled concurrently.
+Its asynchronous nature allows pauses on I/O to be put to use by having other tasks in the runtime worked during the wait. It supports [client pipelining](https://docs.rs/tokio-postgres/0.5.1/tokio_postgres/#pipelining) which allows it to be waiting on the responses of many concurrently-issued queries all at once. Better yet, pipelining activates automatically whenever multiple query futures are polled concurrently.
 
 ### Bottleneck-free concurrency and parallelism (#parallel)
 
@@ -87,7 +87,7 @@ fn new_service(&self, _: ()) -> Self::Future {
 
 Some low-level tasks in software are performed so often that they're worth optimizing aggressively, even if the resulting implementation is fiendishly complex compared to the original.
 
-Recall from the description of _Fortunes_ above that fortune messages must be treated as untrusted, and therefore they should be properly HTML escaped before being HTML rendered. Actix escapes using the [`v_htmlescape`](https://github.com/botika/v_escape) crate, which optimizes HTML escaping by leveraging [<acronym title="Streaming SIMD Extensions 4">SSE4</acronym>](https://en.wikipedia.org/wiki/SSE4#SSE4.2), a set of Intel <acronym title="Single instruction, multiple data">SIMD</acronym> instructions that parallelize operations on data at the CPU level. SSE 4.2 in particular adds <acronym title="String and Text New Instructions">STTNI</acronym>, a set of instructions that perform character searches and comparison on two inputs of 16 bytes at a time. Although designed to help speed up the parsing of XML documents, it turns out they can be leveraged for optimizing web-related features as well.
+Recall from the description of _Fortunes_ above that fortune messages must be treated as untrusted, and therefore need to be properly HTML escaped before being HTML rendered. Actix escapes using [`v_htmlescape`](https://github.com/botika/v_escape), which optimizes HTML escaping through [<acronym title="Streaming SIMD Extensions 4">SSE4</acronym>](https://en.wikipedia.org/wiki/SSE4#SSE4.2), a set of Intel <acronym title="Single Instruction, Multiple Data">SIMD</acronym> (Single Instruction, Multiple Data) instructions that parallelize operations on data at the CPU level. SSE 4.2 in particular adds <acronym title="String and Text New Instructions">STTNI</acronym> (String and Text New Instructions), a set of operations that perform character searches and comparison on two inputs of 16 bytes at a time. Although designed to help speed up the parsing of XML documents, it turns out they're also useful for optimizing web-related features.
 
 See [`sse.rs`](https://github.com/botika/v_escape/blob/56549a196fbff38a4d3fb7354b8ada586fe074eb/v_escape/src/sse.rs) in the `v_escape` project to get a feel for how this works. Notably, although the code is `unsafe`, the entire implementation is still written in Rust -- no need to drop down to assembly or C as would be common practice in other languages.
 
@@ -95,9 +95,9 @@ See [`sse.rs`](https://github.com/botika/v_escape/blob/56549a196fbff38a4d3fb7354
 
 > actix uses generics extensively. compiler is able to use static dispatch for a lot of function calls
 
-Actix uses generics essentially wherever it's possible to use them, which means that the functions that need to be called as part of an application's lifecycle are determined precisely during compile time. This is a form of [static dispatch](https://en.wikipedia.org/wiki/Static_dispatch), and means that the program has less work to do during runtime. The alternative is dynamic dispatch, where a program uses runtime information to determine where it should route a function call.
+Actix uses generics essentially wherever it's possible to use them, which means that the functions that need to be called as part of an application's execution are determined precisely during compile time. This is a form of [static dispatch](https://en.wikipedia.org/wiki/Static_dispatch), and means that the program has less work to do during runtime. The alternative is dynamic dispatch, where a program uses runtime information to determine where it should route a function call.
 
-For example, an Actix server is built by specifying a `ServiceFactory` whose job it is to instantiate a `Service`, each of which is a trait implemented by a user-defined type (code from `actix-core`):
+For example, an Actix server is built by specifying a `ServiceFactory` whose job it is to instantiate a `Service`, each of which is a trait implemented by a user-defined type. All of it uses generics (code below from `actix-core`):
 
 ``` rust
 // Per-thread user-defined "service" structure.
@@ -146,9 +146,9 @@ fn main() -> std::io::Result<()> {
 
 > actix uses object pools for requests and responses
 
-A peripheral benefit of a language that doesn't use a garbage collector is that it can provide a hook that gets run immediately and definitively [1] when an object goes out of scope, a feature that most of us haven't had access to since destructors in C++. In Rust, the equivalent is called the [`Drop` trait](https://doc.rust-lang.org/std/ops/trait.Drop.html).
+A peripheral benefit of a language that doesn't use a garbage collector is that it can provide a hook that gets run immediately and definitively [1] when an object goes out of scope, a feature that most of us haven't seen since destructors in C++. In Rust, the equivalent is called the [`Drop` trait](https://doc.rust-lang.org/std/ops/trait.Drop.html).
 
-Actix leverages `Drop` to implement request and response pools. On startup, 128 request and response objects are pre-allocated per thread pools. As a request comes in, one of those is checked out of the pool, populated, and handed off to user code. When that code finishes with it and the object is going out of scope, `Drop` kicks in and checks it back into the pool for reuse. New objects are allocated only when pools are exhausted, thereby saving many needless memory allocations and deallocations.
+Actix leverages `Drop` to implement request and response pools. On startup, 128 request and response objects are pre-allocated in per-thread pools. As a request comes in, one of them is checked out, populated, and handed off to user code. When that code finishes with it and the object is going out of scope, `Drop` kicks in and checks it back into the pool for reuse. New objects are allocated only when pools are exhausted, thereby saving many needless memory allocations and deallocations as a web server handles normal traffic load.
 
 ``` rust
 impl Drop for HttpRequest {
@@ -170,19 +170,23 @@ impl Drop for HttpRequest {
 
 This point has become dated in just the six months since Nikolay wrote it. At the time, Actix was using the [`hashbrown` crate](https://github.com/rust-lang/hashbrown), which provided a Rust implementation of Google's highly performant "SwissTable" hash map. Since then, `hashbrown` migrated into the standard library to become the default `HashMap` implementation for all of Rust.
 
-A related development is that Actix now uses [`fxhash`](https://github.com/cbreeden/fxhash) instead of Rust's built in `HashMap` in a number of places like routing, mapping HTTP headers, and tracking error handlers. `fxhash` doesn't reimplement `HashMap` completely, but uses a hashing algorithm that's very fast, even if not cryptographically secure (and therefore not recommended anywhere user-provided data is being used as input). It hashes 8 bytes at a time on a 64-bit platform, compared to the one byte of alternatives.
+A related development is that Actix now uses [`fxhash`](https://github.com/cbreeden/fxhash) instead of Rust's built in `HashMap` in a number of places like routing, mapping HTTP headers, and tracking error handlers. `fxhash` doesn't reimplement `HashMap` completely, but uses an alternate hashing algorithm that's very fast, even if not cryptographically secure (and therefore not recommended anywhere user-provided data is being used as input). It hashes 8 bytes at a time on a 64-bit platform, compared to the one byte in other algorithms.
 
-Its benchmark show a very noticeable edge over other hashing algorithms commonly found in the Rust ecosystem like SipHash (`HashMap`'s default algorithm), [FNV](https://github.com/servo/rust-fnv) (Fowler-Noll-Vo), and [SeaHash](https://docs.rs/seahash/3.0.6/seahash/) for keys greater or equal to 5 bytes in length.
-
----
-
-https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04
+Its benchmarks show a very significant edge over other hashing algorithms commonly found in the Rust ecosystem like SipHash (`HashMap`'s default algorithm), [FNV](https://github.com/servo/rust-fnv) (Fowler-Noll-Vo), and [SeaHash](https://docs.rs/seahash/3.0.6/seahash/), as long as keys are greater or equal to 5 bytes in length.
 
 ---
 
-I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Its a time sink, but worth it. Similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/), having to dig into a subject to explain it to someone else is one of the best ways to solidify one's own understanding. The weekly cadence is good exercise in getting words on paper _quickly_ -- I have a bad habit of writing at a snail's pace as I agonize over the choice of every word (a technique that devours time indiscriminately, but doesn't produce better results), and I'm trying to knock that over in the new year.
+Round 18 is now half a year out of date, so you might reasonably ask, how is Actix stacking up today? The question's especially relevant because the previous set of results were all prior to the project's 2.0 release, and the road to 2.0 involved significant structural changes. Luckily, TechEmpower has regular interim runs going between official rounds, and one finished up just this morning (see [run@`aeb5fd9d`](https://tfb-status.techempower.com/results/e9d1ff59-7257-48ca-aec5-7166bb546d04)).
 
-I'm all ears when it comes to ideas on how to evolve the format. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but given that it's easy to lose objectivity on something you've been staring at for this long, could use some feedback on what content you’ve found useful so far, or suggestions on what you’d like to see. If you have any ideas along those lines and can spare a minute -- hit the “Reply” button and send them my way.
+Results are similar to round 18, with `actix-core` showing a substantial lead over anything else, and the same relative lead compared to most implementations common to both rounds. The most notable change is that there's a new contender for the top of the charts in the form of [Drogon](https://github.com/an-tao/drogon), a C++ framework with its own asynchronous design. Actix is still outpacing it by a healthy margin, but Drogon in turn is leading the next framework by a wide margin of its own.
+
+![Fortunes Jan 1st, 2020 results](/assets/images/nanoglyphs/008-actix/fortunes-recent@2x.jpg)
+
+---
+
+I’m challenging myself to write 30 editions of _Nanoglyph_ in 2020. Its a time sink, but worth it. Similar to [Feynman’s learning technique](https://fs.blog/2012/04/feynman-technique/), having to dig into a subject to explain it to someone else is one of the best ways to solidify understanding. The weekly cadence is good exercise in getting words on paper _quickly_. I have a tendency to write at a snail's pace as the choice of every word is agonized over with excruciating attention -- a time-guzzling anti-habit that I'd love to knock over in the new year.
+
+The newsletter's format continues to be open. A goal for the project is that quantity shouldn’t negate a solid baseline of quality. I’m keeping an eye on that, but it's easy to lose objectivity on something you've been staring at for this long, so I could use some feedback on what content you’ve found useful so far, or suggestions on what you’d like to see (or don't want to see). If you have any ideas along those lines and can spare a minute -- hit the “Reply” button and send them my way.
 
 Happy new year! Until next week.
 
