@@ -7,7 +7,7 @@ title = "Actix Web: Optimization Amongst Optimizations"
 
 Hello from a new decade!
 
-It's already been a great reading day for retrospectives on the last ten years / predictions for the next. Here's to hoping that everyone had a good break (or at least a few days off), set or didn't set resolutions, and is ready to see what comes next.
+It's already been a great reading day for retrospectives on the last ten years / predictions for the next. Here's to hoping that everyone had a good break (or at least a few days off), set or didn't set resolutions, and is refreshed and ready for what comes next.
 
 ---
 
