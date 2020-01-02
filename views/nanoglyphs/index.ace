@@ -8,10 +8,14 @@
         form method="post" action="https://nanoglyph-signup.herokuapp.com/submit"
           input type="email" name="email" placeholder="Email"
           input type="submit" value="Subscribe to Nanoglyph"
-    ul
+    ul.issue-list
       {{range .Issues}}
         li
-          a href="/nanoglyphs/{{.Slug}}" {{.Number}} &mdash; {{.Title}}
+          a href="/nanoglyphs/{{.Slug}}"
+            / {{if .HookImageURL}}
+            /   img src="{{.HookImageURL}}" srcset="{{To2x .HookImageURL}} 2x, {{.HookImageURL}} 1x"
+            / {{end}}
+            {{.Number}} &mdash; {{.Title}}
           span.published-date {{FormatTime .PublishedAt}}
       {{end}}
     #footer

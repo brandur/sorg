@@ -15,7 +15,7 @@ Install Image Magick via Homebrew:
 Right-click on an image and hold `Option`. The "Copy
 <file>" option becomes "Copy <file> as Pathname".
 
-## Resize for article hooks
+## Resize for article/Nanoglyph hooks
 
     magick convert $GMI -resize 75x75^ -gravity center -extent 75x75 -quality 85 $GMO/hook.jpg
     magick convert $GMI -resize 150x150^ -gravity center -extent 150x150 -quality 85 $GMO/hook@2x.jpg
@@ -47,7 +47,7 @@ Or resized for 3:2:
 
     magick convert $GMI -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GMO/twitter@2x.jpg
 
-## Resize for Passages/Nanoglyphs images
+## Resize for Passages/Nanoglyph images
 
 Landscape:
 

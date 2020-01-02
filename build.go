@@ -1690,6 +1690,13 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 		return true, err
 	}
 
+	format, ok := pathAsImage(
+		path.Join(c.SourceDir, "content", "images", "nanoglyphs", issue.Slug, "hook"),
+	)
+	if ok {
+		issue.HookImageURL = "/assets/images/nanoglyphs/" + issue.Slug + "/hook." + format
+	}
+
 	locals := getLocals(issue.Title, map[string]interface{}{
 		"BodyClass": "web-only", // For web-specific CSS rules
 		"FavIcon":   "nanoglyph-152.png",
@@ -1753,6 +1760,13 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 		"", false)
 	if err != nil {
 		return true, err
+	}
+
+	format, ok := pathAsImage(
+		path.Join(c.SourceDir, "content", "images", "passages", issue.Slug, "hook"),
+	)
+	if ok {
+		issue.HookImageURL = "/assets/images/passages/" + issue.Slug + "/hook." + format
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{

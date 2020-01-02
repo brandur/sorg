@@ -32,6 +32,11 @@ type Issue struct {
 	// Draft indicates that the issue is not yet published.
 	Draft bool `toml:"-"`
 
+	// HookImageURL is the URL for a hook image for the issue (to be shown on
+	// the newsletter index) if one was found. Should generally be the same
+	// image as ImageURL.
+	HookImageURL string `toml:"-"`
+
 	// ImageAlt is the alternate description text for the issue's main image.
 	//
 	// Currently not used by Passages.
