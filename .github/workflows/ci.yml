@@ -59,7 +59,7 @@ jobs:
       - name: Clean
         run: make clean
 
-      - name: Install
+      - name: "Go: Install"
         run: make install
 
       - name: "Create database: sorg-test"
@@ -71,7 +71,7 @@ jobs:
           PGPASSWORD: postgres
           PGDATABASE: postgres
 
-      - name: Test
+      - name: "Go: Test"
         run: make test
         env:
           PGHOST: localhost
@@ -79,6 +79,9 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
           PGDATABASE: postgres
+
+      - name: "Go: Vet"
+        run: make vet
 
       - name: "Check: Dropbox image ?dl=0"
         run: make check-dl0
