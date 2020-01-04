@@ -88,6 +88,9 @@ jobs:
       - name: "Check: Gofmt"
         run: make check-gofmt
 
+      - name: "Check: Golint"
+        run: make lint"
+
       - name: "Check: Markdown headers"
         run: make check-headers
 
