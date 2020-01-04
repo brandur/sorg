@@ -17,7 +17,7 @@
         h2#nanoglyph
           a href="#nanoglyph" Nanoglyph
         .about-content
-        form method="post" action="https://nanoglyph-signup.herokuapp.com/submit"
+        form method="post" action="https://nanoglyph-signup.brandur.org/submit"
           input type="email" name="email" placeholder="Email"
           input type="submit" value="Subscribe to Nanoglyph"
         .about-content
@@ -27,7 +27,7 @@
         .divider
         h2#passages
           a href="#passages" Passages & Glass
-        form method="post" action="https://passages-signup.herokuapp.com/submit"
+        form method="post" action="https://passages-signup.brandur.org/submit"
           input type="email" name="email" placeholder="Email"
           input type="submit" value="Subscribe to Passages"
         .about-content
@@ -40,5 +40,5 @@
         / The idea here is to request something that will start spinning up the
         / target Heroku apps so that the user doesn't have to wait so long if
         / and when they do submit the form.
-        img src="https://nanoglyph-signup.herokuapp.com/public/tiny-preload-image.png"
-        img src="https://passages-signup.herokuapp.com/public/tiny-preload-image.png"
+        img src="https://nanoglyph-signup.brandur.org/public/tiny-preload-image.png"
+        img src="https://passages-signup.brandur.org/public/tiny-preload-image.png"

@@ -5,7 +5,7 @@
       p
         = include views/_nanoglyphs_about .
       #subscribe
-        form method="post" action="https://nanoglyph-signup.herokuapp.com/submit"
+        form method="post" action="https://nanoglyph-signup.brandur.org/submit"
           input type="email" name="email" placeholder="Email"
           input type="submit" value="Subscribe to Nanoglyph"
     ul.issue-list
@@ -19,4 +19,4 @@
           span.published-date {{FormatTime .PublishedAt}}
       {{end}}
     #footer
-      img src="https://nanoglyph-signup.herokuapp.com/public/tiny-preload-image.png"
+      img src="https://nanoglyph-signup.brandur.org/public/tiny-preload-image.png"
