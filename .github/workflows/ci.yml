@@ -15,7 +15,6 @@ jobs:
     env:
       CLOUDFRONT_ID: E2D97SPIHRBCUA
       GOOGLE_ANALYTICS_ID: UA-47798518-1
-      GOPATH: "/home/runner/work/sorg/go"
 
     services:
       postgres:
@@ -52,11 +51,10 @@ jobs:
       - name: Debug
         run: |
           echo "github.ref=${{ github.ref }}"
+          echo "go env GOPATH=$(go env GOPATH)"
           echo "pwd=$(pwd)"
-          echo "HOME=${HOME}"
           echo "GITHUB_WORKSPACE=${GITHUB_WORKSPACE}"
-          echo "GOPATH=${GOPATH}"
-          echo "GOROOT=${GOROOT}"
+          echo "HOME=${HOME}"
 
       - name: Clean
         run: make clean

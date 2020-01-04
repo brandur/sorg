@@ -1,7 +1,7 @@
 all: clean install test vet lint check-dl0 check-gofmt check-headers check-retina build
 
 build:
-	$(GOPATH)/bin/sorg build
+	$(shell go env GOPATH)/bin/sorg build
 
 compile: install
 
@@ -112,10 +112,10 @@ killall:
 	killall sorg
 
 lint:
-	$(GOPATH)/bin/golint -set_exit_status `go list ./... | grep -v /vendor/`
+	$(shell go env GOPATH)/bin/golint -set_exit_status ./...
 
 loop:
-	$(GOPATH)/bin/sorg loop
+	$(shell go env GOPATH)/bin/sorg loop
 
 # A specialized S3 bucket used only for caching resized photographs.
 PHOTOGRAPHS_S3_BUCKET := "brandur.org-photographs"
