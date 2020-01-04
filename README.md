@@ -72,6 +72,7 @@ make
 Run the test suite:
 
 ``` sh
+createdb sorg-test
 make test
 ```
 
@@ -87,17 +88,6 @@ Get more verbose output while running tests:
 ```
 go test -v ./markdown
 ```
-
-## Vendoring dependencies
-
-Dependencies are managed with dep. New ones are usually added with a basic
-`ensure` command:
-
-    dep ensure
-
-Existing packages an be updated with an `ensure -update`:
-
-    dep ensure -update github.com/foo/bar
 
 [blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
