@@ -1,4 +1,4 @@
-# sorg [![Build Status](https://travis-ci.org/brandur/sorg.svg?branch=master)](https://travis-ci.org/brandur/sorg)
+# sorg [![Build Status](https://github.com/brandur/sorg/workflows/sorg%20CI/badge.svg)](https://github.com/brandur/sorg/actions)
 
 A Go-based build script that compiles my [personal website][brandur]. This is
 the site's second incarnation, with the original being [a Ruby/Sintra
