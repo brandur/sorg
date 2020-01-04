@@ -10,9 +10,9 @@ The folding keyboard [from last week's](/nanoglyphs/003-12-factors) been scrappe
 
 ---
 
-This is _Nanoglyph_, a software weekly, issue four. It's an in-progress experiment in email-based publishing, disciplined writing, and independent communication less prone to the heavy gravity wells of social media. I’m not slinging it widely, but if you want to help with the prototype, you can [subscribe here](https://nanoglyph-signup.herokuapp.com).
+This is _Nanoglyph_, a software weekly, issue four. It's an in-progress experiment in email-based publishing, disciplined writing, and independent communication less prone to the heavy gravity wells of social media. I’m not slinging it widely, but if you want to help with the prototype, you can [subscribe here](/newsletter#nanoglyph).
 
-Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-come edition of [_Passages & Glass_](/newsletter) (my other, less software oriented, much less frequent newsletter) if you’re interested in hearing more.
+Today’s photo is from a recent dive trip to Honduras. More on that in soon-to-come edition of [_Passages & Glass_](/newsletter#passages) (my other, less software oriented, much less frequent newsletter) if you’re interested in hearing more.
 
 ---
 

@@ -39,7 +39,7 @@ AirPods are the one product line that’s been nothing but a shining light. Like
 
 ---
 
-I haven’t advertised this newsletter broadly, and while I’m experimenting with it, it has a circulation of roughly one person (me), but if you like prototypes, you can sign up for it early [here](http://nanoglyph-signup.herokuapp.com). If I keep going, you’ll keep getting them. If I don't, there shouldn't be any ill effects.
+I haven’t advertised this newsletter broadly, and while I’m experimenting with it, it has a circulation of roughly one person (me), but if you like prototypes, you can sign up for it early [here](/newsletter#nanoglyph). If I keep going, you’ll keep getting them. If I don't, there shouldn't be any ill effects.
 
 See you next week.
 

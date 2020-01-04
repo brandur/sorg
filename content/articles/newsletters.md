@@ -191,5 +191,5 @@ up to receive it][signup]. I won't bother you often.
 [exec]: https://github.com/brandur/sorg/blob/master/cmd/sorg-passages/main.go
 [fswatch]: https://github.com/emcrisostomo/fswatch
 [passages-signup]: https://github.com/brandur/passages-signup
-[signup]: https://passages-signup.herokuapp.com
+[signup]: /newsletter#passages
 [sorg]: https://github.com/brandur/osrg
