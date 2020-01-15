@@ -22,6 +22,8 @@ How embarrassing. I’ve spent a lot of time talking about how connection use is
 
 The signup page is a tiny Go app that talks to the Mailgun API. It was originally stateless itself (containing just a Mailgun API key), but I eventually realized that even with easy to find unsubscribe links in dispatched emails, it was pretty negligent not to have a double-opt in [1] process for signups to curb abuse. The database temporarily tracks the state of a partial signup as a user receives a confirmation email and clicks through to a unique URL to complete it.
 
+![Screenshot of Nanoglyph signup app](/assets/images/nanoglyphs/009-connection/nanoglyph-signup@2x.jpg)
+
 It’s an ultimate NIH setup which I’d normally strongly advocate against, but it does save a hefty newsletter service subscription fee, gives me perfect creative control over the final look and layout of emails and over what kind of creepy tracking they embed (or in the case of _Nanoglyph_, _do not_ embed).
 
 But back to the problem at hand, the reason my connections were depleted was a confluence of a few things:
