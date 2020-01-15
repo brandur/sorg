@@ -5,7 +5,7 @@ published_at = 2020-01-02T07:13:58Z
 title = "Connection"
 +++
 
-I’m back in San Francisco after the holidays. As soon as I left Calgary, the weather there took a turn for the worse with lows around -35C. My narrow escape was extra fortunate as my body, now acclimated to moderate Mediterranean-esque climate conditions, would’ve buckled under the stress. But I do miss the snow. Depicted above is a small sample of some of the beautiful [hoarfrost]() that the region sees regularly.
+I’m back in San Francisco after the holidays. As soon as I left Calgary, the weather there took a turn for the worse with lows around -35C. My narrow escape was extra fortunate as my body, now acclimated to moderate Mediterranean-esque climate conditions, would’ve buckled under the stress. But I do miss the snow. Depicted above is a small sample of some of the beautiful hoarfrost that the region sees regularly.
 
 If you’re wondering what in the name of all that is holy you’re reading right now, it’s a weekly newsletter called _Nanoglyph_, loosely written around the themes of simple and sustainable software. You may have signed up recently after reading the last edition on [Actix Web](/nanoglyphs/008-actix) and the optimizations it’s put in place to lead the TechEmpower benchmarks. If you want to eject and never see it again, you can [unsubscribe right here](%unsubscribe_url%).
 
@@ -53,4 +53,5 @@ PgBouncer
 ---
 
 [1] “Double opt in” is email marketing jargon that means a user opted in once by entering an email, then opted in again by confirming it via link sent to it. Helps confirm that entered emails are valid and to curb abuse.
+
 [2] `pg_stat_activity` is a system table in Postgres that can be queried to show information on active Postgres backends (i.e. connections) including current query, time spent in current query, or whether they’re idle.
