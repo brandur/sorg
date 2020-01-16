@@ -46,13 +46,44 @@ The side effect is that during busy periods a request may have to wait for a con
 
 ---
 
-Bad defaults
+## First contact (#first-contact)
 
-Turns out most connections are idle, but managed Postgres providers set their configurations with the worst case scenario in mind.
+It’s general wisdom that no software survives first contact with production, but the sheer frequency of the connection problem makes it particularly egregious. It’s one that every user of Postgres is going to run into at some point, probably sooner than later, and most likely the first time they see real traffic, making an underwhelming launch an extraordinarily likely outcome. It seems like something that better defaults and better APIs could help with.
 
-PgBouncer
+A major improvement that we’ve been trending toward over the last decade across many language and projects is making connection pools the default way to talk to databases. In the case of database connections, the pool doesn’t only serve as an optimization to reuse connections, but also to utilize them efficiently and to control their upper bound. Think back to Rails where the default for a long time (and still is where process-based concurrency is used) was to have each worker operate in isolation and open a connection that it never closed. Consider that most workers are idle most of the time, and you can see how inefficiently connections are used.
+
+But Go’s `database/sql` uses a connection pool, and that still didn’t save me. Go’s problem is that it has the right options, but they’re easy to miss. They’re not part of the constructor, and if you read the package’s documentation, they’re mentioned well below the fold and only as part of the index list of all functions. Preferring the use of a builder pattern, like the one provided by [`sqlx`](https://github.com/launchbadge/sqlx), helps to remind users that they should look at other configuration:
+
+``` rust
+let pool = sqlx::PgPool::builder()
+    .max_size(5)
+    .build(“postgres://localhost:5432/mydb”)
+    .await?;
+```
+
+## On the backend (#backend)
+
+There’s potential room for improvement on the Postgres end as well. Managed installations tend to be conservative with connection numbers with an eye for the worst case scenario — if all those connections really get used, it can create contention in the database and slow its workload. But often in real world applications many connections are idle, and increasing 
+
+This is why so many Postgres users have so much success with connection poolers like [PgBouncer](https://github.com/pgbouncer/pgbouncer) and [Odyssey](https://github.com/yandex/odyssey). They let applications hold huge numbers of open connections, and remap them to a relatively fewer number of active connections to the database. Their use is so ubiquitous for serious uses of Postgres that there’s a strong argument that it should provide something equivalent out of the box, and indeed [some effort has been made to that end](https://www.postgresql.org/message-id/ac873432-31cf-d5e4-0b80-b5ac95cfe385@postgrespro.ru), though it’s not yet clear whether the project’s gatekeepers will accept it.
 
 ---
+
+## Flowering habits (#flowering-habits)
+
+I’ve been enjoying reading about caring for Phalaenopsis orchids. Even if that name isn’t familiar, it’s the one orchid that everyone has surely seen before as it’s the one type of orchid regularly on sale everywhere from Safeway to IKEA. Here’s one of mine.
+
+TODO: Photo
+
+Most owners (myself included) are guilty of treating them as disposable items. They look nice for a few months until their flowers fall off, don’t immediately grow more, and so are replaced with fresh plants bought new. Those of us who’ve tried to get them to re-flower don’t have an easy time of it, and generally give up on the project.
+
+An aficionado who grows orchids in his downtown Calgary (purely coincidental) condominium writes some of the most [comprehensive Phalaenopsis care articles](http://herebutnot.com/how-we-grow-orchids-in-calgary-alberta-canada/) there are. These multi-thousand word affairs include, among other things, advice to repot new plants immediately on purchase to avoid root rot, weekly watering regiments with a very specific fertilizer mix, and “leaching” to avoid the build up of hard water minerals that lead to high pH. His results are _wonderful_, with plant prosperity demonstrated majestic size.
+
+The complete sets for total orchid care are daunting, but I’m starting with a couple big ones this weekend. Sphagnum moss in hand, I’ll be repotting my couple Phalaenopses, then moving onto a complete watering/fertilization and flushing cycle.
+
+---
+
+I’ll give you my usual reminder that if you have feedback or ideas for future material, hit “reply” and send them my way. Until next week, and remember to keep a sharp eye on those connection counts.
 
 [1] “Double opt in” is email marketing jargon that means a user opted in once by entering an email, then opted in again by confirming it via link sent to it. Helps confirm that entered emails are valid and to curb abuse.
 
