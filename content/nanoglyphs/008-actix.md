@@ -35,7 +35,7 @@ Projects in TechEmpower provide implementations for six different "test types" t
 
 _Fortunes_ is the most interesting of TechEmpower's tests because it does more. The trouble with the simpler tests that do something like send a canned JSON response is that they have more than a dozen frameworks that perform almost identically -- they've all excelled at ensuring that one short piece of the pipeline is well optimized. _Fortunes_ requires a greater range of important real-world functions to all perform well.
 
-## Actix Web (#actix-wegb)
+## Actix Web (#actix-web)
 
 Actix Web is a light framework written in Rust. I first wrote about using it for a project [a year and a half ago](/rust-web), and am happy to report that unlike some of Rust's other web frameworks, Actix Web has been consistently well-maintained throughout that entire period and stayed up-to-date with new language features and conventions. Notably, its 2.0 release which integrates Rust's newly stable standard library futures, [shipped this week](https://github.com/actix/actix-web/releases/tag/web-v2.0.0).
 
