@@ -6,10 +6,8 @@ github.com/andybalholm/cascadia v1.0.0 h1:hOCXnnZ5A+3eVDX8pvgl4kofXv2ELss0bKcqRy
 github.com/andybalholm/cascadia v1.0.0/go.mod h1:GsXiBklL0woXo1j/WYWtSYYC4ouU9PqHO0sqidkEA4Y=
 github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuPk=
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
-github.com/brandur/modulir v0.0.0-20200127223252-30005e1b4706 h1:phAwGaV0ddJzusqzFDchvG0melCCbMlJyzA/ne/HqIY=
-github.com/brandur/modulir v0.0.0-20200127223252-30005e1b4706/go.mod h1:odHubbvgP43H2WI5+2u7FBbqvPVTnjKOi+B/ahesfiU=
-github.com/brandur/modulir v0.0.0-20200127230932-d4bbf6dfedc5 h1:ncQLE9t9XzQ/7iq2h3XYjGjcSU/dB9+GTBurSNM7GSg=
-github.com/brandur/modulir v0.0.0-20200127230932-d4bbf6dfedc5/go.mod h1:odHubbvgP43H2WI5+2u7FBbqvPVTnjKOi+B/ahesfiU=
+github.com/brandur/modulir v0.0.0-20200128164907-b90ba033ae0d h1:FP4Vez8otFm4B27cZzC+hWXd5RllJ/5iVYC7BYbCisg=
+github.com/brandur/modulir v0.0.0-20200128164907-b90ba033ae0d/go.mod h1:odHubbvgP43H2WI5+2u7FBbqvPVTnjKOi+B/ahesfiU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
