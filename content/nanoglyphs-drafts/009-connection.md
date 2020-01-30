@@ -73,7 +73,7 @@ This is why so many Postgres users have so much success with connection poolers 
 
 I’ve been enjoying reading about caring for Phalaenopsis orchids. Even if that name isn’t familiar, it’s the one orchid that everyone has surely seen before as it’s the one type of orchid regularly on sale everywhere from Safeway to IKEA. Here’s one of mine.
 
-TODO: Photo
+![A specimen of Phalaenopsis](/assets/images/nanoglyphs/009-connection/phalaenopsis@2x.jpg)
 
 Most owners (myself included) are guilty of treating them as disposable objects. They look nice for a few months until their flowers fall off, don’t immediately grow more, and so are replaced with fresh plants bought new. Those of us who’ve tried to get them to re-flower don’t have an easy time of it, and generally give up on the project.
 
