@@ -1,7 +1,7 @@
 +++
 image_alt = "A snow drift and blue sky in Calgary."
 image_url = "/assets/images/nanoglyphs/009-connection/hoarfrost@2x.jpg"
-published_at = 2020-01-02T07:13:58Z
+published_at = 2020-01-31T20:36:11Z
 title = "Connection"
 +++
 
