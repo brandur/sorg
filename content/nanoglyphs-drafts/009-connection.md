@@ -7,24 +7,24 @@ title = "Connection"
 
 I’m back in San Francisco after the holidays. As soon as I left Calgary, the weather there took a turn for the worse with lows around -35C. My narrow escape was extra fortunate as my body, now acclimated to moderate Mediterranean-esque climate conditions, would’ve buckled under the stress. But I do miss the snow. Depicted above is a small sample of some of the beautiful hoarfrost that the region sees regularly.
 
-If you’re wondering what in the name of all that is holy you’re reading right now, it’s a weekly newsletter called _Nanoglyph_, loosely written around the themes of simple and sustainable software. You may have signed up recently after reading the last edition on [Actix Web](/nanoglyphs/008-actix) and the optimizations it’s put in place to lead the TechEmpower benchmarks. If you want to eject and never see it again, you can [unsubscribe right here](%unsubscribe_url%).
+If you’re wondering what in the name of all that is holy you’re reading right now, it’s a weekly newsletter called _Nanoglyph_, loosely written around the themes of simple and sustainable software. You may have signed up recently after reading the last edition on [Actix Web](/nanoglyphs/008-actix) and its optimizations a few weeks ago. If you want to eject and never see it again, you can [unsubscribe right here](%unsubscribe_url%).
 
 ---
 
-The 008 edition of this newsletter experienced a bit of a traffic surge, and a larger than normal number of people ended up clicking through to [its signup page](https://nanoglyph-signup.brandur.org/). An hour or so later a reader (thanks Thomas!) emailed me to say that trying to use the app was producing that detestable error message familiar to all kinds of Postgres users around the world:
+The 008 edition of this newsletter experienced a bit of a traffic surge, and a larger than normal number of people ended up clicking through to [its signup page](https://nanoglyph-signup.brandur.org/). An hour or so later a reader (thanks Thomas!) emailed me to say that trying to use the app was producing that detestable error message familiar to Postgres users around the world:
 
 ```
 FATAL: remaining connection slots are reserved for
 non-replication superuser connections
 ```
 
-How embarrassing. I’ve spent a lot of time talking about how connection use is the single largest operation caltrop Postgres users are likely to find lodged in their foot, and gone so far as to write a detailed article on [connection management](/postgres-connections). I learnt my lesson ten years ago, and should've known how to avoid this problem by now.
+How embarrassing. I’ve spent a lot of time talking about how connection use is the single largest operation caltrop Postgres users are likely to find lodged in their foot, and gone so far as to write a detailed article on [how to manage connections](/postgres-connections). I learnt my lesson ten years ago, and it should've been perfectly crystallized by now, but I still find myself relearning it periodically.
 
 The signup page is a tiny Go app that talks to the Mailgun API. It was originally stateless itself (containing just a Mailgun API key), but it eventually dawned on me that even with easy to find unsubscribe links in dispatched emails, it was pretty negligent not to have a double-opt in [1] process for signups to curb abuse. The database temporarily tracks the state of a partial signup as a user receives a confirmation email and clicks through to a unique URL to complete it.
 
 ![Screenshot of Nanoglyph signup app](/assets/images/nanoglyphs/009-connection/nanoglyph-signup@2x.jpg)
 
-It’s an ultimate NIH setup which you should never _ever_ do, but it does save a hefty newsletter service subscription fee, conveys perfect creative control over the final look and layout of emails and over what kind of creepy tracking they embed (or in the case of _Nanoglyph_, do not embed).
+It’s an ultimate NIH setup which you should never ever do, but it does save a hefty newsletter service subscription fee, conveys perfect creative control over the final look and layout of emails and over what kind of creepy tracking they embed (or in the case of this newsletter, do not embed).
 
 But back to the problem at hand, the reason my connections were depleted was a confluence of a few things:
 
@@ -48,7 +48,7 @@ The side effect is that during busy periods a request may have to wait for a con
 
 ## First contact (#first-contact)
 
-It’s general wisdom that no software survives first contact with production, but the sheer frequency of the connection problem makes it particularly egregious. It’s one that every user of Postgres is going to run into at some point, probably sooner than later, and most likely the first time they see real traffic, making an underwhelming launch an extraordinarily likely outcome. It seems like something that better defaults and better APIs could help with.
+It’s general wisdom that no software survives first contact with production, but the sheer frequency of the connection problem makes it particularly egregious. It’s one that every user of Postgres is going to run into at some point, probably sooner than later, and most likely the first time they see real traffic, making an underwhelming launch an extraordinarily likely outcome. This seems like a problem that better defaults and better APIs could help with.
 
 A major improvement that we’ve been trending toward over the last decade across many language and projects is making connection pools the default way to talk to databases. In the case of database connections, the pool doesn’t only serve as an optimization to reuse connections, but also to utilize them efficiently and to control their upper bound. Think back to Rails where the default for a long time (and still is where process-based concurrency is used) was to have each worker operate in isolation and open a connection that it never closed. Consider that most workers are idle most of the time, and you can see how inefficiently connections are used.
 
@@ -77,7 +77,7 @@ I’ve been enjoying reading about caring for Phalaenopsis orchids. Even if that
 
 Most owners (myself included) are guilty of treating them as disposable objects. They look nice for a few months until their flowers fall off, don’t immediately grow more, and so are replaced with fresh plants bought new. Those of us who’ve tried to get them to re-flower don’t have an easy time of it, and generally give up on the project.
 
-An aficionado who grows orchids in his downtown Calgary (purely coincidentally, also my home city) condominium writes some of the most [comprehensive Phalaenopsis care articles](http://herebutnot.com/how-we-grow-orchids-in-calgary-alberta-canada/) there are. These multi-thousand word affairs include, among other things, advice to repot new plants immediately on purchase to avoid root rot, weekly watering regiments with a very specific fertilizer mix, and “leaching” to avoid the build up of hard water minerals that lead to high pH. His results are _wonderful_, with plant prosperity demonstrated majestic size.
+An aficionado who grows orchids in his downtown Calgary (purely coincidentally, also my home city) condominium writes some of the most [comprehensive Phalaenopsis care articles](http://herebutnot.com/how-we-grow-orchids-in-calgary-alberta-canada/) there are. These multi-thousand word affairs include, among other things, advice to repot new plants immediately on purchase to avoid root rot, weekly watering regiments with a very specific fertilizer mix, and “leaching” to avoid the build up of hard water minerals that lead to high pH. His results are wonderful, with the plants showing their prosperity through majestic size.
 
 The complete sets for total orchid care are daunting, but I’m starting with a couple big ones this weekend. Sphagnum moss in hand, I’ll be repotting my couple Phalaenopses, then moving onto a complete watering/fertilization and flushing cycle.
 
