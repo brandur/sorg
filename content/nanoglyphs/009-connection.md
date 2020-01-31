@@ -7,7 +7,7 @@ title = "Connection"
 
 I’m back in San Francisco after the holidays. As soon as I left Calgary, the weather there took a turn for the worse with lows around -35C. My narrow escape was extra fortunate as my body, now acclimated to moderate Mediterranean-esque climate conditions, would’ve buckled under the stress. But I do miss the snow. Depicted above is a small sample of some of the beautiful hoarfrost that the region sees regularly.
 
-If you’re wondering what in the name of all that is holy you’re reading right now, it’s a weekly newsletter called _Nanoglyph_, loosely written around the themes of simple and sustainable software. You may have signed up recently after reading the last edition on [Actix Web](/nanoglyphs/008-actix) and its optimizations a few weeks ago. If you want to eject and never see it again, you can [unsubscribe right here](%unsubscribe_url%).
+If you’re wondering what in the name of all that is holy you’re reading right now, it’s a weekly-ish newsletter called _Nanoglyph_, loosely written around the themes of simple and sustainable software. You may have signed up recently after reading the last edition on [Actix Web](/nanoglyphs/008-actix) and its optimizations a few weeks ago. If you want to eject and never see it again, you can [unsubscribe right here](%unsubscribe_url%).
 
 ---
 
