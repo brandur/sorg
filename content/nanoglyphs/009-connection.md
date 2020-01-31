@@ -69,7 +69,7 @@ This is why so many Postgres users have so much success with connection poolers 
 
 ---
 
-## Orchidaceae habits (#orchidaceae-habits)
+## The ubiquitous Orchidaceae (#orchidaceae)
 
 I’ve been enjoying reading about caring for Phalaenopsis orchids. Even if that name isn’t familiar, it’s the one orchid that everyone has surely seen before as it’s the one type of orchid regularly on sale everywhere from Safeway to IKEA. Here’s a vibrant selection of them over at Trader Joe's.
 
