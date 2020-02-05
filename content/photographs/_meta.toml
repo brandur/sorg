@@ -2039,3 +2039,24 @@
   original_image_url = "https://www.dropbox.com/s/kq26op8gq3vo5xi/L1080244.JPG?dl=1"
   slug = "2019-seagrape-ladder"
   title = "Ladder to the Caribbean"
+
+[[photographs]]
+  description = "A nocturnal visit to the Gardens by the Bay in Singapore."
+  occurred_at = 2019-10-13T17:05:00Z
+  original_image_url = "https://www.dropbox.com/s/0amg3zzvh6w8j19/L1080279.JPG?dl=1"
+  slug = "2019-gardens-by-the-bay"
+  title = "Gardens At Night"
+
+[[photographs]]
+  description = "A moving, large format, public exhibit at San Francisco's Museum of Modern Art."
+  occurred_at = 2019-12-01T17:27:00Z
+  original_image_url = "https://www.dropbox.com/s/ywcoofzdn2vhq53/L1080399.JPG?dl=1"
+  slug = "2019-moma"
+  title = "The SF MOMA"
+
+[[photographs]]
+  description = "Taken from a cavern between China Beach and Baker Beach in San Francisco. I got my feet wet for this one."
+  occurred_at = 2019-12-08T16:11:00Z
+  original_image_url = "https://www.dropbox.com/s/yhrmi7nbmjsjedm/L1080426.JPG?dl=1"
+  slug = "2019-between-beaches"
+  title = "Between Beaches"
