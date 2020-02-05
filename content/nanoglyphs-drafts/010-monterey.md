@@ -6,3 +6,5 @@ title = "Monterey & the Dark Side of Software"
 +++
 
 Hello.
+
+![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
