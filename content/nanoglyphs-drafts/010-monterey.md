@@ -8,3 +8,5 @@ title = "Monterey & the Dark Side of Software"
 Hello.
 
 ![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
+
+![The Mariana Trench](/assets/images/nanoglyphs/010-monterey/mariana-trench@2x.jpg)
