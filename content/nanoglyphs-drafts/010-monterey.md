@@ -5,51 +5,63 @@ published_at = 2020-02-01T02:56:57Z
 title = "Monterey; the Darker Side"
 +++
 
-I’m recently back from a dive weekend in Monterey where I was doing some instructor-led dives to finish my PADI Advanced Open Water certification. The photo above is of the Cost Guard Pier from San Carlos Beach, taken a little before sunrise.
+In January I did a dive weekend in Monterey doing some educational dives to finish my PADI Advanced Open Water certification. The photo above is of the Coast Guard Pier from the perspective of San Carlos Beach, taken a little before sunrise.
 
-Monterey’s best known for its famous aquarium (as depicted in _Star Trek IV_) and its multitude of cute sea otters that you can regularly spot from shore, but it’s also a well-known dive spot. The Bay Area especially is somewhat hostile in terms of dive conditions, so it’s common for dive shops around here and even as far north as Sacramento to send groups all the way to Monterey for field tests. The dive shop I went with was located in Sausalito for example, and given just how coastal that is, you’d intuitively think they’d dive closer to home (but they don’t).
+Monterey’s best known for its famous aquarium (as depicted in _Star Trek IV_ [1]) and multitude of adorable sea otters who are regularly visible from shore, but it’s also a dive spot well known to enthusiasts along the west coast. The Bay Area turns out to be quite hostile in terms of dive conditions, so it’s common for dive shops around here, and even as far north as Sacramento, to range all the way to Monterey to test their students in open water. I dove with a shop in Sausalito, and given how coastal the town is, you'd intuitively think they’d dive closer to home -- maybe even right off their back doorstep. But it's a case where intuition would be wrong, all their field tests happen during weekend trips to Monterey.
 
-That said, just because it’s not inhospitable for diving doesn’t mean that it’s hospitable either. I was using a 7 mm wetsuit (for reference, you can dive in many popular Caribbean and Pacific spots with a 3 mm no problem) with a hood, and two layers worth on the torso. It was so much neoprene that unable to easily bend in most places, I walked around land with a stiff terminator stride. I felt like the Michelin Man, and had the suit been white instead of black, would have looked like him too. And even with all the suit’s trouble, that water was _chilly_. Getting in initially was okay thanks to all the excitement of pushing past waves and avoiding submarine rocks, but at 12C, the water saps the heat out of you. After being in there only 30 minutes, I found myself fantasizing about the 12C air temperature on land, which looks like the same temperature but feels _far_ warmer.
+That said, just because Monterey isn't inhospitable for diving doesn’t make it hospitable either. I was using a 7 mm wetsuit (for reference, you can dive in many popular Caribbean and Pacific spots with a 3 mm no problem) with a hood, and two layers of it padding the torso. So much neoprene that, unable to bend in any of the normal places, I walked around all day with the stiff stride of Schwarzenegger's Terminator. I felt more like the Michelin Man though, and had the suit been white instead of black, would have looked like him too.
 
---
-
-The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility. Day two wasn’t so good. We gathered on the beach at 6 AM to do a pre-dawn dive. On our first try getting in, the waves were especially rough, and the weight and surface area of our dive gear didn’t make it easy getting past them. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With strong currents and visibility measured in feet, we never did see that mask again.
-
-![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
-
-Trying to resolve my new fin shortage, a few minutes later I walked into one of the local dive shops in my soaking wetsuit, plunked my credit card down on the counter, and said, “I need to rent some fins for the day.”
-
-Moments later, our group’s other dive instructor walked into the same local dive shop in his soaking wetsuit, plunked his credit card down on the counter, and said, “I need to rent some fins for the day.”
-
-I thought I was being mocked, but no. The shop’s other dive team had faired no better than ours -- within minutes of starting their dive, he’d lost a fin to a bad wave, and like our group’s mask, it was never seen again.
-
-We did eventually make it out, although we had to prolong the next dive to make up for the miss on the first. The best part of the day was a submarine knot-tying exercise -- it would have been entertaining in any conditions, but it was especially good on this day because the extra energy it took to stabilize the weight belt we were trying to rescue from the ocean floor in chaotic ocean currents was perfect for staying warm.
+Even with all the suit’s trouble, that water was _cold_. Like sap-the-life-out-of-you cold. Normally the worst part about getting into the ocean is the shock of the water in those first few moments, but here it was reversed. Carrying heavy equipment to the beach and the excitement of pushing out past waves and avoiding submarine rocks kept you pleasantly warm, but over the dive's next 30 to 45 minutes of being relatively still in 12C (54F) water, that heat drains away. It wasn't long before I found myself fantasizing about the Monterey shore -- also about 12C midday, but which felt like a sizzling beach in Cabo by comparison.
 
 ---
 
-So what’s all that got to do with software? Admittedly, not much, but to fit the somber feeling of the mood photo above, I’ve selected some amazing pieces that showcase some of software’s darker aspects.
+The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility, but day two wasn’t as good. We gathered on the beach at 6 AM to do a pre-dawn dive. On our first entry, the waves were especially rough, and the weight and surface area of our dive gear made getting out past them out to open water difficult. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With constant tumultuous currents and visibility measured in feet, we never did see that mask again.
 
-A sin that the computing blogosphere could fairly be accused of is too much cheerleading. In sharp contrast to the internet at large, it’s quite common to present new technologies and new practices in an overly positive light to build hype around them, and less common to later talk about their problems as those become known. The generally positive spin is mostly a good thing, but it often presents a distorted view to potential new adopters. In this edition we’re briefly going to put a finger on the other side of the scale.
+![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
+
+Trying to fix my newfound fin problem, a few minutes later I walked into one of the local dive shops in my soaking wetsuit, plunked my credit card down on the counter, and said, “I need to rent some fins for the day.”
+
+Moments later, our group’s other dive instructor walked into the same local dive shop in his soaking wetsuit, plunked his credit card down on the counter, and said, “I need to rent some fins for the day.”
+
+For three seconds I thought he was mocking me, but no. The other dive team had faired no better than ours -- within minutes of starting their dive, he’d lost a fin to a bad wave, and like our group’s mask, it was never seen again.
+
+We did eventually make it out to sea, but had to prolong the next dive to make up for the miss on the first. The best part of the day was a submarine knot-tying exercise -- it would have been entertaining in any conditions, but it was especially good on this day because the energy it took to stabilize a distressed weight belt on the ocean floor in chaotic ocean currents was perfect for getting warm.
+
+So, all in all, awesome trip.
+
+---
+
+What’s all that got to do with software? Not much, but to fit the somber feeling evoked by the Pacific's frigid depths, I’ve selected some amazing pieces that showcase some of software’s darker aspects.
+
+A sin that the computing blogosphere could fairly be accused of is cheerleading to a fault. In sharp contrast to the internet at large, it’s quite common to present new technologies and new practices in an unequivocally positive light to build hype around them, but less common to later talk about their problems as those become known. The generally positive spin is mostly a good thing as generates interest and catalyzes discovery, but it presents a distorted view to potential new adopters. In this edition we’re briefly going to put a finger on the other side of the scale.
 
 ---
 
 ## Asyncastrophe (#asyncastrophe)
 
-Asynchronous programming models sure seem to be a popular candidate for the future of concurrency, with a big uptake in them across C#, JavaScript, Python, and Rust in recent years. [“I’m not feeling the async pressure”](https://lucumr.pocoo.org/2020/1/1/async-pressure/) goes into one of it’s major pitfalls.
+The asynchronous programming model sure seems to be a strong candidate for the future of most concurrency, with a big uptake in recent years across C#, JavaScript, Python, and Rust. [I'm not feeling the async pressure](https://lucumr.pocoo.org/2020/1/1/async-pressure/) goes into one of its major pitfalls.
 
-Despite the model being willing by default to try for nearly limitless concurrency (e.g. an asynchronous socket connect will happily spin off as many tasks as there are new connections), there’s almost certainly a bottleneck somewhere in the system, and that will eventually cause it to degrade in ways that are unexpected and possibly catastrophic.
+It describes how despite the model being willing by default to try for nearly limitless concurrency (e.g. an asynchronous socket connect will happily spin off as many tasks as there are new connections), there’s almost certainly a bottleneck somewhere in the system, and that bottleneck will eventually cause it to degrade in ways that are unexpected, and possibly catastrophic.
 
-For example, an asynchronous HTTP server may allow an unlimited number of clients to connect, but if the program is backed by a database and connection pool, that will put a hard cap on the number of those clients that it can actually server. Clients unable to acquire a database connection get parked in an async task until they eventually timeout. Given an overloaded system, this could easily degenerate to a point where a majority of requests are failing.
+For example, an asynchronous HTTP server may allow an unlimited number of clients to connect, but if the program is backed by a database and connection pool, that will put a hard cap on the number of those clients that can actually be served. Clients unable to acquire a database connection get parked in an async task until something eventually times out. Given a severely overloaded system, this could easily degenerate to a point where a majority of requests are failing messily.
 
 The article suggests building flow control into programs and into the APIs of underlying async libraries. From the example above, a program might track its own busyness based off the number of clients currently being served, and respond to new connections with a 503 if deemed to be too high instead of assuming the best by blindly handling it.
 
+``` python
+request_handler = RequestHandlerService()
+if not request_handler.is_ready:
+    response = Response(status_code=503)
+else:
+    response = await request_handler.handle(request)
+```
+
 ## My code’s compiling (#codes-compiling)
 
-Pingcap writes about [Rust’s compilation model “calamity”](https://pingcap.com/blog/rust-compilation-model-calamity/). They develop a major Rust program containing roughly 2 million lines of code and find that compilation times can be a major hit to productivity as it takes 15 minutes to compile in development and 30 minutes in release mode. The author goes on to outline some of Rust’s features that lead to longer compile cycles.
+Pingcap writes about [Rust’s compilation model “calamity”](https://pingcap.com/blog/rust-compilation-model-calamity/). They develop a major Rust program containing roughly 2 million lines of code (including dependencies) and find that compilation times can be a major hit to productivity as it takes 15 minutes to compile in development and 30 minutes for release. The author goes on to outline some of Rust’s features that lead to longer compile cycles, many of which are designed to increase safety or runtime speed, but with the price of more heavy lifting during compilation.
 
-A commenter on HN point out that these times aren’t actually _that_ bad in that compilation would be similar for a C++ program of the same size. Someone else crunched the numbers to estimate that a Go program of that size would compile quite a bit faster in about 2 minutes, but it has to be considered that this is mostly possible because of language’s shunning of generics. What would be a major benefit to developer productivity through safer data structures and less repeated code would also a detractor in longer compile times.
+A commenter on HN point out that these times aren’t actually _that_ bad in that they'd be similar for a C++ program of the same size. Someone else crunched the numbers to estimate that a Go program of this magnitude would compile quite a bit faster in about 2 minutes, a speed up that's probably mostly attributable to language’s infamous shunning of generics. A major boon to productivity through safer data structures and less repeated code also turns out to be a detractor in longer compile times.
 
-It’s hard not to be in favor of generics, but a fast edit-compile-run loop is of paramount importance. Having to repeat code and write with `interface{}` in Go is annoying, but in a very real way it feels _much_ more productive than any other language because everything is just so fast -- `go build`? It’s already done. `go test`? Finished 50 ms after you hit the return key. The computer waits on the human instead of the human waiting on the computer, which is a very good (and unfortunately very unique) feeling.
+It’s hard not to be in favor of generics, but a fast edit-compile-run loop is of paramount importance. Having to repeat code and write with `interface{}` in Go is annoying, but in a very real way it feels _much_ more productive than any other language because everything is just _so_ fast. `go build`? It’s done in less time than it took you to type it. `go test`? Finished milliseconds after you hit the return key. The computer waits on the human instead of the human waiting on the computer, which is a very good (and unfortunately practically unique) feeling.
 
 ## Wirth’s eternal law (#wirths)
 
@@ -71,8 +83,10 @@ The Hadal zone is even further down than the abyssal zone at 20,000 to 36,000 fe
 
 ![The Mariana Trench](/assets/images/nanoglyphs/010-monterey/mariana-trench@2x.jpg)
 
-Aside from the US Navy (which owned the _Trieste_), some of the Deep’s main prospective explorers have been billionaires (or at least 100s of millionaires), with James Cameron making in 2010 on an expedition that by all accounts was extremely technically adept despite his background as a filmmaker. As a foil to Cameron, Richard Branson blustered about making a descent of his own in a science-fiction submersible reminiscent of a fighter jet, but didn’t make any headway on the project.
+Aside from the US Navy (owners of the _Trieste_), some of the Deep’s main prospective explorers have been billionaires (or at least 100s of millionaires), with James Cameron making in 2010 on an expedition that by all accounts was extremely technically adept despite his background as a filmmaker. As a foil to Cameron, Richard Branson blustered about making a descent of his own in a science-fiction submersible reminiscent of a fighter jet, but didn’t make any headway on the project.
 
 Reading about the difficulties of these expeditions sure threw my troubles with some cold water and a couple waves into sharp contrast.
 
 Until next week.
+
+[1] _Star Trek IV_ asserts that the aquarium visited by Kirk and Mr. Spock is across the Golden Gate in Sausalito, but it's actually the one in Monterey, which at a ~3 hour drive from San Francisco, wouldn't have been quite so plot-convenient to get to.
