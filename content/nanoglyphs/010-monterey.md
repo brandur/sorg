@@ -23,7 +23,7 @@ Trying to correct my newfound fin deficiency, a few minutes later I walked into 
 
 Moments later, our group’s other dive instructor walked into the same local dive shop in his soaking wetsuit, slapped his credit card down on the counter, and said, “I need to rent some fins for the day.”
 
-For three seconds I thought he was mocking me, but no. The other dive team had faired no better than ours -- within minutes of starting their dive, he’d lost a fin to a bad wave, and like our group’s mask, it was never seen again.
+For three seconds I thought he was mocking me, but no. The other dive team had faired no better than ours, with a number of early misadventures. Most of them were minor, except that within minutes of starting their dive, he’d lost a fin to a bad wave, and like our group’s mask, it was never seen again.
 
 We did eventually make it out to sea, but had to prolong the next dive to make up for the miss on the first. The best part of the day was a submarine knot-tying exercise -- it would have been entertaining in any conditions, but it was especially good on this day because the energy it took to stabilize a distressed weight belt on the ocean floor in chaotic ocean currents was perfect for getting warm.
 
