@@ -1,7 +1,7 @@
 +++
 #image_alt = "San Carlos Beach in Monterey at sunrise."
 #image_url = "/assets/images/nanoglyphs/010-monterey/san-carlos@2x.jpg"
-published_at = 2020-02-14T00:56:30Z
+published_at = 2020-02-07T18:26:23Z
 title = "Alfred, and the Importance of Tool Sharpening"
 +++
 
