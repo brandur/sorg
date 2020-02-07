@@ -2,12 +2,12 @@
 image_alt = "San Carlos Beach in Monterey at sunrise."
 image_url = "/assets/images/nanoglyphs/010-monterey/san-carlos@2x.jpg"
 published_at = 2020-02-01T02:56:57Z
-title = "Monterey; the Darker Side"
+title = "Monterey; the Darker Side of Software"
 +++
 
 In January I did a dive weekend in Monterey doing some educational dives to finish my PADI Advanced Open Water certification. The photo above is of the Coast Guard Pier from the perspective of San Carlos Beach, taken a little before sunrise.
 
-Monterey’s best known for its famous aquarium (as depicted in _Star Trek IV_ [1]) and multitude of adorable sea otters who are regularly visible from shore, but it’s also a dive spot well known to enthusiasts along the west coast. The Bay Area turns out to be quite hostile in terms of dive conditions, so it’s common for dive shops around here, and even as far north as Sacramento, to range all the way to Monterey to test their students in open water. I dove with a shop in Sausalito, and given how coastal the town is, you'd intuitively think they’d dive closer to home -- maybe even right off their back doorstep. But it's a case where intuition would be wrong, all their field tests happen during weekend trips to Monterey.
+Monterey’s best known for its famous aquarium (as depicted in _Star Trek IV_ [1]) and flotilla of adorable sea otters who are regularly visible from shore, but it’s also a dive spot well known to enthusiasts along the west coast. The Bay Area turns out to be quite hostile in terms of dive conditions, so it’s common for dive shops around here, and even as far north as Sacramento, to range all the way to Monterey to test their students in open water. I dove with a shop in Sausalito, and given how coastal the town is, you'd intuitively think they’d dive closer to home -- maybe even right off their back doorstep. But it's a case where intuition would be wrong, all their field tests happen during weekend trips to Monterey.
 
 That said, just because Monterey isn't inhospitable for diving doesn’t make it hospitable either. I was using a 7 mm wetsuit (for reference, you can dive in many popular Caribbean and Pacific spots with a 3 mm no problem) with a hood, and two layers of it padding the torso. So much neoprene that, unable to bend in any of the normal places, I walked around all day with the stiff stride of Schwarzenegger's Terminator. I felt more like the Michelin Man though, and had the suit been white instead of black, would have looked like him too.
 
@@ -15,7 +15,7 @@ Even with all the suit’s trouble, that water was _cold_. Like sap-the-life-out
 
 ---
 
-The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility, but day two wasn’t as good. We gathered on the beach at 6 AM to do a pre-dawn dive. On our first entry, the waves were especially rough, and the weight and surface area of our dive gear made getting out past them out to open water difficult. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With constant tumultuous currents and visibility measured in feet, we never did see that mask again.
+The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility, but day two wasn’t so kind to us. We gathered on the beach at 6 AM to do a pre-dawn dive. On our first entry, the waves were especially rough, and the weight and surface area of our dive gear made getting out past them out to open water difficult. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With constant tumultuous currents and visibility measured in feet, we never did see that mask again.
 
 ![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
 
@@ -27,13 +27,13 @@ For three seconds I thought he was mocking me, but no. The other dive team had f
 
 We did eventually make it out to sea, but had to prolong the next dive to make up for the miss on the first. The best part of the day was a submarine knot-tying exercise -- it would have been entertaining in any conditions, but it was especially good on this day because the energy it took to stabilize a distressed weight belt on the ocean floor in chaotic ocean currents was perfect for getting warm.
 
-So, all in all, awesome trip.
+So, all in all, great trip.
 
 ---
 
 What’s all that got to do with software? Not much, but to fit the somber feeling evoked by the Pacific's icy depths, I’ve selected some amazing pieces that showcase some of software’s darker aspects.
 
-A sin that the computing blogosphere could fairly be accused of is cheerleading to a fault. In sharp contrast to the internet at large, it’s quite common to present new technologies and new practices in an unequivocally positive light to build hype around them, but less common to later talk about their problems as those become known. The generally positive spin is mostly a good thing as generates interest and catalyzes discovery, but presents a distorted view to potential adopters. In this edition we’re briefly going to put a finger on the other side of the scale.
+A sin that the computing blogosphere could fairly be accused of is cheerleading to a fault. In sharp contrast to the internet at large, it’s quite common to present new technologies and new practices in an unequivocally positive light to build hype around them, but less common to later talk about their problems as those become known. The generally positive spin is mostly a good thing as it generates interest and catalyzes discovery and forward progress, but presents a distorted view to potential adopters. In this edition we’re briefly going to put a finger on the other side of the scale.
 
 ---
 
@@ -71,7 +71,7 @@ A core cause of this is that like liquid filling a container, the tools and tech
 
 > What it means basically is that we’re wasting computers at an unprecedented scale. Would you buy a car if it eats 100 liters per 100 kilometers? How about 1000 liters? With computers, we do that all the time.
 
-If you tackle this one, make sure to read all the way through to the end, which gets less nihilistic around the headline “It’s not all bad”. The author feels that the first step in recovery is acknowledging that we have a problem, then backpedaling until reaching a point where tools and techniques allow fast, quality software to be delivered reliably.
+If you tackle this one, make sure to read all the way through to the end, which gets less nihilistic around the headline “It’s not all bad”. The author feels that the first step in recovery is acknowledging that we have a problem, then backpedaling until reaching a point where tools and techniques allow fast, quality software to be delivered reliably (easier said than done of course, but so is the way of things).
 
 ---
 
