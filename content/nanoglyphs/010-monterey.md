@@ -5,7 +5,7 @@ published_at = 2020-02-07T18:25:53Z
 title = "Monterey; the Darker Side of Software"
 +++
 
-In January I did a dive weekend in Monterey doing some educational dives to finish my PADI Advanced Open Water certification. The photo above is of the Coast Guard Pier from the perspective of San Carlos Beach, taken a little before sunrise.
+In January I did a dive weekend in Monterey doing some educational dives to finish my PADI Advanced Open Water certification. The photo above is of the Coast Guard Pier from the vantage point of San Carlos Beach, taken a little before sunrise.
 
 Monterey’s best known for its famous aquarium (as depicted in _Star Trek IV_ [1]) and flotilla of adorable sea otters who are regularly visible from shore, but it’s also a dive spot familiar to enthusiasts along the west coast. The Bay Area turns out to be quite hostile in terms of dive conditions, so it’s common for dive shops around here, and even as far north as Sacramento, to range all the way to Monterey to test their students in open water. I dove with a shop in Sausalito, and given how coastal the town is, you'd intuitively think they’d dive closer to home -- maybe even right off their back doorstep. But no, all their field tests happen during weekend trips to Monterey.
 
@@ -15,7 +15,7 @@ Even with all the suit’s trouble, that water was _cold_. Like sap-the-life-out
 
 ---
 
-The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility, but day two wasn’t so kind, the waves were especially rough, and the weight and surface area of our dive gear made getting past them out to open water difficult. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With tumultuous currents and visibility measured in feet, we never did see that mask again.
+The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility, but day two wasn’t so kind. The waves were especially rough, and the weight and surface area of our dive gear made getting past them out to open water difficult. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With tumultuous currents and visibility measured in feet, we never did see that mask again.
 
 ![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
 
