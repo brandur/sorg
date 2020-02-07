@@ -11,7 +11,7 @@ Monterey’s best known for its famous aquarium (as depicted in _Star Trek IV_ [
 
 That said, just because Monterey isn't inhospitable for diving doesn’t make it hospitable either. I was using a 7 mm wetsuit (for reference, you can dive in many popular Caribbean and Pacific spots with a 3 mm no problem) with a hood, and two layers of it padding the torso. So much neoprene that, unable to bend in any of the normal places, I walked around all day with the stiff stride of Schwarzenegger's Terminator. I felt more like the Michelin Man though, and had the suit been white instead of black, would have looked like him too.
 
-Even with all the suit’s trouble, that water was _cold_. Like sap-the-life-out-of-you cold. Normally the worst part about getting into the ocean is the shock of the water in those first few moments, but here it was reversed. Carrying heavy equipment to the beach and the excitement of pushing out past waves and avoiding submarine rocks kept you pleasantly warm, but over the dive's next 30 to 45 minutes of being relatively still in 12C (54F) water, that heat drains away. It wasn't long before I found myself fantasizing about the Monterey shore -- also about 12C midday, but which felt like a sizzling beach in Cabo by comparison.
+Even with all the suit’s trouble, that water was _cold_. Like sap-the-life-out-of-you cold. Normally the worst part about getting into the ocean is the shock of the water in those first few moments, but here it was reversed. Carrying heavy equipment to the beach and the excitement of pushing out past waves and avoiding submarine rocks tended to keep you pleasantly warm, but over a dive's next 30 to 45 minutes of being relatively inactive in 12C (54F) water, that heat drains away. It wasn't long before I found myself fantasizing about the Monterey shore -- also about 12C midday on that Sunday, but which felt like a sunbaked beach in Cabo by comparison.
 
 ---
 
@@ -31,9 +31,9 @@ So, all in all, awesome trip.
 
 ---
 
-What’s all that got to do with software? Not much, but to fit the somber feeling evoked by the Pacific's frigid depths, I’ve selected some amazing pieces that showcase some of software’s darker aspects.
+What’s all that got to do with software? Not much, but to fit the somber feeling evoked by the Pacific's icy depths, I’ve selected some amazing pieces that showcase some of software’s darker aspects.
 
-A sin that the computing blogosphere could fairly be accused of is cheerleading to a fault. In sharp contrast to the internet at large, it’s quite common to present new technologies and new practices in an unequivocally positive light to build hype around them, but less common to later talk about their problems as those become known. The generally positive spin is mostly a good thing as generates interest and catalyzes discovery, but it presents a distorted view to potential new adopters. In this edition we’re briefly going to put a finger on the other side of the scale.
+A sin that the computing blogosphere could fairly be accused of is cheerleading to a fault. In sharp contrast to the internet at large, it’s quite common to present new technologies and new practices in an unequivocally positive light to build hype around them, but less common to later talk about their problems as those become known. The generally positive spin is mostly a good thing as generates interest and catalyzes discovery, but presents a distorted view to potential adopters. In this edition we’re briefly going to put a finger on the other side of the scale.
 
 ---
 
@@ -55,37 +55,37 @@ else:
     response = await request_handler.handle(request)
 ```
 
-## My code’s compiling (#codes-compiling)
+## My code’s compiling (#my-codes-compiling)
 
 Pingcap writes about [Rust’s compilation model “calamity”](https://pingcap.com/blog/rust-compilation-model-calamity/). They develop a major Rust program containing roughly 2 million lines of code (including dependencies) and find that compilation times can be a major hit to productivity as it takes 15 minutes to compile in development and 30 minutes for release. The author goes on to outline some of Rust’s features that lead to longer compile cycles, many of which are designed to increase safety or runtime speed, but with the price of more heavy lifting during compilation.
 
 A commenter on HN point out that these times aren’t actually _that_ bad in that they'd be similar for a C++ program of the same size. Someone else crunched the numbers to estimate that a Go program of this magnitude would compile quite a bit faster in about 2 minutes, a speed up that's probably mostly attributable to language’s infamous shunning of generics. A major boon to productivity through safer data structures and less repeated code also turns out to be a detractor in longer compile times.
 
-It’s hard not to be in favor of generics, but a fast edit-compile-run loop is of paramount importance. Having to repeat code and write with `interface{}` in Go is annoying, but in a very real way it feels _much_ more productive than any other language because everything is just _so_ fast. `go build`? It’s done in less time than it took you to type it. `go test`? Finished milliseconds after you hit the return key. The computer waits on the human instead of the human waiting on the computer, which is a very good (and unfortunately practically unique) feeling.
+It’s hard not to be in favor of generics, but a fast edit-compile-run loop really is a game changer in boosting productivity. Having to repeat code and write with `interface{}` in Go is annoying, but in a very real way the language feels _much_ more productive than anything else because everything is just _so_ fast. `go build`? It’s done in less time than it took you to type it. `go test`? Finished milliseconds after you hit the return key. The computer waits on the human instead of the human waiting on the computer, which is a very good (and practically unique) feeling.
 
-## Wirth’s eternal law (#wirths)
+## Wirth’s eternal law (#wirth)
 
-[Software Disenchantment](https://tonsky.me/blog/disenchantment/) aggrieves the modern state of software and how we’ve been steadily moving towards a world of much faster hardware, but make software that never seems to speed up regardless of the horsepower under the hood. Loading web pages can take 10s of seconds, and modern browsers running on modern PCs can’t scroll them at 60 FPS. There are web pages larger than the entirety of the Windows 95 operating system (30 MB). Despite today’s apps and mobile operating systems being pretty much the same as they ever were, phones more than a few years old can’t run them because the software has expanded in size and resource requirements, seemingly without gaining anything of value.
+[Software Disenchantment](https://tonsky.me/blog/disenchantment/) bemoans the state of modern software development and how we’ve steadily been moving towards a world of infinitely faster hardware, but make software that never seems to get faster regardless of the horsepower under the hood. Loading web pages can take 10s of seconds, and bleeding edge browsers running on the latest PCs can’t scroll them at 60 FPS. There are web pages larger than the entirety of the Windows 95 operating system (30 MB). Despite today’s apps and mobile operating systems being pretty much the same as they ever were, phones more than a few years old can’t run them because the software has expanded in size and resource requirements, seemingly without gaining anything of value.
 
-A core cause of this is that like liquid filling a container, software tools and techniques seem to cause it to expand in size and deepen its layers of abstraction until the best hardware of the day is saturated. From the article:
+A core cause of this is that like liquid filling a container, the tools and techniques we use to develop software seem to cause it to expand in size and deepen in abstraction until the best hardware of the day is saturated (which is [not a new idea](https://en.wikipedia.org/wiki/Wirth%27s_law)). From the article:
 
 > What it means basically is that we’re wasting computers at an unprecedented scale. Would you buy a car if it eats 100 liters per 100 kilometers? How about 1000 liters? With computers, we do that all the time.
 
-If you tackle this one, make sure to read all the way through to the end, which gets a little less nihilistic around the headline “It’s not all bad”. The author feels that the first step in X is acknowledging that we have a problem, then backpedaling until reaching a point where tools and techniques allow fast, quality software to be delivered reliably.
+If you tackle this one, make sure to read all the way through to the end, which gets less nihilistic around the headline “It’s not all bad”. The author feels that the first step in recovery is acknowledging that we have a problem, then backpedaling until reaching a point where tools and techniques allow fast, quality software to be delivered reliably.
 
 ---
 
 ## Challenging the deep (#challenging-deep)
 
-Back to the ocean: I found [this article](https://www.theatlantic.com/magazine/archive/2020/01/20000-feet-under-the-sea/603040/) from The Atlantic to be a very good read. Nominally about ocean mining and its potential environmental impact, it goes far beyond that, talking about the hadal zone and the history of its exploration.
+Back to the ocean: I found [this article](https://www.theatlantic.com/magazine/archive/2020/01/20000-feet-under-the-sea/603040/) from The Atlantic to be a very good read. Nominally about ocean mining and its potential environmental impact, it goes far beyond that, talking about the unforgiving _hadal zone_ and history of its exploration.
 
-The Hadal zone is even further down than the abyssal zone at 20,000 to 36,000 feet, and appropriately named for Hades, the Greek underworld. It’s been visited by humanity only a handful of times, most notably with expeditions to Challenger Deep in the Mariana Trench starting with one in 1960 by Jacques Piccard and Don Walsh in the bathyscaphe _Trieste_. As they descended the enormous pressure cracked their viewing window -- you just have to imagine how scary of a moment that would have been, and appreciate the sheer gusto that it would’ve taken to ignore it and keep going.
+The hadal zone is even deeper than the abyssal zone at 20,000 to 36,000 feet, and appropriately named for Hades, the Greek underworld (could marine naming be any more bad ass?). It’s been visited by humanity only a handful of times, most notably with expeditions to the Challenger Deep in the Mariana Trench like Jacques Piccard and Don Walsh's 1960 descent in the bathyscaphe _Trieste_. 30,000 feet down, the enormous pressure at those depths tore a crack in their viewing window, shaking the entire ship -- you just have to imagine how scary of a moment that would have been, and appreciate the sheer gusto that it would’ve taken to ignore it and keep going down to their final depth of 35,814 feet.
 
 ![The Mariana Trench](/assets/images/nanoglyphs/010-monterey/mariana-trench@2x.jpg)
 
-Aside from the US Navy (owners of the _Trieste_), some of the Deep’s main prospective explorers have been billionaires (or at least 100s of millionaires), with James Cameron making in 2010 on an expedition that by all accounts was extremely technically adept despite his background as a filmmaker. As a foil to Cameron, Richard Branson blustered about making a descent of his own in a science-fiction submersible reminiscent of a fighter jet, but didn’t make any headway on the project.
+Aside from the US Navy (owners of the _Trieste_), some of the Deep’s main prospective explorers over the years have been billionaires (or at least 100s of millionaires), with James Cameron making in 2010 on an expedition that by all accounts excelled in a technical sense despite his background as a filmmaker. Cameron made it down, but had to ascend earlier than planned and cancelled his follow up dives. Narrating the adventure from his superyacht's helicopter overhead was Paul Allen. As a foil to Cameron, Richard Branson blustered about making a descent of his own in a science-fiction submersible reminiscent of a fighter jet, but didn’t make any headway on the project.
 
-Reading about the difficulties of these expeditions sure threw my troubles with some cold water and a couple waves into sharp contrast.
+Reading about the difficulties of these deep-diving projects made me feel a little better about my comparatively tame troubles with a few waves and cold water.
 
 Until next week.
 
