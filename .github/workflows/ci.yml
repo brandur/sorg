@@ -41,7 +41,7 @@ jobs:
       - name: Install tooling from Apt
         # Postgres runs in a container, but we also need the client-side
         # tooling.
-        run: sudo apt-get install awscli imagemagick graphicsmagick postgresql
+        run: sudo apt-get install awscli imagemagick graphicsmagick postgresql-client-11
 
       - uses: actions/checkout@v1
         with:
