@@ -22,9 +22,11 @@ It can apply to any tool in your belt: configuring Vim, discovering new VSCode p
 * Figure out why LSP in Ale/Vim only works ~70% of the time.
 * Find an easy way to copy the current path of a Finder window.
 
---
+---
 
-By the way, you’re reading a copy of _Nanoglyph_, an experimental newsletter on software. Its typical format is a few links that I’ve had kicking around from the week, and with the occasional deviation if something more interesting comes up. _(If you’re subscribed already – thanks! If you’re viewing it on the web, you can subscribe [right here](/newsletter#nanoglyph).)_
+By the way, you’re reading a copy of _Nanoglyph_, an experimental newsletter on software. Its typical format is a few links that I’ve had kicking around from the week, and with the occasional deviation if something more interesting comes up (which is what this tangent is).
+
+If you’re subscribed already – thanks! If you’re viewing it on the web, you can subscribe [right here](/newsletter#nanoglyph).
 
 ---
 
@@ -71,7 +73,7 @@ There’s nothing worse than spending a lot of time on configuration, then losin
 
 I’ll be the first to admit that I’m a software person that doesn’t buy a lot of software. Consciously, I’m all in on supporting developers and know it’s the right thing to do, but there’s a feeling deep in the back of my mind that if I opt into commercial software now, there’s a good chance it becomes a recurring cost, and lock in makes it hard to get out. Affordable now, but with a lifetime cost of ownership that’s uncomfortably high. Think of all those poor Oracle users out there.
 
-I’ve been using the free version of Alfred for almost ten years, and bought a license for the first time a few months ago. The free version is so generous that it didn’t even buy me that much -- the one paid feature I’m using is the teal theme -- but I’ve extracted at least a license’s worth of value over it over that period.
+I’ve been using the free version of Alfred for almost ten years, and bought a license for the first time a few months ago. The free version is so generous that it didn’t even buy me that much -- the one paid feature I’m using is the teal theme -- but I’ve gotten 100 licenses worth of value over it over that period, so the time was right. I bought the £45 edition that comes with lifetime upgrades.
 
 ---
 
@@ -79,10 +81,10 @@ Alfred’s major feature isn’t what it can do -- every one of these things can
 
 ---
 
-Speaking of tooling, I found iFixit’s [teardown of the new Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) to be a great read. Its case is removable in mere seconds, common replacements and upgrades are possible without even a screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots depending on the capacity installed.
+Speaking of tooling, iFixit’s [teardown of the new Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, common replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
 
 ![Apple's iMac Pro](/assets/images/nanoglyphs/011-alfred/imac-pro@2x.jpg)
 
-Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it exists in a completely different dimension from anything else that Apple makes in the modern age. For comparison, the latest generation of iPhone gets a previously-high-for-Apple 6/10, the new 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a perfect 0/10. That’s a hugely encouraging turnaround which we can only hope might have a tiny influence on their other product lines. (Although too bad it costs as much as a midrange car.)
+Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it's in a different dimension compare to anything else Apple makes. The latest generation of iPhone gets a previously-high-for-Apple 6/10, the new 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a perfect 0/10. That’s an encouraging turnaround which we can only hope might have a tiny influence on their other product lines -- maybe on other product lines that don't cost as much as a midrange car.
 
 Until next week.
