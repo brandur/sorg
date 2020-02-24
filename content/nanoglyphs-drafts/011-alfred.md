@@ -79,9 +79,9 @@ Alfred’s major feature isn’t what it can do -- every one of these things can
 
 ---
 
-![Apple's iMac Pro](/assets/images/nanoglyphs/011-alfred/imac-pro@2x.jpg)
-
 Speaking of tooling, I found iFixit’s [teardown of the new Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) to be a great read. Its case is removable in mere seconds, common replacements and upgrades are possible without even a screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots depending on the capacity installed.
+
+![Apple's iMac Pro](/assets/images/nanoglyphs/011-alfred/imac-pro@2x.jpg)
 
 Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it exists in a completely different dimension from anything else that Apple makes in the modern age. For comparison, the latest generation of iPhone gets a previously-high-for-Apple 6/10, the new 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a perfect 0/10. That’s a hugely encouraging turnaround which we can only hope might have a tiny influence on their other product lines. (Although too bad it costs as much as a midrange car.)
 
