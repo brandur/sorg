@@ -2,20 +2,22 @@
 image_alt = "Yoshihiro chef's knife"
 image_url = "/assets/images/nanoglyphs/011-alfred/knife@2x.jpg"
 published_at = 2020-02-07T18:26:23Z
-title = "Alfred, and the Importance of Tool Sharpening"
+title = "Alfred & the Zen of Tool Sharpening"
 +++
 
-A few months ago I rebooted a dormant sushi hobby, and bought a fancy kitchen knife to go with it -- 52 layers of hammered Japanese steel and fashioned in the style of a [Damascus blade](https://en.wikipedia.org/wiki/Damascus_steel). Highly functional, and as a bonus, also all pleasing aesthetic lines.
+A few months ago I rebooted a dormant sushi hobby, and bought an excessively elaborate kitchen knife to go with it -- 52 layers of hammered Japanese steel and fashioned in the style of a [Damascus blade](https://en.wikipedia.org/wiki/Damascus_steel). Highly functional for chopping things, and as an added bonus, all pleasing aesthetic lines.
 
 It wasn't a one-time transaction. It might be bought only once, but it needs maintenance forever. Always use a cutting board. Not being stainless steel, don’t leave it wet. Sharpen regularly. To help with that last point, I even bought an honest-to-goodness whetstone (a nice benefit of the commodity age, it was only $30 on Amazon) and learned to use it via the globe’s most preeminent tutor, YouTube. Submerge for 10 minutes to let it absorb water, sharpen on the coarse grit, flip the stone, sharpen on the fine one. A little laborious, but satisfying.
 
-A single sharpening session yields some immediate benefit, but the real key is engage in them _regularly_. All work performed with the tool gets a little more fluid and a little more efficient. Intense, periodic investments for small, frequent yields over a long time.
+A single sharpening session yields some lasting benefit, but the real key is engage in them _regularly_. All work performed with the tool gets a little more fluid and a little more efficient. Intense, periodic investments for small, frequent yields over a long time.
 
 ---
 
-I can’t remember where I was first introduced to the idea of tool sharpening in the context of software tooling, but it’s an analogy that translates nicely from physical to virtual. A few times a year, take a break from writing code, and spend some time doing nothing but improving the environment that helps you write it. Like the metaphorical knife, the idea is to spend a little effort occasionally to tighten up your workflow in the 99% of the time.
+I can’t remember where I was first introduced to the idea of tool sharpening in the context of software tooling, but the analogy translates nicely from physical to virtual. A few times a year, take a break from writing code, and spend some time doing nothing but improving the environment that helps you write it. Like the metaphorical knife, the idea is to spend a little effort occasionally to tighten up your workflow in the 99% of the time.
 
-It can apply to any tool in your belt: configuring Vim, discovering new VSCode plugins, learning a few more Pry/GDB shortcuts, or even just remembering [one new oft-used key binding on Mac OS](https://twitter.com/brandur/status/1211683351414726657). It’s useful to keep a list of the small day-to-day points of pain that you run into in your environment so you’ll have some obvious points to investigate when the time comes. Here’s a few recent ones from mine:
+It can apply to any tool in your belt: configuring Vim, discovering new VSCode plugins, learning a few more Pry/GDB shortcuts, or even just remembering [one new oft-used key binding on Mac OS](https://twitter.com/brandur/status/1211683351414726657). It’s useful to keep a list of the small day-to-day points of pain that you run into in your environment so you’ll have some obvious points to investigate when the time comes.
+
+Here’s a few recent ones from mine:
 
 * Create a single shortcut in Vim to yank the path of the current file.
 * Get a VSCode plugin that will copy a GitHub link for the selected line(s) of code to clipboard or pop it open in a browser.
@@ -24,21 +26,15 @@ It can apply to any tool in your belt: configuring Vim, discovering new VSCode p
 
 ---
 
-By the way, you’re reading a copy of _Nanoglyph_, an experimental newsletter on software. Its typical format is a few links that I’ve had kicking around from the week, and with the occasional deviation if something more interesting comes up (which is what this tangent is).
-
-If you’re subscribed already – thanks! If you’re viewing it on the web, you can subscribe [right here](/newsletter#nanoglyph).
-
----
-
 ## Enter Alfred
 
-A tool that I’ve sharpened recently is Alfred. Likely most readers will be familiar with it already, but it’s an application launcher for Mac OS. It’s a particularly good one, but the idea isn’t novel -- it was around years before Alfred in the form of applications like QuickSilver, and the functionality is even partially baked into Mac OS itself with Spotlight. Users on other operating systems won’t be using Alfred specifically, but will have access to a similar tool.
+A tool that I sharpened recently is Alfred, an application launcher for Mac OS. It’s a particularly good one, but the idea isn’t novel -- it was around years before Alfred in the form of applications like QuickSilver, and the functionality is even partially baked into Mac OS itself with Spotlight. Users on other operating systems won’t be using Alfred specifically, but will have access to a similar tool.
 
 ![Alfred matching an application](/assets/images/nanoglyphs/011-alfred/alfred-search@2x.png)
 
-Its most prominent feature is being able to match items intelligently based on a substring. Although not quite fuzzy matching, it lets you type the first few letters of any application, see a match on screen in the most minute fraction of a second, and hit Enter to launch it. The whole process happens in the blink of an eye -- an observer unfamiliar with the program wouldn’t easily be able to say what happened.
+Its most prominent feature is being able to match items intelligently based on a substring. Although not quite fuzzy matching, it lets you type the first few letters of any application, see a match on screen in the most minute fraction of a second, and hit Enter to launch it. The whole process happens in the blink of an eye -- an observer unfamiliar with the concept wouldn’t easily be able to say what happened.
 
-Alfred distinguishes itself by being a simple program that's highly refined, but also by being pluggable. Beyond looking up applications, it’ll find files, perform calculations, control a music player, and a myriad of other things. It already bundles pretty much everything anyone would ever need, but can be expanded with user-defined workflows for even more expressive customization.
+Alfred distinguishes itself by being a simple program that's highly refined, but also by being pluggable. Beyond looking up applications, it’ll find files, perform calculations, control a music player, and a host of other things. It already bundles pretty much everything anyone would ever need, but can be expanded with user-defined workflows for even more expressive customization.
 
 ## Bookmark cultivation
 
@@ -51,7 +47,7 @@ Under the “Web Bookmarks” feature, you can have Alfred search your bookmarks
 Under “Web Search”, Alfred supports custom search engines which are invoked by a configurable prefix and define a URL which a query is plugged into:
 
 ```
-https://splunk.corp.stripe.com/en-US/app/search/search?q={query}
+https://splunk.corp.example.com/en-US/app/search/search?q={query}
 ```
 
 This works well for frequently used public servers, like a local library, but really shines for internal services like log aggregators, exception trackers, or corporate search. Here are a few of mine along with the prefixes they’re keyed to:
@@ -63,7 +59,7 @@ This works well for frequently used public servers, like a local library, but re
 
 ![Alfred custom search](/assets/images/nanoglyphs/011-alfred/alfred-custom-search@2x.png)
 
-Everyone’s custom search list is going to be different, but everyone does have a list. Considered in a singular sense none of these shortcuts saves you much -- just a single page load and a few seconds at a time (instead of loading page, entering query, and getting results, you enter query, then get results). But considered in aggregate, it’s a lot. Each of my engines is used hundreds to thousands of times a year. Clocking in at a few seconds per use, that’s serious return.
+Everyone’s custom search list is going to be different, but everyone does have a list. Considered in a singular sense none of these shortcuts saves you much -- just a single page load and a few seconds at a time (instead of loading page, entering query, and getting results, you enter the query immediately, and get results). But considered in aggregate, it’s a lot. Each of my engines is used hundreds to thousands of times a year. Clocking in at a few seconds per use, that’s serious return.
 
 ## Configure once, distribute everywhere
 
@@ -77,13 +73,15 @@ I’ve been using the free version of Alfred for almost ten years, and bought a 
 
 ---
 
-Alfred’s major feature isn’t what it can do -- every one of these things can be done from somewhere else -- rather, it’s the speed at which it can do it. A well-optimized Alfred workflow is driven entirely by muscle memory and happens in the blink of an eye. It’s a perfect example of using computers for fast, learned productivity, which is really what PCs should be all about.
+Alfred’s major feature isn’t what it can do -- every one of these things can be done from somewhere else -- rather, it’s the speed at which it can do it. A well-optimized Alfred workflow is driven entirely by muscle memory and happens in the blink of an eye. It’s a perfect example of using computers for fast, learned productivity, which is what PCs should be all about.
 
 ---
 
 Speaking of tooling, iFixit’s [teardown of the new Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
 
-![Apple's iMac Pro](/assets/images/nanoglyphs/011-alfred/imac-pro@2x.jpg)
+![Apple's iMac Pro](/assets/images/nanoglyphs/011-alfred/mac-pro@2x.jpg)
+
+![Apple's iMac Pro](/assets/images/nanoglyphs/011-alfred/mac-pro-ram-diagram@2x.jpg)
 
 Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it's in a different dimension compare to anything else Apple makes. The latest generation of iPhone gets a previously-high-for-Apple 6/10, the new 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a perfect 0/10. That’s an encouraging turnaround which we can only hope might have a tiny influence on their other product lines -- maybe on other product lines that don't cost as much as a midrange car.
 
