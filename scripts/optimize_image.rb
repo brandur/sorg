@@ -14,11 +14,11 @@ def optimize_image(in_filename)
   ext = File.extname(in_filename).downcase
 
   retina_extension = ""
-  out_filename = in_filename[0..(in_filename.length - ext.length)]
+  out_filename = in_filename[0...(in_filename.length - ext.length)]
 
   if out_filename =~ /(@[0-9]x)/
     retina_extension = $1
-    out_filename = out_filename[0..(out_filename.length - retina_extension.length)]
+    out_filename = out_filename[0...(out_filename.length - retina_extension.length)]
   end
 
   out_filename += ".optimized" + retina_extension + ext
