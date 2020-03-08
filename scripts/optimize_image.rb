@@ -21,7 +21,7 @@ def optimize_image(in_filename)
     out_filename = out_filename[0..(out_filename.length - retina_extension.length)]
   end
 
-  out_filename += ".out" + retina_extension + ext
+  out_filename += ".optimized" + retina_extension + ext
 
   if ext == ".jpg"
     brew_path = get_homebrew_path("mozjpeg")
