@@ -10,19 +10,7 @@ def get_homebrew_path(package)
   run_command("brew --prefix #{package}")
 end
 
-def run_command(command)
-  ret = `#{command}`
-  if $? != 0
-    abort("command failed: #{command}")
-  end
-  ret.strip
-end
-
-# ---
-
-def main
-  in_filename = ARGV.first || abort("need a filename as first argument")
-
+def optimize_image(in_filename)
   ext = File.extname(in_filename).downcase
 
   retina_extension = ""
@@ -47,6 +35,23 @@ def main
 
   if ENV["NO_MOVE"] != "true"
     run_command("mv #{out_filename} #{in_filename}")
+  end
+end
+
+def run_command(command)
+  ret = `#{command}`
+  if $? != 0
+    abort("command failed: #{command}")
+  end
+  ret.strip
+end
+
+# ---
+
+def main
+  abort("need at least one file as argument") if ARGV.empty?
+  ARGV.each do |filename|
+    optimize_image(filename)
   end
 end
 
