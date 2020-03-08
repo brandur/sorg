@@ -80,3 +80,15 @@ Look at EXIF information with:
 ## Convert from HEIC to JPG and crop 3:2
 
     magick convert $GMI -gravity center -crop 3:2 +repage -quality 85 $(dirname $GMI)/${$(basename $GMI)/.HEIC/.jpg}
+
+## Optimization
+
+JPGs with `mozjpeg`:
+
+    brew install mozjpeg
+    cjpeg -outfile <out> -optimize -progressive <in>
+
+PNGs with `pngquant`:
+
+    brew install pngquant
+    pngquant --output <out> -- <in>
