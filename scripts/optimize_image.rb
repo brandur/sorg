@@ -6,8 +6,9 @@
 
 # ---
 
+CACHED_HOMEBREW_PATHS = {}
 def get_homebrew_path(package)
-  run_command("brew --prefix #{package}")
+  CACHED_HOMEBREW_PATHS[package] ||= run_command("brew --prefix #{package}")
 end
 
 def optimize_image(in_filename)
