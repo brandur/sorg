@@ -2226,7 +2226,10 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 }
 
 func resizeImage(c *modulir.Context, source, target string, width int) error {
-	cmd := exec.Command(
+	var resizeErrOut bytes.Buffer
+	var optimizeErrOut bytes.Buffer
+
+	resizeArgs := []string{
 		"gm",
 		"convert",
 		source,
@@ -2235,15 +2238,55 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 		fmt.Sprintf("%vx", width),
 		"-quality",
 		"85",
-		target,
-	)
+	}
 
-	var errOut bytes.Buffer
-	cmd.Stderr = &errOut
+	// If we have mozjpeg then output to stdout and let it take in the resized
+	// JPEG via pipe. If not, then just resize to the target file immediately.
+	if conf.MozJPEGBin != "" {
+		resizeArgs = append(resizeArgs, "JPEG:-")
+	} else {
+		resizeArgs = append(resizeArgs, target)
+	}
 
-	err := cmd.Run()
-	if err != nil {
-		return fmt.Errorf("%v (stderr: %v)", err, errOut.String())
+	resizeCmd := exec.Command(resizeArgs[0], resizeArgs[1:]...)
+	resizeCmd.Stderr = &resizeErrOut
+
+	var optimizeCmd *exec.Cmd
+	r, w := io.Pipe()
+	if conf.MozJPEGBin != "" {
+		optimizeCmd = exec.Command(
+			conf.MozJPEGBin,
+			"-optimize",
+			"-outfile",
+			target,
+			"-progressive",
+		)
+		optimizeCmd.Stderr = &optimizeErrOut
+
+		resizeCmd.Stdout = w
+		optimizeCmd.Stdin = r
+	}
+
+	if err := resizeCmd.Start(); err != nil {
+		return errors.Wrapf(err, "Error starting resize command")
+	}
+
+	if conf.MozJPEGBin != "" {
+		if err := optimizeCmd.Start(); err != nil {
+			return errors.Wrapf(err, "Error starting optimize command")
+		}
+	}
+
+	if err := resizeCmd.Wait(); err != nil {
+		return fmt.Errorf("%v (stderr: %v)", err, resizeErrOut.String())
+	}
+
+	w.Close()
+
+	if conf.MozJPEGBin != "" {
+		if err := optimizeCmd.Wait(); err != nil {
+			return fmt.Errorf("%v (stderr: %v)", err, optimizeErrOut.String())
+		}
 	}
 
 	return nil

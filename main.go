@@ -156,6 +156,11 @@ type Conf struct {
 	// when using the `passages` command.
 	MailgunAPIKey string `env:"MAILGUN_API_KEY"`
 
+	// MozJPEGBin is the location of the `cjpeg` binary that ships with the
+	// mozjpeg project (a JPG optimizer). If configured, Sorg will put photos
+	// through an optimization pass after resizing them.
+	MozJPEGBin string `env:"MOZJPEG_BIN"`
+
 	// NumAtomEntries is the number of entries to put in Atom feeds.
 	NumAtomEntries int `env:"NUM_ATOM_ENTRIES,default=20"`
 

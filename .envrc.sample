@@ -4,5 +4,6 @@ export BLACK_SWAN_DATABASE_URL="postgres://localhost/black-swan-development?sslm
 export DRAFTS=true
 export CLOUDFRONT_ID=E2D97SPIHRBCUA
 export LOCAL_FONTS=true
+export MOZJPEG_BIN=/usr/local/opt/mozjpeg/bin/cjpeg
 export PORT=5002
 export SORG_ENV=development
