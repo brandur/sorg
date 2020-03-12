@@ -801,6 +801,15 @@ func build(c *modulir.Context) []error {
 				})
 			}
 
+			// Sequence all page
+			{
+				name := fmt.Sprintf("sequence %s: all", sequence.Slug)
+				c.AddJob(name, func() (bool, error) {
+					return renderSequenceAll(c, sequence, sequence.Photos,
+						sequencesChanged[sequence.Slug])
+				})
+			}
+
 			// Sequence feed
 			{
 				name := fmt.Sprintf("sequence %s: feed", sequence.Slug)
@@ -2035,6 +2044,41 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/show.ace",
 		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
+		stemplate.GetAceOptions(viewsChanged), locals)
+}
+
+func renderSequenceAll(c *modulir.Context, sequence *Sequence, photos []*Photo,
+	sequenceChanged bool) (bool, error) {
+
+	viewsChanged := c.ChangedAny(append(
+		[]string{
+			scommon.MainLayout,
+			scommon.ViewsDir + "/sequences/all.ace",
+		},
+		universalSources...,
+	)...)
+	if !sequenceChanged && !viewsChanged {
+		return false, nil
+	}
+
+	title := fmt.Sprintf("Sequence: %s", sequence.Title)
+	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
+
+	// Oldest first
+	photosReversed := make([]*Photo, len(photos))
+	for i, photo := range photos {
+		photosReversed[len(photos)-i-1] = photo
+	}
+
+	locals := getLocals(title, map[string]interface{}{
+		"BodyClass":   "sequences-all",
+		"Description": description,
+		"Photos":      photosReversed,
+		"Sequence":    sequence,
+	})
+
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/all.ace",
+		path.Join(c.TargetDir, "sequences", sequence.Slug, "all"),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
