@@ -4,9 +4,9 @@
       p.sequences-index-words-sequence Sequence
       h1 {{.Sequence.Title}}
       p {{HTML .Description}}
+  .sequences-all-divider
   {{range $i, $photo := .Photos}}
     .sequences-photo-flex
-      .sequences-photo-divider
       .sequences-photo-words
         p.sequences-photo-words-title
           a href="#{{.Slug}}" id="{{.Slug}}" {{.Title}}
