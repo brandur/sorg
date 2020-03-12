@@ -1,6 +1,6 @@
 = content main
   .sequences-photo-flex
-    .sequences-photo-words
+    .sequences-photo-words.sequences-photo-words-narrow
       p.sequences-photo-sequence
         a href="/sequences/{{.Sequence.Slug}}" {{.Sequence.Title}}
       h1 {{.Photo.Title}}
