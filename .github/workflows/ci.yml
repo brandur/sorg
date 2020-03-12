@@ -55,9 +55,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
 
-      - name: Find mozjpeg
-        run: ls /opt/mozjpeg/bin
-
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
