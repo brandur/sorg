@@ -156,6 +156,10 @@ type Conf struct {
 	// when using the `passages` command.
 	MailgunAPIKey string `env:"MAILGUN_API_KEY"`
 
+	// MagickBin is the location of the `magick` binary that ships with the
+	// ImageMagick project (an image manipulation utility).
+	MagickBin string `env:"MAGICK_BIN"`
+
 	// MozJPEGBin is the location of the `cjpeg` binary that ships with the
 	// mozjpeg project (a JPG optimizer). If configured, Sorg will put photos
 	// through an optimization pass after resizing them.

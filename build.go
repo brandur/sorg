@@ -2270,11 +2270,15 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 }
 
 func resizeImage(c *modulir.Context, source, target string, width int) error {
+	if conf.MagickBin == "" {
+		return fmt.Errorf("MAGICK_BIN must be configured for image resizing")
+	}
+
 	var resizeErrOut bytes.Buffer
 	var optimizeErrOut bytes.Buffer
 
 	resizeArgs := []string{
-		"gm",
+		conf.MagickBin,
 		"convert",
 		source,
 		"-auto-orient",

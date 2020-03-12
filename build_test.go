@@ -1,12 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"testing"
 
+	"github.com/joeshaw/envdecode"
 	assert "github.com/stretchr/testify/require"
 )
+
+func init() {
+	if err := envdecode.Decode(&conf); err != nil {
+		fmt.Fprintf(os.Stderr, "Error decoding conf from env: %v", err)
+		os.Exit(1)
+	}
+}
 
 func TestResizeImage(t *testing.T) {
 	tmpfile, err := ioutil.TempFile("", "resized_image")
