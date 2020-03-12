@@ -15,6 +15,7 @@ jobs:
     env:
       CLOUDFRONT_ID: E2D97SPIHRBCUA
       GOOGLE_ANALYTICS_ID: UA-47798518-1
+      MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
 
     services:
       postgres:
@@ -42,6 +43,15 @@ jobs:
         # Postgres runs in a container, but we also need the client-side
         # tooling.
         run: sudo apt-get install awscli imagemagick graphicsmagick postgresql-client
+
+      # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
+      - name: Install mozjpeg
+        run: |
+          aws s3 cp s3://mozjpeg-brandur/mozjpeg_master_amd64.deb .
+          sudo dpkg -i mozjpeg_master_amd64.deb
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
 
       - uses: actions/checkout@v1
         with:
