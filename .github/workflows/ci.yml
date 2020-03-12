@@ -101,7 +101,11 @@ jobs:
       - name: "Go: Test"
         run: make test
         env:
+          # GitHub basically makes it fucking impossible to use any kind of
+          # $HOME variable here for reasons that are far beyond me. Eventually
+          # just gave up and hard-coded `/home/runner`.
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
+
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
           PGHOST: localhost
           PGPORT: ${{ job.services.postgres.ports[5432] }}
