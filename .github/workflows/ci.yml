@@ -43,6 +43,23 @@ jobs:
         # tooling.
         run: sudo apt-get install awscli imagemagick graphicsmagick postgresql-client
 
+      # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
+      #
+      # TODO: It'd be nice to have this automatically discover the latest
+      # version, which would likely involve publishing a release or uploading
+      # to S3.
+      - name: Download mozjpeg
+        run: aws s3 cp s3://mozjpeg-brandur/mozjpeg_4.0.0_amd64.deb mozjpeg.deb
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
+
+      - name: Install mozjpeg
+        run: sudo dpkg -i mozjpeg.deb
+
+      - name: Find mozjpeg
+        run: ls /opt/mozjpeg/bin
+
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
