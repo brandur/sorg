@@ -7,12 +7,49 @@ $secondary: #ddd
 $lowlight: #181818
 
 body.sequences-all
-  .sequences-all-divider
+  .sequences-all-divider, .sequences-all-divider-first
     background: $lowlight
     height: 1px
     margin: 30px 0
 
+  .sequences-all-divider-first
+    margin-top: 0
+
+  .sequences-all-words
+    background: #000 url('/assets/images/standin_01.jpg') no-repeat center center fixed
+    background-size: cover
+
+    h1
+      color: #000
+      margin-bottom: 50px
+      text-align: center
+
+    p.sequences-words-sequence
+      color: #000
+
+    .sequences-all-words-inner
+      font-size: 1rem
+      line-height: 1.8em
+      margin: 0 auto
+      max-width: 650px
+      padding: 100px 70px 120px 70px
+
+      .sequences-all-intro
+        background: #000
+        padding: 20px 30px
+
 body.sequences-all, body.sequences-index
+  p.sequences-words-sequence
+    font-family: $sans_serif
+    font-size: 0.65rem
+    font-weight: bold
+    letter-spacing: normal
+    line-height: 1.4em
+    margin: 20px 0
+    text-align: center
+    text-transform: uppercase
+
+body.sequences-index
   background: $background
 
   .sequences-index-words
@@ -21,22 +58,12 @@ body.sequences-all, body.sequences-index
       line-height: 1.8em
       margin: 0 auto
       max-width: 550px
-      padding: 40px
+      padding: 100px 70px
 
       h1
         color: #fff
         margin-bottom: 50px
         text-align: center
-
-      p.sequences-index-words-sequence
-        font-family: $sans_serif
-        font-size: 0.65rem
-        font-weight: bold
-        letter-spacing: normal
-        line-height: 1.4em
-        margin: 20px 0
-        text-align: center
-        text-transform: uppercase
 
       p.atom
         color: #555
@@ -213,13 +240,24 @@ body.sequences-all, body.sequences-photo
         padding: 3px 4px
 
 @media handheld, only screen and (max-width: 1100px), only screen and (max-device-width: 1100px)
-  body.sequences-all, body.sequences-index
+  body.sequences-all
+    .sequences-all-words
+      .sequences-all-words-inner
+        font-size: 1rem
+        line-height: 1.6em
+        max-width: none
+        padding: 80px 40px
+
+        h1
+          margin-bottom: 30px
+
+  body.sequences-index
     .sequences-index-words
       .sequences-index-words-inner
         font-size: 1rem
         line-height: 1.6em
         max-width: none
-        padding: 30px 30px
+        padding: 80px 40px
 
         h1
           margin-bottom: 30px

@@ -1,10 +1,11 @@
 = content main
-  .sequences-index-words
-    .sequences-index-words-inner
-      p.sequences-index-words-sequence Sequence
+  .sequences-all-words style="background-image: url('/photographs/sequences/{{.Sequence.Slug}}/background_large.jpg');"
+    .sequences-all-words-inner
+      p.sequences-words-sequence Sequence
       h1 {{.Sequence.Title}}
-      p {{HTML .Description}}
-  .sequences-all-divider
+      .sequences-all-intro
+        {{HTML .Description}}
+  .sequences-all-divider-first
   {{range $i, $photo := .Photos}}
     .sequences-photo-flex
       .sequences-photo-words

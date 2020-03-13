@@ -810,6 +810,20 @@ func build(c *modulir.Context) []error {
 				})
 			}
 
+			// Sequences background image
+			if sequence.BackgroundImageURL != "" {
+				name := fmt.Sprintf("sequence %s background", sequence.Slug)
+				photo := &Photo{
+					OriginalImageURL: sequence.BackgroundImageURL,
+					Slug:             "background",
+				}
+
+				c.AddJob(name, func() (bool, error) {
+					return fetchAndResizePhoto(c,
+						c.SourceDir+"/content/photographs/sequences/"+sequence.Slug, photo)
+				})
+			}
+
 			// Sequence feed
 			{
 				name := fmt.Sprintf("sequence %s: feed", sequence.Slug)
@@ -1062,6 +1076,10 @@ type PhotoWrapper struct {
 // Sequence is a sequence -- a series of photos that represent some kind of
 // journey.
 type Sequence struct {
+	// BackgroundImageURL is the URL of the image to use as the background on
+	// the all page.
+	BackgroundImageURL string `toml:"background_image_url"`
+
 	// Description is the description of the photograph.
 	Description string `toml:"description"`
 

@@ -1,7 +1,7 @@
 = content main
   .sequences-index-words.sequences-index-words-light
     .sequences-index-words-inner
-      p.sequences-index-words-sequence Sequence
+      p.sequences-words-sequence Sequence
       h1 {{.Sequence.Title}}
       p {{HTML .Description}}
       .divider
