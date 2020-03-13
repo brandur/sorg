@@ -810,7 +810,7 @@ func build(c *modulir.Context) []error {
 				})
 			}
 
-			// Sequences background image
+			// Sequences all page background image
 			if sequence.BackgroundImageURL != "" {
 				name := fmt.Sprintf("sequence %s background", sequence.Slug)
 				photo := &Photo{
