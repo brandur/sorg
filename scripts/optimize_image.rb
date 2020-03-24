@@ -36,6 +36,9 @@ def optimize_image(in_filename)
 
   if ENV["NO_MOVE"] != "true"
     run_command("mv #{out_filename} #{in_filename}")
+    puts "Created optimized image: #{in_filename}"
+  else
+    puts "Created optimized image (NO_MOVE=true): #{out_filename}"
   end
 end
 
