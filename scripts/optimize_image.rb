@@ -4,12 +4,20 @@
 # Optimizes an image's (JPG or PNG) size using either `mozjpeg` or `pngquant`.
 #
 
+require 'fileutils'
+
 # ---
 
 CACHED_HOMEBREW_PATHS = {}
 def get_homebrew_path(package)
   CACHED_HOMEBREW_PATHS[package] ||= run_command("brew --prefix #{package}")
 end
+
+# Percent smaller the new file has to be to bother keeping it. The logic here
+# is that in case it's already been optimized we can skip optimizing again
+# given that it may have already been added to the Git repository and the new
+# version will slightly different, therefore doubling up on file size.
+SIZE_THRESHOLD = 0.05
 
 def optimize_image(in_filename)
   ext = File.extname(in_filename).downcase
@@ -35,8 +43,15 @@ def optimize_image(in_filename)
   end
 
   if ENV["NO_MOVE"] != "true"
-    run_command("mv #{out_filename} #{in_filename}")
-    puts "Created optimized image: #{in_filename}"
+    in_size = File.size(in_filename)
+    out_size = File.size(out_filename)
+    if out_size < in_size - in_size * SIZE_THRESHOLD
+      run_command("mv #{out_filename} #{in_filename}")
+      puts "Created optimized image: #{in_filename}"
+    else
+      FileUtils.rm(out_filename)
+      puts "Discarded optimized image as its size was within #{SIZE_THRESHOLD * 100}% of the original"
+    end
   else
     puts "Created optimized image (NO_MOVE=true): #{out_filename}"
   end
