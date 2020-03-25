@@ -83,6 +83,10 @@ Look at EXIF information with:
 
 ## Optimization
 
+Use the wrapper script for `mozjpeg` and `pngquant` (works for JPG and PNG):
+
+    scripts/optimize_image.rb <path>
+
 JPGs with `mozjpeg`:
 
     brew install mozjpeg
