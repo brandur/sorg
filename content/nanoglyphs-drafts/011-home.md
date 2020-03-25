@@ -23,7 +23,7 @@ A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up
 
 ![Sutro Tower](/assets/images/nanoglyphs/011-home/sutro-tower@2x.jpg)
 
-If you’re going to be spending time at home, Twin Peaks isn’t a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it’s impressively quiet. I’ve been doing daily runs through our local trail system and then up to the top of the peaks themselves. The building’s back yard (pictured at the top) makes a good place to write. The occasional meditative lap around the filled in pool on the upper terrace (pictured below; the compound’s most unusual feature) helps to focus.
+If you’re going to be spending time at home, Twin Peaks isn’t a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it’s impressively quiet. I’ve been doing daily runs through our local trail system and then up to the top of the peaks themselves. The building’s back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound’s most unusual feature).
 
 ![Pool on the roof](/assets/images/nanoglyphs/011-home/pool@2x.jpg)
 
