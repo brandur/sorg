@@ -73,7 +73,7 @@ However, `io_submit` and company aren't without their own warts. Most notably, `
 
 ---
 
-## The inordinate power of simple rings (#rings)
+## The elegant symmetry of rings (#rings)
 
 Which brings us to today. A project that's been making a lot of headway over the last few years and which is now included in the Linux kernel is `io_uring` (this [PDF is its best self-contained description](https://kernel.dk/io_uring.pdf)). It's a new system for asynchronous I/O that addresses all the deficiencies of past generations and then some.
 
