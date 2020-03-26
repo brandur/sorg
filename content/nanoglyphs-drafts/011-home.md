@@ -33,7 +33,7 @@ Despite rarely even seeing another human being in the flesh, I manage to have 15
 
 A thought that hits me hourly is that despite extraordinary events, this might just be one of the best self-development opportunities of all time. You know all those things that every adult claims to want to do but which is impossible because there's no time? Learning a language. Nailing down a healthy diet. Picking up an instrument. Writing a book. Learning to draw. This is it -- an extended snow day for most of humanity and the perfect time and excuse to stay home and do something constructive.
 
-In theory anyway. So far I've just been playing video games. I'm working on that.
+In theory anyway. So far I've been watching _The Sopranos_ and playing video games. I'm working on that.
 
 ---
 
