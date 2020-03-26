@@ -9,6 +9,8 @@ Well, the world's changed since the last time we spoke. How many times in life c
 
 This is _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on kernel I/O. If you're pretty sure you never signed up for this wordy thing and want to be shown to the closest escape hatch, unsubscribe in [one sterile click](%unsubscribe_url%).
 
+If you're reading this on the web, you can [subscribe here](https://nanoglyph-signup.brandur.org/). If you're allergic to the word "newsletter", I don't blame you. I am too. You can think of it more like an async blog in the post-Google Reader age. `ablog`? Nope, that doesn't work. Well anyway, let's crack on.
+
 ---
 
 The windows are dark in San Francisco's museums, bars, and bookstores -- everywhere minus a few exceptions like grocery stores and restaurants with a take out business. Paradoxically, despite a pervasive malaise, the city feels nicer than they've ever been (we're still allowed out for exercise) -- traffic is less voluminous and more calm, the streets are quieter, the air is fresher [1].
