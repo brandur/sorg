@@ -7,9 +7,9 @@ title = "At Home; Asynchronous I/O, in Circles"
 
 Well, the world's changed since the last time we spoke. How many times in life can you legitimately say that?
 
-This is _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on kernel I/O. If you're pretty sure you never signed up for this wordy thing and want to be shown to the closest escape hatch, unsubscribe in [one sterile click](%unsubscribe_url%).
+By the way, this is _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and are looking for the closest escape hatch, unsubscribe in [one sterile click](%unsubscribe_url%).
 
-If you're reading this on the web, you can [subscribe here](https://nanoglyph-signup.brandur.org/). If you're allergic to the word "newsletter", I don't blame you. I am too. You can think of it more like an async blog in the post-Google Reader age. `ablog`? Nope, that doesn't work. Well anyway, let's crack on.
+If you're reading this on the web, you can always [subscribe here](https://nanoglyph-signup.brandur.org/). If you're allergic to the word "newsletter", I don't blame you. I am too. Maybe you can think of it more like an async blog in the post-Google Reader age. `ablog`? Nope, that doesn't work. We'll come back to that one.
 
 ---
 
@@ -133,7 +133,7 @@ app_handle_cqe(cqe); io_uring_cqe_seen(&ring, cqe);
 
 `io_uring` is brand new by the standards of syscall APIs, and of course Linux only, but it's showing huge promise in terms of usability, performance, and extensibility, all the while avoiding the pitfalls that previous iterations have found themselves at the bottom of.
 
-A significant next step will be to see which real-world programs find enough to like to adopt it. There aren't a huge number of those yet, but they're coming. This [slide deck from Andres](https://speakerdeck.com/citusdata/asynchronous-io-for-postgresql-fosdem-pgday-2020-andres-freund) talks about how baking a small `io_uring` prototype into Postgres yielded some very promising results, even when only minimally complete.
+A significant next step will be to see which real-world programs find enough to like to adopt it. There aren't a huge number of those yet, but they're coming. This [slide deck from Andres](https://anarazel.de/talks/2020-01-31-fosdem-aio/aio.pdf) talks about how baking a small `io_uring` prototype into Postgres yielded some very promising results, even when only minimally complete.
 
 ---
 
