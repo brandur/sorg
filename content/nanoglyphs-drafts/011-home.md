@@ -39,6 +39,14 @@ In theory anyway. So far I've just been playing video games. I'm working on that
 
 ## I/O classic (#io-classic)
 
+Let's talk about asynchronous I/O in the Linux kernel. All the well-known disk operations in Linux like `read()`, `write()`, or `fsync()` are blocking -- the invoking program is paused while they do their work. They're all quite fast, and even faster once the cache is warm, so for most programs it doesn't matter. Programs also have the option of using [`posix_fadvise`](http://man7.org/linux/man-pages/man2/posix_fadvise.2.html) to suggest to the kernel the sort of file data access they're going to engage in, and possibly get that cache warmed up in advance.
+
+There are however, classes of programs whose performance could be improved significantly by moving beyond synchronous I/O -- think something like a high throughput database or caching web proxy. I find this easiest to think about with something like Node's event reactor, which is massively asynchronous, but is running user code in only one place at any given time. If it were based naively on traditional file I/O functions, then any function calling `read()` would block everything else in the reactor until the operation completed.
+
+But it's important to call out just how far you can get with synchronous I/O functions combined with some mitigations. In fact Node does call synchronous `read()`, but it does so through [`libuv`](http://docs.libuv.org/en/v1.x/design.html), which keeps a thread pool at the ready for just such cases, and allows Node to make [`fs.readFile`](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) asynchronous and non-blocking.
+
+Another example of software that gets along fine on synchronous I/O is Postgres. It stays impressively fast by making liberal use of `posix_fadvise` to warm OS caches and having backends run in parallel across OS processes, but it's using I/O classic.
+
 ## Generation one (#generation-one)
 
 ## Great circles (#great-circles)
