@@ -51,7 +51,7 @@ Another example of software that gets along fine on synchronous I/O is Postgres.
 
 ---
 
-## The first few generations (#first-generations)
+## The pioneer generations (#pioneer-generations)
 
 POSIX has included an [`aio`](http://man7.org/linux/man-pages/man7/aio.7.html) (asynchronous I/O) API for some time that comes with async equivalents to file I/O functions like `aio_read`, `aio_write`, and `aio_async`. However, because it operates in user space and uses threads to run async operations, it's not considered scalable (this is meant as a fast kernel interface and the most menial shred of extra performance will matter to somebody).
 
