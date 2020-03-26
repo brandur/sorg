@@ -128,7 +128,8 @@ io_uring_submit(&ring);
 io_uring_wait_cqe(&ring, &cqe);
 
 /* read and process cqe event */
-app_handle_cqe(cqe); io_uring_cqe_seen(&ring, cqe);
+app_handle_cqe(cqe);
+io_uring_cqe_seen(&ring, cqe);
 ```
 
 `io_uring` is brand new by the standards of syscall APIs, and of course Linux only, but it's showing huge promise in terms of usability, performance, and extensibility, all the while avoiding the pitfalls that previous iterations have found themselves at the bottom of.
