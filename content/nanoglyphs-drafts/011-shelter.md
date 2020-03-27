@@ -1,6 +1,6 @@
 +++
 image_alt = "Wind chimes at home"
-image_url = "/assets/images/nanoglyphs/011-home/chimes@2x.jpg"
+image_url = "/assets/images/nanoglyphs/011-shelter/chimes@2x.jpg"
 published_at = 2020-03-25T02:24:28Z
 title = "Sheltering, Twin Peaks; Asynchronous I/O in Circles"
 +++
@@ -23,11 +23,11 @@ It's had its ups and downs. My ergonomic situation is dire -- my working posture
 
 A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up the hill from the Castro, and right across from the giant three-pronged TV/radio tower on top of Mount Sutro (Sutro Tower), still the most conspicuous landmark on the city's skyline, even after the notorious addition of Salesforce Tower.
 
-![Sutro Tower](/assets/images/nanoglyphs/011-home/sutro-tower@2x.jpg)
+![Sutro Tower](/assets/images/nanoglyphs/011-shelter/sutro-tower@2x.jpg)
 
 If you're going to be spending time at home, Twin Peaks isn't a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it's impressively quiet. I've been doing daily runs through our local trail system and then up to the top of the peaks themselves. Sutro's Open Space Reserve is just a stone's throw away. My building's back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound's weirdest feature).
 
-![Pool on the roof](/assets/images/nanoglyphs/011-home/pool@2x.jpg)
+![Pool on the roof](/assets/images/nanoglyphs/011-shelter/pool@2x.jpg)
 
 ---
 
@@ -146,7 +146,7 @@ I'm overhauling my day-to-day by starting small. _Really_ small.
 
 * **Sitting cross-legged:** I was taught to do this from the moment I entered daycare, but it never really took and I've always regretted it. Eating meals on tatami in Japan, I was the only person in the room with a “cheat” pillow -- roughly equivalent in the land of faux pas to asking for a fork. Ease back into some flexibility doing some cross-legged sitting every day (pictured below: my tea set seen from my new, lower perspective).
 
-![Tea set -- made in Calgary and Japan](/assets/images/nanoglyphs/011-home/tea@2x.jpg)
+![Tea set -- made in Calgary and Japan](/assets/images/nanoglyphs/011-shelter/tea@2x.jpg)
 
 * **Daily scheduling/routine:** With fewer commitments to be in certain places at certain times, my schedule's been on a collision course with its destiny as an unstructured, amorphous blob. It's not working. Go back to having a routine, even if not strictly as necessary.
 * **Healthy meals:** I like carbs way too much. To do: Eat food, not too much, mostly plants.
