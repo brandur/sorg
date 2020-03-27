@@ -41,7 +41,7 @@ html lang="en"
 
       blockquote {
         border-left: 5px solid #eee;
-        font-size: 14px;
+        font-size: 13px;
         font-style: italic;
         margin-left: 20px;
         margin-right: 20px;
@@ -62,7 +62,7 @@ html lang="en"
           font-weight: 400;
         */
         font-family: Helvetica, sans-serif;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 300;
         line-height: 1.5;
         margin: 0;
@@ -83,13 +83,16 @@ html lang="en"
       }
 
       code {
-        font-size: 12px;
+        font-size: 11px;
         padding: 2px 4px;
       }
 
       pre {
         line-height: 1;
-        padding: 10px 18px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        overflow: hidden;
+        padding: 25px 18px;
       }
 
       pre code {
@@ -106,7 +109,7 @@ html lang="en"
       }
 
       h1 {
-        font-size: 50px;
+        font-size: 48px;
         font-weight: 400;
         letter-spacing: -4px;
         line-height: 1;
@@ -156,7 +159,7 @@ html lang="en"
 
       #about {
         color: #aaa;
-        font-size: 13px;
+        font-size: 12px;
         margin: 30px 0;
         text-align: center;
       }
@@ -188,7 +191,7 @@ html lang="en"
       }
 
       #issue {
-        font-size: 11px;
+        font-size: 10px;
         margin-bottom: 0;
         text-align: center;
       }
@@ -200,7 +203,7 @@ html lang="en"
       #nanoglyph {
         color: #000;
         font-family: Monaco, monospace;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: bold;
         margin-top: 0;
         text-align: center;
@@ -235,6 +238,7 @@ html lang="en"
       }
 
       .web-only ul.issue-list {
+        font-size: 12px;
         list-style-type: none;
         margin: 0 auto;
         padding: 0;
@@ -266,7 +270,7 @@ html lang="en"
 
       .web-only .published-date {
         color: #aaa;
-        font-size: 12px;
+        font-size: 11px;
         font-style: italic;
         margin-left: 8px;
       }
