@@ -1,7 +1,7 @@
 +++
 image_alt = "Wind chimes at home"
 image_url = "/assets/images/nanoglyphs/011-shelter/chimes@2x.jpg"
-published_at = 2020-03-25T02:24:28Z
+published_at = 2020-03-27T18:02:51Z
 title = "Sheltering, Twin Peaks; Asynchronous I/O, in Circles"
 +++
 
@@ -156,7 +156,7 @@ If the small things go well, I'll work my way up to rehabilitating my derelict F
 
 Take care.
 
-[1] Air particulates in SF are down ~40% year over year.
+[1] Air particulates in SF are reportedly down ~40% year over year.
 
 [2] `posix_fadvise()`'s documentation is very careful to spell out that no requests made to it are binding. It sets an expectation on behalf of a program, which the kernel may or may not respect.
 
