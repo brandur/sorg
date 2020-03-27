@@ -7,17 +7,15 @@ title = "Sheltering, Twin Peaks; Asynchronous I/O in Circles"
 
 Well, the world's changed since the last time we spoke. How many times in life can a person legitimately say that?
 
-By the way, this is _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and are looking for the closest escape hatch, unsubscribe in [one sterile click](%unsubscribe_url%).
-
-If you're reading this on the web, you can always [subscribe here](https://nanoglyph-signup.brandur.org/). If you're allergic to the word "newsletter", I don't blame you. I am too. Maybe you can think of it more like an async blog in the post-Google Reader age. `ablog`? We'll come back to that one.
-
----
-
 The windows are dark in San Francisco's museums, bars, and bookstores -- everywhere minus a few exceptions like grocery stores and restaurants with a take out business. Paradoxically, despite a pervasive malaise, the city feels nicer than than ever (we're still allowed out for exercise) -- traffic is less voluminous and more calm, the streets are quieter, the air is fresher [1].
 
 Before the shelter in place order went out, Stripe's offices formally closed to all personnel. Before the office closure order went out, we'd been encouraged to work from home. That makes this my third week working out of my apartment, where before present circumstances I'd never spent even a fraction of this much contiguous time.
 
-It's had its ups and downs. My ergonomic situation is dire -- my working posture isn't good even in the best of times, and right now I'm changing sitting positions (low desk, cross-legged on floor, couch, bed, cycle back to start) every 30 minutes so my later life doesn't see me taking up residence in a chiropractor's office for live-in back treatment. But that little bit of extra pain is balanced by reduced stress -- my commute is probably better than 90% of America's, but even so, it's incredible how much time it eats and anxiety it adds to the day.
+---
+
+By the way, this is _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and are looking for the closest escape hatch, unsubscribe in [one clean click](%unsubscribe_url%).
+
+If you're reading this on the web, you can also [subscribe here](https://nanoglyph-signup.brandur.org/). If you're allergic to the word "newsletter", I don't blame you. I am too. Maybe you can think of it more like an async blog in the post-Google Reader age. `ablog`? `bloguring`? We'll come back to that one.
 
 ---
 
@@ -25,7 +23,9 @@ A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up
 
 ![Sutro Tower](/assets/images/nanoglyphs/011-shelter/sutro-tower@2x.jpg)
 
-If you're going to be spending time at home, Twin Peaks isn't a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it's impressively quiet. I've been doing daily runs through our local trail system and then up to the top of the peaks themselves. Sutro's Open Space Reserve is just a stone's throw away. My building's back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound's weirdest feature).
+Working from home has had its ups and downs. My ergonomic situation is dire -- my working posture isn't good even in the best of times, and right now I'm changing sitting positions (low desk, cross-legged on floor, couch, bed, cycle back to start) every 30 minutes so my later life doesn't see me taking up residence in a chiropractor's office for live-in back treatment. But that little bit of extra pain is balanced by reduced stress -- my commute is probably better than 90% of America's, but even so, it's incredible how much time it eats and anxiety it adds to the day.
+
+If you are going to be spending time at home, Twin Peaks isn't a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it's impressively quiet. I've been doing daily runs through our local trail system and then up to the top of the peaks themselves. Sutro's Open Space Reserve is just a stone's throw away. My building's back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound's weirdest feature).
 
 ![Pool on the roof](/assets/images/nanoglyphs/011-shelter/pool@2x.jpg)
 
@@ -149,7 +149,7 @@ I'm overhauling my day-to-day by starting small. _Really_ small.
 ![Tea set -- made in Calgary and Japan](/assets/images/nanoglyphs/011-shelter/tea@2x.jpg)
 
 * **Daily scheduling/routine:** With fewer commitments to be in certain places at certain times, my schedule's been on a collision course with its destiny as an unstructured, amorphous blob. It's not working. Go back to having a routine, even if not strictly as necessary.
-* **Healthy meals:** I like carbs way too much. To do: Eat food, not too much, mostly plants.
+* **Healthy meals:** I like carbs way too much. To do: Eat food, not too much, mostly plants [2].
 * **Technical reading:** Unlike fiction, technical reading requires time and concentration. And unlike fiction, it also makes you learn something. Do some every day.
 
 If things go well, I'll work my way up to learning Latin later.
@@ -157,3 +157,5 @@ If things go well, I'll work my way up to learning Latin later.
 Take care.
 
 [1] Air particulates in SF are down ~40% year over year.
+
+[2] See _Food Rules_ by Michael Pollan.
