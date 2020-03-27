@@ -45,9 +45,9 @@ Let's talk about asynchronous I/O in the Linux kernel. All the well-known disk o
 
 There are however, classes of programs whose performance could be improved significantly by moving beyond synchronous I/O -- think something like a high throughput database or disk-caching web proxy. I find this easiest to think about with something like Node's event reactor, which is massively asynchronous, but is running user code in only one place at any given time. If it were based naively on traditional file I/O functions, then any function calling `read()` would block everything else in the reactor until the operation completed.
 
-But it's important to call out just how far you can get with synchronous I/O functions combined with some mitigations. In fact Node does call synchronous `read()`, but it does so through [`libuv`](http://docs.libuv.org/en/v1.x/design.html), which keeps a thread pool at the ready for just such cases, and allows Node to make [`fs.readFile`](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) asynchronous and non-blocking.
+But it's important to call out just how far you can get with synchronous I/O functions combined with some mitigations. In fact, Node _does_ call synchronous `read()`, but it does so through [`libuv`](http://docs.libuv.org/en/v1.x/design.html), which keeps a thread pool at the ready for just such cases, and allows Node to make [`fs.readFile`](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) asynchronous and non-blocking.
 
-Another example of software that gets along fine on synchronous I/O is Postgres. It stays impressively fast by making liberal use of `posix_fadvise` to warm the OS page cache and having backends run in parallel across OS processes, but it's using I/O classic.
+Another example of software that gets along fine on synchronous I/O is Postgres. It stays impressively fast by making liberal use of `posix_fadvise` to warm the OS page cache and having backends doing work in parallel across multiple OS processes, but it's using I/O classic.
 
 ---
 
@@ -71,7 +71,7 @@ r = io_getevents(ctx, 1, 1, events, NULL);
 
 However, `io_submit` and company aren't without their own warts. Most notably, `io_submit` is a still a blocking operation for most file I/O! (Remember, `io_submit` is supposed to dispatch operations which are waited on with `io_getevents`, not be synchronous itself.) It's possible to have `io_submit` run truly asynchronously, but to do so it must be passed files that were opened with `O_DIRECT`, or with unbuffered access.
 
-`O_DIRECT` bypasses the operating system's page cache and other niceties and is an extremely low-level mechanism aimed at complex programs that need perfect control over what they're doing. Famously, [Linus hates it](https://lkml.org/lkml/2007/1/10/233), and the chances are that it's legitimate uses are few and far between, which all puts a dramatic damper on the utility of `io_submit`. This is all very poorly documented.
+`O_DIRECT` bypasses the operating system's page cache and other niceties and is an extremely low-level mechanism aimed at complex programs that need perfect control over what they're doing. Famously, [Linus hates it](https://lkml.org/lkml/2007/1/10/233), and the chances are that its legitimate uses are few and far between, which all puts a dramatic damper on the utility of `io_submit`. This is all very poorly documented.
 
 ---
 
@@ -86,8 +86,9 @@ struct io_uring_sqe *sqe;
 unsigned tail = sqring->tail;
 unsigned index = tail & (*sqring->ring_mask);
 
-/* put some new work into this submission queue entry */
-sqe = &sqring→sqes[index];
+/* put some new work into this submission
+ * queue entry */
+sqe = &sqring->sqes[index];
 ```
 
 Client programs add work to the submission queue (SQ) by modifying entries, then updating its tail. The kernel then consumes any new entries and updates its head. Programs only ever update the queue's tail, and the kernel only ever updates the head, meaning that there's minimal contention.
@@ -121,7 +122,8 @@ struct io_uring_cqe cqe;
 sqe = io_uring_get_sqe(&ring);
 io_uring_prep_readv(sqe, fd, &iovec, 1, offset);
 
-/* tell the kernel we have an sqe ready for consumption */
+/* tell the kernel we have an sqe ready for
+ * consumption */
 io_uring_submit(&ring);
 
 /* wait for the sqe to complete */
