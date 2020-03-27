@@ -57,15 +57,23 @@ html lang="en"
       code, pre {
         background: #f6f6f6;
         font-family: Monaco, monospace;
-        font-size: 14px;
       }
 
       code {
+        font-size: 13px;
         padding: 2px 4px;
       }
 
       pre {
-        padding: 10px 8px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        overflow: hidden;
+        padding: 25px 18px;
+      }
+
+      pre code {
+        font-size: 13px;
       }
 
       h1, h2, h3, h4 {
@@ -77,7 +85,7 @@ html lang="en"
       }
 
       h1 {
-        font-size: 80px;
+        font-size: 75px;
         font-weight: 400;
         letter-spacing: -5px;
         line-height: 1;
