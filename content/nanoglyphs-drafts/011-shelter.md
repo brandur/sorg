@@ -13,17 +13,17 @@ Before the city's shelter in place order went out, Stripe's offices formally clo
 
 ---
 
-You're reading _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and are looking for the fire escape, unsubscribe in [one clean click](%unsubscribe_url%).
+You're reading _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and want to self-isolate from it permanently, unsubscribe in [one sterile click](%unsubscribe_url%).
 
-Reading from the web, you can [subscribe here](https://nanoglyph-signup.brandur.org/). If you're allergic to the word "newsletter", I don't blame you. I am too. Maybe you can think of it more like an async blog in the post-Google Reader age. `ablog`? `bloguring`? We'll come back to that one.
+If you're reading from the web, you can [subscribe here](https://nanoglyph-signup.brandur.org/). Allergic to the word "newsletter"? I don't blame you. I am too. Maybe you can think of it more like an async blog in the post-Google Reader age of consolidated social media. `ablog`? `bloguring`? We'll come back to that one.
 
 ---
 
-A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up the hill from the Castro and Cole Valley, and right across from the giant three-pronged TV/radio tower on top of Mount Sutro (Sutro Tower), still the most conspicuous landmark on the city's skyline, even with the notorious addition of Salesforce Tower.
+A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up the hill from the Castro and Cole Valley, and right across from the giant three-pronged TV/radio tower on top of Mount Sutro (Sutro Tower), still the most conspicuous landmark on the city's skyline, even with the notorious addition of Salesforce Tower. Even if you've never been to city, you might still recognize its shape in the abstract in the designs of a thousand SF-centric T-shirts and coffee mugs.
 
 ![Sutro Tower](/assets/images/nanoglyphs/011-shelter/sutro-tower@2x.jpg)
 
-Working from home has its ups and downs. My ergonomic situation is dire -- my working posture isn't good in the best of times, and taking desk equipment out of the equation hasn't improved it. Right now I'm changing sitting positions every 30 minutes (low desk, cross-legged on floor, couch, bed, cycle back to start) so my later life doesn't see me taking up residence in a chiropractor's office for live-in treatment. But that little hardship is balanced by an incredible overall reduction in travel-related stress. My commute is better than most of North America's, but even so, it's a tight ball of pain and anxiety that eats anywhere between 1 to 2 hours a day.
+Working from home has its ups and downs. My ergonomic situation is borderline dire -- my working posture isn't good in the best of times, and taking desk equipment out of the equation hasn't improved it. I'm changing sitting positions every 30 minutes (low desk, cross-legged on floor, couch, bed, cycle back to start) so my later life doesn't see me taking up residence in a chiropractor's office for live-in treatment. But a little hardship is balanced by an incredible overall reduction in travel-related stress. My commute is better than most of North America's, but even so, it's a tight ball of pain and anxiety that eats anywhere between 1 to 2 hours a day.
 
 If you are going to be spending time at home, Twin Peaks isn't a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it's impressively quiet. I've been doing daily runs through our local trail system, across to Sutro's Open Space Reserve, and up to the top of the peaks themselves. My building's back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound's weirdest feature).
 
@@ -144,7 +144,7 @@ A significant next step will be to see which real-world programs find enough to 
 
 I'm overhauling my day-to-day by starting small. _Really_ small.
 
-* **Sitting cross-legged:** I was taught to do this from the moment I entered daycare, but it never really took and I've always regretted it. Eating meals on tatami in Japan, I was the only person in the room with a “cheat” pillow -- roughly equivalent in the realm of faux pas to asking for a fork. Ease back into some flexibility doing some cross-legged sitting every day (pictured below: my tea set seen from my new, lower perspective).
+* **Cross-legged sitting:** I was taught to do this from the moment I entered preschool, but it never took and I've always regretted it. Eating meals on tatami in Japan, I was the only person in the room with a “cheat” pillow -- roughly equivalent in the realm of faux pas to asking for a fork. Ease back into some flexibility doing some cross-legged sitting every day (pictured below: my tea set seen from my new, lower perspective).
 
 ![Tea set -- made in Calgary and Japan](/assets/images/nanoglyphs/011-shelter/tea@2x.jpg)
 
@@ -152,7 +152,7 @@ I'm overhauling my day-to-day by starting small. _Really_ small.
 * **Healthy meals:** I like carbs way too much. To do: Eat food, not too much, mostly plants [2].
 * **Technical reading:** Unlike fiction, technical reading requires time and concentration. And unlike fiction, it also makes you learn something. Do some every day.
 
-If things go well, I'll work my way up to rehabilitating my derelict French later.
+If the small things go well, I'll work my way up to rehabilitating my derelict French later.
 
 Take care.
 
