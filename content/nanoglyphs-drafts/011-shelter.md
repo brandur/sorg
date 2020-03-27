@@ -2,28 +2,28 @@
 image_alt = "Wind chimes at home"
 image_url = "/assets/images/nanoglyphs/011-shelter/chimes@2x.jpg"
 published_at = 2020-03-25T02:24:28Z
-title = "Sheltering, Twin Peaks; Asynchronous I/O in Circles"
+title = "Sheltering, Twin Peaks; Asynchronous I/O, in Circles"
 +++
 
 Well, the world's changed since the last time we spoke. How many times in life can a person legitimately say that?
 
-The windows are dark in San Francisco's museums, bars, and bookstores -- everywhere minus a few exceptions like grocery stores and restaurants with a take out business. Paradoxically, despite a pervasive malaise, the city feels nicer than than ever (we're still allowed out for exercise) -- traffic is lighter and more calm, the streets are quieter, the air is fresher [1].
+The windows are dark in San Francisco's museums, bars, and bookstores -- everywhere minus a few exceptions like grocery stores and restaurants with a take out business. Paradoxically, despite an ambient, pervasive feeling of malaise, the city feels nicer than than ever (we're still allowed out for exercise) -- traffic is lighter and more calm, the streets are quieter, the air is fresher [1].
 
 Before the city's shelter in place order went out, Stripe's offices formally closed to all personnel. Before the office closure order went out, we'd been encouraged to work from home. That makes this my third week working out of my apartment, where before present circumstances I'd never spent even a fraction of this much contiguous time.
 
 ---
 
-You're reading _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and want to self-isolate from it permanently, unsubscribe in [one sterile click](%unsubscribe_url%).
+You're reading _Nanoglyph_, an experimental newsletter on software, ... and occasionally back yards and mountains. If you want to get straight to hard technology, scroll down a little ways for some close-to-the-metal content on the history of I/O APIs in the kernel. If you're pretty sure you never signed up for this wordy monstrosity and want to self-isolate from it _permanently_, unsubscribe in [one sterile click](%unsubscribe_url%).
 
 If you're reading from the web, you can [subscribe here](https://nanoglyph-signup.brandur.org/). Allergic to the word "newsletter"? I don't blame you. I am too. Maybe you can think of it more like an async blog in the post-Google Reader age of consolidated social media. `ablog`? `bloguring`? We'll come back to that one.
 
 ---
 
-A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up the hill from the Castro and Cole Valley, and right across from the giant three-pronged TV/radio tower on top of Mount Sutro (Sutro Tower), still the most conspicuous landmark on the city's skyline, even with the notorious addition of Salesforce Tower. Even if you've never been to city, you might still recognize its shape in the abstract in the designs of a thousand SF-centric T-shirts and coffee mugs.
+A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up the hill from the Castro and Cole Valley, and right across from the giant three-pronged TV/radio tower on top of Mount Sutro (Sutro Tower), still the most conspicuous landmark on the city's skyline, even with the notorious addition of Salesforce Tower. Even if you've never been to city, you might recognize its shape in the abstract in the designs of a thousand SF-centric T-shirts and coffee mugs.
 
 ![Sutro Tower](/assets/images/nanoglyphs/011-shelter/sutro-tower@2x.jpg)
 
-Working from home has its ups and downs. My ergonomic situation is borderline dire -- my working posture isn't good in the best of times, and taking desk equipment out of the equation hasn't improved it. I'm changing sitting positions every 30 minutes (low desk, cross-legged on floor, couch, bed, cycle back to start) so my later life doesn't see me taking up residence in a chiropractor's office for live-in treatment. But a little hardship is balanced by an incredible overall reduction in travel-related stress. My commute is better than most of North America's, but even so, it's a tight ball of pain and anxiety that eats anywhere between 1 to 2 hours a day.
+Working from home has its ups and downs. My ergonomic situation is borderline dire -- my working posture isn't good in the best of times, and taking desk equipment out of the equation hasn't done it any favors. I'm changing sitting positions every 30 minutes (low desk, cross-legged on floor, couch, bed, cycle back to start) so my later life doesn't see me taking up residence in a chiropractor's office for live-in treatment. But a little hardship is balanced by an amazing overall reduction in travel-related stress. My commute is better than most of North America's, but even so, it's a tight ball of pain and anxiety that eats anywhere between 1 to 2 hours a day.
 
 If you are going to be spending time at home, Twin Peaks isn't a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it's impressively quiet. I've been doing daily runs through our local trail system, across to Sutro's Open Space Reserve, and up to the top of the peaks themselves. My building's back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound's weirdest feature).
 
@@ -41,7 +41,7 @@ In theory anyway. So far I've been watching _The Sopranos_ and playing video gam
 
 ## I/O classic (#io-classic)
 
-Let's talk about asynchronous I/O in the Linux kernel. All the well-known disk syscalls in Linux like `read()`, `write()`, or `fsync()` are blocking -- the invoking program is paused while they do their work. They're all quite fast, made faster by the incredible high throughput disks we have these days, and made _even faster_ once the OS page cache is warm, so for most programs it doesn't matter. Callers also have the option of optimizing with [`posix_fadvise()`](http://man7.org/linux/man-pages/man2/posix_fadvise.2.html), which suggests to the kernel the sort of file data access they're going to engage in, and (possibly) have it warm up that page cache in advance.
+Let's talk about asynchronous I/O in the Linux kernel. All the well-known disk syscalls in Linux like `read()`, `write()`, or `fsync()` are blocking -- the invoking program is paused while they do their work. They're all quite fast, made faster by the incredible high throughput disk technology we have these days, and made _even faster_ once the OS page cache is warm, so for most programs it doesn't matter. Callers also have the option of optimizing with [`posix_fadvise()`](http://man7.org/linux/man-pages/man2/posix_fadvise.2.html), which suggests to the kernel the sort of file data access they're going to engage in, and (probably [2]) have it warm up that page cache in advance.
 
 There are however, classes of programs that see big benefits in performance by moving beyond synchronous I/O -- think something like a high throughput database, or web proxy that caches to disk. I find it easiest to think about with something like Node's event reactor, which is massively asynchronous, but running user code in only one place at any given time. If it were based naively on traditional file I/O functions, then any function calling `read()` would block everything else in the reactor until the operation completed. I/O-heavy Node apps would block constantly and have minimal practical concurrency.
 
@@ -149,7 +149,7 @@ I'm overhauling my day-to-day by starting small. _Really_ small.
 ![Tea set -- made in Calgary and Japan](/assets/images/nanoglyphs/011-shelter/tea@2x.jpg)
 
 * **Daily scheduling/routine:** With fewer commitments to be in certain places at certain times, my schedule's been on a collision course with its destiny as an unstructured, amorphous blob. It's not working. Go back to having a routine, even if not strictly as necessary.
-* **Healthy meals:** I like carbs way too much. To do: Eat food, not too much, mostly plants [2].
+* **Healthy meals:** I like carbs way too much. To do: eat food, not too much, mostly plants [3].
 * **Technical reading:** Unlike fiction, technical reading requires time and concentration. And unlike fiction, it also makes you learn something. Do some every day.
 
 If the small things go well, I'll work my way up to rehabilitating my derelict French later.
@@ -158,4 +158,6 @@ Take care.
 
 [1] Air particulates in SF are down ~40% year over year.
 
-[2] See _Food Rules_ by Michael Pollan.
+[2] `posix_fadvise()`'s documentation is very careful to spell out that no requests made to it are binding. It sets an expectation on behalf of a program, which the kernel may or may not respect.
+
+[3] See _Food Rules_ by Michael Pollan.
