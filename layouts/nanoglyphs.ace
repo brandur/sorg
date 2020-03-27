@@ -229,27 +229,6 @@ html lang="en"
         padding: 0 20px;
       }
 
-      /*
-      .web-only ol img, .web-only ul img {
-        border-radius: 10px;
-        float: left;
-        margin: 0 15px 10px 0;
-        width: auto;
-      }
-
-      .web-only ul.issue-list {
-        font-size: 12px;
-        list-style-type: none;
-        margin: 0 auto;
-        padding: 0;
-        width: 400px;
-      }
-
-      .web-only .clear {
-        clear: both;
-      }
-      */
-
       .web-only .container-highlight, .web-only .container-highlight-portrait {
         margin: 40px auto;
         padding: 0;
