@@ -18,8 +18,6 @@ git clone https://github.com/brandur/sorg.git
 Install Go 1.9+, [direnv][direnv] set up and run [blackswan][blackswan], then:
 
 ``` sh
-go get -u github.com/ddollar/forego
-
 cp .envrc.sample .envrc
 
 direnv allow
@@ -31,7 +29,7 @@ createdb sorg-test
 make install
 
 # Run an initial build of the site, look for build output in public/.
-forego run make build
+make build
 
 # Note that when watching for changes, this project has unfortunately gotten
 # large enough that we bypass Mac OS' per-process limit for file descriptors,
@@ -41,7 +39,7 @@ ulimit -n 4096
 
 # Watch for changes in Go files and/or content and recompile and rebuild when
 # one occurs.
-forego start
+make loop
 ```
 
 The project can be deployed to s3 using:
