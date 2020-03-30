@@ -27,6 +27,7 @@ var FuncMap = template.FuncMap{
 	"FormatTimeWithMinute":         formatTimeWithMinute,
 	"FormatTimeYearMonth":          formatTimeYearMonth,
 	"InKM":                         inKM,
+	"LazyRetinaImage":              lazyRetinaImage,
 	"MarshalJSON":                  marshalJSON,
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
@@ -106,6 +107,15 @@ func formatTimeYearMonth(t *time.Time) string {
 
 func formatTimeWithMinute(t *time.Time) string {
 	return toNonBreakingWhitespace(t.Format("January 2, 2006 15:04"))
+}
+
+func lazyRetinaImage(index int, path, slug string) string {
+	slug = queryEscape(slug)
+	largePath := path + slug + "_large.jpg"
+	largePathRetina := path + slug + "_large@2x.jpg"
+
+	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
+		photographStandin(index), largePath, largePathRetina, largePath)
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces
