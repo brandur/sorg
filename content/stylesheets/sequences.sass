@@ -185,14 +185,26 @@ body.sequences-all, body.sequences-entry
       margin: 50px auto
       max-width: 500px
 
-    .sequences-entry-photograph
-      margin: 0 30px
+    .sequences-entry-photograph-container
+      margin: 0 auto
+      max-width: calc(1600px + 2 * 30px)
 
-      img
-        //border-radius: 25px
-        margin: 0 auto
-        max-width: 1600px
-        width: 100%
+      .sequences-entry-photograph-inner
+        margin: 0 30px
+
+        img
+          margin: 0 auto
+          width: 100%
+
+      .sequences-entry-photograph-double
+        display: flex
+        flex-direction: row
+
+        .sequences-entry-photograph-a
+          margin: 0 5px 0 0
+
+        .sequences-entry-photograph-b
+          margin: 0 0 0 5px
 
     .sequences-entry-carousel
       margin: 30px auto
@@ -289,11 +301,19 @@ body.sequences-all, body.sequences-entry
         strong
           font-size: 0.9rem
 
-      .sequences-entry-photograph
-        margin: 0 0
+      .sequences-entry-photograph-container
+        .sequences-entry-photograph-inner
+          margin: 0 0
 
-        img
-          //border-radius: 10px
+        .sequences-entry-photograph-double
+          flex-direction: column
+          margin: 0
+
+          .sequences-entry-photograph-a
+            margin: 5px 0
+
+          .sequences-entry-photograph-b
+            margin: 5px 0
 
       .sequences-entry-carousel
         margin: 20px auto

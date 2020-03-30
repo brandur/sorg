@@ -6,8 +6,9 @@
       h1 {{.Entry.Title}}
       .sequences-entry-divider
       {{HTML .Entry.DescriptionHTML}}
-    .sequences-entry-photograph
-      img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large.jpg 1x"
+    .sequences-entry-photograph-container
+      .sequences-entry-photograph-inner
+        img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large.jpg 1x"
     .sequences-entry-carousel
       .sequences-entry-carousel-photograph
         {{if .EntryPrevPrev}}

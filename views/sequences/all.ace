@@ -12,7 +12,17 @@
         p.sequences-entry-words-title
           a href="#{{$entry.Slug}}" id="{{$entry.Slug}}" {{$entry.Title}}
         {{HTML $entry.DescriptionHTML}}
-      .sequences-entry-photograph
-        img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large.jpg" data-srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large.jpg 1x"
+      {{if eq (len $entry.Photos) 2}}
+        .sequences-entry-photograph-container
+          .sequences-entry-photograph-inner.sequences-entry-photograph-double
+            .sequences-entry-photograph-a
+              img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape (index $entry.Photos 0).Slug}}_large.jpg" data-srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape (index $entry.Photos 0).Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape (index $entry.Photos 0).Slug}}_large.jpg 1x"
+            .sequences-entry-photograph-b
+              img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape (index $entry.Photos 1).Slug}}_large.jpg" data-srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape (index $entry.Photos 1).Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape (index $entry.Photos 1).Slug}}_large.jpg 1x"
+      {{else}}
+        .sequences-entry-photograph-container
+          .sequences-entry-photograph-inner
+            img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large.jpg" data-srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large.jpg 1x"
+      {{end}}
     .sequences-all-divider
   {{end}}
