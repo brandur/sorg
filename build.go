@@ -527,12 +527,16 @@ func build(c *modulir.Context) []error {
 				}
 				sequence.Slug = slug
 
-				// Do a little post-processing on all the photos found in the
+				if err := sequence.validate(); err != nil {
+					return true, err
+				}
+
+				// Do a little post-processing on all the entries found in the
 				// sequence.
-				for _, photo := range sequence.Photos {
-					photo.DescriptionHTML =
-						string(mmarkdown.Render(c, []byte(photo.Description)))
-					photo.Sequence = &sequence
+				for _, entry := range sequence.Entries {
+					entry.DescriptionHTML =
+						string(mmarkdown.Render(c, []byte(entry.Description)))
+					entry.Sequence = &sequence
 				}
 
 				sequences[slug] = &sequence
@@ -618,7 +622,7 @@ func build(c *modulir.Context) []error {
 		sortTalks(talks)
 
 		for _, sequence := range sequences {
-			sortPhotos(sequence.Photos)
+			sortSequenceEntries(sequence.Entries)
 		}
 	}
 
@@ -755,11 +759,11 @@ func build(c *modulir.Context) []error {
 	// Sequence master feed
 	{
 		c.AddJob("sequences: feed", func() (bool, error) {
-			var allSequencePhotos []*Photo
+			var allSequenceEntries []*SequenceEntry
 			for _, sequence := range sequences {
-				allSequencePhotos = append(allSequencePhotos, sequence.Photos...)
+				allSequenceEntries = append(allSequenceEntries, sequence.Entries...)
 			}
-			sortPhotos(allSequencePhotos)
+			sortSequenceEntries(allSequenceEntries)
 
 			var anySequenceChanged bool
 			for _, changed := range sequencesChanged {
@@ -769,7 +773,7 @@ func build(c *modulir.Context) []error {
 				}
 			}
 
-			return renderSequenceFeed(c, nil, allSequencePhotos, anySequenceChanged)
+			return renderSequenceFeed(c, nil, allSequenceEntries, anySequenceChanged)
 		})
 	}
 
@@ -796,7 +800,7 @@ func build(c *modulir.Context) []error {
 			{
 				name := fmt.Sprintf("sequence %s: index", sequence.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, sequence, sequence.Photos,
+					return renderSequence(c, sequence, sequence.Entries,
 						sequencesChanged[sequence.Slug])
 				})
 			}
@@ -805,7 +809,7 @@ func build(c *modulir.Context) []error {
 			{
 				name := fmt.Sprintf("sequence %s: all", sequence.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequenceAll(c, sequence, sequence.Photos,
+					return renderSequenceAll(c, sequence, sequence.Entries,
 						sequencesChanged[sequence.Slug])
 				})
 			}
@@ -828,28 +832,33 @@ func build(c *modulir.Context) []error {
 			{
 				name := fmt.Sprintf("sequence %s: feed", sequence.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequenceFeed(c, sequence, sequence.Photos,
+					return renderSequenceFeed(c, sequence, sequence.Entries,
 						sequencesChanged[sequence.Slug])
 				})
 			}
 
-			for i, p := range sequence.Photos {
-				photoIndex := i
-				photo := p
+			for i, e := range sequence.Entries {
+				entryIndex := i
+				entry := e
 
 				// Sequence page
-				name := fmt.Sprintf("sequence %s: %s", sequence.Slug, photo.Slug)
+				name := fmt.Sprintf("sequence %s: %s", sequence.Slug, entry.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return renderSequencePhoto(c, sequence, photo, photoIndex,
+					return renderSequenceEntry(c, sequence, entry, entryIndex,
 						sequencesChanged[sequence.Slug])
 				})
 
 				// Sequence fetch + resize
-				name = fmt.Sprintf("sequence %s photo: %s", sequence.Slug, photo.Slug)
-				c.AddJob(name, func() (bool, error) {
-					return fetchAndResizePhoto(c,
-						c.SourceDir+"/content/photographs/sequences/"+sequence.Slug, photo)
-				})
+				for _, p := range entry.Photos {
+					photo := p
+
+					name = fmt.Sprintf("sequence %s entry %s photo: %s",
+						sequence.Slug, entry.Slug, photo.Slug)
+					c.AddJob(name, func() (bool, error) {
+						return fetchAndResizePhoto(c,
+							c.SourceDir+"/content/photographs/sequences/"+sequence.Slug, photo)
+					})
+				}
 			}
 		}
 	}
@@ -1035,11 +1044,6 @@ type Photo struct {
 	// Description is the description of the photograph.
 	Description string `toml:"description"`
 
-	// DescriptionHTML is the description rendered to HTML. This is only set
-	// for sequence photos where we assume that the input description is in
-	// Markdown.
-	DescriptionHTML string `toml:"-"`
-
 	// KeepInHomeRotation is a special override for photos I really like that
 	// keeps them in the home page's random rotation. The rotation then
 	// consists of either a recent photo or one of these explicitly selected
@@ -1052,10 +1056,6 @@ type Photo struct {
 
 	// OccurredAt is UTC time when the photo was published.
 	OccurredAt *time.Time `toml:"occurred_at"`
-
-	// Sequence links back to the photo's parent sequence. Only set if the
-	// photo is part of a sequence.
-	Sequence *Sequence `toml:"-"`
 
 	// Slug is a unique identifier for the photo. Originally these were
 	// generated from Flickr, but I've since just started reusing them for
@@ -1083,8 +1083,9 @@ type Sequence struct {
 	// Description is the description of the photograph.
 	Description string `toml:"description"`
 
-	// Photos is a collection of photos within the top-level wrapper.
-	Photos []*Photo `toml:"photographs"`
+	// Entries are the set of entries in the sequence. Each contains a slug,
+	// description, and one or more photos.
+	Entries []*SequenceEntry `toml:"entries"`
 
 	// Slug is a unique identifier for the sequence. It's interpreted from the
 	// sequence's path.
@@ -1092,6 +1093,54 @@ type Sequence struct {
 
 	// Title is the title of the sequence.
 	Title string `toml:"title"`
+}
+
+func (s *Sequence) validate() error {
+	for i, entry := range s.Entries {
+		if entry.Slug == "" {
+			return fmt.Errorf("No slug set for sequence entry: index %v", i)
+		}
+
+		if len(entry.Photos) < 1 {
+			return fmt.Errorf("Sequence entry needs at least one photo: %v", entry.Slug)
+		}
+	}
+
+	return nil
+}
+
+// SequenceEntry is a single entry in a sequence.
+type SequenceEntry struct {
+	// Description is the description of the entry.
+	Description string `toml:"description"`
+
+	// DescriptionHTML is the description rendered to HTML.
+	DescriptionHTML string `toml:"-"`
+
+	// OccurredAt is UTC time when the entry was published.
+	OccurredAt *time.Time `toml:"occurred_at"`
+
+	// Photos is a collection of photos within this particular entry. Many
+	// sequence entries will only have a single photo, but there are alternate
+	// layouts for when one contains a number of different ones.
+	Photos []*Photo `toml:"photographs"`
+
+	// Sequence links back to the photo's parent sequence. Only set if the
+	// photo is part of a sequence.
+	Sequence *Sequence `toml:"-"`
+
+	// Slug is a unique identifier for the entry.
+	Slug string `toml:"slug"`
+
+	// Title is the title of the entry.
+	Title string `toml:"title"`
+}
+
+// FirstPhoto returns the first photograph for a sequence entry. This is
+// commonly needed in view templates where accessing slice elements via index
+// is made awkward by Go (`index arr 0` rather than `arr[0]`).
+func (e *SequenceEntry) FirstPhoto() *Photo {
+	return e.Photos[0]
 }
 
 // Tag is a symbol assigned to an article to categorize it.
@@ -2029,13 +2078,13 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 	return true, squantified.RenderRuns(c, db, viewsChanged, getLocals)
 }
 
-func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
+func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
-			scommon.ViewsDir + "/sequences/show.ace",
+			scommon.ViewsDir + "/sequences/index.ace",
 		},
 		universalSources...,
 	)...)
@@ -2046,26 +2095,26 @@ func renderSequence(c *modulir.Context, sequence *Sequence, photos []*Photo,
 	title := fmt.Sprintf("Sequence: %s", sequence.Title)
 	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
 
-	// Most of the time we want photos with the most recent first, but we want
+	// Most of the time we want entries with the most recent first, but we want
 	// them with the oldest first on the index page.
-	photosReversed := make([]*Photo, len(photos))
-	for i, photo := range photos {
-		photosReversed[len(photos)-i-1] = photo
+	entriesReversed := make([]*SequenceEntry, len(entries))
+	for i, photo := range entries {
+		entriesReversed[len(entries)-i-1] = photo
 	}
 
 	locals := getLocals(title, map[string]interface{}{
 		"BodyClass":   "sequences-index",
 		"Description": description,
-		"Photos":      photosReversed,
+		"Entries":     entriesReversed,
 		"Sequence":    sequence,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/show.ace",
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
 		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-func renderSequenceAll(c *modulir.Context, sequence *Sequence, photos []*Photo,
+func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
@@ -2083,15 +2132,15 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, photos []*Photo,
 	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
 
 	// Oldest first
-	photosReversed := make([]*Photo, len(photos))
-	for i, photo := range photos {
-		photosReversed[len(photos)-i-1] = photo
+	entriesReversed := make([]*SequenceEntry, len(entries))
+	for i, photo := range entries {
+		entriesReversed[len(entries)-i-1] = photo
 	}
 
 	locals := getLocals(title, map[string]interface{}{
 		"BodyClass":   "sequences-all",
 		"Description": description,
-		"Photos":      photosReversed,
+		"Entries":     entriesReversed,
 		"Sequence":    sequence,
 	})
 
@@ -2100,14 +2149,14 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, photos []*Photo,
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
-// Renders at Atom feed for a sequence. The photos slice is assumed to be
+// Renders at Atom feed for a sequence. The entries slice is assumed to be
 // pre-sorted.
 //
 // The one non-obvious mechanism worth mentioning is that it can also render a
-// general Atom feed for all sequence photos mixed together by specifying
-// `sequence` as `nil` and photos as a master list of all sequence photos
+// general Atom feed for all sequence entries mixed together by specifying
+// `sequence` as `nil` and entries as a master list of all sequence entries
 // combined.
-func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
+func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
 	sequenceChanged bool) (bool, error) {
 
 	if !sequenceChanged {
@@ -2139,26 +2188,26 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 		},
 	}
 
-	if len(photos) > 0 {
-		feed.Updated = *photos[0].OccurredAt
+	if len(entries) > 0 {
+		feed.Updated = *entries[0].OccurredAt
 	}
 
-	for i, photo := range photos {
+	for i, entry := range entries {
 		if i >= conf.NumAtomEntries {
 			break
 		}
 
-		htmlContent := photo.DescriptionHTML +
+		htmlContent := entry.DescriptionHTML +
 			fmt.Sprintf(`<p><img src="/photographs/sequences/%s/%s_large@2x.jpg"></p>`,
-				photo.Sequence.Slug, photo.Slug)
+				entry.Sequence.Slug, entry.Slug)
 
 		entry := &satom.Entry{
-			Title:     photo.Title,
+			Title:     entry.Title,
 			Content:   &satom.EntryContent{Content: htmlContent, Type: "html"},
-			Published: *photo.OccurredAt,
-			Updated:   *photo.OccurredAt,
-			Link:      &satom.Link{Href: conf.AbsoluteURL + "/sequences/" + photo.Sequence.Slug + "/" + photo.Slug},
-			ID:        "tag:brandur.org," + photo.OccurredAt.Format("2006-01-02") + ":sequences:" + photo.Sequence.Slug + ":" + photo.Slug,
+			Published: *entry.OccurredAt,
+			Updated:   *entry.OccurredAt,
+			Link:      &satom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Sequence.Slug + "/" + entry.Slug},
+			ID:        "tag:brandur.org," + entry.OccurredAt.Format("2006-01-02") + ":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -2175,13 +2224,13 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, photos []*Photo,
 	return true, feed.Encode(f, "  ")
 }
 
-func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, photoIndex int,
+func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *SequenceEntry, entryIndex int,
 	sequenceChanged bool) (bool, error) {
 
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
-			scommon.ViewsDir + "/sequences/photo.ace",
+			scommon.ViewsDir + "/sequences/entry.ace",
 		},
 		universalSources...,
 	)...)
@@ -2189,42 +2238,42 @@ func renderSequencePhoto(c *modulir.Context, sequence *Sequence, photo *Photo, p
 		return false, nil
 	}
 
-	// A set of previous and next photos for the carousel.
+	// A set of previous and next entries for the carousel.
 	//
 	// Note that the subtraction/addition operations may appear to be
 	// "backwards" and that's because they are. This is because by the time the
-	// code gets here, the photos list has already been sorted in _reverse_
+	// code gets here, the entries list has already been sorted in _reverse_
 	// chronological order.
-	var photoPrev, photoPrevPrev *Photo
-	var photoNext, photoNextNext *Photo
-	if photoIndex+2 < len(sequence.Photos) {
-		photoPrevPrev = sequence.Photos[photoIndex+2]
+	var entryPrev, entryPrevPrev *SequenceEntry
+	var entryNext, entryNextNext *SequenceEntry
+	if entryIndex+2 < len(sequence.Entries) {
+		entryPrevPrev = sequence.Entries[entryIndex+2]
 	}
-	if photoIndex+1 < len(sequence.Photos) {
-		photoPrev = sequence.Photos[photoIndex+1]
+	if entryIndex+1 < len(sequence.Entries) {
+		entryPrev = sequence.Entries[entryIndex+1]
 	}
-	if photoIndex-1 >= 0 {
-		photoNext = sequence.Photos[photoIndex-1]
+	if entryIndex-1 >= 0 {
+		entryNext = sequence.Entries[entryIndex-1]
 	}
-	if photoIndex-2 >= 0 {
-		photoNextNext = sequence.Photos[photoIndex-2]
+	if entryIndex-2 >= 0 {
+		entryNextNext = sequence.Entries[entryIndex-2]
 	}
 
-	title := fmt.Sprintf("%s — %s %s", photo.Title, sequence.Title, photo.Slug)
+	title := fmt.Sprintf("%s — %s %s", entry.Title, sequence.Title, entry.Slug)
 
 	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":     "sequences-photo",
-		"Photo":         photo,
-		"PhotoNext":     photoNext,
-		"PhotoNextNext": photoNextNext,
-		"PhotoPrev":     photoPrev,
-		"PhotoPrevPrev": photoPrevPrev,
+		"BodyClass":     "sequences-entry",
+		"Entry":         entry,
+		"EntryNext":     entryNext,
+		"EntryNextNext": entryNextNext,
+		"EntryPrev":     entryPrev,
+		"EntryPrevPrev": entryPrevPrev,
 		"Sequence":      sequence,
 		"ViewportWidth": viewportWidthDeviceWidth,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/photo.ace",
-		path.Join(c.TargetDir, "sequences", sequence.Slug, photo.Slug),
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/entry.ace",
+		path.Join(c.TargetDir, "sequences", sequence.Slug, entry.Slug),
 		stemplate.GetAceOptions(viewsChanged), locals)
 }
 
@@ -2407,6 +2456,12 @@ func sortNewsletters(issues []*snewsletter.Issue) {
 func sortPhotos(photos []*Photo) {
 	sort.Slice(photos, func(i, j int) bool {
 		return photos[j].OccurredAt.Before(*photos[i].OccurredAt)
+	})
+}
+
+func sortSequenceEntries(entries []*SequenceEntry) {
+	sort.Slice(entries, func(i, j int) bool {
+		return entries[j].OccurredAt.Before(*entries[i].OccurredAt)
 	})
 }
 

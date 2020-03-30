@@ -1,0 +1,35 @@
+= content main
+  .sequences-entry-flex
+    .sequences-entry-words.sequences-entry-words-narrow
+      p.sequences-entry-sequence
+        a href="/sequences/{{.Sequence.Slug}}" {{.Sequence.Title}}
+      h1 {{.Entry.Title}}
+      .sequences-entry-divider
+      {{HTML .Entry.DescriptionHTML}}
+    .sequences-entry-photograph
+      img src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large.jpg" srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape .Entry.FirstPhoto.Slug}}_large.jpg 1x"
+    .sequences-entry-carousel
+      .sequences-entry-carousel-photograph
+        {{if .EntryPrevPrev}}
+          a href="/sequences/{{.Sequence.Slug}}/{{.EntryPrevPrev.Slug}}"
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .EntryPrevPrev.FirstPhoto.Slug) .EntryPrevPrev.Title | HTML}}
+        {{end}}
+      .sequences-entry-carousel-photograph
+        {{if .EntryPrev}}
+          a href="/sequences/{{.Sequence.Slug}}/{{.EntryPrev.Slug}}"
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .EntryPrev.FirstPhoto.Slug) .EntryPrev.Title | HTML}}
+        {{end}}
+      .sequences-entry-carousel-photograph-current
+        {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .Entry.FirstPhoto.Slug) .Entry.Title | HTML}}
+      .sequences-entry-carousel-photograph
+        {{if .EntryNext}}
+          a href="/sequences/{{.Sequence.Slug}}/{{.EntryNext.Slug}}"
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .EntryNext.FirstPhoto.Slug) .EntryNext.Title | HTML}}
+        {{end}}
+      .sequences-entry-carousel-photograph
+        {{if .EntryNextNext}}
+          a href="/sequences/{{.Sequence.Slug}}/{{.EntryNextNext.Slug}}"
+            {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" .Sequence.Slug .EntryNextNext.FirstPhoto.Slug) .EntryNextNext.Title | HTML}}
+        {{end}}
+    .sequences-entry-info
+      | Image <span class="slug">{{.Entry.Slug}}</span> of the sequence <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Title}}</a>.

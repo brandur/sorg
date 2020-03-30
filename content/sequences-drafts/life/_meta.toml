@@ -7,9 +7,8 @@ Ut est neque, aliquet nec massa vitae, feugiat bibendum nulla. Cras et ullamcorp
 Nam scelerisque laoreet dui vel aliquet. Quisque tempus ullamcorper tellus, et dignissim turpis. Cras et magna arcu. Pellentesque sed est nec nibh congue ullamcorper. Praesent nec libero id sem tempor eleifend quis sit amet nisi. Suspendisse potenti. Maecenas egestas mauris eu sagittis aliquam. Suspendisse egestas tortor eget lobortis commodo. Donec magna tortor, feugiat vitae fermentum vitae, finibus quis nisi. Cras sit amet odio sit amet massa cursus vulputate pellentesque eu felis. Vivamus libero velit, elementum tempus sapien nec, tincidunt bibendum urna. Cras ut mauris aliquam, egestas tortor nec, fermentum ex. Donec euismod augue sit amet convallis ultrices. Sed semper eros quis nunc luctus ullamcorper.\
 """
 
-[[photographs]]
+[[entries]]
   occurred_at = 2018-09-22T16:12:00Z
-  original_image_url = "https://www.dropbox.com/s/lw8djlr7jl516sh/L2018-09-22%2B01.jpg?dl=1"
   slug = "001"
   title = "Snowy trail"
 
@@ -19,9 +18,12 @@ A path through green trees covered by the season's first snow.
 And here is another paragraph. In practice, this text needs to be a bit longer to be more representative of what we can expect out of a real story. And let's add even a few more words on here just to make sure that it's fleshed out in a way that we might really reasonably expect because I tend to be a wordy writer.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/lw8djlr7jl516sh/L2018-09-22%2B01.jpg?dl=1"
+    slug = "001"
+
+[[entries]]
   occurred_at = 2018-10-22T23:43:00Z
-  original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
   slug = "002"
   title = "Portugal before daybreak"
 
@@ -33,9 +35,12 @@ Trying to make the best of a bad situation, I unpack my camera, and start walkin
 If you walk further along it in the direction of the ocean, you'll arrive at the [Rua Augusta Arch](https://en.wikipedia.org/wiki/Rua_Augusta_Arch). Already impressive, it's made even more so by the history it was built to commemorate. In 1755, the city was flattened by [a monster of an earthquake](https://en.wikipedia.org/wiki/1755_Lisbon_earthquake) in the 8.5-9 range, still one of the deadliest in human history. The colossal arch symbolizes reconstruction as one of the world's greatest cities was reborn from its own ashes.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
+    slug = "002"
+
+[[entries]]
   occurred_at = 2018-10-23T12:59:00Z
-  original_image_url = "https://www.dropbox.com/s/0wi75utof8t3irv/L2018-10-23.jpg?dl=1"
   slug = "003"
   title = "Portugal after hours"
 
@@ -43,9 +48,12 @@ If you walk further along it in the direction of the ocean, you'll arrive at the
 One of Portugal's party streets at its peak.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/0wi75utof8t3irv/L2018-10-23.jpg?dl=1"
+    slug = "003"
+
+[[entries]]
   occurred_at = 2018-10-23T16:02:00Z
-  original_image_url = "https://www.dropbox.com/s/6yv6qpfasr1jx07/L2018-10-23%2B01.jpg?dl=1"
   slug = "004"
   title = "After hours guitar"
 
@@ -53,9 +61,12 @@ One of Portugal's party streets at its peak.\
 One of the final acts at open mic night as the show winds down.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/6yv6qpfasr1jx07/L2018-10-23%2B01.jpg?dl=1"
+    slug = "004"
+
+[[entries]]
   occurred_at = 2018-10-29T04:17:00Z
-  original_image_url = "https://www.dropbox.com/s/iiiu8ik9rn4ccjh/L2018-10-29%2B01.jpg?dl=1"
   slug = "005"
   title = "Barcos rabelos"
 
@@ -63,9 +74,12 @@ One of the final acts at open mic night as the show winds down.\
 Boats that used to transport port downriver from the Douro region to Porto.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/iiiu8ik9rn4ccjh/L2018-10-29%2B01.jpg?dl=1"
+    slug = "005"
+
+[[entries]]
   occurred_at = 2018-10-29T05:24:00Z
-  original_image_url = "https://www.dropbox.com/s/jqmujy3klsf7rrn/L2018-10-29.jpg?dl=1"
   slug = "006"
   title = "Port cellar"
 
@@ -73,9 +87,12 @@ Boats that used to transport port downriver from the Douro region to Porto.\
 Barrels of port at a cellar in Porto.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jqmujy3klsf7rrn/L2018-10-29.jpg?dl=1"
+    slug = "006"
+
+[[entries]]
   occurred_at = 2018-11-27T07:54:00Z
-  original_image_url = "https://www.dropbox.com/s/ipluthmq96zxaow/L2018-11-27.jpg?dl=1"
   slug = "007"
   title = "Pure Blue Japan"
 
@@ -83,9 +100,12 @@ Barrels of port at a cellar in Porto.\
 The \"slubby\" texture of the famous brand of Japanese denim.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ipluthmq96zxaow/L2018-11-27.jpg?dl=1"
+    slug = "007"
+
+[[entries]]
   occurred_at = 2018-12-08T12:20:00Z
-  original_image_url = "https://www.dropbox.com/s/b22mhevedfzxvmn/L2018-12-08.JPG?dl=1"
   slug = "008"
   title = "Dew"
 
@@ -93,9 +113,12 @@ The \"slubby\" texture of the famous brand of Japanese denim.\
 Captured at San Francisco's Botanical Garden.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/b22mhevedfzxvmn/L2018-12-08.JPG?dl=1"
+    slug = "008"
+
+[[entries]]
   occurred_at = 2018-12-26T16:45:00Z
-  original_image_url = "https://www.dropbox.com/s/nnmv84hyb1vwqir/L1070002.JPG?dl=1"
   slug = "009"
   title = "Empty streets"
 
@@ -103,9 +126,12 @@ Captured at San Francisco's Botanical Garden.\
 The empty streets of downtown Calgary on Christmas week taken from high above.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/nnmv84hyb1vwqir/L1070002.JPG?dl=1"
+    slug = "009"
+
+[[entries]]
   occurred_at = 2019-01-01T00:00:45Z
-  original_image_url = "https://www.dropbox.com/s/ucvm4oad3af3pgl/L1070043.JPG?dl=1"
   slug = "010"
   title = "New Year's in Calgary"
 
@@ -113,9 +139,12 @@ The empty streets of downtown Calgary on Christmas week taken from high above.\
 Fireworks launched over the Calgary Tower for New Year's festivities.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ucvm4oad3af3pgl/L1070043.JPG?dl=1"
+    slug = "010"
+
+[[entries]]
   occurred_at = 2019-02-24T14:18:45Z
-  original_image_url = "https://www.dropbox.com/s/adw9z5yzrpb08qq/L1070210.JPG?dl=1"
   slug = "011"
   title = "Virgin snow"
 
@@ -123,12 +152,19 @@ Fireworks launched over the Calgary Tower for New Year's festivities.\
 A shot off the ski track at Silver Star with the sun high in the sky.\
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/adw9z5yzrpb08qq/L1070210.JPG?dl=1"
+    slug = "011"
+
+[[entries]]
   occurred_at = 2019-02-28T12:14:45Z
-  original_image_url = "https://www.dropbox.com/s/h7wpttreem9e6yd/L1070242-dead-tree-moss.JPG?dl=1"
   slug = "012"
   title = "Rebirth"
 
   description = """\
 Life resurfacing on the surface of a dead tree along Silver Star's Spirit Bowl.\
 """
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/h7wpttreem9e6yd/L1070242-dead-tree-moss.JPG?dl=1"
+    slug = "012"

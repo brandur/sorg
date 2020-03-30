@@ -11,9 +11,8 @@ See also some [background on the _Sequences_ project](/sequences-project).
 \
 """
 
-[[photographs]]
+[[entries]]
   occurred_at = 2019-06-09T08:56:50Z
-  original_image_url = "https://www.dropbox.com/s/xyo86uxb0nie7oj/L1070488-wall.JPG?dl=1"
   slug = "001"
   title = "Grenzmauer 75"
 
@@ -30,9 +29,12 @@ Since then, sections of the wall have been exported around the world and can be 
 \
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/xyo86uxb0nie7oj/L1070488-wall.JPG?dl=1"
+    slug = "001"
+
+[[entries]]
   occurred_at = 2019-06-10T10:33:37Z
-  original_image_url = "https://www.dropbox.com/s/hq5on26kbnspeia/IMG_1058-cropped.jpg?dl=1"
   slug = "002"
   title = "Fire and water"
 
@@ -47,9 +49,12 @@ This photo's of the wilderness along my favorite run -- follow the Spree southea
 \
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/hq5on26kbnspeia/IMG_1058-cropped.jpg?dl=1"
+    slug = "002"
+
+[[entries]]
   occurred_at = 2019-06-13T08:45:07Z
-  original_image_url = "https://www.dropbox.com/s/zblfzngjam5n8w5/L1070542-cropped.jpg?dl=1"
   slug = "003"
   title = "Doom under the dome"
 
@@ -60,9 +65,12 @@ This is Darkher performing her particular brand of slow doom metal, and there's 
 \
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/zblfzngjam5n8w5/L1070542-cropped.jpg?dl=1"
+    slug = "003"
+
+[[entries]]
   occurred_at = 2019-06-14T16:39:36Z
-  original_image_url = "https://www.dropbox.com/s/f7up96ktcex7iv6/IMG_1084-cropped.jpg?dl=1"
   slug = "004"
   title = "Wild Leipzig"
 
@@ -75,9 +83,12 @@ Photo taken at my southermost reach near Agra -- just a few hundred feet from hu
 \
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/f7up96ktcex7iv6/IMG_1084-cropped.jpg?dl=1"
+    slug = "004"
+
+[[entries]]
   occurred_at = 2019-06-17T09:01:13Z
-  original_image_url = "https://www.dropbox.com/s/435kguqqkbs4r3m/L1070510-cropped.jpg?dl=1"
   slug = "005"
   title = "Moritzbastei"
 
@@ -89,9 +100,12 @@ Originally the ancient city fortifications for Leipzig, it lost its military fun
 Today, it's a night club and cultural space inside a fortress, and runs from dusk until dawn every night of WGT. Photos often use optical tricks to make small places look larger, but this one does the opposite -- it's only a narrow glimpse into a huge space that spans a dozen rooms in a labyrinthine complex spanning many floors.
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/435kguqqkbs4r3m/L1070510-cropped.jpg?dl=1"
+    slug = "005"
+
+[[entries]]
   occurred_at = 2019-06-17T10:17:35Z
-  original_image_url = "https://www.dropbox.com/s/lc6mfbysbqo5may/L1070554-westbad.JPG?dl=1"
   slug = "006"
   title = "Concerts in old pools"
 
@@ -101,9 +115,12 @@ One of the best parts of cities with long histories is the repurposing of dereli
 One of the city's curious penchants is to convert old public pools into live music venues. Last year I ran into this in [Stadtbad](https://de.wikipedia.org/wiki/Stadtbad_(Leipzig\\)), Leipzig's old three wing central bath complex. This year: **Westbad**, the roof of which is pictured below -- a mix of amazing bath art, and modern metal frameworks to suspend speaker stacks. Taken during Escape With Romeo's show on the final night of WGT.
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/lc6mfbysbqo5may/L1070554-westbad.JPG?dl=1"
+    slug = "006"
+
+[[entries]]
   occurred_at = 2019-06-17T11:15:03Z
-  original_image_url = "https://www.dropbox.com/s/t61cmdqzb2s8azu/L1070629-adjusted.jpg?dl=1"
   slug = "007"
   title = "Nordbahnhof"
 
@@ -115,9 +132,12 @@ It's highly reminiscent of New York's [High Line](https://en.wikipedia.org/wiki/
 I came across Nordbahnhof purely by accident as I was touring the area northwest of mitte, and was glad I did. Along the way: an overgrown rail bridge, old paving stones stacked into megalithic cubes, and the most dangerous-looking amusement park I've ever seen, complete with gutted cars suspended 80 feet in the air.
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/t61cmdqzb2s8azu/L1070629-adjusted.jpg?dl=1"
+    slug = "007"
+
+[[entries]]
   occurred_at = 2019-06-19T13:02:04Z
-  original_image_url = "https://www.dropbox.com/s/6wiwkprubkth8dy/L1070739-cropped.jpg?dl=1"
   slug = "008"
   title = "How to enjoy a drink"
 
@@ -127,9 +147,12 @@ Some portraits of monkeys in the hot spring outside the rooftop Monkey Bar in th
 I previously published a section in [_Passages & Glass_](/newsletter) about going to see [Japanese macaques near Nagano](/passages/002-japan#macaques). It was amazing, even if as bad luck would have it, they weren't enjoying drinks at the time.
 """
 
-[[photographs]]
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/6wiwkprubkth8dy/L1070739-cropped.jpg?dl=1"
+    slug = "008"
+
+[[entries]]
   occurred_at = 2019-06-29T23:29:38Z
-  original_image_url = "https://www.dropbox.com/s/5ycn7b4r0zeax26/L1070575-silo.JPG?dl=1"
   slug = "009"
   title = "Silo"
 
@@ -140,3 +163,7 @@ This photo was taken just a few minutes after opening during one if its quieter 
 
 I spent my first few nights in Friedrichshain, and there Silo was an obvious breakfast choice, but regardless of where I was staying later in the trip, I often found myself commuting back to visit once again. Just one more flat white before I go.
 """
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/5ycn7b4r0zeax26/L1070575-silo.JPG?dl=1"
+    slug = "009"

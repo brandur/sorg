@@ -6,13 +6,13 @@
       .sequences-all-intro
         {{HTML .Description}}
   .sequences-all-divider-first
-  {{range $i, $photo := .Photos}}
-    .sequences-photo-flex
-      .sequences-photo-words
-        p.sequences-photo-words-title
-          a href="#{{.Slug}}" id="{{.Slug}}" {{.Title}}
-        {{HTML .DescriptionHTML}}
-      .sequences-photo-photograph
-        img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $photo.Slug}}_large.jpg" data-srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $photo.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape $photo.Slug}}_large.jpg 1x"
+  {{range $i, $entry := .Entries}}
+    .sequences-entry-flex
+      .sequences-entry-words
+        p.sequences-entry-words-title
+          a href="#{{$entry.Slug}}" id="{{$entry.Slug}}" {{$entry.Title}}
+        {{HTML $entry.DescriptionHTML}}
+      .sequences-entry-photograph
+        img class="lazy" src="{{PhotographStandin $i}}" data-src="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large.jpg" data-srcset="/photographs/sequences/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large@2x.jpg 2x, /photographs/sequence/{{.Sequence.Slug}}/{{QueryEscape $entry.FirstPhoto.Slug}}_large.jpg 1x"
     .sequences-all-divider
   {{end}}

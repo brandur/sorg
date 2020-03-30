@@ -115,7 +115,7 @@ body.sequences-index
           border-radius: 10px
           transform: scale(1.05)
 
-body.sequences-all, body.sequences-photo
+body.sequences-all, body.sequences-entry
   background: $background
   color: $primary
 
@@ -128,15 +128,15 @@ body.sequences-all, body.sequences-photo
 
     &:visited
 
-  .sequences-photo-flex
+  .sequences-entry-flex
     margin: 30px 0
 
-    .sequences-photo-divider
+    .sequences-entry-divider
       border-bottom: 1px solid $lowlight
       margin: 20px auto 40px auto
       width: 60%
 
-    .sequences-photo-words
+    .sequences-entry-words
       color: $secondary
       font-size: 0.95rem
       line-height: 1.55em
@@ -155,7 +155,7 @@ body.sequences-all, body.sequences-photo
       p
         margin: 15px 0
 
-      p.sequences-photo-sequence
+      p.sequences-entry-sequence
         font-family: $sans_serif
         font-size: 0.65rem
         font-weight: bold
@@ -168,7 +168,7 @@ body.sequences-all, body.sequences-photo
         a
           border-bottom: 0
 
-      p.sequences-photo-words-title
+      p.sequences-entry-words-title
         font-family: $sans_serif
         font-size: 0.8rem
         font-weight: bold
@@ -181,11 +181,11 @@ body.sequences-all, body.sequences-photo
         font-family: $sans_serif
         font-size: 0.85rem
 
-    .sequences-photo-words-narrow
+    .sequences-entry-words-narrow
       margin: 50px auto
       max-width: 500px
 
-    .sequences-photo-photograph
+    .sequences-entry-photograph
       margin: 0 30px
 
       img
@@ -194,7 +194,7 @@ body.sequences-all, body.sequences-photo
         max-width: 1600px
         width: 100%
 
-    .sequences-photo-carousel
+    .sequences-entry-carousel
       margin: 30px auto
       max-width: 700px
       width: 100%
@@ -208,10 +208,10 @@ body.sequences-all, body.sequences-photo
       -webkit-justify-content: space-around
       justify-content: space-around
 
-      .sequences-photo-carousel-photograph, .sequences-photo-carousel-photograph-current
+      .sequences-entry-carousel-photograph, .sequences-entry-carousel-photograph-current
         margin: 5px
 
-      .sequences-photo-carousel-photograph
+      .sequences-entry-carousel-photograph
         width: 70px
 
         img
@@ -221,13 +221,13 @@ body.sequences-all, body.sequences-photo
             border-radius: 5px
             transform: scale(1.1)
 
-      .sequences-photo-carousel-photograph-current
+      .sequences-entry-carousel-photograph-current
         width: 90px
 
         img
           border-radius: 5px
 
-    .sequences-photo-info
+    .sequences-entry-info
       color: $secondary
       font-family: $sans_serif
       font-size: 0.75rem
@@ -271,12 +271,12 @@ body.sequences-all, body.sequences-photo
         margin: 0 30px
         flex-grow: 1
 
-  body.sequences-all, body.sequences-photo
-    .sequences-photo-flex
-      .sequences-photo-divider
+  body.sequences-all, body.sequences-entry
+    .sequences-entry-flex
+      .sequences-entry-divider
         margin: 15px auto 20px auto
 
-      .sequences-photo-words
+      .sequences-entry-words
         font-size: 1rem
         line-height: 1.6em
         max-width: none
@@ -289,14 +289,14 @@ body.sequences-all, body.sequences-photo
         strong
           font-size: 0.9rem
 
-      .sequences-photo-photograph
+      .sequences-entry-photograph
         margin: 0 0
 
         img
           //border-radius: 10px
 
-      .sequences-photo-carousel
+      .sequences-entry-carousel
         margin: 20px auto
 
-      .sequences-photo-info
+      .sequences-entry-info
         margin: 20px auto
