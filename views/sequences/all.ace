@@ -12,14 +12,26 @@
         p.sequences-entry-words-title
           a href="#{{$entry.Slug}}" id="{{$entry.Slug}}" {{$entry.Title}}
         {{HTML $entry.DescriptionHTML}}
-      {{if eq (len $entry.Photos) 2}}
+      {{if eq (len $entry.Photos) 3}}
+
+        .sequences-entry-photograph-container
+          .sequences-entry-photograph-inner {{LazyRetinaImage $i (printf "/photographs/sequences/%s/" .Sequence.Slug) .FirstPhoto.Slug | HTML}}
+          .sequences-entry-photograph-inner.sequences-entry-photograph-double
+            .sequences-entry-photograph-a {{LazyRetinaImage $i (printf "/photographs/sequences/%s/" .Sequence.Slug) (index $entry.Photos 1).Slug | HTML}}
+            .sequences-entry-photograph-b {{LazyRetinaImage $i (printf "/photographs/sequences/%s/" .Sequence.Slug) (index $entry.Photos 2).Slug | HTML}}
+
+      {{else if eq (len $entry.Photos) 2}}
+
         .sequences-entry-photograph-container
           .sequences-entry-photograph-inner.sequences-entry-photograph-double
             .sequences-entry-photograph-a {{LazyRetinaImage $i (printf "/photographs/sequences/%s/" .Sequence.Slug) (index $entry.Photos 0).Slug | HTML}}
             .sequences-entry-photograph-b {{LazyRetinaImage $i (printf "/photographs/sequences/%s/" .Sequence.Slug) (index $entry.Photos 1).Slug | HTML}}
+
       {{else}}
+
         .sequences-entry-photograph-container
           .sequences-entry-photograph-inner {{LazyRetinaImage $i (printf "/photographs/sequences/%s/" .Sequence.Slug) .FirstPhoto.Slug | HTML}}
+
       {{end}}
     .sequences-all-divider
   {{end}}
