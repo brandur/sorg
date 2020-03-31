@@ -13,6 +13,7 @@ import (
 	"path"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -2341,10 +2342,35 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 		return fmt.Errorf("MAGICK_BIN must be configured for image resizing")
 	}
 
+	out, err := exec.Command(
+		conf.MagickBin,
+		"convert",
+		source,
+		"-format",
+		"%[w] %[h]",
+		"info:",
+	).Output()
+	if err != nil {
+		return errors.Wrapf(err, "Error running convert info command")
+	}
+
+	dimensions := strings.Split(string(out), " ")
+
+	imageWidth, err := strconv.Atoi(dimensions[0])
+	if err != nil {
+		return errors.Wrapf(err, "Error converting width '%s' to integer", dimensions[0])
+	}
+
+	imageHeight, err := strconv.Atoi(dimensions[1])
+	if err != nil {
+		return errors.Wrapf(err, "Error converting height '%s' to integer", dimensions[1])
+	}
+
+	isLandscape := imageWidth > imageHeight
+
 	var resizeErrOut bytes.Buffer
 	var optimizeErrOut bytes.Buffer
 
-	// TODO: Support portrait photos.
 	resizeArgs := []string{
 		conf.MagickBin,
 		"convert",
@@ -2352,13 +2378,32 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 		"-auto-orient",
 		"-gravity",
 		"center",
+	}
+
+	// If landscape, crop 3:2, and if portrait, crop 2:3.
+	if isLandscape {
+		resizeArgs = append(
+			resizeArgs,
+			"-crop",
+			"3:2",
+		)
+	} else {
+		resizeArgs = append(
+			resizeArgs,
+			"-crop",
+			"2:3",
+		)
+	}
+
+	resizeArgs = append(
+		resizeArgs,
 		"-crop",
 		"3:2",
 		"-resize",
 		fmt.Sprintf("%vx", width),
 		"-quality",
 		"85",
-	}
+	)
 
 	// If we have mozjpeg then output to stdout and let it take in the resized
 	// JPEG via pipe. If not, then just resize to the target file immediately.
