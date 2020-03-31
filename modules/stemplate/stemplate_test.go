@@ -64,6 +64,13 @@ func TestLazyRetinaImage(t *testing.T) {
 	)
 }
 
+func TestLazyRetinaImageLightbox(t *testing.T) {
+	assert.Equal(t,
+		`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x" onclick="lightboxFor('/photographs/other/001_large@2x.jpg');" style="cursor: pointer;">`,
+		lazyRetinaImageLightbox(0, "/photographs/other/", "001"),
+	)
+}
+
 func TestMarshalJSON(t *testing.T) {
 	str := marshalJSON(map[string]string{})
 	assert.Equal(t, "{}", str)

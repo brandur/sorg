@@ -28,6 +28,7 @@ var FuncMap = template.FuncMap{
 	"FormatTimeYearMonth":          formatTimeYearMonth,
 	"InKM":                         inKM,
 	"LazyRetinaImage":              lazyRetinaImage,
+	"LazyRetinaImageLightbox":      lazyRetinaImageLightbox,
 	"MarshalJSON":                  marshalJSON,
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
@@ -109,13 +110,33 @@ func formatTimeWithMinute(t *time.Time) string {
 	return toNonBreakingWhitespace(t.Format("January 2, 2006 15:04"))
 }
 
+// Produces a retina-compatible photograph that's lazy loaded. Largely used for
+// the photographs and sequences sets.
 func lazyRetinaImage(index int, path, slug string) string {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, false)
+}
+
+// Same as the above, but also allows the image to be clicked to get a
+// lightbox.
+func lazyRetinaImageLightbox(index int, path, slug string) string {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, true)
+}
+
+func lazyRetinaImageLightboxMaybe(index int, path, slug string, lightbox bool) string {
 	slug = queryEscape(slug)
 	largePath := path + slug + "_large.jpg"
 	largePathRetina := path + slug + "_large@2x.jpg"
 
-	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x" onclick="lightboxFor('%s');">`,
-		photographStandin(index), largePath, largePathRetina, largePath, largePathRetina)
+	lightboxCode := ""
+	if lightbox {
+		lightboxCode = fmt.Sprintf(
+			` onclick="lightboxFor('%s');" style="cursor: pointer;"`,
+			largePathRetina,
+		)
+	}
+
+	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x"%s>`,
+		photographStandin(index), largePath, largePathRetina, largePath, lightboxCode)
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces
