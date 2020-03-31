@@ -185,3 +185,23 @@ I spent my first few nights in Friedrichshain, and there Silo was an obvious bre
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/5ycn7b4r0zeax26/L1070575-silo.JPG?dl=1"
     slug = "009"
+
+[[entries]]
+  occurred_at = 2019-06-30T23:29:38Z
+  slug = "010"
+  title = "Radio free Berlin"
+
+  description = """\
+Teufelsberg, a man-made hill most famous for being the site of an enormous NSA listening station during the cold war. The key equipment's all long since removed, but the old structures and domes are still there to see.
+
+I accessed the site by walking up through Barssee und Pechsee, a beautiful nature reserve west of the ring. Access is easy from the Grunewalk S-bahn station. The paths will bend and twist, but with a little commitment, get you to the right place.
+
+Unfortunately, getting to the top of Teufelsberg's towers to get up close and personal with the the domes _used_ to be possible, but access has since been shut off. Walking around the area's periphery is still interesting, and I found a lot more to see than I expected, but modern propriety concerns have removed the best aspects of the site.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/dcbqhbc88ggpoii/L1070782.JPG?dl=1"
+    slug = "010"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ufnxh24aa1iwx20/L1070805.JPG?dl=1"
+    slug = "010b"
