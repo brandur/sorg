@@ -1097,6 +1097,8 @@ type Sequence struct {
 }
 
 func (s *Sequence) validate() error {
+	entrySlugs := make(map[string]struct{})
+
 	for i, entry := range s.Entries {
 		if entry.Slug == "" {
 			return fmt.Errorf("No slug set for sequence entry: index %v", i)
@@ -1104,6 +1106,24 @@ func (s *Sequence) validate() error {
 
 		if len(entry.Photos) < 1 {
 			return fmt.Errorf("Sequence entry needs at least one photo: %v", entry.Slug)
+		}
+
+		if _, ok := entrySlugs[entry.Slug]; ok {
+			return fmt.Errorf("Duplicate sequence entry slug: %v", entry.Slug)
+		}
+		entrySlugs[entry.Slug] = struct{}{}
+
+		photoSlugs := make(map[string]struct{})
+		for _, photo := range entry.Photos {
+			if !strings.HasPrefix(photo.Slug, entry.Slug) {
+				return fmt.Errorf("Photo slug '%v' should share prefix with entry slug '%v'",
+					photo.Slug, entry.Slug)
+			}
+
+			if _, ok := photoSlugs[photo.Slug]; ok {
+				return fmt.Errorf("Duplicate photo slug: %v", photo.Slug)
+			}
+			photoSlugs[photo.Slug] = struct{}{}
 		}
 	}
 
