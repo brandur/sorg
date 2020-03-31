@@ -2366,6 +2366,7 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 		conf.MagickBin,
 		"convert",
 		source,
+		"-auto-orient",
 		"-format",
 		"%[w] %[h]",
 		"info:",
@@ -2391,6 +2392,10 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 	var resizeErrOut bytes.Buffer
 	var optimizeErrOut bytes.Buffer
 
+	// This is a little awkward, but we start out with some shared arguments,
+	// add a few conditional ones based on landscape versus portrait, then add
+	// a few more shared arguments. The order of the pipeline is important in
+	// ImageMagick, so this is necessary.
 	resizeArgs := []string{
 		conf.MagickBin,
 		"convert",
@@ -2417,8 +2422,6 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 
 	resizeArgs = append(
 		resizeArgs,
-		"-crop",
-		"3:2",
 		"-resize",
 		fmt.Sprintf("%vx", width),
 		"-quality",
