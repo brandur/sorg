@@ -35,3 +35,4 @@
       {{end}}
     .sequences-all-divider
   {{end}}
+  = include views/_basic_lightbox .

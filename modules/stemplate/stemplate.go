@@ -114,8 +114,8 @@ func lazyRetinaImage(index int, path, slug string) string {
 	largePath := path + slug + "_large.jpg"
 	largePathRetina := path + slug + "_large@2x.jpg"
 
-	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
-		photographStandin(index), largePath, largePathRetina, largePath)
+	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x" onclick="lightboxFor('%s');">`,
+		photographStandin(index), largePath, largePathRetina, largePath, largePathRetina)
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces
