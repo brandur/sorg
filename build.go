@@ -2344,11 +2344,16 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 	var resizeErrOut bytes.Buffer
 	var optimizeErrOut bytes.Buffer
 
+	// TODO: Support portrait photos.
 	resizeArgs := []string{
 		conf.MagickBin,
 		"convert",
 		source,
 		"-auto-orient",
+		"-gravity",
+		"center",
+		"-crop",
+		"3:2",
 		"-resize",
 		fmt.Sprintf("%vx", width),
 		"-quality",
