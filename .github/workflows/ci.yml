@@ -172,6 +172,17 @@ jobs:
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
 
+      # Try to assign images a stable modification time so that we don't sync
+      # 100 MB+ of them for each deploy on every master build. Git doesn't
+      # preserve mtimes and `aws s3 sync` relies on them to know what it should
+      # sync.
+      #
+      # Unfortunately this script is fairly slow so an alternative solution
+      # will probably have to be found at some point.
+      - name: "Set image mtimes"
+        run: scripts/set_image_mtimes.rb
+        if: github.ref == 'refs/heads/master'
+
       - name: "Deploy: Development"
         run: make deploy
         env:
