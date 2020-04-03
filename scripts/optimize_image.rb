@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 #
-# Optimizes an image's (JPG or PNG) size using either `mozjpeg` or `pngquant`.
+# Optimizes an image's (JPG or PNG) size using either `mozjpeg`, `libjpeg` (in
+# case `mozjpeg` isn't working), or `pngquant`.
 #
 
 require 'fileutils'
@@ -33,11 +34,29 @@ def optimize_image(in_filename)
   out_filename += ".optimized" + retina_extension + ext
 
   if ext == ".jpg"
-    brew_path = get_homebrew_path("mozjpeg")
-    run_command("#{brew_path}/bin/cjpeg -outfile #{out_filename} -optimize -progressive #{in_filename}")
+    mozjpeg_path = get_homebrew_path("mozjpeg")
+
+    # Quite annoying, but Stripe laptops remove unblessed package and leave
+    # Homebrew in a partial, failed state where it thinks it has the package,
+    # but doesn't.
+    #
+    # `cjpeg` also doesn't have an easy wait of checking whether it's working
+    # and returning with a success status code (like `--version` or something
+    # like that), so we have to hack it a bit by trying to run a real command.
+    # This checks whether it's working by having it try to decode the simplest
+    # possible jpeg:
+    #
+    #     https://github.com/mathiasbynens/small/blob/master/jpeg.jpg
+    #
+    if !run_command("echo '/9j/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/yQALCAABAAEBAREA/8wABgAQEAX/2gAIAQEAAD8A0s8g/9k=' | base64 -D | #{mozjpeg_path}/bin/djpeg > /dev/null", abort: false)
+      puts "Mozjpeg doesn't seem to be working; trying to fall back to libjpeg"
+      mozjpeg_path = get_homebrew_path("libjpeg")
+    end
+
+    run_command("#{mozjpeg_path}/bin/djpeg #{in_filename} | #{mozjpeg_path}/bin/cjpeg -outfile #{out_filename} -optimize -progressive")
   elsif ext == ".png"
-    brew_path = get_homebrew_path("pngquant")
-    run_command("#{brew_path}/bin/pngquant --output #{out_filename} -- #{in_filename}")
+    pngquant_path = get_homebrew_path("pngquant")
+    run_command("#{pngquant_path}/bin/pngquant --output #{out_filename} -- #{in_filename}")
   else
     abort("want a .jpg or a .png")
   end
@@ -57,13 +76,18 @@ def optimize_image(in_filename)
   end
 end
 
-def run_command(command)
+def run_command(command, abort: true)
   ret = `#{command}`
   if $? != 0
-    abort("command failed: #{command}")
+    if abort
+      abort("command failed: #{command}")
+    else
+      return false
+    end
   end
   ret.strip
 end
+
 
 # ---
 
