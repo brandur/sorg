@@ -5,11 +5,6 @@ published_at = 2020-04-03T00:52:13Z
 title = "Virtual Worlds"
 +++
 
-![Horizon Zero Dawn (night)](/assets/images/nanoglyphs/012-virtual-worlds/horizon-zero-dawn-night@2x.jpg)
-
-
-![Horizon Zero Dawn (night)](/assets/images/nanoglyphs/012-virtual-worlds/horizon-zero-dawn-night-2@2x.jpg)
-
 ![Horizon Zero Dawn (night)](/assets/images/nanoglyphs/012-virtual-worlds/horizon-zero-dawn-night-3@2x.jpg)
 
 ![God of War](/assets/images/nanoglyphs/012-virtual-worlds/god-of-war-1@2x.jpg)
