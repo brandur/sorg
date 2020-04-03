@@ -1,7 +1,7 @@
 +++
 image_alt = "Yoshihiro chef's knife"
 image_url = "/assets/images/nanoglyphs/013-alfred/knife-2@2x.jpg"
-published_at = 2020-03-27T18:03:25Z
+published_at = 2020-04-10T00:52:13Z
 title = "Alfred & the Zen of Tool Sharpening"
 +++
 
