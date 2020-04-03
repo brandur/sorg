@@ -4,8 +4,13 @@ on:
   pull_request:
   push:
   schedule:
-    # once an hour
-    - cron: "0 * * * *"
+    # Once every 12 hours.
+    #
+    # Reduced the frequency here from once an hour to reduce the amount of data
+    # being transferred into S3, and because there's just not that much
+    # interesting anymore that needs to be updated constantly as the Black Swan
+    # content's largely been demoted.
+    - cron: "0 */12 * * *"
 
 jobs:
   build:
