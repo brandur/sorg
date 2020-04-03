@@ -40,22 +40,32 @@ deploy: check-target-dir
 ifdef AWS_ACCESS_KEY_ID
 	aws --version
 
+	@echo "\n=== Syncing HTML files\n"
+
 	# Force text/html for HTML because we're not using an extension.
 	#
 	# Note that we don't delete because it could result in a race condition in
 	# that files that are uploaded with special directives below could be
 	# removed even while the S3 bucket is actively in-use.
-	aws s3 sync $(TARGET_DIR) s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' --exclude 'photographs*' --quiet $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR) s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html --exclude 'assets*' --exclude 'photographs*' $(AWS_CLI_FLAGS)
+
+	@echo "\n=== Syncing media assets\n"
 
 	# Then move on to assets and allow S3 to detect content type.
-	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet --delete $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks $(AWS_CLI_FLAGS)
+
+	@echo "\n=== Syncing photographs\n"
 
 	# Photographs are identical to assets above except without `--delete`
 	# because any given build probably doesn't have the entire set.
-	aws s3 sync $(TARGET_DIR)/photographs/ s3://$(S3_BUCKET)/photographs/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --quiet $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR)/photographs/ s3://$(S3_BUCKET)/photographs/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks $(AWS_CLI_FLAGS)
+
+	@echo "\n=== Syncing Atom feeds\n"
 
 	# Upload Atom feed files with their proper content type.
 	find $(TARGET_DIR) -name '*.atom' | sed "s|^\$(TARGET_DIR)/||" | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{} s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type application/xml
+
+	@echo "\n=== Syncing index HTML files\n"
 
 	# This one is a bit tricker to explain, but what we're doing here is
 	# uploading directory indexes as files at their directory name. So for
@@ -74,9 +84,11 @@ ifdef AWS_ACCESS_KEY_ID
 	#    Golang's http.FileServer will respect them as indexes.
 	find $(TARGET_DIR) -name index.html | egrep -v '$(TARGET_DIR)/index.html' | sed "s|^$(TARGET_DIR)/||" | xargs -I{} -n1 dirname {} | xargs -I{} -n1 aws s3 cp $(TARGET_DIR)/{}/index.html s3://$(S3_BUCKET)/{} --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/html
 
+	@echo "\n=== Fixing robots.txt content type\n"
+
 	# Give robots.txt (if it exists) a Content-Type of text/plain. Twitter is
 	# rabid about this.
-	[ -f $(TARGET_DIR)/robots.txt ] && aws s3 cp $(TARGET_DIR)/robots.txt s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/plain --quiet $(AWS_CLI_FLAGS) || echo "no robots.txt"
+	[ -f $(TARGET_DIR)/robots.txt ] && aws s3 cp $(TARGET_DIR)/robots.txt s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/plain $(AWS_CLI_FLAGS) || echo "no robots.txt"
 else
 	# No AWS access key. Skipping deploy.
 endif
