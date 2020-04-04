@@ -1,6 +1,6 @@
 = content main
   / Moves to the bottom of the screen when the width becomes too short.
-  #top-nav-photos.top-nav.hide-small
+  .top-nav.top-nav-flat.hide-small
     .nav-inner
       = include views/_nav
   .content-photos
@@ -10,6 +10,6 @@
         div.photo id="{{.Slug}}"
           a href="#{{$photo.Slug}}" {{LazyRetinaImage $i "/photographs/" $photo.Slug | HTML}}
       {{end}}
-  #top-nav-photos.top-nav.hide-big
+  .top-nav.top-nav-flat.hide-big
     .nav-inner
       = include views/_nav

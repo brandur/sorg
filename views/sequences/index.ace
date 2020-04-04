@@ -1,4 +1,8 @@
 = content main
+  / Moves to the bottom of the screen when the width becomes too short.
+  .top-nav.top-nav-flat.hide-small
+    .nav-inner
+      = include views/_nav
   .sequences-index-words.sequences-index-words-light
     .sequences-index-words-inner
       p.sequences-words-sequence Sequence
@@ -13,3 +17,6 @@
         a href="/sequences/{{$.Sequence.Slug}}/{{.Slug}}"
           {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .FirstPhoto.Slug) .Title | HTML}}
     {{end}}
+  .top-nav.top-nav-flat.hide-big
+    .nav-inner
+      = include views/_nav

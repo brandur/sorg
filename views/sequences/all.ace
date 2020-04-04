@@ -1,4 +1,8 @@
 = content main
+  / Moves to the bottom of the screen when the width becomes too short.
+  .top-nav.top-nav-flat.hide-small
+    .nav-inner
+      = include views/_nav
   .sequences-all-words style="background-image: url('/photographs/sequences/{{.Sequence.Slug}}/background_large.jpg');"
     .sequences-all-words-inner
       p.sequences-words-sequence Sequence
@@ -15,4 +19,7 @@
       = include views/sequences/_entry $entry
     .sequences-all-divider
   {{end}}
+  .top-nav.top-nav-flat.hide-big
+    .nav-inner
+      = include views/_nav
   = include views/_basic_lightbox .

@@ -1,4 +1,8 @@
 = content main
+  / Moves to the bottom of the screen when the width becomes too short.
+  .top-nav.top-nav-flat.hide-small
+    .nav-inner
+      = include views/_nav
   .sequences-entry-flex
     .sequences-entry-words.sequences-entry-words-narrow
       p.sequences-entry-sequence
@@ -9,4 +13,7 @@
     = include views/sequences/_entry .Entry
     .sequences-entry-info
       | Image <span class="slug">{{.Entry.Slug}}</span> of the sequence <a href="/sequences/{{.Sequence.Slug}}">{{.Sequence.Title}}</a>.
+  .top-nav.top-nav-flat.hide-big
+    .nav-inner
+      = include views/_nav
   = include views/_basic_lightbox .
