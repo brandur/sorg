@@ -34,7 +34,6 @@ var FuncMap = template.FuncMap{
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
 	"Pace":                         pace,
-	"PhotographStandin":            photographStandin,
 	"RandIntn":                     randIntn,
 	"QueryEscape":                  queryEscape,
 	"RenderTweetContent":           renderTweetContent,
@@ -115,16 +114,16 @@ func formatTimeWithMinute(t *time.Time) string {
 // Produces a retina-compatible photograph that's lazy loaded. Largely used for
 // the photographs and sequences sets.
 func lazyRetinaImage(index int, path, slug string) string {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, false)
+	return lazyRetinaImageLightboxMaybe(index, path, slug, false, false)
 }
 
 // Same as the above, but also allows the image to be clicked to get a
 // lightbox.
-func lazyRetinaImageLightbox(index int, path, slug string) string {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, true)
+func lazyRetinaImageLightbox(index int, path, slug string, portrait bool) string {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, portrait, true)
 }
 
-func lazyRetinaImageLightboxMaybe(index int, path, slug string, lightbox bool) string {
+func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightbox bool) string {
 	slug = queryEscape(slug)
 	largePath := path + slug + "_large.jpg"
 	largePathRetina := path + slug + "_large@2x.jpg"
@@ -137,8 +136,16 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, lightbox bool) s
 		)
 	}
 
+	var standinPath string
+	if portrait {
+		// We only have one portrait standin currently (thus `% 1`).
+		standinPath = fmt.Sprintf("/assets/images/standin_portrait_0%d.jpg", index%1)
+	} else {
+		standinPath = fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
+	}
+
 	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x"%s>`,
-		photographStandin(index), largePath, largePathRetina, largePath, lightboxCode)
+		standinPath, largePath, largePathRetina, largePath, lightboxCode)
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces
@@ -212,10 +219,6 @@ func pace(distance float64, duration time.Duration) string {
 	min := int64(speed / 60.0)
 	sec := int64(speed) % 60
 	return fmt.Sprintf("%v:%02d", min, sec)
-}
-
-func photographStandin(index int) string {
-	return fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
 }
 
 // Escapes a URL.

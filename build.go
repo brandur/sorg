@@ -1058,6 +1058,12 @@ type Photo struct {
 	// OccurredAt is UTC time when the photo was published.
 	OccurredAt *time.Time `toml:"occurred_at"`
 
+	// Portrait is a hint to indicate that the photo is in portrait instead of
+	// landscape. This helps the build pick a better stand-in image for lazy
+	// loading so that there's less jumping around as photos that get loaded in
+	// change size.
+	Portrait bool `toml:"portrait"`
+
 	// Slug is a unique identifier for the photo. Originally these were
 	// generated from Flickr, but I've since just started reusing them for
 	// filenames.
