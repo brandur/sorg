@@ -79,7 +79,7 @@ jobs:
 
       - uses: actions/checkout@v1
         with:
-          fetch-depth: 1
+          # fetch-depth: 1
           path: go/src/github.com/brandur/sorg
 
       - name: Debug
