@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"html/template"
 	"math"
+	"math/rand"
 	"net/url"
 	"path/filepath"
 	"regexp"
@@ -34,6 +35,7 @@ var FuncMap = template.FuncMap{
 	"NumberWithDelimiter":          numberWithDelimiter,
 	"Pace":                         pace,
 	"PhotographStandin":            photographStandin,
+	"RandIntn":                     randIntn,
 	"QueryEscape":                  queryEscape,
 	"RenderTweetContent":           renderTweetContent,
 	"RetinaImage":                  retinaImage,
@@ -219,6 +221,10 @@ func photographStandin(index int) string {
 // Escapes a URL.
 func queryEscape(s string) string {
 	return url.QueryEscape(s)
+}
+
+func randIntn(bound int) int {
+	return rand.Intn(bound)
 }
 
 // Matches links in a tweet (like protocol://link).

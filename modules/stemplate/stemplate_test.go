@@ -111,6 +111,10 @@ func TestQueryEscape(t *testing.T) {
 	assert.Equal(t, "a%2Bb", queryEscape("a+b"))
 }
 
+func TestRandIntn(t *testing.T) {
+	assert.Equal(t, 0, randIntn(1))
+}
+
 func TestRenderTweetContent(t *testing.T) {
 	// short link
 	assert.Equal(t,
