@@ -12,7 +12,7 @@
         p.sequences-entry-words-title
           a href="#{{$entry.Slug}}" id="{{$entry.Slug}}" {{$entry.Title}}
         {{HTML $entry.DescriptionHTML}}
-        = include views/sequences/_entry $entry
+      = include views/sequences/_entry $entry
     .sequences-all-divider
   {{end}}
   = include views/_basic_lightbox .
