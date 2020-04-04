@@ -180,7 +180,7 @@ jobs:
       # Unfortunately this script is fairly slow so an alternative solution
       # will probably have to be found at some point.
       - name: "Set image mtimes"
-        run: scripts/set_image_mtimes.rb
+        run: go run scripts/set_image_mtimes.go
         if: github.ref == 'refs/heads/master'
 
       - name: "Deploy: Development"
