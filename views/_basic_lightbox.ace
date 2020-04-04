@@ -1,7 +1,7 @@
 = javascript
   const lightboxFor = function(path) {
     basicLightbox.create(`
-        <img src="${path}" width="1500" height="1000">
+        <img src="${path}">
     `).show();
   }
 
