@@ -77,9 +77,8 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
 
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
-          # fetch-depth: 1
           path: go/src/github.com/brandur/sorg
 
       - name: Debug
