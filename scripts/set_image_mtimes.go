@@ -94,6 +94,19 @@ func main() {
 	wg.Wait()
 }
 
+//
+// ---
+//
+
+func abortOnErr(err error) {
+	if err == nil {
+		return
+	}
+
+	fmt.Fprintf(os.Stderr, "Error encountered: %v", err)
+	os.Exit(1)
+}
+
 func batchImages(allImages []string) [][]string {
 	batches := make([][]string, parallelWorkers)
 	imagesPerWorker := int(math.Ceil(float64(len(allImages)) / float64(parallelWorkers-1)))
@@ -116,19 +129,6 @@ func batchImages(allImages []string) [][]string {
 	}
 
 	return batches
-}
-
-//
-// ---
-//
-
-func abortOnErr(err error) {
-	if err == nil {
-		return
-	}
-
-	fmt.Fprintf(os.Stderr, "Error encountered: %v", err)
-	os.Exit(1)
 }
 
 func getAllImages() ([]string, error) {
