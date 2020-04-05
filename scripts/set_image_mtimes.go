@@ -107,6 +107,7 @@ func abortOnErr(err error) {
 	os.Exit(1)
 }
 
+// Breaks a set of images into groups for N parallel workers roughly evenly.
 func batchImages(allImages []string) [][]string {
 	batches := make([][]string, parallelWorkers)
 	imagesPerWorker := int(math.Ceil(float64(len(allImages)) / float64(parallelWorkers-1)))
@@ -131,6 +132,8 @@ func batchImages(allImages []string) [][]string {
 	return batches
 }
 
+// Gets a list of all image paths by using a `git ls-tree` command on the
+// target directory.
 func getAllImages() ([]string, error) {
 	out, err := runCommand("git", "ls-tree", "-r", "--name-only", "HEAD", imagePath)
 	if err != nil {
@@ -140,6 +143,8 @@ func getAllImages() ([]string, error) {
 	return strings.Split(out, "\n"), nil
 }
 
+// Gets the last commit time on a particular image path by using a `git log`
+// command.
 func getLastCommitTime(path string) (*time.Time, error) {
 	out, err := runCommand("git", "log", "--max-count=1", `--pretty=format:%aI`, path)
 	if err != nil {
