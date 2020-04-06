@@ -23,7 +23,7 @@
               | Write every day, and try to so fluidly. Instead of agonizing over every word, get content down, revise, and revise again. Some projects:
               ul
                 li A (roughly) weekly newsletter called <em>Nanoglyph</em>. I’m challenging myself to send at least 30 editions in 2020, and do so without compromising content quality. You should <a href="https://nanoglyph-signup.brandur.org/">try subscribing</a>.
-                li A development log with notes on daily software discoveries and projects. Most entries will be of minor interest, but frequent enough to build writing cadence. <a href="/fragments/google-run-deploy">For example</a>.
+                li A development log with notes on daily software discoveries and projects. Most entries will be of minor interest, but frequent enough to build writing cadence. <a href="/fragments/google-cloud-run-deploy">For example</a>.
             li Meditate every day.
 
           div class="divider-short"
