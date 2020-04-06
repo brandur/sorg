@@ -71,11 +71,8 @@ jobs:
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
         run: |
-          aws s3 cp s3://mozjpeg-brandur/mozjpeg_master_amd64.deb .
+          curl -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           sudo dpkg -i mozjpeg_master_amd64.deb
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
 
       - uses: actions/checkout@v2
         with:
