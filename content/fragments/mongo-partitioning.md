@@ -94,8 +94,7 @@ for partitioning, modify my code to write to it, backfill
 old values, and even after all that I *still won't have a
 usable index!*
 
-Choose your technology carefully folks. You can spend your
-time either making mediocre databases operable, or solving
-actual problems.
+Choose your technology carefully. You can spend your time either making things
+that should be easy work mediocre databases, or solving real problems.
 
 [indexed-expressions]: https://www.postgresql.org/docs/current/static/indexes-expressional.html
