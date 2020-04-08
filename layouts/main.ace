@@ -29,6 +29,6 @@ html lang="en"
     = include views/_twitter .
 
   body class={{.BodyClass}}
-    = include views/_analytics .
     #container
       = yield main
+    = include views/_analytics .

@@ -289,8 +289,8 @@ html lang="en"
       }
 
   body class={{.BodyClass}}
+    = yield main
+
     {{if not .InEmail}}
     = include views/_analytics .
     {{end}}
-
-    = yield main
