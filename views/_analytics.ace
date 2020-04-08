@@ -10,5 +10,5 @@
 {{end}}
 
 {{if .EnableGoatCounter}}
-  script data-goatcounter="https://brandur.goatcounter.com/count" async src="//gc.zgo.at/count.js"
+  script data-goatcounter="https://brandur.goatcounter.com/count" async="async" src="//gc.zgo.at/count.js"
 {{end}}
