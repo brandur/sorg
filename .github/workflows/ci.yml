@@ -74,9 +74,8 @@ jobs:
           curl -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           sudo dpkg -i mozjpeg_master_amd64.deb
 
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # all of history
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Debug
         run: |
