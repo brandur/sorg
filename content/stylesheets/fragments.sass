@@ -1,4 +1,6 @@
 $sans_serif: "helvetica neue", helvetica, arial, geneva, sans-serif
+
+$primary: #222
 $secondary: #cdcdcd
 
 #flexcontainer-fragments-show-mood
@@ -28,13 +30,19 @@ $secondary: #cdcdcd
 .fragments
   .fragments-content-header
     h1
-      border-bottom: 6px solid #000
       font-size: 4rem
       letter-spacing: -4px
       line-height: 1em
       hyphens: auto
       margin-bottom: 50px
-      padding-bottom: 50px
+
+    .fragments-content-header-separator
+      background: linear-gradient(135deg, transparent 25%, $primary 25%, $primary 50%, transparent 50%, transparent 75%, $primary 75%, $primary 100%)
+      //background-size: 5.66px 5.66px
+      background-size: 7px 7px
+      //background-size: 8px 8px
+      height: 6px
+      margin-bottom: 50px
 
   .content
     padding: 10px 0 0 0
@@ -64,7 +72,7 @@ $secondary: #cdcdcd
       max-width: 700px
 
       article
-        max-width: 500px
+        max-width: 550px
 
         blockquote
           font-family: $sans_serif
@@ -140,10 +148,12 @@ $secondary: #cdcdcd
   .fragments
     .fragments-content-header
       h1
-        border-bottom: 5px solid #000
         font-size: 3rem
         margin-bottom: 40px
-        padding-bottom: 40px
+
+      .fragments-content-header-separator
+        height: 5px
+        margin-bottom: 40px
 
     .content
       img#mood
