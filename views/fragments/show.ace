@@ -19,6 +19,7 @@
           .fragments-content-header
             #title
               h1 {{.Fragment.Title}}
+            .fragments-content-header-separator
           article
             {{HTML .Fragment.Content}}
             .divider-short
