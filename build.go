@@ -1756,7 +1756,7 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
-			scommon.ViewsDir + "/fragments/show.ace",
+			scommon.ViewsDir + "/fragments/index.ace",
 		},
 		universalSources...,
 	)...)
