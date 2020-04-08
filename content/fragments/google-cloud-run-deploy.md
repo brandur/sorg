@@ -4,7 +4,7 @@ published_at = 2020-04-06T04:22:23Z
 title = "Development log: Deploying Google Cloud Run from GitHub Actions"
 +++
 
-I've been putting one foot in the water recently in testing [Google Cloud Run](https://cloud.google.com/run/docs) as a Heroku alternative for hobby projects. It's got a somewhat scary pricing model that gets expensive if you have a program serving sustained traffic around the clock, but the billing is per-second, in practice it should cost very little for many apps. I've had a few basic ones running on it for a few months now, and so far only overshot the free tier by ~20 cents.
+I've been putting one foot in the water recently in testing [Google Cloud Run](https://cloud.google.com/run/docs) as a Heroku alternative for hobby projects. It's got a somewhat scary pricing model that gets expensive if you have a program serving sustained traffic around the clock, but the billing is per-second, and in practice should cost very little for many apps. I've had a few basic ones running on it for a few months now, and so far only overshot the free tier by ~20 cents.
 
 The rest of the product seems well-built. Unlike other forms of serverless like AWS Lambda, running containers are allowed to serve more than a one request at a time, making deployments countless times faster and more efficient compared to the alternative containers-as-concurrency model. Deploys are all based on the [OCI](https://github.com/opencontainers/image-spec) (Open Container Initiative) image format, gradual rollouts are supported, it's easy getting automated TLS for a custom domain set up, and scaling is fast, easy, and automatic.
 
@@ -47,7 +47,7 @@ And these two take that image and deploy it to two separate Cloud Run apps (each
     --platform managed --region us-central1 passages-signup
 ```
 
-It was all pleasantly fast and easy to get working. I had my manual deploy recipe converted to an automated process in less than 10 minutes including troubleshooting, which is speed that's practically unheard of when it comes to plugging exotic new things into CI.
+It was all pleasantly fast and easy to get working. I had my manual deploy recipe converted to an automated process in less than 10 minutes including troubleshooting, which is speed that's practically unheard of when it comes to plugging exotic new things into CI [2].
 
 ## The dependency graph (#dependency-graph)
 
@@ -69,3 +69,5 @@ jobs:
 Like I said, it's minor, but ensures that deployment only happens on a valid build, and furthermore cleanly encapsulates both the run output and configuration for each step into its own section.
 
 [1] Synthetic jargon for a type of account that represents a process of some kind rather than a person.
+
+[2] Getting new things up and running in CI tends to be especially slow because the development loop is: `git push`, wait 5 minutes, `git push`, wait 5 minutes, `git push`, etc. -- just about as slow as it gets.
