@@ -29,18 +29,31 @@ $secondary: #cdcdcd
 
 .fragments
   .fragments-content-header
+    margin-bottom: 50px
+    max-width: 700px
+
     h1
       font-size: 4rem
       letter-spacing: -4px
       line-height: 1em
       hyphens: auto
-      margin-bottom: 50px
 
-    .fragments-content-header-separator
-      background: linear-gradient(135deg, transparent 25%, $primary 25%, $primary 50%, transparent 50%, transparent 75%, $primary 75%, $primary 100%)
-      background-size: 7px 7px
-      height: 6px
-      margin-bottom: 50px
+  .fragments-header-separator
+    background: linear-gradient(135deg, transparent 25%, $primary 25%, $primary 50%, transparent 50%, transparent 75%, $primary 75%, $primary 100%)
+    background-size: 7px 7px
+    height: 6px
+    margin-bottom: 50px
+    margin-left: auto
+    margin-right: auto
+    max-width: 700px
+
+  .fragments-intro
+    font-size: 0.85rem
+    line-height: 1.4em
+    margin: 50px 0
+
+    p
+      margin: 10px 0
 
   .content
     padding: 10px 0 0 0
@@ -58,17 +71,16 @@ $secondary: #cdcdcd
       margin-top: -10px
 
     #content-inner-fragments-show-mood
-      margin: 0 auto
-
       article
         margin: 0 auto
 
       h1
         text-align: center
 
-    .content-inner-fragments-show
-      max-width: 700px
+      .fragments-content-header
+        max-width: none
 
+    .content-inner-fragments-show
       article
         max-width: 550px
 
@@ -122,15 +134,17 @@ $secondary: #cdcdcd
       .publishing-info-bottom
         display: none
 
-  .page-intro
-    font-size: 0.85rem
-
   .fragments-content-list
     font-size: 0.85rem
     line-height: 1.6em
 
     // A little wider than standard to make way for some columns.
     max-width: 700px
+
+    h2
+      font-size: 0.9rem
+      font-weight: bold
+      margin: 35px 0 -15px 0
 
     ul
       li
@@ -148,10 +162,15 @@ $secondary: #cdcdcd
       h1
         font-size: 3rem
         margin-bottom: 40px
+        max-width: 700px
+        width: auto
 
-      .fragments-content-header-separator
-        height: 5px
-        margin-bottom: 40px
+    .fragments-header-separator
+      height: 5px
+      margin-bottom: 40px
+
+    .fragments-intro
+      margin: 40px 0
 
     .content
       img#mood
