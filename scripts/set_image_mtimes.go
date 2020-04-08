@@ -1,6 +1,11 @@
 package main
 
 //
+// UPDATE: This whole script turned out to not be needed because I found the
+// `--size-only` options for `aws s3 sync` which ignores mtimes and doesn't
+// exactly the right thing as far as image assets are concerned. I've left this
+// script here for historical interest only.
+//
 // sorg pushes to S3 automatically from its GitHub Actions build so that it has
 // an autodeploy mechanism on every push.
 //
