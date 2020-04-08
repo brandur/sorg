@@ -35,7 +35,9 @@ But from there, subsequent Google Cloud commands are just invocations of `gloud`
   run: gcloud builds submit --tag gcr.io/passages-signup/passages-signup
 ```
 
-And these two take that image and deploy it to two separate Cloud Run apps (each of my newsletters has an independent deployment):
+It's the exact command I used to run manually whenever I wanted to deploy. It now happens automatically from GitHub Actions.
+
+These two take that image and deploy it to two separate Cloud Run apps (each of my newsletters has an independent deployment):
 
 ``` yaml
 - name: "GCP: Deploy nanoglyph-signup"
