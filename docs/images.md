@@ -40,8 +40,8 @@ Or resized for 3:2:
 
 # Resize for fragment images
 
-    magick convert $GMI -resize 500x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
-    magick convert $GMI -resize 1000x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
+    magick convert $GMI -resize 550x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
+    magick convert $GMI -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
 ## Resize for Twitter cards
 
