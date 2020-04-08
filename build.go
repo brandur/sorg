@@ -1346,6 +1346,7 @@ func fetchURL(c *modulir.Context, source, target string) error {
 func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
 	defaults := map[string]interface{}{
 		"BodyClass":         "",
+		"EnableGoatCounter": conf.EnableGoatCounter,
 		"FavIcon":           "favicon-152.png",
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"LocalFonts":        conf.LocalFonts,

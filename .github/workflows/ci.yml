@@ -21,6 +21,7 @@ jobs:
 
     env:
       CLOUDFRONT_ID: E2D97SPIHRBCUA
+      ENABLE_GOAT_COUNTER: true
       GOOGLE_ANALYTICS_ID: UA-47798518-1
 
     services:
