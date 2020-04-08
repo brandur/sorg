@@ -52,7 +52,11 @@ ifdef AWS_ACCESS_KEY_ID
 	@echo "\n=== Syncing media assets\n"
 
 	# Then move on to assets and allow S3 to detect content type.
-	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks $(AWS_CLI_FLAGS)
+	#
+	# Note use of `--size-only` because mtimes may vary as they're not
+	# preserved by Git. Any updates to a static asset are likely to change its
+	# size though.
+	aws s3 sync $(TARGET_DIR)/assets/ s3://$(S3_BUCKET)/assets/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --size-only $(AWS_CLI_FLAGS)
 
 	@echo "\n=== Syncing photographs\n"
 
