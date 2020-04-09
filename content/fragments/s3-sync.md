@@ -24,7 +24,7 @@ So what was going on? Well as it turns out, Git. Git preserves a large amount of
 
 ## Stabilizing mtimes (#stabilizing-mtimes)
 
-The most obvious mitigation would be to stop relying on modification times and use an alternative comparison to function figure out what to sync. If using `rsync` for example, the `--checksum` flag would tell it to use checksums for the comparison instead of mtime and size. Unfortunately though, `aws s3 sync` doesn't support that or any other alternatives ...
+The most obvious mitigation would be to stop relying on modification times and use an alternative comparison to function figure out what to sync. If using `rsync` for example, the `--checksum` flag would tell it to use checksums for the comparison instead of mtime and size. ~~Unfortunately though, `aws s3 sync` doesn't support that or any other alternatives ...~~
 
 
 **... vvvvvvvvvvvwwppppp ztÅ±rÅ‘ tÃ¼kÃ¶rfÃºrÃ³g \*RECORD SCRATCH\***
