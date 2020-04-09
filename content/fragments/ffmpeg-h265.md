@@ -31,7 +31,7 @@ invocation that worked well for me:
 ffmpeg -c:v libx265 -preset fast -crf 28 -tag:v hvc1 -c:a eac3 -b:a 224k -i <source> <target>
 ```
 
-Or for GPU-based encoding, which is much faster but
+Or for GPU-based encoding, which is much faster, but
 produces a larger file size:
 
 ```
