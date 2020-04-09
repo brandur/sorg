@@ -12,3 +12,5 @@ title = "Virtual Worlds"
 ![God of War](/assets/images/nanoglyphs/012-virtual-worlds/god-of-war-2@2x.jpg)
 
 ![Another World polygon shapes](/assets/images/nanoglyphs/012-virtual-worlds/lester-masked.png)
+
+![Kojima from the NYT](/assets/images/nanoglyphs/012-virtual-worlds/kojima@2x.jpg)
