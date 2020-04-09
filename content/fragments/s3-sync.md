@@ -37,4 +37,4 @@ But as I was writing this article about it, I decided to go back and read the ma
 
 `--size-only` has some risk for for text-based content where minor changes (e.g. one character changed) might lead to a file of the same size. But for media assets where even a minor tweak tends to rewrite many bytes, it's fine, and very fast.
 
-I threw out my custom script solution and replaced it with `--size-only`, which _also_ worked perfectly. I decided to publish this article anyway as a reminder to not be too quick to jump into writing custom software -- sometimes the right answer is to read more carefully.
+I threw out my custom script solution and replaced it with `--size-only`, which _also_ worked perfectly, and without all the custom code. I decided to publish this article anyway as a reminder to not be too quick to jump into writing custom software -- sometimes the right answer is to read more carefully.
