@@ -31,7 +31,7 @@ The most obvious mitigation would be to stop relying on modification times and u
 
 ## Hubris (#hubris)
 
-Okay, full disclosure time. I wrote an custom Go program to solve the problem by checking the commit history of every image asset via `git log`, then using the timestamps of those commits to set stable mtimes for sync. It was a little slow, and a lot of a hammer, but it worked perfectly, saving me 100+ MB of S3 ingress on every build.
+Okay, full disclosure time. I wrote a custom Go program to solve the problem by checking the commit history of every image asset via `git log`, then using the timestamps of those commits to set stable mtimes for sync. It was a little slow, and a lot of a hammer, but it worked perfectly, saving me 100+ MB of S3 ingress on every build.
 
 But as I was writing this article about it, I decided to go back and read the manual one more time. I'd done it before to verify that nothing like `--checksum` existed in the AWS CLI, but not carefully enough. On that second pass I discovered the `--size-only` option. `aws s3 sync` works by comparing mtimes _and_ sizes, and although `--size-only` doesn't fundamentally change that strategy, it does disable the mtime half of the equation -- files are considered equivalent as long as their name and size are equal.
 
