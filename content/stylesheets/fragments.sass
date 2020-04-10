@@ -32,11 +32,29 @@ $secondary: #cdcdcd
     margin-bottom: 50px
     max-width: 700px
 
+    .fragments-content-header-type
+      font-family: $sans_serif
+      font-size: 0.65rem
+      font-weight: bold
+      letter-spacing: normal
+      line-height: 1.4em
+      margin: 0 0 0 0
+      text-transform: uppercase
+
+      a
+        border-bottom: 0
+
+        &:hover
+          border-bottom: 2px solid $primary
+
     h1
       font-size: 4rem
       letter-spacing: -4px
-      line-height: 1em
       hyphens: auto
+      line-height: 1em
+      margin-bottom: 30px
+      margin-left: -2px
+      margin-top: 15px
 
   .fragments-header-separator
     background: linear-gradient(135deg, transparent 25%, $primary 25%, $primary 50%, transparent 50%, transparent 75%, $primary 75%, $primary 100%)
@@ -77,8 +95,12 @@ $secondary: #cdcdcd
       .fragments-content-header
         max-width: none
 
+        .fragments-content-header-type
+          text-align: center
+
         h1
-          margin: 0 auto
+          margin-left: auto
+          margin-right: auto
           max-width: 1100px
           text-align: center
 

@@ -17,6 +17,8 @@
         {{end}}
         div class="content-inner-fragments-show" id="{{if ne .Fragment.Image ""}}content-inner-fragments-show-mood{{end}}"
           .fragments-content-header
+            .fragments-content-header-type
+              a href="/fragments" Fragments
             h1 {{.Fragment.Title}}
           .fragments-header-separator
           article
