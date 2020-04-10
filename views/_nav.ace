@@ -1,27 +1,27 @@
 nav
   ul
-    / li
-      a href="/" △
     li
+      a href="/" title="Home" △
+    / li
       a href="/" Home
     li
-      a href="/articles" Articles
-    / li
-      a href="/fragments" Fragments
+      a href="/articles" title="Longform articles" Articles
     li
-      a href="/newsletter" Newsletters
+      a href="/newsletter" title="Email newsletters I publish" Newsletters
+    li
+      a href="/fragments" title="Fragments (short articles)" Fragments
     / li
       a href="/twitter" Twitter
     li
-      a href="/photos" Photos
+      a href="/photos" title="Photography" Photos
     / li
       a href="/reading" Reading
     / li
       a href="/runs" Running
     li
-      a href="/now" Now
+      a href="/now" title="What I'm doing now" Now
     li
-      a href="/about" About
+      a href="/about" title="About me & this site" About
     li
       a href="/sitemap"
         span title="Sitemap" ☰
