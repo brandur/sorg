@@ -49,7 +49,7 @@ jobs:
       - name: Install tooling from Apt
         # Postgres runs in a container, but we also need the client-side
         # tooling.
-        run: sudo apt-get install awscli postgresql-client
+        run: sudo apt-get install postgresql-client
 
       - name: Cache ImageMagick
         id: cache-imagemagick
