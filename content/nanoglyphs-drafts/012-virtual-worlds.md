@@ -5,7 +5,7 @@ published_at = 2020-04-03T00:52:13Z
 title = "Virtual Worlds"
 +++
 
-T plus four weeks into isolation. It's been a unique experience. I've been one of the lucky ones so far, getting away mostly with some vitamin D deficiency and minor eye strain caused from going from staring at e-screens just the normal amount of too much, to staring at them around-the-clock-and-then-some. Here's to hoping that yours hasn't been catastrophic.
+T plus four weeks into isolation. It's been a unique experience. I've been one of the lucky ones so far, getting away mostly with some vitamin D deficiency and minor eye strain caused from going from staring at e-screens just the normal amount of too much, to staring at them around-the-clock-and-then-some. Here's to hoping that yours hasn't been catastrophic either.
 
 As usual, this is _Nanoglyph_, an experimental newsletter about software and gaming-in-place. If that's not your thing, warp whistle back the real world with a [one-click unsubscribe](%unsubscribe_url%).
 
@@ -13,11 +13,11 @@ As usual, this is _Nanoglyph_, an experimental newsletter about software and gam
 
 A side effect of my brave new commute-free bar-free travel-free life is over the last couple weeks I've found myself with more free time than ever before in my adult life. Some of that windfall's been used well (daily runs, morning and evening calisthenics, excavated my guitar from the thick layer of dust that's been accumulating since the Paleozoic), some of it not-so-well, and some of it in the middle. You might ask, what's a "middle" activity? There's one in particular I had in mind: video games.
 
-The last decade's seen gaming enter the mainstream after spending a long time cast in common wisdom as the favored hobby of social misfits and basement dwellers, but despite some progress, it's still not exactly a virtuous pursuit. Some of that's history, and some of it's from the continued existence of dark elements -- multiplayer games like MMOs are capable of eating every waking moment of an enthusiastic player's existence to the detriment of all else, micro transactions are profiteering ramped up to the maximum degree, and loot boxes seems to be designed as a legal loophole for underage gambling.
+The last decade's seen gaming enter the mainstream after spending a long time cast in common wisdom as the favored hobby of social misfits and basement dwellers, but despite some progress, it's still a long shot from being considered a virtuous pursuit. Some of that's history, and some of it's from the continued existence of dark elements -- multiplayer games like MMOs eat every waking moment of an enthusiastic player's existence to the detriment of all else, micro transactions are profiteering ramped up to the maximum degree, and loot boxes seem to be designed to enable underage gambling.
 
-But enjoyed the right way, video games are some of the most beautiful media produced by humanity today. Photorealistic graphics transport players to vibrant alien worlds of impossible vistas and unspeakable wonder. Stories are more detailed and expansive than their counterparts in film or TV because there's more opportunity to explore. Writing and acting in top games might fall a little short of the very best that Hollywood has to offer, but if so ... not by much. A notch above the last season of _Game of Thrones_ anyway.
+But enjoyed the right way, video games are some of the most transportive media produced by humanity today. Photorealistic graphics transport players to vibrant alien worlds of impossible vistas and unspeakable wonder. Stories are more detailed and expansive than their counterparts in film or TV because there's more opportunity to explore. Writing and acting in top games might fall a little short of the very best that Hollywood has to offer, but if so ... not by much. A notch above the last season of _Game of Thrones_ anyway.
 
-I'm as much of a fan of a great TV series or movies as the next person, but often come away from that sort of passive consumption experiences feeling like a vegetable. Best case scenario, I viewed something complicated and cerebral with rapt attention throughout. More often, I'm watching at about half attention, with the other half on a second screen like a laptop or smartphone (and I'm [not alone](https://arstechnica.com/gaming/2019/12/88-of-americans-use-a-second-screen-while-watching-tv-why/)). But a video game is different. There's no choice except to be 100% engaged, and often in a way that's stimulating the mind. And I'm not just talking about _Myst._ Even outside of puzzle games, you're optimizing an equipment load out, understanding a skill system, or deciphering the attack patterns of a final boss.
+I'm as much of a fan of a great TV series or movies as the next person, but often come away from that sort of passive consumption experiences feeling like a vegetable. Best case scenario, I viewed something complicated and cerebral with rapt attention throughout. More often, I'm watching at about half attention, with the other half on a second screen like a laptop or smartphone (and I'm [not alone](https://arstechnica.com/gaming/2019/12/88-of-americans-use-a-second-screen-while-watching-tv-why/)). But a video game is different. There's no choice except to be 100% engaged, and often in a way that's stimulating the mind. And I'm not just talking about _Myst_ -- even outside of puzzle games, you're optimizing an equipment load out, understanding a skill system, or deciphering the attack patterns of a final boss.
 
 ---
 
@@ -133,7 +133,7 @@ Congratulations, you've unlocked the **Voracious Conqueror of Newsletters** achi
 
 [1] Shooting arrows in _Horizon Zero Dawn_ is some of the best combat across any system, but is edged out ever so slightly by a truly great FPS played on PC with a mouse and keyboard. e.g. _Half-life 2_.
 
-[2] Midgard is the name for Earth in old Germanic cosmology. The realm inhabited by humanity as opposed to Asgard, inhabited by the gods, or Jotunheim, the land of giants.
+[2] Midgard is the name for Earth in old Germanic cosmology. The realm inhabited by humanity as opposed to Asgard, inhabited by the gods, or Jotunheim, realm of giants.
 
 [3] Mímir, best known for his well of knowledge, to which Odin sacrificed his eye in pursuit of wisdom.
 
