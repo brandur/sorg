@@ -131,7 +131,7 @@ There's something deeply engrained in the nature of the human condition that pre
 
 Congratulations, you've unlocked the **Voracious Conqueror of Newsletters** achievement by making it this far. Thanks for reading. As usual, feel free to hit reply and tell me what I'm not talking about.
 
-[1] Shooting arrows in _Horizon Zero Dawn_ is some of the best combat across any system, but might be edged out ever so slightly by a truly great FPS played on PC with a mouse and keyboard. e.g. _Half-life 2_.
+[1] Shooting arrows in _Horizon Zero Dawn_ is some of the best combat across any system, but is edged out ever so slightly by a truly great FPS played on PC with a mouse and keyboard. e.g. _Half-life 2_.
 
 [2] Midgard is the name for Earth in old Germanic cosmology. The realm inhabited by humanity as opposed to Asgard, inhabited by the gods, or Jotunheim, the land of giants.
 
