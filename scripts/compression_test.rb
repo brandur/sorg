@@ -15,21 +15,26 @@ def main
 
       in_size, libjpeg_out_size, libjpeg_out_size_ratio =
         optimize_with_program("/usr/local/opt/libjpeg", in_path, "#{temp_dir}/libjpeg_#{name}")
-      libjpeg_ratios << libjpeg_out_size_ratio
 
-      if in_size.nil?
+      # Was probably already optimized.
+      if libjpeg_out_size.nil?
         puts "skipped: #{in_path}"
         next
       end
 
       _in_size, mozjpeg_out_size, mozjpeg_out_size_ratio =
-        # optimize_with_program("/usr/local/opt/mozjpeg", in_path, "#{temp_dir}/mozjpeg_#{name}")
-        [0, 0, 0]
+        optimize_with_program("/usr/local/opt/mozjpeg", in_path, "#{temp_dir}/mozjpeg_#{name}")
+        # [0, 0, 0]
+
+      if mozjpeg_out_size.nil?
+        puts "skipped: #{in_path}"
+        next
+      end
+
+      libjpeg_ratios << libjpeg_out_size_ratio
       mozjpeg_ratios << mozjpeg_out_size_ratio
 
       puts "#{in_path} #{in_size} #{libjpeg_out_size} #{libjpeg_out_size_ratio} #{mozjpeg_out_size} #{mozjpeg_out_size_ratio}"
-
-      break if i >= 20
     end
   end
 
