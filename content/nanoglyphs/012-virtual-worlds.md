@@ -21,7 +21,7 @@ I'm as much of a fan of a great TV series or movie as the next person, but often
 
 ---
 
-Over the years, I've adopted a certain discipline for time spent on games to maximize enjoyment and minimize waste. I only play the handful of top rated games for any given year -- that means less time burned on bad ones, and even a few games are good for 100s of hours of entertainment. I don't play multiplayer -- the gameplay dynamics required to create a working online ecosystem make grinding (playing long hours to build skill or generate in-game resources) an inherent property, and the trade off's not worth it for me. I'm a casual gamer through and through -- thrown into a _DOOM_ deathmatch, I'd be put to rest by your run-of-the-mill six year old. I've come to okay with that.
+Over the years, I've adopted a certain discipline for time spent on games to maximize enjoyment and minimize waste. I only play the handful of top rated games for any given year -- that means less time burned on bad ones, and even a few games are good for 100s of hours of entertainment. I don't play multiplayer -- the gameplay dynamics required to create a working online ecosystem make grinding (playing long hours to build skill or generate in-game resources) an inherent property, and the trade off's not worth it for me. I'm a casual gamer through and through -- thrown into a _DOOM_ deathmatch, I'd be put to peaceful rest by your run-of-the-mill six year old. I've come to okay with that.
 
 With that out of the way, here's a couple recommendations from the last couple years. Skip ahead a few sections for more technical content.
 
