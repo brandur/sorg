@@ -11,7 +11,7 @@ As usual, this is _Nanoglyph_, an experimental newsletter about software and gam
 
 ---
 
-A side effect of my brave new commute-free bar-free travel-free existence is over the last couple weeks I've found myself with more free time than ever before in my adult life. Some of that windfall's been used well (daily runs, morning and evening calisthenics, excavated my guitar from the thick layer of dust that's been accumulating since the Paleozoic), some of it not-so-well, and some of it in the middle. You might ask, what's a "middle" activity? There's one in particular I had in mind: video games.
+A side effect of my brave new commute-free bar-free travel-free existence is over the last couple weeks I've found myself with more free time than ever before in my adult life. Some of that windfall's been used well (daily runs, morning and evening calisthenics, excavated my guitar from the thick layer of dust that's been accumulating since roughly the Paleozoic), some of it not-so-well, and some of it in the middle. You might ask, what's a "middle" activity? There's one in particular I had in mind: video games.
 
 The last decade's seen gaming enter the mainstream after spending a long time cast in common wisdom as the favored hobby of social misfits and basement dwellers, but despite some progress, it's still a long shot from being considered a virtuous pursuit. Some of that's history, and some of it's from the continued existence of dark elements -- multiplayer games like MMOs eat every waking moment of an enthusiastic player's existence to the detriment of all else, micro transactions is the ancient act of profiteering refined to perfection with 21st century technology, and loot boxes seem to be designed to enable underage gambling.
 
