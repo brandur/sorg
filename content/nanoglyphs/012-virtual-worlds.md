@@ -1,7 +1,7 @@
 +++
-image_alt = "Horizon Zero Dawn (day)"
+image_alt = "Horizon Zero Dawn -- day in the Frozen Wilds"
 image_url = "/assets/images/nanoglyphs/012-virtual-worlds/horizon-zero-dawn-day@2x.jpg"
-published_at = 2020-04-03T00:52:13Z
+published_at = 2020-04-15T15:34:33Z
 title = "Virtual Worlds"
 +++
 
