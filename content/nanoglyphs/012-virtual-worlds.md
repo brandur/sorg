@@ -135,10 +135,10 @@ There's something deeply engrained in the nature of the human condition that pre
 
 Congratulations, you've unlocked the **Voracious Conqueror of Newsletters** achievement by making it this far. Thanks for reading. As usual, feel free to hit reply and tell me what I'm not talking about.
 
-[1] Shooting arrows in _Horizon Zero Dawn_ is some of the best combat across any system, but is edged out ever so slightly by a truly great FPS played on PC with a mouse and keyboard. e.g. _Half-life 2_.
+[1] Shooting arrows in _Horizon Zero Dawn_ is one of the best and most satisfying combat mechanics on any system, but is edged out ever so slightly by a truly great FPS played on PC with a mouse and keyboard. e.g. _Half-life 2_.
 
 [2] Midgard is the name for Earth in old Germanic cosmology. The realm inhabited by humanity as opposed to Asgard, inhabited by the gods, or Jotunheim, realm of giants.
 
-[3] Mímir, best known for his well of knowledge, to which Odin sacrificed his eye in pursuit of wisdom.
+[3] Mímir, best known for his well of knowledge, to which Odin sacrificed his eye in pursuit of wisdom. Second best known for being a talking head who is carried and recounts secret knowledge to Odin after being separated from his body during the Æsir–Vanir War.
 
 [4] The name “blitter” comes from the “bit blit” operation of the Xerox Alto, which stands for bit-block transfer.
