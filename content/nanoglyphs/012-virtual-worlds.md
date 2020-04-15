@@ -31,7 +31,7 @@ With that out of the way, here's a couple recommendations from the last couple y
 
 ![Horizon Zero Dawn -- Aloy looking out on the Aurora Borealis](/assets/images/nanoglyphs/012-virtual-worlds/horizon-zero-dawn-night-3@2x.jpg)
 
-The combat is some of the best ever developed for a console [1]. It centers around a bow and arrow, and the mechanics of such -- a slight delay in drawing, aiming for (destructible) weak spots on your dino opponents combined with a subtle bullet time effect strike a perfect compromise between challenge, satisfaction, and fun.
+The combat is some of the best ever developed for a console [1]. It centers around a bow and arrow, and the mechanics of such -- a slight delay in drawing, aiming for (destructible) weak spots on your dino foes combined with a subtle bullet time effect strike a perfect compromise between challenge, satisfaction, and fun.
 
 The writing, voice acting, and graphics are all top notch. Careful design was even applied to the UI so that little tasks like healing or crafting ammunition aren't slow or annoying. Moving around the world is so much fun that I found myself completing every side quest with no prompting.
 
