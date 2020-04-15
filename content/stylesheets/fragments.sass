@@ -147,7 +147,6 @@ $secondary: #cdcdcd
         pre
           overflow: initial
           padding: 25px
-          white-space: pre-wrap
 
           // calculation offsets padding
           width: calc(700px - 2 * 25px)
@@ -211,6 +210,14 @@ $secondary: #cdcdcd
       img#mood
         margin: 20px 0 30px 0
         width: 100%
+
+      .content-inner-fragments-show
+        article
+          pre
+            overflow-x: auto
+
+            code
+              font-size: 0.65rem
 
       .info
         .publishing-info-bottom
