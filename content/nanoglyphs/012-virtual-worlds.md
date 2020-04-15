@@ -7,7 +7,7 @@ title = "Virtual Worlds"
 
 T plus four weeks into isolation. It's been an experience. I've been one of the lucky ones so far, getting away mostly with some vitamin D deficiency and minor eye strain caused from going from staring at e-screens just the normal amount of too much, to staring at them around-the-clock-and-then-some. I hope yours hasn't been catastrophic.
 
-As usual, this is _Nanoglyph_, an experimental newsletter about software and gaming-in-place. If that's not your thing, warp whistle back the real world with a [one-click unsubscribe](%unsubscribe_url%).
+As usual, this is _Nanoglyph_, an experimental newsletter about software and gaming-in-place. If that's not your thing, warp whistle back the real world with a one-click unsubscribe. _(And if you're reading from the web, you can [subscribe here](https://nanoglyph-signup.brandur.org/))._
 
 ---
 
