@@ -125,17 +125,14 @@ jobs:
       - name: "Check: Gofmt"
         run: make check-gofmt
 
-      # Unfortunately there's some oddity in GitHub's environment that causes
-      # this to fail:
-      #
-      #     /home/runner/work/_temp/3939b8a1-56f2-4fd9-8434-1950a338feb7.sh: line 1: unexpected EOF while looking for matching `"'
-      #
-      # Action is probably to try converting to Go modules first and see if
-      # that resolves it.
-      #
-      # - name: "Check: Golint"
-      #   run: make lint"
-      #
+      - name: "Check: Golint"
+        # I usually run tasks through make, but for some reasons GitHub Actions
+        # really doesn't like the `make lint` task, so I've unfurled it here.
+        # The error:
+        #
+        #     /home/runner/work/_temp/fcd52edc-894a-48eb-bf93-f8b8d5752bce.sh: line 1: unexpected EOF while looking for matching `"'
+        #
+        run: $(go env GOPATH)/bin/golint -set_exit_status ./...
 
       - name: "Check: Markdown headers"
         run: make check-headers
