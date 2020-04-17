@@ -125,17 +125,8 @@ jobs:
       - name: "Check: Gofmt"
         run: make check-gofmt
 
-      # Unfortunately there's some oddity in GitHub's environment that causes
-      # this to fail:
-      #
-      #     /home/runner/work/_temp/3939b8a1-56f2-4fd9-8434-1950a338feb7.sh: line 1: unexpected EOF while looking for matching `"'
-      #
-      # Action is probably to try converting to Go modules first and see if
-      # that resolves it.
-      #
-      # - name: "Check: Golint"
-      #   run: make lint"
-      #
+      - name: "Check: Golint"
+        run: make lint"
 
       - name: "Check: Markdown headers"
         run: make check-headers
