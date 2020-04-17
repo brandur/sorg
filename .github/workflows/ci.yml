@@ -126,7 +126,7 @@ jobs:
         run: make check-gofmt
 
       - name: "Check: Golint"
-        run: make lint"
+        run: $(go env GOPATH)/bin/golint -set_exit_status ./...
 
       - name: "Check: Markdown headers"
         run: make check-headers
