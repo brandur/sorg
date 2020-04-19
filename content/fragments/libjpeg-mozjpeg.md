@@ -16,7 +16,7 @@ MozJPEG differs from libjpeg in that it claims to be better optimized for the we
 
 Both libjpeg and MozJPEG seemed to do a good job based on a few samples, so I was generally okay taking its claim at face value and preferring its use in my builds, but I got curious. It's largely fine to just use MozJPEG in all situations, but libjpeg does have the slight advantage of being somewhat more ubiquitous.
 
-Luckily, I had a perfect real-world sample to do the comparison: the images from this site very site, none of which I'd made any effort to optimize over the years beyond choosing a sane-looking "quality" setting as a I exported them from ImageMagick or Pixelmator. I wrote a [tiny Ruby script](https://github.com/brandur/sorg/blob/860640e59ccd82d6d3f5f6bd59534bf28f0face4/scripts/compression_test.rb) to iterate each one, optimize it using both libjpeg and MozJPEG, and compare the results. A few minutes later it spit this out:
+Luckily, I had a perfect real-world sample to do the comparison: the images from this very site, none of which I'd made any effort to optimize over the years beyond choosing a sane-looking "quality" setting as a I exported them from ImageMagick or Pixelmator. I wrote a [tiny Ruby script](https://github.com/brandur/sorg/blob/860640e59ccd82d6d3f5f6bd59534bf28f0face4/scripts/compression_test.rb) to iterate each one, optimize it using both libjpeg and MozJPEG, and compare the results. A few minutes later it spit this out:
 
 ```
 average libjpeg compression ratio: 0.4897232210914123
