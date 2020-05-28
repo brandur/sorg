@@ -2,7 +2,7 @@
   new SimpleLightbox({
     elements: '.sequences-entry-photograph-inner a',
 
-    closeBtnClass: 'simpleLightboxNoBorder',
+    closeBtnClass: 'simpleLightboxHide',
     nextBtnClass: 'simpleLightboxNoBorder',
     prevBtnClass: 'simpleLightboxNoBorder',
 
