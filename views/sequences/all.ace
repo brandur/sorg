@@ -22,4 +22,5 @@
   .top-nav.top-nav-flat.hide-big
     .nav-inner
       = include views/_nav
-  = include views/_basic_lightbox .
+  = javascript
+    new SimpleLightbox({elements: '.sequences-entry-photograph-inner a'});

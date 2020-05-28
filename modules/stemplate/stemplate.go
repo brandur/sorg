@@ -128,14 +128,6 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightb
 	largePath := path + slug + "_large.jpg"
 	largePathRetina := path + slug + "_large@2x.jpg"
 
-	lightboxCode := ""
-	if lightbox {
-		lightboxCode = fmt.Sprintf(
-			` onclick="lightboxFor('%s');" style="cursor: pointer;"`,
-			largePathRetina,
-		)
-	}
-
 	var standinPath string
 	if portrait {
 		// We only have one portrait standin currently (thus `% 1`).
@@ -144,8 +136,14 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightb
 		standinPath = fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
 	}
 
-	return fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x"%s>`,
-		standinPath, largePath, largePathRetina, largePath, lightboxCode)
+	code := fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
+		standinPath, largePath, largePathRetina, largePath)
+
+	if lightbox {
+		code = fmt.Sprintf(`<a href="%s">%s</a>`, largePathRetina, code)
+	}
+
+	return code
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces
