@@ -1,0 +1,11 @@
+= javascript
+  new SimpleLightbox({
+    elements: '.sequences-entry-photograph-inner a',
+
+    closeBtnClass: 'simpleLightboxNoBorder',
+    nextBtnClass: 'simpleLightboxNoBorder',
+    prevBtnClass: 'simpleLightboxNoBorder',
+
+    nextOnImageClick: false
+  });
+ 
