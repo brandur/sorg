@@ -48,7 +48,7 @@ jobs:
 
       - name: Cache ImageMagick
         id: cache-imagemagick
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ env.HOME }}/imagemagick
           key: ${{ runner.os }}-imagemagick
