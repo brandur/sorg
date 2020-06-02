@@ -51,7 +51,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ env.HOME }}/imagemagick
-          key: ${{ runner.os }}-imagemagick
+          key: ${{ runner.os }}-imagemagick-v2
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get the binary
