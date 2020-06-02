@@ -80,11 +80,6 @@ jobs:
           curl -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           sudo dpkg -i mozjpeg_master_amd64.deb
 
-      # Postgres runs in a container, but we also need the client-side
-      # tooling to interact with it.
-      - name: Install Postgres client tooling
-        run: sudo apt-get install postgresql-client
-
       - name: Checkout
         uses: actions/checkout@v2
 
