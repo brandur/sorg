@@ -43,6 +43,15 @@ jobs:
         with:
           go-version: 1.13.x
 
+      # Used to force dependencies to re-cache once a day so that we don't run
+      # into any weird cache invalidation problems, so to make sure that
+      # dependency fetches keep working.
+      - name: Gate date
+        id: get-date
+        run: |
+          echo "::set-output name=date::$(/bin/date -u "+%Y-%m-%d")"
+        shell: bash
+
       - name: Cache dependencies
         id: cache-dependencies
         uses: actions/cache@v2
@@ -54,7 +63,7 @@ jobs:
             /home/runner/go/pkg/mod/
             /home/runner/imagemagick/
             /opt/mozjpeg/
-          key: ${{ runner.os }}-cache-dependencies-v2
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-cache-dependencies-v2
 
       - name: Install Golint
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
