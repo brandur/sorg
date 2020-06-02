@@ -43,19 +43,22 @@ jobs:
         with:
           go-version: 1.13.x
 
-      - name: Install Golint
-        run: go get -u golang.org/x/lint/golint
-
       - name: Cache dependencies
         id: cache-dependencies
         uses: actions/cache@v2
         with:
           # Don't try to use variables in these paths. They don't seem to work
-          # and it'll lead to hours of confusion.
+          # and it'll lead to hours of confusion. You can use a `~`, but I've expanded HOME so that finding things is easier.
           path: |
+            /home/runner/go/bin/
+            /home/runner/go/pkg/mod/
             /home/runner/imagemagick/
             /opt/mozjpeg/
-          key: ${{ runner.os }}-cache-dependencies-v1
+          key: ${{ runner.os }}-cache-dependencies-v2
+
+      - name: Install Golint
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: go get -u golang.org/x/lint/golint
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get the binary
