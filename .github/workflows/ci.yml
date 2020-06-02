@@ -50,8 +50,8 @@ jobs:
         id: cache-imagemagick
         uses: actions/cache@v2
         with:
-          path: imagemagick/
-          key: ${{ runner.os }}-imagemagick-v3
+          path: ${{ env.HOME }}/imagemagick
+          key: ${{ runner.os }}-imagemagick-v4
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get the binary
@@ -63,6 +63,10 @@ jobs:
           mkdir -p $HOME/imagemagick/bin/
           curl -L -o $HOME/imagemagick/bin/magick https://imagemagick.org/download/binaries/magick
           chmod +x $HOME/imagemagick/bin/magick
+
+      - name: Cache debug
+        run: |
+          ls -R $HOME/imagemagick
 
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
