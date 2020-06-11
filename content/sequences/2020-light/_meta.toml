@@ -23,7 +23,6 @@ Friday afternoon -- a view of Twin Peaks from the adjacent hill of Corona ("crow
     original_image_url = "https://www.dropbox.com/s/cob2hkkklo2uvye/L1010564.jpg?dl=1"
     slug = "001"
 
-
 [[entries]]
   occurred_at = 2020-05-29T05:25:56Z
   slug = "002"
@@ -38,4 +37,18 @@ Sutro Tower, almost 1000 feet high, an old TV and radio tower. Quite possibly Sa
     original_image_url = "https://www.dropbox.com/s/bi7fxmzi2bzmdzu/L1000546.JPG?dl=1"
     portrait = true
     slug = "002"
+
+[[entries]]
+  occurred_at = 2020-05-31T00:35:51Z
+  slug = "003"
+  title = "The beach"
+
+  description = """\
+Ocean Beach, looking out towards Cliff House. Most things in San Francisco are miniature versions of their counterparts elsewhere -- houses, bars & restaurants, parks. Ocean Beach breaks the mold. Not only is it long -- running 3-4 miles from the Sutro Baths to Fort Funston -- but also _wide_. It takes about five minutes to walk from the Great Highway down to the water. Its sheer size has been a huge boon during the quarantine, with thousands of people visiting on weekends, and all the while able to maintain ample distance from one another.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jt2f3961io8hzzw/L1010203.jpg?dl=1"
+    slug = "003"
 
