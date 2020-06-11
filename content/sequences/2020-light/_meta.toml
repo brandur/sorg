@@ -52,3 +52,17 @@ Ocean Beach, looking out towards Cliff House. Most things in San Francisco are m
     original_image_url = "https://www.dropbox.com/s/jt2f3961io8hzzw/L1010203.jpg?dl=1"
     slug = "003"
 
+[[entries]]
+  occurred_at = 2020-06-11T03:58:20Z
+  slug = "004"
+  title = "To the cross"
+
+  description = """\
+Stairs to the peak of Mount Davidson. Towards nightfall, and on a cloudy evening.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jk4k5hyor4p87ey/L1010425.jpg?dl=1"
+    portrait = true
+    slug = "004"
+
