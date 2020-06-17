@@ -85,3 +85,26 @@ I talked with one of the owners for a few minutes as I was ordering. I was somew
     original_image_url = "https://www.dropbox.com/s/aiouff2jxcbgp1k/L1010798.jpg?dl=1"
     slug = "005b"
 
+[[entries]]
+  occurred_at = 2020-06-16T02:10:24Z
+  slug = "006"
+  title = "Lighter than air"
+
+  description = """\
+Some photos from a cloudy Sunday at Fort Funston. An old military base that lasted through both world wards and the Cold War, it's now a popular dog walking and hang gliding spot. Wikipedia has a [nice shot](https://en.wikipedia.org/wiki/File:No._89A_Fort_Funston,_Calif.,_Gun_Tube_No.1,_Rigging_for_backing_load_to_entrance_of_reservation._-_NARA_-_296366.jpg) of one of the enormous 16-inch guns that used to be mounted here.
+
+Most park users don't make it far from the parking lot, but walk all the way south, then keeping walking south some more, and you're rewarded as the trail starts to climb, eventually mounting a cliff hundreds of feet up from the beach (bottom left). It's not flying, but it's the closest you can get to it on the ground.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/bx07p0wjaxdnz3m/L1010831.jpg?dl=1"
+    slug = "006"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/1xbui0cgxekkmid/L1010846.jpg?dl=1"
+    slug = "006b"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/2tkcfrh6a0zby68/L1010826.jpg?dl=1"
+    slug = "006c"
+
