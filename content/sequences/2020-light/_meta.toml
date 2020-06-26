@@ -108,3 +108,15 @@ Most park users don't make it far from the parking lot, but walk all the way sou
     original_image_url = "https://www.dropbox.com/s/2tkcfrh6a0zby68/L1010826.jpg?dl=1"
     slug = "006c"
 
+[[entries]]
+  occurred_at = 2020-06-26T19:09:49Z
+  slug = "007"
+  title = "In circles"
+
+  description = """\
+Precita Park in Bernal Heights in its full weekend glory. The park service has taken to drawing "isolation circles" in some of the city's more popular parks to keep groups adequately spaced out. It actually works.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/juabz4fouo4cpr5/L1010796-precita.jpg?dl=1"
+    slug = "007"
