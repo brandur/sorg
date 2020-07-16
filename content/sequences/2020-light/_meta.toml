@@ -133,3 +133,17 @@ Some great landscaping out in the Sea Cliff neighborhood, located between Lands 
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/r0onuslwoe8tq1q/L1010587.jpg?dl=1"
     slug = "008"
+
+[[entries]]
+  occurred_at = 2020-07-16T00:38:20Z
+  slug = "009"
+  title = "A (very) good view"
+
+  description = """\
+The steps right below the summit of Buena Vista Park near the Haight. This park has the benefit of being quite vertical, so there's generally a little more room to breathe up top compared to some of the others in the area (not as many people are willing to make the trek).
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/tvl3v8vp1c8clay/L1010608.jpg?dl=1"
+    portrait = true
+    slug = "009"
