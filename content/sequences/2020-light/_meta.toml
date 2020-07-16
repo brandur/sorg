@@ -120,3 +120,16 @@ Precita Park in Bernal Heights in its full weekend glory. The park service has t
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/juabz4fouo4cpr5/L1010796-precita.jpg?dl=1"
     slug = "007"
+
+[[entries]]
+  occurred_at = 2020-07-16T00:31:28Z
+  slug = "008"
+  title = "Radial"
+
+  description = """\
+Some great landscaping out in the Sea Cliff neighborhood, located between Lands End and the Presidio.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/r0onuslwoe8tq1q/L1010587.jpg?dl=1"
+    slug = "008"
