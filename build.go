@@ -690,9 +690,18 @@ func build(c *modulir.Context) []error {
 	// Nanoglyphs
 	//
 
+	// Index
 	{
 		c.AddJob("nanoglyphs index", func() (bool, error) {
 			return renderNanoglyphsIndex(c, nanoglyphs,
+				nanoglyphsChanged)
+		})
+	}
+
+	// Feed
+	{
+		c.AddJob("nanoglyphs feed", func() (bool, error) {
+			return renderNanoglyphsFeed(c, nanoglyphs,
 				nanoglyphsChanged)
 		})
 	}
@@ -722,9 +731,18 @@ func build(c *modulir.Context) []error {
 	// Passages
 	//
 
+	// Index
 	{
 		c.AddJob("passages index", func() (bool, error) {
 			return renderPassagesIndex(c, passages,
+				passagesChanged)
+		})
+	}
+
+	// Feed
+	{
+		c.AddJob("passages feed", func() (bool, error) {
+			return renderPassagesFeed(c, passages,
 				passagesChanged)
 		})
 	}
@@ -1823,6 +1841,57 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	return true, nil
 }
 
+func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanoglyphsChanged bool) (bool, error) {
+	if !nanoglyphsChanged {
+		return false, nil
+	}
+
+	name := "nanoglyphs"
+	filename := name + ".atom"
+	title := "Nanoglyph - brandur.org"
+
+	feed := &satom.Feed{
+		Title: title,
+		ID:    "tag:brandur.org.org,2013:/" + name,
+
+		Links: []*satom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(articles) > 0 {
+		feed.Updated = *issues[0].PublishedAt
+	}
+
+	for i, issue := range issues {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &satom.Entry{
+			Title:     issue.Title,
+			Content:   &satom.EntryContent{Content: issue.Content, Type: "html"},
+			Published: *issue.PublishedAt,
+			Updated:   *issue.PublishedAt,
+			Link:      &satom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
+			ID:        "tag:brandur.org," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
+
+			AuthorName: scommon.AtomAuthorName,
+			AuthorURI:  conf.AbsoluteURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	if err != nil {
+		return true, err
+	}
+	defer f.Close()
+
+	return true, feed.Encode(f, "  ")
+}
+
 func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	nanoglyphsChanged bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
@@ -1892,6 +1961,57 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 	mu.Unlock()
 
 	return true, nil
+}
+
+func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passagesChanged bool) (bool, error) {
+	if !passagesChanged {
+		return false, nil
+	}
+
+	name := "passages"
+	filename := name + ".atom"
+	title := "Passages & Glass - brandur.org"
+
+	feed := &satom.Feed{
+		Title: title,
+		ID:    "tag:brandur.org.org,2013:/" + name,
+
+		Links: []*satom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(articles) > 0 {
+		feed.Updated = *issues[0].PublishedAt
+	}
+
+	for i, issue := range issues {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		entry := &satom.Entry{
+			Title:     issue.Title,
+			Content:   &satom.EntryContent{Content: issue.Content, Type: "html"},
+			Published: *issue.PublishedAt,
+			Updated:   *issue.PublishedAt,
+			Link:      &satom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
+			ID:        "tag:brandur.org," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
+
+			AuthorName: scommon.AtomAuthorName,
+			AuthorURI:  conf.AbsoluteURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	if err != nil {
+		return true, err
+	}
+	defer f.Close()
+
+	return true, feed.Encode(f, "  ")
 }
 
 func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
