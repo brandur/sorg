@@ -1869,9 +1869,15 @@ func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanog
 			break
 		}
 
+		content := issue.Content
+		if issue.ImageURL != "" {
+			content = fmt.Sprintf(`<p><img src="%s" alt="%s" /></p>`, issue.ImageURL, issue.ImageAlt) +
+				content
+		}
+
 		entry := &satom.Entry{
-			Title:     issue.Title,
-			Content:   &satom.EntryContent{Content: issue.Content, Type: "html"},
+			Title:     fmt.Sprintf("Nanoglyph %s — %s", issue.Number, issue.Title),
+			Content:   &satom.EntryContent{Content: content, Type: "html"},
 			Published: *issue.PublishedAt,
 			Updated:   *issue.PublishedAt,
 			Link:      &satom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
@@ -1991,9 +1997,15 @@ func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passage
 			break
 		}
 
+		content := issue.Content
+		if issue.ImageURL != "" {
+			content = fmt.Sprintf(`<p><img src="%s" alt="%s" /></p>`, issue.ImageURL, issue.ImageAlt) +
+				content
+		}
+
 		entry := &satom.Entry{
-			Title:     issue.Title,
-			Content:   &satom.EntryContent{Content: issue.Content, Type: "html"},
+			Title:     fmt.Sprintf("Passages & Glass %s — %s", issue.Number, issue.Title),
+			Content:   &satom.EntryContent{Content: content, Type: "html"},
 			Published: *issue.PublishedAt,
 			Updated:   *issue.PublishedAt,
 			Link:      &satom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
