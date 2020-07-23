@@ -112,7 +112,7 @@ everything.
 
 The argument `-tag:v hvc1` tags the video with `hvc1`,
 which is purely for QuickTime's benefit. It allows this
-Very Stupid Player to recognize the fact that it will be
+Very Smart Player to recognize the fact that it will be
 able to play the resulting file.
 
 [1] I don't even want to admit how long I spent trying to
