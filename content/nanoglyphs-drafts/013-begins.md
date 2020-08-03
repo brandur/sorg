@@ -1,7 +1,7 @@
 +++
-image_alt = "TODO"
-image_url = "/assets/images/nanoglyphs/014-begins/slope@2x.jpg"
-published_at = 2020-04-21T05:11:14Z
+image_alt = "A steep San Francisco street"
+image_url = "/assets/images/nanoglyphs/013-begins/slope@2x.jpg"
+published_at = 2020-08-03T17:45:45Z
 title = "Remote; the Origins of Postgres"
 +++
 
@@ -57,7 +57,7 @@ In an effort to do something at least minimally constructive, I booted off a new
 
 By keeping my little photography projects cordoned to a tiny orbiting satellite like mine on the edge of that vast expanse that is the web, I'm reducing the impressions it'll get probably by 99%, but in this day and age that strikes me as the right decision. I enjoy Facebook and Twitter as much as anyone, but we as a society need to start having some serious conversations about them, and our own susceptibility to their emergent effects.
 
-![Apple's iMac Pro](/assets/images/nanoglyphs/014-begins/great-highway@2x.jpg)
+![Apple's iMac Pro](/assets/images/nanoglyphs/013-begins/great-highway@2x.jpg)
 
 The solution? I wish it were something as simple as just "the indy web", but it's pretty clear that it takes the dead simplicity and network effects of a centralized platform to really bring the masses, and I'm not sure what to do about that.
 
