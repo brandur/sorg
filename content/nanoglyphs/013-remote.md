@@ -1,6 +1,6 @@
 +++
 image_alt = "A steep San Francisco street"
-image_url = "/assets/images/nanoglyphs/013-begins/slope@2x.jpg"
+image_url = "/assets/images/nanoglyphs/013-remote/slope@2x.jpg"
 published_at = 2020-08-11T17:15:39Z
 title = "Remote; the Origins of Postgres"
 +++
@@ -57,7 +57,7 @@ In an effort to do something at least minimally constructive, I booted off a new
 
 By keeping my little photography projects cordoned to a tiny orbiting satellite like mine on the edge of that vast expanse that is the web, I'm reducing the impressions it'll get probably by 99%, but ... I'm okay with that. I enjoy some dabbling in Facebook and Twitter as much as anyone, and can't help but feel that little rush when someone likes my post, but we as a society need to start having some serious conversations about them, or at least our susceptibility to their emergent effects. On my optimistic days, I hope that in ten years we'll see social media as junk food for the mind -- viscerally satisfying on a primitive level thanks to how our minds and bodies have evolved over thousands of years, but indulgent and unhealthy.
 
-![The Great Highway, car free](/assets/images/nanoglyphs/013-begins/great-highway@2x.jpg)
+![The Great Highway, car free](/assets/images/nanoglyphs/013-remote/great-highway@2x.jpg)
 
 The problem with _not_ being on social media is that we still don't have great mechanisms to discover and connect content outside of it. Links work, but linking from the same sites you visit every day doesn't add a lot of fresh content to the mix. RSS and newsletter are good, but also could use much better discoverability. Link aggregators like Hacker News are still my most oft-used solution, but need incredible amounts moderation as their size makes them attractive targets for spam and abuse.
 
