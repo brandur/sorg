@@ -192,4 +192,4 @@ up to receive it][signup]. I won't bother you often.
 [fswatch]: https://github.com/emcrisostomo/fswatch
 [passages-signup]: https://github.com/brandur/passages-signup
 [signup]: /newsletter#passages
-[sorg]: https://github.com/brandur/osrg
+[sorg]: https://github.com/brandur/sorg
