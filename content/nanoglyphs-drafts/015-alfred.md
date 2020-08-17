@@ -1,6 +1,6 @@
 +++
 image_alt = "Yoshihiro chef's knife"
-image_url = "/assets/images/nanoglyphs/014-alfred/knife-2@2x.jpg"
+image_url = "/assets/images/nanoglyphs/015-alfred/knife-2@2x.jpg"
 published_at = 2020-08-03T17:46:11Z
 title = "Alfred & the Zen of Tool Sharpening"
 +++
@@ -30,7 +30,7 @@ Here’s a few recent ones from mine:
 
 A tool that I sharpened recently is Alfred, an application launcher for Mac OS. It’s a particularly good one, but the idea isn’t novel -- it was around years before Alfred in the form of applications like QuickSilver, and the functionality is even partially baked into Mac OS itself with Spotlight. Users on other operating systems won’t be using Alfred specifically, but will have access to a similar tool.
 
-![Alfred matching an application](/assets/images/nanoglyphs/014-alfred/alfred-search@2x.png)
+![Alfred matching an application](/assets/images/nanoglyphs/015-alfred/alfred-search@2x.png)
 
 Its most prominent feature is being able to match items intelligently based on a substring. Although not quite fuzzy matching, it lets you type the first few letters of any application, see a match on screen in the most minute fraction of a second, and hit Enter to launch it. The whole process happens in the blink of an eye -- an observer unfamiliar with the concept wouldn’t easily be able to say what happened.
 
@@ -57,7 +57,7 @@ This works well for frequently used public servers, like a local library, but re
 * `sfpl`: San Francisco public library
 * `amz`: Amazon
 
-![Alfred custom search](/assets/images/nanoglyphs/014-alfred/alfred-custom-search@2x.png)
+![Alfred custom search](/assets/images/nanoglyphs/015-alfred/alfred-custom-search@2x.png)
 
 Everyone’s custom search list is going to be different, but everyone does have a list. Considered in a singular sense none of these shortcuts saves you much -- just a single page load and a few seconds at a time (instead of loading page, entering query, and getting results, you enter the query immediately, and get results). But considered in aggregate, it’s a lot. Each of my engines is used hundreds to thousands of times a year. Clocking in at a few seconds per use, that’s serious return.
 
@@ -79,9 +79,9 @@ Alfred’s major feature isn’t what it can do -- every one of these things can
 
 Speaking of tooling, iFixit’s [teardown of the new Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
 
-![Apple's iMac Pro](/assets/images/nanoglyphs/014-alfred/mac-pro@2x.jpg)
+![Apple's iMac Pro](/assets/images/nanoglyphs/015-alfred/mac-pro@2x.jpg)
 
-![Apple's iMac Pro](/assets/images/nanoglyphs/014-alfred/mac-pro-ram-diagram@2x.jpg)
+![Apple's iMac Pro](/assets/images/nanoglyphs/015-alfred/mac-pro-ram-diagram@2x.jpg)
 
 Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it's in a different dimension compare to anything else Apple makes. The latest generation of iPhone gets a previously-high-for-Apple 6/10, the new 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a perfect 0/10. That’s an encouraging turnaround which we can only hope might have a tiny influence on their other product lines -- maybe on other product lines that don't cost as much as a midrange car.
 
