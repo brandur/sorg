@@ -11,7 +11,9 @@ I'm trying some fixes -- get up earlier, go for a lot of walks, write in the mor
 
 It's been so long that I'll reintroduce myself. I'm Brandur. This is _Nanoglyph_, a newsletter on software and adjacent practices which you hopefully signed up for, but maybe months ago. If you're dubious of that, you can [unsubscribe in one click](%unsubscribe_url%).
 
-I delayed even longer in sending this issue in an effort to convince Google that I'm not spam. Instead of using one of the major newsletter platforms I've jury-rigged my own made up of Go bolts duct taped to Mailgun. That was probably a mistake because any sender is already on a knife's edge with the Great Spam Filter, and best practice is to never step out of line. I wrote about [enabling DMARC](/fragments/dmarc) (a standard to help validate an email's origin) in the hopes of assuaging Google, which also touches on related concepts like SPF and DKIM. Like a lot of technology, email standards are a veritable acronym soup, but not hard to understand once through the tough exterior.
+---
+
+I delayed even longer in sending this issue in an effort to convince Google that I'm not spam. Instead of using one of the major newsletter platforms I've jury-rigged my own made up of Go bolts duct taped to Mailgun. It's fun and cheap, but was probably mistake -- any sender is already on a knife's edge with the Great Spam Filter, and best practice is to never step out of line. I wrote about [enabling DMARC](/fragments/dmarc) (a standard to help validate an email's origin) in the hopes of assuaging Google, which also touches on related concepts like SPF and DKIM. Like a lot of technology, email standards are a veritable acronym soup, but not hard to understand once through the tough exterior.
 
 ---
 
