@@ -22,6 +22,6 @@ Tofugu seems have struck a nice balance between concepts and tooling for memoriz
 
 It's possible to swing too far the other way too. I previously tried a course that was more like a textbook, and it suffered from too much background -- pages of it before any new concept, most of which I was never had a hope of remembering. Also, the interactive tools available in internet/app form to help with retention are an absolutely key learning implement.
 
-But like learning any skill, there's no substitute for motivation. The key is consistent effort over a prolonged period, and that's normally where I fall off the wagon, and that goes doubly for skills that don't see much practical use. We'll see how far down this rabbit hole I can make it.
+But like learning any skill, there's no substitute for motivation. The key is consistent effort over a prolonged period, and that's normally where I fall off the wagon. It's also doubly true for skills that don't see much practical use. We'll see how far down this rabbit hole I make it.
 
 [1] Albeit very slowly, and without comprehension because while I can puzzle out the sounds, I have no vocabulary.
