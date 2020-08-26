@@ -27,19 +27,19 @@ So naturally, I was worried about what might happen in an all remote world, but 
 
 ---
 
-## Postgres begins
+## Postgres begins (#postgres-begins)
 
 A few weeks back I read the excellent paper [Looking Back at Postgres](https://arxiv.org/abs/1901.01973), which touches on the early ideas that drove its creation. Enthusiasts may know already that the project was sparked by Michael Stonebreaker while he was UC Berkeley in the 80s. The name is a derivation of “Post-Ingres”, referring to [Ingres](https://en.wikipedia.org/wiki/Ingres_(database)), an earlier database that also came out of UC Berkeley, and was later commercialized.
 
 Object-oriented (OO) programming was the hottest of hot ideas at the time, and Postgres’ _object-relational_ model was to a large extent a reflection of that into a database, with a big part of that being the invention of ADTs.
 
-### Pluggable types
+### Pluggable types (#pluggable-types)
 
 ADTs (abstract data types) were an important feature that was introduced early and evolved over the years.  One of the original intentions was to be able to use them to store complex user-space objects, once again in that vein of OO. Nowadays this is more or less a dead idea, but has re-emerged over the years in new forms like document-oriented databases, and is still done in Postgres, but much more commonly by serializing from application space to built-in data types like `jsonb`.
 
 Still, ADTs turned out to be hugely important for implementing new built-in types -- everything from the various string classes to `timestamp` to `jsonb`. The extensibility in Postgres' index types helped here as well. The B-tree by itself can already be applied to practically anything, but where it can't (say a two-dimensional lookup that you'd need for PostGIS' spatial indexing), the GiST (generalized search tree) steps in to fill the gap.
 
-### Active databases and rule systems
+### Active databases and rule systems (#active-databases)
 
 Early development effort was poured into "rule" systems, which executed code that broadly involved executing logic inside the database. Possibilities at the time were rewriting a query to perform an additional step, or monitoring for predefined conditions and responding with an action as they appear.
 
@@ -47,7 +47,7 @@ This work, along with similar initiatives from IBM and MCC, eventually led to th
 
 All these years in retrospect, like OO, the idea in general isn't an unambiguous win. Although still in common use, practical use of triggers tends to lead to opaque and unexpected side effects. That applies doubly once they start being chained together, and you have triggers firing triggers firing triggers. Many of us tend to use them very conservatively.
 
-### Log-centric storage and recovery
+### Log-centric storage and recovery (#log-centric)
 
 This one is fascinating. Although today we're all used to data in journaled logs (like the <acronym title="Write Ahead Log">WAL</acronym>), Postgres was originally aiming for a much more ambitious moonshot in that data would be stored _solely_ in a log (think, no fully materialized tables on disk). Along with the benefits of a WAL, it would also unlock the potential of arbitrary time travel back to any database state by having the database pick a previous state and apply changes forward until the desired moment.
 
