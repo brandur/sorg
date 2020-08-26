@@ -1,7 +1,7 @@
 +++
 hook = "An ode to my favorite feature in Mongo."
 published_at = 2020-08-26T17:30:16Z
-title = "TTL Indexes in Mongo"
+title = "TTL indexes in Mongo"
 +++
 
 I want to call out a great feature in Mongo: [TTL indexes](https://docs.mongodb.com/manual/core/index-ttl/). I've been critical of this database in the past, but I've got to give credit where credit is due, and TTL indexes are an extraordinary idea -- easily one of the best new database features in years.
