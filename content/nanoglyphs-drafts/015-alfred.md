@@ -26,7 +26,7 @@ Here’s a few recent ones from mine:
 
 ---
 
-## Enter Alfred
+## Enter Alfred (#alfred)
 
 A tool that I sharpened recently is Alfred, an application launcher for Mac OS. It’s a particularly good one, but the idea isn’t novel -- it was around years before Alfred in the form of applications like QuickSilver, and the functionality is even partially baked into Mac OS itself with Spotlight. Users on other operating systems won’t be using Alfred specifically, but will have access to a similar tool.
 
@@ -36,13 +36,13 @@ Its most prominent feature is being able to match items intelligently based on a
 
 Alfred distinguishes itself by being a simple program that's highly refined, but also by being pluggable. Beyond looking up applications, it’ll find files, perform calculations, control a music player, and a host of other things. It already bundles pretty much everything anyone would ever need, but can be expanded with user-defined workflows for even more expressive customization.
 
-## Bookmark cultivation
+## Bookmark cultivation (#bookmarks)
 
 I’ve never used bookmarks in web browsers a lot because since about the mid-2000s URL completion has been so good that it remembers just about anything I ever want to get to, and googling for anything it doesn’t is as fast as clicking up into a bookmarks menu and visually searching the list. Alfred gave me a reason to start using them.
 
 Under the “Web Bookmarks” feature, you can have Alfred search your bookmarks along with applications or other configured items. It’s especially useful for work, where I bookmark dashboards, documentation, favorite Splunk queries, admin control panels, etc. It’s a reliable and _very_ fast way of getting to anything you care about -- beating the speed of a Google search, and definitely that of fiddling around with a mouse in a (possibly hierarchical) bookmark menu.
 
-## Single-step search
+## Single-step search (#search)
 
 Under “Web Search”, Alfred supports custom search engines which are invoked by a configurable prefix and define a URL which a query is plugged into:
 
@@ -61,11 +61,11 @@ This works well for frequently used public servers, like a local library, but re
 
 Everyone’s custom search list is going to be different, but everyone does have a list. Considered in a singular sense none of these shortcuts saves you much -- just a single page load and a few seconds at a time (instead of loading page, entering query, and getting results, you enter the query immediately, and get results). But considered in aggregate, it’s a lot. Each of my engines is used hundreds to thousands of times a year. Clocking in at a few seconds per use, that’s serious return.
 
-## Configure once, distribute everywhere
+## Configure once, distribute everywhere (#configure-once)
 
 There’s nothing worse than spending a lot of time on configuration, then losing it every time you set up a new computer. Luckily, Alfred supports dumping its configuration to a `.plist` at a location of your choice -- perfect for having it slurped up into Dropbox, then reclaimed when bootstrapping a new machine. Browser bookmarks are not saved, but both Chrome and Mozilla provide separate mechanisms to sync those between devices.
 
-## Licensing
+## Licensing (#licensing)
 
 I’ll be the first to admit that I’m a software person that doesn’t buy a lot of software. Consciously, I’m all in on supporting developers and know it’s the right thing to do, but there’s a feeling deep in the back of my mind that if I opt into commercial software now, there’s a good chance it becomes a recurring cost, and lock in makes it hard to get out. Affordable now, but with a lifetime cost of ownership that’s uncomfortably high. Think of all those poor Oracle users out there.
 
