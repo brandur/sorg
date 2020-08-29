@@ -6,7 +6,7 @@ title = "Building a self-updating GitHub README"
 
 I stole [Simon Willison's idea](https://simonwillison.net/2020/Jul/10/self-updating-profile-readme/) and built a self-updating GitHub `README.md` profile:
 
-![Screenshot of GitHub profile page](/assets/fragments/self-updating-github-readme/github-profile-readme.png)
+![Screenshot of GitHub profile page](/assets/images/fragments/self-updating-github-readme/github-profile-readme.png)
 
 It's driven by a [tiny Go program](https://github.com/brandur/brandur/blob/master/updater/main.go) that's run periodically in a scheduled GitHub Action. It pulls down a couple Atom feeds, renders a template, and pushes the result if there was a change.
 
