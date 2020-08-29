@@ -17,10 +17,11 @@ import (
 	"time"
 )
 
-// A backoff schedule for when and how often to retry failed HTTP requests. The
-// first element is the time to wait after the first failure, the second the
-// time to wait after the second failure, etc. After reaching the last element,
-// retries stop and the request is considered failed.
+// A backoff schedule for when and how often to retry failed HTTP
+// requests. The first element is the time to wait after the
+// first failure, the second the time to wait after the second
+// failure, etc. After reaching the last element, retries stop
+// and the request is considered failed.
 var backoffSchedule = []time.Duration{
 	1 * time.Second,
 	3 * time.Second,
