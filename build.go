@@ -2194,6 +2194,8 @@ func renderRobotsTxt(c *modulir.Context) (bool, error) {
 	var content string
 	if conf.Drafts {
 		// Allow Twitterbot so that we can preview card images on dev.
+		//
+		// Disallow everything else.
 		content = `User-agent: Twitterbot
 Disallow:
 

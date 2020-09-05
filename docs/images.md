@@ -1,8 +1,8 @@
 # Images
 
-Install Image Magick via Homebrew:
+Install ImageMagick and Mozjpeg via Homebrew:
 
-    brew install imagemagick
+    brew install imagemagick mozjpeg
 
 ## Export input and output paths
 

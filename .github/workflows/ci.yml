@@ -50,7 +50,8 @@ jobs:
         uses: actions/cache@v2
         with:
           # Don't try to use variables in these paths. They don't seem to work
-          # and it'll lead to hours of confusion. You can use a `~`, but I've expanded HOME so that finding things is easier.
+          # and it'll lead to hours of confusion. You can use a `~`, but I've
+          # expanded HOME so that finding things is easier.
           path: |
             /home/runner/go/bin/
             /home/runner/go/pkg/mod/

@@ -287,6 +287,8 @@ func renderTweetContent(content string) string {
 	return content
 }
 
+// RetinaImage produces an <img> tag containing a `srcset` with both the `@2x`
+// and non-`@2x` version of the image.
 func retinaImage(source string) string {
 	ext := filepath.Ext(source)
 	retinaSource := strings.TrimSuffix(source, ext) + "@2x" + ext
@@ -294,6 +296,8 @@ func retinaImage(source string) string {
 		source, retinaSource, source)
 }
 
+// RetinaImageTitle produces an <img> tag containing a `srcset` with both the
+// `@2x` and non-`@2x` version of the image. It also includes a title.
 func retinaImageTitle(source, alt string) string {
 	ext := filepath.Ext(source)
 	retinaSource := strings.TrimSuffix(source, ext) + "@2x" + ext

@@ -3,8 +3,6 @@ all: clean install test vet lint check-dl0 check-gofmt check-headers check-retin
 build:
 	$(shell go env GOPATH)/bin/sorg build
 
-compile: install
-
 check-dl0:
 	scripts/check_dl0.sh
 
@@ -21,6 +19,8 @@ clean:
 	mkdir -p public/
 	rm -f -r public/*
 
+compile: install
+
 # Long TTL (in seconds) to set on an object in S3. This is suitable for items
 # that we expect to only have to invalidate very rarely like images. Although
 # we set it for all assets, those that are expected to change more frequently
@@ -33,10 +33,10 @@ LONG_TTL := 86400
 SHORT_TTL := 3600
 
 deploy: check-target-dir
-# Note that AWS_ACCESS_KEY_ID will only be set for builds on the master
-# branch because it's stored in `.travis.yml` as an encrypted variable.
-# Encrypted variables are not made available to non-master branches because
-# of the risk of being leaked through a script in a rogue pull request.
+# Note that AWS_ACCESS_KEY_ID will only be set for builds on the master branch
+# because it's stored in GitHub as a secret variable. Secret variables are not
+# made available to non-master branches because of the risk of being leaked
+# through a script in a rogue pull request.
 ifdef AWS_ACCESS_KEY_ID
 	aws --version
 
