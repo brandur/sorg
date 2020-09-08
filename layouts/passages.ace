@@ -19,7 +19,7 @@ html lang="en"
     {{end}}
 
     = css
-      acronym {
+      abbr, acronym {
         text-decoration: none;
         border-bottom: 1px dotted #aaa;
       }
