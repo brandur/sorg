@@ -50,7 +50,7 @@ Another urban hallmark is mass transit, and it's not fairing any better. The are
 
 Those of us who happily don't own cars and who have been using Uber and Lyft to spot fill, are now going to find a new system as California's passage of AB5 may make them untenable in the state.
 
-The one bright spot is bicycling, which has gotten incrementally better thanks to traffic levels that remain slightly depressed thanks to less commuting. I biked down to SOMA the other day in a certain way it's the nicest it's ever been -- the area's around-the-clock snarl of gridlock traffic previously made it unbearable.
+The one bright spot is bicycling, which has gotten incrementally better thanks to traffic levels that remain slightly depressed thanks to less commuting. I biked down to SOMA the other day in a certain way it's the nicest it's ever been -- previously, the area's around-the-clock snarl of gridlock traffic made it unbearable.
 
 ## Other (#other)
 
