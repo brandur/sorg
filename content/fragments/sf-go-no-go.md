@@ -56,7 +56,7 @@ The one bright spot is bicycling, which has gotten incrementally better thanks t
 
 I won't spend but much time on this, but all of San Francisco's notorious problems, of which practically everyone on Earth is well aware, are still there, and have become more exacerbated in recent months.
 
-Meanwhile, San Francisco politicians are truly about to test the limits of deficit spending. Even during the peak of its tech boom years they weren't able to come even close to a balanced budget. Post-Covid, the two-year budget deficit is already at $1.7B, and as we wake up to just how many businesses have closed or departed over the next year, that number is going to get much worse. Just getting to a balanced budget this year is contingent on the passing of new special tax measures being passed by voters on the November ballots.
+Meanwhile, San Francisco politicians are testing the absolute limits of deficit spending. Even during the peak of its tech boom years they weren't able to come even close to a balanced budget. Post-Covid, the two-year budget deficit is already at $1.7B, and as we wake up to just how many businesses have closed or departed over the next year, that number is going to get much worse. Just getting to a balanced budget this year is contingent on the passing of new special tax measures being passed by voters on the November ballots.
 
 ## Go/No-go (#go-no-go)
 
