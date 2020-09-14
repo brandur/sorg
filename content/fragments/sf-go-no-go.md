@@ -62,7 +62,7 @@ Meanwhile, San Francisco politicians are testing the absolute limits of deficit 
 
 So that's the dilemma. If it was just a matter of a temporary reduction in living quality, that might be one thing, but San Francisco doesn't seem to be setting itself up for long term success.
 
-The crowd of true believers will stay, but even they might become disillusioned by what they see in the coming years. In a purely objective sense, the decision for anyone with reasonable mobility seems to be unfortunately, relatively clear.
+The crowd of true believers will stay, but even they might become disillusioned by what they see in the coming years. In a purely objective sense, the decision for anyone with reasonable mobility seems to be, for better or worse, relatively clear.
 
 [1] Note that in San Francisco "affordable" housing doesn't mean affordable housing in the literal sense of the word. It refers to the BMR (below market rate) program where a fraction of a project's units are reserved to be sold at a reduced rate and only eligible to be purchased by buyers in specialized groups. Because demand for those units far outstrips the supply, opportunity to buy is distributed by lottery.
 
