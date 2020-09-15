@@ -1,7 +1,7 @@
 +++
 hook = "Some thoughts on the San Francisco exodus and whether its effects will be permanent."
 published_at = 2020-09-08T16:54:51Z
-title = "SF Go/No-go Decision Framework"
+title = "SF go/no-go decision framework"
 +++
 
 There's been talk recently on "the great San Francisco exodus", usually attributed to the fact that major tech companies have gone remote, thereby giving workers leeway to escape to somewhere cheaper.
