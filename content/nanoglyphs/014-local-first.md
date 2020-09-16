@@ -21,7 +21,7 @@ Octopus spotting during a dive is one of the most reliably consistent forms of d
 
 ## Local only (#local-only)
 
-One of the Indonesia's downsides that we railed against for a long time before finally becoming accustomed to, was its internet access. The dive resorts we visited claimed to offer it, but it was a web that was life worse than death. We'd frustrate ourselves to no end trying in vain to visit our usual fair, watching the progress bar inch across the screen before unceremoniously terminating in failure, and trying the reload button ten times before abandoning the project in frustration. My dad would manage to send a daily email blast to the outside world with a few down-rezed images, but only by waking up around 6 AM and getting ahead of the game. One person might have luck, but two or more brought the system to a grinding halt so complete that no one got through.
+One of the Indonesia's downsides that we railed against for a long time before finally becoming accustomed to, was its internet access. The dive resorts we visited claimed to offer it, but it was a web that was life worse than death. We'd frustrate ourselves endlessly trying in vain to visit our usual online fair, watching the progress bar inch across the screen before unceremoniously terminating in failure, and trying the reload button ten times before abandoning the project in frustration. My dad would manage to send a daily email blast to the outside world with a few down-rezed images, but only by waking up around 6 AM and getting ahead of the game. One person might have luck, but two or more brought the system to a grinding halt so complete that no one got through.
 
 We probably could have pre-empted the problem by acquiring some LTE SIM cards in advance -- it's the type of country that skipped hard lines and went straight to wireless infrastructure, but we were staying on tiny islands where big retail amounted to window stands selling potato chips and cigarettes. The better answer was to log off for a few weeks and just ... relax. The first few days were excruciating. We were recent ex-smokers, reaching for a pack for the tenth time that day only to find it wasn't there. But once it was done, we were living a rare from of bliss available to very few in the modern world. Dive. Eat. Read.
 
@@ -53,7 +53,7 @@ They then go on to suggest <abbr title="Conflict-free Replicated Data Types">CRD
 
 ---
 
-## Abstraction (#abstraction)
+## The right abstraction (#abstraction)
 
 This article must have hit the front page of Hacker News half a dozen times in the last year, so it obviously strikes a nerve for the hacker types of the world. And even if you showed Ink & Switch's list of principles to a non-technical member of the general public, they'd probably agree that they'd want most of them. So why is there so little local first software in the world?
 
@@ -71,7 +71,7 @@ Changing course to a world based on local first principles would take immense ac
 
 ![Page from Sandman](/assets/images/nanoglyphs/014-local-first/sandman@2x.jpg)
 
-I spent the last couple weeks reading the entire 75-issue run of Neil Gaiman's original Sandman series. The last time I read it (well over a decade ago) I remember liking it, but this time around it was sublime, with a compelling creativity and narrative design rarely at a level rarely seen in the comic medium. The story follows Dream, king of the Dreaming and one of the Endless along with his siblings: Destiny, Death, Destruction, Desire, Despair, and Delirium. After being accidentally imprisoned by a sorcerer seeking to harness death, he finally escapes, and must set about rebuilding his dilapidated realm.
+I spent the last couple weeks reading the entirety of the 75-issue run of Neil Gaiman's original Sandman series. The last time I read it (well over a decade ago) I remember liking it, but this time around it was sublime, with a compelling creativity and narrative design rarely at a level rarely seen in the comic medium. The story follows Dream, king of the Dreaming and one of the Endless along with his siblings: Destiny, Death, Destruction, Desire, Despair, and Delirium. After being accidentally imprisoned by a sorcerer seeking to harness death, he finally escapes, and must set about rebuilding his dilapidated realm.
 
 Just to give you a taste of its overwhelming imagination: in the first few issues Dream visits the inner circles of hell itself, controls Lucifer, and must challenge a demon to a contest of cosmic poetry to recover a stolen item.
 
