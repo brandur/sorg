@@ -4,7 +4,7 @@ published_at = 2020-08-29T20:41:07Z
 title = "Building a self-updating GitHub README"
 +++
 
-I stole [Simon Willison's idea](https://simonwillison.net/2020/Jul/10/self-updating-profile-readme/) and built a self-updating GitHub `README.md` profile:
+I shamelessly stole [Simon Willison's idea](https://simonwillison.net/2020/Jul/10/self-updating-profile-readme/) and built a self-updating GitHub `README.md` profile:
 
 ![Screenshot of GitHub profile page](/assets/images/fragments/self-updating-github-readme/github-profile-readme.png)
 
