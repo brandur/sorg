@@ -1,7 +1,7 @@
 +++
 image_alt = "Cole Valley around noon on Bladerunner day"
 image_url = "/assets/images/nanoglyphs/015-bladerunner/cole-valley@2x.jpg"
-published_at = 2020-10-07T04:13:59Z
+published_at = 2020-10-07T22:23:01Z
 title = "Bladerunner 2049 Day; Ruby Type Signatures"
 +++
 
