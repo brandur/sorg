@@ -2,18 +2,18 @@
 image_alt = "Cole Valley around noon on Bladerunner day"
 image_url = "/assets/images/nanoglyphs/015-bladerunner/cole-valley@2x.jpg"
 published_at = 2020-10-07T22:23:01Z
-title = "Bladerunner 2049 Day; Ruby Type Signatures"
+title = "Bladerunner Day, Ruby Type Signatures, Typing at Stripe"
 +++
 
-Over the years I've learnt to take San Francisco stories with a grain of salt. It's an old city with a long history and outsized cultural presence that people love to romanticize by way of grand tales and anecdotes, all of which have a kernel of truth at their core, but usually just a kernel. A lot of what you hear is exaggerated for dramatic effect, and is often well under way in its grand voyage from the realm of fact into that of fiction.
+Over the years, I've learnt to take San Francisco stories with a grain of salt. It's an old city with a long history and outsized cultural presence that people love to romanticize by way of grand tales and anecdotes, all of which have a kernel of truth at their core, but usually just a kernel. A lot of what you hear is exaggerated for dramatic effect, and is often well under way in its grand voyage from the realm of fact into that of fiction.
 
-But that said, there is the occasional story that's true, and borders on the unbelievable without the helping hand of hyperbole. You've probably already hard about our [Bladerunner 2049 day](https://www.youtube.com/watch?v=h9ZUtFQZbq4) a few weeks ago as it was startling enough to make international news. I've never seen anything like it in my life, and don't expect to again.
+But with that said, there is the occasional story that's true, and borders on the unbelievable without the helping hand of hyperbole. You've probably already heard about San Francisco's [Bladerunner 2049 day](https://www.youtube.com/watch?v=h9ZUtFQZbq4) a few weeks ago as it was startling enough to make international news. I come from a city where it's normal to have a few days a year of -35C temperatures, and which will once in a while see storms that produce car-and-roof-wrecking golf ball sized hail, but in terms of extraordinary atmospheric phenomena, I've never seen anything like it in my life, and don't expect to again.
 
 I was lucky enough to be out for a long walk out to Ocean Beach that morning. We started around 7:30, and it was a little surprising that it was still dark. We were still coming down from long summer days, with great light even in the morning's earliest hours. I chalked it up to the lateness of the season. It's fall now Brandur -- _get used to it_ -- winter's coming and all of that.
 
-But as the hours passed, that explanation was rapidly losing credibility. Walking through Golden Gate park at 9 o'clock -- still dark. The beach around 10 o'clock -- still dark. Returning along JFK towards Haight -- still dark. I distinctly remember walking under some medium-heavy forest canopy around 11 o'clock and wishing I had a flashlight -- I couldn't see the ground or where I was putting my feet. Fear of the unknown crept into my pagan heart. We'd offended a great sun god -- Apollo, or Ra, or Sól, or Helios -- and they were punishing us by spending the day at home.
+But as the hours passed, that explanation rapidly lost credibility. Walking through Golden Gate park at 9 o'clock -- still dark. The beach around 10 o'clock -- still dark. Returning along JFK towards Haight -- still dark. I distinctly remember walking under some medium-heavy forest canopy around 11 o'clock and wishing I had a flashlight -- I couldn't see the ground or where I was putting my feet. Fear of the unknown crept into my pagan heart. We'd offended a great sun god -- Apollo, or Ra, or Sól, or Helios -- and they were inflicting punishment by taking the day off.
 
-The Bladerunner-esque orange hue was jaw dropping, but the darkness was even more distinctive. Cameras these days do such a good job of compensating for low light that most photos you see online don't do this part of it justice, including mine above. (Of course it had to be the one day I decided not to bring a "real" camera ...)
+The Bladerunner-esque orange hue was jaw droppingly bizarre, but what I'll remember about the day was the darkness. Cameras these days do such a good job of compensating for low light that most photos you see online don't do it justice, including mine above. (Of course it had to be the one day I decided not to bring a "real" camera ...)
 
 ---
 
@@ -21,7 +21,7 @@ The Bladerunner-esque orange hue was jaw dropping, but the darkness was even mor
 
 ---
 
-## Typing in Ruby 3 (#ruby-3-typing)
+## Better typing in Ruby (#ruby-typing)
 
 A few weeks ago, the Ruby core team announced their [plans for typing in Ruby 3](https://developer.squareup.com/blog/the-state-of-ruby-3-typing/), a long awaited feature which, if done right, will have profound benefits to the language's safety and productivity, especially where large codebases are concerned.
 
@@ -33,21 +33,23 @@ Type signatures have a few benefits, with an important one being that by definin
 
 Compiled languages get this for free as the compiler does the job -- getting the typing right is a prerequisite to a working program. In dynamic languages, it's done by a static analysis tool that runs independently of the interpreter. Python's ecosystem recommends the use of [mypy](http://mypy-lang.org) for analyzing its type signatures, but they're very careful to point out that it's an optional extension -- Python users never have to go beyond the interpreter if that's their preference.
 
-Matz has been talking about types in Ruby since at least as far back as 2016, but until very recently, precious little progress had been made on the project. I think it's quite possible that serious movement would _never_ have happened, but their hand was forced as developments beyond their control threatened to make decisions for them.
+Matz has been talking about types in Ruby since at least as far back as 2016, but until very recently, precious little progress had been made. I think it's quite possible that serious movement would _never_ have happened, but their hand was forced as developments beyond their control threatened to make decisions for them.
+
+---
+
+## Typing at Stripe (#typing-at-stripe)
+
+_(I should note before I start this section that I work at Stripe where Sorbet was developed, but am not on the Sorbet team, have never been party to any discussions between Sorbet and Ruby Core, and have no relation to the project except as a regular user.)_
+
+Rewind to me joining Stripe in 2015. I was used to working in fairly large Ruby codebases, but was floored by the sheer number of LOCs Stripe had produced. A few vocal early engineers had been staunchly opposed to microservices, so most of the code doing anything with domain logic had landed in one giant Ruby codebase. Ruby does a poor job of encouraging modularity, so the code had ended up as one giant amorphous blob, with everything calling into everything else, and the only boundaries purely theoretical.
+
+Working in it was the stuff of nightmares. The company's greenfield days were long over, so most of the time engineers were modifying existing code rather than writing it anew, and examining any section of it, all you had to go by in figuring out the type of anything was naming. `num_*` was probably an integer. `is_*` was probably a boolean. `config` was probably some kind of configuration object, or maybe a hash. If no type was readily apparent, the best thing you could do is throw a Pry statement into the path, try to find a test case that exercised it, and inspect variables at runtime. This was an excruciatingly slow process (Ruby's interpreted, so more code means more startup overhead), and not a reliable one. The original author might've intended for a variable to be one type, but it may have subsequently picked up new uses and had its interface broadened to include many possible types. Even if you'd observed an incoming variable as a `Charge` object at some point, it could be a `Payment` when called from somewhere else.
+
+The uncertainty didn't just make code hard to change -- it caused real production problems on a regular basis. Developers would make an incorrect assumption while changing something, have enough success in the test suite that it reported no failures, only to find 500s thrown in production on an untested path (we write a lot of tests so _in theory_ there shouldn't be too many of those, but actually, there's a lot). It was a mess, and it made even minor changes difficult and risky. The risk was so great that small, incremental changes were all that were even possible -- as more lines were changed on a deploy, the likelihood of a mistake trended exponentially towards 100%.
 
 ---
 
 ## Sorbet (#sorbet)
-
-(I should note before I start this section that I work at Stripe where Sorbet was developed, but am not on the Sorbet team, have never been party to any discussions between Sorbet and Ruby Core, and have no relation to the project at all except as a regular user.)
-
-Rewind to me joining Stripe in 2015. I was used to working in fairly large Ruby codebases, but was floored by the sheer scale of what had been developed at Stripe. A few vocal early engineers had been staunchly opposed to microservices, so most of the code doing anything with domain logic had landed in one giant Ruby codebase.
-
-Working in it was the stuff of nightmares. The company's greenfield days were long over, so most of the time engineers were modifying existing code rather than writing it anew, and examining any section of it, all you had to go by in figuring out the type of anything was naming. `num_*` was probably an integer. `is_*` was probably a boolean. `config` was probably some kind of configuration object, or maybe a hash. If no type was readily apparent, the best thing you could do is throw a Pry statement into the path, try to find a test case that exercised it, and inspect variables at runtime. This was an excruciatingly slow process, and not a reliable one. The original author might've intended for a variable to be one type, but it may have subsequently picked up new uses and had its interface broadened to include many possible types. Even if you'd observed an incoming variable as a `Charge` object at some point, it could be a `Payment` when called from somewhere else.
-
-The uncertainty didn't just make code hard to change -- it caused real production problems on a regular basis. Developers would make an incorrect assumption while changing something, have enough success in the test suite that it reported no failures, only to find 500s thrown in production on an untested path (we write a lot of tests so _in theory_ there shouldn't be too many of those, but actually, there's a lot). It was a mess, and it made even minor changes difficult and risky. The risk was so great that small, incremental changes were all that were even possible -- as more lines were changed on a deploy, the likelihood of a mistake trended swiftly towards 100%.
-
----
 
 Sorbet started life as a runtime type checking library. Type signatures which were syntactically valid Ruby were attached to methods and variables, and at runtime would bind themselves into the invocation chain and throw a type error if the wrong type was passed in:
 
@@ -61,7 +63,9 @@ end
 And a corresponding failure:
 
 ```
-TypeError: Parameter 'x': Expected type Integer, got type String with value "a"
+TypeError: Parameter 'x': Expected type Integer,
+    got type String with value "a"
+
 Caller: test_module.rb:24
 Definition: test_module.rb:18
     ...
@@ -96,13 +100,13 @@ test_module.rb:24: Expected Integer but found String("a") for argument x http://
 
 * Code is analyzed whether it was tested or not, so we have an extra layer of protection even where there are holes in the test coverage.
 
-Ignoring any benefit to the wider Ruby community, Sorbet has been an unquestionable success internally. In the beginning, it was just type enthusiasts who were adding type signatures to files. Now, having recognized the value they provide, it's everyone. Many (if not most) new files even specify the `typed: strict` pragma, which _requires_ that every method and instance variable in it has a type specified. Types have been back ported to the majority of the pre-Sorbet Ruby files, and the benefit of that is compounding -- the more code that's typed, the more problems Sorbet can detect.
+Ignoring any benefit to the wider Ruby community, Sorbet has been a resounding success internally. In the beginning, it was just type enthusiasts who were adding type signatures to files. Now, having recognized the value they provide, it's everyone. Many (if not most) new files even specify the `typed: strict` pragma, which _requires_ that every method and instance variable in it has a type specified. Types have been back ported to the majority of the pre-Sorbet Ruby files, and the benefit of that is compounding -- the more code that's typed, the more problems Sorbet can detect.
 
 ---
 
 ## Introducing `.rbs` (#rbs)
 
-That brings me back to typing in Ruby 3. Rather than adopting Sorbet's type signature design, the core team forged ahead with their own. Fair enough, Sorbet's is verbose, and a little ugly. But Ruby 3's bespoke type design comes with a galaxy-sized deviation from other such systems -- they've refused to allow type information in the source `*.rb` files themselves. Instead, developers specify type signatures in separate `*.rbs` files that mirror the declarations of a companion `*.rb` file.
+That brings me back to typing in Ruby 3. Rather than adopting Sorbet's type signature design, the core team forged ahead with their own. Fair enough, Sorbet's is verbose, and at least a little ugly. But Ruby 3's bespoke type design comes with a galaxy-sized deviation from other such systems -- they've refused to allow type information in the source `*.rb` files themselves. Instead, developers specify type signatures in separate `*.rbs` files that mirror the declarations of a companion `*.rb` file.
 
 For an `*.rb` file like this:
 
@@ -141,19 +145,19 @@ class Merchant
 end
 ```
 
-You can probably tell by now that I think this is a mistake of fairly catastrophic proportions. Although theoretically the static analysis of typing will be the same, it's an unspeakably large compromise in ergonomics. Even the simple act of renaming a method now involves changes across multiple files.
+You can probably tell by now that I think this is a mistake of fairly colossal proportion. Although theoretically the static analysis of typing will be the same, it's an unspeakably large compromise in ergonomics. Even the simple act of renaming a method now involves changes across multiple files.
 
-The announcement blog post erroneously compares `*.rbs` files to TypeScript's `*.d.ts`. Although there's superficial similarity purely at the cosmetic level, it misses the raison d'être of `*.d.ts`. In TypeScript, these files are used to add types to untyped JavaScript files that you _don't_ control -- say one that's part of a package imported from NPM, or if you need files to be interoperable between JavaScript and TypeScript -- say if you're publishing a package to NPM. We do this [in stripe-node](https://github.com/stripe/stripe-node/tree/master/types) for example, so that both JavaScript and TypeScript users can use the package, but TypeScript users still get the benefit of type information. The critically important difference is that in TypeScript you still have the option of putting type information inline with TypeScript code, and that's vastly preferred over a `*.d.ts` file when possible.
+The announcement blog post also makes the mistake of comparing `*.rbs` files to TypeScript's `*.d.ts`. Although there's superficial similarity purely at the cosmetic level, it misses the raison d'être of `*.d.ts`. In TypeScript, these files are used to add types to untyped JavaScript files that you _don't_ control -- say one that's part of a package imported from NPM, or if you need files to be interoperable between JavaScript and TypeScript -- say if you're publishing a package to NPM. We do this [in stripe-node](https://github.com/stripe/stripe-node/tree/master/types) for example, so that both JavaScript and TypeScript users can use the package, but TypeScript users still get the benefit of type information. The critically important difference is that in TypeScript you still have the option of putting type information inline with TypeScript code, and that's vastly preferred over a `*.d.ts` file when possible.
 
-### Man and machine (#man-and-machine)
+### Man _and_ machine (#man-and-machine)
 
 And while static analysis is great, we shouldn't forget that type signatures are _for people too_. Being able to see what the expected types of any particular variable or method while reading code is a huge boon for comprehension. Sure, a great IDE can help with this too, but why not both? It's free.
 
-There isn't much chance that Ruby Core backpedals at this point, but as someone who has grown to like the language's syntax, it's disappointing to see it fall yet another step behind its sister language, Python. Along with better performance, _much_ better documentation, a [concurrency model](https://docs.python.org/3/library/asyncio.html), and an ever growing disparity in popularity in Python's favor, Python can now definitively boast the better type system, despite Ruby having had [more than five years](https://www.python.org/dev/peps/pep-0484/) longer to think about design. A decade ago Ruby and Python were neck and neck. Today, there's no comparison.
+There isn't much chance that Ruby Core backpedals at this point, but as someone who has grown to like the language's syntax, it's disappointing to see it fall yet another step behind its sister language, Python. Along with better performance, _much_ better documentation, a [concurrency model](https://docs.python.org/3/library/asyncio.html), and an ever growing popularity disparity in Python's favor, Python can now definitively boast the better type system, despite Ruby having had [more than five years](https://www.python.org/dev/peps/pep-0484/) longer to think about its design and implementation. A decade ago Ruby and Python were neck and neck. Today, there's no comparison.
 
 ---
 
-## From Mavericks to Mojave (#mavericks-to-mojave)
+## Mavericks to Mojave (#mavericks-to-mojave)
 
 ![Leopard default background](/assets/images/nanoglyphs/015-bladerunner/leopard@2x.jpg)
 
@@ -161,7 +165,7 @@ Outside of software, I really enjoyed this [MacOS wallpaper gallery](https://512
 
 ![Mavericks default background](/assets/images/nanoglyphs/015-bladerunner/mavericks@2x.jpg)
 
-The Mac's wallpapers are so artfully designed that they're the only product sequence I can think of [1] where every instance has wowed me beyond belief and yet the next is still _somehow better_; a feeling that's been consistent now for a dozen iterations. From abstract art, to galaxies, to California landscapes, every step along the way has been a transcendent choice in creative direction.
+The Mac's wallpapers are so artfully designed that they're the only product sequence I can think of [1] where every instance has wowed me beyond belief and yet the next is still _somehow better_; a feeling that's been consistent now for a dozen iterations. From abstract art, to galaxies, to California landscapes (and seascapes), every step along the way has shown transcendent taste in creative direction.
 
 Until next week.
 
