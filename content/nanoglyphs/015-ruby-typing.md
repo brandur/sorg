@@ -103,7 +103,7 @@ This was a major improvement in several ways:
 * It produced better errors than a runtime failure. A specific variable or invocation gets highlighted, and the user is told exactly what's wrong with it.
 
 ```
-test_module.rb:24: Expected Integer but found String("a") for argument x http://go/e/7002
+test_module.rb:24: Expected Integer but found String("a") for argument x
     24 |      add("a", "b")
                   ^^^
     test_module.rb:17: Method TestModule#add has specified x as Integer
