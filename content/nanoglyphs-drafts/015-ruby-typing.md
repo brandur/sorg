@@ -1,7 +1,7 @@
 +++
 image_alt = "Cole Valley around noon on Bladerunner day"
 image_url = "/assets/images/nanoglyphs/015-ruby-typing/cole-valley@2x.jpg"
-published_at = 2020-10-07T22:23:01Z
+published_at = 2020-10-12T17:52:01Z
 title = "Bladerunner Day, Ruby Type Signatures, Typing at Stripe"
 +++
 
