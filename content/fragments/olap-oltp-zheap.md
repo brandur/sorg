@@ -50,14 +50,14 @@ _both_. For example:
 * Redshift is capable of crunching huge volumes of data
   into useful answers, but queries to it are infamously
   slow (on the order of seconds or much longer), making it
-  good for OLAP but not OLTP which requires much faster
+  good for OLAP but not OLTP, which requires much faster
   responses.
 
 * MongoDB encourages document-oriented storage (meaning
   data is not normalized) and uses a homegrown query
   language that's a fraction as expressive as SQL. This
-  makes it unsuitable for OLAP (and only precariously
-  suitable for OLTP).
+  makes it unsuitable for OLAP (editorial: and only
+  precariously suitable for OLTP).
 
 Some traditional RDMSes like Postgres are not as
 specialized, and do a good job of both OLAP and OLTP. Users
@@ -86,7 +86,7 @@ making all row versions readily accessible to the
 transactions that need them, but it has its downsides.
 Relations may become "bloated" when an old transaction is
 forcing many old versions to be kept around, leading to
-greatly increased table size. Bloated tables are slower to
+greatly increased table and index size. Bloated tables are slower to
 use because transactions need to iterate through dead rows
 to check whether they're visible or not. Those rows can't
 be cleaned out until all transactions that could
