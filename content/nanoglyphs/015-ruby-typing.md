@@ -13,7 +13,7 @@ I was lucky enough to be out for a long walk out to Ocean Beach that morning. We
 
 But as the hours passed, that explanation rapidly lost credibility. Walking through Golden Gate park at 9 o'clock -- still dark. The beach around 10 o'clock -- still dark. Returning along JFK towards Haight -- _still dark_. I distinctly remember walking under some medium-heavy forest canopy around 11 o'clock and wishing I had a flashlight -- I couldn't see the ground or where I was putting my feet. Fear of the unknown crept into my pagan heart. We'd offended a great sun god -- Apollo, or Ra, or Sól, or Helios -- and they were inflicting punishment by taking the day off.
 
-The Bladerunner-esque orange hue was jaw droppingly bizarre, but what I'll remember about the day was the darkness. Cameras these days do such a good job of compensating for low light that most photos you see online don't do it justice, including mine above. (Of course it had to be the one day I decided not to bring a "real" camera ...)
+The Bladerunner-esque orange hue was jaw-droppingly bizarre, but what I'll remember about the day was the darkness. Cameras these days do such a good job of compensating for low light that most photos you see online don't do it justice, including mine above. (Of course it had to be the one day I decided not to bring a "real" camera ...)
 
 ---
 
