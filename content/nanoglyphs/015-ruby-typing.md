@@ -5,19 +5,19 @@ published_at = 2020-10-12T17:52:01Z
 title = "Bladerunner Day, Ruby Type Signatures, Typing at Stripe"
 +++
 
-Over the years, I've learnt to take stories about San Francisco with a grain of salt. It's an old city with a deep history and an outsized cultural presence, and something about that, along with a citizenry with a flair for the dramatic, produces stories exaggerated to an extent that they're flirting dangerously with fiction. A coyote spotting in a city park will occasionally spark so many flabbergasted posts on social media and Reddit threads expressing pure incredulity that you'd think we were facing the imminent return of the [Beast of Gévaudan](https://en.wikipedia.org/wiki/Beast_of_G%C3%A9vaudan).
+Over the years, I've learnt to take stories about San Francisco with a grain of salt. It's an old city with a deep history and an outsized cultural presence, and something about that, along with a citizenry with a flair for the dramatic, produces stories exaggerated to an extent that they flirt dangerously with fiction. A coyote spotting in a city park will occasionally spark so many flabbergasted posts on social media and Reddit threads of pure incredulity that you'd think we were facing the imminent return of the [Beast of Gévaudan](https://en.wikipedia.org/wiki/Beast_of_G%C3%A9vaudan).
 
 But with that said, there is the occasional story that's true, and borders on the unbelievable without the helping hand of hyperbole. You've probably already heard about San Francisco's [Bladerunner 2049 day](https://www.youtube.com/watch?v=h9ZUtFQZbq4) a few weeks ago as it was startling enough to make international news. I come from a city where it's normal to have a few days a year of -35C temperatures, and which will once in a while see storms that produce car-and-roof-wrecking golf ball sized hail, but in terms of extraordinary atmospheric phenomena, I've never seen anything like it, and don't expect to again.
 
 I was lucky enough to be out for a long walk out to Ocean Beach that morning. We started around 7:30, and it was a little surprising that it was still dark. We were still coming down from long summer days, with great light even in the morning's earliest hours. I chalked it up to the lateness of the season. It's fall now Brandur -- _get used to it_ -- winter's coming and all of that.
 
-But as the hours passed, that explanation rapidly lost credibility. Walking through Golden Gate park at 9 o'clock -- still dark. The beach around 10 o'clock -- still dark. Returning along JFK towards Haight -- _still dark_. I distinctly remember walking under some medium-heavy forest canopy around 11 o'clock and wishing I had a flashlight -- I couldn't see the ground or where I was putting my feet. Fear of the unknown crept into my pagan heart. We'd offended a great sun god -- Apollo, or Ra, or Sól, or Helios -- and they were inflicting punishment by taking the day off.
+But as the hours passed, that explanation rapidly lost credibility. Walking through Golden Gate park at 9 o'clock -- still dark. The beach around 10 o'clock -- still dark. Returning along JFK towards Haight -- _Still_. _Dark_. I distinctly remember walking under some medium-heavy forest canopy around 11 o'clock and wishing I had a flashlight -- I couldn't see the ground or where I was putting my feet. Fear of the unknown crept into my pagan heart. We'd offended a great sun god -- Apollo, or Ra, or Sól, or Helios -- and they responded by taking the day off.
 
 The Bladerunner-esque orange hue was jaw-droppingly bizarre, but what I'll remember about the day was the darkness. Cameras these days do such a good job of compensating for low light that most photos you see online don't do it justice, including mine above. (Of course it had to be the one day I decided not to bring a "real" camera ...)
 
 ---
 
-(And my usual repartee: I'm Brandur. This is _Nanoglyph_, my newsletter about software, dystopian orange skies, and type signatures. My discipline on sending it has been so rough lately that you might have signed up long ago and forgotten about it, but if you're sure you didn't, or just never want to see it again, [unsubscribe right here](%unsubscribe_url%).)
+(And my usual repartee: I'm Brandur. This is _Nanoglyph_, my newsletter about software, dystopian orange skies, and type signatures. My discipline on sending it has been so wanting lately that you might have signed up long ago and forgotten about it, but if you're sure you didn't, or just never want to see it again, [unsubscribe right here](%unsubscribe_url%).)
 
 ---
 
@@ -34,8 +34,7 @@ Since then, there's been movement towards typing convergence that's a compromise
 // Type declared explicitly in code
 // (traditionally required by most old world languages)
 //
-var myInt int
-myInt = 3
+var myInt int = 3
 
 //
 // Type inferred by compiler for brevity
@@ -98,7 +97,7 @@ Sorbet's next evolutionary step was the introduction of a mypy-like static analy
 
 This was a major improvement in several ways:
 
-* Static analysis was faster to run than a single suite (i.e. one file) of tests, and often faster than even a single test case (our tests have a significant startup overhead). This has become less true over time as the amount of code continued to grow, but it's still fast given the quantity of code it has to analyze.
+* Static analysis was faster to run than a single suite (i.e. one file) of tests, and often faster than even a single test case (our tests have significant startup overhead). This has become less true over time as the amount of code continued to grow, but it's still fast given the quantity of code it has to analyze.
 
 * It produced better errors than a runtime failure. A specific variable or invocation gets highlighted, and the user is told exactly what's wrong with it.
 
@@ -164,7 +163,7 @@ end
 
 You can probably tell by now that I think this is a mistake of fairly colossal proportion. Although theoretically the static analysis of typing will be the same, it's an unspeakably large compromise in ergonomics. Even the simple act of renaming a method now involves changes across multiple files.
 
-The announcement blog post also makes the mistake of comparing `*.rbs` files to TypeScript's `*.d.ts`. Although there's superficial similarity purely at the cosmetic level, it misses the raison d'être of `*.d.ts`. In TypeScript, these files are used to add types to untyped JavaScript files that you _don't_ control -- say one that's part of a package imported from NPM, or if you need files to be interoperable between JavaScript and TypeScript -- say if you're publishing a package to NPM. We do this [in stripe-node](https://github.com/stripe/stripe-node/tree/master/types) for example, so that both JavaScript and TypeScript users can use the package, but TypeScript users still get the benefit of type information. The critically important difference is that in TypeScript you still have the _option_ of putting type information inline with TypeScript code, and that's vastly preferred over a `*.d.ts` file when possible.
+The announcement blog post also makes the mistake of comparing `*.rbs` files to TypeScript's `*.d.ts`. Although there's superficial similarity at the cosmetic level, it misses the raison d'être of `*.d.ts`. In TypeScript, these files are used to add types to untyped JavaScript files that you _don't_ control -- say one that's part of a package imported from NPM, or if you need files to be interoperable between JavaScript and TypeScript -- say if you're publishing a package to NPM. We do this [in stripe-node](https://github.com/stripe/stripe-node/tree/master/types) for example, so that both JavaScript and TypeScript users can use the package, but TypeScript users still get the benefit of type information. The critically important difference is that in TypeScript you still have the _option_ of putting type information inline with TypeScript code, and that's preferred over `*.d.ts` when possible.
 
 ### Man *and* machine (#man-and-machine)
 
@@ -172,7 +171,7 @@ And while static analysis is great, we shouldn't forget that type signatures are
 
 There isn't much chance that Ruby Core backpedals at this point, but as someone who has grown to like the language's syntax, it's disappointing to see it fall yet another step behind its sister language, Python. Along with better performance, _much_ better documentation, a [concurrency model](https://docs.python.org/3/library/asyncio.html), and an ever growing popularity disparity in Python's favor, Python can now definitively boast the better type system, despite Ruby having had [more than five years](https://www.python.org/dev/peps/pep-0484/) longer to think about its design and implementation. A decade ago Ruby and Python were neck and neck. Today, there's no comparison.
 
-Still, more typing is usually better, and after decades of paralysis, it's good that Ruby's moving forward once again.
+Still, more typing is usually better, and after decades of paralysis, it's good that Ruby's finally moving forward. As nice as Sorbet is, an officially endorsed solution that the entire community can rally around is far preferable to one being developed by a single company on the side (remember PHP vs. [Hack](https://en.wikipedia.org/wiki/Hack_(programming_language)?).
 
 ---
 
