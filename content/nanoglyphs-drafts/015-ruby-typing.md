@@ -1,13 +1,13 @@
 +++
 image_alt = "Cole Valley around noon on Bladerunner day"
-image_url = "/assets/images/nanoglyphs/015-bladerunner/cole-valley@2x.jpg"
+image_url = "/assets/images/nanoglyphs/015-ruby-typing/cole-valley@2x.jpg"
 published_at = 2020-10-07T22:23:01Z
 title = "Bladerunner Day, Ruby Type Signatures, Typing at Stripe"
 +++
 
-Over the years, I've learnt to take San Francisco stories with a grain of salt. It's an old city with a long history and outsized cultural presence that people love to romanticize by way of grand tales and anecdotes, all of which have a kernel of truth at their core, but usually just a kernel. A lot of what you hear is exaggerated for dramatic effect, and is often well under way in its grand voyage from the realm of fact into that of fiction.
+Over the years, I've learnt to take stories about San Francisco with a grain of salt. It's an old city with a deep history and an outsized cultural presence, and something about that, along with a citizenry with a flair for the dramatic, produces stories exaggerated to an extent that they're flirting dangerously with fiction. A coyote spotting will occasionally lead to so many bewildered posts on social media and Reddit threads that you'd think we were facing the return of the [Beast of Gévaudan](https://en.wikipedia.org/wiki/Beast_of_G%C3%A9vaudan).
 
-But with that said, there is the occasional story that's true, and borders on the unbelievable without the helping hand of hyperbole. You've probably already heard about San Francisco's [Bladerunner 2049 day](https://www.youtube.com/watch?v=h9ZUtFQZbq4) a few weeks ago as it was startling enough to make international news. I come from a city where it's normal to have a few days a year of -35C temperatures, and which will once in a while see storms that produce car-and-roof-wrecking golf ball sized hail, but in terms of extraordinary atmospheric phenomena, I've never seen anything like it in my life, and don't expect to again.
+But with that said, there is the occasional story that's true, and borders on the unbelievable without the helping hand of hyperbole. You've probably already heard about San Francisco's [Bladerunner 2049 day](https://www.youtube.com/watch?v=h9ZUtFQZbq4) a few weeks ago as it was startling enough to make international news. I come from a city where it's normal to have a few days a year of -35C temperatures, and which will once in a while see storms that produce car-and-roof-wrecking golf ball sized hail, but in terms of extraordinary atmospheric phenomena, I've never seen anything like it, and don't expect to again.
 
 I was lucky enough to be out for a long walk out to Ocean Beach that morning. We started around 7:30, and it was a little surprising that it was still dark. We were still coming down from long summer days, with great light even in the morning's earliest hours. I chalked it up to the lateness of the season. It's fall now Brandur -- _get used to it_ -- winter's coming and all of that.
 
@@ -159,11 +159,11 @@ There isn't much chance that Ruby Core backpedals at this point, but as someone 
 
 ## Mavericks to Mojave (#mavericks-to-mojave)
 
-![Leopard default background](/assets/images/nanoglyphs/015-bladerunner/leopard@2x.jpg)
+![Leopard default background](/assets/images/nanoglyphs/015-ruby-typing/leopard@2x.jpg)
 
 Outside of software, I really enjoyed this [MacOS wallpaper gallery](https://512pixels.net/projects/default-mac-wallpapers-in-5k/) which has every default system background since the original OS X 10.0 Cheetah, and all in vivid 5k resolution that makes even the most ancient among them look great on today's most modern monitors.
 
-![Mavericks default background](/assets/images/nanoglyphs/015-bladerunner/mavericks@2x.jpg)
+![Mavericks default background](/assets/images/nanoglyphs/015-ruby-typing/mavericks@2x.jpg)
 
 The Mac's wallpapers are so artfully designed that they're the only product sequence I can think of [1] where every instance has wowed me beyond belief and yet the next is still _somehow better_; a feeling that's been consistent now for a dozen iterations. From abstract art, to galaxies, to California landscapes (and seascapes), every step along the way has shown transcendent taste in creative direction.
 
