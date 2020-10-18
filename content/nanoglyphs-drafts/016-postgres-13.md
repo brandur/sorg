@@ -2,7 +2,7 @@
 image_alt = "UC Berkeley, the birthplace of Postgres"
 image_url = "/assets/images/nanoglyphs/016-postgres-13/uc-berkeley-clock-tower@2x.jpg"
 published_at = 2020-10-18T20:57:23Z
-title = "Postgres 13, Shrunken Indexes"
+title = "Postgres 13, Shrunken Indexes, Earth"
 +++
 
 Readers --
@@ -26,6 +26,8 @@ E.B. White (_Charlotte's Web_) reminds us that it's not always clean or easy, an
 > In consequence, the members of my household never pay the slightest attention to my being a writing man — they make all the noise and fuss they want to. If I get sick of it, I have places I can go. A writer who waits for ideal conditions under which to work will die without putting a word on paper.
 
 ---
+
+## Lucky number 13 (#postgres-13)
 
 Postgres continues its annual cadence of new major version pushes by giving us Postgres 13. The database is already so mature that every year I think “surely this must be the last set of major features” -- I mean, there _must_ a point where it’s so refined that all the big wins behind it, and we’re left with just small stuff. But, like clockwork, every year I’m wrong, with a major innovation coming out of left field and reminding us why Postgres is the established leader in the database world. Like with Chrome and Firefox [1], AMD and Intel, or Python and Ruby, there was a time when Postgres could've been said to be in close competition for features and mindshare with similar products like MySQL and Oracle, but those days are over, with Postgres pulling ahead into a comfortable lead.
 
