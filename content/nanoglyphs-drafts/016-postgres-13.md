@@ -69,6 +69,13 @@ That all means that the performance gain will depend a lot on the specific circu
 
 This one is tiny, but still a great improvement. [`gen_random_uuid`](https://www.postgresql.org/docs/current/functions-uuid.html) generates a V4 UUID (the kind that pretty much everyone uses which are ~completely random), and is built-in.
 
+``` sql
+# SELECT gen_random_uuid();
+           gen_random_uuid
+--------------------------------------
+ f426d205-3b81-4d7c-9bac-aff89897ebdc
+```
+
 Previously, generating a UUID involved installing the [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) extension, which was annoying, confusing to new users, and in brutal honesty -- dumb. Having a simple method available to generate UUIDs out the box is a great improvement.
 
 ### Yes Postgres, I wanted to do what I said I wanted to do (#force-dropdb)
@@ -101,7 +108,7 @@ The nuance around how IP addresses and ranges sort relative to each other, and s
 
 ## A life on our planet (#life-on-our-planet)
 
-_Planet Earth_ and its follow up _Planet Earth II_ are some of the best video content ever produced, maybe _the_ best. Narrated by David Attenborough's calming English melody, they capture scenes of the natural kingdom that don't even seem possible.
+_Planet Earth_ and its follow up _Planet Earth II_ are some of the best video content ever produced, maybe _the_ best. Narrated by David Attenborough's calming English tones, they capture scenes of the natural kingdom that don't even seem possible.
 
 ![A Life On This Planet -- Fields](/assets/images/nanoglyphs/016-postgres-13/life-planet-fields@2x.jpg)
 
