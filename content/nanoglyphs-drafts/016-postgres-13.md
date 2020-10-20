@@ -2,14 +2,16 @@
 image_alt = "UC Berkeley, the birthplace of Postgres"
 image_url = "/assets/images/nanoglyphs/016-postgres-13/uc-berkeley-clock-tower@2x.jpg"
 published_at = 2020-10-18T20:57:23Z
-title = "Postgres 13, Shrunken Indexes, Earth"
+title = "Postgres 13, Shrunken Indexes, Planet Earth"
 +++
 
 Readers --
 
 I hope all is well. For those who don't recognize it, the photo you're looking at is the clock tower at UC Berkeley, where Postgres was born. I took it a few months ago while walking down to the university from its surrounding hills a few weeks ago. Now that's one great view.
 
-This is my third consecutive week of sending _Nanoglyph_. It's nothing to brag about, but it's my best ever run by a good margin. I've had the stroke of insight that a serious defect in my publication schedule is lack of anything even fuzzily resembling routine. I _intend_ to write something down every day, but in practice, get up, mull around aimlessly for an hour with calisthenics, breakfast, and dishes, end up reading miscellaneous internet esoterica, and by the time I'm ready to do anything, it's time to work. Evenings are terribly unproductive. The aggregate body of literature I produce on any given day amounts to about 5,000 words worth of Slack messages and JIRA comments.
+This is my third consecutive week of sending _Nanoglyph_. It's nothing to brag about, but it's my best ever run by a good margin. I've had the stroke of insight that a serious defect in my publication schedule is lack of anything even fuzzily resembling routine. I _intend_ to write something down every day, but in practice, get up, mull around aimlessly for an hour with calisthenics, breakfast, and dishes, end up reading miscellaneous internet esoterica, and by the time I'm ready to do anything, it's time to work. Evenings are terribly unproductive. The unenviable aggregate body of literature I produce on an average day amounts to about 5,000 words worth of Slack messages and JIRA comments.
+
+---
 
 With an eye towards fixing it, I started looking around for some inspiration, and found this nice [digest of daily routines](https://jamesclear.com/daily-routines-writers) from well-known authors. From Haruki "Man of Iron" Murakami:
 
@@ -57,13 +59,13 @@ Mongo delenda est [2].
 
 Postgres provides its transactional guarantees by carefully controlling data visibility. A deleted row isn't immediately deleted, it's flagged as invisible for any transaction beginning after the one which deleted it commits. Similarly, updated rows as inserted as new versions alongside their originals, so new transactions see new data, but older ones still see the data they started with originally.
 
-Vacuum is the critical background operation that does the cleaning up. Without it running, deleted and outdated data would accumulate until they eventually bloated the table beyond usability. It's important that it runs quickly and regularly.
+Vacuum is the janitor that does the sweeping up. Without it running, deleted and outdated data would accumulate until they eventually bloated the table beyond usability. It's important that it runs quickly and regularly.
 
-Version 13 introduces [parallel vacuum](https://www.postgresql.org/message-id/E1itMsg-0005Kj-7h%40gemulon.postgresql.org) which does exactly what you think it does. Previously, vacuum was a sequential operation (still quite an efficient one). Now, its work can be broken up across multiple workers to be run in parallel, with the predictable result of an overall faster runtime. Parallel vacuum reuses Postgres' home-grown parallel worker framework which was already in place to support parallel queries (aggregates, joins, sorts, and scans) and the parallel index builds introduced in 11.
+Version 13 introduces [parallel vacuum](https://www.postgresql.org/message-id/E1itMsg-0005Kj-7h%40gemulon.postgresql.org) which does exactly what you think it does. Previously, vacuum was a sequential operation (quite a fast/efficient one). Now, its work can be broken up across multiple workers to be run in parallel, with the predictable result of an overall faster runtime. Parallel vacuum plugs into Postgres' home-grown parallel worker framework which was already in place to support parallel queries (aggregates, joins, sorts, and scans) and the parallel index builds introduced in 11.
 
 There is overhead to spinning up workers, so like many things in an SQL database, Postgres uses a variety of heuristics to be smart about it. Indexes which are too small don't participate in parallel vacuum, with the idea being that its startup overhead would be more costly than just vacuuming sequentially. A number of workers equal to the number of indexes on the table are spun up, topping out at a preset maximum (default 8).
 
-That all means that the performance gain will depend a lot on the specific circumstances. Small tables will see none. But the addition of even one extra parallel worker will cut vacuum time almost by half because the work parallelizes so well. There's obvious diminishing returns, but a realistic table that's large, with many indexes, and a lot of row churn could expect to have its vacuum times slashed by three quarters.
+Performance gain will depend a lot on specific circumstances. Small tables will see none. But in a larger table, even the addition of one extra parallel worker will cut vacuum time almost by half because the work parallelizes so well. There's obvious diminishing returns, but a realistic table that's large, with many indexes, and a lot of row churn could reasonably expect to have its vacuum times slashed by up to three quarters.
 
 ### UUIDs included (#uuids)
 
@@ -76,7 +78,7 @@ This one is tiny, but still a great improvement. [`gen_random_uuid`](https://www
  f426d205-3b81-4d7c-9bac-aff89897ebdc
 ```
 
-Previously, generating a UUID involved installing the [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) extension, which was annoying, confusing to new users, and in brutal honesty -- dumb. Having a simple method available to generate UUIDs out the box is a great improvement.
+Previously, generating a UUID involved installing the [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) extension, which was annoying, confusing to new users, and in brutal honesty -- just pretty dumb. 99% of its users were trying to do exactly one thing. Having a simple method available to generate UUIDs out the box is a great improvement.
 
 ### Yes Postgres, I wanted to do what I said I wanted to do (#force-dropdb)
 
@@ -128,13 +130,13 @@ But if there's one criticism to be levied against _Planet Earth_, it's that its 
 
 This week I watched Attenborough's latest _A Life On Our Planet_ (a single film rather than a series) and would recommend it. It's the same beautiful footage that we've come to expect from _Planet Earth_ and nominally framed as a biography of Attenborough himself, but Attenborough is careful to remind us that humanity's impact has been significant, even within just the bounds of his own lifetime, having vastly increased our population, decreased the wild habitat left on Earth, and created astounding amounts of pollution. He describes how noticeably more difficult it is to find wildlife for his current productions compared to those earlier in his career -- Earth's biodiversity has been shrinking, and still is.
 
-He goes on to point out that although it's a difficult problem, there are quite a few remediations which we know to be effective. Richer and better-educated societies have fewer children -- reducing global poverty and educating young girls would stabilize human population. Protecting even a third of coastal areas from fishing would produce a huge opportunity for marine populations to stabilize. Diets with a heavier emphasis on plants over meats are vastly more eco-efficient. Countries like Costa Rica are role models in how it's possible to reverse deforestation.
+He goes on to point out that although it's a difficult problem, there are quite a few remediations which we know to be effective. Richer and better-educated societies have fewer children -- reducing global poverty and educating young girls would stabilize human population. Protecting even a third of coastal areas from fishing would produce a disproportionately large opportunity for marine populations to stabilize. Diets with a heavier emphasis on plants over meats are vastly more eco-efficient. Countries like Costa Rica act as real world role models in how it's possible to reverse deforestation.
 
 ![A Life On This Planet -- Chernobyl](/assets/images/nanoglyphs/016-postgres-13/life-planet-chernobyl@2x.jpg)
 
 ![A Life On This Planet -- City](/assets/images/nanoglyphs/016-postgres-13/life-planet-city@2x.jpg)
 
-Very few people explicitly think of themselves as nihilists, but I'd argue that practically all of us are -- we all know more or less about these problems, and know that what we're doing is unsustainable, but have unconsciously given up on getting traction on any of the major changes needed to solve them. I'm reminded of Alfonso Cuarón's excellent _Children of Men_ where Clive Owen's character asks his cousin, "In a hundred years, there won't be one sad fuck to look at any of this. What keeps you going?"
+Very few people explicitly think of themselves as nihilists, but practically all of us are -- we all know more or less about these problems, and know that what we're doing is unsustainable, but have unconsciously given up on getting traction on any of the major changes needed to solve them. Well, everyone except maybe Bill Gates that is. I'm reminded of Alfonso Cuarón's excellent _Children of Men_ where Clive Owen's character asks his cousin, "In a hundred years, there won't be one sad fuck to look at any of this. What keeps you going?"
 
 He replies, "You know what it is Theo? I just don't think about it."
 
