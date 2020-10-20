@@ -152,7 +152,7 @@ endif
 
 photographs-upload:
 ifdef AWS_ACCESS_KEY_ID
-	aws s3 sync content/photographs/ s3://$(PHOTOGRAPHS_S3_BUCKET)/
+	aws s3 sync content/photographs/ s3://$(PHOTOGRAPHS_S3_BUCKET)/ --size-only
 else
 	# No AWS access key. Skipping photographs-upload.
 endif
