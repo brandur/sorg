@@ -7,7 +7,7 @@ title = "Postgres 13, Shrunken Indexes, Planet Earth"
 
 Readers --
 
-I hope all is well. For those who don't recognize it, the photo you're looking at is the clock tower at UC Berkeley, the birthplace of Postgres in the mid 80s. I took it a few months ago while walking down to the university from its surrounding hillsides, which offer breathtaking views of the campus and the town, and which are surprisingly steep.
+I hope all is well. For those who don't recognize it, the photo you're looking at is the clock tower at UC Berkeley, birthplace of Postgres in the mid 80s. I took it a few months ago while walking down to the university from its surrounding hillsides, where you can find breathtaking views of the campus and the town, and which are surprisingly steep for a little urban hike.
 
 This is my third consecutive week of sending _Nanoglyph_. Nothing to brag about, but it's my best ever run by a good margin. I've had a slow stroke of insight that a serious defect in my publication schedule is lack of anything even _fuzzily_ resembling routine. I _intend_ to write something down every day, but in practice, get up, mull around aimlessly for an hour with calisthenics, breakfast, and dishes, end up reading miscellaneous internet esoterica, and by the time I'm ready to do anything, it's time to go to work. Evenings are terribly unproductive. The unenviable aggregate body of literature I produce on an average day amounts to about 5,000 words worth of Slack messages and JIRA comments.
 
@@ -47,9 +47,9 @@ The implementation of Postgres’ MVCC makes the change even more important than
 
 Postgres users with large installations will already know this, but one should underestimate the importance of index size. They start small, but can get so big that they cause their own existential crises.
 
-For the last six months I’ve been dealing with a problem at work involving data size and retention. In our one particular problematic Mongo collection, we have _just indexes_ that are many 10s of TBs in size. These large indexes are a somewhat inherent byproduct of the underlying indexed data being large, but its not as much larger as you'd think -- the data itself is only about an order of magnitude larger than the indexes.
+For the last six months I’ve been dealing with a problem at work involving data size and retention. In our one particular problematic Mongo collection, we have _just indexes_ that are many 10s of TBs in size. These large indexes are a somewhat inherent byproduct of the underlying indexed data being large, but its not _as much_ larger as you'd think -- the data itself is only about an order of magnitude larger than the indexes.
 
-Its indexes are now so large that they now drive product decisions -- we’ll introduce hacks of considerable proportion or skip proper fixes to avoid having to raise a new index, which takes on the order of weeks to create, and is a large figure with a lot of zeros on the end every month in infrastructure costs to maintain.
+Its indexes are now so enormous that they now drive product decisions -- we’ll introduce hacks of considerable proportion or skip proper fixes to avoid having to raise a new index, which takes on the order of weeks to create, and is a large figure with a lot of zeros on the end every month in infrastructure costs to maintain.
 
 We'd sure love index deduplication, but will probably never get it. Mongo delenda est [2].
 
@@ -63,7 +63,7 @@ Vacuum is the janitor that does the sweeping up. Without it running, deleted and
 
 Version 13 introduces [parallel vacuum](https://www.postgresql.org/message-id/E1itMsg-0005Kj-7h%40gemulon.postgresql.org) which does exactly what you think it does. Previously, vacuum was a sequential operation (quite a fast/efficient one). Now, its work can be broken up across multiple workers to be run in parallel, with the predictable result of an overall faster runtime. Parallel vacuum plugs into Postgres' home-grown parallel worker framework which already existed to power parallel queries (aggregates, joins, sorts, and scans) and the parallel index builds introduced in 11.
 
-There is overhead to spinning up workers, so like many things in an SQL database, Postgres uses a variety of heuristics to be smart about parallelism by default. Indexes which are too small don't participate in parallel vacuum, with the idea being that startup overhead would be more costly than vacuuming sequentially. Otherwise, a number of workers equal to the number of indexes on the table are spun up, topping out at a preset maximum (default 8).
+There is overhead to spinning up workers, so like many things in an SQL database, Postgres uses a variety of heuristics to be smart about parallelism by default. Indexes which are too small (default: < 512 kB) don't participate in parallel vacuum, with the idea being that startup overhead would be more costly than vacuuming sequentially. Otherwise, a number of workers equal to the number of indexes on the table are spun up, topping out at a preset maximum (default: 8).
 
 Performance gain will depend a lot on specific circumstances. Small tables will see none. But in a larger table with multiple indexes, even the addition of one extra parallel worker will cut vacuum time almost by half because the work parallelizes so well. There's obvious diminishing returns, but a realistic table that's large, with many indexes, and a lot of row churn could see its vacuum times slashed by up to three quarters.
 
@@ -78,7 +78,7 @@ This one is tiny, but still a great improvement. [`gen_random_uuid`](https://www
  f426d205-3b81-4d7c-9bac-aff89897ebdc
 ```
 
-Previously, generating a UUID involved installing the [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) extension, which was annoying, confusing to new users, and in brutal honesty -- just pretty dumb. 99% of its users were trying to do exactly one thing. Having a simple method available to generate UUIDs out the box is a great improvement.
+Previously, generating a UUID involved installing the [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) extension, which was annoying, confusing to new users, and in plain honesty -- just pretty dumb. 99% of its users were trying to do exactly one thing. Having a simple method available to generate UUIDs out the box is a great improvement.
 
 ### Yes Postgres, I wanted to do what I said I wanted to do (#force-dropdb)
 
@@ -118,7 +118,7 @@ _Planet Earth_ and its follow up _Planet Earth II_ are some of the best video co
 
 ![A Life On This Planet -- Ice](/assets/images/nanoglyphs/016-postgres-13/life-planet-ice@2x.jpg)
 
-A scene from the _Islands_ episode of _II_ where a hatching group of marine iguanas on Fernandina Island have to make their way passed a wall of Galapagos racer snakes to their new life on the rocky coastlines has stuck with me to this day. You see the entirety of the journey of specific iguanas -- the unlucky of which are ravaged in scenes of unfiltered natural violence -- and others as they sneak by (the snakes have poor eyesight) or blow by (if the snakes have noticed them) their would-be predators to escape to the safety of the sea. Like, how is it even possible to get those shots? Let alone in crystal clear high definition and cinemagraphic perfection down to the tiniest detail. Mindblowing.
+A scene from the _Islands_ episode of _II_ where a hatching group of marine iguanas on Fernandina Island have to make their way passed a cliffside full of [Galapagos racer snakes](https://theconversation.com/in-defence-of-racer-snakes-the-demons-of-planet-earth-ii-theyre-only-after-a-meal-68514) to their new life on the rocky coastlines has stuck with me to this day. You see the entirety of the journey of specific iguanas -- the unlucky of which are ravaged in scenes of unfiltered natural violence -- and others as they sneak by (the snakes have poor eyesight) or blow by (if the snakes have noticed them) their would-be predators to escape to the safety of the sea. Like, how is it even possible to get those shots? Let alone in crystal clear high definition and cinemagraphic perfection down to the tiniest detail. Mindblowing.
 
 But if there's one criticism to be levied against _Planet Earth_, it's that its producers have gone to incredible lengths to gloss over the human impact on these ecosystems. Humanity is rarely even mentioned, let alone shown on-screen. This is done as a courtesy to the viewer, who has enough to worry about in their life, and doesn't want to spend their evenings watching more doom and gloom, but seeing blue whales, snow leopards, and river dolphins in apparently pristine natural environments has the effect of misleading us into thinking that there's plenty of natural world left, and that hey, maybe we're not so bad after all.
 
@@ -128,7 +128,7 @@ But if there's one criticism to be levied against _Planet Earth_, it's that its 
 
 ![A Life On This Planet -- Temples](/assets/images/nanoglyphs/016-postgres-13/life-planet-temples@2x.jpg)
 
-This week I watched Attenborough's latest _A Life On Our Planet_ (a single film rather than a series) and would recommend it. It's the same beautiful footage that we've come to expect from _Planet Earth_ and nominally framed as a biography of Attenborough himself, but he's careful to remind us that humanity's impact has been significant, even within just the bounds of his own lifetime, having vastly increased our population, decreased the wild habitat left on Earth, and produced astounding levels of pollution. He describes how noticeably more difficult it is to find wildlife for his current productions compared to those earlier in his career -- Earth's biodiversity has been shrinking, and still is.
+Last week I watched Attenborough's latest _A Life On Our Planet_ (a single film rather than a series) and would recommend it. It's the same beautiful footage that we've come to expect from _Planet Earth_ and nominally framed as a biography of Attenborough himself, but he's careful to remind us that humanity's impact has been significant, even within just the bounds of his own lifetime, having vastly increased our population, decreased the wild habitat left on Earth, and produced astounding levels of pollution. He describes how noticeably more difficult it is to find wildlife for his current productions compared to those earlier in his career -- Earth's biodiversity has been shrinking, and still is.
 
 He goes on to point out that although it's a difficult problem, there are quite a few well-understood mitigations known to be effective. Richer and better-educated societies have fewer children -- reducing global poverty and educating young girls would stabilize human population. Protecting even a third of coastal areas from fishing would produce a disproportionately large opportunity for marine populations to stabilize. Diets with a heavier emphasis on plants over meats are vastly more eco-efficient. Countries like Costa Rica act as real world role models in how it's possible to reverse deforestation.
 
@@ -136,7 +136,9 @@ He goes on to point out that although it's a difficult problem, there are quite 
 
 ![A Life On This Planet -- City](/assets/images/nanoglyphs/016-postgres-13/life-planet-city@2x.jpg)
 
-Very few people explicitly think of themselves as nihilists, but practically all of us are -- we all know more or less about these problems, and know that what we're doing is unsustainable, but have unconsciously given up on getting traction on any of the major changes needed to solve them. Well, everyone except maybe Bill Gates maybe. I'm reminded of Alfonso Cuarón's excellent _Children of Men_ where Clive Owen's character asks his cousin, "In a hundred years, there won't be one sad fuck to look at any of this. What keeps you going?"
+Very few people explicitly think of themselves as nihilists, but practically all of us are -- we all know more or less about these macro-scale problems, and know that what we're doing is unsustainable, but have unconsciously given up on getting traction on any of the major changes needed to solve them. Well, everyone except Bill Gates maybe.
+
+I'm reminded of Alfonso Cuarón's excellent _Children of Men_ where Clive Owen's character asks his cousin, "In a hundred years, there won't be one sad fuck to look at any of this. What keeps you going?"
 
 He replies, "You know what it is Theo? I just don't think about it."
 
