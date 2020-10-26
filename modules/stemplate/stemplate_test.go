@@ -23,6 +23,8 @@ func TestDistanceOfTimeInWords(t *testing.T) {
 
 	assert.Equal(t, "less than 1 minute",
 		distanceOfTimeInWords(to.Add(mustParseDuration("-1s")), to))
+	assert.Equal(t, "1 minute",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-1m")), to))
 	assert.Equal(t, "8 minutes",
 		distanceOfTimeInWords(to.Add(mustParseDuration("-8m")), to))
 	assert.Equal(t, "about 1 hour",
@@ -39,6 +41,20 @@ func TestDistanceOfTimeInWords(t *testing.T) {
 		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*30), to))
 	assert.Equal(t, "4 months",
 		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*30*4), to))
+	assert.Equal(t, "about 1 year",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*365), to))
+	assert.Equal(t, "about 1 year",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365+2*30)), to))
+	assert.Equal(t, "over 1 year",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365+3*30)), to))
+	assert.Equal(t, "almost 2 years",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365+10*30)), to))
+	assert.Equal(t, "2 years",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365*2)), to))
+	assert.Equal(t, "3 years",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365*3)), to))
+	assert.Equal(t, "10 years",
+		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365*10)), to))
 }
 
 func TestFormatTime(t *testing.T) {

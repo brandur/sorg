@@ -70,29 +70,43 @@ func To2x(imagePath string) string {
 	return strings.Join(parts, ".")
 }
 
+const (
+	minutesInDay   = 24 * 60
+	minutesInMonth = 30 * 24 * 60
+	minutesInYear  = 365 * 24 * 60
+)
+
 func distanceOfTimeInWords(to, from time.Time) string {
 	d := from.Sub(to)
 	min := int(round(d.Minutes()))
 
 	if min == 0 {
 		return "less than 1 minute"
+	} else if min == 1 {
+		return fmt.Sprintf("%d minute", min)
 	} else if min >= 1 && min <= 44 {
 		return fmt.Sprintf("%d minutes", min)
 	} else if min >= 45 && min <= 89 {
 		return "about 1 hour"
-	} else if min >= 90 && min <= 1439 {
+	} else if min >= 90 && min <= minutesInDay-1 {
 		return fmt.Sprintf("about %d hours", int(round(d.Hours())))
-	} else if min >= 1440 && min <= 2519 {
+	} else if min >= minutesInDay && min <= minutesInDay*2-1 {
 		return "about 1 day"
-	} else if min >= 2520 && min <= 43199 {
+	} else if min >= 2520 && min <= minutesInMonth-1 {
 		return fmt.Sprintf("%d days", int(round(d.Hours()/24.0)))
-	} else if min >= 43200 && min <= 86399 {
+	} else if min >= minutesInMonth && min <= minutesInMonth*2-1 {
 		return "about 1 month"
-	} else if min >= 86400 && min <= 525599 {
+	} else if min >= minutesInMonth*2 && min <= minutesInYear-1 {
 		return fmt.Sprintf("%d months", int(round(d.Hours()/24.0/30.0)))
+	} else if min >= minutesInYear && min <= minutesInYear+3*minutesInMonth-1 {
+		return "about 1 year"
+	} else if min >= minutesInYear+3*minutesInMonth-1 && min <= minutesInYear+9*minutesInMonth-1 {
+		return "over 1 year"
+	} else if min >= minutesInYear+9*minutesInMonth && min <= minutesInYear*2-1 {
+		return "almost 2 years"
 	}
 
-	return ""
+	return fmt.Sprintf("%d years", int(round(d.Hours()/24.0/365.0)))
 }
 
 func distanceOfTimeInWordsFromNow(to time.Time) string {
