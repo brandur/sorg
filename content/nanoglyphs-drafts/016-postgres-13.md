@@ -1,7 +1,7 @@
 +++
 image_alt = "UC Berkeley, the birthplace of Postgres"
 image_url = "/assets/images/nanoglyphs/016-postgres-13/uc-berkeley-clock-tower@2x.jpg"
-published_at = 2020-10-18T20:57:23Z
+published_at = 2020-10-26T15:19:48Z
 title = "Postgres 13, Shrunken Indexes, Planet Earth"
 +++
 
@@ -118,7 +118,7 @@ _Planet Earth_ and its follow up _Planet Earth II_ are some of the best video co
 
 ![A Life On This Planet -- Ice](/assets/images/nanoglyphs/016-postgres-13/life-planet-ice@2x.jpg)
 
-A scene from the _Islands_ episode of _II_ where a hatching group of marine iguanas on Fernandina Island have to make their way passed a cliffside full of [Galapagos racer snakes](https://theconversation.com/in-defence-of-racer-snakes-the-demons-of-planet-earth-ii-theyre-only-after-a-meal-68514) to their new life on the rocky coastlines has stuck with me to this day. You see the entirety of the journey of specific iguanas -- the unlucky of which are ravaged in scenes of unfiltered natural violence -- and others as they sneak by (the snakes have poor eyesight) or blow by (if the snakes have noticed them) their would-be predators to escape to the safety of the sea. Like, how is it even possible to get those shots? Let alone in crystal clear high definition and cinemagraphic perfection down to the tiniest detail. Mindblowing.
+A scene from the _Islands_ episode of _II_ where a hatching group of marine iguanas on Fernandina Island have to make their way passed a cliffside full of [Galapagos racer snakes](https://theconversation.com/in-defence-of-racer-snakes-the-demons-of-planet-earth-ii-theyre-only-after-a-meal-68514) to their new life on the rocky coastlines has stuck with me to this day. You see the entirety of the journey of specific iguanas -- the unlucky of which are ravaged in scenes of unfiltered natural violence -- and others as they sneak by (the snakes have poor eyesight) or blow by (if the snakes have noticed them) their would-be predators to escape to the safety of the sea. Like, how is it even possible to get those shots? Let alone in crystal clear high definition and cinemagraphic perfection down to the tiniest detail. Mind-blowing.
 
 But if there's one criticism to be levied against _Planet Earth_, it's that its producers have gone to incredible lengths to gloss over the human impact on these ecosystems. Humanity is rarely even mentioned, let alone shown on-screen. This is done as a courtesy to the viewer, who has enough to worry about in their life, and doesn't want to spend their evenings watching more doom and gloom, but seeing blue whales, snow leopards, and river dolphins in apparently pristine natural environments has the effect of misleading us into thinking that there's plenty of natural world left, and that hey, maybe we're not so bad after all.
 
