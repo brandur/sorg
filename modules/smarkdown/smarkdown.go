@@ -102,6 +102,7 @@ var whitespaceRE = regexp.MustCompile(`>\s+<`)
 func collapseHTML(html string) string {
 	html = strings.Replace(html, "\n", "", -1)
 	html = whitespaceRE.ReplaceAllString(html, "><")
+	html = strings.TrimSpace(html)
 	return html
 }
 
@@ -186,7 +187,7 @@ const footnoteAnchorHTMLWithoutLink = `<sup><strong>%s</strong></sup>`
 // Make sure there's a single space before the <sup> because we're replacing
 // one as part of our search.
 const footnoteReferenceHTML = `
- <sup id="footnote-%s-source">
+<sup id="footnote-%s-source">
   <a href="#footnote-%s">%s</a>
 </sup>
 `
@@ -196,7 +197,7 @@ const footnoteReferenceHTML = `
 //
 // Make sure there's a single space before the <sup> because we're replacing
 // one as part of our search.
-const footnoteReferenceHTMLWithoutLink = ` <sup><strong>%s</strong></sup>`
+const footnoteReferenceHTMLWithoutLink = `<sup><strong>%s</strong></sup>`
 
 // Look for the section the section at the bottom of the page that looks like
 // <p>[1] (the paragraph tag is there because Markdown will have already
@@ -243,7 +244,7 @@ func transformFootnotes(source string, options *RenderOptions) string {
 			}
 			source = strings.Replace(source,
 				fmt.Sprintf(` [%s]`, number),
-				collapseHTML(reference), -1)
+				" "+collapseHTML(reference), -1)
 
 			return collapseHTML(anchor)
 		})

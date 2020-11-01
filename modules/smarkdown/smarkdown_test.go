@@ -8,7 +8,7 @@ import (
 
 func TestCollapseHTML(t *testing.T) {
 	assert.Equal(t, "<p><strong>strong</strong></p>", collapseHTML(`
-<p>
+  <p>
   <strong>strong</strong>
 </p>`))
 }
