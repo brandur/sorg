@@ -24,5 +24,6 @@ I've sent both pairs of Beats Solo Pros back to Apple for warranty claims. My Ai
 
 And not just wires, but wires on headphones that I've owned for ten years or more, and which still work perfectly. Wireless works great when its new, and in all honesty, it's going to be hard to ever go back on some of the quality of life improvements it conveys, but going from wired to wireless has changed a category of products that were reliable, durable, and remarkably long-lived into yet another that's brittle, prone to defects, and on the timeline of only a handful of years, inexorably disposable. That's a shame.
 
-[1] Note for pedants: I know there were wireless earphones before AirPods. What I've claiming is that they drove a new wave of new wireless devices that were small, fun, and most importantly, _good_.
-[2] After publishing this post, [Apple announces a Service Program](https://support.apple.com/airpods-pro-service-program-sound-issues) to remedy "rattlegate" for all Airpods Pros before October 2020.
+[1] Note for pedants: I know there were wireless earphones before AirPods. What I'm claiming is that they drove a new wave of new wireless devices that were small, fun, and most importantly, _good_.
+
+[2] After publishing this post, [Apple announced a Service Program](https://support.apple.com/airpods-pro-service-program-sound-issues) to remedy "rattlegate" for all AirPod Pros manufactured before October 2020.
