@@ -1640,6 +1640,7 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 
 		entry := &satom.Entry{
 			Title:     article.Title,
+			Summary:   article.Hook,
 			Content:   &satom.EntryContent{Content: article.Content, Type: "html"},
 			Published: *article.PublishedAt,
 			Updated:   *article.PublishedAt,
@@ -1749,6 +1750,7 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 
 		entry := &satom.Entry{
 			Title:     fragment.Title,
+			Summary:   fragment.Hook,
 			Content:   &satom.EntryContent{Content: fragment.Content, Type: "html"},
 			Published: *fragment.PublishedAt,
 			Updated:   *fragment.PublishedAt,

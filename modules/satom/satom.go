@@ -11,6 +11,7 @@ type Entry struct {
 	XMLName struct{} `xml:"entry"`
 
 	Title     string        `xml:"title"`
+	Summary   string        `xml:"summary,omitempty"`
 	Content   *EntryContent `xml:"content"`
 	Published time.Time     `xml:"published"`
 	Updated   time.Time     `xml:"updated"`
