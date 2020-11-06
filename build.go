@@ -2515,9 +2515,10 @@ func resizeImage(c *modulir.Context, source, target string, width int) error {
 		"-format",
 		"%[w] %[h]",
 		"info:",
-	).Output()
+	).CombinedOutput()
 	if err != nil {
-		return errors.Wrapf(err, "Error running convert info command")
+		return errors.Wrapf(err, "Error running convert info command (out: '%s')",
+			string(out))
 	}
 
 	dimensions := strings.Split(string(out), " ")
