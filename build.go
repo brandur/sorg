@@ -2126,10 +2126,8 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 
 	pageMeta, ok := meta[pagePath]
 	if ok {
-		locals = map[string]interface{}{
-			"BodyClass": pageMeta.BodyClass,
-			"Title":     pageMeta.Title,
-		}
+		locals["BodyClass"] = pageMeta.BodyClass
+		locals["Title"] = pageMeta.Title
 	} else {
 		c.Log.Errorf("No page meta information: %v", pagePath)
 	}
@@ -2143,6 +2141,10 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 
 	err = mace.RenderFile(c, scommon.MainLayout, source, target,
 		stemplate.GetAceOptions(viewsChanged), locals)
+	if err != nil {
+		return true, err
+	}
+
 	return true, nil
 }
 
