@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/mimage"
 	"github.com/joeshaw/envdecode"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -89,6 +90,9 @@ API.`),
 		fmt.Fprintf(os.Stderr, "Error decoding conf from env: %v", err)
 		os.Exit(1)
 	}
+
+	mimage.MagickBin = conf.MagickBin
+	mimage.MozJPEGBin = conf.MozJPEGBin
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error executing command: %v", err)

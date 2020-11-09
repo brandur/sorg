@@ -8,6 +8,8 @@ github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuP
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/brandur/modulir v0.0.0-20200128164907-b90ba033ae0d h1:FP4Vez8otFm4B27cZzC+hWXd5RllJ/5iVYC7BYbCisg=
 github.com/brandur/modulir v0.0.0-20200128164907-b90ba033ae0d/go.mod h1:odHubbvgP43H2WI5+2u7FBbqvPVTnjKOi+B/ahesfiU=
+github.com/brandur/modulir v0.0.0-20201109231539-b7e1edab2d52 h1:B3IniGT8GddH7TOc+mg1Av6qVY3Pk0R3ULzP+zFCokU=
+github.com/brandur/modulir v0.0.0-20201109231539-b7e1edab2d52/go.mod h1:igiLlN5cmSbqYlGhn/qc1gV0xtWnNrGiKE3h2Gt1qdo=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

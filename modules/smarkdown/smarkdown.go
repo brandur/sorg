@@ -80,7 +80,6 @@ var renderStack = []func(string, *RenderOptions) string{
 	//
 
 	transformCodeWithLanguagePrefix,
-	transformSections,
 	transformFootnotes,
 
 	// Should come before `transformImagesAndLinksToAbsoluteURLs` so that
@@ -114,25 +113,6 @@ var codeRE = regexp.MustCompile(`<code class="(\w+)">`)
 
 func transformCodeWithLanguagePrefix(source string, options *RenderOptions) string {
 	return codeRE.ReplaceAllString(source, `<code class="language-$1">`)
-}
-
-const openSectionHTML = `<section class="%s">`
-const closeSectionHTML = `</section>`
-
-var openSectionRE = regexp.MustCompile(`(<p>)?!section class=("|&ldquo;)(.*)("|&rdquo;)(</p>)?`)
-var closeSectionRE = regexp.MustCompile(`(<p>)?!/section(</p>)?`)
-
-func transformSections(source string, options *RenderOptions) string {
-	out := source
-
-	out = openSectionRE.ReplaceAllStringFunc(out, func(div string) string {
-		matches := openSectionRE.FindStringSubmatch(div)
-		class := matches[3]
-		return fmt.Sprintf(openSectionHTML, class)
-	})
-	out = closeSectionRE.ReplaceAllString(out, closeSectionHTML)
-
-	return out
 }
 
 const figureHTML = `

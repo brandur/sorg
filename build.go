@@ -1,19 +1,14 @@
 package main
 
 import (
-	"bufio"
-	"bytes"
 	"database/sql"
 	"fmt"
-	"io"
 	"math/rand"
-	"net/http"
+	"net/url"
 	"os"
-	"os/exec"
 	"path"
 	"path/filepath"
 	"sort"
-	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -21,6 +16,7 @@ import (
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/modulir/modules/mfile"
+	"github.com/brandur/modulir/modules/mimage"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
@@ -34,7 +30,6 @@ import (
 	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
 	gocache "github.com/patrickmn/go-cache"
-	"github.com/pkg/errors"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1260,103 +1255,23 @@ func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, err
 	return true, sassets.CompileStylesheets(c, sourceDir, target)
 }
 
-func fetchAndResizePhoto(c *modulir.Context, dir string, photo *Photo) (bool, error) {
-	// source without an extension, e.g. `content/photographs/123`
-	sourceNoExt := filepath.Join(dir, photo.Slug)
+var cropDefault = &mimage.PhotoCropSettings{Portrait: "2:3", Landscape: "3:2"}
 
-	// A "marker" is an empty file that we commit to a photograph directory
-	// that indicates that we've already done the work to fetch and resize a
-	// photo. It allows us to skip duplicate work even if we don't have the
-	// work's results available locally. This is important for CI where we
-	// store results to an S3 bucket, but don't pull them all back down again
-	// for every build.
-	markerPath := sourceNoExt + ".marker"
-
-	// We use an in-memory cache to store whether markers exist for some period
-	// of time because going to the filesystem to check every one of them is
-	// relatively slow/expensive.
-	if _, ok := photoMarkerCache.Get(markerPath); ok {
-		c.Log.Debugf("Skipping photo fetch + resize because marker cached: %s",
-			markerPath)
-		return false, nil
-	}
-
-	// Otherwise check the filesystem.
-	if mfile.Exists(markerPath) {
-		c.Log.Debugf("Skipping photo fetch + resize because marker exists: %s",
-			markerPath)
-		photoMarkerCache.Set(markerPath, struct{}{}, gocache.DefaultExpiration)
-		return false, nil
-	}
-
-	originalPath := filepath.Join(scommon.TempDir, photo.Slug+"_original.jpg")
-
-	err := fetchURL(c, photo.OriginalImageURL, originalPath)
-	if err != nil {
-		return true, errors.Wrapf(err, "Error fetching photograph: %s", photo.Slug)
-	}
-
-	resizeMatrix := []struct {
-		Target string
-		Width  int
-	}{
-		{sourceNoExt + ".jpg", 333},
-		{sourceNoExt + "@2x.jpg", 667},
-		{sourceNoExt + "_large.jpg", 1500},
-		{sourceNoExt + "_large@2x.jpg", 3000},
-	}
-	for _, resize := range resizeMatrix {
-		err := resizeImage(c, originalPath, resize.Target, resize.Width)
-		if err != nil {
-			return true, errors.Wrapf(err, "Error resizing photograph: %s", photo.Slug)
-		}
-	}
-
-	// After everything is done, created a marker file to indicate that the
-	// work doesn't need to be redone.
-	file, err := os.OpenFile(markerPath, os.O_RDONLY|os.O_CREATE, 0755)
-	if err != nil {
-		return true, errors.Wrapf(err, "Error creating marker for photograph: %s", photo.Slug)
-	}
-	file.Close()
-
-	return true, nil
+var defaultPhotoSizes = []mimage.PhotoSize{
+	{Suffix: ".jpg", Width: 333, CropSettings: cropDefault},
+	{Suffix: "@2x.jpg", Width: 667, CropSettings: cropDefault},
+	{Suffix: "_large.jpg", Width: 1500, CropSettings: cropDefault},
+	{Suffix: "_large@2x.jpg", Width: 3000, CropSettings: cropDefault},
 }
 
-// fetchURL is a helper for fetching a file via HTTP and storing it the local
-// filesystem.
-func fetchURL(c *modulir.Context, source, target string) error {
-	c.Log.Debugf("Fetching file: %v", source)
-
-	resp, err := http.Get(source)
+func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
+	u, err := url.Parse(photo.OriginalImageURL)
 	if err != nil {
-		return errors.Wrapf(err, "Error fetching: %v", source)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != 200 {
-		return fmt.Errorf("Unexpected status code fetching '%v': %d",
-			source, resp.StatusCode)
+		return false, fmt.Errorf("bad URL for photo '%s'", photo.Slug)
 	}
 
-	f, err := os.Create(target)
-	if err != nil {
-		return errors.Wrapf(err, "Error creating: %v", target)
-	}
-	defer f.Close()
-
-	w := bufio.NewWriter(f)
-
-	// probably not needed
-	defer w.Flush()
-
-	_, err = io.Copy(w, resp.Body)
-	if err != nil {
-		return errors.Wrapf(err, "Error copying to '%v' from HTTP response",
-			target)
-	}
-
-	return nil
+	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, scommon.TempDir,
+		mimage.PhotoGravityCenter, defaultPhotoSizes)
 }
 
 // Gets a map of local values for use while rendering a template and includes
@@ -2500,130 +2415,6 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 	}
 
 	return true, squantified.RenderTwitter(c, db, viewsChanged, getLocals)
-}
-
-func resizeImage(c *modulir.Context, source, target string, width int) error {
-	if conf.MagickBin == "" {
-		return fmt.Errorf("MAGICK_BIN must be configured for image resizing")
-	}
-
-	out, err := exec.Command(
-		conf.MagickBin,
-		"convert",
-		source,
-		"-auto-orient",
-		"-format",
-		"%[w] %[h]",
-		"info:",
-	).CombinedOutput()
-	if err != nil {
-		return errors.Wrapf(err, "Error running convert info command (out: '%s')",
-			string(out))
-	}
-
-	dimensions := strings.Split(string(out), " ")
-
-	imageWidth, err := strconv.Atoi(dimensions[0])
-	if err != nil {
-		return errors.Wrapf(err, "Error converting width '%s' to integer", dimensions[0])
-	}
-
-	imageHeight, err := strconv.Atoi(dimensions[1])
-	if err != nil {
-		return errors.Wrapf(err, "Error converting height '%s' to integer", dimensions[1])
-	}
-
-	isLandscape := imageWidth > imageHeight
-
-	var resizeErrOut bytes.Buffer
-	var optimizeErrOut bytes.Buffer
-
-	// This is a little awkward, but we start out with some shared arguments,
-	// add a few conditional ones based on landscape versus portrait, then add
-	// a few more shared arguments. The order of the pipeline is important in
-	// ImageMagick, so this is necessary.
-	resizeArgs := []string{
-		conf.MagickBin,
-		"convert",
-		source,
-		"-auto-orient",
-		"-gravity",
-		"center",
-	}
-
-	// If landscape, crop 3:2, and if portrait, crop 2:3.
-	if isLandscape {
-		resizeArgs = append(
-			resizeArgs,
-			"-crop",
-			"3:2",
-		)
-	} else {
-		resizeArgs = append(
-			resizeArgs,
-			"-crop",
-			"2:3",
-		)
-	}
-
-	resizeArgs = append(
-		resizeArgs,
-		"-resize",
-		fmt.Sprintf("%vx", width),
-		"-quality",
-		"85",
-	)
-
-	// If we have mozjpeg then output to stdout and let it take in the resized
-	// JPEG via pipe. If not, then just resize to the target file immediately.
-	if conf.MozJPEGBin != "" {
-		resizeArgs = append(resizeArgs, "JPEG:-")
-	} else {
-		resizeArgs = append(resizeArgs, target)
-	}
-
-	resizeCmd := exec.Command(resizeArgs[0], resizeArgs[1:]...)
-	resizeCmd.Stderr = &resizeErrOut
-
-	var optimizeCmd *exec.Cmd
-	r, w := io.Pipe()
-	if conf.MozJPEGBin != "" {
-		optimizeCmd = exec.Command(
-			conf.MozJPEGBin,
-			"-optimize",
-			"-outfile",
-			target,
-			"-progressive",
-		)
-		optimizeCmd.Stderr = &optimizeErrOut
-
-		resizeCmd.Stdout = w
-		optimizeCmd.Stdin = r
-	}
-
-	if err := resizeCmd.Start(); err != nil {
-		return errors.Wrapf(err, "Error starting resize command")
-	}
-
-	if conf.MozJPEGBin != "" {
-		if err := optimizeCmd.Start(); err != nil {
-			return errors.Wrapf(err, "Error starting optimize command")
-		}
-	}
-
-	if err := resizeCmd.Wait(); err != nil {
-		return fmt.Errorf("%v (stderr: %v)", err, resizeErrOut.String())
-	}
-
-	w.Close()
-
-	if conf.MozJPEGBin != "" {
-		if err := optimizeCmd.Wait(); err != nil {
-			return fmt.Errorf("%v (stderr: %v)", err, optimizeErrOut.String())
-		}
-	}
-
-	return nil
 }
 
 func selectRandomPhoto(photos []*Photo) *Photo {

@@ -24,37 +24,6 @@ func TestTransformCodeWithLanguagePrefix(t *testing.T) {
 	)
 }
 
-func TestTransformSections(t *testing.T) {
-	assert.Equal(t, `<section class="section-class">
-
-hello
-
-</section>
-`,
-		transformSections(`!section class="section-class"
-
-hello
-
-!/section
-`, nil))
-
-	// Test once through the full render function as well so that we can make
-	// sure that it still works even after content has been garbled by
-	// Markdown.
-	assert.Equal(t, `<section class="section-class">
-
-<p>hello</p>
-
-</section>
-`,
-		Render(`!section class="section-class"
-
-hello
-
-!/section
-`, nil))
-}
-
 func TestTransformFigures(t *testing.T) {
 	assert.Equal(t, `
 <figure>
