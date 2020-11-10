@@ -15,7 +15,7 @@
     {{range .Entries}}
       .sequences-index-photograph
         a href="/sequences/{{$.Sequence.Slug}}/{{.Slug}}"
-          {{RetinaImageTitle (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .FirstPhoto.Slug) .Title | HTML}}
+          {{RetinaImageAlt (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .FirstPhoto.Slug) .Title}}
     {{end}}
   .top-nav.top-nav-flat.hide-big
     .nav-inner

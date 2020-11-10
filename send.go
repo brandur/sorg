@@ -12,7 +12,6 @@ import (
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/snewsletter"
-	"github.com/brandur/sorg/modules/stemplate"
 	"gopkg.in/mailgun/mailgun-go.v1"
 )
 
@@ -157,7 +156,7 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	writer := bufio.NewWriter(&b)
 
 	err = mace.Render(c, newsletterInfo.Layout, newsletterInfo.View,
-		writer, stemplate.GetAceOptions(true), locals)
+		writer, getAceOptions(false), locals)
 
 	writer.Flush()
 

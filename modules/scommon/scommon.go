@@ -2,9 +2,14 @@ package scommon
 
 import (
 	"fmt"
+	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/brandur/modulir/modules/mtemplate"
+	"github.com/brandur/modulir/modules/mtemplatemd"
+	"github.com/brandur/sorg/modules/stemplate"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -47,6 +52,24 @@ const (
 // to the publishing info of various content.
 const TwitterInfo = `<p>Find me on Twitter at ` +
 	`<strong><a href="https://twitter.com/brandur" class="twitter-icon-nav">@brandur</a></strong>.</p>`
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Variables
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+// TemplateFuncMap is a function map of template helpers which is the combined
+// version of the maps from ftemplate, mtemplate, and mtemplatemd.
+var TemplateFuncMap template.FuncMap = mtemplate.CombineFuncMaps(
+	stemplate.FuncMap,
+	mtemplate.FuncMap,
+	mtemplatemd.FuncMap,
+)
 
 //////////////////////////////////////////////////////////////////////////////
 //

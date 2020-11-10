@@ -13,7 +13,7 @@
         li
           a href="/nanoglyphs/{{.Slug}}"
             / {{if .HookImageURL}}
-            /   img src="{{.HookImageURL}}" srcset="{{To2x .HookImageURL}} 2x, {{.HookImageURL}} 1x"
+            /   img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x"
             / {{end}}
             {{.Number}} &mdash; {{.Title}}
           span.published-date {{FormatTime .PublishedAt}}

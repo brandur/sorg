@@ -8,111 +8,28 @@ import (
 	"html/template"
 	"math"
 	"math/rand"
-	"net/url"
-	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/yosssi/ace"
+	"github.com/brandur/modulir/modules/mtemplate"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the
 // project.
 var FuncMap = template.FuncMap{
-	"DistanceOfTimeInWords":        distanceOfTimeInWords,
-	"DistanceOfTimeInWordsFromNow": distanceOfTimeInWordsFromNow,
-	"FormatTime":                   formatTime,
-	"FormatTimeWithMinute":         formatTimeWithMinute,
-	"FormatTimeYearMonth":          formatTimeYearMonth,
-	"InKM":                         inKM,
-	"LazyRetinaImage":              lazyRetinaImage,
-	"LazyRetinaImageLightbox":      lazyRetinaImageLightbox,
-	"MonthName":                    monthName,
-	"NumberWithDelimiter":          numberWithDelimiter,
-	"Pace":                         pace,
-	"RandIntn":                     randIntn,
-	"QueryEscape":                  queryEscape,
-	"RenderTweetContent":           renderTweetContent,
-	"RetinaImage":                  retinaImage,
-	"RetinaImageTitle":             retinaImageTitle,
-	"RoundToString":                roundToString,
-	"To2x":                         To2x,
-	"ToStars":                      toStars,
-}
-
-// GetAceOptions gets a good set of default options for Ace template rendering
-// for the Sorg project.
-func GetAceOptions(dynamicReload bool) *ace.Options {
-	options := &ace.Options{FuncMap: FuncMap}
-
-	if dynamicReload {
-		options.DynamicReload = true
-	}
-
-	return options
-}
-
-// To2x takes a 1x (standad resolution) image path and changes it to a 2x path
-// by putting `@2x` into its name right before its extension.
-func To2x(imagePath string) string {
-	parts := strings.Split(imagePath, ".")
-
-	if len(parts) < 2 {
-		return imagePath
-	}
-
-	parts[len(parts)-2] = parts[len(parts)-2] + "@2x"
-
-	return strings.Join(parts, ".")
-}
-
-const (
-	minutesInDay   = 24 * 60
-	minutesInMonth = 30 * 24 * 60
-	minutesInYear  = 365 * 24 * 60
-)
-
-func distanceOfTimeInWords(to, from time.Time) string {
-	d := from.Sub(to)
-	min := int(round(d.Minutes()))
-
-	if min == 0 {
-		return "less than 1 minute"
-	} else if min == 1 {
-		return fmt.Sprintf("%d minute", min)
-	} else if min >= 1 && min <= 44 {
-		return fmt.Sprintf("%d minutes", min)
-	} else if min >= 45 && min <= 89 {
-		return "about 1 hour"
-	} else if min >= 90 && min <= minutesInDay-1 {
-		return fmt.Sprintf("about %d hours", int(round(d.Hours())))
-	} else if min >= minutesInDay && min <= minutesInDay*2-1 {
-		return "about 1 day"
-	} else if min >= 2520 && min <= minutesInMonth-1 {
-		return fmt.Sprintf("%d days", int(round(d.Hours()/24.0)))
-	} else if min >= minutesInMonth && min <= minutesInMonth*2-1 {
-		return "about 1 month"
-	} else if min >= minutesInMonth*2 && min <= minutesInYear-1 {
-		return fmt.Sprintf("%d months", int(round(d.Hours()/24.0/30.0)))
-	} else if min >= minutesInYear && min <= minutesInYear+3*minutesInMonth-1 {
-		return "about 1 year"
-	} else if min >= minutesInYear+3*minutesInMonth-1 && min <= minutesInYear+9*minutesInMonth-1 {
-		return "over 1 year"
-	} else if min >= minutesInYear+9*minutesInMonth && min <= minutesInYear*2-1 {
-		return "almost 2 years"
-	}
-
-	return fmt.Sprintf("%d years", int(round(d.Hours()/24.0/365.0)))
-}
-
-func distanceOfTimeInWordsFromNow(to time.Time) string {
-	return distanceOfTimeInWords(to, time.Now())
-}
-
-func formatTime(t *time.Time) string {
-	return toNonBreakingWhitespace(t.Format("January 2, 2006"))
+	"FormatTimeWithMinute":    formatTimeWithMinute,
+	"FormatTimeYearMonth":     formatTimeYearMonth,
+	"InKM":                    inKM,
+	"LazyRetinaImage":         lazyRetinaImage,
+	"LazyRetinaImageLightbox": lazyRetinaImageLightbox,
+	"MonthName":               monthName,
+	"NumberWithDelimiter":     numberWithDelimiter,
+	"Pace":                    pace,
+	"RandIntn":                randIntn,
+	"RenderTweetContent":      renderTweetContent,
+	"ToStars":                 toStars,
 }
 
 func formatTimeYearMonth(t *time.Time) string {
@@ -136,7 +53,7 @@ func lazyRetinaImageLightbox(index int, path, slug string, portrait bool) string
 }
 
 func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightbox bool) string {
-	slug = queryEscape(slug)
+	slug = mtemplate.QueryEscape(slug)
 	largePath := path + slug + "_large.jpg"
 	largePathRetina := path + slug + "_large@2x.jpg"
 
@@ -220,11 +137,6 @@ func pace(distance float64, duration time.Duration) string {
 	return fmt.Sprintf("%v:%02d", min, sec)
 }
 
-// Escapes a URL.
-func queryEscape(s string) string {
-	return url.QueryEscape(s)
-}
-
 func randIntn(bound int) int {
 	return rand.Intn(bound)
 }
@@ -288,31 +200,9 @@ func renderTweetContent(content string) string {
 	return content
 }
 
-// RetinaImage produces an <img> tag containing a `srcset` with both the `@2x`
-// and non-`@2x` version of the image.
-func retinaImage(source string) string {
-	ext := filepath.Ext(source)
-	retinaSource := strings.TrimSuffix(source, ext) + "@2x" + ext
-	return fmt.Sprintf(`<img src="%s" srcset="%s 2x, %s 1x">`,
-		source, retinaSource, source)
-}
-
-// RetinaImageTitle produces an <img> tag containing a `srcset` with both the
-// `@2x` and non-`@2x` version of the image. It also includes a title.
-func retinaImageTitle(source, alt string) string {
-	ext := filepath.Ext(source)
-	retinaSource := strings.TrimSuffix(source, ext) + "@2x" + ext
-	return fmt.Sprintf(`<img src="%s" srcset="%s 2x, %s 1x" title="%s">`,
-		source, retinaSource, source, strings.ReplaceAll(alt, `"`, `\"`))
-}
-
 // There is no "round" function built into Go :/
 func round(f float64) float64 {
 	return math.Floor(f + .5)
-}
-
-func roundToString(f float64) string {
-	return fmt.Sprintf("%.1f", f)
 }
 
 func toStars(n int) string {

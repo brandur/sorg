@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/brandur/sorg/modules/stemplate"
+	"github.com/brandur/modulir/modules/mtemplate"
 	"github.com/russross/blackfriday"
 )
 
@@ -322,7 +322,7 @@ func transformImagesToRetina(source string, options *RenderOptions) string {
 		}
 		return fmt.Sprintf(`<img src="%s" srcset="%s 2x, %s 1x"`,
 			matches[1],
-			stemplate.To2x(matches[1]),
+			mtemplate.To2X(matches[1]),
 			matches[1],
 		)
 	})

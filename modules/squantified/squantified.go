@@ -8,7 +8,7 @@ import (
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/brandur/sorg/modules/stemplate"
+	"github.com/yosssi/ace"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -58,7 +58,7 @@ func RenderReading(c *modulir.Context, db *sql.DB, viewsChanged bool,
 	})
 
 	return mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/reading/index.ace",
-		c.TargetDir+"/reading/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/reading/index.html", getAceOptions(viewsChanged), locals)
 }
 
 // RenderRuns renders the `/runs` page by fetching and processing data
@@ -94,7 +94,7 @@ func RenderRuns(c *modulir.Context, db *sql.DB, viewsChanged bool,
 	})
 
 	return mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/runs/index.ace",
-		c.TargetDir+"/runs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/runs/index.html", getAceOptions(viewsChanged), locals)
 }
 
 // RenderTwitter renders the `/twitter` page by fetching and processing data
@@ -143,7 +143,7 @@ func RenderTwitter(c *modulir.Context, db *sql.DB, viewsChanged bool,
 		})
 
 		err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
-			c.TargetDir+"/twitter/"+page, stemplate.GetAceOptions(viewsChanged), locals)
+			c.TargetDir+"/twitter/"+page, getAceOptions(viewsChanged), locals)
 		if err != nil {
 			return err
 		}
@@ -246,6 +246,18 @@ type tweetYear struct {
 //
 //
 //////////////////////////////////////////////////////////////////////////////
+
+// getAceOptions gets a good set of default options for Ace template rendering
+// for the project.
+func getAceOptions(dynamicReload bool) *ace.Options {
+	options := &ace.Options{FuncMap: scommon.TemplateFuncMap}
+
+	if dynamicReload {
+		options.DynamicReload = true
+	}
+
+	return options
+}
 
 func getReadingsData(db *sql.DB) ([]*Reading, error) {
 	var readings []*Reading

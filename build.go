@@ -19,6 +19,7 @@ import (
 	"github.com/brandur/modulir/modules/mfile"
 	"github.com/brandur/modulir/modules/mimage"
 	"github.com/brandur/modulir/modules/mmarkdown"
+	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/sassets"
@@ -27,8 +28,8 @@ import (
 	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/squantified"
 	"github.com/brandur/sorg/modules/stalks"
-	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
+	"github.com/yosssi/ace"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -87,6 +88,23 @@ var db *sql.DB
 // tradeoff. This variable is a global because so many render functions access
 // it.
 var universalSources []string
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+// Init
+//
+//
+//
+//////////////////////////////////////////////////////////////////////////////
+
+func init() {
+	mmarkdownext.FuncMap = scommon.TemplateFuncMap
+
+	mimage.MagickBin = conf.MagickBin
+	mimage.MozJPEGBin = conf.MozJPEGBin
+}
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -1254,6 +1272,18 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 		mimage.PhotoGravityCenter, defaultPhotoSizes)
 }
 
+// getAceOptions gets a good set of default options for Ace template rendering
+// for the project.
+func getAceOptions(dynamicReload bool) *ace.Options {
+	options := &ace.Options{FuncMap: scommon.TemplateFuncMap}
+
+	if dynamicReload {
+		options.DynamicReload = true
+	}
+
+	return options
+}
+
 // Gets a map of local values for use while rendering a template and includes
 // a few "special" values that are globally relevant to all templates.
 func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
@@ -1433,7 +1463,7 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 	// Always use force context because if we made it to here we know that our
 	// sources have changed.
 	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/articles/show.ace",
-		path.Join(c.TargetDir, article.Slug), stemplate.GetAceOptions(viewsChanged), locals)
+		path.Join(c.TargetDir, article.Slug), getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1465,7 +1495,7 @@ func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChange
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/articles/index.ace",
-		c.TargetDir+"/articles/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/articles/index.html", getAceOptions(viewsChanged), locals)
 }
 
 func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, articlesChanged bool) (bool, error) {
@@ -1579,7 +1609,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 
 	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/show.ace",
 		path.Join(c.TargetDir, "fragments", fragment.Slug),
-		stemplate.GetAceOptions(viewsChanged), locals)
+		getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1661,7 +1691,7 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/index.ace",
-		c.TargetDir+"/fragments/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/fragments/index.html", getAceOptions(viewsChanged), locals)
 }
 
 func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
@@ -1699,7 +1729,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	})
 
 	err = mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/show.ace",
-		c.TargetDir+"/nanoglyphs/"+issue.Slug, stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/nanoglyphs/"+issue.Slug, getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1790,7 +1820,7 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	})
 
 	return true, mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
-		c.TargetDir+"/nanoglyphs/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/nanoglyphs/index.html", getAceOptions(viewsChanged), locals)
 }
 
 func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
@@ -1827,7 +1857,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 	})
 
 	err = mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/show.ace",
-		c.TargetDir+"/passages/"+issue.Slug, stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/passages/"+issue.Slug, getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1917,7 +1947,7 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 	})
 
 	return true, mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/index.ace",
-		c.TargetDir+"/passages/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/passages/index.html", getAceOptions(viewsChanged), locals)
 }
 
 func renderHome(c *modulir.Context,
@@ -1955,7 +1985,7 @@ func renderHome(c *modulir.Context,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/index.ace",
-		c.TargetDir+"/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/index.html", getAceOptions(viewsChanged), locals)
 }
 
 func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaChanged bool) (bool, error) {
@@ -2009,7 +2039,7 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 	}
 
 	err = mace.RenderFile(c, scommon.MainLayout, source, target,
-		stemplate.GetAceOptions(viewsChanged), locals)
+		getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2056,7 +2086,7 @@ func renderPhotoIndex(c *modulir.Context, photos []*Photo,
 	})
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/photos/index.ace",
-		c.TargetDir+"/photos/index.html", stemplate.GetAceOptions(viewsChanged), locals)
+		c.TargetDir+"/photos/index.html", getAceOptions(viewsChanged), locals)
 }
 
 func renderRobotsTxt(c *modulir.Context) (bool, error) {
@@ -2146,7 +2176,7 @@ func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceE
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
 		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
-		stemplate.GetAceOptions(viewsChanged), locals)
+		getAceOptions(viewsChanged), locals)
 }
 
 func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
@@ -2181,7 +2211,7 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*Sequen
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/all.ace",
 		path.Join(c.TargetDir, "sequences", sequence.Slug, "all"),
-		stemplate.GetAceOptions(viewsChanged), locals)
+		getAceOptions(viewsChanged), locals)
 }
 
 // Renders at Atom feed for a sequence. The entries slice is assumed to be
@@ -2309,7 +2339,7 @@ func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *Sequence
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/entry.ace",
 		path.Join(c.TargetDir, "sequences", sequence.Slug, entry.Slug),
-		stemplate.GetAceOptions(viewsChanged), locals)
+		getAceOptions(viewsChanged), locals)
 }
 
 func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex) (bool, error) {
@@ -2339,7 +2369,7 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 	})
 
 	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/talks/show.ace",
-		path.Join(c.TargetDir, talk.Slug), stemplate.GetAceOptions(viewsChanged), locals)
+		path.Join(c.TargetDir, talk.Slug), getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
 	}

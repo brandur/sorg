@@ -18,49 +18,6 @@ func init() {
 	}
 }
 
-func TestDistanceOfTimeInWords(t *testing.T) {
-	to := time.Now()
-
-	assert.Equal(t, "less than 1 minute",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-1s")), to))
-	assert.Equal(t, "1 minute",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-1m")), to))
-	assert.Equal(t, "8 minutes",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-8m")), to))
-	assert.Equal(t, "about 1 hour",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-52m")), to))
-	assert.Equal(t, "about 3 hours",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-3h")), to))
-	assert.Equal(t, "about 1 day",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")), to))
-
-	// note that parse only handles up to "h" units
-	assert.Equal(t, "9 days",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*9), to))
-	assert.Equal(t, "about 1 month",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*30), to))
-	assert.Equal(t, "4 months",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*30*4), to))
-	assert.Equal(t, "about 1 year",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*365), to))
-	assert.Equal(t, "about 1 year",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365+2*30)), to))
-	assert.Equal(t, "over 1 year",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365+3*30)), to))
-	assert.Equal(t, "almost 2 years",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365+10*30)), to))
-	assert.Equal(t, "2 years",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365*2)), to))
-	assert.Equal(t, "3 years",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365*3)), to))
-	assert.Equal(t, "10 years",
-		distanceOfTimeInWords(to.Add(mustParseDuration("-24h")*(365*10)), to))
-}
-
-func TestFormatTime(t *testing.T) {
-	assert.Equal(t, "July 3, 2016", formatTime(&testTime))
-}
-
 func TestFormatTimeWithMinute(t *testing.T) {
 	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
 }
@@ -118,10 +75,6 @@ func TestPace(t *testing.T) {
 	assert.Equal(t, "7:31", pace(133.0, d))
 }
 
-func TestQueryEscape(t *testing.T) {
-	assert.Equal(t, "a%2Bb", queryEscape("a+b"))
-}
-
 func TestRandIntn(t *testing.T) {
 	assert.Equal(t, 0, randIntn(1))
 }
@@ -172,50 +125,10 @@ end`),
 	)
 }
 
-func TestRenderRetinaImage(t *testing.T) {
-	assert.Equal(t,
-
-		`<img src="/assets/link/image.jpg" srcset="/assets/link/image@2x.jpg 2x, /assets/link/image.jpg 1x">`,
-		retinaImage(`/assets/link/image.jpg`),
-	)
-
-	assert.Equal(t,
-
-		`<img src="/assets/link/image.png" srcset="/assets/link/image@2x.png 2x, /assets/link/image.png 1x">`,
-		retinaImage(`/assets/link/image.png`),
-	)
-}
-
-func TestRenderRetinaImageTitle(t *testing.T) {
-	assert.Equal(t,
-
-		`<img src="/assets/link/image.jpg" srcset="/assets/link/image@2x.jpg 2x, /assets/link/image.jpg 1x" title="my image">`,
-		retinaImageTitle(`/assets/link/image.jpg`, "my image"),
-	)
-
-	assert.Equal(t,
-
-		`<img src="/assets/link/image.png" srcset="/assets/link/image@2x.png 2x, /assets/link/image.png 1x" title="my image">`,
-		retinaImageTitle(`/assets/link/image.png`, "my image"),
-	)
-}
-
 func TestRound(t *testing.T) {
 	assert.Equal(t, 0.0, round(0.2))
 	assert.Equal(t, 1.0, round(0.8))
 	assert.Equal(t, 1.0, round(0.5))
-}
-
-func TestRoundToString(t *testing.T) {
-	assert.Equal(t, "1.2", roundToString(1.234))
-	assert.Equal(t, "1.0", roundToString(1))
-}
-
-func TestTo2x(t *testing.T) {
-	assert.Equal(t, "/path/image@2x.jpg", To2x("/path/image.jpg"))
-	assert.Equal(t, "/path/image@2x.png", To2x("/path/image.png"))
-	assert.Equal(t, "image@2x.jpg", To2x("image.jpg"))
-	assert.Equal(t, "image", To2x("image"))
 }
 
 func TestToStars(t *testing.T) {
