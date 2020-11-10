@@ -15,13 +15,13 @@ import (
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
+	"github.com/brandur/modulir/modules/matom"
 	"github.com/brandur/modulir/modules/mfile"
 	"github.com/brandur/modulir/modules/mimage"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/sassets"
-	"github.com/brandur/sorg/modules/satom"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/smarkdown"
 	"github.com/brandur/sorg/modules/snewsletter"
@@ -1484,11 +1484,11 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 		title = fmt.Sprintf("Articles (%s) - brandur.org", *tag)
 	}
 
-	feed := &satom.Feed{
+	feed := &matom.Feed{
 		Title: title,
 		ID:    "tag:brandur.org.org,2013:/" + name,
 
-		Links: []*satom.Link{
+		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -1507,13 +1507,13 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 			break
 		}
 
-		entry := &satom.Entry{
+		entry := &matom.Entry{
 			Title:     article.Title,
 			Summary:   article.Hook,
-			Content:   &satom.EntryContent{Content: article.Content, Type: "html"},
+			Content:   &matom.EntryContent{Content: article.Content, Type: "html"},
 			Published: *article.PublishedAt,
 			Updated:   *article.PublishedAt,
-			Link:      &satom.Link{Href: conf.AbsoluteURL + "/" + article.Slug},
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/" + article.Slug},
 			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
@@ -1598,11 +1598,11 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 		return false, nil
 	}
 
-	feed := &satom.Feed{
+	feed := &matom.Feed{
 		Title: "Fragments - brandur.org",
 		ID:    "tag:brandur.org.org,2013:/fragments",
 
-		Links: []*satom.Link{
+		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -1617,13 +1617,13 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 			break
 		}
 
-		entry := &satom.Entry{
+		entry := &matom.Entry{
 			Title:     fragment.Title,
 			Summary:   fragment.Hook,
-			Content:   &satom.EntryContent{Content: fragment.Content, Type: "html"},
+			Content:   &matom.EntryContent{Content: fragment.Content, Type: "html"},
 			Published: *fragment.PublishedAt,
 			Updated:   *fragment.PublishedAt,
-			Link:      &satom.Link{Href: conf.AbsoluteURL + "/fragments/" + fragment.Slug},
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/fragments/" + fragment.Slug},
 			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
@@ -1721,11 +1721,11 @@ func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanog
 	filename := name + ".atom"
 	title := "Nanoglyph - brandur.org"
 
-	feed := &satom.Feed{
+	feed := &matom.Feed{
 		Title: title,
 		ID:    "tag:brandur.org.org,2013:/" + name,
 
-		Links: []*satom.Link{
+		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -1746,12 +1746,12 @@ func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanog
 				content
 		}
 
-		entry := &satom.Entry{
+		entry := &matom.Entry{
 			Title:     fmt.Sprintf("Nanoglyph %s — %s", issue.Number, issue.Title),
-			Content:   &satom.EntryContent{Content: content, Type: "html"},
+			Content:   &matom.EntryContent{Content: content, Type: "html"},
 			Published: *issue.PublishedAt,
 			Updated:   *issue.PublishedAt,
-			Link:      &satom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
 			ID:        "tag:brandur.org," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
@@ -1849,11 +1849,11 @@ func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passage
 	filename := name + ".atom"
 	title := "Passages & Glass - brandur.org"
 
-	feed := &satom.Feed{
+	feed := &matom.Feed{
 		Title: title,
 		ID:    "tag:brandur.org.org,2013:/" + name,
 
-		Links: []*satom.Link{
+		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -1874,12 +1874,12 @@ func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passage
 				content
 		}
 
-		entry := &satom.Entry{
+		entry := &matom.Entry{
 			Title:     fmt.Sprintf("Passages & Glass %s — %s", issue.Number, issue.Title),
-			Content:   &satom.EntryContent{Content: content, Type: "html"},
+			Content:   &matom.EntryContent{Content: content, Type: "html"},
 			Published: *issue.PublishedAt,
 			Updated:   *issue.PublishedAt,
-			Link:      &satom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
 			ID:        "tag:brandur.org," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
@@ -2213,11 +2213,11 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 		title = fmt.Sprintf("Sequences (%s) - brandur.org", sequence.Slug)
 	}
 
-	feed := &satom.Feed{
+	feed := &matom.Feed{
 		Title: title,
 		ID:    "tag:brandur.org.org,2019:" + feedIDSuffix,
 
-		Links: []*satom.Link{
+		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
@@ -2236,12 +2236,12 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 			fmt.Sprintf(`<p><img src="/photographs/sequences/%s/%s_large@2x.jpg"></p>`,
 				entry.Sequence.Slug, entry.Slug)
 
-		entry := &satom.Entry{
+		entry := &matom.Entry{
 			Title:     entry.Title,
-			Content:   &satom.EntryContent{Content: htmlContent, Type: "html"},
+			Content:   &matom.EntryContent{Content: htmlContent, Type: "html"},
 			Published: *entry.OccurredAt,
 			Updated:   *entry.OccurredAt,
-			Link:      &satom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Sequence.Slug + "/" + entry.Slug},
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Sequence.Slug + "/" + entry.Slug},
 			ID:        "tag:brandur.org," + entry.OccurredAt.Format("2006-01-02") + ":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
