@@ -38,7 +38,7 @@ hopes that I can show you some cool stuff.
 
 I'm publishing everything via <a href="/sequences.atom" class="feed-icon">feed</a> (empty for the next ~day). For anyone like me who fell off the RSS wagon after the implosion of Google Reader, I'll be <a href="https://twitter.com/brandur" class="twitter-icon">tweeting</a> new entries.
 
-!fig src="/assets/images/sequences-project/sample.png" caption="A sequences sample page: a large vista with some text accompaniment. All independent."
+{{Figure "A sequences sample page: a large vista with some text accompaniment. All independent." (NewImgSrcAndAlt "/assets/images/sequences-project/sample.png" "A sequences sample page: a large vista with some text accompaniment. All independent.")}}
 
 [1] Not every idea was a good one.
 

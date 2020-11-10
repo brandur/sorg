@@ -15,6 +15,7 @@ A step I took today was having my project deploy automatically from GitHub Actio
 The [`setup-gcloud` action](https://github.com/GoogleCloudPlatform/github-actions/tree/master/setup-gcloud) takes a service account email and key, pulls down `gcloud` and gets it configured, and installs credentials that are used by subsequent steps:
 
 ``` yaml
+{{HTMLSafePassThrough `
 - name: "GCP: setup-gcloud"
   uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
   with:
@@ -24,6 +25,7 @@ The [`setup-gcloud` action](https://github.com/GoogleCloudPlatform/github-action
 
     service_account_email: ${{ secrets.GCPEmail }}
     service_account_key: ${{ secrets.GCPKey }}
+`}}
 ```
 
 Getting that email/key is the hardest part of the whole process. It involves jumping over to Google's web console, generating a new set of credentials for a "service account" [1], downloading them as a _JSON file_ (!!), passing its contents through `base64` to encode them to a portable format, and saving the result as a GitHub Actions secret. It's not too bad once you've been through the process a couple times, but is unexpectedly heavy compared to the simple API keys provided by most developer services.

@@ -192,7 +192,7 @@ change comes in, it will accumulate new events until being
 signaled that the build completed, at which point it will
 trigger a new one with the sum of the accumulated changes.
 
-!fig src="/assets/images/live-reload/build-loop.svg" caption="Goroutines coordinating builds even across changes that occur during an active build."
+{{Figure "Goroutines coordinating builds even across changes that occur during an active build." (NewImgSrcAndAlt "/assets/images/live-reload/build-loop.svg" "Goroutines coordinating builds even across changes that occur during an active build.")}}
 
 Builds are fast (we send just the names of files that
 changed to make them incremental), so usually only one
@@ -319,7 +319,7 @@ for {
 }
 ```
 
-!fig src="/assets/images/live-reload/signaling-rebuilds.svg" caption="The build goroutine broadcasting a completed rebuild to WebSocket goroutines that will message their clients."
+{{Figure "The build goroutine broadcasting a completed rebuild to WebSocket goroutines that will message their clients." (NewImgSrcAndAlt "/assets/images/live-reload/signaling-rebuilds.svg" "The build goroutine broadcasting a completed rebuild to WebSocket goroutines that will message their clients.")}}
 
 ### Client-side JavaScript (#client)
 

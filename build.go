@@ -24,7 +24,6 @@ import (
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/sassets"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/brandur/sorg/modules/smarkdown"
 	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/squantified"
 	"github.com/brandur/sorg/modules/stalks"
@@ -1429,7 +1428,10 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 	article.Draft = scommon.IsDraft(source)
 	article.Slug = scommon.ExtractSlug(source)
 
-	article.Content = smarkdown.Render(string(data), nil)
+	article.Content, err = mmarkdownext.Render(string(data), nil)
+	if err != nil {
+		return true, err
+	}
 
 	article.TOC, err = mtoc.RenderFromHTML(article.Content)
 	if err != nil {
@@ -1588,7 +1590,10 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 	fragment.Draft = scommon.IsDraft(source)
 	fragment.Slug = scommon.ExtractSlug(source)
 
-	fragment.Content = smarkdown.Render(string(data), nil)
+	fragment.Content, err = mmarkdownext.Render(string(data), nil)
+	if err != nil {
+		return true, err
+	}
 
 	card := &twitterCard{
 		Title:       fragment.Title,

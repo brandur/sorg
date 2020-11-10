@@ -154,7 +154,7 @@ all the flourishes in this class -- they look great in
 screenshots and demos, but don't advance our ability to be
 productive; in fact, they do the opposite.
 
-!fig src="/assets/images/interfaces/cmd-tab.png" caption="Will Cmd + Tab be the next victim of overzealous animation?"
+{{Figure "Will Cmd + Tab be the next victim of overzealous animation?" (NewImgSrcAndAlt "/assets/images/interfaces/cmd-tab.png" "Will Cmd + Tab be the next victim of overzealous animation?")}}
 
 I live in fear that one day Apple will realize that they've
 left a gaping hole in their UX strategy and that task
