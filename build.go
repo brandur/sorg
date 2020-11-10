@@ -29,7 +29,6 @@ import (
 	"github.com/brandur/sorg/modules/stalks"
 	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
-	gocache "github.com/patrickmn/go-cache"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -80,25 +79,6 @@ var (
 
 // A database connection opened to a Black Swan database if one was configured.
 var db *sql.DB
-
-// An expiring cache that tracks the current state of marker files for photos.
-// Going to the filesystem on every build loop is relatively slow/expensive, so
-// this helps speed up the build loop.
-//
-// Arguments are (defaultExpiration, cleanupInterval).
-var photoMarkerCache = gocache.New(5*time.Minute, 10*time.Minute)
-
-// An expiring cache that stores the results of a `mfile.ReadDir` (i.e. list
-// directory) for some period of time. It turns out these calls are relatively
-// slow and this helps speed up the build loop.
-//
-// The downside is that new files are not discovered right away, and often
-// necessitate a server restart. A future improvement might be to have Modulir
-// provide a simplified events channel that we can listen to in order to expire
-// entries from the cache.
-//
-// Arguments are (defaultExpiration, cleanupInterval).
-var readDirCache = gocache.New(5*time.Minute, 10*time.Minute)
 
 // List of common build dependencies, a change in any of which will trigger a
 // rebuild on everything: partial views, JavaScripts, and stylesheets. Even
@@ -155,7 +135,7 @@ func build(c *modulir.Context) []error {
 
 	// Generate a set of JavaScript sources to add to univeral sources.
 	{
-		javaScriptSources, err := readDirCached(c, c.SourceDir+"/content/javascripts",
+		javaScriptSources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/javascripts",
 			&mfile.ReadDirOptions{ShowMeta: true})
 		if err != nil {
 			return []error{err}
@@ -165,7 +145,7 @@ func build(c *modulir.Context) []error {
 
 	// Generate a list of partial views to add to universal sources.
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/views",
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/views",
 			&mfile.ReadDirOptions{ShowMeta: true})
 		if err != nil {
 			return []error{err}
@@ -183,7 +163,7 @@ func build(c *modulir.Context) []error {
 
 	// Generate a set of stylesheet sources to add to universal sources.
 	{
-		stylesheetSources, err := readDirCached(c, c.SourceDir+"/content/stylesheets",
+		stylesheetSources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/stylesheets",
 			&mfile.ReadDirOptions{ShowMeta: true})
 		if err != nil {
 			return []error{err}
@@ -268,13 +248,13 @@ func build(c *modulir.Context) []error {
 	var articlesMu sync.Mutex
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/articles", nil)
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/articles", nil)
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/drafts", nil)
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/drafts", nil)
 			if err != nil {
 				return []error{err}
 			}
@@ -300,13 +280,13 @@ func build(c *modulir.Context) []error {
 	var fragmentsMu sync.Mutex
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/fragments", nil)
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/fragments", nil)
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/fragments-drafts", nil)
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/fragments-drafts", nil)
 			if err != nil {
 				return []error{err}
 			}
@@ -344,13 +324,13 @@ func build(c *modulir.Context) []error {
 	var nanoglyphsMu sync.Mutex
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/nanoglyphs", nil)
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/nanoglyphs", nil)
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/nanoglyphs-drafts", nil)
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/nanoglyphs-drafts", nil)
 			if err != nil {
 				return []error{err}
 			}
@@ -401,13 +381,13 @@ func build(c *modulir.Context) []error {
 	var passagesMu sync.Mutex
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/passages", nil)
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/passages", nil)
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/passages-drafts", nil)
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/passages-drafts", nil)
 			if err != nil {
 				return []error{err}
 			}
@@ -488,14 +468,14 @@ func build(c *modulir.Context) []error {
 	sequencesChanged := make(map[string]bool)
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/sequences",
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/sequences",
 			&mfile.ReadDirOptions{ShowDirs: true})
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/sequences-drafts",
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/sequences-drafts",
 				&mfile.ReadDirOptions{ShowDirs: true})
 			if err != nil {
 				return []error{err}
@@ -562,13 +542,13 @@ func build(c *modulir.Context) []error {
 	var talksMu sync.Mutex
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/content/talks", nil)
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/talks", nil)
 		if err != nil {
 			return []error{err}
 		}
 
 		if conf.Drafts {
-			drafts, err := readDirCached(c, c.SourceDir+"/content/talks-drafts", nil)
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/talks-drafts", nil)
 			if err != nil {
 				return []error{err}
 			}
@@ -706,7 +686,7 @@ func build(c *modulir.Context) []error {
 	//
 
 	{
-		sources, err := readDirCached(c, c.SourceDir+"/pages", nil)
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/pages", nil)
 		if err != nil {
 			return []error{err}
 		}
@@ -1228,7 +1208,7 @@ type twitterCard struct {
 //////////////////////////////////////////////////////////////////////////////
 
 func compileJavascripts(c *modulir.Context, sourceDir, target string) (bool, error) {
-	sources, err := readDirCached(c, sourceDir, nil)
+	sources, err := mfile.ReadDirCached(c, sourceDir, nil)
 	if err != nil {
 		return false, err
 	}
@@ -1242,7 +1222,7 @@ func compileJavascripts(c *modulir.Context, sourceDir, target string) (bool, err
 }
 
 func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, error) {
-	sources, err := readDirCached(c, sourceDir, nil)
+	sources, err := mfile.ReadDirCached(c, sourceDir, nil)
 	if err != nil {
 		return false, err
 	}
@@ -1390,32 +1370,6 @@ func pathAsImage(extensionlessPath string) (string, bool) {
 	}
 
 	return "", false
-}
-
-func readDirCached(c *modulir.Context, source string,
-	opts *mfile.ReadDirOptions) ([]string, error) {
-
-	// Try to use a result from an expiring cache to speed up build loops that
-	// run within close proximity of each other. Listing files is one of the
-	// slower operations throughout the build loop, so this helps speed it up
-	// quite a bit.
-	//
-	// Note that we only use the source as cache key even though technically
-	// options could vary, which could potentially cause trouble. We know in
-	// this project that ReadDir on particular directories always use the same
-	// options, so we let that slide even if it's somewhat dangerous.
-	if paths, ok := readDirCache.Get(source); ok {
-		c.Log.Debugf("Using cached results of ReadDir: %s", source)
-		return paths.([]string), nil
-	}
-
-	files, err := mfile.ReadDirWithOptions(c, source, opts)
-	if err != nil {
-		return nil, err
-	}
-
-	readDirCache.Set(source, files, gocache.DefaultExpiration)
-	return files, nil
 }
 
 func renderArticle(c *modulir.Context, source string, articles *[]*Article, articlesChanged *bool, mu *sync.Mutex) (bool, error) {
