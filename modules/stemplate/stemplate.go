@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"encoding/base64"
-	"encoding/json"
 	"fmt"
 	"html/template"
 	"math"
@@ -30,7 +29,6 @@ var FuncMap = template.FuncMap{
 	"InKM":                         inKM,
 	"LazyRetinaImage":              lazyRetinaImage,
 	"LazyRetinaImageLightbox":      lazyRetinaImageLightbox,
-	"MarshalJSON":                  marshalJSON,
 	"MonthName":                    monthName,
 	"NumberWithDelimiter":          numberWithDelimiter,
 	"Pace":                         pace,
@@ -172,17 +170,6 @@ func toNonBreakingWhitespace(str string) string {
 
 func inKM(m float64) float64 {
 	return m / 1000.0
-}
-
-// Note that I thought I needed this to encode Javascript data in HTML
-// templates, but I don't actually appear to need it so we can probably remove
-// it.
-func marshalJSON(o interface{}) string {
-	bytes, err := json.Marshal(o)
-	if err != nil {
-		panic(err)
-	}
-	return string(bytes)
 }
 
 func monthName(m time.Month) string {
