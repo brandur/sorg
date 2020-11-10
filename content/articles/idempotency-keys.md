@@ -89,7 +89,7 @@ distance as they soar free through virgin skies. Travel can
 be a little more risky than Lyft, so make sure to pack an
 extra parachute.
 
-!fig src="/assets/images/idempotency-keys/rocketrides-ios-ride.png" caption="Rocket Rides the app."
+{{Figure "Rocket Rides the app." (NewImgSrcAndAlt "/assets/images/idempotency-keys/rocketrides-ios-ride.png" "Rocket Rides the app.")}}
 
 The [Rocket Rides repository][rocketrides] comes with a
 simple server implementation, but software tends to grow
@@ -114,7 +114,7 @@ operations:
 6. Send the user a receipt via email.
 7. Update idempotency key with results.
 
-!fig src="/assets/images/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
+{{Figure "A typical API request to our embellished Rocket Rides backend." (NewImgSrcAndAlt "/assets/images/idempotency-keys/api-request.svg" "A typical API request to our embellished Rocket Rides backend.")}}
 
 Our backend implementation will be called from the Rocket
 Rides mobile app with an idempotency key. If a request
@@ -331,7 +331,7 @@ There are a few notable fields here:
 Recall our target API lifecycle for Rocket Rides from
 above.
 
-!fig src="/assets/images/idempotency-keys/api-request.svg" caption="A typical API request to our embellished Rocket Rides backend."
+{{Figure "A typical API request to our embellished Rocket Rides backend." (NewImgSrcAndAlt "/assets/images/idempotency-keys/api-request.svg" "A typical API request to our embellished Rocket Rides backend.")}}
 
 Let's bring up Postgres relations for everything else we'll
 need to build this app including audit records, rides, and
@@ -457,7 +457,7 @@ through `tx4` can each be reached by a recovery point
 that's set by the transaction that committed before it
 (`started`, `ride_created`, and `charge_created`).
 
-!fig src="/assets/images/idempotency-keys/atomic-phases.svg" caption="API request to Rocket Rides broken into foreign state mutations and atomic phases."
+{{Figure "API request to Rocket Rides broken into foreign state mutations and atomic phases." (NewImgSrcAndAlt "/assets/images/idempotency-keys/atomic-phases.svg" "API request to Rocket Rides broken into foreign state mutations and atomic phases.")}}
 
 ### Atomic phase implementation (#atomic-phase-implementation)
 

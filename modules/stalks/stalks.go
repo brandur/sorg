@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/brandur/sorg/modules/smarkdown"
 )
 
 // Slide represents a slide within a talk.
@@ -160,8 +160,8 @@ func fileExists(file string) bool {
 	panic(err)
 }
 
-func renderMarkdown(content string) string {
-	return smarkdown.Render(content, &smarkdown.RenderOptions{
+func renderMarkdown(content string) (string, error) {
+	return mmarkdownext.Render(content, &mmarkdownext.RenderOptions{
 		NoFootnoteLinks: true,
 		NoHeaderLinks:   true,
 		NoRetina:        true,
@@ -187,11 +187,19 @@ func splitAndRenderSlides(contentDir string, talk *Talk, content string) ([]*Sli
 			rawPresenterNotes = parts[1]
 		}
 
+		var err error
+
 		slide.ContentRaw = strings.TrimSpace(rawContent)
-		slide.Content = renderMarkdown(slide.ContentRaw)
+		slide.Content, err = renderMarkdown(slide.ContentRaw)
+		if err != nil {
+			return nil, err
+		}
 
 		slide.PresenterNotesRaw = strings.TrimSpace(rawPresenterNotes)
-		slide.PresenterNotes = renderMarkdown(slide.PresenterNotesRaw)
+		slide.PresenterNotes, err = renderMarkdown(slide.PresenterNotesRaw)
+		if err != nil {
+			return nil, err
+		}
 
 		slide.Number = fmt.Sprintf("%03d", i+1)
 

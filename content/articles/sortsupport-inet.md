@@ -81,7 +81,7 @@ network is just the leftmost bit. 255 in binary is `1111
 1111`, so the network is the bit `1` and the subnet is 31
 consecutive `1`s.
 
-!fig src="/assets/images/sortsupport-inet/inet-cidr-anatomy.svg" caption="The anatomy of inet and cidr values."
+{{Figure "The anatomy of inet and cidr values." (NewImgSrcAndAlt "/assets/images/sortsupport-inet/inet-cidr-anatomy.svg" "The anatomy of inet and cidr values.")}}
 
 The difference between `inet` and `cidr` is that `inet`
 allows a values outside of the netmasked bits. The value
@@ -156,7 +156,7 @@ before all IPv6 values. Since there's only two IP families,
 so we'll reserve the most significant bit of our key to
 represent a value's family. 0 for IPv4 and 1 for IPv6.
 
-!fig src="/assets/images/sortsupport-inet/ip-family.svg" caption="One bit reserved for IP family."
+{{Figure "One bit reserved for IP family." (NewImgSrcAndAlt "/assets/images/sortsupport-inet/ip-family.svg" "One bit reserved for IP family.")}}
 
 It might seem short-sighted that we're assuming that only
 two IP families will ever exist, but luckily abbreviated
@@ -198,7 +198,7 @@ filled entirely with network. An IPv4 value is only 32
 bits, but that's still more space than we have left on a
 32-bit machine, so again, we'll pack in 31 of them.
 
-!fig src="/assets/images/sortsupport-inet/network-bits.svg" caption="Number of bits available to store network per datum size and IP family."
+{{Figure "Number of bits available to store network per datum size and IP family." (NewImgSrcAndAlt "/assets/images/sortsupport-inet/network-bits.svg" "Number of bits available to store network per datum size and IP family.")}}
 
 But there is one case where we have some space left over:
 IPv4 on a 64-bit machine. Even after storing all 32
@@ -232,7 +232,7 @@ almost entirely with abbreviated keys without falling back
 to authoritative comparison. The final key design looks
 like this:
 
-!fig src="/assets/images/sortsupport-inet/key-design.svg" caption="The design of abbreviated keys for inet and cidr."
+{{Figure "The design of abbreviated keys for inet and cidr." (NewImgSrcAndAlt "/assets/images/sortsupport-inet/key-design.svg" "The design of abbreviated keys for inet and cidr.")}}
 
 ## Bit gymnastics in C (#gymnastics)
 

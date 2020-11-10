@@ -99,7 +99,7 @@ costliness. If the amount of water entering the bucket is greater than the
 amount leaving through the leak, the bucket starts to fill. Actions are
 disallowed if the bucket is full.
 
-!fig src="/assets/images/rate-limiting/leaky-bucket.svg" caption="A visualization of the \"leaky bucket\" analog, where water is symbolic of rate-limited actions."
+{{Figure "A visualization of the \"leaky bucket\" analog, where water is symbolic of rate-limited actions." (NewImgSrcAndAlt "/assets/images/rate-limiting/leaky-bucket.svg" "A visualization of the \"leaky bucket\" analog, where water is symbolic of rate-limited actions.")}}
 
 The leaky bucket produces a very smooth rate limiting effect. A user can still
 exhaust their entire quota by filling their entire bucket nearly
@@ -151,12 +151,12 @@ representation of the timeline and various variables for successful request.
 Here we see an allowed request where t<sub>0</sub> is within the bounds of TAT
 - (τ + T) (i.e. the time of the next allowed request):
 
-!fig src="/assets/images/rate-limiting/allowed-request.svg" caption="A visualization of an allowed request under GCRA. A request at time t0 is successful."
+{{Figure "A visualization of an allowed request under GCRA. A request at time t0 is successful." (NewImgSrcAndAlt "/assets/images/rate-limiting/allowed-request.svg" "A visualization of an allowed request under GCRA. A request at time t0 is successful.")}}
 
 For a failed request, the time of the next allowed request is in the future,
 prompting us to deny the request:
 
-!fig src="/assets/images/rate-limiting/denied-request.svg" caption="A visualization of a denied request under GCRA. A request at time t0 is rejected."
+{{Figure "A visualization of a denied request under GCRA. A request at time t0 is rejected." (NewImgSrcAndAlt "/assets/images/rate-limiting/denied-request.svg" "A visualization of a denied request under GCRA. A request at time t0 is rejected.")}}
 
 Because GCRA is so dependent on time, it's critical to have a strategy for
 making sure that the current time is consistent if rate limits are being

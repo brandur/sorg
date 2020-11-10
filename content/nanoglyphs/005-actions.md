@@ -102,6 +102,7 @@ Avoiding &&-chaining allows the UI to be improved considerably. Steps have names
 Steps can be configured individually using `with` to specify parameters for containers (e.g. to specify the version of Go or Postgres to install) or `env` to specify step-specific variables. This is good because it lets you see which particular steps need specific variables instead of mixing everything into a global env. Explicit always beats implicit.
 
 ``` yml
+{{HTMLSafePassThrough `
 - name: "Create database: sorg-test"
   run: createdb sorg-test
   env:
@@ -110,6 +111,7 @@ Steps can be configured individually using `with` to specify parameters for cont
     PGUSER: postgres
     PGPASSWORD: postgres
     PGDATABASE: postgres
+`}}
 ```
 
 ---

@@ -23,7 +23,7 @@ the top right quadrant of my screen while I was trying to
 type commit messages, finally drove me crazy enough to
 start looking for alternatives.
 
-!fig src="/assets/images/breaktime/commit.png" caption="Me trying to commit; BreakTime running interference."
+{{Figure "Me trying to commit; BreakTime running interference." (NewImgSrcAndAlt "/assets/images/breaktime/commit.png" "Me trying to commit; BreakTime running interference.")}}
 
 (This would happen all the time.)
 
@@ -44,7 +44,7 @@ design to decorate my desk, and the warm knowledge that I'm
 living by the same technology that Magellan used to
 circumnavigate the globe.
 
-!fig src="/assets/images/breaktime/hourglass.jpg" caption="BreakTime Classic, or the timeless hourglass."
+{{Figure "BreakTime Classic, or the timeless hourglass." (NewImgSrcAndAlt "/assets/images/breaktime/hourglass.jpg" "BreakTime Classic, or the timeless hourglass.")}}
 
 For those interested, this is a very basic $16 [30 minute
 black sand hourglass][hourglass] available via Amazon.

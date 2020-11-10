@@ -40,7 +40,7 @@ horizontal scalability.
 
 The before and after error cliff [2]:
 
-!fig src="/assets/images/redis-cluster/errors.png" caption="Errors subsiding after a transition to Redis Cluster."
+{{Figure "Errors subsiding after a transition to Redis Cluster." (NewImgSrcAndAlt "/assets/images/redis-cluster/errors.png" "Errors subsiding after a transition to Redis Cluster.")}}
 
 ## The limits of operation (#limits)
 
@@ -132,7 +132,7 @@ number of nodes. Nodes communicate with each other to
 coordinate slot distribution, availability, and
 rebalancing.
 
-!fig src="/assets/images/redis-cluster/hash-slots.svg" caption="The set of hash slots spread across nodes in a cluster."
+{{Figure "The set of hash slots spread across nodes in a cluster." (NewImgSrcAndAlt "/assets/images/redis-cluster/hash-slots.svg" "The set of hash slots spread across nodes in a cluster.")}}
 
 Clients use the `CLUSTER` family of commands to query a
 cluster's state. A common operation is `CLUSTER NODES` to
@@ -168,7 +168,7 @@ node to another, and `MOVED` is an important signal that
 servers use to tell a client its local mappings of slots to
 nodes are stale.
 
-!fig src="/assets/images/redis-cluster/moved-redirection.svg" caption="A slot migrating from one node to another."
+{{Figure "A slot migrating from one node to another." (NewImgSrcAndAlt "/assets/images/redis-cluster/moved-redirection.svg" "A slot migrating from one node to another.")}}
 
 Every node knows the current slot mapping, and in theory a
 node that receives an operation that it can't handle could
@@ -314,7 +314,7 @@ other favorites like Postgres. We need more building blocks
 like Redis that do what they're supposed to, then get out
 of the way.
 
-!fig src="/assets/images/redis-cluster/sharding.jpg" caption="Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes."
+{{Figure "Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes." (NewImgSrcAndAlt "/assets/images/redis-cluster/sharding.jpg" "Your daily dose of tangentially related photography: Stone at the top of Massive Mountain in Alberta sharding into thin flakes.")}}
 
 [1] The exact number of operations per second is left
     intentionally vague.

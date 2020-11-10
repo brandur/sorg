@@ -3,7 +3,7 @@ module github.com/brandur/sorg
 go 1.13
 
 // For debugging:
-// replace github.com/brandur/modulir => /Users/brandur/Documents/go/src/github.com/brandur/modulir
+replace github.com/brandur/modulir => /Users/brandur/Documents/go/src/github.com/brandur/modulir
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect

@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/brandur/modulir"
+	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/brandur/sorg/modules/smarkdown"
 )
 
 // Possible orientations for a newsletter's main image.
@@ -122,13 +122,16 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 		return nil, err
 	}
 
-	issue.Content = smarkdown.Render(issue.ContentRaw, &smarkdown.RenderOptions{
+	issue.Content, err = mmarkdownext.Render(issue.ContentRaw, &mmarkdownext.RenderOptions{
 		AbsoluteURL:     absoluteURL,
 		NoFootnoteLinks: email,
 		NoFollow:        true,
 		NoHeaderLinks:   email,
 		NoRetina:        true,
 	})
+	if err != nil {
+		return nil, err
+	}
 
 	return &issue, nil
 }

@@ -123,7 +123,7 @@ I found that everything beyond the most trivially basic CSS
 usually caused problems in at least one mail client (often
 Google Mail):
 
-* `<style>` tags aren't supported by Google Mail (meaning a
+* {{HTMLSafePassThrough "`<style>`"}} tags aren't supported by Google Mail (meaning a
   very healthy fraction of all potential readers), so all
   CSS needs to be inlined like `<p style="...">`.
 * Negative margins don't work.
@@ -138,7 +138,7 @@ style: a single centered column. I wrote CSS in my
 templates with normal `<style>` tags in my templates, and
 used [Douceur][douceur] to inline it for email.
 
-!fig src="/assets/images/newsletters/passages-001.png" caption="The first issue of Passages & Glass successfully rendering in Google Mail (after considerable pain)."
+{{Figure "The first issue of Passages & Glass successfully rendering in Google Mail (after considerable pain)." (NewImgSrcAndAlt "/assets/images/newsletters/passages-001.png" "The first issue of Passages & Glass successfully rendering in Google Mail (after considerable pain).")}}
 
 ## The architecture of a newsletter (#architecture)
 
@@ -183,7 +183,7 @@ touches compared to what I'd put in a blog post. If this
 sounds like something that interests you, consider [signing
 up to receive it][signup]. I won't bother you often.
 
-!fig src="/assets/images/newsletters/chihuly-glass.jpg" caption="My newsletter is called \"Passages & Glass.\" Here's a photo from the Chihuly Garden and Glass museum in Seattle."
+{{Figure `My newsletter is called "Passages & Glass." Here's a photo from the Chihuly Garden and Glass museum in Seattle.` (NewImgSrcAndAlt "/assets/images/newsletters/chihuly-glass.jpg" `My newsletter is called "Passages & Glass." Here's a photo from the Chihuly Garden and Glass museum in Seattle.`)}}
 
 [acid2]: https://en.wikipedia.org/wiki/Acid2
 [douceur]: https://github.com/aymerick/douceur
