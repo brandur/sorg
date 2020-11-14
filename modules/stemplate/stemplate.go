@@ -29,6 +29,7 @@ var FuncMap = template.FuncMap{
 	"Pace":                    pace,
 	"RandIntn":                randIntn,
 	"RenderTweetContent":      renderTweetContent,
+	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
 }
 
@@ -198,6 +199,16 @@ func renderTweetContent(content string) string {
 	content = strings.Replace(content, "\n", `<div class="tweet-linebreak">`, -1)
 
 	return content
+}
+
+// RetinaImageAlt is a shortcut for creating an image with
+// `mtemplate.ImgAndAlt` and rendering it with `mteplate.RenderHTML`. This is
+// mostly for backwards compatibility as the interface was changed around a
+// bit.
+func RetinaImageAlt(src, alt string) template.HTML {
+	return mtemplate.HTMLRender(
+		mtemplate.ImgSrcAndAlt(src, alt),
+	)
 }
 
 // There is no "round" function built into Go :/

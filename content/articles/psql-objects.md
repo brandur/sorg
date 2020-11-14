@@ -20,7 +20,7 @@ highest logical layer. The complete hierarchy looks like this:
             * **Relation:** Any other type of named Postgres object like a
               table, view, index, or function.
 
-{{Figure "A database cluster: tables nested within a schema, nested within a database." (NewImgSrcAndAlt "/assets/images/psql-objects/cluster.svg" "A database cluster: tables nested within a schema, nested within a database.")}}
+{{Figure "A database cluster: tables nested within a schema, nested within a database." (ImgSrcAndAlt "/assets/images/psql-objects/cluster.svg" "A database cluster: tables nested within a schema, nested within a database.")}}
 
 See [the Postgres documentation][schemas-docs] for more information about each
 of these layers.

@@ -26,9 +26,9 @@ have been so much better. Let's take a quick glimpse at the
 steps involved in getting an application up and running on
 Fargate.
 
-{{Figure "Fargate setup step 1: define a task." (NewImgSrcAndAlt "/assets/images/progressive-enhancement/step1.png" "Fargate setup step 1: define a task.")}}
-{{Figure "Fargate setup step 2: define a service." (NewImgSrcAndAlt "/assets/images/progressive-enhancement/step2.png" "Fargate setup step 2: define a service.")}}
-{{Figure "Fargate setup step 3: configure a cluster." (NewImgSrcAndAlt "/assets/images/progressive-enhancement/step3.png" "Fargate setup step 3: configure a cluster.")}}
+{{Figure "Fargate setup step 1: define a task." (ImgSrcAndAlt "/assets/images/progressive-enhancement/step1.png" "Fargate setup step 1: define a task.")}}
+{{Figure "Fargate setup step 2: define a service." (ImgSrcAndAlt "/assets/images/progressive-enhancement/step2.png" "Fargate setup step 2: define a service.")}}
+{{Figure "Fargate setup step 3: configure a cluster." (ImgSrcAndAlt "/assets/images/progressive-enhancement/step3.png" "Fargate setup step 3: configure a cluster.")}}
 
 ## The looming mountain ahead (#looming-mountain)
 

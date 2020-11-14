@@ -46,7 +46,7 @@ able to detect a pull request, and then assign it a status
 check icon that will only be resolved when the build
 completes.
 
-{{Figure "Travis putting status checks on a pull request that are contingent on a successful build." (NewImgSrcAndAlt "/assets/images/webhooks/github-status-check.png" "Travis putting status checks on a pull request that are contingent on a successful build.")}}
+{{Figure "Travis putting status checks on a pull request that are contingent on a successful build." (ImgSrcAndAlt "/assets/images/webhooks/github-status-check.png" "Travis putting status checks on a pull request that are contingent on a successful build.")}}
 
 GitHub has a [status API][githubstatus] that can assign or
 update statuses associated with a given commit SHA. With
@@ -63,7 +63,7 @@ or fails. It's able to add status checks in a timely manner
 (ideally users see a `pending` status the moment they
 open a new pull), and with no inefficient polling involved.
 
-{{Figure "A basic webhooks flow to build a simple CI system for GitHub." (NewImgSrcAndAlt "/assets/images/webhooks/ci.svg" "A basic webhooks flow to build a simple CI system for GitHub.")}}
+{{Figure "A basic webhooks flow to build a simple CI system for GitHub." (ImgSrcAndAlt "/assets/images/webhooks/ci.svg" "A basic webhooks flow to build a simple CI system for GitHub.")}}
 
 ## The virtues of user ergonomics (#user-ergonomics)
 
@@ -88,7 +88,7 @@ organization's security model where user data is
 uncompromisingly kept within a secured perimeter at all
 times.
 
-{{Figure "Difficulty in provisioning an HTTP endpoint that can talk to the outside world." (NewImgSrcAndAlt "/assets/images/webhooks/provisioning-woes.svg" "Difficulty in provisioning an HTTP endpoint that can talk to the outside world.")}}
+{{Figure "Difficulty in provisioning an HTTP endpoint that can talk to the outside world." (ImgSrcAndAlt "/assets/images/webhooks/provisioning-woes.svg" "Difficulty in provisioning an HTTP endpoint that can talk to the outside world.")}}
 
 Development and testing are also difficult cases. There's
 no perfectly fluid way of getting an endpoint from a
@@ -115,7 +115,7 @@ seen techniques:
    synchronous API request to get the message's full
    contents.
 
-{{Figure "Endpoint signing secrets in Stripe's dashboard." (NewImgSrcAndAlt "/assets/images/webhooks/signing-secrets.png" "Endpoint signing secrets in Stripe's dashboard.")}}
+{{Figure "Endpoint signing secrets in Stripe's dashboard." (ImgSrcAndAlt "/assets/images/webhooks/signing-secrets.png" "Endpoint signing secrets in Stripe's dashboard.")}}
 
 Good security is possible, but a fundamental problem with
 webhooks is that it's difficult as a provider to _ensure_
@@ -145,7 +145,7 @@ experience in that at least testing an endpoint is
 possible, but it's manual and not especially conducive to
 being integrated into an automated test suite.
 
-{{Figure "Sending a test webhook in Stripe's dashboard." (NewImgSrcAndAlt "/assets/images/webhooks/send-test-webhook.png" "Sending a test webhook in Stripe's dashboard.")}}
+{{Figure "Sending a test webhook in Stripe's dashboard." (ImgSrcAndAlt "/assets/images/webhooks/send-test-webhook.png" "Sending a test webhook in Stripe's dashboard.")}}
 
 Most developers will know that manual testing is never
 enough. It'll get a program working today and that program
@@ -169,7 +169,7 @@ received it after its corresponding `deleted`. A lot of the
 time this isn't a big problem, but consumers must be built
 to be tolerant of these anomalies.
 
-{{Figure "A consumer receiving events out of order due to a send failure." (NewImgSrcAndAlt "/assets/images/webhooks/out-of-order.svg" "A consumer receiving events out of order due to a send failure.")}}
+{{Figure "A consumer receiving events out of order due to a send failure." (ImgSrcAndAlt "/assets/images/webhooks/out-of-order.svg" "A consumer receiving events out of order due to a send failure.")}}
 
 In an ideal world, a real-time stream would be reliable
 enough that a consumer could use it as an [ordered
@@ -196,7 +196,7 @@ a feature that lets users configured the API version that
 gets sent to each of their webhook endpoints, but for a
 long time upgrades were a scary business.
 
-{{Figure "Upgrading the API version sent to a webhook endpoint in Stripe's dashboard." (NewImgSrcAndAlt "/assets/images/webhooks/upgrade-version.png" "Upgrading the API version sent to a webhook endpoint in Stripe's dashboard.")}}
+{{Figure "Upgrading the API version sent to a webhook endpoint in Stripe's dashboard." (ImgSrcAndAlt "/assets/images/webhooks/upgrade-version.png" "Upgrading the API version sent to a webhook endpoint in Stripe's dashboard.")}}
 
 ## The toil in the kitchens (#kitchens)
 
@@ -278,7 +278,7 @@ webhooks provider mistake is to not insulate the senders
 from other infrastructure; allowing an attacker to probe it
 by configuring webhook endpoints with internal URLs.
 
-{{Figure "An attacker crafting a malicious webhook to target an internal service." (NewImgSrcAndAlt "/assets/images/webhooks/attack.svg" "An attacker crafting a malicious webhook to target an internal service.")}}
+{{Figure "An attacker crafting a malicious webhook to target an internal service." (ImgSrcAndAlt "/assets/images/webhooks/attack.svg" "An attacker crafting a malicious webhook to target an internal service.")}}
 
 This is mitigable (and every big provider has measures in
 place to do so), but webhook infrastructure will be

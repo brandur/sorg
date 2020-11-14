@@ -35,7 +35,7 @@ corruption. Databases use them in places like the
 [write-ahead log (WAL)][wal] in Postgres as they stream
 changes to their read replicas.
 
-{{Figure "The unified log: a producer emits to the stream and consumers read from it." (NewImgSrcAndAlt "/assets/images/redis-streams/unified-log.svg" "The unified log: a producer emits to the stream and consumers read from it.")}}
+{{Figure "The unified log: a producer emits to the stream and consumers read from it." (ImgSrcAndAlt "/assets/images/redis-streams/unified-log.svg" "The unified log: a producer emits to the stream and consumers read from it.")}}
 
 Even so, the unified log was a refreshingly novel idea when
 the article was written, and still is. File systems and
@@ -184,7 +184,7 @@ different consumers will read the stream and keep a running
 tally of the total distance traveled for every ride in the
 system that's been taken.
 
-{{Figure "Clients sending data to the API which passes it onto the stream and is ingested by stream consumers." (NewImgSrcAndAlt "/assets/images/redis-streams/streaming-model.svg" "Clients sending data to the API which passes it onto the stream and is ingested by stream consumers.")}}
+{{Figure "Clients sending data to the API which passes it onto the stream and is ingested by stream consumers." (ImgSrcAndAlt "/assets/images/redis-streams/streaming-model.svg" "Clients sending data to the API which passes it onto the stream and is ingested by stream consumers.")}}
 
 Both producer and consumers will be using database
 transactions to guarantee that all information is correct.

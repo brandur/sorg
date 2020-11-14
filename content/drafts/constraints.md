@@ -55,7 +55,7 @@ and also fine in the test suite which creates idyllic
 synthetic users with modern specifications, but it'd fail
 hard in production for a certain class of legacy user.
 
-{{Figure "Nulls present in data that's mostly non-null." (NewImgSrcAndAlt "/assets/images/constraints/nulls.svg" "Nulls present in data that's mostly non-null.")}}
+{{Figure "Nulls present in data that's mostly non-null." (ImgSrcAndAlt "/assets/images/constraints/nulls.svg" "Nulls present in data that's mostly non-null.")}}
 
 In the world of NoSQL, it's common to use application-level
 tooling to define pseudo-schemas for data (e.g. MongoEngine

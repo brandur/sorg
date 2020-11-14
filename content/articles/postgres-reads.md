@@ -25,7 +25,7 @@ updating, or deleting just a single record. Reads on the
 other hand are often more elaborate, and by extension, more
 expensive.
 
-{{Figure "Writes on the primary and reads on its replicas." (NewImgSrcAndAlt "/assets/images/postgres-reads/replica-reads.svg" "Writes on the primary and reads on its replicas.")}}
+{{Figure "Writes on the primary and reads on its replicas." (ImgSrcAndAlt "/assets/images/postgres-reads/replica-reads.svg" "Writes on the primary and reads on its replicas.")}}
 
 Even as part of a normal application's workload (barring
 analytical queries that can be even more complex), we might
@@ -47,7 +47,7 @@ that have been committed to the primary. A user might
 update some key details, and then go to view their changes
 and see stale data representing the pre-update state.
 
-{{Figure "A stale read that went to a replica that hadn't yet applied changes from the primary." (NewImgSrcAndAlt "/assets/images/postgres-reads/stale-read.svg" "A stale read that went to a replica that hadn't yet applied changes from the primary.")}}
+{{Figure "A stale read that went to a replica that hadn't yet applied changes from the primary." (ImgSrcAndAlt "/assets/images/postgres-reads/stale-read.svg" "A stale read that went to a replica that hadn't yet applied changes from the primary.")}}
 
 Stale reads are a race condition. Modern databases
 operating over low latency connections can keep replicas
@@ -94,7 +94,7 @@ emitted WAL. A base backup comes with a pointer to the
 current LSN so that when a replica starts to consume the
 WAL, it knows where to start.
 
-{{Figure "A replica being initialized from base backup and consuming its primary's WAL." (NewImgSrcAndAlt "/assets/images/postgres-reads/replicas-and-wal.svg" "A replica being initialized from base backup and consuming its primary's WAL.")}}
+{{Figure "A replica being initialized from base backup and consuming its primary's WAL." (ImgSrcAndAlt "/assets/images/postgres-reads/replicas-and-wal.svg" "A replica being initialized from base backup and consuming its primary's WAL.")}}
 
 There are a few ways for a replica to consume WAL. The
 first is "log shipping": completed WAL segments (16 MB
@@ -141,7 +141,7 @@ initial write), we'll fall back to the master. Stale reads
 become impossible regardless of the state of any given
 replica.
 
-{{Figure "Routing read operations based on replica progress in the WAL." (NewImgSrcAndAlt "/assets/images/postgres-reads/routing.svg" "Routing read operations based on replica progress in the WAL.")}}
+{{Figure "Routing read operations based on replica progress in the WAL." (ImgSrcAndAlt "/assets/images/postgres-reads/routing.svg" "Routing read operations based on replica progress in the WAL.")}}
 
 The technique is inspired by [GitLab's article on scaling
 their database][gitlab], where they refer to it as "sticky

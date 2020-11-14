@@ -21,7 +21,7 @@ uncommon. Simple actions like scrolling down a page became
 stuttering and tedious. The new OS brought some minor
 quality of life improvements [1], but with a crushing cost.
 
-{{Figure "A signature feature of iOS 11: a customizable (and more useful) Control Center." (NewImgSrcAndAlt "/assets/images/accidental-obsolescence/ios11.png" "A signature feature of iOS 11: a customizable (and more useful) Control Center.")}}
+{{Figure "A signature feature of iOS 11: a customizable (and more useful) Control Center." (ImgSrcAndAlt "/assets/images/accidental-obsolescence/ios11.png" "A signature feature of iOS 11: a customizable (and more useful) Control Center.")}}
 
 Niklaus Wirth described this phenomena in a mid-90s paper
 entitled [_A Plea for Lean Software_][leansoftware], and
@@ -50,7 +50,7 @@ deprecation, the reality is much more akin to one of
 unintended consequences. It's not planned obsolescence,
 it's ***accidental obsolescence***. 
 
-{{Figure "Adequate performance seems destined to be lost to time." (NewImgSrcAndAlt "/assets/images/accidental-obsolescence/ruins.jpg" "Adequate performance seems destined to be lost to time.")}}
+{{Figure "Adequate performance seems destined to be lost to time." (ImgSrcAndAlt "/assets/images/accidental-obsolescence/ruins.jpg" "Adequate performance seems destined to be lost to time.")}}
 
 ## Longevity's in dire straits (#longevity)
 
@@ -71,7 +71,7 @@ late to make changes. Absolutely terrible if a bug is ever
 found; but also somewhat advantageous in that performance
 could never be accidentally degraded.
 
-{{Figure "A SNES cartridge. Software that once shipped, was set in stone." (NewImgSrcAndAlt "/assets/images/accidental-obsolescence/cartridge.jpg" "A SNES cartridge. Software that once shipped, was set in stone.")}}
+{{Figure "A SNES cartridge. Software that once shipped, was set in stone." (ImgSrcAndAlt "/assets/images/accidental-obsolescence/cartridge.jpg" "A SNES cartridge. Software that once shipped, was set in stone.")}}
 
 But as the security repercussions of this sort of
 stagnation become more apparent and autoupdate becomes more

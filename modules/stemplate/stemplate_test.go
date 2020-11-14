@@ -125,6 +125,13 @@ end`),
 	)
 }
 
+func TestRetinaImageAlt(t *testing.T) {
+	assert.Equal(t,
+		`<img alt="alt text" loading="lazy" src="/photographs/other/001.jpg" srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x">`,
+		string(RetinaImageAlt("/photographs/other/001.jpg", "alt text")),
+	)
+}
+
 func TestRound(t *testing.T) {
 	assert.Equal(t, 0.0, round(0.2))
 	assert.Equal(t, 1.0, round(0.8))

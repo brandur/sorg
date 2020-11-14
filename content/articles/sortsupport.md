@@ -68,7 +68,7 @@ pass-by-reference types). Postgres is very fast, so that
 still happens quickly, but it's slower than comparing
 values readily available in memory.
 
-{{Figure "An array of sort tuples." (NewImgSrcAndAlt "/assets/images/sortsupport/sort-tuples.svg" "An array of sort tuples.")}}
+{{Figure "An array of sort tuples." (ImgSrcAndAlt "/assets/images/sortsupport/sort-tuples.svg" "An array of sort tuples.")}}
 
 SortSupport augments pass-by-reference types by bringing a
 representative part of their value into the sort tuple to
@@ -86,7 +86,7 @@ If two abbreviated keys look equal, Postgres will fall back
 to comparing their full heap values to make sure it gets
 the right result (called an "authoritative comparison").
 
-{{Figure "A sort tuple with an abbreviated key and pointer to the heap." (NewImgSrcAndAlt "/assets/images/sortsupport/abbreviated-keys.svg" "A sort tuple with an abbreviated key and pointer to the heap.")}}
+{{Figure "A sort tuple with an abbreviated key and pointer to the heap." (ImgSrcAndAlt "/assets/images/sortsupport/abbreviated-keys.svg" "A sort tuple with an abbreviated key and pointer to the heap.")}}
 
 Implementing an abbreviated key is straightforward in many
 cases. UUIDs are a good example of that: at 128 bits long
@@ -206,7 +206,7 @@ the whole UUID, but we'll be taking its 4 or 8 most
 significant bytes, which will be enough information for
 most comparisons.
 
-{{Figure "Abbreviated key formats for the `uuid` type." (NewImgSrcAndAlt "/assets/images/sortsupport/uuid.svg" "Abbreviated key formats for the `uuid` type.")}}
+{{Figure "Abbreviated key formats for the `uuid` type." (ImgSrcAndAlt "/assets/images/sortsupport/uuid.svg" "Abbreviated key formats for the `uuid` type.")}}
 
 The call `DatumBigEndianToNative` is there to help with an
 optimization. When comparing our abbreviated keys, we could
@@ -252,7 +252,7 @@ on little-endian systems, the resulting integer would be
 wrong. The answer is to byteswap, which reverses the order
 of the bytes, and corrects the integer.
 
-{{Figure "Example placement of integer bytes on little and big endian architectures." (NewImgSrcAndAlt "/assets/images/sortsupport/endianness.svg" "Example placement of integer bytes on little and big endian architectures.")}}
+{{Figure "Example placement of integer bytes on little and big endian architectures." (ImgSrcAndAlt "/assets/images/sortsupport/endianness.svg" "Example placement of integer bytes on little and big endian architectures.")}}
 
 You can see in [`pg_bswap.h`][pgbswap] that
 `DatumBigEndianToNative` is defined as a no-op on a

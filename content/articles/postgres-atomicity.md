@@ -49,7 +49,7 @@ One opens the CSV file, reads, modifies, and writes some
 data, but that change is immediately clobbered by another
 client trying to do the same.
 
-{{Figure "Data loss from contention between two clients." (NewImgSrcAndAlt "/assets/images/postgres-atomicity/csv-database.svg" "Data loss from contention between two clients.")}}
+{{Figure "Data loss from contention between two clients." (ImgSrcAndAlt "/assets/images/postgres-atomicity/csv-database.svg" "Data loss from contention between two clients.")}}
 
 This is a problem of concurrent access and it's addressed
 by introducing _concurrency control_. There are plenty of
@@ -176,7 +176,7 @@ that created it). It also tracks `xmax` to be the _last_
 transaction where the tuple is visible (i.e. the one that
 deleted it) [2].
 
-{{Figure "A heap tuple's lifetime being tracked with xmin and xmax." (NewImgSrcAndAlt "/assets/images/postgres-atomicity/heap-tuple-visibility.svg" "A heap tuple's lifetime being tracked with xmin and xmax.")}}
+{{Figure "A heap tuple's lifetime being tracked with xmin and xmax." (ImgSrcAndAlt "/assets/images/postgres-atomicity/heap-tuple-visibility.svg" "A heap tuple's lifetime being tracked with xmin and xmax.")}}
 
 `xmin` and `xmax` are internal concepts, but they can be
 revealed as hidden columns on any Postgres table. Just
@@ -253,7 +253,7 @@ flight hidden. `*xip` stores the list of transactions that
 were active when the snapshot was created so that we can
 tell which is which.
 
-{{Figure "Transactions executing against a database and a snapshot capturing a moment in time." (NewImgSrcAndAlt "/assets/images/postgres-atomicity/snapshot-creation.svg" "Transactions executing against a database and a snapshot capturing a moment in time.")}}
+{{Figure "Transactions executing against a database and a snapshot capturing a moment in time." (ImgSrcAndAlt "/assets/images/postgres-atomicity/snapshot-creation.svg" "Transactions executing against a database and a snapshot capturing a moment in time.")}}
 
 ## Beginning a transaction (#begin)
 
