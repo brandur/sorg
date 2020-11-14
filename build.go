@@ -1511,7 +1511,7 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 
 	title := "Articles" + scommon.TitleSuffix
 	if tag != nil {
-		title = fmt.Sprintf("Articles (%s)", *tag, scommon.TitleSuffix)
+		title = fmt.Sprintf("Articles%s (%s)", scommon.TitleSuffix, *tag)
 	}
 
 	feed := &matom.Feed{
