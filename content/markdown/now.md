@@ -25,9 +25,8 @@ Some things I’m working on:
 / OLD
 / ---------------------------------------------------------------------------- 
 
-/
-/ Dec 31, 2019
-/
+## Dec 31, 2019
+
 / p I’m in Calgary for the winter break. It’s the last day of 2019 and we’re on the precipice of a new decade.
 / p
 /   img.overflowing src="/assets/images/now/calgary-snow.jpg" srcset="/assets/images/now/calgary-snow@2x.jpg 2x, /assets/now/calgary-snow.jpg 1x"
@@ -39,9 +38,10 @@ Some things I’m working on:
 /   li Ran 1000 miles and did 42k pushups in 2019, do so again in 2020. Keep weight at ~150 lbs. Zero in on ~10% body fat.
 /   li Reboot meditation practice. Did pretty well in 2018, but fell off the wagon completely in 2019. Aim for a couple 30 consecutive day runs.
 
-/
-/ June 5, 2019
-/
+
+
+## June 5, 2019
+
 / p I'm in Berlin.
 / p
 /   img.overflowing src="/assets/images/now/molecule-man.jpg" srcset="/assets/images/now/molecule-man@2x.jpg 2x, /assets/now/molecule-man.jpg 1x"
@@ -52,9 +52,10 @@ Some things I’m working on:
 /   li Writing on topics like <del>WebSockets</del> (<a href="/live-reload">done</a>), operable databases, and stability through data constraints.
 /   li Nutrition and fitness: Leaner diet, run 1000 miles in 2019. Targeting <150 lbs. and ~10% body fat.
 
-/
-/ April 20, 2018
-/
+
+
+## April 20, 2018
+
 / p I'm in San Francisco, working on technology at Stripe.
 / p
 /   img.overflowing src="/assets/images/now/sutro-giants.jpg" srcset="/assets/images/now/sutro-giants@2x.jpg 2x, /assets/now/sutro-giants.jpg 1x"
@@ -64,24 +65,28 @@ Some things I’m working on:
 /   li Learning <a href="/rust-web">Rust</a>, and using it to proof out resilient services that don't need constant human attention.
 /   li Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I wake up early, and try to focus on only one thing at a time.
 
-/
-/ November 26, 2017
-/
+
+
+## November 26, 2017
+
 / p I'm in Japan, visiting its unique duality of the most beautiful natural and urban environments in the world, decompressing from the ever-turning treadmill of electronic life, writing, and visiting as many <a href="https://en.wikipedia.org/wiki/Onsen">onsens</a> as I can find.
 
-/
-/ September 18, 2017
-/
+
+
+## September 18, 2017
+
 / p I'm in Canada enjoying its exceptional natural beauty during the final days of summer, visiting family, and attending the weddings of a few of my oldest friends.
 
-/
-/ January 23rd, 2016
-/
+
+
+## January 23rd, 2016
+
 / I'm in San Francisco concentrating on self-discipline, self-improvement, and shipping the next big thing at Stripe.
 
-/
-/ Other old stuff
-/
+
+
+## Other old stuff
+
 / li Seeking to deeply understand some of my favorite pieces of technology like Postgres and Rust, and transforming those findings into published material.
 / li Writing an aspirational guide for building software that's simple, robust, and stable without constant human attention.
 / li Some basic voice recording to help me get more articulate and be able to form more cohesive long form thoughts in speech.
