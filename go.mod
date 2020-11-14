@@ -32,6 +32,6 @@ require (
 	github.com/yosssi/gcss v0.1.0
 	golang.org/x/crypto v0.0.0-20190611184440-5c40567a22f8
 	golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa
-	golang.org/x/sys v0.0.0-20201110211018-35f3e6cf4a65 // indirect
+	golang.org/x/sys v0.0.0-20201113233024-12cec1faf1ba // indirect
 	gopkg.in/mailgun/mailgun-go.v1 v1.1.1
 )

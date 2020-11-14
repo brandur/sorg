@@ -1,3 +1,6 @@
+= content stylesheets
+  = include views/_main_stylesheets .
+
 = content main
   .flexcontainer
     .flag

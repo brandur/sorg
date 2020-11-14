@@ -1,3 +1,9 @@
+= content title
+  title Newsletters: Nanoglyph / Passages & Glass{{.TitleSuffix}}
+
+= content stylesheets
+  = include views/_main_stylesheets .
+
 = content main
   .flexcontainer
     .flag

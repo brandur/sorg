@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"math/rand"
@@ -20,6 +21,7 @@ import (
 	"github.com/brandur/modulir/modules/mimage"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mmarkdownext"
+	"github.com/brandur/modulir/modules/mtemplatemd"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/sassets"
@@ -71,7 +73,7 @@ var (
 	fragments  []*Fragment
 	nanoglyphs []*snewsletter.Issue
 	passages   []*snewsletter.Issue
-	pages      map[string]*Page
+	pages      map[string]*Page = make(map[string]*Page)
 	photos     []*Photo
 	sequences  = make(map[string]*Sequence)
 	talks      []*stalks.Talk
@@ -248,6 +250,7 @@ func build(c *modulir.Context) []error {
 			{c.SourceDir + "/content/images/passages", c.TargetDir + "/assets/passages"},
 
 			{c.SourceDir + "/content/photographs", c.TargetDir + "/photographs"},
+			{c.SourceDir + "/content/stylesheets-modular", versionedAssetsDir + "/stylesheets"},
 		}
 		for _, link := range commonSymlinks {
 			err := mfile.EnsureSymlink(c, link[0], link[1])
@@ -363,31 +366,6 @@ func build(c *modulir.Context) []error {
 					&nanoglyphs, &nanoglyphsChanged, &nanoglyphsMu)
 			})
 		}
-	}
-
-	//
-	// Pages (read `_meta.toml`)
-	//
-
-	var pagesChanged bool
-
-	{
-		c.AddJob("pages _meta.toml", func() (bool, error) {
-			source := c.SourceDir + "/pages/_meta.toml"
-
-			if !c.Changed(source) {
-				return false, nil
-			}
-
-			err := mtoml.ParseFile(
-				c, c.SourceDir+"/pages/_meta.toml", &pages)
-			if err != nil {
-				return true, err
-			}
-
-			pagesChanged = true
-			return true, nil
-		})
 	}
 
 	//
@@ -702,10 +680,20 @@ func build(c *modulir.Context) []error {
 	// Pages (render each view)
 	//
 
+	var pagesMu sync.RWMutex
+
 	{
 		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/pages", nil)
 		if err != nil {
 			return []error{err}
+		}
+
+		if conf.Drafts {
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/pages-drafts", nil)
+			if err != nil {
+				return []error{err}
+			}
+			sources = append(sources, drafts...)
 		}
 
 		for _, s := range sources {
@@ -713,8 +701,7 @@ func build(c *modulir.Context) []error {
 
 			name := fmt.Sprintf("page: %s", filepath.Base(source))
 			c.AddJob(name, func() (bool, error) {
-				return renderPage(c, source, pages,
-					pagesChanged)
+				return renderPage(c, source, pages, &pagesMu)
 			})
 		}
 	}
@@ -1038,16 +1025,14 @@ func (f *Fragment) validate(source string) error {
 }
 
 // Page is the metadata for a static HTML page generated from an ACE file.
-// Currently the layouting system of ACE doesn't allow us to pass metadata up
-// very well, so we have this instead.
 type Page struct {
-	// BodyClass is the CSS class that will be assigned to the body tag when
-	// the page is rendered.
-	BodyClass string `toml:"body_class"`
-
-	// Title is the HTML title that will be assigned to the page when it's
-	// rendered.
-	Title string `toml:"title"`
+	// Paths for external dependencies that the page included as it was being
+	// rendered, and which should be watched so that we can re-render it when
+	// one changes.
+	//
+	// Set the first time a page is rendered and updated every subsequent
+	// render.
+	dependencies []string
 }
 
 // Photo is a photograph.
@@ -1295,6 +1280,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 		"Release":           Release,
 		"SorgEnv":           conf.SorgEnv,
 		"Title":             title,
+		"TitleSuffix":       scommon.TitleSuffix,
 		"TwitterCard":       nil,
 		"ViewportWidth":     viewportWidthDeviceWidth,
 	}
@@ -1380,6 +1366,18 @@ func insertOrReplaceTalk(talks *[]*stalks.Talk, talk *stalks.Talk) {
 	}
 
 	*talks = append(*talks, talk)
+}
+
+// Remove the "./pages" directory and extension, but keep the rest of the
+// path.
+//
+// Looks something like "about", or "nested/about".
+func pagePathKey(source string) string {
+	pagePath := mfile.MustAbs(source)
+	pagePath = strings.TrimPrefix(pagePath, mfile.MustAbs("./pages-drafts")+"/")
+	pagePath = strings.TrimPrefix(pagePath, mfile.MustAbs("./pages")+"/")
+	pagePath = strings.TrimSuffix(pagePath, path.Ext(pagePath))
+	return pagePath
 }
 
 // Checks if the path exists as a common image format (.jpg or .png only). If
@@ -1511,14 +1509,14 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 	}
 	filename := name + ".atom"
 
-	title := "Articles - brandur.org"
+	title := "Articles" + scommon.TitleSuffix
 	if tag != nil {
-		title = fmt.Sprintf("Articles (%s) - brandur.org", *tag)
+		title = fmt.Sprintf("Articles (%s)", *tag, scommon.TitleSuffix)
 	}
 
 	feed := &matom.Feed{
 		Title: title,
-		ID:    "tag:brandur.org.org,2013:/" + name,
+		ID:    "tag:" + scommon.AtomTag + ",2013:/" + name,
 
 		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
@@ -1546,7 +1544,7 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 			Published: *article.PublishedAt,
 			Updated:   *article.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/" + article.Slug},
-			ID:        "tag:brandur.org," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
+			ID:        "tag:" + scommon.AtomTag + "," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -1634,8 +1632,8 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 	}
 
 	feed := &matom.Feed{
-		Title: "Fragments - brandur.org",
-		ID:    "tag:brandur.org.org,2013:/fragments",
+		Title: "Fragments" + scommon.TitleSuffix,
+		ID:    "tag:" + scommon.AtomTag + ",2013:/fragments",
 
 		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/fragments.atom"},
@@ -1659,7 +1657,7 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 			Published: *fragment.PublishedAt,
 			Updated:   *fragment.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/fragments/" + fragment.Slug},
-			ID:        "tag:brandur.org," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
+			ID:        "tag:" + scommon.AtomTag + "," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -1754,11 +1752,11 @@ func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanog
 
 	name := "nanoglyphs"
 	filename := name + ".atom"
-	title := "Nanoglyph - brandur.org"
+	title := "Nanoglyph" + scommon.TitleSuffix
 
 	feed := &matom.Feed{
 		Title: title,
-		ID:    "tag:brandur.org.org,2013:/" + name,
+		ID:    "tag:" + scommon.AtomTag + ",2013:/" + name,
 
 		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
@@ -1787,7 +1785,7 @@ func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanog
 			Published: *issue.PublishedAt,
 			Updated:   *issue.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
-			ID:        "tag:brandur.org," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
+			ID:        "tag:" + scommon.AtomTag + "," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -1882,11 +1880,11 @@ func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passage
 
 	name := "passages"
 	filename := name + ".atom"
-	title := "Passages & Glass - brandur.org"
+	title := "Passages & Glass" + scommon.TitleSuffix
 
 	feed := &matom.Feed{
 		Title: title,
-		ID:    "tag:brandur.org.org,2013:/" + name,
+		ID:    "tag:" + scommon.AtomTag + ",2013:/" + name,
 
 		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
@@ -1915,7 +1913,7 @@ func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passage
 			Published: *issue.PublishedAt,
 			Updated:   *issue.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
-			ID:        "tag:brandur.org," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
+			ID:        "tag:" + scommon.AtomTag + "," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -1982,7 +1980,7 @@ func renderHome(c *modulir.Context,
 	// Find a random photo to put on the homepage.
 	photo := selectRandomPhoto(photos)
 
-	locals := getLocals("brandur.org", map[string]interface{}{
+	locals := getLocals("", map[string]interface{}{
 		"Articles":  articles,
 		"BodyClass": "index",
 		"Fragments": fragments,
@@ -1993,25 +1991,34 @@ func renderHome(c *modulir.Context,
 		c.TargetDir+"/index.html", getAceOptions(viewsChanged), locals)
 }
 
-func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaChanged bool) (bool, error) {
+func renderPage(c *modulir.Context, source string, meta map[string]*Page, mu *sync.RWMutex) (bool, error) {
+	pagePath := pagePathKey(source)
+
+	// Other dependencies a page might have if it say, included an external
+	// Markdown file. These are added the first time a page is rendered (and
+	// watched), and updated on every subsequent run.
+	var pageDependencies []string
+
+	mu.RLock()
+	pageMeta, ok := meta[pagePath]
+	if ok {
+		pageDependencies = pageMeta.dependencies
+	}
+	mu.RUnlock()
+
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
 			source,
 		},
-		universalSources...,
+		append(
+			universalSources,
+			pageDependencies...,
+		)...,
 	)...)
-	if !metaChanged && !viewsChanged {
+	if !viewsChanged {
 		return false, nil
 	}
-
-	// Remove the "./pages" directory and extension, but keep the rest of the
-	// path.
-	//
-	// Looks something like "about", or "nested/about".
-	pagePath := strings.TrimPrefix(mfile.MustAbs(source),
-		mfile.MustAbs("./pages")+"/")
-	pagePath = strings.TrimSuffix(pagePath, path.Ext(pagePath))
 
 	// Looks something like "./public/about".
 	target := path.Join(c.TargetDir, pagePath)
@@ -2023,20 +2030,25 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 		target += ".html"
 	}
 
-	locals := map[string]interface{}{
-		"BodyClass": "",
-		"Title":     "Untitled Page",
+	pageDependenciesMap := map[string]struct{}{}
+	ctx := context.WithValue(context.Background(),
+		mtemplatemd.IncludeMarkdownDependencyKeys, pageDependenciesMap)
+
+	// Reuse existing metadata for this page, or create metadata if this is the
+	// first time we're rendering it.
+	if pageMeta == nil {
+		pageMeta = &Page{}
+
+		mu.Lock()
+		meta[pagePath] = pageMeta
+		mu.Unlock()
 	}
 
-	pageMeta, ok := meta[pagePath]
-	if ok {
-		locals["BodyClass"] = pageMeta.BodyClass
-		locals["Title"] = pageMeta.Title
-	} else {
-		c.Log.Errorf("No page meta information: %v", pagePath)
-	}
-
-	locals = getLocals("Page", locals)
+	// Pages get their titles by using inner templates. That must be triggered
+	// by sending an empty string as `Title`.
+	locals := getLocals("", map[string]interface{}{
+		"Ctx": ctx,
+	})
 
 	err := mfile.EnsureDir(c, path.Dir(target))
 	if err != nil {
@@ -2047,6 +2059,15 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, metaCh
 		getAceOptions(viewsChanged), locals)
 	if err != nil {
 		return true, err
+	}
+
+	pageMeta.dependencies = nil
+	for path := range pageDependenciesMap {
+		// Check changed here so that Modulir will add the file to its watch
+		// list.
+		c.Changed(path)
+
+		pageMeta.dependencies = append(pageMeta.dependencies, path)
 	}
 
 	return true, nil
@@ -2250,7 +2271,7 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 
 	feed := &matom.Feed{
 		Title: title,
-		ID:    "tag:brandur.org.org,2019:" + feedIDSuffix,
+		ID:    "tag:" + scommon.AtomTag + ",2019:" + feedIDSuffix,
 
 		Links: []*matom.Link{
 			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
@@ -2277,7 +2298,7 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 			Published: *entry.OccurredAt,
 			Updated:   *entry.OccurredAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Sequence.Slug + "/" + entry.Slug},
-			ID:        "tag:brandur.org," + entry.OccurredAt.Format("2006-01-02") + ":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
+			ID:        "tag:" + scommon.AtomTag + "," + entry.OccurredAt.Format("2006-01-02") + ":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,

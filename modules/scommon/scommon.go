@@ -26,6 +26,9 @@ const (
 	// AtomAuthorName is the name of the author to include in Atom feeds.
 	AtomAuthorName = "Brandur Leach"
 
+	// AtomTag is a stable constant to use in Atom tags.
+	AtomTag = "brandur.org"
+
 	// LayoutsDir is the source directory for view layouts.
 	LayoutsDir = "./layouts"
 
@@ -43,6 +46,9 @@ const (
 	// TempDir is a temporary directory used to download images that will be
 	// processed and such.
 	TempDir = "./tmp"
+
+	// TitleSuffix is the suffix to add to the end of page and Atom titles.
+	TitleSuffix = " — brandur.org"
 
 	// ViewsDir is the source directory for views.
 	ViewsDir = "./views"

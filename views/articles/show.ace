@@ -1,3 +1,6 @@
+= content stylesheets
+  = include views/_main_stylesheets .
+
 = content main
   {{if ne .Article.Image ""}}
     .vista style="background-image: url('{{.Article.Image}}')"

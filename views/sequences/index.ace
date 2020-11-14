@@ -1,3 +1,6 @@
+= content stylesheets
+  = include views/_main_stylesheets .
+
 = content main
   / Moves to the bottom of the screen when the width becomes too short.
   .top-nav.top-nav-flat.hide-small

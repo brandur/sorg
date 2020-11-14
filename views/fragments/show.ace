@@ -1,3 +1,6 @@
+= content stylesheets
+  = include views/_main_stylesheets .
+
 = content main
   div class="flexcontainer" id="{{if ne .Fragment.Image ""}}flexcontainer-fragments-show-mood{{end}}"
     .flag

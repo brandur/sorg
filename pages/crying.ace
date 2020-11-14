@@ -1,3 +1,9 @@
+= content title
+  title Crying{{.TitleSuffix}}
+
+= content stylesheets
+  link href="/assets/{{.Release}}/stylesheets/quotes.css" media="screen" rel="stylesheet" type="text/css"
+
 = content main
   #wrapper
     header
