@@ -5,45 +5,46 @@
   = include views/_main_stylesheets .
 
 = content main
-  .flexcontainer
-    .flag
-    .top-nav
-      .nav-inner
-        = include views/_nav
-    .toc-index
-    .content
-      .content-inner-standard
-        #title
-          h1 Sitemap
-        #sitemap
-          .sitemap-col
-            h2.block Core
-            ul
-              li
-                a href="/about" About
-              li
-                a href="/" Home
-              li
-                a href="/newsletter" Newsletter
-              li
-                a href="/now" Now
-              li
-                a href="/sitemap" Sitemap
-          .sitemap-col
-            h2.block Writing
-            ul
-              li
-                a href="/articles" Articles
-              li
-                a href="/fragments" Fragments
-          .sitemap-col
-            h2.block Other
-            ul
-              li
-                a href="/photos" Photography
-              li
-                a href="/reading" Reading
-              li
-                a href="/runs" Running
-              li
-                a href="/twitter" Twitter
+  #container
+    .flexcontainer
+      .flag
+      .top-nav
+        .nav-inner
+          = include views/_nav
+      .toc-index
+      .content
+        .content-inner-standard
+          #title
+            h1 Sitemap
+          #sitemap
+            .sitemap-col
+              h2.block Core
+              ul
+                li
+                  a href="/about" About
+                li
+                  a href="/" Home
+                li
+                  a href="/newsletter" Newsletter
+                li
+                  a href="/now" Now
+                li
+                  a href="/sitemap" Sitemap
+            .sitemap-col
+              h2.block Writing
+              ul
+                li
+                  a href="/articles" Articles
+                li
+                  a href="/fragments" Fragments
+            .sitemap-col
+              h2.block Other
+              ul
+                li
+                  a href="/photos" Photography
+                li
+                  a href="/reading" Reading
+                li
+                  a href="/runs" Running
+                li
+                  a href="/twitter" Twitter

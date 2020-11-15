@@ -5,15 +5,16 @@
   = include views/_main_stylesheets .
 
 = content main
-  .flexcontainer
-    .flag
-    .top-nav
-      .nav-inner
-        = include views/_nav
-    .toc-index
-    .content
-      .content-inner-standard
-        #title
-          h1 About
-        #about
-          {{IncludeMarkdown .Ctx "content/markdown/about.md"}}
+  #container
+    .flexcontainer
+      .flag
+      .top-nav
+        .nav-inner
+          = include views/_nav
+      .toc-index
+      .content
+        .content-inner-standard
+          #title
+            h1 About
+          #about
+            {{IncludeMarkdown .Ctx "content/markdown/about.md"}}

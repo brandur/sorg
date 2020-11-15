@@ -2,42 +2,43 @@
   = include views/_main_stylesheets .
 
 = content main
-  .flexcontainer
-    .flag
-    .top-nav
-      .nav-inner
-        = include views/_nav
-        .nav-extra-content
+  #container
+    .flexcontainer
+      .flag
+      .top-nav
+        .nav-inner
+          = include views/_nav
+          .nav-extra-content
+            .divider
+            {{HTML .PublishingInfo}}
+      .toc-index
+      .content
+        .content-header-standard
+          #title
+            h1 {{.Talk.Title}}
+          #subtitle
+            {{.Talk.Subtitle}}
+        .content-inner-standard
           .divider
-          {{HTML .PublishingInfo}}
-    .toc-index
-    .content
-      .content-header-standard
-        #title
-          h1 {{.Talk.Title}}
-        #subtitle
-          {{.Talk.Subtitle}}
-      .content-inner-standard
-        .divider
-        section#intro
-          {{HTML .Talk.Intro}}
-        .divider
-        section#slides
-          {{range .Talk.Slides}}
-            .slide
-              a href="#{{.Number}}"
-                h2.block id="{{.Number}}" {{.Number}}
-              figure
-                p
-                  {{if eq .PresenterNotes ""}}
-                    img.lazy.no-caption src="/assets/images/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2X .ImagePath}} 2x, {{.ImagePath}} 1x"
-                  {{else}}
-                    a href="{{To2X .ImagePath}}"
-                      img.lazy src="/assets/images/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2X .ImagePath}} 2x, {{.ImagePath}} 1x"
+          section#intro
+            {{HTML .Talk.Intro}}
+          .divider
+          section#slides
+            {{range .Talk.Slides}}
+              .slide
+                a href="#{{.Number}}"
+                  h2.block id="{{.Number}}" {{.Number}}
+                figure
+                  p
+                    {{if eq .PresenterNotes ""}}
+                      img.lazy.no-caption src="/assets/images/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2X .ImagePath}} 2x, {{.ImagePath}} 1x"
+                    {{else}}
+                      a href="{{To2X .ImagePath}}"
+                        img.lazy src="/assets/images/talks/standin_00.png" data-src="{{.ImagePath}}" data-srcset="{{To2X .ImagePath}} 2x, {{.ImagePath}} 1x"
+                    {{end}}
+                  {{if ne .PresenterNotes ""}}
+                    figcaption
+                      {{HTML .PresenterNotes}}
                   {{end}}
-                {{if ne .PresenterNotes ""}}
-                  figcaption
-                    {{HTML .PresenterNotes}}
-                {{end}}
-            .clear
-          {{end}}
+              .clear
+            {{end}}

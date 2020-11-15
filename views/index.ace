@@ -5,51 +5,52 @@
   = include views/_main_stylesheets .
 
 = content main
-  / Moves to the bottom of the screen when the width becomes too short.
-  .top-nav.top-nav-flat.hide-small
-    .nav-inner
-      = include views/_nav
-  .flexcontainer#flexcontainer-index
-    #text
-      h1.block
-        a href="/about" About
-      p I'm <a href="https://twitter.com/brandur" rel="me">@brandur</a>, an occasional writer, and engineer at Stripe and previously Heroku.
-      p I most often talk about web APIs, Postgres, Rust, software safety and resilience, efficient human interfaces, and running.
-      #writing
-        .divider-short
+  #container
+    / Moves to the bottom of the screen when the width becomes too short.
+    .top-nav.top-nav-flat.hide-small
+      .nav-inner
+        = include views/_nav
+    .flexcontainer#flexcontainer-index
+      #text
         h1.block
-          a href="/articles" Articles
-        ul
-          {{range .Articles}}
-            li
-              p.title
-                a href="/{{.Slug}}" {{.Title}}
-              p.hook
-                | {{HTML .Hook}} 
-                span.date {{FormatTime .PublishedAt}}
-          {{end}}
-        p.older
-          em Older articles available <a href="/articles">here</a>.
-        .divider-short
-        h1.block
-          a href="/fragments" Fragments
-        ul
-          {{range .Fragments}}
-            li
-              p.title
-                a href="/fragments/{{.Slug}}" {{.Title}}
-              p.hook
-                | {{HTML .Hook}} 
-                span.date {{FormatTime .PublishedAt}}
-          {{end}}
-        p.older
-          em Older fragments available <a href="/fragments">here</a>.
-    #photo
-      {{if .Photo}}
-        a href="/photos#{{.Photo.Slug}}"
-          img src="/photographs/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/{{QueryEscape .Photo.Slug}}_large.jpg 1x"
-      {{end}}
-      / img src="/assets/images/standin_portrait_00.jpg"
-  .top-nav.top-nav-flat.hide-big
-    .nav-inner
-      = include views/_nav
+          a href="/about" About
+        p I'm <a href="https://twitter.com/brandur" rel="me">@brandur</a>, an occasional writer, and engineer at Stripe and previously Heroku.
+        p I most often talk about web APIs, Postgres, Rust, software safety and resilience, efficient human interfaces, and running.
+        #writing
+          .divider-short
+          h1.block
+            a href="/articles" Articles
+          ul
+            {{range .Articles}}
+              li
+                p.title
+                  a href="/{{.Slug}}" {{.Title}}
+                p.hook
+                  | {{HTML .Hook}} 
+                  span.date {{FormatTime .PublishedAt}}
+            {{end}}
+          p.older
+            em Older articles available <a href="/articles">here</a>.
+          .divider-short
+          h1.block
+            a href="/fragments" Fragments
+          ul
+            {{range .Fragments}}
+              li
+                p.title
+                  a href="/fragments/{{.Slug}}" {{.Title}}
+                p.hook
+                  | {{HTML .Hook}} 
+                  span.date {{FormatTime .PublishedAt}}
+            {{end}}
+          p.older
+            em Older fragments available <a href="/fragments">here</a>.
+      #photo
+        {{if .Photo}}
+          a href="/photos#{{.Photo.Slug}}"
+            img src="/photographs/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/{{QueryEscape .Photo.Slug}}_large.jpg 1x"
+        {{end}}
+        / img src="/assets/images/standin_portrait_00.jpg"
+    .top-nav.top-nav-flat.hide-big
+      .nav-inner
+        = include views/_nav

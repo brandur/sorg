@@ -2,46 +2,47 @@
   = include views/_main_stylesheets .
 
 = content main
-  .flexcontainer
-    .flag
-    .top-nav
-      .nav-inner
-        = include views/_nav
-    .toc-index
-      .toc-inner
-        .toc
-          ul
-            {{range .ArticlesByYear}}
-              li
-                a href="#year-{{.Year}}" {{.Year}}
-            {{end}}
-    .content
-      .articles
-        .content-inner-standard
-          #title
-            h1 Articles
-          p <a href="/articles.atom" class="feed-icon">Atom feed</a>.
-          #articles
-            {{range .ArticlesByYear}}
-              div class="year" id="year-{{.Year}}"
-              h2 {{.Year}}
-              ul
-                {{range .Articles}}
-                  li
-                    {{if .HookImageURL}}
-                      a href="/{{.Slug}}"
-                        img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x"
-                    {{end}}
-                    .title
-                      a href="/{{.Slug}}"
-                        {{.Title}}
-                      span.meta
-                        |  
-                        {{FormatTime .PublishedAt}}
-                    {{if ne .Hook ""}}
-                      p.hook {{HTML .Hook}}
-                    {{end}}
-                    .clear
-                {{end}}
-            {{end}}
-            p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
+  #container
+    .flexcontainer
+      .flag
+      .top-nav
+        .nav-inner
+          = include views/_nav
+      .toc-index
+        .toc-inner
+          .toc
+            ul
+              {{range .ArticlesByYear}}
+                li
+                  a href="#year-{{.Year}}" {{.Year}}
+              {{end}}
+      .content
+        .articles
+          .content-inner-standard
+            #title
+              h1 Articles
+            p <a href="/articles.atom" class="feed-icon">Atom feed</a>.
+            #articles
+              {{range .ArticlesByYear}}
+                div class="year" id="year-{{.Year}}"
+                h2 {{.Year}}
+                ul
+                  {{range .Articles}}
+                    li
+                      {{if .HookImageURL}}
+                        a href="/{{.Slug}}"
+                          img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x"
+                      {{end}}
+                      .title
+                        a href="/{{.Slug}}"
+                          {{.Title}}
+                        span.meta
+                          |  
+                          {{FormatTime .PublishedAt}}
+                      {{if ne .Hook ""}}
+                        p.hook {{HTML .Hook}}
+                      {{end}}
+                      .clear
+                  {{end}}
+              {{end}}
+              p Most of my older work can be found on <a href="http://mutelight.org/archive">Mutelight</a>.
