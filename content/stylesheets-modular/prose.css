@@ -1,0 +1,108 @@
+/*
+ *
+ * Intended as the general stylesheet for prose-based contenet (articles,
+ * fragments, about, now, etc.). Try not to mix up too much in here.
+ *
+ */
+
+/*****************************************************************************
+ *
+ *
+ *
+ * General
+ *
+ *
+ *
+ ***************************************************************************/
+
+:root {
+    --font_family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    --font_family_monospace: Monaco, "Lucida Console", "Bitstream Vera Sans Mono", Courier, monospace;
+
+    --entry_horizontal_padding: 30px;
+    --entry_vertical_margin: 80px;
+    --narrow_width: 600px;
+
+    background: var(--background_color);
+    color: var(--font_color);
+    font-family: var(--font_family);
+
+    /*
+     * Root font size. All other sizes with "rem" are relative to this.
+     *
+     * This corresponds to the default font size of 16px.
+     */
+    font-size: 100%;
+
+    line-height: 1.6;
+
+    /*
+     * This does seem to make a big difference, especially for bad colors and
+     * thin fonts like mine.
+     */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme="light"] {
+}
+
+.the_grid {
+    /* "Full bleed" layout that allows select elements (like images) to bleed
+     * outside normal content bounds. */
+    display: grid;
+
+    /* Use column gap instead of padding so that bleed_wide elements can still
+     * occupy 100% on smaller screens. */
+    grid-column-gap: 0 var(--entry_horizontal_padding);
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr
+        min(
+            var(--narrow_width),
+
+            /* Column gap is outside of columns, so subtracting padding
+             * prevents a horizontal scrollbar on mobile. */
+            calc(100% - 2 * var(--entry_horizontal_padding))
+        )
+        1fr
+        1fr
+        1fr;
+
+    margin: var(--entry_vertical_margin) auto;
+}
+
+    .the_grid .the_grid_wide {
+        grid-column: 3 / 6;
+    }
+
+    .the_grid .the_grid_content {
+        grid-column: 4;
+    }
+
+    .the_grid .the_grid_publish_info {
+        grid-column: 6;
+        min-width: 200px;
+    }
+
+        .the_grid .the_grid_publish_info_sticky {
+            overflow: auto;
+            position: sticky;
+
+            /* top is required for sticky */
+            top: 0;
+        }
+
+@media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px) {
+
+    .the_grid {
+    }
+
+    .the_grid .the_grid_wide {
+        grid-column: 4;
+    }
+
+}

@@ -1,8 +1,17 @@
 = content stylesheets
-  = include views/_main_stylesheets .
+  link href="/assets/{{.Release}}/stylesheets/prose.css" media="screen" rel="stylesheet" type="text/css"
 
 = content main
-  #container
+  .the_grid
+    .the_grid_wide
+      h1 {{.Fragment.Title}}
+    .the_grid_content
+      {{HTML .Fragment.Content}}
+    .the_grid_publish_info
+      .the_grid_publish_info_sticky
+        {{HTML .PublishingInfo}}
+
+  / #container
     div class="flexcontainer" id="{{if ne .Fragment.Image ""}}flexcontainer-fragments-show-mood{{end}}"
       .flag
       .top-nav
