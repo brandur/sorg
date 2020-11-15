@@ -114,7 +114,7 @@ as non-nullable by default. This additional constraint
 makes handling API responses more deterministic and less
 prone to error.
 
-{{Figure "The relationships between people in a town are a graph. This is a stretch (but I like this photo)." (ImgSrcAndAlt "/assets/images/graphql/village.jpg" "The relationships between people in a town are a graph. This is a stretch (but I like this photo).")}}
+{{Figure "The relationships between people in a town are a graph. This is a stretch (but I like this photo)." (ImgSrcAndAltAndClass "/assets/images/graphql/village.jpg" "The relationships between people in a town are a graph. This is a stretch (but I like this photo)." "overflowing")}}
 
 ## The graph (#graph)
 
@@ -162,7 +162,7 @@ right to pop open and explore the documentation. You should
 find yourself being able to build a query that delves 4+
 relations deep without much trouble.
 
-{{Figure "Using GraphiQL to explore an API and graph." (ImgSrcAndAlt "/assets/images/graphql/graphiql.png" "Using GraphiQL to explore an API and graph.")}}
+{{Figure "Using GraphiQL to explore an API and graph." (ImgSrcAndAltAndClass "/assets/images/graphql/graphiql.png" "Using GraphiQL to explore an API and graph." "overflowing")}}
 
 A vanilla installation of GraphiQL is a more powerful
 integration tool for users than what 99% of REST providers
@@ -264,7 +264,7 @@ thing, the API changes little by little. New features are
 added and old mistakes are fixed. It trends towards
 maturity incrementally in a distant perfect form.
 
-{{Figure "In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this." (ImgSrcAndAlt "/assets/images/graphql/living.jpg" "In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this.")}}
+{{Figure "In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this." (ImgSrcAndAltAndClass "/assets/images/graphql/living.jpg" "In the ideal case, we produce APIs that grow and improve like living things. My hands were really cold when I shot this." "overflowing")}}
 
 ## Shared convention and leverage (#convention)
 

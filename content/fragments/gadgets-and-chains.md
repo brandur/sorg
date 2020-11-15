@@ -59,7 +59,7 @@ execute arbitrary code or commands. After attackers manage
 to get input to a sink gadget, they've effectively found a
 way to own the box.
 
-{{Figure "Child processes transitioning from mostly shared memory to mostly copied as they mature." (ImgSrcAndAlt "/assets/images/fragments/gadgets-and-chains/gadgets-and-chains.svg" "Child processes transitioning from mostly shared memory to mostly copied as they mature.")}}
+{{Figure "Child processes transitioning from mostly shared memory to mostly copied as they mature." (ImgSrcAndAltAndClass "/assets/images/fragments/gadgets-and-chains/gadgets-and-chains.svg" "Child processes transitioning from mostly shared memory to mostly copied as they mature." "overflowing")}}
 
 Here's a basic example of a Java gadget chain in action
 (lifted more-or-less unchanged from [the talk][talk]):

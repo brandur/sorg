@@ -42,7 +42,7 @@ another service. A background worker dequeues the job, but
 finds that the user record it's looking for is nowhere to
 be found in the database.
 
-{{Figure "A job failing because the data it relies on is not yet committed." (ImgSrcAndAlt "/assets/images/job-drain/job-failure.svg" "A job failing because the data it relies on is not yet committed.")}}
+{{Figure "A job failing because the data it relies on is not yet committed." (ImgSrcAndAltAndClass "/assets/images/job-drain/job-failure.svg" "A job failing because the data it relies on is not yet committed." "overflowing")}}
 
 A related problem are transaction rollbacks. In these cases
 data is discarded completely, and jobs inserted into the
@@ -144,7 +144,7 @@ to see jobs that aren't yet commmitted (even if they've
 been inserted into `staged_jobs` by an uncommitted
 transaction), so jobs are never worked too early.
 
-{{Figure "Jobs are invisible to the enqueuer until their transaction is committed." (ImgSrcAndAlt "/assets/images/job-drain/transaction-isolation.svg" "Jobs are invisible to the enqueuer until their transaction is committed.")}}
+{{Figure "Jobs are invisible to the enqueuer until their transaction is committed." (ImgSrcAndAltAndClass "/assets/images/job-drain/transaction-isolation.svg" "Jobs are invisible to the enqueuer until their transaction is committed." "overflowing")}}
 
 It's similarly protected against rollbacks. If a job is
 inserted within a transaction that's subsequently
@@ -156,7 +156,7 @@ to the queue, so even if the worker dies partway through,
 it will pick back up again and send along any jobs that it
 missed. _At least once_ delivery semantics are guaranteed.
 
-{{Figure "Jobs being sequestered in a staging table and enqueued when they're ready to be worked." (ImgSrcAndAlt "/assets/images/job-drain/job-drain.svg" "Jobs being sequestered in a staging table and enqueued when they're ready to be worked.")}}
+{{Figure "Jobs being sequestered in a staging table and enqueued when they're ready to be worked." (ImgSrcAndAltAndClass "/assets/images/job-drain/job-drain.svg" "Jobs being sequestered in a staging table and enqueued when they're ready to be worked." "overflowing")}}
 
 ## Advantages over in-database queues (#in-database-queues)
 

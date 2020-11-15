@@ -17,7 +17,7 @@ bundled up into a ["Lambda deployment package"][package]
 (as simple as a ZIP file with a binary in it), and added to
 a new Lambda function by selecting "Go 1.x" as a runtime.
 
-{{Figure "Prompt for creating a new function on Lambda." (ImgSrcAndAlt "/assets/images/go-lambda/create-function.png" "Prompt for creating a new function on Lambda.")}}
+{{Figure "Prompt for creating a new function on Lambda." (ImgSrcAndAltAndClass "/assets/images/go-lambda/create-function.png" "Prompt for creating a new function on Lambda." "overflowing")}}
 
 Go fans around the world are undoubtedly celebrating the
 addition, but Gopher or not, this is a big step forward for
@@ -61,7 +61,7 @@ availability. Given that Lambda [will be four years old
 this year][history], it doesn't seem likely that Amazon
 will be able to to address this deficiency anytime soon.
 
-{{Figure "Go 1.x's longevity is so impressive that it feels like a part of the landscape." (ImgSrcAndAlt "/assets/images/go-lambda/mountain.jpg" "Go 1.x's longevity is so impressive that it feels like a part of the landscape.")}}
+{{Figure "Go 1.x's longevity is so impressive that it feels like a part of the landscape." (ImgSrcAndAltAndClass "/assets/images/go-lambda/mountain.jpg" "Go 1.x's longevity is so impressive that it feels like a part of the landscape." "overflowing")}}
 
 ## The remarkable tenacity of 1.x (#tenacity)
 

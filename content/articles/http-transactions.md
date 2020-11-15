@@ -41,7 +41,7 @@ HTTP request, requests should map to backend transactions
 at 1:1. For every request, all operations are committed or
 aborted as part of a single transaction within it.
 
-{{Figure "Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio." (ImgSrcAndAlt "/assets/images/http-transactions/http-transactions.svg" "Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio.")}}
+{{Figure "Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio." (ImgSrcAndAltAndClass "/assets/images/http-transactions/http-transactions.svg" "Transactions (tx1, tx2, tx3) mapped to HTTP requests at a 1:1 ratio." "overflowing")}}
 
 At first glance requiring idempotency may sound like a
 sizeable caveat, but in many APIs operations can be made to
@@ -154,7 +154,7 @@ potentially allow two interleaved transactions to run their
 They'd both follow up with an `INSERT`, leaving a
 duplicated row.
 
-{{Figure "A data race causing two concurrent HTTP requests to insert the same row." (ImgSrcAndAlt "/assets/images/http-transactions/concurrent-race.svg" "A data race causing two concurrent HTTP requests to insert the same row.")}}
+{{Figure "A data race causing two concurrent HTTP requests to insert the same row." (ImgSrcAndAltAndClass "/assets/images/http-transactions/concurrent-race.svg" "A data race causing two concurrent HTTP requests to insert the same row." "overflowing")}}
 
 Luckily, in this example we've used an even more powerful
 mechanism than `UNIQUE` to protect our data's correctness.
@@ -212,7 +212,7 @@ end
 In this case, we might have more than one of the same
 transaction mapped to the HTTP request like so:
 
-{{Figure "An aborted transaction being retried within the same request." (ImgSrcAndAlt "/assets/images/http-transactions/transaction-retry.svg" "An aborted transaction being retried within the same request.")}}
+{{Figure "An aborted transaction being retried within the same request." (ImgSrcAndAltAndClass "/assets/images/http-transactions/transaction-retry.svg" "An aborted transaction being retried within the same request." "overflowing")}}
 
 These loops will be more expensive than usual, but again,
 we're protecting ourselves against an unusual race. In
