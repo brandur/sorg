@@ -1,25 +1,27 @@
 = content stylesheets
-  = include views/_main_stylesheets .
+  link href="/assets/{{.Release}}/stylesheets/sequences.css" media="screen" rel="stylesheet" type="text/css"
+  link href="/assets/{{.Release}}/stylesheets/simpleLightbox.css" media="screen" rel="stylesheet" type="text/css"
 
 = content main
   / Moves to the bottom of the screen when the width becomes too short.
-  .top-nav.top-nav-flat.hide-small
+  .top-nav-flat.hide-small
     .nav-inner
       = include views/_nav
-  .sequences-index-words.sequences-index-words-light
-    .sequences-index-words-inner
-      p.sequences-words-sequence Sequence
-      h1 {{.Sequence.Title}}
-      p {{HTML .Description}}
-      .divider
-      p.atom Follow the <a href="/sequences/{{.Sequence.Slug}}.atom" class="feed-icon">Atom feed for this sequence</a>, or a <a href="/sequences.atom" class="feed-icon">combined one of all sequences</a>.
-      p.atom I also <a href="https://twitter.com/brandur" class="twitter-icon">tweet</a> new photos.
-  .sequences-index-gallery
-    {{range .Entries}}
-      .sequences-index-photograph
-        a href="/sequences/{{$.Sequence.Slug}}/{{.Slug}}"
-          {{RetinaImageAlt (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .FirstPhoto.Slug) .Title}}
-    {{end}}
-  .top-nav.top-nav-flat.hide-big
+  .sequences-index
+    .sequences-index-words.sequences-index-words-light
+      .sequences-index-words-inner
+        p.sequences-words-sequence Sequence
+        h1 {{.Sequence.Title}}
+        p {{HTML .Description}}
+        .divider
+        p.atom Follow the <a href="/sequences/{{.Sequence.Slug}}.atom" class="feed-icon">Atom feed for this sequence</a>, or a <a href="/sequences.atom" class="feed-icon">combined one of all sequences</a>.
+        p.atom I also <a href="https://twitter.com/brandur" class="twitter-icon">tweet</a> new photos.
+    .sequences-index-gallery
+      {{range .Entries}}
+        .sequences-index-photograph.sequences-photograph
+          a href="/sequences/{{$.Sequence.Slug}}/{{.Slug}}"
+            {{RetinaImageAlt (printf "/photographs/sequences/%s/%s.jpg" $.Sequence.Slug .FirstPhoto.Slug) .Title}}
+      {{end}}
+  .top-nav-flat.hide-big
     .nav-inner
       = include views/_nav

@@ -2194,7 +2194,6 @@ func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceE
 	}
 
 	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":   "sequences-index",
 		"Description": description,
 		"Entries":     entriesReversed,
 		"Sequence":    sequence,
@@ -2229,7 +2228,6 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*Sequen
 	}
 
 	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":   "sequences-all",
 		"Description": description,
 		"Entries":     entriesReversed,
 		"Sequence":    sequence,
@@ -2353,7 +2351,6 @@ func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *Sequence
 	title := fmt.Sprintf("%s — %s %s", entry.Title, sequence.Title, entry.Slug)
 
 	locals := getLocals(title, map[string]interface{}{
-		"BodyClass":     "sequences-entry",
 		"Entry":         entry,
 		"EntryNext":     entryNext,
 		"EntryNextNext": entryNextNext,

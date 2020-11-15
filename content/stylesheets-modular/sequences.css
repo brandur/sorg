@@ -1,0 +1,674 @@
+/*****************************************************************************
+ *
+ *
+ *
+ * Common
+ *
+ *
+ *
+ ***************************************************************************/
+
+:root {
+    --sans_serif: "helvetica neue", helvetica, arial, geneva, sans-serif;
+    --serif: cardo, georgia, serif;
+
+    --color_background: #000;
+    --color_primary: #fff;
+    --color_secondary: #ddd;
+    --color_lowlight: #181818;
+
+    /*
+     * Root font size. All other sizes with "rem" are relative to this.
+     *
+     * This corresponds to the default font size of 16px.
+     */
+    font-size: 100%;
+}
+
+a {
+    border-bottom: 1px solid var(--color_lowlight);
+    color: var(--color_primary);
+    text-decoration: none;
+}
+
+  a:hover {
+      border-bottom: 1px solid var(--color_lowlight);
+  }
+
+  a:visited {
+  }
+
+a {
+    border-bottom: 1px solid var(--color_primary);
+    color: var(--color_primary);
+    text-decoration: none;
+}
+
+  a:hover {
+      border-bottom: 0;
+  }
+
+  a.feed-icon::after {
+      background-image: url('/assets/images/icons/rss.svg');
+      background-position: 4px 0;
+      background-repeat: no-repeat;
+      background-size: 10px 20px;
+      content: "";
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+  }
+
+  a.twitter-icon::after {
+      background-image: url('/assets/images/icons/twitter.svg');
+      background-position: 4px 0;
+      background-repeat: no-repeat;
+      background-size: 12px 20px;
+      content: "";
+      display: inline-block;
+      height: 15px;
+      width: 17px;
+  }
+
+body {
+    background: var(--color_background);
+    font-family: var(--serif);
+    margin: 0;
+
+    /*
+     * text-rendering doesn't seem to do much -- I'm basically cargo culting it
+     * from a blog post, but font-smoothing makes text look *much* better (at
+     * least on Mac devices).
+     */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-family: var(--sans_serif);
+    font-size: 5.75rem;
+    font-weight: 400;
+    letter-spacing: -6px;
+    line-height: 1em;
+    margin: 20px 0 30px 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+p {
+    hyphens: auto;
+}
+
+.divider {
+    border-bottom: 1px solid var(--color_secondary);
+    margin: 30px 0;
+}
+
+/* Hides in the desktop/large width view. */
+.hide-big {
+    display: none;
+}
+
+/* Hides in the mobile/short width view. */
+.hide-small {
+    display: block;
+}
+
+.sequences-photograph {
+}
+
+    .sequences-photograph a {
+        border-bottom: 0;
+    }
+
+.simpleLightboxHide {
+    display: none;
+}
+
+/*
+ * This is frowned upon for accessibility reasons, but the border looks;
+ * ridiculous.
+ */
+.simpleLightboxNoBorder:focus {
+    outline: none;
+}
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+
+    .hide-big {
+        display: block;
+    }
+
+    .hide-small {
+        display: none;
+    }
+
+}
+
+/*****************************************************************************
+ *
+ *
+ *
+ * Nav
+ *
+ *
+ *
+ ***************************************************************************/
+
+.top-nav-flat {
+    background: #000;
+    color: #fff;
+    margin: 15px 20px;
+}
+
+  .nav-inner {
+      max-width: none;
+      overflow: auto;
+  }
+
+  .top-nav-flat nav {
+      font-family: var(--sans_serif);
+      font-size: 0.65rem;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+
+    .top-nav-flat nav ul {
+        line-height: 1em;
+        list-style-type: none;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+      .top-nav-flat nav ul li {
+          float: left;
+          line-height: 1.8em;
+          margin: 0 5px;
+      }
+
+        .top-nav-flat nav ul li a {
+            border-bottom: 0;
+            color: #fff;
+        }
+
+        .top-nav-flat nav ul li a:hover {
+            border-bottom: 2px solid #fff;
+            color: #fff;
+        }
+
+/*****************************************************************************
+ *
+ *
+ *
+ * Common: All/index
+ *
+ *
+ *
+ ***************************************************************************/
+
+.sequences-all, .sequences-index {
+}
+
+    p.sequences-words-sequence {
+        font-family: var(--sans_serif);
+        font-size: 0.65rem;
+        font-weight: bold;
+        letter-spacing: normal;
+        line-height: 1.4em;
+        margin: 20px 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+/*****************************************************************************
+ *
+ *
+ *
+ * Common: All/entry
+ *
+ *
+ *
+ ***************************************************************************/
+
+.sequences-all, .sequences-entry {
+    color: var(--color_primary);
+}
+
+    .sequences-entry-flex {
+        margin: 80px 0;
+    }
+
+        .sequences-entry-divider {
+            border-bottom: 1px solid var(--color_lowlight);
+            margin: 20px auto 40px auto;
+            width: 60%;
+        }
+
+        .sequences-entry-words {
+            color: var(--color_secondary);
+            font-size: 0.95rem;
+            line-height: 1.55em;
+            margin: 50px auto;
+            /* changed from wider 1500px; */
+            max-width: 1100px;
+            padding: 0 30px;
+        }
+
+            .sequences-entry-words h1 {
+                color: var(--color_primary);
+                font-family: var(--serif);
+                font-size: 2.2rem;
+                letter-spacing: -2px;
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .sequences-entry-words p {
+                margin: 15px 0;
+            }
+
+            .sequences-entry-words p.sequences-entry-sequence {
+                font-family: var(--sans_serif);
+                font-size: 0.65rem;
+                font-weight: bold;
+                letter-spacing: normal;
+                line-height: 1.4em;
+                margin: 20px 0;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+                .sequences-entry-words p.sequences-entry-sequence a {
+                    border-bottom: 0;
+                }
+
+            .sequences-entry-words p.sequences-entry-words-title {
+                font-family: var(--sans_serif);
+                font-size: 0.8rem;
+                font-weight: bold;
+                margin-bottom: -15px;
+            }
+
+                .sequences-entry-words p.sequences-entry-words-title a {
+                    border-bottom: 0;
+                }
+
+            .sequences-entry-words strong {
+                font-family: var(--sans_serif);
+                font-size: 0.85rem;
+            }
+
+      .sequences-entry-words-narrow {
+          margin: 50px auto;
+          max-width: 500px;
+      }
+
+      .sequences-entry-photograph-container {
+          margin: 0 auto;
+          /* changed from wider 1600px; */
+          max-width: calc(1200px + 2 * 30px)
+      }
+
+          .sequences-entry-photograph-inner {
+              margin: 10px 30px;
+          }
+
+              .sequences-entry-photograph-inner img {
+                  margin: 0 auto;
+                  width: 100%;
+              }
+
+          .sequences-entry-photograph-double {
+              display: flex;
+              flex-direction: row;
+          }
+
+              .sequences-entry-photograph-double .sequences-entry-photograph-a {
+                  margin: 0 5px 0 0;
+              }
+
+              .sequences-entry-photograph-double .sequences-entry-photograph-b {
+                  margin: 0 0 0 5px;
+              }
+
+      .sequences-entry-carousel {
+          margin: 30px auto;
+          max-width: 700px;
+          width: 100%;
+
+          display: -webkit-flex;
+          display: flex;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+          -webkit-justify-content: space-around;
+          justify-content: space-around;
+      }
+
+          .sequences-entry-carousel-photograph, .sequences-entry-carousel-photograph-current {
+              margin: 5px;
+          }
+
+          .sequences-entry-carousel-photograph {
+              width: 70px;
+          }
+
+             .sequences-entry-carousel-photograph img {
+                  transition: transform 0.1s;
+              }
+
+                 .sequences-entry-carousel-photograph img:hover {
+                      border-radius: 5px;
+                      transform: scale(1.1)
+                  }
+
+          .sequences-entry-carousel-photograph-current {
+              width: 90px;
+          }
+
+              .sequences-entry-carousel-photograph-current img {
+                  border-radius: 5px;
+              }
+
+      .sequences-entry-info {
+          color: var(--color_secondary);
+          font-family: var(--sans_serif);
+          font-size: 0.75rem;
+          margin: 30px auto;
+          text-align: center;
+      }
+
+          .sequences-entry-info span.slug {
+              background: var(--color_primary);
+              border-radius: 2px;
+              color: var(--color_background);
+              margin: 0 3px;
+              padding: 3px 4px;
+          }
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+
+    .sequences-all, .sequences-entry {
+    }
+
+        .sequences-entry-flex {
+            margin: 30px 0;
+        }
+
+            .sequences-entry-divider {
+                margin: 15px auto 20px auto;
+            }
+
+            .sequences-entry-words {
+                font-size: 1rem;
+                line-height: 1.6em;
+                max-width: none;
+                margin: 50px auto;
+            }
+
+                .sequences-entry-words h1 {
+                    font-size: 1.9rem;
+                    letter-spacing: -2px;
+                }
+
+                .sequences-entry-words strong {
+                    font-size: 0.9rem;
+                }
+
+            .sequences-entry-photograph-container {
+            }
+
+                .sequences-entry-photograph-inner {
+                    margin: 5px 0;
+                }
+
+                .sequences-entry-photograph-double {
+                    flex-direction: column;
+                    margin: 0;
+                }
+
+                    .sequences-entry-photograph-double .sequences-entry-photograph-a {
+                        margin: 5px 0;
+                    }
+
+                    .sequences-entry-photograph-double .sequences-entry-photograph-b {
+                        margin: 5px 0;
+                    }
+
+            .sequences-entry-carousel {
+                margin: 20px auto;
+            }
+
+            .sequences-entry-info {
+                margin: 20px auto;
+            }
+
+}
+
+/*****************************************************************************
+ *
+ *
+ *
+ * All
+ *
+ *
+ *
+ ***************************************************************************/
+
+.sequences-all {
+}
+
+    .sequences-all-divider, .sequences-all-divider-first {
+        background: var(--color_lowlight);
+        height: 1px;
+        margin: 30px 0;
+    }
+
+    .sequences-all-divider-first {
+        margin-top: 0;
+    }
+
+    .sequences-all-words {
+        background: #000 url('/assets/images/standin_01.jpg') no-repeat center center scroll;
+        background-size: cover;
+    }
+
+        .sequences-all-words h1 {
+            color: #fff;
+            font-family: var(--sans_serif);
+            font-size: 8rem;
+            letter-spacing: -8px;
+            margin-bottom: 80px;
+            text-align: center;
+            text-shadow: 0 0 10px #000;
+        }
+
+        .sequences-all-words p.sequences-words-sequence {
+            color: #fff;
+            text-shadow: 0 0 2px #000;
+        }
+
+        .sequences-all-words .sequences-all-words-inner {
+            font-size: 1rem;
+            line-height: 1.8em;
+            margin: 0 auto;
+            max-width: 650px;
+            padding: 100px 70px 120px 70px;
+        }
+
+            .sequences-all-words .sequences-all-words-inner .sequences-all-intro {
+                background: #000;
+                padding: 20px 30px;
+            }
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+
+    .sequences-all {
+    }
+
+        .sequences-all-words {
+        }
+
+            .sequences-all-words h1 {
+                font-size: 6.5rem;
+                letter-spacing: -6px;
+            }
+
+            .sequences-all-words .sequences-all-words-inner {
+                font-size: 1rem;
+                line-height: 1.6em;
+                max-width: none;
+                padding: 80px 40px;
+            }
+
+                .sequences-all-words .sequences-all-words-inner h1 {
+                    margin-bottom: 50px;
+                }
+
+}
+
+/*****************************************************************************
+ *
+ *
+ *
+ * Index
+ *
+ *
+ *
+ ***************************************************************************/
+
+.sequences-index {
+}
+
+    .sequences-index-words {
+        color: var(--color_background);
+    }
+
+        .sequences-index-words-inner {
+            font-size: 1rem;
+            line-height: 1.8em;
+            margin: 0 auto;
+            max-width: 550px;
+            padding: 100px 70px;
+        }
+
+        .sequences-index-words-inner a {
+            border-bottom: 1px solid var(--color_background);
+            color: var(--color_background);
+        }
+
+            .sequences-index-words-inner h1 {
+                color: #fff;
+                margin-bottom: 80px;
+                text-align: center;
+            }
+
+            .sequences-index-words-inner p.atom {
+                color: #555;
+                font-family: var(--sans_serif);
+                font-size: 0.75rem;
+                line-height: 1.6em;
+                margin: 5px 0;
+                text-align: center;
+
+                hyphens: none;
+                -ms-hyphens: none;
+                -webkit-hyphens: none;
+            }
+
+    .sequences-index-words-light {
+        background: #fff;
+    }
+
+        .sequences-index-words-inner {
+        }
+
+            .sequences-index-words-inner h1 {
+                color: #000;
+            }
+
+    .sequences-index-gallery {
+        padding: 40px 0;
+        width: 100%;
+
+        align-items: center;
+        -webkit-align-items: center;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+
+        .sequences-index-photograph {
+            margin: 20px 40px;
+
+            /*
+             * Grow images according to window size. Looks good, but I like it;
+             * without a little better.
+
+            flex-grow: 1;
+            */
+        }
+
+            .sequences-index-photograph img {
+                /* border: 5px solid var(--color_background); */
+                transition: transform 0.1s;
+                width: 100%;
+            }
+
+              .sequences-index-photograph img:hover {
+                  /* border: 5px solid var(--color_lowlight); */
+                  border-radius: 10px;
+                  transform: scale(1.05)
+              }
+
+@media handheld, only screen and (max-width: 767px), only screen and (max-device-width: 767px) {
+
+    .sequences-index {
+    }
+
+        .sequences-index-words {
+        }
+
+            .sequences-index-words-inner {
+                font-size: 1rem;
+                line-height: 1.6em;
+                max-width: none;
+                padding: 80px 40px;
+            }
+
+                .sequences-index-words-inner h1 {
+                    margin-bottom: 50px;
+                }
+
+            .sequences-index-gallery {
+                flex-direction: column;
+                flex-wrap: nowrap;
+                padding: 10px 0;
+            }
+
+                .sequences-index-photograph {
+                    margin: 0;
+                    flex-grow: 1;
+                    margin: 5px 0;
+                    width: 100%;
+                }
+
+                    .sequences-index-photograph img {
+                        transition: none;
+                    }
+
+                    .sequences-index-photograph img:hover {
+                        border-radius: 0;
+                        transform: none;
+                    }
+
+}
