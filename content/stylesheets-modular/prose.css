@@ -16,16 +16,27 @@
  ***************************************************************************/
 
 :root {
-    --font_family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+    --font_family_serif: Cardo, Georgia, serif;
+    --font_family_sans_serif: "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
     --font_family_monospace: Monaco, "Lucida Console", "Bitstream Vera Sans Mono", Courier, monospace;
 
-    --entry_horizontal_padding: 30px;
-    --entry_vertical_margin: 80px;
-    --narrow_width: 600px;
+    --entry_horizontal_margin: 30px;
+    --entry_vertical_margin: 50px;
+    --narrow_width: 550px;
+    --paragraph_vertical_margin: 30px;
 
-    background: var(--background_color);
+    /* light theme */
+    --background_color: #fff;
+    --code_background_color: #eee;
+    --font_color: #3d3d3d;
+    --highlight_color: #000;
+    --light_background_color: #efefef;
+    --lowlight_color: #333;
+
+    --small_block_font_size: 0.6rem;
+
     color: var(--font_color);
-    font-family: var(--font_family);
+    font-family: var(--font_family_serif);
 
     /*
      * Root font size. All other sizes with "rem" are relative to this.
@@ -34,7 +45,7 @@
      */
     font-size: 100%;
 
-    line-height: 1.6;
+    line-height: 1.7;
 
     /*
      * This does seem to make a big difference, especially for bad colors and
@@ -45,64 +56,332 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-html[data-theme="light"] {
+html[data-theme="dark"] {
+    /* dark theme */
+    --background_color: #000;
+    --code_background_color: #40404c;
+    --font_color: #ddd;
+    --highlight_color: #fff;
+    --lowlight_color: #bbb;
+}
+
+body {
+    /* Cheat a bit: here we give the document itself the color of the insert at
+     * the top so when the user "overscrolls" like in iOS Safari, they see the
+     * insert's color continued. The grid, which is the core of the layout and
+     * which occupies all space, gets the real background color below. */
+    background: var(--light_background_color);
+
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--highlight_color);
+    font-family: var(--font_family_sans_serif);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: -5px;
+    line-height: 1;
+}
+
+strong {
+    color: var(--highlight_color);
+    font-family: var(--font_family_sans_serif);
+    font-size: 0.9rem;
 }
 
 .the_grid {
+    --grid_column_gap: 30px;
+    --grid_insert_padding: 7px;
+    --grid_min_bleed_width: 100px;
+    --grid_min_insert_width: 150px;
+    --grid_top_nav_height: 120px;
+
+    background: var(--background_color);
+
     /* "Full bleed" layout that allows select elements (like images) to bleed
      * outside normal content bounds. */
     display: grid;
 
     /* Use column gap instead of padding so that bleed_wide elements can still
      * occupy 100% on smaller screens. */
-    grid-column-gap: 0 var(--entry_horizontal_padding);
+    grid-column-gap: var(--grid_column_gap);
+
+    grid-row-gap: var(--entry_vertical_margin);
 
     grid-template-columns:
         1fr
-        1fr
-        1fr
+        minmax(var(--grid_min_insert_width), 1fr)
+        minmax(var(--grid_min_bleed_width), 1fr)
         min(
             var(--narrow_width),
 
             /* Column gap is outside of columns, so subtracting padding
              * prevents a horizontal scrollbar on mobile. */
-            calc(100% - 2 * var(--entry_horizontal_padding))
+            calc(100% - 6 * var(--grid_column_gap))
         )
-        1fr
-        1fr
+        minmax(var(--grid_min_bleed_width), 1fr)
+        minmax(var(--grid_min_insert_width), 1fr)
         1fr;
 
-    margin: var(--entry_vertical_margin) auto;
+    margin: 0 auto;
 }
 
     .the_grid .the_grid_wide {
         grid-column: 3 / 6;
+        /*
+        margin: var( --entry_vertical_margin) 0;
+        */
     }
 
-    .the_grid .the_grid_content {
+    .the_grid_top_line {
+        background: var(--background_color);
+        box-shadow:
+          0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+          0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+          0 100px 80px rgba(0, 0, 0, 0.12)
+        ;
+        height: 40px;
+        grid-column: 1 / 8;
+    }
+
+        .the_grid_top_line_inner {
+            background: var(--light_background_color);
+            height: calc(100% - 1 * var(--grid_insert_padding));
+            margin: 0 0 var(--grid_insert_padding) 0;
+        }
+
+    .the_grid_top_nav {
+        background: var(--background_color);
+        box-shadow:
+          0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+          0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+          0 12.5px 10px rgba(0, 0, 0, 0.06),
+          0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+          0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+          0 100px 80px rgba(0, 0, 0, 0.12)
+        ;
+        height: var(--grid_top_nav_height);
+        grid-column: 6;
+        margin-top: calc(-1 * (var(--grid_insert_padding) + var(--entry_vertical_margin)));
+        overflow: auto;
+        position: sticky;
+
+        /* top is required for sticky */
+        top: 0;
+    }
+
+        .the_grid_top_nav_inner {
+            background: var(--light_background_color);
+            height: calc(100% - 1 * var(--grid_insert_padding));
+            margin: 0 var(--grid_insert_padding) var(--grid_insert_padding) var(--grid_insert_padding);
+        }
+
+    .the_grid .the_grid_title {
+        grid-row: 2;
+        /*
+        border-bottom: 8px solid var(--highlight_color);
+        */
+        text-align: center;
+    }
+
+        .the_grid .the_grid_title h1 {
+            margin: 0;
+        }
+
+    .the_grid .the_grid_separator {
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.034);
+        border-bottom: 5px solid var(--font_color);
+        grid-column: 1 / 8;
+    }
+
+    .the_grid_content {
         grid-column: 4;
     }
 
-    .the_grid .the_grid_publish_info {
+        .the_grid_content figure {
+            margin: 0 calc(-1 * (var(--grid_min_bleed_width) + var(--grid_column_gap)));
+            text-align: center;
+        }
+
+            .the_grid .the_grid_content figure img {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .the_grid .the_grid_content figure img[src$=".svg"] {
+                /* for dark theme
+                filter: invert(100%);
+                */
+
+                width: auto;
+            }
+
+        .the_grid_content img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .the_grid_content p:first-of-type {
+            margin-top: 0;
+        }
+
+        .the_grid_content_toc {
+            border-bottom: 1px solid var(--light_background_color);
+            font-family: var(--font_family_sans_serif);
+            font-size: 0.7rem;
+            float: right;
+            margin-bottom: calc(var(--paragraph_vertical_margin) / 2);
+            margin-left: calc(var(--paragraph_vertical_margin) / 2);
+            margin-right: calc(-1 * (var(--grid_min_bleed_width) + var(--grid_column_gap)));
+            margin-top: 0;
+            max-width: calc(40% + var(--grid_min_bleed_width));
+        }
+
+            .the_grid_content_toc h2 {
+                border-bottom: 1px solid var(--light_background_color);
+                border-top: 1px solid var(--highlight_color);
+                font-size: var(--small_block_font_size);
+                margin: 0;
+                padding: 8px 0;
+                text-transform: uppercase;
+            }
+
+            .the_grid_content_toc ol {
+                font-weight: bold;
+                /*
+                list-style-position: inside;
+                */
+                list-style-type: upper-roman;
+                margin: 15px 0;
+                padding-left: 20px;
+            }
+
+                .the_grid_content_toc li {
+                    margin: 2px 0;
+                }
+
+                .the_grid_content_toc ol ol {
+                    font-weight: normal;
+                    margin: 10px 0;
+                    list-style-type: lower-alpha;
+                }
+
+                    .the_grid_content_toc ol ol li {
+                        margin: 2px 0;
+                    }
+
+                    .the_grid_content_toc ol ol ol {
+                        font-size: 0.65rem;
+                        list-style-type: lower-roman;
+                    }
+
+                        .the_grid_content_toc ol ol ol li {
+                            margin: 0 0;
+                        }
+
+    .the_grid_side {
         grid-column: 6;
-        min-width: 200px;
     }
 
-        .the_grid .the_grid_publish_info_sticky {
+        .the_grid_insert {
+            background: var(--light_background_color);
+            box-shadow:
+              0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+              0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+              0 12.5px 10px rgba(0, 0, 0, 0.06),
+              0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+              0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+              0 100px 80px rgba(0, 0, 0, 0.12)
+            ;
+            font-family: var(--font_family_sans_serif);
+            font-size: 0.7rem;
+            line-height: 1.4;
+
             overflow: auto;
             position: sticky;
 
             /* top is required for sticky */
-            top: 0;
+            top: calc(var(--grid_top_nav_height) + var(--grid_insert_padding));
         }
+
+            .the_grid_insert strong {
+                font-size: 0.7rem;
+                line-height: 1.7;
+            }
+
+            .the_grid_insert_inner {
+                background: var(--background_color);
+                margin: var(--grid_insert_padding);
+                padding: 10px;
+
+            /*
+                background: #f8f8ff;
+                background-image: url(/assets/images/noisy.png);
+                border-radius: 5px;
+            */
+            }
+
+        .the_grid_other {
+        /*
+            overflow: auto;
+        */
+                overflow: auto;
+                position: sticky;
+
+                /* top is required for sticky */
+                top: 400px;
+        }
+
+            .the_grid_other_inner {
+            }
+
+                .the_grid_other_section {
+                    font-family: var(--font_family_sans_serif);
+                    font-size: 0.7rem;
+                    line-height: 1.4;
+                    margin: var(--entry_vertical_margin) 0;
+                }
+
+                    .the_grid_other_section h2 {
+                        border-bottom: 1px solid var(--light_background_color);
+                        border-top: 1px solid var(--highlight_color);
+                        font-size: var(--small_block_font_size);
+                        margin: 0;
+                        padding: 8px 0;
+                        text-transform: uppercase;
+                    }
 
 @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px) {
 
     .the_grid {
+        display: block;
+        margin: 0 var(--entry_horizontal_margin);
     }
 
-    .the_grid .the_grid_wide {
-        grid-column: 4;
-    }
+        .the_grid .the_grid_wide {
+            grid-column: 4;
+        }
 
-}
+        .the_grid .the_grid_content {
+        }
+
+            .the_grid .the_grid_content figure {
+                margin: 0;
+            }
+
+            .the_grid .the_grid_content .the_grid_toc {
+                float: none;
+                margin-bottom: var(--paragraph_vertical_margin);
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: var(--paragraph_vertical_margin);
+                max-width: none;
+            }
