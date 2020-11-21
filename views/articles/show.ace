@@ -21,7 +21,9 @@
             = include views/_nav
             .nav-extra-content
               .divider
-              {{HTML .PublishingInfo}}
+              {{RenderPublishingInfo .PublishingInfo}}
+              .divider
+              {{.TwitterInfo}}
         .toc-index
         .content
           {{if eq .Article.Image ""}}
@@ -41,7 +43,8 @@
               .divider-short
               .info
                 .publishing-info-bottom
-                  | {{HTML .PublishingInfo}}
+                  {{RenderPublishingInfo .PublishingInfo}}
+                  {{.TwitterInfo}}
                 {{if ne .Article.HNLink ""}}
                   p Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
                 {{end}}

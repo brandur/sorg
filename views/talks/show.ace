@@ -10,7 +10,9 @@
           = include views/_nav
           .nav-extra-content
             .divider
-            {{HTML .PublishingInfo}}
+            {{RenderPublishingInfo .PublishingInfo}}
+            .divider
+            {{.TwitterInfo}}
       .toc-index
       .content
         .content-header-standard

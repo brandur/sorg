@@ -11,7 +11,6 @@ import (
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtoml"
-	"github.com/brandur/sorg/modules/scommon"
 )
 
 // Slide represents a slide within a talk.
@@ -75,12 +74,15 @@ type Talk struct {
 
 // PublishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when a talk is shown.
-func (t *Talk) PublishingInfo() string {
-	return `<p><strong>Talk</strong><br>` + t.Title + `</p>` +
-		`<p><strong>Published</strong><br>` + t.PublishedAt.Format("January 2, 2006") + `</p>` +
-		`<p><strong>Location</strong><br>` + t.Location + `</p>` +
-		`<p><strong>Event</strong><br>` + t.Event + `</p>` +
-		scommon.TwitterInfo
+func (t *Talk) PublishingInfo() map[string]string {
+	info := make(map[string]string)
+
+	info["Talk"] = t.Title
+	info["Published"] = t.PublishedAt.Format("January 2, 2006")
+	info["Location"] = t.Location
+	info["Event"] = t.Event
+
+	return info
 }
 
 func (t *Talk) validate(source string) error {

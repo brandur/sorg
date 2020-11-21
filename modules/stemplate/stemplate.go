@@ -28,6 +28,7 @@ var FuncMap = template.FuncMap{
 	"NumberWithDelimiter":     numberWithDelimiter,
 	"Pace":                    pace,
 	"RandIntn":                randIntn,
+	"RenderPublishingInfo":    renderPublishingInfo,
 	"RenderTweetContent":      renderTweetContent,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
@@ -153,6 +154,16 @@ var tagRE = regexp.MustCompile(`#(\w+)`)
 
 // Matches users in a tweet (like #mix11).
 var userRE = regexp.MustCompile(`@(\w+)`)
+
+func renderPublishingInfo(info map[string]string) template.HTML {
+	s := ""
+
+	for k, v := range info {
+		s += fmt.Sprintf("<p><strong>%s</strong><br>%s</p>", k, v)
+	}
+
+	return template.HTML(s)
+}
 
 // Renders the content of a tweet to HTML.
 func renderTweetContent(content string) string {

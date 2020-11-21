@@ -925,11 +925,14 @@ type Article struct {
 
 // publishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when an article is shown.
-func (a *Article) publishingInfo() string {
-	return `<p><strong>Article</strong><br>` + a.Title + `</p>` +
-		`<p><strong>Published</strong><br>` + a.PublishedAt.Format("January 2, 2006") + `</p> ` +
-		`<p><strong>Location</strong><br>` + a.Location + `</p>` +
-		scommon.TwitterInfo
+func (a *Article) publishingInfo() map[string]string {
+	info := make(map[string]string)
+
+	info["Article"] = a.Title
+	info["Published"] = a.PublishedAt.Format("January 2, 2006")
+	info["Location"] = a.Location
+
+	return info
 }
 
 // taggedWith returns true if the given tag is in this article's set of tags
@@ -1000,16 +1003,17 @@ type Fragment struct {
 
 // PublishingInfo produces a brief spiel about publication which is intended to
 // go into the left sidebar when a fragment is shown.
-func (f *Fragment) publishingInfo() string {
-	s := `<p><strong>Fragment</strong><br>` + f.Title + `</p>` +
-		`<p><strong>Published</strong><br>` + f.PublishedAt.Format("January 2, 2006") + `</p> `
+func (f *Fragment) publishingInfo() map[string]string {
+	info := make(map[string]string)
+
+	info["Fragment"] = f.Title
+	info["Published"] = f.PublishedAt.Format("January 2, 2006")
 
 	if f.Location != "" {
-		s += `<p><strong>Location</strong><br>` + f.Location + `</p>`
+		info["Location"] = f.Location
 	}
 
-	s += scommon.TwitterInfo
-	return s
+	return info
 }
 
 func (f *Fragment) validate(source string) error {
@@ -1282,6 +1286,7 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 		"Title":             title,
 		"TitleSuffix":       scommon.TitleSuffix,
 		"TwitterCard":       nil,
+		"TwitterInfo":       scommon.TwitterInfo,
 		"ViewportWidth":     viewportWidthDeviceWidth,
 	}
 
