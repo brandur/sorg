@@ -1000,6 +1000,14 @@ type Fragment struct {
 
 	// Title is the fragment's title.
 	Title string `toml:"title"`
+
+	// TOC is the HTML rendered table of contents of the article. It isn't
+	// included as TOML frontmatter, but rather calculated from the article's
+	// content, rendered, and then added separately.
+	TOC string `toml:"-"`
+
+	// TOCOutline is the same as TOC, except with only h1s and h2s included.
+	TOCOutline string `toml:"-"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -1595,6 +1603,16 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 	fragment.Slug = scommon.ExtractSlug(source)
 
 	fragment.Content, err = mmarkdownext.Render(string(data), nil)
+	if err != nil {
+		return true, err
+	}
+
+	fragment.TOC, err = mtoc.RenderFromHTML(fragment.Content)
+	if err != nil {
+		return true, err
+	}
+
+	fragment.TOCOutline, err = mtoc.RenderFromHTMLWithMaxLevel(fragment.Content, 2)
 	if err != nil {
 		return true, err
 	}

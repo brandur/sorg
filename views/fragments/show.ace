@@ -3,43 +3,57 @@
 
 = content main
   .the_grid
-    .the_grid_top_line
-      .the_grid_top_line_inner h
+    .the_grid_top_left
+
+    .the_grid_top_bar
+
     .the_grid_top_nav
-      .the_grid_top_nav_inner h
+      .the_grid_top_nav_inner
+        ul
+          li Home
+          li Articles
+          li Newsletters
+          li Fragments
+          li Now
+          li About
+
+    .the_grid_top_right
+
     .the_grid_wide.the_grid_title
       h1 {{.Fragment.Title}}
+
     .the_grid_separator
+
+    .the_grid_side_left
+      .the_grid_side_left_inner
+        {{if ne .Fragment.TOCOutline ""}}
+          .the_grid_side_section.the_grid_side_section_first
+            h2.the_grid_side_header Outline
+            .the_grid_toc
+              {{HTML .Fragment.TOCOutline}}
+        {{end}}
+
     .the_grid_content
-      .the_grid_content_toc
-        h2 Contents
-        ol
-          li Section 1 somewhat long
-          li
-            | Section 2 a little long
-            ol
-              li Subsection A
-              li Subsection B a little more length
-              li
-                | Subsection C
-                ol
-                  li Subsubsection i
-                  li Subsubsection ii
-                  li Subsubsection iii
-          li Section 3: other stuff
+
+      {{if ne .Fragment.TOC ""}}
+        .the_grid_toc.the_grid_content_toc
+          h2.the_grid_side_header Contents
+          {{HTML .Fragment.TOC}}
+      {{end}}
+
       {{HTML .Fragment.Content}}
-    .the_grid_side
+
+    .the_grid_side_right
       .the_grid_insert
         .the_grid_insert_inner
-          {{HTML .PublishingInfo}}
+          {{RenderPublishingInfo .PublishingInfo}}
       .the_grid_other
         .the_grid_other_inner
-          .the_grid_other_section
-            h2 Contents
-            p hello
-          .the_grid_other_section
-            h2 Other
-            p hello
+          .the_grid_side_section
+            h2.the_grid_side_header Summary
+            p {{.Fragment.Hook}}
+          .the_grid_side_section.the_grid_side_section_light
+            {{.TwitterInfo}}
 
   / #container
     div class="flexcontainer" id="{{if ne .Fragment.Image ""}}flexcontainer-fragments-show-mood{{end}}"
