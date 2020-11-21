@@ -25,9 +25,9 @@ func TestRender(t *testing.T) {
 	assert.NotEmpty(t, talk.Title)
 
 	publishingInfo := talk.PublishingInfo()
-	assert.Contains(t, publishingInfo, talk.Event)
-	assert.Contains(t, publishingInfo, talk.Location)
-	assert.Contains(t, publishingInfo, talk.Title)
+	assert.Contains(t, talk.Event, publishingInfo["Event"])
+	assert.Contains(t, talk.Location, publishingInfo["Location"])
+	assert.Contains(t, talk.Title, publishingInfo["Talk"])
 
 	for i, slide := range talk.Slides {
 		if i == 0 {
