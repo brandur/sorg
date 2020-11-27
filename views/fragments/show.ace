@@ -28,8 +28,8 @@
       .the_grid_side_left_inner
         {{if ne .Fragment.TOCOutline ""}}
           .the_grid_side_section.the_grid_side_section_first
-            h2.the_grid_side_header Outline
-            .the_grid_toc
+            h2.the_grid_side_header.the_grid_side_header_right Outline
+            .the_grid_toc.the_grid_toc_right
               {{HTML .Fragment.TOCOutline}}
         {{end}}
 

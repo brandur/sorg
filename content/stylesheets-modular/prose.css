@@ -156,6 +156,10 @@ strong {
         text-transform: uppercase;
     }
 
+    .the_grid_side_header_right {
+        text-align: right;
+    }
+
     .the_grid_side_section {
         border-top: 1px solid var(--highlight_color);
         font-family: var(--font_family_sans_serif);
@@ -210,6 +214,14 @@ strong {
                     .the_grid_toc ol ol ol li {
                         margin: 0 0;
                     }
+
+    .the_grid_toc_right {
+        text-align: right;
+    }
+
+        .the_grid_toc_right ol {
+            list-style-position: inside;
+        }
 
     .the_grid_wide {
         grid-column: 2 / 7;
