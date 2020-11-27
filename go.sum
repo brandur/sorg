@@ -16,6 +16,8 @@ github.com/brandur/modulir v0.0.0-20201121221351-f80bab277281 h1:IFkcrnl/GyNKQHN
 github.com/brandur/modulir v0.0.0-20201121221351-f80bab277281/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
 github.com/brandur/modulir v0.0.0-20201127034309-98f3c8316037 h1:6KXu+rgjesCAlRI+VLCB9mvD85lZP+dhDDa1yFv1u1w=
 github.com/brandur/modulir v0.0.0-20201127034309-98f3c8316037/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
+github.com/brandur/modulir v0.0.0-20201127214654-b6d191e47316 h1:2QMqWg2NbCt3z5xEeOjKXZeFTUOL8N9z7R3cMTF+wRQ=
+github.com/brandur/modulir v0.0.0-20201127214654-b6d191e47316/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

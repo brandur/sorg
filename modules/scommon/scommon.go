@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	texttemplate "text/template"
 
 	"github.com/brandur/modulir/modules/mtemplate"
 	"github.com/brandur/modulir/modules/mtemplatemd"
@@ -69,13 +70,17 @@ const TwitterInfo = template.HTML(`<p>Find me on Twitter at ` +
 //
 //////////////////////////////////////////////////////////////////////////////
 
-// TemplateFuncMap is a function map of template helpers which is the combined
-// version of the maps from ftemplate, mtemplate, and mtemplatemd.
-var TemplateFuncMap template.FuncMap = mtemplate.CombineFuncMaps(
+// HTMLTemplateFuncMap is a function map of template helpers which is the
+// combined version of the maps from ftemplate, mtemplate, and mtemplatemd.
+var HTMLTemplateFuncMap template.FuncMap = mtemplate.CombineFuncMaps(
 	stemplate.FuncMap,
 	mtemplate.FuncMap,
 	mtemplatemd.FuncMap,
 )
+
+// TextTemplateFuncMap is a combined set of template helpers for text
+// templates.
+var TextTemplateFuncMap texttemplate.FuncMap = mtemplate.HTMLFuncMapToText(HTMLTemplateFuncMap)
 
 //////////////////////////////////////////////////////////////////////////////
 //

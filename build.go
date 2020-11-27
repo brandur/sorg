@@ -101,7 +101,7 @@ var universalSources []string
 //////////////////////////////////////////////////////////////////////////////
 
 func init() {
-	mmarkdownext.FuncMap = scommon.TemplateFuncMap
+	mmarkdownext.FuncMap = scommon.TextTemplateFuncMap
 
 	mimage.MagickBin = conf.MagickBin
 	mimage.MozJPEGBin = conf.MozJPEGBin
@@ -1264,7 +1264,7 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 // getAceOptions gets a good set of default options for Ace template rendering
 // for the project.
 func getAceOptions(dynamicReload bool) *ace.Options {
-	options := &ace.Options{FuncMap: scommon.TemplateFuncMap}
+	options := &ace.Options{FuncMap: scommon.HTMLTemplateFuncMap}
 
 	if dynamicReload {
 		options.DynamicReload = true

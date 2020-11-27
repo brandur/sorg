@@ -250,7 +250,7 @@ type tweetYear struct {
 // getAceOptions gets a good set of default options for Ace template rendering
 // for the project.
 func getAceOptions(dynamicReload bool) *ace.Options {
-	options := &ace.Options{FuncMap: scommon.TemplateFuncMap}
+	options := &ace.Options{FuncMap: scommon.HTMLTemplateFuncMap}
 
 	if dynamicReload {
 		options.DynamicReload = true
