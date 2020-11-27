@@ -352,14 +352,12 @@ datum and the _negated_ form of the subnet bitmask
 (`ipaddr_datum & ~subnet_bitmask`):
 
 ``` c
-{{HTMLSafePassThrough `
 else if (ip_bits(authoritative) < SIZEOF_DATUM * BITS_PER_BYTE)
 {
     /* Split ipaddr bits between network and subnet */
     subnet_bitmask = (((Datum) 1) << subnet_size) - 1;
     network = ipaddr_datum & ~subnet_bitmask;
 }
-`}}
 ```
 
 The final case represents no bits in the subnet. Set
@@ -396,7 +394,6 @@ The order of operations is:
    (2), and (4) above.
 
 ``` c
-{{HTMLSafePassThrough `
 #if SIZEOF_DATUM == 8
     if (ip_family(authoritative) == PGSQL_AF_INET)
     {
@@ -437,7 +434,6 @@ The order of operations is:
     }
     else
 #endif
-`}}
 ```
 
 ### Everything else (#everything-else)
