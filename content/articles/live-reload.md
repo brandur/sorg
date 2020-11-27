@@ -65,6 +65,7 @@ usage is as simple as adding directories to a watcher and
 listening on a channel:
 
 ``` go
+{{HTMLSafePassThrough `
 watcher, err := fsnotify.NewWatcher()
 ...
 
@@ -77,6 +78,7 @@ for {
             log.Println("event:", event)
     }
 }
+`}}
 ```
 
 When something in the `content` directory changes, the
@@ -206,6 +208,7 @@ The watcher code with an accumulating inner loop looks
 something like this (simplified slightly for brevity):
 
 ``` go
+{{HTMLSafePassThrough `
 for {
     select {
     case event := <-watchEvents:
@@ -252,6 +255,7 @@ for {
         }
     }
 }
+`}}
 ```
 
 ## Signaling with WebSockets (#websockets)
@@ -414,6 +418,7 @@ that possible. But for us as the end user, it's all hidden
 behind a couple function calls and two channels:
 
 ``` go
+{{HTMLSafePassThrough `
 watcher, err := fsnotify.NewWatcher()
 ...
 
@@ -429,6 +434,7 @@ for {
             ...
     }
 }
+`}}
 ```
 
 None of the package's underlying complexity leaks into my
