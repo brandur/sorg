@@ -23,6 +23,7 @@ html lang="en"
 
     = yield stylesheets
     script src="/assets/{{.Release}}/app.js" type="text/javascript"
+    script src="/assets/{{.Release}}/javascripts/prism.js" type="text/javascript"
 
     {{if eq .SorgEnv "development"}}
       / Served by Modulir itself (but only if websockets are enabled).

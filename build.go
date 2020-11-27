@@ -244,6 +244,7 @@ func build(c *modulir.Context) []error {
 		commonSymlinks := [][2]string{
 			{c.SourceDir + "/content/fonts", c.TargetDir + "/assets/fonts"},
 			{c.SourceDir + "/content/images", c.TargetDir + "/assets/images"},
+			{c.SourceDir + "/content/javascripts-modular", versionedAssetsDir + "/javascripts"},
 
 			// For backwards compatibility as many emails with this style of path
 			// have already gone out.

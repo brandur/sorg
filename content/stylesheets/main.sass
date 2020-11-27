@@ -344,10 +344,10 @@ p
   -webkit-hyphens: auto
   margin: 20px 0
 
-pre
+pre, pre[class*="language-"]
   background: $quaternary
   font-family: $monospace
-  font-size: 0.75rem
+  font-size: 0.75rem !important
   line-height: 1.4em
   overflow: visible
   padding: 25px
@@ -355,10 +355,12 @@ pre
   // calculation offsets padding
   width: calc(650px - 2 * 25px)
 
-  code
+  code, code[class*="language-"]
     background: transparent
     border: 0
     display: block
+    line-height: 1.5
+    text-shadow: 0 1px #fff
 
 strong
   font-weight: bold
