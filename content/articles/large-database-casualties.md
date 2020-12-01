@@ -2,7 +2,7 @@
 hook = "Databases shed important RDMS features as they get big. Examining why this tends to be the case, and some ideas for preventing it."
 location = "San Francisco"
 published_at = 2020-12-01T20:06:51Z
-title = "Casualties of Large Databases"
+title = "Feature Casualties of Large Databases"
 +++
 
 Big data has an unfortunate tendency to get messy. A few years in, a growing database that use to be small, lean, and well-designed, has better odds than not of becoming something large, bloated, and with best practices tossed aside and now considered unsalvageable.
