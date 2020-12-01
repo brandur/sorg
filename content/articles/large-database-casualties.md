@@ -48,7 +48,7 @@ There's a few reasons that nullable-by-default is so common. The simplest is sim
 
 A more common reason is that non-nullable columns often require that existing data be migrated, which is difficult, time consuming, and maybe even operationally fraught on nodes which are running very hot and which a migration unexpectedly pushes over the edge.
 
-Lastly, there are often technological limitations as well. In Postgres for example, even after running a migration, taking that last step of changing a nullable column to non-nullable (`SET NOT NULL`) isn't safe. Postgres needs to verify that there are no nulls in the table, requiring a full table scan that blocks other operations. On a small table that'll run in an instant. On a large one, it could be the downfall of production.
+Lastly, there are often technological limitations as well. In Postgres for example, even after running a migration, taking that last step of changing a nullable column to non-nullable (`SET NOT NULL`) isn't safe. Postgres needs to verify that there are no nulls in the table, requiring a full table scan that blocks other operations. On a small table that'll run in an instant. On a large one, it could be the downfall of production [1].
 
 ### Suboptimal indexing (#indexing)
 
@@ -95,3 +95,5 @@ There's a variety of possible operations-friendly features that might be possibl
 * A migrations framework built into the database itself that makes migrations easier and faster to write while also guaranteeing stability by allowing long-lived migration-related queries to be deprioritized and paused if necessary.
 
 Ideally, we get to a place where large databases enjoy all the same benefits as smaller ones, and we all get to reap the benefits of software that gets more stable and more reliable as a result.
+
+[1] There are workarounds for Postgres like adding a `CHECK` constraint on null values instead of `NOT NULL`, but it'd obviously be better if it was possible to use the native DDL.
