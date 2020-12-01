@@ -10,4 +10,4 @@ Because AWS offers an SQL Server product, and Babelfish translates from SQL Serv
 
 Babelfish itself isn't Aurora-specific. Amazon notes on the product page that they intend to open source it, which probably means that it'll eventually be usable for any Postgres installation inside of AWS or out.
 
-SQL Server is a good database (I worked with it for years back in my C# days), but Postgres is a better database, and between the much more rapid feature development in Postgres and a better server environment, I'd go with the latter every time. However, even with Babelfish, migrating to Postgres would still be big effort/expense for anyone, so it'll be interesting to see what its actual pick up will be.
+SQL Server is a good database (I worked with it for years back in my C# days), but Postgres is a better database, and between the much more rapid feature development in Postgres and better server environment, I'd go with the latter every time. However, even with Babelfish, migrating to Postgres would still be big effort/expense for anyone, so it'll be interesting to see what its actual pick up will be.
