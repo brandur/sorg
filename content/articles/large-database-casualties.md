@@ -2,6 +2,7 @@
 hook = "Databases shed important RDMS features as they get big. Examining why this tends to be the case, and some ideas for preventing it."
 location = "San Francisco"
 published_at = 2020-12-01T20:06:51Z
+tags = ["postgres"]
 title = "Feature Casualties of Large Databases"
 +++
 
@@ -41,9 +42,9 @@ Sacrificing referential integrity is rationalized away in a number of ways. Some
 
 ### Nullable, as far as the eye can see (#nullable)
 
-Relations in large databases tend to have a disproportionate number of nullable fields. This is a problem because in application code it's more difficult to work with objects that have a poorly defined schema. Every nullable field needs to be examined independently, and a fallback designed for it it didn't have a value. This takes time and introduces new vectors for bugs.
+Relations in large databases tend to have a disproportionate number of nullable fields. This is a problem because in application code it's more difficult to work with objects that have a poorly defined schema. Every nullable field needs to be examined independently, and a fallback designed for it in case it didn't have a value. This takes time and introduces new avenues for bugs.
 
-There's a number of reasons that nullable-by-default is so common. The simplest is simply that nullable columns are literally the default in DDL -- you'll get one unless you're really thinking about what you're doing and explicitly use `NOT NULL`.
+There's a few reasons that nullable-by-default is so common. The simplest is simply that nullable columns are literally the default in DDL -- you'll get one unless you're really thinking about what you're doing and explicitly use `NOT NULL`.
 
 A more common reason is that non-nullable columns often require that existing data be migrated, which is difficult, time consuming, and maybe even operationally fraught on nodes which are running very hot and which a migration unexpectedly pushes over the edge.
 
