@@ -38,7 +38,7 @@ if !user
 end
 ```
 
-Sacrificing referential integrity is rationalized away in a number of ways. Sometimes it's due to technological limitation, sometimes due to reliability concerns (a benign-looking delete triggering an unexpectedly large cascade), but more often it's for the simple-and-not-good reason that maintaining good hygiene around foreign key relations takes discipline and effort.
+Sacrificing referential integrity is rationalized away in a number of ways. Sometimes it's due to technological limitation, sometimes due to reliability concerns (a benign-looking delete triggering an unexpectedly large cascade), but more often it's for the simple-and-not-good reason that maintaining good hygiene around foreign key relations takes discipline and work.
 
 ### Nullable, as far as the eye can see (#nullable)
 
