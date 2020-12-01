@@ -61,7 +61,7 @@ Indexes are the easiest thing in the world to work with until they're not. In a 
 
 Reduced performance is the most obvious outcome, but expensive index operations can have less obvious ones too. I worked on a project recently where product design was being driven by whether options would necessitate raising a new index on a particularly enormous collection which would take weeks and cost a large figure every year in storage costs alone.
 
-### Restricted APIs (#restricted-apis)
+### Dangerous queries and restricted APIs (#restricted-apis)
 
 SQL is the most expressive language ever for querying and manipulating data, and in the right hands, that power can make hard things easy.
 
