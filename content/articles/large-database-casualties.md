@@ -29,7 +29,7 @@ Losing transactions is bad news for an applications future operability, but as t
 
 Referential integrity guarantees that if a key exists somewhere in a database, then the object its referencing does as well. Foreign keys allow developers to control deletions such that if an object is being removed, but is still referenced, than that deletion should be blocked (`ON DELETE RESTRICT`), or, that referencing objects should be removed with it (`ON DELETE CASCADE`).
 
-It's a powerful tool for correctness -- having the database enforcing certain rules makes code easier to write. _Not_ having it tends to bleed out into code. Suddenly anytime a referenced object is loaded _anywhere_, the case that it came up without a result must be handled:
+It's a powerful tool for correctness -- having the database enforcing certain rules makes programs easier to write and easier to get right. _Not_ having it tends to bleed out into code. Suddenly anytime a referenced object is loaded _anywhere_, the case that it came up without a result must be handled:
 
 ``` ruby
 user = User.load(api_key.user_id)
