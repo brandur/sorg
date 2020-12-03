@@ -7,6 +7,8 @@ tags = ["postgres"]
 title = "Postgres Job Queues & Failure By MVCC"
 +++
 
+This article was written before `SKIP LOCKED` was introduced in PostgreSQL version 9.5. This features solves most issues of the following text.
+
 An alarm goes off and open your laptop. Your job queue has spiked to 10,000 jobs and is still growing rapidly. The bloated queue means that internal components are not receiving critical updates which will eventually compromise the health of the whole system. You start to investigate. The worker processes look healthy and jobs are being worked in a timely manner. Everything else looks normal. After close to an hour feeling around the system you notice a transaction that another team has opened for analytical purposes on one of your database followers. You promptly send it a SIGINT. The queue's backlog evaporates in the blink of an eye and normalcy returns.
 
 Long running databases transactions appear to be the culprit here, but how exactly can they have such a significant impact on a database table? And so quickly no less?
