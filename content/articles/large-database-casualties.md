@@ -82,9 +82,9 @@ Where I work now, even with the comparative unexpressiveness of Mongo compared t
 
 ## Ideas for scalability (#scalability-ideas)
 
-There's a divide between the engineers who run big production systems and the developers who work on open-source projects in the data space, with neither group having all that much visibility into the other. Engineers who run big databases tend to adopt a nilhist outlook that every large installation inevitably trends towards a key/value store -- at a certain point, the niceties available to smaller databases must get the axe. Open-source developers don't tend to value highly the features that would help big installations.
+There's a divide between the engineers who run big production systems and the developers who work on open-source projects in the data space, with neither group having all that much visibility into the other. Engineers who run big databases tend to adopt a nihilist outlook that every large installation inevitably trends towards a key/value store -- at a certain point, the niceties available to smaller databases must get the axe. Open-source developers don't tend to value highly the features that would help big installations.
 
-I don't think the nilhist viewpoint should be the inevitable outcome, and there's cause for optimism in the development of systems like Citus, Spanner, and CockroachDB, which enable previously difficult features like cross shard transactions. We need even more movement in that direction.
+I don't think the nihilist viewpoint should be the inevitable outcome, and there's cause for optimism in the development of systems like Citus, Spanner, and CockroachDB, which enable previously difficult features like cross shard transactions. We need even more movement in that direction.
 
 There's a variety of possible operations-friendly features that might be possible to counteract the entropic dumbing down of large databases. Some ideas:
 
