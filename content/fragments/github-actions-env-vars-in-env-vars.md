@@ -4,7 +4,6 @@ published_at = 2020-12-03T23:46:05Z
 title = "GitHub Actions: Setting env vars with other env vars"
 +++
 
-
 GitHub Actions provides an `env` configuration that allows a build to inject environmental variables into a full workflow or an individual step:
 
 ``` yaml
