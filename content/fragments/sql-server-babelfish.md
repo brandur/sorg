@@ -6,7 +6,7 @@ title = "Aurora Babelfish"
 
 A neat product release from Amazon: [Babelfish](https://aws.amazon.com/rds/aurora/babelfish/), a translation layer that rewrites proprietary SQL Server commands (T-SQL) to their Postgres equivalents.
 
-Because AWS offers an SQL Server product, and Babelfish translates from SQL Server to Postgres and not the other way around, this seems to imply that Amazon is a bigger believer in the long term prospects of (or at least would like to invest in) Postgres compared to SQL Server. But I might be reading too far into it because this was designed for Aurora specifically, a product that's made workable by adding custom hooks to an open source database's storage layer, and which is probably not feasible for SQL Server.
+Because AWS offers an SQL Server product, and Babelfish translates from SQL Server to Postgres and not the other way around, this seems to imply that Amazon is a bigger believer in the long term prospects of Postgres compared to SQL Server. But I might be reading too far into it because this was designed for Aurora specifically, a product that's made workable by adding custom hooks to an open source database's storage layer, and which is probably not feasible for closed-source SQL Server.
 
 Babelfish itself isn't Aurora-specific. Amazon notes on the product page that they intend to open source it, which probably means that it'll eventually be usable for any Postgres installation inside of AWS or out.
 
