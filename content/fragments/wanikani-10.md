@@ -10,16 +10,16 @@ WaniKani makes a difficult task as easy as it could be, but it's certainly not e
 
 It does get a little easier beyond the first few levels. At first, kanji readings seem cruel and unusual, but after you've seen dozens of them, you start to see that there's a lot of patterns and repetitions in their use of basic Japanese fragments. Combining them to get words is an incredibly effective way to learn Japanese vocabulary, and the kanji meanings usually give you just enough of a hint to recognize what a word you've forgotten means [1].
 
-## The kanji is the key (#kanji-key)
+## The building blocks are the key (#building-blocks-key)
 
-A key to progressing quickly in WaniKani is to really make sure you learn the kanji. Each level is broken into learning radicals, kanji, and finally vocabulary. Upon unlocking a new level, it gives you roughly half of its kanji to learn right away, but withholds the second half until you've learnt the first. Vocabulary also unlocks according to kanji learnt.
+A key to progressing quickly in WaniKani is to really make sure you learn the radicals and kanji. Each level is broken into learning radicals, kanji, and finally vocabulary, with the last being by far the most numerous. Upon unlocking a new level, it gives you roughly half of its kanji to learn right away, but withholds the second half until you've hit guru (five correct answers in a row) for every radical. Vocabulary unlocks according to kanji learnt.
 
-This all makes sense, but even making a few mistakes on kanji can hold you back by days at a time as you can't access the rest of the level, or can't progress to the next one. WaniKani doesn't require that you learn _every_ kanji to advance, but it does require that you learn a supermajority (the exact number depends on the level, but it's always a high number like 29 out of 32).
+This all makes sense, but even making a few mistakes on radicals or kanji can hold you back by days at a time as you can't access the rest of the level, or can't progress to the next one. WaniKani doesn't require that you learn _every_ kanji to level up, but it does require that you learn a supermajority (the exact number depends on the level, but it's always a high number like 29 out of 32).
 
 I've adopted this routine:
 
 * When advancing to a new level, blow through all the lessons for radicals and kanji on the first day they're available. This gets the clock started for advancement.
-* Restudy each kanji I've learned _before_ the first time I review it so as not to get it wrong in the review and slow progress. (If you have a very good memory, maybe this isn't necessary, but I find it is for me.)
+* Restudy each radical and kanji I've learned _before_ the first time I review it so as not to get it wrong in the review and slow progress. (If you have a very good memory, maybe this isn't necessary, but I find it is for me.)
 * Periodically restudy each kanji at my current level between reviews. I find I need to do this the morning after the day I originally learned it because I tend to forget new kanji overnight. Again, this is to minimize the chances of an accident during review.
 * As soon as the second set of kanji unlocks for the level, repeat the same process.
 
