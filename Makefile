@@ -181,6 +181,12 @@ endif
 sigusr2:
 	killall -SIGUSR2 sorg
 
+# sigusr2 aliases
+.PHONY: reboot
+reboot: sigusr2
+.PHONY: restart
+restart: sigusr2
+
 .PHONY: test
 test:
 	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
