@@ -1,24 +1,32 @@
+.PHONY: all
 all: clean install test vet lint check-dl0 check-gofmt check-headers check-retina build
 
+.PHONY: build
 build:
 	$(shell go env GOPATH)/bin/sorg build
 
+.PHONY: check-d10
 check-dl0:
 	scripts/check_dl0.sh
 
+.PHONY: check-gofmt
 check-gofmt:
 	scripts/check_gofmt.sh
 
+.PHONY: check-headers
 check-headers:
 	scripts/check_headers.sh
 
+.PHONY: check-retina
 check-retina:
 	scripts/check_retina.sh
 
+.PHONY: clean
 clean:
 	mkdir -p public/
 	rm -f -r public/*
 
+.PHONY: compile
 compile: install
 
 # Long TTL (in seconds) to set on an object in S3. This is suitable for items
@@ -32,6 +40,7 @@ LONG_TTL := 86400
 # that are expected to change more frequently like any HTML file.
 SHORT_TTL := 3600
 
+.PHONY: deploy
 deploy: check-target-dir
 # Note that AWS_ACCESS_KEY_ID will only be set for builds on the master branch
 # because it's stored in GitHub as a secret variable. Secret variables are not
@@ -97,6 +106,7 @@ else
 	# No AWS access key. Skipping deploy.
 endif
 
+.PHONY: install
 install:
 	go install .
 
@@ -104,6 +114,7 @@ install:
 
 # Usage:
 #     make PATHS="/fragments /fragments/six-weeks" invalidate
+.PHONY: invalidate
 invalidate: check-aws-keys check-cloudfront-id
 ifndef PATHS
 	$(error PATHS is required)
@@ -111,31 +122,38 @@ endif
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths ${PATHS}
 
 # Invalidates CloudFront's entire cache.
+.PHONY: invalidate-all
 invalidate-all: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /
 
 # Invalidates CloudFront's cached assets.
+.PHONY: invalidate-assets
 invalidate-assets: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /assets
 
 # Invalidates CloudFront's cached index pages. This is useful, but not
 # necessarily required, when publishing articles or new data (if it's not run,
 # anything cached in CloudFront will expire naturally after SHORT_TTL).
+.PHONY: invalidate-indexes
 invalidate-indexes: check-aws-keys check-cloudfront-id
 	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /photos /reading /runs /twitter
 
+.PHONY: killall
 killall:
 	killall sorg
 
+.PHONY: lint
 lint:
 	$(shell go env GOPATH)/bin/golint -set_exit_status ./...
 
+.PHONY: loop
 loop:
 	$(shell go env GOPATH)/bin/sorg loop
 
 # A specialized S3 bucket used only for caching resized photographs.
 PHOTOGRAPHS_S3_BUCKET := "brandur.org-photographs"
 
+.PHONY: photographs-download
 photographs-download:
 ifdef AWS_ACCESS_KEY_ID
 	aws s3 sync s3://$(PHOTOGRAPHS_S3_BUCKET)/ content/photographs/
@@ -143,6 +161,7 @@ else
 	# No AWS access key. Skipping photographs-download.
 endif
 
+.PHONY: photographs-download-markers
 photographs-download-markers:
 ifdef AWS_ACCESS_KEY_ID
 	aws s3 sync s3://$(PHOTOGRAPHS_S3_BUCKET)/ content/photographs/ --exclude "*" --include "*.marker"
@@ -150,6 +169,7 @@ else
 	# No AWS access key. Skipping photographs-download-markers.
 endif
 
+.PHONY: photographs-upload
 photographs-upload:
 ifdef AWS_ACCESS_KEY_ID
 	aws s3 sync content/photographs/ s3://$(PHOTOGRAPHS_S3_BUCKET)/ --size-only
@@ -157,17 +177,21 @@ else
 	# No AWS access key. Skipping photographs-upload.
 endif
 
+.PHONY: sigusr2
 sigusr2:
 	killall -SIGUSR2 sorg
 
+.PHONY: test
 test:
 	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test ./...
 
+.PHONY: test-nocache
 test-nocache:
 	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test -count=1 ./...
 
+.PHONY: vet
 vet:
 	go vet ./...
 
@@ -181,6 +205,7 @@ GO_FILES := $(shell find . -type f -name "*.go" ! -path "./vendor/*")
 # Meant to be used in conjuction with `forego start`. When a Go file changes,
 # this watch recompiles the project, then sends USR2 to the process which
 # prompts Modulir to re-exec it.
+.PHONY: watch-go
 watch-go:
 	fswatch -o $(GO_FILES) vendor/ | xargs -n1 -I{} make install sigusr2
 
@@ -190,6 +215,7 @@ watch-go:
 
 # Requires that variables necessary to make an AWS API call are in the
 # environment.
+.PHONY: check-aws-keys
 check-aws-keys:
 ifndef AWS_ACCESS_KEY_ID
 	$(error AWS_ACCESS_KEY_ID is required)
@@ -200,11 +226,13 @@ endif
 
 # Requires that variables necessary to update a CloudFront distribution are in
 # the environment.
+.PHONY: check-cloudfront-id
 check-cloudfront-id:
 ifndef CLOUDFRONT_ID
 	$(error CLOUDFRONT_ID is required)
 endif
 
+.PHONY: check-target-dir
 check-target-dir:
 ifndef TARGET_DIR
 	$(error TARGET_DIR is required)
