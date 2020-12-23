@@ -18,4 +18,4 @@ This site is a static set of HTML, JS, CSS, and image files built using a [custo
 
 ## Design (#design)
 
-The responsive design aims to improve readability and emphasize content through typography, whitespace, and clean lines compared [to earlier incarnations of my work](https://mutelight.org). It wouldn't have been possible without the timeless beauty of [Helvetica](http://en.wikipedia.org/wiki/Helvetica_(film)).
+The responsive design aims to improve readability and emphasize content through typography, whitespace, and clean lines compared [to earlier incarnations of my work](https://mutelight.org). It wouldn't have been possible without the timeless beauty of [Helvetica](http://en.wikipedia.org/wiki/Helvetica_(film\)).
