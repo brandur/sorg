@@ -8,7 +8,7 @@ The EFF writes about [how .org was saved this year](https://www.eff.org/deeplink
 
 Short version: ISOC (Internet Society), caretakers of the .org domain registry, try to make a quick buck (or billion+ of them) by selling a piece of the common good bequeathed to their care to a for-profit entity, Ethos Capital. The IETF, led by Fadi Chehadi, had recently removed the price caps on .org domains, making the registry infinitely more valuable. Soon thereafter, Chehadi leaves the IETF and co-founds Ethos Capital. The EFF along with a coalition of .org holders spend a year fighting this bald-faced graft. They succeed, but all parties involved in the scandal get away Scot-Free without even the merest suggestion of consequences.
 
-ISOC tried to add the thinnest possible layer of legitimacy by getting Ethos to agree to cap price increases on .org domains by "only" 10% a year for the first eight years, which would have "only" doubled the prices of .org domains over that period. Beyond year eight, Ethos would be allowed to raise prices to whatever they want.
+ISOC tried to add the thinnest possible veneer of legitimacy by getting Ethos to agree to cap price increases on .org domains by "only" 10% a year for the first eight years, which would have "only" doubled the prices of .org domains over that period. Beyond year eight, Ethos would be allowed to raise prices to whatever they want.
 
 Chehadi and the IETF, having realized the incredible profit to be made from tens of thousands of captive non-profits, then using their power to dissolve protections and authorize a sale that should never have been allowed, are obvious villains. Frankly, corruption this overt should be embarrassing to all parties involved -- at least _try_ to keep it under the table.
 
