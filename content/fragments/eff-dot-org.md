@@ -1,5 +1,5 @@
 +++
-hook = "TODO"
+hook = "The EFF applies enough backpressure to stop .org's sale to a for-profit entity."
 published_at = 2020-12-24T05:21:36Z
 title = "The .org armageddon staved off, for now"
 +++
