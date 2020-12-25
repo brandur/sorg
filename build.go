@@ -102,9 +102,6 @@ var universalSources []string
 
 func init() {
 	mmarkdownext.FuncMap = scommon.TextTemplateFuncMap
-
-	mimage.MagickBin = conf.MagickBin
-	mimage.MozJPEGBin = conf.MozJPEGBin
 }
 
 //////////////////////////////////////////////////////////////////////////////
