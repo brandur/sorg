@@ -21,6 +21,7 @@ import (
 	"github.com/brandur/modulir/modules/mimage"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mmarkdownext"
+	"github.com/brandur/modulir/modules/mtemplate"
 	"github.com/brandur/modulir/modules/mtemplatemd"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
@@ -1439,6 +1440,15 @@ func renderArticle(c *modulir.Context, source string, articles *[]*Article, arti
 		return true, err
 	}
 
+	if article.Hook != "" {
+		hook, err := mmarkdownext.Render(article.Hook, nil)
+		if err != nil {
+			return true, err
+		}
+
+		article.Hook = mtemplate.CollapseParagraphs(hook)
+	}
+
 	format, ok := pathAsImage(
 		path.Join(c.SourceDir, "content", "images", article.Slug, "hook"),
 	)
@@ -1594,6 +1604,15 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 	fragment.Content, err = mmarkdownext.Render(string(data), nil)
 	if err != nil {
 		return true, err
+	}
+
+	if fragment.Hook != "" {
+		hook, err := mmarkdownext.Render(fragment.Hook, nil)
+		if err != nil {
+			return true, err
+		}
+
+		fragment.Hook = mtemplate.CollapseParagraphs(hook)
 	}
 
 	card := &twitterCard{
