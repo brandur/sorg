@@ -28,7 +28,7 @@
                   a href="/newsletter" Newsletter
                 li
                   a href="/now" Now
-                li
+                / li
                   a href="/sitemap" Sitemap
             .sitemap-col
               h2.block Writing

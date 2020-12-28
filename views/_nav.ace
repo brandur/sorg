@@ -22,6 +22,6 @@ nav
       a href="/now" title="What I'm doing now" Now
     li
       a href="/about" title="About me & this site" About
-    li
+    / li
       a href="/sitemap"
         span title="Sitemap" ☰
