@@ -21,11 +21,11 @@ given the huge variety of events and thematic creativity that's put into the
 place ([Berghain][berghain] of course probably still reigns supreme). Death
 Guild is easily my favorite regular event in SF, and parties like
 [Cyberdelia][codeword2] are close to the best commercial evening activities
-possible within the legal framework of California [2].
+possible within the legal framework of California [1].
 
 All of that said, the choice to open a new club on 5th is a little astonishing.
 I _live_ on the block, and can attest firsthand that this area is a cultural
-wasteland as far as SF is concerned [1]. Although the population density is
+wasteland as far as SF is concerned [2]. Although the population density is
 quite high due to the unusual number of residential high-rises in the area, the
 residents are generally well-to-do white collar workers who decided to stay in
 SF instead of going out to the suburbs. They're at home watching _The Food
@@ -39,7 +39,7 @@ high speed traffic makes being anywhere near the street incredibly unpleasant
 establishments within a block or more, with anything commercial being either a
 gas station, sex shop, auto mechanic, or convenience store. It's also _just_
 far enough away from Moscone and Westfield that conference goers and shoppers
-will never see it.
+will never find it organically.
 
 All I can think to suggest is that he try to pick up some of the daytime
 "cafe people with laptops" crowd. Although certainly not the most lucrative
@@ -60,11 +60,11 @@ interesting venues opening instead of closing.
 [codeword1]: https://www.dnalounge.com/backstage/log/2015/12/22.html
 [codeword2]: https://www.dnalounge.com/backstage/log/2016/01/27.html
 
-[1] Note that I call it a "cultural wasteland" because I'm comparing it to the
+[1] I grew up in the 80s and rank _Hackers_ among my favorite movies ever, so
+    my opinion may carry some bias.
+
+[2] Note that I call it a "cultural wasteland" because I'm comparing it to the
     standards of SF. Relative to almost any other area in any North American
     city, it's still doing alright.
-
-[2] I grew up in the 80s and rank _Hackers_ among my favorite movies ever, so
-    my opinion may carry some bias.
 
 [3] See any location of Sightglass, Blue Bottle, Four Barrel, or Ritual.
