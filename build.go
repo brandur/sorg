@@ -565,7 +565,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("twitter", func() (bool, error) {
-			return c.AllowError(renderTwitter(c, db)), nil
+			return renderTwitter(c, db)
 		})
 	}
 
@@ -2428,12 +2428,9 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 }
 
 func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
-	if db == nil {
-		return false, nil
-	}
-
 	viewsChanged := c.ChangedAny(append(
 		[]string{
+			scommon.DataDir + "/twitter.toml",
 			scommon.MainLayout,
 			scommon.ViewsDir + "/twitter/index.ace",
 		},

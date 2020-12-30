@@ -44,14 +44,14 @@
                     ul
                       {{range $month.Tweets}}
                         li
-                          {{RenderTweetContent .Content | HTML}}
+                          {{RenderTweet . | HTML}}
                           span.meta
-                            a href="https://twitter.com/brandur/statuses/{{.Slug}}" rel="nofollow"
-                              {{$display := DistanceOfTimeInWordsFromNow .OccurredAt}}
+                            a href="https://twitter.com/brandur/statuses/{{.ID}}" rel="nofollow"
+                              {{$display := DistanceOfTimeInWordsFromNow .CreatedAt}}
                               {{if ne "" $display}}
                                 {{$display}}
                               {{else}}
-                                {{FormatTimeWithMinute .OccurredAt}}
+                                {{FormatTimeWithMinute .CreatedAt}}
                               {{end}}
                       {{end}}
                 {{end}}

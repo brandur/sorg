@@ -30,6 +30,11 @@ const (
 	// AtomTag is a stable constant to use in Atom tags.
 	AtomTag = "brandur.org"
 
+	// DataDir is where various TOML files for quantified self statistics
+	// reside. These are pulled from another project which updates them
+	// automatically.
+	DataDir = "./data"
+
 	// LayoutsDir is the source directory for view layouts.
 	LayoutsDir = "./layouts"
 
