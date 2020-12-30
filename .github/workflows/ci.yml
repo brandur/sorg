@@ -74,14 +74,14 @@ jobs:
           # Usually just fetch this from ImageMagick directly, but changed to
           # my own S3 bucket as they seem to be having certificate trouble.
           # curl -L -o $HOME/imagemagick/bin/magick https://imagemagick.org/download/binaries/magick
-          curl -L -o $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
+          curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
           chmod +x $HOME/imagemagick/bin/magick
 
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
-          curl -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
+          curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           sudo dpkg -i mozjpeg_master_amd64.deb
 
       - name: Checkout
@@ -109,6 +109,10 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
           PGDATABASE: postgres
+
+      - name: Fetch latest data/
+        run: |
+          curl --compressed --output data/twitter.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/twitter.toml
 
       - name: "Go: Test"
         run: make test

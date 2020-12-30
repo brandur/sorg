@@ -5,6 +5,7 @@ import (
 	"crypto/sha1"
 	"encoding/base64"
 	"fmt"
+	"html"
 	"html/template"
 	"math"
 	"math/rand"
@@ -14,6 +15,7 @@ import (
 	"time"
 
 	"github.com/brandur/modulir/modules/mtemplate"
+	"github.com/brandur/sorg/modules/squantifiedtypes"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the
@@ -30,7 +32,7 @@ var FuncMap = template.FuncMap{
 	"Pace":                    pace,
 	"RandIntn":                randIntn,
 	"RenderPublishingInfo":    renderPublishingInfo,
-	"RenderTweetContent":      renderTweetContent,
+	"RenderTweet":             renderTweet,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
 }
@@ -155,9 +157,9 @@ func randIntn(bound int) int {
 var linkRE = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*[^ "\n\r\t<. ])`)
 
 // Matches tags in a tweet (like #mix11).
-var tagRE = regexp.MustCompile(`#(\w+)`)
+var tagRE = regexp.MustCompile(`([\s\(]|^)#(\w+)([\s\)]|$)`)
 
-// Matches users in a tweet (like #mix11).
+// Matches users in a tweet (like #brandur).
 var userRE = regexp.MustCompile(`@(\w+)`)
 
 func renderPublishingInfo(info map[string]string) template.HTML {
@@ -171,8 +173,16 @@ func renderPublishingInfo(info map[string]string) template.HTML {
 }
 
 // Renders the content of a tweet to HTML.
-func renderTweetContent(content string) string {
+func renderTweet(tweet *squantifiedtypes.Tweet) string {
+	content := tweet.Text
 	tagMap := make(map[string]string)
+
+	urlEntitiesMap := make(map[string]*squantifiedtypes.TweetEntitiesURL)
+	if tweet.Entities != nil && tweet.Entities.URLs != nil {
+		for _, urlEntity := range tweet.Entities.URLs {
+			urlEntitiesMap[urlEntity.URL] = urlEntity
+		}
+	}
 
 	// links like protocol://link
 	content = linkRE.ReplaceAllStringFunc(content, func(link string) string {
@@ -180,12 +190,21 @@ func renderTweetContent(content string) string {
 
 		//fmt.Printf("matches = %+v (len %v)\n", matches, len(matches))
 
+		var display string
 		whitespace := matches[1]
 		href := matches[2]
 
-		display := href
-		if len(href) > 50 {
-			display = fmt.Sprintf("%s&hellip;", href[0:50])
+		// Twitter ships URL entity information from its API. Use it if
+		// available to produce a shortened "display" URL and the original
+		// expanded URL. Otherwise, just do our own version of it.
+		if urlEntity, ok := urlEntitiesMap[href]; ok {
+			display = urlEntity.DisplayURL
+			href = urlEntity.ExpandedURL
+		} else {
+			display = href
+			if len(href) > 50 {
+				display = fmt.Sprintf("%s&hellip;", href[0:50])
+			}
 		}
 
 		// replace with tags so links don't interfere with subsequent rules
@@ -197,6 +216,9 @@ func renderTweetContent(content string) string {
 		return whitespace + tag
 	})
 
+	// URL escape (so HTML etc. isn't rendered)
+	content = html.EscapeString(content)
+
 	// user links (like @brandur)
 	content = userRE.ReplaceAllString(content,
 		`<a href="https://www.twitter.com/$1" rel="nofollow">@$1</a>`)
@@ -204,7 +226,7 @@ func renderTweetContent(content string) string {
 	// hash tag search (like #mix11) -- note like anyone would never use one of
 	// these, lol
 	content = tagRE.ReplaceAllString(content,
-		`<a href="https://search.twitter.com/search?q=$1" rel="nofollow">#$1</a>`)
+		`$1<a href="https://search.twitter.com/search?q=$2" rel="nofollow">#$2</a>$3`)
 
 	// replace the stand-in tags for links generated earlier
 	for tag, link := range tagMap {

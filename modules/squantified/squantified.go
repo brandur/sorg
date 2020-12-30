@@ -3,11 +3,15 @@ package squantified
 import (
 	"database/sql"
 	"fmt"
+	"io/ioutil"
+	"strings"
 	"time"
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
+	"github.com/brandur/sorg/modules/squantifiedtypes"
+	"github.com/pelletier/go-toml"
 	"github.com/yosssi/ace"
 )
 
@@ -102,14 +106,24 @@ func RenderRuns(c *modulir.Context, db *sql.DB, viewsChanged bool,
 func RenderTwitter(c *modulir.Context, db *sql.DB, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
 
-	tweets, err := getTwitterData(db, false)
+	tweetsWithReplies, err := getTwitterData(c, scommon.DataDir+"/twitter.toml")
 	if err != nil {
 		return err
 	}
 
-	tweetsWithReplies, err := getTwitterData(db, true)
-	if err != nil {
-		return err
+	var tweets []*squantifiedtypes.Tweet
+	for _, tweet := range tweetsWithReplies {
+		if tweet.Reply != nil {
+			continue
+		}
+
+		// Also weed out any tweets that look like a direction mention, even if
+		// they're not technically in reply to anything.
+		if strings.HasPrefix(tweet.Text, "@") {
+			continue
+		}
+
+		tweets = append(tweets, tweet)
 	}
 
 	optionsMatrix := map[string]bool{
@@ -124,12 +138,7 @@ func RenderTwitter(c *modulir.Context, db *sql.DB, viewsChanged bool,
 		}
 
 		tweetsByYearAndMonth := groupTwitterByYearAndMonth(ts)
-
-		tweetCountXMonths, tweetCountYCounts, err :=
-			getTwitterByMonth(db, withReplies)
-		if err != nil {
-			return err
-		}
+		tweetCountXMonths, tweetCountYCounts := getTwitterByMonth(ts)
 
 		locals := getLocals("Twitter", map[string]interface{}{
 			"NumTweets":            len(tweets),
@@ -205,30 +214,16 @@ type Run struct {
 	OccurredAt *time.Time
 }
 
-// Tweet is a post to Twitter.
-type Tweet struct {
-	// Content is the content of the tweet. It may contain shortened URLs and
-	// the like and so require extra rendering.
-	Content string
-
-	// OccurredAt is UTC time when the tweet was published.
-	OccurredAt *time.Time
-
-	// Slug is a unique identifier for the tweet. It can be used to link it
-	// back to the post on Twitter.
-	Slug string
-}
-
 // readingYear holds a collection of readings grouped by year.
 type readingYear struct {
 	Year     int
 	Readings []*Reading
 }
 
-// tweetMonth holds a collection of Tweets grouped by year.
+// tweetMonth holds a collection of tweets grouped by year.
 type tweetMonth struct {
 	Month  time.Month
-	Tweets []*Tweet
+	Tweets []*squantifiedtypes.Tweet
 }
 
 // tweetYear holds a collection of tweetMonths grouped by year.
@@ -586,99 +581,65 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	return lastYearXDays, lastYearYDistances, nil
 }
 
-func getTwitterByMonth(db *sql.DB, withReplies bool) ([]string, []int, error) {
-	// Give these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
+func getTwitterByMonth(tweets []*squantifiedtypes.Tweet) ([]string, []int) {
 	tweetCountXMonths := []string{}
 	tweetCountYCounts := []int{}
 
-	if db == nil {
-		return tweetCountXMonths, tweetCountYCounts, nil
-	}
+	var currentMonth time.Month
+	var currentYear int
 
-	rows, err := db.Query(`
-		SELECT to_char(date_trunc('month', occurred_at), 'Mon ''YY'),
-			COUNT(*)
-		FROM events
-		WHERE type = 'twitter'
-			-- Note that false is always an allowed value here because we
-			-- always want all non-reply tweets.
-			AND (metadata -> 'reply')::boolean IN (false, $1)
-		GROUP BY date_trunc('month', occurred_at)
-		ORDER BY date_trunc('month', occurred_at)
-	`, withReplies)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting tweets by month: %v", err)
-	}
-	defer rows.Close()
+	// Tweets are in reverse chronological order. Iterate backwards so we get
+	// chronological order.
+	for i := len(tweets) - 1; i >= 0; i-- {
+		tweet := tweets[i]
 
-	for rows.Next() {
-		var count int
-		var month string
+		if currentYear == 0 || currentYear != tweet.CreatedAt.Year() || currentMonth != tweet.CreatedAt.Month() {
+			tweetCountXMonths = append(tweetCountXMonths, tweet.CreatedAt.Format("Jan 2006"))
+			tweetCountYCounts = append(tweetCountYCounts, 1)
 
-		err = rows.Scan(
-			&month,
-			&count,
-		)
-		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning tweets by month: %v", err)
+			currentMonth = tweet.CreatedAt.Month()
+			currentYear = tweet.CreatedAt.Year()
+		} else {
+			tweetCountYCounts[len(tweetCountYCounts)-1]++
 		}
-
-		tweetCountXMonths = append(tweetCountXMonths, month)
-		tweetCountYCounts = append(tweetCountYCounts, count)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating tweets by month: %v", err)
 	}
 
-	return tweetCountXMonths, tweetCountYCounts, nil
+	return tweetCountXMonths, tweetCountYCounts
 }
 
-func getTwitterData(db *sql.DB, withReplies bool) ([]*Tweet, error) {
-	var tweets []*Tweet
+func getTwitterData(c *modulir.Context, target string) ([]*squantifiedtypes.Tweet, error) {
+	var tomlErr error
 
-	if db == nil {
-		return tweets, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT
-			content,
-			occurred_at,
-			slug
-		FROM events
-		WHERE type = 'twitter'
-			-- Note that false is always an allowed value here because we
-			-- always want all non-reply tweets.
-			AND (metadata -> 'reply')::boolean IN (false, $1)
-		ORDER BY occurred_at DESC
-	`, withReplies)
-	if err != nil {
-		return nil, fmt.Errorf("Error selecting tweets: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var tweet Tweet
-
-		err = rows.Scan(
-			&tweet.Content,
-			&tweet.OccurredAt,
-			&tweet.Slug,
-		)
+	// This is quite a large file, and if we having something like Vim writing
+	// to it, our file watcher may notice the change before Vim is finished.
+	// This causes ioutil to read only a partially written file, and the TOML
+	// unmarshal below it to subsequently fail.
+	//
+	// Do a hacky protect against this by retrying once when we encounter an
+	// error. The process of trying to decode TOML the first time should be
+	// easily enough time to let Vim finish writing, so we'll pick up the full
+	// file on the second pass.
+	//
+	// Note that this only ever a problem on incremental rebuilds and will
+	// never be needed otherwise.
+	for i := 0; i < 2; i++ {
+		data, err := ioutil.ReadFile(target)
 		if err != nil {
-			return nil, fmt.Errorf("Error scanning tweets: %v", err)
+			return nil, fmt.Errorf("Error reading data file: %w", err)
 		}
 
-		tweets = append(tweets, &tweet)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, fmt.Errorf("Error iterating tweets: %v", err)
+		var tweetDB squantifiedtypes.TweetDB
+		err = toml.Unmarshal(data, &tweetDB)
+		if err != nil {
+			tomlErr = err
+			c.Log.Errorf("Error unmarshaling TOML; retrying once more (%v)", err)
+			continue
+		}
+
+		return tweetDB.Tweets, nil
 	}
 
-	return tweets, nil
+	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
 }
 
 func groupReadingsByYear(readings []*Reading) []*readingYear {
@@ -697,20 +658,20 @@ func groupReadingsByYear(readings []*Reading) []*readingYear {
 	return years
 }
 
-func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
+func groupTwitterByYearAndMonth(tweets []*squantifiedtypes.Tweet) []*tweetYear {
 	var month *tweetMonth
 	var year *tweetYear
 	var years []*tweetYear
 
 	for _, tweet := range tweets {
-		if year == nil || year.Year != tweet.OccurredAt.Year() {
-			year = &tweetYear{tweet.OccurredAt.Year(), nil}
+		if year == nil || year.Year != tweet.CreatedAt.Year() {
+			year = &tweetYear{tweet.CreatedAt.Year(), nil}
 			years = append(years, year)
 			month = nil
 		}
 
-		if month == nil || month.Month != tweet.OccurredAt.Month() {
-			month = &tweetMonth{tweet.OccurredAt.Month(), nil}
+		if month == nil || month.Month != tweet.CreatedAt.Month() {
+			month = &tweetMonth{tweet.CreatedAt.Month(), nil}
 			year.Months = append(year.Months, month)
 		}
 
