@@ -19,6 +19,7 @@ import (
 // FuncMap is a set of helper functions to make available in templates for the
 // project.
 var FuncMap = template.FuncMap{
+	"Downcase":                downcase,
 	"FormatTimeWithMinute":    formatTimeWithMinute,
 	"FormatTimeYearMonth":     formatTimeYearMonth,
 	"InKM":                    inKM,
@@ -32,6 +33,10 @@ var FuncMap = template.FuncMap{
 	"RenderTweetContent":      renderTweetContent,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
+}
+
+func downcase(s string) string {
+	return strings.ToLower(s)
 }
 
 func formatTimeYearMonth(t *time.Time) string {

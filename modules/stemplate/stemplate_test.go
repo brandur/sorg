@@ -18,6 +18,10 @@ func init() {
 	}
 }
 
+func TestDowncase(t *testing.T) {
+	assert.Equal(t, "hello", downcase("HeLlO"))
+}
+
 func TestFormatTimeWithMinute(t *testing.T) {
 	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
 }

@@ -18,7 +18,7 @@
                   ul
                     {{range $month := .Months}}
                       li
-                        a href="#month-{{$year.Year}}-{{$month.Month}}" {{MonthName $month.Month}}
+                        a href="#month-{{$year.Year}}-{{Downcase $month.Month.String}}" {{MonthName $month.Month}}
                     {{end}}
               {{end}}
       .content
@@ -39,7 +39,7 @@
               div class="year" id="year-{{$year.Year}}"
                 h2 {{$year.Year}}
                 {{range $month := .Months}}
-                  div class="month" id="month-{{$year.Year}}-{{$month.Month}}"
+                  div class="month" id="month-{{$year.Year}}-{{Downcase $month.Month.String}}"
                     h3 {{MonthName $month.Month}}
                     ul
                       {{range $month.Tweets}}
