@@ -189,12 +189,10 @@ restart: sigusr2
 
 .PHONY: test
 test:
-	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test ./...
 
 .PHONY: test-nocache
 test-nocache:
-	psql postgres://localhost/sorg-test < modules/stesting/black_swan.sql > /dev/null
 	go test -count=1 ./...
 
 .PHONY: vet

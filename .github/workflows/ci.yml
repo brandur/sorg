@@ -17,19 +17,6 @@ jobs:
       ENABLE_GOAT_COUNTER: true
       GOOGLE_ANALYTICS_ID: UA-47798518-1
 
-    services:
-      postgres:
-        image: postgres:12.0
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          # will assign a random free host port
-          - 5432/tcp
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
       - name: Install Go
         uses: actions/setup-go@v1
@@ -101,15 +88,6 @@ jobs:
       - name: "Go: Install"
         run: make install
 
-      - name: "Create database: sorg-test"
-        run: createdb sorg-test
-        env:
-          PGHOST: localhost
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
-          PGUSER: postgres
-          PGPASSWORD: postgres
-          PGDATABASE: postgres
-
       - name: Fetch latest data/
         run: |
           curl --compressed --output data/goodreads.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/goodreads.toml
@@ -124,11 +102,6 @@ jobs:
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
 
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
-          PGHOST: localhost
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
-          PGUSER: postgres
-          PGPASSWORD: postgres
-          PGDATABASE: postgres
 
       - name: "Go: Vet"
         run: make vet
@@ -166,7 +139,6 @@ jobs:
       - name: "Build: Development"
         run: make build
         env:
-          BLACK_SWAN_DATABASE_URL: ${{ secrets.BlackSwanDatabaseURL }}
           DRAFTS: true
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
@@ -175,7 +147,6 @@ jobs:
       - name: "Build: Production"
         run: make build
         env:
-          BLACK_SWAN_DATABASE_URL: ${{ secrets.BlackSwanDatabaseURL }}
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
 

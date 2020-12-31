@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"math/rand"
 	"net/url"
@@ -80,9 +79,6 @@ var (
 	talks      []*stalks.Talk
 )
 
-// A database connection opened to a Black Swan database if one was configured.
-var db *sql.DB
-
 // List of common build dependencies, a change in any of which will trigger a
 // rebuild on everything: partial views, JavaScripts, and stylesheets. Even
 // though some of those changes will false positives, these sources are
@@ -128,21 +124,6 @@ func build(c *modulir.Context) []error {
 	// These assets have a release number that we can increment and by
 	// extension quickly invalidate.
 	versionedAssetsDir := path.Join(c.TargetDir, "assets", Release)
-
-	{
-		// Only open the first time
-		if conf.BlackSwanDatabaseURL != "" {
-			if db == nil {
-				var err error
-				db, err = sql.Open("postgres", conf.BlackSwanDatabaseURL)
-				if err != nil {
-					return []error{err}
-				}
-			}
-		} else {
-			c.Log.Infof("No database set; will not render database-backed views")
-		}
-	}
 
 	// A set of source paths that rebuild everything when any one of them
 	// changes. These are dependencies that are included in more or less
