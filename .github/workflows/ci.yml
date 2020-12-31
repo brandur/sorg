@@ -112,6 +112,7 @@ jobs:
 
       - name: Fetch latest data/
         run: |
+          curl --compressed --output data/goodreads.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/goodreads.toml
           curl --compressed --output data/twitter.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/twitter.toml
 
       - name: "Go: Test"

@@ -17,6 +17,40 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
+//
+// Goodreads
+//
+
+// Reading is a single Goodreads book stored to a TOML file.
+type Reading struct {
+	Authors       []*ReadingAuthor `toml:"authors"`
+	ID            int              `toml:"id"`
+	ISBN          string           `toml:"isbn"`
+	ISBN13        string           `toml:"isbn13"`
+	NumPages      int              `toml:"num_pages"`
+	PublishedYear int              `toml:"published_year"`
+	ReadAt        time.Time        `toml:"read_at"`
+	Rating        int              `toml:"rating"`
+	Review        string           `toml:"review"`
+	ReviewID      int              `toml:"review_id"`
+	Title         string           `toml:"title"`
+}
+
+// ReadingAuthor is a single Goodreads author stored to a TOML file.
+type ReadingAuthor struct {
+	ID   int    `toml:"id"`
+	Name string `toml:"name"`
+}
+
+// ReadingDB is a database of Goodreads readings stored to a TOML file.
+type ReadingDB struct {
+	Readings []*Reading `toml:"readings"`
+}
+
+//
+// Twitter
+//
+
 // TweetDB is a database of tweets stored to a TOML file.
 type TweetDB struct {
 	Tweets []*Tweet `toml:"tweets"`

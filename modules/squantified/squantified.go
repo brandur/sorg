@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"io/ioutil"
+	"sort"
 	"strings"
 	"time"
 
@@ -27,26 +28,19 @@ import (
 
 // RenderReading renders the `/reading` page by fetching and processing data
 // from an attached Black Swan database.
-func RenderReading(c *modulir.Context, db *sql.DB, viewsChanged bool,
+func RenderReading(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
 
-	readings, err := getReadingsData(db)
+	readings, err := getReadingsData(c, scommon.DataDir+"/goodreads.toml")
 	if err != nil {
 		return err
 	}
 
+	// Important: all these functions assume reverse chronological read at
+	// order has already been applied.
 	readingsByYear := groupReadingsByYear(readings)
-
-	readingsByYearXYears, readingsByYearYCounts, err :=
-		getReadingsCountByYearData(db)
-	if err != nil {
-		return err
-	}
-
-	pagesByYearXYears, pagesByYearYCounts, err := getReadingsPagesByYearData(db)
-	if err != nil {
-		return err
-	}
+	readingsByYearXYears, readingsByYearYCounts := getReadingsCountByYearData(readings)
+	pagesByYearXYears, pagesByYearYCounts := getReadingsPagesByYearData(readings)
 
 	locals := getLocals("Reading", map[string]interface{}{
 		"NumReadings":    len(readings),
@@ -103,7 +97,7 @@ func RenderRuns(c *modulir.Context, db *sql.DB, viewsChanged bool,
 
 // RenderTwitter renders the `/twitter` page by fetching and processing data
 // from an attached Black Swan database.
-func RenderTwitter(c *modulir.Context, db *sql.DB, viewsChanged bool,
+func RenderTwitter(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
 
 	tweetsWithReplies, err := getTwitterData(c, scommon.DataDir+"/twitter.toml")
@@ -171,28 +165,6 @@ func RenderTwitter(c *modulir.Context, db *sql.DB, viewsChanged bool,
 //
 //////////////////////////////////////////////////////////////////////////////
 
-// Reading is a read book procured from Goodreads.
-type Reading struct {
-	// Author is the full name of the book's author.
-	Author string
-
-	// ISBN is the unique identifier for the book.
-	ISBN string
-
-	// NumPages are the number of pages in the book. If unavailable, this
-	// number will be zero.
-	NumPages int
-
-	// OccurredAt is UTC time when the book was read.
-	OccurredAt *time.Time
-
-	// Rating is the rating that I assigned to the read book.
-	Rating int
-
-	// Title is the title of the book.
-	Title string
-}
-
 // Run is a run as downloaded from Strava.
 type Run struct {
 	// Distance is the distance traveled for the run in meters.
@@ -217,7 +189,7 @@ type Run struct {
 // readingYear holds a collection of readings grouped by year.
 type readingYear struct {
 	Year     int
-	Readings []*Reading
+	Readings []*squantifiedtypes.Reading
 }
 
 // tweetMonth holds a collection of tweets grouped by year.
@@ -254,147 +226,74 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 	return options
 }
 
-func getReadingsData(db *sql.DB) ([]*Reading, error) {
-	var readings []*Reading
+func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Reading, error) {
+	var tomlErr error
 
-	if db == nil {
-		return readings, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT
-			metadata -> 'author',
-			metadata -> 'isbn',
-			-- not every book has a number of pages
-			(COALESCE(NULLIF(metadata -> 'num_pages', ''), '0'))::int,
-			occurred_at,
-			(metadata -> 'rating')::int,
-			metadata -> 'title'
-		FROM events
-		WHERE type = 'goodreads'
-		ORDER BY occurred_at DESC
-	`)
-	if err != nil {
-		return nil, fmt.Errorf("Error selecting readings: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var reading Reading
-
-		err = rows.Scan(
-			&reading.Author,
-			&reading.ISBN,
-			&reading.NumPages,
-			&reading.OccurredAt,
-			&reading.Rating,
-			&reading.Title,
-		)
+	for i := 0; i < 2; i++ {
+		data, err := ioutil.ReadFile(target)
 		if err != nil {
-			return nil, fmt.Errorf("Error scanning readings: %v", err)
+			return nil, fmt.Errorf("Error reading data file: %w", err)
 		}
 
-		readings = append(readings, &reading)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, fmt.Errorf("Error iterating readings: %v", err)
+		var readingDB squantifiedtypes.ReadingDB
+		err = toml.Unmarshal(data, &readingDB)
+		if err != nil {
+			tomlErr = err
+			c.Log.Errorf("Error unmarshaling TOML; retrying once more (%v)", err)
+			continue
+		}
+
+		// Sort in reverse chronological order. Books should be roughly sorted
+		// like this already, but they're sorted by review ID, which may be out
+		// of order compared to the read date.
+		sort.Slice(readingDB.Readings, func(i, j int) bool {
+			return readingDB.Readings[i].ReadAt.After(readingDB.Readings[j].ReadAt)
+		})
+
+		return readingDB.Readings, nil
 	}
 
-	return readings, nil
+	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
 }
 
-func getReadingsCountByYearData(db *sql.DB) ([]string, []int, error) {
+func getReadingsCountByYearData(readings []*squantifiedtypes.Reading) ([]int, []int) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
-	byYearXYears := []string{}
+	byYearXYears := []int{}
 	byYearYCounts := []int{}
 
-	if db == nil {
-		return byYearXYears, byYearYCounts, nil
-	}
+	for _, reading := range readings {
+		year := reading.ReadAt.Year()
 
-	rows, err := db.Query(`
-		SELECT date_part('year', occurred_at)::text AS year,
-			COUNT(*)
-		FROM events
-		WHERE type = 'goodreads'
-		GROUP BY date_part('year', occurred_at)
-		ORDER BY date_part('year', occurred_at)
-	`)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting reading count by year: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var year string
-		var count int
-
-		err = rows.Scan(
-			&year,
-			&count,
-		)
-		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning reading count by year: %v", err)
+		if len(byYearXYears) == 0 || byYearXYears[len(byYearXYears)-1] != year {
+			byYearXYears = append(byYearXYears, year)
+			byYearYCounts = append(byYearYCounts, 0)
 		}
 
-		byYearXYears = append(byYearXYears, year)
-		byYearYCounts = append(byYearYCounts, count)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating reading count by year: %v", err)
+		byYearYCounts[len(byYearYCounts)-1]++
 	}
 
-	return byYearXYears, byYearYCounts, nil
+	return byYearXYears, byYearYCounts
 }
 
-func getReadingsPagesByYearData(db *sql.DB) ([]string, []int, error) {
+func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading) ([]int, []int) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
-	byYearXYears := []string{}
+	byYearXYears := []int{}
 	byYearYCounts := []int{}
 
-	if db == nil {
-		return byYearXYears, byYearYCounts, nil
-	}
+	for _, reading := range readings {
+		year := reading.ReadAt.Year()
 
-	rows, err := db.Query(`
-		SELECT date_part('year', occurred_at)::text AS year,
-			sum((metadata -> 'num_pages')::int)
-		FROM events
-		WHERE type = 'goodreads'
-			AND metadata -> 'num_pages' <> ''
-		GROUP BY date_part('year', occurred_at)
-		ORDER BY date_part('year', occurred_at)
-	`)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting reading pages by year: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var year string
-		var count int
-
-		err = rows.Scan(
-			&year,
-			&count,
-		)
-		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning reading pages by year: %v", err)
+		if len(byYearXYears) == 0 || byYearXYears[len(byYearXYears)-1] != year {
+			byYearXYears = append(byYearXYears, year)
+			byYearYCounts = append(byYearYCounts, 0)
 		}
 
-		byYearXYears = append(byYearXYears, year)
-		byYearYCounts = append(byYearYCounts, count)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating reading pages by year: %v", err)
+		byYearYCounts[len(byYearYCounts)-1] += reading.NumPages
 	}
 
-	return byYearXYears, byYearYCounts, nil
+	return byYearXYears, byYearYCounts
 }
 
 func getRunsData(db *sql.DB) ([]*Run, error) {
@@ -642,13 +541,13 @@ func getTwitterData(c *modulir.Context, target string) ([]*squantifiedtypes.Twee
 	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
 }
 
-func groupReadingsByYear(readings []*Reading) []*readingYear {
+func groupReadingsByYear(readings []*squantifiedtypes.Reading) []*readingYear {
 	var year *readingYear
 	var years []*readingYear
 
 	for _, reading := range readings {
-		if year == nil || year.Year != reading.OccurredAt.Year() {
-			year = &readingYear{reading.OccurredAt.Year(), nil}
+		if year == nil || year.Year != reading.ReadAt.Year() {
+			year = &readingYear{reading.ReadAt.Year(), nil}
 			years = append(years, year)
 		}
 

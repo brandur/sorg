@@ -431,7 +431,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("reading", func() (bool, error) {
-			return c.AllowError(renderReading(c, db)), nil
+			return renderReading(c)
 		})
 	}
 
@@ -565,7 +565,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("twitter", func() (bool, error) {
-			return renderTwitter(c, db)
+			return renderTwitter(c)
 		})
 	}
 
@@ -2095,13 +2095,10 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, mu *sy
 	return true, nil
 }
 
-func renderReading(c *modulir.Context, db *sql.DB) (bool, error) {
-	if db == nil {
-		return false, nil
-	}
-
+func renderReading(c *modulir.Context) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
+			scommon.DataDir + "/goodreads.toml",
 			scommon.MainLayout,
 			scommon.ViewsDir + "/reading/index.ace",
 		},
@@ -2111,7 +2108,7 @@ func renderReading(c *modulir.Context, db *sql.DB) (bool, error) {
 		return false, nil
 	}
 
-	return true, squantified.RenderReading(c, db, viewsChanged, getLocals)
+	return true, squantified.RenderReading(c, viewsChanged, getLocals)
 }
 
 func renderPhotoIndex(c *modulir.Context, photos []*Photo,
@@ -2427,7 +2424,7 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 	return true, nil
 }
 
-func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
+func renderTwitter(c *modulir.Context) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.DataDir + "/twitter.toml",
@@ -2440,7 +2437,7 @@ func renderTwitter(c *modulir.Context, db *sql.DB) (bool, error) {
 		return false, nil
 	}
 
-	return true, squantified.RenderTwitter(c, db, viewsChanged, getLocals)
+	return true, squantified.RenderTwitter(c, viewsChanged, getLocals)
 }
 
 func selectRandomPhoto(photos []*Photo) *Photo {

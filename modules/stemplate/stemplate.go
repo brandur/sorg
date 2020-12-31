@@ -32,6 +32,7 @@ var FuncMap = template.FuncMap{
 	"Pace":                    pace,
 	"RandIntn":                randIntn,
 	"RenderPublishingInfo":    renderPublishingInfo,
+	"RenderReadingAuthors":    renderReadingAuthors,
 	"RenderTweet":             renderTweet,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
@@ -161,6 +162,16 @@ var tagRE = regexp.MustCompile(`([\s\(]|^)#(\w+)([\s\)]|$)`)
 
 // Matches users in a tweet (like #brandur).
 var userRE = regexp.MustCompile(`@(\w+)`)
+
+func renderReadingAuthors(reading *squantifiedtypes.Reading) string {
+	var authorNames []string
+
+	for _, author := range reading.Authors {
+		authorNames = append(authorNames, author.Name)
+	}
+
+	return strings.Join(authorNames, ", ")
+}
 
 func renderPublishingInfo(info map[string]string) template.HTML {
 	s := ""
