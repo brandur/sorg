@@ -38,8 +38,9 @@ func RenderReading(c *modulir.Context, viewsChanged bool,
 	// Important: all these functions assume reverse chronological read at
 	// order has already been applied.
 	readingsByYear := groupReadingsByYear(readings)
-	readingsByYearXYears, readingsByYearYCounts := getReadingsCountByYearData(readings)
-	pagesByYearXYears, pagesByYearYCounts := getReadingsPagesByYearData(readings)
+	const maxYears = 10
+	readingsByYearXYears, readingsByYearYCounts := getReadingsCountByYearData(readings, maxYears)
+	pagesByYearXYears, pagesByYearYCounts := getReadingsPagesByYearData(readings, maxYears)
 
 	locals := getLocals("Reading", map[string]interface{}{
 		"NumReadings":    len(readings),
@@ -273,7 +274,7 @@ func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Rea
 	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
 }
 
-func getReadingsCountByYearData(readings []*squantifiedtypes.Reading) ([]int, []int) {
+func getReadingsCountByYearData(readings []*squantifiedtypes.Reading, maxYears int) ([]int, []int) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
 	byYearXYears := []int{}
@@ -283,6 +284,10 @@ func getReadingsCountByYearData(readings []*squantifiedtypes.Reading) ([]int, []
 		year := reading.ReadAt.Year()
 
 		if len(byYearXYears) == 0 || byYearXYears[len(byYearXYears)-1] != year {
+			if len(byYearXYears) >= maxYears {
+				break
+			}
+
 			byYearXYears = append(byYearXYears, year)
 			byYearYCounts = append(byYearYCounts, 0)
 		}
@@ -293,7 +298,7 @@ func getReadingsCountByYearData(readings []*squantifiedtypes.Reading) ([]int, []
 	return byYearXYears, byYearYCounts
 }
 
-func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading) ([]int, []int) {
+func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading, maxYears int) ([]int, []int) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
 	byYearXYears := []int{}
@@ -303,6 +308,10 @@ func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading) ([]int, []
 		year := reading.ReadAt.Year()
 
 		if len(byYearXYears) == 0 || byYearXYears[len(byYearXYears)-1] != year {
+			if len(byYearXYears) >= maxYears {
+				break
+			}
+
 			byYearXYears = append(byYearXYears, year)
 			byYearYCounts = append(byYearYCounts, 0)
 		}
