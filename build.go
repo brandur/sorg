@@ -451,7 +451,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("runs", func() (bool, error) {
-			return c.AllowError(renderRuns(c, db)), nil
+			return renderRuns(c)
 		})
 	}
 
@@ -2169,13 +2169,10 @@ Disallow: /photos
 	return true, nil
 }
 
-func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
-	if db == nil {
-		return false, nil
-	}
-
+func renderRuns(c *modulir.Context) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
+			scommon.DataDir + "/strava.toml",
 			scommon.MainLayout,
 			scommon.ViewsDir + "/runs/index.ace",
 		},
@@ -2185,7 +2182,7 @@ func renderRuns(c *modulir.Context, db *sql.DB) (bool, error) {
 		return false, nil
 	}
 
-	return true, squantified.RenderRuns(c, db, viewsChanged, getLocals)
+	return true, squantified.RenderRuns(c, viewsChanged, getLocals)
 }
 
 func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,

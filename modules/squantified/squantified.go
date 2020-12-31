@@ -1,7 +1,6 @@
 package squantified
 
 import (
-	"database/sql"
 	"fmt"
 	"io/ioutil"
 	"sort"
@@ -59,25 +58,38 @@ func RenderReading(c *modulir.Context, viewsChanged bool,
 		c.TargetDir+"/reading/index.html", getAceOptions(viewsChanged), locals)
 }
 
-// RenderRuns renders the `/runs` page by fetching and processing data
-// from an attached Black Swan database.
-func RenderRuns(c *modulir.Context, db *sql.DB, viewsChanged bool,
+// RenderRuns renders the `/runs` page by fetching and processing data.
+//
+// This traditionally used a Black Swan database for run information, but I've
+// deprecated that project, so to work again it needs to be converted over to
+// use a qself flat file containing run information, like Goodreads and Twitter
+// already do in this file.
+func RenderRuns(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
 
-	runs, err := getRunsData(db)
+	runs, err := getRunsData(c, scommon.DataDir+"/strava.toml")
 	if err != nil {
 		return err
 	}
 
-	lastYearXDays, lastYearYDistances, err := getRunsLastYearData(db)
-	if err != nil {
-		return err
-	}
+	var lastYearXDays []string
+	var lastYearYDistances []float64
 
-	byYearXYears, byYearYDistances, err := getRunsByYearData(db)
-	if err != nil {
-		return err
-	}
+	var byYearXYears []string
+	var byYearYDistances []float64
+
+	// Needs to be converted to a qself flat file to work again.
+	/*
+		lastYearXDays, lastYearYDistances, err := getRunsLastYearData(db)
+		if err != nil {
+			return err
+		}
+
+		byYearXYears, byYearYDistances, err := getRunsByYearData(db)
+		if err != nil {
+			return err
+		}
+	*/
 
 	locals := getLocals("Running", map[string]interface{}{
 		"Runs": runs,
@@ -184,6 +196,11 @@ type Run struct {
 	// don't use UTC here so as to not make runs in other timezones look to
 	// have occurred at crazy times.
 	OccurredAt *time.Time
+}
+
+// RunDB is a database of runs stored to a TOML file.
+type RunDB struct {
+	Runs []*Run `toml:"runs"`
 }
 
 // readingYear holds a collection of readings grouped by year.
@@ -296,62 +313,31 @@ func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading) ([]int, []
 	return byYearXYears, byYearYCounts
 }
 
-func getRunsData(db *sql.DB) ([]*Run, error) {
-	var runs []*Run
+func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
+	var tomlErr error
 
-	if db == nil {
-		return runs, nil
-	}
-
-	rows, err := db.Query(`
-		SELECT
-			(metadata -> 'distance')::float,
-			(metadata -> 'total_elevation_gain')::float,
-			(metadata -> 'location_city'),
-			-- we multiply by 10e9 here because a Golang time.Duration is
-			-- an int64 represented in nanoseconds
-			(metadata -> 'moving_time')::bigint * 1000000000,
-			(metadata -> 'occurred_at_local')::timestamptz
-		FROM events
-		WHERE type = 'strava'
-			AND metadata -> 'type' = 'Run'
-		ORDER BY occurred_at DESC
-		LIMIT 30
-	`)
-	if err != nil {
-		return nil, fmt.Errorf("Error selecting runs: %v", err)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var locationCity *string
-		var run Run
-
-		err = rows.Scan(
-			&run.Distance,
-			&run.ElevationGain,
-			&locationCity,
-			&run.MovingTime,
-			&run.OccurredAt,
-		)
+	for i := 0; i < 2; i++ {
+		data, err := ioutil.ReadFile(target)
 		if err != nil {
-			return nil, fmt.Errorf("Error scanning runs: %v", err)
+			return nil, fmt.Errorf("Error reading data file: %w", err)
 		}
 
-		if locationCity != nil {
-			run.LocationCity = *locationCity
+		var runDB RunDB
+		err = toml.Unmarshal(data, &runDB)
+		if err != nil {
+			tomlErr = err
+			c.Log.Errorf("Error unmarshaling TOML; retrying once more (%v)", err)
+			continue
 		}
 
-		runs = append(runs, &run)
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, fmt.Errorf("Error iterating runs: %v", err)
+		return runDB.Runs, nil
 	}
 
-	return runs, nil
+	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
 }
 
+// Needs to be converted to a qself flat file to work again.
+/*
 func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
@@ -479,6 +465,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 
 	return lastYearXDays, lastYearYDistances, nil
 }
+*/
 
 func getTwitterByMonth(tweets []*squantifiedtypes.Tweet) ([]string, []int) {
 	tweetCountXMonths := []string{}
