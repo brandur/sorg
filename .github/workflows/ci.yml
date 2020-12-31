@@ -88,7 +88,7 @@ jobs:
       - name: "Go: Install"
         run: make install
 
-      - name: Fetch latest data/
+      - name: Fetch latest qself data/
         run: |
           curl --compressed --output data/goodreads.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/goodreads.toml
           curl --compressed --output data/twitter.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/twitter.toml
