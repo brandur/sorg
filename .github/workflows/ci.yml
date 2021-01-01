@@ -152,6 +152,7 @@ jobs:
         run: make deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
+          AWS_CLI_FLAGS: --quiet
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
           S3_BUCKET: brandur.org-dev
           TARGET_DIR: ./public-dev
