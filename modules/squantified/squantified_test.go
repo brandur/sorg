@@ -10,7 +10,7 @@ import (
 func TestRenderTweet(t *testing.T) {
 	// short link
 	assert.Equal(t,
-		`<a href="https://example.com" rel="nofollow">https://example.com</a>`,
+		`<a href="https://example.com" rel="nofollow">example.com</a>`,
 		string(tweetTextToHTML(&squantifiedtypes.Tweet{Text: `https://example.com`})),
 	)
 
@@ -18,7 +18,7 @@ func TestRenderTweet(t *testing.T) {
 	assert.Equal(t,
 		`content`+
 			`<div class="tweet-linebreak"><div class="tweet-linebreak">`+
-			`<a href="https://example.com" rel="nofollow">https://example.com</a>`+
+			`<a href="https://example.com" rel="nofollow">example.com</a>`+
 			`<div class="tweet-linebreak"><div class="tweet-linebreak">`+
 			`end`,
 		string(tweetTextToHTML(&squantifiedtypes.Tweet{Text: `content
@@ -30,13 +30,13 @@ end`})),
 
 	// long link
 	assert.Equal(t,
-		`<a href="https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now" rel="nofollow">https://example.com/path/to/more/great/stuff/and/t&hellip;</a>`,
+		`<a href="https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now" rel="nofollow">example.com/path/to/more/great/stuff/and/this/is/e&hellip;</a>`,
 		string(tweetTextToHTML(&squantifiedtypes.Tweet{Text: `https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now`})),
 	)
 
 	// long with special characters
 	assert.Equal(t,
-		`<a href="https://example.com/w/Film_(2005)" rel="nofollow">https://example.com/w/Film_(2005)</a>.`,
+		`<a href="https://example.com/w/Film_(2005)" rel="nofollow">example.com/w/Film_(2005)</a>.`,
 		string(tweetTextToHTML(&squantifiedtypes.Tweet{Text: `https://example.com/w/Film_(2005).`})),
 	)
 

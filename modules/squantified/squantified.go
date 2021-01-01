@@ -609,8 +609,10 @@ func tweetTextToHTML(tweet *squantifiedtypes.Tweet) template.HTML {
 			href = urlEntity.ExpandedURL
 		} else {
 			display = href
-			if len(href) > 50 {
-				display = fmt.Sprintf("%s&hellip;", href[0:50])
+			display = strings.TrimPrefix(display, "http://")
+			display = strings.TrimPrefix(display, "https://")
+			if len(display) > 50 {
+				display = fmt.Sprintf("%s&hellip;", display[0:50])
 			}
 		}
 
