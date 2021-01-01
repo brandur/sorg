@@ -123,13 +123,7 @@ func RenderTwitter(c *modulir.Context, viewsChanged bool,
 
 	var tweets []*Tweet
 	for _, tweet := range tweetsWithReplies {
-		if tweet.Reply != nil {
-			continue
-		}
-
-		// Also weed out any tweets that look like a direction mention, even if
-		// they're not technically in reply to anything.
-		if strings.HasPrefix(tweet.Text, "@") {
+		if tweet.ReplyOrMention {
 			continue
 		}
 
@@ -270,6 +264,11 @@ type Tweet struct {
 	Retweet       *TweetRetweet  `toml:"retweet"`
 	RetweetCount  int            `toml:"retweet_count"`
 	Text          string         `toml:"text"`
+
+	// ReplyOrMention is assigned to tweets which are either a direct mention
+	// or reply, and which therefore don't go in the main timeline. It gives us
+	// an easy way to access this information from a template.
+	ReplyOrMention bool `toml:"-"`
 
 	// TextHTML is Text rendered to HTML using a variety of special Twitter
 	// rules. It's rendered once and added to the struct so that it can be
@@ -630,6 +629,10 @@ func getTwitterData(c *modulir.Context, target string) ([]*Tweet, error) {
 	}
 
 	for _, tweet := range tweetDB.Tweets {
+		if tweet.Reply != nil || strings.HasPrefix(tweet.Text, "@") {
+			tweet.ReplyOrMention = true
+		}
+
 		tweet.TextHTML = tweetTextToHTML(tweet)
 	}
 

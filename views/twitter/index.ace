@@ -44,6 +44,9 @@
                     ul
                       {{range $month.Tweets}}
                         li
+                          {{if .ReplyOrMention}}
+                            | ⤿ 
+                          {{end}}
                           {{.TextHTML}}
                           span.meta
                             {{if ge .FavoriteCount 4}}
