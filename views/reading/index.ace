@@ -35,7 +35,7 @@
                     li
                       em
                         {{.Title}}
-                      |  by {{RenderReadingAuthors .}}; 
+                      |  by {{.AuthorsDisplay}}; 
                       {{if ne .NumPages 0}}
                         | {{.NumPages}} pages; 
                       {{end}}

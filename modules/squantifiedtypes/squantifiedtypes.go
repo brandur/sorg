@@ -35,6 +35,10 @@ type Reading struct {
 	Review        string           `toml:"review"`
 	ReviewID      int              `toml:"review_id"`
 	Title         string           `toml:"title"`
+
+	// AuthorsDisplay is just the names of all authors combined together for
+	// display on a page.
+	AuthorsDisplay string `toml:"-"`
 }
 
 // ReadingAuthor is a single Goodreads author stored to a TOML file.

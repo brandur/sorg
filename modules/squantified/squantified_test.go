@@ -7,6 +7,42 @@ import (
 	assert "github.com/stretchr/testify/require"
 )
 
+func TestCombineAuthors(t *testing.T) {
+	assert.Equal(t,
+		"Alex",
+		combineAuthors([]*squantifiedtypes.ReadingAuthor{
+			{Name: "Alex"},
+		}),
+	)
+
+	assert.Equal(t,
+		"Alex & Kate",
+		combineAuthors([]*squantifiedtypes.ReadingAuthor{
+			{Name: "Alex"},
+			{Name: "Kate"},
+		}),
+	)
+
+	assert.Equal(t,
+		"Alex, Kate & Scan",
+		combineAuthors([]*squantifiedtypes.ReadingAuthor{
+			{Name: "Alex"},
+			{Name: "Kate"},
+			{Name: "Scan"},
+		}),
+	)
+
+	assert.Equal(t,
+		"Alex, Kate, Scan & Will",
+		combineAuthors([]*squantifiedtypes.ReadingAuthor{
+			{Name: "Alex"},
+			{Name: "Kate"},
+			{Name: "Scan"},
+			{Name: "Will"},
+		}),
+	)
+}
+
 func TestRenderTweet(t *testing.T) {
 	// short link
 	assert.Equal(t,

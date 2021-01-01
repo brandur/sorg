@@ -236,6 +236,30 @@ type tweetYear struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
+func combineAuthors(authors []*squantifiedtypes.ReadingAuthor) string {
+	if len(authors) == 0 {
+		return ""
+	}
+
+	if len(authors) == 1 {
+		return authors[0].Name
+	}
+
+	display := ""
+
+	for i, author := range authors {
+		if i == len(authors)-1 {
+			display += " & "
+		} else if i > 0 {
+			display += ", "
+		}
+
+		display += author.Name
+	}
+
+	return display
+}
+
 // getAceOptions gets a good set of default options for Ace template rendering
 // for the project.
 func getAceOptions(dynamicReload bool) *ace.Options {
@@ -264,6 +288,10 @@ func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Rea
 	sort.Slice(readingDB.Readings, func(i, j int) bool {
 		return readingDB.Readings[i].ReadAt.After(readingDB.Readings[j].ReadAt)
 	})
+
+	for _, reading := range readingDB.Readings {
+		reading.AuthorsDisplay = combineAuthors(reading.Authors)
+	}
 
 	return readingDB.Readings, nil
 }

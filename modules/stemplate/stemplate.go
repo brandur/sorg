@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"github.com/brandur/modulir/modules/mtemplate"
-	"github.com/brandur/sorg/modules/squantifiedtypes"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the
@@ -28,7 +27,6 @@ var FuncMap = template.FuncMap{
 	"Pace":                    pace,
 	"RandIntn":                randIntn,
 	"RenderPublishingInfo":    renderPublishingInfo,
-	"RenderReadingAuthors":    renderReadingAuthors,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
 }
@@ -144,16 +142,6 @@ func pace(distance float64, duration time.Duration) string {
 
 func randIntn(bound int) int {
 	return rand.Intn(bound)
-}
-
-func renderReadingAuthors(reading *squantifiedtypes.Reading) string {
-	var authorNames []string
-
-	for _, author := range reading.Authors {
-		authorNames = append(authorNames, author.Name)
-	}
-
-	return strings.Join(authorNames, ", ")
 }
 
 func renderPublishingInfo(info map[string]string) template.HTML {
