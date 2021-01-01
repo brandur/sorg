@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"html"
 	"html/template"
-	"io/ioutil"
 	"regexp"
 	"sort"
 	"strings"
@@ -14,9 +13,9 @@ import (
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
+	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/squantifiedtypes"
-	"github.com/pelletier/go-toml"
 	"github.com/yosssi/ace"
 )
 
@@ -253,17 +252,7 @@ func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Rea
 	var readingDB squantifiedtypes.ReadingDB
 
 	err := retryOnce(c, func() error {
-		data, err := ioutil.ReadFile(target)
-		if err != nil {
-			return fmt.Errorf("Error reading data file: %w", err)
-		}
-
-		err = toml.Unmarshal(data, &readingDB)
-		if err != nil {
-			return fmt.Errorf("Error unmarshaling TOML: %w", err)
-		}
-
-		return nil
+		return mtoml.ParseFile(c, target, &readingDB)
 	})
 	if err != nil {
 		return nil, err
@@ -331,17 +320,7 @@ func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
 	var runDB RunDB
 
 	err := retryOnce(c, func() error {
-		data, err := ioutil.ReadFile(target)
-		if err != nil {
-			return fmt.Errorf("Error reading data file: %w", err)
-		}
-
-		err = toml.Unmarshal(data, &runDB)
-		if err != nil {
-			return fmt.Errorf("Error unmarshaling TOML: %w", err)
-		}
-
-		return nil
+		return mtoml.ParseFile(c, target, &runDB)
 	})
 	if err != nil {
 		return nil, err
@@ -511,17 +490,7 @@ func getTwitterData(c *modulir.Context, target string) ([]*squantifiedtypes.Twee
 	var tweetDB squantifiedtypes.TweetDB
 
 	err := retryOnce(c, func() error {
-		data, err := ioutil.ReadFile(target)
-		if err != nil {
-			return fmt.Errorf("Error reading data file: %w", err)
-		}
-
-		err = toml.Unmarshal(data, &tweetDB)
-		if err != nil {
-			return fmt.Errorf("Error unmarshaling TOML: %w", err)
-		}
-
-		return nil
+		return mtoml.ParseFile(c, target, &tweetDB)
 	})
 	if err != nil {
 		return nil, err
