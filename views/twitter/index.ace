@@ -46,6 +46,9 @@
                         li
                           {{.TextHTML}}
                           span.meta
+                            {{if ge .FavoriteCount 4}}
+                              | ( ♥ {{.FavoriteCount}} ) 
+                            {{end}}
                             a href="https://twitter.com/brandur/statuses/{{.ID}}" rel="nofollow"
                               {{$display := DistanceOfTimeInWordsFromNow .CreatedAt}}
                               {{if ne "" $display}}
