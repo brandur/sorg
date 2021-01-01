@@ -1,5 +1,21 @@
 
 [[readings]]
+  id = 4865
+  isbn = ""
+  isbn13 = ""
+  num_pages = 288
+  published_year = 1998
+  rating = 4
+  read_at = 2008-10-09T00:00:00-07:00
+  review = "A manual for successful social interaction. The ideas presented are still relevant today."
+  review_id = 3732435671
+  title = "How to Win Friends and Influence People"
+
+  [[readings.authors]]
+    id = 3317
+    name = "Dale Carnegie"
+
+[[readings]]
   id = 41810276
   isbn = "1948226197"
   isbn13 = "9781948226196"
@@ -3009,8 +3025,8 @@
 
 [[readings]]
   id = 2122
-  isbn = "0451191153"
-  isbn13 = "9780451191151"
+  isbn = ""
+  isbn13 = ""
   num_pages = 704
   published_year = 1996
   rating = 2
@@ -4238,22 +4254,6 @@
   [[readings.authors]]
     id = 843200
     name = "Oliver Sacks"
-
-[[readings]]
-  id = 1009639
-  isbn = "0091906849"
-  isbn13 = "9780091906849"
-  num_pages = 93
-  published_year = 2006
-  rating = 4
-  read_at = 2008-10-09T00:00:00-07:00
-  review = "A manual for successful social interaction. The ideas presented are still relevant today."
-  review_id = 190750894
-  title = "How to Win Friends and Influence People for Girls"
-
-  [[readings.authors]]
-    id = 6959314
-    name = "Donna Dale Carnegie"
 
 [[readings]]
   id = 104097
