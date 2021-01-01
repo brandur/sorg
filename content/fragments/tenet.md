@@ -17,4 +17,4 @@ Once you gloss over the specifics, that macro-level plot holds up well. Time-ben
 
 Aside from plot and mechanics, almost everything else about the movie is right up there in that top tier, triple-A class. The sets, acting, and scenery are all incredible, and Nolan's succeeded once again in creating some of the most elaborate and expensive action scenes ever committed to film. It's not as good as many of his other movies, but easily stands on its own. Metacritic pegs it right around a ~7 out of 10, and that's just about a perfect rating for this movie.
 
-[1] Once you are ready to spoil yourself, I'd recommend taking a look at [this diagram](https://www.reddit.com/r/tenet/comments/il97xs/spoilers_tenet_timelines_diagram_with_relative/) for a great visualization of the timeline and the various actors moving through it.
+[1] Once you're ready to spoil yourself, I'd recommend taking a look at [this diagram](https://www.reddit.com/r/tenet/comments/il97xs/spoilers_tenet_timelines_diagram_with_relative/) for a great visualization of the timeline and the various actors moving through it.
