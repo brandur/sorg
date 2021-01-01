@@ -1,5 +1,27 @@
 
 [[tweets]]
+  created_at = 2021-01-01T08:40:21Z
+  id = 1344926424587616259
+  text = "@zdne Yep, totally. I wish I could just opt out of the whole thing ..."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "zdne"
+      user_id = 83391577
+
+  [tweets.reply]
+    status_id = 1344921908853301248
+    user = "zdne"
+    user_id = 83391577
+
+[[tweets]]
+  created_at = 2020-12-31T22:00:01Z
+  favorite_count = 10
+  id = 1344765280057057281
+  text = "Big Sur a few weeks in: Some things are worse (contrast, Finder), many things are different (fonts, menus), but nothing is _better_.\n\nImagine if a big new macOS version introduced new keyboard shortcuts, better multi-tasking, or the like. Innovation in desktop OSes isn’t done."
+
+[[tweets]]
   created_at = 2020-12-24T18:58:53Z
   favorite_count = 1
   id = 1342182979108446208
@@ -867,7 +889,7 @@
   created_at = 2020-10-17T20:16:13Z
   favorite_count = 2
   id = 1317560064723447808
-  text = "@benskuhn Nice!\n\nIMO some slightly wider margins between content columns, a little more line-height and slightly reduced max-width on the side notes would get it looking really good.\n\nSee also Ink &amp; Switch, who do this in their articles: https://t.co/k5rVoEP8lf"
+  text = "@benskuhn Nice!\n\nIMO some slightly wider margins between content columns, a little more line-height and slightly reduced max-width on the side notes would get it looking really good.\n\nSee also Ink & Switch, who do this in their articles: https://t.co/k5rVoEP8lf"
 
   [tweets.entities]
 
@@ -1987,7 +2009,7 @@
   created_at = 2020-07-31T20:13:25Z
   favorite_count = 1
   id = 1289293109377945600
-  text = "@wulymammoth Thanks! And sorry, I forgot to reply this earlier. There wasn't when you sent this, but I added Atom feeds for them because why not :) They're not really linked, but they have a &lt;link rel=alternate ...&gt; in the header of each one's list of issues.\n\nhttps://t.co/HThlFXJoIS"
+  text = "@wulymammoth Thanks! And sorry, I forgot to reply this earlier. There wasn't when you sent this, but I added Atom feeds for them because why not :) They're not really linked, but they have a <link rel=alternate ...> in the header of each one's list of issues.\n\nhttps://t.co/HThlFXJoIS"
 
   [tweets.entities]
 
@@ -2049,7 +2071,7 @@
   created_at = 2020-07-30T01:51:41Z
   favorite_count = 4
   id = 1288653460410216448
-  text = "As if I could like Rick &amp; Morty any more ... now there's an anime short, and it's as good as any existing episode, if not better.\n\nFor my money, there's never been another show in the history of TV that's been as consistent in quality.\n\nhttps://t.co/UKTVXCgFf6"
+  text = "As if I could like Rick & Morty any more ... now there's an anime short, and it's as good as any existing episode, if not better.\n\nFor my money, there's never been another show in the history of TV that's been as consistent in quality.\n\nhttps://t.co/UKTVXCgFf6"
 
   [tweets.entities]
 
@@ -2267,7 +2289,7 @@
   favorite_count = 9
   id = 1258080230805139457
   retweet_count = 2
-  text = "That's in sharp contrast to code in big, unconstrained projects (e.g. most companies):\n\nThrow against the wall, throw against the wall, throw against the wall.\n\n&lt;As building is burning to the ground.&gt; Hopelessly, desperately, impossibly refactor, harden."
+  text = "That's in sharp contrast to code in big, unconstrained projects (e.g. most companies):\n\nThrow against the wall, throw against the wall, throw against the wall.\n\n<As building is burning to the ground.> Hopelessly, desperately, impossibly refactor, harden."
 
   [tweets.reply]
     status_id = 1258080197082939394
@@ -2705,7 +2727,7 @@
 [[tweets]]
   created_at = 2020-03-10T16:18:34Z
   id = 1237412539467591681
-  text = "(Also, one of the my favorite ever responsive layout designs for prose. That B&amp;W photography + contrast!) https://t.co/C4TDa0I9M3"
+  text = "(Also, one of the my favorite ever responsive layout designs for prose. That B&W photography + contrast!) https://t.co/C4TDa0I9M3"
 
   [tweets.entities]
 
@@ -2967,7 +2989,7 @@
   favorite_count = 26
   id = 1211683351414726657
   retweet_count = 6
-  text = "Favorite new Mac OS mini-productivity tip:\n\nCopy the current path in a focused Finder window with ⌥ Option + ⌘ Command + C.\n\nSo good when a common action turns out to have an easy default shortcut.\n\n(You may have to disable an Alfred shortcut in Features -&gt; Clipboard History.)"
+  text = "Favorite new Mac OS mini-productivity tip:\n\nCopy the current path in a focused Finder window with ⌥ Option + ⌘ Command + C.\n\nSo good when a common action turns out to have an easy default shortcut.\n\n(You may have to disable an Alfred shortcut in Features -> Clipboard History.)"
 
 [[tweets]]
   created_at = 2019-12-29T23:57:02Z
@@ -3816,7 +3838,7 @@
 [[tweets]]
   created_at = 2019-09-08T21:03:57Z
   id = 1170804994150293504
-  text = "@kyle_conroy They're really good. Almost every normal key stroke I ever use so far has worked.\n\nThe only exception that comes to mind is some of the file-related stuff like `:e` + `:w &lt;new file name&gt;` which doesn't behavior normally. It hasn't been a big problem so far though."
+  text = "@kyle_conroy They're really good. Almost every normal key stroke I ever use so far has worked.\n\nThe only exception that comes to mind is some of the file-related stuff like `:e` + `:w <new file name>` which doesn't behavior normally. It hasn't been a big problem so far though."
 
   [tweets.entities]
 
@@ -4567,7 +4589,7 @@
   created_at = 2019-07-13T14:24:04Z
   favorite_count = 4
   id = 1150048252034633729
-  text = "Also worth reading: RE2's “Why RE2?”\n\n&gt; “As a matter of principle, RE2 does not support constructs for which only backtracking solutions are known to exist. Thus, backreferences and look-around assertions are not supported.”\n\nhttps://t.co/eGWiHC6g7s"
+  text = "Also worth reading: RE2's “Why RE2?”\n\n> “As a matter of principle, RE2 does not support constructs for which only backtracking solutions are known to exist. Thus, backreferences and look-around assertions are not supported.”\n\nhttps://t.co/eGWiHC6g7s"
 
   [tweets.entities]
 
@@ -5269,7 +5291,7 @@
   favorite_count = 129
   id = 1127279801914368001
   retweet_count = 14
-  text = "My money's on Go for the most productive language — a winning combo of speed, brevity, correctness, and strict-but-not-too-strict types.\n\nThis morning I wondered how difficult it would be to implement graceful restart with exec on usr2. Went from idea to refined impl in &lt; 30 min."
+  text = "My money's on Go for the most productive language — a winning combo of speed, brevity, correctness, and strict-but-not-too-strict types.\n\nThis morning I wondered how difficult it would be to implement graceful restart with exec on usr2. Went from idea to refined impl in < 30 min."
 
 [[tweets]]
   created_at = 2019-05-07T18:44:21Z
@@ -6230,7 +6252,7 @@
 [[tweets]]
   created_at = 2019-03-22T16:50:09Z
   id = 1109135187055542272
-  text = "@apgwoz Haha! We actually transitioned from just CLI -&gt; Curses -&gt; Web. I liked all three versions but there's just nothing like all the easily discoverable buttons to find and click from the web version."
+  text = "@apgwoz Haha! We actually transitioned from just CLI -> Curses -> Web. I liked all three versions but there's just nothing like all the easily discoverable buttons to find and click from the web version."
 
   [tweets.entities]
 
@@ -6750,7 +6772,7 @@
   favorite_count = 29
   id = 1090262429651496960
   retweet_count = 2
-  text = "And alternatively, from the journal of C horrors:\n\nWasted literally 45 minutes debugging because unlike any sane language, the bitwise `&amp;` operator has lower precedence than comparisons like `==` (so guess what happens when you evaluate `a &amp; b == 1`). Fuuuu."
+  text = "And alternatively, from the journal of C horrors:\n\nWasted literally 45 minutes debugging because unlike any sane language, the bitwise `&` operator has lower precedence than comparisons like `==` (so guess what happens when you evaluate `a & b == 1`). Fuuuu."
 
 [[tweets]]
   created_at = 2019-01-29T06:57:48Z
@@ -6893,7 +6915,7 @@
   favorite_count = 21
   id = 1087052045792665600
   retweet_count = 1
-  text = "Unfortunately, I ran into a problem yesterday that required reinstalling Rust —\n\nFortunately, ripping out and reinstalling the entire toolchain including nightly, rustfmt, and clippy took &lt; 5 min (there's even `rustup self uninstall`). If only all software were so well behaved!"
+  text = "Unfortunately, I ran into a problem yesterday that required reinstalling Rust —\n\nFortunately, ripping out and reinstalling the entire toolchain including nightly, rustfmt, and clippy took < 5 min (there's even `rustup self uninstall`). If only all software were so well behaved!"
 
 [[tweets]]
   created_at = 2019-01-18T22:12:45Z
@@ -7312,7 +7334,7 @@
 [[tweets]]
   created_at = 2018-12-14T13:08:57Z
   id = 1073565507402424320
-  text = "@spakhm Yeah, I think I'm a much more casual user (I use other headphones at computers and usually in-ear earphones on city streets, so my maximum Air Pod time is &lt; 2 hours a day), which has probably helped preserve mine."
+  text = "@spakhm Yeah, I think I'm a much more casual user (I use other headphones at computers and usually in-ear earphones on city streets, so my maximum Air Pod time is < 2 hours a day), which has probably helped preserve mine."
 
   [tweets.entities]
 
@@ -8990,7 +9012,7 @@
   created_at = 2018-09-02T01:33:28Z
   favorite_count = 2
   id = 1036064533515665408
-  text = "Had an interesting couple of days with Git LFS (Large File Storage).\n\nGitHub's integration with it is impressive, but the subtleties around its magic ended up causing a lot of trouble by the end. I also burnt through GitHub's meager/not-well-advertised data quota in &lt; 1h of use."
+  text = "Had an interesting couple of days with Git LFS (Large File Storage).\n\nGitHub's integration with it is impressive, but the subtleties around its magic ended up causing a lot of trouble by the end. I also burnt through GitHub's meager/not-well-advertised data quota in < 1h of use."
 
 [[tweets]]
   created_at = 2018-08-31T15:04:00Z
@@ -10361,7 +10383,7 @@
 [[tweets]]
   created_at = 2018-07-19T03:44:36Z
   id = 1019790081974943744
-  text = "@elbuo8 @auth0 No worries, and very cool! Feel free to email me at brandur@&lt;my name again&gt;.org."
+  text = "@elbuo8 @auth0 No worries, and very cool! Feel free to email me at brandur@<my name again>.org."
 
   [tweets.entities]
 
@@ -10432,7 +10454,7 @@
   created_at = 2018-07-17T04:44:04Z
   favorite_count = 2
   id = 1019080270056546304
-  text = "@kytrinyx @zeke Cool! Well, I'm not exactly a forefront expert, but have worked with it quite a bit. If there's anything that I can help clear up — brandur@&lt;my name again&gt;.org."
+  text = "@kytrinyx @zeke Cool! Well, I'm not exactly a forefront expert, but have worked with it quite a bit. If there's anything that I can help clear up — brandur@<my name again>.org."
 
   [tweets.entities]
 
@@ -11470,7 +11492,7 @@
   created_at = 2018-05-25T08:05:50Z
   favorite_count = 1
   id = 999924487452688384
-  text = "@pims Yes, admittedly it’s a problem :$\n\nAll I can say is that it’s worked well enough so far. I really miss Option&lt;_&gt; from other languages though — even if we were to change it at this point, nil is just not an amazing solution."
+  text = "@pims Yes, admittedly it’s a problem :$\n\nAll I can say is that it’s worked well enough so far. I really miss Option<_> from other languages though — even if we were to change it at this point, nil is just not an amazing solution."
 
   [tweets.entities]
 
@@ -12111,7 +12133,7 @@
   favorite_count = 22
   id = 990681156289937408
   retweet_count = 1
-  text = "Compare an efficient keyboardist to a fast phone/tablet user and you’ll see a 10x+ productivity difference, yet the majority of R&amp;D goes into touch UIs, or the exotic frontier.\n\nThere’s still many advances to be made in interface design, and they’re closer to home than we expect."
+  text = "Compare an efficient keyboardist to a fast phone/tablet user and you’ll see a 10x+ productivity difference, yet the majority of R&D goes into touch UIs, or the exotic frontier.\n\nThere’s still many advances to be made in interface design, and they’re closer to home than we expect."
 
 [[tweets]]
   created_at = 2018-04-29T18:46:35Z
@@ -12790,7 +12812,7 @@
   favorite_count = 16
   id = 987750921705742336
   retweet_count = 1
-  text = "Inspiring Rust moment of the day: my test suite takes ~8 s to run. `time` reports \"user\" as ~46 s.\n\nWith `time`, if user &gt; real, you're seeing time spent on multiple cores.\n\nIf user &gt;&gt; real, you're seeing huge parallelization. My suite, using only Rust's normal tooling, shows 9x. https://t.co/3iOWm9MMj3"
+  text = "Inspiring Rust moment of the day: my test suite takes ~8 s to run. `time` reports \"user\" as ~46 s.\n\nWith `time`, if user > real, you're seeing time spent on multiple cores.\n\nIf user >> real, you're seeing huge parallelization. My suite, using only Rust's normal tooling, shows 9x. https://t.co/3iOWm9MMj3"
 
   [tweets.entities]
 
@@ -14424,7 +14446,7 @@
   favorite_count = 8
   id = 966355354899460096
   retweet_count = 1
-  text = "A connection pool that releases connections on `Drop` (i.e., destructor) when they leave scope like r2d2 in Rust opens up a new paradigm for connection management that is *so much* more resource efficient.\n\nN workers can plausibly share &lt;&lt; N connections. https://t.co/yAppKvTqEc"
+  text = "A connection pool that releases connections on `Drop` (i.e., destructor) when they leave scope like r2d2 in Rust opens up a new paradigm for connection management that is *so much* more resource efficient.\n\nN workers can plausibly share << N connections. https://t.co/yAppKvTqEc"
 
   [tweets.entities]
 
@@ -15146,7 +15168,7 @@
   favorite_count = 23
   id = 959543276306022400
   retweet_count = 6
-  text = "The best kind of new feature — a common (and critical) database operation gets much better, and users don't have to do a thing. The little Oracle &lt;-&gt; Postgres disparity that's left continues to shrink every year.\n\nCongrats @petervgeoghegan! https://t.co/7JHAdD3Yo5"
+  text = "The best kind of new feature — a common (and critical) database operation gets much better, and users don't have to do a thing. The little Oracle <-> Postgres disparity that's left continues to shrink every year.\n\nCongrats @petervgeoghegan! https://t.co/7JHAdD3Yo5"
 
   [tweets.entities]
 
@@ -18007,7 +18029,7 @@
   created_at = 2017-11-18T08:16:02Z
   id = 931798138259517440
   retweet_count = 18
-  text = "RT @olivierlacan: Scaling Postgres with Read Replicas &amp; Using WAL to Counter Stale Reads https://t.co/eFaVujk1ue\n\nI’ve seen academic papers…"
+  text = "RT @olivierlacan: Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads https://t.co/eFaVujk1ue\n\nI’ve seen academic papers…"
 
   [tweets.entities]
 
@@ -18360,7 +18382,7 @@
   favorite_count = 8
   id = 928801300862582784
   retweet_count = 1
-  text = "I'm about to visit Asia for a few weeks, and expect to publish issue no. 2 of my newsletter when I get back. It's sent only a few times a year, and may be of interest if you're into travel or software.\n\nIt's titled \"Passages &amp; Glass\": https://t.co/Q4Z0ARgd8L"
+  text = "I'm about to visit Asia for a few weeks, and expect to publish issue no. 2 of my newsletter when I get back. It's sent only a few times a year, and may be of interest if you're into travel or software.\n\nIt's titled \"Passages & Glass\": https://t.co/Q4Z0ARgd8L"
 
   [tweets.entities]
 
@@ -18373,7 +18395,7 @@
   created_at = 2017-11-10T00:43:24Z
   id = 928785123121573888
   retweet_count = 31
-  text = "RT @romainhuet: Did you know @stripe offers OpenAPI 2.0 &amp; 3.0 specs? 📚📃✍️ https://t.co/8RYWm1DRqP\n\nYou can now benefit from the whole OpenA…"
+  text = "RT @romainhuet: Did you know @stripe offers OpenAPI 2.0 & 3.0 specs? 📚📃✍️ https://t.co/8RYWm1DRqP\n\nYou can now benefit from the whole OpenA…"
 
   [tweets.entities]
 
@@ -18447,7 +18469,7 @@
   created_at = 2017-11-09T15:24:12Z
   favorite_count = 7
   id = 928644396072935424
-  text = "Yesterday's toy project for Redis streams needs a prerelease branch of Redis to run. I like CI, so I had Travis build it from source before running tests.\n\nThe Redis download + unzip + make takes &lt; 1 minute:\nhttps://t.co/tXlPcluPCn\n\nC (minus the ++) is pretty awesome."
+  text = "Yesterday's toy project for Redis streams needs a prerelease branch of Redis to run. I like CI, so I had Travis build it from source before running tests.\n\nThe Redis download + unzip + make takes < 1 minute:\nhttps://t.co/tXlPcluPCn\n\nC (minus the ++) is pretty awesome."
 
   [tweets.entities]
 
@@ -18790,7 +18812,7 @@
   created_at = 2017-11-01T23:32:08Z
   favorite_count = 2
   id = 925868089496834048
-  text = "@TheEvanCarroll @simonw Thanks for doing the leg work on this one!\n\nI think my information here predated the optimization for altering `VARCHAR(n)` to `VARCHAR(&gt; n)` (according to docs, a full table rewrite is not necessary nowadays if \"the old type is an unconstrained domain over the new type\")."
+  text = "@TheEvanCarroll @simonw Thanks for doing the leg work on this one!\n\nI think my information here predated the optimization for altering `VARCHAR(n)` to `VARCHAR(> n)` (according to docs, a full table rewrite is not necessary nowadays if \"the old type is an unconstrained domain over the new type\")."
 
   [tweets.entities]
 
@@ -19517,7 +19539,7 @@
 [[tweets]]
   created_at = 2017-10-04T16:42:08Z
   id = 915618045371998208
-  text = "@antirez If I do this (like from the blog post), what stream is that data being added to?\n\n&gt; XADD MAXLEN 1000000 * field1 value1 field2 value2\n1000000-0\n\nIs it possible that's a bug and/or mistake in the post? I notice `XADD mystream MAXLEN ...` seems to work well."
+  text = "@antirez If I do this (like from the blog post), what stream is that data being added to?\n\n> XADD MAXLEN 1000000 * field1 value1 field2 value2\n1000000-0\n\nIs it possible that's a bug and/or mistake in the post? I notice `XADD mystream MAXLEN ...` seems to work well."
 
   [tweets.entities]
 
@@ -22253,7 +22275,7 @@
   created_at = 2017-07-31T21:14:07Z
   favorite_count = 2
   id = 892131282330583040
-  text = "TIL that HTML5 added `placeholder` for &lt;input&gt;. Love seeing clumsy JS replaced with good, standard implementations.\n\nhttps://t.co/2mGdUjC2F2"
+  text = "TIL that HTML5 added `placeholder` for <input>. Love seeing clumsy JS replaced with good, standard implementations.\n\nhttps://t.co/2mGdUjC2F2"
 
   [tweets.entities]
 
@@ -25153,7 +25175,7 @@
 [[tweets]]
   created_at = 2017-03-25T12:45:43Z
   id = 845617691268329472
-  text = "@mschoening This looks awesome.\n\nToo bad it took until 2017 because this is really what people have wanted all along! (See &lt;table&gt;.)"
+  text = "@mschoening This looks awesome.\n\nToo bad it took until 2017 because this is really what people have wanted all along! (See <table>.)"
 
   [tweets.entities]
 
@@ -26680,7 +26702,7 @@
 [[tweets]]
   created_at = 2017-01-05T19:00:14Z
   id = 817083302418841600
-  text = "@HackerEarth Your email promotions system is incredibly disingenuous. Please implement something that takes &lt; 20 clicks to unsubscribe. https://t.co/d5QeAPEVEy"
+  text = "@HackerEarth Your email promotions system is incredibly disingenuous. Please implement something that takes < 20 clicks to unsubscribe. https://t.co/d5QeAPEVEy"
 
   [tweets.entities]
 
@@ -27995,7 +28017,7 @@
   created_at = 2016-11-18T17:23:08Z
   favorite_count = 1
   id = 799664247345029121
-  text = "@yann_ck I found a nice trick recently for do or die re-training:\n\ninoremap &lt;esc&gt; NO ESCAPE FOR YOU"
+  text = "@yann_ck I found a nice trick recently for do or die re-training:\n\ninoremap <esc> NO ESCAPE FOR YOU"
 
   [tweets.entities]
 
@@ -28033,7 +28055,7 @@
   created_at = 2016-11-18T00:34:36Z
   id = 799410441243926528
   retweet_count = 1
-  text = "RT @itamarhaber: redis-cell: an API rate limiter as a Redis module - https://t.co/ePeidVkO45 by @brandur &lt;- first module to written in #Rus…"
+  text = "RT @itamarhaber: redis-cell: an API rate limiter as a Redis module - https://t.co/ePeidVkO45 by @brandur <- first module to written in #Rus…"
 
   [tweets.entities]
 
@@ -28279,7 +28301,7 @@
   created_at = 2016-11-06T07:37:44Z
   favorite_count = 1
   id = 795168274895904768
-  text = "Cross-compiled binaries and automated CI-based releases to GitHub going in &lt; 2 hours with rust-everywhere.\n\nhttps://t.co/ga2U8cO3Iq"
+  text = "Cross-compiled binaries and automated CI-based releases to GitHub going in < 2 hours with rust-everywhere.\n\nhttps://t.co/ga2U8cO3Iq"
 
   [tweets.entities]
 
@@ -29668,7 +29690,7 @@
   created_at = 2016-06-21T20:55:19Z
   favorite_count = 2
   id = 745359468133654531
-  text = "8 years of &lt; 0.5% interest, yet all but one member calls for +1-2% in 2017. Fantasy or dishonesty; take your pick.\n\nhttps://t.co/Asbh47zWCo"
+  text = "8 years of < 0.5% interest, yet all but one member calls for +1-2% in 2017. Fantasy or dishonesty; take your pick.\n\nhttps://t.co/Asbh47zWCo"
 
   [tweets.entities]
 
@@ -29777,7 +29799,7 @@
   favorite_count = 9
   id = 742425706055925760
   retweet_count = 1
-  text = "Just what the world needed: annoying effects on text messages.\n\nNext up Apple will be announcing the revival of the &lt;marquee&gt; tag."
+  text = "Just what the world needed: annoying effects on text messages.\n\nNext up Apple will be announcing the revival of the <marquee> tag."
 
 [[tweets]]
   created_at = 2016-06-13T16:38:09Z
@@ -30735,7 +30757,7 @@
   created_at = 2016-04-09T23:10:55Z
   id = 718939277929742336
   retweet_count = 1
-  text = "RT @gavingmiller: .@brandur great post on static sites: https://t.co/kOlfnm1oDE  Appreciate the SSL &amp; CD part, was the missing piece for me."
+  text = "RT @gavingmiller: .@brandur great post on static sites: https://t.co/kOlfnm1oDE  Appreciate the SSL & CD part, was the missing piece for me."
 
   [tweets.entities]
 
@@ -30948,7 +30970,7 @@
 [[tweets]]
   created_at = 2016-03-25T05:26:22Z
   id = 713235555685797888
-  text = "@jakubnesetril @manp Hah yep. Every time I see that, I expect the prices to have gone up to $2/SMS &amp; $5/MB; about where other carriers are."
+  text = "@jakubnesetril @manp Hah yep. Every time I see that, I expect the prices to have gone up to $2/SMS & $5/MB; about where other carriers are."
 
   [tweets.entities]
 
@@ -31574,7 +31596,7 @@
   created_at = 2015-12-30T18:05:47Z
   favorite_count = 1
   id = 682261315029565440
-  text = "With the Rotten Tomatoes rating system applied to TV, you need to be wary of anything rated &lt; 98%."
+  text = "With the Rotten Tomatoes rating system applied to TV, you need to be wary of anything rated < 98%."
 
 [[tweets]]
   created_at = 2015-12-24T17:37:16Z
@@ -31838,7 +31860,7 @@
   created_at = 2015-10-29T16:05:45Z
   favorite_count = 2
   id = 659763059813040128
-  text = "The power of low interest rates: major recession and widespread layoffs; &lt; 5% change in real estate prices. https://t.co/5IgzuISDs4"
+  text = "The power of low interest rates: major recession and widespread layoffs; < 5% change in real estate prices. https://t.co/5IgzuISDs4"
 
   [tweets.entities]
 
@@ -32058,7 +32080,7 @@
   created_at = 2015-10-06T04:10:07Z
   favorite_count = 1
   id = 651248040947269633
-  text = "In honor of the Rick &amp; Morty finale (which was genius), here's the Johnny Cash cover of “Hurt.” https://t.co/TYZCh9uIZw"
+  text = "In honor of the Rick & Morty finale (which was genius), here's the Johnny Cash cover of “Hurt.” https://t.co/TYZCh9uIZw"
 
   [tweets.entities]
 
@@ -32587,7 +32609,7 @@
   created_at = 2015-08-26T20:57:49Z
   id = 636643734621454336
   retweet_count = 9
-  text = "RT @blakegentry: AT&amp;T provides a great example of why every site should use HTTPS, even personal blogs. Just use free @CloudFlare TLS! http…"
+  text = "RT @blakegentry: AT&T provides a great example of why every site should use HTTPS, even personal blogs. Just use free @CloudFlare TLS! http…"
 
   [tweets.entities]
 
@@ -33569,7 +33591,7 @@
 [[tweets]]
   created_at = 2015-07-02T22:11:05Z
   id = 616730841289486336
-  text = "@jmccartie @neilmiddleton Neat! See also Postgres &lt;-&gt; GraphQL. https://t.co/Fpq07WIUwu"
+  text = "@jmccartie @neilmiddleton Neat! See also Postgres <-> GraphQL. https://t.co/Fpq07WIUwu"
 
   [tweets.entities]
 
@@ -34404,7 +34426,7 @@
 [[tweets]]
   created_at = 2015-05-29T22:59:35Z
   id = 604421860239933440
-  text = "@rwz Ah weird. I usually see that kind of thing before Seil is activated. Prints like a literal &lt;f13&gt; to console of whatever."
+  text = "@rwz Ah weird. I usually see that kind of thing before Seil is activated. Prints like a literal <f13> to console of whatever."
 
   [tweets.entities]
 
@@ -35448,7 +35470,7 @@
 [[tweets]]
   created_at = 2015-02-10T21:13:03Z
   id = 565257161350336515
-  text = "@rhoml Pier 48 in San Francisco! Kind of out by the Mission Bay/AT&amp;T ballpark area."
+  text = "@rhoml Pier 48 in San Francisco! Kind of out by the Mission Bay/AT&T ballpark area."
 
   [tweets.entities]
 
@@ -39786,7 +39808,7 @@
   created_at = 2014-03-17T06:09:11Z
   favorite_count = 1
   id = 445441696986181632
-  text = "@JorgeO Hah! Exactly. Things were grim when I had two &amp;‘s, ’ref’, a deref, and clone() all on the same line and still couldn’t compile ;)"
+  text = "@JorgeO Hah! Exactly. Things were grim when I had two &‘s, ’ref’, a deref, and clone() all on the same line and still couldn’t compile ;)"
 
   [tweets.entities]
 
@@ -40714,7 +40736,7 @@
   created_at = 2014-02-16T01:01:40Z
   id = 434855061672316928
   retweet_count = 14
-  text = "RT @dcurtis: A sad story about a CEO's aspiration and desire, and how it manifests itself in his company, Abercrombie &amp; Fitch:\n\nhttp://t.co…"
+  text = "RT @dcurtis: A sad story about a CEO's aspiration and desire, and how it manifests itself in his company, Abercrombie & Fitch:\n\nhttp://t.co…"
 
   [tweets.entities]
 
@@ -48201,7 +48223,7 @@
   created_at = 2012-11-20T22:49:05Z
   id = 271022381429051392
   retweet_count = 5
-  text = "RT @heroku: Support thousands of developers. Join @ped, @brandur &amp; @daneharrigan on the Heroku API team: http://t.co/TuY09a5S"
+  text = "RT @heroku: Support thousands of developers. Join @ped, @brandur & @daneharrigan on the Heroku API team: http://t.co/TuY09a5S"
 
   [tweets.entities]
 
@@ -48234,7 +48256,7 @@
 [[tweets]]
   created_at = 2012-11-20T09:19:35Z
   id = 270818662259228672
-  text = "Simulacra &amp; Simulation. Neo's hollowed out book in the Matrix.\n\nhttps://t.co/QmCXiRVz\n\nhttp://t.co/gD0xuEFD"
+  text = "Simulacra & Simulation. Neo's hollowed out book in the Matrix.\n\nhttps://t.co/QmCXiRVz\n\nhttp://t.co/gD0xuEFD"
 
   [tweets.entities]
 
@@ -48465,7 +48487,7 @@
 [[tweets]]
   created_at = 2012-11-05T18:30:07Z
   id = 265521392114622465
-  text = "Run `bundle update &lt;gem&gt;`. Version goes from 1.7.0 to 1.4.4."
+  text = "Run `bundle update <gem>`. Version goes from 1.7.0 to 1.4.4."
 
 [[tweets]]
   created_at = 2012-11-04T23:33:36Z
