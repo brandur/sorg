@@ -4,6 +4,7 @@
 package squantifiedtypes
 
 import (
+	"html/template"
 	"time"
 )
 
@@ -66,6 +67,11 @@ type Tweet struct {
 	Retweet       *TweetRetweet  `toml:"retweet"`
 	RetweetCount  int            `toml:"retweet_count"`
 	Text          string         `toml:"text"`
+
+	// TextHTML is Text rendered to HTML using a variety of special Twitter
+	// rules. It's rendered once and added to the struct so that it can be
+	// reused across multiple pages.
+	TextHTML      template.HTML         `toml:"-"`
 }
 
 // TweetEntities contains various multimedia entries that may be contained in a

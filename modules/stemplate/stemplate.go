@@ -2,14 +2,10 @@ package stemplate
 
 import (
 	"bytes"
-	"crypto/sha1"
-	"encoding/base64"
 	"fmt"
-	"html"
 	"html/template"
 	"math"
 	"math/rand"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -33,7 +29,6 @@ var FuncMap = template.FuncMap{
 	"RandIntn":                randIntn,
 	"RenderPublishingInfo":    renderPublishingInfo,
 	"RenderReadingAuthors":    renderReadingAuthors,
-	"RenderTweet":             renderTweet,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
 }
@@ -151,18 +146,6 @@ func randIntn(bound int) int {
 	return rand.Intn(bound)
 }
 
-// Matches links in a tweet (like protocol://link).
-//
-// Note that the last character isn't allowed to match a few extra characters
-// in case the link was wrapped in parenthesis, ended a sentence, or the like.
-var linkRE = regexp.MustCompile(`(^|[\n ])([\w]+?:\/\/[\w]+[^ "\n\r\t< ]*[^ "\n\r\t<. ])`)
-
-// Matches tags in a tweet (like #mix11).
-var tagRE = regexp.MustCompile(`([\s\(]|^)#(\w+)([\s\)]|$)`)
-
-// Matches users in a tweet (like #brandur).
-var userRE = regexp.MustCompile(`@(\w+)`)
-
 func renderReadingAuthors(reading *squantifiedtypes.Reading) string {
 	var authorNames []string
 
@@ -181,73 +164,6 @@ func renderPublishingInfo(info map[string]string) template.HTML {
 	}
 
 	return template.HTML(s)
-}
-
-// Renders the content of a tweet to HTML.
-func renderTweet(tweet *squantifiedtypes.Tweet) string {
-	content := tweet.Text
-	tagMap := make(map[string]string)
-
-	urlEntitiesMap := make(map[string]*squantifiedtypes.TweetEntitiesURL)
-	if tweet.Entities != nil && tweet.Entities.URLs != nil {
-		for _, urlEntity := range tweet.Entities.URLs {
-			urlEntitiesMap[urlEntity.URL] = urlEntity
-		}
-	}
-
-	// links like protocol://link
-	content = linkRE.ReplaceAllStringFunc(content, func(link string) string {
-		matches := linkRE.FindStringSubmatch(link)
-
-		//fmt.Printf("matches = %+v (len %v)\n", matches, len(matches))
-
-		var display string
-		whitespace := matches[1]
-		href := matches[2]
-
-		// Twitter ships URL entity information from its API. Use it if
-		// available to produce a shortened "display" URL and the original
-		// expanded URL. Otherwise, just do our own version of it.
-		if urlEntity, ok := urlEntitiesMap[href]; ok {
-			display = urlEntity.DisplayURL
-			href = urlEntity.ExpandedURL
-		} else {
-			display = href
-			if len(href) > 50 {
-				display = fmt.Sprintf("%s&hellip;", href[0:50])
-			}
-		}
-
-		// replace with tags so links don't interfere with subsequent rules
-		sum := sha1.Sum([]byte(href))
-		tag := base64.URLEncoding.EncodeToString(sum[:])
-		tagMap[tag] = fmt.Sprintf(`<a href="%s" rel="nofollow">%s</a>`, href, display)
-
-		// make sure to preserve whitespace before the inserted tag
-		return whitespace + tag
-	})
-
-	// URL escape (so HTML etc. isn't rendered)
-	content = html.EscapeString(content)
-
-	// user links (like @brandur)
-	content = userRE.ReplaceAllString(content,
-		`<a href="https://www.twitter.com/$1" rel="nofollow">@$1</a>`)
-
-	// hash tag search (like #mix11) -- note like anyone would never use one of
-	// these, lol
-	content = tagRE.ReplaceAllString(content,
-		`$1<a href="https://search.twitter.com/search?q=$2" rel="nofollow">#$2</a>$3`)
-
-	// replace the stand-in tags for links generated earlier
-	for tag, link := range tagMap {
-		content = strings.Replace(content, tag, link, -1)
-	}
-
-	// show newlines as line breaks
-	content = strings.Replace(content, "\n", `<div class="tweet-linebreak">`, -1)
-
-	return content
 }
 
 // RetinaImageAlt is a shortcut for creating an image with

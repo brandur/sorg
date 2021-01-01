@@ -44,7 +44,7 @@
                     ul
                       {{range $month.Tweets}}
                         li
-                          {{RenderTweet . | HTML}}
+                          {{.TextHTML}}
                           span.meta
                             a href="https://twitter.com/brandur/statuses/{{.ID}}" rel="nofollow"
                               {{$display := DistanceOfTimeInWordsFromNow .CreatedAt}}

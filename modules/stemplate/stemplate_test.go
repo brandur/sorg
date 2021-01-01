@@ -4,7 +4,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/brandur/sorg/modules/squantifiedtypes"
 	assert "github.com/stretchr/testify/require"
 )
 
@@ -82,76 +81,6 @@ func TestPace(t *testing.T) {
 
 func TestRandIntn(t *testing.T) {
 	assert.Equal(t, 0, randIntn(1))
-}
-
-func TestRenderTweet(t *testing.T) {
-	// short link
-	assert.Equal(t,
-		`<a href="https://example.com" rel="nofollow">https://example.com</a>`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `https://example.com`}),
-	)
-
-	// link with whitespace and newlines
-	assert.Equal(t,
-		`content`+
-			`<div class="tweet-linebreak"><div class="tweet-linebreak">`+
-			`<a href="https://example.com" rel="nofollow">https://example.com</a>`+
-			`<div class="tweet-linebreak"><div class="tweet-linebreak">`+
-			`end`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `content
-
-https://example.com
-
-end`}),
-	)
-
-	// long link
-	assert.Equal(t,
-		`<a href="https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now" rel="nofollow">https://example.com/path/to/more/great/stuff/and/t&hellip;</a>`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now`}),
-	)
-
-	// long with special characters
-	assert.Equal(t,
-		`<a href="https://example.com/w/Film_(2005)" rel="nofollow">https://example.com/w/Film_(2005)</a>.`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `https://example.com/w/Film_(2005).`}),
-	)
-
-	// html inclued in tweet
-	assert.Equal(t,
-		`not a &lt;video&gt; tag`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `not a <video> tag`}),
-	)
-
-	// tag
-	assert.Equal(t,
-		`<a href="https://search.twitter.com/search?q=mix11" rel="nofollow">#mix11</a>`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `#mix11`}),
-	)
-
-	// tag floating with space
-	assert.Equal(t,
-		` <a href="https://search.twitter.com/search?q=mix11" rel="nofollow">#mix11</a> `,
-		renderTweet(&squantifiedtypes.Tweet{Text: ` #mix11 `}),
-	)
-
-	// tag in parenthesis
-	assert.Equal(t,
-		`(<a href="https://search.twitter.com/search?q=mix11" rel="nofollow">#mix11</a>)`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `(#mix11)`}),
-	)
-
-	// HTML entities with a pound should not be tags
-	assert.Equal(t,
-		`&amp;#39;`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `&#39;`}),
-	)
-
-	// user
-	assert.Equal(t,
-		`<a href="https://www.twitter.com/brandur" rel="nofollow">@brandur</a>`,
-		renderTweet(&squantifiedtypes.Tweet{Text: `@brandur`}),
-	)
 }
 
 func TestRetinaImageAlt(t *testing.T) {
