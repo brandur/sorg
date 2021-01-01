@@ -15,7 +15,6 @@ import (
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/brandur/sorg/modules/squantifiedtypes"
 	"github.com/yosssi/ace"
 )
 
@@ -122,7 +121,7 @@ func RenderTwitter(c *modulir.Context, viewsChanged bool,
 		return err
 	}
 
-	var tweets []*squantifiedtypes.Tweet
+	var tweets []*Tweet
 	for _, tweet := range tweetsWithReplies {
 		if tweet.Reply != nil {
 			continue
@@ -182,6 +181,50 @@ func RenderTwitter(c *modulir.Context, viewsChanged bool,
 //
 //////////////////////////////////////////////////////////////////////////////
 
+//
+// Goodreads
+//
+
+// Reading is a single Goodreads book stored to a TOML file.
+type Reading struct {
+	Authors       []*ReadingAuthor `toml:"authors"`
+	ID            int              `toml:"id"`
+	ISBN          string           `toml:"isbn"`
+	ISBN13        string           `toml:"isbn13"`
+	NumPages      int              `toml:"num_pages"`
+	PublishedYear int              `toml:"published_year"`
+	ReadAt        time.Time        `toml:"read_at"`
+	Rating        int              `toml:"rating"`
+	Review        string           `toml:"review"`
+	ReviewID      int              `toml:"review_id"`
+	Title         string           `toml:"title"`
+
+	// AuthorsDisplay is just the names of all authors combined together for
+	// display on a page.
+	AuthorsDisplay string `toml:"-"`
+}
+
+// ReadingAuthor is a single Goodreads author stored to a TOML file.
+type ReadingAuthor struct {
+	ID   int    `toml:"id"`
+	Name string `toml:"name"`
+}
+
+// ReadingDB is a database of Goodreads readings stored to a TOML file.
+type ReadingDB struct {
+	Readings []*Reading `toml:"readings"`
+}
+
+// readingYear holds a collection of readings grouped by year.
+type readingYear struct {
+	Year     int
+	Readings []*Reading
+}
+
+//
+// Strava
+//
+
 // Run is a run as downloaded from Strava.
 type Run struct {
 	// Distance is the distance traveled for the run in meters.
@@ -208,16 +251,78 @@ type RunDB struct {
 	Runs []*Run `toml:"runs"`
 }
 
-// readingYear holds a collection of readings grouped by year.
-type readingYear struct {
-	Year     int
-	Readings []*squantifiedtypes.Reading
+//
+// Twitter
+//
+
+// TweetDB is a database of tweets stored to a TOML file.
+type TweetDB struct {
+	Tweets []*Tweet `toml:"tweets"`
+}
+
+// Tweet is a single tweet stored to a TOML file.
+type Tweet struct {
+	CreatedAt     time.Time      `toml:"created_at"`
+	Entities      *TweetEntities `toml:"entities"`
+	FavoriteCount int            `toml:"favorite_count"`
+	ID            int64          `toml:"id"`
+	Reply         *TweetReply    `toml:"reply"`
+	Retweet       *TweetRetweet  `toml:"retweet"`
+	RetweetCount  int            `toml:"retweet_count"`
+	Text          string         `toml:"text"`
+
+	// TextHTML is Text rendered to HTML using a variety of special Twitter
+	// rules. It's rendered once and added to the struct so that it can be
+	// reused across multiple pages.
+	TextHTML template.HTML `toml:"-"`
+}
+
+// TweetEntities contains various multimedia entries that may be contained in a
+// tweet.
+type TweetEntities struct {
+	Medias       []*TweetEntitiesMedia       `toml:"medias"`
+	URLs         []*TweetEntitiesURL         `toml:"urls"`
+	UserMentions []*TweetEntitiesUserMention `toml:"user_mentions"`
+}
+
+// TweetEntitiesMedia is an image or video stored in a tweet.
+type TweetEntitiesMedia struct {
+	Type string `toml:"type"`
+	URL  string `toml:"url"`
+}
+
+// TweetEntitiesURL is a URL referenced in a tweet.
+type TweetEntitiesURL struct {
+	DisplayURL  string `toml:"display_url"`
+	ExpandedURL string `toml:"expanded_url"`
+	URL         string `toml:"url"`
+}
+
+// TweetEntitiesUserMention is another user being mentioned in a tweet.
+type TweetEntitiesUserMention struct {
+	User   string `toml:"user"`
+	UserID int64  `toml:"user_id"`
+}
+
+// TweetReply is populated with reply information for when a tweet is a reply.
+type TweetReply struct {
+	StatusID int64  `toml:"status_id"`
+	User     string `toml:"user"`
+	UserID   int64  `toml:"user_id"`
+}
+
+// TweetRetweet is populated with retweet information for when a tweet is a
+// retweet.
+type TweetRetweet struct {
+	StatusID int64  `toml:"status_id"`
+	User     string `toml:"user"`
+	UserID   int64  `toml:"user_id"`
 }
 
 // tweetMonth holds a collection of tweets grouped by year.
 type tweetMonth struct {
 	Month  time.Month
-	Tweets []*squantifiedtypes.Tweet
+	Tweets []*Tweet
 }
 
 // tweetYear holds a collection of tweetMonths grouped by year.
@@ -236,7 +341,7 @@ type tweetYear struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
-func combineAuthors(authors []*squantifiedtypes.ReadingAuthor) string {
+func combineAuthors(authors []*ReadingAuthor) string {
 	if len(authors) == 0 {
 		return ""
 	}
@@ -272,8 +377,8 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 	return options
 }
 
-func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Reading, error) {
-	var readingDB squantifiedtypes.ReadingDB
+func getReadingsData(c *modulir.Context, target string) ([]*Reading, error) {
+	var readingDB ReadingDB
 
 	err := retryOnce(c, func() error {
 		return mtoml.ParseFile(c, target, &readingDB)
@@ -296,7 +401,7 @@ func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Rea
 	return readingDB.Readings, nil
 }
 
-func getReadingsCountByYearData(readings []*squantifiedtypes.Reading, maxYears int) ([]int, []int) {
+func getReadingsCountByYearData(readings []*Reading, maxYears int) ([]int, []int) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
 	byYearXYears := []int{}
@@ -320,7 +425,7 @@ func getReadingsCountByYearData(readings []*squantifiedtypes.Reading, maxYears i
 	return byYearXYears, byYearYCounts
 }
 
-func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading, maxYears int) ([]int, []int) {
+func getReadingsPagesByYearData(readings []*Reading, maxYears int) ([]int, []int) {
 	// Give these arrays 0 elements (instead of null) in case no Black Swan
 	// data gets loaded but we still need to render the page.
 	byYearXYears := []int{}
@@ -488,7 +593,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 }
 */
 
-func getTwitterByMonth(tweets []*squantifiedtypes.Tweet) ([]string, []int) {
+func getTwitterByMonth(tweets []*Tweet) ([]string, []int) {
 	tweetCountXMonths := []string{}
 	tweetCountYCounts := []int{}
 
@@ -514,8 +619,8 @@ func getTwitterByMonth(tweets []*squantifiedtypes.Tweet) ([]string, []int) {
 	return tweetCountXMonths, tweetCountYCounts
 }
 
-func getTwitterData(c *modulir.Context, target string) ([]*squantifiedtypes.Tweet, error) {
-	var tweetDB squantifiedtypes.TweetDB
+func getTwitterData(c *modulir.Context, target string) ([]*Tweet, error) {
+	var tweetDB TweetDB
 
 	err := retryOnce(c, func() error {
 		return mtoml.ParseFile(c, target, &tweetDB)
@@ -531,7 +636,7 @@ func getTwitterData(c *modulir.Context, target string) ([]*squantifiedtypes.Twee
 	return tweetDB.Tweets, nil
 }
 
-func groupReadingsByYear(readings []*squantifiedtypes.Reading) []*readingYear {
+func groupReadingsByYear(readings []*Reading) []*readingYear {
 	var year *readingYear
 	var years []*readingYear
 
@@ -547,7 +652,7 @@ func groupReadingsByYear(readings []*squantifiedtypes.Reading) []*readingYear {
 	return years
 }
 
-func groupTwitterByYearAndMonth(tweets []*squantifiedtypes.Tweet) []*tweetYear {
+func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
 	var month *tweetMonth
 	var year *tweetYear
 	var years []*tweetYear
@@ -608,11 +713,11 @@ var tagRE = regexp.MustCompile(`([\s\(]|^)#(\w+)([\s\)]|$)`)
 // Matches users in a tweet (like #brandur).
 var userRE = regexp.MustCompile(`@(\w+)`)
 
-func tweetTextToHTML(tweet *squantifiedtypes.Tweet) template.HTML {
+func tweetTextToHTML(tweet *Tweet) template.HTML {
 	content := tweet.Text
 	tagMap := make(map[string]string)
 
-	urlEntitiesMap := make(map[string]*squantifiedtypes.TweetEntitiesURL)
+	urlEntitiesMap := make(map[string]*TweetEntitiesURL)
 	if tweet.Entities != nil && tweet.Entities.URLs != nil {
 		for _, urlEntity := range tweet.Entities.URLs {
 			urlEntitiesMap[urlEntity.URL] = urlEntity
