@@ -15,15 +15,12 @@ git clone https://github.com/brandur/sorg.git
 
 ## Build
 
-Install Go 1.9+, [direnv][direnv] set up and run [blackswan][blackswan], then:
+Install Go 1.9+ and [direnv][direnv], then:
 
 ``` sh
 cp .envrc.sample .envrc
 
 direnv allow
-
-# Used to run the test suite.
-createdb sorg-test
 
 # Compile Go executables.
 make install
@@ -70,7 +67,6 @@ make
 Run the test suite:
 
 ``` sh
-createdb sorg-test
 make test
 ```
 
@@ -87,7 +83,6 @@ Get more verbose output while running tests:
 go test -v ./markdown
 ```
 
-[blackswan]: https://github.com/brandur/blackswan
 [brandur]: https://brandur.org
 [direnv]: https://direnv.net/
 [org]: https://github.com/brandur/org
