@@ -245,33 +245,33 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 }
 
 func getReadingsData(c *modulir.Context, target string) ([]*squantifiedtypes.Reading, error) {
-	var tomlErr error
+	var readingDB squantifiedtypes.ReadingDB
 
-	for i := 0; i < 2; i++ {
+	err := retryOnce(c, func() error {
 		data, err := ioutil.ReadFile(target)
 		if err != nil {
-			return nil, fmt.Errorf("Error reading data file: %w", err)
+			return fmt.Errorf("Error reading data file: %w", err)
 		}
 
-		var readingDB squantifiedtypes.ReadingDB
 		err = toml.Unmarshal(data, &readingDB)
 		if err != nil {
-			tomlErr = err
-			c.Log.Errorf("Error unmarshaling TOML; retrying once more (%v)", err)
-			continue
+			return fmt.Errorf("Error unmarshaling TOML: %w", err)
 		}
 
-		// Sort in reverse chronological order. Books should be roughly sorted
-		// like this already, but they're sorted by review ID, which may be out
-		// of order compared to the read date.
-		sort.Slice(readingDB.Readings, func(i, j int) bool {
-			return readingDB.Readings[i].ReadAt.After(readingDB.Readings[j].ReadAt)
-		})
-
-		return readingDB.Readings, nil
+		return nil
+	})
+	if err != nil {
+		return nil, err
 	}
 
-	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
+	// Sort in reverse chronological order. Books should be roughly sorted
+	// like this already, but they're sorted by review ID, which may be out
+	// of order compared to the read date.
+	sort.Slice(readingDB.Readings, func(i, j int) bool {
+		return readingDB.Readings[i].ReadAt.After(readingDB.Readings[j].ReadAt)
+	})
+
+	return readingDB.Readings, nil
 }
 
 func getReadingsCountByYearData(readings []*squantifiedtypes.Reading, maxYears int) ([]int, []int) {
@@ -323,26 +323,26 @@ func getReadingsPagesByYearData(readings []*squantifiedtypes.Reading, maxYears i
 }
 
 func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
-	var tomlErr error
+	var runDB RunDB
 
-	for i := 0; i < 2; i++ {
+	err := retryOnce(c, func() error {
 		data, err := ioutil.ReadFile(target)
 		if err != nil {
-			return nil, fmt.Errorf("Error reading data file: %w", err)
+			return fmt.Errorf("Error reading data file: %w", err)
 		}
 
-		var runDB RunDB
 		err = toml.Unmarshal(data, &runDB)
 		if err != nil {
-			tomlErr = err
-			c.Log.Errorf("Error unmarshaling TOML; retrying once more (%v)", err)
-			continue
+			return fmt.Errorf("Error unmarshaling TOML: %w", err)
 		}
 
-		return runDB.Runs, nil
+		return nil
+	})
+	if err != nil {
+		return nil, err
 	}
 
-	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
+	return runDB.Runs, nil
 }
 
 // Needs to be converted to a qself flat file to work again.
@@ -503,38 +503,26 @@ func getTwitterByMonth(tweets []*squantifiedtypes.Tweet) ([]string, []int) {
 }
 
 func getTwitterData(c *modulir.Context, target string) ([]*squantifiedtypes.Tweet, error) {
-	var tomlErr error
+	var tweetDB squantifiedtypes.TweetDB
 
-	// This is quite a large file, and if we having something like Vim writing
-	// to it, our file watcher may notice the change before Vim is finished.
-	// This causes ioutil to read only a partially written file, and the TOML
-	// unmarshal below it to subsequently fail.
-	//
-	// Do a hacky protect against this by retrying once when we encounter an
-	// error. The process of trying to decode TOML the first time should be
-	// easily enough time to let Vim finish writing, so we'll pick up the full
-	// file on the second pass.
-	//
-	// Note that this only ever a problem on incremental rebuilds and will
-	// never be needed otherwise.
-	for i := 0; i < 2; i++ {
+	err := retryOnce(c, func() error {
 		data, err := ioutil.ReadFile(target)
 		if err != nil {
-			return nil, fmt.Errorf("Error reading data file: %w", err)
+			return fmt.Errorf("Error reading data file: %w", err)
 		}
 
-		var tweetDB squantifiedtypes.TweetDB
 		err = toml.Unmarshal(data, &tweetDB)
 		if err != nil {
-			tomlErr = err
-			c.Log.Errorf("Error unmarshaling TOML; retrying once more (%v)", err)
-			continue
+			return fmt.Errorf("Error unmarshaling TOML: %w", err)
 		}
 
-		return tweetDB.Tweets, nil
+		return nil
+	})
+	if err != nil {
+		return nil, err
 	}
 
-	return nil, fmt.Errorf("Error unmarshaling TOML: %w", tomlErr)
+	return tweetDB.Tweets, nil
 }
 
 func groupReadingsByYear(readings []*squantifiedtypes.Reading) []*readingYear {
@@ -574,4 +562,30 @@ func groupTwitterByYearAndMonth(tweets []*squantifiedtypes.Tweet) []*tweetYear {
 	}
 
 	return years
+}
+
+// Data files (especially Twitter's) can be quite large, and if we having
+// something like Vim writing to one, our file watcher may notice the change
+// before Vim is finished its write. This causes ioutil to read only a
+// partially written file, and the TOML unmarshal below it to subsequently
+// fail.
+//
+// Do some hacky protection against this by retrying once when we encounter an
+// error. The process of trying to decode TOML the first time should take
+// easily enough time to let Vim finish writing, so we'll pick up the full file
+// on the second pass.
+//
+// Note that this only ever a problem on incremental rebuilds and will never be
+// needed otherwise.
+func retryOnce(c *modulir.Context, f func() error) error {
+	var err error
+	for i := 0; i < 2; i++ {
+		err = f()
+		if err != nil {
+			c.Log.Errorf("Errored, but retrying once: %v", err)
+			continue
+		}
+		break
+	}
+	return err
 }
