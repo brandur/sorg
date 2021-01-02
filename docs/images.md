@@ -43,6 +43,11 @@ Or resized for 3:2:
     magick convert $GMI -resize 550x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
     magick convert $GMI -resize 1100x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
+Overflowing:
+
+    magick convert $GMI -resize 650x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
+    magick convert $GMI -resize 1300x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
+
 ## Resize for Twitter cards
 
     magick convert $GMI -resize 1300x650^ -gravity center -extent 1300x650 -quality 85 $GMO/twitter@2x.jpg
