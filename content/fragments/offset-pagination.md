@@ -50,7 +50,7 @@ for i := 1; i <= numSegments; i++ {
 wg.Wait()
 ```
 
-The reduction in runtime was textbook perfect. With six consumers, the program went from 35 seconds to run down to 6. Wow, offset pagination sure is great.
+The reduction in runtime was textbook perfect. With six consumers, the program went from 35 seconds to run down to 6. Wow, offset pagination sure is great. Everyone should use it.
 
 ## Designing parallelizable cursor-based APIs (#cursor-parallelization)
 
