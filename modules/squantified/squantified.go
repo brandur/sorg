@@ -265,6 +265,9 @@ type Tweet struct {
 	RetweetCount  int            `toml:"retweet_count"`
 	Text          string         `toml:"text"`
 
+	// ImageURL is an image to display along with the tweet.
+	ImageURL string `toml:"-"`
+
 	// ReplyOrMention is assigned to tweets which are either a direct mention
 	// or reply, and which therefore don't go in the main timeline. It gives us
 	// an easy way to access this information from a template.
@@ -629,6 +632,13 @@ func getTwitterData(c *modulir.Context, target string) ([]*Tweet, error) {
 	}
 
 	for _, tweet := range tweetDB.Tweets {
+		if tweet.Entities != nil && len(tweet.Entities.Medias) > 0 {
+			mediaEntity := tweet.Entities.Medias[0]
+			if mediaEntity.Type == "photo" {
+				tweet.ImageURL = mediaEntity.URL
+			}
+		}
+
 		if tweet.Reply != nil || strings.HasPrefix(tweet.Text, "@") {
 			tweet.ReplyOrMention = true
 		}
