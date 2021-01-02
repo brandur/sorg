@@ -56,7 +56,8 @@ def optimize_image(in_filename)
     run_command("#{mozjpeg_path}/bin/djpeg #{in_filename} | #{mozjpeg_path}/bin/cjpeg -outfile #{out_filename} -optimize -progressive")
   elsif ext == ".png"
     pngquant_path = get_homebrew_path("pngquant")
-    run_command("#{pngquant_path}/bin/pngquant --output #{out_filename} -- #{in_filename}")
+    pngquant_bin = ENV["PNGQUANT_BIN"] || "#{pngquant_path}/bin/pngquant"
+    run_command("#{pngquant_bin} --output #{out_filename} -- #{in_filename}")
   else
     abort("want a .jpg or a .png")
   end
