@@ -59,8 +59,8 @@
                               {{else}}
                                 {{FormatTimeWithMinute .CreatedAt}}
                               {{end}}
-                          {{if ne .ImageURL ""}}
-                            img src="{{.ImageURL}}" loading="lazy"
+                          {{range .ImageURLs}}
+                            img src="{{.}}" loading="lazy"
                           {{end}}
                       {{end}}
                 {{end}}
