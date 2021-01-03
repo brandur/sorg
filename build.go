@@ -77,6 +77,7 @@ var (
 	photos     []*Photo
 	sequences  = make(map[string]*Sequence)
 	talks      []*stalks.Talk
+	tweets     []*squantified.Tweet
 )
 
 // List of common build dependencies, a change in any of which will trigger a
@@ -541,12 +542,27 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Twitter
+	// Twitter (read `data/twitter.toml`)
 	//
 
+	var tweetsChanged bool
+
 	{
-		c.AddJob("twitter", func() (bool, error) {
-			return renderTwitter(c)
+		c.AddJob("twitter data/twitter.toml", func() (bool, error) {
+			source := scommon.DataDir + "/twitter.toml"
+
+			if !c.Changed(source) {
+				return false, nil
+			}
+
+			var err error
+			tweets, err = squantified.ReadTwitterData(c, source)
+			if err != nil {
+				return true, err
+			}
+
+			tweetsChanged = true
+			return true, nil
 		})
 	}
 
@@ -839,6 +855,20 @@ func build(c *modulir.Context) []error {
 				}
 			}
 		}
+	}
+
+	//
+	// Twitter
+	//
+
+	{
+		c.AddJob("twitter (no replies)", func() (bool, error) {
+			return renderTwitter(c, tweets, tweetsChanged, false)
+		})
+
+		c.AddJob("twitter (with replies)", func() (bool, error) {
+			return renderTwitter(c, tweets, tweetsChanged, true)
+		})
 	}
 
 	return nil
@@ -2402,20 +2432,19 @@ func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksC
 	return true, nil
 }
 
-func renderTwitter(c *modulir.Context) (bool, error) {
+func renderTwitter(c *modulir.Context, tweets []*squantified.Tweet, tweetsChanged, withReplies bool) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
-			scommon.DataDir + "/twitter.toml",
 			scommon.MainLayout,
 			scommon.ViewsDir + "/twitter/index.ace",
 		},
 		universalSources...,
 	)...)
-	if !c.FirstRun && !viewsChanged {
+	if !c.FirstRun && !viewsChanged && !tweetsChanged {
 		return false, nil
 	}
 
-	return true, squantified.RenderTwitter(c, viewsChanged, getLocals)
+	return true, squantified.RenderTwitter(c, viewsChanged, getLocals, tweets, withReplies)
 }
 
 func selectRandomPhoto(photos []*Photo) *Photo {

@@ -28,6 +28,35 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
+func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
+	var tweetDB TweetDB
+
+	err := retryOnce(c, func() error {
+		return mtoml.ParseFile(c, source, &tweetDB)
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	for _, tweet := range tweetDB.Tweets {
+		if tweet.Entities != nil {
+			for _, mediaEntity := range tweet.Entities.Medias {
+				if mediaEntity.Type == "photo" {
+					tweet.ImageURLs = append(tweet.ImageURLs, mediaEntity.URL)
+				}
+			}
+		}
+
+		if tweet.Reply != nil || strings.HasPrefix(tweet.Text, "@") {
+			tweet.ReplyOrMention = true
+		}
+
+		tweet.TextHTML = tweetTextToHTML(tweet)
+	}
+
+	return tweetDB.Tweets, nil
+}
+
 // RenderReading renders the `/reading` page by fetching and processing data
 // from an attached Black Swan database.
 func RenderReading(c *modulir.Context, viewsChanged bool,
@@ -111,55 +140,46 @@ func RenderRuns(c *modulir.Context, viewsChanged bool,
 		c.TargetDir+"/runs/index.html", getAceOptions(viewsChanged), locals)
 }
 
-// RenderTwitter renders the `/twitter` page by fetching and processing data
-// from an attached Black Swan database.
+// RenderTwitter renders the `/twitter` page.
 func RenderTwitter(c *modulir.Context, viewsChanged bool,
-	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
+	getLocals func(string, map[string]interface{}) map[string]interface{},
+	tweets []*Tweet, withReplies bool) error {
 
-	tweetsWithReplies, err := getTwitterData(c, scommon.DataDir+"/twitter.toml")
-	if err != nil {
-		return err
-	}
-
-	var tweets []*Tweet
-	for _, tweet := range tweetsWithReplies {
+	var tweetsWithoutReplies []*Tweet
+	for _, tweet := range tweets {
 		if tweet.ReplyOrMention {
 			continue
 		}
 
-		tweets = append(tweets, tweet)
+		tweetsWithoutReplies = append(tweetsWithoutReplies, tweet)
 	}
 
-	optionsMatrix := map[string]bool{
-		"index.html":   false,
-		"with-replies": true,
+	target := "index.html"
+	ts := tweets
+	if withReplies {
+		target = "with-replies"
+	} else {
+		ts = tweetsWithoutReplies
 	}
 
-	for page, withReplies := range optionsMatrix {
-		ts := tweets
-		if withReplies {
-			ts = tweetsWithReplies
-		}
+	tweetsByYearAndMonth := groupTwitterByYearAndMonth(ts)
+	tweetCountXMonths, tweetCountYCounts := getTwitterByMonth(ts)
 
-		tweetsByYearAndMonth := groupTwitterByYearAndMonth(ts)
-		tweetCountXMonths, tweetCountYCounts := getTwitterByMonth(ts)
+	locals := getLocals("Twitter", map[string]interface{}{
+		"NumTweets":            len(tweetsWithoutReplies),
+		"NumTweetsWithReplies": len(tweets),
+		"TweetsByYearAndMonth": tweetsByYearAndMonth,
+		"WithReplies":          withReplies,
 
-		locals := getLocals("Twitter", map[string]interface{}{
-			"NumTweets":            len(tweets),
-			"NumTweetsWithReplies": len(tweetsWithReplies),
-			"TweetsByYearAndMonth": tweetsByYearAndMonth,
-			"WithReplies":          withReplies,
+		// chart: tweets by month
+		"TweetCountXMonths": tweetCountXMonths,
+		"TweetCountYCounts": tweetCountYCounts,
+	})
 
-			// chart: tweets by month
-			"TweetCountXMonths": tweetCountXMonths,
-			"TweetCountYCounts": tweetCountYCounts,
-		})
-
-		err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
-			c.TargetDir+"/twitter/"+page, getAceOptions(viewsChanged), locals)
-		if err != nil {
-			return err
-		}
+	err := mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
+		c.TargetDir+"/twitter/"+target, getAceOptions(viewsChanged), locals)
+	if err != nil {
+		return err
 	}
 
 	return nil
@@ -620,35 +640,6 @@ func getTwitterByMonth(tweets []*Tweet) ([]string, []int) {
 	}
 
 	return tweetCountXMonths, tweetCountYCounts
-}
-
-func getTwitterData(c *modulir.Context, target string) ([]*Tweet, error) {
-	var tweetDB TweetDB
-
-	err := retryOnce(c, func() error {
-		return mtoml.ParseFile(c, target, &tweetDB)
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	for _, tweet := range tweetDB.Tweets {
-		if tweet.Entities != nil {
-			for _, mediaEntity := range tweet.Entities.Medias {
-				if mediaEntity.Type == "photo" {
-					tweet.ImageURLs = append(tweet.ImageURLs, mediaEntity.URL)
-				}
-			}
-		}
-
-		if tweet.Reply != nil || strings.HasPrefix(tweet.Text, "@") {
-			tweet.ReplyOrMention = true
-		}
-
-		tweet.TextHTML = tweetTextToHTML(tweet)
-	}
-
-	return tweetDB.Tweets, nil
 }
 
 func groupReadingsByYear(readings []*Reading) []*readingYear {
