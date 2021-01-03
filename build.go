@@ -858,7 +858,7 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Twitter
+	// Twitter indexes
 	//
 
 	{
@@ -869,6 +869,31 @@ func build(c *modulir.Context) []error {
 		c.AddJob("twitter (with replies)", func() (bool, error) {
 			return renderTwitter(c, tweets, tweetsChanged, true)
 		})
+	}
+
+	// Twitter photo fetch + resize
+	{
+		for _, t := range tweets {
+			tweet := t
+
+			if tweet.Entities == nil {
+				continue
+			}
+
+			for _, m := range tweet.Entities.Medias {
+				media := m
+
+				if media.Type != "photo" {
+					continue
+				}
+
+				name := fmt.Sprintf("twitter photo: %v", media.ID)
+				c.AddJob(name, func() (bool, error) {
+					return fetchAndResizeTwitterPhoto(c, c.SourceDir+"/content/photographs/twitter",
+						tweet, media)
+				})
+			}
+		}
 	}
 
 	return nil
@@ -1263,11 +1288,30 @@ var defaultPhotoSizes = []mimage.PhotoSize{
 func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
 	u, err := url.Parse(photo.OriginalImageURL)
 	if err != nil {
-		return false, fmt.Errorf("bad URL for photo '%s'", photo.Slug)
+		return false, fmt.Errorf("bad URL for photo '%s': %w", photo.Slug, err)
 	}
 
 	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, scommon.TempDir,
 		mimage.PhotoGravityCenter, defaultPhotoSizes)
+}
+
+var twitterPhotoSizes = []mimage.PhotoSize{
+	{Suffix: ".jpg", Width: 550},
+	{Suffix: "@2x.jpg", Width: 1100},
+}
+
+func fetchAndResizeTwitterPhoto(c *modulir.Context, targetDir string,
+	tweet *squantified.Tweet, media *squantified.TweetEntitiesMedia) (bool, error) {
+
+	u, err := url.Parse(media.URL)
+	if err != nil {
+		return false, fmt.Errorf("bad URL for Twitter photo '%v': %w", media.ID, err)
+	}
+
+	slug := fmt.Sprintf("%v-%v", tweet.ID, media.ID)
+
+	return mimage.FetchAndResizeImage(c, u, targetDir, slug, scommon.TempDir,
+		mimage.PhotoGravityCenter, twitterPhotoSizes)
 }
 
 // getAceOptions gets a good set of default options for Ace template rendering

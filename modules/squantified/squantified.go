@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html"
 	"html/template"
+	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
@@ -28,6 +29,9 @@ import (
 //
 //////////////////////////////////////////////////////////////////////////////
 
+// ReadTwitterData reads Twitter data from a TOML data file and does a little
+// bit of post-processing to add some convenience properties and an HTML
+// rendering of each tweet.
 func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 	var tweetDB TweetDB
 
@@ -40,9 +44,14 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 
 	for _, tweet := range tweetDB.Tweets {
 		if tweet.Entities != nil {
-			for _, mediaEntity := range tweet.Entities.Medias {
-				if mediaEntity.Type == "photo" {
-					tweet.ImageURLs = append(tweet.ImageURLs, mediaEntity.URL)
+			for _, media := range tweet.Entities.Medias {
+				if media.Type == "photo" {
+					// Original Twitter version
+					// tweet.ImageURLs = append(tweet.ImageURLs, media.URL)
+
+					ext := filepath.Ext(media.URL)
+					tweet.ImageURLs = append(tweet.ImageURLs,
+						fmt.Sprintf("/photographs/twitter/%v-%v%s", tweet.ID, media.ID, ext))
 				}
 			}
 		}
@@ -310,6 +319,7 @@ type TweetEntities struct {
 
 // TweetEntitiesMedia is an image or video stored in a tweet.
 type TweetEntitiesMedia struct {
+	ID   int64  `toml:"id"`
 	Type string `toml:"type"`
 	URL  string `toml:"url"`
 }

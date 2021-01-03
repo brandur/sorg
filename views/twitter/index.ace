@@ -60,7 +60,7 @@
                                 {{FormatTimeWithMinute .CreatedAt}}
                               {{end}}
                           {{range .ImageURLs}}
-                            img src="{{.}}" loading="lazy"
+                            {{HTMLRender (ImgSrcAndAltAndClass . "" "overflowing")}}
                           {{end}}
                       {{end}}
                 {{end}}
