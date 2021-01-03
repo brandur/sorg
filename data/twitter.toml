@@ -1,5 +1,25 @@
 
 [[tweets]]
+  created_at = 2021-01-02T17:51:07Z
+  favorite_count = 22
+  id = 1345427415061827584
+  text = "Happy 2021!\n\nA few pretty photos of the Rockies from the other day. Just gorgeous — lots of green, but now with a light layer of snow. https://t.co/hBPCkGYLeR"
+
+  [tweets.entities]
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Eqvqeb9VkAAWMRi.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Eqvqf5-VgAAFxPQ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EqvqgpJUYAEQIIA.jpg"
+
+[[tweets]]
   created_at = 2021-01-01T08:40:21Z
   id = 1344926424587616259
   text = "@zdne Yep, totally. I wish I could just opt out of the whole thing ..."
@@ -931,6 +951,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Ekfw6k9UYAAqEps.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EkfxF9QVkAAOSC_.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EkfxHztVgAAV37E.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EkfxJA7VkAAshPl.jpg"
+
 [[tweets]]
   created_at = 2020-10-16T17:36:57Z
   favorite_count = 4
@@ -1512,6 +1544,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EjsEIvcU0AArLOG.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EjsEJxLVkAEXXPC.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EjsELWjVgAAXh1H.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EjsENFUUcAA-Bzm.jpg"
 
   [tweets.reply]
     status_id = 1313648070970601473
@@ -2154,6 +2198,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EbdehG5UEAEVeWo.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EbdeiEcUcAAXsT9.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EbdejQgUwAAX6k5.jpg"
+
     [[tweets.entities.urls]]
       display_url = "brandur.org/sequences/2020…"
       expanded_url = "https://brandur.org/sequences/2020-light/006"
@@ -2270,6 +2322,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EXxPEfaU8AAkjIv.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EXxPGH5U4AAr0Jv.jpg"
 
 [[tweets]]
   created_at = 2020-05-08T22:10:26Z
@@ -2480,6 +2536,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EVyAWeXVcAEAlEQ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EVyAeA9UcAAHzmi.jpg"
 
     [[tweets.entities.urls]]
       display_url = "queue.acm.org/detail.cfm?id=…"
@@ -2735,6 +2795,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/ESwsCsXU0AAUHv7.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/ESwsDaiUUAA_feL.jpg"
+
   [tweets.reply]
     status_id = 1237412159765614592
     user = "brandur"
@@ -2962,6 +3026,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EOK-ziJUYAIJ-N1.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EOK-ziKUcAAZtc4.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EOK-ziJU4AAvaIy.jpg"
+
 [[tweets]]
   created_at = 2020-01-06T19:22:55Z
   id = 1214266111698464768
@@ -3042,9 +3114,17 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EMv6KcJU8AAYALV.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EMv6KcJVAAESWSx.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EMv6KcIU4AAIws3.jpg"
+
 [[tweets]]
   created_at = 2019-12-22T18:27:10Z
-  favorite_count = 17
+  favorite_count = 16
   id = 1208816263113216000
   retweet_count = 2
   text = "They're making \"Wonder Woman 1984\" and joining the 80s nostalgia train started by Stranger Things, It, Deutschland 83, etc.\n\nMe: The present is so stylistically unremarkable that we're like an elderly generation reminiscing on a more vibrant past. Also me: sign me up. https://t.co/4cxRHoD9oY"
@@ -3054,6 +3134,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EMaT-zjU8AAvnlk.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EMaT-zlUwAApUdk.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EMaT-zlUUAEmaAP.jpg"
 
 [[tweets]]
   created_at = 2019-12-21T17:03:24Z
@@ -3239,6 +3327,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/ELd632tVAAAcgVs.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/ELd632uUYAAPXIe.jpg"
+
     [[tweets.entities.urls]]
       display_url = "logodesignlove.com/next-logo-paul…"
       expanded_url = "https://www.logodesignlove.com/next-logo-paul-rand"
@@ -3416,6 +3508,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EJM2zPZVAAEp5qG.png"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EJM2zPYVUAE6W6a.jpg"
+
 [[tweets]]
   created_at = 2019-11-12T18:32:52Z
   favorite_count = 1
@@ -3527,7 +3623,7 @@
   [tweets.entities]
 
     [[tweets.entities.medias]]
-      type = "photo"
+      type = "video"
       url = "https://pbs.twimg.com/ext_tw_video_thumb/1188864651678797824/pu/img/GYsgwZYWdFBgFZGl.jpg"
 
 [[tweets]]
@@ -3543,6 +3639,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EHW44quUEAEJpRm.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EHW44qrVUAAAfKn.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EHW44qoU0AATzXf.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EHW44qqUYAE1wL9.jpg"
+
 [[tweets]]
   created_at = 2019-10-09T22:54:03Z
   favorite_count = 2184
@@ -3555,6 +3663,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EGeLa4CVUAA6wVP.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EGeLa4CVAAAoi5U.jpg"
 
 [[tweets]]
   created_at = 2019-09-29T23:31:30Z
@@ -3586,6 +3698,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EFqEv8SWkAEeHh5.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EFqEv8TXkAE8ZcL.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EFqEv8TW4AMlHe4.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EFqEv8UWkAAnEJW.jpg"
+
 [[tweets]]
   created_at = 2019-09-27T01:27:54Z
   favorite_count = 12
@@ -3597,6 +3721,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EFbx3RUX4AEqedE.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EFbx3RWXsAEmKQE.jpg"
 
 [[tweets]]
   created_at = 2019-09-27T00:51:48Z
@@ -3653,6 +3781,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/EFBzijgU0AAsnuZ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EFBzijgVAAERowq.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EFBzijaU0AALhcX.jpg"
 
 [[tweets]]
   created_at = 2019-09-20T22:53:15Z
@@ -4196,6 +4332,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/EDOhxQMUcAIlg6r.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EDOhxQMUcAMCX8C.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/EDOhxQLUwAETLTx.jpg"
+
 [[tweets]]
   created_at = 2019-08-30T13:52:54Z
   id = 1167435024511057920
@@ -4553,6 +4697,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/D_dFzARU0AA6X7A.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D_dFzASVUAArNAT.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D_dFzATUcAAQlk5.jpg"
+
 [[tweets]]
   created_at = 2019-07-13T16:43:31Z
   id = 1150083346388545536
@@ -4644,6 +4796,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/D_THtZwUEAAho3n.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D_THtZxU8AAoLp8.jpg"
 
 [[tweets]]
   created_at = 2019-07-11T14:57:56Z
@@ -4793,6 +4949,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/D9Qno6gXUAA9vIT.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D9Qnp-XWsAAkVja.jpg"
+
     [[tweets.entities.urls]]
       display_url = "brandur.org/sequences/berl…"
       expanded_url = "https://brandur.org/sequences/berlin/007"
@@ -4826,6 +4986,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/D9CUoXTWsAI_hAp.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D9CUpm5WwAQ7uzF.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D9CUq88W4AAeSN-.jpg"
 
     [[tweets.entities.urls]]
       display_url = "brandur.org/sequences/berl…"
@@ -4876,6 +5044,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/D8sfes4X4AAdkgZ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D8sf8ZSXsAEqViD.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D8sf9fQWsAASc4H.jpg"
 
     [[tweets.entities.urls]]
       display_url = "brandur.org/sequences/berl…"
@@ -5564,7 +5740,7 @@
 
 [[tweets]]
   created_at = 2019-04-27T14:32:04Z
-  favorite_count = 21
+  favorite_count = 20
   id = 1122146397409533957
   retweet_count = 2
   text = "Looking for some alternate UI inspiration — what are your favorite fictional computer/human interfaces?\n\nHere are a few of mine: Tron Legacy, Oblivion, Casino Royale, Mission: Impossible (the good one). https://t.co/IdWh8Nlaxg"
@@ -5574,6 +5750,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/D5Kp36AUcAYpC6S.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D5Kp4eUU4AAfx23.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D5Kp5AeUEAEfDtW.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D5KqF0SU0AANUDZ.jpg"
 
 [[tweets]]
   created_at = 2019-04-25T23:27:19Z
@@ -5632,6 +5820,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/D47VCEtUcAAZokE.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D47VCEFUYAEhu7H.jpg"
 
 [[tweets]]
   created_at = 2019-04-23T23:10:09Z
@@ -5750,6 +5942,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/D3vG-j8UIAAlVj8.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/D3vHDReUEAUUS13.jpg"
 
     [[tweets.entities.urls]]
       display_url = "berlintransitmap.de"
@@ -6578,6 +6774,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DzTzV9lUYAAEj8K.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DzTzV9lVAAAhuCd.jpg"
+
 [[tweets]]
   created_at = 2019-02-13T19:24:30Z
   favorite_count = 1
@@ -6694,7 +6894,7 @@
 
 [[tweets]]
   created_at = 2019-02-09T16:48:16Z
-  favorite_count = 209
+  favorite_count = 206
   id = 1094276807476432896
   retweet_count = 29
   text = "Getting a patch reviewed on the Postgres hackers mailing list floors me every time — just at the next level in terms of attention to detail, effort invested, and thoughtfulness. I'm 10+ years into working in software professionally and I've never seen anything else like it."
@@ -7018,6 +7218,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Dw0KOe7VAAEs-yN.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dw0KOe9UcAA7hez.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dw0KOe_UUAA7m9r.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dw0KOe9U8AAS_TW.jpg"
+
 [[tweets]]
   created_at = 2019-01-12T19:11:41Z
   favorite_count = 47
@@ -7105,6 +7317,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/Dv2pAswVYAAf_VE.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dv2pAszUwAAjv1N.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dv2pAs0UYAAfEMD.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dv2pAs0V4AAqFD5.jpg"
 
 [[tweets]]
   created_at = 2018-12-31T20:37:03Z
@@ -7421,6 +7645,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Dt_SqbUUUAAmzJZ.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dt_SrxqUwAEVebd.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dt_SxxnU4AE5Cog.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dt_S2K_VAAErm8J.jpg"
+
 [[tweets]]
   created_at = 2018-12-08T19:02:58Z
   favorite_count = 1
@@ -7589,6 +7825,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DtGtTjdUUAA1a3m.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DtGtWBeVYAAL4Br.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DtGtXKcU0AAlTj4.jpg"
+
 [[tweets]]
   created_at = 2018-11-27T16:48:35Z
   favorite_count = 1
@@ -7608,7 +7852,7 @@
 
 [[tweets]]
   created_at = 2018-11-27T16:31:01Z
-  favorite_count = 23
+  favorite_count = 22
   id = 1067455765663776768
   text = "Rewatched Oblivion (2013): Amazing narrative structure that reveals little pieces throughout, and you don't have the whole picture until the final few minutes. Epic soundtrack too.\n\nIts only mistake in not being considered a sci-fi classic was that it wasn't made in the 80s. https://t.co/PWO2hacwXm"
 
@@ -7617,6 +7861,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DtBcvnTU0AAqevP.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DtBc098V4AA92pa.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DtBc1oYVAAAi5zp.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DtBdDV_VAAAstzQ.jpg"
 
 [[tweets]]
   created_at = 2018-11-27T05:17:09Z
@@ -7984,6 +8240,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Dq1QT2NX0AEUuQz.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dq1QT2jX0AANvZc.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dq1QT2KX0AAfWvt.jpg"
+
 [[tweets]]
   created_at = 2018-10-31T07:18:17Z
   favorite_count = 1
@@ -8070,6 +8334,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Dqr-obJXcAICklf.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dqr-obKWoAE0AtP.jpg"
+
   [tweets.reply]
     status_id = 1056935725655097345
     user = "brandur"
@@ -8087,6 +8355,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/Dqr7REDWkAAHCsj.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dqr7RECWsAMmG8P.jpg"
 
 [[tweets]]
   created_at = 2018-10-29T15:37:58Z
@@ -8152,6 +8424,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DqkBTlaX0AAzEAJ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DqkBTlaX4AEa-ft.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DqkBTlYWwAIF4BS.jpg"
 
 [[tweets]]
   created_at = 2018-10-26T15:06:31Z
@@ -8279,6 +8559,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DqRg-gXX0AA7Nvx.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DqRg-gWWwAA_YqV.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DqRg-gWWkAABs32.jpg"
 
 [[tweets]]
   created_at = 2018-10-20T19:38:50Z
@@ -8684,6 +8972,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DnzDjCqXcAIP6Lw.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DnzDjCmX0AAqMsO.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DnzDjC4XsAIHx3t.jpg"
 
 [[tweets]]
   created_at = 2018-09-21T13:08:13Z
@@ -10433,6 +10729,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DiUDl0iUEAAhnlz.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DiUDnE_VQAAvZ0Z.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DiUDn5gUYAAMPiJ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DiUDpIhVAAAxvVR.jpg"
+
   [tweets.reply]
     status_id = 1019224763804160000
     user = "brandur"
@@ -10676,6 +10984,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DhgpxHzUYAA56qC.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DhgpxHzU0AEcmot.jpg"
+
 [[tweets]]
   created_at = 2018-07-07T04:57:46Z
   favorite_count = 18
@@ -10734,6 +11046,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DhbsGOeUcAAFses.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DhbsJSdVAAE6U3x.jpg"
 
 [[tweets]]
   created_at = 2018-07-05T15:27:30Z
@@ -11122,6 +11438,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DfgLLbdU0AEi-by.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DfgLPELUcAE5PCK.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DfgLRIpU8AAFIwj.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DfgLT2-U8AAU4BC.jpg"
+
 [[tweets]]
   created_at = 2018-06-08T20:33:32Z
   favorite_count = 1
@@ -11385,6 +11713,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/De3SFMqUEAMX0cs.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/De3SFMrUEAUCctD.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/De3SFMrVMAApsci.jpg"
+
 [[tweets]]
   created_at = 2018-06-02T19:20:15Z
   favorite_count = 2
@@ -11471,6 +11807,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DeNxyRlUwAA_Ri-.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DeNxzGBU8AA01-Z.jpg"
 
 [[tweets]]
   created_at = 2018-05-25T08:06:23Z
@@ -11640,6 +11980,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Ddsly4QUQAg_Yuq.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Ddsly4RVAAAm0Re.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Ddsly4RVQAAcUMR.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Ddsly4RVwAA18i4.jpg"
+
 [[tweets]]
   created_at = 2018-05-20T12:22:57Z
   favorite_count = 8
@@ -11651,6 +12003,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/Ddo86VtUwAAPzhe.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Ddo86VuVMAAGUr6.jpg"
 
 [[tweets]]
   created_at = 2018-05-20T12:15:36Z
@@ -11679,6 +12035,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DdjvqRzWsAA1AQO.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DdjvqRxX0AUmbjZ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DdjvqRwX4AAe61q.jpg"
 
 [[tweets]]
   created_at = 2018-05-18T11:03:54Z
@@ -11740,6 +12104,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DdVKtzkW4AE2oEV.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DdVKtznW0AAYjLE.jpg"
 
 [[tweets]]
   created_at = 2018-05-14T12:10:35Z
@@ -12742,6 +13110,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/Dbb7ZTnV0AEPqLp.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dbb7arSVwAAdSAD.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dbb7c0bV4AAN6M8.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Dbb7eCSUQAAz64p.jpg"
+
 [[tweets]]
   created_at = 2018-04-22T12:38:19Z
   favorite_count = 1
@@ -13215,6 +13595,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DaMosIlV4AU7Bt-.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DaMoueoVwAA0BmY.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DaMoxKIVAAAA_O8.jpg"
+
 [[tweets]]
   created_at = 2018-04-06T23:52:23Z
   id = 982405689610985472
@@ -13634,6 +14022,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DZELflPUMAE_nag.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DZELflPUQAEySwF.jpg"
 
 [[tweets]]
   created_at = 2018-03-24T15:24:39Z
@@ -14530,6 +14922,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DV55RntU0AAt7lN.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DV55RyJV4AAdJNg.jpg"
+
 [[tweets]]
   created_at = 2018-02-12T23:28:25Z
   favorite_count = 2
@@ -15064,7 +15460,7 @@
   [tweets.entities]
 
     [[tweets.entities.medias]]
-      type = "photo"
+      type = "video"
       url = "https://pbs.twimg.com/ext_tw_video_thumb/960543309939666948/pu/img/iqglRSXiLJZOV0fE.jpg"
 
 [[tweets]]
@@ -16727,6 +17123,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DSPVevwUQAAN9ta.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DSPVf3FUMAAH703.jpg"
+
 [[tweets]]
   created_at = 2017-12-26T20:52:10Z
   favorite_count = 1
@@ -16871,6 +17271,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DRyWu-_VQAEFYo9.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DRyWu-_V4AAmtHR.jpg"
 
 [[tweets]]
   created_at = 2017-12-23T21:54:55Z
@@ -17168,6 +17572,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DRUQzNZU8AUP1ae.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DRUQzNcUQAA9wK7.jpg"
 
 [[tweets]]
   created_at = 2017-12-17T20:02:20Z
@@ -17555,6 +17963,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DQXpo95VwAE3y-U.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DQXpo-SU8AE4oN9.jpg"
+
 [[tweets]]
   created_at = 2017-12-06T14:04:01Z
   favorite_count = 8
@@ -17590,6 +18002,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DQMPGPwVwAAtbfk.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DQMPGPqVQAEvZmZ.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DQMPGPpUIAAwXEi.jpg"
+
   [tweets.reply]
     status_id = 937364112249577472
     user = "brandur"
@@ -17619,6 +18039,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DQIvrQsU8AAuS7D.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DQIvrQrUMAAIX3d.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DQIvrQqVoAAbRai.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DQIvrQtVoAA0rLS.jpg"
 
 [[tweets]]
   created_at = 2017-12-03T10:28:59Z
@@ -17744,6 +18176,14 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DPdU3GAVAAAwvvL.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPdU3F_VAAEw3C2.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPdU3GAV4AAWWX4.jpg"
+
 [[tweets]]
   created_at = 2017-11-24T23:20:46Z
   favorite_count = 6
@@ -17797,6 +18237,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DPW5C6zVAAEjf9O.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPW5C6yUEAAB-qG.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPW5C6yUEAEJO2o.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPW5C6wV4AATtYj.jpg"
+
 [[tweets]]
   created_at = 2017-11-23T13:49:56Z
   favorite_count = 15
@@ -17808,6 +18260,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DPUl0MUV4AEqXfk.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPUl0MUUEAAEVFb.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPUl0MQVQAA-4fv.jpg"
 
 [[tweets]]
   created_at = 2017-11-22T08:34:15Z
@@ -17933,6 +18393,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DPCPMdeVwAAkeuO.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPCPMdeVQAENoVl.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DPCPMdeVoAAyA8x.jpg"
 
 [[tweets]]
   created_at = 2017-11-19T04:11:32Z
@@ -19284,6 +19752,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DMM9dVoU8AEBotS.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DMM9dVpVoAA3_Qe.jpg"
+
 [[tweets]]
   created_at = 2017-10-15T18:51:05Z
   favorite_count = 11
@@ -19905,6 +20377,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/DKyF1-xV4AAhDD5.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DKyF4D6UIAAkImr.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DKyF8ahUEAAIeAE.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DKyF9wcVwAAVYaJ.jpg"
+
 [[tweets]]
   created_at = 2017-09-27T10:28:35Z
   favorite_count = 1
@@ -20211,6 +20695,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DKC3DdCVoAAdV78.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DKC3KzPVAAAZBmt.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DKC3Pg6VAAAPFOi.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DKC3Qm0UMAAvWsz.jpg"
 
 [[tweets]]
   created_at = 2017-09-18T19:49:38Z
@@ -22356,7 +22852,7 @@
   [tweets.entities]
 
     [[tweets.entities.medias]]
-      type = "photo"
+      type = "animated_gif"
       url = "https://pbs.twimg.com/tweet_video_thumb/DFoyYJZV0AA4olP.jpg"
 
     [[tweets.entities.user_mentions]]
@@ -22458,6 +22954,14 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DE4Czx2UIAEMjT7.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DE4Czx2U0AEnCUx.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DE4CzxwUIAAup5R.jpg"
 
 [[tweets]]
   created_at = 2017-07-13T22:41:42Z
@@ -22748,6 +23252,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/DCnFs75UwAAyPtT.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DCnFs76UAAIb8_3.jpg"
 
 [[tweets]]
   created_at = 2017-06-18T14:33:54Z
@@ -28102,6 +28610,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/CxXAUehUoAEeyBt.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CxXAUfzUkAIL84e.jpg"
+
     [[tweets.entities.urls]]
       display_url = "github.com/fogleman/primi…"
       expanded_url = "https://github.com/fogleman/primitive"
@@ -29337,6 +29849,18 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/CnncQlYVIAAIlaZ.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CnncPy2UIAA69YO.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CnncO45UkAEq1Rf.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CnncQMhVIAAuo3G.jpg"
+
 [[tweets]]
   created_at = 2016-07-17T23:39:35Z
   favorite_count = 1
@@ -29547,6 +30071,10 @@
       type = "photo"
       url = "https://pbs.twimg.com/media/CmA-WIGWQAQehqO.jpg"
 
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CmA-XLwXIAQW57O.jpg"
+
 [[tweets]]
   created_at = 2016-06-27T22:20:47Z
   favorite_count = 2
@@ -29579,6 +30107,10 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/Cl6O8naUgAAzV56.jpg"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Cl6O8P0UYAAEaMf.jpg"
 
 [[tweets]]
   created_at = 2016-06-25T01:04:18Z
@@ -32305,6 +32837,18 @@
     [[tweets.entities.medias]]
       type = "photo"
       url = "https://pbs.twimg.com/media/CPEFumtVEAEOav4.png"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CPEFukwUAAAfomI.png"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CPEFt8xUEAAkXQC.png"
+
+    [[tweets.entities.medias]]
+      type = "photo"
+      url = "https://pbs.twimg.com/media/CPEFuk8UwAAyFFQ.png"
 
 [[tweets]]
   created_at = 2015-09-17T00:09:59Z
