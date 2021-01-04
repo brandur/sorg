@@ -1,7 +1,92 @@
 
 [[tweets]]
+  created_at = 2021-01-04T22:28:44Z
+  id = 1346222055193153536
+  text = "@craigkerstiens Dammit Craig. That product is undervalued. What a steal."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "craigkerstiens"
+      user_id = 12473952
+
+  [tweets.reply]
+    status_id = 1346213811326337024
+    user = "craigkerstiens"
+    user_id = 12473952
+
+[[tweets]]
+  created_at = 2021-01-04T22:27:24Z
+  id = 1346221722811334656
+  text = "@_raulb_ LOL. Yeah, the only ones I know are this and \"malm\" (the bed)."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "_raulb_"
+      user_id = 1269159922136166401
+
+  [tweets.reply]
+    status_id = 1346215407905071106
+    user = "_raulb_"
+    user_id = 1269159922136166401
+
+[[tweets]]
+  created_at = 2021-01-04T22:26:34Z
+  id = 1346221512756396032
+  retweet_count = 5
+  text = "RT @petervgeoghegan: Over 5 years ago my then-colleague @brandur wrote about problems with Postgres queues and the accumulation of garbage…"
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "petervgeoghegan"
+      user_id = 319812046
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
+
+  [tweets.retweet]
+    status_id = 1346220681864699905
+    user = "petervgeoghegan"
+    user_id = 319812046
+
+[[tweets]]
+  created_at = 2021-01-04T21:01:05Z
+  favorite_count = 42
+  id = 1346199998585688065
+  retweet_count = 1
+  text = "After a lengthy battle, my SEO’s been usurped by an IKEA hangar rail for the garage. (Looks pretty nice actually, might get one.)\n\nDo I have any chance of taking it back, or is this the end. https://t.co/IP6CEKXwIh"
+
+  [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 1346199523765309440
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Eq6pVZrU0AA7skc.jpg"
+
+    [[tweets.entities.medias]]
+      id = 1346199619571597312
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Eq6pa-lUwAAhNor.jpg"
+
+[[tweets]]
+  created_at = 2021-01-03T17:02:01Z
+  favorite_count = 8
+  id = 1345777448575635456
+  text = "Finally finishing S4 Mr. Robot. Felt less anxiety from the culminating plot than from the idea of hacking via smartphone.\n\nBetween autocorrect, no tab button, and half your shell symbols buried in keyboard menus two layers deep, this is the show’s most dystopian concept, by far. https://t.co/Gse5WoOD4N"
+
+  [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 1345777135181463552
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Eq0pLJlVgAAouFd.jpg"
+
+[[tweets]]
   created_at = 2021-01-02T17:51:07Z
-  favorite_count = 24
+  favorite_count = 27
   id = 1345427415061827584
   text = "Happy 2021!\n\nA few pretty photos of the Rockies from the other day. Just gorgeous — lots of green, but now with a light layer of snow. https://t.co/hBPCkGYLeR"
 
@@ -7008,7 +7093,7 @@
 
 [[tweets]]
   created_at = 2019-02-09T16:48:16Z
-  favorite_count = 206
+  favorite_count = 209
   id = 1094276807476432896
   retweet_count = 29
   text = "Getting a patch reviewed on the Postgres hackers mailing list floors me every time — just at the next level in terms of attention to detail, effort invested, and thoughtfulness. I'm 10+ years into working in software professionally and I've never seen anything else like it."
@@ -19992,7 +20077,7 @@
 
 [[tweets]]
   created_at = 2017-10-15T19:29:30Z
-  favorite_count = 2685
+  favorite_count = 2682
   id = 919646432721641472
   retweet_count = 1041
   text = "A neat public art installation in Glen Park in SF: A lens focuses the sun to burn a line in a redwood log. It's advanced every day, creating a new line.\n\nAfter a year, it's moved to a new log. When complete, the trio will be an archive of three years of sun and weather. https://t.co/ttaNIG4Ot3"
@@ -49731,7 +49816,7 @@
   [tweets.entities]
 
     [[tweets.entities.medias]]
-      id = 0
+      id = 258836975853920256
       type = "photo"
       url = "https://pbs.twimg.com/media/A5eS27CCYAADE9j.jpg"
 
@@ -49744,7 +49829,7 @@
   [tweets.entities]
 
     [[tweets.entities.medias]]
-      id = 0
+      id = 258835184496046080
       type = "photo"
       url = "https://pbs.twimg.com/media/A5eROptCcAAkykR.jpg"
 
@@ -49783,7 +49868,7 @@
   [tweets.entities]
 
     [[tweets.entities.medias]]
-      id = 0
+      id = 257212589434601473
       type = "photo"
       url = "https://pbs.twimg.com/media/A5HNfMECAAEmlrq.jpg"
 
