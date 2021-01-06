@@ -1,5 +1,6 @@
 +++
 image_alt = "Bunaken"
+image_orientation = "portrait"
 image_url = "/assets/images/nanoglyphs/014-local-first/bunaken@2x.jpg"
 published_at = 2020-10-07T15:22:50Z
 title = "Local First"
