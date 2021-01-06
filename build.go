@@ -76,7 +76,7 @@ var (
 	pages       map[string]*Page = make(map[string]*Page)
 	photos      []*Photo
 	photosOther []*Photo
-	sequences = make(map[string]*Sequence)
+	sequences   = make(map[string]*Sequence)
 	talks       []*stalks.Talk
 	tweets      []*squantified.Tweet
 )
