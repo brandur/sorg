@@ -1,5 +1,15 @@
 
 #
+# /nanoglyphs/006-moma-rain
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/ywcoofzdn2vhq53/L1080399.JPG?dl=1"
+  slug = "nanoglyphs/006-moma-rain/moma"
+  title = "The San Francisco MOMA"
+
+#
 # /nanoglyphs/010-monterey
 #
 

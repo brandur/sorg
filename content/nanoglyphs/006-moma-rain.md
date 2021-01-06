@@ -1,6 +1,6 @@
 +++
 image_alt = "The San Francisco MOMA"
-image_url = "/assets/images/nanoglyphs/006-moma-rain/moma@2x.jpg"
+image_url = "/photographs/nanoglyphs/006-moma-rain/moma@2x.jpg"
 published_at = 2019-12-19T20:48:59Z
 title = "MOMA & the City Under Rain"
 +++
