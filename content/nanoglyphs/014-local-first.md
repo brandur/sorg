@@ -1,7 +1,7 @@
 +++
 image_alt = "Bunaken"
 image_orientation = "portrait"
-image_url = "/assets/images/nanoglyphs/014-local-first/bunaken@2x.jpg"
+image_url = "/photographs/nanoglyphs/014-local-first/bunaken@2x.jpg"
 published_at = 2020-10-07T15:22:50Z
 title = "Local First"
 +++
@@ -32,7 +32,7 @@ To my shame, I brought a laptop and would occasionally use it for referencing no
 
 This was in sharp contrast to my iPhone, where suddenly not a thing was working. No music. No notes. No files. No video. Even something as simple as that article you'd gotten halfway through reading and wanted to finish wasn't reliably available, as mobile Safari made the executive decision to evict it from memory, keeping only a screenshot and the URL, incorrectly assuming that a functional internet connection for paging it back in would be available. Dropbox, my old reliable friend on the PC, was worthless in app form. Although allowed access to all the same files, it was crippled by an incurable cloud dependency.
 
-![Coral Eye's dive jetty on Bangka in Indonesia](/assets/images/nanoglyphs/014-local-first/coral-eye@2x.jpg)
+<img src="/photographs/nanoglyphs/014-local-first/coral-eye@2x.jpg" alt="Coral Eye's dive jetty on Bangka in Indonesia" class="wide">
 
 ---
 

@@ -22,6 +22,22 @@
   title = "Storefront"
 
 #
+# /nanoglyphs/014-local-first
+#
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/qb88khbfo0i1w1p/IMG_0441.HEIC?dl=1"
+  slug = "nanoglyphs/014-local-first/bunaken"
+  title = "Bunaken"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/0kephagafiou7hp/L1080319.JPG?dl=1"
+  slug = "nanoglyphs/014-local-first/coral-eye"
+  title = "Coral Eye's dive jetty on Bangka in Indonesia"
+
+#
 # /nanoglyphs/015-ruby-typing
 #
 
