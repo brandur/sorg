@@ -21,13 +21,13 @@ If you're reading from the web, you can [subscribe here](https://nanoglyph-signu
 
 A few years ago I moved to the Twin Peaks neighborhood of San Francisco. Just up the hill from the Castro and Cole Valley, and right across from the giant three-pronged TV/radio tower on top of Mount Sutro (Sutro Tower), still the most conspicuous landmark on the city's skyline, even with the notorious addition of Salesforce Tower. Even if you've never been to city, you might recognize its shape in the abstract in the designs of a thousand SF-centric T-shirts and coffee mugs.
 
-![Sutro Tower](/assets/images/nanoglyphs/011-shelter/sutro-tower@2x.jpg)
+<img src="/photographs/nanoglyphs/011-shelter/sutro-tower@2x.jpg" alt="Sutro Tower" class="wide">
 
 Working from home has its ups and downs. My ergonomic situation is borderline dire -- my working posture isn't good in the best of times, and taking desk equipment out of the equation hasn't done it any favors. I'm changing sitting positions every 30 minutes (low desk, cross-legged on floor, couch, bed, cycle back to start) so my later life doesn't see me taking up residence in a chiropractor's office for live-in treatment. But a little hardship is balanced by an amazing overall reduction in travel-related stress. My commute is better than most of North America's, but even so, it's a tight ball of pain and anxiety that eats anywhere between 1 to 2 hours a day.
 
 If you are going to be spending time at home, Twin Peaks isn't a bad place to do it. Even with surprisingly high apartment density and everyone holed up in their units, it's impressively quiet. I've been doing daily runs through our local trail system, across to Sutro's Open Space Reserve, and up to the top of the peaks themselves. My building's back yard (pictured at the top) makes a good place to write. An occasional meditative lap around the filled-in pool on the upper terrace helps to focus (pictured below; the compound's weirdest feature).
 
-![Pool on the roof](/assets/images/nanoglyphs/011-shelter/pool@2x.jpg)
+<img src="/photographs/nanoglyphs/011-shelter/pool@2x.jpg" alt="Sutro Tower" class="wide">
 
 ---
 
@@ -146,7 +146,7 @@ I'm overhauling my day-to-day by starting small. _Really_ small.
 
 * **Cross-legged sitting:** I was taught to do this from the moment I entered preschool, but it never took and I've always regretted it. Eating meals on tatami in Japan, I was the only person in the room with a “cheat” pillow -- roughly equivalent in the realm of faux pas to asking for a fork. Ease back into some flexibility doing some cross-legged sitting every day (pictured below: my tea set seen from my new, lower perspective).
 
-![Tea set -- made in Calgary and Japan](/assets/images/nanoglyphs/011-shelter/tea@2x.jpg)
+<img src="/photographs/nanoglyphs/011-shelter/tea@2x.jpg" alt="Tea set -- made in Calgary and Japan" class="wide">
 
 * **Daily scheduling/routine:** With fewer commitments to be in certain places at certain times, my schedule's been on a collision course with its destiny as an unstructured, amorphous blob. It's not working. Go back to having a routine, even if not strictly as necessary.
 * **Healthy meals:** I like carbs way too much. To do: eat food, not too much, mostly plants [3].

@@ -22,6 +22,35 @@
   title = "Storefront"
 
 #
+# /nanoglyphs/011-shelter
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/81uhvmzbp8tspfd/L1000272.JPG?dl=1"
+  slug = "nanoglyphs/011-shelter/chimes"
+  title = "Wind chimes at home"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/uds1vfevcyxd1e8/L1000270.JPG?dl=1"
+  slug = "nanoglyphs/011-shelter/pool"
+  title = "Pool on the roof"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/g56ancw989uv4lv/IMG_0846-crop.jpg?dl=1"
+  slug = "nanoglyphs/011-shelter/sutro-tower"
+  title = "Sutro Tower"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/6880e7vmtehjif1/L1000258.JPG?dl=1"
+  slug = "nanoglyphs/011-shelter/tea"
+  title = "Tea set -- made in Calgary and Japan"
+
+
+#
 # /nanoglyphs/013-remote
 #
 
