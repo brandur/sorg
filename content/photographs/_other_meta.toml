@@ -22,6 +22,16 @@
   title = "Storefront"
 
 #
+# /nanoglyphs/015-ruby-typing
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/dnquh7z2aecobtj/IMG_1391.HEIC?dl=1"
+  slug = "nanoglyphs/015-ruby-typing/cole-valley"
+  title = "Cole Valley around noon on Bladerunner day"
+
+#
 # /nanoglyphs/016-postgres-13
 #
 
