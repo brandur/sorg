@@ -22,6 +22,22 @@
   title = "Storefront"
 
 #
+# /nanoglyphs/013-remote
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/lcr7oi8bicodhu8/L1010190.jpg?dl=1"
+  slug = "nanoglyphs/013-remote/great-highway"
+  title = "The Great Highway, car free"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/s0zooun0rruvkz0/L1000514-crop-2.jpg?dl=1"
+  slug = "nanoglyphs/013-remote/slope"
+  title = "A steep San Francisco street"
+
+#
 # /nanoglyphs/014-local-first
 #
 
