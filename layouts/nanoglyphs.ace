@@ -43,7 +43,7 @@ html lang="en"
 
       blockquote {
         border-left: 5px solid #eee;
-        font-size: 13px;
+        font-size: 14px;
         font-style: italic;
         margin-left: 20px;
         margin-right: 20px;
@@ -64,9 +64,9 @@ html lang="en"
           font-weight: 400;
         */
         font-family: Helvetica, sans-serif;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 300;
-        line-height: 1.5;
+        line-height: 1.55;
         margin: 0;
 
         /*
@@ -85,7 +85,7 @@ html lang="en"
       }
 
       code {
-        font-size: 11px;
+        font-size: 12px;
         padding: 2px 4px;
       }
 
@@ -111,7 +111,7 @@ html lang="en"
       }
 
       h1 {
-        font-size: 48px;
+        font-size: 50px;
         font-weight: 400;
         letter-spacing: -4px;
         line-height: 1;
@@ -120,14 +120,14 @@ html lang="en"
       }
 
       h2 {
-        font-size: 13px;
+        font-size: 14px;
         letter-spacing: -1px;
         margin: 30px 0 0 0;
         /* text-transform: uppercase; */
       }
 
       h3 {
-        font-size: 12px;
+        font-size: 13px;
         letter-spacing: -1px;
         margin: 20px 0 0 0;
       }
@@ -147,7 +147,9 @@ html lang="en"
 
       img {
         margin: 20px 0;
+        /*
         max-width: 550px;
+        */
         width: 100%;
       }
 
@@ -165,9 +167,34 @@ html lang="en"
         -webkit-hyphens: auto;
       }
 
+      .footnotes {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+      }
+
+      .footnotes p {
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .footnotes sup {
+        margin-right: 3px;
+      }
+
+      /* many images are left to occupy 100% width, constrain some either
+       * because they're portraits, or lower resolution */
+      img.narrow {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 700px;
+      }
+
       #about {
         color: #aaa;
-        font-size: 12px;
+        font-size: 13px;
         margin: 30px 0;
         text-align: center;
       }
@@ -177,29 +204,13 @@ html lang="en"
         margin-top: 80px;
       }
 
-      #footnotes {
-        margin-left: 30px;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        margin-top: 30px;
-      }
-
-      #footnotes p {
-        font-size: 12px;
-        line-height: 1.6;
-      }
-
-      #footnotes sup {
-        margin-right: 3px;
-      }
-
       #header {
         margin-bottom: 40px;
         margin-top: 40px;
       }
 
       #issue {
-        font-size: 10px;
+        font-size: 11px;
         margin-bottom: 0;
         text-align: center;
       }
@@ -211,7 +222,7 @@ html lang="en"
       #nanoglyph {
         color: #000;
         font-family: Monaco, monospace;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: bold;
         margin-top: 0;
         text-align: center;
@@ -232,9 +243,12 @@ html lang="en"
       /* all container types are equivalent in email version; see web-only
        * below */
       .container, .container-highlight, .container-highlight-portrait {
-        margin: 20px auto;
-        max-width: 500px;
+        margin: 50px auto;
         padding: 0 20px;
+      }
+
+      .web-only .container {
+        max-width: 600px;
       }
 
       .web-only .container-highlight, .web-only .container-highlight-portrait {
@@ -243,16 +257,16 @@ html lang="en"
       }
 
       .web-only .container-highlight {
-        max-width: 700px;
+        max-width: 1200px;
       }
 
       .web-only .container-highlight-portrait {
-        max-width: 600px;
+        max-width: 900px;
       }
 
       .web-only .container-highlight img, .web-only .container-highlight-portrait img {
         margin: 0;
-        max-width: 100%;
+        width: 100%;
       }
 
       .web-only .published-date {
@@ -260,6 +274,12 @@ html lang="en"
         font-size: 11px;
         font-style: italic;
         margin-left: 8px;
+      }
+
+      .web-only img.wide {
+        margin-left: -150px;
+        margin-right: -150px;
+        width: 900px;
       }
 
       .web-only #subscribe {
@@ -294,6 +314,16 @@ html lang="en"
         padding: 0 25px;
         text-align: center;
         text-transform: uppercase;
+      }
+
+      @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px) {
+
+        .web-only img.wide {
+          margin-left: 0;
+          margin-right: 0;
+          width: 100%;
+        }
+
       }
 
   body class={{.BodyClass}}
