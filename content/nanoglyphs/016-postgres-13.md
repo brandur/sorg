@@ -1,6 +1,6 @@
 +++
 image_alt = "UC Berkeley, the birthplace of Postgres"
-image_url = "/assets/images/nanoglyphs/016-postgres-13/uc-berkeley-clock-tower@2x.jpg"
+image_url = "/photographs/nanoglyphs/016-postgres-13/uc-berkeley-clock-tower@2x.jpg"
 published_at = 2020-10-26T15:19:48Z
 title = "Postgres 13, Shrunken Indexes, Planet Earth"
 +++
@@ -53,7 +53,7 @@ Its indexes are now so enormous that they now drive product decisions -- we’ll
 
 We'd sure love index deduplication, but will probably never get it. Mongo delenda est [2].
 
-![A grove at UC Berkeley](/assets/images/nanoglyphs/016-postgres-13/uc-berkeley-grove@2x.jpg)
+<img src="/photographs/nanoglyphs/016-postgres-13/uc-berkeley-grove@2x.jpg" alt="A grove at UC Berkeley" class="wide">
 
 ### Parallel vacuum (#parallel-vacuum)
 

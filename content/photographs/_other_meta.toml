@@ -22,6 +22,22 @@
   title = "Storefront"
 
 #
+# /nanoglyphs/016-postgres-13
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/tuhjavbworvu2xi/L1020154.jpg?dl=1"
+  slug = "nanoglyphs/016-postgres-13/uc-berkeley-clock-tower"
+  title = "UC Berkeley, the birthplace of Postgres"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/52vx77e7vbirrky/L1020152.JPG?dl=1"
+  slug = "nanoglyphs/016-postgres-13/uc-berkeley-grove"
+  title = "A grove at UC Berkeley"
+
+#
 # /nanoglyphs/017-twenty
 #
 
