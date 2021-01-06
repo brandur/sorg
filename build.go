@@ -69,15 +69,16 @@ const (
 // reparsing all the source material. In each case we try to only reparse the
 // sources if those source files actually changed.
 var (
-	articles   []*Article
-	fragments  []*Fragment
-	nanoglyphs []*snewsletter.Issue
-	passages   []*snewsletter.Issue
-	pages      map[string]*Page = make(map[string]*Page)
-	photos     []*Photo
-	sequences  = make(map[string]*Sequence)
-	talks      []*stalks.Talk
-	tweets     []*squantified.Tweet
+	articles    []*Article
+	fragments   []*Fragment
+	nanoglyphs  []*snewsletter.Issue
+	passages    []*snewsletter.Issue
+	pages       map[string]*Page = make(map[string]*Page)
+	photos      []*Photo
+	photosOther []*Photo
+	sequences = make(map[string]*Sequence)
+	talks       []*stalks.Talk
+	tweets      []*squantified.Tweet
 )
 
 // List of common build dependencies, a change in any of which will trigger a
@@ -403,6 +404,29 @@ func build(c *modulir.Context) []error {
 
 			photos = photosWrapper.Photos
 			photosChanged = true
+			return true, nil
+		})
+	}
+
+	//
+	// Photos (other) (read `_other_meta.toml`)
+	//
+
+	{
+		c.AddJob("photos (other) _meta.toml", func() (bool, error) {
+			source := c.SourceDir + "/content/photographs/_other_meta.toml"
+
+			if !c.Changed(source) {
+				return false, nil
+			}
+
+			var photosWrapper PhotoWrapper
+			err := mtoml.ParseFile(c, source, &photosWrapper)
+			if err != nil {
+				return true, err
+			}
+
+			photosOther = photosWrapper.Photos
 			return true, nil
 		})
 	}
@@ -746,6 +770,18 @@ func build(c *modulir.Context) []error {
 		}
 	}
 
+	// Photo fetch + resize (other)
+	{
+		for _, p := range photosOther {
+			photo := p
+
+			name := fmt.Sprintf("photo fetch: %s", photo.Slug)
+			c.AddJob(name, func() (bool, error) {
+				return fetchAndResizePhotoOther(c, c.SourceDir+"/content/photographs", photo)
+			})
+		}
+	}
+
 	//
 	// Sequences (index / fetch + resize)
 	//
@@ -889,7 +925,7 @@ func build(c *modulir.Context) []error {
 
 				name := fmt.Sprintf("twitter photo: %v", media.ID)
 				c.AddJob(name, func() (bool, error) {
-					return fetchAndResizeTwitterPhoto(c, c.SourceDir+"/content/photographs/twitter",
+					return fetchAndResizePhotoTwitter(c, c.SourceDir+"/content/photographs/twitter",
 						tweet, media)
 				})
 			}
@@ -1076,6 +1112,22 @@ type Page struct {
 
 // Photo is a photograph.
 type Photo struct {
+	// CropGravity is the gravity to use with ImageMagick when doing a square
+	// crop. Should be one of: northwest, north, northeast, west, center, east,
+	// southwest, south, southeast. Defaults to north gravity (because most
+	// shots are portraits with my head near the top).
+	CropGravity string `toml:"crop_gravity" default:"north"`
+
+	// CropWidth is the width to crop the photo to.
+	//
+	// This should be the non-retina target width. A second file will be
+	// created with the `@2x` suffix with twice this number.
+	//
+	// This is a required property for photos that are not part of the main
+	// photographs sequence. It's ignored for photos that *are* part of the
+	// main photographs sequence.
+	CropWidth int `toml:"crop_width"`
+
 	// Description is the description of the photograph.
 	Description string `toml:"description"`
 
@@ -1295,12 +1347,30 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 		mimage.PhotoGravityCenter, defaultPhotoSizes)
 }
 
+func fetchAndResizePhotoOther(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
+	if photo.CropWidth == 0 {
+		return false, fmt.Errorf("need `crop_width` specified for photo '%s'", photo.Slug)
+	}
+
+	u, err := url.Parse(photo.OriginalImageURL)
+	if err != nil {
+		return false, fmt.Errorf("bad URL for photo '%s'", photo.Slug)
+	}
+
+	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, scommon.TempDir,
+		mimage.PhotoGravity(photo.CropGravity),
+		[]mimage.PhotoSize{
+			{Suffix: ".jpg", Width: photo.CropWidth, CropSettings: nil},
+			{Suffix: "@2x.jpg", Width: photo.CropWidth * 2, CropSettings: nil},
+		})
+}
+
 var twitterPhotoSizes = []mimage.PhotoSize{
 	{Suffix: ".jpg", Width: 550},
 	{Suffix: "@2x.jpg", Width: 1100},
 }
 
-func fetchAndResizeTwitterPhoto(c *modulir.Context, targetDir string,
+func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 	tweet *squantified.Tweet, media *squantified.TweetEntitiesMedia) (bool, error) {
 
 	u, err := url.Parse(media.URL)
