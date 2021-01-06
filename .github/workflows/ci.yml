@@ -137,6 +137,7 @@ jobs:
       - name: "Build: Development"
         run: make build
         env:
+          CONCURRENCY: 2
           DRAFTS: true
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
@@ -145,6 +146,7 @@ jobs:
       - name: "Build: Production"
         run: make build
         env:
+          CONCURRENCY: 2
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
 
