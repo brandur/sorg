@@ -11,6 +11,12 @@
 
 [[photographs]]
   crop_width = 700
+  original_image_url = "https://www.dropbox.com/s/q1acfqfnkecpixu/da-vinci.jpg?dl=1"
+  slug = "nanoglyphs/017-twenty/da-vinci"
+  title = "Da Vinci"
+
+[[photographs]]
+  crop_width = 700
   original_image_url = "https://www.dropbox.com/s/778i77mmyh5t8mj/2W4A0146.JPG?dl=1"
   slug = "nanoglyphs/017-twenty/river"
   title = "The Bow River"
