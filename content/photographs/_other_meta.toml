@@ -9,6 +9,18 @@
   slug = "nanoglyphs/010-monterey/san-carlos"
   title = "San Carlos Beach in Monterey at sunrise."
 
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/zsbf2sz8abw0lsy/mariana-trench.jpg?dl=1"
+  slug = "nanoglyphs/010-monterey/mariana-trench"
+  title = "The Mariana Trench"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/vno7c26xsfopxww/L1080491.JPG?dl=1"
+  slug = "nanoglyphs/010-monterey/storefront"
+  title = "Storefront"
+
 #
 # /nanoglyphs/017-twenty
 #

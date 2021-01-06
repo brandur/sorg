@@ -1,6 +1,6 @@
 +++
 image_alt = "San Carlos Beach in Monterey at sunrise."
-image_url = "/assets/images/nanoglyphs/010-monterey/san-carlos@2x.jpg"
+image_url = "/photographs/nanoglyphs/010-monterey/san-carlos@2x.jpg"
 published_at = 2020-02-07T18:25:53Z
 title = "Monterey; the Darker Side of Software"
 +++
@@ -17,7 +17,7 @@ Even with all the suit’s trouble, that water was _cold_. Like sap-the-life-out
 
 The ocean’s conditions were no less forgiving than its temperature. We got lucky on day one with relatively calm currents and good visibility, but day two wasn’t so kind. The waves were especially rough, and the weight and surface area of our dive gear made getting past them out to open water difficult. In the first ten minutes of the dive our group ran into 1 lost mask, 1 broken fin (mine, as a wave knocked me back into a rock and snapped it in half), 1 air tank escaped from its strap, and 1000 PSI lost to a bad free-flowing reg. The lost mask ended the expedition, and we swam back to the comfort of land. With tumultuous currents and visibility measured in feet, we never did see that mask again.
 
-![Storefront](/assets/images/nanoglyphs/010-monterey/storefront@2x.jpg)
+<img src="/photographs/nanoglyphs/010-monterey/storefront@2x.jpg" alt="Storefront" class="wide">
 
 Trying to correct my newfound fin deficiency, a few minutes later I walked into one of the local dive shops (luckily, there are at least two a stone's throw from the beach) in my soaking wetsuit, slapped my credit card down on the counter, and said, “I need to rent some fins for the day.”
 
@@ -81,7 +81,7 @@ Back to the ocean: I found [this article](https://www.theatlantic.com/magazine/a
 
 The hadal zone is even deeper than the abyssal zone at 20,000 to 36,000 feet, and appropriately named for Hades, the Greek underworld (could marine vernacular be any more bad ass?). It’s been visited by humanity only a handful of times, most notably with expeditions to the Challenger Deep in the Mariana Trench like Jacques Piccard and Don Walsh's 1960 descent in the bathyscaphe _Trieste_. 30,000 feet down, the enormous pressure at those depths tore a great crack in their viewing window, an event that shook the entire ship. You just have to imagine how terrifying a moment that would have been, and appreciate the sheer gusto that it would’ve taken to then _ignore it_, and keep diving to their final depth of 35,814 feet.
 
-![The Mariana Trench](/assets/images/nanoglyphs/010-monterey/mariana-trench@2x.jpg)
+<img src="/photographs/nanoglyphs/010-monterey/mariana-trench@2x.jpg" alt="The Mariana Trench" class="wide">
 
 Aside from the US Navy (owners of the _Trieste_), some of the Deep’s main prospective explorers over the years have been billionaires (or at least 100s of millionaires) with James Cameron leading the way in 2010 on an expedition that by all accounts excelled in a technical sense despite his background as a filmmaker. Cameron made it down, but due to some technical problems had to ascend earlier than planned and cancelled his follow up dives. Narrating the adventure from his superyacht's helicopter overhead was Paul Allen. As a foil to Cameron, Richard Branson blustered about making a descent of his own in a science-fiction submersible reminiscent of a fighter jet, but didn’t make any headway on the project. I'm expecting an announcement from Elon Musk any day now.
 
