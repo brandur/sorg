@@ -7,7 +7,7 @@ title = "Twenty Years"
 
 There was a time when a personal newsletter was a pretty unusual beast. I might have to contextualize the concept by describing a push versus pull model, the rise and fall of RSS, and how although email is one of the oldest internet technologies, it may very well still be the most important. But with [Substack's meteoric rise](https://www.newyorker.com/magazine/2021/01/04/is-substack-the-media-future-we-want) in 2020 we now have newsletters coming out of the woodwork, and most of you will be well-versed with the idea by now.
 
-I'm Brandur. I mostly talk about APIs, databases, and bad software stacks. _This_ is a newsletter, but not a Substack. I send it on what was supposed to be a weekly cadence, but it's turned into something more like quarterly. I recently published some articles on [**feature casualties of large databases**](/large-database-casualties) and [**offset pagination**](/fragments/offset-pagination), and you may have discovered it through one of those.
+I'm Brandur. I mostly talk about APIs, databases, and bad software stacks. This _is_ a newsletter, but _not_ a Substack. I send it on what was supposed to be a weekly cadence, but it's turned into something more like quarterly. I recently published some articles on [**feature casualties of large databases**](/large-database-casualties) and [**offset pagination**](/fragments/offset-pagination), and you may have discovered it through one of those.
 
 As always, if you don't want to see it anymore, you can unsubscribe in [one, easy click](%unsubscribe_url%).
 
