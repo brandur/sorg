@@ -70,25 +70,17 @@ probably delete (say you want them for a single trip),
 still small enough, and the significantly faster encoding
 speeds mean that FFmpeg finishes far more quickly.
 
-### Audio and Dolby Digital Plus (#audio)
+### Audio, Dolby Digital Plus, and AAC (#audio)
 
-`-c:a eac3` tells FFmpeg to re-encode video using Dolby
-Digital Plus. You might wonder why I would ever choose that
-over AAC, and the answer is simple: Apple.
+The samples above use `-c:a eac3`, which QuickTime seems to handle more easily than AAC.
 
-Dolby Digital Plus is strictly worse than AAC, so you
-should prefer the latter in most situations. _However_, if
-you're encoding video for QuickTime (or any Apple target),
-you have to consider that thanks to the company's opaque
-quirks, their devices support AAC in stereo only. They
-support multi-channel audio, but only if it uses a
-"blessed" multi-channel codec like Dolby Digital Plus [1].
+QuickTime will play multi-channel AAC, but it's more finnicky, and a video with even a slightly "wrong" audio configuration won't be openable. I've had luck forcing 5.1 with `channel_layout`:
 
-You might want to change this parameter if (1) your input
-sources are just stereo anyway, or (2) you never expect to
-watch the output video on anything but a stereo device
-(i.e., headphones, TV minus sound system). It's trivial to
-have FFmpeg downmix to stereo AAC instead:
+```
+-filter_complex "channelmap=channel_layout=5.1" -c:a aac
+```
+
+If your input sources are only stereo anyway, or you never expect to watch the output video on anything but a stereo device (i.e., headphones, TV minus sound system), FFmpeg can trivially downmix to stereo AAC, which QuickTime will play wit no trouble:
 
 ```
 -c:a aac -ac 2
