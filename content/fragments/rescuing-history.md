@@ -18,6 +18,6 @@ But I like the idea of keeping URLs around and unbroken as long as possible ([co
 * Unlinking Flickr URLs (I don't expect those to be around too much longer) and importing those photos into the project. For good measure, running all images through [MozJPEG](/fragments/libjpeg-mozjpeg) to get sizes down.
 * Giving the styling an ever-so-slight facelift. Eliminated Google Fonts, increased text size, and added a smidgeon of additional whitespace.
 
-The job is done, and it only took one evening. Mutelight is now a static site that has a good chance of outliving Heroku, and maybe even Ruby. It's also noticeably faster now that there's no dynamic component. It's still on a NIH stack, but one that has minimal dependencies aside from Go's standard library. And even if Modulir dies, the static files that it generated will be portable to any system for about as long as we can expect modern computing to be alive.
+The job is done, and it only took one evening. Mutelight is now a static site that has a good chance of outliving Heroku, and maybe even Ruby. It's also noticeably faster now that there's no dynamic component. It's still on a NIH stack, but one that has minimal dependencies aside from Go's standard library. And even if Modulir dies, the HTML static files that it generated will be portable to any system for about as long as we can expect modern computing to live.
 
-Chalk this up to another of "probably not worth the time" lockdown project, but hey, it beats Netflix.
+Chalk this up to another of "probably not worth the time" lockdown project, but hey, beats Netflix.
