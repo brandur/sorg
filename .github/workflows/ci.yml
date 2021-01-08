@@ -19,9 +19,7 @@ jobs:
 
     steps:
       - name: Install Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.13.x
+        uses: actions/setup-go@v2
 
       # Used to force dependencies to re-cache once a day so that we don't run
       # into any weird cache invalidation problems, so to make sure that
