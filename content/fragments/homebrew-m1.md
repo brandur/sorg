@@ -4,7 +4,7 @@ published_at = 2021-01-09T18:54:21Z
 title = "Homebrew on M1 is a go"
 +++
 
-As you've already heard from everyone on the internet, including me, Apple's new M1 computers are amazing. It's freeing being able to unplug your computer in the morning, carry it around with you all day, and just not worry about about battery life. And while the lower power usage is the best part, they're also fast and quiet [1].
+As you've already heard from everyone on the internet, including me, Apple's new M1 computers are amazing. It's freeing being able to unplug your computer in the morning, carry it around with you all day, and just not worry about about battery life, ever. And while the lower power usage is the best part, they're also fast and quiet [1].
 
 Despite all the gains, I was reluctant to recommend them because of the Intel to Apple Silicon switching pains. As with PowerPC to Intel a decade ago, Rosetta works practically flawlessly, but there was still one major catastrophe in progress: Homebrew.
 
