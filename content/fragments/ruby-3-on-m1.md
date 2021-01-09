@@ -61,7 +61,7 @@ The specific error isn't suggestive of much, but this line gave me the hint I ne
 ruby-build: using readline from homebrew
 ```
 
-Homebrew is only [semi-functional on ARM](https://github.com/Homebrew/brew/issues/7857) right now, and its recommendation for anyone who wanted to try ARM-based recipes was to double-install Homebrew -- one for x86 which would be interpreted by Rosetta, and one for ARM (for the applications you could get to compile there). I put in aliases to invoke each installation unambiguously:
+Homebrew is only [semi-functional on ARM](https://github.com/Homebrew/brew/issues/7857) right now, and its recommendation for anyone who wanted to try ARM-based recipes was to double-install Homebrew -- one for x86 which would be interpreted by Rosetta, and one for ARM (for the applications you could get to compile there) [**update:** this is [no longer required](/fragments/homebrew-m1)]. I put in aliases to invoke each installation unambiguously:
 
 ``` bash
 alias abrew='/opt/homebrew/bin/brew'
