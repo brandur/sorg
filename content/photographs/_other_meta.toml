@@ -73,6 +73,22 @@
   slug = "fragments/safety-razors/razor"
   title = "A safety razor"
 
+#
+# /fragments/wgt-2015-brain-dump
+#
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/wly7tt7i45dq6el/jo-quail.jpg?dl=1"
+  slug = "fragments/wgt-2015-brain-dump/jo-quail"
+  title = "Jo Quail"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/32kvs3gfcdawbbs/leaf.jpg?dl=1"
+  slug = "fragments/wgt-2015-brain-dump/leaf"
+  title = "L.E.A.F."
+
 ##############################################################################
 #
 #
