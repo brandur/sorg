@@ -87,7 +87,7 @@ I'm not so sure. One of the reasons that lockdowns have been so amenable to so m
 
 In retrospect, my biggest regret is not making the best of a bad situation. Normally, our most important, scarcest resource is time. The reason you can't pick up that new hobby, learn a language, or write that book is because there isn't enough of it. Last year, time was one of the few things we had left (well, in California at least) as commutes disappeared and the world shut down.
 
-I made some progress on learning Japanese, but all in all, I spent too much time on video games and moping. (Although, _Final Fantasy VII Remake_ was pretty great.) I've set a [few rough aspirational goals](/fragments/2021) for 2021, but the most important one: _make good use of time_.
+I made some progress on learning Japanese, but all in all, I spent too much time on video games and moping. (Although, _Final Fantasy VII Remake_ was pretty great. No regrets.) I've set a [few rough aspirational goals](/fragments/2021) for 2021, but the most important one: _make good use of time_.
 
 There's a reasonable chance that five years from now we look back on 2020, and as awful it was, find that there are parts of it that we miss. The constant ferrying back and forth from home to office to gym to school might be back by then, and seem like abject wastefulness after seeing a world without it.
 
