@@ -24,6 +24,46 @@
   title = "Plaque naming an Englemann Spruce tree"
 
 #
+# /fragments/new-york
+#
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/q2mpowmbriapnmc/DSCF4515.JPG?dl=1"
+  slug = "fragments/new-york/apple-store"
+  title = "5th Ave Apple Cube"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/to4sgrv7ce6xeje/DSCF4769.JPG?dl=1"
+  slug = "fragments/new-york/dont-block-the-box"
+  title = "Don't block the box"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/ppjs48o5d0otdyt/DSCF4613.JPG?dl=1"
+  slug = "fragments/new-york/met"
+  title = "The Met"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/vazjg3v7lxjqdj2/DSCF4825.JPG?dl=1"
+  slug = "fragments/new-york/high-line"
+  title = "The High Line"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/pyvzdfq33ejob1a/DSCF4767.JPG?dl=1"
+  slug = "fragments/new-york/rockefeller"
+  title = "Rockefeller"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/a8o1y2g44f11oyz/DSCF4694.JPG?dl=1"
+  slug = "fragments/new-york/washington-square-park"
+  title = "Washington Square Park"
+
+#
 # /fragments/safety-razors
 #
 
