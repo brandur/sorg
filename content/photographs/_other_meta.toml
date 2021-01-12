@@ -9,6 +9,7 @@
 #
 # size conventions:
 #
+#   * in-body images: 550 wide
 #   * vistas: 1024 wide
 #
 
@@ -21,6 +22,16 @@
   original_image_url = "https://www.dropbox.com/s/tvz4t4ggikrld6x/2W4A0178-cropped.jpg?dl=1"
   slug = "fragments/engelmann-spruce-plaque-sulfur-mountain/plaque"
   title = "Plaque naming an Englemann Spruce tree"
+
+#
+# /fragments/safety-razors
+#
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/yp5x0b0jt5yfi31/razor.jpg?dl=1"
+  slug = "fragments/safety-razors/razor"
+  title = "A safety razor"
 
 ##############################################################################
 #
