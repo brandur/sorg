@@ -20,6 +20,6 @@ So, the plate's full reading is:
     <strong><em>Picea Engelmannii</em> Engelm</strong>
 </p>
 
-It looks so old that we speculated that it may have been installed by [Norman Sanson](https://banff.ca/492/Norman-Sanson) himself, famous for hiking Sulphur Mountain for thirty years to take weather recordings at the summit regardless of what the elements through his way. That would have been around the early 1900s, but again, is pure speculation.
+It looks so old that we speculated that it may have been installed by [Norman Sanson](https://banff.ca/492/Norman-Sanson) himself, famous for hiking Sulphur Mountain for thirty years to take weather recordings at the summit, regardless of what the elements through his way. That would have been around the early 1900s, but again, is pure speculation.
 
 Thanks Dad for tipping me off to various arcana around biological naming conventions and Sulphur Mountain history.
