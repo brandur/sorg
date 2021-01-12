@@ -25,36 +25,90 @@
 ##############################################################################
 
 #
-# /nanoglyphs/006-moma-rain
+# /nanoglyphs/017-twenty
 #
 
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/ywcoofzdn2vhq53/L1080399.JPG?dl=1"
-  slug = "nanoglyphs/006-moma-rain/moma"
-  title = "The San Francisco MOMA"
+  original_image_url = "https://www.dropbox.com/s/7jxx7zx7e3xalfb/2W4A0137.JPG?dl=1"
+  slug = "nanoglyphs/017-twenty/canmore"
+  title = "The mountains of Canmore"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/q1acfqfnkecpixu/da-vinci.jpg?dl=1"
+  slug = "nanoglyphs/017-twenty/da-vinci"
+  title = "Da Vinci"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/778i77mmyh5t8mj/2W4A0146.JPG?dl=1"
+  slug = "nanoglyphs/017-twenty/river"
+  title = "The Bow River"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/1onhi70nuy5q2qw/2W4A0144.JPG?dl=1"
+  slug = "nanoglyphs/017-twenty/river-2"
+  title = "The Bow River"
 
 #
-# /nanoglyphs/010-monterey
+# /nanoglyphs/016-postgres-13
 #
 
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/fu9cjjbssl4kyby/L1080497.JPG?dl=1"
-  slug = "nanoglyphs/010-monterey/san-carlos"
-  title = "San Carlos Beach in Monterey at sunrise."
+  original_image_url = "https://www.dropbox.com/s/tuhjavbworvu2xi/L1020154.jpg?dl=1"
+  slug = "nanoglyphs/016-postgres-13/uc-berkeley-clock-tower"
+  title = "UC Berkeley, the birthplace of Postgres"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/52vx77e7vbirrky/L1020152.JPG?dl=1"
+  slug = "nanoglyphs/016-postgres-13/uc-berkeley-grove"
+  title = "A grove at UC Berkeley"
+
+#
+# /nanoglyphs/015-ruby-typing
+#
 
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/zsbf2sz8abw0lsy/mariana-trench.jpg?dl=1"
-  slug = "nanoglyphs/010-monterey/mariana-trench"
-  title = "The Mariana Trench"
+  original_image_url = "https://www.dropbox.com/s/41c579a1dfm069f/IMG_1391.jpg?dl=1"
+  slug = "nanoglyphs/015-ruby-typing/cole-valley"
+  title = "Cole Valley around noon on Bladerunner day"
+
+#
+# /nanoglyphs/014-local-first
+#
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/hd9rwpy1fdxa91o/IMG_0441.jpg?dl=1"
+  slug = "nanoglyphs/014-local-first/bunaken"
+  title = "Bunaken"
 
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/vno7c26xsfopxww/L1080491.JPG?dl=1"
-  slug = "nanoglyphs/010-monterey/storefront"
-  title = "Storefront"
+  original_image_url = "https://www.dropbox.com/s/0kephagafiou7hp/L1080319.JPG?dl=1"
+  slug = "nanoglyphs/014-local-first/coral-eye"
+  title = "Coral Eye's dive jetty on Bangka in Indonesia"
+
+#
+# /nanoglyphs/013-remote
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/lcr7oi8bicodhu8/L1010190.jpg?dl=1"
+  slug = "nanoglyphs/013-remote/great-highway"
+  title = "The Great Highway, car free"
+
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/s0zooun0rruvkz0/L1000514-crop-2.jpg?dl=1"
+  slug = "nanoglyphs/013-remote/slope"
+  title = "A steep San Francisco street"
 
 #
 # /nanoglyphs/011-shelter
@@ -84,89 +138,34 @@
   slug = "nanoglyphs/011-shelter/tea"
   title = "Tea set -- made in Calgary and Japan"
 
-
 #
-# /nanoglyphs/013-remote
-#
-
-[[photographs]]
-  crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/lcr7oi8bicodhu8/L1010190.jpg?dl=1"
-  slug = "nanoglyphs/013-remote/great-highway"
-  title = "The Great Highway, car free"
-
-[[photographs]]
-  crop_width = 900
-  original_image_url = "https://www.dropbox.com/s/s0zooun0rruvkz0/L1000514-crop-2.jpg?dl=1"
-  slug = "nanoglyphs/013-remote/slope"
-  title = "A steep San Francisco street"
-
-#
-# /nanoglyphs/014-local-first
-#
-
-[[photographs]]
-  crop_width = 900
-  original_image_url = "https://www.dropbox.com/s/hd9rwpy1fdxa91o/IMG_0441.jpg?dl=1"
-  slug = "nanoglyphs/014-local-first/bunaken"
-  title = "Bunaken"
-
-[[photographs]]
-  crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/0kephagafiou7hp/L1080319.JPG?dl=1"
-  slug = "nanoglyphs/014-local-first/coral-eye"
-  title = "Coral Eye's dive jetty on Bangka in Indonesia"
-
-#
-# /nanoglyphs/015-ruby-typing
+# /nanoglyphs/010-monterey
 #
 
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/41c579a1dfm069f/IMG_1391.jpg?dl=1"
-  slug = "nanoglyphs/015-ruby-typing/cole-valley"
-  title = "Cole Valley around noon on Bladerunner day"
+  original_image_url = "https://www.dropbox.com/s/fu9cjjbssl4kyby/L1080497.JPG?dl=1"
+  slug = "nanoglyphs/010-monterey/san-carlos"
+  title = "San Carlos Beach in Monterey at sunrise."
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/zsbf2sz8abw0lsy/mariana-trench.jpg?dl=1"
+  slug = "nanoglyphs/010-monterey/mariana-trench"
+  title = "The Mariana Trench"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/vno7c26xsfopxww/L1080491.JPG?dl=1"
+  slug = "nanoglyphs/010-monterey/storefront"
+  title = "Storefront"
 
 #
-# /nanoglyphs/016-postgres-13
+# /nanoglyphs/006-moma-rain
 #
 
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/tuhjavbworvu2xi/L1020154.jpg?dl=1"
-  slug = "nanoglyphs/016-postgres-13/uc-berkeley-clock-tower"
-  title = "UC Berkeley, the birthplace of Postgres"
-
-[[photographs]]
-  crop_width = 900
-  original_image_url = "https://www.dropbox.com/s/52vx77e7vbirrky/L1020152.JPG?dl=1"
-  slug = "nanoglyphs/016-postgres-13/uc-berkeley-grove"
-  title = "A grove at UC Berkeley"
-
-#
-# /nanoglyphs/017-twenty
-#
-
-[[photographs]]
-  crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/7jxx7zx7e3xalfb/2W4A0137.JPG?dl=1"
-  slug = "nanoglyphs/017-twenty/canmore"
-  title = "The mountains of Canmore"
-
-[[photographs]]
-  crop_width = 900
-  original_image_url = "https://www.dropbox.com/s/q1acfqfnkecpixu/da-vinci.jpg?dl=1"
-  slug = "nanoglyphs/017-twenty/da-vinci"
-  title = "Da Vinci"
-
-[[photographs]]
-  crop_width = 900
-  original_image_url = "https://www.dropbox.com/s/778i77mmyh5t8mj/2W4A0146.JPG?dl=1"
-  slug = "nanoglyphs/017-twenty/river"
-  title = "The Bow River"
-
-[[photographs]]
-  crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/1onhi70nuy5q2qw/2W4A0144.JPG?dl=1"
-  slug = "nanoglyphs/017-twenty/river-2"
-  title = "The Bow River"
+  original_image_url = "https://www.dropbox.com/s/ywcoofzdn2vhq53/L1080399.JPG?dl=1"
+  slug = "nanoglyphs/006-moma-rain/moma"
+  title = "The San Francisco MOMA"
