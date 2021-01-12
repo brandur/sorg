@@ -7,6 +7,12 @@
 ##############################################################################
 
 #
+# size conventions:
+#
+#   * vistas: 1024 wide
+#
+
+#
 # /fragments/engelmann-spruce-plaque-sulfur-mountain
 #
 
@@ -23,6 +29,13 @@
 #
 #
 ##############################################################################
+
+#
+# size conventions:
+#
+#   * landscape: 1200 wide
+#   * portrait: 900 wide
+#
 
 #
 # /nanoglyphs/017-twenty
