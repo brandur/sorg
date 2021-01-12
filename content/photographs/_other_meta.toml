@@ -1,3 +1,28 @@
+##############################################################################
+#
+#
+# fragments
+#
+#
+##############################################################################
+
+#
+# /fragments/engelmann-spruce-plaque-sulfur-mountain
+#
+
+[[photographs]]
+  crop_width = 1024
+  original_image_url = "https://www.dropbox.com/s/tvz4t4ggikrld6x/2W4A0178-cropped.jpg?dl=1"
+  slug = "fragments/engelmann-spruce-plaque-sulfur-mountain/plaque"
+  title = "Plaque naming an Englemann Spruce tree"
+
+##############################################################################
+#
+#
+# nanoglyphs
+#
+#
+##############################################################################
 
 #
 # /nanoglyphs/006-moma-rain
