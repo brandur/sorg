@@ -1,10 +1,17 @@
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
-export BLACK_SWAN_DATABASE_URL="postgres://localhost/black-swan-development?sslmode=disable"
 export DRAFTS=true
 export CLOUDFRONT_ID=E2D97SPIHRBCUA
 export LOCAL_FONTS=true
+
 export MAGICK_BIN=/usr/local/opt/imagemagick/bin/magick
+# export MAGICK_BIN=/opt/homebrew/opt/imagemagick/bin/magick
+
 export MOZJPEG_BIN=/usr/local/opt/mozjpeg/bin/cjpeg
+# export MOZJPEG_BIN=/opt/homebrew/opt/mozjpeg/bin/cjpeg
+
+# export PNGQUANT_BIN=/usr/local/opt/pngquant/bin/pngquant
+# export PNGQUANT_BIN=/opt/homebrew/bin/pngquant
+
 export PORT=5002
 export SORG_ENV=development
