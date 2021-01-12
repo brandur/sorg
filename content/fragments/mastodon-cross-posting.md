@@ -24,6 +24,6 @@ Copying over multimedia like photos was blessedly simple thanks to good API desi
 
 As usual, I always write this type of project in Go because I expect it to still be working five or ten years from now as it makes heavy use of the standard library (pulling in few dependencies) and the language has introduced no breaking changes.
 
-![A sample status cross-posted to Mastodon](/assets/images/fragments/mastodon-cross-posting/mastodon-status.jpg)
+[![A sample status cross-posted to Mastodon](/assets/images/fragments/mastodon-cross-posting/mastodon-status.jpg)](https://mastodon.social/@brandur/105538559756485068)
 
 The result? Working so far. Except I don't actually know anyone on Mastodon. Find me at [mastodon.social/@brandur](https://mastodon.social/@brandur) if you are.
