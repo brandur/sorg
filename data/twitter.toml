@@ -1,5 +1,411 @@
 
 [[tweets]]
+  created_at = 2021-01-13T17:36:44Z
+  favorite_count = 5
+  id = 1349410063077707776
+  text = "Played around with Ractors last weekend. Very happy there’s finally parallelism in Ruby.\n\nWorth noting that they’re currently not much use because so much Ruby relies on ambient global state. e.g. Can’t parse TOML in a Ractor, can’t render Markdown. Mostly stdlib-only right now."
+
+[[tweets]]
+  created_at = 2021-01-13T17:35:33Z
+  favorite_count = 1
+  id = 1349409763478577153
+  text = "@appltn Hmm, that would have been a good one to try, but I didn't even think of it when I wrote that — I'm all just image-less static binaries these days (or building images in the cloud from GCP and the like).\n\nJust via Google though, looks like they've made good progress."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "appltn"
+      user_id = 19526934
+
+  [tweets.reply]
+    status_id = 1348207837990805504
+    user = "appltn"
+    user_id = 19526934
+
+[[tweets]]
+  created_at = 2021-01-13T17:34:00Z
+  favorite_count = 3
+  id = 1349409375333453825
+  retweet_count = 2
+  text = "RT @gertjanwilde: What's good about offset pagination; designing parallel cursor-based web APIs — by @brandur https://t.co/VSrnU1Sy0E #API https://t.co/RMc6zuOmbG"
+
+  [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 1348542167380328450
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Erb79NNXAAI-Zer.png"
+
+    [[tweets.entities.urls]]
+      display_url = "buff.ly/3ovE4Nl"
+      expanded_url = "https://buff.ly/3ovE4Nl"
+      url = "https://t.co/VSrnU1Sy0E"
+
+    [[tweets.entities.user_mentions]]
+      user = "gertjanwilde"
+      user_id = 973691725
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
+
+  [tweets.retweet]
+    status_id = 1348542168709926921
+    user = "gertjanwilde"
+    user_id = 973691725
+
+[[tweets]]
+  created_at = 2021-01-13T17:33:46Z
+  id = 1349409314658689025
+  text = "@maxchehab I'm a little out of the loop in recent years (being down in California), but I think this isn't _too far_ off of normal."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "maxchehab"
+      user_id = 3303065330
+
+  [tweets.reply]
+    status_id = 1348686876572491776
+    user = "maxchehab"
+    user_id = 3303065330
+
+[[tweets]]
+  created_at = 2021-01-13T17:32:58Z
+  id = 1349409116440072192
+  text = "@hendi Wow that's awesome, and yeah, the space in the area is a really nice feature. I thinkkkk I've done Corey Pass, but it's been a few decades at this point :)"
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "hendi"
+      user_id = 6070782
+
+  [tweets.reply]
+    status_id = 1348692001823338496
+    user = "hendi"
+    user_id = 6070782
+
+[[tweets]]
+  created_at = 2021-01-11T17:33:29Z
+  favorite_count = 35
+  id = 1348684470728069122
+  text = "A few romantic shots of Banff to help get your week started. Can't believe I'm still hiking in January. https://t.co/W5dsoSK8u7"
+
+  [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 1348683975812763649
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Erd87iyU0AEqWs2.jpg"
+
+    [[tweets.entities.medias]]
+      id = 1348684035829088259
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Erd8_CXVQAMzyg5.jpg"
+
+    [[tweets.entities.medias]]
+      id = 1348684063058530304
+      type = "photo"
+      url = "https://pbs.twimg.com/media/Erd9AnzVkAAaS3G.jpg"
+
+[[tweets]]
+  created_at = 2021-01-09T19:58:14Z
+  id = 1347996119481999360
+  text = "@MichaelBurjack Thanks! I'll try your first set of recommendations and get back to you.\n\n(Also, I was largely joking in my original tweet — I don't care that much, and also it'll be very difficult in practice to win back against IKEA. My best hope is probably that they deprecate the product ;)"
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "MichaelBurjack"
+      user_id = 122132710
+
+  [tweets.reply]
+    status_id = 1347297336649605121
+    user = "MichaelBurjack"
+    user_id = 122132710
+
+[[tweets]]
+  created_at = 2021-01-09T19:54:01Z
+  favorite_count = 38
+  id = 1347995060306997249
+  retweet_count = 5
+  text = "Update on Homebrew on M1: Works great now, and I was able to get rid of the second x86 Homebrew install that ran some programs under Rosetta. For my money, there are no blockers left in these being great machines for development.\n\nMore detail: https://t.co/DtvRU435Ws"
+
+  [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/fragments/home…"
+      expanded_url = "https://brandur.org/fragments/homebrew-m1"
+      url = "https://t.co/DtvRU435Ws"
+
+[[tweets]]
+  created_at = 2021-01-08T23:17:29Z
+  favorite_count = 15
+  id = 1347683878123700226
+  retweet_count = 2
+  text = "Nice thinking around easing Ractors into the Ruby ecosystem from @kirshatrov.\n\nRuby relies heavily on global state so bringing them in at the \"top\" will be difficult initially, but they're more amenable at the \"bottom\" where less state needs to be shared.\n\nhttps://t.co/EF80vm1hEU"
+
+  [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "kirshatrov.com/2021/01/06/rub…"
+      expanded_url = "https://kirshatrov.com/2021/01/06/ruby-concurrency-and-ecosystem/"
+      url = "https://t.co/EF80vm1hEU"
+
+    [[tweets.entities.user_mentions]]
+      user = "kirshatrov"
+      user_id = 287242565
+
+[[tweets]]
+  created_at = 2021-01-07T22:39:50Z
+  favorite_count = 1
+  id = 1347312013945446400
+  text = "@jdxcode @DenisTrailin That's good to hear!\n\nI'll stay optimistic, although knowing nothing else about it, loss leading products that don't supply enough of their own revenue stream tend to get nailed down given enough time. WhatsApp is incredibly popular, but encryption means FB's gain is minimized."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "jdxcode"
+      user_id = 2432
+
+    [[tweets.entities.user_mentions]]
+      user = "DenisTrailin"
+      user_id = 213137357
+
+  [tweets.reply]
+    status_id = 1347308588155293696
+    user = "jdxcode"
+    user_id = 2432
+
+[[tweets]]
+  created_at = 2021-01-07T22:17:17Z
+  id = 1347306337487581187
+  text = "@jdxcode @DenisTrailin Honestly, I don't really expect that much to change since I assume FB knows everything about me.\n\nFor most people though, I think it's (1) they're not on FB already, and/or (2) sets bad precedent — relaxing message privacy/encryption could be next."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "jdxcode"
+      user_id = 2432
+
+    [[tweets.entities.user_mentions]]
+      user = "DenisTrailin"
+      user_id = 213137357
+
+  [tweets.reply]
+    status_id = 1347305096648880128
+    user = "jdxcode"
+    user_id = 2432
+
+[[tweets]]
+  created_at = 2021-01-07T21:36:56Z
+  favorite_count = 2
+  id = 1347296184348495873
+  text = "@DenisTrailin I'm still a little concerned about my ability to sell why WhatsApp is bad to non-tech friends, especially considering many of them post to FB like three times a day.\n\nBut yeah ... group chats. Those are going to be expert mode level of difficulty."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "DenisTrailin"
+      user_id = 213137357
+
+  [tweets.reply]
+    status_id = 1347293571179634688
+    user = "DenisTrailin"
+    user_id = 213137357
+
+[[tweets]]
+  created_at = 2021-01-07T21:35:21Z
+  favorite_count = 1
+  id = 1347295787579936768
+  text = "@bitsandhops I feel like even once I'm on Signal, I'm still going to be all the ones you mentioned _plus_ WhatsApp, still. Geeze I miss open chat protocols (or even open-ish)."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "bitsandhops"
+      user_id = 372479872
+
+  [tweets.reply]
+    status_id = 1347292314893381632
+    user = "bitsandhops"
+    user_id = 372479872
+
+[[tweets]]
+  created_at = 2021-01-07T21:34:05Z
+  favorite_count = 1
+  id = 1347295466333982720
+  text = "@asp_net Exactly! We'll see how it goes.\n\nThe good news is that the address book import on things like Signal definitely make it more tractable — I checked who was on there in my list and will consider using Signal instead of WhatsApp next time I message them."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "asp_net"
+      user_id = 18995844
+
+  [tweets.reply]
+    status_id = 1347292388545486848
+    user = "asp_net"
+    user_id = 18995844
+
+[[tweets]]
+  created_at = 2021-01-07T21:32:57Z
+  id = 1347295183688278017
+  text = "@spakhm Not sure I'd go with \"easy\", but maybe now at least \"possible\".\n\nAgreed that if there's a time to do it, that time is now, which is why I took the plunge.\n\nNot optimistic about non-tech friends though. Most of them probably assumed FB data sharing anyway and won't care much."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "spakhm"
+      user_id = 29089797
+
+  [tweets.reply]
+    status_id = 1347293244149751810
+    user = "spakhm"
+    user_id = 29089797
+
+[[tweets]]
+  created_at = 2021-01-07T21:18:09Z
+  favorite_count = 8
+  id = 1347291457934172161
+  text = "RE WhatsApp Facebook-itzation: Baffled by the number of claims of “I left WhatsApp by “just” switching me and every person I know over to Signal!”\n\nVery hard to believe, but they seem to believe what they’re saying. Not sure where the disconnect is, but installed Signal anyway."
+
+[[tweets]]
+  created_at = 2021-01-07T21:11:35Z
+  favorite_count = 1
+  id = 1347289802689822720
+  text = "@MichaelBurjack Haha, thank you — I copied these into my TODOs.\n\nI struggled on what the correct h1 should be when first designing the site, but ended up putting the page/article's title as the top header. That still does seem more semantically correct even if it's a Google de-optimization :/"
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "MichaelBurjack"
+      user_id = 122132710
+
+  [tweets.reply]
+    status_id = 1346219725521473536
+    user = "MichaelBurjack"
+    user_id = 122132710
+
+[[tweets]]
+  created_at = 2021-01-07T21:09:42Z
+  favorite_count = 1
+  id = 1347289331531018240
+  text = "@hgmnz @jkakar Spent five min trying to think of a joke to top that one. Can't do it. Nice one haha."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "hgmnz"
+      user_id = 24425454
+
+    [[tweets.entities.user_mentions]]
+      user = "jkakar"
+      user_id = 19925224
+
+  [tweets.reply]
+    status_id = 1346270079533641730
+    user = "hgmnz"
+    user_id = 24425454
+
+[[tweets]]
+  created_at = 2021-01-07T21:08:01Z
+  favorite_count = 1
+  id = 1347288905914060800
+  text = "@ideasasylum lol! Excellent idea. \"Review: Brandur by Brandur\""
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "ideasasylum"
+      user_id = 1211071
+
+  [tweets.reply]
+    status_id = 1346256787104813057
+    user = "ideasasylum"
+    user_id = 1211071
+
+[[tweets]]
+  created_at = 2021-01-07T21:04:23Z
+  favorite_count = 1
+  id = 1347287994307211264
+  text = "@rponte @sorentwo @petervgeoghegan Thanks! Yeah, that article is a bit old, and since then Que went through a reimplementation that fixed the problem by finding jobs more efficiently.\n\nBeing optimized upstream is still nice. There are many workloads that aren't async jobs specifically that'll also benefit."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "rponte"
+      user_id = 10794662
+
+    [[tweets.entities.user_mentions]]
+      user = "sorentwo"
+      user_id = 170467221
+
+    [[tweets.entities.user_mentions]]
+      user = "petervgeoghegan"
+      user_id = 319812046
+
+  [tweets.reply]
+    status_id = 1346490407509581824
+    user = "rponte"
+    user_id = 10794662
+
+[[tweets]]
+  created_at = 2021-01-07T21:02:08Z
+  favorite_count = 2
+  id = 1347287425903562753
+  text = "@kirshatrov Maybe! I'd have to dig in more (i.e. specifics around ease of index creation or changing not nulls, etc.). Some of what's in the list isn't even solvable by technology though — just needs better practice."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "kirshatrov"
+      user_id = 287242565
+
+  [tweets.reply]
+    status_id = 1346547411808903169
+    user = "kirshatrov"
+    user_id = 287242565
+
+[[tweets]]
+  created_at = 2021-01-07T21:00:43Z
+  id = 1347287069349933056
+  text = "@edoardoc Could've been better too! Personally was hoping for a cocktail bar or IKEA-branded pool table or something ;)"
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "edoardoc"
+      user_id = 9140812
+
+  [tweets.reply]
+    status_id = 1346777456716488704
+    user = "edoardoc"
+    user_id = 9140812
+
+[[tweets]]
+  created_at = 2021-01-05T23:53:01Z
+  favorite_count = 2
+  id = 1346605654958514176
+  text = "@ekryski @github That commit graph is worrying there, Eric."
+
+  [tweets.entities]
+
+    [[tweets.entities.user_mentions]]
+      user = "ekryski"
+      user_id = 258956663
+
+    [[tweets.entities.user_mentions]]
+      user = "github"
+      user_id = 13334762
+
+  [tweets.reply]
+    status_id = 1346602069818540033
+    user = "ekryski"
+    user_id = 258956663
+
+[[tweets]]
   created_at = 2021-01-04T22:28:44Z
   id = 1346222055193153536
   text = "@craigkerstiens Dammit Craig. That product is undervalued. What a steal."
@@ -33,11 +439,22 @@
 
 [[tweets]]
   created_at = 2021-01-04T22:26:34Z
+  favorite_count = 54
   id = 1346221512756396032
-  retweet_count = 5
-  text = "RT @petervgeoghegan: Over 5 years ago my then-colleague @brandur wrote about problems with Postgres queues and the accumulation of garbage…"
+  retweet_count = 13
+  text = "RT @petervgeoghegan: Over 5 years ago my then-colleague @brandur wrote about problems with Postgres queues and the accumulation of garbage MVCC versions (see https://t.co/qzP3iGINHQ). Expect significant improvements in this area for Postgres 14: https://t.co/xxOxZBJKjc"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/postgres-queues"
+      expanded_url = "https://brandur.org/postgres-queues"
+      url = "https://t.co/qzP3iGINHQ"
+
+    [[tweets.entities.urls]]
+      display_url = "postgr.es/m/CAGnEbogATZS…"
+      expanded_url = "https://postgr.es/m/CAGnEbogATZS1mWMVX8FzZHMXzuDEcb10AnVwwhCtXtiBpg3XLQ@mail.gmail.com"
+      url = "https://t.co/xxOxZBJKjc"
 
     [[tweets.entities.user_mentions]]
       user = "petervgeoghegan"
@@ -54,7 +471,7 @@
 
 [[tweets]]
   created_at = 2021-01-04T21:01:05Z
-  favorite_count = 42
+  favorite_count = 66
   id = 1346199998585688065
   retweet_count = 1
   text = "After a lengthy battle, my SEO’s been usurped by an IKEA hangar rail for the garage. (Looks pretty nice actually, might get one.)\n\nDo I have any chance of taking it back, or is this the end. https://t.co/IP6CEKXwIh"
@@ -954,9 +1371,8 @@
 
 [[tweets]]
   created_at = 2020-10-19T15:12:53Z
-  favorite_count = 17
+  favorite_count = 14
   id = 1318208505296216065
-  retweet_count = 1
   text = "@spakhm I like to argue that \"simply\" dissolving Twitter would be the single biggest/easiest win for harmony possible.\n\nNew platforms would replace it, but unlikely to capture the same overwhelming majority, leaving only smaller fragmented platforms for people to scream at each other on."
 
   [tweets.entities]
@@ -1484,11 +1900,17 @@
 
 [[tweets]]
   created_at = 2020-10-08T21:23:10Z
+  favorite_count = 2
   id = 1314315425367244800
   retweet_count = 1
-  text = "RT @_sebgl: I love @brandur's nanoglyphs format and content. Great read for your morning coffee. Please keep them coming!\n\nhttps://t.co/uq3…"
+  text = "RT @_sebgl: I love @brandur's nanoglyphs format and content. Great read for your morning coffee. Please keep them coming!\n\nhttps://t.co/uq3xajmbNx"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "twitter.com/brandur/status…"
+      expanded_url = "https://twitter.com/brandur/status/1313859649045590016"
+      url = "https://t.co/uq3xajmbNx"
 
     [[tweets.entities.user_mentions]]
       user = "_sebgl"
@@ -3798,9 +4220,9 @@
 
 [[tweets]]
   created_at = 2019-10-09T22:54:03Z
-  favorite_count = 2184
+  favorite_count = 2181
   id = 1182066723337293828
-  retweet_count = 794
+  retweet_count = 793
   text = "Git tip I wish I'd discovered ten years ago: if you `git config --global diff.noprefix true` it removes the silly `a/` and `b/` prefixes so that when you double-click select one to copy, you get a usable filename instead of a mangled path. https://t.co/8COLkcClv6"
 
   [tweets.entities]
@@ -4387,6 +4809,7 @@
 
 [[tweets]]
   created_at = 2019-09-03T16:37:53Z
+  favorite_count = 30
   id = 1168926096680804355
   retweet_count = 11
   text = "RT @FranckPachot: an awesome explanation of PostgreSQL transaction and read consistency code: https://t.co/s0EiOVsBDc by  @brandur"
@@ -6369,15 +6792,25 @@
 
 [[tweets]]
   created_at = 2019-03-27T23:18:54Z
+  favorite_count = 11
   id = 1111044958172004352
   retweet_count = 4
-  text = "RT @pganalyze: \"Atomicity states that for a series of operations performed against a database, either every one of them commits together, o…"
+  text = "RT @pganalyze: \"Atomicity states that for a series of operations performed against a database, either every one of them commits together, or they’re all rolled back; no in between states are allowed. \"\n\nAs so very often, a great article by @brandur: https://t.co/iOt2FcZ9dz\n\n#postgres"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "ed.gr/beehb"
+      expanded_url = "http://ed.gr/beehb"
+      url = "https://t.co/iOt2FcZ9dz"
 
     [[tweets.entities.user_mentions]]
       user = "pganalyze"
       user_id = 1952665526
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 1110994146385383425
@@ -6693,7 +7126,7 @@
 
 [[tweets]]
   created_at = 2019-03-21T00:29:27Z
-  favorite_count = 895
+  favorite_count = 896
   id = 1108525994405564417
   retweet_count = 90
   text = "At Stripe we switched to a GUI-driven deploy process for services.\n\nI'm a die-hard terminal person for life, but it's so much better. Especially during the duress of an incident, there's nothing like being able to click boxes to resolution instead of looking up obscure CLI flags."
@@ -7100,19 +7533,25 @@
 
 [[tweets]]
   created_at = 2019-02-04T23:27:12Z
+  favorite_count = 59
   id = 1092565265244540928
   retweet_count = 17
-  text = "RT @PostgreSQL: Sorting is an essential feature of databases, but can also be a bottleneck. How does @PostgreSQL help to make sorts fast? @…"
+  text = "RT @PostgreSQL: Sorting is an essential feature of databases, but can also be a bottleneck. How does @PostgreSQL help to make sorts fast? @brandur describes one method called \"SortSupport\" that helps speed up @PostgreSQL Sorts in a lot of cases: https://t.co/BGx9YYzyGh"
 
   [tweets.entities]
 
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/sortsupport"
+      expanded_url = "https://brandur.org/sortsupport"
+      url = "https://t.co/BGx9YYzyGh"
+
     [[tweets.entities.user_mentions]]
       user = "PostgreSQL"
       user_id = 848569011231006721
 
     [[tweets.entities.user_mentions]]
-      user = "PostgreSQL"
-      user_id = 848569011231006721
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 1092558402839027712
@@ -7927,11 +8366,17 @@
 
 [[tweets]]
   created_at = 2018-12-01T20:29:09Z
+  favorite_count = 19
   id = 1068965246709035008
   retweet_count = 3
-  text = "RT @simonw: As @brandur points out in this excellent article, a big benefit of Redis Streams is it lets you use Kafka-style primitives with…"
+  text = "RT @simonw: As @brandur points out in this excellent article, a big benefit of Redis Streams is it lets you use Kafka-style primitives without first spinning up a Kafka cluster https://t.co/iVdtuwn5jX"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/redis-streams"
+      expanded_url = "https://brandur.org/redis-streams"
+      url = "https://t.co/iVdtuwn5jX"
 
     [[tweets.entities.user_mentions]]
       user = "simonw"
@@ -8869,15 +9314,17 @@
 
 [[tweets]]
   created_at = 2018-10-15T19:34:36Z
+  favorite_count = 70
   id = 1051919287735083008
   retweet_count = 23
-  text = "RT @postgresql: Why is it important to manage client connections to your @PostgreSQL database? @brandur explains the effects of many connec…"
+  text = "RT @PostgreSQL: Why is it important to manage client connections to your @PostgreSQL database? @brandur explains the effects of many connections on your database, as well as how to use connection poolers to help:  https://t.co/zvba6SWhku"
 
   [tweets.entities]
 
-    [[tweets.entities.user_mentions]]
-      user = "PostgreSQL"
-      user_id = 848569011231006721
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/postgres-conne…"
+      expanded_url = "https://brandur.org/postgres-connections"
+      url = "https://t.co/zvba6SWhku"
 
     [[tweets.entities.user_mentions]]
       user = "PostgreSQL"
@@ -8908,11 +9355,37 @@
 
 [[tweets]]
   created_at = 2018-10-13T20:04:31Z
+  favorite_count = 603
   id = 1051202041844883456
   retweet_count = 114
-  text = "RT @sdw: One of the best photo collections I've seen in years of an overland trip traversing the old Silk Road. Suddenly very eager to visi…"
+  text = "RT @sdw: One of the best photo collections I've seen in years of an overland trip traversing the old Silk Road. Suddenly very eager to visit Uzbekistan. https://t.co/Os1hhKUIST https://t.co/ATKJQQggCm"
 
   [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 1051153836918767617
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DpZy2G3VAAERp_h.jpg"
+
+    [[tweets.entities.medias]]
+      id = 1051153867751055360
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DpZy35uUYAAhPDp.jpg"
+
+    [[tweets.entities.medias]]
+      id = 1051153906686775296
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DpZy6KxUUAAakIA.jpg"
+
+    [[tweets.entities.medias]]
+      id = 1051153926089629696
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DpZy7TDUYAAihFu.jpg"
+
+    [[tweets.entities.urls]]
+      display_url = "imgur.com/gallery/5jOAsH0"
+      expanded_url = "https://imgur.com/gallery/5jOAsH0"
+      url = "https://t.co/Os1hhKUIST"
 
     [[tweets.entities.user_mentions]]
       user = "sdw"
@@ -9382,11 +9855,11 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
   [tweets.reply]
     status_id = 1039383339277242369
-    user = "stolt45"
+    user = "Its_stolt"
     user_id = 9483652
 
 [[tweets]]
@@ -10454,15 +10927,25 @@
 
 [[tweets]]
   created_at = 2018-08-04T14:47:57Z
+  favorite_count = 41
   id = 1025755223673851904
   retweet_count = 27
-  text = "RT @handmade_net: “We’re conditioned ourselves to think that waiting 30+ seconds for an app to load, or interrupting our workflow to watch…"
+  text = "RT @handmade_net: “We’re conditioned ourselves to think that waiting 30+ seconds for an app to load, or interrupting our workflow to watch a half second animations a thousand times a day, are perfectly normal.” -@brandur\n\nhttps://t.co/1fYYXxen6R\n\n#programming #ui"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/interfaces"
+      expanded_url = "https://brandur.org/interfaces"
+      url = "https://t.co/1fYYXxen6R"
 
     [[tweets.entities.user_mentions]]
       user = "handmade_net"
       user_id = 3433836730
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 1025622632354312193
@@ -10555,15 +11038,25 @@
 
 [[tweets]]
   created_at = 2018-08-02T18:24:21Z
+  favorite_count = 88
   id = 1025084908220243968
   retweet_count = 31
-  text = "RT @tammybutow: \"Nothing operates flawlessly once it hits production. Every component in the stack is a candidate for failure, and with suf…"
+  text = "RT @tammyxbryant: \"Nothing operates flawlessly once it hits production. Every component in the stack is a candidate for failure, and with sufficient scale, something will be failing all the time.\" #neverforget -- @brandur https://t.co/CltH0iQoOb"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/minimalism"
+      expanded_url = "https://brandur.org/minimalism"
+      url = "https://t.co/CltH0iQoOb"
 
     [[tweets.entities.user_mentions]]
       user = "tammybutow"
       user_id = 1290650000029028360
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 1025039883256193024
@@ -11116,7 +11609,7 @@
 
 [[tweets]]
   created_at = 2018-07-12T17:54:40Z
-  favorite_count = 1047
+  favorite_count = 1041
   id = 1017467292932665344
   retweet_count = 310
   text = "There's nothing quite as nefarious as a technical decision made via Slack: stakeholders miss it if they're not around, points are poorly stated as they're strung across 50 half-baked thoughts, context exists across pages of jumbled noise, *and* it's time consuming.\n\nI miss email."
@@ -11651,6 +12144,7 @@
 
 [[tweets]]
   created_at = 2018-06-16T14:43:18Z
+  favorite_count = 139
   id = 1007997045834067968
   retweet_count = 19
   text = "RT @rauchg: PR that adds async/await to Rust\nhttps://t.co/p3GllVt8RP"
@@ -13542,9 +14036,10 @@
 
 [[tweets]]
   created_at = 2018-04-18T02:03:37Z
+  favorite_count = 307
   id = 986424984531697664
   retweet_count = 53
-  text = "RT @dcurtis: In order of importance for San Francisco government—possibly the worst major city government in the country—to address:\n\n1. Dr…"
+  text = "RT @dcurtis: In order of importance for San Francisco government—possibly the worst major city government in the country—to address:\n\n1. Drugs/homeless/safety \n....\n99999. Scooters."
 
   [tweets.entities]
 
@@ -14362,15 +14857,25 @@
 
 [[tweets]]
   created_at = 2018-03-23T21:47:41Z
+  favorite_count = 4
   id = 977300877483507712
   retweet_count = 1
-  text = "RT @heinrichhartman: \"Suddenly, the absurdity of the thought hit me like a ton of bricks: I was sitting in an Onsen looking forward to the…"
+  text = "RT @heinrichhartman: \"Suddenly, the absurdity of the thought hit me like a ton of bricks: I was sitting in an Onsen looking forward to the next time I’d be able to sit in an Onsen. It was hard to imagine a more pathological example of cognitive degeneracy.\" -- @brandur / https://t.co/1xB2JEAQx1"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/fragments/mind…"
+      expanded_url = "https://brandur.org/fragments/mindfulness"
+      url = "https://t.co/1xB2JEAQx1"
 
     [[tweets.entities.user_mentions]]
       user = "heinrichhartman"
       user_id = 838034996
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 977222268781760512
@@ -15807,9 +16312,10 @@
 
 [[tweets]]
   created_at = 2018-02-03T03:44:49Z
+  favorite_count = 101
   id = 959633747967582209
-  retweet_count = 25
-  text = "RT @interfluidity: American politics now boils down to a contest over who can describe sets of events in the most nefariously conspiratoria…"
+  retweet_count = 24
+  text = "RT @interfluidity: American politics now boils down to a contest over who can describe sets of events in the most nefariously conspiratorial light. Good decisions are sure to result."
 
   [tweets.entities]
 
@@ -16191,6 +16697,7 @@
 
 [[tweets]]
   created_at = 2018-01-25T22:06:24Z
+  favorite_count = 51
   id = 956649479163097088
   retweet_count = 29
   text = "RT @antirez: Blog post: “An update on Redis Streams development”: https://t.co/GMT0uuCvhP"
@@ -16307,7 +16814,7 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
   [tweets.reply]
     status_id = 956221288271491072
@@ -16427,7 +16934,7 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
   [tweets.reply]
     status_id = 956204943580446720
@@ -16443,9 +16950,10 @@
 
 [[tweets]]
   created_at = 2018-01-23T22:42:18Z
+  favorite_count = 44
   id = 955933739032260608
   retweet_count = 22
-  text = "RT @postgresql: Curious how atomicity happens in Postgres? @brandur explains it for you here - https://t.co/VEOqwPb1T7"
+  text = "RT @PostgreSQL: Curious how atomicity happens in Postgres? @brandur explains it for you here - https://t.co/VEOqwPb1T7"
 
   [tweets.entities]
 
@@ -17028,9 +17536,10 @@
 
 [[tweets]]
   created_at = 2018-01-08T18:23:58Z
+  favorite_count = 22
   id = 950432908707119104
   retweet_count = 9
-  text = "RT @postgresql: An example of building an idempotent API utilizing keys with @postgresql by @brandur \n\nhttps://t.co/GeEoSBZozM"
+  text = "RT @PostgreSQL: An example of building an idempotent API utilizing keys with @postgresql by @brandur \n\nhttps://t.co/GeEoSBZozM"
 
   [tweets.entities]
 
@@ -17038,10 +17547,6 @@
       display_url = "brandur.org/idempotency-ke…"
       expanded_url = "https://brandur.org/idempotency-keys"
       url = "https://t.co/GeEoSBZozM"
-
-    [[tweets.entities.user_mentions]]
-      user = "PostgreSQL"
-      user_id = 848569011231006721
 
     [[tweets.entities.user_mentions]]
       user = "PostgreSQL"
@@ -17058,15 +17563,25 @@
 
 [[tweets]]
   created_at = 2018-01-08T18:23:49Z
+  favorite_count = 7
   id = 950432870878740480
   retweet_count = 4
-  text = "RT @Benoit_Tgt: (..) distinction between “simple” and “easy”:  simplicity meaning the opposite of complex, and ease meaning “to be at hand”…"
+  text = "RT @Benoit_Tgt: (..) distinction between “simple” and “easy”:  simplicity meaning the opposite of complex, and ease meaning “to be at hand” or “to be approachable” (...). Schemaless databases are not simple; they’re easy.https://t.co/64xwPA9vhM (by @brandur)"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/acid"
+      expanded_url = "https://brandur.org/acid"
+      url = "https://t.co/64xwPA9vhM"
 
     [[tweets.entities.user_mentions]]
       user = "Benoit_Tgt"
       user_id = 129343129
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 950413542733344776
@@ -17946,11 +18461,17 @@
 
 [[tweets]]
   created_at = 2017-12-12T22:43:54Z
+  favorite_count = 31
   id = 940713850755629056
   retweet_count = 9
-  text = "RT @bitfield: The new Redis 'stream' data type (XADD/XRANGE) will provide a neat way of implementing the unified log pattern for distribute…"
+  text = "RT @bitfield: The new Redis 'stream' data type (XADD/XRANGE) will provide a neat way of implementing the unified log pattern for distributed systems (with a little help from our friend Postgres) https://t.co/YLpL9S3vZ1"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "twitter.com/brandur/status…"
+      expanded_url = "https://twitter.com/brandur/status/928282005770571777"
+      url = "https://t.co/YLpL9S3vZ1"
 
     [[tweets.entities.user_mentions]]
       user = "bitfield"
@@ -18821,9 +19342,10 @@
 
 [[tweets]]
   created_at = 2017-11-18T08:16:02Z
+  favorite_count = 28
   id = 931798138259517440
   retweet_count = 18
-  text = "RT @olivierlacan: Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads https://t.co/eFaVujk1ue\n\nI’ve seen academic papers…"
+  text = "RT @olivierlacan: Scaling Postgres with Read Replicas & Using WAL to Counter Stale Reads https://t.co/eFaVujk1ue\n\nI’ve seen academic papers with less detail, context, and quality than this amazing piece from @brandur."
 
   [tweets.entities]
 
@@ -18835,6 +19357,10 @@
     [[tweets.entities.user_mentions]]
       user = "olivierlacan"
       user_id = 17035875
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
 
   [tweets.retweet]
     status_id = 931689522307522560
@@ -18899,6 +19425,7 @@
 
 [[tweets]]
   created_at = 2017-11-17T22:06:41Z
+  favorite_count = 31
   id = 931644787458899968
   retweet_count = 6
   text = "RT @craigkerstiens: So I think I might quit writing blogs and just start pointing people to @brandur’s posts: https://t.co/qZMmnAJ6ig"
@@ -19194,11 +19721,17 @@
 
 [[tweets]]
   created_at = 2017-11-10T00:43:24Z
+  favorite_count = 99
   id = 928785123121573888
   retweet_count = 31
-  text = "RT @romainhuet: Did you know @stripe offers OpenAPI 2.0 & 3.0 specs? 📚📃✍️ https://t.co/8RYWm1DRqP\n\nYou can now benefit from the whole OpenA…"
+  text = "RT @romainhuet: Did you know @stripe offers OpenAPI 2.0 & 3.0 specs? 📚📃✍️ https://t.co/8RYWm1DRqP\n\nYou can now benefit from the whole OpenAPI ecosystem, and use tools like Paw by @luckymarmot or @postmanclient to explore our API and make your first requests without writing code! 🚀 https://t.co/lpwMuRCgWX"
 
   [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 928781585272340481
+      type = "video"
+      url = "https://pbs.twimg.com/ext_tw_video_thumb/928781585272340481/pu/img/XECiIADWpxbFWKPr.jpg"
 
     [[tweets.entities.urls]]
       display_url = "github.com/stripe/openapi"
@@ -19212,6 +19745,14 @@
     [[tweets.entities.user_mentions]]
       user = "stripe"
       user_id = 102812444
+
+    [[tweets.entities.user_mentions]]
+      user = "luckymarmot"
+      user_id = 960567571
+
+    [[tweets.entities.user_mentions]]
+      user = "postmanclient"
+      user_id = 981992635245117440
 
   [tweets.retweet]
     status_id = 928784383863013376
@@ -19940,11 +20481,17 @@
 
 [[tweets]]
   created_at = 2017-10-18T16:19:16Z
+  favorite_count = 38
   id = 920685722293510144
-  retweet_count = 25
-  text = "RT @keiko713: Wrote a blog post about phantom WAL and Heroku Postgres follower hole issue: Battle With A Phantom WAL segment https://t.co/B…"
+  retweet_count = 24
+  text = "RT @keiko713: Wrote a blog post about phantom WAL and Heroku Postgres follower hole issue: Battle With A Phantom WAL segment https://t.co/BTyQRwhSTJ"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "blog.keikooda.net/2017/10/18/bat…"
+      expanded_url = "https://blog.keikooda.net/2017/10/18/battle-with-a-phantom-wal-segment/"
+      url = "https://t.co/BTyQRwhSTJ"
 
     [[tweets.entities.user_mentions]]
       user = "keiko713"
@@ -20438,11 +20985,17 @@
 
 [[tweets]]
   created_at = 2017-10-03T19:10:27Z
+  favorite_count = 153
   id = 915292985503342592
   retweet_count = 60
-  text = "RT @romainhuet: So excited that @stripe now supports both the @w3c Payment Request API and Apple Pay with a single integration. 💳✨👌 https:/…"
+  text = "RT @romainhuet: So excited that @stripe now supports both the @w3c Payment Request API and Apple Pay with a single integration. 💳✨👌 https://t.co/9ISFa7jOC2"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "stripe.com/docs/elements/…"
+      expanded_url = "https://stripe.com/docs/elements/payment-request-button"
+      url = "https://t.co/9ISFa7jOC2"
 
     [[tweets.entities.user_mentions]]
       user = "romainhuet"
@@ -21094,6 +21647,7 @@
 
 [[tweets]]
   created_at = 2017-09-13T17:08:41Z
+  favorite_count = 6
   id = 908014581955444737
   retweet_count = 2
   text = "RT @philipbrown: Designing robust and predictable APIs with idempotency https://t.co/6tdBMNQQRD via @brandur"
@@ -21120,6 +21674,7 @@
 
 [[tweets]]
   created_at = 2017-09-13T03:19:07Z
+  favorite_count = 19
   id = 907805814999547904
   retweet_count = 4
   text = "RT @craigkerstiens: Managing database migrations better in Postgres: https://t.co/iFLHABJkea"
@@ -21339,11 +21894,17 @@
 
 [[tweets]]
   created_at = 2017-09-09T15:51:28Z
+  favorite_count = 13
   id = 906545600337809408
   retweet_count = 14
-  text = "RT @simonw: Hard to express the emotional reaction I had while reading this. Utterly horrifying. An amazing human story. https://t.co/1O9Jm…"
+  text = "RT @simonw: Hard to express the emotional reaction I had while reading this. Utterly horrifying. An amazing human story. https://t.co/1O9JmjgoSv"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "twitter.com/inthefade/stat…"
+      expanded_url = "https://twitter.com/inthefade/status/906432933615079425"
+      url = "https://t.co/1O9JmjgoSv"
 
     [[tweets.entities.user_mentions]]
       user = "simonw"
@@ -21373,6 +21934,7 @@
 
 [[tweets]]
   created_at = 2017-09-09T14:29:06Z
+  favorite_count = 9
   id = 906524870678265857
   retweet_count = 4
   text = "RT @craigkerstiens: Another great one from @brandur on atomic transactions to power idempotent APIs https://t.co/hCPfNgIXWA"
@@ -21415,11 +21977,17 @@
 
 [[tweets]]
   created_at = 2017-09-09T14:28:34Z
+  favorite_count = 60
   id = 906524737190293504
   retweet_count = 3
-  text = "RT @javisantana: reading every single article in @brandur 's blog. I don't remember seeing so much common sense in the same place: https://…"
+  text = "RT @javisantana: reading every single article in @brandur 's blog. I don't remember seeing so much common sense in the same place: https://t.co/dqZdl7qNK2"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/articles"
+      expanded_url = "https://brandur.org/articles"
+      url = "https://t.co/dqZdl7qNK2"
 
     [[tweets.entities.user_mentions]]
       user = "javisantana"
@@ -21668,6 +22236,7 @@
 
 [[tweets]]
   created_at = 2017-09-05T19:36:07Z
+  favorite_count = 5
   id = 905152583114776576
   retweet_count = 3
   text = "RT @bufo_alvarius: Building Robust Systems With ACID and Constraints by @brandur https://t.co/DXpQpyxwin"
@@ -22116,6 +22685,7 @@
 
 [[tweets]]
   created_at = 2017-08-29T04:56:18Z
+  favorite_count = 40
   id = 902394454488735745
   retweet_count = 11
   text = "RT @yukihiro_matz: link: The Limits of Copy-on-write: How Ruby Allocates Memory — Brandur Leach: \nhttps://t.co/jYiRSsMP3H"
@@ -22138,6 +22708,7 @@
 
 [[tweets]]
   created_at = 2017-08-28T18:26:06Z
+  favorite_count = 54
   id = 902235860514385920
   retweet_count = 28
   text = "RT @tenderlove: The Limits of Copy-on-write: How Ruby Allocates Memory — Brandur Leach https://t.co/DFRqjnFJE2"
@@ -22597,11 +23168,17 @@
 
 [[tweets]]
   created_at = 2017-08-18T18:23:07Z
+  favorite_count = 12
   id = 898611232793440256
   retweet_count = 4
-  text = "RT @schneems: ACID + humans means a chemical burn or hearing colors. ACID + postgres means consistent persistence find out how: https://t.c…"
+  text = "RT @schneems: ACID + humans means a chemical burn or hearing colors. ACID + postgres means consistent persistence find out how: https://t.co/aajz5Iz0E7"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/postgres-atomi…"
+      expanded_url = "https://brandur.org/postgres-atomicity"
+      url = "https://t.co/aajz5Iz0E7"
 
     [[tweets.entities.user_mentions]]
       user = "schneems"
@@ -22703,6 +23280,7 @@
 
 [[tweets]]
   created_at = 2017-08-16T14:56:34Z
+  favorite_count = 21
   id = 897834476281020417
   retweet_count = 12
   text = "RT @craigkerstiens: Yet another awesome Postgres all about how Postgres and transactions work by @brandur - https://t.co/kG3VsJj0S3"
@@ -22743,11 +23321,17 @@
 
 [[tweets]]
   created_at = 2017-08-16T03:24:39Z
+  favorite_count = 54
   id = 897660350585241600
   retweet_count = 8
-  text = "RT @romainhuet: We think of @stripe’s API as economic infrastructure. Learn from @brandur how we safely manage API versioning. https://t.co…"
+  text = "RT @romainhuet: We think of @stripe’s API as economic infrastructure. Learn from @brandur how we safely manage API versioning. https://t.co/l8rRz3O1z6"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "stripe.com/blog/api-versi…"
+      expanded_url = "https://stripe.com/blog/api-versioning"
+      url = "https://t.co/l8rRz3O1z6"
 
     [[tweets.entities.user_mentions]]
       user = "romainhuet"
@@ -23201,6 +23785,7 @@
 
 [[tweets]]
   created_at = 2017-07-26T15:13:14Z
+  favorite_count = 14
   id = 890228524929306624
   retweet_count = 6
   text = "RT @mschoening: Dynamically typed languages... https://t.co/He9lfn2yHk"
@@ -23237,6 +23822,7 @@
 
 [[tweets]]
   created_at = 2017-07-21T04:03:09Z
+  favorite_count = 17
   id = 888247952635867137
   retweet_count = 2
   text = "RT @keiko713: EPIC TIME! cc/ @hone02 and @brandur and https://t.co/nZGjIOmnGx"
@@ -24035,6 +24621,7 @@
 
 [[tweets]]
   created_at = 2017-05-31T16:40:50Z
+  favorite_count = 36
   id = 869956849902080001
   retweet_count = 18
   text = "RT @craigkerstiens: Awesome summary of modern advanced cloud database: https://t.co/9C3722cBdC"
@@ -24089,6 +24676,7 @@
 
 [[tweets]]
   created_at = 2017-05-29T16:31:26Z
+  favorite_count = 8
   id = 869229707933368320
   retweet_count = 3
   text = "RT @easiestnameever: A Comparison of Advanced, Modern Cloud Databases — thanks @brandur https://t.co/ZMmHFTeIoc"
@@ -24307,11 +24895,17 @@
 
 [[tweets]]
   created_at = 2017-05-23T05:03:15Z
+  favorite_count = 3
   id = 866882195457064960
   retweet_count = 4
-  text = "RT @jasondmoss: A Comparison of Advanced, Modern Cloud Databases\nA non-exhaustive primer of modern cloud database solutions\n@brandur https:…"
+  text = "RT @jasondmoss: A Comparison of Advanced, Modern Cloud Databases\nA non-exhaustive primer of modern cloud database solutions\n@brandur https://t.co/hFXhAKYNVV"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "bit.ly/2q4xzXG"
+      expanded_url = "http://bit.ly/2q4xzXG"
+      url = "https://t.co/hFXhAKYNVV"
 
     [[tweets.entities.user_mentions]]
       user = "jasondmoss"
@@ -24328,11 +24922,22 @@
 
 [[tweets]]
   created_at = 2017-05-18T15:05:06Z
+  favorite_count = 17
   id = 865221714610798592
   retweet_count = 14
-  text = "RT @grescoe: Need a vacation from traffic? 11 gorgeous car-free places around the world (incl. Leonard Cohen's Hydra). https://t.co/Rie4EiZ…"
+  text = "RT @grescoe: Need a vacation from traffic? 11 gorgeous car-free places around the world (incl. Leonard Cohen's Hydra). https://t.co/Rie4EiZR1L https://t.co/mWngiGvHNC"
 
   [tweets.entities]
+
+    [[tweets.entities.medias]]
+      id = 865215164412346368
+      type = "photo"
+      url = "https://pbs.twimg.com/media/DAHcm6EUQAAbQ6Q.jpg"
+
+    [[tweets.entities.urls]]
+      display_url = "bit.ly/2qVHNK0"
+      expanded_url = "http://bit.ly/2qVHNK0"
+      url = "https://t.co/Rie4EiZR1L"
 
     [[tweets.entities.user_mentions]]
       user = "grescoe"
@@ -24385,6 +24990,7 @@
 
 [[tweets]]
   created_at = 2017-05-16T15:08:08Z
+  favorite_count = 9
   id = 864497704050638849
   retweet_count = 6
   text = "RT @craigkerstiens: Always enjoy what @brandur writes, another nice read on ACID and constraints - https://t.co/HvSudE0aA2"
@@ -24745,6 +25351,7 @@
 
 [[tweets]]
   created_at = 2017-05-08T21:39:16Z
+  favorite_count = 13
   id = 861697031831568389
   retweet_count = 4
   text = "RT @rdegges: YES. This is how you do technical management. https://t.co/g6Suq999tz"
@@ -25699,6 +26306,7 @@
 
 [[tweets]]
   created_at = 2017-03-31T13:58:02Z
+  favorite_count = 7
   id = 847810219329568768
   retweet_count = 3
   text = "RT @johnsheehan: This is required reading. Couldn't agree more with every bit of it. https://t.co/gelW3hloHE"
@@ -25758,11 +26366,11 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
   [tweets.reply]
     status_id = 847786954670223360
-    user = "stolt45"
+    user = "Its_stolt"
     user_id = 9483652
 
 [[tweets]]
@@ -26358,9 +26966,10 @@
 
 [[tweets]]
   created_at = 2017-03-04T07:49:30Z
+  favorite_count = 60
   id = 837933003317792770
   retweet_count = 16
-  text = "RT @anildash: Another excellent recent writing on tech architecture, @brandur on idempotency: https://t.co/H4US22N4aB Lucidly explains key…"
+  text = "RT @anildash: Another excellent recent writing on tech architecture, @brandur on idempotency: https://t.co/H4US22N4aB Lucidly explains key concepts."
 
   [tweets.entities]
 
@@ -26672,6 +27281,7 @@
 
 [[tweets]]
   created_at = 2017-02-23T16:43:15Z
+  favorite_count = 7
   id = 834805834722926592
   retweet_count = 2
   text = "RT @Runscope: Designing robust and predictable APIs with idempotency by @brandur: https://t.co/tWD4DzZp5x"
@@ -28631,11 +29241,22 @@
 
 [[tweets]]
   created_at = 2016-11-26T21:26:42Z
+  favorite_count = 14
   id = 802624646851895296
   retweet_count = 4
-  text = "RT @simonw: Smart description of great logging practice - I also learnt Heroku-style key=value logging has a formal name, logfmt https://t.…"
+  text = "RT @simonw: Smart description of great logging practice - I also learnt Heroku-style key=value logging has a formal name, logfmt https://t.co/4G8DbkBz3N https://t.co/NajHhrE4o0"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/logfmt"
+      expanded_url = "https://brandur.org/logfmt"
+      url = "https://t.co/4G8DbkBz3N"
+
+    [[tweets.entities.urls]]
+      display_url = "twitter.com/brandur/status…"
+      expanded_url = "https://twitter.com/brandur/status/802551628825927682"
+      url = "https://t.co/NajHhrE4o0"
 
     [[tweets.entities.user_mentions]]
       user = "simonw"
@@ -28935,9 +29556,10 @@
 
 [[tweets]]
   created_at = 2016-11-18T00:34:36Z
+  favorite_count = 3
   id = 799410441243926528
   retweet_count = 1
-  text = "RT @itamarhaber: redis-cell: an API rate limiter as a Redis module - https://t.co/ePeidVkO45 by @brandur <- first module to written in #Rus…"
+  text = "RT @itamarhaber: redis-cell: an API rate limiter as a Redis module - https://t.co/ePeidVkO45 by @brandur <- first module to written in #Rust, totally cool"
 
   [tweets.entities]
 
@@ -29976,8 +30598,9 @@
 
 [[tweets]]
   created_at = 2016-08-02T20:54:42Z
+  favorite_count = 106
   id = 760579601110175744
-  retweet_count = 105
+  retweet_count = 104
   text = "RT @leinweber: Problem: I want to add/drop/change a column or index on a live db https://t.co/IObTrMLmVU"
 
   [tweets.entities]
@@ -30381,11 +31004,11 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
   [tweets.reply]
     status_id = 751057981718933504
-    user = "stolt45"
+    user = "Its_stolt"
     user_id = 9483652
 
 [[tweets]]
@@ -30945,6 +31568,7 @@
 
 [[tweets]]
   created_at = 2016-05-29T11:48:05Z
+  favorite_count = 158
   id = 736886829257875456
   retweet_count = 59
   text = "RT @paulg: How journalism became \"Go troll Twitter for something to get mad about.\" https://t.co/7wkgh0kq7Q"
@@ -31372,6 +31996,7 @@
 
 [[tweets]]
   created_at = 2016-04-16T08:54:26Z
+  favorite_count = 3
   id = 721260452861202432
   retweet_count = 3
   text = "RT @gudmundur: New version of Pliny out (https://t.co/PirHDDPJvW), now with @rollbar goodness (https://t.co/JcBRKx8eeV)."
@@ -31511,11 +32136,17 @@
 
 [[tweets]]
   created_at = 2016-04-12T19:48:18Z
+  favorite_count = 7
   id = 719975451951648768
   retweet_count = 5
-  text = "RT @apiaryio: 4/16 @github offices: World’s first ever hackathon focused on #APIDesign. Co-organized by our @manp. Join us! https://t.co/pj…"
+  text = "RT @apiaryio: 4/16 @github offices: World’s first ever hackathon focused on #APIDesign. Co-organized by our @manp. Join us! https://t.co/pjz1ZH3olL"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "bit.ly/APIDesignHacka…"
+      expanded_url = "http://bit.ly/APIDesignHackathon"
+      url = "https://t.co/pjz1ZH3olL"
 
     [[tweets.entities.user_mentions]]
       user = "apiaryio"
@@ -31708,9 +32339,10 @@
 
 [[tweets]]
   created_at = 2016-04-07T18:58:48Z
+  favorite_count = 3
   id = 718151053472964608
   retweet_count = 3
-  text = "RT @yann_ck: Always great to read notes on languages from great developers: https://t.co/YS0VJwNTVE Thanks @brandur."
+  text = "RT @bonjouryannick: Always great to read notes on languages from great developers: https://t.co/YS0VJwNTVE Thanks @brandur."
 
   [tweets.entities]
 
@@ -31798,11 +32430,17 @@
 
 [[tweets]]
   created_at = 2016-04-02T23:03:55Z
+  favorite_count = 3
   id = 716400799174119424
   retweet_count = 5
-  text = "RT @tair: Excellent notes on #golang from a seasoned #ruby dev @brandur 👍Language features, The Good, The Bad and The Ugly https://t.co/KCR…"
+  text = "RT @tair: Excellent notes on #golang from a seasoned #ruby dev @brandur 👍Language features, The Good, The Bad and The Ugly https://t.co/KCRlDoqphg"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/go"
+      expanded_url = "https://brandur.org/go"
+      url = "https://t.co/KCRlDoqphg"
 
     [[tweets.entities.user_mentions]]
       user = "tair"
@@ -31819,11 +32457,17 @@
 
 [[tweets]]
   created_at = 2016-04-01T05:30:15Z
+  favorite_count = 4
   id = 715773247032266752
   retweet_count = 2
-  text = "RT @rwdaigle: logfmt is still the most pragmatic, functional, and concise log output format I’ve seen. Keep it simple, folks! https://t.co/…"
+  text = "RT @rwdaigle: logfmt is still the most pragmatic, functional, and concise log output format I’ve seen. Keep it simple, folks! https://t.co/2BgtviutCs"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/logfmt#human"
+      expanded_url = "https://brandur.org/logfmt#human"
+      url = "https://t.co/2BgtviutCs"
 
     [[tweets.entities.user_mentions]]
       user = "rwdaigle"
@@ -32160,11 +32804,17 @@
 
 [[tweets]]
   created_at = 2016-02-01T19:54:46Z
+  favorite_count = 15
   id = 694247538455515136
   retweet_count = 10
-  text = "RT @obfuscurity: So many feels and fond memories of an amazing engineering culture recalled via @brandur’s take on Heroku Values. https://t…"
+  text = "RT @obfuscurity: So many feels and fond memories of an amazing engineering culture recalled via @brandur’s take on Heroku Values. https://t.co/zCVJcjpD7c"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/heroku-values"
+      expanded_url = "https://brandur.org/heroku-values"
+      url = "https://t.co/zCVJcjpD7c"
 
     [[tweets.entities.user_mentions]]
       user = "obfuscurity"
@@ -33559,11 +34209,17 @@
 
 [[tweets]]
   created_at = 2015-08-26T20:57:49Z
+  favorite_count = 8
   id = 636643734621454336
   retweet_count = 9
-  text = "RT @blakegentry: AT&T provides a great example of why every site should use HTTPS, even personal blogs. Just use free @CloudFlare TLS! http…"
+  text = "RT @blakegentry: AT&T provides a great example of why every site should use HTTPS, even personal blogs. Just use free @CloudFlare TLS! http://t.co/ndspeNuLyc"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "webpolicy.org/2015/08/25/att…"
+      expanded_url = "http://webpolicy.org/2015/08/25/att-hotspots-now-with-advertising-injection/"
+      url = "http://t.co/ndspeNuLyc"
 
     [[tweets.entities.user_mentions]]
       user = "blakegentry"
@@ -33612,9 +34268,10 @@
 
 [[tweets]]
   created_at = 2015-08-26T12:42:41Z
+  favorite_count = 4
   id = 636519132339441664
   retweet_count = 2
-  text = "RT @yann_ck: Great article on alerting by @brandur https://t.co/ROoAvMyBP9"
+  text = "RT @bonjouryannick: Great article on alerting by @brandur https://t.co/ROoAvMyBP9"
 
   [tweets.entities]
 
@@ -34142,6 +34799,7 @@
 
 [[tweets]]
   created_at = 2015-07-31T17:53:51Z
+  favorite_count = 42
   id = 627175356462682112
   retweet_count = 10
   text = "RT @patrickc: Inefficient waste of what could be a bustling riverside freeway, like FDR Drive in NYC. #urbanplanning http://t.co/rSu3wgdHun"
@@ -34164,6 +34822,7 @@
 
 [[tweets]]
   created_at = 2015-07-31T17:53:43Z
+  favorite_count = 68
   id = 627175322442682368
   retweet_count = 38
   text = "RT @patrickc: One of the coolest urban design projects I've ever seen: http://t.co/eLb2TRVaR6. http://t.co/hfjn8EYgNY"
@@ -35569,11 +36228,17 @@
 
 [[tweets]]
   created_at = 2015-05-20T15:18:02Z
+  favorite_count = 2
   id = 601044214328205312
   retweet_count = 2
-  text = "RT @craigkerstiens: Awesome post by @brandur in @PostgresWeekly this week around Postgres Job Queues and some semantics of them - https://t…"
+  text = "RT @craigkerstiens: Awesome post by @brandur in @PostgresWeekly this week around Postgres Job Queues and some semantics of them - https://t.co/yZ9kmAjd2o"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "brandur.org/postgres-queues"
+      expanded_url = "https://brandur.org/postgres-queues"
+      url = "https://t.co/yZ9kmAjd2o"
 
     [[tweets.entities.user_mentions]]
       user = "craigkerstiens"
@@ -36256,6 +36921,7 @@
 
 [[tweets]]
   created_at = 2015-02-27T06:40:05Z
+  favorite_count = 8
   id = 571198065161293825
   retweet_count = 3
   text = "RT @SpotifyEng: Elegant APIs with JSON Schema @brandur https://t.co/fjlLz6xvgH"
@@ -36464,9 +37130,10 @@
 
 [[tweets]]
   created_at = 2015-02-09T16:19:24Z
+  favorite_count = 63
   id = 564820870904836096
   retweet_count = 42
-  text = "RT @bradfitz: We need a hip acronym like REST which means \"like REST without religious pedantry\": SITU? Stuff in the URL? And \"situ\" ~ \"in …"
+  text = "RT @bradfitz: We need a hip acronym like REST which means \"like REST without religious pedantry\": SITU? Stuff in the URL? And \"situ\" ~ \"in place\" too."
 
   [tweets.entities]
 
@@ -36616,6 +37283,7 @@
 
 [[tweets]]
   created_at = 2015-01-13T00:46:48Z
+  favorite_count = 5
   id = 554801704797863936
   retweet_count = 3
   text = "RT @leinweber: Microservices will bring us a 5-10 year dark age of instability, complexity, and debt."
@@ -37121,7 +37789,7 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
     [[tweets.entities.user_mentions]]
       user = "ped"
@@ -37185,9 +37853,10 @@
 
 [[tweets]]
   created_at = 2014-11-08T20:00:26Z
+  favorite_count = 1
   id = 531174424465010688
   retweet_count = 1
-  text = "RT @manp: I look forward to hosting another API Craft SF Meetup this coming Wednesday  http://t.co/OnsdDz9vS2 cc @smarx @lhazlewood @brandu…"
+  text = "RT @manp: I look forward to hosting another API Craft SF Meetup this coming Wednesday  http://t.co/OnsdDz9vS2 cc @smarx @lhazlewood @brandur @newrelic"
 
   [tweets.entities]
 
@@ -37207,6 +37876,14 @@
     [[tweets.entities.user_mentions]]
       user = "lhazlewood"
       user_id = 14295321
+
+    [[tweets.entities.user_mentions]]
+      user = "brandur"
+      user_id = 22980330
+
+    [[tweets.entities.user_mentions]]
+      user = "newrelic"
+      user_id = 15527007
 
   [tweets.retweet]
     status_id = 530802154420727808
@@ -37492,6 +38169,7 @@
 
 [[tweets]]
   created_at = 2014-09-28T21:54:13Z
+  favorite_count = 6
   id = 516345159311949824
   retweet_count = 6
   text = "RT @doctorow: Wendy and Richard Pini's Complete Elfquest http://t.co/6N4yZdPzXn \n\nhttp://t.co/OFdT2Q5uSN"
@@ -37947,9 +38625,10 @@
 
 [[tweets]]
   created_at = 2014-09-15T03:13:16Z
+  favorite_count = 413
   id = 511352017466310656
-  retweet_count = 707
-  text = "RT @ID_AA_Carmack: It pains me to hear about GHz class systems with only 320x480 screens being sluggish and unresponsive.  It is all a soft…"
+  retweet_count = 708
+  text = "RT @ID_AA_Carmack: It pains me to hear about GHz class systems with only 320x480 screens being sluggish and unresponsive.  It is all a software problem."
 
   [tweets.entities]
 
@@ -38113,6 +38792,7 @@
 
 [[tweets]]
   created_at = 2014-09-05T17:33:10Z
+  favorite_count = 4
   id = 507944541186699264
   retweet_count = 5
   text = "RT @craigkerstiens: Awesome tool by @brandur for better exploring your structured log data - https://t.co/roVGgpCE84"
@@ -38515,6 +39195,7 @@
 
 [[tweets]]
   created_at = 2014-08-19T20:18:59Z
+  favorite_count = 4
   id = 501825678275145731
   retweet_count = 4
   text = "RT @johnsheehan: #apicraftsf This Thursday. I’m giving a talk. How about “Crafting a great webhooks developer experience?” @brandur @manp"
@@ -38658,9 +39339,10 @@
 
 [[tweets]]
   created_at = 2014-08-08T17:28:11Z
+  favorite_count = 4
   id = 497796426085044224
   retweet_count = 4
-  text = "RT @stolt45: My @heavybit talk on Support for developers is up. http://t.co/h7Wq1zra9p"
+  text = "RT @Its_stolt: My @heavybit talk on Support for developers is up. http://t.co/h7Wq1zra9p"
 
   [tweets.entities]
 
@@ -38671,7 +39353,7 @@
 
     [[tweets.entities.user_mentions]]
       user = "stolt45"
-      user_id = 9483652
+      user_id = 1348826115519889408
 
     [[tweets.entities.user_mentions]]
       user = "heavybit"
@@ -38679,7 +39361,7 @@
 
   [tweets.retweet]
     status_id = 497794974357127168
-    user = "stolt45"
+    user = "Its_stolt"
     user_id = 9483652
 
 [[tweets]]
@@ -39969,9 +40651,10 @@
 
 [[tweets]]
   created_at = 2014-04-20T02:16:08Z
+  favorite_count = 13
   id = 457704235065282560
   retweet_count = 10
-  text = "RT @hirodusk: The Role of APIs in a Hackable World: https://t.co/Woq66cBrXG (20m video) — in which I talk about smarthome, nmap, and “the c…"
+  text = "RT @_adamwiggins_: The Role of APIs in a Hackable World: https://t.co/Woq66cBrXG (20m video) — in which I talk about smarthome, nmap, and “the curl test”"
 
   [tweets.entities]
 
@@ -40064,9 +40747,10 @@
 
 [[tweets]]
   created_at = 2014-04-14T14:08:16Z
+  favorite_count = 7
   id = 455709122952830976
   retweet_count = 5
-  text = "RT @github_rb: pliny - Base Sinatra app for writing excellent APIs in Ruby https://t.co/xUxepcTDlr"
+  text = "RT @oss_rb: pliny - Base Sinatra app for writing excellent APIs in Ruby https://t.co/xUxepcTDlr"
 
   [tweets.entities]
 
@@ -40593,9 +41277,10 @@
 
 [[tweets]]
   created_at = 2014-03-25T14:16:47Z
+  favorite_count = 7
   id = 448463510838587392
   retweet_count = 8
-  text = "RT @sternocera: What I think of jsonb: http://t.co/IvTs2hUORL"
+  text = "RT @petervgeoghegan: What I think of jsonb: http://t.co/IvTs2hUORL"
 
   [tweets.entities]
 
@@ -41342,6 +42027,7 @@
 
 [[tweets]]
   created_at = 2014-02-27T03:06:56Z
+  favorite_count = 108
   id = 438872853912383489
   retweet_count = 112
   text = "RT @jxnblk: also have vim invites, hit me up"
@@ -41453,9 +42139,10 @@
 
 [[tweets]]
   created_at = 2014-02-21T23:58:52Z
+  favorite_count = 25
   id = 437013582744518656
   retweet_count = 13
-  text = "RT @hirodusk: My journey into the Berlin startup scene: https://t.co/No48VCTHP4"
+  text = "RT @_adamwiggins_: My journey into the Berlin startup scene: https://t.co/No48VCTHP4"
 
   [tweets.entities]
 
@@ -41487,8 +42174,9 @@
 
 [[tweets]]
   created_at = 2014-02-20T08:17:49Z
+  favorite_count = 136
   id = 436414374853365760
-  retweet_count = 518
+  retweet_count = 516
   text = "RT @dhh: So very sad to hear about the passing of Ruby legend Jim Weirich. He taught me and many others so much. He will be dearly missed."
 
   [tweets.entities]
@@ -41710,11 +42398,17 @@
 
 [[tweets]]
   created_at = 2014-02-16T01:01:40Z
+  favorite_count = 48
   id = 434855061672316928
-  retweet_count = 14
-  text = "RT @dcurtis: A sad story about a CEO's aspiration and desire, and how it manifests itself in his company, Abercrombie & Fitch:\n\nhttp://t.co…"
+  retweet_count = 13
+  text = "RT @dcurtis: A sad story about a CEO's aspiration and desire, and how it manifests itself in his company, Abercrombie & Fitch:\n\nhttp://t.co/Z7lXoyIuPQ"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "nymag.com/thecut/2014/02…"
+      expanded_url = "http://nymag.com/thecut/2014/02/why-abercrombie-is-losing-its-shirt.html"
+      url = "http://t.co/Z7lXoyIuPQ"
 
     [[tweets.entities.user_mentions]]
       user = "dcurtis"
@@ -41872,11 +42566,17 @@
 
 [[tweets]]
   created_at = 2014-02-08T17:44:18Z
+  favorite_count = 1
   id = 432208279834353665
   retweet_count = 3
-  text = "RT @mtrifiro: A beautiful and thoughtful paean to the \"page\" as a design element /by @brandur Lamenting the Death of the Page http://t.co/h…"
+  text = "RT @mtrifiro: A beautiful and thoughtful paean to the \"page\" as a design element /by @brandur Lamenting the Death of the Page http://t.co/hONIC8iKV2"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "trifi.ro/1g6XJLb"
+      expanded_url = "http://trifi.ro/1g6XJLb"
+      url = "http://t.co/hONIC8iKV2"
 
     [[tweets.entities.user_mentions]]
       user = "mtrifiro"
@@ -42232,9 +42932,10 @@
 
 [[tweets]]
   created_at = 2014-01-20T21:50:32Z
+  favorite_count = 6
   id = 425384874921701376
   retweet_count = 7
-  text = "RT @hirodusk: A treatise on modern web design: http://t.co/ch8iuG8ss6"
+  text = "RT @_adamwiggins_: A treatise on modern web design: http://t.co/ch8iuG8ss6"
 
   [tweets.entities]
 
@@ -42895,11 +43596,17 @@
 
 [[tweets]]
   created_at = 2013-12-16T20:27:29Z
+  favorite_count = 6
   id = 412680400964947969
   retweet_count = 3
-  text = "RT @hirodusk: “Engineers hate being micromanaged on the technical side but they love being closely managed on the career side.” http://t.co…"
+  text = "RT @_adamwiggins_: “Engineers hate being micromanaged on the technical side but they love being closely managed on the career side.” http://t.co/waSiFMAl15"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "hbr.org/2013/12/how-go…"
+      expanded_url = "http://hbr.org/2013/12/how-google-sold-its-engineers-on-management"
+      url = "http://t.co/waSiFMAl15"
 
     [[tweets.entities.user_mentions]]
       user = "hirodusk"
@@ -43107,6 +43814,7 @@
 
 [[tweets]]
   created_at = 2013-11-18T02:47:28Z
+  favorite_count = 11
   id = 402266777482051584
   retweet_count = 14
   text = "RT @ped: THE OCTOTROPHY IS COMING BACK HOME http://t.co/NMb99N47Vs"
@@ -43581,9 +44289,10 @@
 
 [[tweets]]
   created_at = 2013-11-02T18:59:30Z
+  favorite_count = 29
   id = 396713194955489280
-  retweet_count = 24
-  text = "RT @igrigorik: secrets of the world's happiest cities: http://t.co/0XJwmV3s0a - hint: no, not more highways.. US planners, take note! great…"
+  retweet_count = 23
+  text = "RT @igrigorik: secrets of the world's happiest cities: http://t.co/0XJwmV3s0a - hint: no, not more highways.. US planners, take note! great article."
 
   [tweets.entities]
 
@@ -43603,11 +44312,17 @@
 
 [[tweets]]
   created_at = 2013-10-31T22:50:28Z
+  favorite_count = 1
   id = 396046540390666240
   retweet_count = 3
-  text = "RT @blakegentry: Wow, the FAA has instantly retrofitted all airplanes to be safe from interference by portable electronics! o_O http://t.co…"
+  text = "RT @blakegentry: Wow, the FAA has instantly retrofitted all airplanes to be safe from interference by portable electronics! o_O http://t.co/rFABGYo2qI"
 
   [tweets.entities]
+
+    [[tweets.entities.urls]]
+      display_url = "faa.gov/news/press_rel…"
+      expanded_url = "http://www.faa.gov/news/press_releases/news_story.cfm?newsId=15254"
+      url = "http://t.co/rFABGYo2qI"
 
     [[tweets.entities.user_mentions]]
       user = "blakegentry"
@@ -43867,9 +44582,10 @@
 
 [[tweets]]
   created_at = 2013-10-18T23:20:07Z
+  favorite_count = 479
   id = 391342960870453248
-  retweet_count = 935
-  text = "RT @TheBatman: When Banksy comes to Gotham I’m going to buy one of his pieces for the cave, then break his arm for vandalism. I’m tough but…"
+  retweet_count = 933
+  text = "RT @Th_15798035965: When Banksy comes to Gotham I’m going to buy one of his pieces for the cave, then break his arm for vandalism. I’m tough but I’m fair."
 
   [tweets.entities]
 
@@ -44080,9 +44796,10 @@
 
 [[tweets]]
   created_at = 2013-10-11T19:04:50Z
+  favorite_count = 45
   id = 388742001362890752
-  retweet_count = 38
-  text = "RT @jeresig: You know how they use dynamite to blow up an oil well to stop a fire? I wish that existed for runaway reply-to-all email threa…"
+  retweet_count = 37
+  text = "RT @jeresig: You know how they use dynamite to blow up an oil well to stop a fire? I wish that existed for runaway reply-to-all email threads."
 
   [tweets.entities]
 
@@ -44172,9 +44889,10 @@
 
 [[tweets]]
   created_at = 2013-10-03T17:40:37Z
+  favorite_count = 207
   id = 385821704410234881
-  retweet_count = 343
-  text = "RT @jonathangrubb: Lesson from Silk Road: even the owner of an international drug cartel can't live in San Francisco without having housema…"
+  retweet_count = 344
+  text = "RT @jonathangrubb: Lesson from Silk Road: even the owner of an international drug cartel can't live in San Francisco without having housemates."
 
   [tweets.entities]
 
@@ -44434,6 +45152,7 @@
 
 [[tweets]]
   created_at = 2013-09-23T21:32:06Z
+  favorite_count = 12
   id = 382256081692409857
   retweet_count = 21
   text = "RT @heroku: Try Ruby 2.1.0 Preview 1 on Heroku right now: http://t.co/doIU3zVESL http://t.co/Ht6tZZpee2"
@@ -45000,7 +45719,7 @@
   created_at = 2013-09-03T22:59:28Z
   id = 375030308996788226
   retweet_count = 1
-  text = "RT @hirodusk: Black Rock City 2013 as seen from a drone: http://t.co/dbYskxRD6G (4m video)"
+  text = "RT @_adamwiggins_: Black Rock City 2013 as seen from a drone: http://t.co/dbYskxRD6G (4m video)"
 
   [tweets.entities]
 
@@ -45320,9 +46039,10 @@
 
 [[tweets]]
   created_at = 2013-08-16T21:19:20Z
+  favorite_count = 1
   id = 368482130717704192
   retweet_count = 1
-  text = "RT @friism: The cause to make San Francisco safe for bicyclists requires many martyrs: https://t.co/wKPsBKs1mM What do you think @mayoredle…"
+  text = "RT @friism: The cause to make San Francisco safe for bicyclists requires many martyrs: https://t.co/wKPsBKs1mM What do you think @mayoredlee?"
 
   [tweets.entities]
 
@@ -45334,6 +46054,10 @@
     [[tweets.entities.user_mentions]]
       user = "friism"
       user_id = 7206422
+
+    [[tweets.entities.user_mentions]]
+      user = "mayoredlee"
+      user_id = 234489403
 
   [tweets.retweet]
     status_id = 368455437605408768
@@ -45382,6 +46106,7 @@
 
 [[tweets]]
   created_at = 2013-08-08T20:16:14Z
+  favorite_count = 24
   id = 365567148715819008
   retweet_count = 277
   text = "RT @BoingBoing: Lavabit, email service Snowden reportedly used, abruptly shuts down http://t.co/nFk2J4htj4"
@@ -48944,6 +49669,7 @@
 
 [[tweets]]
   created_at = 2012-12-04T16:28:18Z
+  favorite_count = 70
   id = 275999984292343808
   retweet_count = 59
   text = "RT @mattt: Introducing Rack::PushNotification: Run your own push notification service on Heroku. No addon required.\n\nhttps://t.co/UzhCYlb2"
@@ -49214,6 +49940,7 @@
 
 [[tweets]]
   created_at = 2012-11-20T22:49:05Z
+  favorite_count = 3
   id = 271022381429051392
   retweet_count = 5
   text = "RT @heroku: Support thousands of developers. Join @ped, @brandur & @daneharrigan on the Heroku API team: http://t.co/TuY09a5S"
