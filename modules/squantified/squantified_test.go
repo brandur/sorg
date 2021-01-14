@@ -76,7 +76,24 @@ end`})),
 			`<a href="https://example.com/w/Film_(2005)" rel="nofollow">example.com/w/Film_(2005)</a>.`,
 			string(tweetTextToHTML(&Tweet{Text: `https://example.com/w/Film_(2005).`})),
 		)
+
+		assert.Equal(t,
+			`(in quotes <a href="https://example.com/w/Film_(2005)" rel="nofollow">example.com/w/Film_(2005)</a>).`,
+			string(tweetTextToHTML(&Tweet{Text: `(in quotes https://example.com/w/Film_(2005)).`})),
+		)
 	*/
+
+	// with trailing parenthesis
+	assert.Equal(t,
+		`(in quotes <a href="https://example.com/" rel="nofollow">example.com/</a>).`,
+		string(tweetTextToHTML(&Tweet{Text: `(in quotes https://example.com/).`})),
+	)
+
+	// with trailing dot and parenthesis
+	assert.Equal(t,
+		`(in quotes <a href="https://example.com/" rel="nofollow">example.com/</a>.)`,
+		string(tweetTextToHTML(&Tweet{Text: `(in quotes https://example.com/.)`})),
+	)
 
 	// html inclued in tweet
 	assert.Equal(t,
