@@ -46,7 +46,9 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 		if tweet.Entities != nil {
 			for _, media := range tweet.Entities.Medias {
 				if media.Type == "photo" {
-					// Original Twitter version
+					// Hot-linked original Twitter version of photos (i.e. not
+					// the one we download and cache locally)
+					//
 					// tweet.ImageURLs = append(tweet.ImageURLs, media.URL)
 
 					ext := filepath.Ext(media.URL)
@@ -717,6 +719,11 @@ func retryOnce(c *modulir.Context, f func() error) error {
 	return err
 }
 
+// Match a t.co shortlink at the end of a tweet. These tend to be added by
+// Twitter for tweets with media embeds, and aren't really needed for anything
+// as the media is already embedded inline.
+var endTcoShortLinkRE = regexp.MustCompile(` https://t\.co/\w{5,}$`)
+
 // Matches links in a tweet (like protocol://link).
 //
 // Note that the last character isn't allowed to match a few extra characters
@@ -732,6 +739,12 @@ var userRE = regexp.MustCompile(`@(\w+)`)
 func tweetTextToHTML(tweet *Tweet) template.HTML {
 	content := tweet.Text
 	tagMap := make(map[string]string)
+
+	// When tweet media is embedded, Twitter adds one last shortlink back to
+	// the original tweet, which we prune here.
+	if tweet.Entities != nil && tweet.Entities.Medias != nil {
+		content = endTcoShortLinkRE.ReplaceAllString(content, "")
+	}
 
 	urlEntitiesMap := make(map[string]*TweetEntitiesURL)
 	if tweet.Entities != nil && tweet.Entities.URLs != nil {
