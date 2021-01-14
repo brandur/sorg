@@ -1331,10 +1331,10 @@ func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, err
 var cropDefault = &mimage.PhotoCropSettings{Portrait: "2:3", Landscape: "3:2"}
 
 var defaultPhotoSizes = []mimage.PhotoSize{
-	{Suffix: ".jpg", Width: 333, CropSettings: cropDefault},
-	{Suffix: "@2x.jpg", Width: 667, CropSettings: cropDefault},
-	{Suffix: "_large.jpg", Width: 1500, CropSettings: cropDefault},
-	{Suffix: "_large@2x.jpg", Width: 3000, CropSettings: cropDefault},
+	{Suffix: "", Width: 333, CropSettings: cropDefault},
+	{Suffix: "@2x", Width: 667, CropSettings: cropDefault},
+	{Suffix: "_large", Width: 1500, CropSettings: cropDefault},
+	{Suffix: "_large@2x", Width: 3000, CropSettings: cropDefault},
 }
 
 func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
@@ -1360,14 +1360,14 @@ func fetchAndResizePhotoOther(c *modulir.Context, targetDir string, photo *Photo
 	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, scommon.TempDir,
 		mimage.PhotoGravity(photo.CropGravity),
 		[]mimage.PhotoSize{
-			{Suffix: ".jpg", Width: photo.CropWidth, CropSettings: nil},
-			{Suffix: "@2x.jpg", Width: photo.CropWidth * 2, CropSettings: nil},
+			{Suffix: "", Width: photo.CropWidth, CropSettings: nil},
+			{Suffix: "@2x", Width: photo.CropWidth * 2, CropSettings: nil},
 		})
 }
 
 var twitterPhotoSizes = []mimage.PhotoSize{
-	{Suffix: ".jpg", Width: 550},
-	{Suffix: "@2x.jpg", Width: 1100},
+	{Suffix: "", Width: 550},
+	{Suffix: "@2x", Width: 1100},
 }
 
 func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
