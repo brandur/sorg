@@ -147,10 +147,13 @@ html lang="en"
 
       img {
         margin: 20px 0;
-        /*
-        max-width: 550px;
-        */
         width: 100%;
+      }
+
+      img.img_constrained {
+        display: block;
+        max-width: 550px;
+        margin: 0 auto;
       }
 
       img[src$=".svg"] {
