@@ -105,6 +105,28 @@
 #
 
 #
+# /nanoglyphs/018-ractors
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/tvz4t4ggikrld6x/2W4A0178-cropped.jpg?dl=1"
+  slug = "nanoglyphs/018-ractors/engelmann-plaque"
+  title = "Plaque on Sulphur Mountain showing an Engelmann Spruce"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/yvhbe0c6wsydc4f/2W4A0150.JPG?dl=1"
+  slug = "nanoglyphs/018-ractors/sulphur-gondola"
+  title = "The gondola at Sulphur Mountain"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/0cf7x6o1ccew6qi/2W4A0161.JPG?dl=1"
+  slug = "nanoglyphs/018-ractors/sulphur-view"
+  title = "The view off Sulphur Mountain"
+
+#
 # /nanoglyphs/017-twenty
 #
 
