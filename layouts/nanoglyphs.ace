@@ -153,6 +153,12 @@ html lang="en"
         width: 100%;
       }
 
+      img[src$=".svg"] {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+      }
+
       ol, ul {
         padding: 0 0 0 30px;
       }
