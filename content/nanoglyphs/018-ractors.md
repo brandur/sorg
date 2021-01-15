@@ -13,7 +13,7 @@ Typing aside, Ruby 3 came with some other interesting additions. Most notably is
 
 ---
 
-Brief intermission: Welcome to _Nanoglyph_, a weekly newsletter about parallel computing and spruce trees. If you're reading this on the web, you can [subscribe here](https://nanoglyph-signup.brandur.org). If you got it as an email, as always and forever, you can [unsubscribe in one click](%unsubscribe_url%).
+Brief intermission: Welcome to _Nanoglyph_, a weekly newsletter about parallel computing and spruce trees. If you're reading this on the web, you can [subscribe here](https://nanoglyph-signup.brandur.org).
 
 ---
 
@@ -117,11 +117,11 @@ loop do
 end
 ```
 
-<img src="/assets/images/nanoglyphs/018-ractors/receiver@2x.png" alt="Ractor receiver" class="img_constrained">
-
 <!--
-![Ractor receiver](/assets/images/nanoglyphs/018-ractors/receiver.svg)
+<img src="/assets/images/nanoglyphs/018-ractors/receiver@2x.png" alt="Ractor receiver" class="img_constrained">
 -->
+
+![Ractor receiver](/assets/images/nanoglyphs/018-ractors/receiver.svg)
 
 The incoming queue has unlimited size and therefore `send` will never block. `receive` blocks until a message is available.
 
@@ -144,11 +144,11 @@ while message = sender.take
 end
 ```
 
-<img src="/assets/images/nanoglyphs/018-ractors/sender@2x.png" alt="Ractor sender" class="img_constrained">
-
 <!--
-![Ractor sender](/assets/images/nanoglyphs/018-ractors/sender.svg)
+<img src="/assets/images/nanoglyphs/018-ractors/sender@2x.png" alt="Ractor sender" class="img_constrained">
 -->
+
+![Ractor sender](/assets/images/nanoglyphs/018-ractors/sender.svg)
 
 (As usual, I'm skipping most of the fine detail. See [communication between Ractors](https://github.com/ruby/ruby/blob/master/doc/ractor.md#communication-between-ractors) for more information.)
 
@@ -180,11 +180,11 @@ loop do
 end
 ```
 
-<img src="/assets/images/nanoglyphs/018-ractors/channel@2x.png" alt="Ractor channel" class="img_constrained">
-
 <!--
-![Ractor channel](/assets/images/nanoglyphs/018-ractors/channel.svg)
+<img src="/assets/images/nanoglyphs/018-ractors/channel@2x.png" alt="Ractor channel" class="img_constrained">
 -->
+
+![Ractor channel](/assets/images/nanoglyphs/018-ractors/channel.svg)
 
 The channel yields to consumers through its outgoing port and blocks as it does so, but it receives messages from its incoming port, which recall is allowed unlimited depth. Producers can send as much as they want to the pseudo-channel without blocking.
 
