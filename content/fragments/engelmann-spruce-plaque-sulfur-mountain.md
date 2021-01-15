@@ -7,7 +7,7 @@ title = "The Engelmann Spruce Plaque, Sulphur Mountain"
 
 Midway through the walk up Sulphur Mountain near Banff, you might notice an odd plaque, just off the trail, nailed to a tree.
 
-It's so worn down that it's hard to make out, and it took us a few minutes of pouring over photos to puzzle out what it says. The answer was simpler than we'd expected. The plaque names the tree it's attached to as an [**Engelmann Spruce**](https://en.wikipedia.org/wiki/Picea_engelmannii). The Engelmann is a high altitude tree, generally growing at 900 m (3,000 ft) of altitude, and ranges from up north in BC and Alberta down to northern California, and southeast into Arizona and New Mexico. They're a slow growing tree, reaching maturity in about 150 years, and live 400 years or more.
+It's so worn down that it's hard to make out, and it took us a few minutes of pouring over photos to puzzle out what it says. The answer was simpler than we'd expected. The plaque names the tree it's attached to as an [**Engelmann Spruce**](https://en.wikipedia.org/wiki/Picea_engelmannii). The Engelmann is a high altitude tree, generally growing at 900 m (3,000 ft), and ranges from up north in BC and Alberta down to northern California, and southeast into Arizona and New Mexico. They're a slow growing tree, reaching maturity in about 150 years, and live 400 years or more.
 
 The plaque's second line is even harder to make out, but we can see "Engel" repeated a couple times more. This is the tree's botanical name in Latin, **_Picea Engelmannii_ Engelm**, which should more correctly be **_Picea engelmannii_ Parry ex Engelm**.
 
