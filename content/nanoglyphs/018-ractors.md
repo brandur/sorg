@@ -252,4 +252,4 @@ Until next time.
 
 <img src="/photographs/nanoglyphs/018-ractors/engelmann-plaque@2x.jpg" alt="Plaque on Sulphur Mountain showing an Engelmann Spruce" class="wide">
 
-[1] Technically JRuby and Rubinius have previously allows parallel Ruby execution, but I'm speaking specifically about the [MRI](https://en.wikipedia.org/wiki/Ruby_MRI) because it's what a vast majority of users are on.
+[1] Technically JRuby and Rubinius have previously allowed parallel Ruby execution, but I'm speaking specifically about the [MRI](https://en.wikipedia.org/wiki/Ruby_MRI) because it's what a vast majority of users are on.
