@@ -31,7 +31,7 @@ I learned a few days ago (and about two weeks after the rest of the internet) th
 
 This is a weird one. If you take every word in the story literally, it sounds awful. However, if you allow a smidgeon of context into the room, that's somewhat counteracted by the fact that creative exaggeration is a core part of Roderick's entire persona.
 
-I still remember when I was first introduced to a _Roderick on the Line_ podcast way back around 2013. The first time I listened, I took every word at face value, and still remember later confronting the friend who'd recommended it as to whether the stories told within were true. They were told with a straight face, but were so unlikely as to make a skeptical listener highly dubious.
+I was introduced to _Roderick on the Line_ way back around 2013. The first time I listened, I took every word at face value, and still remember later confronting the friend who'd recommended it as to whether the stories told within were true. They were told with a straight face, but seemed so unlikely as to make a skeptical listener highly dubious.
 
 Quite a few episodes later, I came to realize that this was a hallmark of the entire series. Every one of Roderick's stories had a kernel of truth at the center -- they were all based on real life occurrences -- but the details were exaggerated to the rafters. They weren't quite lies, but they certainly weren't unequivocally true either. And this is a big part of what makes Roderick's podcasts interesting to listen to -- he's a great storyteller, and like a lot of other great storytellers, his stories are greatly embellished for dramatic effect. Unfortunately for him, the charm doesn't translate well to the medium of Twitter, and it took a football to the face to realize it.
 
