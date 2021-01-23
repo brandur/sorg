@@ -190,7 +190,7 @@ The channel yields to consumers through its outgoing port and blocks as it does 
 
 ### Applicability today (#applicability)
 
-Keen on put Ractors to work, I tried taking a small part of the static generator that generates the very newsletter you're reading and re-implementing it in Ruby. [Modulir](https://github.com/brandur/modulir) spins up a worker pool of fixed size, then throws all the work it can find at it. Each article, fragment, TOML file, photograph, and newsletter is sent in to be parsed and rendered, and the pool waits for it all to be done. This is exactly the sort of work that lends itself well to parallelism, and should have been a great way to see Ractors in action.
+Keen on putting Ractors to work, I tried taking a small part of the static generator that generates the very newsletter you're reading and re-implementing it in Ruby. [Modulir](https://github.com/brandur/modulir) spins up a worker pool of fixed size, then throws all the work it can find at it. Each article, fragment, TOML file, photograph, and newsletter is sent in to be parsed and rendered, and the pool waits for it all to be done. This is exactly the sort of work that lends itself well to parallelism, and should have been a great way to see Ractors in action.
 
 But I didn't get very far. The [worker pool](https://gist.github.com/brandur/af8ac446e6fcaf4120639ceb53391231) was implemented without trouble, but I discovered the hard way that I could run practically nothing inside of it. For example:
 
