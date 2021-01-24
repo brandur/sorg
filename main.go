@@ -93,6 +93,7 @@ API.`),
 
 	mimage.MagickBin = conf.MagickBin
 	mimage.MozJPEGBin = conf.MozJPEGBin
+	mimage.PNGQuantBin = conf.PNGQuantBin
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error executing command: %v", err)
@@ -177,6 +178,11 @@ type Conf struct {
 
 	// NumAtomEntries is the number of entries to put in Atom feeds.
 	NumAtomEntries int `env:"NUM_ATOM_ENTRIES,default=20"`
+
+	// PNGQuantBin is the location of the `pnqquant` binary (a PNG optimizer). If
+	// configured, PNGs are passed through an optimization pass after resizing
+	// them.
+	PNGQuantBin string `env:"PNGQUANT_BIN"`
 
 	// Port is the port on which to serve HTTP when looping in development.
 	Port int `env:"PORT,default=5002"`

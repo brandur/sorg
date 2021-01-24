@@ -17,6 +17,10 @@ github.com/brandur/modulir v0.0.0-20210114071631-5090dd393212 h1:J43T0D1BQP5Oxup
 github.com/brandur/modulir v0.0.0-20210114071631-5090dd393212/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
 github.com/brandur/modulir v0.0.0-20210115040038-9b40a01d3969 h1:MKClB7XdQIgE+epaIEmzXFqto+hVNnQtUqrDlMC6psg=
 github.com/brandur/modulir v0.0.0-20210115040038-9b40a01d3969/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
+github.com/brandur/modulir v0.0.0-20210124200333-43e9fde8e92b h1:2/ZfDFm1kFY2f9lu/1WRk7xkia3ESVpa+f7NxpG49eA=
+github.com/brandur/modulir v0.0.0-20210124200333-43e9fde8e92b/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
+github.com/brandur/modulir v0.0.0-20210124202126-6064ab66a5be h1:xvXy6GLsmbcrRJ7WcZJKxCjed53oofzLwZhMKvj6NdA=
+github.com/brandur/modulir v0.0.0-20210124202126-6064ab66a5be/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -106,6 +110,8 @@ golang.org/x/sys v0.0.0-20210105210732-16f7687f5001 h1:/dSxr6gT0FNI1MO5WLJo8mTmI
 golang.org/x/sys v0.0.0-20210105210732-16f7687f5001/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210113181707-4bcb84eeeb78 h1:nVuTkr9L6Bq62qpUqKo/RnZCFfzDBL0bYo6w9OJUqZY=
 golang.org/x/sys v0.0.0-20210113181707-4bcb84eeeb78/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c h1:VwygUrnw9jn88c4u8GD3rZQbqrP/tgas88tPUbBxQrk=
+golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.3.0 h1:g61tztE5qeGQ89tm6NTjjM9VPIm088od1l6aSorWRWg=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 h1:9zdDQZ7Thm29KFXgAX/+yaf3eVbP7djjWp/dXAppNCc=

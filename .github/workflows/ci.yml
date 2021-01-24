@@ -69,6 +69,12 @@ jobs:
           curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           sudo dpkg -i mozjpeg_master_amd64.deb
 
+      # It'd be nice to take apt-get back out of the flow since it's so slow.
+      # Unfortunately, none of the pngquant install options make this
+      # particularly easy.
+      - name: Install PNGQuant
+        run: sudo apt-get install pngquant
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -98,6 +104,7 @@ jobs:
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
 
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
+          PNGQUANT_BIN: /usr/bin/pngquant
 
       - name: "Go: Vet"
         run: make vet
@@ -138,6 +145,7 @@ jobs:
           DRAFTS: true
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
+          PNGQUANT_BIN: /usr/bin/pngquant
           TARGET_DIR: ./public-dev
 
       - name: "Build: Production"
@@ -145,6 +153,7 @@ jobs:
         env:
           MAGICK_BIN: /home/runner/imagemagick/bin/magick
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
+          PNGQUANT_BIN: /usr/bin/pngquant
 
       - name: "Deploy: Development"
         run: make deploy
