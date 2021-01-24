@@ -17,6 +17,7 @@ import (
 // project.
 var FuncMap = template.FuncMap{
 	"Downcase":                downcase,
+	"FormatTimeLocal":         formatTimeLocal,
 	"FormatTimeWithMinute":    formatTimeWithMinute,
 	"FormatTimeYearMonth":     formatTimeYearMonth,
 	"InKM":                    inKM,
@@ -31,8 +32,22 @@ var FuncMap = template.FuncMap{
 	"ToStars":                 toStars,
 }
 
+var localLocation *time.Location
+
+func init() {
+	var err error
+	localLocation, err = time.LoadLocation("America/Los_Angeles")
+	if err != nil {
+		panic(err)
+	}
+}
+
 func downcase(s string) string {
 	return strings.ToLower(s)
+}
+
+func formatTimeLocal(t *time.Time) string {
+	return toNonBreakingWhitespace(t.In(localLocation).Format("January 2, 2006"))
 }
 
 func formatTimeYearMonth(t *time.Time) string {

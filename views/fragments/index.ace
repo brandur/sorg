@@ -36,6 +36,6 @@
                       {{.Title}}
                     span.meta
                       |  
-                      {{FormatTime .PublishedAt}}
+                      {{FormatTimeLocal .PublishedAt}}
                 {{end}}
             {{end}}

@@ -38,7 +38,7 @@
                           {{.Title}}
                         span.meta
                           |  
-                          {{FormatTime .PublishedAt}}
+                          {{FormatTimeLocal .PublishedAt}}
                       {{if ne .Hook ""}}
                         p.hook {{HTML .Hook}}
                       {{end}}

@@ -47,7 +47,7 @@
                         {{if ne "" $display}}
                           {{$display}}
                         {{else}}
-                          {{FormatTime .ReadAt}}
+                          {{FormatTimeLocal .ReadAt}}
                         {{end}}
                   {{end}}
             {{end}}

@@ -31,7 +31,7 @@
                     | , {{.LocationCity}}
                   {{end}}
                   span.meta
-                    |  {{FormatTime .OccurredAt}}
+                    |  {{FormatTimeLocal .OccurredAt}}
               {{end}}
     = javascript
       var lastYearXDays = {{.LastYearXDays}};

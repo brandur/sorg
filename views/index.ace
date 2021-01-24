@@ -27,7 +27,7 @@
                   a href="/{{.Slug}}" {{.Title}}
                 p.hook
                   | {{HTML .Hook}} 
-                  span.date {{FormatTime .PublishedAt}}
+                  span.date {{FormatTimeLocal .PublishedAt}}
             {{end}}
           p.older
             em Older articles available <a href="/articles">here</a>.
@@ -41,7 +41,7 @@
                   a href="/fragments/{{.Slug}}" {{.Title}}
                 p.hook
                   | {{HTML .Hook}} 
-                  span.date {{FormatTime .PublishedAt}}
+                  span.date {{FormatTimeLocal .PublishedAt}}
             {{end}}
           p.older
             em Older fragments available <a href="/fragments">here</a>.

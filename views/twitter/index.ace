@@ -57,7 +57,7 @@
                               {{if ne "" $display}}
                                 {{$display}}
                               {{else}}
-                                {{FormatTimeWithMinute .CreatedAt}}
+                                | {{FormatTimeWithMinute .CreatedAt}} UTC
                               {{end}}
                           {{range .ImageURLs}}
                             {{HTMLRender (ImgSrcAndAltAndClass . "" "overflowing")}}

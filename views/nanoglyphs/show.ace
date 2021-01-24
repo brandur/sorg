@@ -26,5 +26,5 @@
           | Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
           {{end}}
         {{if not .InEmail}}
-          p Issue {{.Issue.Number}} was first broadcast on {{FormatTime .Issue.PublishedAt}}.
+          p Issue {{.Issue.Number}} was first broadcast on {{FormatTimeLocal .Issue.PublishedAt}}.
         {{end}}
