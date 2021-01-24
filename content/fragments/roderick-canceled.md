@@ -4,7 +4,7 @@ published_at = 2021-01-23T21:08:40Z
 title = "Roderick, canceled"
 +++
 
-I learned a few days ago (and about two weeks after the rest of the internet) that [John Roderick has been canceled](http://www.johnroderick.com/an-apology). The fire was sparked by a story about forcing his daughter learn to open a can of beans:
+I learned a few days ago (and about two weeks after the rest of the internet) that [John Roderick has been canceled](http://www.johnroderick.com/an-apology). The fire was sparked by a story about forcing his daughter to learn to open a can of beans:
 
 ![Bean dad tweets 01](/assets/images/fragments/roderick-canceled/bean-dad-01.png)
 
