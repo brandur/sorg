@@ -2,7 +2,7 @@
 hook = "Reading the old, inscrutable plate on the side of a tree partway up Sulphur Mountain."
 image = "/photographs/fragments/engelmann-spruce-plaque-sulfur-mountain/plaque.jpg"
 published_at = 2021-01-12T04:32:29Z
-title = "The Engelmann Spruce Plaque, Sulphur Mountain"
+title = "The Engelmann Spruce plaque, Sulphur Mountain"
 +++
 
 Midway through the walk up Sulphur Mountain near Banff, you might notice an odd plaque, just off the trail, nailed to a tree.

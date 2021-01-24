@@ -1,7 +1,7 @@
 +++
 hook = "A new Go package for the WaniKani API, transitioning to pkg.go.dev, and what makes APIs nice to use."
 published_at = 2021-01-23T00:12:01Z
-title = "A WaniKani API Go Package"
+title = "A WaniKani API Go package"
 +++
 
 I wrote Go language bindings for the [WaniKani API](https://docs.api.wanikani.com/20170710/):
