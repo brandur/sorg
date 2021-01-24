@@ -35,7 +35,7 @@ I was introduced to _Roderick on the Line_ way back around 2013. The first time 
 
 Quite a few episodes later, I came to realize that this was a hallmark of the entire series. Every one of Roderick's stories had a kernel of truth at the center -- they were all based on real life occurrences -- but the details were exaggerated to the rafters. They weren't quite lies, but they certainly weren't unequivocally true either. And this is a big part of what makes Roderick's podcasts interesting to listen to -- he's a great storyteller, and like a lot of other great storytellers, his stories are greatly embellished for dramatic effect. Unfortunately for him, the charm doesn't translate well to the medium of Twitter, and it took a football to the face to realize it.
 
-We'll never have a perfect blow-by-blow of the events in #beandad, but if it's anything like Roderick's other thousand stories, it was massaged and exaggerated. His own words on that point:
+We'll never have a perfect blow-by-blow of the events in #beandad, but if it's anything like Roderick's other thousand stories, it was massaged and inflated to grand proportion. His own words on that point:
 
 > My story about my daughter and the can of beans was poorly told. I didn’t share how much laughing we were doing, how we had a bowl of pistachios between us all day as we worked on the problem, or that we’d both had a full breakfast together a few hours before. Her mother was in the room with us all day and alternately laughing at us and telling us to be quiet while she worked on her laptop. We all took turns on the jigsaw puzzle.
 
