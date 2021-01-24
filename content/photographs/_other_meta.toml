@@ -10,6 +10,7 @@
 # size conventions:
 #
 #   * in-body images: 550 wide
+#   * in-body overflowing images: 650 wide
 #   * vistas: 1024 wide
 #
 
@@ -62,6 +63,16 @@
   original_image_url = "https://www.dropbox.com/s/a8o1y2g44f11oyz/DSCF4694.JPG?dl=1"
   slug = "fragments/new-york/washington-square-park"
   title = "Washington Square Park"
+
+#
+# /fragments/rss-abandon
+#
+
+[[photographs]]
+  crop_width = 650
+  original_image_url = "https://www.dropbox.com/s/f5lmidlh0u74ozs/reeder.png?dl=1"
+  slug = "fragments/rss-abandon/reeder"
+  title = "Reeder screenshot"
 
 #
 # /fragments/safety-razors
