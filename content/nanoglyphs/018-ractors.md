@@ -2,7 +2,7 @@
 image_alt = "The view off Sulphur Mountain"
 image_url = "/photographs/nanoglyphs/018-ractors/sulphur-view@2x.jpg"
 published_at = 2021-01-15T13:28:24Z
-title = "Ractors"
+title = "Ruby 3's Ractors"
 +++
 
 On December 25th 2020, Christmas Day in much of the world, Ruby 3 was released. The timing might seem unusual, but it's part of an ongoing tradition of annual Ruby releases as a kind of high tech Xmas gift to the world. The team's hit their December 25th release date every year since Ruby 2, released in 2013, making their current shipping streak an impressive eight in a row.
