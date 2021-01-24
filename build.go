@@ -29,6 +29,7 @@ import (
 	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/squantified"
 	"github.com/brandur/sorg/modules/stalks"
+	"github.com/brandur/sorg/modules/stemplate"
 	_ "github.com/lib/pq"
 	"github.com/yosssi/ace"
 )
@@ -81,6 +82,9 @@ var (
 	tweets      []*squantified.Tweet
 )
 
+// Time zone to show articles / fragments / etc. publishing times in.
+var localLocation *time.Location = mustLocalLocation()
+
 // List of common build dependencies, a change in any of which will trigger a
 // rebuild on everything: partial views, JavaScripts, and stylesheets. Even
 // though some of those changes will false positives, these sources are
@@ -101,6 +105,7 @@ var universalSources []string
 
 func init() {
 	mmarkdownext.FuncMap = scommon.TextTemplateFuncMap
+	stemplate.LocalLocation = localLocation
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1000,7 +1005,7 @@ func (a *Article) publishingInfo() map[string]string {
 	info := make(map[string]string)
 
 	info["Article"] = a.Title
-	info["Published"] = a.PublishedAt.Format("January 2, 2006")
+	info["Published"] = a.PublishedAt.In(localLocation).Format("January 2, 2006")
 	info["Location"] = a.Location
 
 	return info
@@ -1078,7 +1083,7 @@ func (f *Fragment) publishingInfo() map[string]string {
 	info := make(map[string]string)
 
 	info["Fragment"] = f.Title
-	info["Published"] = f.PublishedAt.Format("January 2, 2006")
+	info["Published"] = f.PublishedAt.In(localLocation).Format("January 2, 2006")
 
 	if f.Location != "" {
 		info["Location"] = f.Location
@@ -1494,6 +1499,14 @@ func insertOrReplaceTalk(talks *[]*stalks.Talk, talk *stalks.Talk) {
 	}
 
 	*talks = append(*talks, talk)
+}
+
+func mustLocalLocation() *time.Location {
+	localLocation, err := time.LoadLocation("America/Los_Angeles")
+	if err != nil {
+		panic(err)
+	}
+	return localLocation
 }
 
 // Remove the "./pages" directory and extension, but keep the rest of the
