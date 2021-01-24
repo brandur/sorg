@@ -116,3 +116,18 @@ PNGs with `pngquant`:
     magick convert $GMI -resize 256x256^ $GMO/favicon-256.png
 
     scripts/optimize_image.rb $GMO/*
+
+### Nanoglyph
+
+    export GMI=content/images/favicon/nanoglyph-2048.png
+    export GMO=content/images/favicon/
+
+    magick convert $GMI -resize 32x32^ $GMO/nanoglyph-32.png
+    magick convert $GMI -resize 128x128^ $GMO/nanoglyph-128.png
+    magick convert $GMI -resize 152x152^ $GMO/nanoglyph-152.png
+    magick convert $GMI -resize 167x167^ $GMO/nanoglyph-167.png
+    magick convert $GMI -resize 180x180^ $GMO/nanoglyph-180.png
+    magick convert $GMI -resize 192x192^ $GMO/nanoglyph-192.png
+    magick convert $GMI -resize 256x256^ $GMO/nanoglyph-256.png
+
+    scripts/optimize_image.rb $GMO/*
