@@ -101,3 +101,18 @@ PNGs with `pngquant`:
 
     brew install pngquant
     pngquant --output <out> -- <in>
+
+## Favicons
+
+    export GMI=content/images/favicon/favicon-2048.png
+    export GMO=content/images/favicon/
+
+    magick convert $GMI -resize 32x32^ $GMO/favicon-32.png
+    magick convert $GMI -resize 128x128^ $GMO/favicon-128.png
+    magick convert $GMI -resize 152x152^ $GMO/favicon-152.png
+    magick convert $GMI -resize 167x167^ $GMO/favicon-167.png
+    magick convert $GMI -resize 180x180^ $GMO/favicon-180.png
+    magick convert $GMI -resize 192x192^ $GMO/favicon-192.png
+    magick convert $GMI -resize 256x256^ $GMO/favicon-256.png
+
+    scripts/optimize_image.rb $GMO/*

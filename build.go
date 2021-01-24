@@ -1402,7 +1402,6 @@ func getLocals(title string, locals map[string]interface{}) map[string]interface
 	defaults := map[string]interface{}{
 		"BodyClass":         "",
 		"EnableGoatCounter": conf.EnableGoatCounter,
-		"FavIcon":           "favicon-152.png",
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"LocalFonts":        conf.LocalFonts,
 		"Release":           Release,
@@ -1872,7 +1871,6 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 
 	locals := getLocals(issue.Title, map[string]interface{}{
 		"BodyClass": "web-only", // For web-specific CSS rules
-		"FavIcon":   "nanoglyph-152.png",
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -1964,7 +1962,6 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 
 	locals := getLocals("Nanoglyph", map[string]interface{}{
 		"BodyClass": "web-only", // For web-specific CSS rules
-		"FavIcon":   "nanoglyph-152.png",
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
