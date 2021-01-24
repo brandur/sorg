@@ -1,7 +1,7 @@
 +++
 hook = "John Roderick becoming #beandad, and playing with fire on Twitter."
 published_at = 2021-01-23T21:08:40Z
-title = "Roderick, Canceled"
+title = "Roderick, canceled"
 +++
 
 I learned a few days ago (and about two weeks after the rest of the internet) that [John Roderick has been canceled](http://www.johnroderick.com/an-apology). The fire was sparked by a story about forcing his daughter learn to open a can of beans:
