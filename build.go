@@ -83,7 +83,7 @@ var (
 )
 
 // Time zone to show articles / fragments / etc. publishing times in.
-var localLocation *time.Location = mustLocalLocation()
+var localLocation *time.Location = mustLocation("America/Los_Angeles")
 
 // List of common build dependencies, a change in any of which will trigger a
 // rebuild on everything: partial views, JavaScripts, and stylesheets. Even
@@ -1501,12 +1501,12 @@ func insertOrReplaceTalk(talks *[]*stalks.Talk, talk *stalks.Talk) {
 	*talks = append(*talks, talk)
 }
 
-func mustLocalLocation() *time.Location {
-	localLocation, err := time.LoadLocation("America/Los_Angeles")
+func mustLocation(locationName string) *time.Location {
+	locatio, err := time.LoadLocation(locationName)
 	if err != nil {
 		panic(err)
 	}
-	return localLocation
+	return locatio
 }
 
 // Remove the "./pages" directory and extension, but keep the rest of the
