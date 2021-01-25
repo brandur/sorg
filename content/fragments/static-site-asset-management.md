@@ -45,7 +45,22 @@ I settled on a custom system in [Modulir](https://github.com/brandur/modulir), m
 
 Each entry creates a parallel Modulir job which downloads the file, passes it through ImageMagick to resize it retina and non-retina proportions, then [through MozJPEG](/fragments/libjpeg-mozjpeg) or pngquant (depending on whether JPG or PNG) to optimize file size. The TOML file's watched through [fsnotify](https://github.com/fsnotify/fsnotify), so the only thing I need to do to kick off the process is hit the save button. When running in CI, a GitHub Action uploads everything to S3.
 
-To avoid having to resize everything over and over again, on success the system leaves an empty `.marker` file in place to signal to the build system that the work is already done. I commit all outstanding `.marker`s to Git every few weeks after giving the resizes a chance to run in CI and on the couple different computers where I run Modulir. Assets won't be present on new machines with a fresh Modulir install, so for that case I have a make task to sync the archive down from S3:
+To avoid having to resize everything over and over again, on success the system leaves an empty `.marker` file in place to signal to the build system that the work is already done:
+
+``` sh
+$ ls -lh content/photographs/nanoglyphs/018-ractors
+.rw-r--r--  brandur    211 KB  Jan 16 23:03:57 2021  engelmann-plaque.jpg
+.rwxr-xr-x  brandur      0 B   Jan 16 23:03:59 2021  engelmann-plaque.marker
+.rw-r--r--  brandur  661.7 KB  Jan 16 23:03:59 2021  engelmann-plaque@2x.jpg
+.rw-r--r--  brandur  255.5 KB  Jan 16 23:03:58 2021  sulphur-gondola.jpg
+.rwxr-xr-x  brandur      0 B   Jan 16 23:04:01 2021  sulphur-gondola.marker
+.rw-r--r--  brandur  834.5 KB  Jan 16 23:04:01 2021  sulphur-gondola@2x.jpg
+.rw-r--r--  brandur  169.6 KB  Jan 16 23:03:57 2021  sulphur-view.jpg
+.rwxr-xr-x  brandur      0 B   Jan 16 23:04:00 2021  sulphur-view.marker
+.rw-r--r--  brandur  568.2 KB  Jan 16 23:04:00 2021  sulphur-view@2x.jpg
+```
+
+I commit outstanding `.marker`s to Git every few weeks after giving the resizes a chance to run in CI and on the couple different computers where I run Modulir. Assets won't be present on new machines with a fresh Modulir install, so for that case I have a make task to sync the archive down from S3:
 
 ``` make
 .PHONY: photographs-download
