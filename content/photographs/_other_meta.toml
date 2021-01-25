@@ -207,6 +207,12 @@
   slug = "nanoglyphs/014-local-first/coral-eye"
   title = "Coral Eye's dive jetty on Bangka in Indonesia"
 
+[[photographs]]
+  crop_width = 900
+  original_image_url = "https://www.dropbox.com/s/bal6cya3yel8u0o/sandman.jpg?dl=1"
+  slug = "nanoglyphs/014-local-first/sandman"
+  title = "Page from Sandman"
+
 #
 # /nanoglyphs/013-remote
 #

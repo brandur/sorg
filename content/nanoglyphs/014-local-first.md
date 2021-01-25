@@ -70,7 +70,8 @@ Changing course to a world based on local first principles would take immense ac
 
 ---
 
-![Page from Sandman](/assets/images/nanoglyphs/014-local-first/sandman@2x.jpg)
+<img src="/photographs/nanoglyphs/014-local-first/sandman@2x.jpg" alt="Page from Sandman" class="wide">
+
 
 I spent the last couple weeks reading the entirety of the 75-issue run of Neil Gaiman's original Sandman series. The last time I read it (well over a decade ago) I remember liking it, but this time around it was sublime, with a compelling creativity and narrative design rarely at a level rarely seen in the comic medium. The story follows Dream, king of the Dreaming and one of the Endless along with his siblings: Destiny, Death, Destruction, Desire, Despair, and Delirium. After being accidentally imprisoned by a sorcerer seeking to harness death, he finally escapes, and must set about rebuilding his dilapidated realm.
 
