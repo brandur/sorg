@@ -1,7 +1,7 @@
 +++
 hook = "Automatic generation, optimization, and deployment of large static assets, all managed from a TOML file."
 published_at = 2021-01-25T01:07:01Z
-title = "Asset management in a Git-based static site"
+title = "Large asset management in a Git-based static site"
 +++
 
 I've been a vocal proponent of [Git-based static sites](/aws-intrinsic-static) for a long time. Not only are they fast, versioned, and geo-distributed, but with the right framework, have an amazing development workflow. I run everything from my text editor, and have some elaborate bells and whistles like [live reloading](/live-reload), a fast incremental build loop that takes on average ~3 ms, and automatic deployment on Git merges. Deployment is a `git push origin master` and it's great for accepting corrections by way of pull requests.
