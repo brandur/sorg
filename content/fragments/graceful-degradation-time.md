@@ -1,7 +1,7 @@
 +++
 hook = "How to format blog content so it'll last."
 published_at = 2021-02-08T16:21:45Z
-title = "Markdown and Git: Graceful degradation through time"
+title = "Blog with Markdown + Git, and degrade gracefully through time"
 +++
 
 _(Problem 1.)_ As I was [reviving my RSS habit the other week](/fragments/rss-abandon), I couldn't help but notice how many of my old subscriptions were dead. Not "doesn't publish anymore" dead, but "gone from the internet" dead. People had created blogs (many with great content), run them for a while, let them lapse, and eventually they were swallowed by time and entropy.
