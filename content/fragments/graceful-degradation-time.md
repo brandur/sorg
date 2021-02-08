@@ -14,7 +14,7 @@ _(Problem 3.)_ For fun, I tried "de-archiving" an old colleague's blog from The 
 
 A simple proposal I'd like to make to current and future blog authors: run your blog in _whatever_ technology you want, whether its a static generator like Hugo or Gatsby, a custom CMS, or the JAM stack. Different technologies are good for different things, people are good with different tools, and there surely are plenty of great options.
 
-_But_ remember at the end of the day that a blog is text and multimedia. Store your content in the simplest formats in which it can possibly be stored -- I'd suggest Markdown and Git -- and use the great frontend to read from that and render it however you want. Make that source public via GitHub or another favorite long-lived, erosion-resistant host.
+_But_ remember at the end of the day that a blog is text and multimedia. Store your content in the simplest formats in which it can possibly be stored -- I'd suggest Markdown and Git -- and use the great frontend to read from that and render it however you want. Make that source public via GitHub or another favorite long-lived, erosion-resistant host. Git's portable, so copy or move repositories as you go.
 
 It's not going to matter for a month, or a year, or probably five years, but once it reaches that horizon of 10+ years where things start disappearing, it might really make a difference. Interested parties can still see read content even after the original host is long gone. No one plans for their site to disappear, but most eventually do.
 
