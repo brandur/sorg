@@ -9,7 +9,7 @@ go 1.13
 require (
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
 	github.com/aymerick/douceur v0.2.0
-	github.com/brandur/modulir v0.0.0-20210124202126-6064ab66a5be
+	github.com/brandur/modulir v0.0.0-20210208163140-a9da331c7fc4
 	github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51 // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
