@@ -25,6 +25,16 @@
   title = "Plaque naming an Englemann Spruce tree"
 
 #
+# /fragments/graceful-degradation-time
+#
+
+[[photographs]]
+  crop_width = 650
+  original_image_url = "https://www.dropbox.com/s/lupzf5ld2igqoup/markdown-and-git.png?dl=1"
+  slug = "fragments/graceful-degradation-time/markdown-and-git"
+  title = "Markdown and Git"
+
+#
 # /fragments/new-york
 #
 
