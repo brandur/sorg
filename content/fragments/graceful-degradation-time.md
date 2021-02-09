@@ -16,7 +16,7 @@ A simple proposal I'd like to make to current and future blog authors: run your 
 
 _But,_ remember at the end of the day that a blog is text and multimedia. Store your content in the simplest formats in which it can possibly be stored -- I'd suggest Markdown and Git -- and use the great frontend to read from that and render it however you want. Make that source public via GitHub or another favorite long-lived, erosion-resistant host. Git's portable, so copy or move repositories as you go.
 
-It's not going to matter for a month, or a year, or probably five years, but once it reaches that horizon of 10+ years where things start disappearing, it might really make a difference. Interested parties can still see read content even after the original host is long gone. No one plans for their site to disappear, but most eventually do.
+It's not going to matter for a month, or a year, or probably five years, but once it reaches that horizon of 10+ years where things start disappearing, it might really make a difference. Interested parties can still see content even after the original host is long gone. No one plans for their site to disappear, but most eventually do.
 
 I practice what I preach. This entire site is generated from Markdown, and also [lives on GitHub](https://github.com/brandur/sorg). It could be remixed even after it's gone.
 
