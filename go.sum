@@ -23,6 +23,8 @@ github.com/brandur/modulir v0.0.0-20210124202126-6064ab66a5be h1:xvXy6GLsmbcrRJ7
 github.com/brandur/modulir v0.0.0-20210124202126-6064ab66a5be/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
 github.com/brandur/modulir v0.0.0-20210208163140-a9da331c7fc4 h1:w6IAtBoU1/yLN0ymbV+aNhv/VeKjNQXKV8gCgB7F6rA=
 github.com/brandur/modulir v0.0.0-20210208163140-a9da331c7fc4/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
+github.com/brandur/modulir v0.0.0-20210211141123-4f6313b20a24 h1:hE0rKwVF4YZqTXwbakjsAZz7CTrnwGO3oNyo55sm3TY=
+github.com/brandur/modulir v0.0.0-20210211141123-4f6313b20a24/go.mod h1:BRHOfeIYFU0MDzaFY45fg2bDY77y+FjU1TRC782o+T4=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
