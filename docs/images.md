@@ -104,30 +104,32 @@ PNGs with `pngquant`:
 
 ## Favicons
 
+    # or .jpg as extension
     export GMI=content/images/favicon/favicon-2048.png
     export GMO=content/images/favicon/
 
-    magick convert $GMI -resize 32x32^ $GMO/favicon-32.png
-    magick convert $GMI -resize 128x128^ $GMO/favicon-128.png
-    magick convert $GMI -resize 152x152^ $GMO/favicon-152.png
-    magick convert $GMI -resize 167x167^ $GMO/favicon-167.png
-    magick convert $GMI -resize 180x180^ $GMO/favicon-180.png
-    magick convert $GMI -resize 192x192^ $GMO/favicon-192.png
-    magick convert $GMI -resize 256x256^ $GMO/favicon-256.png
+    magick convert $GMI -resize 32x32^ $GMO/favicon-32.${GMI##*.}
+    magick convert $GMI -resize 128x128^ $GMO/favicon-128.${GMI##*.}
+    magick convert $GMI -resize 152x152^ $GMO/favicon-152.${GMI##*.}
+    magick convert $GMI -resize 167x167^ $GMO/favicon-167.${GMI##*.}
+    magick convert $GMI -resize 180x180^ $GMO/favicon-180.${GMI##*.}
+    magick convert $GMI -resize 192x192^ $GMO/favicon-192.${GMI##*.}
+    magick convert $GMI -resize 256x256^ $GMO/favicon-256.${GMI##*.}
 
     scripts/optimize_image.rb $GMO/*
 
 ### Nanoglyph
 
+    # or .jpg as extension
     export GMI=content/images/favicon/nanoglyph-2048.png
     export GMO=content/images/favicon/
 
-    magick convert $GMI -resize 32x32^ $GMO/nanoglyph-32.png
-    magick convert $GMI -resize 128x128^ $GMO/nanoglyph-128.png
-    magick convert $GMI -resize 152x152^ $GMO/nanoglyph-152.png
-    magick convert $GMI -resize 167x167^ $GMO/nanoglyph-167.png
-    magick convert $GMI -resize 180x180^ $GMO/nanoglyph-180.png
-    magick convert $GMI -resize 192x192^ $GMO/nanoglyph-192.png
-    magick convert $GMI -resize 256x256^ $GMO/nanoglyph-256.png
+    magick convert $GMI -resize 32x32^ $GMO/nanoglyph-32.${GMI##*.}
+    magick convert $GMI -resize 128x128^ $GMO/nanoglyph-128.${GMI##*.}
+    magick convert $GMI -resize 152x152^ $GMO/nanoglyph-152.${GMI##*.}
+    magick convert $GMI -resize 167x167^ $GMO/nanoglyph-167.${GMI##*.}
+    magick convert $GMI -resize 180x180^ $GMO/nanoglyph-180.${GMI##*.}
+    magick convert $GMI -resize 192x192^ $GMO/nanoglyph-192.${GMI##*.}
+    magick convert $GMI -resize 256x256^ $GMO/nanoglyph-256.${GMI##*.}
 
     scripts/optimize_image.rb $GMO/*

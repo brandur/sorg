@@ -15,16 +15,16 @@ html lang="en"
     / You can specify a whole series of sizes for these, but Apple is fine with
     / just using a version at a higher end of the resolution spectrum
     / (currently, 180).
-    link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/favicon-180.png"
+    link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/favicon-180.jpg"
 
     / This is probably overkill.
-    link rel="shortcut icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32.png"
-    link rel="shortcut icon" type="image/png" sizes="128x128" href="/assets/images/favicon/favicon-128.png"
-    link rel="shortcut icon" type="image/png" sizes="152x152" href="/assets/images/favicon/favicon-152.png"
-    link rel="shortcut icon" type="image/png" sizes="167x167" href="/assets/images/favicon/favicon-167.png"
-    link rel="shortcut icon" type="image/png" sizes="180x180" href="/assets/images/favicon/favicon-180.png"
-    link rel="shortcut icon" type="image/png" sizes="192x192" href="/assets/images/favicon/favicon-192.png"
-    link rel="shortcut icon" type="image/png" sizes="256x256" href="/assets/images/favicon/favicon-256.png"
+    link rel="shortcut icon" type="image/jpg" sizes="32x32" href="/assets/images/favicon/favicon-32.jpg"
+    link rel="shortcut icon" type="image/jpg" sizes="128x128" href="/assets/images/favicon/favicon-128.jpg"
+    link rel="shortcut icon" type="image/jpg" sizes="152x152" href="/assets/images/favicon/favicon-152.jpg"
+    link rel="shortcut icon" type="image/jpg" sizes="167x167" href="/assets/images/favicon/favicon-167.jpg"
+    link rel="shortcut icon" type="image/jpg" sizes="180x180" href="/assets/images/favicon/favicon-180.jpg"
+    link rel="shortcut icon" type="image/jpg" sizes="192x192" href="/assets/images/favicon/favicon-192.jpg"
+    link rel="shortcut icon" type="image/jpg" sizes="256x256" href="/assets/images/favicon/favicon-256.jpg"
 
     link href="/articles.atom" rel="alternate" title="Articles{{.TitleSuffix}}" type="application/atom+xml"
     link href="/fragments.atom" rel="alternate" title="Fragments{{.TitleSuffix}}" type="application/atom+xml"
