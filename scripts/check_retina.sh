@@ -20,6 +20,7 @@ allowed_exceptions=(
     ./content/images/favicon/favicon-*.png
     ./content/images/favicon/nanoglyph-*.jpg
     ./content/images/favicon/nanoglyph-*.png
+    ./content/images/favicon/passages-*.jpg
     "./content/images/standin_00.jpg"
     "./content/images/standin_01.jpg"
     "./content/images/standin_02.jpg"

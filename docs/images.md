@@ -133,3 +133,19 @@ PNGs with `pngquant`:
     magick convert $GMI -resize 256x256^ $GMO/nanoglyph-256.${GMI##*.}
 
     scripts/optimize_image.rb $GMO/*
+
+### Passages
+
+    # or .jpg as extension
+    export GMI=content/images/favicon/passages-2048.png
+    export GMO=content/images/favicon/
+
+    magick convert $GMI -resize 32x32^ $GMO/passages-32.${GMI##*.}
+    magick convert $GMI -resize 128x128^ $GMO/passages-128.${GMI##*.}
+    magick convert $GMI -resize 152x152^ $GMO/passages-152.${GMI##*.}
+    magick convert $GMI -resize 167x167^ $GMO/passages-167.${GMI##*.}
+    magick convert $GMI -resize 180x180^ $GMO/passages-180.${GMI##*.}
+    magick convert $GMI -resize 192x192^ $GMO/passages-192.${GMI##*.}
+    magick convert $GMI -resize 256x256^ $GMO/passages-256.${GMI##*.}
+
+    scripts/optimize_image.rb $GMO/*
