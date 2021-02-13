@@ -2,7 +2,7 @@
 
 html lang="en"
   head
-    title {{.Title}} &mdash; Brandur Leach
+    title {{.Title}}{{.TitleSuffix}}
 
     meta content="text/html; charset=utf-8" http-equiv="Content-Type"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
