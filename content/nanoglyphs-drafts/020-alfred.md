@@ -78,7 +78,9 @@ Alfred’s major feature isn’t what it can do -- every one of these things can
 
 ---
 
-Speaking of tooling, iFixit’s [teardown of the new 2019 Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
+## Modular is beautiful (#modular-is-beautiful)
+
+Speaking of tooling, iFixit’s [teardown of the 2019 Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
 
 ![Apple's iMac Pro](/assets/images/nanoglyphs/020-alfred/mac-pro@2x.jpg)
 
