@@ -153,7 +153,7 @@ type LeveledLoggerInterface interface {
 
 Popular loggers like [Logrus](https://github.com/sirupsen/logrus/) and [Zap's SuggaredLogger](https://godoc.org/go.uber.org/zap#SugaredLogger) support this interface out-of-the-box, so you automatically have broad support. Include a simple, default implementation so that logging still works for integrations that aren't using one of those.
 
-It might also be a good idea to add extensible hooks to various key places that allow users to customize behavior (e.g. request start, request end, retry, etc.). The larger the user, the more they will care about this. Notably, stripe-ruby's hooks system was [contributed by a developer from Shopify](https://github.com/stripe/stripe-ruby/pull/870) (as big of a user as there is), as they wanted a way to emit custom StatsD metrics as requests were being made.
+It might also be a good idea to add extensible hooks to various key places that allow users to customize behavior (e.g. request start, request end, retry, etc.). The larger the user, the more they will care about this. Notably, stripe-ruby's hooks system was [contributed by a developer from Shopify](https://github.com/stripe/stripe-ruby/pull/870) (as big of a user as there is) because they wanted a way to emit custom StatsD metrics as requests were being made.
 
 ``` ruby
 Stripe::Instrumentation.subscribe(:request_end) do |request_event|
