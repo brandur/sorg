@@ -126,6 +126,28 @@
 #
 
 #
+# /nanoglyphs/019-api-libraries
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/j5ns5cht9vzjxez/2W4A0232.JPG?dl=1"
+  slug = "nanoglyphs/019-api-libraries/brickell"
+  title = "Around Brickell in Miami"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/daw7v9f42v8teic/wani-kani.png?dl=1"
+  slug = "nanoglyphs/019-api-libraries/wani-kani"
+  title = "Wani Kani's home page"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/vr9tvo4im3yh3zs/2W4A0289.JPG?dl=1"
+  slug = "nanoglyphs/019-api-libraries/vizcaya"
+  title = "The gardens at Vizcaya in Miami"
+
+#
 # /nanoglyphs/018-ractors
 #
 

@@ -1,7 +1,7 @@
 +++
 image_alt = "Yoshihiro chef's knife"
 image_url = "/assets/images/nanoglyphs/020-alfred/knife-2@2x.jpg"
-published_at = 2020-10-12T17:52:22Z
+published_at = 2021-02-15T15:58:37Z
 title = "Alfred & the Zen of Tool Sharpening"
 +++
 
@@ -13,9 +13,9 @@ A single sharpening session yields some lasting benefit, but the real key is eng
 
 ---
 
-I can’t remember where I was first introduced to the idea of tool sharpening in the context of software tooling, but the analogy translates nicely from physical to virtual. A few times a year, take a break from writing code, and spend some time doing nothing but improving the environment that helps you write it. Like the metaphorical knife, the idea is to spend a little effort occasionally to tighten up your workflow in the 99% of the time.
+I can’t remember where I was first introduced to the idea of tool sharpening in the context of software, but the analogy translates nicely from physical to virtual. A few times a year, take a break from writing code, and spend some time doing nothing but improving the environment that helps you write it. Like the metaphorical knife, the idea is to spend a little effort occasionally to tighten up your workflow in the 99% of the time.
 
-It can apply to any tool in your belt: configuring Vim, discovering new VSCode plugins, learning a few more Pry/GDB shortcuts, or even just remembering [one new oft-used key binding on Mac OS](https://twitter.com/brandur/status/1211683351414726657). It’s useful to keep a list of the small day-to-day points of pain that you run into in your environment so you’ll have some obvious points to investigate when the time comes.
+It can apply to any tool in your belt: configuring Vim, discovering new VSCode plugins, learning a few more IntelliJ/Pry/GDB shortcuts, or even just remembering [one new oft-used key binding on Mac OS](https://twitter.com/brandur/status/1211683351414726657). It’s useful to keep a list of the small day-to-day points of pain that you run into in your environment so you’ll have some obvious points to investigate when the time comes.
 
 Here’s a few recent ones from mine:
 
@@ -23,6 +23,7 @@ Here’s a few recent ones from mine:
 * Get a VSCode plugin that will copy a GitHub link for the selected line(s) of code to clipboard or pop it open in a browser.
 * Figure out why LSP in Ale/Vim only works ~70% of the time.
 * Find an easy way to copy the current path of a Finder window.
+* Get IntelliJ's Vim plugin to share the system clipboard so that I can easily copy/paste in and out of the app.
 
 ---
 
@@ -77,12 +78,12 @@ Alfred’s major feature isn’t what it can do -- every one of these things can
 
 ---
 
-Speaking of tooling, iFixit’s [teardown of the new Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
+Speaking of tooling, iFixit’s [teardown of the new 2019 Mac Pro](https://www.ifixit.com/Teardown/Mac+Pro+2019+Teardown/128922) is a great read. Its case is removable in mere seconds, replacements and upgrades are possible without even a common screwdriver, and Apple’s even gone so far as to etch maintenance diagrams right into the computer itself which show, for example, how to distribute RAM across DIMM slots based on the capacity installed.
 
 ![Apple's iMac Pro](/assets/images/nanoglyphs/020-alfred/mac-pro@2x.jpg)
 
 ![Apple's iMac Pro](/assets/images/nanoglyphs/020-alfred/mac-pro-ram-diagram@2x.jpg)
 
-Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it's in a different dimension compare to anything else Apple makes. The latest generation of iPhone gets a previously-high-for-Apple 6/10, the new 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a perfect 0/10. That’s an encouraging turnaround which we can only hope might have a tiny influence on their other product lines -- maybe on other product lines that don't cost as much as a midrange car.
+Their repairability rating of 9/10 for the Mac Pro isn’t just unusually high -- it's in a different dimension compare to anything else Apple makes. The latest generation of iPhone gets a previously-high-for-Apple 6/10, the 2019 MacBook Pro a dismal 1/10, and every model of AirPods ever made a _perfect_ 0/10. That’s an encouraging turnaround which we can only hope might have a tiny influence on their other product lines -- maybe on other product lines that don't cost as much as a midrange car.
 
 Until next week.
