@@ -173,6 +173,13 @@ jobs:
           TARGET_DIR: ./public
         if: github.ref == 'refs/heads/master'
 
+      - name: "Invalidate Cloudfront indexes"
+        run: make invalidate-indexes
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
+        if: github.ref == 'refs/heads/master'
+
       - name: Upload photos
         run: make photographs-upload
         env:

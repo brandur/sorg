@@ -147,7 +147,7 @@ invalidate-assets: check-aws-keys check-cloudfront-id
 # anything cached in CloudFront will expire naturally after SHORT_TTL).
 .PHONY: invalidate-indexes
 invalidate-indexes: check-aws-keys check-cloudfront-id
-	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /photos /reading /runs /twitter
+	aws cloudfront create-invalidation --distribution-id $(CLOUDFRONT_ID) --paths /articles /articles.atom /fragments /fragments.atom /nanoglyphs /nanoglyphs.atom /now /passages /passages.atom /twitter
 
 .PHONY: killall
 killall:
