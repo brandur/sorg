@@ -22,7 +22,7 @@ It's cathartic to put predictions to paper, so here goes. These to be revisited 
 
 * SF's Covid-sanctioned tent cities are still around, having lasted so long as to be politically fraught to unwind, and been informally made semi-permanent. They may eventually be shut down on a case by case basis if the land under them gets to the point where it's _right_ on the eve of active development (e.g. McDonald's Haight, eventually).
 
-* SF voters continue to pass more "let other people/the future pay for it" ballot proposition bond measures. (This barely belongs on here -- it's a slam dunk.)
+* SF voters continue to pass more "let other people/the future pay for it" ballot proposition taxes/bond measures. (This barely belongs on here -- it's a slam dunk.)
 
 * The central subway, ten years after the project started, is still not open.
 
