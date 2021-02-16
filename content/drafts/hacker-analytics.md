@@ -1,49 +1,49 @@
 +++
 hook = "A privacy and GDPR friendly approach to getting basic site analytics, and one which is more accurate in an age when adblockers reign supreme."
 location = "San Francisco"
-published_at = 2021-02-15T23:45:23Z
-title = "Minimally Invasive Analytics for Hackers: GoAccess and Athena/SQL"
+published_at = 2021-02-16T15:16:18Z
+title = "Minimally Invasive (and More Accurate) Analytics: GoAccess and Athena/SQL"
 +++
 
-For years, like half the websites on the internet, I've been using Google Analytics to measure traffic to this site. I've never used it as anything other than a glorified hit counter, and as the product's become more complex over the years, I'm regularly confused by its expanding interface.
+For years, like most of the rest of the internet, I've been using Google Analytics to measure traffic to this site without thinking about it too much. To me, it's never been anything more than a glorified hit counter, and as the product's become more complex over the years, I'm regularly confused by its expanding interface.
 
-More recently, concerned with Google's insatiable appetite to track us to every of the internet, I've started looking into more privacy-friendly alternatives. I landed on [Goatcounter](https://www.goatcounter.com/), which purposely does not set cookies and makes no attempt to track users, and is GDPR-compliant without a notice. It's also got a great, simple interface that has just the information I actually care about.
+More recently, concerned with Google's seemingly insatiable appetite to track us to every corner of the internet, I started looking into more privacy-friendly alternatives. I landed on [Goatcounter](https://www.goatcounter.com/), which purposely does not set cookies and makes no attempt to track users, and is GDPR-compliant without a notice. It's also got a great, simple interface that's a masterwork of UI design compared to Google's crowded panels; pretty graphs, and only the information I care about.
 
-But something I noticed after installing it is that although Goatcounter is an independent analytics product with good intentions (track as little as possible), that doesn't keep it safe from being included in uBlock Origin's block list. Indeed my adblocker was blocking analytics for my own website:
+But I soon noticed after installing it that although Goatcounter is an independent analytics product with good intentions (to track as little as possible), that doesn't keep it safe from being included in uBlock Origin's block list. Indeed, my own adblocker was blocking analytics for my website:
 
 {{Figure "uBlock Origin blocking analytics sites." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/ublock-origin.png" "uBlock Origin blocking analytics sites." "overflowing")}}
 
-This got me thinking: if a large segment of my visitors are using adblockers, are my analytics even accurate? If not, how far are they off? It turns out that especially for a technical site like this one, they are absolutely not accurate, and off by _a lot_. It turns out that if there's any demographic of person who has an adblocker installed -- it's you, dear reader.
+This got me thinking: this site is mostly technical material, and technical people tend to use adblockers. If a big segment of my readership are using adblockers, are my analytics even accurate? If not, how far are they off? After some investigation, the answer: they are absolutely _not_ accurate, and off by _a lot_. It turns out that if there's any demographic of person who has an adblocker installed -- it's you, dear reader.
 
-I had a post from this website briefly spike to #1 on Hacker News last week, and decided to try and find out the difference between the traffic my analytics were showing, and the traffic I was actually receiving.
+I had a post from this site briefly spike to #1 on Hacker News last week, and looked at the difference between the traffic my analytics were showing, and the traffic I was actually receiving.
 
 My estimate is that I got **~2.5x** more unique, non-robot visitors than reported by analytics (~38k versus ~13k), meaning that roughly **60% of users are using an adblocker**. Read to the end to see how I got these numbers.
 
-If analytics products are being blocked at that level, there's a strong argument that it's not worth using them at all -- they're really only giving you a sample of traffic rather than an even semi-complete view. So what do you do instead? Well, how about analytic'ing like its 1999 by reading log files. This is much easier than it sounds because believe it or not, there's some amazing tooling to support it.
+If analytics products are being blocked at that level, there's a strong argument that it's not worth using them at all -- you're really only getting a sample of traffic rather than an even semi-complete view. So what do you do instead? Well, how about analytic'ing like its 1999 by reading log files. This is easier than it sounds because believe it or not, there's some amazing tooling to support it.
 
 ## GoAccess (#goaccess)
 
-[GoAccess](https://goaccess.io/) is a very well-written log parsing and visualizing utility, featuring both a curses-based terminal interface and a web server that will produce HTML.
+[GoAccess](https://goaccess.io/) is a very well-written log parsing and visualizing utility, featuring both a curses-based terminal interface as well as a web server that will produce graphical HTML.
 
 {{Figure "GoAccess' command line interface." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/goaccess.png" "GoAccess' command line interface." "overflowing")}}
 
-It supports all common web logging formats including from Apache, Nginx, ELBs, and CloudFront. This site is [hosted on S3 and served via CloudFront], so I'm using the latter. Logging from CloudFront is easily configurable under the main settings panel for a distribution:
+It supports all common web logging formats including those from Apache, Nginx, ELBs, and CloudFront. This site is [hosted on S3 and served via CloudFront](/aws-intrinsic-static), so I'm using the latter. Logging from CloudFront is easily configurable under the main settings panel for a distribution:
 
 {{Figure "Configuring CloudFront logging." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/cloudfront-logging.png" "Configuring CloudFront logging." "overflowing")}}
 
-Consider using a log prefix as well so that you can log from multiple sites to the same bucket, and save yourself from configuring the same thing over and over again.
+**Tip:** Consider using a log prefix as well so that you can log from multiple sites to the same bucket, and save yourself from configuring the same thing over and over again.
 
-Another nice augmentation is to configure the target S3 bucket with an expiration policy. This allows you to say, have logs pruned automatically after 30 days. so that you can further protector your visitors privacy, and so that they don't stick around forever eating into your storage costs.
+A nice augmentation is to configure the target S3 bucket with an expiration policy. This allows you to say, have logs pruned automatically after 30 days, further protecting your visitors privacy by retaining less, and preventing logs from accumulating forever and eating into your storage costs.
 
 {{Figure "Creating an S3 lifecycle rule for expiration." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/s3-lifecycle-rules.png" "Creating an S3 lifecycle rule for expiration." "overflowing")}}
 
-(Create a new "lifecycle rule" under the `Management` section of a bucket. The settings are all straightforward.)
+(Create a new "lifecycle rule" under the `Management` section of a bucket. The settings from there are all straightforward.)
 
-With logging now set up, your ready to sync your logs down and start using GoAccess.
+With logging set up, your ready to sync logs down and start using GoAccess.
 
-### Some ergonomics (#ergonomics)
+### Git ergonomics (#git-ergonomics)
 
-I have a [Git repository](https://github.com/brandur/logs) that acts as a little analytical test bed for logs. I don't commit any actual logs, but it contains a variety of scripts that provide easy shortcuts for frequent tasks.
+I have a [Git repository](https://github.com/brandur/logs) that acts as a little analytical test bed for my logs. I don't commit any actual logs, but it contains a variety of scripts that provide easy shortcuts for frequently-used tasks.
 
 Here's one that uses awscli to sync my logging bucket down locally:
 
@@ -59,7 +59,7 @@ So I can easily run:
 bin/sync
 ```
 
-Here's another that starts GoAccess uses my standard logs location, with Gzipped logs streamed into it and filtered through a list of exclusions that I don't care about seeing:
+Here's another that starts GoAccess uses my standard logs location, with Gzipped logs streamed into it and filtered through a list of excluded paths that I don't want to see:
 
 ``` sh
 #!/bin/bash
@@ -79,7 +79,7 @@ last_files=${files[@]: -3000}
 gunzip -c $last_files | grep --line-buffered -v -E -f exclude_list.txt | goaccess - -p conf/goaccess.conf --keep-last $NUM_DAYS
 ```
 
-Now, instead of that convoluted and impossible-to-remember invocation, I just run:
+Now, instead of that convoluted and impossible-to-remember invocation, I run:
 
 ``` sh
 bin/terminal
@@ -87,19 +87,21 @@ bin/terminal
 
 ## Deeper introspection with SQL and Athena (#athena)
 
-GoAccess is great, but it an be a little slow to sync logs down locally and boot it up. And while it gives us most of the information that we'd care about, we're still stuck on its rails. We can expand our use of analytics-via-logs using [AWS Athena](https://aws.amazon.com/athena/), which gives us the ability to analyze our logs with arbitrary SQL at relatively low cost.
+GoAccess is great, but it an be a little slow to sync logs down locally and boot up. And while it gives us all of the basic information that we care about, we're still captive to its rails. We can expand our use of analytics-via-logs by using [AWS Athena](https://aws.amazon.com/athena/), which gives us the ability to analyze our log data with arbitrary SQL at relatively low cost.
 
-Athena is built on [Presto](https://prestodb.io/), an SQL engine specializing in large, distributed data. Unlike a traditional data warehouse, Presto doesn't need an online component where data is stored centrally -- it's more than happy to spin itself up ad-hoc and read data as needed out of a collection of files stored on S3.
+Athena is built on [Presto](https://prestodb.io/), an SQL engine specializing in large, distributed data. Unlike a traditional data warehouse, Presto doesn't need an online component where data is stored centrally -- it's more than happy to spin itself up ad-hoc and read data as needed out of a collection of files stored on S3, like our CloudFront-generate access logs.
 
-Start, by creating a new Athena database:
+### Schema (#schema)
+
+Start, by creating a new Athena database from [AWS console](https://console.aws.amazon.com/console/home):
 
 ``` sql
 CREATE DATABASE brandur_logs;
 ```
 
-(By the way, don't try to use hyphens when naming things, or you will run into some really awful error messages.)
+(By the way, don't try to use hyphens when naming things, or you will run into some of the most truly horrendous error messages ever written.)
 
-And then creating a new table within it that has the same structure as the Cloudfront logging format. Note that `LOCATION` statement at the end which specifies that the table's source is an S3 path.
+Then, create a table within it that has the same structure as the Cloudfront logging format. Note that `LOCATION` statement at the end which specifies that the table's source is an S3 path.
 
 ``` sql
 CREATE EXTERNAL TABLE IF NOT EXISTS logs_brandur.brandur_org (
@@ -143,17 +145,21 @@ LOCATION 's3://logs-brandur/brandur.org/'
 TBLPROPERTIES ( 'skip.header.line.count'='2' );
 ```
 
-One downside is that the Athena interface is rough even by Amazon's low standards, but the fact that someone else will run a Presto cluster so that you don't have to, is a godsend.
+(This query comes from the [official Cloudfront-with-Athena docs](https://docs.aws.amazon.com/athena/latest/ug/cloudfront-logs.html). Go there for a canonical version in case this one falls out of date.)
+
+One downside is that the Athena interface is rough even by Amazon's low standards, but the fact that someone else will run a Presto cluster so that you don't have to, is a godsend. And we can fix the UI problem.
 
 {{Figure "Querying via Athena's UI." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/athena-query.png" "Querying via Athena's UI." "overflowing")}}
 
-One of AWS' best features is that it has a complete API for every service, and this API is reflected into commands in awscli, which makes it very easy for us to access and use. I have less-than-zero desire to touch Athena's web UI, so I wrote another [little script](https://github.com/brandur/logs/blob/master/bin/query) that creates an Athena query, polls the API until it's finished, then shows the results in a simple tabulated form. The script takes an `.*sql` file as input, so I can write SQL with nice syntax highlighting and completion in Vim, and have them version controlled in Git -- two features not available if using the vanilla Athena product.
+### Queries via CLI (#query-cli)
+
+One of AWS' best features is that it has a complete API for every service, and its reflected into commands in awscli, making it very easy to access and use. I have less-than-zero desire to touch Athena's web UI, so I wrote another [little script](https://github.com/brandur/logs/blob/master/bin/query) that creates an Athena query, polls the API until it's finished, then shows the results in simple tabulated form. The script takes an `*.sql` file as input, so I can write SQL with nice syntax highlighting and completion in Vim, and have it version controlled in Git -- two great features not available if using the vanilla Athena product.
 
 ``` sh
 $ bin/query queries/brandur.org/unique_last_month.sql
 ```
 
-As an example, here's a query that maps over my Cloudfront logs to give me unique visitors per day:
+Here's a query that maps over my Cloudfront logs to give me unique visitors per day over the last month:
 
 ``` sql
 SELECT
@@ -219,7 +225,7 @@ query execution id: 65df1113-b206-4fc0-b1d2-8ac8017cbc35
  + ---------- + --------------- +
 ```
 
-Here's a different query that shows me my most popular articles this month:
+Here's one that shows me my most popular articles this month:
 
 ``` sql
 SELECT
@@ -275,7 +281,9 @@ query execution id: 1830fea4-725d-4e73-ab53-0ffcff3a189f
  + ------------------------------------ + --------------- +
 ```
 
-Note that Athena is currently priced at $5 per TB of data scanned. That makes it quite cheap for a site like mine that generates on the order of 100 MB of logs per month, but it's worth thinking about if you're running something much larger. It also means that it's cheaper if you retain data for shorter periods of time, thereby running analytics over less of it (and making your site more privacy-friendly).
+The major outlier at the top shows the HN effect in action.
+
+Athena is currently priced at $5 per TB of data scanned. That makes it quite cheap for a site like mine that generates on the order of 100 MB of logs per month, but it's worth thinking about if you're running something much larger. A side effect of the pricing is that it also means that it's cheaper if you retain data for shorter periods of time, thereby running analytics over less of it (and making your site more privacy-friendly).
 
 ([Thanks to Mark](https://markmcgranaghan.com/cloudfront-analytics) for inspiring this section of the post.)
 
@@ -287,8 +295,8 @@ I'm using my HN spike from last week as a good slice of time to measure across. 
 
 {{Figure "GoatCounter's measurement of an HN traffic peak." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/goatcounter.png" "GoatCounter's measurement of an HN traffic peak." "overflowing")}}
 
-Both Google Analytics and Goatcounter agreed that I got **~13k unique visitors** across the couple days where it spiked. GoAccess and my own custom Athena queries agreed that it was more like **~33k unique visitors**, giving me a rough proportion of **2.5x**.
+Both Google Analytics and Goatcounter agreed that I got **~13k unique visitors** across the couple days where it spiked. GoAccess and my own custom Athena queries agreed that it was more like **~33k unique visitors**, giving me a rough ratio of **2.5x** more visitors than reported by analytics, and meaning that about **60% of my readers are using an adblocker**.
 
-So while analytics tools are still useful for measuring across a  sample of visitors, they're not giving you the whole story, and that in itself is a good reason that you might want to drop them, privacy concerns aside.
+So while analytics tools are still useful for measuring across a  sample of visitors, they're not giving you the whole story, and that in itself is a good reason that you might want to consider dropping them, privacy concerns aside.
 
-Personally, I think it's still fine to use the ones that are making an effort to be privacy-aware like Goatcounter, and they certainly yield benefits over analytics-by-logging like giving you JavaScript-only information like operating system and screen size.
+Personally, I think it's still fine to use the ones that are making an effort to be privacy-aware like Goatcounter, and they certainly yield benefits over analytics-by-logging like giving you JavaScript-only information like time spent on site and screen size, while being more convenient to look at.
