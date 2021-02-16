@@ -7,7 +7,7 @@ title = "Minimally Invasive (and More Accurate) Analytics: GoAccess and Athena/S
 
 For years, like most of the rest of the internet, I've been using Google Analytics to measure traffic to this site without thinking about it too much. To me, it's never been anything more than a glorified hit counter, and as the product's become more complex over the years, I'm regularly confused by its expanding interface.
 
-More recently, concerned with Google's seemingly insatiable appetite to track us to every corner of the internet, I started looking into more privacy-friendly alternatives. I landed on [Goatcounter](https://www.goatcounter.com/), which purposely does not set cookies and makes no attempt to track users, and is GDPR-compliant without a notice. It's also got a great, simple interface that's a masterwork of UI design compared to Google's crowded panels; pretty graphs, and only the information I care about.
+More recently, concerned with Google's seemingly insatiable appetite to track us to every corner of the internet, I started looking into more privacy-friendly alternatives. I landed on [Goatcounter](https://www.goatcounter.com/), which purposely does not set cookies and makes no attempt to track users, and is GDPR-compliant without a notice. It's also got a great, simple interface that's a masterwork of UI design compared to Google's crowded panels. Everything in one place, pretty graphs, and only the information I care about.
 
 But I soon noticed after installing it that although Goatcounter is an independent analytics product with good intentions (to track as little as possible), that doesn't keep it safe from being included in uBlock Origin's block list. Indeed, my own adblocker was blocking analytics for my website:
 
