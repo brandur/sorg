@@ -1,5 +1,5 @@
 +++
-hook = "A privacy and GDPR friendly approach to getting basic site analytics, and one which is more accurate in an age when adblockers reign supreme."
+hook = "A privacy and GDPR-friendly approach to producing basic and complex site analytics, and one which is more accurate in an age when adblockers reign supreme."
 location = "San Francisco"
 published_at = 2021-02-16T15:16:18Z
 title = "Minimally Invasive (and More Accurate) Analytics: GoAccess and Athena/SQL"
