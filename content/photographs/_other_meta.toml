@@ -13,43 +13,43 @@
 #
 
 #
-# /hacker-analytics
+# /minimal-analytics
 #
 
 [[photographs]]
   crop_width = 650
   original_image_url = "https://www.dropbox.com/s/qmut0530vvlxl2k/athena-query.png?dl=1"
-  slug = "articles/hacker-analytics/athena-query"
+  slug = "articles/minimal-analytics/athena-query"
   title = "Querying via Athena's UI."
 
 [[photographs]]
   crop_width = 650
   original_image_url = "https://www.dropbox.com/s/92c4ac0e2pnvwfc/cloudfront-logging-wide.png?dl=1"
-  slug = "articles/hacker-analytics/cloudfront-logging"
+  slug = "articles/minimal-analytics/cloudfront-logging"
   title = "Configuring CloudFront logging."
 
 [[photographs]]
   crop_width = 650
   original_image_url = "https://www.dropbox.com/s/g8v1s54epugva1z/goaccess.png?dl=1"
-  slug = "articles/hacker-analytics/goaccess"
+  slug = "articles/minimal-analytics/goaccess"
   title = "GoAccess' command line interface."
 
 [[photographs]]
   crop_width = 650
   original_image_url = "https://www.dropbox.com/s/r3x2ljtrv22xd6z/goatcounter.png?dl=1"
-  slug = "articles/hacker-analytics/goatcounter"
+  slug = "articles/minimal-analytics/goatcounter"
   title = "GoatCounter's measurement of an HN traffic peak."
 
 [[photographs]]
   crop_width = 650
   original_image_url = "https://www.dropbox.com/s/04l2orptqa08kvd/s3-lifecycle-rules.png?dl=1"
-  slug = "articles/hacker-analytics/s3-lifecycle-rules"
+  slug = "articles/minimal-analytics/s3-lifecycle-rules"
   title = "Creating an S3 lifecycle rule for expiration."
 
 [[photographs]]
   crop_width = 650
   original_image_url = "https://www.dropbox.com/s/zjkkzi0yft117eu/ublock-origin.png?dl=1"
-  slug = "articles/hacker-analytics/ublock-origin"
+  slug = "articles/minimal-analytics/ublock-origin"
   title = "uBlock Origin blocking analytics sites."
 
 ##############################################################################

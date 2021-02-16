@@ -11,7 +11,7 @@ More recently, concerned with Google's seemingly insatiable appetite to track us
 
 But I soon noticed after installing it that although Goatcounter is an independent analytics product with good intentions (to track as little as possible), that doesn't keep it safe from being included in uBlock Origin's block list. Indeed, my own adblocker was blocking analytics for my website:
 
-{{Figure "uBlock Origin blocking analytics sites." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/ublock-origin.png" "uBlock Origin blocking analytics sites." "overflowing")}}
+{{Figure "uBlock Origin blocking analytics sites." (ImgSrcAndAltAndClass "/photographs/articles/minimal-analytics/ublock-origin.png" "uBlock Origin blocking analytics sites." "overflowing")}}
 
 This got me thinking: this site is mostly technical material, and technical people tend to use adblockers. If a big segment of my readership are using adblockers, are my analytics even accurate? If not, how far are they off? After some investigation, the answer: they are absolutely _not_ accurate, and off by _a lot_. It turns out that if there's any demographic of person who has an adblocker installed -- it's you, dear reader.
 
@@ -25,17 +25,17 @@ If analytics products are being blocked at that level, there's a strong argument
 
 [GoAccess](https://goaccess.io/) is a very well-written log parsing and visualizing utility, featuring both a curses-based terminal interface as well as a web server that will produce graphical HTML.
 
-{{Figure "GoAccess' command line interface." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/goaccess.png" "GoAccess' command line interface." "overflowing")}}
+{{Figure "GoAccess' command line interface." (ImgSrcAndAltAndClass "/photographs/articles/minimal-analytics/goaccess.png" "GoAccess' command line interface." "overflowing")}}
 
 It supports all common web logging formats including those from Apache, Nginx, ELBs, and CloudFront. This site is [hosted on S3 and served via CloudFront](/aws-intrinsic-static), so I'm using the latter. Logging from CloudFront is easily configurable under the main settings panel for a distribution:
 
-{{Figure "Configuring CloudFront logging." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/cloudfront-logging.png" "Configuring CloudFront logging." "overflowing")}}
+{{Figure "Configuring CloudFront logging." (ImgSrcAndAltAndClass "/photographs/articles/minimal-analytics/cloudfront-logging.png" "Configuring CloudFront logging." "overflowing")}}
 
 **Tip:** Consider using a log prefix as well so that you can log from multiple sites to the same bucket, and save yourself from configuring the same thing over and over again.
 
 A nice augmentation is to configure the target S3 bucket with an expiration policy. This allows you to say, have logs pruned automatically after 30 days, further protecting your visitors privacy by retaining less, and preventing logs from accumulating forever and eating into your storage costs.
 
-{{Figure "Creating an S3 lifecycle rule for expiration." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/s3-lifecycle-rules.png" "Creating an S3 lifecycle rule for expiration." "overflowing")}}
+{{Figure "Creating an S3 lifecycle rule for expiration." (ImgSrcAndAltAndClass "/photographs/articles/minimal-analytics/s3-lifecycle-rules.png" "Creating an S3 lifecycle rule for expiration." "overflowing")}}
 
 (Create a new "lifecycle rule" under the `Management` section of a bucket. The settings from there are all straightforward.)
 
@@ -149,7 +149,7 @@ TBLPROPERTIES ( 'skip.header.line.count'='2' );
 
 One downside is that the Athena interface is rough even by Amazon's low standards, but the fact that someone else will run a Presto cluster so that you don't have to, is a godsend. And we can fix the UI problem.
 
-{{Figure "Querying via Athena's UI." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/athena-query.png" "Querying via Athena's UI." "overflowing")}}
+{{Figure "Querying via Athena's UI." (ImgSrcAndAltAndClass "/photographs/articles/minimal-analytics/athena-query.png" "Querying via Athena's UI." "overflowing")}}
 
 ### Queries via CLI (#query-cli)
 
@@ -293,7 +293,7 @@ By comparing the results from my online analytic tools and those from these logg
 
 I'm using my HN spike from last week as a good slice of time to measure across. Note that this analysis isn't perfectly scientific and certainly has some error bars, but I've done my best to filter out robots, static files, and duplicate visits, so the magnitude should be roughly right.
 
-{{Figure "GoatCounter's measurement of an HN traffic peak." (ImgSrcAndAltAndClass "/photographs/articles/hacker-analytics/goatcounter.png" "GoatCounter's measurement of an HN traffic peak." "overflowing")}}
+{{Figure "GoatCounter's measurement of an HN traffic peak." (ImgSrcAndAltAndClass "/photographs/articles/minimal-analytics/goatcounter.png" "GoatCounter's measurement of an HN traffic peak." "overflowing")}}
 
 Both Google Analytics and Goatcounter agreed that I got **~13k unique visitors** across the couple days where it spiked. GoAccess and my own custom Athena queries agreed that it was more like **~33k unique visitors**, giving me a rough ratio of **2.5x** more visitors than reported by analytics, and meaning that about **60% of my readers are using an adblocker**.
 
