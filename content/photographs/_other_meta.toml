@@ -180,6 +180,16 @@
 #
 
 #
+# /nanoglyphs/021-entropy
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/mtnly810xmz89kw/L1030975.JPG?dl=1"
+  slug = "nanoglyphs/021-entropy/yunomine"
+  title = "Yunomine Onsen"
+
+#
 # /nanoglyphs/019-api-libraries
 #
 
