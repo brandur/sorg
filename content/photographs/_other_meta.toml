@@ -89,6 +89,28 @@
   title = "Markdown and Git"
 
 #
+# /fragments/leica-q2-monochrom
+#
+
+[[photographs]]
+  crop_width = 650
+  original_image_url = "https://www.dropbox.com/s/w0pyp9ild0e3cfa/image-comparison.jpg?dl=1"
+  slug = "fragments/leica-q2-monochrom/image-comparison"
+  title = "Leica Q2 and Q2 Monochrom images compared"
+
+[[photographs]]
+  crop_width = 650
+  original_image_url = "https://www.dropbox.com/s/dgr20h10fnskp5b/leica-q2.jpg?dl=1"
+  slug = "fragments/leica-q2-monochrom/leica-q2"
+  title = "The Leica Q2"
+
+[[photographs]]
+  crop_width = 650
+  original_image_url = "https://www.dropbox.com/s/3cf94luaq80w73a/leica-q2-monochrom.jpg?dl=1"
+  slug = "fragments/leica-q2-monochrom/leica-q2-monochrom"
+  title = "The Leica Q2 Monochrom"
+
+#
 # /fragments/new-york
 #
 
