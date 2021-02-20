@@ -42,7 +42,9 @@ Open questions/less sure:
 
 ## Taxes (#taxes)
 
-As the budget collapses, an inevitable result will be City Hall starting to look around on what new taxes they can levy. As usual in San Francisco, no one ever considers that the problem with an inbalance might be that the city is spending too much (despite the budget more than doubling over the last decade, [$6.5B in 2009](https://www.city-journal.org/san-franciscos-municipal-budget) to $13.6B in 2020), it's always that there just isn't enough money. Predicting the exact form of new taxes will take is practically impossible, but there are a few shots in the dark:
+As the budget collapses, an inevitable result will be City Hall starting to look around on what new taxes they can levy. As usual in San Francisco, no one ever considers that the problem with an inbalance might be that the city is spending too much (despite the budget more than doubling over the last decade, [$6.5B in 2009](https://www.city-journal.org/san-franciscos-municipal-budget) to $13.6B in 2020), it's always that there just isn't enough money.
+
+Predicting the exact form of new taxes will take is practically impossible, but there are a few shots in the dark:
 
 * The addition of a "small business recovery tax" as a surcharge on all delivered products, especially gunning for larger companies like Amazon. It was _Amazon's fault_ that local businesses died of course, not that San Francisco politicians choked them to death for two years.
 
