@@ -20,4 +20,4 @@ It's not going to matter for a month, or a year, or probably five years, but onc
 
 I practice what I preach. This entire site is generated from Markdown, and also [lives on GitHub](https://github.com/brandur/sorg). It could be remixed even after it's gone.
 
-{{Figure "Markdown and Git." (ImgSrcAndAltAndClass "/photographs/fragments/graceful-degradation-time/markdown-and-git.png" "Markdown and Git." "overflowing")}}
+{{FigureSingleWithClass "Markdown and Git." "/photographs/fragments/graceful-degradation-time/markdown-and-git.png" "overflowing"}}
