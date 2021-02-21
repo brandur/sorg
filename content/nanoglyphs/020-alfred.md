@@ -1,11 +1,11 @@
 +++
 image_alt = "Yoshihiro chef's knife"
 image_url = "/assets/images/nanoglyphs/020-alfred/knife-2@2x.jpg"
-published_at = 2021-02-15T15:58:37Z
+published_at = 2021-02-21T18:17:19Z
 title = "Alfred & the Zen of Tool Sharpening"
 +++
 
-A few months ago I rebooted a dormant sushi hobby, and bought an excessively elaborate kitchen knife to go with it -- 52 layers of hammered Japanese steel and fashioned in the style of a [Damascus blade](https://en.wikipedia.org/wiki/Damascus_steel). Highly functional for chopping things; all pleasing aesthetic lines.
+Last year, I rebooted a dormant sushi hobby, and bought an excessively elaborate kitchen knife to go with it -- 52 layers of hammered Japanese steel and fashioned in the style of a [Damascus blade](https://en.wikipedia.org/wiki/Damascus_steel). Highly functional for chopping things; all pleasing aesthetic lines.
 
 It wasn't a one-time transaction. It might be bought only once, but it needs maintenance forever. Always use a cutting board. Not being stainless steel, don’t leave it wet. Sharpen regularly. To help with that last point, I even bought an honest-to-goodness whetstone (a nice benefit of the commodity age, it was only $30 on Amazon) and learned to use it via the globe’s most preeminent tutor, YouTube. Submerge for 10 minutes to let it absorb water, sharpen on the coarse grit, flip the stone, sharpen on the fine one. A little laborious, but satisfying.
 
