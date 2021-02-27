@@ -1,0 +1,4 @@
+#subscribe
+  form method="post" action="https://nanoglyph-signup.brandur.org/submit"
+    input type="email" name="email" placeholder="Email"
+    input type="submit" value="Subscribe to Nanoglyph"

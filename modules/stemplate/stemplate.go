@@ -1,6 +1,7 @@
 package stemplate
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"html/template"
@@ -11,6 +12,7 @@ import (
 	"time"
 
 	"github.com/brandur/modulir/modules/mtemplate"
+	"github.com/yosssi/ace"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the
@@ -114,10 +116,23 @@ func nanoglyphSignup(inEmail bool) template.HTML {
 		return template.HTML("")
 	}
 
-	return template.HTML(`
-<p id="subscribe-encouragement">This post was originally broadcast in email form. Can I interest you in seeing more like it? Consider signing up below. <em>Nanoglyph</em> is never sent more than once a week.</p>
-<div id="subscribe"><form method="post" action="https://nanoglyph-signup.brandur.org/submit"><input type="email" name="email" placeholder="Email"><input type="submit" value="Subscribe to Nanoglyph"></form></div>
-	`)
+	var b bytes.Buffer
+	writer := bufio.NewWriter(&b)
+
+	tmpl, err := ace.Load("", "./views/_nanoglyphs_signup", &ace.Options{})
+	if err != nil {
+		panic(err)
+	}
+
+	err = tmpl.Execute(writer, nil)
+	if err != nil {
+		panic(err)
+	}
+
+	subscribeText := `<p id="subscribe-encouragement">This post was originally broadcast in email form. Can I interest you in seeing more like it? Consider signing up below. <em>Nanoglyph</em> is never sent more than once a week.</p>`
+
+	writer.Flush()
+	return template.HTML(subscribeText + b.String())
 }
 
 // Changes a number to a string and uses a separator for groups of three

@@ -4,6 +4,7 @@ import (
 	"testing"
 	"time"
 
+	_ "github.com/brandur/sorg/modules/stesting"
 	assert "github.com/stretchr/testify/require"
 )
 
@@ -56,6 +57,18 @@ func TestLazyRetinaImageLightbox(t *testing.T) {
 
 func TestMonthName(t *testing.T) {
 	assert.Equal(t, "July", monthName(time.July))
+}
+
+func TestNanoglyphSignup(t *testing.T) {
+	t.Run("InEmail", func(t *testing.T) {
+		str := nanoglyphSignup(true)
+		assert.Equal(t, "", string(str))
+	})
+
+	t.Run("NotEmail", func(t *testing.T) {
+		str := nanoglyphSignup(false)
+		assert.Contains(t, str, "<form")
+	})
 }
 
 func TestNumberWithDelimiter(t *testing.T) {

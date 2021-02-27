@@ -4,6 +4,7 @@
       p#nanoglyph Nanoglyph
       p
         = include views/_nanoglyphs_about .
+        = include views/_nanoglyphs_signup .
       #subscribe
         form method="post" action="https://nanoglyph-signup.brandur.org/submit"
           input type="email" name="email" placeholder="Email"
