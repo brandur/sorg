@@ -15,4 +15,4 @@
           span.published-date {{FormatTimeYearMonth .PublishedAt}}
       {{end}}
     #footer
-      img src="https://passages-signup.brandur.org/public/tiny-preload-image.png"
+      img src="https://passages-signup.brandur.org/public/tiny-preload-image.png" style="margin: 0; width: auto;"

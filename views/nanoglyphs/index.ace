@@ -16,4 +16,4 @@
           span.published-date {{FormatTimeLocal .PublishedAt}}
       {{end}}
     #footer
-      img src="https://nanoglyph-signup.brandur.org/public/tiny-preload-image.png"
+      img src="https://nanoglyph-signup.brandur.org/public/tiny-preload-image.png" style="margin: 0; width: auto;"
