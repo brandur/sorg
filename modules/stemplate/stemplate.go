@@ -24,6 +24,7 @@ var FuncMap = template.FuncMap{
 	"LazyRetinaImage":         lazyRetinaImage,
 	"LazyRetinaImageLightbox": lazyRetinaImageLightbox,
 	"MonthName":               monthName,
+	"NanoglyphSignup":         nanoglyphSignup,
 	"NumberWithDelimiter":     numberWithDelimiter,
 	"Pace":                    pace,
 	"RandIntn":                randIntn,
@@ -106,6 +107,17 @@ func inKM(m float64) float64 {
 
 func monthName(m time.Month) string {
 	return m.String()
+}
+
+func nanoglyphSignup(inEmail bool) template.HTML {
+	if inEmail {
+		return template.HTML("")
+	}
+
+	return template.HTML(`
+<p id="subscribe-encouragement">This post was originally broadcast in email form. Can I interest you in seeing more like it? Consider signing up below. <em>Nanoglyph</em> is never sent more than once a week.</p>
+<div id="subscribe"><form method="post" action="https://nanoglyph-signup.brandur.org/submit"><input type="email" name="email" placeholder="Email"><input type="submit" value="Subscribe to Nanoglyph"></form></div>
+	`)
 }
 
 // Changes a number to a string and uses a separator for groups of three

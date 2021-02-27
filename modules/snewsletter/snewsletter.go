@@ -128,6 +128,12 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 		NoFollow:        true,
 		NoHeaderLinks:   email,
 		NoRetina:        true,
+
+		// Pass a special template var so that we can optionally render signup
+		// forms right inside the body of a newsletter issue.
+		TemplateData: map[string]interface{}{
+			"InEmail": email,
+		},
 	})
 	if err != nil {
 		return nil, err
