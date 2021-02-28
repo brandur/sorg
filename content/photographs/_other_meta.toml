@@ -205,11 +205,27 @@
 # /nanoglyphs/021-entropy
 #
 
+# [[photographs]]
+#   crop_width = 1200
+#   original_image_url = "https://www.dropbox.com/s/mtnly810xmz89kw/L1030975.JPG?dl=1"
+#   slug = "nanoglyphs/021-entropy/yunomine"
+#   title = "Yunomine Onsen"
+
+#
+# /nanoglyphs/021-ides
+#
+
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/mtnly810xmz89kw/L1030975.JPG?dl=1"
-  slug = "nanoglyphs/021-entropy/yunomine"
-  title = "Yunomine Onsen"
+  original_image_url = "https://www.dropbox.com/s/omt60a0q4abj580/L1070842-chairlift.JPG?dl=1"
+  slug = "nanoglyphs/021-ides/chairlift"
+  title = "A chairlift off season"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/v9jbu6xrhmeo2dg/L1070841.JPG?dl=1"
+  slug = "nanoglyphs/021-ides/wind-turbine"
+  title = "A wind turbine near Vancouver"
 
 #
 # /nanoglyphs/019-api-libraries
