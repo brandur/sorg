@@ -11,7 +11,7 @@ Welcome to _Nanoglyph_.
 
 ---
 
-As mentioned in [020](/nanoglyphs/020-alfred) last week, I've been doing a lot of work in Oracle's favorite programming language. After many long years, it's been tacitly [1] acknowledged internally that Ruby's molluskesque performance characteristics, poor reliability guarantees (interpreter, no static typing), and continuing non-existent (or [very nascent](/nanoglyphs/018-ractors)) concurrency story are factors significantly holding back software speed and quality.
+As mentioned in [020](/nanoglyphs/020-alfred) last week, I've been doing a lot of work in Oracle's choice programming language. After many long years, it's been tacitly [1] acknowledged internally that Ruby's molluskesque performance characteristics, poor reliability guarantees (interpreter, no static typing), and continuing non-existent (or [very nascent](/nanoglyphs/018-ractors)) concurrency story are factors significantly holding back software speed and quality.
 
 Why Java? There's no single answer. My interpretation: because Google likes it, and we want to be like Google. But although it could be better, it also could be a lot worse. Java is a rock solid B- of programming languages. (I wanted to say that it's the "C+" of programming languages, but that's confusing.)
 
