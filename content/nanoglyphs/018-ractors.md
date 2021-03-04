@@ -13,7 +13,7 @@ Typing aside, Ruby 3 came with some other interesting additions. Most notably is
 
 ---
 
-Brief intermission: Welcome to _Nanoglyph_, a weekly newsletter about parallel computing and spruce trees. If you're reading this on the web, you can [subscribe here](https://nanoglyph-signup.brandur.org).
+Brief intermission: Welcome to _Nanoglyph_, a weekly newsletter about parallel computing and spruce trees. If you're reading this on the web, and you wouldn't mind seeing more posts like this one, you can [subscribe here](https://nanoglyph-signup.brandur.org).
 
 ---
 
