@@ -74,7 +74,7 @@ I started my career as a C# developer way back in the prehistory of the 2000s. A
 
 And yet, when I joined Heroku around 2011, I was happy to see it go. Exchanging C#'s heavy syntax for Ruby's expressive DSLs was so freeing, and we were all into the idea of small, sharp tools, running small programs from our terminals instead of through a monolithic IDE that even on the bulkiest of machines, was slow to open a file or bring up and a context menu, and kept your fans spinning at full speed all day. It felt like the wild west, like were pushing towards a leaner, meaner, new frontier of computing.
 
-But do that enough years, and you get tired. Tired of squashing the tenth bug of the day that a compiler and better type system would have detected trivially. Tired of your editors painstakingly-configured LSP integration not working right or suddenly failing mysteriously, leading to wasted hours of troubleshooting. Tired of looking up the API reference for `Net::HTTP` for the 2,0000th time. Tired of your duct tape CTags-based jump-to-definition working 60% of the time.
+But do that enough years, and you get tired. Tired of squashing the tenth bug of the day that a compiler and better type system would have detected trivially. Tired of your editors painstakingly-configured LSP integration not working right or suddenly failing mysteriously, leading to wasted hours of troubleshooting. Tired of looking up the API reference for `Net::HTTP` for the 2,000th time. Tired of your duct tape CTags-based jump-to-definition working 60% of the time.
 
 IDEs _are_ good. Microsoft was right all along.
 
