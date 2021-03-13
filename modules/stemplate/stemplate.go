@@ -129,7 +129,7 @@ func nanoglyphSignup(inEmail bool) template.HTML {
 		panic(err)
 	}
 
-	subscribeText := `<p id="subscribe-encouragement">This post was originally broadcast in email form. Can I interest you in seeing more like it? Consider signing up below. <em>Nanoglyph</em> is never sent more than once a week.</p>`
+	subscribeText := `<p id="subscribe-encouragement">This post was originally broadcast in email form. Can I interest you in seeing more like it? <em>Nanoglyph</em> is never sent more than once a week.</p>`
 
 	writer.Flush()
 	return template.HTML(subscribeText + b.String())
