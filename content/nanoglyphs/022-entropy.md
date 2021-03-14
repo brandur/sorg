@@ -1,7 +1,7 @@
 +++
 image_alt = "Yunomine Onsen"
 image_url = "/photographs/nanoglyphs/022-entropy/yunomine@2x.jpg"
-published_at = 2021-03-07T00:09:32Z
+published_at = 2021-03-14T22:17:30Z
 title = "Time and Entropy"
 +++
 
