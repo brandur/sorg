@@ -15,7 +15,7 @@ There's an argument to be made that it's okay to let these old things go. Conten
 
 ---
 
-As usual, I'm Brandur, this is _Nanoglyph_, a newsletter about program longevity and hot springs. If you're tired of all this blather, you can always unsubscribe in [one simple click](%unsubscribe_url%).
+I'm Brandur, this is _Nanoglyph_, a newsletter about program longevity and hot springs. As usual, if you're tired of all this blather, you can always unsubscribe in [one simple click](%unsubscribe_url%).
 
 ---
 
@@ -23,17 +23,17 @@ As usual, I'm Brandur, this is _Nanoglyph_, a newsletter about program longevity
 
 One of the most inspirational ideas to come out of old world Heroku was [erosion resistance](https://blog.heroku.com/the_new_heroku_4_erosion_resistance_explicit_contracts).
 
-At the time, in a pre-container pre-serverless world, it was incredibly common to lose applications as something failed in their underlying OS:
+At the time, in a pre-container, pre-serverless world, it was a common occurrence to lose applications as something failed in one of their supporting layers:
 
 * Log files filled up the disk.
-* An upgrade changed something and rendered the application not startable.
+* An upgrade changed something and rendered the application unstartable.
 * The server itself crashed and had no mechanism for coming back online, nor any redundancy.
 
-Heroku's erosion resistance suggests solving the problem by minimizing the surface area of the contract between application and host, and making it explicit. The smaller interface allows the underlying system to be changed and upgraded while keeping it compatible with existing applications. OSes would stay up-to-date with important upgrades and security patches, and applications would stay runnable even if left unchanged for many years.
+Heroku's erosion resistance suggests solving the problem by minimizing the surface area of the contract between application and host, and making it explicit. The smaller interface allows the underlying system to be changed and upgraded while keeping it compatible with existing applications. OSes would stay up-to-date with important upgrades and security patches, and applications would stay runnable even if left unchanged for years.
 
 ---
 
-Time would show that the original idea of erosion resistance was a _little_ on the optimistic side. Heroku's first `cedar` stack would eventually require an upgrade to `cedar-14`, and that was subsequently replaced by more regular stack upgrades in the form of `heroku-16`, `heroku-18`, and `heroku-20`, each upgrade requiring user intervention as slugs tended to be tied to system dependencies in subtle ways, but it's still turned out to be one of the stickiest ideas of the cloud age, with the core philosophy being subsequently baked deep into Docker and container images, now a keystone of all cloud infrastructure.
+Time would show that the original idea of erosion resistance was a _little_ on the optimistic side. Heroku's first `cedar` stack would eventually require an upgrade to `cedar-14`, and that was subsequently replaced by more regular stack upgrades in the form of `heroku-16`, `heroku-18`, and `heroku-20`, each one requiring some user intervention as slugs tended to be tied to system dependencies in subtle ways, but it's still turned out to be one of the stickiest ideas of the cloud age, with the core philosophy being subsequently baked deep into Docker and container images, now a keystone of all cloud infrastructure.
 
 Erosion resistance also applies beyond apps, and a principle that we should make an effort to apply when building anything. With every new product or project, we should be asking ourselves: how can I choose a programming language, tech stack, and database (or lack thereof) that maximizes the chances that what I'm building will be around ten years from now?
 
@@ -49,13 +49,13 @@ I [argued in a blog post a few weeks ago](/fragments/graceful-degradation-time) 
 
 Contrast this to a dynamite site which stores sources in a database that needs frequent upgrades to stay healthy, and renders with a dynamic language with hundreds of dependencies and whose ever-shifting ecosystem demands full time attention just to keep up. A decade on, it's likely that the frozen-in-amber HTML snapshots from archive.org will be all that's left.
 
-<img src="/photographs/nanoglyphs/022-entropy/git@2x.png" alt="Sorg in Git">
+<img src="/photographs/nanoglyphs/022-entropy/git@2x.png" alt="Sorg in Git" class="img_constrained">
 
 ### Think on business models (#business-models)
 
-About ten years ago, a novel new writing platform called Medium experienced a sudden surge in popularity. With beautiful content layouts and a powerful editor, it was especially popular amongst the tech community, who abandoned personal blogs to rush to it in droves.
+About ten years ago, a novel new writing platform called Medium experienced a sudden surge in popularity. With beautiful content layouts, network effects, and a powerful editor, it was especially popular amongst the tech community, who hurriedly abandoned personal blogs to rush to it in droves.
 
-And for many years, it was respectable to write on Medium, but right from the beginning there was always a problem. This was an investor-bootstrapped company employing many highly-priced software engineers and operating in the world's most expensive city. And even with occasional surges in traffic, blogging isn't traditionally known as a highly lucrative endeavor. These two forces were fundamentally at odds with one another, and over the years Medium degraded in pursuit of a business model -- first with little nag messages and ads, and later with full-screen modals and paywalls. They'd taken their users' content and held it hostage, but they owned the platform and were within their rights to do so.
+And for many years, it was respectable to write on Medium, but right from the beginning there was always a problem. This was an investor-bootstrapped company employing many highly-priced software engineers and operating in the world's most expensive city. And even with occasional surges in traffic, blogging isn't traditionally known as a highly lucrative market. These two forces were fundamentally at odds with one another, and over the years Medium degraded in pursuit of a business model -- first with little nag messages and ads, and later with full-screen modals and paywalls. They'd taken their users' content and held it hostage, but they owned the platform and were within their rights to do so.
 
 These days, to most of us in tech circles, it seems like the height ill-advised hubris to put new content on Medium, but it was different in those early days. It was a great platform at the time, and people were optimistic that it would only get better.
 
@@ -69,7 +69,7 @@ Years ago, some old colleagues from Calgary were about to quit their jobs and em
 
 To my everlasting chagrin, my short-sighted younger told them to try Posterous, the writing product du jour, whose differentiating feature was being able to write posts from your inbox, and publish them by email (which ironically, is an idea [that's just come back](https://hey.com/world/) for a second round). Of course, a few years later, Posterous was acquired by Twitter and shuttered shortly thereafter.
 
-But I got lucky, and my bad suggestion accidentally became a good suggestion. The founders of Posterous felt strongly about keeping their users' content online, so created a new extra-Twitter platform, aptly named Posthaven. From [Posthaven's pledge](https://posthaven.com/our_pledge):
+But I got lucky, and my bad suggestion accidentally became a good suggestion. The founders of Posterous felt strongly about keeping their users' content online, so created a new extra-Twitter initiative, aptly named Posthaven. From [Posthaven's pledge](https://posthaven.com/our_pledge):
 
 > Need a blog? So did we. This one is made to last forever.
 > 
@@ -79,11 +79,11 @@ But I got lucky, and my bad suggestion accidentally became a good suggestion. Th
 >
 > It is a simple, clean, well-lit place to keep your stuff.
 
-Posthaven charges $5/month, which is more money than most people are used to paying for hosting text content, but their payment model comes with an interesting quirk: after you've been paying for the service for a year, they'll keep your existing content around forever, even if you stop paying.
+Posthaven charges $5/month, which is more money than most people are used to paying for hosting text content, but their payment model has an interesting twist: after you've been paying for the service for a year, they'll keep your existing content around forever, even if you stop paying.
 
-They provided an easy route for evacuating content off the sinking ship that was Posterous, and because of that, my friends' blog is still online to this day, unlike many of its contemporaries. (See [Beyond the Maple Tree](https://beyondthemapletree.com/).)
+They provided an easy route for evacuating content off the sinking ship that was Posterous, and because of that, my friends' blog is still online to this day, unlike many of its contemporaries. (See [_Beyond the Maple Tree_](https://beyondthemapletree.com/).)
 
-Posthaven is still a very small team, so it remains to be seen how long their promise of forever will actually last, but I hope they make it decades.
+Posthaven is still a very small team, so it remains to be seen how long their promise of forever will be able to last, but I hope they make it decades.
 
 ### One TLD, as generic as possible (#generic-tld)
 
@@ -111,7 +111,7 @@ This is a "dark" form of persistence because it brings the content out of the pu
 
 Today's photos come from a trip to Japan a few years back where one of the places we visited along the Kumano Kodo was [Yunomine Onsen](https://www.tb-kumano.jp/en/places/yunomine/), a tiny hot spring village.
 
-I've already written about it in [an old edition of _Passages & Glass_](/passages/003-koya#yunomine), but it's been a good year to revisit old memories. Nestled around a steaming creek where locals go to slow-cook onsen eggs, the village features Japan's oldest hot spring (discovered 1,800 years ago), and a tiny two-person bathhouse called Tsuboyu. Everything was covered with thick mineral buildups (I found some taps with inches worth of the stuff), subtly beautiful in a unique, wabi-sabi sort of way. Easily one of the best trips of my life.
+I've already written about it in [an old edition of _Passages & Glass_](/passages/003-koya#yunomine), but it's been a good year to revisit old memories. Nestled around a steaming creek where locals go to slow-cook onsen eggs, the village features Japan's oldest hot spring (discovered 1,800 years ago), and a tiny two-person bathhouse called Tsuboyu. Everything was covered with thick mineral buildups (see image at the to -- I found some taps with inches worth of the stuff), which although is proximately an eyesore, was subtly beautiful in a profound, wabi-sabi sort of way. Easily one of the best trips of my life.
 
 Until next week.
 
