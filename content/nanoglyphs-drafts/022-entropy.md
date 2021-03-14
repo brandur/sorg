@@ -7,15 +7,15 @@ title = "Time and Entropy"
 
 A few weeks back, looking at some photos of old vacations, and feeling a little nostalgic, I started looking up some old blogs written by friends years ago as they were making their own journeys around the world.
 
-I was disappointed to find every one of them, without exception, now gone. The vanishings were for different reasons -- a defunct blogging service, a deleted account, or an expired domain -- but the result was the same. Entropy had taken its toll, and these bright flashes of history were scrubbed from time.
+I was disappointed to find every one of them, without exception, now gone. The vanishings were for different reasons -- a defunct blogging service, a deleted account, or an expired domain -- but the result was the same. Entropy had taken its merciless toll, and these bright sparks of history were now scrubbed from time.
 
 The Internet Archive's [Wayback Machine](https://archive.org/web/) had saved some of them from total extinction, but only for those whose URL I could remember, and even for those, there were many holes -- scattered pages and many images that their crawler hadn't indexed or decided not to save.
 
-There's an argument to be made that it's okay to let things go. Content is created, gets a brief moment to shine, and is forgotten, leaving a vacuum for the newly created. There is something special about the ephemeral -- in some ways we value something more knowing that it's not going to last, but I still find it unsatisfying. In very few of these cases was the impermanence a conscious choice, and moreover, and many of these blogs are well representative of the earliest days of the internet, and historically interesting, especially as we continue our unstoppable trajectory towards the entire world's content slurped up into a few major platforms.
+There's an argument to be made that it's okay to let these old things go. Content is created, gets a brief moment to shine, and is forgotten, leaving vacuum for something new. There is something special about the ephemeral -- in some ways we value something more knowing that it's not going to last, but I still find it unsatisfying. In very few of these cases was the impermanence a conscious choice, and moreover, and many of these blogs are well representative of the pioneering days of the internet, and historically interesting, especially as we continue our unstoppable trajectory towards the entire world's content slurped up into a few colossal platforms.
 
 ---
 
-As usual, I'm Brandur, this is _Nanoglyph_, a newsletter about program longevity and hot springs. You can always unsubscribe in [one simple click](%unsubscribe_url%).
+As usual, I'm Brandur, this is _Nanoglyph_, a newsletter about program longevity and hot springs. If you're tired of all this blather, you can always unsubscribe in [one simple click](%unsubscribe_url%).
 
 ---
 
@@ -33,11 +33,11 @@ Heroku's erosion resistance suggests solving the problem by minimizing the surfa
 
 ---
 
-Time would show that the original idea of erosion resistance a little optimistic. Heroku's original `cedar` stack would eventually require an upgrade to `cedar-14`, and that was subsequently replaced by more regular stack upgrades in the form of `heroku-16`, `heroku-18`, and `heroku-20`, each upgrade requiring user intervention as slugs tended to be tied to system dependencies in subtle ways, but it's still turned out to be one of the stickiest ideas of the cloud age, with the core philosophy being subsequently baked deep into Docker and container images, which are now a keystone of all cloud infrastructure.
+Time would show that the original idea of erosion resistance was a _little_ on the optimistic side. Heroku's first `cedar` stack would eventually require an upgrade to `cedar-14`, and that was subsequently replaced by more regular stack upgrades in the form of `heroku-16`, `heroku-18`, and `heroku-20`, each upgrade requiring user intervention as slugs tended to be tied to system dependencies in subtle ways, but it's still turned out to be one of the stickiest ideas of the cloud age, with the core philosophy being subsequently baked deep into Docker and container images, now a keystone of all cloud infrastructure.
 
-Erosion resistance also applies beyond apps, and a principle that we should make an effort to apply when building anything. How can I choose a programming language, tech stack, and database (or lack thereof) that maximizes the chances that what I'm building will be around ten years from now?
+Erosion resistance also applies beyond apps, and a principle that we should make an effort to apply when building anything. With every new product or project, we should be asking ourselves: how can I choose a programming language, tech stack, and database (or lack thereof) that maximizes the chances that what I'm building will be around ten years from now?
 
-Here are few ideas for how to have your _writing_ resist time and entropy.
+It's a big question, and there are many answers. Here are few ideas specifically for how to _write_ in a way that resists time and entropy.
 
 ---
 
@@ -55,13 +55,13 @@ Contrast this to a dynamite site which stores sources in a database that needs f
 
 About ten years ago, a novel new writing platform called Medium experienced a sudden surge in popularity. With beautiful content layouts and a powerful editor, it was especially popular amongst the tech community, who abandoned personal blogs to rush to it in droves.
 
-And for many years, it was respectable to write on Medium, but right from the beginning there was always a problem. This was an investor-bootstrapped company employing many highly-priced software engineers and operating in the world's most expensive city. And even with occasional surges in traffic, blogging isn't traditionally known as a highly lucrative endeavor. These two forces were fundamentally at odds with one another, and over the years Medium degraded in pursuit of a business model -- first with little nag messages and ads, and later with full-screen modals and paywalls. They'd taken their users' content and held it hostage, but they owned the platform, and were within their rights to do so.
+And for many years, it was respectable to write on Medium, but right from the beginning there was always a problem. This was an investor-bootstrapped company employing many highly-priced software engineers and operating in the world's most expensive city. And even with occasional surges in traffic, blogging isn't traditionally known as a highly lucrative endeavor. These two forces were fundamentally at odds with one another, and over the years Medium degraded in pursuit of a business model -- first with little nag messages and ads, and later with full-screen modals and paywalls. They'd taken their users' content and held it hostage, but they owned the platform and were within their rights to do so.
 
 These days, to most of us in tech circles, it seems like the height ill-advised hubris to put new content on Medium, but it was different in those early days. It was a great platform at the time, and people were optimistic that it would only get better.
 
 Here's your second idea for entropy resistant writing: _think on business models_. The exact extent to which Medium went bad may not have been foreseeable, but the fact that there was a strong chance it'd get worse absolutely was. The same was true for a lot of the traditional power platforms like Tumblr, Flickr, Blogger, and even as far back as Geocities. Although they've all survived in some form through to today, your content on those services was always at risk.
 
-This is one reason that I'm not _quite_ as enthusiastic as most when it comes to internet's current golden child, Substack. I love newsletters, love reading good writing, and as I [wrote last week](/nanoglyphs/021-ides#push-model), wish only the best for them and that they'll put a dent in our increasingly cynical media institutions, but at the end of the day, sending email isn't cheap. At least Substack has a business model and there's no question that they're doing well off their top writers, but there _is_ a question as to what the platform looks like over the long term. There's a non-zero chance of a Medium repeat.
+This is one reason that I'm not _quite_ as enthusiastic as most when it comes to internet's current golden child, Substack. I love newsletters, love reading good writing, and as I [wrote last week](/nanoglyphs/021-ides#push-model), wish only the best for them and that they'll put a dent in our increasingly cynical media institutions, but at the end of the day, sending email isn't cheap. At least Substack has a business model and there's no question that they're doing well off their top writers, but there _is_ a question as to what the platform looks like over the long term, especially for long tail users. There's a non-zero chance of a Medium repeat.
 
 ### Posterous and Posthaven (#posterous-and-posthaven)
 
@@ -95,9 +95,9 @@ I blog under my own name at _brandur.org_, which works well enough for personal 
 
 ### Newsletters: Dark persistence (#dark-persistence)
 
-A common thesis is that distributed systems are more robust. A common refrain these days is that if you want information to be durable and last, put it on a blockchain. (I'm not so sure about that one myself, but you hear it a lot.)
+Distributed systems are more robust. A common refrain these days is that if you want information to be durable and last, put it on a blockchain. (I'm not so sure about that one myself, but you do hear it a lot.)
 
-Here's one last idea for a dark form of erosion resistance: write a newsletter. Even if the original content disappears from the web, there's a reasonable chance that it's recoverable as someone out there still has a copy of it in their mailbox.
+Here's one last idea for a dark form of erosion resistance: write a newsletter. Even if the original content disappears from the web, there's a reasonable chance that it's fully recoverable as someone out there still has a copy of it in their mailbox.
 
 I'm obsessive about annotating and archiving the newsletters I receive (each is sorted by rule into its own dedicated label), so if my friends' disappeared blogs that I mentioned at the beginning had been newsletter instead of blogs, I'd still have every word of them.
 
