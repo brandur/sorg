@@ -67,7 +67,7 @@ This is one reason that I'm not _quite_ as enthusiastic as most when it comes to
 
 Years ago, some old colleagues from Calgary were about to quit their jobs and embark on a multi-year voyage to travel the world. They wanted to keep a record of it, and asked me what blogging platform to use.
 
-To my everlasting chagrin, my short-sighted younger told them to try Posterous, the writing product du jour, whose differentiating feature was being able to write posts from your inbox, and publish them by email (which ironically, is an idea [that's just come back](https://hey.com/world/) for a second round). Of course, a few years later, Posterous was acquired by Twitter and shuttered shortly thereafter.
+To my everlasting chagrin, my short-sighted younger self told them to try Posterous, the writing product du jour, whose differentiating feature was being able to write posts from your inbox, and publish them by email (which ironically, is an idea [that's just come back](https://hey.com/world/) for a second round). Of course, a few years later, Posterous was acquired by Twitter and shuttered shortly thereafter.
 
 But I got lucky, and my bad suggestion accidentally became a good suggestion. The founders of Posterous felt strongly about keeping their users' content online, so created a new extra-Twitter initiative, aptly named Posthaven. From [Posthaven's pledge](https://posthaven.com/our_pledge):
 
