@@ -207,6 +207,12 @@
 
 [[photographs]]
   crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/n99y3gwwfv92xti/git.png?dl=1"
+  slug = "nanoglyphs/022-entropy/git"
+  title = "Sorg in Git"
+
+[[photographs]]
+  crop_width = 1200
   original_image_url = "https://www.dropbox.com/s/mtnly810xmz89kw/L1030975.JPG?dl=1"
   slug = "nanoglyphs/022-entropy/yunomine"
   title = "Yunomine Onsen"
