@@ -17,7 +17,7 @@ Why Java? There's no single answer. My interpretation: because Google likes it, 
 
 ## Boilerplate reduction (#boilerplate)
 
-Java SE 5 introduced support for generics:
+Over 15 years ago, Java SE 5 introduced support for generics:
 
 ``` java
 Map<String, List<String>> myMap = new HashMap<String, List<String>>();
