@@ -111,7 +111,7 @@ This is a "dark" form of persistence because it brings the content out of the pu
 
 Today's photos come from a trip to Japan a few years back where one of the places we visited along the Kumano Kodo was [Yunomine Onsen](https://www.tb-kumano.jp/en/places/yunomine/), a tiny hot spring village.
 
-I've already written about it in [an old edition of _Passages & Glass_](/passages/003-koya#yunomine), but it's been a good year to revisit old memories. Nestled around a steaming creek where locals go to slow-cook onsen eggs, the village features Japan's oldest hot spring (discovered 1,800 years ago), and a tiny two-person bathhouse called Tsuboyu. Everything was covered with thick mineral buildups (see image at the to -- I found some taps with inches worth of the stuff), which although is proximately an eyesore, was subtly beautiful in a profound, wabi-sabi sort of way. Easily one of the best trips of my life.
+I've already written about it in [an old edition of _Passages & Glass_](/passages/003-koya#yunomine), but it's been a good year to revisit old memories. Nestled around a steaming creek where locals go to slow-cook onsen eggs, the village features Japan's oldest hot spring (discovered 1,800 years ago), and a tiny two-person bathhouse called Tsuboyu. Everything was covered with thick mineral buildups (see image at the top -- I found some taps with inches worth of the stuff), which although is proximately an eyesore, was subtly beautiful in a profound, wabi-sabi sort of way. Easily one of the best trips of my life.
 
 Until next week.
 
