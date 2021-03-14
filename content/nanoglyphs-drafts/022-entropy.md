@@ -33,7 +33,7 @@ Heroku's erosion resistance suggests solving the problem by minimizing the surfa
 
 ---
 
-Time would show that the original idea of erosion resistance was a _little_ on the optimistic side. Heroku's first `cedar` stack would eventually require an upgrade to `cedar-14`, and that was subsequently replaced by more regular stack upgrades in the form of `heroku-16`, `heroku-18`, and `heroku-20`, each one requiring some user intervention as slugs tended to be tied to system dependencies in subtle ways, but it's still turned out to be one of the stickiest ideas of the cloud age, with the core philosophy being subsequently baked deep into Docker and container images, now a keystone of all cloud infrastructure.
+Time would show that the original idea of erosion resistance was a _little_ on the optimistic side. Heroku's first `cedar` stack would eventually require an upgrade to `cedar-14`, and that was subsequently replaced by more regular stack upgrades in the form of `heroku-16`, `heroku-18`, and `heroku-20` [1], each one requiring some user intervention as slugs tended to be tied to system dependencies in subtle ways, but it's still turned out to be one of the stickiest ideas of the cloud age, with the core philosophy being subsequently baked deep into Docker and container images, now a keystone of all cloud infrastructure.
 
 Erosion resistance also applies beyond apps, and a principle that we should make an effort to apply when building anything. With every new product or project, we should be asking ourselves: how can I choose a programming language, tech stack, and database (or lack thereof) that maximizes the chances that what I'm building will be around ten years from now?
 
