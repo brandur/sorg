@@ -61,7 +61,7 @@ This same principle can be applied to API libraries. Leverage language type syst
 
 ### Don't make me paginate (#dont-make-me-paginate)
 
-Every modern API implementations pagination for list endpoints -- only allowing the user to, for example, retrieve 100 objects at a time, and iterating every 100-object page until they get the entire collection, with each page sending back a cursor to tell the user how to ask for the next one.
+Every modern API implements pagination for list endpoints -- only allowing the user to, for example, retrieve 100 objects at a time, and iterating every 100-object page until they get the entire collection, with each page sending back a cursor to tell the user how to ask for the next one.
 
 Writing client code to paginate isn't _that_ hard, but getting it right is hard enough, and users have better things to be doing with their time. Include built-in helpers in your API library to do pagination automatically.
 
