@@ -21,7 +21,7 @@ Some investigation will reveal that `INSTALL` doesn't
 actually exist on `master`; it's only generated as part of
 a release.
 
-The excellent Postgres does of course contain all the
+The excellent Postgres docs of course contain all the
 information needed to get started with development, but if
 its has one weakness, it's that its overwhelming verbosity
 tends to obscure information.
