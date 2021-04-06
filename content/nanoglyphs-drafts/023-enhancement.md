@@ -129,16 +129,16 @@ C# 3.0 also introduced object initializer syntax:
 
 ``` c#
 Person person = new Person{
-    FirstName = "Jane",
-    LastName = "Doe"
+    FirstName = "Jin",
+    LastName = "Sakai"
 };
 ```
 
 This is a big improvement because it obviates the necessity to have constructor overloads for every possible set of parameters. Make required properties constructor arguments, and leave optional ones as properties:
 
 ``` c#
-Person person = Person("Wayne", "Gretzky") {
-    HomeCountry = "Canada",
+Person person = Person("Jin", "Sakai") {
+    HomeCountry = "Japan",
 };
 ```
 
@@ -150,7 +150,7 @@ Not strictly property-related, but C# 4.0 brings in optional method parameters:
 public class Person
 {
     public Person(string firstName, string lastName,
-        string homeCountry = "Canada") {
+        string homeCountry = "Japan") {
         if (!isCountry(homeCountry)) {
             throw new ArgumentException(...);
         }
@@ -177,7 +177,7 @@ public class Person
 {
     ...
     
-    public string HomeCountry { get; set; } = "Canada";
+    public string HomeCountry { get; set; } = "Japan";
 }
 ```
 
