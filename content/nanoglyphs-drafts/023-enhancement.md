@@ -241,6 +241,8 @@ There's a [very readable change log of major language additions](https://docs.mi
 
 ---
 
+{{NanoglyphSignup .InEmail}}
+
 <img src="/photographs/nanoglyphs/023-enhancement/city-pop@2x.jpg" alt="Japanese city pop" class="wide">
 
 ## "I miss the future" (#japanese-city-pop)
