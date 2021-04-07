@@ -7,7 +7,7 @@ title = "Gradual Enhancement: New Language Features, Steadily"
 
 As the calendar flipped to the first day of April, so came about the internet's most schismatic non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound faculties one day later.
 
-Major companies have let up on April 1st jokes in recent years as they started taking sharp criticism, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet it wasn't enough. There was one that got me this year: everyone's favorite walks-like-a-duck-quacks-like-a-duck language, Ruby.
+Major companies have pulled back on April 1st jokes in recent years as they started taking sharp criticism, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet this year, it wasn't enough. There was one that got me: everyone's favorite walks-like-a-duck-quacks-like-a-duck idiosyncratic language, Ruby.
 
 Ladies and gentlemen, I give you downward variable assignment:
 
@@ -19,9 +19,9 @@ p x  #=> "Hello"
 p y  #=> "World"
 ```
 
-As outlined in the snippet, downward assignment augments the typical "leftward" assignment found in most programming languages (`x = "Hello"`) by allowing syntax to send a value to set on a variable _downwards_. In this sample, we set `Hello` to `x` and `World` to `y`.
+As outlined in the snippet, downward assignment augments the typical "leftward" assignment found in most programming languages (`x = "Hello";`) by allowing syntax to send a value to set on a variable _downwards_. In this sample, we set `"Hello"` to `x` and `"World"` to `y`.
 
-The prank was dressed up as a [formal feature proposal](https://bugs.ruby-lang.org/issues/17768) on the Ruby bug tracker, and triggered such a visceral, emotional reaction in me that it had me ensnared for the full ~45 seconds it took to read it through.
+The prank was dressed up as a [formal feature proposal](https://bugs.ruby-lang.org/issues/17768) on the Ruby bug tracker, and triggered such a visceral reaction in me that it had me ensnared for the full minute it took to read through.
 
 The reason downward assignment works so well is that even though it's completely ridiculous, when it comes to Ruby in particular, it's a plausible addition. Ruby's long practiced a mantra of one-upmanship over Python's "batteries included" to make it something more akin to "_everything_ included." New versions come with a host of improvements, which is great, but also ship with many additions with more dubious usefulness, seemingly present as change for change's sake.
 
