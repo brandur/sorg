@@ -7,7 +7,7 @@ title = "Gradual Enhancement: New Language Features, Steadily"
 
 As the calendar flipped to the first day of April, so came about the internet's most polarizing non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound faculties one day later.
 
-Major companies have pulled back on April 1st jokes in recent years as there was an emergent general feeling that they were overplayed, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet this year, it wasn't enough. There was one that got me: everyone's favorite walks-like-a-duck-quacks-like-a-duck idiosyncratic language, Ruby.
+Major companies have pulled back on April 1st jokes in recent years as there was an emergent feeling that they were overplayed, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet this year, it wasn't enough. There was one that got me: everyone's favorite walks-like-a-duck-quacks-like-a-duck idiosyncratic language, Ruby.
 
 Ladies and gentlemen, I give you downward variable assignment:
 
