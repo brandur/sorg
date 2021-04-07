@@ -1,13 +1,13 @@
 +++
 image_alt = "Sand near Ocean Beach"
 image_url = "/photographs/nanoglyphs/023-enhancement/sand@2x.jpg"
-published_at = 2021-04-04T21:32:25Z
+published_at = 2021-04-07T14:23:43Z
 title = "Gradual Enhancement: New Language Features, Steadily"
 +++
 
-As the calendar flipped to the first day of April, so came about the internet's most schismatic non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound faculties one day later.
+As the calendar flipped to the first day of April, so came about the internet's most polarizing non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound faculties one day later.
 
-Major companies have pulled back on April 1st jokes in recent years as they started taking sharp criticism, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet this year, it wasn't enough. There was one that got me: everyone's favorite walks-like-a-duck-quacks-like-a-duck idiosyncratic language, Ruby.
+Major companies have pulled back on April 1st jokes in recent years as there was an emergent general feeling that they were overplayed, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet this year, it wasn't enough. There was one that got me: everyone's favorite walks-like-a-duck-quacks-like-a-duck idiosyncratic language, Ruby.
 
 Ladies and gentlemen, I give you downward variable assignment:
 
@@ -49,7 +49,7 @@ But that slow and steady approach has its advantages. Perusing the new features 
 
 ---
 
-## Boilerplate flexibility (#boilerplate)
+## Verbose flexibility (#verbose)
 
 But although Java's far more usable today than it was before, there are definitely still some rough areas that leave something to be desired. Take for example, its infamous getters/setters:
 
