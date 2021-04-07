@@ -261,7 +261,7 @@ And on the promises of a future never quite fulfilled:
 
 > Boom-era Japan, with its neon metropolises and abundant consumer freedoms, embodies a lost promise of capitalist utopia that was crushed in the ’90s by the country’s recession. By savoring its music, listeners can both indulge in and mourn the beautiful, naive optimism that seemingly defined the time—as well as its bracing visions of what would lie ahead. As one commenter on a YouTube city pop mix wrote, echoed by many others, “I miss the future.”
 
-Here's a [YouTube city pop video mix](https://www.youtube.com/watch?v=qXC4AyjRikg&t=3246s) showcased by the article. The whole thing is good, but I've taken the liberty of deep linking directly to minute 54, which is a song titled _Echoplex (w/ Tendencies)_ by FIBRE, and one that I've listened to about fifty times in the last two weeks.
+Here's a [YouTube city pop video mix](https://www.youtube.com/watch?v=qXC4AyjRikg&t=3246s) showcased by the article. The whole thing is good, but I've taken the liberty of deep linking to minute 54, which is a song titled _Echoplex (w/ Tendencies)_ by FIBRE, and one that I've listened to about fifty times in the last two weeks.
 
 I quit my job yesterday. More on that soon.
 
