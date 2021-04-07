@@ -1,15 +1,15 @@
 +++
-image_alt = "Basketball by Mount Sutro"
-image_url = "/photographs/nanoglyphs/023-enhancement/hoop@2x.jpg"
+image_alt = "Sand near Ocean Beach"
+image_url = "/photographs/nanoglyphs/023-enhancement/sand@2x.jpg"
 published_at = 2021-04-04T21:32:25Z
-title = "Gradual Enhancement: Good Features, Steadily"
+title = "Gradual Enhancement: New Language Features, Steadily"
 +++
 
-As the calendar flipped to the first day of April, so came about the world's most despised non-holiday. The one time a year when people suddenly start thinking critically about what they read on the internet -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before abandoning those newfound critical thinking faculties one day later.
+As the calendar flipped to the first day of April, so came about the internet's most despised non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound critical thinking faculties one day later.
 
-Even though major companies and projects have let up on April 1st jokes in recent years as they started taking sharp criticism, like many people I still read the internet assuming everything is a joke until proven innocent. But there was one that got me this year: everyone's favorite duck-typed language, Ruby.
+Major companies have let up on April 1st jokes in recent years as they started taking sharp criticism, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet it wasn't enough. There was one that got me this year: everyone's favorite walks-like-a-duck-quacks-like-a-duck language, Ruby.
 
-Introducing, downward variable assignment: 
+Ladies and gentlemen, I give you downward variable assignment:
 
 ``` c#
 puts("Hello" + "World")  #=> HelloWorld
@@ -19,21 +19,21 @@ p x  #=> "Hello"
 p y  #=> "World"
 ```
 
-As outlined by the snippet, downward assignment augments the typical "leftward" assignment found in most programming languages (`x = "Hello"`) by allowing syntax to send a value to set on a variable _downwards_, as seen as we set `Hello` to `x` and `World` to `y`.
+As outlined in the snippet, downward assignment augments the typical "leftward" assignment found in most programming languages (`x = "Hello"`) by allowing syntax to send a value to set on a variable _downwards_. In this sample, we set `Hello` to `x` and `World` to `y`.
 
-The prank was dressed up as a [formal feature proposal](https://bugs.ruby-lang.org/issues/17768) on the Ruby bug tracker, and triggered such a visceral, emotional reaction in me that I was ensnared in its claws for the full ~45 seconds it took to read it through.
+The prank was dressed up as a [formal feature proposal](https://bugs.ruby-lang.org/issues/17768) on the Ruby bug tracker, and triggered such a visceral, emotional reaction in me that it had me ensnared for the full ~45 seconds it took to read it through.
 
-The reason downward assignment works so well is that even though it's completely ridiculous, when it comes to Ruby in particular, it's a plausible addition. Ruby's long practiced a mantra that one ups Python's "batteries included" to something more akin to "Include. _Everything._" New versions come with a host of improvements, which is great, but also ship with a myriad of features of dubious usefulness, often present as change for change's sake.
+The reason downward assignment works so well is that even though it's completely ridiculous, when it comes to Ruby in particular, it's a plausible addition. Ruby's long practiced a mantra of one-upmanship over Python's "batteries included" to make it something more akin to "_everything_ included." New versions come with a host of improvements, which is great, but also ship with many additions with more dubious usefulness, seemingly present as change for change's sake.
 
-For example, downward variable assignment is a direct play on Ruby 3's "rightward" assignment which enables syntax like this:
+For example, downward variable assignment is a direct play on Ruby 3's very real "rightward" assignment, which enables syntax like this:
 
 ``` c#
 "Hello" => x
 ```
 
-Undoubtedly, rightward syntax is useful to _someone_ out there, but is very Ruby-esque in that although it introduces some marginal improvement, it ever-so-slightly increases cognitive overhead for every Ruby developer, while also making every Ruby interpreter a little more complicated. Many language designers would have looked at rightward assignment, acknowledged it as "pretty neat", then firmly rejected it as not a compelling enough cost/benefit equation.
+Undoubtedly, rightward syntax is useful to _someone_ out there, but is very Ruby-esque in that although it introduces some marginal improvement, it ever-so-slightly increases cognitive overhead for every Ruby developer, while also making every Ruby interpreter that much more complicated. Many language designers would have looked at rightward assignment, acknowledged it as "pretty neat", then firmly rejected it as nowhere near compelling enough of a cost/benefit equation.
 
-And that's how it got me. Downward assignment is too outlandish to be a real feature, but not by much. It's right in that April Fools sweet spot of _just_ compelling enough to be believable in those early moments, then absurd as your rational brain catches up. My hat's off to you, Yusuke.
+And that's how they got me. Downward assignment is too outlandish to be a real feature, but not by much. It's right in that April Fools sweet spot of _just_ compelling enough to be believable in those early moments, then absurd as your rational brain finally catches up. My hat's off to you, Yusuke.
 
 ---
 
@@ -41,15 +41,15 @@ And that's how it got me. Downward assignment is too outlandish to be a real fea
 
 This is an excellent article on [new features in Java from version 8 to 16](https://advancedweb.hu/a-categorized-list-of-all-java-and-jvm-features-since-jdk-8-to-16/). It's written in bullet point form, broken down into categories like "feature", "new API", or "performance improvement", and each change is tagged with the specific JDK version where it was introduced.
 
-A few weeks ago I wrote about how writing Java these days is actually, against all odds ... [pretty good](/nanoglyphs/021-ides), a position I never would have taken when I first learned the language back in university.
+A few weeks ago I wrote about how writing Java these days is actually, against all odds ... [pretty good](/nanoglyphs/021-ides), a position I never would have imagined I'd ever take when I first learned the language back in college.
 
-Java is the anti-Ruby. It's literally designed [by committee](https://jcp.org/en/participation/committee), and improvements are not only introduced at a snail's pace, but with extreme prejudice as well. New language syntax comes in only when it's absolutely, indisputable clear to everyone involved that it'll be widely useful. Lambdas (`x -> x + 1`) entered the language in March 2014 (Java 8), which is roughly 18 years after it was apparent they were dearly needed (~Java 1.0, released January 1996).
+Java is the anti-Ruby. It's literally designed [by committee](https://jcp.org/en/participation/committee), and improvements are not only introduced at glacial pace, but with extreme prejudice. New language syntax comes in only when it's absolutely, indisputable clear to everyone involved that it'll be widely useful. Lambdas (`x -> x + 1`) entered the language in March 2014 (Java 8), which is roughly 18 years after it was apparent they were dearly needed (~Java 1.0, released January 1996).
 
-But that slow and steady approach has its advantages. Perusing the new features list, there isn't a single one amongst ~a hundred that's of dubious value. They're all useful, and keeping the language relatively minimal means less opportunity to make a mistake and less complexity to bear forward in future maintenance. And while they took a long time to get there, a lot of the most important quality of life improvements for Java programmers finally exist (e.g. lambdas, switches, the stream API, tuples/records), making today's Java quite pleasant to write.
+But that slow and steady approach has its advantages. Perusing the new features list, there isn't a single one amongst ~a hundred of questionable value. They're all useful, and keeping the language relatively minimal means less opportunity to make a mistake and less complexity to bear forward in future maintenance. And while they took a long time to get there, a lot of the most important quality of life improvements for Java programmers finally exist (e.g. lambdas, switches, the stream API, tuples/records), making today's Java quite pleasant to use.
 
 ---
 
-## The history of properties (#properties)
+## Boilerplate (#boilerplate)
 
 But although Java's far more usable today than it was before, there are definitely still some rough areas that leave something to be desired. Take for example, its infamous getters/setters:
 
@@ -73,15 +73,15 @@ The problem with getters/setters is boilerplate. Most of these methods end up as
 
 I'm not the only one with this opinion, and over the years a myriad of code generation tools have appeared to make the syntax more succinct like [AutoValue](https://github.com/google/auto/tree/master/value), [Immutables](https://immutables.github.io/immutable.html), and [Lombok](https://projectlombok.org/). Once your project is up and running, working with any one of these is fine, but they tend to produce obtuse compilation errors if you make a mistake, are yet another box to tick when starting a new project, and have fractured the ecosystem so that Java code looks a little different depending on where you look. Again, mostly fine, but a pretty clear sign of missing functionality in core.
 
-## C# properties (#c-sharp-properties)
+## The history of properties (#properties)
 
 Sharing a design ethos, VM-based runtime model, and a lot of syntax, C# and Java are sister languages. Examining any particular code snippet, it was often hard to tell which language you were looking at, especially in earlier versions before they started to diverge.
 
-But largely guided by a single company, C# tends to move much more quickly than the language that inspired it. It also had the benefit of hindsight, and took advantage of that to avoid some of the pitfalls found in Java right from the beginning. Java's verbose getters and setters in particular were in its sights, and right from version 1.0 C# shipped with _properties_, a less verbose and more standardized way of accomplishing the same thing.
+But largely guided by a single company, C# tends to move much more quickly than the language that inspired it. It also had the benefit of hindsight, and took advantage of that to avoid some of the pitfalls found in Java right from the beginning. Java's verbose getters and setters in particular were in its sights, and right from version 1.0 C# shipped with _properties_, a less verbose and more standardized way of doing the same thing.
 
 C#'s language designers didn't stop with just the basics. Almost every version since has introduced small enhancements to properties that make them a little more powerful, a little tighter, or a little more ergonomic. C# has found the perfect compromise in development pace on the wide spectrum between Ruby and Java -- slow, gradual enhancement that makes good things even better over time.
 
-### C# 1.0: Introduction (#c-sharp-1)
+### C# 1.0: The beginning (#c-sharp-1)
 
 C# 1.0 brings properties to life:
 
@@ -106,14 +106,14 @@ public class Person
 Pretty straightforward `get`/`set` keywords that wrap instance variables. Programmers use this syntax to access a property:
 
 ``` c#
-person.FirstName = "Wayne";
+person.FirstName = "Jin";
 ```
 
-Again, very similar in spirit to getters/setters, but with more terse syntax and standardized across every project that uses C#.
+Again, very similar in spirit to getters/setters, but with terse syntax, and standardized across every project that uses C#. No third party libraries necessary.
 
 ### C# 3.0: Auto-properties and object initializers (#c-sharp-3)
 
-The dawn of _auto-properties_, which allow getter/setter implementations and an instance variable declaration to be left out completely for basic properties that just need to get and set a value without any other complications:
+The dawn of _auto-properties_. Getter/setter implementations and instance variables may be left out completely for properties that just need to get and set a value with no complications:
 
 ``` c#
 public class Person
@@ -123,9 +123,9 @@ public class Person
 }
 ```
 
-Because most getters/setters are simple pass throughs, this turns out to be inordinately useful. The flexibility around API compatibility stays because if needed, an auto-property's `get`/`set` can always be unrolled into full implementations for a future version.
+Because most getters/setters are simple pass throughs, auto-properties turn out to be inordinately useful. Flexibility around API compatibility is maintained because if needed, an auto-property's `get`/`set` can always be unrolled into full implementations in a future version.
 
-C# 3.0 also introduced object initializer syntax:
+C# 3.0 also brought in object initializer syntax:
 
 ``` c#
 Person person = new Person{
@@ -138,7 +138,7 @@ This is a big improvement because it obviates the necessity to have constructor 
 
 ``` c#
 Person person = Person("Jin", "Sakai") {
-    HomeCountry = "Japan",
+    CountryOfOrigin = "Japan",
 };
 ```
 
@@ -150,23 +150,24 @@ Not strictly property-related, but C# 4.0 brings in optional method parameters:
 public class Person
 {
     public Person(string firstName, string lastName,
-        string homeCountry = "Japan") {
-        if (!isCountry(homeCountry)) {
+        string countryOfOrigin = "Japan") {
+
+        if (!isCountry(countryOfOrigin)) {
             throw new ArgumentException(...);
         }
 
         _firstName = firstName;
         _lastName = lastName;
-        _homeCountry = homeCountry;
+        _countryOfOrigin = countryOfOrigin;
     }
 
     ...
 }
 ```
 
-This is another good way of making an easy distinction between required and optional properties that need to be set on a class, and has the advantage over object initializer syntax in that it's an easy way to allow defaults to be specified.
+This is another good way of making an easy distinction between required and optional properties that need to be set on a class, and has the advantage over object initializer syntax in that it's an easy way to set defaults.
 
-Note that this is a feature for which Java to this day has no equivalent, and its absence has been the main factor that's led to the explosion of builders for practically every non-trivial class.
+Java still has no equivalent, and its absence has been the main factor that's led to the explosion of builders for practically every non-trivial class.
 
 ### C# 6.0: Defaults and expressions (#c-sharp-6)
 
@@ -175,9 +176,7 @@ C# 6.0 shifted the ergonomics for optional fields back to properties by letting 
 ``` c#
 public class Person
 {
-    ...
-    
-    public string HomeCountry { get; set; } = "Japan";
+    public string CountryOfOrigin { get; set; } = "Japan";
 }
 ```
 
@@ -186,8 +185,6 @@ It also introduced expression body definitions, a more succinct way of implement
 ```c#
 public class Person
 {
-    ...
-
     public string FullName => $"{FirstName} {LastName}";
 }
 ```
@@ -230,9 +227,9 @@ public class Person
 }
 ```
 
-Properties with `init` can be set when an object is first initialized, but not after, making it a really convenient way for creating immutable classes.
+Properties with `init` can be set when an object is first initialized, but not after, making it a convenient way to write easy immutable classes.
 
-C# 9.0 released late last year so that's the end of the story so far, but I'll be curious to see if there are even more refinements that can made in future versions.
+C# 9.0 released late last year so that's the end of the story so far, but we'll see what new refinements future versions hold.
 
 ---
 
@@ -254,7 +251,7 @@ City pop is roughly put, a loosely defined genre of music inspired by flourishin
 
 > The music is often exuberant and glitzy, drawing inspiration from American styles like funk, yacht rock, boogie, and lounge music. Emulating the easy vibes of California, the music’s sense of escapism is often embodied by the sun-soaked cover art of Hiroshi Nagai, one of city pop’s iconic designers: Sparkling blue water, slick cars, and pastel buildings evoke fantasies of a weekend vacation at sea.
 
-But nowadays, in the shadow of Japan's lost decades, and with the sheen of a utopic future having worn thin, city pop's symbolism is more complex, aptly described as a "retro-futurist melancholy". Nostalgia is a central theme:
+But nowadays, in the shadow of Japan's lost decades, and with the sheen of a utopic future worn thin, city pop's symbolism is more complex, maybe best described as a "retro-futurist melancholy". Nostalgia is a core theme:
 
 > Nostalgia, as the theorist and media artist Svetlana Boym once wrote, involves “a superimposition of two images—of home and abroad, of past and present, of dream and everyday life.” The emotional response to city pop centers on these twin imaginations: of Japan and the United States, the ’80s and now, the prior promises of capitalism and its current reality. Online, listeners dwell on artificial memories of boom-era Tokyo but also idyllic childhoods watching cartoons, reaffirming Boym’s claim that nostalgia “appears to be a longing for a place but is actually a yearning for a different time.”
 

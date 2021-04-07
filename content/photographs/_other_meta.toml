@@ -211,11 +211,17 @@
   slug = "nanoglyphs/023-enhancement/city-pop"
   title = "Japanese city pop"
 
+# [[photographs]]
+#   crop_width = 1200
+#   original_image_url = "https://www.dropbox.com/s/65des0t2jg86052/2W4A0399-hoop.JPG?dl=1"
+#   slug = "nanoglyphs/023-enhancement/hoop"
+#   title = "Basketball by Mount Sutro"
+
 [[photographs]]
   crop_width = 1200
-  original_image_url = "https://www.dropbox.com/s/65des0t2jg86052/2W4A0399-hoop.JPG?dl=1"
-  slug = "nanoglyphs/023-enhancement/hoop"
-  title = "Basketball by Mount Sutro"
+  original_image_url = "https://www.dropbox.com/s/sids26fjvpi2ona/2W4A0408.JPG?dl=1"
+  slug = "nanoglyphs/023-enhancement/sand"
+  title = "Sand"
 
 #
 # /nanoglyphs/022-entropy
