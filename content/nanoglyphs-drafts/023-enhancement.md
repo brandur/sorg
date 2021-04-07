@@ -83,7 +83,7 @@ C#'s language designers didn't stop with just the basics. Almost every version s
 
 ### C# 1.0: The beginning (#c-sharp-1)
 
-C# 1.0 brings properties to life:
+C# 1.0. Properties come to life:
 
 ```c#
 public class Person
@@ -103,7 +103,7 @@ public class Person
 }
 ```
 
-Pretty straightforward `get`/`set` keywords that wrap instance variables. Programmers use this syntax to access a property:
+Pretty straightforward `get`/`set` blocks that wrap instance variables. A magic `value` keyword stands in for a value to be set. Programmers use this syntax to access a property:
 
 ``` c#
 person.FirstName = "Jin";
