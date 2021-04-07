@@ -69,7 +69,7 @@ public class Person {
 
 This was a technique that was really brought en vogue by Java, and there's quite a good idea at its core. Exposing variables directly through an API is easy, but doing so forever decreases the flexibility you have to change said API while keeping it backwards compatible. Instead, introduce indirection by wrapping variable access with getter/setter methods that can be reimplemented as need be, while having the nice property of maintaining compatibility for existing users.
 
-The problem with getters/setters is boilerplate. Most of these methods end up as simple one liners, and some classes need dozens of them. They're not only slow to type, but introduce a lot of visual noise that does very little to improve anyone's life.
+The problem with getters/setters is boilerplate. Most of these methods end up as simple one liners, and some classes need dozens of them. They're not only slow to type, but introduce a lot of visual noise that does little to improve anyone's life.
 
 I'm not the only one with this opinion, and over the years a myriad of code generation tools have appeared to make the syntax more succinct like [AutoValue](https://github.com/google/auto/tree/master/value), [Immutables](https://immutables.github.io/immutable.html), and [Lombok](https://projectlombok.org/). Once your project is up and running, working with any one of these is fine, but they tend to produce obtuse compilation errors if you make a mistake, are yet another box to tick when starting a new project, and have fractured the ecosystem so that Java code looks a little different depending on where you look. Again, mostly fine, but a pretty clear sign of missing functionality in core.
 
@@ -260,5 +260,7 @@ And on the promises of a future never quite fulfilled:
 > Boom-era Japan, with its neon metropolises and abundant consumer freedoms, embodies a lost promise of capitalist utopia that was crushed in the ’90s by the country’s recession. By savoring its music, listeners can both indulge in and mourn the beautiful, naive optimism that seemingly defined the time—as well as its bracing visions of what would lie ahead. As one commenter on a YouTube city pop mix wrote, echoed by many others, “I miss the future.”
 
 Here's a [YouTube city pop video mix](https://www.youtube.com/watch?v=qXC4AyjRikg&t=3246s) showcased by the article. The whole thing is good, but I've taken the liberty of deep linking directly to minute 54, which is a song titled _Echoplex (w/ Tendencies)_ by FIBRE, and one that I've listened to about fifty times in the last two weeks.
+
+I quit my job yesterday. More on that soon.
 
 Until next week(-ish).
