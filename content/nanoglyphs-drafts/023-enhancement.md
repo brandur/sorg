@@ -49,7 +49,7 @@ But that slow and steady approach has its advantages. Perusing the new features 
 
 ---
 
-## Boilerplate (#boilerplate)
+## Boilerplate flexibility (#boilerplate)
 
 But although Java's far more usable today than it was before, there are definitely still some rough areas that leave something to be desired. Take for example, its infamous getters/setters:
 
