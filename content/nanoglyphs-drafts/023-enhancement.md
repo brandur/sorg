@@ -5,7 +5,7 @@ published_at = 2021-04-04T21:32:25Z
 title = "Gradual Enhancement: New Language Features, Steadily"
 +++
 
-As the calendar flipped to the first day of April, so came about the internet's most despised non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound critical thinking faculties one day later.
+As the calendar flipped to the first day of April, so came about the internet's most schismatic non-holiday. The one time a year when people suddenly start thinking critically about what they read online -- on the lookout for the latest in a long tradition of [tech company pranks](https://www.microsoftcoffee.org/) -- before once again abandoning those newfound faculties one day later.
 
 Major companies have let up on April 1st jokes in recent years as they started taking sharp criticism, but like many people, I still read the internet assuming everything is a joke until proven innocent, and yet it wasn't enough. There was one that got me this year: everyone's favorite walks-like-a-duck-quacks-like-a-duck language, Ruby.
 
