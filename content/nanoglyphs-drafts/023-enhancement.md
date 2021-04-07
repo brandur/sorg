@@ -45,7 +45,7 @@ A few weeks ago I wrote about how writing Java these days is actually, against a
 
 Java is the anti-Ruby. It's literally designed [by committee](https://jcp.org/en/participation/committee), and improvements are not only introduced at glacial pace, but with extreme prejudice. New language syntax comes in only when it's absolutely, indisputable clear to everyone involved that it'll be widely useful. Lambdas (`x -> x + 1`) entered the language in March 2014 (Java 8), which is roughly 18 years after it was apparent they were dearly needed (~Java 1.0, released January 1996).
 
-But that slow and steady approach has its advantages. Perusing the new features list, there isn't a single one amongst ~a hundred of questionable value. They're all useful, and keeping the language relatively minimal means less opportunity to make a mistake and less complexity to bear forward in future maintenance. And while they took a long time to get there, a lot of the most important quality of life improvements for Java programmers finally exist (e.g. lambdas, switches, the stream API, tuples/records), making today's Java quite pleasant to use.
+But that slow and steady approach has its advantages. Perusing the new features list, there isn't a single one amongst a hundred that's of questionable value. They're all useful, and keeping the language relatively minimal means less opportunity to make a mistake and less complexity to bear forward in future maintenance. And while they took a long time to get there, a lot of the most important quality of life improvements for Java programmers finally exist (e.g. lambdas, switches, the stream API, tuples/records), making today's Java quite pleasant to use.
 
 ---
 
