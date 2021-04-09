@@ -4,7 +4,7 @@ published_at = 2021-04-09T15:36:59Z
 title = "Joining Crunchy Data"
 +++
 
-I woke up a few months ago, and realized that I've spent more years professionally as a Mongo user than as a Postgres user. Sufficed to say, it wasn't a good moment, so I'm changing things up. This month, I'm joining [Crunchy Data](https://www.crunchydata.com/) to do database-related work full time.
+I woke up a few months ago, and realized that I've spent more years professionally as a Mongo user than as a Postgres user. Sufficed to say, it wasn't a particularly good moment, so I'm changing things up. This month, I'm joining [Crunchy Data](https://www.crunchydata.com/) to do database-related work full time.
 
 It's always a little fraught to name names, because of course I'm going to miss somebody, but I'm going to name a few anyway (with apologies to anyone I've forgotten). Once again, I'll be working adjacent to old colleagues [Craig](https://www.craigkerstiens.com/), [Farina](https://github.com/fdr), and [Will](https://github.com/will), who are currently hard at work implementing [Crunchy Bridge](https://www.crunchydata.com/products/crunchy-bridge/), one of the first cloud-agnostic hosted Postgres solutions. I worked with them originally at Heroku, where they made up a key core of the Heroku Postgres team (affectionately known as the "DoD", or Department of Data), and admired their work from afar as they subsequently helped build [Citus Cloud](https://www.citusdata.com/product/cloud) [1].
 
