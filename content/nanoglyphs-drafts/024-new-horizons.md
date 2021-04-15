@@ -1,7 +1,7 @@
 +++
 image_alt = "Sunrise over Twin Peaks"
 image_url = "/photographs/nanoglyphs/024-new-horizons/sunrise@2x.jpg"
-published_at = 2021-04-14T04:15:09Z
+published_at = 2021-04-15T16:04:54Z
 title = "New Horizons"
 +++
 
@@ -69,7 +69,7 @@ Most days I have a hard time telling whether it's a net good or net bad, but I t
 
 ## Pop v. funk (#pop-v-funk)
 
-A correction from last week: in a [writeup on Japanese city pop](/nanoglyphs/023-enhancement#japanese-city-pop), I incorrectly linked [this video](https://www.youtube.com/watch?v=qXC4AyjRikg&t=3246s) as a city pop example, but it's actually a distinct genre called "future funk":
+A correction from last week: in a [writeup on Japanese city pop](/nanoglyphs/023-enhancement#japanese-city-pop), I wrongly linked [this video](https://www.youtube.com/watch?v=qXC4AyjRikg&t=3246s) as an example of city pop. It's actually a distinct genre called "future funk":
 
 > Electroswing is to "swing from the 1920s" as future funk is to citypop. I love both genres but they're very different! There is also a modern citypop revival, with artists like [Junk Fujiyama](https://soundcloud.com/oases-ong/junk-fujiyama), producing straight citypop records in 2021.
 
