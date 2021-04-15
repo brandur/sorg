@@ -13,7 +13,7 @@ I'm going back to my roots and joining Crunchy Data to work on Postgres and Post
 
 Before I get too far -- in case this is your first time reading _Nanoglyph_, I'm [Brandur](https://twitter.com/brandur). This newsletter is ostensibly themed around software simplicity and sustainability, although often isn't. I'll be talking more about Postgres and corporate tooling for the next few months.
 
-Don't want it anymore? You can always cut ties with it in [one easy click](%unsubscribe_url%).
+Don't want it anymore? You can always resign in [one easy click](%unsubscribe_url%).
 
 ---
 
@@ -21,7 +21,7 @@ Don't want it anymore? You can always cut ties with it in [one easy click](%unsu
 
 One of the big reasons that I'm so interested in tools like Postgres is that -- boiled right down to the core kernel of brutal truth -- software sucks, and we as an industry desperately need to find ways of making it better. Whenever I'm doing anything non-trivial in a web app like transferring money, configuring cloud resources, or even something as simple as responding to a comment, problems of varying sorts are an everyday occurrence. Most of them are minor -- having to refresh a page that's worked its way into a bad state, resubmitting a form that didn't quite go through, or clicking a link twice to _really_ go there the second time -- but most services don't work quite how they're supposed to at least some of the time.
 
-There's a few core causes from which these problems stem. One is just the sheer number of moving parts in modern architectures. A single request might be routed through an edge CDN, terminated by a regional load balancer, dispatched to a worker node via Envoy, and locally reverse proxied through Nginx before finally being handled by an app that internalizes many layers of its own. Throw microservices into the mix, and you get a multiplicative effect on top of that already substantial setup. Every component, although added with the best of intentions, is another small opportunity for failure, and that failure is happening at low ambient levels around the clock.
+There's a few main themes from which these problems stem. One is just the sheer number of moving parts in modern computing architectures. A single request might be routed through an edge CDN, terminated by a regional load balancer, dispatched to a worker node via Envoy, and locally reverse proxied through Nginx before finally being handled by an app that internalizes many layers of its own. Throw microservices into the mix, and you get a multiplicative effect on top of that already substantial setup. Every component, although added with the best of intentions, is another small opportunity for failure, and that failure is happening at low ambient levels around the clock.
 
 But _another_ big reason that software isn't reliable is that we largely haven't figured out how to build it sustainably, yet. Your freshest faced intern knows in an academic sense to build abstractions in layers, and we do a good job of this in some places -- operating system I/O APIs, programming languages and their standard libraries, and the kernel interface, to name a few, but once we climb up into user space, it's vastly more common for programs to become monolithic balls of amorphous direction and quality. This is partly because of demands on resources and time, partly because most programming languages to a poor job of encouraging separation, and partly because we don't know what we're doing as well as we think we do.
 
