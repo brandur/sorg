@@ -202,6 +202,22 @@
 #
 
 #
+# /nanoglyphs/024-new-horizons
+#
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/yps66x5h69nr62n/2W4A0460.JPG?dl=1"
+  slug = "nanoglyphs/024-new-horizons/sunrise"
+  title = "Sunrise over Twin Peaks"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/n23ul6xjnvapups/2W4A0465.JPG?dl=1"
+  slug = "nanoglyphs/024-new-horizons/sunrise-tree"
+  title = "Sunrise towards downtown, through a tree"
+
+#
 # /nanoglyphs/023-enhancement
 #
 
