@@ -57,7 +57,7 @@ But Slack culture doesn't obsolete the traditional meeting either. When text con
 
 ### Inboxes with inboxes (#inboxes-with-inboxes)
 
-Slack culture has some heavy upsides. Namely, instant access to _anyone_ on Slack is tremendously convenient, and can people expediently unblocked from sticky situations. And with so many conversations happening in public, search becomes a powerful tool, and you can often fix your own problems by searching Slack and using the same resolution as someone who's already had them.
+Slack culture has some heavy upsides. Namely, instant access to _anyone_ on Slack is tremendously convenient, and gets people unblocked expediently when they find themselves in sticky situations. And with so many conversations happening in public, search becomes a powerful tool, and you can often fix your own problems by searching Slack and using the same resolution as someone who's already had them.
 
 But it's not all good. Under the yoke of Slack, a long, uninterrupted block of work is measured in the range of about 10-15 minutes, and it shows. Code changes tend to come in bite-sized patches, and improvements are made very incrementally. No one can afford to be focused on any one thing for long. Those who do ship large changes tend to develop them outside of business hours when there's less distracting Slack action.
 
