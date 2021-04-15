@@ -37,11 +37,11 @@ I think that Postgres can be one of those strong foundations, one that most deve
 
 ## Digital communication and Slack ascendency (#communication)
 
-Okay, old man pontifications incoming. I've have the dubious privilege of working long enough in industry to have seen every practically iteration of the relationship between businesses and digital communication. It's only been a little over a decade, but quite a wild ride.
+Okay, old man pontifications incoming. I've have the dubious privilege of working long enough in industry to have seen practically every iteration of the relationship between businesses and digital communication. It's only been a little over a decade, but quite a wild ride.
 
 During my very first internship, email was the indisputable gold standard. Some of us had Google Hangouts, but its use at work wasn't formalized in any way, shape, or form. The preferred method for fast communication was to walk over and knock on someone's cubicle, although this was BlackBerry [1], so we weren't half bad at using email as a form of proto-IM via our shiny prototype [BB 8800s](https://www.gsmarena.com/blackberry_8800-1911.php) (these may as well have been made from chipped rocks and sharpened sticks by today's standards, but they were the best phone in the world at the time). We'd set up an unauthorized internal IRC server, but nothing of consequence happened there -- 90% of message activity was coordinating coffee runs to Tim Hortons.
 
-This continued to be largely true for my next few jobs. By the time I was at iStockphoto, the IRC server was a little more formalized in that it was recommended that most people join it, but it was still by and large engineering only, with practically no participation from management or exec. You were often on it, but could get away without being in there too. By this time the cubicles were gone, but tapping people on the shoulder remained a preferred method for fast discussion.
+This continued to be largely true for my next few jobs. By the time I was at iStockphoto, the IRC server was a little more formalized in that it was recommended that most people join it, but it was still by and large engineering only, with little participation from management or exec. You were often on it, but could get away without being in there too. By this time the cubicles were gone, but tapping people on the shoulder remained a preferred method for fast discussion.
 
 Heroku was my first place that chat-as-a-service really made an appearance in a big way. We ran the whole gamut, starting with Basecamp before jumping ship to HipChat, before jumping ship yet again to Slack, which at the time was making market headway that few would have thought possible in the even-then crowded market of chat apps.
 
