@@ -13,7 +13,7 @@ I'm going back to my roots and joining Crunchy Data to work on Postgres and Post
 
 Before I get too far -- in case this is your first time reading _Nanoglyph_, I'm [Brandur](https://twitter.com/brandur). This newsletter is ostensibly themed around software simplicity and sustainability, although often isn't. I'll be talking more about Postgres and corporate tooling for the next few months.
 
-Don't want it anymore? You can always resign in [one easy click](%unsubscribe_url%).
+Don't want it anymore? You can always quit in [one easy click](%unsubscribe_url%).
 
 ---
 
