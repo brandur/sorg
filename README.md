@@ -28,12 +28,6 @@ make install
 # Run an initial build of the site, look for build output in public/.
 make build
 
-# Note that when watching for changes, this project has unfortunately gotten
-# large enough that we bypass Mac OS' per-process limit for file descriptors,
-# so that needs to be increased before the command below becomes runnable. This
-# line can be put in an RC file:
-ulimit -n 4096
-
 # Watch for changes in Go files and/or content and recompile and rebuild when
 # one occurs.
 make loop
