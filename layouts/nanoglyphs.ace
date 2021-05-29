@@ -57,6 +57,10 @@ html lang="en"
         padding: 1px 20px;
       }
 
+      blockquote code {
+        font-style: normal;
+      }
+
       blockquote, p {
         margin-bottom: 15px;
         margin-top: 15px;

@@ -199,7 +199,90 @@
 #
 #   * landscape: 1200 wide
 #   * portrait: 900 wide
+#   * constrained (non photos): 550 wide
 #
+
+#
+# /nanoglyphs/025-logs
+#
+
+[[photographs]]
+  crop_width = 350
+  original_image_url = "https://www.dropbox.com/s/sx8ho92svfwe3l6/lines-changed.png?dl=1"
+  slug = "nanoglyphs/025-logs/lines-changed"
+  title = "Number of lines changed"
+
+[[photographs]]
+  crop_width = 350
+  original_image_url = "https://www.dropbox.com/s/lbwzseessuohtjh/lines-changed-2.png?dl=1"
+  slug = "nanoglyphs/025-logs/lines-changed-2"
+  title = "Number of lines changed"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/5igneu0z0f49yo7/log-aggregates.png?dl=1"
+  slug = "nanoglyphs/025-logs/log-aggregates"
+  title = "Aggregating logs"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/u6u2dv7gq99ejd5/log-clean-trace.png?dl=1"
+  slug = "nanoglyphs/025-logs/log-clean-trace"
+  title = "Clean trace of log lines"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/m0lvf3v2vwvtyvh/log-expanded.png?dl=1"
+  slug = "nanoglyphs/025-logs/log-expanded"
+  title = "Log line expanded"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/9t3pofbpmjuf0d5/log-nested-structures.png?dl=1"
+  slug = "nanoglyphs/025-logs/log-nested-structures"
+  title = "Nested structures in logs"
+
+[[photographs]]
+  crop_width = 550
+  original_image_url = "https://www.dropbox.com/s/k4ftqsfh2u6u2ts/sentry-trace.png?dl=1"
+  slug = "nanoglyphs/025-logs/sentry-trace"
+  title = "Distributed Sentry trace"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/o2zr4b4e4kvuojn/03_93_27_04_BillyJohn.jpg?dl=1"
+  slug = "nanoglyphs/025-logs/03_93_27_04_BillyJohn"
+  title = "03_93_27_04_BillyJohn"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/y5c7tky7369svg1/04_96_35_20_HandsomeDave.jpg?dl=1"
+  slug = "nanoglyphs/025-logs/04_96_35_20_HandsomeDave"
+  title = "04_96_35_20_HandsomeDave"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/58kr8oipaasmyzr/05_93_18_22_Joe_and_messenger.jpg?dl=1"
+  slug = "nanoglyphs/025-logs/05_93_18_22_Joe_and_messenger"
+  title = "05_93_18_22_Joe_and_messenger"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/sr5z0l56we2i9hc/12_92_65_02_Chris.jpg?dl=1"
+  slug = "nanoglyphs/025-logs/12_92_65_02_Chris"
+  title = "12_92_65_02_Chris"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/dox7arcmpbumhyy/17_93_48_09_Anita.jpg?dl=1"
+  slug = "nanoglyphs/025-logs/17_93_48_09_Anita"
+  title = "17_93_48_09_Anita"
+
+[[photographs]]
+  crop_width = 1200
+  original_image_url = "https://www.dropbox.com/s/8962gwu496vh1e9/21_95_49_06_Manny.jpg?dl=1"
+  slug = "nanoglyphs/025-logs/21_95_49_06_Manny"
+  title = "21_95_49_06_Manny"
 
 #
 # /nanoglyphs/024-new-horizons
