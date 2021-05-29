@@ -47,7 +47,7 @@ Certainly there was plenty of patches to be landed in my first couple weeks. A f
 
     It is possible to write a thorough test suite which is also fast. Don't let anyone tell you differently. (At Stripe, where many _single_ test cases took more than a minute to run, we had "staff" engineers who insisted that a test suite which would take a week to run if not for massive parallelization was an inevitable byproduct of success, a sentiment from which I'm still experiencing PTSD.)
 
-* **Graceful restarts:** We're running on Heroku, where dynos are restarted once a day, or sooner if the application is deployed, so it's important that programs are able to handle restarts gracefully, waiting for existing connections to finish up before exiting, similar to what Puma or Unicorn does for you in Ruby. Luckily, recent augmentations to Go's HTTP server make this [absolutely trivial]() to implement.
+* **Graceful restarts:** We're running on Heroku, where dynos are restarted once a day, or sooner if the application is deployed, so it's important that programs are able to handle restarts gracefully, waiting for existing connections to finish up before exiting, similar to what Puma or Unicorn does for you in Ruby. Luckily, recent augmentations to Go's HTTP server make this [absolutely trivial](https://golang.org/pkg/net/http/#example_Server_Shutdown) to implement.
 
 * **API Endpoints:** A downside of Go is that it puts heavy emphasis on HTTP endpoints being nothing more than callable functions, which doesn't make it easy to annotate them with metadata. I'm experimenting with the introduction of a light API framework that gives endpoints enough information to be able to reflect themselves into an OpenAPI description. Go's lack of generics doesn't make this particularly easy to do, so getting it right is still an evolving effort.
 
@@ -63,7 +63,7 @@ Platform and Owl are two of the cleanest codebases I've ever had the pleasure to
 
 ## Canonical log lines 2.0 (#canonical-log-lines-2)
 
-At Stripe, I described an idea called [canonical log lines](), which I still stand by is by far the single, easiest method of getting easy insight into production that there is. (I should note that these were not originally my idea, but I'm not sure whose they were.)
+At Stripe, I described an idea called [canonical log lines](https://stripe.com/blog/canonical-log-lines), which I still stand by is by far the single, easiest method of getting easy insight into production that there is. (I should note that these were not originally my idea, but I'm not sure whose they were.)
 
 They're a dead simple concept. In addition to normal logging made during a request, emit one, big, unified log line at the end that glues together all the key vitals together into one place:
 
@@ -81,7 +81,7 @@ This is where canonical log lines come in, and where they come in to perform mag
 
 Canonical log lines are the one tool that I used reliably every single day of the 5+ years I worked at Stripe. They really are _that_ useful, and were the first thing I wanted to get set up in Crunchy's platform.
 
-This time, since we weren't using Splunk, and since I was responsible for setting up our logging, I decided to try something a little different. Instead of old trusty [logfmt](), I configured our logs to be emitted as fully structured JSON.
+This time, since we weren't using Splunk, and since I was responsible for setting up our logging, I decided to try something a little different. Instead of old trusty [logfmt](/logfmt), I configured our logs to be emitted as fully structured JSON.
 
 I've always argued that logfmt is a great operational format because while it's machine parseable, it's also relatively friendly to humans, whereas JSON is clearly not. But this matters somewhat less if your logging system is going to be parsing it all for you anyway. For most types of logs, LogDNA (our current Splunk alternative) will just echo them back to you. It'll parse both logfmt and JSON logs when it detects them so that the metadata is available for aggregates, and usually just echo those back too. However, if a JSON log contains the special key `message`, it'll show just that on the display line, with the other information available by expanding it. This leads to a _very_ clean log trace:
 
