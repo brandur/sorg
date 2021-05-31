@@ -82,7 +82,7 @@ ifdef AWS_ACCESS_KEY_ID
 
 	# Photographs are identical to assets above except without `--delete`
 	# because any given build probably doesn't have the entire set.
-	aws s3 sync $(TARGET_DIR)/photographs/ s3://$(S3_BUCKET)/photographs/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks $(AWS_CLI_FLAGS)
+	aws s3 sync $(TARGET_DIR)/photographs/ s3://$(S3_BUCKET)/photographs/ --acl public-read --cache-control max-age=$(LONG_TTL) --follow-symlinks --size-only $(AWS_CLI_FLAGS)
 
 	@echo "\n=== Syncing Atom feeds\n"
 
