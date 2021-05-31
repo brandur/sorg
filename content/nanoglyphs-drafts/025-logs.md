@@ -1,6 +1,6 @@
 +++
-image_alt = "The view off Sulphur Mountain"
-image_url = "/photographs/nanoglyphs/018-ractors/sulphur-view@2x.jpg"
+image_alt = "Redwoods in Heroes Grove, Golden Gate Park"
+image_url = "/photographs/nanoglyphs/025-logs/heroes-grove@2x.jpg"
 published_at = 2021-05-22T21:13:01Z
 title = "Canonical Log Lines 2.0"
 +++
