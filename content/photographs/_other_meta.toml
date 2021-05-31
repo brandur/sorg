@@ -199,7 +199,7 @@ title = "L.E.A.F."
 #
 #   * landscape: 1200 wide
 #   * portrait: 900 wide
-#   * constrained (non photos): 550 wide
+#   * constrained (non photos): 600 wide
 #
 
 #
@@ -225,31 +225,31 @@ slug = "nanoglyphs/025-logs/lines-changed-2"
 title = "Number of lines changed"
 
 [[photographs]]
-crop_width = 550
+crop_width = 600
 original_image_url = "https://www.dropbox.com/s/5igneu0z0f49yo7/log-aggregates.png?dl=1"
 slug = "nanoglyphs/025-logs/log-aggregates"
 title = "Aggregating logs"
 
 [[photographs]]
-crop_width = 550
+crop_width = 600
 original_image_url = "https://www.dropbox.com/s/u6u2dv7gq99ejd5/log-clean-trace.png?dl=1"
 slug = "nanoglyphs/025-logs/log-clean-trace"
 title = "Clean trace of log lines"
 
 [[photographs]]
-crop_width = 550
+crop_width = 600
 original_image_url = "https://www.dropbox.com/s/m0lvf3v2vwvtyvh/log-expanded.png?dl=1"
 slug = "nanoglyphs/025-logs/log-expanded"
 title = "Log line expanded"
 
 [[photographs]]
-crop_width = 550
+crop_width = 600
 original_image_url = "https://www.dropbox.com/s/9t3pofbpmjuf0d5/log-nested-structures.png?dl=1"
 slug = "nanoglyphs/025-logs/log-nested-structures"
 title = "Nested structures in logs"
 
 [[photographs]]
-crop_width = 550
+crop_width = 600
 original_image_url = "https://www.dropbox.com/s/k4ftqsfh2u6u2ts/sentry-trace.png?dl=1"
 slug = "nanoglyphs/025-logs/sentry-trace"
 title = "Distributed Sentry trace"
