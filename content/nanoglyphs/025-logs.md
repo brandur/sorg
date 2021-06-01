@@ -1,7 +1,7 @@
 +++
 image_alt = "Redwoods in Heroes Grove, Golden Gate Park"
 image_url = "/photographs/nanoglyphs/025-logs/heroes-grove@2x.jpg"
-published_at = 2021-05-22T21:13:01Z
+published_at = 2021-06-01T18:45:56Z
 title = "Canonical Log Lines 2.0"
 +++
 
