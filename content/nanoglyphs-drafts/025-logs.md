@@ -67,7 +67,7 @@ Platform and Owl are two of the cleanest codebases I've ever had the pleasure to
 
 ## Canonical log lines 2.0 (#canonical-log-lines-2)
 
-At Stripe, I described an idea called [canonical log lines](https://stripe.com/blog/canonical-log-lines), which I still stand by is by far the single, simplest, best method of getting easy insight into production that there is. (I should note that these were not originally my idea, but also that I don't know who's they were.) Starting at Crunchy, I wanted something similar _immediately_, and started coding them on day one.
+At Stripe, I described an idea called [canonical log lines](https://stripe.com/blog/canonical-log-lines), which I still stand by as the single, simplest, best method of getting easy insight into production that there is. (I should note that these were not originally my idea, but also that I don't know whose they were.) Starting at Crunchy, I wanted something similar _immediately_, and started coding them on day one.
 
 They're a dead simple concept. In addition to normal logging made during a request, emit one, big, unified log line at the end that glues together all the key vitals together into one place:
 
