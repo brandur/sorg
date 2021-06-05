@@ -1,7 +1,7 @@
 +++
 hook = "A few reflections on the Heroku HTTP API Design Guide, and a link to a fork that brings it back to its original format."
 published_at = 2021-06-05T21:06:04Z
-title = "The Heroku HTTP API Design Guide"
+title = "The Heroku HTTP API Design Guide, revisited"
 +++
 
 One of our most influential "late Heroku" thought artifacts was "The Heroku HTTP API Design Guide". We'd recently revamped our API with a new V3 iteration, and the guide was a terse description of the conventions we'd developed. It was written by [Mark McGranaghan](https://twitter.com/mmcgrana), and then entered common maintenance.
