@@ -353,7 +353,7 @@ ticket (i.e. probably the situation that most big organizations have). But
 although technical management wasn't an idea that lasted, it was a very good
 place to be an engineer while it did.
 
-[api-design-guide]: https://github.com/interagent/http-api-design
+[api-design-guide]: https://github.com/brandur/heroku-http-api-design
 [bazooka]: http://gotocon.com/dl/goto-zurich-2013/slides/AlexanderSimmerl_and_MattProud_BuildingAnInHouseHeroku.pdf
 [degges-12factor]: http://www.rdegges.com/heroku-isnt-for-idiots/
 [empire]: https://github.com/remind101/empire
