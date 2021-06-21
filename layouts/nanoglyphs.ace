@@ -267,6 +267,10 @@ html lang="en"
         padding: 0 20px;
       }
 
+      .container-highlight-portrait {
+        max-width: 900px;
+      }
+
       .web-only .container {
         max-width: 600px;
       }
@@ -281,7 +285,7 @@ html lang="en"
       }
 
       .web-only .container-highlight-portrait {
-        max-width: 900px;
+        /* see non-web-only above */
       }
 
       .web-only .container-highlight img, .web-only .container-highlight-portrait img {
