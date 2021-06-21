@@ -203,6 +203,22 @@ title = "L.E.A.F."
 #
 
 #
+# /nanoglyphs/026-ids
+#
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/s/bqx7qubthu3x5j5/2W4A0530.JPG?dl=1"
+slug = "nanoglyphs/026-ids/pacifica"
+title = "TODO"
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/s/6nmtr3aqa43upwz/L1020361.JPG?dl=1"
+slug = "nanoglyphs/026-ids/salesforce-park"
+title = "TODO"
+
+#
 # /nanoglyphs/025-logs
 #
 
