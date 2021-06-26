@@ -207,16 +207,58 @@ title = "L.E.A.F."
 #
 
 [[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/qzcqqqe80kkwrpm/L1010861.jpg?dl=1"
+slug = "nanoglyphs/026-ids/great-highway"
+title = "Looking down the Great Highway"
+
+[[photographs]]
 crop_width = 900
 original_image_url = "https://www.dropbox.com/s/bqx7qubthu3x5j5/2W4A0530.JPG?dl=1"
 slug = "nanoglyphs/026-ids/pacifica"
-title = "TODO"
+title = "Pacifica"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/ysm5c94xch04bgv/2W4A0529.JPG?dl=1"
+slug = "nanoglyphs/026-ids/pacifica-2"
+title = "Pacifica"
 
 [[photographs]]
 crop_width = 900
 original_image_url = "https://www.dropbox.com/s/6nmtr3aqa43upwz/L1020361.JPG?dl=1"
 slug = "nanoglyphs/026-ids/salesforce-park"
 title = "TODO"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/8wpcoxfnu4l5km6/san-bruno.png?dl=1"
+slug = "nanoglyphs/026-ids/san-bruno"
+title = "Walk to San Bruno"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/9x2vlfmna20ru1p/2W4A0555.JPG?dl=1"
+slug = "nanoglyphs/026-ids/south-san-francisco"
+title = "Sweeney Ridge"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/pqsqbw9bmeqwr5m/2W4A0541.JPG?dl=1"
+slug = "nanoglyphs/026-ids/sweeney-ridge"
+title = "Sweeney Ridge"
+
+[[photographs]]
+crop_width = 384 # original image only 768 wide
+original_image_url = "https://www.dropbox.com/s/mfj8ih965izaevo/uuid-tps.png?dl=1"
+slug = "nanoglyphs/026-ids/uuid-tps"
+title = "Transactions per second comparison"
+
+[[photographs]]
+crop_width = 384 # original image only 768 wide
+original_image_url = "https://www.dropbox.com/s/e0cbeluvlhace7u/uuid-wal-medium-normalized.png?dl=1"
+slug = "nanoglyphs/026-ids/uuid-wal-medium-normalized"
+title = "WAL size comparison"
 
 #
 # /nanoglyphs/025-logs
