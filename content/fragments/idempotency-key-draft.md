@@ -15,7 +15,7 @@ This is a subject that's near and dear and which I've [written about](https://st
 * WorldPay
 * Yandex
 
-Along with a few smaller ones. One quirk is that the draft seems to be authored by a PayPal employee, and although PayPal has an idempotency concept, it notably does _not_ use `Idempotency-Key` (preferring `PayPal-Request-Id` instead).
+Along with a few smaller ones. One quirk is that the draft seems to be authored by a PayPal employee, and although PayPal has an idempotency concept, it notably does _not_ appear to use `Idempotency-Key` (preferring `PayPal-Request-Id` instead).
 
 The [HN discussion](https://news.ycombinator.com/item?id=27729610) goes a little off the rails -- mostly going to show that idempotency is a nuanced enough subject that even hacker types don't understand it very well ("just use PUT!", "well _I_ for one don't think a standard adds value ...", "it should be called `Request-Id`", etc.). A Google employee argues that that an idempotency key more appropriately belongs in a request's payload -- almost certainly a post-hoc rationalization of a design decision made because Google uses protobuf/GRPC everywhere, and those don't gel well with HTTP headers.
 
