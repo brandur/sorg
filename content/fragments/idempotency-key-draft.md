@@ -1,7 +1,7 @@
 +++
 hook = "`Idempotency-Key` is a convention long in use by Stripe to provide idempotency on non-idempotent HTTP verbs, and it now has its own IETF standards draft."
 published_at = 2021-07-05T01:49:41Z
-title = "`Idempotency-Key` IETF Standards Draft"
+title = "`Idempotency-Key` IETF standards draft"
 +++
 
 From HN today: an IETF draft for a [standardized `Idempotency-Key` header](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header-00), more or less identical to the convention used by Stripe.
