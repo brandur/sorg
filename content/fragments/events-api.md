@@ -10,7 +10,7 @@ I'm not a big fan of webhooks either. They're easy to use, but have some major u
 
 * They require exposing a public endpoint, which is inconvenient in development and in more complex deployment configurations involving VPCs, ingress rules, reverse proxies, etc.
 * Configuring them usually involves logging into a web dashboard and manually entering URLs.
-* They don't provide any kind of historial archive, and a missed webhook might be hard to identify.
+* They don't provide any kind of historical archive, and a missed webhook might be hard to identify.
 * They're not ordered.
 
 And from the standpoint of the webhook provider:
@@ -23,11 +23,11 @@ With all that said, it's worth nothing that an events endpoint isn't a free lunc
 
 ## Horizon trimming (#horizon-trimming)
 
-In Stripe's implementation, events have IDs that are roughly ordered like `evt_123`, `evt_124`, `evt_125`, etc., and these IDs are used for paginatination by asking for the next page like `?starting_after=evt_123`. But although they're roughly ordered, they are not _exactly_ ordered. IDs are generated as `evt_<time component><random component>` so that they're mostly ordered by time, but include a random component to avoid collisions within the same epoch. Moreover, IDs aren't necessarily generated at the time the record is inserted -- it's possible that one is generated early on in a long API call, and inserted at the end of it, resulting in many seconds of delay.
+In Stripe's implementation, events have IDs that are roughly ordered like `evt_123`, `evt_124`, `evt_125`, etc., and these IDs are used for pagination by asking for the next page like `?starting_after=evt_123`. But although they're roughly ordered, they are not _exactly_ ordered. IDs are generated as `evt_<time component><random component>` so that they're mostly ordered by time, but include a random component to avoid collisions within the same epoch. Moreover, IDs aren't necessarily generated at the time the record is inserted -- it's possible that one is generated early on in a long API call, and inserted at the end of it, resulting in many seconds of delay.
 
 This means that events may be inserted out of order. When a consumer consumes up to a given ID like `evt_125`, it can't assume that when checking again that this is the new ceiling -- `evt_124` may later be inserted retroactively. A robust consumer should page ~60 seconds back in time on each fetch, even if it means covering already consumed events.
 
-The problem is particularly insidious because especially when initially implementing a consumer and there's relatively few records, it won'even be happening  -- events are spaced far enough from each other in time that IDs will be ordered. This will likely lead most developers to assume that IDs are always ordered, when they're not. I'd venture a guess that most implementations will be wrong by default, and only corrected later after the problem is noticed (likely after a prolonged debugging phase).
+The problem is particularly insidious because especially when initially implementing a consumer and there's relatively few records, it won't even be happening  -- events are spaced far enough from each other in time that IDs will be ordered. This will likely lead most developers to assume that IDs are always ordered, when they're not. I'd venture a guess that most implementations will be wrong by default, and only corrected later after the problem is noticed (likely after a prolonged debugging phase).
 
 It's possible for a provider to avoid the problem by building an events API based on a central system that can guarantee that IDs are assigned monotonically, but it needs to be considered carefully. A Postgres sequence could do the job, but might become a scaling bottleneck. Backing it with Kafka would also work, but then you're running Kafka.
 
