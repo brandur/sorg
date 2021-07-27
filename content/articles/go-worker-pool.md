@@ -144,8 +144,8 @@ func main() {
 	errors := make(chan error, 100)
 
 	var wg sync.WaitGroup
-	for w := 1; w <= 3; w++ {
-		go worker(w, &wg, jobs, results, errors)
+	for i := 1; i <= 3; i++ {
+		go worker(i, &wg, jobs, results, errors)
 	}
 
 	for j := 1; j <= 9; j++ {
