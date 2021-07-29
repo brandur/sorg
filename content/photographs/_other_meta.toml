@@ -151,6 +151,22 @@ slug = "fragments/new-york/washington-square-park"
 title = "Washington Square Park"
 
 #
+# /fragments/openai-api
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/v5okuhgt6334748/example.png?dl=1"
+slug = "fragments/openai-api/example"
+title = "An example API response from OpenAI"
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/wf047o5kxjik65m/openai-api-docs.png?dl=1"
+slug = "fragments/openai-api/openai-api-docs"
+title = "OpenAI API documentation"
+
+#
 # /fragments/rss-abandon
 #
 
