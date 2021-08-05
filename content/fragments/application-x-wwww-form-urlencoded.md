@@ -53,7 +53,7 @@ arr[]=1&arr[]=2
 map[a]=1&map[b]=2
 ```
 
-Not too bad right? Well, not too bad yet. Let's look at how to nest two maps:
+Not too bad right? Well, not too bad _yet_. Let's look at how to nest two maps:
 
 ```
 outer[inner][a]=1&outer[inner][b]=2&outer[other][c]=3
