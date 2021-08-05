@@ -31,7 +31,7 @@ curl https://api.stripe.com/v1/charges \
   -d '{"currency":2000,"currency":"usd"}'
 ```
 
-So if form-encoding is convenient, why did web APIs broadly towards JSON instead? Part of it was surely JSON's growing popularity, but the other is that although form-encoding does have a couple niceties, it doesn't enhance gracefully beyond the very basics.
+So if form-encoding is convenient, why did web APIs broadly move towards JSON instead? Part of it was surely JSON's growing popularity, but the other is that although form-encoding does have a couple niceties, it doesn't enhance gracefully beyond the very basics.
 
 I probably need to dissuade you from using it because the world's been moving to JSON for a long time, but for posterity's sake, here's a little rationalization for why it had to go.
 

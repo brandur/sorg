@@ -10,7 +10,7 @@ For years, the go-to example of good API design has been Stripe, which along wit
 
 Stripe's still good, but many other parties have been catching up. These days, for my money, one of the best example of good API design in the wild is [OpenAI](https://beta.openai.com/docs/api-reference/answers/create).
 
-You'll immediately notice similarities between OpenAI's documentations and Stripe's. OpenAI and Stripe have considerable interrelated history, and very likely that was a factor in OpenAI drawing influence from Stripe. This is a big part of what makes OpenAI's API design good -- it reuses many of Stripe's conventions, but refines the faults in Stripe's API that have gone unaddressed.
+You'll immediately notice similarities between OpenAI's documentation and Stripe's. OpenAI and Stripe have considerable interrelated history, and very likely that was a factor in OpenAI drawing influence from Stripe. This is a big part of what makes OpenAI's API design good -- it reuses many of Stripe's conventions, but refines the faults in Stripe's API that have gone unaddressed.
 
 {{FigureSingleWithClass "OpenAI API documentation." "/photographs/fragments/openai-api/openai-api-docs.png" "overflowing"}}
 
