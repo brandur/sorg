@@ -9,8 +9,8 @@ title = "The bear"
 > -- The Stranger, The Big Lebowski
 
 I missed my flight this morning and it was my fault. To say that I put myself
-in a high risk situation would be an understatement; I was at [DNA's
-Cyberdelia][cyberdelia] until closing at 2 AM, then unwisely decided to stop by
+in a high risk situation would be an understatement; I was at DNA's
+Cyberdelia until closing at 2 AM, then unwisely decided to stop by
 the old office afterwards. I got into bed at 3:45 AM with a target wake-up time
 at 4:45 AM to make my 7 AM flight. My 20/20 hindsight tells me that I should
 have gone to find a good coffee instead. My 20/100 hindsight tells me that I
@@ -29,5 +29,3 @@ counter and rescheduled for the next day.
 The only good news is that as I was setting up for multi-device redundancy for
 the next day's trip, I noticed that the iPad's alarm app finally supports
 playing a song instead of the one of the built-in buzzers. Progress!
-
-[cyberdelia]: https://www.dnalounge.com/calendar/2016/01-29.html
