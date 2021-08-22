@@ -33,7 +33,7 @@ linters:
 linters-settings:
   forbidigo:
     forbid:
-      - 'fmt\.Errorf.*'%
+      - '^fmt\.Errorf$'%
 ```
 
 ## Error handling convention (#convention)
