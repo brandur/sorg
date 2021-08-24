@@ -4,7 +4,7 @@ published_at = 2021-08-22T21:56:16Z
 title = "Error stack traces in Go with x/xerror"
 +++
 
-Go's last standing major weakness is error handling. A few years ago the list was much longer, with the language missing an adequate package manager, system for pulling static assets into a binary, and generics. But now, the first two have already been addressed been address with [Go Modules](https://go.dev/blog/using-go-modules) in 1.11 and [`go:embed` in 1.16](https://pkg.go.dev/embed), and generics are expected to be in beta form by Go 1.18's release in December. Errors are the last major omission.
+Go's last standing major weakness is error handling. A few years ago the list was much longer, with the language missing an adequate package manager, system for pulling static assets into a binary, and generics. But now, the first two have already been addressed with [Go Modules](https://go.dev/blog/using-go-modules) in 1.11 and [`go:embed` in 1.16](https://pkg.go.dev/embed), and generics are expected to be in beta form by Go 1.18's release in December. Errors are the last major omission.
 
 Go 1.13 brought in some improvements in the form of the fmt-er `%w` symbol and `errors.Is`, `.As`, and `.Unwrap`, but still outstanding are (1) a way to reasonably get a stack trace at the site where an error is generated, and (2) a way to cut down on `if err != nil { ... }` boilerplate that pervades all Go code.
 
