@@ -80,7 +80,7 @@ QuickTime will play multi-channel AAC, but it's more finnicky, and a video with 
 -filter_complex "channelmap=channel_layout=5.1" -c:a aac
 ```
 
-If your input sources are only stereo anyway, or you never expect to watch the output video on anything but a stereo device (i.e., headphones, TV minus sound system), FFmpeg can trivially downmix to stereo AAC, which QuickTime will play wit no trouble:
+If your input sources are only stereo anyway, or you never expect to watch the output video on anything but a stereo device (i.e., headphones, TV minus sound system), FFmpeg can trivially downmix to stereo AAC, which QuickTime will play with no trouble:
 
 ```
 -c:a aac -ac 2
