@@ -11,6 +11,8 @@ Go's `time` package has an internal `daysIn` function to do this, but it's not e
 This single line function will do the trick:
 
 ``` go
+import "time"
+
 func daysIn(m time.Month, year int) int {
     return time.Date(year, m+1, 0, 0, 0, 0, 0, time.UTC).Day()
 }
