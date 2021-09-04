@@ -3,7 +3,7 @@ image_alt = "Looking down the coastline towards Pacifica"
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/027-15-minutes/red-rock@2x.jpg"
 published_at = 2021-09-04T18:50:46Z
-title = "Red Rocks; 15 Minutes; K-sorted IDs"
+title = "Red Rocks + 15 Minutes + K-sorted IDs"
 +++
 
 I spent the last couple of weeks in Denver. On my last day there I walked through various Lakewood parks, down [Dinosaur Ridge](https://en.wikipedia.org/wiki/Dinosaur_Ridge), and up to the [Red Rock Amphitheatre](https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre). Maybe the most unique concert venue on Earth, its first rock-and-roll show is considered to be from The Beatles, on tour in '64, which also notably was the only show in the United States that wasn't sold out.
@@ -38,7 +38,7 @@ The 15 weeks for upgrading Ruby at Stripe is harder to measure. This is partly e
 
 There's a myriad of reasons that upgrades took so long. The biggest was that the entire stack was so deep and so heavily custom. Everything from the sheer amount of Ruby code written, to an incredibly complex production set up, to an immensely intricate Jenkins environment for CI worked as considerable upgrade back pressure. Bump that version of Ruby and things would break, _a lot_ of things. It was someone's job to go through them one by one and do the necessary work to get the project over the line.
 
-Another big one is that very careful attention had to be paid to possible performance and memory regressions. The Stripe API runs as a single monolithic Ruby process, and a vast amount of Ruby code needs to be loaded to start it up. This is made much worse by Ruby's non-support for parallelism [1], making a forking multi-process in the style of Unicorn very common. For the longest time the API ran on a heavily customized [Thin web server](https://github.com/macournoyer/thin) combined with NIH [Einhorn](https://github.com/stripe-archive/einhorn) for Unicorn-like functionality.
+Another big one is that very careful attention had to be paid to possible performance and memory regressions. The Stripe API runs as a single monolithic Ruby process, and a vast amount of Ruby code needs to be loaded to start it up. This is made much worse by Ruby's non-support for parallelism [1], making a forking multi-process in the style of Unicorn very common. For the longest time the API ran on a heavily customized [Thin web server](https://github.com/macournoyer/thin) combined with NIH [Einhorn](https://github.com/stripe-archive/einhorn) technology for Unicorn-like features.
 
 For those not well-versed with Ruby deployments, the way this works is that a Ruby app is loaded into a single process which then forks itself many times to produce child processes that will handle requests. In theory, the child processes can share memory with their parent, but because Ruby's GC tends to taint memory pages quickly, in practice memory isn't shared for long, and all children balloon up to the same size as their parent [2]. In addition to parallelism, this set up also allows for graceful restarts -- the parent process will reload itself upon receiving a signal, and coordinate rotating out its children for new processes running updated code, while also giving each one time to finish what it's working on.
 
@@ -53,6 +53,8 @@ Back to the original point I was trying to make: Stripe servers ran big and hot,
 A few weeks ago I wrote about [primary IDs](/nanoglyphs/026-ids) in applications, UUIDs versus sequences, and more novel techniques like ULIDs and Stripe's generated IDs, both of which aim to introduce a time component so that they're roughly in ascending order.
 
 I got one of my best newsletter responses ever (people care about their IDs!), so I'm following up here with a few of them. It turns out that generating random-ish IDs in roughly ascending order is far from a unique idea, with many examples of prior art besides the ones that I'd mentioned.
+
+On a meta note, I've been wanting to include reader feedback/opinions since starting this newsletter, so keep it coming.
 
 ### UUID V6 (#uuid-v6)
 
@@ -102,7 +104,7 @@ Once again, very similar to the formats we've covered so far. It's worth nothing
 
 Justin writes in with a very thorough article from [Cockroach Labs on choosing index keys](https://www.cockroachlabs.com/blog/how-to-choose-db-index-keys/). Cockroach maps its normal `SERIAL` type to a function called [`unique_rowid()`](https://www.cockroachlabs.com/docs/stable/functions-and-operators#id-generation-functions), which generates a 64-bit ID combining some timestamp and some randomness that should seem pretty familiar by now.
 
-However, because CockroachDB involves having many cooperating nodes where writes can happen, a K-sorted ID won't make good utilization of available nodes in an insert-heavy system. Cockroach provides sharded keys to around this problem:
+However, because CockroachDB involves having many cooperating nodes where writes can happen, a K-sorted ID won't make good utilization of available nodes in an insert-heavy system, and would perform much worse compared to a V4 UUID. Cockroach provides sharded keys to work around this problem and get the best of both worlds:
 
 > Even though timestamps avoid the worst bottlenecks of sequential IDs, they still tend to create a bottleneck because all insertions are happening at around the current time, so only a small number of nodes are able to participate in handling these writes. If you need more write throughput than timestamp IDs offer but more clustering than random UUIDs, you can use sharded keys to spread the load out across the cluster and reduce hotspots.
 
@@ -119,7 +121,7 @@ CREATE TABLE posts (
     INDEX (author_id, ts));
 ```
 
-### ULIDs in prod (#ulids-prod)
+### ULIDs --> prod (#ulids-prod)
 
 For my own purposes, I ended up putting [ULIDs](https://github.com/ulid/spec) [4] into production. I probably would have used UUID V6 if it was more standard and more broadly available, but for my money, ULID seems to be the K-sorted ID format with the most uptake and most language-specific implementations.
 
@@ -166,7 +168,7 @@ ALTER TABLE access_token
     ALTER COLUMN id SET DEFAULT gen_ulid();
 ```
 
-From some places in Go code we use the [Go ULID package](https://github.com/oklog/ulid). This has the ever-so-slight advantage of using a monotonic entropy pool for the random component that brings the chance of collision down from basically-zero to zero-zero. For our purposes it's definitely overkill, but also doesn't cost very much.
+From some places in Go code we use the [Go ULID package](https://github.com/oklog/ulid). This has the ever-so-slight advantage of using a monotonic entropy pool for the random component that brings the chance of collision down from basically-zero to zero-zero. For our purposes it's definitely overkill, but also, why not.
 
 <img src="/photographs/nanoglyphs/027-15-minutes/millenium-bridge@2x.jpg" alt="The Millenium Bridge in LoDo Denver" class="wide_portrait" loading="lazy">
 
