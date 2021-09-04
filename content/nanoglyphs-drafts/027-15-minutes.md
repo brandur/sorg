@@ -17,7 +17,7 @@ But even with that disappointment, the area's rock formations (whose red-ness is
 
 ---
 
-## Shallow stacks
+## Shallow stacks (#shallow-stacks)
 
 Last week, I trolled Rubyists and ex-colleagues with this tweet:
 
@@ -163,7 +163,7 @@ ALTER TABLE access_token
 
 From some places in Go code we use the [Go ULID package](https://github.com/oklog/ulid). This has the ever-so-slight advantage of using a monotonic entropy pool for the random component that brings the chance of collision down from basically-zero to zero-zero. For our purposes it's definitely overkill, but also doesn't cost very much.
 
-## On the Bay
+## On Denver (#denver)
 
 I'm in Denver. I think it surprises most people when my answer to "what are you doing there?" is "nothing, really". I've never been before, and I came mostly to look around the city, get a feel for what it's like, and maybe most importantly, to not be in California.
 
