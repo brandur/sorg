@@ -23,7 +23,7 @@ Last week, I trolled Rubyists and ex-colleagues with this tweet:
 
 <img src="/photographs/nanoglyphs/027-15-minutes/15-minute-tweet@2x.png" alt="Tweet of 15 minutes to upgrade" class="img_constrained" loading="lazy">
 
-Twitter is the land of over-simplification and hyperbole, and I'm certainly guilty of that to. However, what I said here is accurate, and it's worth going into a little more detail.
+Twitter is the land of over-simplification and hyperbole, and I'm certainly guilty of that too. However, what I said here is accurate, and it's worth going into a little more detail.
 
 First on the claim of 15 minutes in Go, which is less interesting but still important. 15 minutes wasn't exaggerating, and that includes writing code/config, getting it reviewed, upgrading staging, testing, upgrading production, and testing there too. It actually took longer than some of my historical Go upgrades because 1.16 contained a very rare (and very minor) backward incompatibility -- it got a little more strict about not allowing an HTTP response that's been declared a 204 (no content) to be written to. We had one test case where we were improperly doing this, and the 15 minutes also includes me debugging and fixing that.
 
