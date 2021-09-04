@@ -219,6 +219,16 @@ title = "L.E.A.F."
 #
 
 #
+# /nanoglyphs/027-15-minutes
+#
+
+[[photographs]]
+crop_width = 496 # original image only 992 wide
+original_image_url = "https://www.dropbox.com/s/21t62z257f9tzxg/15-minute-tweet.png?dl=1"
+slug = "nanoglyphs/027-15-minutes/15-minute-tweet"
+title = "Tweet of 15 minutes to upgrade"
+
+#
 # /nanoglyphs/026-ids
 #
 
