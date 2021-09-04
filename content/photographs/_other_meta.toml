@@ -228,6 +228,24 @@ original_image_url = "https://www.dropbox.com/s/21t62z257f9tzxg/15-minute-tweet.
 slug = "nanoglyphs/027-15-minutes/15-minute-tweet"
 title = "Tweet of 15 minutes to upgrade"
 
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/v98kfm3b4w5wud3/L1020466-river.JPG?dl=1"
+slug = "nanoglyphs/027-15-minutes/denver-river"
+title = "The South Platte River running through central Denver"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/1qh2xsapknvanlk/L1020454_mod2.jpg?dl=1"
+slug = "nanoglyphs/027-15-minutes/red-rock"
+title = "Red Rock in Colorado"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/rtxm0ik4apy5m55/L1020457_mod1.jpg?dl=1"
+slug = "nanoglyphs/027-15-minutes/red-rock-landscape"
+title = "The Red Rocks Amphitheatre and surrounding landscape"
+
 #
 # /nanoglyphs/026-ids
 #

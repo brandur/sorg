@@ -1,10 +1,9 @@
 +++
 image_alt = "Looking down the coastline towards Pacifica"
 # image_orientation = "portrait"
-# image_url = "/photographs/nanoglyphs/026-ids/salesforce-park@2x.jpg"
-# image_url = "/photographs/nanoglyphs/026-ids/pacifica@2x.jpg"
+image_url = "/photographs/nanoglyphs/027-15-minutes/red-rock@2x.jpg"
 published_at = 2021-09-04T18:50:46Z
-title = "15 Minutes; K-sorted IDs"
+title = "Red Rocks; 15 Minutes; K-sorted IDs"
 +++
 
 I spent the last couple of weeks in Denver. On my last day there I walked through various Lakewood parks, down [Dinosaur Ridge](https://en.wikipedia.org/wiki/Dinosaur_Ridge), and up to the [Red Rock Amphitheatre](https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre). Maybe the most unique concert venue on Earth, its first rock-and-roll show is considered to be from The Beatles, on tour in '64, which also notably was the only show in the United States that wasn't sold out.
@@ -14,6 +13,10 @@ In '71, a five-year ban was enacted on rock shows there after a thousand rabid f
 I never got to see the inside of place. After walking 20 km through Colorado hills without doing enough advanced research, I arrived sweaty, dusty, and dehydrated, only to be told that they'd just shut down to prepare for the night's show. I was informed by the lady watching the gate that I could still buy a ticket, but that the event was for an unenviable genre called "electronic dance music" (this explained why a parking lot in the middle of nowhere was full of burner lookalikes with hula hoops). With another 15 km of return still ahead of me and fast-dwindling water reserves, I had to decline, but promised to be back.
 
 But even with that disappointment, the area's rock formations (whose red-ness isn't exaggerated) are still a magnificent sight from the outside, and hiking up to them procures some of the best views. What a beautiful place.
+
+<img src="/photographs/nanoglyphs/027-15-minutes/red-rock-landscape@2x.jpg" alt="The Red Rocks Amphitheatre and surrounding landscape" class="wide" loading="lazy">
+
+_(This shot from the other side gives you a much better idea of the scale of these monsters. The one on the right is "Ship Rock" which makes up one side of the amphitheatre. The park was previously named "Garden of the Titans", which is very apt.)_
 
 ---
 
@@ -162,6 +165,8 @@ ALTER TABLE access_token
 ```
 
 From some places in Go code we use the [Go ULID package](https://github.com/oklog/ulid). This has the ever-so-slight advantage of using a monotonic entropy pool for the random component that brings the chance of collision down from basically-zero to zero-zero. For our purposes it's definitely overkill, but also doesn't cost very much.
+
+<img src="/photographs/nanoglyphs/027-15-minutes/denver-river@2x.jpg" alt="The South Platte River running through central Denver" class="wide" loading="lazy">
 
 ## On Denver (#denver)
 
