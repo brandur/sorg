@@ -21,7 +21,7 @@ But even with that disappointment, the area's rock formations (whose red-ness is
 
 Last week, I trolled Rubyists and ex-colleagues with this tweet:
 
-<img src="/photographs/nanoglyphs/027-15-minutes/15-minute-tweet@2x.png" alt="Tweet of 15 minutes to upgrade" class="img_constrained" loading="lazy">
+<a href="https://twitter.com/brandur/statuses/1431297226677133316"><img src="/photographs/nanoglyphs/027-15-minutes/15-minute-tweet@2x.png" alt="Tweet of 15 minutes to upgrade" class="img_constrained" loading="lazy"></a>
 
 Twitter is the land of over-simplification and hyperbole, and I'm certainly guilty of that too. However, what I said here is accurate, and it's worth going into a little more detail.
 
