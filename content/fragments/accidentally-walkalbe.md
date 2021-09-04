@@ -24,4 +24,4 @@ One of the most noticeable things about Denver's downtown compared to San Franci
 
 San Francisco is an _accidentally_ walkable city -- walkable by virtue of historic density, but a place where there's never been proactive effort in creating a people-friendly urban environment.
 
-[1] Covid actually had the effect of opening a few in the form of making Twin Peaks, and parts of the Great Highway and JFK in Golden Park pedestrian/bike spaces. But since then the city's heroic leadership has been working hard to close them again, with the former two already gone and the third just a matter of time.
+[1] Covid actually had the effect of opening a few in the form of making Twin Peaks, and parts of the Great Highway and JFK in Golden Park pedestrian/bike spaces for purposes of social distancing. But since then the city's heroic leadership has been working hard to close them again, with the former two already gone and the third only a matter of time now.
