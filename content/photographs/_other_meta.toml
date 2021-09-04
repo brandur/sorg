@@ -235,6 +235,12 @@ slug = "nanoglyphs/027-15-minutes/denver-river"
 title = "The South Platte River running through central Denver"
 
 [[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/s/s2t51wh9wnsod7a/L1020461-millenium-bridge.JPG?dl=1"
+slug = "nanoglyphs/027-15-minutes/millenium-bridge"
+title = "The Millenium Bridge in LoDo Denver"
+
+[[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/s/1qh2xsapknvanlk/L1020454_mod2.jpg?dl=1"
 slug = "nanoglyphs/027-15-minutes/red-rock"

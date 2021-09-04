@@ -46,6 +46,8 @@ Process-based parallelism is fine, except that it's not a good fit combined with
 
 Back to the original point I was trying to make: Stripe servers ran big and hot, so even minor changes or regressions in Ruby's runtime or GC could have major effects in production. The only safe way to put a new version into play was to first deploy it to a Canary and have someone keep an eye on charts around latency, CPU usage, GC pressure, and memory for a few days. If anything came up, we'd have to dig into the problem and find a work around.
 
+<img src="/photographs/nanoglyphs/027-15-minutes/denver-river@2x.jpg" alt="The South Platte River running through central Denver" class="wide" loading="lazy">
+
 ## K-sorted IDs ad nauseam (#k-sorted)
 
 A few weeks ago I wrote about [primary IDs](/nanoglyphs/026-ids) in applications, UUIDs versus sequences, and more novel techniques like ULIDs and Stripe's generated IDs, both of which aim to introduce a time component so that they're roughly in ascending order.
@@ -166,7 +168,7 @@ ALTER TABLE access_token
 
 From some places in Go code we use the [Go ULID package](https://github.com/oklog/ulid). This has the ever-so-slight advantage of using a monotonic entropy pool for the random component that brings the chance of collision down from basically-zero to zero-zero. For our purposes it's definitely overkill, but also doesn't cost very much.
 
-<img src="/photographs/nanoglyphs/027-15-minutes/denver-river@2x.jpg" alt="The South Platte River running through central Denver" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/027-15-minutes/millenium-bridge@2x.jpg" alt="The Millenium Bridge in LoDo Denver" class="wide_portrait" loading="lazy">
 
 ## On Denver (#denver)
 
