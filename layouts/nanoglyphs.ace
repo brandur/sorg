@@ -167,6 +167,10 @@ html lang="en"
         margin: 0 auto;
       }
 
+      img.wide_portrait {
+        max-width: 900px;
+      }
+
       img[src$=".svg"] {
         display: block;
         margin: 0 auto;
@@ -300,7 +304,7 @@ html lang="en"
         margin-left: 8px;
       }
 
-      .web-only img.wide {
+      .web-only img.wide, img.wide_portrait {
         margin-left: -150px;
         margin-right: -150px;
         width: 900px;
@@ -350,7 +354,7 @@ html lang="en"
 
       @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px) {
 
-        .web-only img.wide {
+        .web-only img.wide, img.wide_portrait {
           margin-left: 0;
           margin-right: 0;
           width: 100%;
