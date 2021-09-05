@@ -198,7 +198,7 @@ The first thing you notice is that it's hot. _Really_ hot. One native I talked t
 
 The second thing you notice is that people treat each other like people. Social cohesion in the Bay Area's minimal and has been getting worse for years, but the virus ended whatever was left. People aren't people anymore -- they're undesirable Others ruining the neighborhood's character and making rent high, or plague carriers to avoid at all costs. In Denver, I exchanged more "hellos" and had more small conversations with strangers in two days than I had in two years of living in San Francisco.
 
-The third thing you notice is that Denver is apparently ... the land of scooters? I've never seen so many electric scooters in my life, far outstripping bikes in popularity. I'm skeptical of motorized implements on sidewalks, but electric scooters are whisper quiet, and the city's sidewalks are wide, so it works out okay. It made me wonder what SF would look like today if it hadn't taken such a heavy hand in curbing alternative transport.
+The third thing you notice is that Denver is apparently ... the land of scooters? I've never seen so many electric scooters in my life, far outstripping bikes in popularity. I'm skeptical of motorized implements on sidewalks, but electric scooters are whisper quiet, and the city's sidewalks are wide, so it works out okay. It made me wonder what SF would look like today if it hadn't taken such a heavy hand in curbing their use.
 
 All in all, nice city. I'll be back.
 
