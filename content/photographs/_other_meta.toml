@@ -222,11 +222,11 @@ title = "L.E.A.F."
 # /nanoglyphs/028-path-of-madness
 #
 
-[[photographs]]
-crop_width = 900
-original_image_url = "https://www.dropbox.com/s/tzy0n6ctl0f5219/IMG_0435-path.HEIC?dl=1"
-slug = "nanoglyphs/028-path-of-madness/bunaken-road"
-title = "A road on Bunaken in Indonesia"
+# [[photographs]]
+# crop_width = 900
+# original_image_url = "https://www.dropbox.com/s/tzy0n6ctl0f5219/IMG_0435-path.HEIC?dl=1"
+# slug = "nanoglyphs/028-path-of-madness/bunaken-road"
+# title = "A road on Bunaken in Indonesia"
 
 #
 # /nanoglyphs/027-15-minutes
