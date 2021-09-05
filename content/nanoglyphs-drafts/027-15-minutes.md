@@ -6,7 +6,7 @@ published_at = 2021-09-04T18:50:46Z
 title = "Red Rocks + 15 Minutes + K-sorted IDs"
 +++
 
-Readers -- it's been too long. Every time I send my "weekly" newsletter, I look at the timestamp of the last one, and, _TWO MONTHS?!?_ What the &@%#¥?!? How is that even possible?! All I can say in my defense is that here in California we have no seasons. Sometimes it's hard to gauge the passage of time.
+Readers -- it's been too long. Every time I send my "weekly" newsletter, I look at the timestamp of the last one, and, _TWO MONTHS?!?_ What the &@%#¥?!? How is that even possible. All I can say in my defense is that here in California we have no seasons. Sometimes it's hard to gauge the passage of time.
 
 This week: Colorado, shallow tech stacks, and some ID follow up from last time. It's been a while so I'll give you my obligatory reminder that if you probably did sign up to get this newsletter (even if it was a while ago), but in case you want out, you can always [unsubscribe in one click](%unsubscribe_url%).
 
