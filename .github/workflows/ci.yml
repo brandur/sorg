@@ -48,7 +48,16 @@ jobs:
             /home/runner/go/pkg/mod/
             /home/runner/imagemagick/
             /opt/mozjpeg/
-          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-cache-dependencies-v2
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-cache-dependencies-v4
+
+      # It'd be nice to take apt-get back out of the flow since it's so slow.
+      # Unfortunately, none of the pngquant install options make this
+      # particularly easy.
+      - name: Install packages
+        run: |
+          sudo add-apt-repository ppa:strukturag/libheif # for libheif1
+          sudo add-apt-repository ppa:strukturag/libde265 # for libde265-0
+          sudo apt-get install imagemagick libde265-0 libheif1 pngquant
 
       - name: Install Golint
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
@@ -58,16 +67,17 @@ jobs:
       # doesn't handle niceties like `.heic` files, so here we get the binary
       # release directly. When Ubuntu is upgraded at some point in the
       # probably-distant future, we can probably get rid of this.
-      - name: Install ImageMagick
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        run: |
-          mkdir -p $HOME/imagemagick/bin/
-          curl -L -o $HOME/imagemagick/bin/magick https://imagemagick.org/download/binaries/magick
+    # - name: Install ImageMagick
+    #   if: steps.cache-dependencies.outputs.cache-hit != 'true'
+    #   run: |
+    #     mkdir -p $HOME/imagemagick/bin/
+    #     curl -L -o $HOME/imagemagick/bin/magick https://imagemagick.org/download/binaries/magick
           # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
-          chmod +x $HOME/imagemagick/bin/magick
+    #     chmod +x $HOME/imagemagick/bin/magick
 
       - name: ImageMagick format options
-        run: $HOME/imagemagick/bin/magick identify -list format
+        # run: $HOME/imagemagick/bin/magick identify -list format
+        run: /usr/bin/magick identify -list format
 
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
@@ -75,12 +85,6 @@ jobs:
         run: |
           curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           sudo dpkg -i mozjpeg_master_amd64.deb
-
-      # It'd be nice to take apt-get back out of the flow since it's so slow.
-      # Unfortunately, none of the pngquant install options make this
-      # particularly easy.
-      - name: Install PNGQuant
-        run: sudo apt-get install pngquant
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -108,7 +112,8 @@ jobs:
           # GitHub basically makes it fucking impossible to use any kind of
           # $HOME variable here for reasons that are far beyond me. Eventually
           # just gave up and hard-coded `/home/runner`.
-          MAGICK_BIN: /home/runner/imagemagick/bin/magick
+          # MAGICK_BIN: /home/runner/imagemagick/bin/magick
+          MAGICK_BIN: /usr/bin/magick
 
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
           PNGQUANT_BIN: /usr/bin/pngquant
