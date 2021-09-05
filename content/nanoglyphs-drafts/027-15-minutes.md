@@ -6,17 +6,23 @@ published_at = 2021-09-04T18:50:46Z
 title = "Red Rocks + 15 Minutes + K-sorted IDs"
 +++
 
-I spent the last couple of weeks in Denver. On my last day there I walked through various Lakewood parks, down [Dinosaur Ridge](https://en.wikipedia.org/wiki/Dinosaur_Ridge), and up to the [Red Rock Amphitheatre](https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre). Maybe the most unique concert venue on Earth, its first rock-and-roll show is considered to be from The Beatles, on tour in '64, which also notably was the only show in the United States that wasn't sold out.
+Readers -- it's been too long. Every time I send my "weekly" newsletter, I look at the timestamp of the last one, and, _TWO MONTHS?!?_ What the &@%#¥?!? How is that even possible?! All I can say in my defense is that here in California we have no seasons. Sometimes it's hard to gauge the passage of time.
 
-In '71, a five-year ban was enacted on rock shows there after a thousand rabid fans showed up to a sold-out show for Jethro Tull ... without tickets. After being denied entry, they charged police and started lobbing rocks at them. Police responded by discharging tear gas at the gate crashers, which accidentally had the misfortune of being lifted by the wind, carrying over the hills, and right into the amphitheatre and stage. Since then, Red Rocks has been played by thousands of acts including The Grateful Dead, U2, and even The Blues Brothers, which were apparently a real band before being a Hollywood blockbuster franchise.
+This week: Colorado, shallow tech stacks, and some ID follow up from last time. It's been a while so I'll give you my obligatory reminder that if you probably did sign up to get this newsletter (even if it was a while ago), but in case you want out, you can always [unsubscribe in one click](%unsubscribe_url%).
+
+---
+
+I spent the last couple of weeks in Denver. On my last day there I walked through various Lakewood (Denver west) parks, down [Dinosaur Ridge](https://en.wikipedia.org/wiki/Dinosaur_Ridge), and up to the [Red Rock Amphitheatre](https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre). Maybe the most unique concert venue on Earth, its first rock-and-roll show is considered to be from The Beatles, on tour in '64, which also notably was the only show in the United States that wasn't sold out.
+
+In '71, a five-year ban was enacted on rock shows there after a thousand rabid fans showed up to a sold-out show for Jethro Tull ... without tickets. After being denied entry, they charged police and started lobbing rocks at them. Police responded by discharging tear gas at the gate crashers, which proceeded to be accidentally lifted by the wind, carried over the hills, and land right into the amphitheatre and stage. But since the ban was lifted, Red Rocks has been played by thousands of acts including The Grateful Dead, U2, and even The Blues Brothers, which were apparently a real band before becoming a Hollywood blockbuster franchise.
 
 I never got to see the inside of place. After walking 20 km through Colorado hills without doing enough advanced research, I arrived sweaty, dusty, and dehydrated, only to be told that they'd just shut down to prepare for the night's show. I was informed by the lady watching the gate that I could still buy a ticket, but that the event was for an unenviable genre called "electronic dance music" (this explained why a parking lot in the middle of nowhere was full of burner lookalikes with hula hoops). With another 15 km of return still ahead of me and fast-dwindling water reserves, I had to decline, but promised to be back.
 
-But even with that disappointment, the area's rock formations (whose red-ness isn't exaggerated) are still a magnificent sight from the outside, and hiking up to them procures some of the best views. What a beautiful place.
+But even with that disappointment, the area's rock formations (whose red-ness isn't exaggerated) are still a magnificent sight from the outside, and hiking up to them procures some of the best views. What a gorgeous place.
 
 <img src="/photographs/nanoglyphs/027-15-minutes/red-rock-landscape@2x.jpg" alt="The Red Rocks Amphitheatre and surrounding landscape" class="wide" loading="lazy">
 
-_(This shot from the other side gives you a much better idea of the scale of these monsters. The one on the right is "Ship Rock" which makes up one side of the amphitheatre. The park was previously named "Garden of the Titans", which is very apt.)_
+_(This shot from the other side gives you a better idea of the scale of these monsters. The one on the right is "Ship Rock" which makes up one side of the amphitheatre. The park was previously named "Garden of the Titans", which is very apt.)_
 
 <img src="/photographs/nanoglyphs/027-15-minutes/rezz-rocks@2x.jpg" alt="Poster for Rezz Rock III" class="wide" loading="lazy">
 
@@ -30,25 +36,25 @@ Last week, I trolled Rubyists and ex-colleagues with this tweet:
 
 <a href="https://twitter.com/brandur/statuses/1431297226677133316"><img src="/photographs/nanoglyphs/027-15-minutes/15-minute-tweet@2x.png" alt="Tweet of 15 minutes to upgrade" class="img_constrained" loading="lazy"></a>
 
-Twitter is the land of over-simplification and hyperbole, and I'm certainly guilty of that too. However, what I said here is accurate, and it's worth going into a little more detail.
+Twitter is the land of over-simplification and hyperbole, and I'm certainly guilty of participating. However, what I said here is accurate, and it's worth going into a little more detail.
 
-First on the claim of 15 minutes in Go, which is less interesting but still important. 15 minutes wasn't exaggerating, and that includes writing code/config, getting it reviewed, upgrading staging, testing, upgrading production, and testing there too. It actually took longer than some of my historical Go upgrades because 1.16 contained a very rare (and very minor) backward incompatibility -- it got a little more strict about not allowing an HTTP response that's been declared a 204 (no content) to be written to. We had one test case where we were improperly doing this, and the 15 minutes also includes me debugging and fixing that.
+First on the claim of 15 minutes in Go, which is less interesting but still important. 15 minutes wasn't an exaggeration, and that includes writing code/config, getting it reviewed, upgrading staging, testing, upgrading production, and testing there too. It actually took longer than some of my historical Go upgrades because 1.16 contained a very rare (and very minor) backward incompatibility -- it got a little more strict about not allowing an HTTP response that's been declared a 204 (no content) to be written to. We had one test case where we were improperly doing this, and the 15 minutes also includes me debugging and fixing that.
 
 One of Go's best features is that compatibility is taken _very_ seriously -- in many years of using it, I've never once encountered a non-trivial problem upgrading it. The common case is that you bump a number, and your app becomes incrementally faster, for free.
 
 ### Stripe-flavored Ruby (#stripe-ruby)
 
-The 15 weeks for upgrading Ruby at Stripe is harder to measure. This is partly exaggeration and partly understatement. Upgrades took wildly differing amounts of time depending on what year it was, how motivated the upgrade was, and the people involved in making it. Upgrades faster than 15 weeks definitely happened, but especially by the later years, 15 weeks from inception to finish isn't too far off. And mind you, those are 15 weeks from when the project was undertaken -- we weren't tailing the latest stable Ruby or even close to it. Upgrades often wouldn't happen for months or even years following a new release.
+The 15 weeks for upgrading Ruby at Stripe is harder to measure. This is partly exaggeration and partly understatement. Upgrades took wildly differing amounts of time depending on what year it was, how motivated we were, and the people involved in making it. Upgrades faster than 15 weeks definitely happened, but especially by the later years, 15 weeks from inception to finish isn't too far off. And mind you, those are 15 weeks from when the project was undertaken -- for the longest time we weren't tailing the latest stable Ruby or even close to it. Upgrades often wouldn't happen for months or even years following a new release.
 
-There's a myriad of reasons that upgrades took so long. The biggest was that the entire stack was so deep and so heavily custom. Everything from the sheer amount of Ruby code written, to an incredibly complex production set up, to an immensely intricate Jenkins environment for CI worked as considerable upgrade back pressure. Bump that version of Ruby and things would break, _a lot_ of things. It was someone's job to go through them one by one and do the necessary work to get the project over the line.
+There's a myriad of reasons that upgrades took so long. The biggest was that the entire stack was so deep and so heavily custom. Everything from the sheer amount of Ruby code written (and the creative ways it was abused), to an incredibly complex production set up, to an immensely intricate Jenkins environment for CI worked as considerable upgrade back pressure. Bump that version of Ruby and things would break, _a lot_ of things. It was someone's job to go through them one by one and get the project over the line.
 
-Another big one is that very careful attention had to be paid to possible performance and memory regressions. The Stripe API runs as a single monolithic Ruby process, and a vast amount of Ruby code needs to be loaded to start it up. This is made much worse by Ruby's non-support for parallelism [1], making a forking multi-process in the style of Unicorn very common. For the longest time the API ran on a heavily customized [Thin web server](https://github.com/macournoyer/thin) combined with NIH [Einhorn](https://github.com/stripe-archive/einhorn) technology for Unicorn-like features.
+Another big one is that very careful attention had to be paid to possible performance and memory regressions. The Stripe API runs as a single monolithic Ruby process, and a vast amount of Ruby code needs to be loaded to start it up. This is made much worse by Ruby's non-support for parallelism [1], making a forking multi-process deployment in the style of Unicorn very common. For the longest time the API ran on a heavily customized [Thin web server](https://github.com/macournoyer/thin) combined with NIH [Einhorn](https://github.com/stripe-archive/einhorn) technology for Unicorn-like features.
 
-For those not well-versed with Ruby deployments, the way this works is that a Ruby app is loaded into a single process which then forks itself many times to produce child processes that will handle requests. In theory, the child processes can share memory with their parent, but because Ruby's GC tends to taint memory pages quickly, in practice memory isn't shared for long, and all children balloon up to the same size as their parent [2]. In addition to parallelism, this set up also allows for graceful restarts -- the parent process will reload itself upon receiving a signal, and coordinate rotating out its children for new processes running updated code, while also giving each one time to finish what it's working on.
+For those not well-versed with Ruby deployments, the way this works is that a Ruby app is loaded into a single process which then forks itself many times to produce child processes that will handle requests. In theory, the child processes can share memory with their parent, but because Ruby's GC tends to taint memory pages quickly, in practice memory isn't shared for long, and all children balloon up to the same size as their parent [2]. In addition to parallelism, the multi-process model also allows for graceful restarts -- the parent process will reload itself upon receiving a signal, and coordinate rotating out its children for new processes running updated code, while also giving each one time to finish what it's working on.
 
-Process-based parallelism is fine, except that it's not a good fit combined with Ruby's memory profile. Because of the sheer quantities of Ruby involved, each API worker needed somewhere around a gigabyte of memory, and could handle exactly one request at a time. Thin was eventually retired in favor of Puma, but even then Puma's multi-threaded features were never used because hundreds of thousands of lines of code had never been vetted for thread safety. And even when a Ruby code base is thread safe, there's still an argument to be made that it shouldn't use threads because Ruby's GIL dictates that only one of them can be running Ruby code at a time. This is less big of a problem than it sounds because web applications tend to be IO-bound, but a processed-based Ruby application will always perform better than a thread-based one, so where performance is a critical consideration and cost is less of one, you might want to just throw money at the problem.
+Process-based parallelism is fine, except that it's not a good fit combined with Ruby's memory profile. Because of the sheer quantities of Ruby involved, each API worker needed somewhere around a gigabyte of memory, and could handle exactly one request at a time. Thin was eventually retired in favor of Puma, but even then Puma's multi-threaded features were never used because hundreds of thousands of lines of code had never been vetted for thread safety. And even when a Ruby code base is thread safe, there's still an argument to be made that it _still_ shouldn't use threads because Ruby's GIL dictates that only one of them can be running Ruby code at a time. This is less big of a problem than it sounds because web applications tend to be IO-bound, but a process-based Ruby application will always perform better than a thread-based one, so where performance is a critical consideration and cost is less of one, you might want to just throw money at the problem.
 
-Back to the original point I was trying to make: Stripe servers ran big and hot, so even minor changes or regressions in Ruby's runtime or GC could have major effects in production. The only safe way to put a new version into play was to first deploy it to a Canary and have someone keep an eye on charts around latency, CPU usage, GC pressure, and memory for a few days. If anything came up, we'd have to dig into the problem and find a work around.
+Back to the original point I was trying to make: Stripe servers ran big and hot, so even minor changes or regressions in Ruby's runtime or GC could have major knock on effects in production. The only safe way to put a new version into play was to first deploy it to a canary and have someone keep an eye on charts around latency, CPU usage, GC pressure, and memory for a few days. If anything came up, we'd have to dig into the problem and find a work around.
 
 <img src="/photographs/nanoglyphs/027-15-minutes/denver-river@2x.jpg" alt="The South Platte River running through central Denver" class="wide" loading="lazy">
 
@@ -56,7 +62,7 @@ Back to the original point I was trying to make: Stripe servers ran big and hot,
 
 A few weeks ago I wrote about [primary IDs](/nanoglyphs/026-ids) in applications, UUIDs versus sequences, and more novel techniques like ULIDs and Stripe's generated IDs, both of which aim to introduce a time component so that they're roughly in ascending order.
 
-I got one of my best newsletter responses ever (people care about their IDs!), so I'm following up here with a few of them. It turns out that generating random-ish IDs in roughly ascending order is far from a unique idea, with many examples of prior art besides the ones that I'd mentioned.
+I got one of my best newsletter responses ever (people care about IDs apparently!), so I'm following up here with a few of them. It turns out that generating random-ish IDs in roughly ascending order is far from a unique idea, with many examples of prior art besides the ones that I'd mentioned.
 
 On a meta note, I've been wanting to include reader feedback/opinions since starting this newsletter, so keep it coming.
 
@@ -66,7 +72,7 @@ Bo notes that UUID has a [V6 specification](http://gh.peabody.io/uuidv6/) that a
 
 Recall that a UUID is 128 bits long. A V6 UUID looks like:
 
-* 64 bits of timestamp + 4 bits of version. UUIDs embed a version in a specific bit location, so the timestamp is massaged in around the version.
+* 64 bits of timestamp + 4 bits of version. UUIDs embed a version in a specific bit location, so the timestamp is massaged in around the version. Version bits are always the same, so the UUIDs sort correctly.
 * 2 bits for UUID variant. This is a concept common to [all UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier#Variants).
 * 14 bits for "clock sequence". If a single machine could have generated more than one ID within the same hundred-nanosecond interval, this would field is incremented so that each one is unique.
 * 48 bits for "node", or random bits. (The specification document also allows for these to be generated based on the local machine's MAC address, but you probably shouldn't do that.)
@@ -75,7 +81,7 @@ I have a hard time tracking what's going on with IETF drafts, but V6 UUIDs [have
 
 ## Snowflakes (#snowflakes)
 
-Ben writes in about [Snowflake IDs](https://en.wikipedia.org/wiki/Snowflake_ID) (for the literalists out there, note that this is tongue and cheek):
+Ben writes in about [Snowflake IDs](https://en.wikipedia.org/wiki/Snowflake_ID) (for the literalists out there, note that this quote is tongue and cheek):
 
 > My one gripe with sequential UUID / ULID is that they are unnecessarily long. 32 characters! That's like 40% of my terminal. And it seems like that much entropy is overkill for ~anything.
 >
@@ -102,7 +108,13 @@ KSUIDs move the needle up to 160 bits with:
 * 32 bits of timestamp from a custom epoch at 1 second resolution.
 * 128 bits of randomness.
 
-Once again, very similar to the formats we've covered so far. It's worth nothing that 160 bits might be overkill for most purposes -- a good chunk of Segment's rationalization for the new format is concerns around UUID V4 collisions due to implementation bugs. This is certainly possible, but in my experience, doesn't turn out to be a problem in practice.
+Once again, very similar to the formats we've covered so far.
+
+It's worth nothing that 160 bits might be overkill for most purposes. From Wiki [on the uniqueness of a 128-bit UUID](https://en.wikipedia.org/w/index.php?title=Universally_unique_identifier&oldid=755882275#Random_UUID_probability_of_duplicates):
+
+> To put these numbers into perspective, the annual risk of a given person being hit by a meteorite is estimated to be one chance in 17 billion, which means the probability is about 0.00000000006 (6 × 10<sup>−11</sup>), equivalent to the odds of creating a few tens of trillions of UUIDs in a year and having one duplicate. In other words, only after generating 1 billion UUIDs every second for approximately 100 years would the probability of creating a single duplicate reach 50%.
+
+A good chunk of Segment's rationalization for the new format is concerns around UUID V4 collisions due to implementation bugs. This is certainly possible, but in my experience, doesn't turn out to be a problem in practice.
 
 ### Pure randomness as a feature (#randomness)
 
@@ -129,7 +141,7 @@ CREATE TABLE posts (
 
 For my own purposes, I ended up putting [ULIDs](https://github.com/ulid/spec) [4] into production. I probably would have used UUID V6 if it was more standard and more broadly available, but for my money, ULID seems to be the K-sorted ID format with the most uptake and most language-specific implementations.
 
-We were already using UUIDs so the format we chose needed to be UUID compatible. Even if didn't, being able to reuse the built-in Postgres `uuid` data type is very convenient -- drivers all support it out of the box, and there's very little friction in getting everything working. We're using [pgx](https://github.com/jackc/pgx) so our IDs are not only stored efficiently in Postgres as 16-byte arrays, but transferred as byte arrays using Postgres' binary protocol, treated as `[16]byte` in our Go code, and only rendered as strings at the last possible moment when data needs to be sent back to a user. (As opposed to in most languages/frameworks where UUIDs become a string before they leave the database.)
+We were already using UUIDs so the format we chose needed to be UUID compatible. Even if didn't, being able to reuse the built-in Postgres `uuid` data type is very convenient -- drivers all support it out of the box, and there's very little friction in getting everything working. We're using [pgx](https://github.com/jackc/pgx) so our IDs are not only stored efficiently in Postgres as 16-byte arrays, but transferred efficiently as byte arrays using Postgres' binary protocol, treated as `[16]byte` in our Go code, and only rendered as strings at the last possible moment when rendered for a user. (As opposed to in most languages/frameworks where UUIDs often become a string before even leaving the database.)
 
 I wrote a simple UUID-compatible SQL generation function:
 
@@ -178,7 +190,17 @@ From some places in Go code we use the [Go ULID package](https://github.com/oklo
 
 ## On Denver (#denver)
 
-I'm in Denver. I think it surprises most people when my answer to "what are you doing there?" is "nothing, really". I've never been before, and I came mostly to look around the city, get a feel for what it's like, and maybe most importantly, to not be in California.
+Denver. I think it surprises most people when my answer to “what are you doing there?” is “nothing, really”. I’ve never been before, and I came mostly to look around the city, get a feel for what it’s like, and most importantly, to not be in California. I'm shopping for a better place to live.
+
+The first thing you notice is that it's hot. _Really_ hot. One native I talked to recalled how the Augusts of his youth were distinguished by rain and slow, rolling thunderstorms, but that climate change had ended that. It was a little muggy, but I brought shorts and plenty of tank tops, and it wasn't so bad. I'd head out for an early morning walk most days, and there was a very positive culture amongst Coloradans of AM exercise to beat the heat -- I've never seen so many hyper-fit people in one place.
+
+The second thing you notice is that people treat each other like people. Social cohesion in the Bay Area's minimal and has been getting worse for years, but the virus ended whatever was left. People aren't people anymore -- they're subhuman plague rats to avoid at all costs. In Denver, I exchanged "hellos" and had more small conversations with strangers in two days than I had in two years of living in San Francisco.
+
+The third thing you notice is Denver is apparently ... the land of scooters? I've never seen so many electric scooters in my life and in Denver at least, they're by far outstripping bikes in popularity. I'm skeptical of motorized implements on sidewalks, but electric scooters are whisper quiet, and Denver's sidewalks are wide, so it works out okay. It made me wonder what SF would look like today if it hadn't taken such a heavy hand in curbing alternative transport.
+
+Denver's a beautiful city. I'll be back.
+
+Until next week.
 
 [1] Ruby does finally have real parallelism, but it's still preliminary, and existing apps don't get to take advantage of it for free. More on Ractors on [issue 018](/nanoglyphs/018-ractors).
 
