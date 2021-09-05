@@ -24,7 +24,7 @@ But even with that disappointment, the area's rock formations (whose red-ness is
 
 _(This shot from the other side gives you a better idea of the scale of these monsters. The one on the right is "Ship Rock" which makes up one side of the amphitheatre. The park was previously named "Garden of the Titans", which is very apt.)_
 
-<img src="/photographs/nanoglyphs/027-15-minutes/rezz-rocks@2x.jpg" alt="Poster for Rezz Rock III" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/027-15-minutes/rezz-rocks@2x.jpg" alt="Poster for Rezz Rock III" class="img_constrained" loading="lazy">
 
 _(The show I missed. Another Canadian -- [Rezz](https://en.wikipedia.org/wiki/Rezz). Included here because this poster is great.)_
 
