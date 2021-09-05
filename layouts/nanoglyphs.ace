@@ -163,13 +163,13 @@ html lang="en"
 
       img.img_constrained {
         display: block;
-        max-width: 600px;
         margin: 0 auto;
+        max-width: 600px;
       }
 
       img.wide_portrait {
-        margin-left: auto;
-        margin-right: auto;
+        display: block;
+        margin: 0 auto;
         max-width: 900px;
       }
 
