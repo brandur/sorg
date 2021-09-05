@@ -18,6 +18,10 @@ But even with that disappointment, the area's rock formations (whose red-ness is
 
 _(This shot from the other side gives you a much better idea of the scale of these monsters. The one on the right is "Ship Rock" which makes up one side of the amphitheatre. The park was previously named "Garden of the Titans", which is very apt.)_
 
+<img src="/photographs/nanoglyphs/027-15-minutes/rezz-rocks@2x.jpg" alt="Poster for Rezz Rock III" class="wide" loading="lazy">
+
+_(The show I missed. Another Canadian -- [Rezz](https://en.wikipedia.org/wiki/Rezz). Included here because this poster is great.)_
+
 ---
 
 ## Shallow stacks (#shallow-stacks)
@@ -125,7 +129,7 @@ CREATE TABLE posts (
 
 For my own purposes, I ended up putting [ULIDs](https://github.com/ulid/spec) [4] into production. I probably would have used UUID V6 if it was more standard and more broadly available, but for my money, ULID seems to be the K-sorted ID format with the most uptake and most language-specific implementations.
 
-We were already using UUIDs so the format we chose needed to be UUID compatible. Even if didn't, being able to reuse the built-in Postgres `uuid` data type is very convenient -- drivers all support it out of the box, and there's very little friction in getting everything working.
+We were already using UUIDs so the format we chose needed to be UUID compatible. Even if didn't, being able to reuse the built-in Postgres `uuid` data type is very convenient -- drivers all support it out of the box, and there's very little friction in getting everything working. We're using [pgx](https://github.com/jackc/pgx) so our IDs are not only stored efficiently in Postgres as 16-byte arrays, but transferred as byte arrays using Postgres' binary protocol, treated as `[16]byte` in our Go code, and only rendered as strings at the last possible moment when data needs to be sent back to a user. (As opposed to in most languages/frameworks where UUIDs become a string before they leave the database.)
 
 I wrote a simple UUID-compatible SQL generation function:
 

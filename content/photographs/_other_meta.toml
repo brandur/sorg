@@ -219,6 +219,16 @@ title = "L.E.A.F."
 #
 
 #
+# /nanoglyphs/028-path-of-madness
+#
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/s/tzy0n6ctl0f5219/IMG_0435-path.HEIC?dl=1"
+slug = "nanoglyphs/028-path-of-madness/bunaken-road"
+title = "A road on Bunaken in Indonesia"
+
+#
 # /nanoglyphs/027-15-minutes
 #
 
@@ -251,6 +261,12 @@ crop_width = 1200
 original_image_url = "https://www.dropbox.com/s/rtxm0ik4apy5m55/L1020457_mod1.jpg?dl=1"
 slug = "nanoglyphs/027-15-minutes/red-rock-landscape"
 title = "The Red Rocks Amphitheatre and surrounding landscape"
+
+[[photographs]]
+crop_width = 600 # original image only 1200 wide
+original_image_url = "https://www.dropbox.com/s/nbhif4j3yeevu86/rezz-rocks.jpg?dl=1"
+slug = "nanoglyphs/027-15-minutes/rezz-rocks"
+title = "Poster for Rezz Rock III"
 
 #
 # /nanoglyphs/026-ids
