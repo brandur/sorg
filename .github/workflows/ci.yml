@@ -66,6 +66,9 @@ jobs:
           # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
           chmod +x $HOME/imagemagick/bin/magick
 
+      - name: ImageMagick format options
+        run: $HOME/imagemagick/bin/magick identify -list format
+
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
