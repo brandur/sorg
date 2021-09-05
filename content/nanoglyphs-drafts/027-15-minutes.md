@@ -2,7 +2,7 @@
 image_alt = "Looking down the coastline towards Pacifica"
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/027-15-minutes/red-rock@2x.jpg"
-published_at = 2021-09-04T18:50:46Z
+published_at = 2021-09-05T23:22:47Z
 title = "Red Rocks + 15 Minutes + K-sorted IDs"
 +++
 
