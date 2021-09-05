@@ -192,7 +192,7 @@ From some places in Go code we use the [Go ULID package](https://github.com/oklo
 
 ## On Denver (#denver)
 
-Denver. I think it surprises most people when my answer to “what are you doing there?” is “nothing, really”. I’ve never been before, and I came mostly to look around the city, get a feel for what it’s like, and most importantly, to not be in California.
+Denver. I think it surprises most people when my answer to “what are you doing there?” is “nothing, really”. I’d never been before, and I mostly went to look around the city, get a feel for what it’s like, and most importantly, not be in California.
 
 The first thing you notice is that it's hot. _Really_ hot. One native I talked to recalled how the Augusts of his youth were distinguished by rain and slow, rolling thunderstorms, but that climate change had ended that. It was a little muggy, but I brought shorts and plenty of tank tops, and it wasn't so bad. I'd head out for an early morning walk most days, and there was a very positive culture amongst Coloradans of AM exercise to beat the heat -- I've never seen so many hyper-fit people in one place.
 
