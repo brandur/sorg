@@ -62,8 +62,6 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           mkdir -p $HOME/imagemagick/bin/
-          # Usually just fetch this from ImageMagick directly, but changed to
-          # my own S3 bucket as they seem to be having certificate trouble.
           curl -L -o $HOME/imagemagick/bin/magick https://imagemagick.org/download/binaries/magick
           # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
           chmod +x $HOME/imagemagick/bin/magick
