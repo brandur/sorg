@@ -12,7 +12,7 @@ This week: Colorado, shallow tech stacks, and some ID follow up from last time. 
 
 ---
 
-I spent the last couple of weeks in Denver. On my last day there I walked through various Lakewood (Denver west) parks, down [Dinosaur Ridge](https://en.wikipedia.org/wiki/Dinosaur_Ridge), and up to the [Red Rock Amphitheatre](https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre). Maybe the most unique concert venue on Earth, its first rock-and-roll show is considered to be from The Beatles, on tour in '64, which also notably was the only show in the United States that wasn't sold out.
+I spent the last couple of weeks in Denver. On my last day there I walked through various Lakewood (Denver west) parks, down [Dinosaur Ridge](https://en.wikipedia.org/wiki/Dinosaur_Ridge), and up to the [Red Rock Amphitheatre](https://en.wikipedia.org/wiki/Red_Rocks_Amphitheatre). Maybe the most unique concert venue on Earth, it sits outside in the gap between two towering rocks, with space for almost ten thousand people. Its first rock-and-roll show is considered to be from The Beatles, on tour in '64, which also notably was the only show in the United States that wasn't sold out.
 
 In '71, a five-year ban was enacted on rock shows there after a thousand rabid fans showed up to a sold-out show for Jethro Tull ... without tickets. After being denied entry, they charged police and started lobbing rocks at them. Police responded by discharging tear gas at the gate crashers, which was accidentally lifted by the wind, carried over the hills, and delivered right into the main amphitheatre and stage. Further chaos ensued. But since the ban was lifted, Red Rocks has been played by thousands of acts including The Grateful Dead, U2, and even The Blues Brothers, which were apparently a real band before becoming a Hollywood blockbuster franchise.
 
@@ -50,7 +50,7 @@ There's a myriad of reasons that upgrades took so long. The biggest was that the
 
 Another big one is that very careful attention had to be paid to possible performance and memory regressions. The Stripe API runs as a single monolithic Ruby process, and a vast amount of Ruby code needs to be loaded to start it up. This is made much worse by Ruby's non-support for parallelism [1], making a forking multi-process deployment in the style of Unicorn very common. For the longest time the API ran on a heavily customized [Thin web server](https://github.com/macournoyer/thin) combined with NIH [Einhorn](https://github.com/stripe-archive/einhorn) tech for Unicorn-like features.
 
-For those not well-versed with Ruby deployments, the way this works is that a Ruby app is loaded into a single process which then forks itself many times to produce child processes that will handle requests. In theory, the child processes can share memory with their parent, but because Ruby's GC tends to taint memory pages quickly, in practice memory isn't shared for long as copy-on-write semantics duplicate pages, and all children balloon up to the same size as their parent [2]. In addition to parallelism, the multi-process model also allows for graceful restarts -- the parent process will reload itself upon receiving a signal, and coordinate rotating out its children for new processes running updated code, while also giving each one time to finish what it's working on.
+For those not well-versed with Ruby deployments, the way this works is that a Ruby app is loaded into a single process which then forks itself many times to produce child processes that will handle requests. In theory, the child processes can share memory with their parent, but because Ruby's GC tends to taint memory pages quickly, in practice memory isn't shared for long as copy-on-write semantics duplicate pages, and all children balloon up to the same size as their progenitor [2]. In addition to parallelism, the multi-process model also allows for graceful restarts -- the parent process will reload itself upon receiving a signal, and coordinate rotating out its children for new processes running updated code, while also giving each one time to finish what it's working on.
 
 Process-based parallelism is fine, except that it's not a good fit combined with Ruby's memory profile. Because of the sheer quantities of Ruby involved, each API worker needed somewhere around a gigabyte of memory, and could handle exactly one request at a time. If you're wondering how that was tenable, the answer is just more servers and more parallelism -- we deployed a whole fleet of beefy instances, and saturated each one with as many workers as memory allowed.
 
@@ -103,7 +103,7 @@ Michael writes in about [Segment's KSUIDs](https://segment.com/blog/a-brief-hist
 
 > Thus KSUID was born. KSUID is an abbreviation for **K**-**S**ortable **U**nique **ID**entifier. It combines the simplicity and security of UUID Version 4 with the lexicographic k-ordering properties of Flake [3].
 
-A [K-sorted sequence](https://en.wikipedia.org/wiki/K-sorted_sequence) is one that is "roughly" ordered. Elements may not be exactly where they should be, but no element is very far off from its precise location. All the formats we've talked about so far -- ULIDs, Stripe IDs, UUID V6, Snowflakes, and KSUIDs -- are all K-sorted.
+A [K-sorted sequence](https://en.wikipedia.org/wiki/K-sorted_sequence) is one that is "roughly" ordered. Elements may not be exactly where they should be, but no element is very far off from where it more precisely should be. All the formats we've talked about so far -- ULIDs, Stripe IDs, UUID V6, Snowflakes, and KSUIDs -- are all K-sorted.
 
 KSUIDs move the needle up to 160 bits with:
 
@@ -116,17 +116,17 @@ It's worth nothing that 160 bits might be overkill for most purposes. From Wiki 
 
 > To put these numbers into perspective, the annual risk of a given person being hit by a meteorite is estimated to be one chance in 17 billion, which means the probability is about 0.00000000006 (6 × 10<sup>−11</sup>), equivalent to the odds of creating a few tens of trillions of UUIDs in a year and having one duplicate. In other words, only after generating 1 billion UUIDs every second for approximately 100 years would the probability of creating a single duplicate reach 50%.
 
-A good chunk of Segment's rationalization for the new format is concerns around UUID V4 collisions due to implementation bugs. This is certainly possible, but in my experience, doesn't turn out to be a problem in practice.
+A good chunk of Segment's rationale for the new format is concerns around UUID V4 collisions due to implementation bugs. This is certainly possible, but in my experience, doesn't turn out to be a problem in practice.
 
 ### Pure randomness as a feature (#randomness)
 
 Justin writes in with a very thorough article from [Cockroach Labs on choosing index keys](https://www.cockroachlabs.com/blog/how-to-choose-db-index-keys/). Cockroach maps its normal `SERIAL` type to a function called [`unique_rowid()`](https://www.cockroachlabs.com/docs/stable/functions-and-operators#id-generation-functions), which generates a 64-bit ID combining some timestamp and some randomness that should seem pretty familiar by now.
 
-However, because CockroachDB involves having many cooperating nodes where writes can happen, a K-sorted ID won't make good utilization of available nodes in an insert-heavy system, and would perform much worse compared to a V4 UUID. Cockroach provides sharded keys to work around this problem and get the best of both worlds:
+However, because CockroachDB involves having many cooperating nodes where writes can happen, a K-sorted ID won't make good utilization of available nodes in an insert-heavy system, and would perform worse compared to a V4 UUID. Cockroach provides sharded keys to work around this problem and get the best of both worlds:
 
 > Even though timestamps avoid the worst bottlenecks of sequential IDs, they still tend to create a bottleneck because all insertions are happening at around the current time, so only a small number of nodes are able to participate in handling these writes. If you need more write throughput than timestamp IDs offer but more clustering than random UUIDs, you can use sharded keys to spread the load out across the cluster and reduce hotspots.
 
-Here's a simple example of Cockroach DDL where the K-ordered primary ID is hashed so that insert get random, uniform distribution:
+Here's a simple example of Cockroach DDL where the K-ordered primary ID is hashed so that inserts get random, uniform node distribution:
 
 ```
 CREATE TABLE posts (
@@ -145,7 +145,7 @@ For my own purposes, I ended up putting [ULIDs](https://github.com/ulid/spec) [4
 
 We were already using UUIDs so the format we chose needed to be UUID compatible. Even if didn't, being able to reuse the built-in Postgres `uuid` data type is very convenient -- drivers all support it out of the box, and there's very little friction in getting everything working. We're using [pgx](https://github.com/jackc/pgx) so our IDs are not only stored efficiently in Postgres as 16-byte arrays, but transferred efficiently as byte arrays using Postgres' binary protocol, treated as `[16]byte` in our Go code, and only rendered as strings at the last possible moment when sent to a user. (As opposed to in most languages/frameworks where UUIDs often become a string before even leaving the database.)
 
-I wrote a simple UUID-compatible SQL generation function:
+We wrote a simple UUID-compatible SQL generation function:
 
 ``` sql
 CREATE OR REPLACE FUNCTION gen_ulid()
@@ -192,15 +192,15 @@ From some places in Go code we use the [Go ULID package](https://github.com/oklo
 
 ## On Denver (#denver)
 
-Denver. I think it surprises most people when my answer to “what are you doing there?” is “nothing, really”. I’ve never been before, and I came mostly to look around the city, get a feel for what it’s like, and most importantly, to not be in California. I'm shopping for a better place to live.
+Denver. I think it surprises most people when my answer to “what are you doing there?” is “nothing, really”. I’ve never been before, and I came mostly to look around the city, get a feel for what it’s like, and most importantly, to not be in California.
 
 The first thing you notice is that it's hot. _Really_ hot. One native I talked to recalled how the Augusts of his youth were distinguished by rain and slow, rolling thunderstorms, but that climate change had ended that. It was a little muggy, but I brought shorts and plenty of tank tops, and it wasn't so bad. I'd head out for an early morning walk most days, and there was a very positive culture amongst Coloradans of AM exercise to beat the heat -- I've never seen so many hyper-fit people in one place.
 
-The second thing you notice is that people treat each other like people. Social cohesion in the Bay Area's minimal and has been getting worse for years, but the virus ended whatever was left. People aren't people anymore -- they're undesirable Others ruining the neighborhood's character and making rent high, or protohuman plague carriers to avoid at all costs. In Denver, I exchanged more "hellos" and had more small conversations with strangers in two days than I had in two years of living in San Francisco.
+The second thing you notice is that people treat each other like people. Social cohesion in the Bay Area's minimal and has been getting worse for years, but the virus ended whatever was left. People aren't people anymore -- they're undesirable Others ruining the neighborhood's character and making rent high, or plague carriers to avoid at all costs. In Denver, I exchanged more "hellos" and had more small conversations with strangers in two days than I had in two years of living in San Francisco.
 
-The third thing you notice is that Denver is apparently ... the land of scooters? I've never seen so many electric scooters in my life -- far outstripping bikes in popularity. I'm skeptical of motorized implements on sidewalks, but electric scooters are whisper quiet, and the city's sidewalks are wide, so it works out okay. It made me wonder what SF would look like today if it hadn't taken such a heavy hand in curbing alternative transport.
+The third thing you notice is that Denver is apparently ... the land of scooters? I've never seen so many electric scooters in my life, far outstripping bikes in popularity. I'm skeptical of motorized implements on sidewalks, but electric scooters are whisper quiet, and the city's sidewalks are wide, so it works out okay. It made me wonder what SF would look like today if it hadn't taken such a heavy hand in curbing alternative transport.
 
-All in all, great city. I'll be back.
+All in all, nice city. I'll be back.
 
 Until next week.
 
@@ -208,6 +208,6 @@ Until next week.
 
 [2] For more details on Ruby memory management, see ["The Limits of Copy-on-write"](/ruby-memory).
 
-[3] [Flake](https://github.com/boundary/flake) is yet another K-sorted sequence format from Boundary that was inspired by Twitter's Snowflake. It jumps back to 128 bits.
+[3] [Flake](https://github.com/boundary/flake) is yet another K-sorted sequence format from Boundary that was inspired by Twitter's Snowflake. It jumps back to 128 bits (from Snowflake's 64).
 
 [4] More on ULIDs in [issue 026](/nanoglyphs/026-ids).
