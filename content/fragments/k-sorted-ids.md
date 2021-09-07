@@ -24,6 +24,8 @@ For your convenience, here's a list of the various major K-sorted IDs, ordered a
 
 * [**KSUID**](https://segment.com/blog/a-brief-history-of-the-uuid/) (K-Sortable Unique IDentifier): 160-bit, with 32 bits timestamp and 128 bits random. Created by Segment and probably mostly in use internally to them as well.
 
+* **Stripe IDs**: Like `ch_1Iyqf42eZvKYlo2C4MIyA80e`, are a combination of timestamp and random bits and base62 (-ish) encoded, although I don't remember the proportions and didn't spend the time reverse engineering them.
+
 * [**Flake**](https://github.com/boundary/flake): 128-bit, with 64 bits timestamp, 48 bits machine ID, and 16 bits sequence. Created by Boundary (which is under new management) in Erlang, and best considered deprecated.
 
 We'd already long since been using UUIDs for IDs and needed something UUID-compatible. I hope that something like UUID V6 eventually becomes a standard, but went with ULIDs because it seems to be the most widely used of the bunch, with some 50 implementations across any programming language you could wish for.
