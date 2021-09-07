@@ -134,19 +134,48 @@ The authors also managed to write it in such a way that it's coupled very loosel
 
 ### Caveats and workarounds (#caveats)
 
-A few things in sqlc are less convenient compared to a more traditional ORM, but there are workarounds that land pretty well. For example, a noticeable one is that sqlc queries can't take an arbitrary number of parameters, so doing a multi-row insert doesn't work as easily as you'd expect it to. However, you can get around this by sending batches as arrays which are then denested in the SQL:
+A few things in sqlc are less convenient compared to a more traditional ORM, but there are workarounds that land pretty well. For example, a noticeable one is that sqlc queries can't take an arbitrary number of parameters, so doing a multi-row insert doesn't work as easily as you'd expect it to. However, you can get around this by sending batches as arrays which are unnested into distinct tuples in the SQL:
 
 ``` sql
+-- Upsert many marketplaces, inserting or replacing data as necessary.
+INSERT INTO marketplace (
+    name,
+    display_name
+)
+SELECT unnest(@names::text[]) AS name,
+    unnest(@display_names::text[]) AS display_names
+ON CONFLICT (name)
+    DO UPDATE SET display_name = EXCLUDED.display_name
+RETURNING *;
 ```
 
 Another one is `UPDATE` where with a normal ORM you'd just add as many target fields and values (i.e. `UPDATE foo SET a = 1, b = 2, c = 3, ...`) through the query builder as you wanted. Queries in sqlc must be fully structured in advance, so this doesn't work. What you can do is something like this where each field is conditionally updated based on the presence of an associated boolean:
 
 ``` sql
+-- Update a team.
+-- name: TeamUpdate :one
+UPDATE team
+SET
+    customer_id = CASE WHEN @customer_id_do_update::boolean
+        THEN @customer_id::VARCHAR(200) ELSE customer_id END,
+
+    has_payment_method = CASE WHEN @has_payment_method_do_update::boolean
+        THEN @has_payment_method::bool ELSE has_payment_method END,
+
+    name = CASE WHEN @name_do_update::boolean
+        THEN @name::text ELSE name END
+WHERE
+    id = @id
+RETURNING *;
 ```
 
 The Go code to update a field ends up looking like this:
 
 ``` go
+team, err = queries.TeamUpdate(ctx, dbsqlc.TeamUpdateParams{
+    NameDoUpdate: true,
+    Name:         req.Name,
+})
 ```
 
 ## Summary and future (#summary)
