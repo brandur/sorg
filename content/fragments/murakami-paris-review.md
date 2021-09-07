@@ -40,7 +40,7 @@ Sometimes you get the feeling that Murakami's playing it coy. He makes becoming 
 
 > **Murakami:** I started writing at the kitchen table after midnight. It took ten months to finish that first book; I sent it to a publisher and I got some kind of prize, so it was like a dream—I was surprised to find it happening. But after a moment, I thought, Yes, it’s happened and I’m a writer; why not? It’s that simple.
 
-Similarly, he's never seen _Spirited Away?!_ You practically have to be living under a rock to accomplish that feat, especially living in Japan:
+Similarly, he's never seen _Spirited Away?!_ You practically have to be living under a rock to accomplish that feat, especially living in Japan (mind you, this interview was fifteen years ago):
 
 > **Interviewer:** Have you seen Hayao Miyazaki’s anime film _Spirited Away_? It seems to me there are certain similarities to your books, in that he also manipulates folk material in contemporary ways. Do you enjoy his movies?
 
