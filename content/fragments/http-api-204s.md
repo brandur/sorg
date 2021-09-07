@@ -1,7 +1,7 @@
 +++
 hook = "Prefer an HTTP 200 OK with an empty body over a 204."
 published_at = 2021-09-07T13:44:39Z
-title = "HTTP API design: 204 "No content" mildly harmful"
+title = "HTTP API design: 204 \"No content\" mildly harmful"
 +++
 
 An HTTP response for 204 No Content indicates success, but that nothing will be sent back in body. I was interested to find in my latest job that we were using 204 on `DELETE` endpoints and on update a few places, which seemed like a novel idea.
