@@ -10,7 +10,7 @@ This one is the source of his fairly well known quote about what his typical, hi
 
 > **Murakami:** When I’m in writing mode for a novel, I get up at four a.m. and work for five to six hours. In the afternoon, I run for ten kilometers or swim for fifteen hundred meters (or do both), then I read a bit and listen to some music. I go to bed at nine p.m. I keep to this routine every day without variation. The repetition itself becomes the important thing; it’s a form of mesmerism. I mesmerize myself to reach a deeper state of mind. But to hold to such repetition for so long—six months to a year—requires a good amount of mental and physical strength. In that sense, writing a long novel is like survival training. Physical strength is as necessary as artistic sensitivity.
 
-I reread this last night and made an effort to try the Murakami system today. I did successfully set an alarm for 4 AM (that counts for _something_ right?), but didn't manage to drag myself out of bed until 5, although compared to my usual baseline, I'll take it. 10 km run still and afternoon jazz still TBD.
+I reread this last night and made an effort to try the Murakami system today. I did successfully set an alarm for 4 AM (that counts for _something_ right?), but didn't manage to drag myself out of bed until 5. Not on target, although compared to my usual baseline, I'll take it. 10 km run still and afternoon jazz still TBD.
 
 Joking aside, there's a lot to be said here about the level of discipline it takes to produce such a comprehensive body of work. The quote above came out after the interviewer asked Murakami about writing and revision timelines:
 
