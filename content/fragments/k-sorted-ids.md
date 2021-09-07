@@ -1,5 +1,5 @@
 +++
-hook = "A list of roughly sorted ("K-sorted") ID generation algorithms including ULID and UUID V6."
+hook = "A list of roughly sorted (\"K-sorted\") ID generation algorithms including ULID and UUID V6."
 published_at = 2021-09-07T13:19:21Z
 title = "K-sorted ID algorithms"
 +++
