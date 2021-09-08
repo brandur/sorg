@@ -6,16 +6,16 @@ tags = ["postgres"]
 title = "Why We're All in on sqlc/pgx for Postgres + Go"
 +++
 
-After a few months of research and experimentation with running a heavily DB-dependent Go app, I've arrived at the conclusion that [sqlc](https://github.com/kyleconroy/sqlc) is the figurative Correct Answer when it comes to using Postgres (and probably other databases too) in Go code beyond trivial uses. Let me walk you through how I got there.
+After a few months of research and experimentation with running a heavily DB-dependent Go app, we've arrived at the conclusion that [sqlc](https://github.com/kyleconroy/sqlc) is the figurative Correct Answer when it comes to using Postgres (and probably other databases too) in Go code beyond trivial uses. Let me walk you through how I got there.
 
 First, let's take a broad tour of popular options in Go's ecosystem:
 
-* `database/sql`: Go's built-in database package. Most people agree, don't. It's database agnostic, which is kind of nice, but by extension that means it conforms to the lowest common denominator. No support for Postgres-specific features.
+* `database/sql`: Go's built-in database package. Most people agree -- best to avoid it. It's database agnostic, which is kind of nice, but by extension that means it conforms to the lowest common denominator. No support for Postgres-specific features.
 
 * [`lib/pq`](https://github.com/lib/pq): An early Postgres frontrunner in the Go ecosystem. It was good for its time and place, but has fallen behind, and is no longer actively maintained.
 
 * [`pgx`](https://github.com/jackc/pgx): A very well-written and very thorough package for full-featured, performant connections to Postgres. However, it's opinionated about not offering any ORM-like features, and gets you very little beyond a basic query interface. Like with `database/sql`, hydrating database results into structs is painful -- not only do you have to list target fields off ad nauseam in a `SELECT` statement, but you also have to `Scan` them into a struct manually.
-	* [`scany`](https://github.com/georgysavva/scany): Scany adds a bit of a quality-of-life improvement on top of pgx by eliminating the need to scan into every field of a struct. However, the desired field names must still be listed out in a `SELECT ...` statement, so it only reduces boilerplate by half.
+	* [`scany`](https://github.com/georgysavva/scany): Scany adds some quality-of-life improvement on top of pgx by eliminating the need to scan into every field of a struct. However, the desired field names must still be listed out in a `SELECT ...` statement, so it only reduces boilerplate by half.
 
 * [`go-pg`](https://github.com/go-pg/pg): I've used this on projects before, and it's a pretty good little Postgres-specific ORM. A little more below on why ORMs in Go aren't particularly satisfying, but another downside with go-pg is that it implements its own driver, and isn't compatible with pgx.
 	* [Bun](https://bun.uptrace.dev/guide/pg-migration.html#new-features): go-pg has also been put in maintenance mode in favor of Bun, which is a go-pg rewrite that works with non-Postgres databases.
@@ -39,13 +39,13 @@ fmt.Println(name, weight)
 
 This is fine for simple queries, but provides little in the way of confidence that queries actually work. The compiler just sees a string, so you need to write exhaustive test coverage to verify them.
 
-And it gets worse. When you're writing a larger application that's trying to hydrate models, in an effort to reduce code duplication, you might start slicing and dicing those query strings -- gluing little pieces together to share code.
+And it gets worse. When you're writing a larger application that's trying to hydrate models, in an effort to reduce code duplication, you might start slicing and dicing those query strings -- gluing little pieces together to share code. e.g.
 
 ``` go
 err := conn.QueryRow(ctx, `SELECT ` + scanTeamFields + ` ...)
 ```
 
-You can make it work, and still verify them by way of tests, but it can get messy.
+You can make it work, and still verify what you have is right by way of tests, but it gets messy fast.
 
 ## ORMs (#orms)
 
@@ -86,7 +86,7 @@ INSERT INTO authors (
 RETURNING *;
 ```
 
-After running `sqlc generate` (which generates Go code from your SQL definitions), you're now able to run this:
+After running `sqlc generate` [1] (which generates Go code from your SQL definitions), you're now able to run this:
 
 ``` go
 author, err = dbsqlc.New(tx).CreateAuthor(ctx, dbsqlc.CreateAuthor)
@@ -104,15 +104,15 @@ fmt.Printf("Author name: %s\n", author.Name)
 
 sqlc isn't an ORM, but it implements one of the most useful features of one -- mapping a query back into a struct without the need for boilerplate. If you have query with a `SELECT *` or `RETURNING *`, it knows which fields a table is supposed to have, and emits the result to a standard struct representing its records. All queries for a particular table that return its complete set of fields get to share the same output struct.
 
-Rather than implement its own faulty SQL parser, sqlc uses PGAnalyze's [excellent `pg_query_go`](https://github.com/pganalyze/pg_query_go), which bakes in the same query parser that Postgres really uses. It's never given me trouble so far -- even complex queries with unusual Postgres embellishments work.
+Rather than implement its own partially-complete SQL parser, sqlc uses PGAnalyze's [excellent `pg_query_go`](https://github.com/pganalyze/pg_query_go), which bakes in the same query parser that Postgres really uses. It's never given me trouble so far -- even complex queries with unusual Postgres embellishments work.
 
 This query parsing also gives you some additional pre-runtime code verification. It won't protect you against logical bugs, but it won't compile invalid SQL queries, which is a far shot better than the guarantees you get with SQL-in-Go-strings. And thanks to SQL's declarative nature, it tends to produce fewer bugs than comparable procedural code. You'll still want to write tests, but you don't need to test every query and corner case as exhaustively.
 
 ### Codegen (#codegen)
 
-I'm slightly allergic to the idea of codegen on a philosophical level, and that made me reluctant to look too deeply into sqlc, but after finally doing so, it's won me over.
+I'm slightly allergic to the idea of codegen on a philosophical level, and that made me reluctant to look too deeply into sqlc, but after finally getting into it, it's won me over.
 
-Go makes programs like sqlc easily installable in one command (`go get github.com/kyleconroy/sqlc/cmd/sqlc`), and quickly with minimal fuss. Go's lightning fast startup and runtime speed means that your codegen loop runs in the blink of an eye. Our project is sitting around 100 queries broken up across a dozen input files and its codegen runs in (much) less than a second:
+Go makes programs like sqlc easily installable in one command (`go get github.com/kyleconroy/sqlc/cmd/sqlc`), and quickly with minimal fuss. Go's lightning fast startup and runtime speed means that your codegen loop runs in the blink of an eye. Our project is sitting around 100 queries broken up across a dozen input files and its codegen runs in (much) less than a second on commodity hardware:
 
 ``` go
 $ time sqlc generate
@@ -128,7 +128,7 @@ A GitHub Action verifies generated output, and between checkout, pulling down an
 
 ### pgx support appears (#pgx)
 
-Previously, a major reason not to use sqlc is that it didn't support pgx, which we were already bought into pretty deeply. A recent [pull request](https://github.com/kyleconroy/sqlc/pull/1037) has addressed this problem by giving sqlc support for multiple drivers, and the feature's now available in the sql's latest release.
+Previously, a major reason not to use sqlc is that it didn't support pgx, which we were already bought into pretty deeply. A recent [pull request](https://github.com/kyleconroy/sqlc/pull/1037) has addressed this problem by giving sqlc support for multiple drivers, and the feature's now available in the sqlc's latest release.
 
 The authors also managed to write it in such a way that it's coupled very loosely -- our mature codebase was making heavy use of pgx already and had a number of custom abstractions built on top of it, and yet I was able to get sqlc slotted in alongside them and fully operational in less than an hour. We could even weave sqlc invocations in amongst raw pgx invocations as part of the same transaction, giving us an easy way to migrate over to it incrementally.
 
@@ -178,10 +178,14 @@ team, err = queries.TeamUpdate(ctx, dbsqlc.TeamUpdateParams{
 })
 ```
 
+sqlc doesn't have any built-in conventions around how queries are named or organized, so you'll want to make sure to come up with your own so that you can find things.
+
 ## Summary and future (#summary)
 
 I've largely covered sqlc's objective benefits and features, but more subjectively, it just _feels_ good and fast to work with. Like Go itself, the tool's working for you instead of against you, and giving you an easy way to get work done without wrestling with the computer all day.
 
 I won't go as far as to say that its the best answer across all ecosystems -- the feats that Rust's SQL drivers can achieve with its type system are borderline wizardly -- but sqlc's far and away my preferred solution when working in Go.
 
-Lastly, generics are coming to Go, possibly [in beta form by the end of the year](https://go.dev/blog/generics-proposal), and that could change the landscape. I could imagine a world where they power a new generation of Go ORMs that can do better query checking and give you even better type completion. However, it's safe to say that's a good year or two out.
+Lastly, generics are coming to Go, possibly [in beta form by the end of the year](https://go.dev/blog/generics-proposal), and that could change the landscape. I could imagine a world where they power a new generation of Go ORMs that can do better query checking and give you even better type completion. However, it's safe to say that's a good year or two out. Until then, we're happy with sqlc.
+
+[1] There's a little configuration involved as well -- see [this quickstart](https://docs.sqlc.dev/en/stable/tutorials/getting-started-postgresql.html) in the official documentation.
