@@ -184,7 +184,7 @@ sqlc doesn't have any built-in conventions around how queries are named or organ
 
 I've largely covered sqlc's objective benefits and features, but more subjectively, it just _feels_ good and fast to work with. Like Go itself, the tool's working for you instead of against you, and giving you an easy way to get work done without wrestling with the computer all day.
 
-I won't go as far as to say that its the best answer across all ecosystems -- the feats that Rust's SQL drivers can achieve with its type system are borderline wizardly -- but sqlc's far and away my preferred solution when working in Go.
+I won't go as far as to say that its the best answer across all ecosystems -- the feats that Rust's SQL drivers can achieve with its type system are borderline wizardry -- but sqlc's far and away my preferred solution when working in Go.
 
 Lastly, generics are coming to Go, possibly [in beta form by the end of the year](https://go.dev/blog/generics-proposal), and that could change the landscape. I could imagine a world where they power a new generation of Go ORMs that can do better query checking and give you even better type completion. However, it's safe to say that's a good year or two out. Until then, we're happy with sqlc.
 
