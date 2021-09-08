@@ -3,7 +3,7 @@ hook = "Touring the ORM and Postgres landscape in Go, and why sqlc is today's to
 location = "San Francisco"
 published_at = 2021-09-07T17:10:05Z
 tags = ["postgres"]
-title = "Why We're All in on sqlc/pgx for Postgres + Go"
+title = "How We Went All In on sqlc/pgx for Postgres + Go"
 +++
 
 After a few months of research and experimentation with running a heavily DB-dependent Go app, we've arrived at the conclusion that [sqlc](https://github.com/kyleconroy/sqlc) is the figurative Correct Answer when it comes to using Postgres (and probably other databases too) in Go code beyond trivial uses. Let me walk you through how I got there.
