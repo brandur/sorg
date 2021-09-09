@@ -202,6 +202,22 @@ original_image_url = "https://www.dropbox.com/s/32kvs3gfcdawbbs/leaf.jpg?dl=1"
 slug = "fragments/wgt-2015-brain-dump/leaf"
 title = "L.E.A.F."
 
+#
+# /fragments/write-publish-pipeline
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/byv0rbg2sud6kmw/ia-writer.png?dl=1"
+slug = "fragments/write-publish-pipeline/ia-writer"
+title = "iA Writer."
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/lmzflciv2uqb2ow/ia-writer-2.png?dl=1"
+slug = "fragments/write-publish-pipeline/ia-writer-2"
+title = "iA Writer."
+
 ##############################################################################
 #
 #
