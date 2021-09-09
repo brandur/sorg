@@ -89,7 +89,7 @@ RETURNING *;
 After running `sqlc generate` [1] (which generates Go code from your SQL definitions), you're now able to run this:
 
 ``` go
-author, err = dbsqlc.New(tx).CreateAuthor(ctx, dbsqlc.CreateAuthor)
+author, err = dbsqlc.New(tx).CreateAuthor(ctx, dbsqlc.CreateAuthor{
     Name: "Haruki Murakami",
     Bio:  "Author of _Killing Commendatore_. Running and jazz enthusiast.",
     ...
