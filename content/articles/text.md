@@ -14,7 +14,7 @@ For many of us this is a huge unburdening, as we're used to micromanaging length
 
 I've since changed my position on that somewhat, and to explain why, I'll have to take you back to Stripe circa ~2018.
 
-## Stripe (#stripe)
+## S3ripe (#s3ripe)
 
 One day we came to a rude awakening that we weren't checking length limits on text fields in Stripe's API. It wasn't just that a few of them weren't checked -- it was that practically none of them were. While the API framework did allow for a maximum length, no one had ever thought to assign it a reasonable default, and as a matter of course the vast majority of parameters (of which there were thousands by this point) didn't set one. As long as senders didn't break any limits around size of request payload, they could send us whatever they wanted in any field they wanted. The API would happily pass it through and persist it to Mongo forever.
 
