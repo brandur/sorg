@@ -151,6 +151,16 @@ slug = "fragments/new-york/washington-square-park"
 title = "Washington Square Park"
 
 #
+# /fragments/no-medium
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/vw73nvzm9uqvbjb/no-medium-dev.png?dl=1"
+slug = "fragments/no-medium/no-medium-dev"
+title = "Screenshot of nomedium.dev"
+
+#
 # /fragments/openai-api
 #
 
