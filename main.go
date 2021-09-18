@@ -28,7 +28,7 @@ import (
 //////////////////////////////////////////////////////////////////////////////
 
 func main() {
-	var rootCmd = &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use:   "sorg",
 		Short: "Sorg is a static site generator",
 		Long: strings.TrimSpace(`

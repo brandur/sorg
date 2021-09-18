@@ -65,7 +65,8 @@ end`})),
 
 	// long link
 	assert.Equal(t,
-		`<a href="https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now" rel="nofollow">example.com/path/to/more/great/stuff/and/this/is/e&hellip;</a>`,
+		`<a href="https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now" `+
+			`rel="nofollow">example.com/path/to/more/great/stuff/and/this/is/e&hellip;</a>`,
 		string(tweetTextToHTML(&Tweet{Text: `https://example.com/path/to/more/great/stuff/and/this/is/even/longer/now`})),
 	)
 

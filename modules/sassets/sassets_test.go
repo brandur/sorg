@@ -20,16 +20,16 @@ func TestCompileJavascripts(t *testing.T) {
 	out := dir + "/app.js"
 
 	// This file is hidden and doesn't show up in output.
-	err = ioutil.WriteFile(file0, []byte(`hidden`), 0755)
+	err = ioutil.WriteFile(file0, []byte(`hidden`), 0o600)
 	assert.NoError(t, err)
 
-	err = ioutil.WriteFile(file1, []byte(`function() { return "file1" }`), 0755)
+	err = ioutil.WriteFile(file1, []byte(`function() { return "file1" }`), 0o600)
 	assert.NoError(t, err)
 
-	err = ioutil.WriteFile(file2, []byte(`function() { return "file2" }`), 0755)
+	err = ioutil.WriteFile(file2, []byte(`function() { return "file2" }`), 0o600)
 	assert.NoError(t, err)
 
-	err = ioutil.WriteFile(file3, []byte(`function() { return "file3" }`), 0755)
+	err = ioutil.WriteFile(file3, []byte(`function() { return "file3" }`), 0o600)
 	assert.NoError(t, err)
 
 	err = CompileJavascripts(stesting.NewContext(), dir, out)
@@ -77,18 +77,18 @@ func TestCompileStylesheets(t *testing.T) {
 	out := dir + "/app.css"
 
 	// This file is hidden and doesn't show up in output.
-	err = ioutil.WriteFile(file0, []byte("hidden"), 0755)
+	err = ioutil.WriteFile(file0, []byte("hidden"), 0o600)
 	assert.NoError(t, err)
 
 	// The syntax of the first and second files is GCSS and the third is in
 	// CSS.
-	err = ioutil.WriteFile(file1, []byte("p\n  margin: 10px"), 0755)
+	err = ioutil.WriteFile(file1, []byte("p\n  margin: 10px"), 0o600)
 	assert.NoError(t, err)
 
-	err = ioutil.WriteFile(file2, []byte("p\n  padding: 10px"), 0755)
+	err = ioutil.WriteFile(file2, []byte("p\n  padding: 10px"), 0o600)
 	assert.NoError(t, err)
 
-	err = ioutil.WriteFile(file3, []byte("p {\n  border: 10px;\n}"), 0755)
+	err = ioutil.WriteFile(file3, []byte("p {\n  border: 10px;\n}"), 0o600)
 	assert.NoError(t, err)
 
 	err = CompileStylesheets(stesting.NewContext(), dir, out)

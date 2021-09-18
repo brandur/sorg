@@ -38,20 +38,25 @@ func TestInKM(t *testing.T) {
 
 func TestLazyRetinaImage(t *testing.T) {
 	assert.Equal(t,
-		`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x">`,
+		`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" `+
+			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x">`,
 		lazyRetinaImage(0, "/photographs/other/", "001"),
 	)
 }
 
 func TestLazyRetinaImageLightbox(t *testing.T) {
 	assert.Equal(t,
-		`<a href="/photographs/other/001_large@2x.jpg"><img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
+		`<a href="/photographs/other/001_large@2x.jpg">`+
+			`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" `+
+			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
 		lazyRetinaImageLightbox(0, "/photographs/other/", "001", false),
 	)
 
 	// Portrait
 	assert.Equal(t,
-		`<a href="/photographs/other/001_large@2x.jpg"><img class="lazy" src="/assets/images/standin_portrait_00.jpg" data-src="/photographs/other/001_large.jpg" data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
+		`<a href="/photographs/other/001_large@2x.jpg">`+
+			`<img class="lazy" src="/assets/images/standin_portrait_00.jpg" data-src="/photographs/other/001_large.jpg" `+
+			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
 		lazyRetinaImageLightbox(0, "/photographs/other/", "001", true),
 	)
 }
@@ -81,7 +86,7 @@ func TestNumberWithDelimiter(t *testing.T) {
 }
 
 func TestPace(t *testing.T) {
-	d := time.Duration(60 * time.Second)
+	d := 60 * time.Second
 
 	// Easiest case: 1000 m ran in 60 seconds which is 1:00 per km.
 	assert.Equal(t, "1:00", pace(1000.0, d))
@@ -99,7 +104,8 @@ func TestRandIntn(t *testing.T) {
 
 func TestRetinaImageAlt(t *testing.T) {
 	assert.Equal(t,
-		`<img alt="alt text" loading="lazy" src="/photographs/other/001.jpg" srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x">`,
+		`<img alt="alt text" loading="lazy" src="/photographs/other/001.jpg" `+
+			`srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x">`,
 		string(RetinaImageAlt("/photographs/other/001.jpg", "alt text")),
 	)
 }

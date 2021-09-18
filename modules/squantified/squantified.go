@@ -1,7 +1,7 @@
 package squantified
 
 import (
-	"crypto/sha1"
+	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
 	"html"
@@ -73,7 +73,6 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 // from an attached Black Swan database.
 func RenderReading(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
-
 	readings, err := getReadingsData(c, scommon.DataDir+"/goodreads.toml")
 	if err != nil {
 		return err
@@ -111,7 +110,6 @@ func RenderReading(c *modulir.Context, viewsChanged bool,
 // already do in this file.
 func RenderRuns(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
-
 	runs, err := getRunsData(c, scommon.DataDir+"/strava.toml")
 	if err != nil {
 		return err
@@ -156,8 +154,7 @@ func RenderRuns(c *modulir.Context, viewsChanged bool,
 func RenderTwitter(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{},
 	tweets []*Tweet, withReplies bool) error {
-
-	var tweetsWithoutReplies []*Tweet
+	tweetsWithoutReplies := make([]*Tweet, 0, len(tweets))
 	for _, tweet := range tweets {
 		if tweet.ReplyOrMention {
 			continue
@@ -758,7 +755,7 @@ func tweetTextToHTML(tweet *Tweet) template.HTML {
 	content = linkRE.ReplaceAllStringFunc(content, func(link string) string {
 		matches := linkRE.FindStringSubmatch(link)
 
-		//fmt.Printf("matches = %+v (len %v)\n", matches, len(matches))
+		// fmt.Printf("matches = %+v (len %v)\n", matches, len(matches))
 
 		var display string
 		whitespace := matches[1]
@@ -780,7 +777,7 @@ func tweetTextToHTML(tweet *Tweet) template.HTML {
 		}
 
 		// replace with tags so links don't interfere with subsequent rules
-		sum := sha1.Sum([]byte(href))
+		sum := sha256.Sum224([]byte(href))
 		tag := base64.URLEncoding.EncodeToString(sum[:])
 		tagMap[tag] = fmt.Sprintf(`<a href="%s" rel="nofollow">%s</a>`, href, display)
 
@@ -802,11 +799,11 @@ func tweetTextToHTML(tweet *Tweet) template.HTML {
 
 	// replace the stand-in tags for links generated earlier
 	for tag, link := range tagMap {
-		content = strings.Replace(content, tag, link, -1)
+		content = strings.ReplaceAll(content, tag, link)
 	}
 
 	// show newlines as line breaks
-	content = strings.Replace(content, "\n", `<div class="tweet-linebreak">`, -1)
+	content = strings.ReplaceAll(content, "\n", `<div class="tweet-linebreak">`)
 
 	return template.HTML(content)
 }

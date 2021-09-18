@@ -19,9 +19,8 @@ var headerRegexp = regexp.MustCompile(`<h([0-9]) id="(.*?)">(<a.*?>)?(.*?)(</a>)
 
 // Render renders the table of contents as an HTML string.
 func Render(content string) (string, error) {
-	var headers []*header
-
 	matches := headerRegexp.FindAllStringSubmatch(content, -1)
+	headers := make([]*header, 0, len(matches))
 	for _, match := range matches {
 		level, err := strconv.Atoi(match[1])
 		if err != nil {
@@ -62,7 +61,7 @@ func buildTree(headers []*header) *html.Node {
 	var level int
 	if len(headers) > 0 {
 		level = headers[0].level
-		//log.Debugf("TOC: Starting level: %v", level)
+		// log.Debugf("TOC: Starting level: %v", level)
 	}
 
 	for _, header := range headers {
@@ -74,7 +73,7 @@ func buildTree(headers []*header) *html.Node {
 				listNode = &html.Node{Data: "ol", Type: html.ElementNode}
 				listItemNode.AppendChild(listNode)
 
-				//log.Debugf("TOC: --> Indenting once to level: %v", header.level)
+				// log.Debugf("TOC: --> Indenting once to level: %v", header.level)
 			}
 
 			needNewListNode = true
@@ -89,7 +88,7 @@ func buildTree(headers []*header) *html.Node {
 				listItemNode = listNode.Parent
 				listNode = listItemNode.Parent
 
-				//log.Debugf("TOC: --< Dedenting once to level: %v", header.level)
+				// log.Debugf("TOC: --< Dedenting once to level: %v", header.level)
 			}
 
 			level = header.level
@@ -122,9 +121,8 @@ func buildTree(headers []*header) *html.Node {
 
 func renderTree(node *html.Node) (string, error) {
 	var b bytes.Buffer
-	err := html.Render(&b, node)
-	if err != nil {
-		return "", err
+	if err := html.Render(&b, node); err != nil {
+		return "", xerrors.Errorf("error rendering HTML: %w", err)
 	}
 
 	return b.String(), nil

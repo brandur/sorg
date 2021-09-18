@@ -178,7 +178,8 @@ func TestRender(t *testing.T) {
 
 		Content.
 	`
-	expected := `<ol><li><a href="#h-a">Heading A</a><ol><li><a href="#h-b">Heading B</a></li></ol></li><li><a href="#h-c">Heading C</a></li></ol>`
+	expected := `<ol><li><a href="#h-a">Heading A</a><ol><li><a href="#h-b">Heading B</a></li>` +
+		`</ol></li><li><a href="#h-c">Heading C</a></li></ol>`
 
 	rendered, err := Render(content)
 	assert.NoError(t, err)

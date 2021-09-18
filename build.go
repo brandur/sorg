@@ -76,7 +76,7 @@ var (
 	fragments   []*Fragment
 	nanoglyphs  []*snewsletter.Issue
 	passages    []*snewsletter.Issue
-	pages       map[string]*Page = make(map[string]*Page)
+	pages       = make(map[string]*Page)
 	photos      []*Photo
 	photosOther []*Photo
 	sequences   = make(map[string]*Sequence)
@@ -85,7 +85,7 @@ var (
 )
 
 // Time zone to show articles / fragments / etc. publishing times in.
-var localLocation *time.Location = mustLocation("America/Los_Angeles")
+var localLocation = mustLocation("America/Los_Angeles")
 
 // List of common build dependencies, a change in any of which will trigger a
 // rebuild on everything: partial views, JavaScripts, and stylesheets. Even
@@ -140,7 +140,7 @@ func build(c *modulir.Context) []error {
 	// sources.
 	universalSources = nil
 
-	// Generate a set of JavaScript sources to add to univeral sources.
+	// Generate a set of JavaScript sources to add to universal sources.
 	{
 		javaScriptSources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/javascripts",
 			&mfile.ReadDirOptions{ShowMeta: true})
@@ -1379,7 +1379,6 @@ var twitterPhotoSizes = []mimage.PhotoSize{
 
 func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 	tweet *squantified.Tweet, media *squantified.TweetEntitiesMedia) (bool, error) {
-
 	u, err := url.Parse(media.URL)
 	if err != nil {
 		return false, xerrors.Errorf("bad URL for Twitter photo '%v': %w", media.ID, err)
@@ -1542,7 +1541,8 @@ func pathAsImage(extensionlessPath string) (string, bool) {
 	return "", false
 }
 
-func renderArticle(c *modulir.Context, source string, articles *[]*Article, articlesChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderArticle(c *modulir.Context, source string,
+	articles *[]*Article, articlesChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1650,7 +1650,7 @@ func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChange
 		c.TargetDir+"/articles/index.html", getAceOptions(viewsChanged), locals)
 }
 
-func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, articlesChanged bool) (bool, error) {
+func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, articlesChanged bool) (bool, error) {
 	if !articlesChanged {
 		return false, nil
 	}
@@ -1659,7 +1659,7 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 	if tag != nil {
 		name = fmt.Sprintf("articles-%s", *tag)
 	}
-	filename := name + ".atom"
+	atomPath := name + ".atom"
 
 	title := "Articles" + scommon.TitleSuffix
 	if tag != nil {
@@ -1671,7 +1671,7 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 		ID:    "tag:" + scommon.AtomTag + ",2013:/" + name,
 
 		Links: []*matom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + atomPath},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
 	}
@@ -1704,16 +1704,18 @@ func renderArticlesFeed(c *modulir.Context, articles []*Article, tag *Tag, artic
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	filename := path.Join(conf.TargetDir, atomPath)
+	f, err := os.Create(filename)
 	if err != nil {
-		return true, err
+		return true, xerrors.Errorf("error creating file '%s': %w", filename, err)
 	}
 	defer f.Close()
 
 	return true, feed.Encode(f, "  ")
 }
 
-func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, fragmentsChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderFragment(c *modulir.Context, source string,
+	fragments *[]*Fragment, fragmentsChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1786,7 +1788,7 @@ func renderFragment(c *modulir.Context, source string, fragments *[]*Fragment, f
 	return true, nil
 }
 
-func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
+func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
 	fragmentsChanged bool) (bool, error) {
 	if !fragmentsChanged {
 		return false, nil
@@ -1818,7 +1820,8 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 			Published: *fragment.PublishedAt,
 			Updated:   *fragment.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/fragments/" + fragment.Slug},
-			ID:        "tag:" + scommon.AtomTag + "," + fragment.PublishedAt.Format("2006-01-02") + ":fragments/" + fragment.Slug,
+			ID: "tag:" + scommon.AtomTag + "," + fragment.PublishedAt.Format("2006-01-02") +
+				":fragments/" + fragment.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -1826,9 +1829,10 @@ func renderFragmentsFeed(c *modulir.Context, fragments []*Fragment,
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(conf.TargetDir + "/fragments.atom")
+	filename := conf.TargetDir + "/fragments.atom"
+	f, err := os.Create(filename)
 	if err != nil {
-		return true, err
+		return true, xerrors.Errorf("error creating file '%s': %w", filename, err)
 	}
 	defer f.Close()
 
@@ -1858,7 +1862,8 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		c.TargetDir+"/fragments/index.html", getAceOptions(viewsChanged), locals)
 }
 
-func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderNanoglyph(c *modulir.Context, source string,
+	issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1905,7 +1910,7 @@ func renderNanoglyph(c *modulir.Context, source string, issues *[]*snewsletter.I
 	return true, nil
 }
 
-func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanoglyphsChanged bool) (bool, error) {
+func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanoglyphsChanged bool) (bool, error) {
 	if !nanoglyphsChanged {
 		return false, nil
 	}
@@ -1953,9 +1958,10 @@ func renderNanoglyphsFeed(c *modulir.Context, issues []*snewsletter.Issue, nanog
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	filePath := path.Join(conf.TargetDir, filename)
+	f, err := os.Create(filePath)
 	if err != nil {
-		return true, err
+		return true, xerrors.Errorf("error creating file '%s': %w", filePath, err)
 	}
 	defer f.Close()
 
@@ -1985,7 +1991,8 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 		c.TargetDir+"/nanoglyphs/index.html", getAceOptions(viewsChanged), locals)
 }
 
-func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderPassage(c *modulir.Context, source string,
+	issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -2032,7 +2039,7 @@ func renderPassage(c *modulir.Context, source string, issues *[]*snewsletter.Iss
 	return true, nil
 }
 
-func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passagesChanged bool) (bool, error) {
+func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passagesChanged bool) (bool, error) {
 	if !passagesChanged {
 		return false, nil
 	}
@@ -2080,9 +2087,10 @@ func renderPassagesFeed(c *modulir.Context, issues []*snewsletter.Issue, passage
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	filePath := path.Join(conf.TargetDir, filename)
+	f, err := os.Create(filePath)
 	if err != nil {
-		return true, err
+		return true, xerrors.Errorf("error creating file '%s': %w", filePath, err)
 	}
 	defer f.Close()
 
@@ -2115,7 +2123,6 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 func renderHome(c *modulir.Context,
 	articles []*Article, fragments []*Fragment, photos []*Photo,
 	articlesChanged, fragmentsChanged, photosChanged bool) (bool, error) {
-
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2296,12 +2303,13 @@ Disallow: /photos
 `
 	}
 
-	outFile, err := os.Create(c.TargetDir + "/robots.txt")
+	filePath := c.TargetDir + "/robots.txt"
+	outFile, err := os.Create(filePath)
 	if err != nil {
-		return true, err
+		return true, xerrors.Errorf("error creating file '%s': %w", filePath, err)
 	}
 	if _, err := outFile.WriteString(content); err != nil {
-		return true, err
+		return true, xerrors.Errorf("error writing file '%s': %w", filePath, err)
 	}
 	outFile.Close()
 
@@ -2326,7 +2334,6 @@ func renderRuns(c *modulir.Context) (bool, error) {
 
 func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
 	sequenceChanged bool) (bool, error) {
-
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2361,7 +2368,6 @@ func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceE
 
 func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
 	sequenceChanged bool) (bool, error) {
-
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2400,9 +2406,8 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*Sequen
 // general Atom feed for all sequence entries mixed together by specifying
 // `sequence` as `nil` and entries as a master list of all sequence entries
 // combined.
-func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
+func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
 	sequenceChanged bool) (bool, error) {
-
 	if !sequenceChanged {
 		return false, nil
 	}
@@ -2451,7 +2456,8 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 			Published: *entry.OccurredAt,
 			Updated:   *entry.OccurredAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Sequence.Slug + "/" + entry.Slug},
-			ID:        "tag:" + scommon.AtomTag + "," + entry.OccurredAt.Format("2006-01-02") + ":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
+			ID: "tag:" + scommon.AtomTag + "," + entry.OccurredAt.Format("2006-01-02") +
+				":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -2459,9 +2465,10 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	f, err := os.Create(path.Join(conf.TargetDir, filename))
+	filePath := path.Join(conf.TargetDir, filename)
+	f, err := os.Create(filePath)
 	if err != nil {
-		return true, err
+		return true, xerrors.Errorf("error creating file '%s': %w", filePath, err)
 	}
 	defer f.Close()
 
@@ -2470,7 +2477,6 @@ func renderSequenceFeed(c *modulir.Context, sequence *Sequence, entries []*Seque
 
 func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *SequenceEntry, entryIndex int,
 	sequenceChanged bool) (bool, error) {
-
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2520,7 +2526,8 @@ func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *Sequence
 		getAceOptions(viewsChanged), locals)
 }
 
-func renderTalk(c *modulir.Context, source string, talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex) (bool, error) {
+func renderTalk(c *modulir.Context, source string,
+	talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -2600,6 +2607,7 @@ func selectRandomPhoto(photos []*Photo) *Photo {
 		}
 	}
 
+	// nolint:gosec
 	return randomPhotos[rand.Intn(len(randomPhotos))]
 }
 
