@@ -127,7 +127,6 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	if conf.MailgunAPIKey == "" {
 		return xerrors.Errorf(
 			"MAILGUN_API_KEY must be configured in the environment")
-
 	}
 
 	newsletterInfo, draft := matchNewsletter(source)
@@ -167,15 +166,16 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 
 	html, err := inliner.Inline(b.String())
 	if err != nil {
-		return err
+		return xerrors.Errorf("error inlining CSS: %w", err)
 	}
 
 	var recipient string
-	if live {
+	switch {
+	case live:
 		recipient = newsletterInfo.MailAddress
-	} else if staging {
+	case staging:
 		recipient = newsletterInfo.MailAddressStaging
-	} else {
+	default:
 		recipient = testAddress
 	}
 
@@ -195,7 +195,7 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 
 	resp, _, err := mg.Send(message)
 	if err != nil {
-		return err
+		return xerrors.Errorf("error sending email: %w", err)
 	}
 
 	c.Log.Infof(`Sent to: %s (response: "%s")`, recipient, resp)

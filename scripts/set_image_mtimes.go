@@ -158,7 +158,7 @@ func getLastCommitTime(path string) (*time.Time, error) {
 
 	lastCommitTime, err := time.Parse("2006-01-02T15:04:05-07:00", out)
 	if err != nil {
-		return nil, err
+		return nil, xerrors.Errorf("error parsing time '%s': %w", out, err)
 	}
 
 	return &lastCommitTime, nil

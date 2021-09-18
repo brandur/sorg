@@ -26,14 +26,14 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 
 	outFile, err := os.Create(outPath)
 	if err != nil {
-		return err
+		return xerrors.Errorf("error creating file '%s': %w", outPath, err)
 	}
 	defer outFile.Close()
 
 	for _, source := range sources {
 		inFile, err := os.Open(source)
 		if err != nil {
-			return err
+			return xerrors.Errorf("error opening file '%s': %w", source, err)
 		}
 
 		_, _ = outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
@@ -43,7 +43,7 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 		if filepath.Ext(source) == ".js" {
 			_, err = io.Copy(outFile, inFile)
 			if err != nil {
-				return err
+				return xerrors.Errorf("error copying '%s' to '%s': %w", source, outPath, err)
 			}
 		}
 
@@ -71,14 +71,14 @@ func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 
 	outFile, err := os.Create(outPath)
 	if err != nil {
-		return err
+		return xerrors.Errorf("error creating file '%s': %w", outPath, err)
 	}
 	defer outFile.Close()
 
 	for _, source := range sources {
 		inFile, err := os.Open(source)
 		if err != nil {
-			return err
+			return xerrors.Errorf("error opening file '%s': %w", source, err)
 		}
 
 		_, _ = outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
@@ -91,7 +91,7 @@ func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 		} else {
 			_, err := io.Copy(outFile, inFile)
 			if err != nil {
-				return err
+				return xerrors.Errorf("error copying '%s' to '%s': %w", source, outPath, err)
 			}
 		}
 

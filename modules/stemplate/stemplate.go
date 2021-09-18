@@ -101,7 +101,7 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightb
 //
 // https://github.com/brandur/sorg/pull/60
 func toNonBreakingWhitespace(str string) string {
-	return strings.Replace(str, " ", " ", -1)
+	return strings.ReplaceAll(str, " ", " ")
 }
 
 func inKM(m float64) float64 {
@@ -130,7 +130,8 @@ func nanoglyphSignup(inEmail bool) template.HTML {
 		panic(err)
 	}
 
-	subscribeText := `<p id="subscribe-encouragement">This post was originally broadcast in email form. Can I interest you in seeing more like it? <em>Nanoglyph</em> is never sent more than once a week.</p>`
+	subscribeText := `<p id="subscribe-encouragement">This post was originally broadcast in email form. ` +
+		`Can I interest you in seeing more like it? <em>Nanoglyph</em> is never sent more than once a week.</p>`
 
 	writer.Flush()
 	return template.HTML(subscribeText + b.String())
@@ -174,13 +175,14 @@ func numberWithDelimiter(sep rune, n int) string {
 // "clock" time like 4:52 which translates to "4 minutes and 52 seconds" per
 // kilometer.
 func pace(distance float64, duration time.Duration) string {
-	speed := float64(duration.Seconds()) / inKM(distance)
+	speed := duration.Seconds() / inKM(distance)
 	min := int64(speed / 60.0)
 	sec := int64(speed) % 60
 	return fmt.Sprintf("%v:%02d", min, sec)
 }
 
 func randIntn(bound int) int {
+	// nolint:gosec
 	return rand.Intn(bound)
 }
 
@@ -204,7 +206,7 @@ func RetinaImageAlt(src, alt string) template.HTML {
 	)
 }
 
-// There is no "round" function built into Go :/
+// There is no "round" function built into Go :/.
 func round(f float64) float64 {
 	return math.Floor(f + .5)
 }

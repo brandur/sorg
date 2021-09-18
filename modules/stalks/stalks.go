@@ -120,7 +120,7 @@ func Render(c *modulir.Context, contentDir, dir, name string) (*Talk, error) {
 	talk.Draft = strings.Contains(filepath.Base(dir), "drafts")
 
 	// TODO: Replace with extractSlug brought into scommon
-	talk.Slug = strings.Replace(name, ".md", "", -1)
+	talk.Slug = strings.ReplaceAll(name, ".md", "")
 
 	err = talk.validate(source)
 	if err != nil {
@@ -211,11 +211,12 @@ func splitAndRenderSlides(contentDir string, talk *Talk, content string) ([]*Sli
 		pngName := fmt.Sprintf("%s.%s.png", talk.Slug, slide.Number)
 		jpgName := fmt.Sprintf("%s.%s.jpg", talk.Slug, slide.Number)
 
-		if fileExists(path.Join(talksImageDir, talk.Slug, pngName)) {
+		switch {
+		case fileExists(path.Join(talksImageDir, talk.Slug, pngName)):
 			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, pngName)
-		} else if fileExists(path.Join(talksImageDir, talk.Slug, jpgName)) {
+		case fileExists(path.Join(talksImageDir, talk.Slug, jpgName)):
 			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, jpgName)
-		} else {
+		default:
 			return nil, xerrors.Errorf("couldn't find any image asset for slide %s / %s at %s",
 				pngName, jpgName, path.Join(talksImageDir, talk.Slug))
 		}
