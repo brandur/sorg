@@ -64,7 +64,7 @@ Note the wording of "unconstrained domain". A `varchar(200)` is an unconstrained
 
 ### SQL domains (#sql-domains)
 
-Another idea I've been been experimenting with is encoding a standard set of text tiers as [domains](https://www.postgresql.org/docs/current/sql-createdomain.html), which defines a new data type with more constraints:
+Another idea I've been experimenting with is encoding a standard set of text tiers as [domains](https://www.postgresql.org/docs/current/sql-createdomain.html), which defines a new data type with more constraints:
 
 ``` sql
 CREATE DOMAIN text_standard AS varchar(200) COLLATE "C";
