@@ -1,5 +1,6 @@
 linters:
   disable:
+    # obnoxious
     - cyclop
     - dupl
     - exhaustivestruct
@@ -10,15 +11,17 @@ linters:
     - gocognit
     - gocyclo
     - godox
-    - golint
     - gomnd
-    - interfacer
-    - maligned
     - nlreturn
     - paralleltest
-    - scopelint
     - testpackage
     - wsl
+
+    # deprecated
+    - golint
+    - interfacer
+    - maligned
+    - scopelint
   enable-all: true
 
 linters-settings:
