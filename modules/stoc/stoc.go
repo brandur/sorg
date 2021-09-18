@@ -2,11 +2,11 @@ package stoc
 
 import (
 	"bytes"
-	"fmt"
 	"regexp"
 	"strconv"
 
 	"golang.org/x/net/html"
+	"golang.org/x/xerrors"
 )
 
 type header struct {
@@ -25,7 +25,7 @@ func Render(content string) (string, error) {
 	for _, match := range matches {
 		level, err := strconv.Atoi(match[1])
 		if err != nil {
-			return "", fmt.Errorf("Couldn't extract header level: %v", err.Error())
+			return "", xerrors.Errorf("couldn't extract header level: %v", err.Error())
 		}
 
 		headers = append(headers, &header{level, "#" + match[2], match[4]})
@@ -98,7 +98,6 @@ func buildTree(headers []*header) *html.Node {
 		if needNewListNode {
 			listItemNode = &html.Node{Data: "li", Type: html.ElementNode}
 			listNode.AppendChild(listItemNode)
-			needNewListNode = false
 		}
 
 		contentNode := &html.Node{Data: header.title, Type: html.TextNode}
@@ -115,7 +114,7 @@ func buildTree(headers []*header) *html.Node {
 
 		needNewListNode = true
 
-		//log.Debugf("TOC: Inserted header: %v", header.id)
+		// log.Debugf("TOC: Inserted header: %v", header.id)
 	}
 
 	return topNode

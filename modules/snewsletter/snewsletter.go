@@ -1,10 +1,11 @@
 package snewsletter
 
 import (
-	"fmt"
 	"path"
 	"strings"
 	"time"
+
+	"golang.org/x/xerrors"
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mmarkdownext"
@@ -75,18 +76,18 @@ func (p *Issue) validate(source string) error {
 		p.ImageOrientation = ImageOrientationLandscape
 	}
 	if p.ImageOrientation != ImageOrientationLandscape && p.ImageOrientation != ImageOrientationPortrait {
-		return fmt.Errorf("Unsupported image orientation for issue: %v (must be '%v' or '%v')",
+		return xerrors.Errorf("unsupported image orientation for issue: %v (must be '%v' or '%v')",
 			source,
 			ImageOrientationLandscape,
 			ImageOrientationPortrait)
 	}
 
 	if p.Title == "" {
-		return fmt.Errorf("No title for issue: %v", source)
+		return xerrors.Errorf("no title for issue: %v", source)
 	}
 
 	if p.PublishedAt == nil {
-		return fmt.Errorf("No publish date for issue: %v", source)
+		return xerrors.Errorf("no publish date for issue: %v", source)
 	}
 
 	return nil
@@ -112,7 +113,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 
 	slugParts := strings.Split(issue.Slug, "-")
 	if len(slugParts) < 2 {
-		return nil, fmt.Errorf("Expected slug to contain issue number: %v",
+		return nil, xerrors.Errorf("expected slug to contain issue number: %v",
 			issue.Slug)
 	}
 	issue.Number = slugParts[0]

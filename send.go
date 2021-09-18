@@ -8,11 +8,13 @@ import (
 	"strings"
 
 	"github.com/aymerick/douceur/inliner"
+	"golang.org/x/xerrors"
+	"gopkg.in/mailgun/mailgun-go.v1"
+
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/snewsletter"
-	"gopkg.in/mailgun/mailgun-go.v1"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -123,18 +125,19 @@ func matchNewsletter(source string) (*newsletterInfo, bool) {
 
 func renderAndSend(c *modulir.Context, source string, live, staging bool) error {
 	if conf.MailgunAPIKey == "" {
-		return fmt.Errorf(
+		return xerrors.Errorf(
 			"MAILGUN_API_KEY must be configured in the environment")
+
 	}
 
 	newsletterInfo, draft := matchNewsletter(source)
 	if newsletterInfo == nil {
-		return fmt.Errorf("'%s' does not appear to be a known newsletter (check its path)",
+		return xerrors.Errorf("'%s' does not appear to be a known newsletter (check its path)",
 			source)
 	}
 
 	if live && draft {
-		return fmt.Errorf("refusing to send a draft newsletter to a live list")
+		return xerrors.Errorf("refusing to send a draft newsletter to a live list")
 	}
 
 	dir := filepath.Dir(source)
@@ -155,8 +158,10 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	var b bytes.Buffer
 	writer := bufio.NewWriter(&b)
 
-	err = mace.Render(c, newsletterInfo.Layout, newsletterInfo.View,
-		writer, getAceOptions(false), locals)
+	if err := mace.Render(c, newsletterInfo.Layout, newsletterInfo.View,
+		writer, getAceOptions(false), locals); err != nil {
+		return err
+	}
 
 	writer.Flush()
 

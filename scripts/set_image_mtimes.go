@@ -45,7 +45,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pkg/errors"
+	"golang.org/x/xerrors"
 )
 
 const (
@@ -142,7 +142,7 @@ func batchImages(allImages []string) [][]string {
 func getAllImages() ([]string, error) {
 	out, err := runCommand("git", "ls-tree", "-r", "--name-only", "HEAD", imagePath)
 	if err != nil {
-		return nil, errors.Wrap(err, "Error getting images with `git ls-tree`")
+		return nil, xerrors.Errorf("error getting images with `git ls-tree`: %w", err)
 	}
 
 	return strings.Split(out, "\n"), nil
@@ -153,7 +153,7 @@ func getAllImages() ([]string, error) {
 func getLastCommitTime(path string) (*time.Time, error) {
 	out, err := runCommand("git", "log", "--max-count=1", `--pretty=format:%aI`, path)
 	if err != nil {
-		return nil, errors.Wrapf(err, "Error getting commit time for: %s", path)
+		return nil, xerrors.Errorf("error getting commit time for '%s': %w", path, err)
 	}
 
 	lastCommitTime, err := time.Parse("2006-01-02T15:04:05-07:00", out)
@@ -174,7 +174,7 @@ func runCommand(name string, arg ...string) (string, error) {
 
 	out, err := cmd.Output()
 	if err != nil {
-		return "", errors.Wrapf(err, "Error executing command: %s", name)
+		return "", xerrors.Errorf("error executing command '%s': %w", name, err)
 	}
 	return strings.TrimSpace(string(out)), nil
 }
