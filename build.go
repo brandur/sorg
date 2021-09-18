@@ -13,6 +13,10 @@ import (
 	"sync"
 	"time"
 
+	_ "github.com/lib/pq"
+	"github.com/yosssi/ace"
+	"golang.org/x/xerrors"
+
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/modulir/modules/matom"
@@ -30,8 +34,6 @@ import (
 	"github.com/brandur/sorg/modules/squantified"
 	"github.com/brandur/sorg/modules/stalks"
 	"github.com/brandur/sorg/modules/stemplate"
-	_ "github.com/lib/pq"
-	"github.com/yosssi/ace"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1025,15 +1027,15 @@ func (a *Article) taggedWith(tag Tag) bool {
 
 func (a *Article) validate(source string) error {
 	if a.Location == "" {
-		return fmt.Errorf("No location for article: %v", source)
+		return xerrors.Errorf("no location for article: %v", source)
 	}
 
 	if a.Title == "" {
-		return fmt.Errorf("No title for article: %v", source)
+		return xerrors.Errorf("no title for article: %v", source)
 	}
 
 	if a.PublishedAt == nil {
-		return fmt.Errorf("No publish date for article: %v", source)
+		return xerrors.Errorf("no publish date for article: %v", source)
 	}
 
 	return nil
@@ -1094,11 +1096,11 @@ func (f *Fragment) publishingInfo() map[string]string {
 
 func (f *Fragment) validate(source string) error {
 	if f.Title == "" {
-		return fmt.Errorf("No title for fragment: %v", source)
+		return xerrors.Errorf("no title for fragment: %v", source)
 	}
 
 	if f.PublishedAt == nil {
-		return fmt.Errorf("No publish date for fragment: %v", source)
+		return xerrors.Errorf("no publish date for fragment: %v", source)
 	}
 
 	return nil
@@ -1198,27 +1200,27 @@ func (s *Sequence) validate() error {
 
 	for i, entry := range s.Entries {
 		if entry.Slug == "" {
-			return fmt.Errorf("No slug set for sequence entry: index %v", i)
+			return xerrors.Errorf("no slug set for sequence entry: index %v", i)
 		}
 
 		if len(entry.Photos) < 1 {
-			return fmt.Errorf("Sequence entry needs at least one photo: %v", entry.Slug)
+			return xerrors.Errorf("sequence entry needs at least one photo: %v", entry.Slug)
 		}
 
 		if _, ok := entrySlugs[entry.Slug]; ok {
-			return fmt.Errorf("Duplicate sequence entry slug: %v", entry.Slug)
+			return xerrors.Errorf("duplicate sequence entry slug: %v", entry.Slug)
 		}
 		entrySlugs[entry.Slug] = struct{}{}
 
 		photoSlugs := make(map[string]struct{})
 		for _, photo := range entry.Photos {
 			if !strings.HasPrefix(photo.Slug, entry.Slug) {
-				return fmt.Errorf("Photo slug '%v' should share prefix with entry slug '%v'",
+				return xerrors.Errorf("photo slug '%v' should share prefix with entry slug '%v'",
 					photo.Slug, entry.Slug)
 			}
 
 			if _, ok := photoSlugs[photo.Slug]; ok {
-				return fmt.Errorf("Duplicate photo slug: %v", photo.Slug)
+				return xerrors.Errorf("duplicate photo slug: %v", photo.Slug)
 			}
 			photoSlugs[photo.Slug] = struct{}{}
 		}
@@ -1345,7 +1347,7 @@ var defaultPhotoSizes = []mimage.PhotoSize{
 func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
 	u, err := url.Parse(photo.OriginalImageURL)
 	if err != nil {
-		return false, fmt.Errorf("bad URL for photo '%s': %w", photo.Slug, err)
+		return false, xerrors.Errorf("bad URL for photo '%s': %w", photo.Slug, err)
 	}
 
 	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug,
@@ -1354,12 +1356,12 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 
 func fetchAndResizePhotoOther(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
 	if photo.CropWidth == 0 {
-		return false, fmt.Errorf("need `crop_width` specified for photo '%s'", photo.Slug)
+		return false, xerrors.Errorf("need `crop_width` specified for photo '%s'", photo.Slug)
 	}
 
 	u, err := url.Parse(photo.OriginalImageURL)
 	if err != nil {
-		return false, fmt.Errorf("bad URL for photo '%s'", photo.Slug)
+		return false, xerrors.Errorf("bad URL for photo '%s'", photo.Slug)
 	}
 
 	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug,
@@ -1380,7 +1382,7 @@ func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 
 	u, err := url.Parse(media.URL)
 	if err != nil {
-		return false, fmt.Errorf("bad URL for Twitter photo '%v': %w", media.ID, err)
+		return false, xerrors.Errorf("bad URL for Twitter photo '%v': %w", media.ID, err)
 	}
 
 	slug := fmt.Sprintf("%v-%v", tweet.ID, media.ID)
@@ -2298,7 +2300,9 @@ Disallow: /photos
 	if err != nil {
 		return true, err
 	}
-	outFile.WriteString(content)
+	if _, err := outFile.WriteString(content); err != nil {
+		return true, err
+	}
 	outFile.Close()
 
 	return true, nil

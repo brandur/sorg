@@ -12,11 +12,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/yosssi/ace"
+
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
-	"github.com/yosssi/ace"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -527,7 +528,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 		ORDER BY year DESC
 	`)
 	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting runs by year: %v", err)
+		return nil, nil, xerrors.Errorf("error selecting runs by year: %w", err)
 	}
 	defer rows.Close()
 
@@ -540,7 +541,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 			&distance,
 		)
 		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning runs by year: %v", err)
+			return nil, nil, xerrors.Errorf("error scanning runs by year: %w", err)
 		}
 
 		byYearXYears = append(byYearXYears, year)
@@ -548,7 +549,7 @@ func getRunsByYearData(db *sql.DB) ([]string, []float64, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating runs by year: %v", err)
+		return nil, nil, xerrors.Errorf("Error iterating runs by year: %w", err)
 	}
 
 	return byYearXYears, byYearYDistances, nil
@@ -600,7 +601,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 			LEFT JOIN runs_days rd ON d.day = rd.day
 	`)
 	if err != nil {
-		return nil, nil, fmt.Errorf("Error selecting last year runs: %v", err)
+		return nil, nil, xerrors.Errorf("error selecting last year runs: %w", err)
 	}
 	defer rows.Close()
 
@@ -613,7 +614,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 			&distance,
 		)
 		if err != nil {
-			return nil, nil, fmt.Errorf("Error scanning last year runs: %v", err)
+			return nil, nil, xerrors.Errorf("error scanning last year runs: %w", err)
 		}
 
 		lastYearXDays = append(lastYearXDays, day)
@@ -621,7 +622,7 @@ func getRunsLastYearData(db *sql.DB) ([]string, []float64, error) {
 	}
 	err = rows.Err()
 	if err != nil {
-		return nil, nil, fmt.Errorf("Error iterating last year runs: %v", err)
+		return nil, nil, xerrors.Errorf("error iterating last year runs: %w", err)
 	}
 
 	return lastYearXDays, lastYearYDistances, nil

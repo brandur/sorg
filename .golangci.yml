@@ -1,0 +1,13 @@
+linters:
+  enable:
+    - forbidigo
+    - gci
+
+linters-settings:
+  forbidigo:
+    forbid:
+      - '^errors\.Wrap$'
+      - '^errors\.Wrapf$'
+      - '^fmt\.Errorf$'
+  gci:
+    local-prefixes: github.com/brandur

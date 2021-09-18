@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/brandur/sorg/modules/stesting"
 	assert "github.com/stretchr/testify/require"
+
+	"github.com/brandur/sorg/modules/stesting"
 )
 
 func TestRender(t *testing.T) {

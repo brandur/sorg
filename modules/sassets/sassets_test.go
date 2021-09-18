@@ -4,12 +4,14 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/brandur/sorg/modules/stesting"
 	assert "github.com/stretchr/testify/require"
+
+	"github.com/brandur/sorg/modules/stesting"
 )
 
 func TestCompileJavascripts(t *testing.T) {
 	dir, err := ioutil.TempDir("", "javascripts")
+	assert.NoError(t, err)
 
 	file0 := dir + "/.hidden"
 	file1 := dir + "/file1.js"
@@ -66,6 +68,7 @@ function() { return "file3" }
 
 func TestCompileStylesheets(t *testing.T) {
 	dir, err := ioutil.TempDir("", "stylesheets")
+	assert.NoError(t, err)
 
 	file0 := dir + "/.hidden"
 	file1 := dir + "/file1.sass"

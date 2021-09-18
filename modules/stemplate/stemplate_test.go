@@ -4,8 +4,9 @@ import (
 	"testing"
 	"time"
 
-	_ "github.com/brandur/sorg/modules/stesting"
 	assert "github.com/stretchr/testify/require"
+
+	_ "github.com/brandur/sorg/modules/stesting"
 )
 
 var testTime time.Time
@@ -113,12 +114,4 @@ func TestToStars(t *testing.T) {
 	assert.Equal(t, "", toStars(0))
 	assert.Equal(t, "★ ", toStars(1))
 	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
-}
-
-func mustParseDuration(s string) time.Duration {
-	d, err := time.ParseDuration(s)
-	if err != nil {
-		panic(err)
-	}
-	return d
 }

@@ -8,6 +8,8 @@ import (
 	"strings"
 	"time"
 
+	"golang.org/x/xerrors"
+
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtoml"
@@ -87,19 +89,19 @@ func (t *Talk) PublishingInfo() map[string]string {
 
 func (t *Talk) validate(source string) error {
 	if t.Event == "" {
-		return fmt.Errorf("No event for talk: %v", source)
+		return xerrors.Errorf("no event for talk: %v", source)
 	}
 
 	if t.Location == "" {
-		return fmt.Errorf("No location for talk: %v", source)
+		return xerrors.Errorf("no location for talk: %v", source)
 	}
 
 	if t.Title == "" {
-		return fmt.Errorf("No title for talk: %v", source)
+		return xerrors.Errorf("no title for talk: %v", source)
 	}
 
 	if t.PublishedAt == nil {
-		return fmt.Errorf("No publish date for talk: %v", source)
+		return xerrors.Errorf("no publish date for talk: %v", source)
 	}
 
 	return nil
@@ -144,7 +146,7 @@ func Render(c *modulir.Context, contentDir, dir, name string) (*Talk, error) {
 	}
 
 	if talk.Intro == "" {
-		return nil, fmt.Errorf("No intro for talk: %v (provide one as the presenter notes of the first slide)", source)
+		return nil, xerrors.Errorf("no intro for talk: %v (provide one as the presenter notes of the first slide)", source)
 	}
 
 	return &talk, nil
@@ -214,7 +216,7 @@ func splitAndRenderSlides(contentDir string, talk *Talk, content string) ([]*Sli
 		} else if fileExists(path.Join(talksImageDir, talk.Slug, jpgName)) {
 			slide.ImagePath = fmt.Sprintf("%s/%s/%s", talksAssetPath, talk.Slug, jpgName)
 		} else {
-			return nil, fmt.Errorf("Couldn't find any image asset for slide %s / %s at %s",
+			return nil, xerrors.Errorf("couldn't find any image asset for slide %s / %s at %s",
 				pngName, jpgName, path.Join(talksImageDir, talk.Slug))
 		}
 	}

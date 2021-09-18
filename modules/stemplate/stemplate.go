@@ -11,8 +11,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/brandur/modulir/modules/mtemplate"
 	"github.com/yosssi/ace"
+
+	"github.com/brandur/modulir/modules/mtemplate"
 )
 
 // FuncMap is a set of helper functions to make available in templates for the

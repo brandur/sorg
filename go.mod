@@ -35,5 +35,6 @@ require (
 	golang.org/x/crypto v0.0.0-20190611184440-5c40567a22f8
 	golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa
 	golang.org/x/sys v0.0.0-20210917161153-d61c044b1678 // indirect
+	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/mailgun/mailgun-go.v1 v1.1.1
 )

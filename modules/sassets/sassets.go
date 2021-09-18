@@ -1,14 +1,15 @@
 package sassets
 
 import (
-	"fmt"
 	"io"
 	"os"
 	"path/filepath"
 
+	"github.com/yosssi/gcss"
+	"golang.org/x/xerrors"
+
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mfile"
-	"github.com/yosssi/gcss"
 )
 
 // CompileJavascripts compiles a set of JS files into a single large file by
@@ -35,8 +36,8 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 			return err
 		}
 
-		outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
-		outFile.WriteString("(function() {\n\n")
+		_, _ = outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
+		_, _ = outFile.WriteString("(function() {\n\n")
 
 		// Ignore non-JS files in the directory (I have a README in there)
 		if filepath.Ext(source) == ".js" {
@@ -46,8 +47,8 @@ func CompileJavascripts(c *modulir.Context, inPath, outPath string) error {
 			}
 		}
 
-		outFile.WriteString("\n\n")
-		outFile.WriteString("}).call(this);\n\n")
+		_, _ = outFile.WriteString("\n\n")
+		_, _ = outFile.WriteString("}).call(this);\n\n")
 	}
 
 	return nil
@@ -80,12 +81,12 @@ func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 			return err
 		}
 
-		outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
+		_, _ = outFile.WriteString("/* " + filepath.Base(source) + " */\n\n")
 
 		if filepath.Ext(source) == ".sass" {
 			_, err := gcss.Compile(outFile, inFile)
 			if err != nil {
-				return fmt.Errorf("Error compiling '%v': %v", source, err)
+				return xerrors.Errorf("error compiling '%v': %w", source, err)
 			}
 		} else {
 			_, err := io.Copy(outFile, inFile)
@@ -94,7 +95,7 @@ func CompileStylesheets(c *modulir.Context, inPath, outPath string) error {
 			}
 		}
 
-		outFile.WriteString("\n\n")
+		_, _ = outFile.WriteString("\n\n")
 	}
 
 	return nil
