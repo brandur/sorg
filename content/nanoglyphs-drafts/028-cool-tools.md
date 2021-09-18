@@ -18,7 +18,7 @@ One of the most distinguishing characteristics of Gibson's prose is how challeng
 
 As an example, the article's author describes a scene in _The Peripheral_ where Ainsley Lowbeer, an inspector in 22nd century London has a shape-shifting weapon called a "tipstaff" which can summon a drone strike. None of this is said explicitly (the following a quote from the book):
 
-> morph again, becoming a baroque, long-barreled gilt pistol, with fluted ivory grips, which Lowbeer lifted, aimed, and fired. There was an explosion, painfully loud, but from somewhere across the lower level, the pistol having made no sound at all. Then a ringing silence, in which could be heard an apparent rain of small objects, striking walls and flagstones. Someone began to scream.
+> [...] morph again, becoming a baroque, long-barreled gilt pistol, with fluted ivory grips, which Lowbeer lifted, aimed, and fired. There was an explosion, painfully loud, but from somewhere across the lower level, the pistol having made no sound at all. Then a ringing silence, in which could be heard an apparent rain of small objects, striking walls and flagstones. Someone began to scream.
 >
 > “Bloody hell,” said Lowbeer, her tone one of concerned surprise, the pistol having become the tipstaff again.
 
