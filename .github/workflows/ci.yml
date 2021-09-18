@@ -186,3 +186,14 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
         if: github.ref == 'refs/heads/master'
+
+  golangci-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: "Check: golangci-lint"
+        uses: golangci/golangci-lint-action@v2
