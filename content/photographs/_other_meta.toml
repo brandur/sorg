@@ -245,7 +245,7 @@ title = "iA Writer."
 #
 
 #
-# /nanoglyphs/028-path-of-madness
+# /nanoglyphs/029-path-of-madness
 #
 
 # [[photographs]]
@@ -253,6 +253,22 @@ title = "iA Writer."
 # original_image_url = "https://www.dropbox.com/s/tzy0n6ctl0f5219/IMG_0435-path.HEIC?dl=1"
 # slug = "nanoglyphs/028-path-of-madness/bunaken-road"
 # title = "A road on Bunaken in Indonesia"
+
+#
+# /nanoglyphs/029-cool-tools
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/ny6jquaewvct3st/2W4A0515-lizard-crop.jpg?dl=1"
+slug = "nanoglyphs/028-cool-tools/lizard"
+title = "A lizard in San Bruno park"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/o2juh59p9b99ipa/2W4A0505.JPG?dl=1"
+slug = "nanoglyphs/028-cool-tools/ridge"
+title = "A ridgeline in San Bruno park"
 
 #
 # /nanoglyphs/027-15-minutes
