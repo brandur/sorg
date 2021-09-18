@@ -9,6 +9,7 @@ import (
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mimage"
+	"github.com/brandur/sorg/modules/scommon"
 	"github.com/joeshaw/envdecode"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -94,6 +95,7 @@ API.`),
 	mimage.MagickBin = conf.MagickBin
 	mimage.MozJPEGBin = conf.MozJPEGBin
 	mimage.PNGQuantBin = conf.PNGQuantBin
+	mimage.TempDir = scommon.TempDir
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error executing command: %v", err)

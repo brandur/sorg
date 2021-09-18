@@ -1348,7 +1348,7 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 		return false, fmt.Errorf("bad URL for photo '%s': %w", photo.Slug, err)
 	}
 
-	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, scommon.TempDir,
+	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug,
 		mimage.PhotoGravityCenter, defaultPhotoSizes)
 }
 
@@ -1362,7 +1362,7 @@ func fetchAndResizePhotoOther(c *modulir.Context, targetDir string, photo *Photo
 		return false, fmt.Errorf("bad URL for photo '%s'", photo.Slug)
 	}
 
-	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, scommon.TempDir,
+	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug,
 		mimage.PhotoGravity(photo.CropGravity),
 		[]mimage.PhotoSize{
 			{Suffix: "", Width: photo.CropWidth, CropSettings: nil},
@@ -1385,7 +1385,7 @@ func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 
 	slug := fmt.Sprintf("%v-%v", tweet.ID, media.ID)
 
-	return mimage.FetchAndResizeImage(c, u, targetDir, slug, scommon.TempDir,
+	return mimage.FetchAndResizeImage(c, u, targetDir, slug,
 		mimage.PhotoGravityCenter, twitterPhotoSizes)
 }
 
