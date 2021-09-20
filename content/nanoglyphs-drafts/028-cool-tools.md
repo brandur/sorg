@@ -36,7 +36,7 @@ If you're wondering why I write so much about an organization which I no longer 
 
 ---
 
-## Lakes of data (#data)
+## Data, lakes of it (#data)
 
 Perhaps one of the more interesting systems we had in place at Stripe was an incredibly comprehensive data warehouse. The company prides itself in data-driven decision-making and design, and the warehouse was the backbone that made that philosophy possible.
 
@@ -52,7 +52,9 @@ Some examples of things that a person in my position might ask the warehouse abo
 
 * Get an aggregate shape of a single user's API request profile over multiple days including average and maximum RPS, along with the API endpoints they use most. We'd then determine if we should bump them to a higher rate limiting tier or request that they make changes to a grossly inefficient integration.
 
-Originally, this all operated on what was perhaps the world's most tortured Redshift cluster. It was impressive what this thing could do considering the sheer volume of data and load that we were throwing at it, but using it was rocky -- queries would run for minutes at a time if there was any other load in the cluster, and often just time out completely. An "observatory" tab was added to our custom UI so that users could go in and kill other peoples' stuck queries so that theirs might succeed. An alternative implementation on top of [Presto](https://prestodb.io/) was introduced, and after a period of hybrid support for both systems, we eventually transitioned entirely to that as it proved to be far more reliable and friendly for wide simultaneous use.
+Originally, this all operated on what was perhaps the world's most tortured Redshift cluster. It was impressive what this thing could do considering the sheer volume of data and load that we were throwing at it, but using it was rocky -- queries would run for minutes at a time if there was any other load in the cluster, and often just time out completely. An "observatory" tab was added to our custom UI so that users could go in and kill other peoples' stuck queries so that theirs might succeed.
+
+Eventually, an alternative implementation on top of [Presto](https://prestodb.io/) was introduced, and after a period of hybrid support for both systems, we eventually transitioned entirely to that as it proved to be far more reliable and friendly for wide simultaneous use.
 
 ### SQL at scale (#sql)
 
@@ -76,7 +78,7 @@ This "teach a man to fish" philosophy made a _huge_ difference. Being able to do
 
 Stripe's data warehouse is great, but was only one amongst many powerful internal tools. Here's a few examples of others for inspirational purposes:
 
-* **True SSO:** Stripe's internal authentication system and security story is the best I've ever seen, including even from professional IDP providers. Except in some very rare instances (Gmail, logging onto their laptop), no Stripe employee enters a password for any services, ever. All services are configured to use an internal single sign on (SSO) portal for authentication, and that portal identifies users via an OpenSSL client certificate sent by the browser and pre-provisioned to each laptop, which can be revoked by an admin in seconds. The portal requires entry of a second factor (Yubikey) once per day and all services require VPN access which requires another certificate, but again, no password. Most employees have no idea what's even happening, but even for the least tech savvy, the process is incredibly fluid. Paradoxically, no passwords means _better_ security, and the model that Stripe uses internally might in an alternate reality be the security model in use by the whole internet -- obviating the need for password managers -- if only OpenSSL wasn't so f*ing impossible to use.
+* **True SSO:** Stripe's internal authentication system and security story is the best I've ever seen, including even from professional IDP providers. Except in some very rare instances (Gmail, logging onto their laptop), no Stripe employee enters a password for any services, ever. All services are configured to use an internal single sign on (SSO) portal for authentication, and that portal identifies users via an OpenSSL client certificate sent by the browser and pre-provisioned to each laptop, which can be revoked by an admin in seconds. The portal requires entry of a second factor (Yubikey) once per day and all services require VPN access which requires another certificate, but again, no password. Most employees have no idea what's even happening, but even for the least tech savvy, the process is incredibly fluid. Paradoxically, no passwords means _better_ security, and the model that Stripe uses internally might in an alternate reality be the security model in use by the whole internet -- with client certs obviating the need for password managers -- if only OpenSSL wasn't so f*ing impossible to use.
 
     On my last day as access was being revoked at 3 PM sharp, I suddenly got about nineteen error modals stacked on top of each other as deeply nested layers worth of security protocols all failed simultaneously.
 
@@ -96,7 +98,7 @@ Stripe's data warehouse is great, but was only one amongst many powerful interna
 
 * **Custom interface to CI:** A custom CI sitting on top of Jenkins. Instead of scrolling through terminal output looking for failures that occurred, they got a pretty list of specific test cases, each of which could be expanded for details, and which had a button to copy an invocation to clipboard that would run the failing test from terminal.
 
-* **Review shorthand:** It was easy to request a review from either a team or specific user by including magic strings in GitHub comments like `r? @brandur`. This got less impressive over time as GitHub added its own review system that could be invoked quickly with `hub`, but was still useful because it was smart in other ways too -- like waiting until after a successful build before requesting a review, or randomly assigning a reviewer on a target team.
+* **Review shorthand:** It was easy to request a review from either a team or specific user by including magic strings in GitHub comments like `r? @brandur`. This got less impressive over time as GitHub added its own review system that could be invoked quickly with `hub` (GitHub's command line client), but was still useful because it was smart in other ways too -- like waiting until after a successful build before requesting a review, or randomly assigning a reviewer on a target team.
 
 * **Slack notifications:** Developers would get a Slack notification when one of their builds failed, succeeded, or if someone had requested their review, with the goal of tightening development loops and review turnarounds. I'm including this because it's interesting and it was a good implementation, but it was also kind of an anti-feature -- the only reason build notifications were needed is because builds took so long, and the idea of fast reviews is nice, but carried a definite price tag as developers were wedded all day to Slack, with distracting notifications firing constantly.
 
@@ -124,7 +126,7 @@ The first laptop I ever bought myself was Apple's plastic MacBook in my last yea
 
 Fast forward to today, the iPhone 13 pushes the 12'a already-tremendous battery life another 2.5 hours, and is a few orders of magnitude more powerful than my old MacBook. I'm still using a five-year old iPad Pro, but it's still _perfect_, with almost edge-to-edge screen and charged only once a week. Laptops were the final frontier in decent on-the-go battery, but Apple's M1 finally cracked that one too -- usable all day as long as you remember to plug the computer in overnight.
 
-The world may be more messed up than ever, and the very fabric of our civilization might be coming apart, but g'damn do we ever have some cool tools.
+The world is more messed up than ever, and the very fabric of our civilization might be coming apart, but g'damn do we ever have some cool tools.
 
 Until next week.
 
