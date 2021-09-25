@@ -4,7 +4,7 @@ published_at = 2021-06-05T21:06:04Z
 title = "The Heroku HTTP API Design Guide, revisited"
 +++
 
-One of our most influential "late Heroku" thought artifacts was "The Heroku HTTP API Design Guide". We'd recently revamped our API with a new V3 iteration, and the guide was a terse description of the conventions we'd developed. It was written by [Mark McGranaghan](https://twitter.com/mmcgrana), and then entered common maintenance.
+One of our most influential late Heroku artifacts was _The Heroku HTTP API Design Guide_. We'd recently revamped our API with a new V3 iteration, and the guide was a terse description of the conventions we'd developed. It was written by [Mark McGranaghan](https://twitter.com/mmcgrana), and then entered common maintenance.
 
 It blew up when it was dropped, accumulating 13.5k stars on GitHub, and translated into a number of foreign languages. It was a big deal for us at the time because we hadn't managed to produce all that much on the "thought leadership" front since the company's halcyon days of ~2011.
 
