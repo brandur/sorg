@@ -67,7 +67,7 @@ linters-settings:
       - github.com/brandur/*
 ```
 
-I bucketed disabled linters into either "deprecated" (`enable-all` activates even deprecated linters), or "obnoxious", which are linters that are hard to get activated and which run checks that are not obviously useful.
+I bucketed disabled linters into either "deprecated" (`enable-all` activates even deprecated linters), or "obnoxious", which are linters that are hard to get activated and which run checks that are not obviously useful ("obviously" being the operating word here -- maybe they're useful to someone).
 
 ## Borderline (#borderline)
 
