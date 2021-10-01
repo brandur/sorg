@@ -31,28 +31,28 @@ We shut down gracefully on receipt of `SIGTERM`, finishing any outstanding reque
 
 ``` go
 httpServer := &http.Server{
-	Addr:    addr,
-	Handler: handler,
+    Addr:    addr,
+    Handler: handler,
 }
 
 idleConnsClosed := make(chan struct{})
 go func() {
-	sigterm := make(chan os.Signal, 1)
-	signal.Notify(sigterm, syscall.SIGTERM)
-	<-sigterm
+    sigterm := make(chan os.Signal, 1)
+    signal.Notify(sigterm, syscall.SIGTERM)
+    <-sigterm
 
-	logger.Info("Performing graceful shutdown")
-	if err := httpServer.Shutdown(context.Background()); err != nil {
-		// Error from closing listeners, or context timeout
-		logger.Printf("HTTP server Shutdown: %v", err)
-	}
+    logger.Info("Performing graceful shutdown")
+    if err := httpServer.Shutdown(context.Background()); err != nil {
+        // Error from closing listeners, or context timeout
+        logger.Printf("HTTP server Shutdown: %v", err)
+    }
 
-	close(idleConnsClosed)
+    close(idleConnsClosed)
 }()
 
 logger.Infof("API listening on '%s'", httpServer.Addr)
 if err := httpServer.ListenAndServe(); !errors.Is(err, http.ErrServerClosed) {
-	logger.Errorf("Listening on '%s' failed: %v", httpServer.Addr, err)
+    logger.Errorf("Listening on '%s' failed: %v", httpServer.Addr, err)
 }
 
 <-idleConnsClosed
