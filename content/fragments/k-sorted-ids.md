@@ -12,7 +12,7 @@ In general, K-sorted IDs are two components squashed together:
 		
 The timestamp bits keep things roughly ordered and the random bits disambiguate within the same timestamp.
 
-Not only are ordered IDs a nicety for users, but they also tend to [perform better](https://www.2ndquadrant.com/en/blog/sequential-uuid-generators/). Newly generated IDs are inserted close to each other, which means they touch fewer pages of cache and produce less WAL.
+Not only are ordered IDs a nicety for users, but they also [perform better](https://www.2ndquadrant.com/en/blog/sequential-uuid-generators/). Newly generated IDs are inserted close to each other, which means they touch fewer pages of cache and produce less WAL.
 
 For your convenience, here's a list of the various major K-sorted IDs, ordered approximately according to relevancy today (using my best judgement):
 
