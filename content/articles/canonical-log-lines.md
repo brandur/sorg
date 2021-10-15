@@ -316,7 +316,7 @@ into any tech stack you happen to be using.
     eating into them.
 
 [3] A daemon local to each node buffers messages and sends
-    them off to Kafka in batches (some losiness can be
+    them off to Kafka in batches (some lossiness can be
     tolerated here). We previously used NSQ for the same
     purpose.
 
