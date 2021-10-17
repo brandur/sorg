@@ -6,7 +6,7 @@ title = "Calgary in the spotlight"
 
 The subject of Calgary, and specifically its downtown core, emptied by a collapsing energy industry, came up [on HN last week](https://news.ycombinator.com/item?id=28873926). Being from there, this was of course interesting.
 
-The general thesis is that Calgary's downtown vacancy rate is by far the highest in Canada -- at 29% compared to 17% for Edmonton which is number two. Sporting a massive commuting class, downtown has always infamously dead by 5 PM for decades, but incredibly it's now even worse.
+The general thesis is that Calgary's downtown vacancy rate is by far the highest in Canada -- at 29% compared to 17% for Edmonton which is number two. Sporting a massive commuting class, downtown has always infamously dead by 5 PM for decades, but incredibly, it's gotten even worse.
 
 One surprising thing is how many Calgary or ex-Calgary HNers there are who chimed in on the subject. For those who left, anecdotes there largely match my own -- headed for the sunnier shores of Vancouver, Toronto, or down to the US. For those who stayed, the story was often the same -- unlike Vancouver and Toronto (where they lived for a stint), you can actually afford to live well.
 
