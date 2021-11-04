@@ -16,6 +16,7 @@ linters:
     - paralleltest
     - testpackage
     - wsl
+    - varnamelen
 
     # deprecated
     - golint
