@@ -1,0 +1,44 @@
+= content title
+  title brandur.org — Brandur Leach
+
+= content stylesheets
+  link href="/assets/{{.Release}}/stylesheets/index.css" media="screen" rel="stylesheet" type="text/css"
+
+= content main
+  .flex_container
+    .title
+      h1 Hi, I'm Brandur.
+    .description I'm writing and stuff. Here is more content to help me test with while there's no real content here. And here is even more and more.
+    .articles
+      {{range .Articles}}
+        .article
+          p.article_title
+            a href="/{{.Slug}}" {{.Title}}
+          p.article_hook
+            | {{HTML .Hook}} 
+          span.date {{FormatTimeYearMonth .PublishedAt}}
+      {{end}}
+    .nanoglyphs
+      {{range .Nanoglyphs}}
+        .nanoglyph
+          p.nanoglyph_number
+            a href="/{{.Slug}}" {{.Number}}
+          p.nanoglyph_title
+            a href="/{{.Slug}}" {{.Title}}
+          span.date {{FormatTimeYearMonth .PublishedAt}}
+      {{end}}
+    .photo
+      {{LazyRetinaImageLightboxSized (RandIntn 100) "/photographs/" .Photo.Slug false "medium"}}
+      / img src="/photographs/{{QueryEscape .Photo.Slug}}_medium.jpg" srcset="/photographs/{{QueryEscape .Photo.Slug}}_medium@2x.jpg 2x, /photographs/{{QueryEscape .Photo.Slug}}_medium.jpg 1x"
+
+  link href="/assets/{{.Release}}/stylesheets/simpleLightbox.css" media="screen" rel="stylesheet" type="text/css"
+  = javascript
+    new SimpleLightbox({
+      elements: '.photo a',
+
+      closeBtnClass: 'simpleLightboxHide',
+      nextBtnClass: 'simpleLightboxNoBorder',
+      prevBtnClass: 'simpleLightboxNoBorder',
+
+      nextOnImageClick: false
+    });

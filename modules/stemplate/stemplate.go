@@ -19,21 +19,22 @@ import (
 // FuncMap is a set of helper functions to make available in templates for the
 // project.
 var FuncMap = template.FuncMap{
-	"Downcase":                downcase,
-	"FormatTimeLocal":         formatTimeLocal,
-	"FormatTimeWithMinute":    formatTimeWithMinute,
-	"FormatTimeYearMonth":     formatTimeYearMonth,
-	"InKM":                    inKM,
-	"LazyRetinaImage":         lazyRetinaImage,
-	"LazyRetinaImageLightbox": lazyRetinaImageLightbox,
-	"MonthName":               monthName,
-	"NanoglyphSignup":         nanoglyphSignup,
-	"NumberWithDelimiter":     numberWithDelimiter,
-	"Pace":                    pace,
-	"RandIntn":                randIntn,
-	"RenderPublishingInfo":    renderPublishingInfo,
-	"RetinaImageAlt":          RetinaImageAlt,
-	"ToStars":                 toStars,
+	"Downcase":                     downcase,
+	"FormatTimeLocal":              formatTimeLocal,
+	"FormatTimeWithMinute":         formatTimeWithMinute,
+	"FormatTimeYearMonth":          formatTimeYearMonth,
+	"InKM":                         inKM,
+	"LazyRetinaImage":              lazyRetinaImage,
+	"LazyRetinaImageLightbox":      lazyRetinaImageLightbox,
+	"LazyRetinaImageLightboxSized": lazyRetinaImageLightboxSized,
+	"MonthName":                    monthName,
+	"NanoglyphSignup":              nanoglyphSignup,
+	"NumberWithDelimiter":          numberWithDelimiter,
+	"Pace":                         pace,
+	"RandIntn":                     randIntn,
+	"RenderPublishingInfo":         renderPublishingInfo,
+	"RetinaImageAlt":               RetinaImageAlt,
+	"ToStars":                      toStars,
 }
 
 // LocalLocation is the location to show times in which use FormatTimeLocal.
@@ -61,19 +62,29 @@ func formatTimeWithMinute(t *time.Time) string {
 
 // Produces a retina-compatible photograph that's lazy loaded. Largely used for
 // the photographs and sequences sets.
-func lazyRetinaImage(index int, path, slug string) string {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, false, false)
+func lazyRetinaImage(index int, path, slug string) template.HTML {
+	return lazyRetinaImageLightboxMaybeSized(index, path, slug, false, false, "large")
 }
 
 // Same as the above, but also allows the image to be clicked to get a
 // lightbox.
-func lazyRetinaImageLightbox(index int, path, slug string, portrait bool) string {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, portrait, true)
+func lazyRetinaImageLightbox(index int, path, slug string, portrait bool) template.HTML {
+	return lazyRetinaImageLightboxMaybeSized(index, path, slug, portrait, true, "large")
 }
 
-func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightbox bool) string {
+// Same as the above, but with a size component.
+func lazyRetinaImageLightboxSized(index int, path, slug string, portrait bool, size string) template.HTML {
+	return lazyRetinaImageLightboxMaybeSized(index, path, slug, portrait, true, size)
+}
+
+func lazyRetinaImageLightboxMaybeSized(index int, path, slug string,
+	portrait, lightbox bool, size string) template.HTML {
+
 	slug = mtemplate.QueryEscape(slug)
-	largePath := path + slug + "_large.jpg"
+
+	sizePath := path + slug + "_" + size + ".jpg"
+	sizePathRetina := path + slug + "_" + size + "@2x.jpg"
+
 	largePathRetina := path + slug + "_large@2x.jpg"
 
 	var standinPath string
@@ -84,14 +95,14 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightb
 		standinPath = fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
 	}
 
-	code := fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
-		standinPath, largePath, largePathRetina, largePath)
+	code := fmt.Sprintf(`<img class="lazy" loading="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
+		standinPath, sizePath, sizePathRetina, sizePath)
 
 	if lightbox {
 		code = fmt.Sprintf(`<a href="%s">%s</a>`, largePathRetina, code)
 	}
 
-	return code
+	return template.HTML(code)
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces

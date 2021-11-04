@@ -683,6 +683,14 @@ func build(c *modulir.Context) []error {
 		})
 	}
 
+	{
+
+		c.AddJob("home2", func() (bool, error) {
+			return renderHome2(c, articles, fragments, nanoglyphs, photos,
+				articlesChanged, fragmentsChanged, nanoglyphsChanged, photosChanged)
+		})
+	}
+
 	//
 	// Nanoglyphs
 	//
@@ -1340,6 +1348,8 @@ var cropDefault = &mimage.PhotoCropSettings{Portrait: "2:3", Landscape: "3:2"}
 var defaultPhotoSizes = []mimage.PhotoSize{
 	{Suffix: "", Width: 333, CropSettings: cropDefault},
 	{Suffix: "@2x", Width: 667, CropSettings: cropDefault},
+	{Suffix: "_medium", Width: 600, CropSettings: cropDefault},
+	{Suffix: "_medium@2x", Width: 1200, CropSettings: cropDefault},
 	{Suffix: "_large", Width: 1500, CropSettings: cropDefault},
 	{Suffix: "_large@2x", Width: 3000, CropSettings: cropDefault},
 }
@@ -1398,6 +1408,8 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 	if dynamicReload {
 		options.DynamicReload = true
 	}
+
+	options.Indent = "  "
 
 	return options
 }
@@ -2155,6 +2167,52 @@ func renderHome(c *modulir.Context,
 
 	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/index.ace",
 		c.TargetDir+"/index.html", getAceOptions(viewsChanged), locals)
+}
+
+func renderHome2(c *modulir.Context,
+	articles []*Article, fragments []*Fragment, nanoglyphs []*snewsletter.Issue, photos []*Photo,
+	articlesChanged, fragmentsChanged, nanoglyphsChanged, photosChanged bool) (bool, error) {
+
+	if !conf.Drafts {
+		return false, nil
+	}
+
+	viewsChanged := c.ChangedAny(append(
+		[]string{
+			scommon.MainLayout,
+			scommon.ViewsDir + "/index2.ace",
+		},
+		universalSources...,
+	)...)
+	if !articlesChanged && !fragmentsChanged && !nanoglyphsChanged && !photosChanged && !viewsChanged {
+		return false, nil
+	}
+
+	if len(articles) > 3 {
+		articles = articles[0:3]
+	}
+
+	// Try just one fragment for now to better balance the page's height.
+	if len(fragments) > 1 {
+		fragments = fragments[0:1]
+	}
+
+	if len(nanoglyphs) > 3 {
+		nanoglyphs = nanoglyphs[0:3]
+	}
+
+	// Find a random photo to put on the homepage.
+	photo := selectRandomPhoto(photos)
+
+	locals := getLocals("", map[string]interface{}{
+		"Articles":   articles,
+		"Fragments":  fragments,
+		"Nanoglyphs": nanoglyphs,
+		"Photo":      photo,
+	})
+
+	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/index2.ace",
+		c.TargetDir+"/index2", getAceOptions(viewsChanged), locals)
 }
 
 func renderPage(c *modulir.Context, source string, meta map[string]*Page, mu *sync.RWMutex) (bool, error) {
