@@ -239,6 +239,6 @@ That convenience further compounds with the more service stubs that are added. H
 18:20:38 vaultstub.1        | == Sinatra/1.3.5 has taken the stage on 4112 for development with backup from WEBrick
 18:20:38 vaultusagestub.1   | == Sinatra/1.3.5 has taken the stage on 4113 for development with backup from WEBrick
 18:20:38 zendeskssostub.1   | == Sinatra/1.3.5 has taken the stage on 4115 for development with backup from WEBrick
-````
+```
 
 A working example of this project is available at [brandur/service-stub-example](https://github.com/brandur/service-stub-example).
