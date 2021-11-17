@@ -4,7 +4,7 @@ published_at = 2021-11-07T18:45:22Z
 title = "Dropbox alternatives"
 +++
 
-Dropbox _was_ one of the best apps ever created. The original program was magic -- a game changer for getting organized and gold standard for how easy-to-use a cloud service should be. But for years the walls have been closing in -- an Electron app, new features that are hard to opt out of (e.g. "Smart Sync"), and price increases. The latest insult is that they've been unable to ship an M1 binary, so an already bloated app runs even more slowly and resource hungry. The company's now aiming for a release in H1 2022, which will be a full two years after the first M1 developer kits shipped in June 2020.
+Dropbox _was_ one of the best apps ever created. The original program was magic -- a game changer for getting organized and gold standard for how easy-to-use a cloud service should be. But for years the walls have been closing in -- new features that are hard to opt out of (e.g. "Smart Sync"), price increases, an _Electron app_. The latest insult is that they've been unable to ship an M1 binary, so an already bloated app runs even more slowly and resource hungry. The company's now aiming for a release in H1 2022, which will be a full two years after the first M1 developer kits shipped in June 2020.
 
 Yesterday, I solicited feedback on good alternatives on Twitter and got back quite a few thoughtful responses which I'll collate here.
 
