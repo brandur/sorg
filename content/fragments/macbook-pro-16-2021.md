@@ -11,7 +11,7 @@ A few weeks ago Apple released new MacBook Pros revised for 2021. The highlights
 * New revision on the M1, now even faster and more power efficient.
 * New mini-LED screens -- much brighter, amazing contrast, and which run at 120 Hz.
 * The Touch Bar is FINALLY dead.
-* Three USB-C ports (up from the meager two of the last batch).
+* Three USB-C ports (up from the meager two of the last batch). It is _so_ good having ports on both sides of the computer again.
 * _Non_-USB-C ports -- the first in a long time. MagSafe, and an SD card reader.
 * A decent camera -- the first ever in an Apple laptop.
 * 32 GB and 64 GB memory (previously restricted to 16 GB).
