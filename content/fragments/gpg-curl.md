@@ -22,7 +22,7 @@ Now we can can pipe the decrypted output of our `.netrc` file from gpg, and
 have Curl read it in (this should go in your appropriate *rc file):
 
 ``` sh
-$ alias curl="gpg --batch -q -d ~/.netrc.gpg | curl --netrc-file /dev/stdin"
+$ alias curl="curl --netrc-file <( gpg --batch -q -d ~/.netrc.gpg )"
 ```
 
 Because we've folded this into an alias, curl can be invoked normally:
