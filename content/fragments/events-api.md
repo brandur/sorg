@@ -41,6 +41,6 @@ Again, this is solvable, probably with something like `?partition=` parameter an
 
 ## What to do today (#today)
 
-Now, despite these considerations, the downsides of webhooks are so consideration (in my opinion), that building from the ground up today I'd still be most tempted to come up with solutions and try to make an events API work.
+Now, despite these considerations, the downsides of webhooks are so considerable (in my opinion), that building from the ground up today I'd still be most tempted to come up with solutions and try to make an events API work.
 
 [1] I'll caveat that there are ways to [parallelize cursor-based pagination](/fragments/offset-pagination), but it gets messy.
