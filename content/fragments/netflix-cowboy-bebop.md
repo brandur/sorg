@@ -8,7 +8,7 @@ Possibly the most notable anime reboot of all time, I of course couldn't help my
 
 The original anime was a complex, nuanced layer cake of themes and ideas:
 
-* Sci-fi backdrop. One of the most creative of all time in which humanity has largely left Earth after a major disaster, but fully colonized the rest of the solar city. Lots of cool space ships and novel locales, all with a distinctive retro feel.
+* Sci-fi backdrop. One of the most creative of all time in which humanity has largely left Earth after a major disaster, but fully colonized the rest of the solar system. Lots of cool space ships and novel locales, all with a distinctive retro feel.
 
 * Comedy -- it's a serious show, but _Cowboy Bebop_ is _funny_. There's frequent comedy in every episode ranging from typical anime gags, all the way to high-brow cerebral humor around the crazy situations the characters manage to create for themselves.
 
