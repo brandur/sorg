@@ -4,7 +4,7 @@ published_at = 2021-11-20T19:28:41Z
 title = "Netflix's Cowboy Bebop"
 +++
 
-Possibly the most notable anime reboot of all time, I of course couldn't help myself, and binged it yesterday, finishing the same day it came out. In short: it could've been worse, but it doesn't do justice to the original.
+Possibly the most notable anime reboot of all time, I of course couldn't help myself, and binged it yesterday, finishing the same day it came out. In short: it doesn't do justice to the original, or come even close to doing so, but it's also not a complete trainwreck. It's more a 5 or 6 out of 10 rather than a 2 or 3, which easily could've happened given Netflix's spotty track record.
 
 The original anime was a complex, nuanced layer cake of themes and ideas:
 
