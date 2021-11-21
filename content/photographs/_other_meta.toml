@@ -249,10 +249,40 @@ title = "iA Writer."
 #
 
 [[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/f9bt1kb8dpz6t46/IMG_0440-pier.jpg?dl=1"
+slug = "nanoglyphs/029-path-of-madness/bunaken-pier"
+title = "A view from a pier on Bunaken in Indonesia"
+
+[[photographs]]
 crop_width = 900
 original_image_url = "https://www.dropbox.com/s/grb1iwzymxk73fz/IMG_0435-path.jpg?dl=1"
 slug = "nanoglyphs/029-path-of-madness/bunaken-road"
 title = "A road on Bunaken in Indonesia"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/7yyg2qg4xfbep8n/lan-and-nynaeve.jpg?dl=1"
+slug = "nanoglyphs/029-path-of-madness/lan-and-nynaeve"
+title = "Wheel of Time: Lan and Nynaeve"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/4zgcqlst31gkdia/padan-fain.jpg?dl=1"
+slug = "nanoglyphs/029-path-of-madness/padan-fain"
+title = "Wheel of Time: Padan Fain"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/4h0rfgkc532mmua/shadar-logoth.jpg?dl=1"
+slug = "nanoglyphs/029-path-of-madness/shadar-logoth"
+title = "Wheel of Time: Shadar Logoth"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/5d7gxrb3b4wvl52/whitecloak.jpg?dl=1"
+slug = "nanoglyphs/029-path-of-madness/whitecloak"
+title = "Wheel of Time: Whitecloak"
 
 #
 # /nanoglyphs/028-cool-tools
