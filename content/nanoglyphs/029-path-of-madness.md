@@ -27,7 +27,7 @@ One of my [favorite comments of all time](https://news.ycombinator.com/item?id=1
 > Here is the life of an Oracle Database developer:
 >
 > - Start working on a new bug.
-> - Spend two weeks trying to understand the 20 different flags that interact in mysterious ways to cause this bag.
+> - Spend two weeks trying to understand the 20 different flags that interact in mysterious ways to cause this bug.
 > - Add one more flag to handle the new special scenario. Add a few more lines of code that checks this flag and works around the problematic situation and avoids the bug.
 > - Submit the changes to a test farm consisting of about 100 to 200 servers that would compile the code, build a new Oracle DB, and run the millions of tests in a distributed fashion.
 > - Go home. Come the next day and work on something else. The tests can take 20 hours to 30 hours to complete.
