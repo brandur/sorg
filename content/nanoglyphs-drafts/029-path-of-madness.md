@@ -6,9 +6,9 @@ published_at = 2021-10-02T21:29:43Z
 title = "The Path of Madness"
 +++
 
-Hacker News is the Twitter tech elite's favorite outfit to hate, taking regular scorching criticism as that "orange website", and perceived to be full of nothing better than a hypercritical mob informally operating as the world's most cynical peanut gallery.
+Hacker News is the Twitter tech elite's favorite outfit to hate, taking scorching criticism as the "orange website", and perceived to be full of nothing better than a hypercritical mob informally operating as the world's most cynical peanut gallery, which is at least partly true.
 
-But even its most vocal critics can't seem to help themselves -- despite the frequent condemnation they lob its way, someway, somehow, they keep finding themselves back. And there's a reason for that -- it's not all bad, and actually, most of it is even pretty good. Not only that, but once in a while, you strike internet gold and come across information that you could never have found anywhere else, reminding you that this elaborate series of tubes has a few good things going for it after all.
+But even its most vocal critics can't seem to help themselves -- despite the frequent condemnation they lob its way, someway, somehow, they keep finding themselves back. And there's a reason for that -- it's not all bad, and actually, most of it is even pretty good. Not only that, but once in a while you strike internet gold and come across information that you could never have found anywhere else, reminding you that this elaborate series of tubes has a few good things going for it after all.
 
 One of my [favorite comments of all time](https://news.ycombinator.com/item?id=18442941) is from an ex-Oracle engineer who describes what development there is like. Not just _at_ Oracle the company, but on the core Oracle database product itself (to be read in the tone of a Lovecraft short story):
 
@@ -53,6 +53,8 @@ Engineers who've spent their careers at smaller companies may not fully apprecia
 
 The ideal edit-compile-run loop for small programs is < 1s, or measured in a couple seconds. For larger programs, 10s of seconds is more likely and still acceptable, but go any higher than that and you're entering the danger zone. As soon as the loop is long enough that engineers will go find something else to do while they're waiting on it then you've just taken a massive productivity hit in large and frequent context switches.
 
+So 10+ seconds isn't great. The story above describes how Oracle's edit-compile-run loop is _a full day_.
+
 ---
 
 ## The fool's path (#the-fools-path)
@@ -93,6 +95,8 @@ Now, I'll leave it at that this story isn't purely hypothetical. It could even h
 
 The lesson: Clever patches might seem ingenious, but clever patches have secondary effects. Worse yet, the secondary effects _have secondary effects_. This pattern propagates endlessly, growing in complexity and expense with every new layer.
 
+Oracle's now downstream of decades worth of clever patches, and paying the price. And they're not the only ones -- dev environments with fluidity comparable to slogging waist-deep through marshland aren't uncommon at big tech shops.
+
 There is a solution: Instead of taking the easy path today, Fix. Root. Problems. If tests are slow, the right fix isn't to send them to the cloud, it's to _fix the tests_ and implement ratchets to make sure they stay fixed. The former is enticing in that it's easier today, but it will be much, much harder tomorrow.
 
 ---
@@ -101,7 +105,7 @@ There is a solution: Instead of taking the easy path today, Fix. Root. Problems.
 
 ## Predestination (#predestination)
 
-I've gotten into more than one argument over the years with apologists who posit that at scale, there's no alternative to a slow, multi-day test suite -- that Oracle's sordid situation is inevitable for any company interested in growth. I don't buy it, and neither should you.
+I've gotten into more than one argument over the years with slow-code apologists who posit that at scale, there's no alternative to a slow, multi-day test suite -- that Oracle's sordid situation is inevitable for any company interested in growth. I don't buy it, and neither should you.
 
 To make my case, I'm going to fall back to my old, reliable friend, Postgres. Like Oracle, it's a relational database, and has by almost all objective and subjective standards, now surpassed Oracle in speed and features for everything that matters. Like Oracle, it's also written in C. Like Oracle, it has a build farm for changes to be checked in the cloud.
 
@@ -154,7 +158,9 @@ user    6.52s
 sys     4.80s
 ```
 
-So for argument's sake, we'll take the higher number of 90 seconds. 90 seconds in Postgres versus 30 hours in Oracle, both of which are functionally similar products. We're not talking about a difference of 20%, 2x, or even 20x here -- we're talking about a difference of **1200x**. Even if you think that Oracle's providing some kind of rich feature set that Postgres isn't, or is tested more robustly, that can't come even close to explaining that sort of vast differential. Undoubtedly, there are many intertwined factors that led to the two very different outcomes, but methodology, taste, and attention to detail are absolutely amongst them.
+So for argument's sake, we'll take the higher number of 90 seconds. 90 seconds in Postgres versus 30 hours in Oracle, both of which are functionally similar products. We're not talking about a difference of 20%, 2x, or even 20x here -- we're talking about a difference of **1200x**.
+
+Even if you think that Oracle's providing some kind of rich feature set that Postgres isn't, or is tested more robustly, that can't come even close to explaining that sort of vast differential. Undoubtedly, there are many intertwined factors that led to the two very different outcomes, but methodology, taste, and attention to detail are absolutely amongst them.
 
 ### Getting testing right (#testing-right)
 
@@ -258,7 +264,7 @@ What sets WoT apart from its sibling epics is the sheer depth of _everything_. E
 
 Capturing this beast in a TV series is a nigh impossible task. So far though (after the initial three-episode drop) ... I'm cautiously optimistic. They _nailed_ the casting for Lan and Moraine, and Rand, Mat, and Perrin all look promising too. It's still too early to call, but certainly going better than [_Cowboy Bebop_](/fragments/netflix-cowboy-bebop).
 
-Something I found incredible is that Brandon Sanderson, the author who finished the series, is regularly active in the Wot subreddit, going as far as to create [fan posts deconstructing  each episode](https://www.reddit.com/r/WoT/comments/qy2r52/some_thoughts_from_brandon_episode_two/), and being refreshingly [candid about his opinion](https://www.reddit.com/r/Fantasy/comments/qwy6xu/wheel_of_time_megathread_episodes_1_3_discussion/hlhp4ea/?context=3) on some of the show's creative changes.
+Something I found incredible is that Brandon Sanderson, the author who finished the series, is regularly active in the WoT subreddit, going as far as to create [fan posts deconstructing  each episode](https://www.reddit.com/r/WoT/comments/qy2r52/some_thoughts_from_brandon_episode_two/), and being refreshingly [candid about his opinion](https://www.reddit.com/r/Fantasy/comments/qwy6xu/wheel_of_time_megathread_episodes_1_3_discussion/hlhp4ea/?context=3) on some of the show's creative liberties.
 
 Until next week.
 
