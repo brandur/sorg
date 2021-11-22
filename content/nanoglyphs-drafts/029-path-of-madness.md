@@ -8,7 +8,7 @@ title = "The Path of Madness"
 
 Hacker News is the Twitter tech elite's favorite outfit to hate, taking scorching criticism as the "orange website", and perceived to be full of nothing better than a hypercritical mob informally operating as the world's most cynical peanut gallery, which is at least partly true.
 
-But even its most vocal critics can't seem to help themselves -- despite the frequent condemnation they lob its way, someway, somehow, they keep finding themselves back. And there's a reason for that -- it's not all bad, and actually, most of it is even pretty good. Not only that, but once in a while you strike internet gold and come across information that you could never have found anywhere else, reminding you that this elaborate series of tubes has a few good things going for it after all.
+But even its most vocal critics can't seem to help themselves -- despite the frequent condemnation they lob its way, someway, somehow, they keep finding themselves back. And there's a reason for that -- it's not all bad, and actually, most of it is even pretty good. Not only that, but once in a while you strike internet gold and come across rare information that you could never have found anywhere else, reminding you that this elaborate series of tubes that we're all addicted to has a few good things going for it after all.
 
 One of my [favorite comments of all time](https://news.ycombinator.com/item?id=18442941) is from an ex-Oracle engineer who describes what development there is like. Not just _at_ Oracle the company, but on the core Oracle database product itself (to be read in the tone of a Lovecraft short story):
 
@@ -47,7 +47,7 @@ A miracle indeed.
 
 ## Edit-compile-run (#edit-compile-run)
 
-Engineers who've spent their careers at smaller companies may not fully appreciate a situation like this. Although Oracle may be a particular egregious example, it's a disturbingly common scenario at larger shops where head count's been scaled up. They sink slowly into the quagmire, and once in, find it impossible to get themselves back out.
+Engineers who've spent their careers at smaller companies may not fully appreciate a situation like this. Although Oracle may be a particular egregious example, it's a disturbingly common scenario at larger shops where head count's been scaled up. Over the years they sink slowly into quagmire, and once in, find it impossible to get themselves back out.
 
 **Edit-compile-run** is a software engineer's work loop in which they (1) edit code, (2) compile the code (or start the interpreter), and (3) run the program or test suite. It's the all-important standard workflow an engineer will run hundreds of times a day, and the speed at which it's possible is one of the single most important factors for productivity in a codebase. Whether new code is being written or existing code modified, being able to run it and get feedback quickly is of paramount importance.
 
