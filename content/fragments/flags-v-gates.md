@@ -34,7 +34,7 @@ Obviously quite useful, but a conceptual problem we eventually had is that featu
 
 But it was a tall order to ever bring them back together -- and not for a conceptual reason, but for a technical one. In the implementation, each feature flag was stored as a single Mongo record that contained its metadata along with current state. If the flag contained a list of IDs, those were colocated right inside the record. Each API process loaded all flags in at startup (including all IDs), and periodically synced state from the DB. This made checking a flag very fast, at the cost of more memory overhead.
 
-This was generally fine for feature rollouts where ID sets were small-ish, but wasn't workable when a flag needed to be activated for tens of thousands of users or more -- all of those would exist as a single giant array within one row, and a giant set in every running API process. Gates conversely were stored on an account, and therefore distributed amongst the tens of thousands of records on which they were activate.
+This was generally fine for feature rollouts where ID sets were small-ish, but wasn't workable when a flag needed to be activated for tens of thousands of users or more -- all of those would exist as a single giant array within one row, and a giant set in every running API process. Gates conversely were stored on an account, and therefore distributed amongst the tens of thousands of records on which they were activated.
 
 All to say that the distinction between a flag and a gate was confusing and we all wished that we could make them a single unified concept, but for technical (and planning ranking) reasons, it's not likely to happen.
 
