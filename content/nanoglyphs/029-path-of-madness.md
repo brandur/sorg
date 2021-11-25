@@ -266,7 +266,7 @@ Capturing this beast in a TV series is a nigh impossible task. So far though (af
 
 Something I found incredible is that Brandon Sanderson, the author who finished the series, is regularly active in the WoT subreddit, going as far as to create [fan posts deconstructing  each episode](https://www.reddit.com/r/WoT/comments/qy2r52/some_thoughts_from_brandon_episode_two/), and being refreshingly [candid about his opinion](https://www.reddit.com/r/Fantasy/comments/qwy6xu/wheel_of_time_megathread_episodes_1_3_discussion/hlhp4ea/?context=3) on some of the show's creative liberties.
 
-Until next week.
+Happy Thanksgiving! Until next week.
 
 <img src="/photographs/nanoglyphs/029-path-of-madness/whitecloak@2x.jpg" alt="Wheel of Time: Whitecloak" class="wide" loading="lazy">
 
