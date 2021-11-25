@@ -22,7 +22,7 @@ The Netflix version by way of comparison got the sci-fi part, some of the comedy
 
 The dynamic between Spike and Jet becomes that of a squabbling married couple instead of Jet's normal occasionally-frustrated-but-tolerant treatment of Spike. With the exception of Ein, Faye had the best interpretation (~all the jokes that landed were from her), but they missed a full half of her personality -- along with being a rogue and a bit of a clown, she also has a nihilistic streak that's been removed with surgical care for the western crowd.
 
-Some direction decisions are just beyond me. Vicious' character got the most brutal (vicious?) treatment -- going from a cold, ruthless, deeply competently assassin, to a bumbling idiot who relies heavily on Julia (??) for any of the rare, good decisions that he ever makes. Very 2021.
+Some direction decisions are just beyond me. Vicious' character got the most brutal (vicious?) treatment -- going from a cold, ruthless, deeply competent assassin, to a bumbling idiot who relies heavily on Julia (??) for any of the rare, good decisions that he ever makes. Very 2021.
 
 Spike's reimagined name from his syndicate days? "Fearless." That one probably should have stayed where it belonged back in draft no. 1.
 
