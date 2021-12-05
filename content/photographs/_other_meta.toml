@@ -197,6 +197,16 @@ slug = "fragments/safety-razors/razor"
 title = "A safety razor"
 
 #
+# /fragments/streak-tracking
+#
+
+[[photographs]]
+crop_width = 550
+original_image_url = "https://www.dropbox.com/s/1y9gg1w2f8tm4nc/streaks.png?dl=1"
+slug = "fragments/streak-tracking/streaks"
+title = "Streaks screenshot"
+
+#
 # /fragments/wgt-2015-brain-dump
 #
 
