@@ -207,6 +207,16 @@ slug = "fragments/streak-tracking/streaks"
 title = "Streaks screenshot"
 
 #
+# /fragments/wanikani-midway
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/8m75ao1lh1txqij/wind-up-bird.JPG?dl=1"
+slug = "fragments/wanikani-midway/wind-up-bird"
+title = "Wind-up Bird Chronicles in bunkobon and western formats."
+
+#
 # /fragments/wgt-2015-brain-dump
 #
 
