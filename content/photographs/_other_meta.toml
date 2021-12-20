@@ -197,6 +197,16 @@ slug = "fragments/safety-razors/razor"
 title = "A safety razor"
 
 #
+# /fragments/slack-mania
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/z5j9wp3gnztcuvr/slack-threads.png?dl=1"
+slug = "fragments/slack-mania/slack-threads"
+title = "All conversations in Slack threads."
+
+#
 # /fragments/streak-tracking
 #
 
