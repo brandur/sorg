@@ -10,7 +10,7 @@ Episode eight aired yesterday, ending the first season. It could've been worse, 
 
 A few scattered thoughts:
 
-* The Moraine/Siuan scene really lost me. Some Redditors argue that there's evidence [of that relationship](https://wot.fandom.com/wiki/Pillow_friends) in _New Spring_, but it's an empty rationalization. RJ purposely left it ambiguous, and it was long since over by the time they were full Aes Sedai. In the book, Moraine's brutally chastised publicly by Siuan, and you're shocked to later find out they're actually friends and conspirators behind the scenes. This reveal is already _good enough_ -- there was no need for it to be inflated to a sexual relationship. It was gratuitous, and cheapens the canonical relationships that both characters are supposed to have later in the series.
+* The Moraine/Siuan scene really lost me. Some Redditors argue that there's evidence [of that relationship](https://wot.fandom.com/wiki/Pillow_friends) in _New Spring_, but it's an empty rationalization. RJ purposely left it ambiguous, and it was long since over by the time they were full Aes Sedai. In the book, Moraine's brutally chastised publicly by Siuan, and you're shocked to later find out they're actually friends and conspirators behind the scenes. This reveal is already _good enough_ -- there was no need for it to be inflated to a sexual relationship. It's gratuitous, and cheapens the canonical relationships that both characters are supposed to have later in the series.
 
 * Loial -- what in the name of all that is holy. Haven't seen non-ironic character design this bad since low-budget sci-fi in the 80s. With any luck he'll make a guest appearance in the next season of _Rick & Morty_, where he'll be a much better fit.
 
