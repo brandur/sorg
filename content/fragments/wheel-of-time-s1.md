@@ -18,7 +18,7 @@ A few scattered thoughts:
 
 * Speaking of, nuance is lacking in general. Characters are either in bucket "good" or bucket "bad" (or bucket "smart" / "dumb", "virtuous" / "not virtuous", etc.), and everyone's a single dimensional version of themselves. WoT (the books) revolves around detail, but there's little of that to be found here.
 
-* The One Power of the TV version is slow and noisy, with many tai chi moves involved. WoT isn't meant to be Dungeons & Dragons with long-bearded wizards reading magical incantations off of scrolls and brandishing bat guano as a spell reagant. The One Power of the books is fast, powerful, and decisive.
+* The One Power of the books is fast, powerful, and decisive. The One Power of the TV version is slow and noisy, with many tai chi moves involved. WoT isn't meant to be Dungeons & Dragons with long-bearded wizards reading magical incantations off of scrolls and brandishing bat guano as a spell reagant.
 
 * Special effects are going to be a tall order based on what we've seen so far. They generally didn't look good in this season, and from here the battles, backdrops, and world-shattering powers are supposed to just get bigger and bigger. By the end of the series characters are wielding powers of gods.
 
