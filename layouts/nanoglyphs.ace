@@ -76,7 +76,7 @@ html lang="en"
         */
         font-family: Helvetica, sans-serif;
         font-size: 15px;
-        font-weight: 300;
+        font-weight: 500;
         line-height: 1.55;
         margin: 0;
 
