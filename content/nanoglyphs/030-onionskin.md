@@ -103,7 +103,7 @@ A key element in making sure this works is keeping our stacks _aggressively_ thi
 
 None of this means that we're excluding the possibility of using containers either. For now we still deploy on Heroku via `git push` (maybe our second most controversial tech decision), but if we migrated somewhere else, it's likely we'd write some thin `Dockerfile` shims because as stated above, OCI is more or less the de facto standard of cloud deployment, and isn't going anywhere.
 
-So there you have it. These days, every engineer and their dog will preach the virtues of minimizing dependencies and keeping things simple, but few actually do it. Maybe we don't either, but we're giving it our best shot.
+So there you have it. These days, every engineer and their dog/cat/cockatiel will preach the virtues of minimizing dependencies and keeping things simple, but few actually do it. Maybe we don't either, but we're giving it our best shot.
 
 ---
 
