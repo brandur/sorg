@@ -275,6 +275,16 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/030-onionskin
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/lwq4mpb9fuplu4n/DSC_4420.JPG?dl=1"
+slug = "nanoglyphs/030-onionskin/union-square-rain"
+title = "Union Square in the rain"
+
+#
 # /nanoglyphs/029-path-of-madness
 #
 
