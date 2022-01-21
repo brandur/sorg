@@ -24,6 +24,12 @@ func TestDowncase(t *testing.T) {
 	assert.Equal(t, "hello", downcase("HeLlO"))
 }
 
+func TestFavicon(t *testing.T) {
+	s := favicon("custom", "png")
+	assert.Contains(t, s,
+		`<link rel="shortcut icon" type="image/png" sizes="192x192" href="/assets/images/favicon/custom-192.png">`)
+}
+
 func TestFormatTimeWithMinute(t *testing.T) {
 	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
 }

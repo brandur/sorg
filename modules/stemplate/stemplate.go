@@ -20,6 +20,7 @@ import (
 // project.
 var FuncMap = template.FuncMap{
 	"Downcase":                downcase,
+	"Favicon":                 favicon,
 	"FormatTimeLocal":         formatTimeLocal,
 	"FormatTimeWithMinute":    formatTimeWithMinute,
 	"FormatTimeYearMonth":     formatTimeYearMonth,
@@ -41,6 +42,23 @@ var LocalLocation *time.Location
 
 func downcase(s string) string {
 	return strings.ToLower(s)
+}
+
+func favicon(name, ext string) template.HTML {
+	var b strings.Builder
+
+	for _, size := range []int{32, 128, 152, 167, 180, 192, 256} {
+		fmt.Fprintf(
+			&b,
+			`<link rel="shortcut icon" type="image/%s" sizes="%dx%d" href="/assets/images/favicon/%s-%d.%s">`,
+			ext, size, size, name, size, ext,
+		)
+		fmt.Fprint(&b, "\n")
+	}
+
+	fmt.Fprint(&b, "\n")
+
+	return template.HTML(b.String())
 }
 
 func formatTimeLocal(t *time.Time) string {
