@@ -12,11 +12,6 @@ html lang="en"
 
     meta name="viewport" content="width={{.ViewportWidth}}"
 
-    / You can specify a whole series of sizes for these, but Apple is fine with
-    / just using a version at a higher end of the resolution spectrum
-    / (currently, 180).
-    link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/favicon-180.jpg"
-
     {{Favicon "favicon" "jpg"}}
 
     link href="/articles.atom" rel="alternate" title="Articles{{.TitleSuffix}}" type="application/atom+xml"
