@@ -120,6 +120,7 @@ func init() {
 //
 //////////////////////////////////////////////////////////////////////////////
 
+// nolint:maintidx
 func build(c *modulir.Context) []error {
 	//
 	// PHASE 0: Setup
@@ -517,8 +518,7 @@ func build(c *modulir.Context) []error {
 				// Do a little post-processing on all the entries found in the
 				// sequence.
 				for _, entry := range sequence.Entries {
-					entry.DescriptionHTML =
-						string(mmarkdown.Render(c, []byte(entry.Description)))
+					entry.DescriptionHTML = string(mmarkdown.Render(c, []byte(entry.Description)))
 					entry.Sequence = &sequence
 				}
 
