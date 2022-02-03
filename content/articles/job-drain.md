@@ -180,6 +180,14 @@ selecting primed jobs in bulk and feeding them into another
 store like Redis that's better-suited for distributing jobs
 to competing workers.
 
+## Staged job drains in action (#in-action)
+
+This article's picked up some traction since I originally wrote it, and some enterprising people have taken it upon themselves to produce transactionally-staged queues for various platforms. Here's a list of some that I've been told about [1]:
+
+* [`sidekiq-staged_push`](https://github.com/adamniedzielski/sidekiq-staged_push) -- For use with the popular Sidekiq background job system.
+
+[1] If you have a project that's widely applicable and you wanted it added to this list, let me know.
+
 [delayedjob]: https://github.com/collectiveidea/delayed_job
 [que]: https://github.com/chanks/que
 [queueclassic]: https://github.com/QueueClassic/queue_classic
