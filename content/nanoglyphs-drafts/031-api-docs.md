@@ -1,17 +1,17 @@
 +++
 image_alt = "Ocean Beach"
 image_url = "/photographs/nanoglyphs/031-api-docs/ocean-beach-cropped@2x.jpg"
-published_at = 2022-02-06T11:10:21Z
+published_at = 2022-02-07T16:51:53Z
 title = "Docs! Docs! Docs!"
 +++
 
 The past couple of weeks: _a lot_ of work building out and tightening up documentation, with special emphasis on API reference.
 
-We've had an API reference live for a while, but before now it'd always been maintained manually. The loop was: hopefully a product person would remember that a new API feature was shipping, and would poke a dev rel person to update the docs. The dev rel person would write some documentation about a feature they understood by way of two hops worth of telephone, hit some endpoints with cURL, and try to capture what came back as best as they could.
+We've had an API reference live for some time, but before now it was maintained manually. The loop was: hopefully a product person would remember that a new API feature was shipping, and would poke a dev rel person to update the docs. The dev rel person would write some documentation about a feature they understood by way of two hops worth of telephone, hit some endpoints with cURL, and try to capture what came back as best as they could.
 
-You may be able to imagine that the results were a little rough. Maybe half our total API endpoints were documented. Amongst those that were, fields were often missing or extraneous as the responses had changed since the docs were originally written. Some of it was just flat out wrong.
+The results were about what you'd expect. The docs were enough to get something working, but only about half our total API endpoints were documented. Amongst those that were, fields were often missing or extraneous as the responses had changed since the docs were originally written. Some of it was just flat out wrong.
 
-But although imperfect, in a major sense it did what it was supposed to: serving as a stopgap long enough to give us a chance to build something better. That took getting a few foundational blocks laid -- a process that took about six months all in -- but we got there.
+But although imperfect, in a major sense the handwritten docs did what they were supposed to: serving as a stopgap long enough to give us a chance to build something better. That took a bit of doing, involving dragging a few monolithic foundational blocks into place -- a process that took about six months all in -- but we finally got there, and launched [our generated API reference](https://docs.crunchybridge.com/api/cluster) last week.
 
 ---
 
@@ -31,9 +31,9 @@ Heroku's API reference is found [on Devcenter](https://devcenter.heroku.com/arti
     end
     ```
 
-* In a time where web APIs were still hot and there were many competing API specifications (remember RAML? Blueprint?), we chose to write [JSON hyper-schema](https://json-schema.org/draft/2019-09/json-schema-hypermedia.html) to describe each endpoint, and over a period of many months, finished a description for the entire API. Hyper-schema didn't turn out to be a big winner in the spec wars, but at the end of the day, it's not _that_ different from OpenAPI (the latter makes heavy use of JSON schema, just not JSON _hyper_-schema), and it did the job. Hyper-schemas were written and maintained by hand.
+* In a time where web APIs were still hot and there were many competing API specifications (remember RAML? Blueprint?), we chose to write [JSON hyper-schema](https://json-schema.org/draft/2019-09/json-schema-hypermedia.html) to describe each endpoint, and over a period of many months, finished a description for the entire API. Hyper-schema didn't turn out to be a big winner in the spec wars, but at the end of the day, it's not _that_ different from OpenAPI (the latter makes heavy use of JSON schema, just not JSON _hyper_-schema), and it did the job. Hyper-schemas for the Heroku API were written and maintained by hand.
 
-* Because the schemas lived out-of-band of the API implementation, we needed a way to show that they were right as the implementation potentially diverged. I wrote [Committee](https://github.com/interagent/committee), which exposes test helpers that check test responses against the expected schema and flag inconsistencies. Committee might be my most successful open-source project ever in the sense that although I am not a good maintainer, its maintenance was picked up by a Japanese team who _are_ good maintainers, and who've been keeping a close eye on it ever since.
+* Because the schemas lived out-of-band of the API implementation, we needed a way to show that they were right, and _continued to be right_ even as the implementation potentially diverged. I wrote [Committee](https://github.com/interagent/committee), which exposes test helpers that check test responses against the expected schema and flag inconsistencies. Committee might be my most successful open-source project ever in the sense that although I am not a good maintainer, its maintenance was picked up by a Japanese team who _are_ good maintainers, and who've been keeping a close eye on it ever since.
 
 * A tool called [Prmd](https://github.com/interagent/prmd) transformed JSON hyper-schema into Markdown/HTML. The rendered Markdown was transferred into Devcenter.
 
@@ -85,7 +85,7 @@ It wasn't bad, but the process was far from perfect:
 
 * CI would check to make sure you'd regenerated OpenAPI for API changes you'd made. CI was brutally slow (see [the Path of Madness](/nanoglyphs/029-path-of-madness)), and it was roughly the worst feeling ever to get build results back ten minutes later, only to find you'd forgotten to run one command.
 
-* It was a huge API using slow technology stacks. Generating OpenAPI and derivatives took somewhere in the neighborhood of ~30 seconds to run -- brutally slow for a development loop.
+* It was a huge API using slow technology stacks. Generating OpenAPI and derivatives took somewhere in the neighborhood of ~30 seconds to run -- awfully slow for a development loop.
 
 * We never quite got producing good API resource examples right. There was a generator that could produce a sample object for a given API resource, but it was a shambling monstrosity of spaghetti code and produced very low quality results. We wanted to write something better, but it was a colossal job by the time we thought about it as there were 100s of complex resources to handle.
 
@@ -93,11 +93,32 @@ It wasn't bad, but the process was far from perfect:
 
 ## Automating end-to-end (#end-to-end)
 
-So that brings us to my latest stack at Crunchy, where having learnt from old mistakes, I was determined to build something not only accurate, but also fast, fluid, and as automatic as it could be.
+So that brings us to the latest stack at Crunchy, where having learnt from more than a few old mistakes, I determined to build something not only accurate and useful, but also fast, fluid, and as automatic as it could be.
 
 Here's how it works:
 
 * Go's HTTP primitives are very low level, so we built a light framework on top of them that's capable of defining endpoints, and also knows what requests, responses, and status codes they're expected to return.
+
+    ``` go
+    type NetworkListEndpoint struct {
+        *apiendpoint.APIEndpoint
+    }
+
+    func (e *NetworkListEndpoint) Materialize() apiendpoint.APIEndpointer {
+        return &NetworkListEndpoint{
+            &apiendpoint.APIEndpoint{
+                Public:            true,
+                Method:            http.MethodGet,
+                Route:             "/networks",
+                Request:           &NetworkListRequest{},
+                Response:          &apiresource.NetworkList{},
+                ServiceHandler:    func(svc interface{}) interface{} { return svc.(NetworkService).List },
+                SuccessStatusCode: http.StatusOK,
+                Title:             "List networks",
+            },
+        }
+    }
+    ```
 
 * Along with a reflect package, Go's standard library ships with [one that can read docstring comments](https://pkg.go.dev/go/doc) on structs and fields, used to generate Godoc. We take advantage of it to have docstrings on structs for endpoints, requests, and responses act as canonical documentation for OpenAPI and doc.
 
@@ -149,13 +170,13 @@ Here's how it works:
     }
     ```
 
-* A program separate from the main API server initializes the full set of API endpoints, and iterates over them to produce OpenAPI. We have one spec for public endpoints, and a second including internal endpoints as well.
+* A program separate from the main API server initializes the full set of API endpoints, and iterates over them to produce OpenAPI. We have one spec for public endpoints, and a second including internal endpoints.
 
 * The OpenAPI generator runs in a GitHub Action that's part of CI, and on a successful `master` build, stores the result to a publicly-accessible location.
 
 * Another Go program in our docs repo ingests the OpenAPI spec and uses it to produce the API reference. It runs on a GitHub Action cron which will [autocommit any changes to the repo](/fragments/self-updating-github-readme).
 
-* Our docs are generated by [Hugo](https://gohugo.io) (a popular static site generator), and a Heroku deploy pipeline automatically pushes new changes live every time a CI build succeeds.
+* Our docs are generated by [Hugo](https://gohugo.io), and a Heroku deploy pipeline automatically pushes new changes live every time a CI build succeeds.
 
 * Back in API code, structs for API requests and responses implement a `SchemaExampler` interface with which they can generate a high quality sample for themselves. This is stored to OpenAPI's `example` field for their schemas, and pushed all the way through to docs. Importantly, these examples are stable, meaning that they're not changing around every time the spec is generated. So our GitHub Action job only commits new changes when there are actually API changes, not every time we build.
 
@@ -190,13 +211,15 @@ But while it's the best API reference pipeline I've been involved with yet, noth
 
 * When reading Go code, it's not necessarily obvious which doc strings will be emitted publicly and which ones won't. Once you understand the process it's pretty apparent (any docs on an endpoint, request, or response are going to OpenAPI), but it's hard for a new contributor to know this happening.
 
-* Go's lack of support for some higher-level language features make some things difficult. For example, Go has no concept of an enum, but we would like enums in our OpenAPI/docs. We're able to accomplish it through a complicated introspection process that involves looking for "enum-like" types, and that works pretty well, but writing it wasn't exactly easy.
+* Go's lack of support for some higher-level language features make some things difficult. For example, Go has no concept of an enum, but we would like enums in our OpenAPI/docs. We're able to accomplish it through a complicated introspection process that involves looking for "enum-like" types [1], and that works pretty well, but writing it wasn't exactly easy.
+
+---
 
 ## A dash of humanity (#humanity)
 
 So while generated docs are great from an effort standpoint, a hill I'm willing to die on is that even when generated, all docs should include a healthy dose of humanity. The computer handles iterating over endpoint/struct/field ad nauseum, but a human should augment what the machine would do to add as much background and context as possible.
 
-Here's an example of the worst kind of documentation, unfortunately all to common all over the computing world:
+Here's an example of the worst kind of documentation, unfortunately all to common everywhere in the computing world:
 
 ``` go
 // GenerateHTTPResponse generates an HTTP response.
@@ -207,12 +230,16 @@ func GenerateHTTPResponse([]byte, error) {
 
 Oh so _that's_ what `GenerateHTTPResponse` does. Hallelujah -- I was lost, but now I'm found. That documentation isn't just of no value, it's actually of negative value because someone might see there's documentation on a function and go there to read it, only to realize they've completely wasted their time.
 
-So where possible, I encourage my peers to write docstrings that aren't just useful to us, but have enough context that they'd be useful to external users as well.
+So where possible, I encourage an internal convention of writing docstrings that aren't just useful to us, but have enough context that they'd be useful to _anyone_.
 
-Check out the [Keycloak REST API](https://www.keycloak.org/docs-api/15.0/rest-api/index.html) for an example of what inhuman API documentation looks like -- exhaustive, but with zero context on what anything is or what it does. Frustratingly context-free in every possible way. I'm aiming very explicitly for our docs _not_ to look like that.
+Check out the [Keycloak REST API](https://www.keycloak.org/docs-api/15.0/rest-api/index.html) for an example of what inhuman API documentation looks like -- exhaustive, but frustratingly context-free in every possible way. I'm aiming very explicitly for our docs not to look like that.
+
+---
 
 ## Necromancers, by Scott Ridley (#necromancers)
 
 Like sci-fi, want a TV recommendation, and still trust me after my horrible over-optimistic _Wheel of Time_ review from a few months back? [_Raised by Wolves_](https://en.wikipedia.org/wiki/Raised_by_Wolves_(American_TV_series\)), which just started airing season two. Directed by Ridley Scott, this is the purest science fiction to make its way to a big budget production in years, and one of the precious few original ideas to be found in modern culture. It's seriously crazy -- flying snakes, acid oceans, androids performing ad-hoc facial reconstructive surgery, Travis Fimmel reprising his role as Ragnor Lothbrok -- nothing makes sense, yet there's just enough there to make me believe there's a method to the madness. I never have any idea what's going to happen next.
 
 Until next week.
+
+[1] We look for Go "pseudo-enums" using basically the same technique as the [exhaustive lint](https://github.com/nishanths/exhaustive), which is open source if you want to look at code.
