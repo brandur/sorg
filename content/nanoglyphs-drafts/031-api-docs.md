@@ -25,7 +25,7 @@ Heroku's API reference is found [on Devcenter](https://devcenter.heroku.com/arti
 
     ``` ruby
     post '/apps' do
-      req = parse_request
+      req = parse_request(request.body)
       app = create_app(req)
       respond generate_respnose(app)
     end
