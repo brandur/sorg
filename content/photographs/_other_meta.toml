@@ -275,6 +275,46 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/031-api-docs
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/b0wd00jovo1l09a/bridge-api-reference.png?dl=1"
+slug = "nanoglyphs/031-api-docs/bridge-api-reference"
+title = "Screenshot of the Crunchy Bridge API reference"
+
+# [[photographs]]
+# crop_width = 1200
+# original_image_url = "https://www.dropbox.com/s/r33un6nozgnhb09/2W4A0566-tree-cropped.jpg?dl=1"
+# slug = "nanoglyphs/031-api-docs/hellman-hollow"
+# title = "Hellman Hollow"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/mfxevj4na7u0nbq/heroku-api-reference.png?dl=1"
+slug = "nanoglyphs/031-api-docs/heroku-api-reference"
+title = "Screenshot of Heroku's API reference"
+
+# [[photographs]]
+# crop_width = 1200
+# original_image_url = "https://www.dropbox.com/s/u6fvp55uafiumb9/2W4A0571-beach.JPG?dl=1"
+# slug = "nanoglyphs/031-api-docs/ocean-beach"
+# title = "Ocean Beach"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/jnq669hiwqxde7u/2W4A0571-beach-cropped.jpg?dl=1"
+slug = "nanoglyphs/031-api-docs/ocean-beach-cropped"
+title = "Ocean Beach"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/1xkwpk0mepv213c/stripe-api-reference.png?dl=1"
+slug = "nanoglyphs/031-api-docs/stripe-api-reference"
+title = "Screenshot of Stripe's API reference"
+
+#
 # /nanoglyphs/030-onionskin
 #
 
