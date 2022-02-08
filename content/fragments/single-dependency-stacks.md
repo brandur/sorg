@@ -16,6 +16,6 @@ It wasn't a stated objectively, but we decided to see how long we could make it 
 
 It does require us to do a few things in a more unusual way. For example, normally I'd push all rate limiting to Redis. Here, we rate limit in memory and assume roughly uniform distribution between server nodes. If we were to need search, we'd use [Postgres' full text search](https://www.postgresql.org/docs/current/textsearch.html) instead of ElasticSearch.
 
-It hasn't required any major abuse in trying to fit square pegs into round holes. If it did, we'd likely drop the single dependency principle -- we knew that it was only going to take us so far anyway.
+It hasn't required any major abuse in trying to fit square pegs into round holes. If it did, we'd likely drop the single dependency principle -- we knew that it was only going to take us so far. We'll see how far that is.
 
 [1]  Okay fine, S3 too, but that's a different animal.
