@@ -4,7 +4,7 @@ published_at = 2022-02-08T18:23:50Z
 title = "Single dependency stacks"
 +++
 
-As I wrote about in [Nanoglyph 030](/nanoglyphs/030-onionskin), both our major services at Crunchy have only one stateful dependency -- Postgres. No Mongo, Redis, ElasticSearch, or anything else [1].
+As I wrote about in [_Nanoglyph_ 030](/nanoglyphs/030-onionskin), both our major services at Crunchy have only one stateful dependency -- Postgres. No Mongo, Redis, ElasticSearch, or anything else [1].
 
 It wasn't a stated objectively, but we decided to see how long we could make it work. Having fewer dependencies has some major benefits:
 
