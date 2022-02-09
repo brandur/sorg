@@ -6,7 +6,7 @@ title = "Single dependency stacks"
 
 As I wrote about in [_Nanoglyph_ 030](/nanoglyphs/030-onionskin), both our major services at Crunchy have only one stateful dependency -- Postgres. No Mongo, Redis, ElasticSearch, or anything else [1].
 
-It wasn't a stated objectively, but we decided to see how long we could make it work. Having fewer dependencies has some major benefits:
+It wasn't a stated objective, but we decided to see how long we could make it work. Having fewer dependencies has some major benefits:
 
 * Fewer dependencies to fail and take down the service.
 * Fewer systems to get proficient in operationally. (A common pitfall is to introduce something like ElasticSearch, only to realize a few months later that no one knows how to run it.)
