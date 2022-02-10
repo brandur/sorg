@@ -39,7 +39,7 @@ Heroku's API reference is found [on Devcenter](https://devcenter.heroku.com/arti
 
 <img src="/photographs/nanoglyphs/031-api-docs/heroku-api-reference@2x.png" alt="Screenshot of Heroku's API reference" class="wide" loading="lazy">
 
-All in all, it wasn't a bad process, and especially given the state of the art at the time (this was ~2013), it wasn't half bad -- I would've pitted what we had against any other Silicon Valley companies with public APIs at the time.
+All in all, it worked pretty well, and especially given the state of the art at the time (this was ~2013), it wasn't half bad -- I would've pitted what we had against any other Silicon Valley companies with public APIs at the time.
 
 But there were obvious downsides. A few that come to mind:
 
@@ -47,7 +47,7 @@ But there were obvious downsides. A few that come to mind:
 
 	  We'd also decided to be purists about the whole thing, and the JSON hyper-schema was _really written in JSON_, as opposed to a more human-friendly format like YAML or TOML. Put a brace in the wrong place? Forget a comma? Extra comma? Gods have mercy on your soul, friend.
 
-* Furthermore, the whole process was just pretty manual overall. Even once the schema was written, it had to be maintained in step with API changes, with changes manually pushed to Prmd and then published through Devcenter.
+* Furthermore, the whole process was just pretty manual overall. Even once the schema was written, it had to be maintained in step with API development, with changes manually pushed to Prmd and then published through Devcenter.
 
 ---
 
