@@ -209,9 +209,9 @@ But while it's the best API reference pipeline I've been involved with yet, noth
 
 * We use Go docstrings for documentation. Go doc convention dictates that the name of the struct/field start a docstring like `// SchemaExample produces a schema example`. That sucks, so we don't do it, which means that our docstrings that go to API don't follow convention. Not a huge problem, but worth pointing out.
 
-* When reading Go code, it's not necessarily obvious which doc strings will be emitted publicly and which ones won't. Once you understand the process it's pretty apparent (any docs on an endpoint, request, or response are going to OpenAPI), but it's hard for a new contributor to know this happening.
+* When reading Go code, it's not necessarily obvious which doc strings will be emitted publicly and which ones won't. Once you understand the process it's pretty apparent (any docs on an endpoint, request, or response are going to OpenAPI), but it's hard for a new contributor to know this is happening.
 
-* Go's lack of support for some higher-level language features make some things difficult. For example, Go has no concept of an enum, but we would like enums in our OpenAPI/docs. We're able to accomplish it through a complicated introspection process that involves looking for "enum-like" types [1], and that works pretty well, but writing it wasn't exactly easy.
+* Go's lack of support for some higher-level language features make some things difficult. For example, Go has no concept of an enum, but we would like enums in our OpenAPI/docs. We're able to accomplish it through an introspection process that involves looking for "enum-like" types [1], and that works pretty well, but writing it wasn't exactly easy, and it's more complex than we'd like.
 
 ---
 
