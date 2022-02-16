@@ -6,7 +6,7 @@ title = "Idempotency keys @ Crunchy"
 
 A few months ago I wrote about [the IETF draft for the `Idempotency-Key` header](/fragments/idempotency-key-draft), a way for an API to provide idempotent operation on non-idempotent verbs like `POST` and `PATCH`.
 
-I'd been intending to an `Idempotency-Key` implementation in at work, and finally [got around to it](https://docs.crunchybridge.com/api/idempotency/).
+I'd been intending to an `Idempotency-Key` implementation in at work, and finally [got around to it](https://docs.crunchybridge.com/api-concepts/idempotency/).
 `
 The implementation largely follows what's it in the IETF draft, which itself is largely based off Stripe's original conventions. Similarly to Stripe:
 
