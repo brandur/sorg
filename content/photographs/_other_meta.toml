@@ -69,6 +69,16 @@ title = "uBlock Origin blocking analytics sites."
 #
 
 #
+# /fragments/filtering-sentry-spans
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/jf1qa6l6yc5htcz/span-visualization.png?dl=1"
+slug = "fragments/filtering-sentry-spans/span-visualization"
+title = "Visualization of a Sentry span"
+
+#
 # /fragments/engelmann-spruce-plaque-sulfur-mountain
 #
 
