@@ -10,7 +10,7 @@ Sentry has a built-in sampling concept, with the idea is that when you're using 
 
 {{FigureSingleWithClass "Visualization of a Sentry" "/photographs/fragments/filtering-sentry-spans/span-visualization.png" "overflowing"}}
 
-The downside is that as our API traffic's increased over the last few months, we've had to bump our limits with Sentry to prevent it from discarding requests. A few extra bugs their way isn't a big deal, but we find that request tracing to be a technology that's really useful once in a while, with no one looking at it 99% of the time. Logs are used overwhelmingly more commonly used for observing production.
+The downside is that as our API traffic's increased over the last few months, we've had to bump our limits with Sentry to prevent it from discarding requests. A few extra bucks their way isn't a big deal, but we find that request tracing to be a technology that's really useful once in a while, with no one looking at it 99% of the time. Logs are used overwhelmingly more commonly used for observing production.
 
 In addition to a sampling rate, Sentry's SDKs also provide a sampling _function_ to specify custom sampling logic. I made the minor logical step that most of our API traffic is bot-related stuff that no one is _ever_ going to look at. In particular for us, we have a lot of traffic going to our health endpoint as an uptime service monitors us.
 
