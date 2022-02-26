@@ -285,6 +285,40 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/032-hook-toil
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/cz2ls57jhwk0zd5/2W4A0829.JPG?dl=1"
+slug = "nanoglyphs/032-hook-toil/balconies-cave"
+title = "Balconies cave at Pinnacles National Park"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/o55huvbztmueddt/2W4A0787-condor.JPG?dl=1"
+slug = "nanoglyphs/032-hook-toil/california-condor"
+title = "California condor in flight"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/dpy7pl6butr3j78/2W4A0756.JPG?dl=1"
+slug = "nanoglyphs/032-hook-toil/pinnacles-park-1"
+title = "Pinnacles National Park"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/0in0j1nxsfhc125/2W4A0769-diagonal.JPG?dl=1"
+slug = "nanoglyphs/032-hook-toil/pinnacles-park-2"
+title = "Pinnacles National Park"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/tg9h25z350ylnz6/2W4A0814-face.JPG?dl=1"
+slug = "nanoglyphs/032-hook-toil/pinnacles-park-3"
+title = "Pinnacles National Park"
+
+#
 # /nanoglyphs/031-api-docs
 #
 
