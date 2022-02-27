@@ -85,5 +85,7 @@ Until next week.
 
 <img src="/photographs/nanoglyphs/032-hook-toil/pinnacles-park-3@2x.jpg" alt="Pinnacles National Park" class="wide" loading="lazy">
 
+<img src="/photographs/nanoglyphs/032-hook-toil/pinnacles-park-4@2x.jpg" alt="Pinnacles National Park" class="wide" loading="lazy">
+
 <img src="/photographs/nanoglyphs/032-hook-toil/balconies-cave@2x.jpg" alt="Balconies Cave at Pinnacles National Park" class="wide" loading="lazy">
 

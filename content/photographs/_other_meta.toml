@@ -318,6 +318,12 @@ original_image_url = "https://www.dropbox.com/s/tg9h25z350ylnz6/2W4A0814-face.JP
 slug = "nanoglyphs/032-hook-toil/pinnacles-park-3"
 title = "Pinnacles National Park"
 
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/vgf6m8p6kqcwg6l/2W4A0741.JPG?dl=1"
+slug = "nanoglyphs/032-hook-toil/pinnacles-park-4"
+title = "Pinnacles National Park"
+
 #
 # /nanoglyphs/031-api-docs
 #
