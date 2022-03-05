@@ -7,9 +7,11 @@ title = "Hook Toil"
 
 A brief reminiscence on webhooks.
 
-An old idea from Heroku: do everything over HTTP -- everything in the modern age (programming languages, packages, tools) speaks a little HTTP, and it's a powerful platform to build off of -- cut with the grain instead of trying to build on SOAP, RPC, or your own protocol. This is an idea that was more contentious back in 2011 when it was devised -- these days, HTTP has "won" and the majority of what people are doing online happens over it.
+An old idea from Heroku: do everything over HTTP -- everything in the modern age (programming languages, packages, tools) speaks a little HTTP, and it's a powerful platform to build off of -- cut with the grain instead of trying to build on SOAP, RPC, or your own protocol. HTTP is simple. HTTP is elegant. HTTP is everywhere.
 
-Webhooks are the a simple idea that dovetails nicely with that. Rest APIs have mostly taken over the web where it comes to inter-service interoperability, but they don't offer any inherent capability for a "push" mechanism where the server sends something back to the user instead of vice versa. As [originally described all the way back in 2007](https://progrium.github.io/blog/2007/05/03/web-hooks-to-revolutionize-the-web/), webhooks fill this gap -- a user defines an endpoint, and an API provider makes HTTP requests to it, pushing any information it'd like.
+(This is an idea that was more contentious back in 2011 when it was devised -- these days, HTTP has "won" and the majority of what people are doing online happens over it. With the advent of HTTP/2 and HTTP/3, it's also no longer quite as simple as it once was, but with complete low-level libraries to build on, it's still great as a modern interchange protocol.)
+
+Webhooks are an idea that dovetails nicely with HTTP-everywhere. Rest APIs have mostly taken over the web where it comes to inter-service interoperability, but they don't offer any inherent capability for a "push" mechanism where the server sends something back to the user instead of vice versa. As [originally described all the way back in 2007](https://progrium.github.io/blog/2007/05/03/web-hooks-to-revolutionize-the-web/), webhooks fill this gap -- a user defines an endpoint, and an API provider makes HTTP requests to it, pushing any information it'd like.
 
 Webhooks are a pretty good system, but they're one that seems simpler than it actually is, and most developers implement them too quickly and too enthusiastically. In a perfect world, webhooks work perfectly, but in an imperfect one, there are many degenerate conditions:
 
@@ -41,9 +43,9 @@ Webhooks at Stripe were easily one of the most operationally fraught systems in 
 
 This is at least partly a historical anomaly. The webhook senders were written in Ruby and only single threaded. That combined with the fact that each Ruby process was around 1 GB of memory (see [Stripe-flavored Ruby in 027](/nanoglyphs/027-15-minutes#stripe-ruby) for more info) meant that the webhook sending fleet had a very fixed sending capacity, and was vastly overprovisioned at great expense so that it had the capacity to deal with spikes in demand. Even Ruby's pseudo-threads would've helped the situation because the senders were spending almost all their time I/O-bound, but there was always enough fear in the air around the safety of using threads in a mature Ruby stack that had spent so many years without them, that we never turned them on. It was a product of its time, and if it'd been written even five years later, it's reasonably likely that a lot of these mistakes would've been avoided -- less memory overhead, and with a better parallel story.
 
-More than a few times, a single large customer would have an endpoint go down, having the effect of a huge number of messages getting queued for retry, and with each attempt taking 30 seconds before finally timing out. The end effect is that not only were messages to that single user disrupted, but to all users as the shared webhook infrastructure suddenly had much more work to do.
+More than a few times, a single large customer would have an endpoint go down, having the effect of a huge number of messages getting queued for retry, and with each attempt taking 30 seconds before finally timing out. With a big enough user, not only were messages to that single user disrupted, but for all users as the shared webhook infrastructure suddenly had much more work to do.
 
-Over the years this was shored up in various ways -- the error-prone home-grown queueing infrastructure was replaced with Kafka, a sharding system was introduced so that not everyone was affected by a single shard in bad shape, the retry schedule was revamped for better economy, and dead endpoints were identified more quickly. But over the intervening years, a lot of blood and tears was lost to the name of webhooks. Changing anything in the original system was harder than it sounds -- Stripe is so serious about backwards compatibility that even reducing the timeout from 30 seconds to something more reasonable was consider a breaking change and had to be eased out.
+Over the years this was shored up in various ways -- the error-prone home-grown queueing infrastructure was replaced with Kafka (with a slightly-less error-prone home-grown abstraction on top), a sharding system was introduced so that not everyone was affected by a single shard in bad shape, the retry schedule was revamped for better economy, and dead endpoints were identified more quickly. But over the intervening years, a lot of blood and tears was lost to the name of webhooks. Changing anything in the original system was harder than it sounds -- Stripe is so serious about backwards compatibility that even reducing the timeout from 30 seconds to something more reasonable was considered a breaking change and had to be eased out.
 
 ---
 
@@ -65,7 +67,9 @@ So say you are going to build a webhooks system. Here's some things you'll event
 
 ## Join the resistance (#resistance)
 
-All that said, I'm going to do my best to never develop another webhooks system. All in all, they're hugely wasteful, their DX isn't good, and I've seen them cause way too many problems. I'm not sure what we'll do instead, but I think it'll look more like SSE or WebSockets that stream events back to an active listener. A receiver still has a constant connection open, but only one of them over which thousands of events can stream. More on this as we go.
+Or, you could not do any of that.
+
+I'm going to do my best to never develop another webhooks platform. All in all, they're hugely wasteful, their DX isn't good, and I've seen them cause way too many problems. I'm not sure what we'll do instead, but I think it'll look more like SSE or WebSockets that stream events back to an active listener. A receiver still has a constant connection open, but only one of them over which thousands of events can stream. More on this as we go.
 
 ---
 
@@ -73,7 +77,7 @@ All that said, I'm going to do my best to never develop another webhooks system.
 
 ## Condors and peaks (#condors)
 
-Yesterday, I had the chance to visit [Pinnacles National Park](https://en.wikipedia.org/wiki/Pinnacles_National_Park), quite notable for being one of the few places where it's possible to see [California condors](https://en.wikipedia.org/wiki/California_condor), one of the rarest birds in the world.
+Last week, I had the chance to visit [Pinnacles National Park](https://en.wikipedia.org/wiki/Pinnacles_National_Park), quite notable for being one of the few places where it's possible to see [California condors](https://en.wikipedia.org/wiki/California_condor), one of the rarest birds in the world.
 
 The story of this species is amazing, tragic, and more recently, worthy of some optimism. Very long-lived (60 years), with a late age of sexual maturity (6), laying very few young (one egg every other year), and vulnerable to a host of human-created threats, condors were particularly susceptible to extinction in the modern age. At one point they were down to only 27 birds left on the planet. Every one of them was captured, and a comprehensive breeding program was started with the hopes of repopulating the species. After many years of work it had some success, and condors were reintroduced in California, Arizona, and Mexico. Their number's now up to 504, every one of them carefully tagged and tracked.
 
