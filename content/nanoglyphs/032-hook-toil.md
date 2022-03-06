@@ -81,7 +81,7 @@ Last week, I had the chance to visit [Pinnacles National Park](https://en.wikipe
 
 The story of this species is amazing, tragic, and more recently, worthy of some optimism. Very long-lived (60 years), with a late age of sexual maturity (6), laying very few young (one egg every other year), and vulnerable to a host of human-created threats, condors were particularly susceptible to extinction in the modern age. At one point they were down to only 27 birds left on the planet. Every one of them was captured, and a comprehensive breeding program was started with the hopes of repopulating the species. After many years of work it had some success, and condors were reintroduced in California, Arizona, and Mexico. Their number's now up to 504, every one of them carefully tagged and tracked.
 
-Unlike a lot of critically endangered species, it's not that hard to see them -- head down to Pinnacles, up through the High Peaks trail, and there's a reasonable chance of seeing a number of them flying overhead. And it's an impressive sight -- their full-grown wingspan of nine and a half feet is wider than any other North American bird. Just don't expect too many Instagram opportunities -- the photo below is shot with a 500 mm zoom lens and there's still not much to see.
+Unlike a lot of critically endangered species, it's not that hard to see them -- head down to Pinnacles, up through the High Peaks trail, and there's a reasonable chance of seeing a number of them flying overhead. And it's an impressive sight -- their full-grown wingspan of nine and a half feet is wider than any other North American bird. Just don't expect too many Instagram opportunities -- the photo below is shot with a 500mm zoom lens and there's still not much to see.
 
 Until next week.
 
