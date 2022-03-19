@@ -1,5 +1,5 @@
 +++
-hook = "Looking at my laptop weights over the years, and also Apple, please bring back the 12" MacBook form factor."
+hook = "Looking at my laptop weights over the years, and also Apple, please bring back the 12\" MacBook form factor."
 published_at = 2022-03-19T19:39:36Z
 title = "Does laptop weight matter?"
 +++
@@ -36,7 +36,9 @@ REI recommends carrying no more than [10% of your bodyweight for a day pack](htt
 
 ## The adorable (#adorable)
 
-The outlier on the list above is the discontinued 12" MacBook ("MacBook adorable") which at 2 lb (< 1 kg) is about 30% the weight of my current 16" MBP. It was more comparable to an iPad than other laptops, and so negligibly light that I'd throw it in my bag even knowing I might not need it. I like this form factor so much that I reformatted mine last year to use it as a writing-only computer, but gave up because its underpowered processor and butterfly keyboard make it pretty tough to use in this day and age. This is one form factor that I _really_ hope to see Apple bring back for the M1 era.
+The outlier on the list above is the discontinued 12" MacBook ("MacBook adorable") which at 2 lb (< 1 kg) is about 30% the weight of my current 16" MBP. It was more comparable to an iPad than other laptops, and so negligibly light that I'd throw it in my bag even knowing I might not need it.
+
+I like this form factor so much that I reformatted mine last year to use it as a writing-only computer, but gave up because its underpowered processor and butterfly keyboard make it pretty tough to use in this day and age. I _really_ hope to see Apple bring something comparable back for the M1 era.
 
 ## So does it matter? (#does-it)
 
