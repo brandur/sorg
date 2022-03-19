@@ -30,7 +30,7 @@ Out of curiosity, I looked up the weights of all the laptop I've owned personall
 
 The biggest surprise was how heavy that first plastic MacBook 13" was! It weighs in _heavier_ than the 16" Pro that I'm using now, and the 16" Pro is absurdly heavy by recent Apple standards as the first generation of laptops in years to favor features like battery life and ports instead of thinness. Worse yet, if I'd been able to afford it at the time I would've bought the aluminum MacBook Pro instead of the polybook, which would've weighed 6.8 lb (3.1 kg) for the 17" -- I might be walking around with an additional bend in my spine today.
 
-I went with the larger 16" MBP this round after realizing that I rarely plug into an external monitor (so the extra screen real estate in laptop mode is nice), and that I'm not expecting to be commuting daily again anytime soon. I work out of cafes pretty frequently so I still end up carrying it pretty far, but an extra pound and a half doesn't make much difference when it's the only thing in my backpack. It's a little more of a push to fit for airline travel where I'm carrying a host of other things, but it's still workable.
+I went with the larger 16" MBP this round after realizing that I rarely plug into an external monitor (so the extra screen real estate in laptop mode is nice), and that I'm not expecting to be commuting daily again anytime soon. I work out of cafes frequently so I still end up carrying it pretty far, but an extra pound and a half doesn't make much difference when it's the only thing in my backpack. It's a little more of a push to fit for airline travel where I'm carrying a host of other things, but it's still workable.
 
 REI recommends carrying no more than [10% of your bodyweight for a day pack](https://www.rei.com/blog/camp/how-much-should-your-pack-weigh), so if you're 150 lb, then with a 16" MBP in there you have 15 lb - 4.8 lb =- 10 lb leftover, probably plenty for many people.
 
@@ -38,7 +38,7 @@ REI recommends carrying no more than [10% of your bodyweight for a day pack](htt
 
 The outlier on the list above is the discontinued 12" MacBook ("MacBook adorable") which at 2 lb (< 1 kg) is about 30% the weight of my current 16" MBP. It was more comparable to an iPad than other laptops, and so negligibly light that I'd throw it in my bag even knowing I might not need it.
 
-I like this form factor so much that I reformatted mine last year to use it as a writing-only computer, but gave up because its underpowered processor and butterfly keyboard make it pretty tough to use in this day and age. I _really_ hope to see Apple bring something comparable back for the M1 era.
+I like this form factor so much that I reformatted mine last year to use it as a writing-only computer, but gave up because its underpowered processor and butterfly keyboard make it a pretty tough sell in this day and age. I _really_ hope to see Apple bring something comparable back for the M1 era.
 
 ## So does it matter? (#does-it)
 
