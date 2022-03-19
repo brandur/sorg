@@ -1378,7 +1378,8 @@ var twitterPhotoSizes = []mimage.PhotoSize{
 }
 
 func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
-	tweet *squantified.Tweet, media *squantified.TweetEntitiesMedia) (bool, error) {
+	tweet *squantified.Tweet, media *squantified.TweetEntitiesMedia,
+) (bool, error) {
 	u, err := url.Parse(media.URL)
 	if err != nil {
 		return false, xerrors.Errorf("bad URL for Twitter photo '%v': %w", media.ID, err)
@@ -1542,7 +1543,8 @@ func pathAsImage(extensionlessPath string) (string, bool) {
 }
 
 func renderArticle(c *modulir.Context, source string,
-	articles *[]*Article, articlesChanged *bool, mu *sync.Mutex) (bool, error) {
+	articles *[]*Article, articlesChanged *bool, mu *sync.Mutex,
+) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1715,7 +1717,8 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 }
 
 func renderFragment(c *modulir.Context, source string,
-	fragments *[]*Fragment, fragmentsChanged *bool, mu *sync.Mutex) (bool, error) {
+	fragments *[]*Fragment, fragmentsChanged *bool, mu *sync.Mutex,
+) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1789,7 +1792,8 @@ func renderFragment(c *modulir.Context, source string,
 }
 
 func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
-	fragmentsChanged bool) (bool, error) {
+	fragmentsChanged bool,
+) (bool, error) {
 	if !fragmentsChanged {
 		return false, nil
 	}
@@ -1840,7 +1844,8 @@ func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
 }
 
 func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
-	fragmentsChanged bool) (bool, error) {
+	fragmentsChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -1863,7 +1868,8 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 }
 
 func renderNanoglyph(c *modulir.Context, source string,
-	issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex) (bool, error) {
+	issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex,
+) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -1969,7 +1975,8 @@ func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanog
 }
 
 func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
-	nanoglyphsChanged bool) (bool, error) {
+	nanoglyphsChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.NanoglyphsLayout,
@@ -1992,7 +1999,8 @@ func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
 }
 
 func renderPassage(c *modulir.Context, source string,
-	issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex) (bool, error) {
+	issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex,
+) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{
@@ -2098,7 +2106,8 @@ func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passage
 }
 
 func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
-	passagesChanged bool) (bool, error) {
+	passagesChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.PassagesLayout,
@@ -2122,7 +2131,8 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 
 func renderHome(c *modulir.Context,
 	articles []*Article, fragments []*Fragment, photos []*Photo,
-	articlesChanged, fragmentsChanged, photosChanged bool) (bool, error) {
+	articlesChanged, fragmentsChanged, photosChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2256,7 +2266,8 @@ func renderReading(c *modulir.Context) (bool, error) {
 }
 
 func renderPhotoIndex(c *modulir.Context, photos []*Photo,
-	photosChanged bool) (bool, error) {
+	photosChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2333,7 +2344,8 @@ func renderRuns(c *modulir.Context) (bool, error) {
 }
 
 func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
-	sequenceChanged bool) (bool, error) {
+	sequenceChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2367,7 +2379,8 @@ func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceE
 }
 
 func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
-	sequenceChanged bool) (bool, error) {
+	sequenceChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2407,7 +2420,8 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*Sequen
 // `sequence` as `nil` and entries as a master list of all sequence entries
 // combined.
 func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
-	sequenceChanged bool) (bool, error) {
+	sequenceChanged bool,
+) (bool, error) {
 	if !sequenceChanged {
 		return false, nil
 	}
@@ -2476,7 +2490,8 @@ func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*Seque
 }
 
 func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *SequenceEntry, entryIndex int,
-	sequenceChanged bool) (bool, error) {
+	sequenceChanged bool,
+) (bool, error) {
 	viewsChanged := c.ChangedAny(append(
 		[]string{
 			scommon.MainLayout,
@@ -2527,7 +2542,8 @@ func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *Sequence
 }
 
 func renderTalk(c *modulir.Context, source string,
-	talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex) (bool, error) {
+	talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex,
+) (bool, error) {
 	sourceChanged := c.Changed(source)
 	viewsChanged := c.ChangedAny(append(
 		[]string{

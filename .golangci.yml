@@ -32,7 +32,10 @@ linters-settings:
       - '^errors\.Wrapf$'
       - '^fmt\.Errorf$'
   gci:
-    local-prefixes: github.com/brandur
+    sections:
+      - Standard
+      - Default
+      - Prefix(github.com/brandur)
 
   gocritic:
     disabled-checks:

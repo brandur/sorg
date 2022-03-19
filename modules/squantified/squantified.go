@@ -72,7 +72,8 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 // RenderReading renders the `/reading` page by fetching and processing data
 // from an attached Black Swan database.
 func RenderReading(c *modulir.Context, viewsChanged bool,
-	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
+	getLocals func(string, map[string]interface{}) map[string]interface{},
+) error {
 	readings, err := getReadingsData(c, scommon.DataDir+"/goodreads.toml")
 	if err != nil {
 		return err
@@ -109,7 +110,8 @@ func RenderReading(c *modulir.Context, viewsChanged bool,
 // use a qself flat file containing run information, like Goodreads and Twitter
 // already do in this file.
 func RenderRuns(c *modulir.Context, viewsChanged bool,
-	getLocals func(string, map[string]interface{}) map[string]interface{}) error {
+	getLocals func(string, map[string]interface{}) map[string]interface{},
+) error {
 	runs, err := getRunsData(c, scommon.DataDir+"/strava.toml")
 	if err != nil {
 		return err
@@ -153,7 +155,8 @@ func RenderRuns(c *modulir.Context, viewsChanged bool,
 // RenderTwitter renders the `/twitter` page.
 func RenderTwitter(c *modulir.Context, viewsChanged bool,
 	getLocals func(string, map[string]interface{}) map[string]interface{},
-	tweets []*Tweet, withReplies bool) error {
+	tweets []*Tweet, withReplies bool,
+) error {
 	tweetsWithoutReplies := make([]*Tweet, 0, len(tweets))
 	for _, tweet := range tweets {
 		if tweet.ReplyOrMention {
