@@ -15,7 +15,7 @@ Pretty simple. Two parts:
 * Look up a note with a specific name, put it in a variable.
 * Take spoken text and append it to found note.
 
-I thought I'd be able to activate it by saying, "Hey Siri Scratch [1] Here's my memo", but there's a meaningful pause that has to be in there. Actual usage is more like, "Hey Siri Scratch <wait for Siri to activate shortcut> Here's my memo". You can activate it without unlocking the phone, which is nice for when you're hands-free out on a walk, although that's somewhat dependent on how much you trust Apple's transcription.
+I thought I'd be able to activate it by saying, "Hey Siri Scratch [1] Here's my memo", but there's a meaningful pause that has to be in there. Actual usage is more like, "Hey Siri Scratch &lt;wait for Siri to activate shortcut&gt; Here's my memo". You can activate it without unlocking the phone, which is nice for when you're hands-free out on a walk, although that's somewhat dependent on how much you trust Apple's transcription.
 
 ## So, is low code, good? (#low-code)
 
