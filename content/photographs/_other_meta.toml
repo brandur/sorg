@@ -207,6 +207,16 @@ slug = "fragments/safety-razors/razor"
 title = "A safety razor"
 
 #
+# /fragments/shortcuts-notes-memos
+#
+
+[[photographs]]
+crop_width = 400
+original_image_url = "https://www.dropbox.com/s/emeqsahw48oqvpa/shortcut.png?dl=1"
+slug = "fragments/shortcuts-notes-memos/shortcut"
+title = "Siri-activated shortcut for appending the contents of a voice memo to a note."
+
+#
 # /fragments/slack-mania
 #
 
