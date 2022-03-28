@@ -87,4 +87,4 @@ if authOK {
 
 Aside from being prettier, another benefit is that languages like Go will help protect against refactoring regressions -- if `reservation.Cancel` was to be accidentally removed, the compiler would complain that `reservation` isn't in use and die.
 
-We're building a [single dependency stack](//fragments/single-dependency-stacks) and are using the in-memory [`golang.org/x` rate limiting package](https://pkg.go.dev/golang.org/x/time/rate) with some augmentations to support multiple keys. It has a reservation-based API, which is where the idea came from. The same API could be supported with a Redis-based package without much trouble.
+We're building a [single dependency stack](/fragments/single-dependency-stacks) and are using the in-memory [`golang.org/x` rate limiting package](https://pkg.go.dev/golang.org/x/time/rate) with some augmentations to support multiple keys. It has a reservation-based API, which is where the idea came from. The same API could be supported with a Redis-based package without much trouble.
