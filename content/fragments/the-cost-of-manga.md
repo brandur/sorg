@@ -4,6 +4,11 @@ published_at = 2016-08-08T16:17:09Z
 title = "The cost of manga"
 +++
 
+**Follow up April 14, 2022:** Most of this article is moot for One Piece at
+least as a subscription to the digital version of Shonen Jump is a pretty great
+deal. For $1.99/month you get access to the full the back catalog and can read
+every issue of One Piece ever made.
+
 I recently caught up on the manga super series [One Piece][one-piece] which has
 reached an extraordinary 82 volumes in length, each of which averages around
 200 pages (for a total of ~16,000). While waiting for more of it to be released
