@@ -10,7 +10,7 @@ Most Rubyists will be familiar with generating UUIDs by way of `SecureRandom`:
 SecureRandom.uuid
 ```
 
-This produces the normal UUID hex string representation like `27a532f4-5bc8-4810-b602-88475a93167c` that everyone knows well, and widespread practice in Ruby is to treat UUIDs exclusively as strings, passing these formatted around everywhere in code.
+This produces the normal UUID hex string representation like `27a532f4-5bc8-4810-b602-88475a93167c` that everyone knows well, and widespread practice in Ruby is to treat UUIDs exclusively as strings, passing these formatted strings around everywhere in code.
 
 But although it's so common to see UUIDs in their string representation, they're more simply (and succinctly) defined as 16 bytes worth of data. Implementations in languages like Go do exactly that:
 
@@ -43,7 +43,7 @@ end
 
 We still use `SecureRandom` for a cryptographically-secure RNG, but get bytes instead, then doing a little bit manipulation to add UUID version and variant.
 
-Note that byte strings in Ruby are still strings rather than a separate type. Along with the normal built-ins to work with characters, it also has `#bytes`, `#bytesize`, `#getbyte`, etc. to work with bytes instead.
+Note that byte strings in Ruby are still strings rather than a separate type. Along with the normal built-ins to work with characters, Ruby strings also has `#bytes`, `#bytesize`, `#getbyte`, etc. to work with bytes instead.
 
 ## Formatting to string (#to_s)
 
@@ -132,7 +132,7 @@ Full code [is here](https://gist.github.com/brandur/1bddb5215540889983dc7e3a66ef
 
 Although treating UUIDs as a custom byte string data type might be a little more performant [1], we have some more compelling reasons to do it:
 
-* We use a public-facing ID representation called an ["EID"](https://docs.crunchybridge.com/api-concepts/eid/) which looks like `rvf73a77ozfsvcttryebfrnlem` and also 16 bytes. With EIDs and UUIDs stored as strings, converting one format to the other involves expensive parsing. But with both treated as byte strings, they can be interchanged for free since the underlying value is the same.
+* We use a public-facing ID representation called an ["EID"](https://docs.crunchybridge.com/api-concepts/eid/) which looks like `rvf73a77ozfsvcttryebfrnlem` and is also 16 bytes. With EIDs and UUIDs stored as strings, converting one format to the other involves expensive parsing. But with both treated as byte strings, they can be interchanged for free since the underlying value is the same.
 
 * We're using [Sorbet](https://sorbet.org/) for type checking, and annotating EIDs and UUIDs as proper types instead of strings makes code safer. We've previously had multiple bugs where an EID string was actually a UUID string by mistake and leaked somewhere that it wasn't compatible.
 
