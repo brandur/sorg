@@ -134,6 +134,6 @@ Although treating UUIDs as a custom byte string data type might be a little more
 
 * We use a public-facing ID representation called an ["EID"](https://docs.crunchybridge.com/api-concepts/eid/) which looks like `rvf73a77ozfsvcttryebfrnlem` and is also 16 bytes. With EIDs and UUIDs stored as strings, converting one format to the other involves expensive parsing. But with both treated as byte strings, they can be interchanged for free since the underlying value is the same.
 
-* We're using [Sorbet](https://sorbet.org/) for type checking, and annotating EIDs and UUIDs as proper types instead of strings makes code safer. We've previously had multiple bugs where an EID string was actually a UUID string by mistake and leaked somewhere that it wasn't compatible.
+* We're using [Sorbet](https://sorbet.org/) for type checking, and annotating EIDs and UUIDs as proper types instead of strings makes code safer. We've previously had multiple bugs where an EID string was actually a UUID string by mistake and leaked somewhere where it wasn't compatible.
 
 [1] Performance and memory overhead _should_ be better, but you'd want to check this because Ruby core types like strings are generally better optimized than anything you can build in pure Ruby code.
