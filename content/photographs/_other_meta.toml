@@ -99,6 +99,16 @@ slug = "fragments/graceful-degradation-time/markdown-and-git"
 title = "Markdown and Git"
 
 #
+# /fragments/
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/f8r0pi07ejl60dr/pr.png?dl=1"
+slug = "fragments/large-scale-ruby-refactoring/pr"
+title = "Changeset"
+
+#
 # /fragments/leica-q2-monochrom
 #
 
