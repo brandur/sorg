@@ -24,7 +24,7 @@ We're also doing something a little more controversial by requiring not only hav
 
 I'll tell you first hand that 100% branch coverage is pretty annoying -- you often end up contorting yourself to write tests for vanishingly unlikely branches. But you remember why you're doing it while refactoring, where it's a big comfort. It also has a compounding effect with Sorbet because along with static analysis, Sorbet also has a runtime component that checks that objects passed into methods are the type they're supposed to be. So if all code paths are covered, every method is robustly called with every object it'll be called with.
 
-By our best measurements, only one problem fell out of the refactor (some network code that relied on heavy stubbing), and it had no production effect thanks to our [transactionally-driven state machines](https://www.citusdata.com/blog/2016/08/12/state-machines-to-run-databases/) [2]. Sending it out took about a day and a half, but most of that was letting it idle in staging so we could keep an eye out for problems.
+By our best measurements, only one problem fell out of the refactor (some network code that relied on heavy stubbing in tests), and it had no production effect thanks to our [transactionally-driven state machines](https://www.citusdata.com/blog/2016/08/12/state-machines-to-run-databases/) [2]. Sending it out took about a day and a half, but most of that was letting it idle in staging so we could keep an eye out for problems.
 
 So as usual, consider not writing Ruby, but if you do, use type signatures, and maybe 100% branch coverage too, as annoying as it seems.
 
