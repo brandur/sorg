@@ -310,6 +310,30 @@ title = "iA Writer."
 
 [[photographs]]
 crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/ez5f241oryp0ncb/2W4A1044-cafe.JPG?dl=1"
+slug = "nanoglyphs/033-heroku/brooklyn-cafe"
+title = "A cafe in Brooklyn"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/5891ftr207dcrzv/2W4A0908.JPG?dl=1"
+slug = "nanoglyphs/033-heroku/greenwich-st"
+title = "Greenwich St intersection"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/ct1i0jnsfqwt2gr/2W4A0934-high-line.JPG?dl=1"
+slug = "nanoglyphs/033-heroku/highline"
+title = "The Highline"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/g24gjwpdvwoadim/2W4A1013.JPG?dl=1"
+slug = "nanoglyphs/033-heroku/herald-square"
+title = "Herald Square in New York"
+
+[[photographs]]
+crop_width = 1200
 original_image_url = "https://www.dropbox.com/s/cz2ls57jhwk0zd5/2W4A0829.JPG?dl=1"
 slug = "nanoglyphs/032-hook-toil/balconies-cave"
 title = "Balconies cave at Pinnacles National Park"
