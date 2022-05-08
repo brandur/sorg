@@ -88,7 +88,7 @@ It'd be the anti-AWS. Whereas AWS exposes every possible primitive to a new user
 
 There were some other things too. [12-factor factor no. IV](https://12factor.net/backing-services) ("backing services") describes "attachable resources", persistent services like databases that live as isolated resources which can be attached and detached to and from more ephemeral apps at will. It took us years to ship this feature, and although it was pretty neat when we did, by then Heroku's golden days of product leadership were behind it, and we didn't make much in the way of inroads into convincing anyone else as to why it was a good idea.
 
-Pricing was another elusive beast. The cost of jumping up from the free tier to a paid app was a big step up which users had complained about it since the first day the product launched. Eventually, a new pricing model did ship, but didn't do much to make the product less expensive or users more happy.
+Pricing was another elusive beast. The cost of jumping up from the free tier to a paid app was a big step up which users had complained about it since the first day the product launched. Eventually, a new pricing model did ship, but didn't do much to address those original concerns.
 
 ---
 
