@@ -46,7 +46,7 @@ It got me thinking. I remember a few years back having a conversation with one o
 
 Selling to Salesforce for $212 million was an obvious win, but that's balanced by a product that's broadly been on cruise control since 2012, and which hasn't seeded much in terms of product longevity or lasting industry technology.
 
-### The success case (#success-case)
+### The case for "success" (#case-success)
 
 Most obviously, with an acquisition of that size, some people got rich, and even for those who didn't make anything off the sale (yours truly included), it still gave us a couple of great years working in an environment that was startup-like in terms of feel and innovation, but with the benefits of big tech salaries and largesse.
 
