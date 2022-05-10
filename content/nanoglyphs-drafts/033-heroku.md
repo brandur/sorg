@@ -1,14 +1,14 @@
 +++
 image_alt = "Herald Square in New York"
 image_url = "/photographs/nanoglyphs/033-heroku/herald-square@2x.jpg"
-published_at = 2022-05-08T19:41:17Z
+published_at = 2022-05-10T18:06:07Z
 title = "Heroku: Core Impact"
 +++
 
 
-It's been a rough couple weeks for Heroku. On April 15th, they opened a security notice that's been active ever since -- the status page, designed for incidents measured in hours rather than days or weeks, dutifully reads off a duration of "336 hours, 12 minutes".
+It's been a rough couple weeks for Heroku. On April 15th, they opened a security notice that's been active ever since -- the status page, designed for incidents measured in hours rather than days or weeks, dutifully reads off a duration of "336 hours, 12 minutes" [1].
 
-According to their latest update, an attacker gained access to Heroku's main Postgres database (called `core-db` back in my day), and exfiltrated its contents, including hashed passwords and secrets used for GitHub integrations. The latter were used to iterate private the GitHub repositories of Heroku users, and it seems to have been a stroke of luck that the hacker was aggressive about doing so, because although no one at Heroku/Salesforce noticed the intrusion, GitHub flagged the unusual activity and tipped them off.
+According to their latest update, an attacker gained access to Heroku's main Postgres database (called `core-db` back in my day), and exfiltrated its contents, including hashed passwords and secrets used for GitHub integrations. The latter were used to iterate the private GitHub repositories of Heroku users, and it seems to have been a stroke of luck that the hacker was aggressive about doing so, because while no one at Heroku/SFDC noticed the intrusion, GitHub flagged the unusual activity and tipped them off.
 
 Heroku indicates that although the attacker accessed the raw application environments where secrets are stored, they didn't have the key necessary to decrypt them. This implies that they weren't able to access the secrets to the API itself, which in turn implies that they weren't able to get the decryption key for secrets stored in the main database. This is where things get a bit odd because we know they were able to use OAuth secrets, which would imply that those weren't encrypted. Odd that no one had thought to encrypt those secrets in particular, but especially in software, oversights do happen.
 
@@ -50,7 +50,7 @@ Selling to Salesforce for $212 million was an obvious win, but that's balanced b
 
 Most obviously, with an acquisition of that size, some people got rich, and even for those who didn't make anything off the sale (yours truly included), it still gave us a couple of great years working in an environment that was startup-like in terms of feel and innovation, but with the benefits of big tech salaries and largesse.
 
-There's also the matter of Heroku being surprising sticky. Given a product that's gone largely unchanged for years now, along with a host of new entrants in the market, I would've assumed that Heroku would've been resigned to obscurity by broader cloud competition years ago, but to this day, it's still plausible as a platform. At my company, we made the decision to host on it as little as a year ago -- we know the product well, there's minimal lock-in in case we need to evacuate, and it keeps us generally hands-free on operations/infrastructure not core to the services that we're selling. Although every major cloud provider's introduced new services aimed at satisfying that PaaS tier (and in cases like AWS, more than one), so far few have been able to match Heroku's streamlined workflows and simplicity.
+There's also the matter of Heroku being surprising sticky. Given a product that's gone largely unchanged for years now, along with a host of new entrants in the market, I would've assumed that Heroku would've been resigned to obscurity by broader cloud competition years ago, but to this day, it's still plausible as a platform. At my company, we made the decision to host on it as little as a year ago -- we know the product well, there's minimal lock-in in case we need to evacuate, and it keeps us generally hands-free on operations/infrastructure not core to the services that we're selling. Every major cloud provider's introduced new services aimed at satisfying that PaaS tier (and in cases like AWS, more than one), but few so far have been able to match Heroku's streamlined workflows and simplicity.
 
 Beyond that, a lot of great things fell out of Heroku:
 
@@ -66,7 +66,7 @@ Beyond that, a lot of great things fell out of Heroku:
 
 That's a pretty impressive list -- even one or two of these would be more of a mark on the world than most tech companies _ever_ make. But there's also a common undercurrent to most these items -- although they're all great ideas and will make a lasting impression into the future in how services are deployed, none of them resulted in lasting residuals for the Heroku product itself -- other platforms captured the concepts and took the proceeds, and even with commercial aspect aside, no specific technologies will be attributed back to Heroku. Even though Docker as a company might be doomed to failure, it'll be remembered as the progenitor of container-based deployment for decades. Future history about the 2010s will talk about the evolution of Docker to OCI, but Heroku will be a footnote at best.
 
-Heroku was the ultimate ideas factory -- concepts like 12-factor, erosion resistance, and DX will stand the test of time, but few of their beneficiaries will recognize their lineage back to Heroku.
+Heroku was the ultimate ideas factory for the cloud -- concepts like 12-factor, erosion resistance, and DX will stand the test of time, but few of their beneficiaries will recognize their lineage back to Heroku.
 
 ---
 
@@ -74,7 +74,7 @@ Heroku was the ultimate ideas factory -- concepts like 12-factor, erosion resist
 
 Not much lasting product or technological impact is one side of the coin, the other being disappointment around an epic vision with so much potential that never materialized.
 
-The Cedar stack was a work of true genius (I had no hand in its creation, so this isn't as self-serving than it sounds). The previous Aspen and Bamboo stacks were far more limited, supporting only specific versions of specific stacks, and with a lot of special-casing necessary. Cedar made Heroku the platform that could run everything -- users could bring their own stacks with buildpacks and `Procfile`s, and its sophisticated internal state machine and routing layer made apps running on it impressively robust. Even after learning how the sausage was made, I never stopped being impressed by how well it worked, or how the platform could be pushed to do things that its creators never imagined thanks to great primitives and the flexibility that fell out of them.
+The Cedar stack was a work of true genius (I had no hand in its creation, so this isn't as self-serving as it sounds). The previous Aspen and Bamboo stacks were far more limited, supporting only specific versions of specific stacks, and with a lot of special-casing necessary. Cedar made Heroku the platform that could run everything -- users could bring their own stacks with buildpacks and `Procfile`s, and its sophisticated internal state machine and routing layer made apps running on it impressively robust. Even after learning how the sausage was made, I never stopped being impressed by how well it worked, or how the platform could be pushed to do things that its creators never imagined thanks to great primitives and the flexibility that fell out of them.
 
 Back in 2012 the momentum coming off shipping Cedar was so great that despite its success, it was only considered the first step of a much more ambitious project. Before long, it'd be extended to handle programs of all shapes and sizes, with the current 512 MB container just an incidental first option. Even the biggest data-crunching apps would be deployable on containers with 10s or 100s of GBs of memory, and all the way down to tiniest one-off cloud `grep` runs needing only just a couple of megabytes. So fast and easy that it'd crazy _not_ to run on Heroku.
 
@@ -138,10 +138,12 @@ Brooklyn seems to be about as cool as people say it is. I was told that it'd be 
 
 Most importantly, I saw a little bit of that infamous New York _grit_. Despite its own long darkness, the city's rebounded, and feels vibrant and alive. Contrast to SF, which to this day is more reminiscent of a bad set for a shoestring zombie apocalypse film than anything else.
 
-I made one mistake of taking a redeye into town, arriving in the city around 7 AM, and assuming I'd be good to walk around until check-in around three that afternoon, not realizing that turns out, New York is pretty cold, and that east coast wind chill sure doesn't help. Four hours later, after having made my way from the center of the city down to around Wall St further south, and realizing that I could no longer operate my camera because my hands were so numb, I figured it was a good time to make a tactical retreat into the first Starbucks I could find.
+I made one mistake of taking a redeye into town, arriving in the city around 7 AM, and assuming I'd be good to walk around until check-in around three that afternoon, not realizing that turns out, New York is pretty cold, and that east coast wind chill sure doesn't help. Four hours later, after having made my way from the center of the city down to around Wall Street further south, and realizing that I could no longer operate my camera because my hands were so numb, I figured it was a good time to make a tactical retreat into the first Starbucks I could find.
 
-I can feel my way around the subway now, but for the life of me, still can't seem to get the regional trains right. After getting to Penn station, only to realize that it was apparently the wrong Penn station (Moynihan) with no signs pointing to the _right_ Penn station, then walking up to the Port Authority (I'm still not sure why), before making my way back to the other part of Penn and making a few rapid fire guesses as to the right platform, I caught my train with roughly 13 seconds to spare -- an almost perfect repeat of my misadventures the last time I left NY.
+I can feel my way around the subway now, but for the life of me, still can't seem to get the regional trains right. After getting to Penn station, only to realize that it was apparently the wrong Penn station (Moynihan) with no signs pointing to the _right_ Penn station, then walking up to the Port Authority after a stupendous misreading of Google Maps, before making my way back to the other part of Penn and making a few rapid fire guesses as to the right platform, I caught my train with roughly 13 seconds to spare -- an almost perfect repeat of my misadventure the last time I left NY.
 
 Until next week.
 
 <img src="/photographs/nanoglyphs/033-heroku/highline@2x.jpg" alt="The Highline" class="wide" loading="lazy">
+
+[1] Although it seems like they stopped the clock at 14 days. It'd more aptly read double that number by now.
