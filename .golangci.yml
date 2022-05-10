@@ -3,6 +3,7 @@ linters:
     # obnoxious
     - cyclop
     - dupl
+    - exhaustruct
     - exhaustivestruct
     - forcetypeassert
     - funlen
@@ -17,6 +18,9 @@ linters:
     - testpackage
     - wsl
     - varnamelen
+
+    # buggy
+    - execinquery
 
     # deprecated
     - golint
