@@ -32,7 +32,7 @@ As to why GitHub integration is still disabled:
 
 (Keep in mind that these are from random anonymous accounts on the internet, so exercise your usual judicious skepticism for such things.)
 
-One of the things Patrick would consistently list as an existential threat to the success of Stripe was a major security incident -- the absence of a major security incident in the past doesn't rule out the possibility of one in the future, and one may be all that's needed for catastrophic reputational harm. Based on the number of mentions I've seen of Fly.io and Render over the last couple weeks (up about 100x from before), Heroku may be about to become poster child incarnate proving this fear.
+One of the things Patrick would assiduously list as an existential threat to the success of Stripe was a major security incident -- the absence of a major security incident in the past doesn't rule out the possibility of one in the future, and one may be all that's needed for catastrophic reputational harm. Based on the number of mentions I've seen of Fly.io and Render over the last couple weeks (up about 100x from before), Heroku may be about to become poster child incarnate proving this fear.
 
 For better or worse, it's been the most publicity the company's had in years. And with sympathies to my ex-colleagues who've spent nearing a month working on response, what a wild time.
 
