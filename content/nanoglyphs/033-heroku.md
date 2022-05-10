@@ -92,7 +92,7 @@ Pricing was another elusive beast. The cost of jumping up from the free tier to 
 
 ---
 
-## Why we fail (#why-we-fail)
+## Examining failure (#examining-failure)
 
 So what happened? All the foundations for success were in place, so not achieving its ambitious vision wasn't an inevitability.
 
