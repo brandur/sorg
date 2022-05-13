@@ -39,7 +39,7 @@ A nice augmentation is to configure the target S3 bucket with an expiration poli
 
 (Create a new "lifecycle rule" under the `Management` section of a bucket. The settings from there are all straightforward.)
 
-With logging set up, your ready to sync logs down and start using GoAccess.
+With logging set up, you're ready to sync logs down and start using GoAccess.
 
 ### Git ergonomics (#git-ergonomics)
 
