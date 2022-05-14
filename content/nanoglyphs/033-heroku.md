@@ -6,7 +6,7 @@ title = "Heroku: Core Impact"
 +++
 
 
-It's been a rough couple weeks for Heroku. On April 15th, they opened a security notice that's been active ever since -- the status page, designed for incidents measured in hours rather than days or weeks, dutifully reads off a duration of "336 hours, 12 minutes" [1].
+It's been a rough month for Heroku. On April 15th, they opened a security notice that's been active ever since -- the status page, designed for incidents measured in hours rather than days or weeks, dutifully reads off a duration of "478 hours, 9 minutes" [1].
 
 According to their latest update, an attacker gained access to Heroku's main Postgres database (called `core-db` back in my day), and exfiltrated its contents, including hashed passwords and secrets used for GitHub integrations. The latter were used to iterate the private GitHub repositories of Heroku users, and it seems to have been a stroke of luck that the hacker was aggressive about doing so, because while no one at Heroku/SFDC noticed the intrusion, GitHub flagged the unusual activity and tipped them off.
 
@@ -146,4 +146,4 @@ Until next week.
 
 <img src="/photographs/nanoglyphs/033-heroku/highline@2x.jpg" alt="The Highline" class="wide" loading="lazy">
 
-[1] Although it seems like they stopped the clock at 14 days. It'd more aptly read double that number by now.
+[1] Although it seems like they stopped the clock at 19 days. Double that number would be more apt now.
