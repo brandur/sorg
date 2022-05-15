@@ -1,18 +1,18 @@
 +++
 image_alt = "Herald Square in New York"
 image_url = "/photographs/nanoglyphs/033-heroku/herald-square@2x.jpg"
-published_at = 2022-05-10T18:06:07Z
+published_at = 2022-05-15T20:25:24Z
 title = "Heroku: Core Impact"
 +++
 
 
-It's been a rough month for Heroku. On April 15th, they opened a security notice that's been active ever since -- the status page, designed for incidents measured in hours rather than days or weeks, dutifully reads off a duration of "475 hours, 9 minutes" [1].
+It's been a rough month for Heroku. On April 15th, they opened a security notice that's been active ever since -- the status page, designed for incidents measured in hours rather than days or weeks, dutifully reads off a duration of "478 hours, 9 minutes" [1].
 
-According to their latest update, an attacker gained access to Heroku's main Postgres database (called `core-db` back in my day), and exfiltrated its contents, including hashed passwords and secrets used for GitHub integrations. The latter were used to iterate the private GitHub repositories of Heroku users, and it seems to have been a stroke of luck that the hacker was aggressive about doing so, because while no one at Heroku/SFDC noticed the intrusion, GitHub flagged the unusual activity and tipped them off.
+According to their latest update, an attacker gained access to Heroku's main database (called `core-db` back in my day) and exfiltrated its contents, including hashed passwords and secrets used for GitHub integrations. The latter were used to iterate the private GitHub repositories of Heroku users, and it seems to have been a stroke of luck that the hacker was aggressive about doing so, because while no one at Heroku/SFDC noticed the intrusion, GitHub flagged the unusual activity and tipped them off.
 
 Heroku indicates that although the attacker accessed the raw application environments where secrets are stored, they didn't have the key necessary to decrypt them. This implies that they weren't able to access the secrets to the API itself, which in turn implies that they weren't able to get the decryption key for secrets stored in the main database. This is where things get a bit odd because we know they were able to use OAuth secrets, which would imply that those weren't encrypted. Odd that no one had thought to encrypt those secrets in particular, but especially in software, oversights do happen.
 
-As a current Heroku customer, it's been hard not to notice the disruption. Not only were all GitHub integrations and deploys disabled immediately after -- they've stayed disabled ever since. I'm a happy `git push heroku` user most of the time anyway so it hasn't affected my habits much, but things like my [auto-deploying docs set up](/nanoglyphs/031-api-docs) have been MIA for weeks.
+As a current Heroku customer, it's been hard not to notice the disruption. Not only were all GitHub integrations and deploys disabled immediately after -- they've stayed disabled ever since (exactly a month as of today). I'm a happy `git push heroku` user most of the time anyway so it hasn't affected my habits much, but things like my [auto-deploying docs set up](/nanoglyphs/031-api-docs) have been MIA for weeks.
 
 I've been enjoying reading [comments from ex-employees](https://news.ycombinator.com/item?id=31291065) posted to HN under throwaway accounts. For example, on Project Periwinkle:
 
@@ -20,7 +20,7 @@ I've been enjoying reading [comments from ex-employees](https://news.ycombinator
 >
 > Heroku has been in the process of being sunset for years now. New features have been banned for years. Only "keep the lights on" projects are allowed. Not that they could do anything with the skeleton crew they have running the platform.
 
-Another insider throwaway notes that the product is frozen in all but name:
+Another insider throwaway notes that the product is frozen in all but name, and has been for years:
 
 > You've gotta go way back on the Heroku Changelog to find anything that isn't a language version upgrade or feature removal: https://devcenter.heroku.com/changelog
 >
@@ -34,7 +34,7 @@ As to why GitHub integration is still disabled:
 
 One of the things Patrick would assiduously list as an existential threat to the success of Stripe was a major security incident -- the absence of a major security incident in the past doesn't rule out the possibility of one in the future, and one may be all that's needed for catastrophic reputational harm. Based on the number of mentions I've seen of Fly.io and Render over the last couple weeks (up about 100x from before), Heroku may be about to become poster child incarnate proving this fear.
 
-For better or worse, it's been the most publicity the company's had in years. And with sympathies to my ex-colleagues who've spent nearing a month working on response, what a wild time.
+For better or worse, it's been the most publicity the company's had in years. And with sympathies to my ex-colleagues who've spent nearing a month working on response, what a crazy time.
 
 ---
 
@@ -52,15 +52,17 @@ Most obviously, with an acquisition of that size, some people got rich, and even
 
 There's also the matter of Heroku being surprising sticky. Given a product that's gone largely unchanged for years now, along with a host of new entrants in the market, I would've assumed that Heroku would've been resigned to obscurity by broader cloud competition years ago, but to this day, it's still plausible as a platform. At my company, we made the decision to host on it as little as a year ago -- we know the product well, there's minimal lock-in in case we need to evacuate, and it keeps us generally hands-free on operations/infrastructure not core to the services that we're selling. Every major cloud provider's introduced new services aimed at satisfying that PaaS tier (and in cases like AWS, more than one), but few so far have been able to match Heroku's streamlined workflows and simplicity.
 
-Beyond that, a lot of great things fell out of Heroku:
+Beyond that, a lot of great things fell out of the company:
 
-* **Outsourcing ops:** For the longest time, deploying programs to the internet was hard. Then PHP came along, and won the world not just through concise syntax and a simple deployment story, but one with gaping holes. Deploying generic stacks was hard -- Rails at the time involved setting up a load balancer, per-server reverse proxy, CGI process, and whatever else it took to keep everything monitored and alive. Heroku vastly simplified this story, letting developers focus on building programs instead of configuring and running infrastructure. An obvious good in today's container world, but one which wasn't at the time.
+* **Outsourcing ops:** For the longest time, deploying programs to the internet was hard. Then PHP came along, and won the world with concise syntax and a simple deployment story, but one with gaping holes. Deploying generic stacks was hard -- Rails at the time involved setting up a load balancer, per-server reverse proxy, CGI process, and whatever else it took to keep everything monitored and alive. Heroku vastly simplified this story, letting developers focus on building programs instead of configuring and running infrastructure. An obvious good in today's world, but not so much at the time.
 
 * **Postgres:** The rise in prominence of Postgres over the last decade is owed to a number of factors including great core advances and a relative languishing in its competitors, but by making it a core piece of the platform offering and giving it a lot of high profile publicity, Heroku was an important part of the equation.
 
 * **Containers:** Few remember it, but Heroku ran containers before they were cool, using [LXC](https://linuxcontainers.org/) as a central technology in its Cedar stack.
 
-* **DX and CLIs:** The Heroku CLI was a hugely important part of the product right alongside Git itself. The two tools in conjunction let a user manage every aspect of an app from the command line, which was very novel for the time. The CLI planted some of the seeds that would eventually grow into DX, which is now a dedicated branch of the tech industry.
+* **CLIs:** The Heroku CLI was a hugely important part of the product right alongside Git itself. Command line Unix tools had existed for decades, but a company shipping a dedicated CLI was an extremely novel idea, and one which has been widely replicated since.
+
+* **DX and CLIs:** The CLI along with a product generally oriented towards developers planted the seeds that would eventually grow into DX, now a dedicated branch of the tech industry in its own right.
 
 * **Buildpacks:** Generic formulae for how to deploy an application written in a particular language, buildpacks were a precursor to the `Dockerfile`, and arguably, a more appropriate level of abstraction. Custom buildpacks were supported from the earliest days of the Cedar stack, letting users run any technology they wanted to bring. They're now supported by some clouds beyond Heroku, like [Digital Ocean](https://docs.digitalocean.com/products/app-platform/concepts/buildpack/) and [GCP](https://cloud.google.com/blog/products/containers-kubernetes/google-cloud-now-supports-buildpacks).
 
@@ -74,7 +76,7 @@ Heroku was the ultimate ideas factory for the cloud -- concepts like 12-factor, 
 
 Not much lasting product or technological impact is one side of the coin, the other being disappointment around an epic vision with so much potential that never materialized.
 
-The Cedar stack was a work of true genius (I had no hand in its creation, so this isn't as self-serving as it sounds). The previous Aspen and Bamboo stacks were far more limited, supporting only specific versions of specific stacks, and with a lot of special-casing necessary. Cedar made Heroku the platform that could run everything -- users could bring their own stacks with buildpacks and `Procfile`s, and its sophisticated internal state machine and routing layer made apps running on it impressively robust. Even after learning how the sausage was made, I never stopped being impressed by how well it worked, or how the platform could be pushed to do things that its creators never imagined thanks to great primitives and the flexibility that fell out of them.
+The Cedar stack was a work of true genius (I had no hand in its creation, so this isn't as self-serving as it might sound). The previous Aspen and Bamboo stacks were far more limited, supporting only specific versions of specific stacks, and with a lot of special-casing necessary. Cedar made Heroku the platform that could run everything -- users could bring their own stacks with buildpacks and `Procfile`s, and its sophisticated internal state machine and routing layer made apps running on it impressively robust. Even after learning how the sausage was made, I never stopped being impressed by how well it worked, or how the platform could be pushed to do things that its creators never imagined thanks to great primitives and the flexibility that fell out of them.
 
 Back in 2012 the momentum coming off shipping Cedar was so great that despite its success, it was only considered the first step of a much more ambitious project. Before long, it'd be extended to handle programs of all shapes and sizes, with the current 512 MB container just an incidental first option. Even the biggest data-crunching apps would be deployable on containers with 10s or 100s of GBs of memory, and all the way down to tiniest one-off cloud `grep` runs needing only just a couple of megabytes. So fast and easy that it'd crazy _not_ to run on Heroku.
 
@@ -82,7 +84,7 @@ It'd become modular. The shared router fleet was an adequate option for most use
 
 ### The Self-hosting Singularity (#self-hosting-singularity)
 
-The Heroku cloud would become so extensible and so robust that just like a self-bootstrapping language compiler, it'd be able to host itself. Core components like the API, state machine, and router would run as Heroku apps and gain all the DX ergonomics and robustness of such. This optimistic and ambitious vision was coined, _The Self-hosting Singularity_.
+The Heroku cloud would become so extensible and so robust that just like a self-bootstrapping language compiler, it'd be able to host itself. Core components like the platform API, dyno state machine, and router would run as Heroku apps and gain all the DX ergonomics and robustness of such. This optimistic and ambitious vision was coined, _The Self-hosting Singularity_.
 
 It'd be the anti-AWS. Whereas AWS exposes every possible primitive to a new user the first time they log in -- thousands of confusing and overlapping concepts -- the Heroku vision would've been to expose none of it to a new user. They'd be started with a basic `git push heroku master` and single dyno app, but as their software developed and their requirements became more complicated, new primitives would've been progressively exposed as they were needed -- VPCs with ingress/egress rules, configurable hosts with alternative base images or architectures, SSH access, static IPs, etc. An onion that could be peeled back layer by layer.
 
