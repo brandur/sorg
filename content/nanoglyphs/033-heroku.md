@@ -116,6 +116,10 @@ So what happened? All the foundations for success were in place, so not achievin
 
 ---
 
+All in all, especially in light of recent security concerns, Heroku as a self-sustaining product was a failure. Heroku as a prolific progenitor of ideas, and direct ancestor of countless current and future tools and platforms, was a grand success.
+
+---
+
 ## The cloud graph (#cloud-graph)
 
 A few links this week:
