@@ -305,7 +305,29 @@ title = "iA Writer."
 #
 
 #
-# /nanoglyphs/032-hook-toil
+# /nanoglyphs/034-hook-toil
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/nvxjw9c9t2f2zu9/2W4A1211-kex.JPG?dl=1"
+slug = "nanoglyphs/034-cloud-sqlite/kex"
+title = "The Kex's cafe"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/wcpo07ncld8h1tp/outhorse-your-email.jpg?dl=1"
+slug = "nanoglyphs/034-cloud-sqlite/outhorse-your-email"
+title = "Outhorse your email"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/2w7z3gt1pn48723/2W4A1135.JPG?dl=1"
+slug = "nanoglyphs/034-cloud-sqlite/portland"
+title = "Portland"
+
+#
+# /nanoglyphs/033-heroku
 #
 
 [[photographs]]
@@ -331,6 +353,10 @@ crop_width = 1200
 original_image_url = "https://www.dropbox.com/s/g24gjwpdvwoadim/2W4A1013.JPG?dl=1"
 slug = "nanoglyphs/033-heroku/herald-square"
 title = "Herald Square in New York"
+
+#
+# /nanoglyphs/032-hook-toil
+#
 
 [[photographs]]
 crop_width = 1200
