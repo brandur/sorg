@@ -305,7 +305,7 @@ title = "iA Writer."
 #
 
 #
-# /nanoglyphs/034-hook-toil
+# /nanoglyphs/034-cloud-sqlite
 #
 
 [[photographs]]
@@ -313,6 +313,12 @@ crop_width = 1200
 original_image_url = "https://www.dropbox.com/s/nvxjw9c9t2f2zu9/2W4A1211-kex.JPG?dl=1"
 slug = "nanoglyphs/034-cloud-sqlite/kex"
 title = "The Kex's cafe"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/eiajyukiqygivqb/2W4A1213.JPG?dl=1"
+slug = "nanoglyphs/034-cloud-sqlite/kex-2"
+title = "The Kex's cafe (no. 2)"
 
 [[photographs]]
 crop_width = 1200
@@ -505,7 +511,7 @@ title = "A ridgeline in San Bruno park"
 #
 
 [[photographs]]
-crop_width = 496 # original image only 992 wide
+crop_width = 496                                                                          # original image only 992 wide
 original_image_url = "https://www.dropbox.com/s/21t62z257f9tzxg/15-minute-tweet.png?dl=1"
 slug = "nanoglyphs/027-15-minutes/15-minute-tweet"
 title = "Tweet of 15 minutes to upgrade"
@@ -535,7 +541,7 @@ slug = "nanoglyphs/027-15-minutes/red-rock-landscape"
 title = "The Red Rocks Amphitheatre and surrounding landscape"
 
 [[photographs]]
-crop_width = 600 # original image only 1200 wide
+crop_width = 600                                                                     # original image only 1200 wide
 original_image_url = "https://www.dropbox.com/s/nbhif4j3yeevu86/rezz-rocks.jpg?dl=1"
 slug = "nanoglyphs/027-15-minutes/rezz-rocks"
 title = "Poster for Rezz Rock III"
@@ -587,13 +593,13 @@ slug = "nanoglyphs/026-ids/sweeney-ridge"
 title = "Sweeney Ridge"
 
 [[photographs]]
-crop_width = 384 # original image only 768 wide
+crop_width = 384                                                                   # original image only 768 wide
 original_image_url = "https://www.dropbox.com/s/mfj8ih965izaevo/uuid-tps.png?dl=1"
 slug = "nanoglyphs/026-ids/uuid-tps"
 title = "Transactions per second comparison"
 
 [[photographs]]
-crop_width = 384 # original image only 768 wide
+crop_width = 384                                                                                     # original image only 768 wide
 original_image_url = "https://www.dropbox.com/s/e0cbeluvlhace7u/uuid-wal-medium-normalized.png?dl=1"
 slug = "nanoglyphs/026-ids/uuid-wal-medium-normalized"
 title = "WAL size comparison"
