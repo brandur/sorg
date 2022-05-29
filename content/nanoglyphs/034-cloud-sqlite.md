@@ -89,7 +89,7 @@ Layer two would be to construct a prop keyboard and film some horses walking ove
 
 _**Check.**_
 
-Layer three would be to wire the prop with sensors and Raspberry Pis under each key, give it a battery power supply, and have it really transmit back to a PC, making it the world's largest wireless keyboard, for real.
+Layer three would be to wire the prop with sensors and Raspberry Pis under each key, give it a battery power supply, and have it really transmit back to a PC, making it the world's largest wireless keyboard, for real, and making those horses really typing content, for real.
 
 [CHECK](https://vimeo.com/710288765/5e14861065).
 
