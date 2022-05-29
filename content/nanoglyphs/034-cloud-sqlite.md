@@ -65,7 +65,7 @@ G'damn Portland is cool.
 
 Earlier in the week I said to a colleague: "Do you ever get the feeling that Portlanders are, like, cosplaying Portlanders?" Walk around town, especially the southeast, every person is sporting loose vintage jeans, toque, Chrome bag, and piercings; half with full sleeve tattoos to boot. It's especially weird coming from San Francisco where not a single resident of the city has worn anything but athleisure going on three years now.
 
-I walked up and down Belmont and Hawthorne last night, and with the number of breweries, weird bars, consignment shops, record stores (and even a ping pong bar) the place has, the only other city I could compare the area to are the best parts of Berlin. The energy there on a Saturday night is amazing -- I stopped in at the most active food cart enclave I've ever been to around 10 PM for some pad thai and chicken satay.
+I walked up and down Belmont and Hawthorne last night, and with the number of breweries, weird bars, consignment shops, record stores (and even a ping pong bar) the place has, the only other city I could compare the area to are the best parts of Berlin. The energy on a Saturday night is amazing -- I stopped by a food cart "park" for some pad thai and chicken satay, and even at 10 PM, it was the busiest version of its kind that I've visited.
 
 Quite by accident, I stayed at a hotel with Icelandic roots called Kex (Icelandic for "biscuit") which has a sister hostel in Reykjavík. Small rooms, but in true Nordic style, a sauna in the basement, and between luxurious space and fast wi-fi, the best main floor workspace I've ever seen. Like, if you found a neighborhood cafe like this, you'd go there every day.
 
