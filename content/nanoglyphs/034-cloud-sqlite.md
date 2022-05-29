@@ -73,9 +73,9 @@ Quite by accident, I stayed at a hotel with Icelandic roots called Kex (Icelandi
 
 <img src="/photographs/nanoglyphs/034-cloud-sqlite/kex@2x.jpg" alt="The Kex cafe" class="wide" loading="lazy">
 
-## Outhorse your email (#outhorse)
+## High-effort comedy (#high-effort-comedy)
 
-Speaking of Iceland, I keep coming back to what's officially my favorite marketing campaign in years: Inspired by Iceland's [Outhorse your email](https://www.visiticeland.com/outhorse-your-email/).
+Speaking of Iceland, my mind keeps wandering back back to one of the best marketing campaigns in years: Inspired by Iceland's [Outhorse your email](https://www.visiticeland.com/outhorse-your-email/).
 
 You have to imagine that this is one of those projects that started out as a gag that some out-of-the-box marketers people came up with at the bar, but which was pushed to ever-more-extraordinary lengths.
 
