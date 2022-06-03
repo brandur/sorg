@@ -5,15 +5,15 @@ published_at = 2022-05-29T20:09:45Z
 title = "Cloud SQLite"
 +++
 
-Seemingly by coincidence, two articles came out nearly consecutively which could turn out to be major landmarks for use of databases in the cloud:
+By coincidence, two articles came out in quick succession which could turn out to be major landmarks for use of databases in the cloud:
 
-* [**I'm all-in on Server-side SQLite**](https://fly.io/blog/all-in-on-sqlite-litestream/): Litestream is a companion project to SQLite which intercepts its normal WAL process to continuously archive segments to a blob store like S3. In this post, its maintainer talks about joining Fly.io and why he's optimistic about the future of the project.
+* [**I'm all-in on Server-side SQLite**](https://fly.io/blog/all-in-on-sqlite-litestream/): Litestream is a companion project to SQLite which intercepts its normal WAL process to continuously archive segments to a blob store like S3. In this post, its maintainer talks about joining Fly.io and why he's optimistic about the project's future.
 
-* [**Announcing D1: Our first SQL database**](https://blog.cloudflare.com/introducing-d1/): Also based on SQLite, D1 is a database from CloudFlare aimed at providing a persistence layer for distributed applications. This is a big deal for them because previously their suggested storage mechanism was [a key/value store](https://developers.cloudflare.com/workers/runtime-apis/kv/).
+* [**Announcing D1: Our first SQL database**](https://blog.cloudflare.com/introducing-d1/): Also based on SQLite, D1 is a database from CloudFlare aimed at providing a persistence layer for distributed applications. This is a big improvement over the status quo because previously their suggested storage mechanism was [a key/value store](https://developers.cloudflare.com/workers/runtime-apis/kv/).
 
-Both Litestream and D1 appear to be a similar concept -- have an SQLite database archive continuously to one of the major cloud providers' blob stores, which have practically infinite scalability. Processes in other regions stay on top of new segments to make read replicas available that can be queried with far lower latency than the primary. Because SQLite databases are just a file, monolithic daemons in each region aren't necessary, with each edge worker effectively doing its own database legwork through its SQLite driver.
+Both Litestream and D1 appear to be a similar concept -- have an SQLite database archive continuously to one of the major cloud providers' blob stores, which have practically infinite scalability. Processes in other regions stay on top of new segments to make read replicas available that can be queried with far lower latency than the primary. Because SQLite databases are just a file, monolithic daemons in each region aren't necessary, with each edge worker effectively doing its own legwork through its SQLite driver.
 
-Imagine for a moment an idealized version of this. Fly.io operates in [21 regions around the world](https://fly.io/docs/reference/regions/) from Spain to Singapore. An app chooses one region as its primary, but practically effortlessly, gets automatic read replicas in the other twenty, requiring only lightweight archive tailers to rebuild local copies in each. With that in place, globally distributed workers have millisecond-level read latency while servicing users local to their edge, keeping everything snappy regardless of user locale. And because no large database processes are required, it wouldn't just be the world's largest apps that could be made global -- even small hobby apps could take advantage of it with minimal costs.
+Imagine for a moment an idealized version of this. Fly.io operates in [21 regions around the world](https://fly.io/docs/reference/regions/) from Spain to Singapore. An app chooses one region as its primary, but practically effortlessly, gets automatic read replicas in the other twenty, requiring only lightweight archive tailers to rebuild local copies in each. With that in place, globally distributed workers have millisecond-level read latency while fulfilling requests local to their edge, keeping everything snappy regardless of geography. And because no large database processes are required, it wouldn't just be the world's largest apps that could be made global -- even small hobby apps could take advantage of it with minimal costs.
 
 ## The future is global (#future-is-global)
 
@@ -39,7 +39,7 @@ It has the most comprehensive and well-regarded [testing methodology](https://ww
 * Edge testing including out-of-memory tests, IO error tests, boundary, and crash tests.
 * Static analysis via Valgrind.
 
-In short, SQLite is one of the world's best run software projects, and it's not going anywhere.
+In short, SQLite is one of the world's best run software projects. It's ubiquitous, and not going anywhere.
 
 ## Is it hype? (#hype)
 
@@ -47,13 +47,13 @@ The purpose of this section isn't to cast aspersion on an interesting technology
 
 A few thoughts:
 
-* The elephant in the room is write contention. SQLite has a [well-designed concurrency model](https://www.sqlite.org/lockingv3.html), but at the end of the day, when a large number of workers are trying to cooperate, it's at a _massive_ disadvantage compared to an in-memory system like Postgres that can coordinate concurrent operations far more easily.
+* The elephant in the room is write contention. SQLite has a [well-designed concurrency model](https://www.sqlite.org/lockingv3.html), but at the end of the day, when a large number of workers are trying to cooperate, it's at a massive disadvantage compared to an in-memory system like Postgres that can coordinate concurrent operations far more easily.
 
     This is made somewhat worse by just how important the database is to most applications. I've yet to see a large-scale operation where the database isn't just the bottleneck, it's the most critical bottleneck _by far_, like orders of magnitude. Application processes tend to be trivially parallelizable compared to figuring out what to do with a hot DB.
 
 * Backwards compatibility has tradeoffs. To maximize compatibility, SQLite only stores five types of values: `NULL`, integers, floats, text, and raw blobs. So for example,  although it has good support for JSON, that JSON is always stored as text. Compare this Postgres, which stores JSON as [preparsed `jsonb`](https://www.postgresql.org/docs/current/datatype-json.html). The storage limitations also mean you're giving up native support for a lot of other data types: datetimes, UUIDs, arrays, ranges, etc.
 
-* The replication story for one of these SQLite-based systems compared to Postgres isn't _that_ different. In a cloud Postgres set up, something like [WAL-G](https://github.com/wal-g/wal-g) is used to send WAL archives to a durable blob store. Local processes in other regions ingest WAL and make copies available there with minimal latency. This only starts to break down when there's massive WAL scale to send over large geographic distances, which SQLite isn't going to have any easier of a time with.
+* The replication story for one of these SQLite-based systems compared to Postgres isn't _that_ different. In a cloud Postgres set up, something like [WAL-G](https://github.com/wal-g/wal-g) is used to send WAL archives to a durable blob store. Local processes in other regions ingest WAL and make copies available there with minimal latency. This only starts to break down when there's massive WAL scale to send over large distances, which SQLite isn't going to have any easier of a time with.
 
 A hallmark of branches of technology with incredibly bold claims which ended up far middling than their purveyors intended (Hypermedia APIs, serverless functions-as-a-service like AWS Lambda, dare I say Web3) is that ambitious goals were proclaimed, but never demonstrated much potential in the real world. A technology is never _disproven_ -- instead, it starts to lose its time in the limelight, and ever so slowly, fizzles out.
 
@@ -77,15 +77,15 @@ Quite by accident, I stayed at a hotel with Icelandic roots called Kex (Icelandi
 
 Speaking of Iceland, my mind keeps wandering back back to one of the best marketing campaigns in years: Inspired by Iceland's [Outhorse your email](https://www.visiticeland.com/outhorse-your-email/).
 
-You have to imagine that this is one of those projects that started out as a gag that some out-of-the-box marketers people came up with at the bar, but which was pushed to ever-more-extraordinary lengths.
+You have to imagine that this is one of those projects that started out as a gag from some creative marketers who were out at the bar together, and which was pushed to ever-more-extraordinary lengths.
 
 <img src="/photographs/nanoglyphs/034-cloud-sqlite/outhorse-your-email@2x.jpg" alt="Ourhorse your email" class="wide" loading="lazy">
 
-Layer one of effort would be to make a website, write some clever copy, and post some stock photography of Icelandic horses. Maybe a little Photoshop.
+Layer _one_ of effort would be to make a website, write some clever copy, and post some stock photography of Icelandic horses. Maybe a little Photoshop.
 
 Check.
 
-Layer two would be to construct a prop keyboard and film some horses walking over it in various exotic locations including beyond-majestic Icelandic coastlines and waterfalls.
+Layer _two_ would be to construct a prop keyboard and film some horses walking over it in various exotic locations including beyond-majestic Icelandic coastlines and waterfalls.
 
 _**Check.**_
 

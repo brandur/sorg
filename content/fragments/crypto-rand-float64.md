@@ -18,8 +18,8 @@ import (
 	"math/big"
 )
 
-// Intn is a shortcut for generating a random integer between 0 and max using
-// crypto/rand.
+// Intn is a shortcut for generating a random integer between 0 and
+// max using crypto/rand.
 func Intn(max int64) int64 {
 	nBig, err := rand.Int(rand.Reader, big.NewInt(max))
 	if err != nil {
@@ -32,8 +32,8 @@ func Intn(max int64) int64 {
 We then build on that to implement `Float64`:
 
 ``` go
-// Float64 is a shortcut for generating a random float between 0 and 1 using
-// crypto/rand.
+// Float64 is a shortcut for generating a random float between 0 and
+// 1 using crypto/rand.
 func Float64() float64 {
 	return float64(Intn(1<<53)) / (1 << 53)
 }
@@ -45,7 +45,7 @@ Why 2<sup>53</sup>? A `float64` in Go consists of three parts:
 
 * 1 bit sign.
 * 53 bits "mantissa", otherwise known as a _coefficient_ or _significand_.
-* 10 bits signed integer exponent which modifies the magnitude of the previous number.
+* 10 bits signed integer exponent which modifies the magnitude of the mantissa.
 
 So a `float64`'s primary value is within those 53 mantissa bits, which is why we use that number as the bound for our float calculation.
 
