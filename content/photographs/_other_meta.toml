@@ -305,6 +305,16 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/035-generics
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/q25sv3ui0k5hmlu/2W4A1067.JPG?dl=1"
+slug = "nanoglyphs/035-generics/forest-of-nisene-marks"
+title = "Creek at the Forest of Nisene Marks"
+
+#
 # /nanoglyphs/034-cloud-sqlite
 #
 
