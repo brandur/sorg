@@ -23,7 +23,7 @@ But to their credit, in every one of these cases Go core has eventually come aro
 
 Notably, generics don't break Go's `1.*` run. They'd originally been slated for a 2.0 release, but although 1.18 brings in the largest syntax changes since the language's first release, it manages to stay backwards compatible with all previous `1.*` releases. [I've beaten this drum before](/go-lambda), but it is a massive, _massive_ language feature not to have new versions of your language constantly breaking all your existing projects, with precious few other languages get this right.
 
-## APIs
+## API endpoints (#api-endpoints)
 
 In order to facilitate API endpoints being able to self-describe for reflection into OpenAPI (see [docs docs docs](/nanoglyphs/031-api-docs)), and to wrap up common facilities to make developer faster and less error prone, we have a lightweight framework. A typical endpoint definition looked like this, with documentation, request/response samples, and an invocation to get a service handler that should be called into the API endpoint is executed:
 
@@ -109,7 +109,7 @@ This makes things faster, but also makes the code easier to read and safer to ch
 
 Previously, this could only be detected at runtime, which meant that every endpoint definition needed a trivial test case to ensure that a type problem was caught in CI instead of catastrophically late once the problem in production.
 
-## Other uses
+## Other uses (#other-uses)
 
 Although 1.18 doesn't bring any new generic-based helpers directly into core, new [`x/exp/maps`](https://pkg.go.dev/golang.org/x/exp/maps) and [`x/slices`](https://pkg.go.dev/golang.org/x/exp@v0.0.0-20220518171630-0b5c67f07fdf/slices) packages have been made available with some useful helpers that many of us have been writing as manual boilerplate for every possible type ad nauseam for going on a decade now.
 
@@ -128,7 +128,7 @@ func Ptr[T](v T) *T {
 
 TODO: Collect other uses.
 
-## Limitations
+## Limitations (#limitations)
 
 By far the most noticeable limitation is that generic functions can't be defined on struct functions. Structs can have types and their functions can use those types, but functions can't define their own. So this is allowed:
 
@@ -156,7 +156,7 @@ func (n *Node) Equals[U comparable](other U) bool {
 
 TODO: Other uses
 
-## Other 1.18 niceties
+## Other 1.18 niceties (#other-niceties)
 
 The world's simplest possible crowd pleaser (well, aside from (`gen_random_uuid` in Postgres](TODO)) is `strings.Cut`, which very simply, returns two parts of a string broken on whitespace, which as it turns out is what XX% (TODO) of calls to `strings.Split` were trying to do:
 
@@ -170,7 +170,7 @@ And I don't have a clue how this one slipped in under the radar, but the [`x/syn
 TODO
 ```
 
-## The Dropout
+## The Dropout (#the-dropout)
 
 Since I just can't get enough of tech, last week I watched [The Dropout](TODO), about Elizabeth Holmes and Theranos. _Bad Blood_ by John Carreyrou is one of those precious few nonfiction books that reads like a thriller and keeps you on the edge of your seat the whole way through -- a legitimate 10/10, and being one of the most dramatic tech scandals of all time, I was looking forward to the TV adaptation as well.
 
