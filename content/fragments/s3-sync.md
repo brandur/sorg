@@ -35,6 +35,6 @@ Okay, full disclosure time. I wrote a custom Go program to solve the problem by 
 
 But as I was writing this article about it, I decided to go back and read the manual one more time. I'd done it before to verify that nothing like `--checksum` existed in the AWS CLI, but not carefully enough. On that second pass I discovered the `--size-only` option. `aws s3 sync` works by comparing mtimes _and_ sizes, and although `--size-only` doesn't fundamentally change that strategy, it does disable the mtime half of the equation -- files are considered equivalent as long as their name and size are equal.
 
-`--size-only` has some risk for for text-based content where minor changes (e.g. one character changed) might lead to a file of the same size. But for media assets where even a minor tweak tends to rewrite many bytes, it's fine, and very fast.
+`--size-only` has some risk for text-based content where minor changes (e.g. one character changed) might lead to a file of the same size. But for media assets where even a minor tweak tends to rewrite many bytes, it's fine, and very fast.
 
 I threw out my custom script solution and replaced it with `--size-only`, which _also_ worked perfectly, and without all the custom code. I decided to publish this article anyway as a reminder to not be too quick to jump into writing new software -- sometimes the right answer is to read more carefully.
