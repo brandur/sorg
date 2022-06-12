@@ -168,7 +168,7 @@ My site is static, so I built a small form that runs as a
 [Go executable][passages-signup] and provides this one
 function. It's a little painful that I need to run a
 separate service to handle this very mundane job, but it
-should be micro enough enough that I won't have to look at
+should be micro enough that I won't have to look at
 it very often. I chose Go for the job because it's got a
 remarkable track record for API stability and minimal
 upgrade churn. I'm hopeful that in ten years it'll still be
