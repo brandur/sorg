@@ -4,6 +4,8 @@ published_at = 2022-06-07T16:12:27Z
 title = "Mostly automatic Go dependency updates with GitHub Actions"
 +++
 
+**Update (2022/06/12):** [Michael points out](https://twitter.com/embano1/status/1535871515941642241) that you can probably just GitHub's [built-in Dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) to do this as well.
+
 An issue that came up during a [recent pen test](/fragments/crypto-rand-float64) on our services is that we had quite a few outdated packages deteriorating in our Go stack. Not super surprising given that there's no function, either programmatic or process-wise, that ever causes any of our dependencies to be updated, except when we do so manually on rare occasions to get a bug fix or new feature from one of them.
 
 Go Modules makes dependency updates quite easy. This command will bump everything where a new patch or minor version is found (the `-t` also includes test packages):
