@@ -20,6 +20,6 @@ Pricing is consistent across the board for the larger plans across all the major
 Other options that came up:
 
 * [Nextcloud](https://github.com/nextcloud) -- Open-source self-hosted storage and productivity system.
-* [Proton Drive](https://protonmail.com/blog/proton-drive-early-access/) -- From the ProtonMail people. No native apps as of yet though.
+* [Proton Drive](https://proton.me/news/proton-drive-early-access) -- From the ProtonMail people. No native apps as of yet though.
 * [Syncthing](https://syncthing.net/) -- Open-source program that synchronizes between two computers.
 * [Tresorit](https://tresorit.com/) -- Encrypted hosted service. $30 / month for 2.5 TB.
