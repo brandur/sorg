@@ -12,6 +12,6 @@ I'm still having trouble with some of the taller orders (e.g. I'd love to lock i
 
 Some people are able to maintain good habits through nothing more a sense of internal motivation and a disciplined state of mind. I'm not one of them. In case you're not either, then streak tracking might be a help to you.
 
-{{FigureSingleWithClass "Screenshot of Streams." "/photographs/fragments/streak-tracking/streaks.png" "overflowing"}}
+{{FigureSingleWithClass "Screenshot of Streaks." "/photographs/fragments/streak-tracking/streaks.png" "overflowing"}}
 
 [1] On track to hit level 60 in the first half of 2023. Much longer than the recommended year, but I'll take it.
