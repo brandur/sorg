@@ -8,7 +8,7 @@ A perennial question in the database world: should you prefer to keep applicatio
 
 Like other questions of this kind, there's no objectively correct answer, only opinions. To prepare for writing this, I went around the web and looked through the top blog posts and Stack Overflow threads that I could find to see what other people say, and was surprised by the size of the gap between many of the recommendations and common practice. I think it's safe to say that most organizations are writing almost all of their logic in application code -- it probably wouldn't even occur to 95% of developers out there to even write a stored procedure, let alone put a sizable amount of domain logic in one, but if you read answers on the subject, many will strongly recommend putting logic in your database, creating a wide discrepancy in what experts say versus what people are doing.
 
-I'll put my bias out right up front: despite being a big proponent of leveraging relational databases to the hilt by taking advantage of their types, strong schema guarantees, and transaction consistency, I don't think application code belongs in the database _almost_ ever. There are some cases where it's appropriate, but even there it should be kept small and used sparingly.
+I'll put my bias out right up front: despite being a big proponent of leveraging relational databases to the hilt by taking advantage of their types, strong schema guarantees, and transaction consistency, I put code into the database reluctantly. There are some cases where it's appropriate, but even there it should be kept small and used sparingly.
 
 ## Arguments against database code (#against)
 
