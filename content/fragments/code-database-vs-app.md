@@ -24,9 +24,9 @@ Why the database isn't a good fit for application code:
 
     * Relational databases are often a single choke point for an application, while other application code is deployed in a set of parallel containers that access it. Application code in one of those containers scales easily -- just deploy more of them. Scaling the database is harder.
 		
-    * Operations are slower when they may also have to run an opaque number of triggers with them. For example, a batch insert operation might take many times as long if there's a hidden trigger firing for each row. Sure, you can disable them temporarily, but then you're losing their ostensible benefits, and it might be not be obvious they're even there (see "opaque side effects" above).
+    * Operations are slower when they may also have to run an opaque number of triggers with them. For example, a batch insert operation might take many times as long if there's a hidden trigger firing for each row. Sure, you can disable them temporarily, but then you're losing their ostensible benefits, and it might be not be obvious that things are slower than they should be because the triggers aren't easily visible (see "opaque side effects" above).
 
-* **Procedural SQL:** Even if you know it well, writing procedural SQL is awful. Not all programming language syntax is created equal, and procedural SQL belongs somewhere down at the bottom of the pile with BASIC and COBOL. And sure, you may be able to activate an extension for an alternative scripting language with better syntax, but do you really want something like a Python VM running inside of your database?
+* **Procedural SQL:** Even if you know it well, writing procedural SQL is awful. Not all programming language syntax is created equal, and procedural SQL belongs somewhere down at the bottom of the pile with BASIC and COBOL [1]. And sure, you may be able to activate an extension for an alternative scripting language with better syntax, but do you really want something like a Python VM running inside of your database?
 
 ## Bad arguments for database code (#for)
 
@@ -96,3 +96,5 @@ And finally, a couple better arguments for putting code in the database:
 These cases still carry the downsides of database-owned code listed above, but are also places where the benefits of putting them in the database outweigh the costs.
 
 I'm sure there are more like this, and each should be evaluated on a case-by-case basis. It's fine to do so in some cases, but use this power sparingly, and keep code small where it is used.
+
+[1] Note that I quite like SQL as a declarative language, but procedural SQL is a different beast.
