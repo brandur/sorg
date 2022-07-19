@@ -11,7 +11,7 @@ Anyone who's seen a couple different production database environments is likely 
 UPDATE foo SET deleted_at = now() WHERE id = $1;
 ```
 
-The concept behind soft deletion is to make deletion safer, and reversible. Once a record's been hit by a hard `DELETE`, it may technically still be recoverable by digging down into the storage layer, but sufficed to say that it's really hard to get back. Theoretically with soft deletion, you just set `deleted_at` back to `NULL` and you're done:
+The concept behind soft deletion is to make deletion safer, and reversible. Once a record's been hit by a hard `DELETE`, it may technically still be recoverable by digging down into the storage layer, but suffice it to say that it's really hard to get back. Theoretically with soft deletion, you just set `deleted_at` back to `NULL` and you're done:
 
 ``` sql
 -- and like magic, it's back!!
@@ -31,7 +31,7 @@ WHERE id = @id
 
 And forgetting that extra predicate on `deleted_at` can have dangerous consequences as it accidentally returns data that's no longer meant to be seen.
 
-Some ORMs or ORM plugins make this easier by automatically chaining the extra `deleted_at` clause onto every query (see [`acts_as_paranoid`](https://github.com/ActsAsParanoid/acts_as_paranoid) for example), but just because it's hidden doesn't necessarily make things better. If an operator every queries the database directly they're even more likely to forget `deleted_at` because normally the ORM does the work for them.
+Some ORMs or ORM plugins make this easier by automatically chaining the extra `deleted_at` clause onto every query (see [`acts_as_paranoid`](https://github.com/ActsAsParanoid/acts_as_paranoid) for example), but just because it's hidden doesn't necessarily make things better. If an operator ever queries the database directly they're even more likely to forget `deleted_at` because normally the ORM does the work for them.
 
 ### Losing foreign keys (#foreign-keys)
 
@@ -182,6 +182,6 @@ The technique solves all the problems outlined above:
 
 * Foreign keys still work. Attempting to remove a record without also getting its dependencies is an error.
 
-* Hard deleting old records for regularly requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
+* Hard deleting old records for regulatory requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
 
-Deleted data is a little harder to get at, but no my much, and is still kept around in case someone needs to look at it.
+Deleted data is a little harder to get at, but not by much, and is still kept around in case someone needs to look at it.
