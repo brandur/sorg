@@ -77,7 +77,7 @@ const TwitterInfo = template.HTML(`<p>Find me on Twitter at ` +
 
 // HTMLTemplateFuncMap is a function map of template helpers which is the
 // combined version of the maps from ftemplate, mtemplate, and mtemplatemd.
-var HTMLTemplateFuncMap template.FuncMap = mtemplate.CombineFuncMaps(
+var HTMLTemplateFuncMap = mtemplate.CombineFuncMaps(
 	stemplate.FuncMap,
 	mtemplate.FuncMap,
 	mtemplatemd.FuncMap,
@@ -85,7 +85,7 @@ var HTMLTemplateFuncMap template.FuncMap = mtemplate.CombineFuncMaps(
 
 // TextTemplateFuncMap is a combined set of template helpers for text
 // templates.
-var TextTemplateFuncMap texttemplate.FuncMap = mtemplate.HTMLFuncMapToText(HTMLTemplateFuncMap)
+var TextTemplateFuncMap = mtemplate.HTMLFuncMapToText(HTMLTemplateFuncMap)
 
 //////////////////////////////////////////////////////////////////////////////
 //
