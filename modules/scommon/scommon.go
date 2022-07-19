@@ -6,7 +6,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	texttemplate "text/template"
 
 	"github.com/brandur/modulir/modules/mtemplate"
 	"github.com/brandur/modulir/modules/mtemplatemd"
