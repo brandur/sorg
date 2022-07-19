@@ -11,7 +11,7 @@ Anyone who's seen a couple different production database environments is likely 
 UPDATE foo SET deleted_at = now() WHERE id = $1;
 ```
 
-The concept behind soft deletion is to make deletion safer, and reversible. Once a record's been hit by a hard `DELETE`, it may technically still be recoverable by digging down into the storage layer, but sufficed to say that it's really hard to get back. Theoretically with soft deletion, you just set `deleted_at` back to `NULL` and you're done:
+The concept behind soft deletion is to make deletion safer, and reversible. Once a record's been hit by a hard `DELETE`, it may technically still be recoverable by digging down into the storage layer, but suffice to say that it's really hard to get back. Theoretically with soft deletion, you just set `deleted_at` back to `NULL` and you're done:
 
 ``` sql
 -- and like magic, it's back!!
@@ -20,7 +20,7 @@ UPDATE foo SET deleted_at = NULL WHERE id = $1;
 
 ## Downsides: Code leakage (#code-leakage)
 
-But the technique has some major downsides. The first is that soft deletion logic bleeds out into all parts of your code. All our selects look something like this:
+But this technique has some major downsides. The first is that soft deletion logic bleeds out into all parts of your code. All our selects look something like this:
 
 ``` sql
 SELECT *
@@ -31,13 +31,13 @@ WHERE id = @id
 
 And forgetting that extra predicate on `deleted_at` can have dangerous consequences as it accidentally returns data that's no longer meant to be seen.
 
-Some ORMs or ORM plugins make this easier by automatically chaining the extra `deleted_at` clause onto every query (see [`acts_as_paranoid`](https://github.com/ActsAsParanoid/acts_as_paranoid) for example), but just because it's hidden doesn't necessarily make things better. If an operator every queries the database directly they're even more likely to forget `deleted_at` because normally the ORM does the work for them.
+Some ORMs or ORM plugins make this easier by automatically chaining the extra `deleted_at` clause onto every query (see [`acts_as_paranoid`](https://github.com/ActsAsParanoid/acts_as_paranoid) for example), but just because it's hidden doesn't necessarily make things better. If an operator ever queries the database directly they're even more likely to forget `deleted_at` because normally the ORM does the work for them.
 
 ### Losing foreign keys (#foreign-keys)
 
 Another consequence of soft deletion is that foreign keys are effectively lost.
 
-The major benefit of foreign keys is that they guarantee referential integrity. For example, say you have customers in one table that may refer to a number of invoices in another. Without foreign keys, you could delete a customer, but forget to remove its invoices, thereby leaving a bunch of orphaned invoices that reference an customer that's gone.
+The major benefit of foreign keys is that they guarantee referential integrity. For example, say you have customers in one table that may refer to a number of invoices in another. Without foreign keys, you could delete a customer, but forget to remove its invoices, thereby leaving a bunch of orphaned invoices that reference a customer that's gone.
 
 With foreign keys, trying to remove that customer without removing the invoices first is an error:
 
@@ -51,7 +51,7 @@ DETAIL:  Key (id)=(64977e2b-40cc-4261-8879-1c1e6243699b) is still
 
 As with other relational database features like predefined schemas, types, and check constraints, the database is helping to keep data valid.
 
-But with soft deletion, this goes out the window. A customer may be soft deleted with its `deleted_at` flag set, but we're now back to being able to forget do the same for its invoices. Their foreign keys are still valid because the customer record is technically still there, but there's no equivalent check that the invoices are also soft deleted, so you can be left with your customer being "deleted", but its invoices still live.
+But with soft deletion, this goes out the window. A customer may be soft deleted with its `deleted_at` flag set, but we're now back to being able to forget to do the same for its invoices. Their foreign keys are still valid because the customer record is technically still there, but there's no equivalent check that the invoices are also soft deleted, so you can be left with your customer being "deleted", but its invoices still live.
 
 ### Pruning data is hard (#pruning)
 
@@ -137,7 +137,7 @@ At my job right now, we use soft deletion.
 
 As far as I'm aware, never _once_, in ten plus years, did anyone at any of these places ever actually use soft deletion to undelete something.
 
-The biggest reason for that is that almost always, **data deletion also has non-data side effects**. Calls may have been made to foreign systems to archive records there, objects may have been removed in blob stores, or servers spun down. The process can't simply be reversed by setting `NULL` on `deleted_at` -- equivalent undos need to exist for all those other operations too, and they rarely do.
+The biggest reason for this is that almost always, **data deletion also has non-data side effects**. Calls may have been made to foreign systems to archive records there, objects may have been removed in blob stores, or servers spun down. The process can't simply be reversed by setting `NULL` on `deleted_at` -- equivalent undos need to exist for all those other operations too, and they rarely do.
 
 We had a couple cases at Heroku where an important user deleted an app by accident and wanted to recover it. We had soft deletion, and theoretically other delete side effects could've been reversed, but we still made the call not to try because no one had ever done it before, and trying to do it in an emergency was exactly the wrong time to figure it out -- we'd almost certainly get something wrong and leave the user in a bad state. Instead, we rolled forward by creating a new app, and helping them copy environment and data from the deleted app to it. So even where soft deletion was theoretically most useful, we still didn't use it.
 
@@ -147,7 +147,7 @@ Although I've never seen an undelete work in practice, soft deletion wasn't comp
 
 And while I'd argue against the traditional soft deletion pattern due to the downsides listed above, luckily there's a compromise.
 
-Instead of keeping deleted data in the same tables from which it was deleted from, there can be a new relation specifically for storing all deleted data, and with a flexible `jsonb` column so that it can capture the properties of any other table:
+Instead of keeping deleted data in the same tables from which it was deleted, there can be a new relation specifically for storing all deleted data, and with a flexible `jsonb` column so that it can capture the properties of any other table:
 
 ``` sql
 CREATE TABLE deleted_record (
@@ -176,12 +176,12 @@ RETURNING *;
 
 This does have a downside compared to `deleted_at` -- the process of selecting columns into `jsonb` isn't easily reversible. While it's possible to do so, it would likely involve building one-off queries and manual intervention. But again, that might be okay -- consider how often you're really going to be trying to undelete data.
 
-The technique solves all the problems outlined above:
+This technique solves all the problems outlined above:
 
 * Queries for normal, non-deleted data no longer need to include `deleted_at IS NULL` everywhere.
 
 * Foreign keys still work. Attempting to remove a record without also getting its dependencies is an error.
 
-* Hard deleting old records for regularly requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
+* Hard deleting old records for regulatory requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
 
-Deleted data is a little harder to get at, but no my much, and is still kept around in case someone needs to look at it.
+Deleted data is a little harder to get at, but not by much, and is still kept around in case someone needs to look at it.
