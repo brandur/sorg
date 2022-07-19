@@ -135,7 +135,7 @@ When I worked at Stripe, we used soft deletion.
 
 At my job right now, we use soft deletion.
 
-As far as I'm aware, never _once_, in ten plus years, did anyone at any of these places ever actually use soft deletion to undelete something.
+As far as I'm aware, never _once_, in ten plus years, did anyone at any of these places ever actually use soft deletion to undelete something. [1]
 
 The biggest reason for that is that almost always, **data deletion also has non-data side effects**. Calls may have been made to foreign systems to archive records there, objects may have been removed in blob stores, or servers spun down. The process can't simply be reversed by setting `NULL` on `deleted_at` -- equivalent undos need to exist for all those other operations too, and they rarely do.
 
@@ -185,3 +185,5 @@ The technique solves all the problems outlined above:
 * Hard deleting old records for regulatory requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
 
 Deleted data is a little harder to get at, but not by much, and is still kept around in case someone needs to look at it.
+
+[1] An ex-Stripe colleague just emailed me to say that at least in the old days, we would occasionally undelete customer records for users who'd gotten themselves into real trouble, but its use was discouraged, and rare. (Thanks OB!)
