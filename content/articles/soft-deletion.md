@@ -143,7 +143,7 @@ We had a couple cases at Heroku where an important user deleted an app by accide
 
 ## Alternative: A deleted records table (#deleted-records)
 
-Although I've never seen an undelete work in practice, soft deletion wasn't completely useless because we would occasionally use it to refer to deleted data -- usually a manual process where someone wanted to see to a deleted object for purposes of assisting with a support ticket or trying to squash a bug.
+Although I've never seen an undelete work in practice, soft deletion wasn't completely useless because we would occasionally use it to refer to deleted data -- usually a manual process where someone wanted to view a deleted object for purposes of assisting with a support ticket or trying to squash a bug.
 
 And while I'd argue against the traditional soft deletion pattern due to the downsides listed above, luckily there's a compromise.
 
@@ -174,14 +174,14 @@ FROM deleted
 RETURNING *;
 ```
 
-This does have a downside compared to `deleted_at` -- the process of selecting columns into `jsonb` isn't easily reversible. While it's possible to do so, it would likely involve building one-off queries and manual intervention. But again, that might be okay -- consider how often you're really going to be trying to undelete data.
+This does have a downside compared to `deleted_at` -- the process of selecting columns into `jsonb` isn't easily reversible. While it's possible to do so, it would likely involve building once-off queries for manual intervention. But again, that might be okay -- consider how often you're really going to be trying to undelete data.
 
 The technique solves all the problems outlined above:
 
 * Queries for normal, non-deleted data no longer need to include `deleted_at IS NULL` everywhere.
 
-* Foreign keys still work. Attempting to remove a record without also getting its dependencies is an error.
+* Foreign keys still work. Attempting to remove a record without also considering its dependencies is an error.
 
-* Hard deleting old records for regularly requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
+* Hard deleting old records for regular purge requirements gets really, really easy: `DELETE FROM deleted_record WHERE deleted_at < now() - '1 year'::interval`.
 
-Deleted data is a little harder to get at, but no my much, and is still kept around in case someone needs to look at it.
+Deleted data is a little harder to get at, but not by much, and is still kept around in case someone needs to look at it.
