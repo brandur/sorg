@@ -174,7 +174,7 @@ FROM deleted
 RETURNING *;
 ```
 
-This does have a downside compared to `deleted_at` -- the process of selecting columns into `jsonb` isn't easily reversible. While it's possible to do so, it would likely involve building once-off queries for manual intervention. But again, that might be okay -- consider how often you're really going to be trying to undelete data.
+This does have a downside compared to `deleted_at` -- the process of selecting columns into `jsonb` isn't easily reversible. While it's possible to do so, it would likely involve building one-off queries and manual intervention. But again, that might be okay -- consider how often you're really going to be trying to undelete data.
 
 This technique solves all the problems outlined above:
 
