@@ -42,7 +42,7 @@ Most of it will eventually die by virtue of rewrites, or the products, companies
 
 > by which the future life expectancy of some non-perishable things, like a technology or an idea, is proportional to their current age. Thus, the Lindy effect proposes the longer a period something has survived to exist or be used in the present, the longer its remaining life expectancy.
 
-Young companies push development aggressively because they're optimizing for their survival -- spending too much time agonizing over writing the perfect code might lead to the product shipping, which might lead to the company's total failure.
+Young companies push development aggressively because they're optimizing for their survival -- spending too much time agonizing over writing the perfect code might lead to the product not shipping, which might lead to the company's total failure.
 
 It's not a bad instinct, but quality is more of a sliding scale than it is a good or bad dichotomy, and I'd argue that many small companies optimize too much in favor of speed by trading away too much in terms of maintainability by shipping the first thing that was thrown at the wall.
 
