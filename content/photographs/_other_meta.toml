@@ -99,7 +99,7 @@ slug = "fragments/graceful-degradation-time/markdown-and-git"
 title = "Markdown and Git"
 
 #
-# /fragments/
+# /fragments/large-scale-ruby-refactoring
 #
 
 [[photographs]]
@@ -195,6 +195,22 @@ crop_width = 650
 original_image_url = "https://www.dropbox.com/s/wf047o5kxjik65m/openai-api-docs.png?dl=1"
 slug = "fragments/openai-api/openai-api-docs"
 title = "OpenAI API documentation"
+
+#
+# /fragments/operational-convergence
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/0pwu1fa1dhvo5k3/internal-docs.png?dl=1"
+slug = "fragments/operational-convergence/internal-docs"
+title = "Internal docs"
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/s/2lpoozvnvv9tp1b/internal-docs-2.png?dl=1"
+slug = "fragments/operational-convergence/internal-docs-2"
+title = "Internal docs"
 
 #
 # /fragments/rss-abandon
