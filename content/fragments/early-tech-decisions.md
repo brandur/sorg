@@ -46,6 +46,6 @@ Young companies push development aggressively because they're optimizing for the
 
 It's not a bad instinct, but quality is more of a sliding scale than it is a good or bad dichotomy, and I'd argue that many small companies optimize too much in favor of speed by trading away too much in terms of maintainability by shipping the first thing that was thrown at the wall.
 
-And this fails the other way too, where major believers in academic-level correctness agonize over details to such a degree that projects never ship, and sometimes never even start.
+And this fails the other way too, where major believers in academic-level correctness agonize over details to such a degree that projects never ship, and sometimes never even start. (*Cough*, Heroku Dogwood stack, *cough*.)
 
 As with most things, the answer is somewhere in the middle. Spend time thinking and planning, but not to a degenerate extent -- it's also important to _do_. Refactoring is a key part of the equation -- code is never right the first time, it converges on right through many iterations. And ideally the first couple refactors are _significant_, not only small patches that leave the bulk unchanged. More refactoring passes are better, but subsequent ones will produce [diminishing returns](https://en.wikipedia.org/wiki/Diminishing_returns).
