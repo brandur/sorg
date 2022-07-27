@@ -100,7 +100,7 @@ Another converger wakes up periodically and makes sure that all subscriptions ar
 
 All are written to be idempotent. They're constantly trying to converge state all the time, and after tackling any specific inconsistency once, they won't run on it again because doing so would produce no additional effect. After an account I've archived is handled, convergers will still consider it a valid target, but won't do anything else.
 
-They're also written to be resource efficient. Any particular one will do work on parallel where appropriate, but make sure to bound the number of child goroutines it might spin up using [`x/sync`'s `errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup) so that it's a considerate neighbor for other jobs that might be ongoing in the worker process. Each convergence check runs quickly (and with a context timeout in case it doesn't for some reason), and can therefore share a pool of database connections even where the maximum number of pooled connections is much less than the total number of convergers.
+They're also written to be resource efficient. Any particular one will do work in parallel where appropriate, but make sure to bound the number of child goroutines it might spin up using [`x/sync`'s `errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup) so that it's a considerate neighbor for other jobs that might be ongoing in the worker process. Each convergence check runs quickly (and with a context timeout in case it doesn't for some reason), and can therefore share a pool of database connections even where the maximum number of pooled connections is much less than the total number of convergers.
 
 ## Maybe apologism? Or, maybe not. (#maybe-apologism)
 
