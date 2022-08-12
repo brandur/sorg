@@ -38,7 +38,7 @@ A common theme is that all of these were known to be very imperfect implementati
 
 So what's my point? Simply this: software has inertia.
 
-Most of it will eventually die by virtue of rewrites, or the products, companies. or organizations using it dying themselves, but what makes it passed that initial push for survival will likely last longer than expected. The [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect) states:
+Most of it will eventually die by virtue of rewrites, or the products, companies, or organizations using it dying themselves, but what makes it past that initial push for survival will likely last longer than expected. The [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect) states:
 
 > by which the future life expectancy of some non-perishable things, like a technology or an idea, is proportional to their current age. Thus, the Lindy effect proposes the longer a period something has survived to exist or be used in the present, the longer its remaining life expectancy.
 
