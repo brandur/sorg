@@ -83,7 +83,7 @@ jobs:
         run: sudo apt-get install pngquant
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Debug
         run: |
@@ -187,13 +187,37 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
         if: github.ref == 'refs/heads/master'
 
+  check-tailwind:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Tailwind
+        run: |
+          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
+          mv tailwindcss-linux-x64 tailwindcss
+          chmod +x tailwindcss
+
+      - name: Generate Tailwind
+        run: |
+          ./tailwindcss -i ./content/stylesheets-modular/tailwind_base.css -o ./content/stylesheets-modular/tailwind.css
+          ./tailwindcss -i ./content/stylesheets-modular/tailwind_base.css -o ./content/stylesheets-modular/tailwind.min.css --minify
+
+      - name: Check Git diff
+        run: |
+          echo "Please make sure that all Tailwind changes are checked in!"
+          git diff --exit-code .
+
   golangci-lint:
     runs-on: ubuntu-latest
     timeout-minutes: 3
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: "Check: golangci-lint"
         uses: golangci/golangci-lint-action@v2

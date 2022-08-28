@@ -49,7 +49,7 @@ func init() {
 	// returns *this* file (`testing.go`), and we can then trace up to the
 	// project's root directory no matter what package is being tested (tests
 	// have their CWD set to the project's path).
-	// nolint:dogsled
+	//nolint:dogsled
 	_, filename, _, _ := runtime.Caller(0)
 	path.Join(path.Dir(filename), "..")
 	if err := os.Chdir("../../"); err != nil {

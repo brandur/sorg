@@ -1,0 +1,35 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+Belize {{RomanNumeral .Belize.Issue}}: {{.Belize.Title}}{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+
+<style>
+    /* @import url('https://rsms.me/inter/inter.css'); */
+</style>
+
+{{- end -}}
+
+{{- define "content" -}}
+
+<div class="my-16">
+    <div class="mx-auto prose prose-md">
+        <h1 class="text-center text-base">🌴<br><span class="font-medium text-xs">Belize
+                {{RomanNumeral .Belize.Issue}}</span><br>{{.Belize.Title}}
+        </h1>
+        <figure class="md:-mx-[200px] md:w-[calc(100%+400px)]">
+            <img src="/photographs/{{DownloadedImage .Ctx (printf "/belize/%02d/main" .Belize.Issue) .Belize.MainPhotoURL 1200}}"
+                loading="lazy">
+        </figure>
+    </div>
+
+    <div
+        class="mx-auto p-12 prose prose-md prose-figure:md:-mx-[150px] prose-figure:md:my-16 prose-figure:md:w-[calc(100%+300px)] prose-hr:mx-auto prose-hr:w-3/4 prose-img:w-full prose-p:font-normal prose-p:hyphens-auto prose-p:leading-normal">
+
+        {{IncludeMarkdown .Ctx (printf "content/markdown/belize/%02d.md" .Belize.Issue)}}
+    </div>
+</div>
+
+{{- end -}}
