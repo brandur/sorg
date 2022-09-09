@@ -86,7 +86,7 @@ INSERT INTO authors (
 RETURNING *;
 ```
 
-After running `sqlc generate` [1] (which generates Go code from your SQL definitions), you're now able to run this:
+After running `sqlc generate` (which generates Go code from your SQL definitions) [1], you're now able to run this:
 
 ``` go
 author, err = dbsqlc.New(tx).CreateAuthor(ctx, dbsqlc.CreateAuthor{
