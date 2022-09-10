@@ -1,13 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"html/template"
 	"math/rand"
 	"net/url"
 	"os"
 	"path"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"sync"
@@ -120,7 +123,7 @@ func init() {
 //
 //////////////////////////////////////////////////////////////////////////////
 
-// nolint:maintidx
+//nolint:maintidx
 func build(c *modulir.Context) []error {
 	//
 	// PHASE 0: Setup
@@ -195,6 +198,10 @@ func build(c *modulir.Context) []error {
 	// possibly can be. e.g. Jobs with no dependencies should always run in
 	// phase 1. Try to make sure that as few phases as necessary.
 	//
+
+	ctx := context.Background()
+
+	ctx, downloadedImageContainer := mtemplate.DownloadedImageContext(ctx)
 
 	//
 	// Common directories
@@ -354,6 +361,36 @@ func build(c *modulir.Context) []error {
 			c.AddJob(name, func() (bool, error) {
 				return renderNanoglyph(c, source,
 					&nanoglyphs, &nanoglyphsChanged, &nanoglyphsMu)
+			})
+		}
+	}
+
+	//
+	// Pages (render each view)
+	//
+
+	var pagesMu sync.RWMutex
+
+	{
+		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/pages", &mfile.ReadDirOptions{RecurseDirs: true})
+		if err != nil {
+			return []error{err}
+		}
+
+		if conf.Drafts {
+			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/pages-drafts", &mfile.ReadDirOptions{RecurseDirs: true})
+			if err != nil {
+				return []error{err}
+			}
+			sources = append(sources, drafts...)
+		}
+
+		for _, s := range sources {
+			source := s
+
+			name := fmt.Sprintf("page: %s", filepath.Base(source))
+			c.AddJob(name, func() (bool, error) {
+				return renderPage(ctx, c, source, pages, &pagesMu)
 			})
 		}
 	}
@@ -704,36 +741,6 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Pages (render each view)
-	//
-
-	var pagesMu sync.RWMutex
-
-	{
-		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/pages", nil)
-		if err != nil {
-			return []error{err}
-		}
-
-		if conf.Drafts {
-			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/pages-drafts", nil)
-			if err != nil {
-				return []error{err}
-			}
-			sources = append(sources, drafts...)
-		}
-
-		for _, s := range sources {
-			source := s
-
-			name := fmt.Sprintf("page: %s", filepath.Base(source))
-			c.AddJob(name, func() (bool, error) {
-				return renderPage(c, source, pages, &pagesMu)
-			})
-		}
-	}
-
-	//
 	// Passages
 	//
 
@@ -785,6 +792,17 @@ func build(c *modulir.Context) []error {
 			name := fmt.Sprintf("photo fetch: %s", photo.Slug)
 			c.AddJob(name, func() (bool, error) {
 				return fetchAndResizePhotoOther(c, c.SourceDir+"/content/photographs", photo)
+			})
+		}
+	}
+
+	// From `DownloadedImage` template tags.
+	{
+		for i := range downloadedImageContainer.Images {
+			imageInfo := downloadedImageContainer.Images[i]
+
+			c.AddJob("downloaded image: "+imageInfo.Slug, func() (bool, error) {
+				return fetchAndResizeDownloadedImage(c, c.SourceDir+"/content/photographs", imageInfo)
 			})
 		}
 	}
@@ -1354,6 +1372,19 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 		mimage.PhotoGravityCenter, defaultPhotoSizes)
 }
 
+func fetchAndResizeDownloadedImage(c *modulir.Context,
+	targetDir string, imageInfo *mtemplate.DownloadedImageInfo,
+) (bool, error) {
+	base := filepath.Base(imageInfo.Slug)
+	dir := targetDir + filepath.Dir(imageInfo.Slug)
+
+	return mimage.FetchAndResizeImage(c, imageInfo.URL, dir, base, mimage.PhotoGravityCenter,
+		[]mimage.PhotoSize{
+			{Suffix: "", Width: imageInfo.Width, CropSettings: cropDefault},
+			{Suffix: "@2x", Width: imageInfo.Width * 2, CropSettings: cropDefault},
+		})
+}
+
 func fetchAndResizePhotoOther(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
 	if photo.CropWidth == 0 {
 		return false, xerrors.Errorf("need `crop_width` specified for photo '%s'", photo.Slug)
@@ -1520,6 +1551,7 @@ func pagePathKey(source string) string {
 	pagePath = strings.TrimPrefix(pagePath, mfile.MustAbs("./pages-drafts")+"/")
 	pagePath = strings.TrimPrefix(pagePath, mfile.MustAbs("./pages")+"/")
 	pagePath = strings.TrimSuffix(pagePath, path.Ext(pagePath))
+	pagePath = strings.TrimSuffix(pagePath, path.Ext(pagePath)) // again, for `.tmpl.html`
 	return pagePath
 }
 
@@ -1867,6 +1899,67 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		c.TargetDir+"/fragments/index.html", getAceOptions(viewsChanged), locals)
 }
 
+var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
+
+func findGoSubTemplates(templateData string) []string {
+	subTemplateMatches := goFileTemplateRE.FindAllStringSubmatch(templateData, -1)
+
+	subTemplateNames := make([]string, len(subTemplateMatches))
+	for i, match := range subTemplateMatches {
+		subTemplateNames[i] = match[1]
+	}
+
+	return subTemplateNames
+}
+
+func parseGoTemplate(baseTmpl *template.Template, path string) (*template.Template, []string, error) {
+	templateData, err := os.ReadFile(path)
+	if err != nil {
+		return nil, nil, xerrors.Errorf("error reading template file %q: %w", path, err)
+	}
+
+	dependencies := []string{path}
+
+	for _, subTemplatePath := range findGoSubTemplates(string(templateData)) {
+		newBaseTmpl, subDependencies, err := parseGoTemplate(baseTmpl, subTemplatePath)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		dependencies = append(dependencies, subDependencies...)
+		baseTmpl = newBaseTmpl
+	}
+
+	newBaseTmpl, err := baseTmpl.New(path).Funcs(scommon.HTMLTemplateFuncMap).Parse(string(templateData))
+	if err != nil {
+		return nil, nil, xerrors.Errorf("error reading parsing template %q: %w", path, err)
+	}
+
+	return newBaseTmpl, dependencies, nil
+}
+
+func renderGoTemplate(path, target string, locals map[string]interface{}) ([]string, error) {
+	tmpl, dependencies, err := parseGoTemplate(template.New("base_empty"), path)
+	if err != nil {
+		return nil, err
+	}
+
+	file, err := os.Create(target)
+	if err != nil {
+		return nil, xerrors.Errorf("error creating target file: %w", err)
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	if err := tmpl.Execute(writer, locals); err != nil {
+		return nil, xerrors.Errorf("error executing template: %w", err)
+	}
+
+	return dependencies, nil
+}
+
 func renderNanoglyph(c *modulir.Context, source string,
 	issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex,
 ) (bool, error) {
@@ -2167,7 +2260,9 @@ func renderHome(c *modulir.Context,
 		c.TargetDir+"/index.html", getAceOptions(viewsChanged), locals)
 }
 
-func renderPage(c *modulir.Context, source string, meta map[string]*Page, mu *sync.RWMutex) (bool, error) {
+func renderPage(ctx context.Context, c *modulir.Context,
+	source string, meta map[string]*Page, mu *sync.RWMutex,
+) (bool, error) {
 	pagePath := pagePathKey(source)
 
 	// Other dependencies a page might have if it say, included an external
@@ -2206,9 +2301,7 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, mu *sy
 		target += ".html"
 	}
 
-	pageDependenciesMap := map[string]struct{}{}
-	ctx := context.WithValue(context.Background(),
-		mtemplatemd.IncludeMarkdownDependencyKeys, pageDependenciesMap)
+	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
 
 	// Reuse existing metadata for this page, or create metadata if this is the
 	// first time we're rendering it.
@@ -2231,19 +2324,33 @@ func renderPage(c *modulir.Context, source string, meta map[string]*Page, mu *sy
 		return true, err
 	}
 
-	err = mace.RenderFile(c, scommon.MainLayout, source, target,
-		getAceOptions(viewsChanged), locals)
-	if err != nil {
-		return true, err
+	pageMeta.dependencies = nil
+
+	if strings.HasSuffix(source, ".ace") {
+		err := mace.RenderFile(c, scommon.MainLayout, source, target,
+			getAceOptions(viewsChanged), locals)
+		if err != nil {
+			return true, err
+		}
+
+		pageMeta.dependencies = append(pageMeta.dependencies, scommon.MainLayout)
+	} else {
+		dependencies, err := renderGoTemplate(source, target, locals)
+		if err != nil {
+			return true, err
+		}
+
+		pageMeta.dependencies = append(pageMeta.dependencies, dependencies...)
 	}
 
-	pageMeta.dependencies = nil
-	for path := range pageDependenciesMap {
+	for path := range includeMarkdownContainer.Dependencies {
+		pageMeta.dependencies = append(pageMeta.dependencies, path)
+	}
+
+	for _, path := range pageMeta.dependencies {
 		// Check changed here so that Modulir will add the file to its watch
 		// list.
 		c.Changed(path)
-
-		pageMeta.dependencies = append(pageMeta.dependencies, path)
 	}
 
 	return true, nil
@@ -2623,7 +2730,7 @@ func selectRandomPhoto(photos []*Photo) *Photo {
 		}
 	}
 
-	// nolint:gosec
+	//nolint:gosec
 	return randomPhotos[rand.Intn(len(randomPhotos))]
 }
 

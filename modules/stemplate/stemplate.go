@@ -97,7 +97,7 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightb
 	var standinPath string
 	if portrait {
 		// We only have one portrait standin currently (thus `% 1`).
-		// nolint:staticcheck
+		//nolint:staticcheck
 		standinPath = fmt.Sprintf("/assets/images/standin_portrait_0%d.jpg", index%1)
 	} else {
 		standinPath = fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
@@ -201,7 +201,7 @@ func pace(distance float64, duration time.Duration) string {
 }
 
 func randIntn(bound int) int {
-	// nolint:gosec
+	//nolint:gosec
 	return rand.Intn(bound)
 }
 

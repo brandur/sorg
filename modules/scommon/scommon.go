@@ -40,6 +40,10 @@ const (
 	// MainLayout is the site's main layout.
 	MainLayout = LayoutsDir + "/main.ace"
 
+	// MainLayoutTmpl is the site's main layout in Go's native templating
+	// format.
+	MainLayoutTmpl = LayoutsDir + "/main.tmpl.html"
+
 	// NanoglyphsLayout is the layout for a Nanoglyph issue (an email
 	// newsletter).
 	NanoglyphsLayout = LayoutsDir + "/nanoglyphs.ace"
