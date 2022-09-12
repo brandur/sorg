@@ -1,6 +1,5 @@
-/ This is simply here to create a file target which I then manually set a
-/ `Website-Redirect-Location` for in its metadata from AWS console (it should
-/ redirect to `/newsletter`).
+/ Placeholder which will be overwritten in `Makefile`'s deployment by a zero
+/ byte object with a redirect to `/newsletter`.
 /
 / The history is that at some point I added this page, but then removed it, but
 / it was still in the S3 bucket of the finished build, so Google indexed it. It

@@ -113,6 +113,15 @@ ifdef AWS_ACCESS_KEY_ID
 	# Give robots.txt (if it exists) a Content-Type of text/plain. Twitter is
 	# rabid about this.
 	[ -f $(TARGET_DIR)/robots.txt ] && aws s3 cp $(TARGET_DIR)/robots.txt s3://$(S3_BUCKET)/ --acl public-read --cache-control max-age=$(SHORT_TTL) --content-type text/plain $(AWS_CLI_FLAGS) || echo "no robots.txt"
+
+	@echo "\n=== Setting redirects\n"
+
+	# Set redirects on specific objects. Generally old stuff that I ended up
+	# refactoring to live somewhere else. Note that for these to work, S3 web
+	# hosting must be on, and CloudFront must be pointed to the S3 web hosting
+	# URL rather than the REST endpoint.
+	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key glass --website-redirect-location /newsletter
+
 else
 	# No AWS access key. Skipping deploy.
 endif
