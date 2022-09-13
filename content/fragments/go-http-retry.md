@@ -33,6 +33,7 @@ func getURLData(url string) (*http.Response, []byte, error) {
 	if err != nil {
 		return nil, nil, err
 	}
+	defer body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
