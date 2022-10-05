@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     env:
       # Saw build failures, apparently because awscli is trying to determine
@@ -20,6 +20,7 @@ jobs:
       AWS_EC2_METADATA_DISABLED: true
 
       CLOUDFRONT_ID: E2D97SPIHRBCUA
+      CONCURRENCY: 10 # reduced because I think I'm running into Dropbox rate problems
       ENABLE_GOAT_COUNTER: true
       GOOGLE_ANALYTICS_ID: UA-47798518-1
 

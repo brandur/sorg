@@ -1,0 +1,29 @@
+{{- template "layouts/sequences.tmpl.html" . -}}
+
+{{- define "sequences_content" -}}
+
+<p class="font-bold my-8 text-center text-xs tracking-tighter uppercase">
+  {{.Entry.Slug}}
+</p>
+
+{{- template "views/sequences/_entry.tmpl.html" (Map (MapVal "Entry" .Entry)) -}}
+
+<p class="mt-8 mb-16 text-center text-xs">
+  <a href="/sequences#{{.Entry.Slug}}" class="font-bold">
+    View all sequences ⭢
+  </a>
+</p>
+
+<script type="text/javascript">
+  new SimpleLightbox( {
+    elements: '.photographs a',
+
+    closeBtnClass: 'simpleLightboxHide',
+    nextBtnClass: 'simpleLightboxNoBorder',
+    prevBtnClass: 'simpleLightboxNoBorder',
+
+    nextOnImageClick: false
+  } );
+</script>
+
+{{- end -}}

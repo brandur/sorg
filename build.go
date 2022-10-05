@@ -75,16 +75,17 @@ const (
 // reparsing all the source material. In each case we try to only reparse the
 // sources if those source files actually changed.
 var (
-	articles    []*Article
-	fragments   []*Fragment
-	nanoglyphs  []*snewsletter.Issue
-	passages    []*snewsletter.Issue
-	pages       = make(map[string]*Page)
-	photos      []*Photo
-	photosOther []*Photo
-	sequences   = make(map[string]*Sequence)
-	talks       []*stalks.Talk
-	tweets      []*squantified.Tweet
+	articles     []*Article
+	dependencies = &DependencyRegistry{sources: make(map[string][]string)}
+	fragments    []*Fragment
+	nanoglyphs   []*snewsletter.Issue
+	passages     []*snewsletter.Issue
+	pages        = make(map[string]*Page)
+	photos       []*Photo
+	photosOther  []*Photo
+	sequence     Sequence
+	talks        []*stalks.Talk
+	tweets       []*squantified.Tweet
 )
 
 // Time zone to show articles / fragments / etc. publishing times in.
@@ -510,60 +511,36 @@ func build(c *modulir.Context) []error {
 	// Sequences (read `_meta.toml`)
 	//
 
-	sequencesChanged := make(map[string]bool)
+	var sequenceChanged bool
 
 	{
-		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/sequences",
-			&mfile.ReadDirOptions{ShowDirs: true})
-		if err != nil {
-			return []error{err}
-		}
+		c.AddJob("sequences", func() (bool, error) {
+			source := c.SourceDir + "/content/sequences/_meta.toml"
 
-		if conf.Drafts {
-			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/sequences-drafts",
-				&mfile.ReadDirOptions{ShowDirs: true})
-			if err != nil {
-				return []error{err}
+			if !c.Changed(source) {
+				return false, nil
 			}
-			sources = append(sources, drafts...)
-		}
 
-		for _, s := range sources {
-			sequencePath := s
+			sequenceChanged = true
 
-			name := fmt.Sprintf("sequence %s _meta.toml", filepath.Base(sequencePath))
-			c.AddJob(name, func() (bool, error) {
-				source := sequencePath + "/_meta.toml"
+			err := mtoml.ParseFile(c, source, &sequence)
+			if err != nil {
+				return true, err
+			}
 
-				if !c.Changed(source) {
-					return false, nil
-				}
+			if err := sequence.validate(); err != nil {
+				return true, err
+			}
 
-				slug := path.Base(sequencePath)
+			// Do a little post-processing on all the entries found in the
+			// sequence.
+			for _, entry := range sequence.Entries {
+				entry.DescriptionHTML = template.HTML(string(mmarkdown.Render(c, []byte(entry.Description))))
+				entry.Sequence = &sequence
+			}
 
-				var sequence Sequence
-				err = mtoml.ParseFile(c, source, &sequence)
-				if err != nil {
-					return true, err
-				}
-				sequence.Slug = slug
-
-				if err := sequence.validate(); err != nil {
-					return true, err
-				}
-
-				// Do a little post-processing on all the entries found in the
-				// sequence.
-				for _, entry := range sequence.Entries {
-					entry.DescriptionHTML = string(mmarkdown.Render(c, []byte(entry.Description)))
-					entry.Sequence = &sequence
-				}
-
-				sequences[slug] = &sequence
-				sequencesChanged[slug] = true
-				return true, nil
-			})
-		}
+			return true, nil
+		})
 	}
 
 	//
@@ -654,11 +631,8 @@ func build(c *modulir.Context) []error {
 		sortNewsletters(nanoglyphs)
 		sortNewsletters(passages)
 		sortPhotos(photos)
+		sortSequenceEntries(sequence.Entries)
 		sortTalks(talks)
-
-		for _, sequence := range sequences {
-			sortSequenceEntries(sequence.Entries)
-		}
 	}
 
 	//
@@ -811,109 +785,40 @@ func build(c *modulir.Context) []error {
 	// Sequences (index / fetch + resize)
 	//
 
-	// Sequence master feed
+	// Sequences index
 	{
-		c.AddJob("sequences: feed", func() (bool, error) {
-			var allSequenceEntries []*SequenceEntry
-			for _, sequence := range sequences {
-				allSequenceEntries = append(allSequenceEntries, sequence.Entries...)
-			}
-			sortSequenceEntries(allSequenceEntries)
-
-			var anySequenceChanged bool
-			for _, changed := range sequencesChanged {
-				if changed {
-					anySequenceChanged = true
-					break
-				}
-			}
-
-			return renderSequenceFeed(c, nil, allSequenceEntries, anySequenceChanged)
+		c.AddJob("sequence: index", func() (bool, error) {
+			return renderSequenceIndex(ctx, c, sequence.Entries, sequenceChanged)
 		})
 	}
 
-	// Each sequence
+	// Sequences feed
 	{
-		for _, s := range sequences {
-			sequence := s
+		c.AddJob("sequence: feed", func() (bool, error) {
+			return renderSequenceFeed(ctx, c, sequence.Entries, sequenceChanged)
+		})
+	}
 
-			{
-				err := mfile.EnsureDir(c, c.TargetDir+"/sequences/"+sequence.Slug)
-				if err != nil {
-					return []error{err}
-				}
-			}
+	// Each entry
+	{
+		for _, e := range sequence.Entries {
+			entry := e
 
-			{
-				err := mfile.EnsureDir(c, c.SourceDir+"/content/photographs/sequences/"+sequence.Slug)
-				if err != nil {
-					return []error{err}
-				}
-			}
+			// Sequence page
+			name := fmt.Sprintf("sequence: %s", entry.Slug)
+			c.AddJob(name, func() (bool, error) {
+				return renderSequenceEntry(ctx, c, entry, sequenceChanged)
+			})
 
-			// Sequence index
-			{
-				name := fmt.Sprintf("sequence %s: index", sequence.Slug)
-				c.AddJob(name, func() (bool, error) {
-					return renderSequence(c, sequence, sequence.Entries,
-						sequencesChanged[sequence.Slug])
-				})
-			}
+			// Sequence fetch + resize
+			for _, p := range entry.Photos {
+				photo := p
 
-			// Sequence all page
-			{
-				name := fmt.Sprintf("sequence %s: all", sequence.Slug)
-				c.AddJob(name, func() (bool, error) {
-					return renderSequenceAll(c, sequence, sequence.Entries,
-						sequencesChanged[sequence.Slug])
-				})
-			}
-
-			// Sequences all page background image
-			if sequence.BackgroundImageURL != "" {
-				name := fmt.Sprintf("sequence %s background", sequence.Slug)
-				photo := &Photo{
-					OriginalImageURL: sequence.BackgroundImageURL,
-					Slug:             "background",
-				}
-
+				name = fmt.Sprintf("sequence entry %s photo: %s", entry.Slug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
 					return fetchAndResizePhoto(c,
-						c.SourceDir+"/content/photographs/sequences/"+sequence.Slug, photo)
+						c.SourceDir+"/content/photographs/sequences", photo)
 				})
-			}
-
-			// Sequence feed
-			{
-				name := fmt.Sprintf("sequence %s: feed", sequence.Slug)
-				c.AddJob(name, func() (bool, error) {
-					return renderSequenceFeed(c, sequence, sequence.Entries,
-						sequencesChanged[sequence.Slug])
-				})
-			}
-
-			for i, e := range sequence.Entries {
-				entryIndex := i
-				entry := e
-
-				// Sequence page
-				name := fmt.Sprintf("sequence %s: %s", sequence.Slug, entry.Slug)
-				c.AddJob(name, func() (bool, error) {
-					return renderSequenceEntry(c, sequence, entry, entryIndex,
-						sequencesChanged[sequence.Slug])
-				})
-
-				// Sequence fetch + resize
-				for _, p := range entry.Photos {
-					photo := p
-
-					name = fmt.Sprintf("sequence %s entry %s photo: %s",
-						sequence.Slug, entry.Slug, photo.Slug)
-					c.AddJob(name, func() (bool, error) {
-						return fetchAndResizePhoto(c,
-							c.SourceDir+"/content/photographs/sequences/"+sequence.Slug, photo)
-					})
-				}
 			}
 		}
 	}
@@ -1194,23 +1099,9 @@ type PhotoWrapper struct {
 // Sequence is a sequence -- a series of photos that represent some kind of
 // journey.
 type Sequence struct {
-	// BackgroundImageURL is the URL of the image to use as the background on
-	// the all page.
-	BackgroundImageURL string `toml:"background_image_url"`
-
-	// Description is the description of the photograph.
-	Description string `toml:"description"`
-
 	// Entries are the set of entries in the sequence. Each contains a slug,
 	// description, and one or more photos.
 	Entries []*SequenceEntry `toml:"entries"`
-
-	// Slug is a unique identifier for the sequence. It's interpreted from the
-	// sequence's path.
-	Slug string `toml:"-"`
-
-	// Title is the title of the sequence.
-	Title string `toml:"title"`
 }
 
 func (s *Sequence) validate() error {
@@ -1253,7 +1144,7 @@ type SequenceEntry struct {
 	Description string `toml:"description"`
 
 	// DescriptionHTML is the description rendered to HTML.
-	DescriptionHTML string `toml:"-"`
+	DescriptionHTML template.HTML `toml:"-"`
 
 	// OccurredAt is UTC time when the entry was published.
 	OccurredAt *time.Time `toml:"occurred_at"`
@@ -1272,13 +1163,6 @@ type SequenceEntry struct {
 
 	// Title is the title of the entry.
 	Title string `toml:"title"`
-}
-
-// FirstPhoto returns the first photograph for a sequence entry. This is
-// commonly needed in view templates where accessing slice elements via index
-// is made awkward by Go (`index arr 0` rather than `arr[0]`).
-func (e *SequenceEntry) FirstPhoto() *Photo {
-	return e.Photos[0]
 }
 
 // Tag is a symbol assigned to an article to categorize it.
@@ -1899,67 +1783,6 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		c.TargetDir+"/fragments/index.html", getAceOptions(viewsChanged), locals)
 }
 
-var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
-
-func findGoSubTemplates(templateData string) []string {
-	subTemplateMatches := goFileTemplateRE.FindAllStringSubmatch(templateData, -1)
-
-	subTemplateNames := make([]string, len(subTemplateMatches))
-	for i, match := range subTemplateMatches {
-		subTemplateNames[i] = match[1]
-	}
-
-	return subTemplateNames
-}
-
-func parseGoTemplate(baseTmpl *template.Template, path string) (*template.Template, []string, error) {
-	templateData, err := os.ReadFile(path)
-	if err != nil {
-		return nil, nil, xerrors.Errorf("error reading template file %q: %w", path, err)
-	}
-
-	dependencies := []string{path}
-
-	for _, subTemplatePath := range findGoSubTemplates(string(templateData)) {
-		newBaseTmpl, subDependencies, err := parseGoTemplate(baseTmpl, subTemplatePath)
-		if err != nil {
-			return nil, nil, err
-		}
-
-		dependencies = append(dependencies, subDependencies...)
-		baseTmpl = newBaseTmpl
-	}
-
-	newBaseTmpl, err := baseTmpl.New(path).Funcs(scommon.HTMLTemplateFuncMap).Parse(string(templateData))
-	if err != nil {
-		return nil, nil, xerrors.Errorf("error reading parsing template %q: %w", path, err)
-	}
-
-	return newBaseTmpl, dependencies, nil
-}
-
-func renderGoTemplate(path, target string, locals map[string]interface{}) ([]string, error) {
-	tmpl, dependencies, err := parseGoTemplate(template.New("base_empty"), path)
-	if err != nil {
-		return nil, err
-	}
-
-	file, err := os.Create(target)
-	if err != nil {
-		return nil, xerrors.Errorf("error creating target file: %w", err)
-	}
-	defer file.Close()
-
-	writer := bufio.NewWriter(file)
-	defer writer.Flush()
-
-	if err := tmpl.Execute(writer, locals); err != nil {
-		return nil, xerrors.Errorf("error executing template: %w", err)
-	}
-
-	return dependencies, nil
-}
-
 func renderNanoglyph(c *modulir.Context, source string,
 	issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex,
 ) (bool, error) {
@@ -2450,75 +2273,6 @@ func renderRuns(c *modulir.Context) (bool, error) {
 	return true, squantified.RenderRuns(c, viewsChanged, getLocals)
 }
 
-func renderSequence(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
-	sequenceChanged bool,
-) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/sequences/index.ace",
-		},
-		universalSources...,
-	)...)
-	if !sequenceChanged && !viewsChanged {
-		return false, nil
-	}
-
-	title := fmt.Sprintf("Sequence: %s", sequence.Title)
-	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
-
-	// Most of the time we want entries with the most recent first, but we want
-	// them with the oldest first on the index page.
-	entriesReversed := make([]*SequenceEntry, len(entries))
-	for i, photo := range entries {
-		entriesReversed[len(entries)-i-1] = photo
-	}
-
-	locals := getLocals(title, map[string]interface{}{
-		"Description": description,
-		"Entries":     entriesReversed,
-		"Sequence":    sequence,
-	})
-
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/index.ace",
-		path.Join(c.TargetDir, "sequences", sequence.Slug, "index.html"),
-		getAceOptions(viewsChanged), locals)
-}
-
-func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
-	sequenceChanged bool,
-) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/sequences/all.ace",
-		},
-		universalSources...,
-	)...)
-	if !sequenceChanged && !viewsChanged {
-		return false, nil
-	}
-
-	title := fmt.Sprintf("Sequence: %s", sequence.Title)
-	description := string(mmarkdown.Render(c, []byte(sequence.Description)))
-
-	// Oldest first
-	entriesReversed := make([]*SequenceEntry, len(entries))
-	for i, photo := range entries {
-		entriesReversed[len(entries)-i-1] = photo
-	}
-
-	locals := getLocals(title, map[string]interface{}{
-		"Description": description,
-		"Entries":     entriesReversed,
-		"Sequence":    sequence,
-	})
-
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/all.ace",
-		path.Join(c.TargetDir, "sequences", sequence.Slug, "all"),
-		getAceOptions(viewsChanged), locals)
-}
-
 // Renders at Atom feed for a sequence. The entries slice is assumed to be
 // pre-sorted.
 //
@@ -2526,34 +2280,19 @@ func renderSequenceAll(c *modulir.Context, sequence *Sequence, entries []*Sequen
 // general Atom feed for all sequence entries mixed together by specifying
 // `sequence` as `nil` and entries as a master list of all sequence entries
 // combined.
-func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*SequenceEntry,
+func renderSequenceFeed(_ context.Context, _ *modulir.Context, entries []*SequenceEntry,
 	sequenceChanged bool,
 ) (bool, error) {
 	if !sequenceChanged {
 		return false, nil
 	}
 
-	feedIDSuffix := "sequences"
-	if sequence != nil {
-		feedIDSuffix += ":" + sequence.Slug
-	}
-
-	filename := "sequences.atom"
-	if sequence != nil {
-		filename = path.Join("sequences", sequence.Slug+".atom")
-	}
-
-	title := "Sequences - brandur.org"
-	if sequence != nil {
-		title = fmt.Sprintf("Sequences (%s) - brandur.org", sequence.Slug)
-	}
-
 	feed := &matom.Feed{
-		Title: title,
-		ID:    "tag:" + scommon.AtomTag + ",2019:" + feedIDSuffix,
+		Title: "Sequences - brandur.org",
+		ID:    "tag:" + scommon.AtomTag + ",2019:sequences",
 
 		Links: []*matom.Link{
-			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/" + filename},
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/sequences.atom"},
 			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
 		},
 	}
@@ -2567,18 +2306,17 @@ func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*Seque
 			break
 		}
 
-		htmlContent := entry.DescriptionHTML +
-			fmt.Sprintf(`<p><img src="/photographs/sequences/%s/%s_large@2x.jpg"></p>`,
-				entry.Sequence.Slug, entry.Slug)
+		htmlContent := string(entry.DescriptionHTML) +
+			fmt.Sprintf(`<p><img src="/photographs/sequences/%s_large@2x.jpg"></p>`, entry.Slug)
 
 		entry := &matom.Entry{
 			Title:     entry.Title,
 			Content:   &matom.EntryContent{Content: htmlContent, Type: "html"},
 			Published: *entry.OccurredAt,
 			Updated:   *entry.OccurredAt,
-			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Sequence.Slug + "/" + entry.Slug},
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Slug},
 			ID: "tag:" + scommon.AtomTag + "," + entry.OccurredAt.Format("2006-01-02") +
-				":sequences:" + entry.Sequence.Slug + ":" + entry.Slug,
+				":sequences:" + entry.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
 			AuthorURI:  conf.AbsoluteURL,
@@ -2586,7 +2324,7 @@ func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*Seque
 		feed.Entries = append(feed.Entries, entry)
 	}
 
-	filePath := path.Join(conf.TargetDir, filename)
+	filePath := path.Join(conf.TargetDir, "sequences.atom")
 	f, err := os.Create(filePath)
 	if err != nil {
 		return true, xerrors.Errorf("error creating file '%s': %w", filePath, err)
@@ -2596,56 +2334,26 @@ func renderSequenceFeed(_ *modulir.Context, sequence *Sequence, entries []*Seque
 	return true, feed.Encode(f, "  ")
 }
 
-func renderSequenceEntry(c *modulir.Context, sequence *Sequence, entry *SequenceEntry, entryIndex int,
+func renderSequenceIndex(ctx context.Context, c *modulir.Context, entries []*SequenceEntry,
 	sequenceChanged bool,
 ) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/sequences/entry.ace",
-		},
-		universalSources...,
-	)...)
+	source := scommon.ViewsDir + "/sequences/index.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !sequenceChanged && !viewsChanged {
 		return false, nil
 	}
 
-	// A set of previous and next entries for the carousel.
-	//
-	// Note that the subtraction/addition operations may appear to be
-	// "backwards" and that's because they are. This is because by the time the
-	// code gets here, the entries list has already been sorted in _reverse_
-	// chronological order.
-	var entryPrev, entryPrevPrev *SequenceEntry
-	var entryNext, entryNextNext *SequenceEntry
-	if entryIndex+2 < len(sequence.Entries) {
-		entryPrevPrev = sequence.Entries[entryIndex+2]
-	}
-	if entryIndex+1 < len(sequence.Entries) {
-		entryPrev = sequence.Entries[entryIndex+1]
-	}
-	if entryIndex-1 >= 0 {
-		entryNext = sequence.Entries[entryIndex-1]
-	}
-	if entryIndex-2 >= 0 {
-		entryNextNext = sequence.Entries[entryIndex-2]
-	}
-
-	title := fmt.Sprintf("%s — %s %s", entry.Title, sequence.Title, entry.Slug)
-
-	locals := getLocals(title, map[string]interface{}{
-		"Entry":         entry,
-		"EntryNext":     entryNext,
-		"EntryNextNext": entryNextNext,
-		"EntryPrev":     entryPrev,
-		"EntryPrevPrev": entryPrevPrev,
-		"Sequence":      sequence,
-		"ViewportWidth": viewportWidthDeviceWidth,
+	locals := getLocals("Sequence", map[string]interface{}{
+		"Entries": entries,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/sequences/entry.ace",
-		path.Join(c.TargetDir, "sequences", sequence.Slug, entry.Slug),
-		getAceOptions(viewsChanged), locals)
+	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "sequences/index.html"), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
 }
 
 func renderTalk(c *modulir.Context, source string,
@@ -2774,4 +2482,132 @@ func sortTalks(talks []*stalks.Talk) {
 // address of a constant like `tagPostgres`.
 func tagPointer(tag Tag) *Tag {
 	return &tag
+}
+
+//
+// TODO: Extract types/functions below this line to something better, probably
+// in Modulir.
+//
+
+// DependencyRegistry maps Go template sources to other Go template sources that
+// have been included in them as dependencies. It's used to know when to trigger
+// a rebuild on a file change.
+type DependencyRegistry struct {
+	// Maps sources to their dependencies.
+	sources   map[string][]string
+	sourcesMu sync.RWMutex
+}
+
+func (r *DependencyRegistry) getDependencies(source string) []string {
+	r.sourcesMu.RLock()
+	defer r.sourcesMu.RUnlock()
+
+	return r.sources[source]
+}
+
+func (r *DependencyRegistry) renderGoTemplate(ctx context.Context,
+	source, target string, locals map[string]interface{},
+) error {
+	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
+
+	locals["Ctx"] = ctx
+
+	dependencies, err := renderGoTemplate(source, target, locals)
+	if err != nil {
+		return err
+	}
+
+	for path := range includeMarkdownContainer.Dependencies {
+		dependencies = append(dependencies, path)
+	}
+
+	r.sourcesMu.Lock()
+	r.sources[source] = dependencies
+	r.sourcesMu.Unlock()
+
+	return nil
+}
+
+func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *SequenceEntry, sequencesChanged bool,
+) (bool, error) {
+	source := scommon.ViewsDir + "/sequences/entry.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !sequencesChanged && !viewsChanged {
+		return false, nil
+	}
+
+	title := fmt.Sprintf("%s — %s", entry.Title, entry.Slug)
+
+	locals := getLocals(title, map[string]interface{}{
+		"Entry": entry,
+	})
+
+	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "sequences", entry.Slug), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
+}
+
+var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
+
+func findGoSubTemplates(templateData string) []string {
+	subTemplateMatches := goFileTemplateRE.FindAllStringSubmatch(templateData, -1)
+
+	subTemplateNames := make([]string, len(subTemplateMatches))
+	for i, match := range subTemplateMatches {
+		subTemplateNames[i] = match[1]
+	}
+
+	return subTemplateNames
+}
+
+func parseGoTemplate(baseTmpl *template.Template, path string) (*template.Template, []string, error) {
+	templateData, err := os.ReadFile(path)
+	if err != nil {
+		return nil, nil, xerrors.Errorf("error reading template file %q: %w", path, err)
+	}
+
+	dependencies := []string{path}
+
+	for _, subTemplatePath := range findGoSubTemplates(string(templateData)) {
+		newBaseTmpl, subDependencies, err := parseGoTemplate(baseTmpl, subTemplatePath)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		dependencies = append(dependencies, subDependencies...)
+		baseTmpl = newBaseTmpl
+	}
+
+	newBaseTmpl, err := baseTmpl.New(path).Funcs(scommon.HTMLTemplateFuncMap).Parse(string(templateData))
+	if err != nil {
+		return nil, nil, xerrors.Errorf("error reading parsing template %q: %w", path, err)
+	}
+
+	return newBaseTmpl, dependencies, nil
+}
+
+func renderGoTemplate(path, target string, locals map[string]interface{}) ([]string, error) {
+	tmpl, dependencies, err := parseGoTemplate(template.New("base_empty"), path)
+	if err != nil {
+		return nil, err
+	}
+
+	file, err := os.Create(target)
+	if err != nil {
+		return nil, xerrors.Errorf("error creating target file: %w", err)
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	if err := tmpl.Execute(writer, locals); err != nil {
+		return nil, xerrors.Errorf("error executing template: %w", err)
+	}
+
+	return dependencies, nil
 }
