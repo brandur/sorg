@@ -64,7 +64,7 @@ The workaround is to raise indexes concurrently on each individual partition, th
 
 Partitioned tables also can't support `UNIQUE` indexes, which reduces the range of their potential uses. This one will be harder to fix because a solution would require an index that could span multiple tables, which would be new territory for Postgres.
 
-(There are [a few other limitations too](https://www.postgresql.org/docs/current/ddl-partitioning.html#DDL-PARTITIONING-DECLARATIVE-LIMITATIONS), but none as notable as these two.)
+(There are [a few other limitations too](https://www.postgresql.org/docs/current/ddl-partitioning.html#DDL-PARTITIONING-DECLARATIVE-LIMITATIONS), but no others are particularly notable.)
 
 ## 2022: Highly plausible (#highly-plausible)
 
