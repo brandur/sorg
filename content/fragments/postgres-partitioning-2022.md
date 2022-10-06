@@ -52,7 +52,7 @@ We added our first partitioned table recently, and things have gotten so good th
 
 `INSERT`s and `UPDATE`s all happen on the parent table, so partitioning is completely abstracted away from normal application logic.
 
-The entirety of this scheme took me a few hours to write, and has been running for weeks, entirely problem-free. Recall that Postgres' DDL, including all the partitioning commands above is transactional, which let me to write very thorough tests easily, so the implementing is well-vetted. Each test case runs in a test transaction which cleanly rolls back altered altered state including new partitions after finishing, and is isolated from other tests cases running in parallel.
+The entirety of this scheme took me a few hours to write, and has been running for weeks, entirely problem-free. Recall that Postgres' DDL, including all the partitioning commands above is transactional, which let me to write very thorough tests easily, so the implementation is well-vetted. Each test case runs in a test transaction which cleanly rolls back altered altered state including new partitions after finishing, and is isolated from other tests cases running in parallel.
 
 ## Drawbacks, but few (#drawbacks)
 
