@@ -191,13 +191,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
 
+    env:
+      TAILWIND_VERSION: v3.1.8
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Install Tailwind
         run: |
-          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
+          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/${{ env.TAILWIND_VERSION }}/tailwindcss-linux-x64
           mv tailwindcss-linux-x64 tailwindcss
           chmod +x tailwindcss
 
