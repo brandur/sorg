@@ -1,0 +1,78 @@
+<div id="{{.Slug}}" class="container photographs max-w-[1200px] mx-auto">
+
+    {{- $maxWidthClass := "" -}}
+    {{- if and (eq (len .Entry.Photos) 1) (index .Entry.Photos 0).Portrait -}}
+    {{- $maxWidthClass = "max-w-[900px] mx-auto" -}}
+    {{- end -}}
+    <div class="{{$maxWidthClass}}">
+
+        {{- $linkOverride := "" -}}
+        {{- if .IsIndex -}}
+        {{- $linkOverride = (printf "/sequences/%s" .Entry.Slug) -}}
+        {{- end -}}
+
+        {{- if eq (len .Entry.Photos) 3 -}}
+
+        <div class=" flex flex-col">
+            <div class="mb-0.5">
+                {{- with (index .Entry.Photos 0) -}}
+                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                {{- end -}}
+            </div>
+
+            <div class="flex flex-row mt-0.5">
+                <div class="mr-0.5">
+                    {{- with (index .Entry.Photos 1) -}}
+                    {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                    {{- end -}}
+                </div>
+
+                <div class="ml-0.5">
+                    {{- with (index .Entry.Photos 2) -}}
+                    {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                    {{- end -}}
+                </div>
+            </div>
+        </div>
+
+        {{- else if eq (len .Entry.Photos) 2 -}}
+
+        <div class="flex flex-row">
+            <div class="mr-0.5">
+                {{- with (index .Entry.Photos 0) -}}
+                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                {{- end -}}
+            </div>
+
+            <div class="ml-0.5">
+                {{- with (index .Entry.Photos 1) -}}
+                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                {{- end -}}
+            </div>
+        </div>
+
+        {{- else -}}
+
+        <div>
+            {{- with (index .Entry.Photos 0) -}}
+            {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+            {{- end -}}
+        </div>
+
+        {{- end -}}
+
+    </div>
+</div>
+
+<div class="container max-w-[900px] mx-auto my-8 px-4
+            prose prose-invert prose-md
+            prose-a:border-b-[1px] prose-a:border-white prose-a:font-sans prose-a:text-sm prose-a:no-underline
+            hover:prose-a:border-b-0
+            prose-p:font-serif
+            prose-strong:font-sans prose-strong:text-sm">
+    <a href="/sequences/{{.Slug}}" class="no-underline">
+        <h2 class="font-bold text-sm tracking-tighter">{{.Entry.Title}}</h1>
+    </a>
+
+    {{.Entry.DescriptionHTML}}
+</div>

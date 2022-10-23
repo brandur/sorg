@@ -1,0 +1,27 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "javascripts" -}}
+<script src="/assets/{{.Release}}/javascripts/lazy-loading.js" type="text/javascript"></script>
+<script src="/assets/{{.Release}}/javascripts/simpleLightbox.js" type="text/javascript"></script>
+
+{{- end -}}
+
+{{- define "stylesheets" -}}
+
+<link href="/assets/{{.Release}}/stylesheets/simpleLightbox.css" media="screen" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+
+{{- template "views/_optimize_legibility.tmpl.html" . -}}
+
+{{- end -}}
+
+{{- define "content" -}}
+
+<div class="bg-black py-16 text-white">
+
+    {{block "sequences_content" .}}{{end}}
+
+</div>
+
+{{- end -}}

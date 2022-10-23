@@ -1,13 +1,6 @@
-title = "Berlin"
-background_image_url = "https://www.dropbox.com/s/16j6qrfsr7dxhjf/L1070618-adjusted.jpg?dl=1"
+title = "Sequences"
 description = """\
-I first visited Berlin 2011, expecting a clean and efficient German capital. Not only was it neither of those things, but it swung far in the other direction, and I was charmed by its unique oddities -- ubiquitous graffiti, bars without defined closing times (usually open until 4 AM and later, if they close at all), and prodigious levels of open air beer consumption.
-
-It's a city still in transition as it heals from the division that ended with the fall of Wall in '89, still a recent event by historical standards. A sordid history led to some good things, as a low cost of living and a glut of cheap real estate led to decades of blossoming art and creativity. From night clubs located in old power plants, to airports become public parks, to spas where you can relax to the sounds of hard techno -- for encountering the unexpected, there's no better place on Earth.
-
-A few visits later it's still my favorite city, and I try to coax out a few new and interesting things whenever I visit. It's never hard.
-
-See also some [background on the _Sequences_ project](/sequences-project).
+A combined sequence bringing in all the previous ones. 
 \
 """
 
@@ -207,3 +200,142 @@ Unfortunately, getting to the top of Teufelsberg's towers to get up close and pe
     original_image_url = "https://www.dropbox.com/s/ufnxh24aa1iwx20/L1070805.JPG?dl=1"
     portrait = true
     slug = "010b"
+
+[[entries]]
+  occurred_at = 2020-05-28T04:18:20Z
+  slug = "011"
+  title = "An aptly named hill"
+
+  description = """\
+Friday afternoon -- a view of Twin Peaks from the adjacent hill of Corona ("crown" in Spanish and Latin) Heights. There's a unique charm to San Francisco's densely packed urban plan, running up and down hillsides, architecture doing whatever needs to be done to conform to uneven terrain. But live here too long, and it starts to blend into the background. I stared at this photo for a good long time to remember what it looked like.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/cob2hkkklo2uvye/L1010564.jpg?dl=1"
+    slug = "011"
+
+[[entries]]
+  occurred_at = 2020-05-29T05:25:56Z
+  slug = "012"
+  title = "The tower"
+
+  description = """\
+Sutro Tower, almost 1000 feet high, an old TV and radio tower. Quite possibly San Francisco's most notable landmark if you take the Bridge out of the running. Here I caught it near sunset on a day when clouds had settled onto the mountain. The sun's rays hit it from behind. Its skeletal shadow projects forward.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/bi7fxmzi2bzmdzu/L1000546.JPG?dl=1"
+    portrait = true
+    slug = "012"
+
+[[entries]]
+  occurred_at = 2020-05-31T00:35:51Z
+  slug = "013"
+  title = "The beach"
+
+  description = """\
+Ocean Beach, looking out towards Cliff House. Most things in San Francisco are miniature versions of their counterparts elsewhere -- houses, bars & restaurants, parks. Ocean Beach breaks the mold. Not only is it long -- running 3-4 miles from the Sutro Baths to Fort Funston -- but also _wide_. It takes about five minutes to walk from the Great Highway down to the water. Its sheer size has been a huge boon during the quarantine, with thousands of people visiting on weekends, and all the while able to maintain ample distance from one another.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jt2f3961io8hzzw/L1010203.jpg?dl=1"
+    slug = "013"
+
+[[entries]]
+  occurred_at = 2020-06-11T03:58:20Z
+  slug = "014"
+  title = "To the cross"
+
+  description = """\
+Stairs to the peak of Mount Davidson. Towards nightfall, and on a cloudy evening.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jk4k5hyor4p87ey/L1010425.jpg?dl=1"
+    portrait = true
+    slug = "014"
+
+[[entries]]
+  occurred_at = 2020-06-14T01:18:47Z
+  slug = "015"
+  title = "Walzwerk"
+
+  description = """\
+Walzwerk was the first restaurant I ever went to in San Francisco when I moved here years ago. After 21 years in business, this was their last night. Walzwerk has the special distinction of not only being a German restaurant, but specifically an _East German_ restaurant, with authentic signage and DDR paraphernalia spread throughout.
+
+I talked with one of the owners for a few minutes as I was ordering. I was somewhat gladdened to hear that although Covid was indeed the final nail, they'd been thinking about moving back to Germany anyway so their child could spend a few years in the German school system. They promised to open something new upon returning to SF.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/o9gvz33mnssyfdf/L1010799.jpg?dl=1"
+    slug = "015"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/aiouff2jxcbgp1k/L1010798.jpg?dl=1"
+    slug = "015b"
+
+[[entries]]
+  occurred_at = 2020-06-16T02:10:24Z
+  slug = "016"
+  title = "Lighter than air"
+
+  description = """\
+Some photos from a cloudy Sunday at Fort Funston. An old military base that lasted through both world wards and the Cold War, it's now a popular dog walking and hang gliding spot. Wikipedia has a [nice shot](https://en.wikipedia.org/wiki/File:No._89A_Fort_Funston,_Calif.,_Gun_Tube_No.1,_Rigging_for_backing_load_to_entrance_of_reservation._-_NARA_-_296366.jpg) of one of the enormous 16-inch guns that used to be mounted here.
+
+Most park users don't make it far from the parking lot, but walk all the way south, then keeping walking south some more, and you're rewarded as the trail starts to climb, eventually mounting a cliff hundreds of feet up from the beach (bottom left). It's not flying, but it's the closest you can get to it on the ground.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/bx07p0wjaxdnz3m/L1010831.jpg?dl=1"
+    slug = "016"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/1xbui0cgxekkmid/L1010846.jpg?dl=1"
+    slug = "016b"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/2tkcfrh6a0zby68/L1010826.jpg?dl=1"
+    slug = "016c"
+
+[[entries]]
+  occurred_at = 2020-06-26T19:09:49Z
+  slug = "017"
+  title = "In circles"
+
+  description = """\
+Precita Park in Bernal Heights in its full weekend glory. The park service has taken to drawing "isolation circles" in some of the city's more popular parks to keep groups adequately spaced out. It actually works.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/juabz4fouo4cpr5/L1010796-precita.jpg?dl=1"
+    slug = "017"
+
+[[entries]]
+  occurred_at = 2020-07-16T00:31:28Z
+  slug = "018"
+  title = "Radial"
+
+  description = """\
+Some great landscaping out in the Sea Cliff neighborhood, located between Lands End and the Presidio, where every house is worth roughly the same as a modestly sized town in most other countries. Looping north from Golden Gate Park and up and around the whole coast is one of the best walks in San Francisco.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/r0onuslwoe8tq1q/L1010587.jpg?dl=1"
+    slug = "018"
+
+[[entries]]
+  occurred_at = 2020-07-16T00:38:20Z
+  slug = "019"
+  title = "A (very) good view"
+
+  description = """\
+The steps right below the summit of Buena Vista Park near the Haight. This park has the benefit of being quite vertical, so there's generally a little more room to breathe up top compared to some of the others in the area (not as many people are willing to make the trek).
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/tvl3v8vp1c8clay/L1010608.jpg?dl=1"
+    portrait = true
+    slug = "019"

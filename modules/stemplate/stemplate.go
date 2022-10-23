@@ -79,17 +79,19 @@ func formatTimeWithMinute(t *time.Time) string {
 
 // Produces a retina-compatible photograph that's lazy loaded. Largely used for
 // the photographs and sequences sets.
-func lazyRetinaImage(index int, path, slug string) string {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, false, false)
+func lazyRetinaImage(index int, path, slug string) template.HTML {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, false, "", false)
 }
 
 // Same as the above, but also allows the image to be clicked to get a
 // lightbox.
-func lazyRetinaImageLightbox(index int, path, slug string, portrait bool) string {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, portrait, true)
+func lazyRetinaImageLightbox(index int, path, slug string, portrait bool, linkOverride string) template.HTML {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, portrait, linkOverride, true)
 }
 
-func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightbox bool) string {
+func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait bool, linkOverride string,
+	lightbox bool,
+) template.HTML {
 	slug = mtemplate.QueryEscape(slug)
 	largePath := path + slug + "_large.jpg"
 	largePathRetina := path + slug + "_large@2x.jpg"
@@ -107,10 +109,14 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait, lightb
 		standinPath, largePath, largePathRetina, largePath)
 
 	if lightbox {
-		code = fmt.Sprintf(`<a href="%s">%s</a>`, largePathRetina, code)
+		if linkOverride == "" {
+			linkOverride = largePathRetina
+		}
+
+		code = fmt.Sprintf(`<a href="%s">%s</a>`, linkOverride, code)
 	}
 
-	return code
+	return template.HTML(code)
 }
 
 // This is a little tricky, but converts normal spaces to non-breaking spaces

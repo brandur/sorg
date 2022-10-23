@@ -12,6 +12,7 @@
 
     <link href="/articles.atom" rel="alternate" title="Articles{{.TitleSuffix}}" type="application/atom+xml">
     <link href="/fragments.atom" rel="alternate" title="Fragments{{.TitleSuffix}}" type="application/atom+xml">
+    <link href="/sequences.atom" rel="alternate" title="Sequences{{.TitleSuffix}}" type="application/atom+xml">
 
     {{- if eq .SorgEnv "development" -}}
     <link href="/assets/{{.Release}}/stylesheets/tailwind.css" media="screen" rel="stylesheet" type="text/css">
@@ -25,6 +26,8 @@
     {{- /* Served by Modulir itself (but only if websockets are enabled). */ -}}
     <script src="/websocket.js" type="text/javascript"></script>
     {{- end -}}
+
+    {{block "javascripts" .}}{{end}}
 
     {{template "views/_twitter.tmpl.html" .}}
 </head>

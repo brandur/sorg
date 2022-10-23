@@ -1,0 +1,34 @@
+{{- template "layouts/sequences.tmpl.html" . -}}
+
+{{- define "sequences_content" -}}
+
+<h1 class="font-normal font-serif my-8 text-center text-6xl tracking-tighter">
+    Sequences
+</h1>
+
+<div class="container max-w-[600px] mx-auto mb-24 mt-8 px-4
+            prose prose-invert prose-md
+            prose-a:border-b-[1px] prose-a:border-white prose-a:font-sans prose-a:text-sm prose-a:no-underline
+            hover:prose-a:border-b-0
+            prose-p:font-serif
+            prose-strong:font-sans prose-strong:text-sm">
+    <p>
+        Sequences is a tiny, self-hosted photography project in the spirit of the independent web. See the background on
+        the <a href="/sequences-project">Sequences project</a>.
+    </p>
+    <p>
+        I'd originally designed these as separate sets of independent collections, but the barrier to creating new ones
+        was high enough that I'd stopped making them, so I switched everything to a single feed that's more easily
+        updated. That's what you see below.
+    </p>
+</div>
+
+{{- range .Entries -}}
+
+{{- template "views/sequences/_entry.tmpl.html" (Map (MapVal "Entry" .) (MapVal "IsIndex" true)) -}}
+
+<div class="my-32"></div>
+
+{{- end -}}
+
+{{- end -}}
