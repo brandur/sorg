@@ -50,7 +50,7 @@ completes.
 
 GitHub has a [status API][githubstatus] that can assign or
 update statuses associated with a given commit SHA. With
-just a REST API, we'd have to poll the list endpoint ever
+just a REST API, we'd have to poll the list endpoint every
 few seconds to know when new pull requests come in. Luckily
 though, there's much better way: we can listen on for
 GitHub's `pull_request` webhook, and it'll notify us when
