@@ -339,3 +339,18 @@ The steps right below the summit of Buena Vista Park near the Haight. This park 
     original_image_url = "https://www.dropbox.com/s/tvl3v8vp1c8clay/L1010608.jpg?dl=1"
     portrait = true
     slug = "019"
+
+[[entries]]
+  occurred_at = 2020-08-16T00:38:20Z
+  slug = "020"
+  title = "Golden Gate stump"
+
+  description = """\
+A favorite fallen tree in Golden Gate Park, findable near the California Academy of Sciences, not far from the National AIDS Memorial Grove.
+
+I recently consolidated the couple Sequences I'd done over the years into a single feed that's easier to update, and am returning to my back-archives to add a few things that I'd meant to put somewhere. I've written about the independent web and the importance of curating content off major platforms like Instagram, but my own contributions to it over the last six months or so have been embarssingly small -- here's to turning that around.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/8fa9tsbc0ljre24/L1010805-stump.jpg?dl=1"
+    slug = "020"
