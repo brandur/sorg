@@ -374,3 +374,22 @@ A few photos taken along one of those trails as the season's first seasons were 
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/r4l5u9nep2tyx1a/L1060124.JPG?dl=1"
     slug = "021b"
+
+[[entries]]
+  occurred_at = 2020-08-16T02:38:20Z
+  slug = "022"
+  title = "Portugal before daybreak"
+
+  description = """\
+Another old one from a visit to Portugal in 2018, but a photo I like enough to repost. Below is what I'd written back then.
+
+My first 24 hours in Lisbon -- my internal clock is so wildly askew that that I wake up around 4 AM and have trouble getting back to sleep.
+
+Trying to make the best of a bad situation, I unpack my camera, and start walking down the hill towards the center of the city. Here we see the entrance to Lisbon's famous **Rua Augusta**, a wide pedestrian avenue and one of the most beautiful streets in the city.
+
+If you walk further along it in the direction of the ocean, you'll arrive at the [Rua Augusta Arch](https://en.wikipedia.org/wiki/Rua_Augusta_Arch). Already impressive, it's made even more so by the history it was built to commemorate. In 1755, the city was flattened by [a monster of an earthquake](https://en.wikipedia.org/wiki/1755_Lisbon_earthquake) in the 8.5-9 range, still one of the deadliest in human history. The colossal arch symbolizes reconstruction as one of the world's greatest cities was reborn from its own ashes.\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
+    slug = "022"
