@@ -354,3 +354,23 @@ I recently consolidated the couple Sequences I'd done over the years into a sing
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/8fa9tsbc0ljre24/L1010805-stump.jpg?dl=1"
     slug = "020"
+
+[[entries]]
+  occurred_at = 2020-08-16T01:38:20Z
+  slug = "021"
+  title = "Before the ice"
+
+  description = """\
+As I was going back to do some general clean up after the recent Sequences refactor, I came across a draft line that I'd forgotten about, and originally written to test the layouts of the new medium. It's not rendered anymore, so I'm porting some favorites back into the main series.
+
+This one's of a snowy trail up in St. Albert, near Edmonton, Canada. This is where my grandmother lived for many years after moving out of Edmonton proper and before moving down to a facility near my parents in Calgary. One of its most distinctive qualities was a small nearby lake surrounded by some nice trails, and which I have some fond memories of walking during various season with the rest of the family.
+
+A few photos taken along one of those trails as the season's first seasons were starting to arrive.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/lw8djlr7jl516sh/L2018-09-22%2B01.jpg?dl=1"
+    slug = "021"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/r4l5u9nep2tyx1a/L1060124.JPG?dl=1"
+    slug = "021b"
