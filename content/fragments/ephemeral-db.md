@@ -41,7 +41,7 @@ There are of course some tradeoffs:
 
 * Two databases are harder to look after than one.
 
-* No foreign keys between databases. You can still have IDs in one that reference the other, but you're in Mongo world in the since that the existence of the object they reference is no longer guaranteed by the data layer.
+* No foreign keys between databases. You can still have IDs in one that reference the other, but you're in Mongo world in the sense that the existence of the object they reference is no longer guaranteed by the data layer.
 
 * Development complexity is increased somewhat in that we now have two separate migration lines, and engineers have to think about what they're doing when adding changes to one or the other. This doesn't come out to be too important though because it can be almost entirely solved by a little investment in tooling (we have a single `make db` command that'll get your local databases back to current state regardless of where they started).
 
