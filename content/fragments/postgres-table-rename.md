@@ -10,7 +10,7 @@ Well, it turns out a lot actually. Anyone who's run a production database before
 
 An alternative would be to disable all clients temporarily and then do the rename, and indeed a "we're down for maintenance" screen was a pretty common sight in the 2000s, but serious services in the 2020s aim to never have downtime at all. It's annoying for users, and painful if a service is doing some business critical.
 
-Practically speaking, the easiest way to administer a production database is to never rename anything, and live with the fact that some names are less-than-optical. I'd hazard to guess that this is how most shops run -- people would generally prefer to rename as appropriate, but in practice it's more time, risk, and effort than it's worth.
+Practically speaking, the easiest way to administer a production database is to never rename anything, and live with the fact that some names are less-than-optimal. I'd hazard to guess that this is how most shops run -- people would generally prefer to rename as appropriate, but in practice it's more time, risk, and effort than it's worth.
 
 ## Copy this code (#code)
 
