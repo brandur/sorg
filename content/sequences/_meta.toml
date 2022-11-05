@@ -393,3 +393,24 @@ If you walk further along it in the direction of the ocean, you'll arrive at the
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
     slug = "022"
+
+[[entries]]
+  occurred_at = 2023-11-05T21:17:02Z
+  slug = "023"
+  title = "Cold desolation"
+
+  description = """\
+Taken high above Calgary on the day after Christmas in 2018. As with [021](/sequences/021) and [022](/sequences/022), I found these in a test sequence that I'd created, and they were too good not to republish.
+
+It was a cold day (-10C) that was part of a cold winter, and not much of anyone was out and around. Calgary at its most romantic.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/nnmv84hyb1vwqir/L1070002.JPG?dl=1"
+    slug = "023"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/sbx73ak0t15x9qh/L1070052.JPG?dl=1"
+    slug = "023b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/1sgp6ji78jxx5y3/L1070053.JPG?dl=1"
+    slug = "023c"
