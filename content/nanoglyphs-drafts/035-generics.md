@@ -5,7 +5,7 @@ published_at = 2022-06-05T21:05:47Z
 title = "1.18 and Generics"
 +++
 
-Go 1.18's been released for about three months. We upgraded within a day or two, but decided to forego its exotic new syntax in the hopes that [golangci-lint](https://github.com/golangci/golangci-lint) would get some quick patches to be more compatible with it. It got a few, but a month later many of its lints still weren't compatible. Meanwhile, we felt the beckoning call of a whole new world of Go generics, ready to use right behind the curtain. We timed out and took for the plunge.
+Go 1.18's been released for about half a year now. We upgraded within a day or two, but decided to forego its exotic new syntax in the hopes that [golangci-lint](https://github.com/golangci/golangci-lint) would get some quick patches to be more compatible with it. It got a few, but a month later many of its lints still weren't compatible. Meanwhile, we felt the beckoning call of a whole new world of Go generics, ready to use right behind the curtain. We timed out and took for the plunge.
 
 So far, so good. [Planet Scale](https://planetscale.com/blog/generics-can-make-your-go-code-slower) wrote a deep dive on how the use of generics makes Go slow, and although that's certainly true when it comes down to optimizing low-level code, when it comes to domain uses like ours (our project is largely a CRUD API), they've been purely beneficial, and I mean like, _very_ beneficial. Even if generics weren't a thing, my cramped hands are thanking me already with the substitution of the comically unwieldy `interface CURLY BRACE CURLY BRACE` (`interface{}`) with `any`.
 
@@ -162,7 +162,7 @@ func Ptr[T](v T) *T {
 }
 ```
 
-At Crunchy, we address public objects through an alternative UUID formatting called [an EID](). My fanciest use of generics so far is a data loader that an take either and EID or UUID as argument, saving the need for a second nearly-identical copy of the function:
+At Crunchy, we address public objects through an alternative UUID formatting called [an EID](https://docs.crunchybridge.com/api-concepts/eid/). My fanciest use of generics so far is a data loader that an take either and EID or UUID as argument, saving the need for a second nearly-identical copy of the function:
 
 ``` go
 type IDLike interface {
@@ -198,6 +198,8 @@ if err != nil {
 }
 ```
 
+Notably, although generics have let us improve the data loaders a lot, the framework is still a work in progress. Loading data succinctly and efficiently using Go's laborious syntax is a stubborn problem, and one we're still trying to crack.
+
 ## Limitations (#limitations)
 
 By far the most noticeable limitation is that generic functions can't be defined on struct functions. Structs can have types and their functions can use those types, but functions can't define their own. So this is allowed:
@@ -226,7 +228,7 @@ func (n *Node) Equals[U comparable](other U) bool {
 
 ## Other 1.18 niceties (#other-niceties)
 
-The world's simplest possible crowd pleaser (well, aside from (`gen_random_uuid` in Postgres](TODO)) is `strings.Cut`, which very simply, returns two parts of a string broken on whitespace, which as it turns out is what XX% (TODO) of calls to `strings.Split` were trying to do:
+The world's simplest possible crowd pleaser (well, aside from [`gen_random_uuid` in Postgres](https://www.postgresql.org/docs/current/functions-uuid.html)) is `strings.Cut`, which very simply, returns two parts of a string broken on whitespace, and which is a simpler alternative that could replace [77% of calls to `strings.Index*` in the main repo](https://github.com/golang/go/issues/46336):
 
 ``` go
 tokenType, token := strings.Cut("Bearer tok_123", " ")
@@ -259,6 +261,8 @@ if err := errGroup.Wait(); err != nil {
 ```
 
 I've already made use of this in about five different places with no issues whatsoever. I'd previously taken the occasional stab at implementing my own Go worker pools, which was always a risky proposition because it was hard getting them exactly right, and I'd often have to debug tricky Goroutine leaks and deadlocks.
+
+I'd make the argument that `errgroup`'s new limits is one of the best addition to Go in years. Goroutines are a powerful primitive, but they still do two things poorly: (1) error handling across many concurrent tasks, and (2) limiting parallelism. `errgroup` now solves both these problems.
 
 ## The Dropout (#the-dropout)
 
