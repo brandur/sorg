@@ -23,10 +23,15 @@ linters:
     - execinquery
 
     # deprecated
+    - deadcode
     - golint
+    - ifshort
     - interfacer
     - maligned
+    - nosnakecase
     - scopelint
+    - structcheck
+    - varcheck
   enable-all: true
 
 linters-settings:
