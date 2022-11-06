@@ -395,7 +395,7 @@ If you walk further along it in the direction of the ocean, you'll arrive at the
     slug = "022"
 
 [[entries]]
-  occurred_at = 2023-11-05T21:17:02Z
+  occurred_at = 2022-11-05T21:17:02Z
   slug = "023"
   title = "Cold desolation"
 
@@ -414,3 +414,20 @@ It was a cold day (-10C) that was part of a cold winter, and not much of anyone 
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/1sgp6ji78jxx5y3/L1070053.JPG?dl=1"
     slug = "023c"
+
+[[entries]]
+  occurred_at = 2022-11-06T18:05:24Z
+  slug = "024"
+  title = "Charleston"
+
+  description = """\
+Technically, these days I work for a company headquartered in South Carolina. Charleston specifically.
+
+A team on-site last August was the first time I'd ever visited the city. After getting off a rare direct flight from SFO, we ventured inwards, and were delighted by the charm of its old French Quarter, finding this bar semi-randomly as we shopped for venues along the street.
+
+Along with the picteresque old buildings, we got to experience another aspect of coastal life the same night as the sky opened and rain came down in sheets. Driving into downtown, the streets had been bone dry. Driving back out only a few hours later, our Uber forded against a torrential flood flowing down the streets.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/qmr58gxdq2xpeet/2W4A1779-bar-good-shot.JPG?dl=1"
+    slug = "024"
