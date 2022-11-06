@@ -431,3 +431,32 @@ Along with the picteresque old buildings, we got to experience another aspect of
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/qmr58gxdq2xpeet/2W4A1779-bar-good-shot.JPG?dl=1"
     slug = "024"
+
+[[entries]]
+  occurred_at = 2022-11-06T18:34:50Z
+  slug = "025"
+  title = "Inaugural Sessions"
+
+  description = """\
+The first ever Stripe [Sessions](https://stripe.com/sessions) in 2017, which I don't think I think I was supposed to be attending, but was given a spot at the last second.
+
+As I was looking at these, I was wishing that I'd written more down about the period since I didn't remember much anymore, only to realize that I'd been good about writing journal entries around then, and had a long one from that day. Most of it's unpublishable, but here's an excerpt about employee orientation:
+
+> They gave us the usual spiel about how we should never get more specific than saying that we process "billions of dollars for hundreds of thousands of businesses", and said that we shouldn't say anything about the technology being Sigma (to add mystique and imply that it's built on a powerful platform proprietary to Stripe).
+
+It was the launch day for [Stripe's Sigma](https://stripe.com/sigma), which would be announced as part of a Jobs-esque event keynote.
+
+Stripe's [_Increment_ magazine](https://increment.com/on-call/) had just launched a few months earlier, and you can see a few of the issues of _On-call (#1)_ laid out. I'd thought _Increment_ was a mangificient idea, but my instinct nowadays is more akin to finding a shredder as I realize that the issue was written _about_ on-call in an organizational sense, but with very little input from the people who _actually were on-call_. This was reflective of Stripe's top-down attitude towards engineering resources, which were interchangeable cogs whose worth went as far as the specific functions they performed. An engineer's on-call wasn't a service to be respected -- it was a duty, and a duty with a 5-minute SLA.
+
+These photos are five years olds, but I've had Stripe on the mind because [they've been in the news recently](https://stripe.com/newsroom/news/ceo-patrick-collisons-email-to-stripe-employees).
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ped17xkt1fa9dx5/L1000733.JPG?dl=1"
+    slug = "025"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/48p6844q0ij8vzh/L1000720.JPG?dl=1"
+    slug = "025b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/toebqzyqu9s5gns/L1000724.JPG?dl=1"
+    slug = "025c"
