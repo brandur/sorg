@@ -2285,7 +2285,7 @@ func renderRuns(c *modulir.Context) (bool, error) {
 func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 	entries []*SequenceEntry, sequencesChanged bool,
 ) (bool, error) {
-	source := scommon.ViewsDir + "/sequences/_entry.tmpl.html"
+	source := scommon.ViewsDir + "/sequences/_entry_atom.tmpl.html"
 
 	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !sequencesChanged && !viewsChanged {
