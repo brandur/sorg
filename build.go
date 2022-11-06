@@ -2,9 +2,11 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"context"
 	"fmt"
 	"html/template"
+	"io"
 	"math/rand"
 	"net/url"
 	"os"
@@ -2280,10 +2282,13 @@ func renderRuns(c *modulir.Context) (bool, error) {
 // general Atom feed for all sequence entries mixed together by specifying
 // `sequence` as `nil` and entries as a master list of all sequence entries
 // combined.
-func renderSequenceFeed(_ context.Context, _ *modulir.Context, entries []*SequenceEntry,
-	sequenceChanged bool,
+func renderSequenceFeed(ctx context.Context, c *modulir.Context,
+	entries []*SequenceEntry, sequencesChanged bool,
 ) (bool, error) {
-	if !sequenceChanged {
+	source := scommon.ViewsDir + "/sequences/_entry.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !sequencesChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -2306,12 +2311,19 @@ func renderSequenceFeed(_ context.Context, _ *modulir.Context, entries []*Sequen
 			break
 		}
 
-		htmlContent := string(entry.DescriptionHTML) +
-			fmt.Sprintf(`<p><img src="/photographs/sequences/%s_large@2x.jpg"></p>`, entry.Slug)
+		locals := getLocals("", map[string]interface{}{
+			"Entry": entry,
+		})
+
+		var contentBuf bytes.Buffer
+		err := dependencies.renderGoTemplateWriter(ctx, source, &contentBuf, locals)
+		if err != nil {
+			return true, err
+		}
 
 		entry := &matom.Entry{
 			Title:     entry.Title,
-			Content:   &matom.EntryContent{Content: htmlContent, Type: "html"},
+			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
 			Published: *entry.OccurredAt,
 			Updated:   *entry.OccurredAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Slug},
@@ -2551,6 +2563,29 @@ func (r *DependencyRegistry) renderGoTemplate(ctx context.Context,
 	return nil
 }
 
+func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context,
+	source string, writer io.Writer, locals map[string]interface{},
+) error {
+	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
+
+	locals["Ctx"] = ctx
+
+	dependencies, err := renderGoTemplateWriter(source, writer, locals)
+	if err != nil {
+		return err
+	}
+
+	for path := range includeMarkdownContainer.Dependencies {
+		dependencies = append(dependencies, path)
+	}
+
+	r.sourcesMu.Lock()
+	r.sources[source] = dependencies
+	r.sourcesMu.Unlock()
+
+	return nil
+}
+
 var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
 
 func findGoSubTemplates(templateData string) []string {
@@ -2604,6 +2639,19 @@ func renderGoTemplate(path, target string, locals map[string]interface{}) ([]str
 
 	writer := bufio.NewWriter(file)
 	defer writer.Flush()
+
+	if err := tmpl.Execute(writer, locals); err != nil {
+		return nil, xerrors.Errorf("error executing template: %w", err)
+	}
+
+	return dependencies, nil
+}
+
+func renderGoTemplateWriter(path string, writer io.Writer, locals map[string]interface{}) ([]string, error) {
+	tmpl, dependencies, err := parseGoTemplate(template.New("base_empty"), path)
+	if err != nil {
+		return nil, err
+	}
 
 	if err := tmpl.Execute(writer, locals); err != nil {
 		return nil, xerrors.Errorf("error executing template: %w", err)
