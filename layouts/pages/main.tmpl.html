@@ -32,7 +32,7 @@
     {{template "views/_twitter.tmpl.html" .}}
 </head>
 
-<body>
+<body class="{{block "body_style" .}}{{end}}">
     {{block "content" .}}{{end}}
 
     {{template "views/_analytics.tmpl.html" .}}

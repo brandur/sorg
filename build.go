@@ -2334,6 +2334,29 @@ func renderSequenceFeed(_ context.Context, _ *modulir.Context, entries []*Sequen
 	return true, feed.Encode(f, "  ")
 }
 
+func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *SequenceEntry, sequencesChanged bool,
+) (bool, error) {
+	source := scommon.ViewsDir + "/sequences/entry.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !sequencesChanged && !viewsChanged {
+		return false, nil
+	}
+
+	title := fmt.Sprintf("%s — %s", entry.Title, entry.Slug)
+
+	locals := getLocals(title, map[string]interface{}{
+		"Entry": entry,
+	})
+
+	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "sequences", entry.Slug), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
+}
+
 func renderSequenceIndex(ctx context.Context, c *modulir.Context, entries []*SequenceEntry,
 	sequenceChanged bool,
 ) (bool, error) {
@@ -2526,29 +2549,6 @@ func (r *DependencyRegistry) renderGoTemplate(ctx context.Context,
 	r.sourcesMu.Unlock()
 
 	return nil
-}
-
-func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *SequenceEntry, sequencesChanged bool,
-) (bool, error) {
-	source := scommon.ViewsDir + "/sequences/entry.tmpl.html"
-
-	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
-	if !sequencesChanged && !viewsChanged {
-		return false, nil
-	}
-
-	title := fmt.Sprintf("%s — %s", entry.Title, entry.Slug)
-
-	locals := getLocals(title, map[string]interface{}{
-		"Entry": entry,
-	})
-
-	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "sequences", entry.Slug), locals)
-	if err != nil {
-		return true, err
-	}
-
-	return true, nil
 }
 
 var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
