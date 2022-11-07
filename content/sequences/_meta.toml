@@ -460,3 +460,26 @@ These photos are five years olds, but I've had Stripe on the mind because [they'
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/toebqzyqu9s5gns/L1000724.JPG?dl=1"
     slug = "025c"
+
+[[entries]]
+  occurred_at = 2022-11-07T17:09:04Z
+  slug = "026"
+  title = "Coastal weather"
+
+  description = """\
+Charleston again, continuing from [024](/sequences/024). A few of us arrived a day before our on-site officially started, and intended to spend the day sightseeing in downtown.
+
+We did, sort of. We took the water taxi in, walked around for half an hour, but just like the night before, the sky opened up. Taking refuge in a nearby coffee shop, we hoped to wait the problem out, but in Charleston, the weather can stay irritating longer than you can stay patient. We timed out after about an hour and went to lunch instead, and even by the time we finished that, the rain wasn't done. I called the water tax to see if we could still take it for the return trip and their response was, "technically yes, but you might not want to" (it's a small, flat, very exposed type of boat). We took an Uber instead.
+
+A side effect of the plethora of rain is that it left me with few photos of Charleston overall -- our on-site started the next day and we spent most of it in meeting rooms. I'm looking forward to making my way back to Charleston somewhere down the line to correct that.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/deu2h3x1bljm7om/2W4A1810.JPG?dl=1"
+    slug = "026"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/aeie1pjuhpvs1da/2W4A1805.JPG?dl=1"
+    slug = "026b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/20bz5v32cn36h5e/2W4A1808-the-rise.JPG?dl=1"
+    slug = "026c"
