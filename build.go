@@ -2379,7 +2379,7 @@ func renderSequenceIndex(ctx context.Context, c *modulir.Context, entries []*Seq
 		return false, nil
 	}
 
-	locals := getLocals("Sequence", map[string]interface{}{
+	locals := getLocals("Sequences", map[string]interface{}{
 		"Entries": entries,
 	})
 
