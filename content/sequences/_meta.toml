@@ -483,3 +483,26 @@ A side effect of the plethora of rain is that it left me with few photos of Char
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/20bz5v32cn36h5e/2W4A1808-the-rise.JPG?dl=1"
     slug = "026c"
+
+[[entries]]
+  occurred_at = 2022-11-08T18:08:05Z
+  slug = "027"
+  title = "Coastal weather"
+
+  description = """\
+People have an outdated assumption that it rains a lot in San Francisco. Maybe it used to, but it hasn't been common for years. It's mid-November, and I'd call this maybe our third "serious" rain day of the year where we're actually getting more than a few millimeters of precipitation (although I'm sure I'm off by a couple days).
+
+I made my way downtown, and getting off at Montgomery, randomly ran into Mark, an old API buddy. We talked API DSLs, OpenAPI, and tooling for generating workflows and libraries for a good half hour -- maybe my first IRL API discussion in years.
+
+I stopped by Salesforce Park afterwards to shoot some rare photos of empty and in the rain. but made the error of bringing only a prime 50 mm, which turned out to exactly the wrong lens for the job. I didn't do it justice in the above, but it's a remarkably great park.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/rzprz81f6po5q15/2W4A1846.JPG?dl=1"
+    slug = "027"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/nd710qtnp32s1dl/2W4A1844.JPG?dl=1"
+    slug = "027b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/t9nweflqwv34obx/2W4A1845.JPG?dl=1"
+    slug = "027c"
