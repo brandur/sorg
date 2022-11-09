@@ -5,432 +5,50 @@ A combined sequence bringing in all the previous ones.
 """
 
 [[entries]]
-  occurred_at = 2019-06-09T08:56:50Z
-  slug = "001"
-  title = "Grenzmauer 75"
+  occurred_at = 2022-11-08T18:08:05Z
+  slug = "027"
+  title = "Rain and random encounters"
 
   description = """\
-The first few days of my stay are spent in Friedrichshain along the Spree. Jetlagged beyond belief, I take a walk at 5 AM and realize that I'm staying next to the longest continuous section of the [Berlin Wall](https://en.wikipedia.org/wiki/Berlin_Wall) that's still standing, known as the "East Side Gallery".
+People have an outdated assumption that it rains a lot in San Francisco. Maybe it used to, but it hasn't been common for years. It's mid-November, and I'd call this maybe our third "serious" rain day of the year where we're actually getting more than a few millimeters of precipitation (although I'm sure I'm off by a couple days).
 
-The wall, or officially the **Anti-Fascist Protection Rampart** by East Germany's GDR, wasn't built to repel invasion as the name suggests, but as an emergency effort to keep their own population in. Flight to the west was so bad that it was compromising the viability of the country's economy, with departees disproportionately of working age and professionally skilled.
+I made my way downtown, and getting off at Montgomery, randomly ran into Mark, an old API buddy. We talked API DSLs, OpenAPI, and tooling for generating workflows and libraries for a good half hour -- maybe my first IRL API discussion in years.
 
-Khrushchev and Ulbricht conspired to close the border in August 1961 despite the inevitable damage it would do to communism's PR. The wall started life as barbed wire entanglements on August 13th ("Barbed Wire Sunday") and a few refinements later would became the _Grenzmauer 75_ (Border Wall 1975) of 45,000 prefab concrete blocks that we recognize today.
-
-**At the begining of 1989, GDR leader Erich Honecker predicted that the wall would stand stand strong for 50 or 100 more years**, but that same year, a refugee crisis pressured the East German government to revise crossing regulations with a provision for private round trips. Miscommunication in the party's hierarchy caused a spokesman to suggest that the new rules would come into effect immediately, when they were supposed to activate the following day to provide time for border guards to be briefed. Televised broadcasts prompted huge gatherings at the wall's six checkpoints demanding to cross. As pressure continued to build, the vastly outnumbered soldiers would eventually allow it as no one was willing to authorize the use of lethal force.
-
-Since then, sections of the wall have been exported around the world and can be found [everywhere](https://en.wikipedia.org/wiki/List_of_Berlin_Wall_segments#Indonesia) from Manitoba to Indonesia to Estonia. Graffiti had been a common fixture on the west side of the wall for some time, but graffiti on its _east_ side, like that pictured below is new, appearing only after the '89 collapse.
-\
+I stopped by Salesforce Park afterwards to shoot some rare photos of its grounds empty and in the rain. but made the error of bringing only a prime 50 mm, which turned out to exactly the wrong lens for the job. I didn't do it justice in the above, but it's a remarkably great park.
 """
 
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/xyo86uxb0nie7oj/L1070488-wall.JPG?dl=1"
-    slug = "001"
+    original_image_url = "https://www.dropbox.com/s/rzprz81f6po5q15/2W4A1846.JPG?dl=1"
+    slug = "027"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/nd710qtnp32s1dl/2W4A1844.JPG?dl=1"
+    slug = "027b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/t9nweflqwv34obx/2W4A1845.JPG?dl=1"
+    slug = "027c"
 
 [[entries]]
-  occurred_at = 2019-06-10T10:33:37Z
-  slug = "002"
-  title = "Fire and water"
+  occurred_at = 2022-11-07T17:09:04Z
+  slug = "026"
+  title = "Coastal weather"
 
   description = """\
-Back home packing, I waffle over whether I can get away without bringing a jacket. Finally, I decide to try it. I know it's risky, but keep it light.
+Charleston again, continuing from [024](/sequences/024). A few of us arrived a day before our on-site officially started, and intended to spend the day sightseeing in downtown.
 
-Fast forward 24 hours: I land in a Berlin that's not only hot, but _so_ hot that the city is skimming temperature records, with daily highs like 34 degrees (93F). Thoughts of jackets are quickly forgotten; replaced with brainstorming on how to strip off as many layers as possible while avoiding arrest for public indecency.
+We did, sort of. We took the water taxi in, walked around for half an hour, but just like the night before, the sky opened up. Taking refuge in a nearby coffee shop, we hoped to wait the problem out, but in Charleston, the weather can stay irritating longer than you can stay patient. We timed out after about an hour and went to lunch instead, and even by the time we finished that, the rain wasn't done. I called the water tax to see if we could still take it for the return trip and their response was, "technically yes, but you might not want to" (it's a small, flat, very exposed type of boat). We took an Uber instead.
 
-Berlin has some amazing running routes, but this year even a few kilometers are oppressive. A painful workaround is to go early -- like _really_ early -- ideally 5:30 or so, when the mercury's "only" in the high teens/low twenties. Long daylight hours (the sun rises before 5 AM) combined with jet lag make the ambitious schedule possible.
-
-This photo's of the wilderness along my favorite run -- follow the Spree southeast out of Friedrichshain, into northern Kreuzberg (say "hi" to the people still partying), passed the sunken [MS Dr. Ingrid Wengler](https://fotostrasse.com/abandoned-boat-spree-river/) and [Molecule Man](https://en.wikipedia.org/wiki/Molecule_Man_(sculpture\\)), through Treptower Park, and then south by and around the ruins of [Spreepark](https://www.abandonedberlin.com/2010/04/spreepark-and-how-to-get-in.html) (scroll down at that link for some great photos, and hundreds of anecdata points from people sneaking passed the fence). This year, the fallen tyrannosaurus is gone, but the creaking old ferris wheel still stands.
-\
+A side effect of the plethora of rain is that it left me with few photos of Charleston overall -- our on-site started the next day and we spent most of it in meeting rooms. I'm looking forward to making my way back to Charleston somewhere down the line to correct that.
 """
 
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/hq5on26kbnspeia/IMG_1058-cropped.jpg?dl=1"
-    slug = "002"
+    original_image_url = "https://www.dropbox.com/s/deu2h3x1bljm7om/2W4A1810.JPG?dl=1"
+    slug = "026"
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/mvmmc8kqxe8hoot/IMG_1061.JPG?dl=1"
-    slug = "002b"
+    original_image_url = "https://www.dropbox.com/s/aeie1pjuhpvs1da/2W4A1805.JPG?dl=1"
+    slug = "026b"
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/ve0o5de1v0ywvt2/IMG_1069.JPG?dl=1"
-    slug = "002c"
-
-[[entries]]
-  occurred_at = 2019-06-13T08:45:07Z
-  slug = "003"
-  title = "Doom under the dome"
-
-  description = """\
-The _Volkspalast_ ("people's palace") is a big, circular space built under a dome to be reminiscent of [the Pantheon](https://en.wikipedia.org/wiki/Pantheon,_Rome) in Rome commissioned by Marcus Agrippa under Augustus' reign. With the honor system being the only thing that separates stage from crowd, the concerts held here are as intimate as you'll ever find.
-
-This is Darkher performing her particular brand of slow doom metal, and there's no venue more appropriate for it (the original Pantheon wasn't available). It's the first day of [WGT](https://en.wikipedia.org/wiki/Wave-Gotik-Treffen) down in Leipzig, and I've hopped down here from Berlin for a few days to attend.
-\
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/zblfzngjam5n8w5/L1070542-cropped.jpg?dl=1"
-    slug = "003"
-
-[[entries]]
-  occurred_at = 2019-06-14T16:39:36Z
-  slug = "004"
-  title = "Wild Leipzig"
-
-  description = """\
-Berlin has some nice parks and trails, but they pale compared to Leipzig's, which for money must be the running capital of Germany.
-
-Head south out of the city center, through lively city parks containing beer gardens and stark Cold War era playgrounds. Help disoriented morning revelers still out from last night with directions back to their hotel. Follow the river. Notice how well-used paths turn to trails through tranquil forest smelling heavily of garlic ([collecting wild garlic](https://english.leipzig.de/services-and-administration/public-order-and-security/gathering-wild-garlic-in-leipzig/) is a signature activity of springtime Leipzig). Keep an eye out for overgrown cobblestone roads, abandoned tram lines, snails in the long grass, and wild boar (wild only in sense of the [species](https://en.wikipedia.org/wiki/Wild_boar) -- wisely fenced off).
-
-Photo taken at my southermost reach near Agra -- just a few hundred feet from hundreds of tents housing sleeping festivalgoers at the WGT campground.
-\
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/f7up96ktcex7iv6/IMG_1084-cropped.jpg?dl=1"
-    slug = "004"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/nq25zweozeimom1/IMG_1115.JPG?dl=1"
-    slug = "004b"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/b2vtjcwgnppabo6/IMG_1082.JPG?dl=1"
-    slug = "004c"
-
-[[entries]]
-  occurred_at = 2019-06-17T09:01:13Z
-  slug = "005"
-  title = "Moritzbastei"
-
-  description = """\
-Sometimes a series of historical accidents leads to something amazing that never could've been planned from the top down. Moritzbastei is one of those.
-
-Originally the ancient city fortifications for Leipzig, it lost its military function during the [Seven Years' War](https://en.wikipedia.org/wiki/Seven_Years%27_War) and was relegated to storage. In 1974, the students club of the nearby University of Leipzig uncovered it and began a reabilitation project. The work took years and involved some 30,000 students -- among them a young physics student named Angela Merkel.
-
-Today, it's a night club and cultural space inside a fortress, and runs from dusk until dawn every night of WGT. Photos often use optical tricks to make small places look larger, but this one does the opposite -- it's only a narrow glimpse into a huge space that spans a dozen rooms in a labyrinthine complex spanning many floors.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/435kguqqkbs4r3m/L1070510-cropped.jpg?dl=1"
-    slug = "005"
-
-[[entries]]
-  occurred_at = 2019-06-17T10:17:35Z
-  slug = "006"
-  title = "Concerts in old pools"
-
-  description = """\
-One of the best parts of cities with long histories is the repurposing of derelict properties for more creative uses. Berlin, with artist squats in old department stores and night clubs in power plants, is the ultimate example of this sort of organic urban evolution in action. Leipzig isn't far behind.
-
-One of the city's curious penchants is to convert old public pools into live music venues. Last year I ran into this in [Stadtbad](https://de.wikipedia.org/wiki/Stadtbad_(Leipzig\\)), Leipzig's old three wing central bath complex. This year: **Westbad**, the roof of which is pictured below -- a mix of amazing bath art, and modern metal frameworks to suspend speaker stacks. Taken during Escape With Romeo's show on the final night of WGT.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/lc6mfbysbqo5may/L1070554-westbad.JPG?dl=1"
-    slug = "006"
-
-[[entries]]
-  occurred_at = 2019-06-17T11:15:03Z
-  slug = "007"
-  title = "Nordbahnhof"
-
-  description = """\
-Park auf dem Nordbahnhof ("Park on the Nordbahnhof") -- one of the more beautiful legacies of the wall. The area was originally part of a train line that led to the since demolished Nordbahnhof station. By 1961, the line was completely shut down as it became part of border fortifications for the new wall nearby. After the wall's collapse, it became a park.
-
-It's highly reminiscent of New York's [High Line](https://en.wikipedia.org/wiki/High_Line), except with a more raw nature, fewer Blue Bottles, and *far* fewer people (finding green space in Berlin isn't quite the same level of competition as it is in New York). Similarly to the High Line, it's elevated three meters above the surrounding streets, and that vertical separation creates an effect of peaceful isolation from surrounding traffic.
-
-I came across Nordbahnhof purely by accident as I was touring the area northwest of mitte, and was glad I did. Along the way: an overgrown rail bridge, old paving stones stacked into megalithic cubes, and the most dangerous-looking amusement park I've ever seen, complete with gutted cars suspended 80 feet in the air.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/t61cmdqzb2s8azu/L1070629-adjusted.jpg?dl=1"
-    slug = "007"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/nhhd0s19bv1air5/L1070625.JPG?dl=1"
-    slug = "007b"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/46negfp596foleq/L1070641.JPG?dl=1"
-    slug = "007c"
-
-[[entries]]
-  occurred_at = 2019-06-19T13:02:04Z
-  slug = "008"
-  title = "How to enjoy a drink"
-
-  description = """\
-Some portraits of monkeys in the hot spring outside the rooftop Monkey Bar in the 25hours Hotel in Berlin. Yes it’s crappy Photoshop, yes those precariously positioned drinks are in serious danger of being knocked over, yes those monkeys are probably too young to drink. I don't care. Great concept. Great bar. I want to believe.
-
-I previously published a section in [_Passages & Glass_](/newsletter) about going to see [Japanese macaques near Nagano](/passages/002-japan#macaques). It was amazing, even if as bad luck would have it, they weren't enjoying drinks at the time.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/6wiwkprubkth8dy/L1070739-cropped.jpg?dl=1"
-    slug = "008"
-
-[[entries]]
-  occurred_at = 2019-06-29T23:29:38Z
-  slug = "009"
-  title = "Silo"
-
-  description = """\
-Berlin's best breakfast -- located in Friedrichshain, Silo Coffee's Australian-inspired menu features some dishes that are simple-yet-delectably assembled like poached eggs on toast with bacon and avocado, all the way up to more exotic fare like chorizo sausage baked in tomato sauce and served in a small cast iron pan.
-
-This photo was taken just a few minutes after opening during one if its quieter moments, but it's easy to see that Silo is a neighborhood favorite. Half an hour later all its blocky little benches inside and out would be full -- and this was a weekday.
-
-I spent my first few nights in Friedrichshain, and there Silo was an obvious breakfast choice, but regardless of where I was staying later in the trip, I often found myself commuting back to visit once again. Just one more flat white before I go.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/5ycn7b4r0zeax26/L1070575-silo.JPG?dl=1"
-    slug = "009"
-
-[[entries]]
-  occurred_at = 2019-06-30T23:29:38Z
-  slug = "010"
-  title = "Radio free Berlin"
-
-  description = """\
-Teufelsberg, a man-made hill most famous for being the site of an enormous NSA listening station during the cold war. The key equipment's all long since removed, but the old structures and domes are still there to see.
-
-I accessed the site by walking up through Barssee und Pechsee, a beautiful nature reserve west of the ring. Access is easy from the Grunewalk S-bahn station. The paths will bend and twist, but with a little commitment, get you to the right place.
-
-Unfortunately, getting to the top of Teufelsberg's towers to get up close and personal with the the domes _used_ to be possible, but access has since been shut off. Walking around the area's periphery is still interesting, and I found a lot more to see than I expected, but modern propriety concerns have removed the best aspects of the site.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/dcbqhbc88ggpoii/L1070782.JPG?dl=1"
-    portrait = true
-    slug = "010"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/ufnxh24aa1iwx20/L1070805.JPG?dl=1"
-    portrait = true
-    slug = "010b"
-
-[[entries]]
-  occurred_at = 2020-05-28T04:18:20Z
-  slug = "011"
-  title = "An aptly named hill"
-
-  description = """\
-Friday afternoon -- a view of Twin Peaks from the adjacent hill of Corona ("crown" in Spanish and Latin) Heights. There's a unique charm to San Francisco's densely packed urban plan, running up and down hillsides, architecture doing whatever needs to be done to conform to uneven terrain. But live here too long, and it starts to blend into the background. I stared at this photo for a good long time to remember what it looked like.
-\
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/cob2hkkklo2uvye/L1010564.jpg?dl=1"
-    slug = "011"
-
-[[entries]]
-  occurred_at = 2020-05-29T05:25:56Z
-  slug = "012"
-  title = "The tower"
-
-  description = """\
-Sutro Tower, almost 1000 feet high, an old TV and radio tower. Quite possibly San Francisco's most notable landmark if you take the Bridge out of the running. Here I caught it near sunset on a day when clouds had settled onto the mountain. The sun's rays hit it from behind. Its skeletal shadow projects forward.
-\
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/bi7fxmzi2bzmdzu/L1000546.JPG?dl=1"
-    portrait = true
-    slug = "012"
-
-[[entries]]
-  occurred_at = 2020-05-31T00:35:51Z
-  slug = "013"
-  title = "The beach"
-
-  description = """\
-Ocean Beach, looking out towards Cliff House. Most things in San Francisco are miniature versions of their counterparts elsewhere -- houses, bars & restaurants, parks. Ocean Beach breaks the mold. Not only is it long -- running 3-4 miles from the Sutro Baths to Fort Funston -- but also _wide_. It takes about five minutes to walk from the Great Highway down to the water. Its sheer size has been a huge boon during the quarantine, with thousands of people visiting on weekends, and all the while able to maintain ample distance from one another.
-\
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/jt2f3961io8hzzw/L1010203.jpg?dl=1"
-    slug = "013"
-
-[[entries]]
-  occurred_at = 2020-06-11T03:58:20Z
-  slug = "014"
-  title = "To the cross"
-
-  description = """\
-Stairs to the peak of Mount Davidson. Towards nightfall, and on a cloudy evening.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/jk4k5hyor4p87ey/L1010425.jpg?dl=1"
-    portrait = true
-    slug = "014"
-
-[[entries]]
-  occurred_at = 2020-06-14T01:18:47Z
-  slug = "015"
-  title = "Walzwerk"
-
-  description = """\
-Walzwerk was the first restaurant I ever went to in San Francisco when I moved here years ago. After 21 years in business, this was their last night. Walzwerk has the special distinction of not only being a German restaurant, but specifically an _East German_ restaurant, with authentic signage and DDR paraphernalia spread throughout.
-
-I talked with one of the owners for a few minutes as I was ordering. I was somewhat gladdened to hear that although Covid was indeed the final nail, they'd been thinking about moving back to Germany anyway so their child could spend a few years in the German school system. They promised to open something new upon returning to SF.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/o9gvz33mnssyfdf/L1010799.jpg?dl=1"
-    slug = "015"
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/aiouff2jxcbgp1k/L1010798.jpg?dl=1"
-    slug = "015b"
-
-[[entries]]
-  occurred_at = 2020-06-16T02:10:24Z
-  slug = "016"
-  title = "Lighter than air"
-
-  description = """\
-Some photos from a cloudy Sunday at Fort Funston. An old military base that lasted through both world wards and the Cold War, it's now a popular dog walking and hang gliding spot. Wikipedia has a [nice shot](https://en.wikipedia.org/wiki/File:No._89A_Fort_Funston,_Calif.,_Gun_Tube_No.1,_Rigging_for_backing_load_to_entrance_of_reservation._-_NARA_-_296366.jpg) of one of the enormous 16-inch guns that used to be mounted here.
-
-Most park users don't make it far from the parking lot, but walk all the way south, then keeping walking south some more, and you're rewarded as the trail starts to climb, eventually mounting a cliff hundreds of feet up from the beach (bottom left). It's not flying, but it's the closest you can get to it on the ground.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/bx07p0wjaxdnz3m/L1010831.jpg?dl=1"
-    slug = "016"
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/1xbui0cgxekkmid/L1010846.jpg?dl=1"
-    slug = "016b"
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/2tkcfrh6a0zby68/L1010826.jpg?dl=1"
-    slug = "016c"
-
-[[entries]]
-  occurred_at = 2020-06-26T19:09:49Z
-  slug = "017"
-  title = "In circles"
-
-  description = """\
-Precita Park in Bernal Heights in its full weekend glory. The park service has taken to drawing "isolation circles" in some of the city's more popular parks to keep groups adequately spaced out. It actually works.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/juabz4fouo4cpr5/L1010796-precita.jpg?dl=1"
-    slug = "017"
-
-[[entries]]
-  occurred_at = 2020-07-16T00:31:28Z
-  slug = "018"
-  title = "Radial"
-
-  description = """\
-Some great landscaping out in the Sea Cliff neighborhood, located between Lands End and the Presidio, where every house is worth roughly the same as a modestly sized town in most other countries. Looping north from Golden Gate Park and up and around the whole coast is one of the best walks in San Francisco.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/r0onuslwoe8tq1q/L1010587.jpg?dl=1"
-    slug = "018"
-
-[[entries]]
-  occurred_at = 2020-07-16T00:38:20Z
-  slug = "019"
-  title = "A (very) good view"
-
-  description = """\
-The steps right below the summit of Buena Vista Park near the Haight. This park has the benefit of being quite vertical, so there's generally a little more room to breathe up top compared to some of the others in the area (not as many people are willing to make the trek).
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/tvl3v8vp1c8clay/L1010608.jpg?dl=1"
-    portrait = true
-    slug = "019"
-
-[[entries]]
-  occurred_at = 2020-08-16T00:38:20Z
-  slug = "020"
-  title = "Golden Gate stump"
-
-  description = """\
-A favorite fallen tree in Golden Gate Park, findable near the California Academy of Sciences, not far from the National AIDS Memorial Grove.
-
-I recently consolidated the couple Sequences I'd done over the years into a single feed that's easier to update, and am returning to my back-archives to add a few things that I'd meant to put somewhere. I've written about the independent web and the importance of curating content off major platforms like Instagram, but my own contributions to it over the last six months or so have been embarssingly small -- here's to turning that around.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/8fa9tsbc0ljre24/L1010805-stump.jpg?dl=1"
-    slug = "020"
-
-[[entries]]
-  occurred_at = 2020-08-16T01:38:20Z
-  slug = "021"
-  title = "Before the ice"
-
-  description = """\
-As I was going back to do some general clean up after the recent Sequences refactor, I came across a draft line that I'd forgotten about, and originally written to test the layouts of the new medium. It's not rendered anymore, so I'm porting some favorites back into the main series.
-
-This one's of a snowy trail up in St. Albert, near Edmonton, Canada. This is where my grandmother lived for many years after moving out of Edmonton proper and before moving down to a facility near my parents in Calgary. One of its most distinctive qualities was a small nearby lake surrounded by some nice trails, and which I have some fond memories of walking during various season with the rest of the family.
-
-A few photos taken along one of those trails as the season's first seasons were starting to arrive.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/lw8djlr7jl516sh/L2018-09-22%2B01.jpg?dl=1"
-    slug = "021"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/r4l5u9nep2tyx1a/L1060124.JPG?dl=1"
-    slug = "021b"
-
-[[entries]]
-  occurred_at = 2020-08-16T02:38:20Z
-  slug = "022"
-  title = "Portugal before daybreak"
-
-  description = """\
-Another old one from a visit to Portugal in 2018, but a photo I like enough to repost. Below is what I'd written back then.
-
-My first 24 hours in Lisbon -- my internal clock is so wildly askew that that I wake up around 4 AM and have trouble getting back to sleep.
-
-Trying to make the best of a bad situation, I unpack my camera, and start walking down the hill towards the center of the city. Here we see the entrance to Lisbon's famous **Rua Augusta**, a wide pedestrian avenue and one of the most beautiful streets in the city.
-
-If you walk further along it in the direction of the ocean, you'll arrive at the [Rua Augusta Arch](https://en.wikipedia.org/wiki/Rua_Augusta_Arch). Already impressive, it's made even more so by the history it was built to commemorate. In 1755, the city was flattened by [a monster of an earthquake](https://en.wikipedia.org/wiki/1755_Lisbon_earthquake) in the 8.5-9 range, still one of the deadliest in human history. The colossal arch symbolizes reconstruction as one of the world's greatest cities was reborn from its own ashes.\
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
-    slug = "022"
-
-[[entries]]
-  occurred_at = 2022-11-05T21:17:02Z
-  slug = "023"
-  title = "Cold desolation"
-
-  description = """\
-Taken high above Calgary on the day after Christmas in 2018. As with [021](/sequences/021) and [022](/sequences/022), I found these in a test sequence that I'd created, and they were too good not to republish.
-
-It was a cold day (-10C) that was part of a cold winter, and not much of anyone was out and around. Calgary at its most romantic.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/nnmv84hyb1vwqir/L1070002.JPG?dl=1"
-    slug = "023"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/sbx73ak0t15x9qh/L1070052.JPG?dl=1"
-    slug = "023b"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/1sgp6ji78jxx5y3/L1070053.JPG?dl=1"
-    slug = "023c"
-
-[[entries]]
-  occurred_at = 2022-11-06T18:05:24Z
-  slug = "024"
-  title = "Charleston"
-
-  description = """\
-Technically, these days I work for a company headquartered in South Carolina. Charleston specifically.
-
-A team on-site last August was the first time I'd ever visited the city. After getting off a rare direct flight from SFO, we ventured inwards, and were delighted by the charm of its old French Quarter, finding this bar semi-randomly as we shopped for venues along the street.
-
-Along with the picteresque old buildings, we got to experience another aspect of coastal life the same night as the sky opened and rain came down in sheets. Driving into downtown, the streets had been bone dry. Driving back out only a few hours later, our Uber forded against a torrential flood flowing down the streets.
-"""
-
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/qmr58gxdq2xpeet/2W4A1779-bar-good-shot.JPG?dl=1"
-    slug = "024"
+    original_image_url = "https://www.dropbox.com/s/20bz5v32cn36h5e/2W4A1808-the-rise.JPG?dl=1"
+    slug = "026c"
 
 [[entries]]
   occurred_at = 2022-11-06T18:34:50Z
@@ -462,47 +80,429 @@ These photos are five years olds, but I've had Stripe on the mind because [they'
     slug = "025c"
 
 [[entries]]
-  occurred_at = 2022-11-07T17:09:04Z
-  slug = "026"
-  title = "Coastal weather"
+  occurred_at = 2022-11-06T18:05:24Z
+  slug = "024"
+  title = "Charleston"
 
   description = """\
-Charleston again, continuing from [024](/sequences/024). A few of us arrived a day before our on-site officially started, and intended to spend the day sightseeing in downtown.
+Technically, these days I work for a company headquartered in South Carolina. Charleston specifically.
 
-We did, sort of. We took the water taxi in, walked around for half an hour, but just like the night before, the sky opened up. Taking refuge in a nearby coffee shop, we hoped to wait the problem out, but in Charleston, the weather can stay irritating longer than you can stay patient. We timed out after about an hour and went to lunch instead, and even by the time we finished that, the rain wasn't done. I called the water tax to see if we could still take it for the return trip and their response was, "technically yes, but you might not want to" (it's a small, flat, very exposed type of boat). We took an Uber instead.
+A team on-site last August was the first time I'd ever visited the city. After getting off a rare direct flight from SFO, we ventured inwards, and were delighted by the charm of its old French Quarter, finding this bar semi-randomly as we shopped for venues along the street.
 
-A side effect of the plethora of rain is that it left me with few photos of Charleston overall -- our on-site started the next day and we spent most of it in meeting rooms. I'm looking forward to making my way back to Charleston somewhere down the line to correct that.
+Along with the picteresque old buildings, we got to experience another aspect of coastal life the same night as the sky opened and rain came down in sheets. Driving into downtown, the streets had been bone dry. Driving back out only a few hours later, our Uber forded against a torrential flood flowing down the streets.
 """
 
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/deu2h3x1bljm7om/2W4A1810.JPG?dl=1"
-    slug = "026"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/aeie1pjuhpvs1da/2W4A1805.JPG?dl=1"
-    slug = "026b"
-  [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/20bz5v32cn36h5e/2W4A1808-the-rise.JPG?dl=1"
-    slug = "026c"
+    original_image_url = "https://www.dropbox.com/s/qmr58gxdq2xpeet/2W4A1779-bar-good-shot.JPG?dl=1"
+    slug = "024"
 
 [[entries]]
-  occurred_at = 2022-11-08T18:08:05Z
-  slug = "027"
-  title = "Rain and random encounters"
+  occurred_at = 2022-11-05T21:17:02Z
+  slug = "023"
+  title = "Cold desolation"
 
   description = """\
-People have an outdated assumption that it rains a lot in San Francisco. Maybe it used to, but it hasn't been common for years. It's mid-November, and I'd call this maybe our third "serious" rain day of the year where we're actually getting more than a few millimeters of precipitation (although I'm sure I'm off by a couple days).
+Taken high above Calgary on the day after Christmas in 2018. As with [021](/sequences/021) and [022](/sequences/022), I found these in a test sequence that I'd created, and they were too good not to republish.
 
-I made my way downtown, and getting off at Montgomery, randomly ran into Mark, an old API buddy. We talked API DSLs, OpenAPI, and tooling for generating workflows and libraries for a good half hour -- maybe my first IRL API discussion in years.
-
-I stopped by Salesforce Park afterwards to shoot some rare photos of its grounds empty and in the rain. but made the error of bringing only a prime 50 mm, which turned out to exactly the wrong lens for the job. I didn't do it justice in the above, but it's a remarkably great park.
+It was a cold day (-10C) that was part of a cold winter, and not much of anyone was out and around. Calgary at its most romantic.
 """
 
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/rzprz81f6po5q15/2W4A1846.JPG?dl=1"
-    slug = "027"
+    original_image_url = "https://www.dropbox.com/s/nnmv84hyb1vwqir/L1070002.JPG?dl=1"
+    slug = "023"
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/nd710qtnp32s1dl/2W4A1844.JPG?dl=1"
-    slug = "027b"
+    original_image_url = "https://www.dropbox.com/s/sbx73ak0t15x9qh/L1070052.JPG?dl=1"
+    slug = "023b"
   [[entries.photographs]]
-    original_image_url = "https://www.dropbox.com/s/t9nweflqwv34obx/2W4A1845.JPG?dl=1"
-    slug = "027c"
+    original_image_url = "https://www.dropbox.com/s/1sgp6ji78jxx5y3/L1070053.JPG?dl=1"
+    slug = "023c"
+
+[[entries]]
+  occurred_at = 2020-08-16T02:38:20Z
+  slug = "022"
+  title = "Portugal before daybreak"
+
+  description = """\
+Another old one from a visit to Portugal in 2018, but a photo I like enough to repost. Below is what I'd written back then.
+
+My first 24 hours in Lisbon -- my internal clock is so wildly askew that that I wake up around 4 AM and have trouble getting back to sleep.
+
+Trying to make the best of a bad situation, I unpack my camera, and start walking down the hill towards the center of the city. Here we see the entrance to Lisbon's famous **Rua Augusta**, a wide pedestrian avenue and one of the most beautiful streets in the city.
+
+If you walk further along it in the direction of the ocean, you'll arrive at the [Rua Augusta Arch](https://en.wikipedia.org/wiki/Rua_Augusta_Arch). Already impressive, it's made even more so by the history it was built to commemorate. In 1755, the city was flattened by [a monster of an earthquake](https://en.wikipedia.org/wiki/1755_Lisbon_earthquake) in the 8.5-9 range, still one of the deadliest in human history. The colossal arch symbolizes reconstruction as one of the world's greatest cities was reborn from its own ashes.\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/tzd24fg5g1tyr0f/L2018-10-22.jpg?dl=1"
+    slug = "022"
+
+[[entries]]
+  occurred_at = 2020-08-16T01:38:20Z
+  slug = "021"
+  title = "Before the ice"
+
+  description = """\
+As I was going back to do some general clean up after the recent Sequences refactor, I came across a draft line that I'd forgotten about, and originally written to test the layouts of the new medium. It's not rendered anymore, so I'm porting some favorites back into the main series.
+
+This one's of a snowy trail up in St. Albert, near Edmonton, Canada. This is where my grandmother lived for many years after moving out of Edmonton proper and before moving down to a facility near my parents in Calgary. One of its most distinctive qualities was a small nearby lake surrounded by some nice trails, and which I have some fond memories of walking during various season with the rest of the family.
+
+A few photos taken along one of those trails as the season's first seasons were starting to arrive.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/lw8djlr7jl516sh/L2018-09-22%2B01.jpg?dl=1"
+    slug = "021"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/r4l5u9nep2tyx1a/L1060124.JPG?dl=1"
+    slug = "021b"
+
+[[entries]]
+  occurred_at = 2020-08-16T00:38:20Z
+  slug = "020"
+  title = "Golden Gate stump"
+
+  description = """\
+A favorite fallen tree in Golden Gate Park, findable near the California Academy of Sciences, not far from the National AIDS Memorial Grove.
+
+I recently consolidated the couple Sequences I'd done over the years into a single feed that's easier to update, and am returning to my back-archives to add a few things that I'd meant to put somewhere. I've written about the independent web and the importance of curating content off major platforms like Instagram, but my own contributions to it over the last six months or so have been embarssingly small -- here's to turning that around.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/8fa9tsbc0ljre24/L1010805-stump.jpg?dl=1"
+    slug = "020"
+
+[[entries]]
+  occurred_at = 2020-07-16T00:38:20Z
+  slug = "019"
+  title = "A (very) good view"
+
+  description = """\
+The steps right below the summit of Buena Vista Park near the Haight. This park has the benefit of being quite vertical, so there's generally a little more room to breathe up top compared to some of the others in the area (not as many people are willing to make the trek).
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/tvl3v8vp1c8clay/L1010608.jpg?dl=1"
+    portrait = true
+    slug = "019"
+
+[[entries]]
+  occurred_at = 2020-07-16T00:31:28Z
+  slug = "018"
+  title = "Radial"
+
+  description = """\
+Some great landscaping out in the Sea Cliff neighborhood, located between Lands End and the Presidio, where every house is worth roughly the same as a modestly sized town in most other countries. Looping north from Golden Gate Park and up and around the whole coast is one of the best walks in San Francisco.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/r0onuslwoe8tq1q/L1010587.jpg?dl=1"
+    slug = "018"
+
+[[entries]]
+  occurred_at = 2020-06-26T19:09:49Z
+  slug = "017"
+  title = "In circles"
+
+  description = """\
+Precita Park in Bernal Heights in its full weekend glory. The park service has taken to drawing "isolation circles" in some of the city's more popular parks to keep groups adequately spaced out. It actually works.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/juabz4fouo4cpr5/L1010796-precita.jpg?dl=1"
+    slug = "017"
+
+[[entries]]
+  occurred_at = 2020-06-16T02:10:24Z
+  slug = "016"
+  title = "Lighter than air"
+
+  description = """\
+Some photos from a cloudy Sunday at Fort Funston. An old military base that lasted through both world wards and the Cold War, it's now a popular dog walking and hang gliding spot. Wikipedia has a [nice shot](https://en.wikipedia.org/wiki/File:No._89A_Fort_Funston,_Calif.,_Gun_Tube_No.1,_Rigging_for_backing_load_to_entrance_of_reservation._-_NARA_-_296366.jpg) of one of the enormous 16-inch guns that used to be mounted here.
+
+Most park users don't make it far from the parking lot, but walk all the way south, then keeping walking south some more, and you're rewarded as the trail starts to climb, eventually mounting a cliff hundreds of feet up from the beach (bottom left). It's not flying, but it's the closest you can get to it on the ground.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/bx07p0wjaxdnz3m/L1010831.jpg?dl=1"
+    slug = "016"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/1xbui0cgxekkmid/L1010846.jpg?dl=1"
+    slug = "016b"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/2tkcfrh6a0zby68/L1010826.jpg?dl=1"
+    slug = "016c"
+
+[[entries]]
+  occurred_at = 2020-06-14T01:18:47Z
+  slug = "015"
+  title = "Walzwerk"
+
+  description = """\
+Walzwerk was the first restaurant I ever went to in San Francisco when I moved here years ago. After 21 years in business, this was their last night. Walzwerk has the special distinction of not only being a German restaurant, but specifically an _East German_ restaurant, with authentic signage and DDR paraphernalia spread throughout.
+
+I talked with one of the owners for a few minutes as I was ordering. I was somewhat gladdened to hear that although Covid was indeed the final nail, they'd been thinking about moving back to Germany anyway so their child could spend a few years in the German school system. They promised to open something new upon returning to SF.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/o9gvz33mnssyfdf/L1010799.jpg?dl=1"
+    slug = "015"
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/aiouff2jxcbgp1k/L1010798.jpg?dl=1"
+    slug = "015b"
+
+[[entries]]
+  occurred_at = 2020-06-11T03:58:20Z
+  slug = "014"
+  title = "To the cross"
+
+  description = """\
+Stairs to the peak of Mount Davidson. Towards nightfall, and on a cloudy evening.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jk4k5hyor4p87ey/L1010425.jpg?dl=1"
+    portrait = true
+    slug = "014"
+
+[[entries]]
+  occurred_at = 2020-05-31T00:35:51Z
+  slug = "013"
+  title = "The beach"
+
+  description = """\
+Ocean Beach, looking out towards Cliff House. Most things in San Francisco are miniature versions of their counterparts elsewhere -- houses, bars & restaurants, parks. Ocean Beach breaks the mold. Not only is it long -- running 3-4 miles from the Sutro Baths to Fort Funston -- but also _wide_. It takes about five minutes to walk from the Great Highway down to the water. Its sheer size has been a huge boon during the quarantine, with thousands of people visiting on weekends, and all the while able to maintain ample distance from one another.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jt2f3961io8hzzw/L1010203.jpg?dl=1"
+    slug = "013"
+
+[[entries]]
+  occurred_at = 2020-05-29T05:25:56Z
+  slug = "012"
+  title = "The tower"
+
+  description = """\
+Sutro Tower, almost 1000 feet high, an old TV and radio tower. Quite possibly San Francisco's most notable landmark if you take the Bridge out of the running. Here I caught it near sunset on a day when clouds had settled onto the mountain. The sun's rays hit it from behind. Its skeletal shadow projects forward.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/bi7fxmzi2bzmdzu/L1000546.JPG?dl=1"
+    portrait = true
+    slug = "012"
+
+[[entries]]
+  occurred_at = 2020-05-28T04:18:20Z
+  slug = "011"
+  title = "An aptly named hill"
+
+  description = """\
+Friday afternoon -- a view of Twin Peaks from the adjacent hill of Corona ("crown" in Spanish and Latin) Heights. There's a unique charm to San Francisco's densely packed urban plan, running up and down hillsides, architecture doing whatever needs to be done to conform to uneven terrain. But live here too long, and it starts to blend into the background. I stared at this photo for a good long time to remember what it looked like.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/cob2hkkklo2uvye/L1010564.jpg?dl=1"
+    slug = "011"
+
+[[entries]]
+  occurred_at = 2019-06-30T23:29:38Z
+  slug = "010"
+  title = "Radio free Berlin"
+
+  description = """\
+Teufelsberg, a man-made hill most famous for being the site of an enormous NSA listening station during the cold war. The key equipment's all long since removed, but the old structures and domes are still there to see.
+
+I accessed the site by walking up through Barssee und Pechsee, a beautiful nature reserve west of the ring. Access is easy from the Grunewalk S-bahn station. The paths will bend and twist, but with a little commitment, get you to the right place.
+
+Unfortunately, getting to the top of Teufelsberg's towers to get up close and personal with the the domes _used_ to be possible, but access has since been shut off. Walking around the area's periphery is still interesting, and I found a lot more to see than I expected, but modern propriety concerns have removed the best aspects of the site.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/dcbqhbc88ggpoii/L1070782.JPG?dl=1"
+    portrait = true
+    slug = "010"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ufnxh24aa1iwx20/L1070805.JPG?dl=1"
+    portrait = true
+    slug = "010b"
+
+[[entries]]
+  occurred_at = 2019-06-29T23:29:38Z
+  slug = "009"
+  title = "Silo"
+
+  description = """\
+Berlin's best breakfast -- located in Friedrichshain, Silo Coffee's Australian-inspired menu features some dishes that are simple-yet-delectably assembled like poached eggs on toast with bacon and avocado, all the way up to more exotic fare like chorizo sausage baked in tomato sauce and served in a small cast iron pan.
+
+This photo was taken just a few minutes after opening during one if its quieter moments, but it's easy to see that Silo is a neighborhood favorite. Half an hour later all its blocky little benches inside and out would be full -- and this was a weekday.
+
+I spent my first few nights in Friedrichshain, and there Silo was an obvious breakfast choice, but regardless of where I was staying later in the trip, I often found myself commuting back to visit once again. Just one more flat white before I go.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/5ycn7b4r0zeax26/L1070575-silo.JPG?dl=1"
+    slug = "009"
+
+[[entries]]
+  occurred_at = 2019-06-19T13:02:04Z
+  slug = "008"
+  title = "How to enjoy a drink"
+
+  description = """\
+Some portraits of monkeys in the hot spring outside the rooftop Monkey Bar in the 25hours Hotel in Berlin. Yes it’s crappy Photoshop, yes those precariously positioned drinks are in serious danger of being knocked over, yes those monkeys are probably too young to drink. I don't care. Great concept. Great bar. I want to believe.
+
+I previously published a section in [_Passages & Glass_](/newsletter) about going to see [Japanese macaques near Nagano](/passages/002-japan#macaques). It was amazing, even if as bad luck would have it, they weren't enjoying drinks at the time.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/6wiwkprubkth8dy/L1070739-cropped.jpg?dl=1"
+    slug = "008"
+
+[[entries]]
+  occurred_at = 2019-06-17T11:15:03Z
+  slug = "007"
+  title = "Nordbahnhof"
+
+  description = """\
+Park auf dem Nordbahnhof ("Park on the Nordbahnhof") -- one of the more beautiful legacies of the wall. The area was originally part of a train line that led to the since demolished Nordbahnhof station. By 1961, the line was completely shut down as it became part of border fortifications for the new wall nearby. After the wall's collapse, it became a park.
+
+It's highly reminiscent of New York's [High Line](https://en.wikipedia.org/wiki/High_Line), except with a more raw nature, fewer Blue Bottles, and *far* fewer people (finding green space in Berlin isn't quite the same level of competition as it is in New York). Similarly to the High Line, it's elevated three meters above the surrounding streets, and that vertical separation creates an effect of peaceful isolation from surrounding traffic.
+
+I came across Nordbahnhof purely by accident as I was touring the area northwest of mitte, and was glad I did. Along the way: an overgrown rail bridge, old paving stones stacked into megalithic cubes, and the most dangerous-looking amusement park I've ever seen, complete with gutted cars suspended 80 feet in the air.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/t61cmdqzb2s8azu/L1070629-adjusted.jpg?dl=1"
+    slug = "007"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/nhhd0s19bv1air5/L1070625.JPG?dl=1"
+    slug = "007b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/46negfp596foleq/L1070641.JPG?dl=1"
+    slug = "007c"
+
+[[entries]]
+  occurred_at = 2019-06-17T10:17:35Z
+  slug = "006"
+  title = "Concerts in old pools"
+
+  description = """\
+One of the best parts of cities with long histories is the repurposing of derelict properties for more creative uses. Berlin, with artist squats in old department stores and night clubs in power plants, is the ultimate example of this sort of organic urban evolution in action. Leipzig isn't far behind.
+
+One of the city's curious penchants is to convert old public pools into live music venues. Last year I ran into this in [Stadtbad](https://de.wikipedia.org/wiki/Stadtbad_(Leipzig\\)), Leipzig's old three wing central bath complex. This year: **Westbad**, the roof of which is pictured below -- a mix of amazing bath art, and modern metal frameworks to suspend speaker stacks. Taken during Escape With Romeo's show on the final night of WGT.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/lc6mfbysbqo5may/L1070554-westbad.JPG?dl=1"
+    slug = "006"
+
+[[entries]]
+  occurred_at = 2019-06-17T09:01:13Z
+  slug = "005"
+  title = "Moritzbastei"
+
+  description = """\
+Sometimes a series of historical accidents leads to something amazing that never could've been planned from the top down. Moritzbastei is one of those.
+
+Originally the ancient city fortifications for Leipzig, it lost its military function during the [Seven Years' War](https://en.wikipedia.org/wiki/Seven_Years%27_War) and was relegated to storage. In 1974, the students club of the nearby University of Leipzig uncovered it and began a reabilitation project. The work took years and involved some 30,000 students -- among them a young physics student named Angela Merkel.
+
+Today, it's a night club and cultural space inside a fortress, and runs from dusk until dawn every night of WGT. Photos often use optical tricks to make small places look larger, but this one does the opposite -- it's only a narrow glimpse into a huge space that spans a dozen rooms in a labyrinthine complex spanning many floors.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/435kguqqkbs4r3m/L1070510-cropped.jpg?dl=1"
+    slug = "005"
+
+[[entries]]
+  occurred_at = 2019-06-14T16:39:36Z
+  slug = "004"
+  title = "Wild Leipzig"
+
+  description = """\
+Berlin has some nice parks and trails, but they pale compared to Leipzig's, which for money must be the running capital of Germany.
+
+Head south out of the city center, through lively city parks containing beer gardens and stark Cold War era playgrounds. Help disoriented morning revelers still out from last night with directions back to their hotel. Follow the river. Notice how well-used paths turn to trails through tranquil forest smelling heavily of garlic ([collecting wild garlic](https://english.leipzig.de/services-and-administration/public-order-and-security/gathering-wild-garlic-in-leipzig/) is a signature activity of springtime Leipzig). Keep an eye out for overgrown cobblestone roads, abandoned tram lines, snails in the long grass, and wild boar (wild only in sense of the [species](https://en.wikipedia.org/wiki/Wild_boar) -- wisely fenced off).
+
+Photo taken at my southermost reach near Agra -- just a few hundred feet from hundreds of tents housing sleeping festivalgoers at the WGT campground.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/f7up96ktcex7iv6/IMG_1084-cropped.jpg?dl=1"
+    slug = "004"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/nq25zweozeimom1/IMG_1115.JPG?dl=1"
+    slug = "004b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/b2vtjcwgnppabo6/IMG_1082.JPG?dl=1"
+    slug = "004c"
+
+[[entries]]
+  occurred_at = 2019-06-13T08:45:07Z
+  slug = "003"
+  title = "Doom under the dome"
+
+  description = """\
+The _Volkspalast_ ("people's palace") is a big, circular space built under a dome to be reminiscent of [the Pantheon](https://en.wikipedia.org/wiki/Pantheon,_Rome) in Rome commissioned by Marcus Agrippa under Augustus' reign. With the honor system being the only thing that separates stage from crowd, the concerts held here are as intimate as you'll ever find.
+
+This is Darkher performing her particular brand of slow doom metal, and there's no venue more appropriate for it (the original Pantheon wasn't available). It's the first day of [WGT](https://en.wikipedia.org/wiki/Wave-Gotik-Treffen) down in Leipzig, and I've hopped down here from Berlin for a few days to attend.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/zblfzngjam5n8w5/L1070542-cropped.jpg?dl=1"
+    slug = "003"
+
+[[entries]]
+  occurred_at = 2019-06-10T10:33:37Z
+  slug = "002"
+  title = "Fire and water"
+
+  description = """\
+Back home packing, I waffle over whether I can get away without bringing a jacket. Finally, I decide to try it. I know it's risky, but keep it light.
+
+Fast forward 24 hours: I land in a Berlin that's not only hot, but _so_ hot that the city is skimming temperature records, with daily highs like 34 degrees (93F). Thoughts of jackets are quickly forgotten; replaced with brainstorming on how to strip off as many layers as possible while avoiding arrest for public indecency.
+
+Berlin has some amazing running routes, but this year even a few kilometers are oppressive. A painful workaround is to go early -- like _really_ early -- ideally 5:30 or so, when the mercury's "only" in the high teens/low twenties. Long daylight hours (the sun rises before 5 AM) combined with jet lag make the ambitious schedule possible.
+
+This photo's of the wilderness along my favorite run -- follow the Spree southeast out of Friedrichshain, into northern Kreuzberg (say "hi" to the people still partying), passed the sunken [MS Dr. Ingrid Wengler](https://fotostrasse.com/abandoned-boat-spree-river/) and [Molecule Man](https://en.wikipedia.org/wiki/Molecule_Man_(sculpture\\)), through Treptower Park, and then south by and around the ruins of [Spreepark](https://www.abandonedberlin.com/2010/04/spreepark-and-how-to-get-in.html) (scroll down at that link for some great photos, and hundreds of anecdata points from people sneaking passed the fence). This year, the fallen tyrannosaurus is gone, but the creaking old ferris wheel still stands.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/hq5on26kbnspeia/IMG_1058-cropped.jpg?dl=1"
+    slug = "002"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/mvmmc8kqxe8hoot/IMG_1061.JPG?dl=1"
+    slug = "002b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ve0o5de1v0ywvt2/IMG_1069.JPG?dl=1"
+    slug = "002c"
+
+[[entries]]
+  occurred_at = 2019-06-09T08:56:50Z
+  slug = "001"
+  title = "Grenzmauer 75"
+
+  description = """\
+The first few days of my stay are spent in Friedrichshain along the Spree. Jetlagged beyond belief, I take a walk at 5 AM and realize that I'm staying next to the longest continuous section of the [Berlin Wall](https://en.wikipedia.org/wiki/Berlin_Wall) that's still standing, known as the "East Side Gallery".
+
+The wall, or officially the **Anti-Fascist Protection Rampart** by East Germany's GDR, wasn't built to repel invasion as the name suggests, but as an emergency effort to keep their own population in. Flight to the west was so bad that it was compromising the viability of the country's economy, with departees disproportionately of working age and professionally skilled.
+
+Khrushchev and Ulbricht conspired to close the border in August 1961 despite the inevitable damage it would do to communism's PR. The wall started life as barbed wire entanglements on August 13th ("Barbed Wire Sunday") and a few refinements later would became the _Grenzmauer 75_ (Border Wall 1975) of 45,000 prefab concrete blocks that we recognize today.
+
+**At the begining of 1989, GDR leader Erich Honecker predicted that the wall would stand stand strong for 50 or 100 more years**, but that same year, a refugee crisis pressured the East German government to revise crossing regulations with a provision for private round trips. Miscommunication in the party's hierarchy caused a spokesman to suggest that the new rules would come into effect immediately, when they were supposed to activate the following day to provide time for border guards to be briefed. Televised broadcasts prompted huge gatherings at the wall's six checkpoints demanding to cross. As pressure continued to build, the vastly outnumbered soldiers would eventually allow it as no one was willing to authorize the use of lethal force.
+
+Since then, sections of the wall have been exported around the world and can be found [everywhere](https://en.wikipedia.org/wiki/List_of_Berlin_Wall_segments#Indonesia) from Manitoba to Indonesia to Estonia. Graffiti had been a common fixture on the west side of the wall for some time, but graffiti on its _east_ side, like that pictured below is new, appearing only after the '89 collapse.
+\
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/xyo86uxb0nie7oj/L1070488-wall.JPG?dl=1"
+    slug = "001"
