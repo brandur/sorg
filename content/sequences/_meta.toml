@@ -16,7 +16,7 @@ This is [Mount Rainier](https://en.wikipedia.org/wiki/Mount_Rainier), the talles
 
 I just landed in Seattle. It's colder than expected. Like colder than it rightfully should be in any west coast city. Luckily, I learned from [my mistake in New York](/nanoglyphs/033-heroku#new-york) and came equipped with a variety of cold weather gear this time around. I haven't had a chance to do much yet besides check into my hotel and head over to the flagship Amazon Go store, which was quite busy, but appeared to be about 5% shoppers, and 95% senior Amazon staff chatting in small circles, lauding each other on their own ingenuity. Still, it was nice seeing a downtown that'd regained some of its lost vibrancy.
 
-I got a coffee, along with a note saying that Amazon is "working on my receipt", but nothing since. I suspect it might be a Mechanical Turk who ends up piecing together my bill from video rather than the finely tuned neural nets of a hyper-sophisticated ML cluster, but I might be a cynic.
+I got a coffee, along with a note saying that Amazon is "working on my receipt", but nothing since. I suspect it might be a Mechanical Turk who ends up piecing together my bill from video rather than the finely tuned neural nets of a hyper-sophisticated ML cluster, but I might be a cynic. On my way out, someone handed me a free banana from a cart parked next to a geodesic dome.
 
 Last weekend I wrote a [Spring '83 key generator](https://github.com/brandur/spring83-keygen), and on the flight got maybe halfway to a working server implementation. Tomorrow, more Seattle, more Spring '83, and work time spent on SSO and polish on a forthcoming metrics product for Bridge.
 """
