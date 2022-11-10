@@ -5,6 +5,33 @@ A combined sequence bringing in all the previous ones.
 """
 
 [[entries]]
+  occurred_at = 2022-11-09T23:44:57Z
+  slug = "028"
+  title = "Rainier"
+
+  description = """\
+You'll have to give me a break on photo quality for this one -- it's hard getting something good through the foggy glass of a plane window.
+
+This is [Mount Rainier](https://en.wikipedia.org/wiki/Mount_Rainier), the tallest mountain in Washington state and the Cascade mountain range, and also one of the most dangerous volcanoes in the world. It's on the list of [Decade Volcanoes](https://en.wikipedia.org/wiki/Decade_Volcanoes) thanks to its history of large, destructive eruptions and near proximity to a dense populzation zone. Wikipedia almost notes that it's the most topologically prominent peak in the contiguous US, dwarfing everything else around it and having quite a striking effect on the eye.
+
+I just landed in Seattle. It's colder than expected. Like colder than it rightfully should be in any west coast city. Luckily, I learned from [my mistake in New York](/nanoglyphs/033-heroku#new-york) and came equipped with a variety of cold weather gear this time around. I haven't had a chance to do much yet besides check into my hotel and head over to the flagship Amazon Go store, which was quite busy, but appeared to be about 5% shoppers, and 95% senior Amazon staff chatting in small circles, lauding each other on their own ingenuity. Still, it was nice seeing a downtown that'd regained some of its lost vibrancy.
+
+I got a coffee, along with a note saying that Amazon is "working on my receipt", but nothing since. I suspect it might be a Mechanical Turk who ends up piecing together my bill from video rather than the finely tuned neural nets of a hyper-sophisticated ML cluster, but I might be a cynic.
+
+Last weekend I wrote a [Spring '83 key generator](https://github.com/brandur/spring83-keygen), and on the flight got maybe halfway to a working server implementation. Tomorrow, more Seattle, more Spring '83, and work time spent on SSO and polish on a forthcoming metrics product for Bridge.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/bo8lwyrrexdvda7/2W4A1877.JPG?dl=1"
+    slug = "028"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/b2zj3ukztp7x2sj/2W4A1869.JPG?dl=1"
+    slug = "028b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/760d5fhp1xzjx48/2W4A1870.JPG?dl=1"
+    slug = "028c"
+
+[[entries]]
   occurred_at = 2022-11-08T18:08:05Z
   slug = "027"
   title = "Rain and random encounters"
