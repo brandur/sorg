@@ -5,6 +5,28 @@ A combined sequence bringing in all the previous ones.
 """
 
 [[entries]]
+  occurred_at = 2022-11-13T05:57:56Z
+  slug = "029"
+  title = "U of W"
+
+  description = """\
+Not Waterloo, Washington. Today, investigating Seattle neighborhoods, I did a grand loop of inner Seattle -- starting on the University of Washington campus, up through the University District, west to Green Lake and onto Phinney Ridge, then down through Fremont and back along the west shore of Lake Union until I was back in Amazon central (South Lake Union).
+
+Seattle's a nice city, but wow, also a busy one. From Belltown to Ballard, every road is loud and fast, and apparently a thoroughfare to somewhere else. Walking around West Lake, I'm not sure I've seen a busier park in my life. Looking at a map it makes sense -- hundreds of thousands of adjacent residents with only a handful of local park options to choose from, and falling back on what they can.
+
+There's got to be a slower-paced neighborhood around here, but one that's not too far out in the 'burbs right? I have another half dozen yet unexplored recommendations. We'll see what the next few days yield.
+
+This morning, got [most of a Spring '83 server](https://github.com/brandur/neospring) implementation done. It deploys automatically to GCP, but it took a couple hours of futzing around to get there. GCP's inscrutable, debug-by-trial-and-error ACL model is one of the most nightmarish things I've seen in 20+ years of programming. I'd originally intended to have it persist to Postgres, but after thinking about it over breakfast, realized this was a perfect use case for writing tiny 2217-byte blobs to an object store. It's running, but I'm still not publishing anything to it -- more to come.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/3ek02b5qrnqoyqi/2W4A1917-cropped.jpg?dl=1"
+    slug = "029"
+  # [[entries.photographs]]
+  #   original_image_url = "https://www.dropbox.com/s/6x3bdzfq0affla3/2W4A1919.JPG?dl=1"
+  #   slug = "029b"
+
+[[entries]]
   occurred_at = 2022-11-09T23:44:57Z
   slug = "028"
   title = "Rainier"
