@@ -5,6 +5,33 @@ A combined sequence bringing in all the previous ones.
 """
 
 [[entries]]
+  occurred_at = 2022-11-14T18:14:41Z
+  slug = "030"
+  title = "Amanita hunting"
+
+  description = """\
+Yesterday we drove from Seattle to Westport, a small coastal south of Olympic National Park.
+
+I was lucky to join what'd been a prearranged trip for none other than ... mushroom hunting. Our main target was [_Amanita muscaria_](https://en.wikipedia.org/wiki/Amanita_muscaria), which even if you're a mycology novice like myself, you might recognize by its distinctive red and white spots, made unforgettable by Super Mario and the Smurfs.
+
+Amantias have some pscychoactive properties, but between their toxicity and the relative mildness of the effect, outlawing them never became a priority like it did for [psilocybin mushrooms](https://en.wikipedia.org/wiki/Psilocybin_mushroom).
+
+We spent the rest of the day walking around the beach and swinging by the harbor area for some fish and chips and crab melt. Westport is a quaint town with a very rural feel, and I found it darkly amusing that this would be prime real estate up in ill-weathered Canada, but goes largely ignored in America despite being only a few hours drive from Seattle (metro population ~4M).
+
+Later, continuing [Spring '83 implementation](https://www.robinsloan.com/lab/specifying-spring-83/), I wrote [neospring-bridge](https://github.com/brandur/neospring-bridge), which cross-posts this feed to [neospring](https://github.com/brandur) as a board (try `curl https://neospring.brandur.org/2c98169d0b6fa73cab5a830be8dde53c5f388d5c6f8e6f756b6b6dbcc83e1124`). I still need to do something with layout, federation, and a frontend, and it's far and away the most likely outcome that this project doesn't get traction, but it's been a great hack project.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/yw20d9skpotajwr/2W4A1948.JPG?dl=1"
+    slug = "030"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/4a19hpdndlwimx7/2W4A1955.JPG?dl=1"
+    slug = "030b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/cnd4tdb129a1swu/2W4A1962-basket.JPG?dl=1"
+    slug = "030c"
+
+[[entries]]
   occurred_at = 2022-11-13T05:57:56Z
   slug = "029"
   title = "U of W"
