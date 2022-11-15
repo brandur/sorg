@@ -18,7 +18,7 @@ Amanitas have some pscychoactive properties, but between their toxicity and the 
 
 We spent the rest of the day walking around the beach and swinging by the harbor for fish and chips and crab melt. Westport is a quaint town with a rural feel, and I found it darkly amusing that this would be prime real estate up in ill-weathered Canada, but goes largely ignored in America despite being only a few hours drive from Seattle (metro population ~4M).
 
-Later, continuing [Spring '83 implementation](https://www.robinsloan.com/lab/specifying-spring-83/), I wrote [neospring-bridge](https://github.com/brandur/neospring-bridge), which cross-posts this feed to [neospring](https://github.com/brandur) as a board (try `curl https://neospring.brandur.org/2c98169d0b6fa73cab5a830be8dde53c5f388d5c6f8e6f756b6b6dbcc83e1124`). I still need to do something with layout, federation, and a frontend, and it's far and away the most likely outcome that this project doesn't get traction, but it's been a great hack project.
+Later, continuing [Spring '83 implementation](https://www.robinsloan.com/lab/specifying-spring-83/), I wrote [neospring-bridge](https://github.com/brandur/neospring-bridge), which cross-posts this feed to [neospring](https://github.com/brandur/neospring) as a board (try `curl https://neospring.brandur.org/2c98169d0b6fa73cab5a830be8dde53c5f388d5c6f8e6f756b6b6dbcc83e1124`). I still need to do something with layout, federation, and a frontend, and it's far and away the most likely outcome that this project doesn't get traction, but it's been a great hack project.
 """
 
   [[entries.photographs]]
