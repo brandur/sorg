@@ -10,13 +10,13 @@ A combined sequence bringing in all the previous ones.
   title = "Amanita hunting"
 
   description = """\
-Yesterday we drove from Seattle to Westport, a small coastal south of Olympic National Park.
+Yesterday, drove from Seattle to Westport, a small town on Washington's coast.
 
-I was lucky to join what'd been a prearranged trip for none other than ... mushroom hunting. Our main target was [_Amanita muscaria_](https://en.wikipedia.org/wiki/Amanita_muscaria), which even if you're a mycology novice like myself, you might recognize by its distinctive red and white spots, made unforgettable by Super Mario and the Smurfs.
+I was lucky to join what'd been a prearranged trip for none other than ... mushroom foraging. Our target was [_Amanita muscaria_](https://en.wikipedia.org/wiki/Amanita_muscaria), which even if you're a mycology novice like myself, you'll recognize by its distinctive red and white spots, made unforgettable by Super Mario and the Smurfs.
 
-Amantias have some pscychoactive properties, but between their toxicity and the relative mildness of the effect, outlawing them never became a priority like it did for [psilocybin mushrooms](https://en.wikipedia.org/wiki/Psilocybin_mushroom).
+Amanitas have some pscychoactive properties, but between their toxicity and the relative mildness of the effect, outlawing them was never a priority like it was for [psilocybin mushrooms](https://en.wikipedia.org/wiki/Psilocybin_mushroom).
 
-We spent the rest of the day walking around the beach and swinging by the harbor area for some fish and chips and crab melt. Westport is a quaint town with a very rural feel, and I found it darkly amusing that this would be prime real estate up in ill-weathered Canada, but goes largely ignored in America despite being only a few hours drive from Seattle (metro population ~4M).
+We spent the rest of the day walking around the beach and swinging by the harbor for fish and chips and crab melt. Westport is a quaint town with a rural feel, and I found it darkly amusing that this would be prime real estate up in ill-weathered Canada, but goes largely ignored in America despite being only a few hours drive from Seattle (metro population ~4M).
 
 Later, continuing [Spring '83 implementation](https://www.robinsloan.com/lab/specifying-spring-83/), I wrote [neospring-bridge](https://github.com/brandur/neospring-bridge), which cross-posts this feed to [neospring](https://github.com/brandur) as a board (try `curl https://neospring.brandur.org/2c98169d0b6fa73cab5a830be8dde53c5f388d5c6f8e6f756b6b6dbcc83e1124`). I still need to do something with layout, federation, and a frontend, and it's far and away the most likely outcome that this project doesn't get traction, but it's been a great hack project.
 """
