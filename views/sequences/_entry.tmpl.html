@@ -13,21 +13,21 @@
 
         {{- if eq (len .Entry.Photos) 3 -}}
 
-        <div class=" flex flex-col">
+        <div class="flex flex-col">
             <div class="mb-0.5">
                 {{- with (index .Entry.Photos 0) -}}
                 {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
                 {{- end -}}
             </div>
 
-            <div class="flex flex-row mt-0.5">
-                <div class="mr-0.5">
+            <div class="md:flex md:flex-row md:mb-0.5">
+                <div class="mb-0.5 md:mr-0.5 md:mb-0">
                     {{- with (index .Entry.Photos 1) -}}
                     {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
                     {{- end -}}
                 </div>
 
-                <div class="ml-0.5">
+                <div class="mb-0.5 md:ml-0.5 md:mb-0">
                     {{- with (index .Entry.Photos 2) -}}
                     {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
                     {{- end -}}
@@ -37,14 +37,14 @@
 
         {{- else if eq (len .Entry.Photos) 2 -}}
 
-        <div class="flex flex-row">
-            <div class="mr-0.5">
+        <div class="md:flex md:flex-row mb-0.5">
+            <div class="mb-0.5 mr-0.5 md:mb-0">
                 {{- with (index .Entry.Photos 0) -}}
                 {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
                 {{- end -}}
             </div>
 
-            <div class="ml-0.5">
+            <div class="mb-0.5 ml-0.5 md:mb-0">
                 {{- with (index .Entry.Photos 1) -}}
                 {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
                 {{- end -}}
@@ -53,7 +53,7 @@
 
         {{- else -}}
 
-        <div>
+        <div class="mb-0.5">
             {{- with (index .Entry.Photos 0) -}}
             {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
             {{- end -}}
