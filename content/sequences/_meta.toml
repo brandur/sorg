@@ -5,6 +5,29 @@ A combined sequence bringing in all the previous ones.
 """
 
 [[entries]]
+  occurred_at = 2022-11-16T01:50:53Z
+  slug = "031"
+  title = "citizenM"
+
+  description = """\
+citizenM South Lake Union, my hotel in Seattle. A tad more affordable than other places in the area, you quickly find out why -- the rooms are modern and space-efficient, but they're also the size of a tack -- maybe a hundred square feet. Making perfectly stackable rectangles with even the bathroom pulled internally, a full fifty of them fit onto a single floor of the modestly sized building.
+
+But it's got some nice touches. Self check-in worked well, and a full bank of half a dozen terminals means no lines ~ever. A generous common room with beautiful decor encourages guests to get out of their rooms and mingle downstairs. Badging into a room brings on all lights inside automatically, so no fumbling for switches. And while each light gets its own switch for individual control, two master switches -- one by the bed and one by the exit -- light or extinguish them all simultaneously. That doesn't exactly necessitate a trascendant level of product craftsmanship, but having applied even a modicum of thought to layout and design puts citizenM into the top bracket amongst its peers.
+
+Staying in cities is expensive and getting moreso. Predictably, AirBnB has equalized in cost with hotels, and hotel prices are going up, showing ~8.5% inflation YoY. Thanks to the absence of Prop 13, Seattle uses its inner city land better than San Francisco does, but it still got me thinking about how the lion's share of revenue produced by an increasingly productive city ends up going to land owners and rent. An interesting piece [by Lars Doucet on Georgism](https://astralcodexten.substack.com/p/does-georgism-work-is-land-really) (or [in podcast form](https://www.youtube.com/watch?v=4fKfz9Mkzv4)) makes the case for why land value tax is a superior model to property tax.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/9cbgygcq4yldza5/2W4A1908-cropped2.jpg?dl=1"
+    slug = "031"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/zqpxpgi3bsujf1q/2W4A1995.JPG?dl=1"
+    slug = "031b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/wjfwobxasavz6ed/2W4A1999.JPG?dl=1"
+    slug = "031c"
+
+[[entries]]
   occurred_at = 2022-11-14T18:14:41Z
   slug = "030"
   title = "Amanita hunting"
