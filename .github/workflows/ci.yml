@@ -59,7 +59,7 @@ jobs:
           mkdir -p $HOME/imagemagick/bin/
           # curl -L -o magick https://imagemagick.org/archive/binaries/magick
           # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
-          curl curl -L -o $HOME/imagemagick/bin/magick https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          curl --compressed -L -o $HOME/imagemagick/bin/magick https://github.com/brandur/imagemagick-builder/releases/download/master/magick
           chmod +x $HOME/imagemagick/bin/magick
 
       - name: ImageMagick format options
@@ -69,8 +69,9 @@ jobs:
       - name: Install MozJPEG
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
-          curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
-          sudo dpkg -i mozjpeg_master_amd64.deb
+          # curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
+          curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
+          sudo dpkg -i mozjpeg_amd64.deb
 
       # It'd be nice to take apt-get back out of the flow since it's so slow.
       # Unfortunately, none of the pngquant install options make this
