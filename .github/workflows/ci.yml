@@ -57,12 +57,9 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           mkdir -p $HOME/imagemagick/bin/
-          cd $HOME/imagemagick/
-          curl -L -o magick-appimage https://imagemagick.org/archive/binaries/magick
-          # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
-          chmod +x magick-appimage
-          magick-appimage --appimage-extract
-          $HOME/imagemagick/squashfs-root/usr/bin/magick
+          # curl -L -o magick https://imagemagick.org/archive/binaries/magick
+          curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
+          chmod +x $HOME/imagemagick/bin/magick
 
       - name: ImageMagick format options
         run: $HOME/imagemagick/squashfs-root/usr/bin/magick identify -list format
