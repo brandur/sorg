@@ -58,7 +58,8 @@ jobs:
         run: |
           mkdir -p $HOME/imagemagick/bin/
           # curl -L -o magick https://imagemagick.org/archive/binaries/magick
-          curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
+          # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
+          curl curl -L -o $HOME/imagemagick/bin/magick https://github.com/brandur/imagemagick-builder/releases/download/master/magick
           chmod +x $HOME/imagemagick/bin/magick
 
       - name: ImageMagick format options
