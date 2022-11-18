@@ -29,24 +29,32 @@ jobs:
         uses: actions/setup-go@v3
 
       # The copy of ImageMagick we could get from apt-get is ancient and
-      # doesn't handle niceties like `.heic` files, so here we get the binary
-      # release directly. When Ubuntu is upgraded at some point in the
-      # probably-distant future, we can probably get rid of this.
+      # doesn't handle niceties like `.heic` files, so here we get a binary
+      # directly. When Ubuntu is upgraded at some point in the probably-distant
+      # future, we can probably get rid of this.
+      #
+      # I originally fetched an official release binary, but then ImageMagick
+      # switched over to the AppImage format, which didn't work on GitHub
+      # Actions at all and didn't seem to have an easy route to success, so I
+      # changed over to build by own binary.
+      #
+      # Uses an artifact built by:
+      #
+      # https://github.com/brandur/imagemagick-builder
       - name: Install ImageMagick
         run: |
           mkdir -p $HOME/imagemagick/bin/
-          # curl -L -o magick https://imagemagick.org/archive/binaries/magick
-          # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
           curl --compressed -L -o $HOME/imagemagick/bin/magick https://github.com/brandur/imagemagick-builder/releases/download/master/magick
           chmod +x $HOME/imagemagick/bin/magick
 
       - name: ImageMagick format options
         run: $HOME/imagemagick/bin/magick identify -list format
 
-      # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
+      # Uses an artifact built by:
+      #
+      # https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
         run: |
-          # curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
           sudo dpkg -i mozjpeg_amd64.deb
 
