@@ -61,7 +61,7 @@ jobs:
           # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
           chmod +x $HOME/imagemagick/magick-appimage
           $HOME/imagemagick/magick-appimage --appimage-extract
-          mv $HOME/imagemagick/squashfs-root/usr/bin/magick $HOME/imagemagick/bin/magick
+          mv squashfs-root/usr/bin/magick $HOME/imagemagick/bin/magick
           chmod +x $HOME/imagemagick/bin/magick
 
       - name: ImageMagick format options
