@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
 
       # Used to force dependencies to re-cache once a day so that we don't run
       # into any weird cache invalidation problems, so to make sure that
@@ -39,21 +39,15 @@ jobs:
 
       - name: Cache dependencies
         id: cache-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           # Don't try to use variables in these paths. They don't seem to work
           # and it'll lead to hours of confusion. You can use a `~`, but I've
           # expanded HOME so that finding things is easier.
           path: |
-            /home/runner/go/bin/
-            /home/runner/go/pkg/mod/
             /home/runner/imagemagick/
             /opt/mozjpeg/
           key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-cache-dependencies-v2
-
-      - name: Install Golint
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        run: go get -u golang.org/x/lint/golint
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get the binary
@@ -122,15 +116,6 @@ jobs:
 
       - name: "Check: Gofmt"
         run: make check-gofmt
-
-      - name: "Check: Golint"
-        # I usually run tasks through make, but for some reasons GitHub Actions
-        # really doesn't like the `make lint` task, so I've unfurled it here.
-        # The error:
-        #
-        #     /home/runner/work/_temp/fcd52edc-894a-48eb-bf93-f8b8d5752bce.sh: line 1: unexpected EOF while looking for matching `"'
-        #
-        run: $(go env GOPATH)/bin/golint -set_exit_status ./...
 
       - name: "Check: Markdown headers"
         run: make check-headers
