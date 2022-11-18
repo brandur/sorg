@@ -28,33 +28,11 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v3
 
-      # Used to force dependencies to re-cache once a day so that we don't run
-      # into any weird cache invalidation problems, so to make sure that
-      # dependency fetches keep working.
-      - name: Get date
-        id: get-date
-        run: |
-          echo "::set-output name=date::$(/bin/date -u "+%Y-%m-%d")"
-        shell: bash
-
-      - name: Cache dependencies
-        id: cache-dependencies
-        uses: actions/cache@v3
-        with:
-          # Don't try to use variables in these paths. They don't seem to work
-          # and it'll lead to hours of confusion. You can use a `~`, but I've
-          # expanded HOME so that finding things is easier.
-          path: |
-            /home/runner/imagemagick/
-            /opt/mozjpeg/
-          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-cache-dependencies-v2
-
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get the binary
       # release directly. When Ubuntu is upgraded at some point in the
       # probably-distant future, we can probably get rid of this.
       - name: Install ImageMagick
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           mkdir -p $HOME/imagemagick/bin/
           # curl -L -o magick https://imagemagick.org/archive/binaries/magick
@@ -67,7 +45,6 @@ jobs:
 
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           # curl --compressed -O https://mozjpeg-brandur.s3.us-east-1.amazonaws.com/mozjpeg_master_amd64.deb
           curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
