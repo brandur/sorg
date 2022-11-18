@@ -57,15 +57,15 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           mkdir -p $HOME/imagemagick/bin/
-          curl -L -o $HOME/imagemagick/magick-appimage https://imagemagick.org/archive/binaries/magick
+          cd $HOME/imagemagick/
+          curl -L -o magick-appimage https://imagemagick.org/archive/binaries/magick
           # curl --compressed -L --output $HOME/imagemagick/bin/magick https://imagemagick-brandur.s3.us-east-1.amazonaws.com/magick
-          chmod +x $HOME/imagemagick/magick-appimage
-          $HOME/imagemagick/magick-appimage --appimage-extract
-          mv squashfs-root/usr/bin/magick $HOME/imagemagick/bin/magick
-          chmod +x $HOME/imagemagick/bin/magick
+          chmod +x magick-appimage
+          magick-appimage --appimage-extract
+          $HOME/imagemagick/squashfs-root/usr/bin/magick
 
       - name: ImageMagick format options
-        run: $HOME/imagemagick/bin/magick identify -list format
+        run: $HOME/imagemagick/squashfs-root/usr/bin/magick identify -list format
 
       # Uses an artifact built by: https://github.com/brandur/mozjpeg-builder
       - name: Install MozJPEG
