@@ -2322,7 +2322,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 		}
 
 		entry := &matom.Entry{
-			Title:     entry.Title,
+			Title:     entry.Slug + " — " + entry.Title,
 			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
 			Published: *entry.OccurredAt,
 			Updated:   *entry.OccurredAt,
