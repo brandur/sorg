@@ -5,6 +5,26 @@ A combined sequence bringing in all the previous ones.
 """
 
 [[entries]]
+  occurred_at = 2022-11-28T01:12:09Z
+  slug = "034"
+  title = "Columbus Tower"
+
+  description = """\
+Columbus Tower's so close to the tourist parts of San Francisco (Chinatown, North Beach) that it's a building that many visitors to the city have accidentally seen before just by virtue of being here. It's a conspicuous fixture on Columbus St a few short blocks from North Beach, and when viewed from the famous Columbus and Broadway intersection, the Transamerica Pyramid towers up behind it.
+
+Not so obvious is its notable history -- built right around the 1906 quake, it was slow to open after extensive damange to the construction site. It housed a corrupt San Francisco politican (even moreso than the ones we have today -- [convicted 14 years](https://en.wikipedia.org/wiki/Abe_Ruef) for bribery) and a famous stand-up comedy club before being sold to Francis Ford Coppola, upon which it became the post-SOMA headquarters for [American Zoetrope](https://en.wikipedia.org/wiki/American_Zoetrope), co-founded by George Lucas.
+
+Zeotrope was responsible for production only for Lucas' pre-Lucasfilm movies like _THX 1138_ and _American Graffiti_, but most of the Coppola family films, including _The Godfather_ series, _Apocalypse Now_, and _Lost in Translation_ by Sofia Coppola (still my favorite movie).
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/f1e7q0xufqwup9p/2W4A2069-cropped2.jpg?dl=1"
+    slug = "034"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/qcoabrdmy5qa5qm/2W4A2070-cropped.jpg?dl=1"
+    slug = "034b"
+
+[[entries]]
   occurred_at = 2022-11-21T02:17:15Z
   slug = "033"
   title = "The last subway"
