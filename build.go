@@ -604,10 +604,10 @@ func build(c *modulir.Context) []error {
 
 	// Various sorts for anything that might need it.
 	{
-		slices.SortFunc(articles, func(a, b *Article) bool { return a.PublishedAt.Before(b.PublishedAt) })
-		slices.SortFunc(fragments, func(a, b *Fragment) bool { return a.PublishedAt.Before(b.PublishedAt) })
-		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(b.PublishedAt) })
-		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(b.PublishedAt) })
+		slices.SortFunc(articles, func(a, b *Article) bool { return b.PublishedAt.Before(a.PublishedAt) })
+		slices.SortFunc(fragments, func(a, b *Fragment) bool { return b.PublishedAt.Before(a.PublishedAt) })
+		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
+		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(photos, func(a, b *Photo) bool { return b.OccurredAt.Before(a.OccurredAt) })
 		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return b.OccurredAt.Before(a.OccurredAt) })
 	}
