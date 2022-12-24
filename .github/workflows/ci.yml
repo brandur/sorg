@@ -101,9 +101,6 @@ jobs:
           MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
           PNGQUANT_BIN: /usr/bin/pngquant
 
-      - name: "Go: Vet"
-        run: make vet
-
       - name: "Check: Dropbox image ?dl=0"
         run: make check-dl0
 
