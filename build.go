@@ -546,6 +546,8 @@ func build(c *modulir.Context) []error {
 				entry.DescriptionHTML = template.HTML(string(mmarkdown.Render(c, []byte(entry.Description))))
 			}
 
+			sequences = sequenceWrapper.Entries
+
 			return true, nil
 		})
 	}
@@ -606,8 +608,8 @@ func build(c *modulir.Context) []error {
 		slices.SortFunc(fragments, func(a, b *Fragment) bool { return a.PublishedAt.Before(b.PublishedAt) })
 		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(b.PublishedAt) })
 		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(b.PublishedAt) })
-		slices.SortFunc(photos, func(a, b *Photo) bool { return a.OccurredAt.Before(b.OccurredAt) })
-		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return a.OccurredAt.Before(b.OccurredAt) })
+		slices.SortFunc(photos, func(a, b *Photo) bool { return b.OccurredAt.Before(a.OccurredAt) })
+		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return b.OccurredAt.Before(a.OccurredAt) })
 	}
 
 	//
