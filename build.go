@@ -17,6 +17,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/go-playground/validator/v10"
 	_ "github.com/lib/pq"
 	"github.com/yosssi/ace"
 	"golang.org/x/exp/slices"
@@ -98,6 +99,8 @@ var localLocation = mustLocation("America/Los_Angeles")
 // tradeoff. This variable is a global because so many render functions access
 // it.
 var universalSources []string
+
+var validate = validator.New()
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -469,6 +472,10 @@ func build(c *modulir.Context) []error {
 			var photosWrapper PhotoWrapper
 			err := mtoml.ParseFile(c, source, &photosWrapper)
 			if err != nil {
+				return true, err
+			}
+
+			if err := photosWrapper.validate(); err != nil {
 				return true, err
 			}
 
@@ -871,10 +878,10 @@ type Article struct {
 	Image string `toml:"image,omitempty"`
 
 	// Location is the geographical location where this article was written.
-	Location string `toml:"location,omitempty"`
+	Location string `toml:"location,omitempty" validate:"required"`
 
 	// PublishedAt is when the article was published.
-	PublishedAt time.Time `toml:"published_at"`
+	PublishedAt time.Time `toml:"published_at" validate:"required"`
 
 	// Slug is a unique identifier for the article that also helps determine
 	// where it's addressable by URL.
@@ -884,7 +891,7 @@ type Article struct {
 	Tags []Tag `toml:"tags,omitempty"`
 
 	// Title is the article's title.
-	Title string `toml:"title"`
+	Title string `toml:"title" validate:"required"`
 
 	// TOC is the HTML rendered table of contents of the article. It isn't
 	// included as TOML frontmatter, but rather calculated from the article's
@@ -917,18 +924,9 @@ func (a *Article) taggedWith(tag Tag) bool {
 }
 
 func (a *Article) validate(source string) error {
-	if a.Location == "" {
-		return xerrors.Errorf("no location for article: %v", source)
+	if err := validate.Struct(a); err != nil {
+		return xerrors.Errorf("error validating article %q: %+v", source, err)
 	}
-
-	if a.Title == "" {
-		return xerrors.Errorf("no title for article: %v", source)
-	}
-
-	if a.PublishedAt.IsZero() {
-		return xerrors.Errorf("no publish date for article: %v", source)
-	}
-
 	return nil
 }
 
@@ -960,14 +958,14 @@ type Fragment struct {
 	Location string `toml:"location,omitempty"`
 
 	// PublishedAt is when the fragment was published.
-	PublishedAt time.Time `toml:"published_at"`
+	PublishedAt time.Time `toml:"published_at" validate:"required"`
 
 	// Slug is a unique identifier for the fragment that also helps determine
 	// where it's addressable by URL.
 	Slug string `toml:"-"`
 
 	// Title is the fragment's title.
-	Title string `toml:"title"`
+	Title string `toml:"title" validate:"required"`
 }
 
 // PublishingInfo produces a brief spiel about publication which is intended to
@@ -986,14 +984,9 @@ func (f *Fragment) publishingInfo() map[string]string {
 }
 
 func (f *Fragment) validate(source string) error {
-	if f.Title == "" {
-		return xerrors.Errorf("no title for fragment: %v", source)
+	if err := validate.Struct(f); err != nil {
+		return xerrors.Errorf("error validating fragment %q: %+v", source, err)
 	}
-
-	if f.PublishedAt.IsZero() {
-		return xerrors.Errorf("no publish date for fragment: %v", source)
-	}
-
 	return nil
 }
 
@@ -1051,7 +1044,7 @@ type Photo struct {
 	// Slug is a unique identifier for the photo. Originally these were
 	// generated from Flickr, but I've since just started reusing them for
 	// filenames.
-	Slug string `toml:"slug"`
+	Slug string `toml:"slug" validate:"required"`
 
 	// Title is the title of the photograph.
 	Title string `toml:"title"`
@@ -1061,7 +1054,14 @@ type Photo struct {
 // the top level of photograph data file `content/photographs/_meta.toml`.
 type PhotoWrapper struct {
 	// Photos is a collection of photos within the top-level wrapper.
-	Photos []*Photo `toml:"photographs"`
+	Photos []*Photo `toml:"photographs" validate:"required,dive"`
+}
+
+func (w *PhotoWrapper) validate() error {
+	if err := validate.Struct(w); err != nil {
+		return xerrors.Errorf("error validating photos: %+v", err)
+	}
+	return nil
 }
 
 // SequenceWrapper is a sequence -- a series of photos that represent some kind of
@@ -1069,19 +1069,19 @@ type PhotoWrapper struct {
 type SequenceWrapper struct {
 	// Entries are the set of entries in the sequence. Each contains a slug,
 	// description, and one or more photos.
-	Entries []*SequenceEntry `toml:"entries"`
+	Entries []*SequenceEntry `toml:"entries" validate:"required,dive"`
 }
 
-func (s *SequenceWrapper) validate() error {
+func (w *SequenceWrapper) validate() error {
+	if err := validate.Struct(w); err != nil {
+		return xerrors.Errorf("error validating sequences: %+v", err)
+	}
+
 	entrySlugs := make(map[string]struct{})
 
-	for i, entry := range s.Entries {
+	for i, entry := range w.Entries {
 		if entry.Slug == "" {
 			return xerrors.Errorf("no slug set for sequence entry: index %v", i)
-		}
-
-		if len(entry.Photos) < 1 {
-			return xerrors.Errorf("sequence entry needs at least one photo: %v", entry.Slug)
 		}
 
 		if _, ok := entrySlugs[entry.Slug]; ok {
@@ -1109,24 +1109,24 @@ func (s *SequenceWrapper) validate() error {
 // SequenceEntry is a single entry in a sequence.
 type SequenceEntry struct {
 	// Description is the description of the entry.
-	Description string `toml:"description"`
+	Description string `toml:"description" validate:"required"`
 
 	// DescriptionHTML is the description rendered to HTML.
-	DescriptionHTML template.HTML `toml:"-"`
+	DescriptionHTML template.HTML `toml:"-" validate:"-"`
 
 	// OccurredAt is UTC time when the entry was published.
-	OccurredAt time.Time `toml:"occurred_at"`
+	OccurredAt time.Time `toml:"occurred_at" validate:"required"`
 
 	// Photos is a collection of photos within this particular entry. Many
 	// sequence entries will only have a single photo, but there are alternate
 	// layouts for when one contains a number of different ones.
-	Photos []*Photo `toml:"photographs"`
+	Photos []*Photo `toml:"photographs" validate:"required,dive"`
 
 	// Slug is a unique identifier for the entry.
-	Slug string `toml:"slug"`
+	Slug string `toml:"slug" validate:"required"`
 
 	// Title is the title of the entry.
-	Title string `toml:"title"`
+	Title string `toml:"title" validate:"required"`
 }
 
 // Tag is a symbol assigned to an article to categorize it.
