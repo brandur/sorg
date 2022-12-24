@@ -12,6 +12,12 @@ env:
   GO_VERSION: 1.19
   GOOGLE_ANALYTICS_ID: UA-47798518-1
 
+  # Paths for various manually installed utilities. Don't try to use $HOME
+  # because GitHub Actions won't support it.
+  MAGICK_BIN: /home/runner/imagemagick/bin/magick
+  MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
+  PNGQUANT_BIN: /usr/bin/pngquant
+
 on:
   pull_request:
   push:
@@ -46,12 +52,12 @@ jobs:
       # https://github.com/brandur/imagemagick-builder
       - name: Install ImageMagick
         run: |
-          mkdir -p $HOME/imagemagick/bin/
-          curl --compressed -L -o $HOME/imagemagick/bin/magick https://github.com/brandur/imagemagick-builder/releases/download/master/magick
-          chmod +x $HOME/imagemagick/bin/magick
+          mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          chmod +x "${{ env.MAGICK_BIN }}"
 
       - name: ImageMagick format options
-        run: $HOME/imagemagick/bin/magick identify -list format
+        run: ${{ env.MAGICK_BIN }} identify -list format
 
       # Uses an artifact built by:
       #
@@ -137,7 +143,7 @@ jobs:
           echo "Please make sure that all Tailwind changes are checked in!"
           git diff --exit-code .
 
-  deploy:
+  deploy_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     if: github.ref == 'refs/heads/master'
@@ -145,9 +151,6 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
-      MAGICK_BIN: /home/runner/imagemagick/bin/magick
-      MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
-      PNGQUANT_BIN: /usr/bin/pngquant
 
     needs:
       - check_and_test
@@ -158,12 +161,9 @@ jobs:
       # See notes in check_and_test.
       - name: Install ImageMagick
         run: |
-          mkdir -p $HOME/imagemagick/bin/
-          curl --compressed -L -o $HOME/imagemagick/bin/magick https://github.com/brandur/imagemagick-builder/releases/download/master/magick
-          chmod +x $HOME/imagemagick/bin/magick
-
-      - name: ImageMagick format options
-        run: $HOME/imagemagick/bin/magick identify -list format
+          mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
       - name: Install MozJPEG
@@ -195,16 +195,62 @@ jobs:
           DRAFTS: true
           TARGET_DIR: ./public-dev
 
-      - name: "Build: Production"
-        run: make build
-        env:
-          TARGET_DIR: ./public
-
       - name: "Deploy: Development"
         run: make deploy
         env:
           S3_BUCKET: brandur.org-dev
           TARGET_DIR: ./public-dev
+
+  deploy_prod:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    if: github.ref == 'refs/heads/master'
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
+
+    needs:
+      - check_and_test
+      - check_tailwind
+      - golangci-lint
+
+    steps:
+      # See notes in check_and_test.
+      - name: Install ImageMagick
+        run: |
+          mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          chmod +x "${{ env.MAGICK_BIN }}"
+
+      # See notes in check_and_test.
+      - name: Install MozJPEG
+        run: |
+          curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
+          sudo dpkg -i mozjpeg_amd64.deb
+
+      # See notes in check_and_test.
+      - name: Install PNGQuant
+        run: sudo apt-get install pngquant
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: "Go: Install"
+        run: make install
+
+      # Download any markers that have not yet been committed to Git to save
+      # redoing download/resize work.
+      - name: "Download photo markers"
+        run: make photographs-download-markers
+
+      - name: "Download latest qself data/"
+        run: make data-update
+
+      - name: "Build: Production"
+        run: make build
+        env:
+          TARGET_DIR: ./public
 
       - name: "Deploy: Production"
         run: make deploy
@@ -214,9 +260,6 @@ jobs:
 
       - name: Upload photos
         run: make photographs-upload
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWSSecretAccessKey }}
 
   golangci-lint:
     runs-on: ubuntu-latest
