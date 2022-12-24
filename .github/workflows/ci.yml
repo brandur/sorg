@@ -1,5 +1,8 @@
 name: sorg CI
 
+env:
+  GO_VERSION: 1.19
+
 on:
   pull_request:
   push:
@@ -27,6 +30,9 @@ jobs:
     steps:
       - name: Install Go
         uses: actions/setup-go@v3
+        with:
+          check-latest: true
+          go-version: ${{ env.GO_VERSION }}
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get a binary

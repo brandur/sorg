@@ -13,13 +13,13 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
-	"sort"
 	"strings"
 	"sync"
 	"time"
 
 	_ "github.com/lib/pq"
 	"github.com/yosssi/ace"
+	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
 
 	"github.com/brandur/modulir"
@@ -628,13 +628,13 @@ func build(c *modulir.Context) []error {
 
 	// Various sorts for anything that might need it.
 	{
-		sortArticles(articles)
-		sortFragments(fragments)
-		sortNewsletters(nanoglyphs)
-		sortNewsletters(passages)
-		sortPhotos(photos)
-		sortSequenceEntries(sequences)
-		sortTalks(talks)
+		slices.SortFunc(articles, func(a, b *Article) bool { return a.PublishedAt.Before(*b.PublishedAt) })
+		slices.SortFunc(fragments, func(a, b *Fragment) bool { return a.PublishedAt.Before(*b.PublishedAt) })
+		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(*b.PublishedAt) })
+		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(*b.PublishedAt) })
+		slices.SortFunc(photos, func(a, b *Photo) bool { return a.OccurredAt.Before(*b.OccurredAt) })
+		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return a.OccurredAt.Before(*b.OccurredAt) })
+		slices.SortFunc(talks, func(a, b *stalks.Talk) bool { return a.PublishedAt.Before(*b.PublishedAt) })
 	}
 
 	//
@@ -2471,42 +2471,6 @@ func selectRandomPhoto(photos []*Photo) *Photo {
 
 	//nolint:gosec
 	return randomPhotos[rand.Intn(len(randomPhotos))]
-}
-
-func sortArticles(articles []*Article) {
-	sort.Slice(articles, func(i, j int) bool {
-		return articles[j].PublishedAt.Before(*articles[i].PublishedAt)
-	})
-}
-
-func sortFragments(fragments []*Fragment) {
-	sort.Slice(fragments, func(i, j int) bool {
-		return fragments[j].PublishedAt.Before(*fragments[i].PublishedAt)
-	})
-}
-
-func sortNewsletters(issues []*snewsletter.Issue) {
-	sort.Slice(issues, func(i, j int) bool {
-		return issues[j].PublishedAt.Before(*issues[i].PublishedAt)
-	})
-}
-
-func sortPhotos(photos []*Photo) {
-	sort.Slice(photos, func(i, j int) bool {
-		return photos[j].OccurredAt.Before(*photos[i].OccurredAt)
-	})
-}
-
-func sortSequenceEntries(entries []*SequenceEntry) {
-	sort.Slice(entries, func(i, j int) bool {
-		return entries[j].OccurredAt.Before(*entries[i].OccurredAt)
-	})
-}
-
-func sortTalks(talks []*stalks.Talk) {
-	sort.Slice(talks, func(i, j int) bool {
-		return talks[j].PublishedAt.Before(*talks[i].PublishedAt)
-	})
 }
 
 // Gets a pointer to a tag just to work around the fact that you can take the
