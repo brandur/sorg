@@ -37,7 +37,6 @@ import (
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/squantified"
-	"github.com/brandur/sorg/modules/stalks"
 	"github.com/brandur/sorg/modules/stemplate"
 )
 
@@ -86,7 +85,6 @@ var (
 	photos       []*Photo
 	photosOther  []*Photo
 	sequences    []*SequenceEntry
-	talks        []*stalks.Talk
 	tweets       []*squantified.Tweet
 )
 
@@ -558,37 +556,6 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Talks
-	//
-
-	var talksChanged bool
-	var talksMu sync.Mutex
-
-	{
-		sources, err := mfile.ReadDirCached(c, c.SourceDir+"/content/talks", nil)
-		if err != nil {
-			return []error{err}
-		}
-
-		if conf.Drafts {
-			drafts, err := mfile.ReadDirCached(c, c.SourceDir+"/content/talks-drafts", nil)
-			if err != nil {
-				return []error{err}
-			}
-			sources = append(sources, drafts...)
-		}
-
-		for _, s := range sources {
-			source := s
-
-			name := fmt.Sprintf("talk: %s", filepath.Base(source))
-			c.AddJob(name, func() (bool, error) {
-				return renderTalk(c, source, &talks, &talksChanged, &talksMu)
-			})
-		}
-	}
-
-	//
 	// Twitter (read `data/twitter.toml`)
 	//
 
@@ -634,7 +601,6 @@ func build(c *modulir.Context) []error {
 		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(*b.PublishedAt) })
 		slices.SortFunc(photos, func(a, b *Photo) bool { return a.OccurredAt.Before(*b.OccurredAt) })
 		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return a.OccurredAt.Before(*b.OccurredAt) })
-		slices.SortFunc(talks, func(a, b *stalks.Talk) bool { return a.PublishedAt.Before(*b.PublishedAt) })
 	}
 
 	//
@@ -1403,17 +1369,6 @@ func insertOrReplaceNewsletter(issues *[]*snewsletter.Issue, issue *snewsletter.
 	}
 
 	*issues = append(*issues, issue)
-}
-
-func insertOrReplaceTalk(talks *[]*stalks.Talk, talk *stalks.Talk) {
-	for i, t := range *talks {
-		if talk.Slug == t.Slug {
-			(*talks)[i] = talk
-			return
-		}
-	}
-
-	*talks = append(*talks, talk)
 }
 
 func mustLocation(locationName string) *time.Location {
@@ -2383,48 +2338,6 @@ func renderSequenceIndex(ctx context.Context, c *modulir.Context, entries []*Seq
 	if err != nil {
 		return true, err
 	}
-
-	return true, nil
-}
-
-func renderTalk(c *modulir.Context, source string,
-	talks *[]*stalks.Talk, talksChanged *bool, mu *sync.Mutex,
-) (bool, error) {
-	sourceChanged := c.Changed(source)
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/talks/show.ace",
-		},
-		universalSources...,
-	)...)
-	if !sourceChanged && !viewsChanged {
-		return false, nil
-	}
-
-	// TODO: modulir-ize this package
-	talk, err := stalks.Render(
-		c, c.SourceDir+"/content", filepath.Dir(source), filepath.Base(source))
-	if err != nil {
-		return true, err
-	}
-
-	locals := getLocals(talk.Title, map[string]interface{}{
-		"BodyClass":      "talk",
-		"PublishingInfo": talk.PublishingInfo(),
-		"Talk":           talk,
-	})
-
-	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/talks/show.ace",
-		path.Join(c.TargetDir, talk.Slug), getAceOptions(viewsChanged), locals)
-	if err != nil {
-		return true, err
-	}
-
-	mu.Lock()
-	insertOrReplaceTalk(talks, talk)
-	*talksChanged = true
-	mu.Unlock()
 
 	return true, nil
 }

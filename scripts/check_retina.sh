@@ -27,12 +27,9 @@ allowed_exceptions=(
     "./content/images/standin_03.jpg"
     "./content/images/standin_04.jpg"
     "./content/images/standin_portrait_00.jpg"
-    "./content/images/talks/standin_00.png"
 
     # Images that were never high resolution enough to merit a retina version.
     "./content/images/nanoglyphs/012-virtual-worlds/lester-masked.png"
-    "./content/raws/talks/paradise-lost/mongo-ad.jpg"
-    "./content/raws/talks/paradise-lost/mongo-ad-censored.jpg"
 
     # Other.
     "./content/images/sequences-project/sample-huge.png"
