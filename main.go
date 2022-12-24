@@ -10,7 +10,7 @@ import (
 	"github.com/joeshaw/envdecode"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/term"
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mimage"
@@ -233,7 +233,7 @@ func getModulirConfig() *modulir.Config {
 	return &modulir.Config{
 		Concurrency: conf.Concurrency,
 		Log:         getLog(),
-		LogColor:    terminal.IsTerminal(int(os.Stdout.Fd())),
+		LogColor:    term.IsTerminal(int(os.Stdout.Fd())),
 		Port:        conf.Port,
 		SourceDir:   ".",
 		TargetDir:   conf.TargetDir,
