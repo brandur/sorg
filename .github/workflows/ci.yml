@@ -198,7 +198,7 @@ jobs:
       - name: "Build: Production"
         run: make build
         env:
-          TARGET_DIR: ./public-dev
+          TARGET_DIR: ./public
 
       - name: "Deploy: Development"
         run: make deploy
