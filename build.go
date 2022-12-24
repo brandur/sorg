@@ -595,12 +595,12 @@ func build(c *modulir.Context) []error {
 
 	// Various sorts for anything that might need it.
 	{
-		slices.SortFunc(articles, func(a, b *Article) bool { return a.PublishedAt.Before(*b.PublishedAt) })
-		slices.SortFunc(fragments, func(a, b *Fragment) bool { return a.PublishedAt.Before(*b.PublishedAt) })
-		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(*b.PublishedAt) })
-		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(*b.PublishedAt) })
-		slices.SortFunc(photos, func(a, b *Photo) bool { return a.OccurredAt.Before(*b.OccurredAt) })
-		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return a.OccurredAt.Before(*b.OccurredAt) })
+		slices.SortFunc(articles, func(a, b *Article) bool { return a.PublishedAt.Before(b.PublishedAt) })
+		slices.SortFunc(fragments, func(a, b *Fragment) bool { return a.PublishedAt.Before(b.PublishedAt) })
+		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(b.PublishedAt) })
+		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return a.PublishedAt.Before(b.PublishedAt) })
+		slices.SortFunc(photos, func(a, b *Photo) bool { return a.OccurredAt.Before(b.OccurredAt) })
+		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return a.OccurredAt.Before(b.OccurredAt) })
 	}
 
 	//
@@ -874,7 +874,7 @@ type Article struct {
 	Location string `toml:"location,omitempty"`
 
 	// PublishedAt is when the article was published.
-	PublishedAt *time.Time `toml:"published_at"`
+	PublishedAt time.Time `toml:"published_at"`
 
 	// Slug is a unique identifier for the article that also helps determine
 	// where it's addressable by URL.
@@ -925,7 +925,7 @@ func (a *Article) validate(source string) error {
 		return xerrors.Errorf("no title for article: %v", source)
 	}
 
-	if a.PublishedAt == nil {
+	if a.PublishedAt.IsZero() {
 		return xerrors.Errorf("no publish date for article: %v", source)
 	}
 
@@ -960,7 +960,7 @@ type Fragment struct {
 	Location string `toml:"location,omitempty"`
 
 	// PublishedAt is when the fragment was published.
-	PublishedAt *time.Time `toml:"published_at"`
+	PublishedAt time.Time `toml:"published_at"`
 
 	// Slug is a unique identifier for the fragment that also helps determine
 	// where it's addressable by URL.
@@ -990,7 +990,7 @@ func (f *Fragment) validate(source string) error {
 		return xerrors.Errorf("no title for fragment: %v", source)
 	}
 
-	if f.PublishedAt == nil {
+	if f.PublishedAt.IsZero() {
 		return xerrors.Errorf("no publish date for fragment: %v", source)
 	}
 
@@ -1040,7 +1040,7 @@ type Photo struct {
 	OriginalImageURL string `toml:"original_image_url"`
 
 	// OccurredAt is UTC time when the photo was published.
-	OccurredAt *time.Time `toml:"occurred_at"`
+	OccurredAt time.Time `toml:"occurred_at"`
 
 	// Portrait is a hint to indicate that the photo is in portrait instead of
 	// landscape. This helps the build pick a better stand-in image for lazy
@@ -1115,7 +1115,7 @@ type SequenceEntry struct {
 	DescriptionHTML template.HTML `toml:"-"`
 
 	// OccurredAt is UTC time when the entry was published.
-	OccurredAt *time.Time `toml:"occurred_at"`
+	OccurredAt time.Time `toml:"occurred_at"`
 
 	// Photos is a collection of photos within this particular entry. Many
 	// sequence entries will only have a single photo, but there are alternate
@@ -1548,7 +1548,7 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 	}
 
 	if len(articles) > 0 {
-		feed.Updated = *articles[0].PublishedAt
+		feed.Updated = articles[0].PublishedAt
 	}
 
 	for i, article := range articles {
@@ -1564,8 +1564,8 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 			Title:     article.Title,
 			Summary:   article.Hook,
 			Content:   &matom.EntryContent{Content: article.Content, Type: "html"},
-			Published: *article.PublishedAt,
-			Updated:   *article.PublishedAt,
+			Published: article.PublishedAt,
+			Updated:   article.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/" + article.Slug},
 			ID:        "tag:" + scommon.AtomTag + "," + article.PublishedAt.Format("2006-01-02") + ":" + article.Slug,
 
@@ -1678,7 +1678,7 @@ func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
 	}
 
 	if len(fragments) > 0 {
-		feed.Updated = *fragments[0].PublishedAt
+		feed.Updated = fragments[0].PublishedAt
 	}
 
 	for i, fragment := range fragments {
@@ -1690,8 +1690,8 @@ func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
 			Title:     fragment.Title,
 			Summary:   fragment.Hook,
 			Content:   &matom.EntryContent{Content: fragment.Content, Type: "html"},
-			Published: *fragment.PublishedAt,
-			Updated:   *fragment.PublishedAt,
+			Published: fragment.PublishedAt,
+			Updated:   fragment.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/fragments/" + fragment.Slug},
 			ID: "tag:" + scommon.AtomTag + "," + fragment.PublishedAt.Format("2006-01-02") +
 				":fragments/" + fragment.Slug,
@@ -1805,7 +1805,7 @@ func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanog
 	}
 
 	if len(articles) > 0 {
-		feed.Updated = *issues[0].PublishedAt
+		feed.Updated = issues[0].PublishedAt
 	}
 
 	for i, issue := range issues {
@@ -1822,8 +1822,8 @@ func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanog
 		entry := &matom.Entry{
 			Title:     fmt.Sprintf("Nanoglyph %s — %s", issue.Number, issue.Title),
 			Content:   &matom.EntryContent{Content: content, Type: "html"},
-			Published: *issue.PublishedAt,
-			Updated:   *issue.PublishedAt,
+			Published: issue.PublishedAt,
+			Updated:   issue.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
 			ID:        "tag:" + scommon.AtomTag + "," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
 
@@ -1936,7 +1936,7 @@ func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passage
 	}
 
 	if len(articles) > 0 {
-		feed.Updated = *issues[0].PublishedAt
+		feed.Updated = issues[0].PublishedAt
 	}
 
 	for i, issue := range issues {
@@ -1953,8 +1953,8 @@ func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passage
 		entry := &matom.Entry{
 			Title:     fmt.Sprintf("Passages & Glass %s — %s", issue.Number, issue.Title),
 			Content:   &matom.EntryContent{Content: content, Type: "html"},
-			Published: *issue.PublishedAt,
-			Updated:   *issue.PublishedAt,
+			Published: issue.PublishedAt,
+			Updated:   issue.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
 			ID:        "tag:" + scommon.AtomTag + "," + issue.PublishedAt.Format("2006-01-02") + ":" + issue.Slug,
 
@@ -2254,7 +2254,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 	}
 
 	if len(entries) > 0 {
-		feed.Updated = *entries[0].OccurredAt
+		feed.Updated = entries[0].OccurredAt
 	}
 
 	for i, entry := range entries {
@@ -2275,8 +2275,8 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 		entry := &matom.Entry{
 			Title:     entry.Slug + " — " + entry.Title,
 			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
-			Published: *entry.OccurredAt,
-			Updated:   *entry.OccurredAt,
+			Published: entry.OccurredAt,
+			Updated:   entry.OccurredAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Slug},
 			ID: "tag:" + scommon.AtomTag + "," + entry.OccurredAt.Format("2006-01-02") +
 				":sequences:" + entry.Slug,

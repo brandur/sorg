@@ -59,7 +59,7 @@ type Issue struct {
 	Number string `toml:"-"`
 
 	// PublishedAt is when the issue was published.
-	PublishedAt *time.Time `toml:"published_at"`
+	PublishedAt time.Time `toml:"published_at"`
 
 	// Slug is a unique identifier for the issue that also helps determine
 	// where it's addressable by URL. It's a combination of an issue number
@@ -86,7 +86,7 @@ func (p *Issue) validate(source string) error {
 		return xerrors.Errorf("no title for issue: %v", source)
 	}
 
-	if p.PublishedAt == nil {
+	if p.PublishedAt.IsZero() {
 		return xerrors.Errorf("no publish date for issue: %v", source)
 	}
 
