@@ -1,0 +1,15 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "javascripts" -}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+<link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+{{- template "views/_optimize_legibility.tmpl.html" . -}}
+{{- end -}}
+
+{{- define "content" -}}
+<div class="py-16">
+    {{block "atoms_content" .}}{{end}}
+</div>
+{{- end -}}

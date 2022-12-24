@@ -1,0 +1,20 @@
+# [[atoms]]
+#   published_at = 2022-12-25T14:07:58-07:00
+#   description = """\
+# """
+
+[[atoms]]
+  published_at = 2022-12-25T14:07:58-07:00
+  description = """\
+The other day I found that my automated job to cross-post to a toy Spring '83 board started failing, with the reason being that my last [sequences](/sequences) entry was more than 22 days ago. Not good -- I'd intended to keep them more up-to-date than that -- but I don't always have anything new to post.
+
+I've always like the idea of `.plan` files, tiny plaintext files that live in a user's home directory and which would be dumped using the `finger` command on a target user. Famously, John Carmack published them for [more than a decade](https://github.com/ESWAT/john-carmack-plan-archive). Here, in a similar spirit to `.plan`, introduce "atoms", tiny multimedia particles that are fast and easy to write. Along with sequence entries, they're cross-posted to Spring '83, and will also live at [`/atoms`](/atoms).
+"""
+
+[[atoms]]
+  published_at = 2022-12-25T12:31:12-07:00
+  description = """\
+Xmas morning. A signature gift was a new Zojirushi rice cooker, so I'll graduating from cooking rice in my old steamer (even if you don't recognize the name, their elephant logo is conspicuous worldwide).
+
+Zojirushi reminds me of the old Heroku office at 321 11th St, where we had a number of their vacuum boilers. They'd keep water at perfect coffee-brewing temperature, ready to make a Chemex pourover at any moment.
+"""

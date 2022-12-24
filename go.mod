@@ -10,7 +10,7 @@ go 1.18
 require (
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
 	github.com/aymerick/douceur v0.2.0
-	github.com/brandur/modulir v0.0.0-20220902012500-95a43a43499d
+	github.com/brandur/modulir v0.0.0-20221224224955-4d1509e4573f
 	github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51 // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
@@ -28,7 +28,7 @@ require (
 	github.com/yosssi/ace v0.0.5
 	github.com/yosssi/gcss v0.1.0
 	golang.org/x/net v0.3.0
-	golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f
+	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2
 	gopkg.in/mailgun/mailgun-go.v1 v1.1.1
 )
 
@@ -42,7 +42,7 @@ require golang.org/x/term v0.3.0
 require (
 	github.com/andybalholm/cascadia v1.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/fsnotify/fsnotify v1.5.4 // indirect
+	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
