@@ -85,7 +85,7 @@ var (
 	pages        = make(map[string]*Page)
 	photos       []*Photo
 	photosOther  []*Photo
-	sequence     Sequence
+	sequences    []*SequenceEntry
 	talks        []*stalks.Talk
 	tweets       []*squantified.Tweet
 )
@@ -525,20 +525,20 @@ func build(c *modulir.Context) []error {
 
 			sequenceChanged = true
 
-			err := mtoml.ParseFile(c, source, &sequence)
+			var sequenceWrapper SequenceWrapper
+			err := mtoml.ParseFile(c, source, &sequenceWrapper)
 			if err != nil {
 				return true, err
 			}
 
-			if err := sequence.validate(); err != nil {
+			if err := sequenceWrapper.validate(); err != nil {
 				return true, err
 			}
 
 			// Do a little post-processing on all the entries found in the
 			// sequence.
-			for _, entry := range sequence.Entries {
+			for _, entry := range sequenceWrapper.Entries {
 				entry.DescriptionHTML = template.HTML(string(mmarkdown.Render(c, []byte(entry.Description))))
-				entry.Sequence = &sequence
 			}
 
 			return true, nil
@@ -633,7 +633,7 @@ func build(c *modulir.Context) []error {
 		sortNewsletters(nanoglyphs)
 		sortNewsletters(passages)
 		sortPhotos(photos)
-		sortSequenceEntries(sequence.Entries)
+		sortSequenceEntries(sequences)
 		sortTalks(talks)
 	}
 
@@ -790,20 +790,20 @@ func build(c *modulir.Context) []error {
 	// Sequences index
 	{
 		c.AddJob("sequence: index", func() (bool, error) {
-			return renderSequenceIndex(ctx, c, sequence.Entries, sequenceChanged)
+			return renderSequenceIndex(ctx, c, sequences, sequenceChanged)
 		})
 	}
 
 	// Sequences feed
 	{
 		c.AddJob("sequence: feed", func() (bool, error) {
-			return renderSequenceFeed(ctx, c, sequence.Entries, sequenceChanged)
+			return renderSequenceFeed(ctx, c, sequences, sequenceChanged)
 		})
 	}
 
 	// Each entry
 	{
-		for _, e := range sequence.Entries {
+		for _, e := range sequences {
 			entry := e
 
 			// Sequence page
@@ -1098,15 +1098,15 @@ type PhotoWrapper struct {
 	Photos []*Photo `toml:"photographs"`
 }
 
-// Sequence is a sequence -- a series of photos that represent some kind of
+// SequenceWrapper is a sequence -- a series of photos that represent some kind of
 // journey.
-type Sequence struct {
+type SequenceWrapper struct {
 	// Entries are the set of entries in the sequence. Each contains a slug,
 	// description, and one or more photos.
 	Entries []*SequenceEntry `toml:"entries"`
 }
 
-func (s *Sequence) validate() error {
+func (s *SequenceWrapper) validate() error {
 	entrySlugs := make(map[string]struct{})
 
 	for i, entry := range s.Entries {
@@ -1155,10 +1155,6 @@ type SequenceEntry struct {
 	// sequence entries will only have a single photo, but there are alternate
 	// layouts for when one contains a number of different ones.
 	Photos []*Photo `toml:"photographs"`
-
-	// Sequence links back to the photo's parent sequence. Only set if the
-	// photo is part of a sequence.
-	Sequence *Sequence `toml:"-"`
 
 	// Slug is a unique identifier for the entry.
 	Slug string `toml:"slug"`
