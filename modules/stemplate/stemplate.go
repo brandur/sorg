@@ -35,6 +35,7 @@ var FuncMap = template.FuncMap{
 	"RenderPublishingInfo":    renderPublishingInfo,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
+	"TimeInLocal":             timeInLocal,
 }
 
 // LocalLocation is the location to show times in which use FormatTimeLocal.
@@ -61,7 +62,7 @@ func favicon(name, ext string) template.HTML {
 	return template.HTML(b.String())
 }
 
-func formatTimeLocal(t *time.Time) string {
+func formatTimeLocal(t time.Time) string {
 	if LocalLocation == nil {
 		panic("stemplate.LocalLocation must be set")
 	}
@@ -69,11 +70,11 @@ func formatTimeLocal(t *time.Time) string {
 	return toNonBreakingWhitespace(t.In(LocalLocation).Format("January 2, 2006"))
 }
 
-func formatTimeYearMonth(t *time.Time) string {
+func formatTimeYearMonth(t time.Time) string {
 	return toNonBreakingWhitespace(t.Format("January 2006"))
 }
 
-func formatTimeWithMinute(t *time.Time) string {
+func formatTimeWithMinute(t time.Time) string {
 	return toNonBreakingWhitespace(t.Format("January 2, 2006 15:04"))
 }
 
@@ -234,6 +235,10 @@ func RetinaImageAlt(src, alt string) template.HTML {
 // There is no "round" function built into Go :/.
 func round(f float64) float64 {
 	return math.Floor(f + .5)
+}
+
+func timeInLocal(t time.Time) time.Time {
+	return t.In(LocalLocation)
 }
 
 func toStars(n int) string {

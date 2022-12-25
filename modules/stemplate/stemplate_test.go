@@ -31,11 +31,11 @@ func TestFavicon(t *testing.T) {
 }
 
 func TestFormatTimeWithMinute(t *testing.T) {
-	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(&testTime))
+	assert.Equal(t, "July 3, 2016 12:34", formatTimeWithMinute(testTime))
 }
 
 func TestFormatTimeYearMonth(t *testing.T) {
-	assert.Equal(t, "July 2016", formatTimeYearMonth(&testTime))
+	assert.Equal(t, "July 2016", formatTimeYearMonth(testTime))
 }
 
 func TestInKM(t *testing.T) {

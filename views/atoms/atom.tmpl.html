@@ -1,0 +1,13 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "atoms_content" -}}
+
+{{- template "views/atoms/_atom.tmpl.html" (Map (MapVal "Atom" .Atom)) -}}
+
+<p class="mt-8 mb-16 text-center text-xs">
+    <a href="/atoms#{{.Atom.Slug}}" class="font-bold">
+        View all atoms ⭢
+    </a>
+</p>
+
+{{- end -}}

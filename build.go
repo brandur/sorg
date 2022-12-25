@@ -4,9 +4,11 @@ import (
 	"bufio"
 	"bytes"
 	"context"
+	"encoding/base32"
 	"fmt"
 	"html/template"
 	"io"
+	"math/big"
 	"math/rand"
 	"net/url"
 	"os"
@@ -78,6 +80,7 @@ const (
 // sources if those source files actually changed.
 var (
 	articles     []*Article
+	atoms        []*Atom
 	dependencies = &DependencyRegistry{sources: make(map[string][]string)}
 	fragments    []*Fragment
 	nanoglyphs   []*snewsletter.Issue
@@ -217,6 +220,7 @@ func build(c *modulir.Context) []error {
 	{
 		commonDirs := []string{
 			c.TargetDir + "/articles",
+			c.TargetDir + "/atoms",
 			c.TargetDir + "/fragments",
 			c.TargetDir + "/nanoglyphs",
 			c.TargetDir + "/passages",
@@ -291,6 +295,53 @@ func build(c *modulir.Context) []error {
 					&articles, &articlesChanged, &articlesMu)
 			})
 		}
+	}
+
+	//
+	// Atoms (read `_meta.toml`)
+	//
+
+	var atomsChanged bool
+
+	{
+		c.AddJob("atoms", func() (bool, error) {
+			// Constrain descriptions to 2217 bytes as specified by Spring '83
+			// even though they're also posted off Spring '83.
+			const maxBytesLength = 2217
+
+			source := c.SourceDir + "/content/atoms/_meta.toml"
+
+			if !c.Changed(source) {
+				return false, nil
+			}
+
+			atomsChanged = true
+
+			var atomsWrapper AtomWrapper
+			err := mtoml.ParseFile(c, source, &atomsWrapper)
+			if err != nil {
+				return true, err
+			}
+
+			if err := atomsWrapper.validate(); err != nil {
+				return true, err
+			}
+
+			// Do a little post-processing on each atom.
+			for _, atom := range atomsWrapper.Atoms {
+				atom.DescriptionHTML = template.HTML(string(mmarkdown.Render(c, []byte(atom.Description))))
+				atom.Slug = atomSlug(atom.PublishedAt)
+
+				if len([]byte(atom.DescriptionHTML)) > maxBytesLength {
+					return true, xerrors.Errorf("atom's length is greater than %d bytes: %q",
+						maxBytesLength, atom.Description[0:100])
+				}
+			}
+
+			atoms = atomsWrapper.Atoms
+
+			return true, nil
+		})
 	}
 
 	//
@@ -605,6 +656,7 @@ func build(c *modulir.Context) []error {
 	// Various sorts for anything that might need it.
 	{
 		slices.SortFunc(articles, func(a, b *Article) bool { return b.PublishedAt.Before(a.PublishedAt) })
+		slices.SortFunc(atoms, func(a, b *Atom) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(fragments, func(a, b *Fragment) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
@@ -638,6 +690,37 @@ func build(c *modulir.Context) []error {
 			return renderArticlesFeed(c, articles, tagPointer(tagPostgres),
 				articlesChanged)
 		})
+	}
+
+	//
+	// Sequences (index / fetch + resize)
+	//
+
+	// Atoms index
+	{
+		c.AddJob("atoms: index", func() (bool, error) {
+			return renderAtomIndex(ctx, c, atoms, atomsChanged)
+		})
+	}
+
+	// Atoms feed
+	{
+		c.AddJob("sequence: feed", func() (bool, error) {
+			return renderAtomFeed(ctx, c, atoms, atomsChanged)
+		})
+	}
+
+	// Each atom
+	{
+		for _, a := range atoms {
+			atom := a
+
+			// Atom page
+			name := fmt.Sprintf("atom: %s", atom.Slug)
+			c.AddJob(name, func() (bool, error) {
+				return renderAtomEntry(ctx, c, atom, atomsChanged)
+			})
+		}
 	}
 
 	//
@@ -764,14 +847,14 @@ func build(c *modulir.Context) []error {
 
 	// Sequences index
 	{
-		c.AddJob("sequence: index", func() (bool, error) {
-			return renderSequenceIndex(ctx, c, sequences, sequenceChanged)
+		c.AddJob("sequences: index", func() (bool, error) {
+			return renderSequencesIndex(ctx, c, sequences, sequenceChanged)
 		})
 	}
 
 	// Sequences feed
 	{
-		c.AddJob("sequence: feed", func() (bool, error) {
+		c.AddJob("sequences: feed", func() (bool, error) {
 			return renderSequenceFeed(ctx, c, sequences, sequenceChanged)
 		})
 	}
@@ -782,7 +865,7 @@ func build(c *modulir.Context) []error {
 			entry := e
 
 			// Sequence page
-			name := fmt.Sprintf("sequence: %s", entry.Slug)
+			name := fmt.Sprintf("sequences: %s", entry.Slug)
 			c.AddJob(name, func() (bool, error) {
 				return renderSequenceEntry(ctx, c, entry, sequenceChanged)
 			})
@@ -932,6 +1015,32 @@ func (a *Article) validate(source string) error {
 	return nil
 }
 
+type AtomWrapper struct {
+	Atoms []*Atom `toml:"atoms" validate:"required,dive"`
+}
+
+func (w *AtomWrapper) validate() error {
+	if err := validate.Struct(w); err != nil {
+		return xerrors.Errorf("error validating sequences: %+v", err)
+	}
+	return nil
+}
+
+// Atom is a single atom entry.
+type Atom struct {
+	// Description is the description of the entry.
+	Description string `toml:"description" validate:"required"`
+
+	// DescriptionHTML is the description rendered to HTML.
+	DescriptionHTML template.HTML `toml:"-" validate:"-"`
+
+	// PublishedAt is UTC time when the atom was published. It also serves to
+	// provide a stable permalink.
+	PublishedAt time.Time `toml:"published_at" validate:"required"`
+
+	Slug string `toml:"-" validate:"-"`
+}
+
 // Fragment represents a fragment (that is, a short "stream of consciousness"
 // style article) to be rendered.
 type Fragment struct {
@@ -1066,11 +1175,7 @@ func (w *PhotoWrapper) validate() error {
 	return nil
 }
 
-// SequenceWrapper is a sequence -- a series of photos that represent some kind of
-// journey.
 type SequenceWrapper struct {
-	// Entries are the set of entries in the sequence. Each contains a slug,
-	// description, and one or more photos.
 	Entries []*SequenceEntry `toml:"entries" validate:"required,dive"`
 }
 
@@ -1174,6 +1279,15 @@ type twitterCard struct {
 //
 //
 //////////////////////////////////////////////////////////////////////////////
+
+var base32Packed = base32.StdEncoding.WithPadding(base32.NoPadding)
+
+// Produces an atom slug from its timestamp, which is the timestamp's unix time
+// encoded via base32.
+func atomSlug(publishedAt time.Time) string {
+	i := big.NewInt(publishedAt.Unix())
+	return strings.ToLower(base32Packed.EncodeToString(i.Bytes()))
+}
 
 func compileJavascripts(c *modulir.Context, sourceDir, target string) (bool, error) {
 	sources, err := mfile.ReadDirCached(c, sourceDir, nil)
@@ -1585,6 +1699,113 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 	defer f.Close()
 
 	return true, feed.Encode(f, "  ")
+}
+
+func renderAtomEntry(ctx context.Context, c *modulir.Context, atom *Atom, atomsChanged bool,
+) (bool, error) {
+	source := scommon.ViewsDir + "/atoms/atom.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !atomsChanged && !viewsChanged {
+		return false, nil
+	}
+
+	locals := getLocals(atom.Slug, map[string]interface{}{
+		"Atom": atom,
+	})
+
+	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "atoms", atom.Slug), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
+}
+
+// Renders an Atom feed for atoms. The entries slice is assumed to be
+// pre-sorted.
+func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atomsChanged bool,
+) (bool, error) {
+	source := scommon.ViewsDir + "/atoms/_atom.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !atomsChanged && !viewsChanged {
+		return false, nil
+	}
+
+	feed := &matom.Feed{
+		Title: "Atoms - brandur.org",
+		ID:    "tag:" + scommon.AtomTag + ",2019:atoms",
+
+		Links: []*matom.Link{
+			{Rel: "self", Type: "application/atom+xml", Href: "https://brandur.org/atoms.atom"},
+			{Rel: "alternate", Type: "text/html", Href: "https://brandur.org"},
+		},
+	}
+
+	if len(atoms) > 0 {
+		feed.Updated = atoms[0].PublishedAt
+	}
+
+	for i, atom := range atoms {
+		if i >= conf.NumAtomEntries {
+			break
+		}
+
+		locals := getLocals("", map[string]interface{}{
+			"Atom": atom,
+		})
+
+		var contentBuf bytes.Buffer
+		err := dependencies.renderGoTemplateWriter(ctx, source, &contentBuf, locals)
+		if err != nil {
+			return true, err
+		}
+
+		entry := &matom.Entry{
+			Title:     atom.Slug + " — " + atom.Slug,
+			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
+			Published: atom.PublishedAt,
+			Updated:   atom.PublishedAt,
+			Link:      &matom.Link{Href: conf.AbsoluteURL + "/atoms/" + atom.Slug},
+			ID: "tag:" + scommon.AtomTag + "," + atom.PublishedAt.Format("2006-01-02") +
+				":atoms:" + atom.Slug,
+
+			AuthorName: scommon.AtomAuthorName,
+			AuthorURI:  conf.AbsoluteURL,
+		}
+		feed.Entries = append(feed.Entries, entry)
+	}
+
+	filePath := path.Join(conf.TargetDir, "atoms.atom")
+	f, err := os.Create(filePath)
+	if err != nil {
+		return true, xerrors.Errorf("error creating file '%s': %w", filePath, err)
+	}
+	defer f.Close()
+
+	return true, feed.Encode(f, "  ")
+}
+
+func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, atomsChanged bool,
+) (bool, error) {
+	source := scommon.ViewsDir + "/atoms/index.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !atomsChanged && !viewsChanged {
+		return false, nil
+	}
+
+	locals := getLocals("Atoms", map[string]interface{}{
+		"Atoms": atoms,
+	})
+
+	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "atoms/index.html"), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
 }
 
 func renderFragment(c *modulir.Context, source string,
@@ -2228,13 +2449,8 @@ func renderRuns(c *modulir.Context) (bool, error) {
 	return true, squantified.RenderRuns(c, viewsChanged, getLocals)
 }
 
-// Renders at Atom feed for a sequence. The entries slice is assumed to be
+// Renders an Atom feed for sequences. The entries slice is assumed to be
 // pre-sorted.
-//
-// The one non-obvious mechanism worth mentioning is that it can also render a
-// general Atom feed for all sequence entries mixed together by specifying
-// `sequence` as `nil` and entries as a master list of all sequence entries
-// combined.
 func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 	entries []*SequenceEntry, sequencesChanged bool,
 ) (bool, error) {
@@ -2322,7 +2538,7 @@ func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *Sequenc
 	return true, nil
 }
 
-func renderSequenceIndex(ctx context.Context, c *modulir.Context, entries []*SequenceEntry,
+func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*SequenceEntry,
 	sequenceChanged bool,
 ) (bool, error) {
 	source := scommon.ViewsDir + "/sequences/index.tmpl.html"
