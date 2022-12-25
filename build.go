@@ -1763,7 +1763,7 @@ func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atom
 		}
 
 		entry := &matom.Entry{
-			Title:     atom.Slug + " — " + atom.Slug,
+			Title:     atom.Slug + " — " + atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST"),
 			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
 			Published: atom.PublishedAt,
 			Updated:   atom.PublishedAt,
