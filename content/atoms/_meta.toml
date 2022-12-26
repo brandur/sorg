@@ -4,9 +4,17 @@
 # """
 
 [[atoms]]
+  published_at = 2022-12-26T11:21:56-07:00
+  description = """\
+The latest [Twitter files](https://twitter.com/davidzweig/status/1607378386338340867) by way of David Zweig, on the suppression of Covid information (and actually, read this [long form version](https://www.thefp.com/p/how-twitter-rigged-the-covid-debate) instead).
+
+A few days ago [Elon Musk appeared on All-in](https://www.youtube.com/watch?v=HE5CTKqWEV0), and put it best: "all the conspiracy theories about Twitter turned out to be true". It was apparent to anyone paying attention that Twitter was censoring true statements inconvenient to the story being told by Fauci and the White House, despite vehement denial from all parties involved. As with previous iterations, the Twitter files aren't about knowing a murder had taken place, but finding the smoking gun with fingerprints intact.
+"""
+
+[[atoms]]
   published_at = 2022-12-26T01:17:19-07:00
   description = """\
-A thought-provoking [interview with John Mearsheimer](https://www.youtube.com/watch?v=HBiV1h7Dm5E), a decorated political scientist, and rare dissenting voice on the war in Ukraine who believes there's an imminent danger of escalation, and makes the case for suing for diplomatic resolution.
+A thought-provoking [interview with John Mearsheimer](https://www.youtube.com/watch?v=HBiV1h7Dm5E), a decorated political scientist, and rare dissenting voice on the war in Ukraine. He believes there's an imminent danger of escalation, and makes the case for suing for diplomatic resolution.
 """
 
 [[atoms]]
