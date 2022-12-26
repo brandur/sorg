@@ -4,6 +4,12 @@
 # """
 
 [[atoms]]
+  published_at = 2022-12-26T01:17:19-07:00
+  description = """\
+A thought-provoking [interview with John Mearsheimer](https://www.youtube.com/watch?v=HBiV1h7Dm5E), a decorated political scientist, and rare dissenting voice on the war in Ukraine who believes there's an imminent danger of escalation, and makes the case for suing for diplomatic resolution.
+"""
+
+[[atoms]]
   published_at = 2022-12-25T23:55:16-07:00
   description = """\
 In San Francisco, properties assessed at a total of $59 billion have [requested resassessment in 2022](https://archive.vn/ma4Nk), having correctly recognized that owning downtown isn't as valuable of a proposition as it was in 2020. Adjustment would bring the total down to $26 billion, translating to $308 million in lost property tax revenue should all their reassessments succeed. Add that to the already identified $728 million hole in the budget over the next two years.
