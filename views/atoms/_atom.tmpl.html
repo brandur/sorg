@@ -4,10 +4,17 @@
             hover:prose-a:border-b-0
             prose-p:font-serif
             prose-strong:font-sans prose-strong:text-sm">
-    <a href="/atoms/{{.Atom.Slug}}" class="no-underline">
-        <h2 class="font-bold text-xs tracking-tighter">
-            {{FormatTime .Atom.PublishedAt "2006 / Jan 2 / 15:04 PST"}}</h2>
-    </a>
-
-    {{.Atom.DescriptionHTML}}
+    <div class="sm:flex">
+        <div class="sm:mr-4">
+            <a href="/atoms/{{.Atom.Slug}}" class="no-underline">
+                <h2 class="font-bold leading-5 text-xs tracking-tighter">
+                    {{FormatTime .Atom.PublishedAt "2006 / Jan 2"}}<br>
+                    {{FormatTime .Atom.PublishedAt "15:04 PST"}}
+                </h2>
+            </a>
+        </div>
+        <div class="sm:ml-4">
+            {{.Atom.DescriptionHTML}}
+        </div>
+    </div>
 </div>
