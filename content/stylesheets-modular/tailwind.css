@@ -1295,9 +1295,9 @@ video {
   flex-direction: column;
 }
 
-.bg-\[\#f4d2a2\] {
+.bg-\[\#f6f5e9\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(244 210 162 / var(--tw-bg-opacity));
+  background-color: rgb(246 245 233 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#f4f0cb\] {
