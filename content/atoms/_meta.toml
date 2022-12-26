@@ -2,6 +2,11 @@
 #   published_at = 2022-12-25T14:07:58-07:00
 #   description = """\
 # """
+[[atoms]]
+  published_at = 2022-12-26T14:49:30-07:00
+  description = """\
+I wrote a mini-review for [_The Way of Water_](/fragments/way-of-water), the latest in the Avatar franchise. Go for the cutting edge CG of blue aliens and Pandora whales, stay for the 22nd century _Spruce Goose_-esque flying boat, crab mechs, and V2 exoskeletons.
+"""
 
 [[atoms]]
   published_at = 2022-12-26T11:21:56-07:00
