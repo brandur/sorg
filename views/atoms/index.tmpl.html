@@ -6,7 +6,7 @@
     Atoms
 </h1>
 
-<div class="container max-w-[600px] mx-auto mb-24 mt-8 px-4
+<div class="container max-w-[600px] mx-auto mb-16 md:mb-24 mt-8 px-4
             prose prose-md
             prose-a:border-b-[1px] prose-a:border-white prose-a:font-sans prose-a:text-sm prose-a:no-underline
             hover:prose-a:border-b-0
@@ -22,7 +22,9 @@
 
 {{- template "views/atoms/_atom.tmpl.html" (Map (MapVal "Atom" .) (MapVal "IsIndex" true)) -}}
 
-<div class="my-16"></div>
+<div class="my-8"></div>
+
+<hr>
 
 {{- end -}}
 
