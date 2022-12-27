@@ -4,6 +4,14 @@
 # """
 
 [[atoms]]
+  published_at = 2022-12-27T14:31:33-07:00
+  description = """\
+I wrote some meta-commentary about this Atoms list in a fragment: [_The Unpursuit of Clout_](/fragments/unpursuit-of-clout).
+
+The broad thesis is that publishing here is a little harder than publishing on Twitter (it involves a macro to insert an entry in a TOML file and doing a `git push`), but over the last few days which are this project's lifespan to date, I've been finding it easier. With no favs, likes, subtweets, or comments, you're not performing for anybody, and not gaming any metrics. Just write, publish.
+"""
+
+[[atoms]]
   published_at = 2022-12-26T23:02:08-07:00
   description = """\
 As is traditional, Ruby 3.2 was [released on Christmas day](https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/). The big news is that Shopify's YJIT (Yet Another Ruby JIT) engine is out of experimental status and now considered production ready, having been battle-tested at Shopify for a year.  As [CEO Tobi notes](https://twitter.com/tobi/status/1605663610906152960):
