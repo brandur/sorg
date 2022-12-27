@@ -6,7 +6,7 @@
 [[atoms]]
   published_at = 2022-12-26T23:02:08-07:00
   description = """\
-As is traditional, Ruby 3.2 was [released on Christmas day](https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/). The big news is that Shopify's YJIT (Yet Another Ruby JIT) engine is out of its experimental status and now considered production ready, having proven itself in battle running Shopify for more than a year.  As [CEO Tobi notes](https://twitter.com/tobi/status/1605663610906152960):
+As is traditional, Ruby 3.2 was [released on Christmas day](https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/). The big news is that Shopify's YJIT (Yet Another Ruby JIT) engine is out of its experimental status and now considered production ready, having proven itself in battle running at Shopify for more than a year.  As [CEO Tobi notes](https://twitter.com/tobi/status/1605663610906152960):
 
 > Very good chance that YJIT is now running more ruby net code than any other VM. Shopify storefronts are a sizeable percentage of all web traffic!
 
