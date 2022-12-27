@@ -2,6 +2,23 @@
 #   published_at = 2022-12-25T14:07:58-07:00
 #   description = """\
 # """
+
+[[atoms]]
+  published_at = 2022-12-26T23:02:08-07:00
+  description = """\
+As is traditional, Ruby 3.2 was [released on Christmas day](https://www.ruby-lang.org/en/news/2022/12/25/ruby-3-2-0-released/). The big news is that Shopify's YJIT (Yet Another Ruby JIT) engine is out of its experimental status and now considered production ready, having proven itself in battle running Shopify for more than a year.  As [CEO Tobi notes](https://twitter.com/tobi/status/1605663610906152960):
+
+> Very good chance that YJIT is now running more ruby net code than any other VM. Shopify storefronts are a sizeable percentage of all web traffic!
+
+Benchmarks show a performance improvement of ~40% over CRuby, so it's a pretty exciting for all Ruby users, including us.  I can't imagine _not_ looking into switching to JYIT in the new year.
+
+Alongside Sorbet, Stripe was also working on its own JIT, but with YJIT now mainline, I think it's safe to say that theirs stays Stripeware (if it's even still being developed). Shopify's demonstrated a healthier model for working with open-source projects -- by maintaining close connection with the core teams (including Rails as well), their work gets merged upstream, and comes under the umbrella of collective maintenance. Stripe's projects are in danger of ending up more like [Facebook's Hack](https://en.wikipedia.org/wiki/Hack_(programming_language)), diverging far enough from the trunk to become a separate ecosystem.
+
+It's also nice to see is that YJIT is written in Rust, after being successfully ported [in April of this year](https://github.com/ruby/ruby/commit/f90549cd38518231a6a74432fe1168c943a7cc18). This is in opposition to Stripe's commitment to a C++ toolchain, and is likely to keep the project more maintainable and more sustainable (and hopefully extend these properties to Ruby itself as it makes inroads into core, which is made up of heavy C).
+
+Very cool stuff. Can't wait to try it.
+"""
+
 [[atoms]]
   published_at = 2022-12-26T14:49:30-07:00
   description = """\
