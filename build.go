@@ -1724,7 +1724,7 @@ func renderAtomEntry(ctx context.Context, c *modulir.Context, atom *Atom, atomsC
 
 // Renders an Atom feed for atoms. The entries slice is assumed to be
 // pre-sorted.
-func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atomsChanged bool,
+func renderAtomFeed(_ context.Context, c *modulir.Context, atoms []*Atom, atomsChanged bool,
 ) (bool, error) {
 	source := scommon.ViewsDir + "/atoms/_atom.tmpl.html"
 
@@ -1752,19 +1752,9 @@ func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atom
 			break
 		}
 
-		locals := getLocals("", map[string]interface{}{
-			"Atom": atom,
-		})
-
-		var contentBuf bytes.Buffer
-		err := dependencies.renderGoTemplateWriter(ctx, source, &contentBuf, locals)
-		if err != nil {
-			return true, err
-		}
-
 		entry := &matom.Entry{
 			Title:     atom.Slug + " — " + atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST"),
-			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
+			Content:   &matom.EntryContent{Content: string(atom.DescriptionHTML), Type: "html"},
 			Published: atom.PublishedAt,
 			Updated:   atom.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/atoms/" + atom.Slug},
