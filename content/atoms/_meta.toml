@@ -6,7 +6,7 @@
 [[atoms]]
   published_at = 2022-12-27T14:31:33-07:00
   description = """\
-I wrote some meta-commentary about this Atoms list in a fragment: [_The Unpursuit of Clout_](/fragments/unpursuit-of-clout).
+I wrote some meta-commentary about this Atoms list in a fragment: [_The Unpursuit of clout_](/fragments/unpursuit-of-clout).
 
 The broad thesis is that publishing here is a little harder than publishing on Twitter (it involves a macro to insert an entry in a TOML file and doing a `git push`), but over the last few days which are this project's lifespan to date, I've been finding it easier. With no favs, likes, subtweets, or comments, you're not performing for anybody, and not gaming any metrics. Just write, publish.
 """
