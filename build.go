@@ -30,6 +30,7 @@ import (
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtemplate"
+	"github.com/brandur/modulir/modules/mtemplatemd"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/sassets"
@@ -2333,10 +2334,6 @@ func renderPage(ctx context.Context, c *modulir.Context,
 
 	// Pages get their titles by using inner templates. That must be triggered
 	// by sending an empty string as `Title`.
-	locals := getLocals("", map[string]interface{}{
-		"Ctx": ctx,
-	})
-
 	err := mfile.EnsureDir(c, path.Dir(target))
 	if err != nil {
 		return true, err
@@ -2345,12 +2342,25 @@ func renderPage(ctx context.Context, c *modulir.Context,
 	pageMeta.dependencies = nil
 
 	if strings.HasSuffix(source, ".ace") {
+		ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
+
+		locals := getLocals("", map[string]interface{}{
+			"Ctx": ctx,
+		})
+
 		err := mace.RenderFile(c, scommon.MainLayout, source, target,
 			getAceOptions(viewsChanged), locals)
 		if err != nil {
 			return true, err
 		}
+
+		pageMeta.dependencies = includeMarkdownContainer.Dependencies
+
+		// Make sure dependencies are all watched on the filesystem.
+		c.ChangedAny(pageMeta.dependencies...)
 	} else {
+		locals := getLocals("", nil)
+
 		err := dependencies.renderGoTemplate(ctx, c, source, target, locals)
 		if err != nil {
 			return true, err
