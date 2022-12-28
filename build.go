@@ -1714,7 +1714,7 @@ func renderAtomEntry(ctx context.Context, c *modulir.Context, atom *Atom, atomsC
 		"Atom": atom,
 	})
 
-	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "atoms", atom.Slug), locals)
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms", atom.Slug), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1790,7 +1790,7 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 		"Atoms": atoms,
 	})
 
-	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "atoms/index.html"), locals)
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms/index.html"), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2336,11 +2336,8 @@ func renderPage(ctx context.Context, c *modulir.Context,
 		pageMeta.dependencies = append(pageMeta.dependencies, path)
 	}
 
-	for _, path := range pageMeta.dependencies {
-		// Check changed here so that Modulir will add the file to its watch
-		// list.
-		c.Changed(path)
-	}
+	// Make sure that dependencies are added to the watch list.
+	c.ChangedAny(pageMeta.dependencies...)
 
 	return true, nil
 }
@@ -2475,7 +2472,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 		})
 
 		var contentBuf bytes.Buffer
-		err := dependencies.renderGoTemplateWriter(ctx, source, &contentBuf, locals)
+		err := dependencies.renderGoTemplateWriter(ctx, c, source, &contentBuf, locals)
 		if err != nil {
 			return true, err
 		}
@@ -2520,7 +2517,7 @@ func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *Sequenc
 		"Entry": entry,
 	})
 
-	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "sequences", entry.Slug), locals)
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "sequences", entry.Slug), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2542,7 +2539,7 @@ func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*Se
 		"Entries": entries,
 	})
 
-	err := dependencies.renderGoTemplate(ctx, source, path.Join(c.TargetDir, "sequences/index.html"), locals)
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "sequences/index.html"), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2621,7 +2618,7 @@ func (r *DependencyRegistry) getDependencies(source string) []string {
 	return r.sources[source]
 }
 
-func (r *DependencyRegistry) renderGoTemplate(ctx context.Context,
+func (r *DependencyRegistry) renderGoTemplate(ctx context.Context, c *modulir.Context,
 	source, target string, locals map[string]interface{},
 ) error {
 	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
@@ -2641,10 +2638,13 @@ func (r *DependencyRegistry) renderGoTemplate(ctx context.Context,
 	r.sources[source] = dependencies
 	r.sourcesMu.Unlock()
 
+	// Make sure all dependencies are watched.
+	c.ChangedAny(dependencies...)
+
 	return nil
 }
 
-func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context,
+func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context, c *modulir.Context,
 	source string, writer io.Writer, locals map[string]interface{},
 ) error {
 	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
@@ -2663,6 +2663,9 @@ func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context,
 	r.sourcesMu.Lock()
 	r.sources[source] = dependencies
 	r.sourcesMu.Unlock()
+
+	// Make sure all dependencies are watched.
+	c.ChangedAny(dependencies...)
 
 	return nil
 }
