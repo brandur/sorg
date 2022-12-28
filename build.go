@@ -692,6 +692,13 @@ func build(c *modulir.Context) []error {
 	// Sequences (index / fetch + resize)
 	//
 
+	// Atoms archive
+	{
+		c.AddJob("atoms: archive", func() (bool, error) {
+			return renderAtomArchive(ctx, c, atoms, atomsChanged)
+		})
+	}
+
 	// Atoms index
 	{
 		c.AddJob("atoms: index", func() (bool, error) {
@@ -708,13 +715,13 @@ func build(c *modulir.Context) []error {
 
 	// Each atom
 	{
-		for _, a := range atoms {
+		for i, a := range atoms {
 			atom := a
 
 			// Atom page
 			name := fmt.Sprintf("atom: %s", atom.Slug)
 			c.AddJob(name, func() (bool, error) {
-				return renderAtomEntry(ctx, c, atom, atomsChanged)
+				return renderAtom(ctx, c, atom, i, atomsChanged)
 			})
 		}
 	}
@@ -1697,7 +1704,32 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 	return true, feed.Encode(f, "  ")
 }
 
-func renderAtomEntry(ctx context.Context, c *modulir.Context, atom *Atom, atomsChanged bool,
+// Number of atoms on the atom index page (the rest are on the archive page
+// instead).
+const maxAtomsIndex = 50
+
+func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, atomsChanged bool,
+) (bool, error) {
+	source := scommon.ViewsDir + "/atoms/index.tmpl.html"
+
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !atomsChanged && !viewsChanged {
+		return false, nil
+	}
+
+	locals := getLocals("Atoms — Archive", map[string]interface{}{
+		"Atoms": atoms,
+	})
+
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms/archive"), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
+}
+
+func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex int, atomsChanged bool,
 ) (bool, error) {
 	source := scommon.ViewsDir + "/atoms/atom.tmpl.html"
 
@@ -1707,7 +1739,9 @@ func renderAtomEntry(ctx context.Context, c *modulir.Context, atom *Atom, atomsC
 	}
 
 	locals := getLocals(atom.Slug, map[string]interface{}{
-		"Atom": atom,
+		"Atom":      atom,
+		"AtomIndex": atomIndex,
+		"IndexMax":  maxAtomsIndex,
 	})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms", atom.Slug), locals)
@@ -1783,7 +1817,8 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 	}
 
 	locals := getLocals("Atoms", map[string]interface{}{
-		"Atoms": atoms,
+		"Atoms":    atoms,
+		"IndexMax": maxAtomsIndex,
 	})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms/index.html"), locals)
