@@ -7,12 +7,14 @@ nav
     li
       a href="/articles" title="Longform articles" Articles
     li
+      a href="/atoms" title="Shortform atoms" Atoms
+    li
       a href="/newsletter" title="Email newsletters I publish" Newsletters
     li
       a href="/fragments" title="Fragments (short articles)" Fragments
     / li
       a href="/twitter" Twitter
-    li
+    / li
       a href="/photos" title="Photography" Photos
     / li
       a href="/reading" Reading
