@@ -1718,7 +1718,7 @@ func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, a
 		return false, nil
 	}
 
-	locals := getLocals("Atoms — Archive", map[string]interface{}{
+	locals := getLocals("Atoms archive"+scommon.TitleSuffix, map[string]interface{}{
 		"Atoms": atoms,
 	})
 
@@ -1739,7 +1739,7 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 		return false, nil
 	}
 
-	locals := getLocals(atom.Slug, map[string]interface{}{
+	locals := getLocals(atom.Slug+scommon.TitleSuffix, map[string]interface{}{
 		"Atom":      atom,
 		"AtomIndex": atomIndex,
 		"IndexMax":  maxAtomsIndex,
@@ -1765,7 +1765,7 @@ func renderAtomFeed(_ context.Context, c *modulir.Context, atoms []*Atom, atomsC
 	}
 
 	feed := &matom.Feed{
-		Title: "Atoms - brandur.org",
+		Title: "Atoms " + scommon.TitleSuffix,
 		ID:    "tag:" + scommon.AtomTag + ",2019:atoms",
 
 		Links: []*matom.Link{
@@ -1817,7 +1817,7 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 		return false, nil
 	}
 
-	locals := getLocals("Atoms", map[string]interface{}{
+	locals := getLocals("Atoms"+scommon.TitleSuffix, map[string]interface{}{
 		"Atoms":    atoms,
 		"IndexMax": maxAtomsIndex,
 	})
@@ -2037,10 +2037,9 @@ func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanog
 
 	name := "nanoglyphs"
 	filename := name + ".atom"
-	title := "Nanoglyph" + scommon.TitleSuffix
 
 	feed := &matom.Feed{
-		Title: title,
+		Title: "Nanoglyph" + scommon.TitleSuffix,
 		ID:    "tag:" + scommon.AtomTag + ",2013:/" + name,
 
 		Links: []*matom.Link{
@@ -2168,10 +2167,9 @@ func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passage
 
 	name := "passages"
 	filename := name + ".atom"
-	title := "Passages & Glass" + scommon.TitleSuffix
 
 	feed := &matom.Feed{
-		Title: title,
+		Title: "Passages & Glass" + scommon.TitleSuffix,
 		ID:    "tag:" + scommon.AtomTag + ",2013:/" + name,
 
 		Links: []*matom.Link{
@@ -2479,7 +2477,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 	}
 
 	feed := &matom.Feed{
-		Title: "Sequences - brandur.org",
+		Title: "Sequences" + scommon.TitleSuffix,
 		ID:    "tag:" + scommon.AtomTag + ",2019:sequences",
 
 		Links: []*matom.Link{
