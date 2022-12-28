@@ -1422,6 +1422,11 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
+.prose-a\:border-slate-500 :is(:where(a):not(:where([class~="not-prose"] *))) {
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
+}
+
 .prose-a\:font-sans :is(:where(a):not(:where([class~="not-prose"] *))) {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -1440,11 +1445,21 @@ video {
   border-bottom-width: 0px;
 }
 
+.hover\:prose-a\:border-slate-200 :is(:where(a):not(:where([class~="not-prose"] *))):hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+
 .prose-strong\:font-sans :is(:where(strong):not(:where([class~="not-prose"] *))) {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .prose-strong\:text-sm :is(:where(strong):not(:where([class~="not-prose"] *))) {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.prose-code\:text-sm :is(:where(code):not(:where([class~="not-prose"] *))) {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
