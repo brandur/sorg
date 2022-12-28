@@ -1,9 +1,14 @@
+################################################################################
 #
 # ATOMS
+#
+# Short multimedia particles in the style of a tweet, but with a maximum length
+# closer to a short blog post. New ones are published by editing this TOML file.
 #
 # Pull a timestamp from a shell with the `datejp` alias, then use Cmd-Y plus the
 # "atom" snippet to insert an entry template.
 #
+################################################################################
 
 [[atoms]]
   published_at = 2022-12-28T14:08:13-07:00
