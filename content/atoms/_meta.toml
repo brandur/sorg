@@ -16,7 +16,8 @@ CREATE FUNCTION deleted_record_insert() RETURNS trigger
     LANGUAGE plpgsql
 AS $$
     BEGIN
-        EXECUTE 'INSERT INTO deleted_record (data, object_id, table_name) VALUES ($1, $2, $3)'
+        EXECUTE 'INSERT INTO deleted_record (data, object_id, table_name)
+          VALUES ($1, $2, $3)'
         USING to_jsonb(OLD.*), OLD.id, TG_TABLE_NAME;
 
         RETURN OLD;
