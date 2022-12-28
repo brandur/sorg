@@ -1284,13 +1284,19 @@ type twitterCard struct {
 //
 //////////////////////////////////////////////////////////////////////////////
 
-var base32Packed = base32.StdEncoding.WithPadding(base32.NoPadding)
+// Very similar to RFC 4648 base32 except that numbers come first instead of
+// last so that sortable values encoded to base32 will sort in the same
+// lexicographic (alphabetical) order as the original values. Also, use lower
+// case characters instead of upper.
+var lexicographicBase32 = "234567abcdefghijklmnopqrstuvwxyz"
+
+var lexicographicBase32Encoding = base32.NewEncoding(lexicographicBase32).WithPadding(base32.NoPadding)
 
 // Produces an atom slug from its timestamp, which is the timestamp's unix time
 // encoded via base32.
 func atomSlug(publishedAt time.Time) string {
 	i := big.NewInt(publishedAt.Unix())
-	return strings.ToLower(base32Packed.EncodeToString(i.Bytes()))
+	return lexicographicBase32Encoding.EncodeToString(i.Bytes())
 }
 
 func compileJavascripts(c *modulir.Context, sourceDir, target string) (bool, error) {

@@ -3,16 +3,33 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/joeshaw/envdecode"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/exp/slices"
 )
 
 func init() {
 	if err := envdecode.Decode(&conf); err != nil {
 		fmt.Fprintf(os.Stderr, "Error decoding conf from env: %v", err)
 		os.Exit(1)
+	}
+}
+
+func TestLexicographicBase32(t *testing.T) {
+	// Should only incorporate lower case characters.
+	require.True(t, lexicographicBase32 == strings.ToLower(lexicographicBase32))
+
+	// All characters in the encoding set should be lexicographically ordered.
+	{
+		// This can be replaced with `strings.Clone` come Go 1.20.
+		b := make([]byte, len(lexicographicBase32))
+		copy(b, lexicographicBase32)
+
+		slices.Sort(b)
+		require.Equal(t, lexicographicBase32, string(b))
 	}
 }
 
