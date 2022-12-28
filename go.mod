@@ -10,7 +10,7 @@ go 1.18
 require (
 	github.com/PuerkitoBio/goquery v1.5.0 // indirect
 	github.com/aymerick/douceur v0.2.0
-	github.com/brandur/modulir v0.0.0-20221224224955-4d1509e4573f
+	github.com/brandur/modulir v0.0.0-20221228061712-51fe1fe7b373
 	github.com/facebookgo/ensure v0.0.0-20160127193407-b4ab57deab51 // indirect
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
@@ -37,7 +37,10 @@ require (
 	golang.org/x/exp v0.0.0-20221217163422-3c43f8badb15
 )
 
-require golang.org/x/term v0.3.0
+require (
+	github.com/go-playground/validator/v10 v10.11.1
+	golang.org/x/term v0.3.0
+)
 
 require (
 	github.com/andybalholm/cascadia v1.0.0 // indirect
@@ -45,7 +48,6 @@ require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect

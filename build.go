@@ -81,7 +81,7 @@ const (
 var (
 	articles     []*Article
 	atoms        []*Atom
-	dependencies = &DependencyRegistry{sources: make(map[string][]string)}
+	dependencies = NewDependencyRegistry()
 	fragments    []*Fragment
 	nanoglyphs   []*snewsletter.Issue
 	passages     []*snewsletter.Issue
@@ -2290,8 +2290,6 @@ func renderPage(ctx context.Context, c *modulir.Context,
 		target += ".html"
 	}
 
-	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
-
 	// Reuse existing metadata for this page, or create metadata if this is the
 	// first time we're rendering it.
 	if pageMeta == nil {
@@ -2321,23 +2319,14 @@ func renderPage(ctx context.Context, c *modulir.Context,
 		if err != nil {
 			return true, err
 		}
-
-		pageMeta.dependencies = append(pageMeta.dependencies, scommon.MainLayout)
 	} else {
-		dependencies, err := renderGoTemplate(source, target, locals)
+		err := dependencies.renderGoTemplate(ctx, c, source, target, locals)
 		if err != nil {
 			return true, err
 		}
 
-		pageMeta.dependencies = append(pageMeta.dependencies, dependencies...)
+		pageMeta.dependencies = dependencies.getDependencies(source)
 	}
-
-	for path := range includeMarkdownContainer.Dependencies {
-		pageMeta.dependencies = append(pageMeta.dependencies, path)
-	}
-
-	// Make sure that dependencies are added to the watch list.
-	c.ChangedAny(pageMeta.dependencies...)
 
 	return true, nil
 }
@@ -2611,6 +2600,12 @@ type DependencyRegistry struct {
 	sourcesMu sync.RWMutex
 }
 
+func NewDependencyRegistry() *DependencyRegistry {
+	return &DependencyRegistry{
+		sources: make(map[string][]string),
+	}
+}
+
 func (r *DependencyRegistry) getDependencies(source string) []string {
 	r.sourcesMu.RLock()
 	defer r.sourcesMu.RUnlock()
@@ -2618,72 +2613,9 @@ func (r *DependencyRegistry) getDependencies(source string) []string {
 	return r.sources[source]
 }
 
-func (r *DependencyRegistry) renderGoTemplate(ctx context.Context, c *modulir.Context,
-	source, target string, locals map[string]interface{},
-) error {
-	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
-
-	locals["Ctx"] = ctx
-
-	dependencies, err := renderGoTemplate(source, target, locals)
-	if err != nil {
-		return err
-	}
-
-	for path := range includeMarkdownContainer.Dependencies {
-		dependencies = append(dependencies, path)
-	}
-
-	r.sourcesMu.Lock()
-	r.sources[source] = dependencies
-	r.sourcesMu.Unlock()
-
-	// Make sure all dependencies are watched.
-	c.ChangedAny(dependencies...)
-
-	return nil
-}
-
-func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context, c *modulir.Context,
-	source string, writer io.Writer, locals map[string]interface{},
-) error {
-	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
-
-	locals["Ctx"] = ctx
-
-	dependencies, err := renderGoTemplateWriter(source, writer, locals)
-	if err != nil {
-		return err
-	}
-
-	for path := range includeMarkdownContainer.Dependencies {
-		dependencies = append(dependencies, path)
-	}
-
-	r.sourcesMu.Lock()
-	r.sources[source] = dependencies
-	r.sourcesMu.Unlock()
-
-	// Make sure all dependencies are watched.
-	c.ChangedAny(dependencies...)
-
-	return nil
-}
-
-var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
-
-func findGoSubTemplates(templateData string) []string {
-	subTemplateMatches := goFileTemplateRE.FindAllStringSubmatch(templateData, -1)
-
-	subTemplateNames := make([]string, len(subTemplateMatches))
-	for i, match := range subTemplateMatches {
-		subTemplateNames[i] = match[1]
-	}
-
-	return subTemplateNames
-}
-
-func parseGoTemplate(baseTmpl *template.Template, path string) (*template.Template, []string, error) {
+func (r *DependencyRegistry) parseGoTemplate(baseTmpl *template.Template,
+	path string,
+) (*template.Template, []string, error) {
 	templateData, err := os.ReadFile(path)
 	if err != nil {
 		return nil, nil, xerrors.Errorf("error reading template file %q: %w", path, err)
@@ -2692,7 +2624,7 @@ func parseGoTemplate(baseTmpl *template.Template, path string) (*template.Templa
 	dependencies := []string{path}
 
 	for _, subTemplatePath := range findGoSubTemplates(string(templateData)) {
-		newBaseTmpl, subDependencies, err := parseGoTemplate(baseTmpl, subTemplatePath)
+		newBaseTmpl, subDependencies, err := r.parseGoTemplate(baseTmpl, subTemplatePath)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -2709,37 +2641,62 @@ func parseGoTemplate(baseTmpl *template.Template, path string) (*template.Templa
 	return newBaseTmpl, dependencies, nil
 }
 
-func renderGoTemplate(path, target string, locals map[string]interface{}) ([]string, error) {
-	tmpl, dependencies, err := parseGoTemplate(template.New("base_empty"), path)
-	if err != nil {
-		return nil, err
-	}
-
+func (r *DependencyRegistry) renderGoTemplate(ctx context.Context, c *modulir.Context,
+	source, target string, locals map[string]interface{},
+) error {
 	file, err := os.Create(target)
 	if err != nil {
-		return nil, xerrors.Errorf("error creating target file: %w", err)
+		return xerrors.Errorf("error creating target file: %w", err)
 	}
 	defer file.Close()
 
 	writer := bufio.NewWriter(file)
 	defer writer.Flush()
 
-	if err := tmpl.Execute(writer, locals); err != nil {
-		return nil, xerrors.Errorf("error executing template: %w", err)
-	}
-
-	return dependencies, nil
+	return r.renderGoTemplateWriter(ctx, c, source, writer, locals)
 }
 
-func renderGoTemplateWriter(path string, writer io.Writer, locals map[string]interface{}) ([]string, error) {
-	tmpl, dependencies, err := parseGoTemplate(template.New("base_empty"), path)
+func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context, c *modulir.Context,
+	source string, writer io.Writer, locals map[string]interface{},
+) error {
+	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
+
+	locals["Ctx"] = ctx
+
+	tmpl, dependencies, err := r.parseGoTemplate(template.New("base_empty"), source)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	if err := tmpl.Execute(writer, locals); err != nil {
-		return nil, xerrors.Errorf("error executing template: %w", err)
+		return xerrors.Errorf("error executing template: %w", err)
 	}
 
-	return dependencies, nil
+	r.setDependencies(ctx, c, source, append(dependencies, includeMarkdownContainer.Dependencies...))
+
+	return nil
+}
+
+func (r *DependencyRegistry) setDependencies(_ context.Context, c *modulir.Context,
+	source string, dependencies []string,
+) {
+	r.sourcesMu.Lock()
+	r.sources[source] = dependencies
+	r.sourcesMu.Unlock()
+
+	// Make sure all dependencies are watched.
+	c.ChangedAny(dependencies...)
+}
+
+var goFileTemplateRE = regexp.MustCompile(`\{\{\-? ?template "([^"]+\.tmpl.html)"`)
+
+func findGoSubTemplates(templateData string) []string {
+	subTemplateMatches := goFileTemplateRE.FindAllStringSubmatch(templateData, -1)
+
+	subTemplateNames := make([]string, len(subTemplateMatches))
+	for i, match := range subTemplateMatches {
+		subTemplateNames[i] = match[1]
+	}
+
+	return subTemplateNames
 }

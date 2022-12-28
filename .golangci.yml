@@ -13,6 +13,7 @@ linters:
     - gocyclo
     - godox
     - gomnd
+    - lll
     - nlreturn
     - paralleltest
     - testpackage

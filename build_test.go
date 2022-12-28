@@ -29,11 +29,12 @@ func TestFindGoSubTemplates(t *testing.T) {
 }
 
 func TestParseGoTemplate(t *testing.T) {
+	dependencies := NewDependencyRegistry()
 	emptyTmpl := template.New("base_empty")
 
 	// Use some preexistting template for simplicity.
 	{
-		_, dependencies, err := parseGoTemplate(template.Must(emptyTmpl.Clone()), "layouts/pages/main.tmpl.html")
+		_, dependencies, err := dependencies.parseGoTemplate(template.Must(emptyTmpl.Clone()), "layouts/pages/main.tmpl.html")
 		require.NoError(t, err)
 		require.Equal(t, []string{
 			"layouts/pages/main.tmpl.html",
@@ -43,7 +44,7 @@ func TestParseGoTemplate(t *testing.T) {
 	}
 
 	{
-		_, dependencies, err := parseGoTemplate(template.Must(emptyTmpl.Clone()), "layouts/pages/belize.tmpl.html")
+		_, dependencies, err := dependencies.parseGoTemplate(template.Must(emptyTmpl.Clone()), "layouts/pages/belize.tmpl.html")
 		require.NoError(t, err)
 		require.Equal(t, []string{
 			"layouts/pages/belize.tmpl.html",
@@ -54,7 +55,7 @@ func TestParseGoTemplate(t *testing.T) {
 	}
 
 	{
-		_, dependencies, err := parseGoTemplate(template.Must(emptyTmpl.Clone()), "pages/belize/01.tmpl.html")
+		_, dependencies, err := dependencies.parseGoTemplate(template.Must(emptyTmpl.Clone()), "pages/belize/01.tmpl.html")
 		require.NoError(t, err)
 		require.Equal(t, []string{
 			"pages/belize/01.tmpl.html",
