@@ -2,6 +2,17 @@
 #   published_at = 2022-12-25T14:07:58-07:00
 #   description = """\
 # """
+
+[[atoms]]
+  published_at = 2022-12-28T13:30:22-07:00
+  description = """\
+> Write as often as possible, not with the idea at once of getting into print, but as if you were learning an instrument.
+
+— _J.B. Priestley_
+
+My prose output in 2022 was way down (not counting commit messages and Reddit comments), and I feel this viscerally. The less you do it, the harder it gets, leading to a vicious negative feedback loop. Come 2023, I want to invert that cycle. Write more and more often, and gods willing, make it better, and easier.
+"""
+
 [[atoms]]
   published_at = 2022-12-28T10:56:36-07:00
   description = """\
