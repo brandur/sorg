@@ -2,6 +2,37 @@
 #   published_at = 2022-12-25T14:07:58-07:00
 #   description = """\
 # """
+[[atoms]]
+  published_at = 2022-12-28T10:56:36-07:00
+  description = """\
+Published fragment: [_Easy, alternative soft deletion: `deleted_record_insert`_](/fragments/deleted-record-insert).
+
+We've switched away from traditional soft deletion using a `deleted_at` column which is wound into every query like `deleted_at IS NULL` to one that uses a schemaless `deleted_record` table that's still useful for debugging, but doesn't need to be threaded in throughout production code, and razes a whole class of bugs involving forgotten `deleted_at IS NULL` predicates or foreign key problems (see [_Soft deletion probably isn't worth it_](/soft-deletion)).
+
+I recommend the use of a generic insertion function:
+
+``` sql
+CREATE FUNCTION deleted_record_insert() RETURNS trigger
+    LANGUAGE plpgsql
+AS $$
+    BEGIN
+        EXECUTE 'INSERT INTO deleted_record (data, object_id, table_name) VALUES ($1, $2, $3)'
+        USING to_jsonb(OLD.*), OLD.id, TG_TABLE_NAME;
+
+        RETURN OLD;
+    END;
+$$;
+```
+
+Which can then be used as an `AFTER DELETE` trigger on any table:
+
+``` sql
+CREATE TRIGGER deleted_record_insert AFTER DELETE ON invoice
+    FOR EACH ROW EXECUTE FUNCTION deleted_record_insert();
+```
+
+Our results have been shockingly good. No bugs to speak of, no reduction in operational visibility, and less friction in writing new code and analytics.
+"""
 
 [[atoms]]
   published_at = 2022-12-27T14:31:33-07:00
