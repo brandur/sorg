@@ -1,7 +1,15 @@
-# [[atoms]]
-#   published_at = 2022-12-25T14:07:58-07:00
-#   description = """\
-# """
+#
+# ATOMS
+#
+# Pull a timestamp from a shell with the `datejp` alias, then use Cmd-Y plus the
+# "atom" snippet to insert an entry template.
+#
+
+[[atoms]]
+  published_at = 2022-12-28T14:08:13-07:00
+  description = """\
+I updated my [now](/now) page for the first time in almost three years. It may have been an awful couple years, but at least a great week for this site?
+"""
 
 [[atoms]]
   published_at = 2022-12-28T13:30:22-07:00

@@ -1,8 +1,29 @@
 <!--
 
-## Apr 5, 2020
+## Dec 28, 2022
 
 -->
+
+I'm back home in Calgary for the holidays, staring into the precipice of 2023 which between money markets, strife, and war is shaping up to be a formidable year.
+
+At work, we're cruising along building the best database-as-a-service in the world. I shipped more features over the last year than the previous five combined, and which were built into a robust stack that to this day has less tech debt than many two-week-old startups (I'm kind of proud of it, you might be able to tell). We have another aggressive roadmap for 2023, and I'll be doing my best to make sure that we don't slip.
+
+I added a couple new sections to the site recently:
+
+* [**Atoms:**](/atoms) Short multimedia particles minus the stress of a social media platform ([atom feed](/atoms.atom)).
+* [**Sequences:**](/sequences) Periodic large format photos paired with prose. An older project, but one which I recently revived, flattened, and republished.
+
+A few weeks before that I became somewhat enamored by the idea of [Spring '83](https://www.robinsloan.com/lab/specifying-spring-83/) and ended up [writing a server implementation](https://github.com/brandur/neospring) which is now in prod and [hosts my board](https://neospring.brandur.org/). I don't think Twitter is being displaced anytime soon, but these indy web projects are great.
+
+In 2023: write, move, visit France.
+
+<!--
+
+/ ---------------------------------------------------------------------------- 
+/ OLD
+/ ---------------------------------------------------------------------------- 
+
+## Apr 5, 2020
 
 It's 2020. Like for almost everyone else on Earth, COVID-19 is top-of-mind. I'm working from home, San Francisco is sheltering in place, and the future is a hugely uncertain time.
 
@@ -18,12 +39,6 @@ Some things I’m working on:
     * A development log with notes on daily software discoveries and projects. Most entries will be of minor interest, but frequent enough to build writing cadence. <a href="/fragments/google-cloud-run-deploy">For example</a>.
 
 * Meditate every day.
-
-<!--
-
-/ ---------------------------------------------------------------------------- 
-/ OLD
-/ ---------------------------------------------------------------------------- 
 
 ## Dec 31, 2019
 
