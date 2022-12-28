@@ -1417,14 +1417,14 @@ video {
   border-bottom-width: 1px;
 }
 
-.prose-a\:border-white :is(:where(a):not(:where([class~="not-prose"] *))) {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
 .prose-a\:border-slate-500 :is(:where(a):not(:where([class~="not-prose"] *))) {
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
+}
+
+.prose-a\:border-white :is(:where(a):not(:where([class~="not-prose"] *))) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .prose-a\:font-sans :is(:where(a):not(:where([class~="not-prose"] *))) {
@@ -1450,6 +1450,15 @@ video {
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
 
+.hover\:prose-a\:border-b-slate-200 :is(:where(a):not(:where([class~="not-prose"] *))):hover {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+
+.prose-p\:prose-blockquote\:font-sans :is(:where(blockquote):not(:where([class~="not-prose"] *))) :is(:where(p):not(:where([class~="not-prose"] *))) {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .prose-strong\:font-sans :is(:where(strong):not(:where([class~="not-prose"] *))) {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -1459,9 +1468,14 @@ video {
   line-height: 1.25rem;
 }
 
-.prose-code\:text-sm :is(:where(code):not(:where([class~="not-prose"] *))) {
+.prose-code\:prose-p\:text-sm :is(:where(p):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.prose-code\:prose-a\:text-xs :is(:where(a):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .prose-img\:w-full :is(:where(img):not(:where([class~="not-prose"] *))) {
