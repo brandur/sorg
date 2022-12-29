@@ -2,19 +2,22 @@
 
 {{- define "atoms_content" -}}
 
-<h1 class="font-normal font-serif my-8 text-center text-6xl tracking-tighter">
-    Atoms
-</h1>
+<div class="mb-24 mt-16 px-4">
+    <h1 class="font-normal font-serif my-8 text-center text-6xl tracking-tighter">
+        Atoms
+    </h1>
 
-<div class="container max-w-[600px] mx-auto mb-16 md:mb-24 mt-8 px-4
+    <div class="container max-w-[600px] mx-auto
             prose prose-md
             prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-slate-200">
-    <p>
-        Multimedia particles in a similar style to a tweet, also serving as a changelog of sorts for this site.
-        Cross-posted to <a href="/atoms.atom">an atom feed</a> and <a href="https://neospring.brandur.org/">Spring '83
-            board</a>. Not always on topic.
-    </p>
+        <p>
+            Multimedia particles in a similar style to a tweet, also serving as a changelog of sorts for this site.
+            Cross-posted to <a href="/atoms.atom">an atom feed</a> and <a href="https://neospring.brandur.org/">Spring
+                '83
+                board</a>. Not always on topic.
+        </p>
+    </div>
 </div>
 
 {{- range .Atoms -}}

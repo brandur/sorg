@@ -2,21 +2,24 @@
 
 {{- define "sequences_content" -}}
 
-<h1 class="font-normal font-serif my-8 text-center text-6xl tracking-tighter">
-    Sequences
-</h1>
+<div class="mb-24 mt-16 px-4">
+    <h1 class="font-normal font-serif my-8 text-center text-6xl tracking-tighter">
+        Sequences
+    </h1>
 
-<div class="container max-w-[600px] mx-auto mb-24 mt-8 px-4
+    <div class="container max-w-[600px] mx-auto
             prose prose-invert prose-md
             prose-a:border-b-[1px] prose-a:border-white prose-a:font-sans prose-a:text-sm prose-a:no-underline
             hover:prose-a:border-b-0
             prose-p:font-serif
             prose-strong:font-sans prose-strong:text-sm">
-    <p>
-        Sequences is a tiny, self-hosted photography and writing project in the spirit of the independent web. See the
-        background on the <a href="/sequences-project">Sequences project</a>, and <a
-            href="/fragments/sequences-reboot">its reboot</a>.
-    </p>
+        <p>
+            Sequences is a tiny, self-hosted photography and writing project in the spirit of the independent web. See
+            the
+            background on the <a href="/sequences-project">Sequences project</a>, and <a
+                href="/fragments/sequences-reboot">its reboot</a>.
+        </p>
+    </div>
 </div>
 
 {{- range .Entries -}}

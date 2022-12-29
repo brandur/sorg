@@ -14,7 +14,11 @@
 {{- define "body_style" -}}bg-black{{- end -}}
 
 {{- define "content" -}}
-<div class="bg-black py-16 text-white">
+<div class="nav_invert text-white">
+    {{- template "views/_nav.tmpl.html" . -}}
+</div>
+
+<div class="bg-black text-white">
     {{block "sequences_content" .}}{{end}}
 </div>
 {{- end -}}
