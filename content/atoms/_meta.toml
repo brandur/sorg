@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2022-12-28T22:54:44-07:00
+  description = """\
+In the unlikely chance that you happen to be following this in an RSS reader, you just got dump of every atom written so far all over again. Sorry about that. It happened because I "reslugged" (assigned a new URL-friendly identifier) them all, making your reader think each was new content. I normally wouldn't make a breaking change like that, but there was an improvement opportunity I couldn't resist, and the project is only a few days old, so I went for it. It'll be the last time something like that happens.
+
+Each atom's slug is its published timestamp converted to bytes and base32-encoded (e.g. this atom's is `giqmrd2`). I changed the encoding character set from the normal `abcdefghijklmnopqrstuvwxyz234567` to my own numbers-first variant of `234567abcdefghijklmnopqrstuvwxyz`. The _reason_ I did that is so base32-encoded slugs always sort lexicographically the same as their source timestamps, which is quite a convenient property. More on this in a short piece tomorrow.
+"""
+
+[[atoms]]
   published_at = 2022-12-28T14:08:13-07:00
   description = """\
 I updated my [now](/now) page for the first time in almost three years. It may have been an awful couple years, but at least a great week for this site?
