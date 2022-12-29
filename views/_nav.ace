@@ -9,9 +9,9 @@ nav
     li
       a href="/atoms" title="Shortform atoms" Atoms
     li
-      a href="/newsletter" title="Email newsletters I publish" Newsletter
-    li
       a href="/fragments" title="Fragments (short articles)" Fragments
+    li
+      a href="/newsletter" title="Email newsletters I publish" Newsletter
     / li
       a href="/twitter" Twitter
     / li
