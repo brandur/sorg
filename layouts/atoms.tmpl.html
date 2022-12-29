@@ -4,7 +4,7 @@
 {{- end -}}
 
 {{- define "stylesheets" -}}
-<link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+{{- template "views/_cardo.tmpl.html" . -}}
 {{- template "views/_optimize_legibility.tmpl.html" . -}}
 {{- end -}}
 
