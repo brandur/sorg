@@ -1290,7 +1290,8 @@ type twitterCard struct {
 // case characters instead of upper.
 var lexicographicBase32 = "234567abcdefghijklmnopqrstuvwxyz"
 
-var lexicographicBase32Encoding = base32.NewEncoding(lexicographicBase32).WithPadding(base32.NoPadding)
+var lexicographicBase32Encoding = base32.NewEncoding(lexicographicBase32).
+	WithPadding(base32.NoPadding)
 
 // Produces an atom slug from its timestamp, which is the timestamp's unix time
 // encoded via base32.
