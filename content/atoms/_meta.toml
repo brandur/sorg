@@ -11,6 +11,26 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2022-12-29T10:46:06-07:00
+  description = """\
+Follow up from yesterday's note on atom reslugging: [Short, friendly base32 slugs from timestamps](/fragments/base32-slugs), discussing how unique slugs are generated for each atom on this page.
+
+A published timestamp is changed to bytes then encoded to base32 similar to [RFC 4648](https://www.ietf.org/rfc/rfc4648.txt), except with digits leading so that output slugs sort in the same order as the input timestamps. Implemented in ~4 lines of Go:
+
+```  go
+var lexicographicBase32 = "234567abcdefghijklmnopqrstuvwxyz"
+
+var lexicographicBase32Encoding = base32.NewEncoding(lexicographicBase32).
+		WithPadding(base32.NoPadding)
+
+func atomSlug(publishedAt time.Time) string {
+	i := big.NewInt(publishedAt.Unix())
+	return lexicographicBase32Encoding.EncodeToString(i.Bytes())
+}
+```
+"""
+
+[[atoms]]
   published_at = 2022-12-28T22:54:44-07:00
   description = """\
 In the unlikely chance that you happen to be following this in an RSS reader, you just got dump of every atom written so far all over again. Sorry about that. It happened because I "reslugged" (assigned a new URL-friendly identifier) them all, making your reader think each was new content. I normally wouldn't make a breaking change like that, but there was an improvement opportunity I couldn't resist, and the project is only a few days old, so I went for it. It'll be the last time something like that happens.
