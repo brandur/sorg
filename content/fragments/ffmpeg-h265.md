@@ -86,7 +86,7 @@ If your input sources are only stereo anyway, or you never expect to watch the o
 -c:a aac -ac 2
 ```
 
-### The `fast` preset
+### The `fast` preset (#fast-preset)
 
 The `libx265` `preset` setting accepts the wide array of
 adjectives `ultrafast`, `superfast`, `veryfaster`,
@@ -100,7 +100,7 @@ between `fast`, `medium`, and `slow`, but some encoding
 speed difference, so I just default to `-preset fast` for
 everything.
 
-### The `hvc1` tag
+### The `hvc1` tag (#hvc1-tag)
 
 The argument `-tag:v hvc1` tags the video with `hvc1`,
 which is purely for QuickTime's benefit. It allows this
