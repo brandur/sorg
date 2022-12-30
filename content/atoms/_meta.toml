@@ -10,6 +10,12 @@
 #
 ################################################################################
 
+# [[atoms]]
+#   published_at = 2022-12-30T14:40:45-07:00
+#   description = """\
+
+# """
+
 [[atoms]]
   published_at = 2022-12-30T10:38:12-07:00
   description = """\
@@ -31,9 +37,9 @@ I played around with exporting some iOS live photos and running them through ffm
   [[atoms.videos]]
     url = ["https://www.dropbox.com/s/s8h4b73m2fvx314/wolf-2.mp4?dl=1", "https://www.dropbox.com/s/uptkymissgj9h2t/wolf-2.webm?dl=1"]
   [[atoms.videos]]
-    url = ["https://www.dropbox.com/s/6p8mo9jdj61nz6b/bobcat-2.mp4?dl=1", "https://www.dropbox.com/s/ks8t5chwa7buc1r/bobcat-2.webm?dl=1"]
+    url = ["https://www.dropbox.com/s/6p8mo9jdj61nz6b/cougar-2.mp4?dl=1", "https://www.dropbox.com/s/ks8t5chwa7buc1r/cougar-2.webm?dl=1"]
   [[atoms.videos]]
-    url = ["https://www.dropbox.com/s/4lroc5addmx2sax/bobcat-1.mp4?dl=1", "https://www.dropbox.com/s/yf0c80zoxxpfrqp/bobcat-1.webm?dl=1"]
+    url = ["https://www.dropbox.com/s/4lroc5addmx2sax/cougar-1.mp4?dl=1", "https://www.dropbox.com/s/yf0c80zoxxpfrqp/cougar-1.webm?dl=1"]
 
 # webm
 # h265/hevc
@@ -47,13 +53,13 @@ I played around with exporting some iOS live photos and running them through ffm
 # ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0340/wolf-2.mp4
 # ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0340/wolf-2.webp
 
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0347/bobcat-1.webm
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0347/bobcat-1.mp4
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0347/bobcat-1.webp
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0347/cougar-1.webm
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0347/cougar-1.mp4
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0347/cougar-1.webp
 
-# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0352/bobcat-2.webm
-# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0352/bobcat-2.mp4
-# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0352/bobcat-2.webp
+# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0352/cougar-2.webm
+# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0352/cougar-2.mp4
+# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0352/cougar-2.webp
 
 [[atoms]]
   published_at = 2022-12-29T10:46:06-07:00
