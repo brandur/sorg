@@ -120,30 +120,33 @@ ifdef AWS_ACCESS_KEY_ID
 	# refactoring to live somewhere else. Note that for these to work, S3 web
 	# hosting must be on, and CloudFront must be pointed to the S3 web hosting
 	# URL rather than the REST endpoint.
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key glass --website-redirect-location /newsletter
 
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin.atom --website-redirect-location /sequences.atom
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/001 --website-redirect-location /sequences/001
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/002 --website-redirect-location /sequences/002
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/003 --website-redirect-location /sequences/003
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/004 --website-redirect-location /sequences/004
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/005 --website-redirect-location /sequences/005
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/006 --website-redirect-location /sequences/006
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/007 --website-redirect-location /sequences/007
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/008 --website-redirect-location /sequences/008
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/009 --website-redirect-location /sequences/009
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/010 --website-redirect-location /sequences/010
+	# Redirects are commented out for now. They should already be in place and
+	# they're quite slow to run in the build process.
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key glass --website-redirect-location /newsletter
 
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light.atom --website-redirect-location /sequences.atom
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/011 --website-redirect-location /sequences/011
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/012 --website-redirect-location /sequences/012
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/013 --website-redirect-location /sequences/013
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/014 --website-redirect-location /sequences/014
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/015 --website-redirect-location /sequences/015
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/016 --website-redirect-location /sequences/016
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/017 --website-redirect-location /sequences/017
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/018 --website-redirect-location /sequences/018
-	aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/019 --website-redirect-location /sequences/019
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin.atom --website-redirect-location /sequences.atom
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/001 --website-redirect-location /sequences/001
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/002 --website-redirect-location /sequences/002
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/003 --website-redirect-location /sequences/003
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/004 --website-redirect-location /sequences/004
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/005 --website-redirect-location /sequences/005
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/006 --website-redirect-location /sequences/006
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/007 --website-redirect-location /sequences/007
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/008 --website-redirect-location /sequences/008
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/009 --website-redirect-location /sequences/009
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/010 --website-redirect-location /sequences/010
+
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light.atom --website-redirect-location /sequences.atom
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/011 --website-redirect-location /sequences/011
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/012 --website-redirect-location /sequences/012
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/013 --website-redirect-location /sequences/013
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/014 --website-redirect-location /sequences/014
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/015 --website-redirect-location /sequences/015
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/016 --website-redirect-location /sequences/016
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/017 --website-redirect-location /sequences/017
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/018 --website-redirect-location /sequences/018
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/2020-light/019 --website-redirect-location /sequences/019
 
 else
 	# No AWS access key. Skipping deploy.
