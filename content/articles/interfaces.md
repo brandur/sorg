@@ -18,7 +18,7 @@ we're all used to it.
 
 <figure>
   <p>
-    <video controls loop class="overflowing">
+    <video autoplay controls loop muted class="overflowing">
       <source src="/assets/images/interfaces/slack-45s.mp4" type="video/mp4">
     </video>
   </p>
