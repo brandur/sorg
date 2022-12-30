@@ -5,6 +5,7 @@
 /content/images/talks/*.backup/
 /content/photographs/**/*.jpg
 /content/photographs/**/*.png
+/content/videos/**/*.webm
 /public/
 /public-dev/
 /sorg

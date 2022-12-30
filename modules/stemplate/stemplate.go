@@ -7,6 +7,8 @@ import (
 	"html/template"
 	"math"
 	"math/rand"
+	"net/url"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -27,6 +29,7 @@ var FuncMap = template.FuncMap{
 	"InKM":                    inKM,
 	"LazyRetinaImage":         lazyRetinaImage,
 	"LazyRetinaImageLightbox": lazyRetinaImageLightbox,
+	"Mod":                     mod,
 	"MonthName":               monthName,
 	"NanoglyphSignup":         nanoglyphSignup,
 	"NumberWithDelimiter":     numberWithDelimiter,
@@ -36,6 +39,7 @@ var FuncMap = template.FuncMap{
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
 	"TimeInLocal":             timeInLocal,
+	"URLBaseFile":             urlBaseFile,
 }
 
 // LocalLocation is the location to show times in which use FormatTimeLocal.
@@ -132,6 +136,10 @@ func toNonBreakingWhitespace(str string) string {
 
 func inKM(m float64) float64 {
 	return m / 1000.0
+}
+
+func mod(i, j int) int {
+	return i % j
 }
 
 func monthName(m time.Month) string {
@@ -247,4 +255,13 @@ func toStars(n int) string {
 		stars += "★ "
 	}
 	return toNonBreakingWhitespace(stars)
+}
+
+func urlBaseFile(urlStr string) string {
+	u, err := url.Parse(urlStr)
+	if err != nil {
+		panic(err)
+	}
+
+	return filepath.Base(u.Path)
 }

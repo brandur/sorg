@@ -5,7 +5,9 @@
             prose-code:prose-a:text-xs prose-code:prose-p:text-sm
             prose-p:font-serif
             prose-p:prose-blockquote:font-sans
-            prose-strong:font-sans prose-strong:text-sm">
+            prose-strong:font-sans prose-strong:text-sm
+            prose-ul:font-serif
+            ">
     <div class="sm:flex">
         <div class="sm:mr-4">
             <a href="/atoms/{{.Atom.Slug}}" class="no-underline">
@@ -17,6 +19,27 @@
         </div>
         <div class="sm:ml-4">
             {{.Atom.DescriptionHTML}}
+
+            {{- if gt (len .Atom.Videos) 0 -}}
+            <div class="flex flex-col">
+
+                {{- range $i, $video := .Atom.Videos -}}
+
+                {{if eq (Mod $i 2) 0}} <div class="flex flex-col md:flex-row"> {{end}}
+
+                    <div class="mb-2 mr-2">
+                        <video autoplay loop muted class="m-0 rounded-lg w-full">
+                            <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile $video.URL}}" type="video/webm">
+                        </video>
+                    </div>
+
+                    {{if eq (Mod $i 2) 1}}
+                </div> {{end}}
+
+                {{- end -}}
+
+            </div>
+            {{- end -}}
         </div>
     </div>
 </div>

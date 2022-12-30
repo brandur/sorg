@@ -1,13 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"encoding/base32"
 	"fmt"
 	"html/template"
+	"io"
 	"math/big"
 	"math/rand"
+	"net/http"
 	"net/url"
 	"os"
 	"path"
@@ -253,6 +256,7 @@ func build(c *modulir.Context) []error {
 
 			{c.SourceDir + "/content/photographs", c.TargetDir + "/photographs"},
 			{c.SourceDir + "/content/stylesheets-modular", versionedAssetsDir + "/stylesheets"},
+			{c.SourceDir + "/content/videos", c.TargetDir + "/videos"},
 		}
 		for _, link := range commonSymlinks {
 			err := mfile.EnsureSymlink(c, link[0], link[1])
@@ -690,7 +694,7 @@ func build(c *modulir.Context) []error {
 	}
 
 	//
-	// Sequences (index / fetch + resize)
+	// Atoms (index / fetch + resize)
 	//
 
 	// Atoms archive
@@ -724,6 +728,17 @@ func build(c *modulir.Context) []error {
 			c.AddJob(name, func() (bool, error) {
 				return renderAtom(ctx, c, atom, i, atomsChanged)
 			})
+
+			// Video fetch
+			for _, v := range atom.Videos {
+				video := v
+
+				name = fmt.Sprintf("atom %q video: %s", atom.Slug, filepath.Base(video.URL))
+				c.AddJob(name, func() (bool, error) {
+					return fetchVideo(ctx, c,
+						c.SourceDir+"/content/videos/atoms/"+atom.Slug, video)
+				})
+			}
 		}
 	}
 
@@ -863,7 +878,7 @@ func build(c *modulir.Context) []error {
 		})
 	}
 
-	// Each entry
+	// Each sequences entry
 	{
 		for _, e := range sequences {
 			entry := e
@@ -1043,6 +1058,12 @@ type Atom struct {
 	PublishedAt time.Time `toml:"published_at" validate:"required"`
 
 	Slug string `toml:"-" validate:"-"`
+
+	Videos []*AtomVideo `toml:"videos" validate:"omitempty,dive"`
+}
+
+type AtomVideo struct {
+	URL string `toml:"url" validate:"required"`
 }
 
 // Fragment represents a fragment (that is, a short "stream of consciousness"
@@ -1395,6 +1416,64 @@ func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 
 	return mimage.FetchAndResizeImage(c, u, targetDir, slug,
 		mimage.PhotoGravityCenter, twitterPhotoSizes)
+}
+
+// TODO: Needs to be refactored to respect markers.
+//
+// TODO: Needs to be refactored to do a less manual fetch (probably in Modulir).
+//
+// TODO: May want to eventually support non-manual video cutting.
+func fetchVideo(ctx context.Context, c *modulir.Context, targetDir string, video *AtomVideo) (bool, error) {
+	u, err := url.Parse(video.URL)
+	if err != nil {
+		return false, xerrors.Errorf("bad URL for video '%s': %w", video.URL, err)
+	}
+
+	target := filepath.Join(targetDir, filepath.Base(u.Path))
+
+	if mfile.Exists(target) {
+		return false, nil
+	}
+
+	err = mfile.EnsureDir(c, targetDir)
+	if err != nil {
+		return false, err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u.String(), nil)
+	if err != nil {
+		return false, xerrors.Errorf("error creating request: %w", err)
+	}
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return false, xerrors.Errorf("error fetching: %v", u.String())
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return false, xerrors.Errorf("unexpected status code fetching '%v': %d",
+			u.String(), resp.StatusCode)
+	}
+
+	f, err := os.Create(target)
+	if err != nil {
+		return false, xerrors.Errorf("error creating '%v': %w", target, err)
+	}
+	defer f.Close()
+
+	w := bufio.NewWriter(f)
+
+	// probably not needed
+	defer w.Flush()
+
+	_, err = io.Copy(w, resp.Body)
+	if err != nil {
+		return false, xerrors.Errorf("error copying to '%v' from HTTP response: %w",
+			target, err)
+	}
+
+	return true, nil
 }
 
 // getAceOptions gets a good set of default options for Ace template rendering

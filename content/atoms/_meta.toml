@@ -11,6 +11,43 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2022-12-30T10:38:12-07:00
+  description = """\
+The Calgary Zoo yesterday, somewhere I haven't been in years. The grounds feel smaller now, but the animals are impressive, and we got lucky with many out in the open. Amongst others:
+
+* Extraordinary penguin exhibit -- lots of them, very active, and multiple locations indoors and out. (I wish I'd gotten some photos, but was holding coffee at the time.)
+* Cougars jumping, climbing, and very lively. (The polar opposite of the snow leopards.)
+* A gorilla couple with a young baby that attached itself to the mother's arm as she roamed.
+* Two Komodo dragons, with one hanging out right in the open a few feet from the glass.
+* A pack of wolves circling energetically within inches of the observation perch.
+* A troupe of Japanese macaques, which I haven't seen since visiting Japan. (Too bad there wasn't an onsen.)
+* An enormous [Malayan tapir](https://en.wikipedia.org/wiki/Malayan_tapir).
+* The biggest Bactrian (two hump) camel any of us had ever seen. What a beast.
+
+Although not as cold as last week (-30C), it was chilly out (-3C), and I've never been so thankful to for the butterfly conservatory's hot, humid interior (currently minus the butterflies for the winter season) for recharging body temperature.
+
+I played around with exporting some iOS live photos and running them through ffmpeg to make some VP9/`.webm` shorts. It worked reasonably well, despite the idiosyncrasies of the `<video>` tag.
+"""
+  [[atoms.videos]]
+    url = "https://www.dropbox.com/s/uptkymissgj9h2t/wolf-2.webm?dl=1"
+  [[atoms.videos]]
+    url = "https://www.dropbox.com/s/ks8t5chwa7buc1r/bobcat-2.webm?dl=1"
+  [[atoms.videos]]
+    url = "https://www.dropbox.com/s/yf0c80zoxxpfrqp/bobcat-1.webm?dl=1"
+
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i IMG_0338/IMG_0338.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0338/wolf-1.webm
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i IMG_0338/IMG_0338.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0338/wolf-1.webp
+
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0340/wolf-2.webm
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0340/wolf-2.webp
+
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0347/bobcat-1.webm
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0347/bobcat-1.webp
+
+# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0352/bobcat-2.webm
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.00 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0352/bobcat-2.webp
+
+[[atoms]]
   published_at = 2022-12-29T10:46:06-07:00
   description = """\
 Follow up from yesterday's note on atom reslugging: [Short, friendly base32 slugs from timestamps](/fragments/base32-slugs), discussing how unique slugs are generated for each atom on this page.

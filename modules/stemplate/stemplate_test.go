@@ -75,6 +75,11 @@ func TestLazyRetinaImageLightbox(t *testing.T) {
 	)
 }
 
+func TestMod(t *testing.T) {
+	assert.Equal(t, 0, mod(2, 2))
+	assert.Equal(t, 1, mod(3, 2))
+}
+
 func TestMonthName(t *testing.T) {
 	assert.Equal(t, "July", monthName(time.July))
 }
