@@ -45,7 +45,7 @@ I played around with exporting some iOS live photos and running them through ffm
 # ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0347/bobcat-1.webp
 
 # ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0352/bobcat-2.webm
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.00 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0352/bobcat-2.webp
+# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0352/bobcat-2.webp
 
 [[atoms]]
   published_at = 2022-12-29T10:46:06-07:00
