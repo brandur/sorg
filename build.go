@@ -730,14 +730,15 @@ func build(c *modulir.Context) []error {
 			})
 
 			// Video fetch
-			for _, v := range atom.Videos {
-				video := v
-
-				name = fmt.Sprintf("atom %q video: %s", atom.Slug, filepath.Base(video.URL))
-				c.AddJob(name, func() (bool, error) {
-					return fetchVideo(ctx, c,
-						c.SourceDir+"/content/videos/atoms/"+atom.Slug, video)
-				})
+			for _, video := range atom.Videos {
+				for _, u := range video.URL {
+					videoURL := u
+					name = fmt.Sprintf("atom %q video: %s", atom.Slug, filepath.Base(videoURL))
+					c.AddJob(name, func() (bool, error) {
+						return fetchVideo(ctx, c,
+							c.SourceDir+"/content/videos/atoms/"+atom.Slug, videoURL)
+					})
+				}
 			}
 		}
 	}
@@ -1063,7 +1064,7 @@ type Atom struct {
 }
 
 type AtomVideo struct {
-	URL string `toml:"url" validate:"required"`
+	URL []string `toml:"url" validate:"required"`
 }
 
 // Fragment represents a fragment (that is, a short "stream of consciousness"
@@ -1423,10 +1424,10 @@ func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 // TODO: Needs to be refactored to do a less manual fetch (probably in Modulir).
 //
 // TODO: May want to eventually support non-manual video cutting.
-func fetchVideo(ctx context.Context, c *modulir.Context, targetDir string, video *AtomVideo) (bool, error) {
-	u, err := url.Parse(video.URL)
+func fetchVideo(ctx context.Context, c *modulir.Context, targetDir string, videoURL string) (bool, error) {
+	u, err := url.Parse(videoURL)
 	if err != nil {
-		return false, xerrors.Errorf("bad URL for video '%s': %w", video.URL, err)
+		return false, xerrors.Errorf("bad URL for video '%s': %w", videoURL, err)
 	}
 
 	target := filepath.Join(targetDir, filepath.Base(u.Path))

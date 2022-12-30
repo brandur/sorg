@@ -39,6 +39,7 @@ var FuncMap = template.FuncMap{
 	"RetinaImageAlt":          RetinaImageAlt,
 	"ToStars":                 toStars,
 	"TimeInLocal":             timeInLocal,
+	"URLBaseExt":              urlBaseExt,
 	"URLBaseFile":             urlBaseFile,
 }
 
@@ -255,6 +256,19 @@ func toStars(n int) string {
 		stars += "★ "
 	}
 	return toNonBreakingWhitespace(stars)
+}
+
+func urlBaseExt(urlStr string) string {
+	u, err := url.Parse(urlStr)
+	if err != nil {
+		panic(err)
+	}
+
+	ext := filepath.Ext(u.Path)
+	if len(ext) > 0 {
+		return ext[1:]
+	}
+	return ""
 }
 
 func urlBaseFile(urlStr string) string {

@@ -1,27 +1,31 @@
 <div id="{{.Atom.Slug}}" class="container max-w-[900px] mx-auto my-8 px-4
-            prose prose-md
-            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:text-sm prose-a:no-underline
-            hover:prose-a:border-b-slate-200
-            prose-code:prose-a:text-xs prose-code:prose-p:text-sm
-            prose-p:font-serif
-            prose-p:prose-blockquote:font-sans
-            prose-strong:font-sans prose-strong:text-sm
-            prose-ul:font-serif
             ">
     <div class="sm:flex">
         <div class="sm:mr-4">
-            <a href="/atoms/{{.Atom.Slug}}" class="no-underline">
-                <h2 class="font-bold leading-5 text-xs tracking-tighter">
-                    {{FormatTime .Atom.PublishedAt "2006 / Jan 2"}}<br>
+            <div class="font-bold my-1 leading-normal text-xs tracking-tighter">
+                <a href="#{{.Atom.Slug}}" class="leading-3">
+                    {{FormatTime .Atom.PublishedAt "2006 / Jan 2"}}
                     {{FormatTime .Atom.PublishedAt "15:04 PST"}}
-                </h2>
-            </a>
+                </a>
+                <a href="/atoms/{{.Atom.Slug}}" class="mx-0.5 opacity-60">🔗</a>
+            </div>
         </div>
         <div class="sm:ml-4">
-            {{.Atom.DescriptionHTML}}
+            <div class="max-w-[900px]
+                prose prose-md
+                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:text-sm prose-a:no-underline
+                hover:prose-a:border-b-slate-200
+                prose-code:prose-a:text-xs prose-code:prose-p:text-sm
+                prose-p:font-serif
+                prose-p:prose-blockquote:font-sans
+                prose-strong:font-sans prose-strong:text-sm
+                prose-ul:font-serif
+                ">
+                {{.Atom.DescriptionHTML}}
+            </div>
 
             {{- if gt (len .Atom.Videos) 0 -}}
-            <div class="flex flex-col">
+            <div class="flex flex-col mt-8">
 
                 {{- range $i, $video := .Atom.Videos -}}
 
@@ -29,7 +33,9 @@
 
                     <div class="mb-2 mr-2">
                         <video autoplay loop muted class="m-0 rounded-lg w-full">
-                            <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile $video.URL}}" type="video/webm">
+                            {{range $video.URL -}}
+                            <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile .}}" type="video/{{URLBaseExt .}}">
+                            {{end}}
                         </video>
                     </div>
 
