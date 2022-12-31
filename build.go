@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/base32"
 	"fmt"
+	"html"
 	"html/template"
 	"io"
 	"math/big"
@@ -1110,7 +1111,7 @@ type Fragment struct {
 func (f *Fragment) publishingInfo() map[string]string {
 	info := make(map[string]string)
 
-	info["Fragment"] = f.Title
+	info["Fragment"] = html.EscapeString(f.Title)
 	info["Published"] = f.PublishedAt.In(localLocation).Format("January 2, 2006")
 
 	if f.Location != "" {

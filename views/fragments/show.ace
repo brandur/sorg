@@ -25,7 +25,8 @@
             .fragments-content-header
               .fragments-content-header-type
                 a href="/fragments" Fragments
-              h1 {{.Fragment.Title}}
+              h1
+                {{.Fragment.Title}}
             .fragments-header-separator
             article
               {{HTML .Fragment.Content}}

@@ -11,6 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2022-12-31T10:20:38-07:00
+  description = """\
+Wrote [a few notes on publishing iOS live photos](/fragments/ios-live-photos-and-ffmpeg), involving exporting a `.mov` from iOS and running it through ffmpeg to fix aspect ratio, scale, strip audio, and convert to web-friendly codecs. Taking live photos is a nice alternative to shooting in video mode because you can have them captured by default, so there's a lot less mucking around with start/stop.
+
+A major takeaway: you can make a `<video>` behave like a classic animated GIF by having it `autoplay` and `loop`, but only by also including the `muted` option, which browsers require before allowing autoplay to prevent us all from losing our minds.
+
+``` html
+<video autoplay loop muted playsinline>
+    <source src="/videos/atoms/girm632/cougar-1.mp4" type="video/mp4">
+    <source src="/videos/atoms/girm632/cougar-1.webm" type="video/webm">
+</video>
+```
+
+`playsinline` is another magic Apple token that tells an iPhone that it's okay to autoplay a video.
+"""
+
+[[atoms]]
   published_at = 2022-12-31T10:03:29-07:00
   description = """\
 Eugyppius has a particular way with words:
@@ -49,21 +66,21 @@ I played around with exporting some iOS live photos and running them through ffm
 # h265/hevc
 # webp
 
-# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i IMG_0338/IMG_0338.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0338/wolf-1.webm
-# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i IMG_0338/IMG_0338.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0338/wolf-1.mp4
-# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i IMG_0338/IMG_0338.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0338/wolf-1.webp
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i cougar-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an cougar-1.webm
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i cougar-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an cougar-1.mp4
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i cougar-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an cougar-1.webp
 
-# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0340/wolf-2.webm
-# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0340/wolf-2.mp4
-# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i IMG_0340/IMG_0340.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0340/wolf-2.webp
+# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an cougar-2.webm
+# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an cougar-2.mp4
+# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an cougar-2.webp
 
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0347/cougar-1.webm
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0347/cougar-1.mp4
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i IMG_0347/IMG_0347.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0347/cougar-1.webp
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an wolf-1.webm
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an wolf-1.mp4
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an wolf-1.webp
 
-# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an IMG_0352/cougar-2.webm
-# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -an IMG_0352/cougar-2.mp4
-# ffmpeg -ss 00:00:00.00 -to 00:00:03.10 -i IMG_0352/IMG_0352.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an IMG_0352/cougar-2.webp
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an wolf-2.webm
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an wolf-2.mp4
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an wolf-2.webp
 
 [[atoms]]
   published_at = 2022-12-29T10:46:06-07:00
