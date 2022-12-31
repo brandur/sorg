@@ -10,11 +10,15 @@
 #
 ################################################################################
 
-# [[atoms]]
-#   published_at = 2022-12-30T14:40:45-07:00
-#   description = """\
+[[atoms]]
+  published_at = 2022-12-31T10:03:29-07:00
+  description = """\
+Eugyppius has a particular way with words:
 
-# """
+> The pre-pandemic world is gone forever. If the past year has taught us nothing else, it has taught us that much. Mass containment has permanently transformed our societies and our cultures. It has cemented the cooperative relationship between the regime and the press, and it has changed the content and the tenor of our media. Drama and panic have always sold newspapers, but our new era is characterised by an unending self-reinforcing cyclone of hyperventilation journalism, the likes of which we’ve never seen before. For the foreseeable future, I think, we will careen from one crisis to the next.
+
+Truer words have rarely been spoken. The [whole edition](https://www.eugyppius.com/p/the-year-of-omicron) is well worth reading.
+"""
 
 [[atoms]]
   published_at = 2022-12-30T10:38:12-07:00
