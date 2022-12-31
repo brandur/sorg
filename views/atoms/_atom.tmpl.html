@@ -32,7 +32,7 @@
                 {{if eq (Mod $i 2) 0}} <div class="flex flex-col md:flex-row"> {{end}}
 
                     <div class="mb-2 mr-2">
-                        <video autoplay loop muted class="m-0 rounded-lg w-full">
+                        <video autoplay loop muted playsinline class="m-0 rounded-lg w-full">
                             {{range $video.URL -}}
                             <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile .}}" type="video/{{URLBaseExt .}}">
                             {{end}}
