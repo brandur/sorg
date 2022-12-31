@@ -12,11 +12,17 @@
             prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-slate-200">
         <p>
-            Multimedia particles in a similar style to a tweet, also serving as a changelog of sorts for this site.
-            Cross-posted to <a href="/atoms.atom">an atom feed</a> and <a href="https://neospring.brandur.org/">Spring
+            Multimedia particles in a similar style to a tweet, also serving as a changelog for this site. Cross-posted
+            to <a href="/atoms.atom">an atom feed</a> and <a href="https://neospring.brandur.org/">Spring
                 '83
                 board</a>. Not always on topic.
         </p>
+        {{- if not .IndexMax -}}
+        <p>
+            This is an archive page that shows every atom ever published. See also <a href="/atoms">Atoms</a> which
+            shows only recent ones.
+        </p>
+        {{- end -}}
     </div>
 </div>
 
