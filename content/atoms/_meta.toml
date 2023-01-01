@@ -11,7 +11,7 @@
 ################################################################################
 
 [[atoms]]
-  published_at = 2023-01-01T13:11:33-07:00
+  published_at = 2023-01-01T13:00:35-07:00
   description = """\
 When all you have is a hammer (access to free Heroku apps), everything looks like a nail (dynamic apps + buildpacks for everything). On the eve of November 28's Herokupocalypse, I pulled the [static rip cord](/fragments/static-rip-cord) and dropped the dynamic component from apps that should've been static HTML pages from the get go. The totality of tooling required: Chrome and a text editor.
 

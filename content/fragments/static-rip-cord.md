@@ -1,5 +1,5 @@
 +++
-hook = "TODO"
+hook = "Surviving the Herokupocalypse by jettisoning dynamicism."
 published_at = 2023-01-01T13:00:35-07:00
 title = "The static rip cord"
 +++
