@@ -258,6 +258,7 @@ func toStars(n int) string {
 	return toNonBreakingWhitespace(stars)
 }
 
+// Gets the extension of a file at a URL. Also downcases said extension.
 func urlBaseExt(urlStr string) string {
 	u, err := url.Parse(urlStr)
 	if err != nil {
@@ -266,7 +267,7 @@ func urlBaseExt(urlStr string) string {
 
 	ext := filepath.Ext(u.Path)
 	if len(ext) > 0 {
-		return ext[1:]
+		return strings.ToLower(ext[1:])
 	}
 	return ""
 }

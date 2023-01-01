@@ -143,12 +143,14 @@ func TestToStars(t *testing.T) {
 
 func TestURLBaseExt(t *testing.T) {
 	assert.Equal(t, "", urlBaseExt("https://example.com/video"))
+	assert.Equal(t, "jpg", urlBaseExt("https://example.com/image.JPG"))
 	assert.Equal(t, "mp4", urlBaseExt("https://example.com/video.mp4"))
 	assert.Equal(t, "webm", urlBaseExt("https://example.com/video.webm"))
 }
 
 func TestURLBaseFile(t *testing.T) {
 	assert.Equal(t, "video", urlBaseFile("https://example.com/video"))
+	assert.Equal(t, "image.JPG", urlBaseFile("https://example.com/image.JPG"))
 	assert.Equal(t, "video.mp4", urlBaseFile("https://example.com/video.mp4"))
 	assert.Equal(t, "video.webm", urlBaseFile("https://example.com/video.webm"))
 }
