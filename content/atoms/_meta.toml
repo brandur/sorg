@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-01T12:09:07-07:00
+  description = """\
+Happy new year!
+
+I always love these first few days of a new year. A fresh slate, after a week off, batteries recharged, and optimism for the year ahead. I've spent the last few days doing little else beyond writing, some casual coding, and running. It's been great. Despite some of the most uncertain times in which I've ever lived, I'm feeling a lot better about 2023 than 2022.
+"""
+
+[[atoms]]
   published_at = 2022-12-31T10:20:38-07:00
   description = """\
 Wrote [a few notes on publishing iOS live photos](/fragments/ios-live-photos-and-ffmpeg), involving exporting a `.mov` from iOS and running it through ffmpeg to fix aspect ratio, scale, strip audio, and convert to web-friendly codecs. Taking live photos is a nice alternative to shooting in video mode because you can have them captured by default, so there's a lot less mucking around with start/stop.
