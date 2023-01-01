@@ -99,8 +99,8 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait bool, l
 	lightbox bool,
 ) template.HTML {
 	slug = mtemplate.QueryEscape(slug)
-	largePath := path + slug + "_large.jpg"
-	largePathRetina := path + slug + "_large@2x.jpg"
+	fullPath := path + slug + ".jpg"
+	fullPathRetina := path + slug + "@2x.jpg"
 
 	var standinPath string
 	if portrait {
@@ -112,11 +112,11 @@ func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait bool, l
 	}
 
 	code := fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
-		standinPath, largePath, largePathRetina, largePath)
+		standinPath, fullPath, fullPathRetina, fullPath)
 
 	if lightbox {
 		if linkOverride == "" {
-			linkOverride = largePathRetina
+			linkOverride = fullPathRetina
 		}
 
 		code = fmt.Sprintf(`<a href="%s">%s</a>`, linkOverride, code)

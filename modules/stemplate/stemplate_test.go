@@ -44,33 +44,33 @@ func TestInKM(t *testing.T) {
 
 func TestLazyRetinaImage(t *testing.T) {
 	assert.Equal(t,
-		`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" `+
-			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x">`,
+		`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001.jpg" `+
+			`data-srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x">`,
 		string(lazyRetinaImage(0, "/photographs/other/", "001")),
 	)
 }
 
 func TestLazyRetinaImageLightbox(t *testing.T) {
 	assert.Equal(t,
-		`<a href="/photographs/other/001_large@2x.jpg">`+
-			`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" `+
-			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
+		`<a href="/photographs/other/001@2x.jpg">`+
+			`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001.jpg" `+
+			`data-srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x"></a>`,
 		string(lazyRetinaImageLightbox(0, "/photographs/other/", "001", false, "")),
 	)
 
 	// Portrait
 	assert.Equal(t,
-		`<a href="/photographs/other/001_large@2x.jpg">`+
-			`<img class="lazy" src="/assets/images/standin_portrait_00.jpg" data-src="/photographs/other/001_large.jpg" `+
-			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
+		`<a href="/photographs/other/001@2x.jpg">`+
+			`<img class="lazy" src="/assets/images/standin_portrait_00.jpg" data-src="/photographs/other/001.jpg" `+
+			`data-srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x"></a>`,
 		string(lazyRetinaImageLightbox(0, "/photographs/other/", "001", true, "")),
 	)
 
 	// Link override
 	assert.Equal(t,
 		`<a href="/photographs/other/001">`+
-			`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001_large.jpg" `+
-			`data-srcset="/photographs/other/001_large@2x.jpg 2x, /photographs/other/001_large.jpg 1x"></a>`,
+			`<img class="lazy" src="/assets/images/standin_00.jpg" data-src="/photographs/other/001.jpg" `+
+			`data-srcset="/photographs/other/001@2x.jpg 2x, /photographs/other/001.jpg 1x"></a>`,
 		string(lazyRetinaImageLightbox(0, "/photographs/other/", "001", false, "/photographs/other/001")),
 	)
 }

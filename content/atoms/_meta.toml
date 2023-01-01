@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-01T13:11:33-07:00
+  description = """\
+When all you have is a hammer (access to free Heroku apps), everything looks like a nail (dynamic apps + buildpacks for everything). On the eve of November 28's Herokupocalypse, I pulled the [static rip cord](/fragments/static-rip-cord) and dropped the dynamic component from apps that should've been static HTML pages from the get go. The totality of tooling required: Chrome and a text editor.
+
+See also [_Nanoglyph 022: Time and Entropy_](/nanoglyphs/022-entropy).
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/mtnly810xmz89kw/L1030975.JPG?dl=1"
+    slug = "yunomine-onsen"
+
+[[atoms]]
   published_at = 2023-01-01T12:09:07-07:00
   description = """\
 Happy new year!

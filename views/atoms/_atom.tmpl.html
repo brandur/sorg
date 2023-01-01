@@ -24,6 +24,28 @@
                 {{.Atom.DescriptionHTML}}
             </div>
 
+            {{- if gt (len .Atom.Photos) 0 -}}
+            <div class="flex flex-col mt-8">
+
+                {{- range $i, $photo := .Atom.Photos -}}
+
+                {{if eq (Mod $i 2) 0}} <div class="flex flex-col md:flex-row"> {{end}}
+
+                    <div class="mb-2 mr-2">
+                        <img class="rounded-lg w-full" loading="lazy"
+                            src="{{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}"
+                            srcset="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 2x,
+                                {{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 1x">
+                    </div>
+
+                    {{if eq (Mod $i 2) 1}}
+                </div> {{end}}
+
+                {{- end -}}
+
+            </div>
+            {{- end -}}
+
             {{- if gt (len .Atom.Videos) 0 -}}
             <div class="flex flex-col mt-8">
 
@@ -32,7 +54,7 @@
                 {{if eq (Mod $i 2) 0}} <div class="flex flex-col md:flex-row"> {{end}}
 
                     <div class="mb-2 mr-2">
-                        <video autoplay loop muted playsinline class="m-0 rounded-lg w-full">
+                        <video autoplay loop muted playsinline class="rounded-lg w-full">
                             {{range $video.URL -}}
                             <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile .}}" type="video/{{URLBaseExt .}}">
                             {{end}}

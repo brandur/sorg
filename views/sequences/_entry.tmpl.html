@@ -16,20 +16,20 @@
         <div class="flex flex-col">
             <div class="mb-0.5">
                 {{- with (index .Entry.Photos 0) -}}
-                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" (printf "%s_large" .Slug) .Portrait $linkOverride}}
                 {{- end -}}
             </div>
 
             <div class="md:flex md:flex-row md:mb-0.5">
                 <div class="mb-0.5 md:mr-0.5 md:mb-0">
                     {{- with (index .Entry.Photos 1) -}}
-                    {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                    {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" (printf "%s_large" .Slug) .Portrait $linkOverride}}
                     {{- end -}}
                 </div>
 
                 <div class="mb-0.5 md:ml-0.5 md:mb-0">
                     {{- with (index .Entry.Photos 2) -}}
-                    {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                    {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" (printf "%s_large" .Slug) .Portrait $linkOverride}}
                     {{- end -}}
                 </div>
             </div>
@@ -40,13 +40,13 @@
         <div class="md:flex md:flex-row mb-0.5">
             <div class="mb-0.5 mr-0.5 md:mb-0">
                 {{- with (index .Entry.Photos 0) -}}
-                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" (printf "%s_large" .Slug) .Portrait $linkOverride}}
                 {{- end -}}
             </div>
 
             <div class="mb-0.5 ml-0.5 md:mb-0">
                 {{- with (index .Entry.Photos 1) -}}
-                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+                {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" (printf "%s_large" .Slug) .Portrait $linkOverride}}
                 {{- end -}}
             </div>
         </div>
@@ -55,7 +55,7 @@
 
         <div class="mb-0.5">
             {{- with (index .Entry.Photos 0) -}}
-            {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" .Slug .Portrait $linkOverride}}
+            {{LazyRetinaImageLightbox (RandIntn 100)  "/photographs/sequences/" (printf "%s_large" .Slug) .Portrait $linkOverride}}
             {{- end -}}
         </div>
 

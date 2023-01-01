@@ -730,6 +730,18 @@ func build(c *modulir.Context) []error {
 				return renderAtom(ctx, c, atom, i, atomsChanged)
 			})
 
+			// Photo fetch + resize
+			for _, p := range atom.Photos {
+				photo := *p           // Deference for a shallow duplicate
+				photo.CropWidth = 700 // Give all atom photos a default crop width for expediency
+
+				name = fmt.Sprintf("atom %q photo: %s", atom.Slug, photo.Slug)
+				c.AddJob(name, func() (bool, error) {
+					return fetchAndResizePhotoOther(c,
+						c.SourceDir+"/content/photographs/atoms/"+atom.Slug, &photo)
+				})
+			}
+
 			// Video fetch
 			for _, video := range atom.Videos {
 				for _, u := range video.URL {
@@ -1055,6 +1067,8 @@ type Atom struct {
 	// DescriptionHTML is the description rendered to HTML.
 	DescriptionHTML template.HTML `toml:"-" validate:"-"`
 
+	Photos []*Photo `toml:"photos" validate:"omitempty,dive"`
+
 	// PublishedAt is UTC time when the atom was published. It also serves to
 	// provide a stable permalink.
 	PublishedAt time.Time `toml:"published_at" validate:"required"`
@@ -1168,7 +1182,7 @@ type Photo struct {
 
 	// OriginalImageURL is the location where the original-sized version of the
 	// photo can be downloaded from.
-	OriginalImageURL string `toml:"original_image_url"`
+	OriginalImageURL string `toml:"original_image_url" validate:"required"`
 
 	// OccurredAt is UTC time when the photo was published.
 	OccurredAt time.Time `toml:"occurred_at"`
