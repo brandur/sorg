@@ -1,0 +1,18 @@
+{{.Atom.DescriptionHTML}}
+
+{{- range $i, $photo := .Atom.Photos -}}
+<a href="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}">
+    <img loading="lazy"
+        src="{{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}"
+        srcset="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 2x,
+                                {{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 1x">
+</a>
+{{- end -}}
+
+{{- range $i, $video := .Atom.Videos -}}
+<video autoplay loop muted playsinline>
+    {{range $video.URL -}}
+    <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile .}}" type="video/{{URLBaseExt .}}">
+    {{end}}
+</video>
+{{- end -}}
