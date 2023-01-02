@@ -11,6 +11,25 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-01T23:59:51-07:00
+  description = """\
+Occasionally, especially when thinking about past around the holiday season, I'll use the Way Back Machine to take a look at sites which I used to consider the absolute pinnacle of great web design back in the day. [Today's specimen](https://web.archive.org/web/20090217010618/http://www.alistapart.com/) is _A List Apart_, a site that writes about web design. Screenshot of a 2009 capture below.
+
+Some things that come to mind:
+
+* We all loved small fonts back then. The body text here is ~8pt Verdana which is a style I used all over the place back in the 2000s. I'd hazard a guess that the reason a lot of us liked them is that larger fonts didn't look anywhere near as good as they do now, before the advent of subpixel anti-aliasing and retina displays.
+
+* A key element that makes the web today look as good as it does are fonts, which render so beautifully nowadays that it makes the web's default look quite good, even where minimal design has been applied. Old sites _should_ benefit from these advancements, but it never seems to translate through. Their fonts don't look great and it makes the whole site not look great.
+
+* The broad strokes of this old layout are excellent, and better than [alistapart.com](https://alistapart.com)'s current site. The specifics are a bit dated and it needs niceties like responsiveness, but a little modernization would easily bring it up to date. The current era of web design is too quick to remove any and every extraneous element, and although the baseline product is decent, 2022's internet looks uniform and somewhat bland.
+
+* Notice all the text in images? (e.g. in the logo, "An event apart", "A book apart", etc.) The reason people did that is that it looked better than what the web browser could render at the time. Programs like Photoshop would yield additional anti-aliasing beyond the browser's discrete, blocky pixels. It's ironic that transported through time, text that was put in images to look better now looks much worse.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/8nht7pmv4el677g/a-list-apart.png?dl=1"
+    slug = "a-list-apart"
+
+[[atoms]]
   published_at = 2023-01-01T13:00:35-07:00
   description = """\
 When all you have is a hammer (access to free Heroku apps), everything looks like a nail (dynamic apps + buildpacks for everything). On the eve of November 28's Herokupocalypse, I pulled the [static rip cord](/fragments/static-rip-cord) and dropped the dynamic component from apps that should've been static HTML pages from the get go. The totality of tooling required: Chrome and a text editor.
