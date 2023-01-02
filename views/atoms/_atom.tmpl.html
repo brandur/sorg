@@ -32,10 +32,13 @@
                 {{if eq (Mod $i 2) 0}} <div class="flex flex-col md:flex-row"> {{end}}
 
                     <div class="mb-2 mr-2">
-                        <img class="rounded-lg w-full" loading="lazy"
-                            src="{{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}"
-                            srcset="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 2x,
+                        <a
+                            href="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}">
+                            <img class="rounded-lg w-full" loading="lazy"
+                                src="{{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}"
+                                srcset="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 2x,
                                 {{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 1x">
+                        </a>
                     </div>
 
                     {{if eq (Mod $i 2) 1}}
