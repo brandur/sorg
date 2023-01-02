@@ -1631,6 +1631,18 @@ video {
     width: 9rem;
   }
 
+  .md\:flex-shrink-0 {
+    flex-shrink: 0;
+  }
+
+  .md\:flex-grow-0 {
+    flex-grow: 0;
+  }
+
+  .md\:basis-\[90px\] {
+    flex-basis: 90px;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
