@@ -1581,20 +1581,6 @@ video {
   width: 75%;
 }
 
-@media (min-width: 640px) {
-  .sm\:mr-4 {
-    margin-right: 1rem;
-  }
-
-  .sm\:ml-4 {
-    margin-left: 1rem;
-  }
-
-  .sm\:flex {
-    display: flex;
-  }
-}
-
 @media (min-width: 768px) {
   .md\:-mx-\[200px\] {
     margin-left: -200px;
@@ -1603,6 +1589,10 @@ video {
 
   .md\:mr-4 {
     margin-right: 1rem;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
   }
 
   .md\:mb-0\.5 {
