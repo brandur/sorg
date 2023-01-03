@@ -1262,16 +1262,16 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.mb-16 {
-  margin-bottom: 4rem;
-}
-
 .mb-24 {
   margin-bottom: 6rem;
 }
 
 .mt-16 {
   margin-top: 4rem;
+}
+
+.mb-16 {
+  margin-bottom: 4rem;
 }
 
 .mb-0\.5 {

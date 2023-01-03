@@ -1834,7 +1834,7 @@ func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, a
 
 func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex int, atomsChanged bool,
 ) (bool, error) {
-	source := scommon.ViewsDir + "/atoms/atom.tmpl.html"
+	source := scommon.ViewsDir + "/atoms/show.tmpl.html"
 
 	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !atomsChanged && !viewsChanged {
@@ -2644,7 +2644,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 
 func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *SequenceEntry, sequencesChanged bool,
 ) (bool, error) {
-	source := scommon.ViewsDir + "/sequences/entry.tmpl.html"
+	source := scommon.ViewsDir + "/sequences/show.tmpl.html"
 
 	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !sequencesChanged && !viewsChanged {
