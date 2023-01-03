@@ -335,8 +335,8 @@ func build(c *modulir.Context) []error {
 				atom.Slug = atomSlug(atom.PublishedAt)
 
 				if len([]byte(atom.DescriptionHTML)) > maxBytesLength {
-					return true, xerrors.Errorf("atom's length is greater than %d bytes: %q",
-						maxBytesLength, atom.Description[0:100])
+					return true, xerrors.Errorf("atom's length is greater than %d bytes (was %d): %q",
+						maxBytesLength, len([]byte(atom.DescriptionHTML)), atom.Description[0:100])
 				}
 			}
 
