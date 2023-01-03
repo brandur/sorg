@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-03T10:58:02-07:00
+  description = """\
+[Bloomberg reports](https://archive.is/HanS3) how Shopify is canceling all recurring meetings with more than two people to kick off 2023.
+
+Tobi’s taking a lot of flak over it from middle managers on HN (my favorite from the high drama category: “Tobi has done this a couple times [...] it comes from a place of narcissism”). I think it’s a great idea. In the early 2010s when I was at Heroku I’d started to think that at least as far as tech was concerned, meetings were a solved problem. It was an engineer-driven culture, and most engineers hated them, so we’d schedule as few as possible, with only a few important ones every week. But then I got to Stripe and realized that I’d been living in a bubble -- an uncomfortable truth of the universe is that most people _love_ meetings, even if they think they don't, and doubly so for your well-pedigreed Stanford types most likely to work at top Silicon Valley firms. Far from being an element of change, tech was only the latest continuation in a long lineage of big American business. Every satirical pane from 90s Dilbert cartoons held perfectly true.
+
+Based on follow ups from Shopify employees, Bloomberg gets a couple points wrong:
+
+* Meeting cancellations aren’t permanent. The move is a forcing function to wipe the slate clean, but important meetings can still be put back on the docket.
+
+* It’s not the first time Shopify’s done it. One employee says that these events were originally aimed to occur every `rand(600) + 300` days.
+
+Target recurring meetings specifically is the right move. These get slapped onto calendars, often for large groups of people, and their tendency is to stay after their inertia's built. Before long no one can even remember a time without them, and it’d be unimaginable heresy to challenge their existence. Ending recurring meetings by default shifts the burden of proof to the right place -- it’s now on middle management to re-justify their existence rather than falling to some maverick engineer who’s forced to burn social capital in a possibly vain attempt to argue for their discontinuation.
+"""
+
+[[atoms]]
   published_at = 2023-01-01T23:59:51-07:00
   description = """\
 Occasionally, especially when thinking about past around the holiday season, I'll use the Way Back Machine to take a look at sites which I used to consider the absolute pinnacle of great web design back in the day. [Today's specimen](https://web.archive.org/web/20090217010618/http://www.alistapart.com/) is _A List Apart_, a site that writes about web design. Screenshot of a 2009 capture below.
