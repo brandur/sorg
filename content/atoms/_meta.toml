@@ -95,8 +95,8 @@ A major takeaway: you can make a `<video>` behave like a classic animated GIF by
 
 ``` html
 <video autoplay loop muted playsinline>
-    <source src="/videos/atoms/girm632/cougar-1.mp4" type="video/mp4">
-    <source src="/videos/atoms/girm632/cougar-1.webm" type="video/webm">
+    <source src="/videos/girm632/cougar-1.mp4" type="video/mp4">
+    <source src="/videos/girm632/cougar-1.webm" type="video/webm">
 </video>
 ```
 
@@ -168,12 +168,13 @@ A published timestamp is changed to bytes then encoded to base32 similar to [RFC
 ```  go
 var lexicographicBase32 = "234567abcdefghijklmnopqrstuvwxyz"
 
-var lexicographicBase32Encoding = base32.NewEncoding(lexicographicBase32).
-		WithPadding(base32.NoPadding)
+var lexicographicBase32Encoding = base32.
+    NewEncoding(lexicographicBase32).
+    WithPadding(base32.NoPadding)
 
 func atomSlug(publishedAt time.Time) string {
-	i := big.NewInt(publishedAt.Unix())
-	return lexicographicBase32Encoding.EncodeToString(i.Bytes())
+    i := big.NewInt(publishedAt.Unix())
+    return lexicographicBase32Encoding.EncodeToString(i.Bytes())
 }
 ```
 """
@@ -216,8 +217,10 @@ CREATE FUNCTION deleted_record_insert() RETURNS trigger
     LANGUAGE plpgsql
 AS $$
     BEGIN
-        EXECUTE 'INSERT INTO deleted_record (data, object_id, table_name)
-          VALUES ($1, $2, $3)'
+        EXECUTE 'INSERT INTO deleted_record
+          (data, object_id, table_name)
+        VALUES
+          ($1, $2, $3)'
         USING to_jsonb(OLD.*), OLD.id, TG_TABLE_NAME;
 
         RETURN OLD;
