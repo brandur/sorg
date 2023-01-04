@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-03T22:19:59-07:00
+  description = """\
+English language Stack Exchange [bans ChatGPT-generated answers](https://english.meta.stackexchange.com/questions/15500/announcement-ai-generated-answers-are-officially-banned-here), taking a step beyond what the network as a whole has committed to.
+
+For years the concerns from public intellectuals (few of whom are AI or computer specialists) over <acronym title="General Artificial Intelligence">AGI</acronym> have felt overblown to me, but ChatGPT's got me officially worried. Not that AGI's going to take over the world and enslave us all, but rather that we're about to smash headlong into a creative wall in communication and writing as ChatGPT becomes the perfect remixer, able to endlessly recycle new permutations of the existing bulk of human output in a way that's convincing enough for us to accept. Never able to produce anything interesting or new, but with few people who notice since we spend our days consuming human-regurgitated remixes anyway.
+
+I'm expecting more announcements like Stack Exchange's over the coming months. Discerning humans can _probably_ distinguish ChatGPT output for their chosen field, for now, but it's certain to make problems in everyday life. For example, search engine spammers taking their game to a new level with AI-produced filler far more convincing than the Markhov Chain or plagiarism techniques they use today. Firms using it for frontline support to lead customers in endless rhetorical circles even more frustrating than the precanned answers and telephone mazes of today. Phishing seniors via email with previously unimaginable sophistication.
+
+You can't put this genie back in the bottle. If we don't make it, China will. Regulation's a tempting idea, but lawmakers, barely able to sound even partially articulate in hearings over comparatively simple issues like social media, are wholly unequipped to tackle such a complex subject. The only practical answer is supremely unsatisfying: wait, and see.
+"""
+
+[[atoms]]
   published_at = 2023-01-03T10:58:02-07:00
   description = """\
 [Bloomberg reports](https://archive.is/HanS3) how Shopify is canceling recurring meetings with more than two people to kick off 2023.
