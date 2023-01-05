@@ -1507,10 +1507,6 @@ video {
   max-width: 1200px;
 }
 
-.max-w-\[600px\] {
-  max-width: 600px;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1596,11 +1592,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
 }
 
 .font-medium {
