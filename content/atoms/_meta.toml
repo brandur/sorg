@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-05T10:29:17-07:00
+  description = """\
+[Marc Andreessen](https://twitter.com/pmarca/status/1605692490404593664):
+
+> The most common event in our times: An expert with power/authority/influence is wrong in full view, yet suffers no consequences.
+"""
+
+[[atoms]]
   published_at = 2023-01-04T21:52:22-07:00
   description = """\
 Contrary to popular belief, it doesn't rain that much in San Francisco. A few dozen times a year it does. Very occasionally, it rains an unusual amount. Today it rained 0.83", which is kind of a lot, I guess.
