@@ -1571,7 +1571,7 @@ video {
 }
 
 .font-serif {
-  font-family: Cardo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .text-base {
@@ -1638,10 +1638,6 @@ video {
   letter-spacing: 0em;
 }
 
-.tracking-tight {
-  letter-spacing: -0.025em;
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1682,7 +1678,7 @@ video {
 }
 
 .prose-p\:font-serif :is(:where(p):not(:where([class~="not-prose"] *))) {
-  font-family: Cardo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .prose-p\:font-normal :is(:where(p):not(:where([class~="not-prose"] *))) {
@@ -1709,11 +1705,6 @@ video {
 
 .prose-a\:font-sans :is(:where(a):not(:where([class~="not-prose"] *))) {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-.prose-a\:text-sm :is(:where(a):not(:where([class~="not-prose"] *))) {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .prose-a\:no-underline :is(:where(a):not(:where([class~="not-prose"] *))) {
@@ -1759,7 +1750,7 @@ video {
 }
 
 .prose-ul\:font-serif :is(:where(ul):not(:where([class~="not-prose"] *))) {
-  font-family: Cardo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .prose-img\:w-full :is(:where(img):not(:where([class~="not-prose"] *))) {
