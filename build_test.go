@@ -18,6 +18,17 @@ func init() {
 	}
 }
 
+func TestExtCanonical(t *testing.T) {
+	require.Equal(t, ".jpg", extCanonical("https://example.com/image.jpg"))
+	require.Equal(t, ".jpg", extCanonical("https://example.com/image.JPG"))
+	require.Equal(t, ".jpg", extCanonical("https://example.com/image.jpg?query"))
+}
+
+func TestExtImageTarget(t *testing.T) {
+	require.Equal(t, ".jpg", extImageTarget(".jpg"))
+	require.Equal(t, ".webp", extImageTarget(".heic"))
+}
+
 func TestLexicographicBase32(t *testing.T) {
 	// Should only incorporate lower case characters.
 	require.True(t, lexicographicBase32 == strings.ToLower(lexicographicBase32))

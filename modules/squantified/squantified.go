@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html"
 	"html/template"
+	"net/url"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -325,6 +326,27 @@ type TweetEntitiesMedia struct {
 	ID   int64  `toml:"id"`
 	Type string `toml:"type"`
 	URL  string `toml:"url"`
+
+	// Internal
+	ext string `toml:"-"`
+}
+
+func extCanonical(originalURL string) string {
+	u, err := url.Parse(originalURL)
+	if err != nil {
+		panic(err)
+	}
+
+	return strings.ToLower(filepath.Ext(u.Path))
+}
+
+func (p *TweetEntitiesMedia) OriginalExt() string {
+	if p.ext != "" {
+		return p.ext
+	}
+
+	p.ext = extCanonical(p.URL)
+	return p.ext
 }
 
 // TweetEntitiesURL is a URL referenced in a tweet.

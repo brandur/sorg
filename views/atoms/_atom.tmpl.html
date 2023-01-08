@@ -33,11 +33,11 @@
 
                     <div class="mb-2 mr-2">
                         <a
-                            href="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}">
+                            href="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}">
                             <img class="rounded-lg w-full" loading="lazy"
-                                src="{{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}"
-                                srcset="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 2x,
-                                {{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 1x">
+                                src="{{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}"
+                                srcset="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 2x,
+                                {{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 1x">
                         </a>
                     </div>
 

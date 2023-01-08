@@ -1,11 +1,10 @@
 {{.Atom.DescriptionHTML}}
 
 {{- range $i, $photo := .Atom.Photos -}}
-<a href="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}">
-    <img loading="lazy"
-        src="{{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}}"
-        srcset="{{printf "/photographs/atoms/%s/%s@2x.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 2x,
-                                {{printf "/photographs/atoms/%s/%s.%s" $.Atom.Slug $photo.Slug (URLBaseExt $photo.OriginalImageURL)}} 1x">
+<a href="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}">
+    <img loading="lazy" src="{{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}"
+        srcset="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 2x,
+                                {{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 1x">
 </a>
 {{- end -}}
 
