@@ -15,7 +15,7 @@
   description = """\
 This is simply excellent: [Production Twitter on One Machine? 100Gbps NICs and NVMe are fast](https://thume.ca/2023/01/02/one-machine-twitter/).
 
-The article isn't suggesting that Twitter actually do this, but explores how possible it'd be to run Twitter on one really big server. It shows it works too, and contains dozens of [Fermi estimates](https://en.wikipedia.org/wiki/Fermi_problem) based on best available public data:
+The article isn't suggesting that Twitter actually do this, but explores how possible it'd be to run Twitter on one really big server. It shows its work, and contains dozens of [Fermi estimates](https://en.wikipedia.org/wiki/Fermi_problem) based on best available public data:
 
 > Now we can use this to compute some sizes for both historical storage and a hot set using fixed-size data structures in a cache:
 >
