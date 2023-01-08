@@ -144,6 +144,7 @@ Some things that come to mind:
 """
   [[atoms.photos]]
     original_image_url = "https://www.dropbox.com/s/8nht7pmv4el677g/a-list-apart.png?dl=1"
+    no_crop = true
     slug = "a-list-apart"
 
 [[atoms]]

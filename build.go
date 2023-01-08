@@ -1178,6 +1178,10 @@ type Photo struct {
 	// old ones.
 	KeepInHomeRotation bool `toml:"keep_in_home_rotation"`
 
+	// NoCrop disables cropping on this photo (normally photos are cropped to
+	// 3:2 or 2:3).
+	NoCrop bool `toml:"no_crop"`
+
 	// OriginalImageURL is the location where the original-sized version of the
 	// photo can be downloaded from.
 	OriginalImageURL string `toml:"original_image_url" validate:"required"`
@@ -1409,14 +1413,26 @@ var defaultPhotoSizes = []mimage.PhotoSize{
 	{Suffix: "_large@2x", Width: 3000, CropSettings: cropDefault},
 }
 
+var defaultPhotoSizesNoCrop = []mimage.PhotoSize{
+	{Suffix: "", Width: 333, CropSettings: nil},
+	{Suffix: "@2x", Width: 667, CropSettings: nil},
+	{Suffix: "_large", Width: 1500, CropSettings: nil},
+	{Suffix: "_large@2x", Width: 3000, CropSettings: nil},
+}
+
 func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bool, error) {
 	u, err := url.Parse(photo.OriginalImageURL)
 	if err != nil {
 		return false, xerrors.Errorf("bad URL for photo '%s': %w", photo.Slug, err)
 	}
 
+	photoSizes := defaultPhotoSizes
+	if photo.NoCrop {
+		photoSizes = defaultPhotoSizesNoCrop
+	}
+
 	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, photo.TargetExt(),
-		mimage.PhotoGravity(photo.CropGravity), defaultPhotoSizes)
+		mimage.PhotoGravity(photo.CropGravity), photoSizes)
 }
 
 func fetchAndResizeDownloadedImage(c *modulir.Context,
