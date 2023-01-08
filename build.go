@@ -731,14 +731,13 @@ func build(c *modulir.Context) []error {
 			})
 
 			// Photo fetch + resize
-			for _, p := range atom.Photos {
-				photo := *p           // Deference for a shallow duplicate
-				photo.CropWidth = 700 // Give all atom photos a default crop width for expediency
+			for i := range atom.Photos {
+				photo := atom.Photos[i]
 
 				name = fmt.Sprintf("atom %q photo: %s", atom.Slug, photo.Slug)
 				c.AddJob(name, func() (bool, error) {
-					return fetchAndResizePhotoOther(c,
-						c.SourceDir+"/content/photographs/atoms/"+atom.Slug, &photo)
+					return fetchAndResizePhoto(c,
+						c.SourceDir+"/content/photographs/atoms/"+atom.Slug, photo)
 				})
 			}
 
@@ -1157,9 +1156,8 @@ type Page struct {
 type Photo struct {
 	// CropGravity is the gravity to use with ImageMagick when doing a square
 	// crop. Should be one of: northwest, north, northeast, west, center, east,
-	// southwest, south, southeast. Defaults to north gravity (because most
-	// shots are portraits with my head near the top).
-	CropGravity string `toml:"crop_gravity" default:"north"`
+	// southwest, south, southeast.
+	CropGravity string `toml:"crop_gravity" default:"center"`
 
 	// CropWidth is the width to crop the photo to.
 	//
@@ -1200,6 +1198,22 @@ type Photo struct {
 
 	// Title is the title of the photograph.
 	Title string `toml:"title"`
+
+	// Internal
+	originalExt string `toml:"-"`
+}
+
+func (p *Photo) OriginalExt() string {
+	if p.originalExt != "" {
+		return p.originalExt
+	}
+
+	p.originalExt = extCanonical(p.OriginalImageURL)
+	return p.originalExt
+}
+
+func (p *Photo) TargetExt() string {
+	return extImageTarget(p.OriginalExt())
 }
 
 // PhotoWrapper is a data structure intended to represent the data structure at
@@ -1365,6 +1379,27 @@ func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, err
 	return true, sassets.CompileStylesheets(c, sourceDir, target)
 }
 
+func extCanonical(originalURL string) string {
+	u, err := url.Parse(originalURL)
+	if err != nil {
+		panic(err)
+	}
+
+	return strings.ToLower(filepath.Ext(u.Path))
+}
+
+// Returns a target extension and format given an input one. Currently only used
+// to make HEICs (which aren't web friendly) into more widely supported WebPs,
+// but I should experiment with more broad use of WebPs. Other formats like JPGs
+// and PNGs get left with their input extension/format.
+func extImageTarget(canonicalExt string) string {
+	if canonicalExt == ".heic" {
+		return ".webp"
+	}
+
+	return canonicalExt
+}
+
 var cropDefault = &mimage.PhotoCropSettings{Portrait: "2:3", Landscape: "3:2"}
 
 var defaultPhotoSizes = []mimage.PhotoSize{
@@ -1380,8 +1415,8 @@ func fetchAndResizePhoto(c *modulir.Context, targetDir string, photo *Photo) (bo
 		return false, xerrors.Errorf("bad URL for photo '%s': %w", photo.Slug, err)
 	}
 
-	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug,
-		mimage.PhotoGravityCenter, defaultPhotoSizes)
+	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, photo.TargetExt(),
+		mimage.PhotoGravity(photo.CropGravity), defaultPhotoSizes)
 }
 
 func fetchAndResizeDownloadedImage(c *modulir.Context,
@@ -1390,7 +1425,7 @@ func fetchAndResizeDownloadedImage(c *modulir.Context,
 	base := filepath.Base(imageInfo.Slug)
 	dir := targetDir + filepath.Dir(imageInfo.Slug)
 
-	return mimage.FetchAndResizeImage(c, imageInfo.URL, dir, base, mimage.PhotoGravityCenter,
+	return mimage.FetchAndResizeImage(c, imageInfo.URL, dir, base, extImageTarget(imageInfo.OriginalExt()), mimage.PhotoGravityCenter,
 		[]mimage.PhotoSize{
 			{Suffix: "", Width: imageInfo.Width, CropSettings: cropDefault},
 			{Suffix: "@2x", Width: imageInfo.Width * 2, CropSettings: cropDefault},
@@ -1407,7 +1442,7 @@ func fetchAndResizePhotoOther(c *modulir.Context, targetDir string, photo *Photo
 		return false, xerrors.Errorf("bad URL for photo '%s'", photo.Slug)
 	}
 
-	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug,
+	return mimage.FetchAndResizeImage(c, u, targetDir, photo.Slug, photo.TargetExt(),
 		mimage.PhotoGravity(photo.CropGravity),
 		[]mimage.PhotoSize{
 			{Suffix: "", Width: photo.CropWidth, CropSettings: nil},
@@ -1430,7 +1465,7 @@ func fetchAndResizePhotoTwitter(c *modulir.Context, targetDir string,
 
 	slug := fmt.Sprintf("%v-%v", tweet.ID, media.ID)
 
-	return mimage.FetchAndResizeImage(c, u, targetDir, slug,
+	return mimage.FetchAndResizeImage(c, u, targetDir, slug, extCanonical(extImageTarget(media.OriginalExt())),
 		mimage.PhotoGravityCenter, twitterPhotoSizes)
 }
 

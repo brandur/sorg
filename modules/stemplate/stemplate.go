@@ -85,22 +85,22 @@ func formatTimeWithMinute(t time.Time) string {
 
 // Produces a retina-compatible photograph that's lazy loaded. Largely used for
 // the photographs and sequences sets.
-func lazyRetinaImage(index int, path, slug string) template.HTML {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, false, "", false)
+func lazyRetinaImage(index int, path, slug, ext string) template.HTML {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, ext, false, "", false)
 }
 
 // Same as the above, but also allows the image to be clicked to get a
 // lightbox.
-func lazyRetinaImageLightbox(index int, path, slug string, portrait bool, linkOverride string) template.HTML {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, portrait, linkOverride, true)
+func lazyRetinaImageLightbox(index int, path, slug, ext string, portrait bool, linkOverride string) template.HTML {
+	return lazyRetinaImageLightboxMaybe(index, path, slug, ext, portrait, linkOverride, true)
 }
 
-func lazyRetinaImageLightboxMaybe(index int, path, slug string, portrait bool, linkOverride string,
+func lazyRetinaImageLightboxMaybe(index int, path, slug, ext string, portrait bool, linkOverride string,
 	lightbox bool,
 ) template.HTML {
 	slug = mtemplate.QueryEscape(slug)
-	fullPath := path + slug + ".jpg"
-	fullPathRetina := path + slug + "@2x.jpg"
+	fullPath := path + slug + ext
+	fullPathRetina := path + slug + "@2x" + ext
 
 	var standinPath string
 	if portrait {
@@ -259,6 +259,7 @@ func toStars(n int) string {
 }
 
 // Gets the extension of a file at a URL. Also downcases said extension.
+// Extension is returned _without_ a dot unlike `filepath.Ext`.
 func urlBaseExt(urlStr string) string {
 	u, err := url.Parse(urlStr)
 	if err != nil {

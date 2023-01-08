@@ -1,4 +1,22 @@
 [[entries]]
+  occurred_at = 2023-01-08T10:54:15-07:00
+  slug = "035"
+  title = "Ascending upon a frigid city"
+
+  description = """\
+It was one of those years. Step out of the airport and straight into -30C (-22F) weather. The air is biting. The roads are quiet (even in Canada few people venture out in this).
+
+This view is from my room at the Marriott Delta downtown. Front and center below me are the conspicuous _Brotherhood of Mankind_ sculptures, which although small from this vantage, stand more than 20 feet tall. Walking down amongst them gives you an idea of what walking amongst giants would feel like ([a few more photos](https://everydaytourist.ca/calgary-visitor-information/brotherhood-of-mankind-sculpture-successfully-evokes-a-sense-of-brotherhoodnbsp)). I grew up with the installation as an ever-present part of the background (every Calgarian will instantly recognize them as the iconic logo of the Calgary Board of Education) and took it for granted, but looking it from a more objective perspective today, it's one of the best pieces of modern public artwork I've seen in any city worldwide (and far more inspired than [what passes for art](https://www.atlasobscura.com/places/travelling-light-calgary) in Calgary these days).
+
+With bags jammed full of Xmas stuff I elected not to bring a camera, so this photo shot on iPhone 14. The iPhone's camera gets better every year and is orders of magnitude better than the first phone cameras, but especially when you blow up its photos, you see that it's still got a long way to go. Everything looks so soft. I should be reevaluating my gear choices. If your kit is expansive enough that you're finding yourself leaving it at home when you vacation, then you have the wrong kit. I learned this lesson ten years ago, but apparently have to learn it again.
+"""
+
+  [[entries.photographs]]
+    crop_gravity = "south"
+    original_image_url = "https://www.dropbox.com/s/sbco4yhozcjibc8/IMG_0286-fixed.jpg?dl=1"
+    slug = "035"
+
+[[entries]]
   occurred_at = 2022-11-28T01:12:09Z
   slug = "034"
   title = "Columbus Tower"
