@@ -24,7 +24,7 @@
 {{- range .Entries -}}
 
 <p class="font-bold my-8 text-center text-xs tracking-tighter uppercase">
-    {{.Slug}}
+    <a href="/sequences/{{.Slug}}">{{.Slug}}</a>
 </p>
 
 {{- template "views/sequences/_entry.tmpl.html" (Map (MapVal "Entry" .) (MapVal "IsIndex" true)) -}}
