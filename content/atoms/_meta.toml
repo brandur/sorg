@@ -11,6 +11,34 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-08T12:24:08-07:00
+  description = """\
+This is simply excellent: [Production Twitter on One Machine? 100Gbps NICs and NVMe are fast](https://thume.ca/2023/01/02/one-machine-twitter/).
+
+The article isn't suggesting that Twitter actually do this, but explores how possible it'd be to run Twitter on one really big server. It shows it works too, and contains dozens of [Fermi estimates](https://en.wikipedia.org/wiki/Fermi_problem) based on best available public data:
+
+> Now we can use this to compute some sizes for both historical storage and a hot set using fixed-size data structures in a cache:
+>
+> ```
+> tweet avg size = tweet content avg size + metadata size => 176 byte
+> tweet storage rate = avg tweet rate * tweet avg size in GB/day => 88 GB/day
+> tweet storage rate * 1 year in TB => 32.1413 TB
+> tweet content fixed size = 284 byte
+> tweet cache rate
+>     = (tweet fixed size + metadata size) * max sustained rate in GB/day 
+>     => 251.7647 GB/day
+> ```
+
+Doesn't every programmer secretly love the idea of a mainframe? One giant machine that runs everything and has its own redundancy internally. Ensuring scalability through processes designed to be run in parallel is obviously more practical and more robust nowadays, but if you were to try and run Twitter on one machine, you might be able to get results that aren't _too_ much worse, and with 1000x less infrastructure.
+
+It wasn't too long ago we were really trying to do this. At iStock circa 2011 where the ops team was running the asylum, right around the end of my tenure we purchased a huge mainframe-esque box that advertised being able to stay online even if one of its CPUs failed. I was never sworn in on how much it cost, but undoubtedly the price tag would've made my eyes bleed. That was right around the period where misguided attempts to scale vertically and racking your own specialized hardware was already starting to look pretty silly, so I'm curious in retrospect how far it made it into production.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/7zo0h9xt63nahre/mainframe.jpg?dl=1"
+    no_crop = true
+    slug = "mainframe"
+
+[[atoms]]
   published_at = 2023-01-08T10:54:15-07:00
   description = """\
 Published [sequence 035](/sequences/035).
