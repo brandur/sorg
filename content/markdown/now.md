@@ -6,7 +6,7 @@
 
 I'm back home in Calgary for the holidays, staring into the precipice of 2023 which between money markets, strife, and war is shaping up to be a formidable year.
 
-At work, we're cruising along building the best database-as-a-service in the world. I shipped more features over the last year than the previous five combined, and which were built into a robust stack that to this day has less tech debt than many two-week-old startups (I'm kind of proud of it, you might be able to tell). We have another aggressive roadmap for 2023, and I'll be doing my best to make sure that we don't slip.
+At work, we're aiming to build the best database-as-a-service in the world. I shipped more features over the last year than the previous five combined, and which were built into a robust stack that to this day has less tech debt than many two-week-old startups (I'm kind of proud of it, you might be able to tell). We have another aggressive roadmap for 2023, and I'll be doing my best to make sure that we don't slip.
 
 I added a couple new sections to the site recently:
 
@@ -16,6 +16,12 @@ I added a couple new sections to the site recently:
 A few weeks before that I became somewhat enamored by the idea of [Spring '83](https://www.robinsloan.com/lab/specifying-spring-83/) and ended up [writing a server implementation](https://github.com/brandur/neospring) which is now in prod and [hosts my board](https://neospring.brandur.org/). I don't think Twitter is being displaced anytime soon, but these indy web projects are great.
 
 In 2023: write, move, visit France.
+
+<div class="not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">December 28, 2022</span>.
+    </p>
+</div>
 
 <!--
 

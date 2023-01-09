@@ -1400,6 +1400,11 @@ video {
   position: static;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .my-16 {
   margin-top: 4rem;
   margin-bottom: 4rem;
@@ -1413,11 +1418,6 @@ video {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-.my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
 }
 
 .mx-0\.5 {
@@ -1435,6 +1435,14 @@ video {
   margin-bottom: 6rem;
 }
 
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
+.mt-16 {
+  margin-top: 4rem;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -1445,14 +1453,6 @@ video {
 
 .mb-2 {
   margin-bottom: 0.5rem;
-}
-
-.mb-24 {
-  margin-bottom: 6rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
 }
 
 .mb-16 {
@@ -1495,16 +1495,20 @@ video {
   width: 100%;
 }
 
+.max-w-\[625px\] {
+  max-width: 625px;
+}
+
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+
 .max-w-\[900px\] {
   max-width: 900px;
 }
 
 .max-w-none {
   max-width: none;
-}
-
-.max-w-\[625px\] {
-  max-width: 625px;
 }
 
 .max-w-7xl {
@@ -1550,6 +1554,11 @@ video {
   padding-right: 0.5rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -1565,21 +1574,21 @@ video {
   padding-bottom: 0.25rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .text-center {
   text-align: center;
+}
+
+.font-serif {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .font-sans {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.font-serif {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-base {
@@ -1597,13 +1606,16 @@ video {
   line-height: 1;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+.font-bold {
+  font-weight: 700;
 }
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .font-semibold {
@@ -1612,14 +1624,6 @@ video {
 
 .font-extrabold {
   font-weight: 800;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.font-normal {
-  font-weight: 400;
 }
 
 .uppercase {
@@ -1636,6 +1640,10 @@ video {
 
 .leading-3 {
   line-height: .75rem;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
 }
 
 .tracking-tighter {
