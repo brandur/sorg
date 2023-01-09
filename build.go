@@ -663,7 +663,7 @@ func build(c *modulir.Context) []error {
 		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(photos, func(a, b *Photo) bool { return b.OccurredAt.Before(a.OccurredAt) })
-		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return b.OccurredAt.Before(a.OccurredAt) })
+		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return b.PublishedAt.Before(a.PublishedAt) })
 	}
 
 	//
@@ -1280,13 +1280,13 @@ type SequenceEntry struct {
 	// DescriptionHTML is the description rendered to HTML.
 	DescriptionHTML template.HTML `toml:"-" validate:"-"`
 
-	// OccurredAt is UTC time when the entry was published.
-	OccurredAt time.Time `toml:"occurred_at" validate:"required"`
-
 	// Photos is a collection of photos within this particular entry. Many
 	// sequence entries will only have a single photo, but there are alternate
 	// layouts for when one contains a number of different ones.
 	Photos []*Photo `toml:"photographs" validate:"required,dive"`
+
+	// PublishedAt is UTC time when the entry was published.
+	PublishedAt time.Time `toml:"published_at" validate:"required"`
 
 	// Slug is a unique identifier for the entry.
 	Slug string `toml:"slug" validate:"required"`
@@ -2650,7 +2650,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 	}
 
 	if len(entries) > 0 {
-		feed.Updated = entries[0].OccurredAt
+		feed.Updated = entries[0].PublishedAt
 	}
 
 	for i, entry := range entries {
@@ -2671,10 +2671,10 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 		entry := &matom.Entry{
 			Title:     entry.Slug + " — " + entry.Title,
 			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
-			Published: entry.OccurredAt,
-			Updated:   entry.OccurredAt,
+			Published: entry.PublishedAt,
+			Updated:   entry.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/sequences/" + entry.Slug},
-			ID: "tag:" + scommon.AtomTag + "," + entry.OccurredAt.Format("2006-01-02") +
+			ID: "tag:" + scommon.AtomTag + "," + entry.PublishedAt.Format("2006-01-02") +
 				":sequences:" + entry.Slug,
 
 			AuthorName: scommon.AtomAuthorName,
