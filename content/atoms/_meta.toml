@@ -11,6 +11,28 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-09T13:38:27-07:00
+  description = """\
+Anyone remotely adjacent to the tech industry will know about the Sam Bankman-Fried saga by now: the collapse of FTX in the biggest Ponzi scheme of all time, subsequent world podcasting tour by Sam to broadcast his innocence, arrest in the Bahamas, extradition to the US, release on $250M bail, and return to his parents' home in Stanford, back on Twitter and League of Legends until October.
+
+Consuming pre-exposure material on Sam qualifies as its own genre of entertaining dark comedy. The broad themes are always the same -- hosts laud his genius, ask no real questions, and make dozens of grand assertions with absolute confidence.
+
+Highlights of [Acquired's FTX episode](https://www.acquired.fm/episodes/ftx-with-sam-bankman-fried-mario-gabriele):
+
+* In the hosts' own words, FTX's 10x growth in valuation for 2021 was quote "unbelievable". Literally correct.
+
+* Sam is not shy about congratulating his own excellence, but the hosts do most of the work for him, unprompted. He's compared to Jeff Bezos 3-4 times, and not in succession. The comparison is resurrected again and again to drive it home.
+
+* A hearty laugh is shared as Sam jokes "all you have to do to beat Mt. Gox is not lose everyone's money". So on the nose.
+
+* He was thinking about leaving his suit at his brother's in DC because except for wearing for congress, he didn't know when he'd need it again. Good thing he didn't, having since gotten good mileage out of it in [the Bahamas](https://twitter.com/tier10k/status/1602807152456138752) and NYC.
+
+The greatest moment is when Sam is bestowed the appellation **"the zeitgeist artist of our time"**, meaning that he understands today's confluence of culture and technology better than anyone else on Earth.
+
+See also [Sam on Unusual Whales](https://www.youtube.com/watch?v=mHikzIr6Gq8), post-exposure. He's typically evasive, but the last 13 minutes are frustrated editorial from watchdogs, and excellent.
+"""
+
+[[atoms]]
   published_at = 2023-01-08T12:24:08-07:00
   description = """\
 This is simply excellent: [Production Twitter on One Machine? 100Gbps NICs and NVMe are fast](https://thume.ca/2023/01/02/one-machine-twitter/).
