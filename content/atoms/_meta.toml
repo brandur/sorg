@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-09T16:35:35-07:00
+  description = """\
+This one's a few years old, but a nice essay on [Where to live](https://simonsarris.substack.com/p/where-to-live), a question I'm struggling a lot with right now (and for the last five years). A stranger will never be able to answer something so important for you, but while searching for insight, cast your net wide.
+"""
+
+[[atoms]]
   published_at = 2023-01-09T13:38:27-07:00
   description = """\
 Anyone remotely adjacent to the tech industry will know about the Sam Bankman-Fried saga by now: the collapse of FTX as the biggest Ponzi scheme of all time, subsequent world podcasting tour by Sam to broadcast his innocence, arrest in the Bahamas, extradition to the US, release on $250M bail, and return to his parents' home in Stanford, back on Twitter and League of Legends until October.
