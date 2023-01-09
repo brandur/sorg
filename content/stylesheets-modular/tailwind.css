@@ -1499,6 +1499,10 @@ video {
   max-width: 900px;
 }
 
+.max-w-none {
+  max-width: none;
+}
+
 .max-w-\[625px\] {
   max-width: 625px;
 }
@@ -1822,6 +1826,10 @@ video {
 
   .md\:flex-grow-0 {
     flex-grow: 0;
+  }
+
+  .md\:flex-grow {
+    flex-grow: 1;
   }
 
   .md\:basis-\[90px\] {
