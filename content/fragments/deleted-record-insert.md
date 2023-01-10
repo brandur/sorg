@@ -19,7 +19,7 @@ CREATE TABLE deleted_record (
 );
 ```
 
-Previously, I'd suggested manually writing `deleted_record` into each deletion query, but we've seen found a much cleaner way to do it. Here's a function which will generically insert a deleted record from any source table:
+Previously, I'd suggested manually writing `deleted_record` into each deletion query, but we've since found a much cleaner way to do it. Here's a function which will generically insert a deleted record from any source table:
 
 ``` sql
 CREATE FUNCTION deleted_record_insert() RETURNS trigger
