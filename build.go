@@ -329,10 +329,32 @@ func build(c *modulir.Context) []error {
 				return true, err
 			}
 
-			// Do a little post-processing on each atom.
-			for _, atom := range atomsWrapper.Atoms {
+			var replaceEverything bool
+			if len(atoms) != len(atomsWrapper.Atoms) {
+				replaceEverything = true
+			}
+
+			slices.SortFunc(atomsWrapper.Atoms, func(a, b *Atom) bool { return b.PublishedAt.Before(a.PublishedAt) })
+
+			// Do a little post-processing on each atom, but try to skip any
+			// that haven't changed.
+			for i, atom := range atomsWrapper.Atoms {
+				if !replaceEverything {
+					lastAtom := atoms[i]
+					if lastAtom.Equal(atom) {
+						// Although the raw atoms are equal, we still use the
+						// current version because it'll have values for any
+						// rendered properties like DescriptionHTML.
+						lastAtom.changed = false
+						atomsWrapper.Atoms[i] = lastAtom
+						continue
+					}
+				}
+
 				atom.DescriptionHTML = template.HTML(string(mmarkdown.Render(c, []byte(atom.Description))))
 				atom.Slug = atomSlug(atom.PublishedAt)
+
+				atom.changed = true
 
 				if len([]byte(atom.DescriptionHTML)) > maxBytesLength {
 					return true, xerrors.Errorf("atom's length is greater than %d bytes (was %d): %q",
@@ -593,10 +615,31 @@ func build(c *modulir.Context) []error {
 				return true, err
 			}
 
+			var replaceEverything bool
+			if len(sequences) != len(sequenceWrapper.Entries) {
+				replaceEverything = true
+			}
+
+			slices.SortFunc(sequenceWrapper.Entries, func(a, b *SequenceEntry) bool { return b.PublishedAt.Before(a.PublishedAt) })
+
 			// Do a little post-processing on all the entries found in the
-			// sequence.
-			for _, entry := range sequenceWrapper.Entries {
+			// sequence, but try to skip any that haven't changed.
+			for i, entry := range sequenceWrapper.Entries {
+				if !replaceEverything {
+					lastEntry := sequences[i]
+					if lastEntry.Equal(entry) {
+						// Although the raw atoms are equal, we still use the
+						// current version because it'll have values for any
+						// rendered properties like DescriptionHTML.
+						lastEntry.changed = false
+						sequenceWrapper.Entries[i] = lastEntry
+						continue
+					}
+				}
+
 				entry.DescriptionHTML = template.HTML(string(mmarkdown.Render(c, []byte(entry.Description))))
+
+				entry.changed = true
 			}
 
 			sequences = sequenceWrapper.Entries
@@ -656,14 +699,15 @@ func build(c *modulir.Context) []error {
 	}
 
 	// Various sorts for anything that might need it.
+	//
+	// Some slices are sorted above when they're read in so that they can be
+	// compared against a current version.
 	{
 		slices.SortFunc(articles, func(a, b *Article) bool { return b.PublishedAt.Before(a.PublishedAt) })
-		slices.SortFunc(atoms, func(a, b *Atom) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(fragments, func(a, b *Fragment) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
 		slices.SortFunc(photos, func(a, b *Photo) bool { return b.OccurredAt.Before(a.OccurredAt) })
-		slices.SortFunc(sequences, func(a, b *SequenceEntry) bool { return b.PublishedAt.Before(a.PublishedAt) })
 	}
 
 	//
@@ -714,7 +758,7 @@ func build(c *modulir.Context) []error {
 
 	// Atoms feed
 	{
-		c.AddJob("sequence: feed", func() (bool, error) {
+		c.AddJob("atoms: feed", func() (bool, error) {
 			return renderAtomFeed(ctx, c, atoms, atomsChanged)
 		})
 	}
@@ -723,6 +767,10 @@ func build(c *modulir.Context) []error {
 	{
 		for i, a := range atoms {
 			atom := a
+
+			if !atom.changed {
+				continue
+			}
 
 			// Atom page
 			name := fmt.Sprintf("atom: %s", atom.Slug)
@@ -896,6 +944,10 @@ func build(c *modulir.Context) []error {
 		for _, e := range sequences {
 			entry := e
 
+			if !entry.changed {
+				continue
+			}
+
 			// Sequence page
 			name := fmt.Sprintf("sequences: %s", entry.Slug)
 			c.AddJob(name, func() (bool, error) {
@@ -1066,19 +1118,48 @@ type Atom struct {
 	// DescriptionHTML is the description rendered to HTML.
 	DescriptionHTML template.HTML `toml:"-" validate:"-"`
 
+	// Photos are any photos associated with the atom.
 	Photos []*Photo `toml:"photos" validate:"omitempty,dive"`
 
 	// PublishedAt is UTC time when the atom was published. It also serves to
 	// provide a stable permalink.
 	PublishedAt time.Time `toml:"published_at" validate:"required"`
 
+	// Slug is a stable URL slug for the atom which is derived from its
+	// timestamp.
 	Slug string `toml:"-" validate:"-"`
 
+	// Videos are any videos associated with the atom.
 	Videos []*AtomVideo `toml:"videos" validate:"omitempty,dive"`
+
+	// Tracks whether the atom has changed since the last build run so that
+	// atoms can be rendered incrementally.
+	changed bool `toml:"changed" validate:"-"`
+}
+
+func (a *Atom) Equal(other *Atom) bool {
+	return a.Description == other.Description &&
+		slices.EqualFunc(a.Photos, other.Photos, func(a, b *Photo) bool { return a.Equal(b) }) &&
+		a.PublishedAt.Equal(other.PublishedAt) &&
+		slices.EqualFunc(a.Videos, other.Videos, func(a, b *AtomVideo) bool { return a.Equal(b) })
 }
 
 type AtomVideo struct {
 	URL []string `toml:"url" validate:"required"`
+}
+
+func (v *AtomVideo) Equal(other *AtomVideo) bool {
+	if len(v.URL) != len(other.URL) {
+		return false
+	}
+
+	for i := range v.URL {
+		if v.URL[i] != other.URL[i] {
+			return false
+		}
+	}
+
+	return true
 }
 
 // Fragment represents a fragment (that is, a short "stream of consciousness"
@@ -1207,6 +1288,19 @@ type Photo struct {
 	originalExt string `toml:"-"`
 }
 
+func (p *Photo) Equal(other *Photo) bool {
+	return p.CropGravity == other.CropGravity &&
+		p.CropWidth == other.CropWidth &&
+		p.Description == other.Description &&
+		p.KeepInHomeRotation == other.KeepInHomeRotation &&
+		p.NoCrop == other.NoCrop &&
+		p.OriginalImageURL == other.OriginalImageURL &&
+		p.OccurredAt.Equal(other.OccurredAt) &&
+		p.Portrait == other.Portrait &&
+		p.Slug == other.Slug &&
+		p.Title == other.Title
+}
+
 func (p *Photo) OriginalExt() string {
 	if p.originalExt != "" {
 		return p.originalExt
@@ -1293,6 +1387,18 @@ type SequenceEntry struct {
 
 	// Title is the title of the entry.
 	Title string `toml:"title" validate:"required"`
+
+	// Tracks whether the entry has changed since the last build run so that
+	// entries can be rendered incrementally.
+	changed bool `toml:"changed" validate:"-"`
+}
+
+func (e *SequenceEntry) Equal(other *SequenceEntry) bool {
+	return e.Description == other.Description &&
+		slices.EqualFunc(e.Photos, other.Photos, func(a, b *Photo) bool { return a.Equal(b) }) &&
+		e.PublishedAt.Equal(other.PublishedAt) &&
+		e.Slug == other.Slug &&
+		e.Title == other.Title
 }
 
 // Tag is a symbol assigned to an article to categorize it.
