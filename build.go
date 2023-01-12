@@ -2016,7 +2016,7 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 			Description: fmt.Sprintf("Published %s.", atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST")),
 			ImageURL: fmt.Sprintf("%s/photographs/atoms/%s/%s_large@2x%s",
 				conf.AbsoluteURL, atom.Slug, photo.Slug, photo.TargetExt()),
-			Title: atom.Slug,
+			Title: fmt.Sprintf("Atom <%s>", atom.Slug),
 		}
 	}
 
