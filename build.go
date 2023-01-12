@@ -2721,7 +2721,10 @@ Disallow: /
 	} else {
 		// Disallow acccess to photos because the content isn't very
 		// interesting for robots and they're bandwidth heavy.
-		content = `User-agent: *
+		content = `User-agent: Twitterbot
+Disallow:
+		
+User-agent: *
 Disallow: /photographs/
 Disallow: /photos
 `
