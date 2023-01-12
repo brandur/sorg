@@ -1270,6 +1270,12 @@ type Photo struct {
 	// OccurredAt is UTC time when the photo was published.
 	OccurredAt time.Time `toml:"occurred_at"`
 
+	// OverrideExt is an extension like `.webp` that should be used for the
+	// resized versions of the photo. Mostly useful for when a screenshot or
+	// something is saved as a `.png` and it should really have been a `.jpg` or
+	// something because the source being displayed was already lossy.
+	OverrideExt string `toml:"override_ext" validate:"-"`
+
 	// Portrait is a hint to indicate that the photo is in portrait instead of
 	// landscape. This helps the build pick a better stand-in image for lazy
 	// loading so that there's less jumping around as photos that get loaded in
@@ -1296,6 +1302,7 @@ func (p *Photo) Equal(other *Photo) bool {
 		p.NoCrop == other.NoCrop &&
 		p.OriginalImageURL == other.OriginalImageURL &&
 		p.OccurredAt.Equal(other.OccurredAt) &&
+		p.OverrideExt == other.OverrideExt &&
 		p.Portrait == other.Portrait &&
 		p.Slug == other.Slug &&
 		p.Title == other.Title
@@ -1311,6 +1318,10 @@ func (p *Photo) OriginalExt() string {
 }
 
 func (p *Photo) TargetExt() string {
+	if p.OverrideExt != "" {
+		return p.OverrideExt
+	}
+
 	return extImageTarget(p.OriginalExt())
 }
 
