@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-11T18:25:17-08:00
+  description = """\
+A light movie recommendation: _Triangle of Sadness_ (2022).
+
+I didn't know much of anything about it going in beyond "a couple, both young models, go on a cruise with wealthy elites", which is the exactly the right amount to know about it. The movie takes some major turns throughout, and it's very enjoyable if you don't know they're coming at all (I didn't, but have since read some synopses that would've spoiled them). It's a bit artsy and a black comedy, so it won't be everyone's cup of tea, but it punches well above its IMDB 7.5 and distantly above its 63% RT (can anyone trust film critics anymore?).
+"""
+  [[atoms.photos]]
+    # original_image_url = "https://www.dropbox.com/s/uv5x32z1732pkid/triangle-of-sadness.png?dl=1"
+    original_image_url = "https://www.dropbox.com/s/9zpeew0cd9zg9bc/triangle-of-sadness.jpg?dl=1"
+    # override_ext = ".webp"
+    no_crop = true
+    slug = "triangle-of-sadness"
+
+[[atoms]]
   published_at = 2023-01-09T16:35:35-07:00
   description = """\
 This one's a few years old, but a nice essay on [Where to live](https://simonsarris.substack.com/p/where-to-live), a question I'm struggling a lot with right now (and for the last five years). A stranger will never be able to answer something so important for you, but while searching for insight, cast your net wide.
