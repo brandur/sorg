@@ -2020,7 +2020,7 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 		}
 	}
 
-	locals := getLocals(atom.Slug+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(fmt.Sprintf("Atom <%s>%s", atom.Slug, scommon.TitleSuffix), map[string]interface{}{
 		"Atom":        atom,
 		"AtomIndex":   atomIndex,
 		"IndexMax":    maxAtomsIndex,
