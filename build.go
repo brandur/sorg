@@ -2836,8 +2836,20 @@ func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *Sequenc
 
 	title := fmt.Sprintf("%s — %s", entry.Title, entry.Slug)
 
+	var card *twitterCard
+	if len(entry.Photos) > 0 {
+		photo := entry.Photos[0]
+		card = &twitterCard{
+			Description: "",
+			ImageURL: fmt.Sprintf("%s/photographs/sequences/%s_large@2x%s",
+				conf.AbsoluteURL, photo.Slug, photo.TargetExt()),
+			Title: title,
+		}
+	}
+
 	locals := getLocals(title, map[string]interface{}{
-		"Entry": entry,
+		"Entry":       entry,
+		"TwitterCard": card,
 	})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "sequences", entry.Slug), locals)
