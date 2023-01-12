@@ -1434,9 +1434,6 @@ type fragmentYear struct {
 // twitterCard represents a Twitter "card" (i.e. one of those rich media boxes
 // that sometimes appear under tweets official clients) for use in templates.
 type twitterCard struct {
-	// Description is the title to show in the card.
-	Title string
-
 	// Description is the description to show in the card.
 	Description string
 
@@ -1444,6 +1441,9 @@ type twitterCard struct {
 	// absolute because Twitter will need to be able to fetch it from our
 	// servers. Leave blank if there is no image.
 	ImageURL string
+
+	// Title is the title to show in the card.
+	Title string
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -2009,10 +2009,21 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 		return false, nil
 	}
 
+	var card *twitterCard
+	if len(atom.Photos) > 0 {
+		photo := atom.Photos[0]
+		card = &twitterCard{
+			ImageURL: fmt.Sprintf("%s/photographs/atoms/%s/%s_large@2x%s",
+				conf.AbsoluteURL, atom.Slug, photo.Slug, photo.TargetExt()),
+			Title: atom.Slug,
+		}
+	}
+
 	locals := getLocals(atom.Slug+scommon.TitleSuffix, map[string]interface{}{
-		"Atom":      atom,
-		"AtomIndex": atomIndex,
-		"IndexMax":  maxAtomsIndex,
+		"Atom":        atom,
+		"AtomIndex":   atomIndex,
+		"IndexMax":    maxAtomsIndex,
+		"TwitterCard": card,
 	})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms", atom.Slug), locals)

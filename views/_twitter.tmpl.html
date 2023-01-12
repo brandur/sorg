@@ -3,7 +3,9 @@
 <meta name="twitter:site" content="@brandur">
 <meta name="twitter:creator" content="@brandur">
 <meta name="twitter:title" content="{{.TwitterCard.Title}}">
+{{- if ne .TwitterCard.Description "" -}}
 <meta name="twitter:description" content="{{.TwitterCard.Description}}">
+{{- end -}}
 {{- if ne .TwitterCard.ImageURL "" -}}
 <meta name="twitter:image" content="{{.TwitterCard.ImageURL}}">
 {{- end -}}
