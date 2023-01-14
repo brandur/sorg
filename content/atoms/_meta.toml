@@ -19,9 +19,9 @@ The FAA's recent trouble with <acronym title="Notice to Air Missions System">NOT
 
 * FAA traced the outage to [a damaged database file](https://twitter.com/FAANews/status/1613317775132336129). Mongo, is that you?
 
-I'm still holding out hope for a full Silicon Valley-style outage postmorterm, but from what we can glean, it sounds less exciting than you might hope. "Database" can mean a lot of things, and from the sound of it, this is more akin to a [flat file](https://en.wikipedia.org/wiki/Flat-file_database).
+I'm still holding out hope for a full Silicon Valley-style outage postmorterm, but from what we can glean, it sounds less exciting than you might hope. "Database" can mean a lot of things, and from the sound of it, this is more like a [flat file](https://en.wikipedia.org/wiki/Flat-file_database).
 
-A finding from yesterday was that the file had been corrupted by manual manipulation by some contractors. There were supposed to be safeguards to prevent that from happening, but they didn't. We also found out that in line with long tradition in operations, there had been backups, but when brought online, the backups were also found to be corrupted. Absolutely classic.
+A finding from yesterday was that the file had been corrupted by manual manipulation by a pair of contractors. There were supposed to be safeguards to prevent that from happening, but they didn't. We also found out that in line with long tradition in operations, there had been backups, but when brought online, the backups were also found to be corrupted. Absolutely classic.
 """
   [[atoms.photos]]
     original_image_url = "https://www.dropbox.com/s/addudiitjjnyzmj/IMG_0379.HEIC?dl=1"
