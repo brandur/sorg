@@ -11,6 +11,50 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-14T14:03:39-08:00
+  description = """\
+In the off chance this helps someone else: I started building [my own ImageMagick](https://github.com/brandur/imagemagick-builder) after the project changed their static binary to an AppImage, which doesn't work very well.
+
+As with all programs from that age, every feature is configurable, and it's non-trivial to get it compiled with support for more unusual formats like HEIC. I thought I'd succeeded, but have for months been using a build that couldn't read HEIC, and it'd only been working by virtue of me not uploading a HEIC in a while.
+
+My `./configure` invocation looked right:
+
+``` sh
+./configure --with-heic=yes --with-webp=yes ...
+```
+
+But it'd been silently failing:
+
+```
+Delegate Library Configuration:
+  ...
+  Ghostscript lib   --with-gslib=no	 no
+  Graphviz          --with-gvc=yes	 no
+  HEIC              --with-heic=yes  no
+  ...
+```
+
+Yes to HEIC, but actually ... `no`.
+
+There's [GitHub issues around](https://github.com/ImageMagick/ImageMagick/issues/1470) with the same problem. It can have a variety of causes, but probably means that configure couldn't load one of the dependencies for HEIC properly (`libde265` and `libheif`).
+
+ImageMagick's build process silently swallows problems, so it's necessary to go to `configure.log` to find out what happened. Digging into mine, I found that I was missing another dependency called `dav1d`, which turns out to be an AV1 decoder from the VideoLAN project.
+
+```
+configure:31871: $PKG_CONFIG --exists --print-errors "libheif >= 1.4.0"
+Package dav1d was not found in the pkg-config search path.
+Perhaps you should add the directory containing `dav1d.pc'
+to the PKG_CONFIG_PATH environment variable
+```
+
+I fixed the problem with:
+
+``` sh
+apt-get install libdav1d-dev
+```
+"""
+
+[[atoms]]
   published_at = 2023-01-14T11:13:17-08:00
   description = """\
 The FAA's recent trouble with <acronym title="Notice to Air Missions System">NOTAM</acronym> caught my eye for a couple reasons:
