@@ -73,6 +73,9 @@ jobs:
       - name: Install PNGQuant
         run: sudo apt-get install pngquant
 
+      - name: Install webp
+        run: sudo apt-get install webp
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -171,6 +174,10 @@ jobs:
       # See notes in check_and_test.
       - name: Install PNGQuant
         run: sudo apt-get install pngquant
+
+      # See notes in check_and_test.
+      - name: Install webp
+        run: sudo apt-get install webp
 
       - name: Checkout
         uses: actions/checkout@v3
