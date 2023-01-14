@@ -69,9 +69,10 @@ jobs:
 
       # It'd be nice to take apt-get back out of the flow since it's so slow.
       # Unfortunately, none of the pngquant install options make this
-      # particularly easy.
-      - name: Install PNGQuant
-        run: sudo apt-get install pngquant
+      # particularly easy. WebP is required by ImageMagick as it runs generated
+      # WebPs through an optimization phase with `cwebp`.
+      - name: Install PNGQuant + WebP
+        run: sudo apt-get install pngquant webp
 
       - name: Install webp
         run: sudo apt-get install webp
@@ -172,12 +173,8 @@ jobs:
           sudo dpkg -i mozjpeg_amd64.deb
 
       # See notes in check_and_test.
-      - name: Install PNGQuant
-        run: sudo apt-get install pngquant
-
-      # See notes in check_and_test.
-      - name: Install webp
-        run: sudo apt-get install webp
+      - name: Install PNGQuant + WebP
+        run: sudo apt-get install pngquant webp
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -234,8 +231,8 @@ jobs:
           sudo dpkg -i mozjpeg_amd64.deb
 
       # See notes in check_and_test.
-      - name: Install PNGQuant
-        run: sudo apt-get install pngquant
+      - name: Install PNGQuant + WebP
+        run: sudo apt-get install pngquant webp
 
       - name: Checkout
         uses: actions/checkout@v3
