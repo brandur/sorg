@@ -1792,6 +1792,11 @@ video {
   line-height: 1rem;
 }
 
+.prose-code\:prose-a\:text-sm :is(:where(a):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .prose-ul\:font-serif :is(:where(ul):not(:where([class~="not-prose"] *))) {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
