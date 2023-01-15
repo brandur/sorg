@@ -59,7 +59,7 @@ apt-get install libdav1d-dev
   description = """\
 The FAA's recent trouble with <acronym title="Notice to Air Missions System">NOTAM</acronym> caught my eye for a couple reasons:
 
-* It happened 12 hours after my flight out of Calgary. I hadn't been too happy about our 4 hour delay, but it goes to show that it can always be worse.
+* It happened 12 hours after my flight out of Calgary. I hadn't been too happy about our 4 hour delay, but it goes to show that things can always be worse.
 
 * FAA traced the outage to [a damaged database file](https://twitter.com/FAANews/status/1613317775132336129). Mongo, is that you?
 
