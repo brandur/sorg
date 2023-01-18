@@ -15,20 +15,20 @@
     <link href="/fragments.atom" rel="alternate" title="Fragments{{.TitleSuffix}}" type="application/atom+xml">
     <link href="/sequences.atom" rel="alternate" title="Sequences{{.TitleSuffix}}" type="application/atom+xml">
 
-    {{- if eq .SorgEnv "development" -}}
+    {{if eq .SorgEnv "development" -}}
     <link href="/assets/{{.Release}}/stylesheets/tailwind.css" media="screen" rel="stylesheet" type="text/css">
-    {{- else -}}
+    {{else -}}
     <link href="/assets/{{.Release}}/stylesheets/tailwind.min.css" media="screen" rel="stylesheet" type="text/css">
-    {{- end -}}
+    {{end -}}
 
     <link href="/assets/{{.Release}}/stylesheets/tailwind_custom.css" media="screen" rel="stylesheet" type="text/css">
 
     {{block "stylesheets" .}}{{end}}
 
-    {{- if eq .SorgEnv "development" -}}
+    {{if eq .SorgEnv "development" -}}
     {{- /* Served by Modulir itself (but only if websockets are enabled). */ -}}
     <script src="/websocket.js" type="text/javascript"></script>
-    {{- end -}}
+    {{end -}}
 
     {{block "javascripts" .}}{{end}}
 
