@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-17T18:57:19-08:00
+  description = """\
+Twitter's holding an auction for [assorted office furnishings](https://bid.hgpauction.com/auctions/8421/herita10194) that closes tomorrow at 10 AM Pacific.
+
+Mildly entertaining: many items from Ohio Designs, a local boutique San Francisco furniture manufacturer, and the same one that we used to buy from at old Heroku to add to our office's raw "loft" look. Disgustingly overpriced, but some of the most solid furniture ever created, with heavy steel frames that would likely survive a nuclear blast, and by extension, also impossible to lift. Their HQ are next door to Southern Pacific Brewing Company on Treat. I know that because at one point I became obsessed with these things and went over to inquire buying one for home, before settling on an equivalent at CB2 for a quarter of the price.
+
+A Twitter bird statue and Twitter neon light are sitting at $18k and $20k respectively, 10x their worth, and probably about what they cost. A far shot from $44B, but a tiny consolation prize, and notable for their part in the symbolism of selling off the worst excesses of the old era of tech.
+"""
+
+[[atoms]]
   published_at = 2023-01-14T14:03:39-08:00
   description = """\
 In the off chance this helps someone else: I started building [my own ImageMagick](https://github.com/brandur/imagemagick-builder) after the project changed their static binary to an AppImage, which doesn't work very well.
