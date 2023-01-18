@@ -1977,7 +1977,7 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 
 // Number of atoms on the atom index page (the rest are on the archive page
 // instead).
-const maxAtomsIndex = 50
+const maxAtomsIndex = 15
 
 func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, atomsChanged bool,
 ) (bool, error) {
