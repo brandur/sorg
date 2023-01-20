@@ -13,6 +13,8 @@
 [[atoms]]
   published_at = 2023-01-20T13:19:14-08:00
   description = """\
+#### Exercises in verbosity: Loading data in Go is a heck of a lot of code
+
 I've been writing Go professionally for something like a year and a half now, and compared to my previous daily driver Ruby, almost everything is better. Readability, speed of runtime, speed of tests, speed of refactoring, IDE insight, tooling -- I could go on all day.
 
 But when building out a larger-scale app with a non-trivial amount of domain logic and objects, it's got holes. Some are as wide as Jupiter, and I can't believe how little I see about them online.
