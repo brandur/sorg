@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-19T18:42:38-08:00
+  description = """\
+[3 months since day zero.]
+
+Know anybody who loudly quit Twitter in anger to go to Mastodon, and has stuck with it?
+
+Me neither.
+"""
+
+[[atoms]]
   published_at = 2023-01-18T12:31:56-08:00
   description = """\
 An essay: [_There's no planet B_](https://aeon.co/essays/we-will-never-be-able-to-live-on-another-planet-heres-why), making the case that making another planet like Mars fit humanity is going to be so impossibly hard that it's not going to happen, and by extension that the bulk of our energies should be focused on planet A, the one we're already living on.
