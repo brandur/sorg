@@ -2109,6 +2109,10 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 		return false, nil
 	}
 
+	if len(atoms) > maxAtomsIndex {
+		atoms = atoms[0:maxAtomsIndex]
+	}
+
 	locals := getLocals("Atoms"+scommon.TitleSuffix, map[string]interface{}{
 		"Atoms":    atoms,
 		"IndexMax": maxAtomsIndex,
