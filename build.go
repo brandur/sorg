@@ -356,7 +356,7 @@ func build(c *modulir.Context) []error {
 
 				atom.changed = true
 
-				if len([]byte(atom.DescriptionHTML)) > maxBytesLength {
+				if len([]byte(atom.DescriptionHTML)) > maxBytesLength && !atom.LengthExempted {
 					return true, xerrors.Errorf("atom's length is greater than %d bytes (was %d): %q",
 						maxBytesLength, len([]byte(atom.DescriptionHTML)), atom.Description[0:100])
 				}
@@ -1117,6 +1117,10 @@ type Atom struct {
 
 	// DescriptionHTML is the description rendered to HTML.
 	DescriptionHTML template.HTML `toml:"-" validate:"-"`
+
+	// LengthExempted indicates that the atom is allowed to be longer than the
+	// standard 2217 rendered character limits.
+	LengthExempted bool `toml:"length_exempted" validate:"-"`
 
 	// Photos are any photos associated with the atom.
 	Photos []*Photo `toml:"photos" validate:"omitempty,dive"`
