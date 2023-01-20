@@ -11,9 +11,19 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-20T12:46:11-08:00
+  description = """\
+An article from [37 Signals on cloud spend](https://dev.37signals.com/our-cloud-spend-in-2022/).
+
+They're concerned enough about their AWS spend that they're moving to their own hardware, a path paved before them by the likes of Dropbox and GitHub. It's also always interesting when companies are transparent about their cloud spend. Hey (their email service) for example, costs $89k/month or $1.1M/year in AWS, with the biggest component being RDS, which eats a quarter of that.
+
+The AWS bill is a creeping concern that tends to trend slowly upward over time without anyone really noticing, then suddenly jumps out of a bush to knife you in jugular. It in the beginning it's "wow, look at all this stuff we're getting for a few bucks a month". Then a few years later it's "what?! how many f* millions?? holy shit!!" It's amazing how much money can be spent at $0.023 a gigabyte. At Heroku and Stripe we were eventually forced to engage in major AWS cost reduction projects, and in both cases the engineers involved ended up paying their own salaries many times over.
+"""
+
+[[atoms]]
   published_at = 2023-01-19T18:42:38-08:00
   description = """\
-[3 months since day zero. The day Elon Musk bought Twitter, and the world ended.]
+_[3 months since day zero. The day Elon Musk bought Twitter, and the world ended.]_
 
 Know anybody who loudly quit "the bird site" in anger to go to Mastodon, and has stuck with it?
 
