@@ -11,6 +11,99 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-20T13:19:14-08:00
+  description = """\
+I've been writing Go professionally for something like a year and a half now, and compared to my previous daily driver Ruby, almost everything is better. Readability, speed of runtime, speed of tests, speed of refactoring, IDE insight, tooling -- I could go on all day.
+
+But when building out a larger-scale app with a non-trivial amount of domain logic and objects, it's got holes. Some are as wide as Jupiter, and I can't believe how little I see about them online.
+
+The biggest I'm looking for an answer to is data loading, or more specifically, how to do data loading without thousands of lines of extraneous boilerplate. We solved our SQL-in-Go problem by moving to [sqlc](/sqlc), but that in itself isn't enough. I still write code like this daily:
+
+``` go
+team, err := queries.TeamGetByID(ctx, uuid.UUID(req.TeamID))
+if err != nil {
+    return nil, xerrors.Errorf("error getting team: %w", err)
+}
+
+if team.OrganizationID.Valid {
+    org, err := queries.OrganizationGetByID(ctx, team.OrganizationID.UUID)
+    if err != nil {
+        return nil, xerrors.Errorf("error getting organization: %w", err)
+    }
+
+    if org.MarketplaceID.Valid {
+        marketplace, err := queries.MarketplaceGetByID(ctx, org.MarketplaceID.UUID)
+        if err != nil {
+            return nil, xerrors.Errorf("error getting marketplace: %w", err)
+        }
+
+        return nil, apierror.NewBadRequestErrorf(ctx,
+            errMessageTeamDeleteMarketplace, marketplace.DisplayName)
+    }
+}
+```
+
+In Ruby (or any language with some dynamicism and a good ORM), that whole block compacts comfortably to a single line of code:
+
+``` ruby
+raise ... if Team[req.team_id].organization.marketplace
+```
+
+And the Go version is only as short of it is because our foreign keys mean that we can skip handling some types of user-facing errors. i.e. We don't have to worry about translating a missing organization to a 404 because foreign keys guarantee its existence. Sqlc also saves hundreds of lines -- before the Go code for every one of those queries like `TeamGetByID` had to be written by a human and tested. Now we write the SQL and let sqlc do the work, but using Go built-ins `database/sql` you still get to do all of it.
+
+Another bad-but-unavoidable Go pattern is preloading objects to avoid N + 1 queries, but then having to manually map them into structures that your code can actually use:
+
+``` go
+teams, err := queries.TeamGetByIDMany(ctx, sliceutil.Map(unsentInvoices,
+    func(i dbsqlc.Invoice) uuid.UUID { return i.TeamID }))
+if err != nil {
+    return xerrors.Errorf("error getting teams: %w", err)
+}
+
+teamsMap := sliceutil.KeyBy(teams,
+    func(t dbsqlc.Team) uuid.UUID { return t.ID })
+```
+
+Again, with an ORM this is:
+
+``` ruby
+Invoice.load(..., eager: [:team]).each { |i| i.team.name }
+```
+
+And the Go code was >2x longer just _one release of Go ago_. Notice the functions `sliceutil.Map` and `sliceutil.KeyBy` which were impossible without generics. Before, these were an initialization and a `for` loop -- 4-5 lines each.
+
+I've experimented with custom data loading frameworks that sit a layer above sqlc to reduce boilerplate:
+
+``` go
+err = dbload.New(tx).
+    Add(dbload.Loader(&loadBundle.Cluster, req.ClusterID)).
+    Add(dbload.LoaderCustomID(&loadBundle.Provider,
+       req.ProviderID)).
+    Add(dbload.LoaderCustomID(&loadBundle.Plan,
+        dbsqlc.ProviderAndPlan(req.ProviderID, req.PlanID))).
+    Add(dbload.LoaderCustomID(&loadBundle.Region,
+        dbsqlc.ProviderAndRegion(req.ProviderID, req.RegionID))).
+
+    // must be loaded after cluster
+    Add(dbload.LoaderFunc(&loadBundle.PostgresVersion, func() *uuid.UUID {
+        return &loadBundle.Cluster.PostgresVersionID
+    })).
+    Add(dbload.LoaderFunc(&loadBundle.Team, func() *uuid.UUID {
+        return &loadBundle.Cluster.TeamID
+    })).
+    Load(ctx)
+if err != nil {
+    return nil, err
+}
+```
+
+But so far it's nowhere near enough -- this one makes point loading by IDs a lot more succinct, but doesn't handle anything less trivial like associated objects or one-to-many relationships.
+
+I'm fairly sure that there's nothing approaching an answer to this problem in the Go ecosystem. But aren't there millions of lines of production Go out there by now? How aren't more people running into this?
+"""
+  length_exempted = true
+
+[[atoms]]
   published_at = 2023-01-20T12:46:11-08:00
   description = """\
 An article from [37 Signals on cloud spend](https://dev.37signals.com/our-cloud-spend-in-2022/).
