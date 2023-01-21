@@ -23,7 +23,9 @@
                 prose-ul:font-serif
                 ">
                 {{if .Atom.Title -}}
-                <h1>{{.Atom.Title}}</h1>
+                <a href="/atoms/{{.Atom.Slug}}">
+                    <h1>{{.Atom.Title}}</h1>
+                </a>
                 {{end -}}
 
                 {{.Atom.DescriptionHTML}}
