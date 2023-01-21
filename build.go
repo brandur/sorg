@@ -1133,6 +1133,10 @@ type Atom struct {
 	// timestamp.
 	Slug string `toml:"-" validate:"-"`
 
+	// Title is a title for the atom, but is optional. Atoms don't need and
+	// mostly don't have titles.
+	Title *string `toml:"title" validate:"-"`
+
 	// Videos are any videos associated with the atom.
 	Videos []*AtomVideo `toml:"videos" validate:"omitempty,dive"`
 
@@ -2013,6 +2017,13 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 		return false, nil
 	}
 
+	var title string
+	if atom.Title == nil {
+		title = fmt.Sprintf("Atom <%s>", atom.Slug)
+	} else {
+		title = *atom.Title
+	}
+
 	var card *twitterCard
 	if len(atom.Photos) > 0 {
 		photo := atom.Photos[0]
@@ -2020,11 +2031,11 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 			Description: fmt.Sprintf("Published %s.", atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST")),
 			ImageURL: fmt.Sprintf("%s/photographs/atoms/%s/%s_large@2x%s",
 				conf.AbsoluteURL, atom.Slug, photo.Slug, photo.TargetExt()),
-			Title: fmt.Sprintf("Atom <%s>", atom.Slug),
+			Title: title,
 		}
 	}
 
-	locals := getLocals(fmt.Sprintf("Atom <%s>%s", atom.Slug, scommon.TitleSuffix), map[string]interface{}{
+	locals := getLocals(title+scommon.TitleSuffix, map[string]interface{}{
 		"Atom":        atom,
 		"AtomIndex":   atomIndex,
 		"IndexMax":    maxAtomsIndex,
@@ -2079,8 +2090,13 @@ func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atom
 			return true, err
 		}
 
+		title := atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST")
+		if atom.Title != nil {
+			title = *atom.Title
+		}
+
 		entry := &matom.Entry{
-			Title:     atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST"),
+			Title:     title,
 			Content:   &matom.EntryContent{Content: contentBuf.String(), Type: "html"},
 			Published: atom.PublishedAt,
 			Updated:   atom.PublishedAt,

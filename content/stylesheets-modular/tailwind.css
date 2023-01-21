@@ -1715,6 +1715,15 @@ video {
   color: rgb(100 116 139 / var(--tw-text-opacity));
 }
 
+.prose-h1\:text-base :is(:where(h1):not(:where([class~="not-prose"] *))) {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.prose-h1\:font-bold :is(:where(h1):not(:where([class~="not-prose"] *))) {
+  font-weight: 700;
+}
+
 .prose-p\:hyphens-auto :is(:where(p):not(:where([class~="not-prose"] *))) {
   -webkit-hyphens: auto;
           hyphens: auto;
