@@ -15,6 +15,7 @@ env:
   # Paths for various manually installed utilities. Don't try to use $HOME
   # because GitHub Actions won't support it.
   MAGICK_BIN: /home/runner/imagemagick/bin/magick
+  MAGICK_RELEASE: 7.1.0-57
   MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
   PNGQUANT_BIN: /usr/bin/pngquant
 
@@ -53,7 +54,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       - name: ImageMagick format options
