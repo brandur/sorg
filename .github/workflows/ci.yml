@@ -15,7 +15,7 @@ env:
   # Paths for various manually installed utilities. Don't try to use $HOME
   # because GitHub Actions won't support it.
   MAGICK_BIN: /home/runner/imagemagick/bin/magick
-  MAGICK_RELEASE: 7.1.0-57
+  MAGICK_RELEASE: 7.1.0-56
   MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
   PNGQUANT_BIN: /usr/bin/pngquant
 
