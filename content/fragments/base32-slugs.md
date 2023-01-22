@@ -47,9 +47,9 @@ var lexicographicBase32Encoding = base32.NewEncoding(lexicographicBase32).
 So now when I list atoms from my filesystem or in S3, they come back in the same order that I wrote them.
 
 
-## Derivatives
+## Derivatives (#derivatives)
 
-- This post inspired a [Rust crate](https://crates.io/crates/lexicoid)
+- This post inspired a [Rust crate](https://crates.io/crates/lexicoid).
 
 [1] `math/big`'s integer `Bytes()` produces bytes in big-endian order (most significant byte first).
 [2] Character set is also downcased. Characters are easier to distinguish and it looks better.
