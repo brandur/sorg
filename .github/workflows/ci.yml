@@ -57,8 +57,9 @@ jobs:
           curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
-      - name: ImageMagick format options
-        run: ${{ env.MAGICK_BIN }} identify -list format
+      # /home/runner/imagemagick/bin/magick: symbol lookup error: /home/runner/imagemagick/bin/magick: undefined symbol: heif_deinit
+      # - name: ImageMagick format options
+      #   run: ${{ env.MAGICK_BIN }} identify -list format
 
       # Uses an artifact built by:
       #
