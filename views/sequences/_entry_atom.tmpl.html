@@ -1,8 +1,8 @@
 {{.Entry.DescriptionHTML}}
 
 {{range .Entry.Photos}}
-<a href="/photographs/sequences/{{.Slug}}_large@2x.{{.TargetExt}}">
-    <img src="/photographs/sequences/{{.Slug}}_large.{{.TargetExt}}"
-        srcset="/photographs/sequences/{{.Slug}}_large@2x.{{.TargetExt}} 2x, /photographs/sequences/{{.Slug}}_large.{{.TargetExt}} 1x">
+<a href="/photographs/sequences/{{.Slug}}_large@2x{{.TargetExt}}">
+    <img src="/photographs/sequences/{{.Slug}}_large{{.TargetExt}}"
+        srcset="/photographs/sequences/{{.Slug}}_large@2x{{.TargetExt}} 2x, /photographs/sequences/{{.Slug}}_large{{.TargetExt}} 1x">
 </a>
 {{end}}
