@@ -58,8 +58,8 @@ jobs:
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # /home/runner/imagemagick/bin/magick: symbol lookup error: /home/runner/imagemagick/bin/magick: undefined symbol: heif_deinit
-      # - name: ImageMagick format options
-      #   run: ${{ env.MAGICK_BIN }} identify -list format
+      - name: ImageMagick format options
+        run: ${{ env.MAGICK_BIN }} identify -list format
 
       # Uses an artifact built by:
       #
