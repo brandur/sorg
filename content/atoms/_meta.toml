@@ -15,6 +15,9 @@
   description = """\
 Published [sequence 036](/sequences/036) on 510 Townsend St.
 """
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/uezjq53724obx5z/2W4A2038.JPG?dl=1"
+    slug = "510-townsend"
 
 [[atoms]]
   published_at = 2023-01-22T14:53:52-08:00
