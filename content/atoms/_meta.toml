@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-24T11:12:06-08:00
+  description = """\
+Published [sequence 037](/sequences/037) on the stairs at Oyster Point.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/7f076tcal7ms6ez/2W4A2193-stairs.JPG?dl=1"
+    slug = "oyster-point-stairs"
+
+
+[[atoms]]
   published_at = 2023-01-23T18:31:08-08:00
   description = """\
 Witnessed a laptop snatching this morning. Woman is sitting next to window in a crowded cafe. Thief comes crashing in, grabs woman's computer, and bolts. Five people run out after him, but as with a lot of criminal activity in San Francisco these days, it was organized, and a getaway car was waiting at the corner. Thief slams car door shut and rides off into the sunset (not literally; this was 11 AM).

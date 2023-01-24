@@ -1,4 +1,23 @@
 [[entries]]
+  published_at = 2023-01-24T11:12:07-08:00
+  slug = "037"
+  title = "The stairs at Oyster Point"
+
+  description = """\
+Yesterday I posted about [510 Townsend St office](/sequences/036), the third Stripe office I worked at after Pioneer and Ivy.
+
+Here's one that I never made it to -- HQ 4.0 or 5.0 (depending on how you count) at Oyster Point in South San Francisco. These are the central stairs that run up the middle of the building, an idea that came out of Pioneer and faithfully recreated at Townsend and on the new campus. Stripe's idea is they were a central point to be cross-pollinated by people from all parts of the company, and would allow random, serendipitous meetings between people who normally wouldn't see each other as part of their normal work.
+
+Stripe made the right decision to move out of San Francisco, but while the new office is absolutely gorgeous, it's impossible to miss how sterile Oyster Point feels outside the buildings. Beautifully architected concrete and glass, surrounded by wide roads, promenades to nowhere that nobody uses, and active construction on multiple sides. No grass or parks in any direction. I wonder whether if the new HQ hadn't been locked in just a little later (closer to 2020), if the whole project wouldn't have been cancelled in favor of remote and offices in more vital cities, like what happened with Pinterest's planned SF building which they paid a whopping $89.5M to back out of.
+
+I picked up [the journals on the making of _Prince of Persia_](https://press.stripe.com/the-making-of-prince-of-persia) from Stripe Press on the way out, a beautiful book with an unconventional format, and handwritten notes scribbled in the margins.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/7f076tcal7ms6ez/2W4A2193-stairs.JPG?dl=1"
+    slug = "037"
+
+[[entries]]
   published_at = 2023-01-23T10:26:02-08:00
   slug = "036"
   title = "510 Townsend St."
