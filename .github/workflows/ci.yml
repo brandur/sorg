@@ -38,23 +38,28 @@ jobs:
           check-latest: true
           go-version: ${{ env.GO_VERSION }}
 
+      # It'd be nice to take apt-get back out of the flow since it's so slow,
+      # but we seem to need it for a few things:
+      #
+      #   * FUSE is needed to run AppImages, which are needed for ImageMagick.
+      #
+      #   * pngquant has no particularly easy alternative install options.
+      #
+      #   * WebPs are run through `cbwebp` (which comes from the webp package)
+      #     by ImageMagick. This may have changed when we went back to the
+      #     AppImage version of ImageMagick, but I haven't tested it.
+      #
+      - name: Install FUSE + PNGQuant + WebP
+        run: sudo apt-get install fuse pngquant webp
+
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get a binary
       # directly. When Ubuntu is upgraded at some point in the probably-distant
       # future, we can probably get rid of this.
-      #
-      # I originally fetched an official release binary, but then ImageMagick
-      # switched over to the AppImage format, which didn't work on GitHub
-      # Actions at all and didn't seem to have an easy route to success, so I
-      # changed over to build by own binary.
-      #
-      # Uses an artifact built by:
-      #
-      # https://github.com/brandur/imagemagick-builder
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # /home/runner/imagemagick/bin/magick: symbol lookup error: /home/runner/imagemagick/bin/magick: undefined symbol: heif_deinit
@@ -68,16 +73,6 @@ jobs:
         run: |
           curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
           sudo dpkg -i mozjpeg_amd64.deb
-
-      # It'd be nice to take apt-get back out of the flow since it's so slow.
-      # Unfortunately, none of the pngquant install options make this
-      # particularly easy. WebP is required by ImageMagick as it runs generated
-      # WebPs through an optimization phase with `cwebp`.
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
-
-      - name: Install webp
-        run: sudo apt-get install webp
 
       - name: Checkout
         uses: actions/checkout@v3
