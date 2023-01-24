@@ -62,7 +62,6 @@ jobs:
           curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
           chmod +x "${{ env.MAGICK_BIN }}"
 
-      # /home/runner/imagemagick/bin/magick: symbol lookup error: /home/runner/imagemagick/bin/magick: undefined symbol: heif_deinit
       - name: ImageMagick format options
         run: ${{ env.MAGICK_BIN }} identify -list format
 
@@ -157,10 +156,14 @@ jobs:
 
     steps:
       # See notes in check_and_test.
+      - name: Install FUSE + PNGQuant + WebP
+        run: sudo apt-get install fuse pngquant webp
+
+      # See notes in check_and_test.
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
@@ -168,10 +171,6 @@ jobs:
         run: |
           curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
           sudo dpkg -i mozjpeg_amd64.deb
-
-      # See notes in check_and_test.
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -215,10 +214,14 @@ jobs:
 
     steps:
       # See notes in check_and_test.
+      - name: Install FUSE + PNGQuant + WebP
+        run: sudo apt-get install fuse pngquant webp
+
+      # See notes in check_and_test.
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/master/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
@@ -226,10 +229,6 @@ jobs:
         run: |
           curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
           sudo dpkg -i mozjpeg_amd64.deb
-
-      # See notes in check_and_test.
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
 
       - name: Checkout
         uses: actions/checkout@v3
