@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-23T18:31:08-08:00
+  description = """\
+Witnessed a laptop snatching this morning. Woman is sitting next to window in a crowded cafe. Thief comes crashing in, grabs woman's computer, and bolts. Five people run out after him, but as with a lot of criminal activity in San Francisco these days, it was organized, and a getaway car was waiting at the corner. Thief slams car door shut and rides off into the sunset.
+
+It sounds blasé described post-hoc, but even "just" a theft with nobody hurt (luckily, it could easily have gone the other way) is hectic in real time. Downshifted mentally at the time in computing mode, it took a good ten seconds to process what'd even happened. People yelling. Tables knocked over. Coffee cups in pieces on the floor.
+
+Whenever something like this comes up, San Francisco apologists are quick to make platitudinal statements like "report it to the police", as if this is some kind of deep insight that only an enlightened California pro(re)gressive could ever have imagined. The situation was a _perfect_ microcosm for why most people have stopped bothering. The SFPD was called immediately, and I waited around an hour without a single officer showing up, despite being within six blocks of a police station, a cruiser rolling by every few minutes, and a situation that easily could've ended with someone seriously hurt. The crime had dozens of direct witnesses and clear HD footage from two separate cameras, but even if the PD did eventually show up, no one will be caught, let alone see a day in prison.
+
+I started chatting with the guy next to me, who having just moved to the city a week previous was somewhat surprised. (But not _that_ surprised, having gotten an accurate taste of city's culture from various viral videos.)
+
+I told him that this wasn't unknown, but not common either. San Francisco, intent to preserve its reputation as deteriorating municipal hell stemming from the worst mismanagement of wealth in a thousand years, made sure to prove me wrong. Five minutes later, a woman walks in, grabs a handful of bills from the tip jar, and before anyone can react, leisurely strolls back out.
+"""
+
+[[atoms]]
   published_at = 2023-01-23T10:26:01-08:00
   description = """\
 Published [sequence 036](/sequences/036) on 510 Townsend St.
