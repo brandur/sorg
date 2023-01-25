@@ -11,6 +11,21 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-25T09:24:24-08:00
+  description = """\
+Is this a food picture blog now? I hope not. I'll try not to make a habit of it.
+
+My curiosity was piqued when I found out there's a Mensho subsidary in the ground floor of the Twitter building. Mensho's a ramen company out of Japan that opened a shop called Mensho Tokyo a few years ago in San Francisco, notable for having the best ramen on this continent, and an ever-present 50+ person lineup out the door and down the street, something I thought would clear with time, but never did. In 2021, they expanded into Twitter's ground floor with a new installment -- Jikasei Mensho.
+
+Unlike the original, Jikasei Mensho's more of a fast lunch stop sort of deal, and as far as I can tell, not great? You walk up to a counter, order from a computer McDonald's-style, and your minimum tip option is 15% on a $22 bowl of fast food ramen for the privilege. It arrives in a plastic bowl. The chashu was good, the eggs were good, but the noodles and broth subpar, and some of furnishings questionable, like sliced lemons. Maybe I happened across it on an off day, or maybe ramen tastes worse out of plastic.
+
+Post-Elon return-to-office Twitter is a bit more lively. There were quite a few people down in the cafeteria area where Jikasei Mensho is, where only a few months ago it all sat empty.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/9yp40wz0eknx9yd/2W4A2222-crop.jpg?dl=1"
+    slug = "jikasei-mensho"
+
+[[atoms]]
   published_at = 2023-01-24T11:12:06-08:00
   description = """\
 Published [sequence 037](/sequences/037) on the stairs at Oyster Point.
