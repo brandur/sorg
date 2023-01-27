@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-26T17:17:49-08:00
+  description = """\
+Posted today: [_Stripe Sets One-Year Timetable to Decide on Going Public_](https://archive.ph/GqSBm). Along with this classic Stripe press "leak", the company also sent a simultaneously email to alumni. Nice of them.
+
+Predictably, there was a lot of carthasis from ex-employees, with even more chatter than during the 14% layoff a few months ago, and a hundredfold above ambient Slack levels. With the first batch of RSUs set to expire early 2024, there'd been a lot of consternation over the last couple years to say the least, so it was a big event.
+
+It's unambiguously a good thing, but I couldn't help but notice that even with this BEST NEWS EVER message, the company is still tacking into its usual non-commitalism. Instead of unambiguously planning an IPO, it's "either an IPO or private market transaction", leaving huge error bars and uncertainty. Maybe something cynical, or maybe just unavoidable given the unpredictable market conditions of 2023. Hopefully, it's elite 4-D chess in pursuit of profitable ends that lowly grunts like myself aren't privvy to.
+"""
+
+[[atoms]]
   published_at = 2023-01-25T09:24:24-08:00
   description = """\
 Is this a food picture blog now? I hope not. I'll try not to make a habit of it.
