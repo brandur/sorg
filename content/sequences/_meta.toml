@@ -1,4 +1,22 @@
 [[entries]]
+  published_at = 2023-01-27T18:32:21-08:00
+  slug = "039"
+  title = "The bird site"
+
+  description = """\
+TODO
+
+I take these photos to freeze a moment in time.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/xnpq3x6yx1cdmtx/2W4A2219.JPG?dl=1"
+    slug = "039"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/eqhkzaml8lseucx/2W4A2223-twitter-sign.JPG?dl=1"
+    slug = "039b"
+
+[[entries]]
   published_at = 2023-01-27T18:03:38-08:00
   slug = "038"
   title = "You look nice today"
