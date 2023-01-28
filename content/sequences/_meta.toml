@@ -1,4 +1,19 @@
 [[entries]]
+  published_at = 2023-01-27T18:03:38-08:00
+  slug = "038"
+  title = "You look nice today"
+
+  description = """\
+Feast your eyes on this impressive post-it note art as observed from Salesforce Park across into Slack's adjacent office. A nice gesture, and consider that this would've taken a little time to get right -- not only does the artist need to paint their canvas backwards, but instinct would lead them astray to create one that feels big standing next to it, but which is accidentally miniscule viewed a hundred feet away. This masterpiece is probably close to ten feet tall. Also, welcome to your overanalysis for inconsequential things of the week.
+
+As far as I could tell peering in through its mirror-like windows, Slack's office is absolutely vacant mid-afternoon on a Tuesday. Dare I say likely another candidate for ejection once the lease comes due, and becoming a new contributor to San Francisco's 30% office vacancy rate (and counting).
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/k8e0ccapho4i4nx/2W4A2211.JPG?dl=1"
+    slug = "038"
+
+[[entries]]
   published_at = 2023-01-24T11:12:07-08:00
   slug = "037"
   title = "The stairs at Oyster Point"
