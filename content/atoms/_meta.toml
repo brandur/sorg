@@ -11,6 +11,15 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-28T14:25:50-08:00
+  description = """\
+Published [sequence 039](/sequences/039), on the site of the bird site.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/xnpq3x6yx1cdmtx/2W4A2219.JPG?dl=1"
+    slug = "twitter-hq"
+
+[[atoms]]
   published_at = 2023-01-28T09:06:30-08:00
   description = """\
 Two years ago in the depths of San Francisco lockdown, I wrote up some predictions on what would happen to the city over the medium term. Today I published [Revisiting my two-year SF predictions](/fragments/sf-two-years-revisited), and by my count, got 7 out of 9 right.
