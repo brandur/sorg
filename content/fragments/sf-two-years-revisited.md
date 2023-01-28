@@ -4,7 +4,7 @@ published_at = 2023-01-28T09:06:30-08:00
 title = "Revisiting my two-year SF predictions"
 +++
 
-Two years ago in the dark depths of early 2021 I wrote [Predictions for San Francisco over two years](/fragments/sf-two-years) which contained predictions for how the city's Covid-forever policies would impact its civic landscape. I said to revisit these in 2023, so here we go.
+Two years ago in the dark depths of early 2021 I wrote [Predictions for San Francisco over two years](/fragments/sf-two-years) which contained predictions for how the city's extended Covid policies would impact its civic landscape. I said to revisit these in 2023, so here we go.
 
 7 out of 9 by my count, which isn't half-bad. But also one of these situations where I really hate to be right, since none of these are good things.
 
