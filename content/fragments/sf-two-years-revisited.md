@@ -162,7 +162,7 @@ They've mostly stayed open, which is nice. However, the city no longer closes st
 
 > Public schools are still not up and running at old world capacity, and their quality has dipped even further to the point where no self-respecting parent will send their kids to one if they have any means to avoid it (this was already largely true pre-Covid, but the inequality gap continues to grow).
 
-Schools are reopened, but the district's taken a heavy hit like all public schools in California. Enrollment dropped another [110k last year](https://edsource.org/2022/california-k-12-enrollment-plunges-again-falls-below-6-million/670111), on of 170k the year before. Since removing merit-based admissions, the city's best-ranked high school is [down 28 spots in rankings since 2019](https://reason.com/2022/10/12/a-top-ranked-high-school-got-rid-of-merit-based-admissions-then-students-grades-tanked/).
+Schools are reopened, but the district's taken a heavy hit like all public schools in California. Enrollment dropped another [110k last year](https://edsource.org/2022/california-k-12-enrollment-plunges-again-falls-below-6-million/670111), on top of the 170k from the year before. Since removing merit-based admissions, the city's best-ranked high school is [down 28 spots in rankings since 2019](https://reason.com/2022/10/12/a-top-ranked-high-school-got-rid-of-merit-based-admissions-then-students-grades-tanked/).
 
 <hr>
 
