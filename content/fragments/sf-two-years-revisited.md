@@ -16,7 +16,7 @@ Two years ago in the dark depths of early 2021 I wrote [Predictions for San Fran
 
 This one is a good example of why I should've tried to come up with specific metrics to hold myself to because it's complicated, and the result is subjective.
 
-San Francisco is [dead last in the country](https://archive.is/zSIj1) in return-to-office recovery, and it shows. The SOMA district that used to used to be the home of tech HQs is functionally a ghost town, and although most business that used to be there has failed, many long time ones like Sightglass, REI, or Cafe Suspiro continue to hold out. Union Square's seen some resurgence as tourism made a comeback after mandates were finally loosened mid-2022, but the tide is still against SF. The buildings that used to house big stores like H&M or The Gap still sit empty, and new departures like Crate & Barrel and most recently, CB2, continue.
+San Francisco is [dead last in the country](https://archive.is/zSIj1) in return-to-office recovery, and it shows. The SOMA district that used to used to be the home of tech HQs is functionally a ghost town, and although most business that used to be there has failed, many long time ones like Sightglass, REI, or Cafe Suspiro continue to hold out. Union Square's seen some resurgence as tourism made a comeback after mandates were loosened mid-2022, but the tide is still against SF. The signature locations along Powell and Market that used to house big stores like H&M, Forever 21, or The Gap still sit empty, and new departures like All Saints, Crate & Barrel, and most recently, CB2, continue. We still have our Apple Store THANK GOODNESS.
 
 I think my prediction was right in spirit, but I said "~every" which was an overstatement, so I'm going to call this wrong based on phrasing.
 
@@ -42,7 +42,7 @@ Verdict: **Correct**
 
 [Tracking the San Francisco tech exodus](https://sfciti.org/sf-tech-exodus/) is a little dated, but was a great resource. In short, almost everybody left including AirBnB, Brex, Credit Karma, Oracle, PayPal, Pinterest, Slack, Splunk, Stripe, and Yelp to name a few of the big ones. Not all of those companies are fully gone, but are either gone or have listed supermajorities of their office space for sublease until they can get rid of it.
 
-San Francisco political leaders expected to be able to turn their business sector down then up again like the dial on a stereo, and that after 2+ years of functional lockdown, they could ease up on restrictions and everybody would come marching back. It's been 6+ months now and not only did that not happen, but trends are still moving the other way. Real estate and rents are still expensive (landlords can hold vacant units cheaply thanks to Prop 13), and the network effects of San Francisco are gone, so companies continue to give up office as leases expire.
+San Francisco political leaders expected to be able to turn their business sector down then up again like the dial on a stereo, and that after 2+ years of functional lockdown, they could ease up on restrictions and everybody would come marching back. It's been 6+ months now and not only did that not happen, but trends are still moving the other way. Real estate and rents are still expensive (landlords can hold vacant units cheaply thanks to Prop 13), and the network effects of San Francisco are gone, so companies continue to give up office space as leases expire.
 
 Saying "the age of tech comes to unceremonious end" was right on target.
 
