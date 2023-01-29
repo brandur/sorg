@@ -54,9 +54,9 @@ Verdict: **Correct**
 
 > The budget imbalance isn't just large (as already known), it's catastrophic. Continued federal bailouts ameliorate this somewhat, but it's so big as to be finally untenable. Breed avoids layoffs as long as possible (by further reducing public services instead), but is forced to eventually do so. Increasingly few services are provided as the budget becomes almost wholly salary and pension obligations.
 
-The deficit is ["only" $200M for 2023](https://sfstandard.com/politics/san-francisco-set-for-hard-times-as-huge-728m-budget-hole-could-get-worse/) thanks to huge slush funds from California and Biden. Projections are for the deficit to hit $528M for 2024, $746M for 2025, $992M for 2026, and to finally breach a billion by 2027 at $1.22B. Very likely these are far too optimistic as they all bake in assumptions that 2019 business will eventually come back, which all signs in the reality that all of us live in except politicians point to not happening.
+The deficit is ["only" $200M for 2023](https://sfstandard.com/politics/san-francisco-set-for-hard-times-as-huge-728m-budget-hole-could-get-worse/) thanks to huge slush funds from California and Biden. Projections are for the deficit to hit $528M for 2024, $746M for 2025, $992M for 2026, and to finally breach a billion by 2027 at $1.22B. Very likely these are far too optimistic as they all bake in assumptions that 2019 business will eventually come back, which all signs in the reality that most of us live point to not happening.
 
-Breed hasn't had to make much in the way of cuts so far thanks to bailout money. We'll see what happens with that one over the coming years because unless she can secure more free money from Newsom or Biden, both of whom have their own financial problems right now, logic would dictate that something's got to give.
+Breed hasn't had to make much in the way of cuts so far thanks to bailout money. We'll see what happens with that one over the coming years because unless she can secure more free money from Gavin or Joe, both of whom have their own financial problems right now, logic would dictate that something's got to give.
 
 Verdict: **Correct**
 
