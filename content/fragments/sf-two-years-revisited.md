@@ -46,7 +46,7 @@ San Francisco political leaders expected to be able to turn their business secto
 
 Saying "the age of tech comes to unceremonious end" was right on target.
 
-Verdirt: **Correct**
+Verdict: **Correct**
 
 <hr>
 
@@ -58,7 +58,7 @@ The deficit is ["only" $200M for 2023](https://sfstandard.com/politics/san-franc
 
 Breed hasn't had to make much in the way of cuts so far thanks to bailout money. We'll see what happens with that one over the coming years because unless she can secure more free money from Newsom or Biden, both of whom have their own financial problems right now, logic would dictate that something's got to give.
 
-Verdirt: **Correct**
+Verdict: **Correct**
 
 <hr>
 
@@ -70,7 +70,7 @@ As of today, [20 lines are still suspended](https://www.sfmta.com/getting-around
 
 What Muni did here will serve as a template for all the city's departments as the budget stops expanding -- provide less service for the same amount of money. San Franciscans, being political animals who don't care about any results just as long as their politicians have a (D) next to their name, will make little noise about it. See [this article for example](https://archive.is/cNcdC) that loudly proclaims the glorious return of the J line and parrots SFMTA talking points about how Muni will be back in business by summer 2022, but naturally with no reflective follow up on how it didn't happen.
 
-Verdirt: **Correct**
+Verdict: **Correct**
 
 <hr>
 
@@ -86,7 +86,7 @@ The city surprised me when JFK's partial closure was voted into permanency last 
 
 I said "entirely reverted", but caveated it with "or so dramatically reduced as to effectively be" so this one's a pass.
 
-Verdirt: **Correct**
+Verdict: **Correct**
 
 <hr>
 
@@ -110,7 +110,7 @@ Last November SF voters [created two new taxes](https://ballotpedia.org/Californ
 
 That said, I'm a little surprised SF isn't trying for something more ambitious like trying to go after remote workers in some way to tax them because although tech offices are gone, a lot of tech workers stayed in the city. However, the implosion of the city's budget is still an ongoing event after it was delayed thanks to bailout money, and the real pain is still going to take a few more years to manifest, so I'm not ruling this out yet.
 
-Verdirt: **Correct**
+Verdict: **Correct**
 
 <hr>
 
@@ -122,7 +122,7 @@ Verdirt: **Correct**
 
 It's open, but the prediction I made was correct and it took more than ten years to open (construction started in 2012), was delayed multiple more times, and just entered service a few weeks ago.
 
-Verdirt: **Correct**
+Verdict: **Correct**
 
 ## Maybes (#maybes)
 
