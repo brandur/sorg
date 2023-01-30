@@ -11,6 +11,28 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-29T18:46:04-08:00
+  description = """\
+See: [PEP 703 – Making the Global Interpreter Lock Optional in CPython](https://peps.python.org/pep-0703/).
+
+Fascinating stuff, and the detail and attention that goes into these PEPs is just incredible. The GIL (global interpreter lock) has been the age-old Achilles Heels of Python and Ruby, and given the advanced age of these languages, I'd assumed that these were problems that weren't going to be solved as an increasingly intricate implementation makes more fundamental changes harder to tackle every year. But an increasingly parallel world of computing seems to have created demand to attract people with the necessary gumption to pull this off.
+
+Ruby gave up on the GIL in favor of [Ractors](/nanoglyphs/018-ractors) which suggest the use of many parallel environments, each with their own GIL. They might've worked, but were _extremely_ backward incompatible, and two years later, nothing supports them.
+
+Python's optional GIL will be opt-in via compiler flag, but provides a path for the ecosystem to migrate so it could be default in a not-so-distant future.
+
+A couple things that stood out to me. The implementation will move to a stop-the-world GC to freeze necssary state:
+
+> When running without the GIL, the implementation needs a way to ensure that reference counts remain stable during cycle detection. Threads running Python code must be paused to ensure that references and reference counts remain stable. Once the cycles are identified, other threads are resumed.
+
+And because the GC becomes stop-the-world, its generational GC is disabled:
+
+> The existing Python garbage collector uses three generations. When compiling without the GIL, the garbage collector will only use a single generation (i.e., non-generational). The primary reason for this change is to reduce the impact of the stop-the-world pauses in multithreaded applications.
+
+Single-threaded performance takes a 10% hit, but there's already suggestions for changes to recoup some of that. Over time most of that likely gets optimized away.
+"""
+
+[[atoms]]
   published_at = 2023-01-28T14:25:50-08:00
   description = """\
 Published [sequence 039](/sequences/039), on the site of the bird site.
