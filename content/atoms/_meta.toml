@@ -11,6 +11,26 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-01-30T08:19:34-08:00
+  description = """\
+HBO's _The Last of Us_ televisation is our latest cultural zeitgeist, and I'm watching it like everybody else. Last night's episode (ep 3) was the best so far, although it's interesting to see what they changed to appeal to a broader audience.
+
+_**— SPOILERS —**_
+
+Without going into the specifics, sufficed to say that Bill and Frank's life in the game version is more antagonistic and stark. You can [spoil yourself here](https://thelastofus.fandom.com/wiki/Bill#Events_of_The_Last_of_Us), but the last piece in Bill's ark is _grim_, and it's not because he dies or is injured. He's also more abrasive, and exchanges some great one-liners with Ellie as they insult each other. The TV version portrays a far more idyllic life and very gentle redemption ark. It plays on your emotions well and I liked it better overall, but it does some to detract from driving home the brutal edge of _The Last of Us_'s world.
+
+By the way, I love how they kept the game's military-style angle-head flashlights looped onto their backpack straps (see second image below). You [can actually buy these things](https://www.amazon.com/Olive-Military-C-Cell-Anglehead-Flashlight/dp/B000J5JCHI/).
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/rrbbv9534m1h09s/frank.jpg?dl=1"
+    no_crop = true
+    slug = "frank"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/vpluaiinh209asv/ellie-and-flashlight.jpg?dl=1"
+    no_crop = true
+    slug = "ellie-and-flashlight"
+
+[[atoms]]
   published_at = 2023-01-29T18:46:04-08:00
   description = """\
 See: [PEP 703 – Making the Global Interpreter Lock Optional in CPython](https://peps.python.org/pep-0703/).
@@ -19,7 +39,7 @@ Fascinating stuff, and the detail and attention that goes into these PEPs is jus
 
 Ruby gave up on the GIL in favor of [Ractors](/nanoglyphs/018-ractors) which suggest the use of many parallel environments, each with their own GIL. They might've worked, but were _extremely_ backward incompatible, and two years later, nothing supports them.
 
-Python's optional GIL will be opt-in via compiler flag, but provides a path for the ecosystem to migrate so it could be default in a not-so-distant future.
+Python's optional GIL will be opt-in via compiler flag, but provides a path for the ecosystem to migrate incrementally so it could be default in a not-so-distant future.
 
 A couple things that stood out to me. The implementation will move to a stop-the-world GC to freeze necssary state:
 
