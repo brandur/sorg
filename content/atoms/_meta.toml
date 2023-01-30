@@ -15,7 +15,7 @@
   description = """\
 See: [PEP 703 – Making the Global Interpreter Lock Optional in CPython](https://peps.python.org/pep-0703/).
 
-Fascinating stuff, and the detail and attention that goes into these PEPs is just incredible. The GIL (global interpreter lock) has been the age-old Achilles Heels of Python and Ruby, and given the advanced age of these languages, I'd assumed that these were problems that weren't going to be solved as an increasingly intricate implementation makes more fundamental changes harder to tackle every year. But an increasingly parallel world of computing seems to have created demand to attract people with the necessary gumption to pull this off.
+Fascinating stuff, and the detail and attention that goes into these PEPs is just incredible. The GIL (global interpreter lock) has been the age-old Achilles Heels of Python and Ruby, and given the advanced age of these languages, I'd assumed they were problems that weren't going to be solved as an increasingly intricate implementation makes more fundamental changes harder to tackle every year. But an increasingly parallel world of computing seems to have created demand to attract people with the necessary gumption to pull this off.
 
 Ruby gave up on the GIL in favor of [Ractors](/nanoglyphs/018-ractors) which suggest the use of many parallel environments, each with their own GIL. They might've worked, but were _extremely_ backward incompatible, and two years later, nothing supports them.
 
