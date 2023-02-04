@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-04T12:30:02-08:00
+  description = """\
+An [HN discussion on unlimited PTO](https://news.ycombinator.com/item?id=34340246).
+
+We ran under unlimited PTO at Heroku the whole time I was there. At Stripe we started with unlimited PTO before moving to fixed. Stripe's PTO allowance wasn't generous, but it worked out okay in the end as I'd had some built up when I left which they ended up having to pay out.
+
+A lot of commenters are so cynical that they view unlimited PTO policies as ill-intentioned, designed to avoid a PTO payout like mine. Maybe that's the case for some companies, but in the ones I worked for, it was good-intentioned with suboptimal outcomes.
+
+You might intuit that the problem with unlimited PTO would be that it'd get abused, and I'm sure that's happened, but in my experience, the types of people who'd abuse such a system don't tend to be hired at the types of companies that'd offer it. I'm entirely sure that unlimited PTO worked _against_ me the entire time I was under it, and the same was true for most of my colleagues. It wasn't entirely the fault of the policy. To succeed under such a system, you really need to be looking out for number one it, tracking your own vacation target carefully, and championing for yourself.
+
+But of course it's difficult, especially when you see your colleagues working so hard, which makes you feel bad about taking time off. And unless you've got a vocally pro-vacation manager, which is unlikely, you always have to wonder what they think about someone taking more than average.
+
+A lot of companies have moved back in the direction of fixed PTO, which is probably for the best. Years ago [Travis CI implemented a _minimum_ vacation policy](https://www.paperplanes.de/2014/12/10/from-open-to-minimum-vacation-policy.html) which is an idea I liked, but things didn't turn out so well for that company, and I haven't heard of much about minimum PTO since.
+"""
+
+[[atoms]]
   published_at = 2023-02-03T20:09:08-08:00
   description = """\
 [Go 1.20 is released](https://go.dev/blog/go1.20). From the notes:
@@ -76,7 +92,7 @@ Published [sequence 039](/sequences/039), on the site of the bird site.
   description = """\
 Two years ago in the depths of San Francisco Covid-mania, I wrote up some predictions on what would happen to the city over the medium term. Today I published [Revisiting my two-year SF predictions](/fragments/sf-two-years-revisited), and by my count, got 7 out of 9 right.
 
-Some of these seem obvious in retrospect, but I wrote them down because they were starkly contrarian compared to claims made by the city's commentariat. A popular opinion at the time was that tech _needed_ San Francisco, so the longest and hardest lockdown in the nation would be perfectly okay as a closed downtown would spring right back to life on a mere word from London Breed, like a dog waking on command. Policy apologists guffawed with dramatic bemusement at the very idea that any of these departures could be permanent. Today, we see that almost every one of them was.
+Some of these seem obvious in retrospect, but I wrote them down because they were starkly contrarian compared to claims made by the city's commentariat. A popular opinion at the time was that tech _needed_ San Francisco, so the longest and hardest lockdown in the nation would be perfectly okay as a closed downtown would spring right back to life on a word from London Breed, like a dog waking on command. Policy apologists guffawed with dramatic bemusement at the very idea that any of these departures could be permanent. Today, we see that almost every one of them was.
 
 Network effects in cities are powerful, and that indeed has been the story of SF and the Bay Area writ large over the decade as companies swooped in soak up innovative energy, capital, and talent, which further compounded and cascaded. My prediction today is the city will continue to observe a _reverse_ network effect as more companies give up expensive leases which have continually lessening ROI.
 """
