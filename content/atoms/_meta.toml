@@ -11,6 +11,26 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-04T13:22:03-08:00
+  description = """\
+Published fragment [`PartialEqual`](/fragments/partial-equal), on a custom Go assertion helper that we've been using for a few months now to good effect:
+
+``` go
+resp, err := apitest.InvokeHandler(svc.Create, ctx, req)
+require.NoError(t, err)
+prequire.PartialEqual(t, &apiresourcekind.Cluster{
+		Environment:  ptrutil.Ptr(dbsqlc.EnvironmentProduction),
+		IsHA:         ptrutil.Ptr(req.IsHA),
+		MajorVersion: req.PostgresVersionID.Int32,
+		PlanID:       req.PlanID,
+		RegionID:     req.RegionID,
+		Storage:      req.Storage,
+		TeamID:       req.TeamID,
+}, resp)
+```
+"""
+
+[[atoms]]
   published_at = 2023-02-04T12:30:02-08:00
   description = """\
 An [HN discussion on unlimited PTO](https://news.ycombinator.com/item?id=34340246).
