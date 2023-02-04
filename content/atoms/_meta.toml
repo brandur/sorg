@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-03T20:09:08-08:00
+  description = """\
+[Go 1.20 is released](https://go.dev/blog/go1.20). From the notes:
+
+> Work specifically targeting compilation times led to build improvements by up to 10%. This brings build speeds back in line with Go 1.17.
+
+Excellent. New features are nice, but it's the boring fundamentals like build times that really make a difference for everyday users. The addition of generics in Go 1.18 had an impact on build times, but those losses have been recouped. Generics are good. Fast builds are good. We can have both.
+"""
+
+[[atoms]]
   published_at = 2023-01-30T08:19:34-08:00
   description = """\
 HBO's _The Last of Us_ televisation is our latest cultural zeitgeist, and I'm watching it like everybody else. Last night's episode (ep 3) was the best so far, although it's notable what they changed to appeal to a broader audience.
