@@ -88,3 +88,7 @@ This is okay, but has a few problems of its own:
 * It assumes that comparing every field in an object is always what you're trying to do, which is often wrong. I find that it's often better for refactoring agility to have one test case that's exhaustive, but then for other to only look at subsets of fields that are interesting for the particular test case. It saves a lot of updating when a new field is added or an old one removed.
 
 All in all, this pattern's not a strong recommendation, but we've had `PartialEqual` in for a few months now and it's a tool I find myself reaching for frequently, and is much better than what we were doing before.
+
+## Prototype implementation (#implementation)
+
+I put [my implementation of `PartialEqual` into a Gist](https://gist.github.com/brandur/7b459a1ed81bfd041fabf05dc34265e3) that you can clone down, but mainly to act as reference. The code's not tremendous by any means, and its got a dependency on testify/require which isn't optimal, but if you're interesting in trying the pattern, it'll give you a start.
