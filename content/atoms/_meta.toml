@@ -11,6 +11,15 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-05T11:46:14-08:00
+  description = """\
+Published [sequence 040](/sequences/039), on a rainy evening in San Francisco.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/1twglbsniwkm752/2W4A2267-bw.jpg?dl=1"
+    slug = "rainy-night"
+
+[[atoms]]
   published_at = 2023-02-04T16:12:39-08:00
   description = """\
 This site uses AWS Certificate Manager (ACM) for automated TLS certificate managment, and I got a request via email today to approve a renewal through 2024. Validating ownership of a domain can either happen via email or by a `CNAME` record installed to its DNS, and all those years ago when I first set this up I apparently chose email and have been manually approving a renewal every year since.

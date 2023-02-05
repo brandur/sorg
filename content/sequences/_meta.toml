@@ -1,4 +1,21 @@
 [[entries]]
+  published_at = 2023-02-05T11:46:15-08:00
+  slug = "040"
+  title = "Saturday night"
+
+  description = """\
+It was a beautiful night in San Francisco. The city got a light sprinkling of rain all day which left it clean and glistening. The temperature was perfect, with only a light jacket needed, and I could've even left the umbrella at home since it turned out that the sky wasn't holding much in reserve.
+
+When I bought my first camera, it frustrated me that in low light conditions it couldn't see what I could see. What's wrong little device, why are all these images so dark and blurry? It was partly an equipment problem and partly an optics problem, and one that I've since spent my way out of. This shot was taken with a full-frame sensor and fast f/1.2 lens from Canon's RF series, and at this point, it's collecting more light than my eye is. This photo was partially darkened for effect.
+
+Canon's glass is absolutely flawless, but it's got a downside. Everything they make is _so goshdarn big_, leaving me always on the look out for a system with comparable fidelity, but lighter and not so dramatically conspicuous.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/1twglbsniwkm752/2W4A2267-bw.jpg?dl=1"
+    slug = "040"
+
+[[entries]]
   published_at = 2023-01-28T14:25:51-08:00
   slug = "039"
   title = "The bird site"
