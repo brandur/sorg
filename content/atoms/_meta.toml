@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-04T16:12:39-08:00
+  description = """\
+This site uses AWS Certificate Manager (ACM) for automated TLS certificate managment, and I got a request via email today to approve a renewal through 2024. Validating ownership of a domain can either happen via email or by a `CNAME` record installed to its DNS, and all those years ago when I first set this up I apparently chose email and have been manually approving a renewal every year since.
+
+Validation by `CNAME` is better because it's fully automatic. As long as ACM sees that the `CNAME` is still installed, it can validate ownership of the domain without asking the user about it. So today, after many years of procrastination, I finally went into ACM to generate a new cert validated by `CNAME` instead of email.
+
+While doing so, I noticed that as of mid-2021, ACM supports non-RSA certificates using ECDSA elliptic curves, which I opted into. They're widely supported, and superior to RSA in every respect that matters: less computationally expensive to verify, shorter keys that mean reduced network traffic, and superior cryptography that was developed more in the open compared to RSA.
+
+But as complete of a product as AWS is, sometimes it has some fairly mistifying edges. I was given the choice between the P256 and P384 curves, opted for P384, but then found that I couldn't select my new certificate over in CloudFront (AWS' CDN). Upon further reading I found [CloudFront only supports P256](https://aws.amazon.com/about-aws/whats-new/2021/07/amazon-cloudfront-now-supports-ecdsa-certificates-for-https-connections-to-viewers/). This limitation is not explained or justified. Just a vague "sorry, P256 only even though our other product generates P384".
+
+Amazon is an absolute powerhouse beyond all doubt, but also the weirdest of the trillion dollar companies.
+"""
+
+[[atoms]]
   published_at = 2023-02-04T13:22:03-08:00
   description = """\
 Published fragment [`PartialEqual`](/fragments/partial-equal), on a custom Go assertion helper that we've been using for a few months now to good effect:
@@ -65,7 +79,7 @@ _**— SPOILERS —**_
 
 Without going into the specifics, sufficed to say that Bill and Frank's life in the game version is more antagonistic and stark. You can [spoil yourself here](https://thelastofus.fandom.com/wiki/Bill#Events_of_The_Last_of_Us), but the last piece in Bill's ark is _grim_, and it's not because he dies or is injured. He's also more abrasive, and exchanges some great one-liners with Ellie as they insult each other. The TV version portrays a far more idyllic life and very gentle redemption ark. It plays on your emotions well and I liked it better overall, but it does some to detract from driving home the brutal edge of _The Last of Us_'s world.
 
-By the way, I love how they kept the game's military-style angle-head flashlights looped onto their backpack straps (see second image below). You [can actually buy these things](https://www.amazon.com/Olive-Military-C-Cell-Anglehead-Flashlight/dp/B000J5JCHI/).
+By the way, I love how they kept the game's military-style angle-head flashlights looped onto their backpack straps (see Ellie's left shoulder in the image below). You [can actually buy these things](https://www.amazon.com/Olive-Military-C-Cell-Anglehead-Flashlight/dp/B000J5JCHI/).
 """
   [[atoms.photos]]
     original_image_url = "https://www.dropbox.com/s/rrbbv9534m1h09s/frank.jpg?dl=1"
