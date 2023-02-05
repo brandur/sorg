@@ -21,7 +21,7 @@ While doing so, I noticed that as of mid-2021, ACM supports non-RSA certificates
 
 But as complete of a product as AWS is, sometimes it has some fairly mistifying edges. I was given the choice between the P256 and P384 curves, opted for P384, but then found that I couldn't select my new certificate over in CloudFront (AWS' CDN). Upon further reading I found [CloudFront only supports P256](https://aws.amazon.com/about-aws/whats-new/2021/07/amazon-cloudfront-now-supports-ecdsa-certificates-for-https-connections-to-viewers/). This limitation is not explained or justified. Just a vague "sorry, P256 only even though our other product generates P384".
 
-Amazon is an absolute powerhouse beyond all doubt, but also the weirdest of the trillion dollar companies.
+Amazon is an absolute powerhouse beyond all doubt, but is the weirdest of the trillion dollar companies.
 """
 
 [[atoms]]
