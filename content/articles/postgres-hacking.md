@@ -8,7 +8,7 @@ title = "The Missing Manual for Hacking Postgres"
 It's probably obvious that Postgres is my favorite
 database. One minor grievance that I have with the project
 is that its documentation is almost entirely optimized for
-people who ultimately be users of the database rather than
+people who ultimately are users of the database rather than
 developers of it. An unfortunate side effect of this is
 that none of the repository's standard files (e.g.
 `README`) give much insight into how to get started with
