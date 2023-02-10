@@ -1,4 +1,27 @@
 [[entries]]
+  published_at = 2023-02-09T20:40:01-08:00
+  slug = "041"
+  title = "Chez GitHub"
+
+  description = """\
+Today, [10% headcount reduction and total office closure from GitHub](https://archive.is/UfFdU).
+
+For the 10%, I'm sorry. Despite all the talk from CEOs of "hard economic conditions" *bullsh\\*t* *bullsh\\*t*, the reality is that you were caught in an opportunistic dragnet of the executive arm to trim the (perceived) cruft. When everybody else is doing it too, the negative press is diffused.
+
+Another signature San Francisco office gone. I'd been there a number of times over the years, and it was a contender for top two best offices in the city, which implied top two in the world. They had a secret speakeasy, a replica of the oval office, and every kid's dream -- a _frikkin' secret passage in a bookshelf_. The Octocat seal on the floor of their oval office [originally read](https://www.businessinsider.com/githubs-oval-office-2013-9) "United Meritocracy of GitHub" before "meritocracy" was deemed an illegal word and the seal replaced.
+
+I looked back through my photos of the place, and to my great regret, seem to have taken only two. One was of the bar (of course). The other is above, wherein GitHub hosted a roguelike conference back in 2017 (I wonder if that wifi password still works?). They were great about community events, also having let us host an API hackathon in 2016.
+
+Rewinding even further, way back in 2012 I had the honor of visiting GitHub's _original_ office in SOMA. Nowhere near as elaborate, but spacious, and with the look of a cool, unfinished loft. All of us loved technology so we had beers and talked about technology. I have a distinct memory of being introduced to ChatOps for the very first time.
+
+And the era continues to shift.
+"""
+
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/iu8no7neyuzec5d/L1020820.JPG?dl=1"
+    slug = "041"
+
+[[entries]]
   published_at = 2023-02-05T11:46:15-08:00
   slug = "040"
   title = "Saturday night"

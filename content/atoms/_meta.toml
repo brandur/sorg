@@ -11,6 +11,15 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-09T20:40:00-08:00
+  description = """\
+On the day of GitHub announcing total closure of all physical offices, I published [sequence 041](/sequences/041), chez GitHub.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/iu8no7neyuzec5d/L1020820.JPG?dl=1"
+    slug = "chez-github"
+
+[[atoms]]
   published_at = 2023-02-05T11:46:14-08:00
   description = """\
 Published [sequence 040](/sequences/040), on a rainy evening in San Francisco.
