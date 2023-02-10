@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-10T07:53:35-08:00
+  description = """\
+Seymour Hersh writes about [how the US destroyed the Nord Stream pipeline](https://seymourhersh.substack.com/p/how-america-took-out-the-nord-stream), and although it's built around the testimony of only a single source, it contains impressively specific details, like how the C-4 was planted with a 48-hour delayed trigger by divers under the cover of the [BALTOPS22](https://www.navy.mil/Press-Office/News-Stories/Article/3066830/baltops-22-the-premier-baltic-sea-maritime-exercise-concludes-in-kiel/) naval exercise.
+
+As every Maddow-loving, Fauci-fearing, big-D Democrat knows, this is a filthy lie. It was _Russia_ that blew up Nord Stream for ... reasons. They didn't want to make money selling gas _so_ badly that simply pressing the "off" button on the pipeline which they own was insufficient. No, it had to be a bolder, and shall we say, more _incendiary_ statement. _KA-BOOM!_ That Biden went on record a year ago [saying he'd destroy it](https://www.youtube.com/watch?v=OS4O8rGRLf8) makes no difference. It's Russia, stupid.
+
+[An interesting Twitter thread](https://twitter.com/Mr_Unspeakable/status/1623413051038007296) documents a Wikipedia edit war in real-time in which Mr. Hersh becomes a "conspiracy theorist", a favored new term of art of the illiberal, institutional left that translates roughly to "person who disagrees with me". Most notable is how when the change was at risk of being reverted, powerful editors with special moderation privileges emerged from the woodwork to defend the presence of the new appellation.
+"""
+
+[[atoms]]
   published_at = 2023-02-09T20:40:00-08:00
   description = """\
 On the day of GitHub announcing total closure of all physical offices, I published [sequence 041](/sequences/041), chez GitHub.
