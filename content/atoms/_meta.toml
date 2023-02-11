@@ -16,6 +16,7 @@
 Published [sequence 042](/sequences/042), a wall alive.
 """
   [[atoms.photos]]
+    link_url = "/sequences/042"
     original_image_url = "https://www.dropbox.com/s/gpauiosvw6pyzkv/2W4A2306-cropped.jpg?dl=1"
     slug = "wall-alive"
 
@@ -35,6 +36,7 @@ As every Maddow-loving, Fauci-fearing, big-D Democrat knows, this is a filthy li
 On the day of GitHub announcing total closure of all physical offices, I published [sequence 041](/sequences/041), chez GitHub.
 """
   [[atoms.photos]]
+    link_url = "/sequences/041"
     original_image_url = "https://www.dropbox.com/s/iu8no7neyuzec5d/L1020820.JPG?dl=1"
     slug = "chez-github"
 
@@ -44,6 +46,7 @@ On the day of GitHub announcing total closure of all physical offices, I publish
 Published [sequence 040](/sequences/040), on a rainy evening in San Francisco.
 """
   [[atoms.photos]]
+    link_url = "/sequences/040"
     original_image_url = "https://www.dropbox.com/s/1twglbsniwkm752/2W4A2267-bw.jpg?dl=1"
     slug = "rainy-night"
 
@@ -155,6 +158,7 @@ Single-threaded performance takes a 10% hit, but there's already suggestions for
 Published [sequence 039](/sequences/039), on the site of the bird site.
 """
   [[atoms.photos]]
+    link_url = "/sequences/039"
     original_image_url = "https://www.dropbox.com/s/xnpq3x6yx1cdmtx/2W4A2219.JPG?dl=1"
     slug = "twitter-hq"
 
@@ -174,6 +178,7 @@ Network effects in cities are powerful, and that indeed has been the story of SF
 Published [sequence 038](/sequences/038). You look nice today.
 """
   [[atoms.photos]]
+    link_url = "/sequences/038"
     original_image_url = "https://www.dropbox.com/s/k8e0ccapho4i4nx/2W4A2211.JPG?dl=1"
     slug = "you-look-nice-today"
 
@@ -208,6 +213,7 @@ Post-Elon return-to-office Twitter is a bit more lively. There were quite a few 
 Published [sequence 037](/sequences/037) on the stairs at Oyster Point.
 """
   [[atoms.photos]]
+    link_url = "/sequences/037"
     original_image_url = "https://www.dropbox.com/s/7f076tcal7ms6ez/2W4A2193-stairs.JPG?dl=1"
     slug = "oyster-point-stairs"
 
@@ -232,6 +238,7 @@ I told him that this wasn't unknown, but not common. San Francisco, intent to pr
 Published [sequence 036](/sequences/036) on 510 Townsend St.
 """
   [[atoms.photos]]
+    link_url = "/sequences/036"
     original_image_url = "https://www.dropbox.com/s/uezjq53724obx5z/2W4A2038.JPG?dl=1"
     slug = "510-townsend"
 
@@ -542,6 +549,7 @@ I should investigate using WebP as a general target regardless of the input form
 """
   [[atoms.photos]]
     crop_gravity = "south"
+    link_url = "/sequences/035"
     original_image_url = "https://www.dropbox.com/s/sbco4yhozcjibc8/IMG_0286-fixed.jpg?dl=1"
     slug = "downtown-calgary"
 

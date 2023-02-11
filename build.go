@@ -1267,6 +1267,10 @@ type Photo struct {
 	// old ones.
 	KeepInHomeRotation bool `toml:"keep_in_home_rotation"`
 
+	// LinkURL is a URL to have the image link to. This is only respect for some
+	// uses of photographs like in atoms.
+	LinkURL string `toml:"link_url" validate:"-"`
+
 	// NoCrop disables cropping on this photo (normally photos are cropped to
 	// 3:2 or 2:3).
 	NoCrop bool `toml:"no_crop"`
@@ -1307,6 +1311,7 @@ func (p *Photo) Equal(other *Photo) bool {
 		p.CropWidth == other.CropWidth &&
 		p.Description == other.Description &&
 		p.KeepInHomeRotation == other.KeepInHomeRotation &&
+		p.LinkURL == other.LinkURL &&
 		p.NoCrop == other.NoCrop &&
 		p.OriginalImageURL == other.OriginalImageURL &&
 		p.OccurredAt.Equal(other.OccurredAt) &&

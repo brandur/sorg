@@ -40,7 +40,7 @@
 
                     <div class="mb-2 mr-2">
                         <a
-                            href="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}">
+                            href="{{if $photo.LinkURL}}{{$photo.LinkURL}}{{else}}{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}{{end}}">
                             <img class="rounded-lg w-full" loading="lazy"
                                 src="{{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}"
                                 srcset="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 2x,
