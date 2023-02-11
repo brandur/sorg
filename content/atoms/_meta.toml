@@ -11,6 +11,15 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-11T12:57:21-08:00
+  description = """\
+Published [sequence 042](/sequences/042), a wall alive.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/gpauiosvw6pyzkv/2W4A2306-cropped.jpg?dl=1"
+    slug = "wall-alive"
+
+[[atoms]]
   published_at = 2023-02-10T07:53:35-08:00
   description = """\
 Seymour Hersh writes about [how the US destroyed the Nord Stream pipeline](https://seymourhersh.substack.com/p/how-america-took-out-the-nord-stream), and although it's built around the testimony of only a single source, it contains impressively specific details, like how the C-4 was planted by divers under the cover of the [BALTOPS22](https://www.navy.mil/Press-Office/News-Stories/Article/3066830/baltops-22-the-premier-baltic-sea-maritime-exercise-concludes-in-kiel/) naval exercise, and was to be triggered by a sonar buoy that'd later be dropped by plane.

@@ -11,6 +11,25 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-02-11T12:57:22-08:00
+  slug = "042"
+  title = "A wall alive"
+  description = """
+A nice example of a living wall down near the Salesforce offices, hidden away off the street in a pedestrian alley that's infrequently used, a block from Salesforce Park and a few blocks south of the waterfront. Most publicly accessible privately-owned spaces are designed defensively by necessity, and come off unwelcoming and sterile. This one's a rare exception.
+
+An aside, but this is the type of photo that I like especially for the _Sequences_ format. We're so used to looking at most images we see as thumbnails or on pocket-sized iPhone screens, but it's only by looking at it in large format that you can really appreciate the full detail in a photograph.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/gpauiosvw6pyzkv/2W4A2306-cropped.jpg?dl=1"
+    slug = "042"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/ydkr2y9jl09ofx9/2W4A1858.JPG?dl=1"
+    slug = "042b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/je263gihfx6we7e/2W4A1861.JPG?dl=1"
+    slug = "042c"
+
+[[entries]]
   published_at = 2023-02-09T20:40:01-08:00
   slug = "041"
   title = "Chez GitHub"
