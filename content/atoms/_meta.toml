@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-12T11:29:31-08:00
+  description = """\
+Published fragment [adventures in password hashing](/fragments/password-hashing), in which we inherit PBKDF2 hashes from Keycloak, and after a couple intermediate steps, migrate to [Argon2id](https://en.wikipedia.org/wiki/Argon2).
+"""
+
+[[atoms]]
   published_at = 2023-02-11T12:57:21-08:00
   description = """\
 Published [sequence 042](/sequences/042), a wall alive.
@@ -27,7 +33,7 @@ Seymour Hersh writes about [how the US destroyed the Nord Stream pipeline](https
 
 As every Maddow-loving, Fauci-fearing, big-D Democrat knows, this is a filthy lie. It was _Russia_ that blew up Nord Stream for ... reasons. They didn't want to make money selling gas _so_ badly that simply pressing the "off" button on the pipeline which they own was insufficient. No, it had to be a bolder, and shall we say, more _incendiary_ statement. _KA-BOOM!_ That Biden went on record a year ago [saying he'd destroy it](https://www.youtube.com/watch?v=OS4O8rGRLf8) makes no difference. It's Russia, stupid.
 
-[An interesting Twitter thread](https://twitter.com/Mr_Unspeakable/status/1623413051038007296) documents a Wikipedia edit war in real-time in which Mr. Hersh becomes a "conspiracy theorist", a favored new term of art of the illiberal, institutional left that translates roughly to English as "person who disagrees with me". Most notable is how when the change was at risk of being reverted, powerful editors with special moderation privileges emerge from the woodwork to defend the presence of the new appellation.
+[An interesting Twitter thread](https://twitter.com/Mr_Unspeakable/status/1623413051038007296) documents a Wikipedia edit war in real-time in which Mr. Hersh changes from from "journalist" to "conspiracy theorist", a favored new term of art of the illiberal, institutional left that translates roughly to English as "person who disagrees with me". Most notable is how when the change was at risk of being reverted, powerful editors with special moderation privileges emerge from the woodwork to defend the presence of the new appellation.
 """
 
 [[atoms]]
@@ -61,7 +67,7 @@ While doing so, I noticed that as of mid-2021, ACM supports non-RSA certificates
 
 But as complete of a product as AWS is, sometimes it has some fairly mistifying edges. I was given the choice between the P256 and P384 curves, opted for P384, but then found that I couldn't select my new certificate over in CloudFront (AWS' CDN). Upon further reading I found [CloudFront only supports P256](https://aws.amazon.com/about-aws/whats-new/2021/07/amazon-cloudfront-now-supports-ecdsa-certificates-for-https-connections-to-viewers/). This limitation is not explained or justified. Just a vague "sorry, P256 only even though our other product generates P384".
 
-Amazon is an absolute powerhouse beyond all doubt, but is the weirdest of the trillion dollar companies.
+Amazon is an absolute powerhouse beyond all doubt, but is the weirdest of the trillion dollar cohort.
 """
 
 [[atoms]]
@@ -199,7 +205,7 @@ Is this a food picture blog now? I hope not. I'll try not to make a habit of it.
 
 My curiosity was piqued when I found out there's a Mensho subsidary in the ground floor of the Twitter building. Mensho's a ramen company out of Japan that opened a shop called Mensho Tokyo a few years ago in San Francisco, notable for having the best ramen on this continent, and an omnipresent 50+ person lineup out the door and down the street, something I thought would clear with time, but never did. In 2021, they expanded into Twitter's ground floor with a new installment -- Jikasei Mensho.
 
-Unlike the original, Jikasei Mensho's more of a fast lunch stop sort of deal, and as far as I can tell, not great? You walk up to a counter, order from a computer McDonald's-style, and your minimum tip option is 15% on a $22 bowl of fast food ramen for the privilege. It arrives in a plastic bowl. The chashu was good, the eggs were good, but the noodles and broth subpar, and some of furnishings questionable, like sliced lemons. Maybe I happened across it on an off day, or maybe ramen tastes worse out of plastic.
+Unlike the original, Jikasei Mensho's more of a fast lunch stop sort of deal, and as far as I can tell, not great? You walk up to a counter, order from a computer McDonald's-style, and your minimum tip option is 15% on a $22 bowl of fast food. It arrives in a plastic bowl. The chashu was good, the eggs were good, but the noodles and broth subpar, and some of furnishings questionable, like sliced lemons. Maybe I happened across it on an off day, or maybe ramen tastes worse out of plastic.
 
 Post-Elon return-to-office Twitter is a bit more lively. There were quite a few people down in the cafeteria area where Jikasei Mensho is, where only a few months ago it all sat empty.
 """
