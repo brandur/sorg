@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-12T14:00:21-08:00
+  description = """\
+Well worth reading: [It's so sad when old people romanticize their heydays, also the 90s were objectively the best time to be alive](https://freddiedeboer.substack.com/p/its-so-sad-when-old-people-romanticize).
+
+Don't get me wrong, I'd hate to give up all the great stuff I've gotten access to over the last twenty years: access to all information ever produced by humanity a pocket's reach away, portable computers with functionally infinite computing power and battery life, AirPods, ANC, Google Maps, cameras/lenses with [better low light performance than my eye](/sequences/040), Amazon Prime, and many more (notably, all of which are advancements in consumer electronics rather than hard science ...).
+
+But while these things have indisputably made things more convenient, they haven't made things _better_.
+
+The wins are small and nominal and the losses are large and profound. Community and social cohesion is at all time lows. Low key meeting spaces like malls, music venues, rundown bookstores, and dive bars are mostly gone -- real estate draws such a premium that no one can afford to have it go to waste. Everywhere you go, every man, woman, and child buried in their personal glass.
+
+Check out the article. It's more convincing than I am.
+"""
+
+[[atoms]]
   published_at = 2023-02-12T11:29:31-08:00
   description = """\
 Published fragment [adventures in password hashing](/fragments/password-hashing), in which we inherit PBKDF2 hashes from Keycloak, and after a couple intermediate steps, migrate to [Argon2id](https://en.wikipedia.org/wiki/Argon2).
