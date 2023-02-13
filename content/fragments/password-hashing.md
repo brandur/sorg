@@ -73,7 +73,7 @@ That's not to say that nobody does, but I have a sneaking suspicion that the ove
 
 All to say, it might be a good time to check up on what algorithm you're using, your input work factors, and compare them [to the OWASP cheat sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#password-hashing-algorithms) (a very easy read, I promise).
 
-This subject might sound esoteric, but it's not terrible. Best practices are well-documented and libraries are readily available. In Go, I didn't even have to leave the stdlib -- `x/crypto` has ready-made implementations for both PBKDF2 and Argon2. The whole loop described above took about two days of work.
+This subject might sound esoteric, but it's not terrible. Best practices are well-documented and libraries are readily available. In Go, I didn't even have to look outside the [`golang.org/x`](https://golang.org/x) tree -- `golang.org/x/crypto` has ready-made implementations for both PBKDF2 and Argon2. The whole loop described above took about two days of work.
 
 A common pitfall in the security postures of many organizations is that seals are only checked _after_ something catastrophic occurs, which helps prepare for the next event, but does nothing to help with what just happened. No time like the present and all of that.
 
