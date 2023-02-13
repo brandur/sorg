@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-13T12:48:53-08:00
+  description = """\
+Published a follow up to my write up on password hashing: [Migrating weaker password hashes by nesting them in an outer hash](/fragments/password-hash-nesting).
+"""
+
+[[atoms]]
   published_at = 2023-02-12T14:00:21-08:00
   description = """\
 Well worth reading: [It's so sad when old people romanticize their heydays, also the 90s were objectively the best time to be alive](https://freddiedeboer.substack.com/p/its-so-sad-when-old-people-romanticize).
