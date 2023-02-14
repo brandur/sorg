@@ -11,6 +11,38 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-14T11:03:31-08:00
+  description = """\
+Follow up from yesterday's write up on [password hash migration](/fragments/password-hash-nesting). We're fully migrated:
+
+``` sql
+=> SELECT distinct(password_algorithm) FROM account;
+   password_algorithm
+------------------------
+ (null)
+ argon2id
+ argon2id-pbkdf2-sha256
+```
+
+(Notice: No vanilla `pbkdf2-sha256` left. `(null)` is for password-less SSO-based accounts.)
+
+I captured a backup beforehand just in case, but otherwise went for a pretty aggressive migration strategy of ovewriting hashes without intermediary fields or other major hedges. It went smoothly. Here's a log line showing a hash upgrade to Argon2id-only, implying the user was able to sucessfully login via the nested hashing scheme:
+
+```
+password_hash_upgrade_line: Upgraded from "argon2id-pbkdf2-sha256" to "argon2id"
+    [account: 03c97908-32a3-445b-a52e-03aa9fdec5f8] [hash time: 0.024923s]
+```
+
+Some guards I put in:
+
+* Wrote tests for the migration. 95% of programmers have the attitude that tests are for code, but they're unneeded for migrations, even complex ones. IMO, scary.
+* Wrote the critical section of code to hash the hash in triplicate. Once to do the work, once to check the work from tests, and again in the migrator to hash again to check its own work. Writing it manually three times reduced the likelihood of me accidentally flipping the hash or parameter order by accident.
+* Rolled the migrator out with a dry run flag, prompting it to do everything it'd normally do in a complete run, but then roll back the transaction afterwards, producing useful logging we can verify, but discarding results. (We use this transactional dry run trick a lot.)
+* Used a compiled language with explicit, static types so my code is helping prevent bugs instead of creating them (*cough* Ruby).
+* Manually tested the migration of my own passwords in a production-like-but-not-production environment before rolling out to prod.
+"""
+
+[[atoms]]
   published_at = 2023-02-13T12:48:53-08:00
   description = """\
 Published a follow up to my write up on password hashing: [Migrating weaker password hashes by nesting them in an outer hash](/fragments/password-hash-nesting).
