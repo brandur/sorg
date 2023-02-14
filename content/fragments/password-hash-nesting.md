@@ -14,7 +14,7 @@ We can do so by taking our current PBKDF2 hashes, and _re-hashing_ those values 
 
     Argon2id(PBKDF2(original_password))
 		
-The final hash is as strong as its strongest link. An attacker can't brute force the PBKDF2 component without also brute forcing the (much stronger) Argon2id component. All weaker hashes are banished from our database forever.
+The final hash is as strong as its strongest link (disclaimer [2]). An attacker can't brute force the PBKDF2 component without also brute forcing the (much stronger) Argon2id component. All weaker hashes are banished from our database forever.
 
 The login path now handles all three cases (Argon2id only, PBKDF2 only, PBKDF2 wrapped in Argon2id):
 
@@ -44,4 +44,8 @@ As before with vanilla PBKDF2 hashes, on any successful login we take the opport
 
 It's been a fun little project. Now, with any luck, this'll be the last time I look at password hashes for another few years.
 
+**Follow up:** A potential downside to this approach: IAM products like Okta will generally support a variety of password hashing strategies so that new clients can import their existing set of users without everyone having to reset their password. Normal hashing strategies like PBKDF2, bcrypt, or Argon2id are probably supported out of the box, but by introducing a compound hash like described here you're getting into non-standard territory, meaning a custom adapter would be required, which may or may not be possible depending on the product. That's fine for us because we just got off an IAM product and aren't going to be using a different one anytime soon, but your requirements may vary.
+
 [1] Not too weak, but below work factor 2023 recommendations.
+
+[2] Saying that the compound hash is "as strong as its strongest link" is directionally true, but [Predrag points out](https://twitter.com/PredragGruevski/status/1625247494274797569) that it may not hold if a math-based attack is discovered. For example, say it's found that PBKDF2 hashes after 10k iterations cluster with high probability into only 2^20 values. That smaller set of 2^20 values could then be used to attack the Argon2id wrapper, thereby breaking the stronger link with a weakness in the weaker.
