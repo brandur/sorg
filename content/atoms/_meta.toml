@@ -20,16 +20,16 @@ We run our Postgres service on Postgres, and develop like we prescribe others to
 
 ``` sql
 ALTER TABLE account
-    ADD CONSTRAINT password_pbkdf2_not_null_check CHECK (
-        (password_algorithm <> 'argon2id-pbkdf2-sha256' AND password_algorithm <> 'pbkdf2-sha256')
-        OR ((password_algorithm = 'argon2id-pbkdf2-sha256' OR password_algorithm = 'pbkdf2-sha256')
-            AND (password_pbkdf2_hash_iterations IS NOT NULL))
+    ADD CONSTRAINT pbkdf2_not_null_check CHECK (
+        (algorithm <> 'argon2id-pbkdf2-sha256' AND algorithm <> 'pbkdf2-sha256')
+        OR ((algorithm = 'argon2id-pbkdf2-sha256' OR algorithm = 'pbkdf2-sha256')
+            AND (pbkdf2_hash_iterations IS NOT NULL))
     );
 ALTER TABLE account
-    ADD CONSTRAINT password_pbkdf2_null_check CHECK (
-        (password_algorithm = 'argon2id-pbkdf2-sha256' OR password_algorithm = 'pbkdf2-sha256')
-        OR ((password_algorithm <> 'argon2id-pbkdf2-sha256' AND password_algorithm <> 'pbkdf2-sha256')
-            AND (password_pbkdf2_hash_iterations IS NULL))
+    ADD CONSTRAINT pbkdf2_null_check CHECK (
+        (algorithm = 'argon2id-pbkdf2-sha256' OR algorithm = 'pbkdf2-sha256')
+        OR ((algorithm <> 'argon2id-pbkdf2-sha256' AND algorithm <> 'pbkdf2-sha256')
+            AND (pbkdf2_hash_iterations IS NULL))
     );
 ```
 
