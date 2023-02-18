@@ -27,7 +27,7 @@ require (
 	github.com/stretchr/testify v1.8.0
 	github.com/yosssi/ace v0.0.5
 	github.com/yosssi/gcss v0.1.0
-	golang.org/x/net v0.3.0
+	golang.org/x/net v0.7.0
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2
 	gopkg.in/mailgun/mailgun-go.v1 v1.1.1
 )
@@ -39,7 +39,7 @@ require (
 
 require (
 	github.com/go-playground/validator/v10 v10.11.1
-	golang.org/x/term v0.3.0
+	golang.org/x/term v0.5.0
 )
 
 require (
@@ -56,8 +56,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	golang.org/x/crypto v0.4.0 // indirect
-	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/text v0.5.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
 	gopkg.in/russross/blackfriday.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
