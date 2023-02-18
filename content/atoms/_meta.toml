@@ -11,6 +11,42 @@
 ################################################################################
 
 [[atoms]]
+  length_exempted = true
+  published_at = 2023-02-17T18:17:27-08:00
+  description = """\
+One more note on password migrations: damn it, we did find one bug. Luckily, an internal user ran into it early and it was never experienced publicly.
+
+We run our Postgres service on Postgres, and develop like we prescribe others to, with a core tenet being data consistency. I'd added these `CHECK` constraints:
+
+``` sql
+ALTER TABLE account
+    ADD CONSTRAINT password_pbkdf2_not_null_check CHECK (
+        (password_algorithm <> 'argon2id-pbkdf2-sha256' AND password_algorithm <> 'pbkdf2-sha256')
+        OR ((password_algorithm = 'argon2id-pbkdf2-sha256' OR password_algorithm = 'pbkdf2-sha256')
+            AND (password_pbkdf2_hash_iterations IS NOT NULL))
+    );
+ALTER TABLE account
+    ADD CONSTRAINT password_pbkdf2_null_check CHECK (
+        (password_algorithm = 'argon2id-pbkdf2-sha256' OR password_algorithm = 'pbkdf2-sha256')
+        OR ((password_algorithm <> 'argon2id-pbkdf2-sha256' AND password_algorithm <> 'pbkdf2-sha256')
+            AND (password_pbkdf2_hash_iterations IS NULL))
+    );
+```
+
+They're a little awkward to read, but the first guarantees we have a value for PBKDF2 hash iterations where the password involves PBKDF2. The second guarantees we _don't_ value a value where it doesn't.
+
+There was a case in the password reset flow where we'd upgrade a newly reset password to Argon2id, but if the old password was PBKDF2, forgot to empty its PBKDF2 hash iterations. The `CHECK` constraint failed along with the password reset.
+
+We got a fix out quickly, but there's an argument to be made that it wasn't worth breaking a critical path (even temporarily) for data consistency.
+
+The cost/benefit of this case is close enough that I might agree, but would still form a counterargument. A 500 is bad, but when this sort of thing would happen at Stripe (on Mongo, no `CHECK`s), instead of some 500s you'd end up with a pile of inconsistent data written that someone would have to manually repair afterwards. A small error that was in production for only a minute or two would lead to a multi-week cleanup effort, with many a bespoke migration and outbound email written.
+
+When `CHECK`s (or FKs, data type validations, etc.) fail, no tainted state makes its way to the database. There's user impact until the problem is fixed, but no impact afterwards. Also, even if a user request succeeds in the non-`CHECK` alternative with inconsistent data written, it doesn't mean that things are actually _right_, and often leads users having to find out for themselves that something's broken thanks to the inconsistencies.
+
+We'll probably keep doing the `CHECK`s.
+"""
+
+[[atoms]]
   published_at = 2023-02-14T11:03:31-08:00
   description = """\
 Follow up from yesterday's write up on [password hash migration](/fragments/password-hash-nesting). We're fully migrated:
