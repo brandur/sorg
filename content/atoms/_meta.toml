@@ -11,6 +11,19 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-19T09:34:31-08:00
+  description = """\
+In a surprise twist, Chris Wanstrath ([@defunkt](https://twitter.com/defunkt)), one of the founders of GitHub, has taken back to Twitter after a long dormancy. Better yet, the subject matter is entirely about engineering, product, and occasionally metal. [For example](https://twitter.com/defunkt/status/1623395363708346368):
+
+> Last tidbit on DMs: We almost moved from MySQL to Postgres early on, and even had a branch going, but some of the horrible SQL queries I wrote for the private messaging feature didn't work in Postgres. So, MySQL stayed.
+
+You have to wonder about the counterfactual there, in which GitHub switched to Postgres and had to scale it, possibly having to develop a Vitess-like layer on top.
+
+GitHub may just be the only decent candidate for the Apple of our generation, a company that did product well, continues to do it well, didn't fail or turn evil, and whose history is something you'd actually want to read about. Chris, maybe do a book next?
+"""
+
+
+[[atoms]]
   published_at = 2023-02-18T18:42:56-08:00
   description = """\
 The latest in the accidental culture war: [Twitter is sunsetting SMS as a 2FA method](https://blog.twitter.com/en_us/topics/product/2023/an-update-on-two-factor-authentication-using-sms-on-twitter).
