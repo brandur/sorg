@@ -15,18 +15,18 @@
   description = """\
 The latest in the accidental culture war: [Twitter is sunsetting SMS as a 2FA method](https://blog.twitter.com/en_us/topics/product/2023/an-update-on-two-factor-authentication-using-sms-on-twitter).
 
-As usual, the I-hate-whoever-WaPo-tells-me-to crowd immediately lost their minds, flying into spectacular fits of performative outrage, dramatically falling to the ground, and beating their tiny fists against the floor as they wailed about Elon compromising security for society's most vulnerable, like the downtrodden legacy blue-check elite who refuse to pay $8.
+As usual, the I-hate-whoever-WaPo-tells-me-to crowd immediately lost their minds, flying into spectacular fits of performative outrage, dramatically falling to the ground and beating their tiny fists against the floor wailing about Elon compromising security for society's most vulnerable, like the downtrodden legacy blue-check elite, whose refusal to pay $8 puts them on moral parity with the conscientious objectors who fled north to dodge their draft for the Vietnam War.
 
-For anyone who doesn't follow this too closely, SMS isn't just the worst way to do second factor auth, it's the worst way _by far_:
+For anyone who doesn't follow this closely, SMS isn't just the worst way to do second factor auth, it's the worst _by far_:
 
-1. Being monopolies that don't actually have to be good at what they do, the security posture of telcos is total garbage, and [simjacking](https://en.wikipedia.org/wiki/SIM_swap_scam) isn't just a common attack, it's terrifyingly common, and reasonably easy. The Twitter account of @Jack himself was taken over by this method as recently as 2019.
-2. Lapsed phone numbers get reused, and new subscribers can often pick from a pool. Like fish in a barrel.
-3. UX-wise, SMS deliverability sucks, especially in countries without modern infrastructure, and especially in our new age of ubiquitous SMS spam.
-4. Sending SMS is expensive. So not only do you have reduced security, but you get to pay extra for the privilege.
+1. Being monopolies that don't actually have to be good at what they do, the security posture of telcos is total garbage, and [simjacking](https://en.wikipedia.org/wiki/SIM_swap_scam) isn't just common, it's terrifyingly common. The Twitter account of @Jack himself was taken over by this method as recently as 2019.
+2. Lapsed phone numbers get reused, and new subscribers can often pick from a pool. Fish in a barrel.
+3. UX-wise, SMS deliverability sucks, especially in countries without modern infrastructure, and especially in our age of ubiquitous SMS spam.
+4. Sending SMS is expensive. So not only do you get reduced security, but you get to pay extra for the privilege.
 
 If you're a user, you shouldn't use it. If you're a provider, you shouldn't provide it.
 
-Sure, Musk's motivation for retiring it is probably mostly (4), but that doesn't make it a bad idea. Sure, it's kind of weird that Twitter Blue users can still use it, but that's Twitter saying, "if you pay money, you have a license to do whatever you want, even opt into reduced security (at your own risk)". You also have to think that paying users are < 1% of the platform, so their continued option to use SMS has negligble effect on the whole.
+Sure, Musk's motivation for retiring it is probably mostly (4), but that doesn't make it a bad idea. Sure, it's weird that Twitter Blue users can still use it, but that's Twitter saying, "if you pay money, you have a license to do whatever you want, even opt into reduced security (at your own risk)". You also have to think that paying users are < 1% of the platform, so their continued option to use SMS has negligble effect on the whole.
 """
 
 [[atoms]]
