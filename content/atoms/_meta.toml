@@ -11,6 +11,30 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-20T15:17:59-08:00
+  description = """\
+Published fragment [Findings from six months of running `govulncheck` in CI](/fragments/govulncheck-ci).
+
+```
+Vulnerability #1: GO-2023-1571
+  A maliciously crafted HTTP/2 stream could cause excessive CPU
+  consumption in the HPACK decoder, sufficient to cause a denial
+  of service from a small number of small requests.
+
+  More info: https://pkg.go.dev/vuln/GO-2023-1571
+
+  Module: golang.org/x/net
+    Found in: golang.org/x/net@v0.6.0
+    Fixed in: golang.org/x/net@v0.7.0
+
+    Call stacks in your code:
+Error: client/awsclient/aws_client.go:156:34: awsclient.Client.S3_GetObject
+    calls github.com/aws/aws-sdk-go-v2/service/s3.Client.GetObject,
+    which eventually calls golang.org/x/net/http2.noDialH2RoundTripper.RoundTrip
+```
+"""
+
+[[atoms]]
   published_at = 2023-02-20T11:11:25-08:00
   description = """\
 A follow up from [yesterday's post on GitHub being close to having ended up as a Postgres stack](/atoms/gjt7vds), somebody pulled Tobi from Shopify into the conversation, and it turns out [Shopify was a near miss on Postgres too](https://twitter.com/tobi/status/1627512397803008001):
@@ -21,7 +45,7 @@ A follow up from [yesterday's post on GitHub being close to having ended up as a
 [[atoms]]
   published_at = 2023-02-19T13:17:21-08:00
   description = """\
-Published fragment: [Honest health checks that hit the database](/fragments/database-health-check).
+Published fragment [Honest health checks that hit the database](/fragments/database-health-check).
 
 ``` go
 errGroup, ctx := errgroup.WithContext(ctx)
