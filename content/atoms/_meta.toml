@@ -9,6 +9,15 @@
 # "atom" snippet to insert an entry template.
 #
 ################################################################################
+
+[[atoms]]
+  published_at = 2023-02-20T11:11:25-08:00
+  description = """\
+A follow up from [yesterday's post on GitHub being close to having ended up as a Postgres stack](/atoms/gjt7vds), somebody pulled Tobi from Shopify into the conversation, and it turns out [Shopify was a near miss on Postgres too](https://twitter.com/tobi/status/1627512397803008001):
+
+> Yea. Shopify beta was on Postgres. But in our case it was the poor state of replication (in 2005) that made me switch to mysql before launch.
+"""
+
 [[atoms]]
   published_at = 2023-02-19T13:17:21-08:00
   description = """\
