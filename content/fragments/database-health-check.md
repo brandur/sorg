@@ -8,7 +8,7 @@ In web services, a common pattern is a health check, often used for something li
 
 We're running an HA-ready `premium-0` database on Heroku [1], and a few weeks ago it has some brief downtime as its leader was lost and HA standby rotated into place. The downtime wasn't well represented on our status page, and although more green might make us look better short term, it's not honest to people who might be experiencing the outage and trying to confirm it.
 
-Downtime wasn't represented because the health check endpoint was a no-op HTTP handler that ran perfectly fine even when the database was down. I followed up by adding a separate health check at `GET /health-checks/complete` which makes an extra effort to exercise the stack more thoroughly by opening connections to both our databases (the second being our [ephemeral DB](/fragments/ephemeral-eb)) and running a `SELECT 1` to make sure they work:
+Downtime wasn't represented because the health check endpoint was a no-op HTTP handler that ran perfectly fine even when the database was down. I followed up by adding a separate health check at `GET /health-checks/complete` which makes an extra effort to exercise the stack more thoroughly by opening connections to both our databases (the second being our [ephemeral DB](/fragments/ephemeral-db)) and running a `SELECT 1` to make sure they work:
 
 ``` go
 {
