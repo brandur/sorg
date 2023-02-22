@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-21T16:34:34-08:00
+  description = """\
+After a three week odyssey involving cascading dependency failures and 24-hour build loops, [Go 1.20 is released on Homebrew](https://github.com/Homebrew/homebrew-core/pull/122082).
+"""
+
+[[atoms]]
   published_at = 2023-02-20T15:17:59-08:00
   description = """\
 Published fragment [Findings from six months of running `govulncheck` in CI](/fragments/govulncheck-ci).
