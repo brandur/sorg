@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-22T18:35:09-08:00
+  description = """\
+Last week, in a change presumably driven by LastPass' recent compromise, [Bitwarden released support for Argon2](https://github.com/bitwarden/clients/releases/tag/web-v2023.2.0). We [moved to Argon2id just two days before](/fragments/password-hashing). Some good news about LastPass' loss is that it's been everybody else's gain as other products take notice and shore up their own security.
+"""
+
+
+[[atoms]]
   published_at = 2023-02-21T16:34:34-08:00
   description = """\
 After a three week odyssey involving cascading dependency failures and 24-hour build loops, [Go 1.20 is released on Homebrew](https://github.com/Homebrew/homebrew-core/pull/122082).
