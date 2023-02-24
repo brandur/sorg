@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2023-02-22T18:35:09-08:00
   description = """\
-Last week, in a change presumably driven by LastPass' recent compromise, [Bitwarden released support for Argon2](https://github.com/bitwarden/clients/releases/tag/web-v2023.2.0). We [moved to Argon2id just two days before](/fragments/password-hashing). Some good news about LastPass' loss is that it's been everybody else's gain as other products take notice and shore up their own security.
+Last week, in a change presumably driven by LastPass' recent compromise, [Bitwarden released support for Argon2](https://github.com/bitwarden/clients/releases/tag/web-v2023.2.0). We'd [moved to Argon2id just two days before](/fragments/password-hashing). Some good news about LastPass' loss is that it's been everybody else's gain as other products take notice and shore up their own security.
 """
 
 
