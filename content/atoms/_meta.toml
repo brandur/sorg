@@ -11,11 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-02-26T10:17:28-08:00
+  description = """\
+From Amazon Route 53: [Workload isolation using shuffle sharding](https://aws.amazon.com/builders-library/workload-isolation-using-shuffle-sharding/).
+
+In short, Route 53 domains are sharded by so they map to one of 2,048 virtual servers. The sharding process means that some domains share servers with other domains, and under a normal sharding algorithm, domains would share all their servers with those same domains on their shard. This isn't great because if I'm an unlucky customer on the same shard as github.com who's getting DDOSed all the time, if their shards are taken down that means I'm down too. "Shuffle sharding" defines sharding such that even if I share servers with github.com, some of the servers I map to are "shuffled" so that I'm also guaranteed to _not_ share some with github.com. Even if every server hosting github.com goes down, some of mine are still up.
+
+The link above explains it in more detail and with diagrams.
+"""
+
+[[atoms]]
   published_at = 2023-02-22T18:35:09-08:00
   description = """\
 Last week, in a change presumably driven by LastPass' recent compromise, [Bitwarden released support for Argon2](https://github.com/bitwarden/clients/releases/tag/web-v2023.2.0). We'd [moved to Argon2id just two days before](/fragments/password-hashing). Some good news about LastPass' loss is that it's been everybody else's gain as other products take notice and shore up their own security.
 """
-
 
 [[atoms]]
   published_at = 2023-02-21T16:34:34-08:00
