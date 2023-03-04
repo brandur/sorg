@@ -9,7 +9,6 @@ env:
 
   CONCURRENCY: 10 # reduced because I think I'm running into Dropbox rate problems
   ENABLE_GOAT_COUNTER: true
-  GO_VERSION: 1.19
   GOOGLE_ANALYTICS_ID: UA-47798518-1
 
   # Paths for various manually installed utilities. Don't try to use $HOME
@@ -32,11 +31,15 @@ jobs:
     timeout-minutes: 3
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Install Go
         uses: actions/setup-go@v3
         with:
+          cache: true
           check-latest: true
-          go-version: ${{ env.GO_VERSION }}
+          go-version-file: "go.mod"
 
       # It'd be nice to take apt-get back out of the flow since it's so slow,
       # but we seem to need it for a few things:
@@ -72,9 +75,6 @@ jobs:
         run: |
           curl --compressed -L -O https://github.com/brandur/mozjpeg-builder/releases/download/master/mozjpeg_amd64.deb
           sudo dpkg -i mozjpeg_amd64.deb
-
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: Debug
         run: |
