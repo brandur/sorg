@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-04T11:26:28-08:00
+  description = """\
+Downskill skiing is a very uneven sport. Trips are booked months in advance, and the time you get there, you're at the mercy of the weather gods. Occasionally you can be buried in snow, like the Tahoe region was this last week with 140"+ of fresh powder. Other times you get nothing, and have to find ways to make your own fun under scratchy conditions.
+
+After years of bad luck skiing BC's interior, we finally got a good one. A couple big dumps last week before we arrived to establish a base, and fresh snow Sunday, Monday, Tuesday, and Thursday while we were here. What a year.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/y12g577wsivsa8l/2W4A2337-tracks.JPG?dl=1"
+    slug = "powder"
+
+[[atoms]]
   published_at = 2023-03-04T10:34:59-08:00
   description = """\
 A small CI improvement we made last week: when running Go workflows we'd generally define a variable for `GO_VERSION` near the top and pass it into each `actions/setup-go` below:
