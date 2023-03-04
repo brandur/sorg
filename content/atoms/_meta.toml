@@ -11,6 +11,43 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-04T10:34:59-08:00
+  description = """\
+A small CI improvement we made last week: when running Go workflows we'd generally define a variable for `GO_VERSION` near the top and pass it into each `actions/setup-go` below:
+
+``` yaml
+env:
+  GO_VERSION: 1.20
+
+steps:
+  - name: Install Go
+    uses: actions/setup-go@v3
+    with:
+      cache: true
+      check-latest: true
+      go-version: ${{ env.GO_VERSION }}
+```
+
+GitHub Actions don't allow steps to be extract and moduralized in any way, so with many jobs in the workflow, the `actions/setup-go` step needs to be duplicated many times over. Defining `GO_VERSION` meant that when upgrading to a new version of Go, we only had to change one value in the file.
+
+But it still wasn't optimal because when upgrading to a new version of Go, we'd have to change the version in `go.mod` (twice actually, because we're on Heroku and Heroku's dumb `+heroku goVersion 1.20` magic comment is mandatory), and then _also_ in every GitHub Actions workflow `.yaml` file. It's easy to forget one and break something.
+
+There's an easy solution. It turns out that `actions/setup-go` supports a `go-version-file` directive that reads a version out of a `go.mod` file:
+
+``` yaml
+steps:
+  - name: Install Go
+    uses: actions/setup-go@v3
+    with:
+      cache: true
+      check-latest: true
+      go-version-file: "go.mod"
+```
+
+Now when we upgrade to a new Go, only one file is changed.
+"""
+
+[[atoms]]
   published_at = 2023-02-26T10:17:28-08:00
   description = """\
 From Amazon Route 53: [Workload isolation using shuffle sharding](https://aws.amazon.com/builders-library/workload-isolation-using-shuffle-sharding/).
