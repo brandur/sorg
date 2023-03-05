@@ -11,6 +11,21 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-03-05T08:49:26-08:00
+  slug = "043"
+  title = "Outpost"
+  description = """
+HQ for the Summit Patrol at the top of Silver Star in inner BC. This shack's been standing longer than I've been alive, and I've been seeing it almost every year since. Hop on the Comet Express, take a hard left at the top, and you're there.
+
+Great ski week this year. We're not quite getting dumped on in quite the same way as the Sierras back in California, but I'll take the more interesting terrain and more sparsely crowded lifts any day.
+
+The late afternoons of many days this week looked like this one, with extensive cloud cover (with luck to bring some flakes in the coming hours), and a dim sun showing through above. It's BC, and although not warm, it wasn't too cold either.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/1vf339tks7tvlg5/2W4A2356.JPG?dl=1"
+    slug = "043"
+
+[[entries]]
   published_at = 2023-02-11T12:57:22-08:00
   slug = "042"
   title = "A wall alive"

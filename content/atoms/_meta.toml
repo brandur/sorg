@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-05T08:49:25-08:00
+  description = """\
+Published [sequence 043](/sequences/043), outpost.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/043"
+    original_image_url = "https://www.dropbox.com/s/1vf339tks7tvlg5/2W4A2356.JPG?dl=1"
+    slug = "summit-patrol"
+
+[[atoms]]
   published_at = 2023-03-04T11:26:28-08:00
   description = """\
 Downskill skiing is a very uneven sport. Trips are booked months in advance, and the time you get there, you're at the mercy of the weather gods. Occasionally you can be buried in snow, like the Tahoe region was this last week with 140"+ of fresh powder. Other times you get nothing, and have to find ways to make your own fun under scratchy conditions.
