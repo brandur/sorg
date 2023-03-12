@@ -11,6 +11,21 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-12T15:51:14-07:00
+  description = """\
+Published fragment [`CL.THROTTLE` implemented in DragonflyDB](/fragments/dragonflydb-cl-throttle), in which the rate limiting command from [redis-cell](https://github.com/brandur/redis-cell) is implemented in DragonflyDB.
+
+```
+CL.THROTTLE user123 15 30 60 1
+               ▲     ▲  ▲  ▲ ▲
+               |     |  |  | └───── apply 1 token (default if omitted)
+               |     |  └──┴─────── 30 tokens / 60 seconds
+               |     └───────────── 15 max_burst
+               └─────────────────── key "user123"
+```
+"""
+
+[[atoms]]
   published_at = 2023-03-11T13:11:45-08:00
   description = """\
 Published fragment [RFCs and review councils](/fragments/rfcs-and-review-councils), prompted by Squarespace's write up on their RFC and review process, which sounds very close to Stripe's.
