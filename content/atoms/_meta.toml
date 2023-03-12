@@ -11,6 +11,33 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-12T16:24:16-07:00
+  description = """\
+Published fragment [Policy on util packages](/fragments/policy-on-util-packages).
+
+Stated simply, general `util` packages aren't allowed because they tend to become dumping grounds. But, specifically targeted util packages with narrow, focused domains, are.
+
+```
+util/
+    assetutil/
+    cookieutil/
+    cryptoutil/
+    emailutil/
+    jsonutil/
+    maputil/
+    passwordutil/
+    ptrutil/
+    randutil/
+    signingutil/
+    sliceutil/
+    stringutil/
+    testutil/
+    timeutil/
+    uuidutil/
+```
+"""
+
+[[atoms]]
   published_at = 2023-03-12T15:51:14-07:00
   description = """\
 Published fragment [`CL.THROTTLE` implemented in DragonflyDB](/fragments/dragonflydb-cl-throttle), in which the rate limiting command from [redis-cell](https://github.com/brandur/redis-cell) is implemented in DragonflyDB.
