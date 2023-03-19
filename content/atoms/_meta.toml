@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-19T14:46:00-07:00
+  description = """\
+Published fragment [on last week's layoffs from Meta](/fragments/meta-layoffs), on Mark Zuckerberg's words on manager-heavy organizations and remote work.
+"""
+
+[[atoms]]
   published_at = 2023-03-19T14:16:28-07:00
   description = """\
 The crypto crowd is at it again, with the latest being [Balaji saying he'd bet $1M that Bitcoin will be worth $1M within 90 days](https://twitter.com/balajis/status/1636797265317867520) (current price is $26k). Multiple high net worth individuals have committed to taking the bet. I assume what happens next is that the idea is memoryholed, but this could be an epic win for crypto-skeptics if it takes.
