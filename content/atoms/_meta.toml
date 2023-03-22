@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-03-21T19:14:57-07:00
+  description = """\
+[DPReview.com is shutting down on April 10th](https://www.dpreview.com/news/5901145460/dpreview-com-to-close).
+
+G'damn. This is one of maybe three to five websites that I visit every day. It's well known for its in-depth reviews, but was also one of the few sites out there that hadn't degenerated into the labyrinth of clickbait and dark patterns that is the modern web. If I wanted to see which lenses Canon's released this year or last, DPreview is the _only_ place I'd think about getting that information, far more usable than even Canon's official site.
+
+I'd forgotten that Amazon had bought them -- a shame. An underperforming division of the trillion-dollar everything-store company might be a reasonably sustainable independent business on its own terms.
+"""
+
+
+[[atoms]]
   published_at = 2023-03-19T14:46:00-07:00
   description = """\
 Published fragment [on last week's layoffs from Meta](/fragments/meta-layoffs), on Mark Zuckerberg's words on manager-heavy organizations and remote work.
