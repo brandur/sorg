@@ -1149,6 +1149,7 @@ func (a *Atom) Equal(other *Atom) bool {
 	return a.Description == other.Description &&
 		slices.EqualFunc(a.Photos, other.Photos, func(a, b *Photo) bool { return a.Equal(b) }) &&
 		a.PublishedAt.Equal(other.PublishedAt) &&
+		a.Title == other.Title &&
 		slices.EqualFunc(a.Videos, other.Videos, func(a, b *AtomVideo) bool { return a.Equal(b) })
 }
 

@@ -11,10 +11,15 @@
 ################################################################################
 
 [[atoms]]
+  title = "A retrospective on Keycloak"
   length_exempted = true
   published_at = 2023-04-02T12:37:28-07:00
   description = """\
-I mentioned a few weeks back that [we'd migrated off Keycloak](/fragments/password-hashing). A few reasons why:
+A few weeks back I'd mentioned in passing that [we'd migrated off Keycloak](/fragments/password-hashing).
+
+I got a question about why, so I'm putting down some rationale here. I respect open-source projects a lot, so this isn't meant to throw shade on Keycloak in any way, but I believe in being transparent about these things so people can read alternative arguments and make better-informed tech decisions.
+
+A few reasons why we moved away from Keycloak:
 
 * It has an API for integration, but its API reference offers precious little beyond the names of API resources and fields. There was never enough documentation to integrate a new feature, always necessitating trial and error.
 
