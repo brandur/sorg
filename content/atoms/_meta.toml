@@ -11,6 +11,27 @@
 ################################################################################
 
 [[atoms]]
+  length_exempted = true
+  published_at = 2023-04-02T12:37:28-07:00
+  description = """\
+I mentioned a few weeks back that [we'd migrated off Keycloak](/fragments/password-hashing). A few reasons why:
+
+* It has an API for integration, but its API reference offers precious little beyond the names of API resources and fields. There was never enough documentation to integrate a new feature, always necessitating trial and error.
+
+* Core authentication-related flows were the most likely to regress because writing tests against a remote API requires a lot of stubbing. With heavy stubbing involved, you really only end up writing tests that verify that your stubs are set up the way you expected them to be, and that made it very easy to break things because mistakes would not be caught by CI.
+
+* Keycloak pages like login or email verification are customized using a template language that was divergent from our main Frontend stack, and which no one was every particularly excited to write. They'd languish without updates and look awful compared to the rest of the site.
+
+* Operationally, it was a black box wherein if something went wrong, no one knew how to fix it. We had a very near miss where a Heroku regression was crashing Keycloak on start up with a [completely inscrutable backtrace](https://github.com/mieckert/keycloak-heroku/issues/4), and which luckily manifested in our staging environment first, but which we knew was coming for prod on the next 24 hour dyno cycle. None of the people who'd chosen and integrated Keycloak had even the faintest idea how to diagnose the problem or fix it. In the end we were able to debug it by digging deeply in Keycloak source code, but were within hours of our login system being hard down with no fix in sight.
+
+* I wasn't confident of its security bonafides given the glimpses into its internals I'd seen. For example, it defaults to PBFKD2 for password hashing at 27,500 iterations, far below the 2023 recommendation [from OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2) of 600,000 iterations. I admit to having only this one example and maybe everything else is above bar, but who knows.
+
+* It's a huge Java app and not that cheap to run. It needed a performance dyno on Heroku due to high memory requirements, and between that and a database in staging and prod it was $800/month, or about half our total bill.
+
+I'm usually against the NIH mindset, but sometimes it's right. Looking up best practices for storing passwords is easier than looking up how Keycloak does it, the answer to which isn't documented and only exists in Discourse forums or by reading source code. Integrating SSO isn't that hard anymore thanks the widespread standardization around [OIDC](https://openid.net/connect/). Implementing flows for email verifications and password resets is a little more work, but you end up having to do most of it under Keycloak anyway if you want a custom theme.
+"""
+
+[[atoms]]
   published_at = 2023-03-21T19:14:57-07:00
   description = """\
 [DPReview.com is shutting down on April 10th](https://www.dpreview.com/news/5901145460/dpreview-com-to-close).
