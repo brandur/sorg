@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-07T10:01:29-07:00
+  description = """\
+Published [sequence 044](/sequences/044), indomitable.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/044"
+    original_image_url = "https://www.dropbox.com/s/2okjnksgeyjfmbh/2W4A2344-lone-tree-cropped.jpg?dl=1"
+    portrait = true
+    slug = "indomitable"
+
+
+[[atoms]]
   published_at = 2023-04-07T09:38:01-07:00
   description = """\
 Okta is considered to be the gold standard in the identity management front, the sleek Silicon Valley entrant to a market of long-toothed competitors.

@@ -11,6 +11,18 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-04-07T10:01:30-07:00
+  slug = "044"
+  title = "Indomitable"
+  description = """
+Another one from skiing last month. Silver Star has a run called _Spirit Bowl_, named such because its length on each side is rimmed by the remains of trees scorched by a forest fire that happened a long time ago. I've always liked this one. So tall, so straight, and despite its circumstances, standing as long as I can remember.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/2okjnksgeyjfmbh/2W4A2344-lone-tree-cropped.jpg?dl=1"
+    portrait = true
+    slug = "044"
+
+[[entries]]
   published_at = 2023-03-05T08:49:26-08:00
   slug = "043"
   title = "Outpost"
