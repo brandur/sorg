@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-07T11:24:07-07:00
+  description = """\
+Published fragment [Stay mainline](/fragments/stay-mainline), on GitHub's practice of keeping their code synchronized with Rails `main`.
+"""
+
+[[atoms]]
   published_at = 2023-04-07T10:01:29-07:00
   description = """\
 Published [sequence 044](/sequences/044), indomitable.
