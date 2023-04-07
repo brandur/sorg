@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-07T13:14:35-07:00
+  description = """\
+Two weeks into a WeWork subscription. An aspect I love is the gear. Most people are just using a pretty vanilla laptop set up like me, with a large minority using a laptop stand and external keyboard.
+
+But some go all the way, with large form factor notebooks, tablets, and external screens, sometimes multiple of each. They can be creative, but unlike a traditional desk set up, it all has to be portable. Calibrated in the morning. Collapsed in the afternoon. No trace left behind.
+
+Pragmatic, minimalist, and with a dash of Marie Kondo.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-07T11:24:07-07:00
   description = """\
 Published fragment [Stay mainline](/fragments/stay-mainline), on GitHub's practice of keeping their code synchronized with Rails `main`.
