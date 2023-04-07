@@ -11,6 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-07T09:38:01-07:00
+  description = """\
+Okta is considered to be the gold standard in the identity management front, the sleek Silicon Valley entrant to a market of long-toothed competitors.
+
+I was looking into building an Okta integration for inclusion in the Okta Integration Network (OIN), and something that I found incredibly surprising is how manual the whole process it. Intuitively, I would've thought that an Okta admin would browse the catalog, install an app, and be automatically granted access to its features as machines cooperated behind the scenes to make it happen.
+
+Here's how it actually works: an Okta admin browses the catalog, installs an app, rummages around in Okta dashboards extracting a set of URLs, IDs, and secrets, then manually transmits them to the app owner to facilitate integration. [CloudFlare](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/okta/) provides an Okta-specific Dashboard to enter them. [Brex](https://www.brex.com/support/how-do-i-enable-openid-connect-oidc-sso) will send you an email where you copy them in. Others suggest visiting their sites and opening a support ticket with the magic values.
+
+I thought I (and all of them) must be missing something, but I don't think so. Here's [Okta developer support](https://devforum.okta.com/t/oidc-authorize-url-for-isvs-oin-apps/13064) confirming this is how it's done.
+
+Does this seem, like, crazy, to anybody else? Of course there's still going to be some manual inputs on the web, but for this to be the normal process for most preeminent IDM on the internet? Again, surprising.
+
+A few weeks ago [Tailscale announced they'd be allowing anyone to bring their own OIDC provider](https://tailscale.com/blog/custom-oidc/). My first reaction to this was that it seemed like overkill more likely than not to create unforeseen problems. But after looking into Okta, my new train of thought is that if we were to build that, we'd not only provide the openness of OIDC standard, but it could act alternatively as our Okta onboarding portal for free. Is this the way?
+"""
+
+
+[[atoms]]
   published_at = 2023-04-03T18:58:10-07:00
   description = """\
 For the last year, absent an even semi-reasonable work-from-home set up, I've been working in and out of cafes across town. It's okay, but it leaves you feeling like a vagabond, always thinking about whether you've bought a coffee recently enough for the workers/owners to not be metastasizing latent resentment towards you, and always negotiating for wi-fi and bathroom codes.
