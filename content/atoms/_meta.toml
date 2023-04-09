@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-09T13:33:36-07:00
+  description = """\
+Following up from yesterday, redid the [fragments index](/fragments). More consistency. More Tailwind. Less hand-written CSS that I'd given up on being able to maintain years ago. Only like three quarters of the site left to go.
+"""
+
+[[atoms]]
   published_at = 2023-04-08T17:34:08-07:00
   description = """\
 I redesigned the layout for fragments to bring it more in line with the "V2" redesign used for atoms and my [now page](/now). I hadn't intended to do this today, but started prototyping this morning, and it got far enough along that it got to a point where although far from perfect, I was just like "why not".
@@ -19,7 +25,6 @@ See for example, [Ephemeral DB](/fragments/ephemeral-db).
 
 Glaciers flow faster than this redesign is coming along, but it's seeing slow progress forward.
 """
-
 
 [[atoms]]
   published_at = 2023-04-07T13:14:35-07:00
@@ -30,7 +35,6 @@ But some go all the way, with large form factor notebooks, tablets, and external
 
 Pragmatic, minimalist, and with a dash of Marie Kondo.
 """
-
 
 [[atoms]]
   published_at = 2023-04-07T11:24:07-07:00
@@ -49,7 +53,6 @@ Published [sequence 044](/sequences/044), indomitable.
     portrait = true
     slug = "indomitable"
 
-
 [[atoms]]
   published_at = 2023-04-07T09:38:01-07:00
   description = """\
@@ -65,7 +68,6 @@ Does this seem, like, crazy, to anybody else? Of course there's still going to b
 
 A few weeks ago [Tailscale announced they'd be allowing anyone to bring their own OIDC provider](https://tailscale.com/blog/custom-oidc/). My first reaction to this was that it seemed like overkill more likely than not to create unforeseen problems. But after looking into Okta, my new train of thought is that if we were to build that, we'd not only provide the openness of OIDC standard, but it could act alternatively as our Okta onboarding portal for free. Is this the way?
 """
-
 
 [[atoms]]
   published_at = 2023-04-03T18:58:10-07:00
@@ -84,7 +86,6 @@ The M1 (paired with an eye on Activity Monitor for power offenders) gives me all
 
 This seems obvious, but even five years ago it would've been a pipe dream. All this technology is cool, but I have to give the tech-of-the-decade award to the M1, which came out of left field, and has fundamentally changed the expectations around responsiveness and power requirements in computation.
 """
-
 
 [[atoms]]
   title = "A retrospective on Keycloak"
