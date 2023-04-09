@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-09T14:02:28-07:00
+  description = """\
+Updated [now](/now) with recent features shipped and a new run commute.
+"""
+
+[[atoms]]
   published_at = 2023-04-09T13:33:36-07:00
   description = """\
 Following up from yesterday, redid the [fragments index](/fragments). More consistency. More Tailwind. Less hand-written CSS that I'd given up on being able to maintain years ago. Only like three quarters of the site left to go.

@@ -1,8 +1,30 @@
+I'm in San Francisco, where inertia keeps me rooted.
+
+Work on Crunchy Bridge continues. As part of filling out a self-evaluation last week I scanned every pull request I've issued over the last year, and I liked what I saw. What we've shipped during that time is above and beyond any org I've worked at before. Small teams, agile tech stacks, and lack of a culture of objection-for-objection's-sake do wonders for productivity.
+
+A few things I sent out the door recently:
+
+* Multi-factor authentication, supporting WebAuthn (Yubikeys and biometric challenges like Touch ID) and TOTP (time-based one-time passwords).
+* An asynchronous query runner that's built to scale by taking advantage of Go's parallelism, by storing results to S3 instead of Postgres, and which prunes its results regularly.
+* [Retired our use of Keycloak](/atoms/gkoxmy2), which involved many smaller tasks like adopting a [fancy new password hashing scheme](/fragments/password-hashing).
+
+Pre-lockdown, I'd gotten into the best shape of my life by baking exercise into my schedule with a daily run commute, fitness which I unfortunately let languish. Newly armed with a WeWork pass and gym membership (for the showers), I'm bringing it back. A straight shot from the mountain down Market St to Embarcadero -- 50km/week if I keep it up.
+
+Next month, Europe.
+
+<div class="not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Apr 9, 2022</span>.
+    </p>
+</div>
+
 <!--
 
-## Dec 28, 2022
+/ ---------------------------------------------------------------------------- 
+/ OLD
+/ ---------------------------------------------------------------------------- 
 
--->
+## Dec 28, 2022
 
 I'm back home in Calgary for the holidays, staring into the precipice of 2023 which between money markets, strife, and war is shaping up to be a formidable year.
 
@@ -16,18 +38,6 @@ I added a couple new sections to the site recently:
 A few weeks before that I became somewhat enamored by the idea of [Spring '83](https://www.robinsloan.com/lab/specifying-spring-83/) and ended up [writing a server implementation](https://github.com/brandur/neospring) which is now in prod and [hosts my board](https://neospring.brandur.org/). I don't think Twitter is being displaced anytime soon, but these indy web projects are great.
 
 In 2023: write, move, visit France.
-
-<div class="not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">December 28, 2022</span>.
-    </p>
-</div>
-
-<!--
-
-/ ---------------------------------------------------------------------------- 
-/ OLD
-/ ---------------------------------------------------------------------------- 
 
 ## Apr 5, 2020
 
