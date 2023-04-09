@@ -1935,6 +1935,16 @@ video {
   line-height: 1.25rem;
 }
 
+.prose-h3\:text-xs :is(:where(h3):not(:where([class~="not-prose"] *))) {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.prose-h4\:text-xs :is(:where(h4):not(:where([class~="not-prose"] *))) {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .prose-p\:hyphens-auto :is(:where(p):not(:where([class~="not-prose"] *))) {
   -webkit-hyphens: auto;
           hyphens: auto;
@@ -1993,6 +2003,22 @@ video {
 }
 
 .prose-a\:prose-h2\:font-bold :is(:where(h2):not(:where([class~="not-prose"] *))) :is(:where(a):not(:where([class~="not-prose"] *))) {
+  font-weight: 700;
+}
+
+.prose-a\:prose-h3\:border-b-0 :is(:where(h3):not(:where([class~="not-prose"] *))) :is(:where(a):not(:where([class~="not-prose"] *))) {
+  border-bottom-width: 0px;
+}
+
+.prose-a\:prose-h3\:font-bold :is(:where(h3):not(:where([class~="not-prose"] *))) :is(:where(a):not(:where([class~="not-prose"] *))) {
+  font-weight: 700;
+}
+
+.prose-a\:prose-h4\:border-b-0 :is(:where(h4):not(:where([class~="not-prose"] *))) :is(:where(a):not(:where([class~="not-prose"] *))) {
+  border-bottom-width: 0px;
+}
+
+.prose-a\:prose-h4\:font-bold :is(:where(h4):not(:where([class~="not-prose"] *))) :is(:where(a):not(:where([class~="not-prose"] *))) {
   font-weight: 700;
 }
 
