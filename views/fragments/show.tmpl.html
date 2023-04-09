@@ -2,7 +2,7 @@
 
 {{- define "atoms_content" -}}
 
-<div class="mb-12 mt-2 px-4 md:mb-24 md:mt-16">
+<div class="mb-12 mt-0 px-4 md:mb-24 md:mt-16">
     <div class="container max-w-[800px] mx-auto">
         <h1 class="text-slate-800 font-normal font-serif leading-tight my-8 text-center text-5xl tracking-tighter">
             {{.Fragment.Title}}
@@ -29,8 +29,7 @@
 </div>
 {{end}}
 
-<div class="container max-w-[800px] mx-auto mt-8 px-4
-            ">
+<div class="container max-w-[800px] mx-auto mt-8 px-4">
     <div class="md:flex">
         <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
             <div class="my-1 leading-normal text-xs tracking-tighter md:sticky md:text-right md:top-5">
@@ -57,6 +56,7 @@
             <div class="max-w-none
                 prose prose-md
                 prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                prose-blockquote:text-slate-700
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
                 prose-h1:font-bold prose-h1:text-base
@@ -72,11 +72,6 @@
                 {{.Fragment.Content}}
             </div>
         </div>
-
-        <!--
-            <div class="md:basis-[110px] md:flex-grow-0 md:flex-shrink-0">
-            </div>
-        -->
     </div>
 </div>
 

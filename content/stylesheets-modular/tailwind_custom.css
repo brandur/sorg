@@ -1,3 +1,14 @@
+a.feed_icon::after {
+    background-image: url('/assets/images/icons/rss.svg');
+    background-position: 4px 0;
+    background-repeat: no-repeat;
+    background-size: 10px 20px;
+    content: "";
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+
 .nav_item:after {
     background: transparent;
     content: '';

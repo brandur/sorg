@@ -810,7 +810,7 @@ func build(c *modulir.Context) []error {
 	// Index
 	{
 		c.AddJob("fragments index", func() (bool, error) {
-			return renderFragmentsIndex(c, fragments,
+			return renderFragmentsIndex(ctx, c, fragments,
 				fragmentsChanged)
 		})
 	}
@@ -2284,16 +2284,11 @@ func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
 	return true, feed.Encode(f, "  ")
 }
 
-func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
+func renderFragmentsIndex(ctx context.Context, c *modulir.Context, fragments []*Fragment,
 	fragmentsChanged bool,
 ) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/fragments/index.ace",
-		},
-		universalSources...,
-	)...)
+	sourceTmpl := scommon.ViewsDir + "/fragments/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !fragmentsChanged && !viewsChanged {
 		return false, nil
 	}
@@ -2304,8 +2299,7 @@ func renderFragmentsIndex(c *modulir.Context, fragments []*Fragment,
 		"FragmentsByYear": fragmentsByYear,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/index.ace",
-		c.TargetDir+"/fragments/index.html", getAceOptions(viewsChanged), locals)
+	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, "fragments/index.html"), locals)
 }
 
 func renderNanoglyph(c *modulir.Context, source string,
