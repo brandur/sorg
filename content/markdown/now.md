@@ -4,7 +4,7 @@ Work on Crunchy Bridge continues. As part of filling out a self-evaluation last 
 
 A few things I sent out the door recently:
 
-* Multi-factor authentication, supporting WebAuthn (Yubikeys and biometric challenges like Touch ID) and TOTP (time-based one-time passwords).
+* Multi-factor authentication, supporting WebAuthn (Yubikeys and biometric challenges like Touch ID) and TOTP (time-based one-time passwords). ([Notes](/fragments/lean-fast) on getting this shipped quickly.)
 * An asynchronous query runner that's built to scale by taking advantage of Go's parallelism, by storing results to S3 instead of Postgres, and which prunes its results regularly.
 * [Retired our use of Keycloak](/atoms/gkoxmy2), which involved many smaller tasks like adopting a [fancy new password hashing scheme](/fragments/password-hashing).
 
