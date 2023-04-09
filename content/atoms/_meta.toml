@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-09T14:47:23-07:00
+  description = """\
+Published fragment [Lean = fast](/fragments/lean-fast), on the unreasonable effectiveness of small teams and sharp tools for getting features out the door.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-09T14:02:28-07:00
   description = """\
 Updated [now](/now) with recent features shipped and a new run commute.
