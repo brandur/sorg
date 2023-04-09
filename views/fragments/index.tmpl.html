@@ -1,0 +1,53 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+        Fragments
+    </h1>
+
+    <div class="container max-w-[625px] mx-auto
+            prose prose-lg
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200">
+        <p>
+            Stream of consciousness notes that don't merit a more dedicated write-up.
+            Also available as an <a href="/fragments.atom" class="feed_icon">Atom feed</a>.
+        </p>
+    </div>
+</div>
+
+<div class="container max-w-[800px] mx-auto mt-8 px-4">
+    <div class="md:flex">
+        <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
+            <div class="font-mono my-1 leading-normal text-sm tracking-tighter md:sticky md:text-right md:top-5">
+                <div class="hidden md:block md:px-4">
+                    <ul>
+                    {{range .FragmentsByYear}}
+                        <li class="pb-1">
+                            <a href="#year_{{.Year}}">{{.Year}}</a>
+                        </li>
+                    {{- end -}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-8">
+            {{range .FragmentsByYear}}
+                <h2 id="year_{{.Year}}" class="font-bold text-sm tracking-tighter">{{.Year}}</h2>
+
+                <ul class="mb-8">
+                    {{- range .Fragments -}}
+                    <li class="my-1.5 text-md">
+                        <a href="/fragments/{{.Slug}}" class="border-b-[1px] border-b-slate-200 hover:border-b-black">{{.Title}}</a>
+                        <span class="italic text-slate-500 text-[0.65rem]">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
+                    </li>
+                    {{- end -}}
+                </ul>
+            {{- end -}}
+        </div>
+    </div>
+</div>
+
+{{- end -}}
