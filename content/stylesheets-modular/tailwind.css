@@ -2076,8 +2076,8 @@ video {
     position: sticky;
   }
 
-  .md\:top-0 {
-    top: 0px;
+  .md\:top-5 {
+    top: 1.25rem;
   }
 
   .md\:-mx-\[200px\] {
@@ -2204,6 +2204,10 @@ video {
   .md\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  .md\:pb-5 {
+    padding-bottom: 1.25rem;
   }
 
   .md\:text-right {
