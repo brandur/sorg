@@ -10,7 +10,7 @@
     </div>
 
     {{if ne .Fragment.Hook "UNWRITTEN. This should not appear on the front page."}}
-        <!-- <div class="container max-w-[625px] mx-auto
+    <!-- <div class="container max-w-[625px] mx-auto
                 prose prose-md
                 prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-slate-200
@@ -22,12 +22,11 @@
 
 
 {{if ne .Fragment.Image ""}}
-    <div>
-        <div class="max-w-[1000px] mx-auto my-12 md:my-16">
-            <img class="w-full"
-                src="{{.Fragment.Image}}" srcset="{{To2X .Fragment.Image}} 2x, {{.Fragment.Image}} 1x">
-        </div>
+<div>
+    <div class="max-w-[1000px] mx-auto my-12 md:my-16">
+        <img class="w-full" src="{{.Fragment.Image}}" srcset="{{To2X .Fragment.Image}} 2x, {{.Fragment.Image}} 1x">
     </div>
+</div>
 {{end}}
 
 <div class="container max-w-[800px] mx-auto mt-8 px-4
@@ -82,9 +81,9 @@
 </div>
 
 {{if .Fragment.Footnotes}}
-    <div class="border-t-[1px] p-8 w-vp">
-        <div class="container max-w-[550px] mx-auto">
-            <div class="max-w-none
+<div class="border-t-[1px] p-8 w-vp">
+    <div class="container max-w-[550px] mx-auto">
+        <div class="max-w-none
                 prose prose-sm
                 prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
@@ -92,13 +91,13 @@
                 prose-p:font-serif
                 prose-strong:font-sans
                 ">
-                {{.Fragment.Footnotes}}
-            </div>
+            {{.Fragment.Footnotes}}
         </div>
     </div>
+</div>
 {{end}}
 
-<div class="border-t-[1px] pb-20 pt-8 w-vp">
+<div class="border-t-[1px] pb-20 p-8 w-vp">
     <div class="container max-w-[550px] mx-auto">
         <div class="italic max-w-none
             prose prose-sm
@@ -106,16 +105,20 @@
             hover:prose-a:border-b-slate-200
             prose-p:font-serif
             ">
-        {{if .Fragment.Draft}}
+            {{if .Fragment.Draft}}
             <p>
-                Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
+                Did I make a mistake? Please consider <a
+                    href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending
+                    a pull request</a>.
             </p>
-        {{else}}
+            {{else}}
             <p>
-                Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
+                Did I make a mistake? Please consider <a
+                    href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a
+                    pull request</a>.
             </p>
-        {{end}}
+            {{end}}
+        </div>
     </div>
-</div>
 
-{{- end -}}
+    {{- end -}}
