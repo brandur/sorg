@@ -1,0 +1,119 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-2 px-4 md:mb-24 md:mt-16">
+    <div class="container max-w-[800px] mx-auto">
+        <h1 class="text-slate-800 font-normal font-serif leading-tight my-8 text-center text-5xl tracking-tighter">
+            {{.Fragment.Title}}
+        </h1>
+    </div>
+
+    {{if ne .Fragment.Hook "UNWRITTEN. This should not appear on the front page."}}
+        <!-- <div class="container max-w-[625px] mx-auto
+                prose prose-md
+                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                hover:prose-a:border-slate-200
+                text-center">
+            <p>{{.Fragment.Hook}}</p>
+        </div> -->
+    {{end}}
+</div>
+
+
+{{if ne .Fragment.Image ""}}
+    <div>
+        <div class="max-w-[1000px] mx-auto my-12 md:my-16">
+            <img class="w-full"
+                src="{{.Fragment.Image}}" srcset="{{To2X .Fragment.Image}} 2x, {{.Fragment.Image}} 1x">
+        </div>
+    </div>
+{{end}}
+
+<div class="container max-w-[800px] mx-auto mt-8 px-4
+            ">
+    <div class="md:flex">
+        <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
+            <div class="my-1 leading-normal text-xs tracking-tighter md:sticky md:text-right md:top-0">
+                <div class="hidden md:block md:border-b-[1px] md:px-3 md:py-5">
+                    <div class="font-bold mb-0.5">Fragment</div>
+                    <div>
+                        <a href="/fragments/{{.Fragment.Slug}}" class="leading-3">
+                            <span class="mx-0.5 opacity-60">🔗</span> {{.Fragment.Title}}
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:border-b-[1px] md:px-3 md:py-5">
+                    <div class="hidden md:block md:font-bold md:mb-0.5">Published</div>
+                    <div class="font-bold md:font-normal">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
+                </div>
+
+                <div class="hidden md:block md:italic md:px-3 md:py-5">
+                    I'm on Twitter at <a href="https://twitter.com/brandur" class="font-bold">@brandur</a>.
+                </div>
+            </div>
+        </div>
+        <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:px-8">
+            <div class="max-w-none
+                prose prose-md
+                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                hover:prose-a:border-b-slate-200
+                prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                prose-h1:font-bold prose-h1:text-base
+                prose-h2:text-sm prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
+                prose-p:font-serif
+                prose-p:prose-blockquote:font-sans
+                prose-strong:font-sans
+                prose-ol:font-serif
+                prose-ul:font-serif
+                ">
+                {{.Fragment.Content}}
+            </div>
+        </div>
+
+        <!--
+            <div class="md:basis-[110px] md:flex-grow-0 md:flex-shrink-0">
+            </div>
+        -->
+    </div>
+</div>
+
+{{if .Fragment.Footnotes}}
+    <div class="border-t-[1px] p-8 w-vp">
+        <div class="container max-w-[550px] mx-auto">
+            <div class="max-w-none
+                prose prose-sm
+                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                hover:prose-a:border-b-slate-200
+                prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                prose-p:font-serif
+                prose-strong:font-sans
+                ">
+                {{.Fragment.Footnotes}}
+            </div>
+        </div>
+    </div>
+{{end}}
+
+<div class="border-t-[1px] pb-20 pt-8 w-vp">
+    <div class="container max-w-[550px] mx-auto">
+        <div class="italic max-w-none
+            prose prose-sm
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-b-slate-200
+            prose-p:font-serif
+            ">
+        {{if .Fragment.Draft}}
+            <p>
+                Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments-drafts/{{.Fragment.Slug}}.md">sending a pull request</a>.
+            </p>
+        {{else}}
+            <p>
+                Did I make a mistake? Please consider <a href="https://github.com/brandur/sorg/edit/master/content/fragments/{{.Fragment.Slug}}.md">sending a pull request</a>.
+            </p>
+        {{end}}
+    </div>
+</div>
+
+{{- end -}}

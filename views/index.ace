@@ -40,7 +40,7 @@
                 p.title
                   a href="/fragments/{{.Slug}}" {{.Title}}
                 p.hook
-                  | {{HTML .Hook}} 
+                  | {{.Hook}} 
                   span.date {{FormatTimeLocal .PublishedAt}}
             {{end}}
           p.older

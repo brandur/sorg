@@ -394,7 +394,7 @@ func build(c *modulir.Context) []error {
 
 			name := fmt.Sprintf("fragment: %s", filepath.Base(source))
 			c.AddJob(name, func() (bool, error) {
-				return renderFragment(c, source,
+				return renderFragment(ctx, c, source,
 					&fragments, &fragmentsChanged, &fragmentsMu)
 			})
 		}
@@ -1181,16 +1181,19 @@ type Fragment struct {
 	// Content is the HTML content of the fragment. It isn't included as TOML
 	// frontmatter, and is rather split out of an fragment's Markdown file,
 	// rendered, and then added separately.
-	Content string `toml:"-"`
+	Content template.HTML `toml:"-"`
 
 	// Draft indicates that the fragment is not yet published.
 	Draft bool `toml:"-"`
+
+	// Footnotes are HTML footnotes extracted from content.
+	Footnotes template.HTML `toml:"-"`
 
 	// HNLink is an optional link to comments on Hacker News.
 	HNLink string `toml:"hn_link,omitempty"`
 
 	// Hook is a leading sentence or two to succinctly introduce the fragment.
-	Hook string `toml:"hook"`
+	Hook template.HTML `toml:"hook"`
 
 	// Image is an optional image that may be included with a fragment.
 	Image string `toml:"image,omitempty"`
@@ -2152,17 +2155,13 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 	return true, nil
 }
 
-func renderFragment(c *modulir.Context, source string,
+func renderFragment(ctx context.Context, c *modulir.Context, source string,
 	fragments *[]*Fragment, fragmentsChanged *bool, mu *sync.Mutex,
 ) (bool, error) {
 	sourceChanged := c.Changed(source)
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/fragments/show.ace",
-		},
-		universalSources...,
-	)...)
+
+	sourceTmpl := scommon.ViewsDir + "/fragments/show.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
@@ -2181,23 +2180,31 @@ func renderFragment(c *modulir.Context, source string,
 	fragment.Draft = scommon.IsDraft(source)
 	fragment.Slug = scommon.ExtractSlug(source)
 
-	fragment.Content, err = mmarkdownext.Render(string(data), nil)
+	content, err := mmarkdownext.Render(string(data), nil)
 	if err != nil {
 		return true, err
 	}
 
+	content, footnotes, ok := strings.Cut(content, `<div class="footnotes">`)
+	if ok {
+		footnotes = strings.TrimSuffix(footnotes, "</div>")
+	}
+
+	fragment.Content = template.HTML(content)
+	fragment.Footnotes = template.HTML(footnotes) // may be empty
+
 	if fragment.Hook != "" {
-		hook, err := mmarkdownext.Render(fragment.Hook, nil)
+		hook, err := mmarkdownext.Render(string(fragment.Hook), nil)
 		if err != nil {
 			return true, err
 		}
 
-		fragment.Hook = mtemplate.CollapseParagraphs(hook)
+		fragment.Hook = template.HTML(mtemplate.CollapseParagraphs(hook))
 	}
 
 	card := &twitterCard{
 		Title:       fragment.Title,
-		Description: fragment.Hook,
+		Description: string(fragment.Hook),
 	}
 	format, ok := pathAsImage(
 		path.Join(c.SourceDir, "content", "images", "fragments", fragment.Slug, "twitter@2x"),
@@ -2212,9 +2219,7 @@ func renderFragment(c *modulir.Context, source string,
 		"TwitterCard":    card,
 	})
 
-	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/fragments/show.ace",
-		path.Join(c.TargetDir, "fragments", fragment.Slug),
-		getAceOptions(viewsChanged), locals)
+	err = dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, "fragments", fragment.Slug), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2255,8 +2260,8 @@ func renderFragmentsFeed(_ *modulir.Context, fragments []*Fragment,
 
 		entry := &matom.Entry{
 			Title:     fragment.Title,
-			Summary:   fragment.Hook,
-			Content:   &matom.EntryContent{Content: fragment.Content, Type: "html"},
+			Summary:   string(fragment.Hook),
+			Content:   &matom.EntryContent{Content: string(fragment.Content), Type: "html"},
 			Published: fragment.PublishedAt,
 			Updated:   fragment.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/fragments/" + fragment.Slug},
