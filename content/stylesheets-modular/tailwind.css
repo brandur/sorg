@@ -1941,11 +1941,6 @@ video {
   opacity: 0.6;
 }
 
-.grayscale {
-  --tw-grayscale: grayscale(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .prose-p\:hyphens-auto :is(:where(p):not(:where([class~="not-prose"] *))) {
   -webkit-hyphens: auto;
           hyphens: auto;

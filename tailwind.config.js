@@ -12,10 +12,6 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                'cardo': ['Cardo', ...defaultTheme.fontFamily.serif],
-                'inter': ['Inter var', 'Inter', ...defaultTheme.fontFamily.sans],
-                // 'sans': ['Inter var', 'Inter', ...defaultTheme.fontFamily.sans],
-                // 'serif': ['Cardo', ...defaultTheme.fontFamily.serif],
             },
         }
     },
