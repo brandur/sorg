@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-13T18:47:11-07:00
+  description = """\
+Today I learned that Rack servers like Puma can run an operation after a request has been completed with [`rack.after_reply`](https://github.blog/2022-04-11-performance-at-github-deferring-stats-with-rack-after_reply/). There's been various ways to accomplish this since the early 2010s, but I hadn't realized that it'd become standardized.
+
+This can be a great way to offload more expensive operations like network calls out-of-band from user requests to improve latency (even if incompatible with use of request-level transactions). In the linked GitHub describes using `rack.after_reply` for emitting statistics, and they'd previously used a similar technique to perform Ruby garbage collection between requests, although later [stopped doing that](https://github.blog/2018-05-18-removing-oobgc/).
+
+At Stripe we did something similar to make generating "events" (for use in sending webhooks) out-of-band. Generating events involved rendering API resources, which was expensive, making generating events also expensive, so taking them out-of-band shaved somewhere in the neighborhood of 10-100 ms in latency (can't remember the exact numbers) off some of our most critical API paths.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-11T18:06:41-07:00
   description = """\
 Here's me evangelizing the idea of an [ephemeral database](/fragments/ephemeral-db) one more time.
