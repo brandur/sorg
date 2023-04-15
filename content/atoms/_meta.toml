@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-15T12:52:55-07:00
+  description = """\
+Redesigned my [newsletters page](/newsletter). It's a sad day, but I'm officially calling _Passages & Glass_ defunct. _Nanoglyph_ very well may be too unless I can get one out the door soon.
+"""
+
+[[atoms]]
   published_at = 2023-04-15T11:47:46-07:00
   description = """\
 A Berlin-based prompt artist [wins a category of Sony World Photography Awards](https://petapixel.com/2023/04/14/artist-refuses-prize-after-his-ai-image-wins-at-top-photo-contest/), and because he'd submitted to make a point, refuses the prize.

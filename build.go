@@ -2295,7 +2295,7 @@ func renderFragmentsIndex(ctx context.Context, c *modulir.Context, fragments []*
 
 	fragmentsByYear := groupFragmentsByYear(fragments)
 
-	locals := getLocals("Fragments", map[string]interface{}{
+	locals := getLocals("Fragments"+scommon.TitleSuffix, map[string]interface{}{
 		"FragmentsByYear": fragmentsByYear,
 	})
 

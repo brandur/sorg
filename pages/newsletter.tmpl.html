@@ -1,0 +1,83 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+ 
+{{- define "title" -}}Newsletters{{.TitleSuffix}}{{- end -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <div class="my-16">
+        <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+            Newsletters
+        </h1>
+
+        <div class="container max-w-[625px] mx-auto
+            prose prose-lg
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200">
+            <p>
+                Sent via the only universal medium of communication we have
+                (email) in the most open format (HTML), my small resistance to
+                the continued centralization and confinement of content in
+                closed platforms. Sent infrequently.
+            </p>
+        </div>
+    </div>
+
+    <div class="container max-w-[800px] mx-auto my-8
+        prose prose-lg
+        prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+        hover:prose-a:border-b-slate-200
+        prose-code:prose-a:text-xs prose-code:prose-p:text-sm
+        prose-p:font-serif
+        prose-p:prose-blockquote:font-sans
+        prose-strong:font-sans
+        prose-ol:font-serif
+        prose-ul:font-serif
+        ">
+
+        <a href="#nanoglyph">
+            <h2 id="#nanoglyph">Nanoglyph</h2>
+        </a>
+
+        <form method="post" action="https://nanoglyph-signup.brandur.org/submit">
+            <input type="email" name="email" placeholder="Email" class="align-bottom border border-black h-10 px-2">
+            <input type="submit" value="Subscribe to Nanoglyph" class="bg-black h-10 mx-1 px-5 text-xs text-white uppercase">
+        </form>
+
+        <p><em>Nanoglyph</em> is an (aspirationally) weekly newsletter about software, with a focus on simplicity and sustainability. It usually consists of a few links with editorial.</p>
+        <p>It's experimental and not widely distributed. The format is still very much malleable – consider subscribing and hitting <em>reply</em> to let me know what you think about it so that I'll know what to do.</p>
+        <p>See a <a href="/nanoglyphs/018-ractors">sample edition</a> of <em>Nanoglyph</em>.</p>
+
+        <a href="#passages">
+            <h2 id="#passages">Passages & Glass</h2>
+        </a>
+
+        <p>I wrote a newsletter called <em>Passages & Glass</em>, but it's been defunct for many years now, so I've removed the sign up form. You can read <a href="/passages">the archive here</a>.</p>
+
+        <!--
+        <form method="post" action="https://passages-signup.brandur.org/submit">
+            <input type="email" name="email" placeholder="Email" class="align-bottom border border-black h-10 px-2">
+            <input type="submit" value="Subscribe to Passages" class="bg-black h-10 mx-1 px-5 text-xs text-white uppercase">
+        </form>
+
+        <p>The details of most journeys are forgotten. It’s nothing intentional, but given enough time they stop coming up in conversation, we reflect on them more rarely, and they’re eventually swallowed by fickle memory. Physical (and digital) traces remain, but most of us are hopelessly bad at regularly sifting through a lifetime’s accumulation of souvenirs.</p>
+        <p><em>Passages & Glass</em> aims to counteract this effect by pulling highlights into a permanent digital artifact. A collection of stories in an informal medium, with a healthy dose of software philosophy.</p>
+        <p>So far it's been the world's least frequently sent newsletter, averaging about three to four times a year. Consider signing up to keep in touch.</p>
+        <p>See a <a href="/passages/003-koya">sample edition</a> of <em>Passages & Glass</em>.</p>
+
+            <!--
+                <p><em>Passages</em> refers to the routes that we use to get from one point to another, like Hannibal’s passage through the Alps, Magellan’s famous strait, or in the case of my far more mundane life, a favorite walk from Friedrichshain to Kreuzberg. <em>Glass</em> is the material making up the face of prized possessions like my iPhone or Submariner, the window through which to watch the passing countryside by air or rail, or the intricate optics of my camera’s lens.</p>
+        -->
+
+        <!--
+            The idea here is to request something that will start spinning up
+            the target Heroku apps so that the user doesn't have to wait so long
+            if and when they do submit the form.
+        -->
+        <img src="https://nanoglyph-signup.brandur.org/public/tiny-preload-image.png">
+        <img src="https://passages-signup.brandur.org/public/tiny-preload-image.png">
+    </div>
+
+</div>
+
+{{- end -}}
