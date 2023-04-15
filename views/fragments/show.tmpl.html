@@ -12,7 +12,7 @@
     {{if ne .Fragment.Hook "UNWRITTEN. This should not appear on the front page."}}
     <!-- <div class="container max-w-[625px] mx-auto
                 prose prose-md
-                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-slate-200
                 text-center">
             <p>{{.Fragment.Hook}}</p>
@@ -33,7 +33,7 @@
     <div class="md:flex">
         <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
             <div class="my-1 leading-normal text-xs tracking-tighter md:sticky md:text-right md:top-5">
-                <div class="hidden md:block md:border-b-[1px] md:px-4 md:pb-5">
+                <div class="hidden md:block md:border-b md:px-4 md:pb-5">
                     <div class="font-bold mb-0.5">Fragment</div>
                     <div>
                         <a href="/fragments/{{.Fragment.Slug}}">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div class="md:border-b-[1px] md:px-4 md:py-5">
+                <div class="md:border-b md:px-4 md:py-5">
                     <div class="hidden md:block md:font-bold md:mb-0.5">Published</div>
                     <div class="font-bold md:font-normal">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
                 </div>
@@ -52,10 +52,10 @@
                 </div>
             </div>
         </div>
-        <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-8">
+        <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8">
             <div class="max-w-none
                 prose prose-md
-                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 prose-blockquote:text-slate-700
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
@@ -76,11 +76,11 @@
 </div>
 
 {{if .Fragment.Footnotes}}
-<div class="border-t-[1px] p-8 w-vp">
+<div class="border-t p-8 w-vp">
     <div class="container max-w-[550px] mx-auto">
         <div class="max-w-none
                 prose prose-sm
-                prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
                 prose-p:font-serif
@@ -92,11 +92,11 @@
 </div>
 {{end}}
 
-<div class="border-t-[1px] pb-20 p-8 w-vp">
+<div class="border-t pb-20 p-8 w-vp">
     <div class="container max-w-[550px] mx-auto">
         <div class="italic max-w-none
             prose prose-sm
-            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-b-slate-200
             prose-p:font-serif
             ">

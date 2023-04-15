@@ -1764,7 +1764,7 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-t-\[1px\] {
+.border-t {
   border-top-width: 1px;
 }
 
@@ -2079,6 +2079,10 @@ video {
   line-height: 1.5;
 }
 
+.prose-a\:border-b :is(:where(a):not(:where([class~="not-prose"] *))) {
+  border-bottom-width: 1px;
+}
+
 .prose-a\:border-b-\[1px\] :is(:where(a):not(:where([class~="not-prose"] *))) {
   border-bottom-width: 1px;
 }
@@ -2296,8 +2300,12 @@ video {
     flex-direction: row;
   }
 
-  .md\:border-b-\[1px\] {
+  .md\:border-b {
     border-bottom-width: 1px;
+  }
+
+  .md\:border-l {
+    border-left-width: 1px;
   }
 
   .md\:border-l-\[1px\] {
