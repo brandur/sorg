@@ -45,7 +45,7 @@
                             </a>
                         {{end}}
                         <div class="mb-2">
-                            <a href="/articles/{{.Slug}}" class="border-b-[1px] border-b-slate-200 font-semibold hover:border-b-black">{{.Title}}</a>
+                            <a href="/{{.Slug}}" class="border-b-[1px] border-b-slate-200 font-semibold hover:border-b-black">{{.Title}}</a>
                             <span class="italic text-slate-500 text-[0.65rem]">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
                         </div>
                         <p class="font-serif leading-6 text-[0.88rem] text-slate-700">{{.Hook}}</p>
