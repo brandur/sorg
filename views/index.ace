@@ -26,7 +26,7 @@
                 p.title
                   a href="/{{.Slug}}" {{.Title}}
                 p.hook
-                  | {{HTML .Hook}} 
+                  | {{.Hook}} 
                   span.date {{FormatTimeLocal .PublishedAt}}
             {{end}}
           p.older

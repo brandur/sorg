@@ -1,0 +1,60 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+        Articles
+    </h1>
+
+    <div class="container max-w-[625px] mx-auto
+            prose prose-lg
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200">
+        <p>
+            Longer form articles that aim to explore topics in more depth, but which are
+            published less frequently. Also available as an <a href="/articles.atom" class="feed_icon">Atom feed</a>.</p>
+    </div>
+</div>
+
+<div class="container max-w-[750px] mx-auto mt-8 px-4">
+    <div class="md:flex">
+        <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
+            <div class="font-mono my-1 leading-normal text-sm tracking-tighter md:sticky md:text-right md:top-5">
+                <div class="hidden md:block md:px-4">
+                    <ul>
+                    {{range .ArticlesByYear}}
+                        <li class="pb-1">
+                            <a href="#year_{{.Year}}">{{.Year}}</a>
+                        </li>
+                    {{- end -}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-8">
+            {{range .ArticlesByYear}}
+                <h2 id="year_{{.Year}}" class="font-bold text-sm tracking-tighter">{{.Year}}</h2>
+
+                <ul class="clear-both mb-8">
+                    {{- range .Articles -}}
+                    <li class="clear-both mb-8 mt-1.5 text-md">
+                        {{if .HookImageURL}}
+                            <a href="/{{.Slug}}">
+                                <img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x" class="float-left mr-4 rounded-lg">
+                            </a>
+                        {{end}}
+                        <div class="mb-2">
+                            <a href="/articles/{{.Slug}}" class="border-b-[1px] border-b-slate-200 font-semibold hover:border-b-black">{{.Title}}</a>
+                            <span class="italic text-slate-500 text-[0.65rem]">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
+                        </div>
+                        <p class="font-serif leading-6 text-[0.88rem] text-slate-700">{{.Hook}}</p>
+                    </li>
+                    {{- end -}}
+                </ul>
+            {{- end -}}
+        </div>
+    </div>
+</div>
+
+{{- end -}}

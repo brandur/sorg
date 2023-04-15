@@ -717,7 +717,7 @@ func build(c *modulir.Context) []error {
 	// Index
 	{
 		c.AddJob("articles index", func() (bool, error) {
-			return renderArticlesIndex(c, articles,
+			return renderArticlesIndex(ctx, c, articles,
 				articlesChanged)
 		})
 	}
@@ -1037,7 +1037,7 @@ type Article struct {
 	HNLink string `toml:"hn_link,omitempty"`
 
 	// Hook is a leading sentence or two to succinctly introduce the article.
-	Hook string `toml:"hook"`
+	Hook template.HTML `toml:"hook"`
 
 	// HookImageURL is the URL for a hook image for the article (to be shown on
 	// the article index) if one was found.
@@ -1858,12 +1858,12 @@ func renderArticle(c *modulir.Context, source string,
 	}
 
 	if article.Hook != "" {
-		hook, err := mmarkdownext.Render(article.Hook, nil)
+		hook, err := mmarkdownext.Render(string(article.Hook), nil)
 		if err != nil {
 			return true, err
 		}
 
-		article.Hook = mtemplate.CollapseParagraphs(hook)
+		article.Hook = template.HTML(mtemplate.CollapseParagraphs(hook))
 	}
 
 	format, ok := pathAsImage(
@@ -1875,7 +1875,7 @@ func renderArticle(c *modulir.Context, source string,
 
 	card := &twitterCard{
 		Title:       article.Title,
-		Description: article.Hook,
+		Description: string(article.Hook),
 	}
 	format, ok = pathAsImage(
 		path.Join(c.SourceDir, "content", "images", article.Slug, "twitter@2x"),
@@ -1906,26 +1906,21 @@ func renderArticle(c *modulir.Context, source string,
 	return true, nil
 }
 
-func renderArticlesIndex(c *modulir.Context, articles []*Article, articlesChanged bool) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/articles/index.ace",
-		},
-		universalSources...,
-	)...)
+func renderArticlesIndex(ctx context.Context, c *modulir.Context, articles []*Article, articlesChanged bool) (bool, error) {
+	sourceTmpl := scommon.ViewsDir + "/articles/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !articlesChanged && !viewsChanged {
 		return false, nil
 	}
 
 	articlesByYear := groupArticlesByYear(articles)
 
-	locals := getLocals("Articles", map[string]interface{}{
+	locals := getLocals("Articles"+scommon.TitleSuffix, map[string]interface{}{
 		"ArticlesByYear": articlesByYear,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/articles/index.ace",
-		c.TargetDir+"/articles/index.html", getAceOptions(viewsChanged), locals)
+	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl,
+		path.Join(c.TargetDir, "articles/index.html"), locals)
 }
 
 func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, articlesChanged bool) (bool, error) {
@@ -1969,7 +1964,7 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 
 		entry := &matom.Entry{
 			Title:     article.Title,
-			Summary:   article.Hook,
+			Summary:   string(article.Hook),
 			Content:   &matom.EntryContent{Content: article.Content, Type: "html"},
 			Published: article.PublishedAt,
 			Updated:   article.PublishedAt,
@@ -2299,7 +2294,8 @@ func renderFragmentsIndex(ctx context.Context, c *modulir.Context, fragments []*
 		"FragmentsByYear": fragmentsByYear,
 	})
 
-	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, "fragments/index.html"), locals)
+	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl,
+		path.Join(c.TargetDir, "fragments/index.html"), locals)
 }
 
 func renderNanoglyph(c *modulir.Context, source string,
