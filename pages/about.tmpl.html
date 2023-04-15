@@ -1,0 +1,49 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+ 
+{{- define "title" -}}About{{.TitleSuffix}}{{- end -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <div class="my-16">
+        <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+            About
+        </h1>
+
+        <!--
+        <div class="container max-w-[625px] mx-auto
+            prose prose-lg
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200">
+            <p>
+                Sent via the only universal medium of communication we have
+                (email) in the most open format (HTML), my small resistance to
+                the continued centralization and confinement of content in
+                closed platforms. Sent infrequently.
+            </p>
+        </div>
+        -->
+    </div>
+
+    <div class="container max-w-[800px] mx-auto my-8
+        prose prose-lg
+        prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+        hover:prose-a:border-b-slate-200
+        prose-code:prose-a:text-xs prose-code:prose-p:text-sm
+        prose-h2:text-base prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
+        prose-p:font-serif
+        prose-p:prose-blockquote:font-sans
+        prose-strong:font-sans
+        prose-ol:font-serif
+        prose-ul:font-serif
+        ">
+        <!--
+            <img src="/assets/images/me.jpg" alt="Photo of Brandur" class="w-full">
+        -->
+
+        {{IncludeMarkdown .Ctx "content/markdown/about.md"}}
+    </div>
+
+</div>
+
+{{- end -}}
