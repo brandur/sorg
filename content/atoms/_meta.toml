@@ -11,6 +11,29 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-14T17:10:55-07:00
+  description = """\
+A few years ago I wrote [Tweeting for 10,000 years](/10000-years), a thought experiment in how to improve the longevity of software, which is infamously prone to breakage by way of bugs or changes in its underlying infrastructure. It explores ideas like choosing platforms likely to be long-lived, stable languages, minimizing dependencies, and deploying self-contained binaries.
+
+In it I list two of the top risk factors for its eventual demise as:
+
+> * Changes in **Twitter’s API** could spell the end. This would take the form of a backwards-incompatible change like a new required parameter, change in the structure of responses, or adjustment to how applications authenticate.
+>
+> * Relatedly, changes in **Twitter’s product* are also dangerous. They could move to a new pricing model, remodel the product’s core design, or fold as a company.
+
+Well, if it'd made it 10,000 years you probably wouldn't be reading this. Today I got this email:
+
+> This is a notice that your app - 10000-years - has been suspended from accessing the Twitter API.
+>
+> Please visit developer.twitter.com to sign up to our new Free, Basic or Enterprise access tiers.
+
+The experiment's final longevity was 4 years, 8 months. Not half bad, but a little short of the stated goal.
+
+It may be for the best. What I put in those time capsule messages probably wouldn't have aged well anyway. But the article's thesis was correct -- writing software that withstands time and entropy on all fronts sure isn't easy.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-13T18:47:11-07:00
   description = """\
 Today I learned that Rack servers like Puma can run an operation after a request has been completed with [`rack.after_reply`](https://github.blog/2022-04-11-performance-at-github-deferring-stats-with-rack-after_reply/). There's been various ways to accomplish this since the early 2010s, but I hadn't realized that it'd become standardized.
