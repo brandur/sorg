@@ -2901,7 +2901,7 @@ func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*Se
 		return false, nil
 	}
 
-	locals := getLocals("Sequences", map[string]interface{}{
+	locals := getLocals("Sequences"+scommon.TitleSuffix, map[string]interface{}{
 		"Entries": entries,
 	})
 
