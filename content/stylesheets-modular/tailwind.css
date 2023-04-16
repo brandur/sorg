@@ -1648,6 +1648,10 @@ video {
   margin-bottom: 2rem;
 }
 
+.mb-9 {
+  margin-bottom: 2.25rem;
+}
+
 .ml-0 {
   margin-left: 0px;
 }
@@ -1979,10 +1983,6 @@ video {
   font-size: 0.65rem;
 }
 
-.text-\[0\.88rem\] {
-  font-size: 0.88rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -2030,8 +2030,8 @@ video {
   line-height: .75rem;
 }
 
-.leading-6 {
-  line-height: 1.5rem;
+.leading-7 {
+  line-height: 1.75rem;
 }
 
 .leading-none {

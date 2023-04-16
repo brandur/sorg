@@ -13,45 +13,49 @@
             hover:prose-a:border-slate-200">
         <p>
             Longer form articles that aim to explore topics in more depth, but which are
-            published less frequently. Also available as an <a href="/articles.atom" class="feed_icon">Atom feed</a>.</p>
+            published less frequently. Also available as an <a href="/articles.atom" class="feed_icon">Atom feed</a>.
+        </p>
     </div>
 </div>
 
-<div class="container max-w-[750px] mx-auto mt-8 px-4">
+<div class="container max-w-[800px] mx-auto mt-8 px-4">
     <div class="md:flex">
         <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
-            <div class="font-mono my-1 leading-normal text-sm tracking-tighter md:sticky md:text-right md:top-5">
+            <div class="font-mono my-1 leading-normal text-md tracking-tighter md:sticky md:text-right md:top-5">
                 <div class="hidden md:block md:px-4">
                     <ul>
-                    {{range .ArticlesByYear}}
+                        {{range .ArticlesByYear}}
                         <li class="pb-1">
                             <a href="#year_{{.Year}}">{{.Year}}</a>
                         </li>
-                    {{- end -}}
+                        {{- end -}}
                     </ul>
                 </div>
             </div>
         </div>
         <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-8">
             {{range .ArticlesByYear}}
-                <h2 id="year_{{.Year}}" class="font-bold text-sm tracking-tighter">{{.Year}}</h2>
+            <h2 id="year_{{.Year}}" class="font-bold text-md tracking-tighter">{{.Year}}</h2>
 
-                <ul class="clear-both mb-8">
-                    {{- range .Articles -}}
-                    <li class="clear-both mb-8 mt-1.5 text-md">
-                        {{if .HookImageURL}}
-                            <a href="/{{.Slug}}">
-                                <img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x" class="float-left mr-4 rounded-lg">
-                            </a>
-                        {{end}}
-                        <div class="mb-2">
-                            <a href="/{{.Slug}}" class="border-b-[1px] border-b-slate-200 font-semibold hover:border-b-black">{{.Title}}</a>
-                            <span class="italic text-slate-500 text-[0.65rem]">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
-                        </div>
-                        <p class="font-serif leading-6 text-[0.88rem] text-slate-700">{{.Hook}}</p>
-                    </li>
-                    {{- end -}}
-                </ul>
+            <ul class="clear-both mb-9">
+                {{- range .Articles -}}
+                <li class="clear-both mb-9 mt-1.5 text-md">
+                    {{if .HookImageURL}}
+                    <a href="/{{.Slug}}">
+                        <img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x"
+                            class="float-left mr-4 rounded-lg">
+                    </a>
+                    {{end}}
+                    <div class="mb-2">
+                        <a href="/{{.Slug}}"
+                            class="border-b-[1px] border-b-slate-200 font-semibold hover:border-b-black">{{.Title}}</a>
+                        <span
+                            class="italic ml-0.5 text-slate-500 text-xs">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
+                    </div>
+                    <p class="font-serif leading-7 text-slate-700">{{.Hook}}</p>
+                </li>
+                {{- end -}}
+            </ul>
             {{- end -}}
         </div>
     </div>
