@@ -1708,6 +1708,10 @@ video {
   height: 2.5rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1782,10 +1786,6 @@ video {
 
 .flex-grow-0 {
   flex-grow: 0;
-}
-
-.basis-0 {
-  flex-basis: 0px;
 }
 
 .basis-\[170px\] {
