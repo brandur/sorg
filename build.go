@@ -293,7 +293,7 @@ func build(c *modulir.Context) []error {
 
 			name := fmt.Sprintf("article: %s", filepath.Base(source))
 			c.AddJob(name, func() (bool, error) {
-				return renderArticle(c, source,
+				return renderArticle(ctx, c, source,
 					&articles, &articlesChanged, &articlesMu)
 			})
 		}
@@ -1023,15 +1023,18 @@ func build(c *modulir.Context) []error {
 type Article struct {
 	// Attributions are any attributions for content that may be included in
 	// the article (like an image in the header for example).
-	Attributions string `toml:"attributions,omitempty"`
+	Attributions template.HTML `toml:"attributions,omitempty"`
 
 	// Content is the HTML content of the article. It isn't included as TOML
 	// frontmatter, and is rather split out of an article's Markdown file,
 	// rendered, and then added separately.
-	Content string `toml:"-"`
+	Content template.HTML `toml:"-"`
 
 	// Draft indicates that the article is not yet published.
 	Draft bool `toml:"-"`
+
+	// Footnotes are HTML footnotes extracted from content.
+	Footnotes template.HTML `toml:"-"`
 
 	// HNLink is an optional link to comments on Hacker News.
 	HNLink string `toml:"hn_link,omitempty"`
@@ -1065,7 +1068,7 @@ type Article struct {
 	// TOC is the HTML rendered table of contents of the article. It isn't
 	// included as TOML frontmatter, but rather calculated from the article's
 	// content, rendered, and then added separately.
-	TOC string `toml:"-"`
+	TOC template.HTML `toml:"-"`
 }
 
 // publishingInfo produces a brief spiel about publication which is intended to
@@ -1176,7 +1179,7 @@ func (v *AtomVideo) Equal(other *AtomVideo) bool {
 type Fragment struct {
 	// Attributions are any attributions for content that may be included in
 	// the article (like an image in the header for example).
-	Attributions string `toml:"attributions,omitempty"`
+	Attributions template.HTML `toml:"attributions,omitempty"`
 
 	// Content is the HTML content of the fragment. It isn't included as TOML
 	// frontmatter, and is rather split out of an fragment's Markdown file,
@@ -1818,17 +1821,13 @@ func pathAsImage(extensionlessPath string) (string, bool) {
 	return "", false
 }
 
-func renderArticle(c *modulir.Context, source string,
+func renderArticle(ctx context.Context, c *modulir.Context, source string,
 	articles *[]*Article, articlesChanged *bool, mu *sync.Mutex,
 ) (bool, error) {
 	sourceChanged := c.Changed(source)
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/articles/show.ace",
-		},
-		universalSources...,
-	)...)
+
+	sourceTmpl := scommon.ViewsDir + "/articles/show.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
@@ -1847,15 +1846,25 @@ func renderArticle(c *modulir.Context, source string,
 	article.Draft = scommon.IsDraft(source)
 	article.Slug = scommon.ExtractSlug(source)
 
-	article.Content, err = mmarkdownext.Render(string(data), nil)
+	content, err := mmarkdownext.Render(string(data), nil)
 	if err != nil {
 		return true, err
 	}
 
-	article.TOC, err = mtoc.RenderFromHTML(article.Content)
+	content, footnotes, ok := strings.Cut(content, `<div class="footnotes">`)
+	if ok {
+		footnotes = strings.TrimSuffix(footnotes, "</div>")
+	}
+
+	article.Content = template.HTML(content)
+	article.Footnotes = template.HTML(footnotes) // may be empty
+
+	toc, err := mtoc.RenderFromHTML(string(article.Content))
 	if err != nil {
 		return true, err
 	}
+
+	article.TOC = template.HTML(toc)
 
 	if article.Hook != "" {
 		hook, err := mmarkdownext.Render(string(article.Hook), nil)
@@ -1890,10 +1899,7 @@ func renderArticle(c *modulir.Context, source string,
 		"TwitterCard":    card,
 	})
 
-	// Always use force context because if we made it to here we know that our
-	// sources have changed.
-	err = mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/articles/show.ace",
-		path.Join(c.TargetDir, article.Slug), getAceOptions(viewsChanged), locals)
+	err = dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, article.Slug), locals)
 	if err != nil {
 		return true, err
 	}
@@ -1965,7 +1971,7 @@ func renderArticlesFeed(_ *modulir.Context, articles []*Article, tag *Tag, artic
 		entry := &matom.Entry{
 			Title:     article.Title,
 			Summary:   string(article.Hook),
-			Content:   &matom.EntryContent{Content: article.Content, Type: "html"},
+			Content:   &matom.EntryContent{Content: string(article.Content), Type: "html"},
 			Published: article.PublishedAt,
 			Updated:   article.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/" + article.Slug},

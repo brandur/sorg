@@ -1,0 +1,181 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 px-4 md:mb-24 md:mt-16">
+    <div class="container max-w-[950px] mx-auto">
+        <h1 class="text-slate-800 font-semibold font-sans leading-none my-8 text-center text-6xl tracking-tighter md:font-normal md:text-8xl">
+            {{.Article.Title}}
+        </h1>
+    </div>
+
+    {{if ne .Article.Hook "UNWRITTEN. This should not appear on the front page."}}
+    <!-- <div class="container max-w-[625px] mx-auto
+                prose prose-md
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                hover:prose-a:border-slate-200
+                text-center">
+            <p>{{.Article.Hook}}</p>
+        </div> -->
+    {{end}}
+</div>
+
+{{if ne .Article.Image ""}}
+<div>
+    <div class="mx-auto my-12 md:my-16">
+        <img class="w-full" src="{{.Article.Image}}" srcset="{{To2X .Article.Image}} 2x, {{.Article.Image}} 1x">
+    </div>
+</div>
+{{end}}
+
+<div class="container max-w-[900px] mx-auto mt-8 px-4">
+    <div class="md:flex">
+        <div class="basis-[170px] flex-grow-0 flex-shrink-0 hidden md:block">
+            <div class="my-1 leading-normal text-xs tracking-tighter sticky text-center top-5">
+                <div class="border-b px-4 pb-4">
+                    <div class="font-bold mb-0.5">Article</div>
+                    <div>
+                        <a href="/{{.Article.Slug}}">
+                            {{.Article.Title}} <span class="mx-0.5 opacity-60">🔗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!--
+                    It sucks having to nest two flexboxes like this, but it was
+                    the only easy way I could find to make sure the right border
+                    is at 100% height while also making content in each pane
+                    vertically aligned. You can `items-center` instead of
+                    `items-stretch`, but then if the left pane is shorter than
+                    the right, it centers itself, and its border is only partial
+                    height.
+                -->
+                <div class="border-b flex items-stretch text-center">
+                    <div class="basis-0 border-r flex-grow">
+                        <div class="flex items-center">
+                            <div class="px-4 py-4">
+                                <div class="font-bold mb-0.5">Published</div>
+                                <div class="leading-tight">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="basis-0 flex-grow min-w-0">
+                        <div class="flex items-center">
+                            <div class="px-4 py-4">
+                                <div class="font-bold mb-0.5">Location</div>
+                                <div class="leading-tight">{{.Article.Location}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{if .Article.HNLink}}
+                    <div class="border-b px-4 py-4">
+                        Please post comments and discussion to <strong><a href="{{.Article.HNLink}}">Hacker News</a></strong>.
+                    </div>
+                {{end}}
+
+                <div class="italic px-4 py-4">
+                    I'm on Twitter at <a href="https://twitter.com/brandur" class="font-bold">@brandur</a>.
+                </div>
+            </div>
+        </div>
+
+        <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
+
+        <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8">
+            <div class="max-w-none
+                prose prose-lg
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                prose-blockquote:font-normal prose-blockquote:text-slate-700
+                hover:prose-a:border-b-slate-200
+                prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                prose-h1:font-bold prose-h1:text-base
+                prose-h2:text-base prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
+                prose-h3:text-sm prose-h3:mb-1 prose-a:prose-h3:border-b-0 prose-a:prose-h3:font-bold
+                prose-h4:text-sm prose-h4:mb-1 prose-a:prose-h4:border-b-0 prose-a:prose-h4:font-bold
+                prose-p:font-serif
+                prose-p:prose-blockquote:font-sans
+                prose-strong:font-sans
+                prose-ol:font-serif
+                prose-ul:font-serif
+                ">
+                <!--
+                    TODO: Fix the TOC at some point. Mostly just needs styling.
+
+                    <div class="float-right max-w-[250px] text-xs">
+                        {{if ne .Article.TOC ""}}
+                            <span class="">Contents</span>
+                            {{.Article.TOC}}
+                        {{end}}
+                    </div>
+                -->
+
+                {{.Article.Content}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{if .Article.Footnotes}}
+<div class="border-t p-8 w-vp">
+    <div class="container max-w-[650px] mx-auto">
+        <div class="max-w-none
+                prose prose-sm
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                hover:prose-a:border-b-slate-200
+                prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                prose-p:font-serif
+                prose-strong:font-sans
+                ">
+            {{.Article.Footnotes}}
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{if .Article.Attributions}}
+<div class="border-t p-8 w-vp">
+    <div class="container max-w-[650px] mx-auto">
+        <div class="max-w-none
+                prose prose-sm
+                prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+                hover:prose-a:border-b-slate-200
+                prose-code:prose-a:text-sm prose-code:prose-p:text-sm
+                prose-p:font-serif
+                prose-strong:font-sans
+                ">
+            <p>
+                {{.Article.Attributions}}
+            </p>
+        </div>
+    </div>
+</div>
+{{end}}
+
+<div class="border-t pb-20 p-8 w-vp">
+    <div class="container max-w-[550px] mx-auto">
+        <div class="italic max-w-none
+            prose prose-sm
+            prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-b-slate-200
+            prose-p:font-serif
+            ">
+            {{if .Article.Draft}}
+            <p>
+                Did I make a mistake? Please consider <a
+                    href="https://github.com/brandur/sorg/edit/master/content/drafts/{{.Article.Slug}}.md">sending
+                    a pull request</a>.
+            </p>
+            {{else}}
+            <p>
+                Did I make a mistake? Please consider <a
+                    href="https://github.com/brandur/sorg/edit/master/content/articles/{{.Article.Slug}}.md">sending a
+                    pull request</a>.
+            </p>
+            {{end}}
+        </div>
+    </div>
+</div>
+
+{{- end -}}
