@@ -30,9 +30,9 @@
 
 <div class="container max-w-[750px] mx-auto mt-8 px-4">
     <div class="md:flex">
-        <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
-            <div class="my-1 leading-normal text-xs tracking-tighter md:sticky md:text-right md:top-5">
-                <div class="hidden md:block md:border-b md:px-4 md:pb-5">
+        <div class="basis-[115px] flex-grow-0 flex-shrink-0 hidden md:block">
+            <div class="my-1 leading-normal text-xs tracking-tighter sticky text-right top-5">
+                <div class="border-b px-4 pb-4">
                     <div class="font-bold mb-0.5">Fragment</div>
                     <div>
                         <a href="/fragments/{{.Fragment.Slug}}">
@@ -41,16 +41,19 @@
                     </div>
                 </div>
 
-                <div class="md:border-b md:px-4 md:py-5">
-                    <div class="hidden md:block md:font-bold md:mb-0.5">Published</div>
-                    <div class="font-bold md:font-normal">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
+                <div class="border-b px-4 py-4">
+                    <div class="font-bold mb-0.5">Published</div>
+                    <div class="font-normal">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
                 </div>
 
-                <div class="hidden md:block md:italic md:px-4 md:py-5">
+                <div class="italic px-4 py-4">
                     I'm on Twitter at <a href="https://twitter.com/brandur" class="font-bold">@brandur</a>.
                 </div>
             </div>
         </div>
+
+        <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
+
         <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8">
             <div class="max-w-none
                 prose prose-md
