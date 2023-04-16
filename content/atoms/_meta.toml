@@ -12,7 +12,7 @@
 [[atoms]]
   published_at = 2023-04-15T18:32:19-07:00
   description = """\
-And at long last, finished redesign the articles pages themselves, [for example](/sqlc).
+And at long last, finished redesigning the main articles pages themselves, [for example](/sqlc).
 
 I've been intending to do this for at least two years, and for once am glad that I procrastinated on it. If I'd done it even mid-last year, it would've been in vanilla CSS instead of [Tailwind](https://tailwindcss.com/), and over the subsequent years after that all the same problems around maintainability would've reoccurred. The site's now close to being 100% Tailwind, and I'm more confident that I'll be able to change things in the future without having to page a bunch of site-specific CSS context back into my brain, and without accidentally breaking anything as styles, you know, cascade.
 
