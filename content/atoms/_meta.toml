@@ -9,6 +9,23 @@
 # "atom" snippet to insert an entry template.
 #
 ################################################################################
+
+[[atoms]]
+  published_at = 2023-04-16T13:34:51-07:00
+  description = """\
+Linked from HN today, [Future Blues](http://futureblues.com/story.shtml), a 90s era Cowboy Bebop fansite, complete with Photoshop layout, shareable banner, and guestbook.
+
+I miss the old internet. What's available today is infinitely more powerful compared to what we had back then, but in many ways, so much worse. In the old days people built sites on subjects they were passionate about, and doing so was its own reward -- this was before the web became monetized, and _long_ before the pursuit of social media clout. There was no Squarespace, so people did their own design and coding, even if they weren't technologists. You might've been hosting on Geocities, but it was also common to be running a web server on the computer under your desk.
+
+Today, 95% of the internet has converged on the same bland big-fonts-in-center-column-with-lots-of-whitespace design (of which this site is guilty), and slathered with paywalls, cookie selectors, login modals, toast notifications, trackers, and so many other dark patterns that they're hard to keep track of. And that's the _good_ news. The bad is that most people are skipping the website completely and retreating into the walled gardens of Instagram, TikTok, YouTube, or Twitter.
+
+A hat tip to the few out there who still do it the old way.
+"""
+  [[atoms.photos]]
+    link_url = "https://futureblues.com/spike.shtml"
+    original_image_url = "https://www.dropbox.com/s/sbtrf2c3km8t8be/spike-spiegel.png?dl=1"
+    slug = "spike-spiegel"
+
 [[atoms]]
   published_at = 2023-04-15T18:32:19-07:00
   description = """\
