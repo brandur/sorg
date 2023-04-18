@@ -37,7 +37,7 @@ Notably, generics don't break Go's `1.*` run. They'd originally been slated for 
 
 ## API endpoints (#api-endpoints)
 
-In order to facilitate API endpoints being able to self-describe for reflection into OpenAPI (see [docs docs docs](/nanoglyphs/031-api-docs)), and to wrap up common facilities to make developer faster and less error prone, we have a lightweight framework. A typical endpoint definition looked like this, with documentation, request/response samples, and an invocation to get a service handler that should be called into the API endpoint is executed:
+In order to facilitate API endpoints being able to self-describe for reflection into OpenAPI (see [docs! docs! docs!](/nanoglyphs/031-api-docs)), and to wrap up common facilities to make developer faster and less error prone, we have a lightweight framework. A typical endpoint definition looked like this, with documentation, request/response samples, and an invocation to get a service handler that should be called into the API endpoint is executed:
 
 ``` go
 func (e *ClusterCreateEndpoint) Materialize() apiendpoint.APIEndpointer {
