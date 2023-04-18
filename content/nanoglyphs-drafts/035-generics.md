@@ -9,7 +9,7 @@ Subscribers --
 
 Welcome to the first new edition of _Nanoglyph_ in a long time. In case you (correctly) have no idea what this is, I'm Brandur, and you may have subscribed to this list after reading [Meta layoffs](/fragments/meta-layoffs), [Short, friendly base32 slugs from timestamps](/fragments/base32-slugs), or [Soft deletion probably isn't worth it](/soft-deletion), and thanks to my extreme sending delinquency, forgotten about it. As always, in case you don't want to receive these messages, you can help the little guy wage war against Goliath (the emergent email monopoly that starts with a "G") by [unsubscribing](%unsubscribe_url%) instead of hitting that "mark as spam" button.
 
-I wrote most of the below a while back, but never sent it. That's why there's such a tight focus on Go generics, which aren't that new of a feature anymore. At the time they were about six months new and extremely novel, but have now been available for over a year, and are more boring. Excuse any dated language that you might run across.
+I wrote most of the below a while back, but never sent it. That's why there's such a tight focus on Go generics, which are a brand new feature that's now about a year and a half old. Excuse any dated language that you might run across.
 
 ---
 
