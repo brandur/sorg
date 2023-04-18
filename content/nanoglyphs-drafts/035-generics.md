@@ -17,7 +17,7 @@ We upgraded to Go 1.18 within a day or two of release, but decided to forego imm
 
 So far, so good. [Planet Scale](https://planetscale.com/blog/generics-can-make-your-go-code-slower) wrote a deep dive on how the use of generics makes Go slow, and although that's certainly true when it comes down to optimizing low-level code, when it comes to domain uses like ours (our project is largely a CRUD API), they've been purely beneficial, and I mean like, _very_ beneficial. Even if generics weren't a thing, my cramped hands are thanking me already with the substitution of the comically unwieldy `interface CURLY BRACE CURLY BRACE` (`interface{}`) with `any`.
 
-## Strong opinions strongly held (#strong-opinions)
+## Strong opinions, strongly held (#strong-opinions)
 
 Since the beginning, Go's been a language of strong opinions, and those strong opinions made even more stark because they're often directly contrary to what everyone else is doing. Generics were always the elephant in the room, with the only other major languages without them having deep roots in the 70s.
 
