@@ -1,17 +1,27 @@
 +++
 image_alt = "Creek at the Forest of Nisene Marks"
 image_url = "/photographs/nanoglyphs/035-generics/forest-of-nisene-marks@2x.jpg"
-published_at = 2022-06-05T21:05:47Z
-title = "1.18 and Generics"
+published_at = 2023-04-17T17:40:47-07:00
+title = "Go Generics, Eventual Newslettering"
 +++
 
-Go 1.18's been released for about half a year now. We upgraded within a day or two, but decided to forego its exotic new syntax in the hopes that [golangci-lint](https://github.com/golangci/golangci-lint) would get some quick patches to be more compatible with it. It got a few, but a month later many of its lints still weren't compatible. Meanwhile, we felt the beckoning call of a whole new world of Go generics, ready to use right behind the curtain. We timed out and took for the plunge.
+Subscribers --
+
+Welcome to the first new edition of _Nanoglyph_ in a long time. In case you (correctly) have no idea what this is, I'm Brandur, and you may have subscribed to this list after reading [Meta layoffs](/fragments/meta-layoffs), [Short, friendly base32 slugs from timestamps](/fragments/base32-slugs), or [Soft deletion probably isn't worth it](/soft-deletion), and thanks to my extreme sending delinquency, forgotten about it. As always, in case you don't want to receive these messages, you can help the little guy wage war against Goliath (the emergent email monopoly that starts with a "G") by [unsubscribing](%unsubscribe_url%) instead of hitting that "mark as spam" button.
+
+I wrote most of the below a while back, but never sent it. That's why there's such a tight focus on Go generics, which aren't that new of a feature anymore. At the time they were about six months new and extremely novel, but have now been available for over a year, and are more boring. Excuse any dated language that you might run across.
+
+---
+
+We upgraded to Go 1.18 within a day or two of release, but decided to forego immediate use of generics due to support being [spotty amongst a basket of golangci-lint's linters](https://github.com/golangci/golangci-lint/issues/2649). But the beckoning call was strong, and we timed out and took the plunge. It's a good thing we didn't wait, because getting golangci-lint compatible turned into a long-tail project, taking almost exactly a year to get fully compatible.
 
 So far, so good. [Planet Scale](https://planetscale.com/blog/generics-can-make-your-go-code-slower) wrote a deep dive on how the use of generics makes Go slow, and although that's certainly true when it comes down to optimizing low-level code, when it comes to domain uses like ours (our project is largely a CRUD API), they've been purely beneficial, and I mean like, _very_ beneficial. Even if generics weren't a thing, my cramped hands are thanking me already with the substitution of the comically unwieldy `interface CURLY BRACE CURLY BRACE` (`interface{}`) with `any`.
 
-Since the very beginning, Go's been a language of very strong opinions, and those strong opinions made even more stark because they're often directly contrary to what everyone else is doing. Generics were always the elephant in the room, with the only other major languages without them having deep roots in the 70s.
+## Strong opinions strongly held (#strong-opinions)
 
-And generics are just the last in a long history of contrarianism. For years the most hardcore of Gophers claimed that package management was something that only other languages needed -- real men just `cp` things into a local `vendor/` directory. What you say? You care about security? Ergonomics? [_What problem are you really trying to solve_?](https://groups.google.com/g/golang-nuts/search?q=%22What%20problem%20are%20you%20trying%20to%20solve%22) Well, security and ergonomics for starters.
+Since the beginning, Go's been a language of strong opinions, and those strong opinions made even more stark because they're often directly contrary to what everyone else is doing. Generics were always the elephant in the room, with the only other major languages without them having deep roots in the 70s.
+
+And generics are just the last in a long history of contrarianism. For years the most hardcore of Gophers claimed that package management was something that only other languages needed -- real men just `cp` things into a local `vendor/` directory. What you say? You care about security? Ergonomics? Reproducibility? You poor, pitiable soul, unable to grasp true unelightenment.
 
 And others:
 
@@ -21,7 +31,7 @@ And others:
 
 * The infamous [syntax highlighting is for children](https://groups.google.com/g/golang-nuts/c/hJHCAaiL0so/m/E2mQ1RDiio8J), which unfortunately, was not an April Fools' joke.
 
-But to their credit, in every one of these cases Go core has eventually come around and reversed course. Now with generics, Go Modules, and a host of other minor embellishments added over the years (not to mention the many good things it started with), it's on the trajectory to being one of the best languages out there. I'm even holding out hope that maybe, just maybe, one day we might even get built-in assert helpers and stack traces.
+But to their credit, in every one of these cases Go core has eventually come around and reversed course. Now with generics, Go Modules, and a host of other embellishments added over the years (not to mention the many good things it started with), it's on the trajectory to being one of the best languages out there. I'm even holding out hope that maybe, just maybe, one day we might even be the beneficiaries of highly advanced technology like built-in assert helpers and stack traces.
 
 Notably, generics don't break Go's `1.*` run. They'd originally been slated for a 2.0 release, but although 1.18 brings in the largest syntax changes since the language's first release, it manages to stay backwards compatible with all previous `1.*` releases. [I've beaten this drum before](/go-lambda), but it is a massive, _massive_ language feature not to have new versions of your language constantly breaking all your existing projects, which is something that precious few other languages get right.
 
@@ -107,9 +117,7 @@ func (e *APIEndpoint[TReq, TResp]) Execute(w http.ResponseWriter, r *http.Reques
 
 This makes things faster, but also makes the code easier to read and safer to change. Endpoint definitions are safer too, now producing a compile error if a service handler takes or responds with the wrong type:
 
-```
-`server/api/cluster_transport.go:55:11: cannot use svc.(ClusterService).Update (value of type func(context.Context, *ClusterUpdateRequest) (*apiresourcekind.Cluster, error)) as type func(ctx context.Context, req *ClusterCreateRequest) (*apiresourcekind.Cluster, error) in return statement`
-```
+> `server/api/cluster_transport.go:55:11: cannot use svc.(ClusterService).Update (value of type func(context.Context, *ClusterUpdateRequest) (*apiresourcekind.Cluster, error)) as type func(ctx context.Context, req *ClusterCreateRequest) (*apiresourcekind.Cluster, error) in return statement`
 
 Previously, this could only be detected at runtime, which meant that every endpoint definition needed a trivial test case to ensure that a type problem was caught in CI instead of catastrophically late once the problem in production.
 
@@ -266,14 +274,14 @@ I'd make the argument that `errgroup`'s new limits is one of the best addition t
 
 ## The Dropout (#the-dropout)
 
-Since apparently I just can't get enough of tech, last week I watched [The Dropout](TODO), about Elizabeth Holmes and Theranos. _Bad Blood_ by John Carreyrou is one of those precious few nonfiction books that reads like a thriller and keeps you on the edge of your seat the whole way through -- a legitimate 10/10, and being one of the most dramatic tech scandals of all time, I was looking forward to the TV adaptation as well.
+Largely by coincidence (given two completely separate trials and appeals processes), Elizabeth Holmes and "Sunny" Balwani are set to report to prison in the next few days only a week apart -- Balwani on April 20th for 13 years, and [Holmes on April 27th for 11 years](https://apnews.com/article/elizabeth-holmes-prison-theranos-fraud-conviction-46471e11f615b8ce16114c22551477aa).
 
-I was a little worried when the first couple episodes started a tad slowly, but it quickly got it hooks into me. The pacing is a little uneven and it probably could've been shorter than the eight episodes it turned out to be, but by the end I appreciated the length -- especially compared to if it'd been compacted into a 120 minute movie, it gave the show enough time to explore every major character in depth. The genre is even somewhat malleable as it at times dips into the surreal, and bounces all the way to some laugh-out-loud comedy moments like those found throughout episode four (TODO) where Theranos closes a deal with Walgreens executives desperate to appear young and hip by making an imprudent deal with a darling unicorn of Silicon Valley.
+Given the topical nature, I watched [The Dropout](https://en.wikipedia.org/wiki/The_Dropout). The book _Bad Blood_ by John Carreyrou (who exposed the scandal) is one of those precious few nonfiction books that reads like a Michael Crichton novel and keeps you on the edge of your seat the whole way through -- a legitimate 10 out of 10, and being one of the most dramatic tech fiascos of all time, I was looking forward to the TV adaptation as well.
 
-The acting is all top-notch. Amanda Seyfried not only perfects Holmes' fake deep voice, but affects the perfect amount of cringe for the odder moments like her Steve Jobs worship scenes, or Theranos dance parties. Naveen Andrews seems to have been born to play the part of Balwani, who swings from a sympathetic character nearer to the beginning to something much closer to a sociopath by the end, one capable of explosive bursts of white hot anger towards good people doing the right thing, but who've come up against him. Sam Waterston's nuanced performance as George Schultz was also great -- not a malicious figure despite supporting Theranos well passed the point he should have, but an old man too proud to admit to his mistake and unable to walk it back.
+I was a worried when the first couple episodes started a tad slowly, but it quickly got its hooks into me. The pacing is a little uneven and it probably could've been shorter than its eight episodes, but by the end I appreciated the length -- especially compared to if it'd been compacted into a 120 minute movie, it gave the show enough time to explore every major character in depth. The genre is even somewhat malleable as it at times dips into the surreal, and bounces all the way to some laugh-out-loud comedy moments like those found throughout episode four ("Old White Men") where Theranos closes a deal with Walgreens executives desperate to appear young and hip by making an imprudent deal with a darling unicorn of Silicon Valley.
 
-There's been some post-hoc rationalization by people like [Ellen Pao (?)](TODO) that actually, against all evidence, Theranos was driven by evil men and that Elizabeth Holmes is really a misunderstood good guy who is just a victim of a misogynistic press. A [jury of her peers disagrees](TODO), and anyone laboring under this illusion should refer back to the well-cited long form Carreyrou source material -- not only was Holmes responsible for one of the largest scale frauds of all time, but toyed with peoples' lives through fake medical technology, and her vindictive character led to the suicide of one, and ruinous legal debt on the parts of multiple others.
+The acting is top-notch. Amanda Seyfried not only perfects Holmes' deep (and completely fake) voice, but affects the perfect amount of cringe for the odder moments like her Steve Jobs worship scenes, or Theranos dance parties. Naveen Andrews seems to have been born to play the part of Balwani, who swings from a sympathetic character nearer to the beginning to something much closer to total sociopath by the end, capable of explosive bursts of white hot anger towards good people doing the right thing, but who've come up against him. Sam Waterston's nuanced performance as George Schultz was also great -- not a malicious figure despite supporting Theranos well passed the point he should have, but a man made inept through age, and too proud to admit to his mistake and unable to walk it back.
 
-Without giving away too much, the final scene shows a distracted Holmes apparently unable to grapple with reality as she distractedly plays with her dog and talks about her new boyfriend while her ex-legal director tries to explain the damage she's done. Again, A+++ acting down to a tee, and exactly consistent with the impression you get from Carreyrou's book -- not an inherently evil force, but one who incrementally slid ever further into the deep end until there was no going back.
+Without giving away too much, the final scene shows a distracted Holmes apparently unable to grapple with reality as she distractedly plays with her dog and talks about her new boyfriend while her ex-legal director tries to explain the damage she's done. Again, A+++ acting down to a tee, and exactly consistent with the impression of Holmes you get from Carreyrou's book -- not an inherently evil force, but one who incrementally slid ever further into the deep end until there was no going back.
 
 Until next week.
