@@ -7,13 +7,15 @@ title = "Go Generics, Eventual Newslettering"
 
 Subscribers --
 
-Welcome to the first new edition of _Nanoglyph_ in a long time. In case you (correctly) have no idea what this is, I'm Brandur, and you may have subscribed to this list after reading [Meta layoffs](/fragments/meta-layoffs), [Short, friendly base32 slugs from timestamps](/fragments/base32-slugs), or [Soft deletion probably isn't worth it](/soft-deletion), and thanks to my extreme sending delinquency, forgotten about it. As always, in case you don't want to receive these messages, you can help the little guy wage war against Goliath (the emergent email monopoly that starts with a "G") by [unsubscribing](%unsubscribe_url%) instead of hitting that "mark as spam" button.
+Welcome to the first new edition of _Nanoglyph_ in a long time. In case you (correctly) have no idea what this is, I'm Brandur, and you may have subscribed to this list after reading [Meta layoffs](/fragments/meta-layoffs), [Short, friendly base32 slugs from timestamps](/fragments/base32-slugs), or [Soft deletion probably isn't worth it](/soft-deletion), and thanks to my extreme sending delinquency, forgotten about it.
+
+As always, in case you don't want to receive these messages, you can do your part to help the little guy against Goliath (the incumbent email monopoly starting with a "G" and which likens itself to the alphabet) by [unsubscribing](%unsubscribe_url%) instead of hitting that "mark as spam" button.
 
 I wrote most of the below a while back, but never sent it. That's why there's such a tight focus on Go generics, which are a brand new feature that's now about a year and a half old. Excuse any dated language that you might run across.
 
 ---
 
-We upgraded to Go 1.18 within a day or two of release, but decided to forego immediate use of generics due to support being [spotty amongst a basket of golangci-lint's linters](https://github.com/golangci/golangci-lint/issues/2649). But the beckoning call was strong, and we timed out and took the plunge. It's a good thing we didn't wait, because getting golangci-lint compatible turned into a long-tail project, taking almost exactly a year to get fully compatible.
+We upgraded to Go 1.18 within a day or two of release, but decided to forego immediate use of generics due to support being [spotty amongst a basket of golangci-lint's linters](https://github.com/golangci/golangci-lint/issues/2649). But the beckoning call was strong, and we timed out and took the plunge. It's a good thing we didn't wait, because getting golangci-lint compatible turned into the longest of long-tail projects, taking almost exactly a year to get fully compatible.
 
 So far, so good. [Planet Scale](https://planetscale.com/blog/generics-can-make-your-go-code-slower) wrote a deep dive on how the use of generics makes Go slow, and although that's certainly true when it comes down to optimizing low-level code, when it comes to domain uses like ours (our project is largely a CRUD API), they've been purely beneficial, and I mean like, _very_ beneficial. Even if generics weren't a thing, my cramped hands are thanking me already with the substitution of the comically unwieldy `interface CURLY BRACE CURLY BRACE` (`interface{}`) with `any`.
 
@@ -284,4 +286,4 @@ The acting is top-notch. Amanda Seyfried not only perfects Holmes' deep (and com
 
 Without giving away too much, the final scene shows a distracted Holmes apparently unable to grapple with reality as she distractedly plays with her dog and talks about her new boyfriend while her ex-legal director tries to explain the damage she's done. Again, A+++ acting down to a tee, and exactly consistent with the impression of Holmes you get from Carreyrou's book -- not an inherently evil force, but one who incrementally slid ever further into the deep end until there was no going back.
 
-Until next week.
+Until next week/month/year.
