@@ -5,7 +5,7 @@ published_at = 2020-12-27T22:45:22Z
 title = "Tenet"
 +++
 
-I finally saw _Tenet_ last night. The story of this film's release is as much of a roller coast as its content, being one of a handful of ill-fated 2020 blockbusters, but one that decided to release anyway despite all the signs pointing to one being one of the worst-fated years for theatrical releases in decades. After some delay, it went live in theatres on August 26th, with the Blu-ray release not tailing too far behind, coming out on December 15th.
+I finally saw _Tenet_ last night. The story of this film's release is as much of a roller coaster as its content, being one of a handful of ill-fated 2020 blockbusters, but one that decided to release anyway despite all the signs pointing to one being one of the worst-fated years for theatrical releases in decades. After some delay, it went live in theatres on August 26th, with the Blu-ray release not tailing too far behind, coming out on December 15th.
 
 I'm an unapologetic Christopher Nolan fan, and new movies from him are a rare treat. He's a filmmaker whose proven himself to the establishment so well that he seems to be given more or less cart blanche on new projects, with massive budgets that let him turn any fantastic premise into reality. As a viewer, you know that you're in for some of the most expensive sets and mind-bending special effects ever made.
 
