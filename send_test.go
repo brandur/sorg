@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
@@ -38,6 +39,8 @@ func TestMatchNewsletter(t *testing.T) {
 }
 
 func TestRenderAndSend(t *testing.T) {
+	ctx := context.Background()
+
 	oldMailgunKey := conf.MailgunAPIKey
 	defer func() {
 		conf.MailgunAPIKey = oldMailgunKey
@@ -46,20 +49,20 @@ func TestRenderAndSend(t *testing.T) {
 	conf.MailgunAPIKey = ""
 
 	{
-		err := renderAndSend(nil, "./content/passages/001-first.md", true, false)
+		err := renderAndSend(ctx, nil, "./content/passages/001-first.md", true, false)
 		assert.Error(t, err, "MAILGUN_API_KEY must be configured in the environment")
 	}
 
 	conf.MailgunAPIKey = "key"
 
 	{
-		err := renderAndSend(nil, "./content/articles/article.md", true, false)
+		err := renderAndSend(ctx, nil, "./content/articles/article.md", true, false)
 		assert.Error(t, err,
 			"'./content/articles/article.md' does not appear to be a known newsletter (check its path)")
 	}
 
 	{
-		err := renderAndSend(nil, "./content/passages-drafts/999-placeholder.md", true, false)
+		err := renderAndSend(ctx, nil, "./content/passages-drafts/999-placeholder.md", true, false)
 		assert.Error(t, err,
 			"refusing to send a draft newsletter to a live list")
 	}
