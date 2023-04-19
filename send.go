@@ -3,13 +3,14 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"context"
 	"fmt"
 	"path/filepath"
 	"strings"
 
 	"github.com/aymerick/douceur/inliner"
+	"github.com/mailgun/mailgun-go/v4"
 	"golang.org/x/xerrors"
-	"gopkg.in/mailgun/mailgun-go.v1"
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
@@ -28,7 +29,9 @@ import (
 //////////////////////////////////////////////////////////////////////////////
 
 func sendNewsletter(c *modulir.Context, source string, live, staging bool) {
-	if err := renderAndSend(c, source, live, staging); err != nil {
+	ctx := context.Background()
+
+	if err := renderAndSend(ctx, c, source, live, staging); err != nil {
 		scommon.ExitWithError(err)
 	}
 }
@@ -123,7 +126,7 @@ func matchNewsletter(source string) (*newsletterInfo, bool) {
 	return nil, false
 }
 
-func renderAndSend(c *modulir.Context, source string, live, staging bool) error {
+func renderAndSend(ctx context.Context, c *modulir.Context, source string, live, staging bool) error {
 	if conf.MailgunAPIKey == "" {
 		return xerrors.Errorf(
 			"MAILGUN_API_KEY must be configured in the environment")
@@ -179,13 +182,13 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 		recipient = testAddress
 	}
 
-	mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey, "")
+	mg := mailgun.NewMailgun(mailDomain, conf.MailgunAPIKey)
 
 	fromAddress := "Brandur <" + newsletterInfo.MailAddress + ">"
 	subject := fmt.Sprintf(newsletterInfo.TitleFormat,
 		issue.Number, issue.Title)
 
-	message := mailgun.NewMessage(
+	message := mg.NewMessage(
 		fromAddress,
 		subject,
 		issue.ContentRaw,
@@ -193,7 +196,7 @@ func renderAndSend(c *modulir.Context, source string, live, staging bool) error 
 	message.SetReplyTo(replyToAddress)
 	message.SetHtml(html)
 
-	resp, _, err := mg.Send(message)
+	resp, _, err := mg.Send(ctx, message)
 	if err != nil {
 		return xerrors.Errorf("error sending email: %w", err)
 	}
