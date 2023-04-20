@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-19T17:56:29-07:00
+  description = """\
+After a year of inactivity and (more recently) some strange trouble with Mailgun mailing lists, [_Nanoglyph 035_](/nanoglyphs/035-generics) is published, on Go generics, and our endeavor to build a safer API framework with them. This newsletter may be struggling, but it's not completely dead, yet.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-16T13:34:51-07:00
   description = """\
 Linked from HN today, [Future Blues](http://futureblues.com/story.shtml), a 90s era Cowboy Bebop fansite, complete with Photoshop layout, shareable banner, and guestbook.
