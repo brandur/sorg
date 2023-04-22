@@ -11,6 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-21T18:23:55-07:00
+  description = """\
+A piece from LWN on [the early days of Linux](https://lwn.net/Articles/928581/) at the University of Helsinki.
+
+On Linus taking down the university's network fragile Sun machines:
+
+> At some point, Linux gained support for Ethernet and TCP/IP. That meant one could read Usenet without having to use a modem. Alas, early Linux networking code was occasionally a little rough, having been written from scratch. At one point, Linux would send some broken packets that took down all of the Sun machines on the network. As it was difficult to get the Sun kernel fixed, Linux was banned from the university network until its bug was fixed. Not having Usenet access from one's desk is a great motivator.
+
+On the version 1.0 release event (complete with press) in _1994_:
+
+> In the spring of 1994 we felt that Linux was done. Finished. Nothing more to add. One could use Linux to compile itself, to read Usenet, and run many copies of the xeyes program at once. We decided to release version 1.0 and arranged a release event. The Finnish computer press was invited, and a TV station even sent a crew. Most of the event consisted of ceremonially compiling Linux 1.0 in the background, while Linus and others spoke about what Linux was and what it was good for. Linus explained that commercial Unix for a PC was so expensive that it was easier to write your own.
+
+And [it was recorded](https://www.youtube.com/watch?v=qaDpjlFpbfo), complete with a young, handsome university student version of Linus.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-19T17:56:29-07:00
   description = """\
 After a year of inactivity and (more recently) some strange trouble with Mailgun mailing lists, [_Nanoglyph 035_](/nanoglyphs/035-generics) is published, on Go generics, and our endeavor to build a safer API framework with them. This newsletter may be struggling, but it's not completely dead, yet.
