@@ -15,7 +15,7 @@
   description = """\
 A piece from LWN on [the early days of Linux](https://lwn.net/Articles/928581/) at the University of Helsinki.
 
-On Linus taking down the university's network fragile Sun machines:
+On Linus taking down the university's fragile Sun machines:
 
 > At some point, Linux gained support for Ethernet and TCP/IP. That meant one could read Usenet without having to use a modem. Alas, early Linux networking code was occasionally a little rough, having been written from scratch. At one point, Linux would send some broken packets that took down all of the Sun machines on the network. As it was difficult to get the Sun kernel fixed, Linux was banned from the university network until its bug was fixed. Not having Usenet access from one's desk is a great motivator.
 
