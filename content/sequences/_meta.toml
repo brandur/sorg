@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-04-17T17:40:47-07:00
+  slug = "045"
+  title = "In creeks and canyons"
+  description = """
+A photo from the Forest of Nisene Marks, used as my poster for [_Nanoglyph 035_](/nanoglyphs/035-generics). The state park is named for a nature-loving mother who bought the land 1950s, and whose children donated it in 1963 with the provision that it never be developed.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/q25sv3ui0k5hmlu/2W4A1067.JPG?dl=1"
+    slug = "045"
+
+[[entries]]
   published_at = 2023-04-07T10:01:30-07:00
   slug = "044"
   title = "Indomitable"
