@@ -11,6 +11,30 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-22T20:41:03-07:00
+  description = """\
+Today I discovered the power of Postgres' `DISTINCT ON` syntax, a useful feature that did exactly what I wanted it to with my first try.
+
+Everyone knows the common `distinct` function (e.g. `SELECT distinct(name)`), which gets all unique values for a given field.
+
+`DISTINCT ON` is similar, but it groups rows by a distinct field, and then returns whatever you want from one of them based on an `ORDER BY` clause.
+
+Example: we have _saved_ queries that have one or more query _runs_ each. Return the latest query run (`finished_at DESC`) that either failed or succeeded for each saved query:
+
+``` go
+-- name: QueryGetFailedOrSucceededBySavedQueryIDMany :many
+SELECT DISTINCT ON (saved_query_id) *
+FROM query_run
+WHERE status = 'failed' OR status = 'succeeded'
+    AND saved_query_id = any(@saved_query_id::uuid[])
+ORDER BY saved_query_id, finished_at DESC;
+```
+
+Easy to use and concise.
+"""
+
+
+[[atoms]]
   published_at = 2023-04-21T18:23:55-07:00
   description = """\
 A piece from LWN on [the early days of Linux](https://lwn.net/Articles/928581/) at the University of Helsinki.
