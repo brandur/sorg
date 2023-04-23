@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-22T21:19:22-07:00
+  description = """\
+Published fragment [PG advisory locks in Go with built-in hashes](/fragments/pg-advisory-locks-with-go-hash).
+"""
+
+
+[[atoms]]
   published_at = 2023-04-22T20:41:03-07:00
   description = """\
 Today I discovered the power of Postgres' `DISTINCT ON` syntax, a useful feature that did exactly what I wanted it to with my first try.
