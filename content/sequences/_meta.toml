@@ -11,6 +11,31 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-04-23T18:28:12-04:00
+  slug = "046"
+  title = "Whale shark(s)"
+  description = """
+The Georgia Aquarium in Atlanta. Definitely a cool place. Although located in a landlocked city, for almost a decade it was the largest aquarium in the world, not surpassed until 2012 by the S.E.A. Aquarium in Singapore and Chimelong Ocean Kingdom in the PRC. Its signature exhibit is a gigantic 6.3 million US gallon tank with viewing wall and submarine tunnel, filled with manta rays, enormous groupers. appropriately named [bowmouth guitarfish](https://en.wikipedia.org/wiki/Rhina_ancylostoma), and of course, whale shark(s) (along with many other species, but as in open-water diving, it's usually the big stuff that gets the attention).
+
+You may be wondering why I write whale sharks(s). I was curious how and when the aquarium was sourcing whale sharks, and started looking into it. All six sharks have come from Taiwan, where it'd been legal to capture them for consumption up until the practice was banned in 2007.
+
+The first set of four named Ralph, Norton, Alice, and Trixie arrived in 2006. Unfortunately Ralph and North didn't take well to the new environment and passed away in 2007, but the same year the aquarium sourced two more named Taroko and Yushan just before Taiwan's ban came into effect. Trixie had quite a long life in Atlanta, but passed away recently in 2020, and Alice in 2021.
+
+Six minus four would suggest two remaining whale sharks, but I spent a good half hour at the tank and for the life on me could only count one. I observed a feeding session in which a caretaker started dropping chow from an overhead boat which attracted one whale shark multiple times, but not two. It's very possible that I'm just bad at counting, but the aquarium itself seems to be quite cagey in talking about anything too specific on whale sharks besides that a species by that name _definitely_ exists. I trawled their site with a number of targeted search terms and got nothing. Everything I sourced above was from third parties.
+
+Ethics of keeping whale sharks in captivity aside, if you have the opportunity and are interested, it might not be the worst time to drop by Georgia Aquarium to see this magnificent beast(s). Absent a new way to source them -- probably not particularly forthcoming in 2023 -- this might not be the kind of exhibit that lasts forever.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/4z8gh9zbwyyxz8l/2W4A2476.JPG?dl=1"
+    slug = "046"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/mi4oje18joukzjs/2W4A2451-whale-shark-crop.jpg?dl=1"
+    slug = "046b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/vyxzqb0ddzbcegm/2W4A2527.JPG?dl=1"
+    slug = "046c"
+
+[[entries]]
   published_at = 2023-04-17T17:40:47-07:00
   slug = "045"
   title = "In creeks and canyons"

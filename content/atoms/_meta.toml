@@ -11,11 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-23T18:28:11-04:00
+  description = """\
+Published [sequence 046](/sequences/046), whale shark(s).
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/046"
+    original_image_url = "https://www.dropbox.com/s/4z8gh9zbwyyxz8l/2W4A2476.JPG?dl=1"
+    slug = "whale-sharks"
+
+[[atoms]]
   published_at = 2023-04-22T21:19:22-07:00
   description = """\
 Published fragment [PG advisory locks in Go with built-in hashes](/fragments/pg-advisory-locks-with-go-hash).
 """
-
 
 [[atoms]]
   published_at = 2023-04-22T20:41:03-07:00
