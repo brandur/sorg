@@ -142,7 +142,7 @@ jobs:
 
   deploy_dev:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     if: github.ref == 'refs/heads/master'
 
     env:
@@ -200,7 +200,7 @@ jobs:
 
   deploy_prod:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     if: github.ref == 'refs/heads/master'
 
     env:
