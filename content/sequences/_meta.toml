@@ -11,6 +11,20 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-04-25T22:19:46-04:00
+  slug = "047"
+  title = "Venue"
+  description = """
+At a conference about Rails in Altanta. The conference and conference hotel are connected via an elaborate interlinking of skybridges wherein by the time you arrive at your destination, you're not sure which part of downtown Atlanta you're in anymore.
+
+This photo is from the second floor of the Westin, a tall glass cylinder that projects itself straight into the heavens, and whose interior's clean lines put to use a surprising amount of raw concrete.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/n0bdgu5or13pmz7/2W4A2552.JPG?dl=1"
+    slug = "047"
+
+
+[[entries]]
   published_at = 2023-04-23T18:28:12-04:00
   slug = "046"
   title = "Whale shark(s)"

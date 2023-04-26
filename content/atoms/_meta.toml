@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-25T22:19:45-04:00
+  description = """\
+Published [sequence 047](/sequences/047), venue.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/047"
+    original_image_url = "https://www.dropbox.com/s/n0bdgu5or13pmz7/2W4A2552.JPG?dl=1"
+    slug = "venue"
+
+[[atoms]]
   published_at = 2023-04-23T18:28:11-04:00
   description = """\
 Published [sequence 046](/sequences/046), whale shark(s).
