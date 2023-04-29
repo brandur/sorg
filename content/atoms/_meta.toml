@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-04-28T18:57:28-07:00
+  description = """\
+32 consecutive days of running at least 5 km (average 7-8 km).
+
+Observations: Get it done early, habit is everything. For the lazy amongst us (me), it may require bullying yourself out the door. I hate eating my vegetables, but I know that I should.
+
+Tomorrow: Flight to Paris wherein I time travel half a day forward. I'll do a morning San Francisco run, but one after landing in Paris at 4 PM on the day after, exhausted from the hell that is a transatlantic flight in economy, will be hard. Is this the end? Find out next week.
+"""
+
+[[atoms]]
   published_at = 2023-04-25T22:19:45-04:00
   description = """\
 Published [sequence 047](/sequences/047), venue.
