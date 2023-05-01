@@ -2456,3 +2456,9 @@ video {
     width: calc(100% + 300px);
   }
 }
+
+@media (min-width: 1024px) {
+  .lg\:block {
+    display: block;
+  }
+}
