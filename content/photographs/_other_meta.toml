@@ -321,6 +321,17 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/036-queues
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/mmmvyybyg5xsvop/2W4A2502.JPG?dl=1"
+slug = "nanoglyphs/036-queues/leafy-seadragon"
+title = "Leafy seadragon at the Georgia Aquarium"
+
+
+#
 # /nanoglyphs/035-generics
 #
 
