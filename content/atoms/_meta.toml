@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-02T11:57:47+02:00
+  description = """\
+[_Nanoglyph 036_](/nanoglyphs/036-queues) is published, on Atlanta, job queues, batch-wise operations.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/036-queues"
+    original_image_url = "https://www.dropbox.com/s/mmmvyybyg5xsvop/2W4A2502.JPG?dl=1"
+    slug = "leafy-seadragon"
+
+[[atoms]]
   published_at = 2023-05-01T08:35:16+02:00
   description = """\
 Published [sequence 048](/sequences/048), under construction.
@@ -96,13 +106,11 @@ On the version 1.0 release event (complete with press) in _1994_:
 And [it was recorded](https://www.youtube.com/watch?v=qaDpjlFpbfo), complete with a young, handsome university student version of Linus.
 """
 
-
 [[atoms]]
   published_at = 2023-04-19T17:56:29-07:00
   description = """\
 After a year of inactivity and (more recently) some strange trouble with Mailgun mailing lists, [_Nanoglyph 035_](/nanoglyphs/035-generics) is published, on Go generics, and our endeavor to build a safer API framework with them. This newsletter may be struggling, but it's not completely dead, yet.
 """
-
 
 [[atoms]]
   published_at = 2023-04-16T13:34:51-07:00

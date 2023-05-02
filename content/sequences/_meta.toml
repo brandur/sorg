@@ -11,6 +11,23 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-05-02T11:57:48+02:00
+  slug = "049"
+  title = "Dragons"
+  description = """
+A photo of a leafy seadragon at the Georgia Aquarium in Georgia. Poster for [_Nanoglyph 036: Atlanta, Job Queues, Batch-wise Operations_](/nanoglyphs/036-queues).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/mmmvyybyg5xsvop/2W4A2502.JPG?dl=1"
+    slug = "049"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/8nqnlcaixqgdoqq/2W4A2496.JPG?dl=1"
+    slug = "049b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/jzmsbxtru44qfjx/2W4A2497.JPG?dl=1"
+    slug = "049c"
+
+[[entries]]
   published_at = 2023-05-01T08:35:17+02:00
   slug = "048"
   title = "Under construction"
