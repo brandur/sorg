@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-01T08:35:16+02:00
+  description = """\
+Published [sequence 048](/sequences/048), under construction.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/048"
+    original_image_url = "https://www.dropbox.com/s/t7ok2k50u3nhnu4/2W4A2571-crop.jpg?dl=1"
+    slug = "venue"
+
+[[atoms]]
   published_at = 2023-04-28T18:57:28-07:00
   description = """\
 32 consecutive days of running at least 5 km (average 7-8 km).

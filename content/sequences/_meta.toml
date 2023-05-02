@@ -11,6 +11,21 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-05-01T08:35:17+02:00
+  slug = "048"
+  title = "Under construction"
+  description = """
+The state of Notre Dame in 2023.
+
+Ironically, a team ostensibly renovating and restoring the old church managed to accidentally light it on fire, whereupon it burned for 15 hours, not only destroying large parts of the edifice, but contaminating the site and surrounding area with lead, which had been used heavily in the construction of the roof. That was 2019. A rebuild's been underway ever since and scheduled to finish in December 2024.
+
+I'll tell you though, most visitors didn't seem to care one way or another what state the church was in. Tourists (including me) mobbed the surrounding area to the point where it was painstakingly slow trying to make your way through what mostly amounted to a maze of tall walls surrounding the reconstruction effort. A grandstand had been constructed for viewing the front of the church, despite it not being known to move all that much. Every seat was filled.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/t7ok2k50u3nhnu4/2W4A2571-crop.jpg?dl=1"
+    slug = "048"
+
+[[entries]]
   published_at = 2023-04-25T22:19:46-04:00
   slug = "047"
   title = "Venue"
