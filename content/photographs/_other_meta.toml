@@ -330,6 +330,11 @@ original_image_url = "https://www.dropbox.com/s/mmmvyybyg5xsvop/2W4A2502.JPG?dl=
 slug = "nanoglyphs/036-queues/leafy-seadragon"
 title = "Leafy seadragon at the Georgia Aquarium"
 
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/8nqnlcaixqgdoqq/2W4A2496.JPG?dl=1"
+slug = "nanoglyphs/036-queues/leafy-seadragon-2"
+title = "Another shot of the leafy seadragon at the Georgia Aquarium"
 
 #
 # /nanoglyphs/035-generics
