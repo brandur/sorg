@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-05-04T11:36:51+02:00
+  slug = "050"
+  title = "Rue Claude Monet"
+  description = """
+The street where Claude Monet's home is found in the rural town of Giverny has been largely repurposed to serve the hordes of tourists who travel to the area every day to see Monet's home. In fact, it'd become so single purposed it was renamed to "Rue Claude Monet" to drop the pretense.
+
+It's a pleasant walk strolling from Monet's estate on one end to the old church where he's buried on the other. Along the way: French Impressionism museums, the style of low key outdoor cafe that France does better than any other, and gardens framed by flowering purple lilac. May is a little in advance of the high season, but it's a great time to visit provided you don't get unlucky with too much rain. Gorgeous weather, and not too hot.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/w3yrre9gzq0iyul/2W4A2750-crop.jpg?dl=1"
+    slug = "050"
+
+[[entries]]
   published_at = 2023-05-02T11:57:48+02:00
   slug = "049"
   title = "Dragons"

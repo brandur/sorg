@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-04T11:36:50+02:00
+  description = """\
+Published [sequence 050](/sequences/050), Rue Claude Monet.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/048"
+    original_image_url = "https://www.dropbox.com/s/w3yrre9gzq0iyul/2W4A2750-crop.jpg?dl=1"
+    slug = "rue-claude-monet"
+
+[[atoms]]
   published_at = 2023-05-02T11:57:47+02:00
   description = """\
 [_Nanoglyph 036_](/nanoglyphs/036-queues) is published, on Atlanta, job queues, batch-wise operations.
