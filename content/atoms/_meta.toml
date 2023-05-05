@@ -11,6 +11,24 @@
 ################################################################################
 
 [[atoms]]
+  length_exempted = true
+  published_at = 2023-05-04T20:25:28+02:00
+  description = """\
+[20% layoffs at Shopify](https://news.shopify.com/important-team-and-business-changes), a brutal cut.
+
+Commenters are giving them a hard time for use of terms like "main quest" and "side quest", and although they sound dumb to my ears as well, I understand how it happens. Tech companies are especially prone to building up cutesy internal cultures that become divergent from the real world, and may eventually develop a glossary full of internal lingo that sounds normal on the inside, but alien to virgin ears. Then they might forget they're even doing it, and have it leak to the outside world assuming everyone will interpret these words the same way they do.
+
+Similar to [Zuckerberg's layoff note](/fragments/meta-layoffs) a few months back, it sounds like middle management is going to take a hit:
+
+> Management track and crafter tracks are held separately at Shopify. The balance of crafter to manager numbers is a tricky one to strike. Too few and you risk misalignment on the most important things, too many and you add heavy layers of process, approvals, meetings and… side quests. Our numbers were unhealthy, just like it is in much of the tech industry. One of the insidious consequences of this is that it leads to the company increasingly celebrating activities rather than crafter driven outcomes. With the right numbers we’ll fully focus on outcomes and impact. 
+
+A halmark of Stripe's management culture was that instead of getting `shipped@` emails on successfully completed engineering projects, you'd start to see more _pre_-shipped emails declaring a prospective project that was going to be worked on, and which as often as not wouldn't ship, or ship in a more modest form compared to the pre-shipped claim. Unsurprisingly, it's easier to declare the intention of work than the work itself. You'd also see more "soft ships" like internal reorgs, new bureacratic process, or new management structures, and "anti-ships" like a heavier/slower code review process, new breed of spyware on laptops, or new layer in the Rube Goldberg build machinery, all sharing the common trait of having no measurable positive impact on users. Engineering/product ships were still celebrated, but their importance was lessened because they competed for attention with everything else.
+
+Including Twitter, that's three tech giants that have made explicit statements about streamlining middle management in just the last few months. Layoffs are bad, but an industry-wide return to more focus on product/engineering is a good thing.
+"""
+
+
+[[atoms]]
   published_at = 2023-05-04T11:36:50+02:00
   description = """\
 Published [sequence 050](/sequences/050), Rue Claude Monet.
