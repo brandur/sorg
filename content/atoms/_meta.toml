@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-07T20:24:54+02:00
+  description = """\
+
+Published [sequence 051](/sequences/051), Musée de l'Armée.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/051"
+    original_image_url = "https://www.dropbox.com/s/kvev2ayzlzdg4tb/2W4A2886.JPG?dl=1"
+    slug = "musee-de-larmee"
+
+[[atoms]]
   published_at = 2023-05-04T11:36:50+02:00
   description = """\
 Published [sequence 050](/sequences/050), Rue Claude Monet.

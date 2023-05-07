@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-05-07T20:24:55+02:00
+  slug = "051"
+  title = "Musée de l'Armée"
+  description = """
+The Musée de l'Armée (Army Museum), located inside l'hôtel national des Invalides (originally a hospital and retirement center for military veterans), just south of the Seine in central part of Paris.
+
+The WWI and WWII exhibits are temporarily closed, but there's a lot to see even without them. As with many museums in the city, it's easy to lose perspective as you browse showcase after showcase of priceless historial artifacts. I tried to remind myself that any one of them would've been a signature centerpiece in most North American museums, even if lost in a sea of equally impressive items of the French capital's rich collections.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/kvev2ayzlzdg4tb/2W4A2886.JPG?dl=1"
+    slug = "051"
+
+[[entries]]
   published_at = 2023-05-04T11:36:51+02:00
   slug = "050"
   title = "Rue Claude Monet"
