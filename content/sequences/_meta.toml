@@ -11,6 +11,24 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-05-09T19:58:44+01:00
+  slug = "052"
+  title = "La Grande Arche"
+  description = """
+I got a strong recommendation to head west of central Paris to a district called La Défense. I didn't know much about it beyond the recommendation, but what the hell, I started walking a few hours before sunset, and before I knew it, had arrived.
+
+I could see a few impressive looking glass buildings in the distance, but what I found turned out to be far better than a few mere pieces of modern architecture. Starting at the Esplanade de la Défense, the area opens up into a wide park and pedestrian promenade, and which continued on for kilometers.
+
+Just as the sun was going down I arrived at the district's singular feature, [La Grande Arche de la Défense](https://en.wikipedia.org/wiki/Grande_Arche), a massive square building that gives the Eiffel Tower a run for its money in conspicous city landmarks. Part of [Grands Projets of François Mitterrand](https://en.wikipedia.org/wiki/Grands_Projets_of_Fran%C3%A7ois_Mitterrand) (along with the Louvre Pyramid and Musée d'Orsay), it was one many architectural projects completed near the end of the 20th century (1989 in the Arche's case), specifically built as a testament to France's post-WWII role in the world's art, politics, and economy, and meant to reshape Paris' already impressive skyline.
+
+Trying to take the Metro back home I found that my brand new Île-de-France Navigo Easy card wouldn't let me through the fair gates. Apparently, I'd walked myself out of the Paris city limits.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/d4lzsw491bxtu09/2W4A2647.JPG?dl=1"
+    slug = "052"
+
+
+[[entries]]
   published_at = 2023-05-07T20:24:55+02:00
   slug = "051"
   title = "Musée de l'Armée"
