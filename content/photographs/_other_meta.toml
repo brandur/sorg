@@ -321,6 +321,28 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/037-fast
+#
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/s/jnq5fwzo279qt29/2W4A2627.JPG?dl=1"
+slug = "nanoglyphs/037-fast/la-cheminee"
+title = "La Cheminée (a tall multi-colored art project) dans La Défense"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/b5a006d3004oluq/2W4A2641.JPG?dl=1"
+slug = "nanoglyphs/037-fast/la-defense"
+title = "La Défense"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/hgxoyxt9rn40p8e/2W4A2648.JPG?dl=1"
+slug = "nanoglyphs/037-fast/la-grande-arche"
+title = "La Grande Arche"
+
+#
 # /nanoglyphs/036-queues
 #
 
