@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-11T11:33:44+01:00
+  description = """\
+Discourse sees Ruby rendering speeds decrease 16-17% after [enabling YJIT in Ruby 3.2](https://blog.discourse.org/2023/05/running-ruby-3-2s-yjit-in-production-at-discourse/). A nice performance boost for a minimal time investment that amounts to tweaking the `RUBY_YJIT_ENABLE` env var and doing some testing.
+"""
+
+[[atoms]]
   published_at = 2023-05-09T19:58:43+01:00
   description = """\
 
