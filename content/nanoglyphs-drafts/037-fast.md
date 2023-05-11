@@ -5,43 +5,43 @@ published_at = 2023-05-10T08:59:02+01:00
 title = "Fast as a Service"
 +++
 
-The middle days of Heroku were distinguished by two ideological groups, ostensibly cooperating, but also at odds with each other. I've named them retroactively "the Stables" and "the Philosophers".
+The middle days of Heroku were distinguished by two ideological groups, cooperating to build the platform, but also at odds with each other. I've named them retroactively "the Stables" and "the Philosophers".
 
-As the name would suggest, the Stables were the more conservative of the two, having existing services to run, existing users to think about, and large, haphazard codebases acting to constrain possible forward progress. Pragmatic day-to-day engineers that cared about the product, but who were also incentivized to make changes that'd limit the number of middle-of-the-night pages sent their way.
+As the name would suggest, the Stables were the more conservative of the two, having existing services to run, existing users to think about, and large, haphazard codebases acting to constrain possibilities around making fast progress. Pragmatic day-to-day engineers that cared about the product, but who were also incentivized to make changes that'd limit the number of middle-of-the-night pages sent their way.
 
-The Philosophers, inspired by the folk history of early innovation groups like Bell Labs and Xerox PARC, specialized in forward thinking in isolation from the lofty heights of an ivory tower, and with limited ability to make real changes to existing products, relied on their ideas being so impactful that the trickle down effect would inspire Stables to take them up and make them into real features.
+The Philosophers, inspired by the folk history of early innovation groups like Bell Labs and Xerox PARC, specialized in forward thinking in isolation from the lofty heights of an ivory tower, and with limited ability to make real changes to existing products, relied on their ideas being so impactful that the trickle down effect would inspire Stables to take them up and turn them into reality.
 
-Heroku's long term failure to meet the ambitious goals it'd set for itself was partially result of the failure of both these groups. As technical debt and operational burden mounted over the years, the Stables got lost in the weeds, and became unable to make the macro-level product changes that were needed for the company to make a real market impact to follow up its initial innovations like `git push heroku master`. The Philosophers had some good ideas, but no ability to effect real change. The trickle down effect didn't work, and none of their prototypes ever made it to realized product form.
+Heroku's long term failure to meet the ambitious goals it'd set for itself was partially result of the failure of both these groups. As technical debt and operational burden mounted over the years, the Stables became quagmired, and unable to make the macro-level product changes that were needed for the company to make a real market impact to follow up its initial innovations like `git push heroku master` and builpacks. The Philosophers had some good ideas, but no ability to effect real change. The trickle down effect didn't work, and none of their prototypes made it to realized product form.
 
 ---
 
-## Speed as a function of UX (#speed-ux)
+## Speed as UX (#speed-ux)
 
-One of those early Philosopher prototypes was a toy program to demonstrate the concept of **"fast as a service"**. Heroku's API at the time was not fast. Written and Ruby and leveraging high-magic modules like ActiveRecord, it had all the usual issues like N+1s resulting from hard-to-spot lazy loading problems, and committed other sins like in-band remote service calls, largely the result of an accelerated development schedule during a time when service engineering as a field was still emergent and best practices weren't yet well established. API latency manifested in the real world by making the Heroku CLI less responsive. Commands like `heroku apps` took long enough that there was a noticeable delay before results were delivered.
+One of those early Philosopher prototypes was a toy program to demonstrate the concept of **"fast as a service"**. Heroku's API at the time was not fast. Written and Ruby and leveraging high-magic modules like ActiveRecord, it had all the usual issues like N+1s resulting from hard-to-spot lazy loading problems, and committed other performance sins like in-band remote service calls, largely the result of an accelerated development schedule during a time when service engineering as a field was still emergent and best practices weren't well established. API latency manifested in the real world by making the Heroku CLI less responsive. Commands like `heroku apps` took long enough that there was a noticeable delay before results were delivered.
 
-The fast as a service prototype demonstrated a single API endpoint rewritten in Go and was built around the premise that improved API responsiveness was a feature that'd flow into increased user satisfaction. A popular slide making the rounds at the time made the case that responsiveness of < 100ms felt instant, 100ms – 1s felt fast, and 1s+ felt slow, territory where users would start to hit their back button or multi-task. Making every API operation fast, it'd make the Heroku CLI feel more like operating a local CLI tool, and unlock new heights of productivity. Long chains of commands (e.g. `heroku apps`, `heroku info -a api`, `heroku ps -a api`, `heroku ps:scale web=2 -a api`) would be as fluid as traversing your own local file system.
+The fast as a service prototype demonstrated a single API endpoint rewritten in Go and was built around the premise that improved API responsiveness was a feature that'd flow into increased user satisfaction. A popular conference slide making the rounds at the time made the case that responsiveness of < 100ms felt instant, 100ms – 1s felt fast, and 1s+ felt slow, territory where users would lose interest, hitting the back button or starting to multi-task. Making every API operation fast, it'd make the Heroku CLI feel more like a local CLI tool, and unlock new heights of productivity. Long chains of commands (e.g. `heroku apps`, `heroku info -a api`, `heroku ps -a api`, `heroku ps:scale web=2 -a api`) would be as fluid as traversing your own local file system.
 
-The Go API prototype showed a 10x speed improvement over the Ruby implementation, but it was never a realistic path forward. It implemented only one API endpoint, and only the easy parts, ignoring all the hard, inconvenient stuff that'd be required to make a practical alternative that was production ready and backwards compatible. A Go rewrite might've been possible, but it'd take on the order of 100x more effort to wrangle into reality, and far more tenacity than a Philosopher would be able or willing to apply.
+The Go API prototype showed an impressive ~10x speed improvement over the Ruby implementation, but it was never a realistic path forward. It implemented only one API endpoint, and only the easy parts, ignoring all the hard, inconvenient stuff that'd be required to make a practical alternative that was production ready and backwards compatible. A Go rewrite might've been possible, but it'd take on the order of 100x more effort to wrangle into reality, and far more tenacity than a Philosopher would be able or willing to apply.
 
 ---
 
 ## Greenfield (#greenfield)
 
-Still, it's a good idea. Fast web services are objectively a good thing.
+Still, fast as a service a good idea. Responsive web services are objectively a good thing.
 
-While changing existing products with a large base of users is hard, starting greenfield, or from a project of smaller size, is easier. Fast as a service is a concept that I've kept in mind while building Bridge, and we've managed to mostly achieve it by focusing on it as a goal from the beginning. We're not doing anything particularly novel, but focus on the basics:
+While changing existing products with a large base of users is hard, starting greenfield, or from a project of smaller size, is easier. Fast as a service is a concept that I've kept in mind while building Bridge, and we've managed to mostly achieve it by focusing on it as a goal from the beginning. We're not doing anything extraordinarily novel, but we've made sure that we're building on solid foundations:
 
-* The stack is written in Go which is a fast language. It's still possible to make a Go program accidentally slow, but a well-written Go program is faster than most peers automatically.
+* The stack is written in Go, a fast language. It's still possible to make a Go program accidentally slow, but a well-written Go program is faster than most peers automatically (and _much_ faster than many).
 
-* Go is incredibly verbose. This isn't usually a good thing, but does have some advantages. Producing something like ActiveRecord's lazy loading magic would be practically impossible, which makes it much harder to accidentally write an N+1 query. You can still do so querying inside of loops, but those instances are easier to spot.
+* Go is incredibly verbose. This isn't usually a good thing, but does have some advantages. Producing something like ActiveRecord's lazy loading magic would be practically impossible, making it much harder to accidentally write an N+1 query. You can still write one by querying inside of loops, but those instances are easier to spot.
 
-* Since data loading in Go is very manual anyway, we might as well load in batches where possible. If an API resource that's going to be rendered in a loop needs a subresource to render, we load all those subresources first, put them in a map, and making that available to the loop, minimizing expensive database operations.
+* Since data loading in Go is very manual anyway, we might as well load in batches where possible. If an API resource that's going to be rendered in a loop needs a subresource to render, we load all those subresources first, put them in a map, and making that available to the loop, minimize expensive database operations.
 
-* Every call to a remote service that can be done from a background worker is done from a background worker. So for example, something like sending an email via Mailgun would never be done synchronous. We'd insert a database record representing the intent to send an email, and a worker would make a pass to do the slower heavy lifting.
+* Every call to a remote service that can be done from a background worker _is_ done from a background worker. So for example, something like sending an email via Mailgun would never be done synchronous. We'd insert a database record representing the intent to send an email, and a worker would make a pass to do the slower heavy lifting.
 
-* Go's `net/http` package does a good job of pooling connections to remote services. For services that are used often, the expense of building a new connection is needed relatively infrequently, saving more time on network calls.
+* Go's `net/http` package does a good job of pooling connections to remote services. For services that are used often, we need to build a new connection relatively infrequently, thereby saving more time on network calls.
 
-* Go makes real parallelization quite easy via goroutines, and although it's usually not necessary to dip into it explicitly, we'll use constructs like [Go's `errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup) where it makes sense to do so.
+* Go makes real parallelization quite easy via goroutines, and although it's usually not necessary to dip into it explicitly (most parallelization is along the axis of parallel HTTP requests), we'll use constructs like [Go's `errgroup`](https://pkg.go.dev/golang.org/x/sync/errgroup) where it makes sense to do so.
 
 ---
 
@@ -49,7 +49,7 @@ While changing existing products with a large base of users is hard, starting gr
 
 Well, at least I _think_ our API is fast, but it'd be nice to quantify that.
 
-Something I've been struggling with over the past couple years is finding a good way to perform ad-hoc queries to get insight into how our stack is running. At my last couple jobs I've had access to Splunk, which is one of the better tools on the market for that, but its pricing model is so absolutely outrageous that it's hard to justify introducing it (you're given the privilege of paying upwards of millions of dollars a year _and_ get to run it all yourself). We have an alternative log provider that our logs drain into, but it can't perform aggregates of any kind, making it a glorified log viewer, and borderline useless for operational work.
+Something I've been struggling with over the past couple years is finding a good way to perform ad-hoc queries to get insight into how our stack is running. At my last couple jobs I've had access to Splunk, which is one of the better tools on the market, but with a pricing model is so absolutely outrageous that it's hard to justify introducing it (you're given the privilege of paying upwards of millions of dollars a year _and_ get to run it all yourself). We have an alternative log provider that our logs drain into, but it can't perform aggregates of any kind, making it a glorified log viewer that's borderline useless for operational work.
 
 So a few days ago I did something that I never thought I'd do again, and started putting some of our more critical logs in Postgres.
 
@@ -67,39 +67,39 @@ We have a middleware that generates per-request canonical digests and hands them
 
 ``` sql
 CREATE TABLE canonical_api_line (
-    id uuid NOT NULL DEFAULT gen_ulid(),
-    account_email varchar(200),
-    account_id uuid,
-    api_error_code varchar(200),
-    api_error_internal_code varchar(200),
-    api_error_cause varchar(2000),
-    api_error_message varchar(2000),
-    auth_internal_name varchar(200),
-    auth_type varchar(200),
-    content_type varchar(200),
-    created_at timestamptz NOT NULL DEFAULT current_timestamp,
-    duration interval NOT NULL,
-    http_method varchar(20) NOT NULL,
-    http_path varchar(200) NOT NULL,
-    http_path_original varchar(200),
-    http_route varchar(200), -- may be NULL in case of no route match
-    idempotency_key uuid,
-    idempotency_replay boolean NOT NULL DEFAULT false,
-    ip inet NOT NULL,
-    query_string varchar(200),
-    request_id uuid NOT NULL,
-    request_payload jsonb,
+    id                               uuid NOT NULL DEFAULT gen_ulid(),
+    account_email                    varchar(200),
+    account_id                       uuid,
+    api_error_code                   varchar(200),
+    api_error_internal_code          varchar(200),
+    api_error_cause                  varchar(2000),
+    api_error_message                varchar(2000),
+    auth_internal_name               varchar(200),
+    auth_type                        varchar(200),
+    content_type                     varchar(200),
+    created_at                       timestamptz NOT NULL DEFAULT current_timestamp,
+    duration                         interval NOT NULL,
+    http_method                      varchar(20) NOT NULL,
+    http_path                        varchar(200) NOT NULL,
+    http_path_original               varchar(200),
+    http_route                       varchar(200), -- may be NULL in case of no route match
+    idempotency_key                  uuid,
+    idempotency_replay               boolean NOT NULL DEFAULT false,
+    ip                               inet NOT NULL,
+    query_string                     varchar(2000),
+    request_id                       uuid NOT NULL,
+    request_payload                  jsonb,
     request_payload_capture_disabled boolean NOT NULL DEFAULT false,
-    sentry_event_id varchar(200),
-    sso_provider varchar(200),
-    statistics jsonb,
-    status int NOT NULL,
-    sudo boolean NOT NULL,
-    sudo_account_email varchar(200),
-    sudo_account_id uuid,
-    updated_at timestamptz NOT NULL DEFAULT current_timestamp,
-    user_agent varchar(200),
-    x_crunchy_headers varchar(200)[],
+    sentry_event_id                  varchar(200),
+    sso_provider                     varchar(200),
+    statistics                       jsonb,
+    status                           int NOT NULL,
+    sudo                             boolean NOT NULL,
+    sudo_account_email               varchar(200),
+    sudo_account_id                  uuid,
+    updated_at                       timestamptz NOT NULL DEFAULT current_timestamp,
+    user_agent                       varchar(200),
+    x_crunchy_headers                varchar(200)[],
     PRIMARY KEY (created_at, id)
 ) PARTITION BY RANGE (created_at);
 ```
@@ -175,7 +175,7 @@ LIMIT 10;
 
 Like `/databases` above, `POST /queries` has to SSH to individual Postgres clusters so it's going to take longer and have some bad tail latency. `POST /clusters` and `POST /clusters/{cluster_id}/upgrade` which create and upgrade clusters respectively both reach down a layer and do a fair bit of heavy lifting. Still, those would be good candidates for looking into seeing if there's anything they do which would be moved out-of-band to a background worker.
 
-Overall though, mostly good, and we're keeping responsiveness on most endpoints close to or under that 100 ms target. This is of course duration from the perspective of inside the stack, and the numbers for clients making remote calls to us won't be as good. There's always areas for improvement, but especially relatively speaking, I'd say that yes, we are fast as a service.
+Overall though, mostly good, and we're keeping responsiveness on most endpoints close to or under that 100ms target. This is of course duration from the perspective of inside the stack, and the numbers for clients making remote calls to us won't be as good. There's always areas for improvement, but especially relatively speaking, I'd say that yes, we are fast as a service.
 
 ---
 
@@ -183,7 +183,7 @@ Overall though, mostly good, and we're keeping responsiveness on most endpoints 
 
 <img src="/photographs/nanoglyphs/037-fast/la-defense@2x.jpg" alt="La Défense" class="wide" loading="lazy">
 
-The photo at the top is [La Cheminée by Raymond Moretti](https://parisladefense.com/en/discover/artwork/le-moretti), located in Paris' La Défense district. Cities around the world have all trended towards the same car-centric pavement hellscapes and it's rare that I'm enamored by one, but La Défense in Paris is genuinely unique. You emerge from the closest metro station onto a pedestrian promenade kilometers in length, surrounded on all sides by art projects like this one and modern glass buildings, and bookkended by [La Grande Arche](/sequences/052), massive cube that's as distinctive to Paris' skyline as the Eiffel Tower.
+The photo at the top is [La Cheminée by Raymond Moretti](https://parisladefense.com/en/discover/artwork/le-moretti), located in Paris' La Défense district. Cities around the world have all trended towards the same car-centric pavement hellscapes and it's rare that I'm enamored by one, but La Défense in Paris is genuinely unique. You emerge from the closest metro station onto a pedestrian promenade kilometers in length, surrounded on all sides by art projects like this one and modern glass buildings, and bookkended by [La Grande Arche](/sequences/052), a massive cube that's as distinctive to Paris' skyline as the Eiffel Tower.
 
 Until next week.
 
