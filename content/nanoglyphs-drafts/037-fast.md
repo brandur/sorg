@@ -5,23 +5,23 @@ published_at = 2023-05-10T08:59:02+01:00
 title = "Fast as a Service"
 +++
 
-The middle days of Heroku were distinguished by two ideological groups, cooperating to build the platform, but also at odds with each other. I've named them retroactively "the Stables" and "the Philosophers".
+The middle days of Heroku were distinguished by two distinct ideological groups, cooperating to build the platform, but also at odds with each other. Let's call them "the Stables" and "the Philosophers".
 
 As the name would suggest, the Stables were the more conservative of the two, having existing services to run, existing users to think about, and large, haphazard codebases acting to constrain possibilities around making fast progress. Pragmatic day-to-day engineers that cared about the product, but who were also incentivized to make changes that'd limit the number of middle-of-the-night pages sent their way.
 
 The Philosophers, inspired by the folk history of early innovation groups like Bell Labs and Xerox PARC, specialized in forward thinking in isolation, from the lofty heights of an ivory tower, and with limited ability to make real changes to existing products, relied on their ideas being so impactful that the trickle down effect would inspire Stables to take them up and turn them into reality.
 
-Heroku's long term failure to meet the ambitious goals it'd set for itself was partially result of the failure of both these groups. As technical debt and operational burden mounted over the years, the Stables became quagmired, and unable to make the macro-level product changes that were needed for the company to make a real market impact to follow up its initial innovations like `git push heroku master` and builpacks. The Philosophers had some good ideas, but no ability to effect real change. The trickle down effect didn't work, and none of their prototypes made it to realized product form.
+Heroku's long term failure to meet the ambitious goals it'd set for itself was partially result of the failure of both groups. As technical debt and operational burden mounted over the years, the Stables became quagmired, and unable to make the macro-level product changes that were needed for the company to make a real market impact to follow up its initial innovations like `git push heroku master` and builpacks. The Philosophers had some good ideas, but no ability to effect real change. The trickle down effect didn't work, and none of their prototypes made it to realized product form.
 
 ---
 
 ## Speed as UX (#speed-ux)
 
-One of those early Philosopher prototypes was a toy program to demonstrate the concept of **"fast as a service"**. Heroku's API at the time was not fast. Written in Ruby and leveraging high-magic modules like ActiveRecord, it had all the usual issues like N+1s resulting from hard-to-spot lazy loading problems, and committed other performance sins like in-band remote service calls, largely the result of an accelerated development schedule during a time when service engineering as a field was still emergent and best practices weren't well established. API latency manifested in the real world by making the Heroku CLI less responsive. Commands like `heroku apps` took long enough that there was a noticeable delay before results were delivered.
+One of those early Philosopher prototypes was a toy program to demonstrate the concept of **"fast as a service"**. Heroku's API at the time was not fast. Written in Ruby and leveraging high-magic modules like ActiveRecord, it had all the usual issues like N+1s resulting from hard-to-spot lazy loading problems, and committed other performance sins like in-band remote service calls, largely the result of an accelerated development schedule during a time when service engineering as a field was still emergent and best practices weren't well established. API latency manifested in the real world by making the Heroku CLI less responsive. Commands like `heroku list` took long enough that there was a noticeable delay before results were delivered.
 
-The fast as a service prototype demonstrated a single API endpoint rewritten in Go and was built around the premise that improved API responsiveness was a feature that'd flow into increased user satisfaction. A popular conference slide making the rounds at the time made the case that responsiveness of < 100ms felt instant, 100ms – 1s felt fast, and 1s+ felt slow, territory where users would lose interest, hitting the back button or starting to multi-task. Making every API operation fast, it'd make the Heroku CLI feel more like a local CLI tool, and unlock new heights of productivity. Long chains of commands (e.g. `heroku apps`, `heroku info -a api`, `heroku ps -a api`, `heroku ps:scale web=2 -a api`) would be as fluid as traversing your own local file system.
+The fast as a service prototype demonstrated a single API endpoint rewritten in Go and was built around the premise that improved API responsiveness was a feature that'd flow into increased user satisfaction. A popular conference slide making the rounds at the time made the case that responsiveness of < 100ms felt instant, 100ms – 1s felt fast, and 1s+ felt slow, territory where users would lose interest, hitting the back button or starting to multi-task. Making every API operation fast, it'd make the Heroku CLI feel more like a local CLI tool, unlocking new modes of operation, and leading to new heights of productivity. Long chains of commands (e.g. `heroku list`, `heroku info -a api`, `heroku ps -a api`, `heroku ps:scale web=2 -a api`) would be as fluid as traversing your local file system.
 
-The Go API prototype showed an impressive ~10x speed improvement over the Ruby implementation, but it was never a realistic path forward. It implemented only one API endpoint, and only the easy parts, ignoring all the hard, inconvenient stuff that'd be required to make a practical alternative that was production ready and backwards compatible. A Go rewrite might've been possible, but it'd take on the order of 100x more effort to wrangle into reality, and far more tenacity than a Philosopher would be able or willing to apply.
+The Go API prototype showed an impressive ~10x speed improvement over the Ruby implementation, but it was never a realistic path forward. It implemented only one API endpoint, and only the easy parts, ignoring all the hard, inconvenient stuff that'd be required to make a practical alternative that was production ready and backwards compatible. A Go rewrite might've been possible, but it'd take on the order of 100x more effort and tenacity to wrangle into reality, more tenacity than any Philosopher would be able or willing to apply.
 
 ---
 
@@ -139,7 +139,7 @@ LIMIT 10;
  GET         | /clusters/{cluster_id}/databases         |   685 | 00:00:00.602332 | 00:00:11.056697 | 00:00:21.827728
 ```
 
-Everything is under 100 ms (and usually well under), with the only outlier being the `/databases` endpoint which is slower because it's SSHing out to a Postgres server to see what Postgres databases it has. `/status` has some bad outliers because it's also remoting down a layer to our backend service.
+Everything is under 100 ms (and usually well under), with the only outlier being the `/clusters/{cluster_id}/databases` endpoint which is slower because it's SSHing out to a Postgres server to see what Postgres databases it has. `/clusters/{cluster_id}/status` has some bad outliers because it's also remoting down a layer to our backend service.
 
 Now bucket up all the mutating verbs of `DELETE`, `PATCH`, `POST`, and `PUT`:
 
@@ -174,7 +174,7 @@ LIMIT 10;
  DELETE      | /clusters/{cluster_id}               |     14 | 00:00:00.045736 | 00:00:00.091442 | 00:00:00.140435
 ```
 
-Like `/databases` above, `POST /queries` has to SSH to individual Postgres clusters so it's going to take longer and have some bad tail latency. `POST /clusters` and `POST /clusters/{cluster_id}/upgrade` which create and upgrade clusters respectively both reach down a layer and do a fair bit of heavy lifting. Still, those would be good candidates for looking into seeing if there's anything they do which would be moved out-of-band to a background worker.
+Like `/clusters/{cluster_id}/databases` above, `POST /queries` has to SSH to individual Postgres clusters so it's going to take longer and have some bad tail latency. `POST /clusters` and `POST /clusters/{cluster_id}/upgrade`, which create and upgrade clusters respectively both reach down a layer and do a fair bit of heavy lifting. Still, those would be good candidates for looking into seeing if there's anything they do which would be moved out-of-band to a background worker.
 
 Overall though, mostly good, and we're keeping responsiveness on most endpoints close to or under that 100ms target. This is of course duration from the perspective of inside the stack, and the numbers for clients making remote calls to us won't be as good. There's always areas for improvement, but especially relatively speaking, I'd say that yes, we are fast as a service.
 
@@ -184,8 +184,8 @@ Overall though, mostly good, and we're keeping responsiveness on most endpoints 
 
 <img src="/photographs/nanoglyphs/037-fast/la-defense@2x.jpg" alt="La Défense" class="wide" loading="lazy">
 
-The photo at the top is [La Cheminée by Raymond Moretti](https://parisladefense.com/en/discover/artwork/le-moretti), located in Paris' La Défense district. Cities around the world have all trended towards the same car-centric pavement hellscapes and it's rare that I'm enamored by one, but La Défense in Paris is genuinely unique. You emerge from the closest metro station onto a pedestrian promenade kilometers in length, surrounded on all sides by art projects like this one and modern glass buildings, and bookkended by [La Grande Arche](/sequences/052), a massive cube that's as distinctive to Paris' skyline as the Eiffel Tower.
-
-Until next week.
+The photo at the top is [La Cheminée by Raymond Moretti](https://parisladefense.com/en/discover/artwork/le-moretti), located in Paris' La Défense district. Cities around the world have all trended towards the same car-centric sprawls of noise and pavement, so it's rare that I'm enamored by one, but La Défense in Paris is genuinely unique. You emerge from the closest metro station onto a pedestrian promenade kilometers in length, surrounded on all sides by art projects like this one and modern glass buildings, and bookkended by [La Grande Arche](/sequences/052), a massive cube that's as distinctive to Paris' skyline as the Eiffel Tower itself.
 
 <img src="/photographs/nanoglyphs/037-fast/la-grande-arche@2x.jpg" alt="La Défense" class="wide" loading="lazy">
+
+<img src="/photographs/nanoglyphs/037-fast/la-defense-2@2x.jpg" alt="La Défense (again)" class="wide" loading="lazy">
