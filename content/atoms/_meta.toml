@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-12T16:43:20+01:00
+  description = """\
+[_Nanoglyph 037_](/nanoglyphs/037-fast) is published, on speed as a UX feature.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/037-fast"
+    original_image_url = "https://www.dropbox.com/s/jnq5fwzo279qt29/2W4A2627.JPG?dl=1"
+    portrait = true
+    slug = "la-cheminee"
+
+[[atoms]]
   published_at = 2023-05-11T11:33:44+01:00
   description = """\
 Discourse sees Ruby rendering speeds decrease 16-17% after [enabling YJIT in Ruby 3.2](https://blog.discourse.org/2023/05/running-ruby-3-2s-yjit-in-production-at-discourse/). A nice performance boost for a minimal time investment that amounts to tweaking the `RUBY_YJIT_ENABLE` env var and doing some testing.
