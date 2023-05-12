@@ -25,7 +25,7 @@ The fast as a service prototype demonstrated a single API endpoint rewritten in 
 * **100ms – 1s:** Feels fast.
 * **1s+:** Feels slow. Dangerous territory where users would lose interest, and might hit the back button or otherwise start to multitask.
 
-By making every API response fast, it'd make the Heroku CLI feel more like a local CLI tool, unlocking new modes of advanced operation, and leading to new heights of productivity. Long chains of commands (e.g. `heroku list`, `heroku info -a api`, `heroku ps -a api`, `heroku ps:scale web=2 -a api`) would be as fluid as traversing your local file system (`ls`, `stat`, `ps`, `cat`, ...).
+By making every API response fast, it'd make the Heroku CLI feel more like a local program, unlocking new modes of advanced operation, and leading to new heights of productivity. Long chains of commands (e.g. `heroku list`, `heroku info -a api`, `heroku ps -a api`, `heroku ps:scale web=2 -a api`) would be as fluid as traversing your local file system (`ls`, `stat`, `ps`, `cat`, ...).
 
 The Go API prototype showed an impressive ~10x speed improvement over the Ruby implementation, but it was never a realistic path forward. Implementing only a single API endpoint, and only the easy parts, it ignored the difficult, inconvenient details that'd be required to make a practical alternative that was production ready and backwards compatible. A Go rewrite might've been possible, but it'd take on the order of 100x more effort and tenacity to wrangle into reality, more than any Philosopher would be able or willing to apply.
 
