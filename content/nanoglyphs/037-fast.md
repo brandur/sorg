@@ -1,7 +1,7 @@
 +++
 image_alt = "La Cheminée (a tall multi-colored art project) dans La Défense"
 image_url = "/photographs/nanoglyphs/037-fast/la-cheminee@2x.jpg"
-published_at = 2023-05-10T08:59:02+01:00
+published_at = 2023-05-12T16:43:20+01:00
 title = "Fast as a Service"
 +++
 
