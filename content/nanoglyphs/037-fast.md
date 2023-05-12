@@ -35,7 +35,7 @@ The Go API prototype showed an impressive ~10x speed improvement over the Ruby i
 
 Still, fast as a service a good idea. Responsive web services are objectively a good thing.
 
-While changing existing products with a large base of users is hard, starting greenfield, or from a project of smaller size, is easier. Fast as a service is a concept that I've kept in mind while building Bridge, and we've managed to mostly achieve it by focusing on it as a goal from the beginning. We're not doing anything extraordinarily novel, but we've made sure that we're building on solid foundations:
+While changing existing products with a large base of users is hard, starting greenfield, or from a project of smaller size, is easier. Fast as a service is a concept that I've kept in mind while building [Bridge](https://crunchybridge.com), and we've managed to mostly achieve it by focusing on it as a goal from the beginning. We're not doing anything extraordinarily novel, but we've made sure that we're building on solid foundations:
 
 * The stack is written in Go, a fast language. It's still possible to make a Go program accidentally slow, but a well-written Go program is faster than most peers automatically (and _much_ faster than many).
 
