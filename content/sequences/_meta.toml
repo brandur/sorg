@@ -9,6 +9,22 @@
 # "sequence" snippet to insert an entry template.
 #
 ################################################################################
+[[entries]]
+  published_at = 2023-05-20T21:28:38+01:00
+  slug = "053"
+  title = "35018"
+  description = """
+York, United Kingdom. The city is home to the [National Railway Museum](https://en.wikipedia.org/wiki/National_Railway_Museum), where I'd stopped by in the morning. It was gargantuan in size (given that it houses dozens of full-sized rail cars and engines), and yet out of everything an outsized part of it is devoted to a showcase for the [_Flying Scotsman_](https://en.wikipedia.org/wiki/LNER_Class_A3_4472_Flying_Scotsman), one of the fastest early steam locomotives that was the first train to break the 100 MPH barrier, and which is a particular point of pride among locals.
+
+Despite occupying a full section of the museum (and being owned by it, after a winning bid of £2.3 million in 2004), the _Flying Scotsman_ wasn't actually present because, after being furloughed and spending the 70s on tour in the United States, it's since been rehabilitated and travels around the UK on a semi-regular basis. I spoke to a museum volunteer and he said that although I wouldn't be able to see the _Scotsman_ itself, they were expecting a steam locomotive to come into station later that day.
+
+I didn't wait around for it, but as I was exploring the rest of the city, I found it by accident. Parked on the track just a few hundred feet from my hotel, steam billowing from its chimney and a full load of coal in the hopper. This is [SR Merchant Navy Class 35018 British India Line](https://en.wikipedia.org/wiki/SR_Merchant_Navy_Class_35018_British_India_Line), built in 1945 and restored 2012-17.
+
+As I was crossing the bridge to take this photo I came across another man who was using a 90s-style handheld camcorder to carefully record footage of the old steam engine in action. In the UK _trains_ have fans. I love it.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/x9l39a7rr44g8j7/2W4A3374-adjusted.jpg?dl=1"
+    slug = "053"
 
 [[entries]]
   published_at = 2023-05-09T19:58:44+01:00
@@ -26,7 +42,6 @@ Trying to take the Metro back home I found that my brand new Île-de-France Navi
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/s/d4lzsw491bxtu09/2W4A2647.JPG?dl=1"
     slug = "052"
-
 
 [[entries]]
   published_at = 2023-05-07T20:24:55+02:00

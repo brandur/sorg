@@ -11,9 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-20T21:28:37+01:00
+  description = """\
+Published [sequence 052](/sequences/052), locomotive 35018.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/052"
+    original_image_url = "https://www.dropbox.com/s/x9l39a7rr44g8j7/2W4A3374-adjusted.jpg?dl=1"
+    slug = "35018"
+
+[[atoms]]
   published_at = 2023-05-20T18:50:34+01:00
   description = """\
-
 Published fragment [PGX + sqlc v4 to v5 upgrade notes](/fragments/pgx-v5-sqlc-upgrade). Somewhat painful, with 114 files and ~800 LOCs changed.
 """
 
