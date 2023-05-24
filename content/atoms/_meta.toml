@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-24T11:24:40+02:00
+  description = """\
+After a flight cancellation that snowballed into a logistics nightmare, I took the train from London to Berlin.
+
+Four hours on the Eurostar London to Amsterdam (the fast train best known for making Channel Tunnel trips between London and Paris), and then eight hours on a slower train across Germany's countryside to Berlin. Wake at 4 AM (to preclear customs for Eurostar), arrive at 8 PM, with a one hour forward time difference. I wouldn't recommend it, but hey, it's cool that it's possible.
+"""
+
+[[atoms]]
   published_at = 2023-05-20T21:28:37+01:00
   description = """\
 Published [sequence 052](/sequences/052), the _Flying Scotsman_ and locomotive 35018.
