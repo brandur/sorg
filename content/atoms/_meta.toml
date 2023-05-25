@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-25T11:23:16+02:00
+  description = """\
+It's been years since I was in Germany last, and I was curious to see what's changed. Particularly:
+
+* Germany is a cash-heavy society. This might not be a problem except that no one has any change, no one wants to take card, no one wants to break €50 notes, and it's hard to get an ATM to dispense anything _but_ a €50 note. Has anything changed?
+
+* The first couple times I went to Berlin, bars were like a time warp back to North America in the 80s and 90s, with an all-pervasive, ever-present cloud of smoke in every one of them. And even outside of bars, you'd find people smoking in every stoop and alley. Has the country stopped smoking yet?
+
+I was optimistic on the first point at least, after having successfully finished two weeks in the UK without having withdrawn a single pound, and surely conventions between European countries can't be too dissimilar.
+
+But alas, the answers are "no" and "no". Maybe next time.
+"""
+
+[[atoms]]
   published_at = 2023-05-24T11:24:40+02:00
   description = """\
 After a flight cancellation that snowballed into a logistics nightmare, I took the train from London to Berlin.
