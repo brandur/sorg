@@ -48,7 +48,7 @@ executing; `testing.go` in this case. Join the result to `..` gets the
 project's root, and a call to `os.Chdir` takes the running program there.
 
 Then from any other package in the project, import the testing package with a
-blank identifier, which will run its `init` function, but excluding any of its
+blank identifier, which will run its `init` function, but exclude its exported
 symbols:
 
 ``` go
