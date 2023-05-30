@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-05-30T16:14:14+02:00
+  description = """\
+Since my last post complained about things that haven't changed in Germany, I'll follow up with some that have:
+
+* Deutsche Bahn now has an app that can purchase or import tickets, and it works well. Ticket checkers can scan a QR code to verify your ticket, where previously they'd only take a paper printout, which was looking very old fashioned in 2010, and a huge pain for visitors that couldn't manage to fit a printer in their carry-on. It can also purchase tickets for local rail systems like MDV in Leipzig.
+
+* The app has real-time platform information for each station. You can check your train's platform before arriving, and use the information to immediately go to exactly the right place. It sends accurate push notifications, and alerted me to a last minute (literally) platform change in Berlin.
+
+* Onboard wifi is now free, and it works.
+
+This was all a major relief after having just experience the comparative hellscape which is the UK rail system.
+"""
+
+[[atoms]]
   published_at = 2023-05-25T11:23:16+02:00
   description = """\
 It's been years since I was in Germany last, and I was curious to see what's changed. Particularly:
