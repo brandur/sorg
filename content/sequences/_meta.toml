@@ -12,6 +12,23 @@
 
 [[entries]]
   published_at = 2023-06-02T10:08:07-07:00
+  slug = "055"
+  title = "Lighter than air"
+  description = """
+Lately, when selecting hotels in a foreign city that I don't know much about, I try to optimize for proximity to what looks like a park with a reasonably long, unbroken trail that'd be good for walking or running. In some places this is quite a task as the urban landscape is chopped up into a million tiny sections, and it's hard to go more than a few hundred feed without having to cross a road (looking at you Atlanta).
+
+Others are easier. This photo is from a run in Bath (in the UK) where one could run south from the city center to the river Avon, and from there long distances in either direction on paths that followed its winding flow.
+
+When you go early, once in a while you run into something cool. Here, I randomly came across two Virgin hot air balloons being inflated in a wide field along the river, witnessed by only myself, another couple who was also out trail running, and a few early morning kayakers.
+
+I was impressed by how quick the launch process was. I was wondering whether I should make a stop to watch them go, but I didn't have to -- they were up in the air and on their way towards town only ten minutes after this photo was taken (a far cry from the three hours I spent trying to get aloft from Paris Orly a few weeks later).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/lic0md6mcd21rgq/IMG_0533-balloons.jpg?dl=1"
+    slug = "055"
+
+[[entries]]
+  published_at = 2023-06-02T10:08:07-07:00
   slug = "054"
   title = "London"
   description = """
