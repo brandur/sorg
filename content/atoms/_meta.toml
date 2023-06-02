@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-06-02T11:13:13-07:00
+  description = """\
+Published [sequence 055](/sequences/055), lighter than air.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/052"
+    original_image_url = "https://www.dropbox.com/s/lic0md6mcd21rgq/IMG_0533-balloons.jpg?dl=1"
+    slug = "lighter-than-air"
+
+[[atoms]]
   published_at = 2023-06-02T10:08:07-07:00
   description = """\
 [_Nanoglyph 038_](/nanoglyphs/038-london) is published, on London and gardening 500s, with a bonus section about the chaos which is walking in the UK.
