@@ -7,7 +7,7 @@ title = "London, Gardening 500s"
 
 Having never been before, the first thing that occurred to me arriving in London is that London is the most _f*ing_ London place ever. Trite, yes, but what I mean is that the decades worth of London stereotypes in TV, movies, and photographs actually gave me a pretty good impression of what the city really would be like.
 
-All the features I'd come to expect were really there: stately mansions (which in British English, refers to a grand looking apartment block rather than a large house), double decker buses, "mind the gap" announcements, fish and chips, red phone booths, black cabs, beige trench coats (Burberry or a Burberry-like), [British Whippets](https://en.wikipedia.org/wiki/Whippet), _Lock Stock and Two Smoking Barrels_ accents, brick-covered [mews](https://en.wikipedia.org/wiki/Mews), and of course, tea. I arrived a few weeks after the coronation of the King Charles III, and thousands of British flags were flying all over town.
+All the features I'd come to expect were really there: stately mansions (which in British English, refers to a grand looking apartment block rather than a large house), double decker buses, "mind the gap" announcements, fish and chips, red phone booths, black cabs, beige trench coats (Burberry or a Burberry-like), [British Whippets](https://en.wikipedia.org/wiki/Whippet), intense _Lock Stock and Two Smoking Barrels_ accents, brick-covered [mews](https://en.wikipedia.org/wiki/Mews), and of course, tea. I arrived a few weeks after the coronation of the King Charles III, and thousands of British flags were flying all over town.
 
 With the possible exception of Tokyo, it's the busiest city I've ever step foot in. In New York when I go to Times Square, I think, "wow, so many people! it's crazy!", but then go to Brooklyn and find that it's not so bad. In London, I go Westminster, and think "wow, so many people! it's crazy!". Then I go to Mayfair and think "wow, so many people! it's crazy!". And then Kensington. And SOHO. And Camden Town. And Chelsea. And Marylebone. At least a dozen neighborhoods have hubs that are bustling with more activity than the single liveliest district found in most cities.
 
@@ -55,7 +55,7 @@ Speaking of exception trackers, kudos to Honeybadger for making the only swag t-
 
 <img src="/photographs/nanoglyphs/038-london/honeybadger-shirt-2@2x.jpg" alt="" class="img_constrained" loading="lazy">
 
-It took me a moment to see it, but look carefully at what the honeybadger is battling against. Not insects, but _bugs_. A dramatic, but accurate metaphor for life as a service operator. Metal.
+It took me a moment to see it, but look carefully at what the honeybadger is battling against. Not insects, but _bugs_. A dramatic, but accurate metaphor for life as a service operator. Also, metal.
 
 ## Chaos under the crown (#chaos-under-the-crown)
 
