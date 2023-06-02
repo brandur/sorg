@@ -320,6 +320,48 @@ title = "iA Writer."
 #   * constrained (non photos): 600 wide
 #
 
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/s/fwrhtnwal078gbe/honeybadger-shirt.jpg?dl=1"
+slug = "nanoglyphs/038-london/honeybadger-shirt"
+title = "Honeybadger shirt"
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/s/3zu9a44nuk1qppw/honeybadger-shirt-2.jpg?dl=1"
+slug = "nanoglyphs/038-london/honeybadger-shirt-2"
+title = "Honeybadger shirt"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/34ru3gh5blfdbiq/2W4A3149.JPG?dl=1"
+slug = "nanoglyphs/038-london/hyde-park"
+title = "Hyde Park in London"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/yjsthxq0tnqh632/2W4A3156.JPG?dl=1"
+slug = "nanoglyphs/038-london/hyde-park-2"
+title = "Hyde Park in London"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/gajzhb0p3txmf07/2W4A3086-flags.JPG?dl=1"
+slug = "nanoglyphs/038-london/london-streets"
+title = "London streets, flags flying high"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/s/a9od1ln8qf30vyh/2W4A3005-flags.JPG?dl=1"
+slug = "nanoglyphs/038-london/london-streets-2"
+title = "London streets, flags flying high"
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/s/iswfzgdd674ac6a/sentry-errors.png?dl=1"
+slug = "nanoglyphs/038-london/sentry-errors"
+title = "Errors in Sentry"
+
 #
 # /nanoglyphs/037-fast
 #
