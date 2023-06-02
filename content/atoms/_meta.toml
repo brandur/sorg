@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-06-02T10:08:07-07:00
+  description = """\
+[_Nanoglyph 038_](/nanoglyphs/038-london) is published, on London and gardening 500s, with a bonus section about the chaos which is walking in the UK.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/038-london"
+    original_image_url = "https://www.dropbox.com/s/34ru3gh5blfdbiq/2W4A3149.JPG?dl=1"
+    portrait = true
+    slug = "hyde-park"
+
+[[atoms]]
   published_at = 2023-05-30T16:14:14+02:00
   description = """\
 Since my last post complained about things that haven't changed in Germany, I'll follow up with some that have:

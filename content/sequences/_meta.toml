@@ -9,6 +9,18 @@
 # "sequence" snippet to insert an entry template.
 #
 ################################################################################
+
+[[entries]]
+  published_at = 2023-06-02T10:08:07-07:00
+  slug = "054"
+  title = "London"
+  description = """
+Hyde Park in London. Poster for [_Nanoglyph 038: London, Gardening 500s_](/nanoglyphs/038-london).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/s/34ru3gh5blfdbiq/2W4A3149.JPG?dl=1"
+    slug = "054"
+
 [[entries]]
   published_at = 2023-05-20T21:28:38+01:00
   slug = "053"
