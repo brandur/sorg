@@ -55,7 +55,7 @@ Speaking of exception trackers, kudos to Honeybadger for making the only swag t-
 
 <img src="/photographs/nanoglyphs/038-london/honeybadger-shirt-2@2x.jpg" alt="" class="img_constrained" loading="lazy">
 
-It took me a moment to see it, but look carefully at what the honeybadger is battling against. Not insects, but _bugs_. A dramatic, but accurate metaphor for life as a service operator. Also, metal.
+It took me a moment to see it, but look carefully at what kaiju honeybadger is battling against. Not insects, but _bugs_. A dramatic, but accurate metaphor for life as a service operator. Also, metal.
 
 ## Chaos under the crown (#chaos-under-the-crown)
 
