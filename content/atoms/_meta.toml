@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-06-11T13:49:01-07:00
+  description = """\
+[On GitHub's HQ, their infamous Oval Office, and the battle over its rug](https://archive.is/JrY5l). The 2010s were a neat time in San Francisco, with many of the most important products in the world being developed a few blocks from each other, and new offices were coming online one after another, each more extravagant than the last.
+
+> A little over a month after the new office opened, one of GitHub’s employees opened an internal discussion thread. A feminist hacker space had launched a crowdfunding campaign with a satirical perk, priced at $50,000: a “Meritocracy is a Joke” rug, custom-designed “for your company’s oval office [sic], to show you don’t support the myth of meritocracy (one of the tech industry’s most prevalent excuses for women and minorities being marginalized).” Given that some people were clearly offended by the word “meritocracy,” asked the original poster, should we be using the term?
+
+A broad lesson on how much easier it is to destroy than it is to create. Today, that rug is gone, that office is gone (along with all comparable offices in SF), along with the essential will of the industry to be proud of its values and what it's creating. Something as quirky as GitHub 3.0 could never be built in the present.
+
+> Defending the rug could have been a teaching moment, an opportunity to show why it is important to declare that anyone can do what they put their minds to, even if it isn’t always perfectly executed. It was a small moment, but conceding this point paved the way for more people to tug angrily at tech’s monuments in the years that followed—to which tech willingly folded, each time. Tech needs to find the courage again to embrace its values, which could command more respect from its critics than simply apologizing. If tech can look past the totalizing shame it currently feels, it can more honestly evaluate both its accomplishments and its shortcomings, and find a way to weave them together into a memorable public legacy.
+
+Would love to see it.
+"""
+
+[[atoms]]
   published_at = 2023-06-02T11:13:13-07:00
   description = """\
 Published [sequence 055](/sequences/055), lighter than air.
