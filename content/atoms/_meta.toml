@@ -11,6 +11,30 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-06-14T19:07:39-07:00
+  description = """\
+Twitter finally killed my API access yesterday. I knew it was coming, but I'd been holding out irrational hope that legacy, totally-non-commercial uses of it were being allowed continuity on a case-by-case basis. This deluded fantasy was reinforced by the fact that my integrations survived for months after the official API closure announcements had been made, and they'd seemingly already booted most applications.
+
+``` sh
+Run $(go env GOPATH)/bin/qself sync-all --goodreads-path data/goodreads.toml --twitter-path data/twitter.toml
+[INFO] (goodreads) (segment 6) Paging; num readings accumulated: 0, page: 6
+[INFO] (goodreads) (segment 3) Paging; num readings accumulated: 0, page: 3
+[INFO] (goodreads) (segment 1) Paging; num readings accumulated: 0, page: 1
+...
+[INFO] (goodreads) (segment 1) Paging; num readings accumulated: 373, page: 25
+[INFO] (goodreads) (segment 1) Page 25 beyond known end of 20; stopping
+[INFO] (goodreads) Found existing 'data/goodreads.toml'; attempting merge of 373 existing readings(s) with 373 current readings(s)
+[INFO] (goodreads) Writing 373 readings(s) to 'data/goodreads.toml'
+error syncing all: error getting user 'brandur': twitter: 32 Could not authenticate you.
+Error: Process completed with exit code 1.
+```
+
+This is the [qself ("quantified self") project](https://github.com/brandur/qself) which powered my [Twitter archive](/twitter). It lost the Strava API, has now lost the Twitter API, and is left with only the Goodreads API going, which also [stopped issuing API keys in 2020](https://www.goodreads.com/api), leaving ... nothing?
+
+And the internet, founded on ideals of radical openness, continues to close.
+"""
+
+[[atoms]]
   published_at = 2023-06-14T18:50:34-07:00
   description = """\
 I met with the creators/maintainers of [sqlc](/sqlc) the other day, and per their request (I promise this wasn't me complaining randomly, as is usually the case), they asked about the project's weaknesses. I sent over a few somewhat problematic queries, and of those, I think this is my favorite:
