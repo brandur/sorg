@@ -11,13 +11,52 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-06-14T18:50:34-07:00
+  description = """\
+I met with the creators/maintainers of [sqlc](/sqlc) the other day, and per their request (I promise this wasn't me complaining randomly, as is usually the case), they asked about the project's weaknesses. I sent over a few somewhat problematic queries, and of those, I think this is my favorite:
+
+``` sql
+-- name: ClusterGetPage :many
+SELECT *
+FROM cluster
+WHERE team_id = any(@team_id::uuid[])
+    AND archived_at IS NULL
+    AND parent_id IS NULL
+    AND
+        CASE WHEN @cursor_specified::boolean THEN
+            CASE WHEN @by_id::boolean   AND NOT @descending::boolean THEN id::text    > @cursor_threshold::text
+                 WHEN @by_id            AND     @descending          THEN id::text    < @cursor_threshold
+                 WHEN @by_name::boolean AND NOT @descending          THEN lower(name) > lower(@cursor_threshold)
+                 WHEN @by_name          AND     @descending          THEN lower(name) < lower(@cursor_threshold)
+            END
+        ELSE
+            id = id
+        END
+ORDER BY
+    CASE WHEN @by_id   AND NOT @descending THEN id          END ASC,
+    CASE WHEN @by_id   AND     @descending THEN id          END DESC,
+    CASE WHEN @by_name AND NOT @descending THEN lower(name) END ASC,
+    CASE WHEN @by_name AND     @descending THEN lower(name) END DESC
+LIMIT @max;
+```
+
+Unlike a more traditional ORM, sqlc can't arbitrarily chain expressions. All the SQL that can be in the SQL is in the SQL, which means that any logical branching has to be done with `CASE`/`WHEN` expressions.
+
+This monstrosity has a straightforward objective: listing, with pagination. But it does allow pagination along two dimensions (`id` and `name`), and with a cursor or without, which is where it gets a little gnarly.
+
+That said, compared to pagination logic whose parts to build a complete query are littered across a half-dozen pagination utility modules, and whose totality is obscured by its piecemeal nature, maybe the sqlc version isn't so bad?
+"""
+
+[[atoms]]
   published_at = 2023-06-11T13:49:01-07:00
   description = """\
 [On GitHub's HQ, their infamous Oval Office, and the battle over its rug](https://archive.is/JrY5l). The 2010s were a neat time in San Francisco, with many of the most important products in the world being developed a few blocks from each other, and new offices were coming online one after another, each more extravagant than the last.
 
 > A little over a month after the new office opened, one of GitHub’s employees opened an internal discussion thread. A feminist hacker space had launched a crowdfunding campaign with a satirical perk, priced at $50,000: a “Meritocracy is a Joke” rug, custom-designed “for your company’s oval office [sic], to show you don’t support the myth of meritocracy (one of the tech industry’s most prevalent excuses for women and minorities being marginalized).” Given that some people were clearly offended by the word “meritocracy,” asked the original poster, should we be using the term?
 
-A broad lesson on how much easier it is to destroy than it is to create. Today, that rug is gone, that office is gone (along with all comparable offices in SF), along with the essential will of the industry to be proud of its values and what it's creating. Something as quirky as GitHub 3.0 could never be built in the present.
+A broad lesson on how much easier it is to destroy than it is to create.
+
+Today, that rug is gone, that office is gone, all comparable offices in SF are gone, as is the essential will of the industry to be proud of its values and what it's creating. Something as quirky as GitHub 3.0 could never be built in the present.
 
 > Defending the rug could have been a teaching moment, an opportunity to show why it is important to declare that anyone can do what they put their minds to, even if it isn’t always perfectly executed. It was a small moment, but conceding this point paved the way for more people to tug angrily at tech’s monuments in the years that followed—to which tech willingly folded, each time. Tech needs to find the courage again to embrace its values, which could command more respect from its critics than simply apologizing. If tech can look past the totalizing shame it currently feels, it can more honestly evaluate both its accomplishments and its shortcomings, and find a way to weave them together into a memorable public legacy.
 
