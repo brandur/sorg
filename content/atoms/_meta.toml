@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2023-06-14T19:07:39-07:00
   description = """\
-Twitter finally killed my API access yesterday. I knew it was coming, but I'd been holding out irrational hope that legacy, totally-non-commercial uses of it were being allowed continuity on a case-by-case basis. This deluded fantasy was reinforced by the fact that my integrations survived for months after the official API closure announcements had been made, and they'd seemingly already booted most applications.
+Twitter killed my API access yesterday. I knew it was coming, but I'd been holding out irrational hope that legacy, totally-non-commercial uses of it were being allowed continuity on a case-by-case basis. This deluded fantasy was reinforced by the fact that my integrations survived for months after the official API closure announcements had been made, and they'd seemingly already booted most applications.
 
 ``` sh
 Run $(go env GOPATH)/bin/qself sync-all --goodreads-path data/goodreads.toml --twitter-path data/twitter.toml
