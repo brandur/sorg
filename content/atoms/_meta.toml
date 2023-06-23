@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-06-23T12:33:04-07:00
+  description = """\
+DHH on [leaving the cloud](https://world.hey.com/dhh/we-have-left-the-cloud-251760fb) for their own hardware. Not exactly a new idea -- famously they've been proceeded by the likes of Dropbox and GitHub -- but novel for a company as small as Basecamp. He says they spent half a million on servers, but stand to save $1.5 million every year.
+
+The biggest thing that comes to mind is on-call. Back at iStock in 2011 our ops guys made all hours trips to the datacenters with depressing regularity, so while it made self-hosting possible, the cost was much higher than just the hardware bill. But that was a long time ago, and a lot of it was probably self-inflicted, so maybe things are easier nowadays.
+
+The next thing that comes to mind is blob storage (e.g. S3). It's such a useful abstraction, and although open-source alternatives exist, it's a lot. Would even a company hardened in their intention to self-host turn their back on it? I would guess not.
+"""
+
+
+[[atoms]]
   published_at = 2023-06-14T19:07:39-07:00
   description = """\
 Twitter killed my API access yesterday. I knew it was coming, but I'd been holding out irrational hope that legacy, totally-non-commercial uses of it were being allowed continuity on a case-by-case basis. This deluded fantasy was reinforced by the fact that my integrations survived for months after the official API closure announcements had been made, and they'd seemingly already booted most applications.
