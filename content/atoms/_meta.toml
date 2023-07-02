@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-07-02T12:39:10-07:00
+  description = """\
+Published fragment [100% test coverage](/fragments/100-percent-coverage), on whether it's a good or bad thing.
+"""
+
+[[atoms]]
   published_at = 2023-06-23T12:33:04-07:00
   description = """\
 DHH on [leaving the cloud](https://world.hey.com/dhh/we-have-left-the-cloud-251760fb) for their own hardware. Not exactly a new idea -- famously they've been proceeded by the likes of Dropbox and GitHub -- but novel for a company as small as Basecamp. He says they spent half a million on servers, but stand to save $1.5 million every year.
