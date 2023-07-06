@@ -11,6 +11,15 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-07-06T12:57:46-07:00
+  description = """\
+This is awesome: [uses.tech](https://uses.tech/) (or see the [GitHub repository](https://github.com/wesbos/awesome-uses)), a directory of peoples' `/uses` pages, which detail dev gear, software, workspaces, and configurations.
+
+It reminds me (in a very positive sense) of the pre-social media internet. No politics, no outrage, no clickbait, just a bunch of hackers who took the time to build a writeup on how they work because they think it's cool.
+"""
+
+
+[[atoms]]
   published_at = 2023-07-06T12:12:31-07:00
   description = """\
 [Sqlc 1.19](https://github.com/kyleconroy/sqlc/releases/tag/v1.19.0) just dropped. Its headline feature is the new command `sqlc vet` that checks queries against lint-style rules:
@@ -41,7 +50,6 @@ We've been on sqlc for a year and a half now. Occasionally I find myself missing
 
 See also [How We Went All In on sqlc/pgx for Postgres + Go](/sqlc).
 """
-
 
 [[atoms]]
   published_at = 2023-07-05T18:56:24-07:00
