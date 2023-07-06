@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-07-05T18:56:24-07:00
+  description = """\
+Published fragment [Go `TestTx` helper using `t.Cleanup`](/fragments/go-test-tx-using-t-cleanup), on an elegant way of combining test transactions with Go's built-in test abstractions.
+"""
+
+[[atoms]]
   published_at = 2023-07-02T12:39:10-07:00
   description = """\
 Published fragment [100% test coverage](/fragments/100-percent-coverage), on whether it's a good or bad thing.
