@@ -11,6 +11,39 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-07-06T12:12:31-07:00
+  description = """\
+[Sqlc 1.19](https://github.com/kyleconroy/sqlc/releases/tag/v1.19.0) just dropped. Its headline feature is the new command `sqlc vet` that checks queries against lint-style rules:
+
+``` yaml
+rules:
+  - name: no-pg
+    message: "invalid engine: postgresql"
+    rule: |
+      config.engine == "postgresql"
+  - name: no-delete
+    message: "don't use delete statements"
+    rule: |
+      query.sql.contains("DELETE")
+  - name: only-one-param
+    message: "too many parameters"
+    rule: |
+      query.params.size() > 1
+  - name: no-exec
+    message: "don't use exec"
+    rule: |
+      query.cmd == "exec"
+```
+
+It includes a built-in rule that'll connect to a configured database and prepare every sqlc query against it, which in addition to the parse, adds more certainty that queries are well-formed.
+
+We've been on sqlc for a year and a half now. Occasionally I find myself missing the flexibility of an ORM, but every time I do, I recall the obtuseness of DSL and the lack of certainty that what you write is correct. Sqlc by comparison is a little rigid at times, but aside from that, we've observed negligible downsides.
+
+See also [How We Went All In on sqlc/pgx for Postgres + Go](/sqlc).
+"""
+
+
+[[atoms]]
   published_at = 2023-07-05T18:56:24-07:00
   description = """\
 Published fragment [A `TestTx` helper in Go using `t.Cleanup`](/fragments/go-test-tx-using-t-cleanup), on an elegant way of combining test transactions with Go's built-in test abstractions.
