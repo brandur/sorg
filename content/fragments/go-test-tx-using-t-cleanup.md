@@ -1,7 +1,7 @@
 +++
 hook = "An elegant way of combining test transactions with Go's built-in test abstractions."
 published_at = 2023-07-05T18:56:24-07:00
-title = "Go `TestTx` helper using `t.Cleanup`"
+title = "A `TestTx` helper in Go using `t.Cleanup`"
 +++
 
 I'm a big fan of the use of test transactions. They've got some downsides (which I'll dig into elsewhere), but they're extremely fast, allow practically limitless parallelism, and remove the need for complicated and expensive cleanup subsystems.

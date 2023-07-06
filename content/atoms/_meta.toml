@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2023-07-05T18:56:24-07:00
   description = """\
-Published fragment [Go `TestTx` helper using `t.Cleanup`](/fragments/go-test-tx-using-t-cleanup), on an elegant way of combining test transactions with Go's built-in test abstractions.
+Published fragment [A `TestTx` helper in Go using `t.Cleanup`](/fragments/go-test-tx-using-t-cleanup), on an elegant way of combining test transactions with Go's built-in test abstractions.
 """
 
 [[atoms]]
