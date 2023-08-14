@@ -2,10 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"os"
 	"strings"
-	"time"
 
 	"github.com/joeshaw/envdecode"
 	"github.com/sirupsen/logrus"
@@ -83,10 +81,6 @@ API.`),
 	sendCommand.Flags().BoolVar(&staging, "staging", false,
 		"Send to staging list (as opposed to dry run)")
 	rootCmd.AddCommand(sendCommand)
-
-	// Make sure to seed the random number generator or else we'll end up with
-	// the same random results for every build.
-	rand.Seed(time.Now().UnixNano())
 
 	if err := envdecode.Decode(&conf); err != nil {
 		fmt.Fprintf(os.Stderr, "Error decoding conf from env: %v", err)

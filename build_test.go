@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"os"
+	"slices"
 	"strings"
 	"testing"
 
 	"github.com/joeshaw/envdecode"
 	"github.com/stretchr/testify/require"
-	"golang.org/x/exp/slices"
 )
 
 func init() {

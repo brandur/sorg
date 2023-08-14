@@ -266,7 +266,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          cache: true
+          check-latest: true
+          go-version-file: "go.mod"
+
       - name: "Check: golangci-lint"
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.52
+          version: v1.54
