@@ -16,6 +16,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -23,7 +24,6 @@ import (
 	"github.com/go-playground/validator/v10"
 	_ "github.com/lib/pq"
 	"github.com/yosssi/ace"
-	"golang.org/x/exp/slices"
 	"golang.org/x/xerrors"
 
 	"github.com/brandur/modulir"
@@ -334,7 +334,7 @@ func build(c *modulir.Context) []error {
 				replaceEverything = true
 			}
 
-			slices.SortFunc(atomsWrapper.Atoms, func(a, b *Atom) bool { return b.PublishedAt.Before(a.PublishedAt) })
+			slices.SortFunc(atomsWrapper.Atoms, func(a, b *Atom) int { return b.PublishedAt.Compare(a.PublishedAt) })
 
 			// Do a little post-processing on each atom, but try to skip any
 			// that haven't changed.
@@ -620,7 +620,7 @@ func build(c *modulir.Context) []error {
 				replaceEverything = true
 			}
 
-			slices.SortFunc(sequenceWrapper.Entries, func(a, b *SequenceEntry) bool { return b.PublishedAt.Before(a.PublishedAt) })
+			slices.SortFunc(sequenceWrapper.Entries, func(a, b *SequenceEntry) int { return b.PublishedAt.Compare(a.PublishedAt) })
 
 			// Do a little post-processing on all the entries found in the
 			// sequence, but try to skip any that haven't changed.
@@ -703,11 +703,11 @@ func build(c *modulir.Context) []error {
 	// Some slices are sorted above when they're read in so that they can be
 	// compared against a current version.
 	{
-		slices.SortFunc(articles, func(a, b *Article) bool { return b.PublishedAt.Before(a.PublishedAt) })
-		slices.SortFunc(fragments, func(a, b *Fragment) bool { return b.PublishedAt.Before(a.PublishedAt) })
-		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
-		slices.SortFunc(passages, func(a, b *snewsletter.Issue) bool { return b.PublishedAt.Before(a.PublishedAt) })
-		slices.SortFunc(photos, func(a, b *Photo) bool { return b.OccurredAt.Before(a.OccurredAt) })
+		slices.SortFunc(articles, func(a, b *Article) int { return b.PublishedAt.Compare(a.PublishedAt) })
+		slices.SortFunc(fragments, func(a, b *Fragment) int { return b.PublishedAt.Compare(a.PublishedAt) })
+		slices.SortFunc(nanoglyphs, func(a, b *snewsletter.Issue) int { return b.PublishedAt.Compare(a.PublishedAt) })
+		slices.SortFunc(passages, func(a, b *snewsletter.Issue) int { return b.PublishedAt.Compare(a.PublishedAt) })
+		slices.SortFunc(photos, func(a, b *Photo) int { return b.OccurredAt.Compare(a.OccurredAt) })
 	}
 
 	//
@@ -1253,7 +1253,7 @@ type Photo struct {
 	// CropGravity is the gravity to use with ImageMagick when doing a square
 	// crop. Should be one of: northwest, north, northeast, west, center, east,
 	// southwest, south, southeast.
-	CropGravity string `toml:"crop_gravity" default:"center"`
+	CropGravity string `default:"center" toml:"crop_gravity"`
 
 	// CropWidth is the width to crop the photo to.
 	//
