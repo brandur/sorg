@@ -17,12 +17,6 @@ Published fragment [An email redaction function for Postgres](/fragments/email-r
 """
 
 [[atoms]]
-  published_at = 2023-07-06T12:39:10-07:00
-  description = """\
-Published fragment [Rate limiting, DDOS, and hyperbole](/fragments/rate-limiting-ddos-hyperbole), on examining the nature of a 429 (too many requests), and the purpose it serves.
-"""
-
-[[atoms]]
   published_at = 2023-07-06T12:57:46-07:00
   description = """\
 This is awesome: [uses.tech](https://uses.tech/) (or see the [GitHub repository](https://github.com/wesbos/awesome-uses)), a directory of peoples' `/uses` pages, which detail dev gear, software, workspaces, and configurations.
@@ -30,6 +24,11 @@ This is awesome: [uses.tech](https://uses.tech/) (or see the [GitHub repository]
 It reminds me (in a very positive sense) of the pre-social media internet. No politics, no outrage, no clickbait, just a bunch of hackers who took the time to build a writeup on how they work because they think it's cool.
 """
 
+[[atoms]]
+  published_at = 2023-07-06T12:39:10-07:00
+  description = """\
+Published fragment [Rate limiting, DDOS, and hyperbole](/fragments/rate-limiting-ddos-hyperbole), on examining the nature of a 429 (too many requests), and the purpose it serves.
+"""
 
 [[atoms]]
   published_at = 2023-07-06T12:12:31-07:00
