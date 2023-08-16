@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-08-16T14:01:22-07:00
+  description = """\
+Published fragment [An email redaction function for Postgres](/fragments/email-redacted-sql-function), on derisking somewhat accidentally leaking PII in saved queries.
+"""
+
+[[atoms]]
   published_at = 2023-07-06T12:39:10-07:00
   description = """\
 Published fragment [Rate limiting, DDOS, and hyperbole](/fragments/rate-limiting-ddos-hyperbole), on examining the nature of a 429 (too many requests), and the purpose it serves.
