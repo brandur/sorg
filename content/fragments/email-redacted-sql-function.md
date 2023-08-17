@@ -1,7 +1,7 @@
 +++
 hook = "Neither here nor there, but a PL/pgSQL function for redacting emails in Postgres to derisk leaking PII."
-published_at = 2016-08-24T13:36:55Z
-title = "SQL email redaction function for Postgres"
+published_at = 2023-08-16T14:01:22-07:00
+title = "An email redaction function for Postgres"
 +++
 
 We recently shipped a [saved queries](https://docs.crunchybridge.com/concepts/saved-queries) feature that shows the results of a SQL query in browser and which can produce shareable links.
