@@ -175,7 +175,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: "Go: Install"
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          cache: true
+          check-latest: true
+          go-version-file: "go.mod"
+
+      - name: "Sorg: Install"
         run: make install
 
       # Download any markers that have not yet been committed to Git to save
@@ -232,6 +239,13 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          cache: true
+          check-latest: true
+          go-version-file: "go.mod"
 
       - name: "Go: Install"
         run: make install
