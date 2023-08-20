@@ -1,3 +1,5 @@
+<img src="/photographs/about/self-portrait-2023-03.jpg" alt="Selfie April 2023" class="max-w-none -mx-[200px] w-[calc(100%+400px)]">
+
 I'm an engineer at [Crunchy Data](https://www.crunchydata.com/), where I work on the company's platform API, and spend a lot of time talking about and working with my favorite database, Postgres.
 
 I recently spent five and a half years at Stripe, where I helped design, build, and run our API, and maintain our public-facing developer tooling. Stripe's API design ethos is notable for aiming to make complex flows _as easy as possible_, while still providing enough flexibility to facilitate even the most complex flows.

@@ -1570,6 +1570,11 @@ video {
   clear: both;
 }
 
+.-mx-\[200px\] {
+  margin-left: -200px;
+  margin-right: -200px;
+}
+
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -1718,6 +1723,10 @@ video {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-\[calc\(100\%\+400px\)\] {
+  width: calc(100% + 400px);
 }
 
 .w-full {
