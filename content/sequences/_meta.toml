@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-08-21T00:40:33-07:00
+  slug = "056"
+  title = "Floor 03"
+  description = """
+From an all-too-brief stopover in Berlin a few months ago. What was supposed to be a week was compacted to two nights after a nightmare flight cancellation and canonball run across four countries to get back on schedule.
+
+Almost three months since I published one of these, but time moves so quickly that it felt like only a blink of the eye. Falling off the wagon is easy. Staying on, now that's hard.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/ab225fmp2jh7y7iymugrd/2W4A3437.JPG?rlkey=tv6j2a665vdqd0ggh242vz1aj&dl=1"
+    slug = "056"
+
+[[entries]]
   published_at = 2023-06-02T11:13:14-07:00
   slug = "055"
   title = "Lighter than air"

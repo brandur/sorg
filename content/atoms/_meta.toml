@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-08-21T00:40:32-07:00
+  description = """\
+Published [sequence 056](/sequences/056), floor 03.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/056"
+    original_image_url = "https://www.dropbox.com/scl/fi/ab225fmp2jh7y7iymugrd/2W4A3437.JPG?rlkey=tv6j2a665vdqd0ggh242vz1aj&dl=1"
+    slug = "floor-03"
+
+[[atoms]]
   published_at = 2023-08-16T14:01:22-07:00
   description = """\
 Published fragment [An email redaction function for Postgres](/fragments/email-redacted-sql-function), on derisking somewhat accidentally leaking PII in saved queries.
