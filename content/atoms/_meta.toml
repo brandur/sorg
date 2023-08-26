@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-08-26T13:48:45-07:00
+  description = """\
+Published [On Using Go's `t.Parallel()`](/t-parallel), on annotating our Go tests with `t.Parallel()`, which has some advantages for DX iteration speed, and when combined with `go test -race`, also helps route out tricky data races.
+"""
+
+[[atoms]]
   published_at = 2023-08-21T00:40:32-07:00
   description = """\
 Published [sequence 056](/sequences/056), floor 03.
