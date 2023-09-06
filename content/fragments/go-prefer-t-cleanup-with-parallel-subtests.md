@@ -59,7 +59,7 @@ Func1_Sub2 returned                         <- Func1_Sub2が完了
 
 Look closely, and you'll see that the deferred trace on `Test_Func1` returns _before_ either `Func1_Sub1` or `Func1_Sub2` finish running, which seems to violate `defer`'s guaranteed LIFO (last-in-first-out) ordering.
 
-Stopping for a moment to think, it makes sense. In order to known which tests can run in parallel, Go would first have to perform an initial informational pass, because otherwise it'd have no way of knowing which tests are marked with `t.Parallel`. It does this by running each test/subtest in a goroutine, pausing when `t.Parallel()` is encountered, and later continuing each as appropriate for a complete run.
+Stopping for a moment to think, it makes sense. In order to known which tests can run in parallel, Go would first have to perform an initial informational pass, because otherwise it'd have no way of knowing which tests are marked with `t.Parallel` and which are not. It does this by running each test/subtest in a goroutine, pausing that goroutine when `t.Parallel()` is encountered, and later continuing each as appropriate for a complete run.
 
 In cases where `t.Parallel` is used in subtests, the top-level test function is allowed to finish while subtests are still paused, so its `defer` statements can run before subtests get a chance to finish. This behavior is surprisingly and could easily leading to bugs, which is why the tparallel lint was born.
 
