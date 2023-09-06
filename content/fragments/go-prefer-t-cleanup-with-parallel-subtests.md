@@ -63,4 +63,4 @@ Stopping for a moment to think, it makes sense. In order to known which tests ca
 
 In cases where `t.Parallel` is used in subtests, the top-level test function is allowed to finish while subtests are still paused, so its `defer` statements can run before subtests get a chance to finish. This behavior is surprisingly and could easily leading to bugs, which is why the tparallel lint was born.
 
-The fix is `t.Cleanup`. Like `defer`, `t.Cleanup` also guarantees LIFO order, but unlike `defer`, Go's test framework is aware of it, so even with pauses caused by `t.Pararallel`, it behaves as expected.
+The fix is `t.Cleanup`. Like `defer`, `t.Cleanup` also guarantees LIFO order, but unlike `defer`, Go's test framework is aware of it, so even with pauses caused by `t.Parallel`, it behaves as expected.
