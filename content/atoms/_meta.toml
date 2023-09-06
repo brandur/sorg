@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-09-05T17:32:10-07:00
+  description = """\
+Published fragment [Why to prefer `t.Cleanup` to `defer` in tests with subtests using `t.Parallel`](/fragments/go-prefer-t-cleanup-with-parallel-subtests), as enforced by the [tparallel lint](https://github.com/moricho/tparallel). The semantics of each are close enough that it's not obvious why it'd matter, but use of `defer` can indeed lead to bugs under some circumstances.
+"""
+
+[[atoms]]
   published_at = 2023-08-26T13:48:45-07:00
   description = """\
 Published [On Using Go's `t.Parallel()`](/t-parallel), on annotating our Go tests with `t.Parallel()`, which has some advantages for DX iteration speed, and when combined with `go test -race`, also helps route out tricky data races.
