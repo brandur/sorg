@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-09-06T17:40:44-07:00
+  description = """\
+Published [sequence 057](/sequences/057), May Day.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/057"
+    original_image_url = "https://www.dropbox.com/scl/fi/ruc1dayaf4yvma710dcbl/2W4A2603.JPG?rlkey=gdrwtbdr52t800m4ofa97bhoh&dl=1"
+    slug = "may-day"
+
+[[atoms]]
   published_at = 2023-09-05T17:32:10-07:00
   description = """\
 Published fragment [Why to prefer `t.Cleanup` to `defer` in tests with subtests using `t.Parallel`](/fragments/go-prefer-t-cleanup-with-parallel-subtests), as enforced by the [tparallel lint](https://github.com/moricho/tparallel). The semantics of each are close enough that it's not obvious why it'd matter, but use of `defer` can indeed lead to bugs under some circumstances.

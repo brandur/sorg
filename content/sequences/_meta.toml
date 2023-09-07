@@ -11,6 +11,25 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-09-06T17:40:45-07:00
+  slug = "057"
+  title = "May Day"
+  description = """
+A photo from Paris a few months back. My first full day in the city, I'd been traveling in random zig zags to see what I could see.
+
+To my surprise I came across a police checkpoint -- one of about a dozen within a few blocks radius. I thought about turning back, but remember consciously thinking, "well, when in ~~Rome~~ Paris." My bag was searched more thoroughly than at an airport checkpoint and with the presence of a large camera, I was asked whether I was a journalist, to which I replied in broken French "non, je suis un _touriste_".
+
+I walked into a square full of people and reminiscent of a block party, complete with music and food vendors in every corner. Except in this block party, people were climbing on the city's multi-hundred-year-old statues and setting off fireworks and other incendiaries with a loud _**BANG**_ every minute or two.
+
+I remembered that this was May 1st, or May Day, and was instructed by Google Maps that this square was the _Place de la Nation_, which I'd later find out had a storied history for having the most active guillotines during the French Revolution. The demonstrations were related to the ongoing unrest from Macron raising the country's retirement age from 62 to 64 years, and I'd stumbled right into the city's hottest spot that day, entirely by accident.
+
+I took this photo as I was walking away from the square, traffic along the road stopped entirely, with protestors, French police, and spectators like myself littering the area.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/ruc1dayaf4yvma710dcbl/2W4A2603.JPG?rlkey=gdrwtbdr52t800m4ofa97bhoh&dl=1"
+    slug = "057"
+
+[[entries]]
   published_at = 2023-08-21T00:40:33-07:00
   slug = "056"
   title = "Floor 03"
