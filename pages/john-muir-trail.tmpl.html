@@ -1,0 +1,41 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+The John Muir Trail{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+{{- end -}}
+
+{{- define "content" -}}
+
+<div class="my-16">
+    <div class="mx-auto prose prose-lg">
+        <h1 class="text-center text-base">The John Muir Trail</h1>
+    </div>
+
+    <div class="mx-auto
+            p-12
+            prose prose-lg
+            prose-a:no-underline
+            prose-p:font-normal prose-p:hyphens-auto prose-p:leading-normal
+            ">
+        {{IncludeMarkdown .Ctx "content/markdown/john-muir-trail/intro.md"}}
+    </div>
+
+    <div class="mx-auto
+            p-12
+            prose prose-md
+            prose-a:no-underline
+            prose-figure:lg:-mx-[250px] prose-figure:lg:my-16 prose-figure:lg:w-[calc(100%+500px)]
+            prose-figure:xl:-mx-[400px] prose-figure:xl:my-16 prose-figure:xl:w-[calc(100%+800px)]
+            prose-h2:text-sm prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
+            prose-hr:mx-auto prose-hr:w-3/4
+            prose-img:w-full
+            prose-p:font-normal prose-p:hyphens-auto prose-p:leading-normal
+            ">
+        {{IncludeMarkdown .Ctx "content/markdown/john-muir-trail/main.md"}}
+    </div>
+</div>
+
+{{- end -}}

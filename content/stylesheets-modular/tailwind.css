@@ -2100,6 +2100,12 @@ video {
   opacity: 0.6;
 }
 
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .prose-p\:hyphens-auto :is(:where(p):not(:where([class~="not-prose"] *))) {
   -webkit-hyphens: auto;
           hyphens: auto;
@@ -2461,13 +2467,61 @@ video {
     margin-bottom: 4rem;
   }
 
+  .prose-figure\:md\:-mx-\[300px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-left: -300px;
+    margin-right: -300px;
+  }
+
   .prose-figure\:md\:w-\[calc\(100\%\+300px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     width: calc(100% + 300px);
+  }
+
+  .prose-figure\:md\:w-\[calc\(100\%\+500px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    width: calc(100% + 500px);
   }
 }
 
 @media (min-width: 1024px) {
   .lg\:block {
     display: block;
+  }
+
+  .prose-figure\:lg\:-mx-\[300px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-left: -300px;
+    margin-right: -300px;
+  }
+
+  .prose-figure\:lg\:my-16 :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .prose-figure\:lg\:-mx-\[250px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-left: -250px;
+    margin-right: -250px;
+  }
+
+  .prose-figure\:lg\:w-\[calc\(100\%\+500px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    width: calc(100% + 500px);
+  }
+
+  .prose-figure\:lg\:w-\[calc\(100\%\+800px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    width: calc(100% + 800px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .prose-figure\:xl\:-mx-\[400px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-left: -400px;
+    margin-right: -400px;
+  }
+
+  .prose-figure\:xl\:my-16 :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .prose-figure\:xl\:w-\[calc\(100\%\+800px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    width: calc(100% + 800px);
   }
 }
