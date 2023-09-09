@@ -2467,17 +2467,8 @@ video {
     margin-bottom: 4rem;
   }
 
-  .prose-figure\:md\:-mx-\[300px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-    margin-left: -300px;
-    margin-right: -300px;
-  }
-
   .prose-figure\:md\:w-\[calc\(100\%\+300px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     width: calc(100% + 300px);
-  }
-
-  .prose-figure\:md\:w-\[calc\(100\%\+500px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-    width: calc(100% + 500px);
   }
 }
 
@@ -2486,9 +2477,9 @@ video {
     display: block;
   }
 
-  .prose-figure\:lg\:-mx-\[300px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-    margin-left: -300px;
-    margin-right: -300px;
+  .prose-figure\:lg\:-mx-\[250px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+    margin-left: -250px;
+    margin-right: -250px;
   }
 
   .prose-figure\:lg\:my-16 :is(:where(figure):not(:where([class~="not-prose"] *))) {
@@ -2496,17 +2487,8 @@ video {
     margin-bottom: 4rem;
   }
 
-  .prose-figure\:lg\:-mx-\[250px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-    margin-left: -250px;
-    margin-right: -250px;
-  }
-
   .prose-figure\:lg\:w-\[calc\(100\%\+500px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     width: calc(100% + 500px);
-  }
-
-  .prose-figure\:lg\:w-\[calc\(100\%\+800px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-    width: calc(100% + 800px);
   }
 }
 
