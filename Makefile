@@ -233,6 +233,23 @@ reboot: sigusr2
 .PHONY: restart
 restart: sigusr2
 
+# Remove untracked `.marker` files, which can be useful in cases where markers
+# have been committed to the Git repository on one computer, and Git is now
+# preventing a pull on a different one because it'd overwrite local markers
+# (that are functionally the same thing but considered different).
+#
+# Remove all untracked markers:
+#
+#     make rm-markers
+#
+# Remove untracked markers in a specific directory:
+# 
+#     make DIR="/content/photographs/sequences" rm-markers
+#
+.PHONY: rm-markers
+rm-markers:
+	git ls-files $(DIR) --others --exclude-standard | egrep '\.marker$$' | xargs -n1 rm
+
 .PHONY: test
 test:
 	go test ./...
