@@ -231,7 +231,7 @@ At its essence, this one is pretty obvious: hire good engineering talent.
 But things get a little more murky when examining them in closer detail. You of
 course want to look for people who are good at what they do, but it may be even
 more important for them to be flexible enough to jump in and fix bugs or modify
-almost any project. This requires a degree of being able to learn indepedently
+almost any project. This requires a degree of being able to learn independently
 and figure things out for themselves that not everyone is well-suited for, but
 if achieved will result in fewer disruptions to the rest of the team and more
 work output overall. These ideal candidates may not be able to do a good job of
