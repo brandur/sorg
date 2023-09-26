@@ -11,6 +11,21 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-09-26T11:32:44-07:00
+  description = """\
+# Mt Whitney
+
+Farina and I successfully summitted Mt Whitney last week. It's the highest peak in the lower 48, so although it felt great getting to the top, the air up there was sure thin.
+
+Getting up and down in one day is a slog involving early morning headlamps, so we turned it into a more leisurely backpacking trip starting out of Horseshoe Meadow, a day to Rock Creek, a day to Guitar Lake, and then a day up and down Whitney and out the normal way to Whitney Portal. Guitar Lake's at 11,600 ft, so it was only another ~3k feet ascent to the top.
+
+A more thorough writeup to come!
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/kb1zi25cxi9fthobmhxo0/IMG_0987.HEIC?rlkey=mkqgire441i1ipc1b6feuhsvj&dl=1"
+    slug = "mt-whitney"
+
+[[atoms]]
   published_at = 2023-09-26T11:26:20-07:00
   description = """\
 I resent the fact that it feels like I don't write on here for a day or two, and suddenly it's a month later. The older you get, the faster time slips.
