@@ -62,7 +62,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       - name: ImageMagick format options
@@ -163,7 +163,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
@@ -228,7 +228,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
