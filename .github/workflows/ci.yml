@@ -44,16 +44,14 @@ jobs:
       # It'd be nice to take apt-get back out of the flow since it's so slow,
       # but we seem to need it for a few things:
       #
-      #   * FUSE is needed to run AppImages, which are needed for ImageMagick.
-      #
       #   * pngquant has no particularly easy alternative install options.
       #
       #   * WebPs are run through `cbwebp` (which comes from the webp package)
       #     by ImageMagick. This may have changed when we went back to the
       #     AppImage version of ImageMagick, but I haven't tested it.
       #
-      - name: Install FUSE + PNGQuant + WebP
-        run: sudo apt-get install fuse pngquant webp
+      - name: Install PNGQuant + WebP
+        run: sudo apt-get install pngquant webp
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get a binary
@@ -156,8 +154,8 @@ jobs:
 
     steps:
       # See notes in check_and_test.
-      - name: Install FUSE + PNGQuant + WebP
-        run: sudo apt-get install fuse pngquant webp
+      - name: Install PNGQuant + WebP
+        run: sudo apt-get install pngquant webp
 
       # See notes in check_and_test.
       - name: Install ImageMagick
@@ -221,8 +219,8 @@ jobs:
 
     steps:
       # See notes in check_and_test.
-      - name: Install FUSE + PNGQuant + WebP
-        run: sudo apt-get install fuse pngquant webp
+      - name: Install PNGQuant + WebP
+        run: sudo apt-get install pngquant webp
 
       # See notes in check_and_test.
       - name: Install ImageMagick
