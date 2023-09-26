@@ -47,8 +47,7 @@ jobs:
       #   * pngquant has no particularly easy alternative install options.
       #
       #   * WebPs are run through `cbwebp` (which comes from the webp package)
-      #     by ImageMagick. This may have changed when we went back to the
-      #     AppImage version of ImageMagick, but I haven't tested it.
+      #     by ImageMagick.
       #
       - name: Install PNGQuant + WebP
         run: sudo apt-get install pngquant webp
