@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-09-26T11:12:33-07:00
+  description = """\
+Last week I noticed that the build process for this site had become chronically broken, with the problem being that `apt-get install webp` was coming up with a 404. I thought it was an issue with GitHub Actions, and opted not to try and find a workaround for the time being, hoping it'd resolve itself. I went backpacking, and by the time I got home, it had.
+
+But it wasn't a GitHub Actions problem. The web apt-get mirror hadn't gone down, but rather the package _pulled_. A critical vulnerability that'd been confirmed to have been exploited in the wild to install Pegasus spyware had [been found in libwebp](https://nvd.nist.gov/vuln/detail/CVE-2023-4863), affecting anything that used it including Chrome, iMessage, and even this site. It was also the root of the zero-click iMessage exploit that'd been reported to exist a few weeks back in early September.
+
+Here's the [commit that fixed the problem](https://github.com/webmproject/libwebp/commit/902bc9190331343b2017211debcec8d2ab87e17a) and [a great writeup on how the exploit worked](https://blog.isosceles.com/the-webp-0day/).
+"""
+
+
+[[atoms]]
   published_at = 2023-09-06T17:40:44-07:00
   description = """\
 Published [sequence 057](/sequences/057), May Day.
