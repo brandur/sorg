@@ -53,20 +53,21 @@ jobs:
       #     AppImage version of ImageMagick, but I haven't tested it.
       #
       - name: Install FUSE + PNGQuant + WebP
-        run: sudo apt-get install fuse pngquant webp
+        run: sudo apt-get install fuse imagemagick pngquant webp
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get a binary
       # directly. When Ubuntu is upgraded at some point in the probably-distant
       # future, we can probably get rid of this.
-      - name: Install ImageMagick
-        run: |
-          mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
-          chmod +x "${{ env.MAGICK_BIN }}"
+      # - name: Install ImageMagick
+      #   run: |
+      #     mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
+      #     curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/ImageMagick/ImageMagick/releases/download/${{ env.MAGICK_RELEASE }}/ImageMagick--clang-x86_64.AppImage
+      #     chmod +x "${{ env.MAGICK_BIN }}"
 
       - name: ImageMagick format options
-        run: ${{ env.MAGICK_BIN }} identify -list format
+        # run: ${{ env.MAGICK_BIN }} identify -list format
+        run: magick identify -list format
 
       # Uses an artifact built by:
       #
