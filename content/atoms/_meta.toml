@@ -15,7 +15,7 @@
   description = """\
 I've previously written about [io_uring](https://en.wikipedia.org/wiki/Io_uring), possibly one of the more exciting kernel developments in recent memory, aiming to improve the performance of fundamental I/O operations.
 
-But it's not without major fault. A post from [Google's security](https://security.googleblog.com/2023/06/learnings-from-kctf-vrps-42-linux.html) describes how in the year leading up to June 2023 60% of reported vulnerabilities were in io_uring, and Google's paid out $1 million USD for io_uring exploits.
+But it's not without major fault. A post from [Google's security](https://security.googleblog.com/2023/06/learnings-from-kctf-vrps-42-linux.html) describes how in the year leading up to June 2023 60% of reported vulnerabilities were in io_uring, and Google's paid out **$1 million USD** for io_uring exploits.
 
 Due to high risk of compromise, Google's turned it off in their properties:
 
