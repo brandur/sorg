@@ -1,14 +1,16 @@
-## Day 1, glamping (#day-1)
+## Day 1, the flats (#day-1)
 
 Like everyone knows, the best way to start any trip is with a flat tire.
 
-On the final stretch of the narrow road up to Vermillion Camp, windows open, we hear a sudden pop and the distinctive sound of air rushing out of a narrow opening at high speed. I had three seconds of ignorant bliss wondering what that sound was before it became the distinct sound of rubbery tread unambiguously signaling a flat. Being the only vehicle in a mile in any direction, there wasn't much question as to who the puncture belonged to.
+On the final stretch of the narrow road up to Vermillion Camp, windows open, there's a sudden pop and the distinctive sound of air rushing out of a narrow opening at high speed. I had three seconds of ignorant bliss wondering what that sound was before it became the noise of rubbery tread signaling with little ambguity the presence of a flat. Being the only vehicle in a mile in any direction, there wasn't much question as to who the puncture belonged to.
 
-Better yet, it's a rental. We're not even sure that there's a spare, let alone where to find it. It's a Jeep. Remember when the spare tire on a Jeep hung off the back door, as obvious as the sun in a clear blue sky? But this is 2023, the year of the undifferentiated SUV design, and the storied Jeep is no exception, looking just like every other SUV on the road. Ten minutes and a lot of experimentation later, someone finally decides to RTFM, we realize that the spare is mounted out of sight on the car's undercarriage, and is manually winched down using a special access port hidden under a plastic button in the trunk.
+Better yet, it's a rental. We're not even sure if there is a spare, let alone where to find it. The vehicle is a Jeep. Remember when the spare tire on a Jeep hung off the back door, as obvious as the sun in a clear blue sky? Those old days are behind us and this is 2023, the year of the undifferentiated SUV design, and the storied Jeep is no exception, looking just like every other SUV on the road.
+
+Ten minutes and a lot of experimentation later, someone finally decides to RTFM, we realize that the spare is mounted out of sight on the car's undercarriage, and is manually winched down using a special access port hidden under a plastic cap in the trunk.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/flat-tire-1" "https://www.dropbox.com/s/iuhywgmcx4zohhk/2W4A3757.JPG?dl=1" 1200}}" loading="lazy"></figure>
 
-That's the bad news. The good is that there's literally no better time _ever_ to get a flat than when you're on vacation with a loose schedule and a bunch your guy friends. A flat tire becomes a team building activity, with everyone pitching advice and labor. What was a somewhat worrying situation a few minutes ago becomes benign as the five of us argue about best practices for jacking a car and getting the tired changed out.
+That's the bad news. The good is that there's literally no better time _ever_ to get a flat than when you're on vacation with an amorphous schedule and a bunch of dudes. A flat tire becomes a team building activity, with everyone pitching advice and labor. What was a somewhat worrying situation a few minutes ago becomes benign as the five of us argue about best practices for jacking a car and getting the tired changed out.
 
 We finish with a lopsided vehicle (the spare isn't full sized), but one that's drivable, and make our way into Vermillion, finding our campsite to be in a prime location on the shores of Lake Edison.
 
@@ -20,9 +22,9 @@ This first day is for driving, acclimatization, and for some of us to get used t
 
 * I'm carrying a full-sized freestanding tent that weighs only two pounds. It has UX features like poles and latch points that are color coordinated to maximize the ease and speed in which it can be assembled.
 
-* I borrowed a modern air mattress (thanks Farina). It has two separate levels of valve granularity that let it to be easily inflated and deflated in two minutes each. It provides practically perfect insulation from the ground.
+* I borrowed a modern air mattress (thanks Farina). It has two separate levels of valve granularity that let it to be easily inflated and deflated in two minutes each. It provides practically perfect insulation from the ground, helping to keep even the coldest of nights warm.
 
-* I borrowed an REI-brand lightweight down quilt (thanks Farina), which is like a sleeping bag with no bottom layer, but can be jammed back into its stuff sack in under a minute, a job that used to be an arduous ~5 minutes for synthetic sleeping bags when I was a kid. Amazing.
+* I borrowed an REI-brand lightweight down quilt (thanks Farina), which is like a sleeping bag with no bottom layer, but can be jammed back into its stuff sack in under a minute, a job that used to be an arduous ~5 minutes for the heavy synthetic sleeping bags that I used as a kid. Amazing.
 
 That night we stop in for dinner at Vermillion's small cafe, and are treated to some ludicrously large fajitas (this appelation challenged by several members of our group who believe them to be more of a quesidilla). We're overcharged for beer, but buy some anyway. It's our last opportunity for this sort of luxury, along freerunning water and power for quite a while.
 
@@ -56,29 +58,29 @@ Rob investigates the feasibility of escaping the lake via bouldering a sheer gra
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-5-rob" "https://www.dropbox.com/scl/fi/hgwq4j6hr8u54yu8nc5cx/2W4A3838.JPG?rlkey=y5n7hjh6qxht0n70xokmtw2r9&dl=1" 1200}}" loading="lazy"></figure>
 
-I find my most epic tent pitch of the entire trip. If you're going to visit Beverly Hills Rock, please make sure to pick up a guest pass at the guard booth, pleb. This is top dollar lakefront property.
+I find my most epic tent pitch of the entire trip. If you're going to visit Beverly Hills Rock, please make sure to pick up a guest pass at the guard booth, pleb. This is top dollar lakefront property after all.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-6-tent" "https://www.dropbox.com/s/kcma6526lv64eom/2W4A3841.JPG?dl=1" 1200}}" loading="lazy"></figure>
 
 We hike into the Mono Hot Springs campground for dinner and one last resupply. One half of our party gets lost on the way and runs into a large rattlesnake in the rocks, but isn't overly concerned about it.
 
-Once reaching the campground every one of us orders one last burger (except Umur, who orders a blackened fish fillet). Our waiter is an incredibly pleasant European from Prague that calls us all "sir". We finish late and walk the mile back to camp by the light of our headlamps.
+Once reaching the campground every one of us orders one last burger (except Umur, who orders a blackened fish fillet). Our waiter is an incredibly pleasant European from Prague that calls us all "sir", which feels overly formal for a bunch of vagrants wearing hiking pants and with zinc sunscreen slathered all over their face. We finish late and walk the mile back to camp by the light of our headlamps.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-7" "https://www.dropbox.com/scl/fi/mj6uospz27nqfblzns3b4/2W4A3850.JPG?rlkey=ip3thh9ps98y451fqihdwjual&dl=1" 1200}}" loading="lazy"></figure>
 
 <hr>
 
-## Day 3 (#day-3)
+## Day 3, exogenic (#day-3)
 
 Day 3 is really day 1, where the trip gets real and we start hiking long distances. We say goodbye to Umur, the car, and heavy luxuries like our cast iron pan, camp chairs, and dignity, and get hiking.
 
-For the first time, we realize just how heavy our packs are, how hot California is, and how far we still have to go. I take a sunburn on the lips that'll last all week and into the next.
+For the first time, we realize just how heavy our packs are, how hot California is, and how far we still have to go. I take a sunburn on the lips that'll last all week and into the next. (Note to self: bring a hat next time.)
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/bear-ridge-1" "https://www.dropbox.com/scl/fi/n4eo5z5at88eyxb3lagkk/2W4A3854.JPG?rlkey=x03jc6srb5y0i4jdpf74g3xv9&dl=1" 1200}}" loading="lazy"></figure>
 
 Farina starts to use the word "exogenous" a lot, one that I haven't heard since high school science. We all smile and nod, pretending that we're speaking mutually intelligible English, but secretly, none of the rest of us know what the hell he's talking about.
 
-That is, until he jumps into the first creek we find, fully clothed. The idea is to cool oneself using an _exogenous_ (def'n: "relating to or developing from external factors") source of water, thereby conserving the body's internal supply. It's really hot so this seems like a magnificent idea to the rest of us, and we all follow suit.
+That is, until he jumps into the first creek we find, fully clothed. The idea is to cool oneself using an _exogenous_ (def'n: "relating to or developing from external factors") source of water, thereby conserving the body's internal supply. It's really hot so this seems like a magnificent idea to the rest of us, and we follow suit.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/bear-ridge-2" "https://www.dropbox.com/scl/fi/6nnvot6ybvlv3eoq100ib/2W4A3856.JPG?rlkey=otdr29afccb8anr2f0xlrxcw7&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -98,7 +100,7 @@ Day 4 is our first major push of the entire trip, planned at 15 miles, but more 
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-3" "https://www.dropbox.com/scl/fi/ntlblx3rvatzp3h6h7ohk/2W4A3900-adjusted.jpg?rlkey=e6pmws7a47ddy8k2vg57qpm66&dl=1" 1200}}" loading="lazy"></figure>
 
-We go up over Seldon Pass, passing by many beautiful alpine lakes -- Marshall Lake and Marie Lake on the way up, followed by Heart Lake and Sallie Keys Lake on the other side.
+We go up over Seldon Pass, passing by many beautiful alpine lakes. Marshall Lake and Marie Lake on the way up. Heart Lake and Sallie Keys Lake on the way down.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/seldon-pass-01" "https://www.dropbox.com/scl/fi/vj6mb49euq9wc1tqbcnu0/2W4A3906.JPG?rlkey=pcvzgps3cax94p6k6kwk9gda8&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -142,7 +144,7 @@ Rob picked up his vintage 80s pack at a thrift store and despite being heavier t
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/seldon-pass-17" "https://www.dropbox.com/s/1jf7eyvesmoq6jz/2W4A4025.JPG?dl=1" 1200}}" loading="lazy"></figure>
 
-That was Heart Lake. Next up, Sallie Keyes Lakes.
+That was Heart Lake. Next up, Sallie Keyes.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/seldon-pass-18" "https://www.dropbox.com/scl/fi/pcru5zdl11rvsku7x40hs/2W4A4033.JPG?rlkey=dv7p1mb1f4ov5ww64qjt4h0et&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -150,7 +152,7 @@ That was Heart Lake. Next up, Sallie Keyes Lakes.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/seldon-pass-20" "https://www.dropbox.com/scl/fi/jjf1qu710cn9t09brgl0u/2W4A4046.JPG?rlkey=0xdvphm9zlarruzgleb7958wh&dl=1" 1200}}" loading="lazy"></figure>
 
-There are many water crossings along the trail. We quickly learn that although it's _often_ possible to use stones and logs to get to the other side without getting your feet wet, it's just as often _not_ possible. Some hikers carry a pair of sandals to change in and out of around unavoidable submarine crossings, but in the spirit of exogenism, all four of us wade straight in.
+There are many water crossings along the trail. We quickly learn that although it's _often_ possible to use stones and logs to get to the other side without getting your feet wet, it's just as often _not_ possible. Some hikers carry a pair of sandals to change in and out of around unavoidably submarine crossings, but in the spirit of exogenism, all four of us wade straight into every one we come across.
 
 I realize that I've internally redefined the word "dry" from its traditional sense to mean "not having walked through a creek in the last half hour".
 
@@ -170,7 +172,7 @@ We pass a fallen giant that someone's helpfully analyzed and labeled to be 186 y
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-7" "https://www.dropbox.com/scl/fi/2lbj6fx44i3xtnp393gt2/2W4A4080.JPG?rlkey=bn40uw400ruiotik0kqlb31fl&dl=1" 1200}}" loading="lazy"></figure>
 
-It was a long day and we arrive at our campsite along the gushing Piute River in the last hour of daylight. We laud ourselves on almost 20 miles walked when a guy comes in who tells us that he's done 30 miles -- effectively hiking the same distance that we did in two days in one. None of us wants to hear it. Go find your own campsite!
+It was a long day and we arrive at our campsite along the gushing Piute River in the last hour of daylight. We laud ourselves on almost 20 miles walked when a guy comes in who tells us that he's just done 30 miles -- effectively hiking the same distance that we did in two days in one. None of us wants to hear it. Go outta here guy!
 
 Golden hour out here is tremendous, with the valleys having already fallen into mostly darkness, but with the final rays of the sun still illuminating the mountainsides. Here's the Pavilion Dome, towering above us.
 
@@ -206,9 +208,9 @@ The rest of the day was spent hiking up along Evolution Valley, considered by ma
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/evolution-valley-3" "https://www.dropbox.com/scl/fi/ld96kt4emuvj601510o5p/2W4A4151.JPG?rlkey=uattwwpmrin2bbcvojm5noz5y&dl=1" 1200}}" loading="lazy"></figure>
 
-Our pitch that night was one of the most picturesque, sleeping under the shadow of The Hermit, a 12,000+ foot peak. There were a couple very nice campsites, but the mosquitoes were quite bad, so we ended up pitching away from meadows on a long granite slab. Unfortunately that didn't do much to deter the mosquitoes, so we ate quickly and had an early bedtime.
+Our pitch that night was one of the most picturesque, sleeping under the shadow of The Hermit, a 12,000+ foot peak. There were a couple very nice campsites, but the mosquitoes descended upon us like a plague, so we ended up pitching away from meadows on a long granite slab. Unfortunately that didn't do anything to deter the mosquitoes, so we ate quickly and had an early bedtime.
 
-To enter my tent I'd run 50 feet to the other end of our granite slab, temporarily discombobulating the cloud buzzing around me, then 50 feet back in the other direction, nosediving through as narrow of an opening in my its entryway as I could make.
+To enter my tent I'd run 50 feet to the other end of our granite slab, temporarily discombobulating the cloud buzzing around me, then 50 feet back in the other direction, nosediving through as narrow of an opening in its entryway as I could make.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/evolution-valley-4" "https://www.dropbox.com/scl/fi/6sfkby44lrjy2ah6liw8x/2W4A4163-the-hermit.JPG?rlkey=elnlxx2mbe3ryky4qudb4dbrh&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -228,11 +230,11 @@ To enter my tent I'd run 50 feet to the other end of our granite slab, temporari
 
 ## Day 6, Muir Pass (#day-6)
 
-We hadn't spotted anyone around our camping are the previous day and had assumed that we were largely alone up there, but the next morning we find a surprising number of backpackers passing us in both directions, suggesting that they must've camped nearly (or gotten up very early). We're a little slow in packing up camp and I use the opportunity to try and dry clothes on our giant rock slab and array a bank of solar panels I'd brought along to recharge my general purpose battery pack.
+We hadn't spotted anyone around our camping are the previous day and had assumed that we were largely alone up there, but the next morning we find a surprising number of backpackers passing us in both directions, suggesting that they must've camped nearly (or gotten up very early). We're a little slow in packing up camp and I use the opportunity to try and dry clothes on our giant rock slab and array a bank of solar panels I'd brought along to recharge my battery pack.
 
-Perhaps unsurprisingly, I've found that I've vastly overestimated my power requirements for the trip, and could've left the solar panels at home. I've been reading a Kindle every night before bed, but it's still at 90%+ charge. My iPhone in airplane mode has been holding a steady 40-60% charge for three days now. My camera and headlamp could've probably made the whole trip without a recharge. Low-power chips, LED lights, and lithium batteries have made backpacking much easier than it used to be, but I'm still spending an inordinate amount of time monitoring power levels that can only be explained by a creeping digital addiction to which we've all fallen prey.
+Perhaps unsurprisingly, I've found that I've vastly overestimated my power requirements for the trip, and could've left the solar panels and even the power bank at home. I've been reading a Kindle every night before bed, but it's still at 90%+ charge. My iPhone in airplane mode has been holding a steady 40-60% charge for three days now. My camera and headlamp could've made the whole trip without a recharge. Low-power chips, LED lights, and lithium batteries have made backpacking easier than it used to be, but I'm still spending an unreasonable amount of time monitoring power levels that can only be explained by a creeping digital addiction to which the entire world has fallen prey.
 
-Today, another pass, once again decorated by alpine lakes. This one is named for the man himself: Muir Pass.
+Today, another pass, once again decorated by alpine lakes. This one named for the man himself: Muir Pass.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-01" "https://www.dropbox.com/scl/fi/rix84r8yjmrkr5azd458d/2W4A4189.JPG?rlkey=lilywazz3y04r9i0fc3iz4xbi&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -256,7 +258,7 @@ Today, another pass, once again decorated by alpine lakes. This one is named for
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-11" "https://www.dropbox.com/scl/fi/vp9gyiepbnmsztljpdqpa/2W4A4241.JPG?rlkey=gg965ypckiof5k1bj3j9umscb&dl=1" 1200}}" loading="lazy"></figure>
 
-At the top of the pass is the John Muir Memorial Shelter, built 1931 to commemorate Muir and serve as an emergency shelter for high-reaching climbers. I wasn't expecting it to be so thoroughly well-built, cut from the very stone surrounding it. Ten hurricanes could roll through here and it'd still be standing.
+At the top of the pass is the John Muir Memorial Shelter, built 1931 to commemorate Muir and serve as an emergency shelter for high-reaching climbers. I wasn't expecting it to be so thoroughly well-built, cut from the very stone surrounding it. Ten hurricanes could roll through and it'd still be standing.
 
 I meet a solo backpacker in her early 20s inside who tells me that the hut represents the exact halfway point of the JMT and her trip. It's a popular place to meet and greet, and some of our party spends some time inside shooting the breeze with other hikers.
 
@@ -266,15 +268,15 @@ I meet a solo backpacker in her early 20s inside who tells me that the hut repre
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-hut-construction" "https://www.dropbox.com/scl/fi/a032osdgq2trl4p7c79tz/muir-hut-construction.jpg?rlkey=4lgks9hw04q7cryg28d1swc97&dl=1" 435}}" loading="lazy"></figure>
 
-I hike without poles or microspikes, something that used to be perfectly normal for almost all of human history, but which has become unusual in the last decade or so.
+I hike without poles or microspikes, something that used to be perfectly normal for almost all of human history, but which has become unusual in the last decade or so. Suspicious even.
 
-Other backpackers in the hut warn for 47th time this trip that without these critical tools I'm a dead man. You hear me? DEAD. It is simply not humanly possible to cross a patch of 50 feet of slushy snow unaided by modern technology. Would you go up Everest without oxygen you crazy f*k? I nod solemnly and say that I've accepted my fate. Could they please say a nondemoninational prayer for me once they reach the other side.
+Other backpackers in the hut warn for 47th time this trip that without these critical tools I'm a dead man. You hear me? DEAD. It is simply not humanly possible to cross a patch of 50 feet of slushy snow unaided by modern technology. Would you go up Everest without oxygen too you nutcase? I nod solemnly and say that I've accepted my fate. Could they please say a nondemoninational prayer for me once they reach the other side.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-14" "https://www.dropbox.com/scl/fi/po8aww8g0rilpffqvpj4b/2W4A4288.JPG?rlkey=1ea3v0x9vry8rephcbuyr5cao&dl=1" 1200}}" loading="lazy"></figure>
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-15" "https://www.dropbox.com/scl/fi/qevoqkwjn55q136tfy1gn/2W4A4290.JPG?rlkey=7a223z3olbdwbpgv595bg0ioy&dl=1" 1200}}" loading="lazy"></figure>
 
-Now that gravity's on our side again, some members of our crew find shortcuts down the mountain.
+Now that gravity's on our side again, some members of our crew take advantage of natural shortcuts down the mountain.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-16" "https://www.dropbox.com/scl/fi/ryb1dj6is0cg6adjnbswz/2W4A4317-rob.JPG?rlkey=px79nr0gcjmwzhfpnflpelcuy&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -282,7 +284,7 @@ Now that gravity's on our side again, some members of our crew find shortcuts do
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-18" "https://www.dropbox.com/scl/fi/lipkshiuo7gaxzns2zxdy/2W4A4321.JPG?rlkey=cju7pebw4lmffnbsyclg4krf8&dl=1" 1200}}" loading="lazy"></figure>
 
-Although finally on the descent, we still have quite a long way to go and are racing the clock to make a good campsite before sunset. Part of this is our late start, but we also seem to be very good at pacing our days so that we use every last minute of daylight. Not a bad thing necessarily, but it necessitates a quick march for the last few miles to make sure we're not setting up our tents by headlamp.
+Although finally on the descent, we still have quite a long way to go and are racing the clock to make a good campsite before sunset. Part of this is our late start, but we also seem to be very good at pacing our days so that we use every last minute of daylight. Not a bad thing necessarily, but necessitates a quick march for the last few miles to make sure we're not setting up our tents by headlamp.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-19" "https://www.dropbox.com/scl/fi/fi78w3gnyiaze73qs20kd/2W4A4324.JPG?rlkey=4ersdg9sxg8lsr6bb3c53rfql&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -290,9 +292,9 @@ Although finally on the descent, we still have quite a long way to go and are ra
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-21" "https://www.dropbox.com/scl/fi/qsgv9iohbq1knf9t39st5/2W4A4333-tree.JPG?rlkey=zmk3fo8d7upaogczlh3lnx15b&dl=1" 1200}}" loading="lazy"></figure>
 
-We find a campsite near the river that's a stone throw's distance away from a ranger cabin. With a long day behind us and mosquitoes bad again, we allow ourselves the luxury of a campfire, which is permitted again now that we're back below 10,000 feet. It's a huge hit and helps keep the bugs away. For the first time in many days, we stay up later than 9 PM.
+We find a campsite near the river that's a stone throw's distance away from a ranger cabin. With a long day behind us and mosquitoes bad again, we allow ourselves the luxury of a campfire, which is permitted again now that we're back below 10,000 feet. It's a huge hit and helps keep the bugs away. For the first time since the trip's beginning, we stay up later than 9 PM.
 
-After a week's discourse on how our backpacks are too heavy and on our various investments in ultralight equipment, Rob breaks out Laphroaig, which he's been carrying in the kind of steel flask seen in movies that's so robust that carried in your breastpocket, after someone shoots you in the chest with anything smaller than a .500 Magnum you can briefly pretend to be dead, only to jump back into action as it turns out the heavily fortified flask absorbed the entire force of the bullet(s). Carefully hefting it in one hand, I estimate that it weighs roughly the same as an entry-level Toyota Corolla.
+After a week's discourse on how our backpacks are too heavy and on our various investments in ultralight equipment, Rob breaks out Laphroaig, which he's been carrying in the kind of steel flask so robust that carried in your breastpocket, you could take a bullet from anything smaller than a .500 Magnum, briefly pretend to be dead, only to jump back into action as it turns out the heavily fortified flask absorbed the entire force. Hefting it in one hand, I estimate that it weighs roughly the same as a Toyota Corolla.
 
 <hr>
 
@@ -322,7 +324,7 @@ On our way up we encounter yet another broken bridge. This one's even more probl
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/bishop-pass-09" "https://www.dropbox.com/scl/fi/jkdvgb27cqosprbykz6j6/2W4A4365-bridge.JPG?rlkey=9xxkxdyrxrenu9otlbgz3qj5w&dl=1" 1200}}" loading="lazy"></figure>
 
-We opt to go up and over a series of rocks twenty feet above, giving us a little extra span to catch ourselves in case of a fall, but which in retrospect, is safer than the broken bridge by only the most marginal possible extent.
+We opt to go up and over a series of rocks twenty feet above, giving us a little extra span to catch ourselves in case of a fall, but which in retrospect, is _maybe_ safer than the broken bridge by only the most marginal possible extent, and probably not at all.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/bishop-pass-10" "https://www.dropbox.com/scl/fi/ax7yg1ibowhdxsbt5gyfu/2W4A4366.JPG?rlkey=p1593czudmkfzhploy3lrz9g7&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -336,21 +338,21 @@ The day is our longest day so far, with 4,000 feet of elevation gain on the way 
 
 <hr>
 
-This is when we commit our greatest error of the trip. We collect our resupply buckets at Parchers, but everyone had been looking forward to a preferrably-very-unhealthy meal not cooked on a camp stove, which their website seemed to indicate would be available there, but wasn't. We decided to catch a ride down into the town of Bishop -- two of us wanted to end their trip after this leg, and would have to go there anyway. We were warned that because this was festival weekend in Bishop (coinciding with Labor Day), accommodation might be hard to find, but were stuck in an awkward place because with zero cellular connectivity in the area (and Parchers unwilling to give us their wifi password), we couldn't check for accommodation in Bishop without actually _going_ to Bishop.
+This is when we commit a great error. We collect our resupply buckets at Parchers, with everyone looking forward to a preferrably-very-unhealthy meal not cooked on a camp stove, which their website seemed to indicate would be available there, but wasn't. We decided to catch a ride down into the town of Bishop -- two of us wanted to end their trip after this leg, and would have to go there anyway. We were warned that because this was festival weekend in Bishop (coinciding with Labor Day), accommodation might be hard to find, but were stuck in an awkward place because with zero cellular connectivity in the area (and Parchers unwilling to give us their wifi password), we couldn't check for accommodation in Bishop without actually _going_ to Bishop.
 
-In Bishop we find the very unhealthy meal that we were looking for, but find that accommodation is indeed a problem, and a big one. We're initially surprised by how tight accommodation seems to be despite a littany of motels in every direction, but in the age of Expedia, Kayak, AirBnB, Hotels.com, and Hotwire, assume that it's only a matter of time until we find something. But over the next two hours it dawns on us that there is _nothing_, not one room, campsite, or cupboard in a hundred miles in any direction. Not only that, but there's also no Lyft, Uber, or even taxis. Not only that, but it's the long weekend, so there's also no shuttles to anywhere else in the next two days. Not only that, but no car rental agencies are open, and even if they were, won't allow a one-way rental at any price. By the time 10 PM rolls around, we're sitting in a bar with heavy backpacks, full resupply buckets, and no prospects. The mood is grim.
+In Bishop we find the very unhealthy meal that we were looking for, but find that accommodation isn't just a problem, but an existential one. We're initially surprised by how tight accommodation seems to be despite a littany of motels in every direction, but in the age of Expedia, Kayak, AirBnB, Hotels.com, and Hotwire, assume that it's only a matter of time until we find something. Over the next two hours it dawns on us that there is _nothing_, not one room, campsite, or cupboard in a hundred miles in any direction. Not only that, but there's also no Lyft, Uber, or even taxis. _Not only that_, but it's the long weekend, so there's also no shuttles to anywhere else in the next two days. **Not only that**, but no car rental agencies are open, and even if they were, won't allow a one-way rental at any price. By the time 10 PM rolls around, we're sitting in a bar with heavy backpacks, full resupply buckets, and no prospects. The atmosphere is grim.
 
 <hr>
 
-The good news is that it's a small town and people are nice. Our server gives us exhaustive local advice, and the bar's owner lets us store our resupply buckets there overnight. In a moment of desperation Rob and Farina walk into the local police precinct and feed them the line, "look, we're not trying to break any laws, but say you had a hypothetical situation that was so dire that the only available option was to camp in a public park ..." The officer, showing small town civility, tells them that in this hypothetical situation, if caught, the infractors would be told to move along, something that backpackers are fairly well known to do anyway.
+The good news is that it's a small town and people are nice. Our server gives us exhaustive local advice, commiserates with our plight, and the bar's owner lets us store our resupply buckets there overnight. In a moment of desperation Rob and Farina walk into the local police precinct and feed them the line, "look, we're not trying to break any laws, but say you had a hypothetical situation that was so dire that the only available option was to camp in a public park ..." The officer, showing small town civility, tells them that in this hypothetical situation, if caught, the infractors would be told to move along, something that backpackers are fairly well known to do anyway.
 
 There's BLM (Bureau of Land Management) land five miles out of the city, but with no transport available of any kind, we have no way to get to it. Besides the nearest public park, our one remaining prospect is to see if we can camp on the fairgrounds, which the internet seems to suggest is possible. We start walking that direction, even as we're still making phonecalls to motels to confirm that there's indeed really-absolutely-nothing-available. Farina stops in at one last hotel and the staff there help him call a municipal shuttle that seems to still be running. The shuttle driver answers the phone and tells us that he's coming to pick us up. This is excellent news, except that no one is exactly sure where we're being picked up to go _to_.
 
 He arrives and introduces himself as "Nightrider". It's the shortest shuttle trip of our lives. Nightrider drives us a mile outside of town (which takes less than a minute), points to a field along which a number of RVs are parked (and appear to have been for quite some time), and assures this that this is where he's taken backpackers to sleep before. He points to an RV. See that? That's John. Great guy!
 
-As we get out, he looks us in the eye, and says solemnly, "Look, if anybody gives you any trouble, just tell them Nightrider sent you." Not a hint of a smile is cracked. He is dead serious. After we're safely unloaded, he given us one final nod before he peels away and races off into the night.
+As we get out, he looks us in the eye, and says solemnly, "Look, if anybody gives you any trouble, just tell them: Nightrider sent you." Not a hint of a smile is cracked. He is dead serious. After we're safely unloaded, he given us one final nod before he peels away and races off into the night.
 
-Farina rigs up a tarp using a complex series of intricate folds and knots that'd make a grandmaster Scout Leader cry. The rest of us crack a beer and pretend this isn't happening. Half an hour later, still incredulous at the absurdity of the situation, we crawl under the tarp and try to sleep.
+Farina rigs up a tarp using a complex series of intricate folds and knots that'd make a grandmaster Scout Leader cry. The rest of us crack a beer and pretend this isn't happening. Half an hour later, still incredulous at the absurdity of the situation, we crawl under the tarp and pretend to sleep.
 
 <hr>
 
@@ -358,14 +360,16 @@ Farina rigs up a tarp using a complex series of intricate folds and knots that'd
 
 Something I learn about Bishop -- it's windy. _Really_ windy. We sleep, but with a galeforce that seems to blowing at 100 MPH all night, not well, waking up tired and demoralized. (Well, except Farina, who woke up at the crack of dawn to see what advice he could procure over an omelette at the local Denny's.)
 
-We break camp and go find breakfast. After more smartphoning we come to realize that there's no way out of this town for at least two more days after the end of the holiday weekend. No way out _except_ for one last flight at 2 PM to SFO before the leg ends for the entire season. Impulsively, two of the party book tickets immediately, and after some hesitation, the rest of us do too.
+We break camp and go find breakfast. After more smartphoning we come to realize that there's no way out of this town for at least two more days after the end of the holiday weekend. No way out _except_ for one last flight at 2 PM to SFO before the leg ends for the entire season. Impulsively, we all book tickets immediately.
 
 Homeless and barely awake, the thought of hitchhiking our way back up to the trailhead and hiking all the way back over Bishop Pass to continue our journey is hard to swallow right now. Farina's backpacking spirit is indomitable and he'll do it, but with a planeride I have to catch next week to Charleston acting as a hard ratchet on our schedule, and with just about the worst night of sleep I've ever had, I'm hesitant.
 
-We've become acquaintances with a young Norwegian PCTer. Although not traveling with him, everywhere we go, he's already there, and we use his omnipresence to our advantage to hand off as many of our extra supplies as he's willing to take. Farina's trademarked snack is Target trail mix with sunflower seeds mixed in to fill gaps and maximize caloric density. After a short sales pitch, he donates a few gallons of the stuff, and from the look of the PCTer who's a skinny 150 lbs. of sinewy muscle, he could use every calorie in there. He had the same accommodation woes that we did and tells us that he did camp at the fairgrounds last night. It worked, but it was extremely loud and he slept as well as we did.
+We've become acquaintances with a young Norwegian PCTer. Although not traveling with him, everywhere we go, he's already there, and we use his omnipresence to our advantage to hand off as many of our extra supplies as he's willing to take. Farina's trademarked snack is Target trail mix with sunflower seeds mixed in to fill gaps and maximize caloric density. After a short sales pitch, he donates a few gallons of the stuff, and from the look of the PCTer who's a skinny 150 lbs. of sinewy muscle, he could use every calorie. He had the same accommodation woes that we did and tells us that he did camp at the fairgrounds last night. He survived, but it was extremely loud and he slept as well as we did.
 
 Bishop's airport is the smallest I've ever seen. We make friends with another backpacker from Sonoma on the way there, and talk about film cameras and black bears before a one-hour flight home that compared to last night, feels a little _too_ easy.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/airport-1" "https://www.dropbox.com/scl/fi/dcm0ijrrwy2w4djj7lzbc/2W4A4396.JPG?rlkey=erdfranuwnsqats4qi9cb2aec&dl=1" 1200}}" loading="lazy"></figure>
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/airport-2" "https://www.dropbox.com/scl/fi/dakomzv00w8z6d8dxu7xs/2W4A4403-cropped.jpg?rlkey=z0pgxabfzbxm8pdbzw2kyw40q&dl=1" 1200}}" loading="lazy"></figure>
+
+And in an unexpected twist, a week later, we're back in Bishop to climb Mount Whitney and finish the trip. To be continued.
