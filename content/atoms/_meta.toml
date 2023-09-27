@@ -11,6 +11,25 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-09-27T11:04:34-07:00
+  description = """\
+I recently switched this site back over to use a [custom built ImageMagick binary](https://github.com/brandur/sorg/commit/65eadb02e037aeb7e29e7658f1ad5c3c04ce7a82). I had to move off of it a while back after the binary I built started producing this perplexing error:
+
+```
+$ /home/runner/imagemagick/bin/magick identify -list format
+/home/runner/imagemagick/bin/magick: symbol lookup error: /home/runner/imagemagick/bin/magick: undefined symbol: heif_deinit
+```
+
+I'd prefer to be using ImageMagick's mainline release of course, but for reasons I don't completely understand, there's a broad refusal to include HEIC support out of the box, thus the custom build.
+
+The error above is impressively bad, but through brute force trial and error, I was eventually able to track it down to the use of an outdated `libheif-dev`. `libheif-dev`'s a package that wasn't traditionally included in default APT sources, so I'd been getting it from the third party `strukturag` repository. Removing the third party repository sourced a newer version of `libheif-dev` and fixed the problem.
+
+What's a little mystifying is how hard all of this is, still. A HEIC-friendly ImageMagick is hard to come by, and googling these problems uncovers little. But HEIC's a common format that's been in use for years on about half the world's smartphones, and by extension, about half the world's cameras. You'd think that by now that there'd be more demand for working with this extremely common image format.
+
+My off the cusp hypothesis is that the fact that there isn't goes to show just how few people are building anything on their own these days. All the popular social and photography platforms handle HEIC transparently for you to the point where probably 99.9+% of its users have no idea they're even using it. Probably inevitable, but not a hopeful sign for a less consolidated future.
+"""
+
+[[atoms]]
   published_at = 2023-09-27T10:33:25-07:00
   description = """\
 I've previously written about [io_uring](https://en.wikipedia.org/wiki/Io_uring), possibly one of the more exciting kernel developments in recent memory, aiming to improve the performance of fundamental I/O operations.
