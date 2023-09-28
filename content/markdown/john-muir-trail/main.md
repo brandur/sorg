@@ -262,7 +262,7 @@ Today, another pass, once again decorated by alpine lakes. This one named for th
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-11" "https://www.dropbox.com/scl/fi/vp9gyiepbnmsztljpdqpa/2W4A4241.JPG?rlkey=gg965ypckiof5k1bj3j9umscb&dl=1" 1200}}" loading="lazy"></figure>
 
-At the top of the pass is the John Muir Memorial Shelter, built in 1931 to commemorate Muir and serve as an emergency shelter for high-reaching climbers. I wasn't expecting it to be so thoroughly well-built, cut from the very stone surrounding it. Ten hurricanes could roll through and it'd still be standing.
+At the top of the pass is the John Muir Memorial Shelter, built in 1931 to commemorate Muir and serve as an emergency shelter for high-reaching climbers. I wasn't expecting it to be so thoroughly well-constructed, cut from the very stone surrounding it. Ten hurricanes could roll through and it'd still be standing.
 
 I meet a solo backpacker in her early 20s inside who tells me that the hut represents the exact halfway point of the JMT and her trip. It's a popular place to meet and greet, and some of our party spends some time inside shooting the breeze with other hikers.
 
