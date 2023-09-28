@@ -70,7 +70,7 @@ Once reaching the campground every one of us orders one last burger (except Umur
 
 <hr>
 
-## Day 3, exogenic moisture (#day-3)
+## Day 3, exogenic (#day-3)
 
 Day 3 is really day 1, where the trip gets real and we start hiking long distances. We say goodbye to Umur, the car, and heavy luxuries like our cast iron pan, camp chairs, and dignity, and get hiking.
 
