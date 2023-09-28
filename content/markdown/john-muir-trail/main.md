@@ -174,7 +174,7 @@ We pass a fallen giant that someone's helpfully analyzed and labeled to be 186 y
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-7" "https://www.dropbox.com/scl/fi/2lbj6fx44i3xtnp393gt2/2W4A4080.JPG?rlkey=bn40uw400ruiotik0kqlb31fl&dl=1" 1200}}" loading="lazy"></figure>
 
-It was a long day and we arrive at our campsite along the gushing Piute River in the last hour of daylight. We laud ourselves on almost 20 miles walked when a guy comes in who tells us that he's just done 30 miles -- effectively hiking the same distance that we did in two days in one. None of us wants to hear it. Go outta here guy!
+It was a long day and we arrive at our campsite along the gushing Piute River in the last hour of daylight. We laud ourselves on almost 20 miles walked when a guy comes in who tells us that he's just done 30 miles -- effectively hiking the same distance that we did in two days in one. None of us wants to hear it. Get outta here guy!
 
 Golden hour out here is tremendous, with the valleys having already fallen into mostly darkness, but with the final rays of the sun still illuminating the mountainsides. Here's the Pavilion Dome, towering above us.
 
