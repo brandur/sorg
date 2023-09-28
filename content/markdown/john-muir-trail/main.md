@@ -186,7 +186,7 @@ The days and nights are now a little cooler. Farina isn't jumping into as many r
 
 <hr>
 
-## Day 5, San Walkin' (#day-5)
+## Day 5, San walkin' (#day-5)
 
 Our big job of the day will be to make it across the San Joaquin, which in previous years had a bridge across it, but one that was destroyed this season by higher than normal water flow.
 
