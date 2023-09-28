@@ -352,7 +352,7 @@ There's BLM (Bureau of Land Management) land five miles out of the city, but wit
 
 He arrives and introduces himself as "Nightrider". It's the shortest shuttle trip of our lives. Nightrider drives us a mile outside of town (which takes less than a minute), points to a field along which a number of RVs are parked (and appear to have been for quite some time), and assures this that this is where he's taken backpackers to sleep before. He points to an RV. See that? That's John. Great guy!
 
-As we get out, he looks us in the eye, and says solemnly, "Look, if anybody gives you any trouble, just tell them: Nightrider sent you." Not a hint of a smile is cracked. He is dead serious. After we're safely unloaded, he given us one final nod before he peels away and races off into the night.
+As we get out, he looks us in the eye, and says solemnly, "Look, if anybody gives you any trouble, just tell them: Nightrider sent you." Not a hint of a smile is cracked. He is dead serious. After we're safely unloaded, he given us one final nod before peeling away and racing off into the night.
 
 Farina rigs up a tarp using a complex series of intricate folds and knots that'd make a grandmaster Scout Leader cry. The rest of us crack a beer and pretend this isn't happening. Half an hour later, still incredulous at the absurdity of the situation, we crawl under the tarp and pretend to sleep.
 
@@ -360,17 +360,17 @@ Farina rigs up a tarp using a complex series of intricate folds and knots that'd
 
 ## Day 8, tactical retreat (#day-8)
 
-Something I learn about Bishop -- it's windy. _Really_ windy. We sleep, but with a galeforce that seems to blowing at 100 MPH all night, not well, waking up tired and demoralized. (Well, except Farina, who woke up at the crack of dawn to see what advice he could procure over an omelette at the local Denny's.)
+Something I learn about Bishop -- it's windy. _Really_ windy. We sleep, but with a galeforce that seems to blow at 100 MPH all night, not well, waking up tired and demoralized. (Except Farina, who woke up at the crack of dawn to see what advice he could procure over an omelette at the local Denny's.)
 
-We break camp and go find breakfast. After more smartphoning we come to realize that there's no way out of this town for at least two more days after the end of the holiday weekend, opening the possibility of two more sleepless nights in a random field somewhere. No way out _except_ for one last flight at 2 PM to SFO before the leg ends for the entire season.
+We break camp and go find breakfast. After more smartphoning we come to realize that there's no way out of this godforsaken town for at least two more days after the end of the holiday weekend, opening the possibility of two more sleepless nights in a random field somewhere. No way out _except_ for one last flight at 2 PM to SFO before the leg ends for the entire season.
 
-Homeless and barely awake, the thought of hitchhiking our way back up to the trailhead and hiking all the way back over Bishop Pass to continue our journey is hard to swallow right now. Farina's backpacking spirit is indomitable and he'll do it, but with a planeride I have to catch next week to Charleston acting as a hard ratchet on our schedule, and with just about the worst night of sleep I've ever had and a promise of more to come, I'm hesitant.
+Homeless and barely awake, the thought of hitchhiking our way back up to the trailhead and hiking all the way back over Bishop Pass to continue our journey is hard to swallow right now. Farina's backpacking spirit is indomitable and he'll do it, but with a planeride I have to catch next week to Charleston acting as a hard ratchet on our schedule, and with just about the worst night of sleep I've ever had and a promise of more to come, I'm hesitant. The other two are definitively out.
 
 Impulsively, we all book tickets immediately.
 
-We've become acquaintances with a young Norwegian PCTer. Although not traveling with him, everywhere we go, he's already there. He gets to each new location first, so doesn't appear to be following us, but we start to wonder if we're somehow unwittingly following him.
+We've become acquaintances with a young Norwegian PCTer. Although not traveling with him, everywhere we go, he's already there. He gets to each new location first, so doesn't appear to be following us, but we start to wonder if we're somehow unwittingly following _him_. The 2nd and 3rd time we arrive somewhere and he's already there, it's exciting to see a familiar face and we yell "yoo dude it's you!" The 4th, 5th, and 6th time it defies belief and is progressively more unlikely and funny. At 7+ it gets kind of weird.
 
-We use his omnipresence to our advantage to hand off as many of our extra supplies as he's willing to take. Farina's trademarked snack is Target trail mix with sunflower seeds mixed in to fill gaps and maximize caloric density. After a short sales pitch, he donates a few gallons of the stuff, and from the look of the PCTer who's a skinny 150 lbs. of sinewy muscle, he could use every calorie. He had the same accommodation woes that we did and tells us that he did camp at the fairgrounds last night. He survived, but it was extremely loud and he slept about as well as we did.
+We use his omnipresence to our advantage to hand off as many of our extra supplies as he's willing to take. Farina's trademarked snack is Target trail mix with sunflower seeds mixed in to fill gaps and maximize caloric density. After a short sales pitch, he donates a few gallons of the stuff along with some vials of olive oil (intended to be drank on their own like a tequila shot), and from the look of the PCTer who's a skinny 150 lbs. of sinewy muscle, he could use every calorie. He had the same accommodation woes that we did and tells us that he camped at the fairgrounds last night. He survived, but it was extremely loud and he slept about as well as we did.
 
 Bishop's airport is the smallest I've ever seen. We make friends with another backpacker from Sonoma on the way there, and talk about film cameras and black bears before a one-hour flight home that compared to last night, feels a little _too_ easy.
 
