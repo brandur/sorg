@@ -120,7 +120,7 @@ We go up over Seldon Pass, passing by many beautiful alpine lakes. Marshall Lake
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/seldon-pass-08" "https://www.dropbox.com/scl/fi/rdiwfygtxv3plauweivox/2W4A3966.JPG?rlkey=dl26ceqtc15lhwms7cwh44foe&dl=1" 1200}}" loading="lazy"></figure>
 
-We eat lunch at the top of the pass, meeting Keith, a PCTer who we've been intermittently passing and being passed by all day, and another fellow from Glasgow.
+We eat lunch at the top of the pass, meeting Keith (not pictured), a PCTer who we've been intermittently passing and being passed by all day, and another fellow from Glasgow.
 
 After a previous bad experience with marmots, Rob doesn't like marmots, and spends as much time chasing them away from his pack as he does eating food. The marmots go hungry, temporarily, but appear unconcerned as they wait for the next ~~victim~~ hiker to come through.
 
@@ -342,7 +342,7 @@ The day is our longest day so far, with 4,000 feet of elevation gain on the way 
 
 <hr>
 
-Now we commit a grave error. We collect our resupply buckets at Parchers, and after many 6,000+ kcal days, everyone looking forward to a preferrably-very-unhealthy meal not cooked on a camp stove, which their website seemed to indicate would be available there, but wasn't. In pursuit of unhealthy food, we decide to catch a ride down into the town of Bishop. We were warned that because this was festival weekend in Bishop (coinciding with Labor Day), accommodation might be hard to find, but were stuck in an awkward place because with zero cellular connectivity (and Parchers unwilling to give us their wifi password), we couldn't check for accommodation in Bishop without actually _going_ to Bishop.
+Now we commit a grave error. We collect our resupply buckets at Parchers, and after many 6,000+ kcal days, everyone is looking forward to a preferrably-very-unhealthy meal not cooked on a camp stove, which the Parchers website seemed to indicate would be available there, but wasn't. In pursuit of unhealthy food, we decide to catch a ride down into the town of Bishop. We were warned that because this was festival weekend in Bishop (coinciding with Labor Day), accommodation might be hard to find, but were stuck in an awkward place because with zero cellular connectivity (and Parchers unwilling to give us their wifi password), we couldn't check for accommodation in Bishop without actually _going_ to Bishop.
 
 In Bishop we find the very unhealthy meal that we were looking for, but also that accommodation isn't just a problem, but an existential one. We're initially surprised by how tight it is despite a littany of motels in every direction, but in the age of Expedia, Kayak, AirBnB, Hotels.com, and Hotwire, assume that it's only a matter of time until we snipe something. Over the next two hours it dawns on us that there is _nothing_, not one room, campsite, or cupboard. Not a hundred miles in any direction. Not only that, but there's also no Lyft, Uber, or even taxis. _Not only that_, but it's the long weekend, so there's also no shuttles to anywhere else in the next two days. **Not only that**, but no car rental agencies are open, and even if they were, won't allow a one-way rental at any price. By the time 10 PM rolls around, we're sitting in a bar with heavy backpacks, full resupply buckets, and no prospects. Our situation is grim.
 
