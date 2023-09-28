@@ -196,7 +196,7 @@ We found that someone had thoughtfully built a cairn near a good crossing point,
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/san-joaquin-1" "https://www.dropbox.com/scl/fi/08frjq3o2aj6z8uyzgbiz/2W4A4094.JPG?rlkey=829gr61xpkpacxfpazmxrj29n&dl=1" 1200}}" loading="lazy"></figure>
 
-A team of National Forest Service employees had set up camp in the area so they could work towards clearing the remains of the bridge.
+A team from the National Forest Service had set up camp in the area so they could work towards clearing the remains of the bridge.
 
 Eager to demonstrate their bonafides as federal employees, they were unfriendly to a degree that seemed to indicate that they thought they were actors satirically playing their roles in an SNL skit, refusing to acknowledge basic greetings, and casting dangerous looks in our direction if we looked like we might be getting too close. They'd littered the area with vituperative signs to make it clear that _nothing_ resembling basic humanity should be expected under _any_ circumstances.
 
