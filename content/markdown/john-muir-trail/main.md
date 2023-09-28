@@ -100,7 +100,7 @@ Day 4 is our first major push of the entire trip, planned at 15 miles, but more 
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-3" "https://www.dropbox.com/scl/fi/ntlblx3rvatzp3h6h7ohk/2W4A3900-adjusted.jpg?rlkey=e6pmws7a47ddy8k2vg57qpm66&dl=1" 1200}}" loading="lazy"></figure>
 
-From left to right: Peter (PVH), Rob, Farina.
+From left to right: Peter (PVH), Rob, Farina. Despite an Italian last name, Farina is obviously not indulging in enough pizza and pasta. Despite a non-Italian last name, I am.
 
 We go up over Seldon Pass, passing by many beautiful alpine lakes. Marshall Lake and Marie Lake on the way up. Heart Lake and Sallie Keys Lake on the way down.
 
