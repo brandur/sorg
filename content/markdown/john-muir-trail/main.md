@@ -64,7 +64,7 @@ I find my most epic tent pitch of the entire trip. If you're going to visit Beve
 
 We hike into the Mono Hot Springs campground for dinner and one last resupply. One half of our party gets lost on the way and runs into a large rattlesnake in the rocks, but we're in full barbarian mode now and no one is overly concerned about it.
 
-Once reaching the campground every one of us orders one last burger (except Umur, who orders a blackened fish fillet). Our waiter is an incredibly pleasant European from Prague that calls us all "sir", which feels overly formal for a bunch of vagrants wearing hiking pants and with zinc sunscreen slathered all over their face. We finish late and walk the mile back to camp by the light of our headlamps.
+Once reaching the campground every one of us orders one last burger (except Umur, who gets a blackened fish fillet). Our waiter is an incredibly pleasant European from Prague that calls us all "sir", which feels overly formal for a bunch of vagrants wearing hiking pants and with zinc sunscreen slathered all over their face. We finish late and walk the mile back to camp by the light of our headlamps.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-7" "https://www.dropbox.com/scl/fi/mj6uospz27nqfblzns3b4/2W4A3850.JPG?rlkey=ip3thh9ps98y451fqihdwjual&dl=1" 1200}}" loading="lazy"></figure>
 
