@@ -40,7 +40,7 @@ We swim in the lake before leaving. The air is warm. The water is refreshing, an
 
 ## Day 2, snakefront property (#day-2)
 
-The next day, after a hearty breakfast we drive back out of the campground to find parking along the feeder road. For the next two hours we search for a new freeform wilderness campsite for the night. We coin the term "Farinateering", which roughly means "bushwhacking in circles carrying heavy objects for many hours before eventually arriving at a destination that was 15 minutes from the road along a well-worn path". That's okay, none of us are here to take the easy way out.
+The next day, after a hearty breakfast we drive back out of the campground to find parking along the feeder road. For the next two hours we search for a new freeform wilderness campsite for the night. We coin the term "Farinateering", which roughly means "bushwhacking in circles carrying heavy objects like cast iron pans for many hours before eventually arriving at a destination that was 15 minutes from the road along a well-worn path". That's okay, none of us are here to take the easy way out.
 
 We decide to pitch along the shores of Doris Lake, midway between Lake Edison and the Mono Hot Springs.
 
@@ -64,7 +64,7 @@ I find my most epic tent pitch of the entire trip. If you're going to visit Beve
 
 We hike into the Mono Hot Springs campground for dinner and one last resupply. One half of our party gets lost on the way and runs into a large rattlesnake in the rocks, but we're in full barbarian mode now and no one is overly concerned about it.
 
-Once reaching the campground every one of us orders one last burger (except Umur, who gets a blackened fish fillet). Our waiter is an incredibly pleasant European from Prague that calls us all "sir", which feels overly formal for a bunch of vagrants wearing hiking pants and with zinc sunscreen slathered all over their face. We finish late and walk the mile back to camp by the light of our headlamps.
+Once reaching the campground every one of us orders one last burger (except Umur, who gets a blackened fish fillet). Our waiter is an incredibly pleasant European from Prague that calls us all "sir", which feels overly formal for a bunch of vagrants wearing hiking pants and with zinc sunscreen slathered all over their faces. We finish late and walk the mile back to camp by the light of our headlamps.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-7" "https://www.dropbox.com/scl/fi/mj6uospz27nqfblzns3b4/2W4A3850.JPG?rlkey=ip3thh9ps98y451fqihdwjual&dl=1" 1200}}" loading="lazy"></figure>
 
@@ -99,6 +99,8 @@ Day 4 is our first major push of the entire trip, planned at 15 miles, but more 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-2" "https://www.dropbox.com/scl/fi/j7pz736ncf52asakypnsu/2W4A3898.JPG?rlkey=3w6oxp2r4nq4yf5fla84y4gmf&dl=1" 1200}}" loading="lazy"></figure>
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-3" "https://www.dropbox.com/scl/fi/ntlblx3rvatzp3h6h7ohk/2W4A3900-adjusted.jpg?rlkey=e6pmws7a47ddy8k2vg57qpm66&dl=1" 1200}}" loading="lazy"></figure>
+
+From left to right: Peter (PVH), Rob, Farina.
 
 We go up over Seldon Pass, passing by many beautiful alpine lakes. Marshall Lake and Marie Lake on the way up. Heart Lake and Sallie Keys Lake on the way down.
 
