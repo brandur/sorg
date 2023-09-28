@@ -58,7 +58,7 @@ Rob investigates the feasibility of escaping the lake via bouldering a sheer gra
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-5-rob" "https://www.dropbox.com/scl/fi/hgwq4j6hr8u54yu8nc5cx/2W4A3838.JPG?rlkey=y5n7hjh6qxht0n70xokmtw2r9&dl=1" 1200}}" loading="lazy"></figure>
 
-I find my most epic tent pitch of the entire trip. If you're going to visit Beverly Hills Rock, please make sure to pick up a guest pass at the guard booth, pleb. This is top dollar lakefront property after all.
+I find my most epic tent pitch ever. If you're going to visit Beverly Hills Rock, please make sure to pick up a guest pass at the guard booth, pleb. This is top dollar lakefront property after all.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/doris-6-tent" "https://www.dropbox.com/s/kcma6526lv64eom/2W4A3841.JPG?dl=1" 1200}}" loading="lazy"></figure>
 
