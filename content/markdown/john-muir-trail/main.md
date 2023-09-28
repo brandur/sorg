@@ -274,7 +274,7 @@ I meet a solo backpacker in her early 20s inside who tells me that the hut repre
 
 I hike without poles or microspikes, something that used to be perfectly normal for almost all of human history, but which has become unusual in the last decade or so. Suspicious even.
 
-Other backpackers in the hut warn for 47th time this trip that without these critical tools I'm a dead man. You hear me? DEAD. It is simply not humanly possible to cross a patch of 50 feet of slushy snow unaided by modern technology. Would you go up Everest without oxygen too you nutjob? I nod solemnly and say that I've accepted my fate. Could they please say a nondemoninational prayer for me once they reach the other side.
+Other backpackers in the hut warn for 47th time this trip that without these critical tools I'm a dead man. You hear me? DEAD. It is simply not humanly possible to cross a patch of 50 feet of slushy snow unaided by modern technology. Would you go up Everest without oxygen too you f*ing nutjob? I nod solemnly and say that I've accepted my fate. Could they please say a nondemoninational prayer for me once they reach the other side.
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/muir-pass-14" "https://www.dropbox.com/scl/fi/po8aww8g0rilpffqvpj4b/2W4A4288.JPG?rlkey=1ea3v0x9vry8rephcbuyr5cao&dl=1" 1200}}" loading="lazy"></figure>
 
