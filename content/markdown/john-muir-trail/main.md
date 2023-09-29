@@ -20,11 +20,11 @@ We finish with a lopsided vehicle (the spare isn't full sized), but one that's d
 
 This first day is for driving, acclimatization, and for some of us to get used to our equipment. I haven't been backpacking in a long time, and am impressed by tech advances over the last two decades:
 
-* I'm carrying a full-sized freestanding tent that weighs only two pounds. It has UX features like poles and latch points that are color coordinated to maximize the ease and speed in which it can be assembled.
+* I'm carrying a full-sized freestanding tent that weighs only two pounds. It has UX features like poles and latch points that are color coordinated to maximize the ease and speed in which it can be assembled. With a little practice, I can put it together in two minutes flat.
 
 * I borrowed a modern air mattress (thanks Farina). It has two separate levels of valve granularity that let it to be easily inflated and deflated in two minutes each. It provides practically perfect insulation from the ground, helping to keep even the coldest of nights warm.
 
-* I borrowed an REI-brand lightweight down quilt (thanks Farina), which is like a sleeping bag with no bottom layer, but can be jammed back into its stuff sack in under a minute, a job that used to be an arduous ~5 minutes for the heavy synthetic sleeping bags that I used as a kid. Amazing.
+* I borrowed an REI-brand lightweight down quilt (thanks Farina), which is like a sleeping bag with no bottom layer (intended for use with a Therm-a-Rest so it's not needed), but can be jammed back into its stuff sack in under a minute, a job that used to be an arduous ~5 minutes for the heavy synthetic sleeping bags that I used as a kid. Amazing.
 
 That night we stop in for dinner at Vermillion's small cafe, and are treated to some ludicrously large fajitas (this appelation challenged by several members of our group who believe them to be more of a quesidilla). We're overcharged for beer, but buy some anyway. It's our last opportunity for this sort of luxury, along freerunning water and power for quite a while.
 
@@ -344,7 +344,7 @@ The day is our longest day so far, with 4,000 feet of elevation gain on the way 
 
 Now we commit a grave error. We collect our resupply buckets at Parchers, and after many 6,000+ kcal days, everyone is looking forward to a preferrably-very-unhealthy meal not cooked on a camp stove, which the Parchers website seemed to indicate would be available there, but wasn't. In pursuit of unhealthy food, we decide to catch a ride down into the town of Bishop. We were warned that because this was festival weekend in Bishop (coinciding with Labor Day), accommodation might be hard to find, but were stuck in an awkward place because with zero cellular connectivity (and Parchers unwilling to give us their wifi password), we couldn't check for accommodation in Bishop without actually _going_ to Bishop.
 
-In Bishop we find the very unhealthy meal that we were looking for, but also that accommodation isn't just a problem, but an existential one. We're initially surprised by how tight it is despite a littany of motels in every direction, but in the age of Expedia, Kayak, AirBnB, Hotels.com, and Hotwire, assume that it's only a matter of time until we snipe something.
+In Bishop we find the very unhealthy meal that we were looking for, but also that accommodation isn't just a problem, but an existential one. We're initially surprised by how tight it is despite a littany of motels in every direction, but with four experienced technologists and in the age of Expedia, Kayak, AirBnB, Hotels.com, and Hotwire, assume that it's only a matter of time until we snipe something.
 
 Over the next two hours it dawns on us that there is _nothing_, not one room, campsite, or cupboard. Not a hundred miles in any direction. Not only that, but there's also no Lyft, Uber, or even taxis. _Not only that_, but it's the long weekend, so there's also no shuttles to anywhere else in the next two days. **Not only that**, but no car rental agencies are open, and even if they were, won't allow a one-way rental at any price. By the time 10 PM rolls around, we're sitting in a bar with heavy backpacks, full resupply buckets, and no prospects. The situation is grim.
 
