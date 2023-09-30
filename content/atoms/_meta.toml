@@ -11,6 +11,24 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-09-29T18:09:32-07:00
+  description = """\
+Published a  photoblog of spending [a little over a week on the John Muir Trail](/john-muir-trail) in the Sierra Nevada. We ended up exiting earlier than planned, which was disappointing at the time, but we went back a couple weeks later to finish off the last segment.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/s/p28uu4qfs5wekcd/2W4A3947.JPG?dl=1"
+    slug = "john-muir-trail-1"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/rvg53f4g70k4plhrvllrx/2W4A3968.JPG?rlkey=m7muu5r4ddzzuhe9m9292v77x&dl=1"
+    slug = "john-muir-trail-2"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/iprqr12mk28ye463cq3bi/2W4A4181.JPG?rlkey=55hb3thwoc6aycjctbe2m997v&dl=1"
+    slug = "john-muir-trail-3"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/2qktq8sgq3529oiwej75y/2W4A4352.JPG?rlkey=9polsu2j4fbw16s11p21alpi4&dl=1"
+    slug = "john-muir-trail-4"
+
+[[atoms]]
   published_at = 2023-09-27T11:04:34-07:00
   description = """\
 I recently switched this site back over to use a [custom built ImageMagick binary](https://github.com/brandur/sorg/commit/65eadb02e037aeb7e29e7658f1ad5c3c04ce7a82). I had to move off of it a while back after the binary I built started producing this perplexing error:
