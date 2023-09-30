@@ -2266,9 +2266,9 @@ video {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.prose-figure\:-mx-\[50px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-  margin-left: -50px;
-  margin-right: -50px;
+.prose-figure\:-mx-\[100px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+  margin-left: -100px;
+  margin-right: -100px;
 }
 
 .prose-figure\:my-6 :is(:where(figure):not(:where([class~="not-prose"] *))) {
@@ -2276,8 +2276,8 @@ video {
   margin-bottom: 1.5rem;
 }
 
-.prose-figure\:w-\[calc\(100\%\+100px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
-  width: calc(100% + 100px);
+.prose-figure\:w-\[calc\(100\%\+200px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
+  width: calc(100% + 200px);
 }
 
 .prose-strong\:font-sans :is(:where(strong):not(:where([class~="not-prose"] *))) {
