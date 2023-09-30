@@ -360,7 +360,7 @@ There's BLM (Bureau of Land Management) land five miles out of the city, but wit
 
 He arrives and introduces himself. The name is Nightrider. It's the shortest shuttle trip of our lives. Nightrider drives us a mile outside of town (which takes less than a minute), points to a field along which a number of RVs are parked (and appear to have been for quite some time), and assures this that this is where he's taken backpackers to sleep before. He points to an RV. See that? That's John. Great guy!
 
-As we get out, he looks us in the eye, and says solemnly, "Look, if anybody gives you any trouble, just tell them: Nightrider sent you." Not a hint of a smile is cracked. He is dead serious. After we're safely unloaded, he given us one final nod before peeling away and racing off into the night.
+As we get out, he looks us in the eye, and says solemnly, "Look, if anybody gives you any trouble, just tell them: Nightrider sent you." Not a hint of a smile is cracked. He is dead serious. After we're safely unloaded, he gives us one final nod before peeling away and racing off into the night.
 
 Farina rigs up a tarp using a complex series of intricate folds and knots that'd make a grandmaster Scout Leader cry. The rest of us crack a beer and pretend this isn't happening. Half an hour later, still incredulous at the absurdity of the situation, we crawl under the tarp and try to sleep.
 
