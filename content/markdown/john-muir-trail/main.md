@@ -26,7 +26,7 @@ This first day is for driving, acclimatization, and for some of us to get used t
 
 * I borrowed an REI-brand lightweight down quilt (thanks Farina), which is like a sleeping bag with no bottom layer (intended for use with a Therm-a-Rest so it's not needed), but can be jammed back into its stuff sack in under a minute, a job that used to be an arduous ~5 minutes for the heavy synthetic sleeping bags that I used as a kid. Amazing.
 
-That night we stop in for dinner at Vermillion's small cafe, and are treated to some ludicrously large fajitas (this appelation challenged by several members of our group who believe them to be more of a quesidilla). We're overcharged for beer, but buy some anyway. It's our last opportunity for this sort of luxury, along freerunning water and power for quite a while.
+That night we stop in for dinner at Vermillion's small cafe, and are treated to some ludicrously large fajitas (this appelation challenged by several members of our group who believe them to be more of a quesidilla). We're overcharged for beer, but buy some anyway. It's our last opportunity for this sort of luxury, along with freerunning water and power for quite a while.
 
 Another camper stops by our site in the morning and tells us that she's been coming here for decades and it's the first time in many years that Lake Edison looks full and beautiful. Drought conditions in California have meant that it's been a long time since the area's looked this pretty.
 
