@@ -100,7 +100,7 @@ Day 4 is our first major push of the entire trip, planned at 15 miles, but more 
 
 <figure><img src="/photographs{{DownloadedImage .Ctx "/john-muir-trail/shooting-star-3" "https://www.dropbox.com/scl/fi/ntlblx3rvatzp3h6h7ohk/2W4A3900-adjusted.jpg?rlkey=e6pmws7a47ddy8k2vg57qpm66&dl=1" 1200}}" loading="lazy"></figure>
 
-From left to right: Peter (PVH), Rob, Farina. Despite an Italian last name, Farina is obviously not indulging in enough pizza and pasta. Despite a non-Italian last name, I am.
+From left to right: Peter (PVH), Rob, Farina. Despite an Italian last name, Farina is obviously not indulging in enough pizza and pasta. It's okay though, because despite a non-Italian last name, I've been picking up the slack.
 
 We go up over Seldon Pass, passing by many beautiful alpine lakes. Marshall Lake and Marie Lake on the way up. Heart Lake and Sallie Keys Lake on the way down.
 
@@ -372,7 +372,7 @@ Something I learn about Bishop -- it's windy. _Really_ windy. We sleep, but with
 
 We break camp and go find breakfast. After more smartphoning we come to realize that there's no way out of this godforsaken town for at least two more days after the end of the holiday weekend, opening the possibility of two more sleepless nights in a random field somewhere. No way out _except_ for one last flight at 2 PM to SFO before the leg ends for the entire season.
 
-Homeless and barely awake, the thought of hitchhiking our way back up to the trailhead and hiking all the way back over Bishop Pass to continue our journey is hard to swallow right now. Farina's backpacking spirit is indomitable and he'll do it, but with a planeride I have to catch next week to Charleston acting as a hard ratchet on our schedule, and with just about the worst night of sleep I've ever had and a promise of more to come, I'm hesitant. The other two are definitively out.
+Homeless and barely awake, the thought of hitchhiking our way back up to the trailhead and hiking all the way back over Bishop Pass to continue our journey is hard to swallow right now. Farina's backpacking spirit is indomitable and he'll do it, but with a plane ride I have to catch next week to Charleston acting as a hard ratchet on our schedule, and with just about the worst night of sleep I've ever had and a promise of more to come, I'm hesitant. The other two are definitively out.
 
 Impulsively, we all book tickets immediately.
 
