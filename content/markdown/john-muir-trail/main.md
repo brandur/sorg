@@ -234,7 +234,7 @@ Out of all the bugspray we brought, Farina's Eucalyptus-based solution is the on
 
 ## Day 6, Muir Pass (#day-6)
 
-We hadn't spotted anyone around our campsite are the previous day and had assumed that we were largely alone, but the next morning we find a surprising number of backpackers passing us in both directions, suggesting that they must've camped nearly (or gotten up very early). We're a little slow in packing up camp and I use the opportunity to try and dry clothes on our giant rock slab and array a bank of solar panels I'd brought along to recharge my battery pack.
+We hadn't spotted anyone around our campsite are the previous day and had assumed that we were largely alone, but the next morning we find a surprising number of backpackers passing us in both directions, suggesting that they must've camped nearby (or gotten up very early). We're a little slow in packing up camp and I use the opportunity to try and dry clothes on our giant rock slab and array a bank of solar panels I'd brought along to recharge my battery pack.
 
 Perhaps unsurprisingly, I've found that I've vastly overestimated my power requirements for the trip, and could've left the solar panels and even the power bank at home. I've been reading a Kindle every night before bed, but it's still at 90%+ charge. My iPhone in airplane mode has been holding a steady 40-60% charge for three days now. My camera and headlamp could've made the whole trip without a recharge. Low-power chips, LED lights, and lithium batteries have made backpacking easier than it used to be, but I'm still spending an unreasonable amount of time monitoring power levels that can only be explained by a creeping digital addiction to which the entire world has fallen prey.
 
