@@ -11,6 +11,26 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-04T11:54:27+02:00
+  description = """\
+Go's a great language, but every honest user would have to acknowledge that mistakes were made.
+
+Along with `time`'s magic date of Mon Jan 2, 2006 and the `database/sql` package, some of the biggest are `html/template` and `text/template`. Runtime-checked only, nesting logic that defies explanation, necessitating custom helpers to do perform operations so basic as adding two numbers together, and some of the worst docs ever written.
+
+I was glad to discover that someone's trying to write an alternative: [Templ](https://templ.guide/). It produces a hierarchy of nested partial views similar to React apps, and generates Go code in a way reminiscent of sqlc.
+
+I tried it on a toy project and got to something workable quickly. It's a fairly new project and has rough edges:
+
+* No line numbers in case of problems, making debugging difficult.
+
+* No equivalent to Gofmt for `*.templ` files, so you're back micromanaging whitespace and manually fixing imports.
+
+* Lots of regenerating code on changes. [There's a subcommand](https://templ.guide/commands-and-tools/hot-reload) that'll watch the disk, regenerate, and restart a command, but your success in integrating with this will vary wildly.
+
+Still, a lot to be optimistic about. Go's viability for writing an HTML-based web app that's _sustainable_ is still very low, and it'd be great to see that change.
+"""
+
+[[atoms]]
   published_at = 2023-09-29T18:09:32-07:00
   description = """\
 Published a  photoblog of spending [a little over a week on the John Muir Trail](/john-muir-trail) in the Sierra Nevada. We ended up exiting earlier than planned, which was disappointing at the time, but we went back a couple weeks later to finish off the last segment.
