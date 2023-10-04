@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-04T12:50:00+02:00
+  description = """\
+Published fragment [Being a good web denizen: Don't strip EXIF metadata from photos](/fragments/stop-stripping-exif), on taking it easy with the `-strip` on ImageMagick commands so that EXIF tags aren't blown away for no good reason.
+"""
+
+[[atoms]]
   published_at = 2023-10-04T11:56:57+02:00
   description = """\
 Published fragment [A Postgres-friendly time comparison assertion for Go](/fragments/go-equal-time), on a time assertion for Go that ignores `time.Time`'s monotonic component and stops at microsecond-level precision.
