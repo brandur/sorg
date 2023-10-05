@@ -24,4 +24,4 @@ Photos on this site go through a comprehensive pipeline before being published, 
 
 To my dismay, I find that so many sites online _including_ those run by self-described photographers strip out this information, and my guess is that it isn't for a particularly good reason -- probably because they haven't thought about it or are cargo culting copy/pasted commands than anything else. There are some sensitive EXIF tags that you'd conceivably want to remove like serial numbers or GPS coordinates, but programs like `exiftool` can [cauterize those on a per-tag basis](https://kevinchen.co/blog/scrub-sensitive-photo-exif-metadata-with-exiftool/).
 
-So in the same vein of being a good web denizen like [stop truncating RSS](/stop-truncating-rss): leave your EXIF metadata in! Most people will never know it's there, but it leaves the web a little richer, and is occasionally useful for someone who cares.
+So in the same vein of being a good web denizen like [stop truncating RSS](/fragments/stop-truncating-rss): leave your EXIF metadata in! Most people will never know it's there, but it leaves the web a little richer, and is occasionally useful for someone who cares.
