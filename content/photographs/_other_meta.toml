@@ -334,6 +334,90 @@ title = "iA Writer."
 #   * constrained (non photos): 600 wide
 #
 
+#
+# /nanoglyphs/040-rails-world
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/j8wzz6yumpz3qtcnpz8rh/2W4A4581-coffee-crop.jpg?rlkey=k45o16h4tgwp9gzk1243nrp7o&dl=1"
+slug = "nanoglyphs/040-rails-world/coffee-cart"
+title = "Coffee cart"
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/scl/fi/cmj8ij7hb3751m8cld6b5/2W4A4580-adjusted.jpg?rlkey=ygvze9uo1ir013agg0q8yh2v3&dl=1"
+slug = "nanoglyphs/040-rails-world/expo-hall"
+title = "The Crunchy booth at the expo hall"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/zpxmmuc4dqyofvmnkpe8e/2W4A4536-adjusted.jpg?rlkey=dbkm9h0mkniym460a5cf98g67&dl=1"
+slug = "nanoglyphs/040-rails-world/keynote-solid-cache"
+title = "Keynote on the subject of Solid Cache"
+
+[[photographs]]
+crop_width = 2400
+original_image_url = "https://www.dropbox.com/scl/fi/xhhs05e0w1eoz47yx109d/2W4A4565-crop.jpg?rlkey=awbkfp0akrpgdab3j8xjqj0pu&dl=1"
+slug = "nanoglyphs/040-rails-world/version-wall"
+title = "Version wall"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/u5skys3jrzvbo24f9upu1/2W4A4567.JPG?rlkey=drkl5iz6ivoz2f2qwaq04fe4g&dl=1"
+slug = "nanoglyphs/040-rails-world/version-wall-2003"
+title = "Version wall (2003)"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/ln618gevsrkx1lvfs747g/2W4A4561-version-wall.JPG?rlkey=igo1t31u3mxsduvt9r7n5ahte&dl=1"
+slug = "nanoglyphs/040-rails-world/version-wall-2009"
+title = "Version wall @ 2.3 (2009)"
+
+#
+# /nanoglyphs/039-steam
+#
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/scl/fi/xem2ct5je45wyk8vgnd2g/IMG_0893-liberty-crop.jpg?rlkey=5ql8tp4z1rr7zk7m1t7gazagg&dl=1"
+slug = "nanoglyphs/039-trails/liberty"
+title = "Liberty, the bald eagle"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/2qktq8sgq3529oiwej75y/2W4A4352.JPG?rlkey=9polsu2j4fbw16s11p21alpi4&dl=1"
+slug = "nanoglyphs/039-trails/kings-canyon"
+title = "Kings Canyon National Park"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/mqbljsuhztrqeicx8xtqy/new-slack-ui.png?rlkey=v81bq0ejmk4wnt385t46rb6tm&dl=1"
+slug = "nanoglyphs/039-trails/new-slack-ui"
+title = "Screenshot of new Slack UI"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/wzh1xvz6np6mg89yzrtec/new-slack-ui-normal-zoom.png?rlkey=8l2d4pqxsbxu8rqpfonwra8g2&dl=1"
+slug = "nanoglyphs/039-trails/new-slack-ui-normal-zoom"
+title = "Screenshot of new Slack UI at normal zoom level"
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/scl/fi/r8nf39lti0m9y2boxb5in/2W4A3915.JPG?rlkey=pn0yfwdriswkc67pqyam6aiop&dl=1"
+slug = "nanoglyphs/039-trails/seldon-pass"
+title = "Seldon Pass"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/vss7h0mswsxd4kjgjfqhy/vscode.png?rlkey=wxzvgp5kdzq3os3rzahbgmoai&dl=1"
+slug = "nanoglyphs/039-trails/vscode"
+title = "Screenshot of VSCode"
+
+#
+# /nanoglyphs/038-london
+#
+
 [[photographs]]
 crop_width = 600
 original_image_url = "https://www.dropbox.com/s/fwrhtnwal078gbe/honeybadger-shirt.jpg?dl=1"
