@@ -164,7 +164,6 @@ html lang="en"
       }
 
       img.wide_portrait {
-        display: block;
         margin: 20px auto;
         max-width: 900px;
       }
