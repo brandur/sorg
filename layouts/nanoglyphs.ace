@@ -301,7 +301,7 @@ html lang="en"
         margin-left: 8px;
       }
 
-      .web-only img.wide, img.wide_portrait {
+      .web-only img.wide, .web-only img.wide_portrait {
         margin-left: -150px;
         margin-right: -150px;
         width: 900px;
