@@ -11,6 +11,30 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-09T12:59:32+02:00
+  length_exempted = true
+  description = """\
+Stranded in Amsterdam.
+
+Yesterday, I was supposed to fly AMS to SFO returning from Rails World this week. I've been having pretty good luck with airlines recently, and didn't think much of it. At the gate things seems okay, except boarding is delayed a few minutes, ostensibly because the pilot is late, which shouldn't been a red flag. Once we're all boarded, we're informed we'll be delayed thanks a technical issue. They're working on it and will update us at 3:30p. At 3:30p we're informed we'll get an update at 4p. At 4p, it'll be at 4:30p. At 4:30p, it'll be a 5p.
+
+We know the writing on the wall is a cancellation, and it's a dreadful thought. This is a major leg that flies a 777. If it's cancelled, that's almost 400 people who need alternate routes. Is that even possible?
+
+Sure enough, it's cancelled. May god have mercy on our souls.
+
+But this is where we get some balance to our bad luck. We're informed that we've been automatically rebooked to a new flight the next day and have been given a room at the local Steigenberger near the airport, where we'll also be fed. The hotel's airport shuttle is crowded, but otherwise we exit the airport and get over there without much fanfare. This must be EU regulation working in our favor. We're flying f*ing United, so you know they would've cancelled the flight and left us on the tarmack to rot if they thought they could legally get away with it.
+
+In a happy coincidence, Craig and I were accidentally going back on the same flight (we should've coordinated but didn't), and spend the evening exploring the local hotel airport bars.
+
+In every North American city, the area for ten miles in every direction around an airport is an exclusion zone of highways and parking lots, as hostile to human existence as the surface of Mars. Relatively speaking the area around Amsterdam's airport is a little like this too, but only relative to the rest of Amsterdam. The area around us has a lot of concrete, but also a certain amount of charm, and like the rest of the city, bike lanes in every direction. In the morning I go for a run across a short bridge and over to a sprawling park on the river called Het Amsterdamse Bos, which honestly, is nicer even than anything in central Amsterdam.
+
+Now, sitting on a new 777, hoping our luck is better this time.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/hr2v6ilgg38t3gouo76jx/IMG_1093.HEIC?rlkey=12injqcjwh0hj8r2rn6na53jz&dl=1"
+    slug = "steigenberger-airport-hotel"
+
+[[atoms]]
   published_at = 2023-10-08T08:53:23+02:00
   description = """\
 [_Nanoglyph 039_](/nanoglyphs/039-trails) is published, on the John Muir Trail, Charleston, and `t.Parallel`.
