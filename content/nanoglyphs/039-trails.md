@@ -25,7 +25,7 @@ The length of the John Muir Trail is shared by the much longer [Pacific Crest Tr
 
 We had some long days, but every moment was worth it. There is nothing else like being out in the middle of some of the most remote parts in the country, sleeping under the stars. We'd settle into our pitches at night with the only noise being running water (if camped near a creek) or deafening silence (if not). Unlike your typical family campground, no dogs barking, diesel generators running, or low roar of nearby highway traffic. Only you and the endless wilderness.
 
-Our trip ended earlier than planned as we took a wrong turn hitchhiking down to Bishop on festival weekend, became temporarily homeless as there wasn't a single room to rent inside of a hundred miles, and ended up being dropped off in a field by a man who called himself only "Nightrider", but two of us returned a week later to complete the rest of the journey. The [full story here](/john-muir-trail).
+Our trip ended earlier than planned as we took a wrong turn hitchhiking down to Bishop on festival weekend, became temporarily homeless as there wasn't a single room to rent inside of a hundred miles, and ended up being dropped off in a field by a man who called himself only "Nightrider", but two of us returned a week later to complete the rest of the journey. The [full story here](/john-muir-trail) along with more photos.
 
 <img src="/photographs/nanoglyphs/039-trails/seldon-pass@2x.jpg" alt="Seldon Pass" class="wide_portrait" loading="lazy">
 
