@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-09T19:54:06+02:00
+  description = """\
+Inspired by [TODO](), published a [`/uses`](/uses) page.
+"""
+
+[[atoms]]
   published_at = 2023-10-09T12:59:32+02:00
   length_exempted = true
   description = """\
@@ -26,7 +32,7 @@ But this is where we get some balance to our bad luck. We're informed that we've
 
 In a happy coincidence, Craig and I were accidentally going back on the same flight (we should've coordinated but didn't), and spend the evening exploring the local hotel airport bars.
 
-In every North American city, the area for ten miles in every direction around an airport is an exclusion zone of highways and parking lots, as hostile to human existence as the surface of Mars. Relatively speaking the area around Amsterdam's airport is a little like this too, but only relative to the rest of Amsterdam. The area around us has a lot of concrete, but also a certain amount of charm, and like the rest of the city, bike lanes in every direction. In the morning I go for a run across a short bridge and over to a sprawling park on the river called Het Amsterdamse Bos, which honestly, is nicer even than anything in central Amsterdam.
+In every North American city, the area for ten miles in every direction around an airport is an exclusion zone of highways and parking lots, as hostile to human existence as the surface of Mars. Relatively speaking the area around Amsterdam's airport is a little like this too, but only relative to the rest of Amsterdam, which is a supremely walk and bike friendly. The area around us has a lot of concrete, but also a certain amount of charm, and like the rest of the city, bike lanes in every direction. In the morning I go for a run across a short bridge and over to a sprawling park on the river called Het Amsterdamse Bos, which honestly, is nicer even than anything in central Amsterdam.
 
 Now, sitting on a new 777, hoping our luck is better this time.
 """
@@ -66,7 +72,7 @@ Along with `time`'s magic date of Mon Jan 2, 2006 and the `database/sql` package
 
 I was glad to discover that someone's trying to write an alternative: [Templ](https://templ.guide/). It produces a hierarchy of nested partial views similar to React apps, and generates Go code in a way reminiscent of sqlc.
 
-I tried it on a toy project and got to something workable quickly. It's a fairly new project and has rough edges:
+I tried it on a toy project and got to something workable quickly. Templ's fairly new and has rough edges:
 
 * No line numbers in case of problems, making debugging difficult.
 
