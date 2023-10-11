@@ -59,10 +59,10 @@ def optimize_image(in_filename)
       mozjpeg_path
     end
 
-    run_command("#{mozjpeg_path}/bin/djpeg #{in_filename} | #{mozjpeg_path}/bin/cjpeg -outfile #{out_filename} -optimize -progressive")
+    run_command("#{mozjpeg_path}/bin/djpeg '#{in_filename}' | #{mozjpeg_path}/bin/cjpeg -outfile '#{out_filename}' -optimize -progressive")
   elsif ext == ".png"
     pngquant_bin = ENV["PNGQUANT_BIN"] || get_homebrew_path("pngquant") + "/bin/pngquant"
-    run_command("#{pngquant_bin} --output #{out_filename} -- #{in_filename}")
+    run_command("#{pngquant_bin} --output '#{out_filename}' -- '#{in_filename}'")
   else
     abort("want a .jpg or a .png")
   end
@@ -71,7 +71,7 @@ def optimize_image(in_filename)
     in_size = File.size(in_filename)
     out_size = File.size(out_filename)
     if out_size < in_size - in_size * SIZE_THRESHOLD
-      run_command("mv #{out_filename} #{in_filename}")
+      run_command("mv '#{out_filename}' '#{in_filename}'")
       puts "Created optimized image: #{in_filename}"
     else
       FileUtils.rm(out_filename)
