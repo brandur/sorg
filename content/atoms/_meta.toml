@@ -11,9 +11,25 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-11T17:02:16-07:00
+  description = """\
+Activated an iPhone 15 Pro Max this morning. We're well past the point of dark comedy in how little these things change year-over-year nowadays. The 15 is indistinguishable from the 14, and you have to be an Apple connoisseur to spot the differences even from a 12 or 13. You can easily tell it apart from an 11, but only because that was the year that Apple made the inspirational jump from curved edges to _square_ edges. Hash tag courage.
+
+That said, as with previous iterations, it's a great phone. Impressions from the first day of use:
+
+* USB-C, _finally_. I now have exclusively USB-C gear, so I can travel with only one type of cable.
+
+* The Action button is great. Instead of activating on a simple press (prone to false positives), you hold it for a moment, and it provides the perfect amount of haptic feedback. I have mine mapped to open the camera, so it's now much faster to do so (the alternative was finding a widget from the lock screen) and I can do it by touch only. The old "silent" switch it replaced was so freaking useless -- it was a crime to leave it on there for so long.
+
+* Titanium feels great and is more grippy than the previous body. The phone is easy to hold onto even without a case.
+
+Some people have reported heating problems. Mine definitely got hot as it was restoring from backup, but it's been fine since.
+"""
+
+[[atoms]]
   published_at = 2023-10-09T19:54:06+02:00
   description = """\
-Inspired by [https://uses.tech](uses.tech), published a [`/uses`](/uses) page, a list of favorite gear and software.
+Inspired by [uses.tech](https://uses.tech), published a [`/uses`](/uses) page, a list of favorite gear and software.
 """
 
 [[atoms]]
