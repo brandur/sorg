@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-14T11:14:52-07:00
+  description = """\
+Published fragment [The peanut gallery](/fragments/the-peanut-gallery), on the use of words like "simple", "elegant", and "elegant" in the sense of software.
+"""
+
+[[atoms]]
   published_at = 2023-10-12T11:23:22-07:00
   description = """\
 Published fragment [Optimizing row storage in 8-byte chunks](/fragments/postgres-row-optimization), on optimizing field order in a row to avoid padding (for when tables are expected to be really big) and a useful query to help.
