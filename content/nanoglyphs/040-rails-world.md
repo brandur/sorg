@@ -8,13 +8,13 @@ title = "Rails World, 7.1, Amsterdam"
 
 Last week I traveled to Amsterdam for the first ever Rails World. It was a great event -- well-organized, great location, and interesting, passionate people in every direction. In 2023, you'd be forgiven for assuming that the world's moved on from Rails, but the framework's done an admirable job of keeping itself current, despite the quantum leaps happening in JavaScript and the browser.
 
-Tickets were gone in 45 minutes the hour they went on sale. I tried to buy one the first _minute_ they went on sale to get early bird pricing, but all the early bird tickets were already spoken for. I was twenty seconds too late.
+Tickets were gone in 45 minutes the hour they went on sale. I tried to buy one the first _minute_ they went on sale to get early bird pricing, but all the early bird tickets were already spoken for. I was twenty seconds late.
 
-DHH's keynote opened the conference, and was bursting at the seams with food for thought and novel ideas, reminding me of the old world circa Rails 3 where it felt like the whole web was a new frontier that was being discovered. There should be a video of it up soon in case you want to watch it for yourself, but a few highlights that I wrote down:
+DHH's keynote opened the conference, and was bursting at the seams with food for thought and novel ideas, reminding me of the old world circa Rails 3 where it felt like the whole web was a new frontier that was being discovered. [Here's a video](https://www.youtube.com/watch?v=iqXjGiQ_D-A). A few highlights:
 
 * Some shots were jokingly taken at AirBnB and Twitter's propensity for extreme microservice-ification, which DHH (in jest) explained as a ZIRP [1] phenomenon. Luxury pontification that's affordable only when companies are awash in cheap money.
 
-* With belts tightening, we'll be transitioning away from extreme developer specialization to one of the _renaissance developer_, one who ships features across every layer of the stack (frontend, backend, infrastructure, etc.).
+* With belts tightening, we'll be transitioning away from extreme developer specialization to one of the _renaissance developer_, one who ships features across every layer of the stack (frontend, backend, infrastructure, etc.). We used to just call this a full stack developer, but I'm okay with some occasional rebranding for dramatic effect.
 
 * He was quite excited for [Bun](https://bun.sh/), a new JavaScript runtime (yes, the JS world is reinventing itself again) and one-stop toolchain for bundling, testing, and dependency management. It's faster than what's out there right now, and far better integrated.
 
@@ -70,13 +70,13 @@ I started using Rails during the 2.x series when it was feature complete and gai
 
 <img src="/photographs/nanoglyphs/040-rails-world/version-wall-2009@2x.jpg" alt="Version wall @ 2.3 (2009)" class="wide" loading="lazy">
 
-## A shot to the heart (#short-to-the-heart)
+## A pulse (#pulse)
 
 The burst of vitality injected by Rails World might've been exactly what the Ruby community needed. I attended [RailsConf this year](/nanoglyphs/036-queues#railsconf), and there was so little vitality there that I'd almost written off the whole ecosystem.
 
-You won't find a keynote from DHH at RailsConf post-2021 because he was uninvited and made persona non grata for _daring_ to suggest that people should spend their time at work working, instead of bludgeoning each other to death over politics (this guy is a real monster). An editorial decision was made to minimize technical content in favor of talks on soft skills and unionization because under the framework of its dominant ideology, technical content at a technical conference is now considered (straining credulity) ... bad? To cut costs, luxuries like printed name badges and coffee weren't available, but this sort of frugality is the price you pay to engage in high-cost signaling exercises, like giving up a $500k deposit to move a planned event from Texas to California to telegraph contempt for the state of Texas and the 30 million people who live there.
+You won't find a keynote from DHH at RailsConf post-2021 because he was uninvited and made persona non grata for _daring_ to suggest that people should spend their time at work working instead of bludgeoning each other to death over politics (this guy is a real monster). An editorial decision was made to minimize technical content in favor of talks on soft skills and unionization because under the framework of its dominant ideology, technical content at a technical conference is now considered (straining credulity) ... bad? To cut costs, luxuries like printed name badges and coffee weren't available, but this sort of frugality is the price you pay to engage in high-cost signaling exercises, like giving up a half million dollar deposit to move a planned event from Texas to California to telegraph contempt for the state of Texas and the 30 million people who live there.
 
-But even if you're not a critic of the status quo, having a few plausible options around can't be anything but a good thing. Next year Rails World will be shifting continents to my home country, to be held in Toronto September 2024.
+But even if you're not a critic of the status quo, having a few plausible options around can't be anything but a good thing. Next year Rails World will be shifting continents to my home country, to be held in Toronto circa September 2024.
 
 <img src="/photographs/nanoglyphs/040-rails-world/noord-1@2x.jpg" alt="Amsterdam Noord (train station)" class="wide" loading="lazy">
 
@@ -84,7 +84,7 @@ But even if you're not a critic of the status quo, having a few plausible option
 
 Excepting an accidental half-hour stopover a few months back, I haven't been to Amsterdam since 2011.
 
-Once of the beautiful parts about the Netherlands is that the best parts of its reputation are actually true. Visit San Francisco expecting to ride up and down hills on cable cars, only to realize they're kept in operation exclusively for use by tourists and a local would be caught dead stepping foot on one. Visit Paris expected to bathe in the glory of the Mona Lisa, only to find a postage-stamp sized painting on a distant wall, barely visible behind the mob of would-be TikTok influencers with selfie sticks, apparently assigned to guard duty. Holland is known for its extensive bike culture, with infrastructure that's so good and so extensive that it's an overwhelmingly popular way to get around, and it's true.
+Once of the beautiful parts about the Netherlands is that the best parts of its reputation are actually true. Visit San Francisco expecting to ride up and down hills on cable cars, only to realize they're kept in operation exclusively for use by tourists and a local would be caught dead stepping foot on one. Visit Paris expected to bathe in the glory of the Mona Lisa, only to find a postage-stamp sized painting on a distant wall, barely visible behind the mob of would-be TikTok influencers with selfie sticks apparently assigned to guard the thing. Holland is known for its extensive bike culture, with infrastructure that's so good and so extensive that it's the overwhelmingly popular way to get around, and it's true.
 
 I didn't stay in the central part of Amsterdam on this trip because the hotel prices were obscene and the core area is a zoo, more reminiscent of Disneyworld than a city where people live. Instead, I took a bit of a potshot and stayed up in Amsterdam Noord just north of the channel (called ["IJ"](https://en.wikipedia.org/wiki/IJ_(Amsterdam\))). Having traveled around central Amsterdam and Amsterdam Noord fairly extensively now, I've seen for myself that the bike paths aren't just an optical illusion in the middle part of the city to deceive visitors -- they really do go everywhere, snaking around parks, lakes, and canals, and even up into the countryside. It's glorious.
 
@@ -92,9 +92,11 @@ For prospective visitors to Amsterdam, in this humble traveler's opinion, stayin
 
 <img src="/photographs/nanoglyphs/040-rails-world/noord-2@2x.jpg" alt="Amsterdam Noord" class="wide" loading="lazy">
 
+## 24 hours at the airport (#24-hours-airport)
+
 On the way home, after spending two hours on the tarmac, my flight was cancelled. That was bad, but after some initial consternation, it was the most civilized flight disruption I've ever been a part of. It was a full 777 so rebooking everyone on alternate flights would've been impossible, but we were informed that a new flight had been chartered for the next day, and that we'd all been booked to stay at a Steigenberger hotel near the airport.
 
-In most cities the area immediately around an airport is an exclusion zone of roads and concrete -- as inhospitable to life as the surface of Mars -- but in Amsterdam it's actually kind of nice. Craig had gotten stuck with me so we explored a few hotel bars, and the next morning I had a great run through a nearby park called Het Amsterdamse Bos -- a stone's throw across the river, and just as nice as anything you find near Amsterdam central.
+In most cities the area immediately around an airport is an exclusion zone of roads and concrete -- as inhospitable to life as the surface of Mars -- but in Amsterdam it's actually kind of nice. Craig had gotten stuck with me so we explored a few hotel bars, and the next morning I had a great run through a nearby park called Het Amsterdamse Bos ("Amsterdam Forest") -- a stone's throw across the river, and as nice as anything you find near Amsterdam central.
 
 Until next week.
 
