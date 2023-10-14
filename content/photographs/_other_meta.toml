@@ -357,6 +357,18 @@ slug = "nanoglyphs/040-rails-world/keynote-solid-cache"
 title = "Keynote on the subject of Solid Cache"
 
 [[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/pixrgn9lap3ga4mwo7f9x/2W4A4517-noord.JPG?rlkey=oh1qnalntnz7ekmo735rbjkr0&dl=1"
+slug = "nanoglyphs/040-rails-world/noord-1"
+title = "Amsterdam Noord (train station)"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/5pme2o9t3abm9ljjn7d50/2W4A4510.JPG?rlkey=f6wf17k2j12097a37ygxt47gq&dl=1"
+slug = "nanoglyphs/040-rails-world/noord-2"
+title = "Amsterdam Noord"
+
+[[photographs]]
 crop_width = 2400
 original_image_url = "https://www.dropbox.com/scl/fi/xhhs05e0w1eoz47yx109d/2W4A4565-crop.jpg?rlkey=awbkfp0akrpgdab3j8xjqj0pu&dl=1"
 slug = "nanoglyphs/040-rails-world/version-wall"

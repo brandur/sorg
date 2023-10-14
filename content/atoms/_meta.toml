@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-14T12:30:18-07:00
+  description = """\
+[_Nanoglyph 040_](/nanoglyphs/040-rails-world) is published, on Rails World, Rails 7.1, a DSL for CTEs (common table expressions), and Amsterdam.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/040-rails-world"
+    original_image_url = "https://www.dropbox.com/scl/fi/cmj8ij7hb3751m8cld6b5/2W4A4580-adjusted.jpg?rlkey=ygvze9uo1ir013agg0q8yh2v3&dl=1"
+    portrait = true
+    slug = "expo-hall"
+
+[[atoms]]
   published_at = 2023-10-14T11:14:52-07:00
   description = """\
 Published fragment [The peanut gallery](/fragments/the-peanut-gallery), on the use of words like "simple", "elegant", and "elegant" in the sense of software.
