@@ -14,6 +14,8 @@
   published_at = 2023-10-14T12:30:18-07:00
   description = """\
 [_Nanoglyph 040_](/nanoglyphs/040-rails-world) is published, on Rails World, Rails 7.1, a DSL for CTEs (common table expressions), and Amsterdam.
+
+Just look at the location of that Crunchy booth! Front row and center.
 """
   [[atoms.photos]]
     link_url = "/nanoglyphs/040-rails-world"
