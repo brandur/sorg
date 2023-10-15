@@ -37,6 +37,7 @@ var FuncMap = template.FuncMap{
 	"RandIntn":                randIntn,
 	"RenderPublishingInfo":    renderPublishingInfo,
 	"RetinaImageAlt":          RetinaImageAlt,
+	"Sub":                     sub,
 	"ToStars":                 toStars,
 	"TimeInLocal":             timeInLocal,
 	"URLBaseExt":              urlBaseExt,
@@ -244,6 +245,10 @@ func RetinaImageAlt(src, alt string) template.HTML {
 // There is no "round" function built into Go :/.
 func round(f float64) float64 {
 	return math.Floor(f + .5)
+}
+
+func sub(i, j int) int {
+	return i - j
 }
 
 func timeInLocal(t time.Time) time.Time {

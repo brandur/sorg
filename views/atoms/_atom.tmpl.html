@@ -34,7 +34,16 @@
             </div>
 
             {{- if gt (len .Atom.Photos) 0 -}}
-            <div class="flex flex-col mt-8">
+            <!--
+                Negative left margin equal to with of left metadata bar plus
+                2rem for the margins between bar and content.
+
+                Negative right margin equal to `mr-2` which each photo has so
+                that it can fit into a row.
+
+                Width of 100% plus the negative margins on each side.
+            -->
+            <div class="flex flex-col mt-8 md:ml-[calc(-90px-2rem)] md:mr-[calc(0.5rem)] md:w-[calc(100%+90px+2rem+0.5rem)]">
 
                 {{- range $i, $photo := .Atom.Photos -}}
 
@@ -50,7 +59,8 @@
                         </a>
                     </div>
 
-                    {{if eq (Mod $i 2) 0}}
+                    <!-- close the row div if an odd numbered photo or the last photo -->
+                    {{if or (eq (Mod $i 2) 1) (eq $i (Sub (len $.Atom.Photos) 1))}}
                 </div> {{end}}
 
                 {{- end -}}
@@ -59,7 +69,7 @@
             {{- end -}}
 
             {{- if gt (len .Atom.Videos) 0 -}}
-            <div class="flex flex-col mt-8">
+            <div class="flex flex-col mt-8 md:ml-[calc(-90px-2rem)] md:mr-[calc(0.5rem)] md:w-[calc(100%+90px+2rem+0.5rem)]">
 
                 {{- range $i, $video := .Atom.Videos -}}
 
@@ -73,7 +83,8 @@
                         </video>
                     </div>
 
-                    {{if eq (Mod $i 2) 1}}
+                    <!-- close the row div if an odd numbered photo or the last photo -->
+                    {{if or (eq (Mod $i 2) 1) (eq $i (Sub (len $.Atom.Photos) 1))}}
                 </div> {{end}}
 
                 {{- end -}}
