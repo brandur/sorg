@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-15T12:33:13-07:00
+  description = """\
+Some people are writing some legitimately great content in longform Twitter/X posts. See this one for example from Abhinav Upadhyay on [the difference between `tail -f` and `tail -F`](https://twitter.com/abhi9u/status/1712892253944139949) (`tail -F` watches for the file being rotated and reopens it if it is). Easily blog post quality.
+
+I love it, but it does make me wonder what we're doing here. A year from now this content will have been disappeared into the closed tangle of throwaway detritus that is Twitter, functionally no longer existing for the purposes of indexing. On the other hand, I understand the motivation to post on Twitter, where reach and interaction will be orders of magnitude greater.
+
+This is an old man shaking fist at cloud moment for me, but it's unfortunate that we've been yet unable to discover a better compromise.
+"""
+
+[[atoms]]
   published_at = 2023-10-15T05:34:09-07:00
   description = """\
 Apple's being [sued in California](https://www.macrumors.com/2023/10/13/airtag-lawsuit-widened-stalking-cases/) over claims that AirTags enable stalking.
