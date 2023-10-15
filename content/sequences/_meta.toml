@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-10-15T12:47:21-07:00
+  slug = "059"
+  title = "Mist over the valley"
+  description = """
+The mist over Kings Canyon National Park. We'd gotten rain overnight, and the whole valley was giving off very Ansel Adams vibes as we made our way to the top of Bishop Pass.
+
+Poster for [_Nanoglyph 039: Trails, Charleston, `t.Parallel()`_](/nanoglyphs/039-trails).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/2qktq8sgq3529oiwej75y/2W4A4352.JPG?rlkey=9polsu2j4fbw16s11p21alpi4&dl=1"
+    slug = "059"
+
+[[entries]]
   published_at = 2023-10-15T12:38:28-07:00
   slug = "058"
   title = "The Hermit"
