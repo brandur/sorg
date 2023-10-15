@@ -2,7 +2,7 @@
 
     {{- $maxWidthClass := "" -}}
     {{- if and (eq (len .Entry.Photos) 1) (index .Entry.Photos 0).Portrait -}}
-    {{- $maxWidthClass = "max-w-[900px] mx-auto" -}}
+    {{- $maxWidthClass = "max-w-[1000px] mx-auto" -}}
     {{- end -}}
     <div class="{{$maxWidthClass}}">
 
