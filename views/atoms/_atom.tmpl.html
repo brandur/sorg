@@ -1,7 +1,6 @@
-<div id="{{.Atom.Slug}}" class="container max-w-[900px] mx-auto my-8 px-4
-            ">
-    <div class="md:flex">
-        <div class="md:basis-[90px] md:flex-grow-0 md:flex-shrink-0 md:mr-4">
+<div id="{{.Atom.Slug}}" class="container max-w-[900px] mx-auto my-8">
+    <div class="md:flex md:px-4">
+        <div class="px-4 md:basis-[90px] md:flex-grow-0 md:flex-shrink-0 md:mr-4 md:px-0">
             <div class="font-bold my-1 leading-normal text-xs tracking-tighter">
                 <a href="#{{.Atom.Slug}}" class="leading-3">
                     {{FormatTime .Atom.PublishedAt "2006 / Jan 2"}}
@@ -12,6 +11,7 @@
         </div>
         <div class="md:flex-grow md:min-w-0 md:ml-4">
             <div class="max-w-none
+                px-4 md:px-0
                 prose prose-md
                 prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
@@ -43,7 +43,7 @@
 
                 Width of 100% plus the negative margins on each side.
             -->
-            <div class="flex flex-col mt-8 md:ml-[calc(-90px-2rem)] md:mr-[calc(0.5rem)] md:w-[calc(100%+90px+2rem+0.5rem)]">
+            <div class="flex flex-col mt-8 mr-[calc(-0.5rem)] md:ml-[calc(-90px-2rem)] md:w-[calc(100%+90px+2rem+0.5rem)]">
 
                 {{- range $i, $photo := .Atom.Photos -}}
 
@@ -52,7 +52,7 @@
                     <div class="mb-2 mr-2">
                         <a
                             href="{{if $photo.LinkURL}}{{$photo.LinkURL}}{{else}}{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}{{end}}">
-                            <img class="rounded-lg w-full" loading="lazy"
+                            <img class="md:rounded-lg w-full" loading="lazy"
                                 src="{{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}}"
                                 srcset="{{printf "/photographs/atoms/%s/%s_large@2x%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 2x,
                                 {{printf "/photographs/atoms/%s/%s_large%s" $.Atom.Slug $photo.Slug $photo.TargetExt}} 1x">
@@ -76,7 +76,7 @@
                 {{if eq (Mod $i 2) 0}} <div class="flex flex-col md:flex-row"> {{end}}
 
                     <div class="mb-2 mr-2">
-                        <video autoplay loop muted playsinline class="rounded-lg w-full">
+                        <video autoplay loop muted playsinline class="md:rounded-lg w-full">
                             {{range $video.URL -}}
                             <source src="/videos/atoms/{{$.Atom.Slug}}/{{URLBaseFile .}}" type="video/{{URLBaseExt .}}">
                             {{end}}

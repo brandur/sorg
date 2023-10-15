@@ -1681,6 +1681,10 @@ video {
   margin-right: 1rem;
 }
 
+.mr-\[calc\(-0\.5rem\)\] {
+  margin-right: calc(-0.5rem);
+}
+
 .mt-0 {
   margin-top: 0px;
 }
@@ -2505,12 +2509,21 @@ video {
     flex-direction: row;
   }
 
+  .md\:rounded-lg {
+    border-radius: 0.5rem;
+  }
+
   .md\:border-l {
     border-left-width: 1px;
   }
 
   .md\:border-l-\[1px\] {
     border-left-width: 1px;
+  }
+
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .md\:px-4 {
