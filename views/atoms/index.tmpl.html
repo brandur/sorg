@@ -10,15 +10,19 @@
     <div class="container max-w-[625px] mx-auto
             prose prose-lg
             prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
-            hover:prose-a:border-slate-200">
+            hover:prose-a:border-slate-200
+            prose-p:text-center prose-p:italic
+            ">
         <p>
-            Multimedia particles in a similar style to a tweet, also serving as a changelog for this site. Cross-posted
-            to <a href="/atoms.atom">an atom feed</a>. Frequently off topic.
+            Multimedia particles in the style of a tweet, also serving as a
+            changelog to consolidate changes elsewhere in the site. Cross-posted
+            to <a href="/atoms.atom" class="feed_icon">an atom feed</a>. Frequently off topic.
         </p>
         {{- if not .IndexMax -}}
         <p>
-            This is an archive page that shows every atom ever published. See also <a href="/atoms">Atoms</a> which
-            shows only recent posts.
+            This is an archive page that shows every atom ever published, and
+            which will grow to monstrous size. See also <a
+            href="/atoms">Atoms</a> which shows only recent posts.
         </p>
         {{- end -}}
     </div>

@@ -1805,6 +1805,10 @@ video {
   flex-grow: 0;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 .basis-\[115px\] {
   flex-basis: 115px;
 }
@@ -2228,12 +2232,20 @@ video {
           hyphens: auto;
 }
 
+.prose-p\:text-center :is(:where(p):not(:where([class~="not-prose"] *))) {
+  text-align: center;
+}
+
 .prose-p\:font-serif :is(:where(p):not(:where([class~="not-prose"] *))) {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .prose-p\:font-normal :is(:where(p):not(:where([class~="not-prose"] *))) {
   font-weight: 400;
+}
+
+.prose-p\:italic :is(:where(p):not(:where([class~="not-prose"] *))) {
+  font-style: italic;
 }
 
 .prose-p\:leading-normal :is(:where(p):not(:where([class~="not-prose"] *))) {
