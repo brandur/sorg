@@ -84,7 +84,8 @@
         <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
 
         <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8">
-            <div class="max-w-none
+            <div class="hyphens-auto
+                max-w-none
                 prose prose-lg
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 prose-blockquote:font-normal prose-blockquote:text-slate-700
@@ -121,7 +122,8 @@
 {{if .Article.Footnotes}}
 <div class="border-t p-8 w-vp">
     <div class="container max-w-[650px] mx-auto">
-        <div class="max-w-none
+        <div class="hyphens-auto
+                max-w-none
                 prose prose-sm
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
@@ -138,7 +140,8 @@
 {{if .Article.Attributions}}
 <div class="border-t p-8 w-vp">
     <div class="container max-w-[650px] mx-auto">
-        <div class="max-w-none
+        <div class="hyphens-auto
+                max-w-none
                 prose prose-sm
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
@@ -156,7 +159,9 @@
 
 <div class="border-t pb-20 p-8 w-vp">
     <div class="container max-w-[550px] mx-auto">
-        <div class="italic max-w-none
+        <div class="hyphens-auto
+            italic
+            max-w-none
             prose prose-sm
             prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-b-slate-200

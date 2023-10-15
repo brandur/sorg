@@ -1542,6 +1542,11 @@ video {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.hyphens-auto {
+  -webkit-hyphens: auto;
+          hyphens: auto;
+}
+
 .visible {
   visibility: visible;
 }
@@ -1839,6 +1844,11 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.hyphens-auto {
+  -webkit-hyphens: auto;
+          hyphens: auto;
 }
 
 .rounded-lg {
