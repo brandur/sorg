@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-15T05:34:09-07:00
+  description = """\
+Apple's being [sued in California](https://www.macrumors.com/2023/10/13/airtag-lawsuit-widened-stalking-cases/) over claims that AirTags enable stalking.
+
+This is a tough one. By designing a very functional and affordable product, Apple's created the world's best tracking device. I'm reminded of old spy movies where a hero or villain attaches a little beeping box to the undercarriage of their opponent's vehicle. These days you might just use an AirTag, with orders of magnitude improvements in range, size, and battery than what any of those old world trackers wouldn't had, and $30 instead of the $10,000 or whatever Raytheon would've charged.
+
+It was inevitable that some of this tracking ends up being malicious, but can't any product be misused for harm? And can that really be said to be the manufacturer's responsibility?
+
+Apple does seem to have taken significant good faith mitigation to curb misuse. Apple users are notified when an AirTag is traveling with them (I've been getting these regularly when walking around with other AirPods users), an app is available on Android to do the same, and the AirTag can be made to produce an audible tone to help identify its location. When setting up an AirTag the owner is warned against misusing it, and is informed that Apple will happily provide information to law enforcement on request. Pre-AirTag trackers would've had none of these safety features.
+"""
+
+[[atoms]]
   published_at = 2023-10-14T12:30:18-07:00
   description = """\
 [_Nanoglyph 040_](/nanoglyphs/040-rails-world) is published, on Rails World, Rails 7.1, a DSL for CTEs (common table expressions), and Amsterdam.
