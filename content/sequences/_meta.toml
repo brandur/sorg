@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-10-15T12:38:28-07:00
+  slug = "058"
+  title = "The Hermit"
+  description = """
+The Hermit, a gorgeous 12,000+ foot peak in the Sierra Nevada. We camped under on a long slab of granite next to Evoluion Valley before making our way up and over Muir Pass.
+
+See [my longer write up on the John Muir Trail](/john-muir-trail).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/iprqr12mk28ye463cq3bi/2W4A4181.JPG?rlkey=55hb3thwoc6aycjctbe2m997v&dl=1"
+    slug = "058"
+
+[[entries]]
   published_at = 2023-09-06T17:40:45-07:00
   slug = "057"
   title = "May Day"
