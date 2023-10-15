@@ -42,8 +42,15 @@
                 that it can fit into a row.
 
                 Width of 100% plus the negative margins on each side.
+
+                Also provides two additional larger sizes for lg and xl so that
+                images and videos expand further on very large screens.
             -->
-            <div class="flex flex-col mt-8 mr-[calc(-0.5rem)] md:ml-[calc(-90px-2rem)] md:w-[calc(100%+90px+2rem+0.5rem)]">
+            <div class="flex flex-col mt-8
+                        mr-[calc(-0.5rem)] md:ml-[calc(-90px-2rem)] md:w-[calc(100%+90px+2rem+0.5rem)]
+                        lg:mr-[calc(-0.5rem-75px)] lg:md:ml-[calc(-90px-2rem-75px)] lg:md:w-[calc(100%+90px+2rem+0.5rem+2*75px)]
+                        xl:mr-[calc(-0.5rem-150px)] xl:md:ml-[calc(-90px-2rem-150px)] xl:md:w-[calc(100%+90px+2rem+0.5rem+2*150px)]
+                        ">
 
                 {{- range $i, $photo := .Atom.Photos -}}
 
@@ -69,7 +76,11 @@
             {{- end -}}
 
             {{- if gt (len .Atom.Videos) 0 -}}
-            <div class="flex flex-col mt-8 md:ml-[calc(-90px-2rem)] md:mr-[calc(0.5rem)] md:w-[calc(100%+90px+2rem+0.5rem)]">
+            <div class="flex flex-col mt-8
+                        mr-[calc(-0.5rem)] md:ml-[calc(-90px-2rem)] md:w-[calc(100%+90px+2rem+0.5rem)]
+                        lg:mr-[calc(-0.5rem-75px)] lg:md:ml-[calc(-90px-2rem-75px)] lg:md:w-[calc(100%+90px+2rem+0.5rem+2*75px)]
+                        xl:mr-[calc(-0.5rem-150px)] xl:md:ml-[calc(-90px-2rem-150px)] xl:md:w-[calc(100%+90px+2rem+0.5rem+2*150px)]
+                        ">
 
                 {{- range $i, $video := .Atom.Videos -}}
 

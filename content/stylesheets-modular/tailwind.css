@@ -2449,10 +2449,6 @@ video {
     margin-right: 1rem;
   }
 
-  .md\:mr-\[calc\(0\.5rem\)\] {
-    margin-right: calc(0.5rem);
-  }
-
   .md\:mt-16 {
     margin-top: 4rem;
   }
@@ -2573,6 +2569,20 @@ video {
 }
 
 @media (min-width: 1024px) {
+  @media (min-width: 768px) {
+    .lg\:md\:ml-\[calc\(-90px-2rem-75px\)\] {
+      margin-left: calc(-90px - 2rem - 75px);
+    }
+
+    .lg\:md\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*75px\)\] {
+      width: calc(100% + 90px + 2rem + 0.5rem + 2 * 75px);
+    }
+  }
+
+  .lg\:mr-\[calc\(-0\.5rem-75px\)\] {
+    margin-right: calc(-0.5rem - 75px);
+  }
+
   .lg\:block {
     display: block;
   }
@@ -2593,6 +2603,20 @@ video {
 }
 
 @media (min-width: 1280px) {
+  @media (min-width: 768px) {
+    .xl\:md\:ml-\[calc\(-90px-2rem-150px\)\] {
+      margin-left: calc(-90px - 2rem - 150px);
+    }
+
+    .xl\:md\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*150px\)\] {
+      width: calc(100% + 90px + 2rem + 0.5rem + 2 * 150px);
+    }
+  }
+
+  .xl\:mr-\[calc\(-0\.5rem-150px\)\] {
+    margin-right: calc(-0.5rem - 150px);
+  }
+
   .prose-figure\:xl\:-mx-\[400px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     margin-left: -400px;
     margin-right: -400px;
