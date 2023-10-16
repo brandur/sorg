@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-16T10:03:07-07:00
+  description = """\
+Published [sequence 061](/sequences/061), Pagan.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/061"
+    original_image_url = "https://www.dropbox.com/scl/fi/vcz65t10lm9veua4tzt2z/2W4A3513-good-crop2.jpg?rlkey=fklgc156w4p3xjee09wwgguqp&dl=1"
+    slug = "pagan"
+
+[[atoms]]
   published_at = 2023-10-15T12:33:13-07:00
   description = """\
 Some people are writing some legitimately great content in longform Twitter/X posts. See this one for example from Abhinav Upadhyay on [the difference between `tail -f` and `tail -F`](https://twitter.com/abhi9u/status/1712892253944139949) (`tail -F` watches for the file being rotated and reopens it if it is). Easily blog post quality.

@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-10-16T10:03:07-07:00
+  slug = "061"
+  title = "Pagan"
+  description = """
+At the Heidnisches Dorf (pagan village) this year at WGT. I've never been to a Renaissance Fair in North America, but I can't imagine that we take it as seriously as the Germans do.
+
+The area consists of a music stage, food and drink vendors (roast pig, mead, many items that I can't name), various boutiques selling archaic goods like this one, and activities like archery and axe throwing. It's on all day from morning until late in the night, and this year I found that there's a really nice way to walk to it around the back from an alternate train line that goes through one of Leipzig's many beautiful parks, and avoids the fairly crowded tram line.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/vcz65t10lm9veua4tzt2z/2W4A3513-good-crop2.jpg?rlkey=fklgc156w4p3xjee09wwgguqp&dl=1"
+    slug = "061"
+
+[[entries]]
   published_at = 2023-10-15T12:52:23-07:00
   slug = "060"
   title = "Mist over the valley"
