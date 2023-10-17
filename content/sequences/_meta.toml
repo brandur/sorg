@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-10-17T11:45:27-07:00
+  slug = "062"
+  title = "Camp Reynolds"
+  description = """
+A photo out to the ocean from Camp Reynolds on Angel Island.
+
+It took me a long time to get over there, but I learned that Angel Island is easily one of the best places to go in the Bay Area. Beautiful views, with a lot of neat WWII architecture, and completely car-free. I spent the day there hiking first around the perimeter, and then up and over the top. You can camp on the island, which I want to try next.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/zj57qvmjaejr37pzeeosx/2W4A3709.JPG?rlkey=hrcyjffbucsrnyle4mw35ow07&dl=1"
+    slug = "062"
+
+[[entries]]
   published_at = 2023-10-16T10:03:07-07:00
   slug = "061"
   title = "Pagan"

@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-17T11:45:27-07:00
+  description = """\
+Published [sequence 062](/sequences/062), Camp Reynolds.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/062"
+    original_image_url = "https://www.dropbox.com/scl/fi/zj57qvmjaejr37pzeeosx/2W4A3709.JPG?rlkey=hrcyjffbucsrnyle4mw35ow07&dl=1"
+    slug = "camp-reynolds"
+
+[[atoms]]
   published_at = 2023-10-17T10:42:00-07:00
   description = """\
 A [_very_ in-depth comparison of Ruby HTTP clients in 2023](https://honeyryderchuck.gitlab.io/2023/10/15/state-of-ruby-http-clients-use-httpx.html). I try to avoid dependencies where possible, but the API of Ruby's built-in HTTP client is so absolutely brutal that I've always defaulted to using Excon.
