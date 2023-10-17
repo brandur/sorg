@@ -11,6 +11,25 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-17T10:18:18-07:00
+  description = """\
+For Go 1.22: [enhancements to Go's HTTP routing capabilities](https://github.com/golang/go/issues/61410). Namely, routes will be lockable to specific HTTP verbs (`GET`, `POST`, ...) and will be able to take named path parameters (`/item/{user}`), crucial features that've been _desperately_ needed in Go for 14 years (Go announced November 2009), and whose absence has created an absurd plethora of third party libraries to fill the vaccuum.
+
+Example usage for `ServeMux.Handle` and `ServeMux.HandleFunc`:
+
+```
+/item/
+POST /item/{user}
+/item/{user}
+/item/{user}/{id}
+/item/{$}
+POST alt.com/item/{user}
+```
+
+I was looking through our code and I think that with this available we'll be able to tear out [Mux](https://github.com/gorilla/mux), although a nicer way to do middleware and subrouters in `net/http` would be appreciated.
+"""
+
+[[atoms]]
   published_at = 2023-10-16T13:20:12-07:00
   description = """\
 An exciting PGBouncer release: ["The one with prepared statements"](https://github.com/pgbouncer/pgbouncer/releases/tag/pgbouncer_1_21_0).
