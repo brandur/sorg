@@ -11,6 +11,33 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-17T10:42:00-07:00
+  description = """\
+A [_very_ in-depth comparison of Ruby HTTP clients in 2023](https://honeyryderchuck.gitlab.io/2023/10/15/state-of-ruby-http-clients-use-httpx.html). I try to avoid dependencies where possible, but the API of Ruby's built-in HTTP client is so absolutely brutal that I've always defaulted to using Excon.
+
+The author finds that [HTTPX](https://github.com/HoneyryderChuck/httpx) is the best choice, which you have to take with a grain of salt since the article's author also wrote HTTPX (although the comparison is fair by my read).
+
+HTTPX's only dependency is `http-2-next`, with no C extensions or other shenanigans. It's feature rich, and will use powerful HTTP constructs by default. See this example where multiple requests are made concurrently automatically, and those targeting the same host will multiplex over the same socket with HTTP/2:
+
+``` ruby
+HTTPX.get(
+  "https://news.ycombinator.com/news",
+  "https://news.ycombinator.com/news?p=2",
+  "https://google.com/q=me"
+) # first two requests will be multiplexed on the same socket.
+```
+
+The corner cases it can handle are genuinely impressive. For example, here's how to target a request to an IP address over HTTPS and pass a specific hostname to verify using TLS [SNI](https://en.wikipedia.org/wiki/Server_Name_Indication), something that almost no one will ever have to do, but great to have for anyone who finds themselves in that position:
+
+``` ruby
+HTTPX.get("https://172.45.65.131:5647/",
+  ssl: {hostname: "proxy-ssl"},
+  headers: {"host": "subapp.com:5647"})
+```
+"""
+
+
+[[atoms]]
   published_at = 2023-10-17T10:18:18-07:00
   description = """\
 For Go 1.22: [enhancements to Go's HTTP routing capabilities](https://github.com/golang/go/issues/61410). Namely, routes will be lockable to specific HTTP verbs (`GET`, `POST`, ...) and will be able to take named path parameters (`/item/{user}`), crucial features that've been _desperately_ needed in Go for 14 years (Go announced November 2009), and whose absence has created an absurd plethora of third party libraries to fill the vaccuum.
