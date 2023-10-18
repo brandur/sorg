@@ -77,7 +77,7 @@ The new version of PGBouncer solves the problem [via internal bookkeeping](https
 
 The release notes claim a performance improvement between 15% to 250%. I'd guess that it'd be closer to 15% for most real world apps, but if you're using PGBouncer, why not. It's still 15%.
 
-We'll have it ready on Bridge soon. (Update: now available.)
+We'll have it ready on Bridge soon. (**Update:** now available.)
 """
 
 [[atoms]]
