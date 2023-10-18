@@ -20,7 +20,7 @@
 
     * I like to carry a tiny [20W USB-C charging brick](https://www.apple.com/shop/product/MHJA3AM/A/20w-usb-c-power-adapter) when going to work during the day. Takes ~no space and is enough to keep the computer charged.
 
-* **<span id="canon-r6">[Canon R6](#canon-r6):</span>** Most photos on this site are shot with a Canon R6, which I've been shooting with for ~5 years. It's full-frame (a must) and uses Canon's RF lenses, which are admired industrywide. As good as smartphone cameras have gotten, I still lug this thing around because the detail and crispness of a full frame attached to real glass is that much better.
+* **<span id="canon-r6">[Canon R6](#canon-r6):</span>** Most photos on this site are shot with a Canon R6, which I've been shooting with for ~4 years. It's full-frame (a must) and uses Canon's RF lenses, which are admired industrywide. As good as smartphone cameras have gotten, I still lug this thing around because the detail and crispness of a full frame attached to real glass is that much better.
 
     * Despite that, I wouldn't give Canon more than a weak recommendation. Their software is awful, they make consumer-hostile decisions like that cameras won't charge over USB-C while they're turned on so that Canon can sell you a proprietary power delivery kit extra, and their claim of weather sealing on premium products like their USM lenses is extremely dubious (as I found out the hard way recently).
 
