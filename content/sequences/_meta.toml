@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-10-18T19:26:02-07:00
+  slug = "063"
+  title = "Paris chic"
+  description = """
+A photo from my trip to Paris a few months ago, taken as I was slowly making my way over to Notre Dame. While not exactly beautiful, Parisienne apartment blocks certainly have style.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/4z4vvsx0hrcycnv87c358/2W4A2575.JPG?rlkey=hvtgepfgcp540l5y0lemb0uqn&dl=1"
+    slug = "063"
+
+[[entries]]
   published_at = 2023-10-17T11:45:27-07:00
   slug = "062"
   title = "Camp Reynolds"
