@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-21T14:15:37-07:00
+  description = """\
+I've used `youtube-dl` on and off over the years, mostly for cases where I want a video off YouTube for offline/long term viewing.
+
+Recently, Google's started flitted with warnings that adblockers aren't allowed on YouTube. It's a soft paywall for now that's dismissable, but the next step could be a full ban.
+
+I've been playing with a workflow involving [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) (a fork of `youtube-dl` with more active development). When linked to YouTube, copy the link instead of following it, jump to terminal and paste it with `yt-dlp <link>`, then `open` the file with [Movist Pro](https://movistprime.com/) (a great all-purpose video player for macOS).
+
+There's definitely a little friction, but it comes with benefits (a much better video playback experience including keyboard shortcuts and being able to pin the window on top, no buffering), and is only nominally worse than dismissing popups.
+"""
+
+[[atoms]]
   published_at = 2023-10-18T19:26:02-07:00
   description = """\
 Published [sequence 063](/sequences/063), Paris chic.
