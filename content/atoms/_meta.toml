@@ -11,6 +11,24 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-28T11:24:35-07:00
+  description = """\
+A new version of goleak ([1.3.0](https://github.com/uber-go/goleak/releases/tag/v1.3.0)) includes [`IgnoreAnyFunction` function](https://github.com/uber-go/goleak/pull/113) which allows a specific function to be ignored at any level of a goroutine's stack. Previously, only a function at the top layer could be ignored, which forced us to ignore extremely generic functions like `time.Sleep`.
+
+For example, this ignore, which was ignoring an internal function deep in the standard library (`internal/poll.runtime_pollWait`):
+
+```
+goleak.IgnoreTopFunction("internal/poll.runtime_pollWait")
+```
+
+Becomes this, which property ignores the specific offending goroutine in Pgx:
+
+``` go
+goleak.IgnoreAnyFunction("github.com/jackc/pgx/v5/pgconn/internal/bgreader.(*BGReader).bgRead")
+```
+"""
+
+[[atoms]]
   published_at = 2023-10-21T14:15:37-07:00
   description = """\
 I've used `youtube-dl` on and off over the years, mostly for cases where I want a video off YouTube for offline/long term viewing.
