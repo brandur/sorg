@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2023-10-29T11:43:23-07:00
   description = """\
-I was spelunking some Go internal code today, and came across the definition of `testing.TB`. See `private` at the end:
+I was spelunking some Go internal code today, and came across the definition of `testing.TB`. See `private()` at the end:
 
 ``` go
 // TB is the interface common to T, B, and F.
