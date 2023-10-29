@@ -11,6 +11,45 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-29T11:43:23-07:00
+  description = """\
+I was spelunking some Go internal code today, and came across the definition of `testing.TB`. See `private` at the end:
+
+``` go
+// TB is the interface common to T, B, and F.
+type TB interface {
+	Cleanup(func())
+	Error(args ...any)
+	Errorf(format string, args ...any)
+	Fail()
+	FailNow()
+	Failed() bool
+	Fatal(args ...any)
+	Fatalf(format string, args ...any)
+	Helper()
+	Log(args ...any)
+	Logf(format string, args ...any)
+	Name() string
+	Setenv(key, value string)
+	Skip(args ...any)
+	SkipNow()
+	Skipf(format string, args ...any)
+	Skipped() bool
+	TempDir() string
+
+	// A private method to prevent users implementing the
+	// interface and so future additions to it will not
+	// violate Go 1 compatibility.
+	private()
+}
+```
+
+The interfaces mixes in a private function to make it impossible for external packages to implement it. This leaves the authors free to add new functions to the interface without worrying about breaking existing user code.
+
+Personally, I hadn't seen this technique in action before. It's probably something that most Go APIs could take advantage of.
+"""
+
+[[atoms]]
   published_at = 2023-10-28T11:24:35-07:00
   description = """\
 A new version of goleak ([1.3.0](https://github.com/uber-go/goleak/releases/tag/v1.3.0)) includes [`IgnoreAnyFunction` function](https://github.com/uber-go/goleak/pull/113) which allows a specific function to be ignored at any level of a goroutine's stack. Previously, only a function at the top layer could be ignored, which forced us to ignore extremely generic functions like `time.Sleep`.
