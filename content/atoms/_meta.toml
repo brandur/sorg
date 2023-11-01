@@ -11,6 +11,29 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-10-31T18:49:28-07:00
+  description = """\
+An unfortunate discovery in Go today: when using `go test` and running a [testable example](https://go.dev/blog/examples), the `-count` flag is silently ignored -- a little confusing, underdocumented sharp edge for potential users. That is unless you specified the magic number `-count=1`, in which case you get the normal test cache busting behavior.
+
+``` sh
+$ go help testflag
+    ...
+
+        -count n
+            Run each test, benchmark, and fuzz seed n times (default 1).
+            If -cpu is set, run n times for each GOMAXPROCS value.
+            Examples are always run once. -count does not apply to
+            fuzz tests matched by -fuzz.
+```
+
+This makes it hard to reproduce intermittent problems in an example test. As a workaround, I'm using a shell loop that runs the test until it returns a non-zero exit code:
+
+``` sh
+while go test . -run Example_customInsertOpts -test.v -count=1; do :; done
+```
+"""
+
+[[atoms]]
   published_at = 2023-10-29T11:43:23-07:00
   description = """\
 I was spelunking some Go internal code today, and came across the definition of `testing.TB`. See `private()` at the end:
