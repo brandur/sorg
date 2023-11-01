@@ -13,7 +13,9 @@
 [[atoms]]
   published_at = 2023-10-31T18:49:28-07:00
   description = """\
-An unfortunate discovery in Go today: when using `go test` and running a [testable example](https://go.dev/blog/examples), the `-count` flag is silently ignored -- a little confusing, underdocumented sharp edge for potential users. That is unless you specified the magic number `-count=1`, in which case you get the normal test cache busting behavior.
+An unfortunate discovery in Go today: when using `go test` and running a [testable example](https://go.dev/blog/examples), the `-count` flag is silently ignored -- a confusing, underdocumented sharp edge for users. That is unless you specified the magic number `-count=1`, in which case you get the normal test cache busting behavior.
+
+You can find a caveat in help once you suspect the existence of this problem, but the only way to notice it's happening is that your tests are running suspiciously fast at high `-count` iterations. No error or warning is produced.
 
 ``` sh
 $ go help testflag
