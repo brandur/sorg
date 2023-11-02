@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-02T12:46:21-07:00
+  description = """\
+Today, after years of VSCode, I finally found the options to disable its default behavior of automatically adding closing brackets and quotes (i.e. if you type `{`, it'll add `}`, or `"` to get a second `"`).
+
+They're in Preferences (`⌘,`) under `Auto Closing Brackets` and `Auto Closing Quotes`.
+
+I used the default for a long time because I figured that I must be missing something -- most of VSCode's defaults are pretty good, so somebody must find this behavior useful. If I give it a chance, that usefulness will eventually pop out at me.
+
+But after a long trial period, I'm killing it with prejudice. For the life of me I can't remember one situation ever where an automatic bracket/quote saved me anything beyond the most infinitesimal amount of time, but on the other hand, especially when refactoring, they waste time by doing the wrong thing in 90%+ of cases. I'll be changing things around within an already existing line, and as I'm adding a bracket/quote, VSCode puts in a closing version even though one already exists. I actually developed muscle memory to tab right and delete the new character.
+
+A similar story for automatically added tags in HTML templates. When writing brand new templates it's pretty handy to have the closing tags inserted for you, but I find that I'm editing existing templates the majority of the time, and once again, VSCode is constantly inserting closing tags where one already exists.
+
+A rare miss for VSCode. Maybe I just don't get it.
+"""
+
+[[atoms]]
   published_at = 2023-10-31T18:49:28-07:00
   description = """\
 An unfortunate discovery in Go today: when using `go test` and running a [testable example](https://go.dev/blog/examples), the `-count` flag is silently ignored -- a confusing, underdocumented sharp edge for users. That is unless you specified the magic number `-count=1`, in which case you get the normal test cache busting behavior.
