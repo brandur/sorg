@@ -91,4 +91,4 @@ All in all, this pattern's not a strong recommendation, but we've had `PartialEq
 
 ## Prototype implementation (#implementation)
 
-I put [my implementation of `PartialEqual` into a Gist](https://gist.github.com/brandur/7b459a1ed81bfd041fabf05dc34265e3) that you can clone down, but mainly to act as reference. The code's not tremendous by any means, and its got a dependency on testify/require which isn't optimal, but if you're interesting in trying the pattern, it'll give you a start.
+I put [my implementation of `PartialEqual` into a Gist](https://gist.github.com/brandur/7b459a1ed81bfd041fabf05dc34265e3) that you can clone down, but mainly to act as reference. The code's not tremendous by any means, and it's got a dependency on testify/require which isn't optimal, but if you're interesting in trying the pattern, it'll give you a start.
