@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-13T13:23:09-08:00
+  description = """\
+The [Ruby on Rails documentary](https://www.youtube.com/watch?v=HDKUEXBF3B4) has been published. I watched it this morning. It's just about the right length (45 minutes), and centers around interviews with DHH, Jason Fried, and Tobias Lütke.
+"""
+
+[[atoms]]
   published_at = 2023-11-02T12:46:21-07:00
   description = """\
 Today, after years of VSCode, I finally found the options to disable its default behavior of automatically adding closing brackets and quotes (i.e. if you type `{`, it'll add `}`, or `"` to get a second `"`).
