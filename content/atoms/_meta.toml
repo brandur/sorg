@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-14T11:16:01-08:00
+  description = """\
+WeWork filed for bankruptcy last week. With its stock price down 99.5% since peak and whispers rampant, it'd been expected for a while.
+
+I was wondering if it'd change anything operationally. I went in the next day and was seated close enough to the space's office managers to overhear most conversations as people made their way in throughout the day. There might've been one person who brought up the bankruptcy filing. Entirely business as usual.
+
+Despite the bad news, every writeup on the subject has had an amazingly _optimistic_ outlook for the company. This excerpt from The Industry is representative:
+
+> First of all, this is America, which means the rich go out different (a good thing btw, but we’ll save it for another day). “Bankrupt” doesn’t mean “gone,” exactly, but there is a hierarchy in terms of who gets screwed the most. The likeliest case is equity shareholders and stockholders get nothing, and debt holders get whatever is left. Someone could buy the company, shed the worst leases, renegiotiate the rest, and operate a leaner WeWork that benefits from stunning spaces built out using ZIRP-era VC dollars. So your nearest WeWork may shut down, but a lot of them, in some form or another, will likely stick around.
+
+Assuming they can get that debt off the balance sheet and their most egregious leases from peak CRE renegotiated, I'd be amazed if WeWork couldn't recover. It's a great product with good revenue, and aside from those leases (which would be priced much lower in 2023), it really shouldn't cost that much to run.
+"""
+
+[[atoms]]
   published_at = 2023-11-13T13:23:09-08:00
   description = """\
 The [Ruby on Rails documentary](https://www.youtube.com/watch?v=HDKUEXBF3B4) has been published. I watched it this morning. It's just about the right length (45 minutes), and centers around interviews with DHH, Jason Fried, and Tobias Lütke.
