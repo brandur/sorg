@@ -84,6 +84,34 @@
         <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
 
         <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8">
+            <div class="
+                border-b border-l xl:border-b-0
+                hidden md:block
+                float-right
+                max-w-[250px]
+                ml-4
+                mb-4
+                lg:-mr-[80px] xl:-mr-[250px]
+                pl-4
+                pb-4
+                prose prose-sm
+                prose-li:my-2
+
+                prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
+                prose-a:prose-li:prose-li:font-normal prose-li:prose-li:my-1 prose-li:prose-li:text-[0.65rem]
+
+                prose-ol:prose-li:prose-li:list-[lower-roman]
+                prose-li:prose-li:prose-li:text-[0.6rem]
+
+                xl:sticky xl:top-5
+                text-xs
+            ">
+                {{if ne .Article.TOC ""}}
+                    <!-- <span class="font-bold tracking-tighter uppercase">Contents</span> -->
+                    {{.Article.TOC}}
+                {{end}}
+            </div>
+
             <div class="hyphens-auto
                 max-w-none
                 prose prose-lg
@@ -102,16 +130,6 @@
                 prose-ol:font-serif
                 prose-ul:font-serif
                 ">
-                <!--
-                    TODO: Fix the TOC at some point. Mostly just needs styling.
-
-                    <div class="float-right max-w-[250px] text-xs">
-                        {{if ne .Article.TOC ""}}
-                            <span class="">Contents</span>
-                            {{.Article.TOC}}
-                        {{end}}
-                    </div>
-                -->
 
                 {{.Article.Content}}
             </div>
