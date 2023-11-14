@@ -1654,8 +1654,8 @@ video {
   margin-bottom: 6rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 
 .mb-8 {
@@ -1674,8 +1674,8 @@ video {
   margin-left: 0.125rem;
 }
 
-.ml-4 {
-  margin-left: 1rem;
+.ml-3 {
+  margin-left: 0.75rem;
 }
 
 .mr-0 {
@@ -1766,8 +1766,8 @@ video {
   max-width: 1300px;
 }
 
-.max-w-\[250px\] {
-  max-width: 250px;
+.max-w-\[200px\] {
+  max-width: 200px;
 }
 
 .max-w-\[550px\] {
@@ -2002,6 +2002,10 @@ video {
   padding-bottom: 5rem;
 }
 
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -2014,12 +2018,16 @@ video {
   padding-left: 0px;
 }
 
-.pl-4 {
-  padding-left: 1rem;
+.pl-3 {
+  padding-left: 0.75rem;
 }
 
 .pr-3 {
   padding-right: 0.75rem;
+}
+
+.pt-3 {
+  padding-top: 0.75rem;
 }
 
 .text-center {
@@ -2694,12 +2702,12 @@ video {
     position: sticky;
   }
 
-  .xl\:top-5 {
-    top: 1.25rem;
+  .xl\:top-0 {
+    top: 0px;
   }
 
-  .xl\:-mr-\[250px\] {
-    margin-right: -250px;
+  .xl\:-mr-\[210px\] {
+    margin-right: -210px;
   }
 
   .xl\:mr-\[calc\(-0\.5rem-150px\)\] {
