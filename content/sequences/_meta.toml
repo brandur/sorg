@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-11-15T14:15:21-08:00
+  slug = "064"
+  title = "Paris cool"
+  description = """
+Another from Paris. This one from a scenic water feature nearby the Louvre called Le Grand Bassin Rond (the big round pool, very apt) located in the Jardin des Tuileries. It's amazing how old these places are. The garden was created about 500 years ago in 1564, opened to the public in 1667, and made public after the French Revolution.
+
+It's a lucky companion for the Louvre because the large open area acts as pressure relief for the Louvre and other major landmarks in the area. It's a big park, but busy.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/abkd6v5tmsv80xb3gjxr7/2W4A2662-crop.jpg?rlkey=13yy4slhpedf2lszv8s2i78ng&dl=1"
+    slug = "064"
+
+[[entries]]
   published_at = 2023-10-18T19:26:02-07:00
   slug = "063"
   title = "Paris chic"

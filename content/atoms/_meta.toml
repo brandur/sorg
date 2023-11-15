@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-15T14:15:21-08:00
+  description = """\
+Published [sequence 064](/sequences/064), Paris cool, at Le Grand Bassin Rond.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/064"
+    original_image_url = "https://www.dropbox.com/scl/fi/abkd6v5tmsv80xb3gjxr7/2W4A2662-crop.jpg?rlkey=13yy4slhpedf2lszv8s2i78ng&dl=1"
+    slug = "paris-cool"
+
+[[atoms]]
   published_at = 2023-11-14T11:16:01-08:00
   description = """\
 WeWork filed for bankruptcy last week. With its stock price down 99.5% since peak and whispers rampant, it'd been expected for a while.
