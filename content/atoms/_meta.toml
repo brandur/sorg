@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-17T07:58:04-08:00
+  description = """\
+[_Nanoglyph 041_](/nanoglyphs/041-15-16) is published, on Postgres 16, iPhone 15, charging batteries to 80%, and APEC.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/041-15-16"
+    original_image_url = "https://www.dropbox.com/scl/fi/g3la9u850bzysjr4orqod/2W4A4603.JPG?rlkey=g631yrdi45i8kqr84owf81koa&dl=1"
+    slug = "one-montgomery"
+
+[[atoms]]
   published_at = 2023-11-16T20:47:46-08:00
   description = """\
 Published [sequence 065](/sequences/065), protesting the CCP, taken during APEC (Asia-Pacific Economic Cooperation) in San Francisco. Xi is staying in the presidential suite about a block away.

@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-11-17T07:58:04-08:00
+  slug = "066"
+  title = "One Montgomery"
+  description = """
+One Montgomery in the morning, midway up Market Street in San Francisco. APEC's in town, and this part of the city is a little calmer than usual.
+
+Poster for [_Nanoglyph 041: 15, 16_](/nanoglyphs/041-15-16).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/g3la9u850bzysjr4orqod/2W4A4603.JPG?rlkey=g631yrdi45i8kqr84owf81koa&dl=1"
+    slug = "066"
+
+[[entries]]
   published_at = 2023-11-16T20:47:46-08:00
   slug = "065"
   title = "Protesting the CCP"
@@ -84,7 +97,7 @@ The area consists of a music stage, food and drink vendors (roast pig, mead, man
   description = """
 A bird's eye view of our booth at Rails World, at the _Beurs van Berlage_ in Amsterdam. I've now worked in a couple different expo halls and so far this is the best set up that I've seen. More often than not, the expo hall is off on the periphery of the conference somewhere, and you're competing with a lot of other vendors for attention. Here, the expo hall was the same room where everyone took their meals and came to for snacks and drinks. There wasn't much in the way of seating, so we ate and drank standing up, which had the effect of encouraging people to intermingle. We had people stopping by constantly. It was a small conference and the first of its kind so there weren't too many other sponsors, and we also just lucked out, assigned a great spot by chance.
 
-Poster for [_Nanoglyph 040: Rails World, 7.1, Amsterdam_](/nanoglyphs/039-rails-world).
+Poster for [_Nanoglyph 040: Rails World, 7.1, Amsterdam_](/nanoglyphs/040-rails-world).
 """
   [[entries.photographs]]
     original_image_url = "https://www.dropbox.com/scl/fi/cmj8ij7hb3751m8cld6b5/2W4A4580-adjusted.jpg?rlkey=ygvze9uo1ir013agg0q8yh2v3&dl=1"
