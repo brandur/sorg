@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-16T20:47:46-08:00
+  description = """\
+Published [sequence 064](/sequences/065), protesting the CCP, taken during APEC (Asia-Pacific Economic Cooperation) in San Francisco.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/065"
+    original_image_url = "https://www.dropbox.com/scl/fi/c9xgflis1csta7o1lwmho/2W4A4633-anti-ccp-crop.jpg?rlkey=btpnz7qlami9ioi56qt5njrwp&dl=1"
+    slug = "protesting-the-ccp"
+
+[[atoms]]
   published_at = 2023-11-15T14:15:21-08:00
   description = """\
 Published [sequence 064](/sequences/064), Paris cool, at Le Grand Bassin Rond.

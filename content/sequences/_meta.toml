@@ -11,6 +11,23 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-11-16T20:47:46-08:00
+  slug = "065"
+  title = "Protesting the CCP"
+  description = """
+It's APEC (Asia-Pacific Economic Cooperation) week in San Francisco, with both Biden and Xi in attendance.
+
+There's been significant protests outside the Hyatt Regency on 3rd. This is close to where Xi is apparently staying (the St Regis a block down), but it's not clear if they have their hotels mixed up or (with checkpoints in place) the St Regis is too hard to get to.
+
+Falun Gong protestors in yellow rain rainjackets, holding big banners, and playing relaxing spa music, are present around the clock. And on the other end of the spectrum, big red CCP flags welcoming Xi hang along the same street.
+
+This photo is of a small group of anti-CCP protestors that pushed their way through police lines towards the Hyatt Regency before being sent back. The various police forces did an admirable job of deescalation -- the protestors got their word in, but were eventually ejected. In the end, no one was hurt, and no one arrested.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/c9xgflis1csta7o1lwmho/2W4A4633-anti-ccp-crop.jpg?rlkey=btpnz7qlami9ioi56qt5njrwp&dl=1"
+    slug = "065"
+
+[[entries]]
   published_at = 2023-11-15T14:15:21-08:00
   slug = "064"
   title = "Paris cool"
