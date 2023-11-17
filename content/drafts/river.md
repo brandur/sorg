@@ -9,7 +9,7 @@ image = "/assets/images/river/shrine.jpg"
 #image = "/assets/images/river/ten-waterfalls.jpg"
 location = "San Francisco"
 published_at = 2023-11-14T09:47:16-08:00
-title = "River, a Fast Job Queue for Go and Postgres"
+title = "River: a Fast, Robust Job Queue for Go + Postgres"
 +++
 
 Years ago I wrote about [my woes with a Postgres job queue](/postgres-queues), in which table bloat caused by long-running queries slowed down the workers' capacity to lock jobs as they hunted across millions of dead tuples before they found a live one.
@@ -34,7 +34,7 @@ I also picked up a Go habit to the point where it's now been my language of choi
 
 ## River is born (#river-is-born)
 
-So a few months ago, [Blake](https://github.com/riverqueue/river) and I did what one should generally never do, and started writing a new queueing project built specifically around Postgres, Go, and our favorite Go driver, [pgx](https://github.com/jackc/pgx). And finally, after many long discussions about API shapes and implementation approaches, it's ready for alpha use. [Introducing River](), a job queue for building fast, airtight applications.
+So a few months ago, [Blake]() and I did what one should generally never do, and started writing a new queueing project built specifically around Postgres, Go, and our favorite Go driver, [pgx](https://github.com/jackc/pgx). And finally, after many long discussions about API shapes and implementation approaches, it's ready for alpha use. [Introducing River](https://github.com/riverqueue/river), a job queue for building fast, airtight applications.
 
 One of the relatively new features in Go (since 1.18) that we really wanted to bake in was the use of generics. A river workers looks like this, taking a `river.Job[JobArgs]` parameter that provides strongly typed access to the arguments within:
 

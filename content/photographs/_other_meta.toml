@@ -334,6 +334,59 @@ title = "iA Writer."
 #   * constrained (non photos): 600 wide
 #
 
+
+#
+# /nanoglyphs/041-15-16
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/c9xgflis1csta7o1lwmho/2W4A4633-anti-ccp-crop.jpg?rlkey=btpnz7qlami9ioi56qt5njrwp&dl=1"
+slug = "nanoglyphs/041-15-16/anti-ccp"
+title = "Anti-CCP protestors"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/of2w85tnxsy3x3wpkqoef/2W4A4602.JPG?rlkey=tmzeqn597c6spcixcrvozj8an&dl=1"
+slug = "nanoglyphs/041-15-16/barriers"
+title = "Barriers"
+
+[[photographs]]
+crop_width = 300
+original_image_url = "https://www.dropbox.com/scl/fi/75qa77vyum7ol10l1jdhh/battery-lifecycles.jpg?rlkey=wtst8l87ruzn9cqivswccthrg&dl=1"
+slug = "nanoglyphs/041-15-16/battery-lifecycles"
+title = "Battery lifecycles"
+
+[[photographs]]
+crop_width = 500
+original_image_url = "https://www.dropbox.com/scl/fi/2beoxpj7p5vd2ksekm7vv/fentanyl.png?rlkey=tjxw3vkbn6slngbwqkgoi8uvy&dl=1"
+slug = "nanoglyphs/041-15-16/fentanyl"
+title = "Fentanyl meme"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/g3la9u850bzysjr4orqod/2W4A4603.JPG?rlkey=g631yrdi45i8kqr84owf81koa&dl=1"
+slug = "nanoglyphs/041-15-16/one-montgomery"
+title = "One Montgomery"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/yks4b3cj7tovk8whdbnk4/2W4A4631-crop.jpg?rlkey=fwmjbj5ezek1p1q3zw96wdcwe&dl=1"
+slug = "nanoglyphs/041-15-16/palace-hotel"
+title = "Palace Hotel"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/qbdmwqaikuz0tyubjvyse/2W4A4610.JPG?rlkey=04y4qxs6lnhg5pihulvav0y0c&dl=1"
+slug = "nanoglyphs/041-15-16/road-closed"
+title = "Road closed"
+
+[[photographs]]
+crop_width = 500
+original_image_url = "https://www.dropbox.com/scl/fi/00cjyqf7qt4f225z57ii0/yellen-xi.jpg?rlkey=i8kid7h33nt8g9n9026wjvpai&dl=1"
+slug = "nanoglyphs/041-15-16/yellen-xi"
+title = "Yellen and Xi meme"
+
 #
 # /nanoglyphs/040-rails-world
 #
@@ -387,7 +440,7 @@ slug = "nanoglyphs/040-rails-world/version-wall-2009"
 title = "Version wall @ 2.3 (2009)"
 
 #
-# /nanoglyphs/039-steam
+# /nanoglyphs/039-trails
 #
 
 [[photographs]]
