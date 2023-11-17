@@ -20,7 +20,7 @@ It's not the first time I've had a light debate like this one. I love the list o
 
 Many will be familiar with this quote often attributed to Einstein ([but not definitively](https://quoteinvestigator.com/2011/05/13/einstein-simple/)):
 
-> Every should be made as simple as possible, but not simpler.
+> Everything should be made as simple as possible, but not simpler.
 
 The problem with software is that very often, the minimum viable simplicity is actually pretty complex.
 
