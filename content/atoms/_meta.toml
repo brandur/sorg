@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-17T15:02:19-08:00
+  description = """\
+Sam Altman ousted from OpenAI and Brockman demoted.
+
+I have nothing intelligent to say about the situation, so I'll leave it at this: isn't this just about the most astonishing thing that could have possibly have happened in tech right now?
+
+_The_ highest profile person at _the_ most important company in _the_ most important new technology space, a man presumed king, is fired.
+"""
+
+[[atoms]]
   published_at = 2023-11-17T07:58:04-08:00
   description = """\
 [_Nanoglyph 041_](/nanoglyphs/041-15-16) is published, on Postgres 16, iPhone 15, charging batteries to 80%, and APEC.
