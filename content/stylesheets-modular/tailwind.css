@@ -1694,8 +1694,8 @@ video {
   margin-left: 0.125rem;
 }
 
-.ml-3 {
-  margin-left: 0.75rem;
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .ml-auto {
@@ -1810,8 +1810,8 @@ video {
   max-width: 1300px;
 }
 
-.max-w-\[200px\] {
-  max-width: 200px;
+.max-w-\[190px\] {
+  max-width: 190px;
 }
 
 .max-w-\[550px\] {
@@ -1876,6 +1876,10 @@ video {
 
 .basis-\[170px\] {
   flex-basis: 170px;
+}
+
+.basis-\[190px\] {
+  flex-basis: 190px;
 }
 
 .transform {
@@ -2749,8 +2753,8 @@ video {
     }
   }
 
-  .lg\:-mr-\[80px\] {
-    margin-right: -80px;
+  .lg\:-mr-\[60px\] {
+    margin-right: -60px;
   }
 
   .lg\:mr-\[calc\(-0\.5rem-75px\)\] {
@@ -2787,24 +2791,24 @@ video {
     }
   }
 
-  .xl\:sticky {
-    position: sticky;
-  }
-
-  .xl\:top-0 {
-    top: 0px;
-  }
-
-  .xl\:-mr-\[210px\] {
-    margin-right: -210px;
-  }
-
   .xl\:mr-\[calc\(-0\.5rem-150px\)\] {
     margin-right: calc(-0.5rem - 150px);
   }
 
-  .xl\:border-b-0 {
-    border-bottom-width: 0px;
+  .xl\:block {
+    display: block;
+  }
+
+  .xl\:hidden {
+    display: none;
+  }
+
+  .xl\:max-w-\[1100px\] {
+    max-width: 1100px;
+  }
+
+  .xl\:pr-8 {
+    padding-right: 2rem;
   }
 
   .prose-figure\:xl\:-mx-\[400px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
