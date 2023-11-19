@@ -1921,6 +1921,10 @@ video {
           hyphens: auto;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }

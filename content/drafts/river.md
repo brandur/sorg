@@ -30,7 +30,7 @@ Consider:
 
 ---
 
-* To work around the data visibility problem, a job is emitted to Redis _after_ the transaction commits. But there's a brief moment between the commit and job emit where if the process crashes or there's a bug, the job is gone, requiring manual intervention to resolve (if it's even noticed).
+* In an attempt to work around the data visibility problem, a job is emitted to Redis _after_ the transaction commits. But there's a brief moment between the commit and job emit where if the process crashes or there's a bug, the job is gone, requiring manual intervention to resolve (if it's even noticed).
 
 <div class="ml-auto w-10/12"><img src="/assets/images/river/job-emit-failure.svg" alt="Job post-transaction emit failure"></div>
 
@@ -52,7 +52,9 @@ I also picked up a Go habit to the point where it's now been my language of choi
 
 So a few months ago, [Blake](https://github.com/bgentry) and I did what one should generally never do, and started writing a new job queue project built specifically around Postgres, Go, and our favorite Go driver, [pgx](https://github.com/jackc/pgx). And finally, after long discussions and much consternation around API shapes and implementation approaches, it's ready for alpha use.
 
-I'd like to [introduce River](https://github.com/riverqueue/river), a job queue for building fast, airtight applications.
+I'd like to introduce River ([GitHub link](https://github.com/riverqueue/river)), a job queue for building fast, airtight applications.
+
+<a href="https://riverqueue.com"><img src="/assets/images/river/river-home.png" srcset="/assets/images/river/river-home@2x.png 2x, /assets/images/river/river-home.png 1x" alt="Screen shot of River home page" class="rounded-3xl"></a>
 
 ### Designed for generics (#generics)
 
@@ -87,7 +89,7 @@ Beyond the basics, River supports batch insertion, error and panic handlers, per
 
 Job queues are never really done, but we're pretty proud of the API design and initial feature set. Check out [the project's README](https://github.com/riverqueue/river) and [getting started guide](https://riverqueue.com/docs).
 
-### Designed for performance (#performance)
+### With performance in mind (#performance)
 
 One of the reasons we like to write things in Go is that it's fast. We wanted River to be a good citizen of the ecosystem and designed it to use fast techniques where we could:
 
