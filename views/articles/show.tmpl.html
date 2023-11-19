@@ -84,37 +84,37 @@
         <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
 
         <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8 xl:pr-8">
-            <!--
-                IMPORTANT: The TOC is duplicated below so that it can be part of
-                the flexbox at large sizes, but inlined at contents at smaller
-                ones. Make changes in both places.
-            -->
-            <div class="
-                border-b border-l
-                hidden md:block xl:hidden
-                float-right
-                max-w-[190px]
-                ml-4
-                mb-3
-                lg:-mr-[60px]
-                pl-3
-                pb-5
-                pt-3
-                prose prose-sm
-                prose-li:my-2
+            {{if ne .Article.TOC ""}}
+                <!--
+                    IMPORTANT: The TOC is duplicated below so that it can be part of
+                    the flexbox at large sizes, but inlined at contents at smaller
+                    ones. Make changes in both places.
+                -->
+                <div class="
+                    border-b border-l
+                    hidden md:block xl:hidden
+                    float-right
+                    max-w-[190px]
+                    ml-4
+                    mb-3
+                    lg:-mr-[60px]
+                    pl-3
+                    pb-5
+                    pt-3
+                    prose prose-sm
+                    prose-li:my-2
 
-                prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
-                prose-a:prose-li:prose-li:font-normal prose-li:prose-li:my-1 prose-li:prose-li:text-[0.65rem]
+                    prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
+                    prose-a:prose-li:prose-li:font-normal prose-li:prose-li:my-1 prose-li:prose-li:text-[0.65rem]
 
-                prose-ol:prose-li:prose-li:list-[lower-roman]
-                prose-li:prose-li:prose-li:text-[0.6rem]
+                    prose-ol:prose-li:prose-li:list-[lower-roman]
+                    prose-li:prose-li:prose-li:text-[0.6rem]
 
-                text-xs
-            ">
-                {{if ne .Article.TOC ""}}
+                    text-xs
+                ">
                     {{.Article.TOC}}
-                {{end}}
-            </div>
+                </div>
+            {{end}}
 
             <div class="hyphens-auto
                 max-w-none
@@ -138,33 +138,33 @@
                 {{.Article.Content}}
             </div>
         </div>
-        <div class="basis-[190px] border-l flex-grow-0 flex-shrink-0 hidden xl:block">
-            <!--
-                IMPORTANT: The TOC is duplicated above so that it can be part of
-                the flexbox at large sizes, but inlined at contents at smaller
-                ones. Make changes in both places.
-            -->
-            <div class="
-                mb-3
-                pl-3
-                pb-5
-                prose prose-sm
-                prose-li:my-2
+        {{if ne .Article.TOC ""}}
+            <div class="basis-[190px] border-l flex-grow-0 flex-shrink-0 hidden xl:block">
+                <!--
+                    IMPORTANT: The TOC is duplicated above so that it can be part of
+                    the flexbox at large sizes, but inlined at contents at smaller
+                    ones. Make changes in both places.
+                -->
+                <div class="
+                    mb-3
+                    pl-3
+                    pb-5
+                    prose prose-sm
+                    prose-li:my-2
 
-                prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
-                prose-a:prose-li:prose-li:font-normal prose-li:prose-li:my-1 prose-li:prose-li:text-[0.65rem]
+                    prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
+                    prose-a:prose-li:prose-li:font-normal prose-li:prose-li:my-1 prose-li:prose-li:text-[0.65rem]
 
-                prose-ol:prose-li:prose-li:list-[lower-roman]
-                prose-li:prose-li:prose-li:text-[0.6rem]
+                    prose-ol:prose-li:prose-li:list-[lower-roman]
+                    prose-li:prose-li:prose-li:text-[0.6rem]
 
-                sticky top-5
-                text-xs
-            ">
-                {{if ne .Article.TOC ""}}
+                    sticky top-5
+                    text-xs
+                ">
                     {{.Article.TOC}}
-                {{end}}
+                </div>
             </div>
-        </div>
+        {{end}}
     </div>
 </div>
 
