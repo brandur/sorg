@@ -137,4 +137,4 @@ Also exciting is the [potential addition of a transaction timeout setting](https
 
 ## Try it (#try-it)
 
-Anyway, [check out River](https://github.com/riverqueue/river) and we'd appreciate it if you helped kick the tires a bit. We prioritized getting the API as polished as we could (we're _really_ trying to avoid a `v2`), but are still doing a lot of active development as we refactor internals and nicen things up.
+Anyway, [check out River](https://riverqueue.com/) (see also the [GitHub repo](https://github.com/riverqueue/river) and [docs](https://riverqueue.com/docs)) and we'd appreciate it if you helped kick the tires a bit. We prioritized getting the API as polished as we could (we're _really_ trying to avoid a `/v2`), but are still doing a lot of active development as we refactor internals, optimize, and generally nicen things up.
