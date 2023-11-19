@@ -50,7 +50,7 @@ I also picked up a Go habit to the point where it's now been my language of choi
 
 ## River is born (#river-is-born)
 
-So a few months ago, [Blake](https://github.com/bgentry) and I did what one should generally never do, and started writing a new job queue project built specifically around Postgres, Go, and our favorite Go driver, [pgx](https://github.com/jackc/pgx). And finally, after long discussions and much consternation around API shapes and implementation approaches, it's ready for alpha use.
+So a few months ago, [Blake](https://github.com/bgentry) and I did what one should generally never do, and started writing a new job queue project built specifically around Postgres, Go, and our favorite Go driver, [pgx](https://github.com/jackc/pgx). And finally, after long discussions and much consternation around API shapes and implementation approaches, it's ready for beta use.
 
 I'd like to introduce River ([GitHub link](https://github.com/riverqueue/river)), a job queue for building fast, airtight applications.
 
