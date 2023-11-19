@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-18T18:58:05-08:00
+  description = """\
+Never offer a newsletter sign up without linking to at least one existing issue of said newsletter.
+"""
+
+[[atoms]]
   published_at = 2023-11-17T15:02:19-08:00
   description = """\
 Sam Altman ousted from OpenAI and Brockman demoted.
