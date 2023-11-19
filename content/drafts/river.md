@@ -14,7 +14,7 @@ title = "River: a Fast, Robust Job Queue for Go + Postgres"
 
 Years ago I wrote about [my trouble with a job queue in Postgres](/postgres-queues), in which table bloat caused by long-running queries slowed down the workers' capacity to lock jobs as they hunted across millions of dead tuples trying to find a live one.
 
-A job queue in a database can have sharp edges, but what I'd understated in that piece are the benefits that came with it. When used well, transactions and background jobs are a match made in heaven and completely sidestep a whole host of distributed systems problems that otherwise don't have easy remediations.
+A job queue in a database can have sharp edges, but I'd understated in that writeup the benefits that came with it. When used well, transactions and background jobs are a match made in heaven and completely sidestep a whole host of distributed systems problems that otherwise don't have easy remediations.
 
 Consider:
 
@@ -44,7 +44,7 @@ Consider:
 
 Work in a transaction has other benefits too. Postgres' [`NOTIFY`](https://www.postgresql.org/docs/current/sql-notify.html) respects transactions, so the moment a job is ready to work a job queue can wake a worker to work it, bringing the mean delay before work happens down to the sub-millisecond level.
 
-Despite our operational trouble, we never did replace our database job queue at Heroku. The price of switching would've been high, and despite blemishes, the benefits still outweighed the costs. I then spent the next six years staring into a maelstrom of pure chaos as I worked on a non-transactional data store. No standard for data consistency was too low. Code was a morass of conditional statements to protect against a million possible (and probable) edges where actual state didn't line up with expected state. Job queues "worked" by brute force, bludgeoning jobs through until they could reach a point that could by tacitly called "successful".
+Despite our operational trouble, we never did replace our database job queue at Heroku. The price of switching would've been high, and despite blemishes, the benefits still outweighed the costs. I then spent the next six years staring into a maelstrom of pure chaos as I worked on a non-transactional data store. No standard for data consistency was too low. Code was a morass of conditional statements to protect against a million possible (and probable) edges where actual state didn't line up with expected state. Job queues "worked" by brute force, bludgeoning jobs through until they could reach a point that could be tacitly called "successful".
 
 I also picked up a Go habit to the point where it's now been my language of choice for years now. Working with it professionally during that time, there's been more than a few moments where I wished I had a good framework for transactional background jobs, but didn't find any that I particularly loved to use.
 
