@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-20T06:18:48-08:00
+  description = """\
+Published [_River: a Fast, Robust Job Queue for Go + Postgres_](/river).
+"""
+  [[atoms.photos]]
+    link_url = "/river"
+    original_image_url = "https://www.dropbox.com/scl/fi/5b3hgjko866gga666e0cv/L1020981-rain.JPG?rlkey=ot5uxjyz7jk8193ji88q1jfcp&dl=1"
+    slug = "kanazawa-shrine"
+
+[[atoms]]
   published_at = 2023-11-18T18:58:05-08:00
   description = """\
 Never offer a newsletter sign up without linking to at least one existing issue of said newsletter.

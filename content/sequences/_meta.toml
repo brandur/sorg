@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-11-20T06:18:48-08:00
+  slug = "067"
+  title = "Kanazawa shrine"
+  description = """
+An absolutely gorgeous shrine in Kanazawa, a city on the west coast of Japan. We'd just visited [Kenroku-en garden](https://en.wikipedia.org/wiki/Kenroku-en), famous for its roped [_yukitsuri_ trees](https://en.wikipedia.org/wiki/Yukitsuri) and oversized two-legged stone lantern on the water, and stumbled across this shrine after leaving. It started to rain, but it was well-timed. We'd gotten most of our outdoor sightseeing out of the way, and it lent even more ambience to the incredible scene.
+
+Poster for [_River: a Fast, Robust Job Queue for Go + Postgres_](/river).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/5b3hgjko866gga666e0cv/L1020981-rain.JPG?rlkey=ot5uxjyz7jk8193ji88q1jfcp&dl=1"
+    slug = "067"
+
+[[entries]]
   published_at = 2023-11-17T07:58:04-08:00
   slug = "066"
   title = "One Montgomery"

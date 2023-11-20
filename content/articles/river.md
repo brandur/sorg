@@ -8,7 +8,7 @@ hook = "Introducing River, a Postgres-based job queue designed for resilience an
 image = "/assets/images/river/shrine.jpg"
 #image = "/assets/images/river/ten-waterfalls.jpg"
 location = "San Francisco"
-published_at = 2023-11-14T09:47:16-08:00
+published_at = 2023-11-20T06:18:48-08:00
 title = "River: a Fast, Robust Job Queue for Go + Postgres"
 +++
 
