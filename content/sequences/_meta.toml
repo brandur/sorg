@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-11-20T19:22:11-08:00
+  slug = "068"
+  title = "Orbs"
+  description = """
+A photo from Chelsea Market (near Google's giant HQ) from a visit to New York last year. You'll never believe this, but turns out, New York is pretty cool.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/pkm9uky596tse9dscc4e1/2W4A0962-chelsea-market.JPG?rlkey=lfcb25172m261xk7v04wptces&dl=1"
+    slug = "068"
+
+[[entries]]
   published_at = 2023-11-20T06:18:48-08:00
   slug = "067"
   title = "Kanazawa shrine"

@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-20T19:22:11-08:00
+  description = """\
+Published [sequence 068](/sequences/068), orbs.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/068"
+    original_image_url = "https://www.dropbox.com/scl/fi/pkm9uky596tse9dscc4e1/2W4A0962-chelsea-market.JPG?rlkey=lfcb25172m261xk7v04wptces&dl=1"
+    slug = "orbs"
+
+[[atoms]]
   published_at = 2023-11-20T06:18:48-08:00
   description = """\
 Published [_River: a Fast, Robust Job Queue for Go + Postgres_](/river).
