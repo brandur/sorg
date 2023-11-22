@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-11-21T18:38:07-08:00
+  slug = "069"
+  title = "Low visibility"
+  description = """
+The beach near Fort Funston, a popular paragliding spot in SF. Taken on a foggy day as I was walking from the middle of the city down to San Bruno, one of the best long walks in the region.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/86p5des1n19bmjea2jih3/2W4A0887.JPG?rlkey=mgjtgofy6m9ataeez2b4lofli&dl=1"
+    slug = "069"
+
+[[entries]]
   published_at = 2023-11-20T19:22:11-08:00
   slug = "068"
   title = "Orbs"

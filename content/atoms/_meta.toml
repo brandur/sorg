@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-11-21T18:38:07-08:00
+  description = """\
+Published [sequence 069](/sequences/069), limited visibility.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/069"
+    original_image_url = "https://www.dropbox.com/scl/fi/86p5des1n19bmjea2jih3/2W4A0887.JPG?rlkey=mgjtgofy6m9ataeez2b4lofli&dl=1"
+    slug = "limited-visibility"
+
+[[atoms]]
   published_at = 2023-11-20T19:22:11-08:00
   description = """\
 Published [sequence 068](/sequences/068), orbs.
