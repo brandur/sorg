@@ -67,7 +67,7 @@ Heroku's queueing problems weren't so technically challenging that they couldn't
 
 This style of high volume queue where jobs are queued frequently and expected to be worked quickly works okay when all systems are green, but is anti-fragile in that it degenerates badly when they're not. Index bloating aside, even when we resolved the immediate problem by killing a long-running transaction, a large backlog had been enqueued, and since jobs are worked one by one, it took time to work it back down to zero.
 
-The service I operate nowadays doesn't have a job queue. Instead, we have single, dedicated worker goroutines that fulfill specific async tasks. This might otherwise be scary because it'd be easy for a single goroutine to fall behind in the presence of a large amount of work, but each one's been specifically written to operate efficiently by batched work into as few operations as possible, and then running what can't be batched in parallel. Concretely:
+The service I operate nowadays doesn't have a job queue. Instead, we have single, dedicated worker goroutines that fulfill specific async tasks. This might otherwise be scary because it'd be easy for a single goroutine to fall behind in the presence of a large amount of work, but each one's been specifically written to operate efficiently by batching work into as few operations as possible, and then running what can't be batched in parallel. Concretely:
 
 * Selects are all done together instead using `id = any(@id::uuid[])` to avoid chatty round trips to the database that could easily number in the thousands.
 
