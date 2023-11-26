@@ -10,6 +10,7 @@ image = "/assets/images/river/shrine.jpg"
 location = "San Francisco"
 published_at = 2023-11-20T06:18:48-08:00
 title = "River: a Fast, Robust Job Queue for Go + Postgres"
+hn_link = "https://news.ycombinator.com/item?id=38349716"
 +++
 
 Years ago I wrote about [my trouble with a job queue in Postgres](/postgres-queues), in which table bloat caused by long-running queries slowed down the workers' capacity to lock jobs as they hunted across millions of dead tuples trying to find a live one.

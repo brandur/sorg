@@ -3,6 +3,7 @@ hook = "The traditional soft deletion pattern using `deleted_at` columns leaks i
 location = "San Francisco"
 published_at = 2022-07-19T16:49:13Z
 title = "Soft Deletion Probably Isn't Worth It"
+hn_link = "https://news.ycombinator.com/item?id=32156009"
 +++
 
 Anyone who's seen a couple different production database environments is likely familiar with the "soft deletion" pattern -- instead of deleting data directly via `DELETE` statement, tables get an extra `deleted_at` timestamp and deletion is performed with an update statement instead:
