@@ -1,5 +1,5 @@
 +++
-hook = "Introducing River, a Postgres-based job queue designed for resilience and correctness through strong transaction guarantees."
+hook = "Introducing River, a Postgres-based job queue designed for resilience and correctness through strong transactional guarantees."
 #image = "/assets/images/river/bishop-pass.jpg"
 #image = "/assets/images/river/bishop-pass-bw.jpg"
 #image = "/assets/images/river/evolution-valley.jpg"
