@@ -11,6 +11,36 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-02T18:36:48-08:00
+  description = """\
+Golangci-lint 1.55 bundles in [`testifylint`](https://github.com/Antonboom/testifylint), which must be the best new linter in years, aiming to make calls to the [`testify`](https://github.com/stretchr/testify) package more consistent.
+
+Its best aspect is being able to detect reversed parameters. i.e. `require.Equal(t, actual, expected)` when it should be `require.Equal(t, expected, actual)`. An example fix [from River](https://github.com/riverqueue/river):
+
+``` diff
+- require.Equal(t, cleaner.Config.RescueAfter, RescueAfterDefault)
++ require.Equal(t, RescueAfterDefault, cleaner.Config.RescueAfter)
+```
+
+But there's many other good ones. Requiring `Len` instead of using an equality assertion:
+
+``` diff
+- require.Len(t, job.Errors, 0)
++ require.Empty(t, job.Errors)
+```
+
+Or use of `ErrorAs`:
+
+``` diff
+err1 := &UnknownJobKindError{Kind: "MyJobArgs"}
+var err2 *UnknownJobKindError
+
+- require.True(t, errors.As(err1, &err2))
++ require.ErrorAs(t, err1, &err2)
+```
+"""
+
+[[atoms]]
   published_at = 2023-11-21T18:38:07-08:00
   description = """\
 Published [sequence 069](/sequences/069), limited visibility.
