@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-18T12:30:20-08:00
+  description = """\
+Today, I accidentally stumbled across [`.ovh` domains](https://www.ovhcloud.com/en/domains/tld/ovh/), offered by OVH Cloud, a French VPS provider, which may be the cheapest TLDs available -- $2.15/year for initial registrations, and then $3.49/year for renewals.
+
+I'm a strong purveyor of the "make it first, register domain second" mantra since spending money on domains is easy while _doing_ is hard, but with that caveat, `.ovh` may be a good a spot for long-term side projects.
+
+[`.tk` domains](https://en.wikipedia.org/wiki/.tk) are technically cheaper because they're free (something which I'd somehow never realized, despite having seem them in the wild for 2+ decades now), but have been unavailable for registration since March, after Meta sued them for (surprise!) making up a massively disproportionate share of domains used for phishing and other malice (technically, the lawsuit is for cybersquatting and trademark infringement).
+"""
+
+[[atoms]]
   published_at = 2023-12-18T12:01:23-08:00
   description = """\
 I enjoyed [The "Cheap" Web](https://potato.cheap/) (potato.cheap), a self-proclaimed [solarpunk](https://en.wikipedia.org/wiki/Solarpunk) philosophy of web design.
