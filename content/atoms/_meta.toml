@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-18T12:01:23-08:00
+  description = """\
+I enjoyed [The "Cheap" Web](https://potato.cheap/) (potato.cheap), a self-proclaimed [solarpunk](https://en.wikipedia.org/wiki/Solarpunk) philosophy of web design.
+
+An extract:
+
+> Large parasocial platforms transformed the internet into a hostile and impersonal place. They feed our FOMO to keep us clicking. They exaggerate our differences for "engagement". They create engines for stardom to keep us creeping. They bait us into nutritionless and sensationalist content. Humanity cannot subsist on hype alone.
+>
+> Small and sincere communication quietly thrives. It's easy to find and even easier to make yourself:
+>
+> Write on the internet. Find or create a third place. Pick up the phone. Join niche interest groups. Live, don't lurk. Embrace candid culture. Put people you care about on the calendar. Don't play near black holes. Meet people at farmers markets. Learn to communicate. Make wobbly things. Subscribe to local events calendars. Learn to win friends. Learn to feel. Email strangers. And so on.
+
+We're at a difficult impasse right now. A smaller, more independent web is a fundamental healthier model for both sustainability and for our minds, but every emergent force of the internet acts in opposition to it. Platforms tend toward consolidation and monopolization, and our animal minds are susceptible to clickbait and negative emotion. Counteracting that won't be free. We'll need a new approach for building and interacting online that takes conscious effort and discipline.
+"""
+
+[[atoms]]
   published_at = 2023-12-02T18:36:48-08:00
   description = """\
 Golangci-lint 1.55 bundles in [`testifylint`](https://github.com/Antonboom/testifylint), which must be the best new linter in years, aiming to make calls to the [`testify`](https://github.com/stretchr/testify) package more consistent.
