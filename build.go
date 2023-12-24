@@ -565,7 +565,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("reading", func() (bool, error) {
-			return renderReading(c)
+			return renderReading(ctx, c)
 		})
 	}
 
@@ -1451,6 +1451,12 @@ type fragmentYear struct {
 	Fragments []*Fragment
 }
 
+// readingYear holds a collection of readings grouped by year.
+type readingYear struct {
+	Year     int
+	Readings []*squantified.Reading
+}
+
 // twitterCard represents a Twitter "card" (i.e. one of those rich media boxes
 // that sometimes appear under tweets official clients) for use in templates.
 type twitterCard struct {
@@ -1743,6 +1749,22 @@ func groupFragmentsByYear(fragments []*Fragment) []*fragmentYear {
 		}
 
 		year.Fragments = append(year.Fragments, fragment)
+	}
+
+	return years
+}
+
+func groupReadingsByYear(readings []*squantified.Reading) []*readingYear {
+	var year *readingYear
+	var years []*readingYear
+
+	for _, reading := range readings {
+		if year == nil || year.Year != reading.ReadAt.Year() {
+			year = &readingYear{reading.ReadAt.Year(), nil}
+			years = append(years, year)
+		}
+
+		year.Readings = append(year.Readings, reading)
 	}
 
 	return years
@@ -2693,20 +2715,36 @@ func renderPage(ctx context.Context, c *modulir.Context,
 	return true, nil
 }
 
-func renderReading(c *modulir.Context) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
+func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
+	source := scommon.ViewsDir + "/reading/index.tmpl.html"
+
+	viewsChanged := c.ChangedAny(
+		append([]string{
 			scommon.DataDir + "/goodreads.toml",
-			scommon.MainLayout,
-			scommon.ViewsDir + "/reading/index.ace",
 		},
-		universalSources...,
-	)...)
+			dependencies.getDependencies(source)...,
+		)...)
 	if !c.FirstRun && !viewsChanged {
 		return false, nil
 	}
 
-	return true, squantified.RenderReading(c, viewsChanged, getLocals)
+	readings, err := squantified.GetReadingsData(c, scommon.DataDir+"/goodreads.toml")
+	if err != nil {
+		return false, err
+	}
+
+	readingsByYear := groupReadingsByYear(readings)
+
+	locals := getLocals("Reading"+scommon.TitleSuffix, map[string]interface{}{
+		"ReadingsByYear": readingsByYear,
+	})
+
+	err = dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "reading/index.html"), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
 }
 
 func renderPhotoIndex(c *modulir.Context, photos []*Photo,

@@ -1742,6 +1742,10 @@ video {
   margin-top: 2rem;
 }
 
+.mt-\[-3px\] {
+  margin-top: -3px;
+}
+
 .block {
   display: block;
 }
@@ -1804,6 +1808,10 @@ video {
 
 .max-w-\[1000px\] {
   max-width: 1000px;
+}
+
+.max-w-\[1150px\] {
+  max-width: 1150px;
 }
 
 .max-w-\[1300px\] {
@@ -1882,6 +1890,14 @@ video {
   flex-basis: 190px;
 }
 
+.basis-\[40px\] {
+  flex-basis: 40px;
+}
+
+.basis-\[80px\] {
+  flex-basis: 80px;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -1912,6 +1928,14 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
 }
 
 .truncate {
@@ -2064,6 +2088,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2078,6 +2107,10 @@ video {
 
 .pb-5 {
   padding-bottom: 1.25rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 
 .pb-8 {
@@ -2220,6 +2253,11 @@ video {
 
 .tracking-tighter {
   letter-spacing: -0.05em;
+}
+
+.text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 .text-slate-500 {
@@ -2367,12 +2405,21 @@ video {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
+.prose-p\:text-sm :is(:where(p):not(:where([class~="not-prose"] *))) {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .prose-p\:font-normal :is(:where(p):not(:where([class~="not-prose"] *))) {
   font-weight: 400;
 }
 
 .prose-p\:italic :is(:where(p):not(:where([class~="not-prose"] *))) {
   font-style: italic;
+}
+
+.prose-p\:leading-5 :is(:where(p):not(:where([class~="not-prose"] *))) {
+  line-height: 1.25rem;
 }
 
 .prose-p\:leading-normal :is(:where(p):not(:where([class~="not-prose"] *))) {
@@ -2562,6 +2609,12 @@ video {
 
 .prose-hr\:w-3\/4 :is(:where(hr):not(:where([class~="not-prose"] *))) {
   width: 75%;
+}
+
+@media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
 }
 
 @media (min-width: 768px) {
@@ -2763,6 +2816,22 @@ video {
 
   .lg\:block {
     display: block;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
+
+  .lg\:flex-shrink-0 {
+    flex-shrink: 0;
+  }
+
+  .lg\:flex-grow-0 {
+    flex-grow: 0;
+  }
+
+  .lg\:basis-\[250px\] {
+    flex-basis: 250px;
   }
 
   .prose-figure\:lg\:-mx-\[250px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
