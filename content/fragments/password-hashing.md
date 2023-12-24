@@ -40,7 +40,7 @@ Hashing PBKDF2 at 600k iterations had been taking ~0.7s (depending on input pass
 
 ## Rehashing on login (#rehashing)
 
-An irreconcilable limitation with this type of password hashing is that since not even you as the provider can get access to those original password values, you can't bulk migrate everyone en masse. (Edit: Actually, this isn't strictly true. I wrote a follow up on [eliminating weaker hashes by wrapping them in a strong hash](/password-hash-nesting).)
+An irreconcilable limitation with this type of password hashing is that since not even you as the provider can get access to those original password values, you can't bulk migrate everyone en masse. (Edit: Actually, this isn't strictly true. I wrote a follow up on [eliminating weaker hashes by wrapping them in a strong hash](/fragments/password-hash-nesting).)
 
 Instead, you migrate users at moments when the plaintext password becomes available, like when they log in. Here's that code for us:
 
