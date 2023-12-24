@@ -17,6 +17,7 @@ import (
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mace"
+	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
 )
@@ -68,40 +69,6 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 	}
 
 	return tweetDB.Tweets, nil
-}
-
-// RenderReading renders the `/reading` page by fetching and processing data
-// from an attached Black Swan database.
-func RenderReading(c *modulir.Context, viewsChanged bool,
-	getLocals func(string, map[string]interface{}) map[string]interface{},
-) error {
-	readings, err := getReadingsData(c, scommon.DataDir+"/goodreads.toml")
-	if err != nil {
-		return err
-	}
-
-	// Important: all these functions assume reverse chronological read at
-	// order has already been applied.
-	readingsByYear := groupReadingsByYear(readings)
-	const maxYears = 10
-	readingsByYearXYears, readingsByYearYCounts := getReadingsCountByYearData(readings, maxYears)
-	pagesByYearXYears, pagesByYearYCounts := getReadingsPagesByYearData(readings, maxYears)
-
-	locals := getLocals("Reading", map[string]interface{}{
-		"NumReadings":    len(readings),
-		"ReadingsByYear": readingsByYear,
-
-		// chart: readings by year
-		"ReadingsByYearXYears":  readingsByYearXYears,
-		"ReadingsByYearYCounts": readingsByYearYCounts,
-
-		// chart: pages by year
-		"PagesByYearXYears":  pagesByYearXYears,
-		"PagesByYearYCounts": pagesByYearYCounts,
-	})
-
-	return mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/reading/index.ace",
-		c.TargetDir+"/reading/index.html", getAceOptions(viewsChanged), locals)
 }
 
 // RenderRuns renders the `/runs` page by fetching and processing data.
@@ -223,6 +190,7 @@ type Reading struct {
 	ReadAt        time.Time        `toml:"read_at"`
 	Rating        int              `toml:"rating"`
 	Review        string           `toml:"review"`
+	ReviewHTML    template.HTML    `toml:"-"`
 	ReviewID      int              `toml:"review_id"`
 	Title         string           `toml:"title"`
 
@@ -240,12 +208,6 @@ type ReadingAuthor struct {
 // ReadingDB is a database of Goodreads readings stored to a TOML file.
 type ReadingDB struct {
 	Readings []*Reading `toml:"readings"`
-}
-
-// readingYear holds a collection of readings grouped by year.
-type readingYear struct {
-	Year     int
-	Readings []*Reading
 }
 
 //
@@ -435,7 +397,7 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 	return options
 }
 
-func getReadingsData(c *modulir.Context, target string) ([]*Reading, error) {
+func GetReadingsData(c *modulir.Context, target string) ([]*Reading, error) {
 	var readingDB ReadingDB
 
 	err := retryOnce(c, func() error {
@@ -454,57 +416,18 @@ func getReadingsData(c *modulir.Context, target string) ([]*Reading, error) {
 
 	for _, reading := range readingDB.Readings {
 		reading.AuthorsDisplay = combineAuthors(reading.Authors)
+
+		// Empty reviews written before 2020. These are poorly written (more
+		// than usual even) and often contained spoilers since I used them like
+		// notes.
+		if reading.ReadAt.Year() < 2020 {
+			reading.Review = ""
+		} else {
+			reading.ReviewHTML = template.HTML(string(mmarkdown.Render(c, []byte(reading.Review))))
+		}
 	}
 
 	return readingDB.Readings, nil
-}
-
-func getReadingsCountByYearData(readings []*Reading, maxYears int) ([]int, []int) {
-	// Give these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
-	byYearXYears := []int{}
-	byYearYCounts := []int{}
-
-	for _, reading := range readings {
-		year := reading.ReadAt.Year()
-
-		if len(byYearXYears) == 0 || byYearXYears[len(byYearXYears)-1] != year {
-			if len(byYearXYears) >= maxYears {
-				break
-			}
-
-			byYearXYears = append(byYearXYears, year)
-			byYearYCounts = append(byYearYCounts, 0)
-		}
-
-		byYearYCounts[len(byYearYCounts)-1]++
-	}
-
-	return byYearXYears, byYearYCounts
-}
-
-func getReadingsPagesByYearData(readings []*Reading, maxYears int) ([]int, []int) {
-	// Give these arrays 0 elements (instead of null) in case no Black Swan
-	// data gets loaded but we still need to render the page.
-	byYearXYears := []int{}
-	byYearYCounts := []int{}
-
-	for _, reading := range readings {
-		year := reading.ReadAt.Year()
-
-		if len(byYearXYears) == 0 || byYearXYears[len(byYearXYears)-1] != year {
-			if len(byYearXYears) >= maxYears {
-				break
-			}
-
-			byYearXYears = append(byYearXYears, year)
-			byYearYCounts = append(byYearYCounts, 0)
-		}
-
-		byYearYCounts[len(byYearYCounts)-1] += reading.NumPages
-	}
-
-	return byYearXYears, byYearYCounts
 }
 
 func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
@@ -544,22 +467,6 @@ func getTwitterByMonth(tweets []*Tweet) ([]string, []int) {
 	}
 
 	return tweetCountXMonths, tweetCountYCounts
-}
-
-func groupReadingsByYear(readings []*Reading) []*readingYear {
-	var year *readingYear
-	var years []*readingYear
-
-	for _, reading := range readings {
-		if year == nil || year.Year != reading.ReadAt.Year() {
-			year = &readingYear{reading.ReadAt.Year(), nil}
-			years = append(years, year)
-		}
-
-		year.Readings = append(year.Readings, reading)
-	}
-
-	return years
 }
 
 func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
