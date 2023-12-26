@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-26T00:47:05-07:00
+  description = """\
+Goodreads has been in the process of deprecating their API for years now. As of December 2020 they stopped issuing new API keys, but let existing ones keep working.
+
+It's not documented, but even with an existing API key, somewhere around mid-2022 they crippled the API so that it no longer returns many properties about books being returned -- e.g. publication year or number of pages. It's still possible to extract reviews, but that's about it.
+
+I recently restyled this site's [/reading](/reading) section which had still been syncing from Goodreads (although I'm about a year behind on reviews). The API still technically works, but given the certainty of deprecation and truncated functionality, it seems about as good of a time as any to move back to a flat file.
+"""
+
+[[atoms]]
   published_at = 2023-12-18T12:30:20-08:00
   description = """\
 Today, I accidentally stumbled across [`.ovh` domains](https://www.ovhcloud.com/en/domains/tld/ovh/), offered by OVH Cloud, a French VPS provider, which may be the cheapest TLDs available -- $2.15/year for initial registrations, and then $3.49/year for renewals.
