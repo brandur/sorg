@@ -5,6 +5,7 @@
 
 [[readings]]
   title = "Status and Culture: How Our Desire for Social Rank Creates Taste, Identity, Art, Fashion, and Constant Change"
+  authors = [ "W. David Marx" ]
   num_pages = 368
   published_year = 2022
   rating = 2
@@ -14,8 +15,8 @@ I was a huge fan of the author's last book _Ametora_ and dove into this one with
 
 Recommendation: try _Ametora_ instead.
 """
-  [[readings.authors]]
-    name = "W. David Marx"
+  # [[readings.authors]]
+  #   name = "W. David Marx"
 
 [[readings]]
   id = 144873

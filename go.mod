@@ -10,7 +10,7 @@ go 1.21
 require (
 	github.com/PuerkitoBio/goquery v1.8.1 // indirect
 	github.com/aymerick/douceur v0.2.0
-	github.com/brandur/modulir v0.0.0-20230124154845-7b50eb3f6036
+	github.com/brandur/modulir v0.0.0-20231226224722-5f8eae54882a
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/joeshaw/envdecode v0.0.0-20200121155833-099f1fc765bd
@@ -18,11 +18,11 @@ require (
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.4
 	github.com/yosssi/ace v0.0.5
 	github.com/yosssi/gcss v0.1.0
-	golang.org/x/net v0.17.0
-	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2
+	golang.org/x/net v0.19.0
+	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028
 )
 
 require github.com/pkg/errors v0.9.1 // indirect
@@ -36,11 +36,11 @@ require (
 require (
 	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/fsnotify/fsnotify v1.6.0 // indirect
+	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
-	github.com/gorilla/websocket v1.5.0 // indirect
+	github.com/gorilla/websocket v1.5.1 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.3 // indirect
 	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect
@@ -48,6 +48,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
+	github.com/pelletier/go-toml/v2 v2.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	golang.org/x/crypto v0.17.0 // indirect

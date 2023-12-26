@@ -2720,7 +2720,7 @@ func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
 
 	viewsChanged := c.ChangedAny(
 		append([]string{
-			scommon.DataDir + "/goodreads.toml",
+			c.SourceDir + "/content/reading/_meta.toml",
 		},
 			dependencies.getDependencies(source)...,
 		)...)
@@ -2728,7 +2728,7 @@ func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
 		return false, nil
 	}
 
-	readings, err := squantified.GetReadingsData(c, scommon.DataDir+"/goodreads.toml")
+	readings, err := squantified.GetReadingsData(c, c.SourceDir+"/content/reading/_meta.toml")
 	if err != nil {
 		return false, err
 	}

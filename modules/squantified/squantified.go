@@ -2,6 +2,7 @@ package squantified
 
 import (
 	"crypto/sha256"
+	"encoding"
 	"encoding/base64"
 	"fmt"
 	"html"
@@ -203,6 +204,16 @@ type Reading struct {
 type ReadingAuthor struct {
 	ID   int    `toml:"id"`
 	Name string `toml:"name"`
+}
+
+// Verifies interface compliance.
+var _ encoding.TextUnmarshaler = &ReadingAuthor{}
+
+// Only kicks in if the author value is a single string. Otherwise the full
+// object is unmarshaled into the struct.
+func (a *ReadingAuthor) UnmarshalText(data []byte) error {
+	a.Name = string(data)
+	return nil
 }
 
 // ReadingDB is a database of Goodreads readings stored to a TOML file.

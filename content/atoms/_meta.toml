@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-26T16:01:39-07:00
+  description = """\
+Follow up from yesterday: dumped Goodreads immediately after realizing out that it was not only returning missing information for newly read books, but was tainting my existing archives as records of previously read books started returning corrupted records as well.
+
+My book list is now a flat file in TOML instead. More robust, but it's a shame how one by one, every third party API this site used to ingest for aggregation has disappeared -- Goodreads was the last one standing, and now it's gone too.
+"""
+
+[[atoms]]
   published_at = 2023-12-26T00:47:05-07:00
   description = """\
 Goodreads has been in the process of deprecating their API for years now. As of December 2020 they stopped issuing new API keys, but let existing ones keep working.
