@@ -21,11 +21,11 @@
     </div>
 </div>
 
-<div class="container max-w-[1150px] mx-auto mt-8 px-4">
+<div class="container max-w-[1150px] mx-auto mt-8 px-8">
     <div class="md:flex">
-        <div class="md:basis-[115px] md:flex-grow-0 md:flex-shrink-0">
+        <div> <!-- needed for sticky -->
             <div class="font-mono my-1 leading-normal text-md tracking-tighter md:sticky md:text-right md:top-5">
-                <div class="hidden md:block md:px-4">
+                <div class="hidden md:block md:pr-6">
                     <ul>
                         {{range .ReadingsByYear}}
                             <li class="pb-1">
@@ -38,16 +38,15 @@
         </div>
         <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0">
             {{range .ReadingsByYear}}
-                <div class="border-b-[1px] py-6 md:pl-8">
+                <div class="border-b-[1px] py-6 md:pl-6">
                     <h2 id="year_{{.Year}}" class="font-bold text-md tracking-tighter">{{.Year}}</h2>
                 </div>
 
                 <ul>
                     {{- range .Readings -}}
-                        <div class="border-b-[1px] flex flex-col md:pl-8">
+                        <div class="border-b-[1px] flex flex-col md:pl-6">
                             <div class="flex gap-6 py-6">
                                 <div class="flex-grow {{if ne .Review ""}} lg:basis-[250px] lg:flex-grow-0 lg:flex-shrink-0 {{end}}">
-                                <!-- <div class="flex-grow"> -->
                                     <div class="flex flex-col gap-1">
                                         <div class="font-semibold text-sm">{{.Title}}</div>
                                         <div class="italic text-xs">{{.AuthorsDisplay}}</div>

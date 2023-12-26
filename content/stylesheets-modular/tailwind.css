@@ -2078,6 +2078,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -2720,10 +2725,6 @@ video {
     flex-grow: 0;
   }
 
-  .md\:basis-\[115px\] {
-    flex-basis: 115px;
-  }
-
   .md\:basis-\[90px\] {
     flex-basis: 90px;
   }
@@ -2759,8 +2760,16 @@ video {
     padding-bottom: 1.5rem;
   }
 
+  .md\:pl-6 {
+    padding-left: 1.5rem;
+  }
+
   .md\:pl-8 {
     padding-left: 2rem;
+  }
+
+  .md\:pr-6 {
+    padding-right: 1.5rem;
   }
 
   .md\:text-right {
