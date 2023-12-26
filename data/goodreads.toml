@@ -1,12 +1,19 @@
+#
+# Here the file became manually curated instead of being updated from the
+# Goodreads API via qself.
+#
 
 [[readings]]
+  title = "Status and Culture: How Our Desire for Social Rank Creates Taste, Identity, Art, Fashion, and Constant Change"
   num_pages = 368
   published_year = 2022
   rating = 2
   read_at = 2023-02-08T00:00:00-08:00
-  review = "I was a huge fan of the author's last book _Ametora_ and dove into this one with zeal, but to my great surprise, almost didn't finish. Even by the end, I still didn't really understand what this book is about. It's the world's most preeminent collection of little anecdotes of music, movies, and culture, weaved together into an encyclopedic canvas of impressive breadth, but despite the litany of factoids, there's no purpose to the whole thing. No conclusion, no thesis, no raison d'être, just cultural references ad nauseam with an implication that there's some great wisdom below the surface. Recommendation: try _Ametora_ instead."
-  title = "Status and Culture: How Our Desire for Social Rank Creates Taste, Identity, Art, Fashion, and Constant Change"
+  review = """\
+I was a huge fan of the author's last book _Ametora_ and dove into this one with zeal, but to my great surprise, almost didn't finish. Even by the end, I still didn't really understand what this book is about. It's the world's most preeminent collection of little anecdotes of music, movies, and culture, weaved together into an encyclopedic canvas of impressive breadth, but despite the litany of factoids, there's no purpose to the whole thing. No conclusion, no thesis, no raison d'être, just cultural references ad nauseam with an implication that there's some great wisdom below the surface.
 
+Recommendation: try _Ametora_ instead.
+"""
   [[readings.authors]]
     name = "W. David Marx"
 
@@ -162,7 +169,7 @@
   published_year = 2022
   rating = 5
   read_at = 2022-07-04T00:00:00-07:00
-  review = "Excellent - Leonard's writing is easily digestible without an advanced econ degree, while also tackling and unwinding the fanciful Fed language that's often used to obscure their decision-making. The book sticks to the facts and manages to stay quite neutral, but you come out of it with a strong impression that the Fed's been the most important contributor to practically every economic crisis in the past thirty years, and like many federal institutions, has fallen victim to short-term wishful thinking over planning for longer term, well-distributed prosperity and stability. For example, while the Fed wasn't any of the directly precipitating factors that led to the 2008 financial crisis (e.g. they weren't selling risky repackaged ARMs), by keeping interest rates close to zero and providing cheap money for so long, they were the major reason that banks were pushed so far down the risk curve in search of higher returns. My one missive is that the book was written too early to cover our latest 2022 developments of high inflation and the Fed finally engaging in non-trivial rate hikes (0.75) for the first time in modern history — wouldn't been interesting to get Leonard's take on this."
+  review = "Excellent — Leonard's writing is easily digestible without an advanced econ degree, while also tackling and unwinding the fanciful Fed language that's often used to obscure their decision-making. The book sticks to the facts and manages to stay quite neutral, but you come out of it with a strong impression that the Fed's been the most important contributor to practically every economic crisis in the past thirty years, and like many federal institutions, has fallen victim to short-term wishful thinking over planning for longer term, well-distributed prosperity and stability. For example, while the Fed wasn't any of the directly precipitating factors that led to the 2008 financial crisis (e.g. they weren't selling risky repackaged ARMs), by keeping interest rates close to zero and providing cheap money for so long, they were the major reason that banks were pushed so far down the risk curve in search of higher returns. My one missive is that the book was written too early to cover our latest 2022 developments of high inflation and the Fed finally engaging in non-trivial rate hikes (0.75) for the first time in modern history — wouldn't been interesting to get Leonard's take on this."
   review_id = 4825592234
   title = "The Lords of Easy Money: How the Federal Reserve Broke the American Economy"
 
