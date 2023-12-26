@@ -38,8 +38,8 @@
         </div>
         <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0">
             {{range .ReadingsByYear}}
-                <div class="border-b-[1px] py-6 md:pl-6">
-                    <h2 id="year_{{.Year}}" class="font-bold text-md tracking-tighter">{{.Year}}</h2>
+                <div class="border-b-[1px] py-6 md:pl-6" id="year_{{.Year}}">
+                    <h2 class="font-bold text-md tracking-tighter">{{.Year}}</h2>
                 </div>
 
                 <ul>
