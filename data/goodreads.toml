@@ -3,8 +3,8 @@
   id = 62122504
   isbn = ""
   isbn13 = ""
-  num_pages = 0
-  published_year = 0
+  num_pages = 368
+  published_year = 2022
   rating = 2
   read_at = 2023-02-08T00:00:00-08:00
   review = "I was a huge fan of the author's last book _Ametora_ and dove into this one with zeal, but to my great surprise, almost didn't finish. Even by the end, I still didn't really understand what this book is about. It's the world's most preeminent collection of little anecdotes of music, movies, and culture, weaved together into an encyclopedic canvas of impressive breadth, but despite the litany of factoids, there's no purpose to the whole thing. No conclusion, no thesis, no raison d'être, just cultural references ad nauseam with an implication that there's some great wisdom below the surface. Recommendation: try _Ametora_ instead."
@@ -19,8 +19,8 @@
   id = 144873
   isbn = "0446392308"
   isbn13 = "9780446392303"
-  num_pages = 0
-  published_year = 0
+  num_pages = 193
+  published_year = 1982
   rating = 2
   read_at = 2023-01-02T00:00:00-08:00
   review = "I got a strong recommendation on this book that I found credible, but came out finding the claims pretty hard to believe. Lots of anonymous anecdotes included, but it strongly defies sense and intuition. Also a surprising lack of actionable content given the title of the book."
@@ -36,7 +36,7 @@
   isbn = "147670032X"
   isbn13 = "9781476700328"
   num_pages = 336
-  published_year = 0
+  published_year = 2020
   rating = 1
   read_at = 2022-11-05T00:00:00-07:00
   review = "Klein's thesis around polarization and some of its roots is generally correct, but if you stop to think about what's being written, some of the disingenuity comes into closer focus. For example, the book starts out talking about Trump (what else), but immediately lays down the premise that the reason for Trump's rise is that the electorate is bad. Not touched upon at all is the Democratic Party putting its thumb on the scale to jam their favored candidate in place, a person with decades worth of dubious behavior in DC that practically nobody in America likes. Klein is obsessed with identity politics, or rather the idea that it doesn't exist, and if it did, it's something that everybody is doing, gaslighting by fiat that there isn't something quite toxic that the modern left has made a major part of their core platform. The book tries to appear mostly unbiased throughout, but by the back third Klein is into overt theses of \"the Democratic Party is fundamentally good and the Republic Party is fundamentally bad\", which he \"proves\" by showing that more of the mainstream media favors the Democratic Party. Just amazing."
@@ -51,8 +51,8 @@
   id = 50053432
   isbn = "1476785244"
   isbn13 = "9781476785240"
-  num_pages = 0
-  published_year = 0
+  num_pages = 272
+  published_year = 2020
   rating = 5
   read_at = 2022-11-01T00:00:00-07:00
   review = "One of the scariest, and most important books of the contemporary age — Douthat makes the case that rich societies have entered a plateau similar to one seen at the end of the Roman Empire, wherein they stay quite rich, but have lost their edge in innovation, creativity, and even the ability to sustain themselves biologically. He argues these points very convincingly, and indeed, I find it hard to believe that anyone could read this book with something akin to an open mind and not have to acknowledge that Douthat's analysis is correct, even if reluctantly. Its review bombing is telling — if the book's thesis is indeed right, then we as a civilization are in serious crisis, and without a lot of compelling options for extricating ourselves from it. That is absolutely _terrifying_. Hitting the book with a two-star review over sentiment rather than content is one of the few forms of cope that's readily available."
@@ -68,7 +68,7 @@
   isbn = "0140042598"
   isbn13 = "9780140042597"
   num_pages = 307
-  published_year = 1976
+  published_year = 1957
   rating = 2
   read_at = 2022-10-18T00:00:00-07:00
   review = "Read this as I was trying to understand this whole \"Beat Generation\" phenomena, but am still having a lot of trouble getting it. In a nutshell, it's a travel/life memoir rewritten as fiction apparently to avoid legal problems, which has the side effect that there's not much in the way of overaching story to speak of, and although the travel experiences are a window into a period of American history that isn't coming back, they're not exactly enthralling either. I'd contend that although this was a shocking and memorable book for its age, it wouldn't stand up to basic scrutiny if rewritten in a more contemporary age."
@@ -83,8 +83,8 @@
   id = 15818498
   isbn = "0062222562"
   isbn13 = "9780062222565"
-  num_pages = 0
-  published_year = 0
+  num_pages = 416
+  published_year = 2012
   rating = 4
   read_at = 2022-09-15T00:00:00-07:00
   review = "I'm not a total die-hard Joy Division fan, but still found this history quite enjoyable. It gives you a glimpse into just how gritty the punk/post-unk scene of the 70s was, and makes you think about how different society by comparison is today, and not necessarily in a good way. The Audible version is narrated by the author himself (Peter Hook), and his working class Manchester accent makes the book."
@@ -99,7 +99,7 @@
   id = 58185227
   isbn = ""
   isbn13 = ""
-  num_pages = 2
+  num_pages = 128
   published_year = 2021
   rating = 1
   read_at = 2022-08-24T00:00:00-07:00
@@ -131,8 +131,8 @@
   id = 56269270
   isbn = "0374602573"
   isbn13 = "9780374602574"
-  num_pages = 0
-  published_year = 0
+  num_pages = 224
+  published_year = 2021
   rating = 2
   read_at = 2022-07-23T00:00:00-07:00
   review = "Very fast little read — 200 pages, but most of them are partially filled and with a lot of whitespace. An accounting of a fictional repair shop full of quirky characters passionate about Apple products in particular, and with a few sprinkles of Apple history thrown in. A neat experiment in the format, but not hugely substantive."
@@ -148,7 +148,7 @@
   isbn = "0593138511"
   isbn13 = "9780593138519"
   num_pages = 357
-  published_year = 0
+  published_year = 2022
   rating = 3
   read_at = 2022-07-08T00:00:00-07:00
   review = "Certainly a worthwhile read — the author makes a strong argument that our attention economy has been objectively shrinking over time (it's not just perception), and a big part of that is how the apps we're using are a central caused as they're designed to maximize time-on-app. This is of course true, and it's nice to see the someone make the case to show it as objectively as possible. Also interesting is that he presents a somewhat nihilist take in some parts where he admits to not having an easy one-size-fits-all solution to the problem as we're in the position of having to try and fight off our own bad instincts. The book's weakness is that it very likely could've been an essay instead of a book — by the end of it he's wandered pretty far off track (for example, he finishes with a long segment on climate change), which you get the feeling is there to flesh out the page numbers."
@@ -163,7 +163,7 @@
   id = 58485511
   isbn = "1797135546"
   isbn13 = "9781797135540"
-  num_pages = 0
+  num_pages = 384
   published_year = 2022
   rating = 5
   read_at = 2022-07-04T00:00:00-07:00
@@ -243,8 +243,8 @@
   id = 26030703
   isbn = "0316306088"
   isbn13 = "9780316306089"
-  num_pages = 0
-  published_year = 0
+  num_pages = 272
+  published_year = 2017
   rating = 2
   read_at = 2022-05-21T00:00:00-07:00
   review = "An early example of the genre of \"tech journalist hates industry he reports on\" (but isn't beyond taking a paycheck from it) which would become especially widespread in the later 2010s. I'm sure there are some legitimate complaints in here and there's no question that some tech cultural practices got pretty absurd, but the whole book reeks of exaggeration and oversimplification for dramatic effect, and doesn't spend even a moment pandering to anything even resembling objectivity."
@@ -259,8 +259,8 @@
   id = 58782897
   isbn = "006323047X"
   isbn13 = "9780063230477"
-  num_pages = 0
-  published_year = 0
+  num_pages = 512
+  published_year = 2022
   rating = 4
   read_at = 2022-07-23T00:00:00-07:00
   review = "Wow, what a read — let me just say that if Zeihan is right, we're all in a whole lot of trouble (or at least the kids we're not having are). To really boil things all the way down, Zeihan's two core theses are that (1) having failed to sustain healthy demographic distributions (largely thanks to industrialization), almost every country on Earth is facing impending demographic collapse as there are not nearly enough young to support the old, and we're well passed the point that anything could be done about the problem; and (2) the US will withdraw as the protector of the world's waterways, which will sharply curb world trade. This will leave countries more inward facing to source the resources and production they need to sustain their 21st century lifestyles, but most countries don't have anything close to there wherewithal to do so, with the result being that the quality of live they got used to under under globalism will become sharply diminished.\n\nHe's bullish on the United States and a couple other countries like France, and notably extremely bearish on China, who he believes is in for a reckoning as the aftereffects of decades worth of one-child policy come due in the form of a catastrophic demographic implosion (along with a host of other problems they're facing). I have to say that even six months ago I would've been highly dubious as China's trajectory didn't seem be moving in any direction except up, but between the trouble they've had in their financial and housing markets over the last few months, combined with a truly insane Covid Zero policy that seems to indicate that Xi's fired every smart person who might've contradicted him, these days I'm inclined to believe Zeihan's claims.\n\nThe whole thing is meticulously researched, and there aren't any obvious holes to be poked in the vast majority of suppositions (as concerning as that is). The one big one that smelled a little off to me is the claim that America's navy is what acts as essentially the sole guarantor for global shipping safety, a macro thesis on which many of the other claims in the book are contingent. He does cite a lot of information about the naval fleets of other countries including China aren't up to job, but I'll still be looking for some second opinions. But other than that, I suspect all the references check out."
@@ -276,7 +276,7 @@
   isbn = ""
   isbn13 = ""
   num_pages = 539
-  published_year = 0
+  published_year = 2013
   rating = 3
   read_at = 2022-05-01T00:00:00-07:00
   review = "Very in-line with the first two books. I like how The Expanse's universe keeps expanding, and neat how many new characters are introduced in each book. I'm sort of glad I watched the TV season first because many of the characters would've landed flat (especially Holden) if I hadn't, but also sort of disappointed I did because it would've been neat to imagine things like The Behemoth without having seen them already."
@@ -308,7 +308,7 @@
   isbn = "0812513738"
   isbn13 = "9780812513738"
   num_pages = 1007
-  published_year = 0
+  published_year = 1922
   rating = 5
   read_at = 2022-04-11T00:00:00-07:00
   review = "Another one that's right in that set of the very best _The Wheel of Time_ books, and in re-reading all these years later, just head and shoulders of other fantasy series."
@@ -339,8 +339,8 @@
   id = 58949003
   isbn = "1982186984"
   isbn13 = "9781982186982"
-  num_pages = 0
-  published_year = 0
+  num_pages = 320
+  published_year = 2022
   rating = 4
   read_at = 2022-04-15T00:00:00-07:00
   review = "Good insight into Tony Hsieh's meteoric rise and even more sudden crash. Although Tony's later year projects may have been more questionable, I'd contend that his work to revitalize downtown Vegas as to produce a vital urban community may be one of the better things a billionaire (or near billionaire in his case) has ever spent their money on. There's the obvious story of substance abuse, but there's a subplot here of how Covid-related lockdowns were extremely harmful to people prone to abuse — Hsieh's case is one that'll have a book written about it, but it makes you wonder of the untold millions for whom nothing will ever be said."
@@ -355,8 +355,8 @@
   id = 34897
   isbn = "0765305119"
   isbn13 = "9780765305114"
-  num_pages = 0
-  published_year = 0
+  num_pages = 624
+  published_year = 1991
   rating = 5
   read_at = 2022-02-19T00:00:00-08:00
   review = ""
@@ -372,7 +372,7 @@
   isbn = "0812517725"
   isbn13 = "9780812517729"
   num_pages = 705
-  published_year = 0
+  published_year = 1990
   rating = 5
   read_at = 2022-01-19T00:00:00-08:00
   review = "Wow. I read most of this series when I was a kid, and although I liked it at the time, I never fully appreciated just how much better Wheel of Time is compared to almost every other comparable fantasy series (or even beyond those too) — the writing, world-building, and characterization are just incredible, and don't fall into any of the pulp tropes that you find in so many other places. The Great Hunt in particular is one of the early-series book that packs in lots of action, lots of cool One Power stuff, and lots of new exploration of WoT's expansive world."
@@ -387,8 +387,8 @@
   id = 404437
   isbn = "0924486848"
   isbn13 = "9780924486845"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 1971
   rating = 3
   read_at = 2022-03-19T00:00:00-07:00
   review = "A chronicle by Bernard Moitessier, most notable for almost certainly having been the undisputed winner of the 1968 _Sunday Times_ Golden Globe Race (the first non-stop round-the-world solo yacht race) ... had he not decided to just keep sailing around the world instead of finishing. As far as the book is concerned — it's a great historical artifact, but is largely made up of freeform entries from Moitessier's journal, and is pretty long-winded and undirected. Still interesting as it reveals the purity of his spirit, and the post-book material on the technical specifics of his boat set up / sail diagrams / knot details / supply list / food recipes is pretty neat."
@@ -436,7 +436,7 @@
   isbn = "0593318072"
   isbn13 = "9780593318072"
   num_pages = 245
-  published_year = 0
+  published_year = 2020
   rating = 3
   read_at = 2021-12-28T00:00:00-08:00
   review = "A couple nice little Murakami narratives. There's not much of an overarching theme, but it's a great short little book to knock out over a couple holiday evenings."
@@ -452,7 +452,7 @@
   isbn = "0743235274"
   isbn13 = "9780743235273"
   num_pages = 247
-  published_year = 0
+  published_year = 2006
   rating = 2
   read_at = 2022-01-03T00:00:00-08:00
   review = "Large collection of anecdotes about creativity, but the overall message is abstract and so non-specific as to be mostly non-actionable. The best couple entries were at the beginning, on forming habits and building a conducive working environment."
@@ -483,8 +483,8 @@
   id = 56645981
   isbn = "0063093626"
   isbn13 = "9780063093621"
-  num_pages = 0
-  published_year = 0
+  num_pages = 416
+  published_year = 2021
   rating = 4
   read_at = 2021-12-20T00:00:00-08:00
   review = "Well-researched and written from a very centrist/non-ideological perspective. Once all laid out, Schellenberger's arguments for what cities like San Francisco are doing wrong when it comes to homelessness and drug use are very convincing."
@@ -499,8 +499,8 @@
   id = 25682407
   isbn = "0062394037"
   isbn13 = "9780062394033"
-  num_pages = 0
-  published_year = 0
+  num_pages = 352
+  published_year = 2015
   rating = 4
   read_at = 2021-11-15T00:00:00-08:00
   review = "Very much of the Japan travel food genre which is its own trope nowadays, but solid writing and well built."
@@ -515,7 +515,7 @@
   id = 37537853
   isbn = ""
   isbn13 = "9780525562733"
-  num_pages = 0
+  num_pages = 192
   published_year = 2018
   rating = 4
   read_at = 2021-10-21T00:00:00-07:00
@@ -532,7 +532,7 @@
   isbn = "038554121X"
   isbn13 = "9780385541213"
   num_pages = 498
-  published_year = 0
+  published_year = 2019
   rating = 2
   read_at = 2021-10-11T00:00:00-07:00
   review = "Love all the themes that this book is going for — old libraries, masquerade parties, ancient harbors, and appreciated the nods to gaming, blogging, and pop culture, but this is very pulp-y stuff. The characters are so single-dimensional that it was hard to care about what happened to any of them, and almost every last one a trope — OP female friend, old librarian, refined high society new lover, etc. The protagonist sleepwalks through a story that doesn't offer much by way of conflict or plot — the characters meander through Alice In Wonderland environments until eventually it resolves, but not by virtue of anything that anyone did. A lot of the prose is genuinely clever, and the conceit of alternative chapters that tell fables is intriguing (although overplayed), but not enough so to redeem it."
@@ -564,7 +564,7 @@
   isbn = "0071414290"
   isbn13 = "9780071414296"
   num_pages = 275
-  published_year = 0
+  published_year = 1970
   rating = 4
   read_at = 2021-09-01T00:00:00-07:00
   review = "The Donald Crowhurst story simultaneously quite mundane (a man who after being forced into a tough situation, starts cheating) and incredibly fantastic (just how elaborate the scheme turns out to be, some of the downright strange coincidences that forced the final outcome). The effort and research that went into reconstructing Crowhurt's voyage based on misleading radio messages and a combination of partially complete and doctored ship logs is amazing. The book is not only thorough, but also very objective — Crowhurst's ultimate fate can't be known with perfect certainty, but the authors establish what they think is the most reasonable conclusion and exhaustively list the supporting evidence for it. Other possibilities are considered as well, with each one dismissed with sound reasoning. The one negative I'll say is that the book might be a little _too_ thorough — I found myself wishing that they'd packed the story into half the length or so."
@@ -579,7 +579,7 @@
   id = 171241
   isbn = "1568361483"
   isbn13 = "9781568361482"
-  num_pages = 0
+  num_pages = 400
   published_year = 1996
   rating = 3
   read_at = 2021-08-28T00:00:00-07:00
@@ -644,7 +644,7 @@
   isbn = "0307265838"
   isbn13 = "9780307265838"
   num_pages = 191
-  published_year = 0
+  published_year = 2004
   rating = 3
   read_at = 2021-06-01T00:00:00-07:00
   review = "Solid Murakami, as weird as ever. This one's a little shorter than some of his heavy hitters and makes for a good introductory read."
@@ -676,7 +676,7 @@
   isbn = "0316007021"
   isbn13 = "9780316007023"
   num_pages = 775
-  published_year = 0
+  published_year = 2009
   rating = 3
   read_at = 2021-05-16T00:00:00-07:00
   review = "Interesting premise, and Simmons once again shows his range as a writer as he writes the period very well. The most notable part of the book is Wilkie Collins, who by virtue of being a drug addict and with other personality problems, is shown over time to be an unreliable narrator, and as you have that realization, you start to reevaluate assertions that were made before. This is certainly not Simmons best work though, and the characters being real people from history makes their portrayal oddly personal in some cases."
@@ -707,8 +707,8 @@
   id = 40121378
   isbn = ""
   isbn13 = ""
-  num_pages = 0
-  published_year = 0
+  num_pages = 319
+  published_year = 2018
   rating = 4
   read_at = 2021-04-11T00:00:00-07:00
   review = "Most of the ideas in the book are what you just call just common sense, but they're all examined thoughtfully, and it's helpful to hear someone articulate them well, then boil them down to specific actionable items. I'm planning on trying a few of the suggested techniques to see if I can build new, healthy practices."
@@ -724,7 +724,7 @@
   isbn = "0316198838"
   isbn13 = "9780316198837"
   num_pages = 663
-  published_year = 0
+  published_year = 2013
   rating = 3
   read_at = 2021-04-01T00:00:00-07:00
   review = "A tough one to rate because it's got a lot of ups and a lot downs. The good: interesting mountaineering, compelling characters, good overall story arc with a satisfying conclusion. The bad: a little run on, the mixture of real/fake people and events comes off as a little disingenuous, and it just seems like a bad trope at this point that Nazis are involved in a book about climbing a mountain just so there are convenient black-and-white bad guys. Still, the Goodreads ratings for this one are misleading — there are thousands of _far_ worse books with much higher ratings. Check out Simmons' other books first, but not a bad read."
@@ -740,7 +740,7 @@
   isbn = "0143119788"
   isbn13 = "9780143119784"
   num_pages = 381
-  published_year = 0
+  published_year = 1974
   rating = 2
   read_at = 2021-04-07T00:00:00-07:00
   review = "I'm not sure what I'm missing with le Carré — I spent six months reading this one off and on hoping that it would eventually pick up, but it never did. Prose that's dense to the point of obfuscation, spy craft as riveting as organizing your W-2s in April, and the most pinnacle moments of the book compressed to short paragraphs barely worthy of note. I watched the Alec Guinness series and read the Wikipedia summary while I was reading and still had a very hard time understanding what was going on."
@@ -995,7 +995,7 @@
   id = 42676
   isbn = "0864423705"
   isbn13 = "9780864423702"
-  num_pages = 0
+  num_pages = 269
   published_year = 2002
   rating = 4
   read_at = 2020-05-23T00:00:00-07:00
@@ -1059,8 +1059,8 @@
   id = 406575
   isbn = "0812966147"
   isbn13 = "9780812966145"
-  num_pages = 0
-  published_year = 0
+  num_pages = 336
+  published_year = 1903
   rating = 3
   read_at = 2020-04-03T00:00:00-07:00
   review = "Although the prose (and heavy nautical jargon) is a little difficult to follow at times, _The Riddle of the Sands_ is interesting for its premise, but far more interesting for its historical context — not only is it one of the earliest written spy thrillers that booted John Le Carre et all, but it turns out to have been extraordinarily prescient of WWI. Compared to modern entries in the same genre, I found it amazing how little there was in the way of direct action/explosions/overwrought drama, and how much deals with the collection of facts and good old fashioned reasoning ."
@@ -1107,8 +1107,8 @@
   id = 44667183
   isbn = "1635579988"
   isbn13 = "9781635579987"
-  num_pages = 0
-  published_year = 0
+  num_pages = 288
+  published_year = 2019
   rating = 5
   read_at = 2020-03-03T00:00:00-08:00
   review = ""
@@ -1123,8 +1123,8 @@
   id = 20592879
   isbn = "1484166108"
   isbn13 = "9781484166109"
-  num_pages = 0
-  published_year = 0
+  num_pages = 108
+  published_year = 2013
   rating = 3
   read_at = 2020-03-03T00:00:00-08:00
   review = ""
@@ -1139,8 +1139,8 @@
   id = 13539191
   isbn = "0765333104"
   isbn13 = "9780765333100"
-  num_pages = 0
-  published_year = 0
+  num_pages = 336
+  published_year = 2012
   rating = 2
   read_at = 2020-02-29T00:00:00-08:00
   review = ""
@@ -1156,7 +1156,7 @@
   isbn = "014200068X"
   isbn13 = "9780142000687"
   num_pages = 181
-  published_year = 0
+  published_year = 1945
   rating = 3
   read_at = 2020-02-20T00:00:00-08:00
   review = ""
@@ -1172,7 +1172,7 @@
   isbn = "0316017442"
   isbn13 = "9780316017442"
   num_pages = 769
-  published_year = 0
+  published_year = 2007
   rating = 4
   read_at = 2020-02-02T00:00:00-08:00
   review = ""
@@ -1188,7 +1188,7 @@
   isbn = "0743264738"
   isbn13 = "9780743264730"
   num_pages = 675
-  published_year = 0
+  published_year = 2007
   rating = 5
   read_at = 2020-01-20T00:00:00-08:00
   review = ""
@@ -1204,7 +1204,7 @@
   isbn = "031602919X"
   isbn13 = "9780316029193"
   num_pages = 398
-  published_year = 0
+  published_year = 1994
   rating = 2
   read_at = 2020-01-06T00:00:00-08:00
   review = ""
@@ -1220,7 +1220,7 @@
   isbn = "052553654X"
   isbn13 = ""
   num_pages = 302
-  published_year = 0
+  published_year = 2019
   rating = 3
   read_at = 2019-12-01T00:00:00-08:00
   review = ""
@@ -1235,8 +1235,8 @@
   id = 1
   isbn = ""
   isbn13 = ""
-  num_pages = 0
-  published_year = 0
+  num_pages = 652
+  published_year = 2005
   rating = 4
   read_at = 2019-12-26T00:00:00-08:00
   review = ""
@@ -1395,8 +1395,8 @@
   id = 19001
   isbn = "0743457927"
   isbn13 = "9780743457927"
-  num_pages = 0
-  published_year = 0
+  num_pages = 608
+  published_year = 1986
   rating = 2
   read_at = 2019-09-05T00:00:00-07:00
   review = ""
@@ -1411,8 +1411,8 @@
   id = 171242
   isbn = "1568361874"
   isbn13 = "9781568361871"
-  num_pages = 0
-  published_year = 0
+  num_pages = 302
+  published_year = 1985
   rating = 4
   read_at = 2021-12-02T00:00:00-08:00
   review = "An older perspective on Japan than you get from most travelogues, which were written much more recently. Thorough and a unique brand of humor."
@@ -1427,8 +1427,8 @@
   id = 35749434
   isbn = "1101981415"
   isbn13 = "9781101981412"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 2018
   rating = 3
   read_at = 2019-07-24T00:00:00-07:00
   review = ""
@@ -1731,8 +1731,8 @@
   id = 6545885
   isbn = "3037781831"
   isbn13 = "9783037781838"
-  num_pages = 0
-  published_year = 0
+  num_pages = 80
+  published_year = 2008
   rating = 3
   read_at = 2019-01-12T00:00:00-08:00
   review = ""
@@ -1748,7 +1748,7 @@
   isbn = "1501139150"
   isbn13 = "9781501139154"
   num_pages = 600
-  published_year = 0
+  published_year = 2017
   rating = 5
   read_at = 2019-01-09T00:00:00-08:00
   review = ""
@@ -1763,8 +1763,8 @@
   id = 38900866
   isbn = "0062874780"
   isbn13 = "9780062874788"
-  num_pages = 0
-  published_year = 0
+  num_pages = 240
+  published_year = 2018
   rating = 3
   read_at = 2018-12-19T00:00:00-08:00
   review = "Similar to previous Basecamp books — interesting, and with some very inspirational and thought-provoking ideas, but also mixed with some advice that's more dubious (sweeping generalizations for something that may be either not repeatable or not broadly applicable).\n\nStill, Fried and DHH seem to be some of the few corporate leaders in the world who are trying to build a company that aims to be efficient and sustainable. Most others seem to be chasing much more questionable values like maintaining an illusion of work that's really just frantic busy-ness, or hyper-growth-at-all-costs which leads to a top-heavy pyramid that's 95% communication and 5% productive progress. I, for one, appreciate that."
@@ -1891,8 +1891,8 @@
   id = 234225
   isbn = "0340839937"
   isbn13 = "9780340839935"
-  num_pages = 0
-  published_year = 0
+  num_pages = 658
+  published_year = 1965
   rating = 4
   read_at = 2018-10-24T00:00:00-07:00
   review = ""
@@ -1907,8 +1907,8 @@
   id = 36613747
   isbn = "0241294223"
   isbn13 = "9780241294222"
-  num_pages = 0
-  published_year = 0
+  num_pages = 480
+  published_year = 2018
   rating = 4
   read_at = 2018-10-08T00:00:00-07:00
   review = ""
@@ -1924,7 +1924,7 @@
   isbn = "0618346260"
   isbn13 = "9780618346264"
   num_pages = 322
-  published_year = 0
+  published_year = 1954
   rating = 4
   read_at = 2018-09-26T00:00:00-07:00
   review = ""
@@ -1939,8 +1939,8 @@
   id = 6213762
   isbn = "1416553878"
   isbn13 = "9781416553878"
-  num_pages = 0
-  published_year = 0
+  num_pages = 352
+  published_year = 2006
   rating = 1
   read_at = 2018-10-20T00:00:00-07:00
   review = ""
@@ -2067,8 +2067,8 @@
   id = 34879243
   isbn = "0241290465"
   isbn13 = "9780241290460"
-  num_pages = 0
-  published_year = 0
+  num_pages = 592
+  published_year = 2017
   rating = 3
   read_at = 2018-05-31T00:00:00-07:00
   review = "Worth the read for the many historical anecdotes that it covers, both from ancient history and that which is much more recent. Ferguson is an expert historian and it really comes through. His take on more modern events is also refreshingly pragmatic — he doesn't fall into the trap of expressing undue optimism about everything to be more palatable to the general public and sell more book copies. For example, the chapter that shows how states trend toward becoming heavily bureaucratic and thus capture monstrous amounts of potential productivity in massive overhead should be mandatory reading for anyone living in a democratic country.\n\nMy one complaint about the book is by going back through many key historical events in history and retrofitting the \"hierarchy versus network\" dichotomy onto them, the author ends up cheapening his own ideas. Many of the comparisons feel forced and/or unnecessary."
@@ -2083,8 +2083,8 @@
   id = 226486
   isbn = "0375719288"
   isbn13 = "9780375719288"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 1964
   rating = 3
   read_at = 2018-05-25T00:00:00-07:00
   review = ""
@@ -2099,8 +2099,8 @@
   id = 34323539
   isbn = "0062697439"
   isbn13 = "9780062697431"
-  num_pages = 0
-  published_year = 0
+  num_pages = 160
+  published_year = 2017
   rating = 3
   read_at = 2018-05-25T00:00:00-07:00
   review = "A well-written overview on why the current brand of liberalism are failing America and leading to more division instead of cooperation. Maybe the most interesting insight is that like some other societal mistakes in the past, identity politics is built around a policy of individualism that encourages abdication from any responsibility towards helping to create a greater good for all of a country's citizens."
@@ -2116,7 +2116,7 @@
   isbn = "0575088877"
   isbn13 = "9780575088870"
   num_pages = 336
-  published_year = 0
+  published_year = 2010
   rating = 2
   read_at = 2018-05-12T00:00:00-07:00
   review = "The ideas in this book are substantial. It combines a lot of classic themes from fantasy and science-fiction, but mixes in a healthy dose of original thinking. Unfortunately, something about the pacing is a little off, and I never got to the point where I was a reading it fluently. Its worse fault is its obfuscated prose — about 50 manufactured words are thrown at the reader right from the beginning (gogol, q-dot, Sobornost, quptlink, phoboi, tzaddikim, Oubliette, zoku, gevulot, etc.), and entire paragraphs are unintelligble. By the end of the book you've built up a rough feeling as to what most of it means, but even by then, the majority have never really been adequately explained. It's possible for a book to do a great job with some artificial vocabulary, but there's too much of it."
@@ -2132,7 +2132,7 @@
   isbn = "1594203474"
   isbn13 = "9781594203473"
   num_pages = 447
-  published_year = 0
+  published_year = 2015
   rating = 4
   read_at = 2018-04-30T00:00:00-07:00
   review = "A nice account of a life well-spent (and with a lot of surfing). I was impressed by how much of the book really is about the technical aspects and day-to-day experiences while surfing — often for books in its the genre it's just used as a pretext to tell other stories and talk about its culture."
@@ -2148,7 +2148,7 @@
   isbn = "480531396X"
   isbn13 = "9784805313961"
   num_pages = 127
-  published_year = 0
+  published_year = 2016
   rating = 2
   read_at = 2018-03-18T00:00:00-07:00
   review = "A nice tiny book on a trip to Japan. The art's entertaining and the author obviously has a sharp sense of humor.\n\nI wasn't sure how to rate this one — it's clever, but there's not very much content here (it's more like a zine than a book), so I'm trying to keep an absolutel baseline relative to other books."
@@ -2259,8 +2259,8 @@
   id = 10258481
   isbn = "4805311290"
   isbn13 = "9784805311295"
-  num_pages = 0
-  published_year = 0
+  num_pages = 160
+  published_year = 2011
   rating = 3
   read_at = 2018-03-30T00:00:00-07:00
   review = "This is more of a guide than a book, but it was well researched and well assembled. There was a lot of information codified here that I'd only found out about painstakingly by other means. Recommended read as a travel guide to anyone thinking about visiting."
@@ -2323,8 +2323,8 @@
   id = 7668
   isbn = "0606298231"
   isbn13 = "9780606298230"
-  num_pages = 0
-  published_year = 2004
+  num_pages = 399
+  published_year = 1992
   rating = 4
   read_at = 2017-12-16T00:00:00-08:00
   review = ""
@@ -2339,8 +2339,8 @@
   id = 33826085
   isbn = ""
   isbn13 = ""
-  num_pages = 0
-  published_year = 0
+  num_pages = 146
+  published_year = 2012
   rating = 2
   read_at = 2017-12-04T00:00:00-08:00
   review = ""
@@ -2371,8 +2371,8 @@
   id = 18774981
   isbn = "1451636016"
   isbn13 = "9781451636017"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 2014
   rating = 3
   read_at = 2017-11-04T00:00:00-07:00
   review = "Certainly a very important book: Harris describes the important concept that it's possible to tease the practical gems out of religions that also prescribe a lot of anti-intellectual mumbo jumbo. Meditation is discussed in depth, along with what we understand about how it affects the brain. There's a short part at the end where he talks about his experiences with LSD, and this sort of content always interesting.\n\nMy only complaint about the book is that a fair bit of material that didn't really need to be in there was added so that it could hit the 200-page mark. It probably would have been more impacting as 50 pages worth of thematically-related essays."
@@ -2435,8 +2435,8 @@
   id = 30139664
   isbn = "0765392763"
   isbn13 = "9780765392763"
-  num_pages = 0
-  published_year = 0
+  num_pages = 384
+  published_year = 2017
   rating = 2
   read_at = 2017-08-02T00:00:00-07:00
   review = "\"Walkaway\" is further proof that nobody thinks about the future like Cory Doctorow does. The imagined future isn't just possible, but feels within reach, and is modeled on a trajectory that originates from the author's keen sense of technology today. Many of its elements are pulled directly from ideas that we have today like wikis, anonymizers, version control, gamification, etc. and extended to produce an impressive vista that manages to be both utopian and dystopian at the same time.\n\nI'm giving it a lower rating mostly because all the characters are so insufferable. The highly embellished banter gets tiring to read after a while, and you just find yourself wishing that Cory would pick up a few habits from Cormac McCarthy. The book is also heavy handed on political statements: everyone's on the LGBT spectrum, and every female character is a Mary Sue incarnate. It's not the worst thing in the world, but it all comes off quite contrived."
@@ -2483,8 +2483,8 @@
   id = 13593539
   isbn = "0399161643"
   isbn13 = "9780399161643"
-  num_pages = 0
-  published_year = 0
+  num_pages = 288
+  published_year = 2013
   rating = 2
   read_at = 2017-06-19T00:00:00-07:00
   review = "Jeff and Bernie's casual conversations certainly seem to be far more interesting than anything I can muster with my friends, but although entertaining, the information (and even useful philosophical) density here is pretty low. It probably would have made a great \"My Dinner with Andre\" style movie, but in book form should probably be a pass."
@@ -2515,8 +2515,8 @@
   id = 25663870
   isbn = "1250078253"
   isbn13 = "9781250078254"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 2016
   rating = 3
   read_at = 2018-02-03T00:00:00-08:00
   review = "Gravel does a nice job of framing the problem around urban sprawl and how it's going to become an increasingly important problem for North America in terms of greater commute times, worse physiological and psychological health, and producing places in abundance that no one wants to be.\n\nHe walks through the history of the Atlantia BeltLine and how it was possible to generate the political will to get the project off the ground. He also goes into some interesting details around comparable projects in New York, Paris, and even Houston.\n\nI downrated it a little bit because while talking about specific projects was interesting and the despite the project's broad thesis, he doesn't present a cohesive strategy that will do anything than apply a few bandaids on a problem of true national scale."
@@ -2611,8 +2611,8 @@
   id = 26193026
   isbn = "1594206422"
   isbn13 = "9781594206429"
-  num_pages = 0
-  published_year = 0
+  num_pages = 416
+  published_year = 2016
   rating = 2
   read_at = 2016-10-11T00:00:00-07:00
   review = "Amusing set of memoirs that coincidentally also act as a shallow history of the New York club and rave scene in the late 80s and early 90s. Most of the book didn't do all that much for me though."
@@ -2739,8 +2739,8 @@
   id = 400064
   isbn = "0670037974"
   isbn13 = "9780670037971"
-  num_pages = 0
-  published_year = 0
+  num_pages = 352
+  published_year = 2006
   rating = 5
   read_at = 2016-08-01T00:00:00-07:00
   review = "Great book that covers the history of Alexandria from its founding by Alexander the Great all the way through its downfall in later Roman and Islamic rule, and covers the major thinkers and rulers who occupied the city throughout. Fans of Roman history will appreciate how its great figures are woven in throughout, but don't steal the spotlight, leaving a different and less frequently covered historical perspective from the side of the Egyptians."
@@ -2755,8 +2755,8 @@
   id = 1525462
   isbn = "0804838399"
   isbn13 = "9780804838399"
-  num_pages = 0
-  published_year = 0
+  num_pages = 208
+  published_year = 2007
   rating = 3
   read_at = 2016-07-05T00:00:00-07:00
   review = "A fun photo tour of some of the well-known inns built around hot springs in Japan. Looking through the book and admiring the beauty of these locations is a truly serene experience, but a word of warning: cross-referencing inn names with prices on hotels.com can have the opposite effect.\n\nThe book is about what you'd expect. It's only marred by a few pages where some low resolution photography has been blown up beyond its usable limits to create some very grainy landscapes."
@@ -2771,8 +2771,8 @@
   id = 61619
   isbn = "1593270070"
   isbn13 = "9781593270070"
-  num_pages = 0
-  published_year = 0
+  num_pages = 264
+  published_year = 2003
   rating = 4
   read_at = 2016-07-06T00:00:00-07:00
   review = "A solid book that people of all experience levels will learn at least something from. I found it especially useful for solidifying some of my network and assembly fundamentals.\n\nOne thing to note is that the exploits in the book are generally not very useful in the modern world, most of them are only useful for attacking C/C++-based programs, or programs on old versions of the Linux kernel, or wireless encryption systems that no one uses anymore, but they can still be treated as useful building blocks."
@@ -2819,8 +2819,8 @@
   id = 25049103
   isbn = "1938895274"
   isbn13 = "9781938895272"
-  num_pages = 0
-  published_year = 0
+  num_pages = 356
+  published_year = 2011
   rating = 3
   read_at = 2019-05-28T00:00:00-07:00
   review = "The aggressive style of writing and strange formatting make this book a little annoying to read, but it’s quite comprehensive, with a lot of practical advice."
@@ -2829,14 +2829,14 @@
 
   [[readings.authors]]
     id = 6441456
-    name = "Michael  Matthews"
+    name = "Michael Matthews"
 
 [[readings]]
   id = 6545608
   isbn = "0393337014"
   isbn13 = "9780393337013"
-  num_pages = 0
-  published_year = 2009
+  num_pages = 248
+  published_year = 1997
   rating = 3
   read_at = 2016-10-01T00:00:00-07:00
   review = "Good overall account of the ill-fated swordfishing boat Andrea Gail and her crew. The description of some of the rescue operations of the Coast Guard is particularly good. It probably spends a little too much time in the first part of the book describing the background of every single person who's about to go out to sea, but this probably helps to humanize the story's events."
@@ -2909,14 +2909,14 @@
 
   [[readings.authors]]
     id = 776
-    name = "Michael   Lewis"
+    name = "Michael Lewis"
 
 [[readings]]
   id = 25897871
   isbn = "0544634497"
   isbn13 = "9780544634497"
-  num_pages = 0
-  published_year = 0
+  num_pages = 288
+  published_year = 2016
   rating = 4
   read_at = 2016-07-17T00:00:00-07:00
   review = "I was a little worried when the first section of the book was powered purely by anecdotes about speakers that had come to TED, but about midway through it starts to get into some pretty concrete advice on how to give a talk. There's no silver bullet when it comes to doing a talk, but this is a compilation of as good of advice as you're likely to find."
@@ -3027,8 +3027,8 @@
   id = 627994
   isbn = "1903083249"
   isbn13 = "9781903083246"
-  num_pages = 0
-  published_year = 0
+  num_pages = 272
+  published_year = 1993
   rating = 3
   read_at = 2016-03-28T00:00:00-07:00
   review = "An interesting history of the early Internet and culture of psychedelics (if a tad disjointed at times). It also had some good information on how these early cultures related to the Bay Area specifically, and talked about some of the early (and long since extinct) cyber clubs in SOMA. I would've liked to see even more information on that."
@@ -3043,8 +3043,8 @@
   id = 23848607
   isbn = "0765383187"
   isbn13 = "9780765383181"
-  num_pages = 0
-  published_year = 0
+  num_pages = 464
+  published_year = 2015
   rating = 3
   read_at = 2016-02-06T00:00:00-08:00
   review = "A good story, but a little on the formulaic side for the genre, and with a little too much charging around the world without good reason. One dimensional villains whose abilities are never well explored, but as is typical with antagonist inflation, are made clear to be even bigger and badder than the last ultimate bad guy."
@@ -3059,8 +3059,8 @@
   id = 21535451
   isbn = "0981484654"
   isbn13 = "9780981484655"
-  num_pages = 0
-  published_year = 0
+  num_pages = 96
+  published_year = 2015
   rating = 3
   read_at = 2016-02-03T00:00:00-08:00
   review = "Some interesting philosophical views and a dabbling of Japanese aesthetic, but nothing life changing. A very short read that may be better characterized as an essay."
@@ -3107,7 +3107,7 @@
   id = 42190
   isbn = "1880656124"
   isbn13 = "9781880656129"
-  num_pages = 0
+  num_pages = 96
   published_year = 1994
   rating = 3
   read_at = 2016-02-07T00:00:00-08:00
@@ -3139,8 +3139,8 @@
   id = 1121565
   isbn = "1558218769"
   isbn13 = "9781558218765"
-  num_pages = 0
-  published_year = 0
+  num_pages = 248
+  published_year = 1947
   rating = 4
   read_at = 2016-01-08T00:00:00-08:00
   review = "Great climbing adventure story from the early days of mountaineering. The content is good and the prose carries a particular charm."
@@ -3155,8 +3155,8 @@
   id = 23164961
   isbn = "110187015X"
   isbn13 = "9781101870150"
-  num_pages = 0
-  published_year = 0
+  num_pages = 288
+  published_year = 204
   rating = 2
   read_at = 2015-12-23T00:00:00-08:00
   review = "Kind of an unusual stream of consciousness style of prose that touches shallowly upon a variety of different subjects and that's good for light and mildly interesting reading. Contains very little depth, structure, or cohesive narrative, and doesn't cover much about flies for that matter either."
@@ -3171,8 +3171,8 @@
   id = 25159057
   isbn = "0465059732"
   isbn13 = "9780465059737"
-  num_pages = 0
-  published_year = 0
+  num_pages = 296
+  published_year = 2015
   rating = 5
   read_at = 2016-05-07T00:00:00-07:00
   review = "Ametora is an amazing book that is very informational while managing to stay easy to read and quite succinct. All its stories, from the rise of Ivy style, to the domination of international streetwear with A Bathing Ape, to the obsession and mastery with first finding vintage American denim, and then later with its production, are enthralling. A perfect example on how the history of fashion can be interesting."
@@ -3251,8 +3251,8 @@
   id = 9895917
   isbn = "1591843790"
   isbn13 = "9781591843795"
-  num_pages = 0
-  published_year = 0
+  num_pages = 240
+  published_year = 2012
   rating = 3
   read_at = 2015-08-02T00:00:00-07:00
   review = "Entertaining read that imparts general knowledge on a large variety of different topics all the way from executing a firm handshake to marketing yourself on Twitter. The use of the word \"enchantment\" in the book is heavily overloaded to mean a great deal of different things, but mostly often it can be translated fairly accurately to \"manipulation\" to varying degrees.\n\nThe strongest part of the book was the section on public speaking. It gives a few pieces of advice that interesting and not in the array of broadly distributed knowledge on the subject.\n\nNear the end of a book built entirely on subjective advice and anecdote, Kawasaki's added a section on how to avoid being overly enchanted by anecdotes. The irony of this situation wasn't acknowledged, and unfortunately may have been lost.\n\nIt's a fast read that's pretty fun. If you came to read a book on building great products, look elsewhere."
@@ -3299,8 +3299,8 @@
   id = 28862
   isbn = "0937832383"
   isbn13 = "9780937832387"
-  num_pages = 0
-  published_year = 0
+  num_pages = 144
+  published_year = 1513
   rating = 3
   read_at = 2015-04-01T00:00:00-07:00
   review = ""
@@ -3347,8 +3347,8 @@
   id = 6452798
   isbn = "1594202273"
   isbn13 = "9781594202278"
-  num_pages = 0
-  published_year = 0
+  num_pages = 656
+  published_year = 2013
   rating = 4
   read_at = 2019-05-14T00:00:00-07:00
   review = ""
@@ -3475,8 +3475,8 @@
   id = 104745
   isbn = "0131429019"
   isbn13 = "9780131429017"
-  num_pages = 0
-  published_year = 0
+  num_pages = 560
+  published_year = 2003
   rating = 3
   read_at = 2014-06-30T00:00:00-07:00
   review = "Great insights into some of the historical roots of Unix and its successors, as well as some deep dives into the design of many classic Unix programs. My only complaints were that there was a lot of attribution of elegance to interfaces which, in my opinion, are not very elegant (take the make system or fetchmail configuration for example), and that large sections of the book are dedicated to technologies which are a bit outdated these days. Otherwise, this is a very interesting read."
@@ -3523,8 +3523,8 @@
   id = 13538752
   isbn = "0312681232"
   isbn13 = "9780312681234"
-  num_pages = 0
-  published_year = 0
+  num_pages = 384
+  published_year = 2012
   rating = 4
   read_at = 2016-01-05T00:00:00-08:00
   review = "A book which gives good information on Cato without being so overbearing as to present him in an overly biased way. The period of Roman history covered is largely the final years of the Republic through which Cato lived and had an active role (and for readers less familiar with the time, these also happen to be some of the most interesting years in the entirety of Roman history), and culminating with Julius Caesar's ascension.\n\nThere were a few parts of the book that worded slightly oddly (Cato's death was quite abrupt for example), but other than that I have no complaints. Recommended!"
@@ -3635,8 +3635,8 @@
   id = 3424
   isbn = "038071082X"
   isbn13 = "9780380710829"
-  num_pages = 0
-  published_year = 0
+  num_pages = 1104
+  published_year = 1990
   rating = 3
   read_at = 2014-01-08T00:00:00-08:00
   review = "A hugely impressive history lession, but runs quite long with a daunting array of peripheral characters."
@@ -3699,8 +3699,8 @@
   id = 13330433
   isbn = "081299356X"
   isbn13 = "9780812993561"
-  num_pages = 0
-  published_year = 0
+  num_pages = 352
+  published_year = 2013
   rating = 3
   read_at = 2014-04-26T00:00:00-07:00
   review = ""
@@ -3715,8 +3715,8 @@
   id = 13132039
   isbn = "1449306578"
   isbn13 = "9781449306571"
-  num_pages = 0
-  published_year = 0
+  num_pages = 240
+  published_year = 2011
   rating = 2
   read_at = 2013-08-04T00:00:00-07:00
   review = ""
@@ -3779,8 +3779,8 @@
   id = 6304389
   isbn = "1846140390"
   isbn13 = "9781846140396"
-  num_pages = 0
-  published_year = 0
+  num_pages = 352
+  published_year = 2009
   rating = 5
   read_at = 2013-09-09T00:00:00-07:00
   review = "Major insights into how wealth inequality ends up causing problems for all of society. Highly recommended."
@@ -3923,8 +3923,8 @@
   id = 8558613
   isbn = "0847834182"
   isbn13 = "9780847834181"
-  num_pages = 0
-  published_year = 0
+  num_pages = 224
+  published_year = 2010
   rating = 3
   read_at = 2014-02-14T00:00:00-08:00
   review = ""
@@ -3933,7 +3933,7 @@
 
   [[readings.authors]]
     id = 8296069
-    name = "Leslie  Williamson"
+    name = "Leslie Williamson"
 
 [[readings]]
   id = 6437061
@@ -4019,8 +4019,8 @@
   id = 9897152
   isbn = "159420277X"
   isbn13 = "9781594202773"
-  num_pages = 0
-  published_year = 0
+  num_pages = 352
+  published_year = 2011
   rating = 5
   read_at = 2013-03-07T00:00:00-08:00
   review = ""
@@ -4035,8 +4035,8 @@
   id = 2034402
   isbn = "303778105X"
   isbn13 = "9783037781050"
-  num_pages = 0
-  published_year = 0
+  num_pages = 467
+  published_year = 2003
   rating = 4
   read_at = 2018-09-08T00:00:00-07:00
   review = "Almost certainly the most beautifully assembled book I've ever seen. I didn't find anything truly revolutionary in its pages, but there's detail on lots of great art projects, and some interesting deliberation on the nature, history, and future of design closer to the end."
@@ -4291,8 +4291,8 @@
   id = 7690214
   isbn = "0753826941"
   isbn13 = "9780753826942"
-  num_pages = 0
-  published_year = 0
+  num_pages = 224
+  published_year = 2009
   rating = 4
   read_at = 2022-08-06T00:00:00-07:00
   review = "Witty. Funny. Adventurous (and even somewhat educational). Top tier travel book."
@@ -4483,8 +4483,8 @@
   id = 855559
   isbn = "0618367519"
   isbn13 = "9780618367511"
-  num_pages = 0
-  published_year = 0
+  num_pages = 310
+  published_year = 2004
   rating = 3
   read_at = 2013-05-26T00:00:00-07:00
   review = ""
@@ -4627,8 +4627,8 @@
   id = 5958783
   isbn = "0306817586"
   isbn13 = "9780306817588"
-  num_pages = 0
-  published_year = 0
+  num_pages = 264
+  published_year = 2009
   rating = 5
   read_at = 2011-09-05T00:00:00-07:00
   review = "Very concise and easy to understand read describing some of the greatest fundamentals of physics: special relativity, the Standard Model of particle physics, and finally special relativity. The result is a very fast read that keeps your interest up, and at the same time helps you to understand some of the deep mysteries of the universe."
@@ -4707,8 +4707,8 @@
   id = 10336721
   isbn = "0887627390"
   isbn13 = "9780887627392"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 1965
   rating = 4
   read_at = 2011-09-10T00:00:00-07:00
   review = "Very interesting biography on Billy Bishop, with great insight into how pilots operated during World War I."
@@ -4819,8 +4819,8 @@
   id = 7125
   isbn = "0812565681"
   isbn13 = "9780812565683"
-  num_pages = 0
-  published_year = 0
+  num_pages = 1276
+  published_year = 1844
   rating = 3
   read_at = 2008-07-31T00:00:00-07:00
   review = "Edmond Dantès is wrongfully sent to prison, and later escapes to take revenge. He doesn't reclaim his former love Mercédès, but finds it in his former slave Haydée."
@@ -4867,8 +4867,8 @@
   id = 900
   isbn = "0060554738"
   isbn13 = "9780060554736"
-  num_pages = 0
-  published_year = 0
+  num_pages = 452
+  published_year = 2005
   rating = 4
   read_at = 2008-08-24T00:00:00-07:00
   review = "Story of Strauss' (known as Style) time becoming and living as a pickup artist. Characters in the book are well known PUAs such as Mystery and David DeAngelo. Claims to be a true story."
@@ -4883,8 +4883,8 @@
   id = 6328495
   isbn = "1846880483"
   isbn13 = "9781846880483"
-  num_pages = 0
-  published_year = 0
+  num_pages = 217
+  published_year = 2006
   rating = 4
   read_at = 2008-08-27T00:00:00-07:00
   review = "Snippets from a philosophy professor's time in Japan as a visiting professor at the University of Tokyo."
@@ -4899,8 +4899,8 @@
   id = 221059
   isbn = "1596911050"
   isbn13 = "9781596911055"
-  num_pages = 0
-  published_year = 0
+  num_pages = 464
+  published_year = 2006
   rating = 3
   read_at = 2008-08-31T00:00:00-07:00
   review = "About a game programmer and his quirky team, pot-dealing mother, wannabe-actor father, and strangely enough, Douglas Coupland himself. The book is interlaced with weird games and geek visuals."
@@ -4915,8 +4915,8 @@
   id = 1998185
   isbn = "1594201536"
   isbn13 = "9781594201530"
-  num_pages = 0
-  published_year = 0
+  num_pages = 336
+  published_year = 2008
   rating = 2
   read_at = 2008-09-03T00:00:00-07:00
   review = "How technology has enabled humanity to organize into ad-hoc groups without organizations to do it for us."
@@ -4979,8 +4979,8 @@
   id = 1297985
   isbn = "0676979785"
   isbn13 = "9780676979787"
-  num_pages = 0
-  published_year = 0
+  num_pages = 400
+  published_year = 2007
   rating = 4
   read_at = 2008-10-03T00:00:00-07:00
   review = "Recounts the story of a large range of special medical cases that involve music. These cases range from people with Parkinson's disease, who find music thereputic for controlling the timing of their movement, to musical savants who have perfect pitch and thousands of operas memorized."
@@ -5027,8 +5027,8 @@
   id = 3081563
   isbn = "0374288518"
   isbn13 = "9780374288518"
-  num_pages = 0
-  published_year = 0
+  num_pages = 208
+  published_year = 2008
   rating = 4
   read_at = 2008-11-10T00:00:00-08:00
   review = "Investigating the nature of life in the age of synthetic biology. Speculates on the characteristics of life and history in genetic advancements."
@@ -5059,8 +5059,8 @@
   id = 581125
   isbn = "0375421874"
   isbn13 = "9780375421877"
-  num_pages = 0
-  published_year = 0
+  num_pages = 112
+  published_year = 1956
   rating = 3
   read_at = 2008-11-25T00:00:00-08:00
   review = "A story where a man running a law enforcement department based on precog, is himself targeted as a suspect."
@@ -5139,8 +5139,8 @@
   id = 7673
   isbn = "0060891564"
   isbn13 = "9780060891565"
-  num_pages = 0
-  published_year = 0
+  num_pages = 304
+  published_year = 1976
   rating = 3
   read_at = 2011-05-15T00:00:00-07:00
   review = "The story of an Arab who is sent along with a group of Vikings who are on a hero's quest to the north to do battle with the wendol. The latter part of the story is largely inspired by Beowulf. Well-written and creepy."
@@ -5219,8 +5219,8 @@
   id = 2414574
   isbn = "0765317095"
   isbn13 = "9780765317094"
-  num_pages = 0
-  published_year = 0
+  num_pages = 384
+  published_year = 2007
   rating = 3
   read_at = 2009-02-03T00:00:00-08:00
   review = "The steampunk story of a young girl looking for guidance in a world that reflects an alternate possibility of the Imperialist days of Britain. The world itself is the mechanical creation of God and is split in two by a giant wall, it contains brass men, airships, Chinese submarines, secret societies and monstrous gods. Good premise, but finishes a little weak with many plots not properly wrapped up."
@@ -5347,8 +5347,8 @@
   id = 2623
   isbn = "0192833596"
   isbn13 = "9780192833594"
-  num_pages = 0
-  published_year = 1998
+  num_pages = 544
+  published_year = 1860
   rating = 2
   read_at = 2009-07-01T00:00:00-07:00
   review = "An English-language classic about a boy's journey through life. We can certainly learn from Pip's behaviour in the book, but any real lasting lessons that may be learned from the book are very subtle."
@@ -5411,8 +5411,8 @@
   id = 2100897
   isbn = "0801953456"
   isbn13 = "9780817405182"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 2005
   rating = 3
   read_at = 2009-08-21T00:00:00-07:00
   review = "Well-written and in-depth handbook on the use of SLRs under a variety of conditions."
@@ -5443,8 +5443,8 @@
   id = 4135863
   isbn = "1594202117"
   isbn13 = "9781594202117"
-  num_pages = 0
-  published_year = 0
+  num_pages = 288
+  published_year = 2009
   rating = 3
   read_at = 2009-09-06T00:00:00-07:00
   review = "Steampunk detective story. Very surreal style that eventually expands into the metaphysical plane (dream detection and stuff). Story is well thought out and atmosphere is well-written."
@@ -5459,8 +5459,8 @@
   id = 3360822
   isbn = "0307407187"
   isbn13 = "9780307407184"
-  num_pages = 0
-  published_year = 0
+  num_pages = 224
+  published_year = 2008
   rating = 3
   read_at = 2009-09-17T00:00:00-07:00
   review = "A handbook written in a joking sense about how to move to Mars and be successful in everything you do there. Zubrin backs up his fictional stories with a lot of scientific figures."
@@ -5571,8 +5571,8 @@
   id = 3346158
   isbn = "0470395354"
   isbn13 = "9780470395356"
-  num_pages = 0
-  published_year = 0
+  num_pages = 336
+  published_year = 2008
   rating = 4
   read_at = 2010-02-09T00:00:00-08:00
   review = "A collection of short articles on various types of security practices by security expert Bruce Schneier. Lots of good information, except that most of it doesn't go into great depth."
@@ -5587,8 +5587,8 @@
   id = 766674
   isbn = "0521685710"
   isbn13 = "9780521685719"
-  num_pages = 0
-  published_year = 0
+  num_pages = 208
+  published_year = 2006
   rating = 3
   read_at = 2010-03-22T00:00:00-07:00
   review = "Pulls together recommendations of the Copenhagen Concensus, a meeting that asked what problems experts and policy-makers should address, given $50 billion to spend. Good material is covered, but it's not quite as engaging as Bjorn's previous hit."
@@ -5635,8 +5635,8 @@
   id = 33297
   isbn = "0385334303"
   isbn13 = "9780385334303"
-  num_pages = 0
-  published_year = 0
+  num_pages = 256
+  published_year = 1967
   rating = 4
   read_at = 2010-05-27T00:00:00-07:00
   review = "A book written about humans from a zoologist's perspective, with lots of comparisons to other animals. Interesting info bits like the fact that humans have the largest penis out of any ape. A few parts are a bit dated but still reads very well considering it was published in 1967."
@@ -5667,8 +5667,8 @@
   id = 5966123
   isbn = "0765322897"
   isbn13 = "9780765322890"
-  num_pages = 0
-  published_year = 0
+  num_pages = 338
+  published_year = 2000
   rating = 3
   read_at = 2010-05-30T00:00:00-07:00
   review = "A novel about the arrival of an alien species on Earth. With the help of a local paleontologist, they determine that across three major alien worlds there have been simultaneous extinction events that helped guide the evolution of sentient beings. This, along with the fact that universal constants that appear to be tweaked exactly right seem to indicate the presence of God.\n\nWell-written, but hard to figure out what point Sawyer was trying to make with the book (if any)."
@@ -5715,8 +5715,8 @@
   id = 1879339
   isbn = "1552639428"
   isbn13 = "9781552639429"
-  num_pages = 0
-  published_year = 0
+  num_pages = 304
+  published_year = 2007
   rating = 3
   read_at = 2010-06-21T00:00:00-07:00
   review = "A collection of business and life lessons from a Canada self-made billionaire."
@@ -5731,8 +5731,8 @@
   id = 981490
   isbn = "0743212118"
   isbn13 = "9780743212113"
-  num_pages = 0
-  published_year = 0
+  num_pages = 224
+  published_year = 2001
   rating = 4
   read_at = 2010-06-24T00:00:00-07:00
   review = "Details of the investigation into a paleontological site in Patagonia called Auca Mahuevo containing thousands of dinosaur eggs. Very interesting."
@@ -5763,8 +5763,8 @@
   id = 6422238
   isbn = "0765312794"
   isbn13 = "9780765312792"
-  num_pages = 0
-  published_year = 0
+  num_pages = 416
+  published_year = 2009
   rating = 2
   read_at = 2010-08-04T00:00:00-07:00
   review = "A story about a tinkerer revolution that comes to America. It eventually leads to questions over IP and general openness as the main characters side an international set of museum-like \"rides\". Some good ideas were present but the book is very long-winded."
@@ -5811,8 +5811,8 @@
   id = 8026503
   isbn = "1586487892"
   isbn13 = "9781586487898"
-  num_pages = 0
-  published_year = 0
+  num_pages = 416
+  published_year = 2010
   rating = 5
   read_at = 2010-11-12T00:00:00-08:00
   review = "Excellent book detailing the current state of power in the world, specifically the United States. It showcases nuclear energy prominently as the future of power, and explains why gas and coal will likely always play an important role in the grid (proponent of N2N, \"natural gas to nuclear\"). Green energy is covered in detail and shown to mostly be good meaning, but ultimately not practical for the real world. Conjectures are supported by hard facts and numbers throughout."
@@ -5859,8 +5859,8 @@
   id = 3207178
   isbn = "1590200845"
   isbn13 = "9781590200841"
-  num_pages = 0
-  published_year = 0
+  num_pages = 144
+  published_year = 2008
   rating = 5
   read_at = 2010-12-04T00:00:00-08:00
   review = "Concise and well-written book investigating the economics behind climate change and the current approaches governments have deemed necessary to mitigate the problem. He concerns himself with the uncertainties of long-term forecasting, and the lack of real cost-effectiveness analysis on recommended policies.\n\nLawson generally agrees with the warming trend, but goes on to discuss the actual IPCC findings and breaks down common arguments for the future using knowledge, back-of-the-envelope calculations, and common sense. Valid end notes and references are provided for each chapter."
@@ -5891,8 +5891,8 @@
   id = 83633
   isbn = "0802142494"
   isbn13 = "9780802142498"
-  num_pages = 0
-  published_year = 0
+  num_pages = 336
+  published_year = 2006
   rating = 2
   read_at = 2011-01-31T00:00:00-08:00
   review = "A thought-inspiring book about the end of the oil age, and what comes after. Talks a lot about how we owe most of our modern feats to cheap oil. Unfortunately, the inaccuracy of some important facts and figures (often numbers are off by orders of magnitude) damages the point that the book tries to make. Most of these figures are due to the book being published years ago, but some are not."
@@ -5907,8 +5907,8 @@
   id = 1078880
   isbn = "0676978584"
   isbn13 = "9780676978582"
-  num_pages = 0
-  published_year = 0
+  num_pages = 263
+  published_year = 2006
   rating = 3
   read_at = 2011-02-07T00:00:00-08:00
   review = "A collection of case studies that give insight into how the brain works that we often overlook. The author does a fantastic job of writing and presenting the material, but some of the experiments give a stark reminder as to why psychology is not a hard science."
@@ -5923,8 +5923,8 @@
   id = 2018455
   isbn = "1553652401"
   isbn13 = "9781553652403"
-  num_pages = 0
-  published_year = 0
+  num_pages = 288
+  published_year = 2007
   rating = 3
   read_at = 2011-02-09T00:00:00-08:00
   review = "A dramatization of a woman's adventure on the Camino de Santiago across Spain. Jane is a very quirky and engaging writer, but the hyperbole gets extreme at some points."
@@ -5933,7 +5933,7 @@
 
   [[readings.authors]]
     id = 20573843
-    name = "Jane  Christmas"
+    name = "Jane Christmas"
 
 [[readings]]
   id = 365

@@ -187,9 +187,6 @@ jobs:
       - name: "Download photo markers"
         run: make photographs-download-markers
 
-      - name: "Download latest qself data/"
-        run: make data-update
-
       - name: "Build: Development"
         run: make build
         env:

@@ -29,17 +29,6 @@ clean:
 .PHONY: compile
 compile: install
 
-# Updates TOML flat files in data/ from qself, which is running on regular cron
-# to fetch updates from these services.
-.PHONY: data-update
-data-update:
-	curl --compressed --output data/goodreads.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/goodreads.toml
-	curl --compressed --output data/twitter.toml https://raw.githubusercontent.com/brandur/qself-brandur/master/data/twitter.toml
-
-# data-update aliases
-.PHONY: update-data
-update-data: data-update
-
 # Long TTL (in seconds) to set on an object in S3. This is suitable for items
 # that we expect to only have to invalidate very rarely like images. Although
 # we set it for all assets, those that are expected to change more frequently
