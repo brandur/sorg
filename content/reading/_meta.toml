@@ -61,6 +61,17 @@ The stories are entertaining enough and it's worth a quick read, but it's not a 
 Rowling's an obnoxiously talented writer. I rarely read mysteries, but keep finding myself gravitating back to these Cormoran Strike books. They're long, but the length gives the story time to examine the mystery in play from all angles, and develop characters into believable people. Like other series entries, the resolution is an epic crescendo of converging clues and storylines, magically orchestrated. _Running Grave_'s subject is a cult, and anyone passingly familiar with like organizations in real life recognizes its background and practices as highly believable.
 """
 
+[[readings]]
+  title = "And Then It Fell Apart"
+  authors = [ "Moby" ]
+  num_pages = 394
+  published_year = 2019
+  rating = 3
+  read_at = 2023-11-23T12:57:44-07:00
+  review = """\
+I see from other reviews that this book gets a lot of hate, but I enjoyed it. Moby doesn't pull any punches and describes in excruciating detail his problems with alcohol, his problems with relationships, and how to came to realize the hard way that money and assets aren't an automatic lock on happiness.
+"""
+
 #
 # Here the file became manually curated instead of being updated from the
 # Goodreads API via qself.
