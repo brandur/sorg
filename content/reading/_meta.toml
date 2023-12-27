@@ -2,7 +2,10 @@
 #
 # READINGS
 #
-# TODO
+# A list of books that I've read along with a short 1-2 paragraph review and
+# metadata. These were originally synced from the Goodreads API until that was
+# marked for obsolescence and started returning unreliable information. Now it's
+# maintained by hand like other parts of this site.
 #
 ################################################################################
 
@@ -17,6 +20,19 @@
 A tiny pocket book that's the perfect format for carrying about and skimming in a session or two. It's quite short, and no tips in here will change your life, but I found the book a helpful reminder to get out and do things and to publish what you did.
 
 There's a couple sequences where he (or someone being quoted) glorifies lockdowns (and how they were so conducive to being interesting), which drives me up the wall, but the content is reasonably good beyond that.
+"""
+
+[[readings]]
+  title = "The Making of Prince of Persia: Journals 1985-1993"
+  authors = [ "Jordan Mechner" ]
+  num_pages = 336
+  published_year = 2020
+  rating = 3
+  read_at = 2023-12-23T16:35:44-07:00
+  review = """\
+The idea of reading republished journals sounds like a tiresome concept, but it works with editing and attention to detail. Jordan's journal entries are succinct and offer a fascinating window into the early era of game development, with his well-traveled life acting as seasoning for the story. Beautifully curated media assets and other accompanying materials are sprinkled througout to keep it even more engaging.
+
+I'd never played the original game when I was young so after finishing the book I went to try it on a DOS emulator. Games have come a long way and you have to grade them according to their time, but still, wow, absolutely terrible. Stick to the book.
 """
 
 #
