@@ -7,6 +7,10 @@ github.com/aymerick/douceur v0.2.0 h1:Mv+mAeH1Q+n9Fr+oyamOlAkUNPWPlA8PPGR0QAaYuP
 github.com/aymerick/douceur v0.2.0/go.mod h1:wlT5vV2O3h55X9m7iVYN0TBM0NH/MmbLnd30/FjWUq4=
 github.com/brandur/modulir v0.0.0-20231226224722-5f8eae54882a h1:mkehOT6+KySnQRO5wlmprWbV/j4iI+VIBw856TWBck4=
 github.com/brandur/modulir v0.0.0-20231226224722-5f8eae54882a/go.mod h1:u+Ub5jRiLspXAtzANvT2ANxQS4nUkVZOSh5Rg9mdKb0=
+github.com/brandur/modulir v0.0.0-20231227062748-2876b8ff7114 h1:JdSojQcSUopYPlUzYOUNK70KQvUxu6mR3eDaylTIvU8=
+github.com/brandur/modulir v0.0.0-20231227062748-2876b8ff7114/go.mod h1:VEqcYn63+rRRAxRmSPqNTUeHtCuu6Hj5NvCFD+dumBI=
+github.com/brandur/modulir v0.0.0-20231227071900-5349d8f52ceb h1:0l0eJsNEJxrzQzr9XTnzMf9vKKoB9WT+WR0efMqtbAU=
+github.com/brandur/modulir v0.0.0-20231227071900-5349d8f52ceb/go.mod h1:VEqcYn63+rRRAxRmSPqNTUeHtCuu6Hj5NvCFD+dumBI=
 github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

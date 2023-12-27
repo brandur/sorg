@@ -10,7 +10,7 @@ go 1.21
 require (
 	github.com/PuerkitoBio/goquery v1.8.1 // indirect
 	github.com/aymerick/douceur v0.2.0
-	github.com/brandur/modulir v0.0.0-20231226224722-5f8eae54882a
+	github.com/brandur/modulir v0.0.0-20231227071900-5349d8f52ceb
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/joeshaw/envdecode v0.0.0-20200121155833-099f1fc765bd
