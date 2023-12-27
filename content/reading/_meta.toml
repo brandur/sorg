@@ -89,6 +89,17 @@ Instead of waiting for a more complete picture after Sam's trial had concluded, 
 Regardless of Lewis' motivation behind writing such a single dimensional, extraordinarily biased account, I suspect he's going to find that credibility is hard to build, but easy to burn. I thoroughly enjoyed _The Big Short_ and _Boomerang_, but will never going to look at a Michael Lewis book the same way again.
 """
 
+[[readings]]
+  title = "Dust"
+  authors = [ "Hugh Howey" ]
+  num_pages = 458
+  published_year = 2013
+  rating = 3
+  read_at = 2023-09-12T12:57:44-07:00
+  review = """\
+Thoroughly enjoyed this finale to the Silo series, and would recommend the whole set to almost anyone given that it packs so many great ideas per page and is reasonably succinct. _Dust_ has the same problems as previous entries -- characterization is a little shallow, and the books never quite succeed in portraying a living, believable world -- but the strengths considerably outweigh any weaknesses. The series conclusion is satisfying, but leaves some threads hanging that many readers like myself would've expected to be integrated before the end.
+"""
+
 #
 # Here the file became manually curated instead of being updated from the
 # Goodreads API via qself.
