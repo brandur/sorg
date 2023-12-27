@@ -11,11 +11,21 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-27T00:10:12-07:00
+  description = """\
+The Christmas tree this year. My parents have been using a real tree for four decades, but with the help of an attractive sale from Costco, this is finally the year they switched to artificial. There's nothing quite like the smell of an honest-to-God tree on Christmas morning, but these days the fake ones are gorgeous, and win hands down practicality wise with no cleanup and built-in lights.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/dqheiydmmii0j5qxjyap5/2W4A4707.jpg?rlkey=t6mt3ppthhrs5kq92z36ah797&dl=1"
+    portrait = true
+    slug = "xmas-tree"
+
+[[atoms]]
   published_at = 2023-12-26T16:01:39-07:00
   description = """\
 Follow up from yesterday: dumped Goodreads immediately after realizing out that it was not only returning missing information for newly read books, but was tainting my existing archives as records of previously read books started returning corrupted records as well.
 
-My book list is now a flat file in TOML instead. More robust, but it's a shame how one by one, every third party API this site used to ingest for aggregation has disappeared -- Goodreads was the last one standing, and now it's gone too.
+My book list is now a flat file in TOML instead. More robust, but it's a shame how one by one, every third party API this site used to ingest for aggregation has disappeared -- Goodreads was the last one standing, and it's gone.
 """
 
 [[atoms]]
