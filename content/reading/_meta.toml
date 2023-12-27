@@ -35,6 +35,21 @@ The idea of reading republished journals sounds like a tiresome concept, but it 
 I'd never played the original game when I was young so after finishing the book I went to try it on a DOS emulator. Games have come a long way and you have to grade them according to their time, but still, wow, absolutely terrible. Stick to the book.
 """
 
+[[readings]]
+  title = "Travels"
+  authors = [ "Michael Crichton" ]
+  num_pages = 377
+  published_year = 1988
+  rating = 2
+  read_at = 2023-12-16T15:23:44-07:00
+  review = """\
+As a big Crichton fan, I was surprised not to have found this book before. The title is a bit of a misnomer -- travelogues make up maybe a third of the book with the rest of it being able Crichton's couple years practicing medicine, thoughts on paranormal phenomena, and vignettes from his life in LA.
+
+The psychic stuff feels quite odd to read today, but makes sense in context as it would've been very en vogue during the 80s when the book was written. Crichton's obviously a thoughtful guy, so there are a few stories that really make you wonder. For example, like when Crichton attended a spoon bending party (in the style of Uri Geller) and claimed that everyone there was able to bend spoons with their minds by the end of the night. He wasn't lying about it, but rather had managed to convince himself that it was real, and a contemporary reader is left wondering simply: what happened there?
+
+The stories are entertaining enough and it's worth a quick read, but it's not a heavy hitter like a lot of Crichton's other work.
+"""
+
 #
 # Here the file became manually curated instead of being updated from the
 # Goodreads API via qself.
