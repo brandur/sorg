@@ -72,6 +72,23 @@ Rowling's an obnoxiously talented writer. I rarely read mysteries, but keep find
 I see from other reviews that this book gets a lot of hate, but I enjoyed it. Moby doesn't pull any punches and describes in excruciating detail his problems with alcohol, his problems with relationships, and how to came to realize the hard way that money and assets aren't an automatic lock on happiness.
 """
 
+[[readings]]
+  title = "Going Infinite"
+  authors = [ "Michael Lewis" ]
+  num_pages = 288
+  published_year = 2023
+  rating = 1
+  read_at = 2023-10-03T12:57:44-07:00
+  review = """\
+This was easily my most anticipated book of 2023. Lewis had been embedded with SBF throughout the entire duration of the fraud, and putting those observations to work after his arrest could lead to the greatest rollercoaster tell all in a generation.
+
+Instead, we got the hardest PR spin of the generation. The entire book builds up Sam as a misunderstood genius who's intelligence is head and shoulders above his peers, and _so_ smart that his actions appear inscrutable to us mere mortals. His arrest and the ironclad criminal case brought against him are functionally a footnote brought up in the book's last few pages. Not a word is wasted in contemplation of the victims of his fraud, $8 billion of whose savings disappeared.
+
+Instead of waiting for a more complete picture after Sam's trial had concluded, Lewis opted to release the book as it was just getting underway, which is hard to interpret as anyother other than a last ditch Hail Mary to sway the opinion of the jury pool.
+
+Regardless of Lewis' motivation behind writing such a single dimensional, extraordinarily biased account, I suspect he's going to find that credibility is hard to build, but easy to burn. I thoroughly enjoyed _The Big Short_ and _Boomerang_, but will never going to look at a Michael Lewis book the same way again.
+"""
+
 #
 # Here the file became manually curated instead of being updated from the
 # Goodreads API via qself.
