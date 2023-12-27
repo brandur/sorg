@@ -1,3 +1,24 @@
+################################################################################
+#
+# READINGS
+#
+# TODO
+#
+################################################################################
+
+[[readings]]
+  title = "Do Interesting: Notice. Collect. Share."
+  authors = [ "Russell Davies" ]
+  num_pages = 128
+  published_year = 2023
+  rating = 2
+  read_at = 2023-12-25T14:35:44-07:00
+  review = """\
+A tiny pocket book that's the perfect format for carrying about and skimming in a session or two. It's quite short, and no tips in here will change your life, but I found the book a helpful reminder to get out and do things and to publish what you did.
+
+There's a couple sequences where he (or someone being quoted) glorifies lockdowns (and how they were so conducive to being interesting), which drives me up the wall, but the content is reasonably good beyond that.
+"""
+
 #
 # Here the file became manually curated instead of being updated from the
 # Goodreads API via qself.
@@ -15,8 +36,6 @@ I was a huge fan of the author's last book _Ametora_ and dove into this one with
 
 Recommendation: try _Ametora_ instead.
 """
-  # [[readings.authors]]
-  #   name = "W. David Marx"
 
 [[readings]]
   id = 144873
