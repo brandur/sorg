@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2023-12-30T10:37:06-07:00
+  description = """\
+Published [sequence 070](/sequences/070), bulbs at 101.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/070"
+    original_image_url = "https://www.dropbox.com/scl/fi/hgvsifjd6vcroxkoqdfyn/2W4A4671.JPG?rlkey=j75pwxhik134dffwgl4fe6hvl&dl=1"
+    slug = "bulbs"
+
+[[atoms]]
   published_at = 2023-12-27T00:10:12-07:00
   description = """\
 The Christmas tree this year. Mom and Dad have been using a real tree for four decades, but with the help of an attractive sale from Costco, this is finally the year they switched to artificial. There's nothing quite like the smell of an honest-to-God tree on Christmas morning, but these days the fake ones are gorgeous, and win hands down practicality wise with no cleanup and built-in lights.

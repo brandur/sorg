@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2023-12-30T10:37:06-07:00
+  slug = "070"
+  title = "Bulbs at 101"
+  description = """
+101 California St's Christmas display, with giant bulbs taller than men. What they've done in their lobby is neat too, with colossal ornaments hanging all the way from distant ceilings overhead. This photo taken a month ago after an overnight rainfall softened San Francisco's streets.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/hgvsifjd6vcroxkoqdfyn/2W4A4671.JPG?rlkey=j75pwxhik134dffwgl4fe6hvl&dl=1"
+    slug = "070"
+
+[[entries]]
   published_at = 2023-11-21T18:38:07-08:00
   slug = "069"
   title = "Low visibility"
