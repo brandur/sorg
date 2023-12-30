@@ -10,6 +10,17 @@
 ################################################################################
 
 [[readings]]
+title = "Kitchen Confidential"
+authors = ["Anthony Bourdain"]
+num_pages = 312
+published_year = 2000
+rating = 3
+read_at = 2023-12-30T10:52:34-07:00
+review = """\
+Good stuff. You get a sense throughout of dramaticized exaggeration (normal for this kind of book), but Bourdain's perspective is unique and interesting, and there are many passages that are nigh perfectly wordsmithed.
+"""
+
+[[readings]]
 title = "Do Interesting: Notice. Collect. Share."
 authors = ["Russell Davies"]
 num_pages = 128
