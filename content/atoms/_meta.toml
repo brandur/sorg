@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-01-06T15:12:27-07:00
+  description = """\
+Goodhart's law:
+
+> When a measure becomes a target, it ceases to be a good measure.
+"""
+
+[[atoms]]
   published_at = 2023-12-30T10:37:06-07:00
   description = """\
 Published [sequence 070](/sequences/070), bulbs at 101.
