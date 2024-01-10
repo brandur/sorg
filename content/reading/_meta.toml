@@ -10,6 +10,17 @@
 ################################################################################
 
 [[readings]]
+title = "Climbing High: A Woman's Account of Surviving the Everest Tragedy"
+authors = ["Lene Gammelgaard"]
+num_pages = 224
+published_year = 2000
+rating = 2
+read_at = 2024-01-08T23:59:10-07:00
+review = """\
+Nominally interesting read given it's a perspective on the most famous Everest tragedy of all time, but suffers from quality problems: uneven stream of consciousness journal-style entries don't produce a cohesive narrative, author is self-centered to the exclusion of almost everything else, and the prose is quite disjointed and not fluid to read (translation problem?). The pacing is uneven — all the action takes place in the last 50 pages, so those can be skimmed to efficiently extract the majority of the book's worthwhile content quickly.
+"""
+
+[[readings]]
 title = "The Space Between Worlds"
 authors = ["Micaiah Johnson"]
 num_pages = 336
