@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-01-10T00:02:27-07:00
+  description = """\
+Published [sequence 071](/sequences/071), still water.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/071"
+    original_image_url = "https://www.dropbox.com/scl/fi/k2mnuz1902dfy5j1j33r0/2W4A4772.JPG?rlkey=70ubbrvg0lvctszq2lz8whbym&dl=1"
+    slug = "still-water"
+
+[[atoms]]
   published_at = 2024-01-06T15:12:27-07:00
   description = """\
 Goodhart's law:

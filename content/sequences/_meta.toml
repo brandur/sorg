@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-01-10T00:02:27-07:00
+  slug = "071"
+  title = "Still water"
+  description = """
+The frozen half of the Bow river off of St. Patrick's Island Park looking towards downtown Calgary, with plenty of hoarfrost decorating trees on either side. Taken as I was offboarding from Bridgeland's LRT station on the way to Shiki Menya for ramen. The day's a little chilly (I'm bundled up), but nowhere near as bad as some years in Calgary around this time. The privilege of being able to wander outside shouldn't be taken for granted around these parts.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/k2mnuz1902dfy5j1j33r0/2W4A4772.JPG?rlkey=70ubbrvg0lvctszq2lz8whbym&dl=1"
+    slug = "071"
+
+[[entries]]
   published_at = 2023-12-30T10:37:06-07:00
   slug = "070"
   title = "Bulbs at 101"
