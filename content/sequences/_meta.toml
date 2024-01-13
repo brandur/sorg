@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-01-13T13:26:43-08:00
+  slug = "072"
+  title = "Prairie ridgeline"
+  description = """
+A view down the ridge from the top of Prairie Mountain, near Calgary. This hike's a local favorite because of its easy proximity to the city, and gets enough foot traffic to keep it accessible through most of winter. Its main trail had recently been redone to improve grading, so the whole family went up to check it out. Dad and I went down the back and did the full loop, where he kicked my ass with an aggressive downhill pace (partly due to an unwise choice of footwear on my part -- trail runners seem nice right up until you've got serious ice/snow to contend with). It felt great being out in Alberta's crisp, winter air, especially after so much time indoors for the holidays.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/u57lhvv2owz50gs5r6eza/2W4A4732.JPG?rlkey=bjqhc04vvan2zwgywrsyb81dj&dl=1"
+    slug = "072"
+
+[[entries]]
   published_at = 2024-01-10T00:02:27-07:00
   slug = "071"
   title = "Still water"
