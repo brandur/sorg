@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  title = "Running 2023"
+  published_at = 2024-01-13T14:21:21-08:00
+  description = """\
+2023 was an odd fitness year for me, simultaneously being one of victory and of defeat. I did some of my best running distance ever, finishing just over 1,700 km, but still ended the year heavy. A clear indicator that nutrition is at least as important as exercise.
+
+I started a daily running streak going into France, and hit 163 consecutive days before it ended with my trip to the [John Muir Trail](/john-muir-trail). This was a _great_ habit -- wanting to keep the streak going, I'd be out there every day rain or shine, even when I hated it. There was a moment where I arrived in Berlin late in the evening, exhausted from three days of long distance travel, but still, like every other day, dragged myself to the door, put on my running shoes, and ran around in the dark until I hit my 5 km minimum. Running is such a great way to see Europe. By the end of my stay in any place -- Paris, London, Bath, York, Berlin -- I'd have multiple routes figured out and strong opinions on which were the best. Europe's a crowded place, so I'd wake up as early as I could, often starting before the sun was out. Getting my run done early also improved the chances that it'd get done at all.
+
+Takeaways for 2024: Habit streaks work, early is better than late, and without nutrition, fitness is only half of the whole.
+"""
+
+[[atoms]]
   published_at = 2024-01-13T13:26:43-08:00
   description = """\
 Published [sequence 072](/sequences/072), Prairie ridgeline.
