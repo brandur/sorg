@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-01-13T13:19:04-08:00
+  description = """\
+SQLite's [Wal2 mode](https://www.sqlite.org/cgi/src/doc/wal2/doc/wal2.md) was new to me. Added for high throughput systems to resolve a problem where if a wal file was being continuously written to with new changes, SQLite's checkpointer could never fully finish its work, and therefore the wal file could grow unbounded.
+
+Wal2 fixes the problem by juggling two wal files which its writer and checkpointer alternate between:
+
+> In wal2 mode, the system uses two wal files instead of one. The files are named "[database]-wal" and "[database]-wal2", where "[database]" is of course the name of the database file. When data is written to the database, the writer begins by appending the new data to the first wal file. Once the first wal file has grown large enough, writers switch to appending data to the second wal file. At this point the first wal file can be checkpointed (after which it can be overwritten). Then, once the second wal file has grown large enough and the first wal file has been checkpointed, writers switch back to the first wal file. And so on.
+"""
+
+[[atoms]]
   published_at = 2024-01-13T12:35:38-08:00
   description = """\
 Published fragment [Discovering histograms, kicking off metric rollups](/fragments/discovering-histograms), on a blog post explaining aggregating aggregates doesn't work, and using histograms to do the job instead. It's a modest effort, but it's _something_ to kick off writing for 2024.
