@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-01-13T12:35:38-08:00
+  description = """\
+Published fragment [Discovering histograms, kicking off metric rollups](/fragments/discovering-histograms), on a blog post explaining aggregating aggregates doesn't work, and using histograms to do the job instead. It's a modest effort, but it's _something_ to kick off writing for 2024.
+"""
+
+[[atoms]]
   published_at = 2024-01-10T00:02:27-07:00
   description = """\
 Published [sequence 071](/sequences/071), still water.
