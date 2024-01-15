@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-01-15T14:01:29-08:00
+  description = """\
+A [tweet](https://twitter.com/rogerclark/status/1664035617091751936):
+
+> typing is the secret to using the computer. if you're not typing, you should be clicking on stuff. if you're scrolling, then it's already over... you're not doing shit
+
+A little brash on the surface, but a font of wisdom below. If you're on a computer scrolling, nothing useful is happening. Best to stop using said computer and go do something better.
+"""
+
+
+[[atoms]]
   published_at = 2024-01-15T13:33:12-08:00
   description = """\
 Published fragment [Hard media](/fragments/hard-media), on the disapperance of physical media and the overabundance of its digital counterpart.
