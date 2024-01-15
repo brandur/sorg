@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-01-15T13:33:12-08:00
+  description = """\
+Published fragment [Hard media](/fragments/hard-media), on the disapperance of physical media and the overabundance of its digital counterpart.
+"""
+
+[[atoms]]
   title = "Running 2023"
   published_at = 2024-01-13T14:21:21-08:00
   description = """\
