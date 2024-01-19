@@ -1,5 +1,5 @@
 +++
-hook = "TODO"
+hook = "Best Buy will stop selling DVDs and Blurays in 2024. Physical media is strictly worse, but I still miss it."
 published_at = 2024-01-15T13:33:12-08:00
 title = "Hard media"
 +++
