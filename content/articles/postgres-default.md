@@ -127,6 +127,8 @@ like me have always argued in favor of strong data
 constraints, but knew also that new non-null fields often
 weren't possible in Postgres when it was running at scale.
 
+## So what's new in Postgres 11? (#whats-new)
+
 Postgres 11 brings in a change that makes `ADD COLUMN` with
 `DEFAULT` values fast by marshaling them for existing rows
 only as necessary. The expensive table rewrite and long
