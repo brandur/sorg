@@ -10,6 +10,17 @@
 ################################################################################
 
 [[readings]]
+title = "Mother of God: An Extraordinary Journey into the Uncharted Tributaries of the Western Amazon"
+authors = ["Paul Rosolie"]
+num_pages = 320
+published_year = 2014
+rating = 4
+read_at = 2024-01-22T14:39:34-08:00
+review = """\
+Excellent book with many interesting stories from Paul's time in the Amazon. Covers encounters with everything from caimans to anteaters to poachers to anacondas, and slips in some natural history and needed championship for the area's conservation.
+"""
+
+[[readings]]
 title = "Climbing High: A Woman's Account of Surviving the Everest Tragedy"
 authors = ["Lene Gammelgaard"]
 num_pages = 224
