@@ -10,6 +10,17 @@
 ################################################################################
 
 [[readings]]
+title = "Chaos Monkeys: Obscene Fortune and Random Failure in Silicon Valley"
+authors = ["Antonio Garcia Martinez"]
+num_pages = 528
+published_year = 2016
+rating = 4
+read_at = 2024-02-03T13:29:48-08:00
+review = """\
+Written in a bombastic, Gonzo style which often falls flat from most authors, Antonio's a good enough writer and has an interesting enough story that it works for _Chaos Monkeys_. I was impressed at how well it maintained a high bar of carefully chosen prose throughout all 500+ pages, although by the end I couldn't help but dislike product managers even more than when I started.
+"""
+
+[[readings]]
 title = "The Unravelling: How our caregiving safety net came unstrung and we were left grasping at threads, struggling to plait a new one"
 authors = ["Clem Martini"]
 num_pages = 240
