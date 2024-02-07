@@ -22,8 +22,8 @@ on:
   pull_request:
   push:
   schedule:
-    # Once every 3 hours.
-    - cron: "0 */3 * * *"
+    # Once every 3 days.
+    - cron: "0 0 */3 * *"
 
 jobs:
   check_and_test:
