@@ -39,7 +39,7 @@ func TestFormatTimeYearMonth(t *testing.T) {
 }
 
 func TestInKM(t *testing.T) {
-	assert.Equal(t, 2.342, inKM(2342.0))
+	assert.Equal(t, 2.342, inKM(2342.0)) //nolint:testifylint
 }
 
 func TestLazyRetinaImage(t *testing.T) {
@@ -130,9 +130,9 @@ func TestRetinaImageAlt(t *testing.T) {
 }
 
 func TestRound(t *testing.T) {
-	assert.Equal(t, 0.0, round(0.2))
-	assert.Equal(t, 1.0, round(0.8))
-	assert.Equal(t, 1.0, round(0.5))
+	assert.Equal(t, 0.0, round(0.2)) //nolint:testifylint
+	assert.Equal(t, 1.0, round(0.8)) //nolint:testifylint
+	assert.Equal(t, 1.0, round(0.5)) //nolint:testifylint
 }
 
 func TestToStars(t *testing.T) {

@@ -31,7 +31,7 @@ func TestExtImageTarget(t *testing.T) {
 
 func TestLexicographicBase32(t *testing.T) {
 	// Should only incorporate lower case characters.
-	require.True(t, lexicographicBase32 == strings.ToLower(lexicographicBase32))
+	require.Equal(t, lexicographicBase32, strings.ToLower(lexicographicBase32))
 
 	// All characters in the encoding set should be lexicographically ordered.
 	{
