@@ -11,6 +11,35 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-02-07T08:29:25-08:00
+  description = """\
+A Go 1.21 feature that I'd previously missed: [toolchains](https://go.dev/doc/toolchain). A toolchain consists of a bundled compiler, assembler, and set of standard Go tooling. An installed `go` command has a bundled toolchain, but is capable of fetching other ones as necessary.
+
+Today, to upgrade my project to Go 1.22, all I had to do was change one line in `go.mod`:
+
+``` go
+$ git diff
+diff --git a/go.mod b/go.mod
+index 49a960839..f1b3ff857 100644
+--- a/go.mod
++++ b/go.mod
+@@ -11,7 +11,7 @@
+
+ module github.com/crunchydata/priv-all-platform
+
+-go 1.21
++go 1.22.0
+```
+
+The next Go command I ran detected the absence of Go 1.22, and downloaded it, producing the most streamlined upgrade path of all time.
+
+``` sh
+$ go version
+go version go1.22.0 darwin/arm64
+```
+"""
+
+[[atoms]]
   published_at = 2024-01-19T12:29:25-08:00
   description = """\
 Published fragment [Thoughts on ONCE + Campire](/fragments/once-basecamp), on ONCE's $299 self-hosted Basecamp. Is a web app for chat fine nowadays?
