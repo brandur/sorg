@@ -117,8 +117,8 @@ func TestPace(t *testing.T) {
 	assert.Equal(t, "7:31", pace(133.0, d))
 }
 
-func TestRandIntn(t *testing.T) {
-	assert.Equal(t, 0, randIntn(1))
+func TestRandIntN(t *testing.T) {
+	assert.Equal(t, 0, randIntN(1))
 }
 
 func TestRetinaImageAlt(t *testing.T) {
