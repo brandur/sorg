@@ -11,6 +11,24 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-02-07T11:37:53-08:00
+  description = """\
+As I was untangling my Amazon/AWS credentials last night, I did something that I don't do often, and looked at the details of my AWS bill.
+
+The total cost of hosting this site for January: $3.08. That doesn't seem like a bad deal, but digging in a little, it turned out I was overpaying.
+
+Of $3.08, $3.07 was for S3 (I was mildly surprised to see that all my CloudFront use fits in the free tier). And of that, $2.15 was for `PUT`, `COPY`, `POST`, or `LIST` requests on this site's bucket. The `GET`s used to actually serve the site are cheaper, and added up to only $0.39.
+
+The S3 lists and mutations are generated from the build process, which from a GitHub Action syncs the built product with S3. The majority of builds are automated on cron -- some parts of the site like [reading](/reading] or [twitter](/twitter) ingested data from the Goodreads and Twitter APIs, so I'd had the site building every three hours to pick up changes.
+
+But over the last year, both those APIs have experienced unceremonious deaths, reducing the dynamic content on this site to zero. All relevant changes are now pushed through Git, leaving the cron schedule a vestige of better times.
+
+I reduced the cron frequency from three hours to three days (still a good idea to check periodically that the build still works), which should have the effect of bringing that $2.15 down by an order of magnitude.
+
+Saving $2 this way was certainly not worth the time (that's about 1/3rd of a single San Francisco coffee these days), but hey, it's fun.
+"""
+
+[[atoms]]
   published_at = 2024-02-07T08:29:25-08:00
   description = """\
 A Go 1.21 feature that I'd previously missed: [toolchains](https://go.dev/doc/toolchain). A toolchain consists of a bundled compiler, assembler, and set of standard Go tooling. An installed `go` command has a bundled toolchain, but is capable of fetching other ones as necessary.
