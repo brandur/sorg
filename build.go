@@ -291,7 +291,7 @@ func build(c *modulir.Context) []error {
 		for _, s := range sources {
 			source := s
 
-			name := fmt.Sprintf("article: %s", filepath.Base(source))
+			name := "article: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
 				return renderArticle(ctx, c, source,
 					&articles, &articlesChanged, &articlesMu)
@@ -392,7 +392,7 @@ func build(c *modulir.Context) []error {
 		for _, s := range sources {
 			source := s
 
-			name := fmt.Sprintf("fragment: %s", filepath.Base(source))
+			name := "fragment: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
 				return renderFragment(ctx, c, source,
 					&fragments, &fragmentsChanged, &fragmentsMu)
@@ -436,7 +436,7 @@ func build(c *modulir.Context) []error {
 		for _, s := range sources {
 			source := s
 
-			name := fmt.Sprintf("nanoglyph: %s", filepath.Base(source))
+			name := "nanoglyph: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
 				return renderNanoglyph(c, source,
 					&nanoglyphs, &nanoglyphsChanged, &nanoglyphsMu)
@@ -467,7 +467,7 @@ func build(c *modulir.Context) []error {
 		for _, s := range sources {
 			source := s
 
-			name := fmt.Sprintf("page: %s", filepath.Base(source))
+			name := "page: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
 				return renderPage(ctx, c, source, pages, &pagesMu)
 			})
@@ -498,7 +498,7 @@ func build(c *modulir.Context) []error {
 		for _, s := range sources {
 			source := s
 
-			name := fmt.Sprintf("passage: %s", filepath.Base(source))
+			name := "passage: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
 				return renderPassage(c, source,
 					&passages, &passagesChanged, &passagesMu)
@@ -773,7 +773,7 @@ func build(c *modulir.Context) []error {
 			}
 
 			// Atom page
-			name := fmt.Sprintf("atom: %s", atom.Slug)
+			name := "atom: " + atom.Slug
 			c.AddJob(name, func() (bool, error) {
 				return renderAtom(ctx, c, atom, i, atomsChanged)
 			})
@@ -891,7 +891,7 @@ func build(c *modulir.Context) []error {
 		for _, p := range photos {
 			photo := p
 
-			name := fmt.Sprintf("photo: %s", photo.Slug)
+			name := "photo: " + photo.Slug
 			c.AddJob(name, func() (bool, error) {
 				return fetchAndResizePhoto(c, c.SourceDir+"/content/photographs", photo)
 			})
@@ -903,7 +903,7 @@ func build(c *modulir.Context) []error {
 		for _, p := range photosOther {
 			photo := p
 
-			name := fmt.Sprintf("photo fetch: %s", photo.Slug)
+			name := "photo fetch: " + photo.Slug
 			c.AddJob(name, func() (bool, error) {
 				return fetchAndResizePhotoOther(c, c.SourceDir+"/content/photographs", photo)
 			})
@@ -949,7 +949,7 @@ func build(c *modulir.Context) []error {
 			}
 
 			// Sequence page
-			name := fmt.Sprintf("sequences: %s", entry.Slug)
+			name := "sequences: " + entry.Slug
 			c.AddJob(name, func() (bool, error) {
 				return renderSequenceEntry(ctx, c, entry, sequenceChanged)
 			})

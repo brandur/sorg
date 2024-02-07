@@ -584,7 +584,7 @@ func tweetTextToHTML(tweet *Tweet) template.HTML {
 			display = strings.TrimPrefix(display, "http://")
 			display = strings.TrimPrefix(display, "https://")
 			if len(display) > 50 {
-				display = fmt.Sprintf("%s&hellip;", display[0:50])
+				display = display[0:50] + "&hellip;"
 			}
 		}
 
