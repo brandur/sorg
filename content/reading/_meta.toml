@@ -10,6 +10,17 @@
 ################################################################################
 
 [[readings]]
+title = "Abroad in Japan"
+authors = ["Chris Broad"]
+num_pages = 320
+published_year = 2023
+rating = 3 # 3.5
+read_at = 2024-02-08T20:31:44-08:00
+review = """\
+A nice travelogue about Japan. There are many books in this category, and this one isn't above and beyond exceptional, but the writing is solid and it has a couple laugh out loud moments. It was also written in 2023, so it's a little more current with the recent developments in Japan of the last few years.
+"""
+
+[[readings]]
 title = "Chaos Monkeys: Obscene Fortune and Random Failure in Silicon Valley"
 authors = ["Antonio Garcia Martinez"]
 num_pages = 528
