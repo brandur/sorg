@@ -1473,7 +1473,7 @@ env:
 
 steps:
   - name: Install Go
-    uses: actions/setup-go@v3
+    uses: actions/setup-go@v5
     with:
       cache: true
       check-latest: true
@@ -1489,7 +1489,7 @@ There's an easy solution. It turns out that `actions/setup-go` supports a `go-ve
 ``` yaml
 steps:
   - name: Install Go
-    uses: actions/setup-go@v3
+    uses: actions/setup-go@v5
     with:
       cache: true
       check-latest: true

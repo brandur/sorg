@@ -35,10 +35,10 @@ We've been running it as a CI check since it was released, using a GitHub Action
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v5
         with:
           cache: true
           check-latest: true

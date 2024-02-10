@@ -44,7 +44,7 @@ jobs:
           go-version: ${{ env.GO_VERSION }}
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Update minor and patch-level dependencies
         run: go get -t -u ./...
