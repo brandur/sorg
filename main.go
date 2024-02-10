@@ -42,7 +42,7 @@ in action at https://brandur.org.`),
 Starts the build loop that watches for local changes and runs
 when they're detected. A webserver is started on PORT (default
 5002).`),
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(_ *cobra.Command, _ []string) {
 			modulir.Build(getModulirConfig(), build)
 		},
 	}
@@ -54,7 +54,7 @@ when they're detected. A webserver is started on PORT (default
 		Long: strings.TrimSpace(`
 Runs the build loop one time and places the result in TARGET_DIR
 (default ./public/).`),
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(_ *cobra.Command, _ []string) {
 			modulir.BuildLoop(getModulirConfig(), build)
 		},
 	}
@@ -71,7 +71,7 @@ as argument. Note that MAILGUN_API_KEY must be set in the
 environment for this to work as it executes against the Mailgun
 API.`),
 		Args: cobra.ExactArgs(1),
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(_ *cobra.Command, args []string) {
 			c := &modulir.Context{Log: getLog()}
 			sendNewsletter(c, args[0], live, staging)
 		},
