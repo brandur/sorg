@@ -19,7 +19,7 @@ The total cost of hosting this site for January: $3.08. That doesn't seem like a
 
 Of $3.08, $3.07 was for S3 (I was mildly surprised to see that all my CloudFront use fits in the free tier). And of that, $2.15 was for `PUT`, `COPY`, `POST`, or `LIST` requests on this site's bucket. The `GET`s used to actually serve the site are cheaper, and added up to only $0.39.
 
-The S3 lists and mutations are generated from the build process, which from a GitHub Action syncs the built product with S3. The majority of builds are automated on cron -- some parts of the site like [reading](/reading] or [twitter](/twitter) ingested data from the Goodreads and Twitter APIs, so I'd had the site building every three hours to pick up changes.
+The S3 lists and mutations are generated from the build process, which from a GitHub Action syncs the built product with S3. The majority of builds are automated on cron -- some parts of the site like [reading](/reading) or [twitter](/twitter) ingested data from the Goodreads and Twitter APIs, so I'd had the site building every three hours to pick up changes.
 
 But over the last year, both those APIs have experienced unceremonious deaths, reducing the dynamic content on this site to zero. All relevant changes are now pushed through Git, leaving the cron schedule a vestige of better times.
 
