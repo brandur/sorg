@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-02-22T08:26:00-08:00
+  description = """\
+Published fragment [Prepared statements for psql operations](/fragments/prepared-statements-psql), on using prepared statements with operational queries to make it easy to replace parameters and save time.
+"""
+
+[[atoms]]
   published_at = 2024-02-07T11:37:53-08:00
   description = """\
 As I was untangling my Amazon/AWS credentials last night, I did something that I don't do often, and looked at the details of my AWS bill.
