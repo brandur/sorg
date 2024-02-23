@@ -33,6 +33,11 @@ Or resized for 3:2:
     magick convert $GMI -gravity center -crop 3:2 -resize 650x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/.jpg}
     magick convert $GMI -gravity center -crop 3:2 -resize 1300x -quality 85 $GMO/${$(basename $GMI)/.${$(basename $GMI)##*.}/@2x.jpg}
 
+## Resize for article vistas
+
+    magick convert $GMI -resize 1200x400^ -gravity center -extent 1200x400 -quality 85 $GMO/vista.jpg
+    magick convert $GMI -resize 2400x800^ -gravity center -extent 2400x800 -quality 85 $GMO/vista@2x.jpg
+
 ## Resize for fragment vistas
 
     magick convert $GMI -gravity center -crop 3:2 -resize 1024x -quality 85 $GMO/vista.jpg
