@@ -11,6 +11,32 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-03-02T15:36:03-08:00
+  description = """\
+Published fragment [Stubbing degenerate network conditions in Go with `DialFunc` and `net.Conn`](/fragments/go-net-conn-stub), on using `DialFunc` to return a minimal stub for `net.Conn` that can simulate hard-to-reproduce conditions like an error on `Close`.
+
+``` go
+type connStub struct {
+    net.Conn
+
+    closeFunc func() error
+}
+
+func newConnStub(conn net.Conn) *connStub {
+    return &connStub{
+        Conn: conn,
+
+        closeFunc: conn.Close,
+    }
+}
+
+func (c *connStub) Close() error {
+    return c.closeFunc()
+}
+```
+"""
+
+[[atoms]]
   published_at = 2024-03-02T12:37:41-08:00
   description = """\
 River's received some recent fixes with the aim of stabilizing it for production readiness:
