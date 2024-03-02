@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-03-02T12:37:41-08:00
+  description = """\
+River's received some recent fixes with the aim of stabilizing it for production readiness:
+
+* Memory leak caused by [allocating a new random source on every job execution](https://github.com/riverqueue/river/pull/240).
+* Memory leak caused by [not always cancelling the context](https://github.com/riverqueue/river/pull/243) used to enable jobs to be cancelled remotely.
+* Problem in `riverpgxv5`'s `Listener` where it [wouldn't unset an internal connection if `Close` returned an error](https://github.com/riverqueue/river/pull/246), making the listener not reusable.
+
+We've ran some open ended tests with continuous job insertion and work over long periods. Its memory use is stable, so we think those were the only leaks in there (at least for now).
+"""
+
+[[atoms]]
   published_at = 2024-02-22T08:26:00-08:00
   description = """\
 Published fragment [Prepared statements for psql operations](/fragments/prepared-statements-psql), on using prepared statements with operational queries to make it easy to replace parameters and save time.
