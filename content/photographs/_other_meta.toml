@@ -145,6 +145,22 @@ slug = "fragments/leica-q2-monochrom/leica-q2-monochrom"
 title = "The Leica Q2 Monochrom"
 
 #
+# /fragments/modals-mysterious-macos-cron-failures
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/vkkdfs7jaucx3vo42vcu5/cron.png?rlkey=gj2csqd1p0vyp85abj00hozlh&dl=1"
+slug = "fragments/modals-mysterious-macos-cron-failures/cron"
+title = "Adding cron to full disk access"
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/rq5q2w3921q2hhflsk2ec/full-disk-access.png?rlkey=33j1n1ntcv8jtt05gz4jrz3ww&dl=1"
+slug = "fragments/modals-mysterious-macos-cron-failures/full-disk-access"
+title = "Full disk access preferences"
+
+#
 # /fragments/new-york
 #
 

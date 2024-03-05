@@ -10,6 +10,13 @@
 #
 ################################################################################
 
+
+[[atoms]]
+  published_at = 2024-03-05T12:54:57-08:00
+  description = """\
+Published fragment [Modals and mysterious macOS failures](/fragments/modals-mysterious-macos-cron-failures), on bequeathing cron scripts permission to run.
+"""
+
 [[atoms]]
   published_at = 2024-03-02T15:36:03-08:00
   description = """\

@@ -2555,12 +2555,20 @@ video {
   line-height: 1rem;
 }
 
+.prose-pre\:text-\[0\.8rem\] :is(:where(pre):not(:where([class~="not-prose"] *))) {
+  font-size: 0.8rem;
+}
+
 .prose-pre\:text-\[0\.9rem\] :is(:where(pre):not(:where([class~="not-prose"] *))) {
   font-size: 0.9rem;
 }
 
 .prose-pre\:leading-\[1\.15rem\] :is(:where(pre):not(:where([class~="not-prose"] *))) {
   line-height: 1.15rem;
+}
+
+.prose-pre\:leading-\[1\.1rem\] :is(:where(pre):not(:where([class~="not-prose"] *))) {
+  line-height: 1.1rem;
 }
 
 .prose-ol\:font-serif :is(:where(ol):not(:where([class~="not-prose"] *))) {
