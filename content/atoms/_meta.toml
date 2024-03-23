@@ -10,6 +10,11 @@
 #
 ################################################################################
 
+[[atoms]]
+  published_at = 2024-03-24T01:16:08+12:00
+  description = """\
+Added a [benchmarks page for River](https://riverqueue.com/docs/benchmarks). After [optimizing job completion](https://github.com/riverqueue/river/pull/258) so that it's done in batches, it works about 46k jobs/sec on my M2 MacBook Air.
+"""
 
 [[atoms]]
   published_at = 2024-03-05T12:54:57-08:00
