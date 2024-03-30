@@ -11,6 +11,24 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-03-31T08:54:33+12:00
+  description = """\
+[Engineers and commit/bullshit ratio](https://www.spakhm.com/bullshit-ratio):
+
+> You also intuitively know what bullshit is. It’s delays, bad taste, fighting a lot, being dogmatic, complaining, broken code, laziness, cynicism, activism, pedantry, entitlement. Bullshit is everything that makes your coworkers’ life more of a pain than it needs to be.
+>
+> Everybody is allowed a little bullshit because if you only allow zero bullshit you can never work with anyone at all. But bullshit must be paid for with commits. The more bullshit you generate, the more commits you need to push. It’s not an exact science, but it doesn’t need to be. Everyone already knows. Think of a coworker and ask yourself– what is their commit to bullshit ratio? The answer probably leaps to mind. Maybe the answer is “unusually high”. Or maybe it’s “neutral at best”. Whatever it is, you already know.
+
+This heuristic rings true. For junior engineers, "bullshit" is traditional poor practice in the space: bad code, lazy test coverage, failure to follow convention, or novel new patterns that complicate unnecessarily. It's inexperience at work. Many will graduate out of it.
+
+For seniors, bullshit is more subtle: days of bikeshedding over the fine points on tech decisions that vary the end result by ±5%, fighting about language and toolchains, continually relitigating architecture, and judging other peoples' code on the merits of [being "correct" or "elegant" or "minimal"](/fragments/the-peanut-gallery) according to an idyllic standard that doesn't exist.
+
+Everybody does _some_ of it, but the key is ratio. Good engineers do little while pushing features most of the time. Less good engineers engage in a lot of "bullshit", wasting their own time, and that of others' who are pulled into reviews and battles.
+
+Ironically, many of the most internet famous engineers I've worked with fit squarely in the latter camp, while others so invisible that they barely have a LinkedIn profile, land in the former.
+"""
+
+[[atoms]]
   published_at = 2024-03-31T06:38:09+12:00
   description = """\
 [Vernor Vinge](https://en.wikipedia.org/wiki/Vernor_Vinge) passed away a few weeks ago. I would rate few scifi books as truly great, but the ideas presented in Vinge's _Marooned in Realtime_ and the concept of a bobble absolutely blew my mind, and they're not even his most influential work.
