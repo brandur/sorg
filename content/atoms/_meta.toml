@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-03-31T06:38:09+12:00
+  description = """\
+[Vernor Vinge](https://en.wikipedia.org/wiki/Vernor_Vinge) passed away a few weeks ago. I would rate few scifi books as truly great, but the ideas presented in Vinge's _Marooned in Realtime_ and the concept of a bobble absolutely blew my mind, and they're not even his most influential work.
+
+Below, a photo and a screenshot of his hacker workstation from [a 2009 interview](https://web.archive.org/web/20170215121054/http://www.norwescon.org/archives/norwescon33/vingeinterview.htm). Linux, Emacs, and Org Mode (or something close to it). How can you not love it.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/dwj3ewacgnrxaj4lofh0y/vinge_workspace.jpg?rlkey=n0gog3zdmjg1gci3pu8vhe2hi&dl=1"
+    slug = "vinge-workspace"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/supmxf18pyi7jkqf3i7we/vinge_screenshot.png?rlkey=etdgjgqj4rdhzpepedvuhgvns&dl=1"
+    slug = "vinge-screenshot"
+
+[[atoms]]
   published_at = 2024-03-24T01:16:08+12:00
   description = """\
 Added a [benchmarks page for River](https://riverqueue.com/docs/benchmarks). After [optimizing job completion](https://github.com/riverqueue/river/pull/258) so that it's done in batches, it works about 46k jobs/sec on my M2 MacBook Air.
