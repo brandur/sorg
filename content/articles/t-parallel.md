@@ -5,7 +5,7 @@ published_at = 2023-08-26T13:48:45-07:00
 title = "On Using Go's `t.Parallel()`"
 +++
 
-One of Go's best features is not only that it does parallelism well, but that it's deeply baked in. It's best exemplified by primitves like goroutines and their dead simple ease of use, but extends all the way up the chain to the built-in tooling. When running tests for many packages with `go test ./...`, packages automatically run in parallel up to a maximum equal to the number of CPUs on the machine. Between that and the language's famously fast compilation, test suites are fast _by default_ instead of something that needs to be painstakingly optimized later on.
+One of Go's best features is not only that it does parallelism well, but that it's deeply baked in. It's best exemplified by primitives like goroutines and their dead simple ease of use, but extends all the way up the chain to the built-in tooling. When running tests for many packages with `go test ./...`, packages automatically run in parallel up to a maximum equal to the number of CPUs on the machine. Between that and the language's famously fast compilation, test suites are fast _by default_ instead of something that needs to be painstakingly optimized later on.
 
 Within any specific package, tests run sequentially, and as long as packages aren't too mismatched in test suite size, that's generally good enough.
 
