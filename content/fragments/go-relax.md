@@ -10,7 +10,7 @@ primitive dependency management system, and questionable enforced conventions
 (like workspaces), but a deep dive into the language has gone a long way to
 convince me.
 
-Go's may great features have already been covered to exhausation elsewhere:
+Go's many great features have already been covered to exhausation elsewhere:
 speed, conurrency, minimal syntax, fast compilation, pragmatic OO approach,
 nice standard library abstractions, and so on. I'll skip talking about those
 for now.
