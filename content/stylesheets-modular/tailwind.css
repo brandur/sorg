@@ -2628,6 +2628,11 @@ video {
   margin-right: auto;
 }
 
+.prose-hr\:my-10 :is(:where(hr):not(:where([class~="not-prose"] *))) {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .prose-hr\:w-3\/4 :is(:where(hr):not(:where([class~="not-prose"] *))) {
   width: 75%;
 }
@@ -2871,6 +2876,15 @@ video {
 
   .prose-figure\:lg\:w-\[calc\(100\%\+500px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     width: calc(100% + 500px);
+  }
+
+  .prose-hr\:lg\:-mx-\[2rem\] :is(:where(hr):not(:where([class~="not-prose"] *))) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .prose-hr\:lg\:w-\[calc\(100\%\+4rem\)\] :is(:where(hr):not(:where([class~="not-prose"] *))) {
+    width: calc(100% + 4rem);
   }
 }
 
