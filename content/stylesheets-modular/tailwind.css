@@ -2823,6 +2823,15 @@ video {
   .prose-figure\:md\:w-\[calc\(100\%\+300px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     width: calc(100% + 300px);
   }
+
+  .prose-hr\:md\:-mx-\[2rem\] :is(:where(hr):not(:where([class~="not-prose"] *))) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .prose-hr\:md\:w-\[calc\(100\%\+4rem\)\] :is(:where(hr):not(:where([class~="not-prose"] *))) {
+    width: calc(100% + 4rem);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2876,15 +2885,6 @@ video {
 
   .prose-figure\:lg\:w-\[calc\(100\%\+500px\)\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
     width: calc(100% + 500px);
-  }
-
-  .prose-hr\:lg\:-mx-\[2rem\] :is(:where(hr):not(:where([class~="not-prose"] *))) {
-    margin-left: -2rem;
-    margin-right: -2rem;
-  }
-
-  .prose-hr\:lg\:w-\[calc\(100\%\+4rem\)\] :is(:where(hr):not(:where([class~="not-prose"] *))) {
-    width: calc(100% + 4rem);
   }
 }
 
