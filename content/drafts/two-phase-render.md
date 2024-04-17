@@ -1,13 +1,13 @@
 +++
 hook = "Using a two-phase data load and render pattern to prevent N+1 queries in a generalized way. Especially useful in Go, but applicable in any language."
 image = "/assets/images/two-phase-render/vista.jpg"
-location = "San Francisco"
+location = "Taveuni, Fiji"
 published_at = 2024-02-23T09:44:46-08:00
 title = "Eradicating N+1s: The Two-phase Data Load and Render Pattern"
 # hn_link = "https://news.ycombinator.com/item?id=38349716"
 +++
 
-*Writer’s note:* This is a longer piece that starts off with exposition into the nature of the N+1 query problem. If you're already well familiar with it, you may want to skip my description of N+1 to a story involving a creative use of [Ruby fibers at Stripe](#fibers-and-intents) to try and plug this hole, or the [two-phase load and render](#two-phase) that I've put in my current company's Go codebase, a pattern we've been using for two years now that's rid of us N+1s, and for which I'd have trouble citing any deficiency (aside from Go's normal trouble with verbosity).
+*Author’s note:* This is a longer piece that starts off with exposition into the nature of the N+1 query problem. If you're already well familiar with it, you may want to skip my description of N+1 to a story involving a creative use of [Ruby fibers at Stripe](#fibers-and-intents) to try and plug this hole, or the [two-phase load and render](#two-phase) that I've put in my current company's Go codebase, a pattern we've been using for two years now that's rid of us N+1s, and for which I'd have trouble citing any deficiency (aside from Go's normal trouble with verbosity).
 
 ---
 
@@ -93,6 +93,8 @@ Product.includes(owner: [], team: [], widget: [:factory]).limit(10)
 
 But even these sophisticated strategies have their own problems. In a large application with lots of layers, it's not obvious from any particular query if the right prefetching is happening, and it's easy to forget eager loads or put them in the wrong place.
 
+---
+
 ## A digression: Fibers and intents (#fibers-and-intents)
 
 Sometimes you have to get creative to solve N+1s.
@@ -141,6 +143,8 @@ TODO: Diagram.
 
 The system had broad limitations (e.g. only point loads could be aggregated; no complex queries were supported), but despite some gnarly code, it worked, and helped knock considerable latency off API calls. Importantly, options were limited and this was one of the few ways to have a large effect across millions of lines of code. The time where a prettier/more optimal abstraction could've been applied was long past.
 
+---
+
 ## Rails strict loading (#rails-strict-loading)
 
 N+1s are a constant threat in frameworks like ActiveRecord where lazy loading is common. Lazy loading is preventable with eager loading like `#includes` / `#eager_load` / `#preload`, but is difficult to guarantee because even if all relations were eager loaded initially, it’s easy to accidentally regress as a new lazy load is introduced.
@@ -160,6 +164,8 @@ end
 ```
 
 Strict loading is an important feature, but not a panacea. Test coverage needs to be very substantial to make sure problems are caught before hitting production.
+
+---
 
 ## Loading data in Go, exceptional verbosity (#go-verbosity)
 
@@ -240,7 +246,7 @@ Despite Go's ad nauseum verbosity, it's no less susceptible to N+1s than a metap
 
 ---
 
-## Two-phase data loading (#two-phase)
+## Two-phase load and render (#two-phase)
 
 This is where our generalized data loading pattern comes in. It doesn't make N+1s impossible, but it forces developers to break convention to introduce them, making adding a new one harder than not adding one.
 
