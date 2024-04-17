@@ -11,6 +11,36 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-04-01T15:11:32+12:00
+  description = """\
+Everybody loves dolphins.
+
+We do one shore day so we're not diving within 24 hours of a flight. Our hostess told us they'd take us out on a dolphin watching expedition. We accepted, not having any idea whether to expect any dolphins to show.
+
+Our divemaster Tuks motors us for a half hour along the shore, the boat pelted with rain, but the storm causing a surprising stillness on the water, then out to sea, passed a shallow coral reef, and into an area where dolphins are found. Tuks spots a pod in the distance.
+
+There's nothing else on Earth that'll inspire more child-like wonder in an adult than dolphins. The moment a sighting is announced every person on the boat rushes to the front of the boat, clings to a rail, and stays fixated there for the next thirty minutes. Everybody loves dolphins.
+
+They play ball by swimming under our boat's bow in eassy camerashot for quite some time before breaking off and performing aerial acrobatics at a distance. One juvenile in particular does a series of forward vertical somersaults that don't seem like they should be physically possible. This species is appropriately named "spinner dolphin".
+"""
+  [[atoms.videos]]
+    url = ["https://www.dropbox.com/scl/fi/mpn9oxbnc2vhhbomsh2uh/dolphins-1920.mp4?rlkey=l1e0byv0lm869izirjmk7kn3d&dl=1", "https://www.dropbox.com/scl/fi/s4aeof4xhf1z1e9j3jotj/dolphins-1920.webm?rlkey=hmyidraamm3yuw2lgl8nvpz02&dl=1"]
+
+# webm (1200)
+# webm (1920)
+# h265/hevc (1200)
+# h265/hevc (1920)
+# webp (1200)
+# webp (1920)
+
+# ffmpeg -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1200:-1" -an /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/sorg-output/dolphins-1200.webm
+# ffmpeg -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1920:-1" -an /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/sorg-output/dolphins-1920.webm
+# ffmpeg -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1200:800" -c:v libx265 -tag:v hvc1 -an /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/sorg-output/dolphins-1200.mp4
+# ffmpeg -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1920:-1" -c:v libx265 -tag:v hvc1 -an /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/sorg-output/dolphins-1920.mp4
+# ffmpeg -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1200:-1" -loop 0 -an /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/sorg-output/dolphins-1200.webp
+# ffmpeg -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1920:-1" -loop 0 -an /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/sorg-output/dolphins-1920.webp
+
+[[atoms]]
   published_at = 2024-03-31T08:54:33+12:00
   description = """\
 [Engineers and commit/bullshit ratio](https://www.spakhm.com/bullshit-ratio):
@@ -2536,21 +2566,21 @@ I played around with exporting some iOS live photos and running them through ffm
 # h265/hevc
 # webp
 
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i cougar-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an cougar-1.webm
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i cougar-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an cougar-1.mp4
-# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i cougar-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an cougar-1.webp
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1200:-1" -an cougar-1.webm
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1200:-1" -c:v libx265 -tag:v hvc1 -an cougar-1.mp4
+# ffmpeg -ss 00:00:00.50 -to 00:00:02.60 -i /Users/brandur/Dropbox/photo-archive/2024/005-fiji/00x-dolphins/2W4A5115-audio-stripped.mp4 -filter:v "scale=1200:-1" -loop 0 -an cougar-1.webp
 
-# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an cougar-2.webm
-# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an cougar-2.mp4
-# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an cougar-2.webp
+# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "scale=1200:-1" -an cougar-2.webm
+# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "scale=1200:-1" -c:v libx265 -tag:v hvc1 -an cougar-2.mp4
+# ffmpeg -ss 00:00:00.00 -to 00:00:02.40 -i cougar-2.MOV -filter:v "scale=1200:-1" -loop 0 -an cougar-2.webp
 
-# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an wolf-1.webm
-# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an wolf-1.mp4
-# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an wolf-1.webp
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "scale=1200:-1" -an wolf-1.webm
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "scale=1200:-1" -c:v libx265 -tag:v hvc1 -an wolf-1.mp4
+# ffmpeg -ss 00:00:00.00 -to 00:00:01.90 -i wolf-1.MOV -filter:v "scale=1200:-1" -loop 0 -an wolf-1.webp
 
-# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -an wolf-2.webm
-# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -c:v libx265 -tag:v hvc1 -an wolf-2.mp4
-# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "crop=in_w:in_w*(2/3):0:in_h-(in_w*(2/3)),scale=1200:-1" -loop 0 -an wolf-2.webp
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "scale=1200:-1" -an wolf-2.webm
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "scale=1200:-1" -c:v libx265 -tag:v hvc1 -an wolf-2.mp4
+# ffmpeg -ss 00:00:00.10 -to 00:00:01.85 -i wolf-2.MOV -filter:v "scale=1200:-1" -loop 0 -an wolf-2.webp
 
 [[atoms]]
   published_at = 2022-12-29T10:46:06-07:00
