@@ -4,7 +4,7 @@ published_at = 2024-01-19T12:29:25-08:00
 title = "Thoughts on ONCE + Campfire"
 +++
 
-37signals introduces its first produce for [ONCE](https://once.com/), a [$299 self-hosted version of Campfire](https://twitter.com/jasonfried/status/1748097864625205586).
+37signals introduces its first product for [ONCE](https://once.com/), a [$299 self-hosted version of Campfire](https://twitter.com/jasonfried/status/1748097864625205586).
 
 We used Campfire at Heroku in 2011. I never particularly liked it. It felt slow and had a lot of rough edges. We moved to HipChat briefly, which might've been slightly better at the time, but also nothing to write home about. Then we switched to Slack, and it felt like the sky opened up and a ray from heaven beamed down upon us. Truly a quantum leap over its predecessors. So fast. So responsive. A beautiful native app to use.
 
