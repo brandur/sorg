@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-03T08:25:57+02:00
+  description = """\
+Published fragment [Ruby typing 2024: RBS, Steep, RBS Collections, subjective feelings](/fragments/ruby-typing-2024), on diving into the RBS ecosystem as an alterative to Sorbet for Ruby typing.
+"""
+
+
+[[atoms]]
   published_at = 2024-04-01T15:11:32+12:00
   description = """\
 Everybody loves dolphins.
