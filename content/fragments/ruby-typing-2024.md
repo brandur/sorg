@@ -128,7 +128,7 @@ I installed the Steep VSCode plugin. It produces error diagnostics in case of ty
 
 ## Who's using this? (#whos-using-this)
 
-As I iterated through each new piece of the RBS typing toolchain, I couldn't shake the feeling that although I'd got up and running successfully with my brand new project of ~200 LOCs, this would be hard to get installed successfully into an existing codebase. There's many moving parts, tools like Steep are surprisingly strict in that they're quite unhappy if a project's types are only partially defined, and the overall ergonomics of the toolchain aren't exactly optimal.
+As I iterated through each new piece of the RBS typing toolchain, I couldn't shake the feeling that although I'd got up and running successfully with my brand new project of ~200 LOCs, this would be hard to get installed successfully into an existing codebase. There's many moving parts, tools like Steep are surprisingly strict in that they're unhappy if a project's types are only partially defined, and the overall ergonomics of the toolchain aren't exactly optimal.
 
 I tried looking around for evidence of happy RBS users, but almost everything written about the system are the usual "intro to RBS" posts, most of them from years ago ([Honeybadger's is probably the best](https://www.honeybadger.io/blog/ruby-rbs-type-annotation/) in this category).
 
