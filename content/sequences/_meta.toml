@@ -10,6 +10,30 @@
 #
 ################################################################################
 
+# [[entries]]
+#   published_at = 2024-02-23T09:44:46-08:00
+#   slug = "073"
+#   title = "Towers"
+#   description = """
+# An absolutely gorgeous shrine in Kanazawa, a city on the west coast of Japan. We'd just visited [Kenroku-en garden](https://en.wikipedia.org/wiki/Kenroku-en), famous for its roped [_yukitsuri_ trees](https://en.wikipedia.org/wiki/Yukitsuri) and oversized two-legged stone lantern on the water, and stumbled across this shrine after leaving. It started to rain, but it was well-timed. We'd gotten most of our outdoor sightseeing out of the way, and it lent even more ambience to the incredible scene.
+
+# Poster for [_Eradicating N+1s: The Two-phase Data Load and Render Pattern_](/two-phase-render).
+# """
+#   [[entries.photographs]]
+#     original_image_url = "https://www.dropbox.com/scl/fi/4qn2crp0k38ht7srdwmvd/2W4A4776-towers.JPG?rlkey=imoivca38izilvwzzmymttz4d&dl=1"
+#     slug = "073"
+
+[[entries]]
+  published_at = 2024-05-04T08:51:07+02:00
+  slug = "073"
+  title = "Glass and steel"
+  description = """
+535 Mission St near Salesforce Park in San Francisco. With it's beautiful glass and tapered edges, my favorite skyscraper in the city, and one that I work out of many days from the 14th floor WeWork.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/xrs1watfzdglagmk10m7e/2W4A4613-glass.JPG?rlkey=42mxn34mz8s8mv05mji7zava8&st=1mwkj0j3&dl=1"
+    slug = "073"
+
 [[entries]]
   published_at = 2024-01-13T13:26:43-08:00
   slug = "072"
