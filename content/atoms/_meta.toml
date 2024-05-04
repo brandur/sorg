@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-04T09:21:37+02:00
+  description = """\
+Want a great life hack? Simple: 5 AM run.
+
+As absolutely awful as it is to drag yourself out of bed and across the threshold of your door, from there every aspect of the day gets better. For an hour you enjoy the world at its most peaceful, with the natural world at its most active, and reduced human traffic of all kinds. Afterwards, your mind is tranquil, focused, and clear, and you've still got hours to do something creative before most people will even start their day. Even the light burn in your legs feels good, reminding you that you've filled the quota you owe your body.
+
+Recently, I've been failing to get out for one more often than not. Today, I made it, from Friedrichshain across the Spree to Treptower Park, and doing the perimiter, starting along the water. Sunrise is at 5:30 AM this time of year, but it's light already by the time I leave. Every time I do one of these, all I can do is wonder why the hell I don't every day.
+"""
+
+[[atoms]]
   published_at = 2024-05-04T08:51:07+02:00
   description = """\
 Published [sequence 073](/sequences/073), glass and steel.
