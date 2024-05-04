@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-04T08:51:07+02:00
+  description = """\
+Published [sequence 073](/sequences/073), glass and steel.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/073"
+    original_image_url = "https://www.dropbox.com/scl/fi/xrs1watfzdglagmk10m7e/2W4A4613-glass.JPG?rlkey=42mxn34mz8s8mv05mji7zava8&st=1mwkj0j3&dl=1"
+    slug = "glass-and-steel"
+
+[[atoms]]
   published_at = 2024-05-04T07:45:56+02:00
   description = """\
 Published fragment [Histograms worked](/fragments/histograms-worked), following up on the use of histograms to generate metric aggregates that can be used to generate charts over much wider time ranges like a week or a month.
