@@ -11,6 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-04T18:59:19+02:00
+  description = """\
+How you know you're at the right coffee place —
+
+Walk in. They ask what kind of coffee you're looking for.
+
+Well, let's start with light roast.
+
+We only carry light roast.
+
+Perfect.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/8jpbc1wvgg3888q6m3x0s/2W4A5286-barn-crop.jpg?rlkey=50ir8xg3cynz3mfw8wlcm0yfw&st=7786vgap&dl=1"
+    slug = "the-barn"
+
+[[atoms]]
   published_at = 2024-05-04T18:17:21+02:00
   description = """\
 Published [sequence 074](/sequences/074), light roast.
