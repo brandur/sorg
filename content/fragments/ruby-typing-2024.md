@@ -47,7 +47,7 @@ A scaffold is generated for the original file with its structure like modules, c
 
 That's fixable, so you correct type signatures for everything, and then maybe even start using some of the more novel constructs that RBS supports like [signatures on blocks or type parameters](https://github.com/ruby/rbs/blob/master/docs/syntax.md).
 
-## Ergonomics, two of two (#ergonomics)
+## Ergonomics, two by two (#ergonomics)
 
 Once you do, your `.rbs` file has now taken on a life of its own, and needs to be maintained by hand rather than generated again from its source `.rb`. Having started programming in C, it reminded me a lot of `.h` header files, an I tried to have an open mind about it, but after a few days of work found the RBS files a little grating (post-C languages ditched the headers for a reason):
 
