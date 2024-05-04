@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-04T18:17:21+02:00
+  description = """\
+Published [sequence 074](/sequences/074), light roast.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/074"
+    original_image_url = "https://www.dropbox.com/scl/fi/39de130sy75aubwnu02kk/2W4A5276-crop.jpg?rlkey=6pnb991l1pwi3bbulo3qqgfgo&st=jj87lh6f&dl=1"
+    slug = "light-roast"
+
+[[atoms]]
   published_at = 2024-05-04T09:21:37+02:00
   description = """\
 Want a great life hack? Simple: 5 AM run.

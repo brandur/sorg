@@ -24,6 +24,23 @@
 #     slug = "073"
 
 [[entries]]
+  published_at = 2024-05-04T18:17:21+02:00
+  slug = "074"
+  title = "Light roast"
+  description = """
+The coffee making facilities in my hotel room are minimal, but it did come with a kettle and a small French press. Third wave roasteries sell their coffee as whole bean, as they should, but it's incompatible with my present nomadic lifestyle.
+
+I stumble across a nice looking coffee coffee shop by accident, one that I thought was only in Kreuzberg, and step in to see if they'll grind beans for me. Very helpful, a barista asks immediately what kind of coffee I'm looking for. I reply that we should start with light roast. That's good he says. We only have light roast.
+
+I knew then I was in the right place. He helps me find some coffee, and I walk out the place with it freshly ground and an Americano for good measure. Here, the view out the window towards Rosenthaler Platz as two street musicians busk.
+
+The Barn, Berlin.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/39de130sy75aubwnu02kk/2W4A5276-crop.jpg?rlkey=6pnb991l1pwi3bbulo3qqgfgo&st=jj87lh6f&dl=1"
+    slug = "074"
+
+[[entries]]
   published_at = 2024-05-04T08:51:07+02:00
   slug = "073"
   title = "Glass and steel"
