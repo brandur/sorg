@@ -49,7 +49,7 @@ That's fixable, so you correct type signatures for everything, and then maybe ev
 
 ## Ergonomics, two by two (#ergonomics)
 
-Once you do, your `.rbs` file has now taken on a life of its own, and needs to be maintained by hand rather than generated again from its source `.rb`. Having started programming in C, it reminded me a lot of `.h` header files, an I tried to have an open mind about it, but after a few days of work found the RBS files a little grating (post-C languages ditched the headers for a reason):
+Once you do, your `.rbs` file has now taken on a life of its own, and needs to be maintained by hand rather than generated again from its source `.rb`. Having started programming in C, it reminded me a lot of `.h` header files, and I tried to have an open mind about them, but after a few days of work found the RBS files quite grating (post-C languages ditched the headers for a reason):
 
 * Every addition or change is done twice. Once in `.rb`, and then repeated in `.rbs` with slightly altered syntax and type annotations added. Keep in mind that all private/internal methods and constants should also be in `.rbs` to maximize the benefit of the type check, so even internal refactors tend to update both types of files.
 
