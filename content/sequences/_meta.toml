@@ -24,6 +24,19 @@
 #     slug = "073"
 
 [[entries]]
+  published_at = 2024-05-05T18:21:23+02:00
+  slug = "076"
+  title = "Five Elephants"
+  description = """
+A walk through Kreuzberg today, and return to another favorite Berlin roastery: Five Elephants. Good coffee, spacious interior with ample seating, and a few dozen tables arranged outside which are perfect for spring in Berlin. Oh, and the cheesecake is excellent.
+
+I was trying to remember how I even found this place for the first time. It was years ago, I think when I was staying at an AirBnB in Kreuzberg along the Landwehr Canal, which connects the Spree between Friedrichshain and Charlottenburg. This was circa 2014, and not only was AirBnB still legal in Berlin, but it was a time when AirBnB hosts would send a real live person to hand off keys for your stay. I was met by a young Berliner who told me about a few of her favorite places in the area (including Five Elephants), and also that I should buy a condo in Berlin. I'm not in the business of making good financial decisions, so I didn't, but in retrospect that would've been a lottery ticket for the ages.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/28ly0nemv3mqr3904ikbx/2W4A5297.JPG?rlkey=vuuuwna1pinmh4w4385mz0rgv&st=g5nz1qor&dl=1"
+    slug = "076"
+
+[[entries]]
   published_at = 2024-05-05T09:48:11+02:00
   slug = "075"
   title = "Mate"

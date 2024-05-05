@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-05T18:21:23+02:00
+  description = """\
+Published [sequence 076](/sequences/074), Five Elephants.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/076"
+    original_image_url = "https://www.dropbox.com/scl/fi/28ly0nemv3mqr3904ikbx/2W4A5297.JPG?rlkey=vuuuwna1pinmh4w4385mz0rgv&st=g5nz1qor&dl=1"
+    slug = "light-roast"
+
+[[atoms]]
   published_at = 2024-05-05T09:48:11+02:00
   description = """\
 Updated [now](/now), and published the same photo as [sequence 075](/sequences/075).
