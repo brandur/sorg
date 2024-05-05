@@ -1595,11 +1595,6 @@ video {
   clear: both;
 }
 
-.-mx-\[200px\] {
-  margin-left: -200px;
-  margin-right: -200px;
-}
-
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -1790,12 +1785,12 @@ video {
   width: 83.333333%;
 }
 
-.w-\[calc\(100\%\+400px\)\] {
-  width: calc(100% + 400px);
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .min-w-0 {
@@ -2686,6 +2681,10 @@ video {
     margin-left: 1rem;
   }
 
+  .md\:ml-\[calc\(-2rem\)\] {
+    margin-left: calc(-2rem);
+  }
+
   .md\:ml-\[calc\(-90px-2rem\)\] {
     margin-left: calc(-90px - 2rem);
   }
@@ -2720,6 +2719,10 @@ video {
 
   .md\:w-36 {
     width: 9rem;
+  }
+
+  .md\:w-\[calc\(100\%\+2rem\)\] {
+    width: calc(100% + 2rem);
   }
 
   .md\:w-\[calc\(100\%\+400px\)\] {
@@ -2836,13 +2839,26 @@ video {
 
 @media (min-width: 1024px) {
   @media (min-width: 768px) {
+    .lg\:md\:ml-\[calc\(-2rem-75px\)\] {
+      margin-left: calc(-2rem - 75px);
+    }
+
     .lg\:md\:ml-\[calc\(-90px-2rem-75px\)\] {
       margin-left: calc(-90px - 2rem - 75px);
+    }
+
+    .lg\:md\:w-\[calc\(100\%\+2rem\+2\*75px\)\] {
+      width: calc(100% + 2rem + 2 * 75px);
     }
 
     .lg\:md\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*75px\)\] {
       width: calc(100% + 90px + 2rem + 0.5rem + 2 * 75px);
     }
+  }
+
+  .lg\:-mx-\[200px\] {
+    margin-left: -200px;
+    margin-right: -200px;
   }
 
   .lg\:-mr-\[60px\] {
@@ -2853,12 +2869,20 @@ video {
     margin-right: calc(-0.5rem - 75px);
   }
 
+  .lg\:mr-\[calc\(-75px\)\] {
+    margin-right: calc(-75px);
+  }
+
   .lg\:block {
     display: block;
   }
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:w-\[calc\(100\%\+400px\)\] {
+    width: calc(100% + 400px);
   }
 
   .lg\:flex-shrink-0 {
@@ -2890,8 +2914,16 @@ video {
 
 @media (min-width: 1280px) {
   @media (min-width: 768px) {
+    .xl\:md\:ml-\[calc\(-2rem-150px\)\] {
+      margin-left: calc(-2rem - 150px);
+    }
+
     .xl\:md\:ml-\[calc\(-90px-2rem-150px\)\] {
       margin-left: calc(-90px - 2rem - 150px);
+    }
+
+    .xl\:md\:w-\[calc\(100\%\+2rem\+2\*150px\)\] {
+      width: calc(100% + 2rem + 2 * 150px);
     }
 
     .xl\:md\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*150px\)\] {
@@ -2901,6 +2933,10 @@ video {
 
   .xl\:mr-\[calc\(-0\.5rem-150px\)\] {
     margin-right: calc(-0.5rem - 150px);
+  }
+
+  .xl\:mr-\[calc\(-150px\)\] {
+    margin-right: calc(-150px);
   }
 
   .xl\:block {

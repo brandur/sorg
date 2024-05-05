@@ -1,4 +1,16 @@
-<img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery, Berlin" class="max-w-none -mx-[200px] w-[calc(100%+400px)]">
+<div class="my-16
+            md:ml-[calc(-2rem)] md:w-[calc(100%+2rem)]
+            lg:mr-[calc(-75px)] lg:md:ml-[calc(-2rem-75px)] lg:md:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-150px)] xl:md:ml-[calc(-2rem-150px)] xl:md:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery, Berlin" class="md:rounded-lg w-full">
+</div>
+
+<!--
+
+ class="max-w-none w-screen lg:-mx-[200px] lg:w-[calc(100%+400px)]">
+
+-->
 
 ## Berlin, AD, and queues (#berlin)
 

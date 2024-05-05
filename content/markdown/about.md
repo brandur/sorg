@@ -1,4 +1,10 @@
-<img src="/photographs/about/self-portrait-2023-03.jpg" alt="Selfie April 2023" class="max-w-none -mx-[200px] w-[calc(100%+400px)]">
+<div class="my-16
+            md:ml-[calc(-2rem)] md:w-[calc(100%+2rem)]
+            lg:mr-[calc(-75px)] lg:md:ml-[calc(-2rem-75px)] lg:md:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-150px)] xl:md:ml-[calc(-2rem-150px)] xl:md:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/photographs/about/self-portrait-2023-03.jpg" alt=""Selfie April 2023" class="md:rounded-lg w-full">
+</div>
 
 I'm an engineer at [Crunchy Data](https://www.crunchydata.com/), where I work on the company's platform API, and spend a lot of time talking about and working with my favorite database, Postgres.
 
