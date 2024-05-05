@@ -94,7 +94,7 @@ Steep worked quite well for my tiny little project, but given that it's written 
 
 Best I could tell, Steep's support for DSLs is minimal. I'd made the apparent mistake of writing my test suite with RSpec, so I couldn't get any useful type checking for half the project.
 
-### Magic comments allowed (#magic-comments)
+### Magic comments only (#magic-comments)
 
 One of Matz's main concerns about Sorbet's syntax was that it was too invasive in Ruby code. Worth nothing however, that a type system in a dynamic language always ends up needing escape hatches. With no runtime syntax available, Steep has chosen to implement things like type assertions as magic comments:
 
