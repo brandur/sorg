@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-05T08:21:27+02:00
+  description = """\
+Published [_Web APIs: Enrich DX By Disallowing Unknown Fields_](/disallow-unknown-fields).
+"""
+
+[[atoms]]
   published_at = 2024-05-04T18:59:19+02:00
   description = """\
 How you know you're at the right coffee place —
