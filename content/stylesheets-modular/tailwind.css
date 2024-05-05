@@ -1693,6 +1693,10 @@ video {
   margin-left: 1rem;
 }
 
+.ml-\[calc\(-1rem\)\] {
+  margin-left: calc(-1rem);
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -1715,6 +1719,10 @@ video {
 
 .mr-\[calc\(-0\.5rem\)\] {
   margin-right: calc(-0.5rem);
+}
+
+.mr-\[calc\(-1rem\)\] {
+  margin-right: calc(-1rem);
 }
 
 .mt-0 {
@@ -1783,6 +1791,10 @@ video {
 
 .w-10\/12 {
   width: 83.333333%;
+}
+
+.w-\[calc\(100\%\+2rem\)\] {
+  width: calc(100% + 2rem);
 }
 
 .w-full {
@@ -2681,10 +2693,6 @@ video {
     margin-left: 1rem;
   }
 
-  .md\:ml-\[calc\(-2rem\)\] {
-    margin-left: calc(-2rem);
-  }
-
   .md\:ml-\[calc\(-90px-2rem\)\] {
     margin-left: calc(-90px - 2rem);
   }
@@ -2719,10 +2727,6 @@ video {
 
   .md\:w-36 {
     width: 9rem;
-  }
-
-  .md\:w-\[calc\(100\%\+2rem\)\] {
-    width: calc(100% + 2rem);
   }
 
   .md\:w-\[calc\(100\%\+400px\)\] {
@@ -2839,16 +2843,8 @@ video {
 
 @media (min-width: 1024px) {
   @media (min-width: 768px) {
-    .lg\:md\:ml-\[calc\(-2rem-75px\)\] {
-      margin-left: calc(-2rem - 75px);
-    }
-
     .lg\:md\:ml-\[calc\(-90px-2rem-75px\)\] {
       margin-left: calc(-90px - 2rem - 75px);
-    }
-
-    .lg\:md\:w-\[calc\(100\%\+2rem\+2\*75px\)\] {
-      width: calc(100% + 2rem + 2 * 75px);
     }
 
     .lg\:md\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*75px\)\] {
@@ -2863,6 +2859,10 @@ video {
 
   .lg\:-mr-\[60px\] {
     margin-right: -60px;
+  }
+
+  .lg\:ml-\[calc\(-2rem-75px\)\] {
+    margin-left: calc(-2rem - 75px);
   }
 
   .lg\:mr-\[calc\(-0\.5rem-75px\)\] {
@@ -2881,6 +2881,10 @@ video {
     display: none;
   }
 
+  .lg\:w-\[calc\(100\%\+2rem\+2\*75px\)\] {
+    width: calc(100% + 2rem + 2 * 75px);
+  }
+
   .lg\:w-\[calc\(100\%\+400px\)\] {
     width: calc(100% + 400px);
   }
@@ -2895,6 +2899,10 @@ video {
 
   .lg\:basis-\[250px\] {
     flex-basis: 250px;
+  }
+
+  .lg\:rounded-lg {
+    border-radius: 0.5rem;
   }
 
   .prose-figure\:lg\:-mx-\[250px\] :is(:where(figure):not(:where([class~="not-prose"] *))) {
@@ -2914,21 +2922,17 @@ video {
 
 @media (min-width: 1280px) {
   @media (min-width: 768px) {
-    .xl\:md\:ml-\[calc\(-2rem-150px\)\] {
-      margin-left: calc(-2rem - 150px);
-    }
-
     .xl\:md\:ml-\[calc\(-90px-2rem-150px\)\] {
       margin-left: calc(-90px - 2rem - 150px);
-    }
-
-    .xl\:md\:w-\[calc\(100\%\+2rem\+2\*150px\)\] {
-      width: calc(100% + 2rem + 2 * 150px);
     }
 
     .xl\:md\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*150px\)\] {
       width: calc(100% + 90px + 2rem + 0.5rem + 2 * 150px);
     }
+  }
+
+  .xl\:ml-\[calc\(-2rem-150px\)\] {
+    margin-left: calc(-2rem - 150px);
   }
 
   .xl\:mr-\[calc\(-0\.5rem-150px\)\] {
@@ -2945,6 +2949,10 @@ video {
 
   .xl\:hidden {
     display: none;
+  }
+
+  .xl\:w-\[calc\(100\%\+2rem\+2\*150px\)\] {
+    width: calc(100% + 2rem + 2 * 150px);
   }
 
   .xl\:max-w-\[1125px\] {
