@@ -1,3 +1,29 @@
+<img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery, Berlin" class="max-w-none -mx-[200px] w-[calc(100%+400px)]">
+
+## Berlin, AD, and queues (#berlin)
+
+I'm spending the month in Berlin, where I'm trying to run and write every day, and enjoy time in a place that's less reminiscent of a zombie wasteland than my home city.
+
+The next big project I'm tackling at work is Active Directory. That sounds about as fun as a root canal, but I take it as an interesting challenge. AD is a long in the tooth technology that's still in use by many of the biggest players in the industry (we even used it at Stripe!). How can we integrate it in such a way that it gets big users what they need, produces as little code as possible and as few headaches for us, and maximizes the yield in leverage we get out of the effort. For example, it might involve ignoring the low level AD APIs and integrating [SCIM instead](https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management), thereby buying us compatibility with other non-AD SCIM-based systems.
+
+Blake and I continue work on our open source Postgres job queue, [River](https://github.com/riverqueue/river), which I think is fair to say is the most full-featured in the Go ecosystem by some margin. There's something incredibly satisfying about taking a project scoped to a known, fixed domain, and refinining its code over and over again until it's _perfect_.  Trying to handle every edge, and with attention to detail on every line of code.
+
+I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) that enables job insertion in Ruby, but for jobs to be worked in Go, which is something that I'd always wanted back at Heroku and Stripe. I wrote about [my experience putting in type checking with Steep, and publishing RBS files](/fragments/ruby-typing-2024) for the project.
+
+<div class="not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">May 5, 2023</span>.
+    </p>
+</div>
+
+<!--
+
+/ ---------------------------------------------------------------------------- 
+/ OLD
+/ ---------------------------------------------------------------------------- 
+
+## Apr 9, 2023
+
 I'm in San Francisco, where inertia keeps me rooted.
 
 Work on Crunchy Bridge continues. As part of filling out a self-evaluation last week I scanned every pull request I've issued over the last year, and I liked what I saw. What we've shipped during that time is above and beyond any org I've worked at before. Small teams, agile tech stacks, and lack of a culture of objection-for-objection's-sake do wonders for productivity.
@@ -11,18 +37,6 @@ A few things I sent out the door recently:
 Pre-lockdown, I'd gotten into the best shape of my life by baking exercise into my schedule with a daily run commute, fitness which I unfortunately let languish. Newly armed with a WeWork pass and gym membership (for the showers), I'm bringing it back. A straight shot from the mountain down Market St to Embarcadero -- 50km/week if I keep it up.
 
 Next month, Europe.
-
-<div class="not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Apr 9, 2022</span>.
-    </p>
-</div>
-
-<!--
-
-/ ---------------------------------------------------------------------------- 
-/ OLD
-/ ---------------------------------------------------------------------------- 
 
 ## Dec 28, 2022
 

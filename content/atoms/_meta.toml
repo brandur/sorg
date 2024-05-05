@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-05T09:48:11+02:00
+  description = """\
+Updated [now](/now), and published the same photo as [sequence 075](/sequences/075).
+"""
+  [[atoms.photos]]
+    link_url = "/now"
+    original_image_url = "https://www.dropbox.com/scl/fi/p91ixntk6udt4tk71bx5b/2W4A5289-stayery-table-crop.jpg?rlkey=npwlad9mjjtaahx1li1tlyjiu&st=ceo92vl1&dl=1"
+    slug = "stayery-berlin"
+
+
+[[atoms]]
   published_at = 2024-05-05T08:21:27+02:00
   description = """\
 Published [_Web APIs: Enriched DX By Disallowing Unknown Fields_](/disallow-unknown-fields).
