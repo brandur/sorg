@@ -31,7 +31,7 @@ But despite listen/notify's relative simplicity, when it comes to applications b
 
 Here's where the **notifier pattern for Postgres** comes in. It's an extremely simple idea, but in my experience, one that's rarely seen in practice. Let's start with these axioms:
 
-* `LISTEN`s are affixed to specific connections. After listening, the original connection msut still be available somewhere to successfully receive messages.
+* `LISTEN`s are affixed to specific connections. After listening, the original connection must still be available somewhere to successfully receive messages.
 
 * There may be many components within an application that'd like to listen on topics for completely orthogonal uses.
 
