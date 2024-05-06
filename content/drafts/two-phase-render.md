@@ -3,7 +3,7 @@ hook = "Using a two-phase data load and render pattern to prevent N+1 queries in
 image = "/assets/images/two-phase-render/vista.jpg"
 location = "Taveuni, Fiji"
 published_at = 2024-02-23T09:44:46-08:00
-title = "Eradicating N+1s: The Two-phase Data Load and Render Pattern"
+title = "Eradicating N+1s: The Two-phase Data Load and Render Pattern in Go"
 # hn_link = "https://news.ycombinator.com/item?id=38349716"
 +++
 
