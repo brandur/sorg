@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-06T07:54:07+02:00
+  description = """\
+Published [_The Notifier Pattern for Applications That Use Postgres_](/notifier), on maximizing Postgres connection econonmy by using a single connection per program to receive and distribute all listen/notify notifications.
+"""
+
+[[atoms]]
   published_at = 2024-05-05T18:21:23+02:00
   description = """\
 Published [sequence 076](/sequences/074), Five Elephants.
@@ -34,7 +40,7 @@ Updated [now](/now), and published the same photo as [sequence 075](/sequences/0
 [[atoms]]
   published_at = 2024-05-05T08:21:27+02:00
   description = """\
-Published [_Web APIs: Enriched DX By Disallowing Unknown Fields_](/disallow-unknown-fields).
+Published [_Web APIs: Enriched DX By Disallowing Unknown Fields_](/disallow-unknown-fields), on using Go's `DisallowUnknownFields` option to improve an API's integration experience by making parameter naming mistakes faster to resolve.
 """
 
 [[atoms]]

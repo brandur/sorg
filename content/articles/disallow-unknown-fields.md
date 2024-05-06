@@ -1,5 +1,5 @@
 +++
-hook = "Using Go's `DisallowUnknownFields` option to improve an API's developer experience by making naming mistakes quicker to resolve."
+hook = "Using Go's `DisallowUnknownFields` option to improve an API's integration experience by making paramter naming mistakes faster to resolve."
 location = "Berlin"
 published_at = 2024-05-05T08:21:27+02:00
 title = "Web APIs: Enriched DX By Disallowing Unknown Fields"
