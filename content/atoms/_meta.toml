@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-07T08:18:08+02:00
+  description = """\
+Published fragment [Digital detox](/fragments/digital-detox), on my longest period without a smartphone in a long time, and how to have a better relationship with it in the future.
+"""
+
+[[atoms]]
   published_at = 2024-05-06T07:54:07+02:00
   description = """\
 Published [_The Notifier Pattern for Applications That Use Postgres_](/notifier), on maximizing Postgres connection econonmy by using a single connection per program to receive and distribute all listen/notify notifications.
