@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-08T20:27:51+02:00
+  description = """\
+We published a post to the River blog: [Uniqueness with Postgres advisory locks and FNV hashing](https://riverqueue.com/blog/uniqueness-with-advisory-locks). It covers how River guarantees job uniqueness using a combination of transactions, advisory locks, and the FNV hashing algorithm to build a string representation of unique properties, then hash it into the 64-bit advisory lock space.
+"""
+
+
+[[atoms]]
   published_at = 2024-05-08T19:43:40+02:00
   description = """\
 Published [sequence 077](/sequences/077), cubes inside cubes.
