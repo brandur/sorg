@@ -24,6 +24,22 @@
 #     slug = "073"
 
 [[entries]]
+  published_at = 2024-05-08T19:43:40+02:00
+  slug = "077"
+  title = "Cubes inside cubes"
+  description = """
+This morning I forgot to check into the WeWork office I've been going to until the moment I was in front of its door. Waiting for my credential to propagate into the building's keycard system, I walked around the block to see what else is in the area.
+
+Something I love about Berlin is that you randomly come across some of the weirdest stuff. The courtyard of an adjacent building stood empty with one exception. An enormous, monolithic stone block. Follow a tunnel to the next courtyard, and there's another one. And another beyond that. And another beyond that.
+
+I assume they're an art installation, but I looked around, and couldn't find the exact story. They're part of the <a href="https://lux.berlin/lux-cubes/" rel="nofollow">LUX Cubes</a> office rental property, but there's not much on the site. All I can think of is that if you consider the shape of the courtyards, they're squares on the horizontal axes, but with tall vertical walls on every side. So like the stone blocks, the courtyards are cubes -- cubes of negative space. So that makes the blocks, cubes inside cubes?
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/m4yeuupam3yif8eb04vz4/2W4A5307-cube-adjusted.jpg?rlkey=jhmh652qdztg9t4mbyv37li5i&st=w38n6i6v&dl=1"
+    slug = "077"
+
+
+[[entries]]
   published_at = 2024-05-05T18:21:23+02:00
   slug = "076"
   title = "Five Elephants"
