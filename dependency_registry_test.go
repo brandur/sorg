@@ -19,6 +19,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"layouts/pages/main.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_analytics.tmpl.html",
+			"views/_shiki.tmpl.html",
 		}, dependencies)
 	}
 
@@ -30,6 +31,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"layouts/pages/main.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_analytics.tmpl.html",
+			"views/_shiki.tmpl.html",
 		}, dependencies)
 	}
 
@@ -42,6 +44,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"layouts/pages/main.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_analytics.tmpl.html",
+			"views/_shiki.tmpl.html",
 		}, dependencies)
 	}
 }
