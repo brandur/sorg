@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-09T11:29:25+02:00
+  description = """\
+Published fragment [Shiki](/fragments/shiki), on at long last, adding syntax highlighting for code blocks to this website, and what I like about Shiki, a syntax highlighter that uses on the same engine as VSCode.
+"""
+
+[[atoms]]
   published_at = 2024-05-09T08:41:36+02:00
   description = """\
 Published fragment [Plumbing fully typed feature flags from API to UI via OpenAPI](/fragments/typed-feature-flags), on a pipeline that moves feature flags defined in a backend YAML file through to OpenAPI, then onto generated TypeScript that uses types to see which flags are available and check their state of enablement.
