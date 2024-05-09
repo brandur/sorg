@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-09T20:35:08+02:00
+  description = """\
+Published [sequence 078](/sequences/078), lights over Friedrichshain.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/078"
+    original_image_url = "https://www.dropbox.com/scl/fi/x80l0w81rmzmk4gqyfzq1/2W4A5322.JPG?rlkey=bnykplkxms6xxp20ngskv7clu&st=u1qddgbj&dl=1"
+    slug = "lights-over-friedrichshain"
+
+[[atoms]]
   published_at = 2024-05-09T11:29:25+02:00
   description = """\
 Published fragment [Shiki](/fragments/shiki), on at long last, adding syntax highlighting for code blocks to this website, and what I like about Shiki, a syntax highlighter that uses on the same engine as VSCode.

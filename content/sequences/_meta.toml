@@ -24,6 +24,21 @@
 #     slug = "073"
 
 [[entries]]
+  published_at = 2024-05-09T20:35:08+02:00
+  slug = "078"
+  title = "Lights over Friedrichshain"
+  description = """
+A photo from a walk last night around Friedrichshain. My days of shooting everything everything and black and white are long since over, but I reserve the right for the occasional mood piece here and there.
+
+Visiting from the zombie state of California, one of those most amazing things about Berlin is how alive the city is. Block after block the ground floor is filled with an ample supply of restaurants and bars, most of which have outdoor seating that spreads out onto the sidewalk. And block after block, these places are _busy_. It doesn't matter if it's Saturday evening or Wednesday night, 7 PM or 10 PM, practically the whole city is out of their homes carousing. Jane Jacobs' third places are alive and well.
+
+Taken at an Asian restaurant near Ostkreuz station, the place was a lot less busy than normal because it's football night. Instead of eating, everyone was huddled around a TV at the spatkauf next door.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/x80l0w81rmzmk4gqyfzq1/2W4A5322.JPG?rlkey=bnykplkxms6xxp20ngskv7clu&st=u1qddgbj&dl=1"
+    slug = "078"
+
+[[entries]]
   published_at = 2024-05-08T19:43:40+02:00
   slug = "077"
   title = "Cubes inside cubes"
