@@ -62,10 +62,11 @@ FlagName:
 The generator normally emits enums for sets of constants that are defined in Go code, and flags are a little more tricky because they're defined in a YAML file that's embedded with `go:embed` and parsed on start up. We resolve this through an extra interface for types that need to define their values at runtime:
 
 ``` go
-// SchemaEnumer is an interface that can be implemented by a type that'd like to
-// define all its possible values dynamically at OpenAPI generation time rather
-// than having them read from code. This is suitable for cases where values
-// aren't available until runtime, like if they're read from a file.
+// SchemaEnumer is an interface that can be implemented by a type
+// that'd like to define all its possible values dynamically at
+// OpenAPI generation time rather than having them read from code.
+// This is suitable for cases where values aren't available until
+// runtime, like if they're read from a file.
 type SchemaEnumer interface {
     SchemaEnumValues() []string
 }
@@ -74,13 +75,13 @@ type SchemaEnumer interface {
 The implementation of the flag API resource:
 
 ``` go
-// A flag that an account, cluster, or team is gated into, usually representing
-// new features or special capabilities. Flags are only exposed on internal
-// subresources.
+// A flag that an account, cluster, or team is gated into, usually
+// representing new features or special capabilities. Flags are
+// only exposed on internal subresources.
 type Flag struct {
-    // Name of the flag, suitable for machine or human use. Can be considered
-    // stable (flags won't suddenly be renamed unless under very exceptional
-    // circumstance).
+    // Name of the flag, suitable for machine or human use. Can be
+    // considered stable (flags won't suddenly be renamed unless
+    // under very exceptional circumstance).
     Name FlagName `json:"name" validate:"required"`
 }
 
@@ -91,8 +92,8 @@ type FlagName string
 func (FlagName) SchemaEnumValues() []string {
     flagInfos := pflag.GenerateDefaultFlagBundle().AllFlagInfos()
 
-    // Control rods are an internal feature to Platform, and will never be
-    // useful externally, so remove them.
+    // Control rods are an internal feature to Platform, and will
+    // never be useful externally, so remove them.
     flagInfos = slices.DeleteFunc(flagInfos, func(i pflag.FlagInfo) bool {
         return i.Kind == pflag.FlagKindControlRod
     })
@@ -106,8 +107,8 @@ Flags are then exposed from the API in various places like on a special `_intern
 ``` go
 // Internal-only team fields.
 type TeamInternal struct {
-    // A set of flags the account is gated into, usually representing new
-    // features or special capabilities.
+    // A set of flags the account is gated into, usually
+    // representing new features or special capabilities.
     Flags []*Flag `json:"flags" validate:"required,dive"`
     
     ...
