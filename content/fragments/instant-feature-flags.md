@@ -68,7 +68,7 @@ This probably looks inordinately overcomplicated, and it sort of is, but for a g
 
 * Triggers support a `FOR EACH STATEMENT` instead of a `FOR EACH ROW`, and I'd originally used the former because I figured it'd be able to batch up more operations into a single notify. This turned out to be completely wrong because statement-level triggers fire regardless of whether table data was changed or not. We have a process that periodically prunes unused flags. 99% of the time it deletes nothing because there are no unused flags to remove, but even so, each of those no-ops fired the statement trigger and caused a flag resync. All false positives. Trust me as someone who had to find out the hard way: `FOR EACH ROW` is better.
 
-The good news is that once you've wrangled this SQL once, you're done. It'll probably be years before you have to look at this code again.
+The good news is that once you've wrangled this SQL once, you're done. It'll be years before you have to look at this code again.
 
 ## Listening for flag changes (#listening-for-flag-changes)
 
