@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-10T08:44:04+02:00
+  description = """\
+Published fragment [Activating cached feature flags instantly with notify triggers](/fragments/instant-feature-flags), on reflecting changes made to feature flags immediately, despite a local in-process cache, by firing sync notifications from triggers, and listening with the notifier pattern.
+"""
+
+[[atoms]]
   published_at = 2024-05-09T20:35:08+02:00
   description = """\
 Published [sequence 078](/sequences/078), lights over Friedrichshain.
