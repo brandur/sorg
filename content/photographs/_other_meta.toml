@@ -113,6 +113,16 @@ slug = "fragments/graceful-degradation-time/markdown-and-git"
 title = "Markdown and Git"
 
 #
+# /fragments/heroku-two-dynos
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/1qrp43y7j1kt84ogh3mpq/bridge-memory.png?rlkey=wso4lckv7zhxx7ntdpk3m8mc1&st=2grfp7se&dl=1"
+slug = "fragments/heroku-two-dynos/bridge-memory"
+title = "Bridge memory usage"
+
+#
 # /fragments/large-scale-ruby-refactoring
 #
 
@@ -281,6 +291,28 @@ crop_width = 650
 original_image_url = "https://www.dropbox.com/s/z5j9wp3gnztcuvr/slack-threads.png?dl=1"
 slug = "fragments/slack-mania/slack-threads"
 title = "All conversations in Slack threads."
+
+#
+# /fragments/sso-refresh-tokens
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/4x4ujzhdoava2qyl0n5b7/oidc-step1.png?rlkey=xjc5h6l97ut0w7fkjlvjgvdxv&st=7psrfyze&dl=1"
+slug = "fragments/sso-refresh-tokens/oidc-step1"
+title = "OIDC login step 1"
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/5uhbvpnl7syzfm9jjjalx/oidc-step2.png?rlkey=o6mjtb25gjo4o5gqlydpsufzh&st=mt0tq533&dl=1"
+slug = "fragments/sso-refresh-tokens/oidc-step2"
+title = "OIDC login step 2"
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/o9pvnm8lmybzdn66ohbra/oidc-step3.png?rlkey=0xd5yu45tgnr99d4mxplqj421&st=04iqgbt1&dl=1"
+slug = "fragments/sso-refresh-tokens/oidc-step3"
+title = "OIDC login step 3"
 
 #
 # /fragments/streak-tracking
