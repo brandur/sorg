@@ -98,7 +98,7 @@ for {
 }
 ```
 
-## Changing a flag (#changing-a-flag)
+## Changing flags (#changing-flags)
 
 With that in place, we upsert a new flag state using a [prepared statement from psql](/fragments/prepared-statements-psql) so it's easy to change out parameters at the end of the query:
 
