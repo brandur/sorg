@@ -1,0 +1,378 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{.Title}}{{.TitleSuffix}}</title>
+
+    {{if not .InEmail}}
+        {{Favicon "nanoglyphs" "jpg"}}
+
+        <link href="/nanoglyphs.atom" rel="alternate" title="Nanoglyphs{{.TitleSuffix}}" type="application/atom+xml">
+
+        {{if eq .SorgEnv "development" -}}
+            {{- /* Served by Modulir itself (but only if websockets are enabled). */ -}}
+            <script src="/websocket.js" type="text/javascript"></script>
+        {{end -}}
+    {{end}}
+
+    <style type="text/css">
+        a, a:hover, a:visited {
+            border-bottom: 1px solid #000;
+            color: black;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            border-bottom: none;
+        }
+
+        /* Decrease bottom padding or else the code element background extends
+        * overtop of the link underline. */
+        a code {
+            padding-bottom: 0;
+        }
+
+        abbr, acronym {
+            text-decoration: none;
+            border-bottom: 1px dotted #999;
+        }
+
+        blockquote {
+            border-left: 5px solid #eee;
+            font-size: 14px;
+            font-style: italic;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 1px 20px;
+        }
+
+        blockquote code {
+            font-style: normal;
+        }
+
+        blockquote, p {
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+
+        body {
+            color: #3d3d3d;
+            /*
+                TODO: This is probably a better font, but Mac only.
+
+                font-family: "Helvetica Neue", Helvetica, sans-serif;
+                font-weight: 400;
+            */
+            font-family: Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.55;
+            margin: 0;
+
+            /*
+                * text-rendering doesn't seem to do much -- I'm basically cargo
+                * culting it from a blog post, but font-smoothing makes text look
+                * *much* better (at least on Mac devices).
+                */
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        code, pre, pre[class*=language-] {
+            font-family: Monaco, monospace;
+        }
+
+        code {
+            font-size: 12px;
+            padding: 2px 4px;
+        }
+
+        :not(pre) > code {
+            background: #f6f6f6;
+        }
+
+        pre, pre[class*=language-] {
+            {{if .InEmail}}
+            background: #f6f6f6;
+            {{end}}
+            line-height: 1.2;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            overflow: auto;
+            padding: 25px 18px;
+        }
+
+        pre code {
+            font-size: 11px;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: black;
+        }
+
+        h1 a, h2 a, h3 a, h4 a {
+            border-bottom: none;
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: 400;
+            letter-spacing: -4px;
+            line-height: 1;
+            margin: 0 0 30px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 14px;
+            letter-spacing: -1px;
+            margin: 30px 0 0 0;
+            /* text-transform: uppercase; */
+        }
+
+        h3 {
+            font-size: 13px;
+            letter-spacing: -1px;
+            margin: 20px 0 0 0;
+        }
+
+        h4 {
+            font-size: 11px;
+            letter-spacing: -1px;
+            margin: 15px 0 0 0;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 30px auto;
+            width: 80%;
+        }
+
+        img {
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        img.img_constrained {
+            display: block;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        img.wide_portrait {
+            display: block;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+
+        img[src$=".svg"] {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+        }
+
+        ol, ul {
+            padding: 0 0 0 30px;
+        }
+
+        ol li, ul li {
+            margin: 15px 0;
+        }
+
+        p {
+            hyphens: auto;
+            -ms-hyphens: auto;
+            -webkit-hyphens: auto;
+        }
+
+        .footnotes {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+
+        .footnotes p {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .footnotes sup {
+            margin-right: 3px;
+        }
+
+        /* many images are left to occupy 100% width, constrain some either
+        * because they're portraits, or lower resolution */
+        img.narrow {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 700px;
+        }
+
+        #about {
+            color: #999;
+            font-size: 13px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        #footer {
+            margin-bottom: 40px;
+            margin-top: 80px;
+        }
+
+        #header {
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+
+        #issue {
+            font-size: 11px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        #issue a, #issue a:hover, #issue a:visited {
+            font-weight: normal;
+        }
+
+        #nanoglyph {
+            color: #000;
+            font-family: Monaco, monospace;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 0;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        #issue a, #nanoglyph a {
+            border-bottom: none;
+        }
+
+        #signature {
+            color: #999;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* all container types are equivalent in email version; see web-only
+        * below */
+        .container, .container-highlight, .container-highlight-portrait {
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .container-highlight-portrait {
+            max-width: 900px;
+        }
+
+        .web-only .container {
+            max-width: 600px;
+        }
+
+        .web-only .container-highlight, .web-only .container-highlight-portrait {
+            margin: 40px auto;
+            padding: 0;
+        }
+
+        .web-only .container-highlight {
+            max-width: 1200px;
+        }
+
+        .web-only .container-highlight-portrait {
+            /* see non-web-only above */
+        }
+
+        .web-only .container-highlight img, .web-only .container-highlight-portrait img {
+            margin: 0;
+            width: 100%;
+        }
+
+        .web-only .published-date {
+            color: #999;
+            font-size: 11px;
+            font-style: italic;
+            margin-left: 8px;
+        }
+
+        .web-only img.wide, .web-only img.wide_portrait {
+            margin-left: -150px;
+            margin-right: -150px;
+            width: 900px;
+        }
+
+        .web-only #subscribe-encouragement {
+            color: #999;
+            font-size: 13px;
+            margin: 30px auto 10px auto;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .web-only #subscribe {
+            display: table;
+            margin: 0 auto;
+        }
+
+        .web-only #subscribe input[type=email] {
+            border: 1px solid #4d4d4d;
+            font-family: Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 300;
+
+            /* just so we understand that the height is meant to be the same as the
+                * submit button: constant - border - padding */
+            height: calc(32px - 2 * 1px - 2 * 2px);
+
+            line-height: 1.5em;
+            margin: 10px 10px 10px 0;
+            padding: 2px 6px;
+            vertical-align: bottom;
+        }
+
+        .web-only #subscribe input[type=submit] {
+            background: #000;
+            border: 0;
+            color: #fff;
+            font-size: 9px;
+            height: 32px;
+            letter-spacing: 0.5px;
+            margin: 10px 0 10px 0;
+            padding: 0 25px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        @media handheld, only screen and (max-width: 1000px), only screen and (max-device-width: 1000px) {
+
+            .web-only img.wide, img.wide_portrait {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+
+<body class="{{.BodyClass}}">
+    {{block "content" .}}{{end}}
+
+    {{if not .InEmail}}
+        {{template "views/_analytics.tmpl.html" .}}
+        {{template "views/_shiki.tmpl.html" .}}
+    {{end}}
+</body>
+  
+</html>

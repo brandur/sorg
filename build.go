@@ -438,7 +438,7 @@ func build(c *modulir.Context) []error {
 
 			name := "nanoglyph: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
-				return renderNanoglyph(c, source,
+				return renderNanoglyph(ctx, c, source,
 					&nanoglyphs, &nanoglyphsChanged, &nanoglyphsMu)
 			})
 		}
@@ -500,7 +500,7 @@ func build(c *modulir.Context) []error {
 
 			name := "passage: " + filepath.Base(source)
 			c.AddJob(name, func() (bool, error) {
-				return renderPassage(c, source,
+				return renderPassage(ctx, c, source,
 					&passages, &passagesChanged, &passagesMu)
 			})
 		}
@@ -841,7 +841,7 @@ func build(c *modulir.Context) []error {
 	// Index
 	{
 		c.AddJob("nanoglyphs index", func() (bool, error) {
-			return renderNanoglyphsIndex(c, nanoglyphs,
+			return renderNanoglyphsIndex(ctx, c, nanoglyphs,
 				nanoglyphsChanged)
 		})
 	}
@@ -861,7 +861,7 @@ func build(c *modulir.Context) []error {
 	// Index
 	{
 		c.AddJob("passages index", func() (bool, error) {
-			return renderPassagesIndex(c, passages,
+			return renderPassagesIndex(ctx, c, passages,
 				passagesChanged)
 		})
 	}
@@ -2326,17 +2326,12 @@ func renderFragmentsIndex(ctx context.Context, c *modulir.Context, fragments []*
 		path.Join(c.TargetDir, "fragments/index.html"), locals)
 }
 
-func renderNanoglyph(c *modulir.Context, source string,
+func renderNanoglyph(ctx context.Context, c *modulir.Context, source string,
 	issues *[]*snewsletter.Issue, nanoglyphsChanged *bool, mu *sync.Mutex,
 ) (bool, error) {
 	sourceChanged := c.Changed(source)
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.NanoglyphsLayout,
-			scommon.ViewsDir + "/nanoglyphs/show.ace",
-		},
-		universalSources...,
-	)...)
+	sourceTmpl := scommon.ViewsDir + "/nanoglyphs/show.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
@@ -2361,8 +2356,7 @@ func renderNanoglyph(c *modulir.Context, source string,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
 
-	err = mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/show.ace",
-		c.TargetDir+"/nanoglyphs/"+issue.Slug, getAceOptions(viewsChanged), locals)
+	err = dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, "nanoglyphs", issue.Slug), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2404,13 +2398,12 @@ func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanog
 
 		content := issue.Content
 		if issue.ImageURL != "" {
-			content = fmt.Sprintf(`<p><img src="%s" alt="%s" /></p>`, issue.ImageURL, issue.ImageAlt) +
-				content
+			content = template.HTML(fmt.Sprintf(`<p><img src="%s" alt="%s" /></p>`, issue.ImageURL, issue.ImageAlt)) + content
 		}
 
 		entry := &matom.Entry{
 			Title:     fmt.Sprintf("Nanoglyph %s — %s", issue.Number, issue.Title),
-			Content:   &matom.EntryContent{Content: content, Type: "html"},
+			Content:   &matom.EntryContent{Content: string(content), Type: "html"},
 			Published: issue.PublishedAt,
 			Updated:   issue.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/nanoglyphs/" + issue.Slug},
@@ -2432,41 +2425,31 @@ func renderNanoglyphsFeed(_ *modulir.Context, issues []*snewsletter.Issue, nanog
 	return true, feed.Encode(f, "  ")
 }
 
-func renderNanoglyphsIndex(c *modulir.Context, issues []*snewsletter.Issue,
+func renderNanoglyphsIndex(ctx context.Context, c *modulir.Context, issues []*snewsletter.Issue,
 	nanoglyphsChanged bool,
 ) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.NanoglyphsLayout,
-			scommon.ViewsDir + "/nanoglyphs/index.ace",
-		},
-		universalSources...,
-	)...)
+	sourceTmpl := scommon.ViewsDir + "/nanoglyphs/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !nanoglyphsChanged && !viewsChanged {
 		return false, nil
 	}
 
-	locals := getLocals("Nanoglyph", map[string]interface{}{
+	locals := getLocals("Nanoglyph"+scommon.TitleSuffix, map[string]interface{}{
 		"BodyClass": "web-only", // For web-specific CSS rules
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
 
-	return true, mace.RenderFile(c, scommon.NanoglyphsLayout, scommon.ViewsDir+"/nanoglyphs/index.ace",
-		c.TargetDir+"/nanoglyphs/index.html", getAceOptions(viewsChanged), locals)
+	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl,
+		path.Join(c.TargetDir, "nanoglyphs/index.html"), locals)
 }
 
-func renderPassage(c *modulir.Context, source string,
+func renderPassage(ctx context.Context, c *modulir.Context, source string,
 	issues *[]*snewsletter.Issue, passagesChanged *bool, mu *sync.Mutex,
 ) (bool, error) {
 	sourceChanged := c.Changed(source)
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.PassagesLayout,
-			scommon.ViewsDir + "/passages/show.ace",
-		},
-		universalSources...,
-	)...)
+	sourceTmpl := scommon.ViewsDir + "/passages/show.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !sourceChanged && !viewsChanged {
 		return false, nil
 	}
@@ -2491,8 +2474,7 @@ func renderPassage(c *modulir.Context, source string,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
 
-	err = mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/show.ace",
-		c.TargetDir+"/passages/"+issue.Slug, getAceOptions(viewsChanged), locals)
+	err = dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, "passages", issue.Slug), locals)
 	if err != nil {
 		return true, err
 	}
@@ -2534,13 +2516,12 @@ func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passage
 
 		content := issue.Content
 		if issue.ImageURL != "" {
-			content = fmt.Sprintf(`<p><img src="%s" alt="%s" /></p>`, issue.ImageURL, issue.ImageAlt) +
-				content
+			content = template.HTML(fmt.Sprintf(`<p><img src="%s" alt="%s" /></p>`, issue.ImageURL, issue.ImageAlt)) + content
 		}
 
 		entry := &matom.Entry{
 			Title:     fmt.Sprintf("Passages & Glass %s — %s", issue.Number, issue.Title),
-			Content:   &matom.EntryContent{Content: content, Type: "html"},
+			Content:   &matom.EntryContent{Content: string(content), Type: "html"},
 			Published: issue.PublishedAt,
 			Updated:   issue.PublishedAt,
 			Link:      &matom.Link{Href: conf.AbsoluteURL + "/passages/" + issue.Slug},
@@ -2562,16 +2543,11 @@ func renderPassagesFeed(_ *modulir.Context, issues []*snewsletter.Issue, passage
 	return true, feed.Encode(f, "  ")
 }
 
-func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
+func renderPassagesIndex(ctx context.Context, c *modulir.Context, issues []*snewsletter.Issue,
 	passagesChanged bool,
 ) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.PassagesLayout,
-			scommon.ViewsDir + "/passages/index.ace",
-		},
-		universalSources...,
-	)...)
+	sourceTmpl := scommon.ViewsDir + "/passages/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
 	if !passagesChanged && !viewsChanged {
 		return false, nil
 	}
@@ -2582,8 +2558,8 @@ func renderPassagesIndex(c *modulir.Context, issues []*snewsletter.Issue,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
 
-	return true, mace.RenderFile(c, scommon.PassagesLayout, scommon.ViewsDir+"/passages/index.ace",
-		c.TargetDir+"/passages/index.html", getAceOptions(viewsChanged), locals)
+	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl,
+		path.Join(c.TargetDir, "passages/index.html"), locals)
 }
 
 func renderHome(c *modulir.Context,

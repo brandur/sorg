@@ -1,0 +1,26 @@
+{{- template "layouts/passages.tmpl.html" . -}}
+
+{{- define "content" -}}
+
+<div class="container">
+    <div id="header">
+        <p id="passages">Passages & Glass</p>
+        <p>
+            {{template "views/_passages_about.tmpl.html" .}}
+            {{template "views/_passages_signup.tmpl.html" .}}
+        </p>
+    </div>
+    <ul class="issue-list">
+        {{range .Issues}}
+            <li>
+                <a href="/passages/{{.Slug}}">{{.Number}} &mdash; {{.Title}}</a>
+                <span class="published-date">{{FormatTimeLocal .PublishedAt}}</span>
+            </li>
+        {{end}}
+    </ul>
+    <div id="footer">
+        <img src="https://passages-signup.brandur.org/public/tiny-preload-image.png" style="margin: 0; width: auto;">
+    </div>
+</div>
+
+{{- end -}}

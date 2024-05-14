@@ -8,12 +8,11 @@ import (
 	"math"
 	"math/rand"
 	"net/url"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/yosssi/ace"
 
 	"github.com/brandur/modulir/modules/mtemplate"
 )
@@ -153,13 +152,19 @@ func nanoglyphSignup(inEmail bool) template.HTML {
 		return template.HTML("")
 	}
 
-	var b bytes.Buffer
-	writer := bufio.NewWriter(&b)
-
-	tmpl, err := ace.Load("", "./views/_nanoglyphs_signup", &ace.Options{})
+	const tmplFile = "./views/_nanoglyphs_signup.tmpl.html"
+	tmplData, err := os.ReadFile(tmplFile)
 	if err != nil {
 		panic(err)
 	}
+
+	tmpl, err := template.New(tmplFile).Parse(string(tmplData))
+	if err != nil {
+		panic(err)
+	}
+
+	var b bytes.Buffer
+	writer := bufio.NewWriter(&b)
 
 	err = tmpl.Execute(writer, nil)
 	if err != nil {

@@ -1,6 +1,7 @@
 package snewsletter
 
 import (
+	"html/template"
 	"path"
 	"strings"
 	"time"
@@ -25,7 +26,7 @@ type Issue struct {
 	// Content is the HTML content of the issue. It isn't included as TOML
 	// frontmatter, and is rather split out of an issue's Markdown file,
 	// rendered, and then added separately.
-	Content string `toml:"-"`
+	Content template.HTML `toml:"-"`
 
 	// ContentRaw is the raw Markdown content of the issue.
 	ContentRaw string `toml:"-"`
@@ -123,7 +124,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 		return nil, err
 	}
 
-	issue.Content, err = mmarkdownext.Render(issue.ContentRaw, &mmarkdownext.RenderOptions{
+	content, err := mmarkdownext.Render(issue.ContentRaw, &mmarkdownext.RenderOptions{
 		AbsoluteURL:     absoluteURL,
 		NoFootnoteLinks: email,
 		NoFollow:        true,
@@ -139,6 +140,8 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 	if err != nil {
 		return nil, err
 	}
+
+	issue.Content = template.HTML(content)
 
 	return &issue, nil
 }
