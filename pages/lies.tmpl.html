@@ -1,0 +1,25 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+Lies{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+    <link href="/assets/{{.Release}}/stylesheets/quotes.css" media="screen" rel="stylesheet" type="text/css">
+{{- end -}}
+
+{{- define "content" -}}
+
+<div id="wrapper">
+    <header>
+        <h1>❧ Catch-22 ❧</h1>
+    </header>
+    <section>
+        <div class="quote">
+            <p class="actor1">Major Major had lied, and it was good. He was not really surprised that it was good, for he had observed that people who did lie were, on the whole, more resourceful and ambitious and successful than people who did not lie.</p>
+            <p class="attribution">&mdash; Chapter 9, Catch-22, Joseph Heller</p>
+        </div>
+    </section>
+</div>
+
+{{- end -}}

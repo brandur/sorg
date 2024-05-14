@@ -1,0 +1,33 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+Favors{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+    <link href="/assets/{{.Release}}/stylesheets/quotes.css" media="screen" rel="stylesheet" type="text/css">
+{{- end -}}
+
+{{- define "content" -}}
+
+<div id="wrapper">
+    <header>
+        <h1>❧ Catch-22 ❧</h1>
+    </header>
+    <section>
+        <div class="quote">
+            <p class="actor1">
+                &ldquo;I'm talking about cooperating. Favors. You do a favor for me, I'll do one for you. Get it?&rdquo;
+            </p>
+            <p class="actor2">
+                &ldquo;Do one for me,&rdquo;<span class="speaker"> Yossarian requested.</span>
+            </p>
+            <p class="actor1">
+                &ldquo;Not a chance,&rdquo;<span class="speaker"> Doc Daneeka answered.</span>
+            </p>
+            <p class="attribution">&mdash; Chapter 4, Catch-22, Joseph Heller</p>
+        </div>
+    </section>
+</div>
+
+{{- end -}}
