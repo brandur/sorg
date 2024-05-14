@@ -1,0 +1,44 @@
+{{- template "layouts/nanoglyphs.tmpl.html" . -}}
+
+{{- define "content" -}}
+
+<div class="container">
+    <div id="header">
+        <p id="issue">
+            <a href="{{.URLPrefix}}/nanoglyphs/{{.Issue.Slug}}">{{.Issue.Number}}</a>
+        </p>
+        <p id="nanoglyph">
+            <a href="{{.URLPrefix}}/nanoglyphs">Nanoglyph</a>
+        </p>
+    </div>
+    <h1>{{.Issue.Title}}</h1>
+</div>
+{{if .Issue.ImageURL}}
+    {{if eq .Issue.ImageOrientation "landscape"}}
+        <div class="container-highlight">
+            <img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}">
+        </div>
+    {{else}}
+        <div class="container-highlight-portrait">
+            <img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}">
+        </div>
+    {{end}}
+{{end}}
+<div class="container">
+    {{.Issue.Content}}
+    <div id="footer">
+        <div id="about">
+            <p>
+                {{template "views/_nanoglyphs_about.tmpl.html" .}}
+                {{if .InEmail}}
+                    Want out? <a href="%unsubscribe_url%">Unsubscribe right here</a>.
+                {{end}}
+            </p>
+            {{if not .InEmail}}
+                <p>Issue {{.Issue.Number}} was first broadcast on {{FormatTimeLocal .Issue.PublishedAt}}.</p>
+            {{end}}
+        </div>
+    </div>
+</div>
+
+{{- end -}}

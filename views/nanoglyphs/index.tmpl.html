@@ -1,0 +1,26 @@
+{{- template "layouts/nanoglyphs.tmpl.html" . -}}
+
+{{- define "content" -}}
+
+<div class="container">
+    <div id="header">
+        <p id="nanoglyph">Nanoglyph</p>
+        <p>
+            {{template "views/_nanoglyphs_about.tmpl.html" .}}
+            {{template "views/_nanoglyphs_signup.tmpl.html" .}}
+        </p>
+    </div>
+    <ul class="issue-list">
+        {{range .Issues}}
+            <li>
+                <a href="/nanoglyphs/{{.Slug}}">{{.Number}} &mdash; {{.Title}}</a>
+                <span class="published-date">{{FormatTimeLocal .PublishedAt}}</span>
+            </li>
+        {{end}}
+    </ul>
+    <div id="footer">
+        <img src="https://nanoglyph-signup.brandur.org/public/tiny-preload-image.png" style="margin: 0; width: auto;">
+    </div>
+</div>
+
+{{- end -}}
