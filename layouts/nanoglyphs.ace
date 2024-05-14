@@ -12,9 +12,6 @@ html lang="en"
     {{if not .InEmail}}
       {{Favicon "nanoglyphs" "jpg"}}
 
-      script src="/assets/{{.Release}}/javascripts/prism.js" type="text/javascript"
-      link href="/assets/{{.Release}}/stylesheets/prism.css" media="screen" rel="stylesheet" type="text/css"
-
       {{if eq .SorgEnv "development"}}
         / Served by Modulir itself (but only if websockets are enabled).
         script src="/websocket.js" type="text/javascript"
@@ -87,7 +84,6 @@ html lang="en"
       }
 
       code, pre, pre[class*=language-] {
-        background: #f6f6f6;
         font-family: Monaco, monospace;
       }
 
@@ -96,8 +92,15 @@ html lang="en"
         padding: 2px 4px;
       }
 
+      :not(pre) > code {
+        background: #f6f6f6;
+      }
+
       pre, pre[class*=language-] {
-        line-height: 1;
+        {{if .InEmail}}
+        background: #f6f6f6;
+        {{end}}
+        line-height: 1.2;
         margin-bottom: 20px;
         margin-top: 20px;
         overflow: auto;
@@ -365,4 +368,5 @@ html lang="en"
 
     {{if not .InEmail}}
     = include views/_analytics .
+    = include views/_shiki .
     {{end}}
