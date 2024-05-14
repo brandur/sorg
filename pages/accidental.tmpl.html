@@ -1,0 +1,33 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+Accidental{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+    <link href="/assets/{{.Release}}/stylesheets/quotes.css" media="screen" rel="stylesheet" type="text/css">
+{{- end -}}
+
+{{- define "content" -}}
+
+<div id="wrapper">
+    <header>
+        <h1>❧ Flow My Tears, the Policeman Said ❧</h1>
+    </header>
+    <section>
+        <div class="quote">
+            <p class="actor1">
+                <span class="speaker">I must turn a terrible tragedy into an advantage, Buckman realized. Capitalize on the accidental death of my own sister. If it <em>was</em> accidental.</span>
+            </p>
+            <p class="actor1">
+                &ldquo;Maybe it's true,&rdquo;<span class="speaker"> he said. Possibly Marshal Holbein, for example, who hated him enormously, had arranged it.</span>
+            </p>
+            <p class="actor2">
+                &ldquo;No,&rdquo;<span class="speaker"> Herb said.</span> &ldquo;It's not true. But start an inquiry. And you must find someone to pin it on; there must be a trial.&rdquo;
+            </p>
+            <p class="attribution">&mdash; Philip K. Dick</p>
+        </div>
+    </section>
+</div>
+
+{{- end -}}

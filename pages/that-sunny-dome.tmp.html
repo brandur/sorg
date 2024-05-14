@@ -1,0 +1,25 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+That sunny dome!{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+    <link href="/assets/{{.Release}}/stylesheets/quotes.css" media="screen" rel="stylesheet" type="text/css">
+{{- end -}}
+
+{{- define "content" -}}
+
+<div id="wrapper">
+    <header>
+        <h1>❧ Kubla Khan ❧</h1>
+    </header>
+    <section>
+        <div class="quote">
+            <p class="actor1">That sunny dome! those caves of ice!</p>
+            <p class="attribution">&mdash; Kubla Khan, Samuel Taylor Coleridge</p>
+        </div>
+    </section>
+</div>
+
+{{- end -}}

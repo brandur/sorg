@@ -1,0 +1,30 @@
+{{- template "layouts/pages/main.tmpl.html" . -}}
+
+{{- define "title" -}}
+Crying{{.TitleSuffix}}
+{{- end -}}
+
+{{- define "stylesheets" -}}
+    <link href="/assets/{{.Release}}/stylesheets/quotes.css" media="screen" rel="stylesheet" type="text/css">
+{{- end -}}
+
+{{- define "content" -}}
+
+<div id="wrapper">
+    <header>
+        <h1>❧ Flow My Tears, the Policeman Said ❧</h1>
+    </header>
+    <section>
+        <div class="quote">
+            <p class="actor1">
+                &ldquo;Drive me back to the academy,&rdquo;<span class="speaker"> Buckman said.</span> &ldquo;I don't think I can drive; I'm shaking too bad.&rdquo; <span class="speaker"> He felt something on his face; putting up his hand, he found that his chin was wet,</span> &ldquo;What's this on me?&rdquo; <span class="speaker"> he said, amazed.</span>
+            </p>
+            <p class="actor2">
+                &ldquo;You're crying,&rdquo;<span class="speaker"> Herb said.</span>
+            </p>
+            <p class="attribution">&mdash; Philip K. Dick</p>
+        </div>
+    </section>
+</div>
+
+{{- end -}}
