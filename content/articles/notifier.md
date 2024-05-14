@@ -1,4 +1,5 @@
 +++
+hn_link = "https://news.ycombinator.com/item?id=40352686#40353255"
 hook = "Maximizing Postgres connection econonmy by using a single connection per program to receive and distribute all listen/notify notifications."
 location = "Berlin"
 published_at = 2024-05-06T07:54:07+02:00
