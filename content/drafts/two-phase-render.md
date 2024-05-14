@@ -1,13 +1,13 @@
 +++
 hook = "Using a two-phase data load and render pattern to prevent N+1 queries in a generalized way. Especially useful in Go, but applicable in any language."
 image = "/assets/images/two-phase-render/vista.jpg"
-location = "Taveuni, Fiji"
+location = "Berlin"
 published_at = 2024-02-23T09:44:46-08:00
 title = "Eradicating N+1s: The Two-phase Data Load and Render Pattern in Go"
 # hn_link = "https://news.ycombinator.com/item?id=38349716"
 +++
 
-*Author’s note:* This is a longer piece that starts off with exposition into the nature of the N+1 query problem. If you're already well familiar with it, you may want to skip my description of N+1 to a story involving a creative use of [Ruby fibers at Stripe](#fibers-and-intents) to try and plug this hole, or the [two-phase load and render](#two-phase) that I've put in my current company's Go codebase, a pattern we've been using for two years now that's rid of us N+1s, and for which I'd have trouble citing any deficiency (aside from Go's normal trouble with verbosity).
+*Author’s note:* This is a longer piece that starts off with exposition into the nature of the N+1 query problem. If you're already well familiar with it, you may want to skip my description of N+1 to a story involving a creative use of [Ruby fibers at Stripe](#fibers-and-intents) to try and plug this hole, or the [two-phase load and render](#two-phase) that I've put in my current company's Go codebase, a pattern we've been using for two years now that's rid of us N+1s, and for which I'd have trouble citing any deficiency (aside from Go's normal trouble with verbosity). It works.
 
 ---
 
@@ -43,6 +43,8 @@ end
 In this naive loop, the number of database queries issued to render all products is one (`Product.limit(10)`) plus ten as `owner` is lazily loaded on each product. That's where we get "N+1" -- one initial fetch, and N as its objects are iterated and do their own loading.
 
 This practically invisible problem is probably number two to only forgotten indexes as the most common reason for poor performance of web apps around. It's an easy mistake to make, and there's a broad lack of guard rails to protect against it.
+
+<img src="/assets/images/two-phase-render/n_plus_one.svg" alt="N+1.">
 
 ### N*M+1 and more (#n-m-plus-one)
 
@@ -83,7 +85,7 @@ end
 
 We're now at more like N*M+1. This is the more realistic example, and in real life it just keeps snowballing from there. Models have dozens of associations, and their subresources have subresources which have subresources. Rendering a single API resource might take hundreds, or even thousands, of database queries.
 
-# TODO: Diagram
+<img src="/assets/images/two-phase-render/n_times_m_plus_one.svg" alt="N*M+1.">
 
 Luckily for all of us, databases are pretty fast, and even when abused in this fashion can still get the job done in a timely manner. ORMs like ActiveRecord also have features like [eager loading](https://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations), that can be used to prefetch what otherwise would've been loaded lazily.
 
@@ -99,13 +101,13 @@ But even these sophisticated strategies have their own problems. In a large appl
 
 Sometimes you have to get creative to solve N+1s.
 
-A story from Stripe: due to an architecture built around Mongo, records were almost always point loaded by nothing more complex than a point index lookup (i.e. no fancy joins, eager loading, or anything else). N+1s were the rule, not the exception, but with fast hardware and modest performance expectations, it’s amazing how far you can get with this brute force model. A normal API request could easily run thousands of lookups.
+A story from Stripe: due to an architecture built around Mongo, records were almost always point loaded by nothing more complex than a point index lookup (i.e. no fancy joins, eager loading, or anything else, just the equivalent of `WHERE id = @id`). N+1s were the rule, not the exception, but with fast hardware and modest performance expectations, it’s amazing how far you can get with this brute force model. A normal API request could easily run thousands of database operations.
 
 It’s a good example of how pernicious N+1s can be. Databases are fast, and especially in the beginning, you can have the sloppiest internal practices imaginable and they’ll still be viable. A request might be making 50 database calls, 45 of which would be unnecessary in a better-designed system, but with each taking only 1-2 ms, everything’s still done in well under a second.
 
-But over the years 50 calls becomes 1,000, and users start to notice that things are slow. And once things are this far gone, there’s no obvious fix. The latency isn’t due to only one factor, it’s a confluence of years worth of haphazardly written code, and now there's millions of lines worth of it.
+But over the years 50 calls becomes 1,000, and users start to notice that things are slow. And once things are this far gone, there’s no obvious fix. The latency isn’t due to only one factor, it’s a confluence of years worth of haphazardly written code, and now there's millions of lines of it.
 
-With no easy solutions in sight, one of my colleagues came up with what to this day is still the most novel hack I've ever seen work in production.
+With no easy solutions in sight, one of my colleagues came up with what to this day is still the most novel and effective hack I've ever seen work in production.
 
 API endpoints mapped to an API resource that they render. API resources were backed by a database model. Sometimes properties on the API resource mapped directly 1:1 to properties on the model, but especially over time, these representations tended to diverge, and custom overrides were required to map internal schema to public representation.
 
@@ -125,23 +127,25 @@ class Charge < APIResource
 end
 ```
 
-It was these custom overrides where N+1s were most pervasive. Models used an ORM similar to ActiveRecord or Sequel that lazily loaded related records, and rendering would more often than not require loading relations. Custom overrides often rendered subresources of their own, each of which might have its own N+1s, amplifying expense to unbounded magnitudes.
+It was these custom overrides where N+1s were most pervasive. Models used an ORM similar to ActiveRecord or Sequel that lazily loaded related records, and rendering would more often than not require loading relations. Custom overrides often rendered subresources of their own, each of which might have its own N+1s, amplifying expense to unbounded proportions.
 
 ### Dynamic aggregates (#dynamic-aggregates)
 
 This is where the innovation came in. Ruby has a construct called [fibers](https://docs.ruby-lang.org/en/master/Fiber.html) which are coroutines with a smaller memory footprint than a thread (using only small 4 kB stacks), and which can be paused and started again. The devised scheme:
 
 * Every custom `#render_*` override would be wrapped in a fiber during invocation.
-* If the fiber called into the database layer, it'd be paused with a record of its "intent" to query tracked, and the next fiber started.
-* After every fiber was either paused or completed, paused fibers were examined and the database calls they’d make aggregated into batch operations if possible.
-* Batch operations were invoked. Their results were disassembled and the appropriate data returned to each parked fiber.
-* Paused fibers were continued. If new database calls were made, the sequence would repeat.
+* If the fiber called into the database layer, it'd be paused. Its "intent" to query was recorded, and the next fiber started.
+* After every fiber was either paused or completed, paused fibers were examined and their database intents aggregated into batch operations.
+* Batch operations were invoked. Their results were disaggregated, and the appropriate data distributed back to each parked fiber.
+* Paused fibers were continued. If new database calls were made, the sequence would start over again.
 
 So from the example above, if 10 charges were rendered that mapped to 10 separate accounts, the accounts were bulked loaded with `account_id IN (?, ?, ?, ...)` instead of a single `account_id = ?`, but each fiber would get back a single account as if it'd performed a point load.
 
-TODO: Diagram.
+<img src="/assets/images/two-phase-render/fibers.svg" alt="Loading data via fibers.">
 
-The system had broad limitations (e.g. only point loads could be aggregated; no complex queries were supported), but despite some gnarly code, it worked, and helped knock considerable latency off API calls. Importantly, options were limited and this was one of the few ways to have a large effect across millions of lines of code. The time where a prettier/more optimal abstraction could've been applied was long past.
+The system had broad limitations (e.g. only point loads could be aggregated; no complex queries were supported), but despite some gnarly code, it worked, and helped knock considerable latency off API calls.
+
+Importantly, options were limited and this was one of the few ways to have a large effect across millions of lines of code. The time where the situation could've been rescued with a prettier/more optimal abstraction was long since past.
 
 ---
 
@@ -163,7 +167,7 @@ class Article < ApplicationRecord
 end
 ```
 
-Strict loading is an important feature, but not a panacea. Test coverage needs to be very substantial to make sure problems are caught before hitting production.
+Strict loading is an important feature and _major_ innovation in this area, but not a panacea. Test coverage needs to be very substantial to make sure problems are caught before hitting production.
 
 ---
 
@@ -171,13 +175,13 @@ Strict loading is an important feature, but not a panacea. Test coverage needs t
 
 This brings us to Go, where loading data is hard even without considering N+1s.
 
-Go can aptly be described as a newer, safer C, but with even less leeway. You couldn’t write a good ORM for the language if you wanted to (they do exist, but rely on a lot of untyped `any` shenanigans, which obviate the advantages of Go in the first place since problems are only caught at runtime), and in the absence of one, the Go philosophy is to avoid abstraction -- if you need something like an API resource, piece it together query-by-query, with requisite `if err != nil { ... }` blocks after every statement.
+Go can aptly be described as a newer, safer C, but with even less flexibility. You couldn’t write a good ORM for the language if you wanted to (they do exist, but rely on a lot of untyped `any` shenanigans, which obviate the type advantages of Go in the first place since problems are only caught at runtime), and in the absence of one, the Go philosophy is to avoid abstraction. If you need something like an API resource, piece it together query-by-query, with requisite `if err != nil { ... }` blocks after every statement.
 
 For larger applications with dozens or hundreds of associations, the default result is a breathtaking amount of boilerplate to accomplish what would be a modest amount of code in a language with more succinct syntax and a dynamic ORM.
 
-The increased verbosity does nothing to make N+1s less likely, which are still easy to introduce in a loop, especially with layers of indirection. It also makes them harder to fix because there might be a lot of refactoring involved. One of the first bugs I ever fixed at my job was an N+1:
+The increased verbosity does nothing to make N+1s less likely, which are still easy to introduce in a loop, especially with layers of indirection. It also makes them harder to fix because there might be a lot of refactoring involved. One of the first bugs I ever fixed coming onto the job was an N+1:
 
-``` sh
+``` git-commit
 commit de58e3552eaef78c9b3d7779ddf9c646d5009985
 Author: Brandur <brandur@brandur.org>
 Date:   Thu Jun 3 13:06:56 2021 -0700
@@ -258,6 +262,8 @@ As the name suggests, it's broken down into two distinct render phases:
 
 The key insight is that the load phase knows how to load data to a bundle that's sufficient to render N resources. For a list endpoint, render may then be called using that bundle for N resources in the list. For a point retrieval endpoint, it'll render only one resource. Either way, the process is the same.
 
+<img src="/assets/images/two-phase-render/render_load_bundle.svg" alt="Rendering a load bundle.">
+
 Let's look at a basic example. A product API resource, each of which has one admin and belongs to a team:
 
 ``` go
@@ -317,6 +323,10 @@ func (_ *Product) LoadBundle(
 }
 ```
 
+(Once again, please forgive the verbosity -- there is literally no way to make this code more succinct in Go. It's already boiled down as far as possible.)
+
+<img src="/assets/images/two-phase-render/product_load_bundle.svg" alt="Product load bundle.">
+
 ``` go
 //
 // Phase 2: Use a bundle to render a single resource
@@ -346,8 +356,6 @@ So, the full render process is:
 2. `Render` is invoked for each product individually, but reusing the same load bundle from (1). 
     * Properties like `ID` and `Name` map directly from model to API resource.
     * Indirect properties like `OwnerEmail` and `TeamName` are pulled off the records added to the load bundle in (1).
-
-TODO: Diagram.
 
 ### Renderable (#renderable)
 
@@ -505,6 +513,8 @@ func (_ *Widget) Render(ctx context.Context, baseParams *pbaseparam.BaseParams, 
 }
 ```
 
+<img src="/assets/images/two-phase-render/product_load_bundle_with_widget.svg" alt="Product load bundle with internalized widget load bundle.">
+
 Now, back to product's (the parent resource) `Renderable` implementation, now modified to include widgets. `WidgetLoadBundle` is embedded on `ProductLoadBundle` and populated on `Load`. Product's `Render` invokes `Render` for each of its embedded widgets, passing through the common load bundle:
 
 ``` go
@@ -583,7 +593,6 @@ func (_ *Product) Render(ctx context.Context, baseParams *pbaseparam.BaseParams,
 		Widgets:    widgetResources,
 	}, nil
 }
-
 ```
 
 The beauty of this approach is that even if your resources which have subresources _which have subresources_, it's still okay. All load bundles map 1:1:1, and regardless of number of resources or hierarchy, we still perform a constant number of database operations. Predictable performance and database load is always maintained.
