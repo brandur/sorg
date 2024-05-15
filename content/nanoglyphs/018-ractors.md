@@ -194,7 +194,7 @@ Keen on putting Ractors to work, I tried taking a small part of the static gener
 
 But I didn't get very far. The [worker pool](https://gist.github.com/brandur/af8ac446e6fcaf4120639ceb53391231) was implemented without trouble, but I discovered the hard way that I could run practically nothing inside of it. For example:
 
-```
+``` ruby
 class RenderFragmentJob
   def initialize(source)
     @source = source
