@@ -14,6 +14,8 @@ config = &Config{
 }
 ```
 
+Thanks [_@earthboundkid_](https://github.com/earthboundkid) for the correction.
+
 ---
 
 Especially with respect to certain major pain points, Go's traditionally lived by an accidental butchering of Larry Wall's old quote of, "Make easy things easy, and hard things possible" to the much more unfortunate variant of, "Make easy things hard, and hard things impossible."

@@ -14,6 +14,8 @@
   published_at = 2024-05-15T13:02:29+02:00
   description = """\
 Published fragment [ValOrDefault](/fragments/val-or-default), on a pair of helper functions `ValOrDefault` and `ValOrDefaultFunc` that can help significantly to clean up Go code around assigning default values.
+
+And actually, an update: Go 1.22's [`cmp.Or`](https://pkg.go.dev/cmp#Or) supersedes this custom helper.
 """
 
 [[atoms]]
