@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-15T13:02:29+02:00
+  description = """\
+Published fragment [ValOrDefault](/fragments/val-or-default), on a pair of helper functions `ValOrDefault` and `ValOrDefaultFunc` that can help significantly to clean up Go code around assigning default values.
+"""
+
+[[atoms]]
   published_at = 2024-05-11T11:04:23+02:00
   description = """\
 Published fragment [Heroku on two standard dynos?](/fragments/heroku-two-dynos), on contemplating whether the Heroku platform would fit on two standard 512 MB dynos if it could be ported from Ruby to Go.
