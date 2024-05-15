@@ -4,6 +4,18 @@ published_at = 2024-05-15T13:02:29+02:00
 title = "ValOrDefault"
 +++
 
+**Update:** It turns out that everything I wrote here has been superseded as of Go 1.22, which added [`cmp.Or`](https://pkg.go.dev/cmp#Or), which works almost identically. It can be used to easily assign defaults:
+
+``` go
+config = &Config{
+    CancelledJobRetentionPeriod: cmp.Or(config.CancelledJobRetentionPeriod, maintenance.CancelledJobRetentionPeriodDefault),
+    CompletedJobRetentionPeriod: cmp.Or(config.CompletedJobRetentionPeriod, maintenance.CompletedJobRetentionPeriodDefault),
+    DiscardedJobRetentionPeriod: cmp.Or(config.DiscardedJobRetentionPeriod, maintenance.DiscardedJobRetentionPeriodDefault),
+}
+```
+
+---
+
 Especially with respect to certain major pain points, Go's traditionally lived by an accidental butchering of Larry Wall's old quote of, "Make easy things easy, and hard things possible" to the much more unfortunate variant of, "Make easy things hard, and hard things impossible."
 
 Historically, an example of this has been initializing default values, like you might do in a configuration struct:
@@ -60,15 +72,15 @@ func ValOrDefault[T comparable](val, defaultVal T) T {
 }
 ```
 
-Go 1.22 added [`cmp.Or`](https://pkg.go.dev/cmp#Or) which works almost identically.
+**Update:** See the top of the article, but Go 1.22's built-in `cmp.Or` behaves identically to `ValOrDefault`, and should be preferred over this custom implementation.
 
 With it, we can tighten up the code above considerably:
 
 ``` go
 config = &Config{
-    CancelledJobRetentionPeriod: cmp.Or(config.CancelledJobRetentionPeriod, maintenance.CancelledJobRetentionPeriodDefault),
-    CompletedJobRetentionPeriod: cmp.Or(config.CompletedJobRetentionPeriod, maintenance.CompletedJobRetentionPeriodDefault),
-    DiscardedJobRetentionPeriod: cmp.Or(config.DiscardedJobRetentionPeriod, maintenance.DiscardedJobRetentionPeriodDefault),
+    CancelledJobRetentionPeriod: ptrutil.ValOrDefault(config.CancelledJobRetentionPeriod, maintenance.CancelledJobRetentionPeriodDefault),
+    CompletedJobRetentionPeriod: ptrutil.ValOrDefault(config.CompletedJobRetentionPeriod, maintenance.CompletedJobRetentionPeriodDefault),
+    DiscardedJobRetentionPeriod: ptrutil.ValOrDefault(config.DiscardedJobRetentionPeriod, maintenance.DiscardedJobRetentionPeriodDefault),
 }
 ```
 
