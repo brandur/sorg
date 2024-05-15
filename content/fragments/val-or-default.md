@@ -60,13 +60,15 @@ func ValOrDefault[T comparable](val, defaultVal T) T {
 }
 ```
 
+Go 1.22 added [`cmp.Or`](https://pkg.go.dev/cmp#Or) which works almost identically.
+
 With it, we can tighten up the code above considerably:
 
 ``` go
 config = &Config{
-    CancelledJobRetentionPeriod: valutil.ValOrDefault(config.CancelledJobRetentionPeriod, maintenance.CancelledJobRetentionPeriodDefault),
-    CompletedJobRetentionPeriod: valutil.ValOrDefault(config.CompletedJobRetentionPeriod, maintenance.CompletedJobRetentionPeriodDefault),
-    DiscardedJobRetentionPeriod: valutil.ValOrDefault(config.DiscardedJobRetentionPeriod, maintenance.DiscardedJobRetentionPeriodDefault),
+    CancelledJobRetentionPeriod: cmp.Or(config.CancelledJobRetentionPeriod, maintenance.CancelledJobRetentionPeriodDefault),
+    CompletedJobRetentionPeriod: cmp.Or(config.CompletedJobRetentionPeriod, maintenance.CompletedJobRetentionPeriodDefault),
+    DiscardedJobRetentionPeriod: cmp.Or(config.DiscardedJobRetentionPeriod, maintenance.DiscardedJobRetentionPeriodDefault),
 }
 ```
 
