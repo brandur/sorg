@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-16T07:31:19+02:00
+  description = """\
+I recommend [Return YouTube Dislike](https://github.com/Anarios/return-youtube-dislike), a browser extension that brings back the dislike count on YouTube videos, and run as an open source project on GitHub. I had a vague idea that an extension like this might exist, but didn't do anything about it until recently, when I saw a screenshot from somoene else who still had theirs intact.
+
+It shows how much work Google has put into protecting the message from our heroic defenders-of-big-D-Democracy coastal wine-and-cheese chattering class, who naturally are the self-elected determiners of all that is tasteful and good. Best exemplified by Hollywood, the trailer for the new _Rings of Power_ season that dropped yesterday is sitting at a highly skewed 👍71k/👎340k. The trailer for Disney's upcoming Star Wars series _The Acolyte_ is at 👍70k/👎159k. Of a half dozen of CNN's most recent videos, the majority of them have more dislikes than likes. The mere knowledge of how widely this content is disliked is dangerous information that must be suppressed.
+"""
+
+[[atoms]]
   published_at = 2024-05-15T13:02:29+02:00
   description = """\
 Published fragment [ValOrDefault](/fragments/val-or-default), on a pair of helper functions `ValOrDefault` and `ValOrDefaultFunc` that can help significantly to clean up Go code around assigning default values.
