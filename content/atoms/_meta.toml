@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-16T08:55:29+02:00
+  description = """\
+Published fragment [Use of Go's `cmp.Or` for multi-field sorting](/fragments/cmp-or-multi-field), on a more elegant way to sort on multiple fields using Go 1.22's `cmp.Or` helper.
+"""
+
+[[atoms]]
   published_at = 2024-05-16T07:31:19+02:00
   description = """\
 I recommend [Return YouTube Dislike](https://github.com/Anarios/return-youtube-dislike), a browser extension that brings back the dislike count on YouTube videos, and run as an open source project on GitHub. I had a vague idea that an extension like this might exist, but didn't do anything about it until recently, when I saw a screenshot from somoene else who still had theirs intact.
