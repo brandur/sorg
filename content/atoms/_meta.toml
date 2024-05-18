@@ -11,6 +11,31 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-18T11:56:27+02:00
+  length_exempted = true
+  description = """\
+Thought provoking post from [DDH on the broad failure of system tests](https://world.hey.com/dhh/system-tests-have-failed-d90af718), defined in this context as web UI tests, driven by a headless browser.
+
+A good way to test UIs is a problem that people have been trying to solve since the moment I stepped out of university and into a software engineering job. Back then, despite the evasiveness of a good answer to date, I assumed that someone would eventually figure it out. Now, almost twenty years later and an even halfway good answer still elusive, I'm not so optimistic.
+
+Our latest round of test strategy uses Playwright, which describes itself as "reliable end-to-end testing for modern web apps". I haven't found it particularly so:
+
+* Failures are totally opaque. The error you get is that there was a timeout waiting for a UI element to appear or a page to transition, telling you nothing about what actually happened, making debugging slow.
+* Tests are hard and time intensive to write, with the predictable result being that most developers don't bother writing them.
+* Tests are slow. Even broken into four cooperating jobs, CI takes almost ten minutes to run.
+* The whole set up requires substantial configuration, heavy toolchain, and test scripts. It's as far from a `git clone && make test` as you can get.
+* To make testing reproducible, we have a "fixture" setup is used in the backend that saves and replays API requests. Close to ~every test failure is the result of a fixture failure where a fixture needs to be recorded or re-recorded because something was updated.
+
+All in all -- and I'm trying my best to make sure that I'm not exaggerating -- the false positive rate on failures is something like 99%. I actually don't recall ever seeing a true positive in the sense that a test case caught something I broke by accident.
+
+DHH's prescription seems extreme at first glance:
+
+> HEY today has some 300-odd system tests. We're going through a grand review to cut that number way down. The sunk cost fallacy has kept us running this brittle, cumbersome suite for too long.
+
+But for a test suite that slows development and only prevents a regression once in a blue moon, isn't it the only rational answer?
+"""
+
+[[atoms]]
   published_at = 2024-05-16T08:55:29+02:00
   description = """\
 Published fragment [Use of Go's `cmp.Or` for multi-field sorting](/fragments/cmp-or-multi-field), on a more elegant way to sort on multiple fields using Go 1.22's `cmp.Or` helper.
