@@ -22,7 +22,7 @@ Our latest round of test strategy uses Playwright, which describes itself as "re
 
 * Failures are totally opaque. The error you get is that there was a timeout waiting for a UI element to appear or a page to transition, telling you nothing about what actually happened, making debugging slow.
 * Tests are hard and time intensive to write, with the predictable result being that most developers don't bother writing them.
-* Tests are slow. Even broken into four cooperating jobs, CI takes almost ten minutes to run.
+* Tests are slow. Even parallelized into four cooperating jobs, CI takes almost ten minutes to run.
 * The whole set up requires substantial configuration, heavy toolchain, and test scripts. It's as far from a `git clone && make test` as you can get.
 * To make testing reproducible, we have a "fixture" setup is used in the backend that saves and replays API requests. Close to ~every test failure is the result of a fixture failure where a fixture needs to be recorded or re-recorded because something was updated.
 
