@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-18T12:42:13+02:00
+  description = """\
+Slack is [training AI on private customer data](https://news.ycombinator.com/item?id=40383978).
+
+Years ago I had a conversation with a company that was building a Slack killer. I thought they were crazy. Slack was a beloved product that had built itself the perfect moat. Not through some exotic feature set that nobody else had, but by being feature complete, and a little better and a little more refined than any of its competitors.
+
+Compared to HipChat (what we'd been using at the time), Slack was lightning fast, had a thoughtful UI that someone had obviously taken the time to get right, and prone to far fewer bugs and outages. It was hard to describe in few words why one chat app was so much better than the other chat apps, but anyone who used Slack for five minutes understood immediately.
+
+A lot of ground's been lost since then. Slack's recent UI redesign is a textbook case of ignoring usability in favor of minor cosmetic benefit -- a fundamental degradation in UX to save twenty pixels on the left side of the screen. When users expressed unhappiness, Slack doubled down. The alternative -- a tarnishing of the reputation of some random, unqualified design VP at Salesforce -- was obviously intolerable. Previously rock solid reliability has gotten steadily worse with long load times and frequent client desynchronization.
+
+Telling paid users that their private communications is now property of Slack for AI training is more of the same. (But don't worry, you can opt out by emailing support! They _could've_ required that a paper TPS form be submitted by mail.)
+
+But if there'll be one future lesson from Slack, it'll be that it's not only possible to lose your lead from competitors advancing, but by regressing yourself.
+"""
+
+[[atoms]]
   published_at = 2024-05-18T11:56:27+02:00
   length_exempted = true
   description = """\
