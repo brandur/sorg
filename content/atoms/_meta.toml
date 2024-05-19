@@ -56,7 +56,7 @@ Compared to HipChat (what we'd been using at the time), Slack was lightning fast
 
 A lot of ground's been lost since then. Slack's recent UI redesign is a textbook case of ignoring usability in favor of minor cosmetic benefit -- a fundamental degradation in UX to save twenty pixels on the left side of the screen. When users expressed unhappiness, Slack doubled down. The alternative -- a roll back and tarnishing of the reputation of some random, unqualified design VP at Salesforce -- was obviously intolerable. Previously rock solid reliability has gotten steadily worse with long load times and frequent client desynchronization.
 
-Telling paid users that their private communications is now property of Slack for AI training is more of the same. (But don't worry, you can opt out by emailing support! They _could've_ required that a paper TPS form be submitted by mail.)
+Telling paid users that their private communications is now property of Slack for AI training is more of the same. (But don't worry, you can opt out by emailing support! They _could've_ by all rights required that a paper TPS form be submitted by mail.)
 
 If there'll be one future lesson from Slack, it'll be that it's not only possible to lose your lead from competitors advancing, but by regressing yourself.
 """
