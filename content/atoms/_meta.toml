@@ -11,6 +11,41 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-19T14:31:17+02:00
+  description = """\
+Soutaro (major Ruby typing contributor) has launched a new [RBS::Inline](https://github.com/soutaro/rbs-inline) project that enables Ruby type annotations in comments instead of a companion RBS file:
+
+``` ruby
+# rbs_inline: enabled
+
+class Person
+  attr_reader :name #:: String
+
+  attr_reader :addresses #:: Array[String]
+
+  # @rbs name: String
+  # @rbs addresses: Array[String]
+  # @rbs returns void
+  def initialize(name:, addresses:)
+    @name = name
+    @addresses = addresses
+  end
+
+  def to_s #:: String
+    "Person(name = #{name}, addresses = #{addresses.join(", ")})"
+  end
+
+  # @rbs yields (String) -> void
+  def each_address(&block) #:: void
+    addresses.each(&block)
+  end
+end
+```
+
+The README notes that if all goes well, this will be merged back upstream into the main RBS gem and become a first class feature. During a [recent trial run of RBS](/fragments/ruby-typing-2024) I found having to have two tabs open for every Ruby file (the `.rb` and its companion `.rbs`) to be somewhat painful, and having an alternative is a welcome addition.
+"""
+
+[[atoms]]
   published_at = 2024-05-18T12:42:13+02:00
   description = """\
 Slack is [training AI on private customer data](https://news.ycombinator.com/item?id=40383978).
