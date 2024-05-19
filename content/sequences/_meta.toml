@@ -24,6 +24,32 @@
 #     slug = "073"
 
 [[entries]]
+  published_at = 2024-05-19T15:29:32+02:00
+  slug = "079"
+  title = "Spring in Leipzig"
+  description = """
+I'm simultaneously a Euro critic and Euro fanatic. Having spent a few weeks here now, and being stopped on _every_ website I visit with a complicated cookie modal, I'm reminded with great frequency that Europe's main tech export by a wide margin is regulation. Admittedly, occasionally this has positive results for all of us (e.g. [the iPhone 15 on USB-C](/nanoglyphs/041-15-16#usb-c)), but the continent sure isn't making itself _more_ relevant, and there's a strong argument to be made that it's going to have serious ramifications for long term prosperity.
+
+But my god, if the lows are low, then the highs are stratospheric. The architecture, the food, the walkability -- after visiting and enjoying it all, I have periods of malaise pondering that the US and Canada will never have any of these things.
+
+If there's one thing I wish every North American could see in Germany, it'd be [the third spaces](https://en.wikipedia.org/wiki/Third_Space_Theory). This is Leipzig on a spring/summer Saturday night, and I can't even begin to capture the sense of community in photos. The city's entire main square has been pedestrianized, with tables laid out with space for thousands. It's late by North American standards--passed 10 PM--but the night shows no signs of slowing down, and with all age groups represented including kids and elders. There's no way you could tell from looking around, but there's a high speed, high capacity train right under this square that'd put America's most advanced rail to shame. No one has to worry about parking or driving home drunk.
+
+How many people could tell you a city named "Leipzig" even exists, let alone point to it on a map? Every on Earth's heard of San Francisco, but the difference in vitality between these two place is night and day. Like, I'm not saying the disparity is 10%, 50%, or 2x. Not even 10x. No, let's call it more like 100x. 10 PM on a Saturday night San Francisco has _a pulse_ because it's Saturday night (although only in select places like Valencia, the Castro, or North Beach), but only a pulse. Even those who took the bold step of leaving their homes will be back there in another hour or two, safely watching Netflix and ordering DoorDash from behind barred windows with the other 95% who never deigned to step foot beyond their front door in the first place.
+
+And it matters. Not only does lack of commerce leave neighborhoods empty, homogenous wastelands, but never seeing the faces of your fellow countrymen is almost certainly one of the major factors in the continued atomization and political strife that the US is seeing in spades. I'll leave a more serious commentary to another time, but come on, fewer fentanyl exclusion zones and Zoom events, and more of this please.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/uf139vs9ftjoiiyl2arns/2W4A5465.jpg?rlkey=m41hm69jx6jvmoh7v92tqt87q&st=r04ehgpn&dl=1"
+    slug = "079"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/kgmwrw8bktae9nkqnsape/2W4A5456.jpg?rlkey=9dnwvn71m1uf2y1zg3vr83zzq&st=vxhn6mm2&dl=1"
+    slug = "079b"
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/6haef6il6y07e6zepfbrh/2W4A5462.jpg?rlkey=wo4nv45z2skjt4ct47hivt285&st=7ulrphvr&dl=1"
+    slug = "079c"
+
+
+[[entries]]
   published_at = 2024-05-09T20:35:08+02:00
   slug = "078"
   title = "Lights over Friedrichshain"

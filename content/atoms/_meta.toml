@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-19T15:29:32+02:00
+  description = """\
+Published [sequence 079](/sequences/079), spring in Leipzig.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/079"
+    original_image_url = "https://www.dropbox.com/scl/fi/uf139vs9ftjoiiyl2arns/2W4A5465.jpg?rlkey=m41hm69jx6jvmoh7v92tqt87q&st=r04ehgpn&dl=1"
+    slug = "spring-in-leipzig"
+
+[[atoms]]
   published_at = 2024-05-19T14:31:17+02:00
   description = """\
 Soutaro (major Ruby typing contributor) has launched a new [RBS::Inline](https://github.com/soutaro/rbs-inline) project that enables Ruby type annotations in comments instead of a companion RBS file:
