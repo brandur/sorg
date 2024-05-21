@@ -67,7 +67,7 @@
 <div class="container max-w-[900px] mx-auto my-8 px-4">
     <div class="hyphens-auto
             max-w-none
-            prose prose-invert prose-md
+            prose prose-md dark:prose-invert
             prose-a:border-b-[1px] prose-a:border-white prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-b-0
             prose-p:font-serif
@@ -79,7 +79,7 @@
         {{.Entry.DescriptionHTML}}
 
         <div class="not-prose">
-            <p class="font-sans italic my-1 leading-normal not-prose text-white text-xs tracking-tighter">Published
+            <p class="font-sans italic my-1 leading-normal not-prose text-proseBody text-xs tracking-tighter dark:text-proseInvertBody">Published
                 <span class="font-bold">{{FormatTime .Entry.PublishedAt "January 2, 2006"}}</span>.
             </p>
         </div>

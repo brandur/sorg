@@ -3,12 +3,12 @@
 {{- define "atoms_content" -}}
 
 <div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
-    <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+    <h1 class="font-normal font-serif my-8 text-center text-8xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
         Articles
     </h1>
 
     <div class="container max-w-[625px] mx-auto
-            prose prose-lg
+            prose prose-lg dark:prose-invert
             prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-slate-200
             prose-p:text-center prose-p:italic
@@ -23,7 +23,7 @@
 <div class="container max-w-[800px] mx-auto mt-8 px-8">
     <div class="md:flex">
         <div> <!-- needed for sticky -->
-            <div class="font-mono my-1 leading-normal text-md tracking-tighter md:sticky md:text-right md:top-5">
+            <div class="font-mono my-1 leading-normal text-md text-proseLinks tracking-tighter dark:text-proseInvertLinks md:sticky md:text-right md:top-5">
                 <div class="hidden md:block md:pr-6">
                     <ul>
                         {{range .ArticlesByYear}}
@@ -35,13 +35,13 @@
                 </div>
             </div>
         </div>
-        <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-6">
+        <div class="pb-8 dark:border-slate-700 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-6">
             {{range .ArticlesByYear}}
-            <h2 id="year_{{.Year}}" class="font-bold text-md tracking-tighter">{{.Year}}</h2>
+            <h2 id="year_{{.Year}}" class="font-bold text-md text-proseLinks tracking-tighter dark:text-proseInvertLinks">{{.Year}}</h2>
 
             <ul class="clear-both mb-9">
                 {{- range .Articles -}}
-                <li class="clear-both mb-9 mt-1.5 text-md">
+                <li class="clear-both mb-9 mt-1.5 text-md text-proseBody dark:text-proseInvertBody">
                     {{if .HookImageURL}}
                     <a href="/{{.Slug}}">
                         <img src="{{.HookImageURL}}" srcset="{{To2X .HookImageURL}} 2x, {{.HookImageURL}} 1x"
@@ -50,11 +50,11 @@
                     {{end}}
                     <div class="mb-2">
                         <a href="/{{.Slug}}"
-                            class="border-b-[1px] border-b-slate-200 font-semibold hover:border-b-black">{{.Title}}</a>
+                            class="border-b-[1px] border-b-slate-200 font-semibold text-proseLinks dark:text-proseInvertLinks dark:border-b-slate-700 hover:border-b-black dark:hover:border-b-proseInvertLinks">{{.Title}}</a>
                         <span
                             class="italic ml-0.5 text-slate-500 text-xs">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
                     </div>
-                    <p class="font-serif leading-7 text-slate-700">{{.Hook}}</p>
+                    <p class="font-serif leading-7">{{.Hook}}</p>
                 </li>
                 {{- end -}}
             </ul>

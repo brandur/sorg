@@ -1,7 +1,7 @@
 <div id="{{.Atom.Slug}}" class="container max-w-[900px] mx-auto my-8">
     <div class="md:flex md:px-4">
         <div class="px-4 md:basis-[90px] md:flex-grow-0 md:flex-shrink-0 md:mr-4 md:px-0">
-            <div class="font-bold my-1 leading-normal text-xs tracking-tighter">
+            <div class="font-bold my-1 leading-normal text-xs text-proseLinks tracking-tighter dark:text-proseInvertLinks">
                 <a href="#{{.Atom.Slug}}" class="leading-3">
                     {{FormatTime .Atom.PublishedAt "2006 / Jan 2"}}
                     {{FormatTime .Atom.PublishedAt "15:04 PST"}}
@@ -13,10 +13,10 @@
             <div class="hyphens-auto
                 max-w-none
                 px-4 md:px-0
-                prose prose-md
+                prose prose-md dark:prose-invert
                 prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
-                prose-blockquote:text-slate-700
+                prose-blockquote:text-slate-700 dark:prose-blockquote:text-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
                 prose-h1:font-bold prose-h1:text-base
                 prose-p:font-serif

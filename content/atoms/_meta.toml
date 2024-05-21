@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-21T16:46:51+02:00
+  description = """\
+I [implemented dark mode](https://github.com/brandur/sorg/pull/362) for this website, which you should be able to enable using the toggle in the upper right. I figure that if even Google search can do it given what's sure to be millions of lines worth of legacy code, then I should be able to as well.
+
+I'll write more about this soon, but by far the hardest part about dark mode is restyling. A site like this one not only has accumulated thousands of pages over the years, but also a dozen major templates of varying quality, each of which needs attention to support such a colossal change. I've slowly been moving over to Tailwind since last year and as I did, it gave me time to do some spring cleaning on the template system. Without Tailwind and that cleanup, adding dark mode would've been such a big job that I'm not sure I ever would've gotten around to it.
+
+This site is a constant WIP and I'm sure I'll be making some tweaks over the coming months, but if you notice any major usability problems that I missed, open [a GitHub issue](https://github.com/brandur/sorg/issues/new).
+"""
+
+[[atoms]]
   published_at = 2024-05-19T15:29:32+02:00
   description = """\
 Published [sequence 079](/sequences/079), spring in Leipzig.

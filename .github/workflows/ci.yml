@@ -115,7 +115,7 @@ jobs:
     timeout-minutes: 3
 
     env:
-      TAILWIND_VERSION: v3.3.1
+      TAILWIND_VERSION: v3.4.3
 
     steps:
       - name: Checkout

@@ -4,14 +4,14 @@
 
 <div class="mb-12 mt-0 px-4 md:mb-24 md:mt-16">
     <div class="container max-w-[800px] mx-auto">
-        <h1 class="text-slate-800 font-normal font-serif leading-tight my-8 text-center text-5xl tracking-tighter">
+        <h1 class="font-normal font-serif leading-tight my-8 text-center text-5xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
             {{.Fragment.Title}}
         </h1>
     </div>
 
     {{if ne .Fragment.Hook "UNWRITTEN. This should not appear on the front page."}}
     <!-- <div class="container max-w-[625px] mx-auto
-                prose prose-md
+                prose prose-md dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-slate-200
                 text-center">
@@ -31,9 +31,9 @@
 <div class="container max-w-[750px] mx-auto mt-8 px-8">
     <div class="md:flex">
         <div class="basis-[115px] flex-grow-0 flex-shrink-0 hidden md:block"> <!-- needed for sticky -->
-            <div class="my-1 leading-normal text-xs tracking-tighter sticky text-right top-5">
-                <div class="border-b px-4 pb-4">
-                    <div class="font-bold mb-0.5">Fragment</div>
+            <div class="my-1 leading-normal text-proseBody text-xs tracking-tighter sticky text-right top-5 dark:text-proseInvertBody">
+                <div class="border-b px-4 pb-4 dark:border-slate-700">
+                    <div class="font-bold mb-0.5 text-proseLinks dark:text-proseInvertLinks">Fragment</div>
                     <div>
                         <a href="/fragments/{{.Fragment.Slug}}">
                             <span class="mx-0.5 opacity-60">🔗</span> {{.Fragment.Title}}
@@ -41,25 +41,25 @@
                     </div>
                 </div>
 
-                <div class="border-b px-4 py-4">
-                    <div class="font-bold mb-0.5">Published</div>
+                <div class="border-b px-4 py-4 dark:border-slate-700">
+                    <div class="font-bold mb-0.5 text-proseLinks dark:text-proseInvertLinks">Published</div>
                     <div class="font-normal">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
                 </div>
 
-                <div class="italic px-4 py-4">
-                    I'm on X/Twitter at <a href="https://twitter.com/brandur" class="font-bold">@brandur</a>.
+                <div class="italic px-4 py-4 dark:border-slate-700">
+                    I'm on X/Twitter at <a href="https://twitter.com/brandur" class="font-bold text-proseLinks dark:text-proseInvertLinks">@brandur</a>.
                 </div>
             </div>
         </div>
 
         <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Fragment.PublishedAt "Jan 2, 2006"}}</div>
 
-        <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8">
+        <div class="pb-8 dark:border-slate-700 md:border-l md:flex-grow md:min-w-0 md:pl-8">
             <div class="hyphens-auto
                 max-w-none
-                prose prose-md
+                prose prose-md dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
-                prose-blockquote:font-normal prose-blockquote:text-slate-700
+                prose-blockquote:font-normal prose-blockquote:text-slate-800 dark:prose-blockquote:text-slate-300
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
                 prose-img:w-full
@@ -67,7 +67,7 @@
                 prose-h2:text-sm prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
                 prose-h3:text-xs prose-h3:mb-1 prose-a:prose-h3:border-b-0 prose-a:prose-h3:font-bold
                 prose-h4:text-xs prose-h4:mb-1 prose-a:prose-h4:border-b-0 prose-a:prose-h4:font-bold
-                prose-hr:my-10 prose-hr:md:-mx-[2rem] prose-hr:md:w-[calc(100%+4rem)]
+                prose-hr:my-10 prose-hr:md:-mx-[2rem] prose-hr:md:w-[calc(100%+4rem)] dark:prose-hr:text-slate-700
                 prose-p:font-serif
                 prose-p:prose-blockquote:font-sans
                 prose-pre:leading-[1.1rem] prose-pre:text-[0.8rem]
@@ -82,11 +82,11 @@
 </div>
 
 {{if .Fragment.Footnotes}}
-<div class="border-t p-8 w-vp">
+<div class="border-t p-8 w-vp dark:border-slate-700">
     <div class="container max-w-[550px] mx-auto">
         <div class="hyphens-auto
                 max-w-none
-                prose prose-sm
+                prose prose-sm dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
@@ -99,10 +99,10 @@
 </div>
 {{end}}
 
-<div class="border-t pb-20 p-8 w-vp">
+<div class="border-t pb-20 p-8 w-vp dark:border-slate-700">
     <div class="container max-w-[550px] mx-auto">
         <div class="italic max-w-none
-            prose prose-sm
+            prose prose-sm dark:prose-invert
             prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-b-slate-200
             prose-p:font-serif
