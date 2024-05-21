@@ -4,14 +4,14 @@
 
 <div class="mb-12 mt-0 px-4 md:mb-24 md:mt-16">
     <div class="container max-w-[950px] mx-auto">
-        <h1 class="text-slate-800 font-semibold font-sans leading-none my-8 text-center text-6xl tracking-tighter md:font-normal md:text-8xl">
+        <h1 class="font-semibold font-sans leading-none my-8 text-center text-6xl text-proseLinks tracking-tighter dark:text-proseInvertLinks md:font-normal md:text-8xl">
             {{.Article.Title}}
         </h1>
     </div>
 
     {{if ne .Article.Hook "UNWRITTEN. This should not appear on the front page."}}
     <!-- <div class="container max-w-[625px] mx-auto
-                prose prose-md
+                prose prose-md dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-slate-200
                 text-center">
@@ -31,9 +31,9 @@
 <div class="container max-w-[900px] mx-auto mt-8 px-4 xl:max-w-[1125px]">
     <div class="md:flex">
         <div class="basis-[170px] flex-grow-0 flex-shrink-0 hidden md:block"> <!-- needed for sticky -->
-            <div class="leading-normal text-xs tracking-tighter sticky text-center top-5">
-                <div class="border-b px-4 pb-4">
-                    <div class="font-bold mb-0.5">Article</div>
+            <div class="leading-normal text-xs tracking-tighter sticky text-center text-proseBody top-5 dark:text-proseInvertBody">
+                <div class="border-b px-4 pb-4 dark:border-slate-700">
+                    <div class="font-bold mb-0.5 text-proseLinks dark:text-proseInvertLinks">Article</div>
                     <div>
                         <a href="/{{.Article.Slug}}">
                             {{.Article.Title}} <span class="mx-0.5 opacity-60">🔗</span>
@@ -50,11 +50,11 @@
                     the right, it centers itself, and its border is only partial
                     height.
                 -->
-                <div class="border-b flex items-stretch text-center">
-                    <div class="border-r flex-grow">
+                <div class="border-b flex items-stretch text-center dark:border-slate-700">
+                    <div class="border-r flex-grow dark:border-slate-700">
                         <div class="flex h-full items-center">
                             <div class="px-4 py-4">
-                                <div class="font-bold mb-0.5">Published</div>
+                                <div class="font-bold mb-0.5 text-proseLinks dark:text-proseInvertLinks">Published</div>
                                 <div class="leading-tight">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                     <div class="flex-grow h-full min-w-0">
                         <div class="flex items-center">
                             <div class="px-4 py-4">
-                                <div class="font-bold mb-0.5">Location</div>
+                                <div class="font-bold mb-0.5 text-proseLinks dark:text-proseInvertLinks">Location</div>
                                 <div class="leading-tight">{{.Article.Location}}</div>
                             </div>
                         </div>
@@ -70,20 +70,20 @@
                 </div>
 
                 {{if .Article.HNLink}}
-                    <div class="border-b px-4 py-4">
-                        See comments and reaction <strong><a href="{{.Article.HNLink}}">on Hacker News</a></strong>.
+                    <div class="border-b px-4 py-4 dark:border-slate-700">
+                        See comments and reaction <strong><a href="{{.Article.HNLink}}" class="text-proseLinks dark:text-proseInvertLinks">on Hacker News</a></strong>.
                     </div>
                 {{end}}
 
                 <div class="italic px-4 py-4">
-                    I'm on X/Twitter at <a href="https://twitter.com/brandur" class="font-bold">@brandur</a>.
+                    I'm on X/Twitter at <a href="https://twitter.com/brandur" class="font-bold text-proseLinks dark:text-proseInvertLinks">@brandur</a>.
                 </div>
             </div>
         </div>
 
         <div class="font-bold my-1 text-sm md:hidden">{{FormatTime .Article.PublishedAt "Jan 2, 2006"}}</div>
 
-        <div class="pb-8 md:border-l md:flex-grow md:min-w-0 md:pl-8 xl:pr-8">
+        <div class="pb-8 md:border-l md:flex-grow md:min-w-0 dark:border-slate-700 md:pl-8 xl:pr-8">
             {{if ne .Article.TOC ""}}
                 <!--
                     IMPORTANT: The TOC is duplicated below so that it can be part of
@@ -91,7 +91,7 @@
                     ones. Make changes in both places.
                 -->
                 <div class="
-                    border-b border-l
+                    border-b border-l dark:border-slate-700
                     hidden md:block xl:hidden
                     float-right
                     max-w-[190px]
@@ -101,7 +101,7 @@
                     pl-3
                     pb-5
                     pt-3
-                    prose prose-sm
+                    prose prose-sm dark:prose-invert
                     prose-li:my-2
 
                     prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
@@ -118,9 +118,9 @@
 
             <div class="hyphens-auto
                 max-w-none
-                prose prose-lg
+                prose prose-lg dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
-                prose-blockquote:font-normal prose-blockquote:text-slate-700
+                prose-blockquote:font-normal prose-blockquote:text-slate-800 dark:prose-blockquote:text-slate-300
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
                 prose-img:w-full
@@ -128,11 +128,11 @@
                 prose-h2:text-base prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
                 prose-h3:text-sm prose-h3:mb-1 prose-a:prose-h3:border-b-0 prose-a:prose-h3:font-bold
                 prose-h4:text-sm prose-h4:mb-1 prose-a:prose-h4:border-b-0 prose-a:prose-h4:font-bold
-                prose-hr:my-10 prose-hr:md:-mx-[2rem] prose-hr:md:w-[calc(100%+4rem)]
+                prose-hr:my-10 prose-hr:md:-mx-[2rem] prose-hr:md:w-[calc(100%+4rem)] dark:prose-hr:border-slate-700
                 prose-p:font-serif
                 prose-p:prose-blockquote:font-sans
                 prose-pre:leading-[1.15rem] prose-pre:text-[0.9rem]
-                prose-strong:font-sans
+                prose-strong:font-sans dark:prose-strong:text-slate-100
                 prose-ol:font-serif
                 prose-ul:font-serif
                 ">
@@ -141,7 +141,7 @@
             </div>
         </div>
         {{if ne .Article.TOC ""}}
-            <div class="basis-[190px] border-l flex-grow-0 flex-shrink-0 hidden xl:block">
+            <div class="basis-[190px] border-l flex-grow-0 flex-shrink-0 hidden dark:border-slate-700 xl:block">
                 <!--
                     IMPORTANT: The TOC is duplicated above so that it can be part of
                     the flexbox at large sizes, but inlined at contents at smaller
@@ -151,7 +151,7 @@
                     mb-3
                     pl-3
                     pb-5
-                    prose prose-sm
+                    prose prose-sm dark:prose-invert
                     prose-li:my-2
 
                     prose-ol:prose-li:list-[lower-alpha] prose-ol:prose-li:my-2
@@ -171,11 +171,11 @@
 </div>
 
 {{if .Article.Footnotes}}
-<div class="border-t p-8 w-vp">
+<div class="border-t p-8 w-vp dark:border-slate-700">
     <div class="container max-w-[650px] mx-auto">
         <div class="hyphens-auto
                 max-w-none
-                prose prose-sm
+                prose prose-sm dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
@@ -189,11 +189,11 @@
 {{end}}
 
 {{if .Article.Attributions}}
-<div class="border-t p-8 w-vp">
+<div class="border-t p-8 w-vp dark:border-slate-700">
     <div class="container max-w-[650px] mx-auto">
         <div class="hyphens-auto
                 max-w-none
-                prose prose-sm
+                prose prose-sm dark:prose-invert
                 prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
                 hover:prose-a:border-b-slate-200
                 prose-code:prose-a:text-sm prose-code:prose-p:text-sm
@@ -208,12 +208,12 @@
 </div>
 {{end}}
 
-<div class="border-t pb-20 p-8 w-vp">
+<div class="border-t pb-20 p-8 w-vp dark:border-slate-700">
     <div class="container max-w-[550px] mx-auto">
         <div class="hyphens-auto
             italic
             max-w-none
-            prose prose-sm
+            prose prose-sm dark:prose-invert
             prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-b-slate-200
             prose-p:font-serif

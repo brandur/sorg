@@ -1,0 +1,45 @@
+<!--
+    Based originally on: https://codepen.io/colinaut/pen/dyNpdOV
+-->
+<div class="relative theme_toggle">
+    <!-- Gets a Z-index so it's on top of the slider track, which makes the slider track clickable. -->
+    <div class="relative flex items-center h-4 z-10">
+        <label class="w-16 h-6 pr-4 relative flex items-center justify-end">
+            <input value="light" name="theme_toggle_state" type="radio" class="opacity-0 absolute block w-full h-full inset-0 cursor-pointer" />
+            <span class="transition-opacity opacity-50 cursor-pointer">
+                <!-- Light 🌙 🌕 -->
+                <span class="h-4 w-4 block">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#a)" fill="#000000">
+                            <path d="M12 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1ZM4.929 3.515a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 0 0 1.414-1.414L4.93 3.515ZM1 11a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2H1ZM18 12a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1ZM17.657 16.243a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 1 0 1.414-1.414l-2.828-2.828ZM7.757 17.657a1 1 0 1 0-1.414-1.414L3.515 19.07a1 1 0 1 0 1.414 1.414l2.828-2.828ZM20.485 4.929a1 1 0 0 0-1.414-1.414l-2.828 2.828a1 1 0 1 0 1.414 1.414l2.828-2.828ZM13 19a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0v-4ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/>
+                        </g>
+                        <defs>
+                            <clipPath id="a">
+                                <path fill="#ffffff" d="M0 0h24v24H0z"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </span>
+            </span>
+        </label>
+        <label class="w-6 h-6 relative">
+            <input value="auto" name="theme_toggle_state" type="radio" checked class="opacity-0 absolute block w-full h-full inset-0 cursor-pointer" />
+            <span class="absolute hidden text-[0.5rem] text-proseBody font-bold tracking-tighter -top-2.5 left-1/2 transform -translate-x-1/2 opacity-50 transition-opacity cursor-pointer uppercase dark:text-proseInvertBody md:block">Auto</span>
+        </label>
+        <label class="w-16 h-6 pl-4 relative flex items-center">
+            <input value="dark" name="theme_toggle_state" type="radio" class="opacity-0 absolute block w-full h-full inset-0 cursor-pointer" />
+            <span class="font-bold opacity-50 transition-opacity cursor-pointer">
+                <span class="h-4 w-4 block">
+                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.719 1.8A8.759 8.759 0 1 1 1.8 13.719c3.335 1.867 7.633 1.387 10.469-1.449 2.837-2.837 3.318-7.134 1.45-10.47z"/>
+                    </svg>
+                </span>
+                <!-- 🌑 ☼ Dark -->
+            </span>
+        </label>
+    </div>
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2">
+        <div class="track w-12 h-4 bg-white border border-slate-200 rounded-lg shadow-inner dark:bg-[#2e3440] dark:border-slate-700"></div>
+        <div class="track_dot bg-[#f3f2e6] border-slate-300 transition-all duration-300 ease-in-out absolute top-0 left-4 w-4 h-4 border rounded-lg dark:bg-proseInvertBody dark:border-black"></div>
+    </div>
+</div>

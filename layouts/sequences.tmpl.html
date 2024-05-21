@@ -9,14 +9,14 @@
 <link href="/assets/{{.Release}}/stylesheets/simpleLightbox.css" media="screen" rel="stylesheet" type="text/css">
 {{- end -}}
 
-{{- define "body_style" -}}bg-black{{- end -}}
+{{- define "body_style" -}}bg-white dark:bg-black{{- end -}}
 
 {{- define "content" -}}
-<div class="nav_invert text-white">
+<div>
     {{- template "views/_nav.tmpl.html" . -}}
 </div>
 
-<div class="bg-black text-white">
+<div class="">
     {{block "sequences_content" .}}{{end}}
 </div>
 {{- end -}}

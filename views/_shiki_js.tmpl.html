@@ -48,7 +48,10 @@ await Promise.all(Array.from(document.querySelectorAll('pre code')).map((codeBlo
         codeBlock.parentElement.outerHTML = 
             await codeToHtml(code, {
                 lang: language,
-                theme: 'rose-pine'
+                themes: {
+                    dark: 'nord',
+                    light: 'rose-pine'
+                }
             })
     })()
 }))

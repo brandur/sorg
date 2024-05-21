@@ -3,12 +3,12 @@
 {{- define "atoms_content" -}}
 
 <div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
-    <h1 class="text-slate-800 font-normal font-serif my-8 text-center text-8xl tracking-tighter">
+    <h1 class="font-normal font-serif my-8 text-center text-8xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
         Fragments
     </h1>
 
     <div class="container max-w-[625px] mx-auto
-            prose prose-lg
+            prose prose-lg dark:prose-invert
             prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-slate-200
             prose-p:text-center prose-p:italic
@@ -23,7 +23,7 @@
 <div class="container max-w-[750px] mx-auto mt-8 px-8">
     <div class="md:flex">
         <div> <!-- needed for sticky -->
-            <div class="font-mono my-1 leading-normal text-sm tracking-tighter md:sticky md:text-right md:top-5">
+            <div class="font-mono my-1 leading-normal text-sm text-proseLinks tracking-tighter dark:text-proseInvertLinks md:sticky md:text-right md:top-5">
                 <div class="hidden md:block md:pr-6">
                     <ul>
                     {{range .FragmentsByYear}}
@@ -35,14 +35,14 @@
                 </div>
             </div>
         </div>
-        <div class="pb-8 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-6">
+        <div class="pb-8 dark:border-slate-700 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-6">
             {{range .FragmentsByYear}}
-                <h2 id="year_{{.Year}}" class="font-bold text-sm tracking-tighter">{{.Year}}</h2>
+                <h2 id="year_{{.Year}}" class="font-bold text-sm text-proseLinks tracking-tighter dark:text-proseInvertLinks">{{.Year}}</h2>
 
                 <ul class="mb-8">
                     {{- range .Fragments -}}
                     <li class="my-1.5 text-md">
-                        <a href="/fragments/{{.Slug}}" class="border-b-[1px] border-b-slate-200 hover:border-b-black">{{.Title}}</a>
+                        <a href="/fragments/{{.Slug}}" class="border-b-[1px] border-b-slate-200 text-proseLinks dark:border-b-slate-700 dark:text-proseInvertLinks hover:border-b-black dark:hover:border-b-proseInvertLinks">{{.Title}}</a>
                         <span class="italic text-slate-500 text-[0.65rem]">{{FormatTime .PublishedAt "Jan 2, 2006"}}</span>
                     </li>
                     {{- end -}}

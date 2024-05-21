@@ -38,8 +38,9 @@
 <body class="antialiased {{block "body_style" .}}{{end}}">
     {{block "content" .}}{{end}}
 
-    {{template "views/_analytics.tmpl.html" .}}
-    {{template "views/_shiki.tmpl.html" .}}
+    {{template "views/_analytics_js.tmpl.html" .}}
+    {{template "views/_dark_mode_js.tmpl.html" .}}
+    {{template "views/_shiki_js.tmpl.html" .}}
 </body>
 
 </html>

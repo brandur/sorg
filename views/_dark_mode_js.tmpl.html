@@ -1,0 +1,89 @@
+<script>
+
+/**
+ * Implements a tri-state theme switch (i.e. light/dark mode) allowing an
+ * explicit setting of one or the other, or inheriting the operating system's
+ * default and styling accordingly.
+ * 
+ * The reason this is in a template file as opposed to a separate JavaScript is
+ * so that it's parsed inline with the HTML body and given a chance to run
+ * before the page is rendered, thereby avoiding the common pitfall of briefly
+ * "flashing" the wrong theme when the page initially loads. Under this
+ * framework, there's one initial call to `setThemeFromLocalStorage()` inline,
+ * so the theme always appears correct on first render.
+ */
+
+const LOCAL_STORAGE_KEY_THEME = 'theme';
+
+function activateDocumentClassesOnly(...classes) {
+    ['light', 'light_override', 'dark', 'dark_override'].forEach((deactivateClass) => {
+        if (classes.includes(deactivateClass)) {
+            return
+        }
+        document.documentElement.classList.remove(deactivateClass)
+    })
+    classes.forEach((activateClass) => {
+        document.documentElement.classList.add(activateClass)
+    })
+}
+
+function setThemeFromLocalStorageOrMediaPreference() {
+    const theme = localStorage.getItem(LOCAL_STORAGE_KEY_THEME)
+
+    if (!theme || theme === 'auto') {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            activateDocumentClassesOnly('dark')
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            activateDocumentClassesOnly('light')
+        }
+    } else if (theme === 'dark') {
+        activateDocumentClassesOnly('dark', 'dark_override')
+    } else if (theme === 'light') {
+        activateDocumentClassesOnly('light', 'light_override')
+    }
+
+    if (theme) {
+        document.querySelectorAll(`.theme_toggle input[value='${theme}']`).forEach(function(toggle) {
+            toggle.checked = true;
+        })
+    }
+}
+
+// See comment above, but this call must be made inline to avoid briefly
+// flashing the wrong theme on initial page load.
+setThemeFromLocalStorageOrMediaPreference()
+
+// Runs on initial page load. Add change listeners to light/dark toggles that
+// set a local storage key and trigger a theme change.
+window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.theme_toggle input').forEach((toggle) => {
+        toggle.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                if (e.target.value == 'auto') {
+                    localStorage.removeItem(LOCAL_STORAGE_KEY_THEME)
+                } else {
+                    localStorage.setItem(LOCAL_STORAGE_KEY_THEME, e.target.value)
+                }
+            }
+
+            setThemeFromLocalStorageOrMediaPreference()
+        }, false)
+    })
+})
+
+// Listen for local storage changes on our theme key. This allows one tab to be
+// notified if the theme is changed in another and update itself accordingly.
+window.addEventListener("storage", (e) => {
+    if (e.key == LOCAL_STORAGE_KEY_THEME) {
+        setThemeFromLocalStorageOrMediaPreference()
+    }
+})
+
+// Watch for OS-level changes in preference for light/dark mode. This will
+// trigger for example if a user explicitly changes their OS-level light/dark
+// configuration, or on sunrise/sunset if they have it set to automatic.
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    setThemeFromLocalStorageOrMediaPreference()
+})
+
+</script>

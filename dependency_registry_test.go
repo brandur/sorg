@@ -18,8 +18,9 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 		require.Equal(t, []string{
 			"layouts/pages/main.tmpl.html",
 			"views/_twitter.tmpl.html",
-			"views/_analytics.tmpl.html",
-			"views/_shiki.tmpl.html",
+			"views/_analytics_js.tmpl.html",
+			"views/_dark_mode_js.tmpl.html",
+			"views/_shiki_js.tmpl.html",
 		}, dependencies)
 	}
 
@@ -30,8 +31,9 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"layouts/pages/belize.tmpl.html",
 			"layouts/pages/main.tmpl.html",
 			"views/_twitter.tmpl.html",
-			"views/_analytics.tmpl.html",
-			"views/_shiki.tmpl.html",
+			"views/_analytics_js.tmpl.html",
+			"views/_dark_mode_js.tmpl.html",
+			"views/_shiki_js.tmpl.html",
 		}, dependencies)
 	}
 
@@ -43,8 +45,9 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"layouts/pages/belize.tmpl.html",
 			"layouts/pages/main.tmpl.html",
 			"views/_twitter.tmpl.html",
-			"views/_analytics.tmpl.html",
-			"views/_shiki.tmpl.html",
+			"views/_analytics_js.tmpl.html",
+			"views/_dark_mode_js.tmpl.html",
+			"views/_shiki_js.tmpl.html",
 		}, dependencies)
 	}
 }

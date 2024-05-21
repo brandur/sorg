@@ -7,6 +7,8 @@ The John Muir Trail{{.TitleSuffix}}
 {{- define "stylesheets" -}}
 {{- end -}}
 
+{{- define "body_style" -}}bg-white dark:bg-black{{- end -}}
+
 {{- define "content" -}}
 <div>
     {{- template "views/_nav.tmpl.html" . -}}
@@ -14,14 +16,14 @@ The John Muir Trail{{.TitleSuffix}}
 
 <div class="my-16">
     <div class="mx-auto prose prose-lg">
-        <h1 class="text-center text-base">The John Muir Trail</h1>
+        <h1 class="text-center text-base text-proseLinks dark:text-proseInvertLinks">The John Muir Trail</h1>
     </div>
 
     <div class="mx-auto
             p-12
-            prose prose-lg
+            prose prose-lg dark:prose-invert
             prose-a:no-underline
-            prose-hr:mx-auto prose-hr:w-3/4
+            prose-hr:mx-auto prose-hr:w-3/4 dark:prose-hr:border-slate-700
             prose-p:font-normal prose-p:hyphens-auto prose-p:leading-normal
             ">
         {{IncludeMarkdown .Ctx "content/markdown/john-muir-trail/intro.md"}}
@@ -29,13 +31,13 @@ The John Muir Trail{{.TitleSuffix}}
 
     <div class="mx-auto
             p-12
-            prose prose-md
+            prose prose-md dark:prose-invert
             prose-a:no-underline
             prose-figure:-mx-[100px] prose-figure:my-6 prose-figure:w-[calc(100%+200px)]
             prose-figure:lg:-mx-[250px] prose-figure:lg:my-16 prose-figure:lg:w-[calc(100%+500px)]
             prose-figure:xl:-mx-[400px] prose-figure:xl:my-16 prose-figure:xl:w-[calc(100%+800px)]
             prose-h2:text-sm prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
-            prose-hr:mx-auto prose-hr:w-3/4
+            prose-hr:mx-auto prose-hr:w-3/4 dark:prose-hr:border-slate-700
             prose-img:w-full
             prose-p:font-normal prose-p:hyphens-auto prose-p:leading-normal
             ">
