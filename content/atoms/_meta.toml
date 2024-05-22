@@ -11,6 +11,32 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-22T13:50:01+02:00
+  description = """\
+From [Notes on Japan](https://alexanderweichart.de/5_Archive/1.-Projects/Notes/Notes-on-Japan), I found this last point was quite funny:
+
+> visiting Japan feels like visiting the 2000s
+>
+> * CD shops everywhere
+>
+> * malls are thriving
+>
+> * people use fat laptops
+
+You'd have to pry by MacBook from my cold, dead hands, but I dearly miss the greater variety of hardware and form factors that we used to see twenty years ago. Like, I acknowledge that something like the Sony VAIO P (depicted below) probably has ergonomics on par with writing _War and Peace_ via [T9 text entry](https://en.wikipedia.org/wiki/T9_(predictive_text\\)), but I still wish I'd owned one.
+
+Japan seems to be one of the last places left where a market for weird consumer electronics still exists. A few weeks ago I admired a Japanese guy on BART's incredible e-reader that was fully customized to the use of Japan's vertical alphabets. Another guy on the 37 Corbett uses what must've been the only netbook left in San Francisco.
+
+If you're at a typical WeWork nowadays, there's no easy way to tell that you didn't accidentally walk into an Apple Store instead. The technology is beautiful -- perfect geometry, flawless glass, and polished aluminum -- but sterile. I'm glad there's somewhere out there where weird, novel devices are still going strong.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/8halw3pp85ofelmytbu8a/vaio1.jpg?rlkey=laf0u6r99eb9bssta42s6u6tf&st=v1jr55nu&dl=1"
+    slug = "vaio1"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/zaim0h42whv3mycecsoq2/vaio2.jpg?rlkey=d8umis6l841r0rg6cv3w4bhfg&st=lvsnco5s&dl=1"
+    slug = "vaio2"
+
+[[atoms]]
   published_at = 2024-05-21T16:46:51+02:00
   description = """\
 I [implemented dark mode](https://github.com/brandur/sorg/pull/362) for this website, which you should be able to enable using the toggle in the upper right. I figure that if even Google search can do it given what's sure to be millions of lines worth of legacy code, then I should be able to as well.
