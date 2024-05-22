@@ -30,11 +30,11 @@ a.feed_icon::after {
     width: 80%;
 }
 
-.dark .nav_item:hover:after {
+html.dark .nav_item:hover:after {
     background: #e2e8f0;
 }
 
-.dark img[src$=".svg"], .dark svg {
+html.dark img[src$=".svg"], .dark svg {
     filter: invert(80%);
 }
 
@@ -42,11 +42,11 @@ a.feed_icon::after {
     opacity: 1;
 }
 
-.dark_override .theme_toggle .track_dot {
+html.dark_override .theme_toggle .track_dot {
     left: 2rem;
 }
 
-.light_override .theme_toggle .track_dot {
+html.light_override .theme_toggle .track_dot {
     left: 0;
 }
 
