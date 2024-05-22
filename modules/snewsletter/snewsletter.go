@@ -10,6 +10,7 @@ import (
 
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mmarkdownext"
+	"github.com/brandur/modulir/modules/mtemplate"
 	"github.com/brandur/modulir/modules/mtoml"
 	"github.com/brandur/sorg/modules/scommon"
 )
@@ -33,6 +34,9 @@ type Issue struct {
 
 	// Draft indicates that the issue is not yet published.
 	Draft bool `toml:"-"`
+
+	// Hook is a leading sentence or two to succinctly introduce the issue.
+	Hook template.HTML `toml:"hook"`
 
 	// HookImageURL is the URL for a hook image for the issue (to be shown on
 	// the newsletter index) if one was found. Should generally be the same
@@ -111,6 +115,15 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 	issue.ContentRaw = string(data)
 	issue.Draft = scommon.IsDraft(name)
 	issue.Slug = scommon.ExtractSlug(name)
+
+	if issue.Hook != "" {
+		hook, err := mmarkdownext.Render(string(issue.Hook), nil)
+		if err != nil {
+			return nil, err
+		}
+
+		issue.Hook = template.HTML(mtemplate.CollapseParagraphs(hook))
+	}
 
 	slugParts := strings.Split(issue.Slug, "-")
 	if len(slugParts) < 2 {

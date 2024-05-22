@@ -829,8 +829,8 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("home", func() (bool, error) {
-			return renderHome(c, articles, fragments, photos,
-				articlesChanged, fragmentsChanged, photosChanged)
+			return renderHome(ctx, c, articles, fragments, nanoglyphs, photos, sequences,
+				articlesChanged, fragmentsChanged, nanoglyphsChanged, photosChanged, sequenceChanged)
 		})
 	}
 
@@ -2562,18 +2562,13 @@ func renderPassagesIndex(ctx context.Context, c *modulir.Context, issues []*snew
 		path.Join(c.TargetDir, "passages/index.html"), locals)
 }
 
-func renderHome(c *modulir.Context,
-	articles []*Article, fragments []*Fragment, photos []*Photo,
-	articlesChanged, fragmentsChanged, photosChanged bool,
+func renderHome(ctx context.Context, c *modulir.Context,
+	articles []*Article, fragments []*Fragment, nanoglyphs []*snewsletter.Issue, photos []*Photo, sequences []*SequenceEntry,
+	articlesChanged, fragmentsChanged, nanoglyphsChanged, photosChanged, sequencesChanged bool,
 ) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/index.ace",
-		},
-		universalSources...,
-	)...)
-	if !articlesChanged && !fragmentsChanged && !photosChanged && !viewsChanged {
+	sourceTmpl := scommon.ViewsDir + "/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(sourceTmpl)...)
+	if !articlesChanged && !fragmentsChanged && !nanoglyphsChanged && !photosChanged && !sequencesChanged && !viewsChanged {
 		return false, nil
 	}
 
@@ -2581,23 +2576,32 @@ func renderHome(c *modulir.Context,
 		articles = articles[0:3]
 	}
 
-	// Try just one fragment for now to better balance the page's height.
-	if len(fragments) > 1 {
-		fragments = fragments[0:1]
+	if len(fragments) > 3 {
+		fragments = fragments[0:3]
+	}
+
+	if len(nanoglyphs) > 3 {
+		nanoglyphs = nanoglyphs[0:3]
 	}
 
 	// Find a random photo to put on the homepage.
 	photo := selectRandomPhoto(photos)
 
+	if len(sequences) > 3 {
+		sequences = sequences[0:3]
+	}
+
 	locals := getLocals("", map[string]interface{}{
-		"Articles":  articles,
-		"BodyClass": "index",
-		"Fragments": fragments,
-		"Photo":     photo,
+		"Articles":   articles,
+		"BodyClass":  "index",
+		"Fragments":  fragments,
+		"Nanoglyphs": nanoglyphs,
+		"Photo":      photo,
+		"Sequences":  sequences,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/index.ace",
-		c.TargetDir+"/index.html", getAceOptions(viewsChanged), locals)
+	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl,
+		path.Join(c.TargetDir, "index.html"), locals)
 }
 
 func renderPage(ctx context.Context, c *modulir.Context,

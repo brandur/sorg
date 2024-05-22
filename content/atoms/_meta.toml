@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-23T10:39:12+02:00
+  description = """\
+I rebuilt this [site's index page](/) so it's on the newer template system and can take advantage of dark mode. It's not amazing, but I didn't want to agonize over it for too long since likely few people will ever go there, so I just threw something together and published it.
+"""
+
+[[atoms]]
   published_at = 2024-05-22T13:50:01+02:00
   description = """\
 From [Notes on Japan](https://alexanderweichart.de/5_Archive/1.-Projects/Notes/Notes-on-Japan), I found this last point was quite funny:

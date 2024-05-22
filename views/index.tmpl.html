@@ -1,0 +1,98 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "title" -}}Home{{.TitleSuffix}}{{- end -}}
+
+{{- define "atoms_content" -}}
+
+<div class="">
+    <div class="border-b px-12 py-20 dark:border-slate-700">
+        <div class="container mx-auto
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[2px] prose-a:border-slate-500 prose-a:font-bold prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200
+            ">
+            <p class="font-semibold italic max-w-[625px] mx-auto text-center">I'm <a href="https://twitter.com/brandur" rel="me">@brandur</a>, an occasional writer, and platform engineer on Crunchy Bridge. Previously, Stripe and Heroku.</p>
+            <p class="font-medium leading-relaxed text-[1rem]">This site is where I publish words and photos. The section that's most updated most often is <a href="/atoms">atoms</a>, small multimedia particles reminiscent of a Twitter feed. I update my <a href="/now">now page</a> monthly according to what I'm working on and thinking about. I <a href="/newsletter">publish a newsletter</a> as often as I can.</p>
+        </div>
+    </div>
+
+    <div class="border-b px-12 py-20 dark:border-slate-700 md:px-20 lg:px-28">
+        <div class="hyphens-auto max-w-none
+            prose prose-md dark:prose-invert
+            prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:leading-tight prose-a:no-underline prose-a:text-[0.92rem]
+            hover:prose-a:border-b-slate-200
+            prose-li:my-[1.2em] prose-li:pl-0.5
+            prose-strong:font-sans
+            prose-ul:font-serif prose-ul:leading-normal prose-ul:pl-5
+            ">
+            <div class="flex flex-col gap-4 justify-center md:flex-row md:gap-10 lg:gap-16">
+                <div class="flex-1 flex-grow pb-12 md:pb-0 lg:max-w-[21rem]">
+                    <p class="font-serif mt-0 text-[0.9rem]">Once in a while, I write longer form <a href="/articles">articles</a> on technical subjects like APIs, Go, or Postgres:</p>
+                    <ul class="mb-0">
+                        {{range .Articles}}
+                            <li class="last:mb-0">
+                                <a href="/{{.Slug}}">{{.Title}}</a>
+                                <span class="font-sans italic pl-0.5 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
+                                <p class="font-sans mt-2 mb-0 text-[0.82rem]">{{.Hook}}</p>
+                            </li>
+                        {{end}}
+                    </ul>
+                </div>
+                <div class="flex-1 flex-grow pb-12 md:pb-0 lg:max-w-[21rem]">
+                    <p class="font-serif mt-0 text-[0.9rem]">I put short stream of consciousness thoughts into tiny posts called <a href="/fragments">fragments</a>:</p>
+                    <ul class="mb-0">
+                        {{range .Fragments}}
+                            <li class="last:mb-0">
+                                <a href="/fragments/{{.Slug}}">{{.Title}}</a>
+                                <span class="font-sans italic pl-0.5 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
+                                <p class="font-sans mt-2 mb-0 text-[0.82rem]">{{.Hook}}</p>
+                            </li>
+                        {{end}}
+                    </ul>
+                </div>
+                <div class="flex-1 flex-grow lg:max-w-[21rem]">
+                    <p class="font-serif mt-0 text-[0.9rem]">I write a newsletter about the philosophy of software called <a href="/newsletter">Nanoglyph</a>:</p>
+                    <ul class="mb-0">
+                        {{range .Nanoglyphs}}
+                            <li class="last:mb-0">
+                                <a href="/nanoglyphs/{{.Slug}}">{{.Number}} — {{.Title}}</a>
+                                <span class="font-sans italic pl-0.5 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
+                                <p class="font-sans mt-2 mb-0 text-[0.82rem]">{{.Hook}}</p>
+                            </li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-b py-20 dark:border-slate-700 md:px-12">
+        <div class="flex flex-col justify-center md:flex-row md:gap-4 lg:gap-8">
+            {{range .Sequences}}
+                <div>
+                    <a href="/sequences/{{.Slug}}">
+                        <img src="/photographs/sequences/{{(index .Photos 0).Slug}}_large{{(index .Photos 0).TargetExt}}" class="ease-in-out transition w-full md:rounded-md md:hover:scale-105 lg:rounded-lg">
+                    </a>
+                    <p class="mb-7 mt-3 text-[0.8rem] text-center md:mb-0">
+                        <a href="/sequences/{{.Slug}}">
+                            <span class="font-bold text-proseLinks dark:text-proseInvertLinks">{{.Slug}}</span><br>
+                            <span class="text-proseBody dark:text-proseInvertBody">{{.Title}}</span>
+                        </a>
+                    </p>
+                </div>
+            {{end}}
+        </div>
+    </div>
+
+    <div class="py-20 dark:border-slate-700">
+        {{if .Photo}}
+            <div class="max-w-[1200px] mx-auto">
+                <a href="/photos#{{.Photo.Slug}}">
+                    <img src="/photographs/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/{{QueryEscape .Photo.Slug}}_large.jpg 1x" class="xl:rounded-lg w-full">
+                </a>
+            </div>
+        {{end}}
+    </div>
+</div>
+
+{{- end -}}
