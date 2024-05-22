@@ -1,7 +1,7 @@
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
-            lg:mr-[calc(-75px)] lg:ml-[calc(-2rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
-            xl:mr-[calc(-150px)] xl:ml-[calc(-2rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
     <img src="/photographs/about/self-portrait-2023-03.jpg" alt=""Selfie April 2023" class="lg:rounded-lg w-full">
 </div>
