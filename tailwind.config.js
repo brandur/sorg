@@ -16,13 +16,26 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                proseBody: '#374151', // --tw-prose-body
-                proseLinks: '#111827', // --tw-prose-links
+                proseBody: '#374151',       // --tw-prose-body
+                proseLinks: '#111827',      // --tw-prose-links
                 proseInvertBody: '#d1d5db', // --tw-prose-invert-body
-                proseInvertLinks: '#fff', // --tw-prose-invert-links
-                // darkBorder: colors["border-slate-800"],
+                proseInvertLinks: '#fff',   // --tw-prose-invert-links
             },
             fontFamily: {
+            },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        blockquote: {
+                            // Disables the quotes around blockquotes that
+                            // Tailwind includes by default. They look decent,
+                            // but turn into a real mess if you do things like
+                            // cite a source (tick appears after the source's
+                            // name) or include a list.
+                            quotes: "none",
+                        },
+                    },
+                },
             },
         }
     },
