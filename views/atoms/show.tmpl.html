@@ -4,7 +4,7 @@
 
 {{- template "views/atoms/_atom.tmpl.html" (Map (MapVal "Atom" .Atom)) -}}
 
-<p class="mt-8 mb-16 text-center text-xs">
+<p class="mt-8 mb-16 text-center text-proseLinks text-xs dark:text-proseInvertLinks">
     {{- if ge .AtomIndex .IndexMax -}}
     <a href="/atoms/archive#{{.Atom.Slug}}" class="font-bold">View all atoms ⭢</a>
     {{- else -}}
