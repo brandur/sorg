@@ -15,38 +15,52 @@
 
 const LOCAL_STORAGE_KEY_THEME = 'theme';
 
+const THEME_VALUE_AUTO  = 'auto';
+const THEME_VALUE_DARK  = 'dark';
+const THEME_VALUE_LIGHT = 'light';
+
+const THEME_CLASS_DARK            = 'dark';           // activates dark mode styling
+const THEME_CLASS_DARK_OVERRIDE   = 'dark_override';  // slides toggle to dark mode
+const THEME_CLASS_LIGHT           = 'light';          // here for consistency, but has no real effect
+const THEME_CLASS_LIGHT_OVERRIDE  = 'light_override'; // slides toggle to light mode
+
+const THEME_CLASS_ALL = Object.freeze([
+    THEME_CLASS_DARK,
+    THEME_CLASS_DARK_OVERRIDE,
+    THEME_CLASS_LIGHT,
+    THEME_CLASS_LIGHT_OVERRIDE,
+])
+
 function activateDocumentClassesOnly(...classes) {
-    ['light', 'light_override', 'dark', 'dark_override'].forEach((deactivateClass) => {
-        if (classes.includes(deactivateClass)) {
-            return
+    THEME_CLASS_ALL.forEach((themeClass) => {
+        if (classes.includes(themeClass)) {
+            document.documentElement.classList.add(themeClass)
+        } else {
+            document.documentElement.classList.remove(themeClass)
         }
-        document.documentElement.classList.remove(deactivateClass)
-    })
-    classes.forEach((activateClass) => {
-        document.documentElement.classList.add(activateClass)
     })
 }
 
+// Sets light or dark mode based on a preference from local storage, or if none
+// is set there, sets based on preference from `prefers-color-scheme` CSS.
 function setThemeFromLocalStorageOrMediaPreference() {
-    const theme = localStorage.getItem(LOCAL_STORAGE_KEY_THEME)
+    const theme = localStorage.getItem(LOCAL_STORAGE_KEY_THEME) || THEME_VALUE_AUTO
 
-    if (!theme || theme === 'auto') {
+    if (theme === THEME_VALUE_AUTO) {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            activateDocumentClassesOnly('dark')
+            activateDocumentClassesOnly(THEME_CLASS_DARK)
         } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            activateDocumentClassesOnly('light')
+            activateDocumentClassesOnly(THEME_CLASS_LIGHT)
         }
-    } else if (theme === 'dark') {
-        activateDocumentClassesOnly('dark', 'dark_override')
-    } else if (theme === 'light') {
-        activateDocumentClassesOnly('light', 'light_override')
+    } else if (theme === THEME_VALUE_DARK) {
+        activateDocumentClassesOnly(THEME_CLASS_DARK, THEME_CLASS_DARK_OVERRIDE)
+    } else if (theme === THEME_VALUE_LIGHT) {
+        activateDocumentClassesOnly(THEME_CLASS_LIGHT, THEME_CLASS_LIGHT_OVERRIDE)
     }
 
-    if (theme) {
-        document.querySelectorAll(`.theme_toggle input[value='${theme}']`).forEach(function(toggle) {
-            toggle.checked = true;
-        })
-    }
+    document.querySelectorAll(`.theme_toggle input[value='${theme}']`).forEach(function(toggle) {
+        toggle.checked = true;
+    })
 }
 
 // See comment above, but this call must be made inline to avoid briefly
@@ -59,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.theme_toggle input').forEach((toggle) => {
         toggle.addEventListener('change', (e) => {
             if (e.target.checked) {
-                if (e.target.value == 'auto') {
+                if (e.target.value == THEME_VALUE_AUTO) {
                     localStorage.removeItem(LOCAL_STORAGE_KEY_THEME)
                 } else {
                     localStorage.setItem(LOCAL_STORAGE_KEY_THEME, e.target.value)
