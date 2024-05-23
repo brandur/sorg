@@ -2585,6 +2585,10 @@ video {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.last\:-mb-11:last-child {
+  margin-bottom: -2.75rem;
+}
+
 .last\:mb-0:last-child {
   margin-bottom: 0px;
 }
@@ -3141,6 +3145,10 @@ video {
 
   .md\:tracking-wider {
     letter-spacing: 0.05em;
+  }
+
+  .md\:last\:mb-0:last-child {
+    margin-bottom: 0px;
   }
 
   .md\:hover\:scale-105:hover {
