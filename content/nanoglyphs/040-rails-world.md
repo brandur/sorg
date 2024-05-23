@@ -4,7 +4,7 @@ image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/040-rails-world/expo-hall@2x.jpg"
 published_at = 2023-10-14T12:30:18-07:00
 title = "Rails World, 7.1, Amsterdam"
-hook = "Attending Rails World in Amsterdam (finally a conference to get excited about). Solid Cache and Solid Queue. CTEs in Rails 7.1.
+hook = "Attending Rails World in Amsterdam (finally a conference to get excited about). Solid Cache and Solid Queue. CTEs in Rails 7.1."
 +++
 
 Last week I traveled to Amsterdam for the first ever Rails World. It was a great event -- well-organized, great location, and interesting, passionate people in every direction. In 2023, you'd be forgiven for assuming that the world's moved on from Rails, but the framework's done an admirable job of keeping itself current, despite the quantum leaps happening in JavaScript and the browser.
