@@ -31,7 +31,7 @@ const THEME_CLASS_ALL = Object.freeze([
     THEME_CLASS_LIGHT_OVERRIDE,
 ])
 
-function activateDocumentClassesOnly(...classes) {
+function setDocumentClasses(...classes) {
     THEME_CLASS_ALL.forEach((themeClass) => {
         if (classes.includes(themeClass)) {
             document.documentElement.classList.add(themeClass)
@@ -46,16 +46,22 @@ function activateDocumentClassesOnly(...classes) {
 function setThemeFromLocalStorageOrMediaPreference() {
     const theme = localStorage.getItem(LOCAL_STORAGE_KEY_THEME) || THEME_VALUE_AUTO
 
-    if (theme === THEME_VALUE_AUTO) {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            activateDocumentClassesOnly(THEME_CLASS_DARK)
-        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            activateDocumentClassesOnly(THEME_CLASS_LIGHT)
-        }
-    } else if (theme === THEME_VALUE_DARK) {
-        activateDocumentClassesOnly(THEME_CLASS_DARK, THEME_CLASS_DARK_OVERRIDE)
-    } else if (theme === THEME_VALUE_LIGHT) {
-        activateDocumentClassesOnly(THEME_CLASS_LIGHT, THEME_CLASS_LIGHT_OVERRIDE)
+    switch (theme) {
+        case THEME_VALUE_AUTO:
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setDocumentClasses(THEME_CLASS_DARK)
+            } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                setDocumentClasses(THEME_CLASS_LIGHT)
+            }
+            break
+
+        case THEME_VALUE_DARK:
+            setDocumentClasses(THEME_CLASS_DARK, THEME_CLASS_DARK_OVERRIDE)
+            break
+
+        case THEME_VALUE_LIGHT:
+            setDocumentClasses(THEME_CLASS_LIGHT, THEME_CLASS_LIGHT_OVERRIDE)
+            break
     }
 
     document.querySelectorAll(`.theme_toggle input[value='${theme}']`).forEach(function(toggle) {

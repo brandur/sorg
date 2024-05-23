@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-23T17:27:09+02:00
+  description = """\
+Published fragment [Notes on dark mode](/fragments/dark-mode-notes), which is _not_ a dark mode tutorial, but collects a few notes on some specific refinements of a good dark mode implementation like tri-state instead of bi-state toggle, avoiding page flicker, and responding to theme changes from other tabs or the OS.
+"""
+
+[[atoms]]
   published_at = 2024-05-23T10:39:12+02:00
   description = """\
 I rebuilt this [site's index page](/) so it's on the newer template system and can take advantage of dark mode. It's not amazing, but I didn't want to agonize over it for too long since likely few people will ever go there, so I just threw something together and published it.
