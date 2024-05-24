@@ -24,6 +24,19 @@
 #     slug = "073"
 
 [[entries]]
+  published_at = 2024-05-23T22:12:46+02:00
+  slug = "080"
+  title = "Renewal"
+  description = """
+Capra Sauerteigpizzeria Leipzig, a small cafe specializing in sourdough pizza in Leipzig, popular enough amongst locals to have most of their outdoor seating filled both nights I walked by. Less than a block from Felsenkeller, an important venue for WGT.
+
+It's nice to see such viality. I navigated the area on Google Street View to look up the name of the place, and in the street view images taken less than two years ago in August 2022, the building's corner is vacant. Windows boarded up and covered in graffiti. This area's a few kilometer's outside Leipzig's city center, and yet almost as vibrant, with blocks upon blocks of busy outdoor seating running along the main street. Next door, a popular park with kids playground and of course, German-mandated outdoor ping pong table for adults.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/fmtb5q8gov67f5g2xp4fk/2W4A5428-adjusted.jpg?rlkey=bfvj2s3hewf8n1xvv04ei4jwl&st=7m2xi9el&dl=1"
+    slug = "080"
+
+[[entries]]
   published_at = 2024-05-19T15:29:32+02:00
   slug = "079"
   title = "Spring in Leipzig"

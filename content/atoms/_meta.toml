@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-23T22:12:46+02:00
+  description = """\
+Published [sequence 080](/sequences/080), renewal.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/080"
+    original_image_url = "https://www.dropbox.com/scl/fi/fmtb5q8gov67f5g2xp4fk/2W4A5428-adjusted.jpg?rlkey=bfvj2s3hewf8n1xvv04ei4jwl&st=7m2xi9el&dl=1"
+    slug = "renewal"
+
+[[atoms]]
   published_at = 2024-05-23T17:27:09+02:00
   description = """\
 Published fragment [Notes on dark mode](/fragments/dark-mode-notes), which is _not_ a dark mode tutorial, but collects a few notes on some specific refinements of a good dark mode implementation like tri-state instead of bi-state toggle, avoiding page flicker, and responding to theme changes from other tabs or the OS.
