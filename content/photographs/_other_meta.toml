@@ -123,6 +123,22 @@ slug = "fragments/heroku-two-dynos/bridge-memory"
 title = "Bridge memory usage"
 
 #
+# /fragments/icq
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/277vilqpj1c6fm4shd1cc/icq-june-26.png?rlkey=z35157dd7ro2t9l87s8dtj86u&st=vkvtwzgw&dl=1"
+slug = "fragments/icq/icq-june-26"
+title = "ICQ will stop working from June 26"
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/wftb2m1kzoj5flj1h8s8v/icq-june-26-2.png?rlkey=yl36xq8peqf3c8gwnwgdxfv8i&st=w37zdnzb&dl=1"
+slug = "fragments/icq/icq-june-26-2"
+title = "ICQ will stop working from June 26"
+
+#
 # /fragments/large-scale-ruby-refactoring
 #
 
