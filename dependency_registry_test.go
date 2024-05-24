@@ -17,6 +17,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t, []string{
 			"layouts/main.tmpl.html",
+			"views/_tailwind_stylesheets.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_dark_mode_js.tmpl.html",
 			"views/_analytics_js.tmpl.html",
@@ -30,6 +31,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 		require.Equal(t, []string{
 			"layouts/pages/belize.tmpl.html",
 			"layouts/main.tmpl.html",
+			"views/_tailwind_stylesheets.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_dark_mode_js.tmpl.html",
 			"views/_analytics_js.tmpl.html",
@@ -44,6 +46,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"pages/belize/01.tmpl.html",
 			"layouts/pages/belize.tmpl.html",
 			"layouts/main.tmpl.html",
+			"views/_tailwind_stylesheets.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_dark_mode_js.tmpl.html",
 			"views/_analytics_js.tmpl.html",
