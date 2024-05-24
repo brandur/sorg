@@ -113,16 +113,18 @@ Common convention is to use a `<script>` tag right before body close:
 
 ``` html
 <body>
-    ...
-
     <script>
         ...
 
         // script must run inline with the page being loaded
         setThemeFromLocalStorageOrMediaPreference()
     </script>
+
+    ...
 </body>
 ```
+
+(I originally had the `<script>` tag right before `</body>` close instead of at the top on `<body>` open because that's a more conventional place to put JavaScript, but found that even that was enough to produce a noticeable flicker when loading over a slower connection.)
 
 ## Theme changes in other tabs (#theme-other-tabs)
 
