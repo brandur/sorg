@@ -1,0 +1,7 @@
+{{if eq .SorgEnv "development" -}}
+<link href="/assets/{{.Release}}/stylesheets/tailwind.css" media="screen" rel="stylesheet" type="text/css">
+{{else -}}
+<link href="/assets/{{.Release}}/stylesheets/tailwind.min.css" media="screen" rel="stylesheet" type="text/css">
+{{end -}}
+
+<link href="/assets/{{.Release}}/stylesheets/tailwind_custom.css" media="screen" rel="stylesheet" type="text/css">

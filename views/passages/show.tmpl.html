@@ -2,7 +2,7 @@
 
 {{- define "content" -}}
 
-<div class="container">
+<div class="passages_section">
     <div id="header">
         <p id="issue">
             <a href="{{.URLPrefix}}/passages/{{.Issue.Slug}}">{{.Issue.Number}}</a>
@@ -15,16 +15,16 @@
 </div>
 {{if .Issue.ImageURL}}
     {{if eq .Issue.ImageOrientation "landscape"}}
-        <div class="container-highlight">
+        <div class="passages_section_highlight">
             <img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}">
         </div>
     {{else}}
-        <div class="container-highlight-portrait">
+        <div class="passages_section_highlight_portrait">
             <img src="{{.URLPrefix}}{{.Issue.ImageURL}}" alt="{{.Issue.ImageAlt}}">
         </div>
     {{end}}
 {{end}}
-<div class="container">
+<div class="passages_section">
     {{.Issue.Content}}
     <p id="signature">– Brandur</p>
     <div id="footer">

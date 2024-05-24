@@ -53,7 +53,7 @@ It might not be intuitively obvious why a job queue and its steady health were o
 
 One example of an out-of-band call were to register domains for new Heroku apps, linked back to the Heroku router. Every app creation would get a background job that'd perform:
 
-```
+``` sh
 POST https://maestro.heroku.com/domains/serene-example-4269
 ```
 

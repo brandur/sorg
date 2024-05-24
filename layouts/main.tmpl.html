@@ -15,13 +15,7 @@
     <link href="/fragments.atom" rel="alternate" title="Fragments{{.TitleSuffix}}" type="application/atom+xml">
     <link href="/sequences.atom" rel="alternate" title="Sequences{{.TitleSuffix}}" type="application/atom+xml">
 
-    {{if eq .SorgEnv "development" -}}
-    <link href="/assets/{{.Release}}/stylesheets/tailwind.css" media="screen" rel="stylesheet" type="text/css">
-    {{else -}}
-    <link href="/assets/{{.Release}}/stylesheets/tailwind.min.css" media="screen" rel="stylesheet" type="text/css">
-    {{end -}}
-
-    <link href="/assets/{{.Release}}/stylesheets/tailwind_custom.css" media="screen" rel="stylesheet" type="text/css">
+    {{template "views/_tailwind_stylesheets.tmpl.html" .}}
 
     {{block "stylesheets" .}}{{end}}
 

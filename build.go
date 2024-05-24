@@ -2350,7 +2350,7 @@ func renderNanoglyph(ctx context.Context, c *modulir.Context, source string,
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{
-		"BodyClass": "web-only", // For web-specific CSS rules
+		"BodyClass": "web_only", // For web-specific CSS rules
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -2435,7 +2435,7 @@ func renderNanoglyphsIndex(ctx context.Context, c *modulir.Context, issues []*sn
 	}
 
 	locals := getLocals("Nanoglyph"+scommon.TitleSuffix, map[string]interface{}{
-		"BodyClass": "web-only", // For web-specific CSS rules
+		"BodyClass": "web_only", // For web-specific CSS rules
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
@@ -2468,7 +2468,7 @@ func renderPassage(ctx context.Context, c *modulir.Context, source string,
 	}
 
 	locals := getLocals(issue.Title, map[string]interface{}{
-		"BodyClass": "web-only", // For web-specific CSS rules
+		"BodyClass": "web_only", // For web-specific CSS rules
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -2553,7 +2553,7 @@ func renderPassagesIndex(ctx context.Context, c *modulir.Context, issues []*snew
 	}
 
 	locals := getLocals("Passages", map[string]interface{}{
-		"BodyClass": "web-only", // For web-specific CSS rules
+		"BodyClass": "web_only", // For web-specific CSS rules
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})

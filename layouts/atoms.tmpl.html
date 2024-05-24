@@ -10,9 +10,7 @@
 min-h-screen{{- end -}}
 
 {{- define "content" -}}
-<div>
-    {{- template "views/_nav.tmpl.html" . -}}
-</div>
+{{- template "views/_nav.tmpl.html" . -}}
 
 <div class="">
     {{block "atoms_content" .}}{{end}}
