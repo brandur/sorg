@@ -37,12 +37,10 @@ const (
 	// LayoutsDir is the source directory for view layouts.
 	LayoutsDir = "./layouts"
 
-	// MainLayout is the site's main layout.
+	// MainLayout is the site's main layout in the deprecated ACE templating
+	// system. This is no longer used except in a few near retired pages like
+	// runs and Twitter.
 	MainLayout = LayoutsDir + "/main.ace"
-
-	// MainLayoutTmpl is the site's main layout in Go's native templating
-	// format.
-	MainLayoutTmpl = LayoutsDir + "/main.tmpl.html"
 
 	// NanoglyphsLayout is the layout for a Nanoglyph issue (an email
 	// newsletter).
