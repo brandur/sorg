@@ -8,7 +8,7 @@ Last week in the whacky real world sitcom that is now normal life in the 2020s, 
 
 Naturally, it drove the usual Atlantic-reading Maddow-fearing partisan crowd into a feeding frenzy, and we were treated to multiple days of wild hot takes and blustering. In one Mastodon post that made the rounds, the writer claimed with gleeful rage how Twitter was DDOSing itself, showing a web console wherein Twitter's web client, treating a rate limited request the same as any other request error, retried it many times in a row, thus the DDOS.
 
-Look, this whole escapade was stupid, and I'll be the last one to defend Elon's choices, but it's stupid enough that there's also no need to exaggerate it beyond what it is. The user called it a DDOS, but noticeably absent from their post was the suggestion that it was a _successful_ DDOS. It caused many more requests than necessary, but didn't actually cause the service to buckle, which is what any good, god-fearing DDOS is supposed to do.
+Look, this whole episode was stupid, and I'll be the last one to defend Elon's choices, but it's stupid enough that there's also no need to exaggerate it beyond what it is. The user called it a DDOS, but noticeably absent from their post was the suggestion that it was a _successful_ DDOS. It caused many more requests than necessary, but didn't actually cause the service to buckle, which is what any good, god-fearing DDOS is supposed to do.
 
 ## The 429's raison d'être (#429-raison-d-etre)
 
