@@ -28,17 +28,14 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/modulir/modules/matom"
 	"github.com/brandur/modulir/modules/mfile"
 	"github.com/brandur/modulir/modules/mimage"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mmarkdownext"
 	"github.com/brandur/modulir/modules/mtemplate"
-	"github.com/brandur/modulir/modules/mtemplatemd"
 	"github.com/brandur/modulir/modules/mtoc"
 	"github.com/brandur/modulir/modules/mtoml"
-	"github.com/brandur/sorg/modules/sassets"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/snewsletter"
 	"github.com/brandur/sorg/modules/squantified"
@@ -54,11 +51,6 @@ import (
 //
 //
 //////////////////////////////////////////////////////////////////////////////
-
-const (
-	// Special expression for viewport width that says to use the device width.
-	viewportWidthDeviceWidth = "device-width"
-)
 
 // A set of tag constants to hopefully help ensure that this set doesn't grow
 // very much.
@@ -250,14 +242,14 @@ func build(c *modulir.Context) []error {
 		commonSymlinks := [][2]string{
 			{c.SourceDir + "/content/fonts", c.TargetDir + "/assets/fonts"},
 			{c.SourceDir + "/content/images", c.TargetDir + "/assets/images"},
-			{c.SourceDir + "/content/javascripts-modular", versionedAssetsDir + "/javascripts"},
+			{c.SourceDir + "/content/javascripts", versionedAssetsDir + "/javascripts"},
 
 			// For backwards compatibility as many emails with this style of path
 			// have already gone out.
 			{c.SourceDir + "/content/images/passages", c.TargetDir + "/assets/passages"},
 
 			{c.SourceDir + "/content/photographs", c.TargetDir + "/photographs"},
-			{c.SourceDir + "/content/stylesheets-modular", versionedAssetsDir + "/stylesheets"},
+			{c.SourceDir + "/content/stylesheets", versionedAssetsDir + "/stylesheets"},
 			{c.SourceDir + "/content/videos", c.TargetDir + "/videos"},
 		}
 		for _, link := range commonSymlinks {
@@ -399,18 +391,6 @@ func build(c *modulir.Context) []error {
 					&fragments, &fragmentsChanged, &fragmentsMu)
 			})
 		}
-	}
-
-	//
-	// Javascripts
-	//
-
-	{
-		c.AddJob("javascripts", func() (bool, error) {
-			return compileJavascripts(c,
-				c.SourceDir+"/content/javascripts",
-				versionedAssetsDir+"/app.js")
-		})
 	}
 
 	//
@@ -646,18 +626,6 @@ func build(c *modulir.Context) []error {
 			sequences = sequenceWrapper.Entries
 
 			return true, nil
-		})
-	}
-
-	//
-	// Stylesheets
-	//
-
-	{
-		c.AddJob("stylesheets", func() (bool, error) {
-			return compileStylesheets(c,
-				c.SourceDir+"/content/stylesheets",
-				versionedAssetsDir+"/app.css")
 		})
 	}
 
@@ -1499,34 +1467,6 @@ func atomSlug(publishedAt time.Time) string {
 	return lexicographicBase32Encoding.EncodeToString(i.Bytes())
 }
 
-func compileJavascripts(c *modulir.Context, sourceDir, target string) (bool, error) {
-	sources, err := mfile.ReadDirCached(c, sourceDir, nil)
-	if err != nil {
-		return false, err
-	}
-
-	sourcesChanged := c.ChangedAny(sources...)
-	if !sourcesChanged {
-		return false, nil
-	}
-
-	return true, sassets.CompileJavascripts(c, sourceDir, target)
-}
-
-func compileStylesheets(c *modulir.Context, sourceDir, target string) (bool, error) {
-	sources, err := mfile.ReadDirCached(c, sourceDir, nil)
-	if err != nil {
-		return false, err
-	}
-
-	sourcesChanged := c.ChangedAny(sources...)
-	if !sourcesChanged {
-		return false, nil
-	}
-
-	return true, sassets.CompileStylesheets(c, sourceDir, target)
-}
-
 func extCanonical(originalURL string) string {
 	u, err := url.Parse(originalURL)
 	if err != nil {
@@ -1701,19 +1641,16 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 
 // Gets a map of local values for use while rendering a template and includes
 // a few "special" values that are globally relevant to all templates.
-func getLocals(title string, locals map[string]interface{}) map[string]interface{} {
+func getLocals(locals map[string]interface{}) map[string]interface{} {
 	defaults := map[string]interface{}{
-		"BodyClass":         "",
 		"EnableGoatCounter": conf.EnableGoatCounter,
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"LocalFonts":        conf.LocalFonts,
 		"Release":           Release,
 		"SorgEnv":           conf.SorgEnv,
-		"Title":             title,
 		"TitleSuffix":       scommon.TitleSuffix,
 		"TwitterCard":       nil,
 		"TwitterInfo":       scommon.TwitterInfo,
-		"ViewportWidth":     viewportWidthDeviceWidth,
 	}
 
 	for k, v := range locals {
@@ -1916,7 +1853,7 @@ func renderArticle(ctx context.Context, c *modulir.Context, source string,
 		card.ImageURL = conf.AbsoluteURL + "/assets/images/" + article.Slug + "/twitter@2x." + format
 	}
 
-	locals := getLocals(article.Title, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Article":        article,
 		"PublishingInfo": article.publishingInfo(),
 		"TwitterCard":    card,
@@ -1944,7 +1881,7 @@ func renderArticlesIndex(ctx context.Context, c *modulir.Context, articles []*Ar
 
 	articlesByYear := groupArticlesByYear(articles)
 
-	locals := getLocals("Articles"+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"ArticlesByYear": articlesByYear,
 	})
 
@@ -2029,7 +1966,7 @@ func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, a
 		return false, nil
 	}
 
-	locals := getLocals("Atoms archive"+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Atoms": atoms,
 	})
 
@@ -2068,10 +2005,11 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 		}
 	}
 
-	locals := getLocals(title+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Atom":        atom,
 		"AtomIndex":   atomIndex,
 		"IndexMax":    maxAtomsIndex,
+		"Title":       title,
 		"TwitterCard": card,
 	})
 
@@ -2113,7 +2051,7 @@ func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atom
 			break
 		}
 
-		locals := getLocals("", map[string]interface{}{
+		locals := getLocals(map[string]interface{}{
 			"Atom": atom,
 		})
 
@@ -2166,7 +2104,7 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 		atoms = atoms[0:maxAtomsIndex]
 	}
 
-	locals := getLocals("Atoms"+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Atoms":    atoms,
 		"IndexMax": maxAtomsIndex,
 	})
@@ -2237,7 +2175,7 @@ func renderFragment(ctx context.Context, c *modulir.Context, source string,
 		card.ImageURL = conf.AbsoluteURL + "/assets/images/fragments/" + fragment.Slug + "/twitter@2x." + format
 	}
 
-	locals := getLocals(fragment.Title, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Fragment":       fragment,
 		"PublishingInfo": fragment.publishingInfo(),
 		"TwitterCard":    card,
@@ -2319,7 +2257,7 @@ func renderFragmentsIndex(ctx context.Context, c *modulir.Context, fragments []*
 
 	fragmentsByYear := groupFragmentsByYear(fragments)
 
-	locals := getLocals("Fragments"+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"FragmentsByYear": fragmentsByYear,
 	})
 
@@ -2350,8 +2288,7 @@ func renderNanoglyph(ctx context.Context, c *modulir.Context, source string,
 		issue.HookImageURL = "/assets/images/nanoglyphs/" + issue.Slug + "/hook." + format
 	}
 
-	locals := getLocals(issue.Title, map[string]interface{}{
-		"BodyClass": "web_only", // For web-specific CSS rules
+	locals := getLocals(map[string]interface{}{
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -2435,8 +2372,7 @@ func renderNanoglyphsIndex(ctx context.Context, c *modulir.Context, issues []*sn
 		return false, nil
 	}
 
-	locals := getLocals("Nanoglyph"+scommon.TitleSuffix, map[string]interface{}{
-		"BodyClass": "web_only", // For web-specific CSS rules
+	locals := getLocals(map[string]interface{}{
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
@@ -2468,8 +2404,7 @@ func renderPassage(ctx context.Context, c *modulir.Context, source string,
 		issue.HookImageURL = "/assets/images/passages/" + issue.Slug + "/hook." + format
 	}
 
-	locals := getLocals(issue.Title, map[string]interface{}{
-		"BodyClass": "web_only", // For web-specific CSS rules
+	locals := getLocals(map[string]interface{}{
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -2553,8 +2488,7 @@ func renderPassagesIndex(ctx context.Context, c *modulir.Context, issues []*snew
 		return false, nil
 	}
 
-	locals := getLocals("Passages", map[string]interface{}{
-		"BodyClass": "web_only", // For web-specific CSS rules
+	locals := getLocals(map[string]interface{}{
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
@@ -2592,9 +2526,8 @@ func renderHome(ctx context.Context, c *modulir.Context,
 		sequences = sequences[0:3]
 	}
 
-	locals := getLocals("", map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Articles":   articles,
-		"BodyClass":  "index",
 		"Fragments":  fragments,
 		"Nanoglyphs": nanoglyphs,
 		"Photo":      photo,
@@ -2665,33 +2598,14 @@ func renderPage(ctx context.Context, c *modulir.Context,
 
 	pageMeta.dependencies = nil
 
-	if strings.HasSuffix(source, ".ace") {
-		ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
+	locals := getLocals(nil)
 
-		locals := getLocals("", map[string]interface{}{
-			"Ctx": ctx,
-		})
-
-		err := mace.RenderFile(c, scommon.MainLayout, source, target,
-			getAceOptions(viewsChanged), locals)
-		if err != nil {
-			return true, err
-		}
-
-		pageMeta.dependencies = includeMarkdownContainer.Dependencies
-
-		// Make sure dependencies are all watched on the filesystem.
-		c.ChangedAny(pageMeta.dependencies...)
-	} else {
-		locals := getLocals("", nil)
-
-		err := dependencies.renderGoTemplate(ctx, c, source, target, locals)
-		if err != nil {
-			return true, err
-		}
-
-		pageMeta.dependencies = dependencies.getDependencies(source)
+	err = dependencies.renderGoTemplate(ctx, c, source, target, locals)
+	if err != nil {
+		return true, err
 	}
+
+	pageMeta.dependencies = dependencies.getDependencies(source)
 
 	return true, nil
 }
@@ -2715,7 +2629,7 @@ func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
 
 	readingsByYear := groupReadingsByYear(readings)
 
-	locals := getLocals("Reading"+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"ReadingsByYear": readingsByYear,
 	})
 
@@ -2738,7 +2652,7 @@ func renderPhotoIndex(ctx context.Context, c *modulir.Context, photos []*Photo,
 		return false, nil
 	}
 
-	locals := getLocals("Photos", map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Photos": photos,
 	})
 
@@ -2798,7 +2712,7 @@ func renderRuns(ctx context.Context, c *modulir.Context) (bool, error) {
 		return false, nil
 	}
 
-	locals := getLocals("", map[string]interface{}{})
+	locals := getLocals(map[string]interface{}{})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "runs", "index.html"), locals)
 	if err != nil {
@@ -2838,7 +2752,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 			break
 		}
 
-		locals := getLocals("", map[string]interface{}{
+		locals := getLocals(map[string]interface{}{
 			"Entry": entry,
 		})
 
@@ -2895,8 +2809,9 @@ func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *Sequenc
 		}
 	}
 
-	locals := getLocals(title, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Entry":       entry,
+		"Title":       title,
 		"TwitterCard": card,
 	})
 
@@ -2917,7 +2832,7 @@ func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*Se
 		return false, nil
 	}
 
-	locals := getLocals("Sequences"+scommon.TitleSuffix, map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"Entries": entries,
 	})
 
@@ -2961,7 +2876,7 @@ func renderTwitter(ctx context.Context, c *modulir.Context, tweets []*squantifie
 		return false, xerrors.Errorf("error marshaling tweet counts: %w", err)
 	}
 
-	locals := getLocals("Twitter", map[string]interface{}{
+	locals := getLocals(map[string]interface{}{
 		"NumTweets":            len(tweetsWithoutReplies),
 		"NumTweetsWithReplies": len(tweets),
 		"TweetCountsByMonth":   template.HTML(tweetCountsByMonthData), // chart: tweets by month

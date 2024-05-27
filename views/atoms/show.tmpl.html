@@ -1,5 +1,7 @@
 {{- template "layouts/atoms.tmpl.html" . -}}
 
+{{- define "title" -}}{{.Title}}{{.TitleSuffix}}{{- end -}}
+
 {{- define "atoms_content" -}}
 
 {{- template "views/atoms/_atom.tmpl.html" (Map (MapVal "Atom" .Atom)) -}}

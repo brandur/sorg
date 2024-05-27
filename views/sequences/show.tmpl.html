@@ -1,5 +1,7 @@
 {{- template "layouts/sequences.tmpl.html" . -}}
 
+{{- define "title" -}}{{.Title}}{{.TitleSuffix}}{{- end -}}
+
 {{- define "sequences_content" -}}
 
 <p class="font-bold my-8 text-center text-proseLinks text-xs tracking-tighter uppercase dark:text-proseInvertLinks">

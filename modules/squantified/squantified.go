@@ -14,13 +14,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yosssi/ace"
-
 	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/modulir/modules/mmarkdown"
 	"github.com/brandur/modulir/modules/mtoml"
-	"github.com/brandur/sorg/modules/scommon"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -72,55 +68,6 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 	}
 
 	return tweetDB.Tweets, nil
-}
-
-// RenderRuns renders the `/runs` page by fetching and processing data.
-//
-// This traditionally used a Black Swan database for run information, but I've
-// deprecated that project, so to work again it needs to be converted over to
-// use a qself flat file containing run information, like Goodreads and Twitter
-// already do in this file.
-func RenderRuns(c *modulir.Context, viewsChanged bool,
-	getLocals func(string, map[string]interface{}) map[string]interface{},
-) error {
-	runs, err := getRunsData(c, scommon.DataDir+"/strava.toml")
-	if err != nil {
-		return err
-	}
-
-	var lastYearXDays []string
-	var lastYearYDistances []float64
-
-	var byYearXYears []string
-	var byYearYDistances []float64
-
-	// Needs to be converted to a qself flat file to work again.
-	/*
-		lastYearXDays, lastYearYDistances, err := getRunsLastYearData(db)
-		if err != nil {
-			return err
-		}
-
-		byYearXYears, byYearYDistances, err := getRunsByYearData(db)
-		if err != nil {
-			return err
-		}
-	*/
-
-	locals := getLocals("Running", map[string]interface{}{
-		"Runs": runs,
-
-		// chart: runs over last year
-		"LastYearXDays":      lastYearXDays,
-		"LastYearYDistances": lastYearYDistances,
-
-		// chart: run distance by year
-		"ByYearXYears":     byYearXYears,
-		"ByYearYDistances": byYearYDistances,
-	})
-
-	return mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/runs/index.ace",
-		c.TargetDir+"/runs/index.html", getAceOptions(viewsChanged), locals)
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -176,36 +123,6 @@ func (a *ReadingAuthor) UnmarshalText(data []byte) error {
 // ReadingDB is a database of Goodreads readings stored to a TOML file.
 type ReadingDB struct {
 	Readings []*Reading `toml:"readings"`
-}
-
-//
-// Strava
-//
-
-// Run is a run as downloaded from Strava.
-type Run struct {
-	// Distance is the distance traveled for the run in meters.
-	Distance float64
-
-	// ElevationGain is the total gain in elevation in meters.
-	ElevationGain float64
-
-	// LocationCity is the closest city to which the run occurred. It may be
-	// an empty string if Strava wasn't able to match anything.
-	LocationCity string
-
-	// MovingTime is the amount of time that the run took.
-	MovingTime time.Duration
-
-	// OccurredAt is the local time in which the run occurred. Note that we
-	// don't use UTC here so as to not make runs in other timezones look to
-	// have occurred at crazy times.
-	OccurredAt *time.Time
-}
-
-// RunDB is a database of runs stored to a TOML file.
-type RunDB struct {
-	Runs []*Run `toml:"runs"`
 }
 
 //
@@ -358,18 +275,6 @@ func combineAuthors(authors []*ReadingAuthor) string {
 	return display
 }
 
-// getAceOptions gets a good set of default options for Ace template rendering
-// for the project.
-func getAceOptions(dynamicReload bool) *ace.Options {
-	options := &ace.Options{FuncMap: scommon.HTMLTemplateFuncMap}
-
-	if dynamicReload {
-		options.DynamicReload = true
-	}
-
-	return options
-}
-
 func GetReadingsData(c *modulir.Context, target string) ([]*Reading, error) {
 	var readingDB ReadingDB
 
@@ -401,19 +306,6 @@ func GetReadingsData(c *modulir.Context, target string) ([]*Reading, error) {
 	}
 
 	return readingDB.Readings, nil
-}
-
-func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
-	var runDB RunDB
-
-	err := retryOnce(c, func() error {
-		return mtoml.ParseFile(c, target, &runDB)
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	return runDB.Runs, nil
 }
 
 type TweetMonthCount struct {

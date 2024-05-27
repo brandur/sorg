@@ -129,8 +129,8 @@ jobs:
 
       - name: Generate Tailwind
         run: |
-          ./tailwindcss -i ./content/stylesheets-modular/tailwind_base.css -o ./content/stylesheets-modular/tailwind.css
-          ./tailwindcss -i ./content/stylesheets-modular/tailwind_base.css -o ./content/stylesheets-modular/tailwind.min.css --minify
+          ./tailwindcss -i ./content/stylesheets/tailwind_base.css -o ./content/stylesheets/tailwind.css
+          ./tailwindcss -i ./content/stylesheets/tailwind_base.css -o ./content/stylesheets/tailwind.min.css --minify
 
       - name: Check Git diff
         run: |
