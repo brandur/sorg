@@ -1,2 +1,0 @@
-link href="/assets/{{.Release}}/app.css" media="screen" rel="stylesheet" type="text/css"
-link href="/assets/{{.Release}}/stylesheets/prism.css" media="screen" rel="stylesheet" type="text/css"

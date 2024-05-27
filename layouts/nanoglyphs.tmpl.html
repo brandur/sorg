@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{.Title}}{{.TitleSuffix}}</title>
+    <title>{{block "title" .}}{{end}}</title>
 
     {{if not .InEmail}}
         {{Favicon "nanoglyphs" "jpg"}}
@@ -453,7 +453,7 @@
     </style>
 </head>
 
-<body class="{{.BodyClass}}">
+<body class="{{if not .InEmail}}web_only{{end}}">
     {{if not .InEmail}}
         <!-- load early to avoid ficker -->
         {{template "views/_dark_mode_js.tmpl.html" .}}

@@ -8,8 +8,8 @@ Install static binary:
 
 Start watch process:
 
-    tailwindcss -i ./content/stylesheets-modular/tailwind_base.css -o ./content/stylesheets-modular/tailwind.css --watch
+    tailwindcss -i ./content/stylesheets/tailwind_base.css -o ./content/stylesheets/tailwind.css --watch
 
 Minify for production:
 
-    tailwindcss -i ./content/stylesheets-modular/tailwind_base.css -o ./content/stylesheets-modular/tailwind.min.css --minify
+    tailwindcss -i ./content/stylesheets/tailwind_base.css -o ./content/stylesheets/tailwind.min.css --minify
