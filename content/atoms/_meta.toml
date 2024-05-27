@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-27T21:41:51+02:00
+  description = """\
+Published [sequence 082](/sequences/082), north of Warschauer.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/082"
+    original_image_url = "https://www.dropbox.com/scl/fi/z7tviay4ll1qqtpuxw31k/2W4A5357.JPG?rlkey=us5mo7r2wbyv1u2194rswwxhu&st=fl0phk4v&dl=1"
+    slug = "north-of-warschauer"
+
+[[atoms]]
   published_at = 2024-05-27T18:35:46+02:00
   description = """\
 Published [sequence 081](/sequences/081), Zschochersche.
