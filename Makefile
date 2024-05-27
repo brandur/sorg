@@ -179,7 +179,7 @@ killall:
 
 .PHONY: lint
 lint:
-	$(shell go env GOPATH)/bin/golint -set_exit_status ./...
+	golangci-lint run --fix
 
 .PHONY: loop
 loop:
