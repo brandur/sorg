@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-27T13:05:53+02:00
+  description = """\
+A [good post from Observable](https://observablehq.observablehq.cloud/framework-example-api/#analyzing-web-logs) analyzing their HTTP request latency and producing nice visualizations for them. Doing non-realtime analysis frees up one of the axis (normally X is time) which lets the data be plotted in more creative ways, like histograms that show the entire "shape" of the distribution of request latency rather than an approximation of it using common aggregates like P50/P95/P99. 
+
+This particular article isn't instructional on how to repeat this for your own service, but it's a good idea, and I want to try and render something like it for our API at some point.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/gg2wxyqkj0t7ygp02jbum/response-latency-colors.png?rlkey=okktg044gd1xeme6w2john5ax&st=5xl0vj1v&dl=1"
+    slug = "response-latency-colors"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/51xfrvwmhs38geeyboc21/response-latency-histogram.png?rlkey=j937hgtmiwcpvi645qci1oqxb&st=8w9gfv9w&dl=1"
+    slug = "response-latency-histogram"
+
+[[atoms]]
   published_at = 2024-05-24T18:55:51+02:00
   description = """\
 Published fragment [ICQ](/fragments/icq/), on the end of the universe, coming June 26th.
