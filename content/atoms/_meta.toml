@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-27T18:35:46+02:00
+  description = """\
+Published [sequence 081](/sequences/081), Zschochersche.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/081"
+    original_image_url = "https://www.dropbox.com/scl/fi/ixykq28prxxvkhe3m6qyf/2W4A5402.jpg?rlkey=i7erd8necsm3ga7g536y9s1d2&st=45fgepu7&dl=1"
+    slug = "zschochersche"
+
+[[atoms]]
   published_at = 2024-05-27T13:05:53+02:00
   description = """\
 A [good post from Observable](https://observablehq.observablehq.cloud/framework-example-api/#analyzing-web-logs) analyzing their HTTP request latency and producing nice visualizations for them. Doing non-realtime analysis frees up one of the axis (normally X is time) which lets the data be plotted in more creative ways, like histograms that show the entire "shape" of the distribution of request latency rather than an approximation of it using common aggregates like P50/P95/P99. 
