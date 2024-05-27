@@ -1,0 +1,55 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "title" -}}Talks{{.TitleSuffix}}{{- end -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <div class="my-16">
+        <h1 class="font-normal font-serif my-8 text-center text-8xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
+            Talks
+        </h1>
+
+        <!-- <div class="container max-w-[625px] mx-auto
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200
+            prose-p:text-center prose-p:italic
+            ">
+            <p>
+                A now page is an occasionally updated summary of what I'm working on and what I'm thinking about. See
+                <a href="/atoms">atoms</a> for a more frequently changing stream.
+            </p>
+        </div> -->
+    </div>
+
+    <div class="container hyphens-auto max-w-[800px] mx-auto my-8
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-b-slate-200
+            prose-code:prose-a:text-xs prose-code:prose-p:text-sm
+            prose-h2:text-sm prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
+            prose-li:my-10
+            prose-p:font-serif
+            prose-p:prose-blockquote:font-sans
+            prose-strong:font-sans
+            prose-ol:font-serif
+            prose-ul:font-serif
+            ">
+        <ul>
+            <li>
+                <a href="https://brandur.github.io/thousand-services/">The Story of a Thousand Services</a>
+                <p class="mb-3">Talk for API Days Mediterranea 2014 in Barcelona. Covers the growth of Heroku's internal and external API ecoysystems, and introduces the basic concepts of JSON Schema and Hyper-schema.</p>
+                <span class="block italic text-sm">May 30, 2014</span>
+            </li>
+            <li>
+                <a href="https://brandur.github.io/composable/">Post-Rails? Composable Applications with a First-class API</a>
+                <p>Delivered at Frozen Rails 2012 in Helsinki. Talks about the techniques used to break down Heroku's Rails monolith into a number of composed services and how this abstraction benefited the company by producing leaner codebases, smaller teams, and better separations of concerns.</p>
+                <span class="block italic text-sm">Sep 20, 2012</span>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+{{- end -}}

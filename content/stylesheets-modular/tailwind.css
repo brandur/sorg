@@ -2883,6 +2883,11 @@ video {
   line-height: 1.5;
 }
 
+.prose-li\:my-10 :is(:where(li):not(:where([class~="not-prose"] *))) {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .prose-li\:my-2 :is(:where(li):not(:where([class~="not-prose"] *))) {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
