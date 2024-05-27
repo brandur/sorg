@@ -312,16 +312,16 @@ type TweetRetweet struct {
 	UserID   int64  `toml:"user_id"`
 }
 
-// tweetMonth holds a collection of tweets grouped by year.
-type tweetMonth struct {
+// TweetMonth holds a collection of tweets grouped by year.
+type TweetMonth struct {
 	Month  time.Month
 	Tweets []*Tweet
 }
 
-// tweetYear holds a collection of tweetMonths grouped by year.
-type tweetYear struct {
+// TweetYear holds a collection of tweetMonths grouped by year.
+type TweetYear struct {
 	Year   int
-	Months []*tweetMonth
+	Months []*TweetMonth
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -416,15 +416,15 @@ func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
 	return runDB.Runs, nil
 }
 
-type tweetMonthCount struct {
+type TweetMonthCount struct {
 	Count int       `json:"count"`
 	Month time.Time `json:"month"`
 }
 
-func GetTwitterByMonth(tweets []*Tweet) []*tweetMonthCount {
+func GetTwitterByMonth(tweets []*Tweet) []*TweetMonthCount {
 	var (
-		currentCount *tweetMonthCount
-		allCounts    []*tweetMonthCount
+		currentCount *TweetMonthCount
+		allCounts    []*TweetMonthCount
 	)
 
 	// Tweets are in reverse chronological order. Iterate backwards so we get
@@ -433,7 +433,7 @@ func GetTwitterByMonth(tweets []*Tweet) []*tweetMonthCount {
 		tweet := tweets[i]
 
 		if currentCount == nil || currentCount.Month.Year() != tweet.CreatedAt.Year() || currentCount.Month.Month() != tweet.CreatedAt.Month() {
-			currentCount = &tweetMonthCount{
+			currentCount = &TweetMonthCount{
 				Count: 1,
 				Month: time.Date(tweet.CreatedAt.Year(), tweet.CreatedAt.Month(), tweet.CreatedAt.Day(), 0, 0, 0, 0, time.UTC),
 			}
@@ -446,20 +446,20 @@ func GetTwitterByMonth(tweets []*Tweet) []*tweetMonthCount {
 	return allCounts
 }
 
-func GroupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
-	var month *tweetMonth
-	var year *tweetYear
-	var years []*tweetYear
+func GroupTwitterByYearAndMonth(tweets []*Tweet) []*TweetYear {
+	var month *TweetMonth
+	var year *TweetYear
+	var years []*TweetYear
 
 	for _, tweet := range tweets {
 		if year == nil || year.Year != tweet.CreatedAt.Year() {
-			year = &tweetYear{tweet.CreatedAt.Year(), nil}
+			year = &TweetYear{tweet.CreatedAt.Year(), nil}
 			years = append(years, year)
 			month = nil
 		}
 
 		if month == nil || month.Month != tweet.CreatedAt.Month() {
-			month = &tweetMonth{tweet.CreatedAt.Month(), nil}
+			month = &TweetMonth{tweet.CreatedAt.Month(), nil}
 			year.Months = append(year.Months, month)
 		}
 
