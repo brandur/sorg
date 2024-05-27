@@ -12,9 +12,7 @@
 {{- define "body_style" -}}bg-white dark:bg-black{{- end -}}
 
 {{- define "content" -}}
-<div>
-    {{- template "views/_nav.tmpl.html" . -}}
-</div>
+{{- template "views/_nav.tmpl.html" . -}}
 
 <div class="">
     {{block "sequences_content" .}}{{end}}

@@ -1,0 +1,39 @@
+{{- template "layouts/sequences.tmpl.html" . -}}
+
+{{- template "layouts/main.tmpl.html" . -}}
+
+{{- define "body_style" -}}bg-white dark:bg-black{{- end -}}
+
+{{- define "content" -}}
+
+{{- template "views/_nav.tmpl.html" . -}}
+
+<div class="mb-24 mt-16 px-4">
+    <h1 class="font-normal font-serif my-8 text-center text-8xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
+        Photos
+    </h1>
+
+    <div class="container max-w-[625px] mx-auto
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[1px] prose-a:border-white prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-b-0
+            prose-strong:font-sans prose-strong:text-sm
+            prose-p:text-center prose-p:italic
+            ">
+        <p>
+            Some choice photos that I've taken over the years. I don't update this collection often, so see also <a href="/sequences">Sequences</a>, which I add new entries to more frequently. My <a href="/uses">uses page</a> has information on my camera and gear.
+        </p>
+    </div>
+</div>
+
+<div class="flex flex-col gap-2 items-center md:gap-8">
+    {{range $i, $photo := .Photos}}
+        <div id="{{.Slug}}" class="">
+            <a href="#{{$photo.Slug}}">
+                {{LazyRetinaImage $i "/photographs/" (printf "%s_large" $photo.Slug) $photo.TargetExt}}
+            </a>
+        </div>
+    {{- end -}}
+</div>
+
+{{- end -}}

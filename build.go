@@ -882,7 +882,7 @@ func build(c *modulir.Context) []error {
 	// Photo index
 	{
 		c.AddJob("photos index", func() (bool, error) {
-			return renderPhotoIndex(c, photos,
+			return renderPhotoIndex(ctx, c, photos,
 				photosChanged)
 		})
 	}
@@ -2698,7 +2698,6 @@ func renderPage(ctx context.Context, c *modulir.Context,
 
 func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
 	source := scommon.ViewsDir + "/reading/index.tmpl.html"
-
 	viewsChanged := c.ChangedAny(
 		append([]string{
 			c.SourceDir + "/content/reading/_meta.toml",
@@ -2728,28 +2727,27 @@ func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
 	return true, nil
 }
 
-func renderPhotoIndex(c *modulir.Context, photos []*Photo,
+func renderPhotoIndex(ctx context.Context, c *modulir.Context, photos []*Photo,
 	photosChanged bool,
 ) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/photos/index.ace",
-		},
-		universalSources...,
-	)...)
+	source := scommon.ViewsDir + "/photos/index.tmpl.html"
+	viewsChanged := c.ChangedAny(
+		dependencies.getDependencies(source)...,
+	)
 	if !photosChanged && !viewsChanged {
 		return false, nil
 	}
 
 	locals := getLocals("Photos", map[string]interface{}{
-		"BodyClass":     "photos",
-		"Photos":        photos,
-		"ViewportWidth": 600,
+		"Photos": photos,
 	})
 
-	return true, mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/photos/index.ace",
-		c.TargetDir+"/photos/index.html", getAceOptions(viewsChanged), locals)
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "photos", "index.html"), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
 }
 
 func renderRobotsTxt(c *modulir.Context) (bool, error) {
