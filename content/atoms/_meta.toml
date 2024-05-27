@@ -29,10 +29,6 @@ This particular article isn't instructional on how to repeat this for your own s
   description = """\
 Published fragment [ICQ](/fragments/icq/), on the end of the universe, coming June 26th.
 """
-  [[atoms.photos]]
-    link_url = "/fragments/icq"
-    original_image_url = "https://www.dropbox.com/scl/fi/wftb2m1kzoj5flj1h8s8v/icq-june-26-2.png?rlkey=yl36xq8peqf3c8gwnwgdxfv8i&st=w37zdnzb&dl=1"
-    slug = "icq"
 
 [[atoms]]
   published_at = 2024-05-23T22:12:46+02:00
