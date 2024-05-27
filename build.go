@@ -586,7 +586,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("runs", func() (bool, error) {
-			return renderRuns(c)
+			return renderRuns(ctx, c)
 		})
 	}
 
@@ -2793,20 +2793,21 @@ Disallow: /photos
 	return true, nil
 }
 
-func renderRuns(c *modulir.Context) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.DataDir + "/strava.toml",
-			scommon.MainLayout,
-			scommon.ViewsDir + "/runs/index.ace",
-		},
-		universalSources...,
-	)...)
+func renderRuns(ctx context.Context, c *modulir.Context) (bool, error) {
+	source := scommon.ViewsDir + "/runs/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !c.FirstRun && !viewsChanged {
 		return false, nil
 	}
 
-	return true, squantified.RenderRuns(c, viewsChanged, getLocals)
+	locals := getLocals("", map[string]interface{}{})
+
+	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "runs", "index.html"), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
 }
 
 // Renders an Atom feed for sequences. The entries slice is assumed to be
@@ -2815,7 +2816,6 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 	entries []*SequenceEntry, sequencesChanged bool,
 ) (bool, error) {
 	source := scommon.ViewsDir + "/sequences/_entry_atom.tmpl.html"
-
 	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !sequencesChanged && !viewsChanged {
 		return false, nil

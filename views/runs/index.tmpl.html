@@ -1,0 +1,43 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "title" -}}Running{{.TitleSuffix}}{{- end -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <div class="my-16">
+        <h1 class="font-normal font-serif my-8 text-center text-8xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
+            Running
+        </h1>
+
+        <!-- <div class="container max-w-[625px] mx-auto
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200
+            prose-p:text-center prose-p:italic
+            ">
+            <p>
+                A now page is an occasionally updated summary of what I'm working on and what I'm thinking about. See
+                <a href="/atoms">atoms</a> for a more frequently changing stream.
+            </p>
+        </div> -->
+    </div>
+
+    <div class="container hyphens-auto max-w-[800px] mx-auto my-8
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-b-slate-200
+            prose-code:prose-a:text-xs prose-code:prose-p:text-sm
+            prose-h2:text-sm prose-h2:mb-1 prose-a:prose-h2:border-b-0 prose-a:prose-h2:font-bold
+            prose-p:font-serif
+            prose-p:prose-blockquote:font-sans
+            prose-strong:font-sans
+            prose-ol:font-serif
+            prose-ul:font-serif
+            ">
+        <p>This page used to show my recent runs and stats, but a few years ago Strava made their API more complicated to authenticate against, and it broke my integration (API developers: let this be a cautionary tale of what not to do). Maybe I'll fix it someday, but probably not.</p>
+    </div>
+
+</div>
+
+{{- end -}}
