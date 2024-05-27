@@ -1,10 +1,6 @@
-var fontFamily, highchartsOptions, lightColor, mainColor;
-
-fontFamily = "Helvetica, Arial, sans-serif";
-
-mainColor = '#4477aa';
-
-lightColor = '#ababab';
+const fontFamily = "Helvetica, Arial, sans-serif";
+const mainColor = '#4477aa';
+const lightColor = '#ababab';
 
 Highcharts.theme = {
   credits: {
@@ -12,6 +8,9 @@ Highcharts.theme = {
   },
   legend: {
     enabled: false
+  },
+  chart: {
+     backgroundColor: null
   },
   subtitle: {
     style: {

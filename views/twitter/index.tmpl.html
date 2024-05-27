@@ -1,0 +1,151 @@
+{{- template "layouts/atoms.tmpl.html" . -}}
+
+{{- define "javascripts" -}}
+{{- end -}}
+
+{{- define "atoms_content" -}}
+
+<div class="mb-12 mt-0 md:mb-24 md:mt-16 px-4">
+    <h1 class="font-normal font-serif my-8 text-center text-8xl text-proseLinks tracking-tighter dark:text-proseInvertLinks">
+        Twitter
+    </h1>
+
+    <div class="container max-w-[625px] mx-auto
+            prose prose-lg dark:prose-invert
+            prose-a:border-b-[1px] prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200
+            prose-p:text-center prose-p:italic
+            ">
+        <p>
+            {{if not .WithReplies}}
+                {{NumberWithDelimiter ',' .NumTweets}} tweets, and <a href="/twitter/with-replies">{{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies</a>.
+            {{else}}
+                <a href="/twitter">{{NumberWithDelimiter ',' .NumTweets}} tweets</a>, and {{NumberWithDelimiter ',' .NumTweetsWithReplies}} including replies.
+            {{end}}
+        </p>
+    </div>
+</div>
+
+<div class="mx-8 md:mx-10">
+    <div id="data_tweets_by_month" class=""></div>
+</div>
+
+<script type="module">
+
+//
+// https://observablehq.com/plot/getting-started
+// https://observablehq.com/plot/features/plots
+//
+
+import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
+
+const tweetCountsByMonth = JSON.parse(`{{.TweetCountsByMonth}}`);
+
+for (const tweetCount of tweetCountsByMonth) {
+    tweetCount.month = new Date(tweetCount.month);
+}
+
+function getTargetWdith() {
+    return document.querySelector("#data_tweets_by_month").offsetWidth
+}
+
+function renderChart() {
+    const plot = Plot.gridY().plot({
+        marks: [
+            Plot.lineY(tweetCountsByMonth, { x: "month", y: "count", stroke: "#000", tip: true }),
+        ],
+        width: getTargetWdith(),
+    });
+
+    const div = document.querySelector("#data_tweets_by_month");
+    div.replaceChildren();
+    div.append(plot);
+}
+
+renderChart()
+
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(context, args);
+        }, wait);
+    };
+}
+
+const debouncedFunction = debounce(() => {
+    renderChart()
+}, 250);
+
+window.addEventListener('resize', debouncedFunction);
+
+</script>
+
+<div class="container max-w-[750px] mx-auto mt-8 px-8">
+    <div class="md:flex">
+        <div> <!-- needed for sticky -->
+            <div class="font-mono my-1 leading-normal text-sm text-proseLinks tracking-tighter dark:text-proseInvertLinks md:sticky md:text-right md:top-5">
+                <div class="hidden md:block md:pr-6">
+                    <ul>
+                        {{range $year := .TweetsByYearAndMonth}}
+                            <li class="pb-1">
+                                <a href="#year-{{$year.Year}}">{{$year.Year}}</a>
+
+                                <!-- maybe spit out month-specific links at some point; doesn't work well if the div stays fixed -->
+                                {{range $month := .Months}}
+                                {{end}}
+                            </li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pb-8 dark:border-slate-700 md:border-l-[1px] md:flex-grow md:min-w-0 md:pl-6">
+            {{range $year := .TweetsByYearAndMonth}}
+                <a href="#year-{{$year.Year}}">
+                    <h2 id="year-{{$year.Year}}" class="font-bold text-sm text-proseLinks tracking-tighter dark:text-proseInvertLinks">{{$year.Year}}</h2>
+                </a>
+
+                {{range $month := .Months}}
+                    <div class="" id="month_{{$year.Year}}_{{Downcase $month.Month.String}}">
+                        <a href="#month-{{$year.Year}}-{{Downcase $month.Month.String}}">
+                            <h3 class="font-bold mb-0 mt-3 text-xs text-proseLinks tracking-tighter dark:text-proseInvertLinks">{{MonthName $month.Month}}</h3>
+                        </a>
+
+                        <ul class="font-serif
+                                   mb-8
+                                   text-[0.8rem] dark:text-proseInvertBody
+                                   [&_a]:border-b-[1px] [&_a]:border-b-slate-200 [&_a]:text-proseLinks dark:[&_a]:border-b-slate-700 dark:[&_a]:text-proseInvertLinks
+                                   hover:[&_a]:border-b-black dark:hover:[&_a]:border-b-proseInvertLinks
+                                   [&>li]:my-4
+                                   [&_p]:my-1
+                                   ">
+                            {{- range $month.Tweets -}}
+                            <li class="">
+                                <div class="">
+                                    {{.TextHTML}}
+                                    <p class="text-[0.7rem]">
+                                        <a href="https://twitter.com/brandur/statuses/{{.ID}}" class="hover:!border-transparent">
+                                            <span class="italic text-slate-500">{{FormatTime .CreatedAt "Jan 2, 2006"}}</span>
+                                        </a>
+                                        {{if ge .FavoriteCount 4}}
+                                            <span class="">( ♥ {{.FavoriteCount}} )</span>
+                                        {{end}}
+                                    </p>
+                                    {{range .Images}}
+                                        <img loading="lazy" src="{{.URL}}" srcset="{{.URLRetina}} 2x, {{.URL}} 1x" class="my-4 w-full">
+                                    {{end}}
+                                </div>
+                            </li>
+                            {{- end -}}
+                        </ul>
+                    </div>
+                {{- end -}}
+            {{- end -}}
+        </div>
+    </div>
+</div>
+
+{{- end -}}

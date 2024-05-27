@@ -1657,6 +1657,11 @@ video {
   margin-right: 0.25rem;
 }
 
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1685,6 +1690,11 @@ video {
 .my-24 {
   margin-top: 6rem;
   margin-bottom: 6rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .my-8 {
@@ -2588,6 +2598,10 @@ video {
   margin-bottom: 0px;
 }
 
+.hover\:\!border-transparent:hover {
+  border-color: transparent !important;
+}
+
 .hover\:border-b-black:hover {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(0 0 0 / var(--tw-border-opacity));
@@ -2953,6 +2967,11 @@ video {
   .md\:-mx-\[200px\] {
     margin-left: -200px;
     margin-right: -200px;
+  }
+
+  .md\:mx-10 {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   .md\:my-16 {
@@ -3438,4 +3457,48 @@ video {
 .dark\:prose-hr\:text-slate-700 :is(:where(hr):not(:where([class~="not-prose"] *))):where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(51 65 85 / var(--tw-text-opacity));
+}
+
+.\[\&\>li\]\:my-4>li {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.\[\&_a\]\:border-b-\[1px\] a {
+  border-bottom-width: 1px;
+}
+
+.\[\&_a\]\:border-b-slate-200 a {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(226 232 240 / var(--tw-border-opacity));
+}
+
+.\[\&_a\]\:text-proseLinks a {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.hover\:\[\&_a\]\:border-b-black a:hover {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.dark\:\[\&_a\]\:border-b-slate-700 a:where(.dark, .dark *) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(51 65 85 / var(--tw-border-opacity));
+}
+
+.dark\:\[\&_a\]\:text-proseInvertLinks a:where(.dark, .dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.dark\:hover\:\[\&_a\]\:border-b-proseInvertLinks a:hover:where(.dark, .dark *) {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.\[\&_p\]\:my-1 p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }

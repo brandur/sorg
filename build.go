@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/base32"
+	"encoding/json"
 	"fmt"
 	"html"
 	"html/template"
@@ -973,11 +974,11 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("twitter (no replies)", func() (bool, error) {
-			return renderTwitter(c, tweets, tweetsChanged, false)
+			return renderTwitter(ctx, c, tweets, tweetsChanged, false)
 		})
 
 		c.AddJob("twitter (with replies)", func() (bool, error) {
-			return renderTwitter(c, tweets, tweetsChanged, true)
+			return renderTwitter(ctx, c, tweets, tweetsChanged, true)
 		})
 	}
 
@@ -2913,7 +2914,6 @@ func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*Se
 	sequenceChanged bool,
 ) (bool, error) {
 	source := scommon.ViewsDir + "/sequences/index.tmpl.html"
-
 	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !sequenceChanged && !viewsChanged {
 		return false, nil
@@ -2931,19 +2931,52 @@ func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*Se
 	return true, nil
 }
 
-func renderTwitter(c *modulir.Context, tweets []*squantified.Tweet, tweetsChanged, withReplies bool) (bool, error) {
-	viewsChanged := c.ChangedAny(append(
-		[]string{
-			scommon.MainLayout,
-			scommon.ViewsDir + "/twitter/index.ace",
-		},
-		universalSources...,
-	)...)
-	if !c.FirstRun && !viewsChanged && !tweetsChanged {
+func renderTwitter(ctx context.Context, c *modulir.Context, tweets []*squantified.Tweet, tweetsChanged, withReplies bool) (bool, error) {
+	source := scommon.ViewsDir + "/twitter/index.tmpl.html"
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
+	if !tweetsChanged && !viewsChanged {
 		return false, nil
 	}
 
-	return true, squantified.RenderTwitter(c, viewsChanged, getLocals, tweets, withReplies)
+	tweetsWithoutReplies := make([]*squantified.Tweet, 0, len(tweets))
+	for _, tweet := range tweets {
+		if tweet.ReplyOrMention {
+			continue
+		}
+
+		tweetsWithoutReplies = append(tweetsWithoutReplies, tweet)
+	}
+
+	target := "index.html"
+	ts := tweets
+	if withReplies {
+		target = "with-replies"
+	} else {
+		ts = tweetsWithoutReplies
+	}
+
+	tweetsByYearAndMonth := squantified.GroupTwitterByYearAndMonth(ts)
+	tweetCountsByMonth := squantified.GetTwitterByMonth(ts)
+
+	tweetCountsByMonthData, err := json.Marshal(tweetCountsByMonth)
+	if err != nil {
+		return false, xerrors.Errorf("error marshaling tweet counts: %w", err)
+	}
+
+	locals := getLocals("Twitter", map[string]interface{}{
+		"NumTweets":            len(tweetsWithoutReplies),
+		"NumTweetsWithReplies": len(tweets),
+		"TweetCountsByMonth":   template.HTML(tweetCountsByMonthData), // chart: tweets by month
+		"TweetsByYearAndMonth": tweetsByYearAndMonth,
+		"WithReplies":          withReplies,
+	})
+
+	err = dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "twitter", target), locals)
+	if err != nil {
+		return true, err
+	}
+
+	return true, nil
 }
 
 func selectRandomPhoto(photos []*Photo) *Photo {

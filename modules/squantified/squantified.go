@@ -56,8 +56,10 @@ func ReadTwitterData(c *modulir.Context, source string) ([]*Tweet, error) {
 					// tweet.ImageURLs = append(tweet.ImageURLs, media.URL)
 
 					ext := filepath.Ext(media.URL)
-					tweet.ImageURLs = append(tweet.ImageURLs,
-						fmt.Sprintf("/photographs/twitter/%v-%v%s", tweet.ID, media.ID, ext))
+					tweet.Images = append(tweet.Images, TweetImage{
+						URL:       fmt.Sprintf("/photographs/twitter/%v-%v%s", tweet.ID, media.ID, ext),
+						URLRetina: fmt.Sprintf("/photographs/twitter/%v-%v@2x%s", tweet.ID, media.ID, ext),
+					})
 				}
 			}
 		}
@@ -119,51 +121,6 @@ func RenderRuns(c *modulir.Context, viewsChanged bool,
 
 	return mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/runs/index.ace",
 		c.TargetDir+"/runs/index.html", getAceOptions(viewsChanged), locals)
-}
-
-// RenderTwitter renders the `/twitter` page.
-func RenderTwitter(c *modulir.Context, viewsChanged bool,
-	getLocals func(string, map[string]interface{}) map[string]interface{},
-	tweets []*Tweet, withReplies bool,
-) error {
-	tweetsWithoutReplies := make([]*Tweet, 0, len(tweets))
-	for _, tweet := range tweets {
-		if tweet.ReplyOrMention {
-			continue
-		}
-
-		tweetsWithoutReplies = append(tweetsWithoutReplies, tweet)
-	}
-
-	target := "index.html"
-	ts := tweets
-	if withReplies {
-		target = "with-replies"
-	} else {
-		ts = tweetsWithoutReplies
-	}
-
-	tweetsByYearAndMonth := groupTwitterByYearAndMonth(ts)
-	tweetCountXMonths, tweetCountYCounts := getTwitterByMonth(ts)
-
-	locals := getLocals("Twitter", map[string]interface{}{
-		"NumTweets":            len(tweetsWithoutReplies),
-		"NumTweetsWithReplies": len(tweets),
-		"TweetsByYearAndMonth": tweetsByYearAndMonth,
-		"WithReplies":          withReplies,
-
-		// chart: tweets by month
-		"TweetCountXMonths": tweetCountXMonths,
-		"TweetCountYCounts": tweetCountYCounts,
-	})
-
-	err := mace.RenderFile(c, scommon.MainLayout, scommon.ViewsDir+"/twitter/index.ace",
-		c.TargetDir+"/twitter/"+target, getAceOptions(viewsChanged), locals)
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -271,9 +228,9 @@ type Tweet struct {
 	RetweetCount  int            `toml:"retweet_count"`
 	Text          string         `toml:"text"`
 
-	// ImageURLs are the URLs of all images associated with a given tweet, if
+	// Images are the URLs of all images associated with a given tweet, if
 	// any.
-	ImageURLs []string `toml:"-"`
+	Images []TweetImage `toml:"-"`
 
 	// ReplyOrMention is assigned to tweets which are either a direct mention
 	// or reply, and which therefore don't go in the main timeline. It gives us
@@ -302,6 +259,11 @@ type TweetEntitiesMedia struct {
 
 	// Internal
 	ext string `toml:"-"`
+}
+
+type TweetImage struct {
+	URL       string
+	URLRetina string
 }
 
 func extCanonical(originalURL string) string {
@@ -454,33 +416,37 @@ func getRunsData(c *modulir.Context, target string) ([]*Run, error) {
 	return runDB.Runs, nil
 }
 
-func getTwitterByMonth(tweets []*Tweet) ([]string, []int) {
-	tweetCountXMonths := []string{}
-	tweetCountYCounts := []int{}
+type tweetMonthCount struct {
+	Count int       `json:"count"`
+	Month time.Time `json:"month"`
+}
 
-	var currentMonth time.Month
-	var currentYear int
+func GetTwitterByMonth(tweets []*Tweet) []*tweetMonthCount {
+	var (
+		currentCount *tweetMonthCount
+		allCounts    []*tweetMonthCount
+	)
 
 	// Tweets are in reverse chronological order. Iterate backwards so we get
 	// chronological order.
 	for i := len(tweets) - 1; i >= 0; i-- {
 		tweet := tweets[i]
 
-		if currentYear == 0 || currentYear != tweet.CreatedAt.Year() || currentMonth != tweet.CreatedAt.Month() {
-			tweetCountXMonths = append(tweetCountXMonths, tweet.CreatedAt.Format("Jan 2006"))
-			tweetCountYCounts = append(tweetCountYCounts, 1)
-
-			currentMonth = tweet.CreatedAt.Month()
-			currentYear = tweet.CreatedAt.Year()
+		if currentCount == nil || currentCount.Month.Year() != tweet.CreatedAt.Year() || currentCount.Month.Month() != tweet.CreatedAt.Month() {
+			currentCount = &tweetMonthCount{
+				Count: 1,
+				Month: time.Date(tweet.CreatedAt.Year(), tweet.CreatedAt.Month(), tweet.CreatedAt.Day(), 0, 0, 0, 0, time.UTC),
+			}
+			allCounts = append(allCounts, currentCount)
 		} else {
-			tweetCountYCounts[len(tweetCountYCounts)-1]++
+			currentCount.Count++
 		}
 	}
 
-	return tweetCountXMonths, tweetCountYCounts
+	return allCounts
 }
 
-func groupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
+func GroupTwitterByYearAndMonth(tweets []*Tweet) []*tweetYear {
 	var month *tweetMonth
 	var year *tweetYear
 	var years []*tweetYear
@@ -615,7 +581,9 @@ func tweetTextToHTML(tweet *Tweet) template.HTML {
 	}
 
 	// show newlines as line breaks
-	content = strings.ReplaceAll(content, "\n", `<div class="tweet-linebreak">`)
+	content = strings.ReplaceAll(content, "\n\n", `</p><p>`)
+	content = strings.ReplaceAll(content, "\n", `</p><p>`)
+	content = `<p>` + content + `</p>`
 
 	return template.HTML(content)
 }
