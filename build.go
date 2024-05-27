@@ -2645,9 +2645,7 @@ func renderPhotoIndex(ctx context.Context, c *modulir.Context, photos []*Photo,
 	photosChanged bool,
 ) (bool, error) {
 	source := scommon.ViewsDir + "/photos/index.tmpl.html"
-	viewsChanged := c.ChangedAny(
-		dependencies.getDependencies(source)...,
-	)
+	viewsChanged := c.ChangedAny(dependencies.getDependencies(source)...)
 	if !photosChanged && !viewsChanged {
 		return false, nil
 	}
