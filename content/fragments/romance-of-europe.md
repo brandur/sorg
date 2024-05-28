@@ -7,7 +7,7 @@ title = "The romance of Europe"
 
 Something I'm very guilty of at times is romanticizing Europe, even when consciously trying to correct for it.
 
-I went to a concert the other night, and one that was so Berlin. Address in a random part of the city, walk half a block down a private-looking alley, enter a nondescript door, climb four floors of stairs passed empty landings with graffiti everywhere, and enter through a door with a giant red devil's head above it.
+I went to a concert the other night, and one that was so Berlin. Address in a random part of the city, walk half a block down a private-looking alley, enter a nondescript door, climb four floors of stairs passed empty landings with graffiti everywhere, and enter through a door with an enormous devil's head above it.
 
 It was a tiny venue. Two modestly sized rooms with a bar in the back. Even fifty people would've packed it to the gills.
 
