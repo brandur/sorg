@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-05-28T20:50:47+02:00
+  description = """\
+Published [_Eradicating N+1s: The Two-phase Data Load and Render Pattern_](/two-phase-render), on using a two-phase data load and render pattern to prevent N+1 queries in a generalized way. Especially useful in Go, but applicable in any language.
+"""
+  [[atoms.photos]]
+    link_url = "/two-phase-render"
+    original_image_url = "https://www.dropbox.com/scl/fi/4qn2crp0k38ht7srdwmvd/2W4A4776-towers.JPG?rlkey=imoivca38izilvwzzmymttz4d&dl=1"
+    slug = "bridgeland"
+
+[[atoms]]
   published_at = 2024-05-28T08:28:18+02:00
   description = """\
 Published fragment [The romance of Europe](/fragments/romance-of-europe), on a concert in Berlin, correcting for tourist bias, and how smartphones own the planet.

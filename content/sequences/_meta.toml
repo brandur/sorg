@@ -10,18 +10,18 @@
 #
 ################################################################################
 
-# [[entries]]
-#   published_at = 2024-02-23T09:44:46-08:00
-#   slug = "073"
-#   title = "Towers"
-#   description = """
-# An absolutely gorgeous shrine in Kanazawa, a city on the west coast of Japan. We'd just visited [Kenroku-en garden](https://en.wikipedia.org/wiki/Kenroku-en), famous for its roped [_yukitsuri_ trees](https://en.wikipedia.org/wiki/Yukitsuri) and oversized two-legged stone lantern on the water, and stumbled across this shrine after leaving. It started to rain, but it was well-timed. We'd gotten most of our outdoor sightseeing out of the way, and it lent even more ambience to the incredible scene.
+[[entries]]
+  published_at = 2024-05-28T20:50:47+02:00
+  slug = "083"
+  title = "Towers"
+  description = """
+Some unusually nice architecture in Bridgeland, Calgary, with a soft layer of snow blanketing the city. Taken during my 2023 Xmas visit back home.
 
-# Poster for [_Eradicating N+1s: The Two-phase Data Load and Render Pattern_](/two-phase-render).
-# """
-#   [[entries.photographs]]
-#     original_image_url = "https://www.dropbox.com/scl/fi/4qn2crp0k38ht7srdwmvd/2W4A4776-towers.JPG?rlkey=imoivca38izilvwzzmymttz4d&dl=1"
-#     slug = "073"
+Poster for [_Eradicating N+1s: The Two-phase Data Load and Render Pattern_](/two-phase-render).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/4qn2crp0k38ht7srdwmvd/2W4A4776-towers.JPG?rlkey=imoivca38izilvwzzmymttz4d&dl=1"
+    slug = "083"
 
 [[entries]]
   published_at = 2024-05-27T21:41:51+02:00
