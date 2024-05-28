@@ -269,6 +269,16 @@ slug = "fragments/operational-convergence/internal-docs-2"
 title = "Internal docs"
 
 #
+# /fragments/romance-of-europe
+#
+
+[[photographs]]
+crop_width = 650
+original_image_url = "https://www.dropbox.com/scl/fi/c9iol1mb44i4sofl1262j/IMG_0468-adjusted.jpg?rlkey=avan98vvnubie715jfzi7wb12&st=uo2lyhf5&dl=1"
+slug = "fragments/romance-of-europe/berlin-graffiti"
+title = "Graffiti outside of a music venue in Berlin"
+
+#
 # /fragments/rss-abandon
 #
 
