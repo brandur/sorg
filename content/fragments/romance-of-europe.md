@@ -21,4 +21,4 @@ My god Berlin, I have to know your secrets. We need them. Save us.
 
 An hour later every person in the room has their phones out and is staring, glassy eyed, into their electronic bricks.
 
-No one can resist these things. Not America, not Europe, not Berlin. I just happened to walk in at a coincidental moment. The end.
+No one can resist these things. Not America, not Europe, not Berlin. I just happened to walk in at a lucky moment. The end.
