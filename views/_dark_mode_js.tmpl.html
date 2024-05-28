@@ -64,7 +64,10 @@ function setThemeFromLocalStorageOrMediaPreference() {
             break
     }
 
-    document.querySelectorAll(`.theme_toggle input[value='${theme}']`).forEach(function(toggle) {
+    console.log(`theme is: ${theme}`)
+
+    document.querySelectorAll(`.theme_toggle input[value='${theme}']`).forEach((toggle) => {
+    console.log(`set toggle`)
         toggle.checked = true;
     })
 }
@@ -89,6 +92,12 @@ window.addEventListener('DOMContentLoaded', () => {
             setThemeFromLocalStorageOrMediaPreference()
         }, false)
     })
+
+    // We already our theme "early" to avoid a flash that would occur if we only
+    // set it here on content loaded, but set it one more time so that we set
+    // the theme toggle to the appropriate value. It's not loaded yet when we
+    // set the theme the first time.
+    setThemeFromLocalStorageOrMediaPreference()
 })
 
 // Listen for local storage changes on our theme key. This allows one tab to be
