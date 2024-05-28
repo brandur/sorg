@@ -30,6 +30,7 @@ module River
 
       def initialize: (kind: String, ?created_at: [Time, Time]?, ?encoded_args: String?, ?queue: String?, ?state: Array[jobStateAll]?) -> void
     end
+  end
 end
 ```
 
