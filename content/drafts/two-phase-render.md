@@ -17,7 +17,7 @@ Let's say we have a model `Product` that can render a public-facing API resource
 
 ``` ruby
 class Product < ApplicationRecord
-  belongs_to :owner
+  belongs_to :owner # needs to lazy load an owner
 
   def render
     {
@@ -54,7 +54,7 @@ This practically invisible problem is probably number two to only forgotten inde
 class Product < ApplicationRecord
   belongs_to :owner
   belongs_to :team
-  has_many :widgets
+  has_many :widgets # has many widgets
 
   def render
     {
@@ -70,7 +70,7 @@ class Product < ApplicationRecord
 end
 
 class Widget < ApplicationRecord
-  belongs_to :factory
+  belongs_to :factory # needs to lazy load a factory
 
   def render
     {
@@ -83,11 +83,11 @@ class Widget < ApplicationRecord
 end
 ```
 
-We're now at more like N*M+1. This is the more realistic example, and in real life it just keeps snowballing from there. Models have dozens of associations, and their subresources have subresources which have subresources. Rendering a single API resource might take hundreds, or even thousands, of database queries.
+We're now at more like N*M+1. This is the more realistic example, and in real life it just keeps snowballing from there. Models have dozens of associations, and their subresources have subresources which have subresources. Rendering a single API resource/web page might take hundreds, or even thousands, of database queries.
 
 <img src="/assets/images/two-phase-render/n_times_m_plus_one.svg" alt="N*M+1.">
 
-Luckily for all of us, databases are pretty fast, and even when abused in this fashion can still get the job done in a timely manner. ORMs like ActiveRecord also have features like [eager loading](https://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations), that can be used to prefetch what otherwise would've been loaded lazily.
+Luckily for all of us, databases are pretty fast, and even when abused in this fashion can still tend get the job done in a timely manner. ORMs like ActiveRecord also have features like [eager loading](https://guides.rubyonrails.org/active_record_querying.html#eager-loading-associations), that can be used to prefetch what otherwise would've been loaded lazily.
 
 ``` ruby
 Product.includes(owner: [], team: [], widget: [:factory]).limit(10)
@@ -101,9 +101,9 @@ But even these sophisticated strategies have their own problems. In a large appl
 
 Sometimes you have to get creative to solve N+1s.
 
-A story from Stripe: due to an architecture built around Mongo, records were almost always point loaded by nothing more complex than a point index lookup (i.e. no fancy joins, eager loading, or anything else, just the equivalent of `WHERE id = @id`). N+1s were the rule, not the exception, but with fast hardware and modest performance expectations, it’s amazing how far you can get with this brute force model. A normal API request could easily run thousands of database operations.
+A story from Stripe: due to an architecture built around Mongo, records were almost always point loaded by nothing more complex than a point index lookup (i.e. no fancy joins, eager loading, or anything else, just the equivalent of `WHERE id = @id`). N+1s were the rule, not the exception, but with fast hardware and modest performance expectations, it’s amazing how far you can get with this brute force approach. An API request could easily run thousands of database ops.
 
-It’s a good example of how pernicious N+1s can be. Databases are fast, and especially in the beginning, you can have the sloppiest internal practices imaginable and they’ll still be viable. A request might be making 50 database calls, 45 of which would be unnecessary in a better-designed system, but with each taking only 1-2 ms, everything’s still done in well under a second.
+It’s a good example of how pernicious N+1s can be. Databases are fast, and especially in the beginning, you can have the least sophisticated internal practices imaginable and they’ll still be viable. A request might be making 50 database calls, 45 of which would be unnecessary in a better-designed system, but with each taking only 1-2 ms, everything’s still done in 50-100 ms.
 
 But over the years 50 calls becomes 1,000, and users start to notice that things are slow. And once things are this far gone, there’s no obvious fix. The latency isn’t due to only one factor, it’s a confluence of years worth of haphazardly written code, and now there's millions of lines of it.
 
@@ -113,9 +113,9 @@ API endpoints mapped to an API resource that they render. API resources were bac
 
 ``` ruby
 class Charge < APIResource
-  prop :amount_total # maps to model directly
-  prop :refund_total, render: :render_refund_total
-  prop :user_email, render :render_user_email
+  prop :amount_total                               # maps to model directly
+  prop :refund_total, render: :render_refund_total # renders with custom function
+  prop :user_email, render :render_user_email      # renders with custom function
   
   def render_refund_total
     @model.refunds.sum { |r| r.amount_total }
@@ -139,7 +139,21 @@ This is where the innovation came in. Ruby has a construct called [fibers](https
 * Batch operations were invoked. Their results were disaggregated, and the appropriate data distributed back to each parked fiber.
 * Paused fibers were continued. If new database calls were made, the sequence would start over again.
 
-So from the example above, if 10 charges were rendered that mapped to 10 separate accounts, the accounts were bulked loaded with `account_id IN (?, ?, ?, ...)` instead of a single `account_id = ?`, but each fiber would get back a single account as if it'd performed a point load.
+So from the example above, if 10 charges were rendered that mapped to 10 separate users, the users were bulked loaded with `user_id IN (?, ?, ?, ...)` instead of a single `user_id = ?`, but each fiber would get back a single account as if it'd performed a point load.
+
+``` ruby
+class Charge < APIResource
+  ...
+  
+  def render_user_email
+    #
+    # fiber paused, N charge renders become `user_id IN (?, ?, ?)`, results
+    # disaggregated and handed to fibers, which are then continued
+    #
+    @model.user.email   
+  end
+end
+```
 
 <img src="/assets/images/two-phase-render/fibers.svg" alt="Loading data via fibers.">
 
@@ -167,7 +181,7 @@ class Article < ApplicationRecord
 end
 ```
 
-Strict loading is an important feature and _major_ innovation in this area, but not a panacea. Test coverage needs to be very substantial to make sure problems are caught before hitting production.
+Strict loading is an important feature and _major_ innovation in this area, but not a panacea. Test coverage needs to be substantial to make sure problems are caught before hitting production.
 
 ---
 
@@ -175,7 +189,7 @@ Strict loading is an important feature and _major_ innovation in this area, but 
 
 This brings us to Go, where loading data is hard even without considering N+1s.
 
-Go can aptly be described as a newer, safer C, but with even less flexibility. You couldn’t write a good ORM for the language if you wanted to (they do exist, but rely on a lot of untyped `any` shenanigans, which obviate the type advantages of Go in the first place since problems are only caught at runtime), and in the absence of one, the Go philosophy is to avoid abstraction. If you need something like an API resource, piece it together query-by-query, with requisite `if err != nil { ... }` blocks after every statement.
+Go can aptly be described as a newer, safer C, but with even less flexibility. You couldn’t write a good ORM for the language if you wanted to (they do exist, but rely on a lot of untyped `any` shenanigans, which defeats the type advantages of Go in the first place since problems are only caught at runtime), and in the absence of one, the Go philosophy is to avoid abstraction. If you need something like an API resource, piece it together query-by-query, with requisite `if err != nil { ... }` blocks after every statement.
 
 For larger applications with dozens or hundreds of associations, the default result is a breathtaking amount of boilerplate to accomplish what would be a modest amount of code in a language with more succinct syntax and a dynamic ORM.
 
@@ -215,7 +229,7 @@ for _, cluster := range clusters {
 
 This one's is easy to spot, but once queries are folded into functions and other abstractions, they get less visible and harder to address.
 
-The fix was to query many clusters at once before the loop, and piece them together inside of it, requiring an impressive amount of code. (This was before generics arrived in 1.18, so even basic operations like rearranging models into a map wasn't possible with less than four lines of code.)
+The fix was to query many clusters at once before the loop, and piece them together inside of it, requiring an impressive amount of code for quite a commonplace operation. (This was before generics arrived in 1.18, so even basic tasks like mapping a slice to a keyed map wasn't possible with less than four lines of code.)
 
 ``` go
 // Code in this block retrieves any replicas for these clusters and assigns
@@ -244,15 +258,15 @@ The fix was to query many clusters at once before the loop, and piece them toget
 }
 ```
 
-Beyond the eyesore, this case-by-case approach doesn't scale well codewise either. Even this example for a single API resource with one sublist is already messy. What would happen for one with dozens of subresources, each of which might have dozen of subresources of their own? Then add a half dozen different developers into the equation, none of whom will have perfect insight into or understanding of code that anyone else wrote.
+Beyond the eyesore, this case-by-case approach doesn't scale well code wise either. Even this example for a single API resource with one sub-list is already messy. What would happen for one with dozens of subresources, each of which might have dozen of subresources of their own? Then add a half dozen different developers into the equation, none of whom will have perfect insight into or understanding of code that anyone else wrote.
 
-Despite Go's ad nauseum verbosity, it's no less susceptible to N+1s than a metaprogramming heavy language like Ruby.
+Despite Go's ad nauseum verbosity, it's no less susceptible to N+1s than a language heavy in metaprogramming like Ruby.
 
 ---
 
 ## Two-phase load and render (#two-phase)
 
-This is where our generalized data loading pattern comes in. It doesn't make N+1s impossible, but it forces developers to break convention to introduce them, making adding a new one harder than not adding one.
+This is where our generalized data loading pattern comes in. It doesn't make N+1s impossible, but it forces developers to break convention to introduce them, making adding a new one harder than not doing so.
 
 As the name suggests, it's broken down into two distinct render phases:
 
@@ -458,7 +472,7 @@ func RenderMany[TLoadBundle any, TRenderable Renderable[TLoadBundle, TModel, TRe
 
 ### Nested resources (#nested-resources)
 
-Watchful readers might be asking right now: what about subresources? If we need to call `apiresource.Render` inside the `Render` implementation of another resource, N+1s boomerang right back.
+But what about subresources? If we need to call `apiresource.Render` inside the `Render` implementation of another resource, N+1s boomerang right back.
 
 This is where the pattern shines. N+1s are avoided by composing load bundles onto _other load bundles_ so the `Load` implementation of a resource invokes `Load` for its subresources as well, always ensuring that there is never more than one `Load` per resource type.
 
@@ -595,13 +609,13 @@ func (_ *Product) Render(ctx context.Context, baseParams *pbaseparam.BaseParams,
 }
 ```
 
-The beauty of this approach is that even if your resources which have subresources _which have subresources_, it's still okay. All load bundles map 1:1:1, and regardless of number of resources or hierarchy, we still perform a constant number of database operations. Predictable performance and database load is always maintained.
+The beauty of this approach is that even if your resources which have subresources _which have subresources_, it's still okay. All load bundles map 1:1:1, and regardless of number of resources or hierarchy, we still perform a constant number of database operations. Predictable performance is always maintained.
 
 ### Beyond Go (#beyond-go)
 
 Go is special because of its overwhelming verbosity and total lack of dynamic features. Even if we hadn't designed a framework to avoid N+1s, we would've had to build one to help with basic data loading, so with the two-phase load and render approach we kill two birds with one stone.
 
-With that said, Rails' strict loading feature is a bit of an abberation. Many similar ORMs offer similar dynamic APIs that perform lazy loading, but without safety rails, making N+1s practically the default. Common practice is to live with them, and if a particular hot spot becomes a performance problem, to go in and whack-a-mole N+1s one at a time.
+With that said, Rails' strict loading feature is a bit of an abberation. Many ORMs offer similar dynamic APIs that perform lazy loading, but without safety rails, which practically makes N+1s the default. Common practice is to live with them, and if a particular hot spot becomes a performance problem, to go in and whack-a-mole N+1s one at a time.
 
 The two-phase approach could be extended to other languages to help make N+1s less common and more easily addressable. The syntax above looks intimidating, but once again that's mostly a Go verbosity problem. In most languages, you could do something similar with half the lines of code.
 
