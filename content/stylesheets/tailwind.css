@@ -1702,6 +1702,10 @@ video {
   margin-bottom: 2rem;
 }
 
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -3009,12 +3013,20 @@ video {
     margin-bottom: 4rem;
   }
 
+  .md\:-mt-10 {
+    margin-top: -2.5rem;
+  }
+
   .md\:mb-0 {
     margin-bottom: 0px;
   }
 
   .md\:mb-0\.5 {
     margin-bottom: 0.125rem;
+  }
+
+  .md\:mb-16 {
+    margin-bottom: 4rem;
   }
 
   .md\:mb-24 {
