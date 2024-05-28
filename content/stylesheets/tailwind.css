@@ -1938,6 +1938,10 @@ video {
   max-width: 650px;
 }
 
+.max-w-\[725px\] {
+  max-width: 725px;
+}
+
 .max-w-\[750px\] {
   max-width: 750px;
 }
@@ -2367,6 +2371,10 @@ video {
   font-size: 1rem;
 }
 
+.text-\[2\.5rem\] {
+  font-size: 2.5rem;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -2432,6 +2440,10 @@ video {
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.leading-snug {
+  line-height: 1.375;
 }
 
 .leading-tight {
@@ -2713,12 +2725,17 @@ video {
   border-bottom-width: 1px;
 }
 
+.prose-a\:border-b-4 :is(:where(a):not(:where([class~="not-prose"] *))) {
+  border-bottom-width: 4px;
+}
+
 .prose-a\:border-b-\[1px\] :is(:where(a):not(:where([class~="not-prose"] *))) {
   border-bottom-width: 1px;
 }
 
-.prose-a\:border-b-\[2px\] :is(:where(a):not(:where([class~="not-prose"] *))) {
-  border-bottom-width: 2px;
+.prose-a\:border-proseLinks :is(:where(a):not(:where([class~="not-prose"] *))) {
+  --tw-border-opacity: 1;
+  border-color: rgb(17 24 39 / var(--tw-border-opacity));
 }
 
 .prose-a\:border-slate-500 :is(:where(a):not(:where([class~="not-prose"] *))) {
@@ -3449,6 +3466,11 @@ video {
 .dark\:hover\:text-slate-400:hover:where(.dark, .dark *) {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+
+.dark\:prose-a\:border-proseInvertLinks :is(:where(a):not(:where([class~="not-prose"] *))):where(.dark, .dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .dark\:prose-blockquote\:text-slate-200 :is(:where(blockquote):not(:where([class~="not-prose"] *))):where(.dark, .dark *) {
