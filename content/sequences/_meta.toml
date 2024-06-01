@@ -11,6 +11,28 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-06-01T10:13:48-07:00
+  slug = "085"
+  title = "BER"
+  description = """
+Sadly, my time in Berlin has come to an end.
+
+My way out is through the Berlin Brandenburg airport (BER), my first flying out of it. I visited Berlin last year, but took the train in and out both directions.
+
+Germany's traditional reptuation from my youth was as a country known for its precise, efficient engineering, a reputation that's been slowly backsliding over the intervening decades, with this airport perhaps the
+ most conspicuous symbol of that process.
+
+Construction started in 2006, with an opening target of 2011. I remember visiting Berlin for the first time in December 2011 and being told that the next time I came through, I'd be landing at the city's magnificent new airport. But over the next decade, the oft seen mix of incompetence, graft, and regulation delayed opening a half dozen times until October 2020, a decade behind schedule, and ballooning its original €2.83B budget to €10.3B, with another billion EUR or so of loans still planned.
+
+The good news is that Berlin finally has a decent airport, with	Schönefeld and Tegel previously leaving a lot to be desired (although I did speak to someone last week who passionately argued that Tegel was one of the best airports in use, a point on which I vehemently disagreed, but was substantiated with reasonable arguments). It's spacious, with reasonably efficient check-in counters and security checks (my sample size of is one, so take that with a grain of sault). It's connected to not only the S-bahn, but the Deutsche Bahn network, with a direct regional train between it and Ostkreuz that's only a 20 minute ride (in fact, DB sued the airport as the station it built in 2011 sat unused for years).
+
+I appreciated that the airport's builders borrowed themes from Berlin architecture elsewhere, with a huge open plaza ("airport city"), and giant megalithic pillars holding up the structure overhead. So big and so high that they're ominous to look at.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/ugcq7eschejtb2fgleh7o/2W4A6022-adjusted.jpg?rlkey=95mmskczplvfrxy0cbz623b5b&st=nt1sday8&dl=1"
+    slug = "085"
+
+[[entries]]
   published_at = 2024-06-01T08:56:37-07:00
   slug = "084"
   title = "Spherical abberation"

@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-06-01T10:13:48-07:00
+  description = """\
+Published [sequence 085](/sequences/085), BER.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/085"
+    original_image_url = "https://www.dropbox.com/scl/fi/ugcq7eschejtb2fgleh7o/2W4A6022-adjusted.jpg?rlkey=95mmskczplvfrxy0cbz623b5b&st=nt1sday8&dl=1"
+    slug = "ber"
+
+[[atoms]]
   published_at = 2024-06-01T08:56:37-07:00
   description = """\
 Published [sequence 084](/sequences/084), spherical abberation.
