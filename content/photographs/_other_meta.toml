@@ -419,6 +419,24 @@ slug = "nanoglyphs/042-crush/avi"
 title = "Avi from Snatch"
 
 [[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/rd4thrfq6olqvz1thqzqc/2W4A5649-crop.jpg?rlkey=6me7yz1zw4qq7il45gkg3rryb&st=v24avq97&dl=1"
+slug = "nanoglyphs/042-crush/berlin-1"
+title = "Berlin 1"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/2q3exp15xwfmra79cxydj/2W4A5481-crop.jpg?rlkey=lgcgp6k5rkjinjfkr5olff7v4&st=4vgqreh7&dl=1"
+slug = "nanoglyphs/042-crush/berlin-2"
+title = "Berlin 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/tgrya4f47h4arbg7140es/2W4A5524-adjusted.jpg?rlkey=tje7vrdmzr4839v9gmh1n0tdf&st=lw16v1lt&dl=1"
+slug = "nanoglyphs/042-crush/berlin-3"
+title = "Berlin 3"
+
+[[photographs]]
 crop_width = 600
 original_image_url = "https://www.dropbox.com/scl/fi/g8lxguwkrbp0dey555k4b/2W4A5490-courtyard.JPG?rlkey=c4qp2z1h1hlt9v0ldr2s1xnjs&st=7epx8s1j&dl=1"
 slug = "nanoglyphs/042-crush/courtyard"
