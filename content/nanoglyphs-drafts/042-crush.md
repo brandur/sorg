@@ -4,7 +4,7 @@ image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/042-crush/courtyard@2x.jpg"
 published_at = 2024-05-28T14:04:42+02:00
 title = "Crush!"
-hook = "TODO"
+hook = "Berlin, don't go to Manchester, a general pattern for eradicating N+1s, Tobi Lutke on performance, trialing RBS in Ruby, and the disappointing legacy of iPadOS."
 +++
 
 Readers —
