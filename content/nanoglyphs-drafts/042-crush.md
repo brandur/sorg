@@ -13,7 +13,9 @@ I'm just back from a month in Berlin. Going for a music festival, but taking the
 
 Before anything else, some usual housekeeping: I'm Brandur, and this is my newsletter _Nanoglyph_. It's been comically delinquent lately, and you may have signed up months ago and this is the first blast you've gotten so far, If you hate it already and don't want to see anymore of them, you can [instantly unsubscribe in one easy click](%unsubscribe_url%).
 
-This newsletter is [also available on the web](/nanoglyphs/042-crush). I recently spent some time [adding dark mode support](/fragments/dark-mode-notes) to my site, and _Nanoglyph_'s web version supports it too.
+This newsletter is [also available on the web](/nanoglyphs/042-crush). I recently spent some time [adding dark mode support](/fragments/dark-mode-notes) to my site, something that sounds easy until you realize you have a few thousand lines of legacy CSS to retrofit. _Nanoglyph_'s web version supports it too.
+
+In this issue: Manchester, a general pattern for eradicating N+1s, Tobi Lutke on performance, trialing RBS in Ruby, and the disappointing legacy of iPadOS.
 
 ---
 
