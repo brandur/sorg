@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-06-01T08:56:37-07:00
+  slug = "084"
+  title = "Spherical abberation"
+  description = """
+Another one in the vein of [083](/sequences/083), from the same walk in Bridgeland last December over to Shiki Menya for some ramen. I'm posting it now because I'm likely to forget about it again otherwise.
+
+Calgary's cold during the winter, but a fact that'd surprise many is that it's actually the sunniest major city in Canada with ~333 days of sunshine a year. Even on days like this where it's not sunny, the light still comes through beautifully, and makes for some great photography.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/bniknhs997knjlusl7pd0/2W4A4775-sphere.JPG?rlkey=8h0byd75962daqkd3r9abk9hy&st=zcr5240x&dl=1"
+    slug = "084"
+
+[[entries]]
   published_at = 2024-05-28T20:50:47+02:00
   slug = "083"
   title = "Towers"
