@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-06-02T11:39:40-07:00
+  description = """\
+I was amused to discover that Derek Sivers' Nownownow.com also [publishes its directory as a tab-delimited `.txt` file](https://nownownow.com/nownownow.txt). I've had pretty good luck randomly finding interesting blogs to add to my reader from Now pages, and the plain text aspect makes it especially easy to search by city or country.
+"""
+
+[[atoms]]
   published_at = 2024-06-02T09:50:45-07:00
   description = """\
 Published fragment [Go: Don't name packages common nouns](/fragments/go-no-commoun-nouns), on avoiding naming Go packages after common nouns like `rate` or `server` so that they don't clash with variable names, and how to find a more fitting name for them instead.
