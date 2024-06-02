@@ -36,7 +36,7 @@ func (c *ClusterCreate) Run(
 
 Ideally, flags should often have a UI component as well. The flow for provisioning an analytics cluster is different than for a non-analytics one because it involves asking for a set of S3 credentials for reading/writing data sets. If a team doesn't have access to the analytics plans, the new flow should be hidden completely.
 
-This presents a bit of a dilemma because while our API layer knows about feature flags, the frontend does not. We could give it its own flag system, but then it'd have to get into managing falg state, and we'd have duplicative systems that'd have to be synchronized and reconciled. Luckily, there's another way.
+This presents a bit of a dilemma because while our API layer knows about feature flags, the frontend does not. We could give it its own flag system, but then it'd have to get into managing flag state, and we'd have duplicative systems that'd have to be synchronized and reconciled. Luckily, there's another way.
 
 ## By way of OpenAPI (#openapi)
 
