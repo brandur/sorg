@@ -19,7 +19,7 @@ I was amused to discover that Derek Sivers' Nownownow.com also [publishes its di
 [[atoms]]
   published_at = 2024-06-02T09:50:45-07:00
   description = """\
-Published fragment [Go: Don't name packages common nouns](/fragments/go-no-commoun-nouns), on avoiding naming Go packages after common nouns like `rate` or `server` so that they don't clash with variable names, and how to find a more fitting name for them instead.
+Published fragment [Go: Don't name packages common nouns](/fragments/go-no-common-nouns), on avoiding naming Go packages after common nouns like `rate` or `server` so that they don't clash with variable names, and how to find a more fitting name for them instead.
 """
 
 [[atoms]]
