@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2024-06-16T12:51:37-07:00
   description = """\
-Published fragment [Sqlc check in 2024](/fragments/sqlc-2024), on some quick thoughts on whether sqlc is still the direction for Go projects now that we've been using it for three years.
+Published fragment [Sqlc 2024: check in](/fragments/sqlc-2024), on some quick thoughts on whether sqlc is still the direction for Go projects now that we've been using it for three years.
 """
 
 [[atoms]]
