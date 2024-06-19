@@ -170,6 +170,7 @@ func (l *Notifier) runOnce(ctx context.Context) error {
     l.mu.RLock()
     defer l.mu.RUnlock()
 
+    // Notify subscribers (this is a no-op if no subs/empty slice).
     for _, sub := range l.subscriptions[notification.Channel] {
         sub.listenChan <- notification.Payload
     }
