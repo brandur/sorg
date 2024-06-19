@@ -136,7 +136,7 @@ func (l *Notifier) runOnce(ctx context.Context) error {
     // WaitForNotification is a blocking function, but since we want to wake
     // occasionally to process new `LISTEN`/`UNLISTEN` operations, we put a
     // context deadline on the listen, and as it expires don't treat it as an
-    // error unless it
+    // error unless it's unrelated to context expiration.
     notification, err := func() (*pgconn.Notification, error) {
         const listenTimeout = 30 * time.Second
 
@@ -170,13 +170,7 @@ func (l *Notifier) runOnce(ctx context.Context) error {
     l.mu.RLock()
     defer l.mu.RUnlock()
 
-    subs := l.subscriptions[notification.Channel]
-
-    if len(subs) < 1 {
-        return nil
-    }
-
-    for _, sub := range subs {
+    for _, sub := range l.subscriptions[notification.Channel] {
         sub.listenChan <- notification.Payload
     }
 
