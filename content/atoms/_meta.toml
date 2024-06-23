@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-06-23T09:32:36-07:00
+  description = """\
+River now has a self-hosted [web UI](https://riverqueue.com/blog/announcing-river-ui) to help manage jobs and queues without having to drop down to a psql shell.
+
+Paradoxically, it's mostly written in TypeScript instead of Go, which is more of a testament to the state of Go's templating system than anything else. It's still distributed as a single binary thanks to `go:embed`.
+"""
+
+[[atoms]]
   published_at = 2024-06-16T12:51:37-07:00
   description = """\
 Published fragment [Sqlc 2024: check in](/fragments/sqlc-2024), on some quick thoughts on whether sqlc is still the direction for Go projects now that we've been using it for three years.
