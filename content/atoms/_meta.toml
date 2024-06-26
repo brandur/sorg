@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-06-26T15:04:32-07:00
+  description = """\
+I ran a query today to delete two rows that clocked in at just under two hours. A new personal record for time for rows deleted -- one hour per row.
+
+``` sql
+=> DELETE FROM metric WHERE name = 'networkin' OR name = 'networkout';
+DELETE 2
+Time: 6957592.469 ms (01:55:57.592)
+```
+
+`metric` is a tiny table itself, but it's referenced by large partitioned tables for `metric_point` and `metric_point_aggregate`, both of which need to scanned in their entirety to verify that no rows reference either of these two being removed. Luckily, the operation didn't need to hold a significant lock, and inserts and reads on all tables were healthy throughout.
+"""
+
+[[atoms]]
   published_at = 2024-06-23T09:32:36-07:00
   description = """\
 River now has a self-hosted [web UI](https://riverqueue.com/blog/announcing-river-ui) to help manage jobs and queues without having to drop down to a psql shell.
