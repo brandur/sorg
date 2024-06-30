@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-06-30T11:11:30-07:00
+  description = """\
+From Mike Solana, [We Are the Media Now](https://www.piratewires.com/p/we-are-the-media-now), on his publication, Pirate Wires, and on a new media landscape where journalists do journalism, and don't hate you:
+
+> Why are you sharing scoops with journalists who hate you? Do you not understand how this works? I’m realizing it’s possible you don’t understand how this works. New information is the lifeblood of a media company. When you share it with a hostile outlet, you are feeding them. When you withhold it from a value-aligned company, if even inadvertently, you are starving them.
+>
+> Send us your scoops. Send us your stories. Are you enjoying tech’s vibe shift? It didn’t just happen. Support the team that doesn’t want you liquidated, or don’t complain about the hateful tech press when they’re at your door with pitchforks. Will I still defend you when you’re unjustly maligned?
+
+Linked as supporting evidence is the latest [hit piece on Alexander Wang](https://web.archive.org/web/20240628212036/https://techcrunch.com/2024/06/28/dei-more-like-common-decency-and-silicon-valley-is-saying-no-thanks/) for the unforgivable sin of daring to suggest that meritocracy is a good thing. This remedial second grade level writing was published in TechCrunch, by a person that mistakenly self identifies as a "journalist":
+
+> I would invite him — and those supporting them — to fuck all the way off. You misunderstand me. You thought I wanted you to fuck only partially the way off. Please, read my lips. I was perfectly clear: Off you fuck. All the way. Remove head from ignorant ass, then fuck all the way off.
+
+Yes, that's really the quality of discourse coming out of legacy tech media. I'm with Mike---don't give anything to the legacy media. The faster they crash to zero relevance (towards which they're on a collision course already), the faster they cease to exist.
+"""
+
+[[atoms]]
   published_at = 2024-06-26T15:04:32-07:00
   description = """\
 I ran a query today to delete two rows that clocked in at just under two hours. A new personal record for time for rows deleted -- one hour per row.
