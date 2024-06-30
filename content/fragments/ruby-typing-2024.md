@@ -133,7 +133,7 @@ As I iterated through each new piece of the RBS typing toolchain, I couldn't sha
 
 I tried looking around for evidence of happy RBS users, but almost everything written about the system are the usual "intro to RBS" posts, most of them from years ago ([Honeybadger's is probably the best](https://www.honeybadger.io/blog/ruby-rbs-type-annotation/) in this category).
 
-A defense of RBS might be that it's all quite new and will take some time to properly crystallize, which is reasonable, but it has been four years. and it's also reasonable to expect that these tools would've become a little more sticky after that much time in the field. If they're going to stick that is.
+A defense of RBS might be that it's all quite new and will take some time to properly crystallize, which is reasonable, but it has been four years, and it's also reasonable to expect that these tools would've become a little more sticky after that much time in the field. If they're going to stick that is.
 
 I'm a little afraid that RBS might fall victim to the same problem as [Ractors](/nanoglyphs/018-ractors), which were an ambitious idea, but turned out to be so fundamentally incompatible with the existing ecosystem that even years after their release, I've never heard of a production stack that's been able to make use of them. I know it's wishful thinking at this point, but I can't help but wonder whether if Ruby core had combined efforts with Sorbet's existing bulk of tooling, there might be a compromise by now that traded a little idealism for a little more practicality.
 
