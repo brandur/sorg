@@ -1,3 +1,4 @@
+<!--
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
@@ -5,26 +6,19 @@
             ">
     <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery, Berlin" class="lg:rounded-lg w-full">
 </div>
-
-<!--
-
- class="max-w-none w-screen lg:-mx-[200px] lg:w-[calc(100%+400px)]">
-
 -->
 
-## Berlin, AD, and queues (#berlin)
+## RBAC, Python (#rbac)
 
-I'm spending the month in Berlin, where I'm trying to run and write every day, and enjoy time in a place that's less reminiscent of a zombie wasteland than my home city.
+I'm in San Francisco.
 
-The next big project I'm tackling at work is Active Directory. That sounds about as fun as a root canal, but I take it as an interesting challenge. AD is a long in the tooth technology that's still in use by many of the biggest players in the industry (we even used it at Stripe!). How can we integrate it in such a way that it gets big users what they need, produces as little code as possible and as few headaches for us, and maximizes the yield in leverage we get out of the effort. For example, it might involve ignoring the low level AD APIs and integrating [SCIM instead](https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management), thereby buying us compatibility with other non-AD SCIM-based systems.
+I'm working on rebuilding Bridge's RBAC (role-based access control) system, taking inspiration from [Tailscale's substantial write up on the subject](https://tailscale.com/blog/rbac-like-it-was-meant-to-be), which seems to be the most contemporary thinking on the subject from practioners who _also_ do a good job of it in their own product. Dozens of companies selling enterprise security solutions have strong opinions on the subject, but it doesn't inspire much confidence when their own offerings are of middling quality.
 
-Blake and I continue work on our open source Postgres job queue, [River](https://github.com/riverqueue/river), which I think is fair to say is the most full-featured in the Go ecosystem by some margin. There's something incredibly satisfying about taking a project scoped to a known, fixed domain, and refinining its code over and over again until it's _perfect_.  Trying to handle every edge, and with attention to detail on every line of code.
-
-I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) that enables job insertion in Ruby, but for jobs to be worked in Go, which is something that I'd always wanted back at Heroku and Stripe. I wrote about [my experience putting in type checking with Steep, and publishing RBS files](/fragments/ruby-typing-2024) for the project.
+I've been relearning Python to help build a [River's Python client library](https://github.com/riverqueue/riverqueue-python). The language's been a mixed bag overall, but it's been interesting diving into typing, asyncio, and tooling like [Rye](https://github.com/astral-sh/rye), none of which existed the last time I worked in the language.
 
 <div class="not-prose">
     <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">May 5, 2023</span>.
+        <span class="font-bold">Jul 8, 2023</span>.
     </p>
 </div>
 
@@ -33,6 +27,16 @@ I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) t
 / ---------------------------------------------------------------------------- 
 / OLD
 / ---------------------------------------------------------------------------- 
+
+## May 5, 2023
+
+I'm spending the month in Berlin, where I'm trying to run and write every day, and enjoy time in a place that's less reminiscent of a zombie wasteland than my home city.
+
+The next big project I'm tackling at work is Active Directory. That sounds about as fun as a root canal, but I take it as an interesting challenge. AD is a long in the tooth technology that's still in use by many of the biggest players in the industry (we even used it at Stripe!). How can we integrate it in such a way that it gets big users what they need, produces as little code as possible and as few headaches for us, and maximizes the yield in leverage we get out of the effort. For example, it might involve ignoring the low level AD APIs and integrating [SCIM instead](https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management), thereby buying us compatibility with other non-AD SCIM-based systems.
+
+Blake and I continue work on our open source Postgres job queue, [River](https://github.com/riverqueue/river), which I think is fair to say is the most full-featured in the Go ecosystem by some margin. There's something incredibly satisfying about taking a project scoped to a known, fixed domain, and refinining its code over and over again until it's _perfect_.  Trying to handle every edge, and with attention to detail on every line of code.
+
+I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) that enables job insertion in Ruby, but for jobs to be worked in Go, which is something that I'd always wanted back at Heroku and Stripe. I wrote about [my experience putting in type checking with Steep, and publishing RBS files](/fragments/ruby-typing-2024) for the project.
 
 ## Apr 9, 2023
 

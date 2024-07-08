@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-07-08T12:46:00-07:00
+  description = """\
+Updated [now](/now), on RBAC on Python.
+"""
+
+[[atoms]]
   published_at = 2024-06-30T11:11:30-07:00
   description = """\
 From Mike Solana, [We Are the Media Now](https://www.piratewires.com/p/we-are-the-media-now), on his publication, Pirate Wires, and on a new media landscape where journalists do journalism, and don't hate you:
