@@ -1898,10 +1898,6 @@ video {
   width: 100%;
 }
 
-.w-screen {
-  width: 100vw;
-}
-
 .min-w-0 {
   min-width: 0px;
 }
@@ -3242,11 +3238,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:-mx-\[200px\] {
-    margin-left: -200px;
-    margin-right: -200px;
-  }
-
   .lg\:-mr-\[60px\] {
     margin-right: -60px;
   }
@@ -3277,10 +3268,6 @@ video {
 
   .lg\:w-\[calc\(100\%\+2rem\+2\*75px\)\] {
     width: calc(100% + 2rem + 2 * 75px);
-  }
-
-  .lg\:w-\[calc\(100\%\+400px\)\] {
-    width: calc(100% + 400px);
   }
 
   .lg\:w-\[calc\(100\%\+90px\+2rem\+0\.5rem\+2\*75px\)\] {
