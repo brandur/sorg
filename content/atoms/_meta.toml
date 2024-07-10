@@ -11,6 +11,34 @@
 ################################################################################
 
 [[atoms]]
+  title = "First contact"
+  published_at = 2024-07-10T14:49:36-07:00
+  length_exempted = true
+  description = """\
+I've been playing around with SQLite the last couple of days. I thought I knew a little about SQLite, but I didn't, and am getting my remedial education through an accelerated gauntlet. Some of what I've learned of its quirks has left me reeling.
+
+Top surprises:
+
+* `ALTER COLUMN` is not supported. Official recommendation for changing a column? Make a new table.
+
+* `DROP CONSTRAINT` is not supported. Official recommendation for removing a constraint? Make a new table.
+
+* SQLite doesn't have data types on columns. Data types (and there are only five) are on values only, so anything can go anywhere.
+
+* If you ask for a column with an unsupported/non-existent type, it happily does the wrong thing without warning or error. I was raising a schema like `CREATE TABLE my_table (id bigserial, messages jsonb[])`, which seemed to be working, so I mistakenly thought for the first day that SQLite supported serials and arrays. It does not.
+
+* You can use `CREATE TABLE my_table (...) STRICT` to only allow one of the five supported types: `integer`, `real`, `text`, `blob`, `any`.
+
+* There was a lot of recent fanfare about SQLite's new support for `jsonb`. Unlike in Postgres, `jsonb` is not actually a data type, but rather a format that's input and output to and from built-in `jsonb*` functions. When persisted, it's one of the big five: `blob`.
+
+* Other fairly critical types are also missing. e.g. There's nothing like `timestamptz`. If you want a date/time, you store is as a Unix timestamp `integer` or ISO8601-formatted `string`, and a number of built-in functions are provided to work with those.
+
+SQLite has some impressive features around streaming which I'm looking forward to playing with, but the initial DX experience has certainly been a little jarring.
+
+On off days, I sometimes wonder if I'm bought into some narratives too strongly. Like, is Postgres _really_ the world's best database? Experiences like this certainly cement my conviction. Yes, it is.
+"""
+
+[[atoms]]
   published_at = 2024-07-08T12:46:00-07:00
   description = """\
 Updated [now](/now), on RBAC on Python.
