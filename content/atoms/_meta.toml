@@ -11,6 +11,32 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-07-11T07:54:40-07:00
+  description = """\
+[River Python](https://riverqueue.com/blog/river-python) is shipped (with a huge assist from [Eric Hauser](https://github.com/ewhauser), who contributed all the original code), enabling insertion of jobs in Python that will be worked in Go. It supports all the normal insert features including unique jobs and batch insertion, along with Python-specific stretch goals like exported type signatures, async I/O, and a `@dataclass`-friendly `JobArgs` protocol.
+
+Here's roughly what it looks like in action:
+
+``` python
+@dataclass
+class SortArgs:
+    strings: list[str]
+
+    kind: str = "sort"
+
+    def to_json(self) -> str:
+        return json.dumps({"strings": self.strings})
+        
+engine = sqlalchemy.create_engine("postgresql://...")
+client = riverqueue.Client(riversqlalchemy.Driver(engine))
+
+insert_res = client.insert(
+    SortArgs(strings=["whale", "tiger", "bear"]),
+)
+```
+"""
+
+[[atoms]]
   title = "First contact"
   published_at = 2024-07-10T14:49:36-07:00
   length_exempted = true
