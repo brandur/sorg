@@ -376,7 +376,7 @@ So, the full render process is:
 Implementing a full two-phase render involves a fair bit of code (again, it's Go), but once it's done, that type of API resource can easily be rendered from anywhere else:
 
 ``` go
-resource, err := apiresource.Render[*apiresourcekind.ProductLoadBundle, *apiresourcekind.Product](
+resource, err := apiresource.Render[*apiresourcekind.Product](
     ctx, tx, svc.BaseParams, product
 )
 if err != nil {
@@ -387,7 +387,7 @@ if err != nil {
 And rendering many API resources at once (like on a list endpoint) looks like:
 
 ``` go
-resources, err := apiresource.RenderMany[* apiresourcekind.ProductLoadBundle, * apiresourcekind.Product](
+resources, err := apiresource.RenderMany[*apiresourcekind.Product](
     ctx, tx, svc.BaseParams, products
 )
 if err != nil {
@@ -425,10 +425,10 @@ package apiresource
 //
 // The type parameters may appear to be in a weird order as you might expect
 // TModel before TRenderable, but it's like this for a good reason. Type
-// parameters that can be inferred can be omitted, and although use of this
-// function won't be able to infer TLoadBundle or TRenderable, it will infer
-// TModel because it's in a parameter.
-func Render[TLoadBundle any, TRenderable Renderable[TLoadBundle, TModel, TRenderable], TModel any](
+// parameters that can be inferred can be omitted, and in general use of Render
+// only TRenderable needs to be included. Both TModel and TRenderable are
+// inferred and should be omitted.
+func Render[TRenderable Renderable[TLoadBundle, TModel, TRenderable], TLoadBundle any, TModel any](
     ctx context.Context, e db.Executor, baseParams *pbaseparam.BaseParams, model TModel,
 ) (TRenderable, error) {
     var renderable TRenderable
@@ -447,8 +447,8 @@ func Render[TLoadBundle any, TRenderable Renderable[TLoadBundle, TModel, TRender
 }
 
 // RenderMany is similar to Render, but renders many API resources at once.
-func RenderMany[TLoadBundle any, TRenderable Renderable[TLoadBundle, TModel, TRenderable], TModel any](
-    ctx context.Context, e db.Executor, baseParams *pbaseparam.BaseParams, models []TModel,
+func RenderMany[TRenderable Renderable[TLoadBundle, TModel, TRenderable], TLoadBundle any, TModel any](
+    ctx context.Context, e db.Executor, baseParams *pbaseparam.BaseParams, models [TModel,
 ) ([]TRenderable, error) {
     var renderable TRenderable
 
@@ -469,6 +469,8 @@ func RenderMany[TLoadBundle any, TRenderable Renderable[TLoadBundle, TModel, TRe
     return resources, nil
 }
 ```
+
+**Edit (2024/06/14):** This section was updated after [Roman](https://github.com/roman-vanesyan) [pointed out](https://github.com/brandur/sorg/issues/368) that by swapping the positions of two generic parameters, most of them can be inferred by the compiler, and `Render` can be called with only a single generic parameter.
 
 ### Nested resources (#nested-resources)
 

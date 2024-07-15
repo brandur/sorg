@@ -11,6 +11,46 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-07-14T19:03:52-07:00
+  description = """\
+I've updated [The Two-phase Data Load and Render Pattern in Go](/two-phase-render) after [Roman](https://github.com/roman-vanesyan) [pointed out](https://github.com/brandur/sorg/issues/368) that if we swap the position of two generic parameters in `Render`, another generic parameter can be inferred, and every invocation gets considerably cleaner.
+
+Previously, `Render` looked like this:
+
+``` go
+func Render[TLoadBundle any, TRenderable Renderable[TLoadBundle, TModel, TRenderable], TModel any](
+    ctx context.Context, e db.Executor, baseParams *pbaseparam.BaseParams, model TModel,
+) (TRenderable, error)
+```
+
+And was invoked like:
+
+``` go
+resource, err := apiresource.Render[*apiresourcekind.ProductLoadBundle, *apiresourcekind.Product](
+  ctx, tx, svc.BaseParams, product
+)
+```
+
+In the updated version, the positions of the first two generic parameters are swapped:
+
+``` go
+func Render[TRenderable Renderable[TLoadBundle, TModel, TRenderable], TLoadBundle any, TModel any](
+    ctx context.Context, e db.Executor, baseParams *pbaseparam.BaseParams, model TModel,
+) (TRenderable, error) {
+```
+
+And the function can now be invoked like this:
+
+``` go
+resource, err := apiresource.Render[*apiresourcekind.Product](
+  ctx, tx, svc.BaseParams, product
+)
+```
+
+**Much** cleaner. A caller no longer even needs to know that the load bundle exists. At work I applied the fix to our hundreds of lines of existing calls, and the difference in readability is night and day.
+"""
+
+[[atoms]]
   published_at = 2024-07-11T07:54:40-07:00
   description = """\
 [River Python](https://riverqueue.com/blog/river-python) is shipped (with a huge assist from [Eric Hauser](https://github.com/ewhauser), who contributed all the original code), enabling insertion of jobs in Python that will be worked in Go. It supports all the normal insert features including unique jobs and batch insertion, along with Python-specific stretch goals like exported type signatures, async I/O, and a `@dataclass`-friendly `JobArgs` protocol.
