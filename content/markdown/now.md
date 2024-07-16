@@ -1,12 +1,12 @@
-<!--
+
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery, Berlin" class="lg:rounded-lg w-full">
+    <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full">
 </div>
--->
+
 
 ## RBAC, Python (#rbac)
 
