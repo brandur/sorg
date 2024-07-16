@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-07-16T07:44:19-07:00
+  description = """\
+Golang Weekly notes that Go has jumped to the 7th position on the <a href="https://www.tiobe.com/tiobe-index/" rel="nofollow">TIOBE index</a>, which measures programming language popularity.
+
+The rankings are still hard to believe (does anyone actually believe there's more C++ development happening than JS/TS?), but even so, a positive sign!
+"""
+
+[[atoms]]
   published_at = 2024-07-14T19:03:52-07:00
   description = """\
 I've updated [The Two-phase Data Load and Render Pattern in Go](/two-phase-render) after [Roman](https://github.com/roman-vanesyan) [pointed out](https://github.com/brandur/sorg/issues/368) that if we swap the position of two generic parameters in `Render`, another generic parameter can be inferred, and every invocation gets considerably cleaner.
