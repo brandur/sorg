@@ -10,6 +10,216 @@
 ################################################################################
 
 [[readings]]
+title = "On Trails: An Exploration"
+authors = ["Robert Moor"]
+num_pages = 352
+published_year = 2016
+rating = 0
+read_at = 2024-07-16T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Stories of Your Life"
+authors = ["Ted Chiang"]
+num_pages = 100
+published_year = 2002
+rating = 0
+read_at = 2024-07-05T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Moonbound"
+authors = ["Robin Sloan"]
+num_pages = 432
+published_year = 2024
+rating = 0
+read_at = 2024-07-05T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The High Sierra: A Love Story"
+authors = ["Kim Stanley Robinson"]
+num_pages = 560
+published_year = 2022
+rating = 0
+read_at = 2024-07-02T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Anxious Generation"
+authors = ["Jonathan Haidt"]
+num_pages = 400
+published_year = 2024
+rating = 0
+read_at = 2024-06-24T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Future of Freedom: Illiberal Democracy at Home and Abroad"
+authors = ["Fareed Zakaria"]
+num_pages = 295
+published_year = 2003
+rating = 0
+read_at = 2024-06-12T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Consider Phlebas"
+authors = ["Iain M. Banks"]
+num_pages = 467
+published_year = 1987
+rating = 0
+read_at = 2024-06-05T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Blood, Sweat & Chrome: The Wild and True Story of Mad Max: Fury Road"
+authors = ["Kyle Buchanan"]
+num_pages = 384
+published_year = 2022
+rating = 0
+read_at = 2024-05-14T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Underland: A Deep Time Journey"
+authors = ["Robert Macfarlane"]
+num_pages = 496
+published_year = 2019
+rating = 0
+read_at = 2024-05-02T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Causes of Separation"
+authors = ["Travis J.I. Corcoran"]
+num_pages = 772
+published_year = 2017
+rating = 0
+read_at = 2024-04-19T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Powers of the Earth"
+authors = ["Travis J.I. Corcoran"]
+num_pages = 663
+published_year = 2017
+rating = 0
+read_at = 2024-04-08T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The First Confessor"
+authors = ["Terry Goodkind"]
+num_pages = 481
+published_year = 2012
+rating = 0
+read_at = 2024-04-06T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Price of Time: The Real Story of Interest"
+authors = ["Edward Chancellor"]
+num_pages = 432
+published_year = 2022
+rating = 0
+read_at = 2024-03-21T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Tombs of Atuan"
+authors = ["Ursula K. Le Guin"]
+num_pages = 180
+published_year = 1971
+rating = 0
+read_at = 2024-03-12T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Theft of Fire"
+authors = ["Devon Eriksen"]
+num_pages = 500
+published_year = 2023
+rating = 0
+read_at = 2024-03-10T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Hike"
+authors = ["Drew Margary"]
+num_pages = 278
+published_year = 2016
+rating = 0
+read_at = 2024-02-26T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Stranger"
+authors = ["Albert Camus"]
+num_pages = 123
+published_year = 1942
+rating = 0
+read_at = 2024-02-23T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Getting Stoned with Savages: A Trip Through the Islands of Fiji and Vanuatu"
+authors = ["J. Maarten Troost"]
+num_pages = 239
+published_year = 2006
+rating = 0
+read_at = 2024-02-22T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "Postmortal"
+authors = ["Drew Margary"]
+num_pages = 369
+published_year = 2011
+rating = 0
+read_at = 2024-02-17T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "A Wizard of Earthsea"
+authors = ["Ursula K. Le Guin"]
+num_pages = 183
+published_year = 1968
+rating = 0
+read_at = 2024-02-13T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
+title = "The Libranos"
+authors = ["Ezra Levant"]
+num_pages = 124
+published_year = 2019
+rating = 0
+read_at = 2024-02-12T12:00:00-07:00
+review = """\
+"""
+
+[[readings]]
 title = "Abroad in Japan"
 authors = ["Chris Broad"]
 num_pages = 320
