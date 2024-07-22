@@ -5,7 +5,6 @@ linters:
     - depguard
     - dupl
     - exhaustruct
-    - exhaustivestruct
     - forcetypeassert
     - funlen
     - gochecknoinits
@@ -16,6 +15,7 @@ linters:
     - godox
     - gomnd
     - lll
+    - mnd
     - nlreturn
     - paralleltest
     - testpackage
@@ -24,17 +24,6 @@ linters:
 
     # buggy
     - execinquery
-
-    # deprecated
-    - deadcode
-    - golint
-    - ifshort
-    - interfacer
-    - maligned
-    - nosnakecase
-    - scopelint
-    - structcheck
-    - varcheck
   enable-all: true
 
 linters-settings:

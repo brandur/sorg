@@ -79,9 +79,7 @@ func main() {
 	var wg sync.WaitGroup
 	wg.Add(parallelWorkers)
 
-	for i := 0; i < parallelWorkers; i++ {
-		workerNum := i
-
+	for workerNum := range parallelWorkers {
 		go func() {
 			for _, path := range imageBatches[workerNum] {
 				lastCommitTime, err := getLastCommitTime(path)
@@ -117,7 +115,7 @@ func batchImages(allImages []string) [][]string {
 	batches := make([][]string, parallelWorkers)
 	imagesPerWorker := int(math.Ceil(float64(len(allImages)) / float64(parallelWorkers-1)))
 
-	for i := 0; i < parallelWorkers; i++ {
+	for i := range parallelWorkers {
 		startIndex := i * imagesPerWorker
 		endIndex := minInt((i+1)*imagesPerWorker, len(allImages))
 

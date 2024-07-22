@@ -376,7 +376,7 @@ func GroupTwitterByYearAndMonth(tweets []*Tweet) []*TweetYear {
 // needed otherwise.
 func retryOnce(c *modulir.Context, f func() error) error {
 	var err error
-	for i := 0; i < 2; i++ {
+	for range 2 {
 		err = f()
 		if err != nil {
 			c.Log.Errorf("Errored, but retrying once: %v", err)

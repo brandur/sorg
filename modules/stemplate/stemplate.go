@@ -262,7 +262,7 @@ func timeInLocal(t time.Time) time.Time {
 
 func toStars(n int) string {
 	var stars string
-	for i := 0; i < n; i++ {
+	for range n {
 		stars += "★ "
 	}
 	return toNonBreakingWhitespace(stars)

@@ -69,7 +69,7 @@ func buildTree(headers []*header) *html.Node {
 			// indent
 
 			// for each level indented, create a new nested list
-			for i := 0; i < (header.level - level); i++ {
+			for range header.level - level {
 				listNode = &html.Node{Data: "ol", Type: html.ElementNode}
 				listItemNode.AppendChild(listNode)
 
@@ -84,7 +84,7 @@ func buildTree(headers []*header) *html.Node {
 
 			// for each level outdented, move up two parents, one for list item
 			// and one for list
-			for i := 0; i < (level - header.level); i++ {
+			for range level - header.level {
 				listItemNode = listNode.Parent
 				listNode = listItemNode.Parent
 
