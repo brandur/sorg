@@ -10,13 +10,27 @@
 ################################################################################
 
 [[readings]]
+title = "Four Thousand Weeks"
+authors = ["Oliver Burkeman"]
+num_pages = 273
+published_year = 2021
+rating = 2
+read_at = 2024-07-23T15:21:42-07:00
+review = """\
+A moderately useful book with an incredibly inspired title. Four thousand weeks is the number of weeks in a human lifetime assuming that a person lives until 80, and stopping to reflect on that for a moment may be as affecting to your life as the rest of the contents of the book. That said, it is a nice compendium of exercises, philosophy, and other material relevant to its core theme of mortality.
+
+I'm giving it a relatively low rating because I found it grating that despite writing about the subject of the finitude of life, the author somehow manages to veer off subject to talk about Donald Trump multiple times, naturally not wasting an opportunity to spit on him and the 50% of Americans who vote for him. Burkeman's an Englishman who lives in England, but like any dutiful media-deranged coastal illiberal, more interested in American politics than his own.
+"""
+
+[[readings]]
 title = "On Trails: An Exploration"
 authors = ["Robert Moor"]
 num_pages = 352
 published_year = 2016
-rating = 0
+rating = 2
 read_at = 2024-07-16T12:00:00-07:00
 review = """\
+Various anecdotes and reflection on hiking, and a few hikes in particular like the Appalachian Trail. There's a few interesting stories, but overall quite a bit longer than that content merits, and the attempts at deep philosophy fall flat.
 """
 
 [[readings]]
@@ -24,9 +38,10 @@ title = "Stories of Your Life"
 authors = ["Ted Chiang"]
 num_pages = 100
 published_year = 2002
-rating = 0
+rating = 3
 read_at = 2024-07-05T12:00:00-07:00
 review = """\
+The short story that inspired Denis Villeneuve's _Arrival_. I'm so glad this story exists because it produced a truly incredible film. The stories have similar concepts but are different, and you can see that clear refinement that went _Stories of Your Life_ to produce the more polished, more dramatic movie. It's very short, and worth the read.
 """
 
 [[readings]]
@@ -34,9 +49,10 @@ title = "Moonbound"
 authors = ["Robin Sloan"]
 num_pages = 432
 published_year = 2024
-rating = 0
+rating = 3
 read_at = 2024-07-05T12:00:00-07:00
 review = """\
+A very original contemporary fantasy. I really appreciated the prose which is direct and light, making reading the book a breeze. Quite heavy on deus ex machina, especially towards the end.
 """
 
 [[readings]]
@@ -44,9 +60,10 @@ title = "The High Sierra: A Love Story"
 authors = ["Kim Stanley Robinson"]
 num_pages = 560
 published_year = 2022
-rating = 0
+rating = 3
 read_at = 2024-07-02T12:00:00-07:00
 review = """\
+A well put together book contemplating the High Sierra in a variety of ways. Everything from history (e.g. John Muir), to personal history, to geology, to practical trail recommendations, to poetic prose on what it's like to backpack. There are a few sections that are painful to read, like his lengthy deliberations on which mountains should be renamed because he doesn't like who they were named after, but overall, a good read.
 """
 
 [[readings]]
@@ -54,9 +71,10 @@ title = "The Anxious Generation"
 authors = ["Jonathan Haidt"]
 num_pages = 400
 published_year = 2024
-rating = 0
+rating = 4
 read_at = 2024-06-24T12:00:00-07:00
 review = """\
+A book on our relationship with technology and smartphones, especially where it pertains to kids. Written succinctly, and well worth the time. I truly believe this is one of the most important issues of our time, and chronically underdiscussed and/or wholesale dismissed.
 """
 
 [[readings]]
@@ -74,9 +92,10 @@ title = "Consider Phlebas"
 authors = ["Iain M. Banks"]
 num_pages = 467
 published_year = 1987
-rating = 0
+rating = 2
 read_at = 2024-06-05T12:00:00-07:00
 review = """\
+This is partly my fault, but based on the number of Culture Series recommendations I've seen over the years I expected it to be a more unique, cerebral form of scifi. It's not, and very much in the style of a Star Wars-esque space opera, with the protagonist (who I'm still not sure if I was supposed to be rooting for or not) going around blasting his way through every situation. It's got some original universe building, but didn't do much for me.
 """
 
 [[readings]]
@@ -84,9 +103,12 @@ title = "Blood, Sweat & Chrome: The Wild and True Story of Mad Max: Fury Road"
 authors = ["Kyle Buchanan"]
 num_pages = 384
 published_year = 2022
-rating = 0
+rating = 2
 read_at = 2024-05-14T12:00:00-07:00
 review = """\
+_Fury Road_ has got to be one of my favorite movies of all time, and getting a behind the scenes play by play on how this film came about is fascinating. I had no idea that it'd been shot in Namibia (country just northwest of South Africa), and it's fairly amazing that they went through the Herculean trouble of transporting their fleet of wasteland vehicles for on-location filming.
+
+Lots of good first hand accounts from production personnel and actors, although I find it dragged on a little too long, and the narrative of the incredible genius of George Miller and the production team is blemished somewhat by the far more mediocre and colosally underperforming sequel (_Furiosa_) that was just released. Also, like any single-minded, college-educated coastal Californian, Buchanan couldn't resist talking about Donald Trump, despite having to detour about a thousand miles off the book's subject matter to do so.
 """
 
 [[readings]]
