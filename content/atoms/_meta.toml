@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-07-25T14:04:43-07:00
+  description = """\
+Published fragment [Elden Ring](/fragments/elden-ring), on how I broke my promise never to give FromSoftware money again, and it was okay.
+"""
+
+[[atoms]]
   published_at = 2024-07-16T07:44:19-07:00
   description = """\
 Golang Weekly notes that Go has jumped to the 7th position on the <a href="https://www.tiobe.com/tiobe-index/" rel="nofollow">TIOBE index</a>, which measures programming language popularity.
