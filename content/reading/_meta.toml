@@ -10,6 +10,17 @@
 ################################################################################
 
 [[readings]]
+title = "The Farthest Shore"
+authors = ["Ursula K. Le Guin"]
+num_pages = 259
+published_year = 1972
+rating = 4
+read_at = 2024-07-26T07:40:59-07:00
+review = """\
+Charming. This third book in the series leans a little too heavily on deus ex machina and previous book callbacks, but it's succinct, and Le Guin's writing is downright poetic.
+"""
+
+[[readings]]
 title = "Four Thousand Weeks"
 authors = ["Oliver Burkeman"]
 num_pages = 273
