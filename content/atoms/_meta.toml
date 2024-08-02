@@ -11,6 +11,28 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-08-02T07:45:19-07:00
+  description = """\
+After coming off the absolute blight on human consciousness that was _The Acolyte_, I found myself wanting to go back and watch the original Star Wars trilogy.
+
+I was a teen when its "Special Edition" revisions were released, and I remembered that George Lucas had gone on record at the time saying that these were now the definitive versions of the movies. But that was decades ago, and I'd just assumed that the smallest modicum of rationality had won out since then, and HD versions of the theatrical releases had gone out. I mean -- the menagerie of Jar Jar-esque CGI critters on Tatooine and Han walking over Jabba's tail -- it's all _so_ clownish that no one could possibly have stuck to that line. Right?
+
+Wrong. I watched a few minutes of the latest Blu-ray release and it was painful. It's all in there. Even in the 90s the CGI looked awful. Now, it's a punchline.
+
+Scrounging the web, I came across [Project 4K77](https://www.thestarwarstrilogy.com/project-4k77/) ('77 is when _A new Hope_ came out), also hosting Project 4K80 and 4K83 for _Empire_ and _Jedi_, where fans have scanned 35 mm film frame by frame to 4K resolution, and painstakingly cleaned up the whole collection to approach modern standards.
+
+I watched a copy, and it was incredible. Not only is all the Special Edition garbage gone, but it looks considerably better than Lucasfilm's Blu-ray restoration. It's grainy, but left that way on purpose to stay true to the original theatrical release.
+
+I'm at the point now that I'm pretending no Star Wars past the original trilogy exists. Who could possibly have guessed not only how badly the prequels would turn out, but that the sequel trilogy would be _even worse_, and TV follow ups down in the gutter with it.
+
+Oh, and mercifully, Han shoots first.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/qs4vz9vwx0bqj2j6oxhig/han.jpg?rlkey=04o8vd57uneikog4ne9ciw6po&dl=1"
+    no_crop = true
+    slug = "han"
+
+[[atoms]]
   published_at = 2024-07-25T14:04:43-07:00
   description = """\
 Published fragment [Elden Ring](/fragments/elden-ring), on how I broke my promise never to give FromSoftware money again, and it was okay.
