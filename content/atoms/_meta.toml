@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-08-11T11:52:37-07:00
+  description = """\
+Published fragment [Your Go version CI matrix might be wrong](/fragments/go-version-matrix), on how as of Go 1.21, Go fetches toolchains automatically, and it's easy to not be running the version that you thought you were running.
+"""
+
+[[atoms]]
   published_at = 2024-08-02T07:45:19-07:00
   description = """\
 After coming off the absolute blight on human consciousness that was _The Acolyte_, I found myself wanting to go back and watch the original Star Wars trilogy.
