@@ -7,18 +7,23 @@
     <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full">
 </div>
 
+## Pen testing, Q3, DC
 
-## RBAC, Python (#rbac)
+It's August. I don't have anything of substance to write about, so here's a couple short points instead:
 
-I'm in San Francisco.
+* We're currently running a pen test with an external contractor. They're the best one we've worked with so far, and a number of legitimate liabilities have fallen out of it. I've spent the last few weeks shoring up the walls.
 
-I'm working on rebuilding Bridge's RBAC (role-based access control) system, taking inspiration from [Tailscale's substantial write up on the subject](https://tailscale.com/blog/rbac-like-it-was-meant-to-be), which seems to be the most contemporary thinking on the subject from practioners who _also_ do a good job of it in their own product. Dozens of companies selling enterprise security solutions have strong opinions on the subject, but it doesn't inspire much confidence when their own offerings are of middling quality.
+* My main macro project continues to be rebuilding our roles system. There's been a lot of smaller distractions, and refactoring existing code to make what I'm envisioning possible has taken longer than I expected.
 
-I've been relearning Python to help build a [River's Python client library](https://github.com/riverqueue/riverqueue-python). The language's been a mixed bag overall, but it's been interesting diving into typing, asyncio, and tooling like [Rye](https://github.com/astral-sh/rye), none of which existed the last time I worked in the language.
+* I've acquired a new toy, a Leica Q3. I finally ordered one the week before prices were set to increase. Leicas are bad deals and I'm old enough now to know very definitively that new consumer products will never make you happy, but what the hell, I hadn't bought anything substantial in a long time.
+
+* I'm headed to Washington DC in a few weeks, the first time I'll have ever visited the nation's capital. I've heard mixed things, and honestly can't say whether I'll love or hate it.
+
+* I've been playing way too much [_Elden Ring_](/fragments/elden-ring), a game I thought I'd hate like other FromSoft games, but which I now acknowledge is a masterpiece of both worldbuilding and gameplay design.
 
 <div class="not-prose">
     <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Jul 8, 2023</span>.
+        <span class="font-bold">Aug 11, 2023</span>.
     </p>
 </div>
 
@@ -27,6 +32,16 @@ I've been relearning Python to help build a [River's Python client library](http
 / ---------------------------------------------------------------------------- 
 / OLD
 / ---------------------------------------------------------------------------- 
+
+## Jul 8, 2023
+
+## RBAC, Python (#rbac)
+
+I'm in San Francisco.
+
+I'm working on rebuilding Bridge's RBAC (role-based access control) system, taking inspiration from [Tailscale's substantial write up on the subject](https://tailscale.com/blog/rbac-like-it-was-meant-to-be), which seems to be the most contemporary thinking on the subject from practioners who _also_ do a good job of it in their own product. Dozens of companies selling enterprise security solutions have strong opinions on the subject, but it doesn't inspire much confidence when their own offerings are of middling quality.
+
+I've been relearning Python to help build a [River's Python client library](https://github.com/riverqueue/riverqueue-python). The language's been a mixed bag overall, but it's been interesting diving into typing, asyncio, and tooling like [Rye](https://github.com/astral-sh/rye), none of which existed the last time I worked in the language.
 
 ## May 5, 2023
 
