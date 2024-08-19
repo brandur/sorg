@@ -2861,9 +2861,17 @@ video {
   line-height: 1rem;
 }
 
+.prose-code\:prose-p\:text-\[0\.7rem\] :is(:where(p):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
+  font-size: 0.7rem;
+}
+
 .prose-code\:prose-p\:text-sm :is(:where(p):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.prose-code\:prose-a\:text-\[0\.7rem\] :is(:where(a):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
+  font-size: 0.7rem;
 }
 
 .prose-code\:prose-a\:text-sm :is(:where(a):not(:where([class~="not-prose"] *))) :is(:where(code):not(:where([class~="not-prose"] *))) {
