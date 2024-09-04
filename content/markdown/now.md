@@ -1,3 +1,4 @@
+<!--
 
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
@@ -6,6 +7,32 @@
             ">
     <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full">
 </div>
+
+-->
+
+It's September, although in California, it's hard to notice.
+
+I was in Washington DC last week for a company off-site, a once a year event where our team converges in one location. My first time in the city, I toured the length of the National Mall and its supremely iconic landmarks. At almost 40C and that incredible east coast humidity, it was a sweaty affair (but neat!).
+
+Bridge is going well. We shipped a lot this past year, and gotten to a point where it's quite a mature product. As always, our core competency is hosting Postgres, which implies stability, and to some extent being boring and predictable, but our platform and analytics teams are working on big, ambitious projects, so it feels like we've got a couple moonshots in flight.
+
+Years in, our code is as clean and stable as any project I've ever seen of this age, and 100x better than many. I just ran our test suite on my underpowered, commodity laptop, and we're sitting at 4237 tests running in 27.595s, which is great. Last week I pushed through a big test refactor (+41,168 LOC, −29,160) so that not only are all tests marked as pararallelizable, but all _subtests_ of those tests too. We're on Go 1.23 of course, and refactor regularly so that convention is strong and everything is in ship shape.
+
+I'm not working on AI, and indeed may be the last person in San Francisco (and soon, the world?) who's never typed anything into an AI prompt.
+
+<div class="not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Sep 04, 2023</span>.
+    </p>
+</div>
+
+<!--
+
+/ ---------------------------------------------------------------------------- 
+/ OLD
+/ ---------------------------------------------------------------------------- 
+
+## Aug 11, 2023
 
 ## Pen testing, Q3, DC
 
@@ -20,18 +47,6 @@ It's August. I don't have anything of substance to write about, so here's a coup
 * I'm headed to Washington DC in a few weeks, the first time I'll have ever visited the nation's capital. I've heard mixed things, and honestly can't say whether I'll love or hate it.
 
 * I've been playing way too much [_Elden Ring_](/fragments/elden-ring), a game I thought I'd hate like other FromSoft games, but which I now acknowledge is a masterpiece of both worldbuilding and gameplay design.
-
-<div class="not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Aug 11, 2023</span>.
-    </p>
-</div>
-
-<!--
-
-/ ---------------------------------------------------------------------------- 
-/ OLD
-/ ---------------------------------------------------------------------------- 
 
 ## Jul 8, 2023
 
