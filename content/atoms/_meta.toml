@@ -11,9 +11,15 @@
 ################################################################################
 
 [[atoms]]
-  published_at = 2024-08-11T11:52:37-07:00
+  published_at = 2024-09-05T15:24:21-07:00
   description = """\
-Published fragment [Your Go version CI matrix might be wrong](/fragments/go-version-matrix), on how as of Go 1.21, Go fetches toolchains automatically, and it's easy to not be running the version that you thought you were running.
+I pushed a new version of [redis-cell](https://github.com/brandur/redis-cell) today, a project that I still somewhat maintain, but only touch once a year or so.
+
+While looking into another issue that someone had filed, I got the bright idea to update the project's dependencies. That was a mistake, and I ended up sinking hours into fixing calls to the `time` crate. It wasn't just that a few breaking changes had been introduced -- no, the _entire_ API had changed, and every use of any function or type from the create had to be fixed. There was no upgrade guide.
+
+I really want to like Rust, but something like this happens every time I go back to the language. This wasn't some novel third party dependency that broke. It was _time_, one of the most core facilities of any programming language, and although the changes that broke me are older now, a cursory look at the project's changelog shows that it's regularly deprecating/changing API on recent versions.
+
+Zero cost abstractions are cool, but you know what I like better? Stability.
 """
 
 [[atoms]]
