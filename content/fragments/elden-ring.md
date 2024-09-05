@@ -22,7 +22,7 @@ Some miscellaneous notes. I know that I'm the last person on Earth to play this 
 
 * The challenge is frustrating (god I hate being killed by every boss in three hits regardless of upgrades), but it's a fairly rare novelty. I'm often struck these days by how most AAA titles are now the same game.
 
-    Squint a little and _Horizon Zero Dawn_ is the same game as _God of War_ which is the same game as the latest Batman _Arkham_ which is the same game as the latest _Grand Theft Auto_. They all have variations in terms of mechanics and theme, but they're all open worlds with light RPG elements. A common element to all of them is by leveling normally as the story progress, every encounter is basically "mash buttons to win". I don't always love _Elden Ring's_ difficulty, but you have to give them one thing -- it's different.
+    Squint a little and _Horizon Zero Dawn_ is the same game as _God of War_ which is the same game as the latest Batman _Arkham_ which is the same game as the latest _Grand Theft Auto_. They all have variations in terms of mechanics and theme, but they're all open worlds with light RPG elements. A common factor to all of them is by leveling normally as the story progress, every encounter is basically "mash buttons to win". I don't always love _Elden Ring's_ difficulty, but you have to give them one thing -- it's different.
 
 * The leveling slope is a shallow incline (many extra levels yield marginal increases in power), and it's a good thing. In most games going to a high level area is an iron clad death sentence as you're obliterated instantly, if you're even allowed to go there. In _Elden Ring_ it often is too, but it lets good players move faster to higher level areas and even bad ones to carefully explore there.
 
