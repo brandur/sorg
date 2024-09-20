@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-09-20T04:53:58-07:00
+  description = """\
+Published fragment [Direnv's `source_env`, and how to manage project configuration](/fragments/direnv-source-env), on how I accidentally stumbled across the `source_env` directive and dramatically improved my configuration methodology overnight.
+"""
+
+[[atoms]]
   published_at = 2024-09-05T15:24:21-07:00
   description = """\
 I pushed a new version of [redis-cell](https://github.com/brandur/redis-cell) today, a project that I still somewhat maintain, but only touch once a year or so.
