@@ -217,9 +217,9 @@ func numberWithDelimiter(sep rune, n int) string {
 // kilometer.
 func pace(distance float64, duration time.Duration) string {
 	speed := duration.Seconds() / inKM(distance)
-	min := int64(speed / 60.0)
-	sec := int64(speed) % 60
-	return fmt.Sprintf("%v:%02d", min, sec)
+	minutes := int64(speed / 60.0)
+	seconds := int64(speed) % 60
+	return fmt.Sprintf("%v:%02d", minutes, seconds)
 }
 
 func randIntn(bound int) int {
