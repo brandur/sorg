@@ -22,7 +22,7 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
 
 <div class="not-prose">
     <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Sep 04, 2023</span>.
+        <span class="font-bold">Sep 04, 2024</span>.
     </p>
 </div>
 
