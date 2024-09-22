@@ -11,6 +11,17 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-09-22T14:50:44-07:00
+  slug = "086"
+  title = "County Highway"
+  description = """
+I've been very casually searching for a copy of _County Highway_ since they started publishing a year ago. It's a great concept -- a paper only newspaper published on American-centric topics in a traditional style. The _County Highway_ website publishes a list of bookstores and shops where it's available, but I'd tried a few of the ones in San Francisco and came up empty. On a bike ride today I did a short detour over to _Mollusk Surf Shop_ by the Great Walkway (a beautiful little store), and there sitting on the table, a whole stack of them. At last.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/op2sucf5gtc246jqma00p/L1000055-adjusted.jpg?rlkey=j26r4uxb9n8jytfqbn2kqsedm&dl=1"
+    slug = "086"
+
+[[entries]]
   published_at = 2024-06-01T10:13:48-07:00
   slug = "085"
   title = "BER"

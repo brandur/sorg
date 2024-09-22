@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-09-22T14:50:44-07:00
+  description = """\
+Published [sequence 086](/sequences/086), County Highway.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/086"
+    original_image_url = "https://www.dropbox.com/scl/fi/op2sucf5gtc246jqma00p/L1000055-adjusted.jpg?rlkey=j26r4uxb9n8jytfqbn2kqsedm&dl=1"
+    slug = "county-highway"
+
+[[atoms]]
   published_at = 2024-09-20T04:53:58-07:00
   description = """\
 Published fragment [Direnv's `source_env`, and how to manage project configuration](/fragments/direnv-source-env), on how I accidentally stumbled across the `source_env` directive and dramatically improved my configuration methodology overnight.
