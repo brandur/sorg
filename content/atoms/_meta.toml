@@ -13,6 +13,14 @@
 [[atoms]]
   published_at = 2024-09-22T14:50:44-07:00
   description = """\
+Published [Real World Performance Gains With Postgres 17 B-tree Bulk Scans](https://www.crunchydata.com/blog/real-world-performance-gains-with-postgres-17-btree-bulk-scans), in which we benchmark one of our API endpoints and get a 30% throughput improvement, with 20% drop in response time.
+
+As long as you make heavy use of eager loading (which every serious application does to remove N+1s), Postgres 17 looks to be one of these releases where all you have to do is upgrade, and reap a major performance gain for free.
+"""
+
+[[atoms]]
+  published_at = 2024-09-22T14:50:44-07:00
+  description = """\
 Published [sequence 086](/sequences/086), County Highway.
 """
   [[atoms.photos]]
