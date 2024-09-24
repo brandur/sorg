@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2024-09-24T11:38:37-07:00
   description = """\
-Published fragment [A few secure, random bytes without `pgcrypto`](/fragments/secure-bytes-without-pcrypto), on avoiding the `pgcrypto` extension and its OpenSSL dependency by generating cryptographically secure randomness through `gen_random_uuid()`.
+Published fragment [A few secure, random bytes without `pgcrypto`](/fragments/secure-bytes-without-pgcrypto), on avoiding the `pgcrypto` extension and its OpenSSL dependency by generating cryptographically secure randomness through `gen_random_uuid()`.
 """
 
 [[atoms]]
