@@ -84,7 +84,7 @@ Given our use of `pgcrypto` is so limited, and we only need ten random bytes at 
 -- the first five bytes and last bytes out of it (thus avoiding
 -- versioning bits in the middle). This is a roundabout way of
 -- doing this, but is done to avoid a dependency on the pgcrypto
--- extension just to get gen_random_bytes()`.
+-- extension just to get `gen_random_bytes()`.
 --
 -- `uuid_send()` changes `uuid` to `bytea`.
 random_uuid = uuid_send(gen_random_uuid());
