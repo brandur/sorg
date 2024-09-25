@@ -51,7 +51,7 @@ So secure randomness is available without needing to dip into OpenSSL or `pgcryp
 
 ## Roundabout randomness (#roundabout-randomness)
  
-Luckily, there's a workaround. `pg_strong_random()` is called through another function that's exported to userspace, Postgres 13's `gen_random_uuid()` which generates a V6 UUID that's secure, random data with the exception of six variant/version bits in the middle:
+Luckily, there's a workaround. `pg_strong_random()` is called through another function that's exported to userspace, Postgres 13's `gen_random_uuid()` which generates a V4 UUID that's secure, random data with the exception of six variant/version bits in the middle:
  
  ``` c
 Datum
