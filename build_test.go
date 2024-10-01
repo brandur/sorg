@@ -54,3 +54,22 @@ func TestPagePathKey(t *testing.T) {
 	require.Equal(t, "really/deep/about", pagePathKey("./pages/really/deep/about.ace"))
 	require.Equal(t, "really/deep/about", pagePathKey("./pages-drafts/really/deep/about.ace"))
 }
+
+func TestSimplifyMarkdownForSummary(t *testing.T) {
+	require.Equal(t, "check that links are removed", simplifyMarkdownForSummary("check that [links](/link) are removed"))
+	require.Equal(t, "double new lines are gone", simplifyMarkdownForSummary("double new\n\nlines are gone"))
+	require.Equal(t, "single new lines are gone", simplifyMarkdownForSummary("single new\nlines are gone"))
+	require.Equal(t, "space is trimmed", simplifyMarkdownForSummary(" space is trimmed "))
+}
+
+func TestTruncateString(t *testing.T) {
+	require.Equal(t, "Short string unchanged.", truncateString("Short string unchanged.", 100))
+
+	exactly100Length := strings.Repeat("s", 100)
+	require.Equal(t, exactly100Length, truncateString(exactly100Length, 100))
+
+	require.Equal(t,
+		"This is a longer string that's going to need truncation and which will be truncated by ending it w …",
+		truncateString("This is a longer string that's going to need truncation and which will be truncated by ending it with a space and an ellipsis.", 100),
+	)
+}

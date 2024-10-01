@@ -17,6 +17,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 	"sync"
@@ -1996,7 +1997,7 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 	}
 
 	card := &twitterCard{
-		Description: fmt.Sprintf("Published %s.", atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST")),
+		Description: truncateString(simplifyMarkdownForSummary(atom.Description), 200),
 		ImageURL:    "", // empty defaults to site favicon
 		Title:       title,
 	}
@@ -2020,6 +2021,22 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 	}
 
 	return true, nil
+}
+
+var markdownLinkRE = regexp.MustCompile(`\[(.*?)\]\(.*?\)`)
+
+func simplifyMarkdownForSummary(str string) string {
+	str = markdownLinkRE.ReplaceAllString(str, "$1")
+	str = strings.ReplaceAll(str, "\n\n", " ")
+	str = strings.ReplaceAll(str, "\n", " ")
+	return strings.TrimSpace(str)
+}
+
+func truncateString(str string, maxLength int) string {
+	if len(str) <= maxLength {
+		return str
+	}
+	return str[0:maxLength-2] + " …"
 }
 
 // Renders an Atom feed for atoms. The entries slice is assumed to be
