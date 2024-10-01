@@ -17,7 +17,7 @@ Published fragment [A few secure, random bytes without `pgcrypto`](/fragments/se
 """
 
 [[atoms]]
-  published_at = 2024-09-22T14:50:44-07:00
+  published_at = 2024-09-23T14:50:44-07:00
   description = """\
 Published [Real World Performance Gains With Postgres 17 B-tree Bulk Scans](https://www.crunchydata.com/blog/real-world-performance-gains-with-postgres-17-btree-bulk-scans), in which we benchmark one of our API endpoints and get a 30% throughput improvement, with 20% drop in response time.
 
