@@ -1432,9 +1432,9 @@ type twitterCard struct {
 	// Description is the description to show in the card.
 	Description string
 
-	// ImageURL is the URL to the image to show in the card. It should be
-	// absolute because Twitter will need to be able to fetch it from our
-	// servers. Leave blank if there is no image.
+	// ImageURL is the URL to the image to show in the card. An absolute URL
+	// will be preprended, so this should be a relative URL. A blank value will
+	// use the site's favicon.
 	ImageURL string
 
 	// Title is the title to show in the card.
@@ -1643,6 +1643,7 @@ func getAceOptions(dynamicReload bool) *ace.Options {
 // a few "special" values that are globally relevant to all templates.
 func getLocals(locals map[string]interface{}) map[string]interface{} {
 	defaults := map[string]interface{}{
+		"AbsoluteURL":       conf.AbsoluteURL,
 		"EnableGoatCounter": conf.EnableGoatCounter,
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
 		"LocalFonts":        conf.LocalFonts,
@@ -1850,7 +1851,7 @@ func renderArticle(ctx context.Context, c *modulir.Context, source string,
 		path.Join(c.SourceDir, "content", "images", article.Slug, "twitter@2x"),
 	)
 	if ok {
-		card.ImageURL = conf.AbsoluteURL + "/assets/images/" + article.Slug + "/twitter@2x." + format
+		card.ImageURL = "/assets/images/" + article.Slug + "/twitter@2x." + format
 	}
 
 	locals := getLocals(map[string]interface{}{
@@ -2001,8 +2002,8 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 	}
 	if len(atom.Photos) > 0 {
 		photo := atom.Photos[0]
-		card.ImageURL = fmt.Sprintf("%s/photographs/atoms/%s/%s_large@2x%s",
-			conf.AbsoluteURL, atom.Slug, photo.Slug, photo.TargetExt())
+		card.ImageURL = fmt.Sprintf("/photographs/atoms/%s/%s_large@2x%s",
+			atom.Slug, photo.Slug, photo.TargetExt())
 	}
 
 	locals := getLocals(map[string]interface{}{
@@ -2172,7 +2173,7 @@ func renderFragment(ctx context.Context, c *modulir.Context, source string,
 		path.Join(c.SourceDir, "content", "images", "fragments", fragment.Slug, "twitter@2x"),
 	)
 	if ok {
-		card.ImageURL = conf.AbsoluteURL + "/assets/images/fragments/" + fragment.Slug + "/twitter@2x." + format
+		card.ImageURL = "/assets/images/fragments/" + fragment.Slug + "/twitter@2x." + format
 	}
 
 	locals := getLocals(map[string]interface{}{
@@ -2801,8 +2802,8 @@ func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *Sequenc
 		photo := entry.Photos[0]
 		card = &twitterCard{
 			Description: "",
-			ImageURL: fmt.Sprintf("%s/photographs/sequences/%s_large@2x%s",
-				conf.AbsoluteURL, photo.Slug, photo.TargetExt()),
+			ImageURL: fmt.Sprintf("/photographs/sequences/%s_large@2x%s",
+				photo.Slug, photo.TargetExt()),
 			Title: title,
 		}
 	}

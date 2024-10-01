@@ -12,9 +12,9 @@
 <meta name="twitter:description" content="{{.TwitterCard.Description}}">
 
 {{if eq .TwitterCard.ImageURL ""}}
-<meta name="twitter:image" content="/assets/images/favicon/favicon-256.jpg">
+<meta name="twitter:image" content="{{.AbsoluteURL}}/assets/images/favicon/favicon-256.jpg">
 {{else}}
-<meta name="twitter:image" content="{{.TwitterCard.ImageURL}}">
+<meta name="twitter:image" content="{{.AbsoluteURL}}{{.TwitterCard.ImageURL}}">
 {{end}}
 
 {{end}}
