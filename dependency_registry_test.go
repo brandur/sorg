@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -64,4 +65,85 @@ func TestFindGoSubTemplates(t *testing.T) {
 	)
 	require.Equal(t, []string{}, findGoSubTemplates(`no templates here`))
 	require.Equal(t, []string{}, findGoSubTemplates(``))
+}
+
+func TestFormatHTMLPreservingScripts(t *testing.T) {
+	require.Equal(t, strings.TrimSpace(`
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      A title
+    </title>
+    <script type="module">
+      const A_CONSTANT = "a constant";
+
+      function setDocumentClasses(...classes) {
+          THEME_CLASS_ALL.forEach((themeClass) => {
+              if (classes.includes(themeClass)) {
+                  document.documentElement.classList.add(themeClass)
+              } else {
+                  document.documentElement.classList.remove(themeClass)
+              }
+          })
+      }
+	</script>
+  </head>
+  <body>
+    <script>const ONE_LINER = "one line constant";</script>
+    <script>
+      const A_CONSTANT = "a constant";
+
+      function setDocumentClasses(...classes) {
+          THEME_CLASS_ALL.forEach((themeClass) => {
+              if (classes.includes(themeClass)) {
+                  document.documentElement.classList.add(themeClass)
+              } else {
+                  document.documentElement.classList.remove(themeClass)
+              }
+          })
+      }
+	</script>
+  </body>
+</html>
+	`), formatHTMLPreservingScripts(strings.TrimSpace(`
+<!doctype html>
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+      <title>A title</title>
+    <script type="module">
+      const A_CONSTANT = "a constant";
+
+      function setDocumentClasses(...classes) {
+          THEME_CLASS_ALL.forEach((themeClass) => {
+              if (classes.includes(themeClass)) {
+                  document.documentElement.classList.add(themeClass)
+              } else {
+                  document.documentElement.classList.remove(themeClass)
+              }
+          })
+      }
+	</script>
+  </head>
+  <body>
+    <script>const ONE_LINER = "one line constant";</script>
+    <script>
+      const A_CONSTANT = "a constant";
+
+      function setDocumentClasses(...classes) {
+          THEME_CLASS_ALL.forEach((themeClass) => {
+              if (classes.includes(themeClass)) {
+                  document.documentElement.classList.add(themeClass)
+              } else {
+                  document.documentElement.classList.remove(themeClass)
+              }
+          })
+      }
+	</script>
+  </body>
+</html>
+`)))
 }

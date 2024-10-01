@@ -2,11 +2,14 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"context"
+	"fmt"
 	"html/template"
 	"io"
 	"os"
 	"regexp"
+	"strings"
 	"sync"
 
 	"golang.org/x/xerrors"
@@ -14,6 +17,7 @@ import (
 	"github.com/brandur/modulir"
 	"github.com/brandur/modulir/modules/mtemplatemd"
 	"github.com/brandur/sorg/modules/scommon"
+	"github.com/yosssi/gohtml"
 )
 
 //
@@ -98,8 +102,14 @@ func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context, c *modu
 		return err
 	}
 
-	if err := tmpl.Execute(writer, locals); err != nil {
+	var buf bytes.Buffer
+
+	if err := tmpl.Execute(&buf, locals); err != nil {
 		return xerrors.Errorf("error executing template: %w", err)
+	}
+
+	if _, err := writer.Write([]byte(formatHTMLPreservingScripts(buf.String()))); err != nil {
+		return xerrors.Errorf("error writing bytes: %w", err)
 	}
 
 	r.setDependencies(ctx, c, source, append(dependencies, includeMarkdownContainer.Dependencies...))
@@ -129,4 +139,31 @@ func findGoSubTemplates(templateData string) []string {
 	}
 
 	return subTemplateNames
+}
+
+var htmlScriptRE = regexp.MustCompile(`(?ms)<script[^>]*>.*?</script>`)
+
+// This is a workaround for a bug in gohtml wherein indentation is stripped from
+// within <script> tags. We replace all <script> tags with placeholders, run
+// throuh gohtml, then unreplace them, thereby preserving the original script.
+// Hopefully this gets fixed at some point, but the project appears pretty dead,
+// so it's not hugely likely.
+//
+// https://github.com/yosssi/gohtml/issues/22
+func formatHTMLPreservingScripts(str string) string {
+	scriptReplacements := make(map[string]string)
+
+	formattedOutput := htmlScriptRE.ReplaceAllStringFunc(str, func(match string) string {
+		placeholder := fmt.Sprintf("script-placeholder-3ab7c159-3eff-4f9c-8952-8f266e1dce49-%d", len(scriptReplacements))
+		scriptReplacements[placeholder] = match
+		return placeholder
+	})
+
+	formattedOutput = gohtml.Format(formattedOutput)
+
+	for placeholder, script := range scriptReplacements {
+		formattedOutput = strings.Replace(formattedOutput, placeholder, script, 1)
+	}
+
+	return formattedOutput
 }

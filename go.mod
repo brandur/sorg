@@ -20,16 +20,16 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.4
 	github.com/yosssi/ace v0.0.5
-	golang.org/x/net v0.27.0
+	golang.org/x/net v0.29.0
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028
 )
 
 require github.com/pkg/errors v0.9.1 // indirect
 
 require (
-	github.com/go-playground/validator/v10 v10.22.0
+	github.com/go-playground/validator/v10 v10.22.1
 	github.com/mailgun/mailgun-go/v4 v4.8.2
-	golang.org/x/term v0.22.0
+	golang.org/x/term v0.24.0
 )
 
 require (
@@ -50,9 +50,10 @@ require (
 	github.com/pelletier/go-toml/v2 v2.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
-	golang.org/x/crypto v0.25.0 // indirect
-	golang.org/x/sys v0.22.0 // indirect
-	golang.org/x/text v0.16.0 // indirect
+	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4 // indirect
+	golang.org/x/crypto v0.27.0 // indirect
+	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/text v0.18.0 // indirect
 	gopkg.in/russross/blackfriday.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
