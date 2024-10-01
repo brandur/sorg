@@ -1,5 +1,8 @@
 linters:
   disable:
+    # deprecated
+    - exportloopref
+
     # obnoxious
     - cyclop
     - depguard

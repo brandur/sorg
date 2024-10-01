@@ -281,4 +281,4 @@ jobs:
       - name: "Check: golangci-lint"
         uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.59
+          version: v1.61
