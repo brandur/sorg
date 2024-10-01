@@ -1,10 +1,20 @@
-{{- if .TwitterCard -}}
+{{if .TwitterCard}}
+
+{{if eq .TwitterCard.ImageURL ""}}
+<meta name="twitter:card" content="summary">
+{{else}}
 <meta name="twitter:card" content="summary_large_image">
+{{end -}}
+
 <meta name="twitter:site" content="@brandur">
 <meta name="twitter:creator" content="@brandur">
 <meta name="twitter:title" content="{{.TwitterCard.Title}}">
 <meta name="twitter:description" content="{{.TwitterCard.Description}}">
-{{- if ne .TwitterCard.ImageURL "" -}}
+
+{{if eq .TwitterCard.ImageURL ""}}
+<meta name="twitter:image" content="/assets/images/favicon/favicon-256.jpg">
+{{else}}
 <meta name="twitter:image" content="{{.TwitterCard.ImageURL}}">
-{{- end -}}
-{{- end -}}
+{{end}}
+
+{{end}}
