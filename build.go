@@ -1992,7 +1992,7 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 	var title string
 	if atom.Title == nil {
 		// Twitter doesn't play nicely showing "<" or ">", so don't put those in
-		title = "Atom " + atom.Slug
+		title = "Atom #" + atom.Slug
 	} else {
 		title = *atom.Title
 	}
