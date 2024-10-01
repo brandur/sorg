@@ -6,7 +6,7 @@ title = "A few secure, random bytes without `pgcrypto`"
 
 In Postgres it's common to see the SQL `random()` function used to generate a random number, but it's a pseudo-random number generator, and not suitable for cases where real randomness is required critical. Postgres also provides a way of getting secure random numbers as well, but only through the use of the `pgcrypto` extension, which makes `gen_random_bytes` available.
 
-Pulling `pgcrypto` into your database is probably fine---at least it's a core extension that's distributed with Postgres itself---but while testing the RC version of [Postgres 17](https://www.crunchydata.com/blog/real-world-performance-gains-with-postgres-17-btree-bulk-scans) last week, I found that it was surprisingly difficult to build Postgres against OpenSSL, which unsurprisingly is required to build `pgcrypto`, thereby making `pgcrypto` itself hard to build.
+Pulling `pgcrypto` into your database is probably fine---at least it's a core extension that's distributed with Postgres itself---but while testing the RC version of [Postgres 17](https://www.crunchydata.com/blog/real-world-performance-gains-with-postgres-17-btree-bulk-scans) last week, I found that it was surprisingly difficult to build Postgres against OpenSSL, which is required to build `pgcrypto`, thereby making `pgcrypto` itself hard to build.
 
 I'm broadly against the use of Postgres extensions because they make upgrades harder and projects less portable [1], so we have a minimal posture when it comes to them, depending only on `btree_gist` and `pgcrypto`. Like `pgcrypto`, `btree_gist` is also distributed with Postgres, but unlike `pgcrypto`, doesn't have an OpenSSL dependency, making it trivial to build.
 
@@ -102,3 +102,5 @@ DROP EXTENSION pgcrypto;
 Making tests against a locally built version of Postgres considerably easier.
 
 I'm hoping we can ditch this hack as soon as V7 UUIDs land in core (they didn't make Postgres 17, which is very sad), but in the mean time, this trick might be useful to someone else.
+
+[1] Managed Postgres providers tend to support a number of core common extensions, but once off the beaten path, none of the less usual ones are guaranteed.
