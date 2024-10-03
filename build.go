@@ -2080,7 +2080,7 @@ func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atom
 			return true, err
 		}
 
-		title := atom.PublishedAt.Format("2006 / Jan 2 / 15:04 PST")
+		title := "Atom #" + atom.Slug
 		if atom.Title != nil {
 			title = *atom.Title
 		}
