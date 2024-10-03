@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  title = "APacIa"
+  published_at = 2024-10-03T14:35:26-07:00
+  description = """\
+Of mild interest, Stripe [has announced](https://stripe.com/blog/introducing-stripes-new-api-release-process) a new API release process. Two named API versions a year will be released, named after plants (e.g. "acacia"), and presumably following an A-Z scheme similar to Ubuntu naming.
+
+Previously, API changes roughly followed this procedure:
+
+* Non-breaking changes went out after they'd been reviewed and whenever they became available.
+* A new API version (named with only its date of release) was cut for breaking changes. If multiple breaking changes happily coincided around the same time, they'd be coordinated for simultaneous release.
+
+By my reading, the new scheme seems to be largely the same, except that non-breaking changes would be held for a monthly release on the current version, and breaking changes would be held for up to six months
+
+I suppose the benefit of the new approach is that it gives users a more predictable cadence for breaking changes. Optimistically, maybe it gets them in the habit of updating their API version twice a year. Even more optimistically, maybe it starts to pave the path for a format deprecation lifecycle so that ancient API versions could eventually be retired.
+"""
+
+[[atoms]]
   published_at = 2024-09-24T11:38:37-07:00
   description = """\
 Published fragment [A few secure, random bytes without `pgcrypto`](/fragments/secure-bytes-without-pgcrypto), on avoiding the `pgcrypto` extension and its OpenSSL dependency by generating cryptographically secure randomness through `gen_random_uuid()`.
