@@ -38,7 +38,7 @@
 
 * More Apple gear, which I love, but worry increasingly is stagnating compared to the Jobs era:
 
-    * **<span id="iphone">[iPhone 15](#iphone):</span>**  Titanium, cool. Great phone, but I'd have to get pretty close to tell it apart from my previous 12, 13, and 14.
+    * **<span id="iphone">[iPhone 16 Pro Max](#iphone):</span>**  Titanium, cool. Great phone, but I'd have to get pretty close to tell it apart from my previous 12, 13, 14, and 15.
 
     * **<span id="airpods-pro">[AirPods Pro](#airpods-pro):</span>**  Along with M1, Apple's greatest innovation in a decade. Practically everyone has these things now, but I'm giving them a call out because aside from maybe my laptop, they're the most commonly used piece of equipment I own.
 
