@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-04T11:18:21-07:00
+  description = """\
+Published fragment [TIL: Variables in custom VSCode snippets](/fragments/vscode-snippets), on using built-in variables in VSCode snippets to make publishing to this site incrementally faster.
+"""
+
+[[atoms]]
   title = "APacIa"
   published_at = 2024-10-03T14:35:26-07:00
   description = """\
