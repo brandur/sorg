@@ -11,6 +11,18 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-10-05T18:16:40-07:00
+  slug = "087"
+  title = "Transamerica"
+  description = """
+Closed for four years, the redwood park and sculpture garden at the base of the Transamerica Pyramid reopened a few weeks ago. Featuring a reflecting pool and outdoor ping pong, it's a tranquil oasis in the heart of the financial district. I wouldn't say it's a destination unto itself, but if you're traveling from the waterfront up to North Beach or vice versa, it's worth dropping into for a few minutes to check out.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/2bboi38r0txcf48c2ajkg/2W4A6184-adjusted.jpg?rlkey=h2yp5e7wyl8u007m6kskg38ho&dl=1"
+    portrait = true
+    slug = "087"
+
+[[entries]]
   published_at = 2024-09-22T14:50:44-07:00
   slug = "086"
   title = "County Highway"

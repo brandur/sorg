@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-05T18:16:40-07:00
+  description = """\
+Published [sequence 087](/sequences/087), Transamerica.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/087"
+    original_image_url = "https://www.dropbox.com/scl/fi/2bboi38r0txcf48c2ajkg/2W4A6184-adjusted.jpg?rlkey=h2yp5e7wyl8u007m6kskg38ho&dl=1"
+    slug = "transamerica"
+
+[[atoms]]
   published_at = 2024-10-04T11:18:21-07:00
   description = """\
 Published fragment [TIL: Variables in custom VSCode snippets](/fragments/vscode-snippets), on using built-in variables in VSCode snippets to make publishing to this site incrementally faster.
