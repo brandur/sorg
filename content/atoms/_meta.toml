@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-06T09:40:45-07:00
+  description = """\
+Published [sequence 088](/sequences/088), royal lion hunt.
+
+I visited the British Museum in London during my stay there last year. The museum has a wealth of ancient artifacts, including some of the most famous ones in history like the Rosetta Stone, but despite having my camera with me, I took few photos while I was there. All I could think of was the tens of thousands of times each of these objects was photographed every day, contributing to an enormous body of billions of photos, 99.9999% would never be glanced again.
+
+This is one of the few artifacts I photographed because I liked it so much. It's artwork on stone depicting Assyrian royals taking part in a lion hunt, circa 645 BC, right around the period where the civilization would collapse.
+
+At the time I knew almost nothing about Assyria, but a friend sent over the excellent episode ["Empire of Iron"](https://podcasts.apple.com/us/podcast/13-the-assyrians-empire-of-iron/id1449884495?i=1000525464222) from Paul Cooper's _Fall of Civilizations_ podcast (also you [YouTube](https://www.youtube.com/watch?v=jpAphcaVJIs)). It starts describing how the Greek general Xenophon came across the ruins of two collossal cities as he was returning from a battle in 401 BC. We know now that these were the Assyrian cities Kalhu and Nineveh, but by then (about 200 years post-collapse) locals knew nothing about them, despite their far greater scope and sophistication than anything they could build at the time. It would've been like living amongst ancient ruins built by giants.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/088"
+    original_image_url = "https://www.dropbox.com/scl/fi/0abljt579ftqmle3odzyg/2W4A3026-the-royal-lion-hunt-assyrian-645-bc-cropped.jpg?rlkey=dgg6cx66ggtuj8z3wpg2t1quo&dl=1"
+    slug = "royal-lion-hunt"
+
+[[atoms]]
   published_at = 2024-10-05T18:16:40-07:00
   description = """\
 Published [sequence 087](/sequences/087), Transamerica.
