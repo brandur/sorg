@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-06T13:17:03-07:00
+  description = """\
+Published fragment [Rails World 2024](/fragments/rails-world-2024), with a few reflections on this year's event.
+"""
+  [[atoms.photos]]
+    link_url = "/fragments/rails-world-2024"
+    original_image_url = "https://www.dropbox.com/scl/fi/4cquusdmhqxg6zef7e0jp/L1000080.JPG?rlkey=77n8qrbsbzeea212rrv83kzu2&dl=1"
+    slug = "rails-world-2024"
+
+[[atoms]]
   published_at = 2024-10-06T09:40:45-07:00
   description = """\
 Published [sequence 088](/sequences/088), royal lion hunt.

@@ -793,6 +793,22 @@ func build(c *modulir.Context) []error {
 		})
 	}
 
+	// Possible photo in each fragment
+	{
+		for _, fragment := range fragments {
+			if fragment.ImageURL != "" {
+				name := fmt.Sprintf("fragment %q vista", fragment.Slug)
+				c.AddJob(name, func() (bool, error) {
+					return fetchAndResizePhotoOther(c,
+						c.SourceDir+"/content/photographs/fragments/"+fragment.Slug+"/vista", &Photo{
+							CropWidth:        1024,
+							OriginalImageURL: fragment.ImageURL,
+						})
+				})
+			}
+		}
+	}
+
 	//
 	// Home
 	//
@@ -1170,6 +1186,10 @@ type Fragment struct {
 
 	// Image is an optional image that may be included with a fragment.
 	Image string `toml:"image,omitempty"`
+
+	// ImageURL is an optional image that may be included with a fragment, but
+	// this one fetched from a remote source like Dropbox for convenience.
+	ImageURL string `toml:"image_url,omitempty"`
 
 	// Location is the geographical location where this article was written.
 	Location string `toml:"location,omitempty"`
@@ -1808,7 +1828,11 @@ func renderArticle(ctx context.Context, c *modulir.Context, source string,
 	article.Draft = scommon.IsDraft(source)
 	article.Slug = scommon.ExtractSlug(source)
 
-	content, err := mmarkdownext.Render(string(data), nil)
+	content, err := mmarkdownext.Render(string(data), &mmarkdownext.RenderOptions{
+		TemplateData: map[string]interface{}{
+			"Ctx": ctx,
+		},
+	})
 	if err != nil {
 		return true, err
 	}
@@ -2161,7 +2185,11 @@ func renderFragment(ctx context.Context, c *modulir.Context, source string,
 	fragment.Draft = scommon.IsDraft(source)
 	fragment.Slug = scommon.ExtractSlug(source)
 
-	content, err := mmarkdownext.Render(string(data), nil)
+	content, err := mmarkdownext.Render(string(data), &mmarkdownext.RenderOptions{
+		TemplateData: map[string]interface{}{
+			"Ctx": ctx,
+		},
+	})
 	if err != nil {
 		return true, err
 	}

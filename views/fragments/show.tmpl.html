@@ -22,10 +22,15 @@
     {{end}}
 </div>
 
-{{if ne .Fragment.Image ""}}
+{{if or (ne .Fragment.Image "") (ne .Fragment.ImageURL "")}}
 <div>
     <div class="max-w-[1000px] mx-auto mb-12 -mt-2 md:mb-16 md:-mt-10">
-        <img class="w-full" src="{{.Fragment.Image}}" srcset="{{To2X .Fragment.Image}} 2x, {{.Fragment.Image}} 1x">
+        {{if .Fragment.ImageURL}}
+            {{$localImage := print "/photographs/fragments/" .Fragment.Slug "/vista.jpg"}}
+            <img class="w-full lg:rounded-lg" src="{{$localImage}}" srcset="{{To2X $localImage}} 2x, {{$localImage}} 1x">
+        {{else}}
+            <img class="w-full lg:rounded-lg" src="{{.Fragment.Image}}" srcset="{{To2X .Fragment.Image}} 2x, {{.Fragment.Image}} 1x">
+        {{end}}
     </div>
 </div>
 {{end}}

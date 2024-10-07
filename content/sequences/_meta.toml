@@ -11,6 +11,18 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-10-06T13:17:03-07:00
+  slug = "089"
+  title = "Rails World 2024"
+  description = """
+Rails World 2024 at Evergreen Brick Works in Toronto. Poster photo for my [write up on the conference](/fragments/rails-world-2024).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/4cquusdmhqxg6zef7e0jp/L1000080.JPG?rlkey=77n8qrbsbzeea212rrv83kzu2&dl=1"
+    # portrait = true
+    slug = "089"
+
+[[entries]]
   published_at = 2024-10-06T09:40:45-07:00
   slug = "088"
   title = "Royal lion hunt"
