@@ -26,13 +26,17 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
     </p>
 </div>
 
-<!--
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Aug 11, 2023</summary>
+    <div class="my-10">
 
-/ ---------------------------------------------------------------------------- 
-/ OLD
-/ ---------------------------------------------------------------------------- 
-
-## Aug 11, 2023
+<div class="mb-16 mt-8
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full">
+</div>
 
 ## Pen testing, Q3, DC
 
@@ -48,7 +52,12 @@ It's August. I don't have anything of substance to write about, so here's a coup
 
 * I've been playing way too much [_Elden Ring_](/fragments/elden-ring), a game I thought I'd hate like other FromSoft games, but which I now acknowledge is a masterpiece of both worldbuilding and gameplay design.
 
-## Jul 8, 2023
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Jul 8, 2024</summary>
+    <div class="my-10">
 
 ## RBAC, Python (#rbac)
 
@@ -58,7 +67,20 @@ I'm working on rebuilding Bridge's RBAC (role-based access control) system, taki
 
 I've been relearning Python to help build a [River's Python client library](https://github.com/riverqueue/riverqueue-python). The language's been a mixed bag overall, but it's been interesting diving into typing, asyncio, and tooling like [Rye](https://github.com/astral-sh/rye), none of which existed the last time I worked in the language.
 
-## May 5, 2023
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">May 5, 2024</summary>
+    <div class="my-10">
+
+<div class="mb-16 mt-8
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery" class="lg:rounded-lg w-full">
+</div>
 
 I'm spending the month in Berlin, where I'm trying to run and write every day, and enjoy time in a place that's less reminiscent of a zombie wasteland than my home city.
 
@@ -68,7 +90,12 @@ Blake and I continue work on our open source Postgres job queue, [River](https:/
 
 I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) that enables job insertion in Ruby, but for jobs to be worked in Go, which is something that I'd always wanted back at Heroku and Stripe. I wrote about [my experience putting in type checking with Steep, and publishing RBS files](/fragments/ruby-typing-2024) for the project.
 
-## Apr 9, 2023
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Apr 9, 2024</summary>
+    <div class="my-10">
 
 I'm in San Francisco, where inertia keeps me rooted.
 
@@ -84,7 +111,12 @@ Pre-lockdown, I'd gotten into the best shape of my life by baking exercise into 
 
 Next month, Europe.
 
-## Dec 28, 2022
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Dec 8, 2022</summary>
+    <div class="my-10">
 
 I'm back home in Calgary for the holidays, staring into the precipice of 2023 which between money markets, strife, and war is shaping up to be a formidable year.
 
@@ -99,11 +131,22 @@ A few weeks before that I became somewhat enamored by the idea of [Spring '83](h
 
 In 2023: write, move, visit France.
 
-## Apr 5, 2020
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Apr 5, 2020</summary>
+    <div class="my-10">
+
+<div class="mb-16 mt-8
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/assets/images/now/twin-peaks-stairs.jpg" alt="Stairs up to Twin Peaks" class="lg:rounded-lg w-full">
+</div>
 
 It's 2020. Like for almost everyone else on Earth, COVID-19 is top-of-mind. I'm working from home, San Francisco is sheltering in place, and the future is a hugely uncertain time.
-
-{{HTMLRender (ImgSrcAndAltAndClass "/assets/images/now/twin-peaks-stairs.jpg" "Stairs up to Twin Peaks" "overflowing")}}
 
 As bad as our present day situation is, an indefinite work from home policy has given me more flexibility and more energy in my day-to-day than I've ever had in my adult life, and I'm going to do my best not to waste it.
 
@@ -115,6 +158,15 @@ Some things I’m working on:
     * A development log with notes on daily software discoveries and projects. Most entries will be of minor interest, but frequent enough to build writing cadence. <a href="/fragments/google-cloud-run-deploy">For example</a>.
 
 * Meditate every day.
+
+</div>
+</details>
+
+<!--
+
+/ ---------------------------------------------------------------------------- 
+/ OLD
+/ ---------------------------------------------------------------------------- 
 
 ## Dec 31, 2019
 
