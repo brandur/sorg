@@ -27,7 +27,7 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
 </div>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Aug 11, 2023</summary>
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Aug 11, 2024</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
