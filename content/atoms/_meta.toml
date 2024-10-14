@@ -11,6 +11,55 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-13T19:33:11-07:00
+  length_exempted = true
+  description = """\
+I'm demoing a new version manager. I've been on [asdf](https://github.com/asdf-vm/asdf) for a few years. I often use IRB (Ruby's interactive interpreter) for basic calculations since Ruby makes such a good scripting language. When doing so today, for about the 1,000th time, I got this:
+
+```sh
+$ irb
+No version is set for command irb
+Consider adding one of the following versions in your config file at
+ruby 3.2.1
+```
+
+This sort of lazy error bothers me:
+
+* In the vast majority of situations, but especially when I'm just trying to Ruby to subtract one number from another, the exact version of Ruby I'm calling into doesn't matter. I'd accept _anything_ in the range of 2.0 to 3.3. If I have 3.2.1 installed, maybe just use that?
+* There's nothing actionable. I'm not told what config file it's talking about, or how to otherwise resolve the problem.
+
+I was told the other week that [Mise](https://github.com/jdx/mise) does a better job of default behavior and descriptive error messages, so I'm giving it a shot.
+
+So far, so good. Easy installation and configuration in my `~/.zshrc`. I asked it to install Ruby, and it just did it. No additional plugin needed to be installed, and no specific version was required:
+
+``` sh
+$ mise install ruby
+mise ruby@3.3.5 ✓ installed
+```
+
+When entering a directory with `.tool-versions`, it told me immediately that a tool was missing:
+
+``` sh
+$ cd owl
+mise missing: ruby@3.3.4
+```
+
+A simple `mise install` walked me through installing all dependencies, including some unusual ones like Crystal, and doing so interactively so I could skip any that I didn't want:
+
+``` sh
+$ mise install
+mise ⚠️ crystal is a community-developed plugin – https://github.com/asdf-community/asdf-crystal
+Would you like to install crystal? Yes
+mise ⚠️ postgres is a community-developed plugin – https://github.com/smashedtoatoms/asdf-postgres
+Would you like to install postgres? No
+mise ruby@3.3.4 ✓ installed
+mise crystal@1.6.2 ✓ installed                                                                                                                                            mise run with --yes to install plugin automatically
+mise asdf plugin postgres is not installed
+mise Run with --verbose or MISE_VERBOSE=1 for more information
+```
+"""
+
+[[atoms]]
   published_at = 2024-10-06T13:17:03-07:00
   description = """\
 Published fragment [Rails World 2024](/fragments/rails-world-2024), with a few reflections on this year's event.
