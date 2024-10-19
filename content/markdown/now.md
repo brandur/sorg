@@ -27,7 +27,7 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
 </div>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Aug 11, 2024</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Aug 11, 2024</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
@@ -56,7 +56,7 @@ It's August. I don't have anything of substance to write about, so here's a coup
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Jul 8, 2024</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Jul 8, 2024</summary>
     <div class="my-10">
 
 ## RBAC, Python (#rbac)
@@ -71,7 +71,7 @@ I've been relearning Python to help build a [River's Python client library](http
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">May 5, 2024</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">May 5, 2024</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
@@ -94,7 +94,7 @@ I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) t
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Apr 9, 2024</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 9, 2024</summary>
     <div class="my-10">
 
 I'm in San Francisco, where inertia keeps me rooted.
@@ -115,7 +115,7 @@ Next month, Europe.
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Dec 8, 2022</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 8, 2022</summary>
     <div class="my-10">
 
 I'm back home in Calgary for the holidays, staring into the precipice of 2023 which between money markets, strife, and war is shaping up to be a formidable year.
@@ -135,7 +135,7 @@ In 2023: write, move, visit France.
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Apr 5, 2020</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 5, 2020</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
@@ -163,7 +163,7 @@ Some things I’m working on:
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Dec 31, 2019</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 31, 2019</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
@@ -188,7 +188,7 @@ Some things I’m working on:
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Jun 5, 2019</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Jun 5, 2019</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
@@ -212,7 +212,7 @@ A few points of focus:
 </details>
 
 <details class="">
-    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Apr 20, 2018</summary>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 20, 2018</summary>
     <div class="my-10">
 
 <div class="mb-16 mt-8
