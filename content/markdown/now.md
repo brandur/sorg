@@ -162,52 +162,86 @@ Some things I’m working on:
 </div>
 </details>
 
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Dec 31, 2019</summary>
+    <div class="my-10">
+
+<div class="mb-16 mt-8
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/assets/images/now/calgary-snow.jpg" alt="Calgary snow" class="lg:rounded-lg w-full">
+</div>
+
+I’m in Calgary for the winter break. It’s the last day of 2019 and we’re on the precipice of a new decade.
+
+Some things I’m working on:
+
+* Writing a (roughly) weekly newsletter called <em>Nanoglyph</em>. I’m challenging myself to send at least 30 editions in 2020, and do so without compromising content quality. You should <a href="https://nanoglyph-signup.brandur.org/">try subscribing</a>.
+* Write more, and more fluidly. Instead of agonizing over every word, get content down, revise, and revise again.
+* The craft of software has landed on a plateau where big, complicated, fragile backend deployments that support slow, underwhelming, buggy frontend products is the norm. Find techniques and ideas to reverse this trend and boost their signal.
+* Ran 1000 miles and did 42k pushups in 2019, do so again in 2020. Keep weight at ~150 lbs. Zero in on ~10% body fat.
+* Reboot meditation practice. Did pretty well in 2018, but fell off the wagon completely in 2019. Aim for a couple 30 consecutive day runs.
+
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Jun 5, 2019</summary>
+    <div class="my-10">
+
+<div class="mb-16 mt-8
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/assets/images/now/molecule-man.jpg" alt="Molecule man in Berlin" class="lg:rounded-lg w-full">
+</div>
+
+I'm in Berlin.
+
+A few points of focus:
+
+* A <a href="/sequences-project">photography project called <strong><em>Sequences</em></strong></a> as an experiment to promote the independent web.
+* A tiny static site framework that encourages stability through writing build recipes in a compiled language instead of in untyped templates, or having them implied through file organization.
+* Writing on topics like <del>WebSockets</del> (<a href="/live-reload">done</a>), operable databases, and stability through data constraints.
+* Nutrition and fitness: Leaner diet, run 1000 miles in 2019. Targeting <150 lbs. and ~10% body fat.
+
+</div>
+</details>
+
+<details class="">
+    <summary class="font-semibold font-serif list-outside pl-1 text-sm">Apr 20, 2018</summary>
+    <div class="my-10">
+
+<div class="mb-16 mt-8
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/assets/images/now/sutro-giants.jpg" alt="Sutro giants" class="lg:rounded-lg w-full">
+</div>
+
+I'm in San Francisco, working on technology at Stripe.
+
+A few points of focus:
+
+* Meditating every day.
+* Learning <a href="/rust-web">Rust</a>, and using it to proof out resilient services that don't need constant human attention.
+* Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I wake up early, and try to focus on only one thing at a time.
+
+</div>
+</details>
+
+
 <!--
 
 / ---------------------------------------------------------------------------- 
 / OLD
 / ---------------------------------------------------------------------------- 
 
-## Dec 31, 2019
-
-/ p I’m in Calgary for the winter break. It’s the last day of 2019 and we’re on the precipice of a new decade.
-/ p
-/   img.overflowing src="/assets/images/now/calgary-snow.jpg" srcset="/assets/images/now/calgary-snow@2x.jpg 2x, /assets/now/calgary-snow.jpg 1x"
-/ p Some things I’m working on:
-/ ul
-/   li Writing a (roughly) weekly newsletter called <em>Nanoglyph</em>. I’m challenging myself to send at least 30 editions in 2020, and do so without compromising content quality. You should <a href="https://nanoglyph-signup.brandur.org/">try subscribing</a>.
-/   li Write more, and more fluidly. Instead of agonizing over every word, get content down, revise, and revise again.
-/   li The craft of software has landed on a plateau where big, complicated, fragile backend deployments that support slow, underwhelming, buggy frontend products is the norm. Find techniques and ideas to reverse this trend and boost their signal.
-/   li Ran 1000 miles and did 42k pushups in 2019, do so again in 2020. Keep weight at ~150 lbs. Zero in on ~10% body fat.
-/   li Reboot meditation practice. Did pretty well in 2018, but fell off the wagon completely in 2019. Aim for a couple 30 consecutive day runs.
-
-
-
-## June 5, 2019
-
-/ p I'm in Berlin.
-/ p
-/   img.overflowing src="/assets/images/now/molecule-man.jpg" srcset="/assets/images/now/molecule-man@2x.jpg 2x, /assets/now/molecule-man.jpg 1x"
-/ p A few points of focus:
-/ ul
-/   li <A href="/sequences-project">A photography project called <strong><em>Sequences</em></strong></a> as an experiment to promote the independent web.
-/   li A tiny static site framework that encourages stability through writing build recipes in a compiled language instead of in untyped templates, or having them implied through file organization.
-/   li Writing on topics like <del>WebSockets</del> (<a href="/live-reload">done</a>), operable databases, and stability through data constraints.
-/   li Nutrition and fitness: Leaner diet, run 1000 miles in 2019. Targeting <150 lbs. and ~10% body fat.
-
-
-
 ## April 20, 2018
-
-/ p I'm in San Francisco, working on technology at Stripe.
-/ p
-/   img.overflowing src="/assets/images/now/sutro-giants.jpg" srcset="/assets/images/now/sutro-giants@2x.jpg 2x, /assets/now/sutro-giants.jpg 1x"
-/ p A few points of focus:
-/ ul
-/   li Meditating every day.
-/   li Learning <a href="/rust-web">Rust</a>, and using it to proof out resilient services that don't need constant human attention.
-/   li Exercising my <a href="https://twitter.com/brandur/statuses/823588112488013824">attention muscle</a> by putting in more periods of deep thought and intense non-maintenance work. I wake up early, and try to focus on only one thing at a time.
-
 
 
 ## November 26, 2017
