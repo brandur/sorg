@@ -11,6 +11,32 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-19T09:23:52-07:00
+  length_exempted = true
+  description = """\
+Hetzner is launching a new [Object Storage](https://docs.hetzner.com/storage/object-storage/overview/) storage on November 1st, aimed squarely at competing with S3 (and is S3 API compatible). Their pricing page is quite verbose, so here's a summary by my interpretation:
+
+|             | Storage | Transfer out | Operations |
+| ----------- | ------- | ------------ | ---------- |
+| **AWS**     | <ul><li>$0.023/GB (tier up to 50 TB) = **$23/TB/mo**</li></ul> | <ul><li>First 100 GB: Free</li><li>After 100 GB: $0.09/GB (tier up to 10 TB) = **$90/TB** (!!!)</li></ul> | <ul><li>$0.005 per 1k PUT, COPY, POST, LIST requests</li><li>$0.0004 per 1k GET, SELECT requests</li></ul> |
+| **Hetzner** | <ul><li>First TB: €5/mo = **$5.44/TB/mo**</li><li>After 1 TB: €0.0067/TB-hour = 31 * €0.0067 = €4.9848 =~ **$5.42/TB/mo**</li></ul> | <ul><li>First 1 TB: Free</li><li>After 1 TB: €1/TB = **$1.09/TB**</li></ul> | <ul><li>Free</li></ul> |
+
+Observations:
+
+* The price difference in storage is night and day, with Hetzner's service less than 1/4 of the price of Amazon.
+* It's even more stark for transfer out. At $90/TB, Amazon basically owns your data once it's in their data center. Hetzner's price is 1/90th AWS' with a 10x more generous free tier.
+* No per-operation cost is huge. While [reviewing my own S3 costs](/atoms/gr3xs6c) earlier this year, I was surprised to find that 85% of my bill was per-operation cost.
+* Hetzner storage price above assumes a 31 day month. It's a bit cheaper for shorter months.
+* Hetzner storage prices are measured in TB, but fractional, and charged in increments of 100 MB.
+* Hetzner prices don't include VAT. Hetzner's [VAT logic is incredibly complex](https://docs.hetzner.com/accounts-panel/accounts/payment-faq/#how-much-vat-do-i-need-to-pay), but you aren't charged VAT in the USA unless you're in Arizona, Colorado, New Mexico, Texas, or Utah.
+* On the other hand, Hetzner has a single `eu-central` region, so US-based customers will have to deal with speed-of-light latency.
+
+On the face of it, pretty exciting. An optimistic premise of major cloud providers like AWS is that as they reduced their own operation costs through economies of scale, some of those savings would be passed down to us, but we've seen over the years that this rarely happens, even as the cost of hardware storage has steadily decreased.
+
+I have to think that Hetzer's prices are closer to what S3 _would_ cost, were it to be launched today.
+"""
+
+[[atoms]]
   published_at = 2024-10-13T19:33:11-07:00
   length_exempted = true
   description = """\
