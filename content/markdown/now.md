@@ -1,14 +1,28 @@
-<!--
-
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full">
+    <img src="/photographs{{DownloadedImage .Ctx "/now/skyscrapers" "https://www.dropbox.com/scl/fi/hwt1dm93omj4l2qhuppww/2W4A6069.JPG?rlkey=w3cj9fbkgvk0ohdn6b34x0eod&dl=1" 1300}}" alt="Skyscrapers" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
--->
+I'm in San Francisco, having recently returned from [Rails World in Toronto](/fragments/rails-world-2024), which was a lot of fun. Beyond that:
+
+* I finished a massive access control refactor that builds out a more flexible RBAC (role-based access control) system for Bridge. It doesn't sound much, but the roots of ACL run deep, and it ended up touching every important file in project, in the end taking me multiple months to fully complete.
+
+* Next up is a billing system for metered storage use. Harder than it sounds on the face because you're not just tracking storage, but _storage over time_. If someone stores 10 TB for most of the month but deletes every last byte before invoicing day, they should still be charged for about 10 TB. If someone spikes up to 10 TB for only a single day before deleting it all, they should be charged far less. Rather than charging per GB, you're really charging per GB-hour.
+
+* I'm trying, and mostly failing, to update this site more consistently. The notification came in to update this page on Oct 1st, and yet, *sigh*, I'm doing it on the 19th.
+
+<div class="mb-16 not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Oct 19, 2024</span>.
+    </p>
+</div>
+
+<details class="">
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Sep 4, 2024</summary>
+    <div class="my-10">
 
 It's September, although in California, it's hard to notice.
 
@@ -20,11 +34,8 @@ Years in, our code is as clean and stable as any project I've ever seen of this 
 
 I'm not working on AI, and indeed may be the last person in San Francisco (and soon, the world?) who's never typed anything into an AI prompt.
 
-<div class="not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Sep 04, 2024</span>.
-    </p>
 </div>
+</details>
 
 <details class="">
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Aug 11, 2024</summary>
@@ -35,7 +46,7 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full">
+    <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
 ## Pen testing, Q3, DC
@@ -79,7 +90,7 @@ I've been relearning Python to help build a [River's Python client library](http
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery" class="lg:rounded-lg w-full">
+    <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
 I'm spending the month in Berlin, where I'm trying to run and write every day, and enjoy time in a place that's less reminiscent of a zombie wasteland than my home city.
@@ -143,7 +154,7 @@ In 2023: write, move, visit France.
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/assets/images/now/twin-peaks-stairs.jpg" alt="Stairs up to Twin Peaks" class="lg:rounded-lg w-full">
+    <img src="/assets/images/now/twin-peaks-stairs.jpg" alt="Stairs up to Twin Peaks" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
 It's 2020. Like for almost everyone else on Earth, COVID-19 is top-of-mind. I'm working from home, San Francisco is sheltering in place, and the future is a hugely uncertain time.
@@ -171,7 +182,7 @@ Some things I’m working on:
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/assets/images/now/calgary-snow.jpg" alt="Calgary snow" class="lg:rounded-lg w-full">
+    <img src="/assets/images/now/calgary-snow.jpg" alt="Calgary snow" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
 I’m in Calgary for the winter break. It’s the last day of 2019 and we’re on the precipice of a new decade.
@@ -196,7 +207,7 @@ Some things I’m working on:
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/assets/images/now/molecule-man.jpg" alt="Molecule man in Berlin" class="lg:rounded-lg w-full">
+    <img src="/assets/images/now/molecule-man.jpg" alt="Molecule man in Berlin" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
 I'm in Berlin.
@@ -220,7 +231,7 @@ A few points of focus:
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/assets/images/now/sutro-giants.jpg" alt="Sutro giants" class="lg:rounded-lg w-full">
+    <img src="/assets/images/now/sutro-giants.jpg" alt="Sutro giants" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
 I'm in San Francisco, working on technology at Stripe.
