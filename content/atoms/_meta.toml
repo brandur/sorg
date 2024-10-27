@@ -29,7 +29,7 @@ And in later years, challenges with an internet flooded with cheap content and e
 [[atoms]]
   published_at = 2024-10-27T16:06:21-07:00
   description = """\
-Published fragment [the parallel test bundle](/fragments/rails-world-2024), a Go convention that we've found effective for making subtests parallel-safe, keeping them DRY, and keeping code readable.
+Published fragment [the parallel test bundle](/fragments/parallel-test-bundle), a Go convention that we've found effective for making subtests parallel-safe, keeping them DRY, and keeping code readable.
 
 ``` go
 type testBundle struct {
