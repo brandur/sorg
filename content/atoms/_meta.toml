@@ -11,6 +11,22 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-27T16:35:07-07:00
+  description = """\
+See: [Minimalissimo: 2009 → 2024](https://minimalissimo.com/articles/2009-2024).
+
+This is one of the first websites I ever added to my RSS reader, and I must've done so right around 2009. It was always one of the good netizens: no ads, popovers, or gimmicks, publishing full posts to RSS, and high quality, on topic content.
+
+In a [separate post on his blog](https://carlbarenbrug.com/15-years-of-loving-curation) (a gorgeous website by the way), Minimalissimo's curator Carl Barenbrug talks about the site's ascendant trajectory:
+
+> Between 2011 and 2015, minimalissimo.com was undoubtedly the most read and respected minimal design blog on the web. Sure, there were other massive publications that dwarfed our little site, but within our niche, no site offered the same level of consistent quality in curation. We were easily hitting over 100k unique visits to the site per month. At this point, we had accumulated over 6 years of posts spanning a wide variety of art, architecture, and design, so it felt like a natural step to evolve Minimalissimo into both a printed and digital publication. Particularly as print was thriving at the time. This then led to a trio of self-published magazines that each sold incredibly well. I'm still massively proud of those volumes and you can still get your hands on the digital versions today.
+
+And in later years, challenges with an internet flooded with cheap content and ever more centralized:
+
+> By 2019, the volume of design blogs and magazines on the web was huge. Many began to look the same and we began to notice so much recycled content. Curation was becoming increasingly challenging if we wanted to maintain distinctiveness. On top of this, social media was very quickly eating away at indie websites like a plague. Our readership was declining year after year, and the pressures of pumping more energy into social media platforms to be noticed and relevant was a huge time sink. And it stunk. Much like the algorithms we'd all have to navigate in the years that followed. We were fighting a losing battle.
+"""
+
+[[atoms]]
   published_at = 2024-10-27T16:06:21-07:00
   description = """\
 Published fragment [the parallel test bundle](/fragments/rails-world-2024), a Go convention that we've found effective for making subtests parallel-safe, keeping them DRY, and keeping code readable.
