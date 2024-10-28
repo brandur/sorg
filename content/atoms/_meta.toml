@@ -11,6 +11,28 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-10-27T17:05:58-07:00
+  description = """\
+Like a lot of amateur photographers, I've had a fascination with fast lenses for quite some time. I only learned recently though that camera companies have been making _very_ fast lenses as early as the 60s. See the [Canon 50mm ƒ/0.95 "Dream Lens"](https://jerrybei.com/reviews/2018/1/20/canon-50mm-f095) for example.
+
+While lenses in this vein don't compare favorably with modern optics on any objective dimension like sharpness, distortion, vignetting, etc., they produce some really pretty bokeh/out-of-focus effects. These days, more artistic statement than pragmatic utility.
+
+So far I've managed to restrain myself and have never bought an L-mount camera, but I'm tempted every time I see this sort of thing.
+"""
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/k1m2o4ckvvsetxutf6crk/canon-f095-dream-lens-1.jpg?rlkey=q6bzad8d1ok2h6svjxecut5ps&dl=1"
+    slug = "canon-f095-dream-lens-1"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/fb6rkgacxrdk5wz7ppcpd/canon-f095-dream-lens-4.jpg?rlkey=xba3igzl89va9b6tzh78zk5jq&dl=1"
+    slug = "canon-f095-dream-lens-4"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/gvch15btu9a46nsu58mfj/canon-f095-dream-lens-2.jpg?rlkey=ciq349xbw46hmiavhall0mzuc&dl=1"
+    slug = "canon-f095-dream-lens-2"
+  [[atoms.photos]]
+    original_image_url = "https://www.dropbox.com/scl/fi/kts8rofn5cowj37odiikg/canon-f095-dream-lens-3.jpg?rlkey=v8q56yb7ldwl2aucgrsxq7ldf&dl=1"
+    slug = "canon-f095-dream-lens-3"
+
+[[atoms]]
   published_at = 2024-10-27T16:35:07-07:00
   description = """\
 See: [Minimalissimo: 2009 → 2024](https://minimalissimo.com/articles/2009-2024).
