@@ -13,7 +13,7 @@ env:
 
   # Paths for various manually installed utilities. Don't try to use $HOME
   # because GitHub Actions won't support it.
-  MAGICK_BIN: /home/runner/imagemagick/bin/magick
+  MAGICK_BIN: magick
   MAGICK_RELEASE: 7.1.1-18
   MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
   PNGQUANT_BIN: /usr/bin/pngquant
@@ -49,18 +49,8 @@ jobs:
       #   * WebPs are run through `cbwebp` (which comes from the webp package)
       #     by ImageMagick.
       #
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
-
-      # The copy of ImageMagick we could get from apt-get is ancient and
-      # doesn't handle niceties like `.heic` files, so here we get a binary
-      # directly. When Ubuntu is upgraded at some point in the probably-distant
-      # future, we can probably get rid of this.
-      - name: Install ImageMagick
-        run: |
-          mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
-          chmod +x "${{ env.MAGICK_BIN }}"
+      - name: Install ImageMagick + PNGQuant + WebP
+        run: sudo apt-get install imagemagick pngquant webp
 
       - name: ImageMagick format options
         run: ${{ env.MAGICK_BIN }} identify -list format
