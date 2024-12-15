@@ -14,7 +14,6 @@ env:
   # Paths for various manually installed utilities. Don't try to use $HOME
   # because GitHub Actions won't support it.
   MAGICK_BIN: /home/runner/imagemagick/bin/magick
-  MAGICK_RELEASE: 7.1.1-18
   MOZJPEG_BIN: /opt/mozjpeg/bin/cjpeg
   PNGQUANT_BIN: /usr/bin/pngquant
 
@@ -46,11 +45,13 @@ jobs:
       #
       #   * pngquant has no particularly easy alternative install options.
       #
+      #   * libfuse2 to support AppImage to run ImageMagick.
+      #
       #   * WebPs are run through `cbwebp` (which comes from the webp package)
       #     by ImageMagick.
       #
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
+      - name: Install LibFUSE2 + PNGQuant + WebP
+        run: sudo apt-get install libfuse2 pngquant webp
 
       # The copy of ImageMagick we could get from apt-get is ancient and
       # doesn't handle niceties like `.heic` files, so here we get a binary
@@ -59,7 +60,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://imagemagick.org/archive/binaries/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       - name: ImageMagick format options
@@ -153,14 +154,14 @@ jobs:
 
     steps:
       # See notes in check_and_test.
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
+      - name: Install LibFUSE2 + PNGQuant + WebP
+        run: sudo apt-get install libfuse2 pngquant webp
 
       # See notes in check_and_test.
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://imagemagick.org/archive/binaries/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
@@ -215,14 +216,14 @@ jobs:
 
     steps:
       # See notes in check_and_test.
-      - name: Install PNGQuant + WebP
-        run: sudo apt-get install pngquant webp
+      - name: Install LibFUSE2 + PNGQuant + WebP
+        run: sudo apt-get install libfuse2 pngquant webp
 
       # See notes in check_and_test.
       - name: Install ImageMagick
         run: |
           mkdir -p $(dirname "${{ env.MAGICK_BIN }}")
-          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://github.com/brandur/imagemagick-builder/releases/download/${{ env.MAGICK_RELEASE }}/magick
+          curl --compressed -L -o "${{ env.MAGICK_BIN }}" https://imagemagick.org/archive/binaries/magick
           chmod +x "${{ env.MAGICK_BIN }}"
 
       # See notes in check_and_test.
