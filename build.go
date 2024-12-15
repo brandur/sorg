@@ -11,7 +11,7 @@ import (
 	"html/template"
 	"io"
 	"math/big"
-	"math/rand"
+	"math/rand/v2"
 	"net/http"
 	"net/url"
 	"os"
@@ -2963,7 +2963,7 @@ func selectRandomPhoto(photos []*Photo) *Photo {
 	}
 
 	//nolint:gosec
-	return randomPhotos[rand.Intn(len(randomPhotos))]
+	return randomPhotos[rand.IntN(len(randomPhotos))]
 }
 
 // Gets a pointer to a tag just to work around the fact that you can take the

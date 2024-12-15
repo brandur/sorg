@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"math"
-	"math/rand"
+	"math/rand/v2"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -33,7 +33,7 @@ var FuncMap = template.FuncMap{
 	"NanoglyphSignup":         nanoglyphSignup,
 	"NumberWithDelimiter":     numberWithDelimiter,
 	"Pace":                    pace,
-	"RandIntn":                randIntn,
+	"RandIntN":                rand.IntN,
 	"RenderPublishingInfo":    renderPublishingInfo,
 	"RetinaImageAlt":          RetinaImageAlt,
 	"Sub":                     sub,
@@ -220,11 +220,6 @@ func pace(distance float64, duration time.Duration) string {
 	minutes := int64(speed / 60.0)
 	seconds := int64(speed) % 60
 	return fmt.Sprintf("%v:%02d", minutes, seconds)
-}
-
-func randIntn(bound int) int {
-	//nolint:gosec
-	return rand.Intn(bound)
 }
 
 func renderPublishingInfo(info map[string]string) template.HTML {
