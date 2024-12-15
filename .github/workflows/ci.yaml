@@ -23,6 +23,8 @@ env:
 on:
   pull_request:
   push:
+    branches:
+      - master
   schedule:
     # Once a week on Tuesday.
     - cron: "0 0 * * TUE"
