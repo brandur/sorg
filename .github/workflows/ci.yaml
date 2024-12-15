@@ -142,10 +142,11 @@ jobs:
           echo "Please make sure that all Tailwind changes are checked in!"
           git diff --exit-code .
 
+  # Runs on all changes, but has a `skip` directive below so that nothing is
+  # actually deployed when not on master.
   deploy_dev:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: github.ref == 'refs/heads/master'
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
@@ -199,15 +200,17 @@ jobs:
           TARGET_DIR: ./public-dev
 
       - name: "Deploy: Development"
+        if: github.ref == 'refs/heads/master'
         run: make deploy
         env:
           S3_BUCKET: brandur.org-dev
           TARGET_DIR: ./public-dev
 
+  # Runs on all changes, but has a `skip` directive below so that nothing is
+  # actually deployed when not on master.
   deploy_prod:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: github.ref == 'refs/heads/master'
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWSAccessKeyID }}
@@ -260,12 +263,14 @@ jobs:
           TARGET_DIR: ./public
 
       - name: "Deploy: Production"
+        if: github.ref == 'refs/heads/master'
         run: make deploy
         env:
           S3_BUCKET: brandur.org
           TARGET_DIR: ./public
 
       - name: Upload photos
+        if: github.ref == 'refs/heads/master'
         run: make photographs-upload
 
   golangci-lint:
