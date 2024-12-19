@@ -36,7 +36,7 @@ Let me briefly restate Hyrum's law:
 
 Truer words have rarely been spoken.
 
-## varchars considered ~harm~helpful
+## varchars considered ~harm~helpful (#varchars)
 
 Starting my [new position back in April](/nanoglyphs/024-new-horizons), one thing I checked early on is whether we were checking the length of strings that we were passing on through to the database. Nope. It turns out that this is a _very_ easy mistake to make.
 
