@@ -1,3 +1,37 @@
+<!--
+<div class="my-16
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
+    <img src="/photographs{{DownloadedImage .Ctx "/now/skyscrapers" "https://www.dropbox.com/scl/fi/hwt1dm93omj4l2qhuppww/2W4A6069.JPG?rlkey=w3cj9fbkgvk0ohdn6b34x0eod&dl=1" 1300}}" alt="Skyscrapers" class="lg:rounded-lg w-full" loading="lazy">
+</div>
+-->
+
+I'm in Calgary. Let's see:
+
+* Upgraded my M2 MacBook Air to the new M4 MacBook Pro with nanotexture. These computers don't get major changes very often, so right after release is a good time to buy. I got the non-Pro non-Max chip variant because it has the best battery life, advertised at 24 hours, which is crazy.
+
+* Tied up my last couple major projects for the year at work:
+
+    * Revamped our ACL layer to put in support for a flexible way to organize access to a team's resources by its members called an _access group_. We're still finishing up the frontend work on this project, but the API's finished.
+
+    * Using S3's event streaming and inventory APIs, built a way to bill for S3 usage in a shared bucket for Crunchy's new warehouse product. This is more complicated than it sounds because S3 objects aren't just billed by size, but rather size _over time_. The billable unit is a GiB/mo rather than GiB.
+
+* Next up will be to improve the versability of our saved queries product by adding UI configurable input parameters to queries.
+
+* We're still plugging away [on River](https://github.com/riverqueue/river), the best Go/Postgres queue out there.
+
+<div class="mb-16 not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Dec 19, 2024</span>.
+    </p>
+</div>
+
+<details>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Oct 19, 2024</summary>
+    <div class="my-10">
+
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
@@ -14,13 +48,10 @@ I'm in San Francisco, having recently returned from [Rails World in Toronto](/fr
 
 * I'm trying, and mostly failing, to update this site more consistently. The notification came in to update this page on Oct 1st, and yet, *sigh*, I'm doing it on the 19th.
 
-<div class="mb-16 not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Oct 19, 2024</span>.
-    </p>
 </div>
+</details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Sep 4, 2024</summary>
     <div class="my-10">
 
@@ -37,7 +68,7 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Aug 11, 2024</summary>
     <div class="my-10">
 
@@ -66,7 +97,7 @@ It's August. I don't have anything of substance to write about, so here's a coup
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Jul 8, 2024</summary>
     <div class="my-10">
 
@@ -81,7 +112,7 @@ I've been relearning Python to help build a [River's Python client library](http
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">May 5, 2024</summary>
     <div class="my-10">
 
@@ -104,7 +135,7 @@ I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) t
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 9, 2024</summary>
     <div class="my-10">
 
@@ -125,7 +156,7 @@ Next month, Europe.
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 8, 2022</summary>
     <div class="my-10">
 
@@ -145,7 +176,7 @@ In 2023: write, move, visit France.
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 5, 2020</summary>
     <div class="my-10">
 
@@ -173,7 +204,7 @@ Some things I’m working on:
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 31, 2019</summary>
     <div class="my-10">
 
@@ -198,7 +229,7 @@ Some things I’m working on:
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Jun 5, 2019</summary>
     <div class="my-10">
 
@@ -222,7 +253,7 @@ A few points of focus:
 </div>
 </details>
 
-<details class="">
+<details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 20, 2018</summary>
     <div class="my-10">
 
