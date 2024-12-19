@@ -20,7 +20,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.4
 	github.com/yosssi/ace v0.0.5
-	golang.org/x/net v0.27.0
+	golang.org/x/net v0.33.0
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028
 )
 
