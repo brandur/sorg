@@ -2,7 +2,7 @@
 hook = "Handling a common programming language/database asymmetry around tolerance of zero bytes."
 # image = ""
 published_at = 2024-12-19T14:58:05-07:00
-title = "ERROR: invalid byte sequence for encoding \"UTF8\": 0x00 (and what to do about it)"
+title = "ERROR: invalid byte sequence for encoding UTF8: 0x00 (and what to do about it)"
 +++
 
 One of the oldest errors I ever remember seeing in an error tracker:

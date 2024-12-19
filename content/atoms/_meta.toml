@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2024-12-19T16:23:14-07:00
   description = """\
-Published fragment [ERROR: invalid byte sequence for encoding "UTF8": 0x00 (and what to do about it)](/fragments/invalid-byte-sequence), on handling a common programming language/database asymmetry around tolerance of zero bytes.
+Published fragment [ERROR: invalid byte sequence for encoding UTF8: 0x00 (and what to do about it)](/fragments/invalid-byte-sequence), on handling a common programming language/database asymmetry around tolerance of zero bytes.
 """
 
 [[atoms]]
