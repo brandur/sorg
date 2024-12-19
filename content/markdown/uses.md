@@ -22,9 +22,9 @@
 
 ## Tangible (#tangible)
 
-* **<span id="macbook-air">[Macbook Air 13" M2](#macbook-air):</span>** It's disturbing how much time I spend on this thing. Not only all day at work, but it's where the lion's share of my hobbies and entertainment comes from too. 
+* **<span id="macbook-pro">[Macbook Pro 14" M4](#macbook-air):</span>** It's disturbing how much time I spend on this thing. Not only all day at work, but it's where the lion's share of my hobbies and entertainment comes from too. 
 
-    * I've lived through many of the most important personal computing advances in history, and Apple's move to ARM chips yielded _the_ most important. So much power that a desktop PC isn't necessary, and so energy efficient that battery is never a problem.
+    * I've lived through many of the most important personal computing advances in history, and Apple's move to ARM chips yielded _the_ most important. So much power that a desktop PC isn't necessary, and so energy efficient that battery is never a problem. The MacBook Pro M4 base chip (non-Pro, non-Max) yields 24 hours of battery life. Incredible.
 
     * I like to carry a tiny [20W USB-C charging brick](https://www.apple.com/shop/product/MHJA3AM/A/20w-usb-c-power-adapter) when going to work during the day. Takes ~no space and is enough to keep the computer charged.
 
