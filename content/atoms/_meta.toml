@@ -11,9 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-20T12:56:01-07:00
+  description = """\
+Published [sequence 092](/sequences/092), Tori Bar.
+
+This one was new for me, Tori Bar in Calgary's Inglewood, a tiny place serving Japanese yakitori off a single grill, the skewers cooked right in front of your eyes. We ended up ordering roughly 3/4 of the menu, I can heartily recommend the tako wasabi (octopus) starter, skin-on-thigh yakitori, pork belly, and shishamo (smelt, a tiny fish served well done).
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/092"
+    original_image_url = "https://www.dropbox.com/scl/fi/i8ffagxsazyeao3u677ro/L1000511-tori-bar-crop.jpg?rlkey=9l8fvs83lu8zo1g6gzc0fi9ec&dl=1"
+    slug = "tori-bar"
+
+[[atoms]]
   published_at = 2024-12-19T20:29:08-07:00
   description = """\
 Published [sequence 091](/sequences/091), Fair's Fair.
+
+I dropped by Fair's Fair in Inglewood (Calgary) yesterday. It's a large, rustic bookstore with bare bone furnishing, some real vintage items (in the sense of old rather expensive), and a big sci-fi/fantasy section. I've been coming to this place since I was a kid (when used book prices were measured in cents rather than dollars), and was glad that it's the same Fair's Fair in spirit as it was all the way back then.
 """
   [[atoms.photos]]
     link_url = "/sequences/091"

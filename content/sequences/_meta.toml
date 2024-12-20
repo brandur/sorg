@@ -10,6 +10,19 @@
 #
 ################################################################################
 
+
+[[entries]]
+  published_at = 2024-12-20T12:56:01-07:00
+  slug = "092"
+  title = "Tori Bar"
+  description = """
+This one was new for me, Tori Bar in Calgary's Inglewood, a tiny place serving Japanese yakitori off a single grill, the skewers cooked right in front of your eyes. We ended up ordering roughly 3/4 of the menu, I can heartily recommend the tako wasabi (octopus) starter, skin-on-thigh yakitori, pork belly, and shishamo (smelt, a tiny fish served well done).
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/i8ffagxsazyeao3u677ro/L1000511-tori-bar-crop.jpg?rlkey=9l8fvs83lu8zo1g6gzc0fi9ec&dl=1"
+    # portrait = true
+    slug = "092"
+
 [[entries]]
   published_at = 2024-12-19T20:29:08-07:00
   slug = "091"
