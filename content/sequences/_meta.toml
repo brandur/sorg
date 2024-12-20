@@ -11,6 +11,18 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2024-12-19T20:29:08-07:00
+  slug = "091"
+  title = "Fair's Fair"
+  description = """
+I dropped by Fair's Fair in Inglewood (Calgary) yesterday. It's a large, rustic bookstore with bare bone furnishing, some real vintage items (in the sense of old rather expensive), and a big sci-fi/fantasy section. I've been coming to this place since I was a kid (when used book prices were measured in cents rather than dollars), and was glad that it's the same Fair's Fair in spirit as it was all the way back then.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/w8t2ievna1y58s7dg2k3p/L1000508-fairs-fair-crop.jpg?rlkey=okhy8r5tuxeppr898knsybnli&dl=1"
+    # portrait = true
+    slug = "091"
+
+[[entries]]
   published_at = 2024-10-19T17:57:56-07:00
   slug = "090"
   title = "Overhead"

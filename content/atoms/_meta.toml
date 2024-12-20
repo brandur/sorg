@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-19T20:29:08-07:00
+  description = """\
+Published [sequence 091](/sequences/091), Fair's Fair.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/091"
+    original_image_url = "https://www.dropbox.com/scl/fi/w8t2ievna1y58s7dg2k3p/L1000508-fairs-fair-crop.jpg?rlkey=okhy8r5tuxeppr898knsybnli&dl=1"
+    slug = "fairs-fair"
+
+[[atoms]]
   published_at = 2024-12-19T16:23:14-07:00
   description = """\
 Published fragment [ERROR: invalid byte sequence for encoding UTF8: 0x00 (and what to do about it)](/fragments/invalid-byte-sequence), on handling a common programming language/database asymmetry around tolerance of zero bytes.
