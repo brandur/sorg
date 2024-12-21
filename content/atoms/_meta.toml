@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-21T10:30:01-07:00
+  description = """\
+Publish fragment [Go's maximum time.Duration](/fragments/go-max-time-duration), on Avoiding overflows with Go's `time.Duration` in the presence of exponential algorithms.
+"""
+
+[[atoms]]
   published_at = 2024-12-20T12:56:01-07:00
   description = """\
 Published [sequence 092](/sequences/092), Tori Bar.
