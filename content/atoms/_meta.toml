@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-25T07:23:45-07:00
+  description = """\
+River Ruby [gets same day support for Ruby 3.4](https://github.com/riverqueue/riverqueue-ruby/pull/38). I like Ruby's tradition of releasing on Christmas morning. It gives me a ten minute job (and ten minutes only) to feel like I did some coding for the day.
+"""
+
+[[atoms]]
   published_at = 2024-12-21T10:30:01-07:00
   description = """\
 Publish fragment [Go's maximum time.Duration](/fragments/go-max-time-duration), on Avoiding overflows with Go's `time.Duration` in the presence of exponential algorithms.
