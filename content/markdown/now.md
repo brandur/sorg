@@ -1,12 +1,10 @@
-<!--
 <div class="my-16
             ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
-    <img src="/photographs{{DownloadedImage .Ctx "/now/skyscrapers" "https://www.dropbox.com/scl/fi/hwt1dm93omj4l2qhuppww/2W4A6069.JPG?rlkey=w3cj9fbkgvk0ohdn6b34x0eod&dl=1" 1300}}" alt="Skyscrapers" class="lg:rounded-lg w-full" loading="lazy">
+    <img src="/photographs{{DownloadedImage .Ctx "/now/7th-ave" "https://www.dropbox.com/scl/fi/l3kduxtlns6pzjlmo4zns/L1000513.JPG?rlkey=2dzclgpezw7ei2px864afiky2&dl=1" 1300}}" alt="7th Ave" class="lg:rounded-lg w-full" loading="lazy">
 </div>
--->
 
 I'm in Calgary. Let's see:
 
