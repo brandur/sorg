@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-27T22:05:09-07:00
+  description = """\
+I agree with this: [AI-Generated Images Discourage Me From Reading Your Blog](https://nelson.cloud/ai-generated-images-discourage-me-from-reading-your-blog/).
+
+> I have a growing hatred for AI-generated images in blogs. It makes me wonder if the text in the blog posts is AI-generated to some extent. It’s always disappointing seeing these images in blogs run by individuals. I expect this from corporate blogs but not indie blogs.
+
+It might be a losing battle, but I don't read content that I know is AI generated. It's harder not to look at an AI-generated image, but I try my best there too.
+"""
+
+[[atoms]]
   published_at = 2024-12-27T21:29:44-07:00
   length_exempted = true
   description = """\
