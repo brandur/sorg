@@ -11,6 +11,74 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-27T21:29:44-07:00
+  length_exempted = true
+  description = """\
+Last week we ran into a product degradation where a user with an enormous number of tables was seeing timeouts trying to fetch a list of their cluster's databases from one of our API endpoints. The endpoint had been using `pg_database_size()` to get sizes for each database, with these being used as a proxy for which were most active to determine the one that should take precedence in the UI.
+
+I verified the problem locally by creating a database with a heck of a lot of tables:
+
+``` sh
+$ createdb many_table_test
+$ for i in {1..220000}; do
+      psql postgres:///many_table_test -c "CREATE TABLE table_$i (id bigserial PRIMARY KEY)";
+  done
+```
+
+And watching `pg_database_size` become degenerately slow:
+
+``` sql
+# select pg_database_size('many_table_test');
+  pg_database_size
+------------------
+        5180509331
+(1 row)
+
+Time: 22739.724 ms (00:22.740)
+```
+
+23 seconds to calculate the size of a database on a fast, local disk.
+
+Taking a look at Postgres' source, the problem is quickly apparent. Calculating database size involves descending through every one of its files on disk and adding them all up:
+
+``` c
+/* Return physical size of directory contents, or 0 if dir doesn't exist */
+static int64
+db_dir_size(const char *path)
+{
+    int64 dirsize = 0;
+    ...
+
+    while ((direntry = ReadDir(dirdesc, path)) != NULL)
+    {
+        if (stat(filename, &fst) < 0)
+            ...
+        dirsize += fst.st_size;
+    }
+
+    return dirsize;
+}
+```
+
+Every table (all 200k+ of them) is a separate file:
+
+``` sql
+$ psql river_test
+river_test=# SELECT pg_relation_filepath('river_job');
+ pg_relation_filepath
+----------------------
+ base/305728/305756
+
+river_test=# SELECT pg_relation_filepath('river_leader');
+ pg_relation_filepath
+----------------------
+ base/305728/305783
+```
+
+I patched the immediate problem by removing uses of `pg_database_size` and falling back instead to [`pg_stat_database`](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STAT-DATABASE-VIEW), which includes a number of statistics that work as rough proxies for size/activity. I used `xact_commit`, the number of committed transactions. A call to `pg_stat_reset()` would reset the number, but in any active database it'd grow quickly again.
+"""
+
+[[atoms]]
   published_at = 2024-12-25T07:23:45-07:00
   description = """\
 River Ruby [gets same day support for Ruby 3.4](https://github.com/riverqueue/riverqueue-ruby/pull/38). I like Ruby's tradition of releasing on Christmas morning. It gives me a ten minute job (and ten minutes only) to feel like I did some coding for the day.
