@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-29T16:14:26-07:00
+  description = """\
+Published [sequence 093](/sequences/093), Eighty-Eight.
+
+I've been hearing about Eighty-Eight for years, but didn't visit until yesterday. Named for the year '88 when Calgary hosted the Olympic winter games, it's two levels of taprooms with the brewery on site right next door. An 80s vibe pervades the space, complete with tube TVs (bunny ears open wide), boombox, and retro console. The special holiday theme is Home Alone. See the infamous Wet Bandit duo on screen here, but also with themed menu, Kevin McCallister traps visible around the room, and flying fox line soaring above the brewery's enormous stainless steel vats.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/093"
+    original_image_url = "https://www.dropbox.com/scl/fi/52ponck1inoyy9baw9jmp/L1000548-crop2.jpg?rlkey=ortm0ddb315jkz7m9qrc7z6xg&dl=1"
+    slug = "eighty-eight"
+
+[[atoms]]
   published_at = 2024-12-28T23:56:24-07:00
   description = """\
 Published fragment [Stripe V2](/fragments/stripe-v2). How Stripe's API got a new major version, and no one noticed.
