@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-28T23:56:24-07:00
+  description = """\
+Published fragment [Stripe V2](/fragments/stripe-v2). How Stripe's API got a new major version, and no one noticed.
+"""
+
+[[atoms]]
   published_at = 2024-12-27T22:05:09-07:00
   description = """\
 I agree with this: [AI-Generated Images Discourage Me From Reading Your Blog](https://nelson.cloud/ai-generated-images-discourage-me-from-reading-your-blog/).
