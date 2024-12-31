@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2024-12-31T15:32:43-07:00
+  description = """\
+Published my last fragment of the year, [Postgres UUIDv7 + per-backend monotonicity](/fragments/uuid-v7-monotonicity), on how Postgres' v7 UUIDs are made monotonic, and why that's a great feature.
+"""
+
+[[atoms]]
   published_at = 2024-12-29T16:14:26-07:00
   description = """\
 Published [sequence 093](/sequences/093), Eighty-Eight.
