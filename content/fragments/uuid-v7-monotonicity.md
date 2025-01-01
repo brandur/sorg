@@ -40,6 +40,25 @@ My grasp on monotonicity has always been tenuous at best, so I was curious how i
 
 ``` c
 /*
+ * Generate UUID version 7 per RFC 9562, with the given timestamp.
+ *
+ * UUID version 7 consists of a Unix timestamp in milliseconds (48
+ * bits) and 74 random bits, excluding the required version and
+ * variant bits. To ensure monotonicity in scenarios of high-
+ * frequency UUID generation, we employ the method "Replace
+ * LeftmostRandom Bits with Increased Clock Precision (Method 3)",
+ * described in the RFC. This method utilizes 12 bits from the
+ * "rand_a" bits to store a 1/4096 (or 2^12) fraction of sub-
+ * millisecond precision.
+ *
+ * ns is a number of nanoseconds since start of the UNIX epoch.
+ * This value is used for time-dependent bits of UUID.
+ */
+static pg_uuid_t* generate_uuidv7(int64 ns) {
+
+...
+
+/*
  * sub-millisecond timestamp fraction (SUBMS_BITS bits, not
  * SUBMS_MINIMAL_STEP_BITS)
  */
