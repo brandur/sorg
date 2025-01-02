@@ -91,7 +91,7 @@ UUIDv7 dictates an initial 48 bits that encodes a timestamp down to millisecond 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-The Postgres patch solves the problem by repurposing 12 bits of the UUID's random component to increase the precision of the timestamp down to nanosecond granularity (filling `rand_a` above), which in practice is too precise to contain two UUIDv7s generated in the same process. It makes a repeated UUID between processes more likely, but there's still 62 bits of randomness left to make use of, so collisions remain vastly unlikely.
+The Postgres patch solves the problem by repurposing 12 bits of the UUID's random component to increase the precision of the timestamp down to nanosecond granularity (filling `rand_a` above), which in practice is too precise to contain two UUIDv7s generated in the same process. It makes a repeated UUID _between_ processes more likely, but there's still 62 bits of randomness left to make use of, so collisions remain vastly unlikely.
 
 ## The wait is on (#wait)
 
