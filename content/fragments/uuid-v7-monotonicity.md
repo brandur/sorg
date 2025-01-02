@@ -32,7 +32,7 @@ resp = make_api_request :get, "/accounts"
 expect(resp.map { _1["id"] }).to eq(test_accounts.map(&:id))
 ```
 
-With Postgres ensuring monotonicity for IDs, the five generated objects get five in-order IDs, making the test safer [1] and faster to write. Montonicity isn't guaranteed across backends, but that's okay in well written test suites. Patterns like [test transactions](/fragments/go-test-tx-using-t-cleanup) will guarantee that each test case speaks to exactly one backend.
+With Postgres ensuring monotonicity for UUIDv7s, the five generated objects get five in-order IDs, making the test safer [1] and faster to write. Montonicity isn't guaranteed across backends, but that's okay in well written test suites. Patterns like [test transactions](/fragments/go-test-tx-using-t-cleanup) will guarantee that each test case speaks to exactly one backend.
 
 ## 12 bits more clock (#12-bits-more-clock)
 
