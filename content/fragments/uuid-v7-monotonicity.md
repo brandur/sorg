@@ -22,7 +22,7 @@ A nice surprise is that the random portion of the UUIDs will be monotonic within
 This is a hugely valuable feature in practice, especially in testing. Say you want to generate five objects for testing an API list endpoint. It's possible they're generated in-order by virtue of being across different milliseconds or by getting lucky, but probability is against you, and the likelihood is that some will be out of order. A test case has to generate the five objects, then do an initial sort before making use of them. That's not the end of the world, but it's more test code and adds noise.
 
 ``` ruby
-test_accounts = 5.times { TestFactory.account }
+test_accounts = 5.times.map { TestFactory.account }
 
 # maybe IDs were in order, but maybe not, so do an initial sort
 test_accounts.sort_by! { |a| a.id }
