@@ -5,7 +5,7 @@ published_at = 2024-12-31T15:32:43-07:00
 title = "Postgres UUIDv7 + per-backend monotonicity"
 +++
 
-An implementation for [UUIDv7 was committed to Postgres](https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=78c5e141e9c139fc2ff36a220334e4aa25e1b0eb) earlier this month. These have all the benefits of a v4 (random) UUID, but are generated with a more deterministic order using the current time, and perform considerably on inserts using ordered structures like B-trees.
+An implementation for [UUIDv7 was committed to Postgres](https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=78c5e141e9c139fc2ff36a220334e4aa25e1b0eb) earlier this month. These have all the benefits of a v4 (random) UUID, but are generated with a more deterministic order using the current time, and perform considerably better on inserts using ordered structures like B-trees.
 
 A nice surprise is that the random portion of the UUIDs will be monotonic within each Postgres backend:
 
