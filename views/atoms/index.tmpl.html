@@ -1,6 +1,6 @@
 {{- template "layouts/atoms.tmpl.html" . -}}
 
-{{- define "title" -}}Atoms{{- if not .IndexMax -}} archive{{- end -}}{{.TitleSuffix}}{{- end -}}
+{{- define "title" -}}Atoms{{if not .IndexMax}} archive{{end}}{{.TitleSuffix}}{{- end -}}
 
 {{- define "atoms_content" -}}
 
