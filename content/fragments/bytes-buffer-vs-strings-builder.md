@@ -52,6 +52,17 @@ func BenchmarkBytesBuffer(b *testing.B) {
     }
 }
 
+func BenchmarkConcatenateStrings(b *testing.B) {
+    for range b.N {
+        var str string
+
+        for _, fragment := range fragments {
+            str += fragment
+            str += " "
+        }
+    }
+}
+
 func BenchmarkStringBuilder(b *testing.B) {
     for range b.N {
         var sb strings.Builder
@@ -72,10 +83,14 @@ goos: darwin
 goarch: arm64
 pkg: github.com/brandur/go-builder-vs-buffer
 cpu: Apple M4
-BenchmarkBytesBuffer-10          4858627               215.4 ns/op          1280 B/op          5 allocs/op
-BenchmarkStringBuilder-10        8368794               144.3 ns/op           752 B/op          6 allocs/op
+BenchmarkBytesBuffer-10                  5013081               217.3 ns/op          1280 B/op          5 allocs/op
+BenchmarkConcatenateStrings-10           1603748               753.5 ns/op          5557 B/op         31 allocs/op
+BenchmarkStringBuilder-10                6916813               146.9 ns/op           752 B/op          6 allocs/op
 PASS
-ok      github.com/brandur/go-builder-vs-buffer 2.967s
+ok      github.com/brandur/go-builder-vs-buffer 4.724s
+
 ```
 
-So there you have it. At least when it comes to concatenating only strings at relatively modest sizes, `strings.Builder` is about 25% faster. Given that the DX is identical between the two, I'll make it my new default go to.
+So there you have it. At least when it comes to concatenating only strings at relatively modest sizes, `strings.Builder` is about 33% faster, and 80% faster than [1] than concatenating strings. Given that the DX is identical between the two, I'll make it my new default go to.
+
+[1] Put otherwise, `bytes.Buffer` is 50% slower than `strings.Builder` and concatenating strings is 500% slower.
