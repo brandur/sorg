@@ -17,15 +17,15 @@ A few highlights:
 
 * Pagination has picked up a hypermedia-esque veneer (see [HATEAOS](https://en.wikipedia.org/wiki/HATEOAS)), returning a `next_page_url` that's requested directly instead of a cursor and having the caller build the next URL themselves.
 
-* The new API is trying to move away from a model where subobjects in an API resource are expanded by default, to one where they need to be requested with an `include` parameter. We had plenty of discussions about this before I left. The purpose of the change is to make API requests faster (Stripe's API is quite slow) by rendering less for most requests. I counted only two places where this is actually used so far though, so time will tell whether the gambit actually succeeds or not.
+* The new API is trying to move away from a model where sub-objects in an API resource are expanded by default, to one where they need to be requested with an `include` parameter. We had plenty of discussions about this before I left. The purpose of the change is to make API requests faster (Stripe's API is quite slow) by rendering less for most requests. I counted only two places where this is actually used so far though, so time will tell whether the gambit actually succeeds or not.
 
-* Endpoints will try for "real" idempotency where callers can converge failed operations to either success or definitive failure:
+* Endpoints will try for "real" idempotency where callers can converge failed operations to either success or definitive failure by calling them again:
 
     > * When you provide the same idempotency key for two requests:
     >     * API v1 always returns the previously-saved response of the first API request, even if it was an error.
     >     * API v2 attempts to retry any failed requests without producing side effects (any extraneous change or observable behavior that occurs as a result of an API call) and provide an updated response.
 
-    Previously (and still for most endpoints), failures from an intermittent blip or bug were a big problem. The idempotency layer dumbly returned whatever canned response had been recorded on the initial go around, so users wouldn't get closure on what exactly happened. Their best hope would that be a Stripe engineer would eventually repair their charge manually at some later time, and send a webhook about it.
+    Previously (and still for most endpoints), failures from an intermittent blip or bug were a big problem. The idempotency layer dumbly returned whatever canned response had been recorded on the initial go around (including internal server errors), so users wouldn't get closure on what exactly happened. Their best hope would that be a Stripe engineer would eventually repair their charge manually at some later time, and send a webhook about it.
 
 ## REST-ish v4-ever (#rest-ish)
 
