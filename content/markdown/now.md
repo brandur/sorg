@@ -6,7 +6,7 @@
     <img src="/photographs{{DownloadedImage .Ctx "/now/7th-ave" "https://www.dropbox.com/scl/fi/l3kduxtlns6pzjlmo4zns/L1000513.JPG?rlkey=2dzclgpezw7ei2px864afiky2&dl=1" 1300}}" alt="7th Ave" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
-I'm in Calgary. Let's see:
+I'm in Calgary for the holidays. Let's see:
 
 * Upgraded my M2 MacBook Air to the new M4 MacBook Pro with nanotexture. These computers don't get major changes very often, so right after release is a good time to buy. I got the non-Pro non-Max chip variant because it has the best battery life, advertised at 24 hours, which is crazy.
 
