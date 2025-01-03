@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-01-02T22:34:32-07:00
+  description = """\
+Published fragment [Go's `bytes.Buffer` vs. `strings.Builder`](/fragments/bytes-buffer-vs-strings-builder), on taking five minutes to write a benchmark so I know which of these I should be reaching for first.
+"""
+
+[[atoms]]
   published_at = 2024-12-31T15:32:43-07:00
   description = """\
 Published my last fragment of the year, [Postgres UUIDv7 + per-backend monotonicity](/fragments/uuid-v7-monotonicity), on how Postgres' v7 UUIDs are made monotonic, and why that's a great feature.
