@@ -83,9 +83,9 @@ goos: darwin
 goarch: arm64
 pkg: github.com/brandur/go-builder-vs-buffer
 cpu: Apple M4
-BenchmarkBytesBuffer-10                  5013081               217.3 ns/op          1280 B/op          5 allocs/op
-BenchmarkConcatenateStrings-10           1603748               753.5 ns/op          5557 B/op         31 allocs/op
-BenchmarkStringBuilder-10                6916813               146.9 ns/op           752 B/op          6 allocs/op
+BenchmarkBytesBuffer-10           5013081    217.3 ns/op    1280 B/op    5 allocs/op
+BenchmarkConcatenateStrings-10    1603748    753.5 ns/op    5557 B/op    31 allocs/op
+BenchmarkStringBuilder-10         6916813    146.9 ns/op    752 B/op     6 allocs/op
 PASS
 ok      github.com/brandur/go-builder-vs-buffer 4.724s
 
