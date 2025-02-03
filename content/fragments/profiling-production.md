@@ -102,7 +102,7 @@ Feb 1 23:07:18 platform app[web] info canonical_api_line
 total_alloc_delta=743772480
 ```
 
-It looks like this API request allocated 744 MB, but what actually happened is that it was a bad timeout that executed for a full three minutes [1]. During that time, other API requests served in the interim allocated the majority of that memory.
+It looks like this API request allocated 744 MB, but what actually happened is that it was a bad timeout that executed for a full three minutes [1]. During that time, other API requests served in the interim allocated the majority of that memory. It _didn't_ crash our 512 MB dyno because multiple GCs also occurred during that time.
 
 ## Pprof to S3 (#pprof-to-s3)
 
