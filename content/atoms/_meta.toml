@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-02-02T18:02:27-07:00
+  description = """\
+Published fragment [Profiling production for memory overruns + canonical log stats](/fragments/profiling-production), on using Go's `runtime.MemStats` and canonical log lines to isolate huge memory allocations to a specific endpoint.
+"""
+
+[[atoms]]
   published_at = 2025-01-02T22:34:32-07:00
   description = """\
 Published fragment [Go's `bytes.Buffer` vs. `strings.Builder`](/fragments/bytes-buffer-vs-strings-builder), on taking five minutes to write a benchmark so I know which of these I should be reaching for first.
