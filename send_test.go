@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"testing"
 
 	assert "github.com/stretchr/testify/require"
@@ -39,7 +38,7 @@ func TestMatchNewsletter(t *testing.T) {
 }
 
 func TestRenderAndSend(t *testing.T) {
-	ctx := context.Background()
+	ctx := t.Context()
 
 	oldMailgunKey := conf.MailgunAPIKey
 	defer func() {

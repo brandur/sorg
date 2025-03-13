@@ -1,6 +1,6 @@
 module github.com/brandur/sorg
 
-go 1.23
+go 1.24
 
 // For debugging:
 // replace github.com/brandur/modulir => /Users/brandur/Documents/go/src/github.com/brandur/modulir
