@@ -1,7 +1,7 @@
 linters:
   disable:
     # deprecated
-    - exportloopref
+    - tenv
 
     # obnoxious
     - cyclop
@@ -16,7 +16,6 @@ linters:
     - goconst
     - gocyclo
     - godox
-    - gomnd
     - lll
     - mnd
     - nlreturn
@@ -24,9 +23,6 @@ linters:
     - testpackage
     - wsl
     - varnamelen
-
-    # buggy
-    - execinquery
   enable-all: true
 
 linters-settings:
