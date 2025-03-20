@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-03-20T08:56:52-07:00
+  description = """\
+Published fragment [The right way to do test fixtures in Go](/fragments/go-data-fixtures), on a safe, succinct data fixtures pattern using sqlc and validator.
+"""
+
+[[atoms]]
   published_at = 2025-02-02T18:02:27-07:00
   description = """\
 Published fragment [Profiling production for memory overruns + canonical log stats](/fragments/profiling-production), on using Go's `runtime.MemStats` and canonical log lines to isolate huge memory allocations to a specific endpoint.
