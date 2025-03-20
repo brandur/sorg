@@ -1,8 +1,8 @@
 +++
-hook = "A safe, succinct data fixtures pattern using sqlc and validator."
+hook = "A safe, succinct test data fixtures pattern using sqlc and validator."
 # image = ""
 published_at = 2025-03-20T08:56:52-07:00
-title = "The right way to do test fixtures in Go"
+title = "The right way to do data fixtures in Go"
 +++
 
 Every test suite should start early in building a strong convention to generate data fixtures. If it doesn't, data fixtures will still emerge (they're that necessary), but in a way that's poorly designed, with no API (or a poorly designed one), and not standardized.

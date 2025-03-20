@@ -13,7 +13,7 @@
 [[atoms]]
   published_at = 2025-03-20T08:56:52-07:00
   description = """\
-Published fragment [The right way to do test fixtures in Go](/fragments/go-data-fixtures), on a safe, succinct data fixtures pattern using sqlc and validator.
+Published fragment [The right way to do data fixtures in Go](/fragments/go-data-fixtures), on a safe, succinct test data fixtures pattern using sqlc and validator.
 """
 
 [[atoms]]
