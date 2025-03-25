@@ -189,7 +189,7 @@ func TestRender(t *testing.T) {
 func TestRenderEmpty(t *testing.T) {
 	rendered, err := Render("hello")
 	assert.NoError(t, err)
-	assert.Equal(t, "", rendered)
+	assert.Empty(t, rendered)
 }
 
 //

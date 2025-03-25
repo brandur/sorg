@@ -87,7 +87,7 @@ func TestMonthName(t *testing.T) {
 func TestNanoglyphSignup(t *testing.T) {
 	t.Run("InEmail", func(t *testing.T) {
 		str := nanoglyphSignup(true)
-		assert.Equal(t, "", string(str))
+		assert.Empty(t, string(str))
 	})
 
 	t.Run("NotEmail", func(t *testing.T) {
@@ -132,13 +132,13 @@ func TestRound(t *testing.T) {
 }
 
 func TestToStars(t *testing.T) {
-	assert.Equal(t, "", toStars(0))
+	assert.Empty(t, toStars(0))
 	assert.Equal(t, "★ ", toStars(1))
 	assert.Equal(t, "★ ★ ★ ★ ★ ", toStars(5))
 }
 
 func TestURLBaseExt(t *testing.T) {
-	assert.Equal(t, "", urlBaseExt("https://example.com/video"))
+	assert.Empty(t, urlBaseExt("https://example.com/video"))
 	assert.Equal(t, "jpg", urlBaseExt("https://example.com/image.JPG"))
 	assert.Equal(t, "mp4", urlBaseExt("https://example.com/video.mp4"))
 	assert.Equal(t, "webm", urlBaseExt("https://example.com/video.webm"))
