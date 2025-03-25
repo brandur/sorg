@@ -41,7 +41,6 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          cache: true
           check-latest: true
           go-version-file: "go.mod"
 
@@ -182,7 +181,6 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          cache: true
           check-latest: true
           go-version-file: "go.mod"
 
@@ -244,7 +242,6 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          cache: true
           check-latest: true
           go-version-file: "go.mod"
 
@@ -281,7 +278,6 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v5
         with:
-          cache: true
           check-latest: true
           go-version-file: "go.mod"
 
