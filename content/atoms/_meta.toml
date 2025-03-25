@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-03-25T09:41:07-07:00
+  description = """\
+Blake published an article over on River's blog on [Building an idempotent email API with River unique jobs](https://riverqueue.com/blog/idempotent-email-api-with-river).
+
+I've been using Mailgun to send emails for years, and perhaps the oddest thing about the service is that despite having exactly one critical API endpoint that everyone cares about (the one that sends mail), they won't give you a way to guarantee that you're communicating with it safely. Even when you're one of the consumers who cares enough to bother and willing to do the work themselves, Mailgun won't give you a way to do it, even after 15 years of product development. I don't have a good explanation for this. Like I said, odd.
+
+The River post shows that baking in an idempotency concept _doesn't have to be that hard_. So if you're running an API, maybe just do it.
+"""
+
+[[atoms]]
   published_at = 2025-03-20T08:56:52-07:00
   description = """\
 Published fragment [The right way to do data fixtures in Go](/fragments/go-data-fixtures), on a safe, succinct test data fixtures pattern using sqlc and validator.
