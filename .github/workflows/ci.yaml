@@ -286,6 +286,6 @@ jobs:
           go-version-file: "go.mod"
 
       - name: "Check: golangci-lint"
-        uses: golangci/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v7
         with:
-          version: v1.64.7
+          version: v2.0.0

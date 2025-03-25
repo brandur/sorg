@@ -1,8 +1,9 @@
-linters:
-  disable:
-    # deprecated
-    - tenv
+version: "2"
 
+linters:
+  default: all
+
+  disable:
     # obnoxious
     - cyclop
     - depguard
@@ -10,8 +11,8 @@ linters:
     - exhaustruct
     - forcetypeassert
     - funlen
-    - gochecknoinits
     - gochecknoglobals
+    - gochecknoinits
     - gocognit
     - goconst
     - gocyclo
@@ -21,30 +22,45 @@ linters:
     - nlreturn
     - paralleltest
     - testpackage
-    - wsl
     - varnamelen
-  enable-all: true
+    - wsl
 
-linters-settings:
-  forbidigo:
-    forbid:
-      - '^errors\.Wrap$'
-      - '^errors\.Wrapf$'
-      - '^fmt\.Errorf$'
-  gci:
-    sections:
-      - Standard
-      - Default
-      - Prefix(github.com/brandur)
+  settings:
+    forbidigo:
+      forbid:
+        - pattern: ^errors\.Wrap$
+        - pattern: ^errors\.Wrapf$
+        - pattern: ^fmt\.Errorf$
 
-  gocritic:
-    disabled-checks:
-      - commentFormatting
+    gocritic:
+      disabled-checks:
+        - commentFormatting
 
-  gosec:
-    excludes:
-      - G203
+    gosec:
+      excludes:
+        - G203
 
-  wrapcheck:
-    ignorePackageGlobs:
-      - github.com/brandur/*
+    wrapcheck:
+      ignore-package-globs:
+        - github.com/brandur/*
+
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  settings:
+    gci:
+      sections:
+        - Standard
+        - Default
+        - Prefix(github.com/brandur)
