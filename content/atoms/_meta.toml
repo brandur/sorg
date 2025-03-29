@@ -149,12 +149,12 @@ Every table (all 200k+ of them) is a separate file:
 
 ``` sql
 $ psql river_test
-river_test=# SELECT pg_relation_filepath('river_job');
+river_test=# SELECT pg_relation_filepath('table_1234');
  pg_relation_filepath
 ----------------------
  base/305728/305756
 
-river_test=# SELECT pg_relation_filepath('river_leader');
+river_test=# SELECT pg_relation_filepath('table_2345');
  pg_relation_filepath
 ----------------------
  base/305728/305783
