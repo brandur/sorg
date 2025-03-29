@@ -11,6 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-03-29T12:58:35-07:00
+  description = """\
+After observing a real, live production transaction anomaly a few weeks ago (more on this soon!), I spent yesterday writing an augmentation for our homegrown Go data loading framework that loads records with `SELECT ... FOR UPDATE` on endpoints that expect to modify or delete them.
+
+While looking for prior art, I came across [`ActiveRecord::Locking::Pessimistic` module](https://api.rubyonrails.org/classes/ActiveRecord/Locking/Pessimistic.html), the Rails equivalent of what I was building:
+
+``` ruby
+# SELECT * FROM account WHERE id = 1 FOR UPDATE
+Account.lock.find(1)
+```
+
+Use of `.lock` on update/delete actions will prevent a non-repeatable read, the most common transaction anomaly on Postgres' default _read committed_ isolation level.
+
+But a lot of people probably don't know that. Transaction anomalies are rare on the whole, and even when they happen probably aren't diagnosed and/or fixed. It may me wonder how many shops are consciously practicing good locking hygiene versus how many are YOLOing assuming the side effects are rare and fairly benign. We were certainly the latter.
+"""
+
+[[atoms]]
   published_at = 2025-03-29T12:35:10-07:00
   description = """\
 Published fragment [Optimizing JPEGs with MozJPEG for local archival](/fragments/optimizing-jpegs-for-archival), on writing a wrapper script around MozJPEG to achieve ~80% compression on large JPEGs with little downside.
