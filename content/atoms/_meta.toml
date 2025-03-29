@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-03-29T12:35:10-07:00
+  description = """\
+Published fragment [Optimizing JPEGs with MozJPEG for local archival](/fragments/optimizing-jpegs-for-archival), on writing a wrapper script around MozJPEG to achieve ~80% compression on large JPEGs with little downside.
+"""
+
+[[atoms]]
   published_at = 2025-03-25T09:41:07-07:00
   description = """\
 Blake published an article over on River's blog on [Building an idempotent email API with River unique jobs](https://riverqueue.com/blog/idempotent-email-api-with-river).
