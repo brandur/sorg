@@ -10,6 +10,19 @@
 #
 ################################################################################
 
+
+[[entries]]
+  published_at = 2025-04-04T14:01:42-07:00
+  slug = "094"
+  title = "Sky blue"
+  description = """
+A random shot of the high towers of the Financial District in downtown San Francisco. Used as the poster image for my latest [now](/now) update, which touches lightly on journaling, OpenTelemetry, and transaction anomalies.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/t8clk35k7peh3jo49255c/L1000718.heic?rlkey=jdbez5jzln6ju6jl5ukfbhoop&dl=1"
+    # portrait = true
+    slug = "094"
+
 [[entries]]
   published_at = 2024-12-29T16:14:26-07:00
   slug = "093"

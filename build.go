@@ -1546,6 +1546,14 @@ func fetchAndResizeDownloadedImage(c *modulir.Context,
 	base := filepath.Base(imageInfo.Slug)
 	dir := targetDir + filepath.Dir(imageInfo.Slug)
 
+	extImageTarget := func(canonicalExt string) string {
+		if canonicalExt == ".heic" {
+			return ".webp"
+		}
+
+		return canonicalExt
+	}
+
 	return mimage.FetchAndResizeImage(c, imageInfo.URL, dir, base, extImageTarget(imageInfo.OriginalExt()), mimage.PhotoGravityCenter,
 		[]mimage.PhotoSize{
 			{Suffix: "", Width: imageInfo.Width, CropSettings: cropDefault},

@@ -3,6 +3,38 @@
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
+    <img src="/photographs{{DownloadedImage .Ctx "/now/2025-apr-04" "https://www.dropbox.com/scl/fi/t8clk35k7peh3jo49255c/L1000718.heic?rlkey=jdbez5jzln6ju6jl5ukfbhoop&dl=1" 1300}}" alt="Sky blue" class="lg:rounded-lg w-full" loading="lazy">
+</div>
+
+I'm back in San Francisco after a series of trips to Seattle, Kelowna, and Reno.
+
+Some haphazard notes:
+
+* After running into the first honest-to-god transaction anomaly that I remember ever seeing in production, I'm building locking (`SELECT ... FOR UPDATE`) support into the lightweight, home grown data loading framework that we use in Crunchy's API.
+
+* I'm been journaling daily for 500 consecutive days now. 128,000 words so far in 2025.
+
+* We recently wrote and released [OpenTelemetry middleware for River](https://github.com/riverqueue/rivercontrib). Most major providers have OpenTelemetry support these days, so it's usable with DataDog or Sentry for example.
+
+* After noticing how inefficiently packed the JPGs coming out of my cameras were (and how camera sensors are getting denser but laptop hard drives are staying the same size), I wrote a script to [archive photography artifacts in more compact form](/fragments/optimizing-jpegs-for-archival). I'm debating whether I should make the jump to storing everything in HEIC since it's fewer moving parts to get to optimal storage and I'd be able to avoid messing around with esoteric tooling like MozJPEG.
+
+* I finally took the step to black hole Reddit on all my computers. Focus on making cool stuff instead of wasting precious hours of mortality wrestling down in this filthy, hyper-partisan sludge. This company's stock cannot go to zero fast enough (and at -48% YTD, it's on its way).
+
+<div class="mb-16 not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Apr 4, 2025</span>.
+    </p>
+</div>
+
+<details>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 19, 2024</summary>
+    <div class="my-10">
+
+<div class="my-16
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
     <img src="/photographs{{DownloadedImage .Ctx "/now/7th-ave" "https://www.dropbox.com/scl/fi/l3kduxtlns6pzjlmo4zns/L1000513.JPG?rlkey=2dzclgpezw7ei2px864afiky2&dl=1" 1300}}" alt="7th Ave" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
@@ -19,12 +51,6 @@ I'm in Calgary for the holidays. Let's see:
 * Next up will be to improve the versability of our saved queries product by adding UI configurable input parameters to queries.
 
 * We're still plugging away [on River](https://github.com/riverqueue/river), the best Go/Postgres queue out there.
-
-<div class="mb-16 not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Dec 19, 2024</span>.
-    </p>
-</div>
 
 <details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Oct 19, 2024</summary>
@@ -45,6 +71,9 @@ I'm in San Francisco, having recently returned from [Rails World in Toronto](/fr
 * Next up is a billing system for metered storage use. Harder than it sounds on the face because you're not just tracking storage, but _storage over time_. If someone stores 10 TB for most of the month but deletes every last byte before invoicing day, they should still be charged for about 10 TB. If someone spikes up to 10 TB for only a single day before deleting it all, they should be charged far less. Rather than charging per GB, you're really charging per GB-hour.
 
 * I'm trying, and mostly failing, to update this site more consistently. The notification came in to update this page on Oct 1st, and yet, *sigh*, I'm doing it on the 19th.
+
+</div>
+</details>
 
 </div>
 </details>

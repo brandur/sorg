@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-04-04T14:01:42-07:00
+  description = """\
+Published [sequence 094](/sequences/094), sky blue.
+
+A random shot of the high towers of the Financial District in downtown San Francisco. Used as the poster image for my latest [now](/now) update, which touches lightly on journaling, OpenTelemetry, and transaction anomalies.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/094"
+    original_image_url = "https://www.dropbox.com/scl/fi/t8clk35k7peh3jo49255c/L1000718.heic?rlkey=jdbez5jzln6ju6jl5ukfbhoop&dl=1"
+    slug = "sky-blue"
+
+[[atoms]]
   published_at = 2025-03-29T12:58:35-07:00
   description = """\
 After observing a real, live production transaction anomaly a few weeks ago (more on this soon!), I spent yesterday writing an augmentation for our homegrown Go data loading framework that loads records with `SELECT ... FOR UPDATE` on endpoints that expect to modify or delete them.
