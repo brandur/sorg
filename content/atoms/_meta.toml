@@ -11,6 +11,23 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-04-06T16:27:46-07:00
+  description = """\
+I found myself thinking about Spring '83 today, an experimental microblogging protocol that had a lot of excellent ideas, but for which the experiment is already over. The protocol's author wrote up a great [retrospective on it](https://www.robinsloan.com/lab/specifying-spring-83/#summer).
+
+I recently took the step of banning Reddit from my devices. I enjoy posting longform comments in the few remaining good subreddits, but it's become a malignant political cesspool that's unquestionably having a negative impact on the way I think. I'm also increasing unsure of how much content is being produced by humans, as opposed to LLM-powered bots designed to manipulate pubic opinion. I like X, but in the way that I liked alcohol. It's pleasurable, but cancerous. I'll continue to avoid Instagram and TikTok for as long as I live.
+
+But I miss seeing thoughtful/high effort posts from interesting people. Spring '83 is almost exactly what I'd want out of a prospective social network:
+
+* Everybody gets a single current "slot", so there's no incentive to post dozens of times a day.
+* No likes/favorites, disincentivizing outrage/sensationalist posting.
+* A modest, but significant technical barrier to entry (e.g. generating a key, self-hosting). A little gatekeeping would eliminate the vast majority of the worst people on the internet.
+* Non-algorithmic, letting me easily banish anyone who posts about politics.
+
+The realist in me knows that a new high-effort, low-endorphin social protocol catching on is about as likely as me jumping over the moon. As imperfect as RSS and email are, they're the best channels we currently have, and closest thing to a good answer we're likely to get. A practical person would focus less on trying to bootstrap a brand new protocol, and more on improving email/RSS to make it more like the protocol we'd want to see in the world.
+"""
+
+[[atoms]]
   published_at = 2025-04-04T14:01:42-07:00
   description = """\
 Published [sequence 094](/sequences/094), sky blue.
