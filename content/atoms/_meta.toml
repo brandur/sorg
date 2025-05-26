@@ -11,6 +11,24 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-05-26T15:50:44-06:00
+  description = """\
+The YAML package `gopkg.in/yaml.v3` used pervasively throughout the Go ecosystem was [archived last month](https://github.com/go-yaml/yaml), suggesting no more updates of any kind.
+
+At work I went through and decoupled us as much as possible, moving everything over to TOML (various data files) or JSON (OpenAPI generation) instead. Unfortunately, I've yet to fully decouple any of my Go projects from it completely because it's a dependency for the `stretchr/testify` assertion package, which I'm using everywhere.
+
+It's a bit of an ecosystem-wide conundrum. Testify, which lacks any close seconds in popularity, is used throughout huge portions of the Go ecosystem, and tarnishes the security pedigree of any projects that use it as they all pick up `gopkg.in/yaml.v3` as a transitive dependency. It might be possible to drop or replace the YAML dependency, and there's an open issue requesting to do so, but the project's maintainer is very conservative, and worries that subtle differences in parsing logic between YAML packages will causes breakages. There's Testify alternatives out there, but none have much traction.
+
+It's a three way race. Either:
+
+1. A bad vulnerability is discovered in `gopkg.in/yaml.v3`. It can no longer be updated, causing widespread liability in Go software.
+2. Testify drops its `gopkg.in/yaml.v3`.
+3. Users broadly pick a new assertion package and migrate to it from Testify. (There's also good DX/ergonomic reasons beyond security to prefer doing so.)
+
+Ideally, we'd just pick (3) right now and go with it. More realistically, I'm low key hoping that should (1) occur, it forces us all to get our acts together and do (3).
+"""
+
+[[atoms]]
   published_at = 2025-05-26T00:28:04-06:00
   description = """\
 Published fragment [Be careful with Dropbox](/fragments/careful-with-dropbox), on fun times with Dropbox's new `~/Library/CloudStorage` home and File Provider API integration.
