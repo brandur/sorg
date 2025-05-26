@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-05-26T00:28:04-06:00
+  description = """\
+Published fragment [Be careful with Dropbox](/fragments/careful-with-dropbox), on fun times with Dropbox's new `~/Library/CloudStorage` home and File Provider API integration.
+"""
+
+[[atoms]]
   published_at = 2025-04-06T16:27:46-07:00
   description = """\
 I found myself thinking about Spring '83 today, an experimental microblogging protocol that had a lot of excellent ideas, but for which the experiment is already over. The protocol's author wrote up a great [retrospective on it](https://www.robinsloan.com/lab/specifying-spring-83/#summer).
