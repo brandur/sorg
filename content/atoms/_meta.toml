@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-03T13:55:43+02:00
+  description = """\
+A little news yesterday. From the Wall Street journal: [Snowflake acquires of Crunchy Data for $250 million](https://archive.is/59bYY).
+"""
+
+[[atoms]]
   published_at = 2025-05-26T15:50:44-06:00
   description = """\
 The YAML package `gopkg.in/yaml.v3` used pervasively throughout the Go ecosystem was [archived last month](https://github.com/go-yaml/yaml), suggesting no more updates of any kind.
