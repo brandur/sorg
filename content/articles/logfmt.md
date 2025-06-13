@@ -164,7 +164,7 @@ A few projects from already exist to help parse logfmt in various languages:
 * [logfmt for Clojure](https://github.com/tcrayford/logfmt)
 * [logfmt for Go](http://godoc.org/github.com/kr/logfmt)
 * [logfmt for Node.JS](https://github.com/csquared/node-logfmt)
-* [logfmt for Python](https://github.com/jteppinette/python-logfmter)
+* [logfmt for Python](https://github.com/josheppinette/python-logfmter)
 * [logfmt for Ruby](https://github.com/cyberdelia/logfmt-ruby)
 
 [logrus]: https://github.com/sirupsen/logrus
