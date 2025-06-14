@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-14T10:26:06+03:00
+  description = """\
+See: [Frequent reauth doesn't make you more secure](https://tailscale.com/blog/frequent-reath-security).
+
+At sufficiently large companies, security becomes a religion. A core contingent of rabid disciples dogmatically interpret the writings of patriarchs that came before them much greater than themselves (e.g. [OWASP](https://owasp.org/)). Common sense approaches to security (e.g. passwords that don't expire) are instictively rejected, even while questionable practices (e.g. OTP over SMS, sessions that expire in 24 hours) are dogmatically embraced.
+
+Sometimes I think that all it might take to turn things around are smart security-conscious people that also care about UX to write more articles on best practices (_actually_ best practices as opposed to what the security industry calls a "best practice") so they can be shared as canonical references internally.
+"""
+
+[[atoms]]
   published_at = 2025-06-03T13:55:43+02:00
   description = """\
 A little news yesterday. From the Wall Street journal: [Snowflake acquires of Crunchy Data for $250 million](https://archive.is/59bYY).
