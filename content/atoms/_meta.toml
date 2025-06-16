@@ -11,6 +11,26 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-16T13:08:50+03:00
+  description = """\
+After a recent switch to Brave, I was doing some very infrequent tool sharpening in the Vimium extension (which I'd also used in Chrome). Google's trained me to get used to extension functionality disappearing over time, and even as I noticed Vimium's capabilities shrinking over the years, I'd never seriously looked into doing anything about it.
+
+I was pleasantly surprised today to find that most of what I'd been missing over the years was recoverable through customization. For me, that's the paging shortcuts that I use in Vim constantly:
+
+```
+map <c-d> scrollPageDown
+map <c-u> scrollPageUp
+
+map <c-f> scrollFullPageDown
+map <c-b> scrollFullPageUp
+```
+
+It's nice having these old friends back.
+
+Also, disabling "smooth scrolling" kills the scroll animations. A pure, objective win if I've ever seen one.
+"""
+
+[[atoms]]
   published_at = 2025-06-14T10:26:06+03:00
   description = """\
 See: [Frequent reauth doesn't make you more secure](https://tailscale.com/blog/frequent-reath-security).
