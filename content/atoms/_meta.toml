@@ -11,6 +11,13 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-20T00:16:09+02:00
+  description = """\
+Published fragment [Testing the graceful handling of request cancellation in Go, 499s](/fragments/testing-request-cancellation), on using built-in `net/http` facilities to make sure that canceled requests are abandoned immediately.
+
+"""
+
+[[atoms]]
   published_at = 2025-06-16T13:08:50+03:00
   description = """\
 After a recent switch to Brave, I was doing some very infrequent tool sharpening in the Vimium extension (which I'd also used in Chrome). Google's trained me to get used to extension functionality disappearing over time, and even as I noticed Vimium's capabilities shrinking over the years, I'd never seriously looked into doing anything about it.
