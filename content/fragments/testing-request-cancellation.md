@@ -9,7 +9,7 @@ We had a situation a few days ago where a lazy loading problem in our Ruby code 
 
 If the API stack's being bombarded by expensive requests that are largely being canceled early, it's a huge optimization to make sure that they only use the resources that they absolutely to. Requests discarded early stop executing immediately and no further effort is put toward servicing them.
 
-In most code I've ever worked in, I could quite confidently answer the question above with a definitive and resounding "no". Doing a good job of request cancellation requires it be baked quite deeply into language and low level libraries, which isn't common. Also, cancelling a request midway in services that don't use transactions would be unacceptably dangerous -- [mutated state would be left mutated](/acid#atomicity), and that'd cause untold trouble later on.
+In most code I've ever worked in, I could quite confidently answer the question above with a definitive and resounding "no". Doing a good job of request cancellation requires it be baked quite deeply into language and low level libraries, which isn't common. And even when those handle it well, userland code usually doesn't. Also, cancelling a request midway in services that don't use transactions would be unacceptably dangerous -- [mutated state would be left mutated](/acid#atomicity), and that'd cause untold trouble later on.
 
 ## Cancellation in Go (#go-cancellation)
 
