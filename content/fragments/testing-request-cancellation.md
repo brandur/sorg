@@ -83,7 +83,7 @@ Should a context error occur, we return a `408 Request timeout` in case of a tim
 Looking at local logs running the sleep/cancel routine, I now see this:
 
 ``` txt
-canonical_api_line GET /health-checks/{name} -> 499 (4.162702459s)
+canonical_api_line GET /sleep -> 499 (4.162702459s)
     api_error_cause="context canceled"
     api_error_internal_code=client_closed_request
     api_error_message="Context of incoming request canceled; API endpoint stopped executing."
