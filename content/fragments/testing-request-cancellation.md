@@ -1,5 +1,5 @@
 +++
-hook = "Using built-in `net/http` facilities to make sure that canceled requests are abandoned immediately."
+hook = "Using built-in `net/http` facilities to make sure that canceled requests are abandoned immediately to save time and resources."
 # image = ""
 published_at = 2025-06-20T00:16:09+02:00
 title = "Testing the graceful handling of request cancellation in Go, 499s"
