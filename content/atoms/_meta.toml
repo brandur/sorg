@@ -11,6 +11,25 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-20T17:05:33+02:00
+  description = """\
+[Movist Pro](https://movistprime.com/) has added shortcuts for deleting videos right from the app. From the 2.13.1 changelog:
+
+```txt
+2.13.1
+
+• Added file deletion feature
+    • [File > Move to Trash ⌘⌫]
+    • [File > Delete Immediately ⌘⌥⌫]
+• Fixed crash issue on macOS Tahoe beta
+```
+
+I don't know about the rest of you, but Google finally succeeded in killing my uBlock Origin's capability of filtering out YouTube ads a few weeks ago. I'm test driving Brave as my main browser right now which seems to do a good job of ad filtering, but an equally good or better option is to use [yt-dlp](https://github.com/yt-dlp/yt-dlp) to fetch videos, then watch them in Movist. No ads, and with the benefits of a desktop app like fast scrubbing, offline use, and pinned windows.
+
+This feature makes that workflow a little smoother. Download video → watch in Movist → finish watching → delete video directly without leaving Movist.
+"""
+
+[[atoms]]
   published_at = 2025-06-20T00:16:09+02:00
   description = """\
 Published fragment [Testing the graceful handling of request cancellation in Go, 499s](/fragments/testing-request-cancellation), on using built-in `net/http` facilities to make sure that canceled requests are abandoned immediately to save time and resources.
