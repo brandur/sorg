@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-24T07:10:46+02:00
+  description = """\
+I enjoyed [A deep dive into Solid Queue for Ruby on Rails](https://blog.appsignal.com/2025/06/18/a-deep-dive-into-solid-queue-for-ruby-on-rails.html). Does a nice job of showing some user-facing API while also covering the database implementation. I didn't realize that Solid Queue supports job concurrency right out of the box!
+"""
+
+[[atoms]]
   published_at = 2025-06-20T17:05:33+02:00
   description = """\
 [Movist Pro](https://movistprime.com/) has added shortcuts for deleting videos right from the app. From the 2.13.1 changelog:
