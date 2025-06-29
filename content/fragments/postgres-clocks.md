@@ -13,7 +13,7 @@ But a downside of this approach is that it makes time hard to stub because Postg
 
 We've been using a hybrid approach with some success. A call to `coalesce` prefers an injected timestamp if there is one, but falls back on `now()` most of the time (including in production) to share a clock.
 
-## Step 1: SQL + sqlc
+## Step 1: SQL + sqlc (#sql-sqlc)
 
 Here's a sample query showing the `coalesce` in action. `sqlc.narg` defines a parameter as nullable.
 
@@ -72,7 +72,7 @@ func (q *Queries) QueuePause(ctx context.Context, db DBTX, arg *QueuePauseParams
 }
 ```
 
-## Step 2: Stubabble time generator
+## Step 2: Stubabble time generator (#stubbable-time-generator)
 
 Working in Go, define a `TimeGenerator` interface:
 
@@ -136,7 +136,7 @@ func (g *UnstubbableTimeGenerator) StubNowUTC(nowUTC time.Time) time.Time {
 }
 ```
 
-### Step 3: Distributing a shared time generator
+### Step 3: Distributing a shared time generator (#shared-time-generator)
 
 The next key aspect is that all code needs to share a single instance of `TimeGenerator` so that when it's stubbed from a test, all services and subservices get the same stubbed value.
 
@@ -174,7 +174,7 @@ In a test, time is stubbed like:
 stubbedNow := client.baseService.Time.StubNowUTC(time.Now().UTC())
 ```
 
-## Loose conviction
+## Loose conviction (#loose-conviction)
 
 Consider this one a loose recommendation. It's useful in some situations where timestamp consistency is critically important, but not in others where it isn't. Server clocks tend to be pretty good nowadays, and it's a lot of code to avoid a few tens of microseconds worth of drift.
 
