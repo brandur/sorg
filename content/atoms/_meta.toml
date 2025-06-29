@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-06-29T10:48:16-07:00
+  description = """\
+Published fragment [Occasionally injected clocks in Postgres](/fragments/postgres-clocks), on using a coalescable parameter to stub time as necessary in tests, but otherwise use the shared database clock across all operations.
+"""
+
+[[atoms]]
   published_at = 2025-06-24T07:10:46+02:00
   description = """\
 I enjoyed [A deep dive into Solid Queue for Ruby on Rails](https://blog.appsignal.com/2025/06/18/a-deep-dive-into-solid-queue-for-ruby-on-rails.html). Does a nice job of showing some user-facing API while also covering the database implementation. I didn't realize that Solid Queue supports job concurrency right out of the box!
