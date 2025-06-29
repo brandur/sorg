@@ -19,7 +19,7 @@ Here's a sample query showing the `coalesce` in action. `sqlc.narg` defines a pa
 
 ``` sql
 -- name: QueuePause :execrows
-UPDATE /* TEMPLATE: schema */river_queue
+UPDATE queue
 SET paused_at = CASE
                 WHEN paused_at IS NULL THEN coalesce(
                     sqlc.narg('now')::timestamptz,
@@ -52,7 +52,7 @@ Which generates this code:
 
 ``` go
 const queuePause = `-- name: QueuePause :execrows
-UPDATE /* TEMPLATE: schema */river_queue
+UPDATE queue
 SET
     paused_at = CASE WHEN paused_at IS NULL THEN coalesce($1::timestamptz, now()) ELSE paused_at END
 WHERE CASE WHEN $2::text = '*' THEN true ELSE name = $2 END
@@ -146,7 +146,7 @@ We put a `TimeGenerator` on a base service archetype that's automatically inject
 func (c *Client[TTx]) QueuePauseTx(ctx context.Context, tx TTx, name string, opts *QueuePauseOpts) error {
     executorTx := c.driver.UnwrapExecutor(tx)
 
-    if err := executorTx.QueuePause(ctx, &riverdriver.QueuePauseParams{
+    if err := executorTx.QueuePause(ctx, &QueuePauseParams{
         Name:   name,
         Now:    c.baseService.Time.NowUTCOrNil(), // <-- accessed here
         Schema: c.config.Schema,
