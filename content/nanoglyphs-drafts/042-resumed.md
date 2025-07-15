@@ -1,8 +1,8 @@
 +++
-image_alt = "TODO"
+image_alt = "Bikers in Berlin next to Volkspark am Weinberg"
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/042-resumed/berlin-bikes@2x.jpg"
-published_at = 2025-06-29T13:17:15-07:00
+published_at = 2025-07-15T09:17:39-07:00
 title = "Service Resumed"
 hook = "TODO"
 +++
