@@ -409,62 +409,160 @@ title = "iA Writer."
 #
 
 #
-# /nanoglyphs/042-crush
+# /nanoglyphs/042-resume
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/rd4thrfq6olqvz1thqzqc/2W4A5649-crop.jpg?rlkey=6me7yz1zw4qq7il45gkg3rryb&st=v24avq97&dl=1"
+slug = "nanoglyphs/042-resumed/berlin-bikes"
+title = "Bikes in Berlin"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/a23nc9vjmbfyyxtva0ua0/L1001570.JPG?rlkey=xooo15nu61gmz508se70sz49e&dl=1"
+slug = "nanoglyphs/042-resumed/berlin-bridge"
+title = "A bridge in Berlin in the evening"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/2gf4kaphzg03clo2c0sqx/L1001541.JPG?rlkey=dm2rekm6955fd3t9ub4dfo4kh&dl=1"
+slug = "nanoglyphs/042-resumed/biergarten"
+title = "Biergarten"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/56wohc5c1izry81udnxwv/L1001567.JPG?rlkey=ozzqd3xqxrqhe58rrgt69s272&dl=1"
+slug = "nanoglyphs/042-resumed/gorlitzer"
+title = "Gorlitzer Park in Berlin"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/2q3exp15xwfmra79cxydj/2W4A5481-crop.jpg?rlkey=lgcgp6k5rkjinjfkr5olff7v4&st=4vgqreh7&dl=1"
+slug = "nanoglyphs/042-resumed/berlin-graffiti"
+title = "Berlin graffiti"
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/scl/fi/kq12tyk06yx1w0bszr46z/L1001656-kid-outside.JPG?rlkey=summwnm0iwi10ntmruaebbjie&dl=1"
+slug = "nanoglyphs/042-resumed/berlin-portal"
+title = "Berlin portal"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/tgrya4f47h4arbg7140es/2W4A5524-adjusted.jpg?rlkey=tje7vrdmzr4839v9gmh1n0tdf&st=lw16v1lt&dl=1"
+slug = "nanoglyphs/042-resumed/museum-island"
+title = "Museum Island in Berlin"
+
+#
+# /nanoglyphs/042a-crush
 #
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/jo6ebkh9qp4uleqmjnsgq/avi.jpg?rlkey=fsp0yh6xajmelu0qou3ydnd94&st=j66aajr6&dl=1"
-slug = "nanoglyphs/042-crush/avi"
+slug = "nanoglyphs/042a-crush/avi"
 title = "Avi from Snatch"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/rd4thrfq6olqvz1thqzqc/2W4A5649-crop.jpg?rlkey=6me7yz1zw4qq7il45gkg3rryb&st=v24avq97&dl=1"
-slug = "nanoglyphs/042-crush/berlin-1"
+slug = "nanoglyphs/042a-crush/berlin-1"
 title = "Berlin 1"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/2q3exp15xwfmra79cxydj/2W4A5481-crop.jpg?rlkey=lgcgp6k5rkjinjfkr5olff7v4&st=4vgqreh7&dl=1"
-slug = "nanoglyphs/042-crush/berlin-2"
+slug = "nanoglyphs/042a-crush/berlin-2"
 title = "Berlin 2"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/tgrya4f47h4arbg7140es/2W4A5524-adjusted.jpg?rlkey=tje7vrdmzr4839v9gmh1n0tdf&st=lw16v1lt&dl=1"
-slug = "nanoglyphs/042-crush/berlin-3"
+slug = "nanoglyphs/042a-crush/berlin-3"
 title = "Berlin 3"
 
 [[photographs]]
 crop_width = 600
 original_image_url = "https://www.dropbox.com/scl/fi/g8lxguwkrbp0dey555k4b/2W4A5490-courtyard.JPG?rlkey=c4qp2z1h1hlt9v0ldr2s1xnjs&st=7epx8s1j&dl=1"
-slug = "nanoglyphs/042-crush/courtyard"
+slug = "nanoglyphs/042a-crush/courtyard"
 title = "Courtyard in Berlin"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/jaa6cvmkfg8vvimgbqw2a/crush1.jpg?rlkey=4lr6nbis8d5x584acxus9wjnv&st=zwret04l&dl=1"
-slug = "nanoglyphs/042-crush/crush1"
+slug = "nanoglyphs/042a-crush/crush1"
 title = "Crush screenshot 1"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/tmnyj6p6b492u1ou7gk7k/crush2.jpg?rlkey=lbfzplkvf0sj9fta5q9v380as&st=s0u23dp2&dl=1"
-slug = "nanoglyphs/042-crush/crush2"
+slug = "nanoglyphs/042a-crush/crush2"
 title = "Crush screenshot 2"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/pdpjbvk6exgxpco7puzfl/crush3.jpg?rlkey=85fqhltbg7rrk73crhdmgoxx1&st=f4p56kph&dl=1"
-slug = "nanoglyphs/042-crush/crush3"
+slug = "nanoglyphs/042a-crush/crush3"
 title = "Crush screenshot 3"
 
 [[photographs]]
 crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/ed4a3y43g1kbt69jsu5e3/2W4A3402.JPG?rlkey=78ah44w1r4bot1dt52mzjj8k2&st=ehfnoav4&dl=1"
-slug = "nanoglyphs/042-crush/manchester"
+slug = "nanoglyphs/042a-crush/manchester"
 title = "Manchester"
+
+#
+# /nanoglyphs/042b-anomaly
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/j6z1mhm404cvcym8eakvs/L1000671-bridge.JPG?rlkey=eh1icp8o3h5eb4h8vo1tjswwt&dl=1"
+slug = "nanoglyphs/042b-anomaly/bridge"
+title = "Bridge near downtown Reno"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/0rf6469b8v33rmt5blmhl/L1000706-adjusted.jpg?rlkey=emek81hegffispk3f9ogo08ng&dl=1"
+slug = "nanoglyphs/042b-anomaly/downtown-reno"
+title = "Downtown Reno"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/8tfo7db4fma82upi1fa7x/L1000694.JPG?rlkey=pccwgetac3p1w7cz8f0uqpvbw&dl=1"
+slug = "nanoglyphs/042b-anomaly/into-downtown-reno"
+title = "View into downtown Reno"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/amb0kz21nqsq57cyovusf/L1000691.JPG?rlkey=yrk1djaff94q72utphifj9czq&dl=1"
+slug = "nanoglyphs/042b-anomaly/nevada-n"
+title = "The Nevada N"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/v531c307lqx3blh6eceke/L1000704-quad.JPG?rlkey=xdi10rgjioxjzqvyl6z93nufj&dl=1"
+slug = "nanoglyphs/042b-anomaly/quad"
+title = "Quad at University of Nevada"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/gro7qxn1ploxjaqkkwe52/L1000669-snow.JPG?rlkey=35bdza1j30u3nyc4n2gkev9cx&dl=1"
+slug = "nanoglyphs/042b-anomaly/snow"
+title = "Snow over the Truckee"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/b2z42k0cgmly062nobj7l/L1000697.JPG?rlkey=jlmq2a9k05il4tfzc9wdksq38&dl=1"
+slug = "nanoglyphs/042b-anomaly/rancho-san-rafael"
+title = "View from Rancho San Rafael"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/l6w7cmjw6q6a2ex7oem1s/L1000683.JPG?rlkey=8djzf4euc0f7vdk5ms8shas6x&dl=1"
+slug = "nanoglyphs/042b-anomaly/truckee"
+title = "Path along the Truckee"
 
 #
 # /nanoglyphs/041-15-16

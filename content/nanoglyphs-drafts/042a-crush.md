@@ -1,7 +1,7 @@
 +++
 image_alt = "Courtyard in Berlin"
 image_orientation = "portrait"
-image_url = "/photographs/nanoglyphs/042-crush/courtyard@2x.jpg"
+image_url = "/photographs/nanoglyphs/042a-crush/courtyard@2x.jpg"
 published_at = 2024-05-28T14:04:42+02:00
 title = "Berlin. N+1s. RBS. Crush!"
 hook = "Berlin, don't go to Manchester, a general pattern for eradicating N+1s, Tobi Lutke on performance, trialing RBS in Ruby, and the disappointing legacy of iPadOS."
@@ -13,7 +13,7 @@ I'm just back from a month in Berlin. Going for a music festival, but taking the
 
 Before anything else, some usual housekeeping: I'm Brandur, and this is my newsletter _Nanoglyph_. It's been comically delinquent lately, and you may have signed up months ago and this is the first blast you've gotten so far, If you hate it already and don't want to see anymore of them, you can [instantly unsubscribe in one easy click](%unsubscribe_url%).
 
-This newsletter is [also available on the web](/nanoglyphs/042-crush). I recently spent some time [adding dark mode support](/fragments/dark-mode-notes), something that sounds easy until you realize you have a few thousand lines of legacy CSS to retrofit.
+This newsletter is [also available on the web](/nanoglyphs/042a-crush). I recently spent some time [adding dark mode support](/fragments/dark-mode-notes), something that sounds easy until you realize you have a few thousand lines of legacy CSS to retrofit.
 
 In this issue: Manchester, a general pattern for eradicating N+1s, Tobi Lutke on performance, trialing RBS in Ruby, and the disappointing legacy of iPadOS.
 
@@ -25,7 +25,7 @@ Spending a month in one German city might seem like a weird way to spend time, b
 
 Last year, I went to Europe around this time, and also stayed for around a month, but it was a completely different trip. I'd established an aggressive itinerary for myself across France, the UK, and Germany, not staying in any one place for more than a few days at a time. Across the span of the month, I must have packed and unpacked my bag fifteen times, before and after lugging it to and from various airports and train stations.
 
-<img src="/photographs/nanoglyphs/042-crush/manchester@2x.jpg" alt="Manchester" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/manchester@2x.jpg" alt="Manchester" class="wide" loading="lazy">
 
 This culminated in the greatest travel fiasco I've ever experienced, where I went through security at Manchester only to find that my flight was cancelled. This is _theoretically_ not that big of a deal in Europe where strong regulatory frameworks exist to protect consumers, and which mandate that cancelled flights be replaced with equivalent ones, but airlines have found a not-so-surprising loophole: they can't rebook you on a new flight if there _are no other flights_. I searched high and low, and not only were there no flights to my destination with an available seat out of Manchester for a good week's time, but even were I to take the train back down to London, there was nothing out of Heathrow or Gatwick either.
 
@@ -34,7 +34,7 @@ Knowing that I wasn't getting on a plane that night led to my next surprise disc
 I spent the next two days blasting across Europe by train, from London to Paris to Amsterdam to Berlin, first by local rail, then EuroStar, then slower and more scenic German trains. It's a fun memory in retrospect and I have no regrets, but it did make me establish a new, important life rule: don't go to Manchester.
 
 <a href="https://www.youtube.com/watch?v=UxsYbT3sQZU">
-    <img src="/photographs/nanoglyphs/042-crush/avi@2x.jpg" alt="Avi from Snatch" class="wide" loading="lazy">
+    <img src="/photographs/nanoglyphs/042a-crush/avi@2x.jpg" alt="Avi from Snatch" class="wide" loading="lazy">
 </a>
 
 This time, I mostly stayed in one spot, and it was great. The busy travel version of seeing Europe is nice too, but logistics, moving, and sightseeing take so much time out of the day that there's not much time for anything else.
@@ -51,7 +51,7 @@ This one's not that short, but it's not that meaty either. I've got a few techni
 
 ---
 
-<img src="/photographs/nanoglyphs/042-crush/berlin-1@2x.jpg" alt="Berlin 1" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/berlin-1@2x.jpg" alt="Berlin 1" class="wide" loading="lazy">
 
 ## N+1s and data loading
 
@@ -89,7 +89,7 @@ I published [an article fully explaining it](/two-phase-render) with diagrams an
 
 ---
 
-<img src="/photographs/nanoglyphs/042-crush/berlin-2@2x.jpg" alt="Berlin 2" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/berlin-2@2x.jpg" alt="Berlin 2" class="wide" loading="lazy">
 
 ### Root of all evil (#root-of-all-evil)
 
@@ -113,7 +113,7 @@ See also [_Nanoglyph 037: Fast as a Service_](/nanoglyphs/037-fast).
 
 ---
 
-<img src="/photographs/nanoglyphs/042-crush/berlin-3@2x.jpg" alt="Berlin 3" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/berlin-3@2x.jpg" alt="Berlin 3" class="wide" loading="lazy">
 
 ## Test driving RBS (#rbs)
 
@@ -230,7 +230,7 @@ I wrote a longer piece with more details in [Ruby typing 2024](/fragments/ruby-t
 
 ---
 
-<img src="/photographs/nanoglyphs/042-crush/crush1@2x.jpg" alt="Apple's Crush! ad" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/crush1@2x.jpg" alt="Apple's Crush! ad" class="wide" loading="lazy">
 
 ## Let's not destroy the creative tools quite yet maybe? (#creative-tools)
 
@@ -272,7 +272,7 @@ It may technically be possible to do so, but no one would. Not because the iPad 
 
 But don't take my word for it. Let's check in with some Apple fanatics so loyal to Apple that they'd take a bullet for Tim Cook, or even Jony Ives (despite the traiterous turncoat daring to part ways with the mothership!).
 
-<img src="/photographs/nanoglyphs/042-crush/crush2@2x.jpg" alt="Apple's Crush! ad" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/crush2@2x.jpg" alt="Apple's Crush! ad" class="wide" loading="lazy">
 
 ### BEYOND the tablet (#beyond-the-tablet)
 
@@ -289,7 +289,7 @@ The same person above who claimed their iPad is their main computer recently pub
 
 Every complaint within is correct, but it misses the forest for the trees. It's not that iPadOS has a few blemishes or is missing a couple of useful features, it's that the entire stack is built from the ground up to reign in general purpose computing. Programs don't work well because they're built on dull, high-level abstractions that don't work well.
 
-<img src="/photographs/nanoglyphs/042-crush/crush3@2x.jpg" alt="Apple's Crush! ad" class="wide" loading="lazy">
+<img src="/photographs/nanoglyphs/042a-crush/crush3@2x.jpg" alt="Apple's Crush! ad" class="wide" loading="lazy">
 
 ### Cracked open by millimeter (#millimeter)
 
