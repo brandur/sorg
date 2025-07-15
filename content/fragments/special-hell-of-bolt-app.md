@@ -11,21 +11,21 @@ I used it twice to get to and from the city center, and it worked perfectly. Nei
 
 I arrived in Lyon recently and figured, hey, this is Europe, why not try the European app again, and used Bolt.
 
-## Ride attempt no. 1
+## Ride attempt no. 1 (#ride-attempt-1)
 
 Car pulls into airport, drives to the waiting spot, stops up ahead of me, I walk over to it, driver pulls away, and leaves the airport. Mystified, I photograph the guy's license plate as he drives off figuring I might need it for dispute evidence.
 
 The driver doesn't cancel the ride as he rides off into the distance, leaving me to do it, presumably so it falls to me to pay the app's €7 cancellation fee.
 
-## Ride attempt no. 2
+## Ride attempt no. 2 (#ride-attempt-2)
 
 I cancel and try again. I get a ride parked not far off, but with a message: "This is an automated acceptance. This car is set to charge for another 45 minutes." Sure enough, it's unmoving and unresponsive, and eventually the ride times out (thankfully, avoiding another €7 charge).
 
-## Ride attempt no. 3
+## Ride attempt no. 3 (#ride-attempt-3)
 
 No message this time, but another car that appears to be charging and/or long term parked (it's a Tesla, so I suspect charging again). I leave the app, waiting for the pick up to time out.
 
-## Ride attempt no. 4
+## Ride attempt no. 4 (#ride-attempt-4)
 
 I give up on Bolt, and switch to Uber. I match a driver right away. It's almost suspicious how quickly I matched him. But this is good! Progress. He drives over and I walk up to meet him. I get in the car and we start moving. Finally, this fiasco is over.
 
@@ -37,7 +37,7 @@ Even as the car's "winner" (I'm not sure if this was because I got to the car fi
 
 As we drove away from the airport, I suddenly realized: wait! this must be what happened to _me_ during my first ride.
 
-## Ride attempt no. 1, part 2
+## Ride attempt no. 1, part 2 (#ride-attempt-1-part-2)
 
 I go back into the Bolt app and open a support conversation. This option is purposely hidden deep inside submenus of submenus of submenus, so it took me five minutes to find it. I explain what happened and include the photographic evidence. From the first response it's obvious they have me talking to an AI. I drop all formality, and type only the minimum viable number of characters to get the next response. The AI promises me a refund for my €7 cancellation fee, then proceeds to provide no refund.
 
