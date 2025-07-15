@@ -77,7 +77,7 @@ But here, the entire API request was protected by a transaction, which means thi
 
 After not finding any obvious code mistakes, I begrudgingly went back to the docs to check my assumptions. Anyone who's read Postgres' [transaction isolation](https://www.postgresql.org/docs/current/transaction-iso.html) will be eminently familiar with this table, which has been an unchanging staple of the page for two decades:
 
-## TODO
+## TODO (#todo)
 
 + Isolation level + Dirty Read + Nonrepeatable read + Phantom read + Serialization anomaly
 
@@ -191,7 +191,7 @@ Reno's a nice city, but navigating around it you can't help but see the bones of
 
 Still, low taxes, a decent airport, a well run state, far enough north to avoid Las Vegas' climate, and pretty good ski access. There's a lot to like about this place.
 
-## What happened here?
+## What happened here? (#what-happened-here)
 
 For a delinquent newsletter with long periods between sends, it's impossible not to notice that this is by far its worst period of delinquency with its long_est_ period between sends. I don't have much in the way of an excuse, except that this is the third time over the space of a year I've written issue 042, and in the previous two times I came right up to the finish line, and just didn't hit "send". Why? Don't know.
 
