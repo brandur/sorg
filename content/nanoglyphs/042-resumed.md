@@ -131,7 +131,7 @@ We've had reasonable luck in getting the best of both worlds by using `coalesce`
 
 ``` sql
 -- name: QueuePause :execrows
-UPDATE river
+UPDATE queue
 SET paused_at = CASE
                 WHEN paused_at IS NULL THEN coalesce(
                     sqlc.narg('now')::timestamptz,
