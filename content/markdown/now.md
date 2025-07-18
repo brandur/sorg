@@ -16,7 +16,7 @@ Some haphazard notes:
 
 * We recently wrote and released [OpenTelemetry middleware for River](https://github.com/riverqueue/rivercontrib). Most major providers have OpenTelemetry support these days, so it's usable with DataDog or Sentry for example.
 
-* After noticing how inefficiently packed the JPGs coming out of my cameras were (and how camera sensors are getting denser but laptop hard drives are staying the same size), I wrote a script to [archive photography artifacts in more compact form](/fragments/optimizing-jpegs-for-archival). I'm debating whether I should make the jump to storing everything in HEIC since it's fewer moving parts to get to optimal storage and I'd be able to avoid messing around with esoteric tooling like MozJPEG.
+* After noticing how inefficiently packed the JPGs coming out of my cameras were (and how camera sensors are getting denser but laptop hard drives are staying the same size), I wrote a script to [archive photography artifacts in a more compact form](/fragments/optimizing-jpegs-for-archival). I'm debating whether I should make the jump to storing everything in HEIC since it's fewer moving parts to get to optimal storage and I'd be able to avoid messing around with esoteric tooling like MozJPEG.
 
 * I finally took the step to black hole Reddit on all my computers. Focus on making cool stuff instead of wasting precious hours of mortality wrestling down in this filthy, hyper-partisan sludge. This company's stock cannot go to zero fast enough (and at -48% YTD, it's on its way).
 
