@@ -78,4 +78,4 @@
 
 ## Services (#services)
 
-* **<span id="wework">[WeWork](#wework):</span>** This is an odd item to appear here, I know, but despite Adam Neumann's its shenanigans, a $300/month all access pass from WeWork. I use it daily in San Francisco and have taken advantage of it as far away as London.
+* **<span id="wework">[WeWork](#wework):</span>** This is an odd item to appear here, I know, but for years I've been a WeWork member under their $300/mo all access program. It's a well run service providing a reliably clean, stable workspace in dozens of countries around the world. I use it daily in San Francisco and have taken advantage of it as far away as London.
