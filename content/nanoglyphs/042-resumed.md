@@ -15,7 +15,7 @@ Before anything else, some usual housekeeping: I'm Brandur, and this is my newsl
 
 I've written this edition three times now, finding various excuses not to hit the "send" button each time. I've decided to try something shorter, hopefully to get some flow back. I'm predisposed to writing wordy communiqués the length of short novels, but in rare moments of reflection I remember that we all get a lot of email, and most of us probably don't make it past page one anyway.
 
-This newsletter is [also available on the web](/nanoglyphs/042a-crush). Last year I spent some time [adding dark mode support](/fragments/dark-mode-notes), something that sounds easy until you realize you have a few thousand lines of legacy CSS to retrofit.
+This newsletter is [also available on the web](/nanoglyphs/042-resumed). Last year I spent some time [adding dark mode support](/fragments/dark-mode-notes), something that sounds easy until you realize you have a few thousand lines of legacy CSS to retrofit.
 
 In this issue: don't mock the database, graceful request cancellation, occasionally injected clocks, and of course, Berlin.
 
