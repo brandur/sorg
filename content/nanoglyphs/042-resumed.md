@@ -4,7 +4,7 @@ image_alt = "Bikers in Berlin next to Volkspark am Weinberg"
 image_url = "/photographs/nanoglyphs/042-resumed/berlin-bikes@2x.jpg"
 published_at = 2025-07-15T09:17:39-07:00
 title = "Service Resumed"
-hook = "TODO"
+hook = "Thoughts on Berlin, database fixtures, graceful request cancellation, and injected clocks."
 +++
 
 Readers —
