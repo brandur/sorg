@@ -6,6 +6,10 @@ published_at = 2018-06-08T19:26:48Z
 title = "Living APIs, and the Case for GraphQL"
 +++
 
+**Aug 3, 2025 update:** _This article was originally written in 2018. I was [asked more recently](https://github.com/brandur/sorg/issues/387) whether I still think that GraphQL is a promising technology for new APIs. If my answer were to be a "yes" at all, it would certainly be less enthusiastic one. I'd like to do a more detailed follow up with the case for/against GraphQL for 2025 and beyond, but for now take this article's recommendations with a grain of salt. It's very possible that something like HTTP/3 + SDK-driven design is a better compromise overall._
+
+---
+
 It's hard to read exactly where GraphQL stands in the API
 world right now. Available publicly since 2015, trends in
 APIs aren't obviously moving in its favor, but not
