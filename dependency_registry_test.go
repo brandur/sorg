@@ -20,6 +20,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"views/_tailwind_stylesheets.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_dark_mode_js.tmpl.html",
+			"views/_scroll_gradient_js.tmpl.html",
 			"views/_analytics_js.tmpl.html",
 			"views/_shiki_js.tmpl.html",
 		}, dependencies)
@@ -34,6 +35,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"views/_tailwind_stylesheets.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_dark_mode_js.tmpl.html",
+			"views/_scroll_gradient_js.tmpl.html",
 			"views/_analytics_js.tmpl.html",
 			"views/_shiki_js.tmpl.html",
 		}, dependencies)
@@ -49,6 +51,7 @@ func TestDependencyRegistryParseGoTemplate(t *testing.T) {
 			"views/_tailwind_stylesheets.tmpl.html",
 			"views/_twitter.tmpl.html",
 			"views/_dark_mode_js.tmpl.html",
+			"views/_scroll_gradient_js.tmpl.html",
 			"views/_analytics_js.tmpl.html",
 			"views/_shiki_js.tmpl.html",
 		}, dependencies)
