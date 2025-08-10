@@ -32,26 +32,21 @@
 
     (function () {
         try {
-            // Early exit if browser doesn't support required features
-            if (!('requestAnimationFrame' in window) || !document.body) return;
+            // Early exit if page isn't ready for DOM work
+            if (!document.body) return;
 
             var body = document.body;
-            // Only run on pages that have the gradient background class
-            if (!body.classList.contains('bg-gradient-to-br')) return;
-            // Prevent multiple initializations
-            if (window.__sorgScrollGradientInitialized) return;
-            window.__sorgScrollGradientInitialized = true;
-
             // Check if browser supports CSS containment for better performance
             var supportsContain =
                 (window.CSS && CSS.supports && (CSS.supports('contain: paint') || CSS.supports('contain: strict'))) || false;
 
-            // DOM elements and state variables
+            // DOM elements and state variables (kept in closure so we can cleanup and re-init)
             var container = null;
             var inner = null;
             var rafId = null;
             var lastScrollY = -1;
             var resizeObserver = null;
+            var mo = null;
 
             // Track original body background to restore later
             var bodyInlineBackgroundImageOriginal = '';
@@ -116,6 +111,16 @@
              */
             function onScroll() {
                 if (!inner) return;
+                // If rAF is not available or not a function (e.g. monkey patched),
+                // fall back to synchronous update to avoid errors.
+                if (typeof window.requestAnimationFrame !== 'function') {
+                    var dprSync = window.devicePixelRatio || 1;
+                    var ySync = Math.round(window.scrollY * dprSync) / dprSync;
+                    if (ySync === lastScrollY) return;
+                    lastScrollY = ySync;
+                    inner.style.transform = 'translateY(' + (-ySync) + 'px)';
+                    return;
+                }
                 if (rafId != null) return;
                 rafId = window.requestAnimationFrame(function () {
                     rafId = null;
@@ -135,66 +140,119 @@
                 onScroll();
             }
 
-            // Keep gradient in sync with theme/class changes
-            var mo = new MutationObserver(function (mutations) {
-                for (var i = 0; i < mutations.length; i++) {
-                    if (mutations[i].type === 'attributes' && mutations[i].attributeName === 'class') {
-                        copyComputedBackground(inner ? inner : container);
-                        break;
+            /**
+             * Install a mutation observer to watch for class changes on the document
+             * and body elements. When a class change is detected, we copy the computed
+             * background styles to the gradient overlay.
+             */
+            function installMutationObserver() {
+                if (mo) mo.disconnect();
+                mo = new MutationObserver(function (mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                        if (mutations[i].type === 'attributes' && mutations[i].attributeName === 'class') {
+                            copyComputedBackground(inner ? inner : container);
+                            break;
+                        }
                     }
-                }
-            });
-            mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-            mo.observe(body, { attributes: true, attributeFilter: ['class'] });
-
-            // --- Initialization ---
-            if (supportsContain) {
-                // Create the gradient overlay container
-                container = document.createElement('div');
-                container.className = 'scroll-gradient-bg';
-
-                // Create the inner element that will move with scroll
-                inner = document.createElement('div');
-                inner.className = 'scroll-gradient-bg__inner';
-                container.appendChild(inner);
-
-                // Copy current background styles and set initial dimensions
-                copyComputedBackground(inner);
-                setHeight();
-                onScroll();
-
-                // Add the overlay to the page
-                body.appendChild(container);
-
-                // Store original body background and clear it
-                bodyInlineBackgroundImageOriginal = body.style.backgroundImage;
-                body.style.backgroundImage = 'none';
-                bodyBackgroundOverridden = true;
-
-                // Ensure all body children paint above the overlay
-                body.classList.add('has-scroll-gradient');
-
-                // Set up resize observer for dynamic content changes
-                if ('ResizeObserver' in window) {
-                    resizeObserver = new ResizeObserver(function () { setHeight(); });
-                    resizeObserver.observe(document.documentElement);
-                }
-                // Add event listeners for scroll and resize
-                window.addEventListener('scroll', onScroll, { passive: true });
-                window.addEventListener('resize', onResize);
+                });
+                mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+                mo.observe(body, { attributes: true, attributeFilter: ['class'] });
             }
 
-            // Cleanup function to remove all event listeners and DOM elements
+            /**
+             * Cleanup the scroll gradient effect.
+             */
+            function cleanup() {
+                try {
+                    if (window.__sorgScrollGradientDebug) console.log('[scroll-gradient] cleanup pagehide');
+                    if (rafId != null && typeof window.cancelAnimationFrame === 'function') window.cancelAnimationFrame(rafId);
+                    window.removeEventListener('scroll', onScroll);
+                    window.removeEventListener('resize', onResize);
+                    if (resizeObserver && typeof resizeObserver.disconnect === 'function') resizeObserver.disconnect();
+                    resizeObserver = null;
+                    if (container && container.parentNode) container.parentNode.removeChild(container);
+                    container = null;
+                    inner = null;
+                    if (bodyBackgroundOverridden) body.style.backgroundImage = bodyInlineBackgroundImageOriginal || '';
+                    bodyBackgroundOverridden = false;
+                    body.classList.remove('has-scroll-gradient');
+                    if (mo) mo.disconnect();
+                    window.__sorgScrollGradientInitialized = false;
+                } catch (_) {}
+            }
+
+            /**
+             * Initialize the scroll gradient effect.
+             */
+            function initialize() {
+                // Only run on pages that have the gradient background class
+                if (!body.classList.contains('bg-gradient-to-br')) return;
+                // Prevent multiple initializations
+                if (window.__sorgScrollGradientInitialized) return;
+                window.__sorgScrollGradientInitialized = true;
+                if (window.__sorgScrollGradientDebug) console.log('[scroll-gradient] initialize');
+
+                // Remove any stale overlays if present (safety net)
+                var stale = document.querySelectorAll('.scroll-gradient-bg');
+                for (var i = 0; i < stale.length; i++) {
+                    if (stale[i] && stale[i].parentNode) stale[i].parentNode.removeChild(stale[i]);
+                }
+
+                installMutationObserver();
+
+                if (supportsContain) {
+                    // Create the gradient overlay container
+                    container = document.createElement('div');
+                    container.className = 'scroll-gradient-bg';
+
+                    // Create the inner element that will move with scroll
+                    inner = document.createElement('div');
+                    inner.className = 'scroll-gradient-bg__inner';
+                    container.appendChild(inner);
+
+                    // Copy current background styles and set initial dimensions
+                    copyComputedBackground(inner);
+                    setHeight();
+                    onScroll();
+
+                    // Add the overlay to the page
+                    body.appendChild(container);
+
+                    // Store original body background and clear it
+                    bodyInlineBackgroundImageOriginal = body.style.backgroundImage;
+                    body.style.backgroundImage = 'none';
+                    bodyBackgroundOverridden = true;
+
+                    // Ensure all body children paint above the overlay
+                    body.classList.add('has-scroll-gradient');
+
+                    // Set up resize observer for dynamic content changes (if available)
+                    if (typeof window.ResizeObserver === 'function') {
+                        try {
+                            resizeObserver = new window.ResizeObserver(function () { setHeight(); });
+                            resizeObserver.observe(document.documentElement);
+                        } catch (_) {
+                            resizeObserver = null;
+                        }
+                    }
+                    // Add event listeners for scroll and resize
+                    window.addEventListener('scroll', onScroll, { passive: true });
+                    window.addEventListener('resize', onResize);
+                }
+            }
+
+            // Initial run
+            initialize();
+
+            // Cleanup on pagehide (works for both unload and BFCache)
             window.addEventListener('pagehide', function () {
-                if (rafId != null) cancelAnimationFrame(rafId);
-                window.removeEventListener('scroll', onScroll);
-                window.removeEventListener('resize', onResize);
-                if (resizeObserver) resizeObserver.disconnect();
-                if (container && container.parentNode) container.parentNode.removeChild(container);
-                if (bodyBackgroundOverridden) body.style.backgroundImage = bodyInlineBackgroundImageOriginal || '';
-                body.classList.remove('has-scroll-gradient');
-                mo.disconnect();
-                window.__sorgScrollGradientInitialized = false;
+                cleanup();
+            });
+
+            // Re-initialize on pageshow, especially when restored from BFCache
+            window.addEventListener('pageshow', function (e) {
+                if (window.__sorgScrollGradientDebug) console.log('[scroll-gradient] pageshow persisted=', !!(e && e.persisted));
+                initialize();
             });
         } catch {
             // If we get an error, we can fail silently as we fallback to the
