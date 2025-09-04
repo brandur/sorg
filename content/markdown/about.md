@@ -6,7 +6,7 @@
     <img src="/photographs/about/self-portrait-2023-03.jpg" alt=""Selfie April 2023" class="lg:rounded-lg w-full">
 </div>
 
-I'm an engineer at [Crunchy Data](https://www.crunchydata.com/), where I work on the company's platform API, and spend a lot of time talking about and working with my favorite database, Postgres.
+I'm an engineer at [Snowflake](https://www.snowflake.com/), where I spend a lot of time talking about and working with my favorite database, Postgres. I joined Snowflake by way of the acquisition of Crunchy Data, where I worked on Crunchy Bridge, the company's managed Postgres product.
 
 I recently spent five and a half years at Stripe, where I helped design, build, and run our API, and maintain our public-facing developer tooling. Stripe's API design ethos is notable for aiming to make complex flows _as easy as possible_, while still providing enough flexibility to facilitate even the most complex flows.
 
