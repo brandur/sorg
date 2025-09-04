@@ -14,6 +14,8 @@ Before that, I spent four years at Heroku, where I helped create our V3 API and 
 
 Having written software professionally for many years now, I'm convinced that the default result given our modern processes and tools are products with undesirable levels of fragility. These days I'm especially interested in ways to improve the robustness and longevity of software, and reduce toil in operating it. I have little doubt that powerfully type-safe languages which expose more problems at compile time are the future.
 
+I live in Seattle. Before that I lived in San Francisco for over a decade. I'm from Calgary, Alberta, Canada's best city.
+
 My favorite movie is Sofia Coppola's _Lost in Translation_. My favorite book is Michael Crichton's _Rising Sun_ (although I like [a lot of others](/reading)). I also like running, photography, history, meditation, urban design, and metal.
 
 I publish to this blog with some frequency, most often tweet-sized [atoms](/atoms), then short-form [fragments](/fragments), and longer [articles](/articles) less frequently. I have an email newsletter called [Nanoglyph](/newsletter#nanoglyph) that I've been delinquent on recently. If you like the content here, you should [check out a sample edition](/nanoglyphs/018-ractors) and consider subscribing.
