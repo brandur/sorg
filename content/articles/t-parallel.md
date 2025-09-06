@@ -265,7 +265,7 @@ Leaked goroutines are only detected at package-level granularity, but as long as
 
 ### Requiring `t.Parallel()` in tests, but not subtests (#tests-not-subtests)
 
-By default the `paralleltest` lint will not only require that every test case define `t.Parallel()`, but that every subtest (i.e. `t.Run("Subtest", func(t *testing.T) { ... })`) define it as well. This is generally the right thing to do because it means that parallelism has better granularity and therefor more likely to produce more optimal throughput and lower the total runtime.
+By default the `paralleltest` lint will not only require that every test case define `t.Parallel()`, but that every subtest (i.e. `t.Run("Subtest", func(t *testing.T) { ... })`) define it as well. This is generally the right thing to do because it means that parallelism has better granularity and therefore more likely to produce more optimal throughput and lower the total runtime.
 
 Due to a historical tech decision made long ago, we were ubiquitously using a testing convention within test cases where we had plenty of subtests, but subtests were not parallel safe because they were all sharing a single `var` block.
 
