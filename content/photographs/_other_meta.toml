@@ -409,6 +409,76 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/042-rails-world-2025
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/sljyor4dapmb9cnlankmd/2W4A7333-rails-world-globe.JPG?rlkey=4wyrofhfwjw184dnir0x4dzrf&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/globe"
+title = "Globe and crowd at Rails World 2025"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/bwtl4jwbvbytjv0jmx4w6/2W4A7413.JPG?rlkey=dhix7jqy66mbpsmobr0rg49o6&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/embassy-1"
+title = "Ruby embassy 1"
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/scl/fi/v6yytkvipl8ylh7zn9em9/2W4A7412.JPG?rlkey=19i79zctl4za03gm03m656aoq&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/embassy-2"
+title = "Ruby embassy 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/3dtaidgw5psc22nagx260/hey-test-suite.jpg?rlkey=h0fleutj6chanewk0jt8dzmzu&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/hey-test-suite"
+title = "Hey test suite"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/51o0laadg145y4obmehfi/2W4A7405.JPG?rlkey=k030m7twscqy58u4xtu9odhf8&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/pair-programming"
+title = "Pair programming"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/i5aft6mnuvpzv17lrgffg/2W4A7324-crowd.JPG?rlkey=d3fgh1785j8d5ftbg572yrgcg&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/ruby-crowd"
+title = "Post-keynote Ruby crowd"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/bxy04pwv2lnz89vuyepj3/2W4A7695.JPG?rlkey=63r73uvrx2n8dq1feuc6n1329&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/ruby-passport"
+title = "Ruby passport"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/5p6hgljyhbfzbvgveuuqc/2W4A7341.JPG?rlkey=kmm2fn751cu5ber37n06tn0yf&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/scaffold"
+title = "Scaffold"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/an2pe4dipjxuuf10wv3os/2W4A7389.JPG?rlkey=2cgci8wl8dobvidbasnt86czw&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/second-floor"
+title = "Second floor"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/z93vyqw45gh1clws04jzc/2W4A7392.JPG?rlkey=xcm9po6efjei3s7dcdol2wys8&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/sponsor-floor"
+title = "Sponsor floor"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/nhyk68qmmvnnr0ea18w05/2W4A7378-craig.JPG?rlkey=1752yhuqy7782g4usfhdct5g9&dl=1"
+slug = "nanoglyphs/043-rails-world-2025/wine-list"
+title = "The wine list"
+
+#
 # /nanoglyphs/042-resume
 #
 
