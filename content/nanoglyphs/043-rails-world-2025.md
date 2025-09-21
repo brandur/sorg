@@ -11,7 +11,7 @@ Readers --
 
 I recently attended the 2025 edition of Rails World in Amsterdam, my third year of the conference in a row. That sounds like a lot, but it's the best event in technology, so I'll keep going back as long as I can get tickets (it was very close this year).
 
-Like the inaugural Rails World in 2023, it was held in the gorgeous Beurs van Berlage, a stately building in central Amsterdam built in 1903 as the city's stock exchange. Attending an event there feels like you're part of an exclusive diplomatic summit in the old world, even with 98% of attendees wearing hoodies and logo tees.
+Like the inaugural Rails World in 2023, it was held in the gorgeous Beurs van Berlage, a stately building in central Amsterdam constructed in 1903 as the city's stock exchange. Attending an event there feels like you're part of an exclusive diplomatic summit in the old world, even with 98% of attendees wearing hoodies and logo tees.
 
 The first talk of the first day was DHH's annual state of the union keynote, which for my money is the single best talk in the entire tech industry every year. I used to watch Apple events, but as the company's new products started to descend into mediocrity, I started reading their five sentence summary as instead. At Rails World on the other hand, I'm dialed in for every minute. He's been a 10 out of 10 public speaker for some time, but every year he seems to get a little better at it. The pace, jokes, and timing all incrementally tighter.
 
