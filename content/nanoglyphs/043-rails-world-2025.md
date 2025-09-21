@@ -37,7 +37,7 @@ For the third year in a row Heroku got a special shout out. DHH revealed in a su
 
 ---
 
-## Where multi-day builds live (#days)
+## Where the multi-day builds live (#days)
 
 One of the [best ever HN comments](https://news.ycombinator.com/item?id=18442941) talks about product development at Oracle. CI (continuous integration) is 20 to 30 hours for a full test run, with no interim feedback, making the edit-compile-debug loop about 20 to 30 hours. Developing a feature or bug fix takes dozens of iterations, leading to lag times of six months to a year. This was written in 2018, so it's probably all even worse now.
 
