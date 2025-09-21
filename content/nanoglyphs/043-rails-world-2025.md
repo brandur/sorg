@@ -2,7 +2,7 @@
 image_alt = "Globe and crowd at Rails World 2025."
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/043-rails-world-2025/globe@2x.jpg"
-published_at = 2025-09-20T13:10:55-07:00
+published_at = 2025-09-21T09:26:42-07:00
 title = "Rails World 2025, the Event Horizon, the Ruby Embassy"
 hook = "A visit to Amsterdam for Rails World 2025. CI loops measured in days and why to make sure that CI can run locally. A visit to the Ruby Embassy at Beurs van Berlage."
 +++
