@@ -17,7 +17,7 @@ The first talk of the first day was of course DHH's annual state of the union ke
 
 You can [watch it here](https://www.youtube.com/watch?v=gcwzWzC7gUA&list=PLHFP2OPUpCebhAv1ZWb_978cTl1o-yue-&index=1). My rough highlights:
 
-* New product features include Markdown support in Rails, a new rich text editor named Lexxy, resumable Active Jobs, Action Push, SQLite replication with Beamer, geo routing in Kamal, and free [Campire with ONCE](https://once.com/campfire) (previously, $299).
+* New product features include Markdown support in Rails, a new rich text editor named Lexxy, resumable Active Jobs, Action Push, SQLite replication with Beamer, geo routing in Kamal, and free [Campfire with ONCE](https://once.com/campfire) (previously, $299).
 
 * DHH talked about [how they run test suites locally](https://world.hey.com/dhh/we-re-moving-continuous-integration-back-to-developer-machines-3ac6c611). With modern chipsets and _without_ the inherent sloppiness of "just throw it over the fence into CI", they run their entire suite in 70 seconds on the fastest AMD chips.
 
