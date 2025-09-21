@@ -9,7 +9,7 @@ hook = "A visit to Amsterdam for Rails World 2025. CI loops measured in days and
 
 Readers --
 
-I recently attended the 2025 edition of Rails World in Amsterdam, my third year of Rails World in a row, or a perfect grade of three out of three. I don't attend many other conferences, but Rails World is _the_ best conference, so I'll keep going back as long as I can keep getting tickets (it was very close this year).
+I recently attended the 2025 edition of Rails World in Amsterdam, my third year of Rails World in a row, or a perfect grade of three out of three. I don't attend many other conferences, but Rails World is _the_ best conference, so I'll keep going back as long as I can get tickets (it was very close this year).
 
 Like the inaugural Rails World in 2023, it was held in the gorgeous Beurs van Berlage, a stately edifice in central Amsterdam built in 1903 as the city's stock exchange. Attending an event there feels like you're part of an exclusive diplomatic summit in the old world.
 
@@ -21,7 +21,7 @@ You can [watch it here](https://www.youtube.com/watch?v=gcwzWzC7gUA&list=PLHFP2O
 
 * DHH talked about [how they run test suites locally](https://world.hey.com/dhh/we-re-moving-continuous-integration-back-to-developer-machines-3ac6c611). With modern chipsets and _without_ the inherent sloppiness of "just throw it over the fence into CI", they run their entire suite in 70 seconds on the fastest AMD chips.
 
-* [Omarchy](https://omarchy.org/), an opinionated Linux setup on Arch and Hyprland, got a lot of air time. They pulled off a great demo on stage that combined a brand new Framework laptop with a USB stick containing Omarchy where they got a fresh system installed, booted, and up and running to the point where they created a Rails app, al in less than five minutes of real world clock time. In the following days, they'd get this install time down to [less than two minutes](https://x.com/dhh/status/1966919727173038546) with the community's help.
+* [Omarchy](https://omarchy.org/), an opinionated Linux setup on Arch and Hyprland, got a lot of air time. They pulled off a great demo on stage that combined a brand new Framework laptop with a USB stick containing Omarchy where they got a fresh system installed, booted, and up and running to the point where they created a Rails app, all in less than five minutes of real world clock time. In the following days, they'd get this install time down to [less than two minutes](https://x.com/dhh/status/1966919727173038546) with the community's help.
 
 * A fact that surprised me even if maybe it shouldn't have is that their test suite runs **2x faster on Linux** given similar hardware, mainly due (if I understood correctly) optimizations that have gone into Linux over the years, and Apple's tireless work at deoptimizing the Mac.
 
@@ -41,11 +41,11 @@ For the third year in a row Heroku got a special shout out. DHH revealed in a su
 
 One of the [best ever HN comments](https://news.ycombinator.com/item?id=18442941) talks about product development at Oracle. CI (continuous integration) is 20 to 30 hours for a full test run, with no interim feedback, making the edit-compile-debug loop about 20 to 30 hours. Developing a feature or bug fix takes dozens of iterations, leading to lag times of six months to a year. This was written in 2018, so it's probably all even worse now.
 
-As another data point, a company I interacted with recently runs a CI loop that's days long. This was too long so they decided to move a subset of testing to a "precommit" check which takes "only" two to fours to run. No one expects any change to take less than a week. Multiple weeks is normal.
+As another data point, a company I interacted with recently runs a CI loop that's days long. This was too long so they decided to move a subset of testing to a "precommit" check which takes "only" two to four hours to run. No one expects any change to take less than a week. Multiple weeks is normal.
 
 Stripe wasn't quite as bad. When I left, CI was in the neighborhood of 15 to 20 minutes, with a single test run 30 seconds to a minute (most of that going to start up effort). That's an order of magnitude better than Oracle, but one minute test runs and 15 minute CI loops are still absolute killers when you're trying to make work happen. And that's discounting spend completely. The 15 minute CI time was only possible through the use of 100s/1000s of test nodes running in parallel. I don't know how much a single run of the test suite cost, but I would guess it's measured in tens of dollars rather than cents.
 
-The more data I collect from the industry, the more it's cemented for me that these anecdotes aren't aberrations, but rather the "gold" standard, even amongst even the most sophisticated big tech companies.
+The more data I collect from the industry, the more it's cemented for me that these anecdotes aren't aberrations, but rather the "gold" standard, even amongst the most sophisticated big tech companies.
 
 Let me restate that for emphasis: even with the advent of CPUs with the compute output equivalent to entire countries from a few decades ago, high bandwidth chipsets, and NVMe drives, combined with the labor of the smartest, best compensated engineers money can buy, iteration times are measured in hours at best, and just as often days. A typical engineer making a half million in total compensation will come to work, push some code in the morning, go to eat free lunch down at the cafeteria, fix some tests flagged from their morning commit, push once more in the afternoon, then go home. The company's "staff" engineers will then attend conferences to brag about the lean, refined efficiency of their development process, taking great care to omit all the bad parts [1].
 
@@ -105,20 +105,20 @@ You climb to the top of the Beurs van Berlage clutching your Ruby passport. You 
 
 You enter a distinguished, high-ceiling room. Its understated decor is tasteful, with wood paneling surrounding the room, a series of impressive stained glass window overhead, and furniture that's ornate, but not luxurious. It's quiet. The mood is professional, and a little somber.
 
-There's a security checkpoint at the door. A guard is searching a person in front of you and as you accidentally cross a line you didn't on the floor he holds up his baton and says, "Sir, step back please. I'll be with you in a minute." He finishes with the person in front of you and calls you up. He waves the wand around your body and asks solemnly, "Sir, have you been in the vicinity recently of any packages that were emitting ticking noises?" You answer in the negative and are waved through.
+There's a security checkpoint at the door. A guard is searching a person ahead of you and as you accidentally cross a line you didn't see on the floor he holds up his baton and says, "Sir, step back please. I'll be with you in a minute." He finishes with the person in front of you and calls you up. He waves the wand around your body and asks solemnly, "Sir, have you been in the vicinity recently of any packages that were emitting ticking noises?" You answer in the negative and are waved through.
 
 Next up, a waiting area to fill out documentation. You take a form, furrow your brow, and get to work, expecting it to take only a few moments. It's surprisingly comprehensive, taking a full 10 minutes to get through, and with many questions requiring careful thought to answer definitively. During that time more Rubyists are ushered in and start work on their own forms. By the time you finish it's standing room only.
 
 <img src="/photographs/nanoglyphs/043-rails-world-2025/embassy-1@2x.jpg" alt="Ruby embassy 1" class="wide" loading="lazy">
 
-You advance, and after finishing with a person in front you, a lady at a desk in the center of the room calls out, "NEXT! Come on now, I don't have all day."
+You advance, and after finishing with another person, a lady at a desk in the center of the room calls out, "NEXT! Come on now, I don't have all day."
 
 You walk up and surrender your paperwork. "Okay, let's see what we have here. Number of stars in the universe? You put 2,342,952,459,236,419 [3]. Okay, very precise. Counted them all did you. Best smell in the world? Sharpie. Okay, I might've said baking bread, but I can accept that answer. You said on here the last time you cuddled with a kitten was ten years ago? That seems like an awfully long time. What about this, when was the last time you cuddled a _cat_? i.e. "Kittie" rather than "kitten". A few weeks ago. Okay, we can work with that."
 
 
 <img src="/photographs/nanoglyphs/043-rails-world-2025/embassy-2@2x.jpg" alt="Ruby embassy 1" class="wide_portrait" loading="lazy">
 
-The interview takes a few minutes and after it's done your documents are returned to you. You photo is taken and you're sent over to one last table to have your passport is validated and finalized.
+The interview takes a few minutes and after it's done your documents are returned to you. You photo is taken and you're sent over to one last table to have your passport validated and finalized.
 
 A++ bit. I'd visit the embassy again any day.
 
@@ -128,11 +128,11 @@ A++ bit. I'd visit the embassy again any day.
 
 ## Back in blue (#blue)
 
-We were sponsoring again this year, but had set it up before [the acquisition](/nanoglyphs/042-resumed#acquired) in June, so that our branding was still the old Crunchy Data like it's been every other year.
+We were sponsoring again this year, but had set it up before [the acquisition](/nanoglyphs/042-resumed#acquired) in June, so that our branding was still the old Crunchy Data colors like previous years.
 
 It was bittersweet. Great to be there again under our old banner, but Rails World will have the special distinction of being the last ever appearance of the Crunchy Data booth in the wild. I'm not sure what'll happen next year, but if we do come back, it'll be accompanied by snowflake iconography in baby blue, surrounded by a familiar halo of signature arrow glyphs.
 
-We went out for dinner at an Italian place along one Amsterdam's labyrinthine network of canals. We ask for the wine list. The waiter returns, and drops a crate of empty wine bottles onto the table.
+We went out for dinner at an Italian place along one of Amsterdam's labyrinthine network of canals. We ask for the wine list. The waiter returns, and drops a crate of empty wine bottles onto the table.
 
 Love it.
 
@@ -142,6 +142,6 @@ Until next week.
 
 [1] The less generous amongst us would call this sort of aggressive fact filtering "lying", but an inordinate number of thought leaders in the engineering space pull it off with a bald face, presumably having had their conscience cleansed by checking the balance of their brokerage account.
 
-[2] There's probably a few instances where this is actually true, like if you're building Google Chrome, but like "big data", for every one org that has it, there are a thousand that think they have it.
+[2] There are probably a few instances where this is actually true, like if you're building Google Chrome, but like "big data", for every one org that has it, there are a thousand that think they do.
 
 [3] I looked this one up later and despite jamming as many numbers into the box as I could fit, I was still off by about ten orders of magnitude. Actual estimated number is more like 200 sextillion stars (200,000,000,000,000,000,000,000).
