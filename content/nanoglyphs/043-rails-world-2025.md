@@ -9,7 +9,7 @@ hook = "A visit to Amsterdam for Rails World 2025. CI loops measured in days and
 
 Readers --
 
-I recently attended the 2025 edition of Rails World in Amsterdam, my third year of the event in a row. That sounds like a lot, but it's the best event in technology, so I'll keep going back as long as I can get tickets (it was very close this year).
+I recently attended the 2025 edition of Rails World in Amsterdam, my third year of the conference in a row. That sounds like a lot, but it's the best event in technology, so I'll keep going back as long as I can get tickets (it was very close this year).
 
 Like the inaugural Rails World in 2023, it was held in the gorgeous Beurs van Berlage, a stately building in central Amsterdam built in 1903 as the city's stock exchange. Attending an event there feels like you're part of an exclusive diplomatic summit in the old world, even with 98% of attendees wearing hoodies and logo tees.
 
