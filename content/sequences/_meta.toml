@@ -10,6 +10,18 @@
 #
 ################################################################################
 
+[[entries]]
+  published_at = 2025-09-21T09:26:42-07:00
+  slug = "095"
+  title = "The Globe"
+  description = """
+The welcome globe at Rails World, surrounded by a crowd just leaving from DHH's opening keynote. As they've done in years past, this was an interactive exhibit where attendees could place a pin at their home location. You can see in this photo that there was a lone attendee from Anchorage.
+
+Poster for [_Nanoglyph 043_](/nanoglyphs/043-rails-world-2025), on a visit to Amsterdam for Rails World 2025, CI loops measured in days + why to make sure that CI can run locally, and a visit to the Ruby Embassy at Beurs van Berlage.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/sljyor4dapmb9cnlankmd/2W4A7333-rails-world-globe.JPG?rlkey=4wyrofhfwjw184dnir0x4dzrf&dl=1"
+    slug = "095"
 
 [[entries]]
   published_at = 2025-04-04T14:01:42-07:00

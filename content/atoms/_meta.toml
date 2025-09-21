@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-09-21T09:26:42-07:00
+  description = """\
+ [_Nanoglyph 043_](/nanoglyphs/043-rails-world-2025) is published, on a visit to Amsterdam for Rails World 2025, CI loops measured in days + why to make sure that CI can run locally, and a visit to the Ruby Embassy at Beurs van Berlage.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/043-rails-world-2025"
+    original_image_url = "https://www.dropbox.com/scl/fi/sljyor4dapmb9cnlankmd/2W4A7333-rails-world-globe.JPG?rlkey=4wyrofhfwjw184dnir0x4dzrf&dl=1"
+    slug = "rails-world-globe"
+
+
+[[atoms]]
   published_at = 2025-06-29T10:48:16-07:00
   description = """\
 Published fragment [Occasionally injected clocks in Postgres](/fragments/postgres-clocks), on using a coalescable parameter to stub time as necessary in tests, but otherwise use the shared database clock across all operations.
