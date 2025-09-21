@@ -45,7 +45,7 @@ As another data point, a company I interacted with recently runs a CI loop that'
 
 Stripe wasn't quite as bad. When I left, CI was in the neighborhood of 15 to 20 minutes, with a single test run 30 seconds to a minute (most of that going to start up effort). That's an order of magnitude better than Oracle, but one minute test runs and 15 minute CI loops are still absolute killers when you're trying to make work happen.
 
-And while awful build times are one bad factor, can you even imagine the cost of all this? Stripe's 15 minute CI time was only possible through the use of 100s/1000s of test nodes running in parallel. I don't know how much a single run of the test suite cost, but I would guess it's measured in tens of dollars rather than cents. How much does a single run of Oracle's 30 hour CI suite cost? I try not to think about it.
+And while awful build times are one bad factor, can you even imagine the cost of all this? Stripe's 15 minute CI time was only possible through the use of 100s of test nodes running in parallel. I don't know how much a single run of the test suite cost, but I would guess it's measured in tens of dollars rather than cents. How much does a single run of Oracle's 30 hour CI suite cost? I try not to think about it.
 
 The more data I collect from the industry, the more it's cemented for me that these anecdotes aren't aberrations, but rather the "gold" standard, even amongst the most sophisticated tech companies.
 
