@@ -2,7 +2,7 @@
 image_alt = "STRAAT museum in Amsterdam Noord."
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/044-straat/straat-06@2x.jpg"
-published_at = 2025-09-21T09:55:15-07:00
+published_at = 2025-09-22T07:09:54-07:00
 title = "STRAAT, iPhone Air"
 hook = "A visit to the STRAAT museum in Amsterdam Noord and thoughts on the iPhone Air."
 +++
