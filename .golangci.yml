@@ -20,10 +20,12 @@ linters:
     - lll
     - mnd
     - nlreturn
+    - noinlineerr
     - paralleltest
     - testpackage
     - varnamelen
     - wsl
+    - wsl_v5
 
   settings:
     forbidigo:

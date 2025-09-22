@@ -37,6 +37,7 @@ package main
 //
 
 import (
+	"context"
 	"fmt"
 	"math"
 	"os"
@@ -71,7 +72,9 @@ const (
 //
 
 func main() {
-	allImages, err := getAllImages()
+	ctx := context.Background()
+
+	allImages, err := getAllImages(ctx)
 	abortOnErr(err)
 
 	imageBatches := batchImages(allImages)
@@ -82,7 +85,7 @@ func main() {
 	for workerNum := range parallelWorkers {
 		go func() {
 			for _, path := range imageBatches[workerNum] {
-				lastCommitTime, err := getLastCommitTime(path)
+				lastCommitTime, err := getLastCommitTime(ctx, path)
 				abortOnErr(err)
 
 				fmt.Printf("%v --> %v\n", path, lastCommitTime)
@@ -137,8 +140,8 @@ func batchImages(allImages []string) [][]string {
 
 // Gets a list of all image paths by using a `git ls-tree` command on the
 // target directory.
-func getAllImages() ([]string, error) {
-	out, err := runCommand("git", "ls-tree", "-r", "--name-only", "HEAD", imagePath)
+func getAllImages(ctx context.Context) ([]string, error) {
+	out, err := runCommand(ctx, "git", "ls-tree", "-r", "--name-only", "HEAD", imagePath)
 	if err != nil {
 		return nil, xerrors.Errorf("error getting images with `git ls-tree`: %w", err)
 	}
@@ -148,8 +151,8 @@ func getAllImages() ([]string, error) {
 
 // Gets the last commit time on a particular image path by using a `git log`
 // command.
-func getLastCommitTime(path string) (*time.Time, error) {
-	out, err := runCommand("git", "log", "--max-count=1", `--pretty=format:%aI`, path)
+func getLastCommitTime(ctx context.Context, path string) (*time.Time, error) {
+	out, err := runCommand(ctx, "git", "log", "--max-count=1", `--pretty=format:%aI`, path)
 	if err != nil {
 		return nil, xerrors.Errorf("error getting commit time for '%s': %w", path, err)
 	}
@@ -166,13 +169,14 @@ func minInt(a, b int) int {
 	return int(math.Min(float64(a), float64(b)))
 }
 
-func runCommand(name string, arg ...string) (string, error) {
-	cmd := exec.Command(name, arg...)
+func runCommand(ctx context.Context, name string, arg ...string) (string, error) {
+	cmd := exec.CommandContext(ctx, name, arg...)
 	cmd.Stderr = os.Stderr
 
 	out, err := cmd.Output()
 	if err != nil {
 		return "", xerrors.Errorf("error executing command '%s': %w", name, err)
 	}
+
 	return strings.TrimSpace(string(out)), nil
 }
