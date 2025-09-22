@@ -409,6 +409,78 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/044-straat
+#
+
+[[photographs]]
+crop_width = 1200
+# original_image_url = "https://www.dropbox.com/scl/fi/aqrj4rw8g3s24x54bsb5l/2W4A7712-crop.jpg?rlkey=04m4isyrf66wvtffo5lbd7zz0&dl=1"
+original_image_url = "https://www.dropbox.com/scl/fi/ah3i463nbee9ipua62sbe/2W4A7729-crop.jpg?rlkey=h91jxjnhsygm4ziyb35z1fdl5&dl=1"
+slug = "nanoglyphs/044-straat/iphone-air-front"
+title = "iPhone Air front"
+
+[[photographs]]
+crop_width = 1200
+# original_image_url = "https://www.dropbox.com/scl/fi/03r18q4mcma9l31rbjk58/2W4A7713-crop.jpg?rlkey=g2erpwx7vq3p6wbpse8uxio88&dl=1"
+original_image_url = "https://www.dropbox.com/scl/fi/5mq4kecwan01svv0xtuwc/2W4A7734-crop.jpg?rlkey=3xfb1vvkykyhci42o0wsi8h1a&dl=1"
+slug = "nanoglyphs/044-straat/iphone-air-profile"
+title = "iPhone Air profile"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/pjssfnwf6vgi5f7vz0852/2W4A7525-trifold.JPG?rlkey=4ejjvr2r40r5jl8ayxdghcdb1&dl=1"
+slug = "nanoglyphs/044-straat/straat-01"
+title = "Straat museum 1"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/zthjn1yzyr8prmfylhmnt/2W4A7517.JPG?rlkey=sn2g13g5yowe7w8jokgy8syb1&dl=1"
+slug = "nanoglyphs/044-straat/straat-02"
+title = "Straat museum 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/xipawfhanqiq6q6g9g61q/2W4A7481-crop.jpg?rlkey=au507bqrkyzjqua73vorcpq7e&dl=1"
+slug = "nanoglyphs/044-straat/straat-03"
+title = "Straat museum 3"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/tbib5m7851wupr0rllet7/2W4A7558.JPG?rlkey=u2rithjvu26wt1obtaw1ox6xz&dl=1"
+slug = "nanoglyphs/044-straat/straat-04"
+title = "Straat museum 4"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/puml9zgviucffvid5n1km/2W4A7560.JPG?rlkey=fsp0lbo6vfkdgjmedhe5kcbh8&dl=1"
+slug = "nanoglyphs/044-straat/straat-05"
+title = "Straat museum 5"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/joruya9dzwrsf22vi3l6e/2W4A7593-hanging-crane.JPG?rlkey=7esri8g9oo9gvllh4ev2h4rvy&dl=1"
+slug = "nanoglyphs/044-straat/straat-06"
+title = "Straat museum 6"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/8bb7syegp8n8bkyt2fw1g/2W4A7597.JPG?rlkey=pbjnjqnbef4zx8ugx5q3vg2vr&dl=1"
+slug = "nanoglyphs/044-straat/straat-07"
+title = "Straat museum 7"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/29ktdjn6a24sjeyhxuz3m/2W4A7458.JPG?rlkey=f2ucao35wu58zsqixqsvna0za&dl=1"
+slug = "nanoglyphs/044-straat/straat-08"
+title = "Straat museum 8"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/uzbg0ofc743rah9yqn2q8/2W4A7524.JPG?rlkey=xkq2n9vzg6oywfxvfc2vuo01o&dl=1"
+slug = "nanoglyphs/044-straat/straat-09"
+title = "Straat museum 9"
+
+#
 # /nanoglyphs/042-rails-world-2025
 #
 
