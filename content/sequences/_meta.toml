@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2025-09-22T07:09:54-07:00
+  slug = "096"
+  title = "STRAAT"
+  description = """
+The [STRAAT museum](https://straatmuseum.com/en/about-us) in Amsterdam Noord. A giant warehouse of 86k square feet showcasing ~180 of the best pieces of street art and graffiti.
+
+Poster for [_Nanoglyph 044_](/nanoglyphs/044-straat), on a visit to the STRAAT museum in Amsterdam Noord and thoughts on the iPhone Air.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/joruya9dzwrsf22vi3l6e/2W4A7593-hanging-crane.JPG?rlkey=7esri8g9oo9gvllh4ev2h4rvy&dl=1"
+    slug = "096"
+
+[[entries]]
   published_at = 2025-09-21T09:26:42-07:00
   slug = "095"
   title = "The Globe"
