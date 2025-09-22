@@ -72,7 +72,10 @@ environment for this to work as it executes against the Mailgun
 API.`),
 		Args: cobra.ExactArgs(1),
 		Run: func(_ *cobra.Command, args []string) {
-			c := &modulir.Context{Log: getLog()}
+			c := &modulir.Context{
+				Forced: true, // bypasses some cache checks that won't work with this minimal context
+				Log:    getLog(),
+			}
 			sendNewsletter(c, args[0], live, staging)
 		},
 	}

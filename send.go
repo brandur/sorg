@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"context"
 	"fmt"
@@ -13,7 +12,6 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/modules/mace"
 	"github.com/brandur/sorg/modules/scommon"
 	"github.com/brandur/sorg/modules/snewsletter"
 )
@@ -82,7 +80,7 @@ var (
 		MailAddress:        "nanoglyph@" + mailDomain,
 		MailAddressStaging: "nanoglyph-staging@" + mailDomain,
 		TitleFormat:        "ⓝ Nanoglyph %s — %s",
-		View:               scommon.ViewsDir + "/nanoglyphs/show.ace",
+		View:               scommon.ViewsDir + "/nanoglyphs/show.tmpl.html",
 	}
 
 	// Metadata for the Passages & Glass newsletter.
@@ -93,7 +91,7 @@ var (
 		MailAddress:        "passages@" + mailDomain,
 		MailAddressStaging: "passages-staging@" + mailDomain,
 		TitleFormat:        "Passages & Glass %s — %s",
-		View:               scommon.ViewsDir + "/passages/show.ace",
+		View:               scommon.ViewsDir + "/passages/show.tmpl.html",
 	}
 
 	// All infos combined into a slice.
@@ -157,15 +155,15 @@ func renderAndSend(ctx context.Context, c *modulir.Context, source string, live,
 		"URLPrefix": conf.AbsoluteURL,
 	}
 
-	var b bytes.Buffer
-	writer := bufio.NewWriter(&b)
+	var (
+		b            bytes.Buffer
+		dependencies = NewDependencyRegistry()
+	)
 
-	if err := mace.Render(c, newsletterInfo.Layout, newsletterInfo.View,
-		writer, getAceOptions(false), locals); err != nil {
+	err = dependencies.renderGoTemplateWriter(ctx, c, newsletterInfo.View, &b, locals)
+	if err != nil {
 		return err
 	}
-
-	writer.Flush()
 
 	html, err := inliner.Inline(b.String())
 	if err != nil {
