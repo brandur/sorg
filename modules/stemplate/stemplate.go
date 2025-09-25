@@ -85,34 +85,25 @@ func formatTimeWithMinute(t time.Time) string {
 
 // Produces a retina-compatible photograph that's lazy loaded. Largely used for
 // the photographs and sequences sets.
-func lazyRetinaImage(index int, path, slug, ext string) template.HTML {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, ext, false, "", false)
+func lazyRetinaImage(path, slug, ext string) template.HTML {
+	return lazyRetinaImageLightboxMaybe(path, slug, ext, "", false)
 }
 
 // Same as the above, but also allows the image to be clicked to get a
 // lightbox.
-func lazyRetinaImageLightbox(index int, path, slug, ext string, portrait bool, linkOverride string) template.HTML {
-	return lazyRetinaImageLightboxMaybe(index, path, slug, ext, portrait, linkOverride, true)
+func lazyRetinaImageLightbox(path, slug, ext string, linkOverride string) template.HTML {
+	return lazyRetinaImageLightboxMaybe(path, slug, ext, linkOverride, true)
 }
 
-func lazyRetinaImageLightboxMaybe(index int, path, slug, ext string, portrait bool, linkOverride string,
+func lazyRetinaImageLightboxMaybe(path, slug, ext string, linkOverride string,
 	lightbox bool,
 ) template.HTML {
 	slug = mtemplate.QueryEscape(slug)
 	fullPath := path + slug + ext
 	fullPathRetina := path + slug + "@2x" + ext
 
-	var standinPath string
-	if portrait {
-		// We only have one portrait standin currently (thus `% 1`).
-		//nolint:staticcheck
-		standinPath = fmt.Sprintf("/assets/images/standin_portrait_0%d.jpg", index%1)
-	} else {
-		standinPath = fmt.Sprintf("/assets/images/standin_0%d.jpg", index%5)
-	}
-
-	code := fmt.Sprintf(`<img class="lazy" src="%s" data-src="%s" data-srcset="%s 2x, %s 1x">`,
-		standinPath, fullPath, fullPathRetina, fullPath)
+	code := fmt.Sprintf(`<img src="%s" data-srcset="%s 2x, %s 1x" loading="lazy">`,
+		fullPath, fullPathRetina, fullPath)
 
 	if lightbox {
 		if linkOverride == "" {
