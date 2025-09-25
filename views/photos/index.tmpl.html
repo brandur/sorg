@@ -34,7 +34,7 @@
     {{range $i, $photo := .Photos}}
         <div id="{{.Slug}}" class="">
             <a href="#{{$photo.Slug}}">
-                {{LazyRetinaImage $i "/photographs/" (printf "%s_large" $photo.Slug) $photo.TargetExt}}
+                {{LazyRetinaImage "/photographs/" (printf "%s_large" $photo.Slug) $photo.TargetExt}}
             </a>
         </div>
     {{- end -}}
