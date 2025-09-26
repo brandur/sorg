@@ -11,7 +11,15 @@
 ################################################################################
 
 [[atoms]]
-  published_at = 2025-09-21T09:26:42-07:00
+  published_at = 2025-09-25T18:48:14-07:00
+  description = """\
+A short one for the Crunchy blog: [`OLD` and `NEW` Rows in the `RETURNING` Clause](https://www.crunchydata.com/blog/postgres-18-old-and-new-in-the-returning-clause).
+
+Postgres 18 was released today. Most of us know about async I/O and UUIDv7 by now, but this was a nice smaller surprise that I hadn't heard about until reading the release notes.
+"""
+
+[[atoms]]
+  published_at = 2025-09-22T07:09:54-07:00
   description = """\
  [_Nanoglyph 044_](/nanoglyphs/044-straat) is published, on a visit to the STRAAT museum in Amsterdam Noord and thoughts on the iPhone Air.
 """
