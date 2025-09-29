@@ -11,7 +11,7 @@ Readers --
 
 It's Christmas week for databases, with [Postgres 18 released last Thursday](https://www.postgresql.org/about/news/postgresql-18-released-3142/). Postgres only ships new features once a year, so the annual major version cut is a time to stop, take note, and experiment a little. We usually wait for one minor release before upgrading production so that'll be another month or two, but it's something to start looking into.
 
-There's the usual long laundry list of new features and enhancements. I find a little humor in that the one which will touch the most peoples' lives is UUIDv7, which sums up tidily to only a [few hundred lines of code](https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=78c5e141e), half which are comments. It could've shipped a year ago but for the Postgres' team's insistence on waiting for perfect geologic stability in the RFC akin to Yucca Mountain before letting it out the door. But better late than never.
+There's the usual long laundry list of new features and enhancements. I find a little humor in that the one which will touch the most peoples' lives is UUIDv7, which sums up tidily to only a [few hundred lines of code](https://git.postgresql.org/gitweb/?p=postgresql.git;a=commitdiff;h=78c5e141e), half of which are comments. It could've shipped a year ago but for the Postgres' team's insistence on waiting for perfect geologic stability in the RFC akin to Yucca Mountain before letting it out the door. But better late than never.
 
 Let's take a high level look at some headline features, and with a short note about Indonesia at the bottom.
 
