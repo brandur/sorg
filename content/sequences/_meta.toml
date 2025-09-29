@@ -11,6 +11,20 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2025-09-28T22:48:37-07:00
+  slug = "097"
+  title = "Loback Meat Co."
+  description = """
+Pike Place market in Seattle under a sign for the historic Loback Meat Co., circa 1946-1989. Gone 35 years now, but memorialized by a period neon sign that with luck, will last generations. I expected Pike Place to be busy, but on a beautiful Sunday before we enter the rainy season, it felt like half of downtown was in there. It didn't surprise me to find cheese, flowers, and fish on sale, but the coin shop and magic shop were unexpected.
+
+Poster for [_Nanoglyph 045_](/nanoglyphs/045-postgres-18), on a few features from Postgres 18 and a note on upcoming travel to Indonesia.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/nt9rmjikc669ao1d2c0ms/2W4A7763-crop.jpg?rlkey=4kxfjc01zp7zm0c0exokmypdd&dl=1"
+    # portrait = true
+    slug = "097"
+
+[[entries]]
   published_at = 2025-09-22T07:09:54-07:00
   slug = "096"
   title = "STRAAT"

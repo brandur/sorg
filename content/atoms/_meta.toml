@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-09-28T22:48:37-07:00
+  description = """\
+ [_Nanoglyph 045_](/nanoglyphs/045-postgres-18) is published, on a few features from Postgres 18 and a note on upcoming travel to Indonesia.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/045-postgres-18"
+    original_image_url = "https://www.dropbox.com/scl/fi/nt9rmjikc669ao1d2c0ms/2W4A7763-crop.jpg?rlkey=4kxfjc01zp7zm0c0exokmypdd&dl=1"
+    slug = "pike-place-loback"
+
+[[atoms]]
   published_at = 2025-09-25T18:48:14-07:00
   description = """\
 A short one for the Crunchy blog: [`OLD` and `NEW` Rows in the `RETURNING` Clause](https://www.crunchydata.com/blog/postgres-18-old-and-new-in-the-returning-clause).
