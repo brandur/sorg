@@ -409,6 +409,28 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/045-postgres-18
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/sgb76a3hc6fzi9mgvgr58/IMG_0287.HEIC?rlkey=o2wvex87us6azetw74p0ickmi&dl=1"
+slug = "nanoglyphs/045-postgres-18/coral-eye"
+title = "Coral Eye coastline"
+
+# [[photographs]]
+# crop_width = 900
+# original_image_url = "https://www.dropbox.com/scl/fi/tubjtdmgh6wlqiz5pginx/L1000605-crop.jpg?rlkey=kl3y1xfvfh35m3eylof4klhfu&dl=1"
+# slug = "nanoglyphs/045-postgres-18/pike-place"
+# title = "Pike Place"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/nt9rmjikc669ao1d2c0ms/2W4A7763-crop.jpg?rlkey=4kxfjc01zp7zm0c0exokmypdd&dl=1"
+slug = "nanoglyphs/045-postgres-18/pike-place-loback"
+title = "Pike Place"
+
+#
 # /nanoglyphs/044-straat
 #
 
