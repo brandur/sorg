@@ -4,7 +4,7 @@ image_alt = "Pike Place"
 image_url = "/photographs/nanoglyphs/045-postgres-18/pike-place-loback@2x.jpg"
 published_at = 2025-09-27T11:31:51-07:00
 title = "Postgres 18"
-hook = "TOOD"
+hook = "A few features from Postgres 18 and a note on upcoming travel to Indonesia."
 +++
 
 Readers --
@@ -15,7 +15,7 @@ There's the usual long laundry list of new features and enhancements. I find a l
 
 Let's take a high level look at some headline features, and with a short note about Indonesia at the bottom.
 
-## 1 --- Async I/O
+## 1 --- Async I/O (#async-io)
 
 Postgres 18 brings in a new async I/O subsystem based on [io_uring](https://man7.org/linux/man-pages/man7/io_uring.7.html). It's still off by default, but can easily be configured on Linux (and Linux only):
 
@@ -31,7 +31,7 @@ Lukas [wrote a more in-depth article](https://pganalyze.com/blog/postgres-18-asy
 
 I like the idea that even as our chips and disks get faster, enhancements are simultaneously being pushed through on the software level through the likes of io_uring. So even while every newly available hardware cycle in web or mobile apps is immediately burned away through increasingly deep stacks of JavaScript nonsense, at least our databases and server software should be getting strictly faster.
 
-## 2 --- UUIDv7
+## 2 --- UUIDv7 (#uuidv7)
 
 This one's been written about once a week for a year now, so I'll stop myself from going into too much detail, but in essence: UUIDv7 is what most people have wanted out of UUIDs since the early 2000s. They're generated in an ascending sequence which is good UX from a user's perspective, but also good for B-tree insert and WAL performance. Downsides are supremely marginal. Use them, especially for new projects. Competing alternatives like ULID can be safely retired.
 
@@ -101,7 +101,7 @@ UUIDs are 128 bits. UUIDv7 dictates an initial 48 bits that encodes a timestamp 
 
 Postgres's UUIDv7 implementation solves the problem by repurposing 12 bits of the UUID’s random component to increase the precision of the timestamp down to nanosecond granularity (filling `rand_a` above), which in practice is too precise to contain two UUIDv7s generated in the same process. It means that a repeated UUID between processes is technically possible, but there’s still 62 bits of randomness left to make use of, so collisions are vastly unlikely.
 
-## 3 --- OLD and NEW in RETURNING
+## 3 --- OLD and NEW in RETURNING (#old-new-returning)
 
 I published a ~5 paragraph post for Crunchy's blog on [OLD and NEW rows becoming available in RETURNING statements](https://www.crunchydata.com/blog/postgres-18-old-and-new-in-the-returning-clause).
 
