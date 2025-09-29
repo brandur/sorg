@@ -147,7 +147,7 @@ RETURNING webhook.*,
 
 Next week I'm heading out on a month-long trip in Indonesia where I'll be stopping at three separate dive sites and with a stop at Komodo.
 
-My tech giant's insistence on the use of "secure endpoints" [1] will work in my favor because while normally I'd think nothing of bringing a laptop along to check in at work occasionally, it'd take significant persuasive skill to convince me to bring a *second* laptop.
+My tech giant's insistence on the use of "secure endpoints" will work in my favor because while normally I'd think nothing of bringing a laptop along to check in at work occasionally, it'd take considerable persuasive skill to convince me to bring a *second* laptop.
 
 The last time I visited Indonesia in 2019, the islands where the dive resorts were had point-to-point radio internet links to the larger islands with about 300 baud of bandwidth. If you were the very first person to wake up (amongst divers, this is competitive), you might be able to get on there and check your email for a few minutes. But as soon as the *second* person at the resort woke up, that puts enough contention on the uplink that both of you will just be staring at loading screens for the rest of the day.
 
@@ -156,5 +156,3 @@ That's a long way of saying: I'm going to try and write a few dispatches of this
 Until next week.
 
 <img src="/photographs/nanoglyphs/045-postgres-18/coral-eye@2x.webp" alt="Coral Eye coastline" class="wide" loading="lazy">
-
-[1] Secure endpoint = laptop purposely pre-provisioned with a rootkit and more spyware than you can shake a stick at. A common feature at large companies.
