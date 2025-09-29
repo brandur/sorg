@@ -137,6 +137,12 @@ RETURNING webhook.*,
     (OLD IS NULL)::boolean AS is_new;
 ```
 
+<img src="/photographs/nanoglyphs/045-postgres-18/pike-place-fish@2x.jpg" alt="Pike Place (fish)" class="wide" loading="lazy">
+
+<img src="/photographs/nanoglyphs/045-postgres-18/pike-place-flowers@2x.jpg" alt="Pike Place (flowers)" class="wide" loading="lazy">
+
+---
+
 ## Dispatches from the Pacific (#pacific)
 
 Next week I'm heading out on a month-long trip in Indonesia where I'll be stopping at three separate dive sites and with a stop at Komodo.

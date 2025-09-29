@@ -426,9 +426,21 @@ title = "Coral Eye coastline"
 
 [[photographs]]
 crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/4ov9z3jd7gi4x1ugyfqut/2W4A7772-crop.jpg?rlkey=zawccnwg0gnpdihk1ldtm642f&dl=1"
+slug = "nanoglyphs/045-postgres-18/pike-place-fish"
+title = "Pike Place (fish)"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/0etdszrsinnqjw5whbeuv/2W4A7768-crop.jpg?rlkey=mbik61t7j7b5jvd5a2uaeda78&dl=1"
+slug = "nanoglyphs/045-postgres-18/pike-place-flowers"
+title = "Pike Place (flowers)"
+
+[[photographs]]
+crop_width = 1200
 original_image_url = "https://www.dropbox.com/scl/fi/nt9rmjikc669ao1d2c0ms/2W4A7763-crop.jpg?rlkey=4kxfjc01zp7zm0c0exokmypdd&dl=1"
 slug = "nanoglyphs/045-postgres-18/pike-place-loback"
-title = "Pike Place"
+title = "Pike Place (Loback)"
 
 #
 # /nanoglyphs/044-straat
