@@ -23,7 +23,7 @@ Postgres 18 brings in a new async I/O subsystem based on [io_uring](https://man7
 io_method = io_uring
 ```
 
-Async I/O doesn't automatically take effect for any arbtirary I/O operation. So far Postgres can only take advantage of async I/O for sequential scans, bitmap heap scans, and `VACUUM`, but with foundations now in place, the hope is its use can be expanded in future releases.
+Async I/O doesn't automatically take effect for any arbitrary I/O operation. So far Postgres can only take advantage of async I/O for sequential scans, bitmap heap scans, and `VACUUM`, but with foundations now in place, the hope is its use can be expanded in future releases.
 
 I've played with async I/O minimally, and am not quite sure what to realistically expect out of it yet. Synthetic benchmarks show 2-3x speedups in some circumstances, but the real world improvements are probably more modest. As one test, I tried [River's benchmark suite](https://riverqueue.com/docs/benchmarks) against Postgres 18 with `io_method = io_uring` on, and it made no observable difference.
 
@@ -83,7 +83,7 @@ if (!pg_strong_random(&uuid->data[8], UUID_LEN - 8))
             errmsg("could not generate random values")));
 ```
 
-UUIDs are 128 bits. UUIDv7 dictates an initial 48 bits that encodes a timestamp down to millisecond precision. A millisecond is a short amount of time for a human, but quite long for a computer, and many UUIDs could easily be generated with the space of one ms.
+UUIDs are 128 bits. UUIDv7 dictates an initial 48 bits that encodes a timestamp down to millisecond precision. A millisecond is a short amount of time for a human, but quite long for a computer, and many UUIDs could easily be generated within the span of one ms.
 
 ``` txt
  0                   1                   2                   3
@@ -139,13 +139,13 @@ RETURNING webhook.*,
 
 ## Dispatches from the Pacific (#pacific)
 
-Next week I'm heading out on a month-long trip in Indonesia where I'll be heading to three separate dive sites and with a stop at Komodo.
+Next week I'm heading out on a month-long trip in Indonesia where I'll be stopping at three separate dive sites and with a stop at Komodo.
 
-My tech giant's insistence on the use of "secure endpoints" [1] will work in my favor because while normally I'd think nothing of bringing a laptop along to check in at work occasionally, it'd take significant persuasive skill to convince me to bring a *second* laptop for that purpose.
+My tech giant's insistence on the use of "secure endpoints" [1] will work in my favor because while normally I'd think nothing of bringing a laptop along to check in at work occasionally, it'd take significant persuasive skill to convince me to bring a *second* laptop.
 
-The last time I visited Indonesia in 2019, the islands where the dive resorts were had point-to-point radio internet links to the larger islands with about 300 baud worth of bandwidth. If you were the very first person to wake up (amongst divers, this is competitive), you might be able to get on there and check your email for a few minutes. But as soon as the *second* person at the resort woke up, that puts enough contention on the uplink that both of you will just be staring at loading screens for the rest of the day.
+The last time I visited Indonesia in 2019, the islands where the dive resorts were had point-to-point radio internet links to the larger islands with about 300 baud of bandwidth. If you were the very first person to wake up (amongst divers, this is competitive), you might be able to get on there and check your email for a few minutes. But as soon as the *second* person at the resort woke up, that puts enough contention on the uplink that both of you will just be staring at loading screens for the rest of the day.
 
-That's a long way of saying: I'm going to try and write a few dispatches of this newsletter while I'm out there, technology permitting, and in that case expect it be transformed on a temporary basis into an Indonesia blog. It might not work, so in the equally likely case that technology is _not_ permitting, I'll send photos when I get back.
+That's a long way of saying: I'm going to try and write a few dispatches of this newsletter while I'm out there, technology permitting, and in that case expect it to be transformed on a temporary basis into an Indonesia blog. It might not work, so in the equally likely case that technology is _not_ permitting, I'll send photos when I get back.
 
 Until next week.
 
