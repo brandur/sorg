@@ -4,7 +4,7 @@ image_alt = "Komodo"
 image_url = "/photographs/nanoglyphs/046-yaml/komodo-hill@2x.jpg"
 published_at = 2025-10-06T21:52:15+08:00
 title = "Negative, I am a YAML wrangler"
-hook = "TODO"
+hook = "A short issue on Kubernetes and progress through Indonesia."
 +++
 
 Readers --
