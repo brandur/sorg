@@ -13,7 +13,7 @@ So they _do_ have Starlink here --- a nice upgrade from the last time I was in t
 
 I'm always late to the game when it comes to these things, but it's my "wow, this technology is amazing" phase right now. Located on a remote island in the middle of the Pacific and getting 50 mbps up / 9.25 mbps down. That's as good as Comcast can do in the middle of downtown Seattle, 100 meters from the offices of some of the largest tech companies on Earth.
 
-I don't know if it's actually a good thing. I can send this newsletter, which is good, but the locals (and a few westerners too) huddle underneath the Starlink antenna like the life-giving warmth of a hearth, their faces glued to TikTok/Instagram Reels/YouTube Shorts ~55 minutes out of every hour. They enjoy this arrested, vegetative state like any drug user enjoys their high, but it's tragic to watch. On warm, otherwise peaceful evenings, the sound of TikTok on speakerphone and ear-shattering iPhone _¡DING!s_ ring out over the water.
+I don't know if it's actually a good thing. I can send this newsletter, which is good, but the locals (and a few westerners too) huddle underneath the Starlink antenna like the life-giving warmth of a hearth, their faces glued to TikTok/Instagram Reels/YouTube Shorts ~55 minutes out of every hour. They enjoy this arrested, vegetative state like any drug user enjoys their high, but it's tragic to watch. On warm, otherwise peaceful evenings, the sound of TikTok on speakerphone and ear-shattering iPhone _¡DINGs!_ ring out over the water.
 
 Today: Kubernetes, Komodo.
 
