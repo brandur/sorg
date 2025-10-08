@@ -1,8 +1,8 @@
 +++
-image_alt = "Komodo"
+image_alt = "Komodo hill"
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/046-yaml/komodo-hill@2x.jpg"
-published_at = 2025-10-06T21:52:15+08:00
+published_at = 2025-10-09T06:45:12+08:00
 title = "Negative, I am a YAML wrangler"
 hook = "A short issue on Kubernetes and progress through Indonesia."
 +++
