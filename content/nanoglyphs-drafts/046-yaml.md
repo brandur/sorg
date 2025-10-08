@@ -9,9 +9,9 @@ hook = "A short issue on Kubernetes and progress through Indonesia."
 
 Readers --
 
-So they _do_ have Starlink here. A nice upgrade from the last time I was in this part of the globe.
+So they _do_ have Starlink here --- a nice upgrade from the last time I was in this part of the globe.
 
-I'm always late to the game using all these things, but it's my "wow, this technology is amazing" phase right now. Located on a remote island in the middle of the Pacific and getting 50 mbps up / 9.25 mbps down. That's as good as Comcast can do in the middle of downtown Seattle, 100 meters from the offices of some of the largest tech companies on Earth.
+I'm always late to the game when it comes to these things, but it's my "wow, this technology is amazing" phase right now. Located on a remote island in the middle of the Pacific and getting 50 mbps up / 9.25 mbps down. That's as good as Comcast can do in the middle of downtown Seattle, 100 meters from the offices of some of the largest tech companies on Earth.
 
 I don't know if it's actually a good thing. I can send this newsletter, which is good, but the locals (and a few westerners too) huddle underneath the Starlink antenna like the life-giving warmth of a hearth, their faces glued to TikTok/Instagram Reels/YouTube Shorts ~55 minutes out of every hour. They enjoy this arrested, vegetative state like any drug user enjoys their high, but it's tragic to watch. On warm, otherwise peaceful evenings, the sound of TikTok on speakerphone and ear-shattering iPhone _¡DING!s_ ring out over the water.
 
@@ -23,13 +23,13 @@ Today: Kubernetes, Komodo.
 
 I've been doing a lot of Kubernetes work for the last few months. The last time I touched Kubernetes was about ten years ago, deploying a podcast hosting service I was writing, and which turned out to be about as successful as the other 1,000 nascent podcast services of the era (as in, it doesn't exist anymore). There's new stuff, but a lot has stayed the same.
 
-A few high level impressions below. None of this will new to anyone who uses Kubernetes, which has got to be a lot of you at this point.
+A few high level impressions below. None of this will new to anyone who uses Kubernetes, which, by now, must be many of you.
 
-* Oh boy is it impressively complicated. Pods, deployments, services, replica sets, and config maps, PDBs (pod disruption budget). The amount of YAML you need to achieve lift off is surprising even when you know going in there's going to be a lot of YAML involved.
+* Oh boy is it impressively complicated. Pods, deployments, services, replica sets, and config maps, PDBs (pod disruption budget). The amount of YAML you need to achieve lift-off is surprising even when you know going in there's going to be a lot of YAML involved.
 
 * [Overlays](https://notes.kodekloud.com/docs/Certified-Kubernetes-Application-Developer-CKAD/2025-Updates-Kustomize-Basics/Overlays) are a thing now. You don't just write YAML, you write a YAML _template_ which then generates the rest of the YAML. We have one overlay per region, generating to 50-100 per change.
 
-* It's a little surprising there isn't a `kubectl lint`? We had some remarkably stupid errors make it all the way to rollout like breached name length limits. (I realize there's third party linters, but a built-in solution would be such an obviously good idea.)
+* It's a little surprising there isn't a `kubectl lint`? We had some remarkably stupid errors make it all the way to rollout like breached name length limits. (I know there are third-party linters, but a built-in solution would be such an obviously good idea.)
 
 * It's admirably functional. In my experience so far, pods schedule how they're supposed to, deploys just work, and features work as advertised. This is not a given for product this complex.
 
@@ -57,14 +57,14 @@ It's a little less clear what happens when, say someone raises an index non-conc
 
 ## Indonesia so far (#indonesia)
 
-We've finished up three days of diving now. Two days lost to travel (17 hours in the air, 5 hours layover, 13 hours time zone difference), two days in Bali, a one hour hop over to Labuan Bajo, a half day's wait and 90 minute boat ride over to the resort.
+We've wrapped up three days of diving now. Two days lost to travel (17 hours in the air, 5-hour layover, 13 hours time zone difference), two days in Bali, a one hour hop over to Labuan Bajo, a half day's wait and 90-minute boat ride over to the resort.
 
-Our neighbors here are a tiny Indonesian village of a few hundred and a small herd of water buffalo that live up in the hills. We're told there's a reasonable incidence of macaques in the jungle (so far only one unclear sighting so far). Komodo dragons are known to occasionally range out to this island (they saw one next to the resort last week), but they're rare this far out.
+Our neighbors here are a tiny Indonesian village of a few hundred and a small herd of water buffalo that live up in the hills. We're told there's a reasonable incidence of macaques in the jungle (only a few obscured sightings so far). Komodo dragons are known to occasionally range out to this island (they saw one next to the resort last week), but they're rare this far out.
 
 Dives on day one:
 
 * Dive 1: Octopus, mantis shrimp, sea turtles.
-* Dive 2: A site known for its manta ray cleaning stations, and 45+ minutes of the dive were dedicated to watching that. The largest of the three mantas had a wingspan over 20 feet.
+* Dive 2: A site known for its manta ray cleaning stations, and 45+ minutes of the dive were dedicated to watching that. The largest of the three mantas had a wingspan of over 20 feet.
 * Dive 3: Muck dive, with sightings of 3 sea horses, two pipefish, one ornate ghost pipefish (a very different looking creature), zebra crab, and a half dozen nudis of different kinds.
 
 It was such a good day that we could probably call the trip here if we needed to, but if we stick to our plan, there's still 60+ dives to go!
