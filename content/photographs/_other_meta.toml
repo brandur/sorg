@@ -409,6 +409,64 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/046-yaml
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/yyrbjx3svjiyc4wmzwtkd/2W4A7953-hill.JPG?rlkey=6s14jw5qlpzxu7r9wxlzirb13&dl=1"
+slug = "nanoglyphs/046-yaml/komodo-hill"
+title = "SCUBA Junkie Komodo from the hilltop"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/b1e9w62fohc1c25q3f8kr/2W4A7806.JPG?rlkey=l1ji0mimwel3oxlmn967x97m4&dl=1"
+slug = "nanoglyphs/046-yaml/labuan-bajo-1"
+title = "Labuan Bajo 1"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/ogr628p3pb51u314kpdnv/2W4A7812.JPG?rlkey=3f530vde6wfjof9ym2k7gqfc4&st=skye7v9f&dl=1"
+slug = "nanoglyphs/046-yaml/labuan-bajo-2"
+title = "Labuan Bajo 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/p4lxbjtwfqtoig58gz0zs/2W4A7819-boat.JPG?rlkey=1dfqeqfzvzxbir0r1egkplbkn&dl=1"
+slug = "nanoglyphs/046-yaml/labuan-bajo-3"
+title = "Labuan Bajo 3"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/1zqvx4wqc2l7jkpwdanvi/2W4A7832-docking.JPG?rlkey=3fs2vaayr6y6zqypdxu77tvjr&st=eqb2vgxv&dl=1"
+slug = "nanoglyphs/046-yaml/labuan-bajo-4"
+title = "Labuan Bajo 4"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/3kn0u1w7cli1g6q5ivaa6/2W4A7838-crop.jpg?rlkey=48m7z54i0l84z8i2cpz0c7mb0&dl=1"
+slug = "nanoglyphs/046-yaml/labuan-bajo-5"
+title = "Labuan Bajo 5"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/kctg6i66spo4bdb12bvnw/2W4A7924.JPG?rlkey=sy6u4j24csk13kb8euid45jkx&dl=1"
+slug = "nanoglyphs/046-yaml/scuba-junkies-1"
+title = "SCUBA Junkies 1"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/bn9y0bwdmgd6opekkejsf/2W4A7985.JPG?rlkey=69phkbse71duiuivlx71jofho&st=oyh4q1i5&dl=1"
+slug = "nanoglyphs/046-yaml/scuba-junkies-2"
+title = "SCUBA Junkies 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/x2zvgsrq7kdly3fxmxbak/2W4A7780.JPG?rlkey=m98i1iz7b773fsnh3xmr54y7j&st=4wy00s7t&dl=1"
+slug = "nanoglyphs/046-yaml/vira-bali"
+title = "Vira Bali"
+
+#
 # /nanoglyphs/045-postgres-18
 #
 
