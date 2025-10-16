@@ -3,6 +3,36 @@
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
+    <img src="/photographs{{DownloadedImage .Ctx "/now/2025-oct-17" "https://www.dropbox.com/scl/fi/al2mwhwyzhyqsdtdjh7ra/2W4A8251.JPG?rlkey=98jp7ii812blph1yuhiwxvb8w&st=i4r7dctd&dl=1" 1300}}" alt="Sky blue" class="lg:rounded-lg w-full" loading="lazy">
+</div>
+
+I'm in Indonesia, diving for the full month of October (and already halfway through!). I've been lucky enough to be getting a lot of traveling in recently, but without a real "no work" vacation in a long time.
+
+Life notes:
+
+* In May, the company I worked for was acquired by Snowflake. I'm now working on a hosted Postgres offering for them.
+
+* I'm still writing my newsletter, [Nanoglyph](/nanoglyphs), and published four editions in the last month ([043](/nanoglyphs/043-rails-world-2025), [044](/nanoglyphs/044-straat), [045](/nanoglyphs/045-postgres-18), [046](/nanoglyphs/046-yaml)).
+
+* Back in August, I moved out of San Francisco after more than a decade. It's a little disappointing because San Francisco is accidentally (i.e. nothing to do with the choices its planners or electorate have made) America's most walkable city, but the clown show of its state and local governments is too much.
+
+* Still churning away on River (the world's best job queue) outside of work hours. See recently released [batch jobs](https://riverqueue.com/docs/pro/batching).
+
+<div class="mb-16 not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Oct 17, 2025</span>.
+    </p>
+</div>
+
+<details>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 4, 2025</summary>
+    <div class="my-10">
+
+<div class="my-16
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
     <img src="/photographs{{DownloadedImage .Ctx "/now/2025-apr-04" "https://www.dropbox.com/scl/fi/t8clk35k7peh3jo49255c/L1000718.heic?rlkey=jdbez5jzln6ju6jl5ukfbhoop&dl=1" 1300}}" alt="Sky blue" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
@@ -20,11 +50,8 @@ Some haphazard notes:
 
 * I finally took the step to black hole Reddit on all my computers. Focus on making cool stuff instead of wasting precious hours of mortality wrestling down in this filthy, hyper-partisan sludge. This company's stock cannot go to zero fast enough (and at -48% YTD, it's on its way).
 
-<div class="mb-16 not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Apr 4, 2025</span>.
-    </p>
 </div>
+</details>
 
 <details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 19, 2024</summary>

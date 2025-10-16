@@ -11,6 +11,33 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2025-10-17T06:44:08+09:00
+  slug = "099"
+  title = "Ambon"
+  description = """
+Docking after a dive at Spice Island Divers, a resort in Ambon, Indonesia which muck dives exclusively. The downside of these dives is having to wade through the literal tons of trash Indonesians have thrown into the bay. The upside are the spottings of otherwise rare frogfish, searhorses, and rhinopias. Our grail fish for the week is the "psychadelic frogfish", one of the most distinctive looking fish there is, and endemic to only this specific bay in Ambon.
+
+Used as the poaster for my latest [now](/now) page update, on Snowflake, Nanoglyph, San Francisco, and River.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/al2mwhwyzhyqsdtdjh7ra/2W4A8251.JPG?rlkey=98jp7ii812blph1yuhiwxvb8w&st=i4r7dctd&dl=1"
+    # portrait = true
+    slug = "099"
+
+[[entries]]
+  published_at = 2025-10-09T06:45:12+08:00
+  slug = "098"
+  title = "Over the hill"
+  description = """
+A look down onto the bay where SCUBA Junkie Komodo is located after climbing the very large hill behind it. The footing around here looks better than it actually is, and as our feet disappeared below the deep grass, it was hard to stop thinking about the pit vipers that we'd been told lived in the "jungle" behind the resort. The air was still, and I was half-blind as half the sunscreen I'd unwisely applied to my face was now swimming in my eyes. We made it, just in time for our descent before the sun set.
+
+Poster for [_Nanoglyph 046_](/nanoglyphs/046-yaml), a short issue on Kubernetes and progress through Indonesia.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/yyrbjx3svjiyc4wmzwtkd/2W4A7953-hill.JPG?rlkey=6s14jw5qlpzxu7r9wxlzirb13&dl=1"
+    slug = "098"
+
+[[entries]]
   published_at = 2025-09-28T22:48:37-07:00
   slug = "097"
   title = "Loback Meat Co."
