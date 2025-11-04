@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2025-11-04T19:56:08+08:00
+  description = """\
+Strong recommendation for [Mars Express](https://www.imdb.com/title/tt26915336/). It's been quite a few years since I've seen a good science-fiction movie, and doubly so for an original IP.
+
+Mars Express is a breath of fresh air. No politics, no California identitarianism, just cool technology concepts, good plot in a tight runtime (it says more in a mere 90 minutes than Hollywood's able to express with three hours), and great art/animation.
+"""
+  [[atoms.photos]]
+    no_crop = true
+    original_image_url = "https://www.dropbox.com/scl/fi/75p4ugprnikq60k8xbr7u/mars-express-2.png?rlkey=fej6lm6uqir0z6sd218939jmu&dl=1"
+    slug = "mars-express"
+
+[[atoms]]
   published_at = 2025-09-28T22:48:37-07:00
   description = """\
  [_Nanoglyph 045_](/nanoglyphs/045-postgres-18) is published, on a few features from Postgres 18 and a note on upcoming travel to Indonesia.
