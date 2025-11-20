@@ -1,6 +1,6 @@
 module github.com/brandur/sorg
 
-go 1.24
+go 1.24.0
 
 // For debugging:
 // replace github.com/brandur/modulir => /Users/brandur/Documents/projects/modulir
@@ -17,8 +17,7 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.4
-	github.com/yosssi/ace v0.0.5
-	golang.org/x/net v0.38.0
+	golang.org/x/net v0.47.0
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
 )
 
@@ -27,7 +26,7 @@ require github.com/pkg/errors v0.9.1 // indirect
 require (
 	github.com/go-playground/validator/v10 v10.22.0
 	github.com/mailgun/mailgun-go/v4 v4.8.2
-	golang.org/x/term v0.30.0
+	golang.org/x/term v0.37.0
 )
 
 require (
@@ -48,9 +47,9 @@ require (
 	github.com/pelletier/go-toml/v2 v2.1.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/crypto v0.45.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
 	gopkg.in/russross/blackfriday.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
