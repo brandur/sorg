@@ -409,6 +409,86 @@ title = "iA Writer."
 #
 
 #
+# /nanoglyphs/048-self-serve
+#
+
+# [[photographs]]
+# crop_width = 1200
+# original_image_url = "https://www.dropbox.com/scl/fi/baksk7itp7g6jtsoacxuu/2W4A8164-adjusted.jpg?rlkey=8hbx1og2mpyatgwear9vqsnnx&dl=1"
+# slug = "nanoglyphs/048-self-serve/shallows"
+# title = "Shallows"
+
+#
+# /nanoglyphs/047-stainless
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/0ttmtxddtpn6phswvahhf/L1010045.JPG?rlkey=54fkz8wb3gg7ehg0snubcm475&dl=1"
+slug = "nanoglyphs/047-stainless/brooklyn-townhouses"
+title = "Brooklyn townhouses in snow"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/pjj4t7j01h7x1tteez3ho/L1010076.JPG?rlkey=u1ns2eeq7pdxzwlanq6w68joi&dl=1"
+slug = "nanoglyphs/047-stainless/christmas-trees"
+title = "Christmas trees in Brooklyn"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/wjvylwuaxicguy4z5vuru/2W4A8199-zoom-crop.jpg?rlkey=4r00ac3nkzka0rnwpepcgy81h&dl=1"
+slug = "nanoglyphs/047-stainless/komodo-lazy"
+title = "Komodo lazy"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/iqxccxvi3xxroogsjdkp8/2W4A8183-lazy-crop.jpg?rlkey=jbs0peznx4ed2aaxrtdsq96vn&dl=1"
+slug = "nanoglyphs/047-stainless/komodo-lazy-2"
+title = "Komodo lazy 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/k9u736bha5newyo79alqy/2W4A8194-walking-adjusted.jpg?rlkey=3ti48x8kutr85eizipsyetocw&dl=1"
+slug = "nanoglyphs/047-stainless/komodo-walking"
+title = "Komodo dragon walking"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/vj1ikeezhv4v4bsj1rblv/2W4A8194-walking-crop.jpg?rlkey=483fvr67ppo1330iwnbz8rt9h&dl=1"
+slug = "nanoglyphs/047-stainless/komodo-walking-crop"
+title = "Komodo dragon walking crop"
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/scl/fi/ziqmj9c2fbmb6w99nn20c/2W4A8225-sticks.JPG?rlkey=b0cmaqou63jppndm6w9m7hnxx&dl=1"
+slug = "nanoglyphs/047-stainless/komodo-sticks"
+title = "Komodo sticks"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/fftbjd4dc799eghdo9c52/2W4A8175.JPG?rlkey=s5waz96spi21auorx7g2eb5wr&dl=1"
+slug = "nanoglyphs/047-stainless/rinca-boat"
+title = "Boat to Rinca"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/j63lcckyx39ombwdb4l1s/2W4A8168.JPG?rlkey=9va9x68qbi56y3m5l6pxnb2ee&dl=1"
+slug = "nanoglyphs/047-stainless/rinca-boat-2"
+title = "Boat to Rinca 2"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/h6gkge2ml1f9nc0gixygm/L1010033-yard.JPG?rlkey=3vhc2twdj2z1kfz5bz74l06na&dl=1"
+slug = "nanoglyphs/047-stainless/stainless-yard"
+title = "Stainless yard"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/kzrrggf2a3gr7d7mbjqus/2W4A8215-water-buffalo.JPG?rlkey=oimbzv9cwsquukbkbtwuq5mpp&dl=1"
+slug = "nanoglyphs/047-stainless/water-buffalo-skull"
+title = "Water buffalo skull"
+
+#
 # /nanoglyphs/046-yaml
 #
 
