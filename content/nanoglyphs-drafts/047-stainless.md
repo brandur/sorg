@@ -51,7 +51,7 @@ Like any good founder, talk to Alex and you quickly learn he's not ready to stop
 
 I was pleasantly surprised to learn too that he's already managed to hire a supermajority of the heavy hitters we knew from previous jobs, both from Heroku and Stripe. How? Another question mark. Possibly due to Alex' persuasive powers which I can attest to first hand. In the space of a month I went from a "lmfao startup" to a "see you at the office in a few weeks".
 
-So yes, that's the news. Last December I joined Stainless along with my [old buddy Blake Gentry](https://github.com/bgentry) in a product engineering capacity. Alex pitched me early the product he wanted us to build. It seemed like a good idea, and for about a day afterward I kept thinking: yes, it _is_ a good idea, how has no one built that yet? We've now been pushing on it since returning to work in early January. I can't wait to write more about it.
+So yes, that's the news. Last December I joined Stainless along with some [old](https://github.com/bgentry) [buddies](https://github.com/pedro) in a product engineering capacity. Alex pitched me early the product he wanted us to build. It seemed like a good idea, and for about a day afterward I kept thinking: yes, it _is_ a good idea, how has no one built that yet? We've now been pushing on it since returning to work in early January. I can't wait to write more about it.
 
 <img src="/photographs/nanoglyphs/047-stainless/christmas-trees@2x.jpg" alt="Christmas trees in Brooklyn" class="wide" loading="lazy">
 
