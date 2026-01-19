@@ -9,7 +9,7 @@ hook = "On joining Stainless, six months at Snowflake, and Komodo dragons."
 
 Almost five years ago I wrote [New Horizons](/nanoglyphs/024-new-horizons) as I left Stripe and went to work on databases at Crunchy.
 
-I can hardly believe that! Those years passed in the blink of an eye, eventually culminating with our acquisition by Snowflake last June.
+I can hardly believe it! Those years passed in the blink of an eye, eventually culminating with our acquisition by Snowflake last June.
 
 Welcome to _Nanoglyph_. Five years is a long time, and well, it happened again.
 
@@ -17,7 +17,7 @@ Welcome to _Nanoglyph_. Five years is a long time, and well, it happened again.
 
 Let me start by way of reminiscence. I know a guy (Alex) whom I worked with at Stripe. Another member of the Developer Platform team that owned API infrastructure, API docs, and SDKs.
 
-Even amongst a company of relative high performers as found at Stripe, work output is far from uniform. There was a moment a few years in where Stripe's infamous API reference docs (which our team owned) got so big that it had a hard time loading. You'd open it in your browser and it would hard freeze your browser for 5-10 seconds as it tried to progress. Couldn't click on anything. Couldn't scroll. Depending on the last time you upgrade your hardware you might've briefly gotten a beach ball of death. CPUs churning away millions of cycles on the most inefficient JavaScript and Ruby ever written. Was it mining Bitcoin somewhere in that loading process? An early gambit farming out AI training? No one could really say for sure.
+Even amongst a company of relative high performers as found at Stripe, work output is far from uniform. There was a moment a few years in where Stripe's infamous API reference docs (which our team owned) got so big that it had a hard time loading. You'd open it in your browser and it would hard freeze your browser for 5-10 seconds as it tried to progress. Couldn't click on anything. Couldn't scroll. Depending on the last time you upgraded your hardware you might've briefly gotten a beach ball of death. CPUs churning away millions of cycles on the most inefficient JavaScript and Ruby ever written. Was it mining Bitcoin somewhere in that loading process? An early gambit farming out AI training? No one could really say for sure.
 
 We all knew something had to be done about it. The question was, what. Under the hood this product was a terrifying beast of hydra-esque proportion. Tens (hundreds?) of thousands of lines of the most marginal code ever written. You guys write spaghetti code? Cute. You could call ours spaghetti, if the spaghetti was as fine as thread and the ball of it as wide as Earth. There were no easy incremental fixes here. Only a slog of the magnitude of picking every piece of garbage out of the Pacific Ocean piece by piece out of the side of a one-man dinghy.
 
@@ -31,7 +31,7 @@ Alex still seems uncomfortably young to a Cretaceous-era fossil like me, but was
 
 Working is one factor. Delivery is another. Stripe subtly encouraged young engineers to work 60+ hour weeks (these guys were into 9-9-6 _way_ before it was cool), so it wasn't uncommon. But most of them spent the extra time oscillating side to side like a rocking horse, the dullness of the company's institutional rails requiring the energy of a collapsing star to push the unwieldy monorepo forward one inch.
 
-Getting something shipped necessitated a perfect trifecta of extreme aptitude, unparalleled application of effort, and most importantly, _grit_. The new Stripe API reference docs shipped to great fanfare, the majority of it built by one person. I'd maintain to this day that this project was either a project for a ten-person team over five years, or a six-month project for Alex.
+Getting something shipped necessitated a perfect trifecta of extreme aptitude, unparalleled application of effort, and most importantly, _grit_. The new Stripe API reference docs shipped to great fanfare, the majority of it built by one person. I'd maintain to this day that this was either a project for a ten-person team over five years, or a six-month project for Alex.
 
 <img src="/photographs/nanoglyphs/047-stainless/brooklyn-townhouses@2x.jpg" alt="Brooklyn townhouses in snow" class="wide" loading="lazy">
 
@@ -41,7 +41,7 @@ Getting something shipped necessitated a perfect trifecta of extreme aptitude, u
 
 During my arc at Crunchy, a parallel story has been playing out. A solo founder (Alex) bootstrapped what should have been [the greatest unborn unicorn of all time](https://narwallmask.com/), failed fast on it, wasn't discouraged, and went on to start a [new company, Stainless](https://www.stainless.com/).
 
-One of the main differentiator of Stripe's API was its SDKs. Instead of sending random cURL calls with loose parameters and no type checking in Stripe's general direction, you'd have a (mostly) conventional SDK built and ready in the language of your choice. It was a huge differentiator, but not cheap to maintain -- I'd imagine the SDKs team at Stripe is up to a few dozen engineers by now, at a cost of easily multiple millions per year.
+One of the main differentiators of Stripe's API was its SDKs. Instead of sending random cURL calls with loose parameters and no type checking in Stripe's general direction, you'd have a (mostly) conventional SDK built and ready in the language of your choice. It was a huge advantage, but not cheap to maintain -- I'd imagine the SDKs team at Stripe is up to a few dozen engineers by now, at a cost of easily multiple millions per year.
 
 Stainless' main product is something similar, but made generic so that it functions for anybody with an OpenAPI spec. Ship your OpenAPI to Stainless, SDKs ready for your users to plug straight into their software come out the other side.
 
@@ -51,7 +51,9 @@ Like any good founder, talk to Alex and you quickly learn he's not ready to stop
 
 I was pleasantly surprised to learn too that he's already managed to hire a supermajority of the heavy hitters we knew from previous jobs, both from Heroku and Stripe. How? Another question mark. Possibly due to Alex' persuasive powers which I can attest to first hand. In the space of a month I went from a "lmfao startup" to a "see you at the office in a few weeks".
 
-So yes, that's the news. Last December I joined Stainless along with some [old](https://github.com/bgentry) [buddies](https://github.com/pedro) in a product engineering capacity. Alex pitched me early the product he wanted us to build. It seemed like a good idea, and for about a day afterward I kept thinking: yes, it _is_ a good idea, how has no one built that yet? We've now been pushing on it since returning to work in early January. I can't wait to write more about it.
+So yes, that's the news. Last December I joined Stainless along with some [old](https://github.com/bgentry) [buddies](https://github.com/pedro) in a product engineering capacity. Alex pitched me early on the product he wanted us to build. It seemed like a good idea, and for about a day afterward I kept thinking: yes, it _is_ a good idea. In fact, it's more than just a good idea. How has no one built that yet?
+
+We've been pushing hard on it since returning to work in early January. I can't wait to write more about it.
 
 <img src="/photographs/nanoglyphs/047-stainless/christmas-trees@2x.jpg" alt="Christmas trees in Brooklyn" class="wide" loading="lazy">
 
@@ -97,7 +99,7 @@ My brief glimpse back into the black box of a large tech company was useful in t
 
 I dropped the ball on my Indonesia vacation log, so here's a short addendum that I'd written up while sitting on a dive boat last year.
 
-Heading out of the Komodo region, naturally we stopped to go see the dragons on the way out. Komodo is of course the best known island in Komodo National Park, but Rinca is another island in the same park that hosts almost as many Komodo dragons, but is less well traveled.
+Heading out of the Komodo region, naturally we stopped to go see the dragons on the way out. Komodo is of course the best known island in Komodo National Park, but Rinca is another island in the same park that hosts almost as many Komodo dragons and is less well traveled.
 
 It's not that easy to get to. These aren't like parks in the west with giant parking lots and huge highways leading into them that support tens of thousands of daily visitors. It's at least an hour's trip by boat from anywhere. The facility is fairly sizable once you're there, featuring some nicely built boardwalks that keep you above the flood/dragon plain, but feels practically abandoned. We only saw one other tour group all day.
 
@@ -115,13 +117,13 @@ It's not quite as dangerous as it sounds though. We arrived around 10 AM, and by
 
 <img src="/photographs/nanoglyphs/047-stainless/komodo-lazy-2@2x.jpg" alt="Komodo dragon lazy 2" class="wide" loading="lazy">
 
-It's hard to blame them because by this time it's already *hot*, at 30C/86F and little breeze. Later in the trip we'd hike up a hill to an overlook and during the 15 minute stint I sweated out about half my bodyweight. With its island chain spanning an area wider than the continental United States, Indonesia's a wide country with a lot of varied ecologies. Ambon, where we'd go after Rinca, is a jungle. Komodo where the dragons live is hot, arid territory made up mainly of long grasses and other dry weather plants. It reminds me of California.
+It's hard to blame them because by this time it's already *hot*, at 30C/86F and little breeze. Later in the trip we'd hike up a hill to an overlook and during the 15 minute stint I sweated out about half my bodyweight. With its island chain spanning an area wider than the continental United States, Indonesia's a vast country with a lot of varied ecologies. Ambon, where we'd go after Rinca, is a jungle. Komodo where the dragons live is hot, arid territory made up mainly of long grasses and other dry weather plants. It reminds me of California.
 
-The dragons are capable of short, powerful bursts of activity that famously taken down animals as large as water buffalo, but they're rare enough that the water buffalo have little fear of them. It was a common sight to see dragons, water buffalo, and macaques cohabiting a single watering hole just feet from each other. With that said, as we hiked further around the island we'd come across an occasional "tombstone" marking where a dragon-on-water-buffalo encounter had not ended well for the latter.
+The dragons are capable of short, powerful bursts of activity that have famously taken down animals as large as water buffalo, but they're rare enough that the water buffalo have little fear of them. It was a common sight to see dragons, water buffalo, and macaques cohabiting a single watering hole just feet from each other. With that said, as we hiked further around the island we'd come across an occasional "tombstone" marking where a dragon-on-water-buffalo encounter had not ended well for the latter.
 
 <img src="/photographs/nanoglyphs/047-stainless/water-buffalo-skull@2x.jpg" alt="Water buffalo skull" class="wide" loading="lazy">
 
-I asked our guide what it was like to live on the island (they work a 20 days on, 10 days off model not dissimilar to a rig worker back home) and he told me that he's friend with enough other people on the island that they find ways to keep it fun. The dragons are most active around sunrise and sunset, and a few of them have taken to livestreaming and making TikTok videos around that time. I encouraged him on the hustle -- in a country where most of the population spends most of their time staring vapidly into the algorithmic abyss of TikTok, _publishing_ a TikTok video is a major creative act.
+I asked our guide what it was like to live on the island (they work a 20 days on, 10 days off model not dissimilar to a rig worker back home) and he told me that he's friends with enough other people on the island that they find ways to keep it fun. The dragons are most active around sunrise and sunset, and a few of them have taken to livestreaming and making TikTok videos around that time. I encouraged him on the hustle -- in a country where most of the population spends most of their time staring vapidly into the algorithmic abyss of TikTok, _publishing_ a TikTok video is a major creative act.
 
 In the interest of full disclosure, something I learned from my real life visit is that Komodo dragons are smaller than I expected. At 79 to 91 kg (174 to 201 lbs.), an average adult male weighs about the same as I do. Huge for a lizard, but smaller than one might think by searching "komodo dragon" on Google and looking at human/dragon images, where the dragon invariably gets a close up with a wide angle lens while a human sits in the optically distorted background, looking tiny by comparison. As a species we've developed a challenging relationship with the truth in all things.
 
