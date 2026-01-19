@@ -7,7 +7,7 @@ title = "Stainless"
 hook = "On joining Stainless, six months at Snowflake, and Komodo dragons."
 +++
 
-Almost five years ago I wrote [New Horizons](/nanoglyphs/024-new-horizons) as I left from Stripe and over to work on databases at Crunchy.
+Almost five years ago I wrote [New Horizons](/nanoglyphs/024-new-horizons) as I left Stripe and went to work on databases at Crunchy.
 
 I can hardly believe that! Those years passed in the blink of an eye, eventually culminating with our acquisition by Snowflake last June.
 
@@ -41,11 +41,11 @@ Getting something shipped necessitated a perfect trifecta of extreme aptitude, u
 
 During my arc at Crunchy, a parallel story has been playing out. A solo founder (Alex) bootstrapped what should have been [the greatest unborn unicorn of all time](https://narwallmask.com/), failed fast on it, wasn't discouraged, and went on to start a [new company, Stainless](https://www.stainless.com/).
 
-One of the main differentiator of Stripe's API was its SDKs. Instead of sending random cURL calls with loose parameters and no type checking in Stripe's general direction, you'd have a (mostly) conventional SDK built and ready in the language of your choice. It was a huge differentiator, but not cheapt to maintain -- I'd imagine the SDKs team at Stripe is up to a few dozen engineers by now, at a cost of easily multiple millions per year.
+One of the main differentiator of Stripe's API was its SDKs. Instead of sending random cURL calls with loose parameters and no type checking in Stripe's general direction, you'd have a (mostly) conventional SDK built and ready in the language of your choice. It was a huge differentiator, but not cheap to maintain -- I'd imagine the SDKs team at Stripe is up to a few dozen engineers by now, at a cost of easily multiple millions per year.
 
 Stainless' main product is something similar, but made generic so that it functions for anybody with an OpenAPI spec. Ship your OpenAPI to Stainless, SDKs ready for your users to plug straight into their software come out the other side.
 
-If you've integrated against [OpenAPI](https://platform.openai.com/docs/api-reference/introduction), you've used Stainless generated SDKs. Or CloudFlare. Or Anthropic. I still don't quite understand how he managed to close logos of this level of notoriety with a company that was only a few years old, but he did it.
+If you've integrated against [OpenAI](https://platform.openai.com/docs/api-reference/introduction), you've used Stainless generated SDKs. Or CloudFlare. Or Anthropic. I still don't quite understand how he managed to close logos of this level of notoriety with a company that was only a few years old, but he did it.
 
 Like any good founder, talk to Alex and you quickly learn he's not ready to stop there. The company's charter isn't SDKs, it's developer experience, and he's got entire new spheres of product development that he's intending to get into post-haste. If he has his way, SDKs are just the beginning.
 
@@ -59,7 +59,7 @@ So yes, that's the news. Last December I joined Stainless along with my [old bud
 
 ## Under the dome (#dome)
 
-All in all, I ended up doing a little under six months at Snowflake. I'm still turning the acquisiton over in my mind, and I wonder how I'll think about it ten years from now when it's more soundly in the rearview mirror.
+All in all, I ended up doing a little under six months at Snowflake. I'm still turning the acquisition over in my mind, and I wonder how I'll think about it ten years from now when it's more soundly in the rearview mirror.
 
 So far, I've gone back and forth in a flip-flop-FLIP pattern of thinking about it:
 
@@ -67,15 +67,15 @@ So far, I've gone back and forth in a flip-flop-FLIP pattern of thinking about i
 
 2. Wait, most of us aren't going to make much of anything off of this and we're about to be fed into the meat grinder of a mega-corp. 4x/year perf cycles. Bad!
 
-3. With a little more time and lengthy contemplation: All good things must be come to an end and chapters in life rarely close this cleanly. Good?
+3. With a little more time and lengthy contemplation: All good things must come to an end and chapters in life rarely close this cleanly. Good?
 
 At Crunchy we'd built a niche environment where we'd set a high technical bar, built a team of people we liked, and had a low-touch culture of shipping that kept things moving while maintaining good work/life balances all around. It was comfortable. Maybe a little _too_ comfortable. The bull case is that I was living the dream -- paid well, remote, and doing intellectually stimulating work. The bear case is that I was in stasis, watching from the corner window as the world accelerated and life passed me by. If all goes well, I have a few good working years left in me, and an argument could be made that they should be spent on the frontier trying to strike gold rather than taking it easy from the sidelines. With the acquisition, this world was ending whether I liked it or not. The question was no longer whether I should take a next step, but rather what's the next step to be?
 
-We didn't waste a lot of time in the six months I was there, and got [Snowflake Postgres to public preview](https://www.snowflake.com/en/engineering-blog/postgres-public-preview/). I wouldn't have minded staying a little longer to it to full GA, but time is the ultimate zero sum equation.
+We didn't waste a lot of time in the six months I was there, and got [Snowflake Postgres to public preview](https://www.snowflake.com/en/engineering-blog/postgres-public-preview/). I wouldn't have minded staying a little longer to see it to full GA, but time is the ultimate zero sum equation.
 
 My brief glimpse back into the black box of a large tech company was useful in that it reinforced some of my longheld beliefs:
 
-* Years ago I wrote about a [Oracle's edit-compile-run loop](/nanoglyphs/029-path-of-madness), a multi-day affair that from the sounds of it, is positively hellish to work with. This is *not just an Oracle problem*. I can't reiterate this hard or often enough: **the CI loop is king**. It should be lavished with attention like a gentle deity and kept lovingly in pristine shape. Those who fail to do so should expect fire and brimstone.
+* Years ago I wrote about [Oracle's edit-compile-run loop](/nanoglyphs/029-path-of-madness), a multi-day affair that from the sounds of it, is positively hellish to work with. This is *not just an Oracle problem*. I can't reiterate this hard or often enough: **the CI loop is king**. It should be lavished with attention like a gentle deity and kept lovingly in pristine shape. Those who fail to do so should expect fire and brimstone.
 
 * Monorepos? Yep, still bad. An observation I made along the way is that every team that _could_ opt out of using the monorepo _did_ opt out of the monorepo. While monorepos get all the lip service in the world, there's also a chronic attitude amongst senior engineering of monorepo for thee, but not for me. Everyone likes them in theory. Everyone hates them in practice.
 
@@ -97,13 +97,13 @@ My brief glimpse back into the black box of a large tech company was useful in t
 
 I dropped the ball on my Indonesia vacation log, so here's a short addendum that I'd written up while sitting on a dive boat last year.
 
-Heading out of the Komodo region, naturally we stopped to go see the dragons on the way out. Komodo is of course the best known island in Komodo National Park, but Rinca is another in the same park hosts almost as many Komodo dragons, but is less well traveled.
+Heading out of the Komodo region, naturally we stopped to go see the dragons on the way out. Komodo is of course the best known island in Komodo National Park, but Rinca is another island in the same park that hosts almost as many Komodo dragons, but is less well traveled.
 
 It's not that easy to get to. These aren't like parks in the west with giant parking lots and huge highways leading into them that support tens of thousands of daily visitors. It's at least an hour's trip by boat from anywhere. The facility is fairly sizable once you're there, featuring some nicely built boardwalks that keep you above the flood/dragon plain, but feels practically abandoned. We only saw one other tour group all day.
 
-The small crowds allow for a more private experience. After paying our way in and following the boardwalk some ways, we arrived at a mixed group of vendors and guides. One man peeled himself off the rest of the group, pulled down the conventional anti-dragon armament from the weapons rack (a forked stick), introduced himself, and took us through a gate. I was expecting to have to walk around for a while to find a dragon, but they've strategically built a watering hole next to the main building, so we immediately there were three dragons right in front of us.
+The small crowds allow for a more private experience. After paying our way in and following the boardwalk some ways, we arrived at a mixed group of vendors and guides. One man peeled himself off the rest of the group, pulled down the conventional anti-dragon armament from the weapons rack (a forked stick), introduced himself, and took us through a gate. I was expecting to have to walk around for a while to find a dragon, but they've strategically built a watering hole next to the main building, so immediately there were three dragons right in front of us.
 
-The best part of the Rinca Island experience is that it's as raw as you could as for. Few other tour groups. No fences between you and the dragons. Just one Indonesian and his stick.
+The best part of the Rinca Island experience is that it's as raw as you could ask for. Few other tour groups. No fences between you and the dragons. Just one Indonesian and his stick.
 
 <!-- <img src="/photographs/nanoglyphs/047-stainless/komodo-walking@2x.jpg" alt="Komodo dragon walking" class="wide" loading="lazy"> -->
 
@@ -117,7 +117,7 @@ It's not quite as dangerous as it sounds though. We arrived around 10 AM, and by
 
 It's hard to blame them because by this time it's already *hot*, at 30C/86F and little breeze. Later in the trip we'd hike up a hill to an overlook and during the 15 minute stint I sweated out about half my bodyweight. With its island chain spanning an area wider than the continental United States, Indonesia's a wide country with a lot of varied ecologies. Ambon, where we'd go after Rinca, is a jungle. Komodo where the dragons live is hot, arid territory made up mainly of long grasses and other dry weather plants. It reminds me of California.
 
-The dragons are capable of short, powerful bursts of activity that famously taken down animals as large as water buffalo, but they're rare enough that the water buffalo have little fear of them. It was a common sight to see dragons, water buffalo, and macaques cohabiting a single watering hole just feet from each other. With that said, as we hiked further around the island we'd come across an occasional "tombstone" marking where a dragon on water buffalo encounter had not ended well for the latter.
+The dragons are capable of short, powerful bursts of activity that famously taken down animals as large as water buffalo, but they're rare enough that the water buffalo have little fear of them. It was a common sight to see dragons, water buffalo, and macaques cohabiting a single watering hole just feet from each other. With that said, as we hiked further around the island we'd come across an occasional "tombstone" marking where a dragon-on-water-buffalo encounter had not ended well for the latter.
 
 <img src="/photographs/nanoglyphs/047-stainless/water-buffalo-skull@2x.jpg" alt="Water buffalo skull" class="wide" loading="lazy">
 
