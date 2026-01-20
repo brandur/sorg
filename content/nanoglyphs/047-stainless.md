@@ -45,7 +45,7 @@ One of the main differentiators of Stripe's API was its SDKs. Instead of sending
 
 Stainless' main product is something similar, but made generic so that it functions for anybody with an OpenAPI spec. Ship your OpenAPI to Stainless, SDKs ready for your users to plug straight into their software come out the other side.
 
-If you've integrated against [OpenAI](https://platform.openai.com/docs/api-reference/introduction), you've used Stainless generated SDKs. Or CloudFlare. Or Anthropic. I still don't quite understand how he managed to close logos of this level of notoriety with a company that was only a few years old, but he did it.
+If you've integrated against [OpenAI](https://platform.openai.com/docs/api-reference/introduction), you've used Stainless generated SDKs. Or Cloudflare. Or Anthropic. I still don't quite understand how he managed to close logos of this level of notoriety with a company that was only a few years old, but he did it.
 
 Like any good founder, talk to Alex and you quickly learn he's not ready to stop there. The company's charter isn't SDKs, it's developer experience, and he's got entire new spheres of product development that he's intending to get into post-haste. If he has his way, SDKs are just the beginning.
 
