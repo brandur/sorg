@@ -185,7 +185,7 @@ The camouflage on these creatures is just amazing. Here's a photo of me and a rh
 
 The _really_ rare spotting would've been a psychedelic frogfish, endemic to only this one place in the entire world. Its face is so distinctive that even non-divers might recognize it from the covers of books or nature TV. Alas, they're somewhat seasonal and hard to find at the best of times. Even having done dozens of dives we never came across one. Maybe next time. [2]
 
-<img src="/photographs/nanoglyphs/048-llms/psychadelic-frogfish@2x.jpg" alt="Psychadelic Frogfish" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/psychedelic-frogfish@2x.jpg" alt="Psychadelic Frogfish" loading="lazy">
 
 I don't want to sugarcoat things too much on Ambon. Westerners who hate the West have internalized the idea that developed countries in North America and Europe savage the environment while the rest of the world lives in noble harmony with nature. (As a recent example, see James Cameron and his revisionist, heavy-handed _Avatar_ series.) Visit a place like Indonesia and this myth is dispelled in four seconds flat, immediately recognizable not only as false, but a perfect inversion of the truth.
 
