@@ -4,7 +4,7 @@ image_alt = "A bank of windows in Lyon."
 image_url = "/photographs/nanoglyphs/048-llms/lyon-windows@2x.jpg"
 published_at = 2026-02-01T10:43:33-08:00
 title = "The AI Edition"
-hook = "Mixed thoughts on LLMs, including the highs and lows (will I have a job in two years?), Ambon, and psychadelic frogfish."
+hook = "Mixed thoughts on LLMs, including the highs and lows (will I have a job in two years?), Ambon, and psychedelic frogfish."
 +++
 
 Where did January go?
@@ -15,7 +15,7 @@ Product-wise, we got to a point where what we built is demo-able, but due to an 
 
 It's not quite ready to talk about publicly yet, but it will be soon. By the end of February maybe?
 
-Notably, the project was my first where LLMs were not only a novelty, but a core piece of tooling that made it run. A core member of the team even. They are terrifyingly good. I'm a traditionalist, and was constantly looking for evidence of mistakes or malpractice so I could say loudly "this is sh*t" and declare that them unfit for use. I found none. Instead, I threw increasingly large chunks of work their way, and almost every time, I got results back that were close to what I would've written by hand, except slightly better. They've unquestionably been an incredible boon to me, so far. For society and the world at large? I'm not so sure.
+Notably, the project was my first where LLMs were not only a novelty, but a core piece of tooling that made it run. A core member of the team even. They are terrifyingly good. I'm a traditionalist, and was constantly looking for evidence of mistakes or malpractice so I could say loudly "this is sh*t" and declare them unfit for use. I found none. Instead, I threw increasingly large chunks of work their way, and almost every time, I got results back that were close to what I would've written by hand, except slightly better. They've unquestionably been an incredible boon to me, so far. For society and the world at large? I'm not so sure.
 
 ---
 
@@ -25,7 +25,7 @@ Notably, the project was my first where LLMs were not only a novelty, but a core
 
 The photos from this issue are from Lyon, France. Shortly after the Snowflake acquisition last year a small team of Crunchy and Snowflake employees went on-site together (Lyon sounds like an exotic place to hold such a thing, but some of our colleagues live in the city, and hotels there are a third of the price as staying in a bad airport-like hotel in Menlo Park or Bellevue) to get as much done on an MVP as we could in a week.
 
-Gorgeous city. By day two I had a favorite walking route up to the famous Basilique on top of the hill. I'd descend back down down the other side, taking a different way back through Croix-Rousse to the hotel every day, and there was always something new to discover. Lookout points up on the city's famous hills provide incredible viewing opportunities to see out over its distinctive roofing. Some easy to find, others less so. Come evening, especially in and around Vieux Lyon, vibrant streets lined up and down with outdoor patios for bars and restaurants. When a visitor imagines stereotypical France in their mind's eye, this is what they see.
+Gorgeous city. By day two I had a favorite walking route up to the famous Basilique on top of the hill. I'd descend back down the other side, taking a different way back through Croix-Rousse to the hotel every day, and there was always something new to discover. Lookout points up on the city's famous hills provide incredible viewing opportunities to see out over its distinctive roofing. Some easy to find, others less so. Come evening, especially in and around Vieux Lyon, vibrant streets lined up and down with outdoor patios for bars and restaurants. When a visitor imagines stereotypical France in their mind's eye, this is what they see.
 
 Ye gods I wish we still built cities like this. Give me narrow streets and pedestrian plazas! If there was one in the US--_anywhere_--I'd consider moving there tomorrow.
 
@@ -35,13 +35,13 @@ Ye gods I wish we still built cities like this. Give me narrow streets and pedes
 
 ## Confessions of a former skeptic (#skeptic)
 
-This is the first time I've written anything in detail about AI/LLMs. That's not because the subject's unimportant, but rather an inditement of my own lack of creative output. Also, I figure that if if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. A whole cottage industry of a hundred thousand newly minted AI experts. If you ask me, the world doesn't need even more LLM writer. The market's saturated.
+This is the first time I've written anything in detail about AI/LLMs. That's not because the subject's unimportant, but rather an indictment of my own lack of creative output. Also, I figure that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. A whole cottage industry of a hundred thousand newly minted AI experts. If you ask me, the world doesn't need even more LLM writers. The market's saturated.
 
 I avoided LLM use for a long time. Longer than most outside the tech industry, let alone in it. I gave in last year around the time Google added automatic Gemini answers to their search results. This wasn't something that was going away, so best to embrace it.
 
 I hoped LLMs would be worse than they are. In my ideal world, they'd produce convincing output, but which was recognizable as B-grade semi-slop to a learned expert. This would've relegated them squarely to a bucket of useful tools, but not ones that we could expect to replace the expertise of veteran humans anytime soon. This would be convenient for me as it'd justify my continued employment.
 
-No such luck. Sometime in the last year, models graduated from "neat party trick" to "holy sh*t this is _insane_". My generation (elder millenial) was quite lucky in that we experienced the invention of the home PC, and later the invention of the smartphone. Two of the largest paradigm shifts in history. Even stacked against those monsters, I think LLMs will be the most impactful technological event horizon of my generation.
+No such luck. Sometime in the last year, models graduated from "neat party trick" to "holy sh*t this is _insane_". My generation (elder millennial) was quite lucky in that we experienced the invention of the home PC, and later the invention of the smartphone. Two of the largest paradigm shifts in history. Even stacked against those monsters, I think LLMs will be the most impactful technological event horizon of my generation.
 
 I'd been hearing testimony of impressive results for many months, but I wasn't truly convinced until last December. For a hackathon, one of my colleagues vibe coded a working prototype of a product we'd been slated to work on. He started around 1 PM and was done by the end of the work day, and while it was a prototype, he managed to hit some stretch goals so that his demo even had a Jobs-style, "oh, and one more thing" clause at the end. Before LLMs, this would've been a week of work. It was incredible -- a technological unlock that made previously impossible things possible.
 
@@ -59,11 +59,11 @@ Scattered thoughts from my first months:
 
     With LLMs, we now have the perfect third option: get the LLM to do it. In general this turns out to be fast and correct. By far the best of the three approaches.
 
-* Refactoring in general is so much better. As good as Gopls and LSPs have gotten over the years, the refactoring tools they offer are still dull and not expressive enough. LLMs are the first refactoring tool that truly gets me everything I need and they enable _widespread_ refactoing. Existing code is no longer at risk of ossifying in place the way it was before. LLMs can refactor huge swaths of it quickly and quite safely.
+* Refactoring in general is so much better. As good as Gopls and LSPs have gotten over the years, the refactoring tools they offer are still dull and not expressive enough. LLMs are the first refactoring tool that truly gets me everything I need and they enable _widespread_ refactoring. Existing code is no longer at risk of ossifying in place the way it was before. LLMs can refactor huge swaths of it quickly and quite safely.
 
 * It's made terminal work so much more plausible. When using infrequent-but-necessary CLI invocations, the amount of work needed to look up the right docs and string together a working command is *absurd*. An example I ran into recently was scaling an AWS Fargate service down and back up, which has an awscli command, but one which Amazon makes stupidly hard to discover. Now, the LLM figures it out.
 
-My LLM is doing a lot of the work I don't love doing, leaving the choice parts for the human). I like writing code and will often still write the core of a feature myself, and with Claude helping me fill the edges and boilerplate.
+My LLM is doing a lot of the work I don't love doing, leaving the choice parts for the human.. I like writing code and will often still write the core of a feature myself, and with Claude helping me fill the edges and boilerplate.
 
 ---
 
@@ -97,7 +97,7 @@ Simplifying to the extreme, I see three broad directions that our industry can g
 
 2. **Major expansion:** The optimist's case. LLMs let everyone get more done than ever before. This leads to a broad positive feedback cycle where more goods and services are sold, more products produced, and more money changes hands, ballooning GDP and opening more positions and growth. Even if 5k copywriters are lost, they may be replaced by 10k developers -- still a net expansion of 5k jobs.
 
-3. **Relative stasis:** Companies do more with less, but keep their workforce more or less constant. Expansion happens, revenue grows, but the number of participants stay steady. Companies find that growth is no longer contingent on proportional growth in headcount.
+3. **Relative stability:** Companies do more with less, but keep their workforce more or less constant. Expansion happens, revenue grows, but the number of participants stay steady. Companies find that growth is no longer contingent on proportional growth in headcount.
 
 I'm personally partial to option 3. In a conversation about it, I was reminded of [Amdahl's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law):
 
@@ -121,7 +121,7 @@ I listened to a podcast the other day that genuinely disturbed me. In it, two ve
 
 LLMs are here. I'd never suggest anyone not use them, but a recurring theme in the programming world nowadays: LLM-pilled developers who describe the accomplishments of their LLM as if they were somehow responsible for these advances. Bragging, boasting, unadulterated pride of the loudest and most obnoxious kind. One of these guys laid off 75% of his technical staff two weeks ago, ostensibly due to AI, but with that event so distant in the rearview mirror (two weeks is a long time in the information age), not a moment is spent dwelling on it.
 
-Every time I hear someone say something like this, I want to shake them and say, okay man! So you're telling me that you're using that you use a technology that **you didn't create and which you don't own and which you don't know anything about**, and you use this tool to do all the things that used to be *your* job? Congratulations indeed my friend. Next maybe tell me why someone should pay the $200-300k salary you've become accustomed to when they can hire someone younger and with more energy for $80k who's just as good at your one remaining skill? (Typing the English language into a terminal.)
+Every time I hear someone say something like this, I want to shake them and say, okay man! So you're telling me that you use a technology that **you didn't create and which you don't own and which you don't know anything about**, and you use this tool to do all the things that used to be *your* job? Congratulations indeed my friend. Next maybe tell me why someone should pay the $200-300k salary you've become accustomed to when they can hire someone younger and with more energy for $80k who's just as good at your one remaining skill? (Typing the English language into a terminal.)
 
 Many of these people will concede the point that LLMs will lead to a decreased demand for programmers and other white collar jobs, and even find the idea quite thrilling. My question is, how are you so sure that _you_ are going to be the one left standing?
 
@@ -147,7 +147,7 @@ You have to step back and appreciate the absurdity of this situation. An executi
 
 <img src="/photographs/nanoglyphs/048-llms/lyon-street@2x.jpg" alt="Lyon street" class="wide" loading="lazy">
 
-## Certified human (#certified human)
+## Certified human (#certified-human)
 
 A friend of mine, now in his 40s, had never written a blog post prior to 2026. As of a month ago, he's now a prolific blogger, posting long essays about LLM use on a daily basis. Blog posts are accompanied by only marginally shorter LinkedIn posts, published multiple times a day. After not having produced code in ~20 years, he has four new repositories in the last week, all with long, meandering READMEs containing a lot of lists, tables and emojis.
 
@@ -167,11 +167,11 @@ But again, it doesn't feel right to me. If I have one dark prediction about the 
 
 ---
 
-## Ambon, psychadelic frogfish
+## Ambon, psychedelic frogfish
 
 Another couple photos from Indonesia. This is the island of Ambon. It's a small one (pop. ~500k), but large enough to have an airport. It's one of the thousands of islands closer to the eastern side of Indonesia. There's probably only a few hundred people in the world who could point to it on a map without help, and that includes people from Ambon.
 
-The dive industry on Ambon isn't gigantic, but it's known for its exceptional muck diving. The island is split in two my a massive inlet. Diving tends to be located between the two halves and reveal a trove of critters including rhinopias, frogfish, seahorses, scorpionfish, and octopuses.
+The dive industry on Ambon isn't gigantic, but it's known for its exceptional muck diving. The island is split in two by a massive inlet. Diving tends to be located between the two halves and reveal a trove of critters including rhinopias, frogfish, seahorses, scorpionfish, and octopuses.
 
 <img src="/photographs/nanoglyphs/048-llms/ambon-spice-divers@2x.jpg" alt="Ambon Spice Divers" class="wide" loading="lazy">
 
@@ -183,7 +183,7 @@ The camouflage on these creatures is just amazing. Here's a photo of me and a rh
 
 <img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias@2x.jpg" alt="Brandur and rhinopias" loading="lazy">
 
-The _really_ rare spotting would've been a psychadelic frogfish, endemic to only this one place in the entire world. Its face is so distinctive that even non-divers might recognize it from the covers of books or nature TV. Alas, they're somewhat seasonal and hard to find at the best of times. Even having done dozens of dives we never came across one. Maybe next time. [2]
+The _really_ rare spotting would've been a psychedelic frogfish, endemic to only this one place in the entire world. Its face is so distinctive that even non-divers might recognize it from the covers of books or nature TV. Alas, they're somewhat seasonal and hard to find at the best of times. Even having done dozens of dives we never came across one. Maybe next time. [2]
 
 <img src="/photographs/nanoglyphs/048-llms/psychadelic-frogfish@2x.jpg" alt="Psychadelic Frogfish" loading="lazy">
 
@@ -221,7 +221,7 @@ Continued from above, here's that photo of me and the rhinopias again, then the 
 
 [1] Ambon Scorpionfish photo credit [Etienne Gosse](https://www.flickr.com/photos/steve\_childs/233842439/).
 
-[2] Psycadelic Frogfish photo credit [Spice Island Diver's](https://www.instagram.com/p/Cka8p1LLskJ/).
+[2] Psychedelic Frogfish photo credit [Spice Island Diver's](https://www.instagram.com/p/Cka8p1LLskJ/).
 
 [3] Brandur and rhinopias photo credit Dad.
 
