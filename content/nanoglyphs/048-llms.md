@@ -15,7 +15,7 @@ Product-wise, we got to a point where what we built is demo-able, but due to an 
 
 It's not quite ready to talk about publicly yet, but it will be soon. By the end of February maybe?
 
-Notably, the project was my first where LLMs were not only a novelty, but a core piece of tooling that made it run. A core member of the team even. They are terrifyingly good. I'm a traditionalist, and was constantly looking for evidence of mistakes or malpractice so I could say loudly "this is sh*t" and declare them unfit for use. I found none. Instead, I threw increasingly large chunks of work their way, and almost every time, I got results back that were close to what I would've written by hand, except slightly better. They've unquestionably been an incredible boon to me, so far. For society and the world at large? I'm not so sure.
+Notably, the project was my first where LLMs were not only a novelty, but a core piece of tooling that made it run. A key member of the team even. They are terrifyingly good. I'm a traditionalist, and was constantly looking for evidence of mistakes or malpractice so I could say loudly "this is sh*t" and declare them unfit for use. I found none. Instead, I threw increasingly large chunks of work their way, and almost every time, I got results back that were close to what I would've written by hand, except slightly better. They've unquestionably been an incredible boon to me, so far. For society and the world at large? I'm not so sure.
 
 ---
 
@@ -25,7 +25,7 @@ Notably, the project was my first where LLMs were not only a novelty, but a core
 
 The photos from this issue are from Lyon, France. Shortly after the Snowflake acquisition last year a small team of Crunchy and Snowflake employees went on-site together (Lyon sounds like an exotic place to hold such a thing, but some of our colleagues live in the city, and hotels there are a third of the price as staying in a bad airport-like hotel in Menlo Park or Bellevue) to get as much done on an MVP as we could in a week.
 
-Gorgeous city. By day two I had a favorite walking route up to the famous Basilique on top of the hill. I'd descend back down the other side, taking a different way back through Croix-Rousse to the hotel every day, and there was always something new to discover. Lookout points up on the city's famous hills provide incredible viewing opportunities to see out over its distinctive roofing. Some easy to find, others less so. Come evening, especially in and around Vieux Lyon, vibrant streets lined up and down with outdoor patios for bars and restaurants. When a visitor imagines stereotypical France in their mind's eye, this is what they see.
+Gorgeous city. By day two I had a favorite walking route up to the famous Basilique on top of the hill. I'd descend back down the other side, taking a different way back through Croix-Rousse to the hotel every day, and there was always something new to discover. Lookout points up on the city's storied hills provide incredible viewing opportunities to see out over its distinctive roofing. Some easy to find, others less so. Come evening, especially in and around Vieux Lyon, vibrant streets lined up and down with outdoor patios for bars and restaurants. When a visitor imagines stereotypical France in their mind's eye, this is what they see.
 
 Ye gods I wish we still built cities like this. Give me narrow streets and pedestrian plazas! If there was one in the US--_anywhere_--I'd consider moving there tomorrow.
 
@@ -39,11 +39,11 @@ This is the first time I've written anything in detail about AI/LLMs. That's not
 
 I avoided LLM use for a long time. Longer than most outside the tech industry, let alone in it. I gave in last year around the time Google added automatic Gemini answers to their search results. This wasn't something that was going away, so best to embrace it.
 
-I hoped LLMs would be worse than they are. In my ideal world, they'd produce convincing output, but which was recognizable as B-grade semi-slop to a learned expert. This would've relegated them squarely to a bucket of useful tools, but not ones that we could expect to replace the expertise of veteran humans anytime soon. This would be convenient for me as it'd justify my continued employment.
+I hoped LLMs would be worse than they are. In my ideal world, they'd produce convincing output, but which was recognizable as B-grade semi-slop to a learned expert. This would've relegated them squarely to a bucket of useful tools, but not ones that we could expect to replace the expertise of veteran humans anytime soon. A convenient outcome for me as it'd justify my continued employment.
 
-No such luck. Sometime in the last year, models graduated from "neat party trick" to "holy sh*t this is _insane_". My generation (elder millennial) was quite lucky in that we experienced the invention of the home PC, and later the invention of the smartphone. Two of the largest paradigm shifts in history. Even stacked against those monsters, I think LLMs will be the most impactful technological event horizon of my generation.
+No such luck. Sometime in the last year, models graduated from "neat party trick" to "holy sh*t this is _insane_". My generation (elder millennial) was quite lucky in that we experienced the invention of the home PC, and later that of the smartphone. Two of the largest paradigm shifts in history. Even stacked against those monsters, I think LLMs will be the most impactful technological event horizon of my generation.
 
-I'd been hearing testimony of impressive results for many months, but I wasn't truly convinced until last December. For a hackathon, one of my colleagues vibe coded a working prototype of a product we'd been slated to work on. He started around 1 PM and was done by the end of the work day, and while it was a prototype, he managed to hit some stretch goals so that his demo even had a Jobs-style, "oh, and one more thing" clause at the end. Before LLMs, this would've been a week of work. It was incredible -- a technological unlock that made previously impossible things possible.
+I'd been hearing testimony of impressive results for many months, but I wasn't truly convinced until last December. For a hackathon, one of my colleagues vibe coded a working prototype of a product we'd been slated to work on. He started around 1 PM and was done by the end of the work day, and while it was rough around the edges, he managed to hit some stretch goals so that his demo even had a Jobs-style, "oh, and one more thing" clause at the end. Before LLMs, this would've been a week of work. It was incredible -- a technological unlock that made previously impossible things possible.
 
 Amazing, and scary. Like seeing the gruesome wreck photos after an accident involving drinking and driving, or the X-ray photos of a smoker's black lungs, it set off alarm bells screaming in my head. The choice now seemed quite clear: learn to use these tools, or be left in the dust.
 
@@ -63,7 +63,7 @@ Scattered thoughts from my first months:
 
 * It's made terminal work so much more plausible. When using infrequent-but-necessary CLI invocations, the amount of work needed to look up the right docs and string together a working command is *absurd*. An example I ran into recently was scaling an AWS Fargate service down and back up, which has an awscli command, but one which Amazon makes stupidly hard to discover. Now, the LLM figures it out.
 
-My LLM is doing a lot of the work I don't love doing, leaving the choice parts for the human.. I like writing code and will often still write the core of a feature myself, and with Claude helping me fill the edges and boilerplate.
+My LLM is doing a lot of the work I don't love doing, leaving the choice parts for the human. I like writing code and will often still write the core of a feature myself, and with Claude helping me fill the edges and boilerplate.
 
 ---
 
@@ -75,13 +75,13 @@ The second order effects of this brave new world are quite visible already. Cons
 
 Follow LLM-mania to its logical conclusion and you get to developers maintaining a black box for which they have only a vague understanding of what's inside. Changes are made by the LLM. When there's a bug present, the LLM troubleshoots.
 
-It won't be long before there's no other choice. If you stop walking, you lose muscle mass. If you stop talking, you become inarticulate. If you stop coding and debugging, it won't be long before those skills are gone.
+It won't be long before there's no other choice. If you stop walking, you lose muscle mass. If you stop talking, you become inarticulate. If you stop coding and debugging, those skills will atrophy just the same.
 
 Now, go further. What about the generation of up and coming developers who never even experienced the pre-LLM world? They never develop any specific coding skills, and are only vaguely aware of names like "Go", "Tailwind", and "React" as their LLM builds finished products using these mysterious building blocks.
 
 Does it matter? I'd like to think it does, that artisanal code that's fully comprehensible to a human, and a human who fully understands their code will produce a better operations and product experience. When I described this to a friend recently he countered, "you know, people said the same thing about compilers when they first came out".
 
-Two questions. The most obvious one: in a couple years, will any human still write code? The more existential one: in a couple years, will any human bother _reading_ code?
+Two questions. The most obvious one: in a couple years, will any human still write code? The more existential one: by then, will any human bother _reading_ code?
 
 ---
 
@@ -117,7 +117,7 @@ Once again, I worry that my predictions are self-serving because _I_ would still
 
 ## Pride is for inventors (#pride-inventors)
 
-I listened to a podcast the other day that genuinely disturbed me. In it, two veteran programmers one up each other in how little code they write nowadays, leapfrogging each other to make increasingly hyperbolic claims, eventually climaxing in how reading or writing any code _at all_ is an anti-pattern. The disturbing aspect was the tone. They spoke in a state of pure ecstasy of a kind normally reserved for the bedroom.
+I listened to a podcast the other day that genuinely disturbed me. In it, two veteran programmers one up each other in how little code they write nowadays, leapfrogging each other to make increasingly hyperbolic claims, eventually climaxing in how reading or writing any code _at all_ is an anti-pattern. The unsettling part was the tone. They spoke in a state of pure ecstasy of a kind normally reserved for the bedroom.
 
 LLMs are here. I'd never suggest anyone not use them, but a recurring theme in the programming world nowadays: LLM-pilled developers who describe the accomplishments of their LLM as if they were somehow responsible for these advances. Bragging, boasting, unadulterated pride of the loudest and most obnoxious kind. One of these guys laid off 75% of his technical staff two weeks ago, ostensibly due to AI, but with that event so distant in the rearview mirror (two weeks is a long time in the information age), not a moment is spent dwelling on it.
 
@@ -211,7 +211,7 @@ Until next week.
 
 ## Rhinopias highlight (#rhinopias-highlight)
 
-Continued from above, here's that photo of me and the rhinopias again, then the rhinopias again highlighted for easier viewing, then a clearer photo of a rhinopias [4] so you can see what you're supposed to be looking for.
+Continued from above, here's that photo of me and the rhinopias again, then the same shot highlighted for easier viewing, then a clearer photo of a rhinopias [4] so you can see what you're supposed to be looking for.
 
 <img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias-labeled@2x.jpg" alt="Brandur and rhinopias" loading="lazy">
 
