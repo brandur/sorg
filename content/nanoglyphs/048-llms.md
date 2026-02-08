@@ -211,7 +211,7 @@ Until next week.
 
 <img src="/photographs/nanoglyphs/048-llms/ambon-sunset@2x.jpg" alt="Ambon sunset" class="wide" loading="lazy">
 
-## Rhinopias highlight (#rhinopias-highlight)
+## Rhinopias answer key (#rhinopias-answer-key)
 
 Continued from above, here's that photo of me and the rhinopias again, then the same shot highlighted for easier viewing, then a clearer photo of a rhinopias [4] so you can see what you're supposed to be looking for.
 
