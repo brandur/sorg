@@ -35,7 +35,7 @@ Ye gods I wish we still built cities like this. Give me narrow streets and pedes
 
 ## Confessions of a former skeptic (#skeptic)
 
-This is the first time I've written anything in detail about AI/LLMs. I figured that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. The last few years saw the birth of a whole cottage industry of a hundred thousand newly minted AI experts. The world doesn't need any more LLM writers, and I was trying to avoid the subject.
+This is the first time I've written anything in detail about AI/LLMs. I figured that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. The last few years saw the birth of a whole cottage industry of a hundred thousand newly minted AI experts. The world doesn't need any more LLM writers, so I was trying to avoid the subject.
 
 I avoided LLM use for a long time. Longer than most outside the tech industry, let alone in it. I gave in last year around the time Google added automatic Gemini answers to their search results. This wasn't something that was going away, so best to embrace it.
 
@@ -63,7 +63,7 @@ Scattered thoughts from my first months:
 
 * Beyond code, it's made terminal work so much more plausible. When using infrequent-but-necessary CLI invocations, the amount of work needed to look up the right docs and string together a working command is _absurd_. An example I ran into recently was scaling an AWS Fargate service down and back up, which has an awscli command, but one which Amazon makes stupidly hard to discover. Now, the LLM figures it out.
 
-I have a dozen moments a week where I'll put something into Claude thinking, "there's no way this is going to work ..." but then it does. I commit state before asking for a broad change so I can quickly revert something it's done that I don't like. I've reverted its work maybe once, ever? It's consistently more thorough and produces better results than I expect. It's magic.
+I have a dozen moments a week where I'll put something into Claude thinking, "there's no way this is going to work ..." but then it does. I commit state before asking for a broad change so I can quickly revert something it's done that I don't like. I've reverted its work maybe once, ever? It's consistently more thorough and produces better results than I expect. Magic.
 
 ---
 
@@ -153,7 +153,7 @@ There's a punch line about information theory in here somewhere.
 
 An old colleague of mine, now in his 40s, had never written a blog post prior to 2026. As of a month ago, he's now a prolific blogger, posting long essays about LLM use on a daily basis. Blog posts are accompanied by only marginally shorter LinkedIn posts, published multiple times a day. After not having produced code in ~20 years, he has four new repositories in the last week, all with long, meandering READMEs containing a lot of lists, tables and emojis.
 
-This might be the grumpy old man coming out in me, but my only reaction is: if it takes you less time to generate this stuff than it takes me to read it, why in the name of Saint Clawd would I ever invest my time looking at anything you've "written" ever again?
+This might be the grumpy old man coming out in me, but my only reaction is: if it takes you less time to generate this stuff than it takes me to read it, why in the name of Saint Clawd would I bother looking at anything you've "written" ever again?
 
 It strikes me as wrong to ask someone to spend their precious time reading text that I didn't feel like it was worth my time to write. I've taken a pretty hard line on this, and for some time now have been actively unsubscribing from anything where I know or suspect the author is more like an "author".
 
@@ -179,15 +179,15 @@ The dive industry on Ambon isn't gigantic, but it's known for its exceptional mu
 
 There's a couple really rare fish found in Ambon and nowhere else. One is the Ambon scorpionfish, which we did get to see a couple times. Even for local guides, they're hard to find. On one dive we spent a full hour canvassing the same ~2500 sqft of sand over and over again. At about minute 55 our guide let out an underwater cheer and beckoned excitedly for us to come over, and there it was. I swear I'd passed that exact spot five times already. [1]
 
-<img src="/photographs/nanoglyphs/048-llms/ambon-scorpionfish@2x.jpg" alt="Ambon Scorpionfish" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/ambon-scorpionfish@2x.jpg" alt="Ambon Scorpionfish" class="img_constrained" loading="lazy">
 
 The camouflage on these creatures is just amazing. Here's a photo of me and a rhinopias (a kind of scorpionfish) [3]. Can you see it? (Answer key at the bottom.)
 
-<img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias@2x.jpg" alt="Brandur and rhinopias" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias@2x.jpg" alt="Brandur and rhinopias" class="img_constrained" loading="lazy">
 
 The _really_ rare spotting would've been a psychedelic frogfish, endemic to only this one place in the entire world. Its face is so distinctive that even non-divers might recognize it from the covers of books or nature TV. Alas, they're somewhat seasonal and hard to find at the best of times. Even having done dozens of dives we never came across one. Maybe next time. [2]
 
-<img src="/photographs/nanoglyphs/048-llms/psychedelic-frogfish@2x.jpg" alt="Psychedelic Frogfish" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/psychedelic-frogfish@2x.jpg" alt="Psychedelic Frogfish" class="img_constrained" loading="lazy">
 
 I don't want to sugarcoat things too much. Westerners who hate the west have internalized the idea that developed countries in North America and Europe savage the environment while the rest of the world lives in noble harmony with nature. Visit a place like Indonesia and this myth is dispelled in four seconds flat.
 
@@ -215,11 +215,11 @@ Until next week.
 
 Continued from above, here's that photo of me and the rhinopias again, then the same shot highlighted for easier viewing, then a clearer photo of a rhinopias [4] so you can see what you're supposed to be looking for.
 
-<img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias-labeled@2x.jpg" alt="Brandur and rhinopias" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias-labeled@2x.jpg" alt="Brandur and rhinopias" class="img_constrained" loading="lazy">
 
-<img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias-highlighted@2x.jpg" alt="Ambon rhinopias highlighted" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/ambon-brandur-rhinopias-highlighted@2x.jpg" alt="Ambon rhinopias highlighted" class="img_constrained" loading="lazy">
 
-<img src="/photographs/nanoglyphs/048-llms/ambon-rhinopias@2x.jpg" alt="Rhinopias highlighted" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/ambon-rhinopias@2x.jpg" alt="Rhinopias highlighted" class="img_constrained" loading="lazy">
 
 [1] Ambon Scorpionfish photo credit [Etienne Gosse](https://www.flickr.com/photos/steve\_childs/233842439/).
 
