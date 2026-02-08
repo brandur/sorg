@@ -2,7 +2,7 @@
 image_alt = "A bank of windows in Lyon."
 # image_orientation = "portrait"
 image_url = "/photographs/nanoglyphs/048-llms/lyon-windows@2x.jpg"
-published_at = 2026-02-01T10:43:33-08:00
+published_at = 2026-02-08T13:55:22-08:00
 title = "The AI Edition"
 hook = "Mixed thoughts on LLMs, including the highs and lows (will I have a job in two years?), Ambon, and psychedelic frogfish."
 +++
@@ -35,13 +35,13 @@ Ye gods I wish we still built cities like this. Give me narrow streets and pedes
 
 ## Confessions of a former skeptic (#skeptic)
 
-This is the first time I've written anything in detail about AI/LLMs. That's not because the subject's unimportant, but rather an indictment of my own lack of creative output. Also, I figure that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. A whole cottage industry of a hundred thousand newly minted AI experts. If you ask me, the world doesn't need even more LLM writers. The market's saturated.
+This is the first time I've written anything in detail about AI/LLMs. I figured that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. The last few years saw birth of a whole cottage industry of a hundred thousand newly minted AI experts. The world doesn't need anymore LLM writers, and was trying to avoid the subject.
 
 I avoided LLM use for a long time. Longer than most outside the tech industry, let alone in it. I gave in last year around the time Google added automatic Gemini answers to their search results. This wasn't something that was going away, so best to embrace it.
 
-I hoped LLMs would be worse than they are. In my ideal world, they'd produce convincing output, but which was recognizable as B-grade semi-slop to a learned expert. This would've relegated them squarely to a bucket of useful tools, but not ones that we could expect to replace the expertise of veteran humans anytime soon. A convenient outcome for me as it'd justify my continued employment.
+I hoped they'd be worse than they are. In my ideal world, they'd produce convincing output, but which was recognizable as B-grade semi-slop to a learned expert. This would've relegated them squarely to a bucket of useful tools, but not ones that we could expect to replace the expertise of veteran humans anytime soon. A convenient outcome for me as it'd justify my continued employment.
 
-No such luck. Sometime in the last year, models graduated from "neat party trick" to "holy sh*t this is _insane_". My generation (elder millennial) was quite lucky in that we experienced the invention of the home PC, and later that of the smartphone. Two of the largest paradigm shifts in history. Even stacked against those monsters, I think LLMs will be the most impactful technological event horizon of my generation.
+No such luck. Sometime in the last year, models graduated from "neat party trick" to "holy sh*t this is _insane_". My generation (elder millennial) was lucky in that we experienced the invention of the home PC, and later that of the smartphone, two of the largest paradigm shifts in history. Even stacked against those monsters, I think LLMs will be the most impactful technological event horizon of my generation.
 
 I'd been hearing testimony of impressive results for many months, but I wasn't truly convinced until last December. For a hackathon, one of my colleagues vibe coded a working prototype of a product we'd been slated to work on. He started around 1 PM and was done by the end of the work day, and while it was rough around the edges, he managed to hit some stretch goals so that his demo even had a Jobs-style, "oh, and one more thing" clause at the end. Before LLMs, this would've been a week of work. It was incredible -- a technological unlock that made previously impossible things possible.
 
@@ -61,9 +61,9 @@ Scattered thoughts from my first months:
 
 * Refactoring in general is so much better. As good as Gopls and LSPs have gotten over the years, the refactoring tools they offer are still dull and not expressive enough. LLMs are the first refactoring tool that truly gets me everything I need and they enable _widespread_ refactoring. Existing code is no longer at risk of ossifying in place the way it was before. LLMs can refactor huge swaths of it quickly and quite safely.
 
-* It's made terminal work so much more plausible. When using infrequent-but-necessary CLI invocations, the amount of work needed to look up the right docs and string together a working command is *absurd*. An example I ran into recently was scaling an AWS Fargate service down and back up, which has an awscli command, but one which Amazon makes stupidly hard to discover. Now, the LLM figures it out.
+* Beyond code, it's made terminal work so much more plausible. When using infrequent-but-necessary CLI invocations, the amount of work needed to look up the right docs and string together a working command is _absurd_. An example I ran into recently was scaling an AWS Fargate service down and back up, which has an awscli command, but one which Amazon makes stupidly hard to discover. Now, the LLM figures it out.
 
-My LLM is doing a lot of the work I don't love doing, leaving the choice parts for the human. I like writing code and will often still write the core of a feature myself, and with Claude helping me fill the edges and boilerplate.
+I have a dozen moments a week where I'll put something into Claude thinking, "there's no way this is going to work ..." but then it does. I commit state before asking for a broad change so I can quickly revert something it's done that I don't like. I've reverted its work maybe once, ever? It's consistently more thorough and produces better results than I expect. It's magic.
 
 ---
 
@@ -71,7 +71,7 @@ My LLM is doing a lot of the work I don't love doing, leaving the choice parts f
 
 ## Vibe codin' and beyond (#vibe-codin-and-beyond)
 
-The second order effects of this brave new world are quite visible already. Conspicuously, I received more than a few PR review requests in the last month where it became apparent that I was the first human to have looked at the code as the ostensible author was completely unaware of any specific content. I would hazard to guess that the majority of posts on LinkedIn are now generated by LLM. People like Mitchell Hashimoto (HashiCorp and Ghostty) are considering [closing external pull requests](https://x.com/mitchellh/status/2018458123632283679) on repos due to LLM abuse.
+The second order effects of this brave new world are visible already. Conspicuously, I received more than a few PR review requests in the last month where it became apparent that I was the first human to have looked at the code as the ostensible author was completely unaware of any specific content. I would hazard to guess that the majority of posts on LinkedIn are now generated by LLM. Projects like Ghostty are considering [closing external pull requests](https://x.com/mitchellh/status/2018458123632283679) on repos due to LLM abuse.
 
 Follow LLM-mania to its logical conclusion and you get to developers maintaining a black box for which they have only a vague understanding of what's inside. Changes are made by the LLM. When there's a bug present, the LLM troubleshoots.
 
@@ -105,11 +105,11 @@ I'm personally partial to option 3. In a conversation about it, I was reminded o
 
 It's meant to apply to CPUs, but there's an analog in software development. We speed up writing code by an order of magnitude which you'd hope would lead to an order of magnitude in productive output, but a big piece of the advance might disappear into other parts of the product lifecycle that aren't as easily optimized: design and engineering reviews, Slack conversations, inter- and intra-team coordination, human code review, deployment processes, user support, etc.
 
-Major innovations tend to have less of an effect than people predict. The workplace of today is still more alike the one I graduated into in 2007 than not. The tools are different, and the development stacks have turned over five times since, but squint a little and not much has changed in 20 years. The [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect) suggests it might be reasonable to bet on its continuation.
+Major innovations tend to have less of an effect than people predict. The workplace of today is still more alike the one I graduated into in 2007 than not. The tools are different, and the development stacks have turned over five times since, but squint a little and not much has changed in 20 years. The [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect) suggests it might be reasonable to bet on its continued survival.
 
-On the other hand, when I'm walking downtown Seattle around lunch and look at the other knowledge workers who are out and about, sometimes I think, "but really, what are all of us doing all day?" I've been in corporate America long enough to know the answer: they're talking on Slack, they're coordinating meetings, they're on Zoom calls, they're writing product requirements, they're building slide decks, they're posting on LinkedIn. Mostly tasks that LLMs excel at.
+On the other hand, when I'm walking downtown Seattle around lunch and look at the other knowledge workers who are out and about, sometimes I think, "but really, what are all of us doing all day?" I've been in corporate America long enough to know the answer: they're talking on Slack, they're coordinating meetings, they're on Zoom calls, they're writing docs on product requirements, they're building slide decks, they're posting on LinkedIn. Almost all tasks that LLMs excel at.
 
-Once again, I worry that my predictions are self-serving because _I_ would still like to have a job in two years. Anything could happen. There's a distinct possibility that we're in the calm before the storm and we're about to live through seismic upheaval.
+I'm not confident forecasting anything. I worry that my predictions are self-serving because _I_ would still like to have a job in two years. Adoption is ongoing and anything could happen. There's a distinct possibility that this is the calm before the storm, and we're about to live through seismic upheaval.
 
 ---
 
@@ -117,31 +117,33 @@ Once again, I worry that my predictions are self-serving because _I_ would still
 
 ## Pride is for inventors (#pride-inventors)
 
-I listened to a podcast the other day that genuinely disturbed me. In it, two veteran programmers one up each other in how little code they write nowadays, leapfrogging each other to make increasingly hyperbolic claims, eventually climaxing in how reading or writing any code _at all_ is an anti-pattern. The unsettling part was the tone. They spoke in a state of pure ecstasy of a kind normally reserved for the bedroom.
+I listened to a podcast the other day that genuinely disturbed me. In it, two veteran programmers one up each other in how little code they write nowadays, leapfrogging each other to make increasingly hyperbolic claims, eventually climaxing in how reading or writing any code _at all_ is an anti-pattern. The unsettling part was the tone. They spoke in a state of pure ecstasy of a kind normally reserved for the bedroom. One of them had very publicly laid off 75% of his technical staff two weeks earlier.
 
-LLMs are here. I'd never suggest anyone not use them, but a recurring theme in the programming world nowadays: LLM-pilled developers who describe the accomplishments of their LLM as if they were somehow responsible for these advances. Bragging, boasting, unadulterated pride of the loudest and most obnoxious kind. One of these guys laid off 75% of his technical staff two weeks ago, ostensibly due to AI, but with that event so distant in the rearview mirror (two weeks is a long time in the information age), not a moment is spent dwelling on it.
+LLMs are here. I'd never suggest anyone not use them, but a recurring theme in the programming and programming influencer worlds nowadays: LLM-pilled developers who describe the accomplishments of their LLM as if they were somehow responsible for these advances. Bragging, boasting, unadulterated pride of the loudest and most obnoxious kind.
 
-Every time I hear someone say something like this, I want to shake them and say, okay man! So you're telling me that you use a technology that **you didn't create and which you don't own and which you don't know anything about**, and you use this tool to do all the things that used to be *your* job? Congratulations indeed my friend. Next maybe tell me why someone should pay the $200-300k salary you've become accustomed to when they can hire someone younger and with more energy for $80k who's just as good at your one remaining skill? (Typing the English language into a terminal.)
+Every time I hear someone say something like this, I want to shake them and say, okay man! So you're telling me that you use a technology that **you didn't create and which you don't own and which you don't know anything about**, and you use this tool to do all the things that used to be _your_ job? Congratulations indeed my friend. Next maybe tell me why someone should pay the $200-300k salary you've become accustomed to when they can hire someone younger and with more energy for $80k who's just as good at your one remaining skill? (Typing the English language into a terminal.)
 
-Many of these people will concede the point that LLMs will lead to a decreased demand for programmers and other white collar jobs, and even find the idea quite thrilling. My question is, how are you so sure that _you_ are going to be the one left standing?
+Many of these people will concede the point that LLMs will lead to a decreased demand for programmers and other white collar jobs, and even find the idea quite thrilling. As a chronic pessimist my question is always the same: how are you so sure that _you_ are going to be the one left standing?
 
-We can't stop this train, but to euphorically cheerlead the LLM-ification of the world? I just can't get there. If you're an inventor or shareholder of Anthropic or OpenAI, you should be excited. If you're a major asset holder, you should be excited. If you're an entrepreneur intending to leverage these technologies to the hilt, then maybe you should be excited. If you're working a salary job and have access to the same LLMs that everyone else does? I don't know man.
+We can't stop this train, but to euphorically cheerlead the LLM-ification of the world? I just can't get there. If you're an inventor or shareholder of Anthropic or OpenAI, be excited. If you're a major asset holder, be excited. If you're an entrepreneur intending to leverage these technologies to the hilt, be excited, maybe. If you're working a salary job and have access to the same LLMs that everyone else does? I don't know man.
 
 ---
 
 <img src="/photographs/nanoglyphs/048-llms/lyon-waterfront@2x.jpg" alt="Lyon waterfront" class="wide" loading="lazy">
 
-## LLM anti-compression (#llm-anticompression)
+## Information inflation (#information-inflation)
 
 One of the few things LLMs are better at than writing code is text, but having thought about it a lot, a concession that I'm not prepared to make is to have an LLM do my writing.
 
 A conventional practice for execs at Snowflake was to send out what was called a "snippet". Usually on a weekly cadence, these were emails containing personal notes on ongoing action and details on what their divisions were working on. The first thing you notice about "snippets" is the sheer volume of them -- in the default set of on-boarding mailing lists you start getting them from every part of the organization on day one. The second thing you notice about snippets is their length -- comprehensive detail, painstaking even. Essays once a week.
 
-One might even say a *suspicious* amount of detail. Detail that includes a few too many tables, emoji, and emdashes. Yes, most of these were undoubtedly LLM-generated.
+One might even say a _suspicious_ amount of detail. Detail that includes a few too many tables, emoji, and emdashes. Yes, most of these were undoubtedly LLM-generated.
 
 But LLM use isn't just reserved for execs. In fact, Gemini was on by default, so everyone who received one of these long scrawls got a short, three point summary on top of it. The summary was so concise and so convenient that most recipients (including yours truly) read nothing further.
 
-You have to step back and appreciate the absurdity of this situation. An executive enters three lines to produce a small novella which he then bulk emails to the rest of the organization. Receivers get an automatic three line summary that ... looks a lot like what the sender wrote in the first place. The novella's read by no one except a few stragglers who aren't in on the joke yet. Is this progress? There's a punch line about information theory in here somewhere.
+You have to step back and appreciate the absurdity of this situation. An executive enters three lines to produce a small novella which he then bulk emails to the rest of the organization. Receivers get an automatic three line summary that ... looks a lot like what the sender wrote in the first place. The novella's read by no one except a few stragglers who aren't in on the joke yet. Is this progress?
+
+There's a punch line about information theory in here somewhere.
 
 ---
 
@@ -149,9 +151,9 @@ You have to step back and appreciate the absurdity of this situation. An executi
 
 ## Certified human (#certified-human)
 
-A friend of mine, now in his 40s, had never written a blog post prior to 2026. As of a month ago, he's now a prolific blogger, posting long essays about LLM use on a daily basis. Blog posts are accompanied by only marginally shorter LinkedIn posts, published multiple times a day. After not having produced code in ~20 years, he has four new repositories in the last week, all with long, meandering READMEs containing a lot of lists, tables and emojis.
+An old colleague of mine, now in his 40s, had never written a blog post prior to 2026. As of a month ago, he's now a prolific blogger, posting long essays about LLM use on a daily basis. Blog posts are accompanied by only marginally shorter LinkedIn posts, published multiple times a day. After not having produced code in ~20 years, he has four new repositories in the last week, all with long, meandering READMEs containing a lot of lists, tables and emojis.
 
-This might be the grumpy old man coming out in me, but my only reaction is: if it takes you less time to generate this stuff than it takes me to read it, why in the name of Saint Clawd would I ever invest my time looking at anything you've created ever again?
+This might be the grumpy old man coming out in me, but my only reaction is: if it takes you less time to generate this stuff than it takes me to read it, why in the name of Saint Clawd would I ever invest my time looking at anything you've "written" ever again?
 
 It strikes me as wrong to ask someone to spend their precious time reading text that I didn't feel like it was worth my time to write. I've taken a pretty hard line on this, and for some time now have been actively unsubscribing from anything where I know or suspect the author is more like an "author".
 
@@ -159,7 +161,7 @@ So I wrote this mini-charter for my website: [certified human](/human). Unless s
 
 This newsletter is chronically late and inconsistent. Don't think that it didn't cross my mind to input a, "In the style of Brandur Leach, write five pages on ..." and fix the problem forever. It might even be better than what you're reading right now.
 
-But again, it doesn't feel right to me. If I have one dark prediction about the future, it's that humans will spend outsized effort to push back against endless waves of LLM-generated spam and slop. I'll try my best to not be a contributor to the situation. Every word written here involved me spending far too much time thinking and fussing over it.
+But again, it doesn't feel right to me. If I have one dark prediction about the future, it's that humans will spend outsized effort to push back against an endless deluge of LLM-generated slop. I'll try my best to not be a contributor to the situation. Every word written here involved me spending far too much time thinking and fussing over it.
 
 ---
 
@@ -169,7 +171,7 @@ But again, it doesn't feel right to me. If I have one dark prediction about the 
 
 ## Ambon, psychedelic frogfish
 
-Another couple photos from Indonesia. This is the island of Ambon. It's a small one (pop. ~500k), but large enough to have an airport. It's one of the thousands of islands closer to the eastern side of Indonesia. There's probably only a few hundred people in the world who could point to it on a map without help, and that includes people from Ambon.
+Another couple photos from Indonesia. This is the island of Ambon. It's a small one (pop. ~500k), but large enough to have an airport. It's one of the thousands of islands closer to the eastern side of Indonesia. There's probably only a few hundred people in the world who could point to it on a map without help, including people from island itself.
 
 The dive industry on Ambon isn't gigantic, but it's known for its exceptional muck diving. The island is split in two by a massive inlet. Diving tends to be located between the two halves and reveal a trove of critters including rhinopias, frogfish, seahorses, scorpionfish, and octopuses.
 
@@ -187,9 +189,9 @@ The _really_ rare spotting would've been a psychedelic frogfish, endemic to only
 
 <img src="/photographs/nanoglyphs/048-llms/psychedelic-frogfish@2x.jpg" alt="Psychadelic Frogfish" loading="lazy">
 
-I don't want to sugarcoat things too much on Ambon. Westerners who hate the West have internalized the idea that developed countries in North America and Europe savage the environment while the rest of the world lives in noble harmony with nature. (As a recent example, see James Cameron and his revisionist, heavy-handed _Avatar_ series.) Visit a place like Indonesia and this myth is dispelled in four seconds flat, immediately recognizable not only as false, but a perfect inversion of the truth.
+I don't want to sugarcoat things too much. Westerners who hate the west have internalized the idea that developed countries in North America and Europe savage the environment while the rest of the world lives in noble harmony with nature. Visit a place like Indonesia and this myth is dispelled in four seconds flat.
 
-For Ambon and much of Indonesia, the ocean is the *default* place to discard garbage, and the amount of trash one person on the island puts in the ocean in one day is enough to give your average CO<sub>2</sub>-hating, straw-banning coastal activist a heart attack. When Indonesians are dumping all together, they produce a rolling version of the Great Pacific Garbage Patch on a daily basis. Every beach is littered with garbage. The surface is littered with garbage. The ocean floor is littered with garbage. Plastic is an omnipresent companion everywhere you go. The only place you don't find it are the resorts, who knowing that westerners hate seeing this stuff, have made significant investments to have the trash picked clean daily.
+For Ambon and much of Indonesia, the ocean is the *default* place to discard garbage, and the amount of trash one person on the island puts in the ocean in one day is enough to give your average CO<sub>2</sub>-hating, straw-banning coastal activist a heart attack. When Indonesians are dumping all together, they produce a rolling version of the Great Pacific Garbage Patch on a daily basis. Every beach is littered with garbage. The surface is littered with garbage. The ocean floor is littered with garbage. Plastic is an omnipresent companion all day long, everywhere you go. The only place you don't find it are the resorts, who knowing that westerners hate seeing this stuff, have made significant investments to have the trash picked clean daily.
 
 The photo below isn't cherry picked. This is what every beach on Ambon looks like at all times, with the exception of the ones right in front of tourist resorts.
 
