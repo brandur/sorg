@@ -23,7 +23,7 @@ Notably, the project was my first where LLMs were not only a novelty, but a core
 
 ## Lyon (#lyon)
 
-The photos from this issue are from Lyon, France. Shortly after the Snowflake acquisition last year a small team of Crunchy and Snowflake employees went on-site together (Lyon sounds like an exotic place to hold such a thing, but some of our colleagues live in the city, and hotels there are a third of the price as staying in a bad airport-like hotel in Menlo Park or Bellevue) to get as much done on an MVP as we could in a week.
+The photos from this issue are from Lyon, France. Shortly after the Snowflake acquisition last year a small team of Crunchy and Snowflake employees went on-site together (Lyon sounds like an exotic place to hold such a thing, but some of our colleagues live in the city, and hotels there are a third of the price of staying in a bad airport-like hotel in Menlo Park or Bellevue) to get as much done on an MVP as we could in a week.
 
 Gorgeous city. By day two I had a favorite walking route up to the famous Basilique on top of the hill. I'd descend back down the other side, taking a different way back through Croix-Rousse to the hotel every day, and there was always something new to discover. Lookout points up on the city's storied hills provide incredible viewing opportunities to see out over its distinctive roofing. Some easy to find, others less so. Come evening, especially in and around Vieux Lyon, vibrant streets lined up and down with outdoor patios for bars and restaurants. When a visitor imagines stereotypical France in their mind's eye, this is what they see.
 
@@ -35,7 +35,7 @@ Ye gods I wish we still built cities like this. Give me narrow streets and pedes
 
 ## Confessions of a former skeptic (#skeptic)
 
-This is the first time I've written anything in detail about AI/LLMs. I figured that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. The last few years saw birth of a whole cottage industry of a hundred thousand newly minted AI experts. The world doesn't need anymore LLM writers, and was trying to avoid the subject.
+This is the first time I've written anything in detail about AI/LLMs. I figured that if you want to read about LLMs, you need only open any newspaper, magazine, or newsletter in existence and turn to the first page. The last few years saw the birth of a whole cottage industry of a hundred thousand newly minted AI experts. The world doesn't need any more LLM writers, and I was trying to avoid the subject.
 
 I avoided LLM use for a long time. Longer than most outside the tech industry, let alone in it. I gave in last year around the time Google added automatic Gemini answers to their search results. This wasn't something that was going away, so best to embrace it.
 
@@ -49,13 +49,13 @@ Amazing, and scary. Like seeing the gruesome wreck photos after an accident invo
 
 ---
 
-I've begrudgingly learned to love them. One of the first things that really WOWed me is that in conjunction with a local `AGENTS.md` file, it's not only possible to have an LLM generate code, but generate _conventional_ code. Ours makes sure to [mark tests as t.Parallel()](/t-parallel), use a [parallel test bundle](/fragments/parallel-test-bundle) as appropriate, and alphabetizes fields on structs where there's no other sorting rationale in play (something I'm kind of a hardass about). We have an extremely comprehensive list of required linters (every one of them in [golangci-lint](https://golangci-lint.run/) except the really dumb ones). AI will dutifully iterate on code until every one of them passes muster.
+I've begrudgingly learned to love them. One of the first things that really WOWed me is that in conjunction with a local `AGENTS.md` file, it's not only possible to have an LLM generate code, but generate _conventional_ code. Ours makes sure to [mark tests as t.Parallel()](/t-parallel), use a [parallel test bundle](/fragments/parallel-test-bundle) as appropriate, and alphabetize fields on structs where there's no other sorting rationale in play (something I'm kind of a hardass about). We have an extremely comprehensive list of required linters (every one of them in [golangci-lint](https://golangci-lint.run/) except the really dumb ones). AI will dutifully iterate on code until every one of them passes muster.
 
 Scattered thoughts from my first months:
 
 * I'm big on having unit tests, but don't love writing them, especially seeding a brand new test file. The LLMs now do this for me, generating a first pass that's almost always more comprehensive than what I would've written (but also eerily similar), with me following up with a refinement pass.
 
-* There's a classic refactoring dilemma wherein you need to change a bunch of instances of something which are more than a few, but less than hundreds, say in the range of 50 or so. One approach is just to rely on your quickness on a keyboard and with Vim to brute force the problem. Go through and fix each by hand, taking advantage of efficient hand motion where possible. Another is to write a regex or Vim macro. The latter will take more activation energy, but if done correctly will be done in an instant.  It's not clear in advance which option will be faster because even if you're good at regex, there's still more often than not some stupid backslash that you missed or other mistake you made that requires debugging and would've made the manual change faster.
+* There's a classic refactoring dilemma wherein you need to change a bunch of instances of something which are more than a few, but less than hundreds, say in the range of 50 or so. One approach is just to rely on your quickness on a keyboard and with Vim to brute force the problem. Go through and fix each by hand, taking advantage of efficient hand motion where possible. Another is to write a regex or Vim macro. The latter will take more activation energy, but if done correctly will be done in an instant. It's not clear in advance which option will be faster because even if you're good at regex, there's still more often than not some stupid backslash that you missed or other mistake you made that requires debugging and would've made the manual change faster.
 
     With LLMs, we now have the perfect third option: get the LLM to do it. In general this turns out to be fast and correct. By far the best of the three approaches.
 
@@ -97,7 +97,7 @@ Simplifying to the extreme, I see three broad directions that our industry can g
 
 2. **Major expansion:** The optimist's case. LLMs let everyone get more done than ever before. This leads to a broad positive feedback cycle where more goods and services are sold, more products produced, and more money changes hands, ballooning GDP and opening more positions and growth. Even if 5k copywriters are lost, they may be replaced by 10k developers -- still a net expansion of 5k jobs.
 
-3. **Relative stability:** Companies do more with less, but keep their workforce more or less constant. Expansion happens, revenue grows, but the number of participants stay steady. Companies find that growth is no longer contingent on proportional growth in headcount.
+3. **Relative stability:** Companies do more with less, but keep their workforce more or less constant. Expansion happens, revenue grows, but the number of participants stays steady. Companies find that growth is no longer contingent on proportional growth in headcount.
 
 I'm personally partial to option 3. In a conversation about it, I was reminded of [Amdahl's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law):
 
@@ -105,7 +105,7 @@ I'm personally partial to option 3. In a conversation about it, I was reminded o
 
 It's meant to apply to CPUs, but there's an analog in software development. We speed up writing code by an order of magnitude which you'd hope would lead to an order of magnitude in productive output, but a big piece of the advance might disappear into other parts of the product lifecycle that aren't as easily optimized: design and engineering reviews, Slack conversations, inter- and intra-team coordination, human code review, deployment processes, user support, etc.
 
-Major innovations tend to have less of an effect than people predict. The workplace of today is still more alike the one I graduated into in 2007 than not. The tools are different, and the development stacks have turned over five times since, but squint a little and not much has changed in 20 years. The [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect) suggests it might be reasonable to bet on its continued survival.
+Major innovations tend to have less of an effect than people predict. The workplace of today is still more like the one I graduated into in 2007 than not. The tools are different, and the development stacks have turned over five times since, but squint a little and not much has changed in 20 years. The [Lindy effect](https://en.wikipedia.org/wiki/Lindy_effect) suggests it might be reasonable to bet on its continued survival.
 
 On the other hand, when I'm walking downtown Seattle around lunch and look at the other knowledge workers who are out and about, sometimes I think, "but really, what are all of us doing all day?" I've been in corporate America long enough to know the answer: they're talking on Slack, they're coordinating meetings, they're on Zoom calls, they're writing docs on product requirements, they're building slide decks, they're posting on LinkedIn. Almost all tasks that LLMs excel at.
 
@@ -171,7 +171,7 @@ But again, it doesn't feel right to me. If I have one dark prediction about the 
 
 ## Ambon, psychedelic frogfish
 
-Another couple photos from Indonesia. This is the island of Ambon. It's a small one (pop. ~500k), but large enough to have an airport. It's one of the thousands of islands closer to the eastern side of Indonesia. There's probably only a few hundred people in the world who could point to it on a map without help, including people from island itself.
+Another couple photos from Indonesia. This is the island of Ambon. It's a small one (pop. ~500k), but large enough to have an airport. It's one of the thousands of islands closer to the eastern side of Indonesia. There's probably only a few hundred people in the world who could point to it on a map without help, including people from the island itself.
 
 The dive industry on Ambon isn't gigantic, but it's known for its exceptional muck diving. The island is split in two by a massive inlet. Diving tends to be located between the two halves and reveal a trove of critters including rhinopias, frogfish, seahorses, scorpionfish, and octopuses.
 
@@ -187,7 +187,7 @@ The camouflage on these creatures is just amazing. Here's a photo of me and a rh
 
 The _really_ rare spotting would've been a psychedelic frogfish, endemic to only this one place in the entire world. Its face is so distinctive that even non-divers might recognize it from the covers of books or nature TV. Alas, they're somewhat seasonal and hard to find at the best of times. Even having done dozens of dives we never came across one. Maybe next time. [2]
 
-<img src="/photographs/nanoglyphs/048-llms/psychedelic-frogfish@2x.jpg" alt="Psychadelic Frogfish" loading="lazy">
+<img src="/photographs/nanoglyphs/048-llms/psychedelic-frogfish@2x.jpg" alt="Psychedelic Frogfish" loading="lazy">
 
 I don't want to sugarcoat things too much. Westerners who hate the west have internalized the idea that developed countries in North America and Europe savage the environment while the rest of the world lives in noble harmony with nature. Visit a place like Indonesia and this myth is dispelled in four seconds flat.
 
