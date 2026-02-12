@@ -32,6 +32,7 @@
 <body class="antialiased {{block "body_style" .}}{{end}}">
     <!-- load early to avoid ficker -->
     {{template "views/_dark_mode_js.tmpl.html" .}}
+    {{template "views/_scroll_gradient_js.tmpl.html" .}}
 
     {{block "content" .}}{{end}}
 
