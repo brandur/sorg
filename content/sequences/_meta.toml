@@ -11,6 +11,32 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2026-02-08T13:55:22-08:00
+  slug = "101"
+  title = "Lyon"
+  description = """
+A bank of windows near our hotel in Lyon, France. We did a short team went on-site here last year to get the Snowflake Postgres project jumpstarted. Gorgeous city with incredible viewing opportunities.
+
+Poster for [_Nanoglyph 048_](/nanoglyphs/048-llms), with mixed thoughts on LLMs, Ambon, and psychedelic frogfish.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/c3nmmx5vtd9hc1q6d5b59/2W4A6352-windows.JPG?rlkey=uqgl6uwq0cysct03cdvm6erxi&dl=1"
+    slug = "101"
+
+[[entries]]
+  published_at = 2026-01-19T12:50:11-08:00
+  slug = "100"
+  title = "First snow"
+  description = """
+The backyard of the Stainless townhouse in Brooklyn on the morning of one of the first snows of the season.
+
+Poster for [_Nanoglyph 047_](/nanoglyphs/047-stainless), on joining Stainless, six months at Snowflake, and Komodo dragons.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/h6gkge2ml1f9nc0gixygm/L1010033-yard.JPG?rlkey=3vhc2twdj2z1kfz5bz74l06na&dl=1"
+    slug = "100"
+
+[[entries]]
   published_at = 2025-10-17T06:44:08+09:00
   slug = "099"
   title = "Ambon"

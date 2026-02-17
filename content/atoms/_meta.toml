@@ -11,6 +11,42 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-02-08T13:55:22-08:00
+  description = """\
+ [_Nanoglyph 048_](/nanoglyphs/048-llms) is published, with mixed thoughts on LLMs, the past, present, and future of programming, Ambon, and psychedelic frogfish.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/048-llms"
+    original_image_url = "https://www.dropbox.com/scl/fi/c3nmmx5vtd9hc1q6d5b59/2W4A6352-windows.JPG?rlkey=uqgl6uwq0cysct03cdvm6erxi&dl=1"
+    slug = "lyon-windows"
+
+[[atoms]]
+  published_at = 2026-01-19T12:50:11-08:00
+  description = """\
+ [_Nanoglyph 047_](/nanoglyphs/047-stainless) is published, on joining Stainless, six months at Snowflake, and going to view Komodo dragons on Rinca Island.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/047-stainless"
+    original_image_url = "https://www.dropbox.com/scl/fi/h6gkge2ml1f9nc0gixygm/L1010033-yard.JPG?rlkey=3vhc2twdj2z1kfz5bz74l06na&dl=1"
+    slug = "stainless-yard"
+
+[[atoms]]
+  published_at = 2026-01-19T12:49:32-08:00
+  description = """\
+Trying Ghostty.
+
+I didn't switch before because I couldn't find anything in the feature set that improved anything enough over iTerm to be worth the switching cost.
+
+Easy theming and an automatic light/dark switching is what won me over.
+
+In `~/.config/ghostty/config`:
+
+``` toml
+theme = dark:Belafonte Night,light:Belafonte Day
+```
+"""
+
+[[atoms]]
   published_at = 2025-11-04T19:56:08+08:00
   description = """\
 Strong recommendation for [Mars Express](https://www.imdb.com/title/tt26915336/). It's been quite a few years since I've seen a good science-fiction movie, and doubly so for an original IP.
