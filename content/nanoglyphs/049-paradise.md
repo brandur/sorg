@@ -23,7 +23,7 @@ But enough about that. Thanks for reading Nanoglyph. This week: Fargate, the end
 
 <img src="/photographs/nanoglyphs/049-paradise/beach@2x.jpg" alt="Beach in Raja Ampat" class="wide" loading="lazy">
 
-## The partial product (#partial-product)
+## The almost product (#almost-product)
 
 Stainless: all of us being very familiar with the AWS stack, we've been deploying everything so far to Amazon.
 
