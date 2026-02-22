@@ -27,7 +27,7 @@ But enough about that. Thanks for reading Nanoglyph. This week: Fargate, the end
 
 Stainless: all of us being very familiar with the AWS stack, we've been deploying everything so far to Amazon.
 
-AWS is the most dominant cloud in the world, but use it long enough and it's hard not to develop some misgivings about it. The sheer complexity of its product surface is the 8th wonder of the world. Billions [1] of human hours sunk into building a catalog so expansive that you need to use the console's search feature to find the product you're looking for.
+AWS is the most dominant cloud there is, but use it long enough and it's hard not to develop some misgivings about it. The sheer complexity of its product surface is the 8th wonder of the world. Billions [1] of human hours sunk into building a catalog so expansive that you need to use the console's search feature to find the service you're looking for.
 
 A few weeks ago I spent an hour figuring out how to give one part of my account (Athena) access to another part of my account (S3 Tables). I had five separate docs pages pulled up. Not one accurately explained the process, even from a 30,000 foot level. Not even Claude could figure it out! I eventually got it by using docs to triangulate to within a few football fields of the right place and closed the last mile with trial and error. These sorts of sharp edges are a semi-regular occurrence.
 
@@ -35,7 +35,7 @@ We built our program to a container image and deployed it to ECS Fargate. Of cou
 
 The good news is that LLMs have made all of this much easier. A colleague had a deployment suite generated within a few hours, and unlike humans, LLMs tend to get CloudFormation files and shell scripts right, so they worked without having to iterate on them 50 times fixing dumb mistakes.
 
-Still, we now have a bread basket of shell scripts and YAML files that no human knows that well, and yet are now ours to maintain. The bill for a couple non-production prototypes is climbing towards $100/month. One time I tried to get the public URL for the service I'd just deployed, eventually finding it 5 minutes later after following about 18 AWS Console links. Maybe I have unrealistic expectations, but I found myself thinking: so we pay Amazon to host our software. It's a plug-and-play product that's not plug-and-play, nothing is integrated well, the console is confusing and not full-featured, the docs are awful, and it's pretty expensive. It's 2026. This is the best we can do?
+Still, we now have a bread basket of shell scripts and YAML files that no human knows that well, and yet are ours to maintain. The bill for a couple non-production prototypes is climbing towards $100/month. One time I tried to get the public URL for the service I'd just deployed, eventually finding it 5 minutes later after following about 18 AWS Console links. Maybe I have unrealistic expectations, but I found myself thinking: so we pay Amazon to host our software. It's a plug-and-play product that's not plug-and-play, nothing is integrated well, the console is confusing and not full-featured, the docs are awful, and it's pretty expensive. It's 2026. This is the best we can do?
 
 <img src="/photographs/nanoglyphs/049-paradise/marker-dark@2x.jpg" alt="Marker just off the beach in Raja Ampat (in the evening)" class="wide_portrait" loading="lazy">
 
@@ -109,7 +109,7 @@ While we're at it, a few don'ts:
 
 * **Don't chase the serverless trend**. You want serverless in the Heroku sense where you have running containers without managing a server, but you don't need serverless in the AWS Lambda sense that does one request per container. The latter is a garish level of inefficiency with only the most marginal of benefits.
 
-* **Don't make Dogwood** (Heroku Private Spaces). If it's not good enough to be run by a hobbyist and scaled up to an enormous user (who pays you a lot of money), then it's not good enough for the enormous user. Do make the alternate history version of Dogwood, a stack so meaningfully better than Cedar that it earns its name.
+* **Don't make Dogwood** (Heroku Private Spaces). If it's not good enough to be run by a hobbyist and scaled up to an enormous user (who pays you a lot of money), then it's not good enough for that user either. Do make the alternate history version of Dogwood, a stack so meaningfully better than Cedar that it earns its name.
 
 * **Don't do Cassandra:** Pretty obvious in retrospect. Anyone so big that they have to run Cassandra (very few people should) is also so big that they can afford to run it themselves.
 
@@ -121,7 +121,7 @@ While we're at it, a few don'ts:
 
 The photos from this issue are from Raja Ampat, an archipelago in Indonesia known for its incredible marine biodiversity.
 
-We stayed at a resort called "Cove" on one of the archipelago's many tiny islands (you can walk across it in about half an hour), accessed via about three hours of boat travel from Sorong. Sorong's a busy place, but by the time you get out to Cove, there is nobody.
+We stayed at a resort called "Cove" on one of the archipelago's many tiny islands (you can walk across it in about half an hour), accessed via roughly three hours of boat travel from Sorong. Sorong's a busy place, but by the time you get out to Cove, there is nobody.
 
 Cove's small island is called Yeben, and if you close your eyes and imagine what a deserted tropical paradise is supposed to look like, what you're seeing is probably a lot like Yeben. Far from any population centers, there you get perfect beaches, crystal clear water, and gorgeous vegetation. The island's forest is dense enough that you won't be going hiking in an arbitrary direction of your choice, but they'd done some nice trail building so you could follow a path up and over the top of the island to its southern side, then the beach to its eastern tip, then back north and west to get back to where you started.
 
@@ -147,7 +147,7 @@ Yeben's shore was surrounded by shallows populated by huge schools of fish, and 
 
 <img src="/photographs/nanoglyphs/049-paradise/sharks-3@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide_portrait" loading="lazy">
 
-It might surprise non-divers to see how blasé divers are around sharks. Doing three dives a day I wasn't particularly predisposed to spend even more time in the water, but an Italian couple would finish their third dive of the day only to immediately jump back in the water to go snorkeling around the pier for an hour, happily sharing the water with these little guys.
+It might surprise non-divers to see how blasé divers are around sharks. Doing three dives a day I wasn't particularly predisposed to spend even more time in the water, but an Italian couple would finish their three only to immediately jump back in to go snorkeling around the pier for an hour, happily sharing the shallows with these little guys.
 
 I was walking back along the dock one time, looked down, and to my surprise, there was a mantis shrimp looking straight back up at me!
 
