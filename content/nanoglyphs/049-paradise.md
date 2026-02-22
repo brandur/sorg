@@ -69,7 +69,7 @@ I've thought a lot about what we could've done differently over the years. You c
 
 * **SSH:** We'd gotten so many requests over the years to have a way of connecting to a running build or production dyno.
 
-* **Multi-cloud:** Support Azure, GCP, and hopefully Salesforce own cloud too. There was no reason not to do this except that a lot of AWS-specific code had already been written.
+* **Multi-cloud:** Support Azure, GCP, and hopefully Salesforce's own cloud too. There was no reason not to do this except that a lot of AWS-specific code had already been written.
 
 * **VPCs:** Isolation is important for most large customers, and its absence often a dealbreaker.
 
@@ -77,13 +77,13 @@ I've thought a lot about what we could've done differently over the years. You c
 
     Importantly though, these should not be _loss leader_ $5 dynos. Some of the dumb stuff we used to do, like giving away storage for slugs and free bandwidth, meant that we'd lose money even on paying customers sometimes. Meter for those things enough to close the gap, even if the pricing model becomes more complex. If a $5 dyno is still in the red even after cranking up all the dials to improve economy, then make it a $10 dyno instead.
 
-* **Out-Cloudflare Cloudflare:** I remember having conversations about the Heroku routing layer becoming a "rich" proxy for Heroku apps five years before anyone knew what Cloudflare was. We talked about add-ons that'd be able to insert rich features in front of apps with a single install command (we already had the routing layer after all, and it was terminating TLS). Cloudflare executed so well that it would've hard to compete, but who knows.
+* **Out-Cloudflare Cloudflare:** I remember having conversations about the Heroku routing layer becoming a "rich" proxy for Heroku apps five years before anyone knew what Cloudflare was. We talked about add-ons that'd be able to insert rich features in front of apps with a single install command (we already had the routing layer after all, and it was terminating TLS). Cloudflare executed so well that it would've been hard to compete, but who knows.
 
 * **Let's Encrypt:** Went into public beta December 2015. Heroku would launch support for it with Automated Certificate Management (ACM) in March 2017, 1.5 years later, losing out to Amazon's AWS Certificate Management (also ACM) which launched January 2016. We were all so excited about the Let's Encrypt launch and should've had support in early 2016. Even with an AWS competitor, it would've been a major differentiator at the time.
 
 * **Flexible dyno sizes:** Support 512 MB dynos all the way up to 384 GB dynos and everything in between. Support new EC2 generations as soon as they're available. Never let current offerings dilapidate. Make it clear what each dyno is, with no opaque dyno naming. `Standard-2X`, `Performance-M`, `Performance-L-RAM`, etc. sounds like you're hiding something.
 
-* **Vertical and horizontal auto scaling:** Especially with the existence of the routing layer, this should've been very doable. This is the sort of feature that justifies to the cost of a PaaS compared to IaaS.
+* **Vertical and horizontal auto scaling:** Especially with the existence of the routing layer, this should've been very doable. This is the sort of feature that justifies the cost of a PaaS compared to IaaS.
 
 * Support **Docker**, but don't let its existence make you crazy (it freaked all of us out when it was released). Buildpacks are still good, and have major advantages over requiring `Dockerfile`s for everything.
 
@@ -113,23 +113,23 @@ While we're at it, a few don'ts:
 
 * **Don't do Cassandra:** Pretty obvious in retrospect. Anyone so big that they have to run Cassandra (very few people should) is also so big that they can afford to run it themselves.
 
-* **Don't rebuild the API:** This one hurts. I spent over a year building out Heroku's new V3 API, taking the exist foundations and refining it for stronger convention, better flexibility, and modern best practices. This project was immensely satisfying (it felt like I should be working for free), but we ate up an enormous opportunity cost working on it. The API was the highest leverage component in the stack and we could've spent the time helping to ship other features instead.
+* **Don't rebuild the API:** This one hurts. I spent over a year building out Heroku's new V3 API, taking the existing foundations and refining it for stronger convention, better flexibility, and modern best practices. This project was immensely satisfying (it felt like I should be working for free), but we ate up an enormous opportunity cost working on it. The API was the highest leverage component in the stack and we could've spent the time helping to ship other features instead.
 
 <img src="/photographs/nanoglyphs/049-paradise/fish@2x.jpg" alt="Fish off the dock" class="wide_portrait" loading="lazy">
 
 ## Raja Ampat (#raja-ampat)
 
-The photos form this issue are from Raja Ampat, an archipelago in Indonesia known for its incredible marine biodiversity.
+The photos from this issue are from Raja Ampat, an archipelago in Indonesia known for its incredible marine biodiversity.
 
-We stayed at a resort called "Cove" on one of the archipelago's many tiny islands (you can walk across it in a lot half an hour), accessed via about three hours of boat travel from Sorong. Sorong's a busy place, but by the time you get out to Cove, there is nobody.
+We stayed at a resort called "Cove" on one of the archipelago's many tiny islands (you can walk across it in about half an hour), accessed via about three hours of boat travel from Sorong. Sorong's a busy place, but by the time you get out to Cove, there is nobody.
 
-Cove's small island is called Yeben, and if you close your eyes and imagine what a deserted tropical paradise is supposed to look like, what you're seeing is probably a lot like Yeben. Far from any population centers, there you get perfect beaches, crystal clear water, and gorgeous vegetation. The island's forests is dense enough that you won't be going hiking in an arbitrary direction of your choice, but they'd done some nice trail building so you could follow a path up and over the top of the island to its southern side, then the beach to its eastern tip, then back north and west to get back to where you started.
+Cove's small island is called Yeben, and if you close your eyes and imagine what a deserted tropical paradise is supposed to look like, what you're seeing is probably a lot like Yeben. Far from any population centers, there you get perfect beaches, crystal clear water, and gorgeous vegetation. The island's forest is dense enough that you won't be going hiking in an arbitrary direction of your choice, but they'd done some nice trail building so you could follow a path up and over the top of the island to its southern side, then the beach to its eastern tip, then back north and west to get back to where you started.
 
 In the evening hundreds of bats the size of sparrows flew in frantic zig zags overhead. Once in a while, a heavy flying fox would peel its massive body off the top of a tree and glide off.
 
 <img src="/photographs/nanoglyphs/049-paradise/yeben@2x.webp" alt="Yeben Island" class="wide_portrait" loading="lazy">
 
-The dozen tourist villas (there's only 20-30 visitors on the island at a time) were lined up along an oceanside board walk. A large, open-sided (flaps were drawn over in the event of rain) common building complete with couches and pool table served us for briefing and dining. As with most diving trips, we sunk into a routine schedule: wake early, get breakfast, load the boats, dive, surface interval on a random beach, dive, back to base for lunch, rest, back out for one more dive at a more local site.
+The dozen tourist villas (there's only 20-30 visitors on the island at a time) were lined up along an oceanside boardwalk. A large, open-sided (flaps were drawn over in the event of rain) common building complete with couches and pool table served us for briefing and dining. As with most diving trips, we sunk into a routine schedule: wake early, get breakfast, load the boats, dive, surface interval on a random beach, dive, back to base for lunch, rest, back out for one more dive at a more local site.
 
 At one of the beaches they'd take us for surface interval we came across these beautiful mangrove monitors. Being the first large land animal you've seen in days, it's exciting the first time you spot one, then as you look harder it dawns on you that the first wasn't alone, and there's a fair few scampering through the underbrush.
 
@@ -151,7 +151,7 @@ It might surprise non-divers to see how blasé divers are around sharks. Doing t
 
 I was walking back along the dock one time, looked down, and to my surprise, there was a mantis shrimp looking straight back up at me!
 
-Mantis shrimp build form-fitting circular holes for themselves, and back into them so they're looking out face first, framing big eyes, feelers, and praying mantis-like forearms. They're already strange looking creatures, and when the rest do their body is hidden away leaving only their face visible, seeing them is a little jolting, like seeing a facehugger from _Alien_ out of the corner of your eye.
+Mantis shrimp build form-fitting circular holes for themselves, and back into them so they're looking out face first, framing big eyes, feelers, and praying mantis-like forearms. They're already strange looking creatures, and when the rest of their body is hidden away leaving only their face visible, seeing them is a little jolting, like seeing a facehugger from _Alien_ out of the corner of your eye.
 
 You can often find mantis shrimp on dives in the area, but it was very lucky to see one through only a few feet of water like this. I wish I'd gotten a photo of this guy, but by the time I got back with a camera he'd evacuated the area, his hole already collapsed. Here's someone else's photo instead [2].
 
