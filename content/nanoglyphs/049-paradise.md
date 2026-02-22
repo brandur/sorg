@@ -45,7 +45,7 @@ A few weeks ago we got word of layoffs at Heroku. The entire company's turned ov
 
 In a way, this is a shame. Compared to the process of deploying an app to Fargate I described above, the Heroku experience is still better despite not noticeably changing in 15 years.
 
-The expansive layoffs were a bit of a surprise because I'd been told numerous times over the years that Heroku as a division inside of Salesforce was doing well. At Rails World last year, we found our booth right next to a large, expensive looking one from Heroku. While we were giving out stickers and coloring books, the swag they'd brought this year were authentic, miniature Heroku-branded LEGO sets, allegedly $50/set to produce. I didn't think much of it at the time, but things at Heroku seemed to be going pretty well.
+The expansive layoffs were a bit of a surprise because I'd been told numerous times over the years that Heroku as a division inside of Salesforce was doing well. At Rails World last year, we found our booth right next to a large, expensive looking one from Heroku. While we were giving out stickers and coloring books, the swag they'd brought this year was authentic, miniature Heroku-branded LEGO sets, allegedly $50/set to produce. I didn't think much of it at the time, but things at Heroku seemed to be going pretty well.
 
 But in another way, it wasn't a big surprise. The Heroku experience has been largely static for all of recent history. Its best known innovators and most ambitious people left a decade ago, and though I'm sure they had plenty of good people left, I'd hazard to guess that a lot of the staff left were those in remote roles with grandfathered leveling from 2021's remote-mania and LCOL-geo comps that'd be near impossible to pull in 2026's market. And when CRM is down 40+% YoY (for years I'd gotten so used to this stock only ever going up and to the right that it was shocking to see it in such ill health), something's got to give.
 
@@ -125,13 +125,13 @@ We stayed at a resort called "Cove" on one of the archipelago's many tiny island
 
 Cove's small island is called Yeben, and if you close your eyes and imagine what a deserted tropical paradise is supposed to look like, what you're seeing is probably a lot like Yeben. Far from any population centers, there you get perfect beaches, crystal clear water, and gorgeous vegetation. The island's forest is dense enough that you won't be going hiking in an arbitrary direction of your choice, but they'd done some nice trail building so you could follow a path up and over the top of the island to its southern side, then the beach to its eastern tip, then back north and west to get back to where you started.
 
-In the evening hundreds of bats the size of sparrows flew in frantic zig zags overhead. Once in a while, a heavy flying fox would peel its massive body off the top of a tree and glide off.
+In the evening hundreds of bats the size of sparrows flew in frantic zigzags overhead. Once in a while, a heavy flying fox would peel its massive body off the top of a tree and glide off.
 
 <img src="/photographs/nanoglyphs/049-paradise/yeben@2x.webp" alt="Yeben Island" class="wide" loading="lazy">
 
 The dozen tourist villas (there's only 20-30 visitors on the island at a time) were lined up along an oceanside boardwalk. A large, open-sided (flaps were drawn over in the event of rain) common building complete with couches and pool table served us for briefing and dining. As with most diving trips, we sunk into a routine schedule: wake early, get breakfast, load the boats, dive, surface interval on a random beach, dive, back to base for lunch, rest, back out for one more dive at a more local site.
 
-At one of the beaches they'd take us for surface interval we came across these beautiful mangrove monitors. Being the first large land animal you've seen in days, it's exciting the first time you spot one, then as you look harder it dawns on you that the first wasn't alone, and there's a fair few scampering through the underbrush.
+At one of the beaches they'd take us to for surface intervals, we came across these beautiful mangrove monitors. Being the first large land animal you've seen in days, it's exciting the first time you spot one, then as you look harder it dawns on you that the first wasn't alone, and there's a fair few scampering through the underbrush.
 
 <img src="/photographs/nanoglyphs/049-paradise/mangrove-monitor-1@2x.jpg" alt="Mangrove monitor" class="wide" loading="lazy">
 
