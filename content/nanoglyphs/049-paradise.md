@@ -21,7 +21,7 @@ I'm not making any claims, merely saying that the future isn't obvious. Certainl
 
 But enough about that. Thanks for reading Nanoglyph. This week: Fargate, the end of Heroku (?), and some photos from the island of Yeben in Raja Ampat, a prime candidate for paradise on Earth. As always, this edition [written by human](/human).
 
-<img src="/photographs/nanoglyphs/049-paradise/beach@2x.jpg" alt="Beach in Raja Ampat" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/beach@2x.jpg" alt="Beach in Raja Ampat" class="wide" loading="lazy">
 
 ## The partial product (#partial-product)
 
@@ -37,7 +37,7 @@ The good news is that LLMs have made all of this much easier. A colleague had a 
 
 Still, we now have a bread basket of shell scripts and YAML files that no human knows that well, and yet are ours to maintain. The bill for a couple non-production prototypes is climbing towards $100/month. One time I tried to get the public URL for the service I'd just deployed, eventually finding it 5 minutes later after following about 18 AWS Console links. Maybe I have unrealistic expectations, but I found myself thinking: so we pay Amazon to host our software. It's a plug-and-play product that's not plug-and-play, nothing is integrated well, the console is confusing and not full-featured, the docs are awful, and it's pretty expensive. It's 2026. This is the best we can do?
 
-<img src="/photographs/nanoglyphs/049-paradise/marker-dark@2x.jpg" alt="Marker just off the beach in Raja Ampat (in the evening)" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/marker-dark@2x.jpg" alt="Marker just off the beach in Raja Ampat (in the evening)" class="wide" loading="lazy">
 
 ## Layoffs & LEGO (#layoffs-lego)
 
@@ -47,7 +47,7 @@ In a way, this is a shame. Compared to the process of deploying an app to Fargat
 
 The expansive layoffs were a bit of a surprise because I'd been told numerous times over the years that Heroku as a division inside of Salesforce was doing well. At Rails World last year, we found our booth right next to a large, expensive looking one from Heroku. While we were giving out stickers and coloring books, the swag they'd brought this year were authentic, miniature Heroku-branded LEGO sets, allegedly $50/set to produce. I didn't think much of it at the time, but things at Heroku seemed to be going pretty well.
 
-But in another way, it wasn't a big surprise. The Heroku experience has been largely static for all of recent history. The company's best known innovators and most ambitious people left a decade ago. I'd hazard that a lot of the staff left were those in remote roles with grandfathered leveling from 2021's remote-mania and LCOL-geo comps that'd be near impossible to pull in 2026's market. And when CRM is down 40+% YoY (for years I'd gotten so used to this stock only ever going up and to the right that it was shocking to see it in such ill health), something's got to give.
+But in another way, it wasn't a big surprise. The Heroku experience has been largely static for all of recent history. Its best known innovators and most ambitious people left a decade ago. I'd hazard that a lot of the staff left were those in remote roles with grandfathered leveling from 2021's remote-mania and LCOL-geo comps that'd be near impossible to pull in 2026's market. And when CRM is down 40+% YoY (for years I'd gotten so used to this stock only ever going up and to the right that it was shocking to see it in such ill health), something's got to give.
 
 ---
 
@@ -61,7 +61,7 @@ But we didn't. We could hardly know it at the time, but Heroku's innovative stre
 
 That was 2012, and though it would've been the best opportunity to go big, it wouldn't be the last. It lost momentum, but its resources never went away, and that powerhouse brand still carries through to today, where I'd hazard a guess that technical people would still find the name "Heroku" more recognizable than "Fargate", "Fly", or "Render". Heroku could've still recovered in 2015, and 2018, and 2021, and 2024. It just didn't.
 
-<img src="/photographs/nanoglyphs/049-paradise/pier@2x.jpg" alt="Pier out the boathouse in Raja Ampat" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/pier@2x.jpg" alt="Pier out the boathouse in Raja Ampat" class="wide" loading="lazy">
 
 ## The path not taken (#path-not-taken)
 
@@ -93,13 +93,13 @@ The critical consideration to tie it all together would be to keep Heroku's trad
 
 I've always liked the idea of **progressive enhancement**. A user's first interaction with Heroku should be `git push heroku master`, where they get to experience the delight of seeing their app up and running with a single command. But from there they should be able to peel back layers one at a time to achieve as much control as they need, whether it be isolation via VPC, automation via API, or debugging by SSHing into an active production box.
 
-<img src="/photographs/nanoglyphs/049-paradise/boathouse@2x.jpg" alt="Boathouse at Cove" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/boathouse@2x.jpg" alt="Boathouse at Cove" class="wide" loading="lazy">
 
-<img src="/photographs/nanoglyphs/049-paradise/boardwalk@2x.jpg" alt="Boardwalk at Cove" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/boardwalk@2x.jpg" alt="Boardwalk at Cove" class="wide" loading="lazy">
 
 <!--
 
-<img src="/photographs/nanoglyphs/049-paradise/dive-boat@2x.jpg" alt="Dive boat from another nearby resort" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/dive-boat@2x.jpg" alt="Dive boat from another nearby resort" class="wide" loading="lazy">
 
 -->
 
@@ -115,7 +115,7 @@ While we're at it, a few don'ts:
 
 * **Don't rebuild the API:** This one hurts. I spent over a year building out Heroku's new V3 API, taking the existing foundations and refining it for stronger convention, better flexibility, and modern best practices. This project was immensely satisfying (it felt like I should be working for free), but we ate up an enormous opportunity cost working on it. The API was the highest leverage component in the stack and we could've spent the time helping to ship other features instead.
 
-<img src="/photographs/nanoglyphs/049-paradise/fish@2x.jpg" alt="Fish off the dock" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/fish@2x.jpg" alt="Fish off the dock" class="wide" loading="lazy">
 
 ## Raja Ampat (#raja-ampat)
 
@@ -127,25 +127,25 @@ Cove's small island is called Yeben, and if you close your eyes and imagine what
 
 In the evening hundreds of bats the size of sparrows flew in frantic zig zags overhead. Once in a while, a heavy flying fox would peel its massive body off the top of a tree and glide off.
 
-<img src="/photographs/nanoglyphs/049-paradise/yeben@2x.webp" alt="Yeben Island" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/yeben@2x.webp" alt="Yeben Island" class="wide" loading="lazy">
 
 The dozen tourist villas (there's only 20-30 visitors on the island at a time) were lined up along an oceanside boardwalk. A large, open-sided (flaps were drawn over in the event of rain) common building complete with couches and pool table served us for briefing and dining. As with most diving trips, we sunk into a routine schedule: wake early, get breakfast, load the boats, dive, surface interval on a random beach, dive, back to base for lunch, rest, back out for one more dive at a more local site.
 
 At one of the beaches they'd take us for surface interval we came across these beautiful mangrove monitors. Being the first large land animal you've seen in days, it's exciting the first time you spot one, then as you look harder it dawns on you that the first wasn't alone, and there's a fair few scampering through the underbrush.
 
-<img src="/photographs/nanoglyphs/049-paradise/mangrove-monitor-1@2x.jpg" alt="Mangrove monitor" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/mangrove-monitor-1@2x.jpg" alt="Mangrove monitor" class="wide" loading="lazy">
 
-<img src="/photographs/nanoglyphs/049-paradise/mangrove-monitor-2@2x.jpg" alt="Mangrove monitor" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/mangrove-monitor-2@2x.jpg" alt="Mangrove monitor" class="wide" loading="lazy">
 
 ### On sharks and shrimp (#sharks-and-shrimp)
 
 Yeben's shore was surrounded by shallows populated by huge schools of fish, and more unusually, dozens of black-tipped reef sharks. Most of them were tiny little guys, but the larger ones were big enough to occasionally breach their fins out of the water, creating an ominous presence when viewed sideways from shore (still small for sharks though). I could stand on the dock and snap photos as they passed below.
 
-<img src="/photographs/nanoglyphs/049-paradise/sharks-1@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/sharks-1@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide" loading="lazy">
 
-<img src="/photographs/nanoglyphs/049-paradise/sharks-2@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/sharks-2@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide" loading="lazy">
 
-<img src="/photographs/nanoglyphs/049-paradise/sharks-3@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/sharks-3@2x.jpg" alt="Sharks(s) off the dock in Raja Ampat" class="wide" loading="lazy">
 
 It might surprise non-divers to see how blasé divers are around sharks. Doing three dives a day I wasn't particularly predisposed to spend even more time in the water, but an Italian couple would finish their three only to immediately jump back in to go snorkeling around the pier for an hour, happily sharing the shallows with these little guys.
 
@@ -155,7 +155,7 @@ Mantis shrimp build form-fitting circular holes for themselves, and back into th
 
 You can often find mantis shrimp on dives in the area, but it was very lucky to see one through only a few feet of water like this. I wish I'd gotten a photo of this guy, but by the time I got back with a camera he'd evacuated the area, his hole already collapsed. Here's someone else's photo instead [2].
 
-<img src="/photographs/nanoglyphs/049-paradise/mantis-shrimp@2x.jpg" alt="Mantis shrimp (credit Cédric Péneau)" class="wide_portrait" loading="lazy">
+<img src="/photographs/nanoglyphs/049-paradise/mantis-shrimp@2x.jpg" alt="Mantis shrimp (credit Cédric Péneau)" class="wide" loading="lazy">
 
 This Indonesia travel log is almost at the end, and about time too given this was all four months ago already. Next issue I have a few more photos from a nearby star-shaped lagoon that was quite beautiful, but that'll be the end of it.
 
