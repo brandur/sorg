@@ -41,13 +41,13 @@ Still, we now have a bread basket of shell scripts and YAML files that no human 
 
 ## Layoffs & LEGO (#layoffs-lego)
 
-A few weeks ago we got word of layoffs at Heroku. The entire company's turned over since, so take it with a grain of salt, but I heard that 30-40% of the staff was let go. The corporate jargon in their public announcement is hard to parse, but it sounds like the intention is to functionally sunset the product.
+A few weeks ago we got word of layoffs at Heroku. The entire company's turned over since I was there (so take this with a grain of salt since I don't have any first- or even second-hand information anymore), but supposedly 30-40% of the staff was let go. The corporate jargon in their public announcement is hard to parse, but it sounds like the intention is to functionally sunset the product.
 
-In a way, this is a shame. Compared to the process of deploying an app to Fargate I described above, the Heroku experience is still better despite barely changing in 15 years.
+In a way, this is a shame. Compared to the process of deploying an app to Fargate I described above, the Heroku experience is still better despite not noticeably changing in 15 years.
 
 The expansive layoffs were a bit of a surprise because I'd been told numerous times over the years that Heroku as a division inside of Salesforce was doing well. At Rails World last year, we found our booth right next to a large, expensive looking one from Heroku. While we were giving out stickers and coloring books, the swag they'd brought this year were authentic, miniature Heroku-branded LEGO sets, allegedly $50/set to produce. I didn't think much of it at the time, but things at Heroku seemed to be going pretty well.
 
-But in another way, it wasn't a big surprise. The Heroku experience has been largely static for all of recent history. Its best known innovators and most ambitious people left a decade ago. I'd hazard that a lot of the staff left were those in remote roles with grandfathered leveling from 2021's remote-mania and LCOL-geo comps that'd be near impossible to pull in 2026's market. And when CRM is down 40+% YoY (for years I'd gotten so used to this stock only ever going up and to the right that it was shocking to see it in such ill health), something's got to give.
+But in another way, it wasn't a big surprise. The Heroku experience has been largely static for all of recent history. Its best known innovators and most ambitious people left a decade ago, and though I'm sure they had plenty of good people left, I'd hazard to guess that a lot of the staff left were those in remote roles with grandfathered leveling from 2021's remote-mania and LCOL-geo comps that'd be near impossible to pull in 2026's market. And when CRM is down 40+% YoY (for years I'd gotten so used to this stock only ever going up and to the right that it was shocking to see it in such ill health), something's got to give.
 
 ---
 
