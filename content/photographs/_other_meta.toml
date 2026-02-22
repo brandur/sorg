@@ -419,6 +419,100 @@ title = "iA Writer."
 # title = "Shallows"
 
 #
+# /nanoglyphs/049-paradise
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/74jqmydyee51qygtppvv2/2W4A8307.JPG?rlkey=42cwxiamb5z13yhhfh3sr97ca&dl=1"
+slug = "nanoglyphs/049-paradise/beach"
+title = "Beach in Raja Ampat"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/j6pefc8uaw3i5ukka2qqb/2W4A8461.JPG?rlkey=88okdmlbzjn6ygmam2mvyn71y&dl=1"
+slug = "nanoglyphs/049-paradise/boardwalk"
+title = "Boardwalk at Cove"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/jsa7j8kqdeyodigcn6p2p/2W4A8460.JPG?rlkey=9kht15uj1i9mot221dw66z4hm&dl=1"
+slug = "nanoglyphs/049-paradise/boathouse"
+title = "Boathouse at Cove"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/b5hgzuj1dgc7jq1gt7kta/2W4A8486.JPG?rlkey=g01nsee7p11qtmg5819uxpxob&dl=1"
+slug = "nanoglyphs/049-paradise/fish"
+title = "Fish off the dock"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/wy79uakp0492ukz07pmp9/2W4A8362-crop.jpg?rlkey=xasqqt95y9u8olsqt3btv61hu&dl=1"
+slug = "nanoglyphs/049-paradise/dive-boat"
+title = "Dive boat from another nearby resort"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/pywe1eye85tnqdyobsie2/2W4A8417-optimized.jpg?rlkey=jdaasdrdumhpmy7w1d1etphy7&dl=1"
+slug = "nanoglyphs/049-paradise/marker"
+title = "Marker just off the beach in Raja Ampat"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/8zqa76ogvzxsde4zhj3tv/2W4A8349.JPG?rlkey=wyzmfpjle2jswtnz2ssx0ltns&dl=1"
+slug = "nanoglyphs/049-paradise/mangrove-monitor-1"
+title = "Mangrove monitor"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/s0d240tbaelbfr0x0a4qa/2W4A8353-adjusted.jpg?rlkey=xu3ptwla0ff17cpdrenedtv9f&dl=1"
+slug = "nanoglyphs/049-paradise/mangrove-monitor-2"
+title = "Mangrove monitor"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/knnoye9kgv7eytdpi3w3n/mantis-shrimp.jpg?rlkey=arikfikkjg5cvtq10kgus5q38&dl=1"
+slug = "nanoglyphs/049-paradise/mantis-shrimp"
+title = "Mantis shrimp (credit Cédric Péneau)"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/pzyc20erjy7tonw241wuf/2W4A8428.JPG?rlkey=6w08kw8x05z03f3a8agv7nbcu&dl=1"
+slug = "nanoglyphs/049-paradise/marker-dark"
+title = "Marker just off the beach in Raja Ampat (in the evening)"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/ther4vedsz4fm5b4wnfyh/2W4A8415.JPG?rlkey=iparrd5x9tj9x6spv9fisw11d&dl=1"
+slug = "nanoglyphs/049-paradise/pier"
+title = "Pier out to the boat house in Raja Ampat"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/aes2lx2l5k9q64f5kcr1i/2W4A8472-crop.jpg?rlkey=brp2rudtfg40ggv9z95lclhzx&dl=1"
+slug = "nanoglyphs/049-paradise/sharks-1"
+title = "Shark(s) off the dock in Raja Ampat"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/e7dsr6fcdlaih9j7wxuvc/2W4A8332-adjusted.jpg?rlkey=lkdmmcgk3uo94jy2eqvyz1o9g&dl=1"
+slug = "nanoglyphs/049-paradise/sharks-2"
+title = "Shark(s) off the dock in Raja Ampat"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/9ei7aak0psnm4dn7x8v6q/2W4A8478-adjusted.jpg?rlkey=rz3r21wkift2evbrwjyhy3e36&dl=1"
+slug = "nanoglyphs/049-paradise/sharks-3"
+title = "Shark(s) off the dock in Raja Ampat"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/mb425jdtplejs86besw6w/yeben.webp?rlkey=8rng5cq524vtlobd6o0jl6vhu&dl=1"
+slug = "nanoglyphs/049-paradise/yeben"
+title = "Yeben Island"
+
+#
 # /nanoglyphs/048-llms
 #
 
