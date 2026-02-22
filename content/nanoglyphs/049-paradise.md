@@ -113,7 +113,7 @@ While we're at it, a few don'ts:
 
 * **Don't do Cassandra:** Pretty obvious in retrospect. Anyone so big that they have to run Cassandra (very few people should) is also so big that they can afford to run it themselves.
 
-* **Don't rebuild the API:** This one hurts. I spent over a year building out Heroku's new V3 API, taking the existing foundations and refining it for stronger convention, better flexibility, and modern best practices. This project was immensely satisfying (it felt like I should be working for free), but we ate up an enormous opportunity cost working on it. The API was the highest leverage component in the stack and we could've spent the time helping to ship other features instead.
+* **Don't rebuild the API:** This one hurts. I spent over a year building out Heroku's new V3 API (`Accept: application/vnd.heroku+json; version=3`), taking the existing foundations and refining it for stronger convention, better flexibility, and modern best practices. This project was immensely satisfying (it felt like I should be working for free), but we ate up an enormous opportunity cost working on it. The API was the highest leverage component in the stack and we could've spent the time helping to ship other features instead.
 
 <img src="/photographs/nanoglyphs/049-paradise/fish@2x.jpg" alt="Fish off the dock" class="wide" loading="lazy">
 
