@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2026-02-22T13:22:49-08:00
+  slug = "102"
+  title = "Raja Ampat marker"
+  description = """
+A marker just off the beach on the tiny island of Yeben in Raja Ampat. With its perfect beaches, crystal clear water, and gorgeous vegetation, Yeben is a prime candidate for paradise on Earth.
+
+Poster for [_Nanoglyph 049_](/nanoglyphs/049-paradise), on the end of Heroku (?), things we could've done to stave off its untimely demise, and a brief trip report on diving in Raja Ampat.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/pywe1eye85tnqdyobsie2/2W4A8417-optimized.jpg?rlkey=jdaasdrdumhpmy7w1d1etphy7&dl=1"
+    slug = "102"
+
+[[entries]]
   published_at = 2026-02-08T13:55:22-08:00
   slug = "101"
   title = "Lyon"

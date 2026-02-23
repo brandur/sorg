@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-02-22T13:22:49-08:00
+  description = """\
+ [_Nanoglyph 049_](/nanoglyphs/049-paradise) is published, on the end of Heroku (?), things we could've done to stave off its untimely demise, and a brief trip report from paradise in Raja Ampat.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/049-paradise"
+    original_image_url = "https://www.dropbox.com/scl/fi/pywe1eye85tnqdyobsie2/2W4A8417-optimized.jpg?rlkey=jdaasdrdumhpmy7w1d1etphy7&dl=1"
+    slug = "marker"
+
+[[atoms]]
   published_at = 2026-02-08T13:55:22-08:00
   description = """\
  [_Nanoglyph 048_](/nanoglyphs/048-llms) is published, with mixed thoughts on LLMs, the past, present, and future of programming, Ambon, and psychedelic frogfish.
