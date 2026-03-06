@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-03-05T21:26:52-08:00
+  description = """\
+Published a post on the River blog: [The evolution of background job frameworks in Ruby](https://riverqueue.com/blog/ruby-queue-history), tracing the history of async job frameworks in the Ruby ecosystem from BackgrounDRb to Solid Queue, and our experience moving the Heroku API from Delayed::Job to Queue Classic to Que.
+"""
+
+[[atoms]]
   published_at = 2026-02-22T13:22:49-08:00
   description = """\
  [_Nanoglyph 049_](/nanoglyphs/049-paradise) is published, on the end of Heroku (?), things we could've done to stave off its untimely demise, and a brief trip report from paradise in Raja Ampat.
