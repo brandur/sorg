@@ -174,9 +174,9 @@ A new operation in the database will be assigned a `xid` af 90506 or higher, and
 
 The standard Postgres index is implemented as a [B-tree](http://en.wikipedia.org/wiki/B-tree) which is searched to find TIDs (tuple identifiers) that are stored in its leaves. These TIDs then map back to physical locations of rows within the table which Postgres can use to extract the full tuple.
 
-The one key piece of information here is that a Postgres index doesn't generally contain tuple visibility information[1]. To know whether a tuple is still visible to the in-progress transaction, it must be extracted from the heap and have its visibility checked.
+The one key piece of information here is that a Postgres index doesn't generally contain tuple visibility information [1]. To know whether a tuple is still visible to the in-progress transaction, it must be extracted from the heap and have its visibility checked.
 
-The Postgres codebase is large enough that pointing to a single place to outline this detail in the implementation is difficult, but `index_getnext` as shown below is a pretty important piece of it. Its job is to scan any type of index in a generic way and extract a tuple that matches the conditions of an incoming query. Most of the body is wrapped in a continuous loop that first calls into `index_getnext_tid` which will descend the B-tree to find an appropriate TID. After one is retrieved, it's passed off to `index_fetch_heap`, which will fetch the full tuple from the heap, and among other things check its visibility against the current snapshot (a snapshot reference is stored as part of the `IndexScanDesc` type)[2].
+The Postgres codebase is large enough that pointing to a single place to outline this detail in the implementation is difficult, but `index_getnext` as shown below is a pretty important piece of it. Its job is to scan any type of index in a generic way and extract a tuple that matches the conditions of an incoming query. Most of the body is wrapped in a continuous loop that first calls into `index_getnext_tid` which will descend the B-tree to find an appropriate TID. After one is retrieved, it's passed off to `index_fetch_heap`, which will fetch the full tuple from the heap, and among other things check its visibility against the current snapshot (a snapshot reference is stored as part of the `IndexScanDesc` type) [2].
 
 ``` c
 /* ----------------
@@ -269,7 +269,7 @@ Illustrated visually, the locking function is able to skip the bulk of the dead 
 
 Because Que works jobs in the order that they came into the queue, having workers re-use the identifier of the last job they worked might be a simple and effective way to accomplish this. Here's the basic pseudocode for a modified work loop:
 
-```
+``` ruby
 last_job_id = nil
 
 loop do
@@ -289,7 +289,7 @@ And for comparison, here's what it looked like _before_ the patch:
 
 {{Figure "Number of jobs in the queue on vanilla Que. 60k one hour in." (ImgSrcAndAltAndClass "/assets/images/postgres-queues/pre-queue-count.png" "Number of jobs in the queue on vanilla Que. 60k one hour in." "overflowing")}}
 
-We can see above that the patched version of Que performs optimally for roughly twice as long under degraded conditions. It eventually hockeysticks as well, but only after maintaining a stable queue for a considerable amount of time[3]. We found that a database's capacity to work under degraded conditions was partly a function of database size too: the tests above were run on a `heroku-postgresql:standard-2`, but a `heroku-postgresql:standard-7` with the patched version of Que was able to maintain near zero queue for the entire duration of the experimental run, while the unpatched version degraded nearly identically to its companion on the smaller database.
+We can see above that the patched version of Que performs optimally for roughly twice as long under degraded conditions. It eventually hockeysticks as well, but only after maintaining a stable queue for a considerable amount of time [3]. We found that a database's capacity to work under degraded conditions was partly a function of database size too: the tests above were run on a `heroku-postgresql:standard-2`, but a `heroku-postgresql:standard-7` with the patched version of Que was able to maintain near zero queue for the entire duration of the experimental run, while the unpatched version degraded nearly identically to its companion on the smaller database.
 
 #### Lock jitter (#lock-jitter)
 
@@ -299,7 +299,7 @@ To account for this problem our patch to Que introduces a time-based form of loc
 
 An amended form of the new work loop pseudocode that performs some jitter of this sort might look like this:
 
-```
+``` ruby
 last_job_id = nil
 start = now()
 
