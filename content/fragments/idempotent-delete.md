@@ -33,7 +33,7 @@ However, it's also not very helpful. If a caller lost the response of the first 
 
 On this go around, I'm going to try and do something with our `DELETE` APIs. In many product implementations some kind of "acts as paranoid" facility is common, where you add a `deleted_at` timestamp to tables or keep a separate "tombstone" collection to soft delete objects instead of culling them permanently, and we've had that since well before I started.
 
-Conveniently, soft deletion acts as an easy stepping stone do something a little smarter with our delete implementations:
+Conveniently, soft deletion acts as an easy stepping stone to do something a little smarter with our delete implementations:
 
 * A "normal" first time deletion returns a `204 No Response`, as is our usual convention.
 * If we find that the object is already deleted, but did exist, we return a `410 Gone` instead.
