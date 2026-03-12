@@ -4,7 +4,7 @@ published_at = 2022-07-18T17:59:22Z
 title = "Idempotency: The `is_transient` property"
 +++
 
-I've written previously about [implementing idempotency keys](/fragments/idempotency-keys-crunchy), an idea stemming from APIs like Stripe's, but which has gotten wider adoption more recently including [it's own IETF draft](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header-00).
+I've written previously about [implementing idempotency keys](/fragments/idempotency-keys-crunchy), an idea stemming from APIs like Stripe's, but which has gotten wider adoption more recently including [its own IETF draft](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header-00).
 
 One of the quirks of idempotency keys is that while the responses of successful requests are always captured, errors are more nuanced. They fall into two categories:
 
