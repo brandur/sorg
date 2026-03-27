@@ -113,8 +113,8 @@ type ReadingAuthor struct {
 // Verifies interface compliance.
 var _ encoding.TextUnmarshaler = &ReadingAuthor{}
 
-// Only kicks in if the author value is a single string. Otherwise the full
-// object is unmarshaled into the struct.
+// UnmarshalText only kicks in if the author value is a single string. Otherwise
+// the full object is unmarshaled into the struct.
 func (a *ReadingAuthor) UnmarshalText(data []byte) error {
 	a.Name = string(data)
 	return nil

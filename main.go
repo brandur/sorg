@@ -230,7 +230,7 @@ func getModulirConfig() *modulir.Config {
 	return &modulir.Config{
 		Concurrency: conf.Concurrency,
 		Log:         getLog(),
-		LogColor:    term.IsTerminal(int(os.Stdout.Fd())),
+		LogColor:    term.IsTerminal(int(os.Stdout.Fd())), //nolint:gosec
 		Port:        conf.Port,
 		SourceDir:   ".",
 		TargetDir:   conf.TargetDir,
