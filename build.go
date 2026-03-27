@@ -10,11 +10,13 @@ import (
 	"html"
 	"html/template"
 	"io"
+	"maps"
 	"math/big"
 	"math/rand/v2"
 	"net/http"
 	"net/url"
 	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
 	"regexp"
@@ -1071,13 +1073,7 @@ func (a *Article) publishingInfo() map[string]string {
 // taggedWith returns true if the given tag is in this article's set of tags
 // and false otherwise.
 func (a *Article) taggedWith(tag Tag) bool {
-	for _, t := range a.Tags {
-		if t == tag {
-			return true
-		}
-	}
-
-	return false
+	return slices.Contains(a.Tags, tag)
 }
 
 func (a *Article) validate(source string) error {
@@ -1655,10 +1651,74 @@ func fetchVideo(ctx context.Context, c *modulir.Context, targetDir string, video
 	return true, nil
 }
 
+// generateTwitterCard generates a Twitter card image for an article using
+// ImageMagick when no hand-made card image exists. Returns the URL path to the
+// generated image.
+func generateTwitterCard(ctx context.Context, c *modulir.Context, slug, title string) (string, error) {
+	if mimage.MagickBin == "" {
+		return "", nil
+	}
+
+	outDir := path.Join(c.TargetDir, "assets", "twitter-cards")
+	if err := os.MkdirAll(outDir, 0o755); err != nil {
+		return "", xerrors.Errorf("error creating twitter card dir: %w", err)
+	}
+
+	outPath := path.Join(outDir, slug+".png")
+	urlPath := "/assets/twitter-cards/" + slug + ".png"
+
+	const (
+		bgColor  = "#f6f5e9"
+		font     = "System-Font-Semibold"
+		kerning  = "-3"
+		txtColor = "#1f2937"
+	)
+
+	captionPath := path.Join(outDir, slug+"_caption.png")
+
+	// Generate word-wrapped title caption within a bounded area.
+	captionCmd := exec.CommandContext(ctx, mimage.MagickBin, //nolint:gosec
+		"-size", "2080x900",
+		"-background", bgColor,
+		"-fill", txtColor,
+		"-font", font,
+		"-pointsize", "120",
+		"-kerning", kerning,
+		"-gravity", "NorthWest",
+		"caption:"+title,
+		captionPath,
+	)
+	if out, err := captionCmd.CombinedOutput(); err != nil {
+		return "", xerrors.Errorf("error generating twitter card caption: %s: %w", string(out), err)
+	}
+
+	// Composite caption onto a full-size canvas with padding, and add domain
+	// name at bottom left.
+	compositeCmd := exec.CommandContext(ctx, mimage.MagickBin, //nolint:gosec
+		"-size", "2400x1256", "xc:"+bgColor,
+		captionPath, "-gravity", "NorthWest", "-geometry", "+160+160", "-composite",
+		"-fill", "#4b5563",
+		"-font", font,
+		"-pointsize", "36",
+		"-kerning", "-1",
+		"-gravity", "SouthWest",
+		"-annotate", "+160+100", "brandur.org",
+		outPath,
+	)
+	if out, err := compositeCmd.CombinedOutput(); err != nil {
+		return "", xerrors.Errorf("error generating twitter card: %s: %w", string(out), err)
+	}
+
+	// Clean up intermediate caption file.
+	os.Remove(captionPath)
+
+	return urlPath, nil
+}
+
 // Gets a map of local values for use while rendering a template and includes
 // a few "special" values that are globally relevant to all templates.
-func getLocals(locals map[string]interface{}) map[string]interface{} {
-	defaults := map[string]interface{}{
+func getLocals(locals map[string]any) map[string]any {
+	defaults := map[string]any{
 		"AbsoluteURL":       conf.AbsoluteURL,
 		"EnableGoatCounter": conf.EnableGoatCounter,
 		"GoogleAnalyticsID": conf.GoogleAnalyticsID,
@@ -1670,9 +1730,7 @@ func getLocals(locals map[string]interface{}) map[string]interface{} {
 		"TwitterInfo":       scommon.TwitterInfo,
 	}
 
-	for k, v := range locals {
-		defaults[k] = v
-	}
+	maps.Copy(defaults, locals)
 
 	return defaults
 }
@@ -1824,7 +1882,7 @@ func renderArticle(ctx context.Context, c *modulir.Context, source string,
 	article.Slug = scommon.ExtractSlug(source)
 
 	content, err := mmarkdownext.Render(string(data), &mmarkdownext.RenderOptions{
-		TemplateData: map[string]interface{}{
+		TemplateData: map[string]any{
 			"Ctx": ctx,
 		},
 	})
@@ -1872,9 +1930,17 @@ func renderArticle(ctx context.Context, c *modulir.Context, source string,
 	)
 	if ok {
 		card.ImageURL = "/assets/images/" + article.Slug + "/twitter@2x." + format
+	} else {
+		generatedURL, err := generateTwitterCard(ctx, c, article.Slug, article.Title)
+		if err != nil {
+			return true, xerrors.Errorf("error generating twitter card for '%s': %w", article.Slug, err)
+		}
+		if generatedURL != "" {
+			card.ImageURL = generatedURL
+		}
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Article":        article,
 		"PublishingInfo": article.publishingInfo(),
 		"TwitterCard":    card,
@@ -1902,7 +1968,7 @@ func renderArticlesIndex(ctx context.Context, c *modulir.Context, articles []*Ar
 
 	articlesByYear := groupArticlesByYear(articles)
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"ArticlesByYear": articlesByYear,
 	})
 
@@ -1987,7 +2053,7 @@ func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, a
 		return false, nil
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Atoms": atoms,
 	})
 
@@ -2027,7 +2093,7 @@ func renderAtom(ctx context.Context, c *modulir.Context, atom *Atom, atomIndex i
 			atom.Slug, photo.Slug, photo.TargetExt())
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Atom":        atom,
 		"AtomIndex":   atomIndex,
 		"IndexMax":    maxAtomsIndex,
@@ -2089,7 +2155,7 @@ func renderAtomFeed(ctx context.Context, c *modulir.Context, atoms []*Atom, atom
 			break
 		}
 
-		locals := getLocals(map[string]interface{}{
+		locals := getLocals(map[string]any{
 			"Atom": atom,
 		})
 
@@ -2142,7 +2208,7 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 		atoms = atoms[0:maxAtomsIndex]
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Atoms":    atoms,
 		"IndexMax": maxAtomsIndex,
 	})
@@ -2181,7 +2247,7 @@ func renderFragment(ctx context.Context, c *modulir.Context, source string,
 	fragment.Slug = scommon.ExtractSlug(source)
 
 	content, err := mmarkdownext.Render(string(data), &mmarkdownext.RenderOptions{
-		TemplateData: map[string]interface{}{
+		TemplateData: map[string]any{
 			"Ctx": ctx,
 		},
 	})
@@ -2215,9 +2281,17 @@ func renderFragment(ctx context.Context, c *modulir.Context, source string,
 	)
 	if ok {
 		card.ImageURL = "/assets/images/fragments/" + fragment.Slug + "/twitter@2x." + format
+	} else {
+		generatedURL, err := generateTwitterCard(ctx, c, fragment.Slug, fragment.Title)
+		if err != nil {
+			return true, xerrors.Errorf("error generating twitter card for fragment '%s': %w", fragment.Slug, err)
+		}
+		if generatedURL != "" {
+			card.ImageURL = generatedURL
+		}
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Fragment":       fragment,
 		"PublishingInfo": fragment.publishingInfo(),
 		"TwitterCard":    card,
@@ -2299,7 +2373,7 @@ func renderFragmentsIndex(ctx context.Context, c *modulir.Context, fragments []*
 
 	fragmentsByYear := groupFragmentsByYear(fragments)
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"FragmentsByYear": fragmentsByYear,
 	})
 
@@ -2330,7 +2404,7 @@ func renderNanoglyph(ctx context.Context, c *modulir.Context, source string,
 		issue.HookImageURL = "/assets/images/nanoglyphs/" + issue.Slug + "/hook." + format
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -2414,7 +2488,7 @@ func renderNanoglyphsIndex(ctx context.Context, c *modulir.Context, issues []*sn
 		return false, nil
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
@@ -2446,7 +2520,7 @@ func renderPassage(ctx context.Context, c *modulir.Context, source string,
 		issue.HookImageURL = "/assets/images/passages/" + issue.Slug + "/hook." + format
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"InEmail":   false,
 		"Issue":     issue,
 		"URLPrefix": "", // Relative prefix for the web version
@@ -2530,7 +2604,7 @@ func renderPassagesIndex(ctx context.Context, c *modulir.Context, issues []*snew
 		return false, nil
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Issues":    issues,
 		"URLPrefix": "", // Relative prefix for the web version
 	})
@@ -2568,7 +2642,7 @@ func renderHome(ctx context.Context, c *modulir.Context,
 		sequences = sequences[0:3]
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Articles":   articles,
 		"Fragments":  fragments,
 		"Nanoglyphs": nanoglyphs,
@@ -2671,7 +2745,7 @@ func renderReading(ctx context.Context, c *modulir.Context) (bool, error) {
 
 	readingsByYear := groupReadingsByYear(readings)
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"ReadingsByYear": readingsByYear,
 	})
 
@@ -2692,7 +2766,7 @@ func renderPhotoIndex(ctx context.Context, c *modulir.Context, photos []*Photo,
 		return false, nil
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Photos": photos,
 	})
 
@@ -2752,7 +2826,7 @@ func renderRuns(ctx context.Context, c *modulir.Context) (bool, error) {
 		return false, nil
 	}
 
-	locals := getLocals(map[string]interface{}{})
+	locals := getLocals(map[string]any{})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "runs", "index.html"), locals)
 	if err != nil {
@@ -2792,7 +2866,7 @@ func renderSequenceFeed(ctx context.Context, c *modulir.Context,
 			break
 		}
 
-		locals := getLocals(map[string]interface{}{
+		locals := getLocals(map[string]any{
 			"Entry": entry,
 		})
 
@@ -2849,7 +2923,7 @@ func renderSequenceEntry(ctx context.Context, c *modulir.Context, entry *Sequenc
 		}
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Entry":       entry,
 		"Title":       title,
 		"TwitterCard": card,
@@ -2872,7 +2946,7 @@ func renderSequencesIndex(ctx context.Context, c *modulir.Context, entries []*Se
 		return false, nil
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"Entries": entries,
 	})
 
@@ -2916,7 +2990,7 @@ func renderTwitter(ctx context.Context, c *modulir.Context, tweets []*squantifie
 		return false, xerrors.Errorf("error marshaling tweet counts: %w", err)
 	}
 
-	locals := getLocals(map[string]interface{}{
+	locals := getLocals(map[string]any{
 		"NumTweets":            len(tweetsWithoutReplies),
 		"NumTweetsWithReplies": len(tweets),
 		"TweetCountsByMonth":   template.HTML(tweetCountsByMonthData), // chart: tweets by month
@@ -2937,10 +3011,7 @@ func selectRandomPhoto(photos []*Photo) *Photo {
 		return nil
 	}
 
-	numRecent := 20
-	if len(photos) < numRecent {
-		numRecent = len(photos)
-	}
+	numRecent := min(len(photos), 20)
 
 	// All recent photos go into the random selection.
 	randomPhotos := photos[0:numRecent]

@@ -260,19 +260,19 @@ func combineAuthors(authors []*ReadingAuthor) string {
 		return authors[0].Name
 	}
 
-	display := ""
+	var authorsSB strings.Builder
 
 	for i, author := range authors {
 		if i == len(authors)-1 {
-			display += " & "
+			authorsSB.WriteString(" & ")
 		} else if i > 0 {
-			display += ", "
+			authorsSB.WriteString(", ")
 		}
 
-		display += author.Name
+		authorsSB.WriteString(author.Name)
 	}
 
-	return display
+	return authorsSB.String()
 }
 
 func GetReadingsData(c *modulir.Context, target string) ([]*Reading, error) {

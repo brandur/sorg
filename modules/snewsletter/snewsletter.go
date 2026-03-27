@@ -146,7 +146,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 
 		// Pass a special template var so that we can optionally render signup
 		// forms right inside the body of a newsletter issue.
-		TemplateData: map[string]interface{}{
+		TemplateData: map[string]any{
 			"InEmail": email,
 		},
 	})

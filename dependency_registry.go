@@ -72,7 +72,7 @@ func (r *DependencyRegistry) parseGoTemplate(baseTmpl *template.Template,
 }
 
 func (r *DependencyRegistry) renderGoTemplate(ctx context.Context, c *modulir.Context,
-	source, target string, locals map[string]interface{},
+	source, target string, locals map[string]any,
 ) error {
 	file, err := os.Create(target)
 	if err != nil {
@@ -87,7 +87,7 @@ func (r *DependencyRegistry) renderGoTemplate(ctx context.Context, c *modulir.Co
 }
 
 func (r *DependencyRegistry) renderGoTemplateWriter(ctx context.Context, c *modulir.Context,
-	source string, writer io.Writer, locals map[string]interface{},
+	source string, writer io.Writer, locals map[string]any,
 ) error {
 	ctx, includeMarkdownContainer := mtemplatemd.Context(ctx)
 
