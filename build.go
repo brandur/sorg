@@ -16,7 +16,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"os/exec"
 	"path"
 	"path/filepath"
 	"regexp"
@@ -709,24 +708,6 @@ func build(c *modulir.Context) []error {
 		})
 	}
 
-	// Twitter cards
-	if mimage.MagickBin != "" {
-		for _, a := range articles {
-			article := a
-
-			_, ok := pathAsImage(
-				path.Join(c.SourceDir, "content", "images", article.Slug, "twitter@2x"),
-			)
-			if ok {
-				continue
-			}
-
-			c.AddJob("twitter card: "+article.Slug, func() (bool, error) {
-				return true, generateTwitterCard(ctx, c, article.Slug, article.Title)
-			})
-		}
-	}
-
 	//
 	// Atoms (index / fetch + resize)
 	//
@@ -810,24 +791,6 @@ func build(c *modulir.Context) []error {
 			return renderFragmentsFeed(c, fragments,
 				fragmentsChanged)
 		})
-	}
-
-	// Twitter cards
-	if mimage.MagickBin != "" {
-		for _, f := range fragments {
-			fragment := f
-
-			_, ok := pathAsImage(
-				path.Join(c.SourceDir, "content", "images", "fragments", fragment.Slug, "twitter@2x"),
-			)
-			if ok {
-				continue
-			}
-
-			c.AddJob("twitter card: "+fragment.Slug, func() (bool, error) {
-				return true, generateTwitterCard(ctx, c, fragment.Slug, fragment.Title)
-			})
-		}
 	}
 
 	// Possible photo in each fragment
@@ -1687,70 +1650,6 @@ func fetchVideo(ctx context.Context, c *modulir.Context, targetDir string, video
 	return true, nil
 }
 
-// twitterCardURLPath returns the URL path for a generated twitter card image.
-func twitterCardURLPath(slug string) string {
-	return "/assets/twitter-cards/" + slug + ".png"
-}
-
-// generateTwitterCard generates a Twitter card image for an article or
-// fragment using ImageMagick when no hand-made card image exists.
-func generateTwitterCard(ctx context.Context, c *modulir.Context, slug, title string) error {
-	outDir := path.Join(c.TargetDir, "assets", "twitter-cards")
-	if err := os.MkdirAll(outDir, 0o755); err != nil {
-		return xerrors.Errorf("error creating twitter card dir: %w", err)
-	}
-
-	outPath := path.Join(outDir, slug+".png")
-
-	const (
-		bgColor  = "#f6f5e9"
-		kerning  = "-3"
-		txtColor = "#1f2937"
-	)
-
-	font := path.Join(c.SourceDir, "content", "fonts", "inter", "Inter-SemiBold.ttf")
-
-	captionPath := path.Join(outDir, slug+"_caption.png")
-
-	// Generate word-wrapped title caption within a bounded area.
-	captionCmd := exec.CommandContext(ctx, mimage.MagickBin, //nolint:gosec
-		"-size", "2080x900",
-		"-background", bgColor,
-		"-fill", txtColor,
-		"-font", font,
-		"-pointsize", "120",
-		"-kerning", kerning,
-		"-gravity", "NorthWest",
-		"caption:"+title,
-		captionPath,
-	)
-	if out, err := captionCmd.CombinedOutput(); err != nil {
-		return xerrors.Errorf("error generating twitter card caption: %s: %w", string(out), err)
-	}
-
-	// Composite caption onto a full-size canvas with padding, and add domain
-	// name at bottom left.
-	compositeCmd := exec.CommandContext(ctx, mimage.MagickBin, //nolint:gosec
-		"-size", "2400x1256", "xc:"+bgColor,
-		captionPath, "-gravity", "NorthWest", "-geometry", "+160+160", "-composite",
-		"-fill", "#4b5563",
-		"-font", font,
-		"-pointsize", "36",
-		"-kerning", "-1",
-		"-gravity", "SouthWest",
-		"-annotate", "+160+100", "brandur.org",
-		outPath,
-	)
-	if out, err := compositeCmd.CombinedOutput(); err != nil {
-		return xerrors.Errorf("error generating twitter card: %s: %w", string(out), err)
-	}
-
-	// Clean up intermediate caption file.
-	os.Remove(captionPath)
-
-	return nil
-}
-
 // Gets a map of local values for use while rendering a template and includes
 // a few "special" values that are globally relevant to all templates.
 func getLocals(locals map[string]any) map[string]any {
@@ -1966,8 +1865,6 @@ func renderArticle(ctx context.Context, c *modulir.Context, source string,
 	)
 	if ok {
 		card.ImageURL = "/assets/images/" + article.Slug + "/twitter@2x." + format
-	} else {
-		card.ImageURL = twitterCardURLPath(article.Slug)
 	}
 
 	locals := getLocals(map[string]any{
@@ -2311,8 +2208,6 @@ func renderFragment(ctx context.Context, c *modulir.Context, source string,
 	)
 	if ok {
 		card.ImageURL = "/assets/images/fragments/" + fragment.Slug + "/twitter@2x." + format
-	} else {
-		card.ImageURL = twitterCardURLPath(fragment.Slug)
 	}
 
 	locals := getLocals(map[string]any{
