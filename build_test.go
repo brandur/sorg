@@ -79,29 +79,15 @@ func TestGenerateTwitterCard(t *testing.T) {
 		TargetDir: targetDir,
 	}
 
-	urlPath, err := generateTwitterCard(context.Background(), c, "test-slug", "A Test Article Title")
+	err := generateTwitterCard(context.Background(), c, "test-slug", "A Test Article Title")
 	require.NoError(t, err)
-	require.Equal(t, "/assets/twitter-cards/test-slug.png", urlPath)
+
+	require.Equal(t, "/assets/twitter-cards/test-slug.png", twitterCardURLPath("test-slug"))
 
 	outPath := path.Join(targetDir, "assets", "twitter-cards", "test-slug.png")
 	info, err := os.Stat(outPath)
 	require.NoError(t, err)
 	require.Positive(t, info.Size())
-}
-
-func TestGenerateTwitterCardNoMagick(t *testing.T) {
-	origBin := mimage.MagickBin
-	mimage.MagickBin = ""
-	defer func() { mimage.MagickBin = origBin }()
-
-	c := &modulir.Context{
-		SourceDir: ".",
-		TargetDir: t.TempDir(),
-	}
-
-	urlPath, err := generateTwitterCard(context.Background(), c, "test-slug", "Title")
-	require.NoError(t, err)
-	require.Empty(t, urlPath)
 }
 
 func TestTruncateString(t *testing.T) {
