@@ -1669,10 +1669,11 @@ func generateTwitterCard(ctx context.Context, c *modulir.Context, slug, title st
 
 	const (
 		bgColor  = "#f6f5e9"
-		font     = "System-Font-Semibold"
 		kerning  = "-3"
 		txtColor = "#1f2937"
 	)
+
+	font := path.Join(c.SourceDir, "content", "fonts", "inter", "Inter-SemiBold.ttf")
 
 	captionPath := path.Join(outDir, slug+"_caption.png")
 
