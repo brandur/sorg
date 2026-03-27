@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-03-27T08:11:08-07:00
+  description = """\
+Published my first article in a while, [_The Second Wave of the API-first Economy_](/articles/second-wave-api-first).
+
+APIs were meant to make the web programmable and interoperable. A combination of revenue chasing, security concern, and abuse reversed the trend for a decade as walls went up instead of down. Today, LLMs are changing the equation. People want agents that act on their behalf, and the services that ship APIs will have a decisive edge over those that don't.
+"""
+
+[[atoms]]
   published_at = 2026-03-17T16:30:58-07:00
   description = """\
 River is [SOC 2 Type II compliant](https://riverqueue.com/blog/soc-2-type-ii).
