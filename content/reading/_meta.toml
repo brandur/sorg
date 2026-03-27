@@ -597,9 +597,7 @@ published_year = 2022
 rating = 2
 read_at = 2023-02-08T00:00:00-08:00
 review = """\
-I was a huge fan of the author's last book _Ametora_ and dove into this one with zeal, but to my great surprise, almost didn't finish. Even by the end, I still didn't really understand what this book is about. It's the world's most preeminent collection of little anecdotes of music, movies, and culture, weaved together into an encyclopedic canvas of impressive breadth, but despite the litany of factoids, there's no purpose to the whole thing. No conclusion, no thesis, no raison d'être, just cultural references ad nauseam with an implication that there's some great wisdom below the surface.
-
-Recommendation: try _Ametora_ instead.
+Even by the end, I still didn't really understand what this book is about and almost didn't finish. It's the world's most preeminent collection of little anecdotes of music, movies, and culture, weaved together into an encyclopedic canvas of impressive breadth, but despite the litany of factoids, there's no purpose to the whole thing. No conclusion, no thesis, no raison d'être, just cultural references ad nauseam with an implication that there's some great wisdom below the surface. (There is no great wisdom below the surface.)
 """
 
 [[readings]]
@@ -3770,9 +3768,9 @@ isbn = "0465059732"
 isbn13 = "9780465059737"
 num_pages = 296
 published_year = 2015
-rating = 5
+rating = 2
 read_at = 2016-05-07T00:00:00-07:00
-review = "Ametora is an amazing book that is very informational while managing to stay easy to read and quite succinct. All its stories, from the rise of Ivy style, to the domination of international streetwear with A Bathing Ape, to the obsession and mastery with first finding vintage American denim, and then later with its production, are enthralling. A perfect example on how the history of fashion can be interesting."
+review = "I'd read this years ago and enjoyed it, but after seeing how vacuous Marx's latest two books have been, and how in the interim he's become a hyper-partisan political stenographer, I think I likely misjudged this one while not sufficiently thinking through the conclusions it posited. I've amended my review."
 review_id = 1473991055
 title = "Ametora: How Japan Saved American Style"
 
