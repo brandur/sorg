@@ -1,5 +1,5 @@
 +++
-hook = "How we can expect a new wave of APIs, driven by user demand to open products and services for use through LLMs."
+hook = "APIs were meant to make the web programmable and interoperable. A combination of revenue chasing, security concern, and abuse reversed the trend for a decade as walls went up instead of down. Today, LLMs are changing the equation. People want agents that act on their behalf, and the services that ship APIs will have a decisive edge over those that don't."
 location = "Seattle"
 published_at = 2026-03-27T08:11:08-07:00
 title = "The Second Wave of the API-first Economy"
