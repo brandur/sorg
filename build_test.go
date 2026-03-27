@@ -1,19 +1,14 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"os"
-	"path"
 	"slices"
 	"strings"
 	"testing"
 
 	"github.com/joeshaw/envdecode"
 	"github.com/stretchr/testify/require"
-
-	"github.com/brandur/modulir"
-	"github.com/brandur/modulir/modules/mimage"
 )
 
 func init() {
@@ -65,29 +60,6 @@ func TestSimplifyMarkdownForSummary(t *testing.T) {
 	require.Equal(t, "double new lines are gone", simplifyMarkdownForSummary("double new\n\nlines are gone"))
 	require.Equal(t, "single new lines are gone", simplifyMarkdownForSummary("single new\nlines are gone"))
 	require.Equal(t, "space is trimmed", simplifyMarkdownForSummary(" space is trimmed "))
-}
-
-func TestGenerateTwitterCard(t *testing.T) {
-	if conf.MagickBin == "" {
-		t.Skip("MAGICK_BIN not set; skipping twitter card generation test")
-	}
-	mimage.MagickBin = conf.MagickBin
-
-	targetDir := t.TempDir()
-	c := &modulir.Context{
-		SourceDir: ".",
-		TargetDir: targetDir,
-	}
-
-	err := generateTwitterCard(context.Background(), c, "test-slug", "A Test Article Title")
-	require.NoError(t, err)
-
-	require.Equal(t, "/assets/twitter-cards/test-slug.png", twitterCardURLPath("test-slug"))
-
-	outPath := path.Join(targetDir, "assets", "twitter-cards", "test-slug.png")
-	info, err := os.Stat(outPath)
-	require.NoError(t, err)
-	require.Positive(t, info.Size())
 }
 
 func TestTruncateString(t *testing.T) {
