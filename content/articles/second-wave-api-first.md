@@ -7,7 +7,7 @@ title = "The Second Wave of the API-first Economy"
 
 Over a decade ago when some colleagues and I were building out Heroku's V3 API, we set an ambitious goal for ourselves. The new _public_ API should be so expansive, so flexible that it'd be suitable to power our own user-facing dashboard. No private APIs or other escape hatches necessary. If a user was so inclined, they could use the API to build their own version of a dashboard.
 
-It worked. Not only was the company's new dashboard built on V3,  but an outside user would go on to build Heroku's first ever iOS app on it, with no additional feature requests sent our way.
+It worked. Not only was the company's new dashboard built on V3, but an outside user would go on to build Heroku's first ever iOS app on it, with no additional feature requests sent our way.
 
 ---
 
@@ -44,11 +44,11 @@ This wasn't a pre-planned, stack-ranked feature that a product team spent half a
 
 ---
 
-Part of the push for open APIs was simple good will towards the rest of the world. The engineers building them were brought up in earliest days of the internet, steeped in its original counterculture, and had an innate bias towards radical openness.
+Part of the push for open APIs was simple good will towards the rest of the world. The engineers building them were brought up in the earliest days of the internet, steeped in its original counterculture, and had an innate bias towards radical openness.
 
 There was also a feeling from the companies involved that the APIs would be beneficial for their bottom lines. Users and third parties would use APIs to supplement the core product with add-ons and extensions that'd drive growth and increase product retention and satisfaction.
 
-Sites like the now defunct ProgrammableWeb popped up to discuss and catalog the newly appearing APIs, and the "programmable web" wasn't only a website, it was a a principle.
+Sites like the now defunct ProgrammableWeb popped up to discuss and catalog the newly appearing APIs, and the "programmable web" wasn't only a website, it was a principle.
 
 In the near future, _all_ platforms would be API-first, providing full programmatic access and opening a new wave of interoperability across the web that'd let any service talk to any other service and massively accelerate the scope and reach of the internet. APIs would help expand everything from freedom to communication to commerce. An overwhelming force for good in the world.
 
@@ -62,11 +62,11 @@ Of course, it didn't last. The programmable web went through a phase of expansio
 
 * The power of Facebook's Graph API was hugely constricted post-Cambridge Analytica where a single rogue app was able to suck up data on millions of users and put it up for sale. Strict app review procedures were implemented. The API went from open access to a walled garden.
 
-* Even more extreme, Instagram's previously public API was deprecated totally. Realizing they had a real money maker on their hands, they saw no reason to share ad revenue with anyone else. Use Instagram through the first-party app or, not at all.
+* Even more extreme, Instagram's previously public API was deprecated totally. Realizing they had a real money maker on their hands, they saw no reason to share ad revenue with anyone else. Use Instagram through the first-party app or not at all.
 
-* Even APIs like GitHub's that stayed quite open had to crack down to a degree. Endpoints became authenticated by necessity and aggressive rate limiting was put in to curb abuse and reduce operational toil. Even when APIs were still quite open, using them build a full-scale third party app became more difficult as limiters flattened heavy (even if legitimate) use.
+* Even APIs like GitHub's that stayed quite open had to crack down to a degree. Endpoints became authenticated by necessity and aggressive rate limiting was put in to curb abuse and reduce operational toil. Even when APIs were still quite open, using them to build a full-scale third party app became more difficult as limiters flattened heavy (even if legitimate) use.
 
-The rationale for why APIs were being declawed or disappearing completely varied --- abuse, monetization pressure, competitive risk, privacy, etc. --- but the pattern was clear. Walls were going up across the world.
+The rationale for why APIs were being declawed or disappearing completely varied---abuse, monetization pressure, competitive risk, privacy, etc.---but the pattern was clear. Walls were going up across the world.
 
 APIs didn't disappear, but the expectation of an API became more limited to developer-focused platforms whose users paid them --- Stripe, Twilio, Slack, etc. When new consumer products appeared on the market (e.g. TikTok), no one expected them to have much in the way of an API.
 
@@ -74,23 +74,23 @@ APIs didn't disappear, but the expectation of an API became more limited to deve
 
 ## The coming second wave (#second-wave)
 
-For many years this was the status quo. If you were using Twitter, you'd use it from Twitter.com. Facebook, from Facebook.com. Instagram or TikTok, from their respective iOS/Android apps. Developer products like GitHub and Stripe continued strong, but elsewhere, APIs weren't enough of a competitive advantage of anyone who didn't have one to suffer.
+For many years this was the status quo. If you were using Twitter, you'd use it from Twitter.com. Facebook, from Facebook.com. Instagram or TikTok, from their respective iOS/Android apps. Developer products like GitHub and Stripe continued strong, but elsewhere, APIs weren't enough of a competitive advantage for anyone who didn't have one to suffer.
 
 But around mid-2025, the world changed. The last half year especially has been distinguished by the rise of indescribably powerful LLMs, which now dominate discourse as the most useful new tool in the world.
 
 They're already useful enough as incredible trivia machines or code generators, but they really start to shine when they integrate with things. For example, it's pretty neat having one generate a valid Kubernetes configuration for your new app, but it's _really_ neat watching it provision an <acronym title="Amazon Elastic Kubernetes Service">EKS</acronym> cluster via `awscli` and send out its first production deploy on your behalf.
 
-Suddenly, an API is no longer liability, but a major saleable vector to give users what they want: a way into the services they use and pay for so that an agent can use to carry out work on their behalf. Especially given a field of relatively undifferentiated products, in the near future the availability of an API might just be the crucial deciding factor that leads to one choice winning over another.
+Suddenly, an API is no longer liability, but a major saleable vector to give users what they want: a way into the services they use and pay for so that an agent can carry out work on their behalf. Especially given a field of relatively undifferentiated products, in the near future the availability of an API might just be the crucial deciding factor that leads to one choice winning over another.
 
 ### Picking my future bank (#my-future-bank)
 
-Let's think about banks. I have a couple bank accounts, each offering a standard set of features largely unchanged since the 60s. If I call them, they'll send me some checks. I can request a transfer between two internal accounts and they will transfer the money ... in 1-5 business days. Nowadays, they even offer ultra-modern features (from 2010) like *gasp*, MFA, just as long as it's through a provider that's paid them off (Symantec VIP). Sufficed to say, they're comfortable in the status quo. My banks do not have good APIs.
+Let's think about banks. I have a couple bank accounts, each offering a standard set of features largely unchanged since the 60s. If I call them, they'll send me some checks. I can request a transfer between two internal accounts and they will transfer the money ... in 1-5 business days. Nowadays, they even offer ultra-modern features (from 2010) like *gasp*, MFA, just as long as it's through a provider that's paid them off (Symantec VIP). Suffice it to say, they're comfortable in the status quo. My banks do not have good APIs.
 
 So far this has worked out okay for them. People aren't known to migrate banks often, and even if they did, regulatory moats make new incumbents rare.
 
 But in the modern age, can it last? When I want to move $100 from one bank to another, my banks put me through a humiliating ritual of logging into both accounts, and bypassing multiple security checks and captchas before I can perform any operation. All this despite me having just logged into both accounts from this exact location and biometrically-secured computer the day before.
 
-The world I _want_ is to instruct an LLM: "move $100 from Wells Fargo checking to Charles Schwab brokerage" and it will just _happen_. And to be fair, LLMs are already so absurdly good at reverse engineering things that this might already work today. But you know what'd work better? If both banks shipped with APIs, LLM-friendly usage instructions (through MCP or the like), and strong auth layer to give me confidence that the whole process is secure.
+The world I _want_ is to instruct an LLM: "move $100 from Wells Fargo checking to Charles Schwab brokerage" and it will just _happen_. And to be fair, LLMs are already so absurdly good at reverse engineering things that this might already work today. But you know what'd work better? If both banks shipped with APIs, LLM-friendly usage instructions (through MCP or the like), and a strong auth layer to give me confidence that the whole process is secure.
 
 If I were choosing a bank today, some considerations would be the same as they've always been---competent security, free checking, no foreign transaction fees---but I'd also futureproof the choice by picking one that's established technical bona fides by providing an API. Even if I'm not quite ready to trust all my credentials to an agent quite yet, I assume that this day is coming.
 
@@ -114,17 +114,17 @@ I used to wish that we'd gone down an alternative branch of web technology and a
 
 ### On behalf of people (#on-behalf-of-people)
 
-Notably, this is different than the first wave of APIs that I described above. Instead of APIs being to offer infinitely flexible access for inter-service access, scrape data, or build apps on top of someone else's plaform, their primary use will be fulfill requests on behalf of a primary user. Exactly like what they'd be doing through a first party app, but in a programmatic way.
+Notably, this is different than the first wave of APIs that I described above. Instead of APIs being to offer infinitely flexible access for inter-service access, scrape data, or build apps on top of someone else's platform, their primary use will be to fulfill requests on behalf of a primary user. Exactly like what they'd be doing through a first party app, but in a programmatic way.
 
 {{Figure "During the first wave, APIs were largely aimed at third parties who'd use them to extend and augment the underlying platform to provide additional features for users." (ImgSrcAndAltAndClass "/assets/images/second-wave-api-first/first-wave.svg" "During the first wave, APIs were largely aimed at third parties who'd use them to extend and augment the underlying platform to provide additional features for users." "overflowing")}}
 
 {{Figure "In the second wave, APIs map cleanly to normal product capabilities. They provide programmatic access for agents that act on behalf of people." (ImgSrcAndAltAndClass "/assets/images/second-wave-api-first/second-wave.svg" "In the second wave, APIs map cleanly to normal product capabilities. They provide programmatic access for agents that act on behalf of people." "overflowing")}}
 
-It may seem like a subtle difference, but there's considerable differences. The second model better incentivizes APIs to exist:
+It may seem like a subtle difference, but there are considerable differences. The second model better incentivizes APIs to exist:
 
 * APIs aren't for building a product that aims to displace the offerings of the underlying platform, but rather for giving users an alternative way to access it.
 
-* Security models are simplified because they're the same ones use by the product itself. Users have the same visibility that they'd have through a first party app, and no more.
+* Security models are simplified because they're the same ones used by the product itself. Users have the same visibility that they'd have through a first party app, and no more.
 
 * Aiming to support access patterns for a single person, platforms can rate limit much more aggressively to curb expenses and operational problems associated with offering an API.
 
@@ -134,15 +134,17 @@ APIs should aim to provide a little more leeway than they would for a human, but
 
 ### Limits of the model (#limits-of-the-model)
 
-While can expect many products and services to offer APIs for good agentic interoperability, it won't be forthcoming everywhere. Don't expect much out of Instagram, TikTok, or other platforms that power themselves with ads. Neither from monopolies that won't feel any serious pressure to change --- you won't be reliably paying your Xfinity bill via agent anytime soon.
+While can expect many products and services to offer APIs for good agentic interoperability, it won't be forthcoming everywhere.
+
+Don't expect much out of Instagram, TikTok, or other platforms that power themselves with ads. Neither from monopolies that won't feel any serious pressure to change --- you won't be reliably paying your Xfinity bill via agent anytime soon.
 
 ### Hints of the future, today (#future-today)
 
-In this section I figured I'd call out of a services that are already pulling this future forward:
+In this section I figured I'd call out a few services that are already pulling this future forward:
 
 * As I was in the middle of writing this essay, I got a [note from Basecamp](https://world.hey.com/dhh/basecamp-becomes-agent-accessible-3ae6b949) that they'd revamped themselves for LLM accessibility, including [new API](https://github.com/basecamp/bc3-api), [new CLI](https://github.com/basecamp/basecamp-cli), and [bundled skill](https://github.com/basecamp/basecamp-cli/blob/main/skills/basecamp/SKILL.md) to instruct agents on their use.
 
-## APIs are back baby! (#apis-back)
+## The spring thaw (#spring-thaw)
 
 Fifteen years ago, a number of us maximalists thought that APIs were going to eat the world, ushering in a new paradigm of interoperability that was going to vastly expand our capabilities as users and even change the world for the better.
 
