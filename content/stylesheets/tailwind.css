@@ -2863,6 +2863,50 @@ video {
   width: calc(100% + 200px);
 }
 
+.prose-figcaption\:mx-4 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.prose-figcaption\:mx-16 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.prose-figcaption\:mx-2 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.prose-figcaption\:mx-8 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.prose-figcaption\:my-2 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-figcaption\:my-6 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose-figcaption\:my-8 :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.prose-figcaption\:text-sm :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.prose-figcaption\:italic :is(:where(figcaption):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-style: italic;
+}
+
 .prose-strong\:font-mono :is(:where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
