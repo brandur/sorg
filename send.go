@@ -148,7 +148,7 @@ func renderAndSend(ctx context.Context, c *modulir.Context, source string, live,
 		return err
 	}
 
-	locals := map[string]interface{}{
+	locals := map[string]any{
 		"InEmail":   true,
 		"Issue":     issue,
 		"Title":     issue.Title,

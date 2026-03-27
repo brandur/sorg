@@ -216,9 +216,11 @@ func pace(distance float64, duration time.Duration) string {
 func renderPublishingInfo(info map[string]string) template.HTML {
 	s := ""
 
+	var infoSB strings.Builder
 	for k, v := range info {
-		s += fmt.Sprintf("<p><strong>%s</strong><br>%s</p>", k, v)
+		fmt.Fprintf(&infoSB, "<p><strong>%s</strong><br>%s</p>", k, v)
 	}
+	s += infoSB.String()
 
 	return template.HTML(s)
 }
@@ -247,11 +249,11 @@ func timeInLocal(t time.Time) time.Time {
 }
 
 func toStars(n int) string {
-	var stars string
+	var starsSB strings.Builder
 	for range n {
-		stars += "★ "
+		starsSB.WriteString("★ ")
 	}
-	return toNonBreakingWhitespace(stars)
+	return toNonBreakingWhitespace(starsSB.String())
 }
 
 // Gets the extension of a file at a URL. Also downcases said extension.
