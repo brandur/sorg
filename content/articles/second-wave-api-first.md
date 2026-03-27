@@ -21,7 +21,7 @@ And we weren't the only ones thinking that way:
 
 * Twitter's API at the time was almost completely open. You didn't even need an OAuth token --- just authenticate on API endpoints with your username/password and get access to just about anything.
 
-* GitHub was doing really impressive API design work, providing an expansive, feature complete API providing access to anything developers could need, and playing with forward-thinking ideas like hypermedia APIs/HATEOAS.
+* GitHub was doing really impressive API design work, providing an expansive, feature-complete API with access to anything developers could need, and playing with forward-thinking ideas like hypermedia APIs/HATEOAS.
 
 You can still find traces of this bygone era, standing like some cyclopean ruins from a previous age. Hit the root GitHub API and you'll find an artifact over a decade old --- a list of links that were intended to be followed as [hypermedia](https://en.wikipedia.org/wiki/HATEOAS):
 
@@ -44,7 +44,7 @@ This wasn't a pre-planned, stack-ranked feature that a product team spent half a
 
 ---
 
-Part of the push for open APIs was simple good will towards the rest of the world. The engineers building them were brought up in the earliest days of the internet, steeped in its original counterculture, and had an innate bias towards radical openness.
+Part of the push for open APIs was simple good will towards the rest of the world. The engineers building them were brought up in the earliest days of the internet, steeped in its original counterculture, and had an innate bias for radical openness.
 
 There was also a feeling from the companies involved that the APIs would be beneficial for their bottom lines. Users and third parties would use APIs to supplement the core product with add-ons and extensions that'd drive growth and increase product retention and satisfaction.
 
@@ -64,7 +64,7 @@ Of course, it didn't last. The programmable web went through a phase of expansio
 
 * Even more extreme, Instagram's previously public API was deprecated totally. Realizing they had a real money maker on their hands, they saw no reason to share ad revenue with anyone else. Use Instagram through the first-party app or not at all.
 
-* Even APIs like GitHub's that stayed quite open had to crack down to a degree. Endpoints became authenticated by necessity and aggressive rate limiting was put in to curb abuse and reduce operational toil. Even when APIs were still quite open, using them to build a full-scale third-party app became more difficult as limiters flattened heavy (even if legitimate) use.
+* Even APIs like GitHub's that stayed quite open had to crack down to a degree. Endpoints became authenticated by necessity and aggressive rate limiting was put in to curb abuse and reduce operational toil. And even when APIs were still largely accessible, using them to build a full-scale third-party app became more difficult as limiters flattened heavy (even if legitimate) use.
 
 The rationale for why APIs were being declawed or disappearing completely varied---abuse, monetization pressure, competitive risk, privacy, etc.---but the pattern was clear. Walls were going up across the world.
 
@@ -76,7 +76,7 @@ APIs didn't disappear, but it was a cold winter for them. The expectation of an 
 
 For many years this was the status quo. If you were using Twitter, you'd use it from Twitter.com. Facebook, from Facebook.com. Instagram or TikTok, from their respective iOS/Android apps. Developer products like GitHub and Stripe continued strong, but elsewhere, APIs weren't enough of a competitive advantage for anyone who didn't have one to suffer.
 
-But around mid-2025, the world changed. The last half year especially has been distinguished by the rise of indescribably powerful LLMs, which now dominate discourse as the most useful new tool in the world.
+But around mid-2025, the world changed. The last half year especially has been distinguished by the rise of indescribably powerful LLMs, which now dominate discourse as the most useful new tool in a generation.
 
 They're already useful enough as incredible trivia machines or code generators, but they really start to shine when they integrate with things. It's pretty neat having one generate a valid Kubernetes configuration for your new app, but it's _really_ neat watching it provision an <acronym title="Amazon Elastic Kubernetes Service">EKS</acronym> cluster via `awscli` and send out its first production deploy on your behalf.
 
@@ -108,19 +108,19 @@ Now apply the same principle to every service you use during the course of a wee
 
 Where _wouldn't_ you want an API?
 
-Forecasting the future is infamously hazardous, but based on the adoption patterns of myself and the people around me, I expect the demand to interact with services through LLMs is going to be overwhelming, and services aiming to provide a good product experience or which have competitive pressure (i.e. someone else could provide the good product experience instead) will offer APIs.
+Forecasting the future is infamously hazardous, but based on the adoption patterns of myself and the people around me, I expect the demand to interact with services through LLMs is going to be overwhelming, and services aiming to provide a good product experience or which face competitive pressure (i.e. someone else could provide that experience instead) will offer APIs.
 
 I used to wish that we'd gone down an alternative branch of web technology and adopted a protocol like [Gopher](https://en.wikipedia.org/wiki/Gopher_(protocol)) so we'd have a more standardized web experience instead of every product you use producing its own unique UX, most bad. I think we will see more standardization, just not in the form I expected. The convention of the future will be human language, fed into what looks a lot like a terminal, and fulfilled via API.
 
 ### On behalf of people (#on-behalf-of-people)
 
-Notably, this is different than the first wave of APIs that I described above. Instead of APIs being to offer infinitely flexible access for inter-service access, scrape data, or build apps on top of someone else's platform, their primary use will be to fulfill requests on behalf of a primary user. Exactly like what they'd be doing through a first-party app, but in a programmatic way.
+Notably, this is different than the first wave of APIs that I described above. Instead of APIs being to offer infinitely flexible access for inter-service communication, scrape data, or build apps on top of someone else's platform, their primary use will be to fulfill requests on behalf of a primary user. Exactly like what they'd be doing through a first-party app, but in a programmatic way.
 
 {{Figure "During the first wave, APIs were largely aimed at third parties who'd use them to extend and augment the underlying platform to provide additional features for users." (ImgSrcAndAltAndClass "/assets/images/second-wave-api-first/first-wave.svg" "During the first wave, APIs were largely aimed at third parties who'd use them to extend and augment the underlying platform to provide additional features for users." "overflowing")}}
 
 {{Figure "In the second wave, APIs map cleanly to normal product capabilities. They provide programmatic access for agents that act on behalf of people." (ImgSrcAndAltAndClass "/assets/images/second-wave-api-first/second-wave.svg" "In the second wave, APIs map cleanly to normal product capabilities. They provide programmatic access for agents that act on behalf of people." "overflowing")}}
 
-It may seem like a subtle difference, but there are considerable differences. The second model better incentivizes APIs to exist:
+It may seem like a subtle distinction, but there are considerable differences. The second model better incentivizes APIs to exist:
 
 * APIs aren't for building a product that aims to displace the offerings of the underlying platform, but rather for giving users an alternative way to access it.
 
@@ -146,7 +146,7 @@ In this section I figured I'd call out a few services that are already pulling t
 
 ## API spring (#api-spring)
 
-Fifteen years ago, us API maximalists thought that APIs were going to eat the world, ushering in a new paradigm of interoperability that was going to vastly expand our capabilities as users, and even change the world for the better.
+Fifteen years ago, us API maximalists thought that APIs were going to eat the world, ushering in a new paradigm of interoperability that would vastly expand our capabilities as users, and even change the world for the better.
 
 What we got instead was an API winter. As useful as APIs were in some situations, that usefulness was outweighed by concerns around revenue, privacy, and abuse.
 
