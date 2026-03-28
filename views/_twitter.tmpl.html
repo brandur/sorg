@@ -1,5 +1,14 @@
 {{if .TwitterCard}}
 
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{.TwitterCard.Title}}">
+<meta property="og:description" content="{{.TwitterCard.Description}}">
+{{if eq .TwitterCard.ImageURL ""}}
+<meta property="og:image" content="{{.AbsoluteURL}}/assets/images/favicon/favicon-256.jpg">
+{{else}}
+<meta property="og:image" content="{{.AbsoluteURL}}{{.TwitterCard.ImageURL}}">
+{{end}}
+
 {{if eq .TwitterCard.ImageURL ""}}
 <meta name="twitter:card" content="summary">
 {{else}}
