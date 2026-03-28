@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-03-28T16:39:35-07:00
+  description = """\
+I can recommend [Web Site Blocker](https://chromewebstore.google.com/detail/web-site-blocker/aoabjfoanlljmgnohepbkimcekolejjn) as a basic, ad-free, payment-free blocker for Chrome and compatible browsers like Brave.
+
+I've tried a couple alternatives, but they all upsell too hard. I'm not against paying for software on principle, but paying for a browser extension whose only job is block a couple URLs is a step too far, especially when it's a subscription.
+
+The main thing I use Web Site Blocker for is to block Reddit. Not during certain hours, not over a certain time threshold, but to ban it fully and permanently. There used to be some utility to this website, but it's evolved into the most malignant cesspool of partisan extremism and propaganda imaginable. I used to need it available to click the occasional programming link, but these days LLMs provide superior answers in every case. It's not worth wasting one more second of consciousness on this thing.
+"""
+
+[[atoms]]
   published_at = 2026-03-27T08:11:08-07:00
   description = """\
 Published my first article in a while, [_The Second Wave of the API-first Economy_](/articles/second-wave-api-first).
