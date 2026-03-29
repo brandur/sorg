@@ -30,6 +30,98 @@
     </div>
 </div>
 
+{{- if .ContributionGrid -}}
+<div class="relative mx-auto max-w-5xl mb-12 md:mb-24 px-4" id="contribution-grid">
+    {{- /* Month labels */ -}}
+    <div class="relative mb-2 h-4">
+        {{- range .ContributionGrid.MonthLabels -}}
+        <span class="absolute text-[11px] font-bold text-slate-400 dark:text-slate-500" style="left: {{ .OffsetPct }}%;">{{ .Name }}</span>
+        {{- end -}}
+    </div>
+
+    {{- /* Grid */ -}}
+    <div class="grid gap-[3px]" style="grid-template-rows: repeat(7, 1fr); grid-auto-flow: column; grid-auto-columns: 1fr;">
+        {{- range .ContributionGrid.Weeks -}}
+            {{- range .Days -}}
+                {{- if eq .Date "" -}}
+                <div></div>
+                {{- else if eq .Level 0 -}}
+                <div class="contrib-cell contrib-empty aspect-square rounded-sm" data-date="{{ .Date }}" data-count="0"></div>
+                {{- else if eq .Level 1 -}}
+                <div class="contrib-cell aspect-square rounded-sm bg-emerald-200 dark:bg-emerald-900" data-date="{{ .Date }}" data-count="{{ .Count }}"></div>
+                {{- else if eq .Level 2 -}}
+                <div class="contrib-cell aspect-square rounded-sm bg-emerald-400 dark:bg-emerald-700" data-date="{{ .Date }}" data-count="{{ .Count }}"></div>
+                {{- else if eq .Level 3 -}}
+                <div class="contrib-cell aspect-square rounded-sm bg-emerald-500 dark:bg-emerald-500" data-date="{{ .Date }}" data-count="{{ .Count }}"></div>
+                {{- else -}}
+                <div class="contrib-cell aspect-square rounded-sm bg-emerald-700 dark:bg-emerald-300" data-date="{{ .Date }}" data-count="{{ .Count }}"></div>
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    </div>
+
+    {{- /* Tooltip */ -}}
+    <div id="contrib-tooltip" class="pointer-events-none absolute z-10 hidden rounded bg-slate-800 px-2 py-1 text-xs text-white shadow dark:bg-slate-200 dark:text-slate-900" style="white-space: nowrap;"></div>
+</div>
+
+<style>
+    .contrib-cell:hover {
+        outline: 1px solid rgba(0, 0, 0, 0.4);
+        outline-offset: -1px;
+    }
+    .dark .contrib-cell:hover {
+        outline-color: rgba(255, 255, 255, 0.5);
+    }
+    .contrib-empty {
+        background-color: rgb(226 232 240 / 0.12); /* 0.08 orginally, but made a little more visible for light mode */
+    }
+    .dark .contrib-empty {
+        background-color: rgb(51 65 85 / 0.06); /* 0.08 orginally, but made a little less visible for dark mode */
+    }
+    #contribution-grid:hover .contrib-empty {
+        background-color: rgb(226 232 240 / 0.3);
+    }
+    .dark #contribution-grid:hover .contrib-empty {
+        background-color: rgb(51 65 85 / 0.3);
+    }
+</style>
+
+<script>
+    (function() {
+        var grid = document.getElementById('contribution-grid');
+        var tooltip = document.getElementById('contrib-tooltip');
+        if (!grid || !tooltip) return;
+
+        grid.addEventListener('mouseover', function(e) {
+            var cell = e.target.closest('.contrib-cell');
+            if (!cell) { tooltip.classList.add('hidden'); return; }
+
+            var d = new Date(cell.dataset.date + 'T00:00:00');
+            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            var date = days[d.getDay()] + ', ' + cell.dataset.date;
+            var count = parseInt(cell.dataset.count, 10);
+            var label = count === 1 ? '1 atom' : count + ' atoms';
+            tooltip.textContent = date + ': ' + label;
+            tooltip.classList.remove('hidden');
+
+            var gridRect = grid.getBoundingClientRect();
+            var cellRect = cell.getBoundingClientRect();
+            var tipWidth = tooltip.offsetWidth;
+            var left = cellRect.left - gridRect.left + cellRect.width / 2 - tipWidth / 2;
+            var top = cellRect.top - gridRect.top - tooltip.offsetHeight - 4;
+            tooltip.style.left = Math.max(0, left) + 'px';
+            tooltip.style.top = top + 'px';
+        });
+
+        grid.addEventListener('mouseout', function(e) {
+            if (!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest('.contrib-cell')) {
+                tooltip.classList.add('hidden');
+            }
+        });
+    })();
+</script>
+{{- end -}}
+
 {{- range .Atoms -}}
 
 {{- template "views/atoms/_atom.tmpl.html" (Map (MapVal "Atom" .) (MapVal "IsIndex" true)) -}}

@@ -1128,6 +1128,109 @@ type Atom struct {
 	changed bool `toml:"changed" validate:"-"`
 }
 
+// ContributionDay is a single day in the contribution grid.
+type ContributionDay struct {
+	Date  string
+	Count int
+	Level int // 0-4, for CSS intensity classes
+}
+
+// ContributionWeek is a column in the contribution grid.
+type ContributionWeek struct {
+	Days [7]ContributionDay
+}
+
+// ContributionGrid holds a year of contribution data for the atom grid.
+type ContributionGrid struct {
+	Weeks       []ContributionWeek
+	MonthLabels []struct {
+		Name      string
+		Offset    int // week index where the month starts
+		OffsetPct float64
+	}
+}
+
+// buildContributionGrid builds a GitHub-style contribution grid from atoms
+// covering the last 52 weeks.
+func buildContributionGrid(atoms []*Atom) *ContributionGrid {
+	now := time.Now()
+	today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+
+	// Start from the Sunday 52 weeks ago.
+	start := today.AddDate(0, 0, -int(today.Weekday())-52*7)
+
+	// Count atoms per day.
+	counts := make(map[string]int)
+	for _, a := range atoms {
+		day := a.PublishedAt.UTC().Format("2006-01-02")
+		counts[day]++
+	}
+
+	// Find max count for scaling levels.
+	maxCount := 0
+	for _, c := range counts {
+		if c > maxCount {
+			maxCount = c
+		}
+	}
+
+	// Build weeks.
+	numDays := int(today.Sub(start).Hours()/24) + 1
+	numWeeks := (numDays + 6) / 7
+	weeks := make([]ContributionWeek, numWeeks)
+
+	for i := range numDays {
+		d := start.AddDate(0, 0, i)
+		week := i / 7
+		dow := i % 7
+		dateStr := d.Format("2006-01-02")
+		count := counts[dateStr]
+
+		level := 0
+		if count > 0 && maxCount > 0 {
+			// Scale to 1-4.
+			level = min((count*3)/maxCount+1, 4)
+		}
+
+		weeks[week].Days[dow] = ContributionDay{
+			Date:  dateStr,
+			Count: count,
+			Level: level,
+		}
+	}
+
+	// Build month labels.
+	type monthLabel struct {
+		Name   string
+		Offset int
+	}
+	var months []monthLabel
+	lastMonth := time.Month(-1)
+	for i := range numDays {
+		d := start.AddDate(0, 0, i)
+		if d.Month() != lastMonth && d.Day() <= 7 {
+			months = append(months, monthLabel{
+				Name:   d.Format("Jan"),
+				Offset: i / 7,
+			})
+			lastMonth = d.Month()
+		}
+	}
+
+	grid := &ContributionGrid{
+		Weeks: weeks,
+	}
+	for _, m := range months {
+		grid.MonthLabels = append(grid.MonthLabels, struct {
+			Name      string
+			Offset    int
+			OffsetPct float64
+		}{m.Name, m.Offset, float64(m.Offset) / float64(numWeeks) * 100})
+	}
+
+	return grid
+}
+
 func (a *Atom) Equal(other *Atom) bool {
 	return a.Description == other.Description &&
 		slices.EqualFunc(a.Photos, other.Photos, func(a, b *Photo) bool { return a.Equal(b) }) &&
@@ -1981,7 +2084,8 @@ func renderAtomArchive(ctx context.Context, c *modulir.Context, atoms []*Atom, a
 	}
 
 	locals := getLocals(map[string]any{
-		"Atoms": atoms,
+		"Atoms":            atoms,
+		"ContributionGrid": buildContributionGrid(atoms),
 	})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms/archive"), locals)
@@ -2131,13 +2235,16 @@ func renderAtomIndex(ctx context.Context, c *modulir.Context, atoms []*Atom, ato
 		return false, nil
 	}
 
+	grid := buildContributionGrid(atoms)
+
 	if len(atoms) > maxAtomsIndex {
 		atoms = atoms[0:maxAtomsIndex]
 	}
 
 	locals := getLocals(map[string]any{
-		"Atoms":    atoms,
-		"IndexMax": maxAtomsIndex,
+		"Atoms":            atoms,
+		"ContributionGrid": grid,
+		"IndexMax":         maxAtomsIndex,
 	})
 
 	err := dependencies.renderGoTemplate(ctx, c, source, path.Join(c.TargetDir, "atoms/index.html"), locals)

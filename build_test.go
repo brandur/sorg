@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/joeshaw/envdecode"
 	"github.com/stretchr/testify/require"
@@ -60,6 +61,95 @@ func TestSimplifyMarkdownForSummary(t *testing.T) {
 	require.Equal(t, "double new lines are gone", simplifyMarkdownForSummary("double new\n\nlines are gone"))
 	require.Equal(t, "single new lines are gone", simplifyMarkdownForSummary("single new\nlines are gone"))
 	require.Equal(t, "space is trimmed", simplifyMarkdownForSummary(" space is trimmed "))
+}
+
+func TestBuildContributionGrid(t *testing.T) {
+	t.Parallel()
+
+	t.Run("Empty", func(t *testing.T) {
+		t.Parallel()
+		grid := buildContributionGrid(nil)
+		require.NotNil(t, grid)
+		require.Greater(t, len(grid.Weeks), 50)
+		require.NotEmpty(t, grid.MonthLabels)
+
+		// All cells should have count 0.
+		for _, week := range grid.Weeks {
+			for _, day := range week.Days {
+				require.Equal(t, 0, day.Count)
+				require.Equal(t, 0, day.Level)
+			}
+		}
+	})
+
+	t.Run("SingleAtom", func(t *testing.T) {
+		t.Parallel()
+		atoms := []*Atom{
+			{PublishedAt: time.Now().Add(-24 * time.Hour)},
+		}
+		grid := buildContributionGrid(atoms)
+
+		total := 0
+		for _, week := range grid.Weeks {
+			for _, day := range week.Days {
+				total += day.Count
+			}
+		}
+		require.Equal(t, 1, total)
+	})
+
+	t.Run("MultipleAtomsSameDay", func(t *testing.T) {
+		t.Parallel()
+		// Use yesterday noon UTC to avoid timezone boundary issues.
+		yesterday := time.Now().AddDate(0, 0, -1)
+		noon := time.Date(yesterday.Year(), yesterday.Month(), yesterday.Day(), 12, 0, 0, 0, time.UTC)
+		atoms := []*Atom{
+			{PublishedAt: noon},
+			{PublishedAt: noon.Add(-1 * time.Hour)},
+			{PublishedAt: noon.Add(-2 * time.Hour)},
+		}
+		grid := buildContributionGrid(atoms)
+
+		dateStr := noon.Format("2006-01-02")
+		var found bool
+		for _, week := range grid.Weeks {
+			for _, day := range week.Days {
+				if day.Date == dateStr {
+					require.Equal(t, 3, day.Count)
+					require.Positive(t, day.Level)
+					found = true
+				}
+			}
+		}
+		require.True(t, found, "expected cell for %s not found in grid", dateStr)
+	})
+
+	t.Run("OldAtomsExcluded", func(t *testing.T) {
+		t.Parallel()
+		atoms := []*Atom{
+			{PublishedAt: time.Now().AddDate(-2, 0, 0)},
+		}
+		grid := buildContributionGrid(atoms)
+
+		total := 0
+		for _, week := range grid.Weeks {
+			for _, day := range week.Days {
+				total += day.Count
+			}
+		}
+		require.Equal(t, 0, total, "atoms older than 52 weeks should not appear")
+	})
+
+	t.Run("MonthLabelsPresent", func(t *testing.T) {
+		t.Parallel()
+		grid := buildContributionGrid(nil)
+		require.GreaterOrEqual(t, len(grid.MonthLabels), 12)
+		for _, m := range grid.MonthLabels {
+			require.NotEmpty(t, m.Name)
+			require.GreaterOrEqual(t, m.OffsetPct, 0.0)
+			require.Less(t, m.OffsetPct, 100.0)
+		}
+	})
 }
 
 func TestTruncateString(t *testing.T) {
