@@ -35,7 +35,7 @@
     {{- /* Month labels */ -}}
     <div class="relative mb-2 h-4">
         {{- range .ContributionGrid.MonthLabels -}}
-        <span class="absolute text-[11px] text-slate-400 dark:text-slate-500" style="left: {{ .OffsetPct }}%;">{{ .Name }}</span>
+        <span class="absolute text-[11px] font-bold text-slate-400 dark:text-slate-500" style="left: {{ .OffsetPct }}%;">{{ .Name }}</span>
         {{- end -}}
     </div>
 
