@@ -1147,6 +1147,7 @@ type ContributionGrid struct {
 		Name      string
 		Offset    int // week index where the month starts
 		OffsetPct float64
+		WidthPct  float64 // width to next month (for border segments)
 	}
 }
 
@@ -1220,12 +1221,28 @@ func buildContributionGrid(atoms []*Atom) *ContributionGrid {
 	grid := &ContributionGrid{
 		Weeks: weeks,
 	}
-	for _, m := range months {
+	for i, m := range months {
+		offsetPct := float64(m.Offset) / float64(numWeeks) * 100
+
+		var nextPct float64
+		if i+1 < len(months) {
+			nextPct = float64(months[i+1].Offset) / float64(numWeeks) * 100
+		} else {
+			nextPct = 100
+		}
+
+		// Leave a small gap (0.5%) before the next segment.
+		widthPct := nextPct - offsetPct - 0.5
+		if widthPct < 0 {
+			widthPct = 0
+		}
+
 		grid.MonthLabels = append(grid.MonthLabels, struct {
 			Name      string
 			Offset    int
 			OffsetPct float64
-		}{m.Name, m.Offset, float64(m.Offset) / float64(numWeeks) * 100})
+			WidthPct  float64
+		}{m.Name, m.Offset, offsetPct, widthPct})
 	}
 
 	return grid

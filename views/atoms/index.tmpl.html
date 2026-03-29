@@ -32,10 +32,10 @@
 
 {{- if .ContributionGrid -}}
 <div class="relative mx-auto max-w-5xl mb-12 md:mb-24 px-4" id="contribution-grid">
-    {{- /* Month labels */ -}}
-    <div class="relative mb-2 h-4">
+    {{- /* Month labels with border segments */ -}}
+    <div class="relative mb-3 h-5">
         {{- range .ContributionGrid.MonthLabels -}}
-        <span class="absolute text-[11px] font-bold text-slate-400 dark:text-slate-500" style="left: {{ .OffsetPct }}%;">{{ .Name }}</span>
+        <span class="absolute text-[11px] font-bold text-slate-400 dark:text-slate-500 border-b-2 border-slate-200 dark:border-slate-700" style="left: {{ .OffsetPct }}%; width: {{ .WidthPct }}%; padding-bottom: 2px;">{{ .Name }}</span>
         {{- end -}}
     </div>
 
