@@ -33,7 +33,7 @@ The visit served as our surface interval between morning and afternoon dives. We
 
 That'll be the last of this travelogue. I miss the Pacific already. The trip to Indonesia was long by my standards (one month), but not _that_ long. And yet, I remember more of it than the last four months since. Isn't it amazing how the mind works? Locking into routine like an 8 to 5 is like hitting the fast forward button on life. It blips by.
 
-With that, time to plan my next vacation.
+With that, time to plan my next vacation I think?
 
 Until next week.
 
