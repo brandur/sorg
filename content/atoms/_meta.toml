@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-03-29T11:01:39-07:00
+  description = """\
+[_Nanoglyph 050_](/nanoglyphs/050-api-spring) is published, on the second wave of the API-first economy, and a few last photos from Piaynemo Geosite in Raja Ampat.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/050-api-spring"
+    original_image_url = "https://www.dropbox.com/scl/fi/ck0zvnuuf6e7ji0y41wyx/2W4A8382.JPG?rlkey=x1j9j8lz5izs0ogavgubel6da&dl=1"
+    slug = "marker"
+
+[[atoms]]
   published_at = 2026-03-28T20:19:33-07:00
   description = """\
 Added a GitHub-style contribution graph to [the atoms page](/atoms). I tried to add one when I first put atoms in years ago, but gave up after not being able to style it satisfactorily within the few hours I'd allotted. Today, I iterated with an LLM for 30 minutes, and got it. Incredible. Scary.

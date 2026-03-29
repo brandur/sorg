@@ -4,7 +4,7 @@ image_alt = "Piaynemo Geosite and its limestone islets"
 image_url = "/photographs/nanoglyphs/050-api-spring/piaynemo-geosite@2x.jpg"
 published_at = 2026-03-29T11:01:39-07:00
 title = "API Spring"
-hook = "On the second wave of the API-first economy and a few more photos from Indonesia, this time at Piaynemo Geosite in Raja Ampat."
+hook = "On the second wave of the API-first economy, and a few more photos from Indonesia, this time at Piaynemo Geosite in Raja Ampat."
 +++
 
 A short one today, mainly just to share a link. I wrote my first longer-form essay in a while: [The Second Wave of the API-first Economy](/second-wave-api-first).
