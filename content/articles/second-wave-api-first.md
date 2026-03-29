@@ -110,7 +110,7 @@ Where _wouldn't_ you want an API?
 
 Forecasting the future is infamously hazardous, but based on the adoption patterns of myself and the people around me, I expect the demand to interact with services through LLMs is going to be overwhelming, and services aiming to provide a good product experience or which face competitive pressure (i.e. someone else could provide that experience instead) will offer APIs.
 
-I used to wish that we'd gone down an alternative branch of web technology and adopted a protocol like [Gopher]<(https://en.wikipedia.org/wiki/Gopher_(protocol)>) so we'd have a more standardized web experience instead of every product you use producing its own unique UX, most bad. I think we will see more standardization, just not in the form I expected. The convention of the future will be human language, fed into what looks a lot like a terminal, and fulfilled via API.
+I used to wish that we'd gone down an alternative branch of web technology and adopted a protocol like [Gopher](https://en.wikipedia.org/wiki/Gopher_(protocol\)) so we'd have a more standardized web experience instead of every product you use producing its own unique UX, most bad. I think we will see more standardization, just not in the form I expected. The convention of the future will be human language, fed into what looks a lot like a terminal, and fulfilled via API.
 
 ### On behalf of people (#on-behalf-of-people)
 
