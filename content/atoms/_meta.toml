@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-03-28T20:19:33-07:00
+  description = """\
+Added a GitHub-style contribution graph to [the atoms page](/atoms). I tried to add one when I first put atoms in years ago, but gave up after not being able to style it satisfactorily within the few hours I'd allotted. Today, I iterated with an LLM for 30 minutes, and got it. Incredible. Scary.
+"""
+
+[[atoms]]
   published_at = 2026-03-28T16:39:35-07:00
   description = """\
 I can recommend [Web Site Blocker](https://chromewebstore.google.com/detail/web-site-blocker/aoabjfoanlljmgnohepbkimcekolejjn) as a basic, ad-free, payment-free blocker for Chrome and compatible browsers like Brave.
