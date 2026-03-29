@@ -419,6 +419,28 @@ title = "iA Writer."
 # title = "Shallows"
 
 #
+# /nanoglyphs/050-api-spring
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/arpy8wecbx0epfhsbkzae/2W4A8386.JPG?rlkey=zfxolh4fmkrpuc6ykwwso63bo&dl=1"
+slug = "nanoglyphs/050-api-spring/dock"
+title = "Dock at Piaynemo Geosite"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/ck0zvnuuf6e7ji0y41wyx/2W4A8382.JPG?rlkey=x1j9j8lz5izs0ogavgubel6da&dl=1"
+slug = "nanoglyphs/050-api-spring/piaynemo-geosite"
+title = "Piaynemo Geosite and its limestone islets"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/evln1kt3aeaye6b7w6s4m/2W4A8413.JPG?rlkey=1bqddqxzolcfvq1q8dg7wu84c&dl=1"
+slug = "nanoglyphs/050-api-spring/star-lagoon"
+title = "Star Lagoon (Telaga Bintang)"
+
+#
 # /nanoglyphs/049-paradise
 #
 
