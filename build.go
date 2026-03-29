@@ -1159,10 +1159,10 @@ func buildContributionGrid(atoms []*Atom) *ContributionGrid {
 	// Start from the Sunday 52 weeks ago.
 	start := today.AddDate(0, 0, -int(today.Weekday())-52*7)
 
-	// Count atoms per day.
+	// Count atoms per day, using local time to match the grid's date range.
 	counts := make(map[string]int)
 	for _, a := range atoms {
-		day := a.PublishedAt.UTC().Format("2006-01-02")
+		day := a.PublishedAt.In(now.Location()).Format("2006-01-02")
 		counts[day]++
 	}
 
