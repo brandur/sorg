@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-04-06T19:09:44-05:00
+  description = """\
+Published fragment [_Somewhere_](/fragments/somewhere), a short review of Sofia Coppola's 2010 movie _Somewhere_. Unless I miss my mark, it's the same movie as _Lost in Translation_?
+"""
+
+[[atoms]]
   published_at = 2026-04-06T18:08:44-05:00
   description = """\
 [This article on icons](https://tonsky.me/blog/tahoe-icons/) is excellent. It makes the point that Tahoe, which endeavored to add an icon for every menu item, regressed in that icons are no longer as distinctive, aren't consistent between apps, and lose recognizability as they're made too small (12x12).
