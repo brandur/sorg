@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-04-11T11:20:05-05:00
+  description = """\
+A [good article from Planet Scale](https://planetscale.com/blog/keeping-a-postgres-queue-healthy) on a product they're introducing called "Database Traffic Control". It talks about putting queues in Postgres as a potential source of pain and references my [old blog post on failure by MVCC](/postgres-queues) as an example.
+
+I continue to think about [Postgres queues](https://riverqueue.com) a lot, and as much as I wish the problem I'd discussed was resolved by `SKIP LOCKED` and more contemporary Postgres advances, the fact of the matter is that the underlying root cause of dead tuple accumulation due to Postgres' MVCC model was never fixed, and can still very much lead to major knock-on impact even today.
+
+The Planet Scale proposed fix is a form of supervisor that terminates queries that are degrading database health and reschedules them for a more appropriate time. `SKIP LOCKED` helps, `REINDEX CONCURRENTLY` helps, years of B-tree optimizations help, but to guarantee real production stability, a component of this shape is probably wise.
+"""
+
+[[atoms]]
   published_at = 2026-04-06T19:09:44-05:00
   description = """\
 Published fragment [_Somewhere_](/fragments/somewhere), a short review of Sofia Coppola's 2010 movie _Somewhere_. Unless I miss my mark, it's the same movie as _Lost in Translation_?
