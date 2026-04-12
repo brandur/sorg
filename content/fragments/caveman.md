@@ -1,5 +1,5 @@
 +++
-hook = "In 1980, Michael Crichton characters spoke like cavemen to save satellite bandwidth. It was absurd. Ridiculous! Forty-five years later, we're doing the same thing with LLMs to save tokens."
+hook = "In 1980, Michael Crichton characters in _Congo_ spoke like cavemen to save satellite bandwidth. It was absurd. Ridiculous! Forty-five years later, we're doing the same thing with LLMs to save tokens."
 # image = ""
 published_at = 2026-04-12T11:41:03-05:00
 title = "Caveman"
