@@ -29,6 +29,6 @@ After:
 
 > "Bug in auth middleware. Token expiry check use `<` not `<=`. Fix:"
 
-Crichton would've loved it -- 45 years later we've come full circle. I don't know what I thought I knew anymore.
+Crichton would've loved it. 45 years later we've come full circle, are back to speaking like cavemen again, and as an at-least-somewhat legitimate technical workaround. I don't know what I thought I knew anymore.
 
 [1] Although Zip and Gzip wouldn't be invented for another decade, earlier precursors [LZ77/LZ78](https://en.wikipedia.org/wiki/LZ77_and_LZ78) were around at the time.
