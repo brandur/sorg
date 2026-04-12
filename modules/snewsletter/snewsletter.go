@@ -113,7 +113,7 @@ func Render(c *modulir.Context, dir, name, absoluteURL string, email bool) (*Iss
 	}
 
 	issue.ContentRaw = string(data)
-	issue.Draft = scommon.IsDraft(name)
+	issue.Draft = scommon.IsDraft(source)
 	issue.Slug = scommon.ExtractSlug(name)
 
 	if issue.Hook != "" {

@@ -12,7 +12,6 @@ import (
 	"io"
 	"maps"
 	"math/big"
-	"math/rand/v2"
 	"net/http"
 	"net/url"
 	"os"
@@ -815,7 +814,7 @@ func build(c *modulir.Context) []error {
 
 	{
 		c.AddJob("home", func() (bool, error) {
-			return renderHome(ctx, c, articles, fragments, nanoglyphs, photos, sequences,
+			return renderHome(ctx, c, articles, fragments, nanoglyphs, sequences,
 				articlesChanged, fragmentsChanged, nanoglyphsChanged, photosChanged, sequenceChanged)
 		})
 	}
@@ -2656,8 +2655,19 @@ func renderPassagesIndex(ctx context.Context, c *modulir.Context, issues []*snew
 		path.Join(c.TargetDir, "passages/index.html"), locals)
 }
 
+// RecentWriting is a unified entry for the home page that can represent an
+// article, fragment, or nanoglyph issue.
+type RecentWriting struct {
+	Hook        template.HTML
+	Kind        string // "article", "fragment", or "nanoglyph"
+	KindURL     string // index page for the kind, e.g. "/articles"
+	PublishedAt time.Time
+	Title       string
+	URL         string
+}
+
 func renderHome(ctx context.Context, c *modulir.Context,
-	articles []*Article, fragments []*Fragment, nanoglyphs []*snewsletter.Issue, photos []*Photo, sequences []*SequenceEntry,
+	articles []*Article, fragments []*Fragment, nanoglyphs []*snewsletter.Issue, sequences []*SequenceEntry,
 	articlesChanged, fragmentsChanged, nanoglyphsChanged, photosChanged, sequencesChanged bool,
 ) (bool, error) {
 	sourceTmpl := scommon.ViewsDir + "/index.tmpl.html"
@@ -2666,31 +2676,62 @@ func renderHome(ctx context.Context, c *modulir.Context,
 		return false, nil
 	}
 
-	if len(articles) > 3 {
-		articles = articles[0:3]
+	// Build a merged list of recent writings across all content types.
+	var writings []RecentWriting
+	for _, a := range articles {
+		if a.Draft {
+			continue
+		}
+		writings = append(writings, RecentWriting{
+			Hook:        a.Hook,
+			Kind:        "article",
+			KindURL:     "/articles",
+			PublishedAt: a.PublishedAt,
+			Title:       a.Title,
+			URL:         "/" + a.Slug,
+		})
+	}
+	for _, f := range fragments {
+		if f.Draft {
+			continue
+		}
+		writings = append(writings, RecentWriting{
+			Hook:        f.Hook,
+			Kind:        "fragment",
+			KindURL:     "/fragments",
+			PublishedAt: f.PublishedAt,
+			Title:       f.Title,
+			URL:         "/fragments/" + f.Slug,
+		})
+	}
+	for _, n := range nanoglyphs {
+		if n.Draft {
+			continue
+		}
+		writings = append(writings, RecentWriting{
+			Hook:        n.Hook,
+			Kind:        "nanoglyph",
+			KindURL:     "/nanoglyphs",
+			PublishedAt: n.PublishedAt,
+			Title:       n.Number + " — " + n.Title,
+			URL:         "/nanoglyphs/" + n.Slug,
+		})
+	}
+	slices.SortFunc(writings, func(a, b RecentWriting) int {
+		return b.PublishedAt.Compare(a.PublishedAt)
+	})
+	if len(writings) > 3 {
+		writings = writings[0:3]
 	}
 
-	if len(fragments) > 3 {
-		fragments = fragments[0:3]
-	}
-
-	if len(nanoglyphs) > 3 {
-		nanoglyphs = nanoglyphs[0:3]
-	}
-
-	// Find a random photo to put on the homepage.
-	photo := selectRandomPhoto(photos)
-
-	if len(sequences) > 3 {
-		sequences = sequences[0:3]
+	var sequence *SequenceEntry
+	if len(sequences) > 0 {
+		sequence = sequences[0]
 	}
 
 	locals := getLocals(map[string]any{
-		"Articles":   articles,
-		"Fragments":  fragments,
-		"Nanoglyphs": nanoglyphs,
-		"Photo":      photo,
-		"Sequences":  sequences,
+		"RecentWritings": writings,
+		"Sequence":       sequence,
 	})
 
 	return true, dependencies.renderGoTemplate(ctx, c, sourceTmpl,
@@ -3047,32 +3088,6 @@ func renderTwitter(ctx context.Context, c *modulir.Context, tweets []*squantifie
 	}
 
 	return true, nil
-}
-
-func selectRandomPhoto(photos []*Photo) *Photo {
-	if len(photos) < 1 {
-		return nil
-	}
-
-	numRecent := min(len(photos), 20)
-
-	// All recent photos go into the random selection.
-	randomPhotos := photos[0:numRecent]
-
-	// Older photos that are good enough that I've explicitly tagged them
-	// as such also get considered for the rotation.
-	if len(photos) > numRecent {
-		olderPhotos := photos[numRecent : len(photos)-1]
-
-		for _, photo := range olderPhotos {
-			if photo.KeepInHomeRotation {
-				randomPhotos = append(randomPhotos, photo)
-			}
-		}
-	}
-
-	//nolint:gosec
-	return randomPhotos[rand.IntN(len(randomPhotos))]
 }
 
 // Gets a pointer to a tag just to work around the fact that you can take the

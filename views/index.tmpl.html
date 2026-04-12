@@ -6,97 +6,46 @@
 
 <div class="">
     <div class="border-b px-12 py-20 dark:border-slate-700">
-        <div class="mx-auto
+        <div class="mx-auto max-w-[750px]
             prose prose-lg dark:prose-invert
             prose-a:border-b prose-a:border-slate-500 prose-a:font-bold prose-a:font-sans prose-a:no-underline
             hover:prose-a:border-slate-200
             ">
-            <p class="font-semibold italic leading-snug max-w-[725px] mx-auto
-                      prose-a:border-b-4 prose-a:border-proseLinks dark:prose-a:border-proseInvertLinks
-                      text-center text-[2.5rem]
-                      tracking-tight
-                      ">
-                I'm <a href="https://twitter.com/brandur" rel="me">@brandur</a>, a software engineer, and dabbler in writing and photography.</p>
-            <p class="font-medium leading-relaxed text-[1rem]">This site is where I publish words and photos. The section that's most updated most often is <a href="/atoms">atoms</a>, small multimedia particles reminiscent of a Twitter feed. I update my <a href="/now">now page</a> monthly according to what I'm working on and thinking about. I <a href="/newsletter">publish a newsletter</a> as often as I can.</p>
+            <p class="font-medium leading-relaxed text-[1rem]">I'm Brandur. This site is where I publish words and photos. The section updated most often is <a href="/atoms">atoms</a>, short multimedia particles reminiscent of a Twitter feed. I update my <a href="/now">now page</a> monthly according to what I'm working on and thinking about. I <a href="/newsletter">publish a newsletter</a> as often as I can.</p>
         </div>
     </div>
 
-    <div class="border-b px-12 py-20 dark:border-slate-700 md:px-20 lg:px-28">
-        <div class="hyphens-auto max-w-none
-            prose prose-md dark:prose-invert
-            prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:leading-tight prose-a:no-underline prose-a:text-[0.92rem]
-            hover:prose-a:border-b-slate-200
-            prose-li:my-[1.2em] prose-li:pl-0.5
-            prose-strong:font-sans
-            prose-ul:font-serif prose-ul:leading-normal prose-ul:pl-5
+    {{- if .Sequence -}}
+    <div class="border-b py-12 dark:border-slate-700 md:py-20">
+        <div class="max-w-[1200px] mx-auto">
+            <a href="/sequences/{{.Sequence.Slug}}">
+                <img src="/photographs/sequences/{{(index .Sequence.Photos 0).Slug}}_large{{(index .Sequence.Photos 0).TargetExt}}" srcset="/photographs/sequences/{{(index .Sequence.Photos 0).Slug}}_large@2x{{(index .Sequence.Photos 0).TargetExt}} 2x, /photographs/sequences/{{(index .Sequence.Photos 0).Slug}}_large{{(index .Sequence.Photos 0).TargetExt}} 1x" class="xl:rounded-lg w-full">
+            </a>
+        </div>
+    </div>
+    {{- end -}}
+
+    <div class="py-12 md:py-20">
+        <div class="mx-auto max-w-[625px] px-4
+            prose prose-lg dark:prose-invert
+            prose-a:border-b prose-a:border-slate-500 prose-a:font-sans prose-a:no-underline
+            hover:prose-a:border-slate-200
             ">
-            <div class="flex flex-col gap-4 justify-center md:flex-row md:gap-10 lg:gap-16">
-                <div class="flex-1 flex-grow pb-12 md:pb-0 lg:max-w-[21rem]">
-                    <p class="font-serif mt-0 text-[0.9rem]">Once in a while, I write longer form <a href="/articles">articles</a> on technical subjects like APIs, Go, or Postgres:</p>
-                    <ul class="mb-0">
-                        {{range .Articles}}
-                            <li class="last:mb-0">
-                                <a href="/{{.Slug}}">{{.Title}}</a>
-                                <span class="font-sans italic pl-0.5 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
-                                <p class="font-sans mt-2 mb-0 text-[0.82rem]">{{.Hook}}</p>
-                            </li>
-                        {{end}}
-                    </ul>
-                </div>
-                <div class="flex-1 flex-grow pb-12 md:pb-0 lg:max-w-[21rem]">
-                    <p class="font-serif mt-0 text-[0.9rem]">I put short stream of consciousness thoughts into tiny posts called <a href="/fragments">fragments</a>:</p>
-                    <ul class="mb-0">
-                        {{range .Fragments}}
-                            <li class="last:mb-0">
-                                <a href="/fragments/{{.Slug}}">{{.Title}}</a>
-                                <span class="font-sans italic pl-0.5 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
-                                <p class="font-sans mt-2 mb-0 text-[0.82rem]">{{.Hook}}</p>
-                            </li>
-                        {{end}}
-                    </ul>
-                </div>
-                <div class="flex-1 flex-grow lg:max-w-[21rem]">
-                    <p class="font-serif mt-0 text-[0.9rem]">I write a newsletter about the philosophy of software called <a href="/newsletter">Nanoglyph</a>:</p>
-                    <ul class="mb-0">
-                        {{range .Nanoglyphs}}
-                            <li class="last:mb-0">
-                                <a href="/nanoglyphs/{{.Slug}}">{{.Number}} — {{.Title}}</a>
-                                <span class="font-sans italic pl-0.5 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
-                                <p class="font-sans mt-2 mb-0 text-[0.82rem]">{{.Hook}}</p>
-                            </li>
-                        {{end}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="border-b py-20 dark:border-slate-700 md:px-12">
-        <div class="flex flex-col items-center justify-center last:-mb-11 md:flex-row md:gap-4 md:last:mb-0 lg:gap-8">
-            {{range .Sequences}}
+            <div class="flex flex-col gap-10">
+                {{- range .RecentWritings -}}
                 <div>
-                    <a href="/sequences/{{.Slug}}">
-                        <img src="/photographs/sequences/{{(index .Photos 0).Slug}}_large{{(index .Photos 0).TargetExt}}" class="ease-in-out transition w-full md:rounded-md md:hover:scale-105 lg:rounded-lg">
-                    </a>
-                    <p class="mb-7 mt-3 text-[0.8rem] text-center md:mb-0">
-                        <a href="/sequences/{{.Slug}}">
-                            <span class="font-bold text-proseLinks dark:text-proseInvertLinks">{{.Slug}}</span><br>
-                            <span class="text-proseBody dark:text-proseInvertBody">{{.Title}}</span>
-                        </a>
-                    </p>
+                    <a href="{{.URL}}" class="font-bold text-[1.05rem] !border-b !border-slate-300 hover:!border-slate-500 dark:!border-slate-600 dark:hover:!border-slate-400">{{.Title}}</a>
+                    <span class="font-sans italic pl-1 text-[#6b7280] text-[0.7rem] dark:text-[#9ca3af]">{{FormatTimeLocal .PublishedAt}}</span>
+                    <div class="font-serif mt-1.5 mb-2 text-[0.95rem]">
+                        {{.Hook}}
+                        <a href="{{.KindURL}}" class="not-prose inline font-sans rounded-lg border border-slate-300 bg-slate-50 mx-1 px-2.5 py-1.5 text-[0.7rem] font-bold text-slate-500 no-underline transition-colors duration-150 hover:bg-slate-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700">{{.Kind}}</a>
+                    </div>
                 </div>
-            {{end}}
-        </div>
-    </div>
-
-    <div class="py-20 dark:border-slate-700">
-        {{if .Photo}}
-            <div class="max-w-[1200px] mx-auto">
-                <a href="/photos#{{.Photo.Slug}}">
-                    <img src="/photographs/{{QueryEscape .Photo.Slug}}_large.jpg" srcset="/photographs/{{QueryEscape .Photo.Slug}}_large@2x.jpg 2x, /photographs/{{QueryEscape .Photo.Slug}}_large.jpg 1x" class="xl:rounded-lg w-full">
-                </a>
+                {{- end -}}
             </div>
-        {{end}}
+
+            <p class="mt-10 text-center text-[0.95rem] text-slate-400 dark:text-slate-500">These are a short selection of recently posted writing across all categories. See also <a href="/atoms">atoms</a> for a more frequently updated feed.</p>
+        </div>
     </div>
 </div>
 
