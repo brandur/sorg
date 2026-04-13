@@ -2713,7 +2713,7 @@ func renderHome(ctx context.Context, c *modulir.Context,
 			Kind:        "nanoglyph",
 			KindURL:     "/nanoglyphs",
 			PublishedAt: n.PublishedAt,
-			Title:       n.Number + " — " + n.Title,
+			Title:       "ⓝ " + n.Number + " — " + n.Title,
 			URL:         "/nanoglyphs/" + n.Slug,
 		})
 	}
