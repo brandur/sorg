@@ -144,6 +144,8 @@ In this section I figured I'd call out a few services that are already pulling t
 
 * As I was in the middle of writing this essay, I got a [note from Basecamp](https://world.hey.com/dhh/basecamp-becomes-agent-accessible-3ae6b949) that they'd revamped themselves for LLM accessibility, including [new API](https://github.com/basecamp/bc3-api), [new CLI](https://github.com/basecamp/basecamp-cli), and [bundled skill](https://github.com/basecamp/basecamp-cli/blob/main/skills/basecamp/SKILL.md) to instruct agents on their use.
 
+* Salesforce introduced their ["Headless 360" initiative](https://www.salesforce.com/news/stories/salesforce-headless-360-announcement/), which purports to have made every Salesforce feature accessible by API, MCP, or CLI command.
+
 ## API spring (#api-spring)
 
 Fifteen years ago, us API maximalists thought that APIs were going to eat the world, ushering in a new paradigm of interoperability that would vastly expand our capabilities as users, and even change the world for the better.

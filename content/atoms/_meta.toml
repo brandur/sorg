@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-04-19T15:06:41-05:00
+  description = """\
+Salesforce introduced ["Headless 360"](https://www.salesforce.com/news/stories/salesforce-headless-360-announcement/), which purports to have made every Salesforce feature accessible by API, MCP, or CLI command. I've updated my article [The second wave of the API-first economy](/second-wave-api-first) to include it in my list of samples.
+"""
+
+[[atoms]]
   published_at = 2026-04-12T11:41:03-05:00
   description = """\
 Published fragment [_Caveman_](/fragments/caveman). In 1980, Michael Crichton characters in _Congo_ spoke like cavemen to save satellite bandwidth. It was absurd. Ridiculous! Forty-five years later, we're doing the same thing with LLMs to save tokens.
