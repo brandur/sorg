@@ -11,6 +11,18 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-04-19T15:11:37-05:00
+  description = """\
+Post from Ian McCrystal (an ex-colleague at Stripe): ["The world needs 100x more APIs"](https://www.linkedin.com/pulse/world-needs-100x-more-apis-ian-mccrystal-o9ecc/).
+
+Quote:
+
+> I don't know about you, but my tolerance for logging into domain-specific web apps to push buttons is, to vastly understate it, waning. I want to do all of my work from whatever AI agent I like best
+
+With any luck, the increasingly unnavigable web portals of our day-to-day services will be one of the first casualties of the LLM age.
+"""
+
+[[atoms]]
   published_at = 2026-04-19T15:06:41-05:00
   description = """\
 Salesforce introduced ["Headless 360"](https://www.salesforce.com/news/stories/salesforce-headless-360-announcement/), which purports to have made every Salesforce feature accessible by API, MCP, or CLI command. I've updated my article [The second wave of the API-first economy](/second-wave-api-first) to include it in my list of samples.
