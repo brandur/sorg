@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-04-23T02:33:20-05:00
+  description = """\
+Published fragment [Turns out, competition works](/fragments/competition), on gigabit fiber for less money using this one weird trick: move to Austin.
+"""
+
+[[atoms]]
   published_at = 2026-04-19T15:11:37-05:00
   description = """\
 Post from Ian McCrystal (an ex-colleague at Stripe): ["The world needs 100x more APIs"](https://www.linkedin.com/pulse/world-needs-100x-more-apis-ian-mccrystal-o9ecc/).
