@@ -419,6 +419,52 @@ title = "iA Writer."
 # title = "Shallows"
 
 #
+# /nanoglyphs/051-that-was-fast
+#
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/scl/fi/6g7cjco1rm5j48kp960kb/2W4A7156.JPG?rlkey=efmoityeg5ujs6ucby8chazra&dl=1"
+slug = "nanoglyphs/051-that-was-fast/brooklyn-bridge"
+title = "The Brooklyn Bridge"
+
+[[photographs]]
+crop_width = 600
+original_image_url = "https://www.dropbox.com/scl/fi/x2thl94906o763e0rc5ba/great-saunter-map.png?rlkey=oh6nja1fzjbui63skjopnpeig&dl=1"
+slug = "nanoglyphs/051-that-was-fast/great-saunter-map"
+title = "The Great Saunter map"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/lrq9xomtrf2rqx2kp37iv/2W4A8796-adjusted.jpg?rlkey=rk9mnn5wz36z4lkosz7sdo9h5&dl=1"
+slug = "nanoglyphs/051-that-was-fast/harlem-pool"
+title = "Harlem pool"
+
+# [[photographs]]
+# crop_width = 1200
+# original_image_url = "https://www.dropbox.com/scl/fi/821kimz9b7tnuercz5dcd/2W4A8873-adjusted.jpg?rlkey=xz2waxa38pb6vufu9aaf4xbl0&dl=1"
+# slug = "nanoglyphs/051-that-was-fast/park"
+# title = "Park"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/u1qqgruamtr13vr3vblyy/2W4A8786-enhanced.jpg?rlkey=8hou5l7nm501c8gvm7ocs1pj8&dl=1"
+slug = "nanoglyphs/051-that-was-fast/pickleball"
+title = "Pickleball"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/x7der2ej5qumkm58ct5e5/2W4A8868-crop.jpg?rlkey=5xvua3ozfk7bvtxryo4jbgd2p&dl=1"
+slug = "nanoglyphs/051-that-was-fast/runners"
+title = "Runners"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/gn2t7i1697nh19twpamf7/2W4A8861-adjusted.jpg?rlkey=5h7dlr4tipix4ko9vhvw26ole&dl=1"
+slug = "nanoglyphs/051-that-was-fast/w-29th-st"
+title = "W 29th St"
+
+#
 # /nanoglyphs/050-api-spring
 #
 
