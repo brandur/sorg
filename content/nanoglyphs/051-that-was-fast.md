@@ -21,7 +21,7 @@ I'm less frantic about it this time because I won't be going to work at Anthropi
 
 * At first I'd sold myself on a form of early retirement in which I'd be an old man of 41 (approximately 150 in programmer years) traveling the world and screaming at young guns in their 20s about how we used to _write_ code instead of prompting it, hopefully with some skiing, diving, and shaking fists at clouds on the side.
 
-* Next, it occurred to me that I should be focusing on growing [River](https://riverqueue.com/) into a sustainable business. It's maybe 25% of the way there, and with 6 to 12 months of concerted time and effort maybe I could get it to the point where it covers the costs of my degenerate Club-Mate habit.
+* Next, it occurred to me that I should be focusing on growing [River](https://riverqueue.com/) into a sustainable business. It's ~25% of the way there, and with 6 to 12 months of concerted time and effort maybe I could get it to the point where it covers the costs of my degenerate Club-Mate habit.
 
 * _Next_, I realized that the relative isolation of solo company building will probably drive me crazy, so maybe I should try to get another job (after taking some time for a minimum of one trip to the Asia-Pacific region of course). A couple threads appeared that are intriguing enough that I have _just_ enough self-awareness to recognize I'd be a fool not to tug on them a little.
 
@@ -55,25 +55,25 @@ func (w *DataPipelineWorker) Work(ctx context.Context, job *river.Job[DataPipeli
 
 ---
 
-I feel much the same about this acquisition as the last one: kind of good, kind of bad. I can't complain much because especially given I was only at the company for ~6 months, it was a favorable outcome. That said:
+I feel much the same about this acquisition as the last one: kind of good, kind of bad. I can't complain much because, especially given I was only at the company for ~6 months, it was a favorable outcome. That said:
 
 * I genuinely felt the new product I'd been working on for Stainless had serious promise right up until the moment it was cancelled. We had a great team iterating on the thing at cannonball speed, and it's sad that it won't see the light of day.
 
-* I don't feel great about [promoting a company](/nanoglyphs/047-stainless) only to have it be subsumed a few months later. I'm sure I'm flattering myself in that my opinion had much of an effect on anyone else's decision making process, but in case it did: I'm sorry. Sincerely, I had no idea this was coming, and even if I could have guessed, couldn't have imagined in any universe that it'd be this soon.
+* I don't feel great about [promoting a company](/nanoglyphs/047-stainless) only to have it be subsumed a few months later. I'm sure I'm flattering myself in that my opinion had much of an effect on anyone else's decision-making process, but in case it did: I'm sorry. Sincerely, I had no idea this was coming, and even if I could have guessed, couldn't have imagined in any universe that it'd be this soon.
 
 <img src="/photographs/nanoglyphs/051-that-was-fast/pickleball@2x.jpg" alt="Pickleball" class="wide" loading="lazy">
 
 ## The Great Saunter (#great-saunter)
 
-During a last chance visit to New York, one of my colleagues tipped me off to the existence of [The Great Saunter](https://shorewalkers.org/great-saunter/), an epic walk where participants walk the entire perimeter of Manhattan.
+During a last chance visit to New York, one of my colleagues tipped me off to the existence of [The Great Saunter](https://shorewalkers.org/great-saunter/), an epic trek where participants walk the entire perimeter of Manhattan.
 
-I missed the official event after learning about it the evening after it'd already happened, but walking the shoreline of Manhattan is something I've wanted to do since first stepping foot on the island. Discovering that there were occasionally _sane_ people who did it greatly increased my confidence that the feat was possible, and not only that, but these other walkers had even left me a map, and one updated within the last 24 hours. Now I _had_ to do it.
+I missed the official event after learning about it the evening after it'd already happened, but walking the shoreline of Manhattan is something I've wanted to do since first setting foot on the island. Discovering that there were occasionally _sane_ people who did it greatly increased my confidence that the feat was possible, and not only that, but these other walkers had even left me a map, and one updated within the last 24 hours. Now I _had_ to do it.
 
-Coming out at 58 km (38 miles) and taking over 10 hours with no stops, it's the single longest walk I've ever done. I wasn't particularly worried going in: it's mostly flat, my shoes were perfectly broken in, and there's no shortage of places to stop for food or water. But by the end of the day, in addition to a pervasive soreness permeating my body from legs to back, I'd actually managed to develop blisters on the _flats_ of my feet, just by virtue of them having been placed down on the pavement so many times in a row. I'm used to blisters on long hikes, but this is something I didn't even know this was possible.
+Coming out at 58 km (38 miles) and taking over 10 hours with no stops, it's the single longest walk I've ever done. I wasn't particularly worried going in: it's mostly flat, my shoes were perfectly broken in, and there's no shortage of places to stop for food or water. But by the end of the day, in addition to a pervasive soreness permeating my body from legs to back, I'd actually managed to develop blisters on the _flats_ of my feet, just by virtue of them having been placed down on the pavement so many times in a row. I'm used to blisters on long hikes, but this is something I didn't even know was possible.
 
 As darkness fell and my gait transformed into a weird sideways shuffle that favored my toes and the balls of my feet (the only parts not yet blistered), it got harder and harder to ignore each new glowing subterranean portal down to the metro that I passed. One of these merciful machines could deliver me to my hotel's front door, where I could collapse and not get back up again for a good 24 hours. In 15 minutes it could all be over.
 
-But I couldn't shake the feeling that it was now or never. If I stopped early on this walk, the chances I ever tackle it again, especially having a better idea of its full extent the next time around, were roughly zero. So down to the last 10 km, I dragged one foot after the other for as long as it took. Around the Battery, passed the East River Esplanade, through the mess of ongoing construction along FDR Dr, under the Brooklyn Bridge, passed the Manhattan Bridge, back west from the Williamsburg Bridge, north through East Village, and finally up to my hotel on Union Square. I was putting places to names for the neighborhoods and infrastructure I'd read about in [The Power Broker](https://en.wikipedia.org/wiki/The_Power_Broker), and knowing nothing about New York, had previously only had the vaguest possible notion of.
+But I couldn't shake the feeling that it was now or never. If I stopped early on this walk, the chances I ever tackle it again, especially having a better idea of its full extent the next time around, were roughly zero. So down to the last 10 km, I dragged one foot after the other for as long as it took. Around the Battery, past the East River Esplanade, through the mess of ongoing construction along FDR Dr, under the Brooklyn Bridge, past the Manhattan Bridge, back west from the Williamsburg Bridge, north through East Village, and finally up to my hotel on Union Square. I was putting places to names for the neighborhoods and infrastructure I'd read about in [The Power Broker](https://en.wikipedia.org/wiki/The_Power_Broker), and knowing nothing about New York, had previously only had the vaguest possible notion of.
 
 Limped into and through my hotel, dragging myself the last few feet from elevator to room. Mission accomplished. Sitting down never felt so good.
 
