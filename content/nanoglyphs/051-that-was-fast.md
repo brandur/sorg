@@ -21,7 +21,7 @@ I'm less frantic about it this time because I won't be going to work at Anthropi
 
 * At first I'd sold myself on a form of early retirement in which I'd be an old man of 41 (approximately 150 in programmer years) traveling the world and screaming at young guns in their 20s about how we used to _write_ code instead of prompting it, hopefully with some skiing, diving, and shaking fists at clouds on the side.
 
-* Next, it occurred to me that I should be focusing on growing [River](https://riverqueue.com/) into a sustainable business. It's ~25% of the way there, and with 6 to 12 months of concerted time and effort maybe I could get it to the point where it covers the costs of my degenerate Club-Mate habit.
+* Next, it occurred to me that I should be focusing on growing [River](https://riverqueue.com/) into a sustainable business. It's ~15-25% of the way there, and with 6 to 12 months of concerted time and effort maybe I could get it to the point where it covers the costs of my degenerate Club-Mate habit.
 
 * _Next_, I realized that the relative isolation of solo company building will probably drive me crazy, so maybe I should try to get another job (after taking some time for a minimum of one trip to the Asia-Pacific region of course). A couple threads appeared that are intriguing enough that I have _just_ enough self-awareness to recognize I'd be a fool not to tug on them a little.
 
@@ -67,7 +67,7 @@ I feel much the same about this acquisition as the last one: kind of good, kind 
 
 During a last chance visit to New York, one of my colleagues tipped me off to the existence of [The Great Saunter](https://shorewalkers.org/great-saunter/), an epic trek where participants walk the entire perimeter of Manhattan.
 
-I missed the official event after learning about it the evening after it'd already happened, but walking the shoreline of Manhattan is something I've wanted to do since first setting foot on the island. Discovering that there were occasionally _sane_ people who did it greatly increased my confidence that the feat was possible, and not only that, but these other walkers had even left me a map, and one updated within the last 24 hours. Now I _had_ to do it.
+I missed the official event after learning about it the evening after it'd already happened, but walking the shoreline of Manhattan is something I've wanted to do since first setting foot on the island. Discovering that there were occasionally _sane_ people who did it greatly increased my confidence that the feat was possible, and not only that, but these other walkers had even left me a map, and one updated within the last 24 hours no less. Now I _had_ to do it.
 
 Coming out at 58 km (38 miles) and taking over 10 hours with no stops, it's the single longest walk I've ever done. I wasn't particularly worried going in: it's mostly flat, my shoes were perfectly broken in, and there's no shortage of places to stop for food or water. But by the end of the day, in addition to a pervasive soreness permeating my body from legs to back, I'd actually managed to develop blisters on the _flats_ of my feet, just by virtue of them having been placed down on the pavement so many times in a row. I'm used to blisters on long hikes, but this is something I didn't even know was possible.
 
