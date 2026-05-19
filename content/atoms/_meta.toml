@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-05-19T09:11:16+02:00
+  description = """\
+Codex TUI for [light-colored terminals is fixed](https://github.com/openai/codex/issues/2020#issuecomment-4483947603). I hope this is one of the positive side effects of LLM use: software is more malleable, so chronic bugs that aren't particularly high priority get fixed instead of lingering forever at the bottom of a kanban board.
+"""
+
+[[atoms]]
   published_at = 2026-04-23T02:33:20-05:00
   description = """\
 Published fragment [Turns out, competition works](/fragments/competition), on gigabit fiber for less money using this one weird trick: move to Austin.
