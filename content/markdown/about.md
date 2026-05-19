@@ -14,7 +14,7 @@ Before that, I spent four years at Heroku, where I helped create our V3 API and 
 
 Having written software professionally for many years now, I'm convinced that the default result given our modern processes and tools are products with undesirable levels of fragility. These days I'm especially interested in ways to improve the robustness and longevity of software, and reduce toil in operating it. I have little doubt that powerfully type-safe languages which expose more problems at compile time are the future.
 
-I live in Seattle. Before that I lived in San Francisco for over a decade. I'm from Calgary, Alberta, Canada's best city.
+I live in Austin. Before that I lived briefly in Seattle, and before that, San Francisco for over a decade. I'm from Calgary, Alberta, Canada's best city.
 
 My favorite movie is Sofia Coppola's _Lost in Translation_. My favorite book is Michael Crichton's _Rising Sun_ (although I like [a lot of others](/reading)). I also like running, photography, history, meditation, urban design, and metal.
 
