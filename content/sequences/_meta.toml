@@ -11,6 +11,22 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2026-05-18T20:39:16+02:00
+  slug = "104"
+  title = "The Brooklyn Bridge"
+  description = """
+Below the Brookyln Bridge on a gorgeous day last summer.
+
+Hot take: New York is overrated (especially given the expense). That said, this area around the Brooklyn Bridge on the Brooklyn side is a staggering visit should the chance come up. From here, make sure to walk southwest through the park, up to the Brooklyn Heights Promenade via the Squibb Park Bridge, and down to Cobble Hill.
+
+Poster for [_Nanoglyph 051_](/nanoglyphs/051-that-was-fast), on being acquired for the second time in a year, and walking the perimeter of Manhattan.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/6g7cjco1rm5j48kp960kb/2W4A7156.JPG?rlkey=efmoityeg5ujs6ucby8chazra&dl=1"
+    portrait = true
+    slug = "104"
+
+[[entries]]
   published_at = 2026-03-29T11:01:39-07:00
   slug = "103"
   title = "Piaynemo Geosite"

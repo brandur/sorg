@@ -17,6 +17,17 @@ Codex TUI for [light-colored terminals is fixed](https://github.com/openai/codex
 """
 
 [[atoms]]
+  published_at = 2026-05-18T20:39:16+02:00
+  description = """\
+[_Nanoglyph 051_](/nanoglyphs/051-that-was-fast) is published, on being acquired for the second time in a year, and walking the perimeter of Manhattan.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/051-that-was-fast"
+    original_image_url = "https://www.dropbox.com/scl/fi/6g7cjco1rm5j48kp960kb/2W4A7156.JPG?rlkey=efmoityeg5ujs6ucby8chazra&dl=1"
+    portrait = true
+    slug = "marker"
+
+[[atoms]]
   published_at = 2026-04-23T02:33:20-05:00
   description = """\
 Published fragment [Turns out, competition works](/fragments/competition), on gigabit fiber for less money using this one weird trick: move to Austin.
