@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2026-05-31T12:41:38+02:00
+  slug = "105"
+  title = "Zlatnite Mostove"
+  description = """
+Zlatnite Mostove ("The Golden Bridges") in the Vitosha mountains near Sofia, Bulgaria, where I hiked recently after attending [Balkan Ruby](https://balkanruby.com/). The field of rocks is called a "bridge" because it covers an active river underneath it.
+
+Poster for [_The Minimum Viable Unit of Saleable Software_](/minimum-viable-unit), on buy vs. build in the LLM age and the pricing zone where small software businesses can still survive.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/fxymh0l9py82i7hug85v5/2W4A9139.JPG?rlkey=8a6wwui8m9otaddws9wvf3xby&dl=1"
+    slug = "105"
+
+[[entries]]
   published_at = 2026-05-18T20:39:16+02:00
   slug = "104"
   title = "The Brooklyn Bridge"

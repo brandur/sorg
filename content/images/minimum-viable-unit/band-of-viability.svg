@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#cfd8e3" stroke-width="3"/>
+    </pattern>
+
+    <clipPath id="plot-area">
+      <rect x="120" y="90" width="980" height="610"/>
+    </clipPath>
+
+    <marker id="arrow-small" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="transparent"/>
+
+  <line x1="120" y1="700" x2="1080" y2="700"
+        stroke="#111" stroke-width="3"
+        marker-end="url(#arrow-small)"/>
+
+  <line x1="120" y1="700" x2="120" y2="100"
+        stroke="#111" stroke-width="3"
+        marker-end="url(#arrow-small)"/>
+
+  <g clip-path="url(#plot-area)">
+    <polygon points="120,600 980,170 980,370 120,800"
+             fill="url(#hatch)"
+             opacity="0.8"/>
+
+    <line x1="120" y1="600" x2="980" y2="170"
+          stroke="#111"
+          stroke-width="2.5"
+          stroke-dasharray="12 12"/>
+
+    <line x1="120" y1="700" x2="980" y2="270"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <line x1="120" y1="800" x2="980" y2="370"
+          stroke="#111"
+          stroke-width="2.5"
+          stroke-dasharray="12 12"/>
+  </g>
+
+  <text x="120" y="70"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="34"
+        text-anchor="middle"
+        fill="#111">Cost</text>
+
+  <text x="1040" y="745"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="34"
+        text-anchor="end"
+        fill="#111">Complexity</text>
+
+  <text x="875" y="430"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="28"
+        fill="#111">Band of viability</text>
+</svg>

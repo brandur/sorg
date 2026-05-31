@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-05-31T12:41:38+02:00
+  description = """\
+Published [_The Minimum Viable Unit of Saleable Software_](/minimum-viable-unit), on buy vs. build in the LLM age and the pricing zone where small software businesses can still survive.
+"""
+  [[atoms.photos]]
+    link_url = "/minimum-viable-unit"
+    original_image_url = "https://www.dropbox.com/scl/fi/fxymh0l9py82i7hug85v5/2W4A9139.JPG?rlkey=8a6wwui8m9otaddws9wvf3xby&dl=1"
+    slug = "marker"
+
+[[atoms]]
   published_at = 2026-05-19T09:11:16+02:00
   description = """\
 Codex TUI for [light-colored terminals is fixed](https://github.com/openai/codex/issues/2020#issuecomment-4483947603). I hope this is one of the positive side effects of LLM use: software is more malleable, so chronic bugs that aren't particularly high priority get fixed instead of lingering forever at the bottom of a kanban board.
