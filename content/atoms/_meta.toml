@@ -11,6 +11,14 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-05-31T22:48:17+02:00
+  description = """\
+See [It's hard to justify buying a Framework 12](https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/), which argues that the MacBook Neo is a better buy for value, performance, fan noise, and screen quality.
+
+I don't own a MacBook Neo, but I like that it's an option. This is Apple at its best: a lightweight, playful computer that's great value for the money and which will make its buyers fall in love the ecosystem, possibly even becoming lifelong converts. I would've loved to have a Neo back in college when budget was distantly more important than system specs. We had our own version of it in the form of the "CrackBook" (plastic MacBook circa 2006). It had its problems, but was cheap, and I got years of use out of mine.
+"""
+
+[[atoms]]
   published_at = 2026-05-31T12:41:38+02:00
   description = """\
 Published [_The Minimum Viable Unit of Saleable Software_](/minimum-viable-unit), on buy vs. build in the LLM age and the pricing zone where small software businesses can still survive.
