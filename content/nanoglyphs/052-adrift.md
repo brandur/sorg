@@ -7,9 +7,9 @@ title = "Adrift, Minimum Viable Unit of Saleable Software, Balkans, Bears?!"
 hook = "On life after acquisition, the minimum viable unit of saleable software and whether River can qualify, Balkan Ruby in Sofia, and hiking in the Vitosha mountains."
 +++
 
-There's something calming about being in Germany. Largely, parents ride their kids around on mechanical (not E-assisted) bikes. People pay for things in cash. An overwhelmingly common pastime is drinking beer beside the river like it's 1984. A not-insignificant part of the population rebuilds cobblestone streets and sells white asparagus and strawberries on street corners. Aside from the smartphones that are as ubiquitous here as they are anywhere, you could almost believe it's the same quaint, storybook Europe as before the turn of the century.
+There's something calming about being in Germany. People ride around on mechanical (not E-assisted) bikes. People pay for things in cash. An overwhelmingly common pastime is drinking beer beside the river like it's 1984. A not-insignificant part of the population rebuilds cobblestone streets and sells white asparagus and strawberries on street corners. Aside from the smartphones that are as ubiquitous here as they are anywhere, you could almost believe it's the same quaint, storybook Europe as before the turn of the century.
 
-If you didn't already know about the high stakes battle around LLMs and the very future of human work and art consuming the other side of the planet, you could spend months here never even knowing that it was happening. In 10-20 years, this country is either going to look exactly the same as it does today, or the consequences of choosing to recuse itself from the heated economic competition between superscalers in the US and China are going to be as clear as day. I don't know which.
+If you didn't already know about the high stakes battle around LLMs and the very future of human work, art, and civilization consuming the other side of the planet, you could spend months here never even knowing that it was happening. In 10-20 years, this country is either going to look exactly the same as it does today, or the consequences of choosing to recuse itself from the heated economic competition between superscalers in the US and China are going to be as clear as day. I don't know which.
 
 ---
 
