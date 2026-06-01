@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proofread Content"
+  short_description: "Proofread sorg content before publication."
+  default_prompt: "Proofread a sorg content file before publication."
