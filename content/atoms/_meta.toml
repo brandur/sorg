@@ -11,6 +11,16 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-06-01T12:08:01+02:00
+  description = """\
+[_Nanoglyph 052_](/nanoglyphs/052-adrift) is published, on life after acquisition, the minimum viable unit of saleable software and whether River can qualify, Balkan Ruby in Sofia, and hiking in the Vitosha mountains.
+"""
+  [[atoms.photos]]
+    link_url = "/nanoglyphs/052-adrift"
+    original_image_url = "https://www.dropbox.com/scl/fi/ou909xmb8639g0qkhcwa0/2W4A9088-nice2.JPG?rlkey=9wygat7a1ujb6ofmhe0td6ll2&dl=1"
+    slug = "marker"
+
+[[atoms]]
   published_at = 2026-05-31T22:48:17+02:00
   description = """\
 See [It's hard to justify buying a Framework 12](https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/), which argues that the MacBook Neo is a better buy for value, performance, fan noise, and screen quality.

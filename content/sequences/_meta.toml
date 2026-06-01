@@ -11,6 +11,19 @@
 ################################################################################
 
 [[entries]]
+  published_at = 2026-06-01T12:08:01+02:00
+  slug = "106"
+  title = "Vitosha Forest"
+  description = """
+Forest in the Vitosha mountains near Sofia, Bulgaria, where I hiked recently after attending [Balkan Ruby](https://balkanruby.com/).
+
+Poster for [_Nanoglyph 052_](/nanoglyphs/052-adrift), on life after acquisition, the minimum viable unit of saleable software, Balkan Ruby in Sofia, and hiking in the Vitosha mountains.
+"""
+  [[entries.photographs]]
+    original_image_url = "https://www.dropbox.com/scl/fi/ou909xmb8639g0qkhcwa0/2W4A9088-nice2.JPG?rlkey=9wygat7a1ujb6ofmhe0td6ll2&dl=1"
+    slug = "106"
+
+[[entries]]
   published_at = 2026-05-31T12:41:38+02:00
   slug = "105"
   title = "Zlatnite Mostove"

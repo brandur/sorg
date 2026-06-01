@@ -419,6 +419,46 @@ title = "iA Writer."
 # title = "Shallows"
 
 #
+# /nanoglyphs/052-adrift
+#
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/dzd2pvnmd8xrw5nx2wv9p/2W4A9041-rotated.jpg?rlkey=840l7stkxdt2x91fsij72e0kn&dl=1"
+slug = "nanoglyphs/052-adrift/earth-and-man"
+title = "Balkan Ruby at the Museum of Earth and Man"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/c2m80qnhgq7uhbfxntmu4/2W4A9053.JPG?rlkey=ehhb2nvbjm3y54syz012izhh4&dl=1"
+slug = "nanoglyphs/052-adrift/golden-bridges"
+title = "Zlatnite Mostove (Golden Bridges)"
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/scl/fi/qwhyc321faidt74lt5wcu/2W4A9097-group.JPG?rlkey=z41ycav7g2nmgiu9drzqrfaeq&dl=1"
+slug = "nanoglyphs/052-adrift/gondola"
+title = "Gondola"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/a6dhbr1mjl9okevncua35/2W4A8936-crop.jpg?rlkey=4a88zo1twbmcpto7r41h0lgax&dl=1"
+slug = "nanoglyphs/052-adrift/sofia"
+title = "Sofia"
+
+[[photographs]]
+crop_width = 900
+original_image_url = "https://www.dropbox.com/scl/fi/k3bf656d4xhzx8fnonpvy/2W4A8930-portrait.JPG?rlkey=n93wlpxj2dqz7qfmwvbc8u70i&dl=1"
+slug = "nanoglyphs/052-adrift/sofia-portrait"
+title = "Sofia (portrait)"
+
+[[photographs]]
+crop_width = 1200
+original_image_url = "https://www.dropbox.com/scl/fi/ou909xmb8639g0qkhcwa0/2W4A9088-nice2.JPG?rlkey=9wygat7a1ujb6ofmhe0td6ll2&dl=1"
+slug = "nanoglyphs/052-adrift/vitosha-forest"
+title = "Forest in the Vitosha mountains"
+
+#
 # /nanoglyphs/051-that-was-fast
 #
 
