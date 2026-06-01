@@ -113,6 +113,7 @@ ifdef AWS_ACCESS_KEY_ID
 	# Redirects are commented out for now. They should already be in place and
 	# they're quite slow to run in the build process.
 	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key glass --website-redirect-location /newsletter
+	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key mvuss --website-redirect-location /minimum-viable-unit
 
 	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin.atom --website-redirect-location /sequences.atom
 	# aws s3api put-object --acl public-read --bucket $(S3_BUCKET) --key sequences/berlin/001 --website-redirect-location /sequences/001
