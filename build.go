@@ -2446,10 +2446,20 @@ func renderNanoglyph(ctx context.Context, c *modulir.Context, source string,
 		issue.HookImageURL = "/assets/images/nanoglyphs/" + issue.Slug + "/hook." + format
 	}
 
+	var card *twitterCard
+	if issue.ImageURL != "" {
+		card = &twitterCard{
+			Title:       fmt.Sprintf("Nanoglyph %s — %s", issue.Number, issue.Title),
+			Description: string(issue.Hook),
+			ImageURL:    issue.ImageURL,
+		}
+	}
+
 	locals := getLocals(map[string]any{
-		"InEmail":   false,
-		"Issue":     issue,
-		"URLPrefix": "", // Relative prefix for the web version
+		"InEmail":     false,
+		"Issue":       issue,
+		"TwitterCard": card,
+		"URLPrefix":   "", // Relative prefix for the web version
 	})
 
 	err = dependencies.renderGoTemplate(ctx, c, sourceTmpl, path.Join(c.TargetDir, "nanoglyphs", issue.Slug), locals)
