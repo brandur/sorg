@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-06-01T16:28:14+02:00
+  description = """\
+We shipped and [insert-only TypeScript package for River](https://riverqueue.com/blog/river-typescript). Like the equivalents for Python and Ruby, it'll emit jobs from a TypeScript project that'll be worked over in Go code.
+"""
+
+[[atoms]]
   published_at = 2026-06-01T12:08:01+02:00
   description = """\
 [_Nanoglyph 052_](/nanoglyphs/052-adrift) is published, on life after acquisition, the minimum viable unit of saleable software and whether River can qualify, Balkan Ruby in Sofia, and hiking in the Vitosha mountains.
