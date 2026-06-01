@@ -101,7 +101,7 @@ On the way out we stopped at [Septemvri Hut](https://septemvrihut.bg/) for a war
 
 ---
 
-The aftermath of the hike led to coincidence number two: as we were taking the metro back to our hotels, our host, examining his phone, exclaimed, "Bulgaria has won Eurovision!"
+The aftermath of the hike led to coincidence number two: as we were taking the metro back to our hotels, our host, examining his phone, exclaimed, "Bulgaria has won Eurovision! The first time ever."
 
 Again, this seemed a little too coincidental to be real, but it was true. More than 20 years after their first entry (2005, Kyiv), that day Bulgaria had won Eurovision with the song "Bangaranga" by Dara, winning both the jury and popular vote.
 
