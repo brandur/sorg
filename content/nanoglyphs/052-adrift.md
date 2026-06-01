@@ -105,7 +105,7 @@ The aftermath of the hike led to coincidence number two: as we were taking the m
 
 Again, this seemed a little too coincidental to be real, but it was true. More than 20 years after their first entry (2005, Kyiv), that day Bulgaria had won Eurovision with the song "Bangaranga" by Dara, winning both the jury and popular vote.
 
-I'll leave it at that. I watched the winning song and was reminded that Eurovision ... isn't for me. That is unless it's [_Eurovision Song Contest: The Story of Fire Saga_](https://www.imdb.com/title/tt8580274/) with Will Ferrell, which is a masterpiece for the ages.
+I'll leave it at that. I watched the winning song and was reminded that Eurovision ... isn't for me. That is unless it's [_Eurovision Song Contest: The Story of Fire Saga_](https://www.imdb.com/title/tt8580274/) with Will Ferrell and Rachel McAdams, which is a masterpiece for the ages.
 
 Until next week.
 
