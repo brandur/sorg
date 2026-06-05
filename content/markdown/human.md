@@ -6,7 +6,7 @@ Setting those macro questions aside, something that feels wrong to me on an ethi
 
 Here's my golden rule of LLM-age content consumption:
 
-> It should never take longer (or even close to longer) to read content than it took to bring it into existence.
+> It should never take longer (or even close to longer) to consume content than it took to bring it into existence.
 
 I take a pretty hardline stance on this. Even amongst friends or colleagues who I know or suspect generate writing using LLMs, I'll opt not to read their content. When strangers do it, I remove them from my feed. If I must read it, I'll ask an LLM to summarize it, thereby producing a similar length snippet to the one that generated it.
 
