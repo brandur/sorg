@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-06-06T13:15:27+02:00
+  description = """\
+Published fragment [SQLite bulk insert with sqlc](/fragments/sqlc-sqlite-bulk-insert), on using `json_each` and `json_extract` to achieve this end.
+"""
+
+[[atoms]]
   published_at = 2026-06-05T20:18:34+02:00
   description = """\
 Published fragment [Generating words? Keep them short.](/fragments/keep-them-short).
