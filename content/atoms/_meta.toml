@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-06-10T07:09:13-05:00
+  description = """\
+Published fragment [Rich, fully attributed context timeout errors in Go](/fragments/attributed-context-errors), on making Go's generic `context deadline exceeded` errors traceable with small helpers that attribute the operation that timed out and spell out how long the timeout was.
+"""
+
+[[atoms]]
   published_at = 2026-06-06T13:15:27+02:00
   description = """\
 Published fragment [SQLite bulk insert with sqlc](/fragments/sqlc-sqlite-bulk-insert), on using `json_each` and `json_extract` to achieve this end.
