@@ -11,6 +11,20 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-06-11T09:00:20-05:00
+  description = """\
+A [tweet](https://x.com/mxcl/status/2064843516585336892) from the creator of Homebrew worth thinking about:
+
+> I think I will give up. I have made a bunch of very interesting things over the last 6 months. But I cannot get any attention for them and don’t know how. My son is 4 and he deserves my time. I'm going to go and get a normal job. My time making things is over I think.
+
+We've entered an economy where far more can be generated than plausibly consumed by humans. This includes prose, music, video (less so for now, but likely soon to be), and ... apps.
+
+I'm the downer that encourages people to be careful with the euphoric hubris that naturally occurs when an LLM does something cool for them. It _is_ cool, but remember that this is a technology that you didn't create, and which everyone else on Earth can access too. You generated an app. That's great. But why would the world use your generated app over another guy's generated app?
+
+We've removed the time and effort to get code to market as the major blocker in getting product out the door. The new limitation is finding enough human attention to make it worthwhile.
+"""
+
+[[atoms]]
   published_at = 2026-06-10T07:09:13-05:00
   description = """\
 Published fragment [Rich, fully attributed context timeout errors in Go](/fragments/attributed-context-errors), on making Go's generic `context deadline exceeded` errors traceable with small helpers that attribute the operation that timed out and spell out how long the timeout was.
