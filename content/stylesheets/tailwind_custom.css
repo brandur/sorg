@@ -1,3 +1,19 @@
+.article-content > p:first-child::first-letter {
+    color: #000;
+    float: left;
+    font-size: 6.5em;
+    line-height: 0.65;
+    padding-right: 0.15em;
+    padding-top: 0.05em;
+    padding-bottom: 0;
+    font-family: serif;
+    font-weight: bold;
+}
+
+html.dark .article-content > p:first-child::first-letter {
+    color: #fff;
+}
+
 a.feed_icon::after {
     background-image: url('/assets/images/icons/rss.svg');
     background-position: 4px 0;
