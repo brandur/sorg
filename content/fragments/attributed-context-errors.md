@@ -171,7 +171,8 @@ func queryMultipleAttributedTimeoutUtil(ctx context.Context) error {
 ```
 
 ``` txt
-queryMultipleAttributedTimeoutUtil timed out after 100ms: load user: context deadline exceeded
+queryMultipleAttributedTimeoutUtil timed out after 100ms:
+    load user: context deadline exceeded
 ```
 
 I know the Go community frowns somewhat on APIs that take closures the way `AttributedTimeout` does, but after a lot of experimentation, I found that it's the cleanest way to make this happen. The clearly-attributed, full-information context timeout errors are well worth a little added syntax.
