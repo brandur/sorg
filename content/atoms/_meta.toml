@@ -15,7 +15,7 @@
   description = """\
 Published [sequence 111](/sequences/111), Ladyslipper.
 
-Bunches of ladyslippers in the Wagner Natural Area near St. Albert/Edmonton. Here we show a few of the hundreds just a few feet off trail. The flowers were nice but they'd better be -- _thousands_ of mosquitos feasted on us as we made the walk. My kill count was in the hundreds and I still took dozens of bites by the end.
+Bunches of ladyslippers in the Wagner Natural Area near St. Albert/Edmonton. Here we show a few of the hundreds just a few feet off trail. The flowers were nice but they'd better be -- _thousands_ of mosquitoes feasted on us as we made the walk. My kill count was in the hundreds and I still took dozens of bites by the end.
 """
   [[atoms.photos]]
     link_url = "/sequences/111"
@@ -39,7 +39,7 @@ A mountain meadow along a hike up into Bull Creek Hills via Marston Creek, in Ka
   description = """\
 Published [sequence 109](/sequences/109), Monolith.
 
-This building is called the "Marie-Elisabeth-Lüders-Haus", nearby the Bundestag. I've never been inside, but its website says it provides "scientific services", and houses the parliamentary library and archives. It's one of my favorite buildings in Berlin -- an enormous, imposing monolith towering up and over the Spree. Very Berlin.
+This building is called the "Marie-Elisabeth-Lüders-Haus", near the Bundestag. I've never been inside, but its website says it provides "scientific services", and houses the parliamentary library and archives. It's one of my favorite buildings in Berlin -- an enormous, imposing monolith towering up and over the Spree. Very Berlin.
 """
   [[atoms.photos]]
     link_url = "/sequences/109"
@@ -107,7 +107,7 @@ Published fragment [Generating words? Keep them short.](/fragments/keep-them-sho
 [[atoms]]
   published_at = 2026-06-01T16:28:14+02:00
   description = """\
-We shipped and [insert-only TypeScript package for River](https://riverqueue.com/blog/river-typescript). Like the equivalents for Python and Ruby, it'll emit jobs from a TypeScript project that'll be worked over in Go code.
+We shipped an [insert-only TypeScript package for River](https://riverqueue.com/blog/river-typescript). Like the equivalents for Python and Ruby, it'll emit jobs from a TypeScript project that'll be worked over in Go code.
 """
 
 [[atoms]]
@@ -833,11 +833,11 @@ Published fragment [Rails World 2024](/fragments/rails-world-2024), with a few r
   description = """\
 Published [sequence 088](/sequences/088), royal lion hunt.
 
-I visited the British Museum in London during my stay there last year. The museum has a wealth of ancient artifacts, including some of the most famous ones in history like the Rosetta Stone, but despite having my camera with me, I took few photos while I was there. All I could think of was the tens of thousands of times each of these objects was photographed every day, contributing to an enormous body of billions of photos, 99.9999% would never be glanced again.
+I visited the British Museum in London during my stay there last year. The museum has a wealth of ancient artifacts, including some of the most famous ones in history like the Rosetta Stone, but despite having my camera with me, I took few photos while I was there. All I could think of was the tens of thousands of times each of these objects was photographed every day, contributing to an enormous body of billions of photos, 99.9999% would never be glanced at again.
 
 This is one of the few artifacts I photographed because I liked it so much. It's artwork on stone depicting Assyrian royals taking part in a lion hunt, circa 645 BC, right around the period where the civilization would collapse.
 
-At the time I knew almost nothing about Assyria, but a friend sent over the excellent episode ["Empire of Iron"](https://podcasts.apple.com/us/podcast/13-the-assyrians-empire-of-iron/id1449884495?i=1000525464222) from Paul Cooper's _Fall of Civilizations_ podcast (also you [YouTube](https://www.youtube.com/watch?v=jpAphcaVJIs)). It starts describing how the Greek general Xenophon came across the ruins of two colossal cities as he was returning from a battle in 401 BC. We know now that these were the Assyrian cities Kalhu and Nineveh, but by then (about 200 years post-collapse) locals knew nothing about them, despite their far greater scope and sophistication than anything they could build at the time. It would've been like living amongst ancient ruins built by giants.
+At the time I knew almost nothing about Assyria, but a friend sent over the excellent episode ["Empire of Iron"](https://podcasts.apple.com/us/podcast/13-the-assyrians-empire-of-iron/id1449884495?i=1000525464222) from Paul Cooper's _Fall of Civilizations_ podcast (also on [YouTube](https://www.youtube.com/watch?v=jpAphcaVJIs)). It starts describing how the Greek general Xenophon came across the ruins of two colossal cities as he was returning from a battle in 401 BC. We know now that these were the Assyrian cities Kalhu and Nineveh, but by then (about 200 years post-collapse) locals knew nothing about them, despite their far greater scope and sophistication than anything they could build at the time. It would've been like living amongst ancient ruins built by giants.
 """
   [[atoms.photos]]
     link_url = "/sequences/088"
@@ -1081,7 +1081,7 @@ DELETE 2
 Time: 6957592.469 ms (01:55:57.592)
 ```
 
-`metric` is a tiny table itself, but it's referenced by large partitioned tables for `metric_point` and `metric_point_aggregate`, both of which need to scanned in their entirety to verify that no rows reference either of these two being removed. Luckily, the operation didn't need to hold a significant lock, and inserts and reads on all tables were healthy throughout.
+`metric` is a tiny table itself, but it's referenced by large partitioned tables for `metric_point` and `metric_point_aggregate`, both of which need to be scanned in their entirety to verify that no rows reference either of these two being removed. Luckily, the operation didn't need to hold a significant lock, and inserts and reads on all tables were healthy throughout.
 """
 
 [[atoms]]
@@ -1123,7 +1123,7 @@ Published [sequence 085](/sequences/085), BER.
 [[atoms]]
   published_at = 2024-06-01T08:56:37-07:00
   description = """\
-Published [sequence 084](/sequences/084), spherical abberation.
+Published [sequence 084](/sequences/084), spherical aberration.
 """
   [[atoms.photos]]
     link_url = "/sequences/084"
@@ -1515,7 +1515,7 @@ Our divemaster Tuks motors us for a half hour along the shore, the boat pelted w
 
 There's nothing else on Earth that'll inspire more child-like wonder in an adult than dolphins. The moment a sighting is announced every person on the boat rushes to the front of the boat, clings to a rail, and stays fixated there for the next thirty minutes. Everybody loves dolphins.
 
-They play ball by swimming under our boat's bow in eassy camerashot for quite some time before breaking off and performing aerial acrobatics at a distance. One juvenile in particular does a series of forward vertical somersaults that don't seem like they should be physically possible. This species is appropriately named "spinner dolphin".
+They play ball by swimming under our boat's bow in easy camera shot for quite some time before breaking off and performing aerial acrobatics at a distance. One juvenile in particular does a series of forward vertical somersaults that don't seem like they should be physically possible. This species is appropriately named "spinner dolphin".
 """
   [[atoms.videos]]
     url = ["https://www.dropbox.com/scl/fi/mpn9oxbnc2vhhbomsh2uh/dolphins-1920.mp4?rlkey=l1e0byv0lm869izirjmk7kn3d&dl=1", "https://www.dropbox.com/scl/fi/s4aeof4xhf1z1e9j3jotj/dolphins-1920.webm?rlkey=hmyidraamm3yuw2lgl8nvpz02&dl=1"]
@@ -1545,9 +1545,9 @@ They play ball by swimming under our boat's bow in eassy camerashot for quite so
 
 This heuristic rings true. For junior engineers, "bullshit" is traditional poor practice in the space: bad code, lazy test coverage, failure to follow convention, or novel new patterns that complicate unnecessarily. It's inexperience at work. Many will graduate out of it.
 
-For seniors, bullshit is more subtle: days of bikeshedding over the fine points on tech decisions that vary the end result by ±5%, fighting about language and toolchains, continually relitigating architecture, and judging other peoples' code on the merits of [being "correct" or "elegant" or "minimal"](/fragments/the-peanut-gallery) according to an idyllic standard that doesn't exist.
+For seniors, bullshit is more subtle: days of bikeshedding over the fine points on tech decisions that vary the end result by ±5%, fighting about language and toolchains, continually relitigating architecture, and judging other people's code on the merits of [being "correct" or "elegant" or "minimal"](/fragments/the-peanut-gallery) according to an idyllic standard that doesn't exist.
 
-Everybody does _some_ of it, but the key is ratio. Good engineers do little while pushing features most of the time. Less good engineers engage in a lot of "bullshit", wasting their own time, and that of others' who are pulled into reviews and battles.
+Everybody does _some_ of it, but the key is ratio. Good engineers do little while pushing features most of the time. Less good engineers engage in a lot of "bullshit", wasting their own time, and that of others who are pulled into reviews and battles.
 
 Ironically, many of the most internet famous engineers I've worked with fit squarely in the latter camp, while others so invisible that they barely have a LinkedIn profile, land in the former.
 """
@@ -2163,7 +2163,7 @@ This is an old man shaking fist at cloud moment for me, but it's unfortunate tha
   description = """\
 Apple's being [sued in California](https://www.macrumors.com/2023/10/13/airtag-lawsuit-widened-stalking-cases/) over claims that AirTags enable stalking.
 
-This is a tough one. By designing a very functional and affordable product, Apple's created the world's best tracking device. I'm reminded of old spy movies where a hero or villain attaches a little beeping box to the undercarriage of their opponent's vehicle. These days you might just use an AirTag, with orders of magnitude improvements in range, size, and battery than what any of those old world trackers wouldn't had, and $30 instead of the $10,000 or whatever Raytheon would've charged.
+This is a tough one. By designing a very functional and affordable product, Apple's created the world's best tracking device. I'm reminded of old spy movies where a hero or villain attaches a little beeping box to the undercarriage of their opponent's vehicle. These days you might just use an AirTag, with orders of magnitude improvements in range, size, and battery than what any of those old world trackers would've had, and $30 instead of the $10,000 or whatever Raytheon would've charged.
 
 It was inevitable that some of this tracking ends up being malicious, but can't any product be misused for harm? And can that really be said to be the manufacturer's responsibility?
 
@@ -2223,17 +2223,17 @@ Inspired by [uses.tech](https://uses.tech), published a [`/uses`](/uses) page, a
   description = """\
 Stranded in Amsterdam.
 
-Yesterday, I was supposed to fly AMS to SFO returning from Rails World this week. I've been having pretty good luck with airlines recently, and didn't think much of it. At the gate things seems okay, except boarding is delayed a few minutes, ostensibly because the pilot is late, which in restrospect, should've been a red flag. Once we're all boarded, we're informed we'll be delayed thanks a technical issue. They're working on it and will update us at 3:30p. At 3:30p we're informed we'll get an update at 4p. At 4p, it'll be at 4:30p. At 4:30p, it'll be a 5p.
+Yesterday, I was supposed to fly AMS to SFO returning from Rails World this week. I've been having pretty good luck with airlines recently, and didn't think much of it. At the gate things seemed okay, except boarding is delayed a few minutes, ostensibly because the pilot is late, which in retrospect, should've been a red flag. Once we're all boarded, we're informed we'll be delayed thanks to a technical issue. They're working on it and will update us at 3:30p. At 3:30p we're informed we'll get an update at 4p. At 4p, it'll be at 4:30p. At 4:30p, it'll be at 5p.
 
 We know the writing on the wall is a cancellation, and it's a dreadful thought. This is a major leg that flies a 777. If it's cancelled, that's almost 400 people who need alternate routes. Is that even possible?
 
 Sure enough, it's cancelled. May god have mercy on our souls.
 
-But this is where we get some balance to our bad luck. We're informed that we've been automatically rebooked to a new flight the next day and have been given a room at the local Steigenberger near the airport, where we'll also be fed. The hotel's airport shuttle is crowded, but otherwise we exit the airport and get over there without much fanfare. This must be EU regulation working in our favor. We're flying f*ing United, so you know they would've cancelled the flight and left us on the tarmack to rot if they thought they could legally get away with it.
+But this is where we get some balance to our bad luck. We're informed that we've been automatically rebooked to a new flight the next day and have been given a room at the local Steigenberger near the airport, where we'll also be fed. The hotel's airport shuttle is crowded, but otherwise we exit the airport and get over there without much fanfare. This must be EU regulation working in our favor. We're flying f*ing United, so you know they would've cancelled the flight and left us on the tarmac to rot if they thought they could legally get away with it.
 
-In a happy coincidence, Craig and I were accidentally going back on the same flight (we should've coordinated but didn't), and spend the evening exploring the local hotel airport bars.
+In a happy coincidence, Craig and I were accidentally going back on the same flight (we should've coordinated but didn't), and spent the evening exploring the local hotel airport bars.
 
-In every North American city, the area for ten miles in every direction around an airport is an exclusion zone of highways and parking lots, as hostile to human existence as the surface of Mars. Relatively speaking the area around Amsterdam's airport is a little like this too, but only relative to the rest of Amsterdam, which is a supremely walk and bike friendly. The area around us has a lot of concrete, but also a certain amount of charm, and like the rest of the city, bike lanes in every direction. In the morning I go for a run across a short bridge and over to a sprawling park on the river called Het Amsterdamse Bos, which honestly, is nicer even than anything in central Amsterdam.
+In every North American city, the area for ten miles in every direction around an airport is an exclusion zone of highways and parking lots, as hostile to human existence as the surface of Mars. Relatively speaking the area around Amsterdam's airport is a little like this too, but only relative to the rest of Amsterdam, which is supremely walk and bike friendly. The area around us has a lot of concrete, but also a certain amount of charm, and like the rest of the city, bike lanes in every direction. In the morning I go for a run across a short bridge and over to a sprawling park on the river called Het Amsterdamse Bos, which honestly, is nicer even than anything in central Amsterdam.
 
 Now, sitting on a new 777, hoping our luck is better this time.
 """
@@ -2318,7 +2318,7 @@ The error above is impressively bad, but through brute force trial and error, I 
 
 What's a little mystifying is how hard all of this is, still. A HEIC-friendly ImageMagick is hard to come by, and googling these problems uncovers little. But HEIC's a common format that's been in use for years on about half the world's smartphones, and by extension, about half the world's cameras. You'd think that by now that there'd be more demand for working with this extremely common image format.
 
-My off the cusp hypothesis is that the fact that there isn't goes to show just how few people are building anything on their own these days. All the popular social and photography platforms handle HEIC transparently for you to the point where probably 99.9+% of its users have no idea they're even using it. Probably inevitable, but not a hopeful sign for a less consolidated future.
+My off-the-cuff hypothesis is that the fact that there isn't goes to show just how few people are building anything on their own these days. All the popular social and photography platforms handle HEIC transparently for you to the point where probably 99.9+% of its users have no idea they're even using it. Probably inevitable, but not a hopeful sign for a less consolidated future.
 """
 
 [[atoms]]
@@ -2415,7 +2415,7 @@ Published fragment [An email redaction function for Postgres](/fragments/email-r
 [[atoms]]
   published_at = 2023-07-06T12:57:46-07:00
   description = """\
-This is awesome: [uses.tech](https://uses.tech/) (or see the [GitHub repository](https://github.com/wesbos/awesome-uses)), a directory of peoples' `/uses` pages, which detail dev gear, software, workspaces, and configurations.
+This is awesome: [uses.tech](https://uses.tech/) (or see the [GitHub repository](https://github.com/wesbos/awesome-uses)), a directory of people's `/uses` pages, which detail dev gear, software, workspaces, and configurations.
 
 It reminds me (in a very positive sense) of the pre-social media internet. No politics, no outrage, no clickbait, just a bunch of hackers who took the time to build a writeup on how they work because they think it's cool.
 """
@@ -2802,7 +2802,7 @@ A hat tip to the few out there who still do it the old way.
   description = """\
 And at long last, finished redesigning the main articles pages themselves, [for example](/sqlc).
 
-I've been intending to do this for at least two years, and for once am glad that I procrastinated on it. If I'd done it even mid-last year, it would've been in vanilla CSS instead of [Tailwind](https://tailwindcss.com/), and over the subsequent years after that all the same problems around maintainability would've reoccurred. The site's now close to being 100% Tailwind, and I'm more confident that I'll be able to change things in the future without having to page a bunch of site-specific CSS context back into my brain, and without accidentally breaking anything as styles, you know, cascade.
+I've been intending to do this for at least two years, and for once am glad that I procrastinated on it. If I'd done it even mid-last year, it would've been in vanilla CSS instead of [Tailwind](https://tailwindcss.com/), and over the subsequent years after that all the same problems around maintainability would've recurred. The site's now close to being 100% Tailwind, and I'm more confident that I'll be able to change things in the future without having to page a bunch of site-specific CSS context back into my brain, and without accidentally breaking anything as styles, you know, cascade.
 
 The redesign is far from perfect (e.g. the tables of contents that were there before are MIA for now), and I'll be tweaking it as I go, but I wanted to get something out the door instead of continuously delaying it into infinity. I'm in Europe all next month, and while I hope to do many writing dispatches from there, the likelihood is that no major design projects will be forthcoming.
 """
@@ -2818,9 +2818,9 @@ Redesigned my [newsletters page](/newsletter). It's a sad day, but I'm officiall
   description = """\
 A Berlin-based prompt artist [wins a category of Sony World Photography Awards](https://petapixel.com/2023/04/14/artist-refuses-prize-after-his-ai-image-wins-at-top-photo-contest/), and because he'd submitted to make a point, refuses the prize.
 
-This is the tip of iceberg in two ways:
+This is the tip of the iceberg in two ways:
 
-* This conscentious objector will be the rare exception that reveals what they did. Most AI-generated content will (and already has) win the prize and take the money without saying anything, or pass generated work off as if it was human-created, or take their spot [on the front page of HN](/fragments/chatgpt-front-pages). 
+* This conscientious objector will be the rare exception that reveals what they did. Most AI-generated content will (and already has) win the prize and take the money without saying anything, or pass generated work off as if it was human, or take their spot [on the front page of HN](/fragments/chatgpt-front-pages).
 * This is just the beginning. It's going to get more widespread and much worse.
 
 Why does it matter? This is going to cheapen content in a fundamental way. News outlets, social media platforms, and Google search results are going to be flooded with this stuff. Even employers trying to pay for original writing or art will have a hard time telling if the person is lying and just turning in GPT output. There _will_ be job losses. Arguably, [they're here already](https://www.businessinsider.com/cnet-slashes-10-staff-says-cuts-unrelated-ai-generated-content-2023-3).
@@ -2874,7 +2874,7 @@ When we first put ours in, I wasn't totally convinced that it was the right deci
 
 Months later, I'm _certain_ it was the right decision. Our core database (accounts, clusters, subscriptions, billing, audit log, etc.) is stable at less than 1 GB of data, while the ephemeral DB has ballooned to 300 GB by virtue of the kind of raw, voluminous data it holds (metrics). Having the two operationally independent in case of a major catastrophe helps me sleep better at night. If our ephemeral DB were to go hard down, metrics pages wouldn't load, but everything else would work just fine. Maintaining a separate migration line for the ephemeral DB is mildly annoying, but that annoyance is _so_ mild that I've stopped noticing. A single `make` target bootstraps both databases for development/testing, and 95%+ of database changes happen on the main line.
 
-Software engineering is tradeoffs abound. But I'm giving ephemeral DB the platinum award of computation -- major benefits, and with downside so miniscule that it's hardly noticed.
+Software engineering is tradeoffs abound. But I'm giving ephemeral DB the platinum award of computation -- major benefits, and with downside so minuscule that it's hardly noticed.
 """
 
 
@@ -2983,11 +2983,11 @@ A few reasons why we moved away from Keycloak:
 
 * Core authentication-related flows were the most likely to regress because writing tests against a remote API requires a lot of stubbing. With heavy stubbing involved, you really only end up writing tests that verify that your stubs are set up the way you expected them to be, and that made it very easy to break things because mistakes would not be caught by CI.
 
-* Keycloak pages like login or email verification are customized using a template language that was divergent from our main Frontend stack, and which no one was every particularly excited to write. They'd languish without updates and look awful compared to the rest of the site. This is also why some features were slow to happen, like multi-factor support, which we'll finally be shipping next week.
+* Keycloak pages like login or email verification are customized using a template language that was divergent from our main Frontend stack, and which no one was ever particularly excited to write. They'd languish without updates and look awful compared to the rest of the site. This is also why some features were slow to happen, like multi-factor support, which we'll finally be shipping next week.
 
 * Operationally, it was a black box wherein if something went wrong, no one knew how to fix it. We had a very near miss where a Heroku regression was crashing Keycloak on start up with an [inscrutable backtrace](https://github.com/mieckert/keycloak-heroku/issues/4), and which luckily manifested in our staging environment first, but which we knew was coming for prod on the next 24 hour dyno cycle. None of the people who'd chosen and integrated Keycloak had even the faintest idea how to diagnose the problem or fix it. In the end we were able to debug it by digging deeply in Keycloak source code, but were within hours of our login system being hard down with no fix in sight.
 
-* I wasn't super confident of its security bonafides given the glimpses into its internals I'd seen. For example, it defaults to PBFKD2 for password hashing at 27,500 iterations, far below the 2023 recommendation [from OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2) of 600,000 iterations. I admit to having only this one example and maybe everything else is above bar, but who knows.
+* I wasn't super confident of its security bona fides given the glimpses into its internals I'd seen. For example, it defaults to PBKDF2 for password hashing at 27,500 iterations, far below the 2023 recommendation [from OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2) of 600,000 iterations. I admit to having only this one example and maybe everything else is above bar, but who knows.
 
 * It's a huge Java app and not that cheap to run. It needed a performance dyno on Heroku due to high memory requirements, and between that and a database in staging and prod it was $800/month, or about half our total bill.
 
@@ -3128,7 +3128,7 @@ Now when we upgrade to a new Go, only one file is changed.
   description = """\
 From Amazon Route 53: [Workload isolation using shuffle sharding](https://aws.amazon.com/builders-library/workload-isolation-using-shuffle-sharding/).
 
-In short, Route 53 domains are sharded by so they map to one of 2,048 virtual servers. The sharding process means that some domains share servers with other domains, and under a normal sharding algorithm, domains would share all their servers with those same domains on their shard. This isn't great because if I'm an unlucky customer on the same shard as github.com who's getting DDOSed all the time, if their shards are taken down that means I'm down too. "Shuffle sharding" defines sharding such that even if I share servers with github.com, some of the servers I map to are "shuffled" so that I'm also guaranteed to _not_ share some with github.com. Even if every server hosting github.com goes down, some of mine are still up.
+In short, Route 53 domains are sharded so they map to one of 2,048 virtual servers. The sharding process means that some domains share servers with other domains, and under a normal sharding algorithm, domains would share all their servers with those same domains on their shard. This isn't great because if I'm an unlucky customer on the same shard as github.com who's getting DDOSed all the time, if their shards are taken down that means I'm down too. "Shuffle sharding" defines sharding such that even if I share servers with github.com, some of the servers I map to are "shuffled" so that I'm also guaranteed to _not_ share some with github.com. Even if every server hosting github.com goes down, some of mine are still up.
 
 The link above explains it in more detail and with diagrams.
 """
@@ -3277,7 +3277,7 @@ Follow up from yesterday's write up on [password hash migration](/fragments/pass
 
 (Notice: No vanilla `pbkdf2-sha256` left. `(null)` is for password-less SSO-based accounts.)
 
-I captured a backup beforehand just in case, but otherwise went for a pretty aggressive migration strategy of ovewriting hashes without intermediary fields or other major hedges. It went smoothly. Here's a log line showing a hash upgrade to Argon2id-only, implying the user was able to sucessfully login via the nested hashing scheme:
+I captured a backup beforehand just in case, but otherwise went for a pretty aggressive migration strategy of overwriting hashes without intermediary fields or other major hedges. It went smoothly. Here's a log line showing a hash upgrade to Argon2id-only, implying the user was able to successfully log in via the nested hashing scheme:
 
 ```
 password_hash_upgrade_line: Upgraded from "argon2id-pbkdf2-sha256" to "argon2id"
@@ -3362,7 +3362,7 @@ Published [sequence 040](/sequences/040), on a rainy evening in San Francisco.
 [[atoms]]
   published_at = 2023-02-04T16:12:39-08:00
   description = """\
-This site uses AWS Certificate Manager (ACM) for automated TLS certificate managment, and I got a request via email today to approve a renewal through 2024. Validating ownership of a domain can either happen via email or by a `CNAME` record installed to its DNS, and all those years ago when I first set this up I apparently chose email and have been manually approving a renewal every year since.
+This site uses AWS Certificate Manager (ACM) for automated TLS certificate management, and I got a request via email today to approve a renewal through 2024. Validating ownership of a domain can either happen via email or by a `CNAME` record installed to its DNS, and all those years ago when I first set this up I apparently chose email and have been manually approving a renewal every year since.
 
 Validation by `CNAME` is better because it's fully automatic. As long as ACM sees that the `CNAME` is still installed, it can validate ownership of the domain without asking the user about it. So today, after many years of procrastination, I finally went into ACM to generate a new cert validated by `CNAME` instead of email.
 
@@ -3748,7 +3748,7 @@ The FAA's recent trouble with <acronym title="Notice to Air Missions System">NOT
 
 * FAA traced the outage to [a damaged database file](https://twitter.com/FAANews/status/1613317775132336129). Mongo, is that you?
 
-I'm still holding out hope for a full Silicon Valley-style outage postmorterm, but from what we can glean, it sounds less exciting than you might hope. "Database" can mean a lot of things, and from the sound of it, this is more like a [flat file](https://en.wikipedia.org/wiki/Flat-file_database).
+I'm still holding out hope for a full Silicon Valley-style outage postmortem, but from what we can glean, it sounds less exciting than you might hope. "Database" can mean a lot of things, and from the sound of it, this is more like a [flat file](https://en.wikipedia.org/wiki/Flat-file_database).
 
 A finding from yesterday was that the file had been corrupted by manual manipulation by a pair of contractors. There were supposed to be safeguards to prevent that from happening, but they didn't. We also found out that in line with long tradition in operations, there had been backups, but when brought online, the backups were also found to be corrupted. Absolutely classic.
 """
@@ -3768,7 +3768,7 @@ Let's start with character vitals:
 
 It's never clear what exactly the conflict is or why the viewer is supposed to care. As Black Adam wakes, a group of superheroes is sent to confront him, but it's never in question that they're on the same side, and they only fight it out to prove the narcissism of small differences. Later there's a token bad guy, and as you might be able to imagine, it's a huge mystery as to whether the combined might of Black Adam and his new friends at the Justice Society will be enough to take him down.
 
-There was a long period of MCU golden age over the last ten years where I thought that Hollywood had _figured it out_ -- the perfect formula of fan service, special effects, and quippy dialog that was reliably reproducible to make a film that fans liked and would land a solid ~8 on IMDB. Apparently not, or the at least the DC studios never got the memo.
+There was a long period of MCU golden age over the last ten years where I thought that Hollywood had _figured it out_ -- the perfect formula of fan service, special effects, and quippy dialog that was reliably reproducible to make a film that fans liked and would land a solid ~8 on IMDB. Apparently not, or at least the DC studios never got the memo.
 
 Don't worry, this hasn't become a movie blog. Tomorrow, back to your regularly scheduled programming.
 """
@@ -3871,7 +3871,7 @@ Published [_Content authored by ChatGPT front pages_](/fragments/chatgpt-front-p
 [[atoms]]
   published_at = 2023-01-06T23:31:17-07:00
   description = """\
-A guilty pleasure is reading other peoples' multi-thousand word reviews on Leica cameras. From today: [Fujifilm to Leica](https://arslan.io/2023/01/06/from-fujifilm-to-leica-my-experience-with-the-m11/) which goes into detail in rationalizing buying an M11.
+A guilty pleasure is reading other people's multi-thousand word reviews on Leica cameras. From today: [Fujifilm to Leica](https://arslan.io/2023/01/06/from-fujifilm-to-leica-my-experience-with-the-m11/) which goes into detail in rationalizing buying an M11.
 
 I hate that I love these cameras. At Heroku we had a few vocal Leica users. One went as far as to sell all his equipment to simplify his life on a single Leica rangefinder and lens (an M9). But like the Leica brand itself, the move wasn't about practicality or technical superiority, it was about romance. Leica doesn't sell cameras, it sells lifestyles, and fans do 80% of the work for them. See also [sh*t Leica photographers say](https://www.youtube.com/watch?v=eqaGFVJPJRg).
 
@@ -4161,7 +4161,7 @@ Our results have been shockingly good. No bugs to speak of, no reduction in oper
   description = """\
 I wrote some meta-commentary about this Atoms list in a fragment: [_The Unpursuit of clout_](/fragments/unpursuit-of-clout).
 
-The broad thesis is that publishing here is a little harder than publishing on Twitter (it involves a macro to insert an entry in a TOML file and doing a `git push`), but over the last few days which are this project's lifespan to date, I've been finding it easier. With no favs, likes, subtweets, or comments, you're not performing for anybody, and not gaming any metrics. Just write, publish.
+The broad thesis is that publishing here is a little harder than publishing on Twitter (it involves a macro to insert an entry in a TOML file and doing a `git push`), but over the last few days, which are this project's lifespan to date, I've been finding it easier. With no favs, likes, subtweets, or comments, you're not performing for anybody, and not gaming any metrics. Just write, publish.
 """
 
 [[atoms]]
