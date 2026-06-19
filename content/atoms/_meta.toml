@@ -11,6 +11,68 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-06-19T22:01:03-06:00
+  description = """\
+Published [sequence 111](/sequences/111), Ladyslipper.
+
+Bunches of ladyslippers in the Wagner Natural Area near St. Albert/Edmonton. Here we show a few of the hundreds just a few feet off trail. The flowers were nice but they'd better be -- _thousands_ of mosquitos feasted on us as we made the walk. My kill count was in the hundreds and I still took dozens of bites by the end.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/111"
+    original_image_url = "https://www.dropbox.com/scl/fi/awyhq2yxs63ctmzf8t4if/L1000110.JPG?rlkey=tr072xlubrvrz3l0yom6zeimq&dl=1"
+    slug = "ladyslipper"
+
+[[atoms]]
+  published_at = 2026-06-18T22:00:54-06:00
+  description = """\
+Published [sequence 110](/sequences/110), Bull Creek Hills.
+
+A mountain meadow along a hike up into Bull Creek Hills via Marston Creek, in Kananaskis Country, Alberta. Walked this one with my parents' hiking groups, The Ramblers, and experienced a catastrophic failure of my 25-year-old hiking boots midway through.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/110"
+    original_image_url = "https://www.dropbox.com/scl/fi/7kg1zgus4np1y5szulzvx/L1000086.JPG?rlkey=z5klquo9o6if3up12ortaiis2&dl=1"
+    slug = "bull-creek-hills"
+
+[[atoms]]
+  published_at = 2026-06-17T21:54:35-06:00
+  description = """\
+Published [sequence 109](/sequences/109), Monolith.
+
+This building is called the "Marie-Elisabeth-Lüders-Haus", nearby the Bundestag. I've never been inside, but its website says it provides "scientific services", and houses the parliamentary library and archives. It's one of my favorite buildings in Berlin -- an enormous, imposing monolith towering up and over the Spree. Very Berlin.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/109"
+    original_image_url = "https://www.dropbox.com/scl/fi/rckagdpatbta433zbls8b/L1000029-b-w.jpg?rlkey=8rbz91ma4qur3cxpiwh0yh6qj&dl=1"
+    slug = "monolith"
+
+[[atoms]]
+  published_at = 2026-06-17T21:53:10-06:00
+  description = """\
+Published [sequence 108](/sequences/108), Canals.
+
+Walking Berlin in the spring is one of the best urban experiences on Earth. I got in the habit of doing evening walks down into Kreuzberg and circling around along the [Landwehr Canal](https://en.wikipedia.org/wiki/Landwehr_Canal), taking in sunset and walking the rest of the way back in the early night. This photo is the last rays of the sun near Lohmühlenbrücke, where two canals intersect.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/108"
+    original_image_url = "https://www.dropbox.com/scl/fi/nmuwbexki1ev0y9kfatcs/L1010566-crop.jpg?rlkey=v588vu2yyp2l6lf9n67hpb272&dl=1"
+    slug = "canals"
+
+[[atoms]]
+  published_at = 2026-06-17T21:35:37-06:00
+  description = """\
+Published [sequence 107](/sequences/107), Fountain and Ruinenberg.
+
+A fountain near [Sanssouci](https://en.wikipedia.org/wiki/Sanssouci) and looking out to [Ruinenberg](https://en.wikipedia.org/wiki/Ruinenberg).
+
+Taken on a walk through Potsdam, something that's become somewhat of an annual tradition when I go visit Berlin. Potsdam is a superior version of Versailles (less castle, more greenspace), and both Sanssouci Park and the surrounding town are some of the best places to explore anywhere on Earth.
+"""
+  [[atoms.photos]]
+    link_url = "/sequences/107"
+    original_image_url = "https://www.dropbox.com/scl/fi/wzv1ykqcvjt2bjkvyhifk/2W4A9156-adjusted.jpg?rlkey=iwtq4hr81udmfanx8pepf7tse&dl=1"
+    slug = "fountain-and-ruinenberg"
+
+[[atoms]]
   published_at = 2026-06-11T09:00:20-05:00
   description = """\
 A [tweet](https://x.com/mxcl/status/2064843516585336892) from the creator of Homebrew worth thinking about:
