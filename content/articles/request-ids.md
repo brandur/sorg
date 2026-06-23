@@ -80,7 +80,7 @@ api = Excon.new("https://api.heroku.com", headers: {
 api.post("/oauth/tokens", expects: 201)
 ```
 
-The callee in turn accepts a request ID, and if it looks like a valid identifier, tags all its requests with the given request ID _as well as_ one that it generates itself. This way we can make sure that a request across many apps can be tracked as a group, but each app always has a way of tracking every one of its requests invidually.
+The callee in turn accepts a request ID, and if it looks like a valid identifier, tags all its requests with the given request ID _as well as_ one that it generates itself. This way we can make sure that a request across many apps can be tracked as a group, but each app always has a way of tracking every one of its requests individually.
 
 ``` ruby
 def call(env)
