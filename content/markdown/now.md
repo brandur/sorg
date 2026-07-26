@@ -3,6 +3,36 @@
             lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
             xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
             ">
+    <img src="/photographs{{DownloadedImage .Ctx "/now/2026-jul-25" "https://www.dropbox.com/scl/fi/ojzdf29kh89d7nd78rfxv/2W4A9284.JPG?rlkey=tk5g3jtnfsww6w3k8fobafky6&dl=1" 1300}}" alt="Lady Bird Lake in Austin" class="lg:rounded-lg w-full" loading="lazy">
+</div>
+
+Rough notes since my last update:
+
+* Earlier this year, I moved to Austin. I would've done it years ago, except I thought I'd do poorly in the hot weather. It's almost August now, and the midday heat is uncomfortable, but I like it more than I thought I would. Hot days make for gorgeous summer evenings.
+
+* From October 2025 until last May I worked for Stainless, a software company that produced tasteful SDKs from an OpenAPI spec. Two colleagues and I were working on a greenfield project that we thought would ship mid-year. It didn't.
+
+* In May, Stainless was officially acquired by Anthropic ([more on that here](/nanoglyphs/051-that-was-fast)), making it my [second](/nanoglyphs/042-resumed#acquired) acquisition in a year. I didn't go on to Anthropic, and instead started work on River. It's the first time since graduating from university in 2007 that I haven't had a full-time job.
+
+* [River](https://riverqueue.com/) is profitable by virtue of having no expenses or paid staff, but it'll need to ramp up to become a sustainable business, and it remains to be seen whether [it's viable in the LLM age](/nanoglyphs/052-adrift). In two months we've shipped workflows V2, River for TypeScript, a stuck job handler, and [metrics](https://riverqueue.com/blog/river-metrics).
+
+* I'm trying to be [active on X](https://x.com/brandur), chronicling the ups and downs of solo work on a small, bootstrapped business, and hoping that to some degree the public will help keep me accountable.
+
+<div class="mb-16 not-prose">
+    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
+        <span class="font-bold">Jul 25, 2026</span>.
+    </p>
+</div>
+
+<details>
+    <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Oct 17, 2025</summary>
+    <div class="my-10">
+
+<div class="my-16
+            ml-[calc(-1rem)] mr-[calc(-1rem)] w-[calc(100%+2rem)]
+            lg:mr-[calc(-1rem-75px)] lg:ml-[calc(-1rem-75px)] lg:w-[calc(100%+2rem+2*75px)]
+            xl:mr-[calc(-1rem-150px)] xl:ml-[calc(-1rem-150px)] xl:w-[calc(100%+2rem+2*150px)]
+            ">
     <img src="/photographs{{DownloadedImage .Ctx "/now/2025-oct-17" "https://www.dropbox.com/scl/fi/al2mwhwyzhyqsdtdjh7ra/2W4A8251.JPG?rlkey=98jp7ii812blph1yuhiwxvb8w&st=i4r7dctd&dl=1" 1300}}" alt="Sky blue" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
@@ -18,11 +48,8 @@ Life notes:
 
 * Still churning away on River (the world's best job queue) outside of work hours. See recently released [batch jobs](https://riverqueue.com/docs/pro/batching).
 
-<div class="mb-16 not-prose">
-    <p class="font-serif italic my-1 leading-normal not-prose text-sm tracking-tight">This page was last updated on
-        <span class="font-bold">Oct 17, 2025</span>.
-    </p>
 </div>
+</details>
 
 <details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 4, 2025</summary>

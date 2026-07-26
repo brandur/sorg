@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-07-25T22:41:13-05:00
+  description = """\
+Updated [now](/now), on moving to Austin, working on River, and life after Stainless.
+"""
+
+[[atoms]]
   published_at = 2026-06-19T22:01:03-06:00
   description = """\
 Published [sequence 111](/sequences/111), Ladyslipper.
