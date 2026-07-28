@@ -6,7 +6,9 @@
     <img src="/photographs{{DownloadedImage .Ctx "/now/2026-jul-25" "https://www.dropbox.com/scl/fi/ojzdf29kh89d7nd78rfxv/2W4A9284.JPG?rlkey=tk5g3jtnfsww6w3k8fobafky6&dl=1" 1300}}" alt="Lady Bird Lake in Austin" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
-Rough notes since my last update:
+## Austin, post-Stainless, continuing on River
+
+It's been way too long since I updated this page. I knew it was a problem, so I set a monthly calendar reminder to update it, and ... it didn't work. Rough notes since last time:
 
 * Earlier this year, I moved to Austin. I would've done it years ago, except I thought I'd do poorly in the hot weather. It's almost August now, and the midday heat is uncomfortable, but I like it more than I thought I would. Hot days make for gorgeous summer evenings.
 
