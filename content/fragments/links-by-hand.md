@@ -20,7 +20,7 @@ Or:
 
 I don't have agent skills for any of these things because with a failure rate of ~0%, Codex does fine without them. I'm never compelled to ask it to do something for me the same way twice.
 
-My favorite part about it is that Codex pretends that all my site's little idiosyncracies are serious, legitimate practices. When I tell it to make an [atom](/atoms) (a word I made up for a tweet-like snippet), it figures out exactly what TOML file those belong in and inserts it. When it promotes a draft by moving from `./fragment-drafts` to `./fragments`, it treats this entirely local convention as if it were as natural as breathing. When I ask it to write me a "hook" (a 1-2 sentence summary of an article), I don't have to ask twice. It finds the right spot in TOML frontmatter and throws one in there.
+My favorite part about it is that Codex pretends that all my site's little idiosyncrasies are serious, legitimate practices. When I tell it to make an [atom](/atoms) (a word I made up for a tweet-like snippet), it figures out exactly what TOML file it belongs in and inserts it. When it promotes a draft by moving from `./fragments-drafts` to `./fragments`, it treats this entirely local convention as if it were as natural as breathing. When I ask it to write me a "hook" (a one- or two-sentence summary of an article), I don't have to ask twice. It finds the right spot in TOML frontmatter and throws one in there.
 
 ---
 
