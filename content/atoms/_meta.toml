@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-07-28T16:43:01-05:00
+  description = """\
+Published fragment [I used to add links by hand](/fragments/links-by-hand), on how LLMs now drive most of this blog's workflows, replacing what used to be a lot of small, manual edits.
+"""
+
+[[atoms]]
   published_at = 2026-07-28T12:26:14-05:00
   description = """\
 We shipped [active job rescue](https://riverqueue.com/blog/active-job-rescue), a new River Pro feature that uses queue heartbeats to quickly recover jobs orphaned by crashed clients. (If you're on Pro, try it today! No configuration or schema change required.)
