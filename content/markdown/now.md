@@ -6,7 +6,7 @@
     <img src="/photographs{{DownloadedImage .Ctx "/now/2026-jul-25" "https://www.dropbox.com/scl/fi/ojzdf29kh89d7nd78rfxv/2W4A9284.JPG?rlkey=tk5g3jtnfsww6w3k8fobafky6&dl=1" 1300}}" alt="Lady Bird Lake in Austin" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
-## Austin, post-Stainless, continuing on River
+## Austin, post-Stainless, onto River
 
 It's been way too long since I updated this page. I knew it was a problem, so I set a monthly calendar reminder to update it, and ... it didn't work. Rough notes since last time:
 
