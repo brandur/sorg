@@ -37,7 +37,7 @@ What we find is that the timing of both approaches is remarkably similar, right 
 
 I'd always internalized that anything involving creating new databases would be relatively slow, so I was surprised at how fast pgtestdb's approach turned out to be here.
 
-I'm going to leave River's tests on its existing schema-based method given it's already fast and testing schema isolation is incidentally useful in verifying that River's [schema-based configuration](https://riverqueue.com/docs/alternate-schema) works as advertised, but I'm going to add a recommendation in our docs for pgtestdb, particularly for users aiming to test end-to-end (i.e. job inserted by client → fully worked by worker).
+I'm going to leave River's tests on its existing schema-based method given it's already fast and testing schema isolation is incidentally useful in verifying that River's [schema-based configuration](https://riverqueue.com/docs/alternate-schema) works as advertised, but I'm going to add a recommendation in our docs for pgtestdb, particularly for users aiming to test end-to-end (i.e. job inserted by client → fully completed by worker).
 
 ## Optimizing via reuse (#optimizing-via-reuse)
 
@@ -52,6 +52,6 @@ But it's not because schemas are that much faster. River's test helpers have a u
 
 This is a little easier said than done because you need to think about details like schema version -- i.e. when testing across schema versions, each test case must only reuse a schema on the same version it expects. This is very doable, of course, but takes a little thought. I wrote River's implementation pre-LLM, and it took me a few days to squeeze all the bugs out.
 
-I mention reuse because it could be done with pgtestdb as well, potentially as part of the package, or as an augmentation in projects that call into it. 100 ms to bootstrap a test database is pretty fast, but if you're building a full application that's going to have 10,000 tests, ideally you want a test setup on the order of 10x faster than that (10-20 ms, the lower the better).
+I mention reuse because it could be done with pgtestdb as well, potentially as part of the package, or as an augmentation in projects that call into it. 100 ms to bootstrap a test database is pretty fast, but if you're building a full application that's going to have 10,000 tests, ideally you want a test setup on the order of 10x faster. Reuse gets it down to 10-20 ms, and more in line with test transactions.
 
 [1] If a test case fails, its schema isn't reused, leaving the state available for inspection/debugging.
