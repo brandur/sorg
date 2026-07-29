@@ -1,20 +1,20 @@
 +++
-hook = "Postgres database templates make pgtestdb's database-per-test isolation remarkably fast, within reach of River's schema-based approach."
+hook = "Postgres database templates make pgtestdb's per-test database isolation remarkably quick, around 100 ms of set up time, and within spitting distance of River's schema-based approach."
 published_at = 2026-07-29T01:15:00-05:00
-title = "Fast database test isolation with pgtestdb"
+title = "pgtestdb's template cloning approach to testing is fast"
 +++
 
-I was reminded by [Cup o' Go](https://cupogo.dev/episodes/proposals-proposals-proposals-and-faster-postgresql-tests-with-peter-downs) yesterday of the existence of Peter Down's [pgtestdb](https://github.com/peterldowns/pgtestdb), a Go/Postgres testing package.
+I was reminded by [Cup o' Go](https://cupogo.dev/episodes/proposals-proposals-proposals-and-faster-postgresql-tests-with-peter-downs) yesterday of the existence of Peter Downs' [pgtestdb](https://github.com/peterldowns/pgtestdb), a Go/Postgres testing package.
 
-Pgtestdb is built around Postgres [template databases](https://www.postgresql.org/docs/current/manage-ag-templatedbs.html), a built-in feature that can try right from a vanilla psql shell:
+pgtestdb is built around Postgres [template databases](https://www.postgresql.org/docs/current/manage-ag-templatedbs.html), a built-in feature that you can try right from a vanilla psql shell:
 
 ``` sql
 CREATE DATABASE dbname TEMPLATE template_to_copy;
 ```
 
-Copying a template is very fast, moreso than migrating a test database from scratch, and _much_ moreso than some of the heavyweight Docker-based techniques some projects are using these days. At a low level Postgres enumerates the template's relations and copies their materialized heap, index, and catalog files in 8 kB page chunks.
+Copying a template is very fast, more so than migrating a test database from scratch, and _much_ more so than some of the heavyweight Docker-based techniques some projects are using these days. At a low level, Postgres enumerates the template's relations and copies their materialized heap, index, and catalog files in 8 kB page chunks.
 
-I remember reading about this feature years ago, but to be honest I'd forgotten it existed, and I was curious how it performed compared to other testing approaches, so I had Codex splice pgtestdb into River's test suite to see how it'd fair.
+I remember reading about this feature years ago, but to be honest I'd forgotten it existed, and I was curious how it performed compared to other testing approaches, so I had Codex splice pgtestdb into River's test suite to see how it'd fare.
 
 I like to think that River's testing methodology is more or less a gold standard for speed and reliability. It uses a custom set of test helpers that isolate test cases based on schema, an approach that's slower than [test transactions](/fragments/go-test-tx-using-t-cleanup), but which has some advantages:
 
@@ -33,7 +33,7 @@ That should give us an interesting comparison. Here are the results I got:
 | pgtestdb clone | 466 | 98.4ms | 247.4ms | 299.5ms | 465.1ms |
 | Create + migrate schema | 81 | 99.4ms | 152.1ms | 209.0ms | 327.0ms |
 
-What we find is that the timing of both approaches is remarkably similar, right around ~100 ms of set up time.
+What we find is that the timing of both approaches is remarkably similar, right around 100 ms of setup time.
 
 I'd always internalized that anything involving creating new databases would be relatively slow, so I was surprised at how fast pgtestdb's approach turned out to be here.
 
@@ -41,7 +41,7 @@ I'm going to leave River's tests on its existing schema-based method given it's 
 
 ## Optimizing via reuse (#optimizing-via-reuse)
 
-I was sandbagging a little above. Although _set up time_ for the schema-based approach is similar to pgtestdb's full databases, overall the test suite runs ~3.5x faster on the former:
+I was sandbagging a little above. Although _setup time_ for the schema-based approach is similar to pgtestdb's full databases, overall the test suite runs ~3.5x faster on the former:
 
 | Backend    | Wall time |
 |------------|----------:|
@@ -50,8 +50,8 @@ I was sandbagging a little above. Although _set up time_ for the schema-based ap
 
 But it's not because schemas are that much faster. River's test helpers have a useful optimization in that they'll create as many test schemas as Go's instantaneous parallelization requires, but keep them pooled as test cases finish. If an unclaimed schema is ready, a test case will clean and reuse it instead of generating a new one from scratch [1].
 
-This is a little easier said than done because you need to think about details like schema version -- i.e. when testing across schema versions, each test case must only reuse a schema on the same version it expects. This is very doable of course, but takes a little thought. I wrote River's implementation pre-LLM, and it took me a few days to squeeze all the bugs out.
+This is a little easier said than done because you need to think about details like schema version -- i.e. when testing across schema versions, each test case must only reuse a schema on the same version it expects. This is very doable, of course, but takes a little thought. I wrote River's implementation pre-LLM, and it took me a few days to squeeze all the bugs out.
 
-I mention reuse because it could be done with pgtestdb as well, potentially as part of the package, or as an augmentation in projects that call into it. 100 ms to bootstrap a test database is pretty fast, but if you're building a full application that's going to have 10,000 tests, ideally you want a test set up on the order of 10x faster than that (0-10 ms, the lower the better).
+I mention reuse because it could be done with pgtestdb as well, potentially as part of the package, or as an augmentation in projects that call into it. 100 ms to bootstrap a test database is pretty fast, but if you're building a full application that's going to have 10,000 tests, ideally you want a test setup on the order of 10x faster than that (0-10 ms, the lower the better).
 
 [1] If a test case fails, its schema isn't reused, leaving the state available for inspection/debugging.
