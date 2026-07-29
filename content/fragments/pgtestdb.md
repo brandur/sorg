@@ -43,10 +43,10 @@ I'm going to leave River's tests on its existing schema-based method given it's 
 
 I was sandbagging a little above. Although _setup time_ for the schema-based approach is similar to pgtestdb's full databases, overall the test suite runs ~3.5x faster on the former:
 
-| Backend    | Wall time |
-|------------|----------:|
-| pgtestdb   | 51.07s    |
-| TestSchema | 14.54s    |
+| Method                  | Wall time |
+|-------------------------|----------:|
+| pgtestdb clone          | 51.07s    |
+| Create + migrate schema | 14.54s    |
 
 But it's not because schemas are that much faster. River's test helpers have a useful optimization in that they'll create as many test schemas as Go's instantaneous parallelization requires, but keep them pooled as test cases finish. If an unclaimed schema is ready, a test case will clean and reuse it instead of generating a new one from scratch [1].
 
