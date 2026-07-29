@@ -38,6 +38,8 @@ It's been way too long since I updated this page. I knew it was a problem, so I 
     <img src="/photographs{{DownloadedImage .Ctx "/now/2025-oct-17" "https://www.dropbox.com/scl/fi/al2mwhwyzhyqsdtdjh7ra/2W4A8251.JPG?rlkey=98jp7ii812blph1yuhiwxvb8w&st=i4r7dctd&dl=1" 1300}}" alt="Sky blue" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## October 2025
+
 I'm in Indonesia, diving for the full month of October (and already halfway through!). I've been lucky enough to be getting a lot of traveling in recently, but without a real "no work" vacation in a long time.
 
 Life notes:
@@ -64,6 +66,8 @@ Life notes:
             ">
     <img src="/photographs{{DownloadedImage .Ctx "/now/2025-apr-04" "https://www.dropbox.com/scl/fi/t8clk35k7peh3jo49255c/L1000718.heic?rlkey=jdbez5jzln6ju6jl5ukfbhoop&dl=1" 1300}}" alt="Sky blue" class="lg:rounded-lg w-full" loading="lazy">
 </div>
+
+## April 2025
 
 I'm back in San Francisco after a series of trips to Seattle, Kelowna, and Reno.
 
@@ -94,6 +98,8 @@ Some haphazard notes:
     <img src="/photographs{{DownloadedImage .Ctx "/now/7th-ave" "https://www.dropbox.com/scl/fi/l3kduxtlns6pzjlmo4zns/L1000513.JPG?rlkey=2dzclgpezw7ei2px864afiky2&dl=1" 1300}}" alt="7th Ave" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## December 2024
+
 I'm in Calgary for the holidays. Let's see:
 
 * Upgraded my M2 MacBook Air to the new M4 MacBook Pro with nanotexture. These computers don't get major changes very often, so right after release is a good time to buy. I got the non-Pro non-Max chip variant because it has the best battery life, advertised at 24 hours, which is crazy.
@@ -120,6 +126,8 @@ I'm in Calgary for the holidays. Let's see:
     <img src="/photographs{{DownloadedImage .Ctx "/now/skyscrapers" "https://www.dropbox.com/scl/fi/hwt1dm93omj4l2qhuppww/2W4A6069.JPG?rlkey=w3cj9fbkgvk0ohdn6b34x0eod&dl=1" 1300}}" alt="Skyscrapers" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## October 2024
+
 I'm in San Francisco, having recently returned from [Rails World in Toronto](/fragments/rails-world-2024), which was a lot of fun. Beyond that:
 
 * I finished a massive access control refactor that builds out a more flexible RBAC (role-based access control) system for Bridge. It doesn't sound much, but the roots of ACL run deep, and it ended up touching every important file in project, in the end taking me multiple months to fully complete.
@@ -137,6 +145,8 @@ I'm in San Francisco, having recently returned from [Rails World in Toronto](/fr
 <details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Sep 4, 2024</summary>
     <div class="my-10">
+
+## September 2024
 
 It's September, although in California, it's hard to notice.
 
@@ -163,7 +173,7 @@ I'm not working on AI, and indeed may be the last person in San Francisco (and s
     <img src="/photographs/now/2024-07-salesforce-tower.jpg" alt="Salesforce Tower" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
-## Pen testing, Q3, DC
+## August 2024: Pen testing, Q3, DC
 
 It's August. I don't have anything of substance to write about, so here's a couple short points instead:
 
@@ -184,7 +194,7 @@ It's August. I don't have anything of substance to write about, so here's a coup
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Jul 8, 2024</summary>
     <div class="my-10">
 
-## RBAC, Python (#rbac)
+## July 2024: RBAC, Python (#rbac)
 
 I'm in San Francisco.
 
@@ -207,6 +217,8 @@ I've been relearning Python to help build a [River's Python client library](http
     <img src="/photographs/now/2024-05-stayery.jpg" alt="Stayery" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## May 2024
+
 I'm spending the month in Berlin, where I'm trying to run and write every day, and enjoy time in a place that's less reminiscent of a zombie wasteland than my home city.
 
 The next big project I'm tackling at work is Active Directory. That sounds about as fun as a root canal, but I take it as an interesting challenge. AD is a long in the tooth technology that's still in use by many of the biggest players in the industry (we even used it at Stripe!). How can we integrate it in such a way that it gets big users what they need, produces as little code as possible and as few headaches for us, and maximizes the yield in leverage we get out of the effort. For example, it might involve ignoring the low level AD APIs and integrating [SCIM instead](https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management), thereby buying us compatibility with other non-AD SCIM-based systems.
@@ -221,6 +233,8 @@ I recently published [Ruby gem](https://github.com/riverqueue/riverqueue-ruby) t
 <details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Apr 9, 2024</summary>
     <div class="my-10">
+
+## April 2024
 
 I'm in San Francisco, where inertia keeps me rooted.
 
@@ -242,6 +256,8 @@ Next month, Europe.
 <details>
     <summary class="font-semibold font-serif italic list-outside pl-1 text-sm">Dec 8, 2022</summary>
     <div class="my-10">
+
+## December 2022
 
 I'm back home in Calgary for the holidays, staring into the precipice of 2023 which between money markets, strife, and war is shaping up to be a formidable year.
 
@@ -271,6 +287,8 @@ In 2023: write, move, visit France.
     <img src="/assets/images/now/twin-peaks-stairs.jpg" alt="Stairs up to Twin Peaks" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## April 2020
+
 It's 2020. Like for almost everyone else on Earth, COVID-19 is top-of-mind. I'm working from home, San Francisco is sheltering in place, and the future is a hugely uncertain time.
 
 As bad as our present day situation is, an indefinite work from home policy has given me more flexibility and more energy in my day-to-day than I've ever had in my adult life, and I'm going to do my best not to waste it.
@@ -299,6 +317,8 @@ Some things I’m working on:
     <img src="/assets/images/now/calgary-snow.jpg" alt="Calgary snow" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## December 2019
+
 I’m in Calgary for the winter break. It’s the last day of 2019 and we’re on the precipice of a new decade.
 
 Some things I’m working on:
@@ -324,6 +344,8 @@ Some things I’m working on:
     <img src="/assets/images/now/molecule-man.jpg" alt="Molecule man in Berlin" class="lg:rounded-lg w-full" loading="lazy">
 </div>
 
+## June 2019
+
 I'm in Berlin.
 
 A few points of focus:
@@ -347,6 +369,8 @@ A few points of focus:
             ">
     <img src="/assets/images/now/sutro-giants.jpg" alt="Sutro giants" class="lg:rounded-lg w-full" loading="lazy">
 </div>
+
+## April 2018
 
 I'm in San Francisco, working on technology at Stripe.
 
