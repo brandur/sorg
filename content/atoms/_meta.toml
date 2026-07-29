@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-07-29T01:15:00-05:00
+  description = """\
+Published fragment [pgtestdb's template cloning approach to testing is fast](/fragments/pgtestdb), on how Postgres template databases enable database-per-test isolation in around 100 ms, within spitting distance of River's schema-based approach.
+"""
+
+[[atoms]]
   published_at = 2026-07-28T16:43:01-05:00
   description = """\
 Published fragment [I used to add links by hand](/fragments/links-by-hand), on how LLMs now drive most of this blog's workflows, replacing what used to be a lot of small, manual edits.
