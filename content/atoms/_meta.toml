@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-07-30T11:41:04-05:00
+  description = """\
+River v0.41 now supports [Turso](https://riverqueue.com/blog/turso), a ground-up rewrite of SQLite in Rust that aims for full SQLite compatibility.
+"""
+
+[[atoms]]
   published_at = 2026-07-29T01:15:00-05:00
   description = """\
 Published fragment [pgtestdb's template cloning approach to testing is fast](/fragments/pgtestdb), on how Postgres template databases enable database-per-test isolation in around 100 ms, within spitting distance of River's schema-based approach.
