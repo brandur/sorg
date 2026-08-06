@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-08-06T02:09:08-05:00
+  description = """\
+Published fragment [River binaries will get 10 kB lighter](/fragments/river-binaries-10-kb-lighter), on removing accidental test-only transitive dependencies that added about 10 kB to every Go binary built with River.
+"""
+
+[[atoms]]
   published_at = 2026-07-30T11:41:04-05:00
   description = """\
 River v0.41 now supports [Turso](https://riverqueue.com/blog/turso), a ground-up rewrite of SQLite in Rust that aims for full SQLite compatibility.
