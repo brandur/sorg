@@ -321,7 +321,7 @@ there will be practical bottlenecks like the ones described
 here in any database, so these techniques for managing
 connections should be widely portable.
 
-[1] [Andres Freund][andresfreund] notes that it's possible
+[1] Andres notes that it's possible
 to substantially reduce per-backend memory overhead by
 making sure that [huge pages][hugepages] are enabled.
 Long-lived children eventually end up copying (in the sense
@@ -349,7 +349,6 @@ implementation. The protocol allows named and unnamed
 prepared statements, and they'll work as long as the driver
 sticks to the latter.
 
-[andresfreund]: https://twitter.com/andresfreundtec
 [atomicphases]: /idempotency-keys#atomic-phases
 [benchmark]: https://github.com/brandur/connections-test
 [cow]: https://en.wikipedia.org/wiki/Copy-on-write
