@@ -8,7 +8,7 @@
 
 ## July 2026: Austin, post-Stainless, onto River
 
-It's been way too long since I updated this page. I knew it was a problem, so I set a monthly calendar reminder to update it, and ... it didn't work. Rough notes since last time:
+It's been way too long since I updated this page. I knew it would be a problem, so I set a monthly calendar reminder to update it, and suprise, it didn't work -- I got the notification and I _still_ ignored it. Let's fix that today. Some rough notes since my last update:
 
 * Earlier this year, I moved to Austin. I would've done it years ago, except I thought I'd do poorly in the hot weather. It's almost August now, and the midday heat is uncomfortable, but I like it more than I thought I would. Hot days make for gorgeous summer evenings.
 
