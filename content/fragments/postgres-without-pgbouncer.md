@@ -30,7 +30,7 @@ It got me wondering: _how_ standard is it to use a pooler, exactly? To answer th
 | **PlanetScale**          |    ✅    | **PgBouncer**                   |                                        |
 | **Railway**              |    ✅    | **PgBouncer**                   | Added as separate service              |
 | **Render**               |    ✅    | **PgBouncer**                   | On paid databases                      |
-| **Supabase**             |    ✅    | **Supavisor**                   | Proprietary pooler                     |
+| **Supabase**             |    ✅    | **PgBouncer** or **Supavisor**  | PgBouncer or Supavisor (proprietary pooler) for serverless |
 | **Tiger Cloud**          |    ✅    | **PgBouncer**                   |                                        |
 
 Not only is PgBouncer support widespread, but we see above that the overwhelming majority of providers bundle it out of the box. I'd go a step further -- since neither IBM nor Oracle is a service that any self-respecting person not part of an enterprise sales cycle would actually use, _one hundred percent_ of plausible managed Postgres providers bundle a pooler.
