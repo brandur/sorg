@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-08-12T11:37:03-05:00
+  description = """\
+Published fragment [Does anyone run Postgres without PgBouncer?](/fragments/postgres-without-pgbouncer), on how nearly every notable managed Postgres provider bundles a connection pooler, giving us a strong hint that connection management is a product problem rather than a user problem.
+"""
+
+[[atoms]]
   published_at = 2026-08-11T17:15:34-05:00
   description = """\
 Published [Migration fatigue, and how LLMs help us avoid it](https://riverqueue.com/blog/migration-fatigue), on how we used an LLM to optimize a core query in [active job rescue](https://riverqueue.com/blog/active-job-rescue). The optimized version ran up to 130x faster compared to baseline, and prevented exasperated users knocking on our doors with pitchforks by avoiding a new database migration.
