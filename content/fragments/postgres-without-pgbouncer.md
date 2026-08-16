@@ -18,6 +18,7 @@ It got me wondering: _how_ standard is it to use a pooler, exactly? To answer th
 | **Alibaba RDS**          |    ✅    | **PgBouncer**                   |                                        |
 | **AWS RDS / Aurora**     |    ✅    | **RDS Proxy**                   | Separate managed proxy service         |
 | **Azure PG**             |    ✅    | **PgBouncer**                   |                                        |
+| **ClickHouse Managed Postgres** |    ✅    | **PgBouncer**                   | Public beta       |
 | **Crunchy Bridge**       |    ✅    | **PgBouncer**                   |                                        |
 | **DigitalOcean**         |    ✅    | **PgBouncer**                   |                                        |
 | **EDB Postgres AI**      |    ✅    | **PgBouncer**                   |                                        |
