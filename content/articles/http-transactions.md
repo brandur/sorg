@@ -179,6 +179,8 @@ We're not going to look into how `SERIALIZABLE` works, but
 sufficed to say it may detect a number of different data
 races for us, and if it does it'll abort a transaction when
 it tries to commit.
+(See [How Postgres Makes Transactions Atomic](https://brandur.org/postgres-atomicity)
+if you are curious about that.)
 
 ### Retrying an abort (#abort-retry)
 
