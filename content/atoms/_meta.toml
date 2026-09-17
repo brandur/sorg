@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-09-17T16:12:24+08:00
+  description = """\
+Published fragment [15 years later, a day without Tmux](/fragments/tmux-15-years), on reevaluating one of the oldest and dearest tools in my kit.
+"""
+
+[[atoms]]
   published_at = 2026-08-12T11:37:03-05:00
   description = """\
 Published fragment [Does anyone run Postgres without PgBouncer?](/fragments/postgres-without-pgbouncer), on how nearly every notable managed Postgres provider bundles a connection pooler, giving us a strong hint that connection management is a product problem rather than a user problem.
