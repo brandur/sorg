@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-09-17T18:17:26+08:00
+  description = """\
+Published fragment [A couple tiny Codex TUI features](/fragments/codex-tui-tiny-features), on three hiding in plain sight: copying the last answer, toggling raw Markdown, and disabling Escape as an interrupt.
+"""
+
+[[atoms]]
   published_at = 2026-09-17T16:12:24+08:00
   description = """\
 Published fragment [15 years later, a day without Tmux](/fragments/tmux-15-years), on reevaluating one of the oldest and dearest tools in my kit.
