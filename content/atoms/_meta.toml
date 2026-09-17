@@ -11,6 +11,17 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-09-18T04:19:22+08:00
+  description = """\
+Added a link to the bottom of all my articles to the site's human policy:
+
+> All content <a href="/human">certified human written</a>. LLMs are used for proofreading and corrections, but never to generate prose.
+
+As I find myself falling off articles that I suspect are LLM-generated, I suspect these sorts of attestations are going to be increasingly important for the few of us left still readng and writing blogs in the LLM age.
+"""
+
+
+[[atoms]]
   published_at = 2026-09-17T18:17:26+08:00
   description = """\
 Published fragment [A couple tiny Codex TUI features](/fragments/codex-tui-tiny-features), on three hiding in plain sight: copying the last answer, toggling raw Markdown, and disabling Escape as an interrupt.
