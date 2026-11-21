@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-11-20T12:00:00-06:00
+  description = """\
+Published fragment [Sent from my iPhone](/fragments/sent-from-my-iphone).
+"""
+
+[[atoms]]
   published_at = 2026-09-18T04:19:22+08:00
   description = """\
 Added a link to the bottom of all my articles to the site's human policy:
