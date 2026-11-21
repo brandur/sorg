@@ -1,5 +1,5 @@
 +++
-hook = "A bricked MacBook Pro and a couple weeks of living phone-only."
+hook = "A bricked MBP and a couple weeks of living phone-only."
 published_at = 2026-11-20T12:00:00-06:00
 title = "Sent from my iPhone"
 +++
