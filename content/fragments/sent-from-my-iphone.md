@@ -24,4 +24,4 @@ I'm experimenting with using ChatGPT for longer text using its built in dictatio
 
 My biggest takeaway is how primitive mobile OSes are multiple decades in. We need to stop holding these pieces of crap to a different standard -- there's no reason a mobile OS should be less powerful than a desktop OS. We've all got Stockholm Syndrome at mass scale.
 
-STEVE JOBS WAS WRONG.
+I hate to say it, but Steve Jobs was wrong.
