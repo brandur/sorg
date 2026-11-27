@@ -11,6 +11,12 @@
 ################################################################################
 
 [[atoms]]
+  published_at = 2026-11-27T11:09:35-06:00
+  description = """\
+Published fragment [A `fork(2)` in the road: Regimented stability versus relentless progress](/fragments/fork-in-the-road), on why there might still be room for a new database.
+"""
+
+[[atoms]]
   published_at = 2026-11-20T12:00:00-06:00
   description = """\
 Published fragment [Sent from my iPhone](/fragments/sent-from-my-iphone), on going phone-only for a couple weeks after my MBP bricked itself.
