@@ -1,7 +1,7 @@
 +++
 hook = "It sounds like heresy to say out loud, but there's room for a new database."
 published_at = 2026-11-27T11:09:35-06:00
-title = "A `fork(2)` in the road: Regimented stability versus relentless acceleration"
+title = "A `fork(2)` in the road: Regimented stability versus relentless progress"
 +++
 
 After the revert fiasco of Postgres 19, I was thinking about what the future holds for databases. Is inertia enough to carry the existing databases that we know so well into the future? How important is stability and pervasiveness of use compared to dynamicism and agility?
